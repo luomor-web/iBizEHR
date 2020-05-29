@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimExaminationResultsService;
 import cn.ibizlab.ehr.core.pim.filter.PimExaminationResultsSearchContext;
 
 @Slf4j
-@Api(tags = {"PimExaminationResults" })
+@Api(tags = {"B/Y员工转正考核结果记录" })
 @RestController("WebApi-pimexaminationresults")
 @RequestMapping("")
 public class PimExaminationResultsResource {
@@ -47,7 +47,7 @@ public class PimExaminationResultsResource {
     public PimExaminationResultsMapping pimexaminationresultsMapping;
 
     @PreAuthorize("hasPermission(this.pimexaminationresultsService.get(#pimexaminationresults_id),'ehr-PimExaminationResults-Update')")
-    @ApiOperation(value = "Update", tags = {"PimExaminationResults" },  notes = "Update")
+    @ApiOperation(value = "更新B/Y员工转正考核结果记录", tags = {"B/Y员工转正考核结果记录" },  notes = "更新B/Y员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimexaminationresults/{pimexaminationresults_id}")
     @Transactional
     public ResponseEntity<PimExaminationResultsDTO> update(@PathVariable("pimexaminationresults_id") String pimexaminationresults_id, @RequestBody PimExaminationResultsDTO pimexaminationresultsdto) {
@@ -59,7 +59,7 @@ public class PimExaminationResultsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimexaminationresultsService.getPimexaminationresultsByEntities(this.pimexaminationresultsMapping.toDomain(#pimexaminationresultsdtos)),'ehr-PimExaminationResults-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimExaminationResults" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新B/Y员工转正考核结果记录", tags = {"B/Y员工转正考核结果记录" },  notes = "批量更新B/Y员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimexaminationresults/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimExaminationResultsDTO> pimexaminationresultsdtos) {
         pimexaminationresultsService.updateBatch(pimexaminationresultsMapping.toDomain(pimexaminationresultsdtos));
@@ -67,28 +67,28 @@ public class PimExaminationResultsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimexaminationresultsMapping.toDomain(#pimexaminationresultsdto),'ehr-PimExaminationResults-Save')")
-    @ApiOperation(value = "Save", tags = {"PimExaminationResults" },  notes = "Save")
+    @ApiOperation(value = "保存B/Y员工转正考核结果记录", tags = {"B/Y员工转正考核结果记录" },  notes = "保存B/Y员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults/save")
     public ResponseEntity<Boolean> save(@RequestBody PimExaminationResultsDTO pimexaminationresultsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimexaminationresultsService.save(pimexaminationresultsMapping.toDomain(pimexaminationresultsdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimexaminationresultsMapping.toDomain(#pimexaminationresultsdtos),'ehr-PimExaminationResults-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimExaminationResults" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存B/Y员工转正考核结果记录", tags = {"B/Y员工转正考核结果记录" },  notes = "批量保存B/Y员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimExaminationResultsDTO> pimexaminationresultsdtos) {
         pimexaminationresultsService.saveBatch(pimexaminationresultsMapping.toDomain(pimexaminationresultsdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimExaminationResults" },  notes = "CheckKey")
+    @ApiOperation(value = "检查B/Y员工转正考核结果记录", tags = {"B/Y员工转正考核结果记录" },  notes = "检查B/Y员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimExaminationResultsDTO pimexaminationresultsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimexaminationresultsService.checkKey(pimexaminationresultsMapping.toDomain(pimexaminationresultsdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimexaminationresultsMapping.toDomain(#pimexaminationresultsdto),'ehr-PimExaminationResults-Create')")
-    @ApiOperation(value = "Create", tags = {"PimExaminationResults" },  notes = "Create")
+    @ApiOperation(value = "新建B/Y员工转正考核结果记录", tags = {"B/Y员工转正考核结果记录" },  notes = "新建B/Y员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults")
     @Transactional
     public ResponseEntity<PimExaminationResultsDTO> create(@RequestBody PimExaminationResultsDTO pimexaminationresultsdto) {
@@ -99,7 +99,7 @@ public class PimExaminationResultsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimexaminationresultsMapping.toDomain(#pimexaminationresultsdtos),'ehr-PimExaminationResults-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimExaminationResults" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建B/Y员工转正考核结果记录", tags = {"B/Y员工转正考核结果记录" },  notes = "批量新建B/Y员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexaminationresults/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimExaminationResultsDTO> pimexaminationresultsdtos) {
         pimexaminationresultsService.createBatch(pimexaminationresultsMapping.toDomain(pimexaminationresultsdtos));
@@ -107,7 +107,7 @@ public class PimExaminationResultsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimexaminationresultsService.get(#pimexaminationresults_id),'ehr-PimExaminationResults-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimExaminationResults" },  notes = "Remove")
+    @ApiOperation(value = "删除B/Y员工转正考核结果记录", tags = {"B/Y员工转正考核结果记录" },  notes = "删除B/Y员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimexaminationresults/{pimexaminationresults_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimexaminationresults_id") String pimexaminationresults_id) {
@@ -115,21 +115,21 @@ public class PimExaminationResultsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimexaminationresultsService.getPimexaminationresultsByIds(#ids),'ehr-PimExaminationResults-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimExaminationResults" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除B/Y员工转正考核结果记录", tags = {"B/Y员工转正考核结果记录" },  notes = "批量删除B/Y员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimexaminationresults/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimexaminationresultsService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimExaminationResults" },  notes = "GetDraft")
+    @ApiOperation(value = "获取B/Y员工转正考核结果记录草稿", tags = {"B/Y员工转正考核结果记录" },  notes = "获取B/Y员工转正考核结果记录草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimexaminationresults/getdraft")
     public ResponseEntity<PimExaminationResultsDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimexaminationresultsMapping.toDto(pimexaminationresultsService.getDraft(new PimExaminationResults())));
     }
 
     @PostAuthorize("hasPermission(this.pimexaminationresultsMapping.toDomain(returnObject.body),'ehr-PimExaminationResults-Get')")
-    @ApiOperation(value = "Get", tags = {"PimExaminationResults" },  notes = "Get")
+    @ApiOperation(value = "获取B/Y员工转正考核结果记录", tags = {"B/Y员工转正考核结果记录" },  notes = "获取B/Y员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimexaminationresults/{pimexaminationresults_id}")
     public ResponseEntity<PimExaminationResultsDTO> get(@PathVariable("pimexaminationresults_id") String pimexaminationresults_id) {
         PimExaminationResults domain = pimexaminationresultsService.get(pimexaminationresults_id);
@@ -138,7 +138,7 @@ public class PimExaminationResultsResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimExaminationResults-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimExaminationResults" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"B/Y员工转正考核结果记录" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimexaminationresults/fetchdefault")
 	public ResponseEntity<List<PimExaminationResultsDTO>> fetchDefault(PimExaminationResultsSearchContext context) {
         Page<PimExaminationResults> domains = pimexaminationresultsService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimExaminationResultsResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimExaminationResults-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimExaminationResults" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"B/Y员工转正考核结果记录" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimexaminationresults/searchdefault")
 	public ResponseEntity<Page<PimExaminationResultsDTO>> searchDefault(@RequestBody PimExaminationResultsSearchContext context) {
         Page<PimExaminationResults> domains = pimexaminationresultsService.searchDefault(context) ;

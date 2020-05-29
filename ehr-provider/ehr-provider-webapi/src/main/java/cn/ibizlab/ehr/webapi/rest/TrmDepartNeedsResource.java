@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITrmDepartNeedsService;
 import cn.ibizlab.ehr.core.trm.filter.TrmDepartNeedsSearchContext;
 
 @Slf4j
-@Api(tags = {"TrmDepartNeeds" })
+@Api(tags = {"培训需求明细" })
 @RestController("WebApi-trmdepartneeds")
 @RequestMapping("")
 public class TrmDepartNeedsResource {
@@ -47,7 +47,7 @@ public class TrmDepartNeedsResource {
     public TrmDepartNeedsMapping trmdepartneedsMapping;
 
     @PreAuthorize("hasPermission(this.trmdepartneedsService.get(#trmdepartneeds_id),'ehr-TrmDepartNeeds-Update')")
-    @ApiOperation(value = "Update", tags = {"TrmDepartNeeds" },  notes = "Update")
+    @ApiOperation(value = "更新培训需求明细", tags = {"培训需求明细" },  notes = "更新培训需求明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdepartneeds/{trmdepartneeds_id}")
     @Transactional
     public ResponseEntity<TrmDepartNeedsDTO> update(@PathVariable("trmdepartneeds_id") String trmdepartneeds_id, @RequestBody TrmDepartNeedsDTO trmdepartneedsdto) {
@@ -59,7 +59,7 @@ public class TrmDepartNeedsResource {
     }
 
     @PreAuthorize("hasPermission(this.trmdepartneedsService.getTrmdepartneedsByEntities(this.trmdepartneedsMapping.toDomain(#trmdepartneedsdtos)),'ehr-TrmDepartNeeds-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TrmDepartNeeds" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新培训需求明细", tags = {"培训需求明细" },  notes = "批量更新培训需求明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdepartneeds/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TrmDepartNeedsDTO> trmdepartneedsdtos) {
         trmdepartneedsService.updateBatch(trmdepartneedsMapping.toDomain(trmdepartneedsdtos));
@@ -67,7 +67,7 @@ public class TrmDepartNeedsResource {
     }
 
     @PostAuthorize("hasPermission(this.trmdepartneedsMapping.toDomain(returnObject.body),'ehr-TrmDepartNeeds-Get')")
-    @ApiOperation(value = "Get", tags = {"TrmDepartNeeds" },  notes = "Get")
+    @ApiOperation(value = "获取培训需求明细", tags = {"培训需求明细" },  notes = "获取培训需求明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdepartneeds/{trmdepartneeds_id}")
     public ResponseEntity<TrmDepartNeedsDTO> get(@PathVariable("trmdepartneeds_id") String trmdepartneeds_id) {
         TrmDepartNeeds domain = trmdepartneedsService.get(trmdepartneeds_id);
@@ -76,7 +76,7 @@ public class TrmDepartNeedsResource {
     }
 
     @PreAuthorize("hasPermission(this.trmdepartneedsService.get(#trmdepartneeds_id),'ehr-TrmDepartNeeds-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TrmDepartNeeds" },  notes = "Remove")
+    @ApiOperation(value = "删除培训需求明细", tags = {"培训需求明细" },  notes = "删除培训需求明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdepartneeds/{trmdepartneeds_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trmdepartneeds_id") String trmdepartneeds_id) {
@@ -84,7 +84,7 @@ public class TrmDepartNeedsResource {
     }
 
     @PreAuthorize("hasPermission(this.trmdepartneedsService.getTrmdepartneedsByIds(#ids),'ehr-TrmDepartNeeds-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TrmDepartNeeds" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除培训需求明细", tags = {"培训需求明细" },  notes = "批量删除培训需求明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdepartneeds/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmdepartneedsService.removeBatch(ids);
@@ -92,34 +92,34 @@ public class TrmDepartNeedsResource {
     }
 
     @PreAuthorize("hasPermission(this.trmdepartneedsMapping.toDomain(#trmdepartneedsdto),'ehr-TrmDepartNeeds-Save')")
-    @ApiOperation(value = "Save", tags = {"TrmDepartNeeds" },  notes = "Save")
+    @ApiOperation(value = "保存培训需求明细", tags = {"培训需求明细" },  notes = "保存培训需求明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdepartneeds/save")
     public ResponseEntity<Boolean> save(@RequestBody TrmDepartNeedsDTO trmdepartneedsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmdepartneedsService.save(trmdepartneedsMapping.toDomain(trmdepartneedsdto)));
     }
 
     @PreAuthorize("hasPermission(this.trmdepartneedsMapping.toDomain(#trmdepartneedsdtos),'ehr-TrmDepartNeeds-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TrmDepartNeeds" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存培训需求明细", tags = {"培训需求明细" },  notes = "批量保存培训需求明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdepartneeds/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TrmDepartNeedsDTO> trmdepartneedsdtos) {
         trmdepartneedsService.saveBatch(trmdepartneedsMapping.toDomain(trmdepartneedsdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"TrmDepartNeeds" },  notes = "GetDraft")
+    @ApiOperation(value = "获取培训需求明细草稿", tags = {"培训需求明细" },  notes = "获取培训需求明细草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdepartneeds/getdraft")
     public ResponseEntity<TrmDepartNeedsDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmdepartneedsMapping.toDto(trmdepartneedsService.getDraft(new TrmDepartNeeds())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TrmDepartNeeds" },  notes = "CheckKey")
+    @ApiOperation(value = "检查培训需求明细", tags = {"培训需求明细" },  notes = "检查培训需求明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdepartneeds/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmDepartNeedsDTO trmdepartneedsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmdepartneedsService.checkKey(trmdepartneedsMapping.toDomain(trmdepartneedsdto)));
     }
 
     @PreAuthorize("hasPermission(this.trmdepartneedsMapping.toDomain(#trmdepartneedsdto),'ehr-TrmDepartNeeds-Create')")
-    @ApiOperation(value = "Create", tags = {"TrmDepartNeeds" },  notes = "Create")
+    @ApiOperation(value = "新建培训需求明细", tags = {"培训需求明细" },  notes = "新建培训需求明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdepartneeds")
     @Transactional
     public ResponseEntity<TrmDepartNeedsDTO> create(@RequestBody TrmDepartNeedsDTO trmdepartneedsdto) {
@@ -130,7 +130,7 @@ public class TrmDepartNeedsResource {
     }
 
     @PreAuthorize("hasPermission(this.trmdepartneedsMapping.toDomain(#trmdepartneedsdtos),'ehr-TrmDepartNeeds-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TrmDepartNeeds" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建培训需求明细", tags = {"培训需求明细" },  notes = "批量新建培训需求明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdepartneeds/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmDepartNeedsDTO> trmdepartneedsdtos) {
         trmdepartneedsService.createBatch(trmdepartneedsMapping.toDomain(trmdepartneedsdtos));
@@ -138,7 +138,7 @@ public class TrmDepartNeedsResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmDepartNeeds-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TrmDepartNeeds" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"培训需求明细" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmdepartneeds/fetchdefault")
 	public ResponseEntity<List<TrmDepartNeedsDTO>> fetchDefault(TrmDepartNeedsSearchContext context) {
         Page<TrmDepartNeeds> domains = trmdepartneedsService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmDepartNeedsResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmDepartNeeds-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TrmDepartNeeds" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"培训需求明细" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmdepartneeds/searchdefault")
 	public ResponseEntity<Page<TrmDepartNeedsDTO>> searchDefault(@RequestBody TrmDepartNeedsSearchContext context) {
         Page<TrmDepartNeeds> domains = trmdepartneedsService.searchDefault(context) ;

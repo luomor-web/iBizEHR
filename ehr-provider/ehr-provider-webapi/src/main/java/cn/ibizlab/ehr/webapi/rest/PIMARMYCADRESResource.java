@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPIMARMYCADRESService;
 import cn.ibizlab.ehr.core.pim.filter.PIMARMYCADRESSearchContext;
 
 @Slf4j
-@Api(tags = {"PIMARMYCADRES" })
+@Api(tags = {"军转干部" })
 @RestController("WebApi-pimarmycadres")
 @RequestMapping("")
 public class PIMARMYCADRESResource {
@@ -47,7 +47,7 @@ public class PIMARMYCADRESResource {
     public PIMARMYCADRESMapping pimarmycadresMapping;
 
     @PreAuthorize("hasPermission(this.pimarmycadresService.get(#pimarmycadres_id),'ehr-PIMARMYCADRES-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PIMARMYCADRES" },  notes = "Remove")
+    @ApiOperation(value = "删除军转干部", tags = {"军转干部" },  notes = "删除军转干部")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarmycadres/{pimarmycadres_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimarmycadres_id") String pimarmycadres_id) {
@@ -55,27 +55,27 @@ public class PIMARMYCADRESResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarmycadresService.getPimarmycadresByIds(#ids),'ehr-PIMARMYCADRES-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PIMARMYCADRES" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除军转干部", tags = {"军转干部" },  notes = "批量删除军转干部")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarmycadres/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimarmycadresService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PIMARMYCADRES" },  notes = "GetDraft")
+    @ApiOperation(value = "获取军转干部草稿", tags = {"军转干部" },  notes = "获取军转干部草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarmycadres/getdraft")
     public ResponseEntity<PIMARMYCADRESDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimarmycadresMapping.toDto(pimarmycadresService.getDraft(new PIMARMYCADRES())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PIMARMYCADRES" },  notes = "CheckKey")
+    @ApiOperation(value = "检查军转干部", tags = {"军转干部" },  notes = "检查军转干部")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarmycadres/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMARMYCADRESDTO pimarmycadresdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarmycadresService.checkKey(pimarmycadresMapping.toDomain(pimarmycadresdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimarmycadresMapping.toDomain(#pimarmycadresdto),'ehr-PIMARMYCADRES-Create')")
-    @ApiOperation(value = "Create", tags = {"PIMARMYCADRES" },  notes = "Create")
+    @ApiOperation(value = "新建军转干部", tags = {"军转干部" },  notes = "新建军转干部")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarmycadres")
     @Transactional
     public ResponseEntity<PIMARMYCADRESDTO> create(@RequestBody PIMARMYCADRESDTO pimarmycadresdto) {
@@ -86,7 +86,7 @@ public class PIMARMYCADRESResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarmycadresMapping.toDomain(#pimarmycadresdtos),'ehr-PIMARMYCADRES-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PIMARMYCADRES" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建军转干部", tags = {"军转干部" },  notes = "批量新建军转干部")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarmycadres/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMARMYCADRESDTO> pimarmycadresdtos) {
         pimarmycadresService.createBatch(pimarmycadresMapping.toDomain(pimarmycadresdtos));
@@ -94,7 +94,7 @@ public class PIMARMYCADRESResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarmycadresService.get(#pimarmycadres_id),'ehr-PIMARMYCADRES-Update')")
-    @ApiOperation(value = "Update", tags = {"PIMARMYCADRES" },  notes = "Update")
+    @ApiOperation(value = "更新军转干部", tags = {"军转干部" },  notes = "更新军转干部")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarmycadres/{pimarmycadres_id}")
     @Transactional
     public ResponseEntity<PIMARMYCADRESDTO> update(@PathVariable("pimarmycadres_id") String pimarmycadres_id, @RequestBody PIMARMYCADRESDTO pimarmycadresdto) {
@@ -106,7 +106,7 @@ public class PIMARMYCADRESResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarmycadresService.getPimarmycadresByEntities(this.pimarmycadresMapping.toDomain(#pimarmycadresdtos)),'ehr-PIMARMYCADRES-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PIMARMYCADRES" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新军转干部", tags = {"军转干部" },  notes = "批量更新军转干部")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarmycadres/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMARMYCADRESDTO> pimarmycadresdtos) {
         pimarmycadresService.updateBatch(pimarmycadresMapping.toDomain(pimarmycadresdtos));
@@ -114,7 +114,7 @@ public class PIMARMYCADRESResource {
     }
 
     @PostAuthorize("hasPermission(this.pimarmycadresMapping.toDomain(returnObject.body),'ehr-PIMARMYCADRES-Get')")
-    @ApiOperation(value = "Get", tags = {"PIMARMYCADRES" },  notes = "Get")
+    @ApiOperation(value = "获取军转干部", tags = {"军转干部" },  notes = "获取军转干部")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarmycadres/{pimarmycadres_id}")
     public ResponseEntity<PIMARMYCADRESDTO> get(@PathVariable("pimarmycadres_id") String pimarmycadres_id) {
         PIMARMYCADRES domain = pimarmycadresService.get(pimarmycadres_id);
@@ -123,14 +123,14 @@ public class PIMARMYCADRESResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarmycadresMapping.toDomain(#pimarmycadresdto),'ehr-PIMARMYCADRES-Save')")
-    @ApiOperation(value = "Save", tags = {"PIMARMYCADRES" },  notes = "Save")
+    @ApiOperation(value = "保存军转干部", tags = {"军转干部" },  notes = "保存军转干部")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarmycadres/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMARMYCADRESDTO pimarmycadresdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimarmycadresService.save(pimarmycadresMapping.toDomain(pimarmycadresdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimarmycadresMapping.toDomain(#pimarmycadresdtos),'ehr-PIMARMYCADRES-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PIMARMYCADRES" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存军转干部", tags = {"军转干部" },  notes = "批量保存军转干部")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarmycadres/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMARMYCADRESDTO> pimarmycadresdtos) {
         pimarmycadresService.saveBatch(pimarmycadresMapping.toDomain(pimarmycadresdtos));
@@ -138,7 +138,7 @@ public class PIMARMYCADRESResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMARMYCADRES" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"军转干部" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimarmycadres/fetchdefault")
 	public ResponseEntity<List<PIMARMYCADRESDTO>> fetchDefault(PIMARMYCADRESSearchContext context) {
         Page<PIMARMYCADRES> domains = pimarmycadresService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PIMARMYCADRESResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PIMARMYCADRES" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"军转干部" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimarmycadres/searchdefault")
 	public ResponseEntity<Page<PIMARMYCADRESDTO>> searchDefault(@RequestBody PIMARMYCADRESSearchContext context) {
         Page<PIMARMYCADRES> domains = pimarmycadresService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PIMARMYCADRESResource {
                 .body(new PageImpl(pimarmycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGLY-all')")
-	@ApiOperation(value = "fetch记录所属（管理员）", tags = {"PIMARMYCADRES" } ,notes = "fetch记录所属（管理员）")
+	@ApiOperation(value = "获取记录所属（管理员）", tags = {"军转干部" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimarmycadres/fetchjlssgly")
 	public ResponseEntity<List<PIMARMYCADRESDTO>> fetchJLSSGLY(PIMARMYCADRESSearchContext context) {
         Page<PIMARMYCADRES> domains = pimarmycadresService.searchJLSSGLY(context) ;
@@ -172,7 +172,7 @@ public class PIMARMYCADRESResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGLY-all')")
-	@ApiOperation(value = "search记录所属（管理员）", tags = {"PIMARMYCADRES" } ,notes = "search记录所属（管理员）")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"军转干部" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimarmycadres/searchjlssgly")
 	public ResponseEntity<Page<PIMARMYCADRESDTO>> searchJLSSGLY(@RequestBody PIMARMYCADRESSearchContext context) {
         Page<PIMARMYCADRES> domains = pimarmycadresService.searchJLSSGLY(context) ;
@@ -180,7 +180,7 @@ public class PIMARMYCADRESResource {
                 .body(new PageImpl(pimarmycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGR-all')")
-	@ApiOperation(value = "fetch记录所属（个人）", tags = {"PIMARMYCADRES" } ,notes = "fetch记录所属（个人）")
+	@ApiOperation(value = "获取记录所属（个人）", tags = {"军转干部" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimarmycadres/fetchjlssgr")
 	public ResponseEntity<List<PIMARMYCADRESDTO>> fetchJLSSGR(PIMARMYCADRESSearchContext context) {
         Page<PIMARMYCADRES> domains = pimarmycadresService.searchJLSSGR(context) ;
@@ -193,7 +193,7 @@ public class PIMARMYCADRESResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGR-all')")
-	@ApiOperation(value = "search记录所属（个人）", tags = {"PIMARMYCADRES" } ,notes = "search记录所属（个人）")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"军转干部" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimarmycadres/searchjlssgr")
 	public ResponseEntity<Page<PIMARMYCADRESDTO>> searchJLSSGR(@RequestBody PIMARMYCADRESSearchContext context) {
         Page<PIMARMYCADRES> domains = pimarmycadresService.searchJLSSGR(context) ;
@@ -201,7 +201,7 @@ public class PIMARMYCADRESResource {
                 .body(new PageImpl(pimarmycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pimarmycadresService.get(#pimarmycadres_id),'ehr-PIMARMYCADRES-Remove')")
-    @ApiOperation(value = "RemoveByPimPerson", tags = {"PIMARMYCADRES" },  notes = "RemoveByPimPerson")
+    @ApiOperation(value = "根据人员信息删除军转干部", tags = {"军转干部" },  notes = "根据人员信息删除军转干部")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarmycadres/{pimarmycadres_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarmycadres_id") String pimarmycadres_id) {
@@ -209,14 +209,14 @@ public class PIMARMYCADRESResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarmycadresService.getPimarmycadresByIds(#ids),'ehr-PIMARMYCADRES-Remove')")
-    @ApiOperation(value = "RemoveBatchByPimPerson", tags = {"PIMARMYCADRES" },  notes = "RemoveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量删除军转干部", tags = {"军转干部" },  notes = "根据人员信息批量删除军转干部")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarmycadres/batch")
     public ResponseEntity<Boolean> removeBatchByPimPerson(@RequestBody List<String> ids) {
         pimarmycadresService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPimPerson", tags = {"PIMARMYCADRES" },  notes = "GetDraftByPimPerson")
+    @ApiOperation(value = "根据人员信息获取军转干部草稿", tags = {"军转干部" },  notes = "根据人员信息获取军转干部草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarmycadres/getdraft")
     public ResponseEntity<PIMARMYCADRESDTO> getDraftByPimPerson(@PathVariable("pimperson_id") String pimperson_id) {
         PIMARMYCADRES domain = new PIMARMYCADRES();
@@ -224,14 +224,14 @@ public class PIMARMYCADRESResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarmycadresMapping.toDto(pimarmycadresService.getDraft(domain)));
     }
 
-    @ApiOperation(value = "CheckKeyByPimPerson", tags = {"PIMARMYCADRES" },  notes = "CheckKeyByPimPerson")
+    @ApiOperation(value = "根据人员信息检查军转干部", tags = {"军转干部" },  notes = "根据人员信息检查军转干部")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarmycadres/checkkey")
     public ResponseEntity<Boolean> checkKeyByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARMYCADRESDTO pimarmycadresdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarmycadresService.checkKey(pimarmycadresMapping.toDomain(pimarmycadresdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimarmycadresMapping.toDomain(#pimarmycadresdto),'ehr-PIMARMYCADRES-Create')")
-    @ApiOperation(value = "CreateByPimPerson", tags = {"PIMARMYCADRES" },  notes = "CreateByPimPerson")
+    @ApiOperation(value = "根据人员信息建立军转干部", tags = {"军转干部" },  notes = "根据人员信息建立军转干部")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarmycadres")
     @Transactional
     public ResponseEntity<PIMARMYCADRESDTO> createByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARMYCADRESDTO pimarmycadresdto) {
@@ -243,7 +243,7 @@ public class PIMARMYCADRESResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarmycadresMapping.toDomain(#pimarmycadresdtos),'ehr-PIMARMYCADRES-Create')")
-    @ApiOperation(value = "createBatchByPimPerson", tags = {"PIMARMYCADRES" },  notes = "createBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量建立军转干部", tags = {"军转干部" },  notes = "根据人员信息批量建立军转干部")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarmycadres/batch")
     public ResponseEntity<Boolean> createBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMARMYCADRESDTO> pimarmycadresdtos) {
         List<PIMARMYCADRES> domainlist=pimarmycadresMapping.toDomain(pimarmycadresdtos);
@@ -255,7 +255,7 @@ public class PIMARMYCADRESResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarmycadresService.get(#pimarmycadres_id),'ehr-PIMARMYCADRES-Update')")
-    @ApiOperation(value = "UpdateByPimPerson", tags = {"PIMARMYCADRES" },  notes = "UpdateByPimPerson")
+    @ApiOperation(value = "根据人员信息更新军转干部", tags = {"军转干部" },  notes = "根据人员信息更新军转干部")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarmycadres/{pimarmycadres_id}")
     @Transactional
     public ResponseEntity<PIMARMYCADRESDTO> updateByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarmycadres_id") String pimarmycadres_id, @RequestBody PIMARMYCADRESDTO pimarmycadresdto) {
@@ -268,7 +268,7 @@ public class PIMARMYCADRESResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarmycadresService.getPimarmycadresByEntities(this.pimarmycadresMapping.toDomain(#pimarmycadresdtos)),'ehr-PIMARMYCADRES-Update')")
-    @ApiOperation(value = "UpdateBatchByPimPerson", tags = {"PIMARMYCADRES" },  notes = "UpdateBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量更新军转干部", tags = {"军转干部" },  notes = "根据人员信息批量更新军转干部")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarmycadres/batch")
     public ResponseEntity<Boolean> updateBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMARMYCADRESDTO> pimarmycadresdtos) {
         List<PIMARMYCADRES> domainlist=pimarmycadresMapping.toDomain(pimarmycadresdtos);
@@ -280,7 +280,7 @@ public class PIMARMYCADRESResource {
     }
 
     @PostAuthorize("hasPermission(this.pimarmycadresMapping.toDomain(returnObject.body),'ehr-PIMARMYCADRES-Get')")
-    @ApiOperation(value = "GetByPimPerson", tags = {"PIMARMYCADRES" },  notes = "GetByPimPerson")
+    @ApiOperation(value = "根据人员信息获取军转干部", tags = {"军转干部" },  notes = "根据人员信息获取军转干部")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarmycadres/{pimarmycadres_id}")
     public ResponseEntity<PIMARMYCADRESDTO> getByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarmycadres_id") String pimarmycadres_id) {
         PIMARMYCADRES domain = pimarmycadresService.get(pimarmycadres_id);
@@ -289,7 +289,7 @@ public class PIMARMYCADRESResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarmycadresMapping.toDomain(#pimarmycadresdto),'ehr-PIMARMYCADRES-Save')")
-    @ApiOperation(value = "SaveByPimPerson", tags = {"PIMARMYCADRES" },  notes = "SaveByPimPerson")
+    @ApiOperation(value = "根据人员信息保存军转干部", tags = {"军转干部" },  notes = "根据人员信息保存军转干部")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarmycadres/save")
     public ResponseEntity<Boolean> saveByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARMYCADRESDTO pimarmycadresdto) {
         PIMARMYCADRES domain = pimarmycadresMapping.toDomain(pimarmycadresdto);
@@ -298,7 +298,7 @@ public class PIMARMYCADRESResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarmycadresMapping.toDomain(#pimarmycadresdtos),'ehr-PIMARMYCADRES-Save')")
-    @ApiOperation(value = "SaveBatchByPimPerson", tags = {"PIMARMYCADRES" },  notes = "SaveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量保存军转干部", tags = {"军转干部" },  notes = "根据人员信息批量保存军转干部")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarmycadres/savebatch")
     public ResponseEntity<Boolean> saveBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMARMYCADRESDTO> pimarmycadresdtos) {
         List<PIMARMYCADRES> domainlist=pimarmycadresMapping.toDomain(pimarmycadresdtos);
@@ -310,7 +310,7 @@ public class PIMARMYCADRESResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPimPerson", tags = {"PIMARMYCADRES" } ,notes = "fetchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息获取DEFAULT", tags = {"军转干部" } ,notes = "根据人员信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarmycadres/fetchdefault")
 	public ResponseEntity<List<PIMARMYCADRESDTO>> fetchPIMARMYCADRESDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PIMARMYCADRESSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -324,7 +324,7 @@ public class PIMARMYCADRESResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPimPerson", tags = {"PIMARMYCADRES" } ,notes = "searchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息查询DEFAULT", tags = {"军转干部" } ,notes = "根据人员信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarmycadres/searchdefault")
 	public ResponseEntity<Page<PIMARMYCADRESDTO>> searchPIMARMYCADRESDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARMYCADRESSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -333,7 +333,7 @@ public class PIMARMYCADRESResource {
                 .body(new PageImpl(pimarmycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGLY-all')")
-	@ApiOperation(value = "fetch记录所属（管理员）ByPimPerson", tags = {"PIMARMYCADRES" } ,notes = "fetch记录所属（管理员）ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取记录所属（管理员）", tags = {"军转干部" } ,notes = "根据人员信息获取记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarmycadres/fetchjlssgly")
 	public ResponseEntity<List<PIMARMYCADRESDTO>> fetchPIMARMYCADRESJLSSGLYByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PIMARMYCADRESSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -347,7 +347,7 @@ public class PIMARMYCADRESResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGLY-all')")
-	@ApiOperation(value = "search记录所属（管理员）ByPimPerson", tags = {"PIMARMYCADRES" } ,notes = "search记录所属（管理员）ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询记录所属（管理员）", tags = {"军转干部" } ,notes = "根据人员信息查询记录所属（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarmycadres/searchjlssgly")
 	public ResponseEntity<Page<PIMARMYCADRESDTO>> searchPIMARMYCADRESJLSSGLYByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARMYCADRESSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -356,7 +356,7 @@ public class PIMARMYCADRESResource {
                 .body(new PageImpl(pimarmycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGR-all')")
-	@ApiOperation(value = "fetch记录所属（个人）ByPimPerson", tags = {"PIMARMYCADRES" } ,notes = "fetch记录所属（个人）ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取记录所属（个人）", tags = {"军转干部" } ,notes = "根据人员信息获取记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarmycadres/fetchjlssgr")
 	public ResponseEntity<List<PIMARMYCADRESDTO>> fetchPIMARMYCADRESJLSSGRByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PIMARMYCADRESSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -370,7 +370,7 @@ public class PIMARMYCADRESResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARMYCADRES-JLSSGR-all')")
-	@ApiOperation(value = "search记录所属（个人）ByPimPerson", tags = {"PIMARMYCADRES" } ,notes = "search记录所属（个人）ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询记录所属（个人）", tags = {"军转干部" } ,notes = "根据人员信息查询记录所属（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarmycadres/searchjlssgr")
 	public ResponseEntity<Page<PIMARMYCADRESDTO>> searchPIMARMYCADRESJLSSGRByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMARMYCADRESSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);

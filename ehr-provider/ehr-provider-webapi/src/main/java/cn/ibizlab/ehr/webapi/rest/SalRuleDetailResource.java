@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.sal.service.ISalRuleDetailService;
 import cn.ibizlab.ehr.core.sal.filter.SalRuleDetailSearchContext;
 
 @Slf4j
-@Api(tags = {"SalRuleDetail" })
+@Api(tags = {"薪酬规则明细" })
 @RestController("WebApi-salruledetail")
 @RequestMapping("")
 public class SalRuleDetailResource {
@@ -47,7 +47,7 @@ public class SalRuleDetailResource {
     public SalRuleDetailMapping salruledetailMapping;
 
     @PostAuthorize("hasPermission(this.salruledetailMapping.toDomain(returnObject.body),'ehr-SalRuleDetail-Get')")
-    @ApiOperation(value = "Get", tags = {"SalRuleDetail" },  notes = "Get")
+    @ApiOperation(value = "获取薪酬规则明细", tags = {"薪酬规则明细" },  notes = "获取薪酬规则明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/salruledetails/{salruledetail_id}")
     public ResponseEntity<SalRuleDetailDTO> get(@PathVariable("salruledetail_id") String salruledetail_id) {
         SalRuleDetail domain = salruledetailService.get(salruledetail_id);
@@ -55,14 +55,14 @@ public class SalRuleDetailResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"SalRuleDetail" },  notes = "CheckKey")
+    @ApiOperation(value = "检查薪酬规则明细", tags = {"薪酬规则明细" },  notes = "检查薪酬规则明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/salruledetails/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SalRuleDetailDTO salruledetaildto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salruledetailService.checkKey(salruledetailMapping.toDomain(salruledetaildto)));
     }
 
     @PreAuthorize("hasPermission(this.salruledetailService.get(#salruledetail_id),'ehr-SalRuleDetail-Update')")
-    @ApiOperation(value = "Update", tags = {"SalRuleDetail" },  notes = "Update")
+    @ApiOperation(value = "更新薪酬规则明细", tags = {"薪酬规则明细" },  notes = "更新薪酬规则明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salruledetails/{salruledetail_id}")
     @Transactional
     public ResponseEntity<SalRuleDetailDTO> update(@PathVariable("salruledetail_id") String salruledetail_id, @RequestBody SalRuleDetailDTO salruledetaildto) {
@@ -74,7 +74,7 @@ public class SalRuleDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.salruledetailService.getSalruledetailByEntities(this.salruledetailMapping.toDomain(#salruledetaildtos)),'ehr-SalRuleDetail-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SalRuleDetail" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新薪酬规则明细", tags = {"薪酬规则明细" },  notes = "批量更新薪酬规则明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salruledetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SalRuleDetailDTO> salruledetaildtos) {
         salruledetailService.updateBatch(salruledetailMapping.toDomain(salruledetaildtos));
@@ -82,14 +82,14 @@ public class SalRuleDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.salruledetailMapping.toDomain(#salruledetaildto),'ehr-SalRuleDetail-Save')")
-    @ApiOperation(value = "Save", tags = {"SalRuleDetail" },  notes = "Save")
+    @ApiOperation(value = "保存薪酬规则明细", tags = {"薪酬规则明细" },  notes = "保存薪酬规则明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/salruledetails/save")
     public ResponseEntity<Boolean> save(@RequestBody SalRuleDetailDTO salruledetaildto) {
         return ResponseEntity.status(HttpStatus.OK).body(salruledetailService.save(salruledetailMapping.toDomain(salruledetaildto)));
     }
 
     @PreAuthorize("hasPermission(this.salruledetailMapping.toDomain(#salruledetaildtos),'ehr-SalRuleDetail-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SalRuleDetail" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存薪酬规则明细", tags = {"薪酬规则明细" },  notes = "批量保存薪酬规则明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/salruledetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SalRuleDetailDTO> salruledetaildtos) {
         salruledetailService.saveBatch(salruledetailMapping.toDomain(salruledetaildtos));
@@ -97,7 +97,7 @@ public class SalRuleDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.salruledetailMapping.toDomain(#salruledetaildto),'ehr-SalRuleDetail-Create')")
-    @ApiOperation(value = "Create", tags = {"SalRuleDetail" },  notes = "Create")
+    @ApiOperation(value = "新建薪酬规则明细", tags = {"薪酬规则明细" },  notes = "新建薪酬规则明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/salruledetails")
     @Transactional
     public ResponseEntity<SalRuleDetailDTO> create(@RequestBody SalRuleDetailDTO salruledetaildto) {
@@ -108,7 +108,7 @@ public class SalRuleDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.salruledetailMapping.toDomain(#salruledetaildtos),'ehr-SalRuleDetail-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SalRuleDetail" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建薪酬规则明细", tags = {"薪酬规则明细" },  notes = "批量新建薪酬规则明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/salruledetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SalRuleDetailDTO> salruledetaildtos) {
         salruledetailService.createBatch(salruledetailMapping.toDomain(salruledetaildtos));
@@ -116,7 +116,7 @@ public class SalRuleDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.salruledetailService.get(#salruledetail_id),'ehr-SalRuleDetail-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SalRuleDetail" },  notes = "Remove")
+    @ApiOperation(value = "删除薪酬规则明细", tags = {"薪酬规则明细" },  notes = "删除薪酬规则明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salruledetails/{salruledetail_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("salruledetail_id") String salruledetail_id) {
@@ -124,21 +124,21 @@ public class SalRuleDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.salruledetailService.getSalruledetailByIds(#ids),'ehr-SalRuleDetail-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SalRuleDetail" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除薪酬规则明细", tags = {"薪酬规则明细" },  notes = "批量删除薪酬规则明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salruledetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         salruledetailService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"SalRuleDetail" },  notes = "GetDraft")
+    @ApiOperation(value = "获取薪酬规则明细草稿", tags = {"薪酬规则明细" },  notes = "获取薪酬规则明细草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/salruledetails/getdraft")
     public ResponseEntity<SalRuleDetailDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salruledetailMapping.toDto(salruledetailService.getDraft(new SalRuleDetail())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalRuleDetail-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SalRuleDetail" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"薪酬规则明细" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/salruledetails/fetchdefault")
 	public ResponseEntity<List<SalRuleDetailDTO>> fetchDefault(SalRuleDetailSearchContext context) {
         Page<SalRuleDetail> domains = salruledetailService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SalRuleDetailResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalRuleDetail-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SalRuleDetail" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"薪酬规则明细" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/salruledetails/searchdefault")
 	public ResponseEntity<Page<SalRuleDetailDTO>> searchDefault(@RequestBody SalRuleDetailSearchContext context) {
         Page<SalRuleDetail> domains = salruledetailService.searchDefault(context) ;

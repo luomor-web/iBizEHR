@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITrmTeacherChargeService;
 import cn.ibizlab.ehr.core.trm.filter.TrmTeacherChargeSearchContext;
 
 @Slf4j
-@Api(tags = {"TrmTeacherCharge" })
+@Api(tags = {"讲师收费记录" })
 @RestController("WebApi-trmteachercharge")
 @RequestMapping("")
 public class TrmTeacherChargeResource {
@@ -47,14 +47,14 @@ public class TrmTeacherChargeResource {
     public TrmTeacherChargeMapping trmteacherchargeMapping;
 
     @PreAuthorize("hasPermission(this.trmteacherchargeMapping.toDomain(#trmteacherchargedto),'ehr-TrmTeacherCharge-Save')")
-    @ApiOperation(value = "Save", tags = {"TrmTeacherCharge" },  notes = "Save")
+    @ApiOperation(value = "保存讲师收费记录", tags = {"讲师收费记录" },  notes = "保存讲师收费记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmteachercharges/save")
     public ResponseEntity<Boolean> save(@RequestBody TrmTeacherChargeDTO trmteacherchargedto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmteacherchargeService.save(trmteacherchargeMapping.toDomain(trmteacherchargedto)));
     }
 
     @PreAuthorize("hasPermission(this.trmteacherchargeMapping.toDomain(#trmteacherchargedtos),'ehr-TrmTeacherCharge-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TrmTeacherCharge" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存讲师收费记录", tags = {"讲师收费记录" },  notes = "批量保存讲师收费记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmteachercharges/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TrmTeacherChargeDTO> trmteacherchargedtos) {
         trmteacherchargeService.saveBatch(trmteacherchargeMapping.toDomain(trmteacherchargedtos));
@@ -62,7 +62,7 @@ public class TrmTeacherChargeResource {
     }
 
     @PostAuthorize("hasPermission(this.trmteacherchargeMapping.toDomain(returnObject.body),'ehr-TrmTeacherCharge-Get')")
-    @ApiOperation(value = "Get", tags = {"TrmTeacherCharge" },  notes = "Get")
+    @ApiOperation(value = "获取讲师收费记录", tags = {"讲师收费记录" },  notes = "获取讲师收费记录")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmteachercharges/{trmteachercharge_id}")
     public ResponseEntity<TrmTeacherChargeDTO> get(@PathVariable("trmteachercharge_id") String trmteachercharge_id) {
         TrmTeacherCharge domain = trmteacherchargeService.get(trmteachercharge_id);
@@ -71,7 +71,7 @@ public class TrmTeacherChargeResource {
     }
 
     @PreAuthorize("hasPermission(this.trmteacherchargeService.get(#trmteachercharge_id),'ehr-TrmTeacherCharge-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TrmTeacherCharge" },  notes = "Remove")
+    @ApiOperation(value = "删除讲师收费记录", tags = {"讲师收费记录" },  notes = "删除讲师收费记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmteachercharges/{trmteachercharge_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trmteachercharge_id") String trmteachercharge_id) {
@@ -79,7 +79,7 @@ public class TrmTeacherChargeResource {
     }
 
     @PreAuthorize("hasPermission(this.trmteacherchargeService.getTrmteacherchargeByIds(#ids),'ehr-TrmTeacherCharge-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TrmTeacherCharge" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除讲师收费记录", tags = {"讲师收费记录" },  notes = "批量删除讲师收费记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmteachercharges/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmteacherchargeService.removeBatch(ids);
@@ -87,7 +87,7 @@ public class TrmTeacherChargeResource {
     }
 
     @PreAuthorize("hasPermission(this.trmteacherchargeService.get(#trmteachercharge_id),'ehr-TrmTeacherCharge-Update')")
-    @ApiOperation(value = "Update", tags = {"TrmTeacherCharge" },  notes = "Update")
+    @ApiOperation(value = "更新讲师收费记录", tags = {"讲师收费记录" },  notes = "更新讲师收费记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmteachercharges/{trmteachercharge_id}")
     @Transactional
     public ResponseEntity<TrmTeacherChargeDTO> update(@PathVariable("trmteachercharge_id") String trmteachercharge_id, @RequestBody TrmTeacherChargeDTO trmteacherchargedto) {
@@ -99,7 +99,7 @@ public class TrmTeacherChargeResource {
     }
 
     @PreAuthorize("hasPermission(this.trmteacherchargeService.getTrmteacherchargeByEntities(this.trmteacherchargeMapping.toDomain(#trmteacherchargedtos)),'ehr-TrmTeacherCharge-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TrmTeacherCharge" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新讲师收费记录", tags = {"讲师收费记录" },  notes = "批量更新讲师收费记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmteachercharges/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TrmTeacherChargeDTO> trmteacherchargedtos) {
         trmteacherchargeService.updateBatch(trmteacherchargeMapping.toDomain(trmteacherchargedtos));
@@ -107,7 +107,7 @@ public class TrmTeacherChargeResource {
     }
 
     @PreAuthorize("hasPermission(this.trmteacherchargeMapping.toDomain(#trmteacherchargedto),'ehr-TrmTeacherCharge-Create')")
-    @ApiOperation(value = "Create", tags = {"TrmTeacherCharge" },  notes = "Create")
+    @ApiOperation(value = "新建讲师收费记录", tags = {"讲师收费记录" },  notes = "新建讲师收费记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmteachercharges")
     @Transactional
     public ResponseEntity<TrmTeacherChargeDTO> create(@RequestBody TrmTeacherChargeDTO trmteacherchargedto) {
@@ -118,27 +118,27 @@ public class TrmTeacherChargeResource {
     }
 
     @PreAuthorize("hasPermission(this.trmteacherchargeMapping.toDomain(#trmteacherchargedtos),'ehr-TrmTeacherCharge-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TrmTeacherCharge" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建讲师收费记录", tags = {"讲师收费记录" },  notes = "批量新建讲师收费记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmteachercharges/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmTeacherChargeDTO> trmteacherchargedtos) {
         trmteacherchargeService.createBatch(trmteacherchargeMapping.toDomain(trmteacherchargedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"TrmTeacherCharge" },  notes = "GetDraft")
+    @ApiOperation(value = "获取讲师收费记录草稿", tags = {"讲师收费记录" },  notes = "获取讲师收费记录草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmteachercharges/getdraft")
     public ResponseEntity<TrmTeacherChargeDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmteacherchargeMapping.toDto(trmteacherchargeService.getDraft(new TrmTeacherCharge())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TrmTeacherCharge" },  notes = "CheckKey")
+    @ApiOperation(value = "检查讲师收费记录", tags = {"讲师收费记录" },  notes = "检查讲师收费记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmteachercharges/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmTeacherChargeDTO trmteacherchargedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmteacherchargeService.checkKey(trmteacherchargeMapping.toDomain(trmteacherchargedto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTeacherCharge-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TrmTeacherCharge" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"讲师收费记录" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmteachercharges/fetchdefault")
 	public ResponseEntity<List<TrmTeacherChargeDTO>> fetchDefault(TrmTeacherChargeSearchContext context) {
         Page<TrmTeacherCharge> domains = trmteacherchargeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmTeacherChargeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTeacherCharge-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TrmTeacherCharge" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"讲师收费记录" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmteachercharges/searchdefault")
 	public ResponseEntity<Page<TrmTeacherChargeDTO>> searchDefault(@RequestBody TrmTeacherChargeSearchContext context) {
         Page<TrmTeacherCharge> domains = trmteacherchargeService.searchDefault(context) ;

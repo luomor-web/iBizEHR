@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.par.service.IPARYDGZJHService;
 import cn.ibizlab.ehr.core.par.filter.PARYDGZJHSearchContext;
 
 @Slf4j
-@Api(tags = {"PARYDGZJH" })
+@Api(tags = {"月度工作计划" })
 @RestController("WebApi-parydgzjh")
 @RequestMapping("")
 public class PARYDGZJHResource {
@@ -46,14 +46,14 @@ public class PARYDGZJHResource {
     @Lazy
     public PARYDGZJHMapping parydgzjhMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"PARYDGZJH" },  notes = "GetDraft")
+    @ApiOperation(value = "获取月度工作计划草稿", tags = {"月度工作计划" },  notes = "获取月度工作计划草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/parydgzjhs/getdraft")
     public ResponseEntity<PARYDGZJHDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(parydgzjhMapping.toDto(parydgzjhService.getDraft(new PARYDGZJH())));
     }
 
     @PreAuthorize("hasPermission(this.parydgzjhService.get(#parydgzjh_id),'ehr-PARYDGZJH-Update')")
-    @ApiOperation(value = "Update", tags = {"PARYDGZJH" },  notes = "Update")
+    @ApiOperation(value = "更新月度工作计划", tags = {"月度工作计划" },  notes = "更新月度工作计划")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parydgzjhs/{parydgzjh_id}")
     @Transactional
     public ResponseEntity<PARYDGZJHDTO> update(@PathVariable("parydgzjh_id") String parydgzjh_id, @RequestBody PARYDGZJHDTO parydgzjhdto) {
@@ -65,28 +65,28 @@ public class PARYDGZJHResource {
     }
 
     @PreAuthorize("hasPermission(this.parydgzjhService.getParydgzjhByEntities(this.parydgzjhMapping.toDomain(#parydgzjhdtos)),'ehr-PARYDGZJH-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PARYDGZJH" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新月度工作计划", tags = {"月度工作计划" },  notes = "批量更新月度工作计划")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parydgzjhs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PARYDGZJHDTO> parydgzjhdtos) {
         parydgzjhService.updateBatch(parydgzjhMapping.toDomain(parydgzjhdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PARYDGZJH" },  notes = "CheckKey")
+    @ApiOperation(value = "检查月度工作计划", tags = {"月度工作计划" },  notes = "检查月度工作计划")
 	@RequestMapping(method = RequestMethod.POST, value = "/parydgzjhs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PARYDGZJHDTO parydgzjhdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parydgzjhService.checkKey(parydgzjhMapping.toDomain(parydgzjhdto)));
     }
 
     @PreAuthorize("hasPermission(this.parydgzjhMapping.toDomain(#parydgzjhdto),'ehr-PARYDGZJH-Save')")
-    @ApiOperation(value = "Save", tags = {"PARYDGZJH" },  notes = "Save")
+    @ApiOperation(value = "保存月度工作计划", tags = {"月度工作计划" },  notes = "保存月度工作计划")
 	@RequestMapping(method = RequestMethod.POST, value = "/parydgzjhs/save")
     public ResponseEntity<Boolean> save(@RequestBody PARYDGZJHDTO parydgzjhdto) {
         return ResponseEntity.status(HttpStatus.OK).body(parydgzjhService.save(parydgzjhMapping.toDomain(parydgzjhdto)));
     }
 
     @PreAuthorize("hasPermission(this.parydgzjhMapping.toDomain(#parydgzjhdtos),'ehr-PARYDGZJH-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PARYDGZJH" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存月度工作计划", tags = {"月度工作计划" },  notes = "批量保存月度工作计划")
 	@RequestMapping(method = RequestMethod.POST, value = "/parydgzjhs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PARYDGZJHDTO> parydgzjhdtos) {
         parydgzjhService.saveBatch(parydgzjhMapping.toDomain(parydgzjhdtos));
@@ -94,7 +94,7 @@ public class PARYDGZJHResource {
     }
 
     @PreAuthorize("hasPermission(this.parydgzjhService.get(#parydgzjh_id),'ehr-PARYDGZJH-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PARYDGZJH" },  notes = "Remove")
+    @ApiOperation(value = "删除月度工作计划", tags = {"月度工作计划" },  notes = "删除月度工作计划")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parydgzjhs/{parydgzjh_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("parydgzjh_id") String parydgzjh_id) {
@@ -102,7 +102,7 @@ public class PARYDGZJHResource {
     }
 
     @PreAuthorize("hasPermission(this.parydgzjhService.getParydgzjhByIds(#ids),'ehr-PARYDGZJH-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PARYDGZJH" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除月度工作计划", tags = {"月度工作计划" },  notes = "批量删除月度工作计划")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parydgzjhs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         parydgzjhService.removeBatch(ids);
@@ -110,7 +110,7 @@ public class PARYDGZJHResource {
     }
 
     @PostAuthorize("hasPermission(this.parydgzjhMapping.toDomain(returnObject.body),'ehr-PARYDGZJH-Get')")
-    @ApiOperation(value = "Get", tags = {"PARYDGZJH" },  notes = "Get")
+    @ApiOperation(value = "获取月度工作计划", tags = {"月度工作计划" },  notes = "获取月度工作计划")
 	@RequestMapping(method = RequestMethod.GET, value = "/parydgzjhs/{parydgzjh_id}")
     public ResponseEntity<PARYDGZJHDTO> get(@PathVariable("parydgzjh_id") String parydgzjh_id) {
         PARYDGZJH domain = parydgzjhService.get(parydgzjh_id);
@@ -119,7 +119,7 @@ public class PARYDGZJHResource {
     }
 
     @PreAuthorize("hasPermission(this.parydgzjhMapping.toDomain(#parydgzjhdto),'ehr-PARYDGZJH-Create')")
-    @ApiOperation(value = "Create", tags = {"PARYDGZJH" },  notes = "Create")
+    @ApiOperation(value = "新建月度工作计划", tags = {"月度工作计划" },  notes = "新建月度工作计划")
 	@RequestMapping(method = RequestMethod.POST, value = "/parydgzjhs")
     @Transactional
     public ResponseEntity<PARYDGZJHDTO> create(@RequestBody PARYDGZJHDTO parydgzjhdto) {
@@ -130,7 +130,7 @@ public class PARYDGZJHResource {
     }
 
     @PreAuthorize("hasPermission(this.parydgzjhMapping.toDomain(#parydgzjhdtos),'ehr-PARYDGZJH-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PARYDGZJH" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建月度工作计划", tags = {"月度工作计划" },  notes = "批量新建月度工作计划")
 	@RequestMapping(method = RequestMethod.POST, value = "/parydgzjhs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PARYDGZJHDTO> parydgzjhdtos) {
         parydgzjhService.createBatch(parydgzjhMapping.toDomain(parydgzjhdtos));
@@ -138,7 +138,7 @@ public class PARYDGZJHResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARYDGZJH-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PARYDGZJH" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"月度工作计划" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/parydgzjhs/fetchdefault")
 	public ResponseEntity<List<PARYDGZJHDTO>> fetchDefault(PARYDGZJHSearchContext context) {
         Page<PARYDGZJH> domains = parydgzjhService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PARYDGZJHResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARYDGZJH-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PARYDGZJH" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"月度工作计划" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/parydgzjhs/searchdefault")
 	public ResponseEntity<Page<PARYDGZJHDTO>> searchDefault(@RequestBody PARYDGZJHSearchContext context) {
         Page<PARYDGZJH> domains = parydgzjhService.searchDefault(context) ;

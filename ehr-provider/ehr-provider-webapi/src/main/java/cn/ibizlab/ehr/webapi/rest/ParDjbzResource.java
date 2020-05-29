@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.par.service.IParDjbzService;
 import cn.ibizlab.ehr.core.par.filter.ParDjbzSearchContext;
 
 @Slf4j
-@Api(tags = {"ParDjbz" })
+@Api(tags = {"定级规则" })
 @RestController("WebApi-pardjbz")
 @RequestMapping("")
 public class ParDjbzResource {
@@ -47,7 +47,7 @@ public class ParDjbzResource {
     public ParDjbzMapping pardjbzMapping;
 
     @PreAuthorize("hasPermission(this.pardjbzMapping.toDomain(#pardjbzdto),'ehr-ParDjbz-Create')")
-    @ApiOperation(value = "Create", tags = {"ParDjbz" },  notes = "Create")
+    @ApiOperation(value = "新建定级规则", tags = {"定级规则" },  notes = "新建定级规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/pardjbzs")
     @Transactional
     public ResponseEntity<ParDjbzDTO> create(@RequestBody ParDjbzDTO pardjbzdto) {
@@ -58,7 +58,7 @@ public class ParDjbzResource {
     }
 
     @PreAuthorize("hasPermission(this.pardjbzMapping.toDomain(#pardjbzdtos),'ehr-ParDjbz-Create')")
-    @ApiOperation(value = "createBatch", tags = {"ParDjbz" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建定级规则", tags = {"定级规则" },  notes = "批量新建定级规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/pardjbzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ParDjbzDTO> pardjbzdtos) {
         pardjbzService.createBatch(pardjbzMapping.toDomain(pardjbzdtos));
@@ -66,7 +66,7 @@ public class ParDjbzResource {
     }
 
     @PostAuthorize("hasPermission(this.pardjbzMapping.toDomain(returnObject.body),'ehr-ParDjbz-Get')")
-    @ApiOperation(value = "Get", tags = {"ParDjbz" },  notes = "Get")
+    @ApiOperation(value = "获取定级规则", tags = {"定级规则" },  notes = "获取定级规则")
 	@RequestMapping(method = RequestMethod.GET, value = "/pardjbzs/{pardjbz_id}")
     public ResponseEntity<ParDjbzDTO> get(@PathVariable("pardjbz_id") String pardjbz_id) {
         ParDjbz domain = pardjbzService.get(pardjbz_id);
@@ -75,28 +75,28 @@ public class ParDjbzResource {
     }
 
     @PreAuthorize("hasPermission(this.pardjbzMapping.toDomain(#pardjbzdto),'ehr-ParDjbz-Save')")
-    @ApiOperation(value = "Save", tags = {"ParDjbz" },  notes = "Save")
+    @ApiOperation(value = "保存定级规则", tags = {"定级规则" },  notes = "保存定级规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/pardjbzs/save")
     public ResponseEntity<Boolean> save(@RequestBody ParDjbzDTO pardjbzdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pardjbzService.save(pardjbzMapping.toDomain(pardjbzdto)));
     }
 
     @PreAuthorize("hasPermission(this.pardjbzMapping.toDomain(#pardjbzdtos),'ehr-ParDjbz-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"ParDjbz" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存定级规则", tags = {"定级规则" },  notes = "批量保存定级规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/pardjbzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ParDjbzDTO> pardjbzdtos) {
         pardjbzService.saveBatch(pardjbzMapping.toDomain(pardjbzdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"ParDjbz" },  notes = "GetDraft")
+    @ApiOperation(value = "获取定级规则草稿", tags = {"定级规则" },  notes = "获取定级规则草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pardjbzs/getdraft")
     public ResponseEntity<ParDjbzDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pardjbzMapping.toDto(pardjbzService.getDraft(new ParDjbz())));
     }
 
     @PreAuthorize("hasPermission(this.pardjbzService.get(#pardjbz_id),'ehr-ParDjbz-Update')")
-    @ApiOperation(value = "Update", tags = {"ParDjbz" },  notes = "Update")
+    @ApiOperation(value = "更新定级规则", tags = {"定级规则" },  notes = "更新定级规则")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pardjbzs/{pardjbz_id}")
     @Transactional
     public ResponseEntity<ParDjbzDTO> update(@PathVariable("pardjbz_id") String pardjbz_id, @RequestBody ParDjbzDTO pardjbzdto) {
@@ -108,7 +108,7 @@ public class ParDjbzResource {
     }
 
     @PreAuthorize("hasPermission(this.pardjbzService.getPardjbzByEntities(this.pardjbzMapping.toDomain(#pardjbzdtos)),'ehr-ParDjbz-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"ParDjbz" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新定级规则", tags = {"定级规则" },  notes = "批量更新定级规则")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pardjbzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ParDjbzDTO> pardjbzdtos) {
         pardjbzService.updateBatch(pardjbzMapping.toDomain(pardjbzdtos));
@@ -116,7 +116,7 @@ public class ParDjbzResource {
     }
 
     @PreAuthorize("hasPermission(this.pardjbzService.get(#pardjbz_id),'ehr-ParDjbz-Remove')")
-    @ApiOperation(value = "Remove", tags = {"ParDjbz" },  notes = "Remove")
+    @ApiOperation(value = "删除定级规则", tags = {"定级规则" },  notes = "删除定级规则")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pardjbzs/{pardjbz_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pardjbz_id") String pardjbz_id) {
@@ -124,21 +124,21 @@ public class ParDjbzResource {
     }
 
     @PreAuthorize("hasPermission(this.pardjbzService.getPardjbzByIds(#ids),'ehr-ParDjbz-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"ParDjbz" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除定级规则", tags = {"定级规则" },  notes = "批量删除定级规则")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pardjbzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pardjbzService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"ParDjbz" },  notes = "CheckKey")
+    @ApiOperation(value = "检查定级规则", tags = {"定级规则" },  notes = "检查定级规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/pardjbzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ParDjbzDTO pardjbzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pardjbzService.checkKey(pardjbzMapping.toDomain(pardjbzdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParDjbz-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"ParDjbz" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"定级规则" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pardjbzs/fetchdefault")
 	public ResponseEntity<List<ParDjbzDTO>> fetchDefault(ParDjbzSearchContext context) {
         Page<ParDjbz> domains = pardjbzService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ParDjbzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParDjbz-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"ParDjbz" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"定级规则" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pardjbzs/searchdefault")
 	public ResponseEntity<Page<ParDjbzDTO>> searchDefault(@RequestBody ParDjbzSearchContext context) {
         Page<ParDjbz> domains = pardjbzService.searchDefault(context) ;

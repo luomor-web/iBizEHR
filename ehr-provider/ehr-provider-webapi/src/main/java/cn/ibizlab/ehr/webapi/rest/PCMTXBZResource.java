@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPCMTXBZService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMTXBZSearchContext;
 
 @Slf4j
-@Api(tags = {"PCMTXBZ" })
+@Api(tags = {"退休标准管理" })
 @RestController("WebApi-pcmtxbz")
 @RequestMapping("")
 public class PCMTXBZResource {
@@ -46,14 +46,14 @@ public class PCMTXBZResource {
     @Lazy
     public PCMTXBZMapping pcmtxbzMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"PCMTXBZ" },  notes = "CheckKey")
+    @ApiOperation(value = "检查退休标准管理", tags = {"退休标准管理" },  notes = "检查退休标准管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxbzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMTXBZDTO pcmtxbzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmtxbzService.checkKey(pcmtxbzMapping.toDomain(pcmtxbzdto)));
     }
 
     @PostAuthorize("hasPermission(this.pcmtxbzMapping.toDomain(returnObject.body),'ehr-PCMTXBZ-Get')")
-    @ApiOperation(value = "Get", tags = {"PCMTXBZ" },  notes = "Get")
+    @ApiOperation(value = "获取退休标准管理", tags = {"退休标准管理" },  notes = "获取退休标准管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmtxbzs/{pcmtxbz_id}")
     public ResponseEntity<PCMTXBZDTO> get(@PathVariable("pcmtxbz_id") String pcmtxbz_id) {
         PCMTXBZ domain = pcmtxbzService.get(pcmtxbz_id);
@@ -61,14 +61,14 @@ public class PCMTXBZResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PCMTXBZ" },  notes = "GetDraft")
+    @ApiOperation(value = "获取退休标准管理草稿", tags = {"退休标准管理" },  notes = "获取退休标准管理草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmtxbzs/getdraft")
     public ResponseEntity<PCMTXBZDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmtxbzMapping.toDto(pcmtxbzService.getDraft(new PCMTXBZ())));
     }
 
     @PreAuthorize("hasPermission(this.pcmtxbzService.get(#pcmtxbz_id),'ehr-PCMTXBZ-Update')")
-    @ApiOperation(value = "Update", tags = {"PCMTXBZ" },  notes = "Update")
+    @ApiOperation(value = "更新退休标准管理", tags = {"退休标准管理" },  notes = "更新退休标准管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmtxbzs/{pcmtxbz_id}")
     @Transactional
     public ResponseEntity<PCMTXBZDTO> update(@PathVariable("pcmtxbz_id") String pcmtxbz_id, @RequestBody PCMTXBZDTO pcmtxbzdto) {
@@ -80,7 +80,7 @@ public class PCMTXBZResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtxbzService.getPcmtxbzByEntities(this.pcmtxbzMapping.toDomain(#pcmtxbzdtos)),'ehr-PCMTXBZ-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PCMTXBZ" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新退休标准管理", tags = {"退休标准管理" },  notes = "批量更新退休标准管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmtxbzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMTXBZDTO> pcmtxbzdtos) {
         pcmtxbzService.updateBatch(pcmtxbzMapping.toDomain(pcmtxbzdtos));
@@ -88,7 +88,7 @@ public class PCMTXBZResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtxbzMapping.toDomain(#pcmtxbzdto),'ehr-PCMTXBZ-Create')")
-    @ApiOperation(value = "Create", tags = {"PCMTXBZ" },  notes = "Create")
+    @ApiOperation(value = "新建退休标准管理", tags = {"退休标准管理" },  notes = "新建退休标准管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxbzs")
     @Transactional
     public ResponseEntity<PCMTXBZDTO> create(@RequestBody PCMTXBZDTO pcmtxbzdto) {
@@ -99,7 +99,7 @@ public class PCMTXBZResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtxbzMapping.toDomain(#pcmtxbzdtos),'ehr-PCMTXBZ-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PCMTXBZ" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建退休标准管理", tags = {"退休标准管理" },  notes = "批量新建退休标准管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxbzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMTXBZDTO> pcmtxbzdtos) {
         pcmtxbzService.createBatch(pcmtxbzMapping.toDomain(pcmtxbzdtos));
@@ -107,14 +107,14 @@ public class PCMTXBZResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtxbzMapping.toDomain(#pcmtxbzdto),'ehr-PCMTXBZ-Save')")
-    @ApiOperation(value = "Save", tags = {"PCMTXBZ" },  notes = "Save")
+    @ApiOperation(value = "保存退休标准管理", tags = {"退休标准管理" },  notes = "保存退休标准管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxbzs/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMTXBZDTO pcmtxbzdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmtxbzService.save(pcmtxbzMapping.toDomain(pcmtxbzdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmtxbzMapping.toDomain(#pcmtxbzdtos),'ehr-PCMTXBZ-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PCMTXBZ" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存退休标准管理", tags = {"退休标准管理" },  notes = "批量保存退休标准管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxbzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMTXBZDTO> pcmtxbzdtos) {
         pcmtxbzService.saveBatch(pcmtxbzMapping.toDomain(pcmtxbzdtos));
@@ -122,7 +122,7 @@ public class PCMTXBZResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtxbzService.get(#pcmtxbz_id),'ehr-PCMTXBZ-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PCMTXBZ" },  notes = "Remove")
+    @ApiOperation(value = "删除退休标准管理", tags = {"退休标准管理" },  notes = "删除退休标准管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmtxbzs/{pcmtxbz_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmtxbz_id") String pcmtxbz_id) {
@@ -130,7 +130,7 @@ public class PCMTXBZResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtxbzService.getPcmtxbzByIds(#ids),'ehr-PCMTXBZ-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PCMTXBZ" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除退休标准管理", tags = {"退休标准管理" },  notes = "批量删除退休标准管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmtxbzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmtxbzService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class PCMTXBZResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXBZ-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMTXBZ" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"退休标准管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxbzs/fetchdefault")
 	public ResponseEntity<List<PCMTXBZDTO>> fetchDefault(PCMTXBZSearchContext context) {
         Page<PCMTXBZ> domains = pcmtxbzService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PCMTXBZResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMTXBZ-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PCMTXBZ" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"退休标准管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxbzs/searchdefault")
 	public ResponseEntity<Page<PCMTXBZDTO>> searchDefault(@RequestBody PCMTXBZSearchContext context) {
         Page<PCMTXBZ> domains = pcmtxbzService.searchDefault(context) ;

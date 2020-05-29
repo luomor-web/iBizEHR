@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimGwTypeService;
 import cn.ibizlab.ehr.core.pim.filter.PimGwTypeSearchContext;
 
 @Slf4j
-@Api(tags = {"PimGwType" })
+@Api(tags = {"岗位类型对照表" })
 @RestController("WebApi-pimgwtype")
 @RequestMapping("")
 public class PimGwTypeResource {
@@ -47,28 +47,28 @@ public class PimGwTypeResource {
     public PimGwTypeMapping pimgwtypeMapping;
 
     @PreAuthorize("hasPermission(this.pimgwtypeMapping.toDomain(#pimgwtypedto),'ehr-PimGwType-Save')")
-    @ApiOperation(value = "Save", tags = {"PimGwType" },  notes = "Save")
+    @ApiOperation(value = "保存岗位类型对照表", tags = {"岗位类型对照表" },  notes = "保存岗位类型对照表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimgwtypes/save")
     public ResponseEntity<Boolean> save(@RequestBody PimGwTypeDTO pimgwtypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimgwtypeService.save(pimgwtypeMapping.toDomain(pimgwtypedto)));
     }
 
     @PreAuthorize("hasPermission(this.pimgwtypeMapping.toDomain(#pimgwtypedtos),'ehr-PimGwType-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimGwType" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存岗位类型对照表", tags = {"岗位类型对照表" },  notes = "批量保存岗位类型对照表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimgwtypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimGwTypeDTO> pimgwtypedtos) {
         pimgwtypeService.saveBatch(pimgwtypeMapping.toDomain(pimgwtypedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimGwType" },  notes = "GetDraft")
+    @ApiOperation(value = "获取岗位类型对照表草稿", tags = {"岗位类型对照表" },  notes = "获取岗位类型对照表草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimgwtypes/getdraft")
     public ResponseEntity<PimGwTypeDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimgwtypeMapping.toDto(pimgwtypeService.getDraft(new PimGwType())));
     }
 
     @PostAuthorize("hasPermission(this.pimgwtypeMapping.toDomain(returnObject.body),'ehr-PimGwType-Get')")
-    @ApiOperation(value = "Get", tags = {"PimGwType" },  notes = "Get")
+    @ApiOperation(value = "获取岗位类型对照表", tags = {"岗位类型对照表" },  notes = "获取岗位类型对照表")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimgwtypes/{pimgwtype_id}")
     public ResponseEntity<PimGwTypeDTO> get(@PathVariable("pimgwtype_id") String pimgwtype_id) {
         PimGwType domain = pimgwtypeService.get(pimgwtype_id);
@@ -77,7 +77,7 @@ public class PimGwTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimgwtypeService.get(#pimgwtype_id),'ehr-PimGwType-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimGwType" },  notes = "Remove")
+    @ApiOperation(value = "删除岗位类型对照表", tags = {"岗位类型对照表" },  notes = "删除岗位类型对照表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimgwtypes/{pimgwtype_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimgwtype_id") String pimgwtype_id) {
@@ -85,21 +85,21 @@ public class PimGwTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimgwtypeService.getPimgwtypeByIds(#ids),'ehr-PimGwType-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimGwType" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除岗位类型对照表", tags = {"岗位类型对照表" },  notes = "批量删除岗位类型对照表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimgwtypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimgwtypeService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimGwType" },  notes = "CheckKey")
+    @ApiOperation(value = "检查岗位类型对照表", tags = {"岗位类型对照表" },  notes = "检查岗位类型对照表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimgwtypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimGwTypeDTO pimgwtypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimgwtypeService.checkKey(pimgwtypeMapping.toDomain(pimgwtypedto)));
     }
 
     @PreAuthorize("hasPermission(this.pimgwtypeService.get(#pimgwtype_id),'ehr-PimGwType-Update')")
-    @ApiOperation(value = "Update", tags = {"PimGwType" },  notes = "Update")
+    @ApiOperation(value = "更新岗位类型对照表", tags = {"岗位类型对照表" },  notes = "更新岗位类型对照表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimgwtypes/{pimgwtype_id}")
     @Transactional
     public ResponseEntity<PimGwTypeDTO> update(@PathVariable("pimgwtype_id") String pimgwtype_id, @RequestBody PimGwTypeDTO pimgwtypedto) {
@@ -111,7 +111,7 @@ public class PimGwTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimgwtypeService.getPimgwtypeByEntities(this.pimgwtypeMapping.toDomain(#pimgwtypedtos)),'ehr-PimGwType-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimGwType" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新岗位类型对照表", tags = {"岗位类型对照表" },  notes = "批量更新岗位类型对照表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimgwtypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimGwTypeDTO> pimgwtypedtos) {
         pimgwtypeService.updateBatch(pimgwtypeMapping.toDomain(pimgwtypedtos));
@@ -119,7 +119,7 @@ public class PimGwTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimgwtypeMapping.toDomain(#pimgwtypedto),'ehr-PimGwType-Create')")
-    @ApiOperation(value = "Create", tags = {"PimGwType" },  notes = "Create")
+    @ApiOperation(value = "新建岗位类型对照表", tags = {"岗位类型对照表" },  notes = "新建岗位类型对照表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimgwtypes")
     @Transactional
     public ResponseEntity<PimGwTypeDTO> create(@RequestBody PimGwTypeDTO pimgwtypedto) {
@@ -130,7 +130,7 @@ public class PimGwTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimgwtypeMapping.toDomain(#pimgwtypedtos),'ehr-PimGwType-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimGwType" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建岗位类型对照表", tags = {"岗位类型对照表" },  notes = "批量新建岗位类型对照表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimgwtypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimGwTypeDTO> pimgwtypedtos) {
         pimgwtypeService.createBatch(pimgwtypeMapping.toDomain(pimgwtypedtos));
@@ -138,7 +138,7 @@ public class PimGwTypeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimGwType-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimGwType" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"岗位类型对照表" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimgwtypes/fetchdefault")
 	public ResponseEntity<List<PimGwTypeDTO>> fetchDefault(PimGwTypeSearchContext context) {
         Page<PimGwType> domains = pimgwtypeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimGwTypeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimGwType-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimGwType" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位类型对照表" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimgwtypes/searchdefault")
 	public ResponseEntity<Page<PimGwTypeDTO>> searchDefault(@RequestBody PimGwTypeSearchContext context) {
         Page<PimGwType> domains = pimgwtypeService.searchDefault(context) ;

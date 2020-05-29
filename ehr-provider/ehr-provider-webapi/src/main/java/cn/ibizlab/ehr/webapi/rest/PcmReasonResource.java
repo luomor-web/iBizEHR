@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmReasonService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmReasonSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmReason" })
+@Api(tags = {"配置原因代码表" })
 @RestController("WebApi-pcmreason")
 @RequestMapping("")
 public class PcmReasonResource {
@@ -46,14 +46,14 @@ public class PcmReasonResource {
     @Lazy
     public PcmReasonMapping pcmreasonMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmReason" },  notes = "GetDraft")
+    @ApiOperation(value = "获取配置原因代码表草稿", tags = {"配置原因代码表" },  notes = "获取配置原因代码表草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmreasons/getdraft")
     public ResponseEntity<PcmReasonDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmreasonMapping.toDto(pcmreasonService.getDraft(new PcmReason())));
     }
 
     @PreAuthorize("hasPermission(this.pcmreasonService.get(#pcmreason_id),'ehr-PcmReason-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmReason" },  notes = "Remove")
+    @ApiOperation(value = "删除配置原因代码表", tags = {"配置原因代码表" },  notes = "删除配置原因代码表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmreasons/{pcmreason_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmreason_id") String pcmreason_id) {
@@ -61,7 +61,7 @@ public class PcmReasonResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmreasonService.getPcmreasonByIds(#ids),'ehr-PcmReason-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmReason" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除配置原因代码表", tags = {"配置原因代码表" },  notes = "批量删除配置原因代码表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmreasons/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmreasonService.removeBatch(ids);
@@ -69,7 +69,7 @@ public class PcmReasonResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmreasonService.get(#pcmreason_id),'ehr-PcmReason-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmReason" },  notes = "Update")
+    @ApiOperation(value = "更新配置原因代码表", tags = {"配置原因代码表" },  notes = "更新配置原因代码表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmreasons/{pcmreason_id}")
     @Transactional
     public ResponseEntity<PcmReasonDTO> update(@PathVariable("pcmreason_id") String pcmreason_id, @RequestBody PcmReasonDTO pcmreasondto) {
@@ -81,7 +81,7 @@ public class PcmReasonResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmreasonService.getPcmreasonByEntities(this.pcmreasonMapping.toDomain(#pcmreasondtos)),'ehr-PcmReason-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmReason" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新配置原因代码表", tags = {"配置原因代码表" },  notes = "批量更新配置原因代码表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmreasons/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmReasonDTO> pcmreasondtos) {
         pcmreasonService.updateBatch(pcmreasonMapping.toDomain(pcmreasondtos));
@@ -89,7 +89,7 @@ public class PcmReasonResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmreasonMapping.toDomain(returnObject.body),'ehr-PcmReason-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmReason" },  notes = "Get")
+    @ApiOperation(value = "获取配置原因代码表", tags = {"配置原因代码表" },  notes = "获取配置原因代码表")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmreasons/{pcmreason_id}")
     public ResponseEntity<PcmReasonDTO> get(@PathVariable("pcmreason_id") String pcmreason_id) {
         PcmReason domain = pcmreasonService.get(pcmreason_id);
@@ -98,7 +98,7 @@ public class PcmReasonResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmreasonMapping.toDomain(#pcmreasondto),'ehr-PcmReason-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmReason" },  notes = "Create")
+    @ApiOperation(value = "新建配置原因代码表", tags = {"配置原因代码表" },  notes = "新建配置原因代码表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons")
     @Transactional
     public ResponseEntity<PcmReasonDTO> create(@RequestBody PcmReasonDTO pcmreasondto) {
@@ -109,28 +109,28 @@ public class PcmReasonResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmreasonMapping.toDomain(#pcmreasondtos),'ehr-PcmReason-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmReason" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建配置原因代码表", tags = {"配置原因代码表" },  notes = "批量新建配置原因代码表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmReasonDTO> pcmreasondtos) {
         pcmreasonService.createBatch(pcmreasonMapping.toDomain(pcmreasondtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmReason" },  notes = "CheckKey")
+    @ApiOperation(value = "检查配置原因代码表", tags = {"配置原因代码表" },  notes = "检查配置原因代码表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmReasonDTO pcmreasondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmreasonService.checkKey(pcmreasonMapping.toDomain(pcmreasondto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmreasonMapping.toDomain(#pcmreasondto),'ehr-PcmReason-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmReason" },  notes = "Save")
+    @ApiOperation(value = "保存配置原因代码表", tags = {"配置原因代码表" },  notes = "保存配置原因代码表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmReasonDTO pcmreasondto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmreasonService.save(pcmreasonMapping.toDomain(pcmreasondto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmreasonMapping.toDomain(#pcmreasondtos),'ehr-PcmReason-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmReason" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存配置原因代码表", tags = {"配置原因代码表" },  notes = "批量保存配置原因代码表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmreasons/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmReasonDTO> pcmreasondtos) {
         pcmreasonService.saveBatch(pcmreasonMapping.toDomain(pcmreasondtos));
@@ -138,7 +138,7 @@ public class PcmReasonResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmReason-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmReason" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"配置原因代码表" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmreasons/fetchdefault")
 	public ResponseEntity<List<PcmReasonDTO>> fetchDefault(PcmReasonSearchContext context) {
         Page<PcmReason> domains = pcmreasonService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmReasonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmReason-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmReason" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"配置原因代码表" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmreasons/searchdefault")
 	public ResponseEntity<Page<PcmReasonDTO>> searchDefault(@RequestBody PcmReasonSearchContext context) {
         Page<PcmReason> domains = pcmreasonService.searchDefault(context) ;

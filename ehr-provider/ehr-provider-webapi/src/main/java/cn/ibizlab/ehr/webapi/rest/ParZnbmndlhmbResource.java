@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.par.service.IParZnbmndlhmbService;
 import cn.ibizlab.ehr.core.par.filter.ParZnbmndlhmbSearchContext;
 
 @Slf4j
-@Api(tags = {"ParZnbmndlhmb" })
+@Api(tags = {"年度量化目标（职能部门级）" })
 @RestController("WebApi-parznbmndlhmb")
 @RequestMapping("")
 public class ParZnbmndlhmbResource {
@@ -46,21 +46,21 @@ public class ParZnbmndlhmbResource {
     @Lazy
     public ParZnbmndlhmbMapping parznbmndlhmbMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"ParZnbmndlhmb" },  notes = "CheckKey")
+    @ApiOperation(value = "检查年度量化目标（职能部门级）", tags = {"年度量化目标（职能部门级）" },  notes = "检查年度量化目标（职能部门级）")
 	@RequestMapping(method = RequestMethod.POST, value = "/parznbmndlhmbs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ParZnbmndlhmbDTO parznbmndlhmbdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parznbmndlhmbService.checkKey(parznbmndlhmbMapping.toDomain(parznbmndlhmbdto)));
     }
 
     @PreAuthorize("hasPermission(this.parznbmndlhmbMapping.toDomain(#parznbmndlhmbdto),'ehr-ParZnbmndlhmb-Save')")
-    @ApiOperation(value = "Save", tags = {"ParZnbmndlhmb" },  notes = "Save")
+    @ApiOperation(value = "保存年度量化目标（职能部门级）", tags = {"年度量化目标（职能部门级）" },  notes = "保存年度量化目标（职能部门级）")
 	@RequestMapping(method = RequestMethod.POST, value = "/parznbmndlhmbs/save")
     public ResponseEntity<Boolean> save(@RequestBody ParZnbmndlhmbDTO parznbmndlhmbdto) {
         return ResponseEntity.status(HttpStatus.OK).body(parznbmndlhmbService.save(parznbmndlhmbMapping.toDomain(parznbmndlhmbdto)));
     }
 
     @PreAuthorize("hasPermission(this.parznbmndlhmbMapping.toDomain(#parznbmndlhmbdtos),'ehr-ParZnbmndlhmb-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"ParZnbmndlhmb" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存年度量化目标（职能部门级）", tags = {"年度量化目标（职能部门级）" },  notes = "批量保存年度量化目标（职能部门级）")
 	@RequestMapping(method = RequestMethod.POST, value = "/parznbmndlhmbs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ParZnbmndlhmbDTO> parznbmndlhmbdtos) {
         parznbmndlhmbService.saveBatch(parznbmndlhmbMapping.toDomain(parznbmndlhmbdtos));
@@ -68,7 +68,7 @@ public class ParZnbmndlhmbResource {
     }
 
     @PreAuthorize("hasPermission(this.parznbmndlhmbService.get(#parznbmndlhmb_id),'ehr-ParZnbmndlhmb-Remove')")
-    @ApiOperation(value = "Remove", tags = {"ParZnbmndlhmb" },  notes = "Remove")
+    @ApiOperation(value = "删除年度量化目标（职能部门级）", tags = {"年度量化目标（职能部门级）" },  notes = "删除年度量化目标（职能部门级）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parznbmndlhmbs/{parznbmndlhmb_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("parznbmndlhmb_id") String parznbmndlhmb_id) {
@@ -76,7 +76,7 @@ public class ParZnbmndlhmbResource {
     }
 
     @PreAuthorize("hasPermission(this.parznbmndlhmbService.getParznbmndlhmbByIds(#ids),'ehr-ParZnbmndlhmb-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"ParZnbmndlhmb" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除年度量化目标（职能部门级）", tags = {"年度量化目标（职能部门级）" },  notes = "批量删除年度量化目标（职能部门级）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parznbmndlhmbs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         parznbmndlhmbService.removeBatch(ids);
@@ -84,7 +84,7 @@ public class ParZnbmndlhmbResource {
     }
 
     @PreAuthorize("hasPermission(this.parznbmndlhmbService.get(#parznbmndlhmb_id),'ehr-ParZnbmndlhmb-Update')")
-    @ApiOperation(value = "Update", tags = {"ParZnbmndlhmb" },  notes = "Update")
+    @ApiOperation(value = "更新年度量化目标（职能部门级）", tags = {"年度量化目标（职能部门级）" },  notes = "更新年度量化目标（职能部门级）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parznbmndlhmbs/{parznbmndlhmb_id}")
     @Transactional
     public ResponseEntity<ParZnbmndlhmbDTO> update(@PathVariable("parznbmndlhmb_id") String parznbmndlhmb_id, @RequestBody ParZnbmndlhmbDTO parznbmndlhmbdto) {
@@ -96,21 +96,21 @@ public class ParZnbmndlhmbResource {
     }
 
     @PreAuthorize("hasPermission(this.parznbmndlhmbService.getParznbmndlhmbByEntities(this.parznbmndlhmbMapping.toDomain(#parznbmndlhmbdtos)),'ehr-ParZnbmndlhmb-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"ParZnbmndlhmb" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新年度量化目标（职能部门级）", tags = {"年度量化目标（职能部门级）" },  notes = "批量更新年度量化目标（职能部门级）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parznbmndlhmbs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ParZnbmndlhmbDTO> parznbmndlhmbdtos) {
         parznbmndlhmbService.updateBatch(parznbmndlhmbMapping.toDomain(parznbmndlhmbdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"ParZnbmndlhmb" },  notes = "GetDraft")
+    @ApiOperation(value = "获取年度量化目标（职能部门级）草稿", tags = {"年度量化目标（职能部门级）" },  notes = "获取年度量化目标（职能部门级）草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/parznbmndlhmbs/getdraft")
     public ResponseEntity<ParZnbmndlhmbDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(parznbmndlhmbMapping.toDto(parznbmndlhmbService.getDraft(new ParZnbmndlhmb())));
     }
 
     @PostAuthorize("hasPermission(this.parznbmndlhmbMapping.toDomain(returnObject.body),'ehr-ParZnbmndlhmb-Get')")
-    @ApiOperation(value = "Get", tags = {"ParZnbmndlhmb" },  notes = "Get")
+    @ApiOperation(value = "获取年度量化目标（职能部门级）", tags = {"年度量化目标（职能部门级）" },  notes = "获取年度量化目标（职能部门级）")
 	@RequestMapping(method = RequestMethod.GET, value = "/parznbmndlhmbs/{parznbmndlhmb_id}")
     public ResponseEntity<ParZnbmndlhmbDTO> get(@PathVariable("parznbmndlhmb_id") String parznbmndlhmb_id) {
         ParZnbmndlhmb domain = parznbmndlhmbService.get(parznbmndlhmb_id);
@@ -119,7 +119,7 @@ public class ParZnbmndlhmbResource {
     }
 
     @PreAuthorize("hasPermission(this.parznbmndlhmbMapping.toDomain(#parznbmndlhmbdto),'ehr-ParZnbmndlhmb-Create')")
-    @ApiOperation(value = "Create", tags = {"ParZnbmndlhmb" },  notes = "Create")
+    @ApiOperation(value = "新建年度量化目标（职能部门级）", tags = {"年度量化目标（职能部门级）" },  notes = "新建年度量化目标（职能部门级）")
 	@RequestMapping(method = RequestMethod.POST, value = "/parznbmndlhmbs")
     @Transactional
     public ResponseEntity<ParZnbmndlhmbDTO> create(@RequestBody ParZnbmndlhmbDTO parznbmndlhmbdto) {
@@ -130,7 +130,7 @@ public class ParZnbmndlhmbResource {
     }
 
     @PreAuthorize("hasPermission(this.parznbmndlhmbMapping.toDomain(#parznbmndlhmbdtos),'ehr-ParZnbmndlhmb-Create')")
-    @ApiOperation(value = "createBatch", tags = {"ParZnbmndlhmb" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建年度量化目标（职能部门级）", tags = {"年度量化目标（职能部门级）" },  notes = "批量新建年度量化目标（职能部门级）")
 	@RequestMapping(method = RequestMethod.POST, value = "/parznbmndlhmbs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ParZnbmndlhmbDTO> parznbmndlhmbdtos) {
         parznbmndlhmbService.createBatch(parznbmndlhmbMapping.toDomain(parznbmndlhmbdtos));
@@ -138,7 +138,7 @@ public class ParZnbmndlhmbResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParZnbmndlhmb-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"ParZnbmndlhmb" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"年度量化目标（职能部门级）" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/parznbmndlhmbs/fetchdefault")
 	public ResponseEntity<List<ParZnbmndlhmbDTO>> fetchDefault(ParZnbmndlhmbSearchContext context) {
         Page<ParZnbmndlhmb> domains = parznbmndlhmbService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ParZnbmndlhmbResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParZnbmndlhmb-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"ParZnbmndlhmb" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"年度量化目标（职能部门级）" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/parznbmndlhmbs/searchdefault")
 	public ResponseEntity<Page<ParZnbmndlhmbDTO>> searchDefault(@RequestBody ParZnbmndlhmbSearchContext context) {
         Page<ParZnbmndlhmb> domains = parznbmndlhmbService.searchDefault(context) ;

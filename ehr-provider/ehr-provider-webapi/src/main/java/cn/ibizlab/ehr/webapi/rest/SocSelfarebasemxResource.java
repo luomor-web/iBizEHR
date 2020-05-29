@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.soc.service.ISocSelfarebasemxService;
 import cn.ibizlab.ehr.core.soc.filter.SocSelfarebasemxSearchContext;
 
 @Slf4j
-@Api(tags = {"SocSelfarebasemx" })
+@Api(tags = {"社保明细" })
 @RestController("WebApi-socselfarebasemx")
 @RequestMapping("")
 public class SocSelfarebasemxResource {
@@ -46,14 +46,14 @@ public class SocSelfarebasemxResource {
     @Lazy
     public SocSelfarebasemxMapping socselfarebasemxMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"SocSelfarebasemx" },  notes = "CheckKey")
+    @ApiOperation(value = "检查社保明细", tags = {"社保明细" },  notes = "检查社保明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebasemxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SocSelfarebasemxDTO socselfarebasemxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(socselfarebasemxService.checkKey(socselfarebasemxMapping.toDomain(socselfarebasemxdto)));
     }
 
     @PreAuthorize("hasPermission(this.socselfarebasemxService.get(#socselfarebasemx_id),'ehr-SocSelfarebasemx-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SocSelfarebasemx" },  notes = "Remove")
+    @ApiOperation(value = "删除社保明细", tags = {"社保明细" },  notes = "删除社保明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/socselfarebasemxes/{socselfarebasemx_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("socselfarebasemx_id") String socselfarebasemx_id) {
@@ -61,7 +61,7 @@ public class SocSelfarebasemxResource {
     }
 
     @PreAuthorize("hasPermission(this.socselfarebasemxService.getSocselfarebasemxByIds(#ids),'ehr-SocSelfarebasemx-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SocSelfarebasemx" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除社保明细", tags = {"社保明细" },  notes = "批量删除社保明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/socselfarebasemxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         socselfarebasemxService.removeBatch(ids);
@@ -69,7 +69,7 @@ public class SocSelfarebasemxResource {
     }
 
     @PostAuthorize("hasPermission(this.socselfarebasemxMapping.toDomain(returnObject.body),'ehr-SocSelfarebasemx-Get')")
-    @ApiOperation(value = "Get", tags = {"SocSelfarebasemx" },  notes = "Get")
+    @ApiOperation(value = "获取社保明细", tags = {"社保明细" },  notes = "获取社保明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/socselfarebasemxes/{socselfarebasemx_id}")
     public ResponseEntity<SocSelfarebasemxDTO> get(@PathVariable("socselfarebasemx_id") String socselfarebasemx_id) {
         SocSelfarebasemx domain = socselfarebasemxService.get(socselfarebasemx_id);
@@ -77,14 +77,14 @@ public class SocSelfarebasemxResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"SocSelfarebasemx" },  notes = "GetDraft")
+    @ApiOperation(value = "获取社保明细草稿", tags = {"社保明细" },  notes = "获取社保明细草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/socselfarebasemxes/getdraft")
     public ResponseEntity<SocSelfarebasemxDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(socselfarebasemxMapping.toDto(socselfarebasemxService.getDraft(new SocSelfarebasemx())));
     }
 
     @PreAuthorize("hasPermission(this.socselfarebasemxMapping.toDomain(#socselfarebasemxdto),'ehr-SocSelfarebasemx-Create')")
-    @ApiOperation(value = "Create", tags = {"SocSelfarebasemx" },  notes = "Create")
+    @ApiOperation(value = "新建社保明细", tags = {"社保明细" },  notes = "新建社保明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebasemxes")
     @Transactional
     public ResponseEntity<SocSelfarebasemxDTO> create(@RequestBody SocSelfarebasemxDTO socselfarebasemxdto) {
@@ -95,7 +95,7 @@ public class SocSelfarebasemxResource {
     }
 
     @PreAuthorize("hasPermission(this.socselfarebasemxMapping.toDomain(#socselfarebasemxdtos),'ehr-SocSelfarebasemx-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SocSelfarebasemx" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建社保明细", tags = {"社保明细" },  notes = "批量新建社保明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebasemxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SocSelfarebasemxDTO> socselfarebasemxdtos) {
         socselfarebasemxService.createBatch(socselfarebasemxMapping.toDomain(socselfarebasemxdtos));
@@ -103,14 +103,14 @@ public class SocSelfarebasemxResource {
     }
 
     @PreAuthorize("hasPermission(this.socselfarebasemxMapping.toDomain(#socselfarebasemxdto),'ehr-SocSelfarebasemx-Save')")
-    @ApiOperation(value = "Save", tags = {"SocSelfarebasemx" },  notes = "Save")
+    @ApiOperation(value = "保存社保明细", tags = {"社保明细" },  notes = "保存社保明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebasemxes/save")
     public ResponseEntity<Boolean> save(@RequestBody SocSelfarebasemxDTO socselfarebasemxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(socselfarebasemxService.save(socselfarebasemxMapping.toDomain(socselfarebasemxdto)));
     }
 
     @PreAuthorize("hasPermission(this.socselfarebasemxMapping.toDomain(#socselfarebasemxdtos),'ehr-SocSelfarebasemx-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SocSelfarebasemx" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存社保明细", tags = {"社保明细" },  notes = "批量保存社保明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebasemxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SocSelfarebasemxDTO> socselfarebasemxdtos) {
         socselfarebasemxService.saveBatch(socselfarebasemxMapping.toDomain(socselfarebasemxdtos));
@@ -118,7 +118,7 @@ public class SocSelfarebasemxResource {
     }
 
     @PreAuthorize("hasPermission(this.socselfarebasemxService.get(#socselfarebasemx_id),'ehr-SocSelfarebasemx-Update')")
-    @ApiOperation(value = "Update", tags = {"SocSelfarebasemx" },  notes = "Update")
+    @ApiOperation(value = "更新社保明细", tags = {"社保明细" },  notes = "更新社保明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/socselfarebasemxes/{socselfarebasemx_id}")
     @Transactional
     public ResponseEntity<SocSelfarebasemxDTO> update(@PathVariable("socselfarebasemx_id") String socselfarebasemx_id, @RequestBody SocSelfarebasemxDTO socselfarebasemxdto) {
@@ -130,7 +130,7 @@ public class SocSelfarebasemxResource {
     }
 
     @PreAuthorize("hasPermission(this.socselfarebasemxService.getSocselfarebasemxByEntities(this.socselfarebasemxMapping.toDomain(#socselfarebasemxdtos)),'ehr-SocSelfarebasemx-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SocSelfarebasemx" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新社保明细", tags = {"社保明细" },  notes = "批量更新社保明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/socselfarebasemxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SocSelfarebasemxDTO> socselfarebasemxdtos) {
         socselfarebasemxService.updateBatch(socselfarebasemxMapping.toDomain(socselfarebasemxdtos));
@@ -138,7 +138,7 @@ public class SocSelfarebasemxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocSelfarebasemx-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SocSelfarebasemx" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"社保明细" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/socselfarebasemxes/fetchdefault")
 	public ResponseEntity<List<SocSelfarebasemxDTO>> fetchDefault(SocSelfarebasemxSearchContext context) {
         Page<SocSelfarebasemx> domains = socselfarebasemxService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SocSelfarebasemxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocSelfarebasemx-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SocSelfarebasemx" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"社保明细" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/socselfarebasemxes/searchdefault")
 	public ResponseEntity<Page<SocSelfarebasemxDTO>> searchDefault(@RequestBody SocSelfarebasemxSearchContext context) {
         Page<SocSelfarebasemx> domains = socselfarebasemxService.searchDefault(context) ;

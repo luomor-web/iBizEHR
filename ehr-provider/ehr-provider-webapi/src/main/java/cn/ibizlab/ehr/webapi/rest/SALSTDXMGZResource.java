@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.sal.service.ISALSTDXMGZService;
 import cn.ibizlab.ehr.core.sal.filter.SALSTDXMGZSearchContext;
 
 @Slf4j
-@Api(tags = {"SALSTDXMGZ" })
+@Api(tags = {"项目工资标准" })
 @RestController("WebApi-salstdxmgz")
 @RequestMapping("")
 public class SALSTDXMGZResource {
@@ -46,14 +46,14 @@ public class SALSTDXMGZResource {
     @Lazy
     public SALSTDXMGZMapping salstdxmgzMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"SALSTDXMGZ" },  notes = "CheckKey")
+    @ApiOperation(value = "检查项目工资标准", tags = {"项目工资标准" },  notes = "检查项目工资标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdxmgzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALSTDXMGZDTO salstdxmgzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salstdxmgzService.checkKey(salstdxmgzMapping.toDomain(salstdxmgzdto)));
     }
 
     @PreAuthorize("hasPermission(this.salstdxmgzService.get(#salstdxmgz_id),'ehr-SALSTDXMGZ-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SALSTDXMGZ" },  notes = "Remove")
+    @ApiOperation(value = "删除项目工资标准", tags = {"项目工资标准" },  notes = "删除项目工资标准")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdxmgzs/{salstdxmgz_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("salstdxmgz_id") String salstdxmgz_id) {
@@ -61,7 +61,7 @@ public class SALSTDXMGZResource {
     }
 
     @PreAuthorize("hasPermission(this.salstdxmgzService.getSalstdxmgzByIds(#ids),'ehr-SALSTDXMGZ-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SALSTDXMGZ" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除项目工资标准", tags = {"项目工资标准" },  notes = "批量删除项目工资标准")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdxmgzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         salstdxmgzService.removeBatch(ids);
@@ -69,7 +69,7 @@ public class SALSTDXMGZResource {
     }
 
     @PreAuthorize("hasPermission(this.salstdxmgzService.get(#salstdxmgz_id),'ehr-SALSTDXMGZ-Update')")
-    @ApiOperation(value = "Update", tags = {"SALSTDXMGZ" },  notes = "Update")
+    @ApiOperation(value = "更新项目工资标准", tags = {"项目工资标准" },  notes = "更新项目工资标准")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstdxmgzs/{salstdxmgz_id}")
     @Transactional
     public ResponseEntity<SALSTDXMGZDTO> update(@PathVariable("salstdxmgz_id") String salstdxmgz_id, @RequestBody SALSTDXMGZDTO salstdxmgzdto) {
@@ -81,28 +81,28 @@ public class SALSTDXMGZResource {
     }
 
     @PreAuthorize("hasPermission(this.salstdxmgzService.getSalstdxmgzByEntities(this.salstdxmgzMapping.toDomain(#salstdxmgzdtos)),'ehr-SALSTDXMGZ-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SALSTDXMGZ" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新项目工资标准", tags = {"项目工资标准" },  notes = "批量更新项目工资标准")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstdxmgzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSTDXMGZDTO> salstdxmgzdtos) {
         salstdxmgzService.updateBatch(salstdxmgzMapping.toDomain(salstdxmgzdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"SALSTDXMGZ" },  notes = "GetDraft")
+    @ApiOperation(value = "获取项目工资标准草稿", tags = {"项目工资标准" },  notes = "获取项目工资标准草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/salstdxmgzs/getdraft")
     public ResponseEntity<SALSTDXMGZDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salstdxmgzMapping.toDto(salstdxmgzService.getDraft(new SALSTDXMGZ())));
     }
 
     @PreAuthorize("hasPermission(this.salstdxmgzMapping.toDomain(#salstdxmgzdto),'ehr-SALSTDXMGZ-Save')")
-    @ApiOperation(value = "Save", tags = {"SALSTDXMGZ" },  notes = "Save")
+    @ApiOperation(value = "保存项目工资标准", tags = {"项目工资标准" },  notes = "保存项目工资标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdxmgzs/save")
     public ResponseEntity<Boolean> save(@RequestBody SALSTDXMGZDTO salstdxmgzdto) {
         return ResponseEntity.status(HttpStatus.OK).body(salstdxmgzService.save(salstdxmgzMapping.toDomain(salstdxmgzdto)));
     }
 
     @PreAuthorize("hasPermission(this.salstdxmgzMapping.toDomain(#salstdxmgzdtos),'ehr-SALSTDXMGZ-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SALSTDXMGZ" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存项目工资标准", tags = {"项目工资标准" },  notes = "批量保存项目工资标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdxmgzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALSTDXMGZDTO> salstdxmgzdtos) {
         salstdxmgzService.saveBatch(salstdxmgzMapping.toDomain(salstdxmgzdtos));
@@ -110,7 +110,7 @@ public class SALSTDXMGZResource {
     }
 
     @PostAuthorize("hasPermission(this.salstdxmgzMapping.toDomain(returnObject.body),'ehr-SALSTDXMGZ-Get')")
-    @ApiOperation(value = "Get", tags = {"SALSTDXMGZ" },  notes = "Get")
+    @ApiOperation(value = "获取项目工资标准", tags = {"项目工资标准" },  notes = "获取项目工资标准")
 	@RequestMapping(method = RequestMethod.GET, value = "/salstdxmgzs/{salstdxmgz_id}")
     public ResponseEntity<SALSTDXMGZDTO> get(@PathVariable("salstdxmgz_id") String salstdxmgz_id) {
         SALSTDXMGZ domain = salstdxmgzService.get(salstdxmgz_id);
@@ -119,7 +119,7 @@ public class SALSTDXMGZResource {
     }
 
     @PreAuthorize("hasPermission(this.salstdxmgzMapping.toDomain(#salstdxmgzdto),'ehr-SALSTDXMGZ-Create')")
-    @ApiOperation(value = "Create", tags = {"SALSTDXMGZ" },  notes = "Create")
+    @ApiOperation(value = "新建项目工资标准", tags = {"项目工资标准" },  notes = "新建项目工资标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdxmgzs")
     @Transactional
     public ResponseEntity<SALSTDXMGZDTO> create(@RequestBody SALSTDXMGZDTO salstdxmgzdto) {
@@ -130,7 +130,7 @@ public class SALSTDXMGZResource {
     }
 
     @PreAuthorize("hasPermission(this.salstdxmgzMapping.toDomain(#salstdxmgzdtos),'ehr-SALSTDXMGZ-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SALSTDXMGZ" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建项目工资标准", tags = {"项目工资标准" },  notes = "批量新建项目工资标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdxmgzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSTDXMGZDTO> salstdxmgzdtos) {
         salstdxmgzService.createBatch(salstdxmgzMapping.toDomain(salstdxmgzdtos));
@@ -138,7 +138,7 @@ public class SALSTDXMGZResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDXMGZ-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSTDXMGZ" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"项目工资标准" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/salstdxmgzs/fetchdefault")
 	public ResponseEntity<List<SALSTDXMGZDTO>> fetchDefault(SALSTDXMGZSearchContext context) {
         Page<SALSTDXMGZ> domains = salstdxmgzService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SALSTDXMGZResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDXMGZ-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SALSTDXMGZ" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目工资标准" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/salstdxmgzs/searchdefault")
 	public ResponseEntity<Page<SALSTDXMGZDTO>> searchDefault(@RequestBody SALSTDXMGZSearchContext context) {
         Page<SALSTDXMGZ> domains = salstdxmgzService.searchDefault(context) ;

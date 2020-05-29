@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITrmTrainActmentService;
 import cn.ibizlab.ehr.core.trm.filter.TrmTrainActmentSearchContext;
 
 @Slf4j
-@Api(tags = {"TrmTrainActment" })
+@Api(tags = {"培训活动评估" })
 @RestController("WebApi-trmtrainactment")
 @RequestMapping("")
 public class TrmTrainActmentResource {
@@ -47,7 +47,7 @@ public class TrmTrainActmentResource {
     public TrmTrainActmentMapping trmtrainactmentMapping;
 
     @PreAuthorize("hasPermission(this.trmtrainactmentService.get(#trmtrainactment_id),'ehr-TrmTrainActment-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TrmTrainActment" },  notes = "Remove")
+    @ApiOperation(value = "删除培训活动评估", tags = {"培训活动评估" },  notes = "删除培训活动评估")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainactments/{trmtrainactment_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trmtrainactment_id") String trmtrainactment_id) {
@@ -55,27 +55,27 @@ public class TrmTrainActmentResource {
     }
 
     @PreAuthorize("hasPermission(this.trmtrainactmentService.getTrmtrainactmentByIds(#ids),'ehr-TrmTrainActment-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TrmTrainActment" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除培训活动评估", tags = {"培训活动评估" },  notes = "批量删除培训活动评估")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainactments/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmtrainactmentService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"TrmTrainActment" },  notes = "GetDraft")
+    @ApiOperation(value = "获取培训活动评估草稿", tags = {"培训活动评估" },  notes = "获取培训活动评估草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainactments/getdraft")
     public ResponseEntity<TrmTrainActmentDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrainactmentMapping.toDto(trmtrainactmentService.getDraft(new TrmTrainActment())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TrmTrainActment" },  notes = "CheckKey")
+    @ApiOperation(value = "检查培训活动评估", tags = {"培训活动评估" },  notes = "检查培训活动评估")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainactments/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmTrainActmentDTO trmtrainactmentdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmtrainactmentService.checkKey(trmtrainactmentMapping.toDomain(trmtrainactmentdto)));
     }
 
     @PostAuthorize("hasPermission(this.trmtrainactmentMapping.toDomain(returnObject.body),'ehr-TrmTrainActment-Get')")
-    @ApiOperation(value = "Get", tags = {"TrmTrainActment" },  notes = "Get")
+    @ApiOperation(value = "获取培训活动评估", tags = {"培训活动评估" },  notes = "获取培训活动评估")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainactments/{trmtrainactment_id}")
     public ResponseEntity<TrmTrainActmentDTO> get(@PathVariable("trmtrainactment_id") String trmtrainactment_id) {
         TrmTrainActment domain = trmtrainactmentService.get(trmtrainactment_id);
@@ -84,14 +84,14 @@ public class TrmTrainActmentResource {
     }
 
     @PreAuthorize("hasPermission(this.trmtrainactmentMapping.toDomain(#trmtrainactmentdto),'ehr-TrmTrainActment-Save')")
-    @ApiOperation(value = "Save", tags = {"TrmTrainActment" },  notes = "Save")
+    @ApiOperation(value = "保存培训活动评估", tags = {"培训活动评估" },  notes = "保存培训活动评估")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainactments/save")
     public ResponseEntity<Boolean> save(@RequestBody TrmTrainActmentDTO trmtrainactmentdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrainactmentService.save(trmtrainactmentMapping.toDomain(trmtrainactmentdto)));
     }
 
     @PreAuthorize("hasPermission(this.trmtrainactmentMapping.toDomain(#trmtrainactmentdtos),'ehr-TrmTrainActment-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TrmTrainActment" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存培训活动评估", tags = {"培训活动评估" },  notes = "批量保存培训活动评估")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainactments/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TrmTrainActmentDTO> trmtrainactmentdtos) {
         trmtrainactmentService.saveBatch(trmtrainactmentMapping.toDomain(trmtrainactmentdtos));
@@ -99,7 +99,7 @@ public class TrmTrainActmentResource {
     }
 
     @PreAuthorize("hasPermission(this.trmtrainactmentMapping.toDomain(#trmtrainactmentdto),'ehr-TrmTrainActment-Create')")
-    @ApiOperation(value = "Create", tags = {"TrmTrainActment" },  notes = "Create")
+    @ApiOperation(value = "新建培训活动评估", tags = {"培训活动评估" },  notes = "新建培训活动评估")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainactments")
     @Transactional
     public ResponseEntity<TrmTrainActmentDTO> create(@RequestBody TrmTrainActmentDTO trmtrainactmentdto) {
@@ -110,7 +110,7 @@ public class TrmTrainActmentResource {
     }
 
     @PreAuthorize("hasPermission(this.trmtrainactmentMapping.toDomain(#trmtrainactmentdtos),'ehr-TrmTrainActment-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TrmTrainActment" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建培训活动评估", tags = {"培训活动评估" },  notes = "批量新建培训活动评估")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainactments/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmTrainActmentDTO> trmtrainactmentdtos) {
         trmtrainactmentService.createBatch(trmtrainactmentMapping.toDomain(trmtrainactmentdtos));
@@ -118,7 +118,7 @@ public class TrmTrainActmentResource {
     }
 
     @PreAuthorize("hasPermission(this.trmtrainactmentService.get(#trmtrainactment_id),'ehr-TrmTrainActment-Update')")
-    @ApiOperation(value = "Update", tags = {"TrmTrainActment" },  notes = "Update")
+    @ApiOperation(value = "更新培训活动评估", tags = {"培训活动评估" },  notes = "更新培训活动评估")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainactments/{trmtrainactment_id}")
     @Transactional
     public ResponseEntity<TrmTrainActmentDTO> update(@PathVariable("trmtrainactment_id") String trmtrainactment_id, @RequestBody TrmTrainActmentDTO trmtrainactmentdto) {
@@ -130,7 +130,7 @@ public class TrmTrainActmentResource {
     }
 
     @PreAuthorize("hasPermission(this.trmtrainactmentService.getTrmtrainactmentByEntities(this.trmtrainactmentMapping.toDomain(#trmtrainactmentdtos)),'ehr-TrmTrainActment-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TrmTrainActment" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新培训活动评估", tags = {"培训活动评估" },  notes = "批量更新培训活动评估")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainactments/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TrmTrainActmentDTO> trmtrainactmentdtos) {
         trmtrainactmentService.updateBatch(trmtrainactmentMapping.toDomain(trmtrainactmentdtos));
@@ -138,7 +138,7 @@ public class TrmTrainActmentResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainActment-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TrmTrainActment" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"培训活动评估" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmtrainactments/fetchdefault")
 	public ResponseEntity<List<TrmTrainActmentDTO>> fetchDefault(TrmTrainActmentSearchContext context) {
         Page<TrmTrainActment> domains = trmtrainactmentService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmTrainActmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainActment-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TrmTrainActment" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"培训活动评估" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmtrainactments/searchdefault")
 	public ResponseEntity<Page<TrmTrainActmentDTO>> searchDefault(@RequestBody TrmTrainActmentSearchContext context) {
         Page<TrmTrainActment> domains = trmtrainactmentService.searchDefault(context) ;

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimCorrectionApplyService;
 import cn.ibizlab.ehr.core.pim.filter.PimCorrectionApplySearchContext;
 
 @Slf4j
-@Api(tags = {"PimCorrectionApply" })
+@Api(tags = {"B/Y类员工转正申请明细（停用）" })
 @RestController("WebApi-pimcorrectionapply")
 @RequestMapping("")
 public class PimCorrectionApplyResource {
@@ -47,7 +47,7 @@ public class PimCorrectionApplyResource {
     public PimCorrectionApplyMapping pimcorrectionapplyMapping;
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyMapping.toDomain(#pimcorrectionapplydto),'ehr-PimCorrectionApply-Create')")
-    @ApiOperation(value = "Create", tags = {"PimCorrectionApply" },  notes = "Create")
+    @ApiOperation(value = "新建B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "新建B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies")
     @Transactional
     public ResponseEntity<PimCorrectionApplyDTO> create(@RequestBody PimCorrectionApplyDTO pimcorrectionapplydto) {
@@ -58,34 +58,34 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyMapping.toDomain(#pimcorrectionapplydtos),'ehr-PimCorrectionApply-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimCorrectionApply" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "批量新建B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimCorrectionApplyDTO> pimcorrectionapplydtos) {
         pimcorrectionapplyService.createBatch(pimcorrectionapplyMapping.toDomain(pimcorrectionapplydtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimCorrectionApply" },  notes = "GetDraft")
+    @ApiOperation(value = "获取B/Y类员工转正申请明细（停用）草稿", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "获取B/Y类员工转正申请明细（停用）草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimcorrectionapplies/getdraft")
     public ResponseEntity<PimCorrectionApplyDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimcorrectionapplyMapping.toDto(pimcorrectionapplyService.getDraft(new PimCorrectionApply())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimCorrectionApply" },  notes = "CheckKey")
+    @ApiOperation(value = "检查B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "检查B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimCorrectionApplyDTO pimcorrectionapplydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimcorrectionapplyService.checkKey(pimcorrectionapplyMapping.toDomain(pimcorrectionapplydto)));
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyMapping.toDomain(#pimcorrectionapplydto),'ehr-PimCorrectionApply-Save')")
-    @ApiOperation(value = "Save", tags = {"PimCorrectionApply" },  notes = "Save")
+    @ApiOperation(value = "保存B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "保存B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies/save")
     public ResponseEntity<Boolean> save(@RequestBody PimCorrectionApplyDTO pimcorrectionapplydto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimcorrectionapplyService.save(pimcorrectionapplyMapping.toDomain(pimcorrectionapplydto)));
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyMapping.toDomain(#pimcorrectionapplydtos),'ehr-PimCorrectionApply-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimCorrectionApply" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "批量保存B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcorrectionapplies/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimCorrectionApplyDTO> pimcorrectionapplydtos) {
         pimcorrectionapplyService.saveBatch(pimcorrectionapplyMapping.toDomain(pimcorrectionapplydtos));
@@ -93,7 +93,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PostAuthorize("hasPermission(this.pimcorrectionapplyMapping.toDomain(returnObject.body),'ehr-PimCorrectionApply-Get')")
-    @ApiOperation(value = "Get", tags = {"PimCorrectionApply" },  notes = "Get")
+    @ApiOperation(value = "获取B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "获取B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimcorrectionapplies/{pimcorrectionapply_id}")
     public ResponseEntity<PimCorrectionApplyDTO> get(@PathVariable("pimcorrectionapply_id") String pimcorrectionapply_id) {
         PimCorrectionApply domain = pimcorrectionapplyService.get(pimcorrectionapply_id);
@@ -102,7 +102,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyService.get(#pimcorrectionapply_id),'ehr-PimCorrectionApply-Update')")
-    @ApiOperation(value = "Update", tags = {"PimCorrectionApply" },  notes = "Update")
+    @ApiOperation(value = "更新B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "更新B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimcorrectionapplies/{pimcorrectionapply_id}")
     @Transactional
     public ResponseEntity<PimCorrectionApplyDTO> update(@PathVariable("pimcorrectionapply_id") String pimcorrectionapply_id, @RequestBody PimCorrectionApplyDTO pimcorrectionapplydto) {
@@ -114,7 +114,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyService.getPimcorrectionapplyByEntities(this.pimcorrectionapplyMapping.toDomain(#pimcorrectionapplydtos)),'ehr-PimCorrectionApply-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimCorrectionApply" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "批量更新B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimCorrectionApplyDTO> pimcorrectionapplydtos) {
         pimcorrectionapplyService.updateBatch(pimcorrectionapplyMapping.toDomain(pimcorrectionapplydtos));
@@ -122,7 +122,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyService.get(#pimcorrectionapply_id),'ehr-PimCorrectionApply-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimCorrectionApply" },  notes = "Remove")
+    @ApiOperation(value = "删除B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "删除B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimcorrectionapplies/{pimcorrectionapply_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimcorrectionapply_id") String pimcorrectionapply_id) {
@@ -130,7 +130,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyService.getPimcorrectionapplyByIds(#ids),'ehr-PimCorrectionApply-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimCorrectionApply" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "批量删除B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimcorrectionapplyService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimCorrectionApply-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimCorrectionApply" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"B/Y类员工转正申请明细（停用）" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimcorrectionapplies/fetchdefault")
 	public ResponseEntity<List<PimCorrectionApplyDTO>> fetchDefault(PimCorrectionApplySearchContext context) {
         Page<PimCorrectionApply> domains = pimcorrectionapplyService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimCorrectionApplyResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimCorrectionApply-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimCorrectionApply" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"B/Y类员工转正申请明细（停用）" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimcorrectionapplies/searchdefault")
 	public ResponseEntity<Page<PimCorrectionApplyDTO>> searchDefault(@RequestBody PimCorrectionApplySearchContext context) {
         Page<PimCorrectionApply> domains = pimcorrectionapplyService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PimCorrectionApplyResource {
                 .body(new PageImpl(pimcorrectionapplyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pimcorrectionapplyMapping.toDomain(#pimcorrectionapplydto),'ehr-PimCorrectionApply-Create')")
-    @ApiOperation(value = "CreateByPimByygzzsq", tags = {"PimCorrectionApply" },  notes = "CreateByPimByygzzsq")
+    @ApiOperation(value = "根据B/Y类员工转正申请建立B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据B/Y类员工转正申请建立B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimcorrectionapplies")
     @Transactional
     public ResponseEntity<PimCorrectionApplyDTO> createByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PimCorrectionApplyDTO pimcorrectionapplydto) {
@@ -171,7 +171,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyMapping.toDomain(#pimcorrectionapplydtos),'ehr-PimCorrectionApply-Create')")
-    @ApiOperation(value = "createBatchByPimByygzzsq", tags = {"PimCorrectionApply" },  notes = "createBatchByPimByygzzsq")
+    @ApiOperation(value = "根据B/Y类员工转正申请批量建立B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据B/Y类员工转正申请批量建立B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> createBatchByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody List<PimCorrectionApplyDTO> pimcorrectionapplydtos) {
         List<PimCorrectionApply> domainlist=pimcorrectionapplyMapping.toDomain(pimcorrectionapplydtos);
@@ -182,7 +182,7 @@ public class PimCorrectionApplyResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPimByygzzsq", tags = {"PimCorrectionApply" },  notes = "GetDraftByPimByygzzsq")
+    @ApiOperation(value = "根据B/Y类员工转正申请获取B/Y类员工转正申请明细（停用）草稿", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据B/Y类员工转正申请获取B/Y类员工转正申请明细（停用）草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimcorrectionapplies/getdraft")
     public ResponseEntity<PimCorrectionApplyDTO> getDraftByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id) {
         PimCorrectionApply domain = new PimCorrectionApply();
@@ -190,14 +190,14 @@ public class PimCorrectionApplyResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimcorrectionapplyMapping.toDto(pimcorrectionapplyService.getDraft(domain)));
     }
 
-    @ApiOperation(value = "CheckKeyByPimByygzzsq", tags = {"PimCorrectionApply" },  notes = "CheckKeyByPimByygzzsq")
+    @ApiOperation(value = "根据B/Y类员工转正申请检查B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据B/Y类员工转正申请检查B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimcorrectionapplies/checkkey")
     public ResponseEntity<Boolean> checkKeyByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PimCorrectionApplyDTO pimcorrectionapplydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimcorrectionapplyService.checkKey(pimcorrectionapplyMapping.toDomain(pimcorrectionapplydto)));
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyMapping.toDomain(#pimcorrectionapplydto),'ehr-PimCorrectionApply-Save')")
-    @ApiOperation(value = "SaveByPimByygzzsq", tags = {"PimCorrectionApply" },  notes = "SaveByPimByygzzsq")
+    @ApiOperation(value = "根据B/Y类员工转正申请保存B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据B/Y类员工转正申请保存B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimcorrectionapplies/save")
     public ResponseEntity<Boolean> saveByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PimCorrectionApplyDTO pimcorrectionapplydto) {
         PimCorrectionApply domain = pimcorrectionapplyMapping.toDomain(pimcorrectionapplydto);
@@ -206,7 +206,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyMapping.toDomain(#pimcorrectionapplydtos),'ehr-PimCorrectionApply-Save')")
-    @ApiOperation(value = "SaveBatchByPimByygzzsq", tags = {"PimCorrectionApply" },  notes = "SaveBatchByPimByygzzsq")
+    @ApiOperation(value = "根据B/Y类员工转正申请批量保存B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据B/Y类员工转正申请批量保存B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimcorrectionapplies/savebatch")
     public ResponseEntity<Boolean> saveBatchByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody List<PimCorrectionApplyDTO> pimcorrectionapplydtos) {
         List<PimCorrectionApply> domainlist=pimcorrectionapplyMapping.toDomain(pimcorrectionapplydtos);
@@ -218,7 +218,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PostAuthorize("hasPermission(this.pimcorrectionapplyMapping.toDomain(returnObject.body),'ehr-PimCorrectionApply-Get')")
-    @ApiOperation(value = "GetByPimByygzzsq", tags = {"PimCorrectionApply" },  notes = "GetByPimByygzzsq")
+    @ApiOperation(value = "根据B/Y类员工转正申请获取B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据B/Y类员工转正申请获取B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimcorrectionapplies/{pimcorrectionapply_id}")
     public ResponseEntity<PimCorrectionApplyDTO> getByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimcorrectionapply_id") String pimcorrectionapply_id) {
         PimCorrectionApply domain = pimcorrectionapplyService.get(pimcorrectionapply_id);
@@ -227,7 +227,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyService.get(#pimcorrectionapply_id),'ehr-PimCorrectionApply-Update')")
-    @ApiOperation(value = "UpdateByPimByygzzsq", tags = {"PimCorrectionApply" },  notes = "UpdateByPimByygzzsq")
+    @ApiOperation(value = "根据B/Y类员工转正申请更新B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据B/Y类员工转正申请更新B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimcorrectionapplies/{pimcorrectionapply_id}")
     @Transactional
     public ResponseEntity<PimCorrectionApplyDTO> updateByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimcorrectionapply_id") String pimcorrectionapply_id, @RequestBody PimCorrectionApplyDTO pimcorrectionapplydto) {
@@ -240,7 +240,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyService.getPimcorrectionapplyByEntities(this.pimcorrectionapplyMapping.toDomain(#pimcorrectionapplydtos)),'ehr-PimCorrectionApply-Update')")
-    @ApiOperation(value = "UpdateBatchByPimByygzzsq", tags = {"PimCorrectionApply" },  notes = "UpdateBatchByPimByygzzsq")
+    @ApiOperation(value = "根据B/Y类员工转正申请批量更新B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据B/Y类员工转正申请批量更新B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> updateBatchByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody List<PimCorrectionApplyDTO> pimcorrectionapplydtos) {
         List<PimCorrectionApply> domainlist=pimcorrectionapplyMapping.toDomain(pimcorrectionapplydtos);
@@ -252,7 +252,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyService.get(#pimcorrectionapply_id),'ehr-PimCorrectionApply-Remove')")
-    @ApiOperation(value = "RemoveByPimByygzzsq", tags = {"PimCorrectionApply" },  notes = "RemoveByPimByygzzsq")
+    @ApiOperation(value = "根据B/Y类员工转正申请删除B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据B/Y类员工转正申请删除B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimcorrectionapplies/{pimcorrectionapply_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimcorrectionapply_id") String pimcorrectionapply_id) {
@@ -260,7 +260,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyService.getPimcorrectionapplyByIds(#ids),'ehr-PimCorrectionApply-Remove')")
-    @ApiOperation(value = "RemoveBatchByPimByygzzsq", tags = {"PimCorrectionApply" },  notes = "RemoveBatchByPimByygzzsq")
+    @ApiOperation(value = "根据B/Y类员工转正申请批量删除B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据B/Y类员工转正申请批量删除B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> removeBatchByPimByygzzsq(@RequestBody List<String> ids) {
         pimcorrectionapplyService.removeBatch(ids);
@@ -268,7 +268,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimCorrectionApply-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPimByygzzsq", tags = {"PimCorrectionApply" } ,notes = "fetchDEFAULTByPimByygzzsq")
+	@ApiOperation(value = "根据B/Y类员工转正申请获取DEFAULT", tags = {"B/Y类员工转正申请明细（停用）" } ,notes = "根据B/Y类员工转正申请获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimcorrectionapplies/fetchdefault")
 	public ResponseEntity<List<PimCorrectionApplyDTO>> fetchPimCorrectionApplyDefaultByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PimCorrectionApplySearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
@@ -282,7 +282,7 @@ public class PimCorrectionApplyResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimCorrectionApply-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPimByygzzsq", tags = {"PimCorrectionApply" } ,notes = "searchDEFAULTByPimByygzzsq")
+	@ApiOperation(value = "根据B/Y类员工转正申请查询DEFAULT", tags = {"B/Y类员工转正申请明细（停用）" } ,notes = "根据B/Y类员工转正申请查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimcorrectionapplies/searchdefault")
 	public ResponseEntity<Page<PimCorrectionApplyDTO>> searchPimCorrectionApplyDefaultByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PimCorrectionApplySearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
@@ -291,7 +291,7 @@ public class PimCorrectionApplyResource {
                 .body(new PageImpl(pimcorrectionapplyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pimcorrectionapplyMapping.toDomain(#pimcorrectionapplydto),'ehr-PimCorrectionApply-Create')")
-    @ApiOperation(value = "CreateByPimPerson", tags = {"PimCorrectionApply" },  notes = "CreateByPimPerson")
+    @ApiOperation(value = "根据人员信息建立B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据人员信息建立B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimcorrectionapplies")
     @Transactional
     public ResponseEntity<PimCorrectionApplyDTO> createByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimCorrectionApplyDTO pimcorrectionapplydto) {
@@ -303,7 +303,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyMapping.toDomain(#pimcorrectionapplydtos),'ehr-PimCorrectionApply-Create')")
-    @ApiOperation(value = "createBatchByPimPerson", tags = {"PimCorrectionApply" },  notes = "createBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量建立B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据人员信息批量建立B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> createBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PimCorrectionApplyDTO> pimcorrectionapplydtos) {
         List<PimCorrectionApply> domainlist=pimcorrectionapplyMapping.toDomain(pimcorrectionapplydtos);
@@ -314,7 +314,7 @@ public class PimCorrectionApplyResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPimPerson", tags = {"PimCorrectionApply" },  notes = "GetDraftByPimPerson")
+    @ApiOperation(value = "根据人员信息获取B/Y类员工转正申请明细（停用）草稿", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据人员信息获取B/Y类员工转正申请明细（停用）草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimcorrectionapplies/getdraft")
     public ResponseEntity<PimCorrectionApplyDTO> getDraftByPimPerson(@PathVariable("pimperson_id") String pimperson_id) {
         PimCorrectionApply domain = new PimCorrectionApply();
@@ -322,14 +322,14 @@ public class PimCorrectionApplyResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimcorrectionapplyMapping.toDto(pimcorrectionapplyService.getDraft(domain)));
     }
 
-    @ApiOperation(value = "CheckKeyByPimPerson", tags = {"PimCorrectionApply" },  notes = "CheckKeyByPimPerson")
+    @ApiOperation(value = "根据人员信息检查B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据人员信息检查B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimcorrectionapplies/checkkey")
     public ResponseEntity<Boolean> checkKeyByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimCorrectionApplyDTO pimcorrectionapplydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimcorrectionapplyService.checkKey(pimcorrectionapplyMapping.toDomain(pimcorrectionapplydto)));
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyMapping.toDomain(#pimcorrectionapplydto),'ehr-PimCorrectionApply-Save')")
-    @ApiOperation(value = "SaveByPimPerson", tags = {"PimCorrectionApply" },  notes = "SaveByPimPerson")
+    @ApiOperation(value = "根据人员信息保存B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据人员信息保存B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimcorrectionapplies/save")
     public ResponseEntity<Boolean> saveByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimCorrectionApplyDTO pimcorrectionapplydto) {
         PimCorrectionApply domain = pimcorrectionapplyMapping.toDomain(pimcorrectionapplydto);
@@ -338,7 +338,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyMapping.toDomain(#pimcorrectionapplydtos),'ehr-PimCorrectionApply-Save')")
-    @ApiOperation(value = "SaveBatchByPimPerson", tags = {"PimCorrectionApply" },  notes = "SaveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量保存B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据人员信息批量保存B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimcorrectionapplies/savebatch")
     public ResponseEntity<Boolean> saveBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PimCorrectionApplyDTO> pimcorrectionapplydtos) {
         List<PimCorrectionApply> domainlist=pimcorrectionapplyMapping.toDomain(pimcorrectionapplydtos);
@@ -350,7 +350,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PostAuthorize("hasPermission(this.pimcorrectionapplyMapping.toDomain(returnObject.body),'ehr-PimCorrectionApply-Get')")
-    @ApiOperation(value = "GetByPimPerson", tags = {"PimCorrectionApply" },  notes = "GetByPimPerson")
+    @ApiOperation(value = "根据人员信息获取B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据人员信息获取B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimcorrectionapplies/{pimcorrectionapply_id}")
     public ResponseEntity<PimCorrectionApplyDTO> getByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimcorrectionapply_id") String pimcorrectionapply_id) {
         PimCorrectionApply domain = pimcorrectionapplyService.get(pimcorrectionapply_id);
@@ -359,7 +359,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyService.get(#pimcorrectionapply_id),'ehr-PimCorrectionApply-Update')")
-    @ApiOperation(value = "UpdateByPimPerson", tags = {"PimCorrectionApply" },  notes = "UpdateByPimPerson")
+    @ApiOperation(value = "根据人员信息更新B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据人员信息更新B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimcorrectionapplies/{pimcorrectionapply_id}")
     @Transactional
     public ResponseEntity<PimCorrectionApplyDTO> updateByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimcorrectionapply_id") String pimcorrectionapply_id, @RequestBody PimCorrectionApplyDTO pimcorrectionapplydto) {
@@ -372,7 +372,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyService.getPimcorrectionapplyByEntities(this.pimcorrectionapplyMapping.toDomain(#pimcorrectionapplydtos)),'ehr-PimCorrectionApply-Update')")
-    @ApiOperation(value = "UpdateBatchByPimPerson", tags = {"PimCorrectionApply" },  notes = "UpdateBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量更新B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据人员信息批量更新B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> updateBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PimCorrectionApplyDTO> pimcorrectionapplydtos) {
         List<PimCorrectionApply> domainlist=pimcorrectionapplyMapping.toDomain(pimcorrectionapplydtos);
@@ -384,7 +384,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyService.get(#pimcorrectionapply_id),'ehr-PimCorrectionApply-Remove')")
-    @ApiOperation(value = "RemoveByPimPerson", tags = {"PimCorrectionApply" },  notes = "RemoveByPimPerson")
+    @ApiOperation(value = "根据人员信息删除B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据人员信息删除B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimcorrectionapplies/{pimcorrectionapply_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimcorrectionapply_id") String pimcorrectionapply_id) {
@@ -392,7 +392,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcorrectionapplyService.getPimcorrectionapplyByIds(#ids),'ehr-PimCorrectionApply-Remove')")
-    @ApiOperation(value = "RemoveBatchByPimPerson", tags = {"PimCorrectionApply" },  notes = "RemoveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量删除B/Y类员工转正申请明细（停用）", tags = {"B/Y类员工转正申请明细（停用）" },  notes = "根据人员信息批量删除B/Y类员工转正申请明细（停用）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimcorrectionapplies/batch")
     public ResponseEntity<Boolean> removeBatchByPimPerson(@RequestBody List<String> ids) {
         pimcorrectionapplyService.removeBatch(ids);
@@ -400,7 +400,7 @@ public class PimCorrectionApplyResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimCorrectionApply-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPimPerson", tags = {"PimCorrectionApply" } ,notes = "fetchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息获取DEFAULT", tags = {"B/Y类员工转正申请明细（停用）" } ,notes = "根据人员信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimcorrectionapplies/fetchdefault")
 	public ResponseEntity<List<PimCorrectionApplyDTO>> fetchPimCorrectionApplyDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PimCorrectionApplySearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -414,7 +414,7 @@ public class PimCorrectionApplyResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimCorrectionApply-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPimPerson", tags = {"PimCorrectionApply" } ,notes = "searchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息查询DEFAULT", tags = {"B/Y类员工转正申请明细（停用）" } ,notes = "根据人员信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimcorrectionapplies/searchdefault")
 	public ResponseEntity<Page<PimCorrectionApplyDTO>> searchPimCorrectionApplyDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimCorrectionApplySearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);

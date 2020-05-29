@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.sal.service.ISalTypeService;
 import cn.ibizlab.ehr.core.sal.filter.SalTypeSearchContext;
 
 @Slf4j
-@Api(tags = {"SalType" })
+@Api(tags = {"薪酬类型" })
 @RestController("WebApi-saltype")
 @RequestMapping("")
 public class SalTypeResource {
@@ -46,14 +46,14 @@ public class SalTypeResource {
     @Lazy
     public SalTypeMapping saltypeMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"SalType" },  notes = "CheckKey")
+    @ApiOperation(value = "检查薪酬类型", tags = {"薪酬类型" },  notes = "检查薪酬类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/saltypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SalTypeDTO saltypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(saltypeService.checkKey(saltypeMapping.toDomain(saltypedto)));
     }
 
     @PostAuthorize("hasPermission(this.saltypeMapping.toDomain(returnObject.body),'ehr-SalType-Get')")
-    @ApiOperation(value = "Get", tags = {"SalType" },  notes = "Get")
+    @ApiOperation(value = "获取薪酬类型", tags = {"薪酬类型" },  notes = "获取薪酬类型")
 	@RequestMapping(method = RequestMethod.GET, value = "/saltypes/{saltype_id}")
     public ResponseEntity<SalTypeDTO> get(@PathVariable("saltype_id") String saltype_id) {
         SalType domain = saltypeService.get(saltype_id);
@@ -61,14 +61,14 @@ public class SalTypeResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"SalType" },  notes = "GetDraft")
+    @ApiOperation(value = "获取薪酬类型草稿", tags = {"薪酬类型" },  notes = "获取薪酬类型草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/saltypes/getdraft")
     public ResponseEntity<SalTypeDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(saltypeMapping.toDto(saltypeService.getDraft(new SalType())));
     }
 
     @PreAuthorize("hasPermission(this.saltypeService.get(#saltype_id),'ehr-SalType-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SalType" },  notes = "Remove")
+    @ApiOperation(value = "删除薪酬类型", tags = {"薪酬类型" },  notes = "删除薪酬类型")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/saltypes/{saltype_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("saltype_id") String saltype_id) {
@@ -76,7 +76,7 @@ public class SalTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.saltypeService.getSaltypeByIds(#ids),'ehr-SalType-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SalType" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除薪酬类型", tags = {"薪酬类型" },  notes = "批量删除薪酬类型")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/saltypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         saltypeService.removeBatch(ids);
@@ -84,14 +84,14 @@ public class SalTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.saltypeMapping.toDomain(#saltypedto),'ehr-SalType-Save')")
-    @ApiOperation(value = "Save", tags = {"SalType" },  notes = "Save")
+    @ApiOperation(value = "保存薪酬类型", tags = {"薪酬类型" },  notes = "保存薪酬类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/saltypes/save")
     public ResponseEntity<Boolean> save(@RequestBody SalTypeDTO saltypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(saltypeService.save(saltypeMapping.toDomain(saltypedto)));
     }
 
     @PreAuthorize("hasPermission(this.saltypeMapping.toDomain(#saltypedtos),'ehr-SalType-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SalType" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存薪酬类型", tags = {"薪酬类型" },  notes = "批量保存薪酬类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/saltypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SalTypeDTO> saltypedtos) {
         saltypeService.saveBatch(saltypeMapping.toDomain(saltypedtos));
@@ -99,7 +99,7 @@ public class SalTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.saltypeMapping.toDomain(#saltypedto),'ehr-SalType-Create')")
-    @ApiOperation(value = "Create", tags = {"SalType" },  notes = "Create")
+    @ApiOperation(value = "新建薪酬类型", tags = {"薪酬类型" },  notes = "新建薪酬类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/saltypes")
     @Transactional
     public ResponseEntity<SalTypeDTO> create(@RequestBody SalTypeDTO saltypedto) {
@@ -110,7 +110,7 @@ public class SalTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.saltypeMapping.toDomain(#saltypedtos),'ehr-SalType-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SalType" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建薪酬类型", tags = {"薪酬类型" },  notes = "批量新建薪酬类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/saltypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SalTypeDTO> saltypedtos) {
         saltypeService.createBatch(saltypeMapping.toDomain(saltypedtos));
@@ -118,7 +118,7 @@ public class SalTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.saltypeService.get(#saltype_id),'ehr-SalType-Update')")
-    @ApiOperation(value = "Update", tags = {"SalType" },  notes = "Update")
+    @ApiOperation(value = "更新薪酬类型", tags = {"薪酬类型" },  notes = "更新薪酬类型")
 	@RequestMapping(method = RequestMethod.PUT, value = "/saltypes/{saltype_id}")
     @Transactional
     public ResponseEntity<SalTypeDTO> update(@PathVariable("saltype_id") String saltype_id, @RequestBody SalTypeDTO saltypedto) {
@@ -130,7 +130,7 @@ public class SalTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.saltypeService.getSaltypeByEntities(this.saltypeMapping.toDomain(#saltypedtos)),'ehr-SalType-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SalType" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新薪酬类型", tags = {"薪酬类型" },  notes = "批量更新薪酬类型")
 	@RequestMapping(method = RequestMethod.PUT, value = "/saltypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SalTypeDTO> saltypedtos) {
         saltypeService.updateBatch(saltypeMapping.toDomain(saltypedtos));
@@ -138,7 +138,7 @@ public class SalTypeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalType-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SalType" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"薪酬类型" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/saltypes/fetchdefault")
 	public ResponseEntity<List<SalTypeDTO>> fetchDefault(SalTypeSearchContext context) {
         Page<SalType> domains = saltypeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SalTypeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalType-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SalType" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"薪酬类型" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/saltypes/searchdefault")
 	public ResponseEntity<Page<SalTypeDTO>> searchDefault(@RequestBody SalTypeSearchContext context) {
         Page<SalType> domains = saltypeService.searchDefault(context) ;

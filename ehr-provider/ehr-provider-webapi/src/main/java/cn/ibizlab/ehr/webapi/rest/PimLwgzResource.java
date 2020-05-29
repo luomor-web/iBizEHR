@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimLwgzService;
 import cn.ibizlab.ehr.core.pim.filter.PimLwgzSearchContext;
 
 @Slf4j
-@Api(tags = {"PimLwgz" })
+@Api(tags = {"轮岗规则" })
 @RestController("WebApi-pimlwgz")
 @RequestMapping("")
 public class PimLwgzResource {
@@ -47,7 +47,7 @@ public class PimLwgzResource {
     public PimLwgzMapping pimlwgzMapping;
 
     @PreAuthorize("hasPermission(this.pimlwgzMapping.toDomain(#pimlwgzdto),'ehr-PimLwgz-Create')")
-    @ApiOperation(value = "Create", tags = {"PimLwgz" },  notes = "Create")
+    @ApiOperation(value = "新建轮岗规则", tags = {"轮岗规则" },  notes = "新建轮岗规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs")
     @Transactional
     public ResponseEntity<PimLwgzDTO> create(@RequestBody PimLwgzDTO pimlwgzdto) {
@@ -58,7 +58,7 @@ public class PimLwgzResource {
     }
 
     @PreAuthorize("hasPermission(this.pimlwgzMapping.toDomain(#pimlwgzdtos),'ehr-PimLwgz-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimLwgz" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建轮岗规则", tags = {"轮岗规则" },  notes = "批量新建轮岗规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimLwgzDTO> pimlwgzdtos) {
         pimlwgzService.createBatch(pimlwgzMapping.toDomain(pimlwgzdtos));
@@ -66,7 +66,7 @@ public class PimLwgzResource {
     }
 
     @PostAuthorize("hasPermission(this.pimlwgzMapping.toDomain(returnObject.body),'ehr-PimLwgz-Get')")
-    @ApiOperation(value = "Get", tags = {"PimLwgz" },  notes = "Get")
+    @ApiOperation(value = "获取轮岗规则", tags = {"轮岗规则" },  notes = "获取轮岗规则")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimlwgzs/{pimlwgz_id}")
     public ResponseEntity<PimLwgzDTO> get(@PathVariable("pimlwgz_id") String pimlwgz_id) {
         PimLwgz domain = pimlwgzService.get(pimlwgz_id);
@@ -75,7 +75,7 @@ public class PimLwgzResource {
     }
 
     @PreAuthorize("hasPermission(this.pimlwgzService.get(#pimlwgz_id),'ehr-PimLwgz-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimLwgz" },  notes = "Remove")
+    @ApiOperation(value = "删除轮岗规则", tags = {"轮岗规则" },  notes = "删除轮岗规则")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimlwgzs/{pimlwgz_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimlwgz_id") String pimlwgz_id) {
@@ -83,28 +83,28 @@ public class PimLwgzResource {
     }
 
     @PreAuthorize("hasPermission(this.pimlwgzService.getPimlwgzByIds(#ids),'ehr-PimLwgz-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimLwgz" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除轮岗规则", tags = {"轮岗规则" },  notes = "批量删除轮岗规则")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimlwgzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimlwgzService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimLwgz" },  notes = "GetDraft")
+    @ApiOperation(value = "获取轮岗规则草稿", tags = {"轮岗规则" },  notes = "获取轮岗规则草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimlwgzs/getdraft")
     public ResponseEntity<PimLwgzDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimlwgzMapping.toDto(pimlwgzService.getDraft(new PimLwgz())));
     }
 
     @PreAuthorize("hasPermission(this.pimlwgzMapping.toDomain(#pimlwgzdto),'ehr-PimLwgz-Save')")
-    @ApiOperation(value = "Save", tags = {"PimLwgz" },  notes = "Save")
+    @ApiOperation(value = "保存轮岗规则", tags = {"轮岗规则" },  notes = "保存轮岗规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs/save")
     public ResponseEntity<Boolean> save(@RequestBody PimLwgzDTO pimlwgzdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimlwgzService.save(pimlwgzMapping.toDomain(pimlwgzdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimlwgzMapping.toDomain(#pimlwgzdtos),'ehr-PimLwgz-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimLwgz" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存轮岗规则", tags = {"轮岗规则" },  notes = "批量保存轮岗规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimLwgzDTO> pimlwgzdtos) {
         pimlwgzService.saveBatch(pimlwgzMapping.toDomain(pimlwgzdtos));
@@ -112,7 +112,7 @@ public class PimLwgzResource {
     }
 
     @PreAuthorize("hasPermission(this.pimlwgzService.get(#pimlwgz_id),'ehr-PimLwgz-Update')")
-    @ApiOperation(value = "Update", tags = {"PimLwgz" },  notes = "Update")
+    @ApiOperation(value = "更新轮岗规则", tags = {"轮岗规则" },  notes = "更新轮岗规则")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimlwgzs/{pimlwgz_id}")
     @Transactional
     public ResponseEntity<PimLwgzDTO> update(@PathVariable("pimlwgz_id") String pimlwgz_id, @RequestBody PimLwgzDTO pimlwgzdto) {
@@ -124,21 +124,21 @@ public class PimLwgzResource {
     }
 
     @PreAuthorize("hasPermission(this.pimlwgzService.getPimlwgzByEntities(this.pimlwgzMapping.toDomain(#pimlwgzdtos)),'ehr-PimLwgz-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimLwgz" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新轮岗规则", tags = {"轮岗规则" },  notes = "批量更新轮岗规则")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimlwgzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimLwgzDTO> pimlwgzdtos) {
         pimlwgzService.updateBatch(pimlwgzMapping.toDomain(pimlwgzdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimLwgz" },  notes = "CheckKey")
+    @ApiOperation(value = "检查轮岗规则", tags = {"轮岗规则" },  notes = "检查轮岗规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlwgzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimLwgzDTO pimlwgzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimlwgzService.checkKey(pimlwgzMapping.toDomain(pimlwgzdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLwgz-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimLwgz" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"轮岗规则" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimlwgzs/fetchdefault")
 	public ResponseEntity<List<PimLwgzDTO>> fetchDefault(PimLwgzSearchContext context) {
         Page<PimLwgz> domains = pimlwgzService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimLwgzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLwgz-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimLwgz" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"轮岗规则" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimlwgzs/searchdefault")
 	public ResponseEntity<Page<PimLwgzDTO>> searchDefault(@RequestBody PimLwgzSearchContext context) {
         Page<PimLwgz> domains = pimlwgzService.searchDefault(context) ;

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.par.service.IParLdkhqzService;
 import cn.ibizlab.ehr.core.par.filter.ParLdkhqzSearchContext;
 
 @Slf4j
-@Api(tags = {"ParLdkhqz" })
+@Api(tags = {"评分权重分配" })
 @RestController("WebApi-parldkhqz")
 @RequestMapping("")
 public class ParLdkhqzResource {
@@ -46,14 +46,14 @@ public class ParLdkhqzResource {
     @Lazy
     public ParLdkhqzMapping parldkhqzMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"ParLdkhqz" },  notes = "CheckKey")
+    @ApiOperation(value = "检查评分权重分配", tags = {"评分权重分配" },  notes = "检查评分权重分配")
 	@RequestMapping(method = RequestMethod.POST, value = "/parldkhqzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ParLdkhqzDTO parldkhqzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parldkhqzService.checkKey(parldkhqzMapping.toDomain(parldkhqzdto)));
     }
 
     @PreAuthorize("hasPermission(this.parldkhqzMapping.toDomain(#parldkhqzdto),'ehr-ParLdkhqz-Create')")
-    @ApiOperation(value = "Create", tags = {"ParLdkhqz" },  notes = "Create")
+    @ApiOperation(value = "新建评分权重分配", tags = {"评分权重分配" },  notes = "新建评分权重分配")
 	@RequestMapping(method = RequestMethod.POST, value = "/parldkhqzs")
     @Transactional
     public ResponseEntity<ParLdkhqzDTO> create(@RequestBody ParLdkhqzDTO parldkhqzdto) {
@@ -64,21 +64,21 @@ public class ParLdkhqzResource {
     }
 
     @PreAuthorize("hasPermission(this.parldkhqzMapping.toDomain(#parldkhqzdtos),'ehr-ParLdkhqz-Create')")
-    @ApiOperation(value = "createBatch", tags = {"ParLdkhqz" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建评分权重分配", tags = {"评分权重分配" },  notes = "批量新建评分权重分配")
 	@RequestMapping(method = RequestMethod.POST, value = "/parldkhqzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ParLdkhqzDTO> parldkhqzdtos) {
         parldkhqzService.createBatch(parldkhqzMapping.toDomain(parldkhqzdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"ParLdkhqz" },  notes = "GetDraft")
+    @ApiOperation(value = "获取评分权重分配草稿", tags = {"评分权重分配" },  notes = "获取评分权重分配草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/parldkhqzs/getdraft")
     public ResponseEntity<ParLdkhqzDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(parldkhqzMapping.toDto(parldkhqzService.getDraft(new ParLdkhqz())));
     }
 
     @PostAuthorize("hasPermission(this.parldkhqzMapping.toDomain(returnObject.body),'ehr-ParLdkhqz-Get')")
-    @ApiOperation(value = "Get", tags = {"ParLdkhqz" },  notes = "Get")
+    @ApiOperation(value = "获取评分权重分配", tags = {"评分权重分配" },  notes = "获取评分权重分配")
 	@RequestMapping(method = RequestMethod.GET, value = "/parldkhqzs/{parldkhqz_id}")
     public ResponseEntity<ParLdkhqzDTO> get(@PathVariable("parldkhqz_id") String parldkhqz_id) {
         ParLdkhqz domain = parldkhqzService.get(parldkhqz_id);
@@ -87,7 +87,7 @@ public class ParLdkhqzResource {
     }
 
     @PreAuthorize("hasPermission(this.parldkhqzService.get(#parldkhqz_id),'ehr-ParLdkhqz-Remove')")
-    @ApiOperation(value = "Remove", tags = {"ParLdkhqz" },  notes = "Remove")
+    @ApiOperation(value = "删除评分权重分配", tags = {"评分权重分配" },  notes = "删除评分权重分配")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parldkhqzs/{parldkhqz_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("parldkhqz_id") String parldkhqz_id) {
@@ -95,7 +95,7 @@ public class ParLdkhqzResource {
     }
 
     @PreAuthorize("hasPermission(this.parldkhqzService.getParldkhqzByIds(#ids),'ehr-ParLdkhqz-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"ParLdkhqz" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除评分权重分配", tags = {"评分权重分配" },  notes = "批量删除评分权重分配")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parldkhqzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         parldkhqzService.removeBatch(ids);
@@ -103,14 +103,14 @@ public class ParLdkhqzResource {
     }
 
     @PreAuthorize("hasPermission(this.parldkhqzMapping.toDomain(#parldkhqzdto),'ehr-ParLdkhqz-Save')")
-    @ApiOperation(value = "Save", tags = {"ParLdkhqz" },  notes = "Save")
+    @ApiOperation(value = "保存评分权重分配", tags = {"评分权重分配" },  notes = "保存评分权重分配")
 	@RequestMapping(method = RequestMethod.POST, value = "/parldkhqzs/save")
     public ResponseEntity<Boolean> save(@RequestBody ParLdkhqzDTO parldkhqzdto) {
         return ResponseEntity.status(HttpStatus.OK).body(parldkhqzService.save(parldkhqzMapping.toDomain(parldkhqzdto)));
     }
 
     @PreAuthorize("hasPermission(this.parldkhqzMapping.toDomain(#parldkhqzdtos),'ehr-ParLdkhqz-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"ParLdkhqz" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存评分权重分配", tags = {"评分权重分配" },  notes = "批量保存评分权重分配")
 	@RequestMapping(method = RequestMethod.POST, value = "/parldkhqzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ParLdkhqzDTO> parldkhqzdtos) {
         parldkhqzService.saveBatch(parldkhqzMapping.toDomain(parldkhqzdtos));
@@ -118,7 +118,7 @@ public class ParLdkhqzResource {
     }
 
     @PreAuthorize("hasPermission(this.parldkhqzService.get(#parldkhqz_id),'ehr-ParLdkhqz-Update')")
-    @ApiOperation(value = "Update", tags = {"ParLdkhqz" },  notes = "Update")
+    @ApiOperation(value = "更新评分权重分配", tags = {"评分权重分配" },  notes = "更新评分权重分配")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parldkhqzs/{parldkhqz_id}")
     @Transactional
     public ResponseEntity<ParLdkhqzDTO> update(@PathVariable("parldkhqz_id") String parldkhqz_id, @RequestBody ParLdkhqzDTO parldkhqzdto) {
@@ -130,7 +130,7 @@ public class ParLdkhqzResource {
     }
 
     @PreAuthorize("hasPermission(this.parldkhqzService.getParldkhqzByEntities(this.parldkhqzMapping.toDomain(#parldkhqzdtos)),'ehr-ParLdkhqz-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"ParLdkhqz" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新评分权重分配", tags = {"评分权重分配" },  notes = "批量更新评分权重分配")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parldkhqzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ParLdkhqzDTO> parldkhqzdtos) {
         parldkhqzService.updateBatch(parldkhqzMapping.toDomain(parldkhqzdtos));
@@ -138,7 +138,7 @@ public class ParLdkhqzResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParLdkhqz-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"ParLdkhqz" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"评分权重分配" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/parldkhqzs/fetchdefault")
 	public ResponseEntity<List<ParLdkhqzDTO>> fetchDefault(ParLdkhqzSearchContext context) {
         Page<ParLdkhqz> domains = parldkhqzService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ParLdkhqzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParLdkhqz-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"ParLdkhqz" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"评分权重分配" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/parldkhqzs/searchdefault")
 	public ResponseEntity<Page<ParLdkhqzDTO>> searchDefault(@RequestBody ParLdkhqzSearchContext context) {
         Page<ParLdkhqz> domains = parldkhqzService.searchDefault(context) ;

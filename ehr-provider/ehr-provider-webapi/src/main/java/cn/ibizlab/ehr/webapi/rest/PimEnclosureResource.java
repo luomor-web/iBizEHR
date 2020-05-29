@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimEnclosureService;
 import cn.ibizlab.ehr.core.pim.filter.PimEnclosureSearchContext;
 
 @Slf4j
-@Api(tags = {"PimEnclosure" })
+@Api(tags = {"附件信息" })
 @RestController("WebApi-pimenclosure")
 @RequestMapping("")
 public class PimEnclosureResource {
@@ -46,27 +46,27 @@ public class PimEnclosureResource {
     @Lazy
     public PimEnclosureMapping pimenclosureMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"PimEnclosure" },  notes = "GetDraft")
+    @ApiOperation(value = "获取附件信息草稿", tags = {"附件信息" },  notes = "获取附件信息草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimenclosures/getdraft")
     public ResponseEntity<PimEnclosureDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimenclosureMapping.toDto(pimenclosureService.getDraft(new PimEnclosure())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimEnclosure" },  notes = "CheckKey")
+    @ApiOperation(value = "检查附件信息", tags = {"附件信息" },  notes = "检查附件信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimenclosures/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimEnclosureDTO pimenclosuredto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimenclosureService.checkKey(pimenclosureMapping.toDomain(pimenclosuredto)));
     }
 
     @PreAuthorize("hasPermission(this.pimenclosureMapping.toDomain(#pimenclosuredto),'ehr-PimEnclosure-Save')")
-    @ApiOperation(value = "Save", tags = {"PimEnclosure" },  notes = "Save")
+    @ApiOperation(value = "保存附件信息", tags = {"附件信息" },  notes = "保存附件信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimenclosures/save")
     public ResponseEntity<Boolean> save(@RequestBody PimEnclosureDTO pimenclosuredto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimenclosureService.save(pimenclosureMapping.toDomain(pimenclosuredto)));
     }
 
     @PreAuthorize("hasPermission(this.pimenclosureMapping.toDomain(#pimenclosuredtos),'ehr-PimEnclosure-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimEnclosure" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存附件信息", tags = {"附件信息" },  notes = "批量保存附件信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimenclosures/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimEnclosureDTO> pimenclosuredtos) {
         pimenclosureService.saveBatch(pimenclosureMapping.toDomain(pimenclosuredtos));
@@ -74,7 +74,7 @@ public class PimEnclosureResource {
     }
 
     @PreAuthorize("hasPermission(this.pimenclosureService.get(#pimenclosure_id),'ehr-PimEnclosure-Update')")
-    @ApiOperation(value = "Update", tags = {"PimEnclosure" },  notes = "Update")
+    @ApiOperation(value = "更新附件信息", tags = {"附件信息" },  notes = "更新附件信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimenclosures/{pimenclosure_id}")
     @Transactional
     public ResponseEntity<PimEnclosureDTO> update(@PathVariable("pimenclosure_id") String pimenclosure_id, @RequestBody PimEnclosureDTO pimenclosuredto) {
@@ -86,7 +86,7 @@ public class PimEnclosureResource {
     }
 
     @PreAuthorize("hasPermission(this.pimenclosureService.getPimenclosureByEntities(this.pimenclosureMapping.toDomain(#pimenclosuredtos)),'ehr-PimEnclosure-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimEnclosure" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新附件信息", tags = {"附件信息" },  notes = "批量更新附件信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimenclosures/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimEnclosureDTO> pimenclosuredtos) {
         pimenclosureService.updateBatch(pimenclosureMapping.toDomain(pimenclosuredtos));
@@ -94,7 +94,7 @@ public class PimEnclosureResource {
     }
 
     @PreAuthorize("hasPermission(this.pimenclosureService.get(#pimenclosure_id),'ehr-PimEnclosure-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimEnclosure" },  notes = "Remove")
+    @ApiOperation(value = "删除附件信息", tags = {"附件信息" },  notes = "删除附件信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimenclosures/{pimenclosure_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimenclosure_id") String pimenclosure_id) {
@@ -102,7 +102,7 @@ public class PimEnclosureResource {
     }
 
     @PreAuthorize("hasPermission(this.pimenclosureService.getPimenclosureByIds(#ids),'ehr-PimEnclosure-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimEnclosure" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除附件信息", tags = {"附件信息" },  notes = "批量删除附件信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimenclosures/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimenclosureService.removeBatch(ids);
@@ -110,7 +110,7 @@ public class PimEnclosureResource {
     }
 
     @PreAuthorize("hasPermission(this.pimenclosureMapping.toDomain(#pimenclosuredto),'ehr-PimEnclosure-Create')")
-    @ApiOperation(value = "Create", tags = {"PimEnclosure" },  notes = "Create")
+    @ApiOperation(value = "新建附件信息", tags = {"附件信息" },  notes = "新建附件信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimenclosures")
     @Transactional
     public ResponseEntity<PimEnclosureDTO> create(@RequestBody PimEnclosureDTO pimenclosuredto) {
@@ -121,7 +121,7 @@ public class PimEnclosureResource {
     }
 
     @PreAuthorize("hasPermission(this.pimenclosureMapping.toDomain(#pimenclosuredtos),'ehr-PimEnclosure-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimEnclosure" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建附件信息", tags = {"附件信息" },  notes = "批量新建附件信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimenclosures/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimEnclosureDTO> pimenclosuredtos) {
         pimenclosureService.createBatch(pimenclosureMapping.toDomain(pimenclosuredtos));
@@ -129,7 +129,7 @@ public class PimEnclosureResource {
     }
 
     @PostAuthorize("hasPermission(this.pimenclosureMapping.toDomain(returnObject.body),'ehr-PimEnclosure-Get')")
-    @ApiOperation(value = "Get", tags = {"PimEnclosure" },  notes = "Get")
+    @ApiOperation(value = "获取附件信息", tags = {"附件信息" },  notes = "获取附件信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimenclosures/{pimenclosure_id}")
     public ResponseEntity<PimEnclosureDTO> get(@PathVariable("pimenclosure_id") String pimenclosure_id) {
         PimEnclosure domain = pimenclosureService.get(pimenclosure_id);
@@ -138,7 +138,7 @@ public class PimEnclosureResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEnclosure-PCMPROFILE_FJ-all')")
-	@ApiOperation(value = "fetch应聘者附件预览", tags = {"PimEnclosure" } ,notes = "fetch应聘者附件预览")
+	@ApiOperation(value = "获取应聘者附件预览", tags = {"附件信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimenclosures/fetchpcmprofile_fj")
 	public ResponseEntity<List<PimEnclosureDTO>> fetchPCMPROFILE_FJ(PimEnclosureSearchContext context) {
         Page<PimEnclosure> domains = pimenclosureService.searchPCMPROFILE_FJ(context) ;
@@ -151,7 +151,7 @@ public class PimEnclosureResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEnclosure-PCMPROFILE_FJ-all')")
-	@ApiOperation(value = "search应聘者附件预览", tags = {"PimEnclosure" } ,notes = "search应聘者附件预览")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"附件信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimenclosures/searchpcmprofile_fj")
 	public ResponseEntity<Page<PimEnclosureDTO>> searchPCMPROFILE_FJ(@RequestBody PimEnclosureSearchContext context) {
         Page<PimEnclosure> domains = pimenclosureService.searchPCMPROFILE_FJ(context) ;
@@ -159,7 +159,7 @@ public class PimEnclosureResource {
                 .body(new PageImpl(pimenclosureMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEnclosure-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimEnclosure" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"附件信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimenclosures/fetchdefault")
 	public ResponseEntity<List<PimEnclosureDTO>> fetchDefault(PimEnclosureSearchContext context) {
         Page<PimEnclosure> domains = pimenclosureService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class PimEnclosureResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimEnclosure-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimEnclosure" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"附件信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimenclosures/searchdefault")
 	public ResponseEntity<Page<PimEnclosureDTO>> searchDefault(@RequestBody PimEnclosureSearchContext context) {
         Page<PimEnclosure> domains = pimenclosureService.searchDefault(context) ;

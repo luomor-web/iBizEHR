@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmRecruitmentService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmRecruitmentSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmRecruitment" })
+@Api(tags = {"内部招聘信息" })
 @RestController("WebApi-pcmrecruitment")
 @RequestMapping("")
 public class PcmRecruitmentResource {
@@ -46,14 +46,14 @@ public class PcmRecruitmentResource {
     @Lazy
     public PcmRecruitmentMapping pcmrecruitmentMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmRecruitment" },  notes = "GetDraft")
+    @ApiOperation(value = "获取内部招聘信息草稿", tags = {"内部招聘信息" },  notes = "获取内部招聘信息草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmrecruitments/getdraft")
     public ResponseEntity<PcmRecruitmentDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmrecruitmentMapping.toDto(pcmrecruitmentService.getDraft(new PcmRecruitment())));
     }
 
     @PostAuthorize("hasPermission(this.pcmrecruitmentMapping.toDomain(returnObject.body),'ehr-PcmRecruitment-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmRecruitment" },  notes = "Get")
+    @ApiOperation(value = "获取内部招聘信息", tags = {"内部招聘信息" },  notes = "获取内部招聘信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmrecruitments/{pcmrecruitment_id}")
     public ResponseEntity<PcmRecruitmentDTO> get(@PathVariable("pcmrecruitment_id") String pcmrecruitment_id) {
         PcmRecruitment domain = pcmrecruitmentService.get(pcmrecruitment_id);
@@ -62,14 +62,14 @@ public class PcmRecruitmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmrecruitmentMapping.toDomain(#pcmrecruitmentdto),'ehr-PcmRecruitment-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmRecruitment" },  notes = "Save")
+    @ApiOperation(value = "保存内部招聘信息", tags = {"内部招聘信息" },  notes = "保存内部招聘信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrecruitments/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmRecruitmentDTO pcmrecruitmentdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmrecruitmentService.save(pcmrecruitmentMapping.toDomain(pcmrecruitmentdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmrecruitmentMapping.toDomain(#pcmrecruitmentdtos),'ehr-PcmRecruitment-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmRecruitment" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存内部招聘信息", tags = {"内部招聘信息" },  notes = "批量保存内部招聘信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrecruitments/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmRecruitmentDTO> pcmrecruitmentdtos) {
         pcmrecruitmentService.saveBatch(pcmrecruitmentMapping.toDomain(pcmrecruitmentdtos));
@@ -77,7 +77,7 @@ public class PcmRecruitmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmrecruitmentMapping.toDomain(#pcmrecruitmentdto),'ehr-PcmRecruitment-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmRecruitment" },  notes = "Create")
+    @ApiOperation(value = "新建内部招聘信息", tags = {"内部招聘信息" },  notes = "新建内部招聘信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrecruitments")
     @Transactional
     public ResponseEntity<PcmRecruitmentDTO> create(@RequestBody PcmRecruitmentDTO pcmrecruitmentdto) {
@@ -88,21 +88,21 @@ public class PcmRecruitmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmrecruitmentMapping.toDomain(#pcmrecruitmentdtos),'ehr-PcmRecruitment-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmRecruitment" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建内部招聘信息", tags = {"内部招聘信息" },  notes = "批量新建内部招聘信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrecruitments/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmRecruitmentDTO> pcmrecruitmentdtos) {
         pcmrecruitmentService.createBatch(pcmrecruitmentMapping.toDomain(pcmrecruitmentdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmRecruitment" },  notes = "CheckKey")
+    @ApiOperation(value = "检查内部招聘信息", tags = {"内部招聘信息" },  notes = "检查内部招聘信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmrecruitments/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmRecruitmentDTO pcmrecruitmentdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmrecruitmentService.checkKey(pcmrecruitmentMapping.toDomain(pcmrecruitmentdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmrecruitmentService.get(#pcmrecruitment_id),'ehr-PcmRecruitment-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmRecruitment" },  notes = "Update")
+    @ApiOperation(value = "更新内部招聘信息", tags = {"内部招聘信息" },  notes = "更新内部招聘信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmrecruitments/{pcmrecruitment_id}")
     @Transactional
     public ResponseEntity<PcmRecruitmentDTO> update(@PathVariable("pcmrecruitment_id") String pcmrecruitment_id, @RequestBody PcmRecruitmentDTO pcmrecruitmentdto) {
@@ -114,7 +114,7 @@ public class PcmRecruitmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmrecruitmentService.getPcmrecruitmentByEntities(this.pcmrecruitmentMapping.toDomain(#pcmrecruitmentdtos)),'ehr-PcmRecruitment-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmRecruitment" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新内部招聘信息", tags = {"内部招聘信息" },  notes = "批量更新内部招聘信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmrecruitments/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmRecruitmentDTO> pcmrecruitmentdtos) {
         pcmrecruitmentService.updateBatch(pcmrecruitmentMapping.toDomain(pcmrecruitmentdtos));
@@ -122,7 +122,7 @@ public class PcmRecruitmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmrecruitmentService.get(#pcmrecruitment_id),'ehr-PcmRecruitment-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmRecruitment" },  notes = "Remove")
+    @ApiOperation(value = "删除内部招聘信息", tags = {"内部招聘信息" },  notes = "删除内部招聘信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmrecruitments/{pcmrecruitment_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmrecruitment_id") String pcmrecruitment_id) {
@@ -130,7 +130,7 @@ public class PcmRecruitmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmrecruitmentService.getPcmrecruitmentByIds(#ids),'ehr-PcmRecruitment-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmRecruitment" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除内部招聘信息", tags = {"内部招聘信息" },  notes = "批量删除内部招聘信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmrecruitments/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmrecruitmentService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class PcmRecruitmentResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRecruitment-NBZP-all')")
-	@ApiOperation(value = "fetch内部招聘信息", tags = {"PcmRecruitment" } ,notes = "fetch内部招聘信息")
+	@ApiOperation(value = "获取内部招聘信息", tags = {"内部招聘信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrecruitments/fetchnbzp")
 	public ResponseEntity<List<PcmRecruitmentDTO>> fetchNBZP(PcmRecruitmentSearchContext context) {
         Page<PcmRecruitment> domains = pcmrecruitmentService.searchNBZP(context) ;
@@ -151,7 +151,7 @@ public class PcmRecruitmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRecruitment-NBZP-all')")
-	@ApiOperation(value = "search内部招聘信息", tags = {"PcmRecruitment" } ,notes = "search内部招聘信息")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"内部招聘信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrecruitments/searchnbzp")
 	public ResponseEntity<Page<PcmRecruitmentDTO>> searchNBZP(@RequestBody PcmRecruitmentSearchContext context) {
         Page<PcmRecruitment> domains = pcmrecruitmentService.searchNBZP(context) ;
@@ -159,7 +159,7 @@ public class PcmRecruitmentResource {
                 .body(new PageImpl(pcmrecruitmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRecruitment-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmRecruitment" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"内部招聘信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmrecruitments/fetchdefault")
 	public ResponseEntity<List<PcmRecruitmentDTO>> fetchDefault(PcmRecruitmentSearchContext context) {
         Page<PcmRecruitment> domains = pcmrecruitmentService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class PcmRecruitmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmRecruitment-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmRecruitment" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"内部招聘信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmrecruitments/searchdefault")
 	public ResponseEntity<Page<PcmRecruitmentDTO>> searchDefault(@RequestBody PcmRecruitmentSearchContext context) {
         Page<PcmRecruitment> domains = pcmrecruitmentService.searchDefault(context) ;

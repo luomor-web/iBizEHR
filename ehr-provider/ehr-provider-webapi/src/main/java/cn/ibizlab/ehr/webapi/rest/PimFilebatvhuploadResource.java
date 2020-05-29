@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimFilebatvhuploadService;
 import cn.ibizlab.ehr.core.pim.filter.PimFilebatvhuploadSearchContext;
 
 @Slf4j
-@Api(tags = {"PimFilebatvhupload" })
+@Api(tags = {"附件批量上传" })
 @RestController("WebApi-pimfilebatvhupload")
 @RequestMapping("")
 public class PimFilebatvhuploadResource {
@@ -47,14 +47,14 @@ public class PimFilebatvhuploadResource {
     public PimFilebatvhuploadMapping pimfilebatvhuploadMapping;
 
     @PreAuthorize("hasPermission(this.pimfilebatvhuploadMapping.toDomain(#pimfilebatvhuploaddto),'ehr-PimFilebatvhupload-Save')")
-    @ApiOperation(value = "Save", tags = {"PimFilebatvhupload" },  notes = "Save")
+    @ApiOperation(value = "保存附件批量上传", tags = {"附件批量上传" },  notes = "保存附件批量上传")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimfilebatvhuploads/save")
     public ResponseEntity<Boolean> save(@RequestBody PimFilebatvhuploadDTO pimfilebatvhuploaddto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimfilebatvhuploadService.save(pimfilebatvhuploadMapping.toDomain(pimfilebatvhuploaddto)));
     }
 
     @PreAuthorize("hasPermission(this.pimfilebatvhuploadMapping.toDomain(#pimfilebatvhuploaddtos),'ehr-PimFilebatvhupload-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimFilebatvhupload" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存附件批量上传", tags = {"附件批量上传" },  notes = "批量保存附件批量上传")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimfilebatvhuploads/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimFilebatvhuploadDTO> pimfilebatvhuploaddtos) {
         pimfilebatvhuploadService.saveBatch(pimfilebatvhuploadMapping.toDomain(pimfilebatvhuploaddtos));
@@ -62,7 +62,7 @@ public class PimFilebatvhuploadResource {
     }
 
     @PostAuthorize("hasPermission(this.pimfilebatvhuploadMapping.toDomain(returnObject.body),'ehr-PimFilebatvhupload-Get')")
-    @ApiOperation(value = "Get", tags = {"PimFilebatvhupload" },  notes = "Get")
+    @ApiOperation(value = "获取附件批量上传", tags = {"附件批量上传" },  notes = "获取附件批量上传")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimfilebatvhuploads/{pimfilebatvhupload_id}")
     public ResponseEntity<PimFilebatvhuploadDTO> get(@PathVariable("pimfilebatvhupload_id") String pimfilebatvhupload_id) {
         PimFilebatvhupload domain = pimfilebatvhuploadService.get(pimfilebatvhupload_id);
@@ -70,14 +70,14 @@ public class PimFilebatvhuploadResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimFilebatvhupload" },  notes = "CheckKey")
+    @ApiOperation(value = "检查附件批量上传", tags = {"附件批量上传" },  notes = "检查附件批量上传")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimfilebatvhuploads/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimFilebatvhuploadDTO pimfilebatvhuploaddto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimfilebatvhuploadService.checkKey(pimfilebatvhuploadMapping.toDomain(pimfilebatvhuploaddto)));
     }
 
     @PreAuthorize("hasPermission(this.pimfilebatvhuploadService.get(#pimfilebatvhupload_id),'ehr-PimFilebatvhupload-Update')")
-    @ApiOperation(value = "Update", tags = {"PimFilebatvhupload" },  notes = "Update")
+    @ApiOperation(value = "更新附件批量上传", tags = {"附件批量上传" },  notes = "更新附件批量上传")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimfilebatvhuploads/{pimfilebatvhupload_id}")
     @Transactional
     public ResponseEntity<PimFilebatvhuploadDTO> update(@PathVariable("pimfilebatvhupload_id") String pimfilebatvhupload_id, @RequestBody PimFilebatvhuploadDTO pimfilebatvhuploaddto) {
@@ -89,7 +89,7 @@ public class PimFilebatvhuploadResource {
     }
 
     @PreAuthorize("hasPermission(this.pimfilebatvhuploadService.getPimfilebatvhuploadByEntities(this.pimfilebatvhuploadMapping.toDomain(#pimfilebatvhuploaddtos)),'ehr-PimFilebatvhupload-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimFilebatvhupload" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新附件批量上传", tags = {"附件批量上传" },  notes = "批量更新附件批量上传")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimfilebatvhuploads/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimFilebatvhuploadDTO> pimfilebatvhuploaddtos) {
         pimfilebatvhuploadService.updateBatch(pimfilebatvhuploadMapping.toDomain(pimfilebatvhuploaddtos));
@@ -97,7 +97,7 @@ public class PimFilebatvhuploadResource {
     }
 
     @PreAuthorize("hasPermission(this.pimfilebatvhuploadMapping.toDomain(#pimfilebatvhuploaddto),'ehr-PimFilebatvhupload-Create')")
-    @ApiOperation(value = "Create", tags = {"PimFilebatvhupload" },  notes = "Create")
+    @ApiOperation(value = "新建附件批量上传", tags = {"附件批量上传" },  notes = "新建附件批量上传")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimfilebatvhuploads")
     @Transactional
     public ResponseEntity<PimFilebatvhuploadDTO> create(@RequestBody PimFilebatvhuploadDTO pimfilebatvhuploaddto) {
@@ -108,21 +108,21 @@ public class PimFilebatvhuploadResource {
     }
 
     @PreAuthorize("hasPermission(this.pimfilebatvhuploadMapping.toDomain(#pimfilebatvhuploaddtos),'ehr-PimFilebatvhupload-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimFilebatvhupload" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建附件批量上传", tags = {"附件批量上传" },  notes = "批量新建附件批量上传")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimfilebatvhuploads/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimFilebatvhuploadDTO> pimfilebatvhuploaddtos) {
         pimfilebatvhuploadService.createBatch(pimfilebatvhuploadMapping.toDomain(pimfilebatvhuploaddtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimFilebatvhupload" },  notes = "GetDraft")
+    @ApiOperation(value = "获取附件批量上传草稿", tags = {"附件批量上传" },  notes = "获取附件批量上传草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimfilebatvhuploads/getdraft")
     public ResponseEntity<PimFilebatvhuploadDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimfilebatvhuploadMapping.toDto(pimfilebatvhuploadService.getDraft(new PimFilebatvhupload())));
     }
 
     @PreAuthorize("hasPermission(this.pimfilebatvhuploadService.get(#pimfilebatvhupload_id),'ehr-PimFilebatvhupload-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimFilebatvhupload" },  notes = "Remove")
+    @ApiOperation(value = "删除附件批量上传", tags = {"附件批量上传" },  notes = "删除附件批量上传")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimfilebatvhuploads/{pimfilebatvhupload_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimfilebatvhupload_id") String pimfilebatvhupload_id) {
@@ -130,7 +130,7 @@ public class PimFilebatvhuploadResource {
     }
 
     @PreAuthorize("hasPermission(this.pimfilebatvhuploadService.getPimfilebatvhuploadByIds(#ids),'ehr-PimFilebatvhupload-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimFilebatvhupload" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除附件批量上传", tags = {"附件批量上传" },  notes = "批量删除附件批量上传")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimfilebatvhuploads/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimfilebatvhuploadService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class PimFilebatvhuploadResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFilebatvhupload-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimFilebatvhupload" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"附件批量上传" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimfilebatvhuploads/fetchdefault")
 	public ResponseEntity<List<PimFilebatvhuploadDTO>> fetchDefault(PimFilebatvhuploadSearchContext context) {
         Page<PimFilebatvhupload> domains = pimfilebatvhuploadService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimFilebatvhuploadResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimFilebatvhupload-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimFilebatvhupload" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"附件批量上传" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimfilebatvhuploads/searchdefault")
 	public ResponseEntity<Page<PimFilebatvhuploadDTO>> searchDefault(@RequestBody PimFilebatvhuploadSearchContext context) {
         Page<PimFilebatvhupload> domains = pimfilebatvhuploadService.searchDefault(context) ;

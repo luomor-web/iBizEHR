@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.orm.service.IUnitedPersonService;
 import cn.ibizlab.ehr.core.orm.filter.UnitedPersonSearchContext;
 
 @Slf4j
-@Api(tags = {"UnitedPerson" })
+@Api(tags = {"统一身份库" })
 @RestController("WebApi-unitedperson")
 @RequestMapping("")
 public class UnitedPersonResource {
@@ -47,7 +47,7 @@ public class UnitedPersonResource {
     public UnitedPersonMapping unitedpersonMapping;
 
     @PreAuthorize("hasPermission(this.unitedpersonService.get(#unitedperson_id),'ehr-UnitedPerson-Remove')")
-    @ApiOperation(value = "Remove", tags = {"UnitedPerson" },  notes = "Remove")
+    @ApiOperation(value = "删除统一身份库", tags = {"统一身份库" },  notes = "删除统一身份库")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/unitedpeople/{unitedperson_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("unitedperson_id") String unitedperson_id) {
@@ -55,7 +55,7 @@ public class UnitedPersonResource {
     }
 
     @PreAuthorize("hasPermission(this.unitedpersonService.getUnitedpersonByIds(#ids),'ehr-UnitedPerson-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"UnitedPerson" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除统一身份库", tags = {"统一身份库" },  notes = "批量删除统一身份库")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/unitedpeople/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         unitedpersonService.removeBatch(ids);
@@ -63,14 +63,14 @@ public class UnitedPersonResource {
     }
 
     @PreAuthorize("hasPermission(this.unitedpersonMapping.toDomain(#unitedpersondto),'ehr-UnitedPerson-Save')")
-    @ApiOperation(value = "Save", tags = {"UnitedPerson" },  notes = "Save")
+    @ApiOperation(value = "保存统一身份库", tags = {"统一身份库" },  notes = "保存统一身份库")
 	@RequestMapping(method = RequestMethod.POST, value = "/unitedpeople/save")
     public ResponseEntity<Boolean> save(@RequestBody UnitedPersonDTO unitedpersondto) {
         return ResponseEntity.status(HttpStatus.OK).body(unitedpersonService.save(unitedpersonMapping.toDomain(unitedpersondto)));
     }
 
     @PreAuthorize("hasPermission(this.unitedpersonMapping.toDomain(#unitedpersondtos),'ehr-UnitedPerson-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"UnitedPerson" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存统一身份库", tags = {"统一身份库" },  notes = "批量保存统一身份库")
 	@RequestMapping(method = RequestMethod.POST, value = "/unitedpeople/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<UnitedPersonDTO> unitedpersondtos) {
         unitedpersonService.saveBatch(unitedpersonMapping.toDomain(unitedpersondtos));
@@ -78,7 +78,7 @@ public class UnitedPersonResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-GetUnitedUser-all')")
-    @ApiOperation(value = "同步人员", tags = {"UnitedPerson" },  notes = "同步人员")
+    @ApiOperation(value = "同步人员", tags = {"统一身份库" },  notes = "同步人员")
 	@RequestMapping(method = RequestMethod.GET, value = "/unitedpeople/{unitedperson_id}/getuniteduser")
     @Transactional
     public ResponseEntity<UnitedPersonDTO> getUnitedUser(@PathVariable("unitedperson_id") String unitedperson_id, @RequestBody UnitedPersonDTO unitedpersondto) {
@@ -89,14 +89,14 @@ public class UnitedPersonResource {
         return ResponseEntity.status(HttpStatus.OK).body(unitedpersondto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"UnitedPerson" },  notes = "GetDraft")
+    @ApiOperation(value = "获取统一身份库草稿", tags = {"统一身份库" },  notes = "获取统一身份库草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/unitedpeople/getdraft")
     public ResponseEntity<UnitedPersonDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(unitedpersonMapping.toDto(unitedpersonService.getDraft(new UnitedPerson())));
     }
 
     @PreAuthorize("hasPermission(this.unitedpersonMapping.toDomain(#unitedpersondto),'ehr-UnitedPerson-Create')")
-    @ApiOperation(value = "Create", tags = {"UnitedPerson" },  notes = "Create")
+    @ApiOperation(value = "新建统一身份库", tags = {"统一身份库" },  notes = "新建统一身份库")
 	@RequestMapping(method = RequestMethod.POST, value = "/unitedpeople")
     @Transactional
     public ResponseEntity<UnitedPersonDTO> create(@RequestBody UnitedPersonDTO unitedpersondto) {
@@ -107,21 +107,21 @@ public class UnitedPersonResource {
     }
 
     @PreAuthorize("hasPermission(this.unitedpersonMapping.toDomain(#unitedpersondtos),'ehr-UnitedPerson-Create')")
-    @ApiOperation(value = "createBatch", tags = {"UnitedPerson" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建统一身份库", tags = {"统一身份库" },  notes = "批量新建统一身份库")
 	@RequestMapping(method = RequestMethod.POST, value = "/unitedpeople/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<UnitedPersonDTO> unitedpersondtos) {
         unitedpersonService.createBatch(unitedpersonMapping.toDomain(unitedpersondtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"UnitedPerson" },  notes = "CheckKey")
+    @ApiOperation(value = "检查统一身份库", tags = {"统一身份库" },  notes = "检查统一身份库")
 	@RequestMapping(method = RequestMethod.POST, value = "/unitedpeople/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody UnitedPersonDTO unitedpersondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(unitedpersonService.checkKey(unitedpersonMapping.toDomain(unitedpersondto)));
     }
 
     @PostAuthorize("hasPermission(this.unitedpersonMapping.toDomain(returnObject.body),'ehr-UnitedPerson-Get')")
-    @ApiOperation(value = "Get", tags = {"UnitedPerson" },  notes = "Get")
+    @ApiOperation(value = "获取统一身份库", tags = {"统一身份库" },  notes = "获取统一身份库")
 	@RequestMapping(method = RequestMethod.GET, value = "/unitedpeople/{unitedperson_id}")
     public ResponseEntity<UnitedPersonDTO> get(@PathVariable("unitedperson_id") String unitedperson_id) {
         UnitedPerson domain = unitedpersonService.get(unitedperson_id);
@@ -130,7 +130,7 @@ public class UnitedPersonResource {
     }
 
     @PreAuthorize("hasPermission(this.unitedpersonService.get(#unitedperson_id),'ehr-UnitedPerson-Update')")
-    @ApiOperation(value = "Update", tags = {"UnitedPerson" },  notes = "Update")
+    @ApiOperation(value = "更新统一身份库", tags = {"统一身份库" },  notes = "更新统一身份库")
 	@RequestMapping(method = RequestMethod.PUT, value = "/unitedpeople/{unitedperson_id}")
     @Transactional
     public ResponseEntity<UnitedPersonDTO> update(@PathVariable("unitedperson_id") String unitedperson_id, @RequestBody UnitedPersonDTO unitedpersondto) {
@@ -142,7 +142,7 @@ public class UnitedPersonResource {
     }
 
     @PreAuthorize("hasPermission(this.unitedpersonService.getUnitedpersonByEntities(this.unitedpersonMapping.toDomain(#unitedpersondtos)),'ehr-UnitedPerson-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"UnitedPerson" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新统一身份库", tags = {"统一身份库" },  notes = "批量更新统一身份库")
 	@RequestMapping(method = RequestMethod.PUT, value = "/unitedpeople/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<UnitedPersonDTO> unitedpersondtos) {
         unitedpersonService.updateBatch(unitedpersonMapping.toDomain(unitedpersondtos));
@@ -150,7 +150,7 @@ public class UnitedPersonResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"UnitedPerson" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"统一身份库" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/unitedpeople/fetchdefault")
 	public ResponseEntity<List<UnitedPersonDTO>> fetchDefault(UnitedPersonSearchContext context) {
         Page<UnitedPerson> domains = unitedpersonService.searchDefault(context) ;
@@ -163,7 +163,7 @@ public class UnitedPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"UnitedPerson" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"统一身份库" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/unitedpeople/searchdefault")
 	public ResponseEntity<Page<UnitedPersonDTO>> searchDefault(@RequestBody UnitedPersonSearchContext context) {
         Page<UnitedPerson> domains = unitedpersonService.searchDefault(context) ;
@@ -171,7 +171,7 @@ public class UnitedPersonResource {
                 .body(new PageImpl(unitedpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CXYH-all')")
-	@ApiOperation(value = "fetch查询可用的OID用户", tags = {"UnitedPerson" } ,notes = "fetch查询可用的OID用户")
+	@ApiOperation(value = "获取查询可用的OID用户", tags = {"统一身份库" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/unitedpeople/fetchcxyh")
 	public ResponseEntity<List<UnitedPersonDTO>> fetchCXYH(UnitedPersonSearchContext context) {
         Page<UnitedPerson> domains = unitedpersonService.searchCXYH(context) ;
@@ -184,7 +184,7 @@ public class UnitedPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CXYH-all')")
-	@ApiOperation(value = "search查询可用的OID用户", tags = {"UnitedPerson" } ,notes = "search查询可用的OID用户")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"统一身份库" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/unitedpeople/searchcxyh")
 	public ResponseEntity<Page<UnitedPersonDTO>> searchCXYH(@RequestBody UnitedPersonSearchContext context) {
         Page<UnitedPerson> domains = unitedpersonService.searchCXYH(context) ;
@@ -192,7 +192,7 @@ public class UnitedPersonResource {
                 .body(new PageImpl(unitedpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CurFQXJYH-all')")
-	@ApiOperation(value = "fetch新建用户", tags = {"UnitedPerson" } ,notes = "fetch新建用户")
+	@ApiOperation(value = "获取新建用户", tags = {"统一身份库" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/unitedpeople/fetchcurfqxjyh")
 	public ResponseEntity<List<UnitedPersonDTO>> fetchCurFQXJYH(UnitedPersonSearchContext context) {
         Page<UnitedPerson> domains = unitedpersonService.searchCurFQXJYH(context) ;
@@ -205,7 +205,7 @@ public class UnitedPersonResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-UnitedPerson-CurFQXJYH-all')")
-	@ApiOperation(value = "search新建用户", tags = {"UnitedPerson" } ,notes = "search新建用户")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"统一身份库" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/unitedpeople/searchcurfqxjyh")
 	public ResponseEntity<Page<UnitedPersonDTO>> searchCurFQXJYH(@RequestBody UnitedPersonSearchContext context) {
         Page<UnitedPerson> domains = unitedpersonService.searchCurFQXJYH(context) ;

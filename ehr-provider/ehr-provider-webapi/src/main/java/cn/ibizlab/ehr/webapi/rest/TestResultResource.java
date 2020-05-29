@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.ITestResultService;
 import cn.ibizlab.ehr.core.pcm.filter.TestResultSearchContext;
 
 @Slf4j
-@Api(tags = {"TestResult" })
+@Api(tags = {"测评结果摘要信息" })
 @RestController("WebApi-testresult")
 @RequestMapping("")
 public class TestResultResource {
@@ -46,20 +46,20 @@ public class TestResultResource {
     @Lazy
     public TestResultMapping testresultMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"TestResult" },  notes = "GetDraft")
+    @ApiOperation(value = "获取测评结果摘要信息草稿", tags = {"测评结果摘要信息" },  notes = "获取测评结果摘要信息草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/testresults/getdraft")
     public ResponseEntity<TestResultDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(testresultMapping.toDto(testresultService.getDraft(new TestResult())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TestResult" },  notes = "CheckKey")
+    @ApiOperation(value = "检查测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "检查测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/testresults/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TestResultDTO testresultdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(testresultService.checkKey(testresultMapping.toDomain(testresultdto)));
     }
 
     @PreAuthorize("hasPermission(this.testresultMapping.toDomain(#testresultdto),'ehr-TestResult-Create')")
-    @ApiOperation(value = "Create", tags = {"TestResult" },  notes = "Create")
+    @ApiOperation(value = "新建测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "新建测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/testresults")
     @Transactional
     public ResponseEntity<TestResultDTO> create(@RequestBody TestResultDTO testresultdto) {
@@ -70,7 +70,7 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultMapping.toDomain(#testresultdtos),'ehr-TestResult-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TestResult" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "批量新建测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/testresults/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TestResultDTO> testresultdtos) {
         testresultService.createBatch(testresultMapping.toDomain(testresultdtos));
@@ -78,14 +78,14 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultMapping.toDomain(#testresultdto),'ehr-TestResult-Save')")
-    @ApiOperation(value = "Save", tags = {"TestResult" },  notes = "Save")
+    @ApiOperation(value = "保存测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "保存测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/testresults/save")
     public ResponseEntity<Boolean> save(@RequestBody TestResultDTO testresultdto) {
         return ResponseEntity.status(HttpStatus.OK).body(testresultService.save(testresultMapping.toDomain(testresultdto)));
     }
 
     @PreAuthorize("hasPermission(this.testresultMapping.toDomain(#testresultdtos),'ehr-TestResult-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TestResult" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "批量保存测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/testresults/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TestResultDTO> testresultdtos) {
         testresultService.saveBatch(testresultMapping.toDomain(testresultdtos));
@@ -93,7 +93,7 @@ public class TestResultResource {
     }
 
     @PostAuthorize("hasPermission(this.testresultMapping.toDomain(returnObject.body),'ehr-TestResult-Get')")
-    @ApiOperation(value = "Get", tags = {"TestResult" },  notes = "Get")
+    @ApiOperation(value = "获取测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "获取测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/testresults/{testresult_id}")
     public ResponseEntity<TestResultDTO> get(@PathVariable("testresult_id") String testresult_id) {
         TestResult domain = testresultService.get(testresult_id);
@@ -102,7 +102,7 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultService.get(#testresult_id),'ehr-TestResult-Update')")
-    @ApiOperation(value = "Update", tags = {"TestResult" },  notes = "Update")
+    @ApiOperation(value = "更新测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "更新测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/testresults/{testresult_id}")
     @Transactional
     public ResponseEntity<TestResultDTO> update(@PathVariable("testresult_id") String testresult_id, @RequestBody TestResultDTO testresultdto) {
@@ -114,7 +114,7 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultService.getTestresultByEntities(this.testresultMapping.toDomain(#testresultdtos)),'ehr-TestResult-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TestResult" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "批量更新测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/testresults/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TestResultDTO> testresultdtos) {
         testresultService.updateBatch(testresultMapping.toDomain(testresultdtos));
@@ -122,7 +122,7 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultService.get(#testresult_id),'ehr-TestResult-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TestResult" },  notes = "Remove")
+    @ApiOperation(value = "删除测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "删除测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/testresults/{testresult_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("testresult_id") String testresult_id) {
@@ -130,7 +130,7 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultService.getTestresultByIds(#ids),'ehr-TestResult-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TestResult" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "批量删除测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/testresults/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         testresultService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TestResult" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"测评结果摘要信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/testresults/fetchdefault")
 	public ResponseEntity<List<TestResultDTO>> fetchDefault(TestResultSearchContext context) {
         Page<TestResult> domains = testresultService.searchDefault(context) ;
@@ -151,14 +151,14 @@ public class TestResultResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TestResult" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"测评结果摘要信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/testresults/searchdefault")
 	public ResponseEntity<Page<TestResultDTO>> searchDefault(@RequestBody TestResultSearchContext context) {
         Page<TestResult> domains = testresultService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(testresultMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @ApiOperation(value = "GetDraftByPcmProfile", tags = {"TestResult" },  notes = "GetDraftByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息获取测评结果摘要信息草稿", tags = {"测评结果摘要信息" },  notes = "根据应聘者基本信息获取测评结果摘要信息草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/testresults/getdraft")
     public ResponseEntity<TestResultDTO> getDraftByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id) {
         TestResult domain = new TestResult();
@@ -166,14 +166,14 @@ public class TestResultResource {
         return ResponseEntity.status(HttpStatus.OK).body(testresultMapping.toDto(testresultService.getDraft(domain)));
     }
 
-    @ApiOperation(value = "CheckKeyByPcmProfile", tags = {"TestResult" },  notes = "CheckKeyByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息检查测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "根据应聘者基本信息检查测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/testresults/checkkey")
     public ResponseEntity<Boolean> checkKeyByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TestResultDTO testresultdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(testresultService.checkKey(testresultMapping.toDomain(testresultdto)));
     }
 
     @PreAuthorize("hasPermission(this.testresultMapping.toDomain(#testresultdto),'ehr-TestResult-Create')")
-    @ApiOperation(value = "CreateByPcmProfile", tags = {"TestResult" },  notes = "CreateByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息建立测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "根据应聘者基本信息建立测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/testresults")
     @Transactional
     public ResponseEntity<TestResultDTO> createByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TestResultDTO testresultdto) {
@@ -185,7 +185,7 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultMapping.toDomain(#testresultdtos),'ehr-TestResult-Create')")
-    @ApiOperation(value = "createBatchByPcmProfile", tags = {"TestResult" },  notes = "createBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量建立测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "根据应聘者基本信息批量建立测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/testresults/batch")
     public ResponseEntity<Boolean> createBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TestResultDTO> testresultdtos) {
         List<TestResult> domainlist=testresultMapping.toDomain(testresultdtos);
@@ -197,7 +197,7 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultMapping.toDomain(#testresultdto),'ehr-TestResult-Save')")
-    @ApiOperation(value = "SaveByPcmProfile", tags = {"TestResult" },  notes = "SaveByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息保存测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "根据应聘者基本信息保存测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/testresults/save")
     public ResponseEntity<Boolean> saveByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TestResultDTO testresultdto) {
         TestResult domain = testresultMapping.toDomain(testresultdto);
@@ -206,7 +206,7 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultMapping.toDomain(#testresultdtos),'ehr-TestResult-Save')")
-    @ApiOperation(value = "SaveBatchByPcmProfile", tags = {"TestResult" },  notes = "SaveBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量保存测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "根据应聘者基本信息批量保存测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/testresults/savebatch")
     public ResponseEntity<Boolean> saveBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TestResultDTO> testresultdtos) {
         List<TestResult> domainlist=testresultMapping.toDomain(testresultdtos);
@@ -218,7 +218,7 @@ public class TestResultResource {
     }
 
     @PostAuthorize("hasPermission(this.testresultMapping.toDomain(returnObject.body),'ehr-TestResult-Get')")
-    @ApiOperation(value = "GetByPcmProfile", tags = {"TestResult" },  notes = "GetByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息获取测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "根据应聘者基本信息获取测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/testresults/{testresult_id}")
     public ResponseEntity<TestResultDTO> getByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("testresult_id") String testresult_id) {
         TestResult domain = testresultService.get(testresult_id);
@@ -227,7 +227,7 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultService.get(#testresult_id),'ehr-TestResult-Update')")
-    @ApiOperation(value = "UpdateByPcmProfile", tags = {"TestResult" },  notes = "UpdateByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息更新测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "根据应聘者基本信息更新测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/testresults/{testresult_id}")
     @Transactional
     public ResponseEntity<TestResultDTO> updateByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("testresult_id") String testresult_id, @RequestBody TestResultDTO testresultdto) {
@@ -240,7 +240,7 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultService.getTestresultByEntities(this.testresultMapping.toDomain(#testresultdtos)),'ehr-TestResult-Update')")
-    @ApiOperation(value = "UpdateBatchByPcmProfile", tags = {"TestResult" },  notes = "UpdateBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量更新测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "根据应聘者基本信息批量更新测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/testresults/batch")
     public ResponseEntity<Boolean> updateBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TestResultDTO> testresultdtos) {
         List<TestResult> domainlist=testresultMapping.toDomain(testresultdtos);
@@ -252,7 +252,7 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultService.get(#testresult_id),'ehr-TestResult-Remove')")
-    @ApiOperation(value = "RemoveByPcmProfile", tags = {"TestResult" },  notes = "RemoveByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息删除测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "根据应聘者基本信息删除测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/testresults/{testresult_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("testresult_id") String testresult_id) {
@@ -260,7 +260,7 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultService.getTestresultByIds(#ids),'ehr-TestResult-Remove')")
-    @ApiOperation(value = "RemoveBatchByPcmProfile", tags = {"TestResult" },  notes = "RemoveBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量删除测评结果摘要信息", tags = {"测评结果摘要信息" },  notes = "根据应聘者基本信息批量删除测评结果摘要信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/testresults/batch")
     public ResponseEntity<Boolean> removeBatchByPcmProfile(@RequestBody List<String> ids) {
         testresultService.removeBatch(ids);
@@ -268,7 +268,7 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPcmProfile", tags = {"TestResult" } ,notes = "fetchDEFAULTByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息获取DEFAULT", tags = {"测评结果摘要信息" } ,notes = "根据应聘者基本信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/testresults/fetchdefault")
 	public ResponseEntity<List<TestResultDTO>> fetchTestResultDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id,TestResultSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
@@ -282,7 +282,7 @@ public class TestResultResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPcmProfile", tags = {"TestResult" } ,notes = "searchDEFAULTByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息查询DEFAULT", tags = {"测评结果摘要信息" } ,notes = "根据应聘者基本信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/testresults/searchdefault")
 	public ResponseEntity<Page<TestResultDTO>> searchTestResultDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TestResultSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);

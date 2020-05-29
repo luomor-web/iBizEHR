@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPIMRESEARCHFINDINGSService;
 import cn.ibizlab.ehr.core.pim.filter.PIMRESEARCHFINDINGSSearchContext;
 
 @Slf4j
-@Api(tags = {"PIMRESEARCHFINDINGS" })
+@Api(tags = {"科研成果" })
 @RestController("WebApi-pimresearchfindings")
 @RequestMapping("")
 public class PIMRESEARCHFINDINGSResource {
@@ -47,7 +47,7 @@ public class PIMRESEARCHFINDINGSResource {
     public PIMRESEARCHFINDINGSMapping pimresearchfindingsMapping;
 
     @PreAuthorize("hasPermission(this.pimresearchfindingsService.get(#pimresearchfindings_id),'ehr-PIMRESEARCHFINDINGS-Update')")
-    @ApiOperation(value = "Update", tags = {"PIMRESEARCHFINDINGS" },  notes = "Update")
+    @ApiOperation(value = "更新科研成果", tags = {"科研成果" },  notes = "更新科研成果")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimresearchfindings/{pimresearchfindings_id}")
     @Transactional
     public ResponseEntity<PIMRESEARCHFINDINGSDTO> update(@PathVariable("pimresearchfindings_id") String pimresearchfindings_id, @RequestBody PIMRESEARCHFINDINGSDTO pimresearchfindingsdto) {
@@ -59,7 +59,7 @@ public class PIMRESEARCHFINDINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.pimresearchfindingsService.getPimresearchfindingsByEntities(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdtos)),'ehr-PIMRESEARCHFINDINGS-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PIMRESEARCHFINDINGS" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新科研成果", tags = {"科研成果" },  notes = "批量更新科研成果")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimresearchfindings/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
         pimresearchfindingsService.updateBatch(pimresearchfindingsMapping.toDomain(pimresearchfindingsdtos));
@@ -67,7 +67,7 @@ public class PIMRESEARCHFINDINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.pimresearchfindingsService.get(#pimresearchfindings_id),'ehr-PIMRESEARCHFINDINGS-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PIMRESEARCHFINDINGS" },  notes = "Remove")
+    @ApiOperation(value = "删除科研成果", tags = {"科研成果" },  notes = "删除科研成果")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimresearchfindings/{pimresearchfindings_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimresearchfindings_id") String pimresearchfindings_id) {
@@ -75,7 +75,7 @@ public class PIMRESEARCHFINDINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.pimresearchfindingsService.getPimresearchfindingsByIds(#ids),'ehr-PIMRESEARCHFINDINGS-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PIMRESEARCHFINDINGS" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除科研成果", tags = {"科研成果" },  notes = "批量删除科研成果")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimresearchfindings/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimresearchfindingsService.removeBatch(ids);
@@ -83,7 +83,7 @@ public class PIMRESEARCHFINDINGSResource {
     }
 
     @PostAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(returnObject.body),'ehr-PIMRESEARCHFINDINGS-Get')")
-    @ApiOperation(value = "Get", tags = {"PIMRESEARCHFINDINGS" },  notes = "Get")
+    @ApiOperation(value = "获取科研成果", tags = {"科研成果" },  notes = "获取科研成果")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimresearchfindings/{pimresearchfindings_id}")
     public ResponseEntity<PIMRESEARCHFINDINGSDTO> get(@PathVariable("pimresearchfindings_id") String pimresearchfindings_id) {
         PIMRESEARCHFINDINGS domain = pimresearchfindingsService.get(pimresearchfindings_id);
@@ -91,27 +91,27 @@ public class PIMRESEARCHFINDINGSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PIMRESEARCHFINDINGS" },  notes = "GetDraft")
+    @ApiOperation(value = "获取科研成果草稿", tags = {"科研成果" },  notes = "获取科研成果草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimresearchfindings/getdraft")
     public ResponseEntity<PIMRESEARCHFINDINGSDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsMapping.toDto(pimresearchfindingsService.getDraft(new PIMRESEARCHFINDINGS())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PIMRESEARCHFINDINGS" },  notes = "CheckKey")
+    @ApiOperation(value = "检查科研成果", tags = {"科研成果" },  notes = "检查科研成果")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimresearchfindings/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMRESEARCHFINDINGSDTO pimresearchfindingsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsService.checkKey(pimresearchfindingsMapping.toDomain(pimresearchfindingsdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdto),'ehr-PIMRESEARCHFINDINGS-Save')")
-    @ApiOperation(value = "Save", tags = {"PIMRESEARCHFINDINGS" },  notes = "Save")
+    @ApiOperation(value = "保存科研成果", tags = {"科研成果" },  notes = "保存科研成果")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimresearchfindings/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMRESEARCHFINDINGSDTO pimresearchfindingsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsService.save(pimresearchfindingsMapping.toDomain(pimresearchfindingsdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdtos),'ehr-PIMRESEARCHFINDINGS-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PIMRESEARCHFINDINGS" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存科研成果", tags = {"科研成果" },  notes = "批量保存科研成果")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimresearchfindings/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
         pimresearchfindingsService.saveBatch(pimresearchfindingsMapping.toDomain(pimresearchfindingsdtos));
@@ -119,7 +119,7 @@ public class PIMRESEARCHFINDINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdto),'ehr-PIMRESEARCHFINDINGS-Create')")
-    @ApiOperation(value = "Create", tags = {"PIMRESEARCHFINDINGS" },  notes = "Create")
+    @ApiOperation(value = "新建科研成果", tags = {"科研成果" },  notes = "新建科研成果")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimresearchfindings")
     @Transactional
     public ResponseEntity<PIMRESEARCHFINDINGSDTO> create(@RequestBody PIMRESEARCHFINDINGSDTO pimresearchfindingsdto) {
@@ -130,7 +130,7 @@ public class PIMRESEARCHFINDINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdtos),'ehr-PIMRESEARCHFINDINGS-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PIMRESEARCHFINDINGS" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建科研成果", tags = {"科研成果" },  notes = "批量新建科研成果")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimresearchfindings/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
         pimresearchfindingsService.createBatch(pimresearchfindingsMapping.toDomain(pimresearchfindingsdtos));
@@ -138,7 +138,7 @@ public class PIMRESEARCHFINDINGSResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMRESEARCHFINDINGS" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"科研成果" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimresearchfindings/fetchdefault")
 	public ResponseEntity<List<PIMRESEARCHFINDINGSDTO>> fetchDefault(PIMRESEARCHFINDINGSSearchContext context) {
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PIMRESEARCHFINDINGSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PIMRESEARCHFINDINGS" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"科研成果" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimresearchfindings/searchdefault")
 	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchDefault(@RequestBody PIMRESEARCHFINDINGSSearchContext context) {
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PIMRESEARCHFINDINGSResource {
                 .body(new PageImpl(pimresearchfindingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-JLSSGLY-all')")
-	@ApiOperation(value = "fetch记录所属（管理员）", tags = {"PIMRESEARCHFINDINGS" } ,notes = "fetch记录所属（管理员）")
+	@ApiOperation(value = "获取记录所属（管理员）", tags = {"科研成果" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimresearchfindings/fetchjlssgly")
 	public ResponseEntity<List<PIMRESEARCHFINDINGSDTO>> fetchJLSSGLY(PIMRESEARCHFINDINGSSearchContext context) {
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchJLSSGLY(context) ;
@@ -172,7 +172,7 @@ public class PIMRESEARCHFINDINGSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-JLSSGLY-all')")
-	@ApiOperation(value = "search记录所属（管理员）", tags = {"PIMRESEARCHFINDINGS" } ,notes = "search记录所属（管理员）")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"科研成果" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimresearchfindings/searchjlssgly")
 	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchJLSSGLY(@RequestBody PIMRESEARCHFINDINGSSearchContext context) {
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchJLSSGLY(context) ;
@@ -180,7 +180,7 @@ public class PIMRESEARCHFINDINGSResource {
                 .body(new PageImpl(pimresearchfindingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-JLSSGR-all')")
-	@ApiOperation(value = "fetch记录所属（个人）", tags = {"PIMRESEARCHFINDINGS" } ,notes = "fetch记录所属（个人）")
+	@ApiOperation(value = "获取记录所属（个人）", tags = {"科研成果" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimresearchfindings/fetchjlssgr")
 	public ResponseEntity<List<PIMRESEARCHFINDINGSDTO>> fetchJLSSGR(PIMRESEARCHFINDINGSSearchContext context) {
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchJLSSGR(context) ;
@@ -193,7 +193,7 @@ public class PIMRESEARCHFINDINGSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-JLSSGR-all')")
-	@ApiOperation(value = "search记录所属（个人）", tags = {"PIMRESEARCHFINDINGS" } ,notes = "search记录所属（个人）")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"科研成果" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimresearchfindings/searchjlssgr")
 	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchJLSSGR(@RequestBody PIMRESEARCHFINDINGSSearchContext context) {
         Page<PIMRESEARCHFINDINGS> domains = pimresearchfindingsService.searchJLSSGR(context) ;
@@ -201,7 +201,7 @@ public class PIMRESEARCHFINDINGSResource {
                 .body(new PageImpl(pimresearchfindingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pimresearchfindingsService.get(#pimresearchfindings_id),'ehr-PIMRESEARCHFINDINGS-Update')")
-    @ApiOperation(value = "UpdateByPimPerson", tags = {"PIMRESEARCHFINDINGS" },  notes = "UpdateByPimPerson")
+    @ApiOperation(value = "根据人员信息更新科研成果", tags = {"科研成果" },  notes = "根据人员信息更新科研成果")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimresearchfindings/{pimresearchfindings_id}")
     @Transactional
     public ResponseEntity<PIMRESEARCHFINDINGSDTO> updateByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimresearchfindings_id") String pimresearchfindings_id, @RequestBody PIMRESEARCHFINDINGSDTO pimresearchfindingsdto) {
@@ -214,7 +214,7 @@ public class PIMRESEARCHFINDINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.pimresearchfindingsService.getPimresearchfindingsByEntities(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdtos)),'ehr-PIMRESEARCHFINDINGS-Update')")
-    @ApiOperation(value = "UpdateBatchByPimPerson", tags = {"PIMRESEARCHFINDINGS" },  notes = "UpdateBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量更新科研成果", tags = {"科研成果" },  notes = "根据人员信息批量更新科研成果")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimresearchfindings/batch")
     public ResponseEntity<Boolean> updateBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
         List<PIMRESEARCHFINDINGS> domainlist=pimresearchfindingsMapping.toDomain(pimresearchfindingsdtos);
@@ -226,7 +226,7 @@ public class PIMRESEARCHFINDINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.pimresearchfindingsService.get(#pimresearchfindings_id),'ehr-PIMRESEARCHFINDINGS-Remove')")
-    @ApiOperation(value = "RemoveByPimPerson", tags = {"PIMRESEARCHFINDINGS" },  notes = "RemoveByPimPerson")
+    @ApiOperation(value = "根据人员信息删除科研成果", tags = {"科研成果" },  notes = "根据人员信息删除科研成果")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimresearchfindings/{pimresearchfindings_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimresearchfindings_id") String pimresearchfindings_id) {
@@ -234,7 +234,7 @@ public class PIMRESEARCHFINDINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.pimresearchfindingsService.getPimresearchfindingsByIds(#ids),'ehr-PIMRESEARCHFINDINGS-Remove')")
-    @ApiOperation(value = "RemoveBatchByPimPerson", tags = {"PIMRESEARCHFINDINGS" },  notes = "RemoveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量删除科研成果", tags = {"科研成果" },  notes = "根据人员信息批量删除科研成果")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimresearchfindings/batch")
     public ResponseEntity<Boolean> removeBatchByPimPerson(@RequestBody List<String> ids) {
         pimresearchfindingsService.removeBatch(ids);
@@ -242,7 +242,7 @@ public class PIMRESEARCHFINDINGSResource {
     }
 
     @PostAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(returnObject.body),'ehr-PIMRESEARCHFINDINGS-Get')")
-    @ApiOperation(value = "GetByPimPerson", tags = {"PIMRESEARCHFINDINGS" },  notes = "GetByPimPerson")
+    @ApiOperation(value = "根据人员信息获取科研成果", tags = {"科研成果" },  notes = "根据人员信息获取科研成果")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimresearchfindings/{pimresearchfindings_id}")
     public ResponseEntity<PIMRESEARCHFINDINGSDTO> getByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimresearchfindings_id") String pimresearchfindings_id) {
         PIMRESEARCHFINDINGS domain = pimresearchfindingsService.get(pimresearchfindings_id);
@@ -250,7 +250,7 @@ public class PIMRESEARCHFINDINGSResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraftByPimPerson", tags = {"PIMRESEARCHFINDINGS" },  notes = "GetDraftByPimPerson")
+    @ApiOperation(value = "根据人员信息获取科研成果草稿", tags = {"科研成果" },  notes = "根据人员信息获取科研成果草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimresearchfindings/getdraft")
     public ResponseEntity<PIMRESEARCHFINDINGSDTO> getDraftByPimPerson(@PathVariable("pimperson_id") String pimperson_id) {
         PIMRESEARCHFINDINGS domain = new PIMRESEARCHFINDINGS();
@@ -258,14 +258,14 @@ public class PIMRESEARCHFINDINGSResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsMapping.toDto(pimresearchfindingsService.getDraft(domain)));
     }
 
-    @ApiOperation(value = "CheckKeyByPimPerson", tags = {"PIMRESEARCHFINDINGS" },  notes = "CheckKeyByPimPerson")
+    @ApiOperation(value = "根据人员信息检查科研成果", tags = {"科研成果" },  notes = "根据人员信息检查科研成果")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimresearchfindings/checkkey")
     public ResponseEntity<Boolean> checkKeyByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMRESEARCHFINDINGSDTO pimresearchfindingsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimresearchfindingsService.checkKey(pimresearchfindingsMapping.toDomain(pimresearchfindingsdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdto),'ehr-PIMRESEARCHFINDINGS-Save')")
-    @ApiOperation(value = "SaveByPimPerson", tags = {"PIMRESEARCHFINDINGS" },  notes = "SaveByPimPerson")
+    @ApiOperation(value = "根据人员信息保存科研成果", tags = {"科研成果" },  notes = "根据人员信息保存科研成果")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimresearchfindings/save")
     public ResponseEntity<Boolean> saveByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMRESEARCHFINDINGSDTO pimresearchfindingsdto) {
         PIMRESEARCHFINDINGS domain = pimresearchfindingsMapping.toDomain(pimresearchfindingsdto);
@@ -274,7 +274,7 @@ public class PIMRESEARCHFINDINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdtos),'ehr-PIMRESEARCHFINDINGS-Save')")
-    @ApiOperation(value = "SaveBatchByPimPerson", tags = {"PIMRESEARCHFINDINGS" },  notes = "SaveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量保存科研成果", tags = {"科研成果" },  notes = "根据人员信息批量保存科研成果")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimresearchfindings/savebatch")
     public ResponseEntity<Boolean> saveBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
         List<PIMRESEARCHFINDINGS> domainlist=pimresearchfindingsMapping.toDomain(pimresearchfindingsdtos);
@@ -286,7 +286,7 @@ public class PIMRESEARCHFINDINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdto),'ehr-PIMRESEARCHFINDINGS-Create')")
-    @ApiOperation(value = "CreateByPimPerson", tags = {"PIMRESEARCHFINDINGS" },  notes = "CreateByPimPerson")
+    @ApiOperation(value = "根据人员信息建立科研成果", tags = {"科研成果" },  notes = "根据人员信息建立科研成果")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimresearchfindings")
     @Transactional
     public ResponseEntity<PIMRESEARCHFINDINGSDTO> createByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMRESEARCHFINDINGSDTO pimresearchfindingsdto) {
@@ -298,7 +298,7 @@ public class PIMRESEARCHFINDINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.pimresearchfindingsMapping.toDomain(#pimresearchfindingsdtos),'ehr-PIMRESEARCHFINDINGS-Create')")
-    @ApiOperation(value = "createBatchByPimPerson", tags = {"PIMRESEARCHFINDINGS" },  notes = "createBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量建立科研成果", tags = {"科研成果" },  notes = "根据人员信息批量建立科研成果")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimresearchfindings/batch")
     public ResponseEntity<Boolean> createBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PIMRESEARCHFINDINGSDTO> pimresearchfindingsdtos) {
         List<PIMRESEARCHFINDINGS> domainlist=pimresearchfindingsMapping.toDomain(pimresearchfindingsdtos);
@@ -310,7 +310,7 @@ public class PIMRESEARCHFINDINGSResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPimPerson", tags = {"PIMRESEARCHFINDINGS" } ,notes = "fetchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息获取DEFAULT", tags = {"科研成果" } ,notes = "根据人员信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimresearchfindings/fetchdefault")
 	public ResponseEntity<List<PIMRESEARCHFINDINGSDTO>> fetchPIMRESEARCHFINDINGSDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PIMRESEARCHFINDINGSSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -324,7 +324,7 @@ public class PIMRESEARCHFINDINGSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPimPerson", tags = {"PIMRESEARCHFINDINGS" } ,notes = "searchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息查询DEFAULT", tags = {"科研成果" } ,notes = "根据人员信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimresearchfindings/searchdefault")
 	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchPIMRESEARCHFINDINGSDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMRESEARCHFINDINGSSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -333,7 +333,7 @@ public class PIMRESEARCHFINDINGSResource {
                 .body(new PageImpl(pimresearchfindingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-JLSSGLY-all')")
-	@ApiOperation(value = "fetch记录所属（管理员）ByPimPerson", tags = {"PIMRESEARCHFINDINGS" } ,notes = "fetch记录所属（管理员）ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取记录所属（管理员）", tags = {"科研成果" } ,notes = "根据人员信息获取记录所属（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimresearchfindings/fetchjlssgly")
 	public ResponseEntity<List<PIMRESEARCHFINDINGSDTO>> fetchPIMRESEARCHFINDINGSJLSSGLYByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PIMRESEARCHFINDINGSSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -347,7 +347,7 @@ public class PIMRESEARCHFINDINGSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-JLSSGLY-all')")
-	@ApiOperation(value = "search记录所属（管理员）ByPimPerson", tags = {"PIMRESEARCHFINDINGS" } ,notes = "search记录所属（管理员）ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询记录所属（管理员）", tags = {"科研成果" } ,notes = "根据人员信息查询记录所属（管理员）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimresearchfindings/searchjlssgly")
 	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchPIMRESEARCHFINDINGSJLSSGLYByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMRESEARCHFINDINGSSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -356,7 +356,7 @@ public class PIMRESEARCHFINDINGSResource {
                 .body(new PageImpl(pimresearchfindingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-JLSSGR-all')")
-	@ApiOperation(value = "fetch记录所属（个人）ByPimPerson", tags = {"PIMRESEARCHFINDINGS" } ,notes = "fetch记录所属（个人）ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取记录所属（个人）", tags = {"科研成果" } ,notes = "根据人员信息获取记录所属（个人）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimresearchfindings/fetchjlssgr")
 	public ResponseEntity<List<PIMRESEARCHFINDINGSDTO>> fetchPIMRESEARCHFINDINGSJLSSGRByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PIMRESEARCHFINDINGSSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -370,7 +370,7 @@ public class PIMRESEARCHFINDINGSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMRESEARCHFINDINGS-JLSSGR-all')")
-	@ApiOperation(value = "search记录所属（个人）ByPimPerson", tags = {"PIMRESEARCHFINDINGS" } ,notes = "search记录所属（个人）ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询记录所属（个人）", tags = {"科研成果" } ,notes = "根据人员信息查询记录所属（个人）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimresearchfindings/searchjlssgr")
 	public ResponseEntity<Page<PIMRESEARCHFINDINGSDTO>> searchPIMRESEARCHFINDINGSJLSSGRByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PIMRESEARCHFINDINGSSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);

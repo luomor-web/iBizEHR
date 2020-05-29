@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmSgqMgrService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmSgqMgrSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmSgqMgr" })
+@Api(tags = {"试岗期管理" })
 @RestController("WebApi-pcmsgqmgr")
 @RequestMapping("")
 public class PcmSgqMgrResource {
@@ -47,7 +47,7 @@ public class PcmSgqMgrResource {
     public PcmSgqMgrMapping pcmsgqmgrMapping;
 
     @PreAuthorize("hasPermission(this.pcmsgqmgrService.get(#pcmsgqmgr_id),'ehr-PcmSgqMgr-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmSgqMgr" },  notes = "Remove")
+    @ApiOperation(value = "删除试岗期管理", tags = {"试岗期管理" },  notes = "删除试岗期管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmsgqmgrs/{pcmsgqmgr_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmsgqmgr_id") String pcmsgqmgr_id) {
@@ -55,7 +55,7 @@ public class PcmSgqMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmsgqmgrService.getPcmsgqmgrByIds(#ids),'ehr-PcmSgqMgr-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmSgqMgr" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除试岗期管理", tags = {"试岗期管理" },  notes = "批量删除试岗期管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmsgqmgrs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmsgqmgrService.removeBatch(ids);
@@ -63,7 +63,7 @@ public class PcmSgqMgrResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmSgqMgr-SGTG-all')")
-    @ApiOperation(value = "试岗通过", tags = {"PcmSgqMgr" },  notes = "试岗通过")
+    @ApiOperation(value = "试岗通过", tags = {"试岗期管理" },  notes = "试岗通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs/{pcmsgqmgr_id}/sgtg")
     @Transactional
     public ResponseEntity<PcmSgqMgrDTO> sGTG(@PathVariable("pcmsgqmgr_id") String pcmsgqmgr_id, @RequestBody PcmSgqMgrDTO pcmsgqmgrdto) {
@@ -75,7 +75,7 @@ public class PcmSgqMgrResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmsgqmgrMapping.toDomain(returnObject.body),'ehr-PcmSgqMgr-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmSgqMgr" },  notes = "Get")
+    @ApiOperation(value = "获取试岗期管理", tags = {"试岗期管理" },  notes = "获取试岗期管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmsgqmgrs/{pcmsgqmgr_id}")
     public ResponseEntity<PcmSgqMgrDTO> get(@PathVariable("pcmsgqmgr_id") String pcmsgqmgr_id) {
         PcmSgqMgr domain = pcmsgqmgrService.get(pcmsgqmgr_id);
@@ -84,7 +84,7 @@ public class PcmSgqMgrResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmSgqMgr-SGBTG-all')")
-    @ApiOperation(value = "试岗不通过", tags = {"PcmSgqMgr" },  notes = "试岗不通过")
+    @ApiOperation(value = "试岗不通过", tags = {"试岗期管理" },  notes = "试岗不通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs/{pcmsgqmgr_id}/sgbtg")
     @Transactional
     public ResponseEntity<PcmSgqMgrDTO> sGBTG(@PathVariable("pcmsgqmgr_id") String pcmsgqmgr_id, @RequestBody PcmSgqMgrDTO pcmsgqmgrdto) {
@@ -95,14 +95,14 @@ public class PcmSgqMgrResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmsgqmgrdto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmSgqMgr" },  notes = "CheckKey")
+    @ApiOperation(value = "检查试岗期管理", tags = {"试岗期管理" },  notes = "检查试岗期管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmSgqMgrDTO pcmsgqmgrdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmsgqmgrService.checkKey(pcmsgqmgrMapping.toDomain(pcmsgqmgrdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmsgqmgrService.get(#pcmsgqmgr_id),'ehr-PcmSgqMgr-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmSgqMgr" },  notes = "Update")
+    @ApiOperation(value = "更新试岗期管理", tags = {"试岗期管理" },  notes = "更新试岗期管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmsgqmgrs/{pcmsgqmgr_id}")
     @Transactional
     public ResponseEntity<PcmSgqMgrDTO> update(@PathVariable("pcmsgqmgr_id") String pcmsgqmgr_id, @RequestBody PcmSgqMgrDTO pcmsgqmgrdto) {
@@ -114,7 +114,7 @@ public class PcmSgqMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmsgqmgrService.getPcmsgqmgrByEntities(this.pcmsgqmgrMapping.toDomain(#pcmsgqmgrdtos)),'ehr-PcmSgqMgr-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmSgqMgr" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新试岗期管理", tags = {"试岗期管理" },  notes = "批量更新试岗期管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmsgqmgrs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmSgqMgrDTO> pcmsgqmgrdtos) {
         pcmsgqmgrService.updateBatch(pcmsgqmgrMapping.toDomain(pcmsgqmgrdtos));
@@ -122,7 +122,7 @@ public class PcmSgqMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmsgqmgrMapping.toDomain(#pcmsgqmgrdto),'ehr-PcmSgqMgr-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmSgqMgr" },  notes = "Create")
+    @ApiOperation(value = "新建试岗期管理", tags = {"试岗期管理" },  notes = "新建试岗期管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs")
     @Transactional
     public ResponseEntity<PcmSgqMgrDTO> create(@RequestBody PcmSgqMgrDTO pcmsgqmgrdto) {
@@ -133,7 +133,7 @@ public class PcmSgqMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmsgqmgrMapping.toDomain(#pcmsgqmgrdtos),'ehr-PcmSgqMgr-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmSgqMgr" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建试岗期管理", tags = {"试岗期管理" },  notes = "批量新建试岗期管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmSgqMgrDTO> pcmsgqmgrdtos) {
         pcmsgqmgrService.createBatch(pcmsgqmgrMapping.toDomain(pcmsgqmgrdtos));
@@ -141,28 +141,28 @@ public class PcmSgqMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmsgqmgrMapping.toDomain(#pcmsgqmgrdto),'ehr-PcmSgqMgr-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmSgqMgr" },  notes = "Save")
+    @ApiOperation(value = "保存试岗期管理", tags = {"试岗期管理" },  notes = "保存试岗期管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmSgqMgrDTO pcmsgqmgrdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmsgqmgrService.save(pcmsgqmgrMapping.toDomain(pcmsgqmgrdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmsgqmgrMapping.toDomain(#pcmsgqmgrdtos),'ehr-PcmSgqMgr-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmSgqMgr" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存试岗期管理", tags = {"试岗期管理" },  notes = "批量保存试岗期管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmsgqmgrs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmSgqMgrDTO> pcmsgqmgrdtos) {
         pcmsgqmgrService.saveBatch(pcmsgqmgrMapping.toDomain(pcmsgqmgrdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmSgqMgr" },  notes = "GetDraft")
+    @ApiOperation(value = "获取试岗期管理草稿", tags = {"试岗期管理" },  notes = "获取试岗期管理草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmsgqmgrs/getdraft")
     public ResponseEntity<PcmSgqMgrDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmsgqmgrMapping.toDto(pcmsgqmgrService.getDraft(new PcmSgqMgr())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmSgqMgr-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmSgqMgr" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"试岗期管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmsgqmgrs/fetchdefault")
 	public ResponseEntity<List<PcmSgqMgrDTO>> fetchDefault(PcmSgqMgrSearchContext context) {
         Page<PcmSgqMgr> domains = pcmsgqmgrService.searchDefault(context) ;
@@ -175,7 +175,7 @@ public class PcmSgqMgrResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmSgqMgr-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmSgqMgr" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"试岗期管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmsgqmgrs/searchdefault")
 	public ResponseEntity<Page<PcmSgqMgrDTO>> searchDefault(@RequestBody PcmSgqMgrSearchContext context) {
         Page<PcmSgqMgr> domains = pcmsgqmgrService.searchDefault(context) ;

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimArchivesService;
 import cn.ibizlab.ehr.core.pim.filter.PimArchivesSearchContext;
 
 @Slf4j
-@Api(tags = {"PimArchives" })
+@Api(tags = {"档案信息" })
 @RestController("WebApi-pimarchives")
 @RequestMapping("")
 public class PimArchivesResource {
@@ -47,7 +47,7 @@ public class PimArchivesResource {
     public PimArchivesMapping pimarchivesMapping;
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-GetPersonOrg-all')")
-    @ApiOperation(value = "获取员工组织", tags = {"PimArchives" },  notes = "获取员工组织")
+    @ApiOperation(value = "获取员工组织", tags = {"档案信息" },  notes = "获取员工组织")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchives/{pimarchives_id}/getpersonorg")
     @Transactional
     public ResponseEntity<PimArchivesDTO> getPersonOrg(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchivesDTO pimarchivesdto) {
@@ -58,21 +58,21 @@ public class PimArchivesResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesdto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimArchives" },  notes = "GetDraft")
+    @ApiOperation(value = "获取档案信息草稿", tags = {"档案信息" },  notes = "获取档案信息草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchives/getdraft")
     public ResponseEntity<PimArchivesDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesMapping.toDto(pimarchivesService.getDraft(new PimArchives())));
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesMapping.toDomain(#pimarchivesdto),'ehr-PimArchives-Save')")
-    @ApiOperation(value = "Save", tags = {"PimArchives" },  notes = "Save")
+    @ApiOperation(value = "保存档案信息", tags = {"档案信息" },  notes = "保存档案信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/save")
     public ResponseEntity<Boolean> save(@RequestBody PimArchivesDTO pimarchivesdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesService.save(pimarchivesMapping.toDomain(pimarchivesdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesMapping.toDomain(#pimarchivesdtos),'ehr-PimArchives-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimArchives" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存档案信息", tags = {"档案信息" },  notes = "批量保存档案信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimArchivesDTO> pimarchivesdtos) {
         pimarchivesService.saveBatch(pimarchivesMapping.toDomain(pimarchivesdtos));
@@ -80,7 +80,7 @@ public class PimArchivesResource {
     }
 
     @PostAuthorize("hasPermission(this.pimarchivesMapping.toDomain(returnObject.body),'ehr-PimArchives-Get')")
-    @ApiOperation(value = "Get", tags = {"PimArchives" },  notes = "Get")
+    @ApiOperation(value = "获取档案信息", tags = {"档案信息" },  notes = "获取档案信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchives/{pimarchives_id}")
     public ResponseEntity<PimArchivesDTO> get(@PathVariable("pimarchives_id") String pimarchives_id) {
         PimArchives domain = pimarchivesService.get(pimarchives_id);
@@ -89,7 +89,7 @@ public class PimArchivesResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesService.get(#pimarchives_id),'ehr-PimArchives-Update')")
-    @ApiOperation(value = "Update", tags = {"PimArchives" },  notes = "Update")
+    @ApiOperation(value = "更新档案信息", tags = {"档案信息" },  notes = "更新档案信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}")
     @Transactional
     public ResponseEntity<PimArchivesDTO> update(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchivesDTO pimarchivesdto) {
@@ -101,21 +101,21 @@ public class PimArchivesResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesService.getPimarchivesByEntities(this.pimarchivesMapping.toDomain(#pimarchivesdtos)),'ehr-PimArchives-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimArchives" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新档案信息", tags = {"档案信息" },  notes = "批量更新档案信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimArchivesDTO> pimarchivesdtos) {
         pimarchivesService.updateBatch(pimarchivesMapping.toDomain(pimarchivesdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimArchives" },  notes = "CheckKey")
+    @ApiOperation(value = "检查档案信息", tags = {"档案信息" },  notes = "检查档案信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimArchivesDTO pimarchivesdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarchivesService.checkKey(pimarchivesMapping.toDomain(pimarchivesdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesMapping.toDomain(#pimarchivesdto),'ehr-PimArchives-Create')")
-    @ApiOperation(value = "Create", tags = {"PimArchives" },  notes = "Create")
+    @ApiOperation(value = "新建档案信息", tags = {"档案信息" },  notes = "新建档案信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives")
     @Transactional
     public ResponseEntity<PimArchivesDTO> create(@RequestBody PimArchivesDTO pimarchivesdto) {
@@ -126,7 +126,7 @@ public class PimArchivesResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesMapping.toDomain(#pimarchivesdtos),'ehr-PimArchives-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimArchives" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建档案信息", tags = {"档案信息" },  notes = "批量新建档案信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimArchivesDTO> pimarchivesdtos) {
         pimarchivesService.createBatch(pimarchivesMapping.toDomain(pimarchivesdtos));
@@ -134,7 +134,7 @@ public class PimArchivesResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesService.get(#pimarchives_id),'ehr-PimArchives-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimArchives" },  notes = "Remove")
+    @ApiOperation(value = "删除档案信息", tags = {"档案信息" },  notes = "删除档案信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchives/{pimarchives_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimarchives_id") String pimarchives_id) {
@@ -142,7 +142,7 @@ public class PimArchivesResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesService.getPimarchivesByIds(#ids),'ehr-PimArchives-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimArchives" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除档案信息", tags = {"档案信息" },  notes = "批量删除档案信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchives/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimarchivesService.removeBatch(ids);
@@ -150,7 +150,7 @@ public class PimArchivesResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-EMLOYEENOFILE-all')")
-	@ApiOperation(value = "fetch员工不在档档案", tags = {"PimArchives" } ,notes = "fetch员工不在档档案")
+	@ApiOperation(value = "获取员工不在档档案", tags = {"档案信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/fetchemloyeenofile")
 	public ResponseEntity<List<PimArchivesDTO>> fetchEMLOYEENOFILE(PimArchivesSearchContext context) {
         Page<PimArchives> domains = pimarchivesService.searchEMLOYEENOFILE(context) ;
@@ -163,7 +163,7 @@ public class PimArchivesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-EMLOYEENOFILE-all')")
-	@ApiOperation(value = "search员工不在档档案", tags = {"PimArchives" } ,notes = "search员工不在档档案")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchives/searchemloyeenofile")
 	public ResponseEntity<Page<PimArchivesDTO>> searchEMLOYEENOFILE(@RequestBody PimArchivesSearchContext context) {
         Page<PimArchives> domains = pimarchivesService.searchEMLOYEENOFILE(context) ;
@@ -171,7 +171,7 @@ public class PimArchivesResource {
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-SysOrgIsSrfOrg-all')")
-	@ApiOperation(value = "fetch管理单位等于当前登录人的单位（用于非员工在档数据查询）", tags = {"PimArchives" } ,notes = "fetch管理单位等于当前登录人的单位（用于非员工在档数据查询）")
+	@ApiOperation(value = "获取管理单位等于当前登录人的单位（用于非员工在档数据查询）", tags = {"档案信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/fetchsysorgissrforg")
 	public ResponseEntity<List<PimArchivesDTO>> fetchSysOrgIsSrfOrg(PimArchivesSearchContext context) {
         Page<PimArchives> domains = pimarchivesService.searchSysOrgIsSrfOrg(context) ;
@@ -184,7 +184,7 @@ public class PimArchivesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-SysOrgIsSrfOrg-all')")
-	@ApiOperation(value = "search管理单位等于当前登录人的单位（用于非员工在档数据查询）", tags = {"PimArchives" } ,notes = "search管理单位等于当前登录人的单位（用于非员工在档数据查询）")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchives/searchsysorgissrforg")
 	public ResponseEntity<Page<PimArchivesDTO>> searchSysOrgIsSrfOrg(@RequestBody PimArchivesSearchContext context) {
         Page<PimArchives> domains = pimarchivesService.searchSysOrgIsSrfOrg(context) ;
@@ -192,7 +192,7 @@ public class PimArchivesResource {
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimArchives" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"档案信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/fetchdefault")
 	public ResponseEntity<List<PimArchivesDTO>> fetchDefault(PimArchivesSearchContext context) {
         Page<PimArchives> domains = pimarchivesService.searchDefault(context) ;
@@ -205,7 +205,7 @@ public class PimArchivesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimArchives" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchives/searchdefault")
 	public ResponseEntity<Page<PimArchivesDTO>> searchDefault(@RequestBody PimArchivesSearchContext context) {
         Page<PimArchives> domains = pimarchivesService.searchDefault(context) ;
@@ -213,7 +213,7 @@ public class PimArchivesResource {
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-JLSS-all')")
-	@ApiOperation(value = "fetch记录所属和个人ID不符的", tags = {"PimArchives" } ,notes = "fetch记录所属和个人ID不符的")
+	@ApiOperation(value = "获取记录所属和个人ID不符的", tags = {"档案信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/fetchjlss")
 	public ResponseEntity<List<PimArchivesDTO>> fetchJLSS(PimArchivesSearchContext context) {
         Page<PimArchives> domains = pimarchivesService.searchJLSS(context) ;
@@ -226,7 +226,7 @@ public class PimArchivesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-JLSS-all')")
-	@ApiOperation(value = "search记录所属和个人ID不符的", tags = {"PimArchives" } ,notes = "search记录所属和个人ID不符的")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchives/searchjlss")
 	public ResponseEntity<Page<PimArchivesDTO>> searchJLSS(@RequestBody PimArchivesSearchContext context) {
         Page<PimArchives> domains = pimarchivesService.searchJLSS(context) ;
@@ -234,7 +234,7 @@ public class PimArchivesResource {
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-ZIZHU-all')")
-	@ApiOperation(value = "fetch自助(档案信息)", tags = {"PimArchives" } ,notes = "fetch自助(档案信息)")
+	@ApiOperation(value = "获取自助(档案信息)", tags = {"档案信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/fetchzizhu")
 	public ResponseEntity<List<PimArchivesDTO>> fetchZIZHU(PimArchivesSearchContext context) {
         Page<PimArchives> domains = pimarchivesService.searchZIZHU(context) ;
@@ -247,7 +247,7 @@ public class PimArchivesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-ZIZHU-all')")
-	@ApiOperation(value = "search自助(档案信息)", tags = {"PimArchives" } ,notes = "search自助(档案信息)")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchives/searchzizhu")
 	public ResponseEntity<Page<PimArchivesDTO>> searchZIZHU(@RequestBody PimArchivesSearchContext context) {
         Page<PimArchives> domains = pimarchivesService.searchZIZHU(context) ;
@@ -255,7 +255,7 @@ public class PimArchivesResource {
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-NOEMLOYEENOFILE-all')")
-	@ApiOperation(value = "fetch非员工在档档案", tags = {"PimArchives" } ,notes = "fetch非员工在档档案")
+	@ApiOperation(value = "获取非员工在档档案", tags = {"档案信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/fetchnoemloyeenofile")
 	public ResponseEntity<List<PimArchivesDTO>> fetchNOEMLOYEENOFILE(PimArchivesSearchContext context) {
         Page<PimArchives> domains = pimarchivesService.searchNOEMLOYEENOFILE(context) ;
@@ -268,7 +268,7 @@ public class PimArchivesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-NOEMLOYEENOFILE-all')")
-	@ApiOperation(value = "search非员工在档档案", tags = {"PimArchives" } ,notes = "search非员工在档档案")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchives/searchnoemloyeenofile")
 	public ResponseEntity<Page<PimArchivesDTO>> searchNOEMLOYEENOFILE(@RequestBody PimArchivesSearchContext context) {
         Page<PimArchives> domains = pimarchivesService.searchNOEMLOYEENOFILE(context) ;
@@ -276,7 +276,7 @@ public class PimArchivesResource {
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-PIMREADGJD-all')")
-	@ApiOperation(value = "fetch档案信息组织查询", tags = {"PimArchives" } ,notes = "fetch档案信息组织查询")
+	@ApiOperation(value = "获取档案信息组织查询", tags = {"档案信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/fetchpimreadgjd")
 	public ResponseEntity<List<PimArchivesDTO>> fetchPIMREADGJD(PimArchivesSearchContext context) {
         Page<PimArchives> domains = pimarchivesService.searchPIMREADGJD(context) ;
@@ -289,7 +289,7 @@ public class PimArchivesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-PIMREADGJD-all')")
-	@ApiOperation(value = "search档案信息组织查询", tags = {"PimArchives" } ,notes = "search档案信息组织查询")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchives/searchpimreadgjd")
 	public ResponseEntity<Page<PimArchivesDTO>> searchPIMREADGJD(@RequestBody PimArchivesSearchContext context) {
         Page<PimArchives> domains = pimarchivesService.searchPIMREADGJD(context) ;
@@ -297,7 +297,7 @@ public class PimArchivesResource {
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-GetPersonOrg-all')")
-    @ApiOperation(value = "获取员工组织ByPimPerson", tags = {"PimArchives" },  notes = "获取员工组织ByPimPerson")
+    @ApiOperation(value = "根据人员信息档案信息", tags = {"档案信息" },  notes = "根据人员信息档案信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/getpersonorg")
     @Transactional
     public ResponseEntity<PimArchivesDTO> getPersonOrgByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchivesDTO pimarchivesdto) {
@@ -308,7 +308,7 @@ public class PimArchivesResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesdto);
     }
 
-    @ApiOperation(value = "GetDraftByPimPerson", tags = {"PimArchives" },  notes = "GetDraftByPimPerson")
+    @ApiOperation(value = "根据人员信息获取档案信息草稿", tags = {"档案信息" },  notes = "根据人员信息获取档案信息草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarchives/getdraft")
     public ResponseEntity<PimArchivesDTO> getDraftByPimPerson(@PathVariable("pimperson_id") String pimperson_id) {
         PimArchives domain = new PimArchives();
@@ -317,7 +317,7 @@ public class PimArchivesResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesMapping.toDomain(#pimarchivesdto),'ehr-PimArchives-Save')")
-    @ApiOperation(value = "SaveByPimPerson", tags = {"PimArchives" },  notes = "SaveByPimPerson")
+    @ApiOperation(value = "根据人员信息保存档案信息", tags = {"档案信息" },  notes = "根据人员信息保存档案信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/save")
     public ResponseEntity<Boolean> saveByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimArchivesDTO pimarchivesdto) {
         PimArchives domain = pimarchivesMapping.toDomain(pimarchivesdto);
@@ -326,7 +326,7 @@ public class PimArchivesResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesMapping.toDomain(#pimarchivesdtos),'ehr-PimArchives-Save')")
-    @ApiOperation(value = "SaveBatchByPimPerson", tags = {"PimArchives" },  notes = "SaveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量保存档案信息", tags = {"档案信息" },  notes = "根据人员信息批量保存档案信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/savebatch")
     public ResponseEntity<Boolean> saveBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PimArchivesDTO> pimarchivesdtos) {
         List<PimArchives> domainlist=pimarchivesMapping.toDomain(pimarchivesdtos);
@@ -338,7 +338,7 @@ public class PimArchivesResource {
     }
 
     @PostAuthorize("hasPermission(this.pimarchivesMapping.toDomain(returnObject.body),'ehr-PimArchives-Get')")
-    @ApiOperation(value = "GetByPimPerson", tags = {"PimArchives" },  notes = "GetByPimPerson")
+    @ApiOperation(value = "根据人员信息获取档案信息", tags = {"档案信息" },  notes = "根据人员信息获取档案信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}")
     public ResponseEntity<PimArchivesDTO> getByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id) {
         PimArchives domain = pimarchivesService.get(pimarchives_id);
@@ -347,7 +347,7 @@ public class PimArchivesResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesService.get(#pimarchives_id),'ehr-PimArchives-Update')")
-    @ApiOperation(value = "UpdateByPimPerson", tags = {"PimArchives" },  notes = "UpdateByPimPerson")
+    @ApiOperation(value = "根据人员信息更新档案信息", tags = {"档案信息" },  notes = "根据人员信息更新档案信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}")
     @Transactional
     public ResponseEntity<PimArchivesDTO> updateByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchivesDTO pimarchivesdto) {
@@ -360,7 +360,7 @@ public class PimArchivesResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesService.getPimarchivesByEntities(this.pimarchivesMapping.toDomain(#pimarchivesdtos)),'ehr-PimArchives-Update')")
-    @ApiOperation(value = "UpdateBatchByPimPerson", tags = {"PimArchives" },  notes = "UpdateBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量更新档案信息", tags = {"档案信息" },  notes = "根据人员信息批量更新档案信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/batch")
     public ResponseEntity<Boolean> updateBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PimArchivesDTO> pimarchivesdtos) {
         List<PimArchives> domainlist=pimarchivesMapping.toDomain(pimarchivesdtos);
@@ -371,14 +371,14 @@ public class PimArchivesResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByPimPerson", tags = {"PimArchives" },  notes = "CheckKeyByPimPerson")
+    @ApiOperation(value = "根据人员信息检查档案信息", tags = {"档案信息" },  notes = "根据人员信息检查档案信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/checkkey")
     public ResponseEntity<Boolean> checkKeyByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimArchivesDTO pimarchivesdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarchivesService.checkKey(pimarchivesMapping.toDomain(pimarchivesdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesMapping.toDomain(#pimarchivesdto),'ehr-PimArchives-Create')")
-    @ApiOperation(value = "CreateByPimPerson", tags = {"PimArchives" },  notes = "CreateByPimPerson")
+    @ApiOperation(value = "根据人员信息建立档案信息", tags = {"档案信息" },  notes = "根据人员信息建立档案信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives")
     @Transactional
     public ResponseEntity<PimArchivesDTO> createByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimArchivesDTO pimarchivesdto) {
@@ -390,7 +390,7 @@ public class PimArchivesResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesMapping.toDomain(#pimarchivesdtos),'ehr-PimArchives-Create')")
-    @ApiOperation(value = "createBatchByPimPerson", tags = {"PimArchives" },  notes = "createBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量建立档案信息", tags = {"档案信息" },  notes = "根据人员信息批量建立档案信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/batch")
     public ResponseEntity<Boolean> createBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PimArchivesDTO> pimarchivesdtos) {
         List<PimArchives> domainlist=pimarchivesMapping.toDomain(pimarchivesdtos);
@@ -402,7 +402,7 @@ public class PimArchivesResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesService.get(#pimarchives_id),'ehr-PimArchives-Remove')")
-    @ApiOperation(value = "RemoveByPimPerson", tags = {"PimArchives" },  notes = "RemoveByPimPerson")
+    @ApiOperation(value = "根据人员信息删除档案信息", tags = {"档案信息" },  notes = "根据人员信息删除档案信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id) {
@@ -410,7 +410,7 @@ public class PimArchivesResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesService.getPimarchivesByIds(#ids),'ehr-PimArchives-Remove')")
-    @ApiOperation(value = "RemoveBatchByPimPerson", tags = {"PimArchives" },  notes = "RemoveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量删除档案信息", tags = {"档案信息" },  notes = "根据人员信息批量删除档案信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarchives/batch")
     public ResponseEntity<Boolean> removeBatchByPimPerson(@RequestBody List<String> ids) {
         pimarchivesService.removeBatch(ids);
@@ -418,7 +418,7 @@ public class PimArchivesResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-EMLOYEENOFILE-all')")
-	@ApiOperation(value = "fetch员工不在档档案ByPimPerson", tags = {"PimArchives" } ,notes = "fetch员工不在档档案ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取员工不在档档案", tags = {"档案信息" } ,notes = "根据人员信息获取员工不在档档案")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/fetchemloyeenofile")
 	public ResponseEntity<List<PimArchivesDTO>> fetchPimArchivesEMLOYEENOFILEByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PimArchivesSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -432,7 +432,7 @@ public class PimArchivesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-EMLOYEENOFILE-all')")
-	@ApiOperation(value = "search员工不在档档案ByPimPerson", tags = {"PimArchives" } ,notes = "search员工不在档档案ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询员工不在档档案", tags = {"档案信息" } ,notes = "根据人员信息查询员工不在档档案")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/searchemloyeenofile")
 	public ResponseEntity<Page<PimArchivesDTO>> searchPimArchivesEMLOYEENOFILEByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimArchivesSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -441,7 +441,7 @@ public class PimArchivesResource {
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-SysOrgIsSrfOrg-all')")
-	@ApiOperation(value = "fetch管理单位等于当前登录人的单位（用于非员工在档数据查询）ByPimPerson", tags = {"PimArchives" } ,notes = "fetch管理单位等于当前登录人的单位（用于非员工在档数据查询）ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取管理单位等于当前登录人的单位（用于非员工在档数据查询）", tags = {"档案信息" } ,notes = "根据人员信息获取管理单位等于当前登录人的单位（用于非员工在档数据查询）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/fetchsysorgissrforg")
 	public ResponseEntity<List<PimArchivesDTO>> fetchPimArchivesSysOrgIsSrfOrgByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PimArchivesSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -455,7 +455,7 @@ public class PimArchivesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-SysOrgIsSrfOrg-all')")
-	@ApiOperation(value = "search管理单位等于当前登录人的单位（用于非员工在档数据查询）ByPimPerson", tags = {"PimArchives" } ,notes = "search管理单位等于当前登录人的单位（用于非员工在档数据查询）ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询管理单位等于当前登录人的单位（用于非员工在档数据查询）", tags = {"档案信息" } ,notes = "根据人员信息查询管理单位等于当前登录人的单位（用于非员工在档数据查询）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/searchsysorgissrforg")
 	public ResponseEntity<Page<PimArchivesDTO>> searchPimArchivesSysOrgIsSrfOrgByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimArchivesSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -464,7 +464,7 @@ public class PimArchivesResource {
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPimPerson", tags = {"PimArchives" } ,notes = "fetchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息获取DEFAULT", tags = {"档案信息" } ,notes = "根据人员信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/fetchdefault")
 	public ResponseEntity<List<PimArchivesDTO>> fetchPimArchivesDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PimArchivesSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -478,7 +478,7 @@ public class PimArchivesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPimPerson", tags = {"PimArchives" } ,notes = "searchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息查询DEFAULT", tags = {"档案信息" } ,notes = "根据人员信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/searchdefault")
 	public ResponseEntity<Page<PimArchivesDTO>> searchPimArchivesDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimArchivesSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -487,7 +487,7 @@ public class PimArchivesResource {
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-JLSS-all')")
-	@ApiOperation(value = "fetch记录所属和个人ID不符的ByPimPerson", tags = {"PimArchives" } ,notes = "fetch记录所属和个人ID不符的ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取记录所属和个人ID不符的", tags = {"档案信息" } ,notes = "根据人员信息获取记录所属和个人ID不符的")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/fetchjlss")
 	public ResponseEntity<List<PimArchivesDTO>> fetchPimArchivesJLSSByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PimArchivesSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -501,7 +501,7 @@ public class PimArchivesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-JLSS-all')")
-	@ApiOperation(value = "search记录所属和个人ID不符的ByPimPerson", tags = {"PimArchives" } ,notes = "search记录所属和个人ID不符的ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询记录所属和个人ID不符的", tags = {"档案信息" } ,notes = "根据人员信息查询记录所属和个人ID不符的")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/searchjlss")
 	public ResponseEntity<Page<PimArchivesDTO>> searchPimArchivesJLSSByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimArchivesSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -510,7 +510,7 @@ public class PimArchivesResource {
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-ZIZHU-all')")
-	@ApiOperation(value = "fetch自助(档案信息)ByPimPerson", tags = {"PimArchives" } ,notes = "fetch自助(档案信息)ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取自助(档案信息)", tags = {"档案信息" } ,notes = "根据人员信息获取自助(档案信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/fetchzizhu")
 	public ResponseEntity<List<PimArchivesDTO>> fetchPimArchivesZIZHUByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PimArchivesSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -524,7 +524,7 @@ public class PimArchivesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-ZIZHU-all')")
-	@ApiOperation(value = "search自助(档案信息)ByPimPerson", tags = {"PimArchives" } ,notes = "search自助(档案信息)ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询自助(档案信息)", tags = {"档案信息" } ,notes = "根据人员信息查询自助(档案信息)")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/searchzizhu")
 	public ResponseEntity<Page<PimArchivesDTO>> searchPimArchivesZIZHUByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimArchivesSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -533,7 +533,7 @@ public class PimArchivesResource {
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-NOEMLOYEENOFILE-all')")
-	@ApiOperation(value = "fetch非员工在档档案ByPimPerson", tags = {"PimArchives" } ,notes = "fetch非员工在档档案ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取非员工在档档案", tags = {"档案信息" } ,notes = "根据人员信息获取非员工在档档案")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/fetchnoemloyeenofile")
 	public ResponseEntity<List<PimArchivesDTO>> fetchPimArchivesNOEMLOYEENOFILEByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PimArchivesSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -547,7 +547,7 @@ public class PimArchivesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-NOEMLOYEENOFILE-all')")
-	@ApiOperation(value = "search非员工在档档案ByPimPerson", tags = {"PimArchives" } ,notes = "search非员工在档档案ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询非员工在档档案", tags = {"档案信息" } ,notes = "根据人员信息查询非员工在档档案")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/searchnoemloyeenofile")
 	public ResponseEntity<Page<PimArchivesDTO>> searchPimArchivesNOEMLOYEENOFILEByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimArchivesSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -556,7 +556,7 @@ public class PimArchivesResource {
                 .body(new PageImpl(pimarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-PIMREADGJD-all')")
-	@ApiOperation(value = "fetch档案信息组织查询ByPimPerson", tags = {"PimArchives" } ,notes = "fetch档案信息组织查询ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取档案信息组织查询", tags = {"档案信息" } ,notes = "根据人员信息获取档案信息组织查询")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/fetchpimreadgjd")
 	public ResponseEntity<List<PimArchivesDTO>> fetchPimArchivesPIMREADGJDByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PimArchivesSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -570,7 +570,7 @@ public class PimArchivesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchives-PIMREADGJD-all')")
-	@ApiOperation(value = "search档案信息组织查询ByPimPerson", tags = {"PimArchives" } ,notes = "search档案信息组织查询ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询档案信息组织查询", tags = {"档案信息" } ,notes = "根据人员信息查询档案信息组织查询")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/searchpimreadgjd")
 	public ResponseEntity<Page<PimArchivesDTO>> searchPimArchivesPIMREADGJDByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimArchivesSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);

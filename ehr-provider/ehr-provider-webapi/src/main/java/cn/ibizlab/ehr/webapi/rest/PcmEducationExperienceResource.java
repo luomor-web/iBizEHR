@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmEducationExperienceService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmEducationExperienceSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmEducationExperience" })
+@Api(tags = {"教育背景" })
 @RestController("WebApi-pcmeducationexperience")
 @RequestMapping("")
 public class PcmEducationExperienceResource {
@@ -46,14 +46,14 @@ public class PcmEducationExperienceResource {
     @Lazy
     public PcmEducationExperienceMapping pcmeducationexperienceMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmEducationExperience" },  notes = "CheckKey")
+    @ApiOperation(value = "检查教育背景", tags = {"教育背景" },  notes = "检查教育背景")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmeducationexperiences/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmEducationExperienceDTO pcmeducationexperiencedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperienceService.checkKey(pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedto)));
     }
 
     @PostAuthorize("hasPermission(this.pcmeducationexperienceMapping.toDomain(returnObject.body),'ehr-PcmEducationExperience-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmEducationExperience" },  notes = "Get")
+    @ApiOperation(value = "获取教育背景", tags = {"教育背景" },  notes = "获取教育背景")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmeducationexperiences/{pcmeducationexperience_id}")
     public ResponseEntity<PcmEducationExperienceDTO> get(@PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id) {
         PcmEducationExperience domain = pcmeducationexperienceService.get(pcmeducationexperience_id);
@@ -62,7 +62,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmEducationExperience-CheckHighestEdu-all')")
-    @ApiOperation(value = "检查第一学历、最高学历", tags = {"PcmEducationExperience" },  notes = "检查第一学历、最高学历")
+    @ApiOperation(value = "检查第一学历、最高学历", tags = {"教育背景" },  notes = "检查第一学历、最高学历")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmeducationexperiences/{pcmeducationexperience_id}/checkhighestedu")
     @Transactional
     public ResponseEntity<PcmEducationExperienceDTO> checkHighestEdu(@PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id, @RequestBody PcmEducationExperienceDTO pcmeducationexperiencedto) {
@@ -74,7 +74,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmeducationexperienceMapping.toDomain(#pcmeducationexperiencedto),'ehr-PcmEducationExperience-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmEducationExperience" },  notes = "Create")
+    @ApiOperation(value = "新建教育背景", tags = {"教育背景" },  notes = "新建教育背景")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmeducationexperiences")
     @Transactional
     public ResponseEntity<PcmEducationExperienceDTO> create(@RequestBody PcmEducationExperienceDTO pcmeducationexperiencedto) {
@@ -85,7 +85,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmeducationexperienceMapping.toDomain(#pcmeducationexperiencedtos),'ehr-PcmEducationExperience-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmEducationExperience" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建教育背景", tags = {"教育背景" },  notes = "批量新建教育背景")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmeducationexperiences/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmEducationExperienceDTO> pcmeducationexperiencedtos) {
         pcmeducationexperienceService.createBatch(pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedtos));
@@ -93,7 +93,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmEducationExperience-CheckRepeatXL-all')")
-    @ApiOperation(value = "检查学历是否重复", tags = {"PcmEducationExperience" },  notes = "检查学历是否重复")
+    @ApiOperation(value = "检查学历是否重复", tags = {"教育背景" },  notes = "检查学历是否重复")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmeducationexperiences/{pcmeducationexperience_id}/checkrepeatxl")
     @Transactional
     public ResponseEntity<PcmEducationExperienceDTO> checkRepeatXL(@PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id, @RequestBody PcmEducationExperienceDTO pcmeducationexperiencedto) {
@@ -105,28 +105,28 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmeducationexperienceMapping.toDomain(#pcmeducationexperiencedto),'ehr-PcmEducationExperience-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmEducationExperience" },  notes = "Save")
+    @ApiOperation(value = "保存教育背景", tags = {"教育背景" },  notes = "保存教育背景")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmeducationexperiences/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmEducationExperienceDTO pcmeducationexperiencedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperienceService.save(pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmeducationexperienceMapping.toDomain(#pcmeducationexperiencedtos),'ehr-PcmEducationExperience-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmEducationExperience" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存教育背景", tags = {"教育背景" },  notes = "批量保存教育背景")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmeducationexperiences/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmEducationExperienceDTO> pcmeducationexperiencedtos) {
         pcmeducationexperienceService.saveBatch(pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmEducationExperience" },  notes = "GetDraft")
+    @ApiOperation(value = "获取教育背景草稿", tags = {"教育背景" },  notes = "获取教育背景草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmeducationexperiences/getdraft")
     public ResponseEntity<PcmEducationExperienceDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperienceMapping.toDto(pcmeducationexperienceService.getDraft(new PcmEducationExperience())));
     }
 
     @PreAuthorize("hasPermission(this.pcmeducationexperienceService.get(#pcmeducationexperience_id),'ehr-PcmEducationExperience-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmEducationExperience" },  notes = "Remove")
+    @ApiOperation(value = "删除教育背景", tags = {"教育背景" },  notes = "删除教育背景")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmeducationexperiences/{pcmeducationexperience_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id) {
@@ -134,7 +134,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmeducationexperienceService.getPcmeducationexperienceByIds(#ids),'ehr-PcmEducationExperience-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmEducationExperience" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除教育背景", tags = {"教育背景" },  notes = "批量删除教育背景")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmeducationexperiences/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmeducationexperienceService.removeBatch(ids);
@@ -142,7 +142,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmeducationexperienceService.get(#pcmeducationexperience_id),'ehr-PcmEducationExperience-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmEducationExperience" },  notes = "Update")
+    @ApiOperation(value = "更新教育背景", tags = {"教育背景" },  notes = "更新教育背景")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmeducationexperiences/{pcmeducationexperience_id}")
     @Transactional
     public ResponseEntity<PcmEducationExperienceDTO> update(@PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id, @RequestBody PcmEducationExperienceDTO pcmeducationexperiencedto) {
@@ -154,7 +154,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmeducationexperienceService.getPcmeducationexperienceByEntities(this.pcmeducationexperienceMapping.toDomain(#pcmeducationexperiencedtos)),'ehr-PcmEducationExperience-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmEducationExperience" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新教育背景", tags = {"教育背景" },  notes = "批量更新教育背景")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmeducationexperiences/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmEducationExperienceDTO> pcmeducationexperiencedtos) {
         pcmeducationexperienceService.updateBatch(pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedtos));
@@ -162,7 +162,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmEducationExperience-CheckTime-all')")
-    @ApiOperation(value = "校验入学、毕业时间", tags = {"PcmEducationExperience" },  notes = "校验入学、毕业时间")
+    @ApiOperation(value = "校验入学、毕业时间", tags = {"教育背景" },  notes = "校验入学、毕业时间")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmeducationexperiences/{pcmeducationexperience_id}/checktime")
     @Transactional
     public ResponseEntity<PcmEducationExperienceDTO> checkTime(@PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id, @RequestBody PcmEducationExperienceDTO pcmeducationexperiencedto) {
@@ -174,7 +174,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmEducationExperience-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmEducationExperience" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"教育背景" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmeducationexperiences/fetchdefault")
 	public ResponseEntity<List<PcmEducationExperienceDTO>> fetchDefault(PcmEducationExperienceSearchContext context) {
         Page<PcmEducationExperience> domains = pcmeducationexperienceService.searchDefault(context) ;
@@ -187,21 +187,21 @@ public class PcmEducationExperienceResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmEducationExperience-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmEducationExperience" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"教育背景" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmeducationexperiences/searchdefault")
 	public ResponseEntity<Page<PcmEducationExperienceDTO>> searchDefault(@RequestBody PcmEducationExperienceSearchContext context) {
         Page<PcmEducationExperience> domains = pcmeducationexperienceService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmeducationexperienceMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @ApiOperation(value = "CheckKeyByPcmProfile", tags = {"PcmEducationExperience" },  notes = "CheckKeyByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息检查教育背景", tags = {"教育背景" },  notes = "根据应聘者基本信息检查教育背景")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/checkkey")
     public ResponseEntity<Boolean> checkKeyByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmEducationExperienceDTO pcmeducationexperiencedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmeducationexperienceService.checkKey(pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedto)));
     }
 
     @PostAuthorize("hasPermission(this.pcmeducationexperienceMapping.toDomain(returnObject.body),'ehr-PcmEducationExperience-Get')")
-    @ApiOperation(value = "GetByPcmProfile", tags = {"PcmEducationExperience" },  notes = "GetByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息获取教育背景", tags = {"教育背景" },  notes = "根据应聘者基本信息获取教育背景")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/{pcmeducationexperience_id}")
     public ResponseEntity<PcmEducationExperienceDTO> getByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id) {
         PcmEducationExperience domain = pcmeducationexperienceService.get(pcmeducationexperience_id);
@@ -210,7 +210,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmEducationExperience-CheckHighestEdu-all')")
-    @ApiOperation(value = "检查第一学历、最高学历ByPcmProfile", tags = {"PcmEducationExperience" },  notes = "检查第一学历、最高学历ByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息教育背景", tags = {"教育背景" },  notes = "根据应聘者基本信息教育背景")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/{pcmeducationexperience_id}/checkhighestedu")
     @Transactional
     public ResponseEntity<PcmEducationExperienceDTO> checkHighestEduByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id, @RequestBody PcmEducationExperienceDTO pcmeducationexperiencedto) {
@@ -222,7 +222,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmeducationexperienceMapping.toDomain(#pcmeducationexperiencedto),'ehr-PcmEducationExperience-Create')")
-    @ApiOperation(value = "CreateByPcmProfile", tags = {"PcmEducationExperience" },  notes = "CreateByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息建立教育背景", tags = {"教育背景" },  notes = "根据应聘者基本信息建立教育背景")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences")
     @Transactional
     public ResponseEntity<PcmEducationExperienceDTO> createByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmEducationExperienceDTO pcmeducationexperiencedto) {
@@ -234,7 +234,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmeducationexperienceMapping.toDomain(#pcmeducationexperiencedtos),'ehr-PcmEducationExperience-Create')")
-    @ApiOperation(value = "createBatchByPcmProfile", tags = {"PcmEducationExperience" },  notes = "createBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量建立教育背景", tags = {"教育背景" },  notes = "根据应聘者基本信息批量建立教育背景")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/batch")
     public ResponseEntity<Boolean> createBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PcmEducationExperienceDTO> pcmeducationexperiencedtos) {
         List<PcmEducationExperience> domainlist=pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedtos);
@@ -246,7 +246,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmEducationExperience-CheckRepeatXL-all')")
-    @ApiOperation(value = "检查学历是否重复ByPcmProfile", tags = {"PcmEducationExperience" },  notes = "检查学历是否重复ByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息教育背景", tags = {"教育背景" },  notes = "根据应聘者基本信息教育背景")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/{pcmeducationexperience_id}/checkrepeatxl")
     @Transactional
     public ResponseEntity<PcmEducationExperienceDTO> checkRepeatXLByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id, @RequestBody PcmEducationExperienceDTO pcmeducationexperiencedto) {
@@ -258,7 +258,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmeducationexperienceMapping.toDomain(#pcmeducationexperiencedto),'ehr-PcmEducationExperience-Save')")
-    @ApiOperation(value = "SaveByPcmProfile", tags = {"PcmEducationExperience" },  notes = "SaveByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息保存教育背景", tags = {"教育背景" },  notes = "根据应聘者基本信息保存教育背景")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/save")
     public ResponseEntity<Boolean> saveByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmEducationExperienceDTO pcmeducationexperiencedto) {
         PcmEducationExperience domain = pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedto);
@@ -267,7 +267,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmeducationexperienceMapping.toDomain(#pcmeducationexperiencedtos),'ehr-PcmEducationExperience-Save')")
-    @ApiOperation(value = "SaveBatchByPcmProfile", tags = {"PcmEducationExperience" },  notes = "SaveBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量保存教育背景", tags = {"教育背景" },  notes = "根据应聘者基本信息批量保存教育背景")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/savebatch")
     public ResponseEntity<Boolean> saveBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PcmEducationExperienceDTO> pcmeducationexperiencedtos) {
         List<PcmEducationExperience> domainlist=pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedtos);
@@ -278,7 +278,7 @@ public class PcmEducationExperienceResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPcmProfile", tags = {"PcmEducationExperience" },  notes = "GetDraftByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息获取教育背景草稿", tags = {"教育背景" },  notes = "根据应聘者基本信息获取教育背景草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/getdraft")
     public ResponseEntity<PcmEducationExperienceDTO> getDraftByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id) {
         PcmEducationExperience domain = new PcmEducationExperience();
@@ -287,7 +287,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmeducationexperienceService.get(#pcmeducationexperience_id),'ehr-PcmEducationExperience-Remove')")
-    @ApiOperation(value = "RemoveByPcmProfile", tags = {"PcmEducationExperience" },  notes = "RemoveByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息删除教育背景", tags = {"教育背景" },  notes = "根据应聘者基本信息删除教育背景")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/{pcmeducationexperience_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id) {
@@ -295,7 +295,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmeducationexperienceService.getPcmeducationexperienceByIds(#ids),'ehr-PcmEducationExperience-Remove')")
-    @ApiOperation(value = "RemoveBatchByPcmProfile", tags = {"PcmEducationExperience" },  notes = "RemoveBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量删除教育背景", tags = {"教育背景" },  notes = "根据应聘者基本信息批量删除教育背景")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/batch")
     public ResponseEntity<Boolean> removeBatchByPcmProfile(@RequestBody List<String> ids) {
         pcmeducationexperienceService.removeBatch(ids);
@@ -303,7 +303,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmeducationexperienceService.get(#pcmeducationexperience_id),'ehr-PcmEducationExperience-Update')")
-    @ApiOperation(value = "UpdateByPcmProfile", tags = {"PcmEducationExperience" },  notes = "UpdateByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息更新教育背景", tags = {"教育背景" },  notes = "根据应聘者基本信息更新教育背景")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/{pcmeducationexperience_id}")
     @Transactional
     public ResponseEntity<PcmEducationExperienceDTO> updateByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id, @RequestBody PcmEducationExperienceDTO pcmeducationexperiencedto) {
@@ -316,7 +316,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmeducationexperienceService.getPcmeducationexperienceByEntities(this.pcmeducationexperienceMapping.toDomain(#pcmeducationexperiencedtos)),'ehr-PcmEducationExperience-Update')")
-    @ApiOperation(value = "UpdateBatchByPcmProfile", tags = {"PcmEducationExperience" },  notes = "UpdateBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量更新教育背景", tags = {"教育背景" },  notes = "根据应聘者基本信息批量更新教育背景")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/batch")
     public ResponseEntity<Boolean> updateBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PcmEducationExperienceDTO> pcmeducationexperiencedtos) {
         List<PcmEducationExperience> domainlist=pcmeducationexperienceMapping.toDomain(pcmeducationexperiencedtos);
@@ -328,7 +328,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmEducationExperience-CheckTime-all')")
-    @ApiOperation(value = "校验入学、毕业时间ByPcmProfile", tags = {"PcmEducationExperience" },  notes = "校验入学、毕业时间ByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息教育背景", tags = {"教育背景" },  notes = "根据应聘者基本信息教育背景")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/{pcmeducationexperience_id}/checktime")
     @Transactional
     public ResponseEntity<PcmEducationExperienceDTO> checkTimeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmeducationexperience_id") String pcmeducationexperience_id, @RequestBody PcmEducationExperienceDTO pcmeducationexperiencedto) {
@@ -340,7 +340,7 @@ public class PcmEducationExperienceResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmEducationExperience-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPcmProfile", tags = {"PcmEducationExperience" } ,notes = "fetchDEFAULTByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息获取DEFAULT", tags = {"教育背景" } ,notes = "根据应聘者基本信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/fetchdefault")
 	public ResponseEntity<List<PcmEducationExperienceDTO>> fetchPcmEducationExperienceDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id,PcmEducationExperienceSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
@@ -354,7 +354,7 @@ public class PcmEducationExperienceResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmEducationExperience-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPcmProfile", tags = {"PcmEducationExperience" } ,notes = "searchDEFAULTByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息查询DEFAULT", tags = {"教育背景" } ,notes = "根据应聘者基本信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmeducationexperiences/searchdefault")
 	public ResponseEntity<Page<PcmEducationExperienceDTO>> searchPcmEducationExperienceDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmEducationExperienceSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);

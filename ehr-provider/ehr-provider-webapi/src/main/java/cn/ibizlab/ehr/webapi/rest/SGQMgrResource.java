@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.ISGQMgrService;
 import cn.ibizlab.ehr.core.pcm.filter.SGQMgrSearchContext;
 
 @Slf4j
-@Api(tags = {"SGQMgr" })
+@Api(tags = {"试岗期管理（停用）" })
 @RestController("WebApi-sgqmgr")
 @RequestMapping("")
 public class SGQMgrResource {
@@ -47,7 +47,7 @@ public class SGQMgrResource {
     public SGQMgrMapping sgqmgrMapping;
 
     @PostAuthorize("hasPermission(this.sgqmgrMapping.toDomain(returnObject.body),'ehr-SGQMgr-Get')")
-    @ApiOperation(value = "Get", tags = {"SGQMgr" },  notes = "Get")
+    @ApiOperation(value = "获取试岗期管理（停用）", tags = {"试岗期管理（停用）" },  notes = "获取试岗期管理（停用）")
 	@RequestMapping(method = RequestMethod.GET, value = "/sgqmgrs/{sgqmgr_id}")
     public ResponseEntity<SGQMgrDTO> get(@PathVariable("sgqmgr_id") String sgqmgr_id) {
         SGQMgr domain = sgqmgrService.get(sgqmgr_id);
@@ -55,14 +55,14 @@ public class SGQMgrResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"SGQMgr" },  notes = "GetDraft")
+    @ApiOperation(value = "获取试岗期管理（停用）草稿", tags = {"试岗期管理（停用）" },  notes = "获取试岗期管理（停用）草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/sgqmgrs/getdraft")
     public ResponseEntity<SGQMgrDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(sgqmgrMapping.toDto(sgqmgrService.getDraft(new SGQMgr())));
     }
 
     @PreAuthorize("hasPermission(this.sgqmgrMapping.toDomain(#sgqmgrdto),'ehr-SGQMgr-Create')")
-    @ApiOperation(value = "Create", tags = {"SGQMgr" },  notes = "Create")
+    @ApiOperation(value = "新建试岗期管理（停用）", tags = {"试岗期管理（停用）" },  notes = "新建试岗期管理（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/sgqmgrs")
     @Transactional
     public ResponseEntity<SGQMgrDTO> create(@RequestBody SGQMgrDTO sgqmgrdto) {
@@ -73,7 +73,7 @@ public class SGQMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.sgqmgrMapping.toDomain(#sgqmgrdtos),'ehr-SGQMgr-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SGQMgr" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建试岗期管理（停用）", tags = {"试岗期管理（停用）" },  notes = "批量新建试岗期管理（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/sgqmgrs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SGQMgrDTO> sgqmgrdtos) {
         sgqmgrService.createBatch(sgqmgrMapping.toDomain(sgqmgrdtos));
@@ -81,7 +81,7 @@ public class SGQMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.sgqmgrService.get(#sgqmgr_id),'ehr-SGQMgr-Update')")
-    @ApiOperation(value = "Update", tags = {"SGQMgr" },  notes = "Update")
+    @ApiOperation(value = "更新试岗期管理（停用）", tags = {"试岗期管理（停用）" },  notes = "更新试岗期管理（停用）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/sgqmgrs/{sgqmgr_id}")
     @Transactional
     public ResponseEntity<SGQMgrDTO> update(@PathVariable("sgqmgr_id") String sgqmgr_id, @RequestBody SGQMgrDTO sgqmgrdto) {
@@ -93,7 +93,7 @@ public class SGQMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.sgqmgrService.getSgqmgrByEntities(this.sgqmgrMapping.toDomain(#sgqmgrdtos)),'ehr-SGQMgr-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SGQMgr" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新试岗期管理（停用）", tags = {"试岗期管理（停用）" },  notes = "批量更新试岗期管理（停用）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/sgqmgrs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SGQMgrDTO> sgqmgrdtos) {
         sgqmgrService.updateBatch(sgqmgrMapping.toDomain(sgqmgrdtos));
@@ -101,7 +101,7 @@ public class SGQMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.sgqmgrService.get(#sgqmgr_id),'ehr-SGQMgr-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SGQMgr" },  notes = "Remove")
+    @ApiOperation(value = "删除试岗期管理（停用）", tags = {"试岗期管理（停用）" },  notes = "删除试岗期管理（停用）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/sgqmgrs/{sgqmgr_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("sgqmgr_id") String sgqmgr_id) {
@@ -109,28 +109,28 @@ public class SGQMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.sgqmgrService.getSgqmgrByIds(#ids),'ehr-SGQMgr-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SGQMgr" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除试岗期管理（停用）", tags = {"试岗期管理（停用）" },  notes = "批量删除试岗期管理（停用）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/sgqmgrs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         sgqmgrService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"SGQMgr" },  notes = "CheckKey")
+    @ApiOperation(value = "检查试岗期管理（停用）", tags = {"试岗期管理（停用）" },  notes = "检查试岗期管理（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/sgqmgrs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SGQMgrDTO sgqmgrdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(sgqmgrService.checkKey(sgqmgrMapping.toDomain(sgqmgrdto)));
     }
 
     @PreAuthorize("hasPermission(this.sgqmgrMapping.toDomain(#sgqmgrdto),'ehr-SGQMgr-Save')")
-    @ApiOperation(value = "Save", tags = {"SGQMgr" },  notes = "Save")
+    @ApiOperation(value = "保存试岗期管理（停用）", tags = {"试岗期管理（停用）" },  notes = "保存试岗期管理（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/sgqmgrs/save")
     public ResponseEntity<Boolean> save(@RequestBody SGQMgrDTO sgqmgrdto) {
         return ResponseEntity.status(HttpStatus.OK).body(sgqmgrService.save(sgqmgrMapping.toDomain(sgqmgrdto)));
     }
 
     @PreAuthorize("hasPermission(this.sgqmgrMapping.toDomain(#sgqmgrdtos),'ehr-SGQMgr-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SGQMgr" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存试岗期管理（停用）", tags = {"试岗期管理（停用）" },  notes = "批量保存试岗期管理（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/sgqmgrs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SGQMgrDTO> sgqmgrdtos) {
         sgqmgrService.saveBatch(sgqmgrMapping.toDomain(sgqmgrdtos));
@@ -138,7 +138,7 @@ public class SGQMgrResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SGQMgr-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SGQMgr" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"试岗期管理（停用）" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/sgqmgrs/fetchdefault")
 	public ResponseEntity<List<SGQMgrDTO>> fetchDefault(SGQMgrSearchContext context) {
         Page<SGQMgr> domains = sgqmgrService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SGQMgrResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SGQMgr-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SGQMgr" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"试岗期管理（停用）" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/sgqmgrs/searchdefault")
 	public ResponseEntity<Page<SGQMgrDTO>> searchDefault(@RequestBody SGQMgrSearchContext context) {
         Page<SGQMgr> domains = sgqmgrService.searchDefault(context) ;

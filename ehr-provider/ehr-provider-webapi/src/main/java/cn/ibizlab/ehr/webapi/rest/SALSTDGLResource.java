@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.sal.service.ISALSTDGLService;
 import cn.ibizlab.ehr.core.sal.filter.SALSTDGLSearchContext;
 
 @Slf4j
-@Api(tags = {"SALSTDGL" })
+@Api(tags = {"工龄工资标准" })
 @RestController("WebApi-salstdgl")
 @RequestMapping("")
 public class SALSTDGLResource {
@@ -47,7 +47,7 @@ public class SALSTDGLResource {
     public SALSTDGLMapping salstdglMapping;
 
     @PreAuthorize("hasPermission(this.salstdglService.get(#salstdgl_id),'ehr-SALSTDGL-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SALSTDGL" },  notes = "Remove")
+    @ApiOperation(value = "删除工龄工资标准", tags = {"工龄工资标准" },  notes = "删除工龄工资标准")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdgls/{salstdgl_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("salstdgl_id") String salstdgl_id) {
@@ -55,7 +55,7 @@ public class SALSTDGLResource {
     }
 
     @PreAuthorize("hasPermission(this.salstdglService.getSalstdglByIds(#ids),'ehr-SALSTDGL-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SALSTDGL" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除工龄工资标准", tags = {"工龄工资标准" },  notes = "批量删除工龄工资标准")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstdgls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         salstdglService.removeBatch(ids);
@@ -63,7 +63,7 @@ public class SALSTDGLResource {
     }
 
     @PreAuthorize("hasPermission(this.salstdglService.get(#salstdgl_id),'ehr-SALSTDGL-Update')")
-    @ApiOperation(value = "Update", tags = {"SALSTDGL" },  notes = "Update")
+    @ApiOperation(value = "更新工龄工资标准", tags = {"工龄工资标准" },  notes = "更新工龄工资标准")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstdgls/{salstdgl_id}")
     @Transactional
     public ResponseEntity<SALSTDGLDTO> update(@PathVariable("salstdgl_id") String salstdgl_id, @RequestBody SALSTDGLDTO salstdgldto) {
@@ -75,7 +75,7 @@ public class SALSTDGLResource {
     }
 
     @PreAuthorize("hasPermission(this.salstdglService.getSalstdglByEntities(this.salstdglMapping.toDomain(#salstdgldtos)),'ehr-SALSTDGL-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SALSTDGL" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新工龄工资标准", tags = {"工龄工资标准" },  notes = "批量更新工龄工资标准")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstdgls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALSTDGLDTO> salstdgldtos) {
         salstdglService.updateBatch(salstdglMapping.toDomain(salstdgldtos));
@@ -83,7 +83,7 @@ public class SALSTDGLResource {
     }
 
     @PreAuthorize("hasPermission(this.salstdglMapping.toDomain(#salstdgldto),'ehr-SALSTDGL-Create')")
-    @ApiOperation(value = "Create", tags = {"SALSTDGL" },  notes = "Create")
+    @ApiOperation(value = "新建工龄工资标准", tags = {"工龄工资标准" },  notes = "新建工龄工资标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgls")
     @Transactional
     public ResponseEntity<SALSTDGLDTO> create(@RequestBody SALSTDGLDTO salstdgldto) {
@@ -94,28 +94,28 @@ public class SALSTDGLResource {
     }
 
     @PreAuthorize("hasPermission(this.salstdglMapping.toDomain(#salstdgldtos),'ehr-SALSTDGL-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SALSTDGL" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建工龄工资标准", tags = {"工龄工资标准" },  notes = "批量新建工龄工资标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALSTDGLDTO> salstdgldtos) {
         salstdglService.createBatch(salstdglMapping.toDomain(salstdgldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"SALSTDGL" },  notes = "CheckKey")
+    @ApiOperation(value = "检查工龄工资标准", tags = {"工龄工资标准" },  notes = "检查工龄工资标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgls/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALSTDGLDTO salstdgldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salstdglService.checkKey(salstdglMapping.toDomain(salstdgldto)));
     }
 
     @PreAuthorize("hasPermission(this.salstdglMapping.toDomain(#salstdgldto),'ehr-SALSTDGL-Save')")
-    @ApiOperation(value = "Save", tags = {"SALSTDGL" },  notes = "Save")
+    @ApiOperation(value = "保存工龄工资标准", tags = {"工龄工资标准" },  notes = "保存工龄工资标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgls/save")
     public ResponseEntity<Boolean> save(@RequestBody SALSTDGLDTO salstdgldto) {
         return ResponseEntity.status(HttpStatus.OK).body(salstdglService.save(salstdglMapping.toDomain(salstdgldto)));
     }
 
     @PreAuthorize("hasPermission(this.salstdglMapping.toDomain(#salstdgldtos),'ehr-SALSTDGL-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SALSTDGL" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存工龄工资标准", tags = {"工龄工资标准" },  notes = "批量保存工龄工资标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstdgls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALSTDGLDTO> salstdgldtos) {
         salstdglService.saveBatch(salstdglMapping.toDomain(salstdgldtos));
@@ -123,7 +123,7 @@ public class SALSTDGLResource {
     }
 
     @PostAuthorize("hasPermission(this.salstdglMapping.toDomain(returnObject.body),'ehr-SALSTDGL-Get')")
-    @ApiOperation(value = "Get", tags = {"SALSTDGL" },  notes = "Get")
+    @ApiOperation(value = "获取工龄工资标准", tags = {"工龄工资标准" },  notes = "获取工龄工资标准")
 	@RequestMapping(method = RequestMethod.GET, value = "/salstdgls/{salstdgl_id}")
     public ResponseEntity<SALSTDGLDTO> get(@PathVariable("salstdgl_id") String salstdgl_id) {
         SALSTDGL domain = salstdglService.get(salstdgl_id);
@@ -131,14 +131,14 @@ public class SALSTDGLResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"SALSTDGL" },  notes = "GetDraft")
+    @ApiOperation(value = "获取工龄工资标准草稿", tags = {"工龄工资标准" },  notes = "获取工龄工资标准草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/salstdgls/getdraft")
     public ResponseEntity<SALSTDGLDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salstdglMapping.toDto(salstdglService.getDraft(new SALSTDGL())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SALSTDGL" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"工龄工资标准" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/salstdgls/fetchdefault")
 	public ResponseEntity<List<SALSTDGLDTO>> fetchDefault(SALSTDGLSearchContext context) {
         Page<SALSTDGL> domains = salstdglService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SALSTDGLResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALSTDGL-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SALSTDGL" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"工龄工资标准" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/salstdgls/searchdefault")
 	public ResponseEntity<Page<SALSTDGLDTO>> searchDefault(@RequestBody SALSTDGLSearchContext context) {
         Page<SALSTDGL> domains = salstdglService.searchDefault(context) ;

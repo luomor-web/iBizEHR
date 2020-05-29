@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.par.service.IPARLHMBMXService;
 import cn.ibizlab.ehr.core.par.filter.PARLHMBMXSearchContext;
 
 @Slf4j
-@Api(tags = {"PARLHMBMX" })
+@Api(tags = {"绩效量化目标明细" })
 @RestController("WebApi-parlhmbmx")
 @RequestMapping("")
 public class PARLHMBMXResource {
@@ -46,14 +46,14 @@ public class PARLHMBMXResource {
     @Lazy
     public PARLHMBMXMapping parlhmbmxMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"PARLHMBMX" },  notes = "CheckKey")
+    @ApiOperation(value = "检查绩效量化目标明细", tags = {"绩效量化目标明细" },  notes = "检查绩效量化目标明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/parlhmbmxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PARLHMBMXDTO parlhmbmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parlhmbmxService.checkKey(parlhmbmxMapping.toDomain(parlhmbmxdto)));
     }
 
     @PreAuthorize("hasPermission(this.parlhmbmxService.get(#parlhmbmx_id),'ehr-PARLHMBMX-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PARLHMBMX" },  notes = "Remove")
+    @ApiOperation(value = "删除绩效量化目标明细", tags = {"绩效量化目标明细" },  notes = "删除绩效量化目标明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parlhmbmxes/{parlhmbmx_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("parlhmbmx_id") String parlhmbmx_id) {
@@ -61,7 +61,7 @@ public class PARLHMBMXResource {
     }
 
     @PreAuthorize("hasPermission(this.parlhmbmxService.getParlhmbmxByIds(#ids),'ehr-PARLHMBMX-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PARLHMBMX" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除绩效量化目标明细", tags = {"绩效量化目标明细" },  notes = "批量删除绩效量化目标明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parlhmbmxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         parlhmbmxService.removeBatch(ids);
@@ -69,28 +69,28 @@ public class PARLHMBMXResource {
     }
 
     @PreAuthorize("hasPermission(this.parlhmbmxMapping.toDomain(#parlhmbmxdto),'ehr-PARLHMBMX-Save')")
-    @ApiOperation(value = "Save", tags = {"PARLHMBMX" },  notes = "Save")
+    @ApiOperation(value = "保存绩效量化目标明细", tags = {"绩效量化目标明细" },  notes = "保存绩效量化目标明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/parlhmbmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PARLHMBMXDTO parlhmbmxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(parlhmbmxService.save(parlhmbmxMapping.toDomain(parlhmbmxdto)));
     }
 
     @PreAuthorize("hasPermission(this.parlhmbmxMapping.toDomain(#parlhmbmxdtos),'ehr-PARLHMBMX-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PARLHMBMX" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存绩效量化目标明细", tags = {"绩效量化目标明细" },  notes = "批量保存绩效量化目标明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/parlhmbmxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PARLHMBMXDTO> parlhmbmxdtos) {
         parlhmbmxService.saveBatch(parlhmbmxMapping.toDomain(parlhmbmxdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PARLHMBMX" },  notes = "GetDraft")
+    @ApiOperation(value = "获取绩效量化目标明细草稿", tags = {"绩效量化目标明细" },  notes = "获取绩效量化目标明细草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/parlhmbmxes/getdraft")
     public ResponseEntity<PARLHMBMXDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(parlhmbmxMapping.toDto(parlhmbmxService.getDraft(new PARLHMBMX())));
     }
 
     @PostAuthorize("hasPermission(this.parlhmbmxMapping.toDomain(returnObject.body),'ehr-PARLHMBMX-Get')")
-    @ApiOperation(value = "Get", tags = {"PARLHMBMX" },  notes = "Get")
+    @ApiOperation(value = "获取绩效量化目标明细", tags = {"绩效量化目标明细" },  notes = "获取绩效量化目标明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/parlhmbmxes/{parlhmbmx_id}")
     public ResponseEntity<PARLHMBMXDTO> get(@PathVariable("parlhmbmx_id") String parlhmbmx_id) {
         PARLHMBMX domain = parlhmbmxService.get(parlhmbmx_id);
@@ -99,7 +99,7 @@ public class PARLHMBMXResource {
     }
 
     @PreAuthorize("hasPermission(this.parlhmbmxService.get(#parlhmbmx_id),'ehr-PARLHMBMX-Update')")
-    @ApiOperation(value = "Update", tags = {"PARLHMBMX" },  notes = "Update")
+    @ApiOperation(value = "更新绩效量化目标明细", tags = {"绩效量化目标明细" },  notes = "更新绩效量化目标明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parlhmbmxes/{parlhmbmx_id}")
     @Transactional
     public ResponseEntity<PARLHMBMXDTO> update(@PathVariable("parlhmbmx_id") String parlhmbmx_id, @RequestBody PARLHMBMXDTO parlhmbmxdto) {
@@ -111,7 +111,7 @@ public class PARLHMBMXResource {
     }
 
     @PreAuthorize("hasPermission(this.parlhmbmxService.getParlhmbmxByEntities(this.parlhmbmxMapping.toDomain(#parlhmbmxdtos)),'ehr-PARLHMBMX-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PARLHMBMX" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新绩效量化目标明细", tags = {"绩效量化目标明细" },  notes = "批量更新绩效量化目标明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parlhmbmxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PARLHMBMXDTO> parlhmbmxdtos) {
         parlhmbmxService.updateBatch(parlhmbmxMapping.toDomain(parlhmbmxdtos));
@@ -119,7 +119,7 @@ public class PARLHMBMXResource {
     }
 
     @PreAuthorize("hasPermission(this.parlhmbmxMapping.toDomain(#parlhmbmxdto),'ehr-PARLHMBMX-Create')")
-    @ApiOperation(value = "Create", tags = {"PARLHMBMX" },  notes = "Create")
+    @ApiOperation(value = "新建绩效量化目标明细", tags = {"绩效量化目标明细" },  notes = "新建绩效量化目标明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/parlhmbmxes")
     @Transactional
     public ResponseEntity<PARLHMBMXDTO> create(@RequestBody PARLHMBMXDTO parlhmbmxdto) {
@@ -130,7 +130,7 @@ public class PARLHMBMXResource {
     }
 
     @PreAuthorize("hasPermission(this.parlhmbmxMapping.toDomain(#parlhmbmxdtos),'ehr-PARLHMBMX-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PARLHMBMX" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建绩效量化目标明细", tags = {"绩效量化目标明细" },  notes = "批量新建绩效量化目标明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/parlhmbmxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PARLHMBMXDTO> parlhmbmxdtos) {
         parlhmbmxService.createBatch(parlhmbmxMapping.toDomain(parlhmbmxdtos));
@@ -138,7 +138,7 @@ public class PARLHMBMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARLHMBMX-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PARLHMBMX" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"绩效量化目标明细" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/parlhmbmxes/fetchdefault")
 	public ResponseEntity<List<PARLHMBMXDTO>> fetchDefault(PARLHMBMXSearchContext context) {
         Page<PARLHMBMX> domains = parlhmbmxService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PARLHMBMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARLHMBMX-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PARLHMBMX" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"绩效量化目标明细" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/parlhmbmxes/searchdefault")
 	public ResponseEntity<Page<PARLHMBMXDTO>> searchDefault(@RequestBody PARLHMBMXSearchContext context) {
         Page<PARLHMBMX> domains = parlhmbmxService.searchDefault(context) ;

@@ -23,6 +23,10 @@ public class AppController {
 	@Value("${ibiz.enablePermissionValid:false}")
     boolean enablePermissionValid;  //是否开启权限校验
 
+    @Value("${"ibiz.systemid:ehr'}")
+	private String systemId;
+
+
 	@Autowired
 	private AuthenticationUserService userDetailsService;
 
@@ -39,10 +43,10 @@ public class AppController {
 				while(it.hasNext()) {
 					GrantedAuthority authority = (GrantedAuthority)it.next();
 					String strAuthority=authority.getAuthority();
-					if(strAuthority.startsWith("UNIRES"))
-						uniRes.add(strAuthority);
-					else if(strAuthority.startsWith("APPMENU"))
-						appMenu.add(strAuthority);
+					if(strAuthority.startsWith("UNIRES_"+systemId))
+						uniRes.add(strAuthority.substring(systemId.length()+8));
+					else if(strAuthority.startsWith("APPMENU_"+systemId))
+						appMenu.add(strAuthority.substring(systemId.length()+9));
 				}
 		}
 		appData.put("unires",uniRes);

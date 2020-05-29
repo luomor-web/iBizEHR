@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.orm.service.IOrmPostLibService;
 import cn.ibizlab.ehr.core.orm.filter.OrmPostLibSearchContext;
 
 @Slf4j
-@Api(tags = {"OrmPostLib" })
+@Api(tags = {"岗位库" })
 @RestController("WebApi-ormpostlib")
 @RequestMapping("")
 public class OrmPostLibResource {
@@ -47,7 +47,7 @@ public class OrmPostLibResource {
     public OrmPostLibMapping ormpostlibMapping;
 
     @PreAuthorize("hasPermission(this.ormpostlibService.get(#ormpostlib_id),'ehr-OrmPostLib-Remove')")
-    @ApiOperation(value = "Remove", tags = {"OrmPostLib" },  notes = "Remove")
+    @ApiOperation(value = "删除岗位库", tags = {"岗位库" },  notes = "删除岗位库")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormpostlibs/{ormpostlib_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("ormpostlib_id") String ormpostlib_id) {
@@ -55,7 +55,7 @@ public class OrmPostLibResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostlibService.getOrmpostlibByIds(#ids),'ehr-OrmPostLib-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"OrmPostLib" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除岗位库", tags = {"岗位库" },  notes = "批量删除岗位库")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormpostlibs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         ormpostlibService.removeBatch(ids);
@@ -63,14 +63,14 @@ public class OrmPostLibResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostlibMapping.toDomain(#ormpostlibdto),'ehr-OrmPostLib-Save')")
-    @ApiOperation(value = "Save", tags = {"OrmPostLib" },  notes = "Save")
+    @ApiOperation(value = "保存岗位库", tags = {"岗位库" },  notes = "保存岗位库")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostlibs/save")
     public ResponseEntity<Boolean> save(@RequestBody OrmPostLibDTO ormpostlibdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormpostlibService.save(ormpostlibMapping.toDomain(ormpostlibdto)));
     }
 
     @PreAuthorize("hasPermission(this.ormpostlibMapping.toDomain(#ormpostlibdtos),'ehr-OrmPostLib-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"OrmPostLib" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存岗位库", tags = {"岗位库" },  notes = "批量保存岗位库")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostlibs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<OrmPostLibDTO> ormpostlibdtos) {
         ormpostlibService.saveBatch(ormpostlibMapping.toDomain(ormpostlibdtos));
@@ -78,7 +78,7 @@ public class OrmPostLibResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostlibService.get(#ormpostlib_id),'ehr-OrmPostLib-Update')")
-    @ApiOperation(value = "Update", tags = {"OrmPostLib" },  notes = "Update")
+    @ApiOperation(value = "更新岗位库", tags = {"岗位库" },  notes = "更新岗位库")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormpostlibs/{ormpostlib_id}")
     @Transactional
     public ResponseEntity<OrmPostLibDTO> update(@PathVariable("ormpostlib_id") String ormpostlib_id, @RequestBody OrmPostLibDTO ormpostlibdto) {
@@ -90,7 +90,7 @@ public class OrmPostLibResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostlibService.getOrmpostlibByEntities(this.ormpostlibMapping.toDomain(#ormpostlibdtos)),'ehr-OrmPostLib-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"OrmPostLib" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新岗位库", tags = {"岗位库" },  notes = "批量更新岗位库")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormpostlibs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrmPostLibDTO> ormpostlibdtos) {
         ormpostlibService.updateBatch(ormpostlibMapping.toDomain(ormpostlibdtos));
@@ -98,7 +98,7 @@ public class OrmPostLibResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostlibMapping.toDomain(#ormpostlibdto),'ehr-OrmPostLib-Create')")
-    @ApiOperation(value = "Create", tags = {"OrmPostLib" },  notes = "Create")
+    @ApiOperation(value = "新建岗位库", tags = {"岗位库" },  notes = "新建岗位库")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostlibs")
     @Transactional
     public ResponseEntity<OrmPostLibDTO> create(@RequestBody OrmPostLibDTO ormpostlibdto) {
@@ -109,21 +109,21 @@ public class OrmPostLibResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostlibMapping.toDomain(#ormpostlibdtos),'ehr-OrmPostLib-Create')")
-    @ApiOperation(value = "createBatch", tags = {"OrmPostLib" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建岗位库", tags = {"岗位库" },  notes = "批量新建岗位库")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostlibs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrmPostLibDTO> ormpostlibdtos) {
         ormpostlibService.createBatch(ormpostlibMapping.toDomain(ormpostlibdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"OrmPostLib" },  notes = "GetDraft")
+    @ApiOperation(value = "获取岗位库草稿", tags = {"岗位库" },  notes = "获取岗位库草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormpostlibs/getdraft")
     public ResponseEntity<OrmPostLibDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormpostlibMapping.toDto(ormpostlibService.getDraft(new OrmPostLib())));
     }
 
     @PostAuthorize("hasPermission(this.ormpostlibMapping.toDomain(returnObject.body),'ehr-OrmPostLib-Get')")
-    @ApiOperation(value = "Get", tags = {"OrmPostLib" },  notes = "Get")
+    @ApiOperation(value = "获取岗位库", tags = {"岗位库" },  notes = "获取岗位库")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormpostlibs/{ormpostlib_id}")
     public ResponseEntity<OrmPostLibDTO> get(@PathVariable("ormpostlib_id") String ormpostlib_id) {
         OrmPostLib domain = ormpostlibService.get(ormpostlib_id);
@@ -131,14 +131,14 @@ public class OrmPostLibResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"OrmPostLib" },  notes = "CheckKey")
+    @ApiOperation(value = "检查岗位库", tags = {"岗位库" },  notes = "检查岗位库")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormpostlibs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody OrmPostLibDTO ormpostlibdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormpostlibService.checkKey(ormpostlibMapping.toDomain(ormpostlibdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPostLib-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"OrmPostLib" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"岗位库" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormpostlibs/fetchdefault")
 	public ResponseEntity<List<OrmPostLibDTO>> fetchDefault(OrmPostLibSearchContext context) {
         Page<OrmPostLib> domains = ormpostlibService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class OrmPostLibResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPostLib-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"OrmPostLib" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位库" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormpostlibs/searchdefault")
 	public ResponseEntity<Page<OrmPostLibDTO>> searchDefault(@RequestBody OrmPostLibSearchContext context) {
         Page<OrmPostLib> domains = ormpostlibService.searchDefault(context) ;

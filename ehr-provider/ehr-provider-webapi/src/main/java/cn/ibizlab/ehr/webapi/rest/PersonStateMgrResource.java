@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPersonStateMgrService;
 import cn.ibizlab.ehr.core.pim.filter.PersonStateMgrSearchContext;
 
 @Slf4j
-@Api(tags = {"PersonStateMgr" })
+@Api(tags = {"员工状态管理" })
 @RestController("WebApi-personstatemgr")
 @RequestMapping("")
 public class PersonStateMgrResource {
@@ -47,34 +47,34 @@ public class PersonStateMgrResource {
     public PersonStateMgrMapping personstatemgrMapping;
 
     @PreAuthorize("hasPermission(this.personstatemgrMapping.toDomain(#personstatemgrdto),'ehr-PersonStateMgr-Save')")
-    @ApiOperation(value = "Save", tags = {"PersonStateMgr" },  notes = "Save")
+    @ApiOperation(value = "保存员工状态管理", tags = {"员工状态管理" },  notes = "保存员工状态管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/personstatemgrs/save")
     public ResponseEntity<Boolean> save(@RequestBody PersonStateMgrDTO personstatemgrdto) {
         return ResponseEntity.status(HttpStatus.OK).body(personstatemgrService.save(personstatemgrMapping.toDomain(personstatemgrdto)));
     }
 
     @PreAuthorize("hasPermission(this.personstatemgrMapping.toDomain(#personstatemgrdtos),'ehr-PersonStateMgr-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PersonStateMgr" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存员工状态管理", tags = {"员工状态管理" },  notes = "批量保存员工状态管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/personstatemgrs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PersonStateMgrDTO> personstatemgrdtos) {
         personstatemgrService.saveBatch(personstatemgrMapping.toDomain(personstatemgrdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PersonStateMgr" },  notes = "CheckKey")
+    @ApiOperation(value = "检查员工状态管理", tags = {"员工状态管理" },  notes = "检查员工状态管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/personstatemgrs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PersonStateMgrDTO personstatemgrdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(personstatemgrService.checkKey(personstatemgrMapping.toDomain(personstatemgrdto)));
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PersonStateMgr" },  notes = "GetDraft")
+    @ApiOperation(value = "获取员工状态管理草稿", tags = {"员工状态管理" },  notes = "获取员工状态管理草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/personstatemgrs/getdraft")
     public ResponseEntity<PersonStateMgrDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(personstatemgrMapping.toDto(personstatemgrService.getDraft(new PersonStateMgr())));
     }
 
     @PostAuthorize("hasPermission(this.personstatemgrMapping.toDomain(returnObject.body),'ehr-PersonStateMgr-Get')")
-    @ApiOperation(value = "Get", tags = {"PersonStateMgr" },  notes = "Get")
+    @ApiOperation(value = "获取员工状态管理", tags = {"员工状态管理" },  notes = "获取员工状态管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/personstatemgrs/{personstatemgr_id}")
     public ResponseEntity<PersonStateMgrDTO> get(@PathVariable("personstatemgr_id") String personstatemgr_id) {
         PersonStateMgr domain = personstatemgrService.get(personstatemgr_id);
@@ -83,7 +83,7 @@ public class PersonStateMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.personstatemgrMapping.toDomain(#personstatemgrdto),'ehr-PersonStateMgr-Create')")
-    @ApiOperation(value = "Create", tags = {"PersonStateMgr" },  notes = "Create")
+    @ApiOperation(value = "新建员工状态管理", tags = {"员工状态管理" },  notes = "新建员工状态管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/personstatemgrs")
     @Transactional
     public ResponseEntity<PersonStateMgrDTO> create(@RequestBody PersonStateMgrDTO personstatemgrdto) {
@@ -94,7 +94,7 @@ public class PersonStateMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.personstatemgrMapping.toDomain(#personstatemgrdtos),'ehr-PersonStateMgr-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PersonStateMgr" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建员工状态管理", tags = {"员工状态管理" },  notes = "批量新建员工状态管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/personstatemgrs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PersonStateMgrDTO> personstatemgrdtos) {
         personstatemgrService.createBatch(personstatemgrMapping.toDomain(personstatemgrdtos));
@@ -102,7 +102,7 @@ public class PersonStateMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.personstatemgrService.get(#personstatemgr_id),'ehr-PersonStateMgr-Update')")
-    @ApiOperation(value = "Update", tags = {"PersonStateMgr" },  notes = "Update")
+    @ApiOperation(value = "更新员工状态管理", tags = {"员工状态管理" },  notes = "更新员工状态管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/personstatemgrs/{personstatemgr_id}")
     @Transactional
     public ResponseEntity<PersonStateMgrDTO> update(@PathVariable("personstatemgr_id") String personstatemgr_id, @RequestBody PersonStateMgrDTO personstatemgrdto) {
@@ -114,7 +114,7 @@ public class PersonStateMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.personstatemgrService.getPersonstatemgrByEntities(this.personstatemgrMapping.toDomain(#personstatemgrdtos)),'ehr-PersonStateMgr-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PersonStateMgr" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新员工状态管理", tags = {"员工状态管理" },  notes = "批量更新员工状态管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/personstatemgrs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PersonStateMgrDTO> personstatemgrdtos) {
         personstatemgrService.updateBatch(personstatemgrMapping.toDomain(personstatemgrdtos));
@@ -122,7 +122,7 @@ public class PersonStateMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.personstatemgrService.get(#personstatemgr_id),'ehr-PersonStateMgr-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PersonStateMgr" },  notes = "Remove")
+    @ApiOperation(value = "删除员工状态管理", tags = {"员工状态管理" },  notes = "删除员工状态管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/personstatemgrs/{personstatemgr_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("personstatemgr_id") String personstatemgr_id) {
@@ -130,7 +130,7 @@ public class PersonStateMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.personstatemgrService.getPersonstatemgrByIds(#ids),'ehr-PersonStateMgr-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PersonStateMgr" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除员工状态管理", tags = {"员工状态管理" },  notes = "批量删除员工状态管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/personstatemgrs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         personstatemgrService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class PersonStateMgrResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PersonStateMgr-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PersonStateMgr" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"员工状态管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/personstatemgrs/fetchdefault")
 	public ResponseEntity<List<PersonStateMgrDTO>> fetchDefault(PersonStateMgrSearchContext context) {
         Page<PersonStateMgr> domains = personstatemgrService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PersonStateMgrResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PersonStateMgr-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PersonStateMgr" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"员工状态管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/personstatemgrs/searchdefault")
 	public ResponseEntity<Page<PersonStateMgrDTO>> searchDefault(@RequestBody PersonStateMgrSearchContext context) {
         Page<PersonStateMgr> domains = personstatemgrService.searchDefault(context) ;

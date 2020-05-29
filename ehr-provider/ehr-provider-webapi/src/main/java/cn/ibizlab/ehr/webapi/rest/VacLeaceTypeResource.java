@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.vac.service.IVacLeaceTypeService;
 import cn.ibizlab.ehr.core.vac.filter.VacLeaceTypeSearchContext;
 
 @Slf4j
-@Api(tags = {"VacLeaceType" })
+@Api(tags = {"休假类型" })
 @RestController("WebApi-vacleacetype")
 @RequestMapping("")
 public class VacLeaceTypeResource {
@@ -47,7 +47,7 @@ public class VacLeaceTypeResource {
     public VacLeaceTypeMapping vacleacetypeMapping;
 
     @PreAuthorize("hasPermission(this.vacleacetypeService.get(#vacleacetype_id),'ehr-VacLeaceType-Update')")
-    @ApiOperation(value = "Update", tags = {"VacLeaceType" },  notes = "Update")
+    @ApiOperation(value = "更新休假类型", tags = {"休假类型" },  notes = "更新休假类型")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleacetypes/{vacleacetype_id}")
     @Transactional
     public ResponseEntity<VacLeaceTypeDTO> update(@PathVariable("vacleacetype_id") String vacleacetype_id, @RequestBody VacLeaceTypeDTO vacleacetypedto) {
@@ -59,7 +59,7 @@ public class VacLeaceTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleacetypeService.getVacleacetypeByEntities(this.vacleacetypeMapping.toDomain(#vacleacetypedtos)),'ehr-VacLeaceType-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"VacLeaceType" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新休假类型", tags = {"休假类型" },  notes = "批量更新休假类型")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleacetypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VacLeaceTypeDTO> vacleacetypedtos) {
         vacleacetypeService.updateBatch(vacleacetypeMapping.toDomain(vacleacetypedtos));
@@ -67,7 +67,7 @@ public class VacLeaceTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleacetypeService.get(#vacleacetype_id),'ehr-VacLeaceType-Remove')")
-    @ApiOperation(value = "Remove", tags = {"VacLeaceType" },  notes = "Remove")
+    @ApiOperation(value = "删除休假类型", tags = {"休假类型" },  notes = "删除休假类型")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleacetypes/{vacleacetype_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("vacleacetype_id") String vacleacetype_id) {
@@ -75,7 +75,7 @@ public class VacLeaceTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleacetypeService.getVacleacetypeByIds(#ids),'ehr-VacLeaceType-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"VacLeaceType" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除休假类型", tags = {"休假类型" },  notes = "批量删除休假类型")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleacetypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         vacleacetypeService.removeBatch(ids);
@@ -83,7 +83,7 @@ public class VacLeaceTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleacetypeMapping.toDomain(#vacleacetypedto),'ehr-VacLeaceType-Create')")
-    @ApiOperation(value = "Create", tags = {"VacLeaceType" },  notes = "Create")
+    @ApiOperation(value = "新建休假类型", tags = {"休假类型" },  notes = "新建休假类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleacetypes")
     @Transactional
     public ResponseEntity<VacLeaceTypeDTO> create(@RequestBody VacLeaceTypeDTO vacleacetypedto) {
@@ -94,42 +94,42 @@ public class VacLeaceTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleacetypeMapping.toDomain(#vacleacetypedtos),'ehr-VacLeaceType-Create')")
-    @ApiOperation(value = "createBatch", tags = {"VacLeaceType" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建休假类型", tags = {"休假类型" },  notes = "批量新建休假类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleacetypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VacLeaceTypeDTO> vacleacetypedtos) {
         vacleacetypeService.createBatch(vacleacetypeMapping.toDomain(vacleacetypedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"VacLeaceType" },  notes = "GetDraft")
+    @ApiOperation(value = "获取休假类型草稿", tags = {"休假类型" },  notes = "获取休假类型草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleacetypes/getdraft")
     public ResponseEntity<VacLeaceTypeDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacleacetypeMapping.toDto(vacleacetypeService.getDraft(new VacLeaceType())));
     }
 
     @PreAuthorize("hasPermission(this.vacleacetypeMapping.toDomain(#vacleacetypedto),'ehr-VacLeaceType-Save')")
-    @ApiOperation(value = "Save", tags = {"VacLeaceType" },  notes = "Save")
+    @ApiOperation(value = "保存休假类型", tags = {"休假类型" },  notes = "保存休假类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleacetypes/save")
     public ResponseEntity<Boolean> save(@RequestBody VacLeaceTypeDTO vacleacetypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacleacetypeService.save(vacleacetypeMapping.toDomain(vacleacetypedto)));
     }
 
     @PreAuthorize("hasPermission(this.vacleacetypeMapping.toDomain(#vacleacetypedtos),'ehr-VacLeaceType-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"VacLeaceType" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存休假类型", tags = {"休假类型" },  notes = "批量保存休假类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleacetypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VacLeaceTypeDTO> vacleacetypedtos) {
         vacleacetypeService.saveBatch(vacleacetypeMapping.toDomain(vacleacetypedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"VacLeaceType" },  notes = "CheckKey")
+    @ApiOperation(value = "检查休假类型", tags = {"休假类型" },  notes = "检查休假类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleacetypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VacLeaceTypeDTO vacleacetypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacleacetypeService.checkKey(vacleacetypeMapping.toDomain(vacleacetypedto)));
     }
 
     @PostAuthorize("hasPermission(this.vacleacetypeMapping.toDomain(returnObject.body),'ehr-VacLeaceType-Get')")
-    @ApiOperation(value = "Get", tags = {"VacLeaceType" },  notes = "Get")
+    @ApiOperation(value = "获取休假类型", tags = {"休假类型" },  notes = "获取休假类型")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleacetypes/{vacleacetype_id}")
     public ResponseEntity<VacLeaceTypeDTO> get(@PathVariable("vacleacetype_id") String vacleacetype_id) {
         VacLeaceType domain = vacleacetypeService.get(vacleacetype_id);
@@ -138,7 +138,7 @@ public class VacLeaceTypeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaceType-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"VacLeaceType" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"休假类型" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacleacetypes/fetchdefault")
 	public ResponseEntity<List<VacLeaceTypeDTO>> fetchDefault(VacLeaceTypeSearchContext context) {
         Page<VacLeaceType> domains = vacleacetypeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class VacLeaceTypeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaceType-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"VacLeaceType" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"休假类型" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacleacetypes/searchdefault")
 	public ResponseEntity<Page<VacLeaceTypeDTO>> searchDefault(@RequestBody VacLeaceTypeSearchContext context) {
         Page<VacLeaceType> domains = vacleacetypeService.searchDefault(context) ;

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmGbhmcService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmGbhmcSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmGbhmc" })
+@Api(tags = {"干部花名册" })
 @RestController("WebApi-pcmgbhmc")
 @RequestMapping("")
 public class PcmGbhmcResource {
@@ -47,7 +47,7 @@ public class PcmGbhmcResource {
     public PcmGbhmcMapping pcmgbhmcMapping;
 
     @PreAuthorize("hasPermission(this.pcmgbhmcService.get(#pcmgbhmc_id),'ehr-PcmGbhmc-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmGbhmc" },  notes = "Remove")
+    @ApiOperation(value = "删除干部花名册", tags = {"干部花名册" },  notes = "删除干部花名册")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgbhmcs/{pcmgbhmc_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmgbhmc_id") String pcmgbhmc_id) {
@@ -55,7 +55,7 @@ public class PcmGbhmcResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgbhmcService.getPcmgbhmcByIds(#ids),'ehr-PcmGbhmc-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmGbhmc" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除干部花名册", tags = {"干部花名册" },  notes = "批量删除干部花名册")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgbhmcs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmgbhmcService.removeBatch(ids);
@@ -63,7 +63,7 @@ public class PcmGbhmcResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmgbhmcMapping.toDomain(returnObject.body),'ehr-PcmGbhmc-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmGbhmc" },  notes = "Get")
+    @ApiOperation(value = "获取干部花名册", tags = {"干部花名册" },  notes = "获取干部花名册")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmgbhmcs/{pcmgbhmc_id}")
     public ResponseEntity<PcmGbhmcDTO> get(@PathVariable("pcmgbhmc_id") String pcmgbhmc_id) {
         PcmGbhmc domain = pcmgbhmcService.get(pcmgbhmc_id);
@@ -72,7 +72,7 @@ public class PcmGbhmcResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGbhmc-ToggleLeader-all')")
-    @ApiOperation(value = "设置/取消为领导班子", tags = {"PcmGbhmc" },  notes = "设置/取消为领导班子")
+    @ApiOperation(value = "设置/取消为领导班子", tags = {"干部花名册" },  notes = "设置/取消为领导班子")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgbhmcs/{pcmgbhmc_id}/toggleleader")
     @Transactional
     public ResponseEntity<PcmGbhmcDTO> toggleLeader(@PathVariable("pcmgbhmc_id") String pcmgbhmc_id, @RequestBody PcmGbhmcDTO pcmgbhmcdto) {
@@ -83,14 +83,14 @@ public class PcmGbhmcResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgbhmcdto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmGbhmc" },  notes = "GetDraft")
+    @ApiOperation(value = "获取干部花名册草稿", tags = {"干部花名册" },  notes = "获取干部花名册草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmgbhmcs/getdraft")
     public ResponseEntity<PcmGbhmcDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgbhmcMapping.toDto(pcmgbhmcService.getDraft(new PcmGbhmc())));
     }
 
     @PreAuthorize("hasPermission(this.pcmgbhmcMapping.toDomain(#pcmgbhmcdto),'ehr-PcmGbhmc-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmGbhmc" },  notes = "Create")
+    @ApiOperation(value = "新建干部花名册", tags = {"干部花名册" },  notes = "新建干部花名册")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgbhmcs")
     @Transactional
     public ResponseEntity<PcmGbhmcDTO> create(@RequestBody PcmGbhmcDTO pcmgbhmcdto) {
@@ -101,7 +101,7 @@ public class PcmGbhmcResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgbhmcMapping.toDomain(#pcmgbhmcdtos),'ehr-PcmGbhmc-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmGbhmc" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建干部花名册", tags = {"干部花名册" },  notes = "批量新建干部花名册")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgbhmcs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmGbhmcDTO> pcmgbhmcdtos) {
         pcmgbhmcService.createBatch(pcmgbhmcMapping.toDomain(pcmgbhmcdtos));
@@ -109,7 +109,7 @@ public class PcmGbhmcResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgbhmcService.get(#pcmgbhmc_id),'ehr-PcmGbhmc-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmGbhmc" },  notes = "Update")
+    @ApiOperation(value = "更新干部花名册", tags = {"干部花名册" },  notes = "更新干部花名册")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmgbhmcs/{pcmgbhmc_id}")
     @Transactional
     public ResponseEntity<PcmGbhmcDTO> update(@PathVariable("pcmgbhmc_id") String pcmgbhmc_id, @RequestBody PcmGbhmcDTO pcmgbhmcdto) {
@@ -121,7 +121,7 @@ public class PcmGbhmcResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgbhmcService.getPcmgbhmcByEntities(this.pcmgbhmcMapping.toDomain(#pcmgbhmcdtos)),'ehr-PcmGbhmc-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmGbhmc" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新干部花名册", tags = {"干部花名册" },  notes = "批量更新干部花名册")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmgbhmcs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmGbhmcDTO> pcmgbhmcdtos) {
         pcmgbhmcService.updateBatch(pcmgbhmcMapping.toDomain(pcmgbhmcdtos));
@@ -129,14 +129,14 @@ public class PcmGbhmcResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgbhmcMapping.toDomain(#pcmgbhmcdto),'ehr-PcmGbhmc-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmGbhmc" },  notes = "Save")
+    @ApiOperation(value = "保存干部花名册", tags = {"干部花名册" },  notes = "保存干部花名册")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgbhmcs/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmGbhmcDTO pcmgbhmcdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgbhmcService.save(pcmgbhmcMapping.toDomain(pcmgbhmcdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmgbhmcMapping.toDomain(#pcmgbhmcdtos),'ehr-PcmGbhmc-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmGbhmc" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存干部花名册", tags = {"干部花名册" },  notes = "批量保存干部花名册")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgbhmcs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmGbhmcDTO> pcmgbhmcdtos) {
         pcmgbhmcService.saveBatch(pcmgbhmcMapping.toDomain(pcmgbhmcdtos));
@@ -144,7 +144,7 @@ public class PcmGbhmcResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGbhmc-SGTG-all')")
-    @ApiOperation(value = "试岗通过", tags = {"PcmGbhmc" },  notes = "试岗通过")
+    @ApiOperation(value = "试岗通过", tags = {"干部花名册" },  notes = "试岗通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgbhmcs/{pcmgbhmc_id}/sgtg")
     @Transactional
     public ResponseEntity<PcmGbhmcDTO> sGTG(@PathVariable("pcmgbhmc_id") String pcmgbhmc_id, @RequestBody PcmGbhmcDTO pcmgbhmcdto) {
@@ -155,14 +155,14 @@ public class PcmGbhmcResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgbhmcdto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmGbhmc" },  notes = "CheckKey")
+    @ApiOperation(value = "检查干部花名册", tags = {"干部花名册" },  notes = "检查干部花名册")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgbhmcs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmGbhmcDTO pcmgbhmcdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmgbhmcService.checkKey(pcmgbhmcMapping.toDomain(pcmgbhmcdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGbhmc-SGBTG-all')")
-    @ApiOperation(value = "试岗不通过", tags = {"PcmGbhmc" },  notes = "试岗不通过")
+    @ApiOperation(value = "试岗不通过", tags = {"干部花名册" },  notes = "试岗不通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgbhmcs/{pcmgbhmc_id}/sgbtg")
     @Transactional
     public ResponseEntity<PcmGbhmcDTO> sGBTG(@PathVariable("pcmgbhmc_id") String pcmgbhmc_id, @RequestBody PcmGbhmcDTO pcmgbhmcdto) {
@@ -174,7 +174,7 @@ public class PcmGbhmcResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGbhmc-GBHMCNewTree-all')")
-	@ApiOperation(value = "fetch树视图的干部花名册（新）", tags = {"PcmGbhmc" } ,notes = "fetch树视图的干部花名册（新）")
+	@ApiOperation(value = "获取树视图的干部花名册（新）", tags = {"干部花名册" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgbhmcs/fetchgbhmcnewtree")
 	public ResponseEntity<List<PcmGbhmcDTO>> fetchGBHMCNewTree(PcmGbhmcSearchContext context) {
         Page<PcmGbhmc> domains = pcmgbhmcService.searchGBHMCNewTree(context) ;
@@ -187,7 +187,7 @@ public class PcmGbhmcResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGbhmc-GBHMCNewTree-all')")
-	@ApiOperation(value = "search树视图的干部花名册（新）", tags = {"PcmGbhmc" } ,notes = "search树视图的干部花名册（新）")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"干部花名册" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgbhmcs/searchgbhmcnewtree")
 	public ResponseEntity<Page<PcmGbhmcDTO>> searchGBHMCNewTree(@RequestBody PcmGbhmcSearchContext context) {
         Page<PcmGbhmc> domains = pcmgbhmcService.searchGBHMCNewTree(context) ;
@@ -195,7 +195,7 @@ public class PcmGbhmcResource {
                 .body(new PageImpl(pcmgbhmcMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGbhmc-GBHMCTree-all')")
-	@ApiOperation(value = "fetch树视图的干部花名册", tags = {"PcmGbhmc" } ,notes = "fetch树视图的干部花名册")
+	@ApiOperation(value = "获取树视图的干部花名册", tags = {"干部花名册" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgbhmcs/fetchgbhmctree")
 	public ResponseEntity<List<PcmGbhmcDTO>> fetchGBHMCTree(PcmGbhmcSearchContext context) {
         Page<PcmGbhmc> domains = pcmgbhmcService.searchGBHMCTree(context) ;
@@ -208,7 +208,7 @@ public class PcmGbhmcResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGbhmc-GBHMCTree-all')")
-	@ApiOperation(value = "search树视图的干部花名册", tags = {"PcmGbhmc" } ,notes = "search树视图的干部花名册")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"干部花名册" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgbhmcs/searchgbhmctree")
 	public ResponseEntity<Page<PcmGbhmcDTO>> searchGBHMCTree(@RequestBody PcmGbhmcSearchContext context) {
         Page<PcmGbhmc> domains = pcmgbhmcService.searchGBHMCTree(context) ;
@@ -216,7 +216,7 @@ public class PcmGbhmcResource {
                 .body(new PageImpl(pcmgbhmcMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGbhmc-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmGbhmc" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"干部花名册" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgbhmcs/fetchdefault")
 	public ResponseEntity<List<PcmGbhmcDTO>> fetchDefault(PcmGbhmcSearchContext context) {
         Page<PcmGbhmc> domains = pcmgbhmcService.searchDefault(context) ;
@@ -229,7 +229,7 @@ public class PcmGbhmcResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGbhmc-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmGbhmc" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"干部花名册" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgbhmcs/searchdefault")
 	public ResponseEntity<Page<PcmGbhmcDTO>> searchDefault(@RequestBody PcmGbhmcSearchContext context) {
         Page<PcmGbhmc> domains = pcmgbhmcService.searchDefault(context) ;
@@ -237,7 +237,7 @@ public class PcmGbhmcResource {
                 .body(new PageImpl(pcmgbhmcMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGbhmc-ZJPD-all')")
-	@ApiOperation(value = "fetchZJPD", tags = {"PcmGbhmc" } ,notes = "fetchZJPD")
+	@ApiOperation(value = "获取ZJPD", tags = {"干部花名册" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgbhmcs/fetchzjpd")
 	public ResponseEntity<List<PcmGbhmcDTO>> fetchZJPD(PcmGbhmcSearchContext context) {
         Page<PcmGbhmc> domains = pcmgbhmcService.searchZJPD(context) ;
@@ -250,7 +250,7 @@ public class PcmGbhmcResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGbhmc-ZJPD-all')")
-	@ApiOperation(value = "searchZJPD", tags = {"PcmGbhmc" } ,notes = "searchZJPD")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"干部花名册" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgbhmcs/searchzjpd")
 	public ResponseEntity<Page<PcmGbhmcDTO>> searchZJPD(@RequestBody PcmGbhmcSearchContext context) {
         Page<PcmGbhmc> domains = pcmgbhmcService.searchZJPD(context) ;

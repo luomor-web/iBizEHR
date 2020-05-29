@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimExpaccountService;
 import cn.ibizlab.ehr.core.pim.filter.PimExpaccountSearchContext;
 
 @Slf4j
-@Api(tags = {"PimExpaccount" })
+@Api(tags = {"费用台账" })
 @RestController("WebApi-pimexpaccount")
 @RequestMapping("")
 public class PimExpaccountResource {
@@ -47,7 +47,7 @@ public class PimExpaccountResource {
     public PimExpaccountMapping pimexpaccountMapping;
 
     @PreAuthorize("hasPermission(this.pimexpaccountService.get(#pimexpaccount_id),'ehr-PimExpaccount-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimExpaccount" },  notes = "Remove")
+    @ApiOperation(value = "删除费用台账", tags = {"费用台账" },  notes = "删除费用台账")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimexpaccounts/{pimexpaccount_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimexpaccount_id") String pimexpaccount_id) {
@@ -55,7 +55,7 @@ public class PimExpaccountResource {
     }
 
     @PreAuthorize("hasPermission(this.pimexpaccountService.getPimexpaccountByIds(#ids),'ehr-PimExpaccount-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimExpaccount" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除费用台账", tags = {"费用台账" },  notes = "批量删除费用台账")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimexpaccounts/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimexpaccountService.removeBatch(ids);
@@ -63,7 +63,7 @@ public class PimExpaccountResource {
     }
 
     @PostAuthorize("hasPermission(this.pimexpaccountMapping.toDomain(returnObject.body),'ehr-PimExpaccount-Get')")
-    @ApiOperation(value = "Get", tags = {"PimExpaccount" },  notes = "Get")
+    @ApiOperation(value = "获取费用台账", tags = {"费用台账" },  notes = "获取费用台账")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimexpaccounts/{pimexpaccount_id}")
     public ResponseEntity<PimExpaccountDTO> get(@PathVariable("pimexpaccount_id") String pimexpaccount_id) {
         PimExpaccount domain = pimexpaccountService.get(pimexpaccount_id);
@@ -72,14 +72,14 @@ public class PimExpaccountResource {
     }
 
     @PreAuthorize("hasPermission(this.pimexpaccountMapping.toDomain(#pimexpaccountdto),'ehr-PimExpaccount-Save')")
-    @ApiOperation(value = "Save", tags = {"PimExpaccount" },  notes = "Save")
+    @ApiOperation(value = "保存费用台账", tags = {"费用台账" },  notes = "保存费用台账")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexpaccounts/save")
     public ResponseEntity<Boolean> save(@RequestBody PimExpaccountDTO pimexpaccountdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimexpaccountService.save(pimexpaccountMapping.toDomain(pimexpaccountdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimexpaccountMapping.toDomain(#pimexpaccountdtos),'ehr-PimExpaccount-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimExpaccount" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存费用台账", tags = {"费用台账" },  notes = "批量保存费用台账")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexpaccounts/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimExpaccountDTO> pimexpaccountdtos) {
         pimexpaccountService.saveBatch(pimexpaccountMapping.toDomain(pimexpaccountdtos));
@@ -87,7 +87,7 @@ public class PimExpaccountResource {
     }
 
     @PreAuthorize("hasPermission(this.pimexpaccountService.get(#pimexpaccount_id),'ehr-PimExpaccount-Update')")
-    @ApiOperation(value = "Update", tags = {"PimExpaccount" },  notes = "Update")
+    @ApiOperation(value = "更新费用台账", tags = {"费用台账" },  notes = "更新费用台账")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimexpaccounts/{pimexpaccount_id}")
     @Transactional
     public ResponseEntity<PimExpaccountDTO> update(@PathVariable("pimexpaccount_id") String pimexpaccount_id, @RequestBody PimExpaccountDTO pimexpaccountdto) {
@@ -99,27 +99,27 @@ public class PimExpaccountResource {
     }
 
     @PreAuthorize("hasPermission(this.pimexpaccountService.getPimexpaccountByEntities(this.pimexpaccountMapping.toDomain(#pimexpaccountdtos)),'ehr-PimExpaccount-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimExpaccount" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新费用台账", tags = {"费用台账" },  notes = "批量更新费用台账")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimexpaccounts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimExpaccountDTO> pimexpaccountdtos) {
         pimexpaccountService.updateBatch(pimexpaccountMapping.toDomain(pimexpaccountdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimExpaccount" },  notes = "GetDraft")
+    @ApiOperation(value = "获取费用台账草稿", tags = {"费用台账" },  notes = "获取费用台账草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimexpaccounts/getdraft")
     public ResponseEntity<PimExpaccountDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimexpaccountMapping.toDto(pimexpaccountService.getDraft(new PimExpaccount())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimExpaccount" },  notes = "CheckKey")
+    @ApiOperation(value = "检查费用台账", tags = {"费用台账" },  notes = "检查费用台账")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexpaccounts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimExpaccountDTO pimexpaccountdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimexpaccountService.checkKey(pimexpaccountMapping.toDomain(pimexpaccountdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimexpaccountMapping.toDomain(#pimexpaccountdto),'ehr-PimExpaccount-Create')")
-    @ApiOperation(value = "Create", tags = {"PimExpaccount" },  notes = "Create")
+    @ApiOperation(value = "新建费用台账", tags = {"费用台账" },  notes = "新建费用台账")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexpaccounts")
     @Transactional
     public ResponseEntity<PimExpaccountDTO> create(@RequestBody PimExpaccountDTO pimexpaccountdto) {
@@ -130,7 +130,7 @@ public class PimExpaccountResource {
     }
 
     @PreAuthorize("hasPermission(this.pimexpaccountMapping.toDomain(#pimexpaccountdtos),'ehr-PimExpaccount-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimExpaccount" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建费用台账", tags = {"费用台账" },  notes = "批量新建费用台账")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimexpaccounts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimExpaccountDTO> pimexpaccountdtos) {
         pimexpaccountService.createBatch(pimexpaccountMapping.toDomain(pimexpaccountdtos));
@@ -138,7 +138,7 @@ public class PimExpaccountResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimExpaccount-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimExpaccount" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"费用台账" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimexpaccounts/fetchdefault")
 	public ResponseEntity<List<PimExpaccountDTO>> fetchDefault(PimExpaccountSearchContext context) {
         Page<PimExpaccount> domains = pimexpaccountService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimExpaccountResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimExpaccount-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimExpaccount" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"费用台账" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimexpaccounts/searchdefault")
 	public ResponseEntity<Page<PimExpaccountDTO>> searchDefault(@RequestBody PimExpaccountSearchContext context) {
         Page<PimExpaccount> domains = pimexpaccountService.searchDefault(context) ;

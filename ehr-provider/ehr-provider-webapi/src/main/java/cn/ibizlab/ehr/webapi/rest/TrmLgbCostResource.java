@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITrmLgbCostService;
 import cn.ibizlab.ehr.core.trm.filter.TrmLgbCostSearchContext;
 
 @Slf4j
-@Api(tags = {"TrmLgbCost" })
+@Api(tags = {"老干部费用" })
 @RestController("WebApi-trmlgbcost")
 @RequestMapping("")
 public class TrmLgbCostResource {
@@ -47,7 +47,7 @@ public class TrmLgbCostResource {
     public TrmLgbCostMapping trmlgbcostMapping;
 
     @PostAuthorize("hasPermission(this.trmlgbcostMapping.toDomain(returnObject.body),'ehr-TrmLgbCost-Get')")
-    @ApiOperation(value = "Get", tags = {"TrmLgbCost" },  notes = "Get")
+    @ApiOperation(value = "获取老干部费用", tags = {"老干部费用" },  notes = "获取老干部费用")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmlgbcosts/{trmlgbcost_id}")
     public ResponseEntity<TrmLgbCostDTO> get(@PathVariable("trmlgbcost_id") String trmlgbcost_id) {
         TrmLgbCost domain = trmlgbcostService.get(trmlgbcost_id);
@@ -56,7 +56,7 @@ public class TrmLgbCostResource {
     }
 
     @PreAuthorize("hasPermission(this.trmlgbcostService.get(#trmlgbcost_id),'ehr-TrmLgbCost-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TrmLgbCost" },  notes = "Remove")
+    @ApiOperation(value = "删除老干部费用", tags = {"老干部费用" },  notes = "删除老干部费用")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmlgbcosts/{trmlgbcost_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trmlgbcost_id") String trmlgbcost_id) {
@@ -64,27 +64,27 @@ public class TrmLgbCostResource {
     }
 
     @PreAuthorize("hasPermission(this.trmlgbcostService.getTrmlgbcostByIds(#ids),'ehr-TrmLgbCost-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TrmLgbCost" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除老干部费用", tags = {"老干部费用" },  notes = "批量删除老干部费用")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmlgbcosts/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmlgbcostService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"TrmLgbCost" },  notes = "GetDraft")
+    @ApiOperation(value = "获取老干部费用草稿", tags = {"老干部费用" },  notes = "获取老干部费用草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmlgbcosts/getdraft")
     public ResponseEntity<TrmLgbCostDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmlgbcostMapping.toDto(trmlgbcostService.getDraft(new TrmLgbCost())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TrmLgbCost" },  notes = "CheckKey")
+    @ApiOperation(value = "检查老干部费用", tags = {"老干部费用" },  notes = "检查老干部费用")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbcosts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmLgbCostDTO trmlgbcostdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmlgbcostService.checkKey(trmlgbcostMapping.toDomain(trmlgbcostdto)));
     }
 
     @PreAuthorize("hasPermission(this.trmlgbcostService.get(#trmlgbcost_id),'ehr-TrmLgbCost-Update')")
-    @ApiOperation(value = "Update", tags = {"TrmLgbCost" },  notes = "Update")
+    @ApiOperation(value = "更新老干部费用", tags = {"老干部费用" },  notes = "更新老干部费用")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmlgbcosts/{trmlgbcost_id}")
     @Transactional
     public ResponseEntity<TrmLgbCostDTO> update(@PathVariable("trmlgbcost_id") String trmlgbcost_id, @RequestBody TrmLgbCostDTO trmlgbcostdto) {
@@ -96,7 +96,7 @@ public class TrmLgbCostResource {
     }
 
     @PreAuthorize("hasPermission(this.trmlgbcostService.getTrmlgbcostByEntities(this.trmlgbcostMapping.toDomain(#trmlgbcostdtos)),'ehr-TrmLgbCost-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TrmLgbCost" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新老干部费用", tags = {"老干部费用" },  notes = "批量更新老干部费用")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmlgbcosts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TrmLgbCostDTO> trmlgbcostdtos) {
         trmlgbcostService.updateBatch(trmlgbcostMapping.toDomain(trmlgbcostdtos));
@@ -104,7 +104,7 @@ public class TrmLgbCostResource {
     }
 
     @PreAuthorize("hasPermission(this.trmlgbcostMapping.toDomain(#trmlgbcostdto),'ehr-TrmLgbCost-Create')")
-    @ApiOperation(value = "Create", tags = {"TrmLgbCost" },  notes = "Create")
+    @ApiOperation(value = "新建老干部费用", tags = {"老干部费用" },  notes = "新建老干部费用")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbcosts")
     @Transactional
     public ResponseEntity<TrmLgbCostDTO> create(@RequestBody TrmLgbCostDTO trmlgbcostdto) {
@@ -115,7 +115,7 @@ public class TrmLgbCostResource {
     }
 
     @PreAuthorize("hasPermission(this.trmlgbcostMapping.toDomain(#trmlgbcostdtos),'ehr-TrmLgbCost-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TrmLgbCost" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建老干部费用", tags = {"老干部费用" },  notes = "批量新建老干部费用")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbcosts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmLgbCostDTO> trmlgbcostdtos) {
         trmlgbcostService.createBatch(trmlgbcostMapping.toDomain(trmlgbcostdtos));
@@ -123,14 +123,14 @@ public class TrmLgbCostResource {
     }
 
     @PreAuthorize("hasPermission(this.trmlgbcostMapping.toDomain(#trmlgbcostdto),'ehr-TrmLgbCost-Save')")
-    @ApiOperation(value = "Save", tags = {"TrmLgbCost" },  notes = "Save")
+    @ApiOperation(value = "保存老干部费用", tags = {"老干部费用" },  notes = "保存老干部费用")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbcosts/save")
     public ResponseEntity<Boolean> save(@RequestBody TrmLgbCostDTO trmlgbcostdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmlgbcostService.save(trmlgbcostMapping.toDomain(trmlgbcostdto)));
     }
 
     @PreAuthorize("hasPermission(this.trmlgbcostMapping.toDomain(#trmlgbcostdtos),'ehr-TrmLgbCost-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TrmLgbCost" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存老干部费用", tags = {"老干部费用" },  notes = "批量保存老干部费用")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbcosts/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TrmLgbCostDTO> trmlgbcostdtos) {
         trmlgbcostService.saveBatch(trmlgbcostMapping.toDomain(trmlgbcostdtos));
@@ -138,7 +138,7 @@ public class TrmLgbCostResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmLgbCost-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TrmLgbCost" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"老干部费用" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmlgbcosts/fetchdefault")
 	public ResponseEntity<List<TrmLgbCostDTO>> fetchDefault(TrmLgbCostSearchContext context) {
         Page<TrmLgbCost> domains = trmlgbcostService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmLgbCostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmLgbCost-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TrmLgbCost" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"老干部费用" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmlgbcosts/searchdefault")
 	public ResponseEntity<Page<TrmLgbCostDTO>> searchDefault(@RequestBody TrmLgbCostSearchContext context) {
         Page<TrmLgbCost> domains = trmlgbcostService.searchDefault(context) ;

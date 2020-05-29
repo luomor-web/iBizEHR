@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITrmEmployeeRetionService;
 import cn.ibizlab.ehr.core.trm.filter.TrmEmployeeRetionSearchContext;
 
 @Slf4j
-@Api(tags = {"TrmEmployeeRetion" })
+@Api(tags = {"员工培训报名" })
 @RestController("WebApi-trmemployeeretion")
 @RequestMapping("")
 public class TrmEmployeeRetionResource {
@@ -47,7 +47,7 @@ public class TrmEmployeeRetionResource {
     public TrmEmployeeRetionMapping trmemployeeretionMapping;
 
     @PreAuthorize("hasPermission(this.trmemployeeretionService.get(#trmemployeeretion_id),'ehr-TrmEmployeeRetion-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TrmEmployeeRetion" },  notes = "Remove")
+    @ApiOperation(value = "删除员工培训报名", tags = {"员工培训报名" },  notes = "删除员工培训报名")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmemployeeretions/{trmemployeeretion_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trmemployeeretion_id") String trmemployeeretion_id) {
@@ -55,21 +55,21 @@ public class TrmEmployeeRetionResource {
     }
 
     @PreAuthorize("hasPermission(this.trmemployeeretionService.getTrmemployeeretionByIds(#ids),'ehr-TrmEmployeeRetion-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TrmEmployeeRetion" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除员工培训报名", tags = {"员工培训报名" },  notes = "批量删除员工培训报名")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmemployeeretions/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmemployeeretionService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"TrmEmployeeRetion" },  notes = "GetDraft")
+    @ApiOperation(value = "获取员工培训报名草稿", tags = {"员工培训报名" },  notes = "获取员工培训报名草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmemployeeretions/getdraft")
     public ResponseEntity<TrmEmployeeRetionDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmemployeeretionMapping.toDto(trmemployeeretionService.getDraft(new TrmEmployeeRetion())));
     }
 
     @PreAuthorize("hasPermission(this.trmemployeeretionService.get(#trmemployeeretion_id),'ehr-TrmEmployeeRetion-Update')")
-    @ApiOperation(value = "Update", tags = {"TrmEmployeeRetion" },  notes = "Update")
+    @ApiOperation(value = "更新员工培训报名", tags = {"员工培训报名" },  notes = "更新员工培训报名")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmemployeeretions/{trmemployeeretion_id}")
     @Transactional
     public ResponseEntity<TrmEmployeeRetionDTO> update(@PathVariable("trmemployeeretion_id") String trmemployeeretion_id, @RequestBody TrmEmployeeRetionDTO trmemployeeretiondto) {
@@ -81,7 +81,7 @@ public class TrmEmployeeRetionResource {
     }
 
     @PreAuthorize("hasPermission(this.trmemployeeretionService.getTrmemployeeretionByEntities(this.trmemployeeretionMapping.toDomain(#trmemployeeretiondtos)),'ehr-TrmEmployeeRetion-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TrmEmployeeRetion" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新员工培训报名", tags = {"员工培训报名" },  notes = "批量更新员工培训报名")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmemployeeretions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TrmEmployeeRetionDTO> trmemployeeretiondtos) {
         trmemployeeretionService.updateBatch(trmemployeeretionMapping.toDomain(trmemployeeretiondtos));
@@ -89,14 +89,14 @@ public class TrmEmployeeRetionResource {
     }
 
     @PreAuthorize("hasPermission(this.trmemployeeretionMapping.toDomain(#trmemployeeretiondto),'ehr-TrmEmployeeRetion-Save')")
-    @ApiOperation(value = "Save", tags = {"TrmEmployeeRetion" },  notes = "Save")
+    @ApiOperation(value = "保存员工培训报名", tags = {"员工培训报名" },  notes = "保存员工培训报名")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmemployeeretions/save")
     public ResponseEntity<Boolean> save(@RequestBody TrmEmployeeRetionDTO trmemployeeretiondto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmemployeeretionService.save(trmemployeeretionMapping.toDomain(trmemployeeretiondto)));
     }
 
     @PreAuthorize("hasPermission(this.trmemployeeretionMapping.toDomain(#trmemployeeretiondtos),'ehr-TrmEmployeeRetion-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TrmEmployeeRetion" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存员工培训报名", tags = {"员工培训报名" },  notes = "批量保存员工培训报名")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmemployeeretions/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TrmEmployeeRetionDTO> trmemployeeretiondtos) {
         trmemployeeretionService.saveBatch(trmemployeeretionMapping.toDomain(trmemployeeretiondtos));
@@ -104,7 +104,7 @@ public class TrmEmployeeRetionResource {
     }
 
     @PreAuthorize("hasPermission(this.trmemployeeretionMapping.toDomain(#trmemployeeretiondto),'ehr-TrmEmployeeRetion-Create')")
-    @ApiOperation(value = "Create", tags = {"TrmEmployeeRetion" },  notes = "Create")
+    @ApiOperation(value = "新建员工培训报名", tags = {"员工培训报名" },  notes = "新建员工培训报名")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmemployeeretions")
     @Transactional
     public ResponseEntity<TrmEmployeeRetionDTO> create(@RequestBody TrmEmployeeRetionDTO trmemployeeretiondto) {
@@ -115,21 +115,21 @@ public class TrmEmployeeRetionResource {
     }
 
     @PreAuthorize("hasPermission(this.trmemployeeretionMapping.toDomain(#trmemployeeretiondtos),'ehr-TrmEmployeeRetion-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TrmEmployeeRetion" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建员工培训报名", tags = {"员工培训报名" },  notes = "批量新建员工培训报名")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmemployeeretions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmEmployeeRetionDTO> trmemployeeretiondtos) {
         trmemployeeretionService.createBatch(trmemployeeretionMapping.toDomain(trmemployeeretiondtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TrmEmployeeRetion" },  notes = "CheckKey")
+    @ApiOperation(value = "检查员工培训报名", tags = {"员工培训报名" },  notes = "检查员工培训报名")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmemployeeretions/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmEmployeeRetionDTO trmemployeeretiondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmemployeeretionService.checkKey(trmemployeeretionMapping.toDomain(trmemployeeretiondto)));
     }
 
     @PostAuthorize("hasPermission(this.trmemployeeretionMapping.toDomain(returnObject.body),'ehr-TrmEmployeeRetion-Get')")
-    @ApiOperation(value = "Get", tags = {"TrmEmployeeRetion" },  notes = "Get")
+    @ApiOperation(value = "获取员工培训报名", tags = {"员工培训报名" },  notes = "获取员工培训报名")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmemployeeretions/{trmemployeeretion_id}")
     public ResponseEntity<TrmEmployeeRetionDTO> get(@PathVariable("trmemployeeretion_id") String trmemployeeretion_id) {
         TrmEmployeeRetion domain = trmemployeeretionService.get(trmemployeeretion_id);
@@ -138,7 +138,7 @@ public class TrmEmployeeRetionResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmEmployeeRetion-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TrmEmployeeRetion" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"员工培训报名" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmemployeeretions/fetchdefault")
 	public ResponseEntity<List<TrmEmployeeRetionDTO>> fetchDefault(TrmEmployeeRetionSearchContext context) {
         Page<TrmEmployeeRetion> domains = trmemployeeretionService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmEmployeeRetionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmEmployeeRetion-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TrmEmployeeRetion" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"员工培训报名" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmemployeeretions/searchdefault")
 	public ResponseEntity<Page<TrmEmployeeRetionDTO>> searchDefault(@RequestBody TrmEmployeeRetionSearchContext context) {
         Page<TrmEmployeeRetion> domains = trmemployeeretionService.searchDefault(context) ;

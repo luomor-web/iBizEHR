@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.soc.service.ISocSelfareBaseService;
 import cn.ibizlab.ehr.core.soc.filter.SocSelfareBaseSearchContext;
 
 @Slf4j
-@Api(tags = {"SocSelfareBase" })
+@Api(tags = {"参保地管理" })
 @RestController("WebApi-socselfarebase")
 @RequestMapping("")
 public class SocSelfareBaseResource {
@@ -46,27 +46,27 @@ public class SocSelfareBaseResource {
     @Lazy
     public SocSelfareBaseMapping socselfarebaseMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"SocSelfareBase" },  notes = "GetDraft")
+    @ApiOperation(value = "获取参保地管理草稿", tags = {"参保地管理" },  notes = "获取参保地管理草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/socselfarebases/getdraft")
     public ResponseEntity<SocSelfareBaseDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(socselfarebaseMapping.toDto(socselfarebaseService.getDraft(new SocSelfareBase())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"SocSelfareBase" },  notes = "CheckKey")
+    @ApiOperation(value = "检查参保地管理", tags = {"参保地管理" },  notes = "检查参保地管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebases/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SocSelfareBaseDTO socselfarebasedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(socselfarebaseService.checkKey(socselfarebaseMapping.toDomain(socselfarebasedto)));
     }
 
     @PreAuthorize("hasPermission(this.socselfarebaseMapping.toDomain(#socselfarebasedto),'ehr-SocSelfareBase-Save')")
-    @ApiOperation(value = "Save", tags = {"SocSelfareBase" },  notes = "Save")
+    @ApiOperation(value = "保存参保地管理", tags = {"参保地管理" },  notes = "保存参保地管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebases/save")
     public ResponseEntity<Boolean> save(@RequestBody SocSelfareBaseDTO socselfarebasedto) {
         return ResponseEntity.status(HttpStatus.OK).body(socselfarebaseService.save(socselfarebaseMapping.toDomain(socselfarebasedto)));
     }
 
     @PreAuthorize("hasPermission(this.socselfarebaseMapping.toDomain(#socselfarebasedtos),'ehr-SocSelfareBase-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SocSelfareBase" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存参保地管理", tags = {"参保地管理" },  notes = "批量保存参保地管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebases/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SocSelfareBaseDTO> socselfarebasedtos) {
         socselfarebaseService.saveBatch(socselfarebaseMapping.toDomain(socselfarebasedtos));
@@ -74,7 +74,7 @@ public class SocSelfareBaseResource {
     }
 
     @PreAuthorize("hasPermission(this.socselfarebaseService.get(#socselfarebase_id),'ehr-SocSelfareBase-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SocSelfareBase" },  notes = "Remove")
+    @ApiOperation(value = "删除参保地管理", tags = {"参保地管理" },  notes = "删除参保地管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/socselfarebases/{socselfarebase_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("socselfarebase_id") String socselfarebase_id) {
@@ -82,7 +82,7 @@ public class SocSelfareBaseResource {
     }
 
     @PreAuthorize("hasPermission(this.socselfarebaseService.getSocselfarebaseByIds(#ids),'ehr-SocSelfareBase-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SocSelfareBase" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除参保地管理", tags = {"参保地管理" },  notes = "批量删除参保地管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/socselfarebases/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         socselfarebaseService.removeBatch(ids);
@@ -90,7 +90,7 @@ public class SocSelfareBaseResource {
     }
 
     @PreAuthorize("hasPermission(this.socselfarebaseMapping.toDomain(#socselfarebasedto),'ehr-SocSelfareBase-Create')")
-    @ApiOperation(value = "Create", tags = {"SocSelfareBase" },  notes = "Create")
+    @ApiOperation(value = "新建参保地管理", tags = {"参保地管理" },  notes = "新建参保地管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebases")
     @Transactional
     public ResponseEntity<SocSelfareBaseDTO> create(@RequestBody SocSelfareBaseDTO socselfarebasedto) {
@@ -101,7 +101,7 @@ public class SocSelfareBaseResource {
     }
 
     @PreAuthorize("hasPermission(this.socselfarebaseMapping.toDomain(#socselfarebasedtos),'ehr-SocSelfareBase-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SocSelfareBase" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建参保地管理", tags = {"参保地管理" },  notes = "批量新建参保地管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/socselfarebases/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SocSelfareBaseDTO> socselfarebasedtos) {
         socselfarebaseService.createBatch(socselfarebaseMapping.toDomain(socselfarebasedtos));
@@ -109,7 +109,7 @@ public class SocSelfareBaseResource {
     }
 
     @PreAuthorize("hasPermission(this.socselfarebaseService.get(#socselfarebase_id),'ehr-SocSelfareBase-Update')")
-    @ApiOperation(value = "Update", tags = {"SocSelfareBase" },  notes = "Update")
+    @ApiOperation(value = "更新参保地管理", tags = {"参保地管理" },  notes = "更新参保地管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/socselfarebases/{socselfarebase_id}")
     @Transactional
     public ResponseEntity<SocSelfareBaseDTO> update(@PathVariable("socselfarebase_id") String socselfarebase_id, @RequestBody SocSelfareBaseDTO socselfarebasedto) {
@@ -121,7 +121,7 @@ public class SocSelfareBaseResource {
     }
 
     @PreAuthorize("hasPermission(this.socselfarebaseService.getSocselfarebaseByEntities(this.socselfarebaseMapping.toDomain(#socselfarebasedtos)),'ehr-SocSelfareBase-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SocSelfareBase" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新参保地管理", tags = {"参保地管理" },  notes = "批量更新参保地管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/socselfarebases/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SocSelfareBaseDTO> socselfarebasedtos) {
         socselfarebaseService.updateBatch(socselfarebaseMapping.toDomain(socselfarebasedtos));
@@ -129,7 +129,7 @@ public class SocSelfareBaseResource {
     }
 
     @PostAuthorize("hasPermission(this.socselfarebaseMapping.toDomain(returnObject.body),'ehr-SocSelfareBase-Get')")
-    @ApiOperation(value = "Get", tags = {"SocSelfareBase" },  notes = "Get")
+    @ApiOperation(value = "获取参保地管理", tags = {"参保地管理" },  notes = "获取参保地管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/socselfarebases/{socselfarebase_id}")
     public ResponseEntity<SocSelfareBaseDTO> get(@PathVariable("socselfarebase_id") String socselfarebase_id) {
         SocSelfareBase domain = socselfarebaseService.get(socselfarebase_id);
@@ -138,7 +138,7 @@ public class SocSelfareBaseResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocSelfareBase-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SocSelfareBase" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"参保地管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/socselfarebases/fetchdefault")
 	public ResponseEntity<List<SocSelfareBaseDTO>> fetchDefault(SocSelfareBaseSearchContext context) {
         Page<SocSelfareBase> domains = socselfarebaseService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SocSelfareBaseResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocSelfareBase-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SocSelfareBase" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"参保地管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/socselfarebases/searchdefault")
 	public ResponseEntity<Page<SocSelfareBaseDTO>> searchDefault(@RequestBody SocSelfareBaseSearchContext context) {
         Page<SocSelfareBase> domains = socselfarebaseService.searchDefault(context) ;

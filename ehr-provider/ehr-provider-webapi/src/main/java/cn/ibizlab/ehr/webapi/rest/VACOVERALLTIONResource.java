@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.vac.service.IVACOVERALLTIONService;
 import cn.ibizlab.ehr.core.vac.filter.VACOVERALLTIONSearchContext;
 
 @Slf4j
-@Api(tags = {"VACOVERALLTION" })
+@Api(tags = {"统筹休假(暂时停用)" })
 @RestController("WebApi-vacoveralltion")
 @RequestMapping("")
 public class VACOVERALLTIONResource {
@@ -46,35 +46,35 @@ public class VACOVERALLTIONResource {
     @Lazy
     public VACOVERALLTIONMapping vacoveralltionMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"VACOVERALLTION" },  notes = "GetDraft")
+    @ApiOperation(value = "获取统筹休假(暂时停用)草稿", tags = {"统筹休假(暂时停用)" },  notes = "获取统筹休假(暂时停用)草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacoveralltions/getdraft")
     public ResponseEntity<VACOVERALLTIONDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacoveralltionMapping.toDto(vacoveralltionService.getDraft(new VACOVERALLTION())));
     }
 
     @PreAuthorize("hasPermission(this.vacoveralltionMapping.toDomain(#vacoveralltiondto),'ehr-VACOVERALLTION-Save')")
-    @ApiOperation(value = "Save", tags = {"VACOVERALLTION" },  notes = "Save")
+    @ApiOperation(value = "保存统筹休假(暂时停用)", tags = {"统筹休假(暂时停用)" },  notes = "保存统筹休假(暂时停用)")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacoveralltions/save")
     public ResponseEntity<Boolean> save(@RequestBody VACOVERALLTIONDTO vacoveralltiondto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacoveralltionService.save(vacoveralltionMapping.toDomain(vacoveralltiondto)));
     }
 
     @PreAuthorize("hasPermission(this.vacoveralltionMapping.toDomain(#vacoveralltiondtos),'ehr-VACOVERALLTION-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"VACOVERALLTION" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存统筹休假(暂时停用)", tags = {"统筹休假(暂时停用)" },  notes = "批量保存统筹休假(暂时停用)")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacoveralltions/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACOVERALLTIONDTO> vacoveralltiondtos) {
         vacoveralltionService.saveBatch(vacoveralltionMapping.toDomain(vacoveralltiondtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"VACOVERALLTION" },  notes = "CheckKey")
+    @ApiOperation(value = "检查统筹休假(暂时停用)", tags = {"统筹休假(暂时停用)" },  notes = "检查统筹休假(暂时停用)")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacoveralltions/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACOVERALLTIONDTO vacoveralltiondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacoveralltionService.checkKey(vacoveralltionMapping.toDomain(vacoveralltiondto)));
     }
 
     @PreAuthorize("hasPermission(this.vacoveralltionService.get(#vacoveralltion_id),'ehr-VACOVERALLTION-Update')")
-    @ApiOperation(value = "Update", tags = {"VACOVERALLTION" },  notes = "Update")
+    @ApiOperation(value = "更新统筹休假(暂时停用)", tags = {"统筹休假(暂时停用)" },  notes = "更新统筹休假(暂时停用)")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacoveralltions/{vacoveralltion_id}")
     @Transactional
     public ResponseEntity<VACOVERALLTIONDTO> update(@PathVariable("vacoveralltion_id") String vacoveralltion_id, @RequestBody VACOVERALLTIONDTO vacoveralltiondto) {
@@ -86,7 +86,7 @@ public class VACOVERALLTIONResource {
     }
 
     @PreAuthorize("hasPermission(this.vacoveralltionService.getVacoveralltionByEntities(this.vacoveralltionMapping.toDomain(#vacoveralltiondtos)),'ehr-VACOVERALLTION-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"VACOVERALLTION" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新统筹休假(暂时停用)", tags = {"统筹休假(暂时停用)" },  notes = "批量更新统筹休假(暂时停用)")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacoveralltions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACOVERALLTIONDTO> vacoveralltiondtos) {
         vacoveralltionService.updateBatch(vacoveralltionMapping.toDomain(vacoveralltiondtos));
@@ -94,7 +94,7 @@ public class VACOVERALLTIONResource {
     }
 
     @PreAuthorize("hasPermission(this.vacoveralltionService.get(#vacoveralltion_id),'ehr-VACOVERALLTION-Remove')")
-    @ApiOperation(value = "Remove", tags = {"VACOVERALLTION" },  notes = "Remove")
+    @ApiOperation(value = "删除统筹休假(暂时停用)", tags = {"统筹休假(暂时停用)" },  notes = "删除统筹休假(暂时停用)")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacoveralltions/{vacoveralltion_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("vacoveralltion_id") String vacoveralltion_id) {
@@ -102,7 +102,7 @@ public class VACOVERALLTIONResource {
     }
 
     @PreAuthorize("hasPermission(this.vacoveralltionService.getVacoveralltionByIds(#ids),'ehr-VACOVERALLTION-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"VACOVERALLTION" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除统筹休假(暂时停用)", tags = {"统筹休假(暂时停用)" },  notes = "批量删除统筹休假(暂时停用)")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacoveralltions/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         vacoveralltionService.removeBatch(ids);
@@ -110,7 +110,7 @@ public class VACOVERALLTIONResource {
     }
 
     @PreAuthorize("hasPermission(this.vacoveralltionMapping.toDomain(#vacoveralltiondto),'ehr-VACOVERALLTION-Create')")
-    @ApiOperation(value = "Create", tags = {"VACOVERALLTION" },  notes = "Create")
+    @ApiOperation(value = "新建统筹休假(暂时停用)", tags = {"统筹休假(暂时停用)" },  notes = "新建统筹休假(暂时停用)")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacoveralltions")
     @Transactional
     public ResponseEntity<VACOVERALLTIONDTO> create(@RequestBody VACOVERALLTIONDTO vacoveralltiondto) {
@@ -121,7 +121,7 @@ public class VACOVERALLTIONResource {
     }
 
     @PreAuthorize("hasPermission(this.vacoveralltionMapping.toDomain(#vacoveralltiondtos),'ehr-VACOVERALLTION-Create')")
-    @ApiOperation(value = "createBatch", tags = {"VACOVERALLTION" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建统筹休假(暂时停用)", tags = {"统筹休假(暂时停用)" },  notes = "批量新建统筹休假(暂时停用)")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacoveralltions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACOVERALLTIONDTO> vacoveralltiondtos) {
         vacoveralltionService.createBatch(vacoveralltionMapping.toDomain(vacoveralltiondtos));
@@ -129,7 +129,7 @@ public class VACOVERALLTIONResource {
     }
 
     @PostAuthorize("hasPermission(this.vacoveralltionMapping.toDomain(returnObject.body),'ehr-VACOVERALLTION-Get')")
-    @ApiOperation(value = "Get", tags = {"VACOVERALLTION" },  notes = "Get")
+    @ApiOperation(value = "获取统筹休假(暂时停用)", tags = {"统筹休假(暂时停用)" },  notes = "获取统筹休假(暂时停用)")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacoveralltions/{vacoveralltion_id}")
     public ResponseEntity<VACOVERALLTIONDTO> get(@PathVariable("vacoveralltion_id") String vacoveralltion_id) {
         VACOVERALLTION domain = vacoveralltionService.get(vacoveralltion_id);
@@ -138,7 +138,7 @@ public class VACOVERALLTIONResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACOVERALLTION-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"VACOVERALLTION" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"统筹休假(暂时停用)" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacoveralltions/fetchdefault")
 	public ResponseEntity<List<VACOVERALLTIONDTO>> fetchDefault(VACOVERALLTIONSearchContext context) {
         Page<VACOVERALLTION> domains = vacoveralltionService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class VACOVERALLTIONResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACOVERALLTION-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"VACOVERALLTION" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"统筹休假(暂时停用)" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacoveralltions/searchdefault")
 	public ResponseEntity<Page<VACOVERALLTIONDTO>> searchDefault(@RequestBody VACOVERALLTIONSearchContext context) {
         Page<VACOVERALLTION> domains = vacoveralltionService.searchDefault(context) ;

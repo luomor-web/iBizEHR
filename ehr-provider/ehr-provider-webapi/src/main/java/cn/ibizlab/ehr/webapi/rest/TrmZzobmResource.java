@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITrmZzobmService;
 import cn.ibizlab.ehr.core.trm.filter.TrmZzobmSearchContext;
 
 @Slf4j
-@Api(tags = {"TrmZzobm" })
+@Api(tags = {"单位/部门" })
 @RestController("WebApi-trmzzobm")
 @RequestMapping("")
 public class TrmZzobmResource {
@@ -47,7 +47,7 @@ public class TrmZzobmResource {
     public TrmZzobmMapping trmzzobmMapping;
 
     @PreAuthorize("hasPermission(this.trmzzobmMapping.toDomain(#trmzzobmdto),'ehr-TrmZzobm-Create')")
-    @ApiOperation(value = "Create", tags = {"TrmZzobm" },  notes = "Create")
+    @ApiOperation(value = "新建单位/部门", tags = {"单位/部门" },  notes = "新建单位/部门")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmzzobms")
     @Transactional
     public ResponseEntity<TrmZzobmDTO> create(@RequestBody TrmZzobmDTO trmzzobmdto) {
@@ -58,7 +58,7 @@ public class TrmZzobmResource {
     }
 
     @PreAuthorize("hasPermission(this.trmzzobmMapping.toDomain(#trmzzobmdtos),'ehr-TrmZzobm-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TrmZzobm" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建单位/部门", tags = {"单位/部门" },  notes = "批量新建单位/部门")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmzzobms/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmZzobmDTO> trmzzobmdtos) {
         trmzzobmService.createBatch(trmzzobmMapping.toDomain(trmzzobmdtos));
@@ -66,7 +66,7 @@ public class TrmZzobmResource {
     }
 
     @PreAuthorize("hasPermission(this.trmzzobmService.get(#trmzzobm_id),'ehr-TrmZzobm-Update')")
-    @ApiOperation(value = "Update", tags = {"TrmZzobm" },  notes = "Update")
+    @ApiOperation(value = "更新单位/部门", tags = {"单位/部门" },  notes = "更新单位/部门")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmzzobms/{trmzzobm_id}")
     @Transactional
     public ResponseEntity<TrmZzobmDTO> update(@PathVariable("trmzzobm_id") String trmzzobm_id, @RequestBody TrmZzobmDTO trmzzobmdto) {
@@ -78,34 +78,34 @@ public class TrmZzobmResource {
     }
 
     @PreAuthorize("hasPermission(this.trmzzobmService.getTrmzzobmByEntities(this.trmzzobmMapping.toDomain(#trmzzobmdtos)),'ehr-TrmZzobm-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TrmZzobm" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新单位/部门", tags = {"单位/部门" },  notes = "批量更新单位/部门")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmzzobms/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TrmZzobmDTO> trmzzobmdtos) {
         trmzzobmService.updateBatch(trmzzobmMapping.toDomain(trmzzobmdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TrmZzobm" },  notes = "CheckKey")
+    @ApiOperation(value = "检查单位/部门", tags = {"单位/部门" },  notes = "检查单位/部门")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmzzobms/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmZzobmDTO trmzzobmdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmzzobmService.checkKey(trmzzobmMapping.toDomain(trmzzobmdto)));
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"TrmZzobm" },  notes = "GetDraft")
+    @ApiOperation(value = "获取单位/部门草稿", tags = {"单位/部门" },  notes = "获取单位/部门草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmzzobms/getdraft")
     public ResponseEntity<TrmZzobmDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmzzobmMapping.toDto(trmzzobmService.getDraft(new TrmZzobm())));
     }
 
     @PreAuthorize("hasPermission(this.trmzzobmMapping.toDomain(#trmzzobmdto),'ehr-TrmZzobm-Save')")
-    @ApiOperation(value = "Save", tags = {"TrmZzobm" },  notes = "Save")
+    @ApiOperation(value = "保存单位/部门", tags = {"单位/部门" },  notes = "保存单位/部门")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmzzobms/save")
     public ResponseEntity<Boolean> save(@RequestBody TrmZzobmDTO trmzzobmdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmzzobmService.save(trmzzobmMapping.toDomain(trmzzobmdto)));
     }
 
     @PreAuthorize("hasPermission(this.trmzzobmMapping.toDomain(#trmzzobmdtos),'ehr-TrmZzobm-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TrmZzobm" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存单位/部门", tags = {"单位/部门" },  notes = "批量保存单位/部门")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmzzobms/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TrmZzobmDTO> trmzzobmdtos) {
         trmzzobmService.saveBatch(trmzzobmMapping.toDomain(trmzzobmdtos));
@@ -113,7 +113,7 @@ public class TrmZzobmResource {
     }
 
     @PostAuthorize("hasPermission(this.trmzzobmMapping.toDomain(returnObject.body),'ehr-TrmZzobm-Get')")
-    @ApiOperation(value = "Get", tags = {"TrmZzobm" },  notes = "Get")
+    @ApiOperation(value = "获取单位/部门", tags = {"单位/部门" },  notes = "获取单位/部门")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmzzobms/{trmzzobm_id}")
     public ResponseEntity<TrmZzobmDTO> get(@PathVariable("trmzzobm_id") String trmzzobm_id) {
         TrmZzobm domain = trmzzobmService.get(trmzzobm_id);
@@ -122,7 +122,7 @@ public class TrmZzobmResource {
     }
 
     @PreAuthorize("hasPermission(this.trmzzobmService.get(#trmzzobm_id),'ehr-TrmZzobm-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TrmZzobm" },  notes = "Remove")
+    @ApiOperation(value = "删除单位/部门", tags = {"单位/部门" },  notes = "删除单位/部门")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmzzobms/{trmzzobm_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trmzzobm_id") String trmzzobm_id) {
@@ -130,7 +130,7 @@ public class TrmZzobmResource {
     }
 
     @PreAuthorize("hasPermission(this.trmzzobmService.getTrmzzobmByIds(#ids),'ehr-TrmZzobm-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TrmZzobm" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除单位/部门", tags = {"单位/部门" },  notes = "批量删除单位/部门")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmzzobms/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmzzobmService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class TrmZzobmResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmZzobm-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TrmZzobm" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"单位/部门" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmzzobms/fetchdefault")
 	public ResponseEntity<List<TrmZzobmDTO>> fetchDefault(TrmZzobmSearchContext context) {
         Page<TrmZzobm> domains = trmzzobmService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmZzobmResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmZzobm-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TrmZzobm" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"单位/部门" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmzzobms/searchdefault")
 	public ResponseEntity<Page<TrmZzobmDTO>> searchDefault(@RequestBody TrmZzobmSearchContext context) {
         Page<TrmZzobm> domains = trmzzobmService.searchDefault(context) ;

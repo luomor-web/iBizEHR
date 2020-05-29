@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmZjdyzwService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmZjdyzwSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmZjdyzw" })
+@Api(tags = {"职级和职务对应关系" })
 @RestController("WebApi-pcmzjdyzw")
 @RequestMapping("")
 public class PcmZjdyzwResource {
@@ -46,20 +46,20 @@ public class PcmZjdyzwResource {
     @Lazy
     public PcmZjdyzwMapping pcmzjdyzwMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmZjdyzw" },  notes = "CheckKey")
+    @ApiOperation(value = "检查职级和职务对应关系", tags = {"职级和职务对应关系" },  notes = "检查职级和职务对应关系")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzjdyzws/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmZjdyzwDTO pcmzjdyzwdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmzjdyzwService.checkKey(pcmzjdyzwMapping.toDomain(pcmzjdyzwdto)));
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmZjdyzw" },  notes = "GetDraft")
+    @ApiOperation(value = "获取职级和职务对应关系草稿", tags = {"职级和职务对应关系" },  notes = "获取职级和职务对应关系草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmzjdyzws/getdraft")
     public ResponseEntity<PcmZjdyzwDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmzjdyzwMapping.toDto(pcmzjdyzwService.getDraft(new PcmZjdyzw())));
     }
 
     @PreAuthorize("hasPermission(this.pcmzjdyzwMapping.toDomain(#pcmzjdyzwdto),'ehr-PcmZjdyzw-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmZjdyzw" },  notes = "Create")
+    @ApiOperation(value = "新建职级和职务对应关系", tags = {"职级和职务对应关系" },  notes = "新建职级和职务对应关系")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzjdyzws")
     @Transactional
     public ResponseEntity<PcmZjdyzwDTO> create(@RequestBody PcmZjdyzwDTO pcmzjdyzwdto) {
@@ -70,7 +70,7 @@ public class PcmZjdyzwResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmzjdyzwMapping.toDomain(#pcmzjdyzwdtos),'ehr-PcmZjdyzw-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmZjdyzw" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建职级和职务对应关系", tags = {"职级和职务对应关系" },  notes = "批量新建职级和职务对应关系")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzjdyzws/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmZjdyzwDTO> pcmzjdyzwdtos) {
         pcmzjdyzwService.createBatch(pcmzjdyzwMapping.toDomain(pcmzjdyzwdtos));
@@ -78,7 +78,7 @@ public class PcmZjdyzwResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmzjdyzwMapping.toDomain(returnObject.body),'ehr-PcmZjdyzw-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmZjdyzw" },  notes = "Get")
+    @ApiOperation(value = "获取职级和职务对应关系", tags = {"职级和职务对应关系" },  notes = "获取职级和职务对应关系")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmzjdyzws/{pcmzjdyzw_id}")
     public ResponseEntity<PcmZjdyzwDTO> get(@PathVariable("pcmzjdyzw_id") String pcmzjdyzw_id) {
         PcmZjdyzw domain = pcmzjdyzwService.get(pcmzjdyzw_id);
@@ -87,7 +87,7 @@ public class PcmZjdyzwResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmzjdyzwService.get(#pcmzjdyzw_id),'ehr-PcmZjdyzw-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmZjdyzw" },  notes = "Update")
+    @ApiOperation(value = "更新职级和职务对应关系", tags = {"职级和职务对应关系" },  notes = "更新职级和职务对应关系")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmzjdyzws/{pcmzjdyzw_id}")
     @Transactional
     public ResponseEntity<PcmZjdyzwDTO> update(@PathVariable("pcmzjdyzw_id") String pcmzjdyzw_id, @RequestBody PcmZjdyzwDTO pcmzjdyzwdto) {
@@ -99,7 +99,7 @@ public class PcmZjdyzwResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmzjdyzwService.getPcmzjdyzwByEntities(this.pcmzjdyzwMapping.toDomain(#pcmzjdyzwdtos)),'ehr-PcmZjdyzw-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmZjdyzw" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新职级和职务对应关系", tags = {"职级和职务对应关系" },  notes = "批量更新职级和职务对应关系")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmzjdyzws/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmZjdyzwDTO> pcmzjdyzwdtos) {
         pcmzjdyzwService.updateBatch(pcmzjdyzwMapping.toDomain(pcmzjdyzwdtos));
@@ -107,7 +107,7 @@ public class PcmZjdyzwResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmzjdyzwService.get(#pcmzjdyzw_id),'ehr-PcmZjdyzw-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmZjdyzw" },  notes = "Remove")
+    @ApiOperation(value = "删除职级和职务对应关系", tags = {"职级和职务对应关系" },  notes = "删除职级和职务对应关系")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmzjdyzws/{pcmzjdyzw_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmzjdyzw_id") String pcmzjdyzw_id) {
@@ -115,7 +115,7 @@ public class PcmZjdyzwResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmzjdyzwService.getPcmzjdyzwByIds(#ids),'ehr-PcmZjdyzw-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmZjdyzw" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除职级和职务对应关系", tags = {"职级和职务对应关系" },  notes = "批量删除职级和职务对应关系")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmzjdyzws/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmzjdyzwService.removeBatch(ids);
@@ -123,14 +123,14 @@ public class PcmZjdyzwResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmzjdyzwMapping.toDomain(#pcmzjdyzwdto),'ehr-PcmZjdyzw-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmZjdyzw" },  notes = "Save")
+    @ApiOperation(value = "保存职级和职务对应关系", tags = {"职级和职务对应关系" },  notes = "保存职级和职务对应关系")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzjdyzws/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmZjdyzwDTO pcmzjdyzwdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmzjdyzwService.save(pcmzjdyzwMapping.toDomain(pcmzjdyzwdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmzjdyzwMapping.toDomain(#pcmzjdyzwdtos),'ehr-PcmZjdyzw-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmZjdyzw" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存职级和职务对应关系", tags = {"职级和职务对应关系" },  notes = "批量保存职级和职务对应关系")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzjdyzws/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmZjdyzwDTO> pcmzjdyzwdtos) {
         pcmzjdyzwService.saveBatch(pcmzjdyzwMapping.toDomain(pcmzjdyzwdtos));
@@ -138,7 +138,7 @@ public class PcmZjdyzwResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmZjdyzw-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmZjdyzw" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"职级和职务对应关系" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmzjdyzws/fetchdefault")
 	public ResponseEntity<List<PcmZjdyzwDTO>> fetchDefault(PcmZjdyzwSearchContext context) {
         Page<PcmZjdyzw> domains = pcmzjdyzwService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmZjdyzwResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmZjdyzw-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmZjdyzw" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"职级和职务对应关系" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmzjdyzws/searchdefault")
 	public ResponseEntity<Page<PcmZjdyzwDTO>> searchDefault(@RequestBody PcmZjdyzwSearchContext context) {
         Page<PcmZjdyzw> domains = pcmzjdyzwService.searchDefault(context) ;

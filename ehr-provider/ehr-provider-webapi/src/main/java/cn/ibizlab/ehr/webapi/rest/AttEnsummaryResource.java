@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.att.service.IAttEnsummaryService;
 import cn.ibizlab.ehr.core.att.filter.AttEnsummarySearchContext;
 
 @Slf4j
-@Api(tags = {"AttEnsummary" })
+@Api(tags = {"考勤汇总" })
 @RestController("WebApi-attensummary")
 @RequestMapping("")
 public class AttEnsummaryResource {
@@ -46,14 +46,14 @@ public class AttEnsummaryResource {
     @Lazy
     public AttEnsummaryMapping attensummaryMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"AttEnsummary" },  notes = "GetDraft")
+    @ApiOperation(value = "获取考勤汇总草稿", tags = {"考勤汇总" },  notes = "获取考勤汇总草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/attensummaries/getdraft")
     public ResponseEntity<AttEnsummaryDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attensummaryMapping.toDto(attensummaryService.getDraft(new AttEnsummary())));
     }
 
     @PreAuthorize("hasPermission(this.attensummaryMapping.toDomain(#attensummarydto),'ehr-AttEnsummary-Create')")
-    @ApiOperation(value = "Create", tags = {"AttEnsummary" },  notes = "Create")
+    @ApiOperation(value = "新建考勤汇总", tags = {"考勤汇总" },  notes = "新建考勤汇总")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummaries")
     @Transactional
     public ResponseEntity<AttEnsummaryDTO> create(@RequestBody AttEnsummaryDTO attensummarydto) {
@@ -64,7 +64,7 @@ public class AttEnsummaryResource {
     }
 
     @PreAuthorize("hasPermission(this.attensummaryMapping.toDomain(#attensummarydtos),'ehr-AttEnsummary-Create')")
-    @ApiOperation(value = "createBatch", tags = {"AttEnsummary" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建考勤汇总", tags = {"考勤汇总" },  notes = "批量新建考勤汇总")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummaries/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<AttEnsummaryDTO> attensummarydtos) {
         attensummaryService.createBatch(attensummaryMapping.toDomain(attensummarydtos));
@@ -72,7 +72,7 @@ public class AttEnsummaryResource {
     }
 
     @PreAuthorize("hasPermission(this.attensummaryService.get(#attensummary_id),'ehr-AttEnsummary-Remove')")
-    @ApiOperation(value = "Remove", tags = {"AttEnsummary" },  notes = "Remove")
+    @ApiOperation(value = "删除考勤汇总", tags = {"考勤汇总" },  notes = "删除考勤汇总")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attensummaries/{attensummary_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("attensummary_id") String attensummary_id) {
@@ -80,7 +80,7 @@ public class AttEnsummaryResource {
     }
 
     @PreAuthorize("hasPermission(this.attensummaryService.getAttensummaryByIds(#ids),'ehr-AttEnsummary-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"AttEnsummary" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除考勤汇总", tags = {"考勤汇总" },  notes = "批量删除考勤汇总")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attensummaries/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         attensummaryService.removeBatch(ids);
@@ -88,7 +88,7 @@ public class AttEnsummaryResource {
     }
 
     @PreAuthorize("hasPermission(this.attensummaryService.get(#attensummary_id),'ehr-AttEnsummary-Update')")
-    @ApiOperation(value = "Update", tags = {"AttEnsummary" },  notes = "Update")
+    @ApiOperation(value = "更新考勤汇总", tags = {"考勤汇总" },  notes = "更新考勤汇总")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attensummaries/{attensummary_id}")
     @Transactional
     public ResponseEntity<AttEnsummaryDTO> update(@PathVariable("attensummary_id") String attensummary_id, @RequestBody AttEnsummaryDTO attensummarydto) {
@@ -100,7 +100,7 @@ public class AttEnsummaryResource {
     }
 
     @PreAuthorize("hasPermission(this.attensummaryService.getAttensummaryByEntities(this.attensummaryMapping.toDomain(#attensummarydtos)),'ehr-AttEnsummary-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"AttEnsummary" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新考勤汇总", tags = {"考勤汇总" },  notes = "批量更新考勤汇总")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attensummaries/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<AttEnsummaryDTO> attensummarydtos) {
         attensummaryService.updateBatch(attensummaryMapping.toDomain(attensummarydtos));
@@ -108,7 +108,7 @@ public class AttEnsummaryResource {
     }
 
     @PostAuthorize("hasPermission(this.attensummaryMapping.toDomain(returnObject.body),'ehr-AttEnsummary-Get')")
-    @ApiOperation(value = "Get", tags = {"AttEnsummary" },  notes = "Get")
+    @ApiOperation(value = "获取考勤汇总", tags = {"考勤汇总" },  notes = "获取考勤汇总")
 	@RequestMapping(method = RequestMethod.GET, value = "/attensummaries/{attensummary_id}")
     public ResponseEntity<AttEnsummaryDTO> get(@PathVariable("attensummary_id") String attensummary_id) {
         AttEnsummary domain = attensummaryService.get(attensummary_id);
@@ -117,28 +117,28 @@ public class AttEnsummaryResource {
     }
 
     @PreAuthorize("hasPermission(this.attensummaryMapping.toDomain(#attensummarydto),'ehr-AttEnsummary-Save')")
-    @ApiOperation(value = "Save", tags = {"AttEnsummary" },  notes = "Save")
+    @ApiOperation(value = "保存考勤汇总", tags = {"考勤汇总" },  notes = "保存考勤汇总")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummaries/save")
     public ResponseEntity<Boolean> save(@RequestBody AttEnsummaryDTO attensummarydto) {
         return ResponseEntity.status(HttpStatus.OK).body(attensummaryService.save(attensummaryMapping.toDomain(attensummarydto)));
     }
 
     @PreAuthorize("hasPermission(this.attensummaryMapping.toDomain(#attensummarydtos),'ehr-AttEnsummary-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"AttEnsummary" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存考勤汇总", tags = {"考勤汇总" },  notes = "批量保存考勤汇总")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummaries/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<AttEnsummaryDTO> attensummarydtos) {
         attensummaryService.saveBatch(attensummaryMapping.toDomain(attensummarydtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"AttEnsummary" },  notes = "CheckKey")
+    @ApiOperation(value = "检查考勤汇总", tags = {"考勤汇总" },  notes = "检查考勤汇总")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummaries/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody AttEnsummaryDTO attensummarydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attensummaryService.checkKey(attensummaryMapping.toDomain(attensummarydto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnsummary-ExportKQHZ-all')")
-    @ApiOperation(value = "导出考勤汇总", tags = {"AttEnsummary" },  notes = "导出考勤汇总")
+    @ApiOperation(value = "导出考勤汇总", tags = {"考勤汇总" },  notes = "导出考勤汇总")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummaries/{attensummary_id}/exportkqhz")
     @Transactional
     public ResponseEntity<AttEnsummaryDTO> exportKQHZ(@PathVariable("attensummary_id") String attensummary_id, @RequestBody AttEnsummaryDTO attensummarydto) {
@@ -150,7 +150,7 @@ public class AttEnsummaryResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnsummary-CurZZKQHZ-all')")
-	@ApiOperation(value = "fetch当前组织考勤汇总", tags = {"AttEnsummary" } ,notes = "fetch当前组织考勤汇总")
+	@ApiOperation(value = "获取当前组织考勤汇总", tags = {"考勤汇总" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/attensummaries/fetchcurzzkqhz")
 	public ResponseEntity<List<AttEnsummaryDTO>> fetchCurZZKQHZ(AttEnsummarySearchContext context) {
         Page<AttEnsummary> domains = attensummaryService.searchCurZZKQHZ(context) ;
@@ -163,7 +163,7 @@ public class AttEnsummaryResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnsummary-CurZZKQHZ-all')")
-	@ApiOperation(value = "search当前组织考勤汇总", tags = {"AttEnsummary" } ,notes = "search当前组织考勤汇总")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤汇总" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/attensummaries/searchcurzzkqhz")
 	public ResponseEntity<Page<AttEnsummaryDTO>> searchCurZZKQHZ(@RequestBody AttEnsummarySearchContext context) {
         Page<AttEnsummary> domains = attensummaryService.searchCurZZKQHZ(context) ;
@@ -171,7 +171,7 @@ public class AttEnsummaryResource {
                 .body(new PageImpl(attensummaryMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnsummary-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"AttEnsummary" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤汇总" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/attensummaries/fetchdefault")
 	public ResponseEntity<List<AttEnsummaryDTO>> fetchDefault(AttEnsummarySearchContext context) {
         Page<AttEnsummary> domains = attensummaryService.searchDefault(context) ;
@@ -184,7 +184,7 @@ public class AttEnsummaryResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnsummary-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"AttEnsummary" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤汇总" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/attensummaries/searchdefault")
 	public ResponseEntity<Page<AttEnsummaryDTO>> searchDefault(@RequestBody AttEnsummarySearchContext context) {
         Page<AttEnsummary> domains = attensummaryService.searchDefault(context) ;

@@ -85,3 +85,16 @@ ibiz:
   enablePermissionValid: false
   cacheLevel: L1 #(L1)一级本地caffeine缓存;(L2)caffeine缓存+Redis缓存
 
+#xxl-job定时服务
+xxl:
+  job:
+    accessToken:
+    admin:
+      addresses: #127.0.0.1
+    executor:
+      appname: ehr
+      ip:
+      port: 9999
+      logpath: /app/joblog
+      logretentiondays: -1
+

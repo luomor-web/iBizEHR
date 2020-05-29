@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.att.service.IAttEnsummarymxService;
 import cn.ibizlab.ehr.core.att.filter.AttEnsummarymxSearchContext;
 
 @Slf4j
-@Api(tags = {"AttEnsummarymx" })
+@Api(tags = {"考勤汇总明细（停用）" })
 @RestController("WebApi-attensummarymx")
 @RequestMapping("")
 public class AttEnsummarymxResource {
@@ -47,7 +47,7 @@ public class AttEnsummarymxResource {
     public AttEnsummarymxMapping attensummarymxMapping;
 
     @PreAuthorize("hasPermission(this.attensummarymxMapping.toDomain(#attensummarymxdto),'ehr-AttEnsummarymx-Create')")
-    @ApiOperation(value = "Create", tags = {"AttEnsummarymx" },  notes = "Create")
+    @ApiOperation(value = "新建考勤汇总明细（停用）", tags = {"考勤汇总明细（停用）" },  notes = "新建考勤汇总明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummarymxes")
     @Transactional
     public ResponseEntity<AttEnsummarymxDTO> create(@RequestBody AttEnsummarymxDTO attensummarymxdto) {
@@ -58,21 +58,21 @@ public class AttEnsummarymxResource {
     }
 
     @PreAuthorize("hasPermission(this.attensummarymxMapping.toDomain(#attensummarymxdtos),'ehr-AttEnsummarymx-Create')")
-    @ApiOperation(value = "createBatch", tags = {"AttEnsummarymx" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建考勤汇总明细（停用）", tags = {"考勤汇总明细（停用）" },  notes = "批量新建考勤汇总明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummarymxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<AttEnsummarymxDTO> attensummarymxdtos) {
         attensummarymxService.createBatch(attensummarymxMapping.toDomain(attensummarymxdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"AttEnsummarymx" },  notes = "CheckKey")
+    @ApiOperation(value = "检查考勤汇总明细（停用）", tags = {"考勤汇总明细（停用）" },  notes = "检查考勤汇总明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummarymxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody AttEnsummarymxDTO attensummarymxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attensummarymxService.checkKey(attensummarymxMapping.toDomain(attensummarymxdto)));
     }
 
     @PostAuthorize("hasPermission(this.attensummarymxMapping.toDomain(returnObject.body),'ehr-AttEnsummarymx-Get')")
-    @ApiOperation(value = "Get", tags = {"AttEnsummarymx" },  notes = "Get")
+    @ApiOperation(value = "获取考勤汇总明细（停用）", tags = {"考勤汇总明细（停用）" },  notes = "获取考勤汇总明细（停用）")
 	@RequestMapping(method = RequestMethod.GET, value = "/attensummarymxes/{attensummarymx_id}")
     public ResponseEntity<AttEnsummarymxDTO> get(@PathVariable("attensummarymx_id") String attensummarymx_id) {
         AttEnsummarymx domain = attensummarymxService.get(attensummarymx_id);
@@ -80,14 +80,14 @@ public class AttEnsummarymxResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"AttEnsummarymx" },  notes = "GetDraft")
+    @ApiOperation(value = "获取考勤汇总明细（停用）草稿", tags = {"考勤汇总明细（停用）" },  notes = "获取考勤汇总明细（停用）草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/attensummarymxes/getdraft")
     public ResponseEntity<AttEnsummarymxDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attensummarymxMapping.toDto(attensummarymxService.getDraft(new AttEnsummarymx())));
     }
 
     @PreAuthorize("hasPermission(this.attensummarymxService.get(#attensummarymx_id),'ehr-AttEnsummarymx-Remove')")
-    @ApiOperation(value = "Remove", tags = {"AttEnsummarymx" },  notes = "Remove")
+    @ApiOperation(value = "删除考勤汇总明细（停用）", tags = {"考勤汇总明细（停用）" },  notes = "删除考勤汇总明细（停用）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attensummarymxes/{attensummarymx_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("attensummarymx_id") String attensummarymx_id) {
@@ -95,7 +95,7 @@ public class AttEnsummarymxResource {
     }
 
     @PreAuthorize("hasPermission(this.attensummarymxService.getAttensummarymxByIds(#ids),'ehr-AttEnsummarymx-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"AttEnsummarymx" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除考勤汇总明细（停用）", tags = {"考勤汇总明细（停用）" },  notes = "批量删除考勤汇总明细（停用）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attensummarymxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         attensummarymxService.removeBatch(ids);
@@ -103,14 +103,14 @@ public class AttEnsummarymxResource {
     }
 
     @PreAuthorize("hasPermission(this.attensummarymxMapping.toDomain(#attensummarymxdto),'ehr-AttEnsummarymx-Save')")
-    @ApiOperation(value = "Save", tags = {"AttEnsummarymx" },  notes = "Save")
+    @ApiOperation(value = "保存考勤汇总明细（停用）", tags = {"考勤汇总明细（停用）" },  notes = "保存考勤汇总明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummarymxes/save")
     public ResponseEntity<Boolean> save(@RequestBody AttEnsummarymxDTO attensummarymxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(attensummarymxService.save(attensummarymxMapping.toDomain(attensummarymxdto)));
     }
 
     @PreAuthorize("hasPermission(this.attensummarymxMapping.toDomain(#attensummarymxdtos),'ehr-AttEnsummarymx-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"AttEnsummarymx" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存考勤汇总明细（停用）", tags = {"考勤汇总明细（停用）" },  notes = "批量保存考勤汇总明细（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/attensummarymxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<AttEnsummarymxDTO> attensummarymxdtos) {
         attensummarymxService.saveBatch(attensummarymxMapping.toDomain(attensummarymxdtos));
@@ -118,7 +118,7 @@ public class AttEnsummarymxResource {
     }
 
     @PreAuthorize("hasPermission(this.attensummarymxService.get(#attensummarymx_id),'ehr-AttEnsummarymx-Update')")
-    @ApiOperation(value = "Update", tags = {"AttEnsummarymx" },  notes = "Update")
+    @ApiOperation(value = "更新考勤汇总明细（停用）", tags = {"考勤汇总明细（停用）" },  notes = "更新考勤汇总明细（停用）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attensummarymxes/{attensummarymx_id}")
     @Transactional
     public ResponseEntity<AttEnsummarymxDTO> update(@PathVariable("attensummarymx_id") String attensummarymx_id, @RequestBody AttEnsummarymxDTO attensummarymxdto) {
@@ -130,7 +130,7 @@ public class AttEnsummarymxResource {
     }
 
     @PreAuthorize("hasPermission(this.attensummarymxService.getAttensummarymxByEntities(this.attensummarymxMapping.toDomain(#attensummarymxdtos)),'ehr-AttEnsummarymx-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"AttEnsummarymx" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新考勤汇总明细（停用）", tags = {"考勤汇总明细（停用）" },  notes = "批量更新考勤汇总明细（停用）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attensummarymxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<AttEnsummarymxDTO> attensummarymxdtos) {
         attensummarymxService.updateBatch(attensummarymxMapping.toDomain(attensummarymxdtos));
@@ -138,7 +138,7 @@ public class AttEnsummarymxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnsummarymx-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"AttEnsummarymx" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤汇总明细（停用）" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/attensummarymxes/fetchdefault")
 	public ResponseEntity<List<AttEnsummarymxDTO>> fetchDefault(AttEnsummarymxSearchContext context) {
         Page<AttEnsummarymx> domains = attensummarymxService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class AttEnsummarymxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnsummarymx-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"AttEnsummarymx" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤汇总明细（停用）" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/attensummarymxes/searchdefault")
 	public ResponseEntity<Page<AttEnsummarymxDTO>> searchDefault(@RequestBody AttEnsummarymxSearchContext context) {
         Page<AttEnsummarymx> domains = attensummarymxService.searchDefault(context) ;

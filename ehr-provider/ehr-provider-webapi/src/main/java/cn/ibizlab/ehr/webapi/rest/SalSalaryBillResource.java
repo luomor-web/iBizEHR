@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.sal.service.ISalSalaryBillService;
 import cn.ibizlab.ehr.core.sal.filter.SalSalaryBillSearchContext;
 
 @Slf4j
-@Api(tags = {"SalSalaryBill" })
+@Api(tags = {"工资表" })
 @RestController("WebApi-salsalarybill")
 @RequestMapping("")
 public class SalSalaryBillResource {
@@ -47,7 +47,7 @@ public class SalSalaryBillResource {
     public SalSalaryBillMapping salsalarybillMapping;
 
     @PreAuthorize("hasPermission(this.salsalarybillService.get(#salsalarybill_id),'ehr-SalSalaryBill-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SalSalaryBill" },  notes = "Remove")
+    @ApiOperation(value = "删除工资表", tags = {"工资表" },  notes = "删除工资表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salsalarybills/{salsalarybill_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("salsalarybill_id") String salsalarybill_id) {
@@ -55,21 +55,21 @@ public class SalSalaryBillResource {
     }
 
     @PreAuthorize("hasPermission(this.salsalarybillService.getSalsalarybillByIds(#ids),'ehr-SalSalaryBill-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SalSalaryBill" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除工资表", tags = {"工资表" },  notes = "批量删除工资表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salsalarybills/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         salsalarybillService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"SalSalaryBill" },  notes = "CheckKey")
+    @ApiOperation(value = "检查工资表", tags = {"工资表" },  notes = "检查工资表")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarybills/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SalSalaryBillDTO salsalarybilldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salsalarybillService.checkKey(salsalarybillMapping.toDomain(salsalarybilldto)));
     }
 
     @PreAuthorize("hasPermission(this.salsalarybillMapping.toDomain(#salsalarybilldto),'ehr-SalSalaryBill-Create')")
-    @ApiOperation(value = "Create", tags = {"SalSalaryBill" },  notes = "Create")
+    @ApiOperation(value = "新建工资表", tags = {"工资表" },  notes = "新建工资表")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarybills")
     @Transactional
     public ResponseEntity<SalSalaryBillDTO> create(@RequestBody SalSalaryBillDTO salsalarybilldto) {
@@ -80,21 +80,21 @@ public class SalSalaryBillResource {
     }
 
     @PreAuthorize("hasPermission(this.salsalarybillMapping.toDomain(#salsalarybilldtos),'ehr-SalSalaryBill-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SalSalaryBill" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建工资表", tags = {"工资表" },  notes = "批量新建工资表")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarybills/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SalSalaryBillDTO> salsalarybilldtos) {
         salsalarybillService.createBatch(salsalarybillMapping.toDomain(salsalarybilldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"SalSalaryBill" },  notes = "GetDraft")
+    @ApiOperation(value = "获取工资表草稿", tags = {"工资表" },  notes = "获取工资表草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/salsalarybills/getdraft")
     public ResponseEntity<SalSalaryBillDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salsalarybillMapping.toDto(salsalarybillService.getDraft(new SalSalaryBill())));
     }
 
     @PreAuthorize("hasPermission(this.salsalarybillService.get(#salsalarybill_id),'ehr-SalSalaryBill-Update')")
-    @ApiOperation(value = "Update", tags = {"SalSalaryBill" },  notes = "Update")
+    @ApiOperation(value = "更新工资表", tags = {"工资表" },  notes = "更新工资表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salsalarybills/{salsalarybill_id}")
     @Transactional
     public ResponseEntity<SalSalaryBillDTO> update(@PathVariable("salsalarybill_id") String salsalarybill_id, @RequestBody SalSalaryBillDTO salsalarybilldto) {
@@ -106,7 +106,7 @@ public class SalSalaryBillResource {
     }
 
     @PreAuthorize("hasPermission(this.salsalarybillService.getSalsalarybillByEntities(this.salsalarybillMapping.toDomain(#salsalarybilldtos)),'ehr-SalSalaryBill-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SalSalaryBill" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新工资表", tags = {"工资表" },  notes = "批量更新工资表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salsalarybills/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SalSalaryBillDTO> salsalarybilldtos) {
         salsalarybillService.updateBatch(salsalarybillMapping.toDomain(salsalarybilldtos));
@@ -114,7 +114,7 @@ public class SalSalaryBillResource {
     }
 
     @PostAuthorize("hasPermission(this.salsalarybillMapping.toDomain(returnObject.body),'ehr-SalSalaryBill-Get')")
-    @ApiOperation(value = "Get", tags = {"SalSalaryBill" },  notes = "Get")
+    @ApiOperation(value = "获取工资表", tags = {"工资表" },  notes = "获取工资表")
 	@RequestMapping(method = RequestMethod.GET, value = "/salsalarybills/{salsalarybill_id}")
     public ResponseEntity<SalSalaryBillDTO> get(@PathVariable("salsalarybill_id") String salsalarybill_id) {
         SalSalaryBill domain = salsalarybillService.get(salsalarybill_id);
@@ -123,14 +123,14 @@ public class SalSalaryBillResource {
     }
 
     @PreAuthorize("hasPermission(this.salsalarybillMapping.toDomain(#salsalarybilldto),'ehr-SalSalaryBill-Save')")
-    @ApiOperation(value = "Save", tags = {"SalSalaryBill" },  notes = "Save")
+    @ApiOperation(value = "保存工资表", tags = {"工资表" },  notes = "保存工资表")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarybills/save")
     public ResponseEntity<Boolean> save(@RequestBody SalSalaryBillDTO salsalarybilldto) {
         return ResponseEntity.status(HttpStatus.OK).body(salsalarybillService.save(salsalarybillMapping.toDomain(salsalarybilldto)));
     }
 
     @PreAuthorize("hasPermission(this.salsalarybillMapping.toDomain(#salsalarybilldtos),'ehr-SalSalaryBill-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SalSalaryBill" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存工资表", tags = {"工资表" },  notes = "批量保存工资表")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsalarybills/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SalSalaryBillDTO> salsalarybilldtos) {
         salsalarybillService.saveBatch(salsalarybillMapping.toDomain(salsalarybilldtos));
@@ -138,7 +138,7 @@ public class SalSalaryBillResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalSalaryBill-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SalSalaryBill" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"工资表" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/salsalarybills/fetchdefault")
 	public ResponseEntity<List<SalSalaryBillDTO>> fetchDefault(SalSalaryBillSearchContext context) {
         Page<SalSalaryBill> domains = salsalarybillService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SalSalaryBillResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalSalaryBill-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SalSalaryBill" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"工资表" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/salsalarybills/searchdefault")
 	public ResponseEntity<Page<SalSalaryBillDTO>> searchDefault(@RequestBody SalSalaryBillSearchContext context) {
         Page<SalSalaryBill> domains = salsalarybillService.searchDefault(context) ;

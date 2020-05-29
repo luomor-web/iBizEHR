@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.sal.service.ISalItemService;
 import cn.ibizlab.ehr.core.sal.filter.SalItemSearchContext;
 
 @Slf4j
-@Api(tags = {"SalItem" })
+@Api(tags = {"薪酬要素项" })
 @RestController("WebApi-salitem")
 @RequestMapping("")
 public class SalItemResource {
@@ -47,7 +47,7 @@ public class SalItemResource {
     public SalItemMapping salitemMapping;
 
     @PostAuthorize("hasPermission(this.salitemMapping.toDomain(returnObject.body),'ehr-SalItem-Get')")
-    @ApiOperation(value = "Get", tags = {"SalItem" },  notes = "Get")
+    @ApiOperation(value = "获取薪酬要素项", tags = {"薪酬要素项" },  notes = "获取薪酬要素项")
 	@RequestMapping(method = RequestMethod.GET, value = "/salitems/{salitem_id}")
     public ResponseEntity<SalItemDTO> get(@PathVariable("salitem_id") String salitem_id) {
         SalItem domain = salitemService.get(salitem_id);
@@ -56,7 +56,7 @@ public class SalItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salitemService.get(#salitem_id),'ehr-SalItem-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SalItem" },  notes = "Remove")
+    @ApiOperation(value = "删除薪酬要素项", tags = {"薪酬要素项" },  notes = "删除薪酬要素项")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salitems/{salitem_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("salitem_id") String salitem_id) {
@@ -64,7 +64,7 @@ public class SalItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salitemService.getSalitemByIds(#ids),'ehr-SalItem-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SalItem" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除薪酬要素项", tags = {"薪酬要素项" },  notes = "批量删除薪酬要素项")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salitems/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         salitemService.removeBatch(ids);
@@ -72,34 +72,34 @@ public class SalItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salitemMapping.toDomain(#salitemdto),'ehr-SalItem-Save')")
-    @ApiOperation(value = "Save", tags = {"SalItem" },  notes = "Save")
+    @ApiOperation(value = "保存薪酬要素项", tags = {"薪酬要素项" },  notes = "保存薪酬要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/save")
     public ResponseEntity<Boolean> save(@RequestBody SalItemDTO salitemdto) {
         return ResponseEntity.status(HttpStatus.OK).body(salitemService.save(salitemMapping.toDomain(salitemdto)));
     }
 
     @PreAuthorize("hasPermission(this.salitemMapping.toDomain(#salitemdtos),'ehr-SalItem-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SalItem" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存薪酬要素项", tags = {"薪酬要素项" },  notes = "批量保存薪酬要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SalItemDTO> salitemdtos) {
         salitemService.saveBatch(salitemMapping.toDomain(salitemdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"SalItem" },  notes = "GetDraft")
+    @ApiOperation(value = "获取薪酬要素项草稿", tags = {"薪酬要素项" },  notes = "获取薪酬要素项草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/salitems/getdraft")
     public ResponseEntity<SalItemDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salitemMapping.toDto(salitemService.getDraft(new SalItem())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"SalItem" },  notes = "CheckKey")
+    @ApiOperation(value = "检查薪酬要素项", tags = {"薪酬要素项" },  notes = "检查薪酬要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SalItemDTO salitemdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salitemService.checkKey(salitemMapping.toDomain(salitemdto)));
     }
 
     @PreAuthorize("hasPermission(this.salitemService.get(#salitem_id),'ehr-SalItem-Update')")
-    @ApiOperation(value = "Update", tags = {"SalItem" },  notes = "Update")
+    @ApiOperation(value = "更新薪酬要素项", tags = {"薪酬要素项" },  notes = "更新薪酬要素项")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salitems/{salitem_id}")
     @Transactional
     public ResponseEntity<SalItemDTO> update(@PathVariable("salitem_id") String salitem_id, @RequestBody SalItemDTO salitemdto) {
@@ -111,7 +111,7 @@ public class SalItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salitemService.getSalitemByEntities(this.salitemMapping.toDomain(#salitemdtos)),'ehr-SalItem-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SalItem" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新薪酬要素项", tags = {"薪酬要素项" },  notes = "批量更新薪酬要素项")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salitems/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SalItemDTO> salitemdtos) {
         salitemService.updateBatch(salitemMapping.toDomain(salitemdtos));
@@ -119,7 +119,7 @@ public class SalItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salitemMapping.toDomain(#salitemdto),'ehr-SalItem-Create')")
-    @ApiOperation(value = "Create", tags = {"SalItem" },  notes = "Create")
+    @ApiOperation(value = "新建薪酬要素项", tags = {"薪酬要素项" },  notes = "新建薪酬要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems")
     @Transactional
     public ResponseEntity<SalItemDTO> create(@RequestBody SalItemDTO salitemdto) {
@@ -130,7 +130,7 @@ public class SalItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salitemMapping.toDomain(#salitemdtos),'ehr-SalItem-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SalItem" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建薪酬要素项", tags = {"薪酬要素项" },  notes = "批量新建薪酬要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SalItemDTO> salitemdtos) {
         salitemService.createBatch(salitemMapping.toDomain(salitemdtos));
@@ -138,7 +138,7 @@ public class SalItemResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalItem-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SalItem" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"薪酬要素项" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/salitems/fetchdefault")
 	public ResponseEntity<List<SalItemDTO>> fetchDefault(SalItemSearchContext context) {
         Page<SalItem> domains = salitemService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SalItemResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalItem-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SalItem" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"薪酬要素项" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/salitems/searchdefault")
 	public ResponseEntity<Page<SalItemDTO>> searchDefault(@RequestBody SalItemSearchContext context) {
         Page<SalItem> domains = salitemService.searchDefault(context) ;

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.vac.service.IVacLeaveSystemDtailService;
 import cn.ibizlab.ehr.core.vac.filter.VacLeaveSystemDtailSearchContext;
 
 @Slf4j
-@Api(tags = {"VacLeaveSystemDtail" })
+@Api(tags = {"休假制度明细" })
 @RestController("WebApi-vacleavesystemdtail")
 @RequestMapping("")
 public class VacLeaveSystemDtailResource {
@@ -47,7 +47,7 @@ public class VacLeaveSystemDtailResource {
     public VacLeaveSystemDtailMapping vacleavesystemdtailMapping;
 
     @PreAuthorize("hasPermission(this.vacleavesystemdtailService.get(#vacleavesystemdtail_id),'ehr-VacLeaveSystemDtail-Update')")
-    @ApiOperation(value = "Update", tags = {"VacLeaveSystemDtail" },  notes = "Update")
+    @ApiOperation(value = "更新休假制度明细", tags = {"休假制度明细" },  notes = "更新休假制度明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleavesystemdtails/{vacleavesystemdtail_id}")
     @Transactional
     public ResponseEntity<VacLeaveSystemDtailDTO> update(@PathVariable("vacleavesystemdtail_id") String vacleavesystemdtail_id, @RequestBody VacLeaveSystemDtailDTO vacleavesystemdtaildto) {
@@ -59,28 +59,28 @@ public class VacLeaveSystemDtailResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavesystemdtailService.getVacleavesystemdtailByEntities(this.vacleavesystemdtailMapping.toDomain(#vacleavesystemdtaildtos)),'ehr-VacLeaveSystemDtail-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"VacLeaveSystemDtail" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新休假制度明细", tags = {"休假制度明细" },  notes = "批量更新休假制度明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleavesystemdtails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VacLeaveSystemDtailDTO> vacleavesystemdtaildtos) {
         vacleavesystemdtailService.updateBatch(vacleavesystemdtailMapping.toDomain(vacleavesystemdtaildtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"VacLeaveSystemDtail" },  notes = "CheckKey")
+    @ApiOperation(value = "检查休假制度明细", tags = {"休假制度明细" },  notes = "检查休假制度明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavesystemdtails/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VacLeaveSystemDtailDTO vacleavesystemdtaildto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacleavesystemdtailService.checkKey(vacleavesystemdtailMapping.toDomain(vacleavesystemdtaildto)));
     }
 
     @PreAuthorize("hasPermission(this.vacleavesystemdtailMapping.toDomain(#vacleavesystemdtaildto),'ehr-VacLeaveSystemDtail-Save')")
-    @ApiOperation(value = "Save", tags = {"VacLeaveSystemDtail" },  notes = "Save")
+    @ApiOperation(value = "保存休假制度明细", tags = {"休假制度明细" },  notes = "保存休假制度明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavesystemdtails/save")
     public ResponseEntity<Boolean> save(@RequestBody VacLeaveSystemDtailDTO vacleavesystemdtaildto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavesystemdtailService.save(vacleavesystemdtailMapping.toDomain(vacleavesystemdtaildto)));
     }
 
     @PreAuthorize("hasPermission(this.vacleavesystemdtailMapping.toDomain(#vacleavesystemdtaildtos),'ehr-VacLeaveSystemDtail-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"VacLeaveSystemDtail" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存休假制度明细", tags = {"休假制度明细" },  notes = "批量保存休假制度明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavesystemdtails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VacLeaveSystemDtailDTO> vacleavesystemdtaildtos) {
         vacleavesystemdtailService.saveBatch(vacleavesystemdtailMapping.toDomain(vacleavesystemdtaildtos));
@@ -88,7 +88,7 @@ public class VacLeaveSystemDtailResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavesystemdtailService.get(#vacleavesystemdtail_id),'ehr-VacLeaveSystemDtail-Remove')")
-    @ApiOperation(value = "Remove", tags = {"VacLeaveSystemDtail" },  notes = "Remove")
+    @ApiOperation(value = "删除休假制度明细", tags = {"休假制度明细" },  notes = "删除休假制度明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleavesystemdtails/{vacleavesystemdtail_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("vacleavesystemdtail_id") String vacleavesystemdtail_id) {
@@ -96,21 +96,21 @@ public class VacLeaveSystemDtailResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavesystemdtailService.getVacleavesystemdtailByIds(#ids),'ehr-VacLeaveSystemDtail-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"VacLeaveSystemDtail" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除休假制度明细", tags = {"休假制度明细" },  notes = "批量删除休假制度明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleavesystemdtails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         vacleavesystemdtailService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"VacLeaveSystemDtail" },  notes = "GetDraft")
+    @ApiOperation(value = "获取休假制度明细草稿", tags = {"休假制度明细" },  notes = "获取休假制度明细草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavesystemdtails/getdraft")
     public ResponseEntity<VacLeaveSystemDtailDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavesystemdtailMapping.toDto(vacleavesystemdtailService.getDraft(new VacLeaveSystemDtail())));
     }
 
     @PostAuthorize("hasPermission(this.vacleavesystemdtailMapping.toDomain(returnObject.body),'ehr-VacLeaveSystemDtail-Get')")
-    @ApiOperation(value = "Get", tags = {"VacLeaveSystemDtail" },  notes = "Get")
+    @ApiOperation(value = "获取休假制度明细", tags = {"休假制度明细" },  notes = "获取休假制度明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavesystemdtails/{vacleavesystemdtail_id}")
     public ResponseEntity<VacLeaveSystemDtailDTO> get(@PathVariable("vacleavesystemdtail_id") String vacleavesystemdtail_id) {
         VacLeaveSystemDtail domain = vacleavesystemdtailService.get(vacleavesystemdtail_id);
@@ -119,7 +119,7 @@ public class VacLeaveSystemDtailResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavesystemdtailMapping.toDomain(#vacleavesystemdtaildto),'ehr-VacLeaveSystemDtail-Create')")
-    @ApiOperation(value = "Create", tags = {"VacLeaveSystemDtail" },  notes = "Create")
+    @ApiOperation(value = "新建休假制度明细", tags = {"休假制度明细" },  notes = "新建休假制度明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavesystemdtails")
     @Transactional
     public ResponseEntity<VacLeaveSystemDtailDTO> create(@RequestBody VacLeaveSystemDtailDTO vacleavesystemdtaildto) {
@@ -130,7 +130,7 @@ public class VacLeaveSystemDtailResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavesystemdtailMapping.toDomain(#vacleavesystemdtaildtos),'ehr-VacLeaveSystemDtail-Create')")
-    @ApiOperation(value = "createBatch", tags = {"VacLeaveSystemDtail" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建休假制度明细", tags = {"休假制度明细" },  notes = "批量新建休假制度明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavesystemdtails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VacLeaveSystemDtailDTO> vacleavesystemdtaildtos) {
         vacleavesystemdtailService.createBatch(vacleavesystemdtailMapping.toDomain(vacleavesystemdtaildtos));
@@ -138,7 +138,7 @@ public class VacLeaveSystemDtailResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveSystemDtail-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"VacLeaveSystemDtail" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"休假制度明细" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavesystemdtails/fetchdefault")
 	public ResponseEntity<List<VacLeaveSystemDtailDTO>> fetchDefault(VacLeaveSystemDtailSearchContext context) {
         Page<VacLeaveSystemDtail> domains = vacleavesystemdtailService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class VacLeaveSystemDtailResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveSystemDtail-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"VacLeaveSystemDtail" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"休假制度明细" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavesystemdtails/searchdefault")
 	public ResponseEntity<Page<VacLeaveSystemDtailDTO>> searchDefault(@RequestBody VacLeaveSystemDtailSearchContext context) {
         Page<VacLeaveSystemDtail> domains = vacleavesystemdtailService.searchDefault(context) ;

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimQuestionsService;
 import cn.ibizlab.ehr.core.pim.filter.PimQuestionsSearchContext;
 
 @Slf4j
-@Api(tags = {"PimQuestions" })
+@Api(tags = {"问题收集" })
 @RestController("WebApi-pimquestions")
 @RequestMapping("")
 public class PimQuestionsResource {
@@ -47,7 +47,7 @@ public class PimQuestionsResource {
     public PimQuestionsMapping pimquestionsMapping;
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-RemoveTemp-all')")
-    @ApiOperation(value = "RemoveTemp", tags = {"PimQuestions" },  notes = "RemoveTemp")
+    @ApiOperation(value = "RemoveTemp", tags = {"问题收集" },  notes = "RemoveTemp")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimquestions/{pimquestions_id}/removetemp")
     @Transactional
     public ResponseEntity<PimQuestionsDTO> removeTemp(@PathVariable("pimquestions_id") String pimquestions_id, @RequestBody PimQuestionsDTO pimquestionsdto) {
@@ -59,7 +59,7 @@ public class PimQuestionsResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-GetTemp-all')")
-    @ApiOperation(value = "GetTemp", tags = {"PimQuestions" },  notes = "GetTemp")
+    @ApiOperation(value = "GetTemp", tags = {"问题收集" },  notes = "GetTemp")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimquestions/{pimquestions_id}/gettemp")
     @Transactional
     public ResponseEntity<PimQuestionsDTO> getTemp(@PathVariable("pimquestions_id") String pimquestions_id, @RequestBody PimQuestionsDTO pimquestionsdto) {
@@ -71,7 +71,7 @@ public class PimQuestionsResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-GetDraftTempMajor-all')")
-    @ApiOperation(value = "GetDraftTempMajor", tags = {"PimQuestions" },  notes = "GetDraftTempMajor")
+    @ApiOperation(value = "GetDraftTempMajor", tags = {"问题收集" },  notes = "GetDraftTempMajor")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimquestions/{pimquestions_id}/getdrafttempmajor")
     @Transactional
     public ResponseEntity<PimQuestionsDTO> getDraftTempMajor(@PathVariable("pimquestions_id") String pimquestions_id, @RequestBody PimQuestionsDTO pimquestionsdto) {
@@ -83,7 +83,7 @@ public class PimQuestionsResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-UpdateTemp-all')")
-    @ApiOperation(value = "UpdateTemp", tags = {"PimQuestions" },  notes = "UpdateTemp")
+    @ApiOperation(value = "UpdateTemp", tags = {"问题收集" },  notes = "UpdateTemp")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimquestions/{pimquestions_id}/updatetemp")
     @Transactional
     public ResponseEntity<PimQuestionsDTO> updateTemp(@PathVariable("pimquestions_id") String pimquestions_id, @RequestBody PimQuestionsDTO pimquestionsdto) {
@@ -95,14 +95,14 @@ public class PimQuestionsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimquestionsMapping.toDomain(#pimquestionsdto),'ehr-PimQuestions-Save')")
-    @ApiOperation(value = "Save", tags = {"PimQuestions" },  notes = "Save")
+    @ApiOperation(value = "保存问题收集", tags = {"问题收集" },  notes = "保存问题收集")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimquestions/save")
     public ResponseEntity<Boolean> save(@RequestBody PimQuestionsDTO pimquestionsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimquestionsService.save(pimquestionsMapping.toDomain(pimquestionsdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimquestionsMapping.toDomain(#pimquestionsdtos),'ehr-PimQuestions-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimQuestions" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存问题收集", tags = {"问题收集" },  notes = "批量保存问题收集")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimquestions/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimQuestionsDTO> pimquestionsdtos) {
         pimquestionsService.saveBatch(pimquestionsMapping.toDomain(pimquestionsdtos));
@@ -110,7 +110,7 @@ public class PimQuestionsResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-CreateTempMajor-all')")
-    @ApiOperation(value = "CreateTempMajor", tags = {"PimQuestions" },  notes = "CreateTempMajor")
+    @ApiOperation(value = "CreateTempMajor", tags = {"问题收集" },  notes = "CreateTempMajor")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimquestions/{pimquestions_id}/createtempmajor")
     @Transactional
     public ResponseEntity<PimQuestionsDTO> createTempMajor(@PathVariable("pimquestions_id") String pimquestions_id, @RequestBody PimQuestionsDTO pimquestionsdto) {
@@ -122,7 +122,7 @@ public class PimQuestionsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimquestionsService.get(#pimquestions_id),'ehr-PimQuestions-Update')")
-    @ApiOperation(value = "Update", tags = {"PimQuestions" },  notes = "Update")
+    @ApiOperation(value = "更新问题收集", tags = {"问题收集" },  notes = "更新问题收集")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimquestions/{pimquestions_id}")
     @Transactional
     public ResponseEntity<PimQuestionsDTO> update(@PathVariable("pimquestions_id") String pimquestions_id, @RequestBody PimQuestionsDTO pimquestionsdto) {
@@ -134,7 +134,7 @@ public class PimQuestionsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimquestionsService.getPimquestionsByEntities(this.pimquestionsMapping.toDomain(#pimquestionsdtos)),'ehr-PimQuestions-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimQuestions" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新问题收集", tags = {"问题收集" },  notes = "批量更新问题收集")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimquestions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimQuestionsDTO> pimquestionsdtos) {
         pimquestionsService.updateBatch(pimquestionsMapping.toDomain(pimquestionsdtos));
@@ -142,7 +142,7 @@ public class PimQuestionsResource {
     }
 
     @PostAuthorize("hasPermission(this.pimquestionsMapping.toDomain(returnObject.body),'ehr-PimQuestions-Get')")
-    @ApiOperation(value = "Get", tags = {"PimQuestions" },  notes = "Get")
+    @ApiOperation(value = "获取问题收集", tags = {"问题收集" },  notes = "获取问题收集")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimquestions/{pimquestions_id}")
     public ResponseEntity<PimQuestionsDTO> get(@PathVariable("pimquestions_id") String pimquestions_id) {
         PimQuestions domain = pimquestionsService.get(pimquestions_id);
@@ -151,7 +151,7 @@ public class PimQuestionsResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-UpdateTempMajor-all')")
-    @ApiOperation(value = "UpdateTempMajor", tags = {"PimQuestions" },  notes = "UpdateTempMajor")
+    @ApiOperation(value = "UpdateTempMajor", tags = {"问题收集" },  notes = "UpdateTempMajor")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimquestions/{pimquestions_id}/updatetempmajor")
     @Transactional
     public ResponseEntity<PimQuestionsDTO> updateTempMajor(@PathVariable("pimquestions_id") String pimquestions_id, @RequestBody PimQuestionsDTO pimquestionsdto) {
@@ -162,14 +162,14 @@ public class PimQuestionsResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimquestionsdto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimQuestions" },  notes = "CheckKey")
+    @ApiOperation(value = "检查问题收集", tags = {"问题收集" },  notes = "检查问题收集")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimquestions/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimQuestionsDTO pimquestionsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimquestionsService.checkKey(pimquestionsMapping.toDomain(pimquestionsdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimquestionsService.get(#pimquestions_id),'ehr-PimQuestions-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimQuestions" },  notes = "Remove")
+    @ApiOperation(value = "删除问题收集", tags = {"问题收集" },  notes = "删除问题收集")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimquestions/{pimquestions_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimquestions_id") String pimquestions_id) {
@@ -177,7 +177,7 @@ public class PimQuestionsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimquestionsService.getPimquestionsByIds(#ids),'ehr-PimQuestions-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimQuestions" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除问题收集", tags = {"问题收集" },  notes = "批量删除问题收集")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimquestions/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimquestionsService.removeBatch(ids);
@@ -185,7 +185,7 @@ public class PimQuestionsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimquestionsMapping.toDomain(#pimquestionsdto),'ehr-PimQuestions-Create')")
-    @ApiOperation(value = "Create", tags = {"PimQuestions" },  notes = "Create")
+    @ApiOperation(value = "新建问题收集", tags = {"问题收集" },  notes = "新建问题收集")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimquestions")
     @Transactional
     public ResponseEntity<PimQuestionsDTO> create(@RequestBody PimQuestionsDTO pimquestionsdto) {
@@ -196,7 +196,7 @@ public class PimQuestionsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimquestionsMapping.toDomain(#pimquestionsdtos),'ehr-PimQuestions-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimQuestions" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建问题收集", tags = {"问题收集" },  notes = "批量新建问题收集")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimquestions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimQuestionsDTO> pimquestionsdtos) {
         pimquestionsService.createBatch(pimquestionsMapping.toDomain(pimquestionsdtos));
@@ -204,7 +204,7 @@ public class PimQuestionsResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-GetTempMajor-all')")
-    @ApiOperation(value = "GetTempMajor", tags = {"PimQuestions" },  notes = "GetTempMajor")
+    @ApiOperation(value = "GetTempMajor", tags = {"问题收集" },  notes = "GetTempMajor")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimquestions/{pimquestions_id}/gettempmajor")
     @Transactional
     public ResponseEntity<PimQuestionsDTO> getTempMajor(@PathVariable("pimquestions_id") String pimquestions_id, @RequestBody PimQuestionsDTO pimquestionsdto) {
@@ -215,14 +215,14 @@ public class PimQuestionsResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimquestionsdto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimQuestions" },  notes = "GetDraft")
+    @ApiOperation(value = "获取问题收集草稿", tags = {"问题收集" },  notes = "获取问题收集草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimquestions/getdraft")
     public ResponseEntity<PimQuestionsDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimquestionsMapping.toDto(pimquestionsService.getDraft(new PimQuestions())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-CreateTemp-all')")
-    @ApiOperation(value = "CreateTemp", tags = {"PimQuestions" },  notes = "CreateTemp")
+    @ApiOperation(value = "CreateTemp", tags = {"问题收集" },  notes = "CreateTemp")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimquestions/{pimquestions_id}/createtemp")
     @Transactional
     public ResponseEntity<PimQuestionsDTO> createTemp(@PathVariable("pimquestions_id") String pimquestions_id, @RequestBody PimQuestionsDTO pimquestionsdto) {
@@ -234,7 +234,7 @@ public class PimQuestionsResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-RemoveTempMajor-all')")
-    @ApiOperation(value = "RemoveTempMajor", tags = {"PimQuestions" },  notes = "RemoveTempMajor")
+    @ApiOperation(value = "RemoveTempMajor", tags = {"问题收集" },  notes = "RemoveTempMajor")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimquestions/{pimquestions_id}/removetempmajor")
     @Transactional
     public ResponseEntity<PimQuestionsDTO> removeTempMajor(@PathVariable("pimquestions_id") String pimquestions_id, @RequestBody PimQuestionsDTO pimquestionsdto) {
@@ -246,7 +246,7 @@ public class PimQuestionsResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-GetDraftTemp-all')")
-    @ApiOperation(value = "GetDraftTemp", tags = {"PimQuestions" },  notes = "GetDraftTemp")
+    @ApiOperation(value = "GetDraftTemp", tags = {"问题收集" },  notes = "GetDraftTemp")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimquestions/{pimquestions_id}/getdrafttemp")
     @Transactional
     public ResponseEntity<PimQuestionsDTO> getDraftTemp(@PathVariable("pimquestions_id") String pimquestions_id, @RequestBody PimQuestionsDTO pimquestionsdto) {
@@ -258,7 +258,7 @@ public class PimQuestionsResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-QUERYcurrentQUESTION-all')")
-	@ApiOperation(value = "fetch查询当前页面问题", tags = {"PimQuestions" } ,notes = "fetch查询当前页面问题")
+	@ApiOperation(value = "获取查询当前页面问题", tags = {"问题收集" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimquestions/fetchquerycurrentquestion")
 	public ResponseEntity<List<PimQuestionsDTO>> fetchQUERYcurrentQUESTION(PimQuestionsSearchContext context) {
         Page<PimQuestions> domains = pimquestionsService.searchQUERYcurrentQUESTION(context) ;
@@ -271,7 +271,7 @@ public class PimQuestionsResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-QUERYcurrentQUESTION-all')")
-	@ApiOperation(value = "search查询当前页面问题", tags = {"PimQuestions" } ,notes = "search查询当前页面问题")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"问题收集" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimquestions/searchquerycurrentquestion")
 	public ResponseEntity<Page<PimQuestionsDTO>> searchQUERYcurrentQUESTION(@RequestBody PimQuestionsSearchContext context) {
         Page<PimQuestions> domains = pimquestionsService.searchQUERYcurrentQUESTION(context) ;
@@ -279,7 +279,7 @@ public class PimQuestionsResource {
                 .body(new PageImpl(pimquestionsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimQuestions" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"问题收集" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimquestions/fetchdefault")
 	public ResponseEntity<List<PimQuestionsDTO>> fetchDefault(PimQuestionsSearchContext context) {
         Page<PimQuestions> domains = pimquestionsService.searchDefault(context) ;
@@ -292,7 +292,7 @@ public class PimQuestionsResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQuestions-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimQuestions" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"问题收集" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimquestions/searchdefault")
 	public ResponseEntity<Page<PimQuestionsDTO>> searchDefault(@RequestBody PimQuestionsSearchContext context) {
         Page<PimQuestions> domains = pimquestionsService.searchDefault(context) ;

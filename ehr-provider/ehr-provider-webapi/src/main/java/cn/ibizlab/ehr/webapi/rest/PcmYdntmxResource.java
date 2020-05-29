@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmYdntmxService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmYdntmxSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmYdntmx" })
+@Api(tags = {"异动内退明细" })
 @RestController("WebApi-pcmydntmx")
 @RequestMapping("")
 public class PcmYdntmxResource {
@@ -46,20 +46,20 @@ public class PcmYdntmxResource {
     @Lazy
     public PcmYdntmxMapping pcmydntmxMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmYdntmx" },  notes = "GetDraft")
+    @ApiOperation(value = "获取异动内退明细草稿", tags = {"异动内退明细" },  notes = "获取异动内退明细草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmydntmxes/getdraft")
     public ResponseEntity<PcmYdntmxDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmydntmxMapping.toDto(pcmydntmxService.getDraft(new PcmYdntmx())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmYdntmx" },  notes = "CheckKey")
+    @ApiOperation(value = "检查异动内退明细", tags = {"异动内退明细" },  notes = "检查异动内退明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydntmxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmYdntmxDTO pcmydntmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmydntmxService.checkKey(pcmydntmxMapping.toDomain(pcmydntmxdto)));
     }
 
     @PostAuthorize("hasPermission(this.pcmydntmxMapping.toDomain(returnObject.body),'ehr-PcmYdntmx-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmYdntmx" },  notes = "Get")
+    @ApiOperation(value = "获取异动内退明细", tags = {"异动内退明细" },  notes = "获取异动内退明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmydntmxes/{pcmydntmx_id}")
     public ResponseEntity<PcmYdntmxDTO> get(@PathVariable("pcmydntmx_id") String pcmydntmx_id) {
         PcmYdntmx domain = pcmydntmxService.get(pcmydntmx_id);
@@ -68,7 +68,7 @@ public class PcmYdntmxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmydntmxMapping.toDomain(#pcmydntmxdto),'ehr-PcmYdntmx-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmYdntmx" },  notes = "Create")
+    @ApiOperation(value = "新建异动内退明细", tags = {"异动内退明细" },  notes = "新建异动内退明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydntmxes")
     @Transactional
     public ResponseEntity<PcmYdntmxDTO> create(@RequestBody PcmYdntmxDTO pcmydntmxdto) {
@@ -79,7 +79,7 @@ public class PcmYdntmxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmydntmxMapping.toDomain(#pcmydntmxdtos),'ehr-PcmYdntmx-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmYdntmx" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建异动内退明细", tags = {"异动内退明细" },  notes = "批量新建异动内退明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydntmxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmYdntmxDTO> pcmydntmxdtos) {
         pcmydntmxService.createBatch(pcmydntmxMapping.toDomain(pcmydntmxdtos));
@@ -87,14 +87,14 @@ public class PcmYdntmxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmydntmxMapping.toDomain(#pcmydntmxdto),'ehr-PcmYdntmx-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmYdntmx" },  notes = "Save")
+    @ApiOperation(value = "保存异动内退明细", tags = {"异动内退明细" },  notes = "保存异动内退明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydntmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmYdntmxDTO pcmydntmxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmydntmxService.save(pcmydntmxMapping.toDomain(pcmydntmxdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmydntmxMapping.toDomain(#pcmydntmxdtos),'ehr-PcmYdntmx-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmYdntmx" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存异动内退明细", tags = {"异动内退明细" },  notes = "批量保存异动内退明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydntmxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmYdntmxDTO> pcmydntmxdtos) {
         pcmydntmxService.saveBatch(pcmydntmxMapping.toDomain(pcmydntmxdtos));
@@ -102,7 +102,7 @@ public class PcmYdntmxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmydntmxService.get(#pcmydntmx_id),'ehr-PcmYdntmx-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmYdntmx" },  notes = "Remove")
+    @ApiOperation(value = "删除异动内退明细", tags = {"异动内退明细" },  notes = "删除异动内退明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmydntmxes/{pcmydntmx_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmydntmx_id") String pcmydntmx_id) {
@@ -110,7 +110,7 @@ public class PcmYdntmxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmydntmxService.getPcmydntmxByIds(#ids),'ehr-PcmYdntmx-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmYdntmx" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除异动内退明细", tags = {"异动内退明细" },  notes = "批量删除异动内退明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmydntmxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmydntmxService.removeBatch(ids);
@@ -118,7 +118,7 @@ public class PcmYdntmxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdntmx-FillPersonInfo-all')")
-    @ApiOperation(value = "填充人员信息", tags = {"PcmYdntmx" },  notes = "填充人员信息")
+    @ApiOperation(value = "填充人员信息", tags = {"异动内退明细" },  notes = "填充人员信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydntmxes/{pcmydntmx_id}/fillpersoninfo")
     @Transactional
     public ResponseEntity<PcmYdntmxDTO> fillPersonInfo(@PathVariable("pcmydntmx_id") String pcmydntmx_id, @RequestBody PcmYdntmxDTO pcmydntmxdto) {
@@ -130,7 +130,7 @@ public class PcmYdntmxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmydntmxService.get(#pcmydntmx_id),'ehr-PcmYdntmx-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmYdntmx" },  notes = "Update")
+    @ApiOperation(value = "更新异动内退明细", tags = {"异动内退明细" },  notes = "更新异动内退明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmydntmxes/{pcmydntmx_id}")
     @Transactional
     public ResponseEntity<PcmYdntmxDTO> update(@PathVariable("pcmydntmx_id") String pcmydntmx_id, @RequestBody PcmYdntmxDTO pcmydntmxdto) {
@@ -142,7 +142,7 @@ public class PcmYdntmxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmydntmxService.getPcmydntmxByEntities(this.pcmydntmxMapping.toDomain(#pcmydntmxdtos)),'ehr-PcmYdntmx-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmYdntmx" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新异动内退明细", tags = {"异动内退明细" },  notes = "批量更新异动内退明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmydntmxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmYdntmxDTO> pcmydntmxdtos) {
         pcmydntmxService.updateBatch(pcmydntmxMapping.toDomain(pcmydntmxdtos));
@@ -150,7 +150,7 @@ public class PcmYdntmxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdntmx-FinishNT-all')")
-    @ApiOperation(value = "结束内退", tags = {"PcmYdntmx" },  notes = "结束内退")
+    @ApiOperation(value = "结束内退", tags = {"异动内退明细" },  notes = "结束内退")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydntmxes/{pcmydntmx_id}/finishnt")
     @Transactional
     public ResponseEntity<PcmYdntmxDTO> finishNT(@PathVariable("pcmydntmx_id") String pcmydntmx_id, @RequestBody PcmYdntmxDTO pcmydntmxdto) {
@@ -162,7 +162,7 @@ public class PcmYdntmxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdntmx-JLDS-all')")
-	@ApiOperation(value = "fetch记录查询", tags = {"PcmYdntmx" } ,notes = "fetch记录查询")
+	@ApiOperation(value = "获取记录查询", tags = {"异动内退明细" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydntmxes/fetchjlds")
 	public ResponseEntity<List<PcmYdntmxDTO>> fetchJLDS(PcmYdntmxSearchContext context) {
         Page<PcmYdntmx> domains = pcmydntmxService.searchJLDS(context) ;
@@ -175,7 +175,7 @@ public class PcmYdntmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdntmx-JLDS-all')")
-	@ApiOperation(value = "search记录查询", tags = {"PcmYdntmx" } ,notes = "search记录查询")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"异动内退明细" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydntmxes/searchjlds")
 	public ResponseEntity<Page<PcmYdntmxDTO>> searchJLDS(@RequestBody PcmYdntmxSearchContext context) {
         Page<PcmYdntmx> domains = pcmydntmxService.searchJLDS(context) ;
@@ -183,7 +183,7 @@ public class PcmYdntmxResource {
                 .body(new PageImpl(pcmydntmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdntmx-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmYdntmx" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"异动内退明细" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydntmxes/fetchdefault")
 	public ResponseEntity<List<PcmYdntmxDTO>> fetchDefault(PcmYdntmxSearchContext context) {
         Page<PcmYdntmx> domains = pcmydntmxService.searchDefault(context) ;
@@ -196,7 +196,7 @@ public class PcmYdntmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdntmx-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmYdntmx" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"异动内退明细" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydntmxes/searchdefault")
 	public ResponseEntity<Page<PcmYdntmxDTO>> searchDefault(@RequestBody PcmYdntmxSearchContext context) {
         Page<PcmYdntmx> domains = pcmydntmxService.searchDefault(context) ;
@@ -204,7 +204,7 @@ public class PcmYdntmxResource {
                 .body(new PageImpl(pcmydntmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdntmx-GLDS-all')")
-	@ApiOperation(value = "fetch管理查询", tags = {"PcmYdntmx" } ,notes = "fetch管理查询")
+	@ApiOperation(value = "获取管理查询", tags = {"异动内退明细" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmydntmxes/fetchglds")
 	public ResponseEntity<List<PcmYdntmxDTO>> fetchGLDS(PcmYdntmxSearchContext context) {
         Page<PcmYdntmx> domains = pcmydntmxService.searchGLDS(context) ;
@@ -217,7 +217,7 @@ public class PcmYdntmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdntmx-GLDS-all')")
-	@ApiOperation(value = "search管理查询", tags = {"PcmYdntmx" } ,notes = "search管理查询")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"异动内退明细" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmydntmxes/searchglds")
 	public ResponseEntity<Page<PcmYdntmxDTO>> searchGLDS(@RequestBody PcmYdntmxSearchContext context) {
         Page<PcmYdntmx> domains = pcmydntmxService.searchGLDS(context) ;

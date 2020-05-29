@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPCMPROFILESPYYService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMPROFILESPYYSearchContext;
 
 @Slf4j
-@Api(tags = {"PCMPROFILESPYY" })
+@Api(tags = {"应聘者审批原因" })
 @RestController("WebApi-pcmprofilespyy")
 @RequestMapping("")
 public class PCMPROFILESPYYResource {
@@ -46,20 +46,20 @@ public class PCMPROFILESPYYResource {
     @Lazy
     public PCMPROFILESPYYMapping pcmprofilespyyMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"PCMPROFILESPYY" },  notes = "GetDraft")
+    @ApiOperation(value = "获取应聘者审批原因草稿", tags = {"应聘者审批原因" },  notes = "获取应聘者审批原因草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofilespyys/getdraft")
     public ResponseEntity<PCMPROFILESPYYDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofilespyyMapping.toDto(pcmprofilespyyService.getDraft(new PCMPROFILESPYY())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PCMPROFILESPYY" },  notes = "CheckKey")
+    @ApiOperation(value = "检查应聘者审批原因", tags = {"应聘者审批原因" },  notes = "检查应聘者审批原因")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMPROFILESPYYDTO pcmprofilespyydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmprofilespyyService.checkKey(pcmprofilespyyMapping.toDomain(pcmprofilespyydto)));
     }
 
     @PostAuthorize("hasPermission(this.pcmprofilespyyMapping.toDomain(returnObject.body),'ehr-PCMPROFILESPYY-Get')")
-    @ApiOperation(value = "Get", tags = {"PCMPROFILESPYY" },  notes = "Get")
+    @ApiOperation(value = "获取应聘者审批原因", tags = {"应聘者审批原因" },  notes = "获取应聘者审批原因")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofilespyys/{pcmprofilespyy_id}")
     public ResponseEntity<PCMPROFILESPYYDTO> get(@PathVariable("pcmprofilespyy_id") String pcmprofilespyy_id) {
         PCMPROFILESPYY domain = pcmprofilespyyService.get(pcmprofilespyy_id);
@@ -68,14 +68,14 @@ public class PCMPROFILESPYYResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofilespyyMapping.toDomain(#pcmprofilespyydto),'ehr-PCMPROFILESPYY-Save')")
-    @ApiOperation(value = "Save", tags = {"PCMPROFILESPYY" },  notes = "Save")
+    @ApiOperation(value = "保存应聘者审批原因", tags = {"应聘者审批原因" },  notes = "保存应聘者审批原因")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMPROFILESPYYDTO pcmprofilespyydto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofilespyyService.save(pcmprofilespyyMapping.toDomain(pcmprofilespyydto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmprofilespyyMapping.toDomain(#pcmprofilespyydtos),'ehr-PCMPROFILESPYY-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PCMPROFILESPYY" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存应聘者审批原因", tags = {"应聘者审批原因" },  notes = "批量保存应聘者审批原因")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMPROFILESPYYDTO> pcmprofilespyydtos) {
         pcmprofilespyyService.saveBatch(pcmprofilespyyMapping.toDomain(pcmprofilespyydtos));
@@ -83,7 +83,7 @@ public class PCMPROFILESPYYResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofilespyyMapping.toDomain(#pcmprofilespyydto),'ehr-PCMPROFILESPYY-Create')")
-    @ApiOperation(value = "Create", tags = {"PCMPROFILESPYY" },  notes = "Create")
+    @ApiOperation(value = "新建应聘者审批原因", tags = {"应聘者审批原因" },  notes = "新建应聘者审批原因")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys")
     @Transactional
     public ResponseEntity<PCMPROFILESPYYDTO> create(@RequestBody PCMPROFILESPYYDTO pcmprofilespyydto) {
@@ -94,7 +94,7 @@ public class PCMPROFILESPYYResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofilespyyMapping.toDomain(#pcmprofilespyydtos),'ehr-PCMPROFILESPYY-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PCMPROFILESPYY" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建应聘者审批原因", tags = {"应聘者审批原因" },  notes = "批量新建应聘者审批原因")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilespyys/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMPROFILESPYYDTO> pcmprofilespyydtos) {
         pcmprofilespyyService.createBatch(pcmprofilespyyMapping.toDomain(pcmprofilespyydtos));
@@ -102,7 +102,7 @@ public class PCMPROFILESPYYResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofilespyyService.get(#pcmprofilespyy_id),'ehr-PCMPROFILESPYY-Update')")
-    @ApiOperation(value = "Update", tags = {"PCMPROFILESPYY" },  notes = "Update")
+    @ApiOperation(value = "更新应聘者审批原因", tags = {"应聘者审批原因" },  notes = "更新应聘者审批原因")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofilespyys/{pcmprofilespyy_id}")
     @Transactional
     public ResponseEntity<PCMPROFILESPYYDTO> update(@PathVariable("pcmprofilespyy_id") String pcmprofilespyy_id, @RequestBody PCMPROFILESPYYDTO pcmprofilespyydto) {
@@ -114,7 +114,7 @@ public class PCMPROFILESPYYResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofilespyyService.getPcmprofilespyyByEntities(this.pcmprofilespyyMapping.toDomain(#pcmprofilespyydtos)),'ehr-PCMPROFILESPYY-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PCMPROFILESPYY" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新应聘者审批原因", tags = {"应聘者审批原因" },  notes = "批量更新应聘者审批原因")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofilespyys/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMPROFILESPYYDTO> pcmprofilespyydtos) {
         pcmprofilespyyService.updateBatch(pcmprofilespyyMapping.toDomain(pcmprofilespyydtos));
@@ -122,7 +122,7 @@ public class PCMPROFILESPYYResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofilespyyService.get(#pcmprofilespyy_id),'ehr-PCMPROFILESPYY-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PCMPROFILESPYY" },  notes = "Remove")
+    @ApiOperation(value = "删除应聘者审批原因", tags = {"应聘者审批原因" },  notes = "删除应聘者审批原因")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofilespyys/{pcmprofilespyy_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmprofilespyy_id") String pcmprofilespyy_id) {
@@ -130,7 +130,7 @@ public class PCMPROFILESPYYResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofilespyyService.getPcmprofilespyyByIds(#ids),'ehr-PCMPROFILESPYY-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PCMPROFILESPYY" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除应聘者审批原因", tags = {"应聘者审批原因" },  notes = "批量删除应聘者审批原因")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofilespyys/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmprofilespyyService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class PCMPROFILESPYYResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILESPYY" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者审批原因" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofilespyys/fetchdefault")
 	public ResponseEntity<List<PCMPROFILESPYYDTO>> fetchDefault(PCMPROFILESPYYSearchContext context) {
         Page<PCMPROFILESPYY> domains = pcmprofilespyyService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PCMPROFILESPYYResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILESPYY-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILESPYY" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者审批原因" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofilespyys/searchdefault")
 	public ResponseEntity<Page<PCMPROFILESPYYDTO>> searchDefault(@RequestBody PCMPROFILESPYYSearchContext context) {
         Page<PCMPROFILESPYY> domains = pcmprofilespyyService.searchDefault(context) ;

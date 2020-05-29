@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimVacationService;
 import cn.ibizlab.ehr.core.pim.filter.PimVacationSearchContext;
 
 @Slf4j
-@Api(tags = {"PimVacation" })
+@Api(tags = {"休假信息" })
 @RestController("WebApi-pimvacation")
 @RequestMapping("")
 public class PimVacationResource {
@@ -47,7 +47,7 @@ public class PimVacationResource {
     public PimVacationMapping pimvacationMapping;
 
     @PreAuthorize("hasPermission(this.pimvacationService.get(#pimvacation_id),'ehr-PimVacation-Update')")
-    @ApiOperation(value = "Update", tags = {"PimVacation" },  notes = "Update")
+    @ApiOperation(value = "更新休假信息", tags = {"休假信息" },  notes = "更新休假信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimvacations/{pimvacation_id}")
     @Transactional
     public ResponseEntity<PimVacationDTO> update(@PathVariable("pimvacation_id") String pimvacation_id, @RequestBody PimVacationDTO pimvacationdto) {
@@ -59,7 +59,7 @@ public class PimVacationResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvacationService.getPimvacationByEntities(this.pimvacationMapping.toDomain(#pimvacationdtos)),'ehr-PimVacation-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimVacation" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新休假信息", tags = {"休假信息" },  notes = "批量更新休假信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimvacations/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimVacationDTO> pimvacationdtos) {
         pimvacationService.updateBatch(pimvacationMapping.toDomain(pimvacationdtos));
@@ -67,7 +67,7 @@ public class PimVacationResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvacationService.get(#pimvacation_id),'ehr-PimVacation-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimVacation" },  notes = "Remove")
+    @ApiOperation(value = "删除休假信息", tags = {"休假信息" },  notes = "删除休假信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimvacations/{pimvacation_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimvacation_id") String pimvacation_id) {
@@ -75,28 +75,28 @@ public class PimVacationResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvacationService.getPimvacationByIds(#ids),'ehr-PimVacation-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimVacation" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除休假信息", tags = {"休假信息" },  notes = "批量删除休假信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimvacations/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimvacationService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimVacation" },  notes = "GetDraft")
+    @ApiOperation(value = "获取休假信息草稿", tags = {"休假信息" },  notes = "获取休假信息草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimvacations/getdraft")
     public ResponseEntity<PimVacationDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimvacationMapping.toDto(pimvacationService.getDraft(new PimVacation())));
     }
 
     @PreAuthorize("hasPermission(this.pimvacationMapping.toDomain(#pimvacationdto),'ehr-PimVacation-Save')")
-    @ApiOperation(value = "Save", tags = {"PimVacation" },  notes = "Save")
+    @ApiOperation(value = "保存休假信息", tags = {"休假信息" },  notes = "保存休假信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvacations/save")
     public ResponseEntity<Boolean> save(@RequestBody PimVacationDTO pimvacationdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimvacationService.save(pimvacationMapping.toDomain(pimvacationdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimvacationMapping.toDomain(#pimvacationdtos),'ehr-PimVacation-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimVacation" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存休假信息", tags = {"休假信息" },  notes = "批量保存休假信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvacations/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimVacationDTO> pimvacationdtos) {
         pimvacationService.saveBatch(pimvacationMapping.toDomain(pimvacationdtos));
@@ -104,7 +104,7 @@ public class PimVacationResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvacationMapping.toDomain(#pimvacationdto),'ehr-PimVacation-Create')")
-    @ApiOperation(value = "Create", tags = {"PimVacation" },  notes = "Create")
+    @ApiOperation(value = "新建休假信息", tags = {"休假信息" },  notes = "新建休假信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvacations")
     @Transactional
     public ResponseEntity<PimVacationDTO> create(@RequestBody PimVacationDTO pimvacationdto) {
@@ -115,21 +115,21 @@ public class PimVacationResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvacationMapping.toDomain(#pimvacationdtos),'ehr-PimVacation-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimVacation" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建休假信息", tags = {"休假信息" },  notes = "批量新建休假信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvacations/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimVacationDTO> pimvacationdtos) {
         pimvacationService.createBatch(pimvacationMapping.toDomain(pimvacationdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimVacation" },  notes = "CheckKey")
+    @ApiOperation(value = "检查休假信息", tags = {"休假信息" },  notes = "检查休假信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvacations/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimVacationDTO pimvacationdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimvacationService.checkKey(pimvacationMapping.toDomain(pimvacationdto)));
     }
 
     @PostAuthorize("hasPermission(this.pimvacationMapping.toDomain(returnObject.body),'ehr-PimVacation-Get')")
-    @ApiOperation(value = "Get", tags = {"PimVacation" },  notes = "Get")
+    @ApiOperation(value = "获取休假信息", tags = {"休假信息" },  notes = "获取休假信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimvacations/{pimvacation_id}")
     public ResponseEntity<PimVacationDTO> get(@PathVariable("pimvacation_id") String pimvacation_id) {
         PimVacation domain = pimvacationService.get(pimvacation_id);
@@ -138,7 +138,7 @@ public class PimVacationResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimVacation-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimVacation" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"休假信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimvacations/fetchdefault")
 	public ResponseEntity<List<PimVacationDTO>> fetchDefault(PimVacationSearchContext context) {
         Page<PimVacation> domains = pimvacationService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimVacationResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimVacation-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimVacation" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"休假信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimvacations/searchdefault")
 	public ResponseEntity<Page<PimVacationDTO>> searchDefault(@RequestBody PimVacationSearchContext context) {
         Page<PimVacation> domains = pimvacationService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PimVacationResource {
                 .body(new PageImpl(pimvacationMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pimvacationService.get(#pimvacation_id),'ehr-PimVacation-Update')")
-    @ApiOperation(value = "UpdateByPimPerson", tags = {"PimVacation" },  notes = "UpdateByPimPerson")
+    @ApiOperation(value = "根据人员信息更新休假信息", tags = {"休假信息" },  notes = "根据人员信息更新休假信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimvacations/{pimvacation_id}")
     @Transactional
     public ResponseEntity<PimVacationDTO> updateByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimvacation_id") String pimvacation_id, @RequestBody PimVacationDTO pimvacationdto) {
@@ -172,7 +172,7 @@ public class PimVacationResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvacationService.getPimvacationByEntities(this.pimvacationMapping.toDomain(#pimvacationdtos)),'ehr-PimVacation-Update')")
-    @ApiOperation(value = "UpdateBatchByPimPerson", tags = {"PimVacation" },  notes = "UpdateBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量更新休假信息", tags = {"休假信息" },  notes = "根据人员信息批量更新休假信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimvacations/batch")
     public ResponseEntity<Boolean> updateBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PimVacationDTO> pimvacationdtos) {
         List<PimVacation> domainlist=pimvacationMapping.toDomain(pimvacationdtos);
@@ -184,7 +184,7 @@ public class PimVacationResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvacationService.get(#pimvacation_id),'ehr-PimVacation-Remove')")
-    @ApiOperation(value = "RemoveByPimPerson", tags = {"PimVacation" },  notes = "RemoveByPimPerson")
+    @ApiOperation(value = "根据人员信息删除休假信息", tags = {"休假信息" },  notes = "根据人员信息删除休假信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimvacations/{pimvacation_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimvacation_id") String pimvacation_id) {
@@ -192,14 +192,14 @@ public class PimVacationResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvacationService.getPimvacationByIds(#ids),'ehr-PimVacation-Remove')")
-    @ApiOperation(value = "RemoveBatchByPimPerson", tags = {"PimVacation" },  notes = "RemoveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量删除休假信息", tags = {"休假信息" },  notes = "根据人员信息批量删除休假信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimvacations/batch")
     public ResponseEntity<Boolean> removeBatchByPimPerson(@RequestBody List<String> ids) {
         pimvacationService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPimPerson", tags = {"PimVacation" },  notes = "GetDraftByPimPerson")
+    @ApiOperation(value = "根据人员信息获取休假信息草稿", tags = {"休假信息" },  notes = "根据人员信息获取休假信息草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimvacations/getdraft")
     public ResponseEntity<PimVacationDTO> getDraftByPimPerson(@PathVariable("pimperson_id") String pimperson_id) {
         PimVacation domain = new PimVacation();
@@ -208,7 +208,7 @@ public class PimVacationResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvacationMapping.toDomain(#pimvacationdto),'ehr-PimVacation-Save')")
-    @ApiOperation(value = "SaveByPimPerson", tags = {"PimVacation" },  notes = "SaveByPimPerson")
+    @ApiOperation(value = "根据人员信息保存休假信息", tags = {"休假信息" },  notes = "根据人员信息保存休假信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvacations/save")
     public ResponseEntity<Boolean> saveByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimVacationDTO pimvacationdto) {
         PimVacation domain = pimvacationMapping.toDomain(pimvacationdto);
@@ -217,7 +217,7 @@ public class PimVacationResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvacationMapping.toDomain(#pimvacationdtos),'ehr-PimVacation-Save')")
-    @ApiOperation(value = "SaveBatchByPimPerson", tags = {"PimVacation" },  notes = "SaveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量保存休假信息", tags = {"休假信息" },  notes = "根据人员信息批量保存休假信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvacations/savebatch")
     public ResponseEntity<Boolean> saveBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PimVacationDTO> pimvacationdtos) {
         List<PimVacation> domainlist=pimvacationMapping.toDomain(pimvacationdtos);
@@ -229,7 +229,7 @@ public class PimVacationResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvacationMapping.toDomain(#pimvacationdto),'ehr-PimVacation-Create')")
-    @ApiOperation(value = "CreateByPimPerson", tags = {"PimVacation" },  notes = "CreateByPimPerson")
+    @ApiOperation(value = "根据人员信息建立休假信息", tags = {"休假信息" },  notes = "根据人员信息建立休假信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvacations")
     @Transactional
     public ResponseEntity<PimVacationDTO> createByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimVacationDTO pimvacationdto) {
@@ -241,7 +241,7 @@ public class PimVacationResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvacationMapping.toDomain(#pimvacationdtos),'ehr-PimVacation-Create')")
-    @ApiOperation(value = "createBatchByPimPerson", tags = {"PimVacation" },  notes = "createBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量建立休假信息", tags = {"休假信息" },  notes = "根据人员信息批量建立休假信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvacations/batch")
     public ResponseEntity<Boolean> createBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PimVacationDTO> pimvacationdtos) {
         List<PimVacation> domainlist=pimvacationMapping.toDomain(pimvacationdtos);
@@ -252,14 +252,14 @@ public class PimVacationResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByPimPerson", tags = {"PimVacation" },  notes = "CheckKeyByPimPerson")
+    @ApiOperation(value = "根据人员信息检查休假信息", tags = {"休假信息" },  notes = "根据人员信息检查休假信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimvacations/checkkey")
     public ResponseEntity<Boolean> checkKeyByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimVacationDTO pimvacationdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimvacationService.checkKey(pimvacationMapping.toDomain(pimvacationdto)));
     }
 
     @PostAuthorize("hasPermission(this.pimvacationMapping.toDomain(returnObject.body),'ehr-PimVacation-Get')")
-    @ApiOperation(value = "GetByPimPerson", tags = {"PimVacation" },  notes = "GetByPimPerson")
+    @ApiOperation(value = "根据人员信息获取休假信息", tags = {"休假信息" },  notes = "根据人员信息获取休假信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimvacations/{pimvacation_id}")
     public ResponseEntity<PimVacationDTO> getByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimvacation_id") String pimvacation_id) {
         PimVacation domain = pimvacationService.get(pimvacation_id);
@@ -268,7 +268,7 @@ public class PimVacationResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimVacation-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPimPerson", tags = {"PimVacation" } ,notes = "fetchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息获取DEFAULT", tags = {"休假信息" } ,notes = "根据人员信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimvacations/fetchdefault")
 	public ResponseEntity<List<PimVacationDTO>> fetchPimVacationDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PimVacationSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -282,7 +282,7 @@ public class PimVacationResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimVacation-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPimPerson", tags = {"PimVacation" } ,notes = "searchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息查询DEFAULT", tags = {"休假信息" } ,notes = "根据人员信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimvacations/searchdefault")
 	public ResponseEntity<Page<PimVacationDTO>> searchPimVacationDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimVacationSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);

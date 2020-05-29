@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITrmGradecadresService;
 import cn.ibizlab.ehr.core.trm.filter.TrmGradecadresSearchContext;
 
 @Slf4j
-@Api(tags = {"TrmGradecadres" })
+@Api(tags = {"优秀青年干部推荐" })
 @RestController("WebApi-trmgradecadres")
 @RequestMapping("")
 public class TrmGradecadresResource {
@@ -47,7 +47,7 @@ public class TrmGradecadresResource {
     public TrmGradecadresMapping trmgradecadresMapping;
 
     @PreAuthorize("hasPermission(this.trmgradecadresService.get(#trmgradecadres_id),'ehr-TrmGradecadres-Update')")
-    @ApiOperation(value = "Update", tags = {"TrmGradecadres" },  notes = "Update")
+    @ApiOperation(value = "更新优秀青年干部推荐", tags = {"优秀青年干部推荐" },  notes = "更新优秀青年干部推荐")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmgradecadres/{trmgradecadres_id}")
     @Transactional
     public ResponseEntity<TrmGradecadresDTO> update(@PathVariable("trmgradecadres_id") String trmgradecadres_id, @RequestBody TrmGradecadresDTO trmgradecadresdto) {
@@ -59,21 +59,21 @@ public class TrmGradecadresResource {
     }
 
     @PreAuthorize("hasPermission(this.trmgradecadresService.getTrmgradecadresByEntities(this.trmgradecadresMapping.toDomain(#trmgradecadresdtos)),'ehr-TrmGradecadres-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TrmGradecadres" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新优秀青年干部推荐", tags = {"优秀青年干部推荐" },  notes = "批量更新优秀青年干部推荐")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmgradecadres/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TrmGradecadresDTO> trmgradecadresdtos) {
         trmgradecadresService.updateBatch(trmgradecadresMapping.toDomain(trmgradecadresdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TrmGradecadres" },  notes = "CheckKey")
+    @ApiOperation(value = "检查优秀青年干部推荐", tags = {"优秀青年干部推荐" },  notes = "检查优秀青年干部推荐")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmgradecadres/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmGradecadresDTO trmgradecadresdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmgradecadresService.checkKey(trmgradecadresMapping.toDomain(trmgradecadresdto)));
     }
 
     @PreAuthorize("hasPermission(this.trmgradecadresService.get(#trmgradecadres_id),'ehr-TrmGradecadres-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TrmGradecadres" },  notes = "Remove")
+    @ApiOperation(value = "删除优秀青年干部推荐", tags = {"优秀青年干部推荐" },  notes = "删除优秀青年干部推荐")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmgradecadres/{trmgradecadres_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trmgradecadres_id") String trmgradecadres_id) {
@@ -81,7 +81,7 @@ public class TrmGradecadresResource {
     }
 
     @PreAuthorize("hasPermission(this.trmgradecadresService.getTrmgradecadresByIds(#ids),'ehr-TrmGradecadres-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TrmGradecadres" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除优秀青年干部推荐", tags = {"优秀青年干部推荐" },  notes = "批量删除优秀青年干部推荐")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmgradecadres/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmgradecadresService.removeBatch(ids);
@@ -89,7 +89,7 @@ public class TrmGradecadresResource {
     }
 
     @PreAuthorize("hasPermission(this.trmgradecadresMapping.toDomain(#trmgradecadresdto),'ehr-TrmGradecadres-Create')")
-    @ApiOperation(value = "Create", tags = {"TrmGradecadres" },  notes = "Create")
+    @ApiOperation(value = "新建优秀青年干部推荐", tags = {"优秀青年干部推荐" },  notes = "新建优秀青年干部推荐")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmgradecadres")
     @Transactional
     public ResponseEntity<TrmGradecadresDTO> create(@RequestBody TrmGradecadresDTO trmgradecadresdto) {
@@ -100,28 +100,28 @@ public class TrmGradecadresResource {
     }
 
     @PreAuthorize("hasPermission(this.trmgradecadresMapping.toDomain(#trmgradecadresdtos),'ehr-TrmGradecadres-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TrmGradecadres" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建优秀青年干部推荐", tags = {"优秀青年干部推荐" },  notes = "批量新建优秀青年干部推荐")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmgradecadres/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmGradecadresDTO> trmgradecadresdtos) {
         trmgradecadresService.createBatch(trmgradecadresMapping.toDomain(trmgradecadresdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"TrmGradecadres" },  notes = "GetDraft")
+    @ApiOperation(value = "获取优秀青年干部推荐草稿", tags = {"优秀青年干部推荐" },  notes = "获取优秀青年干部推荐草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmgradecadres/getdraft")
     public ResponseEntity<TrmGradecadresDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmgradecadresMapping.toDto(trmgradecadresService.getDraft(new TrmGradecadres())));
     }
 
     @PreAuthorize("hasPermission(this.trmgradecadresMapping.toDomain(#trmgradecadresdto),'ehr-TrmGradecadres-Save')")
-    @ApiOperation(value = "Save", tags = {"TrmGradecadres" },  notes = "Save")
+    @ApiOperation(value = "保存优秀青年干部推荐", tags = {"优秀青年干部推荐" },  notes = "保存优秀青年干部推荐")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmgradecadres/save")
     public ResponseEntity<Boolean> save(@RequestBody TrmGradecadresDTO trmgradecadresdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmgradecadresService.save(trmgradecadresMapping.toDomain(trmgradecadresdto)));
     }
 
     @PreAuthorize("hasPermission(this.trmgradecadresMapping.toDomain(#trmgradecadresdtos),'ehr-TrmGradecadres-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TrmGradecadres" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存优秀青年干部推荐", tags = {"优秀青年干部推荐" },  notes = "批量保存优秀青年干部推荐")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmgradecadres/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TrmGradecadresDTO> trmgradecadresdtos) {
         trmgradecadresService.saveBatch(trmgradecadresMapping.toDomain(trmgradecadresdtos));
@@ -129,7 +129,7 @@ public class TrmGradecadresResource {
     }
 
     @PostAuthorize("hasPermission(this.trmgradecadresMapping.toDomain(returnObject.body),'ehr-TrmGradecadres-Get')")
-    @ApiOperation(value = "Get", tags = {"TrmGradecadres" },  notes = "Get")
+    @ApiOperation(value = "获取优秀青年干部推荐", tags = {"优秀青年干部推荐" },  notes = "获取优秀青年干部推荐")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmgradecadres/{trmgradecadres_id}")
     public ResponseEntity<TrmGradecadresDTO> get(@PathVariable("trmgradecadres_id") String trmgradecadres_id) {
         TrmGradecadres domain = trmgradecadresService.get(trmgradecadres_id);
@@ -138,7 +138,7 @@ public class TrmGradecadresResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmGradecadres-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TrmGradecadres" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"优秀青年干部推荐" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmgradecadres/fetchdefault")
 	public ResponseEntity<List<TrmGradecadresDTO>> fetchDefault(TrmGradecadresSearchContext context) {
         Page<TrmGradecadres> domains = trmgradecadresService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmGradecadresResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmGradecadres-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TrmGradecadres" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"优秀青年干部推荐" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmgradecadres/searchdefault")
 	public ResponseEntity<Page<TrmGradecadresDTO>> searchDefault(@RequestBody TrmGradecadresSearchContext context) {
         Page<TrmGradecadres> domains = trmgradecadresService.searchDefault(context) ;

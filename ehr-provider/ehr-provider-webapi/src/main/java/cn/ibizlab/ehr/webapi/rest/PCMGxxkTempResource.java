@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPCMGxxkTempService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMGxxkTempSearchContext;
 
 @Slf4j
-@Api(tags = {"PCMGxxkTemp" })
+@Api(tags = {"高校学科中间表" })
 @RestController("WebApi-pcmgxxktemp")
 @RequestMapping("")
 public class PCMGxxkTempResource {
@@ -46,14 +46,14 @@ public class PCMGxxkTempResource {
     @Lazy
     public PCMGxxkTempMapping pcmgxxktempMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"PCMGxxkTemp" },  notes = "GetDraft")
+    @ApiOperation(value = "获取高校学科中间表草稿", tags = {"高校学科中间表" },  notes = "获取高校学科中间表草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmgxxktemps/getdraft")
     public ResponseEntity<PCMGxxkTempDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempMapping.toDto(pcmgxxktempService.getDraft(new PCMGxxkTemp())));
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdto),'ehr-PCMGxxkTemp-Create')")
-    @ApiOperation(value = "Create", tags = {"PCMGxxkTemp" },  notes = "Create")
+    @ApiOperation(value = "新建高校学科中间表", tags = {"高校学科中间表" },  notes = "新建高校学科中间表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxxktemps")
     @Transactional
     public ResponseEntity<PCMGxxkTempDTO> create(@RequestBody PCMGxxkTempDTO pcmgxxktempdto) {
@@ -64,7 +64,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos),'ehr-PCMGxxkTemp-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PCMGxxkTemp" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建高校学科中间表", tags = {"高校学科中间表" },  notes = "批量新建高校学科中间表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMGxxkTempDTO> pcmgxxktempdtos) {
         pcmgxxktempService.createBatch(pcmgxxktempMapping.toDomain(pcmgxxktempdtos));
@@ -72,7 +72,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempService.get(#pcmgxxktemp_id),'ehr-PCMGxxkTemp-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PCMGxxkTemp" },  notes = "Remove")
+    @ApiOperation(value = "删除高校学科中间表", tags = {"高校学科中间表" },  notes = "删除高校学科中间表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgxxktemps/{pcmgxxktemp_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmgxxktemp_id") String pcmgxxktemp_id) {
@@ -80,28 +80,28 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempService.getPcmgxxktempByIds(#ids),'ehr-PCMGxxkTemp-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PCMGxxkTemp" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除高校学科中间表", tags = {"高校学科中间表" },  notes = "批量删除高校学科中间表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmgxxktempService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PCMGxxkTemp" },  notes = "CheckKey")
+    @ApiOperation(value = "检查高校学科中间表", tags = {"高校学科中间表" },  notes = "检查高校学科中间表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxxktemps/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMGxxkTempDTO pcmgxxktempdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempService.checkKey(pcmgxxktempMapping.toDomain(pcmgxxktempdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdto),'ehr-PCMGxxkTemp-Save')")
-    @ApiOperation(value = "Save", tags = {"PCMGxxkTemp" },  notes = "Save")
+    @ApiOperation(value = "保存高校学科中间表", tags = {"高校学科中间表" },  notes = "保存高校学科中间表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxxktemps/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMGxxkTempDTO pcmgxxktempdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempService.save(pcmgxxktempMapping.toDomain(pcmgxxktempdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos),'ehr-PCMGxxkTemp-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PCMGxxkTemp" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存高校学科中间表", tags = {"高校学科中间表" },  notes = "批量保存高校学科中间表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxxktemps/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMGxxkTempDTO> pcmgxxktempdtos) {
         pcmgxxktempService.saveBatch(pcmgxxktempMapping.toDomain(pcmgxxktempdtos));
@@ -109,7 +109,7 @@ public class PCMGxxkTempResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(returnObject.body),'ehr-PCMGxxkTemp-Get')")
-    @ApiOperation(value = "Get", tags = {"PCMGxxkTemp" },  notes = "Get")
+    @ApiOperation(value = "获取高校学科中间表", tags = {"高校学科中间表" },  notes = "获取高校学科中间表")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmgxxktemps/{pcmgxxktemp_id}")
     public ResponseEntity<PCMGxxkTempDTO> get(@PathVariable("pcmgxxktemp_id") String pcmgxxktemp_id) {
         PCMGxxkTemp domain = pcmgxxktempService.get(pcmgxxktemp_id);
@@ -118,7 +118,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempService.get(#pcmgxxktemp_id),'ehr-PCMGxxkTemp-Update')")
-    @ApiOperation(value = "Update", tags = {"PCMGxxkTemp" },  notes = "Update")
+    @ApiOperation(value = "更新高校学科中间表", tags = {"高校学科中间表" },  notes = "更新高校学科中间表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmgxxktemps/{pcmgxxktemp_id}")
     @Transactional
     public ResponseEntity<PCMGxxkTempDTO> update(@PathVariable("pcmgxxktemp_id") String pcmgxxktemp_id, @RequestBody PCMGxxkTempDTO pcmgxxktempdto) {
@@ -130,7 +130,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempService.getPcmgxxktempByEntities(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos)),'ehr-PCMGxxkTemp-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PCMGxxkTemp" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新高校学科中间表", tags = {"高校学科中间表" },  notes = "批量更新高校学科中间表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMGxxkTempDTO> pcmgxxktempdtos) {
         pcmgxxktempService.updateBatch(pcmgxxktempMapping.toDomain(pcmgxxktempdtos));
@@ -138,7 +138,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGxxkTemp-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMGxxkTemp" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"高校学科中间表" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgxxktemps/fetchdefault")
 	public ResponseEntity<List<PCMGxxkTempDTO>> fetchDefault(PCMGxxkTempSearchContext context) {
         Page<PCMGxxkTemp> domains = pcmgxxktempService.searchDefault(context) ;
@@ -151,14 +151,14 @@ public class PCMGxxkTempResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGxxkTemp-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PCMGxxkTemp" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"高校学科中间表" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgxxktemps/searchdefault")
 	public ResponseEntity<Page<PCMGxxkTempDTO>> searchDefault(@RequestBody PCMGxxkTempSearchContext context) {
         Page<PCMGxxkTemp> domains = pcmgxxktempService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmgxxktempMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @ApiOperation(value = "GetDraftByPcmGxml", tags = {"PCMGxxkTemp" },  notes = "GetDraftByPcmGxml")
+    @ApiOperation(value = "根据高校名录获取高校学科中间表草稿", tags = {"高校学科中间表" },  notes = "根据高校名录获取高校学科中间表草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/getdraft")
     public ResponseEntity<PCMGxxkTempDTO> getDraftByPcmGxml(@PathVariable("pcmgxml_id") String pcmgxml_id) {
         PCMGxxkTemp domain = new PCMGxxkTemp();
@@ -167,7 +167,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdto),'ehr-PCMGxxkTemp-Create')")
-    @ApiOperation(value = "CreateByPcmGxml", tags = {"PCMGxxkTemp" },  notes = "CreateByPcmGxml")
+    @ApiOperation(value = "根据高校名录建立高校学科中间表", tags = {"高校学科中间表" },  notes = "根据高校名录建立高校学科中间表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps")
     @Transactional
     public ResponseEntity<PCMGxxkTempDTO> createByPcmGxml(@PathVariable("pcmgxml_id") String pcmgxml_id, @RequestBody PCMGxxkTempDTO pcmgxxktempdto) {
@@ -179,7 +179,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos),'ehr-PCMGxxkTemp-Create')")
-    @ApiOperation(value = "createBatchByPcmGxml", tags = {"PCMGxxkTemp" },  notes = "createBatchByPcmGxml")
+    @ApiOperation(value = "根据高校名录批量建立高校学科中间表", tags = {"高校学科中间表" },  notes = "根据高校名录批量建立高校学科中间表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> createBatchByPcmGxml(@PathVariable("pcmgxml_id") String pcmgxml_id, @RequestBody List<PCMGxxkTempDTO> pcmgxxktempdtos) {
         List<PCMGxxkTemp> domainlist=pcmgxxktempMapping.toDomain(pcmgxxktempdtos);
@@ -191,7 +191,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempService.get(#pcmgxxktemp_id),'ehr-PCMGxxkTemp-Remove')")
-    @ApiOperation(value = "RemoveByPcmGxml", tags = {"PCMGxxkTemp" },  notes = "RemoveByPcmGxml")
+    @ApiOperation(value = "根据高校名录删除高校学科中间表", tags = {"高校学科中间表" },  notes = "根据高校名录删除高校学科中间表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/{pcmgxxktemp_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPcmGxml(@PathVariable("pcmgxml_id") String pcmgxml_id, @PathVariable("pcmgxxktemp_id") String pcmgxxktemp_id) {
@@ -199,21 +199,21 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempService.getPcmgxxktempByIds(#ids),'ehr-PCMGxxkTemp-Remove')")
-    @ApiOperation(value = "RemoveBatchByPcmGxml", tags = {"PCMGxxkTemp" },  notes = "RemoveBatchByPcmGxml")
+    @ApiOperation(value = "根据高校名录批量删除高校学科中间表", tags = {"高校学科中间表" },  notes = "根据高校名录批量删除高校学科中间表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> removeBatchByPcmGxml(@RequestBody List<String> ids) {
         pcmgxxktempService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByPcmGxml", tags = {"PCMGxxkTemp" },  notes = "CheckKeyByPcmGxml")
+    @ApiOperation(value = "根据高校名录检查高校学科中间表", tags = {"高校学科中间表" },  notes = "根据高校名录检查高校学科中间表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/checkkey")
     public ResponseEntity<Boolean> checkKeyByPcmGxml(@PathVariable("pcmgxml_id") String pcmgxml_id, @RequestBody PCMGxxkTempDTO pcmgxxktempdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempService.checkKey(pcmgxxktempMapping.toDomain(pcmgxxktempdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdto),'ehr-PCMGxxkTemp-Save')")
-    @ApiOperation(value = "SaveByPcmGxml", tags = {"PCMGxxkTemp" },  notes = "SaveByPcmGxml")
+    @ApiOperation(value = "根据高校名录保存高校学科中间表", tags = {"高校学科中间表" },  notes = "根据高校名录保存高校学科中间表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/save")
     public ResponseEntity<Boolean> saveByPcmGxml(@PathVariable("pcmgxml_id") String pcmgxml_id, @RequestBody PCMGxxkTempDTO pcmgxxktempdto) {
         PCMGxxkTemp domain = pcmgxxktempMapping.toDomain(pcmgxxktempdto);
@@ -222,7 +222,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos),'ehr-PCMGxxkTemp-Save')")
-    @ApiOperation(value = "SaveBatchByPcmGxml", tags = {"PCMGxxkTemp" },  notes = "SaveBatchByPcmGxml")
+    @ApiOperation(value = "根据高校名录批量保存高校学科中间表", tags = {"高校学科中间表" },  notes = "根据高校名录批量保存高校学科中间表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/savebatch")
     public ResponseEntity<Boolean> saveBatchByPcmGxml(@PathVariable("pcmgxml_id") String pcmgxml_id, @RequestBody List<PCMGxxkTempDTO> pcmgxxktempdtos) {
         List<PCMGxxkTemp> domainlist=pcmgxxktempMapping.toDomain(pcmgxxktempdtos);
@@ -234,7 +234,7 @@ public class PCMGxxkTempResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(returnObject.body),'ehr-PCMGxxkTemp-Get')")
-    @ApiOperation(value = "GetByPcmGxml", tags = {"PCMGxxkTemp" },  notes = "GetByPcmGxml")
+    @ApiOperation(value = "根据高校名录获取高校学科中间表", tags = {"高校学科中间表" },  notes = "根据高校名录获取高校学科中间表")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/{pcmgxxktemp_id}")
     public ResponseEntity<PCMGxxkTempDTO> getByPcmGxml(@PathVariable("pcmgxml_id") String pcmgxml_id, @PathVariable("pcmgxxktemp_id") String pcmgxxktemp_id) {
         PCMGxxkTemp domain = pcmgxxktempService.get(pcmgxxktemp_id);
@@ -243,7 +243,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempService.get(#pcmgxxktemp_id),'ehr-PCMGxxkTemp-Update')")
-    @ApiOperation(value = "UpdateByPcmGxml", tags = {"PCMGxxkTemp" },  notes = "UpdateByPcmGxml")
+    @ApiOperation(value = "根据高校名录更新高校学科中间表", tags = {"高校学科中间表" },  notes = "根据高校名录更新高校学科中间表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/{pcmgxxktemp_id}")
     @Transactional
     public ResponseEntity<PCMGxxkTempDTO> updateByPcmGxml(@PathVariable("pcmgxml_id") String pcmgxml_id, @PathVariable("pcmgxxktemp_id") String pcmgxxktemp_id, @RequestBody PCMGxxkTempDTO pcmgxxktempdto) {
@@ -256,7 +256,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempService.getPcmgxxktempByEntities(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos)),'ehr-PCMGxxkTemp-Update')")
-    @ApiOperation(value = "UpdateBatchByPcmGxml", tags = {"PCMGxxkTemp" },  notes = "UpdateBatchByPcmGxml")
+    @ApiOperation(value = "根据高校名录批量更新高校学科中间表", tags = {"高校学科中间表" },  notes = "根据高校名录批量更新高校学科中间表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> updateBatchByPcmGxml(@PathVariable("pcmgxml_id") String pcmgxml_id, @RequestBody List<PCMGxxkTempDTO> pcmgxxktempdtos) {
         List<PCMGxxkTemp> domainlist=pcmgxxktempMapping.toDomain(pcmgxxktempdtos);
@@ -268,7 +268,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGxxkTemp-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPcmGxml", tags = {"PCMGxxkTemp" } ,notes = "fetchDEFAULTByPcmGxml")
+	@ApiOperation(value = "根据高校名录获取DEFAULT", tags = {"高校学科中间表" } ,notes = "根据高校名录获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/fetchdefault")
 	public ResponseEntity<List<PCMGxxkTempDTO>> fetchPCMGxxkTempDefaultByPcmGxml(@PathVariable("pcmgxml_id") String pcmgxml_id,PCMGxxkTempSearchContext context) {
         context.setN_pcmgxmlid_eq(pcmgxml_id);
@@ -282,7 +282,7 @@ public class PCMGxxkTempResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGxxkTemp-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPcmGxml", tags = {"PCMGxxkTemp" } ,notes = "searchDEFAULTByPcmGxml")
+	@ApiOperation(value = "根据高校名录查询DEFAULT", tags = {"高校学科中间表" } ,notes = "根据高校名录查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgxmls/{pcmgxml_id}/pcmgxxktemps/searchdefault")
 	public ResponseEntity<Page<PCMGxxkTempDTO>> searchPCMGxxkTempDefaultByPcmGxml(@PathVariable("pcmgxml_id") String pcmgxml_id, @RequestBody PCMGxxkTempSearchContext context) {
         context.setN_pcmgxmlid_eq(pcmgxml_id);
@@ -290,7 +290,7 @@ public class PCMGxxkTempResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmgxxktempMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @ApiOperation(value = "GetDraftByPCMXKML", tags = {"PCMGxxkTemp" },  notes = "GetDraftByPCMXKML")
+    @ApiOperation(value = "根据学科目录获取高校学科中间表草稿", tags = {"高校学科中间表" },  notes = "根据学科目录获取高校学科中间表草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/getdraft")
     public ResponseEntity<PCMGxxkTempDTO> getDraftByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id) {
         PCMGxxkTemp domain = new PCMGxxkTemp();
@@ -299,7 +299,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdto),'ehr-PCMGxxkTemp-Create')")
-    @ApiOperation(value = "CreateByPCMXKML", tags = {"PCMGxxkTemp" },  notes = "CreateByPCMXKML")
+    @ApiOperation(value = "根据学科目录建立高校学科中间表", tags = {"高校学科中间表" },  notes = "根据学科目录建立高校学科中间表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps")
     @Transactional
     public ResponseEntity<PCMGxxkTempDTO> createByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id, @RequestBody PCMGxxkTempDTO pcmgxxktempdto) {
@@ -311,7 +311,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos),'ehr-PCMGxxkTemp-Create')")
-    @ApiOperation(value = "createBatchByPCMXKML", tags = {"PCMGxxkTemp" },  notes = "createBatchByPCMXKML")
+    @ApiOperation(value = "根据学科目录批量建立高校学科中间表", tags = {"高校学科中间表" },  notes = "根据学科目录批量建立高校学科中间表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> createBatchByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id, @RequestBody List<PCMGxxkTempDTO> pcmgxxktempdtos) {
         List<PCMGxxkTemp> domainlist=pcmgxxktempMapping.toDomain(pcmgxxktempdtos);
@@ -323,7 +323,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempService.get(#pcmgxxktemp_id),'ehr-PCMGxxkTemp-Remove')")
-    @ApiOperation(value = "RemoveByPCMXKML", tags = {"PCMGxxkTemp" },  notes = "RemoveByPCMXKML")
+    @ApiOperation(value = "根据学科目录删除高校学科中间表", tags = {"高校学科中间表" },  notes = "根据学科目录删除高校学科中间表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/{pcmgxxktemp_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id, @PathVariable("pcmgxxktemp_id") String pcmgxxktemp_id) {
@@ -331,21 +331,21 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempService.getPcmgxxktempByIds(#ids),'ehr-PCMGxxkTemp-Remove')")
-    @ApiOperation(value = "RemoveBatchByPCMXKML", tags = {"PCMGxxkTemp" },  notes = "RemoveBatchByPCMXKML")
+    @ApiOperation(value = "根据学科目录批量删除高校学科中间表", tags = {"高校学科中间表" },  notes = "根据学科目录批量删除高校学科中间表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> removeBatchByPCMXKML(@RequestBody List<String> ids) {
         pcmgxxktempService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByPCMXKML", tags = {"PCMGxxkTemp" },  notes = "CheckKeyByPCMXKML")
+    @ApiOperation(value = "根据学科目录检查高校学科中间表", tags = {"高校学科中间表" },  notes = "根据学科目录检查高校学科中间表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/checkkey")
     public ResponseEntity<Boolean> checkKeyByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id, @RequestBody PCMGxxkTempDTO pcmgxxktempdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmgxxktempService.checkKey(pcmgxxktempMapping.toDomain(pcmgxxktempdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdto),'ehr-PCMGxxkTemp-Save')")
-    @ApiOperation(value = "SaveByPCMXKML", tags = {"PCMGxxkTemp" },  notes = "SaveByPCMXKML")
+    @ApiOperation(value = "根据学科目录保存高校学科中间表", tags = {"高校学科中间表" },  notes = "根据学科目录保存高校学科中间表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/save")
     public ResponseEntity<Boolean> saveByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id, @RequestBody PCMGxxkTempDTO pcmgxxktempdto) {
         PCMGxxkTemp domain = pcmgxxktempMapping.toDomain(pcmgxxktempdto);
@@ -354,7 +354,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos),'ehr-PCMGxxkTemp-Save')")
-    @ApiOperation(value = "SaveBatchByPCMXKML", tags = {"PCMGxxkTemp" },  notes = "SaveBatchByPCMXKML")
+    @ApiOperation(value = "根据学科目录批量保存高校学科中间表", tags = {"高校学科中间表" },  notes = "根据学科目录批量保存高校学科中间表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/savebatch")
     public ResponseEntity<Boolean> saveBatchByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id, @RequestBody List<PCMGxxkTempDTO> pcmgxxktempdtos) {
         List<PCMGxxkTemp> domainlist=pcmgxxktempMapping.toDomain(pcmgxxktempdtos);
@@ -366,7 +366,7 @@ public class PCMGxxkTempResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmgxxktempMapping.toDomain(returnObject.body),'ehr-PCMGxxkTemp-Get')")
-    @ApiOperation(value = "GetByPCMXKML", tags = {"PCMGxxkTemp" },  notes = "GetByPCMXKML")
+    @ApiOperation(value = "根据学科目录获取高校学科中间表", tags = {"高校学科中间表" },  notes = "根据学科目录获取高校学科中间表")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/{pcmgxxktemp_id}")
     public ResponseEntity<PCMGxxkTempDTO> getByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id, @PathVariable("pcmgxxktemp_id") String pcmgxxktemp_id) {
         PCMGxxkTemp domain = pcmgxxktempService.get(pcmgxxktemp_id);
@@ -375,7 +375,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempService.get(#pcmgxxktemp_id),'ehr-PCMGxxkTemp-Update')")
-    @ApiOperation(value = "UpdateByPCMXKML", tags = {"PCMGxxkTemp" },  notes = "UpdateByPCMXKML")
+    @ApiOperation(value = "根据学科目录更新高校学科中间表", tags = {"高校学科中间表" },  notes = "根据学科目录更新高校学科中间表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/{pcmgxxktemp_id}")
     @Transactional
     public ResponseEntity<PCMGxxkTempDTO> updateByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id, @PathVariable("pcmgxxktemp_id") String pcmgxxktemp_id, @RequestBody PCMGxxkTempDTO pcmgxxktempdto) {
@@ -388,7 +388,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxxktempService.getPcmgxxktempByEntities(this.pcmgxxktempMapping.toDomain(#pcmgxxktempdtos)),'ehr-PCMGxxkTemp-Update')")
-    @ApiOperation(value = "UpdateBatchByPCMXKML", tags = {"PCMGxxkTemp" },  notes = "UpdateBatchByPCMXKML")
+    @ApiOperation(value = "根据学科目录批量更新高校学科中间表", tags = {"高校学科中间表" },  notes = "根据学科目录批量更新高校学科中间表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/batch")
     public ResponseEntity<Boolean> updateBatchByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id, @RequestBody List<PCMGxxkTempDTO> pcmgxxktempdtos) {
         List<PCMGxxkTemp> domainlist=pcmgxxktempMapping.toDomain(pcmgxxktempdtos);
@@ -400,7 +400,7 @@ public class PCMGxxkTempResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGxxkTemp-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPCMXKML", tags = {"PCMGxxkTemp" } ,notes = "fetchDEFAULTByPCMXKML")
+	@ApiOperation(value = "根据学科目录获取DEFAULT", tags = {"高校学科中间表" } ,notes = "根据学科目录获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/fetchdefault")
 	public ResponseEntity<List<PCMGxxkTempDTO>> fetchPCMGxxkTempDefaultByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id,PCMGxxkTempSearchContext context) {
         context.setN_pcmxkmlid_eq(pcmxkml_id);
@@ -414,7 +414,7 @@ public class PCMGxxkTempResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMGxxkTemp-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPCMXKML", tags = {"PCMGxxkTemp" } ,notes = "searchDEFAULTByPCMXKML")
+	@ApiOperation(value = "根据学科目录查询DEFAULT", tags = {"高校学科中间表" } ,notes = "根据学科目录查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmxkmls/{pcmxkml_id}/pcmgxxktemps/searchdefault")
 	public ResponseEntity<Page<PCMGxxkTempDTO>> searchPCMGxxkTempDefaultByPCMXKML(@PathVariable("pcmxkml_id") String pcmxkml_id, @RequestBody PCMGxxkTempSearchContext context) {
         context.setN_pcmxkmlid_eq(pcmxkml_id);

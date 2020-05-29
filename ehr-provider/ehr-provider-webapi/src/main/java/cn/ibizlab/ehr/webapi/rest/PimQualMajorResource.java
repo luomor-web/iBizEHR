@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimQualMajorService;
 import cn.ibizlab.ehr.core.pim.filter.PimQualMajorSearchContext;
 
 @Slf4j
-@Api(tags = {"PimQualMajor" })
+@Api(tags = {"执业资格专业" })
 @RestController("WebApi-pimqualmajor")
 @RequestMapping("")
 public class PimQualMajorResource {
@@ -47,7 +47,7 @@ public class PimQualMajorResource {
     public PimQualMajorMapping pimqualmajorMapping;
 
     @PreAuthorize("hasPermission(this.pimqualmajorMapping.toDomain(#pimqualmajordto),'ehr-PimQualMajor-Create')")
-    @ApiOperation(value = "Create", tags = {"PimQualMajor" },  notes = "Create")
+    @ApiOperation(value = "新建执业资格专业", tags = {"执业资格专业" },  notes = "新建执业资格专业")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualmajors")
     @Transactional
     public ResponseEntity<PimQualMajorDTO> create(@RequestBody PimQualMajorDTO pimqualmajordto) {
@@ -58,21 +58,21 @@ public class PimQualMajorResource {
     }
 
     @PreAuthorize("hasPermission(this.pimqualmajorMapping.toDomain(#pimqualmajordtos),'ehr-PimQualMajor-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimQualMajor" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建执业资格专业", tags = {"执业资格专业" },  notes = "批量新建执业资格专业")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualmajors/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimQualMajorDTO> pimqualmajordtos) {
         pimqualmajorService.createBatch(pimqualmajorMapping.toDomain(pimqualmajordtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimQualMajor" },  notes = "CheckKey")
+    @ApiOperation(value = "检查执业资格专业", tags = {"执业资格专业" },  notes = "检查执业资格专业")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualmajors/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimQualMajorDTO pimqualmajordto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimqualmajorService.checkKey(pimqualmajorMapping.toDomain(pimqualmajordto)));
     }
 
     @PreAuthorize("hasPermission(this.pimqualmajorService.get(#pimqualmajor_id),'ehr-PimQualMajor-Update')")
-    @ApiOperation(value = "Update", tags = {"PimQualMajor" },  notes = "Update")
+    @ApiOperation(value = "更新执业资格专业", tags = {"执业资格专业" },  notes = "更新执业资格专业")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimqualmajors/{pimqualmajor_id}")
     @Transactional
     public ResponseEntity<PimQualMajorDTO> update(@PathVariable("pimqualmajor_id") String pimqualmajor_id, @RequestBody PimQualMajorDTO pimqualmajordto) {
@@ -84,7 +84,7 @@ public class PimQualMajorResource {
     }
 
     @PreAuthorize("hasPermission(this.pimqualmajorService.getPimqualmajorByEntities(this.pimqualmajorMapping.toDomain(#pimqualmajordtos)),'ehr-PimQualMajor-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimQualMajor" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新执业资格专业", tags = {"执业资格专业" },  notes = "批量更新执业资格专业")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimqualmajors/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimQualMajorDTO> pimqualmajordtos) {
         pimqualmajorService.updateBatch(pimqualmajorMapping.toDomain(pimqualmajordtos));
@@ -92,7 +92,7 @@ public class PimQualMajorResource {
     }
 
     @PreAuthorize("hasPermission(this.pimqualmajorService.get(#pimqualmajor_id),'ehr-PimQualMajor-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimQualMajor" },  notes = "Remove")
+    @ApiOperation(value = "删除执业资格专业", tags = {"执业资格专业" },  notes = "删除执业资格专业")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimqualmajors/{pimqualmajor_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimqualmajor_id") String pimqualmajor_id) {
@@ -100,28 +100,28 @@ public class PimQualMajorResource {
     }
 
     @PreAuthorize("hasPermission(this.pimqualmajorService.getPimqualmajorByIds(#ids),'ehr-PimQualMajor-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimQualMajor" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除执业资格专业", tags = {"执业资格专业" },  notes = "批量删除执业资格专业")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimqualmajors/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimqualmajorService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimQualMajor" },  notes = "GetDraft")
+    @ApiOperation(value = "获取执业资格专业草稿", tags = {"执业资格专业" },  notes = "获取执业资格专业草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimqualmajors/getdraft")
     public ResponseEntity<PimQualMajorDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimqualmajorMapping.toDto(pimqualmajorService.getDraft(new PimQualMajor())));
     }
 
     @PreAuthorize("hasPermission(this.pimqualmajorMapping.toDomain(#pimqualmajordto),'ehr-PimQualMajor-Save')")
-    @ApiOperation(value = "Save", tags = {"PimQualMajor" },  notes = "Save")
+    @ApiOperation(value = "保存执业资格专业", tags = {"执业资格专业" },  notes = "保存执业资格专业")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualmajors/save")
     public ResponseEntity<Boolean> save(@RequestBody PimQualMajorDTO pimqualmajordto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimqualmajorService.save(pimqualmajorMapping.toDomain(pimqualmajordto)));
     }
 
     @PreAuthorize("hasPermission(this.pimqualmajorMapping.toDomain(#pimqualmajordtos),'ehr-PimQualMajor-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimQualMajor" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存执业资格专业", tags = {"执业资格专业" },  notes = "批量保存执业资格专业")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualmajors/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimQualMajorDTO> pimqualmajordtos) {
         pimqualmajorService.saveBatch(pimqualmajorMapping.toDomain(pimqualmajordtos));
@@ -129,7 +129,7 @@ public class PimQualMajorResource {
     }
 
     @PostAuthorize("hasPermission(this.pimqualmajorMapping.toDomain(returnObject.body),'ehr-PimQualMajor-Get')")
-    @ApiOperation(value = "Get", tags = {"PimQualMajor" },  notes = "Get")
+    @ApiOperation(value = "获取执业资格专业", tags = {"执业资格专业" },  notes = "获取执业资格专业")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimqualmajors/{pimqualmajor_id}")
     public ResponseEntity<PimQualMajorDTO> get(@PathVariable("pimqualmajor_id") String pimqualmajor_id) {
         PimQualMajor domain = pimqualmajorService.get(pimqualmajor_id);
@@ -138,7 +138,7 @@ public class PimQualMajorResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQualMajor-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimQualMajor" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"执业资格专业" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimqualmajors/fetchdefault")
 	public ResponseEntity<List<PimQualMajorDTO>> fetchDefault(PimQualMajorSearchContext context) {
         Page<PimQualMajor> domains = pimqualmajorService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimQualMajorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQualMajor-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimQualMajor" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"执业资格专业" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimqualmajors/searchdefault")
 	public ResponseEntity<Page<PimQualMajorDTO>> searchDefault(@RequestBody PimQualMajorSearchContext context) {
         Page<PimQualMajor> domains = pimqualmajorService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PimQualMajorResource {
                 .body(new PageImpl(pimqualmajorMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQualMajor-XZZGZY-all')")
-	@ApiOperation(value = "fetch选择资格类别下对应的资格专业", tags = {"PimQualMajor" } ,notes = "fetch选择资格类别下对应的资格专业")
+	@ApiOperation(value = "获取选择资格类别下对应的资格专业", tags = {"执业资格专业" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimqualmajors/fetchxzzgzy")
 	public ResponseEntity<List<PimQualMajorDTO>> fetchXZZGZY(PimQualMajorSearchContext context) {
         Page<PimQualMajor> domains = pimqualmajorService.searchXZZGZY(context) ;
@@ -172,7 +172,7 @@ public class PimQualMajorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQualMajor-XZZGZY-all')")
-	@ApiOperation(value = "search选择资格类别下对应的资格专业", tags = {"PimQualMajor" } ,notes = "search选择资格类别下对应的资格专业")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"执业资格专业" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimqualmajors/searchxzzgzy")
 	public ResponseEntity<Page<PimQualMajorDTO>> searchXZZGZY(@RequestBody PimQualMajorSearchContext context) {
         Page<PimQualMajor> domains = pimqualmajorService.searchXZZGZY(context) ;

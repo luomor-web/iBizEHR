@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPCMPROFILEAPPROVALService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMPROFILEAPPROVALSearchContext;
 
 @Slf4j
-@Api(tags = {"PCMPROFILEAPPROVAL" })
+@Api(tags = {"应聘者审批表" })
 @RestController("WebApi-pcmprofileapproval")
 @RequestMapping("")
 public class PCMPROFILEAPPROVALResource {
@@ -47,7 +47,7 @@ public class PCMPROFILEAPPROVALResource {
     public PCMPROFILEAPPROVALMapping pcmprofileapprovalMapping;
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalService.get(#pcmprofileapproval_id),'ehr-PCMPROFILEAPPROVAL-Update')")
-    @ApiOperation(value = "Update", tags = {"PCMPROFILEAPPROVAL" },  notes = "Update")
+    @ApiOperation(value = "更新应聘者审批表", tags = {"应聘者审批表" },  notes = "更新应聘者审批表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofileapprovals/{pcmprofileapproval_id}")
     @Transactional
     public ResponseEntity<PCMPROFILEAPPROVALDTO> update(@PathVariable("pcmprofileapproval_id") String pcmprofileapproval_id, @RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
@@ -59,21 +59,21 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalService.getPcmprofileapprovalByEntities(this.pcmprofileapprovalMapping.toDomain(#pcmprofileapprovaldtos)),'ehr-PCMPROFILEAPPROVAL-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PCMPROFILEAPPROVAL" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新应聘者审批表", tags = {"应聘者审批表" },  notes = "批量更新应聘者审批表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofileapprovals/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
         pcmprofileapprovalService.updateBatch(pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PCMPROFILEAPPROVAL" },  notes = "GetDraft")
+    @ApiOperation(value = "获取应聘者审批表草稿", tags = {"应聘者审批表" },  notes = "获取应聘者审批表草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofileapprovals/getdraft")
     public ResponseEntity<PCMPROFILEAPPROVALDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileapprovalMapping.toDto(pcmprofileapprovalService.getDraft(new PCMPROFILEAPPROVAL())));
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalMapping.toDomain(#pcmprofileapprovaldto),'ehr-PCMPROFILEAPPROVAL-Create')")
-    @ApiOperation(value = "Create", tags = {"PCMPROFILEAPPROVAL" },  notes = "Create")
+    @ApiOperation(value = "新建应聘者审批表", tags = {"应聘者审批表" },  notes = "新建应聘者审批表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileapprovals")
     @Transactional
     public ResponseEntity<PCMPROFILEAPPROVALDTO> create(@RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
@@ -84,7 +84,7 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalMapping.toDomain(#pcmprofileapprovaldtos),'ehr-PCMPROFILEAPPROVAL-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PCMPROFILEAPPROVAL" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建应聘者审批表", tags = {"应聘者审批表" },  notes = "批量新建应聘者审批表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileapprovals/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
         pcmprofileapprovalService.createBatch(pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldtos));
@@ -92,14 +92,14 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalMapping.toDomain(#pcmprofileapprovaldto),'ehr-PCMPROFILEAPPROVAL-Save')")
-    @ApiOperation(value = "Save", tags = {"PCMPROFILEAPPROVAL" },  notes = "Save")
+    @ApiOperation(value = "保存应聘者审批表", tags = {"应聘者审批表" },  notes = "保存应聘者审批表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileapprovals/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileapprovalService.save(pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalMapping.toDomain(#pcmprofileapprovaldtos),'ehr-PCMPROFILEAPPROVAL-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PCMPROFILEAPPROVAL" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存应聘者审批表", tags = {"应聘者审批表" },  notes = "批量保存应聘者审批表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileapprovals/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
         pcmprofileapprovalService.saveBatch(pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldtos));
@@ -107,7 +107,7 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalService.get(#pcmprofileapproval_id),'ehr-PCMPROFILEAPPROVAL-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PCMPROFILEAPPROVAL" },  notes = "Remove")
+    @ApiOperation(value = "删除应聘者审批表", tags = {"应聘者审批表" },  notes = "删除应聘者审批表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofileapprovals/{pcmprofileapproval_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmprofileapproval_id") String pcmprofileapproval_id) {
@@ -115,7 +115,7 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalService.getPcmprofileapprovalByIds(#ids),'ehr-PCMPROFILEAPPROVAL-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PCMPROFILEAPPROVAL" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除应聘者审批表", tags = {"应聘者审批表" },  notes = "批量删除应聘者审批表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofileapprovals/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmprofileapprovalService.removeBatch(ids);
@@ -123,7 +123,7 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmprofileapprovalMapping.toDomain(returnObject.body),'ehr-PCMPROFILEAPPROVAL-Get')")
-    @ApiOperation(value = "Get", tags = {"PCMPROFILEAPPROVAL" },  notes = "Get")
+    @ApiOperation(value = "获取应聘者审批表", tags = {"应聘者审批表" },  notes = "获取应聘者审批表")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofileapprovals/{pcmprofileapproval_id}")
     public ResponseEntity<PCMPROFILEAPPROVALDTO> get(@PathVariable("pcmprofileapproval_id") String pcmprofileapproval_id) {
         PCMPROFILEAPPROVAL domain = pcmprofileapprovalService.get(pcmprofileapproval_id);
@@ -131,14 +131,14 @@ public class PCMPROFILEAPPROVALResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PCMPROFILEAPPROVAL" },  notes = "CheckKey")
+    @ApiOperation(value = "检查应聘者审批表", tags = {"应聘者审批表" },  notes = "检查应聘者审批表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileapprovals/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmprofileapprovalService.checkKey(pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPROFILEAPPROVAL" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者审批表" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileapprovals/fetchdefault")
 	public ResponseEntity<List<PCMPROFILEAPPROVALDTO>> fetchDefault(PCMPROFILEAPPROVALSearchContext context) {
         Page<PCMPROFILEAPPROVAL> domains = pcmprofileapprovalService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PCMPROFILEAPPROVALResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPROFILEAPPROVAL" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者审批表" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileapprovals/searchdefault")
 	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchDefault(@RequestBody PCMPROFILEAPPROVALSearchContext context) {
         Page<PCMPROFILEAPPROVAL> domains = pcmprofileapprovalService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PCMPROFILEAPPROVALResource {
                 .body(new PageImpl(pcmprofileapprovalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Disagree-all')")
-	@ApiOperation(value = "fetch拒绝", tags = {"PCMPROFILEAPPROVAL" } ,notes = "fetch拒绝")
+	@ApiOperation(value = "获取拒绝", tags = {"应聘者审批表" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileapprovals/fetchdisagree")
 	public ResponseEntity<List<PCMPROFILEAPPROVALDTO>> fetchDisagree(PCMPROFILEAPPROVALSearchContext context) {
         Page<PCMPROFILEAPPROVAL> domains = pcmprofileapprovalService.searchDisagree(context) ;
@@ -172,7 +172,7 @@ public class PCMPROFILEAPPROVALResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Disagree-all')")
-	@ApiOperation(value = "search拒绝", tags = {"PCMPROFILEAPPROVAL" } ,notes = "search拒绝")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者审批表" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileapprovals/searchdisagree")
 	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchDisagree(@RequestBody PCMPROFILEAPPROVALSearchContext context) {
         Page<PCMPROFILEAPPROVAL> domains = pcmprofileapprovalService.searchDisagree(context) ;
@@ -180,7 +180,7 @@ public class PCMPROFILEAPPROVALResource {
                 .body(new PageImpl(pcmprofileapprovalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pcmprofileapprovalService.get(#pcmprofileapproval_id),'ehr-PCMPROFILEAPPROVAL-Update')")
-    @ApiOperation(value = "UpdateByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "UpdateByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息更新应聘者审批表", tags = {"应聘者审批表" },  notes = "根据应聘者基本信息更新应聘者审批表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/{pcmprofileapproval_id}")
     @Transactional
     public ResponseEntity<PCMPROFILEAPPROVALDTO> updateByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmprofileapproval_id") String pcmprofileapproval_id, @RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
@@ -193,7 +193,7 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalService.getPcmprofileapprovalByEntities(this.pcmprofileapprovalMapping.toDomain(#pcmprofileapprovaldtos)),'ehr-PCMPROFILEAPPROVAL-Update')")
-    @ApiOperation(value = "UpdateBatchByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "UpdateBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量更新应聘者审批表", tags = {"应聘者审批表" },  notes = "根据应聘者基本信息批量更新应聘者审批表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/batch")
     public ResponseEntity<Boolean> updateBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
         List<PCMPROFILEAPPROVAL> domainlist=pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldtos);
@@ -204,7 +204,7 @@ public class PCMPROFILEAPPROVALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "GetDraftByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息获取应聘者审批表草稿", tags = {"应聘者审批表" },  notes = "根据应聘者基本信息获取应聘者审批表草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/getdraft")
     public ResponseEntity<PCMPROFILEAPPROVALDTO> getDraftByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id) {
         PCMPROFILEAPPROVAL domain = new PCMPROFILEAPPROVAL();
@@ -213,7 +213,7 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalMapping.toDomain(#pcmprofileapprovaldto),'ehr-PCMPROFILEAPPROVAL-Create')")
-    @ApiOperation(value = "CreateByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "CreateByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息建立应聘者审批表", tags = {"应聘者审批表" },  notes = "根据应聘者基本信息建立应聘者审批表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals")
     @Transactional
     public ResponseEntity<PCMPROFILEAPPROVALDTO> createByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
@@ -225,7 +225,7 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalMapping.toDomain(#pcmprofileapprovaldtos),'ehr-PCMPROFILEAPPROVAL-Create')")
-    @ApiOperation(value = "createBatchByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "createBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量建立应聘者审批表", tags = {"应聘者审批表" },  notes = "根据应聘者基本信息批量建立应聘者审批表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/batch")
     public ResponseEntity<Boolean> createBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
         List<PCMPROFILEAPPROVAL> domainlist=pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldtos);
@@ -237,7 +237,7 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalMapping.toDomain(#pcmprofileapprovaldto),'ehr-PCMPROFILEAPPROVAL-Save')")
-    @ApiOperation(value = "SaveByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "SaveByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息保存应聘者审批表", tags = {"应聘者审批表" },  notes = "根据应聘者基本信息保存应聘者审批表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/save")
     public ResponseEntity<Boolean> saveByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
         PCMPROFILEAPPROVAL domain = pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldto);
@@ -246,7 +246,7 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalMapping.toDomain(#pcmprofileapprovaldtos),'ehr-PCMPROFILEAPPROVAL-Save')")
-    @ApiOperation(value = "SaveBatchByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "SaveBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量保存应聘者审批表", tags = {"应聘者审批表" },  notes = "根据应聘者基本信息批量保存应聘者审批表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/savebatch")
     public ResponseEntity<Boolean> saveBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
         List<PCMPROFILEAPPROVAL> domainlist=pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldtos);
@@ -258,7 +258,7 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalService.get(#pcmprofileapproval_id),'ehr-PCMPROFILEAPPROVAL-Remove')")
-    @ApiOperation(value = "RemoveByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "RemoveByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息删除应聘者审批表", tags = {"应聘者审批表" },  notes = "根据应聘者基本信息删除应聘者审批表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/{pcmprofileapproval_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmprofileapproval_id") String pcmprofileapproval_id) {
@@ -266,7 +266,7 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalService.getPcmprofileapprovalByIds(#ids),'ehr-PCMPROFILEAPPROVAL-Remove')")
-    @ApiOperation(value = "RemoveBatchByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "RemoveBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量删除应聘者审批表", tags = {"应聘者审批表" },  notes = "根据应聘者基本信息批量删除应聘者审批表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/batch")
     public ResponseEntity<Boolean> removeBatchByPcmProfile(@RequestBody List<String> ids) {
         pcmprofileapprovalService.removeBatch(ids);
@@ -274,7 +274,7 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmprofileapprovalMapping.toDomain(returnObject.body),'ehr-PCMPROFILEAPPROVAL-Get')")
-    @ApiOperation(value = "GetByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "GetByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息获取应聘者审批表", tags = {"应聘者审批表" },  notes = "根据应聘者基本信息获取应聘者审批表")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/{pcmprofileapproval_id}")
     public ResponseEntity<PCMPROFILEAPPROVALDTO> getByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmprofileapproval_id") String pcmprofileapproval_id) {
         PCMPROFILEAPPROVAL domain = pcmprofileapprovalService.get(pcmprofileapproval_id);
@@ -282,14 +282,14 @@ public class PCMPROFILEAPPROVALResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKeyByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "CheckKeyByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息检查应聘者审批表", tags = {"应聘者审批表" },  notes = "根据应聘者基本信息检查应聘者审批表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/checkkey")
     public ResponseEntity<Boolean> checkKeyByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmprofileapprovalService.checkKey(pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPcmProfile", tags = {"PCMPROFILEAPPROVAL" } ,notes = "fetchDEFAULTByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息获取DEFAULT", tags = {"应聘者审批表" } ,notes = "根据应聘者基本信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/fetchdefault")
 	public ResponseEntity<List<PCMPROFILEAPPROVALDTO>> fetchPCMPROFILEAPPROVALDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMPROFILEAPPROVALSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
@@ -303,7 +303,7 @@ public class PCMPROFILEAPPROVALResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPcmProfile", tags = {"PCMPROFILEAPPROVAL" } ,notes = "searchDEFAULTByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息查询DEFAULT", tags = {"应聘者审批表" } ,notes = "根据应聘者基本信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/searchdefault")
 	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchPCMPROFILEAPPROVALDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
@@ -312,7 +312,7 @@ public class PCMPROFILEAPPROVALResource {
                 .body(new PageImpl(pcmprofileapprovalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Disagree-all')")
-	@ApiOperation(value = "fetch拒绝ByPcmProfile", tags = {"PCMPROFILEAPPROVAL" } ,notes = "fetch拒绝ByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息获取拒绝", tags = {"应聘者审批表" } ,notes = "根据应聘者基本信息获取拒绝")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/fetchdisagree")
 	public ResponseEntity<List<PCMPROFILEAPPROVALDTO>> fetchPCMPROFILEAPPROVALDisagreeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMPROFILEAPPROVALSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
@@ -326,7 +326,7 @@ public class PCMPROFILEAPPROVALResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Disagree-all')")
-	@ApiOperation(value = "search拒绝ByPcmProfile", tags = {"PCMPROFILEAPPROVAL" } ,notes = "search拒绝ByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息查询拒绝", tags = {"应聘者审批表" } ,notes = "根据应聘者基本信息查询拒绝")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/searchdisagree")
 	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchPCMPROFILEAPPROVALDisagreeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);

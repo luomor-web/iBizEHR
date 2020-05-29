@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.vac.service.IVacSystemHistoryService;
 import cn.ibizlab.ehr.core.vac.filter.VacSystemHistorySearchContext;
 
 @Slf4j
-@Api(tags = {"VacSystemHistory" })
+@Api(tags = {"制度历史" })
 @RestController("WebApi-vacsystemhistory")
 @RequestMapping("")
 public class VacSystemHistoryResource {
@@ -47,7 +47,7 @@ public class VacSystemHistoryResource {
     public VacSystemHistoryMapping vacsystemhistoryMapping;
 
     @PreAuthorize("hasPermission(this.vacsystemhistoryService.get(#vacsystemhistory_id),'ehr-VacSystemHistory-Update')")
-    @ApiOperation(value = "Update", tags = {"VacSystemHistory" },  notes = "Update")
+    @ApiOperation(value = "更新制度历史", tags = {"制度历史" },  notes = "更新制度历史")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacsystemhistories/{vacsystemhistory_id}")
     @Transactional
     public ResponseEntity<VacSystemHistoryDTO> update(@PathVariable("vacsystemhistory_id") String vacsystemhistory_id, @RequestBody VacSystemHistoryDTO vacsystemhistorydto) {
@@ -59,7 +59,7 @@ public class VacSystemHistoryResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsystemhistoryService.getVacsystemhistoryByEntities(this.vacsystemhistoryMapping.toDomain(#vacsystemhistorydtos)),'ehr-VacSystemHistory-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"VacSystemHistory" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新制度历史", tags = {"制度历史" },  notes = "批量更新制度历史")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacsystemhistories/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VacSystemHistoryDTO> vacsystemhistorydtos) {
         vacsystemhistoryService.updateBatch(vacsystemhistoryMapping.toDomain(vacsystemhistorydtos));
@@ -67,7 +67,7 @@ public class VacSystemHistoryResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsystemhistoryService.get(#vacsystemhistory_id),'ehr-VacSystemHistory-Remove')")
-    @ApiOperation(value = "Remove", tags = {"VacSystemHistory" },  notes = "Remove")
+    @ApiOperation(value = "删除制度历史", tags = {"制度历史" },  notes = "删除制度历史")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsystemhistories/{vacsystemhistory_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("vacsystemhistory_id") String vacsystemhistory_id) {
@@ -75,7 +75,7 @@ public class VacSystemHistoryResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsystemhistoryService.getVacsystemhistoryByIds(#ids),'ehr-VacSystemHistory-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"VacSystemHistory" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除制度历史", tags = {"制度历史" },  notes = "批量删除制度历史")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsystemhistories/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         vacsystemhistoryService.removeBatch(ids);
@@ -83,14 +83,14 @@ public class VacSystemHistoryResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsystemhistoryMapping.toDomain(#vacsystemhistorydto),'ehr-VacSystemHistory-Save')")
-    @ApiOperation(value = "Save", tags = {"VacSystemHistory" },  notes = "Save")
+    @ApiOperation(value = "保存制度历史", tags = {"制度历史" },  notes = "保存制度历史")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemhistories/save")
     public ResponseEntity<Boolean> save(@RequestBody VacSystemHistoryDTO vacsystemhistorydto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacsystemhistoryService.save(vacsystemhistoryMapping.toDomain(vacsystemhistorydto)));
     }
 
     @PreAuthorize("hasPermission(this.vacsystemhistoryMapping.toDomain(#vacsystemhistorydtos),'ehr-VacSystemHistory-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"VacSystemHistory" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存制度历史", tags = {"制度历史" },  notes = "批量保存制度历史")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemhistories/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VacSystemHistoryDTO> vacsystemhistorydtos) {
         vacsystemhistoryService.saveBatch(vacsystemhistoryMapping.toDomain(vacsystemhistorydtos));
@@ -98,7 +98,7 @@ public class VacSystemHistoryResource {
     }
 
     @PostAuthorize("hasPermission(this.vacsystemhistoryMapping.toDomain(returnObject.body),'ehr-VacSystemHistory-Get')")
-    @ApiOperation(value = "Get", tags = {"VacSystemHistory" },  notes = "Get")
+    @ApiOperation(value = "获取制度历史", tags = {"制度历史" },  notes = "获取制度历史")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacsystemhistories/{vacsystemhistory_id}")
     public ResponseEntity<VacSystemHistoryDTO> get(@PathVariable("vacsystemhistory_id") String vacsystemhistory_id) {
         VacSystemHistory domain = vacsystemhistoryService.get(vacsystemhistory_id);
@@ -106,14 +106,14 @@ public class VacSystemHistoryResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"VacSystemHistory" },  notes = "CheckKey")
+    @ApiOperation(value = "检查制度历史", tags = {"制度历史" },  notes = "检查制度历史")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemhistories/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VacSystemHistoryDTO vacsystemhistorydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacsystemhistoryService.checkKey(vacsystemhistoryMapping.toDomain(vacsystemhistorydto)));
     }
 
     @PreAuthorize("hasPermission(this.vacsystemhistoryMapping.toDomain(#vacsystemhistorydto),'ehr-VacSystemHistory-Create')")
-    @ApiOperation(value = "Create", tags = {"VacSystemHistory" },  notes = "Create")
+    @ApiOperation(value = "新建制度历史", tags = {"制度历史" },  notes = "新建制度历史")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemhistories")
     @Transactional
     public ResponseEntity<VacSystemHistoryDTO> create(@RequestBody VacSystemHistoryDTO vacsystemhistorydto) {
@@ -124,21 +124,21 @@ public class VacSystemHistoryResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsystemhistoryMapping.toDomain(#vacsystemhistorydtos),'ehr-VacSystemHistory-Create')")
-    @ApiOperation(value = "createBatch", tags = {"VacSystemHistory" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建制度历史", tags = {"制度历史" },  notes = "批量新建制度历史")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemhistories/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VacSystemHistoryDTO> vacsystemhistorydtos) {
         vacsystemhistoryService.createBatch(vacsystemhistoryMapping.toDomain(vacsystemhistorydtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"VacSystemHistory" },  notes = "GetDraft")
+    @ApiOperation(value = "获取制度历史草稿", tags = {"制度历史" },  notes = "获取制度历史草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacsystemhistories/getdraft")
     public ResponseEntity<VacSystemHistoryDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacsystemhistoryMapping.toDto(vacsystemhistoryService.getDraft(new VacSystemHistory())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacSystemHistory-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"VacSystemHistory" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"制度历史" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacsystemhistories/fetchdefault")
 	public ResponseEntity<List<VacSystemHistoryDTO>> fetchDefault(VacSystemHistorySearchContext context) {
         Page<VacSystemHistory> domains = vacsystemhistoryService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class VacSystemHistoryResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacSystemHistory-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"VacSystemHistory" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"制度历史" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacsystemhistories/searchdefault")
 	public ResponseEntity<Page<VacSystemHistoryDTO>> searchDefault(@RequestBody VacSystemHistorySearchContext context) {
         Page<VacSystemHistory> domains = vacsystemhistoryService.searchDefault(context) ;

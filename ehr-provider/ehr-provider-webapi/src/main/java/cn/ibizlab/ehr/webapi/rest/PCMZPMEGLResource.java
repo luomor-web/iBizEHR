@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPCMZPMEGLService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMZPMEGLSearchContext;
 
 @Slf4j
-@Api(tags = {"PCMZPMEGL" })
+@Api(tags = {"招聘名额管理" })
 @RestController("WebApi-pcmzpmegl")
 @RequestMapping("")
 public class PCMZPMEGLResource {
@@ -47,7 +47,7 @@ public class PCMZPMEGLResource {
     public PCMZPMEGLMapping pcmzpmeglMapping;
 
     @PreAuthorize("hasPermission(this.pcmzpmeglService.get(#pcmzpmegl_id),'ehr-PCMZPMEGL-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PCMZPMEGL" },  notes = "Remove")
+    @ApiOperation(value = "删除招聘名额管理", tags = {"招聘名额管理" },  notes = "删除招聘名额管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmzpmegls/{pcmzpmegl_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmzpmegl_id") String pcmzpmegl_id) {
@@ -55,28 +55,28 @@ public class PCMZPMEGLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmzpmeglService.getPcmzpmeglByIds(#ids),'ehr-PCMZPMEGL-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PCMZPMEGL" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除招聘名额管理", tags = {"招聘名额管理" },  notes = "批量删除招聘名额管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmzpmegls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmzpmeglService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PCMZPMEGL" },  notes = "CheckKey")
+    @ApiOperation(value = "检查招聘名额管理", tags = {"招聘名额管理" },  notes = "检查招聘名额管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzpmegls/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMZPMEGLDTO pcmzpmegldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmzpmeglService.checkKey(pcmzpmeglMapping.toDomain(pcmzpmegldto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmzpmeglMapping.toDomain(#pcmzpmegldto),'ehr-PCMZPMEGL-Save')")
-    @ApiOperation(value = "Save", tags = {"PCMZPMEGL" },  notes = "Save")
+    @ApiOperation(value = "保存招聘名额管理", tags = {"招聘名额管理" },  notes = "保存招聘名额管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzpmegls/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMZPMEGLDTO pcmzpmegldto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmzpmeglService.save(pcmzpmeglMapping.toDomain(pcmzpmegldto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmzpmeglMapping.toDomain(#pcmzpmegldtos),'ehr-PCMZPMEGL-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PCMZPMEGL" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存招聘名额管理", tags = {"招聘名额管理" },  notes = "批量保存招聘名额管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzpmegls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMZPMEGLDTO> pcmzpmegldtos) {
         pcmzpmeglService.saveBatch(pcmzpmeglMapping.toDomain(pcmzpmegldtos));
@@ -84,7 +84,7 @@ public class PCMZPMEGLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmzpmeglService.get(#pcmzpmegl_id),'ehr-PCMZPMEGL-Update')")
-    @ApiOperation(value = "Update", tags = {"PCMZPMEGL" },  notes = "Update")
+    @ApiOperation(value = "更新招聘名额管理", tags = {"招聘名额管理" },  notes = "更新招聘名额管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmzpmegls/{pcmzpmegl_id}")
     @Transactional
     public ResponseEntity<PCMZPMEGLDTO> update(@PathVariable("pcmzpmegl_id") String pcmzpmegl_id, @RequestBody PCMZPMEGLDTO pcmzpmegldto) {
@@ -96,7 +96,7 @@ public class PCMZPMEGLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmzpmeglService.getPcmzpmeglByEntities(this.pcmzpmeglMapping.toDomain(#pcmzpmegldtos)),'ehr-PCMZPMEGL-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PCMZPMEGL" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新招聘名额管理", tags = {"招聘名额管理" },  notes = "批量更新招聘名额管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmzpmegls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMZPMEGLDTO> pcmzpmegldtos) {
         pcmzpmeglService.updateBatch(pcmzpmeglMapping.toDomain(pcmzpmegldtos));
@@ -104,7 +104,7 @@ public class PCMZPMEGLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmzpmeglMapping.toDomain(#pcmzpmegldto),'ehr-PCMZPMEGL-Create')")
-    @ApiOperation(value = "Create", tags = {"PCMZPMEGL" },  notes = "Create")
+    @ApiOperation(value = "新建招聘名额管理", tags = {"招聘名额管理" },  notes = "新建招聘名额管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzpmegls")
     @Transactional
     public ResponseEntity<PCMZPMEGLDTO> create(@RequestBody PCMZPMEGLDTO pcmzpmegldto) {
@@ -115,7 +115,7 @@ public class PCMZPMEGLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmzpmeglMapping.toDomain(#pcmzpmegldtos),'ehr-PCMZPMEGL-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PCMZPMEGL" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建招聘名额管理", tags = {"招聘名额管理" },  notes = "批量新建招聘名额管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmzpmegls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMZPMEGLDTO> pcmzpmegldtos) {
         pcmzpmeglService.createBatch(pcmzpmeglMapping.toDomain(pcmzpmegldtos));
@@ -123,7 +123,7 @@ public class PCMZPMEGLResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmzpmeglMapping.toDomain(returnObject.body),'ehr-PCMZPMEGL-Get')")
-    @ApiOperation(value = "Get", tags = {"PCMZPMEGL" },  notes = "Get")
+    @ApiOperation(value = "获取招聘名额管理", tags = {"招聘名额管理" },  notes = "获取招聘名额管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmzpmegls/{pcmzpmegl_id}")
     public ResponseEntity<PCMZPMEGLDTO> get(@PathVariable("pcmzpmegl_id") String pcmzpmegl_id) {
         PCMZPMEGL domain = pcmzpmeglService.get(pcmzpmegl_id);
@@ -131,14 +131,14 @@ public class PCMZPMEGLResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PCMZPMEGL" },  notes = "GetDraft")
+    @ApiOperation(value = "获取招聘名额管理草稿", tags = {"招聘名额管理" },  notes = "获取招聘名额管理草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmzpmegls/getdraft")
     public ResponseEntity<PCMZPMEGLDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmzpmeglMapping.toDto(pcmzpmeglService.getDraft(new PCMZPMEGL())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGL-CurND-all')")
-	@ApiOperation(value = "fetch当前年度招聘名额", tags = {"PCMZPMEGL" } ,notes = "fetch当前年度招聘名额")
+	@ApiOperation(value = "获取当前年度招聘名额", tags = {"招聘名额管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmzpmegls/fetchcurnd")
 	public ResponseEntity<List<PCMZPMEGLDTO>> fetchCurND(PCMZPMEGLSearchContext context) {
         Page<PCMZPMEGL> domains = pcmzpmeglService.searchCurND(context) ;
@@ -151,7 +151,7 @@ public class PCMZPMEGLResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGL-CurND-all')")
-	@ApiOperation(value = "search当前年度招聘名额", tags = {"PCMZPMEGL" } ,notes = "search当前年度招聘名额")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"招聘名额管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmzpmegls/searchcurnd")
 	public ResponseEntity<Page<PCMZPMEGLDTO>> searchCurND(@RequestBody PCMZPMEGLSearchContext context) {
         Page<PCMZPMEGL> domains = pcmzpmeglService.searchCurND(context) ;
@@ -159,7 +159,7 @@ public class PCMZPMEGLResource {
                 .body(new PageImpl(pcmzpmeglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGL-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMZPMEGL" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"招聘名额管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmzpmegls/fetchdefault")
 	public ResponseEntity<List<PCMZPMEGLDTO>> fetchDefault(PCMZPMEGLSearchContext context) {
         Page<PCMZPMEGL> domains = pcmzpmeglService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class PCMZPMEGLResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMZPMEGL-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PCMZPMEGL" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"招聘名额管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmzpmegls/searchdefault")
 	public ResponseEntity<Page<PCMZPMEGLDTO>> searchDefault(@RequestBody PCMZPMEGLSearchContext context) {
         Page<PCMZPMEGL> domains = pcmzpmeglService.searchDefault(context) ;

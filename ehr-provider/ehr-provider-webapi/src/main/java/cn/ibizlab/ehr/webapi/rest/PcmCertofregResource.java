@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmCertofregService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmCertofregSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmCertofreg" })
+@Api(tags = {"注册证书" })
 @RestController("WebApi-pcmcertofreg")
 @RequestMapping("")
 public class PcmCertofregResource {
@@ -47,7 +47,7 @@ public class PcmCertofregResource {
     public PcmCertofregMapping pcmcertofregMapping;
 
     @PreAuthorize("hasPermission(this.pcmcertofregService.get(#pcmcertofreg_id),'ehr-PcmCertofreg-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmCertofreg" },  notes = "Remove")
+    @ApiOperation(value = "删除注册证书", tags = {"注册证书" },  notes = "删除注册证书")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmcertofregs/{pcmcertofreg_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmcertofreg_id") String pcmcertofreg_id) {
@@ -55,7 +55,7 @@ public class PcmCertofregResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcertofregService.getPcmcertofregByIds(#ids),'ehr-PcmCertofreg-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmCertofreg" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除注册证书", tags = {"注册证书" },  notes = "批量删除注册证书")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmcertofregs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmcertofregService.removeBatch(ids);
@@ -63,28 +63,28 @@ public class PcmCertofregResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcertofregMapping.toDomain(#pcmcertofregdto),'ehr-PcmCertofreg-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmCertofreg" },  notes = "Save")
+    @ApiOperation(value = "保存注册证书", tags = {"注册证书" },  notes = "保存注册证书")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmcertofregs/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmCertofregDTO pcmcertofregdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmcertofregService.save(pcmcertofregMapping.toDomain(pcmcertofregdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmcertofregMapping.toDomain(#pcmcertofregdtos),'ehr-PcmCertofreg-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmCertofreg" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存注册证书", tags = {"注册证书" },  notes = "批量保存注册证书")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmcertofregs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmCertofregDTO> pcmcertofregdtos) {
         pcmcertofregService.saveBatch(pcmcertofregMapping.toDomain(pcmcertofregdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmCertofreg" },  notes = "GetDraft")
+    @ApiOperation(value = "获取注册证书草稿", tags = {"注册证书" },  notes = "获取注册证书草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmcertofregs/getdraft")
     public ResponseEntity<PcmCertofregDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmcertofregMapping.toDto(pcmcertofregService.getDraft(new PcmCertofreg())));
     }
 
     @PreAuthorize("hasPermission(this.pcmcertofregMapping.toDomain(#pcmcertofregdto),'ehr-PcmCertofreg-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmCertofreg" },  notes = "Create")
+    @ApiOperation(value = "新建注册证书", tags = {"注册证书" },  notes = "新建注册证书")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmcertofregs")
     @Transactional
     public ResponseEntity<PcmCertofregDTO> create(@RequestBody PcmCertofregDTO pcmcertofregdto) {
@@ -95,7 +95,7 @@ public class PcmCertofregResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcertofregMapping.toDomain(#pcmcertofregdtos),'ehr-PcmCertofreg-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmCertofreg" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建注册证书", tags = {"注册证书" },  notes = "批量新建注册证书")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmcertofregs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmCertofregDTO> pcmcertofregdtos) {
         pcmcertofregService.createBatch(pcmcertofregMapping.toDomain(pcmcertofregdtos));
@@ -103,7 +103,7 @@ public class PcmCertofregResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcertofregService.get(#pcmcertofreg_id),'ehr-PcmCertofreg-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmCertofreg" },  notes = "Update")
+    @ApiOperation(value = "更新注册证书", tags = {"注册证书" },  notes = "更新注册证书")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmcertofregs/{pcmcertofreg_id}")
     @Transactional
     public ResponseEntity<PcmCertofregDTO> update(@PathVariable("pcmcertofreg_id") String pcmcertofreg_id, @RequestBody PcmCertofregDTO pcmcertofregdto) {
@@ -115,7 +115,7 @@ public class PcmCertofregResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcertofregService.getPcmcertofregByEntities(this.pcmcertofregMapping.toDomain(#pcmcertofregdtos)),'ehr-PcmCertofreg-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmCertofreg" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新注册证书", tags = {"注册证书" },  notes = "批量更新注册证书")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmcertofregs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmCertofregDTO> pcmcertofregdtos) {
         pcmcertofregService.updateBatch(pcmcertofregMapping.toDomain(pcmcertofregdtos));
@@ -123,7 +123,7 @@ public class PcmCertofregResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmcertofregMapping.toDomain(returnObject.body),'ehr-PcmCertofreg-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmCertofreg" },  notes = "Get")
+    @ApiOperation(value = "获取注册证书", tags = {"注册证书" },  notes = "获取注册证书")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmcertofregs/{pcmcertofreg_id}")
     public ResponseEntity<PcmCertofregDTO> get(@PathVariable("pcmcertofreg_id") String pcmcertofreg_id) {
         PcmCertofreg domain = pcmcertofregService.get(pcmcertofreg_id);
@@ -131,14 +131,14 @@ public class PcmCertofregResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmCertofreg" },  notes = "CheckKey")
+    @ApiOperation(value = "检查注册证书", tags = {"注册证书" },  notes = "检查注册证书")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmcertofregs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmCertofregDTO pcmcertofregdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmcertofregService.checkKey(pcmcertofregMapping.toDomain(pcmcertofregdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmCertofreg-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmCertofreg" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"注册证书" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmcertofregs/fetchdefault")
 	public ResponseEntity<List<PcmCertofregDTO>> fetchDefault(PcmCertofregSearchContext context) {
         Page<PcmCertofreg> domains = pcmcertofregService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmCertofregResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmCertofreg-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmCertofreg" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"注册证书" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmcertofregs/searchdefault")
 	public ResponseEntity<Page<PcmCertofregDTO>> searchDefault(@RequestBody PcmCertofregSearchContext context) {
         Page<PcmCertofreg> domains = pcmcertofregService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PcmCertofregResource {
                 .body(new PageImpl(pcmcertofregMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pcmcertofregService.get(#pcmcertofreg_id),'ehr-PcmCertofreg-Remove')")
-    @ApiOperation(value = "RemoveByPcmProfile", tags = {"PcmCertofreg" },  notes = "RemoveByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息删除注册证书", tags = {"注册证书" },  notes = "根据应聘者基本信息删除注册证书")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/{pcmcertofreg_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmcertofreg_id") String pcmcertofreg_id) {
@@ -167,7 +167,7 @@ public class PcmCertofregResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcertofregService.getPcmcertofregByIds(#ids),'ehr-PcmCertofreg-Remove')")
-    @ApiOperation(value = "RemoveBatchByPcmProfile", tags = {"PcmCertofreg" },  notes = "RemoveBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量删除注册证书", tags = {"注册证书" },  notes = "根据应聘者基本信息批量删除注册证书")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/batch")
     public ResponseEntity<Boolean> removeBatchByPcmProfile(@RequestBody List<String> ids) {
         pcmcertofregService.removeBatch(ids);
@@ -175,7 +175,7 @@ public class PcmCertofregResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcertofregMapping.toDomain(#pcmcertofregdto),'ehr-PcmCertofreg-Save')")
-    @ApiOperation(value = "SaveByPcmProfile", tags = {"PcmCertofreg" },  notes = "SaveByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息保存注册证书", tags = {"注册证书" },  notes = "根据应聘者基本信息保存注册证书")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/save")
     public ResponseEntity<Boolean> saveByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmCertofregDTO pcmcertofregdto) {
         PcmCertofreg domain = pcmcertofregMapping.toDomain(pcmcertofregdto);
@@ -184,7 +184,7 @@ public class PcmCertofregResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcertofregMapping.toDomain(#pcmcertofregdtos),'ehr-PcmCertofreg-Save')")
-    @ApiOperation(value = "SaveBatchByPcmProfile", tags = {"PcmCertofreg" },  notes = "SaveBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量保存注册证书", tags = {"注册证书" },  notes = "根据应聘者基本信息批量保存注册证书")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/savebatch")
     public ResponseEntity<Boolean> saveBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PcmCertofregDTO> pcmcertofregdtos) {
         List<PcmCertofreg> domainlist=pcmcertofregMapping.toDomain(pcmcertofregdtos);
@@ -195,7 +195,7 @@ public class PcmCertofregResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPcmProfile", tags = {"PcmCertofreg" },  notes = "GetDraftByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息获取注册证书草稿", tags = {"注册证书" },  notes = "根据应聘者基本信息获取注册证书草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/getdraft")
     public ResponseEntity<PcmCertofregDTO> getDraftByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id) {
         PcmCertofreg domain = new PcmCertofreg();
@@ -204,7 +204,7 @@ public class PcmCertofregResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcertofregMapping.toDomain(#pcmcertofregdto),'ehr-PcmCertofreg-Create')")
-    @ApiOperation(value = "CreateByPcmProfile", tags = {"PcmCertofreg" },  notes = "CreateByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息建立注册证书", tags = {"注册证书" },  notes = "根据应聘者基本信息建立注册证书")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs")
     @Transactional
     public ResponseEntity<PcmCertofregDTO> createByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmCertofregDTO pcmcertofregdto) {
@@ -216,7 +216,7 @@ public class PcmCertofregResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcertofregMapping.toDomain(#pcmcertofregdtos),'ehr-PcmCertofreg-Create')")
-    @ApiOperation(value = "createBatchByPcmProfile", tags = {"PcmCertofreg" },  notes = "createBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量建立注册证书", tags = {"注册证书" },  notes = "根据应聘者基本信息批量建立注册证书")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/batch")
     public ResponseEntity<Boolean> createBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PcmCertofregDTO> pcmcertofregdtos) {
         List<PcmCertofreg> domainlist=pcmcertofregMapping.toDomain(pcmcertofregdtos);
@@ -228,7 +228,7 @@ public class PcmCertofregResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcertofregService.get(#pcmcertofreg_id),'ehr-PcmCertofreg-Update')")
-    @ApiOperation(value = "UpdateByPcmProfile", tags = {"PcmCertofreg" },  notes = "UpdateByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息更新注册证书", tags = {"注册证书" },  notes = "根据应聘者基本信息更新注册证书")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/{pcmcertofreg_id}")
     @Transactional
     public ResponseEntity<PcmCertofregDTO> updateByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmcertofreg_id") String pcmcertofreg_id, @RequestBody PcmCertofregDTO pcmcertofregdto) {
@@ -241,7 +241,7 @@ public class PcmCertofregResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcertofregService.getPcmcertofregByEntities(this.pcmcertofregMapping.toDomain(#pcmcertofregdtos)),'ehr-PcmCertofreg-Update')")
-    @ApiOperation(value = "UpdateBatchByPcmProfile", tags = {"PcmCertofreg" },  notes = "UpdateBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量更新注册证书", tags = {"注册证书" },  notes = "根据应聘者基本信息批量更新注册证书")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/batch")
     public ResponseEntity<Boolean> updateBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PcmCertofregDTO> pcmcertofregdtos) {
         List<PcmCertofreg> domainlist=pcmcertofregMapping.toDomain(pcmcertofregdtos);
@@ -253,7 +253,7 @@ public class PcmCertofregResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmcertofregMapping.toDomain(returnObject.body),'ehr-PcmCertofreg-Get')")
-    @ApiOperation(value = "GetByPcmProfile", tags = {"PcmCertofreg" },  notes = "GetByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息获取注册证书", tags = {"注册证书" },  notes = "根据应聘者基本信息获取注册证书")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/{pcmcertofreg_id}")
     public ResponseEntity<PcmCertofregDTO> getByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmcertofreg_id") String pcmcertofreg_id) {
         PcmCertofreg domain = pcmcertofregService.get(pcmcertofreg_id);
@@ -261,14 +261,14 @@ public class PcmCertofregResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKeyByPcmProfile", tags = {"PcmCertofreg" },  notes = "CheckKeyByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息检查注册证书", tags = {"注册证书" },  notes = "根据应聘者基本信息检查注册证书")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmcertofregs/checkkey")
     public ResponseEntity<Boolean> checkKeyByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmCertofregDTO pcmcertofregdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmcertofregService.checkKey(pcmcertofregMapping.toDomain(pcmcertofregdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmCertofreg-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPcmProfile", tags = {"PcmCertofreg" } ,notes = "fetchDEFAULTByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息获取DEFAULT", tags = {"注册证书" } ,notes = "根据应聘者基本信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmcertofregs/fetchdefault")
 	public ResponseEntity<List<PcmCertofregDTO>> fetchPcmCertofregDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id,PcmCertofregSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
@@ -282,7 +282,7 @@ public class PcmCertofregResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmCertofreg-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPcmProfile", tags = {"PcmCertofreg" } ,notes = "searchDEFAULTByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息查询DEFAULT", tags = {"注册证书" } ,notes = "根据应聘者基本信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmcertofregs/searchdefault")
 	public ResponseEntity<Page<PcmCertofregDTO>> searchPcmCertofregDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmCertofregSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);

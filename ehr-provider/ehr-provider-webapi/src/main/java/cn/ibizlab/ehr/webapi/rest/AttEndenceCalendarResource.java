@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.att.service.IAttEndenceCalendarService;
 import cn.ibizlab.ehr.core.att.filter.AttEndenceCalendarSearchContext;
 
 @Slf4j
-@Api(tags = {"AttEndenceCalendar" })
+@Api(tags = {"考勤日历" })
 @RestController("WebApi-attendencecalendar")
 @RequestMapping("")
 public class AttEndenceCalendarResource {
@@ -47,7 +47,7 @@ public class AttEndenceCalendarResource {
     public AttEndenceCalendarMapping attendencecalendarMapping;
 
     @PreAuthorize("hasPermission(this.attendencecalendarMapping.toDomain(#attendencecalendardto),'ehr-AttEndenceCalendar-Create')")
-    @ApiOperation(value = "Create", tags = {"AttEndenceCalendar" },  notes = "Create")
+    @ApiOperation(value = "新建考勤日历", tags = {"考勤日历" },  notes = "新建考勤日历")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencecalendars")
     @Transactional
     public ResponseEntity<AttEndenceCalendarDTO> create(@RequestBody AttEndenceCalendarDTO attendencecalendardto) {
@@ -58,7 +58,7 @@ public class AttEndenceCalendarResource {
     }
 
     @PreAuthorize("hasPermission(this.attendencecalendarMapping.toDomain(#attendencecalendardtos),'ehr-AttEndenceCalendar-Create')")
-    @ApiOperation(value = "createBatch", tags = {"AttEndenceCalendar" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建考勤日历", tags = {"考勤日历" },  notes = "批量新建考勤日历")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencecalendars/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<AttEndenceCalendarDTO> attendencecalendardtos) {
         attendencecalendarService.createBatch(attendencecalendarMapping.toDomain(attendencecalendardtos));
@@ -66,14 +66,14 @@ public class AttEndenceCalendarResource {
     }
 
     @PreAuthorize("hasPermission(this.attendencecalendarMapping.toDomain(#attendencecalendardto),'ehr-AttEndenceCalendar-Save')")
-    @ApiOperation(value = "Save", tags = {"AttEndenceCalendar" },  notes = "Save")
+    @ApiOperation(value = "保存考勤日历", tags = {"考勤日历" },  notes = "保存考勤日历")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencecalendars/save")
     public ResponseEntity<Boolean> save(@RequestBody AttEndenceCalendarDTO attendencecalendardto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendencecalendarService.save(attendencecalendarMapping.toDomain(attendencecalendardto)));
     }
 
     @PreAuthorize("hasPermission(this.attendencecalendarMapping.toDomain(#attendencecalendardtos),'ehr-AttEndenceCalendar-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"AttEndenceCalendar" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存考勤日历", tags = {"考勤日历" },  notes = "批量保存考勤日历")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencecalendars/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<AttEndenceCalendarDTO> attendencecalendardtos) {
         attendencecalendarService.saveBatch(attendencecalendarMapping.toDomain(attendencecalendardtos));
@@ -81,7 +81,7 @@ public class AttEndenceCalendarResource {
     }
 
     @PreAuthorize("hasPermission(this.attendencecalendarService.get(#attendencecalendar_id),'ehr-AttEndenceCalendar-Update')")
-    @ApiOperation(value = "Update", tags = {"AttEndenceCalendar" },  notes = "Update")
+    @ApiOperation(value = "更新考勤日历", tags = {"考勤日历" },  notes = "更新考勤日历")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendencecalendars/{attendencecalendar_id}")
     @Transactional
     public ResponseEntity<AttEndenceCalendarDTO> update(@PathVariable("attendencecalendar_id") String attendencecalendar_id, @RequestBody AttEndenceCalendarDTO attendencecalendardto) {
@@ -93,21 +93,21 @@ public class AttEndenceCalendarResource {
     }
 
     @PreAuthorize("hasPermission(this.attendencecalendarService.getAttendencecalendarByEntities(this.attendencecalendarMapping.toDomain(#attendencecalendardtos)),'ehr-AttEndenceCalendar-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"AttEndenceCalendar" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新考勤日历", tags = {"考勤日历" },  notes = "批量更新考勤日历")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendencecalendars/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<AttEndenceCalendarDTO> attendencecalendardtos) {
         attendencecalendarService.updateBatch(attendencecalendarMapping.toDomain(attendencecalendardtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"AttEndenceCalendar" },  notes = "CheckKey")
+    @ApiOperation(value = "检查考勤日历", tags = {"考勤日历" },  notes = "检查考勤日历")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencecalendars/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody AttEndenceCalendarDTO attendencecalendardto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attendencecalendarService.checkKey(attendencecalendarMapping.toDomain(attendencecalendardto)));
     }
 
     @PostAuthorize("hasPermission(this.attendencecalendarMapping.toDomain(returnObject.body),'ehr-AttEndenceCalendar-Get')")
-    @ApiOperation(value = "Get", tags = {"AttEndenceCalendar" },  notes = "Get")
+    @ApiOperation(value = "获取考勤日历", tags = {"考勤日历" },  notes = "获取考勤日历")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendencecalendars/{attendencecalendar_id}")
     public ResponseEntity<AttEndenceCalendarDTO> get(@PathVariable("attendencecalendar_id") String attendencecalendar_id) {
         AttEndenceCalendar domain = attendencecalendarService.get(attendencecalendar_id);
@@ -116,7 +116,7 @@ public class AttEndenceCalendarResource {
     }
 
     @PreAuthorize("hasPermission(this.attendencecalendarService.get(#attendencecalendar_id),'ehr-AttEndenceCalendar-Remove')")
-    @ApiOperation(value = "Remove", tags = {"AttEndenceCalendar" },  notes = "Remove")
+    @ApiOperation(value = "删除考勤日历", tags = {"考勤日历" },  notes = "删除考勤日历")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendencecalendars/{attendencecalendar_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("attendencecalendar_id") String attendencecalendar_id) {
@@ -124,21 +124,21 @@ public class AttEndenceCalendarResource {
     }
 
     @PreAuthorize("hasPermission(this.attendencecalendarService.getAttendencecalendarByIds(#ids),'ehr-AttEndenceCalendar-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"AttEndenceCalendar" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除考勤日历", tags = {"考勤日历" },  notes = "批量删除考勤日历")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendencecalendars/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         attendencecalendarService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"AttEndenceCalendar" },  notes = "GetDraft")
+    @ApiOperation(value = "获取考勤日历草稿", tags = {"考勤日历" },  notes = "获取考勤日历草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendencecalendars/getdraft")
     public ResponseEntity<AttEndenceCalendarDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attendencecalendarMapping.toDto(attendencecalendarService.getDraft(new AttEndenceCalendar())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceCalendar-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"AttEndenceCalendar" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤日历" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/attendencecalendars/fetchdefault")
 	public ResponseEntity<List<AttEndenceCalendarDTO>> fetchDefault(AttEndenceCalendarSearchContext context) {
         Page<AttEndenceCalendar> domains = attendencecalendarService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class AttEndenceCalendarResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceCalendar-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"AttEndenceCalendar" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤日历" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/attendencecalendars/searchdefault")
 	public ResponseEntity<Page<AttEndenceCalendarDTO>> searchDefault(@RequestBody AttEndenceCalendarSearchContext context) {
         Page<AttEndenceCalendar> domains = attendencecalendarService.searchDefault(context) ;

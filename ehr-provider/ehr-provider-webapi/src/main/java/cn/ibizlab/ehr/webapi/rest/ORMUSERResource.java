@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.orm.service.IORMUSERService;
 import cn.ibizlab.ehr.core.orm.filter.ORMUSERSearchContext;
 
 @Slf4j
-@Api(tags = {"ORMUSER" })
+@Api(tags = {"用户管理" })
 @RestController("WebApi-ormuser")
 @RequestMapping("")
 public class ORMUSERResource {
@@ -47,7 +47,7 @@ public class ORMUSERResource {
     public ORMUSERMapping ormuserMapping;
 
     @PostAuthorize("hasPermission(this.ormuserMapping.toDomain(returnObject.body),'ehr-ORMUSER-Get')")
-    @ApiOperation(value = "Get", tags = {"ORMUSER" },  notes = "Get")
+    @ApiOperation(value = "获取用户管理", tags = {"用户管理" },  notes = "获取用户管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormusers/{ormuser_id}")
     public ResponseEntity<ORMUSERDTO> get(@PathVariable("ormuser_id") String ormuser_id) {
         ORMUSER domain = ormuserService.get(ormuser_id);
@@ -56,7 +56,7 @@ public class ORMUSERResource {
     }
 
     @PreAuthorize("hasPermission(this.ormuserMapping.toDomain(#ormuserdto),'ehr-ORMUSER-Create')")
-    @ApiOperation(value = "Create", tags = {"ORMUSER" },  notes = "Create")
+    @ApiOperation(value = "新建用户管理", tags = {"用户管理" },  notes = "新建用户管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers")
     @Transactional
     public ResponseEntity<ORMUSERDTO> create(@RequestBody ORMUSERDTO ormuserdto) {
@@ -67,7 +67,7 @@ public class ORMUSERResource {
     }
 
     @PreAuthorize("hasPermission(this.ormuserMapping.toDomain(#ormuserdtos),'ehr-ORMUSER-Create')")
-    @ApiOperation(value = "createBatch", tags = {"ORMUSER" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建用户管理", tags = {"用户管理" },  notes = "批量新建用户管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMUSERDTO> ormuserdtos) {
         ormuserService.createBatch(ormuserMapping.toDomain(ormuserdtos));
@@ -75,7 +75,7 @@ public class ORMUSERResource {
     }
 
     @PreAuthorize("hasPermission(this.ormuserService.get(#ormuser_id),'ehr-ORMUSER-Remove')")
-    @ApiOperation(value = "Remove", tags = {"ORMUSER" },  notes = "Remove")
+    @ApiOperation(value = "删除用户管理", tags = {"用户管理" },  notes = "删除用户管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormusers/{ormuser_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("ormuser_id") String ormuser_id) {
@@ -83,7 +83,7 @@ public class ORMUSERResource {
     }
 
     @PreAuthorize("hasPermission(this.ormuserService.getOrmuserByIds(#ids),'ehr-ORMUSER-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"ORMUSER" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除用户管理", tags = {"用户管理" },  notes = "批量删除用户管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormusers/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         ormuserService.removeBatch(ids);
@@ -91,7 +91,7 @@ public class ORMUSERResource {
     }
 
     @PreAuthorize("hasPermission(this.ormuserService.get(#ormuser_id),'ehr-ORMUSER-Update')")
-    @ApiOperation(value = "Update", tags = {"ORMUSER" },  notes = "Update")
+    @ApiOperation(value = "更新用户管理", tags = {"用户管理" },  notes = "更新用户管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormusers/{ormuser_id}")
     @Transactional
     public ResponseEntity<ORMUSERDTO> update(@PathVariable("ormuser_id") String ormuser_id, @RequestBody ORMUSERDTO ormuserdto) {
@@ -103,42 +103,42 @@ public class ORMUSERResource {
     }
 
     @PreAuthorize("hasPermission(this.ormuserService.getOrmuserByEntities(this.ormuserMapping.toDomain(#ormuserdtos)),'ehr-ORMUSER-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"ORMUSER" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新用户管理", tags = {"用户管理" },  notes = "批量更新用户管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormusers/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMUSERDTO> ormuserdtos) {
         ormuserService.updateBatch(ormuserMapping.toDomain(ormuserdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"ORMUSER" },  notes = "CheckKey")
+    @ApiOperation(value = "检查用户管理", tags = {"用户管理" },  notes = "检查用户管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMUSERDTO ormuserdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormuserService.checkKey(ormuserMapping.toDomain(ormuserdto)));
     }
 
     @PreAuthorize("hasPermission(this.ormuserMapping.toDomain(#ormuserdto),'ehr-ORMUSER-Save')")
-    @ApiOperation(value = "Save", tags = {"ORMUSER" },  notes = "Save")
+    @ApiOperation(value = "保存用户管理", tags = {"用户管理" },  notes = "保存用户管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMUSERDTO ormuserdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormuserService.save(ormuserMapping.toDomain(ormuserdto)));
     }
 
     @PreAuthorize("hasPermission(this.ormuserMapping.toDomain(#ormuserdtos),'ehr-ORMUSER-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"ORMUSER" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存用户管理", tags = {"用户管理" },  notes = "批量保存用户管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormusers/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMUSERDTO> ormuserdtos) {
         ormuserService.saveBatch(ormuserMapping.toDomain(ormuserdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"ORMUSER" },  notes = "GetDraft")
+    @ApiOperation(value = "获取用户管理草稿", tags = {"用户管理" },  notes = "获取用户管理草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormusers/getdraft")
     public ResponseEntity<ORMUSERDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormuserMapping.toDto(ormuserService.getDraft(new ORMUSER())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-DQZZJXJZZ-all')")
-	@ApiOperation(value = "fetch当前组织及下级组织", tags = {"ORMUSER" } ,notes = "fetch当前组织及下级组织")
+	@ApiOperation(value = "获取当前组织及下级组织", tags = {"用户管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormusers/fetchdqzzjxjzz")
 	public ResponseEntity<List<ORMUSERDTO>> fetchDQZZJXJZZ(ORMUSERSearchContext context) {
         Page<ORMUSER> domains = ormuserService.searchDQZZJXJZZ(context) ;
@@ -151,7 +151,7 @@ public class ORMUSERResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-DQZZJXJZZ-all')")
-	@ApiOperation(value = "search当前组织及下级组织", tags = {"ORMUSER" } ,notes = "search当前组织及下级组织")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"用户管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormusers/searchdqzzjxjzz")
 	public ResponseEntity<Page<ORMUSERDTO>> searchDQZZJXJZZ(@RequestBody ORMUSERSearchContext context) {
         Page<ORMUSER> domains = ormuserService.searchDQZZJXJZZ(context) ;
@@ -159,7 +159,7 @@ public class ORMUSERResource {
                 .body(new PageImpl(ormuserMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMUSER" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"用户管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormusers/fetchdefault")
 	public ResponseEntity<List<ORMUSERDTO>> fetchDefault(ORMUSERSearchContext context) {
         Page<ORMUSER> domains = ormuserService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class ORMUSERResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMUSER-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"ORMUSER" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"用户管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormusers/searchdefault")
 	public ResponseEntity<Page<ORMUSERDTO>> searchDefault(@RequestBody ORMUSERSearchContext context) {
         Page<ORMUSER> domains = ormuserService.searchDefault(context) ;

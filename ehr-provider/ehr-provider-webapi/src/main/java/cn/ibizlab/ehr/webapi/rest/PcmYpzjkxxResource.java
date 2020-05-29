@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmYpzjkxxService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmYpzjkxxSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmYpzjkxx" })
+@Api(tags = {"应聘者接口信息管理" })
 @RestController("WebApi-pcmypzjkxx")
 @RequestMapping("")
 public class PcmYpzjkxxResource {
@@ -47,7 +47,7 @@ public class PcmYpzjkxxResource {
     public PcmYpzjkxxMapping pcmypzjkxxMapping;
 
     @PreAuthorize("hasPermission(this.pcmypzjkxxService.get(#pcmypzjkxx_id),'ehr-PcmYpzjkxx-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmYpzjkxx" },  notes = "Update")
+    @ApiOperation(value = "更新应聘者接口信息管理", tags = {"应聘者接口信息管理" },  notes = "更新应聘者接口信息管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmypzjkxxes/{pcmypzjkxx_id}")
     @Transactional
     public ResponseEntity<PcmYpzjkxxDTO> update(@PathVariable("pcmypzjkxx_id") String pcmypzjkxx_id, @RequestBody PcmYpzjkxxDTO pcmypzjkxxdto) {
@@ -59,7 +59,7 @@ public class PcmYpzjkxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmypzjkxxService.getPcmypzjkxxByEntities(this.pcmypzjkxxMapping.toDomain(#pcmypzjkxxdtos)),'ehr-PcmYpzjkxx-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmYpzjkxx" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新应聘者接口信息管理", tags = {"应聘者接口信息管理" },  notes = "批量更新应聘者接口信息管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmypzjkxxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmYpzjkxxDTO> pcmypzjkxxdtos) {
         pcmypzjkxxService.updateBatch(pcmypzjkxxMapping.toDomain(pcmypzjkxxdtos));
@@ -67,7 +67,7 @@ public class PcmYpzjkxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmypzjkxxService.get(#pcmypzjkxx_id),'ehr-PcmYpzjkxx-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmYpzjkxx" },  notes = "Remove")
+    @ApiOperation(value = "删除应聘者接口信息管理", tags = {"应聘者接口信息管理" },  notes = "删除应聘者接口信息管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmypzjkxxes/{pcmypzjkxx_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmypzjkxx_id") String pcmypzjkxx_id) {
@@ -75,21 +75,21 @@ public class PcmYpzjkxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmypzjkxxService.getPcmypzjkxxByIds(#ids),'ehr-PcmYpzjkxx-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmYpzjkxx" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除应聘者接口信息管理", tags = {"应聘者接口信息管理" },  notes = "批量删除应聘者接口信息管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmypzjkxxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmypzjkxxService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmYpzjkxx" },  notes = "CheckKey")
+    @ApiOperation(value = "检查应聘者接口信息管理", tags = {"应聘者接口信息管理" },  notes = "检查应聘者接口信息管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmypzjkxxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmYpzjkxxDTO pcmypzjkxxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmypzjkxxService.checkKey(pcmypzjkxxMapping.toDomain(pcmypzjkxxdto)));
     }
 
     @PostAuthorize("hasPermission(this.pcmypzjkxxMapping.toDomain(returnObject.body),'ehr-PcmYpzjkxx-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmYpzjkxx" },  notes = "Get")
+    @ApiOperation(value = "获取应聘者接口信息管理", tags = {"应聘者接口信息管理" },  notes = "获取应聘者接口信息管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmypzjkxxes/{pcmypzjkxx_id}")
     public ResponseEntity<PcmYpzjkxxDTO> get(@PathVariable("pcmypzjkxx_id") String pcmypzjkxx_id) {
         PcmYpzjkxx domain = pcmypzjkxxService.get(pcmypzjkxx_id);
@@ -97,14 +97,14 @@ public class PcmYpzjkxxResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmYpzjkxx" },  notes = "GetDraft")
+    @ApiOperation(value = "获取应聘者接口信息管理草稿", tags = {"应聘者接口信息管理" },  notes = "获取应聘者接口信息管理草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmypzjkxxes/getdraft")
     public ResponseEntity<PcmYpzjkxxDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmypzjkxxMapping.toDto(pcmypzjkxxService.getDraft(new PcmYpzjkxx())));
     }
 
     @PreAuthorize("hasPermission(this.pcmypzjkxxMapping.toDomain(#pcmypzjkxxdto),'ehr-PcmYpzjkxx-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmYpzjkxx" },  notes = "Create")
+    @ApiOperation(value = "新建应聘者接口信息管理", tags = {"应聘者接口信息管理" },  notes = "新建应聘者接口信息管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmypzjkxxes")
     @Transactional
     public ResponseEntity<PcmYpzjkxxDTO> create(@RequestBody PcmYpzjkxxDTO pcmypzjkxxdto) {
@@ -115,7 +115,7 @@ public class PcmYpzjkxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmypzjkxxMapping.toDomain(#pcmypzjkxxdtos),'ehr-PcmYpzjkxx-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmYpzjkxx" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建应聘者接口信息管理", tags = {"应聘者接口信息管理" },  notes = "批量新建应聘者接口信息管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmypzjkxxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmYpzjkxxDTO> pcmypzjkxxdtos) {
         pcmypzjkxxService.createBatch(pcmypzjkxxMapping.toDomain(pcmypzjkxxdtos));
@@ -123,14 +123,14 @@ public class PcmYpzjkxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmypzjkxxMapping.toDomain(#pcmypzjkxxdto),'ehr-PcmYpzjkxx-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmYpzjkxx" },  notes = "Save")
+    @ApiOperation(value = "保存应聘者接口信息管理", tags = {"应聘者接口信息管理" },  notes = "保存应聘者接口信息管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmypzjkxxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmYpzjkxxDTO pcmypzjkxxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmypzjkxxService.save(pcmypzjkxxMapping.toDomain(pcmypzjkxxdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmypzjkxxMapping.toDomain(#pcmypzjkxxdtos),'ehr-PcmYpzjkxx-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmYpzjkxx" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存应聘者接口信息管理", tags = {"应聘者接口信息管理" },  notes = "批量保存应聘者接口信息管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmypzjkxxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmYpzjkxxDTO> pcmypzjkxxdtos) {
         pcmypzjkxxService.saveBatch(pcmypzjkxxMapping.toDomain(pcmypzjkxxdtos));
@@ -138,7 +138,7 @@ public class PcmYpzjkxxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYpzjkxx-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmYpzjkxx" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者接口信息管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmypzjkxxes/fetchdefault")
 	public ResponseEntity<List<PcmYpzjkxxDTO>> fetchDefault(PcmYpzjkxxSearchContext context) {
         Page<PcmYpzjkxx> domains = pcmypzjkxxService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmYpzjkxxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYpzjkxx-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmYpzjkxx" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者接口信息管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmypzjkxxes/searchdefault")
 	public ResponseEntity<Page<PcmYpzjkxxDTO>> searchDefault(@RequestBody PcmYpzjkxxSearchContext context) {
         Page<PcmYpzjkxx> domains = pcmypzjkxxService.searchDefault(context) ;

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.par.service.IPARKHFAService;
 import cn.ibizlab.ehr.core.par.filter.PARKHFASearchContext;
 
 @Slf4j
-@Api(tags = {"PARKHFA" })
+@Api(tags = {"考核对象" })
 @RestController("WebApi-parkhfa")
 @RequestMapping("")
 public class PARKHFAResource {
@@ -47,7 +47,7 @@ public class PARKHFAResource {
     public PARKHFAMapping parkhfaMapping;
 
     @PreAuthorize("hasPermission(this.parkhfaService.get(#parkhfa_id),'ehr-PARKHFA-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PARKHFA" },  notes = "Remove")
+    @ApiOperation(value = "删除考核对象", tags = {"考核对象" },  notes = "删除考核对象")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parkhfas/{parkhfa_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("parkhfa_id") String parkhfa_id) {
@@ -55,7 +55,7 @@ public class PARKHFAResource {
     }
 
     @PreAuthorize("hasPermission(this.parkhfaService.getParkhfaByIds(#ids),'ehr-PARKHFA-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PARKHFA" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除考核对象", tags = {"考核对象" },  notes = "批量删除考核对象")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parkhfas/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         parkhfaService.removeBatch(ids);
@@ -63,14 +63,14 @@ public class PARKHFAResource {
     }
 
     @PreAuthorize("hasPermission(this.parkhfaMapping.toDomain(#parkhfadto),'ehr-PARKHFA-Save')")
-    @ApiOperation(value = "Save", tags = {"PARKHFA" },  notes = "Save")
+    @ApiOperation(value = "保存考核对象", tags = {"考核对象" },  notes = "保存考核对象")
 	@RequestMapping(method = RequestMethod.POST, value = "/parkhfas/save")
     public ResponseEntity<Boolean> save(@RequestBody PARKHFADTO parkhfadto) {
         return ResponseEntity.status(HttpStatus.OK).body(parkhfaService.save(parkhfaMapping.toDomain(parkhfadto)));
     }
 
     @PreAuthorize("hasPermission(this.parkhfaMapping.toDomain(#parkhfadtos),'ehr-PARKHFA-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PARKHFA" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存考核对象", tags = {"考核对象" },  notes = "批量保存考核对象")
 	@RequestMapping(method = RequestMethod.POST, value = "/parkhfas/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PARKHFADTO> parkhfadtos) {
         parkhfaService.saveBatch(parkhfaMapping.toDomain(parkhfadtos));
@@ -78,7 +78,7 @@ public class PARKHFAResource {
     }
 
     @PreAuthorize("hasPermission(this.parkhfaMapping.toDomain(#parkhfadto),'ehr-PARKHFA-Create')")
-    @ApiOperation(value = "Create", tags = {"PARKHFA" },  notes = "Create")
+    @ApiOperation(value = "新建考核对象", tags = {"考核对象" },  notes = "新建考核对象")
 	@RequestMapping(method = RequestMethod.POST, value = "/parkhfas")
     @Transactional
     public ResponseEntity<PARKHFADTO> create(@RequestBody PARKHFADTO parkhfadto) {
@@ -89,27 +89,27 @@ public class PARKHFAResource {
     }
 
     @PreAuthorize("hasPermission(this.parkhfaMapping.toDomain(#parkhfadtos),'ehr-PARKHFA-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PARKHFA" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建考核对象", tags = {"考核对象" },  notes = "批量新建考核对象")
 	@RequestMapping(method = RequestMethod.POST, value = "/parkhfas/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PARKHFADTO> parkhfadtos) {
         parkhfaService.createBatch(parkhfaMapping.toDomain(parkhfadtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PARKHFA" },  notes = "CheckKey")
+    @ApiOperation(value = "检查考核对象", tags = {"考核对象" },  notes = "检查考核对象")
 	@RequestMapping(method = RequestMethod.POST, value = "/parkhfas/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PARKHFADTO parkhfadto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parkhfaService.checkKey(parkhfaMapping.toDomain(parkhfadto)));
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PARKHFA" },  notes = "GetDraft")
+    @ApiOperation(value = "获取考核对象草稿", tags = {"考核对象" },  notes = "获取考核对象草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/parkhfas/getdraft")
     public ResponseEntity<PARKHFADTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(parkhfaMapping.toDto(parkhfaService.getDraft(new PARKHFA())));
     }
 
     @PostAuthorize("hasPermission(this.parkhfaMapping.toDomain(returnObject.body),'ehr-PARKHFA-Get')")
-    @ApiOperation(value = "Get", tags = {"PARKHFA" },  notes = "Get")
+    @ApiOperation(value = "获取考核对象", tags = {"考核对象" },  notes = "获取考核对象")
 	@RequestMapping(method = RequestMethod.GET, value = "/parkhfas/{parkhfa_id}")
     public ResponseEntity<PARKHFADTO> get(@PathVariable("parkhfa_id") String parkhfa_id) {
         PARKHFA domain = parkhfaService.get(parkhfa_id);
@@ -118,7 +118,7 @@ public class PARKHFAResource {
     }
 
     @PreAuthorize("hasPermission(this.parkhfaService.get(#parkhfa_id),'ehr-PARKHFA-Update')")
-    @ApiOperation(value = "Update", tags = {"PARKHFA" },  notes = "Update")
+    @ApiOperation(value = "更新考核对象", tags = {"考核对象" },  notes = "更新考核对象")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parkhfas/{parkhfa_id}")
     @Transactional
     public ResponseEntity<PARKHFADTO> update(@PathVariable("parkhfa_id") String parkhfa_id, @RequestBody PARKHFADTO parkhfadto) {
@@ -130,7 +130,7 @@ public class PARKHFAResource {
     }
 
     @PreAuthorize("hasPermission(this.parkhfaService.getParkhfaByEntities(this.parkhfaMapping.toDomain(#parkhfadtos)),'ehr-PARKHFA-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PARKHFA" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新考核对象", tags = {"考核对象" },  notes = "批量更新考核对象")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parkhfas/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PARKHFADTO> parkhfadtos) {
         parkhfaService.updateBatch(parkhfaMapping.toDomain(parkhfadtos));
@@ -138,7 +138,7 @@ public class PARKHFAResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHFA-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PARKHFA" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考核对象" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/parkhfas/fetchdefault")
 	public ResponseEntity<List<PARKHFADTO>> fetchDefault(PARKHFASearchContext context) {
         Page<PARKHFA> domains = parkhfaService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PARKHFAResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARKHFA-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PARKHFA" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考核对象" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/parkhfas/searchdefault")
 	public ResponseEntity<Page<PARKHFADTO>> searchDefault(@RequestBody PARKHFASearchContext context) {
         Page<PARKHFA> domains = parkhfaService.searchDefault(context) ;

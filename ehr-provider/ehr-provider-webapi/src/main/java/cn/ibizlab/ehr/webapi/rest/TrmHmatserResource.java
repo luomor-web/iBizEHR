@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITrmHmatserService;
 import cn.ibizlab.ehr.core.trm.filter.TrmHmatserSearchContext;
 
 @Slf4j
-@Api(tags = {"TrmHmatser" })
+@Api(tags = {"班主任" })
 @RestController("WebApi-trmhmatser")
 @RequestMapping("")
 public class TrmHmatserResource {
@@ -47,7 +47,7 @@ public class TrmHmatserResource {
     public TrmHmatserMapping trmhmatserMapping;
 
     @PreAuthorize("hasPermission(this.trmhmatserService.get(#trmhmatser_id),'ehr-TrmHmatser-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TrmHmatser" },  notes = "Remove")
+    @ApiOperation(value = "删除班主任", tags = {"班主任" },  notes = "删除班主任")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmhmatsers/{trmhmatser_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trmhmatser_id") String trmhmatser_id) {
@@ -55,7 +55,7 @@ public class TrmHmatserResource {
     }
 
     @PreAuthorize("hasPermission(this.trmhmatserService.getTrmhmatserByIds(#ids),'ehr-TrmHmatser-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TrmHmatser" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除班主任", tags = {"班主任" },  notes = "批量删除班主任")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmhmatsers/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmhmatserService.removeBatch(ids);
@@ -63,14 +63,14 @@ public class TrmHmatserResource {
     }
 
     @PreAuthorize("hasPermission(this.trmhmatserMapping.toDomain(#trmhmatserdto),'ehr-TrmHmatser-Save')")
-    @ApiOperation(value = "Save", tags = {"TrmHmatser" },  notes = "Save")
+    @ApiOperation(value = "保存班主任", tags = {"班主任" },  notes = "保存班主任")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmhmatsers/save")
     public ResponseEntity<Boolean> save(@RequestBody TrmHmatserDTO trmhmatserdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmhmatserService.save(trmhmatserMapping.toDomain(trmhmatserdto)));
     }
 
     @PreAuthorize("hasPermission(this.trmhmatserMapping.toDomain(#trmhmatserdtos),'ehr-TrmHmatser-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TrmHmatser" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存班主任", tags = {"班主任" },  notes = "批量保存班主任")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmhmatsers/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TrmHmatserDTO> trmhmatserdtos) {
         trmhmatserService.saveBatch(trmhmatserMapping.toDomain(trmhmatserdtos));
@@ -78,7 +78,7 @@ public class TrmHmatserResource {
     }
 
     @PreAuthorize("hasPermission(this.trmhmatserService.get(#trmhmatser_id),'ehr-TrmHmatser-Update')")
-    @ApiOperation(value = "Update", tags = {"TrmHmatser" },  notes = "Update")
+    @ApiOperation(value = "更新班主任", tags = {"班主任" },  notes = "更新班主任")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmhmatsers/{trmhmatser_id}")
     @Transactional
     public ResponseEntity<TrmHmatserDTO> update(@PathVariable("trmhmatser_id") String trmhmatser_id, @RequestBody TrmHmatserDTO trmhmatserdto) {
@@ -90,7 +90,7 @@ public class TrmHmatserResource {
     }
 
     @PreAuthorize("hasPermission(this.trmhmatserService.getTrmhmatserByEntities(this.trmhmatserMapping.toDomain(#trmhmatserdtos)),'ehr-TrmHmatser-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TrmHmatser" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新班主任", tags = {"班主任" },  notes = "批量更新班主任")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmhmatsers/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TrmHmatserDTO> trmhmatserdtos) {
         trmhmatserService.updateBatch(trmhmatserMapping.toDomain(trmhmatserdtos));
@@ -98,7 +98,7 @@ public class TrmHmatserResource {
     }
 
     @PreAuthorize("hasPermission(this.trmhmatserMapping.toDomain(#trmhmatserdto),'ehr-TrmHmatser-Create')")
-    @ApiOperation(value = "Create", tags = {"TrmHmatser" },  notes = "Create")
+    @ApiOperation(value = "新建班主任", tags = {"班主任" },  notes = "新建班主任")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmhmatsers")
     @Transactional
     public ResponseEntity<TrmHmatserDTO> create(@RequestBody TrmHmatserDTO trmhmatserdto) {
@@ -109,27 +109,27 @@ public class TrmHmatserResource {
     }
 
     @PreAuthorize("hasPermission(this.trmhmatserMapping.toDomain(#trmhmatserdtos),'ehr-TrmHmatser-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TrmHmatser" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建班主任", tags = {"班主任" },  notes = "批量新建班主任")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmhmatsers/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmHmatserDTO> trmhmatserdtos) {
         trmhmatserService.createBatch(trmhmatserMapping.toDomain(trmhmatserdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TrmHmatser" },  notes = "CheckKey")
+    @ApiOperation(value = "检查班主任", tags = {"班主任" },  notes = "检查班主任")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmhmatsers/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmHmatserDTO trmhmatserdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmhmatserService.checkKey(trmhmatserMapping.toDomain(trmhmatserdto)));
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"TrmHmatser" },  notes = "GetDraft")
+    @ApiOperation(value = "获取班主任草稿", tags = {"班主任" },  notes = "获取班主任草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmhmatsers/getdraft")
     public ResponseEntity<TrmHmatserDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmhmatserMapping.toDto(trmhmatserService.getDraft(new TrmHmatser())));
     }
 
     @PostAuthorize("hasPermission(this.trmhmatserMapping.toDomain(returnObject.body),'ehr-TrmHmatser-Get')")
-    @ApiOperation(value = "Get", tags = {"TrmHmatser" },  notes = "Get")
+    @ApiOperation(value = "获取班主任", tags = {"班主任" },  notes = "获取班主任")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmhmatsers/{trmhmatser_id}")
     public ResponseEntity<TrmHmatserDTO> get(@PathVariable("trmhmatser_id") String trmhmatser_id) {
         TrmHmatser domain = trmhmatserService.get(trmhmatser_id);
@@ -138,7 +138,7 @@ public class TrmHmatserResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmHmatser-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TrmHmatser" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"班主任" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmhmatsers/fetchdefault")
 	public ResponseEntity<List<TrmHmatserDTO>> fetchDefault(TrmHmatserSearchContext context) {
         Page<TrmHmatser> domains = trmhmatserService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmHmatserResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmHmatser-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TrmHmatser" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"班主任" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmhmatsers/searchdefault")
 	public ResponseEntity<Page<TrmHmatserDTO>> searchDefault(@RequestBody TrmHmatserSearchContext context) {
         Page<TrmHmatser> domains = trmhmatserService.searchDefault(context) ;

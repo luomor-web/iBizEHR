@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.sal.service.ISalStddsznService;
 import cn.ibizlab.ehr.core.sal.filter.SalStddsznSearchContext;
 
 @Slf4j
-@Api(tags = {"SalStddszn" })
+@Api(tags = {"独生子女标准" })
 @RestController("WebApi-salstddszn")
 @RequestMapping("")
 public class SalStddsznResource {
@@ -47,14 +47,14 @@ public class SalStddsznResource {
     public SalStddsznMapping salstddsznMapping;
 
     @PreAuthorize("hasPermission(this.salstddsznMapping.toDomain(#salstddszndto),'ehr-SalStddszn-Save')")
-    @ApiOperation(value = "Save", tags = {"SalStddszn" },  notes = "Save")
+    @ApiOperation(value = "保存独生子女标准", tags = {"独生子女标准" },  notes = "保存独生子女标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstddszns/save")
     public ResponseEntity<Boolean> save(@RequestBody SalStddsznDTO salstddszndto) {
         return ResponseEntity.status(HttpStatus.OK).body(salstddsznService.save(salstddsznMapping.toDomain(salstddszndto)));
     }
 
     @PreAuthorize("hasPermission(this.salstddsznMapping.toDomain(#salstddszndtos),'ehr-SalStddszn-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SalStddszn" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存独生子女标准", tags = {"独生子女标准" },  notes = "批量保存独生子女标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstddszns/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SalStddsznDTO> salstddszndtos) {
         salstddsznService.saveBatch(salstddsznMapping.toDomain(salstddszndtos));
@@ -62,7 +62,7 @@ public class SalStddsznResource {
     }
 
     @PreAuthorize("hasPermission(this.salstddsznService.get(#salstddszn_id),'ehr-SalStddszn-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SalStddszn" },  notes = "Remove")
+    @ApiOperation(value = "删除独生子女标准", tags = {"独生子女标准" },  notes = "删除独生子女标准")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstddszns/{salstddszn_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("salstddszn_id") String salstddszn_id) {
@@ -70,7 +70,7 @@ public class SalStddsznResource {
     }
 
     @PreAuthorize("hasPermission(this.salstddsznService.getSalstddsznByIds(#ids),'ehr-SalStddszn-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SalStddszn" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除独生子女标准", tags = {"独生子女标准" },  notes = "批量删除独生子女标准")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salstddszns/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         salstddsznService.removeBatch(ids);
@@ -78,7 +78,7 @@ public class SalStddsznResource {
     }
 
     @PostAuthorize("hasPermission(this.salstddsznMapping.toDomain(returnObject.body),'ehr-SalStddszn-Get')")
-    @ApiOperation(value = "Get", tags = {"SalStddszn" },  notes = "Get")
+    @ApiOperation(value = "获取独生子女标准", tags = {"独生子女标准" },  notes = "获取独生子女标准")
 	@RequestMapping(method = RequestMethod.GET, value = "/salstddszns/{salstddszn_id}")
     public ResponseEntity<SalStddsznDTO> get(@PathVariable("salstddszn_id") String salstddszn_id) {
         SalStddszn domain = salstddsznService.get(salstddszn_id);
@@ -87,7 +87,7 @@ public class SalStddsznResource {
     }
 
     @PreAuthorize("hasPermission(this.salstddsznService.get(#salstddszn_id),'ehr-SalStddszn-Update')")
-    @ApiOperation(value = "Update", tags = {"SalStddszn" },  notes = "Update")
+    @ApiOperation(value = "更新独生子女标准", tags = {"独生子女标准" },  notes = "更新独生子女标准")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstddszns/{salstddszn_id}")
     @Transactional
     public ResponseEntity<SalStddsznDTO> update(@PathVariable("salstddszn_id") String salstddszn_id, @RequestBody SalStddsznDTO salstddszndto) {
@@ -99,7 +99,7 @@ public class SalStddsznResource {
     }
 
     @PreAuthorize("hasPermission(this.salstddsznService.getSalstddsznByEntities(this.salstddsznMapping.toDomain(#salstddszndtos)),'ehr-SalStddszn-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SalStddszn" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新独生子女标准", tags = {"独生子女标准" },  notes = "批量更新独生子女标准")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salstddszns/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SalStddsznDTO> salstddszndtos) {
         salstddsznService.updateBatch(salstddsznMapping.toDomain(salstddszndtos));
@@ -107,7 +107,7 @@ public class SalStddsznResource {
     }
 
     @PreAuthorize("hasPermission(this.salstddsznMapping.toDomain(#salstddszndto),'ehr-SalStddszn-Create')")
-    @ApiOperation(value = "Create", tags = {"SalStddszn" },  notes = "Create")
+    @ApiOperation(value = "新建独生子女标准", tags = {"独生子女标准" },  notes = "新建独生子女标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstddszns")
     @Transactional
     public ResponseEntity<SalStddsznDTO> create(@RequestBody SalStddsznDTO salstddszndto) {
@@ -118,27 +118,27 @@ public class SalStddsznResource {
     }
 
     @PreAuthorize("hasPermission(this.salstddsznMapping.toDomain(#salstddszndtos),'ehr-SalStddszn-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SalStddszn" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建独生子女标准", tags = {"独生子女标准" },  notes = "批量新建独生子女标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstddszns/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SalStddsznDTO> salstddszndtos) {
         salstddsznService.createBatch(salstddsznMapping.toDomain(salstddszndtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"SalStddszn" },  notes = "GetDraft")
+    @ApiOperation(value = "获取独生子女标准草稿", tags = {"独生子女标准" },  notes = "获取独生子女标准草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/salstddszns/getdraft")
     public ResponseEntity<SalStddsznDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salstddsznMapping.toDto(salstddsznService.getDraft(new SalStddszn())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"SalStddszn" },  notes = "CheckKey")
+    @ApiOperation(value = "检查独生子女标准", tags = {"独生子女标准" },  notes = "检查独生子女标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/salstddszns/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SalStddsznDTO salstddszndto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salstddsznService.checkKey(salstddsznMapping.toDomain(salstddszndto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalStddszn-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SalStddszn" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"独生子女标准" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/salstddszns/fetchdefault")
 	public ResponseEntity<List<SalStddsznDTO>> fetchDefault(SalStddsznSearchContext context) {
         Page<SalStddszn> domains = salstddsznService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SalStddsznResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalStddszn-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SalStddszn" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"独生子女标准" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/salstddszns/searchdefault")
 	public ResponseEntity<Page<SalStddsznDTO>> searchDefault(@RequestBody SalStddsznSearchContext context) {
         Page<SalStddszn> domains = salstddsznService.searchDefault(context) ;

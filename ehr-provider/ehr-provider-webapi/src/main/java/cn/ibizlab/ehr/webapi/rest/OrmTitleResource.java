@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.orm.service.IOrmTitleService;
 import cn.ibizlab.ehr.core.orm.filter.OrmTitleSearchContext;
 
 @Slf4j
-@Api(tags = {"OrmTitle" })
+@Api(tags = {"头衔管理" })
 @RestController("WebApi-ormtitle")
 @RequestMapping("")
 public class OrmTitleResource {
@@ -47,7 +47,7 @@ public class OrmTitleResource {
     public OrmTitleMapping ormtitleMapping;
 
     @PreAuthorize("hasPermission(this.ormtitleService.get(#ormtitle_id),'ehr-OrmTitle-Remove')")
-    @ApiOperation(value = "Remove", tags = {"OrmTitle" },  notes = "Remove")
+    @ApiOperation(value = "删除头衔管理", tags = {"头衔管理" },  notes = "删除头衔管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormtitles/{ormtitle_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("ormtitle_id") String ormtitle_id) {
@@ -55,7 +55,7 @@ public class OrmTitleResource {
     }
 
     @PreAuthorize("hasPermission(this.ormtitleService.getOrmtitleByIds(#ids),'ehr-OrmTitle-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"OrmTitle" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除头衔管理", tags = {"头衔管理" },  notes = "批量删除头衔管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormtitles/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         ormtitleService.removeBatch(ids);
@@ -63,7 +63,7 @@ public class OrmTitleResource {
     }
 
     @PreAuthorize("hasPermission(this.ormtitleService.get(#ormtitle_id),'ehr-OrmTitle-Update')")
-    @ApiOperation(value = "Update", tags = {"OrmTitle" },  notes = "Update")
+    @ApiOperation(value = "更新头衔管理", tags = {"头衔管理" },  notes = "更新头衔管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormtitles/{ormtitle_id}")
     @Transactional
     public ResponseEntity<OrmTitleDTO> update(@PathVariable("ormtitle_id") String ormtitle_id, @RequestBody OrmTitleDTO ormtitledto) {
@@ -75,42 +75,42 @@ public class OrmTitleResource {
     }
 
     @PreAuthorize("hasPermission(this.ormtitleService.getOrmtitleByEntities(this.ormtitleMapping.toDomain(#ormtitledtos)),'ehr-OrmTitle-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"OrmTitle" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新头衔管理", tags = {"头衔管理" },  notes = "批量更新头衔管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormtitles/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrmTitleDTO> ormtitledtos) {
         ormtitleService.updateBatch(ormtitleMapping.toDomain(ormtitledtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"OrmTitle" },  notes = "GetDraft")
+    @ApiOperation(value = "获取头衔管理草稿", tags = {"头衔管理" },  notes = "获取头衔管理草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormtitles/getdraft")
     public ResponseEntity<OrmTitleDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormtitleMapping.toDto(ormtitleService.getDraft(new OrmTitle())));
     }
 
     @PreAuthorize("hasPermission(this.ormtitleMapping.toDomain(#ormtitledto),'ehr-OrmTitle-Save')")
-    @ApiOperation(value = "Save", tags = {"OrmTitle" },  notes = "Save")
+    @ApiOperation(value = "保存头衔管理", tags = {"头衔管理" },  notes = "保存头衔管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormtitles/save")
     public ResponseEntity<Boolean> save(@RequestBody OrmTitleDTO ormtitledto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormtitleService.save(ormtitleMapping.toDomain(ormtitledto)));
     }
 
     @PreAuthorize("hasPermission(this.ormtitleMapping.toDomain(#ormtitledtos),'ehr-OrmTitle-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"OrmTitle" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存头衔管理", tags = {"头衔管理" },  notes = "批量保存头衔管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormtitles/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<OrmTitleDTO> ormtitledtos) {
         ormtitleService.saveBatch(ormtitleMapping.toDomain(ormtitledtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"OrmTitle" },  notes = "CheckKey")
+    @ApiOperation(value = "检查头衔管理", tags = {"头衔管理" },  notes = "检查头衔管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormtitles/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody OrmTitleDTO ormtitledto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormtitleService.checkKey(ormtitleMapping.toDomain(ormtitledto)));
     }
 
     @PostAuthorize("hasPermission(this.ormtitleMapping.toDomain(returnObject.body),'ehr-OrmTitle-Get')")
-    @ApiOperation(value = "Get", tags = {"OrmTitle" },  notes = "Get")
+    @ApiOperation(value = "获取头衔管理", tags = {"头衔管理" },  notes = "获取头衔管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormtitles/{ormtitle_id}")
     public ResponseEntity<OrmTitleDTO> get(@PathVariable("ormtitle_id") String ormtitle_id) {
         OrmTitle domain = ormtitleService.get(ormtitle_id);
@@ -119,7 +119,7 @@ public class OrmTitleResource {
     }
 
     @PreAuthorize("hasPermission(this.ormtitleMapping.toDomain(#ormtitledto),'ehr-OrmTitle-Create')")
-    @ApiOperation(value = "Create", tags = {"OrmTitle" },  notes = "Create")
+    @ApiOperation(value = "新建头衔管理", tags = {"头衔管理" },  notes = "新建头衔管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormtitles")
     @Transactional
     public ResponseEntity<OrmTitleDTO> create(@RequestBody OrmTitleDTO ormtitledto) {
@@ -130,7 +130,7 @@ public class OrmTitleResource {
     }
 
     @PreAuthorize("hasPermission(this.ormtitleMapping.toDomain(#ormtitledtos),'ehr-OrmTitle-Create')")
-    @ApiOperation(value = "createBatch", tags = {"OrmTitle" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建头衔管理", tags = {"头衔管理" },  notes = "批量新建头衔管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormtitles/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrmTitleDTO> ormtitledtos) {
         ormtitleService.createBatch(ormtitleMapping.toDomain(ormtitledtos));
@@ -138,7 +138,7 @@ public class OrmTitleResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmTitle-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"OrmTitle" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"头衔管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormtitles/fetchdefault")
 	public ResponseEntity<List<OrmTitleDTO>> fetchDefault(OrmTitleSearchContext context) {
         Page<OrmTitle> domains = ormtitleService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class OrmTitleResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmTitle-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"OrmTitle" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"头衔管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormtitles/searchdefault")
 	public ResponseEntity<Page<OrmTitleDTO>> searchDefault(@RequestBody OrmTitleSearchContext context) {
         Page<OrmTitle> domains = ormtitleService.searchDefault(context) ;

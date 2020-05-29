@@ -74,6 +74,9 @@
         <!--httpClient -->
         <openfeign-httpclient.version>11.0</openfeign-httpclient.version>
 
+        <!--xxl-job定时服务 -->
+        <xxl-job.version>2.1.0</xxl-job.version>
+
     </properties>
 
     <dependencyManagement>
@@ -249,6 +252,12 @@
                 <version>${openfeign-httpclient.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -306,6 +315,12 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+        </dependency>
+
+        <!--xxl-job定时服务 -->
+        <dependency>
+            <groupId>com.xuxueli</groupId>
+            <artifactId>xxl-job-core</artifactId>
         </dependency>
 
         <!--  Error -->

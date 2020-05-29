@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.orm.service.IORMXMRLCBService;
 import cn.ibizlab.ehr.core.orm.filter.ORMXMRLCBSearchContext;
 
 @Slf4j
-@Api(tags = {"ORMXMRLCB" })
+@Api(tags = {"项目人力成本" })
 @RestController("WebApi-ormxmrlcb")
 @RequestMapping("")
 public class ORMXMRLCBResource {
@@ -47,7 +47,7 @@ public class ORMXMRLCBResource {
     public ORMXMRLCBMapping ormxmrlcbMapping;
 
     @PreAuthorize("hasPermission(this.ormxmrlcbMapping.toDomain(#ormxmrlcbdto),'ehr-ORMXMRLCB-Create')")
-    @ApiOperation(value = "Create", tags = {"ORMXMRLCB" },  notes = "Create")
+    @ApiOperation(value = "新建项目人力成本", tags = {"项目人力成本" },  notes = "新建项目人力成本")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmrlcbs")
     @Transactional
     public ResponseEntity<ORMXMRLCBDTO> create(@RequestBody ORMXMRLCBDTO ormxmrlcbdto) {
@@ -58,7 +58,7 @@ public class ORMXMRLCBResource {
     }
 
     @PreAuthorize("hasPermission(this.ormxmrlcbMapping.toDomain(#ormxmrlcbdtos),'ehr-ORMXMRLCB-Create')")
-    @ApiOperation(value = "createBatch", tags = {"ORMXMRLCB" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建项目人力成本", tags = {"项目人力成本" },  notes = "批量新建项目人力成本")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmrlcbs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMXMRLCBDTO> ormxmrlcbdtos) {
         ormxmrlcbService.createBatch(ormxmrlcbMapping.toDomain(ormxmrlcbdtos));
@@ -66,7 +66,7 @@ public class ORMXMRLCBResource {
     }
 
     @PreAuthorize("hasPermission(this.ormxmrlcbService.get(#ormxmrlcb_id),'ehr-ORMXMRLCB-Remove')")
-    @ApiOperation(value = "Remove", tags = {"ORMXMRLCB" },  notes = "Remove")
+    @ApiOperation(value = "删除项目人力成本", tags = {"项目人力成本" },  notes = "删除项目人力成本")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmrlcbs/{ormxmrlcb_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("ormxmrlcb_id") String ormxmrlcb_id) {
@@ -74,7 +74,7 @@ public class ORMXMRLCBResource {
     }
 
     @PreAuthorize("hasPermission(this.ormxmrlcbService.getOrmxmrlcbByIds(#ids),'ehr-ORMXMRLCB-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"ORMXMRLCB" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除项目人力成本", tags = {"项目人力成本" },  notes = "批量删除项目人力成本")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmrlcbs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         ormxmrlcbService.removeBatch(ids);
@@ -82,7 +82,7 @@ public class ORMXMRLCBResource {
     }
 
     @PreAuthorize("hasPermission(this.ormxmrlcbService.get(#ormxmrlcb_id),'ehr-ORMXMRLCB-Update')")
-    @ApiOperation(value = "Update", tags = {"ORMXMRLCB" },  notes = "Update")
+    @ApiOperation(value = "更新项目人力成本", tags = {"项目人力成本" },  notes = "更新项目人力成本")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormxmrlcbs/{ormxmrlcb_id}")
     @Transactional
     public ResponseEntity<ORMXMRLCBDTO> update(@PathVariable("ormxmrlcb_id") String ormxmrlcb_id, @RequestBody ORMXMRLCBDTO ormxmrlcbdto) {
@@ -94,42 +94,42 @@ public class ORMXMRLCBResource {
     }
 
     @PreAuthorize("hasPermission(this.ormxmrlcbService.getOrmxmrlcbByEntities(this.ormxmrlcbMapping.toDomain(#ormxmrlcbdtos)),'ehr-ORMXMRLCB-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"ORMXMRLCB" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新项目人力成本", tags = {"项目人力成本" },  notes = "批量更新项目人力成本")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormxmrlcbs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMXMRLCBDTO> ormxmrlcbdtos) {
         ormxmrlcbService.updateBatch(ormxmrlcbMapping.toDomain(ormxmrlcbdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"ORMXMRLCB" },  notes = "CheckKey")
+    @ApiOperation(value = "检查项目人力成本", tags = {"项目人力成本" },  notes = "检查项目人力成本")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmrlcbs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMXMRLCBDTO ormxmrlcbdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormxmrlcbService.checkKey(ormxmrlcbMapping.toDomain(ormxmrlcbdto)));
     }
 
     @PreAuthorize("hasPermission(this.ormxmrlcbMapping.toDomain(#ormxmrlcbdto),'ehr-ORMXMRLCB-Save')")
-    @ApiOperation(value = "Save", tags = {"ORMXMRLCB" },  notes = "Save")
+    @ApiOperation(value = "保存项目人力成本", tags = {"项目人力成本" },  notes = "保存项目人力成本")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmrlcbs/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMXMRLCBDTO ormxmrlcbdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormxmrlcbService.save(ormxmrlcbMapping.toDomain(ormxmrlcbdto)));
     }
 
     @PreAuthorize("hasPermission(this.ormxmrlcbMapping.toDomain(#ormxmrlcbdtos),'ehr-ORMXMRLCB-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"ORMXMRLCB" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存项目人力成本", tags = {"项目人力成本" },  notes = "批量保存项目人力成本")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmrlcbs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMXMRLCBDTO> ormxmrlcbdtos) {
         ormxmrlcbService.saveBatch(ormxmrlcbMapping.toDomain(ormxmrlcbdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"ORMXMRLCB" },  notes = "GetDraft")
+    @ApiOperation(value = "获取项目人力成本草稿", tags = {"项目人力成本" },  notes = "获取项目人力成本草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormxmrlcbs/getdraft")
     public ResponseEntity<ORMXMRLCBDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormxmrlcbMapping.toDto(ormxmrlcbService.getDraft(new ORMXMRLCB())));
     }
 
     @PostAuthorize("hasPermission(this.ormxmrlcbMapping.toDomain(returnObject.body),'ehr-ORMXMRLCB-Get')")
-    @ApiOperation(value = "Get", tags = {"ORMXMRLCB" },  notes = "Get")
+    @ApiOperation(value = "获取项目人力成本", tags = {"项目人力成本" },  notes = "获取项目人力成本")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormxmrlcbs/{ormxmrlcb_id}")
     public ResponseEntity<ORMXMRLCBDTO> get(@PathVariable("ormxmrlcb_id") String ormxmrlcb_id) {
         ORMXMRLCB domain = ormxmrlcbService.get(ormxmrlcb_id);
@@ -138,7 +138,7 @@ public class ORMXMRLCBResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-CBCX-all')")
-	@ApiOperation(value = "fetch项目人工成本查询", tags = {"ORMXMRLCB" } ,notes = "fetch项目人工成本查询")
+	@ApiOperation(value = "获取项目人工成本查询", tags = {"项目人力成本" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrlcbs/fetchcbcx")
 	public ResponseEntity<List<ORMXMRLCBDTO>> fetchCBCX(ORMXMRLCBSearchContext context) {
         Page<ORMXMRLCB> domains = ormxmrlcbService.searchCBCX(context) ;
@@ -151,7 +151,7 @@ public class ORMXMRLCBResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-CBCX-all')")
-	@ApiOperation(value = "search项目人工成本查询", tags = {"ORMXMRLCB" } ,notes = "search项目人工成本查询")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人力成本" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrlcbs/searchcbcx")
 	public ResponseEntity<Page<ORMXMRLCBDTO>> searchCBCX(@RequestBody ORMXMRLCBSearchContext context) {
         Page<ORMXMRLCB> domains = ormxmrlcbService.searchCBCX(context) ;
@@ -159,7 +159,7 @@ public class ORMXMRLCBResource {
                 .body(new PageImpl(ormxmrlcbMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMXMRLCB" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"项目人力成本" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmrlcbs/fetchdefault")
 	public ResponseEntity<List<ORMXMRLCBDTO>> fetchDefault(ORMXMRLCBSearchContext context) {
         Page<ORMXMRLCB> domains = ormxmrlcbService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class ORMXMRLCBResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMXMRLCB-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"ORMXMRLCB" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人力成本" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmrlcbs/searchdefault")
 	public ResponseEntity<Page<ORMXMRLCBDTO>> searchDefault(@RequestBody ORMXMRLCBSearchContext context) {
         Page<ORMXMRLCB> domains = ormxmrlcbService.searchDefault(context) ;

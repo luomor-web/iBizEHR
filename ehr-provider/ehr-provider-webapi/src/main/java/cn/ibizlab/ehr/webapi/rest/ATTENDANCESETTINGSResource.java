@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.att.service.IATTENDANCESETTINGSService;
 import cn.ibizlab.ehr.core.att.filter.ATTENDANCESETTINGSSearchContext;
 
 @Slf4j
-@Api(tags = {"ATTENDANCESETTINGS" })
+@Api(tags = {"考勤人员" })
 @RestController("WebApi-attendancesettings")
 @RequestMapping("")
 public class ATTENDANCESETTINGSResource {
@@ -47,7 +47,7 @@ public class ATTENDANCESETTINGSResource {
     public ATTENDANCESETTINGSMapping attendancesettingsMapping;
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESETTINGS-AddToKqz-all')")
-    @ApiOperation(value = "添加到考勤组（废弃）", tags = {"ATTENDANCESETTINGS" },  notes = "添加到考勤组（废弃）")
+    @ApiOperation(value = "添加到考勤组（废弃）", tags = {"考勤人员" },  notes = "添加到考勤组（废弃）")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancesettings/{attendancesettings_id}/addtokqz")
     @Transactional
     public ResponseEntity<ATTENDANCESETTINGSDTO> addToKqz(@PathVariable("attendancesettings_id") String attendancesettings_id, @RequestBody ATTENDANCESETTINGSDTO attendancesettingsdto) {
@@ -59,7 +59,7 @@ public class ATTENDANCESETTINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancesettingsService.get(#attendancesettings_id),'ehr-ATTENDANCESETTINGS-Update')")
-    @ApiOperation(value = "Update", tags = {"ATTENDANCESETTINGS" },  notes = "Update")
+    @ApiOperation(value = "更新考勤人员", tags = {"考勤人员" },  notes = "更新考勤人员")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancesettings/{attendancesettings_id}")
     @Transactional
     public ResponseEntity<ATTENDANCESETTINGSDTO> update(@PathVariable("attendancesettings_id") String attendancesettings_id, @RequestBody ATTENDANCESETTINGSDTO attendancesettingsdto) {
@@ -71,7 +71,7 @@ public class ATTENDANCESETTINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancesettingsService.getAttendancesettingsByEntities(this.attendancesettingsMapping.toDomain(#attendancesettingsdtos)),'ehr-ATTENDANCESETTINGS-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"ATTENDANCESETTINGS" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新考勤人员", tags = {"考勤人员" },  notes = "批量更新考勤人员")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancesettings/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDANCESETTINGSDTO> attendancesettingsdtos) {
         attendancesettingsService.updateBatch(attendancesettingsMapping.toDomain(attendancesettingsdtos));
@@ -79,7 +79,7 @@ public class ATTENDANCESETTINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancesettingsMapping.toDomain(#attendancesettingsdto),'ehr-ATTENDANCESETTINGS-Create')")
-    @ApiOperation(value = "Create", tags = {"ATTENDANCESETTINGS" },  notes = "Create")
+    @ApiOperation(value = "新建考勤人员", tags = {"考勤人员" },  notes = "新建考勤人员")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancesettings")
     @Transactional
     public ResponseEntity<ATTENDANCESETTINGSDTO> create(@RequestBody ATTENDANCESETTINGSDTO attendancesettingsdto) {
@@ -90,7 +90,7 @@ public class ATTENDANCESETTINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancesettingsMapping.toDomain(#attendancesettingsdtos),'ehr-ATTENDANCESETTINGS-Create')")
-    @ApiOperation(value = "createBatch", tags = {"ATTENDANCESETTINGS" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建考勤人员", tags = {"考勤人员" },  notes = "批量新建考勤人员")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancesettings/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDANCESETTINGSDTO> attendancesettingsdtos) {
         attendancesettingsService.createBatch(attendancesettingsMapping.toDomain(attendancesettingsdtos));
@@ -98,14 +98,14 @@ public class ATTENDANCESETTINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancesettingsMapping.toDomain(#attendancesettingsdto),'ehr-ATTENDANCESETTINGS-Save')")
-    @ApiOperation(value = "Save", tags = {"ATTENDANCESETTINGS" },  notes = "Save")
+    @ApiOperation(value = "保存考勤人员", tags = {"考勤人员" },  notes = "保存考勤人员")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancesettings/save")
     public ResponseEntity<Boolean> save(@RequestBody ATTENDANCESETTINGSDTO attendancesettingsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendancesettingsService.save(attendancesettingsMapping.toDomain(attendancesettingsdto)));
     }
 
     @PreAuthorize("hasPermission(this.attendancesettingsMapping.toDomain(#attendancesettingsdtos),'ehr-ATTENDANCESETTINGS-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"ATTENDANCESETTINGS" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存考勤人员", tags = {"考勤人员" },  notes = "批量保存考勤人员")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancesettings/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENDANCESETTINGSDTO> attendancesettingsdtos) {
         attendancesettingsService.saveBatch(attendancesettingsMapping.toDomain(attendancesettingsdtos));
@@ -113,7 +113,7 @@ public class ATTENDANCESETTINGSResource {
     }
 
     @PostAuthorize("hasPermission(this.attendancesettingsMapping.toDomain(returnObject.body),'ehr-ATTENDANCESETTINGS-Get')")
-    @ApiOperation(value = "Get", tags = {"ATTENDANCESETTINGS" },  notes = "Get")
+    @ApiOperation(value = "获取考勤人员", tags = {"考勤人员" },  notes = "获取考勤人员")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendancesettings/{attendancesettings_id}")
     public ResponseEntity<ATTENDANCESETTINGSDTO> get(@PathVariable("attendancesettings_id") String attendancesettings_id) {
         ATTENDANCESETTINGS domain = attendancesettingsService.get(attendancesettings_id);
@@ -122,7 +122,7 @@ public class ATTENDANCESETTINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancesettingsService.get(#attendancesettings_id),'ehr-ATTENDANCESETTINGS-Remove')")
-    @ApiOperation(value = "Remove", tags = {"ATTENDANCESETTINGS" },  notes = "Remove")
+    @ApiOperation(value = "删除考勤人员", tags = {"考勤人员" },  notes = "删除考勤人员")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancesettings/{attendancesettings_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("attendancesettings_id") String attendancesettings_id) {
@@ -130,27 +130,27 @@ public class ATTENDANCESETTINGSResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancesettingsService.getAttendancesettingsByIds(#ids),'ehr-ATTENDANCESETTINGS-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"ATTENDANCESETTINGS" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除考勤人员", tags = {"考勤人员" },  notes = "批量删除考勤人员")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancesettings/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         attendancesettingsService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"ATTENDANCESETTINGS" },  notes = "CheckKey")
+    @ApiOperation(value = "检查考勤人员", tags = {"考勤人员" },  notes = "检查考勤人员")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancesettings/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ATTENDANCESETTINGSDTO attendancesettingsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attendancesettingsService.checkKey(attendancesettingsMapping.toDomain(attendancesettingsdto)));
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"ATTENDANCESETTINGS" },  notes = "GetDraft")
+    @ApiOperation(value = "获取考勤人员草稿", tags = {"考勤人员" },  notes = "获取考勤人员草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendancesettings/getdraft")
     public ResponseEntity<ATTENDANCESETTINGSDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attendancesettingsMapping.toDto(attendancesettingsService.getDraft(new ATTENDANCESETTINGS())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESETTINGS-YGSZKQ-all')")
-	@ApiOperation(value = "fetch员工设置考勤视图", tags = {"ATTENDANCESETTINGS" } ,notes = "fetch员工设置考勤视图")
+	@ApiOperation(value = "获取员工设置考勤视图", tags = {"考勤人员" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/attendancesettings/fetchygszkq")
 	public ResponseEntity<List<ATTENDANCESETTINGSDTO>> fetchYGSZKQ(ATTENDANCESETTINGSSearchContext context) {
         Page<ATTENDANCESETTINGS> domains = attendancesettingsService.searchYGSZKQ(context) ;
@@ -163,7 +163,7 @@ public class ATTENDANCESETTINGSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESETTINGS-YGSZKQ-all')")
-	@ApiOperation(value = "search员工设置考勤视图", tags = {"ATTENDANCESETTINGS" } ,notes = "search员工设置考勤视图")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤人员" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/attendancesettings/searchygszkq")
 	public ResponseEntity<Page<ATTENDANCESETTINGSDTO>> searchYGSZKQ(@RequestBody ATTENDANCESETTINGSSearchContext context) {
         Page<ATTENDANCESETTINGS> domains = attendancesettingsService.searchYGSZKQ(context) ;
@@ -171,7 +171,7 @@ public class ATTENDANCESETTINGSResource {
                 .body(new PageImpl(attendancesettingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESETTINGS-FYGZZKQ-all')")
-	@ApiOperation(value = "fetch非员工终止考勤视图", tags = {"ATTENDANCESETTINGS" } ,notes = "fetch非员工终止考勤视图")
+	@ApiOperation(value = "获取非员工终止考勤视图", tags = {"考勤人员" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/attendancesettings/fetchfygzzkq")
 	public ResponseEntity<List<ATTENDANCESETTINGSDTO>> fetchFYGZZKQ(ATTENDANCESETTINGSSearchContext context) {
         Page<ATTENDANCESETTINGS> domains = attendancesettingsService.searchFYGZZKQ(context) ;
@@ -184,7 +184,7 @@ public class ATTENDANCESETTINGSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESETTINGS-FYGZZKQ-all')")
-	@ApiOperation(value = "search非员工终止考勤视图", tags = {"ATTENDANCESETTINGS" } ,notes = "search非员工终止考勤视图")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤人员" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/attendancesettings/searchfygzzkq")
 	public ResponseEntity<Page<ATTENDANCESETTINGSDTO>> searchFYGZZKQ(@RequestBody ATTENDANCESETTINGSSearchContext context) {
         Page<ATTENDANCESETTINGS> domains = attendancesettingsService.searchFYGZZKQ(context) ;
@@ -192,7 +192,7 @@ public class ATTENDANCESETTINGSResource {
                 .body(new PageImpl(attendancesettingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESETTINGS-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDANCESETTINGS" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤人员" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/attendancesettings/fetchdefault")
 	public ResponseEntity<List<ATTENDANCESETTINGSDTO>> fetchDefault(ATTENDANCESETTINGSSearchContext context) {
         Page<ATTENDANCESETTINGS> domains = attendancesettingsService.searchDefault(context) ;
@@ -205,7 +205,7 @@ public class ATTENDANCESETTINGSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCESETTINGS-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDANCESETTINGS" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤人员" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/attendancesettings/searchdefault")
 	public ResponseEntity<Page<ATTENDANCESETTINGSDTO>> searchDefault(@RequestBody ATTENDANCESETTINGSSearchContext context) {
         Page<ATTENDANCESETTINGS> domains = attendancesettingsService.searchDefault(context) ;

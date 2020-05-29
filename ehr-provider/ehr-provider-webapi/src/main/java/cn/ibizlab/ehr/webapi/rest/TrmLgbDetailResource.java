@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITrmLgbDetailService;
 import cn.ibizlab.ehr.core.trm.filter.TrmLgbDetailSearchContext;
 
 @Slf4j
-@Api(tags = {"TrmLgbDetail" })
+@Api(tags = {"老干部明细" })
 @RestController("WebApi-trmlgbdetail")
 @RequestMapping("")
 public class TrmLgbDetailResource {
@@ -47,7 +47,7 @@ public class TrmLgbDetailResource {
     public TrmLgbDetailMapping trmlgbdetailMapping;
 
     @PreAuthorize("hasPermission(this.trmlgbdetailService.get(#trmlgbdetail_id),'ehr-TrmLgbDetail-Update')")
-    @ApiOperation(value = "Update", tags = {"TrmLgbDetail" },  notes = "Update")
+    @ApiOperation(value = "更新老干部明细", tags = {"老干部明细" },  notes = "更新老干部明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmlgbdetails/{trmlgbdetail_id}")
     @Transactional
     public ResponseEntity<TrmLgbDetailDTO> update(@PathVariable("trmlgbdetail_id") String trmlgbdetail_id, @RequestBody TrmLgbDetailDTO trmlgbdetaildto) {
@@ -59,7 +59,7 @@ public class TrmLgbDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.trmlgbdetailService.getTrmlgbdetailByEntities(this.trmlgbdetailMapping.toDomain(#trmlgbdetaildtos)),'ehr-TrmLgbDetail-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TrmLgbDetail" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新老干部明细", tags = {"老干部明细" },  notes = "批量更新老干部明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmlgbdetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TrmLgbDetailDTO> trmlgbdetaildtos) {
         trmlgbdetailService.updateBatch(trmlgbdetailMapping.toDomain(trmlgbdetaildtos));
@@ -67,7 +67,7 @@ public class TrmLgbDetailResource {
     }
 
     @PostAuthorize("hasPermission(this.trmlgbdetailMapping.toDomain(returnObject.body),'ehr-TrmLgbDetail-Get')")
-    @ApiOperation(value = "Get", tags = {"TrmLgbDetail" },  notes = "Get")
+    @ApiOperation(value = "获取老干部明细", tags = {"老干部明细" },  notes = "获取老干部明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmlgbdetails/{trmlgbdetail_id}")
     public ResponseEntity<TrmLgbDetailDTO> get(@PathVariable("trmlgbdetail_id") String trmlgbdetail_id) {
         TrmLgbDetail domain = trmlgbdetailService.get(trmlgbdetail_id);
@@ -76,34 +76,34 @@ public class TrmLgbDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.trmlgbdetailMapping.toDomain(#trmlgbdetaildto),'ehr-TrmLgbDetail-Save')")
-    @ApiOperation(value = "Save", tags = {"TrmLgbDetail" },  notes = "Save")
+    @ApiOperation(value = "保存老干部明细", tags = {"老干部明细" },  notes = "保存老干部明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbdetails/save")
     public ResponseEntity<Boolean> save(@RequestBody TrmLgbDetailDTO trmlgbdetaildto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmlgbdetailService.save(trmlgbdetailMapping.toDomain(trmlgbdetaildto)));
     }
 
     @PreAuthorize("hasPermission(this.trmlgbdetailMapping.toDomain(#trmlgbdetaildtos),'ehr-TrmLgbDetail-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TrmLgbDetail" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存老干部明细", tags = {"老干部明细" },  notes = "批量保存老干部明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbdetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TrmLgbDetailDTO> trmlgbdetaildtos) {
         trmlgbdetailService.saveBatch(trmlgbdetailMapping.toDomain(trmlgbdetaildtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TrmLgbDetail" },  notes = "CheckKey")
+    @ApiOperation(value = "检查老干部明细", tags = {"老干部明细" },  notes = "检查老干部明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbdetails/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmLgbDetailDTO trmlgbdetaildto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmlgbdetailService.checkKey(trmlgbdetailMapping.toDomain(trmlgbdetaildto)));
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"TrmLgbDetail" },  notes = "GetDraft")
+    @ApiOperation(value = "获取老干部明细草稿", tags = {"老干部明细" },  notes = "获取老干部明细草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmlgbdetails/getdraft")
     public ResponseEntity<TrmLgbDetailDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmlgbdetailMapping.toDto(trmlgbdetailService.getDraft(new TrmLgbDetail())));
     }
 
     @PreAuthorize("hasPermission(this.trmlgbdetailMapping.toDomain(#trmlgbdetaildto),'ehr-TrmLgbDetail-Create')")
-    @ApiOperation(value = "Create", tags = {"TrmLgbDetail" },  notes = "Create")
+    @ApiOperation(value = "新建老干部明细", tags = {"老干部明细" },  notes = "新建老干部明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbdetails")
     @Transactional
     public ResponseEntity<TrmLgbDetailDTO> create(@RequestBody TrmLgbDetailDTO trmlgbdetaildto) {
@@ -114,7 +114,7 @@ public class TrmLgbDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.trmlgbdetailMapping.toDomain(#trmlgbdetaildtos),'ehr-TrmLgbDetail-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TrmLgbDetail" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建老干部明细", tags = {"老干部明细" },  notes = "批量新建老干部明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmlgbdetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmLgbDetailDTO> trmlgbdetaildtos) {
         trmlgbdetailService.createBatch(trmlgbdetailMapping.toDomain(trmlgbdetaildtos));
@@ -122,7 +122,7 @@ public class TrmLgbDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.trmlgbdetailService.get(#trmlgbdetail_id),'ehr-TrmLgbDetail-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TrmLgbDetail" },  notes = "Remove")
+    @ApiOperation(value = "删除老干部明细", tags = {"老干部明细" },  notes = "删除老干部明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmlgbdetails/{trmlgbdetail_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trmlgbdetail_id") String trmlgbdetail_id) {
@@ -130,7 +130,7 @@ public class TrmLgbDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.trmlgbdetailService.getTrmlgbdetailByIds(#ids),'ehr-TrmLgbDetail-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TrmLgbDetail" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除老干部明细", tags = {"老干部明细" },  notes = "批量删除老干部明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmlgbdetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmlgbdetailService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class TrmLgbDetailResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmLgbDetail-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TrmLgbDetail" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"老干部明细" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmlgbdetails/fetchdefault")
 	public ResponseEntity<List<TrmLgbDetailDTO>> fetchDefault(TrmLgbDetailSearchContext context) {
         Page<TrmLgbDetail> domains = trmlgbdetailService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmLgbDetailResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmLgbDetail-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TrmLgbDetail" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"老干部明细" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmlgbdetails/searchdefault")
 	public ResponseEntity<Page<TrmLgbDetailDTO>> searchDefault(@RequestBody TrmLgbDetailSearchContext context) {
         Page<TrmLgbDetail> domains = trmlgbdetailService.searchDefault(context) ;

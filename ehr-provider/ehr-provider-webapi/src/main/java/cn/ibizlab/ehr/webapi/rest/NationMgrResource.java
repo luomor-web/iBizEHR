@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.INationMgrService;
 import cn.ibizlab.ehr.core.pim.filter.NationMgrSearchContext;
 
 @Slf4j
-@Api(tags = {"NationMgr" })
+@Api(tags = {"民族管理" })
 @RestController("WebApi-nationmgr")
 @RequestMapping("")
 public class NationMgrResource {
@@ -47,14 +47,14 @@ public class NationMgrResource {
     public NationMgrMapping nationmgrMapping;
 
     @PreAuthorize("hasPermission(this.nationmgrMapping.toDomain(#nationmgrdto),'ehr-NationMgr-Save')")
-    @ApiOperation(value = "Save", tags = {"NationMgr" },  notes = "Save")
+    @ApiOperation(value = "保存民族管理", tags = {"民族管理" },  notes = "保存民族管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/nationmgrs/save")
     public ResponseEntity<Boolean> save(@RequestBody NationMgrDTO nationmgrdto) {
         return ResponseEntity.status(HttpStatus.OK).body(nationmgrService.save(nationmgrMapping.toDomain(nationmgrdto)));
     }
 
     @PreAuthorize("hasPermission(this.nationmgrMapping.toDomain(#nationmgrdtos),'ehr-NationMgr-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"NationMgr" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存民族管理", tags = {"民族管理" },  notes = "批量保存民族管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/nationmgrs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<NationMgrDTO> nationmgrdtos) {
         nationmgrService.saveBatch(nationmgrMapping.toDomain(nationmgrdtos));
@@ -62,7 +62,7 @@ public class NationMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.nationmgrService.get(#nationmgr_id),'ehr-NationMgr-Remove')")
-    @ApiOperation(value = "Remove", tags = {"NationMgr" },  notes = "Remove")
+    @ApiOperation(value = "删除民族管理", tags = {"民族管理" },  notes = "删除民族管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/nationmgrs/{nationmgr_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("nationmgr_id") String nationmgr_id) {
@@ -70,27 +70,27 @@ public class NationMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.nationmgrService.getNationmgrByIds(#ids),'ehr-NationMgr-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"NationMgr" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除民族管理", tags = {"民族管理" },  notes = "批量删除民族管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/nationmgrs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         nationmgrService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"NationMgr" },  notes = "GetDraft")
+    @ApiOperation(value = "获取民族管理草稿", tags = {"民族管理" },  notes = "获取民族管理草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/nationmgrs/getdraft")
     public ResponseEntity<NationMgrDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(nationmgrMapping.toDto(nationmgrService.getDraft(new NationMgr())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"NationMgr" },  notes = "CheckKey")
+    @ApiOperation(value = "检查民族管理", tags = {"民族管理" },  notes = "检查民族管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/nationmgrs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody NationMgrDTO nationmgrdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(nationmgrService.checkKey(nationmgrMapping.toDomain(nationmgrdto)));
     }
 
     @PreAuthorize("hasPermission(this.nationmgrMapping.toDomain(#nationmgrdto),'ehr-NationMgr-Create')")
-    @ApiOperation(value = "Create", tags = {"NationMgr" },  notes = "Create")
+    @ApiOperation(value = "新建民族管理", tags = {"民族管理" },  notes = "新建民族管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/nationmgrs")
     @Transactional
     public ResponseEntity<NationMgrDTO> create(@RequestBody NationMgrDTO nationmgrdto) {
@@ -101,7 +101,7 @@ public class NationMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.nationmgrMapping.toDomain(#nationmgrdtos),'ehr-NationMgr-Create')")
-    @ApiOperation(value = "createBatch", tags = {"NationMgr" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建民族管理", tags = {"民族管理" },  notes = "批量新建民族管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/nationmgrs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<NationMgrDTO> nationmgrdtos) {
         nationmgrService.createBatch(nationmgrMapping.toDomain(nationmgrdtos));
@@ -109,7 +109,7 @@ public class NationMgrResource {
     }
 
     @PostAuthorize("hasPermission(this.nationmgrMapping.toDomain(returnObject.body),'ehr-NationMgr-Get')")
-    @ApiOperation(value = "Get", tags = {"NationMgr" },  notes = "Get")
+    @ApiOperation(value = "获取民族管理", tags = {"民族管理" },  notes = "获取民族管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/nationmgrs/{nationmgr_id}")
     public ResponseEntity<NationMgrDTO> get(@PathVariable("nationmgr_id") String nationmgr_id) {
         NationMgr domain = nationmgrService.get(nationmgr_id);
@@ -118,7 +118,7 @@ public class NationMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.nationmgrService.get(#nationmgr_id),'ehr-NationMgr-Update')")
-    @ApiOperation(value = "Update", tags = {"NationMgr" },  notes = "Update")
+    @ApiOperation(value = "更新民族管理", tags = {"民族管理" },  notes = "更新民族管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/nationmgrs/{nationmgr_id}")
     @Transactional
     public ResponseEntity<NationMgrDTO> update(@PathVariable("nationmgr_id") String nationmgr_id, @RequestBody NationMgrDTO nationmgrdto) {
@@ -130,7 +130,7 @@ public class NationMgrResource {
     }
 
     @PreAuthorize("hasPermission(this.nationmgrService.getNationmgrByEntities(this.nationmgrMapping.toDomain(#nationmgrdtos)),'ehr-NationMgr-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"NationMgr" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新民族管理", tags = {"民族管理" },  notes = "批量更新民族管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/nationmgrs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<NationMgrDTO> nationmgrdtos) {
         nationmgrService.updateBatch(nationmgrMapping.toDomain(nationmgrdtos));
@@ -138,7 +138,7 @@ public class NationMgrResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-NationMgr-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"NationMgr" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"民族管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/nationmgrs/fetchdefault")
 	public ResponseEntity<List<NationMgrDTO>> fetchDefault(NationMgrSearchContext context) {
         Page<NationMgr> domains = nationmgrService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class NationMgrResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-NationMgr-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"NationMgr" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"民族管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/nationmgrs/searchdefault")
 	public ResponseEntity<Page<NationMgrDTO>> searchDefault(@RequestBody NationMgrSearchContext context) {
         Page<NationMgr> domains = nationmgrService.searchDefault(context) ;

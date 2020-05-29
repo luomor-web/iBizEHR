@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmTdzwxxService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmTdzwxxSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmTdzwxx" })
+@Api(tags = {"投递职位摘要信息" })
 @RestController("WebApi-pcmtdzwxx")
 @RequestMapping("")
 public class PcmTdzwxxResource {
@@ -47,7 +47,7 @@ public class PcmTdzwxxResource {
     public PcmTdzwxxMapping pcmtdzwxxMapping;
 
     @PreAuthorize("hasPermission(this.pcmtdzwxxMapping.toDomain(#pcmtdzwxxdto),'ehr-PcmTdzwxx-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmTdzwxx" },  notes = "Create")
+    @ApiOperation(value = "新建投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "新建投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtdzwxxes")
     @Transactional
     public ResponseEntity<PcmTdzwxxDTO> create(@RequestBody PcmTdzwxxDTO pcmtdzwxxdto) {
@@ -58,21 +58,21 @@ public class PcmTdzwxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtdzwxxMapping.toDomain(#pcmtdzwxxdtos),'ehr-PcmTdzwxx-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmTdzwxx" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "批量新建投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtdzwxxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmTdzwxxDTO> pcmtdzwxxdtos) {
         pcmtdzwxxService.createBatch(pcmtdzwxxMapping.toDomain(pcmtdzwxxdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmTdzwxx" },  notes = "GetDraft")
+    @ApiOperation(value = "获取投递职位摘要信息草稿", tags = {"投递职位摘要信息" },  notes = "获取投递职位摘要信息草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmtdzwxxes/getdraft")
     public ResponseEntity<PcmTdzwxxDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmtdzwxxMapping.toDto(pcmtdzwxxService.getDraft(new PcmTdzwxx())));
     }
 
     @PreAuthorize("hasPermission(this.pcmtdzwxxService.get(#pcmtdzwxx_id),'ehr-PcmTdzwxx-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmTdzwxx" },  notes = "Remove")
+    @ApiOperation(value = "删除投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "删除投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmtdzwxxes/{pcmtdzwxx_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmtdzwxx_id") String pcmtdzwxx_id) {
@@ -80,7 +80,7 @@ public class PcmTdzwxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtdzwxxService.getPcmtdzwxxByIds(#ids),'ehr-PcmTdzwxx-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmTdzwxx" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "批量删除投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmtdzwxxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmtdzwxxService.removeBatch(ids);
@@ -88,14 +88,14 @@ public class PcmTdzwxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtdzwxxMapping.toDomain(#pcmtdzwxxdto),'ehr-PcmTdzwxx-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmTdzwxx" },  notes = "Save")
+    @ApiOperation(value = "保存投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "保存投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtdzwxxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmTdzwxxDTO pcmtdzwxxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmtdzwxxService.save(pcmtdzwxxMapping.toDomain(pcmtdzwxxdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmtdzwxxMapping.toDomain(#pcmtdzwxxdtos),'ehr-PcmTdzwxx-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmTdzwxx" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "批量保存投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtdzwxxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmTdzwxxDTO> pcmtdzwxxdtos) {
         pcmtdzwxxService.saveBatch(pcmtdzwxxMapping.toDomain(pcmtdzwxxdtos));
@@ -103,7 +103,7 @@ public class PcmTdzwxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtdzwxxService.get(#pcmtdzwxx_id),'ehr-PcmTdzwxx-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmTdzwxx" },  notes = "Update")
+    @ApiOperation(value = "更新投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "更新投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmtdzwxxes/{pcmtdzwxx_id}")
     @Transactional
     public ResponseEntity<PcmTdzwxxDTO> update(@PathVariable("pcmtdzwxx_id") String pcmtdzwxx_id, @RequestBody PcmTdzwxxDTO pcmtdzwxxdto) {
@@ -115,21 +115,21 @@ public class PcmTdzwxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtdzwxxService.getPcmtdzwxxByEntities(this.pcmtdzwxxMapping.toDomain(#pcmtdzwxxdtos)),'ehr-PcmTdzwxx-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmTdzwxx" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "批量更新投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmtdzwxxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmTdzwxxDTO> pcmtdzwxxdtos) {
         pcmtdzwxxService.updateBatch(pcmtdzwxxMapping.toDomain(pcmtdzwxxdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmTdzwxx" },  notes = "CheckKey")
+    @ApiOperation(value = "检查投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "检查投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtdzwxxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmTdzwxxDTO pcmtdzwxxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmtdzwxxService.checkKey(pcmtdzwxxMapping.toDomain(pcmtdzwxxdto)));
     }
 
     @PostAuthorize("hasPermission(this.pcmtdzwxxMapping.toDomain(returnObject.body),'ehr-PcmTdzwxx-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmTdzwxx" },  notes = "Get")
+    @ApiOperation(value = "获取投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "获取投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmtdzwxxes/{pcmtdzwxx_id}")
     public ResponseEntity<PcmTdzwxxDTO> get(@PathVariable("pcmtdzwxx_id") String pcmtdzwxx_id) {
         PcmTdzwxx domain = pcmtdzwxxService.get(pcmtdzwxx_id);
@@ -138,7 +138,7 @@ public class PcmTdzwxxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTdzwxx-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmTdzwxx" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"投递职位摘要信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtdzwxxes/fetchdefault")
 	public ResponseEntity<List<PcmTdzwxxDTO>> fetchDefault(PcmTdzwxxSearchContext context) {
         Page<PcmTdzwxx> domains = pcmtdzwxxService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmTdzwxxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTdzwxx-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmTdzwxx" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"投递职位摘要信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtdzwxxes/searchdefault")
 	public ResponseEntity<Page<PcmTdzwxxDTO>> searchDefault(@RequestBody PcmTdzwxxSearchContext context) {
         Page<PcmTdzwxx> domains = pcmtdzwxxService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PcmTdzwxxResource {
                 .body(new PageImpl(pcmtdzwxxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pcmtdzwxxMapping.toDomain(#pcmtdzwxxdto),'ehr-PcmTdzwxx-Create')")
-    @ApiOperation(value = "CreateByPcmProfile", tags = {"PcmTdzwxx" },  notes = "CreateByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息建立投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "根据应聘者基本信息建立投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmtdzwxxes")
     @Transactional
     public ResponseEntity<PcmTdzwxxDTO> createByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmTdzwxxDTO pcmtdzwxxdto) {
@@ -171,7 +171,7 @@ public class PcmTdzwxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtdzwxxMapping.toDomain(#pcmtdzwxxdtos),'ehr-PcmTdzwxx-Create')")
-    @ApiOperation(value = "createBatchByPcmProfile", tags = {"PcmTdzwxx" },  notes = "createBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量建立投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "根据应聘者基本信息批量建立投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmtdzwxxes/batch")
     public ResponseEntity<Boolean> createBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PcmTdzwxxDTO> pcmtdzwxxdtos) {
         List<PcmTdzwxx> domainlist=pcmtdzwxxMapping.toDomain(pcmtdzwxxdtos);
@@ -182,7 +182,7 @@ public class PcmTdzwxxResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPcmProfile", tags = {"PcmTdzwxx" },  notes = "GetDraftByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息获取投递职位摘要信息草稿", tags = {"投递职位摘要信息" },  notes = "根据应聘者基本信息获取投递职位摘要信息草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmtdzwxxes/getdraft")
     public ResponseEntity<PcmTdzwxxDTO> getDraftByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id) {
         PcmTdzwxx domain = new PcmTdzwxx();
@@ -191,7 +191,7 @@ public class PcmTdzwxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtdzwxxService.get(#pcmtdzwxx_id),'ehr-PcmTdzwxx-Remove')")
-    @ApiOperation(value = "RemoveByPcmProfile", tags = {"PcmTdzwxx" },  notes = "RemoveByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息删除投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "根据应聘者基本信息删除投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmtdzwxxes/{pcmtdzwxx_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmtdzwxx_id") String pcmtdzwxx_id) {
@@ -199,7 +199,7 @@ public class PcmTdzwxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtdzwxxService.getPcmtdzwxxByIds(#ids),'ehr-PcmTdzwxx-Remove')")
-    @ApiOperation(value = "RemoveBatchByPcmProfile", tags = {"PcmTdzwxx" },  notes = "RemoveBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量删除投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "根据应聘者基本信息批量删除投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmtdzwxxes/batch")
     public ResponseEntity<Boolean> removeBatchByPcmProfile(@RequestBody List<String> ids) {
         pcmtdzwxxService.removeBatch(ids);
@@ -207,7 +207,7 @@ public class PcmTdzwxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtdzwxxMapping.toDomain(#pcmtdzwxxdto),'ehr-PcmTdzwxx-Save')")
-    @ApiOperation(value = "SaveByPcmProfile", tags = {"PcmTdzwxx" },  notes = "SaveByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息保存投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "根据应聘者基本信息保存投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmtdzwxxes/save")
     public ResponseEntity<Boolean> saveByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmTdzwxxDTO pcmtdzwxxdto) {
         PcmTdzwxx domain = pcmtdzwxxMapping.toDomain(pcmtdzwxxdto);
@@ -216,7 +216,7 @@ public class PcmTdzwxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtdzwxxMapping.toDomain(#pcmtdzwxxdtos),'ehr-PcmTdzwxx-Save')")
-    @ApiOperation(value = "SaveBatchByPcmProfile", tags = {"PcmTdzwxx" },  notes = "SaveBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量保存投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "根据应聘者基本信息批量保存投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmtdzwxxes/savebatch")
     public ResponseEntity<Boolean> saveBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PcmTdzwxxDTO> pcmtdzwxxdtos) {
         List<PcmTdzwxx> domainlist=pcmtdzwxxMapping.toDomain(pcmtdzwxxdtos);
@@ -228,7 +228,7 @@ public class PcmTdzwxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtdzwxxService.get(#pcmtdzwxx_id),'ehr-PcmTdzwxx-Update')")
-    @ApiOperation(value = "UpdateByPcmProfile", tags = {"PcmTdzwxx" },  notes = "UpdateByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息更新投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "根据应聘者基本信息更新投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmtdzwxxes/{pcmtdzwxx_id}")
     @Transactional
     public ResponseEntity<PcmTdzwxxDTO> updateByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmtdzwxx_id") String pcmtdzwxx_id, @RequestBody PcmTdzwxxDTO pcmtdzwxxdto) {
@@ -241,7 +241,7 @@ public class PcmTdzwxxResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtdzwxxService.getPcmtdzwxxByEntities(this.pcmtdzwxxMapping.toDomain(#pcmtdzwxxdtos)),'ehr-PcmTdzwxx-Update')")
-    @ApiOperation(value = "UpdateBatchByPcmProfile", tags = {"PcmTdzwxx" },  notes = "UpdateBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量更新投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "根据应聘者基本信息批量更新投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmtdzwxxes/batch")
     public ResponseEntity<Boolean> updateBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PcmTdzwxxDTO> pcmtdzwxxdtos) {
         List<PcmTdzwxx> domainlist=pcmtdzwxxMapping.toDomain(pcmtdzwxxdtos);
@@ -252,14 +252,14 @@ public class PcmTdzwxxResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByPcmProfile", tags = {"PcmTdzwxx" },  notes = "CheckKeyByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息检查投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "根据应聘者基本信息检查投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmtdzwxxes/checkkey")
     public ResponseEntity<Boolean> checkKeyByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmTdzwxxDTO pcmtdzwxxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmtdzwxxService.checkKey(pcmtdzwxxMapping.toDomain(pcmtdzwxxdto)));
     }
 
     @PostAuthorize("hasPermission(this.pcmtdzwxxMapping.toDomain(returnObject.body),'ehr-PcmTdzwxx-Get')")
-    @ApiOperation(value = "GetByPcmProfile", tags = {"PcmTdzwxx" },  notes = "GetByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息获取投递职位摘要信息", tags = {"投递职位摘要信息" },  notes = "根据应聘者基本信息获取投递职位摘要信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmtdzwxxes/{pcmtdzwxx_id}")
     public ResponseEntity<PcmTdzwxxDTO> getByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmtdzwxx_id") String pcmtdzwxx_id) {
         PcmTdzwxx domain = pcmtdzwxxService.get(pcmtdzwxx_id);
@@ -268,7 +268,7 @@ public class PcmTdzwxxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTdzwxx-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPcmProfile", tags = {"PcmTdzwxx" } ,notes = "fetchDEFAULTByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息获取DEFAULT", tags = {"投递职位摘要信息" } ,notes = "根据应聘者基本信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmtdzwxxes/fetchdefault")
 	public ResponseEntity<List<PcmTdzwxxDTO>> fetchPcmTdzwxxDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id,PcmTdzwxxSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
@@ -282,7 +282,7 @@ public class PcmTdzwxxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTdzwxx-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPcmProfile", tags = {"PcmTdzwxx" } ,notes = "searchDEFAULTByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息查询DEFAULT", tags = {"投递职位摘要信息" } ,notes = "根据应聘者基本信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmtdzwxxes/searchdefault")
 	public ResponseEntity<Page<PcmTdzwxxDTO>> searchPcmTdzwxxDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmTdzwxxSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITRMSTAFFService;
 import cn.ibizlab.ehr.core.trm.filter.TRMSTAFFSearchContext;
 
 @Slf4j
-@Api(tags = {"TRMSTAFF" })
+@Api(tags = {"员工需求填报" })
 @RestController("WebApi-trmstaff")
 @RequestMapping("")
 public class TRMSTAFFResource {
@@ -47,7 +47,7 @@ public class TRMSTAFFResource {
     public TRMSTAFFMapping trmstaffMapping;
 
     @PreAuthorize("hasPermission(this.trmstaffService.get(#trmstaff_id),'ehr-TRMSTAFF-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TRMSTAFF" },  notes = "Remove")
+    @ApiOperation(value = "删除员工需求填报", tags = {"员工需求填报" },  notes = "删除员工需求填报")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmstaffs/{trmstaff_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trmstaff_id") String trmstaff_id) {
@@ -55,21 +55,21 @@ public class TRMSTAFFResource {
     }
 
     @PreAuthorize("hasPermission(this.trmstaffService.getTrmstaffByIds(#ids),'ehr-TRMSTAFF-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TRMSTAFF" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除员工需求填报", tags = {"员工需求填报" },  notes = "批量删除员工需求填报")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmstaffs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmstaffService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TRMSTAFF" },  notes = "CheckKey")
+    @ApiOperation(value = "检查员工需求填报", tags = {"员工需求填报" },  notes = "检查员工需求填报")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstaffs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TRMSTAFFDTO trmstaffdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmstaffService.checkKey(trmstaffMapping.toDomain(trmstaffdto)));
     }
 
     @PreAuthorize("hasPermission(this.trmstaffService.get(#trmstaff_id),'ehr-TRMSTAFF-Update')")
-    @ApiOperation(value = "Update", tags = {"TRMSTAFF" },  notes = "Update")
+    @ApiOperation(value = "更新员工需求填报", tags = {"员工需求填报" },  notes = "更新员工需求填报")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmstaffs/{trmstaff_id}")
     @Transactional
     public ResponseEntity<TRMSTAFFDTO> update(@PathVariable("trmstaff_id") String trmstaff_id, @RequestBody TRMSTAFFDTO trmstaffdto) {
@@ -81,7 +81,7 @@ public class TRMSTAFFResource {
     }
 
     @PreAuthorize("hasPermission(this.trmstaffService.getTrmstaffByEntities(this.trmstaffMapping.toDomain(#trmstaffdtos)),'ehr-TRMSTAFF-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TRMSTAFF" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新员工需求填报", tags = {"员工需求填报" },  notes = "批量更新员工需求填报")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmstaffs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TRMSTAFFDTO> trmstaffdtos) {
         trmstaffService.updateBatch(trmstaffMapping.toDomain(trmstaffdtos));
@@ -89,7 +89,7 @@ public class TRMSTAFFResource {
     }
 
     @PreAuthorize("hasPermission(this.trmstaffMapping.toDomain(#trmstaffdto),'ehr-TRMSTAFF-Create')")
-    @ApiOperation(value = "Create", tags = {"TRMSTAFF" },  notes = "Create")
+    @ApiOperation(value = "新建员工需求填报", tags = {"员工需求填报" },  notes = "新建员工需求填报")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstaffs")
     @Transactional
     public ResponseEntity<TRMSTAFFDTO> create(@RequestBody TRMSTAFFDTO trmstaffdto) {
@@ -100,21 +100,21 @@ public class TRMSTAFFResource {
     }
 
     @PreAuthorize("hasPermission(this.trmstaffMapping.toDomain(#trmstaffdtos),'ehr-TRMSTAFF-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TRMSTAFF" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建员工需求填报", tags = {"员工需求填报" },  notes = "批量新建员工需求填报")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstaffs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TRMSTAFFDTO> trmstaffdtos) {
         trmstaffService.createBatch(trmstaffMapping.toDomain(trmstaffdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"TRMSTAFF" },  notes = "GetDraft")
+    @ApiOperation(value = "获取员工需求填报草稿", tags = {"员工需求填报" },  notes = "获取员工需求填报草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmstaffs/getdraft")
     public ResponseEntity<TRMSTAFFDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmstaffMapping.toDto(trmstaffService.getDraft(new TRMSTAFF())));
     }
 
     @PostAuthorize("hasPermission(this.trmstaffMapping.toDomain(returnObject.body),'ehr-TRMSTAFF-Get')")
-    @ApiOperation(value = "Get", tags = {"TRMSTAFF" },  notes = "Get")
+    @ApiOperation(value = "获取员工需求填报", tags = {"员工需求填报" },  notes = "获取员工需求填报")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmstaffs/{trmstaff_id}")
     public ResponseEntity<TRMSTAFFDTO> get(@PathVariable("trmstaff_id") String trmstaff_id) {
         TRMSTAFF domain = trmstaffService.get(trmstaff_id);
@@ -123,14 +123,14 @@ public class TRMSTAFFResource {
     }
 
     @PreAuthorize("hasPermission(this.trmstaffMapping.toDomain(#trmstaffdto),'ehr-TRMSTAFF-Save')")
-    @ApiOperation(value = "Save", tags = {"TRMSTAFF" },  notes = "Save")
+    @ApiOperation(value = "保存员工需求填报", tags = {"员工需求填报" },  notes = "保存员工需求填报")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstaffs/save")
     public ResponseEntity<Boolean> save(@RequestBody TRMSTAFFDTO trmstaffdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmstaffService.save(trmstaffMapping.toDomain(trmstaffdto)));
     }
 
     @PreAuthorize("hasPermission(this.trmstaffMapping.toDomain(#trmstaffdtos),'ehr-TRMSTAFF-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TRMSTAFF" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存员工需求填报", tags = {"员工需求填报" },  notes = "批量保存员工需求填报")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmstaffs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TRMSTAFFDTO> trmstaffdtos) {
         trmstaffService.saveBatch(trmstaffMapping.toDomain(trmstaffdtos));
@@ -138,7 +138,7 @@ public class TRMSTAFFResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAFF-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TRMSTAFF" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"员工需求填报" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmstaffs/fetchdefault")
 	public ResponseEntity<List<TRMSTAFFDTO>> fetchDefault(TRMSTAFFSearchContext context) {
         Page<TRMSTAFF> domains = trmstaffService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TRMSTAFFResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TRMSTAFF-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TRMSTAFF" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"员工需求填报" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmstaffs/searchdefault")
 	public ResponseEntity<Page<TRMSTAFFDTO>> searchDefault(@RequestBody TRMSTAFFSearchContext context) {
         Page<TRMSTAFF> domains = trmstaffService.searchDefault(context) ;

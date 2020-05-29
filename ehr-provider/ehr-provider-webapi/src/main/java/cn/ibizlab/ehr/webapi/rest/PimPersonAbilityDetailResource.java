@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimPersonAbilityDetailService;
 import cn.ibizlab.ehr.core.pim.filter.PimPersonAbilityDetailSearchContext;
 
 @Slf4j
-@Api(tags = {"PimPersonAbilityDetail" })
+@Api(tags = {"员工能力明细" })
 @RestController("WebApi-pimpersonabilitydetail")
 @RequestMapping("")
 public class PimPersonAbilityDetailResource {
@@ -46,14 +46,14 @@ public class PimPersonAbilityDetailResource {
     @Lazy
     public PimPersonAbilityDetailMapping pimpersonabilitydetailMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"PimPersonAbilityDetail" },  notes = "CheckKey")
+    @ApiOperation(value = "检查员工能力明细", tags = {"员工能力明细" },  notes = "检查员工能力明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpersonabilitydetails/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimPersonAbilityDetailDTO pimpersonabilitydetaildto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimpersonabilitydetailService.checkKey(pimpersonabilitydetailMapping.toDomain(pimpersonabilitydetaildto)));
     }
 
     @PreAuthorize("hasPermission(this.pimpersonabilitydetailMapping.toDomain(#pimpersonabilitydetaildto),'ehr-PimPersonAbilityDetail-Create')")
-    @ApiOperation(value = "Create", tags = {"PimPersonAbilityDetail" },  notes = "Create")
+    @ApiOperation(value = "新建员工能力明细", tags = {"员工能力明细" },  notes = "新建员工能力明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpersonabilitydetails")
     @Transactional
     public ResponseEntity<PimPersonAbilityDetailDTO> create(@RequestBody PimPersonAbilityDetailDTO pimpersonabilitydetaildto) {
@@ -64,7 +64,7 @@ public class PimPersonAbilityDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.pimpersonabilitydetailMapping.toDomain(#pimpersonabilitydetaildtos),'ehr-PimPersonAbilityDetail-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimPersonAbilityDetail" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建员工能力明细", tags = {"员工能力明细" },  notes = "批量新建员工能力明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpersonabilitydetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimPersonAbilityDetailDTO> pimpersonabilitydetaildtos) {
         pimpersonabilitydetailService.createBatch(pimpersonabilitydetailMapping.toDomain(pimpersonabilitydetaildtos));
@@ -72,14 +72,14 @@ public class PimPersonAbilityDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.pimpersonabilitydetailMapping.toDomain(#pimpersonabilitydetaildto),'ehr-PimPersonAbilityDetail-Save')")
-    @ApiOperation(value = "Save", tags = {"PimPersonAbilityDetail" },  notes = "Save")
+    @ApiOperation(value = "保存员工能力明细", tags = {"员工能力明细" },  notes = "保存员工能力明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpersonabilitydetails/save")
     public ResponseEntity<Boolean> save(@RequestBody PimPersonAbilityDetailDTO pimpersonabilitydetaildto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimpersonabilitydetailService.save(pimpersonabilitydetailMapping.toDomain(pimpersonabilitydetaildto)));
     }
 
     @PreAuthorize("hasPermission(this.pimpersonabilitydetailMapping.toDomain(#pimpersonabilitydetaildtos),'ehr-PimPersonAbilityDetail-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimPersonAbilityDetail" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存员工能力明细", tags = {"员工能力明细" },  notes = "批量保存员工能力明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpersonabilitydetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimPersonAbilityDetailDTO> pimpersonabilitydetaildtos) {
         pimpersonabilitydetailService.saveBatch(pimpersonabilitydetailMapping.toDomain(pimpersonabilitydetaildtos));
@@ -87,7 +87,7 @@ public class PimPersonAbilityDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.pimpersonabilitydetailService.get(#pimpersonabilitydetail_id),'ehr-PimPersonAbilityDetail-Update')")
-    @ApiOperation(value = "Update", tags = {"PimPersonAbilityDetail" },  notes = "Update")
+    @ApiOperation(value = "更新员工能力明细", tags = {"员工能力明细" },  notes = "更新员工能力明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpersonabilitydetails/{pimpersonabilitydetail_id}")
     @Transactional
     public ResponseEntity<PimPersonAbilityDetailDTO> update(@PathVariable("pimpersonabilitydetail_id") String pimpersonabilitydetail_id, @RequestBody PimPersonAbilityDetailDTO pimpersonabilitydetaildto) {
@@ -99,7 +99,7 @@ public class PimPersonAbilityDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.pimpersonabilitydetailService.getPimpersonabilitydetailByEntities(this.pimpersonabilitydetailMapping.toDomain(#pimpersonabilitydetaildtos)),'ehr-PimPersonAbilityDetail-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimPersonAbilityDetail" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新员工能力明细", tags = {"员工能力明细" },  notes = "批量更新员工能力明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpersonabilitydetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimPersonAbilityDetailDTO> pimpersonabilitydetaildtos) {
         pimpersonabilitydetailService.updateBatch(pimpersonabilitydetailMapping.toDomain(pimpersonabilitydetaildtos));
@@ -107,7 +107,7 @@ public class PimPersonAbilityDetailResource {
     }
 
     @PostAuthorize("hasPermission(this.pimpersonabilitydetailMapping.toDomain(returnObject.body),'ehr-PimPersonAbilityDetail-Get')")
-    @ApiOperation(value = "Get", tags = {"PimPersonAbilityDetail" },  notes = "Get")
+    @ApiOperation(value = "获取员工能力明细", tags = {"员工能力明细" },  notes = "获取员工能力明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpersonabilitydetails/{pimpersonabilitydetail_id}")
     public ResponseEntity<PimPersonAbilityDetailDTO> get(@PathVariable("pimpersonabilitydetail_id") String pimpersonabilitydetail_id) {
         PimPersonAbilityDetail domain = pimpersonabilitydetailService.get(pimpersonabilitydetail_id);
@@ -115,14 +115,14 @@ public class PimPersonAbilityDetailResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimPersonAbilityDetail" },  notes = "GetDraft")
+    @ApiOperation(value = "获取员工能力明细草稿", tags = {"员工能力明细" },  notes = "获取员工能力明细草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpersonabilitydetails/getdraft")
     public ResponseEntity<PimPersonAbilityDetailDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimpersonabilitydetailMapping.toDto(pimpersonabilitydetailService.getDraft(new PimPersonAbilityDetail())));
     }
 
     @PreAuthorize("hasPermission(this.pimpersonabilitydetailService.get(#pimpersonabilitydetail_id),'ehr-PimPersonAbilityDetail-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimPersonAbilityDetail" },  notes = "Remove")
+    @ApiOperation(value = "删除员工能力明细", tags = {"员工能力明细" },  notes = "删除员工能力明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpersonabilitydetails/{pimpersonabilitydetail_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimpersonabilitydetail_id") String pimpersonabilitydetail_id) {
@@ -130,7 +130,7 @@ public class PimPersonAbilityDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.pimpersonabilitydetailService.getPimpersonabilitydetailByIds(#ids),'ehr-PimPersonAbilityDetail-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimPersonAbilityDetail" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除员工能力明细", tags = {"员工能力明细" },  notes = "批量删除员工能力明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpersonabilitydetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimpersonabilitydetailService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class PimPersonAbilityDetailResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPersonAbilityDetail-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimPersonAbilityDetail" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"员工能力明细" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimpersonabilitydetails/fetchdefault")
 	public ResponseEntity<List<PimPersonAbilityDetailDTO>> fetchDefault(PimPersonAbilityDetailSearchContext context) {
         Page<PimPersonAbilityDetail> domains = pimpersonabilitydetailService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimPersonAbilityDetailResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPersonAbilityDetail-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimPersonAbilityDetail" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"员工能力明细" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimpersonabilitydetails/searchdefault")
 	public ResponseEntity<Page<PimPersonAbilityDetailDTO>> searchDefault(@RequestBody PimPersonAbilityDetailSearchContext context) {
         Page<PimPersonAbilityDetail> domains = pimpersonabilitydetailService.searchDefault(context) ;

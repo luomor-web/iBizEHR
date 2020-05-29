@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimSocialSecurityService;
 import cn.ibizlab.ehr.core.pim.filter.PimSocialSecuritySearchContext;
 
 @Slf4j
-@Api(tags = {"PimSocialSecurity" })
+@Api(tags = {"社保信息" })
 @RestController("WebApi-pimsocialsecurity")
 @RequestMapping("")
 public class PimSocialSecurityResource {
@@ -47,7 +47,7 @@ public class PimSocialSecurityResource {
     public PimSocialSecurityMapping pimsocialsecurityMapping;
 
     @PreAuthorize("hasPermission(this.pimsocialsecurityService.get(#pimsocialsecurity_id),'ehr-PimSocialSecurity-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimSocialSecurity" },  notes = "Remove")
+    @ApiOperation(value = "删除社保信息", tags = {"社保信息" },  notes = "删除社保信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimsocialsecurities/{pimsocialsecurity_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimsocialsecurity_id") String pimsocialsecurity_id) {
@@ -55,21 +55,21 @@ public class PimSocialSecurityResource {
     }
 
     @PreAuthorize("hasPermission(this.pimsocialsecurityService.getPimsocialsecurityByIds(#ids),'ehr-PimSocialSecurity-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimSocialSecurity" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除社保信息", tags = {"社保信息" },  notes = "批量删除社保信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimsocialsecurities/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimsocialsecurityService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimSocialSecurity" },  notes = "CheckKey")
+    @ApiOperation(value = "检查社保信息", tags = {"社保信息" },  notes = "检查社保信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsocialsecurities/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimSocialSecurityDTO pimsocialsecuritydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimsocialsecurityService.checkKey(pimsocialsecurityMapping.toDomain(pimsocialsecuritydto)));
     }
 
     @PostAuthorize("hasPermission(this.pimsocialsecurityMapping.toDomain(returnObject.body),'ehr-PimSocialSecurity-Get')")
-    @ApiOperation(value = "Get", tags = {"PimSocialSecurity" },  notes = "Get")
+    @ApiOperation(value = "获取社保信息", tags = {"社保信息" },  notes = "获取社保信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimsocialsecurities/{pimsocialsecurity_id}")
     public ResponseEntity<PimSocialSecurityDTO> get(@PathVariable("pimsocialsecurity_id") String pimsocialsecurity_id) {
         PimSocialSecurity domain = pimsocialsecurityService.get(pimsocialsecurity_id);
@@ -77,14 +77,14 @@ public class PimSocialSecurityResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimSocialSecurity" },  notes = "GetDraft")
+    @ApiOperation(value = "获取社保信息草稿", tags = {"社保信息" },  notes = "获取社保信息草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimsocialsecurities/getdraft")
     public ResponseEntity<PimSocialSecurityDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimsocialsecurityMapping.toDto(pimsocialsecurityService.getDraft(new PimSocialSecurity())));
     }
 
     @PreAuthorize("hasPermission(this.pimsocialsecurityService.get(#pimsocialsecurity_id),'ehr-PimSocialSecurity-Update')")
-    @ApiOperation(value = "Update", tags = {"PimSocialSecurity" },  notes = "Update")
+    @ApiOperation(value = "更新社保信息", tags = {"社保信息" },  notes = "更新社保信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimsocialsecurities/{pimsocialsecurity_id}")
     @Transactional
     public ResponseEntity<PimSocialSecurityDTO> update(@PathVariable("pimsocialsecurity_id") String pimsocialsecurity_id, @RequestBody PimSocialSecurityDTO pimsocialsecuritydto) {
@@ -96,7 +96,7 @@ public class PimSocialSecurityResource {
     }
 
     @PreAuthorize("hasPermission(this.pimsocialsecurityService.getPimsocialsecurityByEntities(this.pimsocialsecurityMapping.toDomain(#pimsocialsecuritydtos)),'ehr-PimSocialSecurity-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimSocialSecurity" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新社保信息", tags = {"社保信息" },  notes = "批量更新社保信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimsocialsecurities/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimSocialSecurityDTO> pimsocialsecuritydtos) {
         pimsocialsecurityService.updateBatch(pimsocialsecurityMapping.toDomain(pimsocialsecuritydtos));
@@ -104,7 +104,7 @@ public class PimSocialSecurityResource {
     }
 
     @PreAuthorize("hasPermission(this.pimsocialsecurityMapping.toDomain(#pimsocialsecuritydto),'ehr-PimSocialSecurity-Create')")
-    @ApiOperation(value = "Create", tags = {"PimSocialSecurity" },  notes = "Create")
+    @ApiOperation(value = "新建社保信息", tags = {"社保信息" },  notes = "新建社保信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsocialsecurities")
     @Transactional
     public ResponseEntity<PimSocialSecurityDTO> create(@RequestBody PimSocialSecurityDTO pimsocialsecuritydto) {
@@ -115,7 +115,7 @@ public class PimSocialSecurityResource {
     }
 
     @PreAuthorize("hasPermission(this.pimsocialsecurityMapping.toDomain(#pimsocialsecuritydtos),'ehr-PimSocialSecurity-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimSocialSecurity" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建社保信息", tags = {"社保信息" },  notes = "批量新建社保信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsocialsecurities/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimSocialSecurityDTO> pimsocialsecuritydtos) {
         pimsocialsecurityService.createBatch(pimsocialsecurityMapping.toDomain(pimsocialsecuritydtos));
@@ -123,14 +123,14 @@ public class PimSocialSecurityResource {
     }
 
     @PreAuthorize("hasPermission(this.pimsocialsecurityMapping.toDomain(#pimsocialsecuritydto),'ehr-PimSocialSecurity-Save')")
-    @ApiOperation(value = "Save", tags = {"PimSocialSecurity" },  notes = "Save")
+    @ApiOperation(value = "保存社保信息", tags = {"社保信息" },  notes = "保存社保信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsocialsecurities/save")
     public ResponseEntity<Boolean> save(@RequestBody PimSocialSecurityDTO pimsocialsecuritydto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimsocialsecurityService.save(pimsocialsecurityMapping.toDomain(pimsocialsecuritydto)));
     }
 
     @PreAuthorize("hasPermission(this.pimsocialsecurityMapping.toDomain(#pimsocialsecuritydtos),'ehr-PimSocialSecurity-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimSocialSecurity" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存社保信息", tags = {"社保信息" },  notes = "批量保存社保信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsocialsecurities/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimSocialSecurityDTO> pimsocialsecuritydtos) {
         pimsocialsecurityService.saveBatch(pimsocialsecurityMapping.toDomain(pimsocialsecuritydtos));
@@ -138,7 +138,7 @@ public class PimSocialSecurityResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSocialSecurity-ZIZHU-all')")
-	@ApiOperation(value = "fetch自助(社保信息)", tags = {"PimSocialSecurity" } ,notes = "fetch自助(社保信息)")
+	@ApiOperation(value = "获取自助(社保信息)", tags = {"社保信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimsocialsecurities/fetchzizhu")
 	public ResponseEntity<List<PimSocialSecurityDTO>> fetchZIZHU(PimSocialSecuritySearchContext context) {
         Page<PimSocialSecurity> domains = pimsocialsecurityService.searchZIZHU(context) ;
@@ -151,7 +151,7 @@ public class PimSocialSecurityResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSocialSecurity-ZIZHU-all')")
-	@ApiOperation(value = "search自助(社保信息)", tags = {"PimSocialSecurity" } ,notes = "search自助(社保信息)")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"社保信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimsocialsecurities/searchzizhu")
 	public ResponseEntity<Page<PimSocialSecurityDTO>> searchZIZHU(@RequestBody PimSocialSecuritySearchContext context) {
         Page<PimSocialSecurity> domains = pimsocialsecurityService.searchZIZHU(context) ;
@@ -159,7 +159,7 @@ public class PimSocialSecurityResource {
                 .body(new PageImpl(pimsocialsecurityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSocialSecurity-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimSocialSecurity" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"社保信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimsocialsecurities/fetchdefault")
 	public ResponseEntity<List<PimSocialSecurityDTO>> fetchDefault(PimSocialSecuritySearchContext context) {
         Page<PimSocialSecurity> domains = pimsocialsecurityService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class PimSocialSecurityResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSocialSecurity-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimSocialSecurity" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"社保信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimsocialsecurities/searchdefault")
 	public ResponseEntity<Page<PimSocialSecurityDTO>> searchDefault(@RequestBody PimSocialSecuritySearchContext context) {
         Page<PimSocialSecurity> domains = pimsocialsecurityService.searchDefault(context) ;
@@ -180,7 +180,7 @@ public class PimSocialSecurityResource {
                 .body(new PageImpl(pimsocialsecurityMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSocialSecurity-JLSS-all')")
-	@ApiOperation(value = "fetch记录所属", tags = {"PimSocialSecurity" } ,notes = "fetch记录所属")
+	@ApiOperation(value = "获取记录所属", tags = {"社保信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimsocialsecurities/fetchjlss")
 	public ResponseEntity<List<PimSocialSecurityDTO>> fetchJLSS(PimSocialSecuritySearchContext context) {
         Page<PimSocialSecurity> domains = pimsocialsecurityService.searchJLSS(context) ;
@@ -193,7 +193,7 @@ public class PimSocialSecurityResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSocialSecurity-JLSS-all')")
-	@ApiOperation(value = "search记录所属", tags = {"PimSocialSecurity" } ,notes = "search记录所属")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"社保信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimsocialsecurities/searchjlss")
 	public ResponseEntity<Page<PimSocialSecurityDTO>> searchJLSS(@RequestBody PimSocialSecuritySearchContext context) {
         Page<PimSocialSecurity> domains = pimsocialsecurityService.searchJLSS(context) ;

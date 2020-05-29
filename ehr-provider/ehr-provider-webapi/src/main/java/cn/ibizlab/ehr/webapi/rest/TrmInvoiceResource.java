@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITrmInvoiceService;
 import cn.ibizlab.ehr.core.trm.filter.TrmInvoiceSearchContext;
 
 @Slf4j
-@Api(tags = {"TrmInvoice" })
+@Api(tags = {"开票信息" })
 @RestController("WebApi-trminvoice")
 @RequestMapping("")
 public class TrmInvoiceResource {
@@ -47,7 +47,7 @@ public class TrmInvoiceResource {
     public TrmInvoiceMapping trminvoiceMapping;
 
     @PreAuthorize("hasPermission(this.trminvoiceMapping.toDomain(#trminvoicedto),'ehr-TrmInvoice-Create')")
-    @ApiOperation(value = "Create", tags = {"TrmInvoice" },  notes = "Create")
+    @ApiOperation(value = "新建开票信息", tags = {"开票信息" },  notes = "新建开票信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/trminvoices")
     @Transactional
     public ResponseEntity<TrmInvoiceDTO> create(@RequestBody TrmInvoiceDTO trminvoicedto) {
@@ -58,7 +58,7 @@ public class TrmInvoiceResource {
     }
 
     @PreAuthorize("hasPermission(this.trminvoiceMapping.toDomain(#trminvoicedtos),'ehr-TrmInvoice-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TrmInvoice" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建开票信息", tags = {"开票信息" },  notes = "批量新建开票信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/trminvoices/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmInvoiceDTO> trminvoicedtos) {
         trminvoiceService.createBatch(trminvoiceMapping.toDomain(trminvoicedtos));
@@ -66,34 +66,34 @@ public class TrmInvoiceResource {
     }
 
     @PreAuthorize("hasPermission(this.trminvoiceMapping.toDomain(#trminvoicedto),'ehr-TrmInvoice-Save')")
-    @ApiOperation(value = "Save", tags = {"TrmInvoice" },  notes = "Save")
+    @ApiOperation(value = "保存开票信息", tags = {"开票信息" },  notes = "保存开票信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/trminvoices/save")
     public ResponseEntity<Boolean> save(@RequestBody TrmInvoiceDTO trminvoicedto) {
         return ResponseEntity.status(HttpStatus.OK).body(trminvoiceService.save(trminvoiceMapping.toDomain(trminvoicedto)));
     }
 
     @PreAuthorize("hasPermission(this.trminvoiceMapping.toDomain(#trminvoicedtos),'ehr-TrmInvoice-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TrmInvoice" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存开票信息", tags = {"开票信息" },  notes = "批量保存开票信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/trminvoices/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TrmInvoiceDTO> trminvoicedtos) {
         trminvoiceService.saveBatch(trminvoiceMapping.toDomain(trminvoicedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"TrmInvoice" },  notes = "GetDraft")
+    @ApiOperation(value = "获取开票信息草稿", tags = {"开票信息" },  notes = "获取开票信息草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trminvoices/getdraft")
     public ResponseEntity<TrmInvoiceDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trminvoiceMapping.toDto(trminvoiceService.getDraft(new TrmInvoice())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TrmInvoice" },  notes = "CheckKey")
+    @ApiOperation(value = "检查开票信息", tags = {"开票信息" },  notes = "检查开票信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/trminvoices/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmInvoiceDTO trminvoicedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trminvoiceService.checkKey(trminvoiceMapping.toDomain(trminvoicedto)));
     }
 
     @PostAuthorize("hasPermission(this.trminvoiceMapping.toDomain(returnObject.body),'ehr-TrmInvoice-Get')")
-    @ApiOperation(value = "Get", tags = {"TrmInvoice" },  notes = "Get")
+    @ApiOperation(value = "获取开票信息", tags = {"开票信息" },  notes = "获取开票信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/trminvoices/{trminvoice_id}")
     public ResponseEntity<TrmInvoiceDTO> get(@PathVariable("trminvoice_id") String trminvoice_id) {
         TrmInvoice domain = trminvoiceService.get(trminvoice_id);
@@ -102,7 +102,7 @@ public class TrmInvoiceResource {
     }
 
     @PreAuthorize("hasPermission(this.trminvoiceService.get(#trminvoice_id),'ehr-TrmInvoice-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TrmInvoice" },  notes = "Remove")
+    @ApiOperation(value = "删除开票信息", tags = {"开票信息" },  notes = "删除开票信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trminvoices/{trminvoice_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trminvoice_id") String trminvoice_id) {
@@ -110,7 +110,7 @@ public class TrmInvoiceResource {
     }
 
     @PreAuthorize("hasPermission(this.trminvoiceService.getTrminvoiceByIds(#ids),'ehr-TrmInvoice-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TrmInvoice" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除开票信息", tags = {"开票信息" },  notes = "批量删除开票信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trminvoices/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trminvoiceService.removeBatch(ids);
@@ -118,7 +118,7 @@ public class TrmInvoiceResource {
     }
 
     @PreAuthorize("hasPermission(this.trminvoiceService.get(#trminvoice_id),'ehr-TrmInvoice-Update')")
-    @ApiOperation(value = "Update", tags = {"TrmInvoice" },  notes = "Update")
+    @ApiOperation(value = "更新开票信息", tags = {"开票信息" },  notes = "更新开票信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trminvoices/{trminvoice_id}")
     @Transactional
     public ResponseEntity<TrmInvoiceDTO> update(@PathVariable("trminvoice_id") String trminvoice_id, @RequestBody TrmInvoiceDTO trminvoicedto) {
@@ -130,7 +130,7 @@ public class TrmInvoiceResource {
     }
 
     @PreAuthorize("hasPermission(this.trminvoiceService.getTrminvoiceByEntities(this.trminvoiceMapping.toDomain(#trminvoicedtos)),'ehr-TrmInvoice-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TrmInvoice" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新开票信息", tags = {"开票信息" },  notes = "批量更新开票信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trminvoices/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TrmInvoiceDTO> trminvoicedtos) {
         trminvoiceService.updateBatch(trminvoiceMapping.toDomain(trminvoicedtos));
@@ -138,7 +138,7 @@ public class TrmInvoiceResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmInvoice-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TrmInvoice" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"开票信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trminvoices/fetchdefault")
 	public ResponseEntity<List<TrmInvoiceDTO>> fetchDefault(TrmInvoiceSearchContext context) {
         Page<TrmInvoice> domains = trminvoiceService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmInvoiceResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmInvoice-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TrmInvoice" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"开票信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trminvoices/searchdefault")
 	public ResponseEntity<Page<TrmInvoiceDTO>> searchDefault(@RequestBody TrmInvoiceSearchContext context) {
         Page<TrmInvoice> domains = trminvoiceService.searchDefault(context) ;

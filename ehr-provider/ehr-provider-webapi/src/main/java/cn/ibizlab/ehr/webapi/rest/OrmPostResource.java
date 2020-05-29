@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.orm.service.IOrmPostService;
 import cn.ibizlab.ehr.core.orm.filter.OrmPostSearchContext;
 
 @Slf4j
-@Api(tags = {"OrmPost" })
+@Api(tags = {"岗位" })
 @RestController("WebApi-ormpost")
 @RequestMapping("")
 public class OrmPostResource {
@@ -47,28 +47,28 @@ public class OrmPostResource {
     public OrmPostMapping ormpostMapping;
 
     @PreAuthorize("hasPermission(this.ormpostMapping.toDomain(#ormpostdto),'ehr-OrmPost-Save')")
-    @ApiOperation(value = "Save", tags = {"OrmPost" },  notes = "Save")
+    @ApiOperation(value = "保存岗位", tags = {"岗位" },  notes = "保存岗位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts/save")
     public ResponseEntity<Boolean> save(@RequestBody OrmPostDTO ormpostdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormpostService.save(ormpostMapping.toDomain(ormpostdto)));
     }
 
     @PreAuthorize("hasPermission(this.ormpostMapping.toDomain(#ormpostdtos),'ehr-OrmPost-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"OrmPost" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存岗位", tags = {"岗位" },  notes = "批量保存岗位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<OrmPostDTO> ormpostdtos) {
         ormpostService.saveBatch(ormpostMapping.toDomain(ormpostdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"OrmPost" },  notes = "CheckKey")
+    @ApiOperation(value = "检查岗位", tags = {"岗位" },  notes = "检查岗位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody OrmPostDTO ormpostdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormpostService.checkKey(ormpostMapping.toDomain(ormpostdto)));
     }
 
     @PreAuthorize("hasPermission(this.ormpostMapping.toDomain(#ormpostdto),'ehr-OrmPost-Create')")
-    @ApiOperation(value = "Create", tags = {"OrmPost" },  notes = "Create")
+    @ApiOperation(value = "新建岗位", tags = {"岗位" },  notes = "新建岗位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts")
     @Transactional
     public ResponseEntity<OrmPostDTO> create(@RequestBody OrmPostDTO ormpostdto) {
@@ -79,7 +79,7 @@ public class OrmPostResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostMapping.toDomain(#ormpostdtos),'ehr-OrmPost-Create')")
-    @ApiOperation(value = "createBatch", tags = {"OrmPost" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建岗位", tags = {"岗位" },  notes = "批量新建岗位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrmPostDTO> ormpostdtos) {
         ormpostService.createBatch(ormpostMapping.toDomain(ormpostdtos));
@@ -87,7 +87,7 @@ public class OrmPostResource {
     }
 
     @PostAuthorize("hasPermission(this.ormpostMapping.toDomain(returnObject.body),'ehr-OrmPost-Get')")
-    @ApiOperation(value = "Get", tags = {"OrmPost" },  notes = "Get")
+    @ApiOperation(value = "获取岗位", tags = {"岗位" },  notes = "获取岗位")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormposts/{ormpost_id}")
     public ResponseEntity<OrmPostDTO> get(@PathVariable("ormpost_id") String ormpost_id) {
         OrmPost domain = ormpostService.get(ormpost_id);
@@ -96,7 +96,7 @@ public class OrmPostResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-SetGwJb-all')")
-    @ApiOperation(value = "计算岗位分类级别", tags = {"OrmPost" },  notes = "计算岗位分类级别")
+    @ApiOperation(value = "计算岗位分类级别", tags = {"岗位" },  notes = "计算岗位分类级别")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormposts/{ormpost_id}/setgwjb")
     @Transactional
     public ResponseEntity<OrmPostDTO> setGwJb(@PathVariable("ormpost_id") String ormpost_id, @RequestBody OrmPostDTO ormpostdto) {
@@ -108,7 +108,7 @@ public class OrmPostResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostService.get(#ormpost_id),'ehr-OrmPost-Update')")
-    @ApiOperation(value = "Update", tags = {"OrmPost" },  notes = "Update")
+    @ApiOperation(value = "更新岗位", tags = {"岗位" },  notes = "更新岗位")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormposts/{ormpost_id}")
     @Transactional
     public ResponseEntity<OrmPostDTO> update(@PathVariable("ormpost_id") String ormpost_id, @RequestBody OrmPostDTO ormpostdto) {
@@ -120,7 +120,7 @@ public class OrmPostResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostService.getOrmpostByEntities(this.ormpostMapping.toDomain(#ormpostdtos)),'ehr-OrmPost-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"OrmPost" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新岗位", tags = {"岗位" },  notes = "批量更新岗位")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormposts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrmPostDTO> ormpostdtos) {
         ormpostService.updateBatch(ormpostMapping.toDomain(ormpostdtos));
@@ -128,7 +128,7 @@ public class OrmPostResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostService.get(#ormpost_id),'ehr-OrmPost-Remove')")
-    @ApiOperation(value = "Remove", tags = {"OrmPost" },  notes = "Remove")
+    @ApiOperation(value = "删除岗位", tags = {"岗位" },  notes = "删除岗位")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormposts/{ormpost_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("ormpost_id") String ormpost_id) {
@@ -136,21 +136,21 @@ public class OrmPostResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostService.getOrmpostByIds(#ids),'ehr-OrmPost-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"OrmPost" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除岗位", tags = {"岗位" },  notes = "批量删除岗位")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormposts/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         ormpostService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"OrmPost" },  notes = "GetDraft")
+    @ApiOperation(value = "获取岗位草稿", tags = {"岗位" },  notes = "获取岗位草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormposts/getdraft")
     public ResponseEntity<OrmPostDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormpostMapping.toDto(ormpostService.getDraft(new OrmPost())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-EJZZGW-all')")
-	@ApiOperation(value = "fetch根据选择的组织所属的二级组织来获取岗位(ormorgid)", tags = {"OrmPost" } ,notes = "fetch根据选择的组织所属的二级组织来获取岗位(ormorgid)")
+	@ApiOperation(value = "获取根据选择的组织所属的二级组织来获取岗位(ormorgid)", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchejzzgw")
 	public ResponseEntity<List<OrmPostDTO>> fetchEJZZGW(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchEJZZGW(context) ;
@@ -163,7 +163,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-EJZZGW-all')")
-	@ApiOperation(value = "search根据选择的组织所属的二级组织来获取岗位(ormorgid)", tags = {"OrmPost" } ,notes = "search根据选择的组织所属的二级组织来获取岗位(ormorgid)")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchejzzgw")
 	public ResponseEntity<Page<OrmPostDTO>> searchEJZZGW(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchEJZZGW(context) ;
@@ -171,7 +171,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-AuthPost-all')")
-	@ApiOperation(value = "fetchAuthPost", tags = {"OrmPost" } ,notes = "fetchAuthPost")
+	@ApiOperation(value = "获取AuthPost", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchauthpost")
 	public ResponseEntity<List<OrmPostDTO>> fetchAuthPost(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchAuthPost(context) ;
@@ -184,7 +184,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-AuthPost-all')")
-	@ApiOperation(value = "searchAuthPost", tags = {"OrmPost" } ,notes = "searchAuthPost")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchauthpost")
 	public ResponseEntity<Page<OrmPostDTO>> searchAuthPost(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchAuthPost(context) ;
@@ -192,7 +192,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-CurOrg-all')")
-	@ApiOperation(value = "fetch根据当前操作人的身份选择岗位", tags = {"OrmPost" } ,notes = "fetch根据当前操作人的身份选择岗位")
+	@ApiOperation(value = "获取根据当前操作人的身份选择岗位", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchcurorg")
 	public ResponseEntity<List<OrmPostDTO>> fetchCurOrg(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchCurOrg(context) ;
@@ -205,7 +205,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-CurOrg-all')")
-	@ApiOperation(value = "search根据当前操作人的身份选择岗位", tags = {"OrmPost" } ,notes = "search根据当前操作人的身份选择岗位")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchcurorg")
 	public ResponseEntity<Page<OrmPostDTO>> searchCurOrg(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchCurOrg(context) ;
@@ -213,7 +213,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-DQGW-all')")
-	@ApiOperation(value = "fetch根据当前组织过滤岗位", tags = {"OrmPost" } ,notes = "fetch根据当前组织过滤岗位")
+	@ApiOperation(value = "获取根据当前组织过滤岗位", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchdqgw")
 	public ResponseEntity<List<OrmPostDTO>> fetchDQGW(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchDQGW(context) ;
@@ -226,7 +226,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-DQGW-all')")
-	@ApiOperation(value = "search根据当前组织过滤岗位", tags = {"OrmPost" } ,notes = "search根据当前组织过滤岗位")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchdqgw")
 	public ResponseEntity<Page<OrmPostDTO>> searchDQGW(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchDQGW(context) ;
@@ -234,7 +234,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-DQORGGW-all')")
-	@ApiOperation(value = "fetch根据当前组织过滤岗位(orgid)", tags = {"OrmPost" } ,notes = "fetch根据当前组织过滤岗位(orgid)")
+	@ApiOperation(value = "获取根据当前组织过滤岗位(orgid)", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchdqorggw")
 	public ResponseEntity<List<OrmPostDTO>> fetchDQORGGW(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchDQORGGW(context) ;
@@ -247,7 +247,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-DQORGGW-all')")
-	@ApiOperation(value = "search根据当前组织过滤岗位(orgid)", tags = {"OrmPost" } ,notes = "search根据当前组织过滤岗位(orgid)")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchdqorggw")
 	public ResponseEntity<Page<OrmPostDTO>> searchDQORGGW(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchDQORGGW(context) ;
@@ -255,7 +255,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-GWXH-all')")
-	@ApiOperation(value = "fetch岗位查询", tags = {"OrmPost" } ,notes = "fetch岗位查询")
+	@ApiOperation(value = "获取岗位查询", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchgwxh")
 	public ResponseEntity<List<OrmPostDTO>> fetchGWXH(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchGWXH(context) ;
@@ -268,7 +268,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-GWXH-all')")
-	@ApiOperation(value = "search岗位查询", tags = {"OrmPost" } ,notes = "search岗位查询")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchgwxh")
 	public ResponseEntity<Page<OrmPostDTO>> searchGWXH(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchGWXH(context) ;
@@ -276,7 +276,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"OrmPost" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchdefault")
 	public ResponseEntity<List<OrmPostDTO>> fetchDefault(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchDefault(context) ;
@@ -289,7 +289,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"OrmPost" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchdefault")
 	public ResponseEntity<Page<OrmPostDTO>> searchDefault(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchDefault(context) ;
@@ -297,7 +297,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-JZBGWCX-all')")
-	@ApiOperation(value = "fetch局总部岗位查询", tags = {"OrmPost" } ,notes = "fetch局总部岗位查询")
+	@ApiOperation(value = "获取局总部岗位查询", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchjzbgwcx")
 	public ResponseEntity<List<OrmPostDTO>> fetchJZBGWCX(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchJZBGWCX(context) ;
@@ -310,7 +310,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-JZBGWCX-all')")
-	@ApiOperation(value = "search局总部岗位查询", tags = {"OrmPost" } ,notes = "search局总部岗位查询")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchjzbgwcx")
 	public ResponseEntity<Page<OrmPostDTO>> searchJZBGWCX(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchJZBGWCX(context) ;
@@ -318,7 +318,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-CXGW-all')")
-	@ApiOperation(value = "fetch查询当前组织所属的二级单位岗位", tags = {"OrmPost" } ,notes = "fetch查询当前组织所属的二级单位岗位")
+	@ApiOperation(value = "获取查询当前组织所属的二级单位岗位", tags = {"岗位" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormposts/fetchcxgw")
 	public ResponseEntity<List<OrmPostDTO>> fetchCXGW(OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchCXGW(context) ;
@@ -331,7 +331,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-CXGW-all')")
-	@ApiOperation(value = "search查询当前组织所属的二级单位岗位", tags = {"OrmPost" } ,notes = "search查询当前组织所属的二级单位岗位")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormposts/searchcxgw")
 	public ResponseEntity<Page<OrmPostDTO>> searchCXGW(@RequestBody OrmPostSearchContext context) {
         Page<OrmPost> domains = ormpostService.searchCXGW(context) ;
@@ -339,7 +339,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.ormpostMapping.toDomain(#ormpostdto),'ehr-OrmPost-Save')")
-    @ApiOperation(value = "SaveByOrmOrg", tags = {"OrmPost" },  notes = "SaveByOrmOrg")
+    @ApiOperation(value = "根据组织管理保存岗位", tags = {"岗位" },  notes = "根据组织管理保存岗位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/save")
     public ResponseEntity<Boolean> saveByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody OrmPostDTO ormpostdto) {
         OrmPost domain = ormpostMapping.toDomain(ormpostdto);
@@ -348,7 +348,7 @@ public class OrmPostResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostMapping.toDomain(#ormpostdtos),'ehr-OrmPost-Save')")
-    @ApiOperation(value = "SaveBatchByOrmOrg", tags = {"OrmPost" },  notes = "SaveBatchByOrmOrg")
+    @ApiOperation(value = "根据组织管理批量保存岗位", tags = {"岗位" },  notes = "根据组织管理批量保存岗位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/savebatch")
     public ResponseEntity<Boolean> saveBatchByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody List<OrmPostDTO> ormpostdtos) {
         List<OrmPost> domainlist=ormpostMapping.toDomain(ormpostdtos);
@@ -359,14 +359,14 @@ public class OrmPostResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByOrmOrg", tags = {"OrmPost" },  notes = "CheckKeyByOrmOrg")
+    @ApiOperation(value = "根据组织管理检查岗位", tags = {"岗位" },  notes = "根据组织管理检查岗位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/checkkey")
     public ResponseEntity<Boolean> checkKeyByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody OrmPostDTO ormpostdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormpostService.checkKey(ormpostMapping.toDomain(ormpostdto)));
     }
 
     @PreAuthorize("hasPermission(this.ormpostMapping.toDomain(#ormpostdto),'ehr-OrmPost-Create')")
-    @ApiOperation(value = "CreateByOrmOrg", tags = {"OrmPost" },  notes = "CreateByOrmOrg")
+    @ApiOperation(value = "根据组织管理建立岗位", tags = {"岗位" },  notes = "根据组织管理建立岗位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts")
     @Transactional
     public ResponseEntity<OrmPostDTO> createByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody OrmPostDTO ormpostdto) {
@@ -378,7 +378,7 @@ public class OrmPostResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostMapping.toDomain(#ormpostdtos),'ehr-OrmPost-Create')")
-    @ApiOperation(value = "createBatchByOrmOrg", tags = {"OrmPost" },  notes = "createBatchByOrmOrg")
+    @ApiOperation(value = "根据组织管理批量建立岗位", tags = {"岗位" },  notes = "根据组织管理批量建立岗位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/batch")
     public ResponseEntity<Boolean> createBatchByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody List<OrmPostDTO> ormpostdtos) {
         List<OrmPost> domainlist=ormpostMapping.toDomain(ormpostdtos);
@@ -390,7 +390,7 @@ public class OrmPostResource {
     }
 
     @PostAuthorize("hasPermission(this.ormpostMapping.toDomain(returnObject.body),'ehr-OrmPost-Get')")
-    @ApiOperation(value = "GetByOrmOrg", tags = {"OrmPost" },  notes = "GetByOrmOrg")
+    @ApiOperation(value = "根据组织管理获取岗位", tags = {"岗位" },  notes = "根据组织管理获取岗位")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}")
     public ResponseEntity<OrmPostDTO> getByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id) {
         OrmPost domain = ormpostService.get(ormpost_id);
@@ -399,7 +399,7 @@ public class OrmPostResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-SetGwJb-all')")
-    @ApiOperation(value = "计算岗位分类级别ByOrmOrg", tags = {"OrmPost" },  notes = "计算岗位分类级别ByOrmOrg")
+    @ApiOperation(value = "根据组织管理岗位", tags = {"岗位" },  notes = "根据组织管理岗位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/setgwjb")
     @Transactional
     public ResponseEntity<OrmPostDTO> setGwJbByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody OrmPostDTO ormpostdto) {
@@ -411,7 +411,7 @@ public class OrmPostResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostService.get(#ormpost_id),'ehr-OrmPost-Update')")
-    @ApiOperation(value = "UpdateByOrmOrg", tags = {"OrmPost" },  notes = "UpdateByOrmOrg")
+    @ApiOperation(value = "根据组织管理更新岗位", tags = {"岗位" },  notes = "根据组织管理更新岗位")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}")
     @Transactional
     public ResponseEntity<OrmPostDTO> updateByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody OrmPostDTO ormpostdto) {
@@ -424,7 +424,7 @@ public class OrmPostResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostService.getOrmpostByEntities(this.ormpostMapping.toDomain(#ormpostdtos)),'ehr-OrmPost-Update')")
-    @ApiOperation(value = "UpdateBatchByOrmOrg", tags = {"OrmPost" },  notes = "UpdateBatchByOrmOrg")
+    @ApiOperation(value = "根据组织管理批量更新岗位", tags = {"岗位" },  notes = "根据组织管理批量更新岗位")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormposts/batch")
     public ResponseEntity<Boolean> updateBatchByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody List<OrmPostDTO> ormpostdtos) {
         List<OrmPost> domainlist=ormpostMapping.toDomain(ormpostdtos);
@@ -436,7 +436,7 @@ public class OrmPostResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostService.get(#ormpost_id),'ehr-OrmPost-Remove')")
-    @ApiOperation(value = "RemoveByOrmOrg", tags = {"OrmPost" },  notes = "RemoveByOrmOrg")
+    @ApiOperation(value = "根据组织管理删除岗位", tags = {"岗位" },  notes = "根据组织管理删除岗位")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id) {
@@ -444,14 +444,14 @@ public class OrmPostResource {
     }
 
     @PreAuthorize("hasPermission(this.ormpostService.getOrmpostByIds(#ids),'ehr-OrmPost-Remove')")
-    @ApiOperation(value = "RemoveBatchByOrmOrg", tags = {"OrmPost" },  notes = "RemoveBatchByOrmOrg")
+    @ApiOperation(value = "根据组织管理批量删除岗位", tags = {"岗位" },  notes = "根据组织管理批量删除岗位")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormposts/batch")
     public ResponseEntity<Boolean> removeBatchByOrmOrg(@RequestBody List<String> ids) {
         ormpostService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByOrmOrg", tags = {"OrmPost" },  notes = "GetDraftByOrmOrg")
+    @ApiOperation(value = "根据组织管理获取岗位草稿", tags = {"岗位" },  notes = "根据组织管理获取岗位草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormposts/getdraft")
     public ResponseEntity<OrmPostDTO> getDraftByOrmOrg(@PathVariable("ormorg_id") String ormorg_id) {
         OrmPost domain = new OrmPost();
@@ -460,7 +460,7 @@ public class OrmPostResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-EJZZGW-all')")
-	@ApiOperation(value = "fetch根据选择的组织所属的二级组织来获取岗位(ormorgid)ByOrmOrg", tags = {"OrmPost" } ,notes = "fetch根据选择的组织所属的二级组织来获取岗位(ormorgid)ByOrmOrg")
+	@ApiOperation(value = "根据组织管理获取根据选择的组织所属的二级组织来获取岗位(ormorgid)", tags = {"岗位" } ,notes = "根据组织管理获取根据选择的组织所属的二级组织来获取岗位(ormorgid)")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchejzzgw")
 	public ResponseEntity<List<OrmPostDTO>> fetchOrmPostEJZZGWByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -474,7 +474,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-EJZZGW-all')")
-	@ApiOperation(value = "search根据选择的组织所属的二级组织来获取岗位(ormorgid)ByOrmOrg", tags = {"OrmPost" } ,notes = "search根据选择的组织所属的二级组织来获取岗位(ormorgid)ByOrmOrg")
+	@ApiOperation(value = "根据组织管理查询根据选择的组织所属的二级组织来获取岗位(ormorgid)", tags = {"岗位" } ,notes = "根据组织管理查询根据选择的组织所属的二级组织来获取岗位(ormorgid)")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchejzzgw")
 	public ResponseEntity<Page<OrmPostDTO>> searchOrmPostEJZZGWByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -483,7 +483,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-AuthPost-all')")
-	@ApiOperation(value = "fetchAuthPostByOrmOrg", tags = {"OrmPost" } ,notes = "fetchAuthPostByOrmOrg")
+	@ApiOperation(value = "根据组织管理获取AuthPost", tags = {"岗位" } ,notes = "根据组织管理获取AuthPost")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchauthpost")
 	public ResponseEntity<List<OrmPostDTO>> fetchOrmPostAuthPostByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -497,7 +497,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-AuthPost-all')")
-	@ApiOperation(value = "searchAuthPostByOrmOrg", tags = {"OrmPost" } ,notes = "searchAuthPostByOrmOrg")
+	@ApiOperation(value = "根据组织管理查询AuthPost", tags = {"岗位" } ,notes = "根据组织管理查询AuthPost")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchauthpost")
 	public ResponseEntity<Page<OrmPostDTO>> searchOrmPostAuthPostByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -506,7 +506,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-CurOrg-all')")
-	@ApiOperation(value = "fetch根据当前操作人的身份选择岗位ByOrmOrg", tags = {"OrmPost" } ,notes = "fetch根据当前操作人的身份选择岗位ByOrmOrg")
+	@ApiOperation(value = "根据组织管理获取根据当前操作人的身份选择岗位", tags = {"岗位" } ,notes = "根据组织管理获取根据当前操作人的身份选择岗位")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchcurorg")
 	public ResponseEntity<List<OrmPostDTO>> fetchOrmPostCurOrgByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -520,7 +520,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-CurOrg-all')")
-	@ApiOperation(value = "search根据当前操作人的身份选择岗位ByOrmOrg", tags = {"OrmPost" } ,notes = "search根据当前操作人的身份选择岗位ByOrmOrg")
+	@ApiOperation(value = "根据组织管理查询根据当前操作人的身份选择岗位", tags = {"岗位" } ,notes = "根据组织管理查询根据当前操作人的身份选择岗位")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchcurorg")
 	public ResponseEntity<Page<OrmPostDTO>> searchOrmPostCurOrgByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -529,7 +529,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-DQGW-all')")
-	@ApiOperation(value = "fetch根据当前组织过滤岗位ByOrmOrg", tags = {"OrmPost" } ,notes = "fetch根据当前组织过滤岗位ByOrmOrg")
+	@ApiOperation(value = "根据组织管理获取根据当前组织过滤岗位", tags = {"岗位" } ,notes = "根据组织管理获取根据当前组织过滤岗位")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchdqgw")
 	public ResponseEntity<List<OrmPostDTO>> fetchOrmPostDQGWByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -543,7 +543,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-DQGW-all')")
-	@ApiOperation(value = "search根据当前组织过滤岗位ByOrmOrg", tags = {"OrmPost" } ,notes = "search根据当前组织过滤岗位ByOrmOrg")
+	@ApiOperation(value = "根据组织管理查询根据当前组织过滤岗位", tags = {"岗位" } ,notes = "根据组织管理查询根据当前组织过滤岗位")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchdqgw")
 	public ResponseEntity<Page<OrmPostDTO>> searchOrmPostDQGWByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -552,7 +552,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-DQORGGW-all')")
-	@ApiOperation(value = "fetch根据当前组织过滤岗位(orgid)ByOrmOrg", tags = {"OrmPost" } ,notes = "fetch根据当前组织过滤岗位(orgid)ByOrmOrg")
+	@ApiOperation(value = "根据组织管理获取根据当前组织过滤岗位(orgid)", tags = {"岗位" } ,notes = "根据组织管理获取根据当前组织过滤岗位(orgid)")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchdqorggw")
 	public ResponseEntity<List<OrmPostDTO>> fetchOrmPostDQORGGWByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -566,7 +566,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-DQORGGW-all')")
-	@ApiOperation(value = "search根据当前组织过滤岗位(orgid)ByOrmOrg", tags = {"OrmPost" } ,notes = "search根据当前组织过滤岗位(orgid)ByOrmOrg")
+	@ApiOperation(value = "根据组织管理查询根据当前组织过滤岗位(orgid)", tags = {"岗位" } ,notes = "根据组织管理查询根据当前组织过滤岗位(orgid)")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchdqorggw")
 	public ResponseEntity<Page<OrmPostDTO>> searchOrmPostDQORGGWByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -575,7 +575,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-GWXH-all')")
-	@ApiOperation(value = "fetch岗位查询ByOrmOrg", tags = {"OrmPost" } ,notes = "fetch岗位查询ByOrmOrg")
+	@ApiOperation(value = "根据组织管理获取岗位查询", tags = {"岗位" } ,notes = "根据组织管理获取岗位查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchgwxh")
 	public ResponseEntity<List<OrmPostDTO>> fetchOrmPostGWXHByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -589,7 +589,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-GWXH-all')")
-	@ApiOperation(value = "search岗位查询ByOrmOrg", tags = {"OrmPost" } ,notes = "search岗位查询ByOrmOrg")
+	@ApiOperation(value = "根据组织管理查询岗位查询", tags = {"岗位" } ,notes = "根据组织管理查询岗位查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchgwxh")
 	public ResponseEntity<Page<OrmPostDTO>> searchOrmPostGWXHByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -598,7 +598,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByOrmOrg", tags = {"OrmPost" } ,notes = "fetchDEFAULTByOrmOrg")
+	@ApiOperation(value = "根据组织管理获取DEFAULT", tags = {"岗位" } ,notes = "根据组织管理获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchdefault")
 	public ResponseEntity<List<OrmPostDTO>> fetchOrmPostDefaultByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -612,7 +612,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByOrmOrg", tags = {"OrmPost" } ,notes = "searchDEFAULTByOrmOrg")
+	@ApiOperation(value = "根据组织管理查询DEFAULT", tags = {"岗位" } ,notes = "根据组织管理查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchdefault")
 	public ResponseEntity<Page<OrmPostDTO>> searchOrmPostDefaultByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -621,7 +621,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-JZBGWCX-all')")
-	@ApiOperation(value = "fetch局总部岗位查询ByOrmOrg", tags = {"OrmPost" } ,notes = "fetch局总部岗位查询ByOrmOrg")
+	@ApiOperation(value = "根据组织管理获取局总部岗位查询", tags = {"岗位" } ,notes = "根据组织管理获取局总部岗位查询")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchjzbgwcx")
 	public ResponseEntity<List<OrmPostDTO>> fetchOrmPostJZBGWCXByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -635,7 +635,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-JZBGWCX-all')")
-	@ApiOperation(value = "search局总部岗位查询ByOrmOrg", tags = {"OrmPost" } ,notes = "search局总部岗位查询ByOrmOrg")
+	@ApiOperation(value = "根据组织管理查询局总部岗位查询", tags = {"岗位" } ,notes = "根据组织管理查询局总部岗位查询")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchjzbgwcx")
 	public ResponseEntity<Page<OrmPostDTO>> searchOrmPostJZBGWCXByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -644,7 +644,7 @@ public class OrmPostResource {
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-CXGW-all')")
-	@ApiOperation(value = "fetch查询当前组织所属的二级单位岗位ByOrmOrg", tags = {"OrmPost" } ,notes = "fetch查询当前组织所属的二级单位岗位ByOrmOrg")
+	@ApiOperation(value = "根据组织管理获取查询当前组织所属的二级单位岗位", tags = {"岗位" } ,notes = "根据组织管理获取查询当前组织所属的二级单位岗位")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchcxgw")
 	public ResponseEntity<List<OrmPostDTO>> fetchOrmPostCXGWByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -658,7 +658,7 @@ public class OrmPostResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmPost-CXGW-all')")
-	@ApiOperation(value = "search查询当前组织所属的二级单位岗位ByOrmOrg", tags = {"OrmPost" } ,notes = "search查询当前组织所属的二级单位岗位ByOrmOrg")
+	@ApiOperation(value = "根据组织管理查询查询当前组织所属的二级单位岗位", tags = {"岗位" } ,notes = "根据组织管理查询查询当前组织所属的二级单位岗位")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchcxgw")
 	public ResponseEntity<Page<OrmPostDTO>> searchOrmPostCXGWByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody OrmPostSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITrmAgencyRecordService;
 import cn.ibizlab.ehr.core.trm.filter.TrmAgencyRecordSearchContext;
 
 @Slf4j
-@Api(tags = {"TrmAgencyRecord" })
+@Api(tags = {"机构培训记录" })
 @RestController("WebApi-trmagencyrecord")
 @RequestMapping("")
 public class TrmAgencyRecordResource {
@@ -46,14 +46,14 @@ public class TrmAgencyRecordResource {
     @Lazy
     public TrmAgencyRecordMapping trmagencyrecordMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"TrmAgencyRecord" },  notes = "GetDraft")
+    @ApiOperation(value = "获取机构培训记录草稿", tags = {"机构培训记录" },  notes = "获取机构培训记录草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmagencyrecords/getdraft")
     public ResponseEntity<TrmAgencyRecordDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmagencyrecordMapping.toDto(trmagencyrecordService.getDraft(new TrmAgencyRecord())));
     }
 
     @PostAuthorize("hasPermission(this.trmagencyrecordMapping.toDomain(returnObject.body),'ehr-TrmAgencyRecord-Get')")
-    @ApiOperation(value = "Get", tags = {"TrmAgencyRecord" },  notes = "Get")
+    @ApiOperation(value = "获取机构培训记录", tags = {"机构培训记录" },  notes = "获取机构培训记录")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmagencyrecords/{trmagencyrecord_id}")
     public ResponseEntity<TrmAgencyRecordDTO> get(@PathVariable("trmagencyrecord_id") String trmagencyrecord_id) {
         TrmAgencyRecord domain = trmagencyrecordService.get(trmagencyrecord_id);
@@ -61,14 +61,14 @@ public class TrmAgencyRecordResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TrmAgencyRecord" },  notes = "CheckKey")
+    @ApiOperation(value = "检查机构培训记录", tags = {"机构培训记录" },  notes = "检查机构培训记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmagencyrecords/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmAgencyRecordDTO trmagencyrecorddto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmagencyrecordService.checkKey(trmagencyrecordMapping.toDomain(trmagencyrecorddto)));
     }
 
     @PreAuthorize("hasPermission(this.trmagencyrecordService.get(#trmagencyrecord_id),'ehr-TrmAgencyRecord-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TrmAgencyRecord" },  notes = "Remove")
+    @ApiOperation(value = "删除机构培训记录", tags = {"机构培训记录" },  notes = "删除机构培训记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmagencyrecords/{trmagencyrecord_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trmagencyrecord_id") String trmagencyrecord_id) {
@@ -76,7 +76,7 @@ public class TrmAgencyRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.trmagencyrecordService.getTrmagencyrecordByIds(#ids),'ehr-TrmAgencyRecord-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TrmAgencyRecord" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除机构培训记录", tags = {"机构培训记录" },  notes = "批量删除机构培训记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmagencyrecords/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmagencyrecordService.removeBatch(ids);
@@ -84,14 +84,14 @@ public class TrmAgencyRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.trmagencyrecordMapping.toDomain(#trmagencyrecorddto),'ehr-TrmAgencyRecord-Save')")
-    @ApiOperation(value = "Save", tags = {"TrmAgencyRecord" },  notes = "Save")
+    @ApiOperation(value = "保存机构培训记录", tags = {"机构培训记录" },  notes = "保存机构培训记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmagencyrecords/save")
     public ResponseEntity<Boolean> save(@RequestBody TrmAgencyRecordDTO trmagencyrecorddto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmagencyrecordService.save(trmagencyrecordMapping.toDomain(trmagencyrecorddto)));
     }
 
     @PreAuthorize("hasPermission(this.trmagencyrecordMapping.toDomain(#trmagencyrecorddtos),'ehr-TrmAgencyRecord-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TrmAgencyRecord" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存机构培训记录", tags = {"机构培训记录" },  notes = "批量保存机构培训记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmagencyrecords/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TrmAgencyRecordDTO> trmagencyrecorddtos) {
         trmagencyrecordService.saveBatch(trmagencyrecordMapping.toDomain(trmagencyrecorddtos));
@@ -99,7 +99,7 @@ public class TrmAgencyRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.trmagencyrecordService.get(#trmagencyrecord_id),'ehr-TrmAgencyRecord-Update')")
-    @ApiOperation(value = "Update", tags = {"TrmAgencyRecord" },  notes = "Update")
+    @ApiOperation(value = "更新机构培训记录", tags = {"机构培训记录" },  notes = "更新机构培训记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmagencyrecords/{trmagencyrecord_id}")
     @Transactional
     public ResponseEntity<TrmAgencyRecordDTO> update(@PathVariable("trmagencyrecord_id") String trmagencyrecord_id, @RequestBody TrmAgencyRecordDTO trmagencyrecorddto) {
@@ -111,7 +111,7 @@ public class TrmAgencyRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.trmagencyrecordService.getTrmagencyrecordByEntities(this.trmagencyrecordMapping.toDomain(#trmagencyrecorddtos)),'ehr-TrmAgencyRecord-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TrmAgencyRecord" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新机构培训记录", tags = {"机构培训记录" },  notes = "批量更新机构培训记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmagencyrecords/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TrmAgencyRecordDTO> trmagencyrecorddtos) {
         trmagencyrecordService.updateBatch(trmagencyrecordMapping.toDomain(trmagencyrecorddtos));
@@ -119,7 +119,7 @@ public class TrmAgencyRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.trmagencyrecordMapping.toDomain(#trmagencyrecorddto),'ehr-TrmAgencyRecord-Create')")
-    @ApiOperation(value = "Create", tags = {"TrmAgencyRecord" },  notes = "Create")
+    @ApiOperation(value = "新建机构培训记录", tags = {"机构培训记录" },  notes = "新建机构培训记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmagencyrecords")
     @Transactional
     public ResponseEntity<TrmAgencyRecordDTO> create(@RequestBody TrmAgencyRecordDTO trmagencyrecorddto) {
@@ -130,7 +130,7 @@ public class TrmAgencyRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.trmagencyrecordMapping.toDomain(#trmagencyrecorddtos),'ehr-TrmAgencyRecord-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TrmAgencyRecord" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建机构培训记录", tags = {"机构培训记录" },  notes = "批量新建机构培训记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmagencyrecords/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmAgencyRecordDTO> trmagencyrecorddtos) {
         trmagencyrecordService.createBatch(trmagencyrecordMapping.toDomain(trmagencyrecorddtos));
@@ -138,7 +138,7 @@ public class TrmAgencyRecordResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmAgencyRecord-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TrmAgencyRecord" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"机构培训记录" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmagencyrecords/fetchdefault")
 	public ResponseEntity<List<TrmAgencyRecordDTO>> fetchDefault(TrmAgencyRecordSearchContext context) {
         Page<TrmAgencyRecord> domains = trmagencyrecordService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmAgencyRecordResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmAgencyRecord-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TrmAgencyRecord" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"机构培训记录" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmagencyrecords/searchdefault")
 	public ResponseEntity<Page<TrmAgencyRecordDTO>> searchDefault(@RequestBody TrmAgencyRecordSearchContext context) {
         Page<TrmAgencyRecord> domains = trmagencyrecordService.searchDefault(context) ;

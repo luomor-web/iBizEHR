@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimContractTypeService;
 import cn.ibizlab.ehr.core.pim.filter.PimContractTypeSearchContext;
 
 @Slf4j
-@Api(tags = {"PimContractType" })
+@Api(tags = {"合同类别" })
 @RestController("WebApi-pimcontracttype")
 @RequestMapping("")
 public class PimContractTypeResource {
@@ -47,7 +47,7 @@ public class PimContractTypeResource {
     public PimContractTypeMapping pimcontracttypeMapping;
 
     @PreAuthorize("hasPermission(this.pimcontracttypeService.get(#pimcontracttype_id),'ehr-PimContractType-Update')")
-    @ApiOperation(value = "Update", tags = {"PimContractType" },  notes = "Update")
+    @ApiOperation(value = "更新合同类别", tags = {"合同类别" },  notes = "更新合同类别")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimcontracttypes/{pimcontracttype_id}")
     @Transactional
     public ResponseEntity<PimContractTypeDTO> update(@PathVariable("pimcontracttype_id") String pimcontracttype_id, @RequestBody PimContractTypeDTO pimcontracttypedto) {
@@ -59,7 +59,7 @@ public class PimContractTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcontracttypeService.getPimcontracttypeByEntities(this.pimcontracttypeMapping.toDomain(#pimcontracttypedtos)),'ehr-PimContractType-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimContractType" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新合同类别", tags = {"合同类别" },  notes = "批量更新合同类别")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimcontracttypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimContractTypeDTO> pimcontracttypedtos) {
         pimcontracttypeService.updateBatch(pimcontracttypeMapping.toDomain(pimcontracttypedtos));
@@ -67,14 +67,14 @@ public class PimContractTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcontracttypeMapping.toDomain(#pimcontracttypedto),'ehr-PimContractType-Save')")
-    @ApiOperation(value = "Save", tags = {"PimContractType" },  notes = "Save")
+    @ApiOperation(value = "保存合同类别", tags = {"合同类别" },  notes = "保存合同类别")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcontracttypes/save")
     public ResponseEntity<Boolean> save(@RequestBody PimContractTypeDTO pimcontracttypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimcontracttypeService.save(pimcontracttypeMapping.toDomain(pimcontracttypedto)));
     }
 
     @PreAuthorize("hasPermission(this.pimcontracttypeMapping.toDomain(#pimcontracttypedtos),'ehr-PimContractType-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimContractType" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存合同类别", tags = {"合同类别" },  notes = "批量保存合同类别")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcontracttypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimContractTypeDTO> pimcontracttypedtos) {
         pimcontracttypeService.saveBatch(pimcontracttypeMapping.toDomain(pimcontracttypedtos));
@@ -82,7 +82,7 @@ public class PimContractTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcontracttypeService.get(#pimcontracttype_id),'ehr-PimContractType-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimContractType" },  notes = "Remove")
+    @ApiOperation(value = "删除合同类别", tags = {"合同类别" },  notes = "删除合同类别")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimcontracttypes/{pimcontracttype_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimcontracttype_id") String pimcontracttype_id) {
@@ -90,7 +90,7 @@ public class PimContractTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcontracttypeService.getPimcontracttypeByIds(#ids),'ehr-PimContractType-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimContractType" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除合同类别", tags = {"合同类别" },  notes = "批量删除合同类别")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimcontracttypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimcontracttypeService.removeBatch(ids);
@@ -98,7 +98,7 @@ public class PimContractTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcontracttypeMapping.toDomain(#pimcontracttypedto),'ehr-PimContractType-Create')")
-    @ApiOperation(value = "Create", tags = {"PimContractType" },  notes = "Create")
+    @ApiOperation(value = "新建合同类别", tags = {"合同类别" },  notes = "新建合同类别")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcontracttypes")
     @Transactional
     public ResponseEntity<PimContractTypeDTO> create(@RequestBody PimContractTypeDTO pimcontracttypedto) {
@@ -109,7 +109,7 @@ public class PimContractTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcontracttypeMapping.toDomain(#pimcontracttypedtos),'ehr-PimContractType-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimContractType" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建合同类别", tags = {"合同类别" },  notes = "批量新建合同类别")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcontracttypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimContractTypeDTO> pimcontracttypedtos) {
         pimcontracttypeService.createBatch(pimcontracttypeMapping.toDomain(pimcontracttypedtos));
@@ -117,7 +117,7 @@ public class PimContractTypeResource {
     }
 
     @PostAuthorize("hasPermission(this.pimcontracttypeMapping.toDomain(returnObject.body),'ehr-PimContractType-Get')")
-    @ApiOperation(value = "Get", tags = {"PimContractType" },  notes = "Get")
+    @ApiOperation(value = "获取合同类别", tags = {"合同类别" },  notes = "获取合同类别")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimcontracttypes/{pimcontracttype_id}")
     public ResponseEntity<PimContractTypeDTO> get(@PathVariable("pimcontracttype_id") String pimcontracttype_id) {
         PimContractType domain = pimcontracttypeService.get(pimcontracttype_id);
@@ -125,20 +125,20 @@ public class PimContractTypeResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimContractType" },  notes = "GetDraft")
+    @ApiOperation(value = "获取合同类别草稿", tags = {"合同类别" },  notes = "获取合同类别草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimcontracttypes/getdraft")
     public ResponseEntity<PimContractTypeDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimcontracttypeMapping.toDto(pimcontracttypeService.getDraft(new PimContractType())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimContractType" },  notes = "CheckKey")
+    @ApiOperation(value = "检查合同类别", tags = {"合同类别" },  notes = "检查合同类别")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcontracttypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimContractTypeDTO pimcontracttypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimcontracttypeService.checkKey(pimcontracttypeMapping.toDomain(pimcontracttypedto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimContractType-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimContractType" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"合同类别" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimcontracttypes/fetchdefault")
 	public ResponseEntity<List<PimContractTypeDTO>> fetchDefault(PimContractTypeSearchContext context) {
         Page<PimContractType> domains = pimcontracttypeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimContractTypeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimContractType-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimContractType" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"合同类别" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimcontracttypes/searchdefault")
 	public ResponseEntity<Page<PimContractTypeDTO>> searchDefault(@RequestBody PimContractTypeSearchContext context) {
         Page<PimContractType> domains = pimcontracttypeService.searchDefault(context) ;

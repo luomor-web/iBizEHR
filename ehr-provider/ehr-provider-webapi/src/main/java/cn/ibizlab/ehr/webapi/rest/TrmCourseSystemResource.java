@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITrmCourseSystemService;
 import cn.ibizlab.ehr.core.trm.filter.TrmCourseSystemSearchContext;
 
 @Slf4j
-@Api(tags = {"TrmCourseSystem" })
+@Api(tags = {"培训模块" })
 @RestController("WebApi-trmcoursesystem")
 @RequestMapping("")
 public class TrmCourseSystemResource {
@@ -47,7 +47,7 @@ public class TrmCourseSystemResource {
     public TrmCourseSystemMapping trmcoursesystemMapping;
 
     @PreAuthorize("hasPermission(this.trmcoursesystemService.get(#trmcoursesystem_id),'ehr-TrmCourseSystem-Update')")
-    @ApiOperation(value = "Update", tags = {"TrmCourseSystem" },  notes = "Update")
+    @ApiOperation(value = "更新培训模块", tags = {"培训模块" },  notes = "更新培训模块")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmcoursesystems/{trmcoursesystem_id}")
     @Transactional
     public ResponseEntity<TrmCourseSystemDTO> update(@PathVariable("trmcoursesystem_id") String trmcoursesystem_id, @RequestBody TrmCourseSystemDTO trmcoursesystemdto) {
@@ -59,7 +59,7 @@ public class TrmCourseSystemResource {
     }
 
     @PreAuthorize("hasPermission(this.trmcoursesystemService.getTrmcoursesystemByEntities(this.trmcoursesystemMapping.toDomain(#trmcoursesystemdtos)),'ehr-TrmCourseSystem-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TrmCourseSystem" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新培训模块", tags = {"培训模块" },  notes = "批量更新培训模块")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmcoursesystems/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TrmCourseSystemDTO> trmcoursesystemdtos) {
         trmcoursesystemService.updateBatch(trmcoursesystemMapping.toDomain(trmcoursesystemdtos));
@@ -67,34 +67,34 @@ public class TrmCourseSystemResource {
     }
 
     @PreAuthorize("hasPermission(this.trmcoursesystemMapping.toDomain(#trmcoursesystemdto),'ehr-TrmCourseSystem-Save')")
-    @ApiOperation(value = "Save", tags = {"TrmCourseSystem" },  notes = "Save")
+    @ApiOperation(value = "保存培训模块", tags = {"培训模块" },  notes = "保存培训模块")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmcoursesystems/save")
     public ResponseEntity<Boolean> save(@RequestBody TrmCourseSystemDTO trmcoursesystemdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmcoursesystemService.save(trmcoursesystemMapping.toDomain(trmcoursesystemdto)));
     }
 
     @PreAuthorize("hasPermission(this.trmcoursesystemMapping.toDomain(#trmcoursesystemdtos),'ehr-TrmCourseSystem-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TrmCourseSystem" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存培训模块", tags = {"培训模块" },  notes = "批量保存培训模块")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmcoursesystems/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TrmCourseSystemDTO> trmcoursesystemdtos) {
         trmcoursesystemService.saveBatch(trmcoursesystemMapping.toDomain(trmcoursesystemdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TrmCourseSystem" },  notes = "CheckKey")
+    @ApiOperation(value = "检查培训模块", tags = {"培训模块" },  notes = "检查培训模块")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmcoursesystems/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmCourseSystemDTO trmcoursesystemdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmcoursesystemService.checkKey(trmcoursesystemMapping.toDomain(trmcoursesystemdto)));
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"TrmCourseSystem" },  notes = "GetDraft")
+    @ApiOperation(value = "获取培训模块草稿", tags = {"培训模块" },  notes = "获取培训模块草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmcoursesystems/getdraft")
     public ResponseEntity<TrmCourseSystemDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmcoursesystemMapping.toDto(trmcoursesystemService.getDraft(new TrmCourseSystem())));
     }
 
     @PostAuthorize("hasPermission(this.trmcoursesystemMapping.toDomain(returnObject.body),'ehr-TrmCourseSystem-Get')")
-    @ApiOperation(value = "Get", tags = {"TrmCourseSystem" },  notes = "Get")
+    @ApiOperation(value = "获取培训模块", tags = {"培训模块" },  notes = "获取培训模块")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmcoursesystems/{trmcoursesystem_id}")
     public ResponseEntity<TrmCourseSystemDTO> get(@PathVariable("trmcoursesystem_id") String trmcoursesystem_id) {
         TrmCourseSystem domain = trmcoursesystemService.get(trmcoursesystem_id);
@@ -103,7 +103,7 @@ public class TrmCourseSystemResource {
     }
 
     @PreAuthorize("hasPermission(this.trmcoursesystemService.get(#trmcoursesystem_id),'ehr-TrmCourseSystem-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TrmCourseSystem" },  notes = "Remove")
+    @ApiOperation(value = "删除培训模块", tags = {"培训模块" },  notes = "删除培训模块")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmcoursesystems/{trmcoursesystem_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trmcoursesystem_id") String trmcoursesystem_id) {
@@ -111,7 +111,7 @@ public class TrmCourseSystemResource {
     }
 
     @PreAuthorize("hasPermission(this.trmcoursesystemService.getTrmcoursesystemByIds(#ids),'ehr-TrmCourseSystem-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TrmCourseSystem" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除培训模块", tags = {"培训模块" },  notes = "批量删除培训模块")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmcoursesystems/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmcoursesystemService.removeBatch(ids);
@@ -119,7 +119,7 @@ public class TrmCourseSystemResource {
     }
 
     @PreAuthorize("hasPermission(this.trmcoursesystemMapping.toDomain(#trmcoursesystemdto),'ehr-TrmCourseSystem-Create')")
-    @ApiOperation(value = "Create", tags = {"TrmCourseSystem" },  notes = "Create")
+    @ApiOperation(value = "新建培训模块", tags = {"培训模块" },  notes = "新建培训模块")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmcoursesystems")
     @Transactional
     public ResponseEntity<TrmCourseSystemDTO> create(@RequestBody TrmCourseSystemDTO trmcoursesystemdto) {
@@ -130,7 +130,7 @@ public class TrmCourseSystemResource {
     }
 
     @PreAuthorize("hasPermission(this.trmcoursesystemMapping.toDomain(#trmcoursesystemdtos),'ehr-TrmCourseSystem-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TrmCourseSystem" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建培训模块", tags = {"培训模块" },  notes = "批量新建培训模块")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmcoursesystems/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmCourseSystemDTO> trmcoursesystemdtos) {
         trmcoursesystemService.createBatch(trmcoursesystemMapping.toDomain(trmcoursesystemdtos));
@@ -138,7 +138,7 @@ public class TrmCourseSystemResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmCourseSystem-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TrmCourseSystem" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"培训模块" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmcoursesystems/fetchdefault")
 	public ResponseEntity<List<TrmCourseSystemDTO>> fetchDefault(TrmCourseSystemSearchContext context) {
         Page<TrmCourseSystem> domains = trmcoursesystemService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmCourseSystemResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmCourseSystem-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TrmCourseSystem" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"培训模块" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmcoursesystems/searchdefault")
 	public ResponseEntity<Page<TrmCourseSystemDTO>> searchDefault(@RequestBody TrmCourseSystemSearchContext context) {
         Page<TrmCourseSystem> domains = trmcoursesystemService.searchDefault(context) ;

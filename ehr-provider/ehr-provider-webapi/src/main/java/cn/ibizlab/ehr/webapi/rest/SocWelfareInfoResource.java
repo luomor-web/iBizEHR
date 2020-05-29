@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.soc.service.ISocWelfareInfoService;
 import cn.ibizlab.ehr.core.soc.filter.SocWelfareInfoSearchContext;
 
 @Slf4j
-@Api(tags = {"SocWelfareInfo" })
+@Api(tags = {"个人社保福利" })
 @RestController("WebApi-socwelfareinfo")
 @RequestMapping("")
 public class SocWelfareInfoResource {
@@ -46,14 +46,14 @@ public class SocWelfareInfoResource {
     @Lazy
     public SocWelfareInfoMapping socwelfareinfoMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"SocWelfareInfo" },  notes = "CheckKey")
+    @ApiOperation(value = "检查个人社保福利", tags = {"个人社保福利" },  notes = "检查个人社保福利")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfos/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SocWelfareInfoDTO socwelfareinfodto) {
         return  ResponseEntity.status(HttpStatus.OK).body(socwelfareinfoService.checkKey(socwelfareinfoMapping.toDomain(socwelfareinfodto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocWelfareInfo-GetFJSJofPerson-all')")
-    @ApiOperation(value = "获取人员的附加数据", tags = {"SocWelfareInfo" },  notes = "获取人员的附加数据")
+    @ApiOperation(value = "获取人员的附加数据", tags = {"个人社保福利" },  notes = "获取人员的附加数据")
 	@RequestMapping(method = RequestMethod.GET, value = "/socwelfareinfos/{socwelfareinfo_id}/getfjsjofperson")
     @Transactional
     public ResponseEntity<SocWelfareInfoDTO> getFJSJofPerson(@PathVariable("socwelfareinfo_id") String socwelfareinfo_id, @RequestBody SocWelfareInfoDTO socwelfareinfodto) {
@@ -65,28 +65,28 @@ public class SocWelfareInfoResource {
     }
 
     @PreAuthorize("hasPermission(this.socwelfareinfoMapping.toDomain(#socwelfareinfodto),'ehr-SocWelfareInfo-Save')")
-    @ApiOperation(value = "Save", tags = {"SocWelfareInfo" },  notes = "Save")
+    @ApiOperation(value = "保存个人社保福利", tags = {"个人社保福利" },  notes = "保存个人社保福利")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfos/save")
     public ResponseEntity<Boolean> save(@RequestBody SocWelfareInfoDTO socwelfareinfodto) {
         return ResponseEntity.status(HttpStatus.OK).body(socwelfareinfoService.save(socwelfareinfoMapping.toDomain(socwelfareinfodto)));
     }
 
     @PreAuthorize("hasPermission(this.socwelfareinfoMapping.toDomain(#socwelfareinfodtos),'ehr-SocWelfareInfo-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SocWelfareInfo" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存个人社保福利", tags = {"个人社保福利" },  notes = "批量保存个人社保福利")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfos/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SocWelfareInfoDTO> socwelfareinfodtos) {
         socwelfareinfoService.saveBatch(socwelfareinfoMapping.toDomain(socwelfareinfodtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"SocWelfareInfo" },  notes = "GetDraft")
+    @ApiOperation(value = "获取个人社保福利草稿", tags = {"个人社保福利" },  notes = "获取个人社保福利草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/socwelfareinfos/getdraft")
     public ResponseEntity<SocWelfareInfoDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(socwelfareinfoMapping.toDto(socwelfareinfoService.getDraft(new SocWelfareInfo())));
     }
 
     @PostAuthorize("hasPermission(this.socwelfareinfoMapping.toDomain(returnObject.body),'ehr-SocWelfareInfo-Get')")
-    @ApiOperation(value = "Get", tags = {"SocWelfareInfo" },  notes = "Get")
+    @ApiOperation(value = "获取个人社保福利", tags = {"个人社保福利" },  notes = "获取个人社保福利")
 	@RequestMapping(method = RequestMethod.GET, value = "/socwelfareinfos/{socwelfareinfo_id}")
     public ResponseEntity<SocWelfareInfoDTO> get(@PathVariable("socwelfareinfo_id") String socwelfareinfo_id) {
         SocWelfareInfo domain = socwelfareinfoService.get(socwelfareinfo_id);
@@ -95,7 +95,7 @@ public class SocWelfareInfoResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocWelfareInfo-GetCBDofSOCCOMPANYWEL-all')")
-    @ApiOperation(value = "获取单位社保账户的参保地", tags = {"SocWelfareInfo" },  notes = "获取单位社保账户的参保地")
+    @ApiOperation(value = "获取单位社保账户的参保地", tags = {"个人社保福利" },  notes = "获取单位社保账户的参保地")
 	@RequestMapping(method = RequestMethod.GET, value = "/socwelfareinfos/{socwelfareinfo_id}/getcbdofsoccompanywel")
     @Transactional
     public ResponseEntity<SocWelfareInfoDTO> getCBDofSOCCOMPANYWEL(@PathVariable("socwelfareinfo_id") String socwelfareinfo_id, @RequestBody SocWelfareInfoDTO socwelfareinfodto) {
@@ -107,7 +107,7 @@ public class SocWelfareInfoResource {
     }
 
     @PreAuthorize("hasPermission(this.socwelfareinfoService.get(#socwelfareinfo_id),'ehr-SocWelfareInfo-Update')")
-    @ApiOperation(value = "Update", tags = {"SocWelfareInfo" },  notes = "Update")
+    @ApiOperation(value = "更新个人社保福利", tags = {"个人社保福利" },  notes = "更新个人社保福利")
 	@RequestMapping(method = RequestMethod.PUT, value = "/socwelfareinfos/{socwelfareinfo_id}")
     @Transactional
     public ResponseEntity<SocWelfareInfoDTO> update(@PathVariable("socwelfareinfo_id") String socwelfareinfo_id, @RequestBody SocWelfareInfoDTO socwelfareinfodto) {
@@ -119,7 +119,7 @@ public class SocWelfareInfoResource {
     }
 
     @PreAuthorize("hasPermission(this.socwelfareinfoService.getSocwelfareinfoByEntities(this.socwelfareinfoMapping.toDomain(#socwelfareinfodtos)),'ehr-SocWelfareInfo-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SocWelfareInfo" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新个人社保福利", tags = {"个人社保福利" },  notes = "批量更新个人社保福利")
 	@RequestMapping(method = RequestMethod.PUT, value = "/socwelfareinfos/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SocWelfareInfoDTO> socwelfareinfodtos) {
         socwelfareinfoService.updateBatch(socwelfareinfoMapping.toDomain(socwelfareinfodtos));
@@ -127,7 +127,7 @@ public class SocWelfareInfoResource {
     }
 
     @PreAuthorize("hasPermission(this.socwelfareinfoService.get(#socwelfareinfo_id),'ehr-SocWelfareInfo-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SocWelfareInfo" },  notes = "Remove")
+    @ApiOperation(value = "删除个人社保福利", tags = {"个人社保福利" },  notes = "删除个人社保福利")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/socwelfareinfos/{socwelfareinfo_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("socwelfareinfo_id") String socwelfareinfo_id) {
@@ -135,7 +135,7 @@ public class SocWelfareInfoResource {
     }
 
     @PreAuthorize("hasPermission(this.socwelfareinfoService.getSocwelfareinfoByIds(#ids),'ehr-SocWelfareInfo-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SocWelfareInfo" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除个人社保福利", tags = {"个人社保福利" },  notes = "批量删除个人社保福利")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/socwelfareinfos/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         socwelfareinfoService.removeBatch(ids);
@@ -143,7 +143,7 @@ public class SocWelfareInfoResource {
     }
 
     @PreAuthorize("hasPermission(this.socwelfareinfoMapping.toDomain(#socwelfareinfodto),'ehr-SocWelfareInfo-Create')")
-    @ApiOperation(value = "Create", tags = {"SocWelfareInfo" },  notes = "Create")
+    @ApiOperation(value = "新建个人社保福利", tags = {"个人社保福利" },  notes = "新建个人社保福利")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfos")
     @Transactional
     public ResponseEntity<SocWelfareInfoDTO> create(@RequestBody SocWelfareInfoDTO socwelfareinfodto) {
@@ -154,7 +154,7 @@ public class SocWelfareInfoResource {
     }
 
     @PreAuthorize("hasPermission(this.socwelfareinfoMapping.toDomain(#socwelfareinfodtos),'ehr-SocWelfareInfo-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SocWelfareInfo" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建个人社保福利", tags = {"个人社保福利" },  notes = "批量新建个人社保福利")
 	@RequestMapping(method = RequestMethod.POST, value = "/socwelfareinfos/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SocWelfareInfoDTO> socwelfareinfodtos) {
         socwelfareinfoService.createBatch(socwelfareinfoMapping.toDomain(socwelfareinfodtos));
@@ -162,7 +162,7 @@ public class SocWelfareInfoResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocWelfareInfo-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SocWelfareInfo" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"个人社保福利" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/socwelfareinfos/fetchdefault")
 	public ResponseEntity<List<SocWelfareInfoDTO>> fetchDefault(SocWelfareInfoSearchContext context) {
         Page<SocWelfareInfo> domains = socwelfareinfoService.searchDefault(context) ;
@@ -175,7 +175,7 @@ public class SocWelfareInfoResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocWelfareInfo-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SocWelfareInfo" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"个人社保福利" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/socwelfareinfos/searchdefault")
 	public ResponseEntity<Page<SocWelfareInfoDTO>> searchDefault(@RequestBody SocWelfareInfoSearchContext context) {
         Page<SocWelfareInfo> domains = socwelfareinfoService.searchDefault(context) ;

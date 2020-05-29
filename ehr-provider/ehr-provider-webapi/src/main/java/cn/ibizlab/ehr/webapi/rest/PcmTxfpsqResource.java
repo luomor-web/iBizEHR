@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmTxfpsqService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmTxfpsqSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmTxfpsq" })
+@Api(tags = {"退休返聘申请" })
 @RestController("WebApi-pcmtxfpsq")
 @RequestMapping("")
 public class PcmTxfpsqResource {
@@ -47,7 +47,7 @@ public class PcmTxfpsqResource {
     public PcmTxfpsqMapping pcmtxfpsqMapping;
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-FillPersonInfo-all')")
-    @ApiOperation(value = "填充用户信息", tags = {"PcmTxfpsq" },  notes = "填充用户信息")
+    @ApiOperation(value = "填充用户信息", tags = {"退休返聘申请" },  notes = "填充用户信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/{pcmtxfpsq_id}/fillpersoninfo")
     @Transactional
     public ResponseEntity<PcmTxfpsqDTO> fillPersonInfo(@PathVariable("pcmtxfpsq_id") String pcmtxfpsq_id, @RequestBody PcmTxfpsqDTO pcmtxfpsqdto) {
@@ -59,7 +59,7 @@ public class PcmTxfpsqResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtxfpsqService.get(#pcmtxfpsq_id),'ehr-PcmTxfpsq-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmTxfpsq" },  notes = "Update")
+    @ApiOperation(value = "更新退休返聘申请", tags = {"退休返聘申请" },  notes = "更新退休返聘申请")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmtxfpsqs/{pcmtxfpsq_id}")
     @Transactional
     public ResponseEntity<PcmTxfpsqDTO> update(@PathVariable("pcmtxfpsq_id") String pcmtxfpsq_id, @RequestBody PcmTxfpsqDTO pcmtxfpsqdto) {
@@ -71,7 +71,7 @@ public class PcmTxfpsqResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtxfpsqService.getPcmtxfpsqByEntities(this.pcmtxfpsqMapping.toDomain(#pcmtxfpsqdtos)),'ehr-PcmTxfpsq-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmTxfpsq" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新退休返聘申请", tags = {"退休返聘申请" },  notes = "批量更新退休返聘申请")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmtxfpsqs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmTxfpsqDTO> pcmtxfpsqdtos) {
         pcmtxfpsqService.updateBatch(pcmtxfpsqMapping.toDomain(pcmtxfpsqdtos));
@@ -79,7 +79,7 @@ public class PcmTxfpsqResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-FPCZ-all')")
-    @ApiOperation(value = "返聘操作", tags = {"PcmTxfpsq" },  notes = "返聘操作")
+    @ApiOperation(value = "返聘操作", tags = {"退休返聘申请" },  notes = "返聘操作")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/{pcmtxfpsq_id}/fpcz")
     @Transactional
     public ResponseEntity<PcmTxfpsqDTO> fPCZ(@PathVariable("pcmtxfpsq_id") String pcmtxfpsq_id, @RequestBody PcmTxfpsqDTO pcmtxfpsqdto) {
@@ -91,7 +91,7 @@ public class PcmTxfpsqResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmtxfpsqMapping.toDomain(returnObject.body),'ehr-PcmTxfpsq-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmTxfpsq" },  notes = "Get")
+    @ApiOperation(value = "获取退休返聘申请", tags = {"退休返聘申请" },  notes = "获取退休返聘申请")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmtxfpsqs/{pcmtxfpsq_id}")
     public ResponseEntity<PcmTxfpsqDTO> get(@PathVariable("pcmtxfpsq_id") String pcmtxfpsq_id) {
         PcmTxfpsq domain = pcmtxfpsqService.get(pcmtxfpsq_id);
@@ -100,7 +100,7 @@ public class PcmTxfpsqResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-FinishFP-all')")
-    @ApiOperation(value = "完成返聘", tags = {"PcmTxfpsq" },  notes = "完成返聘")
+    @ApiOperation(value = "完成返聘", tags = {"退休返聘申请" },  notes = "完成返聘")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/{pcmtxfpsq_id}/finishfp")
     @Transactional
     public ResponseEntity<PcmTxfpsqDTO> finishFP(@PathVariable("pcmtxfpsq_id") String pcmtxfpsq_id, @RequestBody PcmTxfpsqDTO pcmtxfpsqdto) {
@@ -111,14 +111,14 @@ public class PcmTxfpsqResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmtxfpsqdto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmTxfpsq" },  notes = "GetDraft")
+    @ApiOperation(value = "获取退休返聘申请草稿", tags = {"退休返聘申请" },  notes = "获取退休返聘申请草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmtxfpsqs/getdraft")
     public ResponseEntity<PcmTxfpsqDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmtxfpsqMapping.toDto(pcmtxfpsqService.getDraft(new PcmTxfpsq())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-SHTG-all')")
-    @ApiOperation(value = "审核通过", tags = {"PcmTxfpsq" },  notes = "审核通过")
+    @ApiOperation(value = "审核通过", tags = {"退休返聘申请" },  notes = "审核通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/{pcmtxfpsq_id}/shtg")
     @Transactional
     public ResponseEntity<PcmTxfpsqDTO> sHTG(@PathVariable("pcmtxfpsq_id") String pcmtxfpsq_id, @RequestBody PcmTxfpsqDTO pcmtxfpsqdto) {
@@ -130,7 +130,7 @@ public class PcmTxfpsqResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-SHBTG-all')")
-    @ApiOperation(value = "审核不通过", tags = {"PcmTxfpsq" },  notes = "审核不通过")
+    @ApiOperation(value = "审核不通过", tags = {"退休返聘申请" },  notes = "审核不通过")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/{pcmtxfpsq_id}/shbtg")
     @Transactional
     public ResponseEntity<PcmTxfpsqDTO> sHBTG(@PathVariable("pcmtxfpsq_id") String pcmtxfpsq_id, @RequestBody PcmTxfpsqDTO pcmtxfpsqdto) {
@@ -141,21 +141,21 @@ public class PcmTxfpsqResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmtxfpsqdto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmTxfpsq" },  notes = "CheckKey")
+    @ApiOperation(value = "检查退休返聘申请", tags = {"退休返聘申请" },  notes = "检查退休返聘申请")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmTxfpsqDTO pcmtxfpsqdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmtxfpsqService.checkKey(pcmtxfpsqMapping.toDomain(pcmtxfpsqdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmtxfpsqMapping.toDomain(#pcmtxfpsqdto),'ehr-PcmTxfpsq-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmTxfpsq" },  notes = "Save")
+    @ApiOperation(value = "保存退休返聘申请", tags = {"退休返聘申请" },  notes = "保存退休返聘申请")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmTxfpsqDTO pcmtxfpsqdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmtxfpsqService.save(pcmtxfpsqMapping.toDomain(pcmtxfpsqdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmtxfpsqMapping.toDomain(#pcmtxfpsqdtos),'ehr-PcmTxfpsq-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmTxfpsq" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存退休返聘申请", tags = {"退休返聘申请" },  notes = "批量保存退休返聘申请")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmTxfpsqDTO> pcmtxfpsqdtos) {
         pcmtxfpsqService.saveBatch(pcmtxfpsqMapping.toDomain(pcmtxfpsqdtos));
@@ -163,7 +163,7 @@ public class PcmTxfpsqResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtxfpsqMapping.toDomain(#pcmtxfpsqdto),'ehr-PcmTxfpsq-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmTxfpsq" },  notes = "Create")
+    @ApiOperation(value = "新建退休返聘申请", tags = {"退休返聘申请" },  notes = "新建退休返聘申请")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs")
     @Transactional
     public ResponseEntity<PcmTxfpsqDTO> create(@RequestBody PcmTxfpsqDTO pcmtxfpsqdto) {
@@ -174,7 +174,7 @@ public class PcmTxfpsqResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtxfpsqMapping.toDomain(#pcmtxfpsqdtos),'ehr-PcmTxfpsq-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmTxfpsq" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建退休返聘申请", tags = {"退休返聘申请" },  notes = "批量新建退休返聘申请")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmtxfpsqs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmTxfpsqDTO> pcmtxfpsqdtos) {
         pcmtxfpsqService.createBatch(pcmtxfpsqMapping.toDomain(pcmtxfpsqdtos));
@@ -182,7 +182,7 @@ public class PcmTxfpsqResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtxfpsqService.get(#pcmtxfpsq_id),'ehr-PcmTxfpsq-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmTxfpsq" },  notes = "Remove")
+    @ApiOperation(value = "删除退休返聘申请", tags = {"退休返聘申请" },  notes = "删除退休返聘申请")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmtxfpsqs/{pcmtxfpsq_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmtxfpsq_id") String pcmtxfpsq_id) {
@@ -190,7 +190,7 @@ public class PcmTxfpsqResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmtxfpsqService.getPcmtxfpsqByIds(#ids),'ehr-PcmTxfpsq-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmTxfpsq" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除退休返聘申请", tags = {"退休返聘申请" },  notes = "批量删除退休返聘申请")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmtxfpsqs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmtxfpsqService.removeBatch(ids);
@@ -198,7 +198,7 @@ public class PcmTxfpsqResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-FPJL-all')")
-	@ApiOperation(value = "fetch返聘记录", tags = {"PcmTxfpsq" } ,notes = "fetch返聘记录")
+	@ApiOperation(value = "获取返聘记录", tags = {"退休返聘申请" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchfpjl")
 	public ResponseEntity<List<PcmTxfpsqDTO>> fetchFPJL(PcmTxfpsqSearchContext context) {
         Page<PcmTxfpsq> domains = pcmtxfpsqService.searchFPJL(context) ;
@@ -211,7 +211,7 @@ public class PcmTxfpsqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-FPJL-all')")
-	@ApiOperation(value = "search返聘记录", tags = {"PcmTxfpsq" } ,notes = "search返聘记录")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"退休返聘申请" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchfpjl")
 	public ResponseEntity<Page<PcmTxfpsqDTO>> searchFPJL(@RequestBody PcmTxfpsqSearchContext context) {
         Page<PcmTxfpsq> domains = pcmtxfpsqService.searchFPJL(context) ;
@@ -219,7 +219,7 @@ public class PcmTxfpsqResource {
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmTxfpsq" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"退休返聘申请" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchdefault")
 	public ResponseEntity<List<PcmTxfpsqDTO>> fetchDefault(PcmTxfpsqSearchContext context) {
         Page<PcmTxfpsq> domains = pcmtxfpsqService.searchDefault(context) ;
@@ -232,7 +232,7 @@ public class PcmTxfpsqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmTxfpsq" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"退休返聘申请" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchdefault")
 	public ResponseEntity<Page<PcmTxfpsqDTO>> searchDefault(@RequestBody PcmTxfpsqSearchContext context) {
         Page<PcmTxfpsq> domains = pcmtxfpsqService.searchDefault(context) ;
@@ -240,7 +240,7 @@ public class PcmTxfpsqResource {
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-YXSQDS-all')")
-	@ApiOperation(value = "fetch未审核申请", tags = {"PcmTxfpsq" } ,notes = "fetch未审核申请")
+	@ApiOperation(value = "获取未审核申请", tags = {"退休返聘申请" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchyxsqds")
 	public ResponseEntity<List<PcmTxfpsqDTO>> fetchYXSQDS(PcmTxfpsqSearchContext context) {
         Page<PcmTxfpsq> domains = pcmtxfpsqService.searchYXSQDS(context) ;
@@ -253,7 +253,7 @@ public class PcmTxfpsqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-YXSQDS-all')")
-	@ApiOperation(value = "search未审核申请", tags = {"PcmTxfpsq" } ,notes = "search未审核申请")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"退休返聘申请" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchyxsqds")
 	public ResponseEntity<Page<PcmTxfpsqDTO>> searchYXSQDS(@RequestBody PcmTxfpsqSearchContext context) {
         Page<PcmTxfpsq> domains = pcmtxfpsqService.searchYXSQDS(context) ;
@@ -261,7 +261,7 @@ public class PcmTxfpsqResource {
                 .body(new PageImpl(pcmtxfpsqMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-FPGL-all')")
-	@ApiOperation(value = "fetch返聘管理", tags = {"PcmTxfpsq" } ,notes = "fetch返聘管理")
+	@ApiOperation(value = "获取返聘管理", tags = {"退休返聘申请" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmtxfpsqs/fetchfpgl")
 	public ResponseEntity<List<PcmTxfpsqDTO>> fetchFPGL(PcmTxfpsqSearchContext context) {
         Page<PcmTxfpsq> domains = pcmtxfpsqService.searchFPGL(context) ;
@@ -274,7 +274,7 @@ public class PcmTxfpsqResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmTxfpsq-FPGL-all')")
-	@ApiOperation(value = "search返聘管理", tags = {"PcmTxfpsq" } ,notes = "search返聘管理")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"退休返聘申请" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmtxfpsqs/searchfpgl")
 	public ResponseEntity<Page<PcmTxfpsqDTO>> searchFPGL(@RequestBody PcmTxfpsqSearchContext context) {
         Page<PcmTxfpsq> domains = pcmtxfpsqService.searchFPGL(context) ;

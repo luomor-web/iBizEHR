@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmCsrcmspjService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmCsrcmspjSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmCsrcmspj" })
+@Api(tags = {"成熟人才面试评价" })
 @RestController("WebApi-pcmcsrcmspj")
 @RequestMapping("")
 public class PcmCsrcmspjResource {
@@ -47,7 +47,7 @@ public class PcmCsrcmspjResource {
     public PcmCsrcmspjMapping pcmcsrcmspjMapping;
 
     @PreAuthorize("hasPermission(this.pcmcsrcmspjMapping.toDomain(#pcmcsrcmspjdto),'ehr-PcmCsrcmspj-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmCsrcmspj" },  notes = "Create")
+    @ApiOperation(value = "新建成熟人才面试评价", tags = {"成熟人才面试评价" },  notes = "新建成熟人才面试评价")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmcsrcmspjs")
     @Transactional
     public ResponseEntity<PcmCsrcmspjDTO> create(@RequestBody PcmCsrcmspjDTO pcmcsrcmspjdto) {
@@ -58,21 +58,21 @@ public class PcmCsrcmspjResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcsrcmspjMapping.toDomain(#pcmcsrcmspjdtos),'ehr-PcmCsrcmspj-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmCsrcmspj" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建成熟人才面试评价", tags = {"成熟人才面试评价" },  notes = "批量新建成熟人才面试评价")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmcsrcmspjs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmCsrcmspjDTO> pcmcsrcmspjdtos) {
         pcmcsrcmspjService.createBatch(pcmcsrcmspjMapping.toDomain(pcmcsrcmspjdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmCsrcmspj" },  notes = "GetDraft")
+    @ApiOperation(value = "获取成熟人才面试评价草稿", tags = {"成熟人才面试评价" },  notes = "获取成熟人才面试评价草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmcsrcmspjs/getdraft")
     public ResponseEntity<PcmCsrcmspjDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmcsrcmspjMapping.toDto(pcmcsrcmspjService.getDraft(new PcmCsrcmspj())));
     }
 
     @PreAuthorize("hasPermission(this.pcmcsrcmspjService.get(#pcmcsrcmspj_id),'ehr-PcmCsrcmspj-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmCsrcmspj" },  notes = "Remove")
+    @ApiOperation(value = "删除成熟人才面试评价", tags = {"成熟人才面试评价" },  notes = "删除成熟人才面试评价")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmcsrcmspjs/{pcmcsrcmspj_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmcsrcmspj_id") String pcmcsrcmspj_id) {
@@ -80,7 +80,7 @@ public class PcmCsrcmspjResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcsrcmspjService.getPcmcsrcmspjByIds(#ids),'ehr-PcmCsrcmspj-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmCsrcmspj" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除成熟人才面试评价", tags = {"成熟人才面试评价" },  notes = "批量删除成熟人才面试评价")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmcsrcmspjs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmcsrcmspjService.removeBatch(ids);
@@ -88,7 +88,7 @@ public class PcmCsrcmspjResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcsrcmspjService.get(#pcmcsrcmspj_id),'ehr-PcmCsrcmspj-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmCsrcmspj" },  notes = "Update")
+    @ApiOperation(value = "更新成熟人才面试评价", tags = {"成熟人才面试评价" },  notes = "更新成熟人才面试评价")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmcsrcmspjs/{pcmcsrcmspj_id}")
     @Transactional
     public ResponseEntity<PcmCsrcmspjDTO> update(@PathVariable("pcmcsrcmspj_id") String pcmcsrcmspj_id, @RequestBody PcmCsrcmspjDTO pcmcsrcmspjdto) {
@@ -100,7 +100,7 @@ public class PcmCsrcmspjResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcsrcmspjService.getPcmcsrcmspjByEntities(this.pcmcsrcmspjMapping.toDomain(#pcmcsrcmspjdtos)),'ehr-PcmCsrcmspj-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmCsrcmspj" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新成熟人才面试评价", tags = {"成熟人才面试评价" },  notes = "批量更新成熟人才面试评价")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmcsrcmspjs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmCsrcmspjDTO> pcmcsrcmspjdtos) {
         pcmcsrcmspjService.updateBatch(pcmcsrcmspjMapping.toDomain(pcmcsrcmspjdtos));
@@ -108,28 +108,28 @@ public class PcmCsrcmspjResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmcsrcmspjMapping.toDomain(#pcmcsrcmspjdto),'ehr-PcmCsrcmspj-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmCsrcmspj" },  notes = "Save")
+    @ApiOperation(value = "保存成熟人才面试评价", tags = {"成熟人才面试评价" },  notes = "保存成熟人才面试评价")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmcsrcmspjs/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmCsrcmspjDTO pcmcsrcmspjdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmcsrcmspjService.save(pcmcsrcmspjMapping.toDomain(pcmcsrcmspjdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmcsrcmspjMapping.toDomain(#pcmcsrcmspjdtos),'ehr-PcmCsrcmspj-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmCsrcmspj" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存成熟人才面试评价", tags = {"成熟人才面试评价" },  notes = "批量保存成熟人才面试评价")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmcsrcmspjs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmCsrcmspjDTO> pcmcsrcmspjdtos) {
         pcmcsrcmspjService.saveBatch(pcmcsrcmspjMapping.toDomain(pcmcsrcmspjdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmCsrcmspj" },  notes = "CheckKey")
+    @ApiOperation(value = "检查成熟人才面试评价", tags = {"成熟人才面试评价" },  notes = "检查成熟人才面试评价")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmcsrcmspjs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmCsrcmspjDTO pcmcsrcmspjdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmcsrcmspjService.checkKey(pcmcsrcmspjMapping.toDomain(pcmcsrcmspjdto)));
     }
 
     @PostAuthorize("hasPermission(this.pcmcsrcmspjMapping.toDomain(returnObject.body),'ehr-PcmCsrcmspj-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmCsrcmspj" },  notes = "Get")
+    @ApiOperation(value = "获取成熟人才面试评价", tags = {"成熟人才面试评价" },  notes = "获取成熟人才面试评价")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmcsrcmspjs/{pcmcsrcmspj_id}")
     public ResponseEntity<PcmCsrcmspjDTO> get(@PathVariable("pcmcsrcmspj_id") String pcmcsrcmspj_id) {
         PcmCsrcmspj domain = pcmcsrcmspjService.get(pcmcsrcmspj_id);
@@ -138,7 +138,7 @@ public class PcmCsrcmspjResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmCsrcmspj-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmCsrcmspj" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"成熟人才面试评价" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmcsrcmspjs/fetchdefault")
 	public ResponseEntity<List<PcmCsrcmspjDTO>> fetchDefault(PcmCsrcmspjSearchContext context) {
         Page<PcmCsrcmspj> domains = pcmcsrcmspjService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmCsrcmspjResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmCsrcmspj-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmCsrcmspj" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"成熟人才面试评价" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmcsrcmspjs/searchdefault")
 	public ResponseEntity<Page<PcmCsrcmspjDTO>> searchDefault(@RequestBody PcmCsrcmspjSearchContext context) {
         Page<PcmCsrcmspj> domains = pcmcsrcmspjService.searchDefault(context) ;

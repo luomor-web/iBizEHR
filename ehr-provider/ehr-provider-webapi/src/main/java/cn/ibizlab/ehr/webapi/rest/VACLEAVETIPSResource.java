@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.vac.service.IVACLEAVETIPSService;
 import cn.ibizlab.ehr.core.vac.filter.VACLEAVETIPSSearchContext;
 
 @Slf4j
-@Api(tags = {"VACLEAVETIPS" })
+@Api(tags = {"请假提示" })
 @RestController("WebApi-vacleavetips")
 @RequestMapping("")
 public class VACLEAVETIPSResource {
@@ -47,7 +47,7 @@ public class VACLEAVETIPSResource {
     public VACLEAVETIPSMapping vacleavetipsMapping;
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-CheckQJZL-all')")
-    @ApiOperation(value = "检查请假种类", tags = {"VACLEAVETIPS" },  notes = "检查请假种类")
+    @ApiOperation(value = "检查请假种类", tags = {"请假提示" },  notes = "检查请假种类")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavetips/{vacleavetips_id}/checkqjzl")
     @Transactional
     public ResponseEntity<VACLEAVETIPSDTO> checkQJZL(@PathVariable("vacleavetips_id") String vacleavetips_id, @RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
@@ -59,7 +59,7 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavetipsMapping.toDomain(#vacleavetipsdto),'ehr-VACLEAVETIPS-Create')")
-    @ApiOperation(value = "Create", tags = {"VACLEAVETIPS" },  notes = "Create")
+    @ApiOperation(value = "新建请假提示", tags = {"请假提示" },  notes = "新建请假提示")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavetips")
     @Transactional
     public ResponseEntity<VACLEAVETIPSDTO> create(@RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
@@ -70,21 +70,21 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavetipsMapping.toDomain(#vacleavetipsdtos),'ehr-VACLEAVETIPS-Create')")
-    @ApiOperation(value = "createBatch", tags = {"VACLEAVETIPS" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建请假提示", tags = {"请假提示" },  notes = "批量新建请假提示")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavetips/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACLEAVETIPSDTO> vacleavetipsdtos) {
         vacleavetipsService.createBatch(vacleavetipsMapping.toDomain(vacleavetipsdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"VACLEAVETIPS" },  notes = "GetDraft")
+    @ApiOperation(value = "获取请假提示草稿", tags = {"请假提示" },  notes = "获取请假提示草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavetips/getdraft")
     public ResponseEntity<VACLEAVETIPSDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavetipsMapping.toDto(vacleavetipsService.getDraft(new VACLEAVETIPS())));
     }
 
     @PreAuthorize("hasPermission(this.vacleavetipsService.get(#vacleavetips_id),'ehr-VACLEAVETIPS-Remove')")
-    @ApiOperation(value = "Remove", tags = {"VACLEAVETIPS" },  notes = "Remove")
+    @ApiOperation(value = "删除请假提示", tags = {"请假提示" },  notes = "删除请假提示")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleavetips/{vacleavetips_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("vacleavetips_id") String vacleavetips_id) {
@@ -92,21 +92,21 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavetipsService.getVacleavetipsByIds(#ids),'ehr-VACLEAVETIPS-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"VACLEAVETIPS" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除请假提示", tags = {"请假提示" },  notes = "批量删除请假提示")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleavetips/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         vacleavetipsService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"VACLEAVETIPS" },  notes = "CheckKey")
+    @ApiOperation(value = "检查请假提示", tags = {"请假提示" },  notes = "检查请假提示")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavetips/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacleavetipsService.checkKey(vacleavetipsMapping.toDomain(vacleavetipsdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-CheckRepeat-all')")
-    @ApiOperation(value = "检查重复", tags = {"VACLEAVETIPS" },  notes = "检查重复")
+    @ApiOperation(value = "检查重复", tags = {"请假提示" },  notes = "检查重复")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavetips/{vacleavetips_id}/checkrepeat")
     @Transactional
     public ResponseEntity<VACLEAVETIPSDTO> checkRepeat(@PathVariable("vacleavetips_id") String vacleavetips_id, @RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
@@ -118,7 +118,7 @@ public class VACLEAVETIPSResource {
     }
 
     @PostAuthorize("hasPermission(this.vacleavetipsMapping.toDomain(returnObject.body),'ehr-VACLEAVETIPS-Get')")
-    @ApiOperation(value = "Get", tags = {"VACLEAVETIPS" },  notes = "Get")
+    @ApiOperation(value = "获取请假提示", tags = {"请假提示" },  notes = "获取请假提示")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavetips/{vacleavetips_id}")
     public ResponseEntity<VACLEAVETIPSDTO> get(@PathVariable("vacleavetips_id") String vacleavetips_id) {
         VACLEAVETIPS domain = vacleavetipsService.get(vacleavetips_id);
@@ -127,7 +127,7 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavetipsService.get(#vacleavetips_id),'ehr-VACLEAVETIPS-Update')")
-    @ApiOperation(value = "Update", tags = {"VACLEAVETIPS" },  notes = "Update")
+    @ApiOperation(value = "更新请假提示", tags = {"请假提示" },  notes = "更新请假提示")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleavetips/{vacleavetips_id}")
     @Transactional
     public ResponseEntity<VACLEAVETIPSDTO> update(@PathVariable("vacleavetips_id") String vacleavetips_id, @RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
@@ -139,7 +139,7 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavetipsService.getVacleavetipsByEntities(this.vacleavetipsMapping.toDomain(#vacleavetipsdtos)),'ehr-VACLEAVETIPS-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"VACLEAVETIPS" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新请假提示", tags = {"请假提示" },  notes = "批量更新请假提示")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleavetips/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACLEAVETIPSDTO> vacleavetipsdtos) {
         vacleavetipsService.updateBatch(vacleavetipsMapping.toDomain(vacleavetipsdtos));
@@ -147,14 +147,14 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavetipsMapping.toDomain(#vacleavetipsdto),'ehr-VACLEAVETIPS-Save')")
-    @ApiOperation(value = "Save", tags = {"VACLEAVETIPS" },  notes = "Save")
+    @ApiOperation(value = "保存请假提示", tags = {"请假提示" },  notes = "保存请假提示")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavetips/save")
     public ResponseEntity<Boolean> save(@RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavetipsService.save(vacleavetipsMapping.toDomain(vacleavetipsdto)));
     }
 
     @PreAuthorize("hasPermission(this.vacleavetipsMapping.toDomain(#vacleavetipsdtos),'ehr-VACLEAVETIPS-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"VACLEAVETIPS" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存请假提示", tags = {"请假提示" },  notes = "批量保存请假提示")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavetips/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACLEAVETIPSDTO> vacleavetipsdtos) {
         vacleavetipsService.saveBatch(vacleavetipsMapping.toDomain(vacleavetipsdtos));
@@ -162,7 +162,7 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"VACLEAVETIPS" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"请假提示" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavetips/fetchdefault")
 	public ResponseEntity<List<VACLEAVETIPSDTO>> fetchDefault(VACLEAVETIPSSearchContext context) {
         Page<VACLEAVETIPS> domains = vacleavetipsService.searchDefault(context) ;
@@ -175,7 +175,7 @@ public class VACLEAVETIPSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"VACLEAVETIPS" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假提示" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavetips/searchdefault")
 	public ResponseEntity<Page<VACLEAVETIPSDTO>> searchDefault(@RequestBody VACLEAVETIPSSearchContext context) {
         Page<VACLEAVETIPS> domains = vacleavetipsService.searchDefault(context) ;
@@ -183,7 +183,7 @@ public class VACLEAVETIPSResource {
                 .body(new PageImpl(vacleavetipsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-CheckQJZL-all')")
-    @ApiOperation(value = "检查请假种类ByVacHolidayRules", tags = {"VACLEAVETIPS" },  notes = "检查请假种类ByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则请假提示", tags = {"请假提示" },  notes = "根据考勤规则请假提示")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/{vacleavetips_id}/checkqjzl")
     @Transactional
     public ResponseEntity<VACLEAVETIPSDTO> checkQJZLByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacleavetips_id") String vacleavetips_id, @RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
@@ -195,7 +195,7 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavetipsMapping.toDomain(#vacleavetipsdto),'ehr-VACLEAVETIPS-Create')")
-    @ApiOperation(value = "CreateByVacHolidayRules", tags = {"VACLEAVETIPS" },  notes = "CreateByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则建立请假提示", tags = {"请假提示" },  notes = "根据考勤规则建立请假提示")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips")
     @Transactional
     public ResponseEntity<VACLEAVETIPSDTO> createByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
@@ -207,7 +207,7 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavetipsMapping.toDomain(#vacleavetipsdtos),'ehr-VACLEAVETIPS-Create')")
-    @ApiOperation(value = "createBatchByVacHolidayRules", tags = {"VACLEAVETIPS" },  notes = "createBatchByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则批量建立请假提示", tags = {"请假提示" },  notes = "根据考勤规则批量建立请假提示")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/batch")
     public ResponseEntity<Boolean> createBatchByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody List<VACLEAVETIPSDTO> vacleavetipsdtos) {
         List<VACLEAVETIPS> domainlist=vacleavetipsMapping.toDomain(vacleavetipsdtos);
@@ -218,7 +218,7 @@ public class VACLEAVETIPSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByVacHolidayRules", tags = {"VACLEAVETIPS" },  notes = "GetDraftByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则获取请假提示草稿", tags = {"请假提示" },  notes = "根据考勤规则获取请假提示草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/getdraft")
     public ResponseEntity<VACLEAVETIPSDTO> getDraftByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id) {
         VACLEAVETIPS domain = new VACLEAVETIPS();
@@ -227,7 +227,7 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavetipsService.get(#vacleavetips_id),'ehr-VACLEAVETIPS-Remove')")
-    @ApiOperation(value = "RemoveByVacHolidayRules", tags = {"VACLEAVETIPS" },  notes = "RemoveByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则删除请假提示", tags = {"请假提示" },  notes = "根据考勤规则删除请假提示")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/{vacleavetips_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacleavetips_id") String vacleavetips_id) {
@@ -235,21 +235,21 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavetipsService.getVacleavetipsByIds(#ids),'ehr-VACLEAVETIPS-Remove')")
-    @ApiOperation(value = "RemoveBatchByVacHolidayRules", tags = {"VACLEAVETIPS" },  notes = "RemoveBatchByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则批量删除请假提示", tags = {"请假提示" },  notes = "根据考勤规则批量删除请假提示")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/batch")
     public ResponseEntity<Boolean> removeBatchByVacHolidayRules(@RequestBody List<String> ids) {
         vacleavetipsService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByVacHolidayRules", tags = {"VACLEAVETIPS" },  notes = "CheckKeyByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则检查请假提示", tags = {"请假提示" },  notes = "根据考勤规则检查请假提示")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/checkkey")
     public ResponseEntity<Boolean> checkKeyByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacleavetipsService.checkKey(vacleavetipsMapping.toDomain(vacleavetipsdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-CheckRepeat-all')")
-    @ApiOperation(value = "检查重复ByVacHolidayRules", tags = {"VACLEAVETIPS" },  notes = "检查重复ByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则请假提示", tags = {"请假提示" },  notes = "根据考勤规则请假提示")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/{vacleavetips_id}/checkrepeat")
     @Transactional
     public ResponseEntity<VACLEAVETIPSDTO> checkRepeatByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacleavetips_id") String vacleavetips_id, @RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
@@ -261,7 +261,7 @@ public class VACLEAVETIPSResource {
     }
 
     @PostAuthorize("hasPermission(this.vacleavetipsMapping.toDomain(returnObject.body),'ehr-VACLEAVETIPS-Get')")
-    @ApiOperation(value = "GetByVacHolidayRules", tags = {"VACLEAVETIPS" },  notes = "GetByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则获取请假提示", tags = {"请假提示" },  notes = "根据考勤规则获取请假提示")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/{vacleavetips_id}")
     public ResponseEntity<VACLEAVETIPSDTO> getByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacleavetips_id") String vacleavetips_id) {
         VACLEAVETIPS domain = vacleavetipsService.get(vacleavetips_id);
@@ -270,7 +270,7 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavetipsService.get(#vacleavetips_id),'ehr-VACLEAVETIPS-Update')")
-    @ApiOperation(value = "UpdateByVacHolidayRules", tags = {"VACLEAVETIPS" },  notes = "UpdateByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则更新请假提示", tags = {"请假提示" },  notes = "根据考勤规则更新请假提示")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/{vacleavetips_id}")
     @Transactional
     public ResponseEntity<VACLEAVETIPSDTO> updateByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacleavetips_id") String vacleavetips_id, @RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
@@ -283,7 +283,7 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavetipsService.getVacleavetipsByEntities(this.vacleavetipsMapping.toDomain(#vacleavetipsdtos)),'ehr-VACLEAVETIPS-Update')")
-    @ApiOperation(value = "UpdateBatchByVacHolidayRules", tags = {"VACLEAVETIPS" },  notes = "UpdateBatchByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则批量更新请假提示", tags = {"请假提示" },  notes = "根据考勤规则批量更新请假提示")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/batch")
     public ResponseEntity<Boolean> updateBatchByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody List<VACLEAVETIPSDTO> vacleavetipsdtos) {
         List<VACLEAVETIPS> domainlist=vacleavetipsMapping.toDomain(vacleavetipsdtos);
@@ -295,7 +295,7 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavetipsMapping.toDomain(#vacleavetipsdto),'ehr-VACLEAVETIPS-Save')")
-    @ApiOperation(value = "SaveByVacHolidayRules", tags = {"VACLEAVETIPS" },  notes = "SaveByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则保存请假提示", tags = {"请假提示" },  notes = "根据考勤规则保存请假提示")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/save")
     public ResponseEntity<Boolean> saveByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VACLEAVETIPSDTO vacleavetipsdto) {
         VACLEAVETIPS domain = vacleavetipsMapping.toDomain(vacleavetipsdto);
@@ -304,7 +304,7 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavetipsMapping.toDomain(#vacleavetipsdtos),'ehr-VACLEAVETIPS-Save')")
-    @ApiOperation(value = "SaveBatchByVacHolidayRules", tags = {"VACLEAVETIPS" },  notes = "SaveBatchByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则批量保存请假提示", tags = {"请假提示" },  notes = "根据考勤规则批量保存请假提示")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacleavetips/savebatch")
     public ResponseEntity<Boolean> saveBatchByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody List<VACLEAVETIPSDTO> vacleavetipsdtos) {
         List<VACLEAVETIPS> domainlist=vacleavetipsMapping.toDomain(vacleavetipsdtos);
@@ -316,7 +316,7 @@ public class VACLEAVETIPSResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByVacHolidayRules", tags = {"VACLEAVETIPS" } ,notes = "fetchDEFAULTByVacHolidayRules")
+	@ApiOperation(value = "根据考勤规则获取DEFAULT", tags = {"请假提示" } ,notes = "根据考勤规则获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacholidayrules/{vacholidayrules_id}/vacleavetips/fetchdefault")
 	public ResponseEntity<List<VACLEAVETIPSDTO>> fetchVACLEAVETIPSDefaultByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id,VACLEAVETIPSSearchContext context) {
         context.setN_vacholidayrulesid_eq(vacholidayrules_id);
@@ -330,7 +330,7 @@ public class VACLEAVETIPSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACLEAVETIPS-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByVacHolidayRules", tags = {"VACLEAVETIPS" } ,notes = "searchDEFAULTByVacHolidayRules")
+	@ApiOperation(value = "根据考勤规则查询DEFAULT", tags = {"请假提示" } ,notes = "根据考勤规则查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacholidayrules/{vacholidayrules_id}/vacleavetips/searchdefault")
 	public ResponseEntity<Page<VACLEAVETIPSDTO>> searchVACLEAVETIPSDefaultByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VACLEAVETIPSSearchContext context) {
         context.setN_vacholidayrulesid_eq(vacholidayrules_id);

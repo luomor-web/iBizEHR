@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.sal.service.ISalLogService;
 import cn.ibizlab.ehr.core.sal.filter.SalLogSearchContext;
 
 @Slf4j
-@Api(tags = {"SalLog" })
+@Api(tags = {"薪酬调整日志" })
 @RestController("WebApi-sallog")
 @RequestMapping("")
 public class SalLogResource {
@@ -47,7 +47,7 @@ public class SalLogResource {
     public SalLogMapping sallogMapping;
 
     @PostAuthorize("hasPermission(this.sallogMapping.toDomain(returnObject.body),'ehr-SalLog-Get')")
-    @ApiOperation(value = "Get", tags = {"SalLog" },  notes = "Get")
+    @ApiOperation(value = "获取薪酬调整日志", tags = {"薪酬调整日志" },  notes = "获取薪酬调整日志")
 	@RequestMapping(method = RequestMethod.GET, value = "/sallogs/{sallog_id}")
     public ResponseEntity<SalLogDTO> get(@PathVariable("sallog_id") String sallog_id) {
         SalLog domain = sallogService.get(sallog_id);
@@ -56,7 +56,7 @@ public class SalLogResource {
     }
 
     @PreAuthorize("hasPermission(this.sallogService.get(#sallog_id),'ehr-SalLog-Update')")
-    @ApiOperation(value = "Update", tags = {"SalLog" },  notes = "Update")
+    @ApiOperation(value = "更新薪酬调整日志", tags = {"薪酬调整日志" },  notes = "更新薪酬调整日志")
 	@RequestMapping(method = RequestMethod.PUT, value = "/sallogs/{sallog_id}")
     @Transactional
     public ResponseEntity<SalLogDTO> update(@PathVariable("sallog_id") String sallog_id, @RequestBody SalLogDTO sallogdto) {
@@ -68,7 +68,7 @@ public class SalLogResource {
     }
 
     @PreAuthorize("hasPermission(this.sallogService.getSallogByEntities(this.sallogMapping.toDomain(#sallogdtos)),'ehr-SalLog-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SalLog" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新薪酬调整日志", tags = {"薪酬调整日志" },  notes = "批量更新薪酬调整日志")
 	@RequestMapping(method = RequestMethod.PUT, value = "/sallogs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SalLogDTO> sallogdtos) {
         sallogService.updateBatch(sallogMapping.toDomain(sallogdtos));
@@ -76,7 +76,7 @@ public class SalLogResource {
     }
 
     @PreAuthorize("hasPermission(this.sallogService.get(#sallog_id),'ehr-SalLog-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SalLog" },  notes = "Remove")
+    @ApiOperation(value = "删除薪酬调整日志", tags = {"薪酬调整日志" },  notes = "删除薪酬调整日志")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/sallogs/{sallog_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("sallog_id") String sallog_id) {
@@ -84,7 +84,7 @@ public class SalLogResource {
     }
 
     @PreAuthorize("hasPermission(this.sallogService.getSallogByIds(#ids),'ehr-SalLog-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SalLog" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除薪酬调整日志", tags = {"薪酬调整日志" },  notes = "批量删除薪酬调整日志")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/sallogs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         sallogService.removeBatch(ids);
@@ -92,7 +92,7 @@ public class SalLogResource {
     }
 
     @PreAuthorize("hasPermission(this.sallogMapping.toDomain(#sallogdto),'ehr-SalLog-Create')")
-    @ApiOperation(value = "Create", tags = {"SalLog" },  notes = "Create")
+    @ApiOperation(value = "新建薪酬调整日志", tags = {"薪酬调整日志" },  notes = "新建薪酬调整日志")
 	@RequestMapping(method = RequestMethod.POST, value = "/sallogs")
     @Transactional
     public ResponseEntity<SalLogDTO> create(@RequestBody SalLogDTO sallogdto) {
@@ -103,7 +103,7 @@ public class SalLogResource {
     }
 
     @PreAuthorize("hasPermission(this.sallogMapping.toDomain(#sallogdtos),'ehr-SalLog-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SalLog" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建薪酬调整日志", tags = {"薪酬调整日志" },  notes = "批量新建薪酬调整日志")
 	@RequestMapping(method = RequestMethod.POST, value = "/sallogs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SalLogDTO> sallogdtos) {
         sallogService.createBatch(sallogMapping.toDomain(sallogdtos));
@@ -111,34 +111,34 @@ public class SalLogResource {
     }
 
     @PreAuthorize("hasPermission(this.sallogMapping.toDomain(#sallogdto),'ehr-SalLog-Save')")
-    @ApiOperation(value = "Save", tags = {"SalLog" },  notes = "Save")
+    @ApiOperation(value = "保存薪酬调整日志", tags = {"薪酬调整日志" },  notes = "保存薪酬调整日志")
 	@RequestMapping(method = RequestMethod.POST, value = "/sallogs/save")
     public ResponseEntity<Boolean> save(@RequestBody SalLogDTO sallogdto) {
         return ResponseEntity.status(HttpStatus.OK).body(sallogService.save(sallogMapping.toDomain(sallogdto)));
     }
 
     @PreAuthorize("hasPermission(this.sallogMapping.toDomain(#sallogdtos),'ehr-SalLog-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SalLog" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存薪酬调整日志", tags = {"薪酬调整日志" },  notes = "批量保存薪酬调整日志")
 	@RequestMapping(method = RequestMethod.POST, value = "/sallogs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SalLogDTO> sallogdtos) {
         sallogService.saveBatch(sallogMapping.toDomain(sallogdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"SalLog" },  notes = "GetDraft")
+    @ApiOperation(value = "获取薪酬调整日志草稿", tags = {"薪酬调整日志" },  notes = "获取薪酬调整日志草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/sallogs/getdraft")
     public ResponseEntity<SalLogDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(sallogMapping.toDto(sallogService.getDraft(new SalLog())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"SalLog" },  notes = "CheckKey")
+    @ApiOperation(value = "检查薪酬调整日志", tags = {"薪酬调整日志" },  notes = "检查薪酬调整日志")
 	@RequestMapping(method = RequestMethod.POST, value = "/sallogs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SalLogDTO sallogdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(sallogService.checkKey(sallogMapping.toDomain(sallogdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalLog-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SalLog" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"薪酬调整日志" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/sallogs/fetchdefault")
 	public ResponseEntity<List<SalLogDTO>> fetchDefault(SalLogSearchContext context) {
         Page<SalLog> domains = sallogService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SalLogResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalLog-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SalLog" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"薪酬调整日志" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/sallogs/searchdefault")
 	public ResponseEntity<Page<SalLogDTO>> searchDefault(@RequestBody SalLogSearchContext context) {
         Page<SalLog> domains = sallogService.searchDefault(context) ;

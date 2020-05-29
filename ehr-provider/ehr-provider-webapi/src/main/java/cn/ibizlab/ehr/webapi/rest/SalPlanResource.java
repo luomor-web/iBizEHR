@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.sal.service.ISalPlanService;
 import cn.ibizlab.ehr.core.sal.filter.SalPlanSearchContext;
 
 @Slf4j
-@Api(tags = {"SalPlan" })
+@Api(tags = {"薪酬计算计划" })
 @RestController("WebApi-salplan")
 @RequestMapping("")
 public class SalPlanResource {
@@ -47,7 +47,7 @@ public class SalPlanResource {
     public SalPlanMapping salplanMapping;
 
     @PreAuthorize("hasPermission(this.salplanMapping.toDomain(#salplandto),'ehr-SalPlan-Create')")
-    @ApiOperation(value = "Create", tags = {"SalPlan" },  notes = "Create")
+    @ApiOperation(value = "新建薪酬计算计划", tags = {"薪酬计算计划" },  notes = "新建薪酬计算计划")
 	@RequestMapping(method = RequestMethod.POST, value = "/salplans")
     @Transactional
     public ResponseEntity<SalPlanDTO> create(@RequestBody SalPlanDTO salplandto) {
@@ -58,7 +58,7 @@ public class SalPlanResource {
     }
 
     @PreAuthorize("hasPermission(this.salplanMapping.toDomain(#salplandtos),'ehr-SalPlan-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SalPlan" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建薪酬计算计划", tags = {"薪酬计算计划" },  notes = "批量新建薪酬计算计划")
 	@RequestMapping(method = RequestMethod.POST, value = "/salplans/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SalPlanDTO> salplandtos) {
         salplanService.createBatch(salplanMapping.toDomain(salplandtos));
@@ -66,7 +66,7 @@ public class SalPlanResource {
     }
 
     @PreAuthorize("hasPermission(this.salplanService.get(#salplan_id),'ehr-SalPlan-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SalPlan" },  notes = "Remove")
+    @ApiOperation(value = "删除薪酬计算计划", tags = {"薪酬计算计划" },  notes = "删除薪酬计算计划")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salplans/{salplan_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("salplan_id") String salplan_id) {
@@ -74,42 +74,42 @@ public class SalPlanResource {
     }
 
     @PreAuthorize("hasPermission(this.salplanService.getSalplanByIds(#ids),'ehr-SalPlan-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SalPlan" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除薪酬计算计划", tags = {"薪酬计算计划" },  notes = "批量删除薪酬计算计划")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salplans/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         salplanService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"SalPlan" },  notes = "CheckKey")
+    @ApiOperation(value = "检查薪酬计算计划", tags = {"薪酬计算计划" },  notes = "检查薪酬计算计划")
 	@RequestMapping(method = RequestMethod.POST, value = "/salplans/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SalPlanDTO salplandto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salplanService.checkKey(salplanMapping.toDomain(salplandto)));
     }
 
     @PreAuthorize("hasPermission(this.salplanMapping.toDomain(#salplandto),'ehr-SalPlan-Save')")
-    @ApiOperation(value = "Save", tags = {"SalPlan" },  notes = "Save")
+    @ApiOperation(value = "保存薪酬计算计划", tags = {"薪酬计算计划" },  notes = "保存薪酬计算计划")
 	@RequestMapping(method = RequestMethod.POST, value = "/salplans/save")
     public ResponseEntity<Boolean> save(@RequestBody SalPlanDTO salplandto) {
         return ResponseEntity.status(HttpStatus.OK).body(salplanService.save(salplanMapping.toDomain(salplandto)));
     }
 
     @PreAuthorize("hasPermission(this.salplanMapping.toDomain(#salplandtos),'ehr-SalPlan-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SalPlan" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存薪酬计算计划", tags = {"薪酬计算计划" },  notes = "批量保存薪酬计算计划")
 	@RequestMapping(method = RequestMethod.POST, value = "/salplans/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SalPlanDTO> salplandtos) {
         salplanService.saveBatch(salplanMapping.toDomain(salplandtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"SalPlan" },  notes = "GetDraft")
+    @ApiOperation(value = "获取薪酬计算计划草稿", tags = {"薪酬计算计划" },  notes = "获取薪酬计算计划草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/salplans/getdraft")
     public ResponseEntity<SalPlanDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salplanMapping.toDto(salplanService.getDraft(new SalPlan())));
     }
 
     @PreAuthorize("hasPermission(this.salplanService.get(#salplan_id),'ehr-SalPlan-Update')")
-    @ApiOperation(value = "Update", tags = {"SalPlan" },  notes = "Update")
+    @ApiOperation(value = "更新薪酬计算计划", tags = {"薪酬计算计划" },  notes = "更新薪酬计算计划")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salplans/{salplan_id}")
     @Transactional
     public ResponseEntity<SalPlanDTO> update(@PathVariable("salplan_id") String salplan_id, @RequestBody SalPlanDTO salplandto) {
@@ -121,7 +121,7 @@ public class SalPlanResource {
     }
 
     @PreAuthorize("hasPermission(this.salplanService.getSalplanByEntities(this.salplanMapping.toDomain(#salplandtos)),'ehr-SalPlan-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SalPlan" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新薪酬计算计划", tags = {"薪酬计算计划" },  notes = "批量更新薪酬计算计划")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salplans/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SalPlanDTO> salplandtos) {
         salplanService.updateBatch(salplanMapping.toDomain(salplandtos));
@@ -129,7 +129,7 @@ public class SalPlanResource {
     }
 
     @PostAuthorize("hasPermission(this.salplanMapping.toDomain(returnObject.body),'ehr-SalPlan-Get')")
-    @ApiOperation(value = "Get", tags = {"SalPlan" },  notes = "Get")
+    @ApiOperation(value = "获取薪酬计算计划", tags = {"薪酬计算计划" },  notes = "获取薪酬计算计划")
 	@RequestMapping(method = RequestMethod.GET, value = "/salplans/{salplan_id}")
     public ResponseEntity<SalPlanDTO> get(@PathVariable("salplan_id") String salplan_id) {
         SalPlan domain = salplanService.get(salplan_id);
@@ -138,7 +138,7 @@ public class SalPlanResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalPlan-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SalPlan" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"薪酬计算计划" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/salplans/fetchdefault")
 	public ResponseEntity<List<SalPlanDTO>> fetchDefault(SalPlanSearchContext context) {
         Page<SalPlan> domains = salplanService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SalPlanResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalPlan-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SalPlan" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"薪酬计算计划" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/salplans/searchdefault")
 	public ResponseEntity<Page<SalPlanDTO>> searchDefault(@RequestBody SalPlanSearchContext context) {
         Page<SalPlan> domains = salplanService.searchDefault(context) ;

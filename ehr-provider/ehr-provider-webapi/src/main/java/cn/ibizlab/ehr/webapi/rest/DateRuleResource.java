@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IDateRuleService;
 import cn.ibizlab.ehr.core.pim.filter.DateRuleSearchContext;
 
 @Slf4j
-@Api(tags = {"DateRule" })
+@Api(tags = {"生效日期规则" })
 @RestController("WebApi-daterule")
 @RequestMapping("")
 public class DateRuleResource {
@@ -46,14 +46,14 @@ public class DateRuleResource {
     @Lazy
     public DateRuleMapping dateruleMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"DateRule" },  notes = "GetDraft")
+    @ApiOperation(value = "获取生效日期规则草稿", tags = {"生效日期规则" },  notes = "获取生效日期规则草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/daterules/getdraft")
     public ResponseEntity<DateRuleDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(dateruleMapping.toDto(dateruleService.getDraft(new DateRule())));
     }
 
     @PreAuthorize("hasPermission(this.dateruleService.get(#daterule_id),'ehr-DateRule-Update')")
-    @ApiOperation(value = "Update", tags = {"DateRule" },  notes = "Update")
+    @ApiOperation(value = "更新生效日期规则", tags = {"生效日期规则" },  notes = "更新生效日期规则")
 	@RequestMapping(method = RequestMethod.PUT, value = "/daterules/{daterule_id}")
     @Transactional
     public ResponseEntity<DateRuleDTO> update(@PathVariable("daterule_id") String daterule_id, @RequestBody DateRuleDTO dateruledto) {
@@ -65,7 +65,7 @@ public class DateRuleResource {
     }
 
     @PreAuthorize("hasPermission(this.dateruleService.getDateruleByEntities(this.dateruleMapping.toDomain(#dateruledtos)),'ehr-DateRule-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"DateRule" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新生效日期规则", tags = {"生效日期规则" },  notes = "批量更新生效日期规则")
 	@RequestMapping(method = RequestMethod.PUT, value = "/daterules/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DateRuleDTO> dateruledtos) {
         dateruleService.updateBatch(dateruleMapping.toDomain(dateruledtos));
@@ -73,7 +73,7 @@ public class DateRuleResource {
     }
 
     @PreAuthorize("hasPermission(this.dateruleService.get(#daterule_id),'ehr-DateRule-Remove')")
-    @ApiOperation(value = "Remove", tags = {"DateRule" },  notes = "Remove")
+    @ApiOperation(value = "删除生效日期规则", tags = {"生效日期规则" },  notes = "删除生效日期规则")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/daterules/{daterule_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("daterule_id") String daterule_id) {
@@ -81,7 +81,7 @@ public class DateRuleResource {
     }
 
     @PreAuthorize("hasPermission(this.dateruleService.getDateruleByIds(#ids),'ehr-DateRule-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"DateRule" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除生效日期规则", tags = {"生效日期规则" },  notes = "批量删除生效日期规则")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/daterules/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         dateruleService.removeBatch(ids);
@@ -89,7 +89,7 @@ public class DateRuleResource {
     }
 
     @PreAuthorize("hasPermission(this.dateruleMapping.toDomain(#dateruledto),'ehr-DateRule-Create')")
-    @ApiOperation(value = "Create", tags = {"DateRule" },  notes = "Create")
+    @ApiOperation(value = "新建生效日期规则", tags = {"生效日期规则" },  notes = "新建生效日期规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/daterules")
     @Transactional
     public ResponseEntity<DateRuleDTO> create(@RequestBody DateRuleDTO dateruledto) {
@@ -100,28 +100,28 @@ public class DateRuleResource {
     }
 
     @PreAuthorize("hasPermission(this.dateruleMapping.toDomain(#dateruledtos),'ehr-DateRule-Create')")
-    @ApiOperation(value = "createBatch", tags = {"DateRule" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建生效日期规则", tags = {"生效日期规则" },  notes = "批量新建生效日期规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/daterules/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DateRuleDTO> dateruledtos) {
         dateruleService.createBatch(dateruleMapping.toDomain(dateruledtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"DateRule" },  notes = "CheckKey")
+    @ApiOperation(value = "检查生效日期规则", tags = {"生效日期规则" },  notes = "检查生效日期规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/daterules/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DateRuleDTO dateruledto) {
         return  ResponseEntity.status(HttpStatus.OK).body(dateruleService.checkKey(dateruleMapping.toDomain(dateruledto)));
     }
 
     @PreAuthorize("hasPermission(this.dateruleMapping.toDomain(#dateruledto),'ehr-DateRule-Save')")
-    @ApiOperation(value = "Save", tags = {"DateRule" },  notes = "Save")
+    @ApiOperation(value = "保存生效日期规则", tags = {"生效日期规则" },  notes = "保存生效日期规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/daterules/save")
     public ResponseEntity<Boolean> save(@RequestBody DateRuleDTO dateruledto) {
         return ResponseEntity.status(HttpStatus.OK).body(dateruleService.save(dateruleMapping.toDomain(dateruledto)));
     }
 
     @PreAuthorize("hasPermission(this.dateruleMapping.toDomain(#dateruledtos),'ehr-DateRule-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"DateRule" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存生效日期规则", tags = {"生效日期规则" },  notes = "批量保存生效日期规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/daterules/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<DateRuleDTO> dateruledtos) {
         dateruleService.saveBatch(dateruleMapping.toDomain(dateruledtos));
@@ -129,7 +129,7 @@ public class DateRuleResource {
     }
 
     @PostAuthorize("hasPermission(this.dateruleMapping.toDomain(returnObject.body),'ehr-DateRule-Get')")
-    @ApiOperation(value = "Get", tags = {"DateRule" },  notes = "Get")
+    @ApiOperation(value = "获取生效日期规则", tags = {"生效日期规则" },  notes = "获取生效日期规则")
 	@RequestMapping(method = RequestMethod.GET, value = "/daterules/{daterule_id}")
     public ResponseEntity<DateRuleDTO> get(@PathVariable("daterule_id") String daterule_id) {
         DateRule domain = dateruleService.get(daterule_id);
@@ -138,7 +138,7 @@ public class DateRuleResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DateRule-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"DateRule" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"生效日期规则" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/daterules/fetchdefault")
 	public ResponseEntity<List<DateRuleDTO>> fetchDefault(DateRuleSearchContext context) {
         Page<DateRule> domains = dateruleService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class DateRuleResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-DateRule-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"DateRule" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"生效日期规则" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/daterules/searchdefault")
 	public ResponseEntity<Page<DateRuleDTO>> searchDefault(@RequestBody DateRuleSearchContext context) {
         Page<DateRule> domains = dateruleService.searchDefault(context) ;

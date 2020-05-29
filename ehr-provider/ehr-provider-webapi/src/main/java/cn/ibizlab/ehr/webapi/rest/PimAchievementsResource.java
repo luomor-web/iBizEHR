@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimAchievementsService;
 import cn.ibizlab.ehr.core.pim.filter.PimAchievementsSearchContext;
 
 @Slf4j
-@Api(tags = {"PimAchievements" })
+@Api(tags = {"绩效信息" })
 @RestController("WebApi-pimachievements")
 @RequestMapping("")
 public class PimAchievementsResource {
@@ -47,7 +47,7 @@ public class PimAchievementsResource {
     public PimAchievementsMapping pimachievementsMapping;
 
     @PreAuthorize("hasPermission(this.pimachievementsService.get(#pimachievements_id),'ehr-PimAchievements-Update')")
-    @ApiOperation(value = "Update", tags = {"PimAchievements" },  notes = "Update")
+    @ApiOperation(value = "更新绩效信息", tags = {"绩效信息" },  notes = "更新绩效信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimachievements/{pimachievements_id}")
     @Transactional
     public ResponseEntity<PimAchievementsDTO> update(@PathVariable("pimachievements_id") String pimachievements_id, @RequestBody PimAchievementsDTO pimachievementsdto) {
@@ -59,7 +59,7 @@ public class PimAchievementsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimachievementsService.getPimachievementsByEntities(this.pimachievementsMapping.toDomain(#pimachievementsdtos)),'ehr-PimAchievements-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimAchievements" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新绩效信息", tags = {"绩效信息" },  notes = "批量更新绩效信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimachievements/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimAchievementsDTO> pimachievementsdtos) {
         pimachievementsService.updateBatch(pimachievementsMapping.toDomain(pimachievementsdtos));
@@ -67,28 +67,28 @@ public class PimAchievementsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimachievementsMapping.toDomain(#pimachievementsdto),'ehr-PimAchievements-Save')")
-    @ApiOperation(value = "Save", tags = {"PimAchievements" },  notes = "Save")
+    @ApiOperation(value = "保存绩效信息", tags = {"绩效信息" },  notes = "保存绩效信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimachievements/save")
     public ResponseEntity<Boolean> save(@RequestBody PimAchievementsDTO pimachievementsdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimachievementsService.save(pimachievementsMapping.toDomain(pimachievementsdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimachievementsMapping.toDomain(#pimachievementsdtos),'ehr-PimAchievements-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimAchievements" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存绩效信息", tags = {"绩效信息" },  notes = "批量保存绩效信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimachievements/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimAchievementsDTO> pimachievementsdtos) {
         pimachievementsService.saveBatch(pimachievementsMapping.toDomain(pimachievementsdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimAchievements" },  notes = "GetDraft")
+    @ApiOperation(value = "获取绩效信息草稿", tags = {"绩效信息" },  notes = "获取绩效信息草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimachievements/getdraft")
     public ResponseEntity<PimAchievementsDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimachievementsMapping.toDto(pimachievementsService.getDraft(new PimAchievements())));
     }
 
     @PreAuthorize("hasPermission(this.pimachievementsService.get(#pimachievements_id),'ehr-PimAchievements-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimAchievements" },  notes = "Remove")
+    @ApiOperation(value = "删除绩效信息", tags = {"绩效信息" },  notes = "删除绩效信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimachievements/{pimachievements_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimachievements_id") String pimachievements_id) {
@@ -96,7 +96,7 @@ public class PimAchievementsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimachievementsService.getPimachievementsByIds(#ids),'ehr-PimAchievements-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimAchievements" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除绩效信息", tags = {"绩效信息" },  notes = "批量删除绩效信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimachievements/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimachievementsService.removeBatch(ids);
@@ -104,7 +104,7 @@ public class PimAchievementsResource {
     }
 
     @PostAuthorize("hasPermission(this.pimachievementsMapping.toDomain(returnObject.body),'ehr-PimAchievements-Get')")
-    @ApiOperation(value = "Get", tags = {"PimAchievements" },  notes = "Get")
+    @ApiOperation(value = "获取绩效信息", tags = {"绩效信息" },  notes = "获取绩效信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimachievements/{pimachievements_id}")
     public ResponseEntity<PimAchievementsDTO> get(@PathVariable("pimachievements_id") String pimachievements_id) {
         PimAchievements domain = pimachievementsService.get(pimachievements_id);
@@ -112,14 +112,14 @@ public class PimAchievementsResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimAchievements" },  notes = "CheckKey")
+    @ApiOperation(value = "检查绩效信息", tags = {"绩效信息" },  notes = "检查绩效信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimachievements/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimAchievementsDTO pimachievementsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimachievementsService.checkKey(pimachievementsMapping.toDomain(pimachievementsdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimachievementsMapping.toDomain(#pimachievementsdto),'ehr-PimAchievements-Create')")
-    @ApiOperation(value = "Create", tags = {"PimAchievements" },  notes = "Create")
+    @ApiOperation(value = "新建绩效信息", tags = {"绩效信息" },  notes = "新建绩效信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimachievements")
     @Transactional
     public ResponseEntity<PimAchievementsDTO> create(@RequestBody PimAchievementsDTO pimachievementsdto) {
@@ -130,7 +130,7 @@ public class PimAchievementsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimachievementsMapping.toDomain(#pimachievementsdtos),'ehr-PimAchievements-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimAchievements" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建绩效信息", tags = {"绩效信息" },  notes = "批量新建绩效信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimachievements/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimAchievementsDTO> pimachievementsdtos) {
         pimachievementsService.createBatch(pimachievementsMapping.toDomain(pimachievementsdtos));
@@ -138,7 +138,7 @@ public class PimAchievementsResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-JLSS-all')")
-	@ApiOperation(value = "fetch记录所属和人员ID不符的", tags = {"PimAchievements" } ,notes = "fetch记录所属和人员ID不符的")
+	@ApiOperation(value = "获取记录所属和人员ID不符的", tags = {"绩效信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimachievements/fetchjlss")
 	public ResponseEntity<List<PimAchievementsDTO>> fetchJLSS(PimAchievementsSearchContext context) {
         Page<PimAchievements> domains = pimachievementsService.searchJLSS(context) ;
@@ -151,7 +151,7 @@ public class PimAchievementsResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-JLSS-all')")
-	@ApiOperation(value = "search记录所属和人员ID不符的", tags = {"PimAchievements" } ,notes = "search记录所属和人员ID不符的")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"绩效信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimachievements/searchjlss")
 	public ResponseEntity<Page<PimAchievementsDTO>> searchJLSS(@RequestBody PimAchievementsSearchContext context) {
         Page<PimAchievements> domains = pimachievementsService.searchJLSS(context) ;
@@ -159,7 +159,7 @@ public class PimAchievementsResource {
                 .body(new PageImpl(pimachievementsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimAchievements" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"绩效信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimachievements/fetchdefault")
 	public ResponseEntity<List<PimAchievementsDTO>> fetchDefault(PimAchievementsSearchContext context) {
         Page<PimAchievements> domains = pimachievementsService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class PimAchievementsResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimAchievements" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"绩效信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimachievements/searchdefault")
 	public ResponseEntity<Page<PimAchievementsDTO>> searchDefault(@RequestBody PimAchievementsSearchContext context) {
         Page<PimAchievements> domains = pimachievementsService.searchDefault(context) ;
@@ -180,7 +180,7 @@ public class PimAchievementsResource {
                 .body(new PageImpl(pimachievementsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-ZIZHU-all')")
-	@ApiOperation(value = "fetch自助(绩效信息)", tags = {"PimAchievements" } ,notes = "fetch自助(绩效信息)")
+	@ApiOperation(value = "获取自助(绩效信息)", tags = {"绩效信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimachievements/fetchzizhu")
 	public ResponseEntity<List<PimAchievementsDTO>> fetchZIZHU(PimAchievementsSearchContext context) {
         Page<PimAchievements> domains = pimachievementsService.searchZIZHU(context) ;
@@ -193,7 +193,7 @@ public class PimAchievementsResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-ZIZHU-all')")
-	@ApiOperation(value = "search自助(绩效信息)", tags = {"PimAchievements" } ,notes = "search自助(绩效信息)")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"绩效信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimachievements/searchzizhu")
 	public ResponseEntity<Page<PimAchievementsDTO>> searchZIZHU(@RequestBody PimAchievementsSearchContext context) {
         Page<PimAchievements> domains = pimachievementsService.searchZIZHU(context) ;
@@ -201,7 +201,7 @@ public class PimAchievementsResource {
                 .body(new PageImpl(pimachievementsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pimachievementsService.get(#pimachievements_id),'ehr-PimAchievements-Update')")
-    @ApiOperation(value = "UpdateByPimPerson", tags = {"PimAchievements" },  notes = "UpdateByPimPerson")
+    @ApiOperation(value = "根据人员信息更新绩效信息", tags = {"绩效信息" },  notes = "根据人员信息更新绩效信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimachievements/{pimachievements_id}")
     @Transactional
     public ResponseEntity<PimAchievementsDTO> updateByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimachievements_id") String pimachievements_id, @RequestBody PimAchievementsDTO pimachievementsdto) {
@@ -214,7 +214,7 @@ public class PimAchievementsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimachievementsService.getPimachievementsByEntities(this.pimachievementsMapping.toDomain(#pimachievementsdtos)),'ehr-PimAchievements-Update')")
-    @ApiOperation(value = "UpdateBatchByPimPerson", tags = {"PimAchievements" },  notes = "UpdateBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量更新绩效信息", tags = {"绩效信息" },  notes = "根据人员信息批量更新绩效信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimachievements/batch")
     public ResponseEntity<Boolean> updateBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PimAchievementsDTO> pimachievementsdtos) {
         List<PimAchievements> domainlist=pimachievementsMapping.toDomain(pimachievementsdtos);
@@ -226,7 +226,7 @@ public class PimAchievementsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimachievementsMapping.toDomain(#pimachievementsdto),'ehr-PimAchievements-Save')")
-    @ApiOperation(value = "SaveByPimPerson", tags = {"PimAchievements" },  notes = "SaveByPimPerson")
+    @ApiOperation(value = "根据人员信息保存绩效信息", tags = {"绩效信息" },  notes = "根据人员信息保存绩效信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimachievements/save")
     public ResponseEntity<Boolean> saveByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimAchievementsDTO pimachievementsdto) {
         PimAchievements domain = pimachievementsMapping.toDomain(pimachievementsdto);
@@ -235,7 +235,7 @@ public class PimAchievementsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimachievementsMapping.toDomain(#pimachievementsdtos),'ehr-PimAchievements-Save')")
-    @ApiOperation(value = "SaveBatchByPimPerson", tags = {"PimAchievements" },  notes = "SaveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量保存绩效信息", tags = {"绩效信息" },  notes = "根据人员信息批量保存绩效信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimachievements/savebatch")
     public ResponseEntity<Boolean> saveBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PimAchievementsDTO> pimachievementsdtos) {
         List<PimAchievements> domainlist=pimachievementsMapping.toDomain(pimachievementsdtos);
@@ -246,7 +246,7 @@ public class PimAchievementsResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPimPerson", tags = {"PimAchievements" },  notes = "GetDraftByPimPerson")
+    @ApiOperation(value = "根据人员信息获取绩效信息草稿", tags = {"绩效信息" },  notes = "根据人员信息获取绩效信息草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimachievements/getdraft")
     public ResponseEntity<PimAchievementsDTO> getDraftByPimPerson(@PathVariable("pimperson_id") String pimperson_id) {
         PimAchievements domain = new PimAchievements();
@@ -255,7 +255,7 @@ public class PimAchievementsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimachievementsService.get(#pimachievements_id),'ehr-PimAchievements-Remove')")
-    @ApiOperation(value = "RemoveByPimPerson", tags = {"PimAchievements" },  notes = "RemoveByPimPerson")
+    @ApiOperation(value = "根据人员信息删除绩效信息", tags = {"绩效信息" },  notes = "根据人员信息删除绩效信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimachievements/{pimachievements_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimachievements_id") String pimachievements_id) {
@@ -263,7 +263,7 @@ public class PimAchievementsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimachievementsService.getPimachievementsByIds(#ids),'ehr-PimAchievements-Remove')")
-    @ApiOperation(value = "RemoveBatchByPimPerson", tags = {"PimAchievements" },  notes = "RemoveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量删除绩效信息", tags = {"绩效信息" },  notes = "根据人员信息批量删除绩效信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimachievements/batch")
     public ResponseEntity<Boolean> removeBatchByPimPerson(@RequestBody List<String> ids) {
         pimachievementsService.removeBatch(ids);
@@ -271,7 +271,7 @@ public class PimAchievementsResource {
     }
 
     @PostAuthorize("hasPermission(this.pimachievementsMapping.toDomain(returnObject.body),'ehr-PimAchievements-Get')")
-    @ApiOperation(value = "GetByPimPerson", tags = {"PimAchievements" },  notes = "GetByPimPerson")
+    @ApiOperation(value = "根据人员信息获取绩效信息", tags = {"绩效信息" },  notes = "根据人员信息获取绩效信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimachievements/{pimachievements_id}")
     public ResponseEntity<PimAchievementsDTO> getByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimachievements_id") String pimachievements_id) {
         PimAchievements domain = pimachievementsService.get(pimachievements_id);
@@ -279,14 +279,14 @@ public class PimAchievementsResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKeyByPimPerson", tags = {"PimAchievements" },  notes = "CheckKeyByPimPerson")
+    @ApiOperation(value = "根据人员信息检查绩效信息", tags = {"绩效信息" },  notes = "根据人员信息检查绩效信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimachievements/checkkey")
     public ResponseEntity<Boolean> checkKeyByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimAchievementsDTO pimachievementsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimachievementsService.checkKey(pimachievementsMapping.toDomain(pimachievementsdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimachievementsMapping.toDomain(#pimachievementsdto),'ehr-PimAchievements-Create')")
-    @ApiOperation(value = "CreateByPimPerson", tags = {"PimAchievements" },  notes = "CreateByPimPerson")
+    @ApiOperation(value = "根据人员信息建立绩效信息", tags = {"绩效信息" },  notes = "根据人员信息建立绩效信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimachievements")
     @Transactional
     public ResponseEntity<PimAchievementsDTO> createByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimAchievementsDTO pimachievementsdto) {
@@ -298,7 +298,7 @@ public class PimAchievementsResource {
     }
 
     @PreAuthorize("hasPermission(this.pimachievementsMapping.toDomain(#pimachievementsdtos),'ehr-PimAchievements-Create')")
-    @ApiOperation(value = "createBatchByPimPerson", tags = {"PimAchievements" },  notes = "createBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量建立绩效信息", tags = {"绩效信息" },  notes = "根据人员信息批量建立绩效信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimachievements/batch")
     public ResponseEntity<Boolean> createBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PimAchievementsDTO> pimachievementsdtos) {
         List<PimAchievements> domainlist=pimachievementsMapping.toDomain(pimachievementsdtos);
@@ -310,7 +310,7 @@ public class PimAchievementsResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-JLSS-all')")
-	@ApiOperation(value = "fetch记录所属和人员ID不符的ByPimPerson", tags = {"PimAchievements" } ,notes = "fetch记录所属和人员ID不符的ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取记录所属和人员ID不符的", tags = {"绩效信息" } ,notes = "根据人员信息获取记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimachievements/fetchjlss")
 	public ResponseEntity<List<PimAchievementsDTO>> fetchPimAchievementsJLSSByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PimAchievementsSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -324,7 +324,7 @@ public class PimAchievementsResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-JLSS-all')")
-	@ApiOperation(value = "search记录所属和人员ID不符的ByPimPerson", tags = {"PimAchievements" } ,notes = "search记录所属和人员ID不符的ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询记录所属和人员ID不符的", tags = {"绩效信息" } ,notes = "根据人员信息查询记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimachievements/searchjlss")
 	public ResponseEntity<Page<PimAchievementsDTO>> searchPimAchievementsJLSSByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimAchievementsSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -333,7 +333,7 @@ public class PimAchievementsResource {
                 .body(new PageImpl(pimachievementsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPimPerson", tags = {"PimAchievements" } ,notes = "fetchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息获取DEFAULT", tags = {"绩效信息" } ,notes = "根据人员信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimachievements/fetchdefault")
 	public ResponseEntity<List<PimAchievementsDTO>> fetchPimAchievementsDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PimAchievementsSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -347,7 +347,7 @@ public class PimAchievementsResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPimPerson", tags = {"PimAchievements" } ,notes = "searchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息查询DEFAULT", tags = {"绩效信息" } ,notes = "根据人员信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimachievements/searchdefault")
 	public ResponseEntity<Page<PimAchievementsDTO>> searchPimAchievementsDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimAchievementsSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -356,7 +356,7 @@ public class PimAchievementsResource {
                 .body(new PageImpl(pimachievementsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-ZIZHU-all')")
-	@ApiOperation(value = "fetch自助(绩效信息)ByPimPerson", tags = {"PimAchievements" } ,notes = "fetch自助(绩效信息)ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取自助(绩效信息)", tags = {"绩效信息" } ,notes = "根据人员信息获取自助(绩效信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimachievements/fetchzizhu")
 	public ResponseEntity<List<PimAchievementsDTO>> fetchPimAchievementsZIZHUByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PimAchievementsSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -370,7 +370,7 @@ public class PimAchievementsResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimAchievements-ZIZHU-all')")
-	@ApiOperation(value = "search自助(绩效信息)ByPimPerson", tags = {"PimAchievements" } ,notes = "search自助(绩效信息)ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询自助(绩效信息)", tags = {"绩效信息" } ,notes = "根据人员信息查询自助(绩效信息)")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimachievements/searchzizhu")
 	public ResponseEntity<Page<PimAchievementsDTO>> searchPimAchievementsZIZHUByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimAchievementsSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPIMCITYService;
 import cn.ibizlab.ehr.core.pim.filter.PIMCITYSearchContext;
 
 @Slf4j
-@Api(tags = {"PIMCITY" })
+@Api(tags = {"市" })
 @RestController("WebApi-pimcity")
 @RequestMapping("")
 public class PIMCITYResource {
@@ -46,14 +46,14 @@ public class PIMCITYResource {
     @Lazy
     public PIMCITYMapping pimcityMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"PIMCITY" },  notes = "CheckKey")
+    @ApiOperation(value = "检查市", tags = {"市" },  notes = "检查市")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcities/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMCITYDTO pimcitydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimcityService.checkKey(pimcityMapping.toDomain(pimcitydto)));
     }
 
     @PreAuthorize("hasPermission(this.pimcityService.get(#pimcity_id),'ehr-PIMCITY-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PIMCITY" },  notes = "Remove")
+    @ApiOperation(value = "删除市", tags = {"市" },  notes = "删除市")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimcities/{pimcity_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimcity_id") String pimcity_id) {
@@ -61,21 +61,21 @@ public class PIMCITYResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcityService.getPimcityByIds(#ids),'ehr-PIMCITY-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PIMCITY" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除市", tags = {"市" },  notes = "批量删除市")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimcities/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimcityService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PIMCITY" },  notes = "GetDraft")
+    @ApiOperation(value = "获取市草稿", tags = {"市" },  notes = "获取市草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimcities/getdraft")
     public ResponseEntity<PIMCITYDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimcityMapping.toDto(pimcityService.getDraft(new PIMCITY())));
     }
 
     @PreAuthorize("hasPermission(this.pimcityService.get(#pimcity_id),'ehr-PIMCITY-Update')")
-    @ApiOperation(value = "Update", tags = {"PIMCITY" },  notes = "Update")
+    @ApiOperation(value = "更新市", tags = {"市" },  notes = "更新市")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimcities/{pimcity_id}")
     @Transactional
     public ResponseEntity<PIMCITYDTO> update(@PathVariable("pimcity_id") String pimcity_id, @RequestBody PIMCITYDTO pimcitydto) {
@@ -87,7 +87,7 @@ public class PIMCITYResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcityService.getPimcityByEntities(this.pimcityMapping.toDomain(#pimcitydtos)),'ehr-PIMCITY-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PIMCITY" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新市", tags = {"市" },  notes = "批量更新市")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimcities/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMCITYDTO> pimcitydtos) {
         pimcityService.updateBatch(pimcityMapping.toDomain(pimcitydtos));
@@ -95,14 +95,14 @@ public class PIMCITYResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcityMapping.toDomain(#pimcitydto),'ehr-PIMCITY-Save')")
-    @ApiOperation(value = "Save", tags = {"PIMCITY" },  notes = "Save")
+    @ApiOperation(value = "保存市", tags = {"市" },  notes = "保存市")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcities/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMCITYDTO pimcitydto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimcityService.save(pimcityMapping.toDomain(pimcitydto)));
     }
 
     @PreAuthorize("hasPermission(this.pimcityMapping.toDomain(#pimcitydtos),'ehr-PIMCITY-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PIMCITY" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存市", tags = {"市" },  notes = "批量保存市")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcities/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMCITYDTO> pimcitydtos) {
         pimcityService.saveBatch(pimcityMapping.toDomain(pimcitydtos));
@@ -110,7 +110,7 @@ public class PIMCITYResource {
     }
 
     @PostAuthorize("hasPermission(this.pimcityMapping.toDomain(returnObject.body),'ehr-PIMCITY-Get')")
-    @ApiOperation(value = "Get", tags = {"PIMCITY" },  notes = "Get")
+    @ApiOperation(value = "获取市", tags = {"市" },  notes = "获取市")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimcities/{pimcity_id}")
     public ResponseEntity<PIMCITYDTO> get(@PathVariable("pimcity_id") String pimcity_id) {
         PIMCITY domain = pimcityService.get(pimcity_id);
@@ -119,7 +119,7 @@ public class PIMCITYResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcityMapping.toDomain(#pimcitydto),'ehr-PIMCITY-Create')")
-    @ApiOperation(value = "Create", tags = {"PIMCITY" },  notes = "Create")
+    @ApiOperation(value = "新建市", tags = {"市" },  notes = "新建市")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcities")
     @Transactional
     public ResponseEntity<PIMCITYDTO> create(@RequestBody PIMCITYDTO pimcitydto) {
@@ -130,7 +130,7 @@ public class PIMCITYResource {
     }
 
     @PreAuthorize("hasPermission(this.pimcityMapping.toDomain(#pimcitydtos),'ehr-PIMCITY-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PIMCITY" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建市", tags = {"市" },  notes = "批量新建市")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimcities/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMCITYDTO> pimcitydtos) {
         pimcityService.createBatch(pimcityMapping.toDomain(pimcitydtos));
@@ -138,7 +138,7 @@ public class PIMCITYResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCITY-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMCITY" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"市" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimcities/fetchdefault")
 	public ResponseEntity<List<PIMCITYDTO>> fetchDefault(PIMCITYSearchContext context) {
         Page<PIMCITY> domains = pimcityService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PIMCITYResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMCITY-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PIMCITY" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"市" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimcities/searchdefault")
 	public ResponseEntity<Page<PIMCITYDTO>> searchDefault(@RequestBody PIMCITYSearchContext context) {
         Page<PIMCITY> domains = pimcityService.searchDefault(context) ;

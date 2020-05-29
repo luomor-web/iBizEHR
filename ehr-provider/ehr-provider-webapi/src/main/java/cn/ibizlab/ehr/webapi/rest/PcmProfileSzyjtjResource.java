@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmProfileSzyjtjService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmProfileSzyjtjSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmProfileSzyjtj" })
+@Api(tags = {"应聘者社招引进条件" })
 @RestController("WebApi-pcmprofileszyjtj")
 @RequestMapping("")
 public class PcmProfileSzyjtjResource {
@@ -47,14 +47,14 @@ public class PcmProfileSzyjtjResource {
     public PcmProfileSzyjtjMapping pcmprofileszyjtjMapping;
 
     @PreAuthorize("hasPermission(this.pcmprofileszyjtjMapping.toDomain(#pcmprofileszyjtjdto),'ehr-PcmProfileSzyjtj-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmProfileSzyjtj" },  notes = "Save")
+    @ApiOperation(value = "保存应聘者社招引进条件", tags = {"应聘者社招引进条件" },  notes = "保存应聘者社招引进条件")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileszyjtjs/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmProfileSzyjtjDTO pcmprofileszyjtjdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileszyjtjService.save(pcmprofileszyjtjMapping.toDomain(pcmprofileszyjtjdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileszyjtjMapping.toDomain(#pcmprofileszyjtjdtos),'ehr-PcmProfileSzyjtj-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmProfileSzyjtj" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存应聘者社招引进条件", tags = {"应聘者社招引进条件" },  notes = "批量保存应聘者社招引进条件")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileszyjtjs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmProfileSzyjtjDTO> pcmprofileszyjtjdtos) {
         pcmprofileszyjtjService.saveBatch(pcmprofileszyjtjMapping.toDomain(pcmprofileszyjtjdtos));
@@ -62,7 +62,7 @@ public class PcmProfileSzyjtjResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileszyjtjMapping.toDomain(#pcmprofileszyjtjdto),'ehr-PcmProfileSzyjtj-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmProfileSzyjtj" },  notes = "Create")
+    @ApiOperation(value = "新建应聘者社招引进条件", tags = {"应聘者社招引进条件" },  notes = "新建应聘者社招引进条件")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileszyjtjs")
     @Transactional
     public ResponseEntity<PcmProfileSzyjtjDTO> create(@RequestBody PcmProfileSzyjtjDTO pcmprofileszyjtjdto) {
@@ -73,27 +73,27 @@ public class PcmProfileSzyjtjResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileszyjtjMapping.toDomain(#pcmprofileszyjtjdtos),'ehr-PcmProfileSzyjtj-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmProfileSzyjtj" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建应聘者社招引进条件", tags = {"应聘者社招引进条件" },  notes = "批量新建应聘者社招引进条件")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileszyjtjs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmProfileSzyjtjDTO> pcmprofileszyjtjdtos) {
         pcmprofileszyjtjService.createBatch(pcmprofileszyjtjMapping.toDomain(pcmprofileszyjtjdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmProfileSzyjtj" },  notes = "GetDraft")
+    @ApiOperation(value = "获取应聘者社招引进条件草稿", tags = {"应聘者社招引进条件" },  notes = "获取应聘者社招引进条件草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofileszyjtjs/getdraft")
     public ResponseEntity<PcmProfileSzyjtjDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileszyjtjMapping.toDto(pcmprofileszyjtjService.getDraft(new PcmProfileSzyjtj())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmProfileSzyjtj" },  notes = "CheckKey")
+    @ApiOperation(value = "检查应聘者社招引进条件", tags = {"应聘者社招引进条件" },  notes = "检查应聘者社招引进条件")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileszyjtjs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmProfileSzyjtjDTO pcmprofileszyjtjdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmprofileszyjtjService.checkKey(pcmprofileszyjtjMapping.toDomain(pcmprofileszyjtjdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileszyjtjService.get(#pcmprofileszyjtj_id),'ehr-PcmProfileSzyjtj-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmProfileSzyjtj" },  notes = "Remove")
+    @ApiOperation(value = "删除应聘者社招引进条件", tags = {"应聘者社招引进条件" },  notes = "删除应聘者社招引进条件")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofileszyjtjs/{pcmprofileszyjtj_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmprofileszyjtj_id") String pcmprofileszyjtj_id) {
@@ -101,7 +101,7 @@ public class PcmProfileSzyjtjResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileszyjtjService.getPcmprofileszyjtjByIds(#ids),'ehr-PcmProfileSzyjtj-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmProfileSzyjtj" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除应聘者社招引进条件", tags = {"应聘者社招引进条件" },  notes = "批量删除应聘者社招引进条件")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofileszyjtjs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmprofileszyjtjService.removeBatch(ids);
@@ -109,7 +109,7 @@ public class PcmProfileSzyjtjResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmprofileszyjtjMapping.toDomain(returnObject.body),'ehr-PcmProfileSzyjtj-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmProfileSzyjtj" },  notes = "Get")
+    @ApiOperation(value = "获取应聘者社招引进条件", tags = {"应聘者社招引进条件" },  notes = "获取应聘者社招引进条件")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofileszyjtjs/{pcmprofileszyjtj_id}")
     public ResponseEntity<PcmProfileSzyjtjDTO> get(@PathVariable("pcmprofileszyjtj_id") String pcmprofileszyjtj_id) {
         PcmProfileSzyjtj domain = pcmprofileszyjtjService.get(pcmprofileszyjtj_id);
@@ -118,7 +118,7 @@ public class PcmProfileSzyjtjResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileszyjtjService.get(#pcmprofileszyjtj_id),'ehr-PcmProfileSzyjtj-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmProfileSzyjtj" },  notes = "Update")
+    @ApiOperation(value = "更新应聘者社招引进条件", tags = {"应聘者社招引进条件" },  notes = "更新应聘者社招引进条件")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofileszyjtjs/{pcmprofileszyjtj_id}")
     @Transactional
     public ResponseEntity<PcmProfileSzyjtjDTO> update(@PathVariable("pcmprofileszyjtj_id") String pcmprofileszyjtj_id, @RequestBody PcmProfileSzyjtjDTO pcmprofileszyjtjdto) {
@@ -130,7 +130,7 @@ public class PcmProfileSzyjtjResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileszyjtjService.getPcmprofileszyjtjByEntities(this.pcmprofileszyjtjMapping.toDomain(#pcmprofileszyjtjdtos)),'ehr-PcmProfileSzyjtj-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmProfileSzyjtj" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新应聘者社招引进条件", tags = {"应聘者社招引进条件" },  notes = "批量更新应聘者社招引进条件")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofileszyjtjs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmProfileSzyjtjDTO> pcmprofileszyjtjdtos) {
         pcmprofileszyjtjService.updateBatch(pcmprofileszyjtjMapping.toDomain(pcmprofileszyjtjdtos));
@@ -138,7 +138,7 @@ public class PcmProfileSzyjtjResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileSzyjtj-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmProfileSzyjtj" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者社招引进条件" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileszyjtjs/fetchdefault")
 	public ResponseEntity<List<PcmProfileSzyjtjDTO>> fetchDefault(PcmProfileSzyjtjSearchContext context) {
         Page<PcmProfileSzyjtj> domains = pcmprofileszyjtjService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmProfileSzyjtjResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileSzyjtj-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmProfileSzyjtj" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者社招引进条件" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileszyjtjs/searchdefault")
 	public ResponseEntity<Page<PcmProfileSzyjtjDTO>> searchDefault(@RequestBody PcmProfileSzyjtjSearchContext context) {
         Page<PcmProfileSzyjtj> domains = pcmprofileszyjtjService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PcmProfileSzyjtjResource {
                 .body(new PageImpl(pcmprofileszyjtjMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileSzyjtj-YGLX-all')")
-	@ApiOperation(value = "fetch通过申报类型过滤", tags = {"PcmProfileSzyjtj" } ,notes = "fetch通过申报类型过滤")
+	@ApiOperation(value = "获取通过申报类型过滤", tags = {"应聘者社招引进条件" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileszyjtjs/fetchyglx")
 	public ResponseEntity<List<PcmProfileSzyjtjDTO>> fetchYGLX(PcmProfileSzyjtjSearchContext context) {
         Page<PcmProfileSzyjtj> domains = pcmprofileszyjtjService.searchYGLX(context) ;
@@ -172,7 +172,7 @@ public class PcmProfileSzyjtjResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileSzyjtj-YGLX-all')")
-	@ApiOperation(value = "search通过申报类型过滤", tags = {"PcmProfileSzyjtj" } ,notes = "search通过申报类型过滤")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者社招引进条件" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileszyjtjs/searchyglx")
 	public ResponseEntity<Page<PcmProfileSzyjtjDTO>> searchYGLX(@RequestBody PcmProfileSzyjtjSearchContext context) {
         Page<PcmProfileSzyjtj> domains = pcmprofileszyjtjService.searchYGLX(context) ;

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPCMLOGService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMLOGSearchContext;
 
 @Slf4j
-@Api(tags = {"PCMLOG" })
+@Api(tags = {"配置变动日志" })
 @RestController("WebApi-pcmlog")
 @RequestMapping("")
 public class PCMLOGResource {
@@ -47,7 +47,7 @@ public class PCMLOGResource {
     public PCMLOGMapping pcmlogMapping;
 
     @PreAuthorize("hasPermission(this.pcmlogMapping.toDomain(#pcmlogdto),'ehr-PCMLOG-Create')")
-    @ApiOperation(value = "Create", tags = {"PCMLOG" },  notes = "Create")
+    @ApiOperation(value = "新建配置变动日志", tags = {"配置变动日志" },  notes = "新建配置变动日志")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmlogs")
     @Transactional
     public ResponseEntity<PCMLOGDTO> create(@RequestBody PCMLOGDTO pcmlogdto) {
@@ -58,7 +58,7 @@ public class PCMLOGResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmlogMapping.toDomain(#pcmlogdtos),'ehr-PCMLOG-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PCMLOG" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建配置变动日志", tags = {"配置变动日志" },  notes = "批量新建配置变动日志")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmlogs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMLOGDTO> pcmlogdtos) {
         pcmlogService.createBatch(pcmlogMapping.toDomain(pcmlogdtos));
@@ -66,7 +66,7 @@ public class PCMLOGResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmlogService.get(#pcmlog_id),'ehr-PCMLOG-Update')")
-    @ApiOperation(value = "Update", tags = {"PCMLOG" },  notes = "Update")
+    @ApiOperation(value = "更新配置变动日志", tags = {"配置变动日志" },  notes = "更新配置变动日志")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmlogs/{pcmlog_id}")
     @Transactional
     public ResponseEntity<PCMLOGDTO> update(@PathVariable("pcmlog_id") String pcmlog_id, @RequestBody PCMLOGDTO pcmlogdto) {
@@ -78,7 +78,7 @@ public class PCMLOGResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmlogService.getPcmlogByEntities(this.pcmlogMapping.toDomain(#pcmlogdtos)),'ehr-PCMLOG-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PCMLOG" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新配置变动日志", tags = {"配置变动日志" },  notes = "批量更新配置变动日志")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmlogs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMLOGDTO> pcmlogdtos) {
         pcmlogService.updateBatch(pcmlogMapping.toDomain(pcmlogdtos));
@@ -86,7 +86,7 @@ public class PCMLOGResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmlogService.get(#pcmlog_id),'ehr-PCMLOG-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PCMLOG" },  notes = "Remove")
+    @ApiOperation(value = "删除配置变动日志", tags = {"配置变动日志" },  notes = "删除配置变动日志")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmlogs/{pcmlog_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmlog_id") String pcmlog_id) {
@@ -94,21 +94,21 @@ public class PCMLOGResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmlogService.getPcmlogByIds(#ids),'ehr-PCMLOG-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PCMLOG" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除配置变动日志", tags = {"配置变动日志" },  notes = "批量删除配置变动日志")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmlogs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmlogService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PCMLOG" },  notes = "GetDraft")
+    @ApiOperation(value = "获取配置变动日志草稿", tags = {"配置变动日志" },  notes = "获取配置变动日志草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmlogs/getdraft")
     public ResponseEntity<PCMLOGDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmlogMapping.toDto(pcmlogService.getDraft(new PCMLOG())));
     }
 
     @PostAuthorize("hasPermission(this.pcmlogMapping.toDomain(returnObject.body),'ehr-PCMLOG-Get')")
-    @ApiOperation(value = "Get", tags = {"PCMLOG" },  notes = "Get")
+    @ApiOperation(value = "获取配置变动日志", tags = {"配置变动日志" },  notes = "获取配置变动日志")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmlogs/{pcmlog_id}")
     public ResponseEntity<PCMLOGDTO> get(@PathVariable("pcmlog_id") String pcmlog_id) {
         PCMLOG domain = pcmlogService.get(pcmlog_id);
@@ -116,21 +116,21 @@ public class PCMLOGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PCMLOG" },  notes = "CheckKey")
+    @ApiOperation(value = "检查配置变动日志", tags = {"配置变动日志" },  notes = "检查配置变动日志")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmlogs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMLOGDTO pcmlogdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmlogService.checkKey(pcmlogMapping.toDomain(pcmlogdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmlogMapping.toDomain(#pcmlogdto),'ehr-PCMLOG-Save')")
-    @ApiOperation(value = "Save", tags = {"PCMLOG" },  notes = "Save")
+    @ApiOperation(value = "保存配置变动日志", tags = {"配置变动日志" },  notes = "保存配置变动日志")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmlogs/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMLOGDTO pcmlogdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmlogService.save(pcmlogMapping.toDomain(pcmlogdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmlogMapping.toDomain(#pcmlogdtos),'ehr-PCMLOG-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PCMLOG" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存配置变动日志", tags = {"配置变动日志" },  notes = "批量保存配置变动日志")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmlogs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMLOGDTO> pcmlogdtos) {
         pcmlogService.saveBatch(pcmlogMapping.toDomain(pcmlogdtos));
@@ -138,7 +138,7 @@ public class PCMLOGResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMLOG" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"配置变动日志" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmlogs/fetchdefault")
 	public ResponseEntity<List<PCMLOGDTO>> fetchDefault(PCMLOGSearchContext context) {
         Page<PCMLOG> domains = pcmlogService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PCMLOGResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMLOG-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PCMLOG" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"配置变动日志" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmlogs/searchdefault")
 	public ResponseEntity<Page<PCMLOGDTO>> searchDefault(@RequestBody PCMLOGSearchContext context) {
         Page<PCMLOG> domains = pcmlogService.searchDefault(context) ;

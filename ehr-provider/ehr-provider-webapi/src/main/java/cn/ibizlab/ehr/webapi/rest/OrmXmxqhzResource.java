@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.orm.service.IOrmXmxqhzService;
 import cn.ibizlab.ehr.core.orm.filter.OrmXmxqhzSearchContext;
 
 @Slf4j
-@Api(tags = {"OrmXmxqhz" })
+@Api(tags = {"项目人员需求汇总" })
 @RestController("WebApi-ormxmxqhz")
 @RequestMapping("")
 public class OrmXmxqhzResource {
@@ -47,7 +47,7 @@ public class OrmXmxqhzResource {
     public OrmXmxqhzMapping ormxmxqhzMapping;
 
     @PreAuthorize("hasPermission(this.ormxmxqhzService.get(#ormxmxqhz_id),'ehr-OrmXmxqhz-Update')")
-    @ApiOperation(value = "Update", tags = {"OrmXmxqhz" },  notes = "Update")
+    @ApiOperation(value = "更新项目人员需求汇总", tags = {"项目人员需求汇总" },  notes = "更新项目人员需求汇总")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormxmxqhzs/{ormxmxqhz_id}")
     @Transactional
     public ResponseEntity<OrmXmxqhzDTO> update(@PathVariable("ormxmxqhz_id") String ormxmxqhz_id, @RequestBody OrmXmxqhzDTO ormxmxqhzdto) {
@@ -59,7 +59,7 @@ public class OrmXmxqhzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormxmxqhzService.getOrmxmxqhzByEntities(this.ormxmxqhzMapping.toDomain(#ormxmxqhzdtos)),'ehr-OrmXmxqhz-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"OrmXmxqhz" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新项目人员需求汇总", tags = {"项目人员需求汇总" },  notes = "批量更新项目人员需求汇总")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormxmxqhzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrmXmxqhzDTO> ormxmxqhzdtos) {
         ormxmxqhzService.updateBatch(ormxmxqhzMapping.toDomain(ormxmxqhzdtos));
@@ -67,34 +67,34 @@ public class OrmXmxqhzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormxmxqhzMapping.toDomain(#ormxmxqhzdto),'ehr-OrmXmxqhz-Save')")
-    @ApiOperation(value = "Save", tags = {"OrmXmxqhz" },  notes = "Save")
+    @ApiOperation(value = "保存项目人员需求汇总", tags = {"项目人员需求汇总" },  notes = "保存项目人员需求汇总")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmxqhzs/save")
     public ResponseEntity<Boolean> save(@RequestBody OrmXmxqhzDTO ormxmxqhzdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormxmxqhzService.save(ormxmxqhzMapping.toDomain(ormxmxqhzdto)));
     }
 
     @PreAuthorize("hasPermission(this.ormxmxqhzMapping.toDomain(#ormxmxqhzdtos),'ehr-OrmXmxqhz-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"OrmXmxqhz" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存项目人员需求汇总", tags = {"项目人员需求汇总" },  notes = "批量保存项目人员需求汇总")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmxqhzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<OrmXmxqhzDTO> ormxmxqhzdtos) {
         ormxmxqhzService.saveBatch(ormxmxqhzMapping.toDomain(ormxmxqhzdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"OrmXmxqhz" },  notes = "GetDraft")
+    @ApiOperation(value = "获取项目人员需求汇总草稿", tags = {"项目人员需求汇总" },  notes = "获取项目人员需求汇总草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormxmxqhzs/getdraft")
     public ResponseEntity<OrmXmxqhzDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormxmxqhzMapping.toDto(ormxmxqhzService.getDraft(new OrmXmxqhz())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"OrmXmxqhz" },  notes = "CheckKey")
+    @ApiOperation(value = "检查项目人员需求汇总", tags = {"项目人员需求汇总" },  notes = "检查项目人员需求汇总")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmxqhzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody OrmXmxqhzDTO ormxmxqhzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormxmxqhzService.checkKey(ormxmxqhzMapping.toDomain(ormxmxqhzdto)));
     }
 
     @PreAuthorize("hasPermission(this.ormxmxqhzService.get(#ormxmxqhz_id),'ehr-OrmXmxqhz-Remove')")
-    @ApiOperation(value = "Remove", tags = {"OrmXmxqhz" },  notes = "Remove")
+    @ApiOperation(value = "删除项目人员需求汇总", tags = {"项目人员需求汇总" },  notes = "删除项目人员需求汇总")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmxqhzs/{ormxmxqhz_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("ormxmxqhz_id") String ormxmxqhz_id) {
@@ -102,7 +102,7 @@ public class OrmXmxqhzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormxmxqhzService.getOrmxmxqhzByIds(#ids),'ehr-OrmXmxqhz-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"OrmXmxqhz" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除项目人员需求汇总", tags = {"项目人员需求汇总" },  notes = "批量删除项目人员需求汇总")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmxqhzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         ormxmxqhzService.removeBatch(ids);
@@ -110,7 +110,7 @@ public class OrmXmxqhzResource {
     }
 
     @PostAuthorize("hasPermission(this.ormxmxqhzMapping.toDomain(returnObject.body),'ehr-OrmXmxqhz-Get')")
-    @ApiOperation(value = "Get", tags = {"OrmXmxqhz" },  notes = "Get")
+    @ApiOperation(value = "获取项目人员需求汇总", tags = {"项目人员需求汇总" },  notes = "获取项目人员需求汇总")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormxmxqhzs/{ormxmxqhz_id}")
     public ResponseEntity<OrmXmxqhzDTO> get(@PathVariable("ormxmxqhz_id") String ormxmxqhz_id) {
         OrmXmxqhz domain = ormxmxqhzService.get(ormxmxqhz_id);
@@ -119,7 +119,7 @@ public class OrmXmxqhzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormxmxqhzMapping.toDomain(#ormxmxqhzdto),'ehr-OrmXmxqhz-Create')")
-    @ApiOperation(value = "Create", tags = {"OrmXmxqhz" },  notes = "Create")
+    @ApiOperation(value = "新建项目人员需求汇总", tags = {"项目人员需求汇总" },  notes = "新建项目人员需求汇总")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmxqhzs")
     @Transactional
     public ResponseEntity<OrmXmxqhzDTO> create(@RequestBody OrmXmxqhzDTO ormxmxqhzdto) {
@@ -130,7 +130,7 @@ public class OrmXmxqhzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormxmxqhzMapping.toDomain(#ormxmxqhzdtos),'ehr-OrmXmxqhz-Create')")
-    @ApiOperation(value = "createBatch", tags = {"OrmXmxqhz" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建项目人员需求汇总", tags = {"项目人员需求汇总" },  notes = "批量新建项目人员需求汇总")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmxqhzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrmXmxqhzDTO> ormxmxqhzdtos) {
         ormxmxqhzService.createBatch(ormxmxqhzMapping.toDomain(ormxmxqhzdtos));
@@ -138,7 +138,7 @@ public class OrmXmxqhzResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmxqhz-XMRYQKMX-all')")
-	@ApiOperation(value = "fetch项目人员缺口明细", tags = {"OrmXmxqhz" } ,notes = "fetch项目人员缺口明细")
+	@ApiOperation(value = "获取项目人员缺口明细", tags = {"项目人员需求汇总" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmxqhzs/fetchxmryqkmx")
 	public ResponseEntity<List<OrmXmxqhzDTO>> fetchXMRYQKMX(OrmXmxqhzSearchContext context) {
         Page<OrmXmxqhz> domains = ormxmxqhzService.searchXMRYQKMX(context) ;
@@ -151,7 +151,7 @@ public class OrmXmxqhzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmxqhz-XMRYQKMX-all')")
-	@ApiOperation(value = "search项目人员缺口明细", tags = {"OrmXmxqhz" } ,notes = "search项目人员缺口明细")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员需求汇总" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmxqhzs/searchxmryqkmx")
 	public ResponseEntity<Page<OrmXmxqhzDTO>> searchXMRYQKMX(@RequestBody OrmXmxqhzSearchContext context) {
         Page<OrmXmxqhz> domains = ormxmxqhzService.searchXMRYQKMX(context) ;
@@ -159,7 +159,7 @@ public class OrmXmxqhzResource {
                 .body(new PageImpl(ormxmxqhzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmxqhz-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"OrmXmxqhz" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"项目人员需求汇总" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmxqhzs/fetchdefault")
 	public ResponseEntity<List<OrmXmxqhzDTO>> fetchDefault(OrmXmxqhzSearchContext context) {
         Page<OrmXmxqhz> domains = ormxmxqhzService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class OrmXmxqhzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmxqhz-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"OrmXmxqhz" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目人员需求汇总" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmxqhzs/searchdefault")
 	public ResponseEntity<Page<OrmXmxqhzDTO>> searchDefault(@RequestBody OrmXmxqhzSearchContext context) {
         Page<OrmXmxqhz> domains = ormxmxqhzService.searchDefault(context) ;

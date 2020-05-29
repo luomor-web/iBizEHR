@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimSearchModalService;
 import cn.ibizlab.ehr.core.pim.filter.PimSearchModalSearchContext;
 
 @Slf4j
-@Api(tags = {"PimSearchModal" })
+@Api(tags = {"组合查询记录" })
 @RestController("WebApi-pimsearchmodal")
 @RequestMapping("")
 public class PimSearchModalResource {
@@ -46,14 +46,14 @@ public class PimSearchModalResource {
     @Lazy
     public PimSearchModalMapping pimsearchmodalMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"PimSearchModal" },  notes = "GetDraft")
+    @ApiOperation(value = "获取组合查询记录草稿", tags = {"组合查询记录" },  notes = "获取组合查询记录草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimsearchmodals/getdraft")
     public ResponseEntity<PimSearchModalDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimsearchmodalMapping.toDto(pimsearchmodalService.getDraft(new PimSearchModal())));
     }
 
     @PreAuthorize("hasPermission(this.pimsearchmodalService.get(#pimsearchmodal_id),'ehr-PimSearchModal-Update')")
-    @ApiOperation(value = "Update", tags = {"PimSearchModal" },  notes = "Update")
+    @ApiOperation(value = "更新组合查询记录", tags = {"组合查询记录" },  notes = "更新组合查询记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimsearchmodals/{pimsearchmodal_id}")
     @Transactional
     public ResponseEntity<PimSearchModalDTO> update(@PathVariable("pimsearchmodal_id") String pimsearchmodal_id, @RequestBody PimSearchModalDTO pimsearchmodaldto) {
@@ -65,7 +65,7 @@ public class PimSearchModalResource {
     }
 
     @PreAuthorize("hasPermission(this.pimsearchmodalService.getPimsearchmodalByEntities(this.pimsearchmodalMapping.toDomain(#pimsearchmodaldtos)),'ehr-PimSearchModal-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimSearchModal" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新组合查询记录", tags = {"组合查询记录" },  notes = "批量更新组合查询记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimsearchmodals/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimSearchModalDTO> pimsearchmodaldtos) {
         pimsearchmodalService.updateBatch(pimsearchmodalMapping.toDomain(pimsearchmodaldtos));
@@ -73,7 +73,7 @@ public class PimSearchModalResource {
     }
 
     @PostAuthorize("hasPermission(this.pimsearchmodalMapping.toDomain(returnObject.body),'ehr-PimSearchModal-Get')")
-    @ApiOperation(value = "Get", tags = {"PimSearchModal" },  notes = "Get")
+    @ApiOperation(value = "获取组合查询记录", tags = {"组合查询记录" },  notes = "获取组合查询记录")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimsearchmodals/{pimsearchmodal_id}")
     public ResponseEntity<PimSearchModalDTO> get(@PathVariable("pimsearchmodal_id") String pimsearchmodal_id) {
         PimSearchModal domain = pimsearchmodalService.get(pimsearchmodal_id);
@@ -82,7 +82,7 @@ public class PimSearchModalResource {
     }
 
     @PreAuthorize("hasPermission(this.pimsearchmodalMapping.toDomain(#pimsearchmodaldto),'ehr-PimSearchModal-Create')")
-    @ApiOperation(value = "Create", tags = {"PimSearchModal" },  notes = "Create")
+    @ApiOperation(value = "新建组合查询记录", tags = {"组合查询记录" },  notes = "新建组合查询记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchmodals")
     @Transactional
     public ResponseEntity<PimSearchModalDTO> create(@RequestBody PimSearchModalDTO pimsearchmodaldto) {
@@ -93,28 +93,28 @@ public class PimSearchModalResource {
     }
 
     @PreAuthorize("hasPermission(this.pimsearchmodalMapping.toDomain(#pimsearchmodaldtos),'ehr-PimSearchModal-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimSearchModal" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建组合查询记录", tags = {"组合查询记录" },  notes = "批量新建组合查询记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchmodals/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimSearchModalDTO> pimsearchmodaldtos) {
         pimsearchmodalService.createBatch(pimsearchmodalMapping.toDomain(pimsearchmodaldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimSearchModal" },  notes = "CheckKey")
+    @ApiOperation(value = "检查组合查询记录", tags = {"组合查询记录" },  notes = "检查组合查询记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchmodals/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimSearchModalDTO pimsearchmodaldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimsearchmodalService.checkKey(pimsearchmodalMapping.toDomain(pimsearchmodaldto)));
     }
 
     @PreAuthorize("hasPermission(this.pimsearchmodalMapping.toDomain(#pimsearchmodaldto),'ehr-PimSearchModal-Save')")
-    @ApiOperation(value = "Save", tags = {"PimSearchModal" },  notes = "Save")
+    @ApiOperation(value = "保存组合查询记录", tags = {"组合查询记录" },  notes = "保存组合查询记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchmodals/save")
     public ResponseEntity<Boolean> save(@RequestBody PimSearchModalDTO pimsearchmodaldto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimsearchmodalService.save(pimsearchmodalMapping.toDomain(pimsearchmodaldto)));
     }
 
     @PreAuthorize("hasPermission(this.pimsearchmodalMapping.toDomain(#pimsearchmodaldtos),'ehr-PimSearchModal-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimSearchModal" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存组合查询记录", tags = {"组合查询记录" },  notes = "批量保存组合查询记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimsearchmodals/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimSearchModalDTO> pimsearchmodaldtos) {
         pimsearchmodalService.saveBatch(pimsearchmodalMapping.toDomain(pimsearchmodaldtos));
@@ -122,7 +122,7 @@ public class PimSearchModalResource {
     }
 
     @PreAuthorize("hasPermission(this.pimsearchmodalService.get(#pimsearchmodal_id),'ehr-PimSearchModal-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimSearchModal" },  notes = "Remove")
+    @ApiOperation(value = "删除组合查询记录", tags = {"组合查询记录" },  notes = "删除组合查询记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimsearchmodals/{pimsearchmodal_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimsearchmodal_id") String pimsearchmodal_id) {
@@ -130,7 +130,7 @@ public class PimSearchModalResource {
     }
 
     @PreAuthorize("hasPermission(this.pimsearchmodalService.getPimsearchmodalByIds(#ids),'ehr-PimSearchModal-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimSearchModal" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除组合查询记录", tags = {"组合查询记录" },  notes = "批量删除组合查询记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimsearchmodals/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimsearchmodalService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class PimSearchModalResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchModal-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimSearchModal" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"组合查询记录" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimsearchmodals/fetchdefault")
 	public ResponseEntity<List<PimSearchModalDTO>> fetchDefault(PimSearchModalSearchContext context) {
         Page<PimSearchModal> domains = pimsearchmodalService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimSearchModalResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimSearchModal-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimSearchModal" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"组合查询记录" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimsearchmodals/searchdefault")
 	public ResponseEntity<Page<PimSearchModalDTO>> searchDefault(@RequestBody PimSearchModalSearchContext context) {
         Page<PimSearchModal> domains = pimsearchmodalService.searchDefault(context) ;

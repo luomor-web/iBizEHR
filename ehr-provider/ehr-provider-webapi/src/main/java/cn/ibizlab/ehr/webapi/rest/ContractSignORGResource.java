@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IContractSignORGService;
 import cn.ibizlab.ehr.core.pim.filter.ContractSignORGSearchContext;
 
 @Slf4j
-@Api(tags = {"ContractSignORG" })
+@Api(tags = {"签约主体单位" })
 @RestController("WebApi-contractsignorg")
 @RequestMapping("")
 public class ContractSignORGResource {
@@ -47,7 +47,7 @@ public class ContractSignORGResource {
     public ContractSignORGMapping contractsignorgMapping;
 
     @PostAuthorize("hasPermission(this.contractsignorgMapping.toDomain(returnObject.body),'ehr-ContractSignORG-Get')")
-    @ApiOperation(value = "Get", tags = {"ContractSignORG" },  notes = "Get")
+    @ApiOperation(value = "获取签约主体单位", tags = {"签约主体单位" },  notes = "获取签约主体单位")
 	@RequestMapping(method = RequestMethod.GET, value = "/contractsignorgs/{contractsignorg_id}")
     public ResponseEntity<ContractSignORGDTO> get(@PathVariable("contractsignorg_id") String contractsignorg_id) {
         ContractSignORG domain = contractsignorgService.get(contractsignorg_id);
@@ -55,14 +55,14 @@ public class ContractSignORGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"ContractSignORG" },  notes = "CheckKey")
+    @ApiOperation(value = "检查签约主体单位", tags = {"签约主体单位" },  notes = "检查签约主体单位")
 	@RequestMapping(method = RequestMethod.POST, value = "/contractsignorgs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ContractSignORGDTO contractsignorgdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(contractsignorgService.checkKey(contractsignorgMapping.toDomain(contractsignorgdto)));
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgService.get(#contractsignorg_id),'ehr-ContractSignORG-Update')")
-    @ApiOperation(value = "Update", tags = {"ContractSignORG" },  notes = "Update")
+    @ApiOperation(value = "更新签约主体单位", tags = {"签约主体单位" },  notes = "更新签约主体单位")
 	@RequestMapping(method = RequestMethod.PUT, value = "/contractsignorgs/{contractsignorg_id}")
     @Transactional
     public ResponseEntity<ContractSignORGDTO> update(@PathVariable("contractsignorg_id") String contractsignorg_id, @RequestBody ContractSignORGDTO contractsignorgdto) {
@@ -74,7 +74,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgService.getContractsignorgByEntities(this.contractsignorgMapping.toDomain(#contractsignorgdtos)),'ehr-ContractSignORG-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"ContractSignORG" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新签约主体单位", tags = {"签约主体单位" },  notes = "批量更新签约主体单位")
 	@RequestMapping(method = RequestMethod.PUT, value = "/contractsignorgs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ContractSignORGDTO> contractsignorgdtos) {
         contractsignorgService.updateBatch(contractsignorgMapping.toDomain(contractsignorgdtos));
@@ -82,7 +82,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgService.get(#contractsignorg_id),'ehr-ContractSignORG-Remove')")
-    @ApiOperation(value = "Remove", tags = {"ContractSignORG" },  notes = "Remove")
+    @ApiOperation(value = "删除签约主体单位", tags = {"签约主体单位" },  notes = "删除签约主体单位")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/contractsignorgs/{contractsignorg_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("contractsignorg_id") String contractsignorg_id) {
@@ -90,7 +90,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgService.getContractsignorgByIds(#ids),'ehr-ContractSignORG-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"ContractSignORG" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除签约主体单位", tags = {"签约主体单位" },  notes = "批量删除签约主体单位")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/contractsignorgs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         contractsignorgService.removeBatch(ids);
@@ -98,7 +98,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgMapping.toDomain(#contractsignorgdto),'ehr-ContractSignORG-Create')")
-    @ApiOperation(value = "Create", tags = {"ContractSignORG" },  notes = "Create")
+    @ApiOperation(value = "新建签约主体单位", tags = {"签约主体单位" },  notes = "新建签约主体单位")
 	@RequestMapping(method = RequestMethod.POST, value = "/contractsignorgs")
     @Transactional
     public ResponseEntity<ContractSignORGDTO> create(@RequestBody ContractSignORGDTO contractsignorgdto) {
@@ -109,28 +109,28 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgMapping.toDomain(#contractsignorgdtos),'ehr-ContractSignORG-Create')")
-    @ApiOperation(value = "createBatch", tags = {"ContractSignORG" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建签约主体单位", tags = {"签约主体单位" },  notes = "批量新建签约主体单位")
 	@RequestMapping(method = RequestMethod.POST, value = "/contractsignorgs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ContractSignORGDTO> contractsignorgdtos) {
         contractsignorgService.createBatch(contractsignorgMapping.toDomain(contractsignorgdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"ContractSignORG" },  notes = "GetDraft")
+    @ApiOperation(value = "获取签约主体单位草稿", tags = {"签约主体单位" },  notes = "获取签约主体单位草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/contractsignorgs/getdraft")
     public ResponseEntity<ContractSignORGDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(contractsignorgMapping.toDto(contractsignorgService.getDraft(new ContractSignORG())));
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgMapping.toDomain(#contractsignorgdto),'ehr-ContractSignORG-Save')")
-    @ApiOperation(value = "Save", tags = {"ContractSignORG" },  notes = "Save")
+    @ApiOperation(value = "保存签约主体单位", tags = {"签约主体单位" },  notes = "保存签约主体单位")
 	@RequestMapping(method = RequestMethod.POST, value = "/contractsignorgs/save")
     public ResponseEntity<Boolean> save(@RequestBody ContractSignORGDTO contractsignorgdto) {
         return ResponseEntity.status(HttpStatus.OK).body(contractsignorgService.save(contractsignorgMapping.toDomain(contractsignorgdto)));
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgMapping.toDomain(#contractsignorgdtos),'ehr-ContractSignORG-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"ContractSignORG" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存签约主体单位", tags = {"签约主体单位" },  notes = "批量保存签约主体单位")
 	@RequestMapping(method = RequestMethod.POST, value = "/contractsignorgs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ContractSignORGDTO> contractsignorgdtos) {
         contractsignorgService.saveBatch(contractsignorgMapping.toDomain(contractsignorgdtos));
@@ -138,7 +138,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"ContractSignORG" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"签约主体单位" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/contractsignorgs/fetchdefault")
 	public ResponseEntity<List<ContractSignORGDTO>> fetchDefault(ContractSignORGSearchContext context) {
         Page<ContractSignORG> domains = contractsignorgService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ContractSignORGResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"ContractSignORG" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"签约主体单位" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/contractsignorgs/searchdefault")
 	public ResponseEntity<Page<ContractSignORGDTO>> searchDefault(@RequestBody ContractSignORGSearchContext context) {
         Page<ContractSignORG> domains = contractsignorgService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class ContractSignORGResource {
                 .body(new PageImpl(contractsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default2-all')")
-	@ApiOperation(value = "fetchDEFAULT2", tags = {"ContractSignORG" } ,notes = "fetchDEFAULT2")
+	@ApiOperation(value = "获取DEFAULT2", tags = {"签约主体单位" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/contractsignorgs/fetchdefault2")
 	public ResponseEntity<List<ContractSignORGDTO>> fetchDefault2(ContractSignORGSearchContext context) {
         Page<ContractSignORG> domains = contractsignorgService.searchDefault2(context) ;
@@ -172,7 +172,7 @@ public class ContractSignORGResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default2-all')")
-	@ApiOperation(value = "searchDEFAULT2", tags = {"ContractSignORG" } ,notes = "searchDEFAULT2")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"签约主体单位" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/contractsignorgs/searchdefault2")
 	public ResponseEntity<Page<ContractSignORGDTO>> searchDefault2(@RequestBody ContractSignORGSearchContext context) {
         Page<ContractSignORG> domains = contractsignorgService.searchDefault2(context) ;
@@ -180,7 +180,7 @@ public class ContractSignORGResource {
                 .body(new PageImpl(contractsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PostAuthorize("hasPermission(this.contractsignorgMapping.toDomain(returnObject.body),'ehr-ContractSignORG-Get')")
-    @ApiOperation(value = "GetByOrmOrg", tags = {"ContractSignORG" },  notes = "GetByOrmOrg")
+    @ApiOperation(value = "根据组织管理获取签约主体单位", tags = {"签约主体单位" },  notes = "根据组织管理获取签约主体单位")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/contractsignorgs/{contractsignorg_id}")
     public ResponseEntity<ContractSignORGDTO> getByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("contractsignorg_id") String contractsignorg_id) {
         ContractSignORG domain = contractsignorgService.get(contractsignorg_id);
@@ -188,14 +188,14 @@ public class ContractSignORGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKeyByOrmOrg", tags = {"ContractSignORG" },  notes = "CheckKeyByOrmOrg")
+    @ApiOperation(value = "根据组织管理检查签约主体单位", tags = {"签约主体单位" },  notes = "根据组织管理检查签约主体单位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/contractsignorgs/checkkey")
     public ResponseEntity<Boolean> checkKeyByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ContractSignORGDTO contractsignorgdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(contractsignorgService.checkKey(contractsignorgMapping.toDomain(contractsignorgdto)));
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgService.get(#contractsignorg_id),'ehr-ContractSignORG-Update')")
-    @ApiOperation(value = "UpdateByOrmOrg", tags = {"ContractSignORG" },  notes = "UpdateByOrmOrg")
+    @ApiOperation(value = "根据组织管理更新签约主体单位", tags = {"签约主体单位" },  notes = "根据组织管理更新签约主体单位")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/contractsignorgs/{contractsignorg_id}")
     @Transactional
     public ResponseEntity<ContractSignORGDTO> updateByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("contractsignorg_id") String contractsignorg_id, @RequestBody ContractSignORGDTO contractsignorgdto) {
@@ -208,7 +208,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgService.getContractsignorgByEntities(this.contractsignorgMapping.toDomain(#contractsignorgdtos)),'ehr-ContractSignORG-Update')")
-    @ApiOperation(value = "UpdateBatchByOrmOrg", tags = {"ContractSignORG" },  notes = "UpdateBatchByOrmOrg")
+    @ApiOperation(value = "根据组织管理批量更新签约主体单位", tags = {"签约主体单位" },  notes = "根据组织管理批量更新签约主体单位")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/contractsignorgs/batch")
     public ResponseEntity<Boolean> updateBatchByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody List<ContractSignORGDTO> contractsignorgdtos) {
         List<ContractSignORG> domainlist=contractsignorgMapping.toDomain(contractsignorgdtos);
@@ -220,7 +220,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgService.get(#contractsignorg_id),'ehr-ContractSignORG-Remove')")
-    @ApiOperation(value = "RemoveByOrmOrg", tags = {"ContractSignORG" },  notes = "RemoveByOrmOrg")
+    @ApiOperation(value = "根据组织管理删除签约主体单位", tags = {"签约主体单位" },  notes = "根据组织管理删除签约主体单位")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/contractsignorgs/{contractsignorg_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("contractsignorg_id") String contractsignorg_id) {
@@ -228,7 +228,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgService.getContractsignorgByIds(#ids),'ehr-ContractSignORG-Remove')")
-    @ApiOperation(value = "RemoveBatchByOrmOrg", tags = {"ContractSignORG" },  notes = "RemoveBatchByOrmOrg")
+    @ApiOperation(value = "根据组织管理批量删除签约主体单位", tags = {"签约主体单位" },  notes = "根据组织管理批量删除签约主体单位")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/contractsignorgs/batch")
     public ResponseEntity<Boolean> removeBatchByOrmOrg(@RequestBody List<String> ids) {
         contractsignorgService.removeBatch(ids);
@@ -236,7 +236,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgMapping.toDomain(#contractsignorgdto),'ehr-ContractSignORG-Create')")
-    @ApiOperation(value = "CreateByOrmOrg", tags = {"ContractSignORG" },  notes = "CreateByOrmOrg")
+    @ApiOperation(value = "根据组织管理建立签约主体单位", tags = {"签约主体单位" },  notes = "根据组织管理建立签约主体单位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/contractsignorgs")
     @Transactional
     public ResponseEntity<ContractSignORGDTO> createByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ContractSignORGDTO contractsignorgdto) {
@@ -248,7 +248,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgMapping.toDomain(#contractsignorgdtos),'ehr-ContractSignORG-Create')")
-    @ApiOperation(value = "createBatchByOrmOrg", tags = {"ContractSignORG" },  notes = "createBatchByOrmOrg")
+    @ApiOperation(value = "根据组织管理批量建立签约主体单位", tags = {"签约主体单位" },  notes = "根据组织管理批量建立签约主体单位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/contractsignorgs/batch")
     public ResponseEntity<Boolean> createBatchByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody List<ContractSignORGDTO> contractsignorgdtos) {
         List<ContractSignORG> domainlist=contractsignorgMapping.toDomain(contractsignorgdtos);
@@ -259,7 +259,7 @@ public class ContractSignORGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByOrmOrg", tags = {"ContractSignORG" },  notes = "GetDraftByOrmOrg")
+    @ApiOperation(value = "根据组织管理获取签约主体单位草稿", tags = {"签约主体单位" },  notes = "根据组织管理获取签约主体单位草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/contractsignorgs/getdraft")
     public ResponseEntity<ContractSignORGDTO> getDraftByOrmOrg(@PathVariable("ormorg_id") String ormorg_id) {
         ContractSignORG domain = new ContractSignORG();
@@ -268,7 +268,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgMapping.toDomain(#contractsignorgdto),'ehr-ContractSignORG-Save')")
-    @ApiOperation(value = "SaveByOrmOrg", tags = {"ContractSignORG" },  notes = "SaveByOrmOrg")
+    @ApiOperation(value = "根据组织管理保存签约主体单位", tags = {"签约主体单位" },  notes = "根据组织管理保存签约主体单位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/contractsignorgs/save")
     public ResponseEntity<Boolean> saveByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ContractSignORGDTO contractsignorgdto) {
         ContractSignORG domain = contractsignorgMapping.toDomain(contractsignorgdto);
@@ -277,7 +277,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgMapping.toDomain(#contractsignorgdtos),'ehr-ContractSignORG-Save')")
-    @ApiOperation(value = "SaveBatchByOrmOrg", tags = {"ContractSignORG" },  notes = "SaveBatchByOrmOrg")
+    @ApiOperation(value = "根据组织管理批量保存签约主体单位", tags = {"签约主体单位" },  notes = "根据组织管理批量保存签约主体单位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/contractsignorgs/savebatch")
     public ResponseEntity<Boolean> saveBatchByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody List<ContractSignORGDTO> contractsignorgdtos) {
         List<ContractSignORG> domainlist=contractsignorgMapping.toDomain(contractsignorgdtos);
@@ -289,7 +289,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByOrmOrg", tags = {"ContractSignORG" } ,notes = "fetchDEFAULTByOrmOrg")
+	@ApiOperation(value = "根据组织管理获取DEFAULT", tags = {"签约主体单位" } ,notes = "根据组织管理获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/contractsignorgs/fetchdefault")
 	public ResponseEntity<List<ContractSignORGDTO>> fetchContractSignORGDefaultByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,ContractSignORGSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -303,7 +303,7 @@ public class ContractSignORGResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByOrmOrg", tags = {"ContractSignORG" } ,notes = "searchDEFAULTByOrmOrg")
+	@ApiOperation(value = "根据组织管理查询DEFAULT", tags = {"签约主体单位" } ,notes = "根据组织管理查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/contractsignorgs/searchdefault")
 	public ResponseEntity<Page<ContractSignORGDTO>> searchContractSignORGDefaultByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ContractSignORGSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -312,7 +312,7 @@ public class ContractSignORGResource {
                 .body(new PageImpl(contractsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default2-all')")
-	@ApiOperation(value = "fetchDEFAULT2ByOrmOrg", tags = {"ContractSignORG" } ,notes = "fetchDEFAULT2ByOrmOrg")
+	@ApiOperation(value = "根据组织管理获取DEFAULT2", tags = {"签约主体单位" } ,notes = "根据组织管理获取DEFAULT2")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/contractsignorgs/fetchdefault2")
 	public ResponseEntity<List<ContractSignORGDTO>> fetchContractSignORGDefault2ByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,ContractSignORGSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -326,7 +326,7 @@ public class ContractSignORGResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default2-all')")
-	@ApiOperation(value = "searchDEFAULT2ByOrmOrg", tags = {"ContractSignORG" } ,notes = "searchDEFAULT2ByOrmOrg")
+	@ApiOperation(value = "根据组织管理查询DEFAULT2", tags = {"签约主体单位" } ,notes = "根据组织管理查询DEFAULT2")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/contractsignorgs/searchdefault2")
 	public ResponseEntity<Page<ContractSignORGDTO>> searchContractSignORGDefault2ByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ContractSignORGSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -335,7 +335,7 @@ public class ContractSignORGResource {
                 .body(new PageImpl(contractsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PostAuthorize("hasPermission(this.contractsignorgMapping.toDomain(returnObject.body),'ehr-ContractSignORG-Get')")
-    @ApiOperation(value = "GetByOrmSignOrg", tags = {"ContractSignORG" },  notes = "GetByOrmSignOrg")
+    @ApiOperation(value = "根据法人主体获取签约主体单位", tags = {"签约主体单位" },  notes = "根据法人主体获取签约主体单位")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormsignorgs/{ormsignorg_id}/contractsignorgs/{contractsignorg_id}")
     public ResponseEntity<ContractSignORGDTO> getByOrmSignOrg(@PathVariable("ormsignorg_id") String ormsignorg_id, @PathVariable("contractsignorg_id") String contractsignorg_id) {
         ContractSignORG domain = contractsignorgService.get(contractsignorg_id);
@@ -343,14 +343,14 @@ public class ContractSignORGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKeyByOrmSignOrg", tags = {"ContractSignORG" },  notes = "CheckKeyByOrmSignOrg")
+    @ApiOperation(value = "根据法人主体检查签约主体单位", tags = {"签约主体单位" },  notes = "根据法人主体检查签约主体单位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/{ormsignorg_id}/contractsignorgs/checkkey")
     public ResponseEntity<Boolean> checkKeyByOrmSignOrg(@PathVariable("ormsignorg_id") String ormsignorg_id, @RequestBody ContractSignORGDTO contractsignorgdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(contractsignorgService.checkKey(contractsignorgMapping.toDomain(contractsignorgdto)));
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgService.get(#contractsignorg_id),'ehr-ContractSignORG-Update')")
-    @ApiOperation(value = "UpdateByOrmSignOrg", tags = {"ContractSignORG" },  notes = "UpdateByOrmSignOrg")
+    @ApiOperation(value = "根据法人主体更新签约主体单位", tags = {"签约主体单位" },  notes = "根据法人主体更新签约主体单位")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormsignorgs/{ormsignorg_id}/contractsignorgs/{contractsignorg_id}")
     @Transactional
     public ResponseEntity<ContractSignORGDTO> updateByOrmSignOrg(@PathVariable("ormsignorg_id") String ormsignorg_id, @PathVariable("contractsignorg_id") String contractsignorg_id, @RequestBody ContractSignORGDTO contractsignorgdto) {
@@ -363,7 +363,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgService.getContractsignorgByEntities(this.contractsignorgMapping.toDomain(#contractsignorgdtos)),'ehr-ContractSignORG-Update')")
-    @ApiOperation(value = "UpdateBatchByOrmSignOrg", tags = {"ContractSignORG" },  notes = "UpdateBatchByOrmSignOrg")
+    @ApiOperation(value = "根据法人主体批量更新签约主体单位", tags = {"签约主体单位" },  notes = "根据法人主体批量更新签约主体单位")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormsignorgs/{ormsignorg_id}/contractsignorgs/batch")
     public ResponseEntity<Boolean> updateBatchByOrmSignOrg(@PathVariable("ormsignorg_id") String ormsignorg_id, @RequestBody List<ContractSignORGDTO> contractsignorgdtos) {
         List<ContractSignORG> domainlist=contractsignorgMapping.toDomain(contractsignorgdtos);
@@ -375,7 +375,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgService.get(#contractsignorg_id),'ehr-ContractSignORG-Remove')")
-    @ApiOperation(value = "RemoveByOrmSignOrg", tags = {"ContractSignORG" },  notes = "RemoveByOrmSignOrg")
+    @ApiOperation(value = "根据法人主体删除签约主体单位", tags = {"签约主体单位" },  notes = "根据法人主体删除签约主体单位")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormsignorgs/{ormsignorg_id}/contractsignorgs/{contractsignorg_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByOrmSignOrg(@PathVariable("ormsignorg_id") String ormsignorg_id, @PathVariable("contractsignorg_id") String contractsignorg_id) {
@@ -383,7 +383,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgService.getContractsignorgByIds(#ids),'ehr-ContractSignORG-Remove')")
-    @ApiOperation(value = "RemoveBatchByOrmSignOrg", tags = {"ContractSignORG" },  notes = "RemoveBatchByOrmSignOrg")
+    @ApiOperation(value = "根据法人主体批量删除签约主体单位", tags = {"签约主体单位" },  notes = "根据法人主体批量删除签约主体单位")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormsignorgs/{ormsignorg_id}/contractsignorgs/batch")
     public ResponseEntity<Boolean> removeBatchByOrmSignOrg(@RequestBody List<String> ids) {
         contractsignorgService.removeBatch(ids);
@@ -391,7 +391,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgMapping.toDomain(#contractsignorgdto),'ehr-ContractSignORG-Create')")
-    @ApiOperation(value = "CreateByOrmSignOrg", tags = {"ContractSignORG" },  notes = "CreateByOrmSignOrg")
+    @ApiOperation(value = "根据法人主体建立签约主体单位", tags = {"签约主体单位" },  notes = "根据法人主体建立签约主体单位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/{ormsignorg_id}/contractsignorgs")
     @Transactional
     public ResponseEntity<ContractSignORGDTO> createByOrmSignOrg(@PathVariable("ormsignorg_id") String ormsignorg_id, @RequestBody ContractSignORGDTO contractsignorgdto) {
@@ -403,7 +403,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgMapping.toDomain(#contractsignorgdtos),'ehr-ContractSignORG-Create')")
-    @ApiOperation(value = "createBatchByOrmSignOrg", tags = {"ContractSignORG" },  notes = "createBatchByOrmSignOrg")
+    @ApiOperation(value = "根据法人主体批量建立签约主体单位", tags = {"签约主体单位" },  notes = "根据法人主体批量建立签约主体单位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/{ormsignorg_id}/contractsignorgs/batch")
     public ResponseEntity<Boolean> createBatchByOrmSignOrg(@PathVariable("ormsignorg_id") String ormsignorg_id, @RequestBody List<ContractSignORGDTO> contractsignorgdtos) {
         List<ContractSignORG> domainlist=contractsignorgMapping.toDomain(contractsignorgdtos);
@@ -414,7 +414,7 @@ public class ContractSignORGResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByOrmSignOrg", tags = {"ContractSignORG" },  notes = "GetDraftByOrmSignOrg")
+    @ApiOperation(value = "根据法人主体获取签约主体单位草稿", tags = {"签约主体单位" },  notes = "根据法人主体获取签约主体单位草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/ormsignorgs/{ormsignorg_id}/contractsignorgs/getdraft")
     public ResponseEntity<ContractSignORGDTO> getDraftByOrmSignOrg(@PathVariable("ormsignorg_id") String ormsignorg_id) {
         ContractSignORG domain = new ContractSignORG();
@@ -423,7 +423,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgMapping.toDomain(#contractsignorgdto),'ehr-ContractSignORG-Save')")
-    @ApiOperation(value = "SaveByOrmSignOrg", tags = {"ContractSignORG" },  notes = "SaveByOrmSignOrg")
+    @ApiOperation(value = "根据法人主体保存签约主体单位", tags = {"签约主体单位" },  notes = "根据法人主体保存签约主体单位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/{ormsignorg_id}/contractsignorgs/save")
     public ResponseEntity<Boolean> saveByOrmSignOrg(@PathVariable("ormsignorg_id") String ormsignorg_id, @RequestBody ContractSignORGDTO contractsignorgdto) {
         ContractSignORG domain = contractsignorgMapping.toDomain(contractsignorgdto);
@@ -432,7 +432,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasPermission(this.contractsignorgMapping.toDomain(#contractsignorgdtos),'ehr-ContractSignORG-Save')")
-    @ApiOperation(value = "SaveBatchByOrmSignOrg", tags = {"ContractSignORG" },  notes = "SaveBatchByOrmSignOrg")
+    @ApiOperation(value = "根据法人主体批量保存签约主体单位", tags = {"签约主体单位" },  notes = "根据法人主体批量保存签约主体单位")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/{ormsignorg_id}/contractsignorgs/savebatch")
     public ResponseEntity<Boolean> saveBatchByOrmSignOrg(@PathVariable("ormsignorg_id") String ormsignorg_id, @RequestBody List<ContractSignORGDTO> contractsignorgdtos) {
         List<ContractSignORG> domainlist=contractsignorgMapping.toDomain(contractsignorgdtos);
@@ -444,7 +444,7 @@ public class ContractSignORGResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByOrmSignOrg", tags = {"ContractSignORG" } ,notes = "fetchDEFAULTByOrmSignOrg")
+	@ApiOperation(value = "根据法人主体获取DEFAULT", tags = {"签约主体单位" } ,notes = "根据法人主体获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/{ormsignorg_id}/contractsignorgs/fetchdefault")
 	public ResponseEntity<List<ContractSignORGDTO>> fetchContractSignORGDefaultByOrmSignOrg(@PathVariable("ormsignorg_id") String ormsignorg_id,ContractSignORGSearchContext context) {
         context.setN_ormsignorgid_eq(ormsignorg_id);
@@ -458,7 +458,7 @@ public class ContractSignORGResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByOrmSignOrg", tags = {"ContractSignORG" } ,notes = "searchDEFAULTByOrmSignOrg")
+	@ApiOperation(value = "根据法人主体查询DEFAULT", tags = {"签约主体单位" } ,notes = "根据法人主体查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormsignorgs/{ormsignorg_id}/contractsignorgs/searchdefault")
 	public ResponseEntity<Page<ContractSignORGDTO>> searchContractSignORGDefaultByOrmSignOrg(@PathVariable("ormsignorg_id") String ormsignorg_id, @RequestBody ContractSignORGSearchContext context) {
         context.setN_ormsignorgid_eq(ormsignorg_id);
@@ -467,7 +467,7 @@ public class ContractSignORGResource {
                 .body(new PageImpl(contractsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default2-all')")
-	@ApiOperation(value = "fetchDEFAULT2ByOrmSignOrg", tags = {"ContractSignORG" } ,notes = "fetchDEFAULT2ByOrmSignOrg")
+	@ApiOperation(value = "根据法人主体获取DEFAULT2", tags = {"签约主体单位" } ,notes = "根据法人主体获取DEFAULT2")
     @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/{ormsignorg_id}/contractsignorgs/fetchdefault2")
 	public ResponseEntity<List<ContractSignORGDTO>> fetchContractSignORGDefault2ByOrmSignOrg(@PathVariable("ormsignorg_id") String ormsignorg_id,ContractSignORGSearchContext context) {
         context.setN_ormsignorgid_eq(ormsignorg_id);
@@ -481,7 +481,7 @@ public class ContractSignORGResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ContractSignORG-Default2-all')")
-	@ApiOperation(value = "searchDEFAULT2ByOrmSignOrg", tags = {"ContractSignORG" } ,notes = "searchDEFAULT2ByOrmSignOrg")
+	@ApiOperation(value = "根据法人主体查询DEFAULT2", tags = {"签约主体单位" } ,notes = "根据法人主体查询DEFAULT2")
     @RequestMapping(method= RequestMethod.POST , value="/ormsignorgs/{ormsignorg_id}/contractsignorgs/searchdefault2")
 	public ResponseEntity<Page<ContractSignORGDTO>> searchContractSignORGDefault2ByOrmSignOrg(@PathVariable("ormsignorg_id") String ormsignorg_id, @RequestBody ContractSignORGSearchContext context) {
         context.setN_ormsignorgid_eq(ormsignorg_id);

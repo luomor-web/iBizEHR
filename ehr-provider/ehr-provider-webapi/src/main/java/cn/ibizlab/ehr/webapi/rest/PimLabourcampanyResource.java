@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimLabourcampanyService;
 import cn.ibizlab.ehr.core.pim.filter.PimLabourcampanySearchContext;
 
 @Slf4j
-@Api(tags = {"PimLabourcampany" })
+@Api(tags = {"劳务派遣公司管理" })
 @RestController("WebApi-pimlabourcampany")
 @RequestMapping("")
 public class PimLabourcampanyResource {
@@ -47,28 +47,28 @@ public class PimLabourcampanyResource {
     public PimLabourcampanyMapping pimlabourcampanyMapping;
 
     @PreAuthorize("hasPermission(this.pimlabourcampanyMapping.toDomain(#pimlabourcampanydto),'ehr-PimLabourcampany-Save')")
-    @ApiOperation(value = "Save", tags = {"PimLabourcampany" },  notes = "Save")
+    @ApiOperation(value = "保存劳务派遣公司管理", tags = {"劳务派遣公司管理" },  notes = "保存劳务派遣公司管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlabourcampanies/save")
     public ResponseEntity<Boolean> save(@RequestBody PimLabourcampanyDTO pimlabourcampanydto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimlabourcampanyService.save(pimlabourcampanyMapping.toDomain(pimlabourcampanydto)));
     }
 
     @PreAuthorize("hasPermission(this.pimlabourcampanyMapping.toDomain(#pimlabourcampanydtos),'ehr-PimLabourcampany-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimLabourcampany" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存劳务派遣公司管理", tags = {"劳务派遣公司管理" },  notes = "批量保存劳务派遣公司管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlabourcampanies/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimLabourcampanyDTO> pimlabourcampanydtos) {
         pimlabourcampanyService.saveBatch(pimlabourcampanyMapping.toDomain(pimlabourcampanydtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimLabourcampany" },  notes = "CheckKey")
+    @ApiOperation(value = "检查劳务派遣公司管理", tags = {"劳务派遣公司管理" },  notes = "检查劳务派遣公司管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlabourcampanies/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimLabourcampanyDTO pimlabourcampanydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimlabourcampanyService.checkKey(pimlabourcampanyMapping.toDomain(pimlabourcampanydto)));
     }
 
     @PreAuthorize("hasPermission(this.pimlabourcampanyService.get(#pimlabourcampany_id),'ehr-PimLabourcampany-Update')")
-    @ApiOperation(value = "Update", tags = {"PimLabourcampany" },  notes = "Update")
+    @ApiOperation(value = "更新劳务派遣公司管理", tags = {"劳务派遣公司管理" },  notes = "更新劳务派遣公司管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimlabourcampanies/{pimlabourcampany_id}")
     @Transactional
     public ResponseEntity<PimLabourcampanyDTO> update(@PathVariable("pimlabourcampany_id") String pimlabourcampany_id, @RequestBody PimLabourcampanyDTO pimlabourcampanydto) {
@@ -80,7 +80,7 @@ public class PimLabourcampanyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimlabourcampanyService.getPimlabourcampanyByEntities(this.pimlabourcampanyMapping.toDomain(#pimlabourcampanydtos)),'ehr-PimLabourcampany-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimLabourcampany" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新劳务派遣公司管理", tags = {"劳务派遣公司管理" },  notes = "批量更新劳务派遣公司管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimlabourcampanies/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimLabourcampanyDTO> pimlabourcampanydtos) {
         pimlabourcampanyService.updateBatch(pimlabourcampanyMapping.toDomain(pimlabourcampanydtos));
@@ -88,7 +88,7 @@ public class PimLabourcampanyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimlabourcampanyMapping.toDomain(#pimlabourcampanydto),'ehr-PimLabourcampany-Create')")
-    @ApiOperation(value = "Create", tags = {"PimLabourcampany" },  notes = "Create")
+    @ApiOperation(value = "新建劳务派遣公司管理", tags = {"劳务派遣公司管理" },  notes = "新建劳务派遣公司管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlabourcampanies")
     @Transactional
     public ResponseEntity<PimLabourcampanyDTO> create(@RequestBody PimLabourcampanyDTO pimlabourcampanydto) {
@@ -99,7 +99,7 @@ public class PimLabourcampanyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimlabourcampanyMapping.toDomain(#pimlabourcampanydtos),'ehr-PimLabourcampany-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimLabourcampany" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建劳务派遣公司管理", tags = {"劳务派遣公司管理" },  notes = "批量新建劳务派遣公司管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimlabourcampanies/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimLabourcampanyDTO> pimlabourcampanydtos) {
         pimlabourcampanyService.createBatch(pimlabourcampanyMapping.toDomain(pimlabourcampanydtos));
@@ -107,7 +107,7 @@ public class PimLabourcampanyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimlabourcampanyService.get(#pimlabourcampany_id),'ehr-PimLabourcampany-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimLabourcampany" },  notes = "Remove")
+    @ApiOperation(value = "删除劳务派遣公司管理", tags = {"劳务派遣公司管理" },  notes = "删除劳务派遣公司管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimlabourcampanies/{pimlabourcampany_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimlabourcampany_id") String pimlabourcampany_id) {
@@ -115,7 +115,7 @@ public class PimLabourcampanyResource {
     }
 
     @PreAuthorize("hasPermission(this.pimlabourcampanyService.getPimlabourcampanyByIds(#ids),'ehr-PimLabourcampany-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimLabourcampany" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除劳务派遣公司管理", tags = {"劳务派遣公司管理" },  notes = "批量删除劳务派遣公司管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimlabourcampanies/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimlabourcampanyService.removeBatch(ids);
@@ -123,7 +123,7 @@ public class PimLabourcampanyResource {
     }
 
     @PostAuthorize("hasPermission(this.pimlabourcampanyMapping.toDomain(returnObject.body),'ehr-PimLabourcampany-Get')")
-    @ApiOperation(value = "Get", tags = {"PimLabourcampany" },  notes = "Get")
+    @ApiOperation(value = "获取劳务派遣公司管理", tags = {"劳务派遣公司管理" },  notes = "获取劳务派遣公司管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimlabourcampanies/{pimlabourcampany_id}")
     public ResponseEntity<PimLabourcampanyDTO> get(@PathVariable("pimlabourcampany_id") String pimlabourcampany_id) {
         PimLabourcampany domain = pimlabourcampanyService.get(pimlabourcampany_id);
@@ -131,14 +131,14 @@ public class PimLabourcampanyResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimLabourcampany" },  notes = "GetDraft")
+    @ApiOperation(value = "获取劳务派遣公司管理草稿", tags = {"劳务派遣公司管理" },  notes = "获取劳务派遣公司管理草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimlabourcampanies/getdraft")
     public ResponseEntity<PimLabourcampanyDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimlabourcampanyMapping.toDto(pimlabourcampanyService.getDraft(new PimLabourcampany())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLabourcampany-AuthLab-all')")
-	@ApiOperation(value = "fetchAuthLab", tags = {"PimLabourcampany" } ,notes = "fetchAuthLab")
+	@ApiOperation(value = "获取AuthLab", tags = {"劳务派遣公司管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimlabourcampanies/fetchauthlab")
 	public ResponseEntity<List<PimLabourcampanyDTO>> fetchAuthLab(PimLabourcampanySearchContext context) {
         Page<PimLabourcampany> domains = pimlabourcampanyService.searchAuthLab(context) ;
@@ -151,7 +151,7 @@ public class PimLabourcampanyResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLabourcampany-AuthLab-all')")
-	@ApiOperation(value = "searchAuthLab", tags = {"PimLabourcampany" } ,notes = "searchAuthLab")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"劳务派遣公司管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimlabourcampanies/searchauthlab")
 	public ResponseEntity<Page<PimLabourcampanyDTO>> searchAuthLab(@RequestBody PimLabourcampanySearchContext context) {
         Page<PimLabourcampany> domains = pimlabourcampanyService.searchAuthLab(context) ;
@@ -159,7 +159,7 @@ public class PimLabourcampanyResource {
                 .body(new PageImpl(pimlabourcampanyMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLabourcampany-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimLabourcampany" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"劳务派遣公司管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimlabourcampanies/fetchdefault")
 	public ResponseEntity<List<PimLabourcampanyDTO>> fetchDefault(PimLabourcampanySearchContext context) {
         Page<PimLabourcampany> domains = pimlabourcampanyService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class PimLabourcampanyResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimLabourcampany-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimLabourcampany" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"劳务派遣公司管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimlabourcampanies/searchdefault")
 	public ResponseEntity<Page<PimLabourcampanyDTO>> searchDefault(@RequestBody PimLabourcampanySearchContext context) {
         Page<PimLabourcampany> domains = pimlabourcampanyService.searchDefault(context) ;

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimOutputService;
 import cn.ibizlab.ehr.core.pim.filter.PimOutputSearchContext;
 
 @Slf4j
-@Api(tags = {"PimOutput" })
+@Api(tags = {"产值表" })
 @RestController("WebApi-pimoutput")
 @RequestMapping("")
 public class PimOutputResource {
@@ -47,7 +47,7 @@ public class PimOutputResource {
     public PimOutputMapping pimoutputMapping;
 
     @PreAuthorize("hasPermission(this.pimoutputService.get(#pimoutput_id),'ehr-PimOutput-Update')")
-    @ApiOperation(value = "Update", tags = {"PimOutput" },  notes = "Update")
+    @ApiOperation(value = "更新产值表", tags = {"产值表" },  notes = "更新产值表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimoutputs/{pimoutput_id}")
     @Transactional
     public ResponseEntity<PimOutputDTO> update(@PathVariable("pimoutput_id") String pimoutput_id, @RequestBody PimOutputDTO pimoutputdto) {
@@ -59,7 +59,7 @@ public class PimOutputResource {
     }
 
     @PreAuthorize("hasPermission(this.pimoutputService.getPimoutputByEntities(this.pimoutputMapping.toDomain(#pimoutputdtos)),'ehr-PimOutput-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimOutput" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新产值表", tags = {"产值表" },  notes = "批量更新产值表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimoutputs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimOutputDTO> pimoutputdtos) {
         pimoutputService.updateBatch(pimoutputMapping.toDomain(pimoutputdtos));
@@ -67,7 +67,7 @@ public class PimOutputResource {
     }
 
     @PostAuthorize("hasPermission(this.pimoutputMapping.toDomain(returnObject.body),'ehr-PimOutput-Get')")
-    @ApiOperation(value = "Get", tags = {"PimOutput" },  notes = "Get")
+    @ApiOperation(value = "获取产值表", tags = {"产值表" },  notes = "获取产值表")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimoutputs/{pimoutput_id}")
     public ResponseEntity<PimOutputDTO> get(@PathVariable("pimoutput_id") String pimoutput_id) {
         PimOutput domain = pimoutputService.get(pimoutput_id);
@@ -76,7 +76,7 @@ public class PimOutputResource {
     }
 
     @PreAuthorize("hasPermission(this.pimoutputMapping.toDomain(#pimoutputdto),'ehr-PimOutput-Create')")
-    @ApiOperation(value = "Create", tags = {"PimOutput" },  notes = "Create")
+    @ApiOperation(value = "新建产值表", tags = {"产值表" },  notes = "新建产值表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimoutputs")
     @Transactional
     public ResponseEntity<PimOutputDTO> create(@RequestBody PimOutputDTO pimoutputdto) {
@@ -87,27 +87,27 @@ public class PimOutputResource {
     }
 
     @PreAuthorize("hasPermission(this.pimoutputMapping.toDomain(#pimoutputdtos),'ehr-PimOutput-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimOutput" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建产值表", tags = {"产值表" },  notes = "批量新建产值表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimoutputs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimOutputDTO> pimoutputdtos) {
         pimoutputService.createBatch(pimoutputMapping.toDomain(pimoutputdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimOutput" },  notes = "CheckKey")
+    @ApiOperation(value = "检查产值表", tags = {"产值表" },  notes = "检查产值表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimoutputs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimOutputDTO pimoutputdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimoutputService.checkKey(pimoutputMapping.toDomain(pimoutputdto)));
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimOutput" },  notes = "GetDraft")
+    @ApiOperation(value = "获取产值表草稿", tags = {"产值表" },  notes = "获取产值表草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimoutputs/getdraft")
     public ResponseEntity<PimOutputDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimoutputMapping.toDto(pimoutputService.getDraft(new PimOutput())));
     }
 
     @PreAuthorize("hasPermission(this.pimoutputService.get(#pimoutput_id),'ehr-PimOutput-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimOutput" },  notes = "Remove")
+    @ApiOperation(value = "删除产值表", tags = {"产值表" },  notes = "删除产值表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimoutputs/{pimoutput_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimoutput_id") String pimoutput_id) {
@@ -115,7 +115,7 @@ public class PimOutputResource {
     }
 
     @PreAuthorize("hasPermission(this.pimoutputService.getPimoutputByIds(#ids),'ehr-PimOutput-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimOutput" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除产值表", tags = {"产值表" },  notes = "批量删除产值表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimoutputs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimoutputService.removeBatch(ids);
@@ -123,14 +123,14 @@ public class PimOutputResource {
     }
 
     @PreAuthorize("hasPermission(this.pimoutputMapping.toDomain(#pimoutputdto),'ehr-PimOutput-Save')")
-    @ApiOperation(value = "Save", tags = {"PimOutput" },  notes = "Save")
+    @ApiOperation(value = "保存产值表", tags = {"产值表" },  notes = "保存产值表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimoutputs/save")
     public ResponseEntity<Boolean> save(@RequestBody PimOutputDTO pimoutputdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimoutputService.save(pimoutputMapping.toDomain(pimoutputdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimoutputMapping.toDomain(#pimoutputdtos),'ehr-PimOutput-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimOutput" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存产值表", tags = {"产值表" },  notes = "批量保存产值表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimoutputs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimOutputDTO> pimoutputdtos) {
         pimoutputService.saveBatch(pimoutputMapping.toDomain(pimoutputdtos));
@@ -138,7 +138,7 @@ public class PimOutputResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimOutput-CurOrg-all')")
-	@ApiOperation(value = "fetch当前组织范围", tags = {"PimOutput" } ,notes = "fetch当前组织范围")
+	@ApiOperation(value = "获取当前组织范围", tags = {"产值表" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/fetchcurorg")
 	public ResponseEntity<List<PimOutputDTO>> fetchCurOrg(PimOutputSearchContext context) {
         Page<PimOutput> domains = pimoutputService.searchCurOrg(context) ;
@@ -151,7 +151,7 @@ public class PimOutputResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimOutput-CurOrg-all')")
-	@ApiOperation(value = "search当前组织范围", tags = {"PimOutput" } ,notes = "search当前组织范围")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"产值表" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimoutputs/searchcurorg")
 	public ResponseEntity<Page<PimOutputDTO>> searchCurOrg(@RequestBody PimOutputSearchContext context) {
         Page<PimOutput> domains = pimoutputService.searchCurOrg(context) ;
@@ -159,7 +159,7 @@ public class PimOutputResource {
                 .body(new PageImpl(pimoutputMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimOutput-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimOutput" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"产值表" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/fetchdefault")
 	public ResponseEntity<List<PimOutputDTO>> fetchDefault(PimOutputSearchContext context) {
         Page<PimOutput> domains = pimoutputService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class PimOutputResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimOutput-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimOutput" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"产值表" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimoutputs/searchdefault")
 	public ResponseEntity<Page<PimOutputDTO>> searchDefault(@RequestBody PimOutputSearchContext context) {
         Page<PimOutput> domains = pimoutputService.searchDefault(context) ;
@@ -180,7 +180,7 @@ public class PimOutputResource {
                 .body(new PageImpl(pimoutputMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimOutput-REP_OUTPUT-all')")
-	@ApiOperation(value = "fetch人均产值", tags = {"PimOutput" } ,notes = "fetch人均产值")
+	@ApiOperation(value = "获取人均产值", tags = {"产值表" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimoutputs/fetchrep_output")
 	public ResponseEntity<List<HashMap>> fetchREP_OUTPUT(PimOutputSearchContext context) {
         Page<HashMap> domains = pimoutputService.searchREP_OUTPUT(context) ;
@@ -192,7 +192,7 @@ public class PimOutputResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimOutput-REP_OUTPUT-all')")
-	@ApiOperation(value = "search人均产值", tags = {"PimOutput" } ,notes = "search人均产值")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"产值表" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimoutputs/searchrep_output")
 	public ResponseEntity<Page<HashMap>> searchREP_OUTPUT(@RequestBody PimOutputSearchContext context) {
         Page<HashMap> domains = pimoutputService.searchREP_OUTPUT(context) ;

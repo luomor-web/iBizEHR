@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.orm.service.IORMQYGLService;
 import cn.ibizlab.ehr.core.orm.filter.ORMQYGLSearchContext;
 
 @Slf4j
-@Api(tags = {"ORMQYGL" })
+@Api(tags = {"补贴标准" })
 @RestController("WebApi-ormqygl")
 @RequestMapping("")
 public class ORMQYGLResource {
@@ -47,7 +47,7 @@ public class ORMQYGLResource {
     public ORMQYGLMapping ormqyglMapping;
 
     @PreAuthorize("hasPermission(this.ormqyglService.get(#ormqygl_id),'ehr-ORMQYGL-Update')")
-    @ApiOperation(value = "Update", tags = {"ORMQYGL" },  notes = "Update")
+    @ApiOperation(value = "更新补贴标准", tags = {"补贴标准" },  notes = "更新补贴标准")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormqygls/{ormqygl_id}")
     @Transactional
     public ResponseEntity<ORMQYGLDTO> update(@PathVariable("ormqygl_id") String ormqygl_id, @RequestBody ORMQYGLDTO ormqygldto) {
@@ -59,7 +59,7 @@ public class ORMQYGLResource {
     }
 
     @PreAuthorize("hasPermission(this.ormqyglService.getOrmqyglByEntities(this.ormqyglMapping.toDomain(#ormqygldtos)),'ehr-ORMQYGL-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"ORMQYGL" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新补贴标准", tags = {"补贴标准" },  notes = "批量更新补贴标准")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormqygls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ORMQYGLDTO> ormqygldtos) {
         ormqyglService.updateBatch(ormqyglMapping.toDomain(ormqygldtos));
@@ -67,7 +67,7 @@ public class ORMQYGLResource {
     }
 
     @PostAuthorize("hasPermission(this.ormqyglMapping.toDomain(returnObject.body),'ehr-ORMQYGL-Get')")
-    @ApiOperation(value = "Get", tags = {"ORMQYGL" },  notes = "Get")
+    @ApiOperation(value = "获取补贴标准", tags = {"补贴标准" },  notes = "获取补贴标准")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormqygls/{ormqygl_id}")
     public ResponseEntity<ORMQYGLDTO> get(@PathVariable("ormqygl_id") String ormqygl_id) {
         ORMQYGL domain = ormqyglService.get(ormqygl_id);
@@ -76,7 +76,7 @@ public class ORMQYGLResource {
     }
 
     @PreAuthorize("hasPermission(this.ormqyglMapping.toDomain(#ormqygldto),'ehr-ORMQYGL-Create')")
-    @ApiOperation(value = "Create", tags = {"ORMQYGL" },  notes = "Create")
+    @ApiOperation(value = "新建补贴标准", tags = {"补贴标准" },  notes = "新建补贴标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormqygls")
     @Transactional
     public ResponseEntity<ORMQYGLDTO> create(@RequestBody ORMQYGLDTO ormqygldto) {
@@ -87,21 +87,21 @@ public class ORMQYGLResource {
     }
 
     @PreAuthorize("hasPermission(this.ormqyglMapping.toDomain(#ormqygldtos),'ehr-ORMQYGL-Create')")
-    @ApiOperation(value = "createBatch", tags = {"ORMQYGL" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建补贴标准", tags = {"补贴标准" },  notes = "批量新建补贴标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormqygls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ORMQYGLDTO> ormqygldtos) {
         ormqyglService.createBatch(ormqyglMapping.toDomain(ormqygldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"ORMQYGL" },  notes = "GetDraft")
+    @ApiOperation(value = "获取补贴标准草稿", tags = {"补贴标准" },  notes = "获取补贴标准草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormqygls/getdraft")
     public ResponseEntity<ORMQYGLDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormqyglMapping.toDto(ormqyglService.getDraft(new ORMQYGL())));
     }
 
     @PreAuthorize("hasPermission(this.ormqyglService.get(#ormqygl_id),'ehr-ORMQYGL-Remove')")
-    @ApiOperation(value = "Remove", tags = {"ORMQYGL" },  notes = "Remove")
+    @ApiOperation(value = "删除补贴标准", tags = {"补贴标准" },  notes = "删除补贴标准")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormqygls/{ormqygl_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("ormqygl_id") String ormqygl_id) {
@@ -109,7 +109,7 @@ public class ORMQYGLResource {
     }
 
     @PreAuthorize("hasPermission(this.ormqyglService.getOrmqyglByIds(#ids),'ehr-ORMQYGL-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"ORMQYGL" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除补贴标准", tags = {"补贴标准" },  notes = "批量删除补贴标准")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormqygls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         ormqyglService.removeBatch(ids);
@@ -117,28 +117,28 @@ public class ORMQYGLResource {
     }
 
     @PreAuthorize("hasPermission(this.ormqyglMapping.toDomain(#ormqygldto),'ehr-ORMQYGL-Save')")
-    @ApiOperation(value = "Save", tags = {"ORMQYGL" },  notes = "Save")
+    @ApiOperation(value = "保存补贴标准", tags = {"补贴标准" },  notes = "保存补贴标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormqygls/save")
     public ResponseEntity<Boolean> save(@RequestBody ORMQYGLDTO ormqygldto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormqyglService.save(ormqyglMapping.toDomain(ormqygldto)));
     }
 
     @PreAuthorize("hasPermission(this.ormqyglMapping.toDomain(#ormqygldtos),'ehr-ORMQYGL-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"ORMQYGL" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存补贴标准", tags = {"补贴标准" },  notes = "批量保存补贴标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormqygls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ORMQYGLDTO> ormqygldtos) {
         ormqyglService.saveBatch(ormqyglMapping.toDomain(ormqygldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"ORMQYGL" },  notes = "CheckKey")
+    @ApiOperation(value = "检查补贴标准", tags = {"补贴标准" },  notes = "检查补贴标准")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormqygls/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ORMQYGLDTO ormqygldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormqyglService.checkKey(ormqyglMapping.toDomain(ormqygldto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYGL-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"ORMQYGL" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"补贴标准" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormqygls/fetchdefault")
 	public ResponseEntity<List<ORMQYGLDTO>> fetchDefault(ORMQYGLSearchContext context) {
         Page<ORMQYGL> domains = ormqyglService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ORMQYGLResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMQYGL-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"ORMQYGL" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"补贴标准" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormqygls/searchdefault")
 	public ResponseEntity<Page<ORMQYGLDTO>> searchDefault(@RequestBody ORMQYGLSearchContext context) {
         Page<ORMQYGL> domains = ormqyglService.searchDefault(context) ;

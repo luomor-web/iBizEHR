@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITrmDutyCadresService;
 import cn.ibizlab.ehr.core.trm.filter.TrmDutyCadresSearchContext;
 
 @Slf4j
-@Api(tags = {"TrmDutyCadres" })
+@Api(tags = {"优秀年轻干部梯队" })
 @RestController("WebApi-trmdutycadres")
 @RequestMapping("")
 public class TrmDutyCadresResource {
@@ -47,14 +47,14 @@ public class TrmDutyCadresResource {
     public TrmDutyCadresMapping trmdutycadresMapping;
 
     @PreAuthorize("hasPermission(this.trmdutycadresMapping.toDomain(#trmdutycadresdto),'ehr-TrmDutyCadres-Save')")
-    @ApiOperation(value = "Save", tags = {"TrmDutyCadres" },  notes = "Save")
+    @ApiOperation(value = "保存优秀年轻干部梯队", tags = {"优秀年轻干部梯队" },  notes = "保存优秀年轻干部梯队")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/save")
     public ResponseEntity<Boolean> save(@RequestBody TrmDutyCadresDTO trmdutycadresdto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresService.save(trmdutycadresMapping.toDomain(trmdutycadresdto)));
     }
 
     @PreAuthorize("hasPermission(this.trmdutycadresMapping.toDomain(#trmdutycadresdtos),'ehr-TrmDutyCadres-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TrmDutyCadres" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存优秀年轻干部梯队", tags = {"优秀年轻干部梯队" },  notes = "批量保存优秀年轻干部梯队")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TrmDutyCadresDTO> trmdutycadresdtos) {
         trmdutycadresService.saveBatch(trmdutycadresMapping.toDomain(trmdutycadresdtos));
@@ -62,7 +62,7 @@ public class TrmDutyCadresResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmDutyCadres-SetNQGBXX-all')")
-    @ApiOperation(value = "设置年轻干部信息", tags = {"TrmDutyCadres" },  notes = "设置年轻干部信息")
+    @ApiOperation(value = "设置年轻干部信息", tags = {"优秀年轻干部梯队" },  notes = "设置年轻干部信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/{trmdutycadres_id}/setnqgbxx")
     @Transactional
     public ResponseEntity<TrmDutyCadresDTO> setNQGBXX(@PathVariable("trmdutycadres_id") String trmdutycadres_id, @RequestBody TrmDutyCadresDTO trmdutycadresdto) {
@@ -74,7 +74,7 @@ public class TrmDutyCadresResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmDutyCadres-SX-all')")
-    @ApiOperation(value = "生效", tags = {"TrmDutyCadres" },  notes = "生效")
+    @ApiOperation(value = "生效", tags = {"优秀年轻干部梯队" },  notes = "生效")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/{trmdutycadres_id}/sx")
     @Transactional
     public ResponseEntity<TrmDutyCadresDTO> sX(@PathVariable("trmdutycadres_id") String trmdutycadres_id, @RequestBody TrmDutyCadresDTO trmdutycadresdto) {
@@ -86,7 +86,7 @@ public class TrmDutyCadresResource {
     }
 
     @PreAuthorize("hasPermission(this.trmdutycadresMapping.toDomain(#trmdutycadresdto),'ehr-TrmDutyCadres-Create')")
-    @ApiOperation(value = "Create", tags = {"TrmDutyCadres" },  notes = "Create")
+    @ApiOperation(value = "新建优秀年轻干部梯队", tags = {"优秀年轻干部梯队" },  notes = "新建优秀年轻干部梯队")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres")
     @Transactional
     public ResponseEntity<TrmDutyCadresDTO> create(@RequestBody TrmDutyCadresDTO trmdutycadresdto) {
@@ -97,27 +97,27 @@ public class TrmDutyCadresResource {
     }
 
     @PreAuthorize("hasPermission(this.trmdutycadresMapping.toDomain(#trmdutycadresdtos),'ehr-TrmDutyCadres-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TrmDutyCadres" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建优秀年轻干部梯队", tags = {"优秀年轻干部梯队" },  notes = "批量新建优秀年轻干部梯队")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmDutyCadresDTO> trmdutycadresdtos) {
         trmdutycadresService.createBatch(trmdutycadresMapping.toDomain(trmdutycadresdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"TrmDutyCadres" },  notes = "GetDraft")
+    @ApiOperation(value = "获取优秀年轻干部梯队草稿", tags = {"优秀年轻干部梯队" },  notes = "获取优秀年轻干部梯队草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdutycadres/getdraft")
     public ResponseEntity<TrmDutyCadresDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmdutycadresMapping.toDto(trmdutycadresService.getDraft(new TrmDutyCadres())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TrmDutyCadres" },  notes = "CheckKey")
+    @ApiOperation(value = "检查优秀年轻干部梯队", tags = {"优秀年轻干部梯队" },  notes = "检查优秀年轻干部梯队")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmDutyCadresDTO trmdutycadresdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmdutycadresService.checkKey(trmdutycadresMapping.toDomain(trmdutycadresdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmDutyCadres-XX-all')")
-    @ApiOperation(value = "失效", tags = {"TrmDutyCadres" },  notes = "失效")
+    @ApiOperation(value = "失效", tags = {"优秀年轻干部梯队" },  notes = "失效")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmdutycadres/{trmdutycadres_id}/xx")
     @Transactional
     public ResponseEntity<TrmDutyCadresDTO> xX(@PathVariable("trmdutycadres_id") String trmdutycadres_id, @RequestBody TrmDutyCadresDTO trmdutycadresdto) {
@@ -129,7 +129,7 @@ public class TrmDutyCadresResource {
     }
 
     @PostAuthorize("hasPermission(this.trmdutycadresMapping.toDomain(returnObject.body),'ehr-TrmDutyCadres-Get')")
-    @ApiOperation(value = "Get", tags = {"TrmDutyCadres" },  notes = "Get")
+    @ApiOperation(value = "获取优秀年轻干部梯队", tags = {"优秀年轻干部梯队" },  notes = "获取优秀年轻干部梯队")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmdutycadres/{trmdutycadres_id}")
     public ResponseEntity<TrmDutyCadresDTO> get(@PathVariable("trmdutycadres_id") String trmdutycadres_id) {
         TrmDutyCadres domain = trmdutycadresService.get(trmdutycadres_id);
@@ -138,7 +138,7 @@ public class TrmDutyCadresResource {
     }
 
     @PreAuthorize("hasPermission(this.trmdutycadresService.get(#trmdutycadres_id),'ehr-TrmDutyCadres-Update')")
-    @ApiOperation(value = "Update", tags = {"TrmDutyCadres" },  notes = "Update")
+    @ApiOperation(value = "更新优秀年轻干部梯队", tags = {"优秀年轻干部梯队" },  notes = "更新优秀年轻干部梯队")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdutycadres/{trmdutycadres_id}")
     @Transactional
     public ResponseEntity<TrmDutyCadresDTO> update(@PathVariable("trmdutycadres_id") String trmdutycadres_id, @RequestBody TrmDutyCadresDTO trmdutycadresdto) {
@@ -150,7 +150,7 @@ public class TrmDutyCadresResource {
     }
 
     @PreAuthorize("hasPermission(this.trmdutycadresService.getTrmdutycadresByEntities(this.trmdutycadresMapping.toDomain(#trmdutycadresdtos)),'ehr-TrmDutyCadres-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TrmDutyCadres" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新优秀年轻干部梯队", tags = {"优秀年轻干部梯队" },  notes = "批量更新优秀年轻干部梯队")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmdutycadres/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TrmDutyCadresDTO> trmdutycadresdtos) {
         trmdutycadresService.updateBatch(trmdutycadresMapping.toDomain(trmdutycadresdtos));
@@ -158,7 +158,7 @@ public class TrmDutyCadresResource {
     }
 
     @PreAuthorize("hasPermission(this.trmdutycadresService.get(#trmdutycadres_id),'ehr-TrmDutyCadres-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TrmDutyCadres" },  notes = "Remove")
+    @ApiOperation(value = "删除优秀年轻干部梯队", tags = {"优秀年轻干部梯队" },  notes = "删除优秀年轻干部梯队")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdutycadres/{trmdutycadres_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trmdutycadres_id") String trmdutycadres_id) {
@@ -166,7 +166,7 @@ public class TrmDutyCadresResource {
     }
 
     @PreAuthorize("hasPermission(this.trmdutycadresService.getTrmdutycadresByIds(#ids),'ehr-TrmDutyCadres-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TrmDutyCadres" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除优秀年轻干部梯队", tags = {"优秀年轻干部梯队" },  notes = "批量删除优秀年轻干部梯队")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmdutycadres/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmdutycadresService.removeBatch(ids);
@@ -174,7 +174,7 @@ public class TrmDutyCadresResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmDutyCadres-CurCXFW-all')")
-	@ApiOperation(value = "fetch数据范围选择", tags = {"TrmDutyCadres" } ,notes = "fetch数据范围选择")
+	@ApiOperation(value = "获取数据范围选择", tags = {"优秀年轻干部梯队" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmdutycadres/fetchcurcxfw")
 	public ResponseEntity<List<TrmDutyCadresDTO>> fetchCurCXFW(TrmDutyCadresSearchContext context) {
         Page<TrmDutyCadres> domains = trmdutycadresService.searchCurCXFW(context) ;
@@ -187,7 +187,7 @@ public class TrmDutyCadresResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmDutyCadres-CurCXFW-all')")
-	@ApiOperation(value = "search数据范围选择", tags = {"TrmDutyCadres" } ,notes = "search数据范围选择")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"优秀年轻干部梯队" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmdutycadres/searchcurcxfw")
 	public ResponseEntity<Page<TrmDutyCadresDTO>> searchCurCXFW(@RequestBody TrmDutyCadresSearchContext context) {
         Page<TrmDutyCadres> domains = trmdutycadresService.searchCurCXFW(context) ;
@@ -195,7 +195,7 @@ public class TrmDutyCadresResource {
                 .body(new PageImpl(trmdutycadresMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmDutyCadres-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TrmDutyCadres" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"优秀年轻干部梯队" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmdutycadres/fetchdefault")
 	public ResponseEntity<List<TrmDutyCadresDTO>> fetchDefault(TrmDutyCadresSearchContext context) {
         Page<TrmDutyCadres> domains = trmdutycadresService.searchDefault(context) ;
@@ -208,7 +208,7 @@ public class TrmDutyCadresResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmDutyCadres-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TrmDutyCadres" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"优秀年轻干部梯队" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmdutycadres/searchdefault")
 	public ResponseEntity<Page<TrmDutyCadresDTO>> searchDefault(@RequestBody TrmDutyCadresSearchContext context) {
         Page<TrmDutyCadres> domains = trmdutycadresService.searchDefault(context) ;

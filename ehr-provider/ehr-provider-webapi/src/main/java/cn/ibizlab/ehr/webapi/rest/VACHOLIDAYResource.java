@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.vac.service.IVACHOLIDAYService;
 import cn.ibizlab.ehr.core.vac.filter.VACHOLIDAYSearchContext;
 
 @Slf4j
-@Api(tags = {"VACHOLIDAY" })
+@Api(tags = {"节假日管理" })
 @RestController("WebApi-vacholiday")
 @RequestMapping("")
 public class VACHOLIDAYResource {
@@ -47,7 +47,7 @@ public class VACHOLIDAYResource {
     public VACHOLIDAYMapping vacholidayMapping;
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-APPOINTJZBJJR-all')")
-    @ApiOperation(value = "引用局总部节假日", tags = {"VACHOLIDAY" },  notes = "引用局总部节假日")
+    @ApiOperation(value = "引用局总部节假日", tags = {"节假日管理" },  notes = "引用局总部节假日")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidays/{vacholiday_id}/appointjzbjjr")
     @Transactional
     public ResponseEntity<VACHOLIDAYDTO> aPPOINTJZBJJR(@PathVariable("vacholiday_id") String vacholiday_id, @RequestBody VACHOLIDAYDTO vacholidaydto) {
@@ -59,7 +59,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayService.get(#vacholiday_id),'ehr-VACHOLIDAY-Update')")
-    @ApiOperation(value = "Update", tags = {"VACHOLIDAY" },  notes = "Update")
+    @ApiOperation(value = "更新节假日管理", tags = {"节假日管理" },  notes = "更新节假日管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidays/{vacholiday_id}")
     @Transactional
     public ResponseEntity<VACHOLIDAYDTO> update(@PathVariable("vacholiday_id") String vacholiday_id, @RequestBody VACHOLIDAYDTO vacholidaydto) {
@@ -71,7 +71,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayService.getVacholidayByEntities(this.vacholidayMapping.toDomain(#vacholidaydtos)),'ehr-VACHOLIDAY-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"VACHOLIDAY" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新节假日管理", tags = {"节假日管理" },  notes = "批量更新节假日管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidays/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACHOLIDAYDTO> vacholidaydtos) {
         vacholidayService.updateBatch(vacholidayMapping.toDomain(vacholidaydtos));
@@ -79,7 +79,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayService.get(#vacholiday_id),'ehr-VACHOLIDAY-Remove')")
-    @ApiOperation(value = "Remove", tags = {"VACHOLIDAY" },  notes = "Remove")
+    @ApiOperation(value = "删除节假日管理", tags = {"节假日管理" },  notes = "删除节假日管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidays/{vacholiday_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("vacholiday_id") String vacholiday_id) {
@@ -87,27 +87,27 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayService.getVacholidayByIds(#ids),'ehr-VACHOLIDAY-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"VACHOLIDAY" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除节假日管理", tags = {"节假日管理" },  notes = "批量删除节假日管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidays/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         vacholidayService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"VACHOLIDAY" },  notes = "CheckKey")
+    @ApiOperation(value = "检查节假日管理", tags = {"节假日管理" },  notes = "检查节假日管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidays/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACHOLIDAYDTO vacholidaydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacholidayService.checkKey(vacholidayMapping.toDomain(vacholidaydto)));
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"VACHOLIDAY" },  notes = "GetDraft")
+    @ApiOperation(value = "获取节假日管理草稿", tags = {"节假日管理" },  notes = "获取节假日管理草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacholidays/getdraft")
     public ResponseEntity<VACHOLIDAYDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacholidayMapping.toDto(vacholidayService.getDraft(new VACHOLIDAY())));
     }
 
     @PostAuthorize("hasPermission(this.vacholidayMapping.toDomain(returnObject.body),'ehr-VACHOLIDAY-Get')")
-    @ApiOperation(value = "Get", tags = {"VACHOLIDAY" },  notes = "Get")
+    @ApiOperation(value = "获取节假日管理", tags = {"节假日管理" },  notes = "获取节假日管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacholidays/{vacholiday_id}")
     public ResponseEntity<VACHOLIDAYDTO> get(@PathVariable("vacholiday_id") String vacholiday_id) {
         VACHOLIDAY domain = vacholidayService.get(vacholiday_id);
@@ -116,14 +116,14 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayMapping.toDomain(#vacholidaydto),'ehr-VACHOLIDAY-Save')")
-    @ApiOperation(value = "Save", tags = {"VACHOLIDAY" },  notes = "Save")
+    @ApiOperation(value = "保存节假日管理", tags = {"节假日管理" },  notes = "保存节假日管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidays/save")
     public ResponseEntity<Boolean> save(@RequestBody VACHOLIDAYDTO vacholidaydto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacholidayService.save(vacholidayMapping.toDomain(vacholidaydto)));
     }
 
     @PreAuthorize("hasPermission(this.vacholidayMapping.toDomain(#vacholidaydtos),'ehr-VACHOLIDAY-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"VACHOLIDAY" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存节假日管理", tags = {"节假日管理" },  notes = "批量保存节假日管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidays/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACHOLIDAYDTO> vacholidaydtos) {
         vacholidayService.saveBatch(vacholidayMapping.toDomain(vacholidaydtos));
@@ -131,7 +131,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayMapping.toDomain(#vacholidaydto),'ehr-VACHOLIDAY-Create')")
-    @ApiOperation(value = "Create", tags = {"VACHOLIDAY" },  notes = "Create")
+    @ApiOperation(value = "新建节假日管理", tags = {"节假日管理" },  notes = "新建节假日管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidays")
     @Transactional
     public ResponseEntity<VACHOLIDAYDTO> create(@RequestBody VACHOLIDAYDTO vacholidaydto) {
@@ -142,7 +142,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayMapping.toDomain(#vacholidaydtos),'ehr-VACHOLIDAY-Create')")
-    @ApiOperation(value = "createBatch", tags = {"VACHOLIDAY" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建节假日管理", tags = {"节假日管理" },  notes = "批量新建节假日管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidays/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACHOLIDAYDTO> vacholidaydtos) {
         vacholidayService.createBatch(vacholidayMapping.toDomain(vacholidaydtos));
@@ -150,7 +150,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-CheckTime-all')")
-    @ApiOperation(value = "校验开始时间、结束时间", tags = {"VACHOLIDAY" },  notes = "校验开始时间、结束时间")
+    @ApiOperation(value = "校验开始时间、结束时间", tags = {"节假日管理" },  notes = "校验开始时间、结束时间")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidays/{vacholiday_id}/checktime")
     @Transactional
     public ResponseEntity<VACHOLIDAYDTO> checkTime(@PathVariable("vacholiday_id") String vacholiday_id, @RequestBody VACHOLIDAYDTO vacholidaydto) {
@@ -162,7 +162,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"VACHOLIDAY" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"节假日管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacholidays/fetchdefault")
 	public ResponseEntity<List<VACHOLIDAYDTO>> fetchDefault(VACHOLIDAYSearchContext context) {
         Page<VACHOLIDAY> domains = vacholidayService.searchDefault(context) ;
@@ -175,7 +175,7 @@ public class VACHOLIDAYResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"VACHOLIDAY" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"节假日管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacholidays/searchdefault")
 	public ResponseEntity<Page<VACHOLIDAYDTO>> searchDefault(@RequestBody VACHOLIDAYSearchContext context) {
         Page<VACHOLIDAY> domains = vacholidayService.searchDefault(context) ;
@@ -183,7 +183,7 @@ public class VACHOLIDAYResource {
                 .body(new PageImpl(vacholidayMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-APPOINTJZBJJR-all')")
-    @ApiOperation(value = "引用局总部节假日ByVacHolidayRules", tags = {"VACHOLIDAY" },  notes = "引用局总部节假日ByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则节假日管理", tags = {"节假日管理" },  notes = "根据考勤规则节假日管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/{vacholiday_id}/appointjzbjjr")
     @Transactional
     public ResponseEntity<VACHOLIDAYDTO> aPPOINTJZBJJRByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacholiday_id") String vacholiday_id, @RequestBody VACHOLIDAYDTO vacholidaydto) {
@@ -195,7 +195,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayService.get(#vacholiday_id),'ehr-VACHOLIDAY-Update')")
-    @ApiOperation(value = "UpdateByVacHolidayRules", tags = {"VACHOLIDAY" },  notes = "UpdateByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则更新节假日管理", tags = {"节假日管理" },  notes = "根据考勤规则更新节假日管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/{vacholiday_id}")
     @Transactional
     public ResponseEntity<VACHOLIDAYDTO> updateByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacholiday_id") String vacholiday_id, @RequestBody VACHOLIDAYDTO vacholidaydto) {
@@ -208,7 +208,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayService.getVacholidayByEntities(this.vacholidayMapping.toDomain(#vacholidaydtos)),'ehr-VACHOLIDAY-Update')")
-    @ApiOperation(value = "UpdateBatchByVacHolidayRules", tags = {"VACHOLIDAY" },  notes = "UpdateBatchByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则批量更新节假日管理", tags = {"节假日管理" },  notes = "根据考勤规则批量更新节假日管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/batch")
     public ResponseEntity<Boolean> updateBatchByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody List<VACHOLIDAYDTO> vacholidaydtos) {
         List<VACHOLIDAY> domainlist=vacholidayMapping.toDomain(vacholidaydtos);
@@ -220,7 +220,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayService.get(#vacholiday_id),'ehr-VACHOLIDAY-Remove')")
-    @ApiOperation(value = "RemoveByVacHolidayRules", tags = {"VACHOLIDAY" },  notes = "RemoveByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则删除节假日管理", tags = {"节假日管理" },  notes = "根据考勤规则删除节假日管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/{vacholiday_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacholiday_id") String vacholiday_id) {
@@ -228,20 +228,20 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayService.getVacholidayByIds(#ids),'ehr-VACHOLIDAY-Remove')")
-    @ApiOperation(value = "RemoveBatchByVacHolidayRules", tags = {"VACHOLIDAY" },  notes = "RemoveBatchByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则批量删除节假日管理", tags = {"节假日管理" },  notes = "根据考勤规则批量删除节假日管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/batch")
     public ResponseEntity<Boolean> removeBatchByVacHolidayRules(@RequestBody List<String> ids) {
         vacholidayService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByVacHolidayRules", tags = {"VACHOLIDAY" },  notes = "CheckKeyByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则检查节假日管理", tags = {"节假日管理" },  notes = "根据考勤规则检查节假日管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/checkkey")
     public ResponseEntity<Boolean> checkKeyByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VACHOLIDAYDTO vacholidaydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacholidayService.checkKey(vacholidayMapping.toDomain(vacholidaydto)));
     }
 
-    @ApiOperation(value = "GetDraftByVacHolidayRules", tags = {"VACHOLIDAY" },  notes = "GetDraftByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则获取节假日管理草稿", tags = {"节假日管理" },  notes = "根据考勤规则获取节假日管理草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/getdraft")
     public ResponseEntity<VACHOLIDAYDTO> getDraftByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id) {
         VACHOLIDAY domain = new VACHOLIDAY();
@@ -250,7 +250,7 @@ public class VACHOLIDAYResource {
     }
 
     @PostAuthorize("hasPermission(this.vacholidayMapping.toDomain(returnObject.body),'ehr-VACHOLIDAY-Get')")
-    @ApiOperation(value = "GetByVacHolidayRules", tags = {"VACHOLIDAY" },  notes = "GetByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则获取节假日管理", tags = {"节假日管理" },  notes = "根据考勤规则获取节假日管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/{vacholiday_id}")
     public ResponseEntity<VACHOLIDAYDTO> getByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacholiday_id") String vacholiday_id) {
         VACHOLIDAY domain = vacholidayService.get(vacholiday_id);
@@ -259,7 +259,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayMapping.toDomain(#vacholidaydto),'ehr-VACHOLIDAY-Save')")
-    @ApiOperation(value = "SaveByVacHolidayRules", tags = {"VACHOLIDAY" },  notes = "SaveByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则保存节假日管理", tags = {"节假日管理" },  notes = "根据考勤规则保存节假日管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/save")
     public ResponseEntity<Boolean> saveByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VACHOLIDAYDTO vacholidaydto) {
         VACHOLIDAY domain = vacholidayMapping.toDomain(vacholidaydto);
@@ -268,7 +268,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayMapping.toDomain(#vacholidaydtos),'ehr-VACHOLIDAY-Save')")
-    @ApiOperation(value = "SaveBatchByVacHolidayRules", tags = {"VACHOLIDAY" },  notes = "SaveBatchByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则批量保存节假日管理", tags = {"节假日管理" },  notes = "根据考勤规则批量保存节假日管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/savebatch")
     public ResponseEntity<Boolean> saveBatchByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody List<VACHOLIDAYDTO> vacholidaydtos) {
         List<VACHOLIDAY> domainlist=vacholidayMapping.toDomain(vacholidaydtos);
@@ -280,7 +280,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayMapping.toDomain(#vacholidaydto),'ehr-VACHOLIDAY-Create')")
-    @ApiOperation(value = "CreateByVacHolidayRules", tags = {"VACHOLIDAY" },  notes = "CreateByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则建立节假日管理", tags = {"节假日管理" },  notes = "根据考勤规则建立节假日管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays")
     @Transactional
     public ResponseEntity<VACHOLIDAYDTO> createByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VACHOLIDAYDTO vacholidaydto) {
@@ -292,7 +292,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayMapping.toDomain(#vacholidaydtos),'ehr-VACHOLIDAY-Create')")
-    @ApiOperation(value = "createBatchByVacHolidayRules", tags = {"VACHOLIDAY" },  notes = "createBatchByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则批量建立节假日管理", tags = {"节假日管理" },  notes = "根据考勤规则批量建立节假日管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/batch")
     public ResponseEntity<Boolean> createBatchByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody List<VACHOLIDAYDTO> vacholidaydtos) {
         List<VACHOLIDAY> domainlist=vacholidayMapping.toDomain(vacholidaydtos);
@@ -304,7 +304,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-CheckTime-all')")
-    @ApiOperation(value = "校验开始时间、结束时间ByVacHolidayRules", tags = {"VACHOLIDAY" },  notes = "校验开始时间、结束时间ByVacHolidayRules")
+    @ApiOperation(value = "根据考勤规则节假日管理", tags = {"节假日管理" },  notes = "根据考勤规则节假日管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/{vacholiday_id}/checktime")
     @Transactional
     public ResponseEntity<VACHOLIDAYDTO> checkTimeByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacholiday_id") String vacholiday_id, @RequestBody VACHOLIDAYDTO vacholidaydto) {
@@ -316,7 +316,7 @@ public class VACHOLIDAYResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByVacHolidayRules", tags = {"VACHOLIDAY" } ,notes = "fetchDEFAULTByVacHolidayRules")
+	@ApiOperation(value = "根据考勤规则获取DEFAULT", tags = {"节假日管理" } ,notes = "根据考勤规则获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacholidayrules/{vacholidayrules_id}/vacholidays/fetchdefault")
 	public ResponseEntity<List<VACHOLIDAYDTO>> fetchVACHOLIDAYDefaultByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id,VACHOLIDAYSearchContext context) {
         context.setN_vacholidayrulesid_eq(vacholidayrules_id);
@@ -330,7 +330,7 @@ public class VACHOLIDAYResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACHOLIDAY-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByVacHolidayRules", tags = {"VACHOLIDAY" } ,notes = "searchDEFAULTByVacHolidayRules")
+	@ApiOperation(value = "根据考勤规则查询DEFAULT", tags = {"节假日管理" } ,notes = "根据考勤规则查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/vacholidayrules/{vacholidayrules_id}/vacholidays/searchdefault")
 	public ResponseEntity<Page<VACHOLIDAYDTO>> searchVACHOLIDAYDefaultByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VACHOLIDAYSearchContext context) {
         context.setN_vacholidayrulesid_eq(vacholidayrules_id);

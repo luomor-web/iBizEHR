@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.sal.service.ISalSubjectService;
 import cn.ibizlab.ehr.core.sal.filter.SalSubjectSearchContext;
 
 @Slf4j
-@Api(tags = {"SalSubject" })
+@Api(tags = {"财务科目" })
 @RestController("WebApi-salsubject")
 @RequestMapping("")
 public class SalSubjectResource {
@@ -46,35 +46,35 @@ public class SalSubjectResource {
     @Lazy
     public SalSubjectMapping salsubjectMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"SalSubject" },  notes = "GetDraft")
+    @ApiOperation(value = "获取财务科目草稿", tags = {"财务科目" },  notes = "获取财务科目草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/salsubjects/getdraft")
     public ResponseEntity<SalSubjectDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salsubjectMapping.toDto(salsubjectService.getDraft(new SalSubject())));
     }
 
     @PreAuthorize("hasPermission(this.salsubjectMapping.toDomain(#salsubjectdto),'ehr-SalSubject-Save')")
-    @ApiOperation(value = "Save", tags = {"SalSubject" },  notes = "Save")
+    @ApiOperation(value = "保存财务科目", tags = {"财务科目" },  notes = "保存财务科目")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsubjects/save")
     public ResponseEntity<Boolean> save(@RequestBody SalSubjectDTO salsubjectdto) {
         return ResponseEntity.status(HttpStatus.OK).body(salsubjectService.save(salsubjectMapping.toDomain(salsubjectdto)));
     }
 
     @PreAuthorize("hasPermission(this.salsubjectMapping.toDomain(#salsubjectdtos),'ehr-SalSubject-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SalSubject" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存财务科目", tags = {"财务科目" },  notes = "批量保存财务科目")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsubjects/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SalSubjectDTO> salsubjectdtos) {
         salsubjectService.saveBatch(salsubjectMapping.toDomain(salsubjectdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"SalSubject" },  notes = "CheckKey")
+    @ApiOperation(value = "检查财务科目", tags = {"财务科目" },  notes = "检查财务科目")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsubjects/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SalSubjectDTO salsubjectdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salsubjectService.checkKey(salsubjectMapping.toDomain(salsubjectdto)));
     }
 
     @PreAuthorize("hasPermission(this.salsubjectService.get(#salsubject_id),'ehr-SalSubject-Update')")
-    @ApiOperation(value = "Update", tags = {"SalSubject" },  notes = "Update")
+    @ApiOperation(value = "更新财务科目", tags = {"财务科目" },  notes = "更新财务科目")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salsubjects/{salsubject_id}")
     @Transactional
     public ResponseEntity<SalSubjectDTO> update(@PathVariable("salsubject_id") String salsubject_id, @RequestBody SalSubjectDTO salsubjectdto) {
@@ -86,7 +86,7 @@ public class SalSubjectResource {
     }
 
     @PreAuthorize("hasPermission(this.salsubjectService.getSalsubjectByEntities(this.salsubjectMapping.toDomain(#salsubjectdtos)),'ehr-SalSubject-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SalSubject" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新财务科目", tags = {"财务科目" },  notes = "批量更新财务科目")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salsubjects/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SalSubjectDTO> salsubjectdtos) {
         salsubjectService.updateBatch(salsubjectMapping.toDomain(salsubjectdtos));
@@ -94,7 +94,7 @@ public class SalSubjectResource {
     }
 
     @PreAuthorize("hasPermission(this.salsubjectService.get(#salsubject_id),'ehr-SalSubject-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SalSubject" },  notes = "Remove")
+    @ApiOperation(value = "删除财务科目", tags = {"财务科目" },  notes = "删除财务科目")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salsubjects/{salsubject_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("salsubject_id") String salsubject_id) {
@@ -102,7 +102,7 @@ public class SalSubjectResource {
     }
 
     @PreAuthorize("hasPermission(this.salsubjectService.getSalsubjectByIds(#ids),'ehr-SalSubject-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SalSubject" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除财务科目", tags = {"财务科目" },  notes = "批量删除财务科目")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salsubjects/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         salsubjectService.removeBatch(ids);
@@ -110,7 +110,7 @@ public class SalSubjectResource {
     }
 
     @PostAuthorize("hasPermission(this.salsubjectMapping.toDomain(returnObject.body),'ehr-SalSubject-Get')")
-    @ApiOperation(value = "Get", tags = {"SalSubject" },  notes = "Get")
+    @ApiOperation(value = "获取财务科目", tags = {"财务科目" },  notes = "获取财务科目")
 	@RequestMapping(method = RequestMethod.GET, value = "/salsubjects/{salsubject_id}")
     public ResponseEntity<SalSubjectDTO> get(@PathVariable("salsubject_id") String salsubject_id) {
         SalSubject domain = salsubjectService.get(salsubject_id);
@@ -119,7 +119,7 @@ public class SalSubjectResource {
     }
 
     @PreAuthorize("hasPermission(this.salsubjectMapping.toDomain(#salsubjectdto),'ehr-SalSubject-Create')")
-    @ApiOperation(value = "Create", tags = {"SalSubject" },  notes = "Create")
+    @ApiOperation(value = "新建财务科目", tags = {"财务科目" },  notes = "新建财务科目")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsubjects")
     @Transactional
     public ResponseEntity<SalSubjectDTO> create(@RequestBody SalSubjectDTO salsubjectdto) {
@@ -130,7 +130,7 @@ public class SalSubjectResource {
     }
 
     @PreAuthorize("hasPermission(this.salsubjectMapping.toDomain(#salsubjectdtos),'ehr-SalSubject-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SalSubject" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建财务科目", tags = {"财务科目" },  notes = "批量新建财务科目")
 	@RequestMapping(method = RequestMethod.POST, value = "/salsubjects/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SalSubjectDTO> salsubjectdtos) {
         salsubjectService.createBatch(salsubjectMapping.toDomain(salsubjectdtos));
@@ -138,7 +138,7 @@ public class SalSubjectResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalSubject-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SalSubject" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"财务科目" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/salsubjects/fetchdefault")
 	public ResponseEntity<List<SalSubjectDTO>> fetchDefault(SalSubjectSearchContext context) {
         Page<SalSubject> domains = salsubjectService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SalSubjectResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalSubject-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SalSubject" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"财务科目" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/salsubjects/searchdefault")
 	public ResponseEntity<Page<SalSubjectDTO>> searchDefault(@RequestBody SalSubjectSearchContext context) {
         Page<SalSubject> domains = salsubjectService.searchDefault(context) ;

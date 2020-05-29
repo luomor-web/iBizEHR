@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.par.service.IParJxbzglService;
 import cn.ibizlab.ehr.core.par.filter.ParJxbzglSearchContext;
 
 @Slf4j
-@Api(tags = {"ParJxbzgl" })
+@Api(tags = {"绩效标准管理" })
 @RestController("WebApi-parjxbzgl")
 @RequestMapping("")
 public class ParJxbzglResource {
@@ -47,7 +47,7 @@ public class ParJxbzglResource {
     public ParJxbzglMapping parjxbzglMapping;
 
     @PostAuthorize("hasPermission(this.parjxbzglMapping.toDomain(returnObject.body),'ehr-ParJxbzgl-Get')")
-    @ApiOperation(value = "Get", tags = {"ParJxbzgl" },  notes = "Get")
+    @ApiOperation(value = "获取绩效标准管理", tags = {"绩效标准管理" },  notes = "获取绩效标准管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/parjxbzgls/{parjxbzgl_id}")
     public ResponseEntity<ParJxbzglDTO> get(@PathVariable("parjxbzgl_id") String parjxbzgl_id) {
         ParJxbzgl domain = parjxbzglService.get(parjxbzgl_id);
@@ -55,21 +55,21 @@ public class ParJxbzglResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"ParJxbzgl" },  notes = "GetDraft")
+    @ApiOperation(value = "获取绩效标准管理草稿", tags = {"绩效标准管理" },  notes = "获取绩效标准管理草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/parjxbzgls/getdraft")
     public ResponseEntity<ParJxbzglDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(parjxbzglMapping.toDto(parjxbzglService.getDraft(new ParJxbzgl())));
     }
 
     @PreAuthorize("hasPermission(this.parjxbzglMapping.toDomain(#parjxbzgldto),'ehr-ParJxbzgl-Save')")
-    @ApiOperation(value = "Save", tags = {"ParJxbzgl" },  notes = "Save")
+    @ApiOperation(value = "保存绩效标准管理", tags = {"绩效标准管理" },  notes = "保存绩效标准管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxbzgls/save")
     public ResponseEntity<Boolean> save(@RequestBody ParJxbzglDTO parjxbzgldto) {
         return ResponseEntity.status(HttpStatus.OK).body(parjxbzglService.save(parjxbzglMapping.toDomain(parjxbzgldto)));
     }
 
     @PreAuthorize("hasPermission(this.parjxbzglMapping.toDomain(#parjxbzgldtos),'ehr-ParJxbzgl-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"ParJxbzgl" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存绩效标准管理", tags = {"绩效标准管理" },  notes = "批量保存绩效标准管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxbzgls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ParJxbzglDTO> parjxbzgldtos) {
         parjxbzglService.saveBatch(parjxbzglMapping.toDomain(parjxbzgldtos));
@@ -77,7 +77,7 @@ public class ParJxbzglResource {
     }
 
     @PreAuthorize("hasPermission(this.parjxbzglMapping.toDomain(#parjxbzgldto),'ehr-ParJxbzgl-Create')")
-    @ApiOperation(value = "Create", tags = {"ParJxbzgl" },  notes = "Create")
+    @ApiOperation(value = "新建绩效标准管理", tags = {"绩效标准管理" },  notes = "新建绩效标准管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxbzgls")
     @Transactional
     public ResponseEntity<ParJxbzglDTO> create(@RequestBody ParJxbzglDTO parjxbzgldto) {
@@ -88,7 +88,7 @@ public class ParJxbzglResource {
     }
 
     @PreAuthorize("hasPermission(this.parjxbzglMapping.toDomain(#parjxbzgldtos),'ehr-ParJxbzgl-Create')")
-    @ApiOperation(value = "createBatch", tags = {"ParJxbzgl" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建绩效标准管理", tags = {"绩效标准管理" },  notes = "批量新建绩效标准管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxbzgls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ParJxbzglDTO> parjxbzgldtos) {
         parjxbzglService.createBatch(parjxbzglMapping.toDomain(parjxbzgldtos));
@@ -96,7 +96,7 @@ public class ParJxbzglResource {
     }
 
     @PreAuthorize("hasPermission(this.parjxbzglService.get(#parjxbzgl_id),'ehr-ParJxbzgl-Update')")
-    @ApiOperation(value = "Update", tags = {"ParJxbzgl" },  notes = "Update")
+    @ApiOperation(value = "更新绩效标准管理", tags = {"绩效标准管理" },  notes = "更新绩效标准管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parjxbzgls/{parjxbzgl_id}")
     @Transactional
     public ResponseEntity<ParJxbzglDTO> update(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody ParJxbzglDTO parjxbzgldto) {
@@ -108,7 +108,7 @@ public class ParJxbzglResource {
     }
 
     @PreAuthorize("hasPermission(this.parjxbzglService.getParjxbzglByEntities(this.parjxbzglMapping.toDomain(#parjxbzgldtos)),'ehr-ParJxbzgl-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"ParJxbzgl" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新绩效标准管理", tags = {"绩效标准管理" },  notes = "批量更新绩效标准管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parjxbzgls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ParJxbzglDTO> parjxbzgldtos) {
         parjxbzglService.updateBatch(parjxbzglMapping.toDomain(parjxbzgldtos));
@@ -116,7 +116,7 @@ public class ParJxbzglResource {
     }
 
     @PreAuthorize("hasPermission(this.parjxbzglService.get(#parjxbzgl_id),'ehr-ParJxbzgl-Remove')")
-    @ApiOperation(value = "Remove", tags = {"ParJxbzgl" },  notes = "Remove")
+    @ApiOperation(value = "删除绩效标准管理", tags = {"绩效标准管理" },  notes = "删除绩效标准管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parjxbzgls/{parjxbzgl_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("parjxbzgl_id") String parjxbzgl_id) {
@@ -124,21 +124,21 @@ public class ParJxbzglResource {
     }
 
     @PreAuthorize("hasPermission(this.parjxbzglService.getParjxbzglByIds(#ids),'ehr-ParJxbzgl-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"ParJxbzgl" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除绩效标准管理", tags = {"绩效标准管理" },  notes = "批量删除绩效标准管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parjxbzgls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         parjxbzglService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"ParJxbzgl" },  notes = "CheckKey")
+    @ApiOperation(value = "检查绩效标准管理", tags = {"绩效标准管理" },  notes = "检查绩效标准管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxbzgls/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ParJxbzglDTO parjxbzgldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parjxbzglService.checkKey(parjxbzglMapping.toDomain(parjxbzgldto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParJxbzgl-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"ParJxbzgl" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"绩效标准管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/parjxbzgls/fetchdefault")
 	public ResponseEntity<List<ParJxbzglDTO>> fetchDefault(ParJxbzglSearchContext context) {
         Page<ParJxbzgl> domains = parjxbzglService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ParJxbzglResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParJxbzgl-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"ParJxbzgl" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"绩效标准管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/parjxbzgls/searchdefault")
 	public ResponseEntity<Page<ParJxbzglDTO>> searchDefault(@RequestBody ParJxbzglSearchContext context) {
         Page<ParJxbzgl> domains = parjxbzglService.searchDefault(context) ;

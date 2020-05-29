@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimArchivesRecordService;
 import cn.ibizlab.ehr.core.pim.filter.PimArchivesRecordSearchContext;
 
 @Slf4j
-@Api(tags = {"PimArchivesRecord" })
+@Api(tags = {"档案目录缺失记录" })
 @RestController("WebApi-pimarchivesrecord")
 @RequestMapping("")
 public class PimArchivesRecordResource {
@@ -47,7 +47,7 @@ public class PimArchivesRecordResource {
     public PimArchivesRecordMapping pimarchivesrecordMapping;
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordMapping.toDomain(#pimarchivesrecorddto),'ehr-PimArchivesRecord-Create')")
-    @ApiOperation(value = "Create", tags = {"PimArchivesRecord" },  notes = "Create")
+    @ApiOperation(value = "新建档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "新建档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesrecords")
     @Transactional
     public ResponseEntity<PimArchivesRecordDTO> create(@RequestBody PimArchivesRecordDTO pimarchivesrecorddto) {
@@ -58,7 +58,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordMapping.toDomain(#pimarchivesrecorddtos),'ehr-PimArchivesRecord-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimArchivesRecord" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "批量新建档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesrecords/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimArchivesRecordDTO> pimarchivesrecorddtos) {
         pimarchivesrecordService.createBatch(pimarchivesrecordMapping.toDomain(pimarchivesrecorddtos));
@@ -66,14 +66,14 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordMapping.toDomain(#pimarchivesrecorddto),'ehr-PimArchivesRecord-Save')")
-    @ApiOperation(value = "Save", tags = {"PimArchivesRecord" },  notes = "Save")
+    @ApiOperation(value = "保存档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "保存档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesrecords/save")
     public ResponseEntity<Boolean> save(@RequestBody PimArchivesRecordDTO pimarchivesrecorddto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesrecordService.save(pimarchivesrecordMapping.toDomain(pimarchivesrecorddto)));
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordMapping.toDomain(#pimarchivesrecorddtos),'ehr-PimArchivesRecord-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimArchivesRecord" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "批量保存档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesrecords/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimArchivesRecordDTO> pimarchivesrecorddtos) {
         pimarchivesrecordService.saveBatch(pimarchivesrecordMapping.toDomain(pimarchivesrecorddtos));
@@ -81,7 +81,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordService.get(#pimarchivesrecord_id),'ehr-PimArchivesRecord-Update')")
-    @ApiOperation(value = "Update", tags = {"PimArchivesRecord" },  notes = "Update")
+    @ApiOperation(value = "更新档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "更新档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchivesrecords/{pimarchivesrecord_id}")
     @Transactional
     public ResponseEntity<PimArchivesRecordDTO> update(@PathVariable("pimarchivesrecord_id") String pimarchivesrecord_id, @RequestBody PimArchivesRecordDTO pimarchivesrecorddto) {
@@ -93,21 +93,21 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordService.getPimarchivesrecordByEntities(this.pimarchivesrecordMapping.toDomain(#pimarchivesrecorddtos)),'ehr-PimArchivesRecord-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimArchivesRecord" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "批量更新档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchivesrecords/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimArchivesRecordDTO> pimarchivesrecorddtos) {
         pimarchivesrecordService.updateBatch(pimarchivesrecordMapping.toDomain(pimarchivesrecorddtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimArchivesRecord" },  notes = "CheckKey")
+    @ApiOperation(value = "检查档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "检查档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesrecords/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimArchivesRecordDTO pimarchivesrecorddto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarchivesrecordService.checkKey(pimarchivesrecordMapping.toDomain(pimarchivesrecorddto)));
     }
 
     @PostAuthorize("hasPermission(this.pimarchivesrecordMapping.toDomain(returnObject.body),'ehr-PimArchivesRecord-Get')")
-    @ApiOperation(value = "Get", tags = {"PimArchivesRecord" },  notes = "Get")
+    @ApiOperation(value = "获取档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "获取档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchivesrecords/{pimarchivesrecord_id}")
     public ResponseEntity<PimArchivesRecordDTO> get(@PathVariable("pimarchivesrecord_id") String pimarchivesrecord_id) {
         PimArchivesRecord domain = pimarchivesrecordService.get(pimarchivesrecord_id);
@@ -115,14 +115,14 @@ public class PimArchivesRecordResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimArchivesRecord" },  notes = "GetDraft")
+    @ApiOperation(value = "获取档案目录缺失记录草稿", tags = {"档案目录缺失记录" },  notes = "获取档案目录缺失记录草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchivesrecords/getdraft")
     public ResponseEntity<PimArchivesRecordDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesrecordMapping.toDto(pimarchivesrecordService.getDraft(new PimArchivesRecord())));
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordService.get(#pimarchivesrecord_id),'ehr-PimArchivesRecord-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimArchivesRecord" },  notes = "Remove")
+    @ApiOperation(value = "删除档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "删除档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchivesrecords/{pimarchivesrecord_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimarchivesrecord_id") String pimarchivesrecord_id) {
@@ -130,7 +130,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordService.getPimarchivesrecordByIds(#ids),'ehr-PimArchivesRecord-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimArchivesRecord" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "批量删除档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchivesrecords/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimarchivesrecordService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchivesRecord-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimArchivesRecord" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"档案目录缺失记录" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchivesrecords/fetchdefault")
 	public ResponseEntity<List<PimArchivesRecordDTO>> fetchDefault(PimArchivesRecordSearchContext context) {
         Page<PimArchivesRecord> domains = pimarchivesrecordService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimArchivesRecordResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchivesRecord-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimArchivesRecord" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案目录缺失记录" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchivesrecords/searchdefault")
 	public ResponseEntity<Page<PimArchivesRecordDTO>> searchDefault(@RequestBody PimArchivesRecordSearchContext context) {
         Page<PimArchivesRecord> domains = pimarchivesrecordService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PimArchivesRecordResource {
                 .body(new PageImpl(pimarchivesrecordMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pimarchivesrecordMapping.toDomain(#pimarchivesrecorddto),'ehr-PimArchivesRecord-Create')")
-    @ApiOperation(value = "CreateByPimArchives", tags = {"PimArchivesRecord" },  notes = "CreateByPimArchives")
+    @ApiOperation(value = "根据档案信息建立档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据档案信息建立档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesrecords")
     @Transactional
     public ResponseEntity<PimArchivesRecordDTO> createByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchivesRecordDTO pimarchivesrecorddto) {
@@ -171,7 +171,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordMapping.toDomain(#pimarchivesrecorddtos),'ehr-PimArchivesRecord-Create')")
-    @ApiOperation(value = "createBatchByPimArchives", tags = {"PimArchivesRecord" },  notes = "createBatchByPimArchives")
+    @ApiOperation(value = "根据档案信息批量建立档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据档案信息批量建立档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesrecords/batch")
     public ResponseEntity<Boolean> createBatchByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PimArchivesRecordDTO> pimarchivesrecorddtos) {
         List<PimArchivesRecord> domainlist=pimarchivesrecordMapping.toDomain(pimarchivesrecorddtos);
@@ -183,7 +183,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordMapping.toDomain(#pimarchivesrecorddto),'ehr-PimArchivesRecord-Save')")
-    @ApiOperation(value = "SaveByPimArchives", tags = {"PimArchivesRecord" },  notes = "SaveByPimArchives")
+    @ApiOperation(value = "根据档案信息保存档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据档案信息保存档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesrecords/save")
     public ResponseEntity<Boolean> saveByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchivesRecordDTO pimarchivesrecorddto) {
         PimArchivesRecord domain = pimarchivesrecordMapping.toDomain(pimarchivesrecorddto);
@@ -192,7 +192,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordMapping.toDomain(#pimarchivesrecorddtos),'ehr-PimArchivesRecord-Save')")
-    @ApiOperation(value = "SaveBatchByPimArchives", tags = {"PimArchivesRecord" },  notes = "SaveBatchByPimArchives")
+    @ApiOperation(value = "根据档案信息批量保存档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据档案信息批量保存档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesrecords/savebatch")
     public ResponseEntity<Boolean> saveBatchByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PimArchivesRecordDTO> pimarchivesrecorddtos) {
         List<PimArchivesRecord> domainlist=pimarchivesrecordMapping.toDomain(pimarchivesrecorddtos);
@@ -204,7 +204,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordService.get(#pimarchivesrecord_id),'ehr-PimArchivesRecord-Update')")
-    @ApiOperation(value = "UpdateByPimArchives", tags = {"PimArchivesRecord" },  notes = "UpdateByPimArchives")
+    @ApiOperation(value = "根据档案信息更新档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据档案信息更新档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchivesrecords/{pimarchivesrecord_id}")
     @Transactional
     public ResponseEntity<PimArchivesRecordDTO> updateByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesrecord_id") String pimarchivesrecord_id, @RequestBody PimArchivesRecordDTO pimarchivesrecorddto) {
@@ -217,7 +217,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordService.getPimarchivesrecordByEntities(this.pimarchivesrecordMapping.toDomain(#pimarchivesrecorddtos)),'ehr-PimArchivesRecord-Update')")
-    @ApiOperation(value = "UpdateBatchByPimArchives", tags = {"PimArchivesRecord" },  notes = "UpdateBatchByPimArchives")
+    @ApiOperation(value = "根据档案信息批量更新档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据档案信息批量更新档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchivesrecords/batch")
     public ResponseEntity<Boolean> updateBatchByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PimArchivesRecordDTO> pimarchivesrecorddtos) {
         List<PimArchivesRecord> domainlist=pimarchivesrecordMapping.toDomain(pimarchivesrecorddtos);
@@ -228,14 +228,14 @@ public class PimArchivesRecordResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByPimArchives", tags = {"PimArchivesRecord" },  notes = "CheckKeyByPimArchives")
+    @ApiOperation(value = "根据档案信息检查档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据档案信息检查档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesrecords/checkkey")
     public ResponseEntity<Boolean> checkKeyByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchivesRecordDTO pimarchivesrecorddto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarchivesrecordService.checkKey(pimarchivesrecordMapping.toDomain(pimarchivesrecorddto)));
     }
 
     @PostAuthorize("hasPermission(this.pimarchivesrecordMapping.toDomain(returnObject.body),'ehr-PimArchivesRecord-Get')")
-    @ApiOperation(value = "GetByPimArchives", tags = {"PimArchivesRecord" },  notes = "GetByPimArchives")
+    @ApiOperation(value = "根据档案信息获取档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据档案信息获取档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchives/{pimarchives_id}/pimarchivesrecords/{pimarchivesrecord_id}")
     public ResponseEntity<PimArchivesRecordDTO> getByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesrecord_id") String pimarchivesrecord_id) {
         PimArchivesRecord domain = pimarchivesrecordService.get(pimarchivesrecord_id);
@@ -243,7 +243,7 @@ public class PimArchivesRecordResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraftByPimArchives", tags = {"PimArchivesRecord" },  notes = "GetDraftByPimArchives")
+    @ApiOperation(value = "根据档案信息获取档案目录缺失记录草稿", tags = {"档案目录缺失记录" },  notes = "根据档案信息获取档案目录缺失记录草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pimarchives/{pimarchives_id}/pimarchivesrecords/getdraft")
     public ResponseEntity<PimArchivesRecordDTO> getDraftByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id) {
         PimArchivesRecord domain = new PimArchivesRecord();
@@ -252,7 +252,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordService.get(#pimarchivesrecord_id),'ehr-PimArchivesRecord-Remove')")
-    @ApiOperation(value = "RemoveByPimArchives", tags = {"PimArchivesRecord" },  notes = "RemoveByPimArchives")
+    @ApiOperation(value = "根据档案信息删除档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据档案信息删除档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchives/{pimarchives_id}/pimarchivesrecords/{pimarchivesrecord_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesrecord_id") String pimarchivesrecord_id) {
@@ -260,7 +260,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordService.getPimarchivesrecordByIds(#ids),'ehr-PimArchivesRecord-Remove')")
-    @ApiOperation(value = "RemoveBatchByPimArchives", tags = {"PimArchivesRecord" },  notes = "RemoveBatchByPimArchives")
+    @ApiOperation(value = "根据档案信息批量删除档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据档案信息批量删除档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchives/{pimarchives_id}/pimarchivesrecords/batch")
     public ResponseEntity<Boolean> removeBatchByPimArchives(@RequestBody List<String> ids) {
         pimarchivesrecordService.removeBatch(ids);
@@ -268,7 +268,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchivesRecord-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPimArchives", tags = {"PimArchivesRecord" } ,notes = "fetchDEFAULTByPimArchives")
+	@ApiOperation(value = "根据档案信息获取DEFAULT", tags = {"档案目录缺失记录" } ,notes = "根据档案信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/{pimarchives_id}/pimarchivesrecords/fetchdefault")
 	public ResponseEntity<List<PimArchivesRecordDTO>> fetchPimArchivesRecordDefaultByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id,PimArchivesRecordSearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
@@ -282,7 +282,7 @@ public class PimArchivesRecordResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchivesRecord-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPimArchives", tags = {"PimArchivesRecord" } ,notes = "searchDEFAULTByPimArchives")
+	@ApiOperation(value = "根据档案信息查询DEFAULT", tags = {"档案目录缺失记录" } ,notes = "根据档案信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchives/{pimarchives_id}/pimarchivesrecords/searchdefault")
 	public ResponseEntity<Page<PimArchivesRecordDTO>> searchPimArchivesRecordDefaultByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchivesRecordSearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
@@ -291,7 +291,7 @@ public class PimArchivesRecordResource {
                 .body(new PageImpl(pimarchivesrecordMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pimarchivesrecordMapping.toDomain(#pimarchivesrecorddto),'ehr-PimArchivesRecord-Create')")
-    @ApiOperation(value = "CreateByPimPersonPimArchives", tags = {"PimArchivesRecord" },  notes = "CreateByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息建立档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据人员信息档案信息建立档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesrecords")
     @Transactional
     public ResponseEntity<PimArchivesRecordDTO> createByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchivesRecordDTO pimarchivesrecorddto) {
@@ -303,7 +303,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordMapping.toDomain(#pimarchivesrecorddtos),'ehr-PimArchivesRecord-Create')")
-    @ApiOperation(value = "createBatchByPimPersonPimArchives", tags = {"PimArchivesRecord" },  notes = "createBatchByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息批量建立档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据人员信息档案信息批量建立档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesrecords/batch")
     public ResponseEntity<Boolean> createBatchByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PimArchivesRecordDTO> pimarchivesrecorddtos) {
         List<PimArchivesRecord> domainlist=pimarchivesrecordMapping.toDomain(pimarchivesrecorddtos);
@@ -315,7 +315,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordMapping.toDomain(#pimarchivesrecorddto),'ehr-PimArchivesRecord-Save')")
-    @ApiOperation(value = "SaveByPimPersonPimArchives", tags = {"PimArchivesRecord" },  notes = "SaveByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息保存档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据人员信息档案信息保存档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesrecords/save")
     public ResponseEntity<Boolean> saveByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchivesRecordDTO pimarchivesrecorddto) {
         PimArchivesRecord domain = pimarchivesrecordMapping.toDomain(pimarchivesrecorddto);
@@ -324,7 +324,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordMapping.toDomain(#pimarchivesrecorddtos),'ehr-PimArchivesRecord-Save')")
-    @ApiOperation(value = "SaveBatchByPimPersonPimArchives", tags = {"PimArchivesRecord" },  notes = "SaveBatchByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息批量保存档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据人员信息档案信息批量保存档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesrecords/savebatch")
     public ResponseEntity<Boolean> saveBatchByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PimArchivesRecordDTO> pimarchivesrecorddtos) {
         List<PimArchivesRecord> domainlist=pimarchivesrecordMapping.toDomain(pimarchivesrecorddtos);
@@ -336,7 +336,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordService.get(#pimarchivesrecord_id),'ehr-PimArchivesRecord-Update')")
-    @ApiOperation(value = "UpdateByPimPersonPimArchives", tags = {"PimArchivesRecord" },  notes = "UpdateByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息更新档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据人员信息档案信息更新档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesrecords/{pimarchivesrecord_id}")
     @Transactional
     public ResponseEntity<PimArchivesRecordDTO> updateByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesrecord_id") String pimarchivesrecord_id, @RequestBody PimArchivesRecordDTO pimarchivesrecorddto) {
@@ -349,7 +349,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordService.getPimarchivesrecordByEntities(this.pimarchivesrecordMapping.toDomain(#pimarchivesrecorddtos)),'ehr-PimArchivesRecord-Update')")
-    @ApiOperation(value = "UpdateBatchByPimPersonPimArchives", tags = {"PimArchivesRecord" },  notes = "UpdateBatchByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息批量更新档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据人员信息档案信息批量更新档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesrecords/batch")
     public ResponseEntity<Boolean> updateBatchByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PimArchivesRecordDTO> pimarchivesrecorddtos) {
         List<PimArchivesRecord> domainlist=pimarchivesrecordMapping.toDomain(pimarchivesrecorddtos);
@@ -360,14 +360,14 @@ public class PimArchivesRecordResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByPimPersonPimArchives", tags = {"PimArchivesRecord" },  notes = "CheckKeyByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息检查档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据人员信息档案信息检查档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesrecords/checkkey")
     public ResponseEntity<Boolean> checkKeyByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchivesRecordDTO pimarchivesrecorddto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarchivesrecordService.checkKey(pimarchivesrecordMapping.toDomain(pimarchivesrecorddto)));
     }
 
     @PostAuthorize("hasPermission(this.pimarchivesrecordMapping.toDomain(returnObject.body),'ehr-PimArchivesRecord-Get')")
-    @ApiOperation(value = "GetByPimPersonPimArchives", tags = {"PimArchivesRecord" },  notes = "GetByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息获取档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据人员信息档案信息获取档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesrecords/{pimarchivesrecord_id}")
     public ResponseEntity<PimArchivesRecordDTO> getByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesrecord_id") String pimarchivesrecord_id) {
         PimArchivesRecord domain = pimarchivesrecordService.get(pimarchivesrecord_id);
@@ -375,7 +375,7 @@ public class PimArchivesRecordResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraftByPimPersonPimArchives", tags = {"PimArchivesRecord" },  notes = "GetDraftByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息获取档案目录缺失记录草稿", tags = {"档案目录缺失记录" },  notes = "根据人员信息档案信息获取档案目录缺失记录草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesrecords/getdraft")
     public ResponseEntity<PimArchivesRecordDTO> getDraftByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id) {
         PimArchivesRecord domain = new PimArchivesRecord();
@@ -384,7 +384,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordService.get(#pimarchivesrecord_id),'ehr-PimArchivesRecord-Remove')")
-    @ApiOperation(value = "RemoveByPimPersonPimArchives", tags = {"PimArchivesRecord" },  notes = "RemoveByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息删除档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据人员信息档案信息删除档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesrecords/{pimarchivesrecord_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesrecord_id") String pimarchivesrecord_id) {
@@ -392,7 +392,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesrecordService.getPimarchivesrecordByIds(#ids),'ehr-PimArchivesRecord-Remove')")
-    @ApiOperation(value = "RemoveBatchByPimPersonPimArchives", tags = {"PimArchivesRecord" },  notes = "RemoveBatchByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息批量删除档案目录缺失记录", tags = {"档案目录缺失记录" },  notes = "根据人员信息档案信息批量删除档案目录缺失记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesrecords/batch")
     public ResponseEntity<Boolean> removeBatchByPimPersonPimArchives(@RequestBody List<String> ids) {
         pimarchivesrecordService.removeBatch(ids);
@@ -400,7 +400,7 @@ public class PimArchivesRecordResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchivesRecord-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPimPersonPimArchives", tags = {"PimArchivesRecord" } ,notes = "fetchDEFAULTByPimPersonPimArchives")
+	@ApiOperation(value = "根据人员信息档案信息获取DEFAULT", tags = {"档案目录缺失记录" } ,notes = "根据人员信息档案信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesrecords/fetchdefault")
 	public ResponseEntity<List<PimArchivesRecordDTO>> fetchPimArchivesRecordDefaultByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id,PimArchivesRecordSearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
@@ -414,7 +414,7 @@ public class PimArchivesRecordResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchivesRecord-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPimPersonPimArchives", tags = {"PimArchivesRecord" } ,notes = "searchDEFAULTByPimPersonPimArchives")
+	@ApiOperation(value = "根据人员信息档案信息查询DEFAULT", tags = {"档案目录缺失记录" } ,notes = "根据人员信息档案信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesrecords/searchdefault")
 	public ResponseEntity<Page<PimArchivesRecordDTO>> searchPimArchivesRecordDefaultByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchivesRecordSearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITrmTrainBuapplyService;
 import cn.ibizlab.ehr.core.trm.filter.TrmTrainBuapplySearchContext;
 
 @Slf4j
-@Api(tags = {"TrmTrainBuapply" })
+@Api(tags = {"教育经费" })
 @RestController("WebApi-trmtrainbuapply")
 @RequestMapping("")
 public class TrmTrainBuapplyResource {
@@ -47,7 +47,7 @@ public class TrmTrainBuapplyResource {
     public TrmTrainBuapplyMapping trmtrainbuapplyMapping;
 
     @PreAuthorize("hasPermission(this.trmtrainbuapplyMapping.toDomain(#trmtrainbuapplydto),'ehr-TrmTrainBuapply-Create')")
-    @ApiOperation(value = "Create", tags = {"TrmTrainBuapply" },  notes = "Create")
+    @ApiOperation(value = "新建教育经费", tags = {"教育经费" },  notes = "新建教育经费")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainbuapplies")
     @Transactional
     public ResponseEntity<TrmTrainBuapplyDTO> create(@RequestBody TrmTrainBuapplyDTO trmtrainbuapplydto) {
@@ -58,7 +58,7 @@ public class TrmTrainBuapplyResource {
     }
 
     @PreAuthorize("hasPermission(this.trmtrainbuapplyMapping.toDomain(#trmtrainbuapplydtos),'ehr-TrmTrainBuapply-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TrmTrainBuapply" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建教育经费", tags = {"教育经费" },  notes = "批量新建教育经费")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainbuapplies/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmTrainBuapplyDTO> trmtrainbuapplydtos) {
         trmtrainbuapplyService.createBatch(trmtrainbuapplyMapping.toDomain(trmtrainbuapplydtos));
@@ -66,7 +66,7 @@ public class TrmTrainBuapplyResource {
     }
 
     @PreAuthorize("hasPermission(this.trmtrainbuapplyService.get(#trmtrainbuapply_id),'ehr-TrmTrainBuapply-Update')")
-    @ApiOperation(value = "Update", tags = {"TrmTrainBuapply" },  notes = "Update")
+    @ApiOperation(value = "更新教育经费", tags = {"教育经费" },  notes = "更新教育经费")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainbuapplies/{trmtrainbuapply_id}")
     @Transactional
     public ResponseEntity<TrmTrainBuapplyDTO> update(@PathVariable("trmtrainbuapply_id") String trmtrainbuapply_id, @RequestBody TrmTrainBuapplyDTO trmtrainbuapplydto) {
@@ -78,21 +78,21 @@ public class TrmTrainBuapplyResource {
     }
 
     @PreAuthorize("hasPermission(this.trmtrainbuapplyService.getTrmtrainbuapplyByEntities(this.trmtrainbuapplyMapping.toDomain(#trmtrainbuapplydtos)),'ehr-TrmTrainBuapply-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TrmTrainBuapply" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新教育经费", tags = {"教育经费" },  notes = "批量更新教育经费")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainbuapplies/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TrmTrainBuapplyDTO> trmtrainbuapplydtos) {
         trmtrainbuapplyService.updateBatch(trmtrainbuapplyMapping.toDomain(trmtrainbuapplydtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"TrmTrainBuapply" },  notes = "GetDraft")
+    @ApiOperation(value = "获取教育经费草稿", tags = {"教育经费" },  notes = "获取教育经费草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainbuapplies/getdraft")
     public ResponseEntity<TrmTrainBuapplyDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrainbuapplyMapping.toDto(trmtrainbuapplyService.getDraft(new TrmTrainBuapply())));
     }
 
     @PostAuthorize("hasPermission(this.trmtrainbuapplyMapping.toDomain(returnObject.body),'ehr-TrmTrainBuapply-Get')")
-    @ApiOperation(value = "Get", tags = {"TrmTrainBuapply" },  notes = "Get")
+    @ApiOperation(value = "获取教育经费", tags = {"教育经费" },  notes = "获取教育经费")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainbuapplies/{trmtrainbuapply_id}")
     public ResponseEntity<TrmTrainBuapplyDTO> get(@PathVariable("trmtrainbuapply_id") String trmtrainbuapply_id) {
         TrmTrainBuapply domain = trmtrainbuapplyService.get(trmtrainbuapply_id);
@@ -100,14 +100,14 @@ public class TrmTrainBuapplyResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TrmTrainBuapply" },  notes = "CheckKey")
+    @ApiOperation(value = "检查教育经费", tags = {"教育经费" },  notes = "检查教育经费")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainbuapplies/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmTrainBuapplyDTO trmtrainbuapplydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmtrainbuapplyService.checkKey(trmtrainbuapplyMapping.toDomain(trmtrainbuapplydto)));
     }
 
     @PreAuthorize("hasPermission(this.trmtrainbuapplyService.get(#trmtrainbuapply_id),'ehr-TrmTrainBuapply-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TrmTrainBuapply" },  notes = "Remove")
+    @ApiOperation(value = "删除教育经费", tags = {"教育经费" },  notes = "删除教育经费")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainbuapplies/{trmtrainbuapply_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trmtrainbuapply_id") String trmtrainbuapply_id) {
@@ -115,7 +115,7 @@ public class TrmTrainBuapplyResource {
     }
 
     @PreAuthorize("hasPermission(this.trmtrainbuapplyService.getTrmtrainbuapplyByIds(#ids),'ehr-TrmTrainBuapply-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TrmTrainBuapply" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除教育经费", tags = {"教育经费" },  notes = "批量删除教育经费")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainbuapplies/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmtrainbuapplyService.removeBatch(ids);
@@ -123,14 +123,14 @@ public class TrmTrainBuapplyResource {
     }
 
     @PreAuthorize("hasPermission(this.trmtrainbuapplyMapping.toDomain(#trmtrainbuapplydto),'ehr-TrmTrainBuapply-Save')")
-    @ApiOperation(value = "Save", tags = {"TrmTrainBuapply" },  notes = "Save")
+    @ApiOperation(value = "保存教育经费", tags = {"教育经费" },  notes = "保存教育经费")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainbuapplies/save")
     public ResponseEntity<Boolean> save(@RequestBody TrmTrainBuapplyDTO trmtrainbuapplydto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmtrainbuapplyService.save(trmtrainbuapplyMapping.toDomain(trmtrainbuapplydto)));
     }
 
     @PreAuthorize("hasPermission(this.trmtrainbuapplyMapping.toDomain(#trmtrainbuapplydtos),'ehr-TrmTrainBuapply-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TrmTrainBuapply" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存教育经费", tags = {"教育经费" },  notes = "批量保存教育经费")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainbuapplies/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TrmTrainBuapplyDTO> trmtrainbuapplydtos) {
         trmtrainbuapplyService.saveBatch(trmtrainbuapplyMapping.toDomain(trmtrainbuapplydtos));
@@ -138,7 +138,7 @@ public class TrmTrainBuapplyResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainBuapply-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TrmTrainBuapply" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"教育经费" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmtrainbuapplies/fetchdefault")
 	public ResponseEntity<List<TrmTrainBuapplyDTO>> fetchDefault(TrmTrainBuapplySearchContext context) {
         Page<TrmTrainBuapply> domains = trmtrainbuapplyService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmTrainBuapplyResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainBuapply-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TrmTrainBuapply" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"教育经费" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmtrainbuapplies/searchdefault")
 	public ResponseEntity<Page<TrmTrainBuapplyDTO>> searchDefault(@RequestBody TrmTrainBuapplySearchContext context) {
         Page<TrmTrainBuapply> domains = trmtrainbuapplyService.searchDefault(context) ;

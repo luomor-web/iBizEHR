@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.par.service.IPARBMFZJYXService;
 import cn.ibizlab.ehr.core.par.filter.PARBMFZJYXSearchContext;
 
 @Slf4j
-@Api(tags = {"PARBMFZJYX" })
+@Api(tags = {"通知选择部门副职及以下" })
 @RestController("WebApi-parbmfzjyx")
 @RequestMapping("")
 public class PARBMFZJYXResource {
@@ -47,28 +47,28 @@ public class PARBMFZJYXResource {
     public PARBMFZJYXMapping parbmfzjyxMapping;
 
     @PreAuthorize("hasPermission(this.parbmfzjyxMapping.toDomain(#parbmfzjyxdto),'ehr-PARBMFZJYX-Save')")
-    @ApiOperation(value = "Save", tags = {"PARBMFZJYX" },  notes = "Save")
+    @ApiOperation(value = "保存通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "保存通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.POST, value = "/parbmfzjyxes/save")
     public ResponseEntity<Boolean> save(@RequestBody PARBMFZJYXDTO parbmfzjyxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(parbmfzjyxService.save(parbmfzjyxMapping.toDomain(parbmfzjyxdto)));
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxMapping.toDomain(#parbmfzjyxdtos),'ehr-PARBMFZJYX-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PARBMFZJYX" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "批量保存通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.POST, value = "/parbmfzjyxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PARBMFZJYXDTO> parbmfzjyxdtos) {
         parbmfzjyxService.saveBatch(parbmfzjyxMapping.toDomain(parbmfzjyxdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PARBMFZJYX" },  notes = "GetDraft")
+    @ApiOperation(value = "获取通知选择部门副职及以下草稿", tags = {"通知选择部门副职及以下" },  notes = "获取通知选择部门副职及以下草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/parbmfzjyxes/getdraft")
     public ResponseEntity<PARBMFZJYXDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(parbmfzjyxMapping.toDto(parbmfzjyxService.getDraft(new PARBMFZJYX())));
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxMapping.toDomain(#parbmfzjyxdto),'ehr-PARBMFZJYX-Create')")
-    @ApiOperation(value = "Create", tags = {"PARBMFZJYX" },  notes = "Create")
+    @ApiOperation(value = "新建通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "新建通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.POST, value = "/parbmfzjyxes")
     @Transactional
     public ResponseEntity<PARBMFZJYXDTO> create(@RequestBody PARBMFZJYXDTO parbmfzjyxdto) {
@@ -79,21 +79,21 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxMapping.toDomain(#parbmfzjyxdtos),'ehr-PARBMFZJYX-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PARBMFZJYX" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "批量新建通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.POST, value = "/parbmfzjyxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PARBMFZJYXDTO> parbmfzjyxdtos) {
         parbmfzjyxService.createBatch(parbmfzjyxMapping.toDomain(parbmfzjyxdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PARBMFZJYX" },  notes = "CheckKey")
+    @ApiOperation(value = "检查通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "检查通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.POST, value = "/parbmfzjyxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PARBMFZJYXDTO parbmfzjyxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parbmfzjyxService.checkKey(parbmfzjyxMapping.toDomain(parbmfzjyxdto)));
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxService.get(#parbmfzjyx_id),'ehr-PARBMFZJYX-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PARBMFZJYX" },  notes = "Remove")
+    @ApiOperation(value = "删除通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "删除通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parbmfzjyxes/{parbmfzjyx_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("parbmfzjyx_id") String parbmfzjyx_id) {
@@ -101,7 +101,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxService.getParbmfzjyxByIds(#ids),'ehr-PARBMFZJYX-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PARBMFZJYX" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "批量删除通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parbmfzjyxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         parbmfzjyxService.removeBatch(ids);
@@ -109,7 +109,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxService.get(#parbmfzjyx_id),'ehr-PARBMFZJYX-Update')")
-    @ApiOperation(value = "Update", tags = {"PARBMFZJYX" },  notes = "Update")
+    @ApiOperation(value = "更新通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "更新通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parbmfzjyxes/{parbmfzjyx_id}")
     @Transactional
     public ResponseEntity<PARBMFZJYXDTO> update(@PathVariable("parbmfzjyx_id") String parbmfzjyx_id, @RequestBody PARBMFZJYXDTO parbmfzjyxdto) {
@@ -121,7 +121,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxService.getParbmfzjyxByEntities(this.parbmfzjyxMapping.toDomain(#parbmfzjyxdtos)),'ehr-PARBMFZJYX-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PARBMFZJYX" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "批量更新通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parbmfzjyxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PARBMFZJYXDTO> parbmfzjyxdtos) {
         parbmfzjyxService.updateBatch(parbmfzjyxMapping.toDomain(parbmfzjyxdtos));
@@ -129,7 +129,7 @@ public class PARBMFZJYXResource {
     }
 
     @PostAuthorize("hasPermission(this.parbmfzjyxMapping.toDomain(returnObject.body),'ehr-PARBMFZJYX-Get')")
-    @ApiOperation(value = "Get", tags = {"PARBMFZJYX" },  notes = "Get")
+    @ApiOperation(value = "获取通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "获取通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.GET, value = "/parbmfzjyxes/{parbmfzjyx_id}")
     public ResponseEntity<PARBMFZJYXDTO> get(@PathVariable("parbmfzjyx_id") String parbmfzjyx_id) {
         PARBMFZJYX domain = parbmfzjyxService.get(parbmfzjyx_id);
@@ -138,7 +138,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARBMFZJYX-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PARBMFZJYX" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"通知选择部门副职及以下" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/parbmfzjyxes/fetchdefault")
 	public ResponseEntity<List<PARBMFZJYXDTO>> fetchDefault(PARBMFZJYXSearchContext context) {
         Page<PARBMFZJYX> domains = parbmfzjyxService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PARBMFZJYXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARBMFZJYX-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PARBMFZJYX" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"通知选择部门副职及以下" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/parbmfzjyxes/searchdefault")
 	public ResponseEntity<Page<PARBMFZJYXDTO>> searchDefault(@RequestBody PARBMFZJYXSearchContext context) {
         Page<PARBMFZJYX> domains = parbmfzjyxService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PARBMFZJYXResource {
                 .body(new PageImpl(parbmfzjyxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.parbmfzjyxMapping.toDomain(#parbmfzjyxdto),'ehr-PARBMFZJYX-Save')")
-    @ApiOperation(value = "SaveByParTzgg", tags = {"PARBMFZJYX" },  notes = "SaveByParTzgg")
+    @ApiOperation(value = "根据通知发布保存通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据通知发布保存通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/{partzgg_id}/parbmfzjyxes/save")
     public ResponseEntity<Boolean> saveByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @RequestBody PARBMFZJYXDTO parbmfzjyxdto) {
         PARBMFZJYX domain = parbmfzjyxMapping.toDomain(parbmfzjyxdto);
@@ -168,7 +168,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxMapping.toDomain(#parbmfzjyxdtos),'ehr-PARBMFZJYX-Save')")
-    @ApiOperation(value = "SaveBatchByParTzgg", tags = {"PARBMFZJYX" },  notes = "SaveBatchByParTzgg")
+    @ApiOperation(value = "根据通知发布批量保存通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据通知发布批量保存通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/{partzgg_id}/parbmfzjyxes/savebatch")
     public ResponseEntity<Boolean> saveBatchByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @RequestBody List<PARBMFZJYXDTO> parbmfzjyxdtos) {
         List<PARBMFZJYX> domainlist=parbmfzjyxMapping.toDomain(parbmfzjyxdtos);
@@ -179,7 +179,7 @@ public class PARBMFZJYXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByParTzgg", tags = {"PARBMFZJYX" },  notes = "GetDraftByParTzgg")
+    @ApiOperation(value = "根据通知发布获取通知选择部门副职及以下草稿", tags = {"通知选择部门副职及以下" },  notes = "根据通知发布获取通知选择部门副职及以下草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/partzggs/{partzgg_id}/parbmfzjyxes/getdraft")
     public ResponseEntity<PARBMFZJYXDTO> getDraftByParTzgg(@PathVariable("partzgg_id") String partzgg_id) {
         PARBMFZJYX domain = new PARBMFZJYX();
@@ -188,7 +188,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxMapping.toDomain(#parbmfzjyxdto),'ehr-PARBMFZJYX-Create')")
-    @ApiOperation(value = "CreateByParTzgg", tags = {"PARBMFZJYX" },  notes = "CreateByParTzgg")
+    @ApiOperation(value = "根据通知发布建立通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据通知发布建立通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/{partzgg_id}/parbmfzjyxes")
     @Transactional
     public ResponseEntity<PARBMFZJYXDTO> createByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @RequestBody PARBMFZJYXDTO parbmfzjyxdto) {
@@ -200,7 +200,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxMapping.toDomain(#parbmfzjyxdtos),'ehr-PARBMFZJYX-Create')")
-    @ApiOperation(value = "createBatchByParTzgg", tags = {"PARBMFZJYX" },  notes = "createBatchByParTzgg")
+    @ApiOperation(value = "根据通知发布批量建立通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据通知发布批量建立通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/{partzgg_id}/parbmfzjyxes/batch")
     public ResponseEntity<Boolean> createBatchByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @RequestBody List<PARBMFZJYXDTO> parbmfzjyxdtos) {
         List<PARBMFZJYX> domainlist=parbmfzjyxMapping.toDomain(parbmfzjyxdtos);
@@ -211,14 +211,14 @@ public class PARBMFZJYXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByParTzgg", tags = {"PARBMFZJYX" },  notes = "CheckKeyByParTzgg")
+    @ApiOperation(value = "根据通知发布检查通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据通知发布检查通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/{partzgg_id}/parbmfzjyxes/checkkey")
     public ResponseEntity<Boolean> checkKeyByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @RequestBody PARBMFZJYXDTO parbmfzjyxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parbmfzjyxService.checkKey(parbmfzjyxMapping.toDomain(parbmfzjyxdto)));
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxService.get(#parbmfzjyx_id),'ehr-PARBMFZJYX-Remove')")
-    @ApiOperation(value = "RemoveByParTzgg", tags = {"PARBMFZJYX" },  notes = "RemoveByParTzgg")
+    @ApiOperation(value = "根据通知发布删除通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据通知发布删除通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/partzggs/{partzgg_id}/parbmfzjyxes/{parbmfzjyx_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @PathVariable("parbmfzjyx_id") String parbmfzjyx_id) {
@@ -226,7 +226,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxService.getParbmfzjyxByIds(#ids),'ehr-PARBMFZJYX-Remove')")
-    @ApiOperation(value = "RemoveBatchByParTzgg", tags = {"PARBMFZJYX" },  notes = "RemoveBatchByParTzgg")
+    @ApiOperation(value = "根据通知发布批量删除通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据通知发布批量删除通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/partzggs/{partzgg_id}/parbmfzjyxes/batch")
     public ResponseEntity<Boolean> removeBatchByParTzgg(@RequestBody List<String> ids) {
         parbmfzjyxService.removeBatch(ids);
@@ -234,7 +234,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxService.get(#parbmfzjyx_id),'ehr-PARBMFZJYX-Update')")
-    @ApiOperation(value = "UpdateByParTzgg", tags = {"PARBMFZJYX" },  notes = "UpdateByParTzgg")
+    @ApiOperation(value = "根据通知发布更新通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据通知发布更新通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.PUT, value = "/partzggs/{partzgg_id}/parbmfzjyxes/{parbmfzjyx_id}")
     @Transactional
     public ResponseEntity<PARBMFZJYXDTO> updateByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @PathVariable("parbmfzjyx_id") String parbmfzjyx_id, @RequestBody PARBMFZJYXDTO parbmfzjyxdto) {
@@ -247,7 +247,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxService.getParbmfzjyxByEntities(this.parbmfzjyxMapping.toDomain(#parbmfzjyxdtos)),'ehr-PARBMFZJYX-Update')")
-    @ApiOperation(value = "UpdateBatchByParTzgg", tags = {"PARBMFZJYX" },  notes = "UpdateBatchByParTzgg")
+    @ApiOperation(value = "根据通知发布批量更新通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据通知发布批量更新通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.PUT, value = "/partzggs/{partzgg_id}/parbmfzjyxes/batch")
     public ResponseEntity<Boolean> updateBatchByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @RequestBody List<PARBMFZJYXDTO> parbmfzjyxdtos) {
         List<PARBMFZJYX> domainlist=parbmfzjyxMapping.toDomain(parbmfzjyxdtos);
@@ -259,7 +259,7 @@ public class PARBMFZJYXResource {
     }
 
     @PostAuthorize("hasPermission(this.parbmfzjyxMapping.toDomain(returnObject.body),'ehr-PARBMFZJYX-Get')")
-    @ApiOperation(value = "GetByParTzgg", tags = {"PARBMFZJYX" },  notes = "GetByParTzgg")
+    @ApiOperation(value = "根据通知发布获取通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据通知发布获取通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.GET, value = "/partzggs/{partzgg_id}/parbmfzjyxes/{parbmfzjyx_id}")
     public ResponseEntity<PARBMFZJYXDTO> getByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @PathVariable("parbmfzjyx_id") String parbmfzjyx_id) {
         PARBMFZJYX domain = parbmfzjyxService.get(parbmfzjyx_id);
@@ -268,7 +268,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARBMFZJYX-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByParTzgg", tags = {"PARBMFZJYX" } ,notes = "fetchDEFAULTByParTzgg")
+	@ApiOperation(value = "根据通知发布获取DEFAULT", tags = {"通知选择部门副职及以下" } ,notes = "根据通知发布获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/partzggs/{partzgg_id}/parbmfzjyxes/fetchdefault")
 	public ResponseEntity<List<PARBMFZJYXDTO>> fetchPARBMFZJYXDefaultByParTzgg(@PathVariable("partzgg_id") String partzgg_id,PARBMFZJYXSearchContext context) {
         context.setN_partzggid_eq(partzgg_id);
@@ -282,7 +282,7 @@ public class PARBMFZJYXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARBMFZJYX-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByParTzgg", tags = {"PARBMFZJYX" } ,notes = "searchDEFAULTByParTzgg")
+	@ApiOperation(value = "根据通知发布查询DEFAULT", tags = {"通知选择部门副职及以下" } ,notes = "根据通知发布查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/partzggs/{partzgg_id}/parbmfzjyxes/searchdefault")
 	public ResponseEntity<Page<PARBMFZJYXDTO>> searchPARBMFZJYXDefaultByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @RequestBody PARBMFZJYXSearchContext context) {
         context.setN_partzggid_eq(partzgg_id);
@@ -291,7 +291,7 @@ public class PARBMFZJYXResource {
                 .body(new PageImpl(parbmfzjyxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.parbmfzjyxMapping.toDomain(#parbmfzjyxdto),'ehr-PARBMFZJYX-Save')")
-    @ApiOperation(value = "SaveByPimPerson", tags = {"PARBMFZJYX" },  notes = "SaveByPimPerson")
+    @ApiOperation(value = "根据人员信息保存通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据人员信息保存通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/parbmfzjyxes/save")
     public ResponseEntity<Boolean> saveByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PARBMFZJYXDTO parbmfzjyxdto) {
         PARBMFZJYX domain = parbmfzjyxMapping.toDomain(parbmfzjyxdto);
@@ -300,7 +300,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxMapping.toDomain(#parbmfzjyxdtos),'ehr-PARBMFZJYX-Save')")
-    @ApiOperation(value = "SaveBatchByPimPerson", tags = {"PARBMFZJYX" },  notes = "SaveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量保存通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据人员信息批量保存通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/parbmfzjyxes/savebatch")
     public ResponseEntity<Boolean> saveBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PARBMFZJYXDTO> parbmfzjyxdtos) {
         List<PARBMFZJYX> domainlist=parbmfzjyxMapping.toDomain(parbmfzjyxdtos);
@@ -311,7 +311,7 @@ public class PARBMFZJYXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPimPerson", tags = {"PARBMFZJYX" },  notes = "GetDraftByPimPerson")
+    @ApiOperation(value = "根据人员信息获取通知选择部门副职及以下草稿", tags = {"通知选择部门副职及以下" },  notes = "根据人员信息获取通知选择部门副职及以下草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/parbmfzjyxes/getdraft")
     public ResponseEntity<PARBMFZJYXDTO> getDraftByPimPerson(@PathVariable("pimperson_id") String pimperson_id) {
         PARBMFZJYX domain = new PARBMFZJYX();
@@ -320,7 +320,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxMapping.toDomain(#parbmfzjyxdto),'ehr-PARBMFZJYX-Create')")
-    @ApiOperation(value = "CreateByPimPerson", tags = {"PARBMFZJYX" },  notes = "CreateByPimPerson")
+    @ApiOperation(value = "根据人员信息建立通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据人员信息建立通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/parbmfzjyxes")
     @Transactional
     public ResponseEntity<PARBMFZJYXDTO> createByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PARBMFZJYXDTO parbmfzjyxdto) {
@@ -332,7 +332,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxMapping.toDomain(#parbmfzjyxdtos),'ehr-PARBMFZJYX-Create')")
-    @ApiOperation(value = "createBatchByPimPerson", tags = {"PARBMFZJYX" },  notes = "createBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量建立通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据人员信息批量建立通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/parbmfzjyxes/batch")
     public ResponseEntity<Boolean> createBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PARBMFZJYXDTO> parbmfzjyxdtos) {
         List<PARBMFZJYX> domainlist=parbmfzjyxMapping.toDomain(parbmfzjyxdtos);
@@ -343,14 +343,14 @@ public class PARBMFZJYXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByPimPerson", tags = {"PARBMFZJYX" },  notes = "CheckKeyByPimPerson")
+    @ApiOperation(value = "根据人员信息检查通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据人员信息检查通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/parbmfzjyxes/checkkey")
     public ResponseEntity<Boolean> checkKeyByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PARBMFZJYXDTO parbmfzjyxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parbmfzjyxService.checkKey(parbmfzjyxMapping.toDomain(parbmfzjyxdto)));
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxService.get(#parbmfzjyx_id),'ehr-PARBMFZJYX-Remove')")
-    @ApiOperation(value = "RemoveByPimPerson", tags = {"PARBMFZJYX" },  notes = "RemoveByPimPerson")
+    @ApiOperation(value = "根据人员信息删除通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据人员信息删除通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/parbmfzjyxes/{parbmfzjyx_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("parbmfzjyx_id") String parbmfzjyx_id) {
@@ -358,7 +358,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxService.getParbmfzjyxByIds(#ids),'ehr-PARBMFZJYX-Remove')")
-    @ApiOperation(value = "RemoveBatchByPimPerson", tags = {"PARBMFZJYX" },  notes = "RemoveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量删除通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据人员信息批量删除通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/parbmfzjyxes/batch")
     public ResponseEntity<Boolean> removeBatchByPimPerson(@RequestBody List<String> ids) {
         parbmfzjyxService.removeBatch(ids);
@@ -366,7 +366,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxService.get(#parbmfzjyx_id),'ehr-PARBMFZJYX-Update')")
-    @ApiOperation(value = "UpdateByPimPerson", tags = {"PARBMFZJYX" },  notes = "UpdateByPimPerson")
+    @ApiOperation(value = "根据人员信息更新通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据人员信息更新通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/parbmfzjyxes/{parbmfzjyx_id}")
     @Transactional
     public ResponseEntity<PARBMFZJYXDTO> updateByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("parbmfzjyx_id") String parbmfzjyx_id, @RequestBody PARBMFZJYXDTO parbmfzjyxdto) {
@@ -379,7 +379,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasPermission(this.parbmfzjyxService.getParbmfzjyxByEntities(this.parbmfzjyxMapping.toDomain(#parbmfzjyxdtos)),'ehr-PARBMFZJYX-Update')")
-    @ApiOperation(value = "UpdateBatchByPimPerson", tags = {"PARBMFZJYX" },  notes = "UpdateBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量更新通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据人员信息批量更新通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/parbmfzjyxes/batch")
     public ResponseEntity<Boolean> updateBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PARBMFZJYXDTO> parbmfzjyxdtos) {
         List<PARBMFZJYX> domainlist=parbmfzjyxMapping.toDomain(parbmfzjyxdtos);
@@ -391,7 +391,7 @@ public class PARBMFZJYXResource {
     }
 
     @PostAuthorize("hasPermission(this.parbmfzjyxMapping.toDomain(returnObject.body),'ehr-PARBMFZJYX-Get')")
-    @ApiOperation(value = "GetByPimPerson", tags = {"PARBMFZJYX" },  notes = "GetByPimPerson")
+    @ApiOperation(value = "根据人员信息获取通知选择部门副职及以下", tags = {"通知选择部门副职及以下" },  notes = "根据人员信息获取通知选择部门副职及以下")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/parbmfzjyxes/{parbmfzjyx_id}")
     public ResponseEntity<PARBMFZJYXDTO> getByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("parbmfzjyx_id") String parbmfzjyx_id) {
         PARBMFZJYX domain = parbmfzjyxService.get(parbmfzjyx_id);
@@ -400,7 +400,7 @@ public class PARBMFZJYXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARBMFZJYX-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPimPerson", tags = {"PARBMFZJYX" } ,notes = "fetchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息获取DEFAULT", tags = {"通知选择部门副职及以下" } ,notes = "根据人员信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/parbmfzjyxes/fetchdefault")
 	public ResponseEntity<List<PARBMFZJYXDTO>> fetchPARBMFZJYXDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PARBMFZJYXSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -414,7 +414,7 @@ public class PARBMFZJYXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARBMFZJYX-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPimPerson", tags = {"PARBMFZJYX" } ,notes = "searchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息查询DEFAULT", tags = {"通知选择部门副职及以下" } ,notes = "根据人员信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/parbmfzjyxes/searchdefault")
 	public ResponseEntity<Page<PARBMFZJYXDTO>> searchPARBMFZJYXDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PARBMFZJYXSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.sal.service.ISALRULEService;
 import cn.ibizlab.ehr.core.sal.filter.SALRULESearchContext;
 
 @Slf4j
-@Api(tags = {"SALRULE" })
+@Api(tags = {"薪酬规则" })
 @RestController("WebApi-salrule")
 @RequestMapping("")
 public class SALRULEResource {
@@ -46,14 +46,14 @@ public class SALRULEResource {
     @Lazy
     public SALRULEMapping salruleMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"SALRULE" },  notes = "GetDraft")
+    @ApiOperation(value = "获取薪酬规则草稿", tags = {"薪酬规则" },  notes = "获取薪酬规则草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/salrules/getdraft")
     public ResponseEntity<SALRULEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salruleMapping.toDto(salruleService.getDraft(new SALRULE())));
     }
 
     @PreAuthorize("hasPermission(this.salruleService.get(#salrule_id),'ehr-SALRULE-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SALRULE" },  notes = "Remove")
+    @ApiOperation(value = "删除薪酬规则", tags = {"薪酬规则" },  notes = "删除薪酬规则")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salrules/{salrule_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("salrule_id") String salrule_id) {
@@ -61,7 +61,7 @@ public class SALRULEResource {
     }
 
     @PreAuthorize("hasPermission(this.salruleService.getSalruleByIds(#ids),'ehr-SALRULE-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SALRULE" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除薪酬规则", tags = {"薪酬规则" },  notes = "批量删除薪酬规则")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salrules/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         salruleService.removeBatch(ids);
@@ -69,7 +69,7 @@ public class SALRULEResource {
     }
 
     @PostAuthorize("hasPermission(this.salruleMapping.toDomain(returnObject.body),'ehr-SALRULE-Get')")
-    @ApiOperation(value = "Get", tags = {"SALRULE" },  notes = "Get")
+    @ApiOperation(value = "获取薪酬规则", tags = {"薪酬规则" },  notes = "获取薪酬规则")
 	@RequestMapping(method = RequestMethod.GET, value = "/salrules/{salrule_id}")
     public ResponseEntity<SALRULEDTO> get(@PathVariable("salrule_id") String salrule_id) {
         SALRULE domain = salruleService.get(salrule_id);
@@ -78,7 +78,7 @@ public class SALRULEResource {
     }
 
     @PreAuthorize("hasPermission(this.salruleMapping.toDomain(#salruledto),'ehr-SALRULE-Create')")
-    @ApiOperation(value = "Create", tags = {"SALRULE" },  notes = "Create")
+    @ApiOperation(value = "新建薪酬规则", tags = {"薪酬规则" },  notes = "新建薪酬规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/salrules")
     @Transactional
     public ResponseEntity<SALRULEDTO> create(@RequestBody SALRULEDTO salruledto) {
@@ -89,7 +89,7 @@ public class SALRULEResource {
     }
 
     @PreAuthorize("hasPermission(this.salruleMapping.toDomain(#salruledtos),'ehr-SALRULE-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SALRULE" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建薪酬规则", tags = {"薪酬规则" },  notes = "批量新建薪酬规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/salrules/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SALRULEDTO> salruledtos) {
         salruleService.createBatch(salruleMapping.toDomain(salruledtos));
@@ -97,7 +97,7 @@ public class SALRULEResource {
     }
 
     @PreAuthorize("hasPermission(this.salruleService.get(#salrule_id),'ehr-SALRULE-Update')")
-    @ApiOperation(value = "Update", tags = {"SALRULE" },  notes = "Update")
+    @ApiOperation(value = "更新薪酬规则", tags = {"薪酬规则" },  notes = "更新薪酬规则")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salrules/{salrule_id}")
     @Transactional
     public ResponseEntity<SALRULEDTO> update(@PathVariable("salrule_id") String salrule_id, @RequestBody SALRULEDTO salruledto) {
@@ -109,7 +109,7 @@ public class SALRULEResource {
     }
 
     @PreAuthorize("hasPermission(this.salruleService.getSalruleByEntities(this.salruleMapping.toDomain(#salruledtos)),'ehr-SALRULE-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SALRULE" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新薪酬规则", tags = {"薪酬规则" },  notes = "批量更新薪酬规则")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salrules/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SALRULEDTO> salruledtos) {
         salruleService.updateBatch(salruleMapping.toDomain(salruledtos));
@@ -117,28 +117,28 @@ public class SALRULEResource {
     }
 
     @PreAuthorize("hasPermission(this.salruleMapping.toDomain(#salruledto),'ehr-SALRULE-Save')")
-    @ApiOperation(value = "Save", tags = {"SALRULE" },  notes = "Save")
+    @ApiOperation(value = "保存薪酬规则", tags = {"薪酬规则" },  notes = "保存薪酬规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/salrules/save")
     public ResponseEntity<Boolean> save(@RequestBody SALRULEDTO salruledto) {
         return ResponseEntity.status(HttpStatus.OK).body(salruleService.save(salruleMapping.toDomain(salruledto)));
     }
 
     @PreAuthorize("hasPermission(this.salruleMapping.toDomain(#salruledtos),'ehr-SALRULE-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SALRULE" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存薪酬规则", tags = {"薪酬规则" },  notes = "批量保存薪酬规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/salrules/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SALRULEDTO> salruledtos) {
         salruleService.saveBatch(salruleMapping.toDomain(salruledtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"SALRULE" },  notes = "CheckKey")
+    @ApiOperation(value = "检查薪酬规则", tags = {"薪酬规则" },  notes = "检查薪酬规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/salrules/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SALRULEDTO salruledto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salruleService.checkKey(salruleMapping.toDomain(salruledto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALRULE-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SALRULE" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"薪酬规则" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/salrules/fetchdefault")
 	public ResponseEntity<List<SALRULEDTO>> fetchDefault(SALRULESearchContext context) {
         Page<SALRULE> domains = salruleService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SALRULEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SALRULE-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SALRULE" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"薪酬规则" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/salrules/searchdefault")
 	public ResponseEntity<Page<SALRULEDTO>> searchDefault(@RequestBody SALRULESearchContext context) {
         Page<SALRULE> domains = salruleService.searchDefault(context) ;

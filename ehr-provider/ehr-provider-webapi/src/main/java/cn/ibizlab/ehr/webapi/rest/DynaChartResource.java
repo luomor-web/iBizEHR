@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.r7rt_dyna.service.IDynaChartService;
 import cn.ibizlab.ehr.core.r7rt_dyna.filter.DynaChartSearchContext;
 
 @Slf4j
-@Api(tags = {"DynaChart" })
+@Api(tags = {"动态图表" })
 @RestController("WebApi-dynachart")
 @RequestMapping("")
 public class DynaChartResource {
@@ -46,7 +46,7 @@ public class DynaChartResource {
     @Lazy
     public DynaChartMapping dynachartMapping;
 
-    @ApiOperation(value = "Get", tags = {"DynaChart" },  notes = "Get")
+    @ApiOperation(value = "获取动态图表", tags = {"动态图表" },  notes = "获取动态图表")
 	@RequestMapping(method = RequestMethod.GET, value = "/dynacharts/{dynachart_id}")
     public ResponseEntity<DynaChartDTO> get(@PathVariable("dynachart_id") String dynachart_id) {
         DynaChart domain = dynachartService.get(dynachart_id);
@@ -54,19 +54,19 @@ public class DynaChartResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"DynaChart" },  notes = "GetDraft")
+    @ApiOperation(value = "获取动态图表草稿", tags = {"动态图表" },  notes = "获取动态图表草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/dynacharts/getdraft")
     public ResponseEntity<DynaChartDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(dynachartMapping.toDto(dynachartService.getDraft(new DynaChart())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"DynaChart" },  notes = "CheckKey")
+    @ApiOperation(value = "检查动态图表", tags = {"动态图表" },  notes = "检查动态图表")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DynaChartDTO dynachartdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(dynachartService.checkKey(dynachartMapping.toDomain(dynachartdto)));
     }
 
-    @ApiOperation(value = "Update", tags = {"DynaChart" },  notes = "Update")
+    @ApiOperation(value = "更新动态图表", tags = {"动态图表" },  notes = "更新动态图表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dynacharts/{dynachart_id}")
 
     public ResponseEntity<DynaChartDTO> update(@PathVariable("dynachart_id") String dynachart_id, @RequestBody DynaChartDTO dynachartdto) {
@@ -77,28 +77,28 @@ public class DynaChartResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "UpdateBatch", tags = {"DynaChart" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新动态图表", tags = {"动态图表" },  notes = "批量更新动态图表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dynacharts/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DynaChartDTO> dynachartdtos) {
         dynachartService.updateBatch(dynachartMapping.toDomain(dynachartdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "Remove", tags = {"DynaChart" },  notes = "Remove")
+    @ApiOperation(value = "删除动态图表", tags = {"动态图表" },  notes = "删除动态图表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dynacharts/{dynachart_id}")
 
     public ResponseEntity<Boolean> remove(@PathVariable("dynachart_id") String dynachart_id) {
          return ResponseEntity.status(HttpStatus.OK).body(dynachartService.remove(dynachart_id));
     }
 
-    @ApiOperation(value = "RemoveBatch", tags = {"DynaChart" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除动态图表", tags = {"动态图表" },  notes = "批量删除动态图表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dynacharts/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         dynachartService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "Create", tags = {"DynaChart" },  notes = "Create")
+    @ApiOperation(value = "新建动态图表", tags = {"动态图表" },  notes = "新建动态图表")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts")
 
     public ResponseEntity<DynaChartDTO> create(@RequestBody DynaChartDTO dynachartdto) {
@@ -108,27 +108,27 @@ public class DynaChartResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "createBatch", tags = {"DynaChart" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建动态图表", tags = {"动态图表" },  notes = "批量新建动态图表")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DynaChartDTO> dynachartdtos) {
         dynachartService.createBatch(dynachartMapping.toDomain(dynachartdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "Save", tags = {"DynaChart" },  notes = "Save")
+    @ApiOperation(value = "保存动态图表", tags = {"动态图表" },  notes = "保存动态图表")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts/save")
     public ResponseEntity<Boolean> save(@RequestBody DynaChartDTO dynachartdto) {
         return ResponseEntity.status(HttpStatus.OK).body(dynachartService.save(dynachartMapping.toDomain(dynachartdto)));
     }
 
-    @ApiOperation(value = "SaveBatch", tags = {"DynaChart" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存动态图表", tags = {"动态图表" },  notes = "批量保存动态图表")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynacharts/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<DynaChartDTO> dynachartdtos) {
         dynachartService.saveBatch(dynachartMapping.toDomain(dynachartdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-	@ApiOperation(value = "fetchDEFAULT", tags = {"DynaChart" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"动态图表" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/dynacharts/fetchdefault")
 	public ResponseEntity<List<DynaChartDTO>> fetchDefault(DynaChartSearchContext context) {
         Page<DynaChart> domains = dynachartService.searchDefault(context) ;
@@ -140,7 +140,7 @@ public class DynaChartResource {
                 .body(list);
 	}
 
-	@ApiOperation(value = "searchDEFAULT", tags = {"DynaChart" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"动态图表" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/dynacharts/searchdefault")
 	public ResponseEntity<Page<DynaChartDTO>> searchDefault(@RequestBody DynaChartSearchContext context) {
         Page<DynaChart> domains = dynachartService.searchDefault(context) ;

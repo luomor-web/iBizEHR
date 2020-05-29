@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITrmTrainDataService;
 import cn.ibizlab.ehr.core.trm.filter.TrmTrainDataSearchContext;
 
 @Slf4j
-@Api(tags = {"TrmTrainData" })
+@Api(tags = {"培训资料" })
 @RestController("WebApi-trmtraindata")
 @RequestMapping("")
 public class TrmTrainDataResource {
@@ -47,14 +47,14 @@ public class TrmTrainDataResource {
     public TrmTrainDataMapping trmtraindataMapping;
 
     @PreAuthorize("hasPermission(this.trmtraindataMapping.toDomain(#trmtraindatadto),'ehr-TrmTrainData-Save')")
-    @ApiOperation(value = "Save", tags = {"TrmTrainData" },  notes = "Save")
+    @ApiOperation(value = "保存培训资料", tags = {"培训资料" },  notes = "保存培训资料")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraindata/save")
     public ResponseEntity<Boolean> save(@RequestBody TrmTrainDataDTO trmtraindatadto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmtraindataService.save(trmtraindataMapping.toDomain(trmtraindatadto)));
     }
 
     @PreAuthorize("hasPermission(this.trmtraindataMapping.toDomain(#trmtraindatadtos),'ehr-TrmTrainData-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TrmTrainData" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存培训资料", tags = {"培训资料" },  notes = "批量保存培训资料")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraindata/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TrmTrainDataDTO> trmtraindatadtos) {
         trmtraindataService.saveBatch(trmtraindataMapping.toDomain(trmtraindatadtos));
@@ -62,7 +62,7 @@ public class TrmTrainDataResource {
     }
 
     @PreAuthorize("hasPermission(this.trmtraindataService.get(#trmtraindata_id),'ehr-TrmTrainData-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TrmTrainData" },  notes = "Remove")
+    @ApiOperation(value = "删除培训资料", tags = {"培训资料" },  notes = "删除培训资料")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtraindata/{trmtraindata_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trmtraindata_id") String trmtraindata_id) {
@@ -70,7 +70,7 @@ public class TrmTrainDataResource {
     }
 
     @PreAuthorize("hasPermission(this.trmtraindataService.getTrmtraindataByIds(#ids),'ehr-TrmTrainData-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TrmTrainData" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除培训资料", tags = {"培训资料" },  notes = "批量删除培训资料")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtraindata/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmtraindataService.removeBatch(ids);
@@ -78,7 +78,7 @@ public class TrmTrainDataResource {
     }
 
     @PostAuthorize("hasPermission(this.trmtraindataMapping.toDomain(returnObject.body),'ehr-TrmTrainData-Get')")
-    @ApiOperation(value = "Get", tags = {"TrmTrainData" },  notes = "Get")
+    @ApiOperation(value = "获取培训资料", tags = {"培训资料" },  notes = "获取培训资料")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtraindata/{trmtraindata_id}")
     public ResponseEntity<TrmTrainDataDTO> get(@PathVariable("trmtraindata_id") String trmtraindata_id) {
         TrmTrainData domain = trmtraindataService.get(trmtraindata_id);
@@ -86,14 +86,14 @@ public class TrmTrainDataResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"TrmTrainData" },  notes = "GetDraft")
+    @ApiOperation(value = "获取培训资料草稿", tags = {"培训资料" },  notes = "获取培训资料草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtraindata/getdraft")
     public ResponseEntity<TrmTrainDataDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmtraindataMapping.toDto(trmtraindataService.getDraft(new TrmTrainData())));
     }
 
     @PreAuthorize("hasPermission(this.trmtraindataService.get(#trmtraindata_id),'ehr-TrmTrainData-Update')")
-    @ApiOperation(value = "Update", tags = {"TrmTrainData" },  notes = "Update")
+    @ApiOperation(value = "更新培训资料", tags = {"培训资料" },  notes = "更新培训资料")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtraindata/{trmtraindata_id}")
     @Transactional
     public ResponseEntity<TrmTrainDataDTO> update(@PathVariable("trmtraindata_id") String trmtraindata_id, @RequestBody TrmTrainDataDTO trmtraindatadto) {
@@ -105,21 +105,21 @@ public class TrmTrainDataResource {
     }
 
     @PreAuthorize("hasPermission(this.trmtraindataService.getTrmtraindataByEntities(this.trmtraindataMapping.toDomain(#trmtraindatadtos)),'ehr-TrmTrainData-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TrmTrainData" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新培训资料", tags = {"培训资料" },  notes = "批量更新培训资料")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmtraindata/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TrmTrainDataDTO> trmtraindatadtos) {
         trmtraindataService.updateBatch(trmtraindataMapping.toDomain(trmtraindatadtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TrmTrainData" },  notes = "CheckKey")
+    @ApiOperation(value = "检查培训资料", tags = {"培训资料" },  notes = "检查培训资料")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraindata/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmTrainDataDTO trmtraindatadto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmtraindataService.checkKey(trmtraindataMapping.toDomain(trmtraindatadto)));
     }
 
     @PreAuthorize("hasPermission(this.trmtraindataMapping.toDomain(#trmtraindatadto),'ehr-TrmTrainData-Create')")
-    @ApiOperation(value = "Create", tags = {"TrmTrainData" },  notes = "Create")
+    @ApiOperation(value = "新建培训资料", tags = {"培训资料" },  notes = "新建培训资料")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraindata")
     @Transactional
     public ResponseEntity<TrmTrainDataDTO> create(@RequestBody TrmTrainDataDTO trmtraindatadto) {
@@ -130,7 +130,7 @@ public class TrmTrainDataResource {
     }
 
     @PreAuthorize("hasPermission(this.trmtraindataMapping.toDomain(#trmtraindatadtos),'ehr-TrmTrainData-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TrmTrainData" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建培训资料", tags = {"培训资料" },  notes = "批量新建培训资料")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtraindata/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmTrainDataDTO> trmtraindatadtos) {
         trmtraindataService.createBatch(trmtraindataMapping.toDomain(trmtraindatadtos));
@@ -138,7 +138,7 @@ public class TrmTrainDataResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainData-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TrmTrainData" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"培训资料" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmtraindata/fetchdefault")
 	public ResponseEntity<List<TrmTrainDataDTO>> fetchDefault(TrmTrainDataSearchContext context) {
         Page<TrmTrainData> domains = trmtraindataService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmTrainDataResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainData-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TrmTrainData" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"培训资料" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmtraindata/searchdefault")
 	public ResponseEntity<Page<TrmTrainDataDTO>> searchDefault(@RequestBody TrmTrainDataSearchContext context) {
         Page<TrmTrainData> domains = trmtraindataService.searchDefault(context) ;

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmWorkResumeService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmWorkResumeSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmWorkResume" })
+@Api(tags = {"工作履历" })
 @RestController("WebApi-pcmworkresume")
 @RequestMapping("")
 public class PcmWorkResumeResource {
@@ -47,7 +47,7 @@ public class PcmWorkResumeResource {
     public PcmWorkResumeMapping pcmworkresumeMapping;
 
     @PreAuthorize("hasPermission(this.pcmworkresumeMapping.toDomain(#pcmworkresumedto),'ehr-PcmWorkResume-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmWorkResume" },  notes = "Create")
+    @ApiOperation(value = "新建工作履历", tags = {"工作履历" },  notes = "新建工作履历")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmworkresumes")
     @Transactional
     public ResponseEntity<PcmWorkResumeDTO> create(@RequestBody PcmWorkResumeDTO pcmworkresumedto) {
@@ -58,28 +58,28 @@ public class PcmWorkResumeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmworkresumeMapping.toDomain(#pcmworkresumedtos),'ehr-PcmWorkResume-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmWorkResume" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建工作履历", tags = {"工作履历" },  notes = "批量新建工作履历")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmworkresumes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmWorkResumeDTO> pcmworkresumedtos) {
         pcmworkresumeService.createBatch(pcmworkresumeMapping.toDomain(pcmworkresumedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmWorkResume" },  notes = "GetDraft")
+    @ApiOperation(value = "获取工作履历草稿", tags = {"工作履历" },  notes = "获取工作履历草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmworkresumes/getdraft")
     public ResponseEntity<PcmWorkResumeDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmworkresumeMapping.toDto(pcmworkresumeService.getDraft(new PcmWorkResume())));
     }
 
     @PreAuthorize("hasPermission(this.pcmworkresumeMapping.toDomain(#pcmworkresumedto),'ehr-PcmWorkResume-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmWorkResume" },  notes = "Save")
+    @ApiOperation(value = "保存工作履历", tags = {"工作履历" },  notes = "保存工作履历")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmworkresumes/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmWorkResumeDTO pcmworkresumedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmworkresumeService.save(pcmworkresumeMapping.toDomain(pcmworkresumedto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmworkresumeMapping.toDomain(#pcmworkresumedtos),'ehr-PcmWorkResume-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmWorkResume" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存工作履历", tags = {"工作履历" },  notes = "批量保存工作履历")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmworkresumes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmWorkResumeDTO> pcmworkresumedtos) {
         pcmworkresumeService.saveBatch(pcmworkresumeMapping.toDomain(pcmworkresumedtos));
@@ -87,7 +87,7 @@ public class PcmWorkResumeResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmworkresumeMapping.toDomain(returnObject.body),'ehr-PcmWorkResume-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmWorkResume" },  notes = "Get")
+    @ApiOperation(value = "获取工作履历", tags = {"工作履历" },  notes = "获取工作履历")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmworkresumes/{pcmworkresume_id}")
     public ResponseEntity<PcmWorkResumeDTO> get(@PathVariable("pcmworkresume_id") String pcmworkresume_id) {
         PcmWorkResume domain = pcmworkresumeService.get(pcmworkresume_id);
@@ -96,7 +96,7 @@ public class PcmWorkResumeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmworkresumeService.get(#pcmworkresume_id),'ehr-PcmWorkResume-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmWorkResume" },  notes = "Update")
+    @ApiOperation(value = "更新工作履历", tags = {"工作履历" },  notes = "更新工作履历")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmworkresumes/{pcmworkresume_id}")
     @Transactional
     public ResponseEntity<PcmWorkResumeDTO> update(@PathVariable("pcmworkresume_id") String pcmworkresume_id, @RequestBody PcmWorkResumeDTO pcmworkresumedto) {
@@ -108,21 +108,21 @@ public class PcmWorkResumeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmworkresumeService.getPcmworkresumeByEntities(this.pcmworkresumeMapping.toDomain(#pcmworkresumedtos)),'ehr-PcmWorkResume-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmWorkResume" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新工作履历", tags = {"工作履历" },  notes = "批量更新工作履历")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmworkresumes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmWorkResumeDTO> pcmworkresumedtos) {
         pcmworkresumeService.updateBatch(pcmworkresumeMapping.toDomain(pcmworkresumedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmWorkResume" },  notes = "CheckKey")
+    @ApiOperation(value = "检查工作履历", tags = {"工作履历" },  notes = "检查工作履历")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmworkresumes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmWorkResumeDTO pcmworkresumedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmworkresumeService.checkKey(pcmworkresumeMapping.toDomain(pcmworkresumedto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmworkresumeService.get(#pcmworkresume_id),'ehr-PcmWorkResume-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmWorkResume" },  notes = "Remove")
+    @ApiOperation(value = "删除工作履历", tags = {"工作履历" },  notes = "删除工作履历")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmworkresumes/{pcmworkresume_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmworkresume_id") String pcmworkresume_id) {
@@ -130,7 +130,7 @@ public class PcmWorkResumeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmworkresumeService.getPcmworkresumeByIds(#ids),'ehr-PcmWorkResume-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmWorkResume" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除工作履历", tags = {"工作履历" },  notes = "批量删除工作履历")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmworkresumes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmworkresumeService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class PcmWorkResumeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmWorkResume-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmWorkResume" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"工作履历" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmworkresumes/fetchdefault")
 	public ResponseEntity<List<PcmWorkResumeDTO>> fetchDefault(PcmWorkResumeSearchContext context) {
         Page<PcmWorkResume> domains = pcmworkresumeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmWorkResumeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmWorkResume-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmWorkResume" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"工作履历" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmworkresumes/searchdefault")
 	public ResponseEntity<Page<PcmWorkResumeDTO>> searchDefault(@RequestBody PcmWorkResumeSearchContext context) {
         Page<PcmWorkResume> domains = pcmworkresumeService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PcmWorkResumeResource {
                 .body(new PageImpl(pcmworkresumeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pcmworkresumeMapping.toDomain(#pcmworkresumedto),'ehr-PcmWorkResume-Create')")
-    @ApiOperation(value = "CreateByPcmProfile", tags = {"PcmWorkResume" },  notes = "CreateByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息建立工作履历", tags = {"工作履历" },  notes = "根据应聘者基本信息建立工作履历")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes")
     @Transactional
     public ResponseEntity<PcmWorkResumeDTO> createByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmWorkResumeDTO pcmworkresumedto) {
@@ -171,7 +171,7 @@ public class PcmWorkResumeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmworkresumeMapping.toDomain(#pcmworkresumedtos),'ehr-PcmWorkResume-Create')")
-    @ApiOperation(value = "createBatchByPcmProfile", tags = {"PcmWorkResume" },  notes = "createBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量建立工作履历", tags = {"工作履历" },  notes = "根据应聘者基本信息批量建立工作履历")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/batch")
     public ResponseEntity<Boolean> createBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PcmWorkResumeDTO> pcmworkresumedtos) {
         List<PcmWorkResume> domainlist=pcmworkresumeMapping.toDomain(pcmworkresumedtos);
@@ -182,7 +182,7 @@ public class PcmWorkResumeResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPcmProfile", tags = {"PcmWorkResume" },  notes = "GetDraftByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息获取工作履历草稿", tags = {"工作履历" },  notes = "根据应聘者基本信息获取工作履历草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/getdraft")
     public ResponseEntity<PcmWorkResumeDTO> getDraftByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id) {
         PcmWorkResume domain = new PcmWorkResume();
@@ -191,7 +191,7 @@ public class PcmWorkResumeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmworkresumeMapping.toDomain(#pcmworkresumedto),'ehr-PcmWorkResume-Save')")
-    @ApiOperation(value = "SaveByPcmProfile", tags = {"PcmWorkResume" },  notes = "SaveByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息保存工作履历", tags = {"工作履历" },  notes = "根据应聘者基本信息保存工作履历")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/save")
     public ResponseEntity<Boolean> saveByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmWorkResumeDTO pcmworkresumedto) {
         PcmWorkResume domain = pcmworkresumeMapping.toDomain(pcmworkresumedto);
@@ -200,7 +200,7 @@ public class PcmWorkResumeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmworkresumeMapping.toDomain(#pcmworkresumedtos),'ehr-PcmWorkResume-Save')")
-    @ApiOperation(value = "SaveBatchByPcmProfile", tags = {"PcmWorkResume" },  notes = "SaveBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量保存工作履历", tags = {"工作履历" },  notes = "根据应聘者基本信息批量保存工作履历")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/savebatch")
     public ResponseEntity<Boolean> saveBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PcmWorkResumeDTO> pcmworkresumedtos) {
         List<PcmWorkResume> domainlist=pcmworkresumeMapping.toDomain(pcmworkresumedtos);
@@ -212,7 +212,7 @@ public class PcmWorkResumeResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmworkresumeMapping.toDomain(returnObject.body),'ehr-PcmWorkResume-Get')")
-    @ApiOperation(value = "GetByPcmProfile", tags = {"PcmWorkResume" },  notes = "GetByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息获取工作履历", tags = {"工作履历" },  notes = "根据应聘者基本信息获取工作履历")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/{pcmworkresume_id}")
     public ResponseEntity<PcmWorkResumeDTO> getByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmworkresume_id") String pcmworkresume_id) {
         PcmWorkResume domain = pcmworkresumeService.get(pcmworkresume_id);
@@ -221,7 +221,7 @@ public class PcmWorkResumeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmworkresumeService.get(#pcmworkresume_id),'ehr-PcmWorkResume-Update')")
-    @ApiOperation(value = "UpdateByPcmProfile", tags = {"PcmWorkResume" },  notes = "UpdateByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息更新工作履历", tags = {"工作履历" },  notes = "根据应聘者基本信息更新工作履历")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/{pcmworkresume_id}")
     @Transactional
     public ResponseEntity<PcmWorkResumeDTO> updateByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmworkresume_id") String pcmworkresume_id, @RequestBody PcmWorkResumeDTO pcmworkresumedto) {
@@ -234,7 +234,7 @@ public class PcmWorkResumeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmworkresumeService.getPcmworkresumeByEntities(this.pcmworkresumeMapping.toDomain(#pcmworkresumedtos)),'ehr-PcmWorkResume-Update')")
-    @ApiOperation(value = "UpdateBatchByPcmProfile", tags = {"PcmWorkResume" },  notes = "UpdateBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量更新工作履历", tags = {"工作履历" },  notes = "根据应聘者基本信息批量更新工作履历")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/batch")
     public ResponseEntity<Boolean> updateBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PcmWorkResumeDTO> pcmworkresumedtos) {
         List<PcmWorkResume> domainlist=pcmworkresumeMapping.toDomain(pcmworkresumedtos);
@@ -245,14 +245,14 @@ public class PcmWorkResumeResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByPcmProfile", tags = {"PcmWorkResume" },  notes = "CheckKeyByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息检查工作履历", tags = {"工作履历" },  notes = "根据应聘者基本信息检查工作履历")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/checkkey")
     public ResponseEntity<Boolean> checkKeyByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmWorkResumeDTO pcmworkresumedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmworkresumeService.checkKey(pcmworkresumeMapping.toDomain(pcmworkresumedto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmworkresumeService.get(#pcmworkresume_id),'ehr-PcmWorkResume-Remove')")
-    @ApiOperation(value = "RemoveByPcmProfile", tags = {"PcmWorkResume" },  notes = "RemoveByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息删除工作履历", tags = {"工作履历" },  notes = "根据应聘者基本信息删除工作履历")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/{pcmworkresume_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmworkresume_id") String pcmworkresume_id) {
@@ -260,7 +260,7 @@ public class PcmWorkResumeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmworkresumeService.getPcmworkresumeByIds(#ids),'ehr-PcmWorkResume-Remove')")
-    @ApiOperation(value = "RemoveBatchByPcmProfile", tags = {"PcmWorkResume" },  notes = "RemoveBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量删除工作履历", tags = {"工作履历" },  notes = "根据应聘者基本信息批量删除工作履历")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmworkresumes/batch")
     public ResponseEntity<Boolean> removeBatchByPcmProfile(@RequestBody List<String> ids) {
         pcmworkresumeService.removeBatch(ids);
@@ -268,7 +268,7 @@ public class PcmWorkResumeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmWorkResume-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPcmProfile", tags = {"PcmWorkResume" } ,notes = "fetchDEFAULTByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息获取DEFAULT", tags = {"工作履历" } ,notes = "根据应聘者基本信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmworkresumes/fetchdefault")
 	public ResponseEntity<List<PcmWorkResumeDTO>> fetchPcmWorkResumeDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id,PcmWorkResumeSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
@@ -282,7 +282,7 @@ public class PcmWorkResumeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmWorkResume-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPcmProfile", tags = {"PcmWorkResume" } ,notes = "searchDEFAULTByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息查询DEFAULT", tags = {"工作履历" } ,notes = "根据应聘者基本信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmworkresumes/searchdefault")
 	public ResponseEntity<Page<PcmWorkResumeDTO>> searchPcmWorkResumeDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmWorkResumeSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);

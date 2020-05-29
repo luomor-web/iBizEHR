@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.att.service.IAttEndenceTypeService;
 import cn.ibizlab.ehr.core.att.filter.AttEndenceTypeSearchContext;
 
 @Slf4j
-@Api(tags = {"AttEndenceType" })
+@Api(tags = {"考勤类型" })
 @RestController("WebApi-attendencetype")
 @RequestMapping("")
 public class AttEndenceTypeResource {
@@ -47,14 +47,14 @@ public class AttEndenceTypeResource {
     public AttEndenceTypeMapping attendencetypeMapping;
 
     @PreAuthorize("hasPermission(this.attendencetypeMapping.toDomain(#attendencetypedto),'ehr-AttEndenceType-Save')")
-    @ApiOperation(value = "Save", tags = {"AttEndenceType" },  notes = "Save")
+    @ApiOperation(value = "保存考勤类型", tags = {"考勤类型" },  notes = "保存考勤类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencetypes/save")
     public ResponseEntity<Boolean> save(@RequestBody AttEndenceTypeDTO attendencetypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendencetypeService.save(attendencetypeMapping.toDomain(attendencetypedto)));
     }
 
     @PreAuthorize("hasPermission(this.attendencetypeMapping.toDomain(#attendencetypedtos),'ehr-AttEndenceType-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"AttEndenceType" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存考勤类型", tags = {"考勤类型" },  notes = "批量保存考勤类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencetypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<AttEndenceTypeDTO> attendencetypedtos) {
         attendencetypeService.saveBatch(attendencetypeMapping.toDomain(attendencetypedtos));
@@ -62,7 +62,7 @@ public class AttEndenceTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.attendencetypeMapping.toDomain(#attendencetypedto),'ehr-AttEndenceType-Create')")
-    @ApiOperation(value = "Create", tags = {"AttEndenceType" },  notes = "Create")
+    @ApiOperation(value = "新建考勤类型", tags = {"考勤类型" },  notes = "新建考勤类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencetypes")
     @Transactional
     public ResponseEntity<AttEndenceTypeDTO> create(@RequestBody AttEndenceTypeDTO attendencetypedto) {
@@ -73,21 +73,21 @@ public class AttEndenceTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.attendencetypeMapping.toDomain(#attendencetypedtos),'ehr-AttEndenceType-Create')")
-    @ApiOperation(value = "createBatch", tags = {"AttEndenceType" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建考勤类型", tags = {"考勤类型" },  notes = "批量新建考勤类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencetypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<AttEndenceTypeDTO> attendencetypedtos) {
         attendencetypeService.createBatch(attendencetypeMapping.toDomain(attendencetypedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"AttEndenceType" },  notes = "CheckKey")
+    @ApiOperation(value = "检查考勤类型", tags = {"考勤类型" },  notes = "检查考勤类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendencetypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody AttEndenceTypeDTO attendencetypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attendencetypeService.checkKey(attendencetypeMapping.toDomain(attendencetypedto)));
     }
 
     @PreAuthorize("hasPermission(this.attendencetypeService.get(#attendencetype_id),'ehr-AttEndenceType-Remove')")
-    @ApiOperation(value = "Remove", tags = {"AttEndenceType" },  notes = "Remove")
+    @ApiOperation(value = "删除考勤类型", tags = {"考勤类型" },  notes = "删除考勤类型")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendencetypes/{attendencetype_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("attendencetype_id") String attendencetype_id) {
@@ -95,7 +95,7 @@ public class AttEndenceTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.attendencetypeService.getAttendencetypeByIds(#ids),'ehr-AttEndenceType-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"AttEndenceType" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除考勤类型", tags = {"考勤类型" },  notes = "批量删除考勤类型")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendencetypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         attendencetypeService.removeBatch(ids);
@@ -103,7 +103,7 @@ public class AttEndenceTypeResource {
     }
 
     @PostAuthorize("hasPermission(this.attendencetypeMapping.toDomain(returnObject.body),'ehr-AttEndenceType-Get')")
-    @ApiOperation(value = "Get", tags = {"AttEndenceType" },  notes = "Get")
+    @ApiOperation(value = "获取考勤类型", tags = {"考勤类型" },  notes = "获取考勤类型")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendencetypes/{attendencetype_id}")
     public ResponseEntity<AttEndenceTypeDTO> get(@PathVariable("attendencetype_id") String attendencetype_id) {
         AttEndenceType domain = attendencetypeService.get(attendencetype_id);
@@ -111,14 +111,14 @@ public class AttEndenceTypeResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"AttEndenceType" },  notes = "GetDraft")
+    @ApiOperation(value = "获取考勤类型草稿", tags = {"考勤类型" },  notes = "获取考勤类型草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendencetypes/getdraft")
     public ResponseEntity<AttEndenceTypeDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attendencetypeMapping.toDto(attendencetypeService.getDraft(new AttEndenceType())));
     }
 
     @PreAuthorize("hasPermission(this.attendencetypeService.get(#attendencetype_id),'ehr-AttEndenceType-Update')")
-    @ApiOperation(value = "Update", tags = {"AttEndenceType" },  notes = "Update")
+    @ApiOperation(value = "更新考勤类型", tags = {"考勤类型" },  notes = "更新考勤类型")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendencetypes/{attendencetype_id}")
     @Transactional
     public ResponseEntity<AttEndenceTypeDTO> update(@PathVariable("attendencetype_id") String attendencetype_id, @RequestBody AttEndenceTypeDTO attendencetypedto) {
@@ -130,7 +130,7 @@ public class AttEndenceTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.attendencetypeService.getAttendencetypeByEntities(this.attendencetypeMapping.toDomain(#attendencetypedtos)),'ehr-AttEndenceType-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"AttEndenceType" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新考勤类型", tags = {"考勤类型" },  notes = "批量更新考勤类型")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendencetypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<AttEndenceTypeDTO> attendencetypedtos) {
         attendencetypeService.updateBatch(attendencetypeMapping.toDomain(attendencetypedtos));
@@ -138,7 +138,7 @@ public class AttEndenceTypeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceType-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"AttEndenceType" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤类型" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/attendencetypes/fetchdefault")
 	public ResponseEntity<List<AttEndenceTypeDTO>> fetchDefault(AttEndenceTypeSearchContext context) {
         Page<AttEndenceType> domains = attendencetypeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class AttEndenceTypeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceType-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"AttEndenceType" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤类型" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/attendencetypes/searchdefault")
 	public ResponseEntity<Page<AttEndenceTypeDTO>> searchDefault(@RequestBody AttEndenceTypeSearchContext context) {
         Page<AttEndenceType> domains = attendencetypeService.searchDefault(context) ;

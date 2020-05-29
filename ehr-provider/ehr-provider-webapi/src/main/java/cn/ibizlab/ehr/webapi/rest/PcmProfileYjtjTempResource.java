@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmProfileYjtjTempService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmProfileYjtjTempSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmProfileYjtjTemp" })
+@Api(tags = {"应聘者引进条件中间表（停用）" })
 @RestController("WebApi-pcmprofileyjtjtemp")
 @RequestMapping("")
 public class PcmProfileYjtjTempResource {
@@ -47,7 +47,7 @@ public class PcmProfileYjtjTempResource {
     public PcmProfileYjtjTempMapping pcmprofileyjtjtempMapping;
 
     @PreAuthorize("hasPermission(this.pcmprofileyjtjtempService.get(#pcmprofileyjtjtemp_id),'ehr-PcmProfileYjtjTemp-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmProfileYjtjTemp" },  notes = "Update")
+    @ApiOperation(value = "更新应聘者引进条件中间表（停用）", tags = {"应聘者引进条件中间表（停用）" },  notes = "更新应聘者引进条件中间表（停用）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofileyjtjtemps/{pcmprofileyjtjtemp_id}")
     @Transactional
     public ResponseEntity<PcmProfileYjtjTempDTO> update(@PathVariable("pcmprofileyjtjtemp_id") String pcmprofileyjtjtemp_id, @RequestBody PcmProfileYjtjTempDTO pcmprofileyjtjtempdto) {
@@ -59,21 +59,21 @@ public class PcmProfileYjtjTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileyjtjtempService.getPcmprofileyjtjtempByEntities(this.pcmprofileyjtjtempMapping.toDomain(#pcmprofileyjtjtempdtos)),'ehr-PcmProfileYjtjTemp-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmProfileYjtjTemp" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新应聘者引进条件中间表（停用）", tags = {"应聘者引进条件中间表（停用）" },  notes = "批量更新应聘者引进条件中间表（停用）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofileyjtjtemps/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmProfileYjtjTempDTO> pcmprofileyjtjtempdtos) {
         pcmprofileyjtjtempService.updateBatch(pcmprofileyjtjtempMapping.toDomain(pcmprofileyjtjtempdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmProfileYjtjTemp" },  notes = "GetDraft")
+    @ApiOperation(value = "获取应聘者引进条件中间表（停用）草稿", tags = {"应聘者引进条件中间表（停用）" },  notes = "获取应聘者引进条件中间表（停用）草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofileyjtjtemps/getdraft")
     public ResponseEntity<PcmProfileYjtjTempDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileyjtjtempMapping.toDto(pcmprofileyjtjtempService.getDraft(new PcmProfileYjtjTemp())));
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileyjtjtempMapping.toDomain(#pcmprofileyjtjtempdto),'ehr-PcmProfileYjtjTemp-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmProfileYjtjTemp" },  notes = "Create")
+    @ApiOperation(value = "新建应聘者引进条件中间表（停用）", tags = {"应聘者引进条件中间表（停用）" },  notes = "新建应聘者引进条件中间表（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileyjtjtemps")
     @Transactional
     public ResponseEntity<PcmProfileYjtjTempDTO> create(@RequestBody PcmProfileYjtjTempDTO pcmprofileyjtjtempdto) {
@@ -84,21 +84,21 @@ public class PcmProfileYjtjTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileyjtjtempMapping.toDomain(#pcmprofileyjtjtempdtos),'ehr-PcmProfileYjtjTemp-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmProfileYjtjTemp" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建应聘者引进条件中间表（停用）", tags = {"应聘者引进条件中间表（停用）" },  notes = "批量新建应聘者引进条件中间表（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileyjtjtemps/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmProfileYjtjTempDTO> pcmprofileyjtjtempdtos) {
         pcmprofileyjtjtempService.createBatch(pcmprofileyjtjtempMapping.toDomain(pcmprofileyjtjtempdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmProfileYjtjTemp" },  notes = "CheckKey")
+    @ApiOperation(value = "检查应聘者引进条件中间表（停用）", tags = {"应聘者引进条件中间表（停用）" },  notes = "检查应聘者引进条件中间表（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileyjtjtemps/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmProfileYjtjTempDTO pcmprofileyjtjtempdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmprofileyjtjtempService.checkKey(pcmprofileyjtjtempMapping.toDomain(pcmprofileyjtjtempdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileyjtjtempService.get(#pcmprofileyjtjtemp_id),'ehr-PcmProfileYjtjTemp-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmProfileYjtjTemp" },  notes = "Remove")
+    @ApiOperation(value = "删除应聘者引进条件中间表（停用）", tags = {"应聘者引进条件中间表（停用）" },  notes = "删除应聘者引进条件中间表（停用）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofileyjtjtemps/{pcmprofileyjtjtemp_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmprofileyjtjtemp_id") String pcmprofileyjtjtemp_id) {
@@ -106,7 +106,7 @@ public class PcmProfileYjtjTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileyjtjtempService.getPcmprofileyjtjtempByIds(#ids),'ehr-PcmProfileYjtjTemp-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmProfileYjtjTemp" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除应聘者引进条件中间表（停用）", tags = {"应聘者引进条件中间表（停用）" },  notes = "批量删除应聘者引进条件中间表（停用）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofileyjtjtemps/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmprofileyjtjtempService.removeBatch(ids);
@@ -114,14 +114,14 @@ public class PcmProfileYjtjTempResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileyjtjtempMapping.toDomain(#pcmprofileyjtjtempdto),'ehr-PcmProfileYjtjTemp-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmProfileYjtjTemp" },  notes = "Save")
+    @ApiOperation(value = "保存应聘者引进条件中间表（停用）", tags = {"应聘者引进条件中间表（停用）" },  notes = "保存应聘者引进条件中间表（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileyjtjtemps/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmProfileYjtjTempDTO pcmprofileyjtjtempdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileyjtjtempService.save(pcmprofileyjtjtempMapping.toDomain(pcmprofileyjtjtempdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileyjtjtempMapping.toDomain(#pcmprofileyjtjtempdtos),'ehr-PcmProfileYjtjTemp-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmProfileYjtjTemp" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存应聘者引进条件中间表（停用）", tags = {"应聘者引进条件中间表（停用）" },  notes = "批量保存应聘者引进条件中间表（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofileyjtjtemps/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmProfileYjtjTempDTO> pcmprofileyjtjtempdtos) {
         pcmprofileyjtjtempService.saveBatch(pcmprofileyjtjtempMapping.toDomain(pcmprofileyjtjtempdtos));
@@ -129,7 +129,7 @@ public class PcmProfileYjtjTempResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmprofileyjtjtempMapping.toDomain(returnObject.body),'ehr-PcmProfileYjtjTemp-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmProfileYjtjTemp" },  notes = "Get")
+    @ApiOperation(value = "获取应聘者引进条件中间表（停用）", tags = {"应聘者引进条件中间表（停用）" },  notes = "获取应聘者引进条件中间表（停用）")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofileyjtjtemps/{pcmprofileyjtjtemp_id}")
     public ResponseEntity<PcmProfileYjtjTempDTO> get(@PathVariable("pcmprofileyjtjtemp_id") String pcmprofileyjtjtemp_id) {
         PcmProfileYjtjTemp domain = pcmprofileyjtjtempService.get(pcmprofileyjtjtemp_id);
@@ -138,7 +138,7 @@ public class PcmProfileYjtjTempResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileYjtjTemp-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmProfileYjtjTemp" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者引进条件中间表（停用）" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofileyjtjtemps/fetchdefault")
 	public ResponseEntity<List<PcmProfileYjtjTempDTO>> fetchDefault(PcmProfileYjtjTempSearchContext context) {
         Page<PcmProfileYjtjTemp> domains = pcmprofileyjtjtempService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmProfileYjtjTempResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileYjtjTemp-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmProfileYjtjTemp" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者引进条件中间表（停用）" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofileyjtjtemps/searchdefault")
 	public ResponseEntity<Page<PcmProfileYjtjTempDTO>> searchDefault(@RequestBody PcmProfileYjtjTempSearchContext context) {
         Page<PcmProfileYjtjTemp> domains = pcmprofileyjtjtempService.searchDefault(context) ;

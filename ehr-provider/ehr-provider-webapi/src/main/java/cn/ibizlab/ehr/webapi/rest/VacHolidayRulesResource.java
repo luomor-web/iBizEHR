@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.vac.service.IVacHolidayRulesService;
 import cn.ibizlab.ehr.core.vac.filter.VacHolidayRulesSearchContext;
 
 @Slf4j
-@Api(tags = {"VacHolidayRules" })
+@Api(tags = {"考勤规则" })
 @RestController("WebApi-vacholidayrules")
 @RequestMapping("")
 public class VacHolidayRulesResource {
@@ -47,7 +47,7 @@ public class VacHolidayRulesResource {
     public VacHolidayRulesMapping vacholidayrulesMapping;
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacHolidayRules-CopyKQGZData-all')")
-    @ApiOperation(value = "拷贝考勤规则", tags = {"VacHolidayRules" },  notes = "拷贝考勤规则")
+    @ApiOperation(value = "拷贝考勤规则", tags = {"考勤规则" },  notes = "拷贝考勤规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/copykqgzdata")
     @Transactional
     public ResponseEntity<VacHolidayRulesDTO> copyKQGZData(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VacHolidayRulesDTO vacholidayrulesdto) {
@@ -59,7 +59,7 @@ public class VacHolidayRulesResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayrulesService.get(#vacholidayrules_id),'ehr-VacHolidayRules-Remove')")
-    @ApiOperation(value = "Remove", tags = {"VacHolidayRules" },  notes = "Remove")
+    @ApiOperation(value = "删除考勤规则", tags = {"考勤规则" },  notes = "删除考勤规则")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidayrules/{vacholidayrules_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("vacholidayrules_id") String vacholidayrules_id) {
@@ -67,21 +67,21 @@ public class VacHolidayRulesResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayrulesService.getVacholidayrulesByIds(#ids),'ehr-VacHolidayRules-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"VacHolidayRules" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除考勤规则", tags = {"考勤规则" },  notes = "批量删除考勤规则")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacholidayrules/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         vacholidayrulesService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"VacHolidayRules" },  notes = "CheckKey")
+    @ApiOperation(value = "检查考勤规则", tags = {"考勤规则" },  notes = "检查考勤规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VacHolidayRulesDTO vacholidayrulesdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacholidayrulesService.checkKey(vacholidayrulesMapping.toDomain(vacholidayrulesdto)));
     }
 
     @PreAuthorize("hasPermission(this.vacholidayrulesMapping.toDomain(#vacholidayrulesdto),'ehr-VacHolidayRules-Create')")
-    @ApiOperation(value = "Create", tags = {"VacHolidayRules" },  notes = "Create")
+    @ApiOperation(value = "新建考勤规则", tags = {"考勤规则" },  notes = "新建考勤规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules")
     @Transactional
     public ResponseEntity<VacHolidayRulesDTO> create(@RequestBody VacHolidayRulesDTO vacholidayrulesdto) {
@@ -92,21 +92,21 @@ public class VacHolidayRulesResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayrulesMapping.toDomain(#vacholidayrulesdtos),'ehr-VacHolidayRules-Create')")
-    @ApiOperation(value = "createBatch", tags = {"VacHolidayRules" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建考勤规则", tags = {"考勤规则" },  notes = "批量新建考勤规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VacHolidayRulesDTO> vacholidayrulesdtos) {
         vacholidayrulesService.createBatch(vacholidayrulesMapping.toDomain(vacholidayrulesdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"VacHolidayRules" },  notes = "GetDraft")
+    @ApiOperation(value = "获取考勤规则草稿", tags = {"考勤规则" },  notes = "获取考勤规则草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacholidayrules/getdraft")
     public ResponseEntity<VacHolidayRulesDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacholidayrulesMapping.toDto(vacholidayrulesService.getDraft(new VacHolidayRules())));
     }
 
     @PreAuthorize("hasPermission(this.vacholidayrulesService.get(#vacholidayrules_id),'ehr-VacHolidayRules-Update')")
-    @ApiOperation(value = "Update", tags = {"VacHolidayRules" },  notes = "Update")
+    @ApiOperation(value = "更新考勤规则", tags = {"考勤规则" },  notes = "更新考勤规则")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidayrules/{vacholidayrules_id}")
     @Transactional
     public ResponseEntity<VacHolidayRulesDTO> update(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @RequestBody VacHolidayRulesDTO vacholidayrulesdto) {
@@ -118,7 +118,7 @@ public class VacHolidayRulesResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayrulesService.getVacholidayrulesByEntities(this.vacholidayrulesMapping.toDomain(#vacholidayrulesdtos)),'ehr-VacHolidayRules-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"VacHolidayRules" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新考勤规则", tags = {"考勤规则" },  notes = "批量更新考勤规则")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacholidayrules/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VacHolidayRulesDTO> vacholidayrulesdtos) {
         vacholidayrulesService.updateBatch(vacholidayrulesMapping.toDomain(vacholidayrulesdtos));
@@ -126,7 +126,7 @@ public class VacHolidayRulesResource {
     }
 
     @PostAuthorize("hasPermission(this.vacholidayrulesMapping.toDomain(returnObject.body),'ehr-VacHolidayRules-Get')")
-    @ApiOperation(value = "Get", tags = {"VacHolidayRules" },  notes = "Get")
+    @ApiOperation(value = "获取考勤规则", tags = {"考勤规则" },  notes = "获取考勤规则")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacholidayrules/{vacholidayrules_id}")
     public ResponseEntity<VacHolidayRulesDTO> get(@PathVariable("vacholidayrules_id") String vacholidayrules_id) {
         VacHolidayRules domain = vacholidayrulesService.get(vacholidayrules_id);
@@ -135,14 +135,14 @@ public class VacHolidayRulesResource {
     }
 
     @PreAuthorize("hasPermission(this.vacholidayrulesMapping.toDomain(#vacholidayrulesdto),'ehr-VacHolidayRules-Save')")
-    @ApiOperation(value = "Save", tags = {"VacHolidayRules" },  notes = "Save")
+    @ApiOperation(value = "保存考勤规则", tags = {"考勤规则" },  notes = "保存考勤规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/save")
     public ResponseEntity<Boolean> save(@RequestBody VacHolidayRulesDTO vacholidayrulesdto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacholidayrulesService.save(vacholidayrulesMapping.toDomain(vacholidayrulesdto)));
     }
 
     @PreAuthorize("hasPermission(this.vacholidayrulesMapping.toDomain(#vacholidayrulesdtos),'ehr-VacHolidayRules-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"VacHolidayRules" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存考勤规则", tags = {"考勤规则" },  notes = "批量保存考勤规则")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VacHolidayRulesDTO> vacholidayrulesdtos) {
         vacholidayrulesService.saveBatch(vacholidayrulesMapping.toDomain(vacholidayrulesdtos));
@@ -150,7 +150,7 @@ public class VacHolidayRulesResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacHolidayRules-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"VacHolidayRules" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤规则" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacholidayrules/fetchdefault")
 	public ResponseEntity<List<VacHolidayRulesDTO>> fetchDefault(VacHolidayRulesSearchContext context) {
         Page<VacHolidayRules> domains = vacholidayrulesService.searchDefault(context) ;
@@ -163,7 +163,7 @@ public class VacHolidayRulesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacHolidayRules-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"VacHolidayRules" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤规则" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacholidayrules/searchdefault")
 	public ResponseEntity<Page<VacHolidayRulesDTO>> searchDefault(@RequestBody VacHolidayRulesSearchContext context) {
         Page<VacHolidayRules> domains = vacholidayrulesService.searchDefault(context) ;
@@ -171,7 +171,7 @@ public class VacHolidayRulesResource {
                 .body(new PageImpl(vacholidayrulesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacHolidayRules-CurOrmorg-all')")
-	@ApiOperation(value = "fetch当前组织下的假期规则", tags = {"VacHolidayRules" } ,notes = "fetch当前组织下的假期规则")
+	@ApiOperation(value = "获取当前组织下的假期规则", tags = {"考勤规则" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacholidayrules/fetchcurormorg")
 	public ResponseEntity<List<VacHolidayRulesDTO>> fetchCurOrmorg(VacHolidayRulesSearchContext context) {
         Page<VacHolidayRules> domains = vacholidayrulesService.searchCurOrmorg(context) ;
@@ -184,7 +184,7 @@ public class VacHolidayRulesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacHolidayRules-CurOrmorg-all')")
-	@ApiOperation(value = "search当前组织下的假期规则", tags = {"VacHolidayRules" } ,notes = "search当前组织下的假期规则")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤规则" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacholidayrules/searchcurormorg")
 	public ResponseEntity<Page<VacHolidayRulesDTO>> searchCurOrmorg(@RequestBody VacHolidayRulesSearchContext context) {
         Page<VacHolidayRules> domains = vacholidayrulesService.searchCurOrmorg(context) ;

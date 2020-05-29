@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimArchivalCatalogueService;
 import cn.ibizlab.ehr.core.pim.filter.PimArchivalCatalogueSearchContext;
 
 @Slf4j
-@Api(tags = {"PimArchivalCatalogue" })
+@Api(tags = {"档案目录" })
 @RestController("WebApi-pimarchivalcatalogue")
 @RequestMapping("")
 public class PimArchivalCatalogueResource {
@@ -47,28 +47,28 @@ public class PimArchivalCatalogueResource {
     public PimArchivalCatalogueMapping pimarchivalcatalogueMapping;
 
     @PreAuthorize("hasPermission(this.pimarchivalcatalogueMapping.toDomain(#pimarchivalcataloguedto),'ehr-PimArchivalCatalogue-Save')")
-    @ApiOperation(value = "Save", tags = {"PimArchivalCatalogue" },  notes = "Save")
+    @ApiOperation(value = "保存档案目录", tags = {"档案目录" },  notes = "保存档案目录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivalcatalogues/save")
     public ResponseEntity<Boolean> save(@RequestBody PimArchivalCatalogueDTO pimarchivalcataloguedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivalcatalogueService.save(pimarchivalcatalogueMapping.toDomain(pimarchivalcataloguedto)));
     }
 
     @PreAuthorize("hasPermission(this.pimarchivalcatalogueMapping.toDomain(#pimarchivalcataloguedtos),'ehr-PimArchivalCatalogue-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimArchivalCatalogue" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存档案目录", tags = {"档案目录" },  notes = "批量保存档案目录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivalcatalogues/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimArchivalCatalogueDTO> pimarchivalcataloguedtos) {
         pimarchivalcatalogueService.saveBatch(pimarchivalcatalogueMapping.toDomain(pimarchivalcataloguedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimArchivalCatalogue" },  notes = "CheckKey")
+    @ApiOperation(value = "检查档案目录", tags = {"档案目录" },  notes = "检查档案目录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivalcatalogues/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimArchivalCatalogueDTO pimarchivalcataloguedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarchivalcatalogueService.checkKey(pimarchivalcatalogueMapping.toDomain(pimarchivalcataloguedto)));
     }
 
     @PostAuthorize("hasPermission(this.pimarchivalcatalogueMapping.toDomain(returnObject.body),'ehr-PimArchivalCatalogue-Get')")
-    @ApiOperation(value = "Get", tags = {"PimArchivalCatalogue" },  notes = "Get")
+    @ApiOperation(value = "获取档案目录", tags = {"档案目录" },  notes = "获取档案目录")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchivalcatalogues/{pimarchivalcatalogue_id}")
     public ResponseEntity<PimArchivalCatalogueDTO> get(@PathVariable("pimarchivalcatalogue_id") String pimarchivalcatalogue_id) {
         PimArchivalCatalogue domain = pimarchivalcatalogueService.get(pimarchivalcatalogue_id);
@@ -76,14 +76,14 @@ public class PimArchivalCatalogueResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimArchivalCatalogue" },  notes = "GetDraft")
+    @ApiOperation(value = "获取档案目录草稿", tags = {"档案目录" },  notes = "获取档案目录草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchivalcatalogues/getdraft")
     public ResponseEntity<PimArchivalCatalogueDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivalcatalogueMapping.toDto(pimarchivalcatalogueService.getDraft(new PimArchivalCatalogue())));
     }
 
     @PreAuthorize("hasPermission(this.pimarchivalcatalogueService.get(#pimarchivalcatalogue_id),'ehr-PimArchivalCatalogue-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimArchivalCatalogue" },  notes = "Remove")
+    @ApiOperation(value = "删除档案目录", tags = {"档案目录" },  notes = "删除档案目录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchivalcatalogues/{pimarchivalcatalogue_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimarchivalcatalogue_id") String pimarchivalcatalogue_id) {
@@ -91,7 +91,7 @@ public class PimArchivalCatalogueResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivalcatalogueService.getPimarchivalcatalogueByIds(#ids),'ehr-PimArchivalCatalogue-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimArchivalCatalogue" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除档案目录", tags = {"档案目录" },  notes = "批量删除档案目录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchivalcatalogues/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimarchivalcatalogueService.removeBatch(ids);
@@ -99,7 +99,7 @@ public class PimArchivalCatalogueResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivalcatalogueService.get(#pimarchivalcatalogue_id),'ehr-PimArchivalCatalogue-Update')")
-    @ApiOperation(value = "Update", tags = {"PimArchivalCatalogue" },  notes = "Update")
+    @ApiOperation(value = "更新档案目录", tags = {"档案目录" },  notes = "更新档案目录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchivalcatalogues/{pimarchivalcatalogue_id}")
     @Transactional
     public ResponseEntity<PimArchivalCatalogueDTO> update(@PathVariable("pimarchivalcatalogue_id") String pimarchivalcatalogue_id, @RequestBody PimArchivalCatalogueDTO pimarchivalcataloguedto) {
@@ -111,7 +111,7 @@ public class PimArchivalCatalogueResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivalcatalogueService.getPimarchivalcatalogueByEntities(this.pimarchivalcatalogueMapping.toDomain(#pimarchivalcataloguedtos)),'ehr-PimArchivalCatalogue-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimArchivalCatalogue" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新档案目录", tags = {"档案目录" },  notes = "批量更新档案目录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchivalcatalogues/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimArchivalCatalogueDTO> pimarchivalcataloguedtos) {
         pimarchivalcatalogueService.updateBatch(pimarchivalcatalogueMapping.toDomain(pimarchivalcataloguedtos));
@@ -119,7 +119,7 @@ public class PimArchivalCatalogueResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivalcatalogueMapping.toDomain(#pimarchivalcataloguedto),'ehr-PimArchivalCatalogue-Create')")
-    @ApiOperation(value = "Create", tags = {"PimArchivalCatalogue" },  notes = "Create")
+    @ApiOperation(value = "新建档案目录", tags = {"档案目录" },  notes = "新建档案目录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivalcatalogues")
     @Transactional
     public ResponseEntity<PimArchivalCatalogueDTO> create(@RequestBody PimArchivalCatalogueDTO pimarchivalcataloguedto) {
@@ -130,7 +130,7 @@ public class PimArchivalCatalogueResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivalcatalogueMapping.toDomain(#pimarchivalcataloguedtos),'ehr-PimArchivalCatalogue-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimArchivalCatalogue" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建档案目录", tags = {"档案目录" },  notes = "批量新建档案目录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivalcatalogues/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimArchivalCatalogueDTO> pimarchivalcataloguedtos) {
         pimarchivalcatalogueService.createBatch(pimarchivalcatalogueMapping.toDomain(pimarchivalcataloguedtos));
@@ -138,7 +138,7 @@ public class PimArchivalCatalogueResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchivalCatalogue-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimArchivalCatalogue" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"档案目录" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchivalcatalogues/fetchdefault")
 	public ResponseEntity<List<PimArchivalCatalogueDTO>> fetchDefault(PimArchivalCatalogueSearchContext context) {
         Page<PimArchivalCatalogue> domains = pimarchivalcatalogueService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimArchivalCatalogueResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchivalCatalogue-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimArchivalCatalogue" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案目录" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchivalcatalogues/searchdefault")
 	public ResponseEntity<Page<PimArchivalCatalogueDTO>> searchDefault(@RequestBody PimArchivalCatalogueSearchContext context) {
         Page<PimArchivalCatalogue> domains = pimarchivalcatalogueService.searchDefault(context) ;

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.att.service.IAttEnmembwesService;
 import cn.ibizlab.ehr.core.att.filter.AttEnmembwesSearchContext;
 
 @Slf4j
-@Api(tags = {"AttEnmembwes" })
+@Api(tags = {"考勤员(停用)" })
 @RestController("WebApi-attenmembwes")
 @RequestMapping("")
 public class AttEnmembwesResource {
@@ -46,14 +46,14 @@ public class AttEnmembwesResource {
     @Lazy
     public AttEnmembwesMapping attenmembwesMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"AttEnmembwes" },  notes = "CheckKey")
+    @ApiOperation(value = "检查考勤员(停用)", tags = {"考勤员(停用)" },  notes = "检查考勤员(停用)")
 	@RequestMapping(method = RequestMethod.POST, value = "/attenmembwes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody AttEnmembwesDTO attenmembwesdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attenmembwesService.checkKey(attenmembwesMapping.toDomain(attenmembwesdto)));
     }
 
     @PostAuthorize("hasPermission(this.attenmembwesMapping.toDomain(returnObject.body),'ehr-AttEnmembwes-Get')")
-    @ApiOperation(value = "Get", tags = {"AttEnmembwes" },  notes = "Get")
+    @ApiOperation(value = "获取考勤员(停用)", tags = {"考勤员(停用)" },  notes = "获取考勤员(停用)")
 	@RequestMapping(method = RequestMethod.GET, value = "/attenmembwes/{attenmembwes_id}")
     public ResponseEntity<AttEnmembwesDTO> get(@PathVariable("attenmembwes_id") String attenmembwes_id) {
         AttEnmembwes domain = attenmembwesService.get(attenmembwes_id);
@@ -62,7 +62,7 @@ public class AttEnmembwesResource {
     }
 
     @PreAuthorize("hasPermission(this.attenmembwesService.get(#attenmembwes_id),'ehr-AttEnmembwes-Remove')")
-    @ApiOperation(value = "Remove", tags = {"AttEnmembwes" },  notes = "Remove")
+    @ApiOperation(value = "删除考勤员(停用)", tags = {"考勤员(停用)" },  notes = "删除考勤员(停用)")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attenmembwes/{attenmembwes_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("attenmembwes_id") String attenmembwes_id) {
@@ -70,7 +70,7 @@ public class AttEnmembwesResource {
     }
 
     @PreAuthorize("hasPermission(this.attenmembwesService.getAttenmembwesByIds(#ids),'ehr-AttEnmembwes-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"AttEnmembwes" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除考勤员(停用)", tags = {"考勤员(停用)" },  notes = "批量删除考勤员(停用)")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attenmembwes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         attenmembwesService.removeBatch(ids);
@@ -78,28 +78,28 @@ public class AttEnmembwesResource {
     }
 
     @PreAuthorize("hasPermission(this.attenmembwesMapping.toDomain(#attenmembwesdto),'ehr-AttEnmembwes-Save')")
-    @ApiOperation(value = "Save", tags = {"AttEnmembwes" },  notes = "Save")
+    @ApiOperation(value = "保存考勤员(停用)", tags = {"考勤员(停用)" },  notes = "保存考勤员(停用)")
 	@RequestMapping(method = RequestMethod.POST, value = "/attenmembwes/save")
     public ResponseEntity<Boolean> save(@RequestBody AttEnmembwesDTO attenmembwesdto) {
         return ResponseEntity.status(HttpStatus.OK).body(attenmembwesService.save(attenmembwesMapping.toDomain(attenmembwesdto)));
     }
 
     @PreAuthorize("hasPermission(this.attenmembwesMapping.toDomain(#attenmembwesdtos),'ehr-AttEnmembwes-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"AttEnmembwes" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存考勤员(停用)", tags = {"考勤员(停用)" },  notes = "批量保存考勤员(停用)")
 	@RequestMapping(method = RequestMethod.POST, value = "/attenmembwes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<AttEnmembwesDTO> attenmembwesdtos) {
         attenmembwesService.saveBatch(attenmembwesMapping.toDomain(attenmembwesdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"AttEnmembwes" },  notes = "GetDraft")
+    @ApiOperation(value = "获取考勤员(停用)草稿", tags = {"考勤员(停用)" },  notes = "获取考勤员(停用)草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/attenmembwes/getdraft")
     public ResponseEntity<AttEnmembwesDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attenmembwesMapping.toDto(attenmembwesService.getDraft(new AttEnmembwes())));
     }
 
     @PreAuthorize("hasPermission(this.attenmembwesService.get(#attenmembwes_id),'ehr-AttEnmembwes-Update')")
-    @ApiOperation(value = "Update", tags = {"AttEnmembwes" },  notes = "Update")
+    @ApiOperation(value = "更新考勤员(停用)", tags = {"考勤员(停用)" },  notes = "更新考勤员(停用)")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attenmembwes/{attenmembwes_id}")
     @Transactional
     public ResponseEntity<AttEnmembwesDTO> update(@PathVariable("attenmembwes_id") String attenmembwes_id, @RequestBody AttEnmembwesDTO attenmembwesdto) {
@@ -111,7 +111,7 @@ public class AttEnmembwesResource {
     }
 
     @PreAuthorize("hasPermission(this.attenmembwesService.getAttenmembwesByEntities(this.attenmembwesMapping.toDomain(#attenmembwesdtos)),'ehr-AttEnmembwes-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"AttEnmembwes" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新考勤员(停用)", tags = {"考勤员(停用)" },  notes = "批量更新考勤员(停用)")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attenmembwes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<AttEnmembwesDTO> attenmembwesdtos) {
         attenmembwesService.updateBatch(attenmembwesMapping.toDomain(attenmembwesdtos));
@@ -119,7 +119,7 @@ public class AttEnmembwesResource {
     }
 
     @PreAuthorize("hasPermission(this.attenmembwesMapping.toDomain(#attenmembwesdto),'ehr-AttEnmembwes-Create')")
-    @ApiOperation(value = "Create", tags = {"AttEnmembwes" },  notes = "Create")
+    @ApiOperation(value = "新建考勤员(停用)", tags = {"考勤员(停用)" },  notes = "新建考勤员(停用)")
 	@RequestMapping(method = RequestMethod.POST, value = "/attenmembwes")
     @Transactional
     public ResponseEntity<AttEnmembwesDTO> create(@RequestBody AttEnmembwesDTO attenmembwesdto) {
@@ -130,7 +130,7 @@ public class AttEnmembwesResource {
     }
 
     @PreAuthorize("hasPermission(this.attenmembwesMapping.toDomain(#attenmembwesdtos),'ehr-AttEnmembwes-Create')")
-    @ApiOperation(value = "createBatch", tags = {"AttEnmembwes" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建考勤员(停用)", tags = {"考勤员(停用)" },  notes = "批量新建考勤员(停用)")
 	@RequestMapping(method = RequestMethod.POST, value = "/attenmembwes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<AttEnmembwesDTO> attenmembwesdtos) {
         attenmembwesService.createBatch(attenmembwesMapping.toDomain(attenmembwesdtos));
@@ -138,7 +138,7 @@ public class AttEnmembwesResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnmembwes-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"AttEnmembwes" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤员(停用)" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/attenmembwes/fetchdefault")
 	public ResponseEntity<List<AttEnmembwesDTO>> fetchDefault(AttEnmembwesSearchContext context) {
         Page<AttEnmembwes> domains = attenmembwesService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class AttEnmembwesResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEnmembwes-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"AttEnmembwes" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤员(停用)" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/attenmembwes/searchdefault")
 	public ResponseEntity<Page<AttEnmembwesDTO>> searchDefault(@RequestBody AttEnmembwesSearchContext context) {
         Page<AttEnmembwes> domains = attenmembwesService.searchDefault(context) ;

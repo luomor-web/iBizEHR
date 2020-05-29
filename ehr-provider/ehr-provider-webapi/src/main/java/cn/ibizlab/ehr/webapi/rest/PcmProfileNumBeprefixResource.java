@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmProfileNumBeprefixService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmProfileNumBeprefixSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmProfileNumBeprefix" })
+@Api(tags = {"应聘者编号前缀" })
 @RestController("WebApi-pcmprofilenumbeprefix")
 @RequestMapping("")
 public class PcmProfileNumBeprefixResource {
@@ -47,7 +47,7 @@ public class PcmProfileNumBeprefixResource {
     public PcmProfileNumBeprefixMapping pcmprofilenumbeprefixMapping;
 
     @PostAuthorize("hasPermission(this.pcmprofilenumbeprefixMapping.toDomain(returnObject.body),'ehr-PcmProfileNumBeprefix-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmProfileNumBeprefix" },  notes = "Get")
+    @ApiOperation(value = "获取应聘者编号前缀", tags = {"应聘者编号前缀" },  notes = "获取应聘者编号前缀")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofilenumbeprefixes/{pcmprofilenumbeprefix_id}")
     public ResponseEntity<PcmProfileNumBeprefixDTO> get(@PathVariable("pcmprofilenumbeprefix_id") String pcmprofilenumbeprefix_id) {
         PcmProfileNumBeprefix domain = pcmprofilenumbeprefixService.get(pcmprofilenumbeprefix_id);
@@ -56,14 +56,14 @@ public class PcmProfileNumBeprefixResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofilenumbeprefixMapping.toDomain(#pcmprofilenumbeprefixdto),'ehr-PcmProfileNumBeprefix-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmProfileNumBeprefix" },  notes = "Save")
+    @ApiOperation(value = "保存应聘者编号前缀", tags = {"应聘者编号前缀" },  notes = "保存应聘者编号前缀")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilenumbeprefixes/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmProfileNumBeprefixDTO pcmprofilenumbeprefixdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofilenumbeprefixService.save(pcmprofilenumbeprefixMapping.toDomain(pcmprofilenumbeprefixdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmprofilenumbeprefixMapping.toDomain(#pcmprofilenumbeprefixdtos),'ehr-PcmProfileNumBeprefix-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmProfileNumBeprefix" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存应聘者编号前缀", tags = {"应聘者编号前缀" },  notes = "批量保存应聘者编号前缀")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilenumbeprefixes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmProfileNumBeprefixDTO> pcmprofilenumbeprefixdtos) {
         pcmprofilenumbeprefixService.saveBatch(pcmprofilenumbeprefixMapping.toDomain(pcmprofilenumbeprefixdtos));
@@ -71,7 +71,7 @@ public class PcmProfileNumBeprefixResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofilenumbeprefixService.get(#pcmprofilenumbeprefix_id),'ehr-PcmProfileNumBeprefix-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmProfileNumBeprefix" },  notes = "Update")
+    @ApiOperation(value = "更新应聘者编号前缀", tags = {"应聘者编号前缀" },  notes = "更新应聘者编号前缀")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofilenumbeprefixes/{pcmprofilenumbeprefix_id}")
     @Transactional
     public ResponseEntity<PcmProfileNumBeprefixDTO> update(@PathVariable("pcmprofilenumbeprefix_id") String pcmprofilenumbeprefix_id, @RequestBody PcmProfileNumBeprefixDTO pcmprofilenumbeprefixdto) {
@@ -83,7 +83,7 @@ public class PcmProfileNumBeprefixResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofilenumbeprefixService.getPcmprofilenumbeprefixByEntities(this.pcmprofilenumbeprefixMapping.toDomain(#pcmprofilenumbeprefixdtos)),'ehr-PcmProfileNumBeprefix-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmProfileNumBeprefix" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新应聘者编号前缀", tags = {"应聘者编号前缀" },  notes = "批量更新应聘者编号前缀")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofilenumbeprefixes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmProfileNumBeprefixDTO> pcmprofilenumbeprefixdtos) {
         pcmprofilenumbeprefixService.updateBatch(pcmprofilenumbeprefixMapping.toDomain(pcmprofilenumbeprefixdtos));
@@ -91,7 +91,7 @@ public class PcmProfileNumBeprefixResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofilenumbeprefixMapping.toDomain(#pcmprofilenumbeprefixdto),'ehr-PcmProfileNumBeprefix-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmProfileNumBeprefix" },  notes = "Create")
+    @ApiOperation(value = "新建应聘者编号前缀", tags = {"应聘者编号前缀" },  notes = "新建应聘者编号前缀")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilenumbeprefixes")
     @Transactional
     public ResponseEntity<PcmProfileNumBeprefixDTO> create(@RequestBody PcmProfileNumBeprefixDTO pcmprofilenumbeprefixdto) {
@@ -102,21 +102,21 @@ public class PcmProfileNumBeprefixResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofilenumbeprefixMapping.toDomain(#pcmprofilenumbeprefixdtos),'ehr-PcmProfileNumBeprefix-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmProfileNumBeprefix" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建应聘者编号前缀", tags = {"应聘者编号前缀" },  notes = "批量新建应聘者编号前缀")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilenumbeprefixes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmProfileNumBeprefixDTO> pcmprofilenumbeprefixdtos) {
         pcmprofilenumbeprefixService.createBatch(pcmprofilenumbeprefixMapping.toDomain(pcmprofilenumbeprefixdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmProfileNumBeprefix" },  notes = "CheckKey")
+    @ApiOperation(value = "检查应聘者编号前缀", tags = {"应聘者编号前缀" },  notes = "检查应聘者编号前缀")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofilenumbeprefixes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmProfileNumBeprefixDTO pcmprofilenumbeprefixdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmprofilenumbeprefixService.checkKey(pcmprofilenumbeprefixMapping.toDomain(pcmprofilenumbeprefixdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmprofilenumbeprefixService.get(#pcmprofilenumbeprefix_id),'ehr-PcmProfileNumBeprefix-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmProfileNumBeprefix" },  notes = "Remove")
+    @ApiOperation(value = "删除应聘者编号前缀", tags = {"应聘者编号前缀" },  notes = "删除应聘者编号前缀")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofilenumbeprefixes/{pcmprofilenumbeprefix_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmprofilenumbeprefix_id") String pcmprofilenumbeprefix_id) {
@@ -124,21 +124,21 @@ public class PcmProfileNumBeprefixResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofilenumbeprefixService.getPcmprofilenumbeprefixByIds(#ids),'ehr-PcmProfileNumBeprefix-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmProfileNumBeprefix" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除应聘者编号前缀", tags = {"应聘者编号前缀" },  notes = "批量删除应聘者编号前缀")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofilenumbeprefixes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmprofilenumbeprefixService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmProfileNumBeprefix" },  notes = "GetDraft")
+    @ApiOperation(value = "获取应聘者编号前缀草稿", tags = {"应聘者编号前缀" },  notes = "获取应聘者编号前缀草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofilenumbeprefixes/getdraft")
     public ResponseEntity<PcmProfileNumBeprefixDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofilenumbeprefixMapping.toDto(pcmprofilenumbeprefixService.getDraft(new PcmProfileNumBeprefix())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileNumBeprefix-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmProfileNumBeprefix" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"应聘者编号前缀" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofilenumbeprefixes/fetchdefault")
 	public ResponseEntity<List<PcmProfileNumBeprefixDTO>> fetchDefault(PcmProfileNumBeprefixSearchContext context) {
         Page<PcmProfileNumBeprefix> domains = pcmprofilenumbeprefixService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmProfileNumBeprefixResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmProfileNumBeprefix-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmProfileNumBeprefix" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"应聘者编号前缀" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofilenumbeprefixes/searchdefault")
 	public ResponseEntity<Page<PcmProfileNumBeprefixDTO>> searchDefault(@RequestBody PcmProfileNumBeprefixSearchContext context) {
         Page<PcmProfileNumBeprefix> domains = pcmprofilenumbeprefixService.searchDefault(context) ;

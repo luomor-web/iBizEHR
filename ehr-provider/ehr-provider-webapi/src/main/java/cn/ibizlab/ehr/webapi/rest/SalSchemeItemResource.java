@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.sal.service.ISalSchemeItemService;
 import cn.ibizlab.ehr.core.sal.filter.SalSchemeItemSearchContext;
 
 @Slf4j
-@Api(tags = {"SalSchemeItem" })
+@Api(tags = {"工资单要素项" })
 @RestController("WebApi-salschemeitem")
 @RequestMapping("")
 public class SalSchemeItemResource {
@@ -47,7 +47,7 @@ public class SalSchemeItemResource {
     public SalSchemeItemMapping salschemeitemMapping;
 
     @PreAuthorize("hasPermission(this.salschemeitemService.get(#salschemeitem_id),'ehr-SalSchemeItem-Update')")
-    @ApiOperation(value = "Update", tags = {"SalSchemeItem" },  notes = "Update")
+    @ApiOperation(value = "更新工资单要素项", tags = {"工资单要素项" },  notes = "更新工资单要素项")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salschemeitems/{salschemeitem_id}")
     @Transactional
     public ResponseEntity<SalSchemeItemDTO> update(@PathVariable("salschemeitem_id") String salschemeitem_id, @RequestBody SalSchemeItemDTO salschemeitemdto) {
@@ -59,7 +59,7 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemService.getSalschemeitemByEntities(this.salschemeitemMapping.toDomain(#salschemeitemdtos)),'ehr-SalSchemeItem-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SalSchemeItem" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新工资单要素项", tags = {"工资单要素项" },  notes = "批量更新工资单要素项")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salschemeitems/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SalSchemeItemDTO> salschemeitemdtos) {
         salschemeitemService.updateBatch(salschemeitemMapping.toDomain(salschemeitemdtos));
@@ -67,14 +67,14 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdto),'ehr-SalSchemeItem-Save')")
-    @ApiOperation(value = "Save", tags = {"SalSchemeItem" },  notes = "Save")
+    @ApiOperation(value = "保存工资单要素项", tags = {"工资单要素项" },  notes = "保存工资单要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemeitems/save")
     public ResponseEntity<Boolean> save(@RequestBody SalSchemeItemDTO salschemeitemdto) {
         return ResponseEntity.status(HttpStatus.OK).body(salschemeitemService.save(salschemeitemMapping.toDomain(salschemeitemdto)));
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdtos),'ehr-SalSchemeItem-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SalSchemeItem" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存工资单要素项", tags = {"工资单要素项" },  notes = "批量保存工资单要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemeitems/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SalSchemeItemDTO> salschemeitemdtos) {
         salschemeitemService.saveBatch(salschemeitemMapping.toDomain(salschemeitemdtos));
@@ -82,7 +82,7 @@ public class SalSchemeItemResource {
     }
 
     @PostAuthorize("hasPermission(this.salschemeitemMapping.toDomain(returnObject.body),'ehr-SalSchemeItem-Get')")
-    @ApiOperation(value = "Get", tags = {"SalSchemeItem" },  notes = "Get")
+    @ApiOperation(value = "获取工资单要素项", tags = {"工资单要素项" },  notes = "获取工资单要素项")
 	@RequestMapping(method = RequestMethod.GET, value = "/salschemeitems/{salschemeitem_id}")
     public ResponseEntity<SalSchemeItemDTO> get(@PathVariable("salschemeitem_id") String salschemeitem_id) {
         SalSchemeItem domain = salschemeitemService.get(salschemeitem_id);
@@ -91,7 +91,7 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemService.get(#salschemeitem_id),'ehr-SalSchemeItem-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SalSchemeItem" },  notes = "Remove")
+    @ApiOperation(value = "删除工资单要素项", tags = {"工资单要素项" },  notes = "删除工资单要素项")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salschemeitems/{salschemeitem_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("salschemeitem_id") String salschemeitem_id) {
@@ -99,21 +99,21 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemService.getSalschemeitemByIds(#ids),'ehr-SalSchemeItem-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SalSchemeItem" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除工资单要素项", tags = {"工资单要素项" },  notes = "批量删除工资单要素项")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salschemeitems/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         salschemeitemService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"SalSchemeItem" },  notes = "CheckKey")
+    @ApiOperation(value = "检查工资单要素项", tags = {"工资单要素项" },  notes = "检查工资单要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemeitems/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SalSchemeItemDTO salschemeitemdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salschemeitemService.checkKey(salschemeitemMapping.toDomain(salschemeitemdto)));
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdto),'ehr-SalSchemeItem-Create')")
-    @ApiOperation(value = "Create", tags = {"SalSchemeItem" },  notes = "Create")
+    @ApiOperation(value = "新建工资单要素项", tags = {"工资单要素项" },  notes = "新建工资单要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemeitems")
     @Transactional
     public ResponseEntity<SalSchemeItemDTO> create(@RequestBody SalSchemeItemDTO salschemeitemdto) {
@@ -124,21 +124,21 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdtos),'ehr-SalSchemeItem-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SalSchemeItem" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建工资单要素项", tags = {"工资单要素项" },  notes = "批量新建工资单要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemeitems/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SalSchemeItemDTO> salschemeitemdtos) {
         salschemeitemService.createBatch(salschemeitemMapping.toDomain(salschemeitemdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"SalSchemeItem" },  notes = "GetDraft")
+    @ApiOperation(value = "获取工资单要素项草稿", tags = {"工资单要素项" },  notes = "获取工资单要素项草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/salschemeitems/getdraft")
     public ResponseEntity<SalSchemeItemDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(salschemeitemMapping.toDto(salschemeitemService.getDraft(new SalSchemeItem())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalSchemeItem-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SalSchemeItem" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"工资单要素项" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/salschemeitems/fetchdefault")
 	public ResponseEntity<List<SalSchemeItemDTO>> fetchDefault(SalSchemeItemSearchContext context) {
         Page<SalSchemeItem> domains = salschemeitemService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SalSchemeItemResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalSchemeItem-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SalSchemeItem" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"工资单要素项" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/salschemeitems/searchdefault")
 	public ResponseEntity<Page<SalSchemeItemDTO>> searchDefault(@RequestBody SalSchemeItemSearchContext context) {
         Page<SalSchemeItem> domains = salschemeitemService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class SalSchemeItemResource {
                 .body(new PageImpl(salschemeitemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.salschemeitemService.get(#salschemeitem_id),'ehr-SalSchemeItem-Update')")
-    @ApiOperation(value = "UpdateBySalItem", tags = {"SalSchemeItem" },  notes = "UpdateBySalItem")
+    @ApiOperation(value = "根据薪酬要素项更新工资单要素项", tags = {"工资单要素项" },  notes = "根据薪酬要素项更新工资单要素项")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salitems/{salitem_id}/salschemeitems/{salschemeitem_id}")
     @Transactional
     public ResponseEntity<SalSchemeItemDTO> updateBySalItem(@PathVariable("salitem_id") String salitem_id, @PathVariable("salschemeitem_id") String salschemeitem_id, @RequestBody SalSchemeItemDTO salschemeitemdto) {
@@ -172,7 +172,7 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemService.getSalschemeitemByEntities(this.salschemeitemMapping.toDomain(#salschemeitemdtos)),'ehr-SalSchemeItem-Update')")
-    @ApiOperation(value = "UpdateBatchBySalItem", tags = {"SalSchemeItem" },  notes = "UpdateBatchBySalItem")
+    @ApiOperation(value = "根据薪酬要素项批量更新工资单要素项", tags = {"工资单要素项" },  notes = "根据薪酬要素项批量更新工资单要素项")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salitems/{salitem_id}/salschemeitems/batch")
     public ResponseEntity<Boolean> updateBatchBySalItem(@PathVariable("salitem_id") String salitem_id, @RequestBody List<SalSchemeItemDTO> salschemeitemdtos) {
         List<SalSchemeItem> domainlist=salschemeitemMapping.toDomain(salschemeitemdtos);
@@ -184,7 +184,7 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdto),'ehr-SalSchemeItem-Save')")
-    @ApiOperation(value = "SaveBySalItem", tags = {"SalSchemeItem" },  notes = "SaveBySalItem")
+    @ApiOperation(value = "根据薪酬要素项保存工资单要素项", tags = {"工资单要素项" },  notes = "根据薪酬要素项保存工资单要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/{salitem_id}/salschemeitems/save")
     public ResponseEntity<Boolean> saveBySalItem(@PathVariable("salitem_id") String salitem_id, @RequestBody SalSchemeItemDTO salschemeitemdto) {
         SalSchemeItem domain = salschemeitemMapping.toDomain(salschemeitemdto);
@@ -193,7 +193,7 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdtos),'ehr-SalSchemeItem-Save')")
-    @ApiOperation(value = "SaveBatchBySalItem", tags = {"SalSchemeItem" },  notes = "SaveBatchBySalItem")
+    @ApiOperation(value = "根据薪酬要素项批量保存工资单要素项", tags = {"工资单要素项" },  notes = "根据薪酬要素项批量保存工资单要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/{salitem_id}/salschemeitems/savebatch")
     public ResponseEntity<Boolean> saveBatchBySalItem(@PathVariable("salitem_id") String salitem_id, @RequestBody List<SalSchemeItemDTO> salschemeitemdtos) {
         List<SalSchemeItem> domainlist=salschemeitemMapping.toDomain(salschemeitemdtos);
@@ -205,7 +205,7 @@ public class SalSchemeItemResource {
     }
 
     @PostAuthorize("hasPermission(this.salschemeitemMapping.toDomain(returnObject.body),'ehr-SalSchemeItem-Get')")
-    @ApiOperation(value = "GetBySalItem", tags = {"SalSchemeItem" },  notes = "GetBySalItem")
+    @ApiOperation(value = "根据薪酬要素项获取工资单要素项", tags = {"工资单要素项" },  notes = "根据薪酬要素项获取工资单要素项")
 	@RequestMapping(method = RequestMethod.GET, value = "/salitems/{salitem_id}/salschemeitems/{salschemeitem_id}")
     public ResponseEntity<SalSchemeItemDTO> getBySalItem(@PathVariable("salitem_id") String salitem_id, @PathVariable("salschemeitem_id") String salschemeitem_id) {
         SalSchemeItem domain = salschemeitemService.get(salschemeitem_id);
@@ -214,7 +214,7 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemService.get(#salschemeitem_id),'ehr-SalSchemeItem-Remove')")
-    @ApiOperation(value = "RemoveBySalItem", tags = {"SalSchemeItem" },  notes = "RemoveBySalItem")
+    @ApiOperation(value = "根据薪酬要素项删除工资单要素项", tags = {"工资单要素项" },  notes = "根据薪酬要素项删除工资单要素项")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salitems/{salitem_id}/salschemeitems/{salschemeitem_id}")
     @Transactional
     public ResponseEntity<Boolean> removeBySalItem(@PathVariable("salitem_id") String salitem_id, @PathVariable("salschemeitem_id") String salschemeitem_id) {
@@ -222,21 +222,21 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemService.getSalschemeitemByIds(#ids),'ehr-SalSchemeItem-Remove')")
-    @ApiOperation(value = "RemoveBatchBySalItem", tags = {"SalSchemeItem" },  notes = "RemoveBatchBySalItem")
+    @ApiOperation(value = "根据薪酬要素项批量删除工资单要素项", tags = {"工资单要素项" },  notes = "根据薪酬要素项批量删除工资单要素项")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salitems/{salitem_id}/salschemeitems/batch")
     public ResponseEntity<Boolean> removeBatchBySalItem(@RequestBody List<String> ids) {
         salschemeitemService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyBySalItem", tags = {"SalSchemeItem" },  notes = "CheckKeyBySalItem")
+    @ApiOperation(value = "根据薪酬要素项检查工资单要素项", tags = {"工资单要素项" },  notes = "根据薪酬要素项检查工资单要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/{salitem_id}/salschemeitems/checkkey")
     public ResponseEntity<Boolean> checkKeyBySalItem(@PathVariable("salitem_id") String salitem_id, @RequestBody SalSchemeItemDTO salschemeitemdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salschemeitemService.checkKey(salschemeitemMapping.toDomain(salschemeitemdto)));
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdto),'ehr-SalSchemeItem-Create')")
-    @ApiOperation(value = "CreateBySalItem", tags = {"SalSchemeItem" },  notes = "CreateBySalItem")
+    @ApiOperation(value = "根据薪酬要素项建立工资单要素项", tags = {"工资单要素项" },  notes = "根据薪酬要素项建立工资单要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/{salitem_id}/salschemeitems")
     @Transactional
     public ResponseEntity<SalSchemeItemDTO> createBySalItem(@PathVariable("salitem_id") String salitem_id, @RequestBody SalSchemeItemDTO salschemeitemdto) {
@@ -248,7 +248,7 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdtos),'ehr-SalSchemeItem-Create')")
-    @ApiOperation(value = "createBatchBySalItem", tags = {"SalSchemeItem" },  notes = "createBatchBySalItem")
+    @ApiOperation(value = "根据薪酬要素项批量建立工资单要素项", tags = {"工资单要素项" },  notes = "根据薪酬要素项批量建立工资单要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salitems/{salitem_id}/salschemeitems/batch")
     public ResponseEntity<Boolean> createBatchBySalItem(@PathVariable("salitem_id") String salitem_id, @RequestBody List<SalSchemeItemDTO> salschemeitemdtos) {
         List<SalSchemeItem> domainlist=salschemeitemMapping.toDomain(salschemeitemdtos);
@@ -259,7 +259,7 @@ public class SalSchemeItemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftBySalItem", tags = {"SalSchemeItem" },  notes = "GetDraftBySalItem")
+    @ApiOperation(value = "根据薪酬要素项获取工资单要素项草稿", tags = {"工资单要素项" },  notes = "根据薪酬要素项获取工资单要素项草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/salitems/{salitem_id}/salschemeitems/getdraft")
     public ResponseEntity<SalSchemeItemDTO> getDraftBySalItem(@PathVariable("salitem_id") String salitem_id) {
         SalSchemeItem domain = new SalSchemeItem();
@@ -268,7 +268,7 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalSchemeItem-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTBySalItem", tags = {"SalSchemeItem" } ,notes = "fetchDEFAULTBySalItem")
+	@ApiOperation(value = "根据薪酬要素项获取DEFAULT", tags = {"工资单要素项" } ,notes = "根据薪酬要素项获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salitems/{salitem_id}/salschemeitems/fetchdefault")
 	public ResponseEntity<List<SalSchemeItemDTO>> fetchSalSchemeItemDefaultBySalItem(@PathVariable("salitem_id") String salitem_id,SalSchemeItemSearchContext context) {
         context.setN_salitemid_eq(salitem_id);
@@ -282,7 +282,7 @@ public class SalSchemeItemResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalSchemeItem-Default-all')")
-	@ApiOperation(value = "searchDEFAULTBySalItem", tags = {"SalSchemeItem" } ,notes = "searchDEFAULTBySalItem")
+	@ApiOperation(value = "根据薪酬要素项查询DEFAULT", tags = {"工资单要素项" } ,notes = "根据薪酬要素项查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salitems/{salitem_id}/salschemeitems/searchdefault")
 	public ResponseEntity<Page<SalSchemeItemDTO>> searchSalSchemeItemDefaultBySalItem(@PathVariable("salitem_id") String salitem_id, @RequestBody SalSchemeItemSearchContext context) {
         context.setN_salitemid_eq(salitem_id);
@@ -291,7 +291,7 @@ public class SalSchemeItemResource {
                 .body(new PageImpl(salschemeitemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.salschemeitemService.get(#salschemeitem_id),'ehr-SalSchemeItem-Update')")
-    @ApiOperation(value = "UpdateBySalScheme", tags = {"SalSchemeItem" },  notes = "UpdateBySalScheme")
+    @ApiOperation(value = "根据工资单更新工资单要素项", tags = {"工资单要素项" },  notes = "根据工资单更新工资单要素项")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salschemes/{salscheme_id}/salschemeitems/{salschemeitem_id}")
     @Transactional
     public ResponseEntity<SalSchemeItemDTO> updateBySalScheme(@PathVariable("salscheme_id") String salscheme_id, @PathVariable("salschemeitem_id") String salschemeitem_id, @RequestBody SalSchemeItemDTO salschemeitemdto) {
@@ -304,7 +304,7 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemService.getSalschemeitemByEntities(this.salschemeitemMapping.toDomain(#salschemeitemdtos)),'ehr-SalSchemeItem-Update')")
-    @ApiOperation(value = "UpdateBatchBySalScheme", tags = {"SalSchemeItem" },  notes = "UpdateBatchBySalScheme")
+    @ApiOperation(value = "根据工资单批量更新工资单要素项", tags = {"工资单要素项" },  notes = "根据工资单批量更新工资单要素项")
 	@RequestMapping(method = RequestMethod.PUT, value = "/salschemes/{salscheme_id}/salschemeitems/batch")
     public ResponseEntity<Boolean> updateBatchBySalScheme(@PathVariable("salscheme_id") String salscheme_id, @RequestBody List<SalSchemeItemDTO> salschemeitemdtos) {
         List<SalSchemeItem> domainlist=salschemeitemMapping.toDomain(salschemeitemdtos);
@@ -316,7 +316,7 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdto),'ehr-SalSchemeItem-Save')")
-    @ApiOperation(value = "SaveBySalScheme", tags = {"SalSchemeItem" },  notes = "SaveBySalScheme")
+    @ApiOperation(value = "根据工资单保存工资单要素项", tags = {"工资单要素项" },  notes = "根据工资单保存工资单要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemes/{salscheme_id}/salschemeitems/save")
     public ResponseEntity<Boolean> saveBySalScheme(@PathVariable("salscheme_id") String salscheme_id, @RequestBody SalSchemeItemDTO salschemeitemdto) {
         SalSchemeItem domain = salschemeitemMapping.toDomain(salschemeitemdto);
@@ -325,7 +325,7 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdtos),'ehr-SalSchemeItem-Save')")
-    @ApiOperation(value = "SaveBatchBySalScheme", tags = {"SalSchemeItem" },  notes = "SaveBatchBySalScheme")
+    @ApiOperation(value = "根据工资单批量保存工资单要素项", tags = {"工资单要素项" },  notes = "根据工资单批量保存工资单要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemes/{salscheme_id}/salschemeitems/savebatch")
     public ResponseEntity<Boolean> saveBatchBySalScheme(@PathVariable("salscheme_id") String salscheme_id, @RequestBody List<SalSchemeItemDTO> salschemeitemdtos) {
         List<SalSchemeItem> domainlist=salschemeitemMapping.toDomain(salschemeitemdtos);
@@ -337,7 +337,7 @@ public class SalSchemeItemResource {
     }
 
     @PostAuthorize("hasPermission(this.salschemeitemMapping.toDomain(returnObject.body),'ehr-SalSchemeItem-Get')")
-    @ApiOperation(value = "GetBySalScheme", tags = {"SalSchemeItem" },  notes = "GetBySalScheme")
+    @ApiOperation(value = "根据工资单获取工资单要素项", tags = {"工资单要素项" },  notes = "根据工资单获取工资单要素项")
 	@RequestMapping(method = RequestMethod.GET, value = "/salschemes/{salscheme_id}/salschemeitems/{salschemeitem_id}")
     public ResponseEntity<SalSchemeItemDTO> getBySalScheme(@PathVariable("salscheme_id") String salscheme_id, @PathVariable("salschemeitem_id") String salschemeitem_id) {
         SalSchemeItem domain = salschemeitemService.get(salschemeitem_id);
@@ -346,7 +346,7 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemService.get(#salschemeitem_id),'ehr-SalSchemeItem-Remove')")
-    @ApiOperation(value = "RemoveBySalScheme", tags = {"SalSchemeItem" },  notes = "RemoveBySalScheme")
+    @ApiOperation(value = "根据工资单删除工资单要素项", tags = {"工资单要素项" },  notes = "根据工资单删除工资单要素项")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salschemes/{salscheme_id}/salschemeitems/{salschemeitem_id}")
     @Transactional
     public ResponseEntity<Boolean> removeBySalScheme(@PathVariable("salscheme_id") String salscheme_id, @PathVariable("salschemeitem_id") String salschemeitem_id) {
@@ -354,21 +354,21 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemService.getSalschemeitemByIds(#ids),'ehr-SalSchemeItem-Remove')")
-    @ApiOperation(value = "RemoveBatchBySalScheme", tags = {"SalSchemeItem" },  notes = "RemoveBatchBySalScheme")
+    @ApiOperation(value = "根据工资单批量删除工资单要素项", tags = {"工资单要素项" },  notes = "根据工资单批量删除工资单要素项")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/salschemes/{salscheme_id}/salschemeitems/batch")
     public ResponseEntity<Boolean> removeBatchBySalScheme(@RequestBody List<String> ids) {
         salschemeitemService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyBySalScheme", tags = {"SalSchemeItem" },  notes = "CheckKeyBySalScheme")
+    @ApiOperation(value = "根据工资单检查工资单要素项", tags = {"工资单要素项" },  notes = "根据工资单检查工资单要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemes/{salscheme_id}/salschemeitems/checkkey")
     public ResponseEntity<Boolean> checkKeyBySalScheme(@PathVariable("salscheme_id") String salscheme_id, @RequestBody SalSchemeItemDTO salschemeitemdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(salschemeitemService.checkKey(salschemeitemMapping.toDomain(salschemeitemdto)));
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdto),'ehr-SalSchemeItem-Create')")
-    @ApiOperation(value = "CreateBySalScheme", tags = {"SalSchemeItem" },  notes = "CreateBySalScheme")
+    @ApiOperation(value = "根据工资单建立工资单要素项", tags = {"工资单要素项" },  notes = "根据工资单建立工资单要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemes/{salscheme_id}/salschemeitems")
     @Transactional
     public ResponseEntity<SalSchemeItemDTO> createBySalScheme(@PathVariable("salscheme_id") String salscheme_id, @RequestBody SalSchemeItemDTO salschemeitemdto) {
@@ -380,7 +380,7 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.salschemeitemMapping.toDomain(#salschemeitemdtos),'ehr-SalSchemeItem-Create')")
-    @ApiOperation(value = "createBatchBySalScheme", tags = {"SalSchemeItem" },  notes = "createBatchBySalScheme")
+    @ApiOperation(value = "根据工资单批量建立工资单要素项", tags = {"工资单要素项" },  notes = "根据工资单批量建立工资单要素项")
 	@RequestMapping(method = RequestMethod.POST, value = "/salschemes/{salscheme_id}/salschemeitems/batch")
     public ResponseEntity<Boolean> createBatchBySalScheme(@PathVariable("salscheme_id") String salscheme_id, @RequestBody List<SalSchemeItemDTO> salschemeitemdtos) {
         List<SalSchemeItem> domainlist=salschemeitemMapping.toDomain(salschemeitemdtos);
@@ -391,7 +391,7 @@ public class SalSchemeItemResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftBySalScheme", tags = {"SalSchemeItem" },  notes = "GetDraftBySalScheme")
+    @ApiOperation(value = "根据工资单获取工资单要素项草稿", tags = {"工资单要素项" },  notes = "根据工资单获取工资单要素项草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/salschemes/{salscheme_id}/salschemeitems/getdraft")
     public ResponseEntity<SalSchemeItemDTO> getDraftBySalScheme(@PathVariable("salscheme_id") String salscheme_id) {
         SalSchemeItem domain = new SalSchemeItem();
@@ -400,7 +400,7 @@ public class SalSchemeItemResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalSchemeItem-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTBySalScheme", tags = {"SalSchemeItem" } ,notes = "fetchDEFAULTBySalScheme")
+	@ApiOperation(value = "根据工资单获取DEFAULT", tags = {"工资单要素项" } ,notes = "根据工资单获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/salschemes/{salscheme_id}/salschemeitems/fetchdefault")
 	public ResponseEntity<List<SalSchemeItemDTO>> fetchSalSchemeItemDefaultBySalScheme(@PathVariable("salscheme_id") String salscheme_id,SalSchemeItemSearchContext context) {
         context.setN_salschemeid_eq(salscheme_id);
@@ -414,7 +414,7 @@ public class SalSchemeItemResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SalSchemeItem-Default-all')")
-	@ApiOperation(value = "searchDEFAULTBySalScheme", tags = {"SalSchemeItem" } ,notes = "searchDEFAULTBySalScheme")
+	@ApiOperation(value = "根据工资单查询DEFAULT", tags = {"工资单要素项" } ,notes = "根据工资单查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/salschemes/{salscheme_id}/salschemeitems/searchdefault")
 	public ResponseEntity<Page<SalSchemeItemDTO>> searchSalSchemeItemDefaultBySalScheme(@PathVariable("salscheme_id") String salscheme_id, @RequestBody SalSchemeItemSearchContext context) {
         context.setN_salschemeid_eq(salscheme_id);

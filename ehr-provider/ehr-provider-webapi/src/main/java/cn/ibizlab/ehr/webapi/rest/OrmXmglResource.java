@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.orm.service.IOrmXmglService;
 import cn.ibizlab.ehr.core.orm.filter.OrmXmglSearchContext;
 
 @Slf4j
-@Api(tags = {"OrmXmgl" })
+@Api(tags = {"项目管理" })
 @RestController("WebApi-ormxmgl")
 @RequestMapping("")
 public class OrmXmglResource {
@@ -47,7 +47,7 @@ public class OrmXmglResource {
     public OrmXmglMapping ormxmglMapping;
 
     @PostAuthorize("hasPermission(this.ormxmglMapping.toDomain(returnObject.body),'ehr-OrmXmgl-Get')")
-    @ApiOperation(value = "Get", tags = {"OrmXmgl" },  notes = "Get")
+    @ApiOperation(value = "获取项目管理", tags = {"项目管理" },  notes = "获取项目管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormxmgls/{ormxmgl_id}")
     public ResponseEntity<OrmXmglDTO> get(@PathVariable("ormxmgl_id") String ormxmgl_id) {
         OrmXmgl domain = ormxmglService.get(ormxmgl_id);
@@ -55,20 +55,20 @@ public class OrmXmglResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"OrmXmgl" },  notes = "CheckKey")
+    @ApiOperation(value = "检查项目管理", tags = {"项目管理" },  notes = "检查项目管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmgls/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody OrmXmglDTO ormxmgldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormxmglService.checkKey(ormxmglMapping.toDomain(ormxmgldto)));
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"OrmXmgl" },  notes = "GetDraft")
+    @ApiOperation(value = "获取项目管理草稿", tags = {"项目管理" },  notes = "获取项目管理草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormxmgls/getdraft")
     public ResponseEntity<OrmXmglDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormxmglMapping.toDto(ormxmglService.getDraft(new OrmXmgl())));
     }
 
     @PreAuthorize("hasPermission(this.ormxmglService.get(#ormxmgl_id),'ehr-OrmXmgl-Update')")
-    @ApiOperation(value = "Update", tags = {"OrmXmgl" },  notes = "Update")
+    @ApiOperation(value = "更新项目管理", tags = {"项目管理" },  notes = "更新项目管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormxmgls/{ormxmgl_id}")
     @Transactional
     public ResponseEntity<OrmXmglDTO> update(@PathVariable("ormxmgl_id") String ormxmgl_id, @RequestBody OrmXmglDTO ormxmgldto) {
@@ -80,7 +80,7 @@ public class OrmXmglResource {
     }
 
     @PreAuthorize("hasPermission(this.ormxmglService.getOrmxmglByEntities(this.ormxmglMapping.toDomain(#ormxmgldtos)),'ehr-OrmXmgl-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"OrmXmgl" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新项目管理", tags = {"项目管理" },  notes = "批量更新项目管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormxmgls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrmXmglDTO> ormxmgldtos) {
         ormxmglService.updateBatch(ormxmglMapping.toDomain(ormxmgldtos));
@@ -88,7 +88,7 @@ public class OrmXmglResource {
     }
 
     @PreAuthorize("hasPermission(this.ormxmglMapping.toDomain(#ormxmgldto),'ehr-OrmXmgl-Create')")
-    @ApiOperation(value = "Create", tags = {"OrmXmgl" },  notes = "Create")
+    @ApiOperation(value = "新建项目管理", tags = {"项目管理" },  notes = "新建项目管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmgls")
     @Transactional
     public ResponseEntity<OrmXmglDTO> create(@RequestBody OrmXmglDTO ormxmgldto) {
@@ -99,7 +99,7 @@ public class OrmXmglResource {
     }
 
     @PreAuthorize("hasPermission(this.ormxmglMapping.toDomain(#ormxmgldtos),'ehr-OrmXmgl-Create')")
-    @ApiOperation(value = "createBatch", tags = {"OrmXmgl" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建项目管理", tags = {"项目管理" },  notes = "批量新建项目管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmgls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrmXmglDTO> ormxmgldtos) {
         ormxmglService.createBatch(ormxmglMapping.toDomain(ormxmgldtos));
@@ -107,7 +107,7 @@ public class OrmXmglResource {
     }
 
     @PreAuthorize("hasPermission(this.ormxmglService.get(#ormxmgl_id),'ehr-OrmXmgl-Remove')")
-    @ApiOperation(value = "Remove", tags = {"OrmXmgl" },  notes = "Remove")
+    @ApiOperation(value = "删除项目管理", tags = {"项目管理" },  notes = "删除项目管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmgls/{ormxmgl_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("ormxmgl_id") String ormxmgl_id) {
@@ -115,7 +115,7 @@ public class OrmXmglResource {
     }
 
     @PreAuthorize("hasPermission(this.ormxmglService.getOrmxmglByIds(#ids),'ehr-OrmXmgl-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"OrmXmgl" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除项目管理", tags = {"项目管理" },  notes = "批量删除项目管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormxmgls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         ormxmglService.removeBatch(ids);
@@ -123,7 +123,7 @@ public class OrmXmglResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmgl-Synchro-all')")
-    @ApiOperation(value = "同步项目信息", tags = {"OrmXmgl" },  notes = "同步项目信息")
+    @ApiOperation(value = "同步项目信息", tags = {"项目管理" },  notes = "同步项目信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmgls/{ormxmgl_id}/synchro")
     @Transactional
     public ResponseEntity<OrmXmglDTO> synchro(@PathVariable("ormxmgl_id") String ormxmgl_id, @RequestBody OrmXmglDTO ormxmgldto) {
@@ -135,14 +135,14 @@ public class OrmXmglResource {
     }
 
     @PreAuthorize("hasPermission(this.ormxmglMapping.toDomain(#ormxmgldto),'ehr-OrmXmgl-Save')")
-    @ApiOperation(value = "Save", tags = {"OrmXmgl" },  notes = "Save")
+    @ApiOperation(value = "保存项目管理", tags = {"项目管理" },  notes = "保存项目管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmgls/save")
     public ResponseEntity<Boolean> save(@RequestBody OrmXmglDTO ormxmgldto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormxmglService.save(ormxmglMapping.toDomain(ormxmgldto)));
     }
 
     @PreAuthorize("hasPermission(this.ormxmglMapping.toDomain(#ormxmgldtos),'ehr-OrmXmgl-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"OrmXmgl" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存项目管理", tags = {"项目管理" },  notes = "批量保存项目管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormxmgls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<OrmXmglDTO> ormxmgldtos) {
         ormxmglService.saveBatch(ormxmglMapping.toDomain(ormxmgldtos));
@@ -150,7 +150,7 @@ public class OrmXmglResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmgl-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"OrmXmgl" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"项目管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmgls/fetchdefault")
 	public ResponseEntity<List<OrmXmglDTO>> fetchDefault(OrmXmglSearchContext context) {
         Page<OrmXmgl> domains = ormxmglService.searchDefault(context) ;
@@ -163,7 +163,7 @@ public class OrmXmglResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmgl-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"OrmXmgl" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmgls/searchdefault")
 	public ResponseEntity<Page<OrmXmglDTO>> searchDefault(@RequestBody OrmXmglSearchContext context) {
         Page<OrmXmgl> domains = ormxmglService.searchDefault(context) ;
@@ -171,7 +171,7 @@ public class OrmXmglResource {
                 .body(new PageImpl(ormxmglMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmgl-ValidPro-all')")
-	@ApiOperation(value = "fetch有效项目", tags = {"OrmXmgl" } ,notes = "fetch有效项目")
+	@ApiOperation(value = "获取有效项目", tags = {"项目管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormxmgls/fetchvalidpro")
 	public ResponseEntity<List<OrmXmglDTO>> fetchValidPro(OrmXmglSearchContext context) {
         Page<OrmXmgl> domains = ormxmglService.searchValidPro(context) ;
@@ -184,7 +184,7 @@ public class OrmXmglResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmXmgl-ValidPro-all')")
-	@ApiOperation(value = "search有效项目", tags = {"OrmXmgl" } ,notes = "search有效项目")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"项目管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormxmgls/searchvalidpro")
 	public ResponseEntity<Page<OrmXmglDTO>> searchValidPro(@RequestBody OrmXmglSearchContext context) {
         Page<OrmXmgl> domains = ormxmglService.searchValidPro(context) ;

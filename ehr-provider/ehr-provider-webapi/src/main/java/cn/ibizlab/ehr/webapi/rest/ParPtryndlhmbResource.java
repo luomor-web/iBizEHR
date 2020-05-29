@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.par.service.IParPtryndlhmbService;
 import cn.ibizlab.ehr.core.par.filter.ParPtryndlhmbSearchContext;
 
 @Slf4j
-@Api(tags = {"ParPtryndlhmb" })
+@Api(tags = {"年度量化目标（部门副职及以下人员）" })
 @RestController("WebApi-parptryndlhmb")
 @RequestMapping("")
 public class ParPtryndlhmbResource {
@@ -47,7 +47,7 @@ public class ParPtryndlhmbResource {
     public ParPtryndlhmbMapping parptryndlhmbMapping;
 
     @PostAuthorize("hasPermission(this.parptryndlhmbMapping.toDomain(returnObject.body),'ehr-ParPtryndlhmb-Get')")
-    @ApiOperation(value = "Get", tags = {"ParPtryndlhmb" },  notes = "Get")
+    @ApiOperation(value = "获取年度量化目标（部门副职及以下人员）", tags = {"年度量化目标（部门副职及以下人员）" },  notes = "获取年度量化目标（部门副职及以下人员）")
 	@RequestMapping(method = RequestMethod.GET, value = "/parptryndlhmbs/{parptryndlhmb_id}")
     public ResponseEntity<ParPtryndlhmbDTO> get(@PathVariable("parptryndlhmb_id") String parptryndlhmb_id) {
         ParPtryndlhmb domain = parptryndlhmbService.get(parptryndlhmb_id);
@@ -56,7 +56,7 @@ public class ParPtryndlhmbResource {
     }
 
     @PreAuthorize("hasPermission(this.parptryndlhmbMapping.toDomain(#parptryndlhmbdto),'ehr-ParPtryndlhmb-Create')")
-    @ApiOperation(value = "Create", tags = {"ParPtryndlhmb" },  notes = "Create")
+    @ApiOperation(value = "新建年度量化目标（部门副职及以下人员）", tags = {"年度量化目标（部门副职及以下人员）" },  notes = "新建年度量化目标（部门副职及以下人员）")
 	@RequestMapping(method = RequestMethod.POST, value = "/parptryndlhmbs")
     @Transactional
     public ResponseEntity<ParPtryndlhmbDTO> create(@RequestBody ParPtryndlhmbDTO parptryndlhmbdto) {
@@ -67,7 +67,7 @@ public class ParPtryndlhmbResource {
     }
 
     @PreAuthorize("hasPermission(this.parptryndlhmbMapping.toDomain(#parptryndlhmbdtos),'ehr-ParPtryndlhmb-Create')")
-    @ApiOperation(value = "createBatch", tags = {"ParPtryndlhmb" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建年度量化目标（部门副职及以下人员）", tags = {"年度量化目标（部门副职及以下人员）" },  notes = "批量新建年度量化目标（部门副职及以下人员）")
 	@RequestMapping(method = RequestMethod.POST, value = "/parptryndlhmbs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ParPtryndlhmbDTO> parptryndlhmbdtos) {
         parptryndlhmbService.createBatch(parptryndlhmbMapping.toDomain(parptryndlhmbdtos));
@@ -75,7 +75,7 @@ public class ParPtryndlhmbResource {
     }
 
     @PreAuthorize("hasPermission(this.parptryndlhmbService.get(#parptryndlhmb_id),'ehr-ParPtryndlhmb-Remove')")
-    @ApiOperation(value = "Remove", tags = {"ParPtryndlhmb" },  notes = "Remove")
+    @ApiOperation(value = "删除年度量化目标（部门副职及以下人员）", tags = {"年度量化目标（部门副职及以下人员）" },  notes = "删除年度量化目标（部门副职及以下人员）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parptryndlhmbs/{parptryndlhmb_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("parptryndlhmb_id") String parptryndlhmb_id) {
@@ -83,7 +83,7 @@ public class ParPtryndlhmbResource {
     }
 
     @PreAuthorize("hasPermission(this.parptryndlhmbService.getParptryndlhmbByIds(#ids),'ehr-ParPtryndlhmb-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"ParPtryndlhmb" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除年度量化目标（部门副职及以下人员）", tags = {"年度量化目标（部门副职及以下人员）" },  notes = "批量删除年度量化目标（部门副职及以下人员）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parptryndlhmbs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         parptryndlhmbService.removeBatch(ids);
@@ -91,7 +91,7 @@ public class ParPtryndlhmbResource {
     }
 
     @PreAuthorize("hasPermission(this.parptryndlhmbService.get(#parptryndlhmb_id),'ehr-ParPtryndlhmb-Update')")
-    @ApiOperation(value = "Update", tags = {"ParPtryndlhmb" },  notes = "Update")
+    @ApiOperation(value = "更新年度量化目标（部门副职及以下人员）", tags = {"年度量化目标（部门副职及以下人员）" },  notes = "更新年度量化目标（部门副职及以下人员）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parptryndlhmbs/{parptryndlhmb_id}")
     @Transactional
     public ResponseEntity<ParPtryndlhmbDTO> update(@PathVariable("parptryndlhmb_id") String parptryndlhmb_id, @RequestBody ParPtryndlhmbDTO parptryndlhmbdto) {
@@ -103,7 +103,7 @@ public class ParPtryndlhmbResource {
     }
 
     @PreAuthorize("hasPermission(this.parptryndlhmbService.getParptryndlhmbByEntities(this.parptryndlhmbMapping.toDomain(#parptryndlhmbdtos)),'ehr-ParPtryndlhmb-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"ParPtryndlhmb" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新年度量化目标（部门副职及以下人员）", tags = {"年度量化目标（部门副职及以下人员）" },  notes = "批量更新年度量化目标（部门副职及以下人员）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parptryndlhmbs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ParPtryndlhmbDTO> parptryndlhmbdtos) {
         parptryndlhmbService.updateBatch(parptryndlhmbMapping.toDomain(parptryndlhmbdtos));
@@ -111,34 +111,34 @@ public class ParPtryndlhmbResource {
     }
 
     @PreAuthorize("hasPermission(this.parptryndlhmbMapping.toDomain(#parptryndlhmbdto),'ehr-ParPtryndlhmb-Save')")
-    @ApiOperation(value = "Save", tags = {"ParPtryndlhmb" },  notes = "Save")
+    @ApiOperation(value = "保存年度量化目标（部门副职及以下人员）", tags = {"年度量化目标（部门副职及以下人员）" },  notes = "保存年度量化目标（部门副职及以下人员）")
 	@RequestMapping(method = RequestMethod.POST, value = "/parptryndlhmbs/save")
     public ResponseEntity<Boolean> save(@RequestBody ParPtryndlhmbDTO parptryndlhmbdto) {
         return ResponseEntity.status(HttpStatus.OK).body(parptryndlhmbService.save(parptryndlhmbMapping.toDomain(parptryndlhmbdto)));
     }
 
     @PreAuthorize("hasPermission(this.parptryndlhmbMapping.toDomain(#parptryndlhmbdtos),'ehr-ParPtryndlhmb-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"ParPtryndlhmb" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存年度量化目标（部门副职及以下人员）", tags = {"年度量化目标（部门副职及以下人员）" },  notes = "批量保存年度量化目标（部门副职及以下人员）")
 	@RequestMapping(method = RequestMethod.POST, value = "/parptryndlhmbs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ParPtryndlhmbDTO> parptryndlhmbdtos) {
         parptryndlhmbService.saveBatch(parptryndlhmbMapping.toDomain(parptryndlhmbdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"ParPtryndlhmb" },  notes = "GetDraft")
+    @ApiOperation(value = "获取年度量化目标（部门副职及以下人员）草稿", tags = {"年度量化目标（部门副职及以下人员）" },  notes = "获取年度量化目标（部门副职及以下人员）草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/parptryndlhmbs/getdraft")
     public ResponseEntity<ParPtryndlhmbDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(parptryndlhmbMapping.toDto(parptryndlhmbService.getDraft(new ParPtryndlhmb())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"ParPtryndlhmb" },  notes = "CheckKey")
+    @ApiOperation(value = "检查年度量化目标（部门副职及以下人员）", tags = {"年度量化目标（部门副职及以下人员）" },  notes = "检查年度量化目标（部门副职及以下人员）")
 	@RequestMapping(method = RequestMethod.POST, value = "/parptryndlhmbs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ParPtryndlhmbDTO parptryndlhmbdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parptryndlhmbService.checkKey(parptryndlhmbMapping.toDomain(parptryndlhmbdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParPtryndlhmb-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"ParPtryndlhmb" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"年度量化目标（部门副职及以下人员）" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/parptryndlhmbs/fetchdefault")
 	public ResponseEntity<List<ParPtryndlhmbDTO>> fetchDefault(ParPtryndlhmbSearchContext context) {
         Page<ParPtryndlhmb> domains = parptryndlhmbService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ParPtryndlhmbResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParPtryndlhmb-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"ParPtryndlhmb" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"年度量化目标（部门副职及以下人员）" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/parptryndlhmbs/searchdefault")
 	public ResponseEntity<Page<ParPtryndlhmbDTO>> searchDefault(@RequestBody ParPtryndlhmbSearchContext context) {
         Page<ParPtryndlhmb> domains = parptryndlhmbService.searchDefault(context) ;

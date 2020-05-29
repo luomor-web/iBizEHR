@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.soc.service.ISocCompanyWelService;
 import cn.ibizlab.ehr.core.soc.filter.SocCompanyWelSearchContext;
 
 @Slf4j
-@Api(tags = {"SocCompanyWel" })
+@Api(tags = {"单位社保账户" })
 @RestController("WebApi-soccompanywel")
 @RequestMapping("")
 public class SocCompanyWelResource {
@@ -47,7 +47,7 @@ public class SocCompanyWelResource {
     public SocCompanyWelMapping soccompanywelMapping;
 
     @PreAuthorize("hasPermission(this.soccompanywelMapping.toDomain(#soccompanyweldto),'ehr-SocCompanyWel-Create')")
-    @ApiOperation(value = "Create", tags = {"SocCompanyWel" },  notes = "Create")
+    @ApiOperation(value = "新建单位社保账户", tags = {"单位社保账户" },  notes = "新建单位社保账户")
 	@RequestMapping(method = RequestMethod.POST, value = "/soccompanywels")
     @Transactional
     public ResponseEntity<SocCompanyWelDTO> create(@RequestBody SocCompanyWelDTO soccompanyweldto) {
@@ -58,28 +58,28 @@ public class SocCompanyWelResource {
     }
 
     @PreAuthorize("hasPermission(this.soccompanywelMapping.toDomain(#soccompanyweldtos),'ehr-SocCompanyWel-Create')")
-    @ApiOperation(value = "createBatch", tags = {"SocCompanyWel" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建单位社保账户", tags = {"单位社保账户" },  notes = "批量新建单位社保账户")
 	@RequestMapping(method = RequestMethod.POST, value = "/soccompanywels/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<SocCompanyWelDTO> soccompanyweldtos) {
         soccompanywelService.createBatch(soccompanywelMapping.toDomain(soccompanyweldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"SocCompanyWel" },  notes = "CheckKey")
+    @ApiOperation(value = "检查单位社保账户", tags = {"单位社保账户" },  notes = "检查单位社保账户")
 	@RequestMapping(method = RequestMethod.POST, value = "/soccompanywels/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody SocCompanyWelDTO soccompanyweldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(soccompanywelService.checkKey(soccompanywelMapping.toDomain(soccompanyweldto)));
     }
 
     @PreAuthorize("hasPermission(this.soccompanywelMapping.toDomain(#soccompanyweldto),'ehr-SocCompanyWel-Save')")
-    @ApiOperation(value = "Save", tags = {"SocCompanyWel" },  notes = "Save")
+    @ApiOperation(value = "保存单位社保账户", tags = {"单位社保账户" },  notes = "保存单位社保账户")
 	@RequestMapping(method = RequestMethod.POST, value = "/soccompanywels/save")
     public ResponseEntity<Boolean> save(@RequestBody SocCompanyWelDTO soccompanyweldto) {
         return ResponseEntity.status(HttpStatus.OK).body(soccompanywelService.save(soccompanywelMapping.toDomain(soccompanyweldto)));
     }
 
     @PreAuthorize("hasPermission(this.soccompanywelMapping.toDomain(#soccompanyweldtos),'ehr-SocCompanyWel-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"SocCompanyWel" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存单位社保账户", tags = {"单位社保账户" },  notes = "批量保存单位社保账户")
 	@RequestMapping(method = RequestMethod.POST, value = "/soccompanywels/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<SocCompanyWelDTO> soccompanyweldtos) {
         soccompanywelService.saveBatch(soccompanywelMapping.toDomain(soccompanyweldtos));
@@ -87,7 +87,7 @@ public class SocCompanyWelResource {
     }
 
     @PreAuthorize("hasPermission(this.soccompanywelService.get(#soccompanywel_id),'ehr-SocCompanyWel-Update')")
-    @ApiOperation(value = "Update", tags = {"SocCompanyWel" },  notes = "Update")
+    @ApiOperation(value = "更新单位社保账户", tags = {"单位社保账户" },  notes = "更新单位社保账户")
 	@RequestMapping(method = RequestMethod.PUT, value = "/soccompanywels/{soccompanywel_id}")
     @Transactional
     public ResponseEntity<SocCompanyWelDTO> update(@PathVariable("soccompanywel_id") String soccompanywel_id, @RequestBody SocCompanyWelDTO soccompanyweldto) {
@@ -99,7 +99,7 @@ public class SocCompanyWelResource {
     }
 
     @PreAuthorize("hasPermission(this.soccompanywelService.getSoccompanywelByEntities(this.soccompanywelMapping.toDomain(#soccompanyweldtos)),'ehr-SocCompanyWel-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"SocCompanyWel" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新单位社保账户", tags = {"单位社保账户" },  notes = "批量更新单位社保账户")
 	@RequestMapping(method = RequestMethod.PUT, value = "/soccompanywels/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<SocCompanyWelDTO> soccompanyweldtos) {
         soccompanywelService.updateBatch(soccompanywelMapping.toDomain(soccompanyweldtos));
@@ -107,7 +107,7 @@ public class SocCompanyWelResource {
     }
 
     @PostAuthorize("hasPermission(this.soccompanywelMapping.toDomain(returnObject.body),'ehr-SocCompanyWel-Get')")
-    @ApiOperation(value = "Get", tags = {"SocCompanyWel" },  notes = "Get")
+    @ApiOperation(value = "获取单位社保账户", tags = {"单位社保账户" },  notes = "获取单位社保账户")
 	@RequestMapping(method = RequestMethod.GET, value = "/soccompanywels/{soccompanywel_id}")
     public ResponseEntity<SocCompanyWelDTO> get(@PathVariable("soccompanywel_id") String soccompanywel_id) {
         SocCompanyWel domain = soccompanywelService.get(soccompanywel_id);
@@ -116,7 +116,7 @@ public class SocCompanyWelResource {
     }
 
     @PreAuthorize("hasPermission(this.soccompanywelService.get(#soccompanywel_id),'ehr-SocCompanyWel-Remove')")
-    @ApiOperation(value = "Remove", tags = {"SocCompanyWel" },  notes = "Remove")
+    @ApiOperation(value = "删除单位社保账户", tags = {"单位社保账户" },  notes = "删除单位社保账户")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/soccompanywels/{soccompanywel_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("soccompanywel_id") String soccompanywel_id) {
@@ -124,21 +124,21 @@ public class SocCompanyWelResource {
     }
 
     @PreAuthorize("hasPermission(this.soccompanywelService.getSoccompanywelByIds(#ids),'ehr-SocCompanyWel-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"SocCompanyWel" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除单位社保账户", tags = {"单位社保账户" },  notes = "批量删除单位社保账户")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/soccompanywels/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         soccompanywelService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"SocCompanyWel" },  notes = "GetDraft")
+    @ApiOperation(value = "获取单位社保账户草稿", tags = {"单位社保账户" },  notes = "获取单位社保账户草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/soccompanywels/getdraft")
     public ResponseEntity<SocCompanyWelDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(soccompanywelMapping.toDto(soccompanywelService.getDraft(new SocCompanyWel())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocCompanyWel-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"SocCompanyWel" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"单位社保账户" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/soccompanywels/fetchdefault")
 	public ResponseEntity<List<SocCompanyWelDTO>> fetchDefault(SocCompanyWelSearchContext context) {
         Page<SocCompanyWel> domains = soccompanywelService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class SocCompanyWelResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocCompanyWel-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"SocCompanyWel" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"单位社保账户" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/soccompanywels/searchdefault")
 	public ResponseEntity<Page<SocCompanyWelDTO>> searchDefault(@RequestBody SocCompanyWelSearchContext context) {
         Page<SocCompanyWel> domains = soccompanywelService.searchDefault(context) ;

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimQualTypeService;
 import cn.ibizlab.ehr.core.pim.filter.PimQualTypeSearchContext;
 
 @Slf4j
-@Api(tags = {"PimQualType" })
+@Api(tags = {"岗位（技能）证书" })
 @RestController("WebApi-pimqualtype")
 @RequestMapping("")
 public class PimQualTypeResource {
@@ -47,7 +47,7 @@ public class PimQualTypeResource {
     public PimQualTypeMapping pimqualtypeMapping;
 
     @PreAuthorize("hasPermission(this.pimqualtypeMapping.toDomain(#pimqualtypedto),'ehr-PimQualType-Create')")
-    @ApiOperation(value = "Create", tags = {"PimQualType" },  notes = "Create")
+    @ApiOperation(value = "新建岗位（技能）证书", tags = {"岗位（技能）证书" },  notes = "新建岗位（技能）证书")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualtypes")
     @Transactional
     public ResponseEntity<PimQualTypeDTO> create(@RequestBody PimQualTypeDTO pimqualtypedto) {
@@ -58,7 +58,7 @@ public class PimQualTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimqualtypeMapping.toDomain(#pimqualtypedtos),'ehr-PimQualType-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimQualType" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建岗位（技能）证书", tags = {"岗位（技能）证书" },  notes = "批量新建岗位（技能）证书")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualtypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimQualTypeDTO> pimqualtypedtos) {
         pimqualtypeService.createBatch(pimqualtypeMapping.toDomain(pimqualtypedtos));
@@ -66,28 +66,28 @@ public class PimQualTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimqualtypeMapping.toDomain(#pimqualtypedto),'ehr-PimQualType-Save')")
-    @ApiOperation(value = "Save", tags = {"PimQualType" },  notes = "Save")
+    @ApiOperation(value = "保存岗位（技能）证书", tags = {"岗位（技能）证书" },  notes = "保存岗位（技能）证书")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualtypes/save")
     public ResponseEntity<Boolean> save(@RequestBody PimQualTypeDTO pimqualtypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimqualtypeService.save(pimqualtypeMapping.toDomain(pimqualtypedto)));
     }
 
     @PreAuthorize("hasPermission(this.pimqualtypeMapping.toDomain(#pimqualtypedtos),'ehr-PimQualType-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimQualType" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存岗位（技能）证书", tags = {"岗位（技能）证书" },  notes = "批量保存岗位（技能）证书")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualtypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimQualTypeDTO> pimqualtypedtos) {
         pimqualtypeService.saveBatch(pimqualtypeMapping.toDomain(pimqualtypedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimQualType" },  notes = "CheckKey")
+    @ApiOperation(value = "检查岗位（技能）证书", tags = {"岗位（技能）证书" },  notes = "检查岗位（技能）证书")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimqualtypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimQualTypeDTO pimqualtypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimqualtypeService.checkKey(pimqualtypeMapping.toDomain(pimqualtypedto)));
     }
 
     @PreAuthorize("hasPermission(this.pimqualtypeService.get(#pimqualtype_id),'ehr-PimQualType-Update')")
-    @ApiOperation(value = "Update", tags = {"PimQualType" },  notes = "Update")
+    @ApiOperation(value = "更新岗位（技能）证书", tags = {"岗位（技能）证书" },  notes = "更新岗位（技能）证书")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimqualtypes/{pimqualtype_id}")
     @Transactional
     public ResponseEntity<PimQualTypeDTO> update(@PathVariable("pimqualtype_id") String pimqualtype_id, @RequestBody PimQualTypeDTO pimqualtypedto) {
@@ -99,7 +99,7 @@ public class PimQualTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimqualtypeService.getPimqualtypeByEntities(this.pimqualtypeMapping.toDomain(#pimqualtypedtos)),'ehr-PimQualType-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimQualType" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新岗位（技能）证书", tags = {"岗位（技能）证书" },  notes = "批量更新岗位（技能）证书")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimqualtypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimQualTypeDTO> pimqualtypedtos) {
         pimqualtypeService.updateBatch(pimqualtypeMapping.toDomain(pimqualtypedtos));
@@ -107,7 +107,7 @@ public class PimQualTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimqualtypeService.get(#pimqualtype_id),'ehr-PimQualType-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimQualType" },  notes = "Remove")
+    @ApiOperation(value = "删除岗位（技能）证书", tags = {"岗位（技能）证书" },  notes = "删除岗位（技能）证书")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimqualtypes/{pimqualtype_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimqualtype_id") String pimqualtype_id) {
@@ -115,7 +115,7 @@ public class PimQualTypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimqualtypeService.getPimqualtypeByIds(#ids),'ehr-PimQualType-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimQualType" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除岗位（技能）证书", tags = {"岗位（技能）证书" },  notes = "批量删除岗位（技能）证书")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimqualtypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimqualtypeService.removeBatch(ids);
@@ -123,7 +123,7 @@ public class PimQualTypeResource {
     }
 
     @PostAuthorize("hasPermission(this.pimqualtypeMapping.toDomain(returnObject.body),'ehr-PimQualType-Get')")
-    @ApiOperation(value = "Get", tags = {"PimQualType" },  notes = "Get")
+    @ApiOperation(value = "获取岗位（技能）证书", tags = {"岗位（技能）证书" },  notes = "获取岗位（技能）证书")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimqualtypes/{pimqualtype_id}")
     public ResponseEntity<PimQualTypeDTO> get(@PathVariable("pimqualtype_id") String pimqualtype_id) {
         PimQualType domain = pimqualtypeService.get(pimqualtype_id);
@@ -131,14 +131,14 @@ public class PimQualTypeResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimQualType" },  notes = "GetDraft")
+    @ApiOperation(value = "获取岗位（技能）证书草稿", tags = {"岗位（技能）证书" },  notes = "获取岗位（技能）证书草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimqualtypes/getdraft")
     public ResponseEntity<PimQualTypeDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimqualtypeMapping.toDto(pimqualtypeService.getDraft(new PimQualType())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQualType-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimQualType" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"岗位（技能）证书" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimqualtypes/fetchdefault")
 	public ResponseEntity<List<PimQualTypeDTO>> fetchDefault(PimQualTypeSearchContext context) {
         Page<PimQualType> domains = pimqualtypeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimQualTypeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimQualType-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimQualType" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"岗位（技能）证书" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimqualtypes/searchdefault")
 	public ResponseEntity<Page<PimQualTypeDTO>> searchDefault(@RequestBody PimQualTypeSearchContext context) {
         Page<PimQualType> domains = pimqualtypeService.searchDefault(context) ;

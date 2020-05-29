@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimArchivesManageService;
 import cn.ibizlab.ehr.core.pim.filter.PimArchivesManageSearchContext;
 
 @Slf4j
-@Api(tags = {"PimArchivesManage" })
+@Api(tags = {"档案管理" })
 @RestController("WebApi-pimarchivesmanage")
 @RequestMapping("")
 public class PimArchivesManageResource {
@@ -47,7 +47,7 @@ public class PimArchivesManageResource {
     public PimArchivesManageMapping pimarchivesmanageMapping;
 
     @PreAuthorize("hasPermission(this.pimarchivesmanageService.get(#pimarchivesmanage_id),'ehr-PimArchivesManage-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimArchivesManage" },  notes = "Remove")
+    @ApiOperation(value = "删除档案管理", tags = {"档案管理" },  notes = "删除档案管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchivesmanages/{pimarchivesmanage_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimarchivesmanage_id") String pimarchivesmanage_id) {
@@ -55,21 +55,21 @@ public class PimArchivesManageResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesmanageService.getPimarchivesmanageByIds(#ids),'ehr-PimArchivesManage-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimArchivesManage" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除档案管理", tags = {"档案管理" },  notes = "批量删除档案管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchivesmanages/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimarchivesmanageService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimArchivesManage" },  notes = "GetDraft")
+    @ApiOperation(value = "获取档案管理草稿", tags = {"档案管理" },  notes = "获取档案管理草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchivesmanages/getdraft")
     public ResponseEntity<PimArchivesManageDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesmanageMapping.toDto(pimarchivesmanageService.getDraft(new PimArchivesManage())));
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesmanageService.get(#pimarchivesmanage_id),'ehr-PimArchivesManage-Update')")
-    @ApiOperation(value = "Update", tags = {"PimArchivesManage" },  notes = "Update")
+    @ApiOperation(value = "更新档案管理", tags = {"档案管理" },  notes = "更新档案管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchivesmanages/{pimarchivesmanage_id}")
     @Transactional
     public ResponseEntity<PimArchivesManageDTO> update(@PathVariable("pimarchivesmanage_id") String pimarchivesmanage_id, @RequestBody PimArchivesManageDTO pimarchivesmanagedto) {
@@ -81,7 +81,7 @@ public class PimArchivesManageResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesmanageService.getPimarchivesmanageByEntities(this.pimarchivesmanageMapping.toDomain(#pimarchivesmanagedtos)),'ehr-PimArchivesManage-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimArchivesManage" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新档案管理", tags = {"档案管理" },  notes = "批量更新档案管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchivesmanages/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimArchivesManageDTO> pimarchivesmanagedtos) {
         pimarchivesmanageService.updateBatch(pimarchivesmanageMapping.toDomain(pimarchivesmanagedtos));
@@ -89,7 +89,7 @@ public class PimArchivesManageResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesmanageMapping.toDomain(#pimarchivesmanagedto),'ehr-PimArchivesManage-Create')")
-    @ApiOperation(value = "Create", tags = {"PimArchivesManage" },  notes = "Create")
+    @ApiOperation(value = "新建档案管理", tags = {"档案管理" },  notes = "新建档案管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesmanages")
     @Transactional
     public ResponseEntity<PimArchivesManageDTO> create(@RequestBody PimArchivesManageDTO pimarchivesmanagedto) {
@@ -100,7 +100,7 @@ public class PimArchivesManageResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesmanageMapping.toDomain(#pimarchivesmanagedtos),'ehr-PimArchivesManage-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimArchivesManage" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建档案管理", tags = {"档案管理" },  notes = "批量新建档案管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesmanages/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimArchivesManageDTO> pimarchivesmanagedtos) {
         pimarchivesmanageService.createBatch(pimarchivesmanageMapping.toDomain(pimarchivesmanagedtos));
@@ -108,28 +108,28 @@ public class PimArchivesManageResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesmanageMapping.toDomain(#pimarchivesmanagedto),'ehr-PimArchivesManage-Save')")
-    @ApiOperation(value = "Save", tags = {"PimArchivesManage" },  notes = "Save")
+    @ApiOperation(value = "保存档案管理", tags = {"档案管理" },  notes = "保存档案管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesmanages/save")
     public ResponseEntity<Boolean> save(@RequestBody PimArchivesManageDTO pimarchivesmanagedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesmanageService.save(pimarchivesmanageMapping.toDomain(pimarchivesmanagedto)));
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesmanageMapping.toDomain(#pimarchivesmanagedtos),'ehr-PimArchivesManage-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimArchivesManage" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存档案管理", tags = {"档案管理" },  notes = "批量保存档案管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesmanages/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimArchivesManageDTO> pimarchivesmanagedtos) {
         pimarchivesmanageService.saveBatch(pimarchivesmanageMapping.toDomain(pimarchivesmanagedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimArchivesManage" },  notes = "CheckKey")
+    @ApiOperation(value = "检查档案管理", tags = {"档案管理" },  notes = "检查档案管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesmanages/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimArchivesManageDTO pimarchivesmanagedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarchivesmanageService.checkKey(pimarchivesmanageMapping.toDomain(pimarchivesmanagedto)));
     }
 
     @PostAuthorize("hasPermission(this.pimarchivesmanageMapping.toDomain(returnObject.body),'ehr-PimArchivesManage-Get')")
-    @ApiOperation(value = "Get", tags = {"PimArchivesManage" },  notes = "Get")
+    @ApiOperation(value = "获取档案管理", tags = {"档案管理" },  notes = "获取档案管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchivesmanages/{pimarchivesmanage_id}")
     public ResponseEntity<PimArchivesManageDTO> get(@PathVariable("pimarchivesmanage_id") String pimarchivesmanage_id) {
         PimArchivesManage domain = pimarchivesmanageService.get(pimarchivesmanage_id);
@@ -138,7 +138,7 @@ public class PimArchivesManageResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchivesManage-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimArchivesManage" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"档案管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchivesmanages/fetchdefault")
 	public ResponseEntity<List<PimArchivesManageDTO>> fetchDefault(PimArchivesManageSearchContext context) {
         Page<PimArchivesManage> domains = pimarchivesmanageService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimArchivesManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchivesManage-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimArchivesManage" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchivesmanages/searchdefault")
 	public ResponseEntity<Page<PimArchivesManageDTO>> searchDefault(@RequestBody PimArchivesManageSearchContext context) {
         Page<PimArchivesManage> domains = pimarchivesmanageService.searchDefault(context) ;

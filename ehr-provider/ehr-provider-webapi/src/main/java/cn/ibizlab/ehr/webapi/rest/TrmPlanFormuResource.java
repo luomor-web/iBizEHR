@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.trm.service.ITrmPlanFormuService;
 import cn.ibizlab.ehr.core.trm.filter.TrmPlanFormuSearchContext;
 
 @Slf4j
-@Api(tags = {"TrmPlanFormu" })
+@Api(tags = {"培训计划制定" })
 @RestController("WebApi-trmplanformu")
 @RequestMapping("")
 public class TrmPlanFormuResource {
@@ -47,14 +47,14 @@ public class TrmPlanFormuResource {
     public TrmPlanFormuMapping trmplanformuMapping;
 
     @PreAuthorize("hasPermission(this.trmplanformuMapping.toDomain(#trmplanformudto),'ehr-TrmPlanFormu-Save')")
-    @ApiOperation(value = "Save", tags = {"TrmPlanFormu" },  notes = "Save")
+    @ApiOperation(value = "保存培训计划制定", tags = {"培训计划制定" },  notes = "保存培训计划制定")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmplanformus/save")
     public ResponseEntity<Boolean> save(@RequestBody TrmPlanFormuDTO trmplanformudto) {
         return ResponseEntity.status(HttpStatus.OK).body(trmplanformuService.save(trmplanformuMapping.toDomain(trmplanformudto)));
     }
 
     @PreAuthorize("hasPermission(this.trmplanformuMapping.toDomain(#trmplanformudtos),'ehr-TrmPlanFormu-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"TrmPlanFormu" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存培训计划制定", tags = {"培训计划制定" },  notes = "批量保存培训计划制定")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmplanformus/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<TrmPlanFormuDTO> trmplanformudtos) {
         trmplanformuService.saveBatch(trmplanformuMapping.toDomain(trmplanformudtos));
@@ -62,7 +62,7 @@ public class TrmPlanFormuResource {
     }
 
     @PreAuthorize("hasPermission(this.trmplanformuService.get(#trmplanformu_id),'ehr-TrmPlanFormu-Remove')")
-    @ApiOperation(value = "Remove", tags = {"TrmPlanFormu" },  notes = "Remove")
+    @ApiOperation(value = "删除培训计划制定", tags = {"培训计划制定" },  notes = "删除培训计划制定")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmplanformus/{trmplanformu_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("trmplanformu_id") String trmplanformu_id) {
@@ -70,7 +70,7 @@ public class TrmPlanFormuResource {
     }
 
     @PreAuthorize("hasPermission(this.trmplanformuService.getTrmplanformuByIds(#ids),'ehr-TrmPlanFormu-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"TrmPlanFormu" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除培训计划制定", tags = {"培训计划制定" },  notes = "批量删除培训计划制定")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/trmplanformus/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         trmplanformuService.removeBatch(ids);
@@ -78,7 +78,7 @@ public class TrmPlanFormuResource {
     }
 
     @PostAuthorize("hasPermission(this.trmplanformuMapping.toDomain(returnObject.body),'ehr-TrmPlanFormu-Get')")
-    @ApiOperation(value = "Get", tags = {"TrmPlanFormu" },  notes = "Get")
+    @ApiOperation(value = "获取培训计划制定", tags = {"培训计划制定" },  notes = "获取培训计划制定")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmplanformus/{trmplanformu_id}")
     public ResponseEntity<TrmPlanFormuDTO> get(@PathVariable("trmplanformu_id") String trmplanformu_id) {
         TrmPlanFormu domain = trmplanformuService.get(trmplanformu_id);
@@ -87,7 +87,7 @@ public class TrmPlanFormuResource {
     }
 
     @PreAuthorize("hasPermission(this.trmplanformuService.get(#trmplanformu_id),'ehr-TrmPlanFormu-Update')")
-    @ApiOperation(value = "Update", tags = {"TrmPlanFormu" },  notes = "Update")
+    @ApiOperation(value = "更新培训计划制定", tags = {"培训计划制定" },  notes = "更新培训计划制定")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmplanformus/{trmplanformu_id}")
     @Transactional
     public ResponseEntity<TrmPlanFormuDTO> update(@PathVariable("trmplanformu_id") String trmplanformu_id, @RequestBody TrmPlanFormuDTO trmplanformudto) {
@@ -99,7 +99,7 @@ public class TrmPlanFormuResource {
     }
 
     @PreAuthorize("hasPermission(this.trmplanformuService.getTrmplanformuByEntities(this.trmplanformuMapping.toDomain(#trmplanformudtos)),'ehr-TrmPlanFormu-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"TrmPlanFormu" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新培训计划制定", tags = {"培训计划制定" },  notes = "批量更新培训计划制定")
 	@RequestMapping(method = RequestMethod.PUT, value = "/trmplanformus/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<TrmPlanFormuDTO> trmplanformudtos) {
         trmplanformuService.updateBatch(trmplanformuMapping.toDomain(trmplanformudtos));
@@ -107,7 +107,7 @@ public class TrmPlanFormuResource {
     }
 
     @PreAuthorize("hasPermission(this.trmplanformuMapping.toDomain(#trmplanformudto),'ehr-TrmPlanFormu-Create')")
-    @ApiOperation(value = "Create", tags = {"TrmPlanFormu" },  notes = "Create")
+    @ApiOperation(value = "新建培训计划制定", tags = {"培训计划制定" },  notes = "新建培训计划制定")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmplanformus")
     @Transactional
     public ResponseEntity<TrmPlanFormuDTO> create(@RequestBody TrmPlanFormuDTO trmplanformudto) {
@@ -118,27 +118,27 @@ public class TrmPlanFormuResource {
     }
 
     @PreAuthorize("hasPermission(this.trmplanformuMapping.toDomain(#trmplanformudtos),'ehr-TrmPlanFormu-Create')")
-    @ApiOperation(value = "createBatch", tags = {"TrmPlanFormu" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建培训计划制定", tags = {"培训计划制定" },  notes = "批量新建培训计划制定")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmplanformus/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmPlanFormuDTO> trmplanformudtos) {
         trmplanformuService.createBatch(trmplanformuMapping.toDomain(trmplanformudtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"TrmPlanFormu" },  notes = "GetDraft")
+    @ApiOperation(value = "获取培训计划制定草稿", tags = {"培训计划制定" },  notes = "获取培训计划制定草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmplanformus/getdraft")
     public ResponseEntity<TrmPlanFormuDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(trmplanformuMapping.toDto(trmplanformuService.getDraft(new TrmPlanFormu())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"TrmPlanFormu" },  notes = "CheckKey")
+    @ApiOperation(value = "检查培训计划制定", tags = {"培训计划制定" },  notes = "检查培训计划制定")
 	@RequestMapping(method = RequestMethod.POST, value = "/trmplanformus/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmPlanFormuDTO trmplanformudto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmplanformuService.checkKey(trmplanformuMapping.toDomain(trmplanformudto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmPlanFormu-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"TrmPlanFormu" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"培训计划制定" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/trmplanformus/fetchdefault")
 	public ResponseEntity<List<TrmPlanFormuDTO>> fetchDefault(TrmPlanFormuSearchContext context) {
         Page<TrmPlanFormu> domains = trmplanformuService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class TrmPlanFormuResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmPlanFormu-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"TrmPlanFormu" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"培训计划制定" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/trmplanformus/searchdefault")
 	public ResponseEntity<Page<TrmPlanFormuDTO>> searchDefault(@RequestBody TrmPlanFormuSearchContext context) {
         Page<TrmPlanFormu> domains = trmplanformuService.searchDefault(context) ;

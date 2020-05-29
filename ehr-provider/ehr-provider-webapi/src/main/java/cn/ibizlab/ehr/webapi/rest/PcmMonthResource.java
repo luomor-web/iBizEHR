@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmMonthService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmMonthSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmMonth" })
+@Api(tags = {"月份参考表" })
 @RestController("WebApi-pcmmonth")
 @RequestMapping("")
 public class PcmMonthResource {
@@ -47,7 +47,7 @@ public class PcmMonthResource {
     public PcmMonthMapping pcmmonthMapping;
 
     @PreAuthorize("hasPermission(this.pcmmonthService.get(#pcmmonth_id),'ehr-PcmMonth-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmMonth" },  notes = "Update")
+    @ApiOperation(value = "更新月份参考表", tags = {"月份参考表" },  notes = "更新月份参考表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmmonths/{pcmmonth_id}")
     @Transactional
     public ResponseEntity<PcmMonthDTO> update(@PathVariable("pcmmonth_id") String pcmmonth_id, @RequestBody PcmMonthDTO pcmmonthdto) {
@@ -59,7 +59,7 @@ public class PcmMonthResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmmonthService.getPcmmonthByEntities(this.pcmmonthMapping.toDomain(#pcmmonthdtos)),'ehr-PcmMonth-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmMonth" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新月份参考表", tags = {"月份参考表" },  notes = "批量更新月份参考表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmmonths/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmMonthDTO> pcmmonthdtos) {
         pcmmonthService.updateBatch(pcmmonthMapping.toDomain(pcmmonthdtos));
@@ -67,7 +67,7 @@ public class PcmMonthResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmmonthService.get(#pcmmonth_id),'ehr-PcmMonth-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmMonth" },  notes = "Remove")
+    @ApiOperation(value = "删除月份参考表", tags = {"月份参考表" },  notes = "删除月份参考表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmmonths/{pcmmonth_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmmonth_id") String pcmmonth_id) {
@@ -75,7 +75,7 @@ public class PcmMonthResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmmonthService.getPcmmonthByIds(#ids),'ehr-PcmMonth-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmMonth" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除月份参考表", tags = {"月份参考表" },  notes = "批量删除月份参考表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmmonths/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmmonthService.removeBatch(ids);
@@ -83,14 +83,14 @@ public class PcmMonthResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmmonthMapping.toDomain(#pcmmonthdto),'ehr-PcmMonth-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmMonth" },  notes = "Save")
+    @ApiOperation(value = "保存月份参考表", tags = {"月份参考表" },  notes = "保存月份参考表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmmonths/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmMonthDTO pcmmonthdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmmonthService.save(pcmmonthMapping.toDomain(pcmmonthdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmmonthMapping.toDomain(#pcmmonthdtos),'ehr-PcmMonth-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmMonth" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存月份参考表", tags = {"月份参考表" },  notes = "批量保存月份参考表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmmonths/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmMonthDTO> pcmmonthdtos) {
         pcmmonthService.saveBatch(pcmmonthMapping.toDomain(pcmmonthdtos));
@@ -98,7 +98,7 @@ public class PcmMonthResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmmonthMapping.toDomain(#pcmmonthdto),'ehr-PcmMonth-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmMonth" },  notes = "Create")
+    @ApiOperation(value = "新建月份参考表", tags = {"月份参考表" },  notes = "新建月份参考表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmmonths")
     @Transactional
     public ResponseEntity<PcmMonthDTO> create(@RequestBody PcmMonthDTO pcmmonthdto) {
@@ -109,21 +109,21 @@ public class PcmMonthResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmmonthMapping.toDomain(#pcmmonthdtos),'ehr-PcmMonth-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmMonth" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建月份参考表", tags = {"月份参考表" },  notes = "批量新建月份参考表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmmonths/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmMonthDTO> pcmmonthdtos) {
         pcmmonthService.createBatch(pcmmonthMapping.toDomain(pcmmonthdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmMonth" },  notes = "CheckKey")
+    @ApiOperation(value = "检查月份参考表", tags = {"月份参考表" },  notes = "检查月份参考表")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmmonths/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmMonthDTO pcmmonthdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmmonthService.checkKey(pcmmonthMapping.toDomain(pcmmonthdto)));
     }
 
     @PostAuthorize("hasPermission(this.pcmmonthMapping.toDomain(returnObject.body),'ehr-PcmMonth-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmMonth" },  notes = "Get")
+    @ApiOperation(value = "获取月份参考表", tags = {"月份参考表" },  notes = "获取月份参考表")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmmonths/{pcmmonth_id}")
     public ResponseEntity<PcmMonthDTO> get(@PathVariable("pcmmonth_id") String pcmmonth_id) {
         PcmMonth domain = pcmmonthService.get(pcmmonth_id);
@@ -131,14 +131,14 @@ public class PcmMonthResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmMonth" },  notes = "GetDraft")
+    @ApiOperation(value = "获取月份参考表草稿", tags = {"月份参考表" },  notes = "获取月份参考表草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmmonths/getdraft")
     public ResponseEntity<PcmMonthDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmmonthMapping.toDto(pcmmonthService.getDraft(new PcmMonth())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmMonth-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmMonth" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"月份参考表" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmmonths/fetchdefault")
 	public ResponseEntity<List<PcmMonthDTO>> fetchDefault(PcmMonthSearchContext context) {
         Page<PcmMonth> domains = pcmmonthService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmMonthResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmMonth-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmMonth" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"月份参考表" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmmonths/searchdefault")
 	public ResponseEntity<Page<PcmMonthDTO>> searchDefault(@RequestBody PcmMonthSearchContext context) {
         Page<PcmMonth> domains = pcmmonthService.searchDefault(context) ;

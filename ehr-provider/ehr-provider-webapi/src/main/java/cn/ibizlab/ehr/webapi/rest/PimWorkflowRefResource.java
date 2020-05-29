@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimWorkflowRefService;
 import cn.ibizlab.ehr.core.pim.filter.PimWorkflowRefSearchContext;
 
 @Slf4j
-@Api(tags = {"PimWorkflowRef" })
+@Api(tags = {"平台流程配置" })
 @RestController("WebApi-pimworkflowref")
 @RequestMapping("")
 public class PimWorkflowRefResource {
@@ -46,14 +46,14 @@ public class PimWorkflowRefResource {
     @Lazy
     public PimWorkflowRefMapping pimworkflowrefMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"PimWorkflowRef" },  notes = "GetDraft")
+    @ApiOperation(value = "获取平台流程配置草稿", tags = {"平台流程配置" },  notes = "获取平台流程配置草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimworkflowrefs/getdraft")
     public ResponseEntity<PimWorkflowRefDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimworkflowrefMapping.toDto(pimworkflowrefService.getDraft(new PimWorkflowRef())));
     }
 
     @PreAuthorize("hasPermission(this.pimworkflowrefService.get(#pimworkflowref_id),'ehr-PimWorkflowRef-Update')")
-    @ApiOperation(value = "Update", tags = {"PimWorkflowRef" },  notes = "Update")
+    @ApiOperation(value = "更新平台流程配置", tags = {"平台流程配置" },  notes = "更新平台流程配置")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimworkflowrefs/{pimworkflowref_id}")
     @Transactional
     public ResponseEntity<PimWorkflowRefDTO> update(@PathVariable("pimworkflowref_id") String pimworkflowref_id, @RequestBody PimWorkflowRefDTO pimworkflowrefdto) {
@@ -65,7 +65,7 @@ public class PimWorkflowRefResource {
     }
 
     @PreAuthorize("hasPermission(this.pimworkflowrefService.getPimworkflowrefByEntities(this.pimworkflowrefMapping.toDomain(#pimworkflowrefdtos)),'ehr-PimWorkflowRef-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimWorkflowRef" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新平台流程配置", tags = {"平台流程配置" },  notes = "批量更新平台流程配置")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimworkflowrefs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimWorkflowRefDTO> pimworkflowrefdtos) {
         pimworkflowrefService.updateBatch(pimworkflowrefMapping.toDomain(pimworkflowrefdtos));
@@ -73,7 +73,7 @@ public class PimWorkflowRefResource {
     }
 
     @PostAuthorize("hasPermission(this.pimworkflowrefMapping.toDomain(returnObject.body),'ehr-PimWorkflowRef-Get')")
-    @ApiOperation(value = "Get", tags = {"PimWorkflowRef" },  notes = "Get")
+    @ApiOperation(value = "获取平台流程配置", tags = {"平台流程配置" },  notes = "获取平台流程配置")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimworkflowrefs/{pimworkflowref_id}")
     public ResponseEntity<PimWorkflowRefDTO> get(@PathVariable("pimworkflowref_id") String pimworkflowref_id) {
         PimWorkflowRef domain = pimworkflowrefService.get(pimworkflowref_id);
@@ -82,14 +82,14 @@ public class PimWorkflowRefResource {
     }
 
     @PreAuthorize("hasPermission(this.pimworkflowrefMapping.toDomain(#pimworkflowrefdto),'ehr-PimWorkflowRef-Save')")
-    @ApiOperation(value = "Save", tags = {"PimWorkflowRef" },  notes = "Save")
+    @ApiOperation(value = "保存平台流程配置", tags = {"平台流程配置" },  notes = "保存平台流程配置")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflowrefs/save")
     public ResponseEntity<Boolean> save(@RequestBody PimWorkflowRefDTO pimworkflowrefdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimworkflowrefService.save(pimworkflowrefMapping.toDomain(pimworkflowrefdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimworkflowrefMapping.toDomain(#pimworkflowrefdtos),'ehr-PimWorkflowRef-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimWorkflowRef" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存平台流程配置", tags = {"平台流程配置" },  notes = "批量保存平台流程配置")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflowrefs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimWorkflowRefDTO> pimworkflowrefdtos) {
         pimworkflowrefService.saveBatch(pimworkflowrefMapping.toDomain(pimworkflowrefdtos));
@@ -97,7 +97,7 @@ public class PimWorkflowRefResource {
     }
 
     @PreAuthorize("hasPermission(this.pimworkflowrefService.get(#pimworkflowref_id),'ehr-PimWorkflowRef-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimWorkflowRef" },  notes = "Remove")
+    @ApiOperation(value = "删除平台流程配置", tags = {"平台流程配置" },  notes = "删除平台流程配置")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimworkflowrefs/{pimworkflowref_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimworkflowref_id") String pimworkflowref_id) {
@@ -105,7 +105,7 @@ public class PimWorkflowRefResource {
     }
 
     @PreAuthorize("hasPermission(this.pimworkflowrefService.getPimworkflowrefByIds(#ids),'ehr-PimWorkflowRef-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimWorkflowRef" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除平台流程配置", tags = {"平台流程配置" },  notes = "批量删除平台流程配置")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimworkflowrefs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimworkflowrefService.removeBatch(ids);
@@ -113,7 +113,7 @@ public class PimWorkflowRefResource {
     }
 
     @PreAuthorize("hasPermission(this.pimworkflowrefMapping.toDomain(#pimworkflowrefdto),'ehr-PimWorkflowRef-Create')")
-    @ApiOperation(value = "Create", tags = {"PimWorkflowRef" },  notes = "Create")
+    @ApiOperation(value = "新建平台流程配置", tags = {"平台流程配置" },  notes = "新建平台流程配置")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflowrefs")
     @Transactional
     public ResponseEntity<PimWorkflowRefDTO> create(@RequestBody PimWorkflowRefDTO pimworkflowrefdto) {
@@ -124,21 +124,21 @@ public class PimWorkflowRefResource {
     }
 
     @PreAuthorize("hasPermission(this.pimworkflowrefMapping.toDomain(#pimworkflowrefdtos),'ehr-PimWorkflowRef-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimWorkflowRef" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建平台流程配置", tags = {"平台流程配置" },  notes = "批量新建平台流程配置")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflowrefs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimWorkflowRefDTO> pimworkflowrefdtos) {
         pimworkflowrefService.createBatch(pimworkflowrefMapping.toDomain(pimworkflowrefdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimWorkflowRef" },  notes = "CheckKey")
+    @ApiOperation(value = "检查平台流程配置", tags = {"平台流程配置" },  notes = "检查平台流程配置")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimworkflowrefs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimWorkflowRefDTO pimworkflowrefdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimworkflowrefService.checkKey(pimworkflowrefMapping.toDomain(pimworkflowrefdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimWorkflowRef-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimWorkflowRef" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"平台流程配置" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimworkflowrefs/fetchdefault")
 	public ResponseEntity<List<PimWorkflowRefDTO>> fetchDefault(PimWorkflowRefSearchContext context) {
         Page<PimWorkflowRef> domains = pimworkflowrefService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimWorkflowRefResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimWorkflowRef-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimWorkflowRef" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"平台流程配置" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimworkflowrefs/searchdefault")
 	public ResponseEntity<Page<PimWorkflowRefDTO>> searchDefault(@RequestBody PimWorkflowRefSearchContext context) {
         Page<PimWorkflowRef> domains = pimworkflowrefService.searchDefault(context) ;

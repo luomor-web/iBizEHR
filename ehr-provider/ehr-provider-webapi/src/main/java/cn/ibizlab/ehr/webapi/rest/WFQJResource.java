@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.vac.service.IWFQJService;
 import cn.ibizlab.ehr.core.vac.filter.WFQJSearchContext;
 
 @Slf4j
-@Api(tags = {"WFQJ" })
+@Api(tags = {"请假（WF）" })
 @RestController("WebApi-wfqj")
 @RequestMapping("")
 public class WFQJResource {
@@ -47,7 +47,7 @@ public class WFQJResource {
     public WFQJMapping wfqjMapping;
 
     @PreAuthorize("hasPermission(this.wfqjService.get(#wfqj_id),'ehr-WFQJ-Update')")
-    @ApiOperation(value = "Update", tags = {"WFQJ" },  notes = "Update")
+    @ApiOperation(value = "更新请假（WF）", tags = {"请假（WF）" },  notes = "更新请假（WF）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfqjs/{wfqj_id}")
     @Transactional
     public ResponseEntity<WFQJDTO> update(@PathVariable("wfqj_id") String wfqj_id, @RequestBody WFQJDTO wfqjdto) {
@@ -59,21 +59,21 @@ public class WFQJResource {
     }
 
     @PreAuthorize("hasPermission(this.wfqjService.getWfqjByEntities(this.wfqjMapping.toDomain(#wfqjdtos)),'ehr-WFQJ-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"WFQJ" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新请假（WF）", tags = {"请假（WF）" },  notes = "批量更新请假（WF）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wfqjs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WFQJDTO> wfqjdtos) {
         wfqjService.updateBatch(wfqjMapping.toDomain(wfqjdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"WFQJ" },  notes = "CheckKey")
+    @ApiOperation(value = "检查请假（WF）", tags = {"请假（WF）" },  notes = "检查请假（WF）")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WFQJDTO wfqjdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wfqjService.checkKey(wfqjMapping.toDomain(wfqjdto)));
     }
 
     @PreAuthorize("hasPermission(this.wfqjMapping.toDomain(#wfqjdto),'ehr-WFQJ-Create')")
-    @ApiOperation(value = "Create", tags = {"WFQJ" },  notes = "Create")
+    @ApiOperation(value = "新建请假（WF）", tags = {"请假（WF）" },  notes = "新建请假（WF）")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs")
     @Transactional
     public ResponseEntity<WFQJDTO> create(@RequestBody WFQJDTO wfqjdto) {
@@ -84,7 +84,7 @@ public class WFQJResource {
     }
 
     @PreAuthorize("hasPermission(this.wfqjMapping.toDomain(#wfqjdtos),'ehr-WFQJ-Create')")
-    @ApiOperation(value = "createBatch", tags = {"WFQJ" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建请假（WF）", tags = {"请假（WF）" },  notes = "批量新建请假（WF）")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WFQJDTO> wfqjdtos) {
         wfqjService.createBatch(wfqjMapping.toDomain(wfqjdtos));
@@ -92,28 +92,28 @@ public class WFQJResource {
     }
 
     @PreAuthorize("hasPermission(this.wfqjMapping.toDomain(#wfqjdto),'ehr-WFQJ-Save')")
-    @ApiOperation(value = "Save", tags = {"WFQJ" },  notes = "Save")
+    @ApiOperation(value = "保存请假（WF）", tags = {"请假（WF）" },  notes = "保存请假（WF）")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs/save")
     public ResponseEntity<Boolean> save(@RequestBody WFQJDTO wfqjdto) {
         return ResponseEntity.status(HttpStatus.OK).body(wfqjService.save(wfqjMapping.toDomain(wfqjdto)));
     }
 
     @PreAuthorize("hasPermission(this.wfqjMapping.toDomain(#wfqjdtos),'ehr-WFQJ-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"WFQJ" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存请假（WF）", tags = {"请假（WF）" },  notes = "批量保存请假（WF）")
 	@RequestMapping(method = RequestMethod.POST, value = "/wfqjs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WFQJDTO> wfqjdtos) {
         wfqjService.saveBatch(wfqjMapping.toDomain(wfqjdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"WFQJ" },  notes = "GetDraft")
+    @ApiOperation(value = "获取请假（WF）草稿", tags = {"请假（WF）" },  notes = "获取请假（WF）草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfqjs/getdraft")
     public ResponseEntity<WFQJDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wfqjMapping.toDto(wfqjService.getDraft(new WFQJ())));
     }
 
     @PreAuthorize("hasPermission(this.wfqjService.get(#wfqj_id),'ehr-WFQJ-Remove')")
-    @ApiOperation(value = "Remove", tags = {"WFQJ" },  notes = "Remove")
+    @ApiOperation(value = "删除请假（WF）", tags = {"请假（WF）" },  notes = "删除请假（WF）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfqjs/{wfqj_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("wfqj_id") String wfqj_id) {
@@ -121,7 +121,7 @@ public class WFQJResource {
     }
 
     @PreAuthorize("hasPermission(this.wfqjService.getWfqjByIds(#ids),'ehr-WFQJ-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"WFQJ" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除请假（WF）", tags = {"请假（WF）" },  notes = "批量删除请假（WF）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wfqjs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         wfqjService.removeBatch(ids);
@@ -129,7 +129,7 @@ public class WFQJResource {
     }
 
     @PostAuthorize("hasPermission(this.wfqjMapping.toDomain(returnObject.body),'ehr-WFQJ-Get')")
-    @ApiOperation(value = "Get", tags = {"WFQJ" },  notes = "Get")
+    @ApiOperation(value = "获取请假（WF）", tags = {"请假（WF）" },  notes = "获取请假（WF）")
 	@RequestMapping(method = RequestMethod.GET, value = "/wfqjs/{wfqj_id}")
     public ResponseEntity<WFQJDTO> get(@PathVariable("wfqj_id") String wfqj_id) {
         WFQJ domain = wfqjService.get(wfqj_id);
@@ -138,7 +138,7 @@ public class WFQJResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFQJ-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"WFQJ" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"请假（WF）" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/wfqjs/fetchdefault")
 	public ResponseEntity<List<WFQJDTO>> fetchDefault(WFQJSearchContext context) {
         Page<WFQJ> domains = wfqjService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class WFQJResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WFQJ-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"WFQJ" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假（WF）" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/wfqjs/searchdefault")
 	public ResponseEntity<Page<WFQJDTO>> searchDefault(@RequestBody WFQJSearchContext context) {
         Page<WFQJ> domains = wfqjService.searchDefault(context) ;

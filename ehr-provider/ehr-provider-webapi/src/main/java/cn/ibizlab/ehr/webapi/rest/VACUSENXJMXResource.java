@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.vac.service.IVACUSENXJMXService;
 import cn.ibizlab.ehr.core.vac.filter.VACUSENXJMXSearchContext;
 
 @Slf4j
-@Api(tags = {"VACUSENXJMX" })
+@Api(tags = {"假期使用明细" })
 @RestController("WebApi-vacusenxjmx")
 @RequestMapping("")
 public class VACUSENXJMXResource {
@@ -47,7 +47,7 @@ public class VACUSENXJMXResource {
     public VACUSENXJMXMapping vacusenxjmxMapping;
 
     @PreAuthorize("hasPermission(this.vacusenxjmxService.get(#vacusenxjmx_id),'ehr-VACUSENXJMX-Remove')")
-    @ApiOperation(value = "Remove", tags = {"VACUSENXJMX" },  notes = "Remove")
+    @ApiOperation(value = "删除假期使用明细", tags = {"假期使用明细" },  notes = "删除假期使用明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacusenxjmxes/{vacusenxjmx_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("vacusenxjmx_id") String vacusenxjmx_id) {
@@ -55,21 +55,21 @@ public class VACUSENXJMXResource {
     }
 
     @PreAuthorize("hasPermission(this.vacusenxjmxService.getVacusenxjmxByIds(#ids),'ehr-VACUSENXJMX-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"VACUSENXJMX" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除假期使用明细", tags = {"假期使用明细" },  notes = "批量删除假期使用明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacusenxjmxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         vacusenxjmxService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"VACUSENXJMX" },  notes = "CheckKey")
+    @ApiOperation(value = "检查假期使用明细", tags = {"假期使用明细" },  notes = "检查假期使用明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacusenxjmxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACUSENXJMXDTO vacusenxjmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacusenxjmxService.checkKey(vacusenxjmxMapping.toDomain(vacusenxjmxdto)));
     }
 
     @PreAuthorize("hasPermission(this.vacusenxjmxMapping.toDomain(#vacusenxjmxdto),'ehr-VACUSENXJMX-Create')")
-    @ApiOperation(value = "Create", tags = {"VACUSENXJMX" },  notes = "Create")
+    @ApiOperation(value = "新建假期使用明细", tags = {"假期使用明细" },  notes = "新建假期使用明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacusenxjmxes")
     @Transactional
     public ResponseEntity<VACUSENXJMXDTO> create(@RequestBody VACUSENXJMXDTO vacusenxjmxdto) {
@@ -80,7 +80,7 @@ public class VACUSENXJMXResource {
     }
 
     @PreAuthorize("hasPermission(this.vacusenxjmxMapping.toDomain(#vacusenxjmxdtos),'ehr-VACUSENXJMX-Create')")
-    @ApiOperation(value = "createBatch", tags = {"VACUSENXJMX" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建假期使用明细", tags = {"假期使用明细" },  notes = "批量新建假期使用明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacusenxjmxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACUSENXJMXDTO> vacusenxjmxdtos) {
         vacusenxjmxService.createBatch(vacusenxjmxMapping.toDomain(vacusenxjmxdtos));
@@ -88,7 +88,7 @@ public class VACUSENXJMXResource {
     }
 
     @PreAuthorize("hasPermission(this.vacusenxjmxService.get(#vacusenxjmx_id),'ehr-VACUSENXJMX-Update')")
-    @ApiOperation(value = "Update", tags = {"VACUSENXJMX" },  notes = "Update")
+    @ApiOperation(value = "更新假期使用明细", tags = {"假期使用明细" },  notes = "更新假期使用明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacusenxjmxes/{vacusenxjmx_id}")
     @Transactional
     public ResponseEntity<VACUSENXJMXDTO> update(@PathVariable("vacusenxjmx_id") String vacusenxjmx_id, @RequestBody VACUSENXJMXDTO vacusenxjmxdto) {
@@ -100,7 +100,7 @@ public class VACUSENXJMXResource {
     }
 
     @PreAuthorize("hasPermission(this.vacusenxjmxService.getVacusenxjmxByEntities(this.vacusenxjmxMapping.toDomain(#vacusenxjmxdtos)),'ehr-VACUSENXJMX-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"VACUSENXJMX" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新假期使用明细", tags = {"假期使用明细" },  notes = "批量更新假期使用明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacusenxjmxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACUSENXJMXDTO> vacusenxjmxdtos) {
         vacusenxjmxService.updateBatch(vacusenxjmxMapping.toDomain(vacusenxjmxdtos));
@@ -108,28 +108,28 @@ public class VACUSENXJMXResource {
     }
 
     @PreAuthorize("hasPermission(this.vacusenxjmxMapping.toDomain(#vacusenxjmxdto),'ehr-VACUSENXJMX-Save')")
-    @ApiOperation(value = "Save", tags = {"VACUSENXJMX" },  notes = "Save")
+    @ApiOperation(value = "保存假期使用明细", tags = {"假期使用明细" },  notes = "保存假期使用明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacusenxjmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody VACUSENXJMXDTO vacusenxjmxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacusenxjmxService.save(vacusenxjmxMapping.toDomain(vacusenxjmxdto)));
     }
 
     @PreAuthorize("hasPermission(this.vacusenxjmxMapping.toDomain(#vacusenxjmxdtos),'ehr-VACUSENXJMX-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"VACUSENXJMX" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存假期使用明细", tags = {"假期使用明细" },  notes = "批量保存假期使用明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacusenxjmxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACUSENXJMXDTO> vacusenxjmxdtos) {
         vacusenxjmxService.saveBatch(vacusenxjmxMapping.toDomain(vacusenxjmxdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"VACUSENXJMX" },  notes = "GetDraft")
+    @ApiOperation(value = "获取假期使用明细草稿", tags = {"假期使用明细" },  notes = "获取假期使用明细草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacusenxjmxes/getdraft")
     public ResponseEntity<VACUSENXJMXDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacusenxjmxMapping.toDto(vacusenxjmxService.getDraft(new VACUSENXJMX())));
     }
 
     @PostAuthorize("hasPermission(this.vacusenxjmxMapping.toDomain(returnObject.body),'ehr-VACUSENXJMX-Get')")
-    @ApiOperation(value = "Get", tags = {"VACUSENXJMX" },  notes = "Get")
+    @ApiOperation(value = "获取假期使用明细", tags = {"假期使用明细" },  notes = "获取假期使用明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacusenxjmxes/{vacusenxjmx_id}")
     public ResponseEntity<VACUSENXJMXDTO> get(@PathVariable("vacusenxjmx_id") String vacusenxjmx_id) {
         VACUSENXJMX domain = vacusenxjmxService.get(vacusenxjmx_id);
@@ -138,7 +138,7 @@ public class VACUSENXJMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACUSENXJMX-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"VACUSENXJMX" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"假期使用明细" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacusenxjmxes/fetchdefault")
 	public ResponseEntity<List<VACUSENXJMXDTO>> fetchDefault(VACUSENXJMXSearchContext context) {
         Page<VACUSENXJMX> domains = vacusenxjmxService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class VACUSENXJMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACUSENXJMX-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"VACUSENXJMX" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"假期使用明细" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacusenxjmxes/searchdefault")
 	public ResponseEntity<Page<VACUSENXJMXDTO>> searchDefault(@RequestBody VACUSENXJMXSearchContext context) {
         Page<VACUSENXJMX> domains = vacusenxjmxService.searchDefault(context) ;

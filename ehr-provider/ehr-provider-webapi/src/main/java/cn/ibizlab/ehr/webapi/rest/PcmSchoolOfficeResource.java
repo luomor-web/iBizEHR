@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmSchoolOfficeService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmSchoolOfficeSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmSchoolOffice" })
+@Api(tags = {"在校职务" })
 @RestController("WebApi-pcmschooloffice")
 @RequestMapping("")
 public class PcmSchoolOfficeResource {
@@ -47,7 +47,7 @@ public class PcmSchoolOfficeResource {
     public PcmSchoolOfficeMapping pcmschoolofficeMapping;
 
     @PostAuthorize("hasPermission(this.pcmschoolofficeMapping.toDomain(returnObject.body),'ehr-PcmSchoolOffice-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmSchoolOffice" },  notes = "Get")
+    @ApiOperation(value = "获取在校职务", tags = {"在校职务" },  notes = "获取在校职务")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmschooloffices/{pcmschooloffice_id}")
     public ResponseEntity<PcmSchoolOfficeDTO> get(@PathVariable("pcmschooloffice_id") String pcmschooloffice_id) {
         PcmSchoolOffice domain = pcmschoolofficeService.get(pcmschooloffice_id);
@@ -56,7 +56,7 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmschoolofficeService.get(#pcmschooloffice_id),'ehr-PcmSchoolOffice-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmSchoolOffice" },  notes = "Remove")
+    @ApiOperation(value = "删除在校职务", tags = {"在校职务" },  notes = "删除在校职务")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmschooloffices/{pcmschooloffice_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmschooloffice_id") String pcmschooloffice_id) {
@@ -64,27 +64,27 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmschoolofficeService.getPcmschoolofficeByIds(#ids),'ehr-PcmSchoolOffice-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmSchoolOffice" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除在校职务", tags = {"在校职务" },  notes = "批量删除在校职务")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmschooloffices/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmschoolofficeService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmSchoolOffice" },  notes = "CheckKey")
+    @ApiOperation(value = "检查在校职务", tags = {"在校职务" },  notes = "检查在校职务")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmschooloffices/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmSchoolOfficeDTO pcmschoolofficedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmschoolofficeService.checkKey(pcmschoolofficeMapping.toDomain(pcmschoolofficedto)));
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmSchoolOffice" },  notes = "GetDraft")
+    @ApiOperation(value = "获取在校职务草稿", tags = {"在校职务" },  notes = "获取在校职务草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmschooloffices/getdraft")
     public ResponseEntity<PcmSchoolOfficeDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmschoolofficeMapping.toDto(pcmschoolofficeService.getDraft(new PcmSchoolOffice())));
     }
 
     @PreAuthorize("hasPermission(this.pcmschoolofficeService.get(#pcmschooloffice_id),'ehr-PcmSchoolOffice-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmSchoolOffice" },  notes = "Update")
+    @ApiOperation(value = "更新在校职务", tags = {"在校职务" },  notes = "更新在校职务")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmschooloffices/{pcmschooloffice_id}")
     @Transactional
     public ResponseEntity<PcmSchoolOfficeDTO> update(@PathVariable("pcmschooloffice_id") String pcmschooloffice_id, @RequestBody PcmSchoolOfficeDTO pcmschoolofficedto) {
@@ -96,7 +96,7 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmschoolofficeService.getPcmschoolofficeByEntities(this.pcmschoolofficeMapping.toDomain(#pcmschoolofficedtos)),'ehr-PcmSchoolOffice-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmSchoolOffice" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新在校职务", tags = {"在校职务" },  notes = "批量更新在校职务")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmschooloffices/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmSchoolOfficeDTO> pcmschoolofficedtos) {
         pcmschoolofficeService.updateBatch(pcmschoolofficeMapping.toDomain(pcmschoolofficedtos));
@@ -104,14 +104,14 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmschoolofficeMapping.toDomain(#pcmschoolofficedto),'ehr-PcmSchoolOffice-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmSchoolOffice" },  notes = "Save")
+    @ApiOperation(value = "保存在校职务", tags = {"在校职务" },  notes = "保存在校职务")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmschooloffices/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmSchoolOfficeDTO pcmschoolofficedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmschoolofficeService.save(pcmschoolofficeMapping.toDomain(pcmschoolofficedto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmschoolofficeMapping.toDomain(#pcmschoolofficedtos),'ehr-PcmSchoolOffice-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmSchoolOffice" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存在校职务", tags = {"在校职务" },  notes = "批量保存在校职务")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmschooloffices/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmSchoolOfficeDTO> pcmschoolofficedtos) {
         pcmschoolofficeService.saveBatch(pcmschoolofficeMapping.toDomain(pcmschoolofficedtos));
@@ -119,7 +119,7 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmschoolofficeMapping.toDomain(#pcmschoolofficedto),'ehr-PcmSchoolOffice-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmSchoolOffice" },  notes = "Create")
+    @ApiOperation(value = "新建在校职务", tags = {"在校职务" },  notes = "新建在校职务")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmschooloffices")
     @Transactional
     public ResponseEntity<PcmSchoolOfficeDTO> create(@RequestBody PcmSchoolOfficeDTO pcmschoolofficedto) {
@@ -130,7 +130,7 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmschoolofficeMapping.toDomain(#pcmschoolofficedtos),'ehr-PcmSchoolOffice-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmSchoolOffice" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建在校职务", tags = {"在校职务" },  notes = "批量新建在校职务")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmschooloffices/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmSchoolOfficeDTO> pcmschoolofficedtos) {
         pcmschoolofficeService.createBatch(pcmschoolofficeMapping.toDomain(pcmschoolofficedtos));
@@ -138,7 +138,7 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmSchoolOffice-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmSchoolOffice" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"在校职务" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmschooloffices/fetchdefault")
 	public ResponseEntity<List<PcmSchoolOfficeDTO>> fetchDefault(PcmSchoolOfficeSearchContext context) {
         Page<PcmSchoolOffice> domains = pcmschoolofficeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmSchoolOfficeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmSchoolOffice-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmSchoolOffice" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"在校职务" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmschooloffices/searchdefault")
 	public ResponseEntity<Page<PcmSchoolOfficeDTO>> searchDefault(@RequestBody PcmSchoolOfficeSearchContext context) {
         Page<PcmSchoolOffice> domains = pcmschoolofficeService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PcmSchoolOfficeResource {
                 .body(new PageImpl(pcmschoolofficeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PostAuthorize("hasPermission(this.pcmschoolofficeMapping.toDomain(returnObject.body),'ehr-PcmSchoolOffice-Get')")
-    @ApiOperation(value = "GetByPcmProfile", tags = {"PcmSchoolOffice" },  notes = "GetByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息获取在校职务", tags = {"在校职务" },  notes = "根据应聘者基本信息获取在校职务")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices/{pcmschooloffice_id}")
     public ResponseEntity<PcmSchoolOfficeDTO> getByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmschooloffice_id") String pcmschooloffice_id) {
         PcmSchoolOffice domain = pcmschoolofficeService.get(pcmschooloffice_id);
@@ -168,7 +168,7 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmschoolofficeService.get(#pcmschooloffice_id),'ehr-PcmSchoolOffice-Remove')")
-    @ApiOperation(value = "RemoveByPcmProfile", tags = {"PcmSchoolOffice" },  notes = "RemoveByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息删除在校职务", tags = {"在校职务" },  notes = "根据应聘者基本信息删除在校职务")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices/{pcmschooloffice_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmschooloffice_id") String pcmschooloffice_id) {
@@ -176,20 +176,20 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmschoolofficeService.getPcmschoolofficeByIds(#ids),'ehr-PcmSchoolOffice-Remove')")
-    @ApiOperation(value = "RemoveBatchByPcmProfile", tags = {"PcmSchoolOffice" },  notes = "RemoveBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量删除在校职务", tags = {"在校职务" },  notes = "根据应聘者基本信息批量删除在校职务")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices/batch")
     public ResponseEntity<Boolean> removeBatchByPcmProfile(@RequestBody List<String> ids) {
         pcmschoolofficeService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByPcmProfile", tags = {"PcmSchoolOffice" },  notes = "CheckKeyByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息检查在校职务", tags = {"在校职务" },  notes = "根据应聘者基本信息检查在校职务")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices/checkkey")
     public ResponseEntity<Boolean> checkKeyByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmSchoolOfficeDTO pcmschoolofficedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmschoolofficeService.checkKey(pcmschoolofficeMapping.toDomain(pcmschoolofficedto)));
     }
 
-    @ApiOperation(value = "GetDraftByPcmProfile", tags = {"PcmSchoolOffice" },  notes = "GetDraftByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息获取在校职务草稿", tags = {"在校职务" },  notes = "根据应聘者基本信息获取在校职务草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices/getdraft")
     public ResponseEntity<PcmSchoolOfficeDTO> getDraftByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id) {
         PcmSchoolOffice domain = new PcmSchoolOffice();
@@ -198,7 +198,7 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmschoolofficeService.get(#pcmschooloffice_id),'ehr-PcmSchoolOffice-Update')")
-    @ApiOperation(value = "UpdateByPcmProfile", tags = {"PcmSchoolOffice" },  notes = "UpdateByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息更新在校职务", tags = {"在校职务" },  notes = "根据应聘者基本信息更新在校职务")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices/{pcmschooloffice_id}")
     @Transactional
     public ResponseEntity<PcmSchoolOfficeDTO> updateByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmschooloffice_id") String pcmschooloffice_id, @RequestBody PcmSchoolOfficeDTO pcmschoolofficedto) {
@@ -211,7 +211,7 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmschoolofficeService.getPcmschoolofficeByEntities(this.pcmschoolofficeMapping.toDomain(#pcmschoolofficedtos)),'ehr-PcmSchoolOffice-Update')")
-    @ApiOperation(value = "UpdateBatchByPcmProfile", tags = {"PcmSchoolOffice" },  notes = "UpdateBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量更新在校职务", tags = {"在校职务" },  notes = "根据应聘者基本信息批量更新在校职务")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices/batch")
     public ResponseEntity<Boolean> updateBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PcmSchoolOfficeDTO> pcmschoolofficedtos) {
         List<PcmSchoolOffice> domainlist=pcmschoolofficeMapping.toDomain(pcmschoolofficedtos);
@@ -223,7 +223,7 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmschoolofficeMapping.toDomain(#pcmschoolofficedto),'ehr-PcmSchoolOffice-Save')")
-    @ApiOperation(value = "SaveByPcmProfile", tags = {"PcmSchoolOffice" },  notes = "SaveByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息保存在校职务", tags = {"在校职务" },  notes = "根据应聘者基本信息保存在校职务")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices/save")
     public ResponseEntity<Boolean> saveByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmSchoolOfficeDTO pcmschoolofficedto) {
         PcmSchoolOffice domain = pcmschoolofficeMapping.toDomain(pcmschoolofficedto);
@@ -232,7 +232,7 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmschoolofficeMapping.toDomain(#pcmschoolofficedtos),'ehr-PcmSchoolOffice-Save')")
-    @ApiOperation(value = "SaveBatchByPcmProfile", tags = {"PcmSchoolOffice" },  notes = "SaveBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量保存在校职务", tags = {"在校职务" },  notes = "根据应聘者基本信息批量保存在校职务")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices/savebatch")
     public ResponseEntity<Boolean> saveBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PcmSchoolOfficeDTO> pcmschoolofficedtos) {
         List<PcmSchoolOffice> domainlist=pcmschoolofficeMapping.toDomain(pcmschoolofficedtos);
@@ -244,7 +244,7 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmschoolofficeMapping.toDomain(#pcmschoolofficedto),'ehr-PcmSchoolOffice-Create')")
-    @ApiOperation(value = "CreateByPcmProfile", tags = {"PcmSchoolOffice" },  notes = "CreateByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息建立在校职务", tags = {"在校职务" },  notes = "根据应聘者基本信息建立在校职务")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices")
     @Transactional
     public ResponseEntity<PcmSchoolOfficeDTO> createByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmSchoolOfficeDTO pcmschoolofficedto) {
@@ -256,7 +256,7 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmschoolofficeMapping.toDomain(#pcmschoolofficedtos),'ehr-PcmSchoolOffice-Create')")
-    @ApiOperation(value = "createBatchByPcmProfile", tags = {"PcmSchoolOffice" },  notes = "createBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量建立在校职务", tags = {"在校职务" },  notes = "根据应聘者基本信息批量建立在校职务")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmschooloffices/batch")
     public ResponseEntity<Boolean> createBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PcmSchoolOfficeDTO> pcmschoolofficedtos) {
         List<PcmSchoolOffice> domainlist=pcmschoolofficeMapping.toDomain(pcmschoolofficedtos);
@@ -268,7 +268,7 @@ public class PcmSchoolOfficeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmSchoolOffice-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPcmProfile", tags = {"PcmSchoolOffice" } ,notes = "fetchDEFAULTByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息获取DEFAULT", tags = {"在校职务" } ,notes = "根据应聘者基本信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmschooloffices/fetchdefault")
 	public ResponseEntity<List<PcmSchoolOfficeDTO>> fetchPcmSchoolOfficeDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id,PcmSchoolOfficeSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
@@ -282,7 +282,7 @@ public class PcmSchoolOfficeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmSchoolOffice-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPcmProfile", tags = {"PcmSchoolOffice" } ,notes = "searchDEFAULTByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息查询DEFAULT", tags = {"在校职务" } ,notes = "根据应聘者基本信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmschooloffices/searchdefault")
 	public ResponseEntity<Page<PcmSchoolOfficeDTO>> searchPcmSchoolOfficeDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PcmSchoolOfficeSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);

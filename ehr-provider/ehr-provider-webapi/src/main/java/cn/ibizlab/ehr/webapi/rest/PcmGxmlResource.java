@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmGxmlService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmGxmlSearchContext;
 
 @Slf4j
-@Api(tags = {"PcmGxml" })
+@Api(tags = {"高校名录" })
 @RestController("WebApi-pcmgxml")
 @RequestMapping("")
 public class PcmGxmlResource {
@@ -47,7 +47,7 @@ public class PcmGxmlResource {
     public PcmGxmlMapping pcmgxmlMapping;
 
     @PreAuthorize("hasPermission(this.pcmgxmlService.get(#pcmgxml_id),'ehr-PcmGxml-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmGxml" },  notes = "Update")
+    @ApiOperation(value = "更新高校名录", tags = {"高校名录" },  notes = "更新高校名录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmgxmls/{pcmgxml_id}")
     @Transactional
     public ResponseEntity<PcmGxmlDTO> update(@PathVariable("pcmgxml_id") String pcmgxml_id, @RequestBody PcmGxmlDTO pcmgxmldto) {
@@ -59,7 +59,7 @@ public class PcmGxmlResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxmlService.getPcmgxmlByEntities(this.pcmgxmlMapping.toDomain(#pcmgxmldtos)),'ehr-PcmGxml-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmGxml" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新高校名录", tags = {"高校名录" },  notes = "批量更新高校名录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmgxmls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmGxmlDTO> pcmgxmldtos) {
         pcmgxmlService.updateBatch(pcmgxmlMapping.toDomain(pcmgxmldtos));
@@ -67,34 +67,34 @@ public class PcmGxmlResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxmlMapping.toDomain(#pcmgxmldto),'ehr-PcmGxml-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmGxml" },  notes = "Save")
+    @ApiOperation(value = "保存高校名录", tags = {"高校名录" },  notes = "保存高校名录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmGxmlDTO pcmgxmldto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgxmlService.save(pcmgxmlMapping.toDomain(pcmgxmldto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmgxmlMapping.toDomain(#pcmgxmldtos),'ehr-PcmGxml-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmGxml" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存高校名录", tags = {"高校名录" },  notes = "批量保存高校名录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmGxmlDTO> pcmgxmldtos) {
         pcmgxmlService.saveBatch(pcmgxmlMapping.toDomain(pcmgxmldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmGxml" },  notes = "GetDraft")
+    @ApiOperation(value = "获取高校名录草稿", tags = {"高校名录" },  notes = "获取高校名录草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmgxmls/getdraft")
     public ResponseEntity<PcmGxmlDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmgxmlMapping.toDto(pcmgxmlService.getDraft(new PcmGxml())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmGxml" },  notes = "CheckKey")
+    @ApiOperation(value = "检查高校名录", tags = {"高校名录" },  notes = "检查高校名录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmGxmlDTO pcmgxmldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmgxmlService.checkKey(pcmgxmlMapping.toDomain(pcmgxmldto)));
     }
 
     @PostAuthorize("hasPermission(this.pcmgxmlMapping.toDomain(returnObject.body),'ehr-PcmGxml-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmGxml" },  notes = "Get")
+    @ApiOperation(value = "获取高校名录", tags = {"高校名录" },  notes = "获取高校名录")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmgxmls/{pcmgxml_id}")
     public ResponseEntity<PcmGxmlDTO> get(@PathVariable("pcmgxml_id") String pcmgxml_id) {
         PcmGxml domain = pcmgxmlService.get(pcmgxml_id);
@@ -103,7 +103,7 @@ public class PcmGxmlResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxmlMapping.toDomain(#pcmgxmldto),'ehr-PcmGxml-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmGxml" },  notes = "Create")
+    @ApiOperation(value = "新建高校名录", tags = {"高校名录" },  notes = "新建高校名录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls")
     @Transactional
     public ResponseEntity<PcmGxmlDTO> create(@RequestBody PcmGxmlDTO pcmgxmldto) {
@@ -114,7 +114,7 @@ public class PcmGxmlResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxmlMapping.toDomain(#pcmgxmldtos),'ehr-PcmGxml-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmGxml" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建高校名录", tags = {"高校名录" },  notes = "批量新建高校名录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmgxmls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmGxmlDTO> pcmgxmldtos) {
         pcmgxmlService.createBatch(pcmgxmlMapping.toDomain(pcmgxmldtos));
@@ -122,7 +122,7 @@ public class PcmGxmlResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxmlService.get(#pcmgxml_id),'ehr-PcmGxml-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmGxml" },  notes = "Remove")
+    @ApiOperation(value = "删除高校名录", tags = {"高校名录" },  notes = "删除高校名录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgxmls/{pcmgxml_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmgxml_id") String pcmgxml_id) {
@@ -130,7 +130,7 @@ public class PcmGxmlResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmgxmlService.getPcmgxmlByIds(#ids),'ehr-PcmGxml-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmGxml" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除高校名录", tags = {"高校名录" },  notes = "批量删除高校名录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmgxmls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmgxmlService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class PcmGxmlResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGxml-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmGxml" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"高校名录" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgxmls/fetchdefault")
 	public ResponseEntity<List<PcmGxmlDTO>> fetchDefault(PcmGxmlSearchContext context) {
         Page<PcmGxml> domains = pcmgxmlService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmGxmlResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGxml-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmGxml" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"高校名录" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgxmls/searchdefault")
 	public ResponseEntity<Page<PcmGxmlDTO>> searchDefault(@RequestBody PcmGxmlSearchContext context) {
         Page<PcmGxml> domains = pcmgxmlService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PcmGxmlResource {
                 .body(new PageImpl(pcmgxmlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGxml-CurND-all')")
-	@ApiOperation(value = "fetch当前年度高校名录", tags = {"PcmGxml" } ,notes = "fetch当前年度高校名录")
+	@ApiOperation(value = "获取当前年度高校名录", tags = {"高校名录" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmgxmls/fetchcurnd")
 	public ResponseEntity<List<PcmGxmlDTO>> fetchCurND(PcmGxmlSearchContext context) {
         Page<PcmGxml> domains = pcmgxmlService.searchCurND(context) ;
@@ -172,7 +172,7 @@ public class PcmGxmlResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmGxml-CurND-all')")
-	@ApiOperation(value = "search当前年度高校名录", tags = {"PcmGxml" } ,notes = "search当前年度高校名录")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"高校名录" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmgxmls/searchcurnd")
 	public ResponseEntity<Page<PcmGxmlDTO>> searchCurND(@RequestBody PcmGxmlSearchContext context) {
         Page<PcmGxml> domains = pcmgxmlService.searchCurND(context) ;

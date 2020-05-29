@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPIMPROVINCEService;
 import cn.ibizlab.ehr.core.pim.filter.PIMPROVINCESearchContext;
 
 @Slf4j
-@Api(tags = {"PIMPROVINCE" })
+@Api(tags = {"省" })
 @RestController("WebApi-pimprovince")
 @RequestMapping("")
 public class PIMPROVINCEResource {
@@ -46,14 +46,14 @@ public class PIMPROVINCEResource {
     @Lazy
     public PIMPROVINCEMapping pimprovinceMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"PIMPROVINCE" },  notes = "CheckKey")
+    @ApiOperation(value = "检查省", tags = {"省" },  notes = "检查省")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimprovinces/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMPROVINCEDTO pimprovincedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimprovinceService.checkKey(pimprovinceMapping.toDomain(pimprovincedto)));
     }
 
     @PreAuthorize("hasPermission(this.pimprovinceService.get(#pimprovince_id),'ehr-PIMPROVINCE-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PIMPROVINCE" },  notes = "Remove")
+    @ApiOperation(value = "删除省", tags = {"省" },  notes = "删除省")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimprovinces/{pimprovince_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimprovince_id") String pimprovince_id) {
@@ -61,7 +61,7 @@ public class PIMPROVINCEResource {
     }
 
     @PreAuthorize("hasPermission(this.pimprovinceService.getPimprovinceByIds(#ids),'ehr-PIMPROVINCE-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PIMPROVINCE" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除省", tags = {"省" },  notes = "批量删除省")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimprovinces/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimprovinceService.removeBatch(ids);
@@ -69,7 +69,7 @@ public class PIMPROVINCEResource {
     }
 
     @PostAuthorize("hasPermission(this.pimprovinceMapping.toDomain(returnObject.body),'ehr-PIMPROVINCE-Get')")
-    @ApiOperation(value = "Get", tags = {"PIMPROVINCE" },  notes = "Get")
+    @ApiOperation(value = "获取省", tags = {"省" },  notes = "获取省")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimprovinces/{pimprovince_id}")
     public ResponseEntity<PIMPROVINCEDTO> get(@PathVariable("pimprovince_id") String pimprovince_id) {
         PIMPROVINCE domain = pimprovinceService.get(pimprovince_id);
@@ -78,7 +78,7 @@ public class PIMPROVINCEResource {
     }
 
     @PreAuthorize("hasPermission(this.pimprovinceMapping.toDomain(#pimprovincedto),'ehr-PIMPROVINCE-Create')")
-    @ApiOperation(value = "Create", tags = {"PIMPROVINCE" },  notes = "Create")
+    @ApiOperation(value = "新建省", tags = {"省" },  notes = "新建省")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimprovinces")
     @Transactional
     public ResponseEntity<PIMPROVINCEDTO> create(@RequestBody PIMPROVINCEDTO pimprovincedto) {
@@ -89,21 +89,21 @@ public class PIMPROVINCEResource {
     }
 
     @PreAuthorize("hasPermission(this.pimprovinceMapping.toDomain(#pimprovincedtos),'ehr-PIMPROVINCE-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PIMPROVINCE" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建省", tags = {"省" },  notes = "批量新建省")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimprovinces/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMPROVINCEDTO> pimprovincedtos) {
         pimprovinceService.createBatch(pimprovinceMapping.toDomain(pimprovincedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PIMPROVINCE" },  notes = "GetDraft")
+    @ApiOperation(value = "获取省草稿", tags = {"省" },  notes = "获取省草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimprovinces/getdraft")
     public ResponseEntity<PIMPROVINCEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimprovinceMapping.toDto(pimprovinceService.getDraft(new PIMPROVINCE())));
     }
 
     @PreAuthorize("hasPermission(this.pimprovinceService.get(#pimprovince_id),'ehr-PIMPROVINCE-Update')")
-    @ApiOperation(value = "Update", tags = {"PIMPROVINCE" },  notes = "Update")
+    @ApiOperation(value = "更新省", tags = {"省" },  notes = "更新省")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimprovinces/{pimprovince_id}")
     @Transactional
     public ResponseEntity<PIMPROVINCEDTO> update(@PathVariable("pimprovince_id") String pimprovince_id, @RequestBody PIMPROVINCEDTO pimprovincedto) {
@@ -115,7 +115,7 @@ public class PIMPROVINCEResource {
     }
 
     @PreAuthorize("hasPermission(this.pimprovinceService.getPimprovinceByEntities(this.pimprovinceMapping.toDomain(#pimprovincedtos)),'ehr-PIMPROVINCE-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PIMPROVINCE" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新省", tags = {"省" },  notes = "批量更新省")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimprovinces/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMPROVINCEDTO> pimprovincedtos) {
         pimprovinceService.updateBatch(pimprovinceMapping.toDomain(pimprovincedtos));
@@ -123,14 +123,14 @@ public class PIMPROVINCEResource {
     }
 
     @PreAuthorize("hasPermission(this.pimprovinceMapping.toDomain(#pimprovincedto),'ehr-PIMPROVINCE-Save')")
-    @ApiOperation(value = "Save", tags = {"PIMPROVINCE" },  notes = "Save")
+    @ApiOperation(value = "保存省", tags = {"省" },  notes = "保存省")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimprovinces/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMPROVINCEDTO pimprovincedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimprovinceService.save(pimprovinceMapping.toDomain(pimprovincedto)));
     }
 
     @PreAuthorize("hasPermission(this.pimprovinceMapping.toDomain(#pimprovincedtos),'ehr-PIMPROVINCE-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PIMPROVINCE" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存省", tags = {"省" },  notes = "批量保存省")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimprovinces/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMPROVINCEDTO> pimprovincedtos) {
         pimprovinceService.saveBatch(pimprovinceMapping.toDomain(pimprovincedtos));
@@ -138,7 +138,7 @@ public class PIMPROVINCEResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPROVINCE-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMPROVINCE" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"省" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimprovinces/fetchdefault")
 	public ResponseEntity<List<PIMPROVINCEDTO>> fetchDefault(PIMPROVINCESearchContext context) {
         Page<PIMPROVINCE> domains = pimprovinceService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PIMPROVINCEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMPROVINCE-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PIMPROVINCE" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"省" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimprovinces/searchdefault")
 	public ResponseEntity<Page<PIMPROVINCEDTO>> searchDefault(@RequestBody PIMPROVINCESearchContext context) {
         Page<PIMPROVINCE> domains = pimprovinceService.searchDefault(context) ;

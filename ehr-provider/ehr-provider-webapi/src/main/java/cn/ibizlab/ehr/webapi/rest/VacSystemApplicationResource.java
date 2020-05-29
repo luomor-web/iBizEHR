@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.vac.service.IVacSystemApplicationService;
 import cn.ibizlab.ehr.core.vac.filter.VacSystemApplicationSearchContext;
 
 @Slf4j
-@Api(tags = {"VacSystemApplication" })
+@Api(tags = {"制度适用" })
 @RestController("WebApi-vacsystemapplication")
 @RequestMapping("")
 public class VacSystemApplicationResource {
@@ -47,7 +47,7 @@ public class VacSystemApplicationResource {
     public VacSystemApplicationMapping vacsystemapplicationMapping;
 
     @PreAuthorize("hasPermission(this.vacsystemapplicationMapping.toDomain(#vacsystemapplicationdto),'ehr-VacSystemApplication-Create')")
-    @ApiOperation(value = "Create", tags = {"VacSystemApplication" },  notes = "Create")
+    @ApiOperation(value = "新建制度适用", tags = {"制度适用" },  notes = "新建制度适用")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemapplications")
     @Transactional
     public ResponseEntity<VacSystemApplicationDTO> create(@RequestBody VacSystemApplicationDTO vacsystemapplicationdto) {
@@ -58,7 +58,7 @@ public class VacSystemApplicationResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsystemapplicationMapping.toDomain(#vacsystemapplicationdtos),'ehr-VacSystemApplication-Create')")
-    @ApiOperation(value = "createBatch", tags = {"VacSystemApplication" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建制度适用", tags = {"制度适用" },  notes = "批量新建制度适用")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemapplications/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VacSystemApplicationDTO> vacsystemapplicationdtos) {
         vacsystemapplicationService.createBatch(vacsystemapplicationMapping.toDomain(vacsystemapplicationdtos));
@@ -66,7 +66,7 @@ public class VacSystemApplicationResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsystemapplicationService.get(#vacsystemapplication_id),'ehr-VacSystemApplication-Remove')")
-    @ApiOperation(value = "Remove", tags = {"VacSystemApplication" },  notes = "Remove")
+    @ApiOperation(value = "删除制度适用", tags = {"制度适用" },  notes = "删除制度适用")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsystemapplications/{vacsystemapplication_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("vacsystemapplication_id") String vacsystemapplication_id) {
@@ -74,7 +74,7 @@ public class VacSystemApplicationResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsystemapplicationService.getVacsystemapplicationByIds(#ids),'ehr-VacSystemApplication-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"VacSystemApplication" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除制度适用", tags = {"制度适用" },  notes = "批量删除制度适用")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsystemapplications/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         vacsystemapplicationService.removeBatch(ids);
@@ -82,7 +82,7 @@ public class VacSystemApplicationResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsystemapplicationService.get(#vacsystemapplication_id),'ehr-VacSystemApplication-Update')")
-    @ApiOperation(value = "Update", tags = {"VacSystemApplication" },  notes = "Update")
+    @ApiOperation(value = "更新制度适用", tags = {"制度适用" },  notes = "更新制度适用")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacsystemapplications/{vacsystemapplication_id}")
     @Transactional
     public ResponseEntity<VacSystemApplicationDTO> update(@PathVariable("vacsystemapplication_id") String vacsystemapplication_id, @RequestBody VacSystemApplicationDTO vacsystemapplicationdto) {
@@ -94,7 +94,7 @@ public class VacSystemApplicationResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsystemapplicationService.getVacsystemapplicationByEntities(this.vacsystemapplicationMapping.toDomain(#vacsystemapplicationdtos)),'ehr-VacSystemApplication-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"VacSystemApplication" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新制度适用", tags = {"制度适用" },  notes = "批量更新制度适用")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacsystemapplications/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VacSystemApplicationDTO> vacsystemapplicationdtos) {
         vacsystemapplicationService.updateBatch(vacsystemapplicationMapping.toDomain(vacsystemapplicationdtos));
@@ -102,7 +102,7 @@ public class VacSystemApplicationResource {
     }
 
     @PostAuthorize("hasPermission(this.vacsystemapplicationMapping.toDomain(returnObject.body),'ehr-VacSystemApplication-Get')")
-    @ApiOperation(value = "Get", tags = {"VacSystemApplication" },  notes = "Get")
+    @ApiOperation(value = "获取制度适用", tags = {"制度适用" },  notes = "获取制度适用")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacsystemapplications/{vacsystemapplication_id}")
     public ResponseEntity<VacSystemApplicationDTO> get(@PathVariable("vacsystemapplication_id") String vacsystemapplication_id) {
         VacSystemApplication domain = vacsystemapplicationService.get(vacsystemapplication_id);
@@ -111,34 +111,34 @@ public class VacSystemApplicationResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsystemapplicationMapping.toDomain(#vacsystemapplicationdto),'ehr-VacSystemApplication-Save')")
-    @ApiOperation(value = "Save", tags = {"VacSystemApplication" },  notes = "Save")
+    @ApiOperation(value = "保存制度适用", tags = {"制度适用" },  notes = "保存制度适用")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemapplications/save")
     public ResponseEntity<Boolean> save(@RequestBody VacSystemApplicationDTO vacsystemapplicationdto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacsystemapplicationService.save(vacsystemapplicationMapping.toDomain(vacsystemapplicationdto)));
     }
 
     @PreAuthorize("hasPermission(this.vacsystemapplicationMapping.toDomain(#vacsystemapplicationdtos),'ehr-VacSystemApplication-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"VacSystemApplication" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存制度适用", tags = {"制度适用" },  notes = "批量保存制度适用")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemapplications/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VacSystemApplicationDTO> vacsystemapplicationdtos) {
         vacsystemapplicationService.saveBatch(vacsystemapplicationMapping.toDomain(vacsystemapplicationdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"VacSystemApplication" },  notes = "GetDraft")
+    @ApiOperation(value = "获取制度适用草稿", tags = {"制度适用" },  notes = "获取制度适用草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacsystemapplications/getdraft")
     public ResponseEntity<VacSystemApplicationDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacsystemapplicationMapping.toDto(vacsystemapplicationService.getDraft(new VacSystemApplication())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"VacSystemApplication" },  notes = "CheckKey")
+    @ApiOperation(value = "检查制度适用", tags = {"制度适用" },  notes = "检查制度适用")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsystemapplications/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VacSystemApplicationDTO vacsystemapplicationdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacsystemapplicationService.checkKey(vacsystemapplicationMapping.toDomain(vacsystemapplicationdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacSystemApplication-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"VacSystemApplication" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"制度适用" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacsystemapplications/fetchdefault")
 	public ResponseEntity<List<VacSystemApplicationDTO>> fetchDefault(VacSystemApplicationSearchContext context) {
         Page<VacSystemApplication> domains = vacsystemapplicationService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class VacSystemApplicationResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacSystemApplication-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"VacSystemApplication" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"制度适用" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacsystemapplications/searchdefault")
 	public ResponseEntity<Page<VacSystemApplicationDTO>> searchDefault(@RequestBody VacSystemApplicationSearchContext context) {
         Page<VacSystemApplication> domains = vacsystemapplicationService.searchDefault(context) ;

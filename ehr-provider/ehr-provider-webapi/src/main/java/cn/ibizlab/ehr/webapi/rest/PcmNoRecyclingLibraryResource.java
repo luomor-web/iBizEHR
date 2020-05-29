@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPcmNoRecyclingLibraryService;
 import cn.ibizlab.ehr.core.pcm.filter.PcmNoRecyclingLibrarySearchContext;
 
 @Slf4j
-@Api(tags = {"PcmNoRecyclingLibrary" })
+@Api(tags = {"员工编号回收库" })
 @RestController("WebApi-pcmnorecyclinglibrary")
 @RequestMapping("")
 public class PcmNoRecyclingLibraryResource {
@@ -47,7 +47,7 @@ public class PcmNoRecyclingLibraryResource {
     public PcmNoRecyclingLibraryMapping pcmnorecyclinglibraryMapping;
 
     @PreAuthorize("hasPermission(this.pcmnorecyclinglibraryMapping.toDomain(#pcmnorecyclinglibrarydto),'ehr-PcmNoRecyclingLibrary-Create')")
-    @ApiOperation(value = "Create", tags = {"PcmNoRecyclingLibrary" },  notes = "Create")
+    @ApiOperation(value = "新建员工编号回收库", tags = {"员工编号回收库" },  notes = "新建员工编号回收库")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnorecyclinglibraries")
     @Transactional
     public ResponseEntity<PcmNoRecyclingLibraryDTO> create(@RequestBody PcmNoRecyclingLibraryDTO pcmnorecyclinglibrarydto) {
@@ -58,21 +58,21 @@ public class PcmNoRecyclingLibraryResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmnorecyclinglibraryMapping.toDomain(#pcmnorecyclinglibrarydtos),'ehr-PcmNoRecyclingLibrary-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PcmNoRecyclingLibrary" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建员工编号回收库", tags = {"员工编号回收库" },  notes = "批量新建员工编号回收库")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnorecyclinglibraries/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PcmNoRecyclingLibraryDTO> pcmnorecyclinglibrarydtos) {
         pcmnorecyclinglibraryService.createBatch(pcmnorecyclinglibraryMapping.toDomain(pcmnorecyclinglibrarydtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PcmNoRecyclingLibrary" },  notes = "GetDraft")
+    @ApiOperation(value = "获取员工编号回收库草稿", tags = {"员工编号回收库" },  notes = "获取员工编号回收库草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmnorecyclinglibraries/getdraft")
     public ResponseEntity<PcmNoRecyclingLibraryDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmnorecyclinglibraryMapping.toDto(pcmnorecyclinglibraryService.getDraft(new PcmNoRecyclingLibrary())));
     }
 
     @PostAuthorize("hasPermission(this.pcmnorecyclinglibraryMapping.toDomain(returnObject.body),'ehr-PcmNoRecyclingLibrary-Get')")
-    @ApiOperation(value = "Get", tags = {"PcmNoRecyclingLibrary" },  notes = "Get")
+    @ApiOperation(value = "获取员工编号回收库", tags = {"员工编号回收库" },  notes = "获取员工编号回收库")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmnorecyclinglibraries/{pcmnorecyclinglibrary_id}")
     public ResponseEntity<PcmNoRecyclingLibraryDTO> get(@PathVariable("pcmnorecyclinglibrary_id") String pcmnorecyclinglibrary_id) {
         PcmNoRecyclingLibrary domain = pcmnorecyclinglibraryService.get(pcmnorecyclinglibrary_id);
@@ -81,7 +81,7 @@ public class PcmNoRecyclingLibraryResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmnorecyclinglibraryService.get(#pcmnorecyclinglibrary_id),'ehr-PcmNoRecyclingLibrary-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PcmNoRecyclingLibrary" },  notes = "Remove")
+    @ApiOperation(value = "删除员工编号回收库", tags = {"员工编号回收库" },  notes = "删除员工编号回收库")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmnorecyclinglibraries/{pcmnorecyclinglibrary_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmnorecyclinglibrary_id") String pcmnorecyclinglibrary_id) {
@@ -89,7 +89,7 @@ public class PcmNoRecyclingLibraryResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmnorecyclinglibraryService.getPcmnorecyclinglibraryByIds(#ids),'ehr-PcmNoRecyclingLibrary-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PcmNoRecyclingLibrary" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除员工编号回收库", tags = {"员工编号回收库" },  notes = "批量删除员工编号回收库")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmnorecyclinglibraries/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmnorecyclinglibraryService.removeBatch(ids);
@@ -97,7 +97,7 @@ public class PcmNoRecyclingLibraryResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmnorecyclinglibraryService.get(#pcmnorecyclinglibrary_id),'ehr-PcmNoRecyclingLibrary-Update')")
-    @ApiOperation(value = "Update", tags = {"PcmNoRecyclingLibrary" },  notes = "Update")
+    @ApiOperation(value = "更新员工编号回收库", tags = {"员工编号回收库" },  notes = "更新员工编号回收库")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmnorecyclinglibraries/{pcmnorecyclinglibrary_id}")
     @Transactional
     public ResponseEntity<PcmNoRecyclingLibraryDTO> update(@PathVariable("pcmnorecyclinglibrary_id") String pcmnorecyclinglibrary_id, @RequestBody PcmNoRecyclingLibraryDTO pcmnorecyclinglibrarydto) {
@@ -109,28 +109,28 @@ public class PcmNoRecyclingLibraryResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmnorecyclinglibraryService.getPcmnorecyclinglibraryByEntities(this.pcmnorecyclinglibraryMapping.toDomain(#pcmnorecyclinglibrarydtos)),'ehr-PcmNoRecyclingLibrary-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PcmNoRecyclingLibrary" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新员工编号回收库", tags = {"员工编号回收库" },  notes = "批量更新员工编号回收库")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmnorecyclinglibraries/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PcmNoRecyclingLibraryDTO> pcmnorecyclinglibrarydtos) {
         pcmnorecyclinglibraryService.updateBatch(pcmnorecyclinglibraryMapping.toDomain(pcmnorecyclinglibrarydtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PcmNoRecyclingLibrary" },  notes = "CheckKey")
+    @ApiOperation(value = "检查员工编号回收库", tags = {"员工编号回收库" },  notes = "检查员工编号回收库")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnorecyclinglibraries/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmNoRecyclingLibraryDTO pcmnorecyclinglibrarydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmnorecyclinglibraryService.checkKey(pcmnorecyclinglibraryMapping.toDomain(pcmnorecyclinglibrarydto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmnorecyclinglibraryMapping.toDomain(#pcmnorecyclinglibrarydto),'ehr-PcmNoRecyclingLibrary-Save')")
-    @ApiOperation(value = "Save", tags = {"PcmNoRecyclingLibrary" },  notes = "Save")
+    @ApiOperation(value = "保存员工编号回收库", tags = {"员工编号回收库" },  notes = "保存员工编号回收库")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnorecyclinglibraries/save")
     public ResponseEntity<Boolean> save(@RequestBody PcmNoRecyclingLibraryDTO pcmnorecyclinglibrarydto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmnorecyclinglibraryService.save(pcmnorecyclinglibraryMapping.toDomain(pcmnorecyclinglibrarydto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmnorecyclinglibraryMapping.toDomain(#pcmnorecyclinglibrarydtos),'ehr-PcmNoRecyclingLibrary-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PcmNoRecyclingLibrary" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存员工编号回收库", tags = {"员工编号回收库" },  notes = "批量保存员工编号回收库")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmnorecyclinglibraries/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PcmNoRecyclingLibraryDTO> pcmnorecyclinglibrarydtos) {
         pcmnorecyclinglibraryService.saveBatch(pcmnorecyclinglibraryMapping.toDomain(pcmnorecyclinglibrarydtos));
@@ -138,7 +138,7 @@ public class PcmNoRecyclingLibraryResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmNoRecyclingLibrary-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PcmNoRecyclingLibrary" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"员工编号回收库" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmnorecyclinglibraries/fetchdefault")
 	public ResponseEntity<List<PcmNoRecyclingLibraryDTO>> fetchDefault(PcmNoRecyclingLibrarySearchContext context) {
         Page<PcmNoRecyclingLibrary> domains = pcmnorecyclinglibraryService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PcmNoRecyclingLibraryResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmNoRecyclingLibrary-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PcmNoRecyclingLibrary" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"员工编号回收库" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmnorecyclinglibraries/searchdefault")
 	public ResponseEntity<Page<PcmNoRecyclingLibraryDTO>> searchDefault(@RequestBody PcmNoRecyclingLibrarySearchContext context) {
         Page<PcmNoRecyclingLibrary> domains = pcmnorecyclinglibraryService.searchDefault(context) ;

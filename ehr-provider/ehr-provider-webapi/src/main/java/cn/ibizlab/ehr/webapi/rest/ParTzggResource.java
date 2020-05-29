@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.par.service.IParTzggService;
 import cn.ibizlab.ehr.core.par.filter.ParTzggSearchContext;
 
 @Slf4j
-@Api(tags = {"ParTzgg" })
+@Api(tags = {"通知发布" })
 @RestController("WebApi-partzgg")
 @RequestMapping("")
 public class ParTzggResource {
@@ -46,14 +46,14 @@ public class ParTzggResource {
     @Lazy
     public ParTzggMapping partzggMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"ParTzgg" },  notes = "GetDraft")
+    @ApiOperation(value = "获取通知发布草稿", tags = {"通知发布" },  notes = "获取通知发布草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/partzggs/getdraft")
     public ResponseEntity<ParTzggDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(partzggMapping.toDto(partzggService.getDraft(new ParTzgg())));
     }
 
     @PreAuthorize("hasPermission(this.partzggService.get(#partzgg_id),'ehr-ParTzgg-Remove')")
-    @ApiOperation(value = "Remove", tags = {"ParTzgg" },  notes = "Remove")
+    @ApiOperation(value = "删除通知发布", tags = {"通知发布" },  notes = "删除通知发布")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/partzggs/{partzgg_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("partzgg_id") String partzgg_id) {
@@ -61,7 +61,7 @@ public class ParTzggResource {
     }
 
     @PreAuthorize("hasPermission(this.partzggService.getPartzggByIds(#ids),'ehr-ParTzgg-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"ParTzgg" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除通知发布", tags = {"通知发布" },  notes = "批量删除通知发布")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/partzggs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         partzggService.removeBatch(ids);
@@ -69,14 +69,14 @@ public class ParTzggResource {
     }
 
     @PreAuthorize("hasPermission(this.partzggMapping.toDomain(#partzggdto),'ehr-ParTzgg-Save')")
-    @ApiOperation(value = "Save", tags = {"ParTzgg" },  notes = "Save")
+    @ApiOperation(value = "保存通知发布", tags = {"通知发布" },  notes = "保存通知发布")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/save")
     public ResponseEntity<Boolean> save(@RequestBody ParTzggDTO partzggdto) {
         return ResponseEntity.status(HttpStatus.OK).body(partzggService.save(partzggMapping.toDomain(partzggdto)));
     }
 
     @PreAuthorize("hasPermission(this.partzggMapping.toDomain(#partzggdtos),'ehr-ParTzgg-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"ParTzgg" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存通知发布", tags = {"通知发布" },  notes = "批量保存通知发布")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ParTzggDTO> partzggdtos) {
         partzggService.saveBatch(partzggMapping.toDomain(partzggdtos));
@@ -84,7 +84,7 @@ public class ParTzggResource {
     }
 
     @PreAuthorize("hasPermission(this.partzggMapping.toDomain(#partzggdto),'ehr-ParTzgg-Create')")
-    @ApiOperation(value = "Create", tags = {"ParTzgg" },  notes = "Create")
+    @ApiOperation(value = "新建通知发布", tags = {"通知发布" },  notes = "新建通知发布")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs")
     @Transactional
     public ResponseEntity<ParTzggDTO> create(@RequestBody ParTzggDTO partzggdto) {
@@ -95,7 +95,7 @@ public class ParTzggResource {
     }
 
     @PreAuthorize("hasPermission(this.partzggMapping.toDomain(#partzggdtos),'ehr-ParTzgg-Create')")
-    @ApiOperation(value = "createBatch", tags = {"ParTzgg" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建通知发布", tags = {"通知发布" },  notes = "批量新建通知发布")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ParTzggDTO> partzggdtos) {
         partzggService.createBatch(partzggMapping.toDomain(partzggdtos));
@@ -103,7 +103,7 @@ public class ParTzggResource {
     }
 
     @PostAuthorize("hasPermission(this.partzggMapping.toDomain(returnObject.body),'ehr-ParTzgg-Get')")
-    @ApiOperation(value = "Get", tags = {"ParTzgg" },  notes = "Get")
+    @ApiOperation(value = "获取通知发布", tags = {"通知发布" },  notes = "获取通知发布")
 	@RequestMapping(method = RequestMethod.GET, value = "/partzggs/{partzgg_id}")
     public ResponseEntity<ParTzggDTO> get(@PathVariable("partzgg_id") String partzgg_id) {
         ParTzgg domain = partzggService.get(partzgg_id);
@@ -111,14 +111,14 @@ public class ParTzggResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"ParTzgg" },  notes = "CheckKey")
+    @ApiOperation(value = "检查通知发布", tags = {"通知发布" },  notes = "检查通知发布")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ParTzggDTO partzggdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(partzggService.checkKey(partzggMapping.toDomain(partzggdto)));
     }
 
     @PreAuthorize("hasPermission(this.partzggService.get(#partzgg_id),'ehr-ParTzgg-Update')")
-    @ApiOperation(value = "Update", tags = {"ParTzgg" },  notes = "Update")
+    @ApiOperation(value = "更新通知发布", tags = {"通知发布" },  notes = "更新通知发布")
 	@RequestMapping(method = RequestMethod.PUT, value = "/partzggs/{partzgg_id}")
     @Transactional
     public ResponseEntity<ParTzggDTO> update(@PathVariable("partzgg_id") String partzgg_id, @RequestBody ParTzggDTO partzggdto) {
@@ -130,7 +130,7 @@ public class ParTzggResource {
     }
 
     @PreAuthorize("hasPermission(this.partzggService.getPartzggByEntities(this.partzggMapping.toDomain(#partzggdtos)),'ehr-ParTzgg-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"ParTzgg" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新通知发布", tags = {"通知发布" },  notes = "批量更新通知发布")
 	@RequestMapping(method = RequestMethod.PUT, value = "/partzggs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ParTzggDTO> partzggdtos) {
         partzggService.updateBatch(partzggMapping.toDomain(partzggdtos));
@@ -138,7 +138,7 @@ public class ParTzggResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParTzgg-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"ParTzgg" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"通知发布" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/partzggs/fetchdefault")
 	public ResponseEntity<List<ParTzggDTO>> fetchDefault(ParTzggSearchContext context) {
         Page<ParTzgg> domains = partzggService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ParTzggResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParTzgg-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"ParTzgg" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"通知发布" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/partzggs/searchdefault")
 	public ResponseEntity<Page<ParTzggDTO>> searchDefault(@RequestBody ParTzggSearchContext context) {
         Page<ParTzgg> domains = partzggService.searchDefault(context) ;

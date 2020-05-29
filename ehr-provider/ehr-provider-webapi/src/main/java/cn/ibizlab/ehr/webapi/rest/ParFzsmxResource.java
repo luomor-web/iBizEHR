@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.par.service.IParFzsmxService;
 import cn.ibizlab.ehr.core.par.filter.ParFzsmxSearchContext;
 
 @Slf4j
-@Api(tags = {"ParFzsmx" })
+@Api(tags = {"通知选择助总领导明细" })
 @RestController("WebApi-parfzsmx")
 @RequestMapping("")
 public class ParFzsmxResource {
@@ -46,14 +46,14 @@ public class ParFzsmxResource {
     @Lazy
     public ParFzsmxMapping parfzsmxMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"ParFzsmx" },  notes = "GetDraft")
+    @ApiOperation(value = "获取通知选择助总领导明细草稿", tags = {"通知选择助总领导明细" },  notes = "获取通知选择助总领导明细草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/parfzsmxes/getdraft")
     public ResponseEntity<ParFzsmxDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(parfzsmxMapping.toDto(parfzsmxService.getDraft(new ParFzsmx())));
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxService.get(#parfzsmx_id),'ehr-ParFzsmx-Update')")
-    @ApiOperation(value = "Update", tags = {"ParFzsmx" },  notes = "Update")
+    @ApiOperation(value = "更新通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "更新通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parfzsmxes/{parfzsmx_id}")
     @Transactional
     public ResponseEntity<ParFzsmxDTO> update(@PathVariable("parfzsmx_id") String parfzsmx_id, @RequestBody ParFzsmxDTO parfzsmxdto) {
@@ -65,7 +65,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxService.getParfzsmxByEntities(this.parfzsmxMapping.toDomain(#parfzsmxdtos)),'ehr-ParFzsmx-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"ParFzsmx" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "批量更新通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parfzsmxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ParFzsmxDTO> parfzsmxdtos) {
         parfzsmxService.updateBatch(parfzsmxMapping.toDomain(parfzsmxdtos));
@@ -73,7 +73,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxService.get(#parfzsmx_id),'ehr-ParFzsmx-Remove')")
-    @ApiOperation(value = "Remove", tags = {"ParFzsmx" },  notes = "Remove")
+    @ApiOperation(value = "删除通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "删除通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parfzsmxes/{parfzsmx_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("parfzsmx_id") String parfzsmx_id) {
@@ -81,7 +81,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxService.getParfzsmxByIds(#ids),'ehr-ParFzsmx-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"ParFzsmx" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "批量删除通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parfzsmxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         parfzsmxService.removeBatch(ids);
@@ -89,7 +89,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxMapping.toDomain(#parfzsmxdto),'ehr-ParFzsmx-Create')")
-    @ApiOperation(value = "Create", tags = {"ParFzsmx" },  notes = "Create")
+    @ApiOperation(value = "新建通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "新建通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/parfzsmxes")
     @Transactional
     public ResponseEntity<ParFzsmxDTO> create(@RequestBody ParFzsmxDTO parfzsmxdto) {
@@ -100,28 +100,28 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxMapping.toDomain(#parfzsmxdtos),'ehr-ParFzsmx-Create')")
-    @ApiOperation(value = "createBatch", tags = {"ParFzsmx" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "批量新建通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/parfzsmxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ParFzsmxDTO> parfzsmxdtos) {
         parfzsmxService.createBatch(parfzsmxMapping.toDomain(parfzsmxdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"ParFzsmx" },  notes = "CheckKey")
+    @ApiOperation(value = "检查通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "检查通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/parfzsmxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ParFzsmxDTO parfzsmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parfzsmxService.checkKey(parfzsmxMapping.toDomain(parfzsmxdto)));
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxMapping.toDomain(#parfzsmxdto),'ehr-ParFzsmx-Save')")
-    @ApiOperation(value = "Save", tags = {"ParFzsmx" },  notes = "Save")
+    @ApiOperation(value = "保存通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "保存通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/parfzsmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody ParFzsmxDTO parfzsmxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(parfzsmxService.save(parfzsmxMapping.toDomain(parfzsmxdto)));
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxMapping.toDomain(#parfzsmxdtos),'ehr-ParFzsmx-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"ParFzsmx" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "批量保存通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/parfzsmxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ParFzsmxDTO> parfzsmxdtos) {
         parfzsmxService.saveBatch(parfzsmxMapping.toDomain(parfzsmxdtos));
@@ -129,7 +129,7 @@ public class ParFzsmxResource {
     }
 
     @PostAuthorize("hasPermission(this.parfzsmxMapping.toDomain(returnObject.body),'ehr-ParFzsmx-Get')")
-    @ApiOperation(value = "Get", tags = {"ParFzsmx" },  notes = "Get")
+    @ApiOperation(value = "获取通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "获取通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/parfzsmxes/{parfzsmx_id}")
     public ResponseEntity<ParFzsmxDTO> get(@PathVariable("parfzsmx_id") String parfzsmx_id) {
         ParFzsmx domain = parfzsmxService.get(parfzsmx_id);
@@ -138,7 +138,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParFzsmx-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"ParFzsmx" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"通知选择助总领导明细" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/parfzsmxes/fetchdefault")
 	public ResponseEntity<List<ParFzsmxDTO>> fetchDefault(ParFzsmxSearchContext context) {
         Page<ParFzsmx> domains = parfzsmxService.searchDefault(context) ;
@@ -151,14 +151,14 @@ public class ParFzsmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParFzsmx-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"ParFzsmx" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"通知选择助总领导明细" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/parfzsmxes/searchdefault")
 	public ResponseEntity<Page<ParFzsmxDTO>> searchDefault(@RequestBody ParFzsmxSearchContext context) {
         Page<ParFzsmx> domains = parfzsmxService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(parfzsmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @ApiOperation(value = "GetDraftByParTzgg", tags = {"ParFzsmx" },  notes = "GetDraftByParTzgg")
+    @ApiOperation(value = "根据通知发布获取通知选择助总领导明细草稿", tags = {"通知选择助总领导明细" },  notes = "根据通知发布获取通知选择助总领导明细草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/partzggs/{partzgg_id}/parfzsmxes/getdraft")
     public ResponseEntity<ParFzsmxDTO> getDraftByParTzgg(@PathVariable("partzgg_id") String partzgg_id) {
         ParFzsmx domain = new ParFzsmx();
@@ -167,7 +167,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxService.get(#parfzsmx_id),'ehr-ParFzsmx-Update')")
-    @ApiOperation(value = "UpdateByParTzgg", tags = {"ParFzsmx" },  notes = "UpdateByParTzgg")
+    @ApiOperation(value = "根据通知发布更新通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据通知发布更新通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/partzggs/{partzgg_id}/parfzsmxes/{parfzsmx_id}")
     @Transactional
     public ResponseEntity<ParFzsmxDTO> updateByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @PathVariable("parfzsmx_id") String parfzsmx_id, @RequestBody ParFzsmxDTO parfzsmxdto) {
@@ -180,7 +180,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxService.getParfzsmxByEntities(this.parfzsmxMapping.toDomain(#parfzsmxdtos)),'ehr-ParFzsmx-Update')")
-    @ApiOperation(value = "UpdateBatchByParTzgg", tags = {"ParFzsmx" },  notes = "UpdateBatchByParTzgg")
+    @ApiOperation(value = "根据通知发布批量更新通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据通知发布批量更新通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/partzggs/{partzgg_id}/parfzsmxes/batch")
     public ResponseEntity<Boolean> updateBatchByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @RequestBody List<ParFzsmxDTO> parfzsmxdtos) {
         List<ParFzsmx> domainlist=parfzsmxMapping.toDomain(parfzsmxdtos);
@@ -192,7 +192,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxService.get(#parfzsmx_id),'ehr-ParFzsmx-Remove')")
-    @ApiOperation(value = "RemoveByParTzgg", tags = {"ParFzsmx" },  notes = "RemoveByParTzgg")
+    @ApiOperation(value = "根据通知发布删除通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据通知发布删除通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/partzggs/{partzgg_id}/parfzsmxes/{parfzsmx_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @PathVariable("parfzsmx_id") String parfzsmx_id) {
@@ -200,7 +200,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxService.getParfzsmxByIds(#ids),'ehr-ParFzsmx-Remove')")
-    @ApiOperation(value = "RemoveBatchByParTzgg", tags = {"ParFzsmx" },  notes = "RemoveBatchByParTzgg")
+    @ApiOperation(value = "根据通知发布批量删除通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据通知发布批量删除通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/partzggs/{partzgg_id}/parfzsmxes/batch")
     public ResponseEntity<Boolean> removeBatchByParTzgg(@RequestBody List<String> ids) {
         parfzsmxService.removeBatch(ids);
@@ -208,7 +208,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxMapping.toDomain(#parfzsmxdto),'ehr-ParFzsmx-Create')")
-    @ApiOperation(value = "CreateByParTzgg", tags = {"ParFzsmx" },  notes = "CreateByParTzgg")
+    @ApiOperation(value = "根据通知发布建立通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据通知发布建立通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/{partzgg_id}/parfzsmxes")
     @Transactional
     public ResponseEntity<ParFzsmxDTO> createByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @RequestBody ParFzsmxDTO parfzsmxdto) {
@@ -220,7 +220,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxMapping.toDomain(#parfzsmxdtos),'ehr-ParFzsmx-Create')")
-    @ApiOperation(value = "createBatchByParTzgg", tags = {"ParFzsmx" },  notes = "createBatchByParTzgg")
+    @ApiOperation(value = "根据通知发布批量建立通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据通知发布批量建立通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/{partzgg_id}/parfzsmxes/batch")
     public ResponseEntity<Boolean> createBatchByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @RequestBody List<ParFzsmxDTO> parfzsmxdtos) {
         List<ParFzsmx> domainlist=parfzsmxMapping.toDomain(parfzsmxdtos);
@@ -231,14 +231,14 @@ public class ParFzsmxResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByParTzgg", tags = {"ParFzsmx" },  notes = "CheckKeyByParTzgg")
+    @ApiOperation(value = "根据通知发布检查通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据通知发布检查通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/{partzgg_id}/parfzsmxes/checkkey")
     public ResponseEntity<Boolean> checkKeyByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @RequestBody ParFzsmxDTO parfzsmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parfzsmxService.checkKey(parfzsmxMapping.toDomain(parfzsmxdto)));
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxMapping.toDomain(#parfzsmxdto),'ehr-ParFzsmx-Save')")
-    @ApiOperation(value = "SaveByParTzgg", tags = {"ParFzsmx" },  notes = "SaveByParTzgg")
+    @ApiOperation(value = "根据通知发布保存通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据通知发布保存通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/{partzgg_id}/parfzsmxes/save")
     public ResponseEntity<Boolean> saveByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @RequestBody ParFzsmxDTO parfzsmxdto) {
         ParFzsmx domain = parfzsmxMapping.toDomain(parfzsmxdto);
@@ -247,7 +247,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxMapping.toDomain(#parfzsmxdtos),'ehr-ParFzsmx-Save')")
-    @ApiOperation(value = "SaveBatchByParTzgg", tags = {"ParFzsmx" },  notes = "SaveBatchByParTzgg")
+    @ApiOperation(value = "根据通知发布批量保存通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据通知发布批量保存通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/partzggs/{partzgg_id}/parfzsmxes/savebatch")
     public ResponseEntity<Boolean> saveBatchByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @RequestBody List<ParFzsmxDTO> parfzsmxdtos) {
         List<ParFzsmx> domainlist=parfzsmxMapping.toDomain(parfzsmxdtos);
@@ -259,7 +259,7 @@ public class ParFzsmxResource {
     }
 
     @PostAuthorize("hasPermission(this.parfzsmxMapping.toDomain(returnObject.body),'ehr-ParFzsmx-Get')")
-    @ApiOperation(value = "GetByParTzgg", tags = {"ParFzsmx" },  notes = "GetByParTzgg")
+    @ApiOperation(value = "根据通知发布获取通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据通知发布获取通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/partzggs/{partzgg_id}/parfzsmxes/{parfzsmx_id}")
     public ResponseEntity<ParFzsmxDTO> getByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @PathVariable("parfzsmx_id") String parfzsmx_id) {
         ParFzsmx domain = parfzsmxService.get(parfzsmx_id);
@@ -268,7 +268,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParFzsmx-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByParTzgg", tags = {"ParFzsmx" } ,notes = "fetchDEFAULTByParTzgg")
+	@ApiOperation(value = "根据通知发布获取DEFAULT", tags = {"通知选择助总领导明细" } ,notes = "根据通知发布获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/partzggs/{partzgg_id}/parfzsmxes/fetchdefault")
 	public ResponseEntity<List<ParFzsmxDTO>> fetchParFzsmxDefaultByParTzgg(@PathVariable("partzgg_id") String partzgg_id,ParFzsmxSearchContext context) {
         context.setN_partzggid_eq(partzgg_id);
@@ -282,7 +282,7 @@ public class ParFzsmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParFzsmx-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByParTzgg", tags = {"ParFzsmx" } ,notes = "searchDEFAULTByParTzgg")
+	@ApiOperation(value = "根据通知发布查询DEFAULT", tags = {"通知选择助总领导明细" } ,notes = "根据通知发布查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/partzggs/{partzgg_id}/parfzsmxes/searchdefault")
 	public ResponseEntity<Page<ParFzsmxDTO>> searchParFzsmxDefaultByParTzgg(@PathVariable("partzgg_id") String partzgg_id, @RequestBody ParFzsmxSearchContext context) {
         context.setN_partzggid_eq(partzgg_id);
@@ -290,7 +290,7 @@ public class ParFzsmxResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(parfzsmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @ApiOperation(value = "GetDraftByPimPerson", tags = {"ParFzsmx" },  notes = "GetDraftByPimPerson")
+    @ApiOperation(value = "根据人员信息获取通知选择助总领导明细草稿", tags = {"通知选择助总领导明细" },  notes = "根据人员信息获取通知选择助总领导明细草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/parfzsmxes/getdraft")
     public ResponseEntity<ParFzsmxDTO> getDraftByPimPerson(@PathVariable("pimperson_id") String pimperson_id) {
         ParFzsmx domain = new ParFzsmx();
@@ -299,7 +299,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxService.get(#parfzsmx_id),'ehr-ParFzsmx-Update')")
-    @ApiOperation(value = "UpdateByPimPerson", tags = {"ParFzsmx" },  notes = "UpdateByPimPerson")
+    @ApiOperation(value = "根据人员信息更新通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据人员信息更新通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/parfzsmxes/{parfzsmx_id}")
     @Transactional
     public ResponseEntity<ParFzsmxDTO> updateByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("parfzsmx_id") String parfzsmx_id, @RequestBody ParFzsmxDTO parfzsmxdto) {
@@ -312,7 +312,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxService.getParfzsmxByEntities(this.parfzsmxMapping.toDomain(#parfzsmxdtos)),'ehr-ParFzsmx-Update')")
-    @ApiOperation(value = "UpdateBatchByPimPerson", tags = {"ParFzsmx" },  notes = "UpdateBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量更新通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据人员信息批量更新通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/parfzsmxes/batch")
     public ResponseEntity<Boolean> updateBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<ParFzsmxDTO> parfzsmxdtos) {
         List<ParFzsmx> domainlist=parfzsmxMapping.toDomain(parfzsmxdtos);
@@ -324,7 +324,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxService.get(#parfzsmx_id),'ehr-ParFzsmx-Remove')")
-    @ApiOperation(value = "RemoveByPimPerson", tags = {"ParFzsmx" },  notes = "RemoveByPimPerson")
+    @ApiOperation(value = "根据人员信息删除通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据人员信息删除通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/parfzsmxes/{parfzsmx_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("parfzsmx_id") String parfzsmx_id) {
@@ -332,7 +332,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxService.getParfzsmxByIds(#ids),'ehr-ParFzsmx-Remove')")
-    @ApiOperation(value = "RemoveBatchByPimPerson", tags = {"ParFzsmx" },  notes = "RemoveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量删除通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据人员信息批量删除通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/parfzsmxes/batch")
     public ResponseEntity<Boolean> removeBatchByPimPerson(@RequestBody List<String> ids) {
         parfzsmxService.removeBatch(ids);
@@ -340,7 +340,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxMapping.toDomain(#parfzsmxdto),'ehr-ParFzsmx-Create')")
-    @ApiOperation(value = "CreateByPimPerson", tags = {"ParFzsmx" },  notes = "CreateByPimPerson")
+    @ApiOperation(value = "根据人员信息建立通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据人员信息建立通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/parfzsmxes")
     @Transactional
     public ResponseEntity<ParFzsmxDTO> createByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody ParFzsmxDTO parfzsmxdto) {
@@ -352,7 +352,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxMapping.toDomain(#parfzsmxdtos),'ehr-ParFzsmx-Create')")
-    @ApiOperation(value = "createBatchByPimPerson", tags = {"ParFzsmx" },  notes = "createBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量建立通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据人员信息批量建立通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/parfzsmxes/batch")
     public ResponseEntity<Boolean> createBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<ParFzsmxDTO> parfzsmxdtos) {
         List<ParFzsmx> domainlist=parfzsmxMapping.toDomain(parfzsmxdtos);
@@ -363,14 +363,14 @@ public class ParFzsmxResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByPimPerson", tags = {"ParFzsmx" },  notes = "CheckKeyByPimPerson")
+    @ApiOperation(value = "根据人员信息检查通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据人员信息检查通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/parfzsmxes/checkkey")
     public ResponseEntity<Boolean> checkKeyByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody ParFzsmxDTO parfzsmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parfzsmxService.checkKey(parfzsmxMapping.toDomain(parfzsmxdto)));
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxMapping.toDomain(#parfzsmxdto),'ehr-ParFzsmx-Save')")
-    @ApiOperation(value = "SaveByPimPerson", tags = {"ParFzsmx" },  notes = "SaveByPimPerson")
+    @ApiOperation(value = "根据人员信息保存通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据人员信息保存通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/parfzsmxes/save")
     public ResponseEntity<Boolean> saveByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody ParFzsmxDTO parfzsmxdto) {
         ParFzsmx domain = parfzsmxMapping.toDomain(parfzsmxdto);
@@ -379,7 +379,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parfzsmxMapping.toDomain(#parfzsmxdtos),'ehr-ParFzsmx-Save')")
-    @ApiOperation(value = "SaveBatchByPimPerson", tags = {"ParFzsmx" },  notes = "SaveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量保存通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据人员信息批量保存通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/parfzsmxes/savebatch")
     public ResponseEntity<Boolean> saveBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<ParFzsmxDTO> parfzsmxdtos) {
         List<ParFzsmx> domainlist=parfzsmxMapping.toDomain(parfzsmxdtos);
@@ -391,7 +391,7 @@ public class ParFzsmxResource {
     }
 
     @PostAuthorize("hasPermission(this.parfzsmxMapping.toDomain(returnObject.body),'ehr-ParFzsmx-Get')")
-    @ApiOperation(value = "GetByPimPerson", tags = {"ParFzsmx" },  notes = "GetByPimPerson")
+    @ApiOperation(value = "根据人员信息获取通知选择助总领导明细", tags = {"通知选择助总领导明细" },  notes = "根据人员信息获取通知选择助总领导明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/parfzsmxes/{parfzsmx_id}")
     public ResponseEntity<ParFzsmxDTO> getByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("parfzsmx_id") String parfzsmx_id) {
         ParFzsmx domain = parfzsmxService.get(parfzsmx_id);
@@ -400,7 +400,7 @@ public class ParFzsmxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParFzsmx-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPimPerson", tags = {"ParFzsmx" } ,notes = "fetchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息获取DEFAULT", tags = {"通知选择助总领导明细" } ,notes = "根据人员信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/parfzsmxes/fetchdefault")
 	public ResponseEntity<List<ParFzsmxDTO>> fetchParFzsmxDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id,ParFzsmxSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -414,7 +414,7 @@ public class ParFzsmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParFzsmx-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPimPerson", tags = {"ParFzsmx" } ,notes = "searchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息查询DEFAULT", tags = {"通知选择助总领导明细" } ,notes = "根据人员信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/parfzsmxes/searchdefault")
 	public ResponseEntity<Page<ParFzsmxDTO>> searchParFzsmxDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody ParFzsmxSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);

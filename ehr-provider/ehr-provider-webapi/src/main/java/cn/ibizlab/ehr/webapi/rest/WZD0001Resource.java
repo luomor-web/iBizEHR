@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IWZD0001Service;
 import cn.ibizlab.ehr.core.pcm.filter.WZD0001SearchContext;
 
 @Slf4j
-@Api(tags = {"WZD0001" })
+@Api(tags = {"向导实体1" })
 @RestController("WebApi-wzd0001")
 @RequestMapping("")
 public class WZD0001Resource {
@@ -47,7 +47,7 @@ public class WZD0001Resource {
     public WZD0001Mapping wzd0001Mapping;
 
     @PreAuthorize("hasPermission(this.wzd0001Service.get(#wzd0001_id),'ehr-WZD0001-Remove')")
-    @ApiOperation(value = "Remove", tags = {"WZD0001" },  notes = "Remove")
+    @ApiOperation(value = "删除向导实体1", tags = {"向导实体1" },  notes = "删除向导实体1")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wzd0001s/{wzd0001_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("wzd0001_id") String wzd0001_id) {
@@ -55,28 +55,28 @@ public class WZD0001Resource {
     }
 
     @PreAuthorize("hasPermission(this.wzd0001Service.getWzd0001ByIds(#ids),'ehr-WZD0001-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"WZD0001" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除向导实体1", tags = {"向导实体1" },  notes = "批量删除向导实体1")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/wzd0001s/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         wzd0001Service.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"WZD0001" },  notes = "GetDraft")
+    @ApiOperation(value = "获取向导实体1草稿", tags = {"向导实体1" },  notes = "获取向导实体1草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/wzd0001s/getdraft")
     public ResponseEntity<WZD0001DTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(wzd0001Mapping.toDto(wzd0001Service.getDraft(new WZD0001())));
     }
 
     @PreAuthorize("hasPermission(this.wzd0001Mapping.toDomain(#wzd0001dto),'ehr-WZD0001-Save')")
-    @ApiOperation(value = "Save", tags = {"WZD0001" },  notes = "Save")
+    @ApiOperation(value = "保存向导实体1", tags = {"向导实体1" },  notes = "保存向导实体1")
 	@RequestMapping(method = RequestMethod.POST, value = "/wzd0001s/save")
     public ResponseEntity<Boolean> save(@RequestBody WZD0001DTO wzd0001dto) {
         return ResponseEntity.status(HttpStatus.OK).body(wzd0001Service.save(wzd0001Mapping.toDomain(wzd0001dto)));
     }
 
     @PreAuthorize("hasPermission(this.wzd0001Mapping.toDomain(#wzd0001dtos),'ehr-WZD0001-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"WZD0001" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存向导实体1", tags = {"向导实体1" },  notes = "批量保存向导实体1")
 	@RequestMapping(method = RequestMethod.POST, value = "/wzd0001s/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<WZD0001DTO> wzd0001dtos) {
         wzd0001Service.saveBatch(wzd0001Mapping.toDomain(wzd0001dtos));
@@ -84,7 +84,7 @@ public class WZD0001Resource {
     }
 
     @PostAuthorize("hasPermission(this.wzd0001Mapping.toDomain(returnObject.body),'ehr-WZD0001-Get')")
-    @ApiOperation(value = "Get", tags = {"WZD0001" },  notes = "Get")
+    @ApiOperation(value = "获取向导实体1", tags = {"向导实体1" },  notes = "获取向导实体1")
 	@RequestMapping(method = RequestMethod.GET, value = "/wzd0001s/{wzd0001_id}")
     public ResponseEntity<WZD0001DTO> get(@PathVariable("wzd0001_id") String wzd0001_id) {
         WZD0001 domain = wzd0001Service.get(wzd0001_id);
@@ -93,7 +93,7 @@ public class WZD0001Resource {
     }
 
     @PreAuthorize("hasPermission(this.wzd0001Service.get(#wzd0001_id),'ehr-WZD0001-Update')")
-    @ApiOperation(value = "Update", tags = {"WZD0001" },  notes = "Update")
+    @ApiOperation(value = "更新向导实体1", tags = {"向导实体1" },  notes = "更新向导实体1")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wzd0001s/{wzd0001_id}")
     @Transactional
     public ResponseEntity<WZD0001DTO> update(@PathVariable("wzd0001_id") String wzd0001_id, @RequestBody WZD0001DTO wzd0001dto) {
@@ -105,21 +105,21 @@ public class WZD0001Resource {
     }
 
     @PreAuthorize("hasPermission(this.wzd0001Service.getWzd0001ByEntities(this.wzd0001Mapping.toDomain(#wzd0001dtos)),'ehr-WZD0001-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"WZD0001" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新向导实体1", tags = {"向导实体1" },  notes = "批量更新向导实体1")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wzd0001s/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<WZD0001DTO> wzd0001dtos) {
         wzd0001Service.updateBatch(wzd0001Mapping.toDomain(wzd0001dtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"WZD0001" },  notes = "CheckKey")
+    @ApiOperation(value = "检查向导实体1", tags = {"向导实体1" },  notes = "检查向导实体1")
 	@RequestMapping(method = RequestMethod.POST, value = "/wzd0001s/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody WZD0001DTO wzd0001dto) {
         return  ResponseEntity.status(HttpStatus.OK).body(wzd0001Service.checkKey(wzd0001Mapping.toDomain(wzd0001dto)));
     }
 
     @PreAuthorize("hasPermission(this.wzd0001Mapping.toDomain(#wzd0001dto),'ehr-WZD0001-Create')")
-    @ApiOperation(value = "Create", tags = {"WZD0001" },  notes = "Create")
+    @ApiOperation(value = "新建向导实体1", tags = {"向导实体1" },  notes = "新建向导实体1")
 	@RequestMapping(method = RequestMethod.POST, value = "/wzd0001s")
     @Transactional
     public ResponseEntity<WZD0001DTO> create(@RequestBody WZD0001DTO wzd0001dto) {
@@ -130,7 +130,7 @@ public class WZD0001Resource {
     }
 
     @PreAuthorize("hasPermission(this.wzd0001Mapping.toDomain(#wzd0001dtos),'ehr-WZD0001-Create')")
-    @ApiOperation(value = "createBatch", tags = {"WZD0001" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建向导实体1", tags = {"向导实体1" },  notes = "批量新建向导实体1")
 	@RequestMapping(method = RequestMethod.POST, value = "/wzd0001s/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<WZD0001DTO> wzd0001dtos) {
         wzd0001Service.createBatch(wzd0001Mapping.toDomain(wzd0001dtos));
@@ -138,7 +138,7 @@ public class WZD0001Resource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0001-UpdatePeopleNum-all')")
-    @ApiOperation(value = "刷新人数", tags = {"WZD0001" },  notes = "刷新人数")
+    @ApiOperation(value = "刷新人数", tags = {"向导实体1" },  notes = "刷新人数")
 	@RequestMapping(method = RequestMethod.PUT, value = "/wzd0001s/{wzd0001_id}/updatepeoplenum")
     @Transactional
     public ResponseEntity<WZD0001DTO> updatePeopleNum(@PathVariable("wzd0001_id") String wzd0001_id, @RequestBody WZD0001DTO wzd0001dto) {
@@ -150,7 +150,7 @@ public class WZD0001Resource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0001-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"WZD0001" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"向导实体1" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/wzd0001s/fetchdefault")
 	public ResponseEntity<List<WZD0001DTO>> fetchDefault(WZD0001SearchContext context) {
         Page<WZD0001> domains = wzd0001Service.searchDefault(context) ;
@@ -163,7 +163,7 @@ public class WZD0001Resource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-WZD0001-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"WZD0001" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"向导实体1" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/wzd0001s/searchdefault")
 	public ResponseEntity<Page<WZD0001DTO>> searchDefault(@RequestBody WZD0001SearchContext context) {
         Page<WZD0001> domains = wzd0001Service.searchDefault(context) ;

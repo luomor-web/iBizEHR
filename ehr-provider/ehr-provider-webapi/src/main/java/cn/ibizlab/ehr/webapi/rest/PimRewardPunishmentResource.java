@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimRewardPunishmentService;
 import cn.ibizlab.ehr.core.pim.filter.PimRewardPunishmentSearchContext;
 
 @Slf4j
-@Api(tags = {"PimRewardPunishment" })
+@Api(tags = {"奖惩信息" })
 @RestController("WebApi-pimrewardpunishment")
 @RequestMapping("")
 public class PimRewardPunishmentResource {
@@ -46,14 +46,14 @@ public class PimRewardPunishmentResource {
     @Lazy
     public PimRewardPunishmentMapping pimrewardpunishmentMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"PimRewardPunishment" },  notes = "CheckKey")
+    @ApiOperation(value = "检查奖惩信息", tags = {"奖惩信息" },  notes = "检查奖惩信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimrewardpunishments/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimRewardPunishmentDTO pimrewardpunishmentdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimrewardpunishmentService.checkKey(pimrewardpunishmentMapping.toDomain(pimrewardpunishmentdto)));
     }
 
     @PostAuthorize("hasPermission(this.pimrewardpunishmentMapping.toDomain(returnObject.body),'ehr-PimRewardPunishment-Get')")
-    @ApiOperation(value = "Get", tags = {"PimRewardPunishment" },  notes = "Get")
+    @ApiOperation(value = "获取奖惩信息", tags = {"奖惩信息" },  notes = "获取奖惩信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimrewardpunishments/{pimrewardpunishment_id}")
     public ResponseEntity<PimRewardPunishmentDTO> get(@PathVariable("pimrewardpunishment_id") String pimrewardpunishment_id) {
         PimRewardPunishment domain = pimrewardpunishmentService.get(pimrewardpunishment_id);
@@ -62,7 +62,7 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pimrewardpunishmentService.get(#pimrewardpunishment_id),'ehr-PimRewardPunishment-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimRewardPunishment" },  notes = "Remove")
+    @ApiOperation(value = "删除奖惩信息", tags = {"奖惩信息" },  notes = "删除奖惩信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimrewardpunishments/{pimrewardpunishment_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimrewardpunishment_id") String pimrewardpunishment_id) {
@@ -70,7 +70,7 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pimrewardpunishmentService.getPimrewardpunishmentByIds(#ids),'ehr-PimRewardPunishment-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimRewardPunishment" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除奖惩信息", tags = {"奖惩信息" },  notes = "批量删除奖惩信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimrewardpunishments/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimrewardpunishmentService.removeBatch(ids);
@@ -78,28 +78,28 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pimrewardpunishmentMapping.toDomain(#pimrewardpunishmentdto),'ehr-PimRewardPunishment-Save')")
-    @ApiOperation(value = "Save", tags = {"PimRewardPunishment" },  notes = "Save")
+    @ApiOperation(value = "保存奖惩信息", tags = {"奖惩信息" },  notes = "保存奖惩信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimrewardpunishments/save")
     public ResponseEntity<Boolean> save(@RequestBody PimRewardPunishmentDTO pimrewardpunishmentdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimrewardpunishmentService.save(pimrewardpunishmentMapping.toDomain(pimrewardpunishmentdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimrewardpunishmentMapping.toDomain(#pimrewardpunishmentdtos),'ehr-PimRewardPunishment-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimRewardPunishment" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存奖惩信息", tags = {"奖惩信息" },  notes = "批量保存奖惩信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimrewardpunishments/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimRewardPunishmentDTO> pimrewardpunishmentdtos) {
         pimrewardpunishmentService.saveBatch(pimrewardpunishmentMapping.toDomain(pimrewardpunishmentdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimRewardPunishment" },  notes = "GetDraft")
+    @ApiOperation(value = "获取奖惩信息草稿", tags = {"奖惩信息" },  notes = "获取奖惩信息草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimrewardpunishments/getdraft")
     public ResponseEntity<PimRewardPunishmentDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimrewardpunishmentMapping.toDto(pimrewardpunishmentService.getDraft(new PimRewardPunishment())));
     }
 
     @PreAuthorize("hasPermission(this.pimrewardpunishmentMapping.toDomain(#pimrewardpunishmentdto),'ehr-PimRewardPunishment-Create')")
-    @ApiOperation(value = "Create", tags = {"PimRewardPunishment" },  notes = "Create")
+    @ApiOperation(value = "新建奖惩信息", tags = {"奖惩信息" },  notes = "新建奖惩信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimrewardpunishments")
     @Transactional
     public ResponseEntity<PimRewardPunishmentDTO> create(@RequestBody PimRewardPunishmentDTO pimrewardpunishmentdto) {
@@ -110,7 +110,7 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pimrewardpunishmentMapping.toDomain(#pimrewardpunishmentdtos),'ehr-PimRewardPunishment-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimRewardPunishment" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建奖惩信息", tags = {"奖惩信息" },  notes = "批量新建奖惩信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimrewardpunishments/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimRewardPunishmentDTO> pimrewardpunishmentdtos) {
         pimrewardpunishmentService.createBatch(pimrewardpunishmentMapping.toDomain(pimrewardpunishmentdtos));
@@ -118,7 +118,7 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pimrewardpunishmentService.get(#pimrewardpunishment_id),'ehr-PimRewardPunishment-Update')")
-    @ApiOperation(value = "Update", tags = {"PimRewardPunishment" },  notes = "Update")
+    @ApiOperation(value = "更新奖惩信息", tags = {"奖惩信息" },  notes = "更新奖惩信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimrewardpunishments/{pimrewardpunishment_id}")
     @Transactional
     public ResponseEntity<PimRewardPunishmentDTO> update(@PathVariable("pimrewardpunishment_id") String pimrewardpunishment_id, @RequestBody PimRewardPunishmentDTO pimrewardpunishmentdto) {
@@ -130,7 +130,7 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pimrewardpunishmentService.getPimrewardpunishmentByEntities(this.pimrewardpunishmentMapping.toDomain(#pimrewardpunishmentdtos)),'ehr-PimRewardPunishment-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimRewardPunishment" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新奖惩信息", tags = {"奖惩信息" },  notes = "批量更新奖惩信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimrewardpunishments/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimRewardPunishmentDTO> pimrewardpunishmentdtos) {
         pimrewardpunishmentService.updateBatch(pimrewardpunishmentMapping.toDomain(pimrewardpunishmentdtos));
@@ -138,7 +138,7 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-ZIZHU-all')")
-	@ApiOperation(value = "fetch自助(奖惩信息)", tags = {"PimRewardPunishment" } ,notes = "fetch自助(奖惩信息)")
+	@ApiOperation(value = "获取自助(奖惩信息)", tags = {"奖惩信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimrewardpunishments/fetchzizhu")
 	public ResponseEntity<List<PimRewardPunishmentDTO>> fetchZIZHU(PimRewardPunishmentSearchContext context) {
         Page<PimRewardPunishment> domains = pimrewardpunishmentService.searchZIZHU(context) ;
@@ -151,7 +151,7 @@ public class PimRewardPunishmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-ZIZHU-all')")
-	@ApiOperation(value = "search自助(奖惩信息)", tags = {"PimRewardPunishment" } ,notes = "search自助(奖惩信息)")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"奖惩信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimrewardpunishments/searchzizhu")
 	public ResponseEntity<Page<PimRewardPunishmentDTO>> searchZIZHU(@RequestBody PimRewardPunishmentSearchContext context) {
         Page<PimRewardPunishment> domains = pimrewardpunishmentService.searchZIZHU(context) ;
@@ -159,7 +159,7 @@ public class PimRewardPunishmentResource {
                 .body(new PageImpl(pimrewardpunishmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-HONORARY-all')")
-	@ApiOperation(value = "fetch公司及以上荣誉", tags = {"PimRewardPunishment" } ,notes = "fetch公司及以上荣誉")
+	@ApiOperation(value = "获取公司及以上荣誉", tags = {"奖惩信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimrewardpunishments/fetchhonorary")
 	public ResponseEntity<List<PimRewardPunishmentDTO>> fetchHONORARY(PimRewardPunishmentSearchContext context) {
         Page<PimRewardPunishment> domains = pimrewardpunishmentService.searchHONORARY(context) ;
@@ -172,7 +172,7 @@ public class PimRewardPunishmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-HONORARY-all')")
-	@ApiOperation(value = "search公司及以上荣誉", tags = {"PimRewardPunishment" } ,notes = "search公司及以上荣誉")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"奖惩信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimrewardpunishments/searchhonorary")
 	public ResponseEntity<Page<PimRewardPunishmentDTO>> searchHONORARY(@RequestBody PimRewardPunishmentSearchContext context) {
         Page<PimRewardPunishment> domains = pimrewardpunishmentService.searchHONORARY(context) ;
@@ -180,7 +180,7 @@ public class PimRewardPunishmentResource {
                 .body(new PageImpl(pimrewardpunishmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimRewardPunishment" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"奖惩信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimrewardpunishments/fetchdefault")
 	public ResponseEntity<List<PimRewardPunishmentDTO>> fetchDefault(PimRewardPunishmentSearchContext context) {
         Page<PimRewardPunishment> domains = pimrewardpunishmentService.searchDefault(context) ;
@@ -193,7 +193,7 @@ public class PimRewardPunishmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimRewardPunishment" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"奖惩信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimrewardpunishments/searchdefault")
 	public ResponseEntity<Page<PimRewardPunishmentDTO>> searchDefault(@RequestBody PimRewardPunishmentSearchContext context) {
         Page<PimRewardPunishment> domains = pimrewardpunishmentService.searchDefault(context) ;
@@ -201,7 +201,7 @@ public class PimRewardPunishmentResource {
                 .body(new PageImpl(pimrewardpunishmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-JLSS-all')")
-	@ApiOperation(value = "fetch记录所属", tags = {"PimRewardPunishment" } ,notes = "fetch记录所属")
+	@ApiOperation(value = "获取记录所属", tags = {"奖惩信息" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimrewardpunishments/fetchjlss")
 	public ResponseEntity<List<PimRewardPunishmentDTO>> fetchJLSS(PimRewardPunishmentSearchContext context) {
         Page<PimRewardPunishment> domains = pimrewardpunishmentService.searchJLSS(context) ;
@@ -214,21 +214,21 @@ public class PimRewardPunishmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-JLSS-all')")
-	@ApiOperation(value = "search记录所属", tags = {"PimRewardPunishment" } ,notes = "search记录所属")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"奖惩信息" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimrewardpunishments/searchjlss")
 	public ResponseEntity<Page<PimRewardPunishmentDTO>> searchJLSS(@RequestBody PimRewardPunishmentSearchContext context) {
         Page<PimRewardPunishment> domains = pimrewardpunishmentService.searchJLSS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimrewardpunishmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @ApiOperation(value = "CheckKeyByPimPerson", tags = {"PimRewardPunishment" },  notes = "CheckKeyByPimPerson")
+    @ApiOperation(value = "根据人员信息检查奖惩信息", tags = {"奖惩信息" },  notes = "根据人员信息检查奖惩信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/checkkey")
     public ResponseEntity<Boolean> checkKeyByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimRewardPunishmentDTO pimrewardpunishmentdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimrewardpunishmentService.checkKey(pimrewardpunishmentMapping.toDomain(pimrewardpunishmentdto)));
     }
 
     @PostAuthorize("hasPermission(this.pimrewardpunishmentMapping.toDomain(returnObject.body),'ehr-PimRewardPunishment-Get')")
-    @ApiOperation(value = "GetByPimPerson", tags = {"PimRewardPunishment" },  notes = "GetByPimPerson")
+    @ApiOperation(value = "根据人员信息获取奖惩信息", tags = {"奖惩信息" },  notes = "根据人员信息获取奖惩信息")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/{pimrewardpunishment_id}")
     public ResponseEntity<PimRewardPunishmentDTO> getByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimrewardpunishment_id") String pimrewardpunishment_id) {
         PimRewardPunishment domain = pimrewardpunishmentService.get(pimrewardpunishment_id);
@@ -237,7 +237,7 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pimrewardpunishmentService.get(#pimrewardpunishment_id),'ehr-PimRewardPunishment-Remove')")
-    @ApiOperation(value = "RemoveByPimPerson", tags = {"PimRewardPunishment" },  notes = "RemoveByPimPerson")
+    @ApiOperation(value = "根据人员信息删除奖惩信息", tags = {"奖惩信息" },  notes = "根据人员信息删除奖惩信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/{pimrewardpunishment_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimrewardpunishment_id") String pimrewardpunishment_id) {
@@ -245,7 +245,7 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pimrewardpunishmentService.getPimrewardpunishmentByIds(#ids),'ehr-PimRewardPunishment-Remove')")
-    @ApiOperation(value = "RemoveBatchByPimPerson", tags = {"PimRewardPunishment" },  notes = "RemoveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量删除奖惩信息", tags = {"奖惩信息" },  notes = "根据人员信息批量删除奖惩信息")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/batch")
     public ResponseEntity<Boolean> removeBatchByPimPerson(@RequestBody List<String> ids) {
         pimrewardpunishmentService.removeBatch(ids);
@@ -253,7 +253,7 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pimrewardpunishmentMapping.toDomain(#pimrewardpunishmentdto),'ehr-PimRewardPunishment-Save')")
-    @ApiOperation(value = "SaveByPimPerson", tags = {"PimRewardPunishment" },  notes = "SaveByPimPerson")
+    @ApiOperation(value = "根据人员信息保存奖惩信息", tags = {"奖惩信息" },  notes = "根据人员信息保存奖惩信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/save")
     public ResponseEntity<Boolean> saveByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimRewardPunishmentDTO pimrewardpunishmentdto) {
         PimRewardPunishment domain = pimrewardpunishmentMapping.toDomain(pimrewardpunishmentdto);
@@ -262,7 +262,7 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pimrewardpunishmentMapping.toDomain(#pimrewardpunishmentdtos),'ehr-PimRewardPunishment-Save')")
-    @ApiOperation(value = "SaveBatchByPimPerson", tags = {"PimRewardPunishment" },  notes = "SaveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量保存奖惩信息", tags = {"奖惩信息" },  notes = "根据人员信息批量保存奖惩信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/savebatch")
     public ResponseEntity<Boolean> saveBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PimRewardPunishmentDTO> pimrewardpunishmentdtos) {
         List<PimRewardPunishment> domainlist=pimrewardpunishmentMapping.toDomain(pimrewardpunishmentdtos);
@@ -273,7 +273,7 @@ public class PimRewardPunishmentResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPimPerson", tags = {"PimRewardPunishment" },  notes = "GetDraftByPimPerson")
+    @ApiOperation(value = "根据人员信息获取奖惩信息草稿", tags = {"奖惩信息" },  notes = "根据人员信息获取奖惩信息草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/getdraft")
     public ResponseEntity<PimRewardPunishmentDTO> getDraftByPimPerson(@PathVariable("pimperson_id") String pimperson_id) {
         PimRewardPunishment domain = new PimRewardPunishment();
@@ -282,7 +282,7 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pimrewardpunishmentMapping.toDomain(#pimrewardpunishmentdto),'ehr-PimRewardPunishment-Create')")
-    @ApiOperation(value = "CreateByPimPerson", tags = {"PimRewardPunishment" },  notes = "CreateByPimPerson")
+    @ApiOperation(value = "根据人员信息建立奖惩信息", tags = {"奖惩信息" },  notes = "根据人员信息建立奖惩信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimrewardpunishments")
     @Transactional
     public ResponseEntity<PimRewardPunishmentDTO> createByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimRewardPunishmentDTO pimrewardpunishmentdto) {
@@ -294,7 +294,7 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pimrewardpunishmentMapping.toDomain(#pimrewardpunishmentdtos),'ehr-PimRewardPunishment-Create')")
-    @ApiOperation(value = "createBatchByPimPerson", tags = {"PimRewardPunishment" },  notes = "createBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量建立奖惩信息", tags = {"奖惩信息" },  notes = "根据人员信息批量建立奖惩信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/batch")
     public ResponseEntity<Boolean> createBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PimRewardPunishmentDTO> pimrewardpunishmentdtos) {
         List<PimRewardPunishment> domainlist=pimrewardpunishmentMapping.toDomain(pimrewardpunishmentdtos);
@@ -306,7 +306,7 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pimrewardpunishmentService.get(#pimrewardpunishment_id),'ehr-PimRewardPunishment-Update')")
-    @ApiOperation(value = "UpdateByPimPerson", tags = {"PimRewardPunishment" },  notes = "UpdateByPimPerson")
+    @ApiOperation(value = "根据人员信息更新奖惩信息", tags = {"奖惩信息" },  notes = "根据人员信息更新奖惩信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/{pimrewardpunishment_id}")
     @Transactional
     public ResponseEntity<PimRewardPunishmentDTO> updateByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimrewardpunishment_id") String pimrewardpunishment_id, @RequestBody PimRewardPunishmentDTO pimrewardpunishmentdto) {
@@ -319,7 +319,7 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasPermission(this.pimrewardpunishmentService.getPimrewardpunishmentByEntities(this.pimrewardpunishmentMapping.toDomain(#pimrewardpunishmentdtos)),'ehr-PimRewardPunishment-Update')")
-    @ApiOperation(value = "UpdateBatchByPimPerson", tags = {"PimRewardPunishment" },  notes = "UpdateBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量更新奖惩信息", tags = {"奖惩信息" },  notes = "根据人员信息批量更新奖惩信息")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimrewardpunishments/batch")
     public ResponseEntity<Boolean> updateBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PimRewardPunishmentDTO> pimrewardpunishmentdtos) {
         List<PimRewardPunishment> domainlist=pimrewardpunishmentMapping.toDomain(pimrewardpunishmentdtos);
@@ -331,7 +331,7 @@ public class PimRewardPunishmentResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-ZIZHU-all')")
-	@ApiOperation(value = "fetch自助(奖惩信息)ByPimPerson", tags = {"PimRewardPunishment" } ,notes = "fetch自助(奖惩信息)ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取自助(奖惩信息)", tags = {"奖惩信息" } ,notes = "根据人员信息获取自助(奖惩信息)")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimrewardpunishments/fetchzizhu")
 	public ResponseEntity<List<PimRewardPunishmentDTO>> fetchPimRewardPunishmentZIZHUByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PimRewardPunishmentSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -345,7 +345,7 @@ public class PimRewardPunishmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-ZIZHU-all')")
-	@ApiOperation(value = "search自助(奖惩信息)ByPimPerson", tags = {"PimRewardPunishment" } ,notes = "search自助(奖惩信息)ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询自助(奖惩信息)", tags = {"奖惩信息" } ,notes = "根据人员信息查询自助(奖惩信息)")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimrewardpunishments/searchzizhu")
 	public ResponseEntity<Page<PimRewardPunishmentDTO>> searchPimRewardPunishmentZIZHUByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimRewardPunishmentSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -354,7 +354,7 @@ public class PimRewardPunishmentResource {
                 .body(new PageImpl(pimrewardpunishmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-HONORARY-all')")
-	@ApiOperation(value = "fetch公司及以上荣誉ByPimPerson", tags = {"PimRewardPunishment" } ,notes = "fetch公司及以上荣誉ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取公司及以上荣誉", tags = {"奖惩信息" } ,notes = "根据人员信息获取公司及以上荣誉")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimrewardpunishments/fetchhonorary")
 	public ResponseEntity<List<PimRewardPunishmentDTO>> fetchPimRewardPunishmentHONORARYByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PimRewardPunishmentSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -368,7 +368,7 @@ public class PimRewardPunishmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-HONORARY-all')")
-	@ApiOperation(value = "search公司及以上荣誉ByPimPerson", tags = {"PimRewardPunishment" } ,notes = "search公司及以上荣誉ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询公司及以上荣誉", tags = {"奖惩信息" } ,notes = "根据人员信息查询公司及以上荣誉")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimrewardpunishments/searchhonorary")
 	public ResponseEntity<Page<PimRewardPunishmentDTO>> searchPimRewardPunishmentHONORARYByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimRewardPunishmentSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -377,7 +377,7 @@ public class PimRewardPunishmentResource {
                 .body(new PageImpl(pimrewardpunishmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPimPerson", tags = {"PimRewardPunishment" } ,notes = "fetchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息获取DEFAULT", tags = {"奖惩信息" } ,notes = "根据人员信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimrewardpunishments/fetchdefault")
 	public ResponseEntity<List<PimRewardPunishmentDTO>> fetchPimRewardPunishmentDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PimRewardPunishmentSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -391,7 +391,7 @@ public class PimRewardPunishmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPimPerson", tags = {"PimRewardPunishment" } ,notes = "searchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息查询DEFAULT", tags = {"奖惩信息" } ,notes = "根据人员信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimrewardpunishments/searchdefault")
 	public ResponseEntity<Page<PimRewardPunishmentDTO>> searchPimRewardPunishmentDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimRewardPunishmentSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -400,7 +400,7 @@ public class PimRewardPunishmentResource {
                 .body(new PageImpl(pimrewardpunishmentMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-JLSS-all')")
-	@ApiOperation(value = "fetch记录所属ByPimPerson", tags = {"PimRewardPunishment" } ,notes = "fetch记录所属ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取记录所属", tags = {"奖惩信息" } ,notes = "根据人员信息获取记录所属")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimrewardpunishments/fetchjlss")
 	public ResponseEntity<List<PimRewardPunishmentDTO>> fetchPimRewardPunishmentJLSSByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PimRewardPunishmentSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -414,7 +414,7 @@ public class PimRewardPunishmentResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimRewardPunishment-JLSS-all')")
-	@ApiOperation(value = "search记录所属ByPimPerson", tags = {"PimRewardPunishment" } ,notes = "search记录所属ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询记录所属", tags = {"奖惩信息" } ,notes = "根据人员信息查询记录所属")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimrewardpunishments/searchjlss")
 	public ResponseEntity<Page<PimRewardPunishmentDTO>> searchPimRewardPunishmentJLSSByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PimRewardPunishmentSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);

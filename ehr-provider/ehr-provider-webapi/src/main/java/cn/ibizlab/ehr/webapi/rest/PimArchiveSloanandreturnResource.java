@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimArchiveSloanandreturnService;
 import cn.ibizlab.ehr.core.pim.filter.PimArchiveSloanandreturnSearchContext;
 
 @Slf4j
-@Api(tags = {"PimArchiveSloanandreturn" })
+@Api(tags = {"档案借阅及归还记录" })
 @RestController("WebApi-pimarchivesloanandreturn")
 @RequestMapping("")
 public class PimArchiveSloanandreturnResource {
@@ -47,7 +47,7 @@ public class PimArchiveSloanandreturnResource {
     public PimArchiveSloanandreturnMapping pimarchivesloanandreturnMapping;
 
     @PostAuthorize("hasPermission(this.pimarchivesloanandreturnMapping.toDomain(returnObject.body),'ehr-PimArchiveSloanandreturn-Get')")
-    @ApiOperation(value = "Get", tags = {"PimArchiveSloanandreturn" },  notes = "Get")
+    @ApiOperation(value = "获取档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "获取档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     public ResponseEntity<PimArchiveSloanandreturnDTO> get(@PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id) {
         PimArchiveSloanandreturn domain = pimarchivesloanandreturnService.get(pimarchivesloanandreturn_id);
@@ -56,7 +56,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnService.get(#pimarchivesloanandreturn_id),'ehr-PimArchiveSloanandreturn-Update')")
-    @ApiOperation(value = "Update", tags = {"PimArchiveSloanandreturn" },  notes = "Update")
+    @ApiOperation(value = "更新档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "更新档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     @Transactional
     public ResponseEntity<PimArchiveSloanandreturnDTO> update(@PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id, @RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
@@ -68,7 +68,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnService.getPimarchivesloanandreturnByEntities(this.pimarchivesloanandreturnMapping.toDomain(#pimarchivesloanandreturndtos)),'ehr-PimArchiveSloanandreturn-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimArchiveSloanandreturn" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "批量更新档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimArchiveSloanandreturnDTO> pimarchivesloanandreturndtos) {
         pimarchivesloanandreturnService.updateBatch(pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndtos));
@@ -76,7 +76,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnMapping.toDomain(#pimarchivesloanandreturndto),'ehr-PimArchiveSloanandreturn-Create')")
-    @ApiOperation(value = "Create", tags = {"PimArchiveSloanandreturn" },  notes = "Create")
+    @ApiOperation(value = "新建档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "新建档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesloanandreturns")
     @Transactional
     public ResponseEntity<PimArchiveSloanandreturnDTO> create(@RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
@@ -87,27 +87,27 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnMapping.toDomain(#pimarchivesloanandreturndtos),'ehr-PimArchiveSloanandreturn-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimArchiveSloanandreturn" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "批量新建档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimArchiveSloanandreturnDTO> pimarchivesloanandreturndtos) {
         pimarchivesloanandreturnService.createBatch(pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimArchiveSloanandreturn" },  notes = "GetDraft")
+    @ApiOperation(value = "获取档案借阅及归还记录草稿", tags = {"档案借阅及归还记录" },  notes = "获取档案借阅及归还记录草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchivesloanandreturns/getdraft")
     public ResponseEntity<PimArchiveSloanandreturnDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnMapping.toDto(pimarchivesloanandreturnService.getDraft(new PimArchiveSloanandreturn())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimArchiveSloanandreturn" },  notes = "CheckKey")
+    @ApiOperation(value = "检查档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "检查档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesloanandreturns/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.checkKey(pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchiveSloanandreturn-UpdateState-all')")
-    @ApiOperation(value = "", tags = {"PimArchiveSloanandreturn" },  notes = "")
+    @ApiOperation(value = "", tags = {"档案借阅及归还记录" },  notes = "")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}/updatestate")
     @Transactional
     public ResponseEntity<PimArchiveSloanandreturnDTO> updateState(@PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id, @RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
@@ -119,14 +119,14 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnMapping.toDomain(#pimarchivesloanandreturndto),'ehr-PimArchiveSloanandreturn-Save')")
-    @ApiOperation(value = "Save", tags = {"PimArchiveSloanandreturn" },  notes = "Save")
+    @ApiOperation(value = "保存档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "保存档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesloanandreturns/save")
     public ResponseEntity<Boolean> save(@RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.save(pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndto)));
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnMapping.toDomain(#pimarchivesloanandreturndtos),'ehr-PimArchiveSloanandreturn-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimArchiveSloanandreturn" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "批量保存档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchivesloanandreturns/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimArchiveSloanandreturnDTO> pimarchivesloanandreturndtos) {
         pimarchivesloanandreturnService.saveBatch(pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndtos));
@@ -134,7 +134,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnService.get(#pimarchivesloanandreturn_id),'ehr-PimArchiveSloanandreturn-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimArchiveSloanandreturn" },  notes = "Remove")
+    @ApiOperation(value = "删除档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "删除档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id) {
@@ -142,7 +142,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnService.getPimarchivesloanandreturnByIds(#ids),'ehr-PimArchiveSloanandreturn-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimArchiveSloanandreturn" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "批量删除档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimarchivesloanandreturnService.removeBatch(ids);
@@ -150,7 +150,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchiveSloanandreturn-UpdateArchiveState-all')")
-    @ApiOperation(value = "更新档案信息借阅状态", tags = {"PimArchiveSloanandreturn" },  notes = "更新档案信息借阅状态")
+    @ApiOperation(value = "更新档案信息借阅状态", tags = {"档案借阅及归还记录" },  notes = "更新档案信息借阅状态")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}/updatearchivestate")
     @Transactional
     public ResponseEntity<PimArchiveSloanandreturnDTO> updateArchiveState(@PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id, @RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
@@ -162,7 +162,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchiveSloanandreturn-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimArchiveSloanandreturn" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"档案借阅及归还记录" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchivesloanandreturns/fetchdefault")
 	public ResponseEntity<List<PimArchiveSloanandreturnDTO>> fetchDefault(PimArchiveSloanandreturnSearchContext context) {
         Page<PimArchiveSloanandreturn> domains = pimarchivesloanandreturnService.searchDefault(context) ;
@@ -175,7 +175,7 @@ public class PimArchiveSloanandreturnResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchiveSloanandreturn-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimArchiveSloanandreturn" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"档案借阅及归还记录" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchivesloanandreturns/searchdefault")
 	public ResponseEntity<Page<PimArchiveSloanandreturnDTO>> searchDefault(@RequestBody PimArchiveSloanandreturnSearchContext context) {
         Page<PimArchiveSloanandreturn> domains = pimarchivesloanandreturnService.searchDefault(context) ;
@@ -183,7 +183,7 @@ public class PimArchiveSloanandreturnResource {
                 .body(new PageImpl(pimarchivesloanandreturnMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PostAuthorize("hasPermission(this.pimarchivesloanandreturnMapping.toDomain(returnObject.body),'ehr-PimArchiveSloanandreturn-Get')")
-    @ApiOperation(value = "GetByPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "GetByPimArchives")
+    @ApiOperation(value = "根据档案信息获取档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据档案信息获取档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     public ResponseEntity<PimArchiveSloanandreturnDTO> getByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id) {
         PimArchiveSloanandreturn domain = pimarchivesloanandreturnService.get(pimarchivesloanandreturn_id);
@@ -192,7 +192,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnService.get(#pimarchivesloanandreturn_id),'ehr-PimArchiveSloanandreturn-Update')")
-    @ApiOperation(value = "UpdateByPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "UpdateByPimArchives")
+    @ApiOperation(value = "根据档案信息更新档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据档案信息更新档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     @Transactional
     public ResponseEntity<PimArchiveSloanandreturnDTO> updateByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id, @RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
@@ -205,7 +205,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnService.getPimarchivesloanandreturnByEntities(this.pimarchivesloanandreturnMapping.toDomain(#pimarchivesloanandreturndtos)),'ehr-PimArchiveSloanandreturn-Update')")
-    @ApiOperation(value = "UpdateBatchByPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "UpdateBatchByPimArchives")
+    @ApiOperation(value = "根据档案信息批量更新档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据档案信息批量更新档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> updateBatchByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PimArchiveSloanandreturnDTO> pimarchivesloanandreturndtos) {
         List<PimArchiveSloanandreturn> domainlist=pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndtos);
@@ -217,7 +217,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnMapping.toDomain(#pimarchivesloanandreturndto),'ehr-PimArchiveSloanandreturn-Create')")
-    @ApiOperation(value = "CreateByPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "CreateByPimArchives")
+    @ApiOperation(value = "根据档案信息建立档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据档案信息建立档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns")
     @Transactional
     public ResponseEntity<PimArchiveSloanandreturnDTO> createByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
@@ -229,7 +229,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnMapping.toDomain(#pimarchivesloanandreturndtos),'ehr-PimArchiveSloanandreturn-Create')")
-    @ApiOperation(value = "createBatchByPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "createBatchByPimArchives")
+    @ApiOperation(value = "根据档案信息批量建立档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据档案信息批量建立档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> createBatchByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PimArchiveSloanandreturnDTO> pimarchivesloanandreturndtos) {
         List<PimArchiveSloanandreturn> domainlist=pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndtos);
@@ -240,7 +240,7 @@ public class PimArchiveSloanandreturnResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "GetDraftByPimArchives")
+    @ApiOperation(value = "根据档案信息获取档案借阅及归还记录草稿", tags = {"档案借阅及归还记录" },  notes = "根据档案信息获取档案借阅及归还记录草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/getdraft")
     public ResponseEntity<PimArchiveSloanandreturnDTO> getDraftByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id) {
         PimArchiveSloanandreturn domain = new PimArchiveSloanandreturn();
@@ -248,14 +248,14 @@ public class PimArchiveSloanandreturnResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnMapping.toDto(pimarchivesloanandreturnService.getDraft(domain)));
     }
 
-    @ApiOperation(value = "CheckKeyByPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "CheckKeyByPimArchives")
+    @ApiOperation(value = "根据档案信息检查档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据档案信息检查档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/checkkey")
     public ResponseEntity<Boolean> checkKeyByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.checkKey(pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchiveSloanandreturn-UpdateState-all')")
-    @ApiOperation(value = "ByPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "ByPimArchives")
+    @ApiOperation(value = "根据档案信息档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据档案信息档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}/updatestate")
     @Transactional
     public ResponseEntity<PimArchiveSloanandreturnDTO> updateStateByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id, @RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
@@ -267,7 +267,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnMapping.toDomain(#pimarchivesloanandreturndto),'ehr-PimArchiveSloanandreturn-Save')")
-    @ApiOperation(value = "SaveByPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "SaveByPimArchives")
+    @ApiOperation(value = "根据档案信息保存档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据档案信息保存档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/save")
     public ResponseEntity<Boolean> saveByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
         PimArchiveSloanandreturn domain = pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndto);
@@ -276,7 +276,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnMapping.toDomain(#pimarchivesloanandreturndtos),'ehr-PimArchiveSloanandreturn-Save')")
-    @ApiOperation(value = "SaveBatchByPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "SaveBatchByPimArchives")
+    @ApiOperation(value = "根据档案信息批量保存档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据档案信息批量保存档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/savebatch")
     public ResponseEntity<Boolean> saveBatchByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PimArchiveSloanandreturnDTO> pimarchivesloanandreturndtos) {
         List<PimArchiveSloanandreturn> domainlist=pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndtos);
@@ -288,7 +288,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnService.get(#pimarchivesloanandreturn_id),'ehr-PimArchiveSloanandreturn-Remove')")
-    @ApiOperation(value = "RemoveByPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "RemoveByPimArchives")
+    @ApiOperation(value = "根据档案信息删除档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据档案信息删除档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id) {
@@ -296,7 +296,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnService.getPimarchivesloanandreturnByIds(#ids),'ehr-PimArchiveSloanandreturn-Remove')")
-    @ApiOperation(value = "RemoveBatchByPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "RemoveBatchByPimArchives")
+    @ApiOperation(value = "根据档案信息批量删除档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据档案信息批量删除档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> removeBatchByPimArchives(@RequestBody List<String> ids) {
         pimarchivesloanandreturnService.removeBatch(ids);
@@ -304,7 +304,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchiveSloanandreturn-UpdateArchiveState-all')")
-    @ApiOperation(value = "更新档案信息借阅状态ByPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "更新档案信息借阅状态ByPimArchives")
+    @ApiOperation(value = "根据档案信息档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据档案信息档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}/updatearchivestate")
     @Transactional
     public ResponseEntity<PimArchiveSloanandreturnDTO> updateArchiveStateByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id, @RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
@@ -316,7 +316,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchiveSloanandreturn-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPimArchives", tags = {"PimArchiveSloanandreturn" } ,notes = "fetchDEFAULTByPimArchives")
+	@ApiOperation(value = "根据档案信息获取DEFAULT", tags = {"档案借阅及归还记录" } ,notes = "根据档案信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/fetchdefault")
 	public ResponseEntity<List<PimArchiveSloanandreturnDTO>> fetchPimArchiveSloanandreturnDefaultByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id,PimArchiveSloanandreturnSearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
@@ -330,7 +330,7 @@ public class PimArchiveSloanandreturnResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchiveSloanandreturn-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPimArchives", tags = {"PimArchiveSloanandreturn" } ,notes = "searchDEFAULTByPimArchives")
+	@ApiOperation(value = "根据档案信息查询DEFAULT", tags = {"档案借阅及归还记录" } ,notes = "根据档案信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/searchdefault")
 	public ResponseEntity<Page<PimArchiveSloanandreturnDTO>> searchPimArchiveSloanandreturnDefaultByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchiveSloanandreturnSearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
@@ -339,7 +339,7 @@ public class PimArchiveSloanandreturnResource {
                 .body(new PageImpl(pimarchivesloanandreturnMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PostAuthorize("hasPermission(this.pimarchivesloanandreturnMapping.toDomain(returnObject.body),'ehr-PimArchiveSloanandreturn-Get')")
-    @ApiOperation(value = "GetByPimPersonPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "GetByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息获取档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据人员信息档案信息获取档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     public ResponseEntity<PimArchiveSloanandreturnDTO> getByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id) {
         PimArchiveSloanandreturn domain = pimarchivesloanandreturnService.get(pimarchivesloanandreturn_id);
@@ -348,7 +348,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnService.get(#pimarchivesloanandreturn_id),'ehr-PimArchiveSloanandreturn-Update')")
-    @ApiOperation(value = "UpdateByPimPersonPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "UpdateByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息更新档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据人员信息档案信息更新档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     @Transactional
     public ResponseEntity<PimArchiveSloanandreturnDTO> updateByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id, @RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
@@ -361,7 +361,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnService.getPimarchivesloanandreturnByEntities(this.pimarchivesloanandreturnMapping.toDomain(#pimarchivesloanandreturndtos)),'ehr-PimArchiveSloanandreturn-Update')")
-    @ApiOperation(value = "UpdateBatchByPimPersonPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "UpdateBatchByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息批量更新档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据人员信息档案信息批量更新档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> updateBatchByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PimArchiveSloanandreturnDTO> pimarchivesloanandreturndtos) {
         List<PimArchiveSloanandreturn> domainlist=pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndtos);
@@ -373,7 +373,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnMapping.toDomain(#pimarchivesloanandreturndto),'ehr-PimArchiveSloanandreturn-Create')")
-    @ApiOperation(value = "CreateByPimPersonPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "CreateByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息建立档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据人员信息档案信息建立档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns")
     @Transactional
     public ResponseEntity<PimArchiveSloanandreturnDTO> createByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
@@ -385,7 +385,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnMapping.toDomain(#pimarchivesloanandreturndtos),'ehr-PimArchiveSloanandreturn-Create')")
-    @ApiOperation(value = "createBatchByPimPersonPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "createBatchByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息批量建立档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据人员信息档案信息批量建立档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> createBatchByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PimArchiveSloanandreturnDTO> pimarchivesloanandreturndtos) {
         List<PimArchiveSloanandreturn> domainlist=pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndtos);
@@ -396,7 +396,7 @@ public class PimArchiveSloanandreturnResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPimPersonPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "GetDraftByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息获取档案借阅及归还记录草稿", tags = {"档案借阅及归还记录" },  notes = "根据人员信息档案信息获取档案借阅及归还记录草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/getdraft")
     public ResponseEntity<PimArchiveSloanandreturnDTO> getDraftByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id) {
         PimArchiveSloanandreturn domain = new PimArchiveSloanandreturn();
@@ -404,14 +404,14 @@ public class PimArchiveSloanandreturnResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnMapping.toDto(pimarchivesloanandreturnService.getDraft(domain)));
     }
 
-    @ApiOperation(value = "CheckKeyByPimPersonPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "CheckKeyByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息检查档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据人员信息档案信息检查档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/checkkey")
     public ResponseEntity<Boolean> checkKeyByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarchivesloanandreturnService.checkKey(pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchiveSloanandreturn-UpdateState-all')")
-    @ApiOperation(value = "ByPimPersonPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "ByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据人员信息档案信息档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}/updatestate")
     @Transactional
     public ResponseEntity<PimArchiveSloanandreturnDTO> updateStateByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id, @RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
@@ -423,7 +423,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnMapping.toDomain(#pimarchivesloanandreturndto),'ehr-PimArchiveSloanandreturn-Save')")
-    @ApiOperation(value = "SaveByPimPersonPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "SaveByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息保存档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据人员信息档案信息保存档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/save")
     public ResponseEntity<Boolean> saveByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
         PimArchiveSloanandreturn domain = pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndto);
@@ -432,7 +432,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnMapping.toDomain(#pimarchivesloanandreturndtos),'ehr-PimArchiveSloanandreturn-Save')")
-    @ApiOperation(value = "SaveBatchByPimPersonPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "SaveBatchByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息批量保存档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据人员信息档案信息批量保存档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/savebatch")
     public ResponseEntity<Boolean> saveBatchByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PimArchiveSloanandreturnDTO> pimarchivesloanandreturndtos) {
         List<PimArchiveSloanandreturn> domainlist=pimarchivesloanandreturnMapping.toDomain(pimarchivesloanandreturndtos);
@@ -444,7 +444,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnService.get(#pimarchivesloanandreturn_id),'ehr-PimArchiveSloanandreturn-Remove')")
-    @ApiOperation(value = "RemoveByPimPersonPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "RemoveByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息删除档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据人员信息档案信息删除档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id) {
@@ -452,7 +452,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchivesloanandreturnService.getPimarchivesloanandreturnByIds(#ids),'ehr-PimArchiveSloanandreturn-Remove')")
-    @ApiOperation(value = "RemoveBatchByPimPersonPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "RemoveBatchByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息批量删除档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据人员信息档案信息批量删除档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/batch")
     public ResponseEntity<Boolean> removeBatchByPimPersonPimArchives(@RequestBody List<String> ids) {
         pimarchivesloanandreturnService.removeBatch(ids);
@@ -460,7 +460,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchiveSloanandreturn-UpdateArchiveState-all')")
-    @ApiOperation(value = "更新档案信息借阅状态ByPimPersonPimArchives", tags = {"PimArchiveSloanandreturn" },  notes = "更新档案信息借阅状态ByPimPersonPimArchives")
+    @ApiOperation(value = "根据人员信息档案信息档案借阅及归还记录", tags = {"档案借阅及归还记录" },  notes = "根据人员信息档案信息档案借阅及归还记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/{pimarchivesloanandreturn_id}/updatearchivestate")
     @Transactional
     public ResponseEntity<PimArchiveSloanandreturnDTO> updateArchiveStateByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchivesloanandreturn_id") String pimarchivesloanandreturn_id, @RequestBody PimArchiveSloanandreturnDTO pimarchivesloanandreturndto) {
@@ -472,7 +472,7 @@ public class PimArchiveSloanandreturnResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchiveSloanandreturn-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPimPersonPimArchives", tags = {"PimArchiveSloanandreturn" } ,notes = "fetchDEFAULTByPimPersonPimArchives")
+	@ApiOperation(value = "根据人员信息档案信息获取DEFAULT", tags = {"档案借阅及归还记录" } ,notes = "根据人员信息档案信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/fetchdefault")
 	public ResponseEntity<List<PimArchiveSloanandreturnDTO>> fetchPimArchiveSloanandreturnDefaultByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id,PimArchiveSloanandreturnSearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
@@ -486,7 +486,7 @@ public class PimArchiveSloanandreturnResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimArchiveSloanandreturn-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPimPersonPimArchives", tags = {"PimArchiveSloanandreturn" } ,notes = "searchDEFAULTByPimPersonPimArchives")
+	@ApiOperation(value = "根据人员信息档案信息查询DEFAULT", tags = {"档案借阅及归还记录" } ,notes = "根据人员信息档案信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchivesloanandreturns/searchdefault")
 	public ResponseEntity<Page<PimArchiveSloanandreturnDTO>> searchPimArchiveSloanandreturnDefaultByPimPersonPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PimArchiveSloanandreturnSearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);

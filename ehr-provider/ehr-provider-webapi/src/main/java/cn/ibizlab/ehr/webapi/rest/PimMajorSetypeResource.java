@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPimMajorSetypeService;
 import cn.ibizlab.ehr.core.pim.filter.PimMajorSetypeSearchContext;
 
 @Slf4j
-@Api(tags = {"PimMajorSetype" })
+@Api(tags = {"专业序列类型" })
 @RestController("WebApi-pimmajorsetype")
 @RequestMapping("")
 public class PimMajorSetypeResource {
@@ -47,7 +47,7 @@ public class PimMajorSetypeResource {
     public PimMajorSetypeMapping pimmajorsetypeMapping;
 
     @PreAuthorize("hasPermission(this.pimmajorsetypeService.get(#pimmajorsetype_id),'ehr-PimMajorSetype-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PimMajorSetype" },  notes = "Remove")
+    @ApiOperation(value = "删除专业序列类型", tags = {"专业序列类型" },  notes = "删除专业序列类型")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimmajorsetypes/{pimmajorsetype_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimmajorsetype_id") String pimmajorsetype_id) {
@@ -55,21 +55,21 @@ public class PimMajorSetypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimmajorsetypeService.getPimmajorsetypeByIds(#ids),'ehr-PimMajorSetype-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PimMajorSetype" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除专业序列类型", tags = {"专业序列类型" },  notes = "批量删除专业序列类型")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimmajorsetypes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimmajorsetypeService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PimMajorSetype" },  notes = "CheckKey")
+    @ApiOperation(value = "检查专业序列类型", tags = {"专业序列类型" },  notes = "检查专业序列类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimmajorsetypes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PimMajorSetypeDTO pimmajorsetypedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimmajorsetypeService.checkKey(pimmajorsetypeMapping.toDomain(pimmajorsetypedto)));
     }
 
     @PostAuthorize("hasPermission(this.pimmajorsetypeMapping.toDomain(returnObject.body),'ehr-PimMajorSetype-Get')")
-    @ApiOperation(value = "Get", tags = {"PimMajorSetype" },  notes = "Get")
+    @ApiOperation(value = "获取专业序列类型", tags = {"专业序列类型" },  notes = "获取专业序列类型")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimmajorsetypes/{pimmajorsetype_id}")
     public ResponseEntity<PimMajorSetypeDTO> get(@PathVariable("pimmajorsetype_id") String pimmajorsetype_id) {
         PimMajorSetype domain = pimmajorsetypeService.get(pimmajorsetype_id);
@@ -78,14 +78,14 @@ public class PimMajorSetypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimmajorsetypeMapping.toDomain(#pimmajorsetypedto),'ehr-PimMajorSetype-Save')")
-    @ApiOperation(value = "Save", tags = {"PimMajorSetype" },  notes = "Save")
+    @ApiOperation(value = "保存专业序列类型", tags = {"专业序列类型" },  notes = "保存专业序列类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimmajorsetypes/save")
     public ResponseEntity<Boolean> save(@RequestBody PimMajorSetypeDTO pimmajorsetypedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimmajorsetypeService.save(pimmajorsetypeMapping.toDomain(pimmajorsetypedto)));
     }
 
     @PreAuthorize("hasPermission(this.pimmajorsetypeMapping.toDomain(#pimmajorsetypedtos),'ehr-PimMajorSetype-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PimMajorSetype" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存专业序列类型", tags = {"专业序列类型" },  notes = "批量保存专业序列类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimmajorsetypes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PimMajorSetypeDTO> pimmajorsetypedtos) {
         pimmajorsetypeService.saveBatch(pimmajorsetypeMapping.toDomain(pimmajorsetypedtos));
@@ -93,7 +93,7 @@ public class PimMajorSetypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimmajorsetypeMapping.toDomain(#pimmajorsetypedto),'ehr-PimMajorSetype-Create')")
-    @ApiOperation(value = "Create", tags = {"PimMajorSetype" },  notes = "Create")
+    @ApiOperation(value = "新建专业序列类型", tags = {"专业序列类型" },  notes = "新建专业序列类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimmajorsetypes")
     @Transactional
     public ResponseEntity<PimMajorSetypeDTO> create(@RequestBody PimMajorSetypeDTO pimmajorsetypedto) {
@@ -104,21 +104,21 @@ public class PimMajorSetypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimmajorsetypeMapping.toDomain(#pimmajorsetypedtos),'ehr-PimMajorSetype-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PimMajorSetype" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建专业序列类型", tags = {"专业序列类型" },  notes = "批量新建专业序列类型")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimmajorsetypes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PimMajorSetypeDTO> pimmajorsetypedtos) {
         pimmajorsetypeService.createBatch(pimmajorsetypeMapping.toDomain(pimmajorsetypedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PimMajorSetype" },  notes = "GetDraft")
+    @ApiOperation(value = "获取专业序列类型草稿", tags = {"专业序列类型" },  notes = "获取专业序列类型草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimmajorsetypes/getdraft")
     public ResponseEntity<PimMajorSetypeDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimmajorsetypeMapping.toDto(pimmajorsetypeService.getDraft(new PimMajorSetype())));
     }
 
     @PreAuthorize("hasPermission(this.pimmajorsetypeService.get(#pimmajorsetype_id),'ehr-PimMajorSetype-Update')")
-    @ApiOperation(value = "Update", tags = {"PimMajorSetype" },  notes = "Update")
+    @ApiOperation(value = "更新专业序列类型", tags = {"专业序列类型" },  notes = "更新专业序列类型")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimmajorsetypes/{pimmajorsetype_id}")
     @Transactional
     public ResponseEntity<PimMajorSetypeDTO> update(@PathVariable("pimmajorsetype_id") String pimmajorsetype_id, @RequestBody PimMajorSetypeDTO pimmajorsetypedto) {
@@ -130,7 +130,7 @@ public class PimMajorSetypeResource {
     }
 
     @PreAuthorize("hasPermission(this.pimmajorsetypeService.getPimmajorsetypeByEntities(this.pimmajorsetypeMapping.toDomain(#pimmajorsetypedtos)),'ehr-PimMajorSetype-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PimMajorSetype" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新专业序列类型", tags = {"专业序列类型" },  notes = "批量更新专业序列类型")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimmajorsetypes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PimMajorSetypeDTO> pimmajorsetypedtos) {
         pimmajorsetypeService.updateBatch(pimmajorsetypeMapping.toDomain(pimmajorsetypedtos));
@@ -138,7 +138,7 @@ public class PimMajorSetypeResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimMajorSetype-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PimMajorSetype" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"专业序列类型" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimmajorsetypes/fetchdefault")
 	public ResponseEntity<List<PimMajorSetypeDTO>> fetchDefault(PimMajorSetypeSearchContext context) {
         Page<PimMajorSetype> domains = pimmajorsetypeService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PimMajorSetypeResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimMajorSetype-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PimMajorSetype" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"专业序列类型" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimmajorsetypes/searchdefault")
 	public ResponseEntity<Page<PimMajorSetypeDTO>> searchDefault(@RequestBody PimMajorSetypeSearchContext context) {
         Page<PimMajorSetype> domains = pimmajorsetypeService.searchDefault(context) ;

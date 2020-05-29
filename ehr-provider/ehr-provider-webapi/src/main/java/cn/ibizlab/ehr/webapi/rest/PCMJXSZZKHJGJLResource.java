@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPCMJXSZZKHJGJLService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMJXSZZKHJGJLSearchContext;
 
 @Slf4j
-@Api(tags = {"PCMJXSZZKHJGJL" })
+@Api(tags = {"见习生员工转正考核结果记录" })
 @RestController("WebApi-pcmjxszzkhjgjl")
 @RequestMapping("")
 public class PCMJXSZZKHJGJLResource {
@@ -46,20 +46,20 @@ public class PCMJXSZZKHJGJLResource {
     @Lazy
     public PCMJXSZZKHJGJLMapping pcmjxszzkhjgjlMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"PCMJXSZZKHJGJL" },  notes = "CheckKey")
+    @ApiOperation(value = "检查见习生员工转正考核结果记录", tags = {"见习生员工转正考核结果记录" },  notes = "检查见习生员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmjxszzkhjgjls/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMJXSZZKHJGJLDTO pcmjxszzkhjgjldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmjxszzkhjgjlService.checkKey(pcmjxszzkhjgjlMapping.toDomain(pcmjxszzkhjgjldto)));
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PCMJXSZZKHJGJL" },  notes = "GetDraft")
+    @ApiOperation(value = "获取见习生员工转正考核结果记录草稿", tags = {"见习生员工转正考核结果记录" },  notes = "获取见习生员工转正考核结果记录草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmjxszzkhjgjls/getdraft")
     public ResponseEntity<PCMJXSZZKHJGJLDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmjxszzkhjgjlMapping.toDto(pcmjxszzkhjgjlService.getDraft(new PCMJXSZZKHJGJL())));
     }
 
     @PreAuthorize("hasPermission(this.pcmjxszzkhjgjlService.get(#pcmjxszzkhjgjl_id),'ehr-PCMJXSZZKHJGJL-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PCMJXSZZKHJGJL" },  notes = "Remove")
+    @ApiOperation(value = "删除见习生员工转正考核结果记录", tags = {"见习生员工转正考核结果记录" },  notes = "删除见习生员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmjxszzkhjgjls/{pcmjxszzkhjgjl_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmjxszzkhjgjl_id") String pcmjxszzkhjgjl_id) {
@@ -67,7 +67,7 @@ public class PCMJXSZZKHJGJLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmjxszzkhjgjlService.getPcmjxszzkhjgjlByIds(#ids),'ehr-PCMJXSZZKHJGJL-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PCMJXSZZKHJGJL" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除见习生员工转正考核结果记录", tags = {"见习生员工转正考核结果记录" },  notes = "批量删除见习生员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmjxszzkhjgjls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmjxszzkhjgjlService.removeBatch(ids);
@@ -75,7 +75,7 @@ public class PCMJXSZZKHJGJLResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmjxszzkhjgjlMapping.toDomain(returnObject.body),'ehr-PCMJXSZZKHJGJL-Get')")
-    @ApiOperation(value = "Get", tags = {"PCMJXSZZKHJGJL" },  notes = "Get")
+    @ApiOperation(value = "获取见习生员工转正考核结果记录", tags = {"见习生员工转正考核结果记录" },  notes = "获取见习生员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmjxszzkhjgjls/{pcmjxszzkhjgjl_id}")
     public ResponseEntity<PCMJXSZZKHJGJLDTO> get(@PathVariable("pcmjxszzkhjgjl_id") String pcmjxszzkhjgjl_id) {
         PCMJXSZZKHJGJL domain = pcmjxszzkhjgjlService.get(pcmjxszzkhjgjl_id);
@@ -84,7 +84,7 @@ public class PCMJXSZZKHJGJLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmjxszzkhjgjlMapping.toDomain(#pcmjxszzkhjgjldto),'ehr-PCMJXSZZKHJGJL-Create')")
-    @ApiOperation(value = "Create", tags = {"PCMJXSZZKHJGJL" },  notes = "Create")
+    @ApiOperation(value = "新建见习生员工转正考核结果记录", tags = {"见习生员工转正考核结果记录" },  notes = "新建见习生员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmjxszzkhjgjls")
     @Transactional
     public ResponseEntity<PCMJXSZZKHJGJLDTO> create(@RequestBody PCMJXSZZKHJGJLDTO pcmjxszzkhjgjldto) {
@@ -95,7 +95,7 @@ public class PCMJXSZZKHJGJLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmjxszzkhjgjlMapping.toDomain(#pcmjxszzkhjgjldtos),'ehr-PCMJXSZZKHJGJL-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PCMJXSZZKHJGJL" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建见习生员工转正考核结果记录", tags = {"见习生员工转正考核结果记录" },  notes = "批量新建见习生员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmjxszzkhjgjls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMJXSZZKHJGJLDTO> pcmjxszzkhjgjldtos) {
         pcmjxszzkhjgjlService.createBatch(pcmjxszzkhjgjlMapping.toDomain(pcmjxszzkhjgjldtos));
@@ -103,7 +103,7 @@ public class PCMJXSZZKHJGJLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmjxszzkhjgjlService.get(#pcmjxszzkhjgjl_id),'ehr-PCMJXSZZKHJGJL-Update')")
-    @ApiOperation(value = "Update", tags = {"PCMJXSZZKHJGJL" },  notes = "Update")
+    @ApiOperation(value = "更新见习生员工转正考核结果记录", tags = {"见习生员工转正考核结果记录" },  notes = "更新见习生员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmjxszzkhjgjls/{pcmjxszzkhjgjl_id}")
     @Transactional
     public ResponseEntity<PCMJXSZZKHJGJLDTO> update(@PathVariable("pcmjxszzkhjgjl_id") String pcmjxszzkhjgjl_id, @RequestBody PCMJXSZZKHJGJLDTO pcmjxszzkhjgjldto) {
@@ -115,7 +115,7 @@ public class PCMJXSZZKHJGJLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmjxszzkhjgjlService.getPcmjxszzkhjgjlByEntities(this.pcmjxszzkhjgjlMapping.toDomain(#pcmjxszzkhjgjldtos)),'ehr-PCMJXSZZKHJGJL-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PCMJXSZZKHJGJL" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新见习生员工转正考核结果记录", tags = {"见习生员工转正考核结果记录" },  notes = "批量更新见习生员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmjxszzkhjgjls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMJXSZZKHJGJLDTO> pcmjxszzkhjgjldtos) {
         pcmjxszzkhjgjlService.updateBatch(pcmjxszzkhjgjlMapping.toDomain(pcmjxszzkhjgjldtos));
@@ -123,14 +123,14 @@ public class PCMJXSZZKHJGJLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmjxszzkhjgjlMapping.toDomain(#pcmjxszzkhjgjldto),'ehr-PCMJXSZZKHJGJL-Save')")
-    @ApiOperation(value = "Save", tags = {"PCMJXSZZKHJGJL" },  notes = "Save")
+    @ApiOperation(value = "保存见习生员工转正考核结果记录", tags = {"见习生员工转正考核结果记录" },  notes = "保存见习生员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmjxszzkhjgjls/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMJXSZZKHJGJLDTO pcmjxszzkhjgjldto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmjxszzkhjgjlService.save(pcmjxszzkhjgjlMapping.toDomain(pcmjxszzkhjgjldto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmjxszzkhjgjlMapping.toDomain(#pcmjxszzkhjgjldtos),'ehr-PCMJXSZZKHJGJL-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PCMJXSZZKHJGJL" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存见习生员工转正考核结果记录", tags = {"见习生员工转正考核结果记录" },  notes = "批量保存见习生员工转正考核结果记录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmjxszzkhjgjls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMJXSZZKHJGJLDTO> pcmjxszzkhjgjldtos) {
         pcmjxszzkhjgjlService.saveBatch(pcmjxszzkhjgjlMapping.toDomain(pcmjxszzkhjgjldtos));
@@ -138,7 +138,7 @@ public class PCMJXSZZKHJGJLResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMJXSZZKHJGJL-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMJXSZZKHJGJL" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"见习生员工转正考核结果记录" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmjxszzkhjgjls/fetchdefault")
 	public ResponseEntity<List<PCMJXSZZKHJGJLDTO>> fetchDefault(PCMJXSZZKHJGJLSearchContext context) {
         Page<PCMJXSZZKHJGJL> domains = pcmjxszzkhjgjlService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PCMJXSZZKHJGJLResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMJXSZZKHJGJL-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PCMJXSZZKHJGJL" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"见习生员工转正考核结果记录" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmjxszzkhjgjls/searchdefault")
 	public ResponseEntity<Page<PCMJXSZZKHJGJLDTO>> searchDefault(@RequestBody PCMJXSZZKHJGJLSearchContext context) {
         Page<PCMJXSZZKHJGJL> domains = pcmjxszzkhjgjlService.searchDefault(context) ;

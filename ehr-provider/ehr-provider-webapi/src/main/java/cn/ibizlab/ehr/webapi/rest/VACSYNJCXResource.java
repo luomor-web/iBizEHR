@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.vac.service.IVACSYNJCXService;
 import cn.ibizlab.ehr.core.vac.filter.VACSYNJCXSearchContext;
 
 @Slf4j
-@Api(tags = {"VACSYNJCX" })
+@Api(tags = {"年休假查询" })
 @RestController("WebApi-vacsynjcx")
 @RequestMapping("")
 public class VACSYNJCXResource {
@@ -47,7 +47,7 @@ public class VACSYNJCXResource {
     public VACSYNJCXMapping vacsynjcxMapping;
 
     @PreAuthorize("hasPermission(this.vacsynjcxService.get(#vacsynjcx_id),'ehr-VACSYNJCX-Remove')")
-    @ApiOperation(value = "Remove", tags = {"VACSYNJCX" },  notes = "Remove")
+    @ApiOperation(value = "删除年休假查询", tags = {"年休假查询" },  notes = "删除年休假查询")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsynjcxes/{vacsynjcx_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("vacsynjcx_id") String vacsynjcx_id) {
@@ -55,7 +55,7 @@ public class VACSYNJCXResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsynjcxService.getVacsynjcxByIds(#ids),'ehr-VACSYNJCX-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"VACSYNJCX" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除年休假查询", tags = {"年休假查询" },  notes = "批量删除年休假查询")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacsynjcxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         vacsynjcxService.removeBatch(ids);
@@ -63,7 +63,7 @@ public class VACSYNJCXResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsynjcxService.get(#vacsynjcx_id),'ehr-VACSYNJCX-Update')")
-    @ApiOperation(value = "Update", tags = {"VACSYNJCX" },  notes = "Update")
+    @ApiOperation(value = "更新年休假查询", tags = {"年休假查询" },  notes = "更新年休假查询")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacsynjcxes/{vacsynjcx_id}")
     @Transactional
     public ResponseEntity<VACSYNJCXDTO> update(@PathVariable("vacsynjcx_id") String vacsynjcx_id, @RequestBody VACSYNJCXDTO vacsynjcxdto) {
@@ -75,21 +75,21 @@ public class VACSYNJCXResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsynjcxService.getVacsynjcxByEntities(this.vacsynjcxMapping.toDomain(#vacsynjcxdtos)),'ehr-VACSYNJCX-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"VACSYNJCX" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新年休假查询", tags = {"年休假查询" },  notes = "批量更新年休假查询")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacsynjcxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VACSYNJCXDTO> vacsynjcxdtos) {
         vacsynjcxService.updateBatch(vacsynjcxMapping.toDomain(vacsynjcxdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"VACSYNJCX" },  notes = "CheckKey")
+    @ApiOperation(value = "检查年休假查询", tags = {"年休假查询" },  notes = "检查年休假查询")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsynjcxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VACSYNJCXDTO vacsynjcxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacsynjcxService.checkKey(vacsynjcxMapping.toDomain(vacsynjcxdto)));
     }
 
     @PostAuthorize("hasPermission(this.vacsynjcxMapping.toDomain(returnObject.body),'ehr-VACSYNJCX-Get')")
-    @ApiOperation(value = "Get", tags = {"VACSYNJCX" },  notes = "Get")
+    @ApiOperation(value = "获取年休假查询", tags = {"年休假查询" },  notes = "获取年休假查询")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacsynjcxes/{vacsynjcx_id}")
     public ResponseEntity<VACSYNJCXDTO> get(@PathVariable("vacsynjcx_id") String vacsynjcx_id) {
         VACSYNJCX domain = vacsynjcxService.get(vacsynjcx_id);
@@ -98,14 +98,14 @@ public class VACSYNJCXResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsynjcxMapping.toDomain(#vacsynjcxdto),'ehr-VACSYNJCX-Save')")
-    @ApiOperation(value = "Save", tags = {"VACSYNJCX" },  notes = "Save")
+    @ApiOperation(value = "保存年休假查询", tags = {"年休假查询" },  notes = "保存年休假查询")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsynjcxes/save")
     public ResponseEntity<Boolean> save(@RequestBody VACSYNJCXDTO vacsynjcxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacsynjcxService.save(vacsynjcxMapping.toDomain(vacsynjcxdto)));
     }
 
     @PreAuthorize("hasPermission(this.vacsynjcxMapping.toDomain(#vacsynjcxdtos),'ehr-VACSYNJCX-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"VACSYNJCX" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存年休假查询", tags = {"年休假查询" },  notes = "批量保存年休假查询")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsynjcxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VACSYNJCXDTO> vacsynjcxdtos) {
         vacsynjcxService.saveBatch(vacsynjcxMapping.toDomain(vacsynjcxdtos));
@@ -113,7 +113,7 @@ public class VACSYNJCXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYNJCX-JSTS-all')")
-    @ApiOperation(value = "计算剩余天数", tags = {"VACSYNJCX" },  notes = "计算剩余天数")
+    @ApiOperation(value = "计算剩余天数", tags = {"年休假查询" },  notes = "计算剩余天数")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsynjcxes/{vacsynjcx_id}/jsts")
     @Transactional
     public ResponseEntity<VACSYNJCXDTO> jSTS(@PathVariable("vacsynjcx_id") String vacsynjcx_id, @RequestBody VACSYNJCXDTO vacsynjcxdto) {
@@ -125,7 +125,7 @@ public class VACSYNJCXResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsynjcxMapping.toDomain(#vacsynjcxdto),'ehr-VACSYNJCX-Create')")
-    @ApiOperation(value = "Create", tags = {"VACSYNJCX" },  notes = "Create")
+    @ApiOperation(value = "新建年休假查询", tags = {"年休假查询" },  notes = "新建年休假查询")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsynjcxes")
     @Transactional
     public ResponseEntity<VACSYNJCXDTO> create(@RequestBody VACSYNJCXDTO vacsynjcxdto) {
@@ -136,21 +136,21 @@ public class VACSYNJCXResource {
     }
 
     @PreAuthorize("hasPermission(this.vacsynjcxMapping.toDomain(#vacsynjcxdtos),'ehr-VACSYNJCX-Create')")
-    @ApiOperation(value = "createBatch", tags = {"VACSYNJCX" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建年休假查询", tags = {"年休假查询" },  notes = "批量新建年休假查询")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacsynjcxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VACSYNJCXDTO> vacsynjcxdtos) {
         vacsynjcxService.createBatch(vacsynjcxMapping.toDomain(vacsynjcxdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"VACSYNJCX" },  notes = "GetDraft")
+    @ApiOperation(value = "获取年休假查询草稿", tags = {"年休假查询" },  notes = "获取年休假查询草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacsynjcxes/getdraft")
     public ResponseEntity<VACSYNJCXDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacsynjcxMapping.toDto(vacsynjcxService.getDraft(new VACSYNJCX())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYNJCX-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"VACSYNJCX" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"年休假查询" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacsynjcxes/fetchdefault")
 	public ResponseEntity<List<VACSYNJCXDTO>> fetchDefault(VACSYNJCXSearchContext context) {
         Page<VACSYNJCX> domains = vacsynjcxService.searchDefault(context) ;
@@ -163,7 +163,7 @@ public class VACSYNJCXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VACSYNJCX-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"VACSYNJCX" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"年休假查询" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacsynjcxes/searchdefault")
 	public ResponseEntity<Page<VACSYNJCXDTO>> searchDefault(@RequestBody VACSYNJCXSearchContext context) {
         Page<VACSYNJCX> domains = vacsynjcxService.searchDefault(context) ;

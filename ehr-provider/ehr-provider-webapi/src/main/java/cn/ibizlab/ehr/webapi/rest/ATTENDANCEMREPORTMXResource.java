@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.att.service.IATTENDANCEMREPORTMXService;
 import cn.ibizlab.ehr.core.att.filter.ATTENDANCEMREPORTMXSearchContext;
 
 @Slf4j
-@Api(tags = {"ATTENDANCEMREPORTMX" })
+@Api(tags = {"考勤月报明细" })
 @RestController("WebApi-attendancemreportmx")
 @RequestMapping("")
 public class ATTENDANCEMREPORTMXResource {
@@ -46,14 +46,14 @@ public class ATTENDANCEMREPORTMXResource {
     @Lazy
     public ATTENDANCEMREPORTMXMapping attendancemreportmxMapping;
 
-    @ApiOperation(value = "GetDraft", tags = {"ATTENDANCEMREPORTMX" },  notes = "GetDraft")
+    @ApiOperation(value = "获取考勤月报明细草稿", tags = {"考勤月报明细" },  notes = "获取考勤月报明细草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendancemreportmxes/getdraft")
     public ResponseEntity<ATTENDANCEMREPORTMXDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportmxMapping.toDto(attendancemreportmxService.getDraft(new ATTENDANCEMREPORTMX())));
     }
 
     @PreAuthorize("hasPermission(this.attendancemreportmxService.get(#attendancemreportmx_id),'ehr-ATTENDANCEMREPORTMX-Update')")
-    @ApiOperation(value = "Update", tags = {"ATTENDANCEMREPORTMX" },  notes = "Update")
+    @ApiOperation(value = "更新考勤月报明细", tags = {"考勤月报明细" },  notes = "更新考勤月报明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancemreportmxes/{attendancemreportmx_id}")
     @Transactional
     public ResponseEntity<ATTENDANCEMREPORTMXDTO> update(@PathVariable("attendancemreportmx_id") String attendancemreportmx_id, @RequestBody ATTENDANCEMREPORTMXDTO attendancemreportmxdto) {
@@ -65,7 +65,7 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancemreportmxService.getAttendancemreportmxByEntities(this.attendancemreportmxMapping.toDomain(#attendancemreportmxdtos)),'ehr-ATTENDANCEMREPORTMX-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"ATTENDANCEMREPORTMX" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新考勤月报明细", tags = {"考勤月报明细" },  notes = "批量更新考勤月报明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancemreportmxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ATTENDANCEMREPORTMXDTO> attendancemreportmxdtos) {
         attendancemreportmxService.updateBatch(attendancemreportmxMapping.toDomain(attendancemreportmxdtos));
@@ -73,7 +73,7 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancemreportmxService.get(#attendancemreportmx_id),'ehr-ATTENDANCEMREPORTMX-Remove')")
-    @ApiOperation(value = "Remove", tags = {"ATTENDANCEMREPORTMX" },  notes = "Remove")
+    @ApiOperation(value = "删除考勤月报明细", tags = {"考勤月报明细" },  notes = "删除考勤月报明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancemreportmxes/{attendancemreportmx_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("attendancemreportmx_id") String attendancemreportmx_id) {
@@ -81,21 +81,21 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancemreportmxService.getAttendancemreportmxByIds(#ids),'ehr-ATTENDANCEMREPORTMX-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"ATTENDANCEMREPORTMX" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除考勤月报明细", tags = {"考勤月报明细" },  notes = "批量删除考勤月报明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancemreportmxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         attendancemreportmxService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"ATTENDANCEMREPORTMX" },  notes = "CheckKey")
+    @ApiOperation(value = "检查考勤月报明细", tags = {"考勤月报明细" },  notes = "检查考勤月报明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreportmxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ATTENDANCEMREPORTMXDTO attendancemreportmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attendancemreportmxService.checkKey(attendancemreportmxMapping.toDomain(attendancemreportmxdto)));
     }
 
     @PostAuthorize("hasPermission(this.attendancemreportmxMapping.toDomain(returnObject.body),'ehr-ATTENDANCEMREPORTMX-Get')")
-    @ApiOperation(value = "Get", tags = {"ATTENDANCEMREPORTMX" },  notes = "Get")
+    @ApiOperation(value = "获取考勤月报明细", tags = {"考勤月报明细" },  notes = "获取考勤月报明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendancemreportmxes/{attendancemreportmx_id}")
     public ResponseEntity<ATTENDANCEMREPORTMXDTO> get(@PathVariable("attendancemreportmx_id") String attendancemreportmx_id) {
         ATTENDANCEMREPORTMX domain = attendancemreportmxService.get(attendancemreportmx_id);
@@ -104,14 +104,14 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancemreportmxMapping.toDomain(#attendancemreportmxdto),'ehr-ATTENDANCEMREPORTMX-Save')")
-    @ApiOperation(value = "Save", tags = {"ATTENDANCEMREPORTMX" },  notes = "Save")
+    @ApiOperation(value = "保存考勤月报明细", tags = {"考勤月报明细" },  notes = "保存考勤月报明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreportmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody ATTENDANCEMREPORTMXDTO attendancemreportmxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendancemreportmxService.save(attendancemreportmxMapping.toDomain(attendancemreportmxdto)));
     }
 
     @PreAuthorize("hasPermission(this.attendancemreportmxMapping.toDomain(#attendancemreportmxdtos),'ehr-ATTENDANCEMREPORTMX-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"ATTENDANCEMREPORTMX" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存考勤月报明细", tags = {"考勤月报明细" },  notes = "批量保存考勤月报明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreportmxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ATTENDANCEMREPORTMXDTO> attendancemreportmxdtos) {
         attendancemreportmxService.saveBatch(attendancemreportmxMapping.toDomain(attendancemreportmxdtos));
@@ -119,7 +119,7 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancemreportmxMapping.toDomain(#attendancemreportmxdto),'ehr-ATTENDANCEMREPORTMX-Create')")
-    @ApiOperation(value = "Create", tags = {"ATTENDANCEMREPORTMX" },  notes = "Create")
+    @ApiOperation(value = "新建考勤月报明细", tags = {"考勤月报明细" },  notes = "新建考勤月报明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreportmxes")
     @Transactional
     public ResponseEntity<ATTENDANCEMREPORTMXDTO> create(@RequestBody ATTENDANCEMREPORTMXDTO attendancemreportmxdto) {
@@ -130,7 +130,7 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancemreportmxMapping.toDomain(#attendancemreportmxdtos),'ehr-ATTENDANCEMREPORTMX-Create')")
-    @ApiOperation(value = "createBatch", tags = {"ATTENDANCEMREPORTMX" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建考勤月报明细", tags = {"考勤月报明细" },  notes = "批量新建考勤月报明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreportmxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ATTENDANCEMREPORTMXDTO> attendancemreportmxdtos) {
         attendancemreportmxService.createBatch(attendancemreportmxMapping.toDomain(attendancemreportmxdtos));
@@ -138,7 +138,7 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORTMX-Export2Excel-all')")
-    @ApiOperation(value = "导出数据到Excel", tags = {"ATTENDANCEMREPORTMX" },  notes = "导出数据到Excel")
+    @ApiOperation(value = "导出数据到Excel", tags = {"考勤月报明细" },  notes = "导出数据到Excel")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancemreportmxes/{attendancemreportmx_id}/export2excel")
     @Transactional
     public ResponseEntity<ATTENDANCEMREPORTMXDTO> export2Excel(@PathVariable("attendancemreportmx_id") String attendancemreportmx_id, @RequestBody ATTENDANCEMREPORTMXDTO attendancemreportmxdto) {
@@ -150,7 +150,7 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORTMX-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"ATTENDANCEMREPORTMX" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤月报明细" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/attendancemreportmxes/fetchdefault")
 	public ResponseEntity<List<ATTENDANCEMREPORTMXDTO>> fetchDefault(ATTENDANCEMREPORTMXSearchContext context) {
         Page<ATTENDANCEMREPORTMX> domains = attendancemreportmxService.searchDefault(context) ;
@@ -163,7 +163,7 @@ public class ATTENDANCEMREPORTMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORTMX-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"ATTENDANCEMREPORTMX" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤月报明细" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/attendancemreportmxes/searchdefault")
 	public ResponseEntity<Page<ATTENDANCEMREPORTMXDTO>> searchDefault(@RequestBody ATTENDANCEMREPORTMXSearchContext context) {
         Page<ATTENDANCEMREPORTMX> domains = attendancemreportmxService.searchDefault(context) ;
@@ -171,7 +171,7 @@ public class ATTENDANCEMREPORTMXResource {
                 .body(new PageImpl(attendancemreportmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORTMX-KQYBMXDY-all')")
-	@ApiOperation(value = "fetch考勤月报明细打印", tags = {"ATTENDANCEMREPORTMX" } ,notes = "fetch考勤月报明细打印")
+	@ApiOperation(value = "获取考勤月报明细打印", tags = {"考勤月报明细" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/attendancemreportmxes/fetchkqybmxdy")
 	public ResponseEntity<List<ATTENDANCEMREPORTMXDTO>> fetchKQYBMXDY(ATTENDANCEMREPORTMXSearchContext context) {
         Page<ATTENDANCEMREPORTMX> domains = attendancemreportmxService.searchKQYBMXDY(context) ;
@@ -184,7 +184,7 @@ public class ATTENDANCEMREPORTMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORTMX-KQYBMXDY-all')")
-	@ApiOperation(value = "search考勤月报明细打印", tags = {"ATTENDANCEMREPORTMX" } ,notes = "search考勤月报明细打印")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤月报明细" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/attendancemreportmxes/searchkqybmxdy")
 	public ResponseEntity<Page<ATTENDANCEMREPORTMXDTO>> searchKQYBMXDY(@RequestBody ATTENDANCEMREPORTMXSearchContext context) {
         Page<ATTENDANCEMREPORTMX> domains = attendancemreportmxService.searchKQYBMXDY(context) ;
@@ -192,7 +192,7 @@ public class ATTENDANCEMREPORTMXResource {
                 .body(new PageImpl(attendancemreportmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORTMX-CurPerson-all')")
-	@ApiOperation(value = "fetch当前员工考勤月报", tags = {"ATTENDANCEMREPORTMX" } ,notes = "fetch当前员工考勤月报")
+	@ApiOperation(value = "获取当前员工考勤月报", tags = {"考勤月报明细" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/attendancemreportmxes/fetchcurperson")
 	public ResponseEntity<List<ATTENDANCEMREPORTMXDTO>> fetchCurPerson(ATTENDANCEMREPORTMXSearchContext context) {
         Page<ATTENDANCEMREPORTMX> domains = attendancemreportmxService.searchCurPerson(context) ;
@@ -205,14 +205,14 @@ public class ATTENDANCEMREPORTMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORTMX-CurPerson-all')")
-	@ApiOperation(value = "search当前员工考勤月报", tags = {"ATTENDANCEMREPORTMX" } ,notes = "search当前员工考勤月报")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤月报明细" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/attendancemreportmxes/searchcurperson")
 	public ResponseEntity<Page<ATTENDANCEMREPORTMXDTO>> searchCurPerson(@RequestBody ATTENDANCEMREPORTMXSearchContext context) {
         Page<ATTENDANCEMREPORTMX> domains = attendancemreportmxService.searchCurPerson(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendancemreportmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @ApiOperation(value = "GetDraftByPimPerson", tags = {"ATTENDANCEMREPORTMX" },  notes = "GetDraftByPimPerson")
+    @ApiOperation(value = "根据人员信息获取考勤月报明细草稿", tags = {"考勤月报明细" },  notes = "根据人员信息获取考勤月报明细草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/attendancemreportmxes/getdraft")
     public ResponseEntity<ATTENDANCEMREPORTMXDTO> getDraftByPimPerson(@PathVariable("pimperson_id") String pimperson_id) {
         ATTENDANCEMREPORTMX domain = new ATTENDANCEMREPORTMX();
@@ -221,7 +221,7 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancemreportmxService.get(#attendancemreportmx_id),'ehr-ATTENDANCEMREPORTMX-Update')")
-    @ApiOperation(value = "UpdateByPimPerson", tags = {"ATTENDANCEMREPORTMX" },  notes = "UpdateByPimPerson")
+    @ApiOperation(value = "根据人员信息更新考勤月报明细", tags = {"考勤月报明细" },  notes = "根据人员信息更新考勤月报明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/attendancemreportmxes/{attendancemreportmx_id}")
     @Transactional
     public ResponseEntity<ATTENDANCEMREPORTMXDTO> updateByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("attendancemreportmx_id") String attendancemreportmx_id, @RequestBody ATTENDANCEMREPORTMXDTO attendancemreportmxdto) {
@@ -234,7 +234,7 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancemreportmxService.getAttendancemreportmxByEntities(this.attendancemreportmxMapping.toDomain(#attendancemreportmxdtos)),'ehr-ATTENDANCEMREPORTMX-Update')")
-    @ApiOperation(value = "UpdateBatchByPimPerson", tags = {"ATTENDANCEMREPORTMX" },  notes = "UpdateBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量更新考勤月报明细", tags = {"考勤月报明细" },  notes = "根据人员信息批量更新考勤月报明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/attendancemreportmxes/batch")
     public ResponseEntity<Boolean> updateBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<ATTENDANCEMREPORTMXDTO> attendancemreportmxdtos) {
         List<ATTENDANCEMREPORTMX> domainlist=attendancemreportmxMapping.toDomain(attendancemreportmxdtos);
@@ -246,7 +246,7 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancemreportmxService.get(#attendancemreportmx_id),'ehr-ATTENDANCEMREPORTMX-Remove')")
-    @ApiOperation(value = "RemoveByPimPerson", tags = {"ATTENDANCEMREPORTMX" },  notes = "RemoveByPimPerson")
+    @ApiOperation(value = "根据人员信息删除考勤月报明细", tags = {"考勤月报明细" },  notes = "根据人员信息删除考勤月报明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/attendancemreportmxes/{attendancemreportmx_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("attendancemreportmx_id") String attendancemreportmx_id) {
@@ -254,21 +254,21 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancemreportmxService.getAttendancemreportmxByIds(#ids),'ehr-ATTENDANCEMREPORTMX-Remove')")
-    @ApiOperation(value = "RemoveBatchByPimPerson", tags = {"ATTENDANCEMREPORTMX" },  notes = "RemoveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量删除考勤月报明细", tags = {"考勤月报明细" },  notes = "根据人员信息批量删除考勤月报明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/attendancemreportmxes/batch")
     public ResponseEntity<Boolean> removeBatchByPimPerson(@RequestBody List<String> ids) {
         attendancemreportmxService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByPimPerson", tags = {"ATTENDANCEMREPORTMX" },  notes = "CheckKeyByPimPerson")
+    @ApiOperation(value = "根据人员信息检查考勤月报明细", tags = {"考勤月报明细" },  notes = "根据人员信息检查考勤月报明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/attendancemreportmxes/checkkey")
     public ResponseEntity<Boolean> checkKeyByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody ATTENDANCEMREPORTMXDTO attendancemreportmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attendancemreportmxService.checkKey(attendancemreportmxMapping.toDomain(attendancemreportmxdto)));
     }
 
     @PostAuthorize("hasPermission(this.attendancemreportmxMapping.toDomain(returnObject.body),'ehr-ATTENDANCEMREPORTMX-Get')")
-    @ApiOperation(value = "GetByPimPerson", tags = {"ATTENDANCEMREPORTMX" },  notes = "GetByPimPerson")
+    @ApiOperation(value = "根据人员信息获取考勤月报明细", tags = {"考勤月报明细" },  notes = "根据人员信息获取考勤月报明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/attendancemreportmxes/{attendancemreportmx_id}")
     public ResponseEntity<ATTENDANCEMREPORTMXDTO> getByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("attendancemreportmx_id") String attendancemreportmx_id) {
         ATTENDANCEMREPORTMX domain = attendancemreportmxService.get(attendancemreportmx_id);
@@ -277,7 +277,7 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancemreportmxMapping.toDomain(#attendancemreportmxdto),'ehr-ATTENDANCEMREPORTMX-Save')")
-    @ApiOperation(value = "SaveByPimPerson", tags = {"ATTENDANCEMREPORTMX" },  notes = "SaveByPimPerson")
+    @ApiOperation(value = "根据人员信息保存考勤月报明细", tags = {"考勤月报明细" },  notes = "根据人员信息保存考勤月报明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/attendancemreportmxes/save")
     public ResponseEntity<Boolean> saveByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody ATTENDANCEMREPORTMXDTO attendancemreportmxdto) {
         ATTENDANCEMREPORTMX domain = attendancemreportmxMapping.toDomain(attendancemreportmxdto);
@@ -286,7 +286,7 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancemreportmxMapping.toDomain(#attendancemreportmxdtos),'ehr-ATTENDANCEMREPORTMX-Save')")
-    @ApiOperation(value = "SaveBatchByPimPerson", tags = {"ATTENDANCEMREPORTMX" },  notes = "SaveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量保存考勤月报明细", tags = {"考勤月报明细" },  notes = "根据人员信息批量保存考勤月报明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/attendancemreportmxes/savebatch")
     public ResponseEntity<Boolean> saveBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<ATTENDANCEMREPORTMXDTO> attendancemreportmxdtos) {
         List<ATTENDANCEMREPORTMX> domainlist=attendancemreportmxMapping.toDomain(attendancemreportmxdtos);
@@ -298,7 +298,7 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancemreportmxMapping.toDomain(#attendancemreportmxdto),'ehr-ATTENDANCEMREPORTMX-Create')")
-    @ApiOperation(value = "CreateByPimPerson", tags = {"ATTENDANCEMREPORTMX" },  notes = "CreateByPimPerson")
+    @ApiOperation(value = "根据人员信息建立考勤月报明细", tags = {"考勤月报明细" },  notes = "根据人员信息建立考勤月报明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/attendancemreportmxes")
     @Transactional
     public ResponseEntity<ATTENDANCEMREPORTMXDTO> createByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody ATTENDANCEMREPORTMXDTO attendancemreportmxdto) {
@@ -310,7 +310,7 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancemreportmxMapping.toDomain(#attendancemreportmxdtos),'ehr-ATTENDANCEMREPORTMX-Create')")
-    @ApiOperation(value = "createBatchByPimPerson", tags = {"ATTENDANCEMREPORTMX" },  notes = "createBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量建立考勤月报明细", tags = {"考勤月报明细" },  notes = "根据人员信息批量建立考勤月报明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/attendancemreportmxes/batch")
     public ResponseEntity<Boolean> createBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<ATTENDANCEMREPORTMXDTO> attendancemreportmxdtos) {
         List<ATTENDANCEMREPORTMX> domainlist=attendancemreportmxMapping.toDomain(attendancemreportmxdtos);
@@ -322,7 +322,7 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORTMX-Export2Excel-all')")
-    @ApiOperation(value = "导出数据到ExcelByPimPerson", tags = {"ATTENDANCEMREPORTMX" },  notes = "导出数据到ExcelByPimPerson")
+    @ApiOperation(value = "根据人员信息考勤月报明细", tags = {"考勤月报明细" },  notes = "根据人员信息考勤月报明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/attendancemreportmxes/{attendancemreportmx_id}/export2excel")
     @Transactional
     public ResponseEntity<ATTENDANCEMREPORTMXDTO> export2ExcelByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("attendancemreportmx_id") String attendancemreportmx_id, @RequestBody ATTENDANCEMREPORTMXDTO attendancemreportmxdto) {
@@ -334,7 +334,7 @@ public class ATTENDANCEMREPORTMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORTMX-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPimPerson", tags = {"ATTENDANCEMREPORTMX" } ,notes = "fetchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息获取DEFAULT", tags = {"考勤月报明细" } ,notes = "根据人员信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/attendancemreportmxes/fetchdefault")
 	public ResponseEntity<List<ATTENDANCEMREPORTMXDTO>> fetchATTENDANCEMREPORTMXDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id,ATTENDANCEMREPORTMXSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -348,7 +348,7 @@ public class ATTENDANCEMREPORTMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORTMX-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPimPerson", tags = {"ATTENDANCEMREPORTMX" } ,notes = "searchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息查询DEFAULT", tags = {"考勤月报明细" } ,notes = "根据人员信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/attendancemreportmxes/searchdefault")
 	public ResponseEntity<Page<ATTENDANCEMREPORTMXDTO>> searchATTENDANCEMREPORTMXDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody ATTENDANCEMREPORTMXSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -357,7 +357,7 @@ public class ATTENDANCEMREPORTMXResource {
                 .body(new PageImpl(attendancemreportmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORTMX-KQYBMXDY-all')")
-	@ApiOperation(value = "fetch考勤月报明细打印ByPimPerson", tags = {"ATTENDANCEMREPORTMX" } ,notes = "fetch考勤月报明细打印ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取考勤月报明细打印", tags = {"考勤月报明细" } ,notes = "根据人员信息获取考勤月报明细打印")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/attendancemreportmxes/fetchkqybmxdy")
 	public ResponseEntity<List<ATTENDANCEMREPORTMXDTO>> fetchATTENDANCEMREPORTMXKQYBMXDYByPimPerson(@PathVariable("pimperson_id") String pimperson_id,ATTENDANCEMREPORTMXSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -371,7 +371,7 @@ public class ATTENDANCEMREPORTMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORTMX-KQYBMXDY-all')")
-	@ApiOperation(value = "search考勤月报明细打印ByPimPerson", tags = {"ATTENDANCEMREPORTMX" } ,notes = "search考勤月报明细打印ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询考勤月报明细打印", tags = {"考勤月报明细" } ,notes = "根据人员信息查询考勤月报明细打印")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/attendancemreportmxes/searchkqybmxdy")
 	public ResponseEntity<Page<ATTENDANCEMREPORTMXDTO>> searchATTENDANCEMREPORTMXKQYBMXDYByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody ATTENDANCEMREPORTMXSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -380,7 +380,7 @@ public class ATTENDANCEMREPORTMXResource {
                 .body(new PageImpl(attendancemreportmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORTMX-CurPerson-all')")
-	@ApiOperation(value = "fetch当前员工考勤月报ByPimPerson", tags = {"ATTENDANCEMREPORTMX" } ,notes = "fetch当前员工考勤月报ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取当前员工考勤月报", tags = {"考勤月报明细" } ,notes = "根据人员信息获取当前员工考勤月报")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/attendancemreportmxes/fetchcurperson")
 	public ResponseEntity<List<ATTENDANCEMREPORTMXDTO>> fetchATTENDANCEMREPORTMXCurPersonByPimPerson(@PathVariable("pimperson_id") String pimperson_id,ATTENDANCEMREPORTMXSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -394,7 +394,7 @@ public class ATTENDANCEMREPORTMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ATTENDANCEMREPORTMX-CurPerson-all')")
-	@ApiOperation(value = "search当前员工考勤月报ByPimPerson", tags = {"ATTENDANCEMREPORTMX" } ,notes = "search当前员工考勤月报ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询当前员工考勤月报", tags = {"考勤月报明细" } ,notes = "根据人员信息查询当前员工考勤月报")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/attendancemreportmxes/searchcurperson")
 	public ResponseEntity<Page<ATTENDANCEMREPORTMXDTO>> searchATTENDANCEMREPORTMXCurPersonByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody ATTENDANCEMREPORTMXSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPCMPRACTICEEXPERIENCEService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMPRACTICEEXPERIENCESearchContext;
 
 @Slf4j
-@Api(tags = {"PCMPRACTICEEXPERIENCE" })
+@Api(tags = {"实习经验" })
 @RestController("WebApi-pcmpracticeexperience")
 @RequestMapping("")
 public class PCMPRACTICEEXPERIENCEResource {
@@ -47,7 +47,7 @@ public class PCMPRACTICEEXPERIENCEResource {
     public PCMPRACTICEEXPERIENCEMapping pcmpracticeexperienceMapping;
 
     @PreAuthorize("hasPermission(this.pcmpracticeexperienceService.get(#pcmpracticeexperience_id),'ehr-PCMPRACTICEEXPERIENCE-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "Remove")
+    @ApiOperation(value = "删除实习经验", tags = {"实习经验" },  notes = "删除实习经验")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmpracticeexperiences/{pcmpracticeexperience_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmpracticeexperience_id") String pcmpracticeexperience_id) {
@@ -55,7 +55,7 @@ public class PCMPRACTICEEXPERIENCEResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmpracticeexperienceService.getPcmpracticeexperienceByIds(#ids),'ehr-PCMPRACTICEEXPERIENCE-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除实习经验", tags = {"实习经验" },  notes = "批量删除实习经验")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmpracticeexperiences/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmpracticeexperienceService.removeBatch(ids);
@@ -63,7 +63,7 @@ public class PCMPRACTICEEXPERIENCEResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmpracticeexperienceMapping.toDomain(#pcmpracticeexperiencedto),'ehr-PCMPRACTICEEXPERIENCE-Create')")
-    @ApiOperation(value = "Create", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "Create")
+    @ApiOperation(value = "新建实习经验", tags = {"实习经验" },  notes = "新建实习经验")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmpracticeexperiences")
     @Transactional
     public ResponseEntity<PCMPRACTICEEXPERIENCEDTO> create(@RequestBody PCMPRACTICEEXPERIENCEDTO pcmpracticeexperiencedto) {
@@ -74,7 +74,7 @@ public class PCMPRACTICEEXPERIENCEResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmpracticeexperienceMapping.toDomain(#pcmpracticeexperiencedtos),'ehr-PCMPRACTICEEXPERIENCE-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建实习经验", tags = {"实习经验" },  notes = "批量新建实习经验")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmpracticeexperiences/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMPRACTICEEXPERIENCEDTO> pcmpracticeexperiencedtos) {
         pcmpracticeexperienceService.createBatch(pcmpracticeexperienceMapping.toDomain(pcmpracticeexperiencedtos));
@@ -82,7 +82,7 @@ public class PCMPRACTICEEXPERIENCEResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmpracticeexperienceService.get(#pcmpracticeexperience_id),'ehr-PCMPRACTICEEXPERIENCE-Update')")
-    @ApiOperation(value = "Update", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "Update")
+    @ApiOperation(value = "更新实习经验", tags = {"实习经验" },  notes = "更新实习经验")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmpracticeexperiences/{pcmpracticeexperience_id}")
     @Transactional
     public ResponseEntity<PCMPRACTICEEXPERIENCEDTO> update(@PathVariable("pcmpracticeexperience_id") String pcmpracticeexperience_id, @RequestBody PCMPRACTICEEXPERIENCEDTO pcmpracticeexperiencedto) {
@@ -94,21 +94,21 @@ public class PCMPRACTICEEXPERIENCEResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmpracticeexperienceService.getPcmpracticeexperienceByEntities(this.pcmpracticeexperienceMapping.toDomain(#pcmpracticeexperiencedtos)),'ehr-PCMPRACTICEEXPERIENCE-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新实习经验", tags = {"实习经验" },  notes = "批量更新实习经验")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmpracticeexperiences/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMPRACTICEEXPERIENCEDTO> pcmpracticeexperiencedtos) {
         pcmpracticeexperienceService.updateBatch(pcmpracticeexperienceMapping.toDomain(pcmpracticeexperiencedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "GetDraft")
+    @ApiOperation(value = "获取实习经验草稿", tags = {"实习经验" },  notes = "获取实习经验草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmpracticeexperiences/getdraft")
     public ResponseEntity<PCMPRACTICEEXPERIENCEDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmpracticeexperienceMapping.toDto(pcmpracticeexperienceService.getDraft(new PCMPRACTICEEXPERIENCE())));
     }
 
     @PostAuthorize("hasPermission(this.pcmpracticeexperienceMapping.toDomain(returnObject.body),'ehr-PCMPRACTICEEXPERIENCE-Get')")
-    @ApiOperation(value = "Get", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "Get")
+    @ApiOperation(value = "获取实习经验", tags = {"实习经验" },  notes = "获取实习经验")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmpracticeexperiences/{pcmpracticeexperience_id}")
     public ResponseEntity<PCMPRACTICEEXPERIENCEDTO> get(@PathVariable("pcmpracticeexperience_id") String pcmpracticeexperience_id) {
         PCMPRACTICEEXPERIENCE domain = pcmpracticeexperienceService.get(pcmpracticeexperience_id);
@@ -116,21 +116,21 @@ public class PCMPRACTICEEXPERIENCEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "CheckKey")
+    @ApiOperation(value = "检查实习经验", tags = {"实习经验" },  notes = "检查实习经验")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmpracticeexperiences/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMPRACTICEEXPERIENCEDTO pcmpracticeexperiencedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmpracticeexperienceService.checkKey(pcmpracticeexperienceMapping.toDomain(pcmpracticeexperiencedto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmpracticeexperienceMapping.toDomain(#pcmpracticeexperiencedto),'ehr-PCMPRACTICEEXPERIENCE-Save')")
-    @ApiOperation(value = "Save", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "Save")
+    @ApiOperation(value = "保存实习经验", tags = {"实习经验" },  notes = "保存实习经验")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmpracticeexperiences/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMPRACTICEEXPERIENCEDTO pcmpracticeexperiencedto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmpracticeexperienceService.save(pcmpracticeexperienceMapping.toDomain(pcmpracticeexperiencedto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmpracticeexperienceMapping.toDomain(#pcmpracticeexperiencedtos),'ehr-PCMPRACTICEEXPERIENCE-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存实习经验", tags = {"实习经验" },  notes = "批量保存实习经验")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmpracticeexperiences/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMPRACTICEEXPERIENCEDTO> pcmpracticeexperiencedtos) {
         pcmpracticeexperienceService.saveBatch(pcmpracticeexperienceMapping.toDomain(pcmpracticeexperiencedtos));
@@ -138,7 +138,7 @@ public class PCMPRACTICEEXPERIENCEResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPRACTICEEXPERIENCE-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMPRACTICEEXPERIENCE" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"实习经验" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmpracticeexperiences/fetchdefault")
 	public ResponseEntity<List<PCMPRACTICEEXPERIENCEDTO>> fetchDefault(PCMPRACTICEEXPERIENCESearchContext context) {
         Page<PCMPRACTICEEXPERIENCE> domains = pcmpracticeexperienceService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PCMPRACTICEEXPERIENCEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPRACTICEEXPERIENCE-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PCMPRACTICEEXPERIENCE" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"实习经验" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmpracticeexperiences/searchdefault")
 	public ResponseEntity<Page<PCMPRACTICEEXPERIENCEDTO>> searchDefault(@RequestBody PCMPRACTICEEXPERIENCESearchContext context) {
         Page<PCMPRACTICEEXPERIENCE> domains = pcmpracticeexperienceService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PCMPRACTICEEXPERIENCEResource {
                 .body(new PageImpl(pcmpracticeexperienceMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pcmpracticeexperienceService.get(#pcmpracticeexperience_id),'ehr-PCMPRACTICEEXPERIENCE-Remove')")
-    @ApiOperation(value = "RemoveByPcmProfile", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "RemoveByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息删除实习经验", tags = {"实习经验" },  notes = "根据应聘者基本信息删除实习经验")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/{pcmpracticeexperience_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmpracticeexperience_id") String pcmpracticeexperience_id) {
@@ -167,7 +167,7 @@ public class PCMPRACTICEEXPERIENCEResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmpracticeexperienceService.getPcmpracticeexperienceByIds(#ids),'ehr-PCMPRACTICEEXPERIENCE-Remove')")
-    @ApiOperation(value = "RemoveBatchByPcmProfile", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "RemoveBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量删除实习经验", tags = {"实习经验" },  notes = "根据应聘者基本信息批量删除实习经验")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/batch")
     public ResponseEntity<Boolean> removeBatchByPcmProfile(@RequestBody List<String> ids) {
         pcmpracticeexperienceService.removeBatch(ids);
@@ -175,7 +175,7 @@ public class PCMPRACTICEEXPERIENCEResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmpracticeexperienceMapping.toDomain(#pcmpracticeexperiencedto),'ehr-PCMPRACTICEEXPERIENCE-Create')")
-    @ApiOperation(value = "CreateByPcmProfile", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "CreateByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息建立实习经验", tags = {"实习经验" },  notes = "根据应聘者基本信息建立实习经验")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences")
     @Transactional
     public ResponseEntity<PCMPRACTICEEXPERIENCEDTO> createByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPRACTICEEXPERIENCEDTO pcmpracticeexperiencedto) {
@@ -187,7 +187,7 @@ public class PCMPRACTICEEXPERIENCEResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmpracticeexperienceMapping.toDomain(#pcmpracticeexperiencedtos),'ehr-PCMPRACTICEEXPERIENCE-Create')")
-    @ApiOperation(value = "createBatchByPcmProfile", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "createBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量建立实习经验", tags = {"实习经验" },  notes = "根据应聘者基本信息批量建立实习经验")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/batch")
     public ResponseEntity<Boolean> createBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPRACTICEEXPERIENCEDTO> pcmpracticeexperiencedtos) {
         List<PCMPRACTICEEXPERIENCE> domainlist=pcmpracticeexperienceMapping.toDomain(pcmpracticeexperiencedtos);
@@ -199,7 +199,7 @@ public class PCMPRACTICEEXPERIENCEResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmpracticeexperienceService.get(#pcmpracticeexperience_id),'ehr-PCMPRACTICEEXPERIENCE-Update')")
-    @ApiOperation(value = "UpdateByPcmProfile", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "UpdateByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息更新实习经验", tags = {"实习经验" },  notes = "根据应聘者基本信息更新实习经验")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/{pcmpracticeexperience_id}")
     @Transactional
     public ResponseEntity<PCMPRACTICEEXPERIENCEDTO> updateByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmpracticeexperience_id") String pcmpracticeexperience_id, @RequestBody PCMPRACTICEEXPERIENCEDTO pcmpracticeexperiencedto) {
@@ -212,7 +212,7 @@ public class PCMPRACTICEEXPERIENCEResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmpracticeexperienceService.getPcmpracticeexperienceByEntities(this.pcmpracticeexperienceMapping.toDomain(#pcmpracticeexperiencedtos)),'ehr-PCMPRACTICEEXPERIENCE-Update')")
-    @ApiOperation(value = "UpdateBatchByPcmProfile", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "UpdateBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量更新实习经验", tags = {"实习经验" },  notes = "根据应聘者基本信息批量更新实习经验")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/batch")
     public ResponseEntity<Boolean> updateBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPRACTICEEXPERIENCEDTO> pcmpracticeexperiencedtos) {
         List<PCMPRACTICEEXPERIENCE> domainlist=pcmpracticeexperienceMapping.toDomain(pcmpracticeexperiencedtos);
@@ -223,7 +223,7 @@ public class PCMPRACTICEEXPERIENCEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPcmProfile", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "GetDraftByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息获取实习经验草稿", tags = {"实习经验" },  notes = "根据应聘者基本信息获取实习经验草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/getdraft")
     public ResponseEntity<PCMPRACTICEEXPERIENCEDTO> getDraftByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id) {
         PCMPRACTICEEXPERIENCE domain = new PCMPRACTICEEXPERIENCE();
@@ -232,7 +232,7 @@ public class PCMPRACTICEEXPERIENCEResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmpracticeexperienceMapping.toDomain(returnObject.body),'ehr-PCMPRACTICEEXPERIENCE-Get')")
-    @ApiOperation(value = "GetByPcmProfile", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "GetByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息获取实习经验", tags = {"实习经验" },  notes = "根据应聘者基本信息获取实习经验")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/{pcmpracticeexperience_id}")
     public ResponseEntity<PCMPRACTICEEXPERIENCEDTO> getByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmpracticeexperience_id") String pcmpracticeexperience_id) {
         PCMPRACTICEEXPERIENCE domain = pcmpracticeexperienceService.get(pcmpracticeexperience_id);
@@ -240,14 +240,14 @@ public class PCMPRACTICEEXPERIENCEResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKeyByPcmProfile", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "CheckKeyByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息检查实习经验", tags = {"实习经验" },  notes = "根据应聘者基本信息检查实习经验")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/checkkey")
     public ResponseEntity<Boolean> checkKeyByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPRACTICEEXPERIENCEDTO pcmpracticeexperiencedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmpracticeexperienceService.checkKey(pcmpracticeexperienceMapping.toDomain(pcmpracticeexperiencedto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmpracticeexperienceMapping.toDomain(#pcmpracticeexperiencedto),'ehr-PCMPRACTICEEXPERIENCE-Save')")
-    @ApiOperation(value = "SaveByPcmProfile", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "SaveByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息保存实习经验", tags = {"实习经验" },  notes = "根据应聘者基本信息保存实习经验")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/save")
     public ResponseEntity<Boolean> saveByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPRACTICEEXPERIENCEDTO pcmpracticeexperiencedto) {
         PCMPRACTICEEXPERIENCE domain = pcmpracticeexperienceMapping.toDomain(pcmpracticeexperiencedto);
@@ -256,7 +256,7 @@ public class PCMPRACTICEEXPERIENCEResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmpracticeexperienceMapping.toDomain(#pcmpracticeexperiencedtos),'ehr-PCMPRACTICEEXPERIENCE-Save')")
-    @ApiOperation(value = "SaveBatchByPcmProfile", tags = {"PCMPRACTICEEXPERIENCE" },  notes = "SaveBatchByPcmProfile")
+    @ApiOperation(value = "根据应聘者基本信息批量保存实习经验", tags = {"实习经验" },  notes = "根据应聘者基本信息批量保存实习经验")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/savebatch")
     public ResponseEntity<Boolean> saveBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPRACTICEEXPERIENCEDTO> pcmpracticeexperiencedtos) {
         List<PCMPRACTICEEXPERIENCE> domainlist=pcmpracticeexperienceMapping.toDomain(pcmpracticeexperiencedtos);
@@ -268,7 +268,7 @@ public class PCMPRACTICEEXPERIENCEResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPRACTICEEXPERIENCE-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPcmProfile", tags = {"PCMPRACTICEEXPERIENCE" } ,notes = "fetchDEFAULTByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息获取DEFAULT", tags = {"实习经验" } ,notes = "根据应聘者基本信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/fetchdefault")
 	public ResponseEntity<List<PCMPRACTICEEXPERIENCEDTO>> fetchPCMPRACTICEEXPERIENCEDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMPRACTICEEXPERIENCESearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
@@ -282,7 +282,7 @@ public class PCMPRACTICEEXPERIENCEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPRACTICEEXPERIENCE-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPcmProfile", tags = {"PCMPRACTICEEXPERIENCE" } ,notes = "searchDEFAULTByPcmProfile")
+	@ApiOperation(value = "根据应聘者基本信息查询DEFAULT", tags = {"实习经验" } ,notes = "根据应聘者基本信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmpracticeexperiences/searchdefault")
 	public ResponseEntity<Page<PCMPRACTICEEXPERIENCEDTO>> searchPCMPRACTICEEXPERIENCEDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPRACTICEEXPERIENCESearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);

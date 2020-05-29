@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.par.service.IParJxndkhjgService;
 import cn.ibizlab.ehr.core.par.filter.ParJxndkhjgSearchContext;
 
 @Slf4j
-@Api(tags = {"ParJxndkhjg" })
+@Api(tags = {"绩效年度考核结果" })
 @RestController("WebApi-parjxndkhjg")
 @RequestMapping("")
 public class ParJxndkhjgResource {
@@ -47,14 +47,14 @@ public class ParJxndkhjgResource {
     public ParJxndkhjgMapping parjxndkhjgMapping;
 
     @PreAuthorize("hasPermission(this.parjxndkhjgMapping.toDomain(#parjxndkhjgdto),'ehr-ParJxndkhjg-Save')")
-    @ApiOperation(value = "Save", tags = {"ParJxndkhjg" },  notes = "Save")
+    @ApiOperation(value = "保存绩效年度考核结果", tags = {"绩效年度考核结果" },  notes = "保存绩效年度考核结果")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxndkhjgs/save")
     public ResponseEntity<Boolean> save(@RequestBody ParJxndkhjgDTO parjxndkhjgdto) {
         return ResponseEntity.status(HttpStatus.OK).body(parjxndkhjgService.save(parjxndkhjgMapping.toDomain(parjxndkhjgdto)));
     }
 
     @PreAuthorize("hasPermission(this.parjxndkhjgMapping.toDomain(#parjxndkhjgdtos),'ehr-ParJxndkhjg-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"ParJxndkhjg" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存绩效年度考核结果", tags = {"绩效年度考核结果" },  notes = "批量保存绩效年度考核结果")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxndkhjgs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ParJxndkhjgDTO> parjxndkhjgdtos) {
         parjxndkhjgService.saveBatch(parjxndkhjgMapping.toDomain(parjxndkhjgdtos));
@@ -62,7 +62,7 @@ public class ParJxndkhjgResource {
     }
 
     @PreAuthorize("hasPermission(this.parjxndkhjgService.get(#parjxndkhjg_id),'ehr-ParJxndkhjg-Remove')")
-    @ApiOperation(value = "Remove", tags = {"ParJxndkhjg" },  notes = "Remove")
+    @ApiOperation(value = "删除绩效年度考核结果", tags = {"绩效年度考核结果" },  notes = "删除绩效年度考核结果")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parjxndkhjgs/{parjxndkhjg_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("parjxndkhjg_id") String parjxndkhjg_id) {
@@ -70,21 +70,21 @@ public class ParJxndkhjgResource {
     }
 
     @PreAuthorize("hasPermission(this.parjxndkhjgService.getParjxndkhjgByIds(#ids),'ehr-ParJxndkhjg-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"ParJxndkhjg" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除绩效年度考核结果", tags = {"绩效年度考核结果" },  notes = "批量删除绩效年度考核结果")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parjxndkhjgs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         parjxndkhjgService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"ParJxndkhjg" },  notes = "GetDraft")
+    @ApiOperation(value = "获取绩效年度考核结果草稿", tags = {"绩效年度考核结果" },  notes = "获取绩效年度考核结果草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/parjxndkhjgs/getdraft")
     public ResponseEntity<ParJxndkhjgDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(parjxndkhjgMapping.toDto(parjxndkhjgService.getDraft(new ParJxndkhjg())));
     }
 
     @PreAuthorize("hasPermission(this.parjxndkhjgMapping.toDomain(#parjxndkhjgdto),'ehr-ParJxndkhjg-Create')")
-    @ApiOperation(value = "Create", tags = {"ParJxndkhjg" },  notes = "Create")
+    @ApiOperation(value = "新建绩效年度考核结果", tags = {"绩效年度考核结果" },  notes = "新建绩效年度考核结果")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxndkhjgs")
     @Transactional
     public ResponseEntity<ParJxndkhjgDTO> create(@RequestBody ParJxndkhjgDTO parjxndkhjgdto) {
@@ -95,7 +95,7 @@ public class ParJxndkhjgResource {
     }
 
     @PreAuthorize("hasPermission(this.parjxndkhjgMapping.toDomain(#parjxndkhjgdtos),'ehr-ParJxndkhjg-Create')")
-    @ApiOperation(value = "createBatch", tags = {"ParJxndkhjg" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建绩效年度考核结果", tags = {"绩效年度考核结果" },  notes = "批量新建绩效年度考核结果")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxndkhjgs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ParJxndkhjgDTO> parjxndkhjgdtos) {
         parjxndkhjgService.createBatch(parjxndkhjgMapping.toDomain(parjxndkhjgdtos));
@@ -103,7 +103,7 @@ public class ParJxndkhjgResource {
     }
 
     @PreAuthorize("hasPermission(this.parjxndkhjgService.get(#parjxndkhjg_id),'ehr-ParJxndkhjg-Update')")
-    @ApiOperation(value = "Update", tags = {"ParJxndkhjg" },  notes = "Update")
+    @ApiOperation(value = "更新绩效年度考核结果", tags = {"绩效年度考核结果" },  notes = "更新绩效年度考核结果")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parjxndkhjgs/{parjxndkhjg_id}")
     @Transactional
     public ResponseEntity<ParJxndkhjgDTO> update(@PathVariable("parjxndkhjg_id") String parjxndkhjg_id, @RequestBody ParJxndkhjgDTO parjxndkhjgdto) {
@@ -115,7 +115,7 @@ public class ParJxndkhjgResource {
     }
 
     @PreAuthorize("hasPermission(this.parjxndkhjgService.getParjxndkhjgByEntities(this.parjxndkhjgMapping.toDomain(#parjxndkhjgdtos)),'ehr-ParJxndkhjg-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"ParJxndkhjg" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新绩效年度考核结果", tags = {"绩效年度考核结果" },  notes = "批量更新绩效年度考核结果")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parjxndkhjgs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ParJxndkhjgDTO> parjxndkhjgdtos) {
         parjxndkhjgService.updateBatch(parjxndkhjgMapping.toDomain(parjxndkhjgdtos));
@@ -123,7 +123,7 @@ public class ParJxndkhjgResource {
     }
 
     @PostAuthorize("hasPermission(this.parjxndkhjgMapping.toDomain(returnObject.body),'ehr-ParJxndkhjg-Get')")
-    @ApiOperation(value = "Get", tags = {"ParJxndkhjg" },  notes = "Get")
+    @ApiOperation(value = "获取绩效年度考核结果", tags = {"绩效年度考核结果" },  notes = "获取绩效年度考核结果")
 	@RequestMapping(method = RequestMethod.GET, value = "/parjxndkhjgs/{parjxndkhjg_id}")
     public ResponseEntity<ParJxndkhjgDTO> get(@PathVariable("parjxndkhjg_id") String parjxndkhjg_id) {
         ParJxndkhjg domain = parjxndkhjgService.get(parjxndkhjg_id);
@@ -131,14 +131,14 @@ public class ParJxndkhjgResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"ParJxndkhjg" },  notes = "CheckKey")
+    @ApiOperation(value = "检查绩效年度考核结果", tags = {"绩效年度考核结果" },  notes = "检查绩效年度考核结果")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxndkhjgs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ParJxndkhjgDTO parjxndkhjgdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parjxndkhjgService.checkKey(parjxndkhjgMapping.toDomain(parjxndkhjgdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParJxndkhjg-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"ParJxndkhjg" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"绩效年度考核结果" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/parjxndkhjgs/fetchdefault")
 	public ResponseEntity<List<ParJxndkhjgDTO>> fetchDefault(ParJxndkhjgSearchContext context) {
         Page<ParJxndkhjg> domains = parjxndkhjgService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ParJxndkhjgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParJxndkhjg-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"ParJxndkhjg" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"绩效年度考核结果" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/parjxndkhjgs/searchdefault")
 	public ResponseEntity<Page<ParJxndkhjgDTO>> searchDefault(@RequestBody ParJxndkhjgSearchContext context) {
         Page<ParJxndkhjg> domains = parjxndkhjgService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class ParJxndkhjgResource {
                 .body(new PageImpl(parjxndkhjgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParJxndkhjg-LastTwoYear-all')")
-	@ApiOperation(value = "fetch最近2年下半年考核成绩", tags = {"ParJxndkhjg" } ,notes = "fetch最近2年下半年考核成绩")
+	@ApiOperation(value = "获取最近2年下半年考核成绩", tags = {"绩效年度考核结果" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/parjxndkhjgs/fetchlasttwoyear")
 	public ResponseEntity<List<ParJxndkhjgDTO>> fetchLastTwoYear(ParJxndkhjgSearchContext context) {
         Page<ParJxndkhjg> domains = parjxndkhjgService.searchLastTwoYear(context) ;
@@ -172,7 +172,7 @@ public class ParJxndkhjgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParJxndkhjg-LastTwoYear-all')")
-	@ApiOperation(value = "search最近2年下半年考核成绩", tags = {"ParJxndkhjg" } ,notes = "search最近2年下半年考核成绩")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"绩效年度考核结果" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/parjxndkhjgs/searchlasttwoyear")
 	public ResponseEntity<Page<ParJxndkhjgDTO>> searchLastTwoYear(@RequestBody ParJxndkhjgSearchContext context) {
         Page<ParJxndkhjg> domains = parjxndkhjgService.searchLastTwoYear(context) ;

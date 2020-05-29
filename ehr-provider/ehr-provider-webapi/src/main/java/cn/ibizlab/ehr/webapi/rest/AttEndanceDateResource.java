@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.att.service.IAttEndanceDateService;
 import cn.ibizlab.ehr.core.att.filter.AttEndanceDateSearchContext;
 
 @Slf4j
-@Api(tags = {"AttEndanceDate" })
+@Api(tags = {"考勤日期" })
 @RestController("WebApi-attendancedate")
 @RequestMapping("")
 public class AttEndanceDateResource {
@@ -47,7 +47,7 @@ public class AttEndanceDateResource {
     public AttEndanceDateMapping attendancedateMapping;
 
     @PostAuthorize("hasPermission(this.attendancedateMapping.toDomain(returnObject.body),'ehr-AttEndanceDate-Get')")
-    @ApiOperation(value = "Get", tags = {"AttEndanceDate" },  notes = "Get")
+    @ApiOperation(value = "获取考勤日期", tags = {"考勤日期" },  notes = "获取考勤日期")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendancedates/{attendancedate_id}")
     public ResponseEntity<AttEndanceDateDTO> get(@PathVariable("attendancedate_id") String attendancedate_id) {
         AttEndanceDate domain = attendancedateService.get(attendancedate_id);
@@ -56,7 +56,7 @@ public class AttEndanceDateResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancedateService.get(#attendancedate_id),'ehr-AttEndanceDate-Remove')")
-    @ApiOperation(value = "Remove", tags = {"AttEndanceDate" },  notes = "Remove")
+    @ApiOperation(value = "删除考勤日期", tags = {"考勤日期" },  notes = "删除考勤日期")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancedates/{attendancedate_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("attendancedate_id") String attendancedate_id) {
@@ -64,7 +64,7 @@ public class AttEndanceDateResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancedateService.getAttendancedateByIds(#ids),'ehr-AttEndanceDate-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"AttEndanceDate" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除考勤日期", tags = {"考勤日期" },  notes = "批量删除考勤日期")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendancedates/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         attendancedateService.removeBatch(ids);
@@ -72,7 +72,7 @@ public class AttEndanceDateResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancedateMapping.toDomain(#attendancedatedto),'ehr-AttEndanceDate-Create')")
-    @ApiOperation(value = "Create", tags = {"AttEndanceDate" },  notes = "Create")
+    @ApiOperation(value = "新建考勤日期", tags = {"考勤日期" },  notes = "新建考勤日期")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancedates")
     @Transactional
     public ResponseEntity<AttEndanceDateDTO> create(@RequestBody AttEndanceDateDTO attendancedatedto) {
@@ -83,28 +83,28 @@ public class AttEndanceDateResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancedateMapping.toDomain(#attendancedatedtos),'ehr-AttEndanceDate-Create')")
-    @ApiOperation(value = "createBatch", tags = {"AttEndanceDate" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建考勤日期", tags = {"考勤日期" },  notes = "批量新建考勤日期")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancedates/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<AttEndanceDateDTO> attendancedatedtos) {
         attendancedateService.createBatch(attendancedateMapping.toDomain(attendancedatedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"AttEndanceDate" },  notes = "GetDraft")
+    @ApiOperation(value = "获取考勤日期草稿", tags = {"考勤日期" },  notes = "获取考勤日期草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendancedates/getdraft")
     public ResponseEntity<AttEndanceDateDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attendancedateMapping.toDto(attendancedateService.getDraft(new AttEndanceDate())));
     }
 
     @PreAuthorize("hasPermission(this.attendancedateMapping.toDomain(#attendancedatedto),'ehr-AttEndanceDate-Save')")
-    @ApiOperation(value = "Save", tags = {"AttEndanceDate" },  notes = "Save")
+    @ApiOperation(value = "保存考勤日期", tags = {"考勤日期" },  notes = "保存考勤日期")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancedates/save")
     public ResponseEntity<Boolean> save(@RequestBody AttEndanceDateDTO attendancedatedto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendancedateService.save(attendancedateMapping.toDomain(attendancedatedto)));
     }
 
     @PreAuthorize("hasPermission(this.attendancedateMapping.toDomain(#attendancedatedtos),'ehr-AttEndanceDate-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"AttEndanceDate" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存考勤日期", tags = {"考勤日期" },  notes = "批量保存考勤日期")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancedates/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<AttEndanceDateDTO> attendancedatedtos) {
         attendancedateService.saveBatch(attendancedateMapping.toDomain(attendancedatedtos));
@@ -112,7 +112,7 @@ public class AttEndanceDateResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancedateService.get(#attendancedate_id),'ehr-AttEndanceDate-Update')")
-    @ApiOperation(value = "Update", tags = {"AttEndanceDate" },  notes = "Update")
+    @ApiOperation(value = "更新考勤日期", tags = {"考勤日期" },  notes = "更新考勤日期")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancedates/{attendancedate_id}")
     @Transactional
     public ResponseEntity<AttEndanceDateDTO> update(@PathVariable("attendancedate_id") String attendancedate_id, @RequestBody AttEndanceDateDTO attendancedatedto) {
@@ -124,21 +124,21 @@ public class AttEndanceDateResource {
     }
 
     @PreAuthorize("hasPermission(this.attendancedateService.getAttendancedateByEntities(this.attendancedateMapping.toDomain(#attendancedatedtos)),'ehr-AttEndanceDate-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"AttEndanceDate" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新考勤日期", tags = {"考勤日期" },  notes = "批量更新考勤日期")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendancedates/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<AttEndanceDateDTO> attendancedatedtos) {
         attendancedateService.updateBatch(attendancedateMapping.toDomain(attendancedatedtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"AttEndanceDate" },  notes = "CheckKey")
+    @ApiOperation(value = "检查考勤日期", tags = {"考勤日期" },  notes = "检查考勤日期")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendancedates/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody AttEndanceDateDTO attendancedatedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attendancedateService.checkKey(attendancedateMapping.toDomain(attendancedatedto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndanceDate-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"AttEndanceDate" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤日期" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/attendancedates/fetchdefault")
 	public ResponseEntity<List<AttEndanceDateDTO>> fetchDefault(AttEndanceDateSearchContext context) {
         Page<AttEndanceDate> domains = attendancedateService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class AttEndanceDateResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndanceDate-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"AttEndanceDate" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤日期" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/attendancedates/searchdefault")
 	public ResponseEntity<Page<AttEndanceDateDTO>> searchDefault(@RequestBody AttEndanceDateSearchContext context) {
         Page<AttEndanceDate> domains = attendancedateService.searchDefault(context) ;

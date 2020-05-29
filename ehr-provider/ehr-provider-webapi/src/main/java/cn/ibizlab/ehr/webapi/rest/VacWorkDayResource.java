@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.vac.service.IVacWorkDayService;
 import cn.ibizlab.ehr.core.vac.filter.VacWorkDaySearchContext;
 
 @Slf4j
-@Api(tags = {"VacWorkDay" })
+@Api(tags = {"工作日管理（停用）" })
 @RestController("WebApi-vacworkday")
 @RequestMapping("")
 public class VacWorkDayResource {
@@ -46,21 +46,21 @@ public class VacWorkDayResource {
     @Lazy
     public VacWorkDayMapping vacworkdayMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"VacWorkDay" },  notes = "CheckKey")
+    @ApiOperation(value = "检查工作日管理（停用）", tags = {"工作日管理（停用）" },  notes = "检查工作日管理（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacworkdays/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VacWorkDayDTO vacworkdaydto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacworkdayService.checkKey(vacworkdayMapping.toDomain(vacworkdaydto)));
     }
 
     @PreAuthorize("hasPermission(this.vacworkdayMapping.toDomain(#vacworkdaydto),'ehr-VacWorkDay-Save')")
-    @ApiOperation(value = "Save", tags = {"VacWorkDay" },  notes = "Save")
+    @ApiOperation(value = "保存工作日管理（停用）", tags = {"工作日管理（停用）" },  notes = "保存工作日管理（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacworkdays/save")
     public ResponseEntity<Boolean> save(@RequestBody VacWorkDayDTO vacworkdaydto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacworkdayService.save(vacworkdayMapping.toDomain(vacworkdaydto)));
     }
 
     @PreAuthorize("hasPermission(this.vacworkdayMapping.toDomain(#vacworkdaydtos),'ehr-VacWorkDay-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"VacWorkDay" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存工作日管理（停用）", tags = {"工作日管理（停用）" },  notes = "批量保存工作日管理（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacworkdays/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VacWorkDayDTO> vacworkdaydtos) {
         vacworkdayService.saveBatch(vacworkdayMapping.toDomain(vacworkdaydtos));
@@ -68,7 +68,7 @@ public class VacWorkDayResource {
     }
 
     @PreAuthorize("hasPermission(this.vacworkdayService.get(#vacworkday_id),'ehr-VacWorkDay-Remove')")
-    @ApiOperation(value = "Remove", tags = {"VacWorkDay" },  notes = "Remove")
+    @ApiOperation(value = "删除工作日管理（停用）", tags = {"工作日管理（停用）" },  notes = "删除工作日管理（停用）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacworkdays/{vacworkday_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("vacworkday_id") String vacworkday_id) {
@@ -76,7 +76,7 @@ public class VacWorkDayResource {
     }
 
     @PreAuthorize("hasPermission(this.vacworkdayService.getVacworkdayByIds(#ids),'ehr-VacWorkDay-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"VacWorkDay" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除工作日管理（停用）", tags = {"工作日管理（停用）" },  notes = "批量删除工作日管理（停用）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacworkdays/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         vacworkdayService.removeBatch(ids);
@@ -84,7 +84,7 @@ public class VacWorkDayResource {
     }
 
     @PreAuthorize("hasPermission(this.vacworkdayMapping.toDomain(#vacworkdaydto),'ehr-VacWorkDay-Create')")
-    @ApiOperation(value = "Create", tags = {"VacWorkDay" },  notes = "Create")
+    @ApiOperation(value = "新建工作日管理（停用）", tags = {"工作日管理（停用）" },  notes = "新建工作日管理（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacworkdays")
     @Transactional
     public ResponseEntity<VacWorkDayDTO> create(@RequestBody VacWorkDayDTO vacworkdaydto) {
@@ -95,7 +95,7 @@ public class VacWorkDayResource {
     }
 
     @PreAuthorize("hasPermission(this.vacworkdayMapping.toDomain(#vacworkdaydtos),'ehr-VacWorkDay-Create')")
-    @ApiOperation(value = "createBatch", tags = {"VacWorkDay" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建工作日管理（停用）", tags = {"工作日管理（停用）" },  notes = "批量新建工作日管理（停用）")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacworkdays/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VacWorkDayDTO> vacworkdaydtos) {
         vacworkdayService.createBatch(vacworkdayMapping.toDomain(vacworkdaydtos));
@@ -103,7 +103,7 @@ public class VacWorkDayResource {
     }
 
     @PreAuthorize("hasPermission(this.vacworkdayService.get(#vacworkday_id),'ehr-VacWorkDay-Update')")
-    @ApiOperation(value = "Update", tags = {"VacWorkDay" },  notes = "Update")
+    @ApiOperation(value = "更新工作日管理（停用）", tags = {"工作日管理（停用）" },  notes = "更新工作日管理（停用）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacworkdays/{vacworkday_id}")
     @Transactional
     public ResponseEntity<VacWorkDayDTO> update(@PathVariable("vacworkday_id") String vacworkday_id, @RequestBody VacWorkDayDTO vacworkdaydto) {
@@ -115,7 +115,7 @@ public class VacWorkDayResource {
     }
 
     @PreAuthorize("hasPermission(this.vacworkdayService.getVacworkdayByEntities(this.vacworkdayMapping.toDomain(#vacworkdaydtos)),'ehr-VacWorkDay-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"VacWorkDay" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新工作日管理（停用）", tags = {"工作日管理（停用）" },  notes = "批量更新工作日管理（停用）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacworkdays/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VacWorkDayDTO> vacworkdaydtos) {
         vacworkdayService.updateBatch(vacworkdayMapping.toDomain(vacworkdaydtos));
@@ -123,7 +123,7 @@ public class VacWorkDayResource {
     }
 
     @PostAuthorize("hasPermission(this.vacworkdayMapping.toDomain(returnObject.body),'ehr-VacWorkDay-Get')")
-    @ApiOperation(value = "Get", tags = {"VacWorkDay" },  notes = "Get")
+    @ApiOperation(value = "获取工作日管理（停用）", tags = {"工作日管理（停用）" },  notes = "获取工作日管理（停用）")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacworkdays/{vacworkday_id}")
     public ResponseEntity<VacWorkDayDTO> get(@PathVariable("vacworkday_id") String vacworkday_id) {
         VacWorkDay domain = vacworkdayService.get(vacworkday_id);
@@ -131,14 +131,14 @@ public class VacWorkDayResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"VacWorkDay" },  notes = "GetDraft")
+    @ApiOperation(value = "获取工作日管理（停用）草稿", tags = {"工作日管理（停用）" },  notes = "获取工作日管理（停用）草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacworkdays/getdraft")
     public ResponseEntity<VacWorkDayDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacworkdayMapping.toDto(vacworkdayService.getDraft(new VacWorkDay())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacWorkDay-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"VacWorkDay" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"工作日管理（停用）" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacworkdays/fetchdefault")
 	public ResponseEntity<List<VacWorkDayDTO>> fetchDefault(VacWorkDaySearchContext context) {
         Page<VacWorkDay> domains = vacworkdayService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class VacWorkDayResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacWorkDay-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"VacWorkDay" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"工作日管理（停用）" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacworkdays/searchdefault")
 	public ResponseEntity<Page<VacWorkDayDTO>> searchDefault(@RequestBody VacWorkDaySearchContext context) {
         Page<VacWorkDay> domains = vacworkdayService.searchDefault(context) ;

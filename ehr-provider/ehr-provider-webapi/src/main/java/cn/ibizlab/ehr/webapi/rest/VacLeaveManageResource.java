@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.vac.service.IVacLeaveManageService;
 import cn.ibizlab.ehr.core.vac.filter.VacLeaveManageSearchContext;
 
 @Slf4j
-@Api(tags = {"VacLeaveManage" })
+@Api(tags = {"请假管理" })
 @RestController("WebApi-vacleavemanage")
 @RequestMapping("")
 public class VacLeaveManageResource {
@@ -47,7 +47,7 @@ public class VacLeaveManageResource {
     public VacLeaveManageMapping vacleavemanageMapping;
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-UpdateQJMX-all')")
-    @ApiOperation(value = "更新请假明细", tags = {"VacLeaveManage" },  notes = "更新请假明细")
+    @ApiOperation(value = "更新请假明细", tags = {"请假管理" },  notes = "更新请假明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleavemanages/{vacleavemanage_id}/updateqjmx")
     @Transactional
     public ResponseEntity<VacLeaveManageDTO> updateQJMX(@PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VacLeaveManageDTO vacleavemanagedto) {
@@ -59,7 +59,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-CB-all')")
-    @ApiOperation(value = "催办", tags = {"VacLeaveManage" },  notes = "催办")
+    @ApiOperation(value = "催办", tags = {"请假管理" },  notes = "催办")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavemanages/{vacleavemanage_id}/cb")
     @Transactional
     public ResponseEntity<VacLeaveManageDTO> cB(@PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VacLeaveManageDTO vacleavemanagedto) {
@@ -70,14 +70,14 @@ public class VacLeaveManageResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavemanagedto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"VacLeaveManage" },  notes = "GetDraft")
+    @ApiOperation(value = "获取请假管理草稿", tags = {"请假管理" },  notes = "获取请假管理草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavemanages/getdraft")
     public ResponseEntity<VacLeaveManageDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavemanageMapping.toDto(vacleavemanageService.getDraft(new VacLeaveManage())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-CX-all')")
-    @ApiOperation(value = "撤销", tags = {"VacLeaveManage" },  notes = "撤销")
+    @ApiOperation(value = "撤销", tags = {"请假管理" },  notes = "撤销")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavemanages/{vacleavemanage_id}/cx")
     @Transactional
     public ResponseEntity<VacLeaveManageDTO> cX(@PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VacLeaveManageDTO vacleavemanagedto) {
@@ -89,7 +89,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavemanageService.get(#vacleavemanage_id),'ehr-VacLeaveManage-Update')")
-    @ApiOperation(value = "Update", tags = {"VacLeaveManage" },  notes = "Update")
+    @ApiOperation(value = "更新请假管理", tags = {"请假管理" },  notes = "更新请假管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleavemanages/{vacleavemanage_id}")
     @Transactional
     public ResponseEntity<VacLeaveManageDTO> update(@PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VacLeaveManageDTO vacleavemanagedto) {
@@ -101,7 +101,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavemanageService.getVacleavemanageByEntities(this.vacleavemanageMapping.toDomain(#vacleavemanagedtos)),'ehr-VacLeaveManage-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"VacLeaveManage" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新请假管理", tags = {"请假管理" },  notes = "批量更新请假管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/vacleavemanages/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<VacLeaveManageDTO> vacleavemanagedtos) {
         vacleavemanageService.updateBatch(vacleavemanageMapping.toDomain(vacleavemanagedtos));
@@ -109,7 +109,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavemanageService.get(#vacleavemanage_id),'ehr-VacLeaveManage-Remove')")
-    @ApiOperation(value = "Remove", tags = {"VacLeaveManage" },  notes = "Remove")
+    @ApiOperation(value = "删除请假管理", tags = {"请假管理" },  notes = "删除请假管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleavemanages/{vacleavemanage_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("vacleavemanage_id") String vacleavemanage_id) {
@@ -117,7 +117,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavemanageService.getVacleavemanageByIds(#ids),'ehr-VacLeaveManage-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"VacLeaveManage" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除请假管理", tags = {"请假管理" },  notes = "批量删除请假管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleavemanages/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         vacleavemanageService.removeBatch(ids);
@@ -125,7 +125,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-GetFJSJofPerson-all')")
-    @ApiOperation(value = "获取员工附加数据", tags = {"VacLeaveManage" },  notes = "获取员工附加数据")
+    @ApiOperation(value = "获取员工附加数据", tags = {"请假管理" },  notes = "获取员工附加数据")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavemanages/{vacleavemanage_id}/getfjsjofperson")
     @Transactional
     public ResponseEntity<VacLeaveManageDTO> getFJSJofPerson(@PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VacLeaveManageDTO vacleavemanagedto) {
@@ -137,14 +137,14 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(#vacleavemanagedto),'ehr-VacLeaveManage-Save')")
-    @ApiOperation(value = "Save", tags = {"VacLeaveManage" },  notes = "Save")
+    @ApiOperation(value = "保存请假管理", tags = {"请假管理" },  notes = "保存请假管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavemanages/save")
     public ResponseEntity<Boolean> save(@RequestBody VacLeaveManageDTO vacleavemanagedto) {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavemanageService.save(vacleavemanageMapping.toDomain(vacleavemanagedto)));
     }
 
     @PreAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(#vacleavemanagedtos),'ehr-VacLeaveManage-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"VacLeaveManage" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存请假管理", tags = {"请假管理" },  notes = "批量保存请假管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavemanages/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<VacLeaveManageDTO> vacleavemanagedtos) {
         vacleavemanageService.saveBatch(vacleavemanageMapping.toDomain(vacleavemanagedtos));
@@ -152,7 +152,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(#vacleavemanagedto),'ehr-VacLeaveManage-Create')")
-    @ApiOperation(value = "Create", tags = {"VacLeaveManage" },  notes = "Create")
+    @ApiOperation(value = "新建请假管理", tags = {"请假管理" },  notes = "新建请假管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavemanages")
     @Transactional
     public ResponseEntity<VacLeaveManageDTO> create(@RequestBody VacLeaveManageDTO vacleavemanagedto) {
@@ -163,7 +163,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(#vacleavemanagedtos),'ehr-VacLeaveManage-Create')")
-    @ApiOperation(value = "createBatch", tags = {"VacLeaveManage" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建请假管理", tags = {"请假管理" },  notes = "批量新建请假管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavemanages/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<VacLeaveManageDTO> vacleavemanagedtos) {
         vacleavemanageService.createBatch(vacleavemanageMapping.toDomain(vacleavemanagedtos));
@@ -171,7 +171,7 @@ public class VacLeaveManageResource {
     }
 
     @PostAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(returnObject.body),'ehr-VacLeaveManage-Get')")
-    @ApiOperation(value = "Get", tags = {"VacLeaveManage" },  notes = "Get")
+    @ApiOperation(value = "获取请假管理", tags = {"请假管理" },  notes = "获取请假管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavemanages/{vacleavemanage_id}")
     public ResponseEntity<VacLeaveManageDTO> get(@PathVariable("vacleavemanage_id") String vacleavemanage_id) {
         VacLeaveManage domain = vacleavemanageService.get(vacleavemanage_id);
@@ -179,14 +179,14 @@ public class VacLeaveManageResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"VacLeaveManage" },  notes = "CheckKey")
+    @ApiOperation(value = "检查请假管理", tags = {"请假管理" },  notes = "检查请假管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavemanages/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody VacLeaveManageDTO vacleavemanagedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacleavemanageService.checkKey(vacleavemanageMapping.toDomain(vacleavemanagedto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-MobStart-all')")
-    @ApiOperation(value = "移动端启动流程", tags = {"VacLeaveManage" },  notes = "移动端启动流程")
+    @ApiOperation(value = "移动端启动流程", tags = {"请假管理" },  notes = "移动端启动流程")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavemanages/{vacleavemanage_id}/mobstart")
     @Transactional
     public ResponseEntity<VacLeaveManageDTO> mobStart(@PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VacLeaveManageDTO vacleavemanagedto) {
@@ -198,7 +198,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-FormType-all')")
-	@ApiOperation(value = "fetchFormType", tags = {"VacLeaveManage" } ,notes = "fetchFormType")
+	@ApiOperation(value = "获取FormType", tags = {"请假管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchformtype")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchFormType(VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchFormType(context) ;
@@ -211,7 +211,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-FormType-all')")
-	@ApiOperation(value = "searchFormType", tags = {"VacLeaveManage" } ,notes = "searchFormType")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchformtype")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchFormType(@RequestBody VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchFormType(context) ;
@@ -219,7 +219,7 @@ public class VacLeaveManageResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-GR-all')")
-	@ApiOperation(value = "fetch个人", tags = {"VacLeaveManage" } ,notes = "fetch个人")
+	@ApiOperation(value = "获取个人", tags = {"请假管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchgr")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchGR(VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchGR(context) ;
@@ -232,7 +232,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-GR-all')")
-	@ApiOperation(value = "search个人", tags = {"VacLeaveManage" } ,notes = "search个人")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchgr")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchGR(@RequestBody VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchGR(context) ;
@@ -240,7 +240,7 @@ public class VacLeaveManageResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-MOBJLSS-all')")
-	@ApiOperation(value = "fetch记录所属（移动端）", tags = {"VacLeaveManage" } ,notes = "fetch记录所属（移动端）")
+	@ApiOperation(value = "获取记录所属（移动端）", tags = {"请假管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchmobjlss")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchMOBJLSS(VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchMOBJLSS(context) ;
@@ -253,7 +253,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-MOBJLSS-all')")
-	@ApiOperation(value = "search记录所属（移动端）", tags = {"VacLeaveManage" } ,notes = "search记录所属（移动端）")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchmobjlss")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchMOBJLSS(@RequestBody VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchMOBJLSS(context) ;
@@ -261,7 +261,7 @@ public class VacLeaveManageResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-JLSS-all')")
-	@ApiOperation(value = "fetch记录所属和人员ID不符的", tags = {"VacLeaveManage" } ,notes = "fetch记录所属和人员ID不符的")
+	@ApiOperation(value = "获取记录所属和人员ID不符的", tags = {"请假管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchjlss")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchJLSS(VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchJLSS(context) ;
@@ -274,7 +274,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-JLSS-all')")
-	@ApiOperation(value = "search记录所属和人员ID不符的", tags = {"VacLeaveManage" } ,notes = "search记录所属和人员ID不符的")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchjlss")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchJLSS(@RequestBody VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchJLSS(context) ;
@@ -282,7 +282,7 @@ public class VacLeaveManageResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"VacLeaveManage" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"请假管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchdefault")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchDefault(VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchDefault(context) ;
@@ -295,7 +295,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"VacLeaveManage" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchdefault")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchDefault(@RequestBody VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchDefault(context) ;
@@ -303,7 +303,7 @@ public class VacLeaveManageResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-OnlySPTY-all')")
-	@ApiOperation(value = "fetch只查看审批中、已同意的请假记录", tags = {"VacLeaveManage" } ,notes = "fetch只查看审批中、已同意的请假记录")
+	@ApiOperation(value = "获取只查看审批中、已同意的请假记录", tags = {"请假管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/vacleavemanages/fetchonlyspty")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchOnlySPTY(VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchOnlySPTY(context) ;
@@ -316,7 +316,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-OnlySPTY-all')")
-	@ApiOperation(value = "search只查看审批中、已同意的请假记录", tags = {"VacLeaveManage" } ,notes = "search只查看审批中、已同意的请假记录")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"请假管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/vacleavemanages/searchonlyspty")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchOnlySPTY(@RequestBody VacLeaveManageSearchContext context) {
         Page<VacLeaveManage> domains = vacleavemanageService.searchOnlySPTY(context) ;
@@ -324,7 +324,7 @@ public class VacLeaveManageResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-UpdateQJMX-all')")
-    @ApiOperation(value = "更新请假明细ByPimPerson", tags = {"VacLeaveManage" },  notes = "更新请假明细ByPimPerson")
+    @ApiOperation(value = "根据人员信息请假管理", tags = {"请假管理" },  notes = "根据人员信息请假管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}/updateqjmx")
     @Transactional
     public ResponseEntity<VacLeaveManageDTO> updateQJMXByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VacLeaveManageDTO vacleavemanagedto) {
@@ -336,7 +336,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-CB-all')")
-    @ApiOperation(value = "催办ByPimPerson", tags = {"VacLeaveManage" },  notes = "催办ByPimPerson")
+    @ApiOperation(value = "根据人员信息请假管理", tags = {"请假管理" },  notes = "根据人员信息请假管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}/cb")
     @Transactional
     public ResponseEntity<VacLeaveManageDTO> cBByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VacLeaveManageDTO vacleavemanagedto) {
@@ -347,7 +347,7 @@ public class VacLeaveManageResource {
         return ResponseEntity.status(HttpStatus.OK).body(vacleavemanagedto);
     }
 
-    @ApiOperation(value = "GetDraftByPimPerson", tags = {"VacLeaveManage" },  notes = "GetDraftByPimPerson")
+    @ApiOperation(value = "根据人员信息获取请假管理草稿", tags = {"请假管理" },  notes = "根据人员信息获取请假管理草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/vacleavemanages/getdraft")
     public ResponseEntity<VacLeaveManageDTO> getDraftByPimPerson(@PathVariable("pimperson_id") String pimperson_id) {
         VacLeaveManage domain = new VacLeaveManage();
@@ -356,7 +356,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-CX-all')")
-    @ApiOperation(value = "撤销ByPimPerson", tags = {"VacLeaveManage" },  notes = "撤销ByPimPerson")
+    @ApiOperation(value = "根据人员信息请假管理", tags = {"请假管理" },  notes = "根据人员信息请假管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}/cx")
     @Transactional
     public ResponseEntity<VacLeaveManageDTO> cXByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VacLeaveManageDTO vacleavemanagedto) {
@@ -368,7 +368,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavemanageService.get(#vacleavemanage_id),'ehr-VacLeaveManage-Update')")
-    @ApiOperation(value = "UpdateByPimPerson", tags = {"VacLeaveManage" },  notes = "UpdateByPimPerson")
+    @ApiOperation(value = "根据人员信息更新请假管理", tags = {"请假管理" },  notes = "根据人员信息更新请假管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}")
     @Transactional
     public ResponseEntity<VacLeaveManageDTO> updateByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VacLeaveManageDTO vacleavemanagedto) {
@@ -381,7 +381,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavemanageService.getVacleavemanageByEntities(this.vacleavemanageMapping.toDomain(#vacleavemanagedtos)),'ehr-VacLeaveManage-Update')")
-    @ApiOperation(value = "UpdateBatchByPimPerson", tags = {"VacLeaveManage" },  notes = "UpdateBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量更新请假管理", tags = {"请假管理" },  notes = "根据人员信息批量更新请假管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/vacleavemanages/batch")
     public ResponseEntity<Boolean> updateBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<VacLeaveManageDTO> vacleavemanagedtos) {
         List<VacLeaveManage> domainlist=vacleavemanageMapping.toDomain(vacleavemanagedtos);
@@ -393,7 +393,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavemanageService.get(#vacleavemanage_id),'ehr-VacLeaveManage-Remove')")
-    @ApiOperation(value = "RemoveByPimPerson", tags = {"VacLeaveManage" },  notes = "RemoveByPimPerson")
+    @ApiOperation(value = "根据人员信息删除请假管理", tags = {"请假管理" },  notes = "根据人员信息删除请假管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("vacleavemanage_id") String vacleavemanage_id) {
@@ -401,7 +401,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavemanageService.getVacleavemanageByIds(#ids),'ehr-VacLeaveManage-Remove')")
-    @ApiOperation(value = "RemoveBatchByPimPerson", tags = {"VacLeaveManage" },  notes = "RemoveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量删除请假管理", tags = {"请假管理" },  notes = "根据人员信息批量删除请假管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/vacleavemanages/batch")
     public ResponseEntity<Boolean> removeBatchByPimPerson(@RequestBody List<String> ids) {
         vacleavemanageService.removeBatch(ids);
@@ -409,7 +409,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-GetFJSJofPerson-all')")
-    @ApiOperation(value = "获取员工附加数据ByPimPerson", tags = {"VacLeaveManage" },  notes = "获取员工附加数据ByPimPerson")
+    @ApiOperation(value = "根据人员信息请假管理", tags = {"请假管理" },  notes = "根据人员信息请假管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}/getfjsjofperson")
     @Transactional
     public ResponseEntity<VacLeaveManageDTO> getFJSJofPersonByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VacLeaveManageDTO vacleavemanagedto) {
@@ -421,7 +421,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(#vacleavemanagedto),'ehr-VacLeaveManage-Save')")
-    @ApiOperation(value = "SaveByPimPerson", tags = {"VacLeaveManage" },  notes = "SaveByPimPerson")
+    @ApiOperation(value = "根据人员信息保存请假管理", tags = {"请假管理" },  notes = "根据人员信息保存请假管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/save")
     public ResponseEntity<Boolean> saveByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VacLeaveManageDTO vacleavemanagedto) {
         VacLeaveManage domain = vacleavemanageMapping.toDomain(vacleavemanagedto);
@@ -430,7 +430,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(#vacleavemanagedtos),'ehr-VacLeaveManage-Save')")
-    @ApiOperation(value = "SaveBatchByPimPerson", tags = {"VacLeaveManage" },  notes = "SaveBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量保存请假管理", tags = {"请假管理" },  notes = "根据人员信息批量保存请假管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/savebatch")
     public ResponseEntity<Boolean> saveBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<VacLeaveManageDTO> vacleavemanagedtos) {
         List<VacLeaveManage> domainlist=vacleavemanageMapping.toDomain(vacleavemanagedtos);
@@ -442,7 +442,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(#vacleavemanagedto),'ehr-VacLeaveManage-Create')")
-    @ApiOperation(value = "CreateByPimPerson", tags = {"VacLeaveManage" },  notes = "CreateByPimPerson")
+    @ApiOperation(value = "根据人员信息建立请假管理", tags = {"请假管理" },  notes = "根据人员信息建立请假管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages")
     @Transactional
     public ResponseEntity<VacLeaveManageDTO> createByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VacLeaveManageDTO vacleavemanagedto) {
@@ -454,7 +454,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(#vacleavemanagedtos),'ehr-VacLeaveManage-Create')")
-    @ApiOperation(value = "createBatchByPimPerson", tags = {"VacLeaveManage" },  notes = "createBatchByPimPerson")
+    @ApiOperation(value = "根据人员信息批量建立请假管理", tags = {"请假管理" },  notes = "根据人员信息批量建立请假管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/batch")
     public ResponseEntity<Boolean> createBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<VacLeaveManageDTO> vacleavemanagedtos) {
         List<VacLeaveManage> domainlist=vacleavemanageMapping.toDomain(vacleavemanagedtos);
@@ -466,7 +466,7 @@ public class VacLeaveManageResource {
     }
 
     @PostAuthorize("hasPermission(this.vacleavemanageMapping.toDomain(returnObject.body),'ehr-VacLeaveManage-Get')")
-    @ApiOperation(value = "GetByPimPerson", tags = {"VacLeaveManage" },  notes = "GetByPimPerson")
+    @ApiOperation(value = "根据人员信息获取请假管理", tags = {"请假管理" },  notes = "根据人员信息获取请假管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}")
     public ResponseEntity<VacLeaveManageDTO> getByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("vacleavemanage_id") String vacleavemanage_id) {
         VacLeaveManage domain = vacleavemanageService.get(vacleavemanage_id);
@@ -474,14 +474,14 @@ public class VacLeaveManageResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKeyByPimPerson", tags = {"VacLeaveManage" },  notes = "CheckKeyByPimPerson")
+    @ApiOperation(value = "根据人员信息检查请假管理", tags = {"请假管理" },  notes = "根据人员信息检查请假管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/checkkey")
     public ResponseEntity<Boolean> checkKeyByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VacLeaveManageDTO vacleavemanagedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(vacleavemanageService.checkKey(vacleavemanageMapping.toDomain(vacleavemanagedto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-MobStart-all')")
-    @ApiOperation(value = "移动端启动流程ByPimPerson", tags = {"VacLeaveManage" },  notes = "移动端启动流程ByPimPerson")
+    @ApiOperation(value = "根据人员信息请假管理", tags = {"请假管理" },  notes = "根据人员信息请假管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/vacleavemanages/{vacleavemanage_id}/mobstart")
     @Transactional
     public ResponseEntity<VacLeaveManageDTO> mobStartByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("vacleavemanage_id") String vacleavemanage_id, @RequestBody VacLeaveManageDTO vacleavemanagedto) {
@@ -493,7 +493,7 @@ public class VacLeaveManageResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-FormType-all')")
-	@ApiOperation(value = "fetchFormTypeByPimPerson", tags = {"VacLeaveManage" } ,notes = "fetchFormTypeByPimPerson")
+	@ApiOperation(value = "根据人员信息获取FormType", tags = {"请假管理" } ,notes = "根据人员信息获取FormType")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/vacleavemanages/fetchformtype")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchVacLeaveManageFormTypeByPimPerson(@PathVariable("pimperson_id") String pimperson_id,VacLeaveManageSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -507,7 +507,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-FormType-all')")
-	@ApiOperation(value = "searchFormTypeByPimPerson", tags = {"VacLeaveManage" } ,notes = "searchFormTypeByPimPerson")
+	@ApiOperation(value = "根据人员信息查询FormType", tags = {"请假管理" } ,notes = "根据人员信息查询FormType")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/vacleavemanages/searchformtype")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchVacLeaveManageFormTypeByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VacLeaveManageSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -516,7 +516,7 @@ public class VacLeaveManageResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-GR-all')")
-	@ApiOperation(value = "fetch个人ByPimPerson", tags = {"VacLeaveManage" } ,notes = "fetch个人ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取个人", tags = {"请假管理" } ,notes = "根据人员信息获取个人")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/vacleavemanages/fetchgr")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchVacLeaveManageGRByPimPerson(@PathVariable("pimperson_id") String pimperson_id,VacLeaveManageSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -530,7 +530,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-GR-all')")
-	@ApiOperation(value = "search个人ByPimPerson", tags = {"VacLeaveManage" } ,notes = "search个人ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询个人", tags = {"请假管理" } ,notes = "根据人员信息查询个人")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/vacleavemanages/searchgr")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchVacLeaveManageGRByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VacLeaveManageSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -539,7 +539,7 @@ public class VacLeaveManageResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-MOBJLSS-all')")
-	@ApiOperation(value = "fetch记录所属（移动端）ByPimPerson", tags = {"VacLeaveManage" } ,notes = "fetch记录所属（移动端）ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取记录所属（移动端）", tags = {"请假管理" } ,notes = "根据人员信息获取记录所属（移动端）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/vacleavemanages/fetchmobjlss")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchVacLeaveManageMOBJLSSByPimPerson(@PathVariable("pimperson_id") String pimperson_id,VacLeaveManageSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -553,7 +553,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-MOBJLSS-all')")
-	@ApiOperation(value = "search记录所属（移动端）ByPimPerson", tags = {"VacLeaveManage" } ,notes = "search记录所属（移动端）ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询记录所属（移动端）", tags = {"请假管理" } ,notes = "根据人员信息查询记录所属（移动端）")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/vacleavemanages/searchmobjlss")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchVacLeaveManageMOBJLSSByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VacLeaveManageSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -562,7 +562,7 @@ public class VacLeaveManageResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-JLSS-all')")
-	@ApiOperation(value = "fetch记录所属和人员ID不符的ByPimPerson", tags = {"VacLeaveManage" } ,notes = "fetch记录所属和人员ID不符的ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取记录所属和人员ID不符的", tags = {"请假管理" } ,notes = "根据人员信息获取记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/vacleavemanages/fetchjlss")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchVacLeaveManageJLSSByPimPerson(@PathVariable("pimperson_id") String pimperson_id,VacLeaveManageSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -576,7 +576,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-JLSS-all')")
-	@ApiOperation(value = "search记录所属和人员ID不符的ByPimPerson", tags = {"VacLeaveManage" } ,notes = "search记录所属和人员ID不符的ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询记录所属和人员ID不符的", tags = {"请假管理" } ,notes = "根据人员信息查询记录所属和人员ID不符的")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/vacleavemanages/searchjlss")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchVacLeaveManageJLSSByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VacLeaveManageSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -585,7 +585,7 @@ public class VacLeaveManageResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPimPerson", tags = {"VacLeaveManage" } ,notes = "fetchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息获取DEFAULT", tags = {"请假管理" } ,notes = "根据人员信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/vacleavemanages/fetchdefault")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchVacLeaveManageDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id,VacLeaveManageSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -599,7 +599,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPimPerson", tags = {"VacLeaveManage" } ,notes = "searchDEFAULTByPimPerson")
+	@ApiOperation(value = "根据人员信息查询DEFAULT", tags = {"请假管理" } ,notes = "根据人员信息查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/vacleavemanages/searchdefault")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchVacLeaveManageDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VacLeaveManageSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -608,7 +608,7 @@ public class VacLeaveManageResource {
                 .body(new PageImpl(vacleavemanageMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-OnlySPTY-all')")
-	@ApiOperation(value = "fetch只查看审批中、已同意的请假记录ByPimPerson", tags = {"VacLeaveManage" } ,notes = "fetch只查看审批中、已同意的请假记录ByPimPerson")
+	@ApiOperation(value = "根据人员信息获取只查看审批中、已同意的请假记录", tags = {"请假管理" } ,notes = "根据人员信息获取只查看审批中、已同意的请假记录")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/vacleavemanages/fetchonlyspty")
 	public ResponseEntity<List<VacLeaveManageDTO>> fetchVacLeaveManageOnlySPTYByPimPerson(@PathVariable("pimperson_id") String pimperson_id,VacLeaveManageSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);
@@ -622,7 +622,7 @@ public class VacLeaveManageResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveManage-OnlySPTY-all')")
-	@ApiOperation(value = "search只查看审批中、已同意的请假记录ByPimPerson", tags = {"VacLeaveManage" } ,notes = "search只查看审批中、已同意的请假记录ByPimPerson")
+	@ApiOperation(value = "根据人员信息查询只查看审批中、已同意的请假记录", tags = {"请假管理" } ,notes = "根据人员信息查询只查看审批中、已同意的请假记录")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/vacleavemanages/searchonlyspty")
 	public ResponseEntity<Page<VacLeaveManageDTO>> searchVacLeaveManageOnlySPTYByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody VacLeaveManageSearchContext context) {
         context.setN_pimpersonid_eq(pimperson_id);

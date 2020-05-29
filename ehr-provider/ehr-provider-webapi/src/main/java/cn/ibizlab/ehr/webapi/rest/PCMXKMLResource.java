@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pcm.service.IPCMXKMLService;
 import cn.ibizlab.ehr.core.pcm.filter.PCMXKMLSearchContext;
 
 @Slf4j
-@Api(tags = {"PCMXKML" })
+@Api(tags = {"学科目录" })
 @RestController("WebApi-pcmxkml")
 @RequestMapping("")
 public class PCMXKMLResource {
@@ -47,7 +47,7 @@ public class PCMXKMLResource {
     public PCMXKMLMapping pcmxkmlMapping;
 
     @PreAuthorize("hasPermission(this.pcmxkmlService.get(#pcmxkml_id),'ehr-PCMXKML-Update')")
-    @ApiOperation(value = "Update", tags = {"PCMXKML" },  notes = "Update")
+    @ApiOperation(value = "更新学科目录", tags = {"学科目录" },  notes = "更新学科目录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmxkmls/{pcmxkml_id}")
     @Transactional
     public ResponseEntity<PCMXKMLDTO> update(@PathVariable("pcmxkml_id") String pcmxkml_id, @RequestBody PCMXKMLDTO pcmxkmldto) {
@@ -59,7 +59,7 @@ public class PCMXKMLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmxkmlService.getPcmxkmlByEntities(this.pcmxkmlMapping.toDomain(#pcmxkmldtos)),'ehr-PCMXKML-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PCMXKML" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新学科目录", tags = {"学科目录" },  notes = "批量更新学科目录")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmxkmls/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PCMXKMLDTO> pcmxkmldtos) {
         pcmxkmlService.updateBatch(pcmxkmlMapping.toDomain(pcmxkmldtos));
@@ -67,7 +67,7 @@ public class PCMXKMLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmxkmlService.get(#pcmxkml_id),'ehr-PCMXKML-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PCMXKML" },  notes = "Remove")
+    @ApiOperation(value = "删除学科目录", tags = {"学科目录" },  notes = "删除学科目录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmxkmls/{pcmxkml_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pcmxkml_id") String pcmxkml_id) {
@@ -75,7 +75,7 @@ public class PCMXKMLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmxkmlService.getPcmxkmlByIds(#ids),'ehr-PCMXKML-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PCMXKML" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除学科目录", tags = {"学科目录" },  notes = "批量删除学科目录")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmxkmls/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pcmxkmlService.removeBatch(ids);
@@ -83,7 +83,7 @@ public class PCMXKMLResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmxkmlMapping.toDomain(returnObject.body),'ehr-PCMXKML-Get')")
-    @ApiOperation(value = "Get", tags = {"PCMXKML" },  notes = "Get")
+    @ApiOperation(value = "获取学科目录", tags = {"学科目录" },  notes = "获取学科目录")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmxkmls/{pcmxkml_id}")
     public ResponseEntity<PCMXKMLDTO> get(@PathVariable("pcmxkml_id") String pcmxkml_id) {
         PCMXKML domain = pcmxkmlService.get(pcmxkml_id);
@@ -92,7 +92,7 @@ public class PCMXKMLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmxkmlMapping.toDomain(#pcmxkmldto),'ehr-PCMXKML-Create')")
-    @ApiOperation(value = "Create", tags = {"PCMXKML" },  notes = "Create")
+    @ApiOperation(value = "新建学科目录", tags = {"学科目录" },  notes = "新建学科目录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls")
     @Transactional
     public ResponseEntity<PCMXKMLDTO> create(@RequestBody PCMXKMLDTO pcmxkmldto) {
@@ -103,7 +103,7 @@ public class PCMXKMLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmxkmlMapping.toDomain(#pcmxkmldtos),'ehr-PCMXKML-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PCMXKML" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建学科目录", tags = {"学科目录" },  notes = "批量新建学科目录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PCMXKMLDTO> pcmxkmldtos) {
         pcmxkmlService.createBatch(pcmxkmlMapping.toDomain(pcmxkmldtos));
@@ -111,34 +111,34 @@ public class PCMXKMLResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmxkmlMapping.toDomain(#pcmxkmldto),'ehr-PCMXKML-Save')")
-    @ApiOperation(value = "Save", tags = {"PCMXKML" },  notes = "Save")
+    @ApiOperation(value = "保存学科目录", tags = {"学科目录" },  notes = "保存学科目录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/save")
     public ResponseEntity<Boolean> save(@RequestBody PCMXKMLDTO pcmxkmldto) {
         return ResponseEntity.status(HttpStatus.OK).body(pcmxkmlService.save(pcmxkmlMapping.toDomain(pcmxkmldto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmxkmlMapping.toDomain(#pcmxkmldtos),'ehr-PCMXKML-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PCMXKML" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存学科目录", tags = {"学科目录" },  notes = "批量保存学科目录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PCMXKMLDTO> pcmxkmldtos) {
         pcmxkmlService.saveBatch(pcmxkmlMapping.toDomain(pcmxkmldtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PCMXKML" },  notes = "CheckKey")
+    @ApiOperation(value = "检查学科目录", tags = {"学科目录" },  notes = "检查学科目录")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmxkmls/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PCMXKMLDTO pcmxkmldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmxkmlService.checkKey(pcmxkmlMapping.toDomain(pcmxkmldto)));
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PCMXKML" },  notes = "GetDraft")
+    @ApiOperation(value = "获取学科目录草稿", tags = {"学科目录" },  notes = "获取学科目录草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmxkmls/getdraft")
     public ResponseEntity<PCMXKMLDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pcmxkmlMapping.toDto(pcmxkmlService.getDraft(new PCMXKML())));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PCMXKML" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"学科目录" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxkmls/fetchdefault")
 	public ResponseEntity<List<PCMXKMLDTO>> fetchDefault(PCMXKMLSearchContext context) {
         Page<PCMXKML> domains = pcmxkmlService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PCMXKMLResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PCMXKML" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"学科目录" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmxkmls/searchdefault")
 	public ResponseEntity<Page<PCMXKMLDTO>> searchDefault(@RequestBody PCMXKMLSearchContext context) {
         Page<PCMXKML> domains = pcmxkmlService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class PCMXKMLResource {
                 .body(new PageImpl(pcmxkmlMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-CurND-all')")
-	@ApiOperation(value = "fetch当前年度", tags = {"PCMXKML" } ,notes = "fetch当前年度")
+	@ApiOperation(value = "获取当前年度", tags = {"学科目录" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pcmxkmls/fetchcurnd")
 	public ResponseEntity<List<PCMXKMLDTO>> fetchCurND(PCMXKMLSearchContext context) {
         Page<PCMXKML> domains = pcmxkmlService.searchCurND(context) ;
@@ -172,7 +172,7 @@ public class PCMXKMLResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMXKML-CurND-all')")
-	@ApiOperation(value = "search当前年度", tags = {"PCMXKML" } ,notes = "search当前年度")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"学科目录" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pcmxkmls/searchcurnd")
 	public ResponseEntity<Page<PCMXKMLDTO>> searchCurND(@RequestBody PCMXKMLSearchContext context) {
         Page<PCMXKML> domains = pcmxkmlService.searchCurND(context) ;

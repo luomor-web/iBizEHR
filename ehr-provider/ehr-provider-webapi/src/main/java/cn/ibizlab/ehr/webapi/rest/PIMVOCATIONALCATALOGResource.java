@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.pim.service.IPIMVOCATIONALCATALOGService;
 import cn.ibizlab.ehr.core.pim.filter.PIMVOCATIONALCATALOGSearchContext;
 
 @Slf4j
-@Api(tags = {"PIMVOCATIONALCATALOG" })
+@Api(tags = {"执（职）业资格管理" })
 @RestController("WebApi-pimvocationalcatalog")
 @RequestMapping("")
 public class PIMVOCATIONALCATALOGResource {
@@ -47,28 +47,28 @@ public class PIMVOCATIONALCATALOGResource {
     public PIMVOCATIONALCATALOGMapping pimvocationalcatalogMapping;
 
     @PreAuthorize("hasPermission(this.pimvocationalcatalogMapping.toDomain(#pimvocationalcatalogdto),'ehr-PIMVOCATIONALCATALOG-Save')")
-    @ApiOperation(value = "Save", tags = {"PIMVOCATIONALCATALOG" },  notes = "Save")
+    @ApiOperation(value = "保存执（职）业资格管理", tags = {"执（职）业资格管理" },  notes = "保存执（职）业资格管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationalcatalogs/save")
     public ResponseEntity<Boolean> save(@RequestBody PIMVOCATIONALCATALOGDTO pimvocationalcatalogdto) {
         return ResponseEntity.status(HttpStatus.OK).body(pimvocationalcatalogService.save(pimvocationalcatalogMapping.toDomain(pimvocationalcatalogdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimvocationalcatalogMapping.toDomain(#pimvocationalcatalogdtos),'ehr-PIMVOCATIONALCATALOG-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"PIMVOCATIONALCATALOG" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存执（职）业资格管理", tags = {"执（职）业资格管理" },  notes = "批量保存执（职）业资格管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationalcatalogs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<PIMVOCATIONALCATALOGDTO> pimvocationalcatalogdtos) {
         pimvocationalcatalogService.saveBatch(pimvocationalcatalogMapping.toDomain(pimvocationalcatalogdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"PIMVOCATIONALCATALOG" },  notes = "GetDraft")
+    @ApiOperation(value = "获取执（职）业资格管理草稿", tags = {"执（职）业资格管理" },  notes = "获取执（职）业资格管理草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimvocationalcatalogs/getdraft")
     public ResponseEntity<PIMVOCATIONALCATALOGDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(pimvocationalcatalogMapping.toDto(pimvocationalcatalogService.getDraft(new PIMVOCATIONALCATALOG())));
     }
 
     @PostAuthorize("hasPermission(this.pimvocationalcatalogMapping.toDomain(returnObject.body),'ehr-PIMVOCATIONALCATALOG-Get')")
-    @ApiOperation(value = "Get", tags = {"PIMVOCATIONALCATALOG" },  notes = "Get")
+    @ApiOperation(value = "获取执（职）业资格管理", tags = {"执（职）业资格管理" },  notes = "获取执（职）业资格管理")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimvocationalcatalogs/{pimvocationalcatalog_id}")
     public ResponseEntity<PIMVOCATIONALCATALOGDTO> get(@PathVariable("pimvocationalcatalog_id") String pimvocationalcatalog_id) {
         PIMVOCATIONALCATALOG domain = pimvocationalcatalogService.get(pimvocationalcatalog_id);
@@ -76,14 +76,14 @@ public class PIMVOCATIONALCATALOGResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"PIMVOCATIONALCATALOG" },  notes = "CheckKey")
+    @ApiOperation(value = "检查执（职）业资格管理", tags = {"执（职）业资格管理" },  notes = "检查执（职）业资格管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationalcatalogs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PIMVOCATIONALCATALOGDTO pimvocationalcatalogdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimvocationalcatalogService.checkKey(pimvocationalcatalogMapping.toDomain(pimvocationalcatalogdto)));
     }
 
     @PreAuthorize("hasPermission(this.pimvocationalcatalogService.get(#pimvocationalcatalog_id),'ehr-PIMVOCATIONALCATALOG-Update')")
-    @ApiOperation(value = "Update", tags = {"PIMVOCATIONALCATALOG" },  notes = "Update")
+    @ApiOperation(value = "更新执（职）业资格管理", tags = {"执（职）业资格管理" },  notes = "更新执（职）业资格管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimvocationalcatalogs/{pimvocationalcatalog_id}")
     @Transactional
     public ResponseEntity<PIMVOCATIONALCATALOGDTO> update(@PathVariable("pimvocationalcatalog_id") String pimvocationalcatalog_id, @RequestBody PIMVOCATIONALCATALOGDTO pimvocationalcatalogdto) {
@@ -95,7 +95,7 @@ public class PIMVOCATIONALCATALOGResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvocationalcatalogService.getPimvocationalcatalogByEntities(this.pimvocationalcatalogMapping.toDomain(#pimvocationalcatalogdtos)),'ehr-PIMVOCATIONALCATALOG-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"PIMVOCATIONALCATALOG" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新执（职）业资格管理", tags = {"执（职）业资格管理" },  notes = "批量更新执（职）业资格管理")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimvocationalcatalogs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<PIMVOCATIONALCATALOGDTO> pimvocationalcatalogdtos) {
         pimvocationalcatalogService.updateBatch(pimvocationalcatalogMapping.toDomain(pimvocationalcatalogdtos));
@@ -103,7 +103,7 @@ public class PIMVOCATIONALCATALOGResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvocationalcatalogMapping.toDomain(#pimvocationalcatalogdto),'ehr-PIMVOCATIONALCATALOG-Create')")
-    @ApiOperation(value = "Create", tags = {"PIMVOCATIONALCATALOG" },  notes = "Create")
+    @ApiOperation(value = "新建执（职）业资格管理", tags = {"执（职）业资格管理" },  notes = "新建执（职）业资格管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationalcatalogs")
     @Transactional
     public ResponseEntity<PIMVOCATIONALCATALOGDTO> create(@RequestBody PIMVOCATIONALCATALOGDTO pimvocationalcatalogdto) {
@@ -114,7 +114,7 @@ public class PIMVOCATIONALCATALOGResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvocationalcatalogMapping.toDomain(#pimvocationalcatalogdtos),'ehr-PIMVOCATIONALCATALOG-Create')")
-    @ApiOperation(value = "createBatch", tags = {"PIMVOCATIONALCATALOG" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建执（职）业资格管理", tags = {"执（职）业资格管理" },  notes = "批量新建执（职）业资格管理")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimvocationalcatalogs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<PIMVOCATIONALCATALOGDTO> pimvocationalcatalogdtos) {
         pimvocationalcatalogService.createBatch(pimvocationalcatalogMapping.toDomain(pimvocationalcatalogdtos));
@@ -122,7 +122,7 @@ public class PIMVOCATIONALCATALOGResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvocationalcatalogService.get(#pimvocationalcatalog_id),'ehr-PIMVOCATIONALCATALOG-Remove')")
-    @ApiOperation(value = "Remove", tags = {"PIMVOCATIONALCATALOG" },  notes = "Remove")
+    @ApiOperation(value = "删除执（职）业资格管理", tags = {"执（职）业资格管理" },  notes = "删除执（职）业资格管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimvocationalcatalogs/{pimvocationalcatalog_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("pimvocationalcatalog_id") String pimvocationalcatalog_id) {
@@ -130,7 +130,7 @@ public class PIMVOCATIONALCATALOGResource {
     }
 
     @PreAuthorize("hasPermission(this.pimvocationalcatalogService.getPimvocationalcatalogByIds(#ids),'ehr-PIMVOCATIONALCATALOG-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"PIMVOCATIONALCATALOG" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除执（职）业资格管理", tags = {"执（职）业资格管理" },  notes = "批量删除执（职）业资格管理")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimvocationalcatalogs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         pimvocationalcatalogService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class PIMVOCATIONALCATALOGResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONALCATALOG-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"PIMVOCATIONALCATALOG" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"执（职）业资格管理" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/pimvocationalcatalogs/fetchdefault")
 	public ResponseEntity<List<PIMVOCATIONALCATALOGDTO>> fetchDefault(PIMVOCATIONALCATALOGSearchContext context) {
         Page<PIMVOCATIONALCATALOG> domains = pimvocationalcatalogService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class PIMVOCATIONALCATALOGResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMVOCATIONALCATALOG-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"PIMVOCATIONALCATALOG" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"执（职）业资格管理" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/pimvocationalcatalogs/searchdefault")
 	public ResponseEntity<Page<PIMVOCATIONALCATALOGDTO>> searchDefault(@RequestBody PIMVOCATIONALCATALOGSearchContext context) {
         Page<PIMVOCATIONALCATALOG> domains = pimvocationalcatalogService.searchDefault(context) ;

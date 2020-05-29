@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.orm.service.IOrmEditionService;
 import cn.ibizlab.ehr.core.orm.filter.OrmEditionSearchContext;
 
 @Slf4j
-@Api(tags = {"OrmEdition" })
+@Api(tags = {"版本对照表" })
 @RestController("WebApi-ormedition")
 @RequestMapping("")
 public class OrmEditionResource {
@@ -47,7 +47,7 @@ public class OrmEditionResource {
     public OrmEditionMapping ormeditionMapping;
 
     @PreAuthorize("hasPermission(this.ormeditionService.get(#ormedition_id),'ehr-OrmEdition-Remove')")
-    @ApiOperation(value = "Remove", tags = {"OrmEdition" },  notes = "Remove")
+    @ApiOperation(value = "删除版本对照表", tags = {"版本对照表" },  notes = "删除版本对照表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormeditions/{ormedition_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("ormedition_id") String ormedition_id) {
@@ -55,7 +55,7 @@ public class OrmEditionResource {
     }
 
     @PreAuthorize("hasPermission(this.ormeditionService.getOrmeditionByIds(#ids),'ehr-OrmEdition-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"OrmEdition" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除版本对照表", tags = {"版本对照表" },  notes = "批量删除版本对照表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormeditions/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         ormeditionService.removeBatch(ids);
@@ -63,7 +63,7 @@ public class OrmEditionResource {
     }
 
     @PreAuthorize("hasPermission(this.ormeditionMapping.toDomain(#ormeditiondto),'ehr-OrmEdition-Create')")
-    @ApiOperation(value = "Create", tags = {"OrmEdition" },  notes = "Create")
+    @ApiOperation(value = "新建版本对照表", tags = {"版本对照表" },  notes = "新建版本对照表")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions")
     @Transactional
     public ResponseEntity<OrmEditionDTO> create(@RequestBody OrmEditionDTO ormeditiondto) {
@@ -74,7 +74,7 @@ public class OrmEditionResource {
     }
 
     @PreAuthorize("hasPermission(this.ormeditionMapping.toDomain(#ormeditiondtos),'ehr-OrmEdition-Create')")
-    @ApiOperation(value = "createBatch", tags = {"OrmEdition" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建版本对照表", tags = {"版本对照表" },  notes = "批量新建版本对照表")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrmEditionDTO> ormeditiondtos) {
         ormeditionService.createBatch(ormeditionMapping.toDomain(ormeditiondtos));
@@ -82,28 +82,28 @@ public class OrmEditionResource {
     }
 
     @PreAuthorize("hasPermission(this.ormeditionMapping.toDomain(#ormeditiondto),'ehr-OrmEdition-Save')")
-    @ApiOperation(value = "Save", tags = {"OrmEdition" },  notes = "Save")
+    @ApiOperation(value = "保存版本对照表", tags = {"版本对照表" },  notes = "保存版本对照表")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions/save")
     public ResponseEntity<Boolean> save(@RequestBody OrmEditionDTO ormeditiondto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormeditionService.save(ormeditionMapping.toDomain(ormeditiondto)));
     }
 
     @PreAuthorize("hasPermission(this.ormeditionMapping.toDomain(#ormeditiondtos),'ehr-OrmEdition-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"OrmEdition" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存版本对照表", tags = {"版本对照表" },  notes = "批量保存版本对照表")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<OrmEditionDTO> ormeditiondtos) {
         ormeditionService.saveBatch(ormeditionMapping.toDomain(ormeditiondtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"OrmEdition" },  notes = "GetDraft")
+    @ApiOperation(value = "获取版本对照表草稿", tags = {"版本对照表" },  notes = "获取版本对照表草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormeditions/getdraft")
     public ResponseEntity<OrmEditionDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormeditionMapping.toDto(ormeditionService.getDraft(new OrmEdition())));
     }
 
     @PreAuthorize("hasPermission(this.ormeditionService.get(#ormedition_id),'ehr-OrmEdition-Update')")
-    @ApiOperation(value = "Update", tags = {"OrmEdition" },  notes = "Update")
+    @ApiOperation(value = "更新版本对照表", tags = {"版本对照表" },  notes = "更新版本对照表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormeditions/{ormedition_id}")
     @Transactional
     public ResponseEntity<OrmEditionDTO> update(@PathVariable("ormedition_id") String ormedition_id, @RequestBody OrmEditionDTO ormeditiondto) {
@@ -115,21 +115,21 @@ public class OrmEditionResource {
     }
 
     @PreAuthorize("hasPermission(this.ormeditionService.getOrmeditionByEntities(this.ormeditionMapping.toDomain(#ormeditiondtos)),'ehr-OrmEdition-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"OrmEdition" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新版本对照表", tags = {"版本对照表" },  notes = "批量更新版本对照表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormeditions/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrmEditionDTO> ormeditiondtos) {
         ormeditionService.updateBatch(ormeditionMapping.toDomain(ormeditiondtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"OrmEdition" },  notes = "CheckKey")
+    @ApiOperation(value = "检查版本对照表", tags = {"版本对照表" },  notes = "检查版本对照表")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormeditions/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody OrmEditionDTO ormeditiondto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormeditionService.checkKey(ormeditionMapping.toDomain(ormeditiondto)));
     }
 
     @PostAuthorize("hasPermission(this.ormeditionMapping.toDomain(returnObject.body),'ehr-OrmEdition-Get')")
-    @ApiOperation(value = "Get", tags = {"OrmEdition" },  notes = "Get")
+    @ApiOperation(value = "获取版本对照表", tags = {"版本对照表" },  notes = "获取版本对照表")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormeditions/{ormedition_id}")
     public ResponseEntity<OrmEditionDTO> get(@PathVariable("ormedition_id") String ormedition_id) {
         OrmEdition domain = ormeditionService.get(ormedition_id);
@@ -138,7 +138,7 @@ public class OrmEditionResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmEdition-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"OrmEdition" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"版本对照表" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/ormeditions/fetchdefault")
 	public ResponseEntity<List<OrmEditionDTO>> fetchDefault(OrmEditionSearchContext context) {
         Page<OrmEdition> domains = ormeditionService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class OrmEditionResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmEdition-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"OrmEdition" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"版本对照表" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/ormeditions/searchdefault")
 	public ResponseEntity<Page<OrmEditionDTO>> searchDefault(@RequestBody OrmEditionSearchContext context) {
         Page<OrmEdition> domains = ormeditionService.searchDefault(context) ;

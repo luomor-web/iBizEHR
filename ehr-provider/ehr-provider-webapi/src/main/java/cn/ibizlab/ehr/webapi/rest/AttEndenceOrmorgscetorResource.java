@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.att.service.IAttEndenceOrmorgscetorService;
 import cn.ibizlab.ehr.core.att.filter.AttEndenceOrmorgscetorSearchContext;
 
 @Slf4j
-@Api(tags = {"AttEndenceOrmorgscetor" })
+@Api(tags = {"考勤部门" })
 @RestController("WebApi-attendenceormorgscetor")
 @RequestMapping("")
 public class AttEndenceOrmorgscetorResource {
@@ -47,7 +47,7 @@ public class AttEndenceOrmorgscetorResource {
     public AttEndenceOrmorgscetorMapping attendenceormorgscetorMapping;
 
     @PostAuthorize("hasPermission(this.attendenceormorgscetorMapping.toDomain(returnObject.body),'ehr-AttEndenceOrmorgscetor-Get')")
-    @ApiOperation(value = "Get", tags = {"AttEndenceOrmorgscetor" },  notes = "Get")
+    @ApiOperation(value = "获取考勤部门", tags = {"考勤部门" },  notes = "获取考勤部门")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendenceormorgscetors/{attendenceormorgscetor_id}")
     public ResponseEntity<AttEndenceOrmorgscetorDTO> get(@PathVariable("attendenceormorgscetor_id") String attendenceormorgscetor_id) {
         AttEndenceOrmorgscetor domain = attendenceormorgscetorService.get(attendenceormorgscetor_id);
@@ -56,7 +56,7 @@ public class AttEndenceOrmorgscetorResource {
     }
 
     @PreAuthorize("hasPermission(this.attendenceormorgscetorMapping.toDomain(#attendenceormorgscetordto),'ehr-AttEndenceOrmorgscetor-Create')")
-    @ApiOperation(value = "Create", tags = {"AttEndenceOrmorgscetor" },  notes = "Create")
+    @ApiOperation(value = "新建考勤部门", tags = {"考勤部门" },  notes = "新建考勤部门")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendenceormorgscetors")
     @Transactional
     public ResponseEntity<AttEndenceOrmorgscetorDTO> create(@RequestBody AttEndenceOrmorgscetorDTO attendenceormorgscetordto) {
@@ -67,7 +67,7 @@ public class AttEndenceOrmorgscetorResource {
     }
 
     @PreAuthorize("hasPermission(this.attendenceormorgscetorMapping.toDomain(#attendenceormorgscetordtos),'ehr-AttEndenceOrmorgscetor-Create')")
-    @ApiOperation(value = "createBatch", tags = {"AttEndenceOrmorgscetor" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建考勤部门", tags = {"考勤部门" },  notes = "批量新建考勤部门")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendenceormorgscetors/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<AttEndenceOrmorgscetorDTO> attendenceormorgscetordtos) {
         attendenceormorgscetorService.createBatch(attendenceormorgscetorMapping.toDomain(attendenceormorgscetordtos));
@@ -75,7 +75,7 @@ public class AttEndenceOrmorgscetorResource {
     }
 
     @PreAuthorize("hasPermission(this.attendenceormorgscetorService.get(#attendenceormorgscetor_id),'ehr-AttEndenceOrmorgscetor-Update')")
-    @ApiOperation(value = "Update", tags = {"AttEndenceOrmorgscetor" },  notes = "Update")
+    @ApiOperation(value = "更新考勤部门", tags = {"考勤部门" },  notes = "更新考勤部门")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendenceormorgscetors/{attendenceormorgscetor_id}")
     @Transactional
     public ResponseEntity<AttEndenceOrmorgscetorDTO> update(@PathVariable("attendenceormorgscetor_id") String attendenceormorgscetor_id, @RequestBody AttEndenceOrmorgscetorDTO attendenceormorgscetordto) {
@@ -87,21 +87,21 @@ public class AttEndenceOrmorgscetorResource {
     }
 
     @PreAuthorize("hasPermission(this.attendenceormorgscetorService.getAttendenceormorgscetorByEntities(this.attendenceormorgscetorMapping.toDomain(#attendenceormorgscetordtos)),'ehr-AttEndenceOrmorgscetor-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"AttEndenceOrmorgscetor" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新考勤部门", tags = {"考勤部门" },  notes = "批量更新考勤部门")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendenceormorgscetors/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<AttEndenceOrmorgscetorDTO> attendenceormorgscetordtos) {
         attendenceormorgscetorService.updateBatch(attendenceormorgscetorMapping.toDomain(attendenceormorgscetordtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"AttEndenceOrmorgscetor" },  notes = "CheckKey")
+    @ApiOperation(value = "检查考勤部门", tags = {"考勤部门" },  notes = "检查考勤部门")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendenceormorgscetors/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody AttEndenceOrmorgscetorDTO attendenceormorgscetordto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attendenceormorgscetorService.checkKey(attendenceormorgscetorMapping.toDomain(attendenceormorgscetordto)));
     }
 
     @PreAuthorize("hasPermission(this.attendenceormorgscetorService.get(#attendenceormorgscetor_id),'ehr-AttEndenceOrmorgscetor-Remove')")
-    @ApiOperation(value = "Remove", tags = {"AttEndenceOrmorgscetor" },  notes = "Remove")
+    @ApiOperation(value = "删除考勤部门", tags = {"考勤部门" },  notes = "删除考勤部门")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendenceormorgscetors/{attendenceormorgscetor_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("attendenceormorgscetor_id") String attendenceormorgscetor_id) {
@@ -109,28 +109,28 @@ public class AttEndenceOrmorgscetorResource {
     }
 
     @PreAuthorize("hasPermission(this.attendenceormorgscetorService.getAttendenceormorgscetorByIds(#ids),'ehr-AttEndenceOrmorgscetor-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"AttEndenceOrmorgscetor" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除考勤部门", tags = {"考勤部门" },  notes = "批量删除考勤部门")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendenceormorgscetors/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         attendenceormorgscetorService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"AttEndenceOrmorgscetor" },  notes = "GetDraft")
+    @ApiOperation(value = "获取考勤部门草稿", tags = {"考勤部门" },  notes = "获取考勤部门草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendenceormorgscetors/getdraft")
     public ResponseEntity<AttEndenceOrmorgscetorDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attendenceormorgscetorMapping.toDto(attendenceormorgscetorService.getDraft(new AttEndenceOrmorgscetor())));
     }
 
     @PreAuthorize("hasPermission(this.attendenceormorgscetorMapping.toDomain(#attendenceormorgscetordto),'ehr-AttEndenceOrmorgscetor-Save')")
-    @ApiOperation(value = "Save", tags = {"AttEndenceOrmorgscetor" },  notes = "Save")
+    @ApiOperation(value = "保存考勤部门", tags = {"考勤部门" },  notes = "保存考勤部门")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendenceormorgscetors/save")
     public ResponseEntity<Boolean> save(@RequestBody AttEndenceOrmorgscetorDTO attendenceormorgscetordto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendenceormorgscetorService.save(attendenceormorgscetorMapping.toDomain(attendenceormorgscetordto)));
     }
 
     @PreAuthorize("hasPermission(this.attendenceormorgscetorMapping.toDomain(#attendenceormorgscetordtos),'ehr-AttEndenceOrmorgscetor-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"AttEndenceOrmorgscetor" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存考勤部门", tags = {"考勤部门" },  notes = "批量保存考勤部门")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendenceormorgscetors/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<AttEndenceOrmorgscetorDTO> attendenceormorgscetordtos) {
         attendenceormorgscetorService.saveBatch(attendenceormorgscetorMapping.toDomain(attendenceormorgscetordtos));
@@ -138,7 +138,7 @@ public class AttEndenceOrmorgscetorResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceOrmorgscetor-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"AttEndenceOrmorgscetor" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤部门" } ,notes = "获取{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.GET , value="/attendenceormorgscetors/fetchdefault")
 	public ResponseEntity<List<AttEndenceOrmorgscetorDTO>> fetchDefault(AttEndenceOrmorgscetorSearchContext context) {
         Page<AttEndenceOrmorgscetor> domains = attendenceormorgscetorService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class AttEndenceOrmorgscetorResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndenceOrmorgscetor-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"AttEndenceOrmorgscetor" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询{deds.getLogicName()}", tags = {"考勤部门" } ,notes = "查询{deds.getLogicName()}")
     @RequestMapping(method= RequestMethod.POST , value="/attendenceormorgscetors/searchdefault")
 	public ResponseEntity<Page<AttEndenceOrmorgscetorDTO>> searchDefault(@RequestBody AttEndenceOrmorgscetorSearchContext context) {
         Page<AttEndenceOrmorgscetor> domains = attendenceormorgscetorService.searchDefault(context) ;
