@@ -2666,7 +2666,7 @@
 
 
     <!--输出实体[PCMGXXKTEMP]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmgxxktemp-20-67">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmgxxktemp-21-67">
         <createTable tableName="T_PCMGXXKTEMP">
                 <column name="UPDATEDATE" remarks="" type="DATETIME">
                 </column>
@@ -12256,10 +12256,10 @@
        <addForeignKeyConstraint baseColumnNames="VACLEAVEMANAGEID" baseTableName="T_VACLEAVEDETAIL" constraintName="DER1N_VACLEAVEDETAIL_VACLEAVEM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="VACLEAVEMANAGEID" referencedTableName="T_VACLEAVEMANAGE" validate="true"/>
     </changeSet>
         <!--输出实体[PCMGXXKTEMP]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmgxxktemp-20-384">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmgxxktemp-21-384">
        <addForeignKeyConstraint baseColumnNames="PCMGXMLID" baseTableName="T_PCMGXXKTEMP" constraintName="DER1N_PCMGXXKTEMP_PCMGXML_PCMG" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMGXMLID" referencedTableName="T_PCMGXML" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmgxxktemp-20-385">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmgxxktemp-21-385">
        <addForeignKeyConstraint baseColumnNames="PCMXKMLID" baseTableName="T_PCMGXXKTEMP" constraintName="DER1N_PCMGXXKTEMP_PCMXKML_PCMX" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMXKMLID" referencedTableName="T_PCMXKML" validate="true"/>
     </changeSet>
         <!--输出实体[PIMBYYGZZSQ]外键关系 -->
