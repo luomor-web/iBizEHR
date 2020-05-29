@@ -554,5 +554,137 @@ public class ORMBMGWBZResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormbmgwbzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdto),'ehr-ORMBMGWBZ-Create')")
+    @ApiOperation(value = "CreateByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "CreateByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs")
+    @Transactional
+    public ResponseEntity<ORMBMGWBZDTO> createByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
+        ORMBMGWBZ domain = ormbmgwbzMapping.toDomain(ormbmgwbzdto);
+        domain.setOrmpostid(ormpost_id);
+		ormbmgwbzService.create(domain);
+        ORMBMGWBZDTO dto = ormbmgwbzMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos),'ehr-ORMBMGWBZ-Create')")
+    @ApiOperation(value = "createBatchByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "createBatchByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/batch")
+    public ResponseEntity<Boolean> createBatchByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
+        List<ORMBMGWBZ> domainlist=ormbmgwbzMapping.toDomain(ormbmgwbzdtos);
+        for(ORMBMGWBZ domain:domainlist){
+            domain.setOrmpostid(ormpost_id);
+        }
+        ormbmgwbzService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "CheckKeyByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "CheckKeyByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/checkkey")
+    public ResponseEntity<Boolean> checkKeyByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.checkKey(ormbmgwbzMapping.toDomain(ormbmgwbzdto)));
+    }
+
+    @PostAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(returnObject.body),'ehr-ORMBMGWBZ-Get')")
+    @ApiOperation(value = "GetByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "GetByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/{ormbmgwbz_id}")
+    public ResponseEntity<ORMBMGWBZDTO> getByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id) {
+        ORMBMGWBZ domain = ormbmgwbzService.get(ormbmgwbz_id);
+        ORMBMGWBZDTO dto = ormbmgwbzMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdto),'ehr-ORMBMGWBZ-Save')")
+    @ApiOperation(value = "SaveByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "SaveByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/save")
+    public ResponseEntity<Boolean> saveByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
+        ORMBMGWBZ domain = ormbmgwbzMapping.toDomain(ormbmgwbzdto);
+        domain.setOrmpostid(ormpost_id);
+        return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos),'ehr-ORMBMGWBZ-Save')")
+    @ApiOperation(value = "SaveBatchByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "SaveBatchByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/savebatch")
+    public ResponseEntity<Boolean> saveBatchByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
+        List<ORMBMGWBZ> domainlist=ormbmgwbzMapping.toDomain(ormbmgwbzdtos);
+        for(ORMBMGWBZ domain:domainlist){
+             domain.setOrmpostid(ormpost_id);
+        }
+        ormbmgwbzService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.get(#ormbmgwbz_id),'ehr-ORMBMGWBZ-Update')")
+    @ApiOperation(value = "UpdateByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "UpdateByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/{ormbmgwbz_id}")
+    @Transactional
+    public ResponseEntity<ORMBMGWBZDTO> updateByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id, @RequestBody ORMBMGWBZDTO ormbmgwbzdto) {
+        ORMBMGWBZ domain = ormbmgwbzMapping.toDomain(ormbmgwbzdto);
+        domain.setOrmpostid(ormpost_id);
+        domain.setOrmbmgwbzid(ormbmgwbz_id);
+		ormbmgwbzService.update(domain);
+        ORMBMGWBZDTO dto = ormbmgwbzMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.getOrmbmgwbzByEntities(this.ormbmgwbzMapping.toDomain(#ormbmgwbzdtos)),'ehr-ORMBMGWBZ-Update')")
+    @ApiOperation(value = "UpdateBatchByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "UpdateBatchByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/batch")
+    public ResponseEntity<Boolean> updateBatchByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMBMGWBZDTO> ormbmgwbzdtos) {
+        List<ORMBMGWBZ> domainlist=ormbmgwbzMapping.toDomain(ormbmgwbzdtos);
+        for(ORMBMGWBZ domain:domainlist){
+            domain.setOrmpostid(ormpost_id);
+        }
+        ormbmgwbzService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "GetDraftByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "GetDraftByOrmOrgORMPOST")
+    @RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/getdraft")
+    public ResponseEntity<ORMBMGWBZDTO> getDraftByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id) {
+        ORMBMGWBZ domain = new ORMBMGWBZ();
+        domain.setOrmpostid(ormpost_id);
+        return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzMapping.toDto(ormbmgwbzService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.get(#ormbmgwbz_id),'ehr-ORMBMGWBZ-Remove')")
+    @ApiOperation(value = "RemoveByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "RemoveByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/{ormbmgwbz_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormbmgwbz_id") String ormbmgwbz_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(ormbmgwbzService.remove(ormbmgwbz_id));
+    }
+
+    @PreAuthorize("hasPermission(this.ormbmgwbzService.getOrmbmgwbzByIds(#ids),'ehr-ORMBMGWBZ-Remove')")
+    @ApiOperation(value = "RemoveBatchByOrmOrgORMPOST", tags = {"ORMBMGWBZ" },  notes = "RemoveBatchByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/batch")
+    public ResponseEntity<Boolean> removeBatchByOrmOrgORMPOST(@RequestBody List<String> ids) {
+        ormbmgwbzService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-Default-all')")
+	@ApiOperation(value = "fetchDEFAULTByOrmOrgORMPOST", tags = {"ORMBMGWBZ" } ,notes = "fetchDEFAULTByOrmOrgORMPOST")
+    @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/fetchdefault")
+	public ResponseEntity<List<ORMBMGWBZDTO>> fetchORMBMGWBZDefaultByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id,ORMBMGWBZSearchContext context) {
+        context.setN_ormpostid_eq(ormpost_id);
+        Page<ORMBMGWBZ> domains = ormbmgwbzService.searchDefault(context) ;
+        List<ORMBMGWBZDTO> list = ormbmgwbzMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMBMGWBZ-Default-all')")
+	@ApiOperation(value = "searchDEFAULTByOrmOrgORMPOST", tags = {"ORMBMGWBZ" } ,notes = "searchDEFAULTByOrmOrgORMPOST")
+    @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormbmgwbzs/searchdefault")
+	public ResponseEntity<Page<ORMBMGWBZDTO>> searchORMBMGWBZDefaultByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMBMGWBZSearchContext context) {
+        context.setN_ormpostid_eq(ormpost_id);
+        Page<ORMBMGWBZ> domains = ormbmgwbzService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(ormbmgwbzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
 }
 

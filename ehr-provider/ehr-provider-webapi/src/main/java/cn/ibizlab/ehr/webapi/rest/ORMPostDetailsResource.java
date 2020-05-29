@@ -422,5 +422,137 @@ public class ORMPostDetailsResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormpostdetailsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @PreAuthorize("hasPermission(this.ormpostdetailsMapping.toDomain(#ormpostdetailsdto),'ehr-ORMPostDetails-Create')")
+    @ApiOperation(value = "CreateByOrmOrgORMPOST", tags = {"ORMPostDetails" },  notes = "CreateByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormpostdetails")
+    @Transactional
+    public ResponseEntity<ORMPostDetailsDTO> createByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMPostDetailsDTO ormpostdetailsdto) {
+        ORMPostDetails domain = ormpostdetailsMapping.toDomain(ormpostdetailsdto);
+        domain.setOrmpostid(ormpost_id);
+		ormpostdetailsService.create(domain);
+        ORMPostDetailsDTO dto = ormpostdetailsMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.ormpostdetailsMapping.toDomain(#ormpostdetailsdtos),'ehr-ORMPostDetails-Create')")
+    @ApiOperation(value = "createBatchByOrmOrgORMPOST", tags = {"ORMPostDetails" },  notes = "createBatchByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormpostdetails/batch")
+    public ResponseEntity<Boolean> createBatchByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMPostDetailsDTO> ormpostdetailsdtos) {
+        List<ORMPostDetails> domainlist=ormpostdetailsMapping.toDomain(ormpostdetailsdtos);
+        for(ORMPostDetails domain:domainlist){
+            domain.setOrmpostid(ormpost_id);
+        }
+        ormpostdetailsService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PostAuthorize("hasPermission(this.ormpostdetailsMapping.toDomain(returnObject.body),'ehr-ORMPostDetails-Get')")
+    @ApiOperation(value = "GetByOrmOrgORMPOST", tags = {"ORMPostDetails" },  notes = "GetByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormpostdetails/{ormpostdetails_id}")
+    public ResponseEntity<ORMPostDetailsDTO> getByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormpostdetails_id") String ormpostdetails_id) {
+        ORMPostDetails domain = ormpostdetailsService.get(ormpostdetails_id);
+        ORMPostDetailsDTO dto = ormpostdetailsMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @ApiOperation(value = "CheckKeyByOrmOrgORMPOST", tags = {"ORMPostDetails" },  notes = "CheckKeyByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormpostdetails/checkkey")
+    public ResponseEntity<Boolean> checkKeyByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMPostDetailsDTO ormpostdetailsdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(ormpostdetailsService.checkKey(ormpostdetailsMapping.toDomain(ormpostdetailsdto)));
+    }
+
+    @PreAuthorize("hasPermission(this.ormpostdetailsService.get(#ormpostdetails_id),'ehr-ORMPostDetails-Update')")
+    @ApiOperation(value = "UpdateByOrmOrgORMPOST", tags = {"ORMPostDetails" },  notes = "UpdateByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormpostdetails/{ormpostdetails_id}")
+    @Transactional
+    public ResponseEntity<ORMPostDetailsDTO> updateByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormpostdetails_id") String ormpostdetails_id, @RequestBody ORMPostDetailsDTO ormpostdetailsdto) {
+        ORMPostDetails domain = ormpostdetailsMapping.toDomain(ormpostdetailsdto);
+        domain.setOrmpostid(ormpost_id);
+        domain.setOrmpostdetailsid(ormpostdetails_id);
+		ormpostdetailsService.update(domain);
+        ORMPostDetailsDTO dto = ormpostdetailsMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.ormpostdetailsService.getOrmpostdetailsByEntities(this.ormpostdetailsMapping.toDomain(#ormpostdetailsdtos)),'ehr-ORMPostDetails-Update')")
+    @ApiOperation(value = "UpdateBatchByOrmOrgORMPOST", tags = {"ORMPostDetails" },  notes = "UpdateBatchByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormpostdetails/batch")
+    public ResponseEntity<Boolean> updateBatchByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMPostDetailsDTO> ormpostdetailsdtos) {
+        List<ORMPostDetails> domainlist=ormpostdetailsMapping.toDomain(ormpostdetailsdtos);
+        for(ORMPostDetails domain:domainlist){
+            domain.setOrmpostid(ormpost_id);
+        }
+        ormpostdetailsService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "GetDraftByOrmOrgORMPOST", tags = {"ORMPostDetails" },  notes = "GetDraftByOrmOrgORMPOST")
+    @RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormpostdetails/getdraft")
+    public ResponseEntity<ORMPostDetailsDTO> getDraftByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id) {
+        ORMPostDetails domain = new ORMPostDetails();
+        domain.setOrmpostid(ormpost_id);
+        return ResponseEntity.status(HttpStatus.OK).body(ormpostdetailsMapping.toDto(ormpostdetailsService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasPermission(this.ormpostdetailsMapping.toDomain(#ormpostdetailsdto),'ehr-ORMPostDetails-Save')")
+    @ApiOperation(value = "SaveByOrmOrgORMPOST", tags = {"ORMPostDetails" },  notes = "SaveByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormpostdetails/save")
+    public ResponseEntity<Boolean> saveByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMPostDetailsDTO ormpostdetailsdto) {
+        ORMPostDetails domain = ormpostdetailsMapping.toDomain(ormpostdetailsdto);
+        domain.setOrmpostid(ormpost_id);
+        return ResponseEntity.status(HttpStatus.OK).body(ormpostdetailsService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.ormpostdetailsMapping.toDomain(#ormpostdetailsdtos),'ehr-ORMPostDetails-Save')")
+    @ApiOperation(value = "SaveBatchByOrmOrgORMPOST", tags = {"ORMPostDetails" },  notes = "SaveBatchByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormpostdetails/savebatch")
+    public ResponseEntity<Boolean> saveBatchByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody List<ORMPostDetailsDTO> ormpostdetailsdtos) {
+        List<ORMPostDetails> domainlist=ormpostdetailsMapping.toDomain(ormpostdetailsdtos);
+        for(ORMPostDetails domain:domainlist){
+             domain.setOrmpostid(ormpost_id);
+        }
+        ormpostdetailsService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.ormpostdetailsService.get(#ormpostdetails_id),'ehr-ORMPostDetails-Remove')")
+    @ApiOperation(value = "RemoveByOrmOrgORMPOST", tags = {"ORMPostDetails" },  notes = "RemoveByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormpostdetails/{ormpostdetails_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @PathVariable("ormpostdetails_id") String ormpostdetails_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(ormpostdetailsService.remove(ormpostdetails_id));
+    }
+
+    @PreAuthorize("hasPermission(this.ormpostdetailsService.getOrmpostdetailsByIds(#ids),'ehr-ORMPostDetails-Remove')")
+    @ApiOperation(value = "RemoveBatchByOrmOrgORMPOST", tags = {"ORMPostDetails" },  notes = "RemoveBatchByOrmOrgORMPOST")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormpostdetails/batch")
+    public ResponseEntity<Boolean> removeBatchByOrmOrgORMPOST(@RequestBody List<String> ids) {
+        ormpostdetailsService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-Default-all')")
+	@ApiOperation(value = "fetchDEFAULTByOrmOrgORMPOST", tags = {"ORMPostDetails" } ,notes = "fetchDEFAULTByOrmOrgORMPOST")
+    @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormpostdetails/fetchdefault")
+	public ResponseEntity<List<ORMPostDetailsDTO>> fetchORMPostDetailsDefaultByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id,ORMPostDetailsSearchContext context) {
+        context.setN_ormpostid_eq(ormpost_id);
+        Page<ORMPostDetails> domains = ormpostdetailsService.searchDefault(context) ;
+        List<ORMPostDetailsDTO> list = ormpostdetailsMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPostDetails-Default-all')")
+	@ApiOperation(value = "searchDEFAULTByOrmOrgORMPOST", tags = {"ORMPostDetails" } ,notes = "searchDEFAULTByOrmOrgORMPOST")
+    @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/ormpostdetails/searchdefault")
+	public ResponseEntity<Page<ORMPostDetailsDTO>> searchORMPostDetailsDefaultByOrmOrgORMPOST(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMPostDetailsSearchContext context) {
+        context.setN_ormpostid_eq(ormpost_id);
+        Page<ORMPostDetails> domains = ormpostdetailsService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(ormpostdetailsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
 }
 

@@ -338,5 +338,333 @@ public class ORMPOSTResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @PreAuthorize("hasPermission(this.ormpostMapping.toDomain(#ormpostdto),'ehr-ORMPOST-Save')")
+    @ApiOperation(value = "SaveByOrmOrg", tags = {"ORMPOST" },  notes = "SaveByOrmOrg")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/save")
+    public ResponseEntity<Boolean> saveByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ORMPOSTDTO ormpostdto) {
+        ORMPOST domain = ormpostMapping.toDomain(ormpostdto);
+        domain.setOrmorgid(ormorg_id);
+        return ResponseEntity.status(HttpStatus.OK).body(ormpostService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.ormpostMapping.toDomain(#ormpostdtos),'ehr-ORMPOST-Save')")
+    @ApiOperation(value = "SaveBatchByOrmOrg", tags = {"ORMPOST" },  notes = "SaveBatchByOrmOrg")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/savebatch")
+    public ResponseEntity<Boolean> saveBatchByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody List<ORMPOSTDTO> ormpostdtos) {
+        List<ORMPOST> domainlist=ormpostMapping.toDomain(ormpostdtos);
+        for(ORMPOST domain:domainlist){
+             domain.setOrmorgid(ormorg_id);
+        }
+        ormpostService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "CheckKeyByOrmOrg", tags = {"ORMPOST" },  notes = "CheckKeyByOrmOrg")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/checkkey")
+    public ResponseEntity<Boolean> checkKeyByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ORMPOSTDTO ormpostdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(ormpostService.checkKey(ormpostMapping.toDomain(ormpostdto)));
+    }
+
+    @PreAuthorize("hasPermission(this.ormpostMapping.toDomain(#ormpostdto),'ehr-ORMPOST-Create')")
+    @ApiOperation(value = "CreateByOrmOrg", tags = {"ORMPOST" },  notes = "CreateByOrmOrg")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts")
+    @Transactional
+    public ResponseEntity<ORMPOSTDTO> createByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ORMPOSTDTO ormpostdto) {
+        ORMPOST domain = ormpostMapping.toDomain(ormpostdto);
+        domain.setOrmorgid(ormorg_id);
+		ormpostService.create(domain);
+        ORMPOSTDTO dto = ormpostMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.ormpostMapping.toDomain(#ormpostdtos),'ehr-ORMPOST-Create')")
+    @ApiOperation(value = "createBatchByOrmOrg", tags = {"ORMPOST" },  notes = "createBatchByOrmOrg")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/batch")
+    public ResponseEntity<Boolean> createBatchByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody List<ORMPOSTDTO> ormpostdtos) {
+        List<ORMPOST> domainlist=ormpostMapping.toDomain(ormpostdtos);
+        for(ORMPOST domain:domainlist){
+            domain.setOrmorgid(ormorg_id);
+        }
+        ormpostService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PostAuthorize("hasPermission(this.ormpostMapping.toDomain(returnObject.body),'ehr-ORMPOST-Get')")
+    @ApiOperation(value = "GetByOrmOrg", tags = {"ORMPOST" },  notes = "GetByOrmOrg")
+	@RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}")
+    public ResponseEntity<ORMPOSTDTO> getByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id) {
+        ORMPOST domain = ormpostService.get(ormpost_id);
+        ORMPOSTDTO dto = ormpostMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-SetGwJb-all')")
+    @ApiOperation(value = "计算岗位分类级别ByOrmOrg", tags = {"ORMPOST" },  notes = "计算岗位分类级别ByOrmOrg")
+	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/setgwjb")
+    @Transactional
+    public ResponseEntity<ORMPOSTDTO> setGwJbByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMPOSTDTO ormpostdto) {
+        ORMPOST domain = ormpostMapping.toDomain(ormpostdto);
+        domain.setOrmorgid(ormorg_id);
+        domain = ormpostService.setGwJb(domain) ;
+        ormpostdto = ormpostMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(ormpostdto);
+    }
+
+    @PreAuthorize("hasPermission(this.ormpostService.get(#ormpost_id),'ehr-ORMPOST-Update')")
+    @ApiOperation(value = "UpdateByOrmOrg", tags = {"ORMPOST" },  notes = "UpdateByOrmOrg")
+	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}")
+    @Transactional
+    public ResponseEntity<ORMPOSTDTO> updateByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody ORMPOSTDTO ormpostdto) {
+        ORMPOST domain = ormpostMapping.toDomain(ormpostdto);
+        domain.setOrmorgid(ormorg_id);
+        domain.setOrmpostid(ormpost_id);
+		ormpostService.update(domain);
+        ORMPOSTDTO dto = ormpostMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.ormpostService.getOrmpostByEntities(this.ormpostMapping.toDomain(#ormpostdtos)),'ehr-ORMPOST-Update')")
+    @ApiOperation(value = "UpdateBatchByOrmOrg", tags = {"ORMPOST" },  notes = "UpdateBatchByOrmOrg")
+	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormposts/batch")
+    public ResponseEntity<Boolean> updateBatchByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody List<ORMPOSTDTO> ormpostdtos) {
+        List<ORMPOST> domainlist=ormpostMapping.toDomain(ormpostdtos);
+        for(ORMPOST domain:domainlist){
+            domain.setOrmorgid(ormorg_id);
+        }
+        ormpostService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.ormpostService.get(#ormpost_id),'ehr-ORMPOST-Remove')")
+    @ApiOperation(value = "RemoveByOrmOrg", tags = {"ORMPOST" },  notes = "RemoveByOrmOrg")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormposts/{ormpost_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(ormpostService.remove(ormpost_id));
+    }
+
+    @PreAuthorize("hasPermission(this.ormpostService.getOrmpostByIds(#ids),'ehr-ORMPOST-Remove')")
+    @ApiOperation(value = "RemoveBatchByOrmOrg", tags = {"ORMPOST" },  notes = "RemoveBatchByOrmOrg")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormposts/batch")
+    public ResponseEntity<Boolean> removeBatchByOrmOrg(@RequestBody List<String> ids) {
+        ormpostService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "GetDraftByOrmOrg", tags = {"ORMPOST" },  notes = "GetDraftByOrmOrg")
+    @RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormposts/getdraft")
+    public ResponseEntity<ORMPOSTDTO> getDraftByOrmOrg(@PathVariable("ormorg_id") String ormorg_id) {
+        ORMPOST domain = new ORMPOST();
+        domain.setOrmorgid(ormorg_id);
+        return ResponseEntity.status(HttpStatus.OK).body(ormpostMapping.toDto(ormpostService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-EJZZGW-all')")
+	@ApiOperation(value = "fetch根据选择的组织所属的二级组织来获取岗位(ormorgid)ByOrmOrg", tags = {"ORMPOST" } ,notes = "fetch根据选择的组织所属的二级组织来获取岗位(ormorgid)ByOrmOrg")
+    @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchejzzgw")
+	public ResponseEntity<List<ORMPOSTDTO>> fetchORMPOSTEJZZGWByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchEJZZGW(context) ;
+        List<ORMPOSTDTO> list = ormpostMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-EJZZGW-all')")
+	@ApiOperation(value = "search根据选择的组织所属的二级组织来获取岗位(ormorgid)ByOrmOrg", tags = {"ORMPOST" } ,notes = "search根据选择的组织所属的二级组织来获取岗位(ormorgid)ByOrmOrg")
+    @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchejzzgw")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchORMPOSTEJZZGWByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchEJZZGW(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-AuthPost-all')")
+	@ApiOperation(value = "fetchAuthPostByOrmOrg", tags = {"ORMPOST" } ,notes = "fetchAuthPostByOrmOrg")
+    @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchauthpost")
+	public ResponseEntity<List<ORMPOSTDTO>> fetchORMPOSTAuthPostByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchAuthPost(context) ;
+        List<ORMPOSTDTO> list = ormpostMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-AuthPost-all')")
+	@ApiOperation(value = "searchAuthPostByOrmOrg", tags = {"ORMPOST" } ,notes = "searchAuthPostByOrmOrg")
+    @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchauthpost")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchORMPOSTAuthPostByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchAuthPost(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-CurOrg-all')")
+	@ApiOperation(value = "fetch根据当前操作人的身份选择岗位ByOrmOrg", tags = {"ORMPOST" } ,notes = "fetch根据当前操作人的身份选择岗位ByOrmOrg")
+    @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchcurorg")
+	public ResponseEntity<List<ORMPOSTDTO>> fetchORMPOSTCurOrgByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchCurOrg(context) ;
+        List<ORMPOSTDTO> list = ormpostMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-CurOrg-all')")
+	@ApiOperation(value = "search根据当前操作人的身份选择岗位ByOrmOrg", tags = {"ORMPOST" } ,notes = "search根据当前操作人的身份选择岗位ByOrmOrg")
+    @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchcurorg")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchORMPOSTCurOrgByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchCurOrg(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-DQGW-all')")
+	@ApiOperation(value = "fetch根据当前组织过滤岗位ByOrmOrg", tags = {"ORMPOST" } ,notes = "fetch根据当前组织过滤岗位ByOrmOrg")
+    @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchdqgw")
+	public ResponseEntity<List<ORMPOSTDTO>> fetchORMPOSTDQGWByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchDQGW(context) ;
+        List<ORMPOSTDTO> list = ormpostMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-DQGW-all')")
+	@ApiOperation(value = "search根据当前组织过滤岗位ByOrmOrg", tags = {"ORMPOST" } ,notes = "search根据当前组织过滤岗位ByOrmOrg")
+    @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchdqgw")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchORMPOSTDQGWByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchDQGW(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-DQORGGW-all')")
+	@ApiOperation(value = "fetch根据当前组织过滤岗位(orgid)ByOrmOrg", tags = {"ORMPOST" } ,notes = "fetch根据当前组织过滤岗位(orgid)ByOrmOrg")
+    @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchdqorggw")
+	public ResponseEntity<List<ORMPOSTDTO>> fetchORMPOSTDQORGGWByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchDQORGGW(context) ;
+        List<ORMPOSTDTO> list = ormpostMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-DQORGGW-all')")
+	@ApiOperation(value = "search根据当前组织过滤岗位(orgid)ByOrmOrg", tags = {"ORMPOST" } ,notes = "search根据当前组织过滤岗位(orgid)ByOrmOrg")
+    @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchdqorggw")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchORMPOSTDQORGGWByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchDQORGGW(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-GWXH-all')")
+	@ApiOperation(value = "fetch岗位查询ByOrmOrg", tags = {"ORMPOST" } ,notes = "fetch岗位查询ByOrmOrg")
+    @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchgwxh")
+	public ResponseEntity<List<ORMPOSTDTO>> fetchORMPOSTGWXHByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchGWXH(context) ;
+        List<ORMPOSTDTO> list = ormpostMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-GWXH-all')")
+	@ApiOperation(value = "search岗位查询ByOrmOrg", tags = {"ORMPOST" } ,notes = "search岗位查询ByOrmOrg")
+    @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchgwxh")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchORMPOSTGWXHByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchGWXH(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-Default-all')")
+	@ApiOperation(value = "fetchDEFAULTByOrmOrg", tags = {"ORMPOST" } ,notes = "fetchDEFAULTByOrmOrg")
+    @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchdefault")
+	public ResponseEntity<List<ORMPOSTDTO>> fetchORMPOSTDefaultByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchDefault(context) ;
+        List<ORMPOSTDTO> list = ormpostMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-Default-all')")
+	@ApiOperation(value = "searchDEFAULTByOrmOrg", tags = {"ORMPOST" } ,notes = "searchDEFAULTByOrmOrg")
+    @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchdefault")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchORMPOSTDefaultByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-JZBGWCX-all')")
+	@ApiOperation(value = "fetch局总部岗位查询ByOrmOrg", tags = {"ORMPOST" } ,notes = "fetch局总部岗位查询ByOrmOrg")
+    @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchjzbgwcx")
+	public ResponseEntity<List<ORMPOSTDTO>> fetchORMPOSTJZBGWCXByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchJZBGWCX(context) ;
+        List<ORMPOSTDTO> list = ormpostMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-JZBGWCX-all')")
+	@ApiOperation(value = "search局总部岗位查询ByOrmOrg", tags = {"ORMPOST" } ,notes = "search局总部岗位查询ByOrmOrg")
+    @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchjzbgwcx")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchORMPOSTJZBGWCXByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchJZBGWCX(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-CXGW-all')")
+	@ApiOperation(value = "fetch查询当前组织所属的二级单位岗位ByOrmOrg", tags = {"ORMPOST" } ,notes = "fetch查询当前组织所属的二级单位岗位ByOrmOrg")
+    @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormposts/fetchcxgw")
+	public ResponseEntity<List<ORMPOSTDTO>> fetchORMPOSTCXGWByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchCXGW(context) ;
+        List<ORMPOSTDTO> list = ormpostMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ORMPOST-CXGW-all')")
+	@ApiOperation(value = "search查询当前组织所属的二级单位岗位ByOrmOrg", tags = {"ORMPOST" } ,notes = "search查询当前组织所属的二级单位岗位ByOrmOrg")
+    @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/searchcxgw")
+	public ResponseEntity<Page<ORMPOSTDTO>> searchORMPOSTCXGWByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody ORMPOSTSearchContext context) {
+        context.setN_ormorgid_eq(ormorg_id);
+        Page<ORMPOST> domains = ormpostService.searchCXGW(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(ormpostMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
 }
 
