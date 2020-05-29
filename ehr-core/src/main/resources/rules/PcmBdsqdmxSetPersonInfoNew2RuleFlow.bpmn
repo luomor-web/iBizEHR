@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmbdsqdmxsetpersoninfonew2" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmbdsqdmxsetpersoninfonew2">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmbdsqdmxsetpersoninfonew2default" type="cn.ibizlab.ehr.core.pcm.domain.PcmBdsqdmx" />
+        <tns:global identifier="pcmbdsqdmxsetpersoninfonew2pimperson" type="cn.ibizlab.ehr.core.pim.domain.PimPerson" />
+        <tns:global identifier="pcmbdsqdmxsetpersoninfonew2zjcodelist" type="cn.ibizlab.ehr.core.common.domain.CodeList1" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxsetpersoninfonew2prepareparam2" id="c25532deeb6c9a767a0fc7caf54e2ad2" implementation="http://www.jboss.org/drools/rule" name="设置职级、部门、组织"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxsetpersoninfonew2deaction3" id="6167606ebf8ff4d54a76878b3563a061" implementation="http://www.jboss.org/drools/rule" name="判断职级"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxsetpersoninfonew2deaction2" id="03a2c5c6480932b251d63c04f95ef3f5" implementation="http://www.jboss.org/drools/rule" name="刷新代码表"/>
+     <endEvent id="03a2c5c6480932b251d63c04f95ef3f5_End" name="End"/>
+     <sequenceFlow id="03a2c5c6480932b251d63c04f95ef3f5_End_Line" sourceRef="03a2c5c6480932b251d63c04f95ef3f5" targetRef="03a2c5c6480932b251d63c04f95ef3f5_End"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxsetpersoninfonew2prepareparam3" id="46d7520e9d3378219fe37f5fa5a50b31" implementation="http://www.jboss.org/drools/rule" name="zjcodeList"/>
+     <startEvent id="4c98d93325ab3619f81e537f0f830529" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxsetpersoninfonew2deaction1" id="904a9292ec18e98a3d9942ff88889939" implementation="http://www.jboss.org/drools/rule" name="获取人员的组织部门职级"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxsetpersoninfonew2prepareparam1" id="81390dd0ce6405e6400c44965a9140e1" implementation="http://www.jboss.org/drools/rule" name="设置人员id"/>
+     <sequenceFlow id="3f99744aa61fcbf7dcd30e2ed5a4bd7e" sourceRef="46d7520e9d3378219fe37f5fa5a50b31" targetRef="03a2c5c6480932b251d63c04f95ef3f5">
+     </sequenceFlow>
+     <sequenceFlow id="e236eaf030596bd4d58d1792c21fd5e7" sourceRef="4c98d93325ab3619f81e537f0f830529" targetRef="81390dd0ce6405e6400c44965a9140e1">
+     </sequenceFlow>
+     <sequenceFlow id="edad2794085f257e17328dbf83ecc9b7" sourceRef="6167606ebf8ff4d54a76878b3563a061" targetRef="46d7520e9d3378219fe37f5fa5a50b31">
+     </sequenceFlow>
+     <sequenceFlow id="df99b21f5f6119ab008357fd97543142" sourceRef="81390dd0ce6405e6400c44965a9140e1" targetRef="904a9292ec18e98a3d9942ff88889939">
+     </sequenceFlow>
+     <sequenceFlow id="970248e15a0f552eef6dee129c2001d0" sourceRef="904a9292ec18e98a3d9942ff88889939" targetRef="c25532deeb6c9a767a0fc7caf54e2ad2">
+     </sequenceFlow>
+     <sequenceFlow id="7f8b3db4d853d544eac0478089ec4bfd" sourceRef="c25532deeb6c9a767a0fc7caf54e2ad2" targetRef="6167606ebf8ff4d54a76878b3563a061">
+     </sequenceFlow>
+    </process>
+</definitions>
+
