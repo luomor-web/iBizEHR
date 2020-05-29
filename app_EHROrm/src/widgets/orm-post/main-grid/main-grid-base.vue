@@ -49,51 +49,6 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('ormorgname')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.ormpost.main_grid.columns.ormorgname')" :width="300"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.ormpost.main_grid.columns.ormorgname')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <template v-if="actualIsOpenEdit">
-                            <app-form-item :error="gridItemsModel[$index][column.property].error">
-                                <app-picker 
-              :formState="viewState" 
-              :data="row"
-              :context="context"
-              :viewparams="viewparams"
-              :itemParam='{ }' 
-              :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
-              name='ormorgname'
-              deMajorField='orgname'
-              deKeyField='ormorg'
-              :service="service"
-              :acParams="{ }"
-              valueitem='ormorgid' 
-              :value="row[column.property]" 
-              editortype="" 
-              :pickupView="{ viewname: 'ormorgxmbqpickup-view', title: $t('entities.ormorg.views.xmbqpickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, { pathName: 'xmbqpickupview', parameterName: 'xmbqpickupview' } ], placement:'' }"
-              style=""  
-              @formitemvaluechange="($event)=>{onGridItemValueChange(row,$event,$index)}">
-            </app-picker>
-            
-                            </app-form-item>
-                        </template>
-                        <template v-if="!actualIsOpenEdit">
-                              <app-column-link deKeyField='ormorg' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'ormorgedit-view9', height: 0,width: 0,title: $t('entities.ormorg.views.editview9.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
-            ]
-            ,parameters: [
-            { pathName: 'ormorgs', parameterName: 'ormorg' },
-            { pathName: 'editview9', parameterName: 'editview9' }
-            ]}" valueitem="ormorgid">
-                                <app-span name='ormorgname' editorType="PICKER" :value="row.ormorgname"></app-span>
-                              </app-column-link>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('ormpostname')">
                 <el-table-column show-overflow-tooltip :prop="'ormpostname'" :label="$t('entities.ormpost.main_grid.columns.ormpostname')" :width="240"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
@@ -752,13 +707,6 @@ export default class MainBase extends Vue implements ControlInterface {
             name: 'xh',
             label: '排序',
             langtag: 'entities.ormpost.main_grid.columns.xh',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'ormorgname',
-            label: '组织',
-            langtag: 'entities.ormpost.main_grid.columns.ormorgname',
             show: true,
             util: 'PX'
         },

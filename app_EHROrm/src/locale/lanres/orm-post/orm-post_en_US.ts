@@ -169,7 +169,6 @@ export default {
 	main_grid: {
 		columns: {
 			xh: "排序",
-			ormorgname: "组织",
 			ormpostname: "岗位名称",
 			gwfl: "岗位分类",
 			nx: "建议交流年限",
@@ -185,7 +184,6 @@ export default {
 	gwchoice_grid: {
 		columns: {
 			xh: "排序",
-			ormorgname: "组织",
 			ormpostname: "岗位名称",
 			postnature: "岗位性质",
 			createman: "建立人",
