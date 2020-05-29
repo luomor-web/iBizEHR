@@ -68,7 +68,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "组织选择表格视图",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "ORM",
-            "viewname": "ORMORGXMBQPickupGridView",
+            "viewname": "OrmOrgXMBQPickupGridView",
             "viewtag": "03478df3682bcaae0f318d655b7373a4"
         },
         "ormdepestmangridview": {

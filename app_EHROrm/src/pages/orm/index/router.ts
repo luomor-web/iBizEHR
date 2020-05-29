@@ -422,7 +422,7 @@ const router = new Router({
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormorgxmbqpickup-grid-view/ormorgxmbqpickup-grid-view.vue'),
+                    component: () => import('@pages/orm/orm-org-xmbqpickup-grid-view/orm-org-xmbqpickup-grid-view.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/xmbqpickupview/:xmbqpickupview?',
@@ -1127,7 +1127,7 @@ const router = new Router({
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/ormorgxmbqpickup-grid-view/ormorgxmbqpickup-grid-view.vue'),
+        component: () => import('@pages/orm/orm-org-xmbqpickup-grid-view/orm-org-xmbqpickup-grid-view.vue'),
     },
     {
         path: '/ormxmgls/:ormxmgl?/editview/:editview?',

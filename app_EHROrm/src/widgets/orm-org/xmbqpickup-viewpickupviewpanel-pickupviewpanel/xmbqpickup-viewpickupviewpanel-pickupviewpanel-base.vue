@@ -180,7 +180,7 @@ export default class XMBQPickupViewpickupviewpanelBase extends Vue implements Co
      * @memberof XMBQPickupViewpickupviewpanel
      */
     protected view: any = {
-        viewname: 'ormorgxmbqpickup-grid-view',
+        viewname: 'orm-org-xmbqpickup-grid-view',
         data: {},
     }
 
