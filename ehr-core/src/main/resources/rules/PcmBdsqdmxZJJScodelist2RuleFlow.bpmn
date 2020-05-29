@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmbdsqdmxzjjscodelist2" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmbdsqdmxzjjscodelist2">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmbdsqdmxzjjscodelist2zjcodelist" type="cn.ibizlab.ehr.core.common.domain.CodeList1" />
+        <tns:global identifier="pcmbdsqdmxzjjscodelist2default" type="cn.ibizlab.ehr.core.pcm.domain.PcmBdsqdmx" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxzjjscodelist2deaction1" id="b096fa7ccdd18c9bf23bca548cdddef3" implementation="http://www.jboss.org/drools/rule" name="刷新代码表"/>
+     <endEvent id="b096fa7ccdd18c9bf23bca548cdddef3_End" name="End"/>
+     <sequenceFlow id="b096fa7ccdd18c9bf23bca548cdddef3_End_Line" sourceRef="b096fa7ccdd18c9bf23bca548cdddef3" targetRef="b096fa7ccdd18c9bf23bca548cdddef3_End"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxzjjscodelist2prepareparam1" id="9a448a326fdfc78cb59ca9b83c420053" implementation="http://www.jboss.org/drools/rule" name="ZjcodeList"/>
+     <startEvent id="b6bf31a68e76ad00dd7e0f68eb294a67" isInterrupting="true"/>
+     <sequenceFlow id="0ef4f52ae7a85c24fb6d0f6cf85eea90" sourceRef="9a448a326fdfc78cb59ca9b83c420053" targetRef="b096fa7ccdd18c9bf23bca548cdddef3">
+     </sequenceFlow>
+     <sequenceFlow id="eaf83126c89752c860d4f94bd6a408fc" sourceRef="b6bf31a68e76ad00dd7e0f68eb294a67" targetRef="9a448a326fdfc78cb59ca9b83c420053">
+     </sequenceFlow>
+    </process>
+</definitions>
+

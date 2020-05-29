@@ -1,0 +1,62 @@
+package cn.ibizlab.ehr.pcm.logic.pcmbdsqdmxlogic.setpersoninfo;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pim.domain.PimPerson pcmbdsqdmxsetpersoninfopimperson;
+global cn.ibizlab.ehr.core.pcm.domain.PcmBdsqdmx pcmbdsqdmxsetpersoninfodefault;
+global cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonservice;
+global cn.ibizlab.ehr.core.pcm.service.IPcmBdsqdmxService iBzSysPcmbdsqdmxDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[设置人员id]
+rule "prepareparam1"
+ruleflow-group "pcmbdsqdmxsetpersoninfoprepareparam1"
+    when
+    then
+    pcmbdsqdmxsetpersoninfopimperson.set("pimpersonid",pcmbdsqdmxsetpersoninfodefault.get("pimpersonid"));
+    update(pcmbdsqdmxsetpersoninfopimperson);//更新fact中变量值
+    update(pcmbdsqdmxsetpersoninfodefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[设置职级、部门、组织]
+rule "prepareparam2"
+ruleflow-group "pcmbdsqdmxsetpersoninfoprepareparam2"
+    when
+    then
+    pcmbdsqdmxsetpersoninfodefault.set("ygbh",pcmbdsqdmxsetpersoninfopimperson.get("ygbh"));
+    pcmbdsqdmxsetpersoninfodefault.set("zzid",pcmbdsqdmxsetpersoninfopimperson.get("ormorgid"));
+    pcmbdsqdmxsetpersoninfodefault.set("zz",pcmbdsqdmxsetpersoninfopimperson.get("ormorgname"));
+    pcmbdsqdmxsetpersoninfodefault.set("ormorgid",pcmbdsqdmxsetpersoninfopimperson.get("ormorgid"));
+    pcmbdsqdmxsetpersoninfodefault.set("ormorgname",pcmbdsqdmxsetpersoninfopimperson.get("ormorgname"));
+    pcmbdsqdmxsetpersoninfodefault.set("bmid",pcmbdsqdmxsetpersoninfopimperson.get("ormorgsectorid"));
+    pcmbdsqdmxsetpersoninfodefault.set("bm",pcmbdsqdmxsetpersoninfopimperson.get("ormorgsectorname"));
+    pcmbdsqdmxsetpersoninfodefault.set("ormorgsectorid",pcmbdsqdmxsetpersoninfopimperson.get("ormorgsectorid"));
+    pcmbdsqdmxsetpersoninfodefault.set("ormorgsectorname",pcmbdsqdmxsetpersoninfopimperson.get("ormorgsectorname"));
+    pcmbdsqdmxsetpersoninfodefault.set("ygw",pcmbdsqdmxsetpersoninfopimperson.get("gw"));
+    pcmbdsqdmxsetpersoninfodefault.set("rank",pcmbdsqdmxsetpersoninfopimperson.get("rank"));
+    pcmbdsqdmxsetpersoninfodefault.set("yzw",pcmbdsqdmxsetpersoninfopimperson.get("zw"));
+    pcmbdsqdmxsetpersoninfodefault.set("zzmm",pcmbdsqdmxsetpersoninfopimperson.get("zzmm"));
+    update(pcmbdsqdmxsetpersoninfopimperson);//更新fact中变量值
+    update(pcmbdsqdmxsetpersoninfodefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pcmbdsqdmxsetpersoninfobegin"
+    when
+    then
+    end
+
+//逻辑处理节点[获取人员的组织部门职级]
+rule "deaction1"
+ruleflow-group "pcmbdsqdmxsetpersoninfodeaction1"
+    when
+    then
+    cn.ibizlab.ehr.util.helper.CachedBeanCopier.copy(pimpersonservice.get(pcmbdsqdmxsetpersoninfopimperson.getPimpersonid()),pcmbdsqdmxsetpersoninfopimperson);
+    update(pcmbdsqdmxsetpersoninfopimperson);//更新fact中变量值
+    update(pcmbdsqdmxsetpersoninfodefault);//更新fact中变量值
+    end
+

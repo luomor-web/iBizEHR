@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pim.service.logic.pimarchivesgetpersonorg" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pim.service.logic.pimarchivesgetpersonorg">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pimarchivesgetpersonorgdefault" type="cn.ibizlab.ehr.core.pim.domain.PimArchives" />
+        <tns:global identifier="pimarchivesgetpersonorggerpersoninfo" type="cn.ibizlab.ehr.core.pim.domain.PimPerson" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimarchivesgetpersonorgprepareparam1" id="43d66ac9d4999867af3ae4c88169dfb5" implementation="http://www.jboss.org/drools/rule" name="填充人员中的组织"/>
+     <endEvent id="43d66ac9d4999867af3ae4c88169dfb5_End" name="End"/>
+     <sequenceFlow id="43d66ac9d4999867af3ae4c88169dfb5_End_Line" sourceRef="43d66ac9d4999867af3ae4c88169dfb5" targetRef="43d66ac9d4999867af3ae4c88169dfb5_End"/>
+     <startEvent id="07e2b629dfafd1b8bcd7618a2151407a" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimarchivesgetpersonorgdeaction1" id="f3f4caffdd4d3127b5488e84cf456307" implementation="http://www.jboss.org/drools/rule" name="获取人员信息"/>
+     <sequenceFlow id="66c202b9aadf9f15cf98cfe4dd014aec" sourceRef="07e2b629dfafd1b8bcd7618a2151407a" targetRef="f3f4caffdd4d3127b5488e84cf456307">
+     </sequenceFlow>
+     <sequenceFlow id="eb1bb01193561ae2f433d486a93d513b" sourceRef="f3f4caffdd4d3127b5488e84cf456307" targetRef="43d66ac9d4999867af3ae4c88169dfb5">
+     </sequenceFlow>
+    </process>
+</definitions>
+
