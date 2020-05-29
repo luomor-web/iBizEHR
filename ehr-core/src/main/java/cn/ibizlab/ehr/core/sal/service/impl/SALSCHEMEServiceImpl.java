@@ -46,10 +46,10 @@ public class SALSCHEMEServiceImpl extends ServiceImpl<SALSCHEMEMapper, SALSCHEME
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALPLANService salplanService;
+    private cn.ibizlab.ehr.core.sal.service.ISalPlanService salplanService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSCHEMEITEMService salschemeitemService;
+    private cn.ibizlab.ehr.core.sal.service.ISalSchemeItemService salschemeitemService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;

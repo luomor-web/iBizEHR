@@ -585,10 +585,10 @@ public class PIMBYZZJLMXResource {
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-SHTG-all')")
-    @ApiOperation(value = "局总部初审通过ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "局总部初审通过ByPIMBYYGZZSQ")
+    @ApiOperation(value = "局总部初审通过ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "局总部初审通过ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/shtg")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> sHTGByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> sHTGByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.sHTG(domain) ;
@@ -597,19 +597,19 @@ public class PIMBYZZJLMXResource {
     }
 
     @PostAuthorize("hasPermission(this.pimbyzzjlmxMapping.toDomain(returnObject.body),'ehr-PIMBYZZJLMX-Get')")
-    @ApiOperation(value = "GetByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "GetByPIMBYYGZZSQ")
+    @ApiOperation(value = "GetByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "GetByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}")
-    public ResponseEntity<PIMBYZZJLMXDTO> getByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id) {
+    public ResponseEntity<PIMBYZZJLMXDTO> getByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id) {
         PIMBYZZJLMX domain = pimbyzzjlmxService.get(pimbyzzjlmx_id);
         PIMBYZZJLMXDTO dto = pimbyzzjlmxMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-ReturnYPZ-all')")
-    @ApiOperation(value = "失效ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "失效ByPIMBYYGZZSQ")
+    @ApiOperation(value = "失效ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "失效ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/returnypz")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> returnYPZByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> returnYPZByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.returnYPZ(domain) ;
@@ -618,10 +618,10 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-JSPTG-all')")
-    @ApiOperation(value = "局总部审批通过ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "局总部审批通过ByPIMBYYGZZSQ")
+    @ApiOperation(value = "局总部审批通过ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "局总部审批通过ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/jsptg")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> jSPTGByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> jSPTGByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.jSPTG(domain) ;
@@ -630,10 +630,10 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-FillPersonInfo-all')")
-    @ApiOperation(value = "填充人员信息ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "填充人员信息ByPIMBYYGZZSQ")
+    @ApiOperation(value = "填充人员信息ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "填充人员信息ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/fillpersoninfo")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> fillPersonInfoByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> fillPersonInfoByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.fillPersonInfo(domain) ;
@@ -641,19 +641,19 @@ public class PIMBYZZJLMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
     }
 
-    @ApiOperation(value = "GetDraftByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "GetDraftByPIMBYYGZZSQ")
+    @ApiOperation(value = "GetDraftByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "GetDraftByPimByygzzsq")
     @RequestMapping(method = RequestMethod.GET, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/getdraft")
-    public ResponseEntity<PIMBYZZJLMXDTO> getDraftByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id) {
+    public ResponseEntity<PIMBYZZJLMXDTO> getDraftByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id) {
         PIMBYZZJLMX domain = new PIMBYZZJLMX();
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxMapping.toDto(pimbyzzjlmxService.getDraft(domain)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-JSHTG-all')")
-    @ApiOperation(value = "局总部审核通过ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "局总部审核通过ByPIMBYYGZZSQ")
+    @ApiOperation(value = "局总部审核通过ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "局总部审核通过ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/jshtg")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> jSHTGByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> jSHTGByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.jSHTG(domain) ;
@@ -662,10 +662,10 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-JSHBTG-all')")
-    @ApiOperation(value = "局总部审核不通过ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "局总部审核不通过ByPIMBYYGZZSQ")
+    @ApiOperation(value = "局总部审核不通过ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "局总部审核不通过ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/jshbtg")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> jSHBTGByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> jSHBTGByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.jSHBTG(domain) ;
@@ -674,10 +674,10 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-Ensure-all')")
-    @ApiOperation(value = "确认ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "确认ByPIMBYYGZZSQ")
+    @ApiOperation(value = "确认ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "确认ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/ensure")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> ensureByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> ensureByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.ensure(domain) ;
@@ -686,10 +686,10 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-SHBTG-all')")
-    @ApiOperation(value = "局总部初审不通过ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "局总部初审不通过ByPIMBYYGZZSQ")
+    @ApiOperation(value = "局总部初审不通过ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "局总部初审不通过ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/shbtg")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> sHBTGByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> sHBTGByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.sHBTG(domain) ;
@@ -698,26 +698,26 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasPermission(this.pimbyzzjlmxService.get(#pimbyzzjlmx_id),'ehr-PIMBYZZJLMX-Remove')")
-    @ApiOperation(value = "RemoveByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "RemoveByPIMBYYGZZSQ")
+    @ApiOperation(value = "RemoveByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "RemoveByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}")
     @Transactional
-    public ResponseEntity<Boolean> removeByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id) {
+    public ResponseEntity<Boolean> removeByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id) {
 		return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxService.remove(pimbyzzjlmx_id));
     }
 
     @PreAuthorize("hasPermission(this.pimbyzzjlmxService.getPimbyzzjlmxByIds(#ids),'ehr-PIMBYZZJLMX-Remove')")
-    @ApiOperation(value = "RemoveBatchByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "RemoveBatchByPIMBYYGZZSQ")
+    @ApiOperation(value = "RemoveBatchByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "RemoveBatchByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/batch")
-    public ResponseEntity<Boolean> removeBatchByPIMBYYGZZSQ(@RequestBody List<String> ids) {
+    public ResponseEntity<Boolean> removeBatchByPimByygzzsq(@RequestBody List<String> ids) {
         pimbyzzjlmxService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-GSDSZSP-all')")
-    @ApiOperation(value = "公司董事长审批同意ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "公司董事长审批同意ByPIMBYYGZZSQ")
+    @ApiOperation(value = "公司董事长审批同意ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "公司董事长审批同意ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/gsdszsp")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> gSDSZSPByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> gSDSZSPByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.gSDSZSP(domain) ;
@@ -726,10 +726,10 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-ZZCZ-all')")
-    @ApiOperation(value = "转正操作ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "转正操作ByPIMBYYGZZSQ")
+    @ApiOperation(value = "转正操作ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "转正操作ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/zzcz")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> zZCZByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> zZCZByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.zZCZ(domain) ;
@@ -738,10 +738,10 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DSB-all')")
-    @ApiOperation(value = "待上报ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "待上报ByPIMBYYGZZSQ")
+    @ApiOperation(value = "待上报ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "待上报ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/dsb")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> dSBByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> dSBByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.dSB(domain) ;
@@ -750,10 +750,10 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasPermission(this.pimbyzzjlmxService.get(#pimbyzzjlmx_id),'ehr-PIMBYZZJLMX-Update')")
-    @ApiOperation(value = "UpdateByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "UpdateByPIMBYYGZZSQ")
+    @ApiOperation(value = "UpdateByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "UpdateByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> updateByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> updateByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain.setPimbyzzjlmxid(pimbyzzjlmx_id);
@@ -763,9 +763,9 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasPermission(this.pimbyzzjlmxService.getPimbyzzjlmxByEntities(this.pimbyzzjlmxMapping.toDomain(#pimbyzzjlmxdtos)),'ehr-PIMBYZZJLMX-Update')")
-    @ApiOperation(value = "UpdateBatchByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "UpdateBatchByPIMBYYGZZSQ")
+    @ApiOperation(value = "UpdateBatchByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "UpdateBatchByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/batch")
-    public ResponseEntity<Boolean> updateBatchByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody List<PIMBYZZJLMXDTO> pimbyzzjlmxdtos) {
+    public ResponseEntity<Boolean> updateBatchByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody List<PIMBYZZJLMXDTO> pimbyzzjlmxdtos) {
         List<PIMBYZZJLMX> domainlist=pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdtos);
         for(PIMBYZZJLMX domain:domainlist){
             domain.setPimbyygzzsqid(pimbyygzzsq_id);
@@ -775,10 +775,10 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasPermission(this.pimbyzzjlmxMapping.toDomain(#pimbyzzjlmxdto),'ehr-PIMBYZZJLMX-Create')")
-    @ApiOperation(value = "CreateByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "CreateByPIMBYYGZZSQ")
+    @ApiOperation(value = "CreateByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "CreateByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> createByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> createByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
 		pimbyzzjlmxService.create(domain);
@@ -787,9 +787,9 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasPermission(this.pimbyzzjlmxMapping.toDomain(#pimbyzzjlmxdtos),'ehr-PIMBYZZJLMX-Create')")
-    @ApiOperation(value = "createBatchByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "createBatchByPIMBYYGZZSQ")
+    @ApiOperation(value = "createBatchByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "createBatchByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/batch")
-    public ResponseEntity<Boolean> createBatchByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody List<PIMBYZZJLMXDTO> pimbyzzjlmxdtos) {
+    public ResponseEntity<Boolean> createBatchByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody List<PIMBYZZJLMXDTO> pimbyzzjlmxdtos) {
         List<PIMBYZZJLMX> domainlist=pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdtos);
         for(PIMBYZZJLMX domain:domainlist){
             domain.setPimbyygzzsqid(pimbyygzzsq_id);
@@ -799,10 +799,10 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-JZBSHQR-all')")
-    @ApiOperation(value = "确认ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "确认ByPIMBYYGZZSQ")
+    @ApiOperation(value = "确认ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "确认ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/jzbshqr")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> jZBSHQRByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> jZBSHQRByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.jZBSHQR(domain) ;
@@ -811,10 +811,10 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-GSDSZSPBTG-all')")
-    @ApiOperation(value = "公司董事长审批拒绝ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "公司董事长审批拒绝ByPIMBYYGZZSQ")
+    @ApiOperation(value = "公司董事长审批拒绝ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "公司董事长审批拒绝ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/gsdszspbtg")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> gSDSZSPBTGByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> gSDSZSPBTGByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.gSDSZSPBTG(domain) ;
@@ -823,10 +823,10 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-GSCSBTG-all')")
-    @ApiOperation(value = "公司初审拒绝ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "公司初审拒绝ByPIMBYYGZZSQ")
+    @ApiOperation(value = "公司初审拒绝ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "公司初审拒绝ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/gscsbtg")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> gSCSBTGByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> gSCSBTGByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.gSCSBTG(domain) ;
@@ -835,10 +835,10 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-JSPBTG-all')")
-    @ApiOperation(value = "局总部审批不通过ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "局总部审批不通过ByPIMBYYGZZSQ")
+    @ApiOperation(value = "局总部审批不通过ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "局总部审批不通过ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/jspbtg")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> jSPBTGByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> jSPBTGByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.jSPBTG(domain) ;
@@ -847,18 +847,18 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasPermission(this.pimbyzzjlmxMapping.toDomain(#pimbyzzjlmxdto),'ehr-PIMBYZZJLMX-Save')")
-    @ApiOperation(value = "SaveByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "SaveByPIMBYYGZZSQ")
+    @ApiOperation(value = "SaveByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "SaveByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/save")
-    public ResponseEntity<Boolean> saveByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<Boolean> saveByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxService.save(domain));
     }
 
     @PreAuthorize("hasPermission(this.pimbyzzjlmxMapping.toDomain(#pimbyzzjlmxdtos),'ehr-PIMBYZZJLMX-Save')")
-    @ApiOperation(value = "SaveBatchByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "SaveBatchByPIMBYYGZZSQ")
+    @ApiOperation(value = "SaveBatchByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "SaveBatchByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/savebatch")
-    public ResponseEntity<Boolean> saveBatchByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody List<PIMBYZZJLMXDTO> pimbyzzjlmxdtos) {
+    public ResponseEntity<Boolean> saveBatchByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody List<PIMBYZZJLMXDTO> pimbyzzjlmxdtos) {
         List<PIMBYZZJLMX> domainlist=pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdtos);
         for(PIMBYZZJLMX domain:domainlist){
              domain.setPimbyygzzsqid(pimbyygzzsq_id);
@@ -868,10 +868,10 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-GSCS-all')")
-    @ApiOperation(value = "公司初审同意ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "公司初审同意ByPIMBYYGZZSQ")
+    @ApiOperation(value = "公司初审同意ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "公司初审同意ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/gscs")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> gSCSByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> gSCSByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.gSCS(domain) ;
@@ -879,17 +879,17 @@ public class PIMBYZZJLMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxdto);
     }
 
-    @ApiOperation(value = "CheckKeyByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "CheckKeyByPIMBYYGZZSQ")
+    @ApiOperation(value = "CheckKeyByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "CheckKeyByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/checkkey")
-    public ResponseEntity<Boolean> checkKeyByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<Boolean> checkKeyByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimbyzzjlmxService.checkKey(pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-UpdatePeopleNum-all')")
-    @ApiOperation(value = "刷新人数ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "刷新人数ByPIMBYYGZZSQ")
+    @ApiOperation(value = "刷新人数ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "刷新人数ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/updatepeoplenum")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> updatePeopleNumByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> updatePeopleNumByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.updatePeopleNum(domain) ;
@@ -898,10 +898,10 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-JZBSPQR-all')")
-    @ApiOperation(value = "确认ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" },  notes = "确认ByPIMBYYGZZSQ")
+    @ApiOperation(value = "确认ByPimByygzzsq", tags = {"PIMBYZZJLMX" },  notes = "确认ByPimByygzzsq")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/{pimbyzzjlmx_id}/jzbspqr")
     @Transactional
-    public ResponseEntity<PIMBYZZJLMXDTO> jZBSPQRByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
+    public ResponseEntity<PIMBYZZJLMXDTO> jZBSPQRByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @PathVariable("pimbyzzjlmx_id") String pimbyzzjlmx_id, @RequestBody PIMBYZZJLMXDTO pimbyzzjlmxdto) {
         PIMBYZZJLMX domain = pimbyzzjlmxMapping.toDomain(pimbyzzjlmxdto);
         domain.setPimbyygzzsqid(pimbyygzzsq_id);
         domain = pimbyzzjlmxService.jZBSPQR(domain) ;
@@ -910,9 +910,9 @@ public class PIMBYZZJLMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-ZZWSHDS-all')")
-	@ApiOperation(value = "fetch转正未审核ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "fetch转正未审核ByPIMBYYGZZSQ")
+	@ApiOperation(value = "fetch转正未审核ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "fetch转正未审核ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/fetchzzwshds")
-	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXZZWSHDSByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXZZWSHDSByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchZZWSHDS(context) ;
         List<PIMBYZZJLMXDTO> list = pimbyzzjlmxMapping.toDto(domains.getContent());
@@ -924,18 +924,18 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-ZZWSHDS-all')")
-	@ApiOperation(value = "search转正未审核ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "search转正未审核ByPIMBYYGZZSQ")
+	@ApiOperation(value = "search转正未审核ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "search转正未审核ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/searchzzwshds")
-	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXZZWSHDSByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXZZWSHDSByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchZZWSHDS(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-UnApproved-all')")
-	@ApiOperation(value = "fetch待公司初审ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "fetch待公司初审ByPIMBYYGZZSQ")
+	@ApiOperation(value = "fetch待公司初审ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "fetch待公司初审ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/fetchunapproved")
-	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXUnApprovedByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXUnApprovedByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchUnApproved(context) ;
         List<PIMBYZZJLMXDTO> list = pimbyzzjlmxMapping.toDto(domains.getContent());
@@ -947,18 +947,18 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-UnApproved-all')")
-	@ApiOperation(value = "search待公司初审ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "search待公司初审ByPIMBYYGZZSQ")
+	@ApiOperation(value = "search待公司初审ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "search待公司初审ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/searchunapproved")
-	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXUnApprovedByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXUnApprovedByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchUnApproved(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DDJZBSH-all')")
-	@ApiOperation(value = "fetch待局总部审核ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "fetch待局总部审核ByPIMBYYGZZSQ")
+	@ApiOperation(value = "fetch待局总部审核ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "fetch待局总部审核ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/fetchddjzbsh")
-	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXDDJZBSHByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXDDJZBSHByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDDJZBSH(context) ;
         List<PIMBYZZJLMXDTO> list = pimbyzzjlmxMapping.toDto(domains.getContent());
@@ -970,18 +970,18 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DDJZBSH-all')")
-	@ApiOperation(value = "search待局总部审核ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "search待局总部审核ByPIMBYYGZZSQ")
+	@ApiOperation(value = "search待局总部审核ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "search待局总部审核ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/searchddjzbsh")
-	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXDDJZBSHByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXDDJZBSHByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDDJZBSH(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-BYLZZJL-all')")
-	@ApiOperation(value = "fetchB/Y类员工转正记录ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "fetchB/Y类员工转正记录ByPIMBYYGZZSQ")
+	@ApiOperation(value = "fetchB/Y类员工转正记录ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "fetchB/Y类员工转正记录ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/fetchbylzzjl")
-	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXBYLZZJLByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXBYLZZJLByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchBYLZZJL(context) ;
         List<PIMBYZZJLMXDTO> list = pimbyzzjlmxMapping.toDto(domains.getContent());
@@ -993,18 +993,18 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-BYLZZJL-all')")
-	@ApiOperation(value = "searchB/Y类员工转正记录ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "searchB/Y类员工转正记录ByPIMBYYGZZSQ")
+	@ApiOperation(value = "searchB/Y类员工转正记录ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "searchB/Y类员工转正记录ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/searchbylzzjl")
-	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXBYLZZJLByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXBYLZZJLByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchBYLZZJL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DGSDSZSH-all')")
-	@ApiOperation(value = "fetch待公司董事长审批ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "fetch待公司董事长审批ByPIMBYYGZZSQ")
+	@ApiOperation(value = "fetch待公司董事长审批ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "fetch待公司董事长审批ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/fetchdgsdszsh")
-	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXDGSDSZSHByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXDGSDSZSHByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDGSDSZSH(context) ;
         List<PIMBYZZJLMXDTO> list = pimbyzzjlmxMapping.toDto(domains.getContent());
@@ -1016,18 +1016,18 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DGSDSZSH-all')")
-	@ApiOperation(value = "search待公司董事长审批ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "search待公司董事长审批ByPIMBYYGZZSQ")
+	@ApiOperation(value = "search待公司董事长审批ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "search待公司董事长审批ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/searchdgsdszsh")
-	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXDGSDSZSHByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXDGSDSZSHByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDGSDSZSH(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-HTRY-all')")
-	@ApiOperation(value = "fetch回退人员ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "fetch回退人员ByPIMBYYGZZSQ")
+	@ApiOperation(value = "fetch回退人员ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "fetch回退人员ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/fetchhtry")
-	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXHTRYByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXHTRYByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchHTRY(context) ;
         List<PIMBYZZJLMXDTO> list = pimbyzzjlmxMapping.toDto(domains.getContent());
@@ -1039,18 +1039,18 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-HTRY-all')")
-	@ApiOperation(value = "search回退人员ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "search回退人员ByPIMBYYGZZSQ")
+	@ApiOperation(value = "search回退人员ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "search回退人员ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/searchhtry")
-	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXHTRYByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXHTRYByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchHTRY(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DJZBSP-all')")
-	@ApiOperation(value = "fetch待局总部审批ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "fetch待局总部审批ByPIMBYYGZZSQ")
+	@ApiOperation(value = "fetch待局总部审批ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "fetch待局总部审批ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/fetchdjzbsp")
-	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXDJZBSPByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXDJZBSPByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDJZBSP(context) ;
         List<PIMBYZZJLMXDTO> list = pimbyzzjlmxMapping.toDto(domains.getContent());
@@ -1062,18 +1062,18 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DJZBSP-all')")
-	@ApiOperation(value = "search待局总部审批ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "search待局总部审批ByPIMBYYGZZSQ")
+	@ApiOperation(value = "search待局总部审批ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "search待局总部审批ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/searchdjzbsp")
-	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXDJZBSPByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXDJZBSPByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDJZBSP(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DSB-all')")
-	@ApiOperation(value = "fetch待上报ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "fetch待上报ByPIMBYYGZZSQ")
+	@ApiOperation(value = "fetch待上报ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "fetch待上报ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/fetchdsb")
-	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXDSBByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXDSBByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDSB(context) ;
         List<PIMBYZZJLMXDTO> list = pimbyzzjlmxMapping.toDto(domains.getContent());
@@ -1085,18 +1085,18 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DSB-all')")
-	@ApiOperation(value = "search待上报ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "search待上报ByPIMBYYGZZSQ")
+	@ApiOperation(value = "search待上报ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "search待上报ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/searchdsb")
-	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXDSBByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXDSBByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDSB(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-FinishYGBH-all')")
-	@ApiOperation(value = "fetch已变更员工编号名单ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "fetch已变更员工编号名单ByPIMBYYGZZSQ")
+	@ApiOperation(value = "fetch已变更员工编号名单ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "fetch已变更员工编号名单ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/fetchfinishygbh")
-	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXFinishYGBHByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXFinishYGBHByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchFinishYGBH(context) ;
         List<PIMBYZZJLMXDTO> list = pimbyzzjlmxMapping.toDto(domains.getContent());
@@ -1108,18 +1108,18 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-FinishYGBH-all')")
-	@ApiOperation(value = "search已变更员工编号名单ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "search已变更员工编号名单ByPIMBYYGZZSQ")
+	@ApiOperation(value = "search已变更员工编号名单ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "search已变更员工编号名单ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/searchfinishygbh")
-	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXFinishYGBHByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXFinishYGBHByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchFinishYGBH(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DJZBSH-all')")
-	@ApiOperation(value = "fetch待局总部初审ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "fetch待局总部初审ByPIMBYYGZZSQ")
+	@ApiOperation(value = "fetch待局总部初审ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "fetch待局总部初审ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/fetchdjzbsh")
-	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXDJZBSHByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXDJZBSHByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDJZBSH(context) ;
         List<PIMBYZZJLMXDTO> list = pimbyzzjlmxMapping.toDto(domains.getContent());
@@ -1131,18 +1131,18 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-DJZBSH-all')")
-	@ApiOperation(value = "search待局总部初审ByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "search待局总部初审ByPIMBYYGZZSQ")
+	@ApiOperation(value = "search待局总部初审ByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "search待局总部初审ByPimByygzzsq")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/searchdjzbsh")
-	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXDJZBSHByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXDJZBSHByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDJZBSH(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimbyzzjlmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "fetchDEFAULTByPIMBYYGZZSQ")
+	@ApiOperation(value = "fetchDEFAULTByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "fetchDEFAULTByPimByygzzsq")
     @RequestMapping(method= RequestMethod.GET , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/fetchdefault")
-	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXDefaultByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<List<PIMBYZZJLMXDTO>> fetchPIMBYZZJLMXDefaultByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id,PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDefault(context) ;
         List<PIMBYZZJLMXDTO> list = pimbyzzjlmxMapping.toDto(domains.getContent());
@@ -1154,9 +1154,9 @@ public class PIMBYZZJLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMBYZZJLMX-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPIMBYYGZZSQ", tags = {"PIMBYZZJLMX" } ,notes = "searchDEFAULTByPIMBYYGZZSQ")
+	@ApiOperation(value = "searchDEFAULTByPimByygzzsq", tags = {"PIMBYZZJLMX" } ,notes = "searchDEFAULTByPimByygzzsq")
     @RequestMapping(method= RequestMethod.POST , value="/pimbyygzzsqs/{pimbyygzzsq_id}/pimbyzzjlmxes/searchdefault")
-	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXDefaultByPIMBYYGZZSQ(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
+	public ResponseEntity<Page<PIMBYZZJLMXDTO>> searchPIMBYZZJLMXDefaultByPimByygzzsq(@PathVariable("pimbyygzzsq_id") String pimbyygzzsq_id, @RequestBody PIMBYZZJLMXSearchContext context) {
         context.setN_pimbyygzzsqid_eq(pimbyygzzsq_id);
         Page<PIMBYZZJLMX> domains = pimbyzzjlmxService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

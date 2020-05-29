@@ -46,7 +46,7 @@ public class PARKHZCMXServiceImpl extends ServiceImpl<PARKHZCMXMapper, PARKHZCMX
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARDXKHNRMXService pardxkhnrmxService;
+    private cn.ibizlab.ehr.core.par.service.IParDxkhnrmxService pardxkhnrmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.par.service.IPARLDKHQZService parldkhqzService;

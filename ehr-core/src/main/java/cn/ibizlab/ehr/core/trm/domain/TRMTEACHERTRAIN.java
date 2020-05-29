@@ -213,7 +213,7 @@ public class TRMTEACHERTRAIN extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.trm.domain.TRMTRAINPLANTERM trmtrainplanterm;
+    private cn.ibizlab.ehr.core.trm.domain.TrmTrainPlanterm trmtrainplanterm;
 
     /**
      * 培训讲师

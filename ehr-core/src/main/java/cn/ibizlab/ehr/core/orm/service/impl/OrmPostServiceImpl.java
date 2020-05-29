@@ -46,16 +46,16 @@ public class OrmPostServiceImpl extends ServiceImpl<OrmPostMapper, OrmPost> impl
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMBMGWBZService ormbmgwbzService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmBmgwbzService ormbmgwbzService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmPostDetailsService ormpostdetailsService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMXMRYPZXQService ormxmrypzxqService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmXmrypzxqService ormxmrypzxqService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMBDSQDMXService pcmbdsqdmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmBdsqdmxService pcmbdsqdmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pcm.service.IPCMDDSQDMXService pcmddsqdmxService;
@@ -64,16 +64,16 @@ public class OrmPostServiceImpl extends ServiceImpl<OrmPostMapper, OrmPost> impl
     private cn.ibizlab.ehr.core.pcm.service.IPCMJXSBDJLService pcmjxsbdjlService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMPROFILEService pcmprofileService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmProfileService pcmprofileService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMRecruitmentService pcmrecruitmentService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmRecruitmentService pcmrecruitmentService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pcm.service.IPCMYDJDMXService pcmydjdmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMYDJZMXService pcmydjzmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdjzmxService pcmydjzmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMBYZZJLMXService pimbyzzjlmxService;
@@ -82,10 +82,10 @@ public class OrmPostServiceImpl extends ServiceImpl<OrmPostMapper, OrmPost> impl
     private cn.ibizlab.ehr.core.pim.service.IPIMDISTIRBUTIONService pimdistirbutionService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALPERSONSTDService salpersonstdService;
+    private cn.ibizlab.ehr.core.sal.service.ISalPersonStdService salpersonstdService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSALARYService salsalaryService;
+    private cn.ibizlab.ehr.core.sal.service.ISalSalaryService salsalaryService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMDUTYCADRESService trmdutycadresService;

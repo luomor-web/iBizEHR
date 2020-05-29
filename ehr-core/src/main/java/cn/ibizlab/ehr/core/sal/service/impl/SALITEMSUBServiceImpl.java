@@ -52,7 +52,7 @@ public class SALITEMSUBServiceImpl extends ServiceImpl<SALITEMSUBMapper, SALITEM
     private cn.ibizlab.ehr.core.sal.service.ISALITEMService salitemService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSUBJECTService salsubjectService;
+    private cn.ibizlab.ehr.core.sal.service.ISalSubjectService salsubjectService;
 
     private int batchSize = 500;
 
@@ -227,9 +227,9 @@ public class SALITEMSUBServiceImpl extends ServiceImpl<SALITEMSUBMapper, SALITEM
         }
         //实体关系[DER1N_SALITEMSUB_SALSUBJECT_SALSUBJECTID]
         if(!ObjectUtils.isEmpty(et.getSalsubjectid())){
-            cn.ibizlab.ehr.core.sal.domain.SALSUBJECT salsubject=et.getSalsubject();
+            cn.ibizlab.ehr.core.sal.domain.SalSubject salsubject=et.getSalsubject();
             if(ObjectUtils.isEmpty(salsubject)){
-                cn.ibizlab.ehr.core.sal.domain.SALSUBJECT majorEntity=salsubjectService.get(et.getSalsubjectid());
+                cn.ibizlab.ehr.core.sal.domain.SalSubject majorEntity=salsubjectService.get(et.getSalsubjectid());
                 et.setSalsubject(majorEntity);
                 salsubject=majorEntity;
             }

@@ -569,7 +569,7 @@
     ],
     "entities":[
     {
-    "dename":"SALLOG",
+    "dename":"SalLog",
     "delogicname":"薪酬调整日志",
     "sysmoudle":{"id":"SAL","name":"激励管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -585,7 +585,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMTRAINPLANTERM",
+    "dename":"TrmTrainPlanterm",
     "delogicname":"培训立项",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -593,7 +593,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"SALSCHEMEITEM",
+    "dename":"SalSchemeItem",
     "delogicname":"工资单要素项",
     "sysmoudle":{"id":"SAL","name":"激励管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -601,7 +601,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMLGBCOST",
+    "dename":"TrmLgbCost",
     "delogicname":"老干部费用",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -617,7 +617,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMRecruitment",
+    "dename":"PcmRecruitment",
     "delogicname":"内部招聘信息",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"NBZP" , "name":"内部招聘信息"},{"id":"Default" , "name":"DEFAULT"}],
@@ -625,7 +625,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMCORRECTIONAPPLY",
+    "dename":"PimCorrectionApply",
     "delogicname":"B/Y类员工转正申请明细（停用）",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -697,7 +697,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PARLHMBKHMX",
+    "dename":"ParLhmbkhmx",
     "delogicname":"量化目标考核明细",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -705,7 +705,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ATTENDENCESETUP",
+    "dename":"AttEndenceSetup",
     "delogicname":"考勤设置",
     "sysmoudle":{"id":"ATT","name":"考勤管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"CurOrgKQSZ" , "name":"当前组织下的考勤设置"},{"id":"KQYBXKQB" , "name":"考勤月报中选考勤表"},{"id":"KQYCZKQSZ" , "name":"考勤员操作考勤设置"}],
@@ -721,7 +721,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMSCHOOLOFFICE",
+    "dename":"PcmSchoolOffice",
     "delogicname":"在校职务",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -737,7 +737,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMTEACHERCHARGE",
+    "dename":"TrmTeacherCharge",
     "delogicname":"讲师收费记录",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -761,7 +761,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"VACWORKDAY",
+    "dename":"VacWorkDay",
     "delogicname":"工作日管理（停用）",
     "sysmoudle":{"id":"VAC","name":"休假管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -785,7 +785,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PARJXZGPC",
+    "dename":"ParJxzgpc",
     "delogicname":"绩效主观评测",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -825,7 +825,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMTRIANPERSON",
+    "dename":"TrmTrainPerson",
     "delogicname":"培训记录",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -833,7 +833,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMARCHIVESLOANANDRETURN",
+    "dename":"PimArchiveSloanandreturn",
     "delogicname":"档案借阅及归还记录",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -849,7 +849,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMRCXL",
+    "dename":"PcmRcxl",
     "delogicname":"人才序列",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Current" , "name":"查询当前人才序列下的序列"},{"id":"RCXLPPXLLX" , "name":"人才序列匹配人才序列类型"},{"id":"ZiDQ" , "name":"子查询"},{"id":"Default" , "name":"DEFAULT"},{"id":"GenDQ" , "name":"根查询"}],
@@ -865,7 +865,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ORMBMGWBZ",
+    "dename":"OrmBmgwbz",
     "delogicname":"部门岗位编制",
     "sysmoudle":{"id":"ORM","name":"组织管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -913,7 +913,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMSOCIALSECURITY",
+    "dename":"PimSocialSecurity",
     "delogicname":"社保信息",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"ZIZHU" , "name":"自助(社保信息)"},{"id":"Default" , "name":"DEFAULT"},{"id":"JLSS" , "name":"记录所属"}],
@@ -945,7 +945,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMPersonAbility",
+    "dename":"PimPersonAbility",
     "delogicname":"员工能力",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -953,7 +953,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMINVOICE",
+    "dename":"TrmInvoice",
     "delogicname":"开票信息",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -969,7 +969,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"VACLEACETYPE",
+    "dename":"VacLeaceType",
     "delogicname":"休假类型",
     "sysmoudle":{"id":"VAC","name":"休假管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1009,7 +1009,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMSYQGZ",
+    "dename":"PcmSyqgz",
     "delogicname":"试用期规则",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1033,7 +1033,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PARJXMTFK",
+    "dename":"ParJxmtfk",
     "delogicname":"绩效面谈反馈",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1041,7 +1041,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ATTENDANCEMREPORT",
+    "dename":"AttEndanceMreport",
     "delogicname":"考勤月报",
     "sysmoudle":{"id":"ATT","name":"考勤管理"},
     "dedataset":[{"id":"KQYBDY" , "name":"考勤月报打印"},{"id":"Default" , "name":"DEFAULT"},{"id":"KQYCZKQYB" , "name":"考勤员操作考勤月报"},{"id":"CurORMORGKQYB" , "name":"当前组织考勤月报"},{"id":"CurORMORGSECTORKQYB" , "name":"当前组织下部门考勤月报"}],
@@ -1049,7 +1049,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMTRAINACTAPPLY",
+    "dename":"TrmTrainActapply",
     "delogicname":"培训活动申请",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1073,7 +1073,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ORMXMXQHZ",
+    "dename":"OrmXmxqhz",
     "delogicname":"项目人员需求汇总",
     "sysmoudle":{"id":"ORM","name":"组织管理"},
     "dedataset":[{"id":"XMRYQKMX" , "name":"项目人员缺口明细"},{"id":"Default" , "name":"DEFAULT"}],
@@ -1081,7 +1081,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMQUALMAJOR",
+    "dename":"PimQualMajor",
     "delogicname":"执业资格专业",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"XZZGZY" , "name":"选择资格类别下对应的资格专业"}],
@@ -1097,7 +1097,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PARJXKHMBMX",
+    "dename":"ParJxkhmbmx",
     "delogicname":"绩效模板明细",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1121,7 +1121,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMVACATION",
+    "dename":"PimVacation",
     "delogicname":"休假信息",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1137,7 +1137,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMPLANFORMU",
+    "dename":"TrmPlanFormu",
     "delogicname":"培训计划制定",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1177,7 +1177,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMACHIEVEMENTS",
+    "dename":"PimAchievements",
     "delogicname":"绩效信息",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"JLSS" , "name":"记录所属和人员ID不符的"},{"id":"Default" , "name":"DEFAULT"},{"id":"ZIZHU" , "name":"自助(绩效信息)"}],
@@ -1217,7 +1217,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMTRAFFIC",
+    "dename":"TrmTraffic",
     "delogicname":"交通",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1225,7 +1225,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMEXAMINATIONRESULTS",
+    "dename":"PimExaminationResults",
     "delogicname":"B/Y员工转正考核结果记录",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1233,7 +1233,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMARCHIVES",
+    "dename":"PimArchives",
     "delogicname":"档案信息",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"EMLOYEENOFILE" , "name":"员工不在档档案"},{"id":"SysOrgIsSrfOrg" , "name":"管理单位等于当前登录人的单位（用于非员工在档数据查询）"},{"id":"Default" , "name":"DEFAULT"},{"id":"JLSS" , "name":"记录所属和个人ID不符的"},{"id":"ZIZHU" , "name":"自助(档案信息)"},{"id":"NOEMLOYEENOFILE" , "name":"非员工在档档案"},{"id":"PIMREADGJD" , "name":"档案信息组织查询"}],
@@ -1241,7 +1241,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"VACLEAVESYSTEMDETAIL",
+    "dename":"VacLeaveSystemDtail",
     "delogicname":"休假制度明细",
     "sysmoudle":{"id":"VAC","name":"休假管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1265,7 +1265,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"VACLEAVEDETAIL",
+    "dename":"VacLeaveDetail",
     "delogicname":"请假明细",
     "sysmoudle":{"id":"VAC","name":"休假管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1273,7 +1273,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMTRAINDATA",
+    "dename":"TrmTrainData",
     "delogicname":"培训资料",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1305,7 +1305,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMYDJZMX",
+    "dename":"PcmYdjzmx",
     "delogicname":"异动兼职明细",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"GLDS" , "name":"管理查询"},{"id":"LSJLDS" , "name":"历史记录查看"},{"id":"Default" , "name":"DEFAULT"}],
@@ -1361,7 +1361,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMAGENCYRECORD",
+    "dename":"TrmAgencyRecord",
     "delogicname":"机构培训记录",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1385,7 +1385,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMDEPARTNEEDS",
+    "dename":"TrmDepartNeeds",
     "delogicname":"培训需求明细",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1425,7 +1425,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMARCHIVESRECORD",
+    "dename":"PimArchivesRecord",
     "delogicname":"档案目录缺失记录",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1433,7 +1433,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMReason",
+    "dename":"PcmReason",
     "delogicname":"配置原因代码表",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1449,7 +1449,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMDEMDEFTION",
+    "dename":"TrmDemdeftion",
     "delogicname":"培训需求汇总",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1465,7 +1465,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"SALSUBJECT",
+    "dename":"SalSubject",
     "delogicname":"财务科目",
     "sysmoudle":{"id":"SAL","name":"激励管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1473,7 +1473,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMYDLZMX",
+    "dename":"PcmYdlzmx",
     "delogicname":"异动离职明细",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"GLDQ" , "name":"管理查询"},{"id":"JLDQ" , "name":"记录查询"},{"id":"Default" , "name":"DEFAULT"}],
@@ -1529,7 +1529,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMBYYGZZSQ",
+    "dename":"PimByygzzsq",
     "delogicname":"B/Y类员工转正申请",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1569,7 +1569,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMTRAINAGENCY",
+    "dename":"TrmTrainAgency",
     "delogicname":"培训机构",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1593,7 +1593,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMLWGZ",
+    "dename":"PimLwgz",
     "delogicname":"轮岗规则",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1609,7 +1609,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"SALSALARY",
+    "dename":"SalSalary",
     "delogicname":"员工薪酬",
     "sysmoudle":{"id":"SAL","name":"激励管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1617,7 +1617,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMNORecyclingLibrary",
+    "dename":"PcmNoRecyclingLibrary",
     "delogicname":"员工编号回收库",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1625,7 +1625,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ATTENDANCEDATE",
+    "dename":"AttEndanceDate",
     "delogicname":"考勤日期",
     "sysmoudle":{"id":"ATT","name":"考勤管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1641,7 +1641,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ORMXMRYPZXQ",
+    "dename":"OrmXmrypzxq",
     "delogicname":"项目人员需求",
     "sysmoudle":{"id":"ORM","name":"组织管理"},
     "dedataset":[{"id":"RSSH" , "name":"人事审核"},{"id":"CURFQTP" , "name":"判定调配"},{"id":"CXSJ" , "name":"查询调配数据"},{"id":"KZXMQX" , "name":"控制项目人员需求（修改、删除）权限"},{"id":"SFSH" , "name":"释放台账"},{"id":"CURFQSF" , "name":"判定释放"},{"id":"TPSH" , "name":"调配审核"},{"id":"SFCXSJ" , "name":"释放数据查询"},{"id":"MODSPSH" , "name":"拟用人员变更审核"},{"id":"Default" , "name":"DEFAULT"},{"id":"XMCBMX" , "name":"项目人力成本明细"}],
@@ -1649,7 +1649,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMYDJPMX",
+    "dename":"PcmYdjpmx",
     "delogicname":"异动解聘明细",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"JLDS" , "name":"记录查询"},{"id":"Default" , "name":"DEFAULT"},{"id":"GLDS" , "name":"管理查询"}],
@@ -1665,7 +1665,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMLABOURCAMPANY",
+    "dename":"PimLabourcampany",
     "delogicname":"劳务派遣公司管理",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"AuthLab" , "name":"AuthLab"},{"id":"Default" , "name":"DEFAULT"}],
@@ -1697,7 +1697,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PARJXKHMB",
+    "dename":"ParJxkhmb",
     "delogicname":"绩效模板",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1705,7 +1705,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"SALPERSONSTD",
+    "dename":"SalPersonStd",
     "delogicname":"员工薪酬标准",
     "sysmoudle":{"id":"SAL","name":"激励管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1713,7 +1713,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMTRAINDEMANDSUM",
+    "dename":"TrmTrainDemandSum",
     "delogicname":"培训需求汇总明细",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1721,7 +1721,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"SALSALARYBILL",
+    "dename":"SalSalaryBill",
     "delogicname":"工资表",
     "sysmoudle":{"id":"SAL","name":"激励管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1737,7 +1737,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMEMPLOYRETION",
+    "dename":"TrmEmployeeRetion",
     "delogicname":"员工培训报名",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1745,7 +1745,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PARJXNDKHJG",
+    "dename":"ParJxndkhjg",
     "delogicname":"绩效年度考核结果",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"LastTwoYear" , "name":"最近2年下半年考核成绩"}],
@@ -1777,7 +1777,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"QUESTIONS",
+    "dename":"PimQuestions",
     "delogicname":"问题收集",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"QUERYcurrentQUESTION" , "name":"查询当前页面问题"},{"id":"Default" , "name":"DEFAULT"}],
@@ -1809,7 +1809,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMCOURSESYSTEM",
+    "dename":"TrmCourseSystem",
     "delogicname":"培训模块",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1817,7 +1817,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ATTENSUMMARY",
+    "dename":"AttEnsummary",
     "delogicname":"考勤汇总",
     "sysmoudle":{"id":"ATT","name":"考勤管理"},
     "dedataset":[{"id":"CurZZKQHZ" , "name":"当前组织考勤汇总"},{"id":"Default" , "name":"DEFAULT"}],
@@ -1841,7 +1841,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PersonStateMGR",
+    "dename":"PersonStateMgr",
     "delogicname":"员工状态管理",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1865,7 +1865,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMSgqMgr",
+    "dename":"PcmSgqMgr",
     "delogicname":"试岗期管理",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1905,7 +1905,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PARJXBZGL",
+    "dename":"ParJxbzgl",
     "delogicname":"绩效标准管理",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1937,7 +1937,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ATTENDANCESUMMARYMX",
+    "dename":"AttEnsummarymx",
     "delogicname":"考勤汇总明细（停用）",
     "sysmoudle":{"id":"ATT","name":"考勤管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1953,7 +1953,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMTXFPSQ",
+    "dename":"PcmTxfpsq",
     "delogicname":"退休返聘申请",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"FPJL" , "name":"返聘记录"},{"id":"Default" , "name":"DEFAULT"},{"id":"YXSQDS" , "name":"未审核申请"},{"id":"FPGL" , "name":"返聘管理"}],
@@ -1977,7 +1977,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ORMXMBQ",
+    "dename":"OrmXmbq",
     "delogicname":"项目标签",
     "sysmoudle":{"id":"ORM","name":"组织管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1985,7 +1985,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ATTENDANCERECORDTEMP",
+    "dename":"AttEndanceRecordTemp",
     "delogicname":"考勤记录(中间表)",
     "sysmoudle":{"id":"ATT","name":"考勤管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -1993,7 +1993,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMGXXKTEMP",
+    "dename":"PCMGxxkTemp",
     "delogicname":"高校学科中间表",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2025,7 +2025,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"VACDAYOFF",
+    "dename":"VacDayOff",
     "delogicname":"调休日管理（停用）",
     "sysmoudle":{"id":"VAC","name":"休假管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2057,7 +2057,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMREWARDPUNISHMENT",
+    "dename":"PimRewardPunishment",
     "delogicname":"奖惩信息",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"ZIZHU" , "name":"自助(奖惩信息)"},{"id":"HONORARY" , "name":"公司及以上荣誉"},{"id":"Default" , "name":"DEFAULT"},{"id":"JLSS" , "name":"记录所属"}],
@@ -2065,7 +2065,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"SALSTDZJ",
+    "dename":"SalStdzj",
     "delogicname":"专家津贴标准",
     "sysmoudle":{"id":"SAL","name":"激励管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2081,7 +2081,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMPATENT",
+    "dename":"PimPatent",
     "delogicname":"专利信息",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"JLSSGLY" , "name":"记录所属（管理员）"},{"id":"Default" , "name":"DEFAULT"},{"id":"JLSSGR" , "name":"记录所属（个人）"}],
@@ -2105,7 +2105,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMPROFILE",
+    "dename":"PcmProfile",
     "delogicname":"应聘者基本信息",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"YRDWSH_CSRCYJ" , "name":"用人单位董事长审批（成熟人才引进）"},{"id":"JLDSP" , "name":"局总部审核（校园招聘）"},{"id":"BD_CSRCYJ" , "name":"报到（成熟人才引进）"},{"id":"YPZSPB_CSRCYJ" , "name":"应聘者审批表（成熟人才引进）"},{"id":"ZPDWSH" , "name":"用人单位初审（校园招聘）"},{"id":"BD" , "name":"报到（校园招聘）"},{"id":"BHSP" , "name":"编号审批（校园招聘）"},{"id":"LR" , "name":"录入（校园招聘）"},{"id":"RLSB" , "name":"人力上报（校园招聘）"},{"id":"FormType" , "name":"FormType"},{"id":"HTRY_CSRCYJ" , "name":"回退人员（成熟人才引进）"},{"id":"Default" , "name":"DEFAULT"},{"id":"JZBSP" , "name":"局总部审批（校园招聘）"},{"id":"RZSP_CSRCYJ" , "name":"局总部初审（成熟人才引进）"},{"id":"JLDSP_CSRCYJ" , "name":"局总部审核（成熟人才引进）"},{"id":"BHSP_CSRCYJ" , "name":"编号审批（成熟人才引进）"},{"id":"LR_CSRCYJ" , "name":"录入（成熟人才引进）"},{"id":"YPZBB_READ" , "name":"应聘者查询"},{"id":"HTRY" , "name":"回退人员（校园招聘）"},{"id":"RZSP" , "name":"局总部初审（校园招聘）"},{"id":"YRDWCS_CSRCYJ" , "name":"用人单位初审（成熟人才引进）"},{"id":"JZBSP_CSRCYJ" , "name":"局总部审批（成熟人才引进）"},{"id":"RLSB_CSRCYJ" , "name":"人力上报（成熟人才引进）"}],
@@ -2161,7 +2161,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ATTENDENCEORMORGSECTOR",
+    "dename":"AttEndenceOrmorgscetor",
     "delogicname":"考勤部门",
     "sysmoudle":{"id":"ATT","name":"考勤管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2193,7 +2193,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMYDNTMX",
+    "dename":"PcmYdntmx",
     "delogicname":"异动内退明细",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"JLDS" , "name":"记录查询"},{"id":"Default" , "name":"DEFAULT"},{"id":"GLDS" , "name":"管理查询"}],
@@ -2209,7 +2209,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMLGBDETAIL",
+    "dename":"TrmLgbDetail",
     "delogicname":"老干部明细",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2257,7 +2257,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"SALSTDDSZN",
+    "dename":"SalStddszn",
     "delogicname":"独生子女标准",
     "sysmoudle":{"id":"SAL","name":"激励管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2265,7 +2265,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ORMDepEstMan",
+    "dename":"OrmDepEstMan",
     "delogicname":"部门职务编制",
     "sysmoudle":{"id":"ORM","name":"组织管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2273,7 +2273,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ORMXMSFHZ",
+    "dename":"OrmXmsfhz",
     "delogicname":"项目人员缺口情况",
     "sysmoudle":{"id":"ORM","name":"组织管理"},
     "dedataset":[{"id":"AccOrg" , "name":"根据组织定位查询"},{"id":"Default" , "name":"DEFAULT"}],
@@ -2313,7 +2313,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ORMQYBZWH",
+    "dename":"OrmQybzwh",
     "delogicname":"区域标准维护",
     "sysmoudle":{"id":"ORM","name":"组织管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2337,7 +2337,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PARJXKHXHZ",
+    "dename":"ParJxkhxhz",
     "delogicname":"考核内容评分汇总",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2409,7 +2409,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMZSGL",
+    "dename":"PcmZsgl",
     "delogicname":"职数管理",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2425,7 +2425,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"SALPLAN",
+    "dename":"SalPlan",
     "delogicname":"薪酬计算计划",
     "sysmoudle":{"id":"SAL","name":"激励管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2449,7 +2449,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"SALSTDGWGZ",
+    "dename":"SalStdgwgz",
     "delogicname":"岗位工资标准",
     "sysmoudle":{"id":"SAL","name":"激励管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2457,7 +2457,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PIMPersonAbilityDetail",
+    "dename":"PimPersonAbilityDetail",
     "delogicname":"员工能力明细",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2497,7 +2497,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMDDSQD",
+    "dename":"PcmDdsqd",
     "delogicname":"调动申请单",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2505,7 +2505,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMJXSGZ",
+    "dename":"PcmJxsgz",
     "delogicname":"见习生规则",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2513,7 +2513,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"VACSITUATION",
+    "dename":"VacSituation",
     "delogicname":"用户休假情况",
     "sysmoudle":{"id":"VAC","name":"休假管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2521,7 +2521,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMBDSQDMX",
+    "dename":"PcmBdsqdmx",
     "delogicname":"职级变动明细",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"JPSQMX" , "name":"解聘申请（未审核）"},{"id":"NTSQMX" , "name":"内退申请明细（未审核）"},{"id":"NTSQMXGR" , "name":"内退申请明细（个人）"},{"id":"TXSQMX" , "name":"退休申请明细（未审核）"},{"id":"GZSQMX" , "name":"挂职申请明细（未审核）"},{"id":"ZJBDSQMX" , "name":"职级变动申请明细"},{"id":"DGSQMX" , "name":"待岗申请明细"},{"id":"CQBXSQMXDS" , "name":"长期病休申请明细"},{"id":"LZSQMX" , "name":"离职申请明细"},{"id":"LZSQMXGR" , "name":"离职申请明细（个人）"},{"id":"Default" , "name":"DEFAULT"}],
@@ -2537,7 +2537,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"VACSYSTEMAPPLICATION",
+    "dename":"VacSystemApplication",
     "delogicname":"制度适用",
     "sysmoudle":{"id":"VAC","name":"休假管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2553,7 +2553,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMYDBXMX",
+    "dename":"PcmYdbxmx",
     "delogicname":"异动病休明细",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"GLDS" , "name":"管理查询"},{"id":"Default" , "name":"DEFAULT"},{"id":"JLDS" , "name":"记录查询"}],
@@ -2585,7 +2585,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"SALPARAM",
+    "dename":"SalParam",
     "delogicname":"薪酬计算指标",
     "sysmoudle":{"id":"SAL","name":"激励管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2593,7 +2593,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PARJXLHMB",
+    "dename":"ParJxlhmb",
     "delogicname":"绩效量化目标",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2617,7 +2617,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMYDTXMX",
+    "dename":"PcmYdtxmx",
     "delogicname":"异动退休明细",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"GLDS" , "name":"管理查询"},{"id":"JLDS" , "name":"记录查询"}],
@@ -2633,7 +2633,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PARFZSMX",
+    "dename":"ParFzsmx",
     "delogicname":"通知选择助总领导明细",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2673,7 +2673,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"TRMTRAINRESMENT",
+    "dename":"TrmTrainResment",
     "delogicname":"培训资源评估",
     "sysmoudle":{"id":"TRM","name":"培训管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2697,7 +2697,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMPROFILEYJTJTEMP",
+    "dename":"PcmProfileYjtjTemp",
     "delogicname":"应聘者引进条件中间表（停用）",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2713,7 +2713,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMPROFILEFJ",
+    "dename":"PcmProfileFj",
     "delogicname":"应聘者附件",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"PROFILEFJ" , "name":"应聘者附件"},{"id":"Default" , "name":"DEFAULT"}],
@@ -2729,7 +2729,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PCMCERTOFREG",
+    "dename":"PcmCertofreg",
     "delogicname":"注册证书",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
@@ -2737,7 +2737,7 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"ORMEDITION",
+    "dename":"OrmEdition",
     "delogicname":"版本对照表",
     "sysmoudle":{"id":"ORM","name":"组织管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],

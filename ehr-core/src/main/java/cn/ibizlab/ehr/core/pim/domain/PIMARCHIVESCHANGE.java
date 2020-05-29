@@ -232,7 +232,7 @@ public class PIMARCHIVESCHANGE extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.pim.domain.PIMARCHIVES pimarchives;
+    private cn.ibizlab.ehr.core.pim.domain.PimArchives pimarchives;
 
     /**
      * 档案归档地变更记录

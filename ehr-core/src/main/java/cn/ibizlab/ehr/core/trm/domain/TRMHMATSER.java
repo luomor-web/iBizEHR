@@ -190,7 +190,7 @@ public class TRMHMATSER extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.trm.domain.TRMTRAINAGENCY trmtrainagency;
+    private cn.ibizlab.ehr.core.trm.domain.TrmTrainAgency trmtrainagency;
 
 
 

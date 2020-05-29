@@ -19,7 +19,7 @@
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="trmstaff" javaType="cn.ibizlab.ehr.core.trm.domain.TRMSTAFF" column="trmstaffid" select="cn.ibizlab.ehr.core.trm.mapper.TRMSTAFFMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="trmtrainagency" javaType="cn.ibizlab.ehr.core.trm.domain.TRMTRAINAGENCY" column="trmtrainagencyid" select="cn.ibizlab.ehr.core.trm.mapper.TRMTRAINAGENCYMapper.selectById" fetchType="lazy"></association>
+		<association property="trmtrainagency" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainAgency" column="trmtrainagencyid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainAgencyMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="trmtraincourse" javaType="cn.ibizlab.ehr.core.trm.domain.TRMTRAINCOURSE" column="trmtraincourseid" select="cn.ibizlab.ehr.core.trm.mapper.TRMTRAINCOURSEMapper.selectById" fetchType="lazy"></association>
     </resultMap>

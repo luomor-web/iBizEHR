@@ -46,13 +46,13 @@ public class SOCWELFAREINFOServiceImpl extends ServiceImpl<SOCWELFAREINFOMapper,
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.soc.service.ISOCWELFAREINFOMXService socwelfareinfomxService;
+    private cn.ibizlab.ehr.core.soc.service.ISocWelfareinfomxService socwelfareinfomxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.soc.service.ISOCCOMPANYWELService soccompanywelService;
+    private cn.ibizlab.ehr.core.soc.service.ISocCompanyWelService soccompanywelService;
 
     private int batchSize = 500;
 
@@ -226,9 +226,9 @@ public class SOCWELFAREINFOServiceImpl extends ServiceImpl<SOCWELFAREINFOMapper,
         }
         //实体关系[DER1N_SOCWELFAREINFO_SOCCOMPANYWEL_SOCCOMPANYWELID]
         if(!ObjectUtils.isEmpty(et.getSoccompanywelid())){
-            cn.ibizlab.ehr.core.soc.domain.SOCCOMPANYWEL soccompanywel=et.getSoccompanywel();
+            cn.ibizlab.ehr.core.soc.domain.SocCompanyWel soccompanywel=et.getSoccompanywel();
             if(ObjectUtils.isEmpty(soccompanywel)){
-                cn.ibizlab.ehr.core.soc.domain.SOCCOMPANYWEL majorEntity=soccompanywelService.get(et.getSoccompanywelid());
+                cn.ibizlab.ehr.core.soc.domain.SocCompanyWel majorEntity=soccompanywelService.get(et.getSoccompanywelid());
                 et.setSoccompanywel(majorEntity);
                 soccompanywel=majorEntity;
             }

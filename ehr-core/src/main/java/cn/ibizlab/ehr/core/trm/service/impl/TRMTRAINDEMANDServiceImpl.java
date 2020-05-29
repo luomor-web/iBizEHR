@@ -46,7 +46,7 @@ public class TRMTRAINDEMANDServiceImpl extends ServiceImpl<TRMTRAINDEMANDMapper,
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINDEMANDSUMService trmtraindemandsumService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainDemandSumService trmtraindemandsumService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;

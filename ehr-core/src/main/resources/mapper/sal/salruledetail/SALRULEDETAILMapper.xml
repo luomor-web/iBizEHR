@@ -17,9 +17,9 @@
             
 		
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="salparam" javaType="cn.ibizlab.ehr.core.sal.domain.SALPARAM" column="salparamid" select="cn.ibizlab.ehr.core.sal.mapper.SALPARAMMapper.selectById" fetchType="lazy"></association>
+		<association property="salparam" javaType="cn.ibizlab.ehr.core.sal.domain.SalParam" column="salparamid" select="cn.ibizlab.ehr.core.sal.mapper.SalParamMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="salparam2" javaType="cn.ibizlab.ehr.core.sal.domain.SALPARAM" column="salparamid2" select="cn.ibizlab.ehr.core.sal.mapper.SALPARAMMapper.selectById" fetchType="lazy"></association>
+		<association property="salparam2" javaType="cn.ibizlab.ehr.core.sal.domain.SalParam" column="salparamid2" select="cn.ibizlab.ehr.core.sal.mapper.SalParamMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="salrule" javaType="cn.ibizlab.ehr.core.sal.domain.SALRULE" column="salruleid" select="cn.ibizlab.ehr.core.sal.mapper.SALRULEMapper.selectById" fetchType="lazy"></association>
     </resultMap>

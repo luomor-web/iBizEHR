@@ -46,10 +46,10 @@ public class VACLEAVESYSTEMServiceImpl extends ServiceImpl<VACLEAVESYSTEMMapper,
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.vac.service.IVACLEAVESYSTEMDETAILService vacleavesystemdetailService;
+    private cn.ibizlab.ehr.core.vac.service.IVacLeaveSystemDtailService vacleavesystemdtailService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.vac.service.IVACSYSTEMAPPLICATIONService vacsystemapplicationService;
+    private cn.ibizlab.ehr.core.vac.service.IVacSystemApplicationService vacsystemapplicationService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.vac.service.IVACSYSTEMHISTORYService vacsystemhistoryService;

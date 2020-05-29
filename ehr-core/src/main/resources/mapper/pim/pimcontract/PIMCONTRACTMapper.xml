@@ -26,7 +26,7 @@
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="ormsignorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmSignOrg" column="ormsignorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmSignOrgMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="pimlabourcampany" javaType="cn.ibizlab.ehr.core.pim.domain.PIMLABOURCAMPANY" column="pimlabourcampanyid" select="cn.ibizlab.ehr.core.pim.mapper.PIMLABOURCAMPANYMapper.selectById" fetchType="lazy"></association>
+		<association property="pimlabourcampany" javaType="cn.ibizlab.ehr.core.pim.domain.PimLabourcampany" column="pimlabourcampanyid" select="cn.ibizlab.ehr.core.pim.mapper.PimLabourcampanyMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PIMPERSON" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PIMPERSONMapper.selectById" fetchType="lazy"></association>
     </resultMap>

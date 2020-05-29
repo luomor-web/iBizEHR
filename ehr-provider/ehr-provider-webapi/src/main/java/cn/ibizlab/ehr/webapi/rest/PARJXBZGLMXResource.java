@@ -159,10 +159,10 @@ public class PARJXBZGLMXResource {
                 .body(new PageImpl(parjxbzglmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.parjxbzglmxService.get(#parjxbzglmx_id),'ehr-PARJXBZGLMX-Update')")
-    @ApiOperation(value = "UpdateByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "UpdateByPARJXBZGL")
+    @ApiOperation(value = "UpdateByParJxbzgl", tags = {"PARJXBZGLMX" },  notes = "UpdateByParJxbzgl")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/{parjxbzglmx_id}")
     @Transactional
-    public ResponseEntity<PARJXBZGLMXDTO> updateByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @PathVariable("parjxbzglmx_id") String parjxbzglmx_id, @RequestBody PARJXBZGLMXDTO parjxbzglmxdto) {
+    public ResponseEntity<PARJXBZGLMXDTO> updateByParJxbzgl(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @PathVariable("parjxbzglmx_id") String parjxbzglmx_id, @RequestBody PARJXBZGLMXDTO parjxbzglmxdto) {
         PARJXBZGLMX domain = parjxbzglmxMapping.toDomain(parjxbzglmxdto);
         domain.setParjxbzglid(parjxbzgl_id);
         domain.setParjxbzglmxid(parjxbzglmx_id);
@@ -172,9 +172,9 @@ public class PARJXBZGLMXResource {
     }
 
     @PreAuthorize("hasPermission(this.parjxbzglmxService.getParjxbzglmxByEntities(this.parjxbzglmxMapping.toDomain(#parjxbzglmxdtos)),'ehr-PARJXBZGLMX-Update')")
-    @ApiOperation(value = "UpdateBatchByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "UpdateBatchByPARJXBZGL")
+    @ApiOperation(value = "UpdateBatchByParJxbzgl", tags = {"PARJXBZGLMX" },  notes = "UpdateBatchByParJxbzgl")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/batch")
-    public ResponseEntity<Boolean> updateBatchByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody List<PARJXBZGLMXDTO> parjxbzglmxdtos) {
+    public ResponseEntity<Boolean> updateBatchByParJxbzgl(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody List<PARJXBZGLMXDTO> parjxbzglmxdtos) {
         List<PARJXBZGLMX> domainlist=parjxbzglmxMapping.toDomain(parjxbzglmxdtos);
         for(PARJXBZGLMX domain:domainlist){
             domain.setParjxbzglid(parjxbzgl_id);
@@ -184,18 +184,18 @@ public class PARJXBZGLMXResource {
     }
 
     @PreAuthorize("hasPermission(this.parjxbzglmxMapping.toDomain(#parjxbzglmxdto),'ehr-PARJXBZGLMX-Save')")
-    @ApiOperation(value = "SaveByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "SaveByPARJXBZGL")
+    @ApiOperation(value = "SaveByParJxbzgl", tags = {"PARJXBZGLMX" },  notes = "SaveByParJxbzgl")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/save")
-    public ResponseEntity<Boolean> saveByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody PARJXBZGLMXDTO parjxbzglmxdto) {
+    public ResponseEntity<Boolean> saveByParJxbzgl(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody PARJXBZGLMXDTO parjxbzglmxdto) {
         PARJXBZGLMX domain = parjxbzglmxMapping.toDomain(parjxbzglmxdto);
         domain.setParjxbzglid(parjxbzgl_id);
         return ResponseEntity.status(HttpStatus.OK).body(parjxbzglmxService.save(domain));
     }
 
     @PreAuthorize("hasPermission(this.parjxbzglmxMapping.toDomain(#parjxbzglmxdtos),'ehr-PARJXBZGLMX-Save')")
-    @ApiOperation(value = "SaveBatchByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "SaveBatchByPARJXBZGL")
+    @ApiOperation(value = "SaveBatchByParJxbzgl", tags = {"PARJXBZGLMX" },  notes = "SaveBatchByParJxbzgl")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/savebatch")
-    public ResponseEntity<Boolean> saveBatchByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody List<PARJXBZGLMXDTO> parjxbzglmxdtos) {
+    public ResponseEntity<Boolean> saveBatchByParJxbzgl(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody List<PARJXBZGLMXDTO> parjxbzglmxdtos) {
         List<PARJXBZGLMX> domainlist=parjxbzglmxMapping.toDomain(parjxbzglmxdtos);
         for(PARJXBZGLMX domain:domainlist){
              domain.setParjxbzglid(parjxbzgl_id);
@@ -205,35 +205,35 @@ public class PARJXBZGLMXResource {
     }
 
     @PostAuthorize("hasPermission(this.parjxbzglmxMapping.toDomain(returnObject.body),'ehr-PARJXBZGLMX-Get')")
-    @ApiOperation(value = "GetByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "GetByPARJXBZGL")
+    @ApiOperation(value = "GetByParJxbzgl", tags = {"PARJXBZGLMX" },  notes = "GetByParJxbzgl")
 	@RequestMapping(method = RequestMethod.GET, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/{parjxbzglmx_id}")
-    public ResponseEntity<PARJXBZGLMXDTO> getByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @PathVariable("parjxbzglmx_id") String parjxbzglmx_id) {
+    public ResponseEntity<PARJXBZGLMXDTO> getByParJxbzgl(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @PathVariable("parjxbzglmx_id") String parjxbzglmx_id) {
         PARJXBZGLMX domain = parjxbzglmxService.get(parjxbzglmx_id);
         PARJXBZGLMXDTO dto = parjxbzglmxMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
     @PreAuthorize("hasPermission(this.parjxbzglmxService.get(#parjxbzglmx_id),'ehr-PARJXBZGLMX-Remove')")
-    @ApiOperation(value = "RemoveByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "RemoveByPARJXBZGL")
+    @ApiOperation(value = "RemoveByParJxbzgl", tags = {"PARJXBZGLMX" },  notes = "RemoveByParJxbzgl")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/{parjxbzglmx_id}")
     @Transactional
-    public ResponseEntity<Boolean> removeByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @PathVariable("parjxbzglmx_id") String parjxbzglmx_id) {
+    public ResponseEntity<Boolean> removeByParJxbzgl(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @PathVariable("parjxbzglmx_id") String parjxbzglmx_id) {
 		return ResponseEntity.status(HttpStatus.OK).body(parjxbzglmxService.remove(parjxbzglmx_id));
     }
 
     @PreAuthorize("hasPermission(this.parjxbzglmxService.getParjxbzglmxByIds(#ids),'ehr-PARJXBZGLMX-Remove')")
-    @ApiOperation(value = "RemoveBatchByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "RemoveBatchByPARJXBZGL")
+    @ApiOperation(value = "RemoveBatchByParJxbzgl", tags = {"PARJXBZGLMX" },  notes = "RemoveBatchByParJxbzgl")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/batch")
-    public ResponseEntity<Boolean> removeBatchByPARJXBZGL(@RequestBody List<String> ids) {
+    public ResponseEntity<Boolean> removeBatchByParJxbzgl(@RequestBody List<String> ids) {
         parjxbzglmxService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
     @PreAuthorize("hasPermission(this.parjxbzglmxMapping.toDomain(#parjxbzglmxdto),'ehr-PARJXBZGLMX-Create')")
-    @ApiOperation(value = "CreateByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "CreateByPARJXBZGL")
+    @ApiOperation(value = "CreateByParJxbzgl", tags = {"PARJXBZGLMX" },  notes = "CreateByParJxbzgl")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes")
     @Transactional
-    public ResponseEntity<PARJXBZGLMXDTO> createByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody PARJXBZGLMXDTO parjxbzglmxdto) {
+    public ResponseEntity<PARJXBZGLMXDTO> createByParJxbzgl(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody PARJXBZGLMXDTO parjxbzglmxdto) {
         PARJXBZGLMX domain = parjxbzglmxMapping.toDomain(parjxbzglmxdto);
         domain.setParjxbzglid(parjxbzgl_id);
 		parjxbzglmxService.create(domain);
@@ -242,9 +242,9 @@ public class PARJXBZGLMXResource {
     }
 
     @PreAuthorize("hasPermission(this.parjxbzglmxMapping.toDomain(#parjxbzglmxdtos),'ehr-PARJXBZGLMX-Create')")
-    @ApiOperation(value = "createBatchByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "createBatchByPARJXBZGL")
+    @ApiOperation(value = "createBatchByParJxbzgl", tags = {"PARJXBZGLMX" },  notes = "createBatchByParJxbzgl")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/batch")
-    public ResponseEntity<Boolean> createBatchByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody List<PARJXBZGLMXDTO> parjxbzglmxdtos) {
+    public ResponseEntity<Boolean> createBatchByParJxbzgl(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody List<PARJXBZGLMXDTO> parjxbzglmxdtos) {
         List<PARJXBZGLMX> domainlist=parjxbzglmxMapping.toDomain(parjxbzglmxdtos);
         for(PARJXBZGLMX domain:domainlist){
             domain.setParjxbzglid(parjxbzgl_id);
@@ -253,24 +253,24 @@ public class PARJXBZGLMXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "GetDraftByPARJXBZGL")
+    @ApiOperation(value = "GetDraftByParJxbzgl", tags = {"PARJXBZGLMX" },  notes = "GetDraftByParJxbzgl")
     @RequestMapping(method = RequestMethod.GET, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/getdraft")
-    public ResponseEntity<PARJXBZGLMXDTO> getDraftByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id) {
+    public ResponseEntity<PARJXBZGLMXDTO> getDraftByParJxbzgl(@PathVariable("parjxbzgl_id") String parjxbzgl_id) {
         PARJXBZGLMX domain = new PARJXBZGLMX();
         domain.setParjxbzglid(parjxbzgl_id);
         return ResponseEntity.status(HttpStatus.OK).body(parjxbzglmxMapping.toDto(parjxbzglmxService.getDraft(domain)));
     }
 
-    @ApiOperation(value = "CheckKeyByPARJXBZGL", tags = {"PARJXBZGLMX" },  notes = "CheckKeyByPARJXBZGL")
+    @ApiOperation(value = "CheckKeyByParJxbzgl", tags = {"PARJXBZGLMX" },  notes = "CheckKeyByParJxbzgl")
 	@RequestMapping(method = RequestMethod.POST, value = "/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/checkkey")
-    public ResponseEntity<Boolean> checkKeyByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody PARJXBZGLMXDTO parjxbzglmxdto) {
+    public ResponseEntity<Boolean> checkKeyByParJxbzgl(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody PARJXBZGLMXDTO parjxbzglmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parjxbzglmxService.checkKey(parjxbzglmxMapping.toDomain(parjxbzglmxdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXBZGLMX-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPARJXBZGL", tags = {"PARJXBZGLMX" } ,notes = "fetchDEFAULTByPARJXBZGL")
+	@ApiOperation(value = "fetchDEFAULTByParJxbzgl", tags = {"PARJXBZGLMX" } ,notes = "fetchDEFAULTByParJxbzgl")
     @RequestMapping(method= RequestMethod.GET , value="/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/fetchdefault")
-	public ResponseEntity<List<PARJXBZGLMXDTO>> fetchPARJXBZGLMXDefaultByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id,PARJXBZGLMXSearchContext context) {
+	public ResponseEntity<List<PARJXBZGLMXDTO>> fetchPARJXBZGLMXDefaultByParJxbzgl(@PathVariable("parjxbzgl_id") String parjxbzgl_id,PARJXBZGLMXSearchContext context) {
         context.setN_parjxbzglid_eq(parjxbzgl_id);
         Page<PARJXBZGLMX> domains = parjxbzglmxService.searchDefault(context) ;
         List<PARJXBZGLMXDTO> list = parjxbzglmxMapping.toDto(domains.getContent());
@@ -282,9 +282,9 @@ public class PARJXBZGLMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PARJXBZGLMX-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPARJXBZGL", tags = {"PARJXBZGLMX" } ,notes = "searchDEFAULTByPARJXBZGL")
+	@ApiOperation(value = "searchDEFAULTByParJxbzgl", tags = {"PARJXBZGLMX" } ,notes = "searchDEFAULTByParJxbzgl")
     @RequestMapping(method= RequestMethod.POST , value="/parjxbzgls/{parjxbzgl_id}/parjxbzglmxes/searchdefault")
-	public ResponseEntity<Page<PARJXBZGLMXDTO>> searchPARJXBZGLMXDefaultByPARJXBZGL(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody PARJXBZGLMXSearchContext context) {
+	public ResponseEntity<Page<PARJXBZGLMXDTO>> searchPARJXBZGLMXDefaultByParJxbzgl(@PathVariable("parjxbzgl_id") String parjxbzgl_id, @RequestBody PARJXBZGLMXSearchContext context) {
         context.setN_parjxbzglid_eq(parjxbzgl_id);
         Page<PARJXBZGLMX> domains = parjxbzglmxService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

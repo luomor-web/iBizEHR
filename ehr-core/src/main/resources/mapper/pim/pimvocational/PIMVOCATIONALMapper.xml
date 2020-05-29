@@ -30,7 +30,7 @@
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PIMPERSON" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PIMPERSONMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="pimqualmajor" javaType="cn.ibizlab.ehr.core.pim.domain.PIMQUALMAJOR" column="pimqualmajorid" select="cn.ibizlab.ehr.core.pim.mapper.PIMQUALMAJORMapper.selectById" fetchType="lazy"></association>
+		<association property="pimqualmajor" javaType="cn.ibizlab.ehr.core.pim.domain.PimQualMajor" column="pimqualmajorid" select="cn.ibizlab.ehr.core.pim.mapper.PimQualMajorMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="pimqualtype" javaType="cn.ibizlab.ehr.core.pim.domain.PIMQUALTYPE" column="pimqualtypeid" select="cn.ibizlab.ehr.core.pim.mapper.PIMQUALTYPEMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->

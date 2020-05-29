@@ -46,7 +46,7 @@ public class TRMTRAINACTMENTServiceImpl extends ServiceImpl<TRMTRAINACTMENTMappe
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINACTAPPLYService trmtrainactapplyService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainActapplyService trmtrainactapplyService;
 
     private int batchSize = 500;
 
@@ -181,9 +181,9 @@ public class TRMTRAINACTMENTServiceImpl extends ServiceImpl<TRMTRAINACTMENTMappe
     private void fillParentData(TRMTRAINACTMENT et){
         //实体关系[DER1N_TRMTRAINACTMENT_TRMTRAINACTAPPLY_TRMTRAINACTAPPLYID]
         if(!ObjectUtils.isEmpty(et.getTrmtrainactapplyid())){
-            cn.ibizlab.ehr.core.trm.domain.TRMTRAINACTAPPLY trmtrainactapply=et.getTrmtrainactapply();
+            cn.ibizlab.ehr.core.trm.domain.TrmTrainActapply trmtrainactapply=et.getTrmtrainactapply();
             if(ObjectUtils.isEmpty(trmtrainactapply)){
-                cn.ibizlab.ehr.core.trm.domain.TRMTRAINACTAPPLY majorEntity=trmtrainactapplyService.get(et.getTrmtrainactapplyid());
+                cn.ibizlab.ehr.core.trm.domain.TrmTrainActapply majorEntity=trmtrainactapplyService.get(et.getTrmtrainactapplyid());
                 et.setTrmtrainactapply(majorEntity);
                 trmtrainactapply=majorEntity;
             }

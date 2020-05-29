@@ -46,7 +46,7 @@ public class VACUSENXJMXServiceImpl extends ServiceImpl<VACUSENXJMXMapper, VACUS
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.vac.service.IVACLEAVEDETAILService vacleavedetailService;
+    private cn.ibizlab.ehr.core.vac.service.IVacLeaveDetailService vacleavedetailService;
 
     private int batchSize = 500;
 
@@ -181,9 +181,9 @@ public class VACUSENXJMXServiceImpl extends ServiceImpl<VACUSENXJMXMapper, VACUS
     private void fillParentData(VACUSENXJMX et){
         //实体关系[DER1N_VACUSENXJMX_VACLEAVEDETAIL_VACLEAVEDETAILID]
         if(!ObjectUtils.isEmpty(et.getVacleavedetailid())){
-            cn.ibizlab.ehr.core.vac.domain.VACLEAVEDETAIL vacleavedetail=et.getVacleavedetail();
+            cn.ibizlab.ehr.core.vac.domain.VacLeaveDetail vacleavedetail=et.getVacleavedetail();
             if(ObjectUtils.isEmpty(vacleavedetail)){
-                cn.ibizlab.ehr.core.vac.domain.VACLEAVEDETAIL majorEntity=vacleavedetailService.get(et.getVacleavedetailid());
+                cn.ibizlab.ehr.core.vac.domain.VacLeaveDetail majorEntity=vacleavedetailService.get(et.getVacleavedetailid());
                 et.setVacleavedetail(majorEntity);
                 vacleavedetail=majorEntity;
             }

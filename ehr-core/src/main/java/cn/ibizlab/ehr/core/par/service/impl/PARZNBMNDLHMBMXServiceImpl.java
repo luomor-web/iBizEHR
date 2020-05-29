@@ -46,7 +46,7 @@ public class PARZNBMNDLHMBMXServiceImpl extends ServiceImpl<PARZNBMNDLHMBMXMappe
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARZNBMNDLHMBService parznbmndlhmbService;
+    private cn.ibizlab.ehr.core.par.service.IParZnbmndlhmbService parznbmndlhmbService;
 
     private int batchSize = 500;
 
@@ -181,9 +181,9 @@ public class PARZNBMNDLHMBMXServiceImpl extends ServiceImpl<PARZNBMNDLHMBMXMappe
     private void fillParentData(PARZNBMNDLHMBMX et){
         //实体关系[DER1N_PARZNBMNDLHMBMX_PARZNBMNDLHMB_PARZNBMNDLHMBID]
         if(!ObjectUtils.isEmpty(et.getParznbmndlhmbid())){
-            cn.ibizlab.ehr.core.par.domain.PARZNBMNDLHMB parznbmndlhmb=et.getParznbmndlhmb();
+            cn.ibizlab.ehr.core.par.domain.ParZnbmndlhmb parznbmndlhmb=et.getParznbmndlhmb();
             if(ObjectUtils.isEmpty(parznbmndlhmb)){
-                cn.ibizlab.ehr.core.par.domain.PARZNBMNDLHMB majorEntity=parznbmndlhmbService.get(et.getParznbmndlhmbid());
+                cn.ibizlab.ehr.core.par.domain.ParZnbmndlhmb majorEntity=parznbmndlhmbService.get(et.getParznbmndlhmbid());
                 et.setParznbmndlhmb(majorEntity);
                 parznbmndlhmb=majorEntity;
             }

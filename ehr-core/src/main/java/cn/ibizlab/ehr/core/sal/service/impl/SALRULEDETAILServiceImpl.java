@@ -46,7 +46,7 @@ public class SALRULEDETAILServiceImpl extends ServiceImpl<SALRULEDETAILMapper, S
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALPARAMService salparamService;
+    private cn.ibizlab.ehr.core.sal.service.ISalParamService salparamService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.sal.service.ISALRULEService salruleService;
@@ -204,9 +204,9 @@ public class SALRULEDETAILServiceImpl extends ServiceImpl<SALRULEDETAILMapper, S
     private void fillParentData(SALRULEDETAIL et){
         //实体关系[DER1N_SALRULEDETAIL_SALPARAM_SALPARAMID]
         if(!ObjectUtils.isEmpty(et.getSalparamid())){
-            cn.ibizlab.ehr.core.sal.domain.SALPARAM salparam=et.getSalparam();
+            cn.ibizlab.ehr.core.sal.domain.SalParam salparam=et.getSalparam();
             if(ObjectUtils.isEmpty(salparam)){
-                cn.ibizlab.ehr.core.sal.domain.SALPARAM majorEntity=salparamService.get(et.getSalparamid());
+                cn.ibizlab.ehr.core.sal.domain.SalParam majorEntity=salparamService.get(et.getSalparamid());
                 et.setSalparam(majorEntity);
                 salparam=majorEntity;
             }
@@ -214,9 +214,9 @@ public class SALRULEDETAILServiceImpl extends ServiceImpl<SALRULEDETAILMapper, S
         }
         //实体关系[DER1N_SALRULEDETAIL_SALPARAM_SALPARAMID2]
         if(!ObjectUtils.isEmpty(et.getSalparamid2())){
-            cn.ibizlab.ehr.core.sal.domain.SALPARAM salparam2=et.getSalparam2();
+            cn.ibizlab.ehr.core.sal.domain.SalParam salparam2=et.getSalparam2();
             if(ObjectUtils.isEmpty(salparam2)){
-                cn.ibizlab.ehr.core.sal.domain.SALPARAM majorEntity=salparamService.get(et.getSalparamid2());
+                cn.ibizlab.ehr.core.sal.domain.SalParam majorEntity=salparamService.get(et.getSalparamid2());
                 et.setSalparam2(majorEntity);
                 salparam2=majorEntity;
             }

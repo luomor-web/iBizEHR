@@ -186,7 +186,7 @@ public class ATTENDANCESETTINGS extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.att.domain.ATTENDENCESETUP attendencesetup;
+    private cn.ibizlab.ehr.core.att.domain.AttEndenceSetup attendencesetup;
 
     /**
      * 人员信息-考勤人员

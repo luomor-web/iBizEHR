@@ -46,7 +46,7 @@ public class SALSOURCEServiceImpl extends ServiceImpl<SALSOURCEMapper, SALSOURCE
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALPARAMService salparamService;
+    private cn.ibizlab.ehr.core.sal.service.ISalParamService salparamService;
 
     private int batchSize = 500;
 

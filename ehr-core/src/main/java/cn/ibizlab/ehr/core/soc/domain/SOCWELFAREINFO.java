@@ -226,7 +226,7 @@ public class SOCWELFAREINFO extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.soc.domain.SOCCOMPANYWEL soccompanywel;
+    private cn.ibizlab.ehr.core.soc.domain.SocCompanyWel soccompanywel;
 
 
 

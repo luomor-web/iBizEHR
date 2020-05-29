@@ -58,7 +58,7 @@ public class PIMVOCATIONALServiceImpl extends ServiceImpl<PIMVOCATIONALMapper, P
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMQUALMAJORService pimqualmajorService;
+    private cn.ibizlab.ehr.core.pim.service.IPimQualMajorService pimqualmajorService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMQUALTYPEService pimqualtypeService;
@@ -340,9 +340,9 @@ public class PIMVOCATIONALServiceImpl extends ServiceImpl<PIMVOCATIONALMapper, P
         }
         //实体关系[DER1N_PIMVOCATIONAL_PIMQUALMAJOR_PIMQUALMAJORID]
         if(!ObjectUtils.isEmpty(et.getPimqualmajorid())){
-            cn.ibizlab.ehr.core.pim.domain.PIMQUALMAJOR pimqualmajor=et.getPimqualmajor();
+            cn.ibizlab.ehr.core.pim.domain.PimQualMajor pimqualmajor=et.getPimqualmajor();
             if(ObjectUtils.isEmpty(pimqualmajor)){
-                cn.ibizlab.ehr.core.pim.domain.PIMQUALMAJOR majorEntity=pimqualmajorService.get(et.getPimqualmajorid());
+                cn.ibizlab.ehr.core.pim.domain.PimQualMajor majorEntity=pimqualmajorService.get(et.getPimqualmajorid());
                 et.setPimqualmajor(majorEntity);
                 pimqualmajor=majorEntity;
             }

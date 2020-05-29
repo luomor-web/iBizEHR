@@ -49,7 +49,7 @@ public class TRMTRAINBUAPPLYServiceImpl extends ServiceImpl<TRMTRAINBUAPPLYMappe
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINPLANTERMService trmtrainplantermService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainPlantermService trmtrainplantermService;
 
     private int batchSize = 500;
 
@@ -204,9 +204,9 @@ public class TRMTRAINBUAPPLYServiceImpl extends ServiceImpl<TRMTRAINBUAPPLYMappe
         }
         //实体关系[DER1N_TRMTRAINBUAPPLY_TRMTRAINPLANTERM_TRMTRAINPLANTERMID]
         if(!ObjectUtils.isEmpty(et.getTrmtrainplantermid())){
-            cn.ibizlab.ehr.core.trm.domain.TRMTRAINPLANTERM trmtrainplanterm=et.getTrmtrainplanterm();
+            cn.ibizlab.ehr.core.trm.domain.TrmTrainPlanterm trmtrainplanterm=et.getTrmtrainplanterm();
             if(ObjectUtils.isEmpty(trmtrainplanterm)){
-                cn.ibizlab.ehr.core.trm.domain.TRMTRAINPLANTERM majorEntity=trmtrainplantermService.get(et.getTrmtrainplantermid());
+                cn.ibizlab.ehr.core.trm.domain.TrmTrainPlanterm majorEntity=trmtrainplantermService.get(et.getTrmtrainplantermid());
                 et.setTrmtrainplanterm(majorEntity);
                 trmtrainplanterm=majorEntity;
             }

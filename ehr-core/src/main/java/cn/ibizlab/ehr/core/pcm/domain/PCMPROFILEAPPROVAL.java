@@ -183,7 +183,7 @@ public class PCMPROFILEAPPROVAL extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.pcm.domain.PCMPROFILE pcmprofile;
+    private cn.ibizlab.ehr.core.pcm.domain.PcmProfile pcmprofile;
 
     /**
      * 非A类员工编号变更-审批表

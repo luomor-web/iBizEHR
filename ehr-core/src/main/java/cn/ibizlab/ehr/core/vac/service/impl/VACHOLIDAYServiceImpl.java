@@ -46,7 +46,7 @@ public class VACHOLIDAYServiceImpl extends ServiceImpl<VACHOLIDAYMapper, VACHOLI
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDENCECALENDARService attendencecalendarService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndenceCalendarService attendencecalendarService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.vac.service.IVACHOLIDAYRULESService vacholidayrulesService;

@@ -46,7 +46,7 @@ public class ORMXMXQJHServiceImpl extends ServiceImpl<ORMXMXQJHMapper, ORMXMXQJH
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMXMRYPZXQService ormxmrypzxqService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmXmrypzxqService ormxmrypzxqService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IORMXMGLService ormxmglService;

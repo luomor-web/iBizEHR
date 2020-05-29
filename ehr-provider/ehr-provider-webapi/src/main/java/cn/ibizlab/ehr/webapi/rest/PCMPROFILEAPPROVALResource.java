@@ -180,10 +180,10 @@ public class PCMPROFILEAPPROVALResource {
                 .body(new PageImpl(pcmprofileapprovalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pcmprofileapprovalService.get(#pcmprofileapproval_id),'ehr-PCMPROFILEAPPROVAL-Update')")
-    @ApiOperation(value = "UpdateByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "UpdateByPCMPROFILE")
+    @ApiOperation(value = "UpdateByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "UpdateByPcmProfile")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/{pcmprofileapproval_id}")
     @Transactional
-    public ResponseEntity<PCMPROFILEAPPROVALDTO> updateByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmprofileapproval_id") String pcmprofileapproval_id, @RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
+    public ResponseEntity<PCMPROFILEAPPROVALDTO> updateByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmprofileapproval_id") String pcmprofileapproval_id, @RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
         PCMPROFILEAPPROVAL domain = pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldto);
         domain.setPcmprofileid(pcmprofile_id);
         domain.setPcmprofileapprovalid(pcmprofileapproval_id);
@@ -193,9 +193,9 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalService.getPcmprofileapprovalByEntities(this.pcmprofileapprovalMapping.toDomain(#pcmprofileapprovaldtos)),'ehr-PCMPROFILEAPPROVAL-Update')")
-    @ApiOperation(value = "UpdateBatchByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "UpdateBatchByPCMPROFILE")
+    @ApiOperation(value = "UpdateBatchByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "UpdateBatchByPcmProfile")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/batch")
-    public ResponseEntity<Boolean> updateBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
+    public ResponseEntity<Boolean> updateBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
         List<PCMPROFILEAPPROVAL> domainlist=pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldtos);
         for(PCMPROFILEAPPROVAL domain:domainlist){
             domain.setPcmprofileid(pcmprofile_id);
@@ -204,19 +204,19 @@ public class PCMPROFILEAPPROVALResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "GetDraftByPCMPROFILE")
+    @ApiOperation(value = "GetDraftByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "GetDraftByPcmProfile")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/getdraft")
-    public ResponseEntity<PCMPROFILEAPPROVALDTO> getDraftByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id) {
+    public ResponseEntity<PCMPROFILEAPPROVALDTO> getDraftByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id) {
         PCMPROFILEAPPROVAL domain = new PCMPROFILEAPPROVAL();
         domain.setPcmprofileid(pcmprofile_id);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileapprovalMapping.toDto(pcmprofileapprovalService.getDraft(domain)));
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalMapping.toDomain(#pcmprofileapprovaldto),'ehr-PCMPROFILEAPPROVAL-Create')")
-    @ApiOperation(value = "CreateByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "CreateByPCMPROFILE")
+    @ApiOperation(value = "CreateByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "CreateByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals")
     @Transactional
-    public ResponseEntity<PCMPROFILEAPPROVALDTO> createByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
+    public ResponseEntity<PCMPROFILEAPPROVALDTO> createByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
         PCMPROFILEAPPROVAL domain = pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldto);
         domain.setPcmprofileid(pcmprofile_id);
 		pcmprofileapprovalService.create(domain);
@@ -225,9 +225,9 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalMapping.toDomain(#pcmprofileapprovaldtos),'ehr-PCMPROFILEAPPROVAL-Create')")
-    @ApiOperation(value = "createBatchByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "createBatchByPCMPROFILE")
+    @ApiOperation(value = "createBatchByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "createBatchByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/batch")
-    public ResponseEntity<Boolean> createBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
+    public ResponseEntity<Boolean> createBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
         List<PCMPROFILEAPPROVAL> domainlist=pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldtos);
         for(PCMPROFILEAPPROVAL domain:domainlist){
             domain.setPcmprofileid(pcmprofile_id);
@@ -237,18 +237,18 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalMapping.toDomain(#pcmprofileapprovaldto),'ehr-PCMPROFILEAPPROVAL-Save')")
-    @ApiOperation(value = "SaveByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "SaveByPCMPROFILE")
+    @ApiOperation(value = "SaveByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "SaveByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/save")
-    public ResponseEntity<Boolean> saveByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
+    public ResponseEntity<Boolean> saveByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
         PCMPROFILEAPPROVAL domain = pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldto);
         domain.setPcmprofileid(pcmprofile_id);
         return ResponseEntity.status(HttpStatus.OK).body(pcmprofileapprovalService.save(domain));
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalMapping.toDomain(#pcmprofileapprovaldtos),'ehr-PCMPROFILEAPPROVAL-Save')")
-    @ApiOperation(value = "SaveBatchByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "SaveBatchByPCMPROFILE")
+    @ApiOperation(value = "SaveBatchByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "SaveBatchByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/savebatch")
-    public ResponseEntity<Boolean> saveBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
+    public ResponseEntity<Boolean> saveBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMPROFILEAPPROVALDTO> pcmprofileapprovaldtos) {
         List<PCMPROFILEAPPROVAL> domainlist=pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldtos);
         for(PCMPROFILEAPPROVAL domain:domainlist){
              domain.setPcmprofileid(pcmprofile_id);
@@ -258,40 +258,40 @@ public class PCMPROFILEAPPROVALResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalService.get(#pcmprofileapproval_id),'ehr-PCMPROFILEAPPROVAL-Remove')")
-    @ApiOperation(value = "RemoveByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "RemoveByPCMPROFILE")
+    @ApiOperation(value = "RemoveByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "RemoveByPcmProfile")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/{pcmprofileapproval_id}")
     @Transactional
-    public ResponseEntity<Boolean> removeByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmprofileapproval_id") String pcmprofileapproval_id) {
+    public ResponseEntity<Boolean> removeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmprofileapproval_id") String pcmprofileapproval_id) {
 		return ResponseEntity.status(HttpStatus.OK).body(pcmprofileapprovalService.remove(pcmprofileapproval_id));
     }
 
     @PreAuthorize("hasPermission(this.pcmprofileapprovalService.getPcmprofileapprovalByIds(#ids),'ehr-PCMPROFILEAPPROVAL-Remove')")
-    @ApiOperation(value = "RemoveBatchByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "RemoveBatchByPCMPROFILE")
+    @ApiOperation(value = "RemoveBatchByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "RemoveBatchByPcmProfile")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/batch")
-    public ResponseEntity<Boolean> removeBatchByPCMPROFILE(@RequestBody List<String> ids) {
+    public ResponseEntity<Boolean> removeBatchByPcmProfile(@RequestBody List<String> ids) {
         pcmprofileapprovalService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
     @PostAuthorize("hasPermission(this.pcmprofileapprovalMapping.toDomain(returnObject.body),'ehr-PCMPROFILEAPPROVAL-Get')")
-    @ApiOperation(value = "GetByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "GetByPCMPROFILE")
+    @ApiOperation(value = "GetByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "GetByPcmProfile")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/{pcmprofileapproval_id}")
-    public ResponseEntity<PCMPROFILEAPPROVALDTO> getByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmprofileapproval_id") String pcmprofileapproval_id) {
+    public ResponseEntity<PCMPROFILEAPPROVALDTO> getByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmprofileapproval_id") String pcmprofileapproval_id) {
         PCMPROFILEAPPROVAL domain = pcmprofileapprovalService.get(pcmprofileapproval_id);
         PCMPROFILEAPPROVALDTO dto = pcmprofileapprovalMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKeyByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" },  notes = "CheckKeyByPCMPROFILE")
+    @ApiOperation(value = "CheckKeyByPcmProfile", tags = {"PCMPROFILEAPPROVAL" },  notes = "CheckKeyByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/checkkey")
-    public ResponseEntity<Boolean> checkKeyByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
+    public ResponseEntity<Boolean> checkKeyByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALDTO pcmprofileapprovaldto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmprofileapprovalService.checkKey(pcmprofileapprovalMapping.toDomain(pcmprofileapprovaldto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" } ,notes = "fetchDEFAULTByPCMPROFILE")
+	@ApiOperation(value = "fetchDEFAULTByPcmProfile", tags = {"PCMPROFILEAPPROVAL" } ,notes = "fetchDEFAULTByPcmProfile")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/fetchdefault")
-	public ResponseEntity<List<PCMPROFILEAPPROVALDTO>> fetchPCMPROFILEAPPROVALDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMPROFILEAPPROVALSearchContext context) {
+	public ResponseEntity<List<PCMPROFILEAPPROVALDTO>> fetchPCMPROFILEAPPROVALDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMPROFILEAPPROVALSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<PCMPROFILEAPPROVAL> domains = pcmprofileapprovalService.searchDefault(context) ;
         List<PCMPROFILEAPPROVALDTO> list = pcmprofileapprovalMapping.toDto(domains.getContent());
@@ -303,18 +303,18 @@ public class PCMPROFILEAPPROVALResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" } ,notes = "searchDEFAULTByPCMPROFILE")
+	@ApiOperation(value = "searchDEFAULTByPcmProfile", tags = {"PCMPROFILEAPPROVAL" } ,notes = "searchDEFAULTByPcmProfile")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/searchdefault")
-	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchPCMPROFILEAPPROVALDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALSearchContext context) {
+	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchPCMPROFILEAPPROVALDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<PCMPROFILEAPPROVAL> domains = pcmprofileapprovalService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmprofileapprovalMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Disagree-all')")
-	@ApiOperation(value = "fetch拒绝ByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" } ,notes = "fetch拒绝ByPCMPROFILE")
+	@ApiOperation(value = "fetch拒绝ByPcmProfile", tags = {"PCMPROFILEAPPROVAL" } ,notes = "fetch拒绝ByPcmProfile")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/fetchdisagree")
-	public ResponseEntity<List<PCMPROFILEAPPROVALDTO>> fetchPCMPROFILEAPPROVALDisagreeByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMPROFILEAPPROVALSearchContext context) {
+	public ResponseEntity<List<PCMPROFILEAPPROVALDTO>> fetchPCMPROFILEAPPROVALDisagreeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMPROFILEAPPROVALSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<PCMPROFILEAPPROVAL> domains = pcmprofileapprovalService.searchDisagree(context) ;
         List<PCMPROFILEAPPROVALDTO> list = pcmprofileapprovalMapping.toDto(domains.getContent());
@@ -326,9 +326,9 @@ public class PCMPROFILEAPPROVALResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMPROFILEAPPROVAL-Disagree-all')")
-	@ApiOperation(value = "search拒绝ByPCMPROFILE", tags = {"PCMPROFILEAPPROVAL" } ,notes = "search拒绝ByPCMPROFILE")
+	@ApiOperation(value = "search拒绝ByPcmProfile", tags = {"PCMPROFILEAPPROVAL" } ,notes = "search拒绝ByPcmProfile")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmprofileapprovals/searchdisagree")
-	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchPCMPROFILEAPPROVALDisagreeByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALSearchContext context) {
+	public ResponseEntity<Page<PCMPROFILEAPPROVALDTO>> searchPCMPROFILEAPPROVALDisagreeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMPROFILEAPPROVALSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<PCMPROFILEAPPROVAL> domains = pcmprofileapprovalService.searchDisagree(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

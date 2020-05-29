@@ -158,28 +158,28 @@ public class PCMAWARDSWONSResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmawardswonsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @ApiOperation(value = "GetDraftByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "GetDraftByPCMPROFILE")
+    @ApiOperation(value = "GetDraftByPcmProfile", tags = {"PCMAWARDSWONS" },  notes = "GetDraftByPcmProfile")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/getdraft")
-    public ResponseEntity<PCMAWARDSWONSDTO> getDraftByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id) {
+    public ResponseEntity<PCMAWARDSWONSDTO> getDraftByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id) {
         PCMAWARDSWONS domain = new PCMAWARDSWONS();
         domain.setPcmprofileid(pcmprofile_id);
         return ResponseEntity.status(HttpStatus.OK).body(pcmawardswonsMapping.toDto(pcmawardswonsService.getDraft(domain)));
     }
 
     @PostAuthorize("hasPermission(this.pcmawardswonsMapping.toDomain(returnObject.body),'ehr-PCMAWARDSWONS-Get')")
-    @ApiOperation(value = "GetByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "GetByPCMPROFILE")
+    @ApiOperation(value = "GetByPcmProfile", tags = {"PCMAWARDSWONS" },  notes = "GetByPcmProfile")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/{pcmawardswons_id}")
-    public ResponseEntity<PCMAWARDSWONSDTO> getByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmawardswons_id") String pcmawardswons_id) {
+    public ResponseEntity<PCMAWARDSWONSDTO> getByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmawardswons_id") String pcmawardswons_id) {
         PCMAWARDSWONS domain = pcmawardswonsService.get(pcmawardswons_id);
         PCMAWARDSWONSDTO dto = pcmawardswonsMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
     @PreAuthorize("hasPermission(this.pcmawardswonsService.get(#pcmawardswons_id),'ehr-PCMAWARDSWONS-Update')")
-    @ApiOperation(value = "UpdateByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "UpdateByPCMPROFILE")
+    @ApiOperation(value = "UpdateByPcmProfile", tags = {"PCMAWARDSWONS" },  notes = "UpdateByPcmProfile")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/{pcmawardswons_id}")
     @Transactional
-    public ResponseEntity<PCMAWARDSWONSDTO> updateByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmawardswons_id") String pcmawardswons_id, @RequestBody PCMAWARDSWONSDTO pcmawardswonsdto) {
+    public ResponseEntity<PCMAWARDSWONSDTO> updateByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmawardswons_id") String pcmawardswons_id, @RequestBody PCMAWARDSWONSDTO pcmawardswonsdto) {
         PCMAWARDSWONS domain = pcmawardswonsMapping.toDomain(pcmawardswonsdto);
         domain.setPcmprofileid(pcmprofile_id);
         domain.setPcmawardswonsid(pcmawardswons_id);
@@ -189,9 +189,9 @@ public class PCMAWARDSWONSResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmawardswonsService.getPcmawardswonsByEntities(this.pcmawardswonsMapping.toDomain(#pcmawardswonsdtos)),'ehr-PCMAWARDSWONS-Update')")
-    @ApiOperation(value = "UpdateBatchByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "UpdateBatchByPCMPROFILE")
+    @ApiOperation(value = "UpdateBatchByPcmProfile", tags = {"PCMAWARDSWONS" },  notes = "UpdateBatchByPcmProfile")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/batch")
-    public ResponseEntity<Boolean> updateBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMAWARDSWONSDTO> pcmawardswonsdtos) {
+    public ResponseEntity<Boolean> updateBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMAWARDSWONSDTO> pcmawardswonsdtos) {
         List<PCMAWARDSWONS> domainlist=pcmawardswonsMapping.toDomain(pcmawardswonsdtos);
         for(PCMAWARDSWONS domain:domainlist){
             domain.setPcmprofileid(pcmprofile_id);
@@ -201,10 +201,10 @@ public class PCMAWARDSWONSResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmawardswonsMapping.toDomain(#pcmawardswonsdto),'ehr-PCMAWARDSWONS-Create')")
-    @ApiOperation(value = "CreateByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "CreateByPCMPROFILE")
+    @ApiOperation(value = "CreateByPcmProfile", tags = {"PCMAWARDSWONS" },  notes = "CreateByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons")
     @Transactional
-    public ResponseEntity<PCMAWARDSWONSDTO> createByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMAWARDSWONSDTO pcmawardswonsdto) {
+    public ResponseEntity<PCMAWARDSWONSDTO> createByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMAWARDSWONSDTO pcmawardswonsdto) {
         PCMAWARDSWONS domain = pcmawardswonsMapping.toDomain(pcmawardswonsdto);
         domain.setPcmprofileid(pcmprofile_id);
 		pcmawardswonsService.create(domain);
@@ -213,9 +213,9 @@ public class PCMAWARDSWONSResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmawardswonsMapping.toDomain(#pcmawardswonsdtos),'ehr-PCMAWARDSWONS-Create')")
-    @ApiOperation(value = "createBatchByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "createBatchByPCMPROFILE")
+    @ApiOperation(value = "createBatchByPcmProfile", tags = {"PCMAWARDSWONS" },  notes = "createBatchByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/batch")
-    public ResponseEntity<Boolean> createBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMAWARDSWONSDTO> pcmawardswonsdtos) {
+    public ResponseEntity<Boolean> createBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMAWARDSWONSDTO> pcmawardswonsdtos) {
         List<PCMAWARDSWONS> domainlist=pcmawardswonsMapping.toDomain(pcmawardswonsdtos);
         for(PCMAWARDSWONS domain:domainlist){
             domain.setPcmprofileid(pcmprofile_id);
@@ -224,25 +224,25 @@ public class PCMAWARDSWONSResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "CheckKeyByPCMPROFILE")
+    @ApiOperation(value = "CheckKeyByPcmProfile", tags = {"PCMAWARDSWONS" },  notes = "CheckKeyByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/checkkey")
-    public ResponseEntity<Boolean> checkKeyByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMAWARDSWONSDTO pcmawardswonsdto) {
+    public ResponseEntity<Boolean> checkKeyByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMAWARDSWONSDTO pcmawardswonsdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmawardswonsService.checkKey(pcmawardswonsMapping.toDomain(pcmawardswonsdto)));
     }
 
     @PreAuthorize("hasPermission(this.pcmawardswonsMapping.toDomain(#pcmawardswonsdto),'ehr-PCMAWARDSWONS-Save')")
-    @ApiOperation(value = "SaveByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "SaveByPCMPROFILE")
+    @ApiOperation(value = "SaveByPcmProfile", tags = {"PCMAWARDSWONS" },  notes = "SaveByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/save")
-    public ResponseEntity<Boolean> saveByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMAWARDSWONSDTO pcmawardswonsdto) {
+    public ResponseEntity<Boolean> saveByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMAWARDSWONSDTO pcmawardswonsdto) {
         PCMAWARDSWONS domain = pcmawardswonsMapping.toDomain(pcmawardswonsdto);
         domain.setPcmprofileid(pcmprofile_id);
         return ResponseEntity.status(HttpStatus.OK).body(pcmawardswonsService.save(domain));
     }
 
     @PreAuthorize("hasPermission(this.pcmawardswonsMapping.toDomain(#pcmawardswonsdtos),'ehr-PCMAWARDSWONS-Save')")
-    @ApiOperation(value = "SaveBatchByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "SaveBatchByPCMPROFILE")
+    @ApiOperation(value = "SaveBatchByPcmProfile", tags = {"PCMAWARDSWONS" },  notes = "SaveBatchByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/savebatch")
-    public ResponseEntity<Boolean> saveBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMAWARDSWONSDTO> pcmawardswonsdtos) {
+    public ResponseEntity<Boolean> saveBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<PCMAWARDSWONSDTO> pcmawardswonsdtos) {
         List<PCMAWARDSWONS> domainlist=pcmawardswonsMapping.toDomain(pcmawardswonsdtos);
         for(PCMAWARDSWONS domain:domainlist){
              domain.setPcmprofileid(pcmprofile_id);
@@ -252,25 +252,25 @@ public class PCMAWARDSWONSResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmawardswonsService.get(#pcmawardswons_id),'ehr-PCMAWARDSWONS-Remove')")
-    @ApiOperation(value = "RemoveByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "RemoveByPCMPROFILE")
+    @ApiOperation(value = "RemoveByPcmProfile", tags = {"PCMAWARDSWONS" },  notes = "RemoveByPcmProfile")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/{pcmawardswons_id}")
     @Transactional
-    public ResponseEntity<Boolean> removeByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmawardswons_id") String pcmawardswons_id) {
+    public ResponseEntity<Boolean> removeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("pcmawardswons_id") String pcmawardswons_id) {
 		return ResponseEntity.status(HttpStatus.OK).body(pcmawardswonsService.remove(pcmawardswons_id));
     }
 
     @PreAuthorize("hasPermission(this.pcmawardswonsService.getPcmawardswonsByIds(#ids),'ehr-PCMAWARDSWONS-Remove')")
-    @ApiOperation(value = "RemoveBatchByPCMPROFILE", tags = {"PCMAWARDSWONS" },  notes = "RemoveBatchByPCMPROFILE")
+    @ApiOperation(value = "RemoveBatchByPcmProfile", tags = {"PCMAWARDSWONS" },  notes = "RemoveBatchByPcmProfile")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/pcmawardswons/batch")
-    public ResponseEntity<Boolean> removeBatchByPCMPROFILE(@RequestBody List<String> ids) {
+    public ResponseEntity<Boolean> removeBatchByPcmProfile(@RequestBody List<String> ids) {
         pcmawardswonsService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMAWARDSWONS-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPCMPROFILE", tags = {"PCMAWARDSWONS" } ,notes = "fetchDEFAULTByPCMPROFILE")
+	@ApiOperation(value = "fetchDEFAULTByPcmProfile", tags = {"PCMAWARDSWONS" } ,notes = "fetchDEFAULTByPcmProfile")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/pcmawardswons/fetchdefault")
-	public ResponseEntity<List<PCMAWARDSWONSDTO>> fetchPCMAWARDSWONSDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMAWARDSWONSSearchContext context) {
+	public ResponseEntity<List<PCMAWARDSWONSDTO>> fetchPCMAWARDSWONSDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id,PCMAWARDSWONSSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<PCMAWARDSWONS> domains = pcmawardswonsService.searchDefault(context) ;
         List<PCMAWARDSWONSDTO> list = pcmawardswonsMapping.toDto(domains.getContent());
@@ -282,9 +282,9 @@ public class PCMAWARDSWONSResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMAWARDSWONS-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPCMPROFILE", tags = {"PCMAWARDSWONS" } ,notes = "searchDEFAULTByPCMPROFILE")
+	@ApiOperation(value = "searchDEFAULTByPcmProfile", tags = {"PCMAWARDSWONS" } ,notes = "searchDEFAULTByPcmProfile")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/pcmawardswons/searchdefault")
-	public ResponseEntity<Page<PCMAWARDSWONSDTO>> searchPCMAWARDSWONSDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMAWARDSWONSSearchContext context) {
+	public ResponseEntity<Page<PCMAWARDSWONSDTO>> searchPCMAWARDSWONSDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody PCMAWARDSWONSSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<PCMAWARDSWONS> domains = pcmawardswonsService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

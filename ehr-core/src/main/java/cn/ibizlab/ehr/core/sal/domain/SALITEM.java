@@ -125,7 +125,7 @@ public class SALITEM extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.sal.domain.SALSUBJECT salsubject;
+    private cn.ibizlab.ehr.core.sal.domain.SalSubject salsubject;
 
 
 

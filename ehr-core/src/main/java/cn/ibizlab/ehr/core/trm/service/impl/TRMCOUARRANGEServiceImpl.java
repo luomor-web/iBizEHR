@@ -46,22 +46,22 @@ public class TRMCOUARRANGEServiceImpl extends ServiceImpl<TRMCOUARRANGEMapper, T
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMEMPLOYRETIONService trmemployretionService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmEmployeeRetionService trmemployeeretionService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMAGENCYRECORDService trmagencyrecordService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmAgencyRecordService trmagencyrecordService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMCOURSESYSTEMService trmcoursesystemService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmCourseSystemService trmcoursesystemService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINACTAPPLYService trmtrainactapplyService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainActapplyService trmtrainactapplyService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMTRAINADDRESSService trmtrainaddressService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINAGENCYService trmtrainagencyService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainAgencyService trmtrainagencyService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMTRAINCOURSEService trmtraincourseService;
@@ -70,13 +70,13 @@ public class TRMCOUARRANGEServiceImpl extends ServiceImpl<TRMCOUARRANGEMapper, T
     private cn.ibizlab.ehr.core.trm.service.ITRMTRAINFACIESService trmtrainfaciesService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINPLANTERMService trmtrainplantermService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainPlantermService trmtrainplantermService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMTRAINTEACHERService trmtrainteacherService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRIANPERSONService trmtrianpersonService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainPersonService trmtrainpersonService;
 
     private int batchSize = 500;
 
@@ -301,9 +301,9 @@ public class TRMCOUARRANGEServiceImpl extends ServiceImpl<TRMCOUARRANGEMapper, T
     private void fillParentData(TRMCOUARRANGE et){
         //实体关系[DER1N_TRMCOUARRANGE_TRMAGENCYRECORD_TRMAGENCYRECORDID]
         if(!ObjectUtils.isEmpty(et.getTrmagencyrecordid())){
-            cn.ibizlab.ehr.core.trm.domain.TRMAGENCYRECORD trmagencyrecord=et.getTrmagencyrecord();
+            cn.ibizlab.ehr.core.trm.domain.TrmAgencyRecord trmagencyrecord=et.getTrmagencyrecord();
             if(ObjectUtils.isEmpty(trmagencyrecord)){
-                cn.ibizlab.ehr.core.trm.domain.TRMAGENCYRECORD majorEntity=trmagencyrecordService.get(et.getTrmagencyrecordid());
+                cn.ibizlab.ehr.core.trm.domain.TrmAgencyRecord majorEntity=trmagencyrecordService.get(et.getTrmagencyrecordid());
                 et.setTrmagencyrecord(majorEntity);
                 trmagencyrecord=majorEntity;
             }
@@ -311,9 +311,9 @@ public class TRMCOUARRANGEServiceImpl extends ServiceImpl<TRMCOUARRANGEMapper, T
         }
         //实体关系[DER1N_TRMCOUARRANGE_TRMCOURSESYSTEM_TRMCOURSESYSTEMID]
         if(!ObjectUtils.isEmpty(et.getTrmcoursesystemid())){
-            cn.ibizlab.ehr.core.trm.domain.TRMCOURSESYSTEM trmcoursesystem=et.getTrmcoursesystem();
+            cn.ibizlab.ehr.core.trm.domain.TrmCourseSystem trmcoursesystem=et.getTrmcoursesystem();
             if(ObjectUtils.isEmpty(trmcoursesystem)){
-                cn.ibizlab.ehr.core.trm.domain.TRMCOURSESYSTEM majorEntity=trmcoursesystemService.get(et.getTrmcoursesystemid());
+                cn.ibizlab.ehr.core.trm.domain.TrmCourseSystem majorEntity=trmcoursesystemService.get(et.getTrmcoursesystemid());
                 et.setTrmcoursesystem(majorEntity);
                 trmcoursesystem=majorEntity;
             }
@@ -321,9 +321,9 @@ public class TRMCOUARRANGEServiceImpl extends ServiceImpl<TRMCOUARRANGEMapper, T
         }
         //实体关系[DER1N_TRMCOUARRANGE_TRMTRAINACTAPPLY_TRMTRAINACTAPPLYID]
         if(!ObjectUtils.isEmpty(et.getTrmtrainactapplyid())){
-            cn.ibizlab.ehr.core.trm.domain.TRMTRAINACTAPPLY trmtrainactapply=et.getTrmtrainactapply();
+            cn.ibizlab.ehr.core.trm.domain.TrmTrainActapply trmtrainactapply=et.getTrmtrainactapply();
             if(ObjectUtils.isEmpty(trmtrainactapply)){
-                cn.ibizlab.ehr.core.trm.domain.TRMTRAINACTAPPLY majorEntity=trmtrainactapplyService.get(et.getTrmtrainactapplyid());
+                cn.ibizlab.ehr.core.trm.domain.TrmTrainActapply majorEntity=trmtrainactapplyService.get(et.getTrmtrainactapplyid());
                 et.setTrmtrainactapply(majorEntity);
                 trmtrainactapply=majorEntity;
             }
@@ -341,9 +341,9 @@ public class TRMCOUARRANGEServiceImpl extends ServiceImpl<TRMCOUARRANGEMapper, T
         }
         //实体关系[DER1N_TRMCOUARRANGE_TRMTRAINAGENCY_TRMTRAINAGENCYID]
         if(!ObjectUtils.isEmpty(et.getTrmtrainagencyid())){
-            cn.ibizlab.ehr.core.trm.domain.TRMTRAINAGENCY trmtrainagency=et.getTrmtrainagency();
+            cn.ibizlab.ehr.core.trm.domain.TrmTrainAgency trmtrainagency=et.getTrmtrainagency();
             if(ObjectUtils.isEmpty(trmtrainagency)){
-                cn.ibizlab.ehr.core.trm.domain.TRMTRAINAGENCY majorEntity=trmtrainagencyService.get(et.getTrmtrainagencyid());
+                cn.ibizlab.ehr.core.trm.domain.TrmTrainAgency majorEntity=trmtrainagencyService.get(et.getTrmtrainagencyid());
                 et.setTrmtrainagency(majorEntity);
                 trmtrainagency=majorEntity;
             }
@@ -371,9 +371,9 @@ public class TRMCOUARRANGEServiceImpl extends ServiceImpl<TRMCOUARRANGEMapper, T
         }
         //实体关系[DER1N_TRMCOUARRANGE_TRMTRAINPLANTERM_TRMTRAINPLANTERMID]
         if(!ObjectUtils.isEmpty(et.getTrmtrainplantermid())){
-            cn.ibizlab.ehr.core.trm.domain.TRMTRAINPLANTERM trmtrainplanterm=et.getTrmtrainplanterm();
+            cn.ibizlab.ehr.core.trm.domain.TrmTrainPlanterm trmtrainplanterm=et.getTrmtrainplanterm();
             if(ObjectUtils.isEmpty(trmtrainplanterm)){
-                cn.ibizlab.ehr.core.trm.domain.TRMTRAINPLANTERM majorEntity=trmtrainplantermService.get(et.getTrmtrainplantermid());
+                cn.ibizlab.ehr.core.trm.domain.TrmTrainPlanterm majorEntity=trmtrainplantermService.get(et.getTrmtrainplantermid());
                 et.setTrmtrainplanterm(majorEntity);
                 trmtrainplanterm=majorEntity;
             }
@@ -391,9 +391,9 @@ public class TRMCOUARRANGEServiceImpl extends ServiceImpl<TRMCOUARRANGEMapper, T
         }
         //实体关系[DER1N_TRMCOUARRANGE_TRMTRIANPERSON_TRMTRIANPERSONID]
         if(!ObjectUtils.isEmpty(et.getTrmtrianpersonid())){
-            cn.ibizlab.ehr.core.trm.domain.TRMTRIANPERSON trmtrianperson=et.getTrmtrianperson();
+            cn.ibizlab.ehr.core.trm.domain.TrmTrainPerson trmtrianperson=et.getTrmtrianperson();
             if(ObjectUtils.isEmpty(trmtrianperson)){
-                cn.ibizlab.ehr.core.trm.domain.TRMTRIANPERSON majorEntity=trmtrianpersonService.get(et.getTrmtrianpersonid());
+                cn.ibizlab.ehr.core.trm.domain.TrmTrainPerson majorEntity=trmtrainpersonService.get(et.getTrmtrianpersonid());
                 et.setTrmtrianperson(majorEntity);
                 trmtrianperson=majorEntity;
             }

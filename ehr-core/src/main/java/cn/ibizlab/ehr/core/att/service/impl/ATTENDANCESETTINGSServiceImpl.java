@@ -46,7 +46,7 @@ public class ATTENDANCESETTINGSServiceImpl extends ServiceImpl<ATTENDANCESETTING
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDENCESETUPService attendencesetupService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndenceSetupService attendencesetupService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
@@ -219,9 +219,9 @@ public class ATTENDANCESETTINGSServiceImpl extends ServiceImpl<ATTENDANCESETTING
     private void fillParentData(ATTENDANCESETTINGS et){
         //实体关系[DER1N_ATTENDANCESETTINGS_ATTENDENCESETUP_ATTENDENCESETUPID]
         if(!ObjectUtils.isEmpty(et.getAttendencesetupid())){
-            cn.ibizlab.ehr.core.att.domain.ATTENDENCESETUP attendencesetup=et.getAttendencesetup();
+            cn.ibizlab.ehr.core.att.domain.AttEndenceSetup attendencesetup=et.getAttendencesetup();
             if(ObjectUtils.isEmpty(attendencesetup)){
-                cn.ibizlab.ehr.core.att.domain.ATTENDENCESETUP majorEntity=attendencesetupService.get(et.getAttendencesetupid());
+                cn.ibizlab.ehr.core.att.domain.AttEndenceSetup majorEntity=attendencesetupService.get(et.getAttendencesetupid());
                 et.setAttendencesetup(majorEntity);
                 attendencesetup=majorEntity;
             }

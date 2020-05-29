@@ -18,7 +18,7 @@
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PIMPERSON" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PIMPERSONMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="soccompanywel" javaType="cn.ibizlab.ehr.core.soc.domain.SOCCOMPANYWEL" column="soccompanywelid" select="cn.ibizlab.ehr.core.soc.mapper.SOCCOMPANYWELMapper.selectById" fetchType="lazy"></association>
+		<association property="soccompanywel" javaType="cn.ibizlab.ehr.core.soc.domain.SocCompanyWel" column="soccompanywelid" select="cn.ibizlab.ehr.core.soc.mapper.SocCompanyWelMapper.selectById" fetchType="lazy"></association>
     </resultMap>
 
 	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SOCWELFAREINFO_PIMPERSON_PIMPERSONID] -->

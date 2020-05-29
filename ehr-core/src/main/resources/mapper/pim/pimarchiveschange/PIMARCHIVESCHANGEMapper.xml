@@ -22,7 +22,7 @@
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="ormorg2" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid2" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="pimarchives" javaType="cn.ibizlab.ehr.core.pim.domain.PIMARCHIVES" column="pimarchivesid" select="cn.ibizlab.ehr.core.pim.mapper.PIMARCHIVESMapper.selectById" fetchType="lazy"></association>
+		<association property="pimarchives" javaType="cn.ibizlab.ehr.core.pim.domain.PimArchives" column="pimarchivesid" select="cn.ibizlab.ehr.core.pim.mapper.PimArchivesMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PIMPERSON" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PIMPERSONMapper.selectById" fetchType="lazy"></association>
     </resultMap>

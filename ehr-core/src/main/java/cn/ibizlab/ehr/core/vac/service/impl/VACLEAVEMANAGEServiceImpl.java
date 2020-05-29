@@ -46,7 +46,7 @@ public class VACLEAVEMANAGEServiceImpl extends ServiceImpl<VACLEAVEMANAGEMapper,
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.vac.service.IVACLEAVEDETAILService vacleavedetailService;
+    private cn.ibizlab.ehr.core.vac.service.IVacLeaveDetailService vacleavedetailService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;

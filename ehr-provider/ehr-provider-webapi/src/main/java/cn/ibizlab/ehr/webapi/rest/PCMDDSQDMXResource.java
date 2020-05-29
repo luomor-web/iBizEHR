@@ -423,10 +423,10 @@ public class PCMDDSQDMXResource {
                 .body(new PageImpl(pcmddsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pcmddsqdmxService.get(#pcmddsqdmx_id),'ehr-PCMDDSQDMX-Update')")
-    @ApiOperation(value = "UpdateByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "UpdateByPCMDDSQD")
+    @ApiOperation(value = "UpdateByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "UpdateByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/{pcmddsqdmx_id}")
     @Transactional
-    public ResponseEntity<PCMDDSQDMXDTO> updateByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
+    public ResponseEntity<PCMDDSQDMXDTO> updateByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
         PCMDDSQDMX domain = pcmddsqdmxMapping.toDomain(pcmddsqdmxdto);
         domain.setPcmddsqdid(pcmddsqd_id);
         domain.setPcmddsqdmxid(pcmddsqdmx_id);
@@ -436,9 +436,9 @@ public class PCMDDSQDMXResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmddsqdmxService.getPcmddsqdmxByEntities(this.pcmddsqdmxMapping.toDomain(#pcmddsqdmxdtos)),'ehr-PCMDDSQDMX-Update')")
-    @ApiOperation(value = "UpdateBatchByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "UpdateBatchByPCMDDSQD")
+    @ApiOperation(value = "UpdateBatchByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "UpdateBatchByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/batch")
-    public ResponseEntity<Boolean> updateBatchByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody List<PCMDDSQDMXDTO> pcmddsqdmxdtos) {
+    public ResponseEntity<Boolean> updateBatchByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody List<PCMDDSQDMXDTO> pcmddsqdmxdtos) {
         List<PCMDDSQDMX> domainlist=pcmddsqdmxMapping.toDomain(pcmddsqdmxdtos);
         for(PCMDDSQDMX domain:domainlist){
             domain.setPcmddsqdid(pcmddsqd_id);
@@ -448,10 +448,10 @@ public class PCMDDSQDMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-DDUpdate-all')")
-    @ApiOperation(value = "调动更正ByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "调动更正ByPCMDDSQD")
+    @ApiOperation(value = "调动更正ByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "调动更正ByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/{pcmddsqdmx_id}/ddupdate")
     @Transactional
-    public ResponseEntity<PCMDDSQDMXDTO> dDUpdateByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
+    public ResponseEntity<PCMDDSQDMXDTO> dDUpdateByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
         PCMDDSQDMX domain = pcmddsqdmxMapping.toDomain(pcmddsqdmxdto);
         domain.setPcmddsqdid(pcmddsqd_id);
         domain = pcmddsqdmxService.dDUpdate(domain) ;
@@ -460,10 +460,10 @@ public class PCMDDSQDMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-SQBTG-all')")
-    @ApiOperation(value = "申请不通过ByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "申请不通过ByPCMDDSQD")
+    @ApiOperation(value = "申请不通过ByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "申请不通过ByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/{pcmddsqdmx_id}/sqbtg")
     @Transactional
-    public ResponseEntity<PCMDDSQDMXDTO> sQBTGByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
+    public ResponseEntity<PCMDDSQDMXDTO> sQBTGByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
         PCMDDSQDMX domain = pcmddsqdmxMapping.toDomain(pcmddsqdmxdto);
         domain.setPcmddsqdid(pcmddsqd_id);
         domain = pcmddsqdmxService.sQBTG(domain) ;
@@ -472,10 +472,10 @@ public class PCMDDSQDMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-JDCZ-all')")
-    @ApiOperation(value = "借调操作ByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "借调操作ByPCMDDSQD")
+    @ApiOperation(value = "借调操作ByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "借调操作ByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/{pcmddsqdmx_id}/jdcz")
     @Transactional
-    public ResponseEntity<PCMDDSQDMXDTO> jDCZByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
+    public ResponseEntity<PCMDDSQDMXDTO> jDCZByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
         PCMDDSQDMX domain = pcmddsqdmxMapping.toDomain(pcmddsqdmxdto);
         domain.setPcmddsqdid(pcmddsqd_id);
         domain = pcmddsqdmxService.jDCZ(domain) ;
@@ -483,19 +483,19 @@ public class PCMDDSQDMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmddsqdmxdto);
     }
 
-    @ApiOperation(value = "GetDraftByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "GetDraftByPCMDDSQD")
+    @ApiOperation(value = "GetDraftByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "GetDraftByPcmDdsqd")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/getdraft")
-    public ResponseEntity<PCMDDSQDMXDTO> getDraftByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id) {
+    public ResponseEntity<PCMDDSQDMXDTO> getDraftByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id) {
         PCMDDSQDMX domain = new PCMDDSQDMX();
         domain.setPcmddsqdid(pcmddsqd_id);
         return ResponseEntity.status(HttpStatus.OK).body(pcmddsqdmxMapping.toDto(pcmddsqdmxService.getDraft(domain)));
     }
 
     @PreAuthorize("hasPermission(this.pcmddsqdmxMapping.toDomain(#pcmddsqdmxdto),'ehr-PCMDDSQDMX-Create')")
-    @ApiOperation(value = "CreateByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "CreateByPCMDDSQD")
+    @ApiOperation(value = "CreateByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "CreateByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes")
     @Transactional
-    public ResponseEntity<PCMDDSQDMXDTO> createByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
+    public ResponseEntity<PCMDDSQDMXDTO> createByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
         PCMDDSQDMX domain = pcmddsqdmxMapping.toDomain(pcmddsqdmxdto);
         domain.setPcmddsqdid(pcmddsqd_id);
 		pcmddsqdmxService.create(domain);
@@ -504,9 +504,9 @@ public class PCMDDSQDMXResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmddsqdmxMapping.toDomain(#pcmddsqdmxdtos),'ehr-PCMDDSQDMX-Create')")
-    @ApiOperation(value = "createBatchByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "createBatchByPCMDDSQD")
+    @ApiOperation(value = "createBatchByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "createBatchByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/batch")
-    public ResponseEntity<Boolean> createBatchByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody List<PCMDDSQDMXDTO> pcmddsqdmxdtos) {
+    public ResponseEntity<Boolean> createBatchByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody List<PCMDDSQDMXDTO> pcmddsqdmxdtos) {
         List<PCMDDSQDMX> domainlist=pcmddsqdmxMapping.toDomain(pcmddsqdmxdtos);
         for(PCMDDSQDMX domain:domainlist){
             domain.setPcmddsqdid(pcmddsqd_id);
@@ -516,10 +516,10 @@ public class PCMDDSQDMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-DDCreate-all')")
-    @ApiOperation(value = "调动更新ByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "调动更新ByPCMDDSQD")
+    @ApiOperation(value = "调动更新ByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "调动更新ByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/{pcmddsqdmx_id}/ddcreate")
     @Transactional
-    public ResponseEntity<PCMDDSQDMXDTO> dDCreateByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
+    public ResponseEntity<PCMDDSQDMXDTO> dDCreateByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
         PCMDDSQDMX domain = pcmddsqdmxMapping.toDomain(pcmddsqdmxdto);
         domain.setPcmddsqdid(pcmddsqd_id);
         domain = pcmddsqdmxService.dDCreate(domain) ;
@@ -528,35 +528,35 @@ public class PCMDDSQDMXResource {
     }
 
     @PostAuthorize("hasPermission(this.pcmddsqdmxMapping.toDomain(returnObject.body),'ehr-PCMDDSQDMX-Get')")
-    @ApiOperation(value = "GetByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "GetByPCMDDSQD")
+    @ApiOperation(value = "GetByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "GetByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/{pcmddsqdmx_id}")
-    public ResponseEntity<PCMDDSQDMXDTO> getByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id) {
+    public ResponseEntity<PCMDDSQDMXDTO> getByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id) {
         PCMDDSQDMX domain = pcmddsqdmxService.get(pcmddsqdmx_id);
         PCMDDSQDMXDTO dto = pcmddsqdmxMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
     @PreAuthorize("hasPermission(this.pcmddsqdmxService.get(#pcmddsqdmx_id),'ehr-PCMDDSQDMX-Remove')")
-    @ApiOperation(value = "RemoveByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "RemoveByPCMDDSQD")
+    @ApiOperation(value = "RemoveByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "RemoveByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/{pcmddsqdmx_id}")
     @Transactional
-    public ResponseEntity<Boolean> removeByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id) {
+    public ResponseEntity<Boolean> removeByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id) {
 		return ResponseEntity.status(HttpStatus.OK).body(pcmddsqdmxService.remove(pcmddsqdmx_id));
     }
 
     @PreAuthorize("hasPermission(this.pcmddsqdmxService.getPcmddsqdmxByIds(#ids),'ehr-PCMDDSQDMX-Remove')")
-    @ApiOperation(value = "RemoveBatchByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "RemoveBatchByPCMDDSQD")
+    @ApiOperation(value = "RemoveBatchByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "RemoveBatchByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/batch")
-    public ResponseEntity<Boolean> removeBatchByPCMDDSQD(@RequestBody List<String> ids) {
+    public ResponseEntity<Boolean> removeBatchByPcmDdsqd(@RequestBody List<String> ids) {
         pcmddsqdmxService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-ZZSQ-all')")
-    @ApiOperation(value = "自助申请ByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "自助申请ByPCMDDSQD")
+    @ApiOperation(value = "自助申请ByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "自助申请ByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/{pcmddsqdmx_id}/zzsq")
     @Transactional
-    public ResponseEntity<PCMDDSQDMXDTO> zZSQByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
+    public ResponseEntity<PCMDDSQDMXDTO> zZSQByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
         PCMDDSQDMX domain = pcmddsqdmxMapping.toDomain(pcmddsqdmxdto);
         domain.setPcmddsqdid(pcmddsqd_id);
         domain = pcmddsqdmxService.zZSQ(domain) ;
@@ -564,17 +564,17 @@ public class PCMDDSQDMXResource {
         return ResponseEntity.status(HttpStatus.OK).body(pcmddsqdmxdto);
     }
 
-    @ApiOperation(value = "CheckKeyByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "CheckKeyByPCMDDSQD")
+    @ApiOperation(value = "CheckKeyByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "CheckKeyByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/checkkey")
-    public ResponseEntity<Boolean> checkKeyByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
+    public ResponseEntity<Boolean> checkKeyByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmddsqdmxService.checkKey(pcmddsqdmxMapping.toDomain(pcmddsqdmxdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-DDCZ-all')")
-    @ApiOperation(value = "调动操作ByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "调动操作ByPCMDDSQD")
+    @ApiOperation(value = "调动操作ByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "调动操作ByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/{pcmddsqdmx_id}/ddcz")
     @Transactional
-    public ResponseEntity<PCMDDSQDMXDTO> dDCZByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
+    public ResponseEntity<PCMDDSQDMXDTO> dDCZByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
         PCMDDSQDMX domain = pcmddsqdmxMapping.toDomain(pcmddsqdmxdto);
         domain.setPcmddsqdid(pcmddsqd_id);
         domain = pcmddsqdmxService.dDCZ(domain) ;
@@ -583,10 +583,10 @@ public class PCMDDSQDMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-SQTG-all')")
-    @ApiOperation(value = "申请通过ByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "申请通过ByPCMDDSQD")
+    @ApiOperation(value = "申请通过ByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "申请通过ByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/{pcmddsqdmx_id}/sqtg")
     @Transactional
-    public ResponseEntity<PCMDDSQDMXDTO> sQTGByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
+    public ResponseEntity<PCMDDSQDMXDTO> sQTGByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
         PCMDDSQDMX domain = pcmddsqdmxMapping.toDomain(pcmddsqdmxdto);
         domain.setPcmddsqdid(pcmddsqd_id);
         domain = pcmddsqdmxService.sQTG(domain) ;
@@ -595,18 +595,18 @@ public class PCMDDSQDMXResource {
     }
 
     @PreAuthorize("hasPermission(this.pcmddsqdmxMapping.toDomain(#pcmddsqdmxdto),'ehr-PCMDDSQDMX-Save')")
-    @ApiOperation(value = "SaveByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "SaveByPCMDDSQD")
+    @ApiOperation(value = "SaveByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "SaveByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/save")
-    public ResponseEntity<Boolean> saveByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
+    public ResponseEntity<Boolean> saveByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
         PCMDDSQDMX domain = pcmddsqdmxMapping.toDomain(pcmddsqdmxdto);
         domain.setPcmddsqdid(pcmddsqd_id);
         return ResponseEntity.status(HttpStatus.OK).body(pcmddsqdmxService.save(domain));
     }
 
     @PreAuthorize("hasPermission(this.pcmddsqdmxMapping.toDomain(#pcmddsqdmxdtos),'ehr-PCMDDSQDMX-Save')")
-    @ApiOperation(value = "SaveBatchByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "SaveBatchByPCMDDSQD")
+    @ApiOperation(value = "SaveBatchByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "SaveBatchByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/savebatch")
-    public ResponseEntity<Boolean> saveBatchByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody List<PCMDDSQDMXDTO> pcmddsqdmxdtos) {
+    public ResponseEntity<Boolean> saveBatchByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody List<PCMDDSQDMXDTO> pcmddsqdmxdtos) {
         List<PCMDDSQDMX> domainlist=pcmddsqdmxMapping.toDomain(pcmddsqdmxdtos);
         for(PCMDDSQDMX domain:domainlist){
              domain.setPcmddsqdid(pcmddsqd_id);
@@ -616,10 +616,10 @@ public class PCMDDSQDMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-JZCZ-all')")
-    @ApiOperation(value = "兼职操作ByPCMDDSQD", tags = {"PCMDDSQDMX" },  notes = "兼职操作ByPCMDDSQD")
+    @ApiOperation(value = "兼职操作ByPcmDdsqd", tags = {"PCMDDSQDMX" },  notes = "兼职操作ByPcmDdsqd")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/{pcmddsqdmx_id}/jzcz")
     @Transactional
-    public ResponseEntity<PCMDDSQDMXDTO> jZCZByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
+    public ResponseEntity<PCMDDSQDMXDTO> jZCZByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @PathVariable("pcmddsqdmx_id") String pcmddsqdmx_id, @RequestBody PCMDDSQDMXDTO pcmddsqdmxdto) {
         PCMDDSQDMX domain = pcmddsqdmxMapping.toDomain(pcmddsqdmxdto);
         domain.setPcmddsqdid(pcmddsqd_id);
         domain = pcmddsqdmxService.jZCZ(domain) ;
@@ -628,9 +628,9 @@ public class PCMDDSQDMXResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-JZSQMX-all')")
-	@ApiOperation(value = "fetch兼职申请明细（未审核完成）ByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "fetch兼职申请明细（未审核完成）ByPCMDDSQD")
+	@ApiOperation(value = "fetch兼职申请明细（未审核完成）ByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "fetch兼职申请明细（未审核完成）ByPcmDdsqd")
     @RequestMapping(method= RequestMethod.GET , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/fetchjzsqmx")
-	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXJZSQMXByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXJZSQMXByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchJZSQMX(context) ;
         List<PCMDDSQDMXDTO> list = pcmddsqdmxMapping.toDto(domains.getContent());
@@ -642,18 +642,18 @@ public class PCMDDSQDMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-JZSQMX-all')")
-	@ApiOperation(value = "search兼职申请明细（未审核完成）ByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "search兼职申请明细（未审核完成）ByPCMDDSQD")
+	@ApiOperation(value = "search兼职申请明细（未审核完成）ByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "search兼职申请明细（未审核完成）ByPcmDdsqd")
     @RequestMapping(method= RequestMethod.POST , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/searchjzsqmx")
-	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXJZSQMXByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXJZSQMXByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchJZSQMX(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmddsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-JDSQGR-all')")
-	@ApiOperation(value = "fetch借调申请（个人）ByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "fetch借调申请（个人）ByPCMDDSQD")
+	@ApiOperation(value = "fetch借调申请（个人）ByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "fetch借调申请（个人）ByPcmDdsqd")
     @RequestMapping(method= RequestMethod.GET , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/fetchjdsqgr")
-	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXJDSQGRByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXJDSQGRByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchJDSQGR(context) ;
         List<PCMDDSQDMXDTO> list = pcmddsqdmxMapping.toDto(domains.getContent());
@@ -665,18 +665,18 @@ public class PCMDDSQDMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-JDSQGR-all')")
-	@ApiOperation(value = "search借调申请（个人）ByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "search借调申请（个人）ByPCMDDSQD")
+	@ApiOperation(value = "search借调申请（个人）ByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "search借调申请（个人）ByPcmDdsqd")
     @RequestMapping(method= RequestMethod.POST , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/searchjdsqgr")
-	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXJDSQGRByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXJDSQGRByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchJDSQGR(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmddsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "fetchDEFAULTByPCMDDSQD")
+	@ApiOperation(value = "fetchDEFAULTByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "fetchDEFAULTByPcmDdsqd")
     @RequestMapping(method= RequestMethod.GET , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/fetchdefault")
-	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXDefaultByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXDefaultByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchDefault(context) ;
         List<PCMDDSQDMXDTO> list = pcmddsqdmxMapping.toDto(domains.getContent());
@@ -688,18 +688,18 @@ public class PCMDDSQDMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "searchDEFAULTByPCMDDSQD")
+	@ApiOperation(value = "searchDEFAULTByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "searchDEFAULTByPcmDdsqd")
     @RequestMapping(method= RequestMethod.POST , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/searchdefault")
-	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXDefaultByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXDefaultByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmddsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-JDSQMX-all')")
-	@ApiOperation(value = "fetch借调申请明细（未审核完成）ByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "fetch借调申请明细（未审核完成）ByPCMDDSQD")
+	@ApiOperation(value = "fetch借调申请明细（未审核完成）ByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "fetch借调申请明细（未审核完成）ByPcmDdsqd")
     @RequestMapping(method= RequestMethod.GET , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/fetchjdsqmx")
-	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXJDSQMXByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXJDSQMXByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchJDSQMX(context) ;
         List<PCMDDSQDMXDTO> list = pcmddsqdmxMapping.toDto(domains.getContent());
@@ -711,18 +711,18 @@ public class PCMDDSQDMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-JDSQMX-all')")
-	@ApiOperation(value = "search借调申请明细（未审核完成）ByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "search借调申请明细（未审核完成）ByPCMDDSQD")
+	@ApiOperation(value = "search借调申请明细（未审核完成）ByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "search借调申请明细（未审核完成）ByPcmDdsqd")
     @RequestMapping(method= RequestMethod.POST , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/searchjdsqmx")
-	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXJDSQMXByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXJDSQMXByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchJDSQMX(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmddsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-DDJL-all')")
-	@ApiOperation(value = "fetch调动记录ByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "fetch调动记录ByPCMDDSQD")
+	@ApiOperation(value = "fetch调动记录ByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "fetch调动记录ByPcmDdsqd")
     @RequestMapping(method= RequestMethod.GET , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/fetchddjl")
-	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXDDJLByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXDDJLByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchDDJL(context) ;
         List<PCMDDSQDMXDTO> list = pcmddsqdmxMapping.toDto(domains.getContent());
@@ -734,18 +734,18 @@ public class PCMDDSQDMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-DDJL-all')")
-	@ApiOperation(value = "search调动记录ByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "search调动记录ByPCMDDSQD")
+	@ApiOperation(value = "search调动记录ByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "search调动记录ByPcmDdsqd")
     @RequestMapping(method= RequestMethod.POST , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/searchddjl")
-	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXDDJLByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXDDJLByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchDDJL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmddsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-GBDDJL-all')")
-	@ApiOperation(value = "fetch调动记录ByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "fetch调动记录ByPCMDDSQD")
+	@ApiOperation(value = "fetch调动记录ByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "fetch调动记录ByPcmDdsqd")
     @RequestMapping(method= RequestMethod.GET , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/fetchgbddjl")
-	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXGBDDJLByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXGBDDJLByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchGBDDJL(context) ;
         List<PCMDDSQDMXDTO> list = pcmddsqdmxMapping.toDto(domains.getContent());
@@ -757,18 +757,18 @@ public class PCMDDSQDMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-GBDDJL-all')")
-	@ApiOperation(value = "search调动记录ByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "search调动记录ByPCMDDSQD")
+	@ApiOperation(value = "search调动记录ByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "search调动记录ByPcmDdsqd")
     @RequestMapping(method= RequestMethod.POST , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/searchgbddjl")
-	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXGBDDJLByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXGBDDJLByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchGBDDJL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmddsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-DDSQGR-all')")
-	@ApiOperation(value = "fetch调动申请（个人）ByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "fetch调动申请（个人）ByPCMDDSQD")
+	@ApiOperation(value = "fetch调动申请（个人）ByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "fetch调动申请（个人）ByPcmDdsqd")
     @RequestMapping(method= RequestMethod.GET , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/fetchddsqgr")
-	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXDDSQGRByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXDDSQGRByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchDDSQGR(context) ;
         List<PCMDDSQDMXDTO> list = pcmddsqdmxMapping.toDto(domains.getContent());
@@ -780,18 +780,18 @@ public class PCMDDSQDMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-DDSQGR-all')")
-	@ApiOperation(value = "search调动申请（个人）ByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "search调动申请（个人）ByPCMDDSQD")
+	@ApiOperation(value = "search调动申请（个人）ByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "search调动申请（个人）ByPcmDdsqd")
     @RequestMapping(method= RequestMethod.POST , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/searchddsqgr")
-	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXDDSQGRByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXDDSQGRByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchDDSQGR(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmddsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-DDMX-all')")
-	@ApiOperation(value = "fetch调动明细ByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "fetch调动明细ByPCMDDSQD")
+	@ApiOperation(value = "fetch调动明细ByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "fetch调动明细ByPcmDdsqd")
     @RequestMapping(method= RequestMethod.GET , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/fetchddmx")
-	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXDDMXByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXDDMXByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchDDMX(context) ;
         List<PCMDDSQDMXDTO> list = pcmddsqdmxMapping.toDto(domains.getContent());
@@ -803,18 +803,18 @@ public class PCMDDSQDMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-DDMX-all')")
-	@ApiOperation(value = "search调动明细ByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "search调动明细ByPCMDDSQD")
+	@ApiOperation(value = "search调动明细ByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "search调动明细ByPcmDdsqd")
     @RequestMapping(method= RequestMethod.POST , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/searchddmx")
-	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXDDMXByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXDDMXByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchDDMX(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmddsqdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-JZSQGR-all')")
-	@ApiOperation(value = "fetch兼职申请（个人）ByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "fetch兼职申请（个人）ByPCMDDSQD")
+	@ApiOperation(value = "fetch兼职申请（个人）ByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "fetch兼职申请（个人）ByPcmDdsqd")
     @RequestMapping(method= RequestMethod.GET , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/fetchjzsqgr")
-	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXJZSQGRByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<List<PCMDDSQDMXDTO>> fetchPCMDDSQDMXJZSQGRByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id,PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchJZSQGR(context) ;
         List<PCMDDSQDMXDTO> list = pcmddsqdmxMapping.toDto(domains.getContent());
@@ -826,9 +826,9 @@ public class PCMDDSQDMXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PCMDDSQDMX-JZSQGR-all')")
-	@ApiOperation(value = "search兼职申请（个人）ByPCMDDSQD", tags = {"PCMDDSQDMX" } ,notes = "search兼职申请（个人）ByPCMDDSQD")
+	@ApiOperation(value = "search兼职申请（个人）ByPcmDdsqd", tags = {"PCMDDSQDMX" } ,notes = "search兼职申请（个人）ByPcmDdsqd")
     @RequestMapping(method= RequestMethod.POST , value="/pcmddsqds/{pcmddsqd_id}/pcmddsqdmxes/searchjzsqgr")
-	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXJZSQGRByPCMDDSQD(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
+	public ResponseEntity<Page<PCMDDSQDMXDTO>> searchPCMDDSQDMXJZSQGRByPcmDdsqd(@PathVariable("pcmddsqd_id") String pcmddsqd_id, @RequestBody PCMDDSQDMXSearchContext context) {
         context.setN_pcmddsqdid_eq(pcmddsqd_id);
         Page<PCMDDSQDMX> domains = pcmddsqdmxService.searchJZSQGR(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

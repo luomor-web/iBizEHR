@@ -49,13 +49,13 @@ public class TRMTRAINTEACHERServiceImpl extends ServiceImpl<TRMTRAINTEACHERMappe
     private cn.ibizlab.ehr.core.trm.service.ITRMCOUARRANGEService trmcouarrangeService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTEACHERCHARGEService trmteacherchargeService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTeacherChargeService trmteacherchargeService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMTEACHERTRAINService trmteachertrainService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINPLANTERMService trmtrainplantermService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainPlantermService trmtrainplantermService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
@@ -64,7 +64,7 @@ public class TRMTRAINTEACHERServiceImpl extends ServiceImpl<TRMTRAINTEACHERMappe
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINAGENCYService trmtrainagencyService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainAgencyService trmtrainagencyService;
 
     private int batchSize = 500;
 
@@ -265,9 +265,9 @@ public class TRMTRAINTEACHERServiceImpl extends ServiceImpl<TRMTRAINTEACHERMappe
         }
         //实体关系[DER1N_TRMTRAINTEACHER_TRMTRAINAGENCY_TRMTRAINAGENCYID]
         if(!ObjectUtils.isEmpty(et.getTrmtrainagencyid())){
-            cn.ibizlab.ehr.core.trm.domain.TRMTRAINAGENCY trmtrainagency=et.getTrmtrainagency();
+            cn.ibizlab.ehr.core.trm.domain.TrmTrainAgency trmtrainagency=et.getTrmtrainagency();
             if(ObjectUtils.isEmpty(trmtrainagency)){
-                cn.ibizlab.ehr.core.trm.domain.TRMTRAINAGENCY majorEntity=trmtrainagencyService.get(et.getTrmtrainagencyid());
+                cn.ibizlab.ehr.core.trm.domain.TrmTrainAgency majorEntity=trmtrainagencyService.get(et.getTrmtrainagencyid());
                 et.setTrmtrainagency(majorEntity);
                 trmtrainagency=majorEntity;
             }

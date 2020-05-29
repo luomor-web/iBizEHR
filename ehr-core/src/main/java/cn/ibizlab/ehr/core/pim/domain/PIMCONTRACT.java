@@ -433,7 +433,7 @@ public class PIMCONTRACT extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.pim.domain.PIMLABOURCAMPANY pimlabourcampany;
+    private cn.ibizlab.ehr.core.pim.domain.PimLabourcampany pimlabourcampany;
 
     /**
      * 人员信息

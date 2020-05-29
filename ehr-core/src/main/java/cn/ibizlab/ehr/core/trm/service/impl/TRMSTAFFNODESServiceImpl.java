@@ -49,7 +49,7 @@ public class TRMSTAFFNODESServiceImpl extends ServiceImpl<TRMSTAFFNODESMapper, T
     private cn.ibizlab.ehr.core.trm.service.ITRMSTAFFService trmstaffService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINAGENCYService trmtrainagencyService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainAgencyService trmtrainagencyService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMTRAINCOURSEService trmtraincourseService;
@@ -217,9 +217,9 @@ public class TRMSTAFFNODESServiceImpl extends ServiceImpl<TRMSTAFFNODESMapper, T
         }
         //实体关系[DER1N_TRMSTAFFNODES_TRMTRAINAGENCY_TRMTRAINAGENCYID]
         if(!ObjectUtils.isEmpty(et.getTrmtrainagencyid())){
-            cn.ibizlab.ehr.core.trm.domain.TRMTRAINAGENCY trmtrainagency=et.getTrmtrainagency();
+            cn.ibizlab.ehr.core.trm.domain.TrmTrainAgency trmtrainagency=et.getTrmtrainagency();
             if(ObjectUtils.isEmpty(trmtrainagency)){
-                cn.ibizlab.ehr.core.trm.domain.TRMTRAINAGENCY majorEntity=trmtrainagencyService.get(et.getTrmtrainagencyid());
+                cn.ibizlab.ehr.core.trm.domain.TrmTrainAgency majorEntity=trmtrainagencyService.get(et.getTrmtrainagencyid());
                 et.setTrmtrainagency(majorEntity);
                 trmtrainagency=majorEntity;
             }

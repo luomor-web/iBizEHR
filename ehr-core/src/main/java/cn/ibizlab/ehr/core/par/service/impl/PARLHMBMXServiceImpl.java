@@ -46,7 +46,7 @@ public class PARLHMBMXServiceImpl extends ServiceImpl<PARLHMBMXMapper, PARLHMBMX
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARJXLHMBService parjxlhmbService;
+    private cn.ibizlab.ehr.core.par.service.IParJxlhmbService parjxlhmbService;
 
     private int batchSize = 500;
 
@@ -181,9 +181,9 @@ public class PARLHMBMXServiceImpl extends ServiceImpl<PARLHMBMXMapper, PARLHMBMX
     private void fillParentData(PARLHMBMX et){
         //实体关系[DER1N_PARLHMBMX_PARJXLHMB_PARJXLHMBID]
         if(!ObjectUtils.isEmpty(et.getParjxlhmbid())){
-            cn.ibizlab.ehr.core.par.domain.PARJXLHMB parjxlhmb=et.getParjxlhmb();
+            cn.ibizlab.ehr.core.par.domain.ParJxlhmb parjxlhmb=et.getParjxlhmb();
             if(ObjectUtils.isEmpty(parjxlhmb)){
-                cn.ibizlab.ehr.core.par.domain.PARJXLHMB majorEntity=parjxlhmbService.get(et.getParjxlhmbid());
+                cn.ibizlab.ehr.core.par.domain.ParJxlhmb majorEntity=parjxlhmbService.get(et.getParjxlhmbid());
                 et.setParjxlhmb(majorEntity);
                 parjxlhmb=majorEntity;
             }

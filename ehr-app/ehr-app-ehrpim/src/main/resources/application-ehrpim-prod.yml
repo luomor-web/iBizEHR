@@ -300,7 +300,7 @@ zuul:
       serviceId: ehr-webapi
       stripPrefix: false
     trmtrianperson:
-      path: /trmtrianpeople/**
+      path: /trmtrainpeople/**
       serviceId: ehr-webapi
       stripPrefix: false
     wfcore:

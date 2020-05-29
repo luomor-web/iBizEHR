@@ -158,25 +158,25 @@ public class TestResultResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(testresultMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
-    @ApiOperation(value = "GetDraftByPCMPROFILE", tags = {"TestResult" },  notes = "GetDraftByPCMPROFILE")
+    @ApiOperation(value = "GetDraftByPcmProfile", tags = {"TestResult" },  notes = "GetDraftByPcmProfile")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/testresults/getdraft")
-    public ResponseEntity<TestResultDTO> getDraftByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id) {
+    public ResponseEntity<TestResultDTO> getDraftByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id) {
         TestResult domain = new TestResult();
         domain.setPcmprofileid(pcmprofile_id);
         return ResponseEntity.status(HttpStatus.OK).body(testresultMapping.toDto(testresultService.getDraft(domain)));
     }
 
-    @ApiOperation(value = "CheckKeyByPCMPROFILE", tags = {"TestResult" },  notes = "CheckKeyByPCMPROFILE")
+    @ApiOperation(value = "CheckKeyByPcmProfile", tags = {"TestResult" },  notes = "CheckKeyByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/testresults/checkkey")
-    public ResponseEntity<Boolean> checkKeyByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TestResultDTO testresultdto) {
+    public ResponseEntity<Boolean> checkKeyByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TestResultDTO testresultdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(testresultService.checkKey(testresultMapping.toDomain(testresultdto)));
     }
 
     @PreAuthorize("hasPermission(this.testresultMapping.toDomain(#testresultdto),'ehr-TestResult-Create')")
-    @ApiOperation(value = "CreateByPCMPROFILE", tags = {"TestResult" },  notes = "CreateByPCMPROFILE")
+    @ApiOperation(value = "CreateByPcmProfile", tags = {"TestResult" },  notes = "CreateByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/testresults")
     @Transactional
-    public ResponseEntity<TestResultDTO> createByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TestResultDTO testresultdto) {
+    public ResponseEntity<TestResultDTO> createByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TestResultDTO testresultdto) {
         TestResult domain = testresultMapping.toDomain(testresultdto);
         domain.setPcmprofileid(pcmprofile_id);
 		testresultService.create(domain);
@@ -185,9 +185,9 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultMapping.toDomain(#testresultdtos),'ehr-TestResult-Create')")
-    @ApiOperation(value = "createBatchByPCMPROFILE", tags = {"TestResult" },  notes = "createBatchByPCMPROFILE")
+    @ApiOperation(value = "createBatchByPcmProfile", tags = {"TestResult" },  notes = "createBatchByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/testresults/batch")
-    public ResponseEntity<Boolean> createBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TestResultDTO> testresultdtos) {
+    public ResponseEntity<Boolean> createBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TestResultDTO> testresultdtos) {
         List<TestResult> domainlist=testresultMapping.toDomain(testresultdtos);
         for(TestResult domain:domainlist){
             domain.setPcmprofileid(pcmprofile_id);
@@ -197,18 +197,18 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultMapping.toDomain(#testresultdto),'ehr-TestResult-Save')")
-    @ApiOperation(value = "SaveByPCMPROFILE", tags = {"TestResult" },  notes = "SaveByPCMPROFILE")
+    @ApiOperation(value = "SaveByPcmProfile", tags = {"TestResult" },  notes = "SaveByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/testresults/save")
-    public ResponseEntity<Boolean> saveByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TestResultDTO testresultdto) {
+    public ResponseEntity<Boolean> saveByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TestResultDTO testresultdto) {
         TestResult domain = testresultMapping.toDomain(testresultdto);
         domain.setPcmprofileid(pcmprofile_id);
         return ResponseEntity.status(HttpStatus.OK).body(testresultService.save(domain));
     }
 
     @PreAuthorize("hasPermission(this.testresultMapping.toDomain(#testresultdtos),'ehr-TestResult-Save')")
-    @ApiOperation(value = "SaveBatchByPCMPROFILE", tags = {"TestResult" },  notes = "SaveBatchByPCMPROFILE")
+    @ApiOperation(value = "SaveBatchByPcmProfile", tags = {"TestResult" },  notes = "SaveBatchByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/testresults/savebatch")
-    public ResponseEntity<Boolean> saveBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TestResultDTO> testresultdtos) {
+    public ResponseEntity<Boolean> saveBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TestResultDTO> testresultdtos) {
         List<TestResult> domainlist=testresultMapping.toDomain(testresultdtos);
         for(TestResult domain:domainlist){
              domain.setPcmprofileid(pcmprofile_id);
@@ -218,19 +218,19 @@ public class TestResultResource {
     }
 
     @PostAuthorize("hasPermission(this.testresultMapping.toDomain(returnObject.body),'ehr-TestResult-Get')")
-    @ApiOperation(value = "GetByPCMPROFILE", tags = {"TestResult" },  notes = "GetByPCMPROFILE")
+    @ApiOperation(value = "GetByPcmProfile", tags = {"TestResult" },  notes = "GetByPcmProfile")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/testresults/{testresult_id}")
-    public ResponseEntity<TestResultDTO> getByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("testresult_id") String testresult_id) {
+    public ResponseEntity<TestResultDTO> getByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("testresult_id") String testresult_id) {
         TestResult domain = testresultService.get(testresult_id);
         TestResultDTO dto = testresultMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
     @PreAuthorize("hasPermission(this.testresultService.get(#testresult_id),'ehr-TestResult-Update')")
-    @ApiOperation(value = "UpdateByPCMPROFILE", tags = {"TestResult" },  notes = "UpdateByPCMPROFILE")
+    @ApiOperation(value = "UpdateByPcmProfile", tags = {"TestResult" },  notes = "UpdateByPcmProfile")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/testresults/{testresult_id}")
     @Transactional
-    public ResponseEntity<TestResultDTO> updateByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("testresult_id") String testresult_id, @RequestBody TestResultDTO testresultdto) {
+    public ResponseEntity<TestResultDTO> updateByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("testresult_id") String testresult_id, @RequestBody TestResultDTO testresultdto) {
         TestResult domain = testresultMapping.toDomain(testresultdto);
         domain.setPcmprofileid(pcmprofile_id);
         domain.setTestresultid(testresult_id);
@@ -240,9 +240,9 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultService.getTestresultByEntities(this.testresultMapping.toDomain(#testresultdtos)),'ehr-TestResult-Update')")
-    @ApiOperation(value = "UpdateBatchByPCMPROFILE", tags = {"TestResult" },  notes = "UpdateBatchByPCMPROFILE")
+    @ApiOperation(value = "UpdateBatchByPcmProfile", tags = {"TestResult" },  notes = "UpdateBatchByPcmProfile")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/testresults/batch")
-    public ResponseEntity<Boolean> updateBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TestResultDTO> testresultdtos) {
+    public ResponseEntity<Boolean> updateBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TestResultDTO> testresultdtos) {
         List<TestResult> domainlist=testresultMapping.toDomain(testresultdtos);
         for(TestResult domain:domainlist){
             domain.setPcmprofileid(pcmprofile_id);
@@ -252,25 +252,25 @@ public class TestResultResource {
     }
 
     @PreAuthorize("hasPermission(this.testresultService.get(#testresult_id),'ehr-TestResult-Remove')")
-    @ApiOperation(value = "RemoveByPCMPROFILE", tags = {"TestResult" },  notes = "RemoveByPCMPROFILE")
+    @ApiOperation(value = "RemoveByPcmProfile", tags = {"TestResult" },  notes = "RemoveByPcmProfile")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/testresults/{testresult_id}")
     @Transactional
-    public ResponseEntity<Boolean> removeByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("testresult_id") String testresult_id) {
+    public ResponseEntity<Boolean> removeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("testresult_id") String testresult_id) {
 		return ResponseEntity.status(HttpStatus.OK).body(testresultService.remove(testresult_id));
     }
 
     @PreAuthorize("hasPermission(this.testresultService.getTestresultByIds(#ids),'ehr-TestResult-Remove')")
-    @ApiOperation(value = "RemoveBatchByPCMPROFILE", tags = {"TestResult" },  notes = "RemoveBatchByPCMPROFILE")
+    @ApiOperation(value = "RemoveBatchByPcmProfile", tags = {"TestResult" },  notes = "RemoveBatchByPcmProfile")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/testresults/batch")
-    public ResponseEntity<Boolean> removeBatchByPCMPROFILE(@RequestBody List<String> ids) {
+    public ResponseEntity<Boolean> removeBatchByPcmProfile(@RequestBody List<String> ids) {
         testresultService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPCMPROFILE", tags = {"TestResult" } ,notes = "fetchDEFAULTByPCMPROFILE")
+	@ApiOperation(value = "fetchDEFAULTByPcmProfile", tags = {"TestResult" } ,notes = "fetchDEFAULTByPcmProfile")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/testresults/fetchdefault")
-	public ResponseEntity<List<TestResultDTO>> fetchTestResultDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,TestResultSearchContext context) {
+	public ResponseEntity<List<TestResultDTO>> fetchTestResultDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id,TestResultSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<TestResult> domains = testresultService.searchDefault(context) ;
         List<TestResultDTO> list = testresultMapping.toDto(domains.getContent());
@@ -282,9 +282,9 @@ public class TestResultResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TestResult-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPCMPROFILE", tags = {"TestResult" } ,notes = "searchDEFAULTByPCMPROFILE")
+	@ApiOperation(value = "searchDEFAULTByPcmProfile", tags = {"TestResult" } ,notes = "searchDEFAULTByPcmProfile")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/testresults/searchdefault")
-	public ResponseEntity<Page<TestResultDTO>> searchTestResultDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TestResultSearchContext context) {
+	public ResponseEntity<Page<TestResultDTO>> searchTestResultDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TestResultSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<TestResult> domains = testresultService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

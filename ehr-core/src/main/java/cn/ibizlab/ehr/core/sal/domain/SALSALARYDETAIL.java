@@ -153,7 +153,7 @@ public class SALSALARYDETAIL extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.sal.domain.SALSALARY salsalary;
+    private cn.ibizlab.ehr.core.sal.domain.SalSalary salsalary;
 
     /**
      * 
@@ -161,7 +161,7 @@ public class SALSALARYDETAIL extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.sal.domain.SALSCHEMEITEM salschemeitem;
+    private cn.ibizlab.ehr.core.sal.domain.SalSchemeItem salschemeitem;
 
 
 

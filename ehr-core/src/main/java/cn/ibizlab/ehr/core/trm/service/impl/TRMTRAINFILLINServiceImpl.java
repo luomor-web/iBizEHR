@@ -46,7 +46,7 @@ public class TRMTRAINFILLINServiceImpl extends ServiceImpl<TRMTRAINFILLINMapper,
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMDEMDEFTIONService trmdemdeftionService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmDemdeftionService trmdemdeftionService;
 
     private cn.ibizlab.ehr.core.trm.service.ITRMTRAINFILLINService trmtrainfillinService = this;
     @Autowired

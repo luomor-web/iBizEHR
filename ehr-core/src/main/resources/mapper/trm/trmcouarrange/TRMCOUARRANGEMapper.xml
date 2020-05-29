@@ -24,25 +24,25 @@
             
 		
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="trmagencyrecord" javaType="cn.ibizlab.ehr.core.trm.domain.TRMAGENCYRECORD" column="trmagencyrecordid" select="cn.ibizlab.ehr.core.trm.mapper.TRMAGENCYRECORDMapper.selectById" fetchType="lazy"></association>
+		<association property="trmagencyrecord" javaType="cn.ibizlab.ehr.core.trm.domain.TrmAgencyRecord" column="trmagencyrecordid" select="cn.ibizlab.ehr.core.trm.mapper.TrmAgencyRecordMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="trmcoursesystem" javaType="cn.ibizlab.ehr.core.trm.domain.TRMCOURSESYSTEM" column="trmcoursesystemid" select="cn.ibizlab.ehr.core.trm.mapper.TRMCOURSESYSTEMMapper.selectById" fetchType="lazy"></association>
+		<association property="trmcoursesystem" javaType="cn.ibizlab.ehr.core.trm.domain.TrmCourseSystem" column="trmcoursesystemid" select="cn.ibizlab.ehr.core.trm.mapper.TrmCourseSystemMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="trmtrainactapply" javaType="cn.ibizlab.ehr.core.trm.domain.TRMTRAINACTAPPLY" column="trmtrainactapplyid" select="cn.ibizlab.ehr.core.trm.mapper.TRMTRAINACTAPPLYMapper.selectById" fetchType="lazy"></association>
+		<association property="trmtrainactapply" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainActapply" column="trmtrainactapplyid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainActapplyMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="trmtrainaddress" javaType="cn.ibizlab.ehr.core.trm.domain.TRMTRAINADDRESS" column="trmtrainaddressid" select="cn.ibizlab.ehr.core.trm.mapper.TRMTRAINADDRESSMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="trmtrainagency" javaType="cn.ibizlab.ehr.core.trm.domain.TRMTRAINAGENCY" column="trmtrainagencyid" select="cn.ibizlab.ehr.core.trm.mapper.TRMTRAINAGENCYMapper.selectById" fetchType="lazy"></association>
+		<association property="trmtrainagency" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainAgency" column="trmtrainagencyid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainAgencyMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="trmtraincourse" javaType="cn.ibizlab.ehr.core.trm.domain.TRMTRAINCOURSE" column="trmtraincourseid" select="cn.ibizlab.ehr.core.trm.mapper.TRMTRAINCOURSEMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="trmtrainfacies" javaType="cn.ibizlab.ehr.core.trm.domain.TRMTRAINFACIES" column="trmtrainfaciesid" select="cn.ibizlab.ehr.core.trm.mapper.TRMTRAINFACIESMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="trmtrainplanterm" javaType="cn.ibizlab.ehr.core.trm.domain.TRMTRAINPLANTERM" column="trmtrainplantermid" select="cn.ibizlab.ehr.core.trm.mapper.TRMTRAINPLANTERMMapper.selectById" fetchType="lazy"></association>
+		<association property="trmtrainplanterm" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainPlanterm" column="trmtrainplantermid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainPlantermMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="trmtrainteacher" javaType="cn.ibizlab.ehr.core.trm.domain.TRMTRAINTEACHER" column="trmtrainteacherid" select="cn.ibizlab.ehr.core.trm.mapper.TRMTRAINTEACHERMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="trmtrianperson" javaType="cn.ibizlab.ehr.core.trm.domain.TRMTRIANPERSON" column="trmtrianpersonid" select="cn.ibizlab.ehr.core.trm.mapper.TRMTRIANPERSONMapper.selectById" fetchType="lazy"></association>
+		<association property="trmtrianperson" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainPerson" column="trmtrianpersonid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainPersonMapper.selectById" fetchType="lazy"></association>
     </resultMap>
 
 	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMCOUARRANGE_TRMAGENCYRECORD_TRMAGENCYRECORDID] -->

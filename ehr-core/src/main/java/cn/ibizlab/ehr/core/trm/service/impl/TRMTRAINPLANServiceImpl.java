@@ -46,7 +46,7 @@ public class TRMTRAINPLANServiceImpl extends ServiceImpl<TRMTRAINPLANMapper, TRM
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINPLANTERMService trmtrainplantermService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainPlantermService trmtrainplantermService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
@@ -55,10 +55,10 @@ public class TRMTRAINPLANServiceImpl extends ServiceImpl<TRMTRAINPLANMapper, TRM
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMDEMDEFTIONService trmdemdeftionService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmDemdeftionService trmdemdeftionService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMPLANFORMUService trmplanformuService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmPlanFormuService trmplanformuService;
 
     private int batchSize = 500;
 
@@ -243,9 +243,9 @@ public class TRMTRAINPLANServiceImpl extends ServiceImpl<TRMTRAINPLANMapper, TRM
         }
         //实体关系[DER1N_TRMTRAINPLAN_TRMDEMDEFTION_TRMDEMDEFTIONID]
         if(!ObjectUtils.isEmpty(et.getTrmdemdeftionid())){
-            cn.ibizlab.ehr.core.trm.domain.TRMDEMDEFTION trmdemdeftion=et.getTrmdemdeftion();
+            cn.ibizlab.ehr.core.trm.domain.TrmDemdeftion trmdemdeftion=et.getTrmdemdeftion();
             if(ObjectUtils.isEmpty(trmdemdeftion)){
-                cn.ibizlab.ehr.core.trm.domain.TRMDEMDEFTION majorEntity=trmdemdeftionService.get(et.getTrmdemdeftionid());
+                cn.ibizlab.ehr.core.trm.domain.TrmDemdeftion majorEntity=trmdemdeftionService.get(et.getTrmdemdeftionid());
                 et.setTrmdemdeftion(majorEntity);
                 trmdemdeftion=majorEntity;
             }
@@ -259,9 +259,9 @@ public class TRMTRAINPLANServiceImpl extends ServiceImpl<TRMTRAINPLANMapper, TRM
         }
         //实体关系[DER1N_TRMTRAINPLAN_TRMPLANFORMU_TRMPLANFORMUID]
         if(!ObjectUtils.isEmpty(et.getTrmplanformuid())){
-            cn.ibizlab.ehr.core.trm.domain.TRMPLANFORMU trmplanformu=et.getTrmplanformu();
+            cn.ibizlab.ehr.core.trm.domain.TrmPlanFormu trmplanformu=et.getTrmplanformu();
             if(ObjectUtils.isEmpty(trmplanformu)){
-                cn.ibizlab.ehr.core.trm.domain.TRMPLANFORMU majorEntity=trmplanformuService.get(et.getTrmplanformuid());
+                cn.ibizlab.ehr.core.trm.domain.TrmPlanFormu majorEntity=trmplanformuService.get(et.getTrmplanformuid());
                 et.setTrmplanformu(majorEntity);
                 trmplanformu=majorEntity;
             }

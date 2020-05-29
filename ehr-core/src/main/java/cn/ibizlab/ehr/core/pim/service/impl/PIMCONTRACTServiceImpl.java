@@ -55,7 +55,7 @@ public class PIMCONTRACTServiceImpl extends ServiceImpl<PIMCONTRACTMapper, PIMCO
     private cn.ibizlab.ehr.core.orm.service.IOrmSignOrgService ormsignorgService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMLABOURCAMPANYService pimlabourcampanyService;
+    private cn.ibizlab.ehr.core.pim.service.IPimLabourcampanyService pimlabourcampanyService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
@@ -364,9 +364,9 @@ public class PIMCONTRACTServiceImpl extends ServiceImpl<PIMCONTRACTMapper, PIMCO
         }
         //实体关系[DER1N_PIMCONTRACT_PIMLABOURCAMPANY_PIMLABOURCAMPANYID]
         if(!ObjectUtils.isEmpty(et.getPimlabourcampanyid())){
-            cn.ibizlab.ehr.core.pim.domain.PIMLABOURCAMPANY pimlabourcampany=et.getPimlabourcampany();
+            cn.ibizlab.ehr.core.pim.domain.PimLabourcampany pimlabourcampany=et.getPimlabourcampany();
             if(ObjectUtils.isEmpty(pimlabourcampany)){
-                cn.ibizlab.ehr.core.pim.domain.PIMLABOURCAMPANY majorEntity=pimlabourcampanyService.get(et.getPimlabourcampanyid());
+                cn.ibizlab.ehr.core.pim.domain.PimLabourcampany majorEntity=pimlabourcampanyService.get(et.getPimlabourcampanyid());
                 et.setPimlabourcampany(majorEntity);
                 pimlabourcampany=majorEntity;
             }

@@ -144,7 +144,7 @@ public class SALRULEDETAIL extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.sal.domain.SALPARAM salparam;
+    private cn.ibizlab.ehr.core.sal.domain.SalParam salparam;
 
     /**
      * 薪酬计算指标ID（对应值）
@@ -152,7 +152,7 @@ public class SALRULEDETAIL extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.sal.domain.SALPARAM salparam2;
+    private cn.ibizlab.ehr.core.sal.domain.SalParam salparam2;
 
     /**
      * 规则明细

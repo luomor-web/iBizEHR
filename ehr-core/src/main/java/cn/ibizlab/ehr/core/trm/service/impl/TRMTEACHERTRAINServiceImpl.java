@@ -52,7 +52,7 @@ public class TRMTEACHERTRAINServiceImpl extends ServiceImpl<TRMTEACHERTRAINMappe
     private cn.ibizlab.ehr.core.trm.service.ITRMTRAINCOURSEService trmtraincourseService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINPLANTERMService trmtrainplantermService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainPlantermService trmtrainplantermService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMTRAINTEACHERService trmtrainteacherService;
@@ -240,9 +240,9 @@ public class TRMTEACHERTRAINServiceImpl extends ServiceImpl<TRMTEACHERTRAINMappe
         }
         //实体关系[DER1N_TRMTEACHERTRAIN_TRMTRAINPLANTERM_TRMTRAINPLANTERMID]
         if(!ObjectUtils.isEmpty(et.getTrmtrainplantermid())){
-            cn.ibizlab.ehr.core.trm.domain.TRMTRAINPLANTERM trmtrainplanterm=et.getTrmtrainplanterm();
+            cn.ibizlab.ehr.core.trm.domain.TrmTrainPlanterm trmtrainplanterm=et.getTrmtrainplanterm();
             if(ObjectUtils.isEmpty(trmtrainplanterm)){
-                cn.ibizlab.ehr.core.trm.domain.TRMTRAINPLANTERM majorEntity=trmtrainplantermService.get(et.getTrmtrainplantermid());
+                cn.ibizlab.ehr.core.trm.domain.TrmTrainPlanterm majorEntity=trmtrainplantermService.get(et.getTrmtrainplantermid());
                 et.setTrmtrainplanterm(majorEntity);
                 trmtrainplanterm=majorEntity;
             }

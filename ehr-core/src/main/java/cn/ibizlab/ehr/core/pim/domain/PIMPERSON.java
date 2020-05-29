@@ -1185,7 +1185,7 @@ public class PIMPERSON extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.pcm.domain.PCMRCXL pcmrcxl;
+    private cn.ibizlab.ehr.core.pcm.domain.PcmRcxl pcmrcxl;
 
     /**
      * 

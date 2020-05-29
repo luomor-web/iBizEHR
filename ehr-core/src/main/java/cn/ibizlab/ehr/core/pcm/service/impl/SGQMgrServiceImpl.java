@@ -46,7 +46,7 @@ public class SGQMgrServiceImpl extends ServiceImpl<SGQMgrMapper, SGQMgr> impleme
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMBDSQDMXService pcmbdsqdmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmBdsqdmxService pcmbdsqdmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;

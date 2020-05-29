@@ -46,7 +46,7 @@ public class PIMQUALTYPEServiceImpl extends ServiceImpl<PIMQUALTYPEMapper, PIMQU
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMQUALMAJORService pimqualmajorService;
+    private cn.ibizlab.ehr.core.pim.service.IPimQualMajorService pimqualmajorService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMVOCATIONALService pimvocationalService;

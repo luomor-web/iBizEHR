@@ -192,10 +192,10 @@ public class PIMARCHIVESCHANGEResource {
                 .body(new PageImpl(pimarchiveschangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pimarchiveschangeService.get(#pimarchiveschange_id),'ehr-PIMARCHIVESCHANGE-Update')")
-    @ApiOperation(value = "UpdateByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "UpdateByPIMARCHIVES")
+    @ApiOperation(value = "UpdateByPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "UpdateByPimArchives")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschange_id}")
     @Transactional
-    public ResponseEntity<PIMARCHIVESCHANGEDTO> updateByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
+    public ResponseEntity<PIMARCHIVESCHANGEDTO> updateByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
         PIMARCHIVESCHANGE domain = pimarchiveschangeMapping.toDomain(pimarchiveschangedto);
         domain.setPimarchivesid(pimarchives_id);
         domain.setPimarchiveschangeid(pimarchiveschange_id);
@@ -205,9 +205,9 @@ public class PIMARCHIVESCHANGEResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchiveschangeService.getPimarchiveschangeByEntities(this.pimarchiveschangeMapping.toDomain(#pimarchiveschangedtos)),'ehr-PIMARCHIVESCHANGE-Update')")
-    @ApiOperation(value = "UpdateBatchByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "UpdateBatchByPIMARCHIVES")
+    @ApiOperation(value = "UpdateBatchByPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "UpdateBatchByPimArchives")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/batch")
-    public ResponseEntity<Boolean> updateBatchByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
+    public ResponseEntity<Boolean> updateBatchByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
         List<PIMARCHIVESCHANGE> domainlist=pimarchiveschangeMapping.toDomain(pimarchiveschangedtos);
         for(PIMARCHIVESCHANGE domain:domainlist){
             domain.setPimarchivesid(pimarchives_id);
@@ -217,19 +217,19 @@ public class PIMARCHIVESCHANGEResource {
     }
 
     @PostAuthorize("hasPermission(this.pimarchiveschangeMapping.toDomain(returnObject.body),'ehr-PIMARCHIVESCHANGE-Get')")
-    @ApiOperation(value = "GetByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "GetByPIMARCHIVES")
+    @ApiOperation(value = "GetByPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "GetByPimArchives")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschange_id}")
-    public ResponseEntity<PIMARCHIVESCHANGEDTO> getByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id) {
+    public ResponseEntity<PIMARCHIVESCHANGEDTO> getByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id) {
         PIMARCHIVESCHANGE domain = pimarchiveschangeService.get(pimarchiveschange_id);
         PIMARCHIVESCHANGEDTO dto = pimarchiveschangeMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
     @PreAuthorize("hasPermission(this.pimarchiveschangeMapping.toDomain(#pimarchiveschangedto),'ehr-PIMARCHIVESCHANGE-Create')")
-    @ApiOperation(value = "CreateByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "CreateByPIMARCHIVES")
+    @ApiOperation(value = "CreateByPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "CreateByPimArchives")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges")
     @Transactional
-    public ResponseEntity<PIMARCHIVESCHANGEDTO> createByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
+    public ResponseEntity<PIMARCHIVESCHANGEDTO> createByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
         PIMARCHIVESCHANGE domain = pimarchiveschangeMapping.toDomain(pimarchiveschangedto);
         domain.setPimarchivesid(pimarchives_id);
 		pimarchiveschangeService.create(domain);
@@ -238,9 +238,9 @@ public class PIMARCHIVESCHANGEResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchiveschangeMapping.toDomain(#pimarchiveschangedtos),'ehr-PIMARCHIVESCHANGE-Create')")
-    @ApiOperation(value = "createBatchByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "createBatchByPIMARCHIVES")
+    @ApiOperation(value = "createBatchByPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "createBatchByPimArchives")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/batch")
-    public ResponseEntity<Boolean> createBatchByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
+    public ResponseEntity<Boolean> createBatchByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
         List<PIMARCHIVESCHANGE> domainlist=pimarchiveschangeMapping.toDomain(pimarchiveschangedtos);
         for(PIMARCHIVESCHANGE domain:domainlist){
             domain.setPimarchivesid(pimarchives_id);
@@ -249,25 +249,25 @@ public class PIMARCHIVESCHANGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "GetDraftByPIMARCHIVES")
+    @ApiOperation(value = "GetDraftByPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "GetDraftByPimArchives")
     @RequestMapping(method = RequestMethod.GET, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/getdraft")
-    public ResponseEntity<PIMARCHIVESCHANGEDTO> getDraftByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id) {
+    public ResponseEntity<PIMARCHIVESCHANGEDTO> getDraftByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id) {
         PIMARCHIVESCHANGE domain = new PIMARCHIVESCHANGE();
         domain.setPimarchivesid(pimarchives_id);
         return ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangeMapping.toDto(pimarchiveschangeService.getDraft(domain)));
     }
 
-    @ApiOperation(value = "CheckKeyByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "CheckKeyByPIMARCHIVES")
+    @ApiOperation(value = "CheckKeyByPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "CheckKeyByPimArchives")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/checkkey")
-    public ResponseEntity<Boolean> checkKeyByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
+    public ResponseEntity<Boolean> checkKeyByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangeService.checkKey(pimarchiveschangeMapping.toDomain(pimarchiveschangedto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-UpdatePersonFile-all')")
-    @ApiOperation(value = "更新档案信息ByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "更新档案信息ByPIMARCHIVES")
+    @ApiOperation(value = "更新档案信息ByPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "更新档案信息ByPimArchives")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschange_id}/updatepersonfile")
     @Transactional
-    public ResponseEntity<PIMARCHIVESCHANGEDTO> updatePersonFileByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
+    public ResponseEntity<PIMARCHIVESCHANGEDTO> updatePersonFileByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
         PIMARCHIVESCHANGE domain = pimarchiveschangeMapping.toDomain(pimarchiveschangedto);
         domain.setPimarchivesid(pimarchives_id);
         domain = pimarchiveschangeService.updatePersonFile(domain) ;
@@ -276,18 +276,18 @@ public class PIMARCHIVESCHANGEResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchiveschangeMapping.toDomain(#pimarchiveschangedto),'ehr-PIMARCHIVESCHANGE-Save')")
-    @ApiOperation(value = "SaveByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "SaveByPIMARCHIVES")
+    @ApiOperation(value = "SaveByPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "SaveByPimArchives")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/save")
-    public ResponseEntity<Boolean> saveByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
+    public ResponseEntity<Boolean> saveByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
         PIMARCHIVESCHANGE domain = pimarchiveschangeMapping.toDomain(pimarchiveschangedto);
         domain.setPimarchivesid(pimarchives_id);
         return ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangeService.save(domain));
     }
 
     @PreAuthorize("hasPermission(this.pimarchiveschangeMapping.toDomain(#pimarchiveschangedtos),'ehr-PIMARCHIVESCHANGE-Save')")
-    @ApiOperation(value = "SaveBatchByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "SaveBatchByPIMARCHIVES")
+    @ApiOperation(value = "SaveBatchByPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "SaveBatchByPimArchives")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/savebatch")
-    public ResponseEntity<Boolean> saveBatchByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
+    public ResponseEntity<Boolean> saveBatchByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
         List<PIMARCHIVESCHANGE> domainlist=pimarchiveschangeMapping.toDomain(pimarchiveschangedtos);
         for(PIMARCHIVESCHANGE domain:domainlist){
              domain.setPimarchivesid(pimarchives_id);
@@ -297,25 +297,25 @@ public class PIMARCHIVESCHANGEResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchiveschangeService.get(#pimarchiveschange_id),'ehr-PIMARCHIVESCHANGE-Remove')")
-    @ApiOperation(value = "RemoveByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "RemoveByPIMARCHIVES")
+    @ApiOperation(value = "RemoveByPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "RemoveByPimArchives")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschange_id}")
     @Transactional
-    public ResponseEntity<Boolean> removeByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id) {
+    public ResponseEntity<Boolean> removeByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id) {
 		return ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangeService.remove(pimarchiveschange_id));
     }
 
     @PreAuthorize("hasPermission(this.pimarchiveschangeService.getPimarchiveschangeByIds(#ids),'ehr-PIMARCHIVESCHANGE-Remove')")
-    @ApiOperation(value = "RemoveBatchByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "RemoveBatchByPIMARCHIVES")
+    @ApiOperation(value = "RemoveBatchByPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "RemoveBatchByPimArchives")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimarchives/{pimarchives_id}/pimarchiveschanges/batch")
-    public ResponseEntity<Boolean> removeBatchByPIMARCHIVES(@RequestBody List<String> ids) {
+    public ResponseEntity<Boolean> removeBatchByPimArchives(@RequestBody List<String> ids) {
         pimarchiveschangeService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-DADCJL-all')")
-	@ApiOperation(value = "fetch档案调出记录ByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" } ,notes = "fetch档案调出记录ByPIMARCHIVES")
+	@ApiOperation(value = "fetch档案调出记录ByPimArchives", tags = {"PIMARCHIVESCHANGE" } ,notes = "fetch档案调出记录ByPimArchives")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/{pimarchives_id}/pimarchiveschanges/fetchdadcjl")
-	public ResponseEntity<List<PIMARCHIVESCHANGEDTO>> fetchPIMARCHIVESCHANGEDADCJLByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESCHANGESearchContext context) {
+	public ResponseEntity<List<PIMARCHIVESCHANGEDTO>> fetchPIMARCHIVESCHANGEDADCJLByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESCHANGESearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDADCJL(context) ;
         List<PIMARCHIVESCHANGEDTO> list = pimarchiveschangeMapping.toDto(domains.getContent());
@@ -327,18 +327,18 @@ public class PIMARCHIVESCHANGEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-DADCJL-all')")
-	@ApiOperation(value = "search档案调出记录ByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" } ,notes = "search档案调出记录ByPIMARCHIVES")
+	@ApiOperation(value = "search档案调出记录ByPimArchives", tags = {"PIMARCHIVESCHANGE" } ,notes = "search档案调出记录ByPimArchives")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchives/{pimarchives_id}/pimarchiveschanges/searchdadcjl")
-	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchPIMARCHIVESCHANGEDADCJLByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGESearchContext context) {
+	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchPIMARCHIVESCHANGEDADCJLByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGESearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDADCJL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchiveschangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" } ,notes = "fetchDEFAULTByPIMARCHIVES")
+	@ApiOperation(value = "fetchDEFAULTByPimArchives", tags = {"PIMARCHIVESCHANGE" } ,notes = "fetchDEFAULTByPimArchives")
     @RequestMapping(method= RequestMethod.GET , value="/pimarchives/{pimarchives_id}/pimarchiveschanges/fetchdefault")
-	public ResponseEntity<List<PIMARCHIVESCHANGEDTO>> fetchPIMARCHIVESCHANGEDefaultByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESCHANGESearchContext context) {
+	public ResponseEntity<List<PIMARCHIVESCHANGEDTO>> fetchPIMARCHIVESCHANGEDefaultByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESCHANGESearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDefault(context) ;
         List<PIMARCHIVESCHANGEDTO> list = pimarchiveschangeMapping.toDto(domains.getContent());
@@ -350,19 +350,19 @@ public class PIMARCHIVESCHANGEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" } ,notes = "searchDEFAULTByPIMARCHIVES")
+	@ApiOperation(value = "searchDEFAULTByPimArchives", tags = {"PIMARCHIVESCHANGE" } ,notes = "searchDEFAULTByPimArchives")
     @RequestMapping(method= RequestMethod.POST , value="/pimarchives/{pimarchives_id}/pimarchiveschanges/searchdefault")
-	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchPIMARCHIVESCHANGEDefaultByPIMARCHIVES(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGESearchContext context) {
+	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchPIMARCHIVESCHANGEDefaultByPimArchives(@PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGESearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchiveschangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.pimarchiveschangeService.get(#pimarchiveschange_id),'ehr-PIMARCHIVESCHANGE-Update')")
-    @ApiOperation(value = "UpdateByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "UpdateByPIMPERSONPIMARCHIVES")
+    @ApiOperation(value = "UpdateByPIMPERSONPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "UpdateByPIMPERSONPimArchives")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschange_id}")
     @Transactional
-    public ResponseEntity<PIMARCHIVESCHANGEDTO> updateByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
+    public ResponseEntity<PIMARCHIVESCHANGEDTO> updateByPIMPERSONPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
         PIMARCHIVESCHANGE domain = pimarchiveschangeMapping.toDomain(pimarchiveschangedto);
         domain.setPimarchivesid(pimarchives_id);
         domain.setPimarchiveschangeid(pimarchiveschange_id);
@@ -372,9 +372,9 @@ public class PIMARCHIVESCHANGEResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchiveschangeService.getPimarchiveschangeByEntities(this.pimarchiveschangeMapping.toDomain(#pimarchiveschangedtos)),'ehr-PIMARCHIVESCHANGE-Update')")
-    @ApiOperation(value = "UpdateBatchByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "UpdateBatchByPIMPERSONPIMARCHIVES")
+    @ApiOperation(value = "UpdateBatchByPIMPERSONPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "UpdateBatchByPIMPERSONPimArchives")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/batch")
-    public ResponseEntity<Boolean> updateBatchByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
+    public ResponseEntity<Boolean> updateBatchByPIMPERSONPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
         List<PIMARCHIVESCHANGE> domainlist=pimarchiveschangeMapping.toDomain(pimarchiveschangedtos);
         for(PIMARCHIVESCHANGE domain:domainlist){
             domain.setPimarchivesid(pimarchives_id);
@@ -384,19 +384,19 @@ public class PIMARCHIVESCHANGEResource {
     }
 
     @PostAuthorize("hasPermission(this.pimarchiveschangeMapping.toDomain(returnObject.body),'ehr-PIMARCHIVESCHANGE-Get')")
-    @ApiOperation(value = "GetByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "GetByPIMPERSONPIMARCHIVES")
+    @ApiOperation(value = "GetByPIMPERSONPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "GetByPIMPERSONPimArchives")
 	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschange_id}")
-    public ResponseEntity<PIMARCHIVESCHANGEDTO> getByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id) {
+    public ResponseEntity<PIMARCHIVESCHANGEDTO> getByPIMPERSONPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id) {
         PIMARCHIVESCHANGE domain = pimarchiveschangeService.get(pimarchiveschange_id);
         PIMARCHIVESCHANGEDTO dto = pimarchiveschangeMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
     @PreAuthorize("hasPermission(this.pimarchiveschangeMapping.toDomain(#pimarchiveschangedto),'ehr-PIMARCHIVESCHANGE-Create')")
-    @ApiOperation(value = "CreateByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "CreateByPIMPERSONPIMARCHIVES")
+    @ApiOperation(value = "CreateByPIMPERSONPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "CreateByPIMPERSONPimArchives")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges")
     @Transactional
-    public ResponseEntity<PIMARCHIVESCHANGEDTO> createByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
+    public ResponseEntity<PIMARCHIVESCHANGEDTO> createByPIMPERSONPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
         PIMARCHIVESCHANGE domain = pimarchiveschangeMapping.toDomain(pimarchiveschangedto);
         domain.setPimarchivesid(pimarchives_id);
 		pimarchiveschangeService.create(domain);
@@ -405,9 +405,9 @@ public class PIMARCHIVESCHANGEResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchiveschangeMapping.toDomain(#pimarchiveschangedtos),'ehr-PIMARCHIVESCHANGE-Create')")
-    @ApiOperation(value = "createBatchByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "createBatchByPIMPERSONPIMARCHIVES")
+    @ApiOperation(value = "createBatchByPIMPERSONPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "createBatchByPIMPERSONPimArchives")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/batch")
-    public ResponseEntity<Boolean> createBatchByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
+    public ResponseEntity<Boolean> createBatchByPIMPERSONPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
         List<PIMARCHIVESCHANGE> domainlist=pimarchiveschangeMapping.toDomain(pimarchiveschangedtos);
         for(PIMARCHIVESCHANGE domain:domainlist){
             domain.setPimarchivesid(pimarchives_id);
@@ -416,25 +416,25 @@ public class PIMARCHIVESCHANGEResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "GetDraftByPIMPERSONPIMARCHIVES")
+    @ApiOperation(value = "GetDraftByPIMPERSONPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "GetDraftByPIMPERSONPimArchives")
     @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/getdraft")
-    public ResponseEntity<PIMARCHIVESCHANGEDTO> getDraftByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id) {
+    public ResponseEntity<PIMARCHIVESCHANGEDTO> getDraftByPIMPERSONPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id) {
         PIMARCHIVESCHANGE domain = new PIMARCHIVESCHANGE();
         domain.setPimarchivesid(pimarchives_id);
         return ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangeMapping.toDto(pimarchiveschangeService.getDraft(domain)));
     }
 
-    @ApiOperation(value = "CheckKeyByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "CheckKeyByPIMPERSONPIMARCHIVES")
+    @ApiOperation(value = "CheckKeyByPIMPERSONPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "CheckKeyByPIMPERSONPimArchives")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/checkkey")
-    public ResponseEntity<Boolean> checkKeyByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
+    public ResponseEntity<Boolean> checkKeyByPIMPERSONPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangeService.checkKey(pimarchiveschangeMapping.toDomain(pimarchiveschangedto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-UpdatePersonFile-all')")
-    @ApiOperation(value = "更新档案信息ByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "更新档案信息ByPIMPERSONPIMARCHIVES")
+    @ApiOperation(value = "更新档案信息ByPIMPERSONPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "更新档案信息ByPIMPERSONPimArchives")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschange_id}/updatepersonfile")
     @Transactional
-    public ResponseEntity<PIMARCHIVESCHANGEDTO> updatePersonFileByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
+    public ResponseEntity<PIMARCHIVESCHANGEDTO> updatePersonFileByPIMPERSONPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
         PIMARCHIVESCHANGE domain = pimarchiveschangeMapping.toDomain(pimarchiveschangedto);
         domain.setPimarchivesid(pimarchives_id);
         domain = pimarchiveschangeService.updatePersonFile(domain) ;
@@ -443,18 +443,18 @@ public class PIMARCHIVESCHANGEResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchiveschangeMapping.toDomain(#pimarchiveschangedto),'ehr-PIMARCHIVESCHANGE-Save')")
-    @ApiOperation(value = "SaveByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "SaveByPIMPERSONPIMARCHIVES")
+    @ApiOperation(value = "SaveByPIMPERSONPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "SaveByPIMPERSONPimArchives")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/save")
-    public ResponseEntity<Boolean> saveByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
+    public ResponseEntity<Boolean> saveByPIMPERSONPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGEDTO pimarchiveschangedto) {
         PIMARCHIVESCHANGE domain = pimarchiveschangeMapping.toDomain(pimarchiveschangedto);
         domain.setPimarchivesid(pimarchives_id);
         return ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangeService.save(domain));
     }
 
     @PreAuthorize("hasPermission(this.pimarchiveschangeMapping.toDomain(#pimarchiveschangedtos),'ehr-PIMARCHIVESCHANGE-Save')")
-    @ApiOperation(value = "SaveBatchByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "SaveBatchByPIMPERSONPIMARCHIVES")
+    @ApiOperation(value = "SaveBatchByPIMPERSONPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "SaveBatchByPIMPERSONPimArchives")
 	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/savebatch")
-    public ResponseEntity<Boolean> saveBatchByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
+    public ResponseEntity<Boolean> saveBatchByPIMPERSONPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody List<PIMARCHIVESCHANGEDTO> pimarchiveschangedtos) {
         List<PIMARCHIVESCHANGE> domainlist=pimarchiveschangeMapping.toDomain(pimarchiveschangedtos);
         for(PIMARCHIVESCHANGE domain:domainlist){
              domain.setPimarchivesid(pimarchives_id);
@@ -464,25 +464,25 @@ public class PIMARCHIVESCHANGEResource {
     }
 
     @PreAuthorize("hasPermission(this.pimarchiveschangeService.get(#pimarchiveschange_id),'ehr-PIMARCHIVESCHANGE-Remove')")
-    @ApiOperation(value = "RemoveByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "RemoveByPIMPERSONPIMARCHIVES")
+    @ApiOperation(value = "RemoveByPIMPERSONPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "RemoveByPIMPERSONPimArchives")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/{pimarchiveschange_id}")
     @Transactional
-    public ResponseEntity<Boolean> removeByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id) {
+    public ResponseEntity<Boolean> removeByPIMPERSONPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @PathVariable("pimarchiveschange_id") String pimarchiveschange_id) {
 		return ResponseEntity.status(HttpStatus.OK).body(pimarchiveschangeService.remove(pimarchiveschange_id));
     }
 
     @PreAuthorize("hasPermission(this.pimarchiveschangeService.getPimarchiveschangeByIds(#ids),'ehr-PIMARCHIVESCHANGE-Remove')")
-    @ApiOperation(value = "RemoveBatchByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" },  notes = "RemoveBatchByPIMPERSONPIMARCHIVES")
+    @ApiOperation(value = "RemoveBatchByPIMPERSONPimArchives", tags = {"PIMARCHIVESCHANGE" },  notes = "RemoveBatchByPIMPERSONPimArchives")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/batch")
-    public ResponseEntity<Boolean> removeBatchByPIMPERSONPIMARCHIVES(@RequestBody List<String> ids) {
+    public ResponseEntity<Boolean> removeBatchByPIMPERSONPimArchives(@RequestBody List<String> ids) {
         pimarchiveschangeService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-DADCJL-all')")
-	@ApiOperation(value = "fetch档案调出记录ByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" } ,notes = "fetch档案调出记录ByPIMPERSONPIMARCHIVES")
+	@ApiOperation(value = "fetch档案调出记录ByPIMPERSONPimArchives", tags = {"PIMARCHIVESCHANGE" } ,notes = "fetch档案调出记录ByPIMPERSONPimArchives")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/fetchdadcjl")
-	public ResponseEntity<List<PIMARCHIVESCHANGEDTO>> fetchPIMARCHIVESCHANGEDADCJLByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESCHANGESearchContext context) {
+	public ResponseEntity<List<PIMARCHIVESCHANGEDTO>> fetchPIMARCHIVESCHANGEDADCJLByPIMPERSONPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESCHANGESearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDADCJL(context) ;
         List<PIMARCHIVESCHANGEDTO> list = pimarchiveschangeMapping.toDto(domains.getContent());
@@ -494,18 +494,18 @@ public class PIMARCHIVESCHANGEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-DADCJL-all')")
-	@ApiOperation(value = "search档案调出记录ByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" } ,notes = "search档案调出记录ByPIMPERSONPIMARCHIVES")
+	@ApiOperation(value = "search档案调出记录ByPIMPERSONPimArchives", tags = {"PIMARCHIVESCHANGE" } ,notes = "search档案调出记录ByPIMPERSONPimArchives")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/searchdadcjl")
-	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchPIMARCHIVESCHANGEDADCJLByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGESearchContext context) {
+	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchPIMARCHIVESCHANGEDADCJLByPIMPERSONPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGESearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDADCJL(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimarchiveschangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" } ,notes = "fetchDEFAULTByPIMPERSONPIMARCHIVES")
+	@ApiOperation(value = "fetchDEFAULTByPIMPERSONPimArchives", tags = {"PIMARCHIVESCHANGE" } ,notes = "fetchDEFAULTByPIMPERSONPimArchives")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/fetchdefault")
-	public ResponseEntity<List<PIMARCHIVESCHANGEDTO>> fetchPIMARCHIVESCHANGEDefaultByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESCHANGESearchContext context) {
+	public ResponseEntity<List<PIMARCHIVESCHANGEDTO>> fetchPIMARCHIVESCHANGEDefaultByPIMPERSONPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id,PIMARCHIVESCHANGESearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDefault(context) ;
         List<PIMARCHIVESCHANGEDTO> list = pimarchiveschangeMapping.toDto(domains.getContent());
@@ -517,9 +517,9 @@ public class PIMARCHIVESCHANGEResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PIMARCHIVESCHANGE-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPIMPERSONPIMARCHIVES", tags = {"PIMARCHIVESCHANGE" } ,notes = "searchDEFAULTByPIMPERSONPIMARCHIVES")
+	@ApiOperation(value = "searchDEFAULTByPIMPERSONPimArchives", tags = {"PIMARCHIVESCHANGE" } ,notes = "searchDEFAULTByPIMPERSONPimArchives")
     @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimarchives/{pimarchives_id}/pimarchiveschanges/searchdefault")
-	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchPIMARCHIVESCHANGEDefaultByPIMPERSONPIMARCHIVES(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGESearchContext context) {
+	public ResponseEntity<Page<PIMARCHIVESCHANGEDTO>> searchPIMARCHIVESCHANGEDefaultByPIMPERSONPimArchives(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimarchives_id") String pimarchives_id, @RequestBody PIMARCHIVESCHANGESearchContext context) {
         context.setN_pimarchivesid_eq(pimarchives_id);
         Page<PIMARCHIVESCHANGE> domains = pimarchiveschangeService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

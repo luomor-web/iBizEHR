@@ -484,7 +484,7 @@ public class PIMVOCATIONAL extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.pim.domain.PIMQUALMAJOR pimqualmajor;
+    private cn.ibizlab.ehr.core.pim.domain.PimQualMajor pimqualmajor;
 
     /**
      * PIMQUALTYPE

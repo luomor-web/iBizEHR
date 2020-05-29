@@ -52,10 +52,10 @@ public class PIMBYZZJLMXServiceImpl extends ServiceImpl<PIMBYZZJLMXMapper, PIMBY
     private cn.ibizlab.ehr.core.orm.service.IOrmPostService ormpostService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMBYYGZZSQService pimbyygzzsqService;
+    private cn.ibizlab.ehr.core.pim.service.IPimByygzzsqService pimbyygzzsqService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMEXAMINATIONRESULTSService pimexaminationresultsService;
+    private cn.ibizlab.ehr.core.pim.service.IPimExaminationResultsService pimexaminationresultsService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
@@ -453,9 +453,9 @@ public class PIMBYZZJLMXServiceImpl extends ServiceImpl<PIMBYZZJLMXMapper, PIMBY
         }
         //实体关系[DER1N_PIMBYZZJLMX_PIMBYYGZZSQ_PIMBYYGZZSQID]
         if(!ObjectUtils.isEmpty(et.getPimbyygzzsqid())){
-            cn.ibizlab.ehr.core.pim.domain.PIMBYYGZZSQ pimbyygzzsq=et.getPimbyygzzsq();
+            cn.ibizlab.ehr.core.pim.domain.PimByygzzsq pimbyygzzsq=et.getPimbyygzzsq();
             if(ObjectUtils.isEmpty(pimbyygzzsq)){
-                cn.ibizlab.ehr.core.pim.domain.PIMBYYGZZSQ majorEntity=pimbyygzzsqService.get(et.getPimbyygzzsqid());
+                cn.ibizlab.ehr.core.pim.domain.PimByygzzsq majorEntity=pimbyygzzsqService.get(et.getPimbyygzzsqid());
                 et.setPimbyygzzsq(majorEntity);
                 pimbyygzzsq=majorEntity;
             }
@@ -463,9 +463,9 @@ public class PIMBYZZJLMXServiceImpl extends ServiceImpl<PIMBYZZJLMXMapper, PIMBY
         }
         //实体关系[DER1N_PIMBYZZJLMX_PIMEXAMINATIONRESULTS_PIMEXAMINATIONRESULTSID]
         if(!ObjectUtils.isEmpty(et.getPimexaminationresultsid())){
-            cn.ibizlab.ehr.core.pim.domain.PIMEXAMINATIONRESULTS pimexaminationresults=et.getPimexaminationresults();
+            cn.ibizlab.ehr.core.pim.domain.PimExaminationResults pimexaminationresults=et.getPimexaminationresults();
             if(ObjectUtils.isEmpty(pimexaminationresults)){
-                cn.ibizlab.ehr.core.pim.domain.PIMEXAMINATIONRESULTS majorEntity=pimexaminationresultsService.get(et.getPimexaminationresultsid());
+                cn.ibizlab.ehr.core.pim.domain.PimExaminationResults majorEntity=pimexaminationresultsService.get(et.getPimexaminationresultsid());
                 et.setPimexaminationresults(majorEntity);
                 pimexaminationresults=majorEntity;
             }

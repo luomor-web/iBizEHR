@@ -159,10 +159,10 @@ public class TDZWXXResource {
                 .body(new PageImpl(tdzwxxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasPermission(this.tdzwxxMapping.toDomain(#tdzwxxdto),'ehr-TDZWXX-Create')")
-    @ApiOperation(value = "CreateByPCMPROFILE", tags = {"TDZWXX" },  notes = "CreateByPCMPROFILE")
+    @ApiOperation(value = "CreateByPcmProfile", tags = {"TDZWXX" },  notes = "CreateByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes")
     @Transactional
-    public ResponseEntity<TDZWXXDTO> createByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TDZWXXDTO tdzwxxdto) {
+    public ResponseEntity<TDZWXXDTO> createByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TDZWXXDTO tdzwxxdto) {
         TDZWXX domain = tdzwxxMapping.toDomain(tdzwxxdto);
         domain.setPcmprofileid(pcmprofile_id);
 		tdzwxxService.create(domain);
@@ -171,9 +171,9 @@ public class TDZWXXResource {
     }
 
     @PreAuthorize("hasPermission(this.tdzwxxMapping.toDomain(#tdzwxxdtos),'ehr-TDZWXX-Create')")
-    @ApiOperation(value = "createBatchByPCMPROFILE", tags = {"TDZWXX" },  notes = "createBatchByPCMPROFILE")
+    @ApiOperation(value = "createBatchByPcmProfile", tags = {"TDZWXX" },  notes = "createBatchByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/batch")
-    public ResponseEntity<Boolean> createBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TDZWXXDTO> tdzwxxdtos) {
+    public ResponseEntity<Boolean> createBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TDZWXXDTO> tdzwxxdtos) {
         List<TDZWXX> domainlist=tdzwxxMapping.toDomain(tdzwxxdtos);
         for(TDZWXX domain:domainlist){
             domain.setPcmprofileid(pcmprofile_id);
@@ -182,43 +182,43 @@ public class TDZWXXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraftByPCMPROFILE", tags = {"TDZWXX" },  notes = "GetDraftByPCMPROFILE")
+    @ApiOperation(value = "GetDraftByPcmProfile", tags = {"TDZWXX" },  notes = "GetDraftByPcmProfile")
     @RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/getdraft")
-    public ResponseEntity<TDZWXXDTO> getDraftByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id) {
+    public ResponseEntity<TDZWXXDTO> getDraftByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id) {
         TDZWXX domain = new TDZWXX();
         domain.setPcmprofileid(pcmprofile_id);
         return ResponseEntity.status(HttpStatus.OK).body(tdzwxxMapping.toDto(tdzwxxService.getDraft(domain)));
     }
 
     @PreAuthorize("hasPermission(this.tdzwxxService.get(#tdzwxx_id),'ehr-TDZWXX-Remove')")
-    @ApiOperation(value = "RemoveByPCMPROFILE", tags = {"TDZWXX" },  notes = "RemoveByPCMPROFILE")
+    @ApiOperation(value = "RemoveByPcmProfile", tags = {"TDZWXX" },  notes = "RemoveByPcmProfile")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/{tdzwxx_id}")
     @Transactional
-    public ResponseEntity<Boolean> removeByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("tdzwxx_id") String tdzwxx_id) {
+    public ResponseEntity<Boolean> removeByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("tdzwxx_id") String tdzwxx_id) {
 		return ResponseEntity.status(HttpStatus.OK).body(tdzwxxService.remove(tdzwxx_id));
     }
 
     @PreAuthorize("hasPermission(this.tdzwxxService.getTdzwxxByIds(#ids),'ehr-TDZWXX-Remove')")
-    @ApiOperation(value = "RemoveBatchByPCMPROFILE", tags = {"TDZWXX" },  notes = "RemoveBatchByPCMPROFILE")
+    @ApiOperation(value = "RemoveBatchByPcmProfile", tags = {"TDZWXX" },  notes = "RemoveBatchByPcmProfile")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/batch")
-    public ResponseEntity<Boolean> removeBatchByPCMPROFILE(@RequestBody List<String> ids) {
+    public ResponseEntity<Boolean> removeBatchByPcmProfile(@RequestBody List<String> ids) {
         tdzwxxService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
     @PreAuthorize("hasPermission(this.tdzwxxMapping.toDomain(#tdzwxxdto),'ehr-TDZWXX-Save')")
-    @ApiOperation(value = "SaveByPCMPROFILE", tags = {"TDZWXX" },  notes = "SaveByPCMPROFILE")
+    @ApiOperation(value = "SaveByPcmProfile", tags = {"TDZWXX" },  notes = "SaveByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/save")
-    public ResponseEntity<Boolean> saveByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TDZWXXDTO tdzwxxdto) {
+    public ResponseEntity<Boolean> saveByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TDZWXXDTO tdzwxxdto) {
         TDZWXX domain = tdzwxxMapping.toDomain(tdzwxxdto);
         domain.setPcmprofileid(pcmprofile_id);
         return ResponseEntity.status(HttpStatus.OK).body(tdzwxxService.save(domain));
     }
 
     @PreAuthorize("hasPermission(this.tdzwxxMapping.toDomain(#tdzwxxdtos),'ehr-TDZWXX-Save')")
-    @ApiOperation(value = "SaveBatchByPCMPROFILE", tags = {"TDZWXX" },  notes = "SaveBatchByPCMPROFILE")
+    @ApiOperation(value = "SaveBatchByPcmProfile", tags = {"TDZWXX" },  notes = "SaveBatchByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/savebatch")
-    public ResponseEntity<Boolean> saveBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TDZWXXDTO> tdzwxxdtos) {
+    public ResponseEntity<Boolean> saveBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TDZWXXDTO> tdzwxxdtos) {
         List<TDZWXX> domainlist=tdzwxxMapping.toDomain(tdzwxxdtos);
         for(TDZWXX domain:domainlist){
              domain.setPcmprofileid(pcmprofile_id);
@@ -228,10 +228,10 @@ public class TDZWXXResource {
     }
 
     @PreAuthorize("hasPermission(this.tdzwxxService.get(#tdzwxx_id),'ehr-TDZWXX-Update')")
-    @ApiOperation(value = "UpdateByPCMPROFILE", tags = {"TDZWXX" },  notes = "UpdateByPCMPROFILE")
+    @ApiOperation(value = "UpdateByPcmProfile", tags = {"TDZWXX" },  notes = "UpdateByPcmProfile")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/{tdzwxx_id}")
     @Transactional
-    public ResponseEntity<TDZWXXDTO> updateByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("tdzwxx_id") String tdzwxx_id, @RequestBody TDZWXXDTO tdzwxxdto) {
+    public ResponseEntity<TDZWXXDTO> updateByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("tdzwxx_id") String tdzwxx_id, @RequestBody TDZWXXDTO tdzwxxdto) {
         TDZWXX domain = tdzwxxMapping.toDomain(tdzwxxdto);
         domain.setPcmprofileid(pcmprofile_id);
         domain.setTdzwxxid(tdzwxx_id);
@@ -241,9 +241,9 @@ public class TDZWXXResource {
     }
 
     @PreAuthorize("hasPermission(this.tdzwxxService.getTdzwxxByEntities(this.tdzwxxMapping.toDomain(#tdzwxxdtos)),'ehr-TDZWXX-Update')")
-    @ApiOperation(value = "UpdateBatchByPCMPROFILE", tags = {"TDZWXX" },  notes = "UpdateBatchByPCMPROFILE")
+    @ApiOperation(value = "UpdateBatchByPcmProfile", tags = {"TDZWXX" },  notes = "UpdateBatchByPcmProfile")
 	@RequestMapping(method = RequestMethod.PUT, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/batch")
-    public ResponseEntity<Boolean> updateBatchByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TDZWXXDTO> tdzwxxdtos) {
+    public ResponseEntity<Boolean> updateBatchByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody List<TDZWXXDTO> tdzwxxdtos) {
         List<TDZWXX> domainlist=tdzwxxMapping.toDomain(tdzwxxdtos);
         for(TDZWXX domain:domainlist){
             domain.setPcmprofileid(pcmprofile_id);
@@ -252,25 +252,25 @@ public class TDZWXXResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByPCMPROFILE", tags = {"TDZWXX" },  notes = "CheckKeyByPCMPROFILE")
+    @ApiOperation(value = "CheckKeyByPcmProfile", tags = {"TDZWXX" },  notes = "CheckKeyByPcmProfile")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/checkkey")
-    public ResponseEntity<Boolean> checkKeyByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TDZWXXDTO tdzwxxdto) {
+    public ResponseEntity<Boolean> checkKeyByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TDZWXXDTO tdzwxxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(tdzwxxService.checkKey(tdzwxxMapping.toDomain(tdzwxxdto)));
     }
 
     @PostAuthorize("hasPermission(this.tdzwxxMapping.toDomain(returnObject.body),'ehr-TDZWXX-Get')")
-    @ApiOperation(value = "GetByPCMPROFILE", tags = {"TDZWXX" },  notes = "GetByPCMPROFILE")
+    @ApiOperation(value = "GetByPcmProfile", tags = {"TDZWXX" },  notes = "GetByPcmProfile")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmprofiles/{pcmprofile_id}/tdzwxxes/{tdzwxx_id}")
-    public ResponseEntity<TDZWXXDTO> getByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("tdzwxx_id") String tdzwxx_id) {
+    public ResponseEntity<TDZWXXDTO> getByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @PathVariable("tdzwxx_id") String tdzwxx_id) {
         TDZWXX domain = tdzwxxService.get(tdzwxx_id);
         TDZWXXDTO dto = tdzwxxMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TDZWXX-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByPCMPROFILE", tags = {"TDZWXX" } ,notes = "fetchDEFAULTByPCMPROFILE")
+	@ApiOperation(value = "fetchDEFAULTByPcmProfile", tags = {"TDZWXX" } ,notes = "fetchDEFAULTByPcmProfile")
     @RequestMapping(method= RequestMethod.GET , value="/pcmprofiles/{pcmprofile_id}/tdzwxxes/fetchdefault")
-	public ResponseEntity<List<TDZWXXDTO>> fetchTDZWXXDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id,TDZWXXSearchContext context) {
+	public ResponseEntity<List<TDZWXXDTO>> fetchTDZWXXDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id,TDZWXXSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<TDZWXX> domains = tdzwxxService.searchDefault(context) ;
         List<TDZWXXDTO> list = tdzwxxMapping.toDto(domains.getContent());
@@ -282,9 +282,9 @@ public class TDZWXXResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TDZWXX-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByPCMPROFILE", tags = {"TDZWXX" } ,notes = "searchDEFAULTByPCMPROFILE")
+	@ApiOperation(value = "searchDEFAULTByPcmProfile", tags = {"TDZWXX" } ,notes = "searchDEFAULTByPcmProfile")
     @RequestMapping(method= RequestMethod.POST , value="/pcmprofiles/{pcmprofile_id}/tdzwxxes/searchdefault")
-	public ResponseEntity<Page<TDZWXXDTO>> searchTDZWXXDefaultByPCMPROFILE(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TDZWXXSearchContext context) {
+	public ResponseEntity<Page<TDZWXXDTO>> searchTDZWXXDefaultByPcmProfile(@PathVariable("pcmprofile_id") String pcmprofile_id, @RequestBody TDZWXXSearchContext context) {
         context.setN_pcmprofileid_eq(pcmprofile_id);
         Page<TDZWXX> domains = tdzwxxService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)

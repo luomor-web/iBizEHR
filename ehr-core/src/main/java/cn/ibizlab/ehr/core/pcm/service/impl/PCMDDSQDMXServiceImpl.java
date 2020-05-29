@@ -58,7 +58,7 @@ public class PCMDDSQDMXServiceImpl extends ServiceImpl<PCMDDSQDMXMapper, PCMDDSQ
     private cn.ibizlab.ehr.core.orm.service.IOrmPostService ormpostService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMDDSQDService pcmddsqdService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmDdsqdService pcmddsqdService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMDISTIRBUTIONService pimdistirbutionService;
@@ -414,9 +414,9 @@ public class PCMDDSQDMXServiceImpl extends ServiceImpl<PCMDDSQDMXMapper, PCMDDSQ
         }
         //实体关系[DER1N_PCMDDSQDMX_PCMDDSQD_PCMDDSQDID]
         if(!ObjectUtils.isEmpty(et.getPcmddsqdid())){
-            cn.ibizlab.ehr.core.pcm.domain.PCMDDSQD pcmddsqd=et.getPcmddsqd();
+            cn.ibizlab.ehr.core.pcm.domain.PcmDdsqd pcmddsqd=et.getPcmddsqd();
             if(ObjectUtils.isEmpty(pcmddsqd)){
-                cn.ibizlab.ehr.core.pcm.domain.PCMDDSQD majorEntity=pcmddsqdService.get(et.getPcmddsqdid());
+                cn.ibizlab.ehr.core.pcm.domain.PcmDdsqd majorEntity=pcmddsqdService.get(et.getPcmddsqdid());
                 et.setPcmddsqd(majorEntity);
                 pcmddsqd=majorEntity;
             }

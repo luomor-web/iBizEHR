@@ -303,7 +303,7 @@ public class TRMCOUARRANGE extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.trm.domain.TRMAGENCYRECORD trmagencyrecord;
+    private cn.ibizlab.ehr.core.trm.domain.TrmAgencyRecord trmagencyrecord;
 
     /**
      * 培训记录
@@ -311,7 +311,7 @@ public class TRMCOUARRANGE extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.trm.domain.TRMCOURSESYSTEM trmcoursesystem;
+    private cn.ibizlab.ehr.core.trm.domain.TrmCourseSystem trmcoursesystem;
 
     /**
      * 培训活动
@@ -319,7 +319,7 @@ public class TRMCOUARRANGE extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.trm.domain.TRMTRAINACTAPPLY trmtrainactapply;
+    private cn.ibizlab.ehr.core.trm.domain.TrmTrainActapply trmtrainactapply;
 
     /**
      * 培训地点
@@ -335,7 +335,7 @@ public class TRMCOUARRANGE extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.trm.domain.TRMTRAINAGENCY trmtrainagency;
+    private cn.ibizlab.ehr.core.trm.domain.TrmTrainAgency trmtrainagency;
 
     /**
      * 培训课程
@@ -359,7 +359,7 @@ public class TRMCOUARRANGE extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.trm.domain.TRMTRAINPLANTERM trmtrainplanterm;
+    private cn.ibizlab.ehr.core.trm.domain.TrmTrainPlanterm trmtrainplanterm;
 
     /**
      * 教师姓名
@@ -375,7 +375,7 @@ public class TRMCOUARRANGE extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.trm.domain.TRMTRIANPERSON trmtrianperson;
+    private cn.ibizlab.ehr.core.trm.domain.TrmTrainPerson trmtrianperson;
 
 
 

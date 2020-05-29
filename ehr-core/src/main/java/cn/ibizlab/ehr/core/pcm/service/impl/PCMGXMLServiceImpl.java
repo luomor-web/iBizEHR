@@ -46,7 +46,7 @@ public class PCMGXMLServiceImpl extends ServiceImpl<PCMGXMLMapper, PCMGXML> impl
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMGXXKTEMPService pcmgxxktempService;
+    private cn.ibizlab.ehr.core.pcm.service.IPCMGxxkTempService pcmgxxktempService;
 
     private int batchSize = 500;
 

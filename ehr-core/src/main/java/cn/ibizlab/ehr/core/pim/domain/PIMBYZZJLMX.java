@@ -561,7 +561,7 @@ public class PIMBYZZJLMX extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.pim.domain.PIMBYYGZZSQ pimbyygzzsq;
+    private cn.ibizlab.ehr.core.pim.domain.PimByygzzsq pimbyygzzsq;
 
     /**
      * B/Y员工转正考核结果记录
@@ -569,7 +569,7 @@ public class PIMBYZZJLMX extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.pim.domain.PIMEXAMINATIONRESULTS pimexaminationresults;
+    private cn.ibizlab.ehr.core.pim.domain.PimExaminationResults pimexaminationresults;
 
     /**
      * 人员信息

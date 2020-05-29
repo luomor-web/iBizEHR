@@ -46,7 +46,7 @@ public class PARJXZGPCMXServiceImpl extends ServiceImpl<PARJXZGPCMXMapper, PARJX
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARJXZGPCService parjxzgpcService;
+    private cn.ibizlab.ehr.core.par.service.IParJxzgpcService parjxzgpcService;
 
     private int batchSize = 500;
 
@@ -181,9 +181,9 @@ public class PARJXZGPCMXServiceImpl extends ServiceImpl<PARJXZGPCMXMapper, PARJX
     private void fillParentData(PARJXZGPCMX et){
         //实体关系[DER1N_PARJXZGPCMX_PARJXZGPC_PARJXZGPCID]
         if(!ObjectUtils.isEmpty(et.getParjxzgpcid())){
-            cn.ibizlab.ehr.core.par.domain.PARJXZGPC parjxzgpc=et.getParjxzgpc();
+            cn.ibizlab.ehr.core.par.domain.ParJxzgpc parjxzgpc=et.getParjxzgpc();
             if(ObjectUtils.isEmpty(parjxzgpc)){
-                cn.ibizlab.ehr.core.par.domain.PARJXZGPC majorEntity=parjxzgpcService.get(et.getParjxzgpcid());
+                cn.ibizlab.ehr.core.par.domain.ParJxzgpc majorEntity=parjxzgpcService.get(et.getParjxzgpcid());
                 et.setParjxzgpc(majorEntity);
                 parjxzgpc=majorEntity;
             }

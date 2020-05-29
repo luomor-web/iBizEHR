@@ -323,7 +323,7 @@ public class PCMDDSQDMX extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.pcm.domain.PCMDDSQD pcmddsqd;
+    private cn.ibizlab.ehr.core.pcm.domain.PcmDdsqd pcmddsqd;
 
     /**
      * 任职分配

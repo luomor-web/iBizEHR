@@ -46,7 +46,7 @@ public class PARNDLHMBKHServiceImpl extends ServiceImpl<PARNDLHMBKHMapper, PARND
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARLHMBKHMXService parlhmbkhmxService;
+    private cn.ibizlab.ehr.core.par.service.IParLhmbkhmxService parlhmbkhmxService;
 
     private int batchSize = 500;
 

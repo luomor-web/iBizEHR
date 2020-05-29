@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.trm.service.logic.trmtrainplantermlx" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.trm.service.logic.trmtrainplantermlx">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="trmtrainplantermlxdefault" type="cn.ibizlab.ehr.core.trm.domain.TrmTrainPlanterm" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmtrainplantermlxdeaction1" id="1fae09495c8fa9a04c6368d67bf23d88" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmtrainplantermlxprepareparam1" id="ba07c08f220ae4bdfb89890712b4036f" implementation="http://www.jboss.org/drools/rule" name="更新状态"/>
+     <endEvent id="ba07c08f220ae4bdfb89890712b4036f_End" name="End"/>
+     <sequenceFlow id="ba07c08f220ae4bdfb89890712b4036f_End_Line" sourceRef="ba07c08f220ae4bdfb89890712b4036f" targetRef="ba07c08f220ae4bdfb89890712b4036f_End"/>
+     <startEvent id="e71e445b9876b3613271f677e863d01d" isInterrupting="true"/>
+     <sequenceFlow id="978b7952ee91bffff473af3a4c637318" sourceRef="1fae09495c8fa9a04c6368d67bf23d88" targetRef="ba07c08f220ae4bdfb89890712b4036f">
+     </sequenceFlow>
+     <sequenceFlow id="2ab4f26b58c9e6a997cee7ce1b4c5057" sourceRef="e71e445b9876b3613271f677e863d01d" targetRef="1fae09495c8fa9a04c6368d67bf23d88">
+     </sequenceFlow>
+    </process>
+</definitions>
+

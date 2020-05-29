@@ -49,7 +49,7 @@ public class PIMARCHIVESCHANGEServiceImpl extends ServiceImpl<PIMARCHIVESCHANGEM
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMARCHIVESService pimarchivesService;
+    private cn.ibizlab.ehr.core.pim.service.IPimArchivesService pimarchivesService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
@@ -257,9 +257,9 @@ public class PIMARCHIVESCHANGEServiceImpl extends ServiceImpl<PIMARCHIVESCHANGEM
         }
         //实体关系[DER1N_PIMARCHIVESCHANGE_PIMARCHIVES_PIMARCHIVESID]
         if(!ObjectUtils.isEmpty(et.getPimarchivesid())){
-            cn.ibizlab.ehr.core.pim.domain.PIMARCHIVES pimarchives=et.getPimarchives();
+            cn.ibizlab.ehr.core.pim.domain.PimArchives pimarchives=et.getPimarchives();
             if(ObjectUtils.isEmpty(pimarchives)){
-                cn.ibizlab.ehr.core.pim.domain.PIMARCHIVES majorEntity=pimarchivesService.get(et.getPimarchivesid());
+                cn.ibizlab.ehr.core.pim.domain.PimArchives majorEntity=pimarchivesService.get(et.getPimarchivesid());
                 et.setPimarchives(majorEntity);
                 pimarchives=majorEntity;
             }

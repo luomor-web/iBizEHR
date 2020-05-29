@@ -46,7 +46,7 @@ public class ARCHIVESCENTERServiceImpl extends ServiceImpl<ARCHIVESCENTERMapper,
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMARCHIVESService pimarchivesService;
+    private cn.ibizlab.ehr.core.pim.service.IPimArchivesService pimarchivesService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmprofileinvalid" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmprofileinvalid">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmprofileinvaliddefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmProfile" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmprofileinvalidprepareparam1" id="A80EBB18-13B2-4453-843A-C587F0566A27" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmprofileinvaliddeaction1" id="2029BBC9-0CD9-4D76-9A79-DB0B4B40F439" implementation="http://www.jboss.org/drools/rule" name="变更状态为失效"/>
+     <endEvent id="2029BBC9-0CD9-4D76-9A79-DB0B4B40F439_End" name="End"/>
+     <sequenceFlow id="2029BBC9-0CD9-4D76-9A79-DB0B4B40F439_End_Line" sourceRef="2029BBC9-0CD9-4D76-9A79-DB0B4B40F439" targetRef="2029BBC9-0CD9-4D76-9A79-DB0B4B40F439_End"/>
+     <startEvent id="721CBA18-E3BC-4DFC-AB8E-028819AB7874" isInterrupting="true"/>
+     <sequenceFlow id="BA676B4D-09DD-47D1-B38E-C9A86BDCF63F" sourceRef="721CBA18-E3BC-4DFC-AB8E-028819AB7874" targetRef="A80EBB18-13B2-4453-843A-C587F0566A27">
+     </sequenceFlow>
+     <sequenceFlow id="1602EA73-080D-4182-B800-72A4FB9935F5" sourceRef="A80EBB18-13B2-4453-843A-C587F0566A27" targetRef="2029BBC9-0CD9-4D76-9A79-DB0B4B40F439">
+     </sequenceFlow>
+    </process>
+</definitions>
+

@@ -137,7 +137,7 @@ public class PARJXBZGLMX extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.par.domain.PARJXBZGL parjxbzgl;
+    private cn.ibizlab.ehr.core.par.domain.ParJxbzgl parjxbzgl;
 
     /**
      * 员工

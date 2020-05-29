@@ -49,10 +49,10 @@ public class TRMTRAINCOURSEServiceImpl extends ServiceImpl<TRMTRAINCOURSEMapper,
     private cn.ibizlab.ehr.core.trm.service.ITRMCOUARRANGEService trmcouarrangeService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMDEMDEFTIONService trmdemdeftionService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmDemdeftionService trmdemdeftionService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMDEPARTNEEDSService trmdepartneedsService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmDepartNeedsService trmdepartneedsService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMSTAFFNODESService trmstaffnodesService;
@@ -61,19 +61,19 @@ public class TRMTRAINCOURSEServiceImpl extends ServiceImpl<TRMTRAINCOURSEMapper,
     private cn.ibizlab.ehr.core.trm.service.ITRMTEACHERTRAINService trmteachertrainService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINDEMANDSUMService trmtraindemandsumService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainDemandSumService trmtraindemandsumService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINPLANTERMService trmtrainplantermService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainPlantermService trmtrainplantermService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMCOURSESYSTEMService trmcoursesystemService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmCourseSystemService trmcoursesystemService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINAGENCYService trmtrainagencyService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainAgencyService trmtrainagencyService;
 
     private int batchSize = 500;
 
@@ -238,9 +238,9 @@ public class TRMTRAINCOURSEServiceImpl extends ServiceImpl<TRMTRAINCOURSEMapper,
         }
         //实体关系[DER1N_TRMTRAINCOURSE_TRMCOURSESYSTEM_TRMCOURSESYSTEMID]
         if(!ObjectUtils.isEmpty(et.getTrmcoursesystemid())){
-            cn.ibizlab.ehr.core.trm.domain.TRMCOURSESYSTEM trmcoursesystem=et.getTrmcoursesystem();
+            cn.ibizlab.ehr.core.trm.domain.TrmCourseSystem trmcoursesystem=et.getTrmcoursesystem();
             if(ObjectUtils.isEmpty(trmcoursesystem)){
-                cn.ibizlab.ehr.core.trm.domain.TRMCOURSESYSTEM majorEntity=trmcoursesystemService.get(et.getTrmcoursesystemid());
+                cn.ibizlab.ehr.core.trm.domain.TrmCourseSystem majorEntity=trmcoursesystemService.get(et.getTrmcoursesystemid());
                 et.setTrmcoursesystem(majorEntity);
                 trmcoursesystem=majorEntity;
             }
@@ -249,9 +249,9 @@ public class TRMTRAINCOURSEServiceImpl extends ServiceImpl<TRMTRAINCOURSEMapper,
         }
         //实体关系[DER1N_TRMTRAINCOURSE_TRMTRAINAGENCY_TRMTRAINAGENCYID]
         if(!ObjectUtils.isEmpty(et.getTrmtrainagencyid())){
-            cn.ibizlab.ehr.core.trm.domain.TRMTRAINAGENCY trmtrainagency=et.getTrmtrainagency();
+            cn.ibizlab.ehr.core.trm.domain.TrmTrainAgency trmtrainagency=et.getTrmtrainagency();
             if(ObjectUtils.isEmpty(trmtrainagency)){
-                cn.ibizlab.ehr.core.trm.domain.TRMTRAINAGENCY majorEntity=trmtrainagencyService.get(et.getTrmtrainagencyid());
+                cn.ibizlab.ehr.core.trm.domain.TrmTrainAgency majorEntity=trmtrainagencyService.get(et.getTrmtrainagencyid());
                 et.setTrmtrainagency(majorEntity);
                 trmtrainagency=majorEntity;
             }

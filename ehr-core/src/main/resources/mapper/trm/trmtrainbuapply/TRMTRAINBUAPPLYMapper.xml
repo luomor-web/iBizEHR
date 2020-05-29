@@ -18,7 +18,7 @@
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="trmtrainplanterm" javaType="cn.ibizlab.ehr.core.trm.domain.TRMTRAINPLANTERM" column="trmtrainplantermid" select="cn.ibizlab.ehr.core.trm.mapper.TRMTRAINPLANTERMMapper.selectById" fetchType="lazy"></association>
+		<association property="trmtrainplanterm" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainPlanterm" column="trmtrainplantermid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainPlantermMapper.selectById" fetchType="lazy"></association>
     </resultMap>
 
 	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMTRAINBUAPPLY_ORMORG_ORMORGID] -->

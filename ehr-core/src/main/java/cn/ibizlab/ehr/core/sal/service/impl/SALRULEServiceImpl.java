@@ -49,10 +49,10 @@ public class SALRULEServiceImpl extends ServiceImpl<SALRULEMapper, SALRULE> impl
     private cn.ibizlab.ehr.core.sal.service.ISALRULEDETAILService salruledetailService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSCHEMEITEMService salschemeitemService;
+    private cn.ibizlab.ehr.core.sal.service.ISalSchemeItemService salschemeitemService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALPARAMService salparamService;
+    private cn.ibizlab.ehr.core.sal.service.ISalParamService salparamService;
 
     private int batchSize = 500;
 
@@ -187,9 +187,9 @@ public class SALRULEServiceImpl extends ServiceImpl<SALRULEMapper, SALRULE> impl
     private void fillParentData(SALRULE et){
         //实体关系[DER1N_SALRULE_SALPARAM_SALPARAMID]
         if(!ObjectUtils.isEmpty(et.getSalparamid())){
-            cn.ibizlab.ehr.core.sal.domain.SALPARAM salparam=et.getSalparam();
+            cn.ibizlab.ehr.core.sal.domain.SalParam salparam=et.getSalparam();
             if(ObjectUtils.isEmpty(salparam)){
-                cn.ibizlab.ehr.core.sal.domain.SALPARAM majorEntity=salparamService.get(et.getSalparamid());
+                cn.ibizlab.ehr.core.sal.domain.SalParam majorEntity=salparamService.get(et.getSalparamid());
                 et.setSalparam(majorEntity);
                 salparam=majorEntity;
             }

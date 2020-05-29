@@ -49,7 +49,7 @@ public class PARTZGGServiceImpl extends ServiceImpl<PARTZGGMapper, PARTZGG> impl
     private cn.ibizlab.ehr.core.par.service.IPARBMFZJYXService parbmfzjyxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARFZSMXService parfzsmxService;
+    private cn.ibizlab.ehr.core.par.service.IParFzsmxService parfzsmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.par.service.IPARZNBMMXService parznbmmxService;

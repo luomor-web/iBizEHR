@@ -46,7 +46,7 @@ public class PCMEducationExperienceServiceImpl extends ServiceImpl<PCMEducationE
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMPROFILEService pcmprofileService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmProfileService pcmprofileService;
 
     private int batchSize = 500;
 
@@ -202,9 +202,9 @@ public class PCMEducationExperienceServiceImpl extends ServiceImpl<PCMEducationE
     private void fillParentData(PCMEducationExperience et){
         //实体关系[DER1N_PCMEDUCATIONEXPERIENCE_PCMPROFILE_PCMPROFILEID]
         if(!ObjectUtils.isEmpty(et.getPcmprofileid())){
-            cn.ibizlab.ehr.core.pcm.domain.PCMPROFILE pcmprofile=et.getPcmprofile();
+            cn.ibizlab.ehr.core.pcm.domain.PcmProfile pcmprofile=et.getPcmprofile();
             if(ObjectUtils.isEmpty(pcmprofile)){
-                cn.ibizlab.ehr.core.pcm.domain.PCMPROFILE majorEntity=pcmprofileService.get(et.getPcmprofileid());
+                cn.ibizlab.ehr.core.pcm.domain.PcmProfile majorEntity=pcmprofileService.get(et.getPcmprofileid());
                 et.setPcmprofile(majorEntity);
                 pcmprofile=majorEntity;
             }

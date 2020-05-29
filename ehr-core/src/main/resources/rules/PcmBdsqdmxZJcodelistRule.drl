@@ -1,0 +1,40 @@
+package cn.ibizlab.ehr.pcm.logic.pcmbdsqdmxlogic.zjcodelist;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.common.domain.CodeList1 pcmbdsqdmxzjcodelistzjcodelist;
+global cn.ibizlab.ehr.core.pcm.domain.PcmBdsqdmx pcmbdsqdmxzjcodelistdefault;
+global cn.ibizlab.ehr.core.common.service.ICodeList1Service codelist1service;
+global cn.ibizlab.ehr.core.pcm.service.IPcmBdsqdmxService iBzSysPcmbdsqdmxDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[刷新代码表]
+rule "deaction1"
+ruleflow-group "pcmbdsqdmxzjcodelistdeaction1"
+    when
+    then
+    codelist1service.refreshModel(pcmbdsqdmxzjcodelistzjcodelist);
+    update(pcmbdsqdmxzjcodelistzjcodelist);//更新fact中变量值
+    update(pcmbdsqdmxzjcodelistdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pcmbdsqdmxzjcodelistbegin"
+    when
+    then
+    end
+
+//逻辑处理节点[zjcodelist]
+rule "prepareparam1"
+ruleflow-group "pcmbdsqdmxzjcodelistprepareparam1"
+    when
+    then
+    pcmbdsqdmxzjcodelistzjcodelist.set("codelistid","22792924-ABD8-4FD5-999E-D939B310242F");
+    update(pcmbdsqdmxzjcodelistzjcodelist);//更新fact中变量值
+    update(pcmbdsqdmxzjcodelistdefault);//更新fact中变量值
+    end
+

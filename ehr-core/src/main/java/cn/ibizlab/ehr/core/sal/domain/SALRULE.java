@@ -125,7 +125,7 @@ public class SALRULE extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.sal.domain.SALPARAM salparam;
+    private cn.ibizlab.ehr.core.sal.domain.SalParam salparam;
 
 
 

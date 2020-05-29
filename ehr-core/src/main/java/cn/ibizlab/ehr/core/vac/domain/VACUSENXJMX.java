@@ -144,7 +144,7 @@ public class VACUSENXJMX extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.vac.domain.VACLEAVEDETAIL vacleavedetail;
+    private cn.ibizlab.ehr.core.vac.domain.VacLeaveDetail vacleavedetail;
 
 
 

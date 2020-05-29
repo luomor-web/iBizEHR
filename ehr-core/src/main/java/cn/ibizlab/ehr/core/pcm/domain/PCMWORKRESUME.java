@@ -167,7 +167,7 @@ public class PCMWORKRESUME extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.pcm.domain.PCMPROFILE pcmprofile;
+    private cn.ibizlab.ehr.core.pcm.domain.PcmProfile pcmprofile;
 
 
 

@@ -16,9 +16,9 @@
             
 		
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="salsalary" javaType="cn.ibizlab.ehr.core.sal.domain.SALSALARY" column="salsalaryid" select="cn.ibizlab.ehr.core.sal.mapper.SALSALARYMapper.selectById" fetchType="lazy"></association>
+		<association property="salsalary" javaType="cn.ibizlab.ehr.core.sal.domain.SalSalary" column="salsalaryid" select="cn.ibizlab.ehr.core.sal.mapper.SalSalaryMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="salschemeitem" javaType="cn.ibizlab.ehr.core.sal.domain.SALSCHEMEITEM" column="salschemeitemid" select="cn.ibizlab.ehr.core.sal.mapper.SALSCHEMEITEMMapper.selectById" fetchType="lazy"></association>
+		<association property="salschemeitem" javaType="cn.ibizlab.ehr.core.sal.domain.SalSchemeItem" column="salschemeitemid" select="cn.ibizlab.ehr.core.sal.mapper.SalSchemeItemMapper.selectById" fetchType="lazy"></association>
     </resultMap>
 
 	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALSALARYDETAIL_SALSALARY_SALSALARYID] -->

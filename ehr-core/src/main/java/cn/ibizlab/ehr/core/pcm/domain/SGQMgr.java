@@ -153,7 +153,7 @@ public class SGQMgr extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.pcm.domain.PCMBDSQDMX pcmbdsqdmx;
+    private cn.ibizlab.ehr.core.pcm.domain.PcmBdsqdmx pcmbdsqdmx;
 
     /**
      * 员工

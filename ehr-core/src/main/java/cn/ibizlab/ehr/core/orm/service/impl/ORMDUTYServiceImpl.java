@@ -46,28 +46,28 @@ public class ORMDUTYServiceImpl extends ServiceImpl<ORMDUTYMapper, ORMDUTY> impl
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMDepEstManService ormdepestmanService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmDepEstManService ormdepestmanService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IORMZWDQGZService ormzwdqgzService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMBDSQDMXService pcmbdsqdmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmBdsqdmxService pcmbdsqdmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pcm.service.IPCMDDSQDMXService pcmddsqdmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMPROFILEService pcmprofileService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmProfileService pcmprofileService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMRecruitmentService pcmrecruitmentService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmRecruitmentService pcmrecruitmentService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pcm.service.IPCMYDJDMXService pcmydjdmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMYDJZMXService pcmydjzmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdjzmxService pcmydjzmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pcm.service.IPCMZJDYZWService pcmzjdyzwService;
@@ -76,13 +76,13 @@ public class ORMDUTYServiceImpl extends ServiceImpl<ORMDUTYMapper, ORMDUTY> impl
     private cn.ibizlab.ehr.core.pim.service.IPIMDISTIRBUTIONService pimdistirbutionService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALPERSONSTDService salpersonstdService;
+    private cn.ibizlab.ehr.core.sal.service.ISalPersonStdService salpersonstdService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSALARYService salsalaryService;
+    private cn.ibizlab.ehr.core.sal.service.ISalSalaryService salsalaryService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSTDGWGZService salstdgwgzService;
+    private cn.ibizlab.ehr.core.sal.service.ISalStdgwgzService salstdgwgzService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.sal.service.ISALSTDXMGZService salstdxmgzService;

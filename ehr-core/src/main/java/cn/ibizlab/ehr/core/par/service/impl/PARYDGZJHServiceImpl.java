@@ -46,7 +46,7 @@ public class PARYDGZJHServiceImpl extends ServiceImpl<PARYDGZJHMapper, PARYDGZJH
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARYDGZJHMXService parydgzjhmxService;
+    private cn.ibizlab.ehr.core.par.service.IParYdgzjhmxService parydgzjhmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService;

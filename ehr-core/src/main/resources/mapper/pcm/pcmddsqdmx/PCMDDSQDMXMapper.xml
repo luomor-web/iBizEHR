@@ -28,7 +28,7 @@
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="ormpost" javaType="cn.ibizlab.ehr.core.orm.domain.OrmPost" column="ormpostid" select="cn.ibizlab.ehr.core.orm.mapper.OrmPostMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="pcmddsqd" javaType="cn.ibizlab.ehr.core.pcm.domain.PCMDDSQD" column="pcmddsqdid" select="cn.ibizlab.ehr.core.pcm.mapper.PCMDDSQDMapper.selectById" fetchType="lazy"></association>
+		<association property="pcmddsqd" javaType="cn.ibizlab.ehr.core.pcm.domain.PcmDdsqd" column="pcmddsqdid" select="cn.ibizlab.ehr.core.pcm.mapper.PcmDdsqdMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="pimdistirbution" javaType="cn.ibizlab.ehr.core.pim.domain.PIMDISTIRBUTION" column="pimdistirbutionid" select="cn.ibizlab.ehr.core.pim.mapper.PIMDISTIRBUTIONMapper.selectById" fetchType="lazy"></association>
     </resultMap>

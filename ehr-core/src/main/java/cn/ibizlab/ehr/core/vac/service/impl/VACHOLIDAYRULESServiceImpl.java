@@ -46,7 +46,7 @@ public class VACHOLIDAYRULESServiceImpl extends ServiceImpl<VACHOLIDAYRULESMappe
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDENCESETUPService attendencesetupService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndenceSetupService attendencesetupService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.vac.service.IVACHOLIDAYService vacholidayService;

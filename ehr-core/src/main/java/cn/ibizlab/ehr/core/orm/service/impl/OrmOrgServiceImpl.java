@@ -49,16 +49,16 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.pim.service.IARCHIVESCENTERService archivescenterService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDANCEMREPORTService attendancemreportService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndanceMreportService attendancemreportService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDANCERECORDTEMPService attendancerecordtempService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndanceRecordTempService attendancerecordtempService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDENCECALENDARService attendencecalendarService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndenceCalendarService attendencecalendarService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDENCESETUPService attendencesetupService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndenceSetupService attendencesetupService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IBUDGETService budgetService;
@@ -81,7 +81,7 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.orm.service.IOrmPostService ormpostService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMQYBZWHService ormqybzwhService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmQybzwhService ormqybzwhService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IORMQYGLService ormqyglService;
@@ -90,7 +90,7 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.orm.service.IORMUSERService ormuserService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMXMBQService ormxmbqService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmXmbqService ormxmbqService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IORMZWDQGZService ormzwdqgzService;
@@ -99,13 +99,13 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.par.service.IPARJGBMPJBZService parjgbmpjbzService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARJXBZGLService parjxbzglService;
+    private cn.ibizlab.ehr.core.par.service.IParJxbzglService parjxbzglService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.par.service.IPARJXKHJCSZService parjxkhjcszService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARJXKHMBService parjxkhmbService;
+    private cn.ibizlab.ehr.core.par.service.IParJxkhmbService parjxkhmbService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.par.service.IPARJXQDSZService parjxqdszService;
@@ -114,7 +114,7 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.par.service.IPARXMBPJBZService parxmbpjbzService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMBDSQDMXService pcmbdsqdmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmBdsqdmxService pcmbdsqdmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pcm.service.IPCMDDSQDMXService pcmddsqdmxService;
@@ -135,19 +135,19 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.pcm.service.IPCMPROFILENUMBEPREFIXService pcmprofilenumbeprefixService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMPROFILEService pcmprofileService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmProfileService pcmprofileService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMRecruitmentService pcmrecruitmentService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmRecruitmentService pcmrecruitmentService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMSYQGZService pcmsyqgzService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmSyqgzService pcmsyqgzService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pcm.service.IPCMYDJDMXService pcmydjdmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMYDJZMXService pcmydjzmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdjzmxService pcmydjzmxService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pcm.service.IPCMYDMXService pcmydmxService;
@@ -159,7 +159,7 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.pim.service.IPIMARCHIVESCHANGEService pimarchiveschangeService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMARCHIVESService pimarchivesService;
+    private cn.ibizlab.ehr.core.pim.service.IPimArchivesService pimarchivesService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMCONTRACTTYPEService pimcontracttypeService;
@@ -174,7 +174,7 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.pim.service.IPIMEXPACCOUNTService pimexpaccountService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMLABOURCAMPANYService pimlabourcampanyService;
+    private cn.ibizlab.ehr.core.pim.service.IPimLabourcampanyService pimlabourcampanyService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMOUTPUTService pimoutputService;
@@ -183,7 +183,7 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMQUALMAJORService pimqualmajorService;
+    private cn.ibizlab.ehr.core.pim.service.IPimQualMajorService pimqualmajorService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPIMTITLECATALOGUEService pimtitlecatalogueService;
@@ -198,22 +198,22 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.sal.service.ISALITEMSUBService salitemsubService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALPERSONSTDService salpersonstdService;
+    private cn.ibizlab.ehr.core.sal.service.ISalPersonStdService salpersonstdService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALPLANService salplanService;
+    private cn.ibizlab.ehr.core.sal.service.ISalPlanService salplanService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSALARYBILLService salsalarybillService;
+    private cn.ibizlab.ehr.core.sal.service.ISalSalaryBillService salsalarybillService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSALARYService salsalaryService;
+    private cn.ibizlab.ehr.core.sal.service.ISalSalaryService salsalaryService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.sal.service.ISALSCHEMEService salschemeService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSTDDSZNService salstddsznService;
+    private cn.ibizlab.ehr.core.sal.service.ISalStddsznService salstddsznService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.sal.service.ISALSTDGLService salstdglService;
@@ -222,7 +222,7 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.sal.service.ISALSTDGWGZRATEService salstdgwgzrateService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSTDGWGZService salstdgwgzService;
+    private cn.ibizlab.ehr.core.sal.service.ISalStdgwgzService salstdgwgzService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.sal.service.ISALSTDGWService salstdgwService;
@@ -237,7 +237,7 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.sal.service.ISALSTDZCService salstdzcService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSTDZJService salstdzjService;
+    private cn.ibizlab.ehr.core.sal.service.ISalStdzjService salstdzjService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.sal.service.ISALSTDZXService salstdzxService;
@@ -246,13 +246,13 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.sal.service.ISALSTDZYZGService salstdzyzgService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.soc.service.ISOCCOMPANYWELService soccompanywelService;
+    private cn.ibizlab.ehr.core.soc.service.ISocCompanyWelService soccompanywelService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.soc.service.ISOCSELFAREBASEService socselfarebaseService;
+    private cn.ibizlab.ehr.core.soc.service.ISocSelfareBaseService socselfarebaseService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMDEMDEFTIONService trmdemdeftionService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmDemdeftionService trmdemdeftionService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMDEPARTService trmdepartService;
@@ -261,7 +261,7 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.trm.service.ITRMDUTYCADRESService trmdutycadresService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMEMPLOYRETIONService trmemployretionService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmEmployeeRetionService trmemployeeretionService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMGRADECADRESService trmgradecadresService;
@@ -270,10 +270,10 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.trm.service.ITRMHMATSERService trmhmatserService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMLGBCOSTService trmlgbcostService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmLgbCostService trmlgbcostService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMPLANFORMUService trmplanformuService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmPlanFormuService trmplanformuService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMSTAFFService trmstaffService;
@@ -282,7 +282,7 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.trm.service.ITRMTRAINADDRESSService trmtrainaddressService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINAGENCYService trmtrainagencyService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainAgencyService trmtrainagencyService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMTRAINBUAPPLYService trmtrainbuapplyService;
@@ -291,10 +291,10 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.trm.service.ITRMTRAINCOURSEService trmtraincourseService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINDATAService trmtraindataService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainDataService trmtraindataService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINDEMANDSUMService trmtraindemandsumService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainDemandSumService trmtraindemandsumService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMTRAINDEMANDService trmtraindemandService;

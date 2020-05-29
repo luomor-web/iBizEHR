@@ -46,13 +46,13 @@ public class SALSALARYDETAILServiceImpl extends ServiceImpl<SALSALARYDETAILMappe
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALLOGService sallogService;
+    private cn.ibizlab.ehr.core.sal.service.ISalLogService sallogService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSALARYService salsalaryService;
+    private cn.ibizlab.ehr.core.sal.service.ISalSalaryService salsalaryService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSCHEMEITEMService salschemeitemService;
+    private cn.ibizlab.ehr.core.sal.service.ISalSchemeItemService salschemeitemService;
 
     private int batchSize = 500;
 
@@ -197,9 +197,9 @@ public class SALSALARYDETAILServiceImpl extends ServiceImpl<SALSALARYDETAILMappe
     private void fillParentData(SALSALARYDETAIL et){
         //实体关系[DER1N_SALSALARYDETAIL_SALSALARY_SALSALARYID]
         if(!ObjectUtils.isEmpty(et.getSalsalaryid())){
-            cn.ibizlab.ehr.core.sal.domain.SALSALARY salsalary=et.getSalsalary();
+            cn.ibizlab.ehr.core.sal.domain.SalSalary salsalary=et.getSalsalary();
             if(ObjectUtils.isEmpty(salsalary)){
-                cn.ibizlab.ehr.core.sal.domain.SALSALARY majorEntity=salsalaryService.get(et.getSalsalaryid());
+                cn.ibizlab.ehr.core.sal.domain.SalSalary majorEntity=salsalaryService.get(et.getSalsalaryid());
                 et.setSalsalary(majorEntity);
                 salsalary=majorEntity;
             }
@@ -207,9 +207,9 @@ public class SALSALARYDETAILServiceImpl extends ServiceImpl<SALSALARYDETAILMappe
         }
         //实体关系[DER1N_SALSALARYDETAIL_SALSCHEMEITEM_SALSCHEMEITEMID]
         if(!ObjectUtils.isEmpty(et.getSalschemeitemid())){
-            cn.ibizlab.ehr.core.sal.domain.SALSCHEMEITEM salschemeitem=et.getSalschemeitem();
+            cn.ibizlab.ehr.core.sal.domain.SalSchemeItem salschemeitem=et.getSalschemeitem();
             if(ObjectUtils.isEmpty(salschemeitem)){
-                cn.ibizlab.ehr.core.sal.domain.SALSCHEMEITEM majorEntity=salschemeitemService.get(et.getSalschemeitemid());
+                cn.ibizlab.ehr.core.sal.domain.SalSchemeItem majorEntity=salschemeitemService.get(et.getSalschemeitemid());
                 et.setSalschemeitem(majorEntity);
                 salschemeitem=majorEntity;
             }

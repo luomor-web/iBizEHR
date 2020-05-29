@@ -15,7 +15,7 @@
             
 		
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
-		<association property="salparam" javaType="cn.ibizlab.ehr.core.sal.domain.SALPARAM" column="salparamid" select="cn.ibizlab.ehr.core.sal.mapper.SALPARAMMapper.selectById" fetchType="lazy"></association>
+		<association property="salparam" javaType="cn.ibizlab.ehr.core.sal.domain.SalParam" column="salparamid" select="cn.ibizlab.ehr.core.sal.mapper.SalParamMapper.selectById" fetchType="lazy"></association>
     </resultMap>
 
 	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALRULE_SALPARAM_SALPARAMID] -->

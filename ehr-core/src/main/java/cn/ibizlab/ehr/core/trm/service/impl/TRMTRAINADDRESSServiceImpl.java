@@ -55,7 +55,7 @@ public class TRMTRAINADDRESSServiceImpl extends ServiceImpl<TRMTRAINADDRESSMappe
     private cn.ibizlab.ehr.core.trm.service.ITRMTEACHERTRAINService trmteachertrainService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAFFICService trmtrafficService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrafficService trmtrafficService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITRMTRAINFACIESService trmtrainfaciesService;

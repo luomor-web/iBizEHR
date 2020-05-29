@@ -411,7 +411,7 @@ public class ATTENDANCEMREPORTMX extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.att.domain.ATTENDANCEMREPORT attendancemreport2;
+    private cn.ibizlab.ehr.core.att.domain.AttEndanceMreport attendancemreport2;
 
     /**
      * 人员信息
