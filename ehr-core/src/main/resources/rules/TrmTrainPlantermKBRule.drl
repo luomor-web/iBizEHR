@@ -1,0 +1,37 @@
+package cn.ibizlab.ehr.trm.logic.trmtrainplantermlogic.kb;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.trm.domain.TrmTrainPlanterm trmtrainplantermkbdefault;
+global cn.ibizlab.ehr.core.trm.service.ITrmTrainPlantermService trmtrainplantermservice;
+global cn.ibizlab.ehr.core.trm.service.ITrmTrainPlantermService iBzSysTrmtrainplantermDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[更新]
+rule "prepareparam1"
+ruleflow-group "trmtrainplantermkbprepareparam1"
+    when
+    then
+    trmtrainplantermkbdefault.set("bjzt","30");
+    update(trmtrainplantermkbdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "trmtrainplantermkbbegin"
+    when
+    then
+    end
+
+//逻辑处理节点[准备参数]
+rule "deaction1"
+ruleflow-group "trmtrainplantermkbdeaction1"
+    when
+    then
+    trmtrainplantermservice.update(trmtrainplantermkbdefault);
+    update(trmtrainplantermkbdefault);//更新fact中变量值
+    end
+
