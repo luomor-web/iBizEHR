@@ -13,7 +13,9 @@ iBiz致力于提升中国软件软件建设和应用的价值，从业务到技�
 * iBizEHR依托iBiz生产体系，不仅提供源码开放，更可提供EHR全面的业务模型，包括每一个数据实体、每一个服务设计、每一个页面UI、每一个流程模型，源码和业务模型完全对应。
 * 通过对人力资源进行分析、规划、实施和调整，最大化企业人力资源的价值，助力企业发展。有兴趣请帮点一下 **Star** 哦！
 * **[iBiz开源社区](https://www.ibizlab.cn)**
-* **[iBizEHR在线演示](http://ehr.ibizlab.cn)**
+* **[iBizEHR在线演示-基础管理](http://ehr.ibizlab.cn)**
+* **[iBizEHR在线演示-招聘管理](http://ehrpcm.ibizlab.cn)**
+* **[iBizEHR在线演示-组织管理](http://ehrorm.ibizlab.cn)**
 * **[iBizEHR解决方案](http://demo.ibizlab.cn/ibizehr)**
 * **[iBizEHR训练营](http://demo.ibizlab.cn/ibizehr_practice)**
 * **[如何在演示系统中建立Issue](https://gitee.com/ibizlab/iBizEHR/wikis/pages?sort_id=2251813&doc_id=692797)**
