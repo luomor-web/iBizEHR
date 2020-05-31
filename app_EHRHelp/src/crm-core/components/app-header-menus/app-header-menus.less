@@ -1,0 +1,121 @@
+.app-header-menus {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    >.app-view-quick-search {
+
+        >.ivu-input-wrapper.ivu-input-wrapper-default.ivu-input-type-text {
+            width: 300px;
+
+            >.ivu-input.ivu-input-default.ivu-input-with-suffix {
+                border-radius: 20px;
+            }
+        }
+    }
+
+    >.app-view-quick-search.default {
+        font-size: 20px;
+        margin-right: 16px;
+    }
+
+    >.app-view-quick-search.view {
+        margin-right: 10px;
+    }
+
+    >.app-header-menu-item,
+    >.app-view-quick-search {
+        height: 24px;
+        display: flex;
+        align-items: center;
+        margin-right: 16px;
+        color: #8893a7;
+        border: 1px solid rgba(0, 0, 0, 0);
+        cursor: pointer;
+        >.ivu-input-wrapper{
+            >.ivu-input{
+                padding-left: 12px;
+            }
+        }
+    }
+
+    >.app-header-menu-item.icon {
+
+        >.app-header-menu-item-icon {
+            font-size: 20px;
+        }
+
+        >.app-header-menu-item-img {
+            height: 20px;
+            width: 20px;
+
+            >img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+
+    >.app-header-menu-item.icon:hover, >.app-view-quick-search:hover {
+        color: #68758e;
+        text-decoration: none;
+    }
+
+    >.app-header-menu-item.text {
+        border-radius: 4px;
+        border: 1px solid #8893a7;
+        text-align: center;
+        font-size: 12px;
+        padding: 2px 4px;
+
+        >.app-header-menu-item-icon {
+            width: 20px;
+            height: 20px;
+            overflow: hidden;
+            font-size: 16px;
+            margin-right: 3px;
+            margin-top: -3px;
+        }
+
+        >.app-header-menu-item-img {
+            height: 16px;
+            width: 16px;
+            margin-right: 3px;
+
+            >img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+
+    >.app-header-menu-item.text:hover {
+        color: #107fff;
+        border: 1px solid #107fff;
+    }
+
+    >.app-header-view-menu-item {
+        margin-right: 10px;
+
+        >span {
+            display: flex;
+
+            >.app-header-menu-item-icon {
+                margin-right: 6px;
+                font-size: 14px;
+            }
+
+            >.app-header-menu-item-img {
+                height: 14px;
+                width: 14px;
+                margin-right: 6px;
+
+                >img {
+                    height: 100%;
+                    width: 100%;
+                    margin-top: 3px;
+                }
+            }
+        }
+    }
+}
