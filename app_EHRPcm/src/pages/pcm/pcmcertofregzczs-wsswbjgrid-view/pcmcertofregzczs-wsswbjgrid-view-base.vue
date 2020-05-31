@@ -52,7 +52,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PCMCERTOFREGService from '@/service/pcmcertofreg/pcmcertofreg-service';
+import PcmCertofregService from '@/service/pcm-certofreg/pcm-certofreg-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -73,10 +73,10 @@ export default class PCMCERTOFREGZCZS_WSSWBJGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMCERTOFREGService}
+     * @type {PcmCertofregService}
      * @memberof PCMCERTOFREGZCZS_WSSWBJGridViewBase
      */
-    public appEntityService: PCMCERTOFREGService = new PCMCERTOFREGService;
+    public appEntityService: PcmCertofregService = new PcmCertofregService;
 
 
     /**

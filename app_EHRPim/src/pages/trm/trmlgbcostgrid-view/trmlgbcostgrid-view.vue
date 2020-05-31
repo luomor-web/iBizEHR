@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import TRMLGBCOSTGridViewBase from './trmlgbcostgrid-view-base.vue';
 
-import view_grid from '@widgets/trmlgbcost/main-grid/main-grid.vue';
-import view_searchform from '@widgets/trmlgbcost/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/trm-lgb-cost/main-grid/main-grid.vue';
+import view_searchform from '@widgets/trm-lgb-cost/default-searchform/default-searchform.vue';
 
 /**
  * 老干部活动管理

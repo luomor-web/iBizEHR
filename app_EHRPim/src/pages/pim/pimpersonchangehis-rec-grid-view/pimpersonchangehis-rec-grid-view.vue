@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMPERSONCHANGEHisRecGridViewBase from './pimpersonchangehis-rec-grid-view-base.vue';
 
-import view_grid from '@widgets/pimpersonchange/his-rec-grid/his-rec-grid.vue';
-import view_searchform from '@widgets/pimpersonchange/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-person-change/his-rec-grid/his-rec-grid.vue';
+import view_searchform from '@widgets/pim-person-change/default-searchform/default-searchform.vue';
 
 /**
  * 历史审核记录

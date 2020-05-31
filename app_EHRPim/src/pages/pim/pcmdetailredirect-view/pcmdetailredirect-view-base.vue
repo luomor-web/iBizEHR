@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PCMDETAILService from '@/service/pcmdetail/pcmdetail-service';
+import PcmDetailService from '@/service/pcm-detail/pcm-detail-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PCMDETAILRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMDETAILService}
+     * @type {PcmDetailService}
      * @memberof PCMDETAILRedirectViewBase
      */
-    public appEntityService: PCMDETAILService = new PCMDETAILService;
+    public appEntityService: PcmDetailService = new PcmDetailService;
 
 
     /**

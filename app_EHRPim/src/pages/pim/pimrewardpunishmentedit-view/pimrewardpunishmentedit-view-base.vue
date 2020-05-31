@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMREWARDPUNISHMENTService from '@/service/pimrewardpunishment/pimrewardpunishment-service';
+import PimRewardPunishmentService from '@/service/pim-reward-punishment/pim-reward-punishment-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMREWARDPUNISHMENTEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMREWARDPUNISHMENTService}
+     * @type {PimRewardPunishmentService}
      * @memberof PIMREWARDPUNISHMENTEditViewBase
      */
-    public appEntityService: PIMREWARDPUNISHMENTService = new PIMREWARDPUNISHMENTService;
+    public appEntityService: PimRewardPunishmentService = new PimRewardPunishmentService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PIMREWARDPUNISHMENTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMREWARDPUNISHMENT");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimRewardPunishment");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PIMREWARDPUNISHMENTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMREWARDPUNISHMENT");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimRewardPunishment");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PIMREWARDPUNISHMENTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMREWARDPUNISHMENT");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimRewardPunishment");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PIMREWARDPUNISHMENTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMREWARDPUNISHMENT");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimRewardPunishment");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PIMREWARDPUNISHMENTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMREWARDPUNISHMENT");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimRewardPunishment");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PIMREWARDPUNISHMENTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMREWARDPUNISHMENT");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimRewardPunishment");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PIMREWARDPUNISHMENTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMREWARDPUNISHMENT");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimRewardPunishment");
     }
 
     /**

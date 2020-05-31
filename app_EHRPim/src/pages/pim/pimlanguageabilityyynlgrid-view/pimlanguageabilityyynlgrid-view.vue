@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMLANGUAGEABILITYYYNLGridViewBase from './pimlanguageabilityyynlgrid-view-base.vue';
 
-import view_grid from '@widgets/pimlanguageability/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pimlanguageability/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-language-ability/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pim-language-ability/default-searchform/default-searchform.vue';
 
 /**
  * 语言能力表格视图

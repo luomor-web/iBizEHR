@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMARMYCADRESARMYGridViewBase from './pimarmycadresarmygrid-view-base.vue';
 
-import view_grid from '@widgets/pimarmycadres/main-grid/main-grid.vue';
+import view_grid from '@widgets/pim-armycadres/main-grid/main-grid.vue';
 
 /**
  * 军转干部表格视图

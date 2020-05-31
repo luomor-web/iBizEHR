@@ -53,7 +53,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PCMPROFILESPYYService from '@/service/pcmprofilespyy/pcmprofilespyy-service';
+import PcmProfileSpyyService from '@/service/pcm-profile-spyy/pcm-profile-spyy-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -74,10 +74,10 @@ export default class PCMPROFILESPYYGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMPROFILESPYYService}
+     * @type {PcmProfileSpyyService}
      * @memberof PCMPROFILESPYYGridViewBase
      */
-    public appEntityService: PCMPROFILESPYYService = new PCMPROFILESPYYService;
+    public appEntityService: PcmProfileSpyyService = new PcmProfileSpyyService;
 
 
     /**
@@ -336,7 +336,7 @@ export default class PCMPROFILESPYYGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILESPYY");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PcmProfileSpyy");
     }
 
     /**
@@ -365,7 +365,7 @@ export default class PCMPROFILESPYYGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILESPYY");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PcmProfileSpyy");
     }
 
     /**
@@ -394,7 +394,7 @@ export default class PCMPROFILESPYYGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILESPYY");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PcmProfileSpyy");
     }
 
     /**
@@ -423,7 +423,7 @@ export default class PCMPROFILESPYYGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILESPYY");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PcmProfileSpyy");
     }
 
     /**
@@ -452,7 +452,7 @@ export default class PCMPROFILESPYYGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILESPYY");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PcmProfileSpyy");
     }
 
     /**

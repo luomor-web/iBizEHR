@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMPERSONCHANGEService from '@/service/pimpersonchange/pimpersonchange-service';
+import PimPersonChangeService from '@/service/pim-person-change/pim-person-change-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMPERSONCHANGERedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMPERSONCHANGEService}
+     * @type {PimPersonChangeService}
      * @memberof PIMPERSONCHANGERedirectViewBase
      */
-    public appEntityService: PIMPERSONCHANGEService = new PIMPERSONCHANGEService;
+    public appEntityService: PimPersonChangeService = new PimPersonChangeService;
 
 
     /**

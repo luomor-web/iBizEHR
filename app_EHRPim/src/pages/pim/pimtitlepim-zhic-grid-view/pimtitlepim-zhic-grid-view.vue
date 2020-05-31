@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMTITLEPimZhicGridViewBase from './pimtitlepim-zhic-grid-view-base.vue';
 
-import view_grid from '@widgets/pimtitle/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pimtitle/default-2-searchform/default-2-searchform.vue';
+import view_grid from '@widgets/pim-title/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pim-title/default-2-searchform/default-2-searchform.vue';
 
 /**
  * 职称信息表格视图

@@ -53,7 +53,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMPAPERService from '@/service/pimpaper/pimpaper-service';
+import PimPaperService from '@/service/pim-paper/pim-paper-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -74,10 +74,10 @@ export default class PIMPAPERPAPERGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMPAPERService}
+     * @type {PimPaperService}
      * @memberof PIMPAPERPAPERGridViewBase
      */
-    public appEntityService: PIMPAPERService = new PIMPAPERService;
+    public appEntityService: PimPaperService = new PimPaperService;
 
 
     /**
@@ -336,7 +336,7 @@ export default class PIMPAPERPAPERGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PIMPAPER");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PimPaper");
     }
 
     /**
@@ -365,7 +365,7 @@ export default class PIMPAPERPAPERGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PIMPAPER");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PimPaper");
     }
 
     /**
@@ -394,7 +394,7 @@ export default class PIMPAPERPAPERGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMPAPER");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimPaper");
     }
 
     /**
@@ -423,7 +423,7 @@ export default class PIMPAPERPAPERGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMPAPER");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimPaper");
     }
 
     /**
@@ -452,7 +452,7 @@ export default class PIMPAPERPAPERGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMPAPER");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimPaper");
     }
 
     /**

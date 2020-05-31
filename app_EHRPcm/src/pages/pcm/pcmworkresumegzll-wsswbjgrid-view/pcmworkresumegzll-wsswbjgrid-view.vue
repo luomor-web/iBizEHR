@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMWORKRESUMEGZLL_WSSWBJGridViewBase from './pcmworkresumegzll-wsswbjgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmworkresume/main-grid/main-grid.vue';
+import view_grid from '@widgets/pcm-work-resume/main-grid/main-grid.vue';
 
 /**
  * 工作履历表格视图

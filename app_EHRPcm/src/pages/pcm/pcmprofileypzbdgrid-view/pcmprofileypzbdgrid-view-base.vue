@@ -69,11 +69,11 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PCMPROFILEService from '@/service/pcmprofile/pcmprofile-service';
+import PcmProfileService from '@/service/pcm-profile/pcm-profile-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
-import PCMPROFILEUIService from '@/uiservice/pcmprofile/pcmprofile-ui-service';
+import PcmProfileUIService from '@/uiservice/pcm-profile/pcm-profile-ui-service';
 import CodeListService from "@service/app/codelist-service";
 
 
@@ -91,10 +91,10 @@ export default class PCMPROFILEYPZBDGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMPROFILEService}
+     * @type {PcmProfileService}
      * @memberof PCMPROFILEYPZBDGridViewBase
      */
-    public appEntityService: PCMPROFILEService = new PCMPROFILEService;
+    public appEntityService: PcmProfileService = new PcmProfileService;
 
 
     /**
@@ -391,8 +391,8 @@ export default class PCMPROFILEYPZBDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:PCMPROFILEUIService  = new PCMPROFILEUIService();
-        curUIService.PCMPROFILE_BD(datas,contextJO, paramJO,  $event, xData,this,"PCMPROFILE");
+        const curUIService:PcmProfileUIService  = new PcmProfileUIService();
+        curUIService.PcmProfile_BD(datas,contextJO, paramJO,  $event, xData,this,"PcmProfile");
     }
 
     /**
@@ -421,8 +421,8 @@ export default class PCMPROFILEYPZBDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:PCMPROFILEUIService  = new PCMPROFILEUIService();
-        curUIService.PCMPROFILE_YQWBD(datas,contextJO, paramJO,  $event, xData,this,"PCMPROFILE");
+        const curUIService:PcmProfileUIService  = new PcmProfileUIService();
+        curUIService.PcmProfile_YQWBD(datas,contextJO, paramJO,  $event, xData,this,"PcmProfile");
     }
 
     /**
@@ -451,7 +451,7 @@ export default class PCMPROFILEYPZBDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILE");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PcmProfile");
     }
 
     /**
@@ -480,7 +480,7 @@ export default class PCMPROFILEYPZBDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILE");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PcmProfile");
     }
 
     /**
@@ -509,7 +509,7 @@ export default class PCMPROFILEYPZBDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILE");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PcmProfile");
     }
 
     /**

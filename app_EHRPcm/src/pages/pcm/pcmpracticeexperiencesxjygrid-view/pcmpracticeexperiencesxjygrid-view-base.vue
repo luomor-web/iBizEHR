@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PCMPRACTICEEXPERIENCEService from '@/service/pcmpracticeexperience/pcmpracticeexperience-service';
+import PcmPracticeExperienceService from '@/service/pcm-practice-experience/pcm-practice-experience-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PCMPRACTICEEXPERIENCESXJYGridViewBase extends GridViewBase 
     /**
      * 实体服务对象
      *
-     * @type {PCMPRACTICEEXPERIENCEService}
+     * @type {PcmPracticeExperienceService}
      * @memberof PCMPRACTICEEXPERIENCESXJYGridViewBase
      */
-    public appEntityService: PCMPRACTICEEXPERIENCEService = new PCMPRACTICEEXPERIENCEService;
+    public appEntityService: PcmPracticeExperienceService = new PcmPracticeExperienceService;
 
 
     /**
@@ -390,7 +390,7 @@ export default class PCMPRACTICEEXPERIENCESXJYGridViewBase extends GridViewBase 
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PCMPRACTICEEXPERIENCE");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PcmPracticeExperience");
     }
 
     /**
@@ -419,7 +419,7 @@ export default class PCMPRACTICEEXPERIENCESXJYGridViewBase extends GridViewBase 
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PCMPRACTICEEXPERIENCE");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PcmPracticeExperience");
     }
 
     /**
@@ -448,7 +448,7 @@ export default class PCMPRACTICEEXPERIENCESXJYGridViewBase extends GridViewBase 
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PCMPRACTICEEXPERIENCE");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PcmPracticeExperience");
     }
 
     /**
@@ -477,7 +477,7 @@ export default class PCMPRACTICEEXPERIENCESXJYGridViewBase extends GridViewBase 
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PCMPRACTICEEXPERIENCE");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PcmPracticeExperience");
     }
 
     /**
@@ -506,7 +506,7 @@ export default class PCMPRACTICEEXPERIENCESXJYGridViewBase extends GridViewBase 
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PCMPRACTICEEXPERIENCE");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PcmPracticeExperience");
     }
 
     /**

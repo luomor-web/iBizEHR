@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMZPMEGLEditViewBase from './pcmzpmegledit-view-base.vue';
 
-import view_form from '@widgets/pcmzpmegl/main-form/main-form.vue';
+import view_form from '@widgets/pcm-zpmegl/main-form/main-form.vue';
 
 /**
  * 招聘名额管理编辑视图

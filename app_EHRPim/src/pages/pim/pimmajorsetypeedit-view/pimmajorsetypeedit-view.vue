@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMMAJORSETYPEEditViewBase from './pimmajorsetypeedit-view-base.vue';
 
-import view_form from '@widgets/pimmajorsetype/main-form/main-form.vue';
+import view_form from '@widgets/pim-major-setype/main-form/main-form.vue';
 
 /**
  * 专业序列类型编辑视图

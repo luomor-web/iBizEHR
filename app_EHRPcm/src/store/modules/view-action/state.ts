@@ -34,15 +34,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '0a35c2cf7b8d373478092b5561546a82',
-            viewmodule: 'PCM',
-            viewname: 'WZD0001YPZBDOptionView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-            ],
-        },
-        {
             viewtag: '0a36bba4db0f174309b0dbcd9fbcdb55',
             viewmodule: 'PCM',
             viewname: 'PCMWORKRESUMEGZLLGridView',
@@ -78,7 +69,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '0a35c2cf7b8d373478092b5561546a82',
                 'ab78da2e98f22cb3f601923cf66db13f',
             ],
         },
@@ -105,7 +95,7 @@ export const viewstate: any = {
         {
             viewtag: '16f45c559b919f73db542c707116ce73',
             viewmodule: 'PCM',
-            viewname: 'PCMGXMLCurNDGridView',
+            viewname: 'PcmGxmlCurNDGridView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
@@ -273,7 +263,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '86a86d39e6ca1afad826b2ca38d842bc',
-                'b8a34744d439abfff6ca42202a0c9d85',
             ],
         },
         {
@@ -387,16 +376,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '6dabeb1f930b9a81c11e6ea38ceb5e1b',
-            viewmodule: 'PCM',
-            viewname: 'PCMPROFILESZYJTJMPickupView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '76d32dc8e0679ba7242a5568fc65e75a',
-            ],
-        },
-        {
             viewtag: '71cdb539d218e7a24362fa84ffa78813',
             viewmodule: 'PCM',
             viewname: 'PCMAWARDSWONSHJQK_WSSWBJGridView',
@@ -421,15 +400,6 @@ export const viewstate: any = {
             viewtag: '743374253b5e705d698020bf94257a4a',
             viewmodule: 'ORM',
             viewname: 'ORMDUTYOrmOrgSectorPickupGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-            ],
-        },
-        {
-            viewtag: '76d32dc8e0679ba7242a5568fc65e75a',
-            viewmodule: 'PCM',
-            viewname: 'PCMPROFILESZYJTJPickupGridView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
@@ -493,7 +463,6 @@ export const viewstate: any = {
                 '71cdb539d218e7a24362fa84ffa78813',
                 '7e25063f664b76124359fc1ffcaacb51',
                 '01a06bd6730d3199229fd1b9f8aca1a8',
-                'b8a34744d439abfff6ca42202a0c9d85',
             ],
         },
         {
@@ -703,15 +672,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: 'b8a34744d439abfff6ca42202a0c9d85',
-            viewmodule: 'PCM',
-            viewname: 'WZD0001JCSOptionView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-            ],
-        },
-        {
             viewtag: 'bf2d5739527f564355ffe5ffce92d9a6',
             viewmodule: 'PCM',
             viewname: 'PCMPROFILEYPZBDGridView',
@@ -719,7 +679,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '65c9c019ec8de91077c1d8c58da97caf',
-                '0a35c2cf7b8d373478092b5561546a82',
             ],
         },
         {
@@ -751,7 +710,6 @@ export const viewstate: any = {
                 'b73b674c74676f40d1c9a1663b14d6ab',
                 'd0d1c5e2fea8eb48ebcb507b6126df20',
                 'c1296113c6baff077df6b1f1b1711266',
-                '6dabeb1f930b9a81c11e6ea38ceb5e1b',
                 '0a36bba4db0f174309b0dbcd9fbcdb55',
                 'a6fe2d0f44d114e686eb214a6dd4b209',
             ],
@@ -970,7 +928,6 @@ export const viewstate: any = {
                 '71cdb539d218e7a24362fa84ffa78813',
                 '7e25063f664b76124359fc1ffcaacb51',
                 '01a06bd6730d3199229fd1b9f8aca1a8',
-                'b8a34744d439abfff6ca42202a0c9d85',
             ],
         },
         {
@@ -1042,7 +999,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'b8a34744d439abfff6ca42202a0c9d85',
                 'f41dc12715664fd5a5678c0442e3e962',
             ],
         },

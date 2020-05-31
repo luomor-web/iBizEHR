@@ -53,7 +53,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMREWARDPUNISHMENTService from '@/service/pimrewardpunishment/pimrewardpunishment-service';
+import PimRewardPunishmentService from '@/service/pim-reward-punishment/pim-reward-punishment-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -74,10 +74,10 @@ export default class PIMREWARDPUNISHMENTPimJanglGridViewBase extends GridViewBas
     /**
      * 实体服务对象
      *
-     * @type {PIMREWARDPUNISHMENTService}
+     * @type {PimRewardPunishmentService}
      * @memberof PIMREWARDPUNISHMENTPimJanglGridViewBase
      */
-    public appEntityService: PIMREWARDPUNISHMENTService = new PIMREWARDPUNISHMENTService;
+    public appEntityService: PimRewardPunishmentService = new PimRewardPunishmentService;
 
 
     /**
@@ -331,7 +331,7 @@ export default class PIMREWARDPUNISHMENTPimJanglGridViewBase extends GridViewBas
           datas = [params];
         }
         // 界面行为
-        this.New(datas, contextJO,paramJO,  $event, xData,this,"PIMREWARDPUNISHMENT");
+        this.New(datas, contextJO,paramJO,  $event, xData,this,"PimRewardPunishment");
     }
 
     /**
@@ -360,7 +360,7 @@ export default class PIMREWARDPUNISHMENTPimJanglGridViewBase extends GridViewBas
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMREWARDPUNISHMENT");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimRewardPunishment");
     }
 
     /**
@@ -389,7 +389,7 @@ export default class PIMREWARDPUNISHMENTPimJanglGridViewBase extends GridViewBas
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMREWARDPUNISHMENT");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimRewardPunishment");
     }
 
     /**
@@ -418,7 +418,7 @@ export default class PIMREWARDPUNISHMENTPimJanglGridViewBase extends GridViewBas
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMREWARDPUNISHMENT");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimRewardPunishment");
     }
 
     /**

@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMARCHIVESCHANGEDADCJLGridViewBase from './pimarchiveschangedadcjlgrid-view-base.vue';
 
-import view_grid from '@widgets/pimarchiveschange/main-2-grid/main-2-grid.vue';
-import view_searchform from '@widgets/pimarchiveschange/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-archives-change/main-2-grid/main-2-grid.vue';
+import view_searchform from '@widgets/pim-archives-change/default-searchform/default-searchform.vue';
 
 /**
  * 档案调出记录

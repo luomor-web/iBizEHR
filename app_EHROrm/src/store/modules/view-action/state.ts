@@ -36,7 +36,7 @@ export const viewstate: any = {
         {
             viewtag: '03478df3682bcaae0f318d655b7373a4',
             viewmodule: 'ORM',
-            viewname: 'ORMORGXMBQPickupGridView',
+            viewname: 'OrmOrgXMBQPickupGridView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
@@ -60,16 +60,6 @@ export const viewstate: any = {
             refviews: [
                 '6062c2d2018e65fc93001312538b2dc8',
                 'a9e8848adebb1372086602b973419f50',
-            ],
-        },
-        {
-            viewtag: '0a73019b4898b090e1b0888e7243e623',
-            viewmodule: 'ORM',
-            viewname: 'ORMPostLibMPickupView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                'ff9c16f0bcce15390c48b09827d63916',
             ],
         },
         {
@@ -262,28 +252,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '3c77de98c2fdb19e58c87284875a8d0a',
-            viewmodule: 'ORM',
-            viewname: 'ORMPostDetailsGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '0a73019b4898b090e1b0888e7243e623',
-                '3cf4b1f3290d18a0f40dd4438ef76d35',
-                '4c23c804046de5b0f9af83bda3c44d65',
-            ],
-        },
-        {
-            viewtag: '3cf4b1f3290d18a0f40dd4438ef76d35',
-            viewmodule: 'ORM',
-            viewname: 'ORMPOSTMPickupView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '855de99194a1f051419ad4cb529588b8',
-            ],
-        },
-        {
             viewtag: '49057ccfd5bf31ffbfa836f8f778d6aa',
             viewmodule: 'ORM',
             viewname: 'ORMORGRedirectView',
@@ -291,17 +259,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '34201778b70a0175b7664955bd8ae2bf',
-            ],
-        },
-        {
-            viewtag: '4acc409a4d7965da8ca6216b4b153cc3',
-            viewmodule: 'ORM',
-            viewname: 'ORMPOSTGWXHWHEditView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '2b2d9880ef43097b9378bde74e87788d',
-                '3c77de98c2fdb19e58c87284875a8d0a',
             ],
         },
         {
@@ -394,16 +351,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '6fcc75caf7850e6ca18c135f0916f948',
-            viewmodule: 'ORM',
-            viewname: 'ORMPostLibGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                'def85fb885bc5ea11c35f98f9a134761',
-            ],
-        },
-        {
             viewtag: '704777f8b0faf40b3d68b19a04e32ef0',
             viewmodule: 'ORM',
             viewname: 'ORMXMBMXRedirectView',
@@ -411,17 +358,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '1cc2d0b0bb43dbf894d937d1da73b369',
-            ],
-        },
-        {
-            viewtag: '73b7461f2c4789cb2e1c310295ea0d0f',
-            viewmodule: 'ORM',
-            viewname: 'ORMPOSTGWXHWHGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '2b2d9880ef43097b9378bde74e87788d',
-                '4acc409a4d7965da8ca6216b4b153cc3',
             ],
         },
         {
@@ -586,6 +522,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'a103d0ea2d848ed7acc56f4c8679a619',
+            viewmodule: 'ORM',
+            viewname: 'OrmPostXJGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '91203040ce0bccce32d1ccf404be2fa4',
+            ],
+        },
+        {
             viewtag: 'a2b9436414dfacd75213950bcccde502',
             viewmodule: 'ORM',
             viewname: 'ORMORGAllLevelTwoOrgPickupGridView',
@@ -630,12 +576,11 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '6fcc75caf7850e6ca18c135f0916f948',
                 '1c14464d67d8176e1e3836cbe5f262b9',
                 '59540c7e4db29bd446ff4a470ac24af5',
-                '73b7461f2c4789cb2e1c310295ea0d0f',
                 'c21086cfe485c3db5046ec2181eab9f4',
                 '989a45ab2da4c6aa3c2a0867061a1a95',
+                'a103d0ea2d848ed7acc56f4c8679a619',
                 '1a4b3351937fb97f3f1a296bb63e5665',
                 '33707b04587e169b829099ecc00f4215',
             ],

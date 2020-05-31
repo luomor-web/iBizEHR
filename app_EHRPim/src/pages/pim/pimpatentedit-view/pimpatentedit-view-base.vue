@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMPATENTService from '@/service/pimpatent/pimpatent-service';
+import PimPatentService from '@/service/pim-patent/pim-patent-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMPATENTEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMPATENTService}
+     * @type {PimPatentService}
      * @memberof PIMPATENTEditViewBase
      */
-    public appEntityService: PIMPATENTService = new PIMPATENTService;
+    public appEntityService: PimPatentService = new PimPatentService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PIMPATENTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimPatent");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PIMPATENTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimPatent");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PIMPATENTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimPatent");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PIMPATENTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimPatent");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PIMPATENTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimPatent");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PIMPATENTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimPatent");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PIMPATENTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimPatent");
     }
 
     /**

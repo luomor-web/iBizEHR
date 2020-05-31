@@ -52,7 +52,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import TestResultService from '@/service/test-result/test-result-service';
+import PcmTestResultService from '@/service/pcm-test-result/pcm-test-result-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -73,10 +73,10 @@ export default class TestResultCPJG_WSSWBJGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {TestResultService}
+     * @type {PcmTestResultService}
      * @memberof TestResultCPJG_WSSWBJGridViewBase
      */
-    public appEntityService: TestResultService = new TestResultService;
+    public appEntityService: PcmTestResultService = new PcmTestResultService;
 
 
     /**
@@ -141,9 +141,9 @@ export default class TestResultCPJG_WSSWBJGridViewBase extends GridViewBase {
      * @memberof TestResultCPJG_WSSWBJGridViewBase
      */
     public model: any = {
-        srfCaption: 'entities.testresult.views.cpjg_wsswbjgridview.caption',
-        srfTitle: 'entities.testresult.views.cpjg_wsswbjgridview.title',
-        srfSubTitle: 'entities.testresult.views.cpjg_wsswbjgridview.subtitle',
+        srfCaption: 'entities.pcmtestresult.views.cpjg_wsswbjgridview.caption',
+        srfTitle: 'entities.pcmtestresult.views.cpjg_wsswbjgridview.title',
+        srfSubTitle: 'entities.pcmtestresult.views.cpjg_wsswbjgridview.subtitle',
         dataInfo: ''
     }
 
@@ -202,7 +202,7 @@ export default class TestResultCPJG_WSSWBJGridViewBase extends GridViewBase {
                 this.opendata(args, params, $event, xData);
             },
             grid: this.$refs.grid,
-            keyPSDEField: 'testresult',
+            keyPSDEField: 'pcmtestresult',
             majorPSDEField: 'testresultname',
             isLoadDefault: true,
         });
@@ -293,7 +293,7 @@ export default class TestResultCPJG_WSSWBJGridViewBase extends GridViewBase {
             ]
         }
         const parameters: any[] = [
-            { pathName: 'testresults', parameterName: 'testresult' },
+            { pathName: 'pcmtestresults', parameterName: 'pcmtestresult' },
             { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;

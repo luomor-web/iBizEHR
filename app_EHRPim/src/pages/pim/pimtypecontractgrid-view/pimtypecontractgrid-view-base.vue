@@ -53,7 +53,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMTYPECONTRACTService from '@/service/pimtypecontract/pimtypecontract-service';
+import PimTypeContractService from '@/service/pim-type-contract/pim-type-contract-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -74,10 +74,10 @@ export default class PIMTYPECONTRACTGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMTYPECONTRACTService}
+     * @type {PimTypeContractService}
      * @memberof PIMTYPECONTRACTGridViewBase
      */
-    public appEntityService: PIMTYPECONTRACTService = new PIMTYPECONTRACTService;
+    public appEntityService: PimTypeContractService = new PimTypeContractService;
 
 
     /**
@@ -336,7 +336,7 @@ export default class PIMTYPECONTRACTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PIMTYPECONTRACT");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PimTypeContract");
     }
 
     /**
@@ -365,7 +365,7 @@ export default class PIMTYPECONTRACTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PIMTYPECONTRACT");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PimTypeContract");
     }
 
     /**
@@ -394,7 +394,7 @@ export default class PIMTYPECONTRACTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMTYPECONTRACT");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimTypeContract");
     }
 
     /**
@@ -423,7 +423,7 @@ export default class PIMTYPECONTRACTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMTYPECONTRACT");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimTypeContract");
     }
 
     /**
@@ -452,7 +452,7 @@ export default class PIMTYPECONTRACTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMTYPECONTRACT");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimTypeContract");
     }
 
     /**

@@ -68,7 +68,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "组织选择表格视图",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "ORM",
-            "viewname": "ORMORGXMBQPickupGridView",
+            "viewname": "OrmOrgXMBQPickupGridView",
             "viewtag": "03478df3682bcaae0f318d655b7373a4"
         },
         "ormdepestmangridview": {
@@ -272,7 +272,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "1bae30eba13afd1729c5850bcbae2822"
         },
         "contractsignorggridview": {
-            "title": "法人主体设置表格视图",
+            "title": "法人主体设置",
             "caption": "法人主体设置",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "ORM",
@@ -553,7 +553,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ormpostmpickupview": {
             "title": "岗位管理数据多项选择视图",
-            "caption": "岗位集",
+            "caption": "岗位",
             "viewtype": "DEMPICKUPVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMPOSTMPickupView",
@@ -745,7 +745,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ormposteditview2": {
             "title": "岗位管理编辑视图",
-            "caption": "岗位集",
+            "caption": "岗位",
             "viewtype": "DEEDITVIEW2",
             "viewmodule": "ORM",
             "viewname": "ORMPOSTEditView2",
@@ -889,7 +889,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ormpostpickupview": {
             "title": "岗位管理数据选择视图",
-            "caption": "岗位集",
+            "caption": "岗位",
             "viewtype": "DEPICKUPVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMPOSTPickupView",
@@ -1040,8 +1040,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "7122bd5b3c427253c1e1f52017141c4a"
         },
         "ormpostgwxhwhgridview": {
-            "title": "岗位集设置",
-            "caption": "岗位集设置",
+            "title": "岗位设置",
+            "caption": "岗位设置",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMPOSTGWXHWHGridView",
@@ -1145,7 +1145,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ormpostpickupgridview": {
             "title": "岗位管理选择表格视图",
-            "caption": "岗位集",
+            "caption": "岗位",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMPOSTPickupGridView",
@@ -1304,8 +1304,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "9851f29e3a4f62727ef164d964f3c2fd"
         },
         "ormsignorggridview": {
-            "title": "法人主体表格视图",
-            "caption": "法人主体",
+            "title": "法人主体维护",
+            "caption": "法人主体维护",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "ORM",
             "viewname": "OrmSignOrgGridView",
@@ -1375,6 +1375,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ORMORGSJYXZZQXPickupGridView",
             "viewtag": "9f6ce73e8538cadb8176c23ba63a1c04"
         },
+        "ormpostxjgridview": {
+            "title": "岗位设置",
+            "caption": "岗位设置",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "ORM",
+            "viewname": "OrmPostXJGridView",
+            "viewtag": "a103d0ea2d848ed7acc56f4c8679a619"
+        },
         "ormpostdetailspickupview": {
             "title": "岗位明细数据选择视图",
             "caption": "岗位明细",
@@ -1417,7 +1425,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ormpostorgidpickupview": {
             "title": "岗位管理数据选择视图",
-            "caption": "岗位集",
+            "caption": "岗位",
             "viewtype": "DEPICKUPVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMPOSTORGIDPickupView",
@@ -1737,7 +1745,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ormpostredirectview": {
             "title": "岗位管理数据重定向视图",
-            "caption": "岗位集",
+            "caption": "岗位",
             "viewtype": "DEREDIRECTVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMPOSTRedirectView",
@@ -1913,7 +1921,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ormpostejormorgidpickupview": {
             "title": "岗位管理数据选择视图",
-            "caption": "岗位集",
+            "caption": "岗位",
             "viewtype": "DEPICKUPVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMPOSTEJORMORGIDPickupView",

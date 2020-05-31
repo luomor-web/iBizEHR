@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import ARCHIVALCATALOGUEService from '@/service/archivalcatalogue/archivalcatalogue-service';
+import PimArchivalCatalogueService from '@/service/pim-archival-catalogue/pim-archival-catalogue-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class ARCHIVALCATALOGUERedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ARCHIVALCATALOGUEService}
+     * @type {PimArchivalCatalogueService}
      * @memberof ARCHIVALCATALOGUERedirectViewBase
      */
-    public appEntityService: ARCHIVALCATALOGUEService = new ARCHIVALCATALOGUEService;
+    public appEntityService: PimArchivalCatalogueService = new PimArchivalCatalogueService;
 
 
     /**
@@ -98,9 +98,9 @@ export default class ARCHIVALCATALOGUERedirectViewBase extends WizardViewBase {
      * @memberof ARCHIVALCATALOGUERedirectViewBase
      */
     public model: any = {
-        srfCaption: 'entities.archivalcatalogue.views.redirectview.caption',
-        srfTitle: 'entities.archivalcatalogue.views.redirectview.title',
-        srfSubTitle: 'entities.archivalcatalogue.views.redirectview.subtitle',
+        srfCaption: 'entities.pimarchivalcatalogue.views.redirectview.caption',
+        srfTitle: 'entities.pimarchivalcatalogue.views.redirectview.title',
+        srfSubTitle: 'entities.pimarchivalcatalogue.views.redirectview.subtitle',
         dataInfo: ''
     }
 

@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMQUALTYPEEditViewBase from './pimqualtypeedit-view-base.vue';
 
-import view_form from '@widgets/pimqualtype/main-form/main-form.vue';
+import view_form from '@widgets/pim-qual-type/main-form/main-form.vue';
 
 /**
  * 岗位（技能）证书编辑视图

@@ -27,7 +27,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, PickupViewBase } from '@/crm-core';
-import PIMEXITANDENTRYService from '@/service/pimexitandentry/pimexitandentry-service';
+import PimExitandentryService from '@/service/pim-exitandentry/pim-exitandentry-service';
 
 import PickupViewEngine from '@engine/view/pickup-view-engine';
 
@@ -46,10 +46,10 @@ export default class PIMEXITANDENTRYFormPickupViewBase extends PickupViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMEXITANDENTRYService}
+     * @type {PimExitandentryService}
      * @memberof PIMEXITANDENTRYFormPickupViewBase
      */
-    public appEntityService: PIMEXITANDENTRYService = new PIMEXITANDENTRYService;
+    public appEntityService: PimExitandentryService = new PimExitandentryService;
 
 
     /**

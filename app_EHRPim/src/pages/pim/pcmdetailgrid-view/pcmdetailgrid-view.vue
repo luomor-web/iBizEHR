@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMDETAILGridViewBase from './pcmdetailgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmdetail/main-grid/main-grid.vue';
+import view_grid from '@widgets/pcm-detail/main-grid/main-grid.vue';
 
 /**
  * 人员花名册

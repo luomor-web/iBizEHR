@@ -1,5 +1,5 @@
 <template>
-    <i-form :model="this.data" class='app-form' ref='form'  id='form' style="">
+    <i-form :model="this.data" class='app-form' ref='form'  id='pimsearchfieldset_main' style="">
     <input style="display:none;" />
     <row >
             
@@ -56,13 +56,13 @@
 </i-col>
 <i-col v-show="detailsModel.searchtag.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='searchtag' :itemRules="this.rules.searchtag" class='' :caption="$t('entities.pimsearchfieldset.main_form.details.searchtag')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.searchtag.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.searchtag" :data="data" :itemParam="{}" :disabled="detailsModel.searchtag.disabled" style="width:100px;width: 100px;" tag='YesNo' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
+     <dropdown-list v-model="data.searchtag" :data="data" :itemParam="{}" :disabled="detailsModel.searchtag.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0054' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.isshown.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='isshown' :itemRules="this.rules.isshown" class='' :caption="$t('entities.pimsearchfieldset.main_form.details.isshown')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.isshown.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.isshown" :data="data" :itemParam="{}" :disabled="detailsModel.isshown.disabled" style="width:100px;width: 100px;" tag='YesNo' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
+     <dropdown-list v-model="data.isshown" :data="data" :itemParam="{}" :disabled="detailsModel.isshown.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0054' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -222,6 +222,12 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
 
+    /**
+     * 工作流审批意见控件绑定值
+     *
+     * @memberof Main
+     */
+    public srfwfmemo:string = "";
     
     /**
      * 获取多项数据
@@ -1279,7 +1285,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'form',popTitle:'主编辑表单'});
+        _this.$print({id:'pimsearchfieldset_main',popTitle:'主编辑表单'});
     }
 
     /**
@@ -1651,6 +1657,10 @@ export default class MainBase extends Vue implements ControlInterface {
                 // 准备提交参数
                 if(this.viewparams){
                     Object.assign(arg,{viewparams:this.viewparams});
+                }
+                // 强制补充srfwfmemo
+                if(this.srfwfmemo){
+                    Object.assign(arg,{srfwfmemo:this.srfwfmemo});
                 }
                 const result: Promise<any> = this.service.wfsubmit(_this.WFSubmitAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
                 result.then((response: any) => {

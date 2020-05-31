@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMPERSONQuickEditViewBase from './pimpersonquick-edit-view-base.vue';
 
-import view_form from '@widgets/pimperson/quick-edit-form-form/quick-edit-form-form.vue';
+import view_form from '@widgets/pim-person/quick-edit-form-form/quick-edit-form-form.vue';
 
 /**
  * 人员信息编辑视图

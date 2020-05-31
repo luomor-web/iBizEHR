@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMPRACTICEEXPERIENCESXJY_WSSWBJGridViewBase from './pcmpracticeexperiencesxjy-wsswbjgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmpracticeexperience/main-grid/main-grid.vue';
+import view_grid from '@widgets/pcm-practice-experience/main-grid/main-grid.vue';
 
 /**
  * 实习信息

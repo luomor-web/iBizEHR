@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import ARCHIVALCATALOGUEService from '@/service/archivalcatalogue/archivalcatalogue-service';
+import PimArchivalCatalogueService from '@/service/pim-archival-catalogue/pim-archival-catalogue-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class ARCHIVALCATALOGUEEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ARCHIVALCATALOGUEService}
+     * @type {PimArchivalCatalogueService}
      * @memberof ARCHIVALCATALOGUEEditViewBase
      */
-    public appEntityService: ARCHIVALCATALOGUEService = new ARCHIVALCATALOGUEService;
+    public appEntityService: PimArchivalCatalogueService = new PimArchivalCatalogueService;
 
 
     /**
@@ -134,9 +134,9 @@ export default class ARCHIVALCATALOGUEEditViewBase extends EditViewBase {
      * @memberof ARCHIVALCATALOGUEEditViewBase
      */
     public model: any = {
-        srfCaption: 'entities.archivalcatalogue.views.editview.caption',
-        srfTitle: 'entities.archivalcatalogue.views.editview.title',
-        srfSubTitle: 'entities.archivalcatalogue.views.editview.subtitle',
+        srfCaption: 'entities.pimarchivalcatalogue.views.editview.caption',
+        srfTitle: 'entities.pimarchivalcatalogue.views.editview.title',
+        srfSubTitle: 'entities.pimarchivalcatalogue.views.editview.subtitle',
         dataInfo: ''
     }
 
@@ -202,7 +202,7 @@ export default class ARCHIVALCATALOGUEEditViewBase extends EditViewBase {
             view: this,
             form: this.$refs.form,
             p2k: '0',
-            keyPSDEField: 'archivalcatalogue',
+            keyPSDEField: 'pimarchivalcatalogue',
             majorPSDEField: 'archivalcataloguename',
             isLoadDefault: true,
         });
@@ -304,7 +304,7 @@ export default class ARCHIVALCATALOGUEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVALCATALOGUE");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimArchivalCatalogue");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class ARCHIVALCATALOGUEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVALCATALOGUE");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimArchivalCatalogue");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class ARCHIVALCATALOGUEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVALCATALOGUE");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimArchivalCatalogue");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class ARCHIVALCATALOGUEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVALCATALOGUE");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimArchivalCatalogue");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class ARCHIVALCATALOGUEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVALCATALOGUE");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimArchivalCatalogue");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class ARCHIVALCATALOGUEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVALCATALOGUE");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimArchivalCatalogue");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class ARCHIVALCATALOGUEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVALCATALOGUE");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimArchivalCatalogue");
     }
 
     /**

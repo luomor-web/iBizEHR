@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMPERSONCHANGEReasonEditViewBase from './pimpersonchangereason-edit-view-base.vue';
 
-import view_form from '@widgets/pimpersonchange/reason-edit-form/reason-edit-form.vue';
+import view_form from '@widgets/pim-person-change/reason-edit-form/reason-edit-form.vue';
 
 /**
  * 驳回原因

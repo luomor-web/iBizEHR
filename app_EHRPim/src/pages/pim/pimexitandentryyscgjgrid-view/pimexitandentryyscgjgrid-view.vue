@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMEXITANDENTRYYSCGJGridViewBase from './pimexitandentryyscgjgrid-view-base.vue';
 
-import view_grid from '@widgets/pimexitandentry/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pimexitandentry/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-exitandentry/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pim-exitandentry/default-searchform/default-searchform.vue';
 
 /**
  * 出入境管理实体表格视图（因私出国境）

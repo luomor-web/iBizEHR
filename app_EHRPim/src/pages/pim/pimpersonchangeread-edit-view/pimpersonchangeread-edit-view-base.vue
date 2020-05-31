@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMPERSONCHANGEService from '@/service/pimpersonchange/pimpersonchange-service';
+import PimPersonChangeService from '@/service/pim-person-change/pim-person-change-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMPERSONCHANGEReadEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMPERSONCHANGEService}
+     * @type {PimPersonChangeService}
      * @memberof PIMPERSONCHANGEReadEditViewBase
      */
-    public appEntityService: PIMPERSONCHANGEService = new PIMPERSONCHANGEService;
+    public appEntityService: PimPersonChangeService = new PimPersonChangeService;
 
 
     /**
@@ -278,7 +278,7 @@ export default class PIMPERSONCHANGEReadEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"PIMPERSONCHANGE");
+        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"PimPersonChange");
     }
 
     /**

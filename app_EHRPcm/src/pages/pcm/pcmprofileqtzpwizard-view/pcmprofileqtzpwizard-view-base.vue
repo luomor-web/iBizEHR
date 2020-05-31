@@ -32,7 +32,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PCMPROFILEService from '@/service/pcmprofile/pcmprofile-service';
+import PcmProfileService from '@/service/pcm-profile/pcm-profile-service';
 
 import WizardViewEngine from '@engine/view/wizard-view-engine';
 
@@ -51,10 +51,10 @@ export default class PCMPROFILEQTZPWizardViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMPROFILEService}
+     * @type {PcmProfileService}
      * @memberof PCMPROFILEQTZPWizardViewBase
      */
-    public appEntityService: PCMPROFILEService = new PCMPROFILEService;
+    public appEntityService: PcmProfileService = new PcmProfileService;
 
 
     /**

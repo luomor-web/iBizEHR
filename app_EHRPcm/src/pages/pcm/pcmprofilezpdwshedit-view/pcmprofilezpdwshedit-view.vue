@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMPROFILEZPDWSHEditViewBase from './pcmprofilezpdwshedit-view-base.vue';
 
-import view_form from '@widgets/pcmprofile/zpdwsh-form/zpdwsh-form.vue';
+import view_form from '@widgets/pcm-profile/zpdwsh-form/zpdwsh-form.vue';
 
 /**
  * 用人单位初审

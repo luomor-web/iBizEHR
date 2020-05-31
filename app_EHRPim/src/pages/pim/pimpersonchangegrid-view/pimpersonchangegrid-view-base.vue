@@ -69,11 +69,11 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMPERSONCHANGEService from '@/service/pimpersonchange/pimpersonchange-service';
+import PimPersonChangeService from '@/service/pim-person-change/pim-person-change-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
-import PIMPERSONCHANGEUIService from '@/uiservice/pimpersonchange/pimpersonchange-ui-service';
+import PimPersonChangeUIService from '@/uiservice/pim-person-change/pim-person-change-ui-service';
 import CodeListService from "@service/app/codelist-service";
 
 
@@ -91,10 +91,10 @@ export default class PIMPERSONCHANGEGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMPERSONCHANGEService}
+     * @type {PimPersonChangeService}
      * @memberof PIMPERSONCHANGEGridViewBase
      */
-    public appEntityService: PIMPERSONCHANGEService = new PIMPERSONCHANGEService;
+    public appEntityService: PimPersonChangeService = new PimPersonChangeService;
 
 
     /**
@@ -389,8 +389,8 @@ export default class PIMPERSONCHANGEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:PIMPERSONCHANGEUIService  = new PIMPERSONCHANGEUIService();
-        curUIService.PIMPERSONCHANGE_QR(datas,contextJO, paramJO,  $event, xData,this,"PIMPERSONCHANGE");
+        const curUIService:PimPersonChangeUIService  = new PimPersonChangeUIService();
+        curUIService.PimPersonChange_QR(datas,contextJO, paramJO,  $event, xData,this,"PimPersonChange");
     }
 
     /**
@@ -419,8 +419,8 @@ export default class PIMPERSONCHANGEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:PIMPERSONCHANGEUIService  = new PIMPERSONCHANGEUIService();
-        curUIService.PIMPERSONCHANGE_HisRec(datas,contextJO, paramJO,  $event, xData,this,"PIMPERSONCHANGE");
+        const curUIService:PimPersonChangeUIService  = new PimPersonChangeUIService();
+        curUIService.PimPersonChange_HisRec(datas,contextJO, paramJO,  $event, xData,this,"PimPersonChange");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PIMPERSONCHANGEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMPERSONCHANGE");
+        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PimPersonChange");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PIMPERSONCHANGEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMPERSONCHANGE");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimPersonChange");
     }
 
     /**
@@ -507,7 +507,7 @@ export default class PIMPERSONCHANGEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PIMPERSONCHANGE");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PimPersonChange");
     }
 
     /**

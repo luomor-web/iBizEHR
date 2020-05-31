@@ -31,7 +31,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditView2Base } from '@/crm-core';
-import PIMPERSONService from '@/service/pimperson/pimperson-service';
+import PimPersonService from '@/service/pim-person/pim-person-service';
 
 import EditView2Engine from '@engine/view/edit-view2-engine';
 
@@ -50,10 +50,10 @@ export default class PIMPERSONEditView2Base extends EditView2Base {
     /**
      * 实体服务对象
      *
-     * @type {PIMPERSONService}
+     * @type {PimPersonService}
      * @memberof PIMPERSONEditView2Base
      */
-    public appEntityService: PIMPERSONService = new PIMPERSONService;
+    public appEntityService: PimPersonService = new PimPersonService;
 
 
     /**

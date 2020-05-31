@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PCMXKMLService from '@/service/pcmxkml/pcmxkml-service';
+import PcmXkmlService from '@/service/pcm-xkml/pcm-xkml-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PCMXKMLEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMXKMLService}
+     * @type {PcmXkmlService}
      * @memberof PCMXKMLEditViewBase
      */
-    public appEntityService: PCMXKMLService = new PCMXKMLService;
+    public appEntityService: PcmXkmlService = new PcmXkmlService;
 
 
     /**
@@ -288,7 +288,7 @@ export default class PCMXKMLEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PCMXKML");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PcmXkml");
     }
 
     /**
@@ -317,7 +317,7 @@ export default class PCMXKMLEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PCMXKML");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmXkml");
     }
 
     /**
@@ -346,7 +346,7 @@ export default class PCMXKMLEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"PCMXKML");
+        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"PcmXkml");
     }
 
     /**

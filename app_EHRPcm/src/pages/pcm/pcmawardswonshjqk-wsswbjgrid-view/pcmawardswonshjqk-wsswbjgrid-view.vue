@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMAWARDSWONSHJQK_WSSWBJGridViewBase from './pcmawardswonshjqk-wsswbjgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmawardswons/main-grid/main-grid.vue';
+import view_grid from '@widgets/pcm-awards-wons/main-grid/main-grid.vue';
 
 /**
  * 获奖情况表格视图

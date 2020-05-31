@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMPAPERPAPERGridViewBase from './pimpaperpapergrid-view-base.vue';
 
-import view_grid from '@widgets/pimpaper/main-grid/main-grid.vue';
+import view_grid from '@widgets/pim-paper/main-grid/main-grid.vue';
 
 /**
  * 论文信息表格视图

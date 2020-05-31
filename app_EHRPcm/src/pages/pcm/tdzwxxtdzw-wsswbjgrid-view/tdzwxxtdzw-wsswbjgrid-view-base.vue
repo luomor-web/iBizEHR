@@ -52,7 +52,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import TDZWXXService from '@/service/tdzwxx/tdzwxx-service';
+import PcmTdzwxxService from '@/service/pcm-tdzwxx/pcm-tdzwxx-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -73,10 +73,10 @@ export default class TDZWXXTDZW_WSSWBJGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {TDZWXXService}
+     * @type {PcmTdzwxxService}
      * @memberof TDZWXXTDZW_WSSWBJGridViewBase
      */
-    public appEntityService: TDZWXXService = new TDZWXXService;
+    public appEntityService: PcmTdzwxxService = new PcmTdzwxxService;
 
 
     /**
@@ -141,9 +141,9 @@ export default class TDZWXXTDZW_WSSWBJGridViewBase extends GridViewBase {
      * @memberof TDZWXXTDZW_WSSWBJGridViewBase
      */
     public model: any = {
-        srfCaption: 'entities.tdzwxx.views.tdzw_wsswbjgridview.caption',
-        srfTitle: 'entities.tdzwxx.views.tdzw_wsswbjgridview.title',
-        srfSubTitle: 'entities.tdzwxx.views.tdzw_wsswbjgridview.subtitle',
+        srfCaption: 'entities.pcmtdzwxx.views.tdzw_wsswbjgridview.caption',
+        srfTitle: 'entities.pcmtdzwxx.views.tdzw_wsswbjgridview.title',
+        srfSubTitle: 'entities.pcmtdzwxx.views.tdzw_wsswbjgridview.subtitle',
         dataInfo: ''
     }
 
@@ -202,7 +202,7 @@ export default class TDZWXXTDZW_WSSWBJGridViewBase extends GridViewBase {
                 this.opendata(args, params, $event, xData);
             },
             grid: this.$refs.grid,
-            keyPSDEField: 'tdzwxx',
+            keyPSDEField: 'pcmtdzwxx',
             majorPSDEField: 'tdzwxxname',
             isLoadDefault: true,
         });
@@ -293,7 +293,7 @@ export default class TDZWXXTDZW_WSSWBJGridViewBase extends GridViewBase {
             ]
         }
         const parameters: any[] = [
-            { pathName: 'tdzwxxes', parameterName: 'tdzwxx' },
+            { pathName: 'pcmtdzwxxes', parameterName: 'pcmtdzwxx' },
             { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;

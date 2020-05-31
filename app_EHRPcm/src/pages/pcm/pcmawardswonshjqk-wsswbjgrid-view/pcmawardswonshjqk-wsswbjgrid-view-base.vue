@@ -52,7 +52,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PCMAWARDSWONSService from '@/service/pcmawardswons/pcmawardswons-service';
+import PcmAwardsWonsService from '@/service/pcm-awards-wons/pcm-awards-wons-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -73,10 +73,10 @@ export default class PCMAWARDSWONSHJQK_WSSWBJGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMAWARDSWONSService}
+     * @type {PcmAwardsWonsService}
      * @memberof PCMAWARDSWONSHJQK_WSSWBJGridViewBase
      */
-    public appEntityService: PCMAWARDSWONSService = new PCMAWARDSWONSService;
+    public appEntityService: PcmAwardsWonsService = new PcmAwardsWonsService;
 
 
     /**

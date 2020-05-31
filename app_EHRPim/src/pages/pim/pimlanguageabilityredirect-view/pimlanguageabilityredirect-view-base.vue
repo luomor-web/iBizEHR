@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMLANGUAGEABILITYService from '@/service/pimlanguageability/pimlanguageability-service';
+import PimLanguageAbilityService from '@/service/pim-language-ability/pim-language-ability-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMLANGUAGEABILITYRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMLANGUAGEABILITYService}
+     * @type {PimLanguageAbilityService}
      * @memberof PIMLANGUAGEABILITYRedirectViewBase
      */
-    public appEntityService: PIMLANGUAGEABILITYService = new PIMLANGUAGEABILITYService;
+    public appEntityService: PimLanguageAbilityService = new PimLanguageAbilityService;
 
 
     /**

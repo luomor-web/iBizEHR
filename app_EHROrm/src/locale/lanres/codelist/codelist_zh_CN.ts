@@ -1,5 +1,5 @@
 export default {
-    ATTCL_Range: {
+    EhrCodeList0148: {
         '100': '100米',
         '200': '200米',
         '300': '300米',
@@ -7,20 +7,20 @@ export default {
         '500': '500米',
         empty: '',
     },
-    ORMCL_PostNature: {
+    EhrCodeList0190: {
         '10': '标准工时制',
         '20': '非标准工时制',
         empty: '',
     },
-    ORMCL_XMBLX: {
+    EhrCodeList0178: {
         '10': '项目部',
         '20': '子项目部',
         empty: '',
     },
-    ORMCL_ProCapitalAtt: {
+    EhrCodeList0028: {
         empty: '',
     },
-    ORMCL_XMGM: {
+    EhrCodeList0031: {
         '10': '特级项目',
         '20': '一级项目',
         '30': '二级项目',
@@ -29,100 +29,100 @@ export default {
         '60': '五级项目',
         empty: '',
     },
-    ORMCL_IsDirectlyManage: {
+    EhrCodeList0191: {
         empty: '',
     },
-    ORMCL_QTBS: {
+    EhrCodeList0086: {
         '1': '启用',
         '0': '停用',
         empty: '',
     },
-    ORMCL_EngineeringScale: {
+    EhrCodeList0240: {
         empty: '',
     },
-    ORMCL_QY: {
+    EhrCodeList0219: {
         empty: '',
     },
-    ORMCL_ZWLB: {
+    EhrCodeList0120: {
         '10': '局级机关',
         '20': '公司级机关',
         '30': '经理部机关',
         '40': '项目部',
         empty: '',
     },
-    ORMCL_POST_TYPE: {
+    EhrCodeList0147: {
         '0': '党内',
         '1': '行政',
         '2': '党内或行政',
         empty: '',
     },
-    ORMCL_ZW: {
+    EhrCodeList0233: {
         empty: '',
     },
-    SysOperator: {
+    EhrCodeList0249: {
         empty: '',
     },
-    ORMCL_GW: {
+    EhrCodeList0050: {
         empty: '',
     },
-    ORMCL_EngineeringPurpose: {
+    EhrCodeList0023: {
         empty: '',
     },
-    ORMCL_EngineeringBusType: {
+    EhrCodeList0193: {
         empty: '',
     },
-    YesNo: {
+    EhrCodeList0054: {
         1: '是',
         0: '否',
         empty: '',
     },
-    EhrCodeListSsqy: {
+    EhrCodeList0250: {
         empty: '',
     },
-    PIMCL_BMLX: {
+    EhrCodeList0019: {
         '10': '机关部门',
         '20': '项目部门',
         empty: '',
     },
-    ORMCL_GWFL: {
+    EhrCodeList0073: {
         '0': '党内',
         '1': '行政',
         empty: '',
     },
-    PIMCL_SFLJ: {
+    EhrCodeList0097: {
         '1': '是',
         '0': '否',
         empty: '',
     },
-    ORMCL_LegalEntity: {
+    EhrCodeList0022: {
         '10': '法人单位',
         '20': '非法人单位',
         empty: '',
     },
-    ORMCL_GWTYPE: {
+    EhrCodeList0140: {
         empty: '',
     },
-    ORMCL_XMLX: {
+    EhrCodeList0133: {
         '10': '工程总承包',
         '20': '施工总承包',
         '30': '专业承包',
         '40': '其他',
         empty: '',
     },
-    PIMCL_XMRYLX: {
+    EhrCodeList0132: {
         '10': '项目经理',
         '20': '安全总监',
         empty: '',
     },
-    PIMCL_ZGZT: {
+    EhrCodeList0179: {
         '10': '在岗',
         '20': '离岗',
         empty: '',
     },
-    PIMCL_YGZT: {
+    EhrCodeList0014: {
         empty: '',
     },
-    ORMCL_JZ: {
+    EhrCodeList0156: {
         '10': '刚性',
         '20': '柔性',
         empty: '',

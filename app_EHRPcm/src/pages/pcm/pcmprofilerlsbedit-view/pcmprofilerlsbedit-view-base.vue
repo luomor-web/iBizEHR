@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PCMPROFILEService from '@/service/pcmprofile/pcmprofile-service';
+import PcmProfileService from '@/service/pcm-profile/pcm-profile-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PCMPROFILERLSBEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMPROFILEService}
+     * @type {PcmProfileService}
      * @memberof PCMPROFILERLSBEditViewBase
      */
-    public appEntityService: PCMPROFILEService = new PCMPROFILEService;
+    public appEntityService: PcmProfileService = new PcmProfileService;
 
 
     /**
@@ -278,7 +278,7 @@ export default class PCMPROFILERLSBEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILE");
+        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"PcmProfile");
     }
 
     /**

@@ -42,7 +42,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, PickupViewBase } from '@/crm-core';
-import PIMLABOURCAMPANYService from '@/service/pimlabourcampany/pimlabourcampany-service';
+import PimLabourcampanyService from '@/service/pim-labourcampany/pim-labourcampany-service';
 
 import PickupViewEngine from '@engine/view/pickup-view-engine';
 
@@ -61,10 +61,10 @@ export default class PIMLABOURCAMPANYPickupViewBase extends PickupViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMLABOURCAMPANYService}
+     * @type {PimLabourcampanyService}
      * @memberof PIMLABOURCAMPANYPickupViewBase
      */
-    public appEntityService: PIMLABOURCAMPANYService = new PIMLABOURCAMPANYService;
+    public appEntityService: PimLabourcampanyService = new PimLabourcampanyService;
 
 
     /**

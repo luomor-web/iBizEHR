@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PCMEducationExperienceService from '@/service/pcmeducation-experience/pcmeducation-experience-service';
+import PcmEducationExperienceService from '@/service/pcm-education-experience/pcm-education-experience-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PCMEducationExperienceEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMEducationExperienceService}
+     * @type {PcmEducationExperienceService}
      * @memberof PCMEducationExperienceEditViewBase
      */
-    public appEntityService: PCMEducationExperienceService = new PCMEducationExperienceService;
+    public appEntityService: PcmEducationExperienceService = new PcmEducationExperienceService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PCMEducationExperienceEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PCMEducationExperience");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PcmEducationExperience");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PCMEducationExperienceEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PCMEducationExperience");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PcmEducationExperience");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PCMEducationExperienceEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PCMEducationExperience");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmEducationExperience");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PCMEducationExperienceEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PCMEducationExperience");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmEducationExperience");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PCMEducationExperienceEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PCMEducationExperience");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PcmEducationExperience");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PCMEducationExperienceEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PCMEducationExperience");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PcmEducationExperience");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PCMEducationExperienceEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PCMEducationExperience");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PcmEducationExperience");
     }
 
     /**

@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMDISTIRBUTIONMaturityDueEditViewBase from './pimdistirbutionmaturity-due-edit-view-base.vue';
 
-import view_form from '@widgets/pimdistirbution/maturity-due-edit-form-form/maturity-due-edit-form-form.vue';
+import view_form from '@widgets/pim-distirbution/maturity-due-edit-form-form/maturity-due-edit-form-form.vue';
 
 /**
  * 借调到期编辑视图

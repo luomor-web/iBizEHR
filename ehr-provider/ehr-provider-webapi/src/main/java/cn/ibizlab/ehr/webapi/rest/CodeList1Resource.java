@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.common.service.ICodeList1Service;
 import cn.ibizlab.ehr.core.common.filter.CodeList1SearchContext;
 
 @Slf4j
-@Api(tags = {"CodeList1" })
+@Api(tags = {"代码表" })
 @RestController("WebApi-codelist1")
 @RequestMapping("")
 public class CodeList1Resource {
@@ -47,7 +47,7 @@ public class CodeList1Resource {
     public CodeList1Mapping codelist1Mapping;
 
     @PostAuthorize("hasPermission(this.codelist1Mapping.toDomain(returnObject.body),'ehr-CodeList1-Get')")
-    @ApiOperation(value = "Get", tags = {"CodeList1" },  notes = "Get")
+    @ApiOperation(value = "获取代码表", tags = {"代码表" },  notes = "获取代码表")
 	@RequestMapping(method = RequestMethod.GET, value = "/codelist1s/{codelist1_id}")
     public ResponseEntity<CodeList1DTO> get(@PathVariable("codelist1_id") String codelist1_id) {
         CodeList1 domain = codelist1Service.get(codelist1_id);
@@ -55,14 +55,14 @@ public class CodeList1Resource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"CodeList1" },  notes = "GetDraft")
+    @ApiOperation(value = "获取代码表草稿", tags = {"代码表" },  notes = "获取代码表草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/codelist1s/getdraft")
     public ResponseEntity<CodeList1DTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(codelist1Mapping.toDto(codelist1Service.getDraft(new CodeList1())));
     }
 
     @PreAuthorize("hasPermission(this.codelist1Service.get(#codelist1_id),'ehr-CodeList1-Update')")
-    @ApiOperation(value = "Update", tags = {"CodeList1" },  notes = "Update")
+    @ApiOperation(value = "更新代码表", tags = {"代码表" },  notes = "更新代码表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/codelist1s/{codelist1_id}")
     @Transactional
     public ResponseEntity<CodeList1DTO> update(@PathVariable("codelist1_id") String codelist1_id, @RequestBody CodeList1DTO codelist1dto) {
@@ -74,7 +74,7 @@ public class CodeList1Resource {
     }
 
     @PreAuthorize("hasPermission(this.codelist1Service.getCodelist1ByEntities(this.codelist1Mapping.toDomain(#codelist1dtos)),'ehr-CodeList1-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"CodeList1" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新代码表", tags = {"代码表" },  notes = "批量更新代码表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/codelist1s/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<CodeList1DTO> codelist1dtos) {
         codelist1Service.updateBatch(codelist1Mapping.toDomain(codelist1dtos));
@@ -82,7 +82,7 @@ public class CodeList1Resource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeList1-RefreshModel-all')")
-    @ApiOperation(value = "刷新代码表", tags = {"CodeList1" },  notes = "刷新代码表")
+    @ApiOperation(value = "刷新代码表", tags = {"代码表" },  notes = "刷新代码表")
 	@RequestMapping(method = RequestMethod.POST, value = "/codelist1s/{codelist1_id}/refreshmodel")
     @Transactional
     public ResponseEntity<CodeList1DTO> refreshModel(@PathVariable("codelist1_id") String codelist1_id, @RequestBody CodeList1DTO codelist1dto) {
@@ -93,14 +93,14 @@ public class CodeList1Resource {
         return ResponseEntity.status(HttpStatus.OK).body(codelist1dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"CodeList1" },  notes = "CheckKey")
+    @ApiOperation(value = "检查代码表", tags = {"代码表" },  notes = "检查代码表")
 	@RequestMapping(method = RequestMethod.POST, value = "/codelist1s/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody CodeList1DTO codelist1dto) {
         return  ResponseEntity.status(HttpStatus.OK).body(codelist1Service.checkKey(codelist1Mapping.toDomain(codelist1dto)));
     }
 
     @PreAuthorize("hasPermission(this.codelist1Mapping.toDomain(#codelist1dto),'ehr-CodeList1-Create')")
-    @ApiOperation(value = "Create", tags = {"CodeList1" },  notes = "Create")
+    @ApiOperation(value = "新建代码表", tags = {"代码表" },  notes = "新建代码表")
 	@RequestMapping(method = RequestMethod.POST, value = "/codelist1s")
     @Transactional
     public ResponseEntity<CodeList1DTO> create(@RequestBody CodeList1DTO codelist1dto) {
@@ -111,7 +111,7 @@ public class CodeList1Resource {
     }
 
     @PreAuthorize("hasPermission(this.codelist1Mapping.toDomain(#codelist1dtos),'ehr-CodeList1-Create')")
-    @ApiOperation(value = "createBatch", tags = {"CodeList1" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建代码表", tags = {"代码表" },  notes = "批量新建代码表")
 	@RequestMapping(method = RequestMethod.POST, value = "/codelist1s/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<CodeList1DTO> codelist1dtos) {
         codelist1Service.createBatch(codelist1Mapping.toDomain(codelist1dtos));
@@ -119,7 +119,7 @@ public class CodeList1Resource {
     }
 
     @PreAuthorize("hasPermission(this.codelist1Service.get(#codelist1_id),'ehr-CodeList1-Remove')")
-    @ApiOperation(value = "Remove", tags = {"CodeList1" },  notes = "Remove")
+    @ApiOperation(value = "删除代码表", tags = {"代码表" },  notes = "删除代码表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/codelist1s/{codelist1_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("codelist1_id") String codelist1_id) {
@@ -127,7 +127,7 @@ public class CodeList1Resource {
     }
 
     @PreAuthorize("hasPermission(this.codelist1Service.getCodelist1ByIds(#ids),'ehr-CodeList1-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"CodeList1" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除代码表", tags = {"代码表" },  notes = "批量删除代码表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/codelist1s/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         codelist1Service.removeBatch(ids);
@@ -135,14 +135,14 @@ public class CodeList1Resource {
     }
 
     @PreAuthorize("hasPermission(this.codelist1Mapping.toDomain(#codelist1dto),'ehr-CodeList1-Save')")
-    @ApiOperation(value = "Save", tags = {"CodeList1" },  notes = "Save")
+    @ApiOperation(value = "保存代码表", tags = {"代码表" },  notes = "保存代码表")
 	@RequestMapping(method = RequestMethod.POST, value = "/codelist1s/save")
     public ResponseEntity<Boolean> save(@RequestBody CodeList1DTO codelist1dto) {
         return ResponseEntity.status(HttpStatus.OK).body(codelist1Service.save(codelist1Mapping.toDomain(codelist1dto)));
     }
 
     @PreAuthorize("hasPermission(this.codelist1Mapping.toDomain(#codelist1dtos),'ehr-CodeList1-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"CodeList1" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存代码表", tags = {"代码表" },  notes = "批量保存代码表")
 	@RequestMapping(method = RequestMethod.POST, value = "/codelist1s/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<CodeList1DTO> codelist1dtos) {
         codelist1Service.saveBatch(codelist1Mapping.toDomain(codelist1dtos));
@@ -150,7 +150,7 @@ public class CodeList1Resource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeList1-PersonUse-all')")
-	@ApiOperation(value = "fetch用户使用", tags = {"CodeList1" } ,notes = "fetch用户使用")
+	@ApiOperation(value = "获取用户使用", tags = {"代码表" } ,notes = "获取用户使用")
     @RequestMapping(method= RequestMethod.GET , value="/codelist1s/fetchpersonuse")
 	public ResponseEntity<List<CodeList1DTO>> fetchPersonUse(CodeList1SearchContext context) {
         Page<CodeList1> domains = codelist1Service.searchPersonUse(context) ;
@@ -163,7 +163,7 @@ public class CodeList1Resource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeList1-PersonUse-all')")
-	@ApiOperation(value = "search用户使用", tags = {"CodeList1" } ,notes = "search用户使用")
+	@ApiOperation(value = "查询用户使用", tags = {"代码表" } ,notes = "查询用户使用")
     @RequestMapping(method= RequestMethod.POST , value="/codelist1s/searchpersonuse")
 	public ResponseEntity<Page<CodeList1DTO>> searchPersonUse(@RequestBody CodeList1SearchContext context) {
         Page<CodeList1> domains = codelist1Service.searchPersonUse(context) ;
@@ -171,7 +171,7 @@ public class CodeList1Resource {
                 .body(new PageImpl(codelist1Mapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeList1-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"CodeList1" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"代码表" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/codelist1s/fetchdefault")
 	public ResponseEntity<List<CodeList1DTO>> fetchDefault(CodeList1SearchContext context) {
         Page<CodeList1> domains = codelist1Service.searchDefault(context) ;
@@ -184,7 +184,7 @@ public class CodeList1Resource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeList1-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"CodeList1" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询DEFAULT", tags = {"代码表" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/codelist1s/searchdefault")
 	public ResponseEntity<Page<CodeList1DTO>> searchDefault(@RequestBody CodeList1SearchContext context) {
         Page<CodeList1> domains = codelist1Service.searchDefault(context) ;

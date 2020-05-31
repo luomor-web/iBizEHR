@@ -8,15 +8,15 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
     let status = MockAdapter.mockStatus(config);
     return [status, [
         {
-        "srfkey": "PCMCL_REASON",
+        "srfkey": "EhrCodeList0239",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"PCMPROFILESPYY",
+        "appdataentity":"PcmProfileSpyy",
         "appdedataset":"FetchDefault",
         "items": []
     },
     {
-        "srfkey": "PIMCL_XKML",
+        "srfkey": "EhrCodeList0116",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",
@@ -24,7 +24,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        srfkey: 'PCMCL_PASSORREJECT',
+        srfkey: 'EhrCodeList0173',
         emptytext: '未定义',
         "codelisttype":"static",
         items: [
@@ -53,7 +53,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "PIMCL_ZJLX",
+        "srfkey": "EhrCodeList0231",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",
@@ -61,7 +61,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        "srfkey": "PIM_XL2",
+        "srfkey": "EhrCodeList0117",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",
@@ -69,7 +69,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        srfkey: 'ORMCL_PostNature',
+        srfkey: 'EhrCodeList0190',
         emptytext: '',
         "codelisttype":"static",
         items: [
@@ -98,7 +98,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "PIMCL_XX",
+        "srfkey": "EhrCodeList0018",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",
@@ -106,7 +106,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        srfkey: 'PIMCL_ND',
+        srfkey: 'EhrCodeList0115',
         emptytext: '',
         "codelisttype":"static",
         items: [
@@ -303,7 +303,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        srfkey: 'PCMCL_YYDJ',
+        srfkey: 'EhrCodeList0204',
         emptytext: '未定义',
         "codelisttype":"static",
         items: [
@@ -370,15 +370,15 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "PCMCL_XKML",
+        "srfkey": "EhrCodeList0093",
         "emptytext": "未定义",
         "codelisttype":"dynamic",
-        "appdataentity":"PCMXKML",
+        "appdataentity":"PcmXkml",
         "appdedataset":"FetchDefault",
         "items": []
     },
     {
-        srfkey: 'PCMCL_PROFILEType',
+        srfkey: 'EhrCodeList0203',
         emptytext: '未定义',
         "codelisttype":"static",
         items: [
@@ -583,7 +583,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        srfkey: 'ORMCL_QTBS',
+        srfkey: 'EhrCodeList0086',
         emptytext: '',
         "codelisttype":"static",
         items: [
@@ -612,7 +612,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "PIMCL_RANK",
+        "srfkey": "EhrCodeList0025",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"",
@@ -620,7 +620,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        srfkey: 'PCMCL_HJDJ',
+        srfkey: 'EhrCodeList0152',
         emptytext: '未定义',
         "codelisttype":"static",
         items: [
@@ -717,23 +717,23 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "PIMCL_YGLX",
+        "srfkey": "EhrCodeList0167",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"PIMSTAFFTYPE",
+        "appdataentity":"PimStafftype",
         "appdedataset":"FetchDefault",
         "items": []
     },
     {
-        "srfkey": "ORMCL_QY",
+        "srfkey": "EhrCodeList0219",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"ORMQYGL",
+        "appdataentity":"OrmQygl",
         "appdedataset":"FetchDefault",
         "items": []
     },
     {
-        "srfkey": "PIMCL_XXXZ",
+        "srfkey": "EhrCodeList0208",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",
@@ -741,7 +741,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        srfkey: 'ORMCL_ZWLB',
+        srfkey: 'EhrCodeList0120',
         emptytext: '',
         "codelisttype":"static",
         items: [
@@ -788,15 +788,15 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "PCMCL_SBLX",
+        "srfkey": "EhrCodeList0096",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"PIMSTAFFTYPE",
+        "appdataentity":"PimStafftype",
         "appdedataset":"FetchYPZ",
         "items": []
     },
     {
-        "srfkey": "NATIVEPLACE",
+        "srfkey": "EhrCodeList0001",
         "emptytext": "未定义",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",
@@ -804,7 +804,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        srfkey: 'PIMCL_ND2',
+        srfkey: 'EhrCodeList0009',
         emptytext: '',
         "codelisttype":"static",
         items: [
@@ -931,7 +931,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        srfkey: 'PCMCL_YPZGWLB',
+        srfkey: 'EhrCodeList0004',
         emptytext: '未定义',
         "codelisttype":"static",
         items: [
@@ -988,15 +988,15 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "ORMCL_ZW",
+        "srfkey": "EhrCodeList0233",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"ORMDUTY",
+        "appdataentity":"OrmDuty",
         "appdedataset":"FetchDefault",
         "items": []
     },
     {
-        srfkey: 'PCMCL_YesNo',
+        srfkey: 'EhrCodeList0181',
         emptytext: '未定义',
         "codelisttype":"static",
         items: [
@@ -1025,7 +1025,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "SysOperator",
+        "srfkey": "EhrCodeList0249",
         "emptytext": "未定义",
         "codelisttype":"dynamic",
         "appdataentity":"",
@@ -1033,15 +1033,15 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        "srfkey": "ORMCL_GW",
+        "srfkey": "EhrCodeList0050",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"ORMPOST",
+        "appdataentity":"OrmPost",
         "appdedataset":"FetchDefault",
         "items": []
     },
     {
-        "srfkey": "PIMCL_HY",
+        "srfkey": "EhrCodeList0075",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",
@@ -1049,7 +1049,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        "srfkey": "PIMCL_ZZMM",
+        "srfkey": "EhrCodeList0029",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",
@@ -1057,7 +1057,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        "srfkey": "ORMCL_LEVELTWOORG",
+        "srfkey": "EhrCodeList0216",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"OrmOrg",
@@ -1065,7 +1065,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        srfkey: 'YesNo',
+        srfkey: 'EhrCodeList0054',
         emptytext: '未定义',
         "codelisttype":"static",
         items: [
@@ -1092,7 +1092,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "EhrCodeListSsqy",
+        "srfkey": "EhrCodeList0250",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",
@@ -1100,7 +1100,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        srfkey: 'PIMCL_BMLX',
+        srfkey: 'EhrCodeList0019',
         emptytext: '未定义',
         "codelisttype":"static",
         items: [
@@ -1127,7 +1127,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "PIMCL_XB",
+        "srfkey": "EhrCodeList0072",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",
@@ -1135,7 +1135,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        srfkey: 'PIMCL_YW',
+        srfkey: 'EhrCodeList0222',
         emptytext: '未定义',
         "codelisttype":"static",
         items: [
@@ -1162,7 +1162,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        srfkey: 'PIMCL_SFLJ',
+        srfkey: 'EhrCodeList0097',
         emptytext: '',
         "codelisttype":"static",
         items: [
@@ -1191,7 +1191,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "PIMCL_RZLB",
+        "srfkey": "EhrCodeList0041",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",
@@ -1199,7 +1199,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        srfkey: 'ORMCL_LegalEntity',
+        srfkey: 'EhrCodeList0022',
         emptytext: '',
         "codelisttype":"static",
         items: [
@@ -1226,7 +1226,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "PIMCL_XL",
+        "srfkey": "EhrCodeList0131",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",
@@ -1234,7 +1234,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        "srfkey": "ORMCL_GWTYPE",
+        "srfkey": "EhrCodeList0140",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",
@@ -1242,7 +1242,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        "srfkey": "PIMCL_NATION",
+        "srfkey": "EhrCodeList0066",
         "emptytext": "未定义",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",
@@ -1250,7 +1250,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        srfkey: 'PCMCL_QTZP',
+        srfkey: 'EhrCodeList0071',
         emptytext: '',
         "codelisttype":"static",
         items: [
@@ -1287,7 +1287,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "PIMCL_HKLX",
+        "srfkey": "EhrCodeList0070",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"CodeItem",
@@ -1295,7 +1295,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        srfkey: 'PCMCL_PROFILEType_Search',
+        srfkey: 'EhrCodeList0078',
         emptytext: '未定义',
         "codelisttype":"static",
         items: [
@@ -1335,7 +1335,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        srfkey: 'PCMCL_RLSBPROFILEType',
+        srfkey: 'EhrCodeList0062',
         emptytext: '未定义',
         "codelisttype":"static",
         items: [

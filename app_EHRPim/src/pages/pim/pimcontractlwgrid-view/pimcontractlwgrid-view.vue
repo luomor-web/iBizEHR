@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMCONTRACTLWGridViewBase from './pimcontractlwgrid-view-base.vue';
 
-import view_grid from '@widgets/pimcontract/main-2-grid/main-2-grid.vue';
-import view_searchform from '@widgets/pimcontract/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-contract/main-2-grid/main-2-grid.vue';
+import view_searchform from '@widgets/pim-contract/default-searchform/default-searchform.vue';
 
 /**
  * 劳务合同管理表格视图

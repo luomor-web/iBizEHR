@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMXKMLEditViewBase from './pcmxkmledit-view-base.vue';
 
-import view_form from '@widgets/pcmxkml/main-form/main-form.vue';
+import view_form from '@widgets/pcm-xkml/main-form/main-form.vue';
 
 /**
  * 学科目录编辑视图

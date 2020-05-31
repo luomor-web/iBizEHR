@@ -47,11 +47,11 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PCMPROFILEService from '@/service/pcmprofile/pcmprofile-service';
+import PcmProfileService from '@/service/pcm-profile/pcm-profile-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
-import PCMPROFILEUIService from '@/uiservice/pcmprofile/pcmprofile-ui-service';
+import PcmProfileUIService from '@/uiservice/pcm-profile/pcm-profile-ui-service';
 
 /**
  * 局总部初审基类
@@ -67,10 +67,10 @@ export default class PCMPROFILERZSP_CSRCYJEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMPROFILEService}
+     * @type {PcmProfileService}
      * @memberof PCMPROFILERZSP_CSRCYJEditViewBase
      */
-    public appEntityService: PCMPROFILEService = new PCMPROFILEService;
+    public appEntityService: PcmProfileService = new PcmProfileService;
 
 
     /**
@@ -289,8 +289,8 @@ export default class PCMPROFILERZSP_CSRCYJEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:PCMPROFILEUIService  = new PCMPROFILEUIService();
-        curUIService.PCMPROFILE_SZSPTG(datas,contextJO, paramJO,  $event, xData,this,"PCMPROFILE");
+        const curUIService:PcmProfileUIService  = new PcmProfileUIService();
+        curUIService.PcmProfile_SZSPTG(datas,contextJO, paramJO,  $event, xData,this,"PcmProfile");
     }
 
     /**
@@ -319,8 +319,8 @@ export default class PCMPROFILERZSP_CSRCYJEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:PCMPROFILEUIService  = new PCMPROFILEUIService();
-        curUIService.PCMPROFILE_SPBTG(datas,contextJO, paramJO,  $event, xData,this,"PCMPROFILE");
+        const curUIService:PcmProfileUIService  = new PcmProfileUIService();
+        curUIService.PcmProfile_SPBTG(datas,contextJO, paramJO,  $event, xData,this,"PcmProfile");
     }
 
     /**
@@ -349,7 +349,7 @@ export default class PCMPROFILERZSP_CSRCYJEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILE");
+        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"PcmProfile");
     }
 
     /**

@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import ORMPOSTEJORMORGIDPickupGridViewBase from './ormpostejormorgidpickup-grid-view-base.vue';
 
-import view_grid from '@widgets/ormpost/gwchoice-grid/gwchoice-grid.vue';
-import view_searchform from '@widgets/ormpost/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/orm-post/gwchoice-grid/gwchoice-grid.vue';
+import view_searchform from '@widgets/orm-post/default-searchform/default-searchform.vue';
 
 /**
  * 岗位选择

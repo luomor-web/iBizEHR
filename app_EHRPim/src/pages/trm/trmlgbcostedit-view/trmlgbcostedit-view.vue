@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import TRMLGBCOSTEditViewBase from './trmlgbcostedit-view-base.vue';
 
-import view_form from '@widgets/trmlgbcost/main-form/main-form.vue';
+import view_form from '@widgets/trm-lgb-cost/main-form/main-form.vue';
 
 /**
  * 老干部活动管理

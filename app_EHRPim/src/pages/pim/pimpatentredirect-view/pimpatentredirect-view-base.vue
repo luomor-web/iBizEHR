@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMPATENTService from '@/service/pimpatent/pimpatent-service';
+import PimPatentService from '@/service/pim-patent/pim-patent-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMPATENTRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMPATENTService}
+     * @type {PimPatentService}
      * @memberof PIMPATENTRedirectViewBase
      */
-    public appEntityService: PIMPATENTService = new PIMPATENTService;
+    public appEntityService: PimPatentService = new PimPatentService;
 
 
     /**

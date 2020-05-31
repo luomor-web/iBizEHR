@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ATTENDANCEMREPORTMXEditViewBase from './attendancemreportmxedit-view-base.vue';
 
-import view_form from '@widgets/attendancemreportmx/main-form/main-form.vue';
+import view_form from '@widgets/att-endance-mreportmx/main-form/main-form.vue';
 
 /**
  * 考勤月报明细

@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.common.service.ICodeItemService;
 import cn.ibizlab.ehr.core.common.filter.CodeItemSearchContext;
 
 @Slf4j
-@Api(tags = {"CodeItem" })
+@Api(tags = {"代码项" })
 @RestController("WebApi-codeitem")
 @RequestMapping("")
 public class CodeItemResource {
@@ -47,28 +47,28 @@ public class CodeItemResource {
     public CodeItemMapping codeitemMapping;
 
     @PreAuthorize("hasPermission(this.codeitemMapping.toDomain(#codeitemdto),'ehr-CodeItem-Save')")
-    @ApiOperation(value = "Save", tags = {"CodeItem" },  notes = "Save")
+    @ApiOperation(value = "保存代码项", tags = {"代码项" },  notes = "保存代码项")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems/save")
     public ResponseEntity<Boolean> save(@RequestBody CodeItemDTO codeitemdto) {
         return ResponseEntity.status(HttpStatus.OK).body(codeitemService.save(codeitemMapping.toDomain(codeitemdto)));
     }
 
     @PreAuthorize("hasPermission(this.codeitemMapping.toDomain(#codeitemdtos),'ehr-CodeItem-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"CodeItem" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存代码项", tags = {"代码项" },  notes = "批量保存代码项")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<CodeItemDTO> codeitemdtos) {
         codeitemService.saveBatch(codeitemMapping.toDomain(codeitemdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"CodeItem" },  notes = "CheckKey")
+    @ApiOperation(value = "检查代码项", tags = {"代码项" },  notes = "检查代码项")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody CodeItemDTO codeitemdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(codeitemService.checkKey(codeitemMapping.toDomain(codeitemdto)));
     }
 
     @PreAuthorize("hasPermission(this.codeitemService.get(#codeitem_id),'ehr-CodeItem-Remove')")
-    @ApiOperation(value = "Remove", tags = {"CodeItem" },  notes = "Remove")
+    @ApiOperation(value = "删除代码项", tags = {"代码项" },  notes = "删除代码项")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/codeitems/{codeitem_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("codeitem_id") String codeitem_id) {
@@ -76,7 +76,7 @@ public class CodeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.codeitemService.getCodeitemByIds(#ids),'ehr-CodeItem-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"CodeItem" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除代码项", tags = {"代码项" },  notes = "批量删除代码项")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/codeitems/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         codeitemService.removeBatch(ids);
@@ -84,7 +84,7 @@ public class CodeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.codeitemService.get(#codeitem_id),'ehr-CodeItem-Update')")
-    @ApiOperation(value = "Update", tags = {"CodeItem" },  notes = "Update")
+    @ApiOperation(value = "更新代码项", tags = {"代码项" },  notes = "更新代码项")
 	@RequestMapping(method = RequestMethod.PUT, value = "/codeitems/{codeitem_id}")
     @Transactional
     public ResponseEntity<CodeItemDTO> update(@PathVariable("codeitem_id") String codeitem_id, @RequestBody CodeItemDTO codeitemdto) {
@@ -96,7 +96,7 @@ public class CodeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.codeitemService.getCodeitemByEntities(this.codeitemMapping.toDomain(#codeitemdtos)),'ehr-CodeItem-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"CodeItem" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新代码项", tags = {"代码项" },  notes = "批量更新代码项")
 	@RequestMapping(method = RequestMethod.PUT, value = "/codeitems/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<CodeItemDTO> codeitemdtos) {
         codeitemService.updateBatch(codeitemMapping.toDomain(codeitemdtos));
@@ -104,7 +104,7 @@ public class CodeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.codeitemMapping.toDomain(#codeitemdto),'ehr-CodeItem-Create')")
-    @ApiOperation(value = "Create", tags = {"CodeItem" },  notes = "Create")
+    @ApiOperation(value = "新建代码项", tags = {"代码项" },  notes = "新建代码项")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems")
     @Transactional
     public ResponseEntity<CodeItemDTO> create(@RequestBody CodeItemDTO codeitemdto) {
@@ -115,21 +115,21 @@ public class CodeItemResource {
     }
 
     @PreAuthorize("hasPermission(this.codeitemMapping.toDomain(#codeitemdtos),'ehr-CodeItem-Create')")
-    @ApiOperation(value = "createBatch", tags = {"CodeItem" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建代码项", tags = {"代码项" },  notes = "批量新建代码项")
 	@RequestMapping(method = RequestMethod.POST, value = "/codeitems/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<CodeItemDTO> codeitemdtos) {
         codeitemService.createBatch(codeitemMapping.toDomain(codeitemdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"CodeItem" },  notes = "GetDraft")
+    @ApiOperation(value = "获取代码项草稿", tags = {"代码项" },  notes = "获取代码项草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/codeitems/getdraft")
     public ResponseEntity<CodeItemDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(codeitemMapping.toDto(codeitemService.getDraft(new CodeItem())));
     }
 
     @PostAuthorize("hasPermission(this.codeitemMapping.toDomain(returnObject.body),'ehr-CodeItem-Get')")
-    @ApiOperation(value = "Get", tags = {"CodeItem" },  notes = "Get")
+    @ApiOperation(value = "获取代码项", tags = {"代码项" },  notes = "获取代码项")
 	@RequestMapping(method = RequestMethod.GET, value = "/codeitems/{codeitem_id}")
     public ResponseEntity<CodeItemDTO> get(@PathVariable("codeitem_id") String codeitem_id) {
         CodeItem domain = codeitemService.get(codeitem_id);
@@ -138,7 +138,7 @@ public class CodeItemResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"CodeItem" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"代码项" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/codeitems/fetchdefault")
 	public ResponseEntity<List<CodeItemDTO>> fetchDefault(CodeItemSearchContext context) {
         Page<CodeItem> domains = codeitemService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class CodeItemResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"CodeItem" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询DEFAULT", tags = {"代码项" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/codeitems/searchdefault")
 	public ResponseEntity<Page<CodeItemDTO>> searchDefault(@RequestBody CodeItemSearchContext context) {
         Page<CodeItem> domains = codeitemService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class CodeItemResource {
                 .body(new PageImpl(codeitemMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-CurCL-all')")
-	@ApiOperation(value = "fetch当前代码表", tags = {"CodeItem" } ,notes = "fetch当前代码表")
+	@ApiOperation(value = "获取当前代码表", tags = {"代码项" } ,notes = "获取当前代码表")
     @RequestMapping(method= RequestMethod.GET , value="/codeitems/fetchcurcl")
 	public ResponseEntity<List<CodeItemDTO>> fetchCurCL(CodeItemSearchContext context) {
         Page<CodeItem> domains = codeitemService.searchCurCL(context) ;
@@ -172,7 +172,7 @@ public class CodeItemResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-CodeItem-CurCL-all')")
-	@ApiOperation(value = "search当前代码表", tags = {"CodeItem" } ,notes = "search当前代码表")
+	@ApiOperation(value = "查询当前代码表", tags = {"代码项" } ,notes = "查询当前代码表")
     @RequestMapping(method= RequestMethod.POST , value="/codeitems/searchcurcl")
 	public ResponseEntity<Page<CodeItemDTO>> searchCurCL(@RequestBody CodeItemSearchContext context) {
         Page<CodeItem> domains = codeitemService.searchCurCL(context) ;

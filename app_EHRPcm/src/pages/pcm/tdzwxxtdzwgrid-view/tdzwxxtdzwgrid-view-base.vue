@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import TDZWXXService from '@/service/tdzwxx/tdzwxx-service';
+import PcmTdzwxxService from '@/service/pcm-tdzwxx/pcm-tdzwxx-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class TDZWXXTDZWGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {TDZWXXService}
+     * @type {PcmTdzwxxService}
      * @memberof TDZWXXTDZWGridViewBase
      */
-    public appEntityService: TDZWXXService = new TDZWXXService;
+    public appEntityService: PcmTdzwxxService = new PcmTdzwxxService;
 
 
     /**
@@ -158,9 +158,9 @@ export default class TDZWXXTDZWGridViewBase extends GridViewBase {
      * @memberof TDZWXXTDZWGridViewBase
      */
     public model: any = {
-        srfCaption: 'entities.tdzwxx.views.tdzwgridview.caption',
-        srfTitle: 'entities.tdzwxx.views.tdzwgridview.title',
-        srfSubTitle: 'entities.tdzwxx.views.tdzwgridview.subtitle',
+        srfCaption: 'entities.pcmtdzwxx.views.tdzwgridview.caption',
+        srfTitle: 'entities.pcmtdzwxx.views.tdzwgridview.title',
+        srfSubTitle: 'entities.pcmtdzwxx.views.tdzwgridview.subtitle',
         dataInfo: ''
     }
 
@@ -234,7 +234,7 @@ export default class TDZWXXTDZWGridViewBase extends GridViewBase {
             },
             grid: this.$refs.grid,
             searchform: this.$refs.searchform,
-            keyPSDEField: 'tdzwxx',
+            keyPSDEField: 'pcmtdzwxx',
             majorPSDEField: 'tdzwxxname',
             isLoadDefault: true,
         });
@@ -390,7 +390,7 @@ export default class TDZWXXTDZWGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"TDZWXX");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PcmTdzwxx");
     }
 
     /**
@@ -419,7 +419,7 @@ export default class TDZWXXTDZWGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"TDZWXX");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PcmTdzwxx");
     }
 
     /**
@@ -448,7 +448,7 @@ export default class TDZWXXTDZWGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"TDZWXX");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PcmTdzwxx");
     }
 
     /**
@@ -477,7 +477,7 @@ export default class TDZWXXTDZWGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"TDZWXX");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PcmTdzwxx");
     }
 
     /**
@@ -506,7 +506,7 @@ export default class TDZWXXTDZWGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"TDZWXX");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PcmTdzwxx");
     }
 
     /**
@@ -535,7 +535,7 @@ export default class TDZWXXTDZWGridViewBase extends GridViewBase {
             ]
         }
         const parameters: any[] = [
-            { pathName: 'tdzwxxes', parameterName: 'tdzwxx' },
+            { pathName: 'pcmtdzwxxes', parameterName: 'pcmtdzwxx' },
             { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;
@@ -572,7 +572,7 @@ export default class TDZWXXTDZWGridViewBase extends GridViewBase {
             ]
         }
         const parameters: any[] = [
-            { pathName: 'tdzwxxes', parameterName: 'tdzwxx' },
+            { pathName: 'pcmtdzwxxes', parameterName: 'pcmtdzwxx' },
             { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;

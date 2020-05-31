@@ -1,5 +1,5 @@
 <template>
-    <i-form :model="this.data" class='app-form' ref='form'  id='form' style="">
+    <i-form :model="this.data" class='app-form' ref='form'  id='pimsearchmodal_main' style="">
     <input style="display:none;" />
     <row >
     <tabs :animated="false" name='main' :value="detailsModel.form.activiedPage" 
@@ -45,7 +45,7 @@
         <i-col v-show="detailsModel.createman.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='createman' :itemRules="this.rules.createman" class='' :caption="$t('entities.pimsearchmodal.main_form.details.createman')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.createman.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='createman'
-:value="data.createman" tag='SysOperator' codelistType='DYNAMIC' style=""></app-span>
+:value="data.createman" tag='EhrCodeList0249' codelistType='DYNAMIC' style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -59,7 +59,7 @@
 <i-col v-show="detailsModel.updateman.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='updateman' :itemRules="this.rules.updateman" class='' :caption="$t('entities.pimsearchmodal.main_form.details.updateman')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.updateman.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='updateman'
-:value="data.updateman" tag='SysOperator' codelistType='DYNAMIC' style=""></app-span>
+:value="data.updateman" tag='EhrCodeList0249' codelistType='DYNAMIC' style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -210,6 +210,12 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
 
+    /**
+     * 工作流审批意见控件绑定值
+     *
+     * @memberof Main
+     */
+    public srfwfmemo:string = "";
     
     /**
      * 获取多项数据
@@ -1098,7 +1104,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'form',popTitle:'主编辑表单'});
+        _this.$print({id:'pimsearchmodal_main',popTitle:'主编辑表单'});
     }
 
     /**
@@ -1470,6 +1476,10 @@ export default class MainBase extends Vue implements ControlInterface {
                 // 准备提交参数
                 if(this.viewparams){
                     Object.assign(arg,{viewparams:this.viewparams});
+                }
+                // 强制补充srfwfmemo
+                if(this.srfwfmemo){
+                    Object.assign(arg,{srfwfmemo:this.srfwfmemo});
                 }
                 const result: Promise<any> = this.service.wfsubmit(_this.WFSubmitAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
                 result.then((response: any) => {

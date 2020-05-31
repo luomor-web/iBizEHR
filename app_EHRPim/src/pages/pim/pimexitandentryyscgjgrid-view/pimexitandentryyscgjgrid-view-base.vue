@@ -69,11 +69,11 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMEXITANDENTRYService from '@/service/pimexitandentry/pimexitandentry-service';
+import PimExitandentryService from '@/service/pim-exitandentry/pim-exitandentry-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
-import PIMEXITANDENTRYUIService from '@/uiservice/pimexitandentry/pimexitandentry-ui-service';
+import PimExitandentryUIService from '@/uiservice/pim-exitandentry/pim-exitandentry-ui-service';
 import CodeListService from "@service/app/codelist-service";
 
 
@@ -91,10 +91,10 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMEXITANDENTRYService}
+     * @type {PimExitandentryService}
      * @memberof PIMEXITANDENTRYYSCGJGridViewBase
      */
-    public appEntityService: PIMEXITANDENTRYService = new PIMEXITANDENTRYService;
+    public appEntityService: PimExitandentryService = new PimExitandentryService;
 
 
     /**
@@ -408,8 +408,8 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:PIMEXITANDENTRYUIService  = new PIMEXITANDENTRYUIService();
-        curUIService.PIMEXITANDENTRY_newYS(datas,contextJO, paramJO,  $event, xData,this,"PIMEXITANDENTRY");
+        const curUIService:PimExitandentryUIService  = new PimExitandentryUIService();
+        curUIService.PimExitandentry_newYS(datas,contextJO, paramJO,  $event, xData,this,"PimExitandentry");
     }
 
     /**
@@ -438,8 +438,8 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:PIMEXITANDENTRYUIService  = new PIMEXITANDENTRYUIService();
-        curUIService.PIMEXITANDENTRY_KSCCGJ(datas,contextJO, paramJO,  $event, xData,this,"PIMEXITANDENTRY");
+        const curUIService:PimExitandentryUIService  = new PimExitandentryUIService();
+        curUIService.PimExitandentry_KSCCGJ(datas,contextJO, paramJO,  $event, xData,this,"PimExitandentry");
     }
 
     /**
@@ -468,7 +468,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.View(datas, contextJO,paramJO,  $event, xData,this,"PIMEXITANDENTRY");
+        this.View(datas, contextJO,paramJO,  $event, xData,this,"PimExitandentry");
     }
 
     /**
@@ -497,7 +497,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMEXITANDENTRY");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimExitandentry");
     }
 
     /**
@@ -526,7 +526,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMEXITANDENTRY");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimExitandentry");
     }
 
     /**
@@ -555,7 +555,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMEXITANDENTRY");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimExitandentry");
     }
 
     /**
@@ -584,7 +584,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PIMEXITANDENTRY");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PimExitandentry");
     }
 
     /**
@@ -613,7 +613,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMEXITANDENTRY");
+        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PimExitandentry");
     }
 
     /**
@@ -642,7 +642,7 @@ export default class PIMEXITANDENTRYYSCGJGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMEXITANDENTRY");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimExitandentry");
     }
 
     /**

@@ -32,7 +32,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, TreeExpViewBase } from '@/crm-core';
-import PCMGXMLService from '@/service/pcmgxml/pcmgxml-service';
+import PcmGxmlService from '@/service/pcm-gxml/pcm-gxml-service';
 
 import TreeExpViewEngine from '@engine/view/tree-exp-view-engine';
 
@@ -51,10 +51,10 @@ export default class PCMGXMLGXMLTreeExpViewBase extends TreeExpViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMGXMLService}
+     * @type {PcmGxmlService}
      * @memberof PCMGXMLGXMLTreeExpViewBase
      */
-    public appEntityService: PCMGXMLService = new PCMGXMLService;
+    public appEntityService: PcmGxmlService = new PcmGxmlService;
 
 
     /**

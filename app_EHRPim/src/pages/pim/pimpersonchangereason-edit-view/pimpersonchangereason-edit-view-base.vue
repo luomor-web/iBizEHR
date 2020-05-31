@@ -47,11 +47,11 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMPERSONCHANGEService from '@/service/pimpersonchange/pimpersonchange-service';
+import PimPersonChangeService from '@/service/pim-person-change/pim-person-change-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
-import PIMPERSONCHANGEUIService from '@/uiservice/pimpersonchange/pimpersonchange-ui-service';
+import PimPersonChangeUIService from '@/uiservice/pim-person-change/pim-person-change-ui-service';
 
 /**
  * 驳回原因基类
@@ -67,10 +67,10 @@ export default class PIMPERSONCHANGEReasonEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMPERSONCHANGEService}
+     * @type {PimPersonChangeService}
      * @memberof PIMPERSONCHANGEReasonEditViewBase
      */
-    public appEntityService: PIMPERSONCHANGEService = new PIMPERSONCHANGEService;
+    public appEntityService: PimPersonChangeService = new PimPersonChangeService;
 
 
     /**
@@ -284,8 +284,8 @@ export default class PIMPERSONCHANGEReasonEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:PIMPERSONCHANGEUIService  = new PIMPERSONCHANGEUIService();
-        curUIService.PIMPERSONCHANGE_Ensure(datas,contextJO, paramJO,  $event, xData,this,"PIMPERSONCHANGE");
+        const curUIService:PimPersonChangeUIService  = new PimPersonChangeUIService();
+        curUIService.PimPersonChange_Ensure(datas,contextJO, paramJO,  $event, xData,this,"PimPersonChange");
     }
 
     /**
@@ -314,7 +314,7 @@ export default class PIMPERSONCHANGEReasonEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"PIMPERSONCHANGE");
+        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"PimPersonChange");
     }
 
     /**

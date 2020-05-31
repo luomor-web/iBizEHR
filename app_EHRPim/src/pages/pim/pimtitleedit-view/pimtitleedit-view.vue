@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMTITLEEditViewBase from './pimtitleedit-view-base.vue';
 
-import view_form from '@widgets/pimtitle/main-form/main-form.vue';
+import view_form from '@widgets/pim-title/main-form/main-form.vue';
 
 /**
  * 职称信息编辑视图

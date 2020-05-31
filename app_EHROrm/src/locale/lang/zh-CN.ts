@@ -1,28 +1,28 @@
-import ormqygl_zh_CN from '@locale/lanres/ormqygl/ormqygl_zh_CN';
-import ormpostdetails_zh_CN from '@locale/lanres/ormpost-details/ormpost-details_zh_CN';
+import ormqygl_zh_CN from '@locale/lanres/orm-qygl/orm-qygl_zh_CN';
+import ormpostdetails_zh_CN from '@locale/lanres/orm-post-details/orm-post-details_zh_CN';
 import ormsignorg_zh_CN from '@locale/lanres/orm-sign-org/orm-sign-org_zh_CN';
 import ormerporg_zh_CN from '@locale/lanres/orm-erporg/orm-erporg_zh_CN';
-import ormxmbmx_zh_CN from '@locale/lanres/ormxmbmx/ormxmbmx_zh_CN';
+import ormxmbmx_zh_CN from '@locale/lanres/orm-xmbmx/orm-xmbmx_zh_CN';
 import ormorginfo_zh_CN from '@locale/lanres/orm-org-info/orm-org-info_zh_CN';
 import codelist1_zh_CN from '@locale/lanres/code-list1/code-list1_zh_CN';
-import ormedition_zh_CN from '@locale/lanres/ormedition/ormedition_zh_CN';
+import ormedition_zh_CN from '@locale/lanres/orm-edition/orm-edition_zh_CN';
 import ormorgdz_zh_CN from '@locale/lanres/orm-orgdz/orm-orgdz_zh_CN';
-import contractsignorg_zh_CN from '@locale/lanres/contract-sign-org/contract-sign-org_zh_CN';
-import ormpost_zh_CN from '@locale/lanres/ormpost/ormpost_zh_CN';
+import pimcontractsignorg_zh_CN from '@locale/lanres/pim-contract-sign-org/pim-contract-sign-org_zh_CN';
+import ormpost_zh_CN from '@locale/lanres/orm-post/orm-post_zh_CN';
 import ormbmkqdz_zh_CN from '@locale/lanres/orm-bmkqdz/orm-bmkqdz_zh_CN';
-import ormbmgwbz_zh_CN from '@locale/lanres/ormbmgwbz/ormbmgwbz_zh_CN';
+import ormbmgwbz_zh_CN from '@locale/lanres/orm-bmgwbz/orm-bmgwbz_zh_CN';
 import ormrelation_zh_CN from '@locale/lanres/orm-relation/orm-relation_zh_CN';
-import ormpostlib_zh_CN from '@locale/lanres/ormpost-lib/ormpost-lib_zh_CN';
-import ormdepestman_zh_CN from '@locale/lanres/ormdep-est-man/ormdep-est-man_zh_CN';
-import unitedperson_zh_CN from '@locale/lanres/united-person/united-person_zh_CN';
-import pimperson_zh_CN from '@locale/lanres/pimperson/pimperson_zh_CN';
+import ormpostlib_zh_CN from '@locale/lanres/orm-post-lib/orm-post-lib_zh_CN';
+import ormdepestman_zh_CN from '@locale/lanres/orm-dep-est-man/orm-dep-est-man_zh_CN';
+import ormunitedperson_zh_CN from '@locale/lanres/orm-united-person/orm-united-person_zh_CN';
+import pimperson_zh_CN from '@locale/lanres/pim-person/pim-person_zh_CN';
 import ormorg_zh_CN from '@locale/lanres/orm-org/orm-org_zh_CN';
-import ormqybzwh_zh_CN from '@locale/lanres/ormqybzwh/ormqybzwh_zh_CN';
-import ormduty_zh_CN from '@locale/lanres/ormduty/ormduty_zh_CN';
+import ormqybzwh_zh_CN from '@locale/lanres/orm-qybzwh/orm-qybzwh_zh_CN';
+import ormduty_zh_CN from '@locale/lanres/orm-duty/orm-duty_zh_CN';
 import codeitem_zh_CN from '@locale/lanres/code-item/code-item_zh_CN';
-import ormtitle_zh_CN from '@locale/lanres/ormtitle/ormtitle_zh_CN';
-import ormxmgl_zh_CN from '@locale/lanres/ormxmgl/ormxmgl_zh_CN';
-import ormxmbq_zh_CN from '@locale/lanres/ormxmbq/ormxmbq_zh_CN';
+import ormtitle_zh_CN from '@locale/lanres/orm-title/orm-title_zh_CN';
+import ormxmgl_zh_CN from '@locale/lanres/orm-xmgl/orm-xmgl_zh_CN';
+import ormxmbq_zh_CN from '@locale/lanres/orm-xmbq/orm-xmbq_zh_CN';
 import ormorgsector_zh_CN from '@locale/lanres/orm-orgsector/orm-orgsector_zh_CN';
 import components_zh_CN from '@locale/lanres/components/components_zh_CN';
 import codelist_zh_CN from '@locale/lanres/codelist/codelist_zh_CN';
@@ -84,9 +84,9 @@ export default {
                 menuitem1: '组织管理',
                 menuitem3: '组织管理',
                 menuitem2: '编制查询',
+                menuitem4: '标准化数据设置',
                 menuitem5: '职务设置',
-                menuitem6: '标准岗位设置',
-                menuitem9: '岗位集设置',
+                menuitem9: '岗位设置',
                 menuitem10: '项目标签',
                 menuitem11: '法人主体维护',
                 menuitem12: '法人主体设置',
@@ -119,14 +119,14 @@ export default {
         codelist1: codelist1_zh_CN,
         ormedition: ormedition_zh_CN,
         ormorgdz: ormorgdz_zh_CN,
-        contractsignorg: contractsignorg_zh_CN,
+        pimcontractsignorg: pimcontractsignorg_zh_CN,
         ormpost: ormpost_zh_CN,
         ormbmkqdz: ormbmkqdz_zh_CN,
         ormbmgwbz: ormbmgwbz_zh_CN,
         ormrelation: ormrelation_zh_CN,
         ormpostlib: ormpostlib_zh_CN,
         ormdepestman: ormdepestman_zh_CN,
-        unitedperson: unitedperson_zh_CN,
+        ormunitedperson: ormunitedperson_zh_CN,
         pimperson: pimperson_zh_CN,
         ormorg: ormorg_zh_CN,
         ormqybzwh: ormqybzwh_zh_CN,

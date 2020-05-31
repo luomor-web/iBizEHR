@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PCMCERTOFREGService from '@/service/pcmcertofreg/pcmcertofreg-service';
+import PcmCertofregService from '@/service/pcm-certofreg/pcm-certofreg-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PCMCERTOFREGEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMCERTOFREGService}
+     * @type {PcmCertofregService}
      * @memberof PCMCERTOFREGEditViewBase
      */
-    public appEntityService: PCMCERTOFREGService = new PCMCERTOFREGService;
+    public appEntityService: PcmCertofregService = new PcmCertofregService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PCMCERTOFREGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PCMCERTOFREG");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PcmCertofreg");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PCMCERTOFREGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PCMCERTOFREG");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PcmCertofreg");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PCMCERTOFREGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PCMCERTOFREG");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmCertofreg");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PCMCERTOFREGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PCMCERTOFREG");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmCertofreg");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PCMCERTOFREGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PCMCERTOFREG");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PcmCertofreg");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PCMCERTOFREGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PCMCERTOFREG");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PcmCertofreg");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PCMCERTOFREGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PCMCERTOFREG");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PcmCertofreg");
     }
 
     /**

@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import ORMQYBZWHService from '@/service/ormqybzwh/ormqybzwh-service';
+import OrmQybzwhService from '@/service/orm-qybzwh/orm-qybzwh-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class ORMQYBZWHEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMQYBZWHService}
+     * @type {OrmQybzwhService}
      * @memberof ORMQYBZWHEditViewBase
      */
-    public appEntityService: ORMQYBZWHService = new ORMQYBZWHService;
+    public appEntityService: OrmQybzwhService = new OrmQybzwhService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class ORMQYBZWHEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"ORMQYBZWH");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"OrmQybzwh");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class ORMQYBZWHEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"ORMQYBZWH");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"OrmQybzwh");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class ORMQYBZWHEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ORMQYBZWH");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"OrmQybzwh");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class ORMQYBZWHEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ORMQYBZWH");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"OrmQybzwh");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class ORMQYBZWHEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"ORMQYBZWH");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"OrmQybzwh");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class ORMQYBZWHEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"ORMQYBZWH");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"OrmQybzwh");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class ORMQYBZWHEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"ORMQYBZWH");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"OrmQybzwh");
     }
 
     /**

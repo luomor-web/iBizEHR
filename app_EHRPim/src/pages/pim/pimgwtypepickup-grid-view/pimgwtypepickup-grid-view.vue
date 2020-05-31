@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMGWTYPEPickupGridViewBase from './pimgwtypepickup-grid-view-base.vue';
 
-import view_grid from '@widgets/pimgwtype/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pimgwtype/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-gw-type/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pim-gw-type/default-searchform/default-searchform.vue';
 
 /**
  * 岗位类型

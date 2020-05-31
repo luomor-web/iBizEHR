@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMPROFILEBHSP_CSRCYJEditViewBase from './pcmprofilebhsp-csrcyjedit-view-base.vue';
 
-import view_form from '@widgets/pcmprofile/bhsp-csrcyj-form/bhsp-csrcyj-form.vue';
+import view_form from '@widgets/pcm-profile/bhsp-csrcyj-form/bhsp-csrcyj-form.vue';
 
 /**
  * 编号审批

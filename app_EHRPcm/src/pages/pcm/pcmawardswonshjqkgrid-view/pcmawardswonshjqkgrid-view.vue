@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PCMAWARDSWONSHJQKGridViewBase from './pcmawardswonshjqkgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmawardswons/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pcmawardswons/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pcm-awards-wons/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pcm-awards-wons/default-searchform/default-searchform.vue';
 
 /**
  * 获奖情况（要求：带*必填）

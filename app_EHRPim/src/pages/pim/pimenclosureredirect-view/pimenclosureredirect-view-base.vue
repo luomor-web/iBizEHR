@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMENCLOSUREService from '@/service/pimenclosure/pimenclosure-service';
+import PimEnclosureService from '@/service/pim-enclosure/pim-enclosure-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMENCLOSURERedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMENCLOSUREService}
+     * @type {PimEnclosureService}
      * @memberof PIMENCLOSURERedirectViewBase
      */
-    public appEntityService: PIMENCLOSUREService = new PIMENCLOSUREService;
+    public appEntityService: PimEnclosureService = new PimEnclosureService;
 
 
     /**

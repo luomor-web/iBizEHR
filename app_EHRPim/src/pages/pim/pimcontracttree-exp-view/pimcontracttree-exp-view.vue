@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMCONTRACTTreeExpViewBase from './pimcontracttree-exp-view-base.vue';
 
-import view_treeexpbar from '@widgets/pimcontract/tree-exp-viewtreeexpbar-treeexpbar/tree-exp-viewtreeexpbar-treeexpbar.vue';
+import view_treeexpbar from '@widgets/pim-contract/tree-exp-viewtreeexpbar-treeexpbar/tree-exp-viewtreeexpbar-treeexpbar.vue';
 
 /**
  * 合同信息树导航视图

@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMVOCATIONALPimZigGridViewBase from './pimvocationalpim-zig-grid-view-base.vue';
 
-import view_grid from '@widgets/pimvocational/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pimvocational/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-vocational/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pim-vocational/default-searchform/default-searchform.vue';
 
 /**
  * 证书信息表格视图

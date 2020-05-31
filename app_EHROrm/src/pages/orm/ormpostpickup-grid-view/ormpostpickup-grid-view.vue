@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import ORMPOSTPickupGridViewBase from './ormpostpickup-grid-view-base.vue';
 
-import view_grid from '@widgets/ormpost/main-grid/main-grid.vue';
-import view_searchform from '@widgets/ormpost/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/orm-post/main-grid/main-grid.vue';
+import view_searchform from '@widgets/orm-post/default-searchform/default-searchform.vue';
 
 /**
  * 岗位管理选择表格视图

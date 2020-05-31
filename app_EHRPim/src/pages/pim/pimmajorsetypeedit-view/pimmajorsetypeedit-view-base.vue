@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMMAJORSETYPEService from '@/service/pimmajorsetype/pimmajorsetype-service';
+import PimMajorSetypeService from '@/service/pim-major-setype/pim-major-setype-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMMAJORSETYPEEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMMAJORSETYPEService}
+     * @type {PimMajorSetypeService}
      * @memberof PIMMAJORSETYPEEditViewBase
      */
-    public appEntityService: PIMMAJORSETYPEService = new PIMMAJORSETYPEService;
+    public appEntityService: PimMajorSetypeService = new PimMajorSetypeService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PIMMAJORSETYPEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMMAJORSETYPE");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimMajorSetype");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PIMMAJORSETYPEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMMAJORSETYPE");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimMajorSetype");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PIMMAJORSETYPEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMMAJORSETYPE");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimMajorSetype");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PIMMAJORSETYPEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMMAJORSETYPE");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimMajorSetype");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PIMMAJORSETYPEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMMAJORSETYPE");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimMajorSetype");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PIMMAJORSETYPEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMMAJORSETYPE");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimMajorSetype");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PIMMAJORSETYPEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMMAJORSETYPE");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimMajorSetype");
     }
 
     /**

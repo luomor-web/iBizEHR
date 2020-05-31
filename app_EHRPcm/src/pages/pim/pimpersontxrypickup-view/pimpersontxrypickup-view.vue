@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMPERSONTXRYPickupViewBase from './pimpersontxrypickup-view-base.vue';
 
-import view_pickupviewpanel from '@widgets/pimperson/txrypickup-viewpickupviewpanel-pickupviewpanel/txrypickup-viewpickupviewpanel-pickupviewpanel.vue';
+import view_pickupviewpanel from '@widgets/pim-person/txrypickup-viewpickupviewpanel-pickupviewpanel/txrypickup-viewpickupviewpanel-pickupviewpanel.vue';
 
 /**
  * 选择退休人员

@@ -57,7 +57,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, PickupViewBase } from '@/crm-core';
-import ARCHIVESCENTERService from '@/service/archivescenter/archivescenter-service';
+import PimArchivesCenterService from '@/service/pim-archives-center/pim-archives-center-service';
 
 import PickupGridViewEngine from '@engine/view/pickup-grid-view-engine';
 
@@ -76,10 +76,10 @@ export default class ARCHIVESCENTERPickupGridViewBase extends PickupViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ARCHIVESCENTERService}
+     * @type {PimArchivesCenterService}
      * @memberof ARCHIVESCENTERPickupGridViewBase
      */
-    public appEntityService: ARCHIVESCENTERService = new ARCHIVESCENTERService;
+    public appEntityService: PimArchivesCenterService = new PimArchivesCenterService;
 
 
     /**
@@ -144,9 +144,9 @@ export default class ARCHIVESCENTERPickupGridViewBase extends PickupViewBase {
      * @memberof ARCHIVESCENTERPickupGridViewBase
      */
     public model: any = {
-        srfCaption: 'entities.archivescenter.views.pickupgridview.caption',
-        srfTitle: 'entities.archivescenter.views.pickupgridview.title',
-        srfSubTitle: 'entities.archivescenter.views.pickupgridview.subtitle',
+        srfCaption: 'entities.pimarchivescenter.views.pickupgridview.caption',
+        srfTitle: 'entities.pimarchivescenter.views.pickupgridview.title',
+        srfSubTitle: 'entities.pimarchivescenter.views.pickupgridview.subtitle',
         dataInfo: ''
     }
 
@@ -192,7 +192,7 @@ export default class ARCHIVESCENTERPickupGridViewBase extends PickupViewBase {
             view: this,
             grid: this.$refs.grid,
             searchform: this.$refs.searchform,
-            keyPSDEField: 'archivescenter',
+            keyPSDEField: 'pimarchivescenter',
             majorPSDEField: 'position',
             isLoadDefault: true,
         });

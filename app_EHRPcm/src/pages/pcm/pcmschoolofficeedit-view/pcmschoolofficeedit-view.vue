@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMSCHOOLOFFICEEditViewBase from './pcmschoolofficeedit-view-base.vue';
 
-import view_form from '@widgets/pcmschooloffice/main-form/main-form.vue';
+import view_form from '@widgets/pcm-school-office/main-form/main-form.vue';
 
 /**
  * 在校职务

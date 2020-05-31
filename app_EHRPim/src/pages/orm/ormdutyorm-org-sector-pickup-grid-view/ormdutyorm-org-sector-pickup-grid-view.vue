@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import ORMDUTYOrmOrgSectorPickupGridViewBase from './ormdutyorm-org-sector-pickup-grid-view-base.vue';
 
-import view_grid from '@widgets/ormduty/main-grid/main-grid.vue';
-import view_searchform from '@widgets/ormduty/wcjsearch-form-searchform/wcjsearch-form-searchform.vue';
+import view_grid from '@widgets/orm-duty/main-grid/main-grid.vue';
+import view_searchform from '@widgets/orm-duty/wcjsearch-form-searchform/wcjsearch-form-searchform.vue';
 
 /**
  * 职务库

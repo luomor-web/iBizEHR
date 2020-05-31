@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMPERSONPersonInfoEditViewBase from './pimpersonperson-info-edit-view-base.vue';
 
-import view_form from '@widgets/pimperson/ryinfo-form-form/ryinfo-form-form.vue';
+import view_form from '@widgets/pim-person/ryinfo-form-form/ryinfo-form-form.vue';
 
 /**
  * 员工信息

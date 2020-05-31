@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMPROFILERZSPEditViewBase from './pcmprofilerzspedit-view-base.vue';
 
-import view_form from '@widgets/pcmprofile/rzsp-form/rzsp-form.vue';
+import view_form from '@widgets/pcm-profile/rzsp-form/rzsp-form.vue';
 
 /**
  * 局总部初审

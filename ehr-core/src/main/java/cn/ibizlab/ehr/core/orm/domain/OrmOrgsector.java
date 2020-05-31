@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[部门管理]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor
@@ -586,7 +585,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.orm.domain.ORMXMGL ormxmgl;
+    private cn.ibizlab.ehr.core.orm.domain.OrmXmgl ormxmgl;
 
     /**
      * 部门负责人
@@ -594,7 +593,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.pim.domain.PIMPERSON pimperson;
+    private cn.ibizlab.ehr.core.pim.domain.PimPerson pimperson;
 
     /**
      * 项目负责人
@@ -602,7 +601,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.pim.domain.PIMPERSON proleader;
+    private cn.ibizlab.ehr.core.pim.domain.PimPerson proleader;
 
 
 

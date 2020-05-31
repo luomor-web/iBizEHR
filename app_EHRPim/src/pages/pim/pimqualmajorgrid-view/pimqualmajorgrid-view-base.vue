@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMQUALMAJORService from '@/service/pimqualmajor/pimqualmajor-service';
+import PimQualMajorService from '@/service/pim-qual-major/pim-qual-major-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMQUALMAJORService}
+     * @type {PimQualMajorService}
      * @memberof PIMQUALMAJORGridViewBase
      */
-    public appEntityService: PIMQUALMAJORService = new PIMQUALMAJORService;
+    public appEntityService: PimQualMajorService = new PimQualMajorService;
 
 
     /**
@@ -390,7 +390,7 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PimQualMajor");
     }
 
     /**
@@ -419,7 +419,7 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PimQualMajor");
     }
 
     /**
@@ -448,7 +448,7 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimQualMajor");
     }
 
     /**
@@ -477,7 +477,7 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimQualMajor");
     }
 
     /**
@@ -506,7 +506,7 @@ export default class PIMQUALMAJORGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALMAJOR");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimQualMajor");
     }
 
     /**

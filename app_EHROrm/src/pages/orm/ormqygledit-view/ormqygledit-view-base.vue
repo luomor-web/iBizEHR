@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import ORMQYGLService from '@/service/ormqygl/ormqygl-service';
+import OrmQyglService from '@/service/orm-qygl/orm-qygl-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class ORMQYGLEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMQYGLService}
+     * @type {OrmQyglService}
      * @memberof ORMQYGLEditViewBase
      */
-    public appEntityService: ORMQYGLService = new ORMQYGLService;
+    public appEntityService: OrmQyglService = new OrmQyglService;
 
 
     /**
@@ -288,7 +288,7 @@ export default class ORMQYGLEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"ORMQYGL");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"OrmQygl");
     }
 
     /**
@@ -317,7 +317,7 @@ export default class ORMQYGLEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ORMQYGL");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"OrmQygl");
     }
 
     /**
@@ -346,7 +346,7 @@ export default class ORMQYGLEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"ORMQYGL");
+        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"OrmQygl");
     }
 
     /**

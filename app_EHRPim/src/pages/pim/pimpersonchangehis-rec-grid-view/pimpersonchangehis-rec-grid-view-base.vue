@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMPERSONCHANGEService from '@/service/pimpersonchange/pimpersonchange-service';
+import PimPersonChangeService from '@/service/pim-person-change/pim-person-change-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMPERSONCHANGEHisRecGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMPERSONCHANGEService}
+     * @type {PimPersonChangeService}
      * @memberof PIMPERSONCHANGEHisRecGridViewBase
      */
-    public appEntityService: PIMPERSONCHANGEService = new PIMPERSONCHANGEService;
+    public appEntityService: PimPersonChangeService = new PimPersonChangeService;
 
 
     /**
@@ -378,7 +378,7 @@ export default class PIMPERSONCHANGEHisRecGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMPERSONCHANGE");
+        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PimPersonChange");
     }
 
     /**
@@ -407,7 +407,7 @@ export default class PIMPERSONCHANGEHisRecGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMPERSONCHANGE");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimPersonChange");
     }
 
     /**
@@ -436,7 +436,7 @@ export default class PIMPERSONCHANGEHisRecGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PIMPERSONCHANGE");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PimPersonChange");
     }
 
     /**

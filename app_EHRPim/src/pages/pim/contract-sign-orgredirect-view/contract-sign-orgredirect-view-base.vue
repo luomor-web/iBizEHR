@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import ContractSignORGService from '@/service/contract-sign-org/contract-sign-org-service';
+import PimContractSignOrgService from '@/service/pim-contract-sign-org/pim-contract-sign-org-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class ContractSignORGRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ContractSignORGService}
+     * @type {PimContractSignOrgService}
      * @memberof ContractSignORGRedirectViewBase
      */
-    public appEntityService: ContractSignORGService = new ContractSignORGService;
+    public appEntityService: PimContractSignOrgService = new PimContractSignOrgService;
 
 
     /**
@@ -98,9 +98,9 @@ export default class ContractSignORGRedirectViewBase extends WizardViewBase {
      * @memberof ContractSignORGRedirectViewBase
      */
     public model: any = {
-        srfCaption: 'entities.contractsignorg.views.redirectview.caption',
-        srfTitle: 'entities.contractsignorg.views.redirectview.title',
-        srfSubTitle: 'entities.contractsignorg.views.redirectview.subtitle',
+        srfCaption: 'entities.pimcontractsignorg.views.redirectview.caption',
+        srfTitle: 'entities.pimcontractsignorg.views.redirectview.title',
+        srfSubTitle: 'entities.pimcontractsignorg.views.redirectview.subtitle',
         dataInfo: ''
     }
 

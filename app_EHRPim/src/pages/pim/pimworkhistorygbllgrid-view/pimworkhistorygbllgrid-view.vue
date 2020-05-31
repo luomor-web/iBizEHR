@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMWORKHISTORYGBLLGridViewBase from './pimworkhistorygbllgrid-view-base.vue';
 
-import view_grid from '@widgets/pimworkhistory/gbll-grid/gbll-grid.vue';
-import view_searchform from '@widgets/pimworkhistory/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-work-history/gbll-grid/gbll-grid.vue';
+import view_searchform from '@widgets/pim-work-history/default-searchform/default-searchform.vue';
 
 /**
  * 工作履历

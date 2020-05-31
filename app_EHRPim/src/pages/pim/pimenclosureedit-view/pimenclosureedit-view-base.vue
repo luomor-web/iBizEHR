@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMENCLOSUREService from '@/service/pimenclosure/pimenclosure-service';
+import PimEnclosureService from '@/service/pim-enclosure/pim-enclosure-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMENCLOSUREEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMENCLOSUREService}
+     * @type {PimEnclosureService}
      * @memberof PIMENCLOSUREEditViewBase
      */
-    public appEntityService: PIMENCLOSUREService = new PIMENCLOSUREService;
+    public appEntityService: PimEnclosureService = new PimEnclosureService;
 
 
     /**
@@ -296,7 +296,7 @@ export default class PIMENCLOSUREEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMENCLOSURE");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimEnclosure");
     }
 
     /**
@@ -325,7 +325,7 @@ export default class PIMENCLOSUREEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMENCLOSURE");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimEnclosure");
     }
 
     /**
@@ -354,7 +354,7 @@ export default class PIMENCLOSUREEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMENCLOSURE");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimEnclosure");
     }
 
     /**
@@ -383,7 +383,7 @@ export default class PIMENCLOSUREEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMENCLOSURE");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimEnclosure");
     }
 
     /**
@@ -412,7 +412,7 @@ export default class PIMENCLOSUREEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMENCLOSURE");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimEnclosure");
     }
 
     /**
@@ -441,7 +441,7 @@ export default class PIMENCLOSUREEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMENCLOSURE");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimEnclosure");
     }
 
     /**
@@ -470,7 +470,7 @@ export default class PIMENCLOSUREEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMENCLOSURE");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimEnclosure");
     }
 
     /**

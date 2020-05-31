@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMLABOURCAMPANYService from '@/service/pimlabourcampany/pimlabourcampany-service';
+import PimLabourcampanyService from '@/service/pim-labourcampany/pim-labourcampany-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMLABOURCAMPANYEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMLABOURCAMPANYService}
+     * @type {PimLabourcampanyService}
      * @memberof PIMLABOURCAMPANYEditViewBase
      */
-    public appEntityService: PIMLABOURCAMPANYService = new PIMLABOURCAMPANYService;
+    public appEntityService: PimLabourcampanyService = new PimLabourcampanyService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PIMLABOURCAMPANYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMLABOURCAMPANY");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimLabourcampany");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PIMLABOURCAMPANYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMLABOURCAMPANY");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimLabourcampany");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PIMLABOURCAMPANYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMLABOURCAMPANY");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimLabourcampany");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PIMLABOURCAMPANYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMLABOURCAMPANY");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimLabourcampany");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PIMLABOURCAMPANYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMLABOURCAMPANY");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimLabourcampany");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PIMLABOURCAMPANYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMLABOURCAMPANY");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimLabourcampany");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PIMLABOURCAMPANYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMLABOURCAMPANY");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimLabourcampany");
     }
 
     /**

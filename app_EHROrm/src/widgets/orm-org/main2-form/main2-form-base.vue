@@ -1,5 +1,5 @@
 <template>
-    <i-form :model="this.data" class='app-form info-form-mode' ref='form'  id='form' style="">
+    <i-form :model="this.data" class='app-form info-form-mode' ref='form'  id='ormorg_main2' style="">
     <input style="display:none;" />
     <row >
             
@@ -44,14 +44,14 @@
 <i-col v-show="detailsModel.gsss.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='gsss' :itemRules="this.rules.gsss" class='' :caption="$t('entities.ormorg.main2_form.details.gsss')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gsss.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='gsss'
-:value="data.gsss" tag='EhrCodeListSsqy' codelistType='DYNAMIC' style=""></app-span>
+:value="data.gsss" tag='EhrCodeList0250' codelistType='DYNAMIC' style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.btqy.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='btqy' :itemRules="this.rules.btqy" class='' :caption="$t('entities.ormorg.main2_form.details.btqy')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.btqy.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='btqy'
-:value="data.btqy" tag='ORMCL_QY' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" style=""></app-span>
+:value="data.btqy" tag='EhrCodeList0219' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -72,14 +72,14 @@
 <i-col v-show="detailsModel.legalentity.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='legalentity' :itemRules="this.rules.legalentity" class='' :caption="$t('entities.ormorg.main2_form.details.legalentity')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.legalentity.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='legalentity'
-:value="data.legalentity" tag='ORMCL_LegalEntity' codelistType='STATIC' style=""></app-span>
+:value="data.legalentity" tag='EhrCodeList0022' codelistType='STATIC' style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.startstopsign.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='startstopsign' :itemRules="this.rules.startstopsign" class='' :caption="$t('entities.ormorg.main2_form.details.startstopsign')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.startstopsign.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='startstopsign'
-:value="data.startstopsign" tag='ORMCL_QTBS' codelistType='STATIC' style=""></app-span>
+:value="data.startstopsign" tag='EhrCodeList0086' codelistType='STATIC' style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -253,6 +253,12 @@ export default class Main2Base extends Vue implements ControlInterface {
     }
 
 
+    /**
+     * 工作流审批意见控件绑定值
+     *
+     * @memberof Main2
+     */
+    public srfwfmemo:string = "";
     
     /**
      * 获取多项数据
@@ -1409,7 +1415,7 @@ export default class Main2Base extends Vue implements ControlInterface {
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'form',popTitle:'主信息表单'});
+        _this.$print({id:'ormorg_main2',popTitle:'主信息表单'});
     }
 
     /**
@@ -1781,6 +1787,10 @@ export default class Main2Base extends Vue implements ControlInterface {
                 // 准备提交参数
                 if(this.viewparams){
                     Object.assign(arg,{viewparams:this.viewparams});
+                }
+                // 强制补充srfwfmemo
+                if(this.srfwfmemo){
+                    Object.assign(arg,{srfwfmemo:this.srfwfmemo});
                 }
                 const result: Promise<any> = this.service.wfsubmit(_this.WFSubmitAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
                 result.then((response: any) => {

@@ -53,7 +53,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PCMPROFILEAPPROVALService from '@/service/pcmprofileapproval/pcmprofileapproval-service';
+import PcmProfileApprovalService from '@/service/pcm-profile-approval/pcm-profile-approval-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -74,10 +74,10 @@ export default class PCMPROFILEAPPROVALJJGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMPROFILEAPPROVALService}
+     * @type {PcmProfileApprovalService}
      * @memberof PCMPROFILEAPPROVALJJGridViewBase
      */
-    public appEntityService: PCMPROFILEAPPROVALService = new PCMPROFILEAPPROVALService;
+    public appEntityService: PcmProfileApprovalService = new PcmProfileApprovalService;
 
 
     /**

@@ -1,5 +1,5 @@
 <template>
-    <i-form :model="this.data" class='app-form' ref='form'  id='form' style="">
+    <i-form :model="this.data" class='app-form' ref='form'  id='ormorgdz_main' style="">
     <input style="display:none;" />
     <row >
             
@@ -14,7 +14,7 @@
 </i-col>
 <i-col v-show="detailsModel.deforgaddress.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
     <app-form-item name='deforgaddress' :itemRules="this.rules.deforgaddress" class='' :caption="$t('entities.ormorgdz.main_form.details.deforgaddress')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.deforgaddress.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.deforgaddress"  :disabled="detailsModel.deforgaddress.disabled"  name="deforgaddress" tag='PIMCL_SFLJ' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group v-model="data.deforgaddress"  :disabled="detailsModel.deforgaddress.disabled"  name="deforgaddress" tag='EhrCodeList0097' codelistType='STATIC'  style=""></app-radio-group>
 </app-form-item>
 
 </i-col>
@@ -156,6 +156,12 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
 
+    /**
+     * 工作流审批意见控件绑定值
+     *
+     * @memberof Main
+     */
+    public srfwfmemo:string = "";
     
     /**
      * 获取多项数据
@@ -1037,7 +1043,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'form',popTitle:'主编辑表单'});
+        _this.$print({id:'ormorgdz_main',popTitle:'主编辑表单'});
     }
 
     /**
@@ -1409,6 +1415,10 @@ export default class MainBase extends Vue implements ControlInterface {
                 // 准备提交参数
                 if(this.viewparams){
                     Object.assign(arg,{viewparams:this.viewparams});
+                }
+                // 强制补充srfwfmemo
+                if(this.srfwfmemo){
+                    Object.assign(arg,{srfwfmemo:this.srfwfmemo});
                 }
                 const result: Promise<any> = this.service.wfsubmit(_this.WFSubmitAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
                 result.then((response: any) => {

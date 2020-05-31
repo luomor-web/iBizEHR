@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMCONTRACTStopRemindGridViewBase from './pimcontractstop-remind-grid-view-base.vue';
 
-import view_grid from '@widgets/pimcontract/stop-remind-grid-grid/stop-remind-grid-grid.vue';
-import view_searchform from '@widgets/pimcontract/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-contract/stop-remind-grid-grid/stop-remind-grid-grid.vue';
+import view_searchform from '@widgets/pim-contract/default-searchform/default-searchform.vue';
 
 /**
  * 合同信息表格视图(终止提醒)

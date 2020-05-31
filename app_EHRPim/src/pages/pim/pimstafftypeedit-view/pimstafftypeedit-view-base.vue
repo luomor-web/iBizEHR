@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMSTAFFTYPEService from '@/service/pimstafftype/pimstafftype-service';
+import PimStafftypeService from '@/service/pim-stafftype/pim-stafftype-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMSTAFFTYPEEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMSTAFFTYPEService}
+     * @type {PimStafftypeService}
      * @memberof PIMSTAFFTYPEEditViewBase
      */
-    public appEntityService: PIMSTAFFTYPEService = new PIMSTAFFTYPEService;
+    public appEntityService: PimStafftypeService = new PimStafftypeService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PIMSTAFFTYPEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMSTAFFTYPE");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimStafftype");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PIMSTAFFTYPEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMSTAFFTYPE");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimStafftype");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PIMSTAFFTYPEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMSTAFFTYPE");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimStafftype");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PIMSTAFFTYPEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMSTAFFTYPE");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimStafftype");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PIMSTAFFTYPEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMSTAFFTYPE");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimStafftype");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PIMSTAFFTYPEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMSTAFFTYPE");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimStafftype");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PIMSTAFFTYPEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMSTAFFTYPE");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimStafftype");
     }
 
     /**

@@ -881,9 +881,9 @@ export default class IndexModel {
             openmode: '',
             codename: 'archivescentergridview',
             deResParameters: [],
-            routepath: '/index/:index?/archivescenters/:archivescenter?/gridview/:gridview?',
+            routepath: '/index/:index?/pimarchivescenters/:pimarchivescenter?/gridview/:gridview?',
             parameters: [
-                { pathName: 'archivescenters', parameterName: 'archivescenter' },
+                { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
                 { pathName: 'gridview', parameterName: 'gridview' },
             ],
         },

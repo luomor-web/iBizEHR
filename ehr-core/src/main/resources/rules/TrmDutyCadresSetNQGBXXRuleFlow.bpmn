@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.trm.service.logic.trmdutycadressetnqgbxx" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.trm.service.logic.trmdutycadressetnqgbxx">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="trmdutycadressetnqgbxxpimperson" type="cn.ibizlab.ehr.core.pim.domain.PimPerson" />
+        <tns:global identifier="trmdutycadressetnqgbxxdefault" type="cn.ibizlab.ehr.core.trm.domain.TrmDutyCadres" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmdutycadressetnqgbxxdeaction1" id="46ed82ba22d55bbb083ee6c41d231476" implementation="http://www.jboss.org/drools/rule" name="获取年轻干部信息"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmdutycadressetnqgbxxprepareparam2" id="eb2859577f42fb5ff9fb822723ea1034" implementation="http://www.jboss.org/drools/rule" name="设置年轻干部信息"/>
+     <endEvent id="eb2859577f42fb5ff9fb822723ea1034_End" name="End"/>
+     <sequenceFlow id="eb2859577f42fb5ff9fb822723ea1034_End_Line" sourceRef="eb2859577f42fb5ff9fb822723ea1034" targetRef="eb2859577f42fb5ff9fb822723ea1034_End"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmdutycadressetnqgbxxprepareparam1" id="6b065493f2ee2e7255fe81e236ae9091" implementation="http://www.jboss.org/drools/rule" name="设置年轻干部id"/>
+     <startEvent id="5d167ce2904c34c19d4efda4f3d88d64" isInterrupting="true"/>
+     <sequenceFlow id="64ea99a374e5c8e960a8aa664be99707" sourceRef="46ed82ba22d55bbb083ee6c41d231476" targetRef="eb2859577f42fb5ff9fb822723ea1034">
+     </sequenceFlow>
+     <sequenceFlow id="2b7055c5db1c7ab3514e7c602dc2436f" sourceRef="5d167ce2904c34c19d4efda4f3d88d64" targetRef="6b065493f2ee2e7255fe81e236ae9091">
+     </sequenceFlow>
+     <sequenceFlow id="309835045af613a9d5b0e6ee3b8e67d8" sourceRef="6b065493f2ee2e7255fe81e236ae9091" targetRef="46ed82ba22d55bbb083ee6c41d231476">
+     </sequenceFlow>
+    </process>
+</definitions>
+

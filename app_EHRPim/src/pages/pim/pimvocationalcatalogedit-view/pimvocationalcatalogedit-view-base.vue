@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMVOCATIONALCATALOGService from '@/service/pimvocationalcatalog/pimvocationalcatalog-service';
+import PimVocationalCatalogService from '@/service/pim-vocational-catalog/pim-vocational-catalog-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMVOCATIONALCATALOGService}
+     * @type {PimVocationalCatalogService}
      * @memberof PIMVOCATIONALCATALOGEditViewBase
      */
-    public appEntityService: PIMVOCATIONALCATALOGService = new PIMVOCATIONALCATALOGService;
+    public appEntityService: PimVocationalCatalogService = new PimVocationalCatalogService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMVOCATIONALCATALOG");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimVocationalCatalog");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMVOCATIONALCATALOG");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimVocationalCatalog");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMVOCATIONALCATALOG");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimVocationalCatalog");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMVOCATIONALCATALOG");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimVocationalCatalog");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMVOCATIONALCATALOG");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimVocationalCatalog");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMVOCATIONALCATALOG");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimVocationalCatalog");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PIMVOCATIONALCATALOGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMVOCATIONALCATALOG");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimVocationalCatalog");
     }
 
     /**

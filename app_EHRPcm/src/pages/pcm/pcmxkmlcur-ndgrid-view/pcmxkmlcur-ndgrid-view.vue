@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PCMXKMLCurNDGridViewBase from './pcmxkmlcur-ndgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmxkml/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pcmxkml/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pcm-xkml/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pcm-xkml/default-searchform/default-searchform.vue';
 
 /**
  * 学科目录表格视图

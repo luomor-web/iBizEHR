@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PCMPROFILESPYYService from '@/service/pcmprofilespyy/pcmprofilespyy-service';
+import PcmProfileSpyyService from '@/service/pcm-profile-spyy/pcm-profile-spyy-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PCMPROFILESPYYEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMPROFILESPYYService}
+     * @type {PcmProfileSpyyService}
      * @memberof PCMPROFILESPYYEditViewBase
      */
-    public appEntityService: PCMPROFILESPYYService = new PCMPROFILESPYYService;
+    public appEntityService: PcmProfileSpyyService = new PcmProfileSpyyService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PCMPROFILESPYYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILESPYY");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PcmProfileSpyy");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PCMPROFILESPYYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILESPYY");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PcmProfileSpyy");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PCMPROFILESPYYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILESPYY");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmProfileSpyy");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PCMPROFILESPYYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILESPYY");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmProfileSpyy");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PCMPROFILESPYYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILESPYY");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PcmProfileSpyy");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PCMPROFILESPYYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILESPYY");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PcmProfileSpyy");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PCMPROFILESPYYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILESPYY");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PcmProfileSpyy");
     }
 
     /**

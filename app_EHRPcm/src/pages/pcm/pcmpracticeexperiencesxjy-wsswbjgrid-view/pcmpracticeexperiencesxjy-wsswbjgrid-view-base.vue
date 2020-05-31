@@ -52,7 +52,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PCMPRACTICEEXPERIENCEService from '@/service/pcmpracticeexperience/pcmpracticeexperience-service';
+import PcmPracticeExperienceService from '@/service/pcm-practice-experience/pcm-practice-experience-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -73,10 +73,10 @@ export default class PCMPRACTICEEXPERIENCESXJY_WSSWBJGridViewBase extends GridVi
     /**
      * 实体服务对象
      *
-     * @type {PCMPRACTICEEXPERIENCEService}
+     * @type {PcmPracticeExperienceService}
      * @memberof PCMPRACTICEEXPERIENCESXJY_WSSWBJGridViewBase
      */
-    public appEntityService: PCMPRACTICEEXPERIENCEService = new PCMPRACTICEEXPERIENCEService;
+    public appEntityService: PcmPracticeExperienceService = new PcmPracticeExperienceService;
 
 
     /**

@@ -40,7 +40,7 @@ zuul:
       serviceId: ehr-webapi
       stripPrefix: false
     nationmgr:
-      path: /nationmgrs/**
+      path: /pimnationmgrs/**
       serviceId: ehr-webapi
       stripPrefix: false
     trmlgbcost:
@@ -76,7 +76,7 @@ zuul:
       serviceId: ehr-webapi
       stripPrefix: false
     archivesmanage:
-      path: /archivesmanages/**
+      path: /pimarchivesmanages/**
       serviceId: ehr-webapi
       stripPrefix: false
     pimarchives:
@@ -100,7 +100,7 @@ zuul:
       serviceId: ehr-webapi
       stripPrefix: false
     archivescenter:
-      path: /archivescenters/**
+      path: /pimarchivescenters/**
       serviceId: ehr-webapi
       stripPrefix: false
     pimdistirbution:
@@ -220,7 +220,7 @@ zuul:
       serviceId: ehr-webapi
       stripPrefix: false
     contractsignorg:
-      path: /contractsignorgs/**
+      path: /pimcontractsignorgs/**
       serviceId: ehr-webapi
       stripPrefix: false
     ormrank:
@@ -256,7 +256,7 @@ zuul:
       serviceId: ehr-webapi
       stripPrefix: false
     archivalcatalogue:
-      path: /archivalcatalogues/**
+      path: /pimarchivalcatalogues/**
       serviceId: ehr-webapi
       stripPrefix: false
     pimpersonchange:
@@ -300,7 +300,7 @@ zuul:
       serviceId: ehr-webapi
       stripPrefix: false
     trmtrianperson:
-      path: /trmtrianpeople/**
+      path: /trmtrainpeople/**
       serviceId: ehr-webapi
       stripPrefix: false
     wfcore:

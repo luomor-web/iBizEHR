@@ -53,7 +53,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMRESEARCHFINDINGSService from '@/service/pimresearchfindings/pimresearchfindings-service';
+import PimResearchFindingsService from '@/service/pim-research-findings/pim-research-findings-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -74,10 +74,10 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
     /**
      * 实体服务对象
      *
-     * @type {PIMRESEARCHFINDINGSService}
+     * @type {PimResearchFindingsService}
      * @memberof PIMRESEARCHFINDINGSRESEARCHGridViewBase
      */
-    public appEntityService: PIMRESEARCHFINDINGSService = new PIMRESEARCHFINDINGSService;
+    public appEntityService: PimResearchFindingsService = new PimResearchFindingsService;
 
 
     /**
@@ -336,7 +336,7 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PIMRESEARCHFINDINGS");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PimResearchFindings");
     }
 
     /**
@@ -365,7 +365,7 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PIMRESEARCHFINDINGS");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PimResearchFindings");
     }
 
     /**
@@ -394,7 +394,7 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMRESEARCHFINDINGS");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimResearchFindings");
     }
 
     /**
@@ -423,7 +423,7 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMRESEARCHFINDINGS");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimResearchFindings");
     }
 
     /**
@@ -452,7 +452,7 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMRESEARCHFINDINGS");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimResearchFindings");
     }
 
     /**

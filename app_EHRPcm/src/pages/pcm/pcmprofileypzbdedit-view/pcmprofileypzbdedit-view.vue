@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMPROFILEYPZBDEditViewBase from './pcmprofileypzbdedit-view-base.vue';
 
-import view_form from '@widgets/pcmprofile/rybd-form/rybd-form.vue';
+import view_form from '@widgets/pcm-profile/rybd-form/rybd-form.vue';
 
 /**
  * 拟录用人员

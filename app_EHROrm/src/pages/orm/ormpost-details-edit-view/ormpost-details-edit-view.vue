@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMPostDetailsEditViewBase from './ormpost-details-edit-view-base.vue';
 
-import view_form from '@widgets/ormpost-details/main-form/main-form.vue';
+import view_form from '@widgets/orm-post-details/main-form/main-form.vue';
 
 /**
  * 岗位明细

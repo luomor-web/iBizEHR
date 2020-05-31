@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMGXXKTEMPGridViewBase from './pcmgxxktempgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmgxxktemp/main-grid/main-grid.vue';
+import view_grid from '@widgets/pcmgxxk-temp/main-grid/main-grid.vue';
 
 /**
  * 高校学科

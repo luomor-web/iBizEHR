@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PCMZPMEGLCurNDGridViewBase from './pcmzpmeglcur-ndgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmzpmegl/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pcmzpmegl/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pcm-zpmegl/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pcm-zpmegl/default-searchform/default-searchform.vue';
 
 /**
  * 招聘名额管理表格视图

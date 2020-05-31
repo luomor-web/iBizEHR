@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PCMPROFILEZPDWSHGridViewBase from './pcmprofilezpdwshgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmprofile/zpdwsh-grid/zpdwsh-grid.vue';
-import view_searchform from '@widgets/pcmprofile/serach-xyzp-searchform/serach-xyzp-searchform.vue';
+import view_grid from '@widgets/pcm-profile/zpdwsh-grid/zpdwsh-grid.vue';
+import view_searchform from '@widgets/pcm-profile/serach-xyzp-searchform/serach-xyzp-searchform.vue';
 
 /**
  * 用人单位初审

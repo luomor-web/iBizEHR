@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet orm-pnum-list' :style="{'height': isAdaptiveSize ? 'clac(100% - 16px)' : '300px',}">
+    <div class='portlet orm-pnum-list ' :style="{'height': isAdaptiveSize ? 'clac(100% - 16px)' : '300px',}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_portlet_OrmPNumList_list 
@@ -144,11 +144,12 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
 
 
 
+
     /**
      * 是否自适应大小
      *
      * @returns {boolean}
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     @Prop({default: false})public isAdaptiveSize!: boolean;
 
@@ -156,7 +157,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     public getDatas(): any[] {
         return [];
@@ -166,7 +167,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
      * 获取单项树
      *
      * @returns {*}
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     public getData(): any {
         return {};
@@ -175,7 +176,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
     /**
      * vue 生命周期
      *
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     public created() {
         this.afterCreated();
@@ -184,7 +185,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
     /**
      * 执行created后的逻辑
      *
-     *  @memberof OrmPNumList
+     *  @memberof OrmPNumListBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -203,7 +204,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
     /**
      * vue 生命周期
      *
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -212,7 +213,7 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof OrmPNumList
+     * @memberof OrmPNumListBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {

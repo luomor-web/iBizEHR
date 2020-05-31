@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMWORKHISTORYService from '@/service/pimworkhistory/pimworkhistory-service';
+import PimWorkHistoryService from '@/service/pim-work-history/pim-work-history-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMWORKHISTORYRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMWORKHISTORYService}
+     * @type {PimWorkHistoryService}
      * @memberof PIMWORKHISTORYRedirectViewBase
      */
-    public appEntityService: PIMWORKHISTORYService = new PIMWORKHISTORYService;
+    public appEntityService: PimWorkHistoryService = new PimWorkHistoryService;
 
 
     /**

@@ -242,6 +242,22 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
     public totalRecord: number = 0;
 
     /**
+     * 排序方向
+     *
+     * @type {string}
+     * @memberof OrgPNum
+     */    
+    public sortDir:string = '';
+
+    /**
+     * 排序字段
+     *
+     * @type {string}
+     * @memberof OrgPNum
+     */    
+    public sortField: string = '';
+
+    /**
      * 选中数组
      * @type {Array<any>}
      * @memberof OrgPNum
@@ -359,11 +375,18 @@ export default class OrgPNumBase extends Vue implements ControlInterface {
         if (this.isEnablePagingBar) {
             Object.assign(page, { page: this.curPage-1, size: this.limit });
         }
+        // 设置排序
+        if (!Object.is(this.sortDir, '') && !Object.is(this.sortField, '')) {
+          const sort: string = this.sortField+","+this.sortDir;
+            Object.assign(page, { sort: sort });
+        }
         Object.assign(arg, page);
         const parentdata: any = {};
         this.$emit('beforeload', parentdata);
         Object.assign(arg, parentdata);
-        Object.assign(arg,{viewparams:this.viewparams});
+        let tempViewParams:any = parentdata.viewparams?parentdata.viewparams:{};
+        Object.assign(tempViewParams,JSON.parse(JSON.stringify(this.viewparams)));
+        Object.assign(arg,{viewparams:tempViewParams});
         const post: Promise<any> = this.service.search(this.fetchAction, this.context?JSON.parse(JSON.stringify(this.context)):{}, arg, this.showBusyIndicator);
         post.then((response: any) => {
             if (!response || response.status !== 200) {

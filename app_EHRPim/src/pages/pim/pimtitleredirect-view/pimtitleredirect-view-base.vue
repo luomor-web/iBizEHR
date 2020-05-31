@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMTITLEService from '@/service/pimtitle/pimtitle-service';
+import PimTitleService from '@/service/pim-title/pim-title-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMTITLERedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMTITLEService}
+     * @type {PimTitleService}
      * @memberof PIMTITLERedirectViewBase
      */
-    public appEntityService: PIMTITLEService = new PIMTITLEService;
+    public appEntityService: PimTitleService = new PimTitleService;
 
 
     /**

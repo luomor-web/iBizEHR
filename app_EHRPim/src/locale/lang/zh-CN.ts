@@ -1,78 +1,78 @@
-import pcmprofilespyy_zh_CN from '@locale/lanres/pcmprofilespyy/pcmprofilespyy_zh_CN';
-import pimtypecontract_zh_CN from '@locale/lanres/pimtypecontract/pimtypecontract_zh_CN';
-import pcmdetail_zh_CN from '@locale/lanres/pcmdetail/pcmdetail_zh_CN';
-import ormpost_zh_CN from '@locale/lanres/ormpost/ormpost_zh_CN';
-import ormduty_zh_CN from '@locale/lanres/ormduty/ormduty_zh_CN';
-import pimarmycadres_zh_CN from '@locale/lanres/pimarmycadres/pimarmycadres_zh_CN';
-import pimcontract_zh_CN from '@locale/lanres/pimcontract/pimcontract_zh_CN';
+import pcmprofilespyy_zh_CN from '@locale/lanres/pcm-profile-spyy/pcm-profile-spyy_zh_CN';
+import pimtypecontract_zh_CN from '@locale/lanres/pim-type-contract/pim-type-contract_zh_CN';
+import pcmdetail_zh_CN from '@locale/lanres/pcm-detail/pcm-detail_zh_CN';
+import ormpost_zh_CN from '@locale/lanres/orm-post/orm-post_zh_CN';
+import ormduty_zh_CN from '@locale/lanres/orm-duty/orm-duty_zh_CN';
+import pimarmycadres_zh_CN from '@locale/lanres/pim-armycadres/pim-armycadres_zh_CN';
+import pimcontract_zh_CN from '@locale/lanres/pim-contract/pim-contract_zh_CN';
 import ormsignorg_zh_CN from '@locale/lanres/orm-sign-org/orm-sign-org_zh_CN';
-import pimexitandentry_zh_CN from '@locale/lanres/pimexitandentry/pimexitandentry_zh_CN';
-import nationmgr_zh_CN from '@locale/lanres/nation-mgr/nation-mgr_zh_CN';
-import trmlgbcost_zh_CN from '@locale/lanres/trmlgbcost/trmlgbcost_zh_CN';
-import pimachievements_zh_CN from '@locale/lanres/pimachievements/pimachievements_zh_CN';
-import pimenclosure_zh_CN from '@locale/lanres/pimenclosure/pimenclosure_zh_CN';
-import pimworkhistory_zh_CN from '@locale/lanres/pimworkhistory/pimworkhistory_zh_CN';
-import pcmxkml_zh_CN from '@locale/lanres/pcmxkml/pcmxkml_zh_CN';
-import pimexaminationresults_zh_CN from '@locale/lanres/pimexaminationresults/pimexaminationresults_zh_CN';
-import pimarchivesrecord_zh_CN from '@locale/lanres/pimarchivesrecord/pimarchivesrecord_zh_CN';
-import attendancemreportmx_zh_CN from '@locale/lanres/attendancemreportmx/attendancemreportmx_zh_CN';
-import archivesmanage_zh_CN from '@locale/lanres/archivesmanage/archivesmanage_zh_CN';
-import pimarchives_zh_CN from '@locale/lanres/pimarchives/pimarchives_zh_CN';
-import vacleacetype_zh_CN from '@locale/lanres/vacleacetype/vacleacetype_zh_CN';
-import saltype_zh_CN from '@locale/lanres/saltype/saltype_zh_CN';
+import pimexitandentry_zh_CN from '@locale/lanres/pim-exitandentry/pim-exitandentry_zh_CN';
+import pimnationmgr_zh_CN from '@locale/lanres/pim-nation-mgr/pim-nation-mgr_zh_CN';
+import trmlgbcost_zh_CN from '@locale/lanres/trm-lgb-cost/trm-lgb-cost_zh_CN';
+import pimachievements_zh_CN from '@locale/lanres/pim-achievements/pim-achievements_zh_CN';
+import pimenclosure_zh_CN from '@locale/lanres/pim-enclosure/pim-enclosure_zh_CN';
+import pimworkhistory_zh_CN from '@locale/lanres/pim-work-history/pim-work-history_zh_CN';
+import pcmxkml_zh_CN from '@locale/lanres/pcm-xkml/pcm-xkml_zh_CN';
+import pimexaminationresults_zh_CN from '@locale/lanres/pim-examination-results/pim-examination-results_zh_CN';
+import pimarchivesrecord_zh_CN from '@locale/lanres/pim-archives-record/pim-archives-record_zh_CN';
+import attendancemreportmx_zh_CN from '@locale/lanres/att-endance-mreportmx/att-endance-mreportmx_zh_CN';
+import pimarchivesmanage_zh_CN from '@locale/lanres/pim-archives-manage/pim-archives-manage_zh_CN';
+import pimarchives_zh_CN from '@locale/lanres/pim-archives/pim-archives_zh_CN';
+import vacleacetype_zh_CN from '@locale/lanres/vac-leace-type/vac-leace-type_zh_CN';
+import saltype_zh_CN from '@locale/lanres/sal-type/sal-type_zh_CN';
 import pimsearchfieldset_zh_CN from '@locale/lanres/pim-search-field-set/pim-search-field-set_zh_CN';
-import pimresearchfindings_zh_CN from '@locale/lanres/pimresearchfindings/pimresearchfindings_zh_CN';
-import archivescenter_zh_CN from '@locale/lanres/archivescenter/archivescenter_zh_CN';
-import pimdistirbution_zh_CN from '@locale/lanres/pimdistirbution/pimdistirbution_zh_CN';
+import pimresearchfindings_zh_CN from '@locale/lanres/pim-research-findings/pim-research-findings_zh_CN';
+import pimarchivescenter_zh_CN from '@locale/lanres/pim-archives-center/pim-archives-center_zh_CN';
+import pimdistirbution_zh_CN from '@locale/lanres/pim-distirbution/pim-distirbution_zh_CN';
 import dynadashboard_zh_CN from '@locale/lanres/dyna-dashboard/dyna-dashboard_zh_CN';
-import pimmajorsetype_zh_CN from '@locale/lanres/pimmajorsetype/pimmajorsetype_zh_CN';
+import pimmajorsetype_zh_CN from '@locale/lanres/pim-major-setype/pim-major-setype_zh_CN';
 import ormorgsector_zh_CN from '@locale/lanres/orm-orgsector/orm-orgsector_zh_CN';
 import dynachart_zh_CN from '@locale/lanres/dyna-chart/dyna-chart_zh_CN';
 import ormorg_zh_CN from '@locale/lanres/orm-org/orm-org_zh_CN';
 import codeitem_zh_CN from '@locale/lanres/code-item/code-item_zh_CN';
-import pimcontracttype_zh_CN from '@locale/lanres/pimcontracttype/pimcontracttype_zh_CN';
-import pcmjxsgz_zh_CN from '@locale/lanres/pcmjxsgz/pcmjxsgz_zh_CN';
-import pimpersonability_zh_CN from '@locale/lanres/pimperson-ability/pimperson-ability_zh_CN';
-import pimvocational_zh_CN from '@locale/lanres/pimvocational/pimvocational_zh_CN';
-import pimpaper_zh_CN from '@locale/lanres/pimpaper/pimpaper_zh_CN';
-import pimsocialsecurity_zh_CN from '@locale/lanres/pimsocialsecurity/pimsocialsecurity_zh_CN';
-import pimfilebatvhupload_zh_CN from '@locale/lanres/pimfilebatvhupload/pimfilebatvhupload_zh_CN';
-import pimoutput_zh_CN from '@locale/lanres/pimoutput/pimoutput_zh_CN';
-import pimvacation_zh_CN from '@locale/lanres/pimvacation/pimvacation_zh_CN';
-import pimarchiveschange_zh_CN from '@locale/lanres/pimarchiveschange/pimarchiveschange_zh_CN';
-import pimstafftype_zh_CN from '@locale/lanres/pimstafftype/pimstafftype_zh_CN';
-import pimqualtype_zh_CN from '@locale/lanres/pimqualtype/pimqualtype_zh_CN';
-import pimfaminfo_zh_CN from '@locale/lanres/pimfaminfo/pimfaminfo_zh_CN';
-import pimperson_zh_CN from '@locale/lanres/pimperson/pimperson_zh_CN';
-import pimtitlecatalogue_zh_CN from '@locale/lanres/pimtitlecatalogue/pimtitlecatalogue_zh_CN';
-import ormuser_zh_CN from '@locale/lanres/ormuser/ormuser_zh_CN';
-import pimpatent_zh_CN from '@locale/lanres/pimpatent/pimpatent_zh_CN';
-import pimlwgz_zh_CN from '@locale/lanres/pimlwgz/pimlwgz_zh_CN';
-import pimeducation_zh_CN from '@locale/lanres/pimeducation/pimeducation_zh_CN';
-import pimvocationalcatalog_zh_CN from '@locale/lanres/pimvocationalcatalog/pimvocationalcatalog_zh_CN';
-import pimcity_zh_CN from '@locale/lanres/pimcity/pimcity_zh_CN';
-import pcmreason_zh_CN from '@locale/lanres/pcmreason/pcmreason_zh_CN';
-import contractsignorg_zh_CN from '@locale/lanres/contract-sign-org/contract-sign-org_zh_CN';
-import ormrank_zh_CN from '@locale/lanres/ormrank/ormrank_zh_CN';
-import pimrewardpunishment_zh_CN from '@locale/lanres/pimrewardpunishment/pimrewardpunishment_zh_CN';
-import pimexpaccount_zh_CN from '@locale/lanres/pimexpaccount/pimexpaccount_zh_CN';
-import pimprovince_zh_CN from '@locale/lanres/pimprovince/pimprovince_zh_CN';
-import pcmrcxl_zh_CN from '@locale/lanres/pcmrcxl/pcmrcxl_zh_CN';
-import pimqualmajor_zh_CN from '@locale/lanres/pimqualmajor/pimqualmajor_zh_CN';
-import parjxndkhjg_zh_CN from '@locale/lanres/parjxndkhjg/parjxndkhjg_zh_CN';
-import pimcorrectionapply_zh_CN from '@locale/lanres/pimcorrectionapply/pimcorrectionapply_zh_CN';
-import archivalcatalogue_zh_CN from '@locale/lanres/archivalcatalogue/archivalcatalogue_zh_CN';
-import pimpersonchange_zh_CN from '@locale/lanres/pimpersonchange/pimpersonchange_zh_CN';
+import pimcontracttype_zh_CN from '@locale/lanres/pim-contract-type/pim-contract-type_zh_CN';
+import pcmjxsgz_zh_CN from '@locale/lanres/pcm-jxsgz/pcm-jxsgz_zh_CN';
+import pimpersonability_zh_CN from '@locale/lanres/pim-person-ability/pim-person-ability_zh_CN';
+import pimvocational_zh_CN from '@locale/lanres/pim-vocational/pim-vocational_zh_CN';
+import pimpaper_zh_CN from '@locale/lanres/pim-paper/pim-paper_zh_CN';
+import pimsocialsecurity_zh_CN from '@locale/lanres/pim-social-security/pim-social-security_zh_CN';
+import pimfilebatvhupload_zh_CN from '@locale/lanres/pim-filebatvhupload/pim-filebatvhupload_zh_CN';
+import pimoutput_zh_CN from '@locale/lanres/pim-output/pim-output_zh_CN';
+import pimvacation_zh_CN from '@locale/lanres/pim-vacation/pim-vacation_zh_CN';
+import pimarchiveschange_zh_CN from '@locale/lanres/pim-archives-change/pim-archives-change_zh_CN';
+import pimstafftype_zh_CN from '@locale/lanres/pim-stafftype/pim-stafftype_zh_CN';
+import pimqualtype_zh_CN from '@locale/lanres/pim-qual-type/pim-qual-type_zh_CN';
+import pimfaminfo_zh_CN from '@locale/lanres/pim-faminfo/pim-faminfo_zh_CN';
+import pimperson_zh_CN from '@locale/lanres/pim-person/pim-person_zh_CN';
+import pimtitlecatalogue_zh_CN from '@locale/lanres/pim-title-catalogue/pim-title-catalogue_zh_CN';
+import ormuser_zh_CN from '@locale/lanres/orm-user/orm-user_zh_CN';
+import pimpatent_zh_CN from '@locale/lanres/pim-patent/pim-patent_zh_CN';
+import pimlwgz_zh_CN from '@locale/lanres/pim-lwgz/pim-lwgz_zh_CN';
+import pimeducation_zh_CN from '@locale/lanres/pim-education/pim-education_zh_CN';
+import pimvocationalcatalog_zh_CN from '@locale/lanres/pim-vocational-catalog/pim-vocational-catalog_zh_CN';
+import pimcity_zh_CN from '@locale/lanres/pim-city/pim-city_zh_CN';
+import pcmreason_zh_CN from '@locale/lanres/pcm-reason/pcm-reason_zh_CN';
+import pimcontractsignorg_zh_CN from '@locale/lanres/pim-contract-sign-org/pim-contract-sign-org_zh_CN';
+import ormrank_zh_CN from '@locale/lanres/orm-rank/orm-rank_zh_CN';
+import pimrewardpunishment_zh_CN from '@locale/lanres/pim-reward-punishment/pim-reward-punishment_zh_CN';
+import pimexpaccount_zh_CN from '@locale/lanres/pim-expaccount/pim-expaccount_zh_CN';
+import pimprovince_zh_CN from '@locale/lanres/pim-province/pim-province_zh_CN';
+import pcmrcxl_zh_CN from '@locale/lanres/pcm-rcxl/pcm-rcxl_zh_CN';
+import pimqualmajor_zh_CN from '@locale/lanres/pim-qual-major/pim-qual-major_zh_CN';
+import parjxndkhjg_zh_CN from '@locale/lanres/par-jxndkhjg/par-jxndkhjg_zh_CN';
+import pimcorrectionapply_zh_CN from '@locale/lanres/pim-correction-apply/pim-correction-apply_zh_CN';
+import pimarchivalcatalogue_zh_CN from '@locale/lanres/pim-archival-catalogue/pim-archival-catalogue_zh_CN';
+import pimpersonchange_zh_CN from '@locale/lanres/pim-person-change/pim-person-change_zh_CN';
 import personstatemgr_zh_CN from '@locale/lanres/person-state-mgr/person-state-mgr_zh_CN';
-import pimarchivesloanandreturn_zh_CN from '@locale/lanres/pimarchivesloanandreturn/pimarchivesloanandreturn_zh_CN';
-import pimgwtype_zh_CN from '@locale/lanres/pimgwtype/pimgwtype_zh_CN';
+import pimarchivesloanandreturn_zh_CN from '@locale/lanres/pim-archive-sloanandreturn/pim-archive-sloanandreturn_zh_CN';
+import pimgwtype_zh_CN from '@locale/lanres/pim-gw-type/pim-gw-type_zh_CN';
 import pimsearchmodal_zh_CN from '@locale/lanres/pim-search-modal/pim-search-modal_zh_CN';
-import pimtitle_zh_CN from '@locale/lanres/pimtitle/pimtitle_zh_CN';
-import pimlanguageability_zh_CN from '@locale/lanres/pimlanguageability/pimlanguageability_zh_CN';
-import pimlabourcampany_zh_CN from '@locale/lanres/pimlabourcampany/pimlabourcampany_zh_CN';
+import pimtitle_zh_CN from '@locale/lanres/pim-title/pim-title_zh_CN';
+import pimlanguageability_zh_CN from '@locale/lanres/pim-language-ability/pim-language-ability_zh_CN';
+import pimlabourcampany_zh_CN from '@locale/lanres/pim-labourcampany/pim-labourcampany_zh_CN';
 import codelist1_zh_CN from '@locale/lanres/code-list1/code-list1_zh_CN';
-import pimpersonabilitydetail_zh_CN from '@locale/lanres/pimperson-ability-detail/pimperson-ability-detail_zh_CN';
-import trmtrianperson_zh_CN from '@locale/lanres/trmtrianperson/trmtrianperson_zh_CN';
+import pimpersonabilitydetail_zh_CN from '@locale/lanres/pim-person-ability-detail/pim-person-ability-detail_zh_CN';
+import trmtrainperson_zh_CN from '@locale/lanres/trm-train-person/trm-train-person_zh_CN';
 import components_zh_CN from '@locale/lanres/components/components_zh_CN';
 import codelist_zh_CN from '@locale/lanres/codelist/codelist_zh_CN';
 import userCustom_zh_CN from '@locale/lanres/userCustom/userCustom_zh_CN';
@@ -188,7 +188,7 @@ export default {
         pimcontract: pimcontract_zh_CN,
         ormsignorg: ormsignorg_zh_CN,
         pimexitandentry: pimexitandentry_zh_CN,
-        nationmgr: nationmgr_zh_CN,
+        pimnationmgr: pimnationmgr_zh_CN,
         trmlgbcost: trmlgbcost_zh_CN,
         pimachievements: pimachievements_zh_CN,
         pimenclosure: pimenclosure_zh_CN,
@@ -197,13 +197,13 @@ export default {
         pimexaminationresults: pimexaminationresults_zh_CN,
         pimarchivesrecord: pimarchivesrecord_zh_CN,
         attendancemreportmx: attendancemreportmx_zh_CN,
-        archivesmanage: archivesmanage_zh_CN,
+        pimarchivesmanage: pimarchivesmanage_zh_CN,
         pimarchives: pimarchives_zh_CN,
         vacleacetype: vacleacetype_zh_CN,
         saltype: saltype_zh_CN,
         pimsearchfieldset: pimsearchfieldset_zh_CN,
         pimresearchfindings: pimresearchfindings_zh_CN,
-        archivescenter: archivescenter_zh_CN,
+        pimarchivescenter: pimarchivescenter_zh_CN,
         pimdistirbution: pimdistirbution_zh_CN,
         dynadashboard: dynadashboard_zh_CN,
         pimmajorsetype: pimmajorsetype_zh_CN,
@@ -233,7 +233,7 @@ export default {
         pimvocationalcatalog: pimvocationalcatalog_zh_CN,
         pimcity: pimcity_zh_CN,
         pcmreason: pcmreason_zh_CN,
-        contractsignorg: contractsignorg_zh_CN,
+        pimcontractsignorg: pimcontractsignorg_zh_CN,
         ormrank: ormrank_zh_CN,
         pimrewardpunishment: pimrewardpunishment_zh_CN,
         pimexpaccount: pimexpaccount_zh_CN,
@@ -242,7 +242,7 @@ export default {
         pimqualmajor: pimqualmajor_zh_CN,
         parjxndkhjg: parjxndkhjg_zh_CN,
         pimcorrectionapply: pimcorrectionapply_zh_CN,
-        archivalcatalogue: archivalcatalogue_zh_CN,
+        pimarchivalcatalogue: pimarchivalcatalogue_zh_CN,
         pimpersonchange: pimpersonchange_zh_CN,
         personstatemgr: personstatemgr_zh_CN,
         pimarchivesloanandreturn: pimarchivesloanandreturn_zh_CN,
@@ -253,7 +253,7 @@ export default {
         pimlabourcampany: pimlabourcampany_zh_CN,
         codelist1: codelist1_zh_CN,
         pimpersonabilitydetail: pimpersonabilitydetail_zh_CN,
-        trmtrianperson: trmtrianperson_zh_CN,
+        trmtrainperson: trmtrainperson_zh_CN,
     },
     components: components_zh_CN,
     codelist: codelist_zh_CN,

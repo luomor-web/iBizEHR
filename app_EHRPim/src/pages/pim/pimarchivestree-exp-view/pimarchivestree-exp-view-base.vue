@@ -32,7 +32,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, TreeExpViewBase } from '@/crm-core';
-import PIMARCHIVESService from '@/service/pimarchives/pimarchives-service';
+import PimArchivesService from '@/service/pim-archives/pim-archives-service';
 
 import TreeExpViewEngine from '@engine/view/tree-exp-view-engine';
 
@@ -51,10 +51,10 @@ export default class PIMARCHIVESTreeExpViewBase extends TreeExpViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMARCHIVESService}
+     * @type {PimArchivesService}
      * @memberof PIMARCHIVESTreeExpViewBase
      */
-    public appEntityService: PIMARCHIVESService = new PIMARCHIVESService;
+    public appEntityService: PimArchivesService = new PimArchivesService;
 
 
     /**

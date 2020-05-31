@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMDUTYOrmOrgSectorPickupViewBase from './ormdutyorm-org-sector-pickup-view-base.vue';
 
-import view_pickupviewpanel from '@widgets/ormduty/orm-org-sector-pickup-viewpickupviewpanel-pickupviewpanel/orm-org-sector-pickup-viewpickupviewpanel-pickupviewpanel.vue';
+import view_pickupviewpanel from '@widgets/orm-duty/orm-org-sector-pickup-viewpickupviewpanel-pickupviewpanel/orm-org-sector-pickup-viewpickupviewpanel-pickupviewpanel.vue';
 
 /**
  * 职务库

@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import ARCHIVESCENTERService from '@/service/archivescenter/archivescenter-service';
+import PimArchivesCenterService from '@/service/pim-archives-center/pim-archives-center-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class ARCHIVESCENTERGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ARCHIVESCENTERService}
+     * @type {PimArchivesCenterService}
      * @memberof ARCHIVESCENTERGridViewBase
      */
-    public appEntityService: ARCHIVESCENTERService = new ARCHIVESCENTERService;
+    public appEntityService: PimArchivesCenterService = new PimArchivesCenterService;
 
 
     /**
@@ -158,9 +158,9 @@ export default class ARCHIVESCENTERGridViewBase extends GridViewBase {
      * @memberof ARCHIVESCENTERGridViewBase
      */
     public model: any = {
-        srfCaption: 'entities.archivescenter.views.gridview.caption',
-        srfTitle: 'entities.archivescenter.views.gridview.title',
-        srfSubTitle: 'entities.archivescenter.views.gridview.subtitle',
+        srfCaption: 'entities.pimarchivescenter.views.gridview.caption',
+        srfTitle: 'entities.pimarchivescenter.views.gridview.title',
+        srfSubTitle: 'entities.pimarchivescenter.views.gridview.subtitle',
         dataInfo: ''
     }
 
@@ -234,7 +234,7 @@ export default class ARCHIVESCENTERGridViewBase extends GridViewBase {
             },
             grid: this.$refs.grid,
             searchform: this.$refs.searchform,
-            keyPSDEField: 'archivescenter',
+            keyPSDEField: 'pimarchivescenter',
             majorPSDEField: 'position',
             isLoadDefault: true,
         });
@@ -390,7 +390,7 @@ export default class ARCHIVESCENTERGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESCENTER");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesCenter");
     }
 
     /**
@@ -419,7 +419,7 @@ export default class ARCHIVESCENTERGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESCENTER");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesCenter");
     }
 
     /**
@@ -448,7 +448,7 @@ export default class ARCHIVESCENTERGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESCENTER");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesCenter");
     }
 
     /**
@@ -477,7 +477,7 @@ export default class ARCHIVESCENTERGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESCENTER");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesCenter");
     }
 
     /**
@@ -506,7 +506,7 @@ export default class ARCHIVESCENTERGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESCENTER");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesCenter");
     }
 
     /**
@@ -530,7 +530,7 @@ export default class ARCHIVESCENTERGridViewBase extends GridViewBase {
         }
         const deResParameters: any[] = [];
         const parameters: any[] = [
-            { pathName: 'archivescenters', parameterName: 'archivescenter' },
+            { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
             { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;
@@ -562,7 +562,7 @@ export default class ARCHIVESCENTERGridViewBase extends GridViewBase {
         }
         const deResParameters: any[] = [];
         const parameters: any[] = [
-            { pathName: 'archivescenters', parameterName: 'archivescenter' },
+            { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
             { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;

@@ -3,7 +3,7 @@ import ControlService from '@/widgets/control-service';
 import OrmOrgsectorService from '@/service/orm-orgsector/orm-orgsector-service';
 import MainModel from './main-form-model';
 import OrmOrgService from '@/service/orm-org/orm-org-service';
-import PIMPERSONService from '@/service/pimperson/pimperson-service';
+import PimPersonService from '@/service/pim-person/pim-person-service';
 
 
 /**
@@ -54,10 +54,10 @@ export default class MainService extends ControlService {
     /**
      * 人员信息服务对象
      *
-     * @type {PIMPERSONService}
+     * @type {PimPersonService}
      * @memberof MainService
      */
-    public pimpersonService: PIMPERSONService = new PIMPERSONService();
+    public pimpersonService: PimPersonService = new PimPersonService();
 
     /**
      * 处理数据
@@ -101,7 +101,7 @@ export default class MainService extends ControlService {
         if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchKZXLXZ')) {
             return this.doItems(this.ormorgService.FetchKZXLXZ(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
         }
-        if (Object.is(serviceName, 'PIMPERSONService') && Object.is(interfaceName, 'FetchCurLeader')) {
+        if (Object.is(serviceName, 'PimPersonService') && Object.is(interfaceName, 'FetchCurLeader')) {
             return this.doItems(this.pimpersonService.FetchCurLeader(JSON.parse(JSON.stringify(context)),data, isloading), 'pimpersonid', 'pimperson');
         }
 

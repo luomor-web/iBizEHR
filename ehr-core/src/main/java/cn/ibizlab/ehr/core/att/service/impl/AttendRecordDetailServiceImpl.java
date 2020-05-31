@@ -46,7 +46,7 @@ public class AttendRecordDetailServiceImpl extends ServiceImpl<AttendRecordDetai
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDANCERECORDService attendancerecordService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndanceRecordService attendancerecordService;
 
     private int batchSize = 500;
 
@@ -181,9 +181,9 @@ public class AttendRecordDetailServiceImpl extends ServiceImpl<AttendRecordDetai
     private void fillParentData(AttendRecordDetail et){
         //实体关系[DER1N_ATTENDRECORDDETAIL_ATTENDANCERECORD_ATTENDANCERECORDID]
         if(!ObjectUtils.isEmpty(et.getAttendancerecordid())){
-            cn.ibizlab.ehr.core.att.domain.ATTENDANCERECORD attendancerecord=et.getAttendancerecord();
+            cn.ibizlab.ehr.core.att.domain.AttEndanceRecord attendancerecord=et.getAttendancerecord();
             if(ObjectUtils.isEmpty(attendancerecord)){
-                cn.ibizlab.ehr.core.att.domain.ATTENDANCERECORD majorEntity=attendancerecordService.get(et.getAttendancerecordid());
+                cn.ibizlab.ehr.core.att.domain.AttEndanceRecord majorEntity=attendancerecordService.get(et.getAttendancerecordid());
                 et.setAttendancerecord(majorEntity);
                 attendancerecord=majorEntity;
             }

@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMPERSONTXRYPickupGridViewBase from './pimpersontxrypickup-grid-view-base.vue';
 
-import view_grid from '@widgets/pimperson/txlxyg-grid/txlxyg-grid.vue';
-import view_searchform from '@widgets/pimperson/txrysearch-form-searchform/txrysearch-form-searchform.vue';
+import view_grid from '@widgets/pim-person/txlxyg-grid/txlxyg-grid.vue';
+import view_searchform from '@widgets/pim-person/txrysearch-form-searchform/txrysearch-form-searchform.vue';
 
 /**
  * 退休人员

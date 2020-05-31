@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMCONTRACTStopTimeSelectEditViewBase from './pimcontractstop-time-select-edit-view-base.vue';
 
-import view_form from '@widgets/pimcontract/stoptime-select-form/stoptime-select-form.vue';
+import view_form from '@widgets/pim-contract/stoptime-select-form/stoptime-select-form.vue';
 
 /**
  * 合同信息编辑视图

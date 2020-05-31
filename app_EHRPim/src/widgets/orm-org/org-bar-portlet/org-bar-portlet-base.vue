@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet org-bar' :style="{'height': isAdaptiveSize ? 'clac(100% - 16px)' : '932px',}">
+    <div class='portlet org-bar ' :style="{'height': isAdaptiveSize ? 'clac(100% - 16px)' : '932px',}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_db_sysportlet1_chart 
@@ -141,11 +141,12 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
 
 
 
+
     /**
      * 是否自适应大小
      *
      * @returns {boolean}
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     @Prop({default: false})public isAdaptiveSize!: boolean;
 
@@ -153,7 +154,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     public getDatas(): any[] {
         return [];
@@ -163,7 +164,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     public getData(): any {
         return {};
@@ -172,7 +173,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     public created() {
         this.afterCreated();
@@ -181,7 +182,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
     /**
      * 执行created后的逻辑
      *
-     *  @memberof OrgBar
+     *  @memberof OrgBarBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -200,7 +201,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -209,7 +210,7 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof OrgBar
+     * @memberof OrgBarBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {

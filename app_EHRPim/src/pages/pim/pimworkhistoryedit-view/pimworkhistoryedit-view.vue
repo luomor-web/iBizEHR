@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMWORKHISTORYEditViewBase from './pimworkhistoryedit-view-base.vue';
 
-import view_form from '@widgets/pimworkhistory/main-form/main-form.vue';
+import view_form from '@widgets/pim-work-history/main-form/main-form.vue';
 
 /**
  * 工作履历编辑视图

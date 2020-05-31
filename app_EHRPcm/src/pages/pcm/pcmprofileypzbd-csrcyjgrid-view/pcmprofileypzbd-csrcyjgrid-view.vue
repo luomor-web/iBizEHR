@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PCMPROFILEYPZBD_CSRCYJGridViewBase from './pcmprofileypzbd-csrcyjgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmprofile/ypzbd-csrcyj-grid/ypzbd-csrcyj-grid.vue';
-import view_searchform from '@widgets/pcmprofile/serach-nlyry-csrcyj-searchform/serach-nlyry-csrcyj-searchform.vue';
+import view_grid from '@widgets/pcm-profile/ypzbd-csrcyj-grid/ypzbd-csrcyj-grid.vue';
+import view_searchform from '@widgets/pcm-profile/serach-nlyry-csrcyj-searchform/serach-nlyry-csrcyj-searchform.vue';
 
 /**
  * 拟录用人员

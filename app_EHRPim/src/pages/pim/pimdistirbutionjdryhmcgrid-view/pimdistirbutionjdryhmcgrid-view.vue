@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMDISTIRBUTIONJDRYHMCGridViewBase from './pimdistirbutionjdryhmcgrid-view-base.vue';
 
-import view_grid from '@widgets/pimdistirbution/maturity-due-grid-2-grid/maturity-due-grid-2-grid.vue';
-import view_searchform from '@widgets/pimdistirbution/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-distirbution/maturity-due-grid-2-grid/maturity-due-grid-2-grid.vue';
+import view_searchform from '@widgets/pim-distirbution/default-searchform/default-searchform.vue';
 
 /**
  * 借调人员花名册

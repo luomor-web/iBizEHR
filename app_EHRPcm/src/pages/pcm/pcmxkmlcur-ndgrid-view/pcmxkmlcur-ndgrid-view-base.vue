@@ -44,7 +44,7 @@
     loaddraftAction="GetDraft"
     loadAction="Get"
     createAction="Create"
-    fetchAction="FetchCurND"
+    fetchAction="FetchDefault"
     :newdata="newdata"
     :opendata="opendata"
     name="grid"  
@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PCMXKMLService from '@/service/pcmxkml/pcmxkml-service';
+import PcmXkmlService from '@/service/pcm-xkml/pcm-xkml-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PCMXKMLCurNDGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMXKMLService}
+     * @type {PcmXkmlService}
      * @memberof PCMXKMLCurNDGridViewBase
      */
-    public appEntityService: PCMXKMLService = new PCMXKMLService;
+    public appEntityService: PcmXkmlService = new PcmXkmlService;
 
 
     /**
@@ -390,7 +390,7 @@ export default class PCMXKMLCurNDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PCMXKML");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PcmXkml");
     }
 
     /**
@@ -419,7 +419,7 @@ export default class PCMXKMLCurNDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PCMXKML");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PcmXkml");
     }
 
     /**
@@ -448,7 +448,7 @@ export default class PCMXKMLCurNDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PCMXKML");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PcmXkml");
     }
 
     /**
@@ -477,7 +477,7 @@ export default class PCMXKMLCurNDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PCMXKML");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PcmXkml");
     }
 
     /**
@@ -506,7 +506,7 @@ export default class PCMXKMLCurNDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PCMXKML");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PcmXkml");
     }
 
     /**

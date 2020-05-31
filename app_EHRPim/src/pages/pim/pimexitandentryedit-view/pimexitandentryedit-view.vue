@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMEXITANDENTRYEditViewBase from './pimexitandentryedit-view-base.vue';
 
-import view_form from '@widgets/pimexitandentry/ckyjl-form/ckyjl-form.vue';
+import view_form from '@widgets/pim-exitandentry/ckyjl-form/ckyjl-form.vue';
 
 /**
  * 出（国）境管理编辑视图

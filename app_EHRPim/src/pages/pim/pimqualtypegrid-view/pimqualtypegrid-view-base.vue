@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMQUALTYPEService from '@/service/pimqualtype/pimqualtype-service';
+import PimQualTypeService from '@/service/pim-qual-type/pim-qual-type-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMQUALTYPEService}
+     * @type {PimQualTypeService}
      * @memberof PIMQUALTYPEGridViewBase
      */
-    public appEntityService: PIMQUALTYPEService = new PIMQUALTYPEService;
+    public appEntityService: PimQualTypeService = new PimQualTypeService;
 
 
     /**
@@ -390,7 +390,7 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PimQualType");
     }
 
     /**
@@ -419,7 +419,7 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PimQualType");
     }
 
     /**
@@ -448,7 +448,7 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimQualType");
     }
 
     /**
@@ -477,7 +477,7 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimQualType");
     }
 
     /**
@@ -506,7 +506,7 @@ export default class PIMQUALTYPEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMQUALTYPE");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimQualType");
     }
 
     /**

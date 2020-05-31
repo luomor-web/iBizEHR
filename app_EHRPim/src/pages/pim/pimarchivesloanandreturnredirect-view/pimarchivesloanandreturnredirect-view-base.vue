@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMARCHIVESLOANANDRETURNService from '@/service/pimarchivesloanandreturn/pimarchivesloanandreturn-service';
+import PimArchiveSloanandreturnService from '@/service/pim-archive-sloanandreturn/pim-archive-sloanandreturn-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMARCHIVESLOANANDRETURNRedirectViewBase extends WizardView
     /**
      * 实体服务对象
      *
-     * @type {PIMARCHIVESLOANANDRETURNService}
+     * @type {PimArchiveSloanandreturnService}
      * @memberof PIMARCHIVESLOANANDRETURNRedirectViewBase
      */
-    public appEntityService: PIMARCHIVESLOANANDRETURNService = new PIMARCHIVESLOANANDRETURNService;
+    public appEntityService: PimArchiveSloanandreturnService = new PimArchiveSloanandreturnService;
 
 
     /**

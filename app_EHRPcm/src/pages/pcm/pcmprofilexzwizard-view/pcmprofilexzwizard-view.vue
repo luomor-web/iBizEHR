@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMPROFILEXZWizardViewBase from './pcmprofilexzwizard-view-base.vue';
 
-import view_wizardpanel from '@widgets/pcmprofile/xd-xz-wizardpanel/xd-xz-wizardpanel.vue';
+import view_wizardpanel from '@widgets/pcm-profile/xd-xz-wizardpanel/xd-xz-wizardpanel.vue';
 
 /**
  * 校招应聘者信息录入向导

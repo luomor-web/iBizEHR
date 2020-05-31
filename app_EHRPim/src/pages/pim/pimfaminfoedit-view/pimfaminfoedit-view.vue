@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMFAMINFOEditViewBase from './pimfaminfoedit-view-base.vue';
 
-import view_form from '@widgets/pimfaminfo/main-form/main-form.vue';
+import view_form from '@widgets/pim-faminfo/main-form/main-form.vue';
 
 /**
  * 家庭情况编辑视图

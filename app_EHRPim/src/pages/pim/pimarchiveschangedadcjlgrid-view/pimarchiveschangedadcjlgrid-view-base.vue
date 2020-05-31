@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMARCHIVESCHANGEService from '@/service/pimarchiveschange/pimarchiveschange-service';
+import PimArchivesChangeService from '@/service/pim-archives-change/pim-archives-change-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMARCHIVESCHANGEDADCJLGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMARCHIVESCHANGEService}
+     * @type {PimArchivesChangeService}
      * @memberof PIMARCHIVESCHANGEDADCJLGridViewBase
      */
-    public appEntityService: PIMARCHIVESCHANGEService = new PIMARCHIVESCHANGEService;
+    public appEntityService: PimArchivesChangeService = new PimArchivesChangeService;
 
 
     /**
@@ -378,7 +378,7 @@ export default class PIMARCHIVESCHANGEDADCJLGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESCHANGE");
+        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesChange");
     }
 
     /**
@@ -407,7 +407,7 @@ export default class PIMARCHIVESCHANGEDADCJLGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESCHANGE");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesChange");
     }
 
     /**
@@ -436,7 +436,7 @@ export default class PIMARCHIVESCHANGEDADCJLGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESCHANGE");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesChange");
     }
 
     /**

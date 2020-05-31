@@ -125,6 +125,13 @@ export class Interceptors {
      * @memberof Interceptors
      */
     private doNoLogin(data: any = {}): void {
+        // 清除user和token
+        if(localStorage.getItem('user')){
+            localStorage.removeItem('user');
+        }
+        if(localStorage.getItem('token')){
+            localStorage.removeItem('token');
+        }
         if (data.loginurl && !Object.is(data.loginurl, '') && data.originurl && !Object.is(data.originurl, '')) {
             let _url = encodeURIComponent(encodeURIComponent(window.location.href));
             let loginurl: string = data.loginurl;

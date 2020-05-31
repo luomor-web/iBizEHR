@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.orm.service.IOrmRelationService;
 import cn.ibizlab.ehr.core.orm.filter.OrmRelationSearchContext;
 
 @Slf4j
-@Api(tags = {"OrmRelation" })
+@Api(tags = {"组织管理关系表" })
 @RestController("WebApi-ormrelation")
 @RequestMapping("")
 public class OrmRelationResource {
@@ -47,7 +47,7 @@ public class OrmRelationResource {
     public OrmRelationMapping ormrelationMapping;
 
     @PreAuthorize("hasPermission(this.ormrelationMapping.toDomain(#ormrelationdto),'ehr-OrmRelation-Create')")
-    @ApiOperation(value = "Create", tags = {"OrmRelation" },  notes = "Create")
+    @ApiOperation(value = "新建组织管理关系表", tags = {"组织管理关系表" },  notes = "新建组织管理关系表")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormrelations")
     @Transactional
     public ResponseEntity<OrmRelationDTO> create(@RequestBody OrmRelationDTO ormrelationdto) {
@@ -58,7 +58,7 @@ public class OrmRelationResource {
     }
 
     @PreAuthorize("hasPermission(this.ormrelationMapping.toDomain(#ormrelationdtos),'ehr-OrmRelation-Create')")
-    @ApiOperation(value = "createBatch", tags = {"OrmRelation" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建组织管理关系表", tags = {"组织管理关系表" },  notes = "批量新建组织管理关系表")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormrelations/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrmRelationDTO> ormrelationdtos) {
         ormrelationService.createBatch(ormrelationMapping.toDomain(ormrelationdtos));
@@ -66,7 +66,7 @@ public class OrmRelationResource {
     }
 
     @PreAuthorize("hasPermission(this.ormrelationService.get(#ormrelation_id),'ehr-OrmRelation-Update')")
-    @ApiOperation(value = "Update", tags = {"OrmRelation" },  notes = "Update")
+    @ApiOperation(value = "更新组织管理关系表", tags = {"组织管理关系表" },  notes = "更新组织管理关系表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormrelations/{ormrelation_id}")
     @Transactional
     public ResponseEntity<OrmRelationDTO> update(@PathVariable("ormrelation_id") String ormrelation_id, @RequestBody OrmRelationDTO ormrelationdto) {
@@ -78,7 +78,7 @@ public class OrmRelationResource {
     }
 
     @PreAuthorize("hasPermission(this.ormrelationService.getOrmrelationByEntities(this.ormrelationMapping.toDomain(#ormrelationdtos)),'ehr-OrmRelation-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"OrmRelation" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新组织管理关系表", tags = {"组织管理关系表" },  notes = "批量更新组织管理关系表")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormrelations/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrmRelationDTO> ormrelationdtos) {
         ormrelationService.updateBatch(ormrelationMapping.toDomain(ormrelationdtos));
@@ -86,7 +86,7 @@ public class OrmRelationResource {
     }
 
     @PostAuthorize("hasPermission(this.ormrelationMapping.toDomain(returnObject.body),'ehr-OrmRelation-Get')")
-    @ApiOperation(value = "Get", tags = {"OrmRelation" },  notes = "Get")
+    @ApiOperation(value = "获取组织管理关系表", tags = {"组织管理关系表" },  notes = "获取组织管理关系表")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormrelations/{ormrelation_id}")
     public ResponseEntity<OrmRelationDTO> get(@PathVariable("ormrelation_id") String ormrelation_id) {
         OrmRelation domain = ormrelationService.get(ormrelation_id);
@@ -95,7 +95,7 @@ public class OrmRelationResource {
     }
 
     @PreAuthorize("hasPermission(this.ormrelationService.get(#ormrelation_id),'ehr-OrmRelation-Remove')")
-    @ApiOperation(value = "Remove", tags = {"OrmRelation" },  notes = "Remove")
+    @ApiOperation(value = "删除组织管理关系表", tags = {"组织管理关系表" },  notes = "删除组织管理关系表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormrelations/{ormrelation_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("ormrelation_id") String ormrelation_id) {
@@ -103,34 +103,34 @@ public class OrmRelationResource {
     }
 
     @PreAuthorize("hasPermission(this.ormrelationService.getOrmrelationByIds(#ids),'ehr-OrmRelation-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"OrmRelation" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除组织管理关系表", tags = {"组织管理关系表" },  notes = "批量删除组织管理关系表")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormrelations/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         ormrelationService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"OrmRelation" },  notes = "GetDraft")
+    @ApiOperation(value = "获取组织管理关系表草稿", tags = {"组织管理关系表" },  notes = "获取组织管理关系表草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormrelations/getdraft")
     public ResponseEntity<OrmRelationDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormrelationMapping.toDto(ormrelationService.getDraft(new OrmRelation())));
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"OrmRelation" },  notes = "CheckKey")
+    @ApiOperation(value = "检查组织管理关系表", tags = {"组织管理关系表" },  notes = "检查组织管理关系表")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormrelations/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody OrmRelationDTO ormrelationdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormrelationService.checkKey(ormrelationMapping.toDomain(ormrelationdto)));
     }
 
     @PreAuthorize("hasPermission(this.ormrelationMapping.toDomain(#ormrelationdto),'ehr-OrmRelation-Save')")
-    @ApiOperation(value = "Save", tags = {"OrmRelation" },  notes = "Save")
+    @ApiOperation(value = "保存组织管理关系表", tags = {"组织管理关系表" },  notes = "保存组织管理关系表")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormrelations/save")
     public ResponseEntity<Boolean> save(@RequestBody OrmRelationDTO ormrelationdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormrelationService.save(ormrelationMapping.toDomain(ormrelationdto)));
     }
 
     @PreAuthorize("hasPermission(this.ormrelationMapping.toDomain(#ormrelationdtos),'ehr-OrmRelation-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"OrmRelation" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存组织管理关系表", tags = {"组织管理关系表" },  notes = "批量保存组织管理关系表")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormrelations/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<OrmRelationDTO> ormrelationdtos) {
         ormrelationService.saveBatch(ormrelationMapping.toDomain(ormrelationdtos));
@@ -138,7 +138,7 @@ public class OrmRelationResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmRelation-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"OrmRelation" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"组织管理关系表" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormrelations/fetchdefault")
 	public ResponseEntity<List<OrmRelationDTO>> fetchDefault(OrmRelationSearchContext context) {
         Page<OrmRelation> domains = ormrelationService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class OrmRelationResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmRelation-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"OrmRelation" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询DEFAULT", tags = {"组织管理关系表" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormrelations/searchdefault")
 	public ResponseEntity<Page<OrmRelationDTO>> searchDefault(@RequestBody OrmRelationSearchContext context) {
         Page<OrmRelation> domains = ormrelationService.searchDefault(context) ;

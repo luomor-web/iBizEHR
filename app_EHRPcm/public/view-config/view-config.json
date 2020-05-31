@@ -19,7 +19,7 @@
     },
     "ormpostejormorgidpickupview": {
         "title": "岗位管理数据选择视图",
-        "caption": "岗位集",
+        "caption": "岗位",
         "viewtype": "DEPICKUPVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMPOSTEJORMORGIDPickupView",
@@ -94,7 +94,7 @@
         "caption": "高校名录",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "PCM",
-        "viewname": "PCMGXMLCurNDGridView",
+        "viewname": "PcmGxmlCurNDGridView",
         "viewtag": "16f45c559b919f73db542c707116ce73",
         "memo": "系统自动添加"
     },

@@ -47,11 +47,11 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMEXITANDENTRYService from '@/service/pimexitandentry/pimexitandentry-service';
+import PimExitandentryService from '@/service/pim-exitandentry/pim-exitandentry-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
-import PIMEXITANDENTRYUIService from '@/uiservice/pimexitandentry/pimexitandentry-ui-service';
+import PimExitandentryUIService from '@/uiservice/pim-exitandentry/pim-exitandentry-ui-service';
 
 /**
  * 出（国）境基本信息基类
@@ -67,10 +67,10 @@ export default class PIMEXITANDENTRYEditView_SPZBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMEXITANDENTRYService}
+     * @type {PimExitandentryService}
      * @memberof PIMEXITANDENTRYEditView_SPZBase
      */
-    public appEntityService: PIMEXITANDENTRYService = new PIMEXITANDENTRYService;
+    public appEntityService: PimExitandentryService = new PimExitandentryService;
 
 
     /**
@@ -290,8 +290,8 @@ export default class PIMEXITANDENTRYEditView_SPZBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:PIMEXITANDENTRYUIService  = new PIMEXITANDENTRYUIService();
-        curUIService.PIMEXITANDENTRY_CX(datas,contextJO, paramJO,  $event, xData,this,"PIMEXITANDENTRY");
+        const curUIService:PimExitandentryUIService  = new PimExitandentryUIService();
+        curUIService.PimExitandentry_CX(datas,contextJO, paramJO,  $event, xData,this,"PimExitandentry");
     }
 
     /**
@@ -320,8 +320,8 @@ export default class PIMEXITANDENTRYEditView_SPZBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:PIMEXITANDENTRYUIService  = new PIMEXITANDENTRYUIService();
-        curUIService.PIMEXITANDENTRY_CB(datas,contextJO, paramJO,  $event, xData,this,"PIMEXITANDENTRY");
+        const curUIService:PimExitandentryUIService  = new PimExitandentryUIService();
+        curUIService.PimExitandentry_CB(datas,contextJO, paramJO,  $event, xData,this,"PimExitandentry");
     }
 
     /**
@@ -350,7 +350,7 @@ export default class PIMEXITANDENTRYEditView_SPZBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"PIMEXITANDENTRY");
+        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"PimExitandentry");
     }
 
     /**

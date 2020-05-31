@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMTITLEService from '@/service/pimtitle/pimtitle-service';
+import PimTitleService from '@/service/pim-title/pim-title-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMTITLEEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMTITLEService}
+     * @type {PimTitleService}
      * @memberof PIMTITLEEditViewBase
      */
-    public appEntityService: PIMTITLEService = new PIMTITLEService;
+    public appEntityService: PimTitleService = new PimTitleService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PIMTITLEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMTITLE");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimTitle");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PIMTITLEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMTITLE");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimTitle");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PIMTITLEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMTITLE");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimTitle");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PIMTITLEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMTITLE");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimTitle");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PIMTITLEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMTITLE");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimTitle");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PIMTITLEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMTITLE");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimTitle");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PIMTITLEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMTITLE");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimTitle");
     }
 
     /**

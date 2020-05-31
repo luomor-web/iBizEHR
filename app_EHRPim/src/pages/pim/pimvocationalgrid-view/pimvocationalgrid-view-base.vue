@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMVOCATIONALService from '@/service/pimvocational/pimvocational-service';
+import PimVocationalService from '@/service/pim-vocational/pim-vocational-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMVOCATIONALGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMVOCATIONALService}
+     * @type {PimVocationalService}
      * @memberof PIMVOCATIONALGridViewBase
      */
-    public appEntityService: PIMVOCATIONALService = new PIMVOCATIONALService;
+    public appEntityService: PimVocationalService = new PimVocationalService;
 
 
     /**
@@ -393,7 +393,7 @@ export default class PIMVOCATIONALGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.New(datas, contextJO,paramJO,  $event, xData,this,"PIMVOCATIONAL");
+        this.New(datas, contextJO,paramJO,  $event, xData,this,"PimVocational");
     }
 
     /**
@@ -422,7 +422,7 @@ export default class PIMVOCATIONALGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMVOCATIONAL");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimVocational");
     }
 
     /**
@@ -451,7 +451,7 @@ export default class PIMVOCATIONALGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PIMVOCATIONAL");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PimVocational");
     }
 
     /**
@@ -480,7 +480,7 @@ export default class PIMVOCATIONALGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMVOCATIONAL");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimVocational");
     }
 
     /**
@@ -509,7 +509,7 @@ export default class PIMVOCATIONALGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMVOCATIONAL");
+        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PimVocational");
     }
 
     /**
@@ -538,7 +538,7 @@ export default class PIMVOCATIONALGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMVOCATIONAL");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimVocational");
     }
 
     /**

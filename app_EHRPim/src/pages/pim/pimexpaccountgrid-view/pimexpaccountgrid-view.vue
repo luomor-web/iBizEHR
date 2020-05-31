@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMEXPACCOUNTGridViewBase from './pimexpaccountgrid-view-base.vue';
 
-import view_grid from '@widgets/pimexpaccount/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pimexpaccount/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-expaccount/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pim-expaccount/default-searchform/default-searchform.vue';
 
 /**
  * 费用台账表格视图

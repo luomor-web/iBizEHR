@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMSTAFFTYPEService from '@/service/pimstafftype/pimstafftype-service';
+import PimStafftypeService from '@/service/pim-stafftype/pim-stafftype-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMSTAFFTYPERedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMSTAFFTYPEService}
+     * @type {PimStafftypeService}
      * @memberof PIMSTAFFTYPERedirectViewBase
      */
-    public appEntityService: PIMSTAFFTYPEService = new PIMSTAFFTYPEService;
+    public appEntityService: PimStafftypeService = new PimStafftypeService;
 
 
     /**

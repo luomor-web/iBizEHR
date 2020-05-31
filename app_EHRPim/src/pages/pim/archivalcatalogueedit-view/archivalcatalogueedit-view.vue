@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ARCHIVALCATALOGUEEditViewBase from './archivalcatalogueedit-view-base.vue';
 
-import view_form from '@widgets/archivalcatalogue/main-form/main-form.vue';
+import view_form from '@widgets/pim-archival-catalogue/main-form/main-form.vue';
 
 /**
  * 档案类别编辑视图

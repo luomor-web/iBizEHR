@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMPOSTPickupViewBase from './ormpostpickup-view-base.vue';
 
-import view_pickupviewpanel from '@widgets/ormpost/pickup-viewpickupviewpanel-pickupviewpanel/pickup-viewpickupviewpanel-pickupviewpanel.vue';
+import view_pickupviewpanel from '@widgets/orm-post/pickup-viewpickupviewpanel-pickupviewpanel/pickup-viewpickupviewpanel-pickupviewpanel.vue';
 
 /**
  * 岗位管理数据选择视图

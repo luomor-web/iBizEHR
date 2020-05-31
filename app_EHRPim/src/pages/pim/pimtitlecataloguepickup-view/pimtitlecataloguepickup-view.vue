@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMTITLECATALOGUEPickupViewBase from './pimtitlecataloguepickup-view-base.vue';
 
-import view_pickupviewpanel from '@widgets/pimtitlecatalogue/pickup-viewpickupviewpanel-pickupviewpanel/pickup-viewpickupviewpanel-pickupviewpanel.vue';
+import view_pickupviewpanel from '@widgets/pim-title-catalogue/pickup-viewpickupviewpanel-pickupviewpanel/pickup-viewpickupviewpanel-pickupviewpanel.vue';
 
 /**
  * 职称目录管理数据选择视图

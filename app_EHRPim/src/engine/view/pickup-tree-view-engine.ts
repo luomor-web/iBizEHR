@@ -35,4 +35,20 @@ export default class PickupTreeViewEngine extends TreeViewEngine {
             this.view.$emit('viewdataschange', args);
         }
     }
+
+    /**
+     * 双击选中激活数据
+     *
+     * @param {string} ctrlName
+     * @param {string} eventName
+     * @param {*} args
+     * @memberof PickupTreeViewEngine
+     */
+    public onCtrlEvent(ctrlName: string, eventName: string, args: any): void {
+      if (Object.is(ctrlName, 'tree') && Object.is(eventName, 'nodedblclick')) {
+          this.view.$emit('viewdatasactivated', args);
+          return ;
+      }
+      super.onCtrlEvent(ctrlName, eventName, args);
+    }
 }

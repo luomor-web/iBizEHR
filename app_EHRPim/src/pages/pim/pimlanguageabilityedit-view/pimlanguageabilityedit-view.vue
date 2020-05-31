@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMLANGUAGEABILITYEditViewBase from './pimlanguageabilityedit-view-base.vue';
 
-import view_form from '@widgets/pimlanguageability/main-form/main-form.vue';
+import view_form from '@widgets/pim-language-ability/main-form/main-form.vue';
 
 /**
  * 语言能力编辑视图

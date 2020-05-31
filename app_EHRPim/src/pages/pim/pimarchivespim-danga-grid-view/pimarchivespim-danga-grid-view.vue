@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMARCHIVESPimDangaGridViewBase from './pimarchivespim-danga-grid-view-base.vue';
 
-import view_grid from '@widgets/pimarchives/main-2-grid/main-2-grid.vue';
-import view_searchform from '@widgets/pimarchives/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-archives/main-2-grid/main-2-grid.vue';
+import view_searchform from '@widgets/pim-archives/default-searchform/default-searchform.vue';
 
 /**
  * 档案信息表格视图

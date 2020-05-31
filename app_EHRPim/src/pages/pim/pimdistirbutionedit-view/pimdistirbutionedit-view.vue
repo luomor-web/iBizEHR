@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMDISTIRBUTIONEditViewBase from './pimdistirbutionedit-view-base.vue';
 
-import view_form from '@widgets/pimdistirbution/main-form/main-form.vue';
+import view_form from '@widgets/pim-distirbution/main-form/main-form.vue';
 
 /**
  * 分配信息编辑视图

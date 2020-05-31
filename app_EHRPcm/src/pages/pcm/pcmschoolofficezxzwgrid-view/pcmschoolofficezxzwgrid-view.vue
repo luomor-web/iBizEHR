@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PCMSCHOOLOFFICEZXZWGridViewBase from './pcmschoolofficezxzwgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmschooloffice/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pcmschooloffice/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pcm-school-office/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pcm-school-office/default-searchform/default-searchform.vue';
 
 /**
  * 在校职务（要求：带*必填）

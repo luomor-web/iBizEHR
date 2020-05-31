@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMPATENTPATENTGridViewBase from './pimpatentpatentgrid-view-base.vue';
 
-import view_grid from '@widgets/pimpatent/main-grid/main-grid.vue';
+import view_grid from '@widgets/pim-patent/main-grid/main-grid.vue';
 
 /**
  * 专利信息表格视图

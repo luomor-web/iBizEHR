@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMPERSONPickupViewBase from './pimpersonpickup-view-base.vue';
 
-import view_pickupviewpanel from '@widgets/pimperson/pickup-viewpickupviewpanel-pickupviewpanel/pickup-viewpickupviewpanel-pickupviewpanel.vue';
-import view_searchform from '@widgets/pimperson/ryinfo-search-form-searchform/ryinfo-search-form-searchform.vue';
+import view_pickupviewpanel from '@widgets/pim-person/pickup-viewpickupviewpanel-pickupviewpanel/pickup-viewpickupviewpanel-pickupviewpanel.vue';
+import view_searchform from '@widgets/pim-person/ryinfo-search-form-searchform/ryinfo-search-form-searchform.vue';
 
 /**
  * 人员信息数据选择视图

@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PCMSCHOOLOFFICEService from '@/service/pcmschooloffice/pcmschooloffice-service';
+import PcmSchoolOfficeService from '@/service/pcm-school-office/pcm-school-office-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PCMSCHOOLOFFICEEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMSCHOOLOFFICEService}
+     * @type {PcmSchoolOfficeService}
      * @memberof PCMSCHOOLOFFICEEditViewBase
      */
-    public appEntityService: PCMSCHOOLOFFICEService = new PCMSCHOOLOFFICEService;
+    public appEntityService: PcmSchoolOfficeService = new PcmSchoolOfficeService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PCMSCHOOLOFFICEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PCMSCHOOLOFFICE");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PcmSchoolOffice");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PCMSCHOOLOFFICEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PCMSCHOOLOFFICE");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PcmSchoolOffice");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PCMSCHOOLOFFICEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PCMSCHOOLOFFICE");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmSchoolOffice");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PCMSCHOOLOFFICEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PCMSCHOOLOFFICE");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmSchoolOffice");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PCMSCHOOLOFFICEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PCMSCHOOLOFFICE");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PcmSchoolOffice");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PCMSCHOOLOFFICEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PCMSCHOOLOFFICE");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PcmSchoolOffice");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PCMSCHOOLOFFICEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PCMSCHOOLOFFICE");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PcmSchoolOffice");
     }
 
     /**

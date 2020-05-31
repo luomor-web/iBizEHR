@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ContractSignORGEditViewBase from './contract-sign-orgedit-view-base.vue';
 
-import view_form from '@widgets/contract-sign-org/main-form/main-form.vue';
+import view_form from '@widgets/pim-contract-sign-org/main-form/main-form.vue';
 
 /**
  * 法人主体设置编辑视图

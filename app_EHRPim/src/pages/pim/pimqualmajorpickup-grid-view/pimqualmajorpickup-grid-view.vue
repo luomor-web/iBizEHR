@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMQUALMAJORPickupGridViewBase from './pimqualmajorpickup-grid-view-base.vue';
 
-import view_grid from '@widgets/pimqualmajor/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pimqualmajor/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-qual-major/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pim-qual-major/default-searchform/default-searchform.vue';
 
 /**
  * 执业资格专业选择表格视图

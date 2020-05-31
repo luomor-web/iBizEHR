@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMCONTRACTEditViewBase from './pimcontractedit-view-base.vue';
 
-import view_form from '@widgets/pimcontract/main-form/main-form.vue';
+import view_form from '@widgets/pim-contract/main-form/main-form.vue';
 
 /**
  * 合同信息编辑视图

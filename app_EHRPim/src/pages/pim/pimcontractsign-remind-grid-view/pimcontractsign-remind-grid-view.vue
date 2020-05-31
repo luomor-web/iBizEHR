@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMCONTRACTSignRemindGridViewBase from './pimcontractsign-remind-grid-view-base.vue';
 
-import view_grid from '@widgets/pimcontract/sign-rmind-grid-grid/sign-rmind-grid-grid.vue';
-import view_searchform from '@widgets/pimcontract/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-contract/sign-rmind-grid-grid/sign-rmind-grid-grid.vue';
+import view_searchform from '@widgets/pim-contract/default-searchform/default-searchform.vue';
 
 /**
  * 合同信息表格视图（初签/续签提醒）

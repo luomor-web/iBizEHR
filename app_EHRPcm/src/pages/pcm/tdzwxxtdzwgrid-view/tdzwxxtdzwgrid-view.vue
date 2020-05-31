@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import TDZWXXTDZWGridViewBase from './tdzwxxtdzwgrid-view-base.vue';
 
-import view_grid from '@widgets/tdzwxx/main-grid/main-grid.vue';
-import view_searchform from '@widgets/tdzwxx/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pcm-tdzwxx/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pcm-tdzwxx/default-searchform/default-searchform.vue';
 
 /**
  * 投递职位摘要信息（要求：带*必填）

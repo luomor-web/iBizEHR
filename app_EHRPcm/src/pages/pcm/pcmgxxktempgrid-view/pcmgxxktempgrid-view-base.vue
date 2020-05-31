@@ -53,7 +53,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PCMGXXKTEMPService from '@/service/pcmgxxktemp/pcmgxxktemp-service';
+import PCMGxxkTempService from '@/service/pcmgxxk-temp/pcmgxxk-temp-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -74,10 +74,10 @@ export default class PCMGXXKTEMPGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMGXXKTEMPService}
+     * @type {PCMGxxkTempService}
      * @memberof PCMGXXKTEMPGridViewBase
      */
-    public appEntityService: PCMGXXKTEMPService = new PCMGXXKTEMPService;
+    public appEntityService: PCMGxxkTempService = new PCMGxxkTempService;
 
 
     /**
@@ -326,7 +326,7 @@ export default class PCMGXXKTEMPGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.New(datas, contextJO,paramJO,  $event, xData,this,"PCMGXXKTEMP");
+        this.New(datas, contextJO,paramJO,  $event, xData,this,"PCMGxxkTemp");
     }
 
     /**
@@ -355,7 +355,7 @@ export default class PCMGXXKTEMPGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PCMGXXKTEMP");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PCMGxxkTemp");
     }
 
     /**
@@ -384,7 +384,7 @@ export default class PCMGXXKTEMPGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PCMGXXKTEMP");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PCMGxxkTemp");
     }
 
     /**
@@ -400,10 +400,10 @@ export default class PCMGXXKTEMPGridViewBase extends GridViewBase {
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const batchAddPSAppViews=[
             {view:{viewname:'pcmgxmlmpickup-view',height: 0,width: 0,title: '高校名录数据多项选择视图'},
-            res:['PCMGXML'],
+            res:['PcmGxml'],
             'resAppKey':'pcmgxmlid'},
             {view:{viewname:'pcmxkmlmpickup-view',height: 0,width: 0,title: '学科目录数据多项选择视图'},
-            res:['PCMXKML'],
+            res:['PcmXkml'],
             'resAppKey':'pcmxkmlid'}
         ];
         if(batchAddPSAppViews.length == 0 || !this.context.srfparentdename){

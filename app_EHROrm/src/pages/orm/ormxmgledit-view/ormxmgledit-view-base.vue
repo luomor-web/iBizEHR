@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import ORMXMGLService from '@/service/ormxmgl/ormxmgl-service';
+import OrmXmglService from '@/service/orm-xmgl/orm-xmgl-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class ORMXMGLEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMXMGLService}
+     * @type {OrmXmglService}
      * @memberof ORMXMGLEditViewBase
      */
-    public appEntityService: ORMXMGLService = new ORMXMGLService;
+    public appEntityService: OrmXmglService = new OrmXmglService;
 
 
     /**
@@ -278,7 +278,7 @@ export default class ORMXMGLEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"ORMXMGL");
+        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"OrmXmgl");
     }
 
     /**

@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMVOCATIONALWSSEditViewBase from './pimvocationalwssedit-view-base.vue';
 
-import view_form from '@widgets/pimvocational/main-3-form/main-3-form.vue';
+import view_form from '@widgets/pim-vocational/main-3-form/main-3-form.vue';
 
 /**
  * 证书信息编辑视图

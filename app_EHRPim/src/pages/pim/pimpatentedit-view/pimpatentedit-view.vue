@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMPATENTEditViewBase from './pimpatentedit-view-base.vue';
 
-import view_form from '@widgets/pimpatent/main-form/main-form.vue';
+import view_form from '@widgets/pim-patent/main-form/main-form.vue';
 
 /**
  * 专利信息编辑视图

@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMACHIEVEMENTSService from '@/service/pimachievements/pimachievements-service';
+import PimAchievementsService from '@/service/pim-achievements/pim-achievements-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMACHIEVEMENTSEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMACHIEVEMENTSService}
+     * @type {PimAchievementsService}
      * @memberof PIMACHIEVEMENTSEditViewBase
      */
-    public appEntityService: PIMACHIEVEMENTSService = new PIMACHIEVEMENTSService;
+    public appEntityService: PimAchievementsService = new PimAchievementsService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PIMACHIEVEMENTSEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMACHIEVEMENTS");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimAchievements");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PIMACHIEVEMENTSEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMACHIEVEMENTS");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimAchievements");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PIMACHIEVEMENTSEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMACHIEVEMENTS");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimAchievements");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PIMACHIEVEMENTSEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMACHIEVEMENTS");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimAchievements");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PIMACHIEVEMENTSEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMACHIEVEMENTS");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimAchievements");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PIMACHIEVEMENTSEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMACHIEVEMENTS");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimAchievements");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PIMACHIEVEMENTSEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMACHIEVEMENTS");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimAchievements");
     }
 
     /**

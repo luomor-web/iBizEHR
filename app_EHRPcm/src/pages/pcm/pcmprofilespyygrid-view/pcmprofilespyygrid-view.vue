@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMPROFILESPYYGridViewBase from './pcmprofilespyygrid-view-base.vue';
 
-import view_grid from '@widgets/pcmprofilespyy/main-grid/main-grid.vue';
+import view_grid from '@widgets/pcm-profile-spyy/main-grid/main-grid.vue';
 
 /**
  * 应聘者审批原因表格视图

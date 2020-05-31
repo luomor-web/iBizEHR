@@ -40,7 +40,7 @@ zuul:
       serviceId: ehr-webapi
       stripPrefix: false
     contractsignorg:
-      path: /contractsignorgs/**
+      path: /pimcontractsignorgs/**
       serviceId: ehr-webapi
       stripPrefix: false
     ormpost:
@@ -68,7 +68,7 @@ zuul:
       serviceId: ehr-webapi
       stripPrefix: false
     unitedperson:
-      path: /unitedpeople/**
+      path: /ormunitedpeople/**
       serviceId: ehr-webapi
       stripPrefix: false
     pimperson:

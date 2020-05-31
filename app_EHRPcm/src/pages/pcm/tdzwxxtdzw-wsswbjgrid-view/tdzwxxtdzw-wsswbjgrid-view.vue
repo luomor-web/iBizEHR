@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import TDZWXXTDZW_WSSWBJGridViewBase from './tdzwxxtdzw-wsswbjgrid-view-base.vue';
 
-import view_grid from '@widgets/tdzwxx/main-grid/main-grid.vue';
+import view_grid from '@widgets/pcm-tdzwxx/main-grid/main-grid.vue';
 
 /**
  * 投递职位摘要信息

@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import TRMLGBCOSTService from '@/service/trmlgbcost/trmlgbcost-service';
+import TrmLgbCostService from '@/service/trm-lgb-cost/trm-lgb-cost-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class TRMLGBCOSTGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {TRMLGBCOSTService}
+     * @type {TrmLgbCostService}
      * @memberof TRMLGBCOSTGridViewBase
      */
-    public appEntityService: TRMLGBCOSTService = new TRMLGBCOSTService;
+    public appEntityService: TrmLgbCostService = new TrmLgbCostService;
 
 
     /**
@@ -393,7 +393,7 @@ export default class TRMLGBCOSTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.New(datas, contextJO,paramJO,  $event, xData,this,"TRMLGBCOST");
+        this.New(datas, contextJO,paramJO,  $event, xData,this,"TrmLgbCost");
     }
 
     /**
@@ -422,7 +422,7 @@ export default class TRMLGBCOSTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"TRMLGBCOST");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"TrmLgbCost");
     }
 
     /**
@@ -451,7 +451,7 @@ export default class TRMLGBCOSTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"TRMLGBCOST");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"TrmLgbCost");
     }
 
     /**
@@ -480,7 +480,7 @@ export default class TRMLGBCOSTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"TRMLGBCOST");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"TrmLgbCost");
     }
 
     /**
@@ -509,7 +509,7 @@ export default class TRMLGBCOSTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"TRMLGBCOST");
+        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"TrmLgbCost");
     }
 
     /**
@@ -538,7 +538,7 @@ export default class TRMLGBCOSTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"TRMLGBCOST");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"TrmLgbCost");
     }
 
     /**

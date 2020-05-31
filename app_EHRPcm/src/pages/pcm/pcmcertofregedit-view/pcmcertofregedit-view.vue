@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMCERTOFREGEditViewBase from './pcmcertofregedit-view-base.vue';
 
-import view_form from '@widgets/pcmcertofreg/main-form/main-form.vue';
+import view_form from '@widgets/pcm-certofreg/main-form/main-form.vue';
 
 /**
  * 注册证书编辑视图

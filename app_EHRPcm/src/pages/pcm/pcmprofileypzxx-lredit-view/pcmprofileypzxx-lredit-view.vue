@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMPROFILEYPZXX_LREditViewBase from './pcmprofileypzxx-lredit-view-base.vue';
 
-import view_form from '@widgets/pcmprofile/ypzxx-lr-form/ypzxx-lr-form.vue';
+import view_form from '@widgets/pcm-profile/ypzxx-lr-form/ypzxx-lr-form.vue';
 
 /**
  * 应聘者信息

@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMCERTOFREGZCZS_WSSWBJGridViewBase from './pcmcertofregzczs-wsswbjgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmcertofreg/ck-grid/ck-grid.vue';
+import view_grid from '@widgets/pcm-certofreg/ck-grid/ck-grid.vue';
 
 /**
  * 注册证书

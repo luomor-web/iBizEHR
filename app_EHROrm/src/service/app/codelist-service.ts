@@ -1,15 +1,15 @@
-import ORMCL_ProCapitalAtt from '@/codelist/ormcl-pro-capital-att';   
-import ORMCL_IsDirectlyManage from '@/codelist/ormcl-is-directly-manage';   
-import ORMCL_EngineeringScale from '@/codelist/ormcl-engineering-scale';   
-import ORMCL_QY from '@/codelist/ormcl-qy';   
-import ORMCL_ZW from '@/codelist/ormcl-zw';   
-import SysOperator from '@/codelist/sys-operator';   
-import ORMCL_GW from '@/codelist/ormcl-gw';   
-import ORMCL_EngineeringPurpose from '@/codelist/ormcl-engineering-purpose';   
-import ORMCL_EngineeringBusType from '@/codelist/ormcl-engineering-bus-type';   
-import EhrCodeListSsqy from '@/codelist/ehr-code-list-ssqy';   
-import ORMCL_GWTYPE from '@/codelist/ormcl-gwtype';   
-import PIMCL_YGZT from '@/codelist/pimcl-ygzt';   
+import EhrCodeList0028 from '@/codelist/ehr-code-list0028';   
+import EhrCodeList0191 from '@/codelist/ehr-code-list0191';   
+import EhrCodeList0240 from '@/codelist/ehr-code-list0240';   
+import EhrCodeList0219 from '@/codelist/ehr-code-list0219';   
+import EhrCodeList0233 from '@/codelist/ehr-code-list0233';   
+import EhrCodeList0249 from '@/codelist/ehr-code-list0249';   
+import EhrCodeList0050 from '@/codelist/ehr-code-list0050';   
+import EhrCodeList0023 from '@/codelist/ehr-code-list0023';   
+import EhrCodeList0193 from '@/codelist/ehr-code-list0193';   
+import EhrCodeList0250 from '@/codelist/ehr-code-list0250';   
+import EhrCodeList0140 from '@/codelist/ehr-code-list0140';   
+import EhrCodeList0014 from '@/codelist/ehr-code-list0014';   
 import { Store } from 'vuex';
 
 /**
@@ -56,98 +56,98 @@ export default class CodeListService {
     /**
      * 代码表--项目资金属性
      *
-     * @type {ORMCL_ProCapitalAtt}
+     * @type {EhrCodeList0028}
      * @memberof CodeListService
      */
-    public ORMCL_ProCapitalAtt: ORMCL_ProCapitalAtt = new ORMCL_ProCapitalAtt();
+    public EhrCodeList0028: EhrCodeList0028 = new EhrCodeList0028();
 
     /**
      * 代码表--是否局直管
      *
-     * @type {ORMCL_IsDirectlyManage}
+     * @type {EhrCodeList0191}
      * @memberof CodeListService
      */
-    public ORMCL_IsDirectlyManage: ORMCL_IsDirectlyManage = new ORMCL_IsDirectlyManage();
+    public EhrCodeList0191: EhrCodeList0191 = new EhrCodeList0191();
 
     /**
      * 代码表--工程规模
      *
-     * @type {ORMCL_EngineeringScale}
+     * @type {EhrCodeList0240}
      * @memberof CodeListService
      */
-    public ORMCL_EngineeringScale: ORMCL_EngineeringScale = new ORMCL_EngineeringScale();
+    public EhrCodeList0240: EhrCodeList0240 = new EhrCodeList0240();
 
     /**
      * 代码表--补贴标准
      *
-     * @type {ORMCL_QY}
+     * @type {EhrCodeList0219}
      * @memberof CodeListService
      */
-    public ORMCL_QY: ORMCL_QY = new ORMCL_QY();
+    public EhrCodeList0219: EhrCodeList0219 = new EhrCodeList0219();
 
     /**
      * 代码表--职务（基础管理）
      *
-     * @type {ORMCL_ZW}
+     * @type {EhrCodeList0233}
      * @memberof CodeListService
      */
-    public ORMCL_ZW: ORMCL_ZW = new ORMCL_ZW();
+    public EhrCodeList0233: EhrCodeList0233 = new EhrCodeList0233();
 
     /**
      * 代码表--云系统操作者
      *
-     * @type {SysOperator}
+     * @type {EhrCodeList0249}
      * @memberof CodeListService
      */
-    public SysOperator: SysOperator = new SysOperator();
+    public EhrCodeList0249: EhrCodeList0249 = new EhrCodeList0249();
 
     /**
      * 代码表--岗位（基础管理）
      *
-     * @type {ORMCL_GW}
+     * @type {EhrCodeList0050}
      * @memberof CodeListService
      */
-    public ORMCL_GW: ORMCL_GW = new ORMCL_GW();
+    public EhrCodeList0050: EhrCodeList0050 = new EhrCodeList0050();
 
     /**
      * 代码表--工程用途
      *
-     * @type {ORMCL_EngineeringPurpose}
+     * @type {EhrCodeList0023}
      * @memberof CodeListService
      */
-    public ORMCL_EngineeringPurpose: ORMCL_EngineeringPurpose = new ORMCL_EngineeringPurpose();
+    public EhrCodeList0023: EhrCodeList0023 = new EhrCodeList0023();
 
     /**
      * 代码表--工程业务类型
      *
-     * @type {ORMCL_EngineeringBusType}
+     * @type {EhrCodeList0193}
      * @memberof CodeListService
      */
-    public ORMCL_EngineeringBusType: ORMCL_EngineeringBusType = new ORMCL_EngineeringBusType();
+    public EhrCodeList0193: EhrCodeList0193 = new EhrCodeList0193();
 
     /**
      * 代码表--所属区域
      *
-     * @type {EhrCodeListSsqy}
+     * @type {EhrCodeList0250}
      * @memberof CodeListService
      */
-    public EhrCodeListSsqy: EhrCodeListSsqy = new EhrCodeListSsqy();
+    public EhrCodeList0250: EhrCodeList0250 = new EhrCodeList0250();
 
     /**
      * 代码表--岗位类型
      *
-     * @type {ORMCL_GWTYPE}
+     * @type {EhrCodeList0140}
      * @memberof CodeListService
      */
-    public ORMCL_GWTYPE: ORMCL_GWTYPE = new ORMCL_GWTYPE();
+    public EhrCodeList0140: EhrCodeList0140 = new EhrCodeList0140();
 
     /**
      * 代码表--员工状态
      *
-     * @type {PIMCL_YGZT}
+     * @type {EhrCodeList0014}
      * @memberof CodeListService
      */
-    public PIMCL_YGZT: PIMCL_YGZT = new PIMCL_YGZT();
+    public EhrCodeList0014: EhrCodeList0014 = new EhrCodeList0014();
 
     /**
      * 获取动态代码表

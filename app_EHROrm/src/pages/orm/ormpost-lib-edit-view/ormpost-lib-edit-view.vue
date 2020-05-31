@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMPostLibEditViewBase from './ormpost-lib-edit-view-base.vue';
 
-import view_form from '@widgets/ormpost-lib/main-form/main-form.vue';
+import view_form from '@widgets/orm-post-lib/main-form/main-form.vue';
 
 /**
  * 标准岗位设置

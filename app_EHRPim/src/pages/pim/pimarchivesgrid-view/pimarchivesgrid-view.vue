@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMARCHIVESGridViewBase from './pimarchivesgrid-view-base.vue';
 
-import view_grid from '@widgets/pimarchives/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pimarchives/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-archives/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pim-archives/default-searchform/default-searchform.vue';
 
 /**
  * 档案信息表格视图

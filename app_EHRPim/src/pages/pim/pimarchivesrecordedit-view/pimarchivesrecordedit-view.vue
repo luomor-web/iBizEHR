@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMARCHIVESRECORDEditViewBase from './pimarchivesrecordedit-view-base.vue';
 
-import view_form from '@widgets/pimarchivesrecord/main-form/main-form.vue';
+import view_form from '@widgets/pim-archives-record/main-form/main-form.vue';
 
 /**
  * 档案目录缺失记录编辑视图

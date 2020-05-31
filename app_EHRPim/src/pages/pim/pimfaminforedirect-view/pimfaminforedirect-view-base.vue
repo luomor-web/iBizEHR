@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMFAMINFOService from '@/service/pimfaminfo/pimfaminfo-service';
+import PimFaminfoService from '@/service/pim-faminfo/pim-faminfo-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMFAMINFORedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMFAMINFOService}
+     * @type {PimFaminfoService}
      * @memberof PIMFAMINFORedirectViewBase
      */
-    public appEntityService: PIMFAMINFOService = new PIMFAMINFOService;
+    public appEntityService: PimFaminfoService = new PimFaminfoService;
 
 
     /**

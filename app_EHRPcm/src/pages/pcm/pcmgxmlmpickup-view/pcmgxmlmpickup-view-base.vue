@@ -77,7 +77,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, MPickupViewBase } from '@/crm-core';
-import PCMGXMLService from '@/service/pcmgxml/pcmgxml-service';
+import PcmGxmlService from '@/service/pcm-gxml/pcm-gxml-service';
 
 import MPickupViewEngine from '@engine/view/mpickup-view-engine';
 
@@ -96,10 +96,10 @@ export default class PCMGXMLMPickupViewBase extends MPickupViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMGXMLService}
+     * @type {PcmGxmlService}
      * @memberof PCMGXMLMPickupViewBase
      */
-    public appEntityService: PCMGXMLService = new PCMGXMLService;
+    public appEntityService: PcmGxmlService = new PcmGxmlService;
 
 
     /**

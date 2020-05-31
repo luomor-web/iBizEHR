@@ -42,7 +42,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, PickupViewBase } from '@/crm-core';
-import PIMPERSONService from '@/service/pimperson/pimperson-service';
+import PimPersonService from '@/service/pim-person/pim-person-service';
 
 import PickupViewEngine from '@engine/view/pickup-view-engine';
 
@@ -61,10 +61,10 @@ export default class PIMPERSONCurLeaderPickupViewBase extends PickupViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMPERSONService}
+     * @type {PimPersonService}
      * @memberof PIMPERSONCurLeaderPickupViewBase
      */
-    public appEntityService: PIMPERSONService = new PIMPERSONService;
+    public appEntityService: PimPersonService = new PimPersonService;
 
 
     /**

@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import ARCHIVESCENTERGridViewBase from './archivescentergrid-view-base.vue';
 
-import view_grid from '@widgets/archivescenter/main-grid/main-grid.vue';
-import view_searchform from '@widgets/archivescenter/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-archives-center/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pim-archives-center/default-searchform/default-searchform.vue';
 
 /**
  * 档案室管理表格视图

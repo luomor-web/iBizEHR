@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMREWARDPUNISHMENTService from '@/service/pimrewardpunishment/pimrewardpunishment-service';
+import PimRewardPunishmentService from '@/service/pim-reward-punishment/pim-reward-punishment-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMREWARDPUNISHMENTHONORGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMREWARDPUNISHMENTService}
+     * @type {PimRewardPunishmentService}
      * @memberof PIMREWARDPUNISHMENTHONORGridViewBase
      */
-    public appEntityService: PIMREWARDPUNISHMENTService = new PIMREWARDPUNISHMENTService;
+    public appEntityService: PimRewardPunishmentService = new PimRewardPunishmentService;
 
 
     /**

@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMREWARDPUNISHMENTEditViewBase from './pimrewardpunishmentedit-view-base.vue';
 
-import view_form from '@widgets/pimrewardpunishment/main-form/main-form.vue';
+import view_form from '@widgets/pim-reward-punishment/main-form/main-form.vue';
 
 /**
  * 奖励惩罚编辑视图

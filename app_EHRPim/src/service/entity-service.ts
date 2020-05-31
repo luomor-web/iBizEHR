@@ -619,7 +619,22 @@ export default class EntityService {
      * @memberof EntityService
      */
     public async removeBatch(context: any = {},data: any, isloading?: boolean): Promise<any> {
-        return Http.getInstance().delete(`/${this.APPDENAME}/batch`,isloading,data);
+        return Http.getInstance().delete(`/${this.APPDENAME}/batch`,isloading,data[this.APPDEKEY]);
+    }
+
+    /**
+     * getDataInfo接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof EntityService
+     */
+    public async getDataInfo(context: any = {},data: any, isloading?: boolean):Promise<any> {
+        if(context[this.APPLYDEKEY]){
+            return this.Get(context,data, isloading);
+        }
     }
 
 	/**
@@ -763,6 +778,19 @@ export default class EntityService {
      */
     public async GetWFLink(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         return Http.getInstance().get(`/wfcore/${this.SYSTEMNAME}-app-${this.APPNAME}/${this.APPDENAME}/${context[this.APPLYDEKEY]}/usertasks/${data['taskDefinitionKey']}/ways`);
+    }
+
+    /**
+     * GetWFHistory接口方法(根据业务主键获取工作流程记录)
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof EntityService
+     */
+    public async GetWFHistory(context: any = {},data: any = {}, isloading?: boolean):Promise<any> {
+        return Http.getInstance().get(`/wfcore/${this.SYSTEMNAME}-app-${this.APPNAME}/${this.APPDENAME}/${context[this.APPLYDEKEY]}/process-instances/alls/history`);
     }
 
     /**

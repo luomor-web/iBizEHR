@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMLANGUAGEABILITYService from '@/service/pimlanguageability/pimlanguageability-service';
+import PimLanguageAbilityService from '@/service/pim-language-ability/pim-language-ability-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMLANGUAGEABILITYYYNLGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMLANGUAGEABILITYService}
+     * @type {PimLanguageAbilityService}
      * @memberof PIMLANGUAGEABILITYYYNLGridViewBase
      */
-    public appEntityService: PIMLANGUAGEABILITYService = new PIMLANGUAGEABILITYService;
+    public appEntityService: PimLanguageAbilityService = new PimLanguageAbilityService;
 
 
     /**
@@ -390,7 +390,7 @@ export default class PIMLANGUAGEABILITYYYNLGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PIMLANGUAGEABILITY");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PimLanguageAbility");
     }
 
     /**
@@ -419,7 +419,7 @@ export default class PIMLANGUAGEABILITYYYNLGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PIMLANGUAGEABILITY");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PimLanguageAbility");
     }
 
     /**
@@ -448,7 +448,7 @@ export default class PIMLANGUAGEABILITYYYNLGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMLANGUAGEABILITY");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimLanguageAbility");
     }
 
     /**
@@ -477,7 +477,7 @@ export default class PIMLANGUAGEABILITYYYNLGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMLANGUAGEABILITY");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimLanguageAbility");
     }
 
     /**
@@ -506,7 +506,7 @@ export default class PIMLANGUAGEABILITYYYNLGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMLANGUAGEABILITY");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimLanguageAbility");
     }
 
     /**

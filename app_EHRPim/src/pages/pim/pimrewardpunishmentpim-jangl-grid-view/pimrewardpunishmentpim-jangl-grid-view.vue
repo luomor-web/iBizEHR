@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMREWARDPUNISHMENTPimJanglGridViewBase from './pimrewardpunishmentpim-jangl-grid-view-base.vue';
 
-import view_grid from '@widgets/pimrewardpunishment/main-grid/main-grid.vue';
+import view_grid from '@widgets/pim-reward-punishment/main-grid/main-grid.vue';
 
 /**
  * 奖励惩罚表格视图

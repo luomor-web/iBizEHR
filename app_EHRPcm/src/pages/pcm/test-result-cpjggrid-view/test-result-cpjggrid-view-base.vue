@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import TestResultService from '@/service/test-result/test-result-service';
+import PcmTestResultService from '@/service/pcm-test-result/pcm-test-result-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class TestResultCPJGGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {TestResultService}
+     * @type {PcmTestResultService}
      * @memberof TestResultCPJGGridViewBase
      */
-    public appEntityService: TestResultService = new TestResultService;
+    public appEntityService: PcmTestResultService = new PcmTestResultService;
 
 
     /**
@@ -158,9 +158,9 @@ export default class TestResultCPJGGridViewBase extends GridViewBase {
      * @memberof TestResultCPJGGridViewBase
      */
     public model: any = {
-        srfCaption: 'entities.testresult.views.cpjggridview.caption',
-        srfTitle: 'entities.testresult.views.cpjggridview.title',
-        srfSubTitle: 'entities.testresult.views.cpjggridview.subtitle',
+        srfCaption: 'entities.pcmtestresult.views.cpjggridview.caption',
+        srfTitle: 'entities.pcmtestresult.views.cpjggridview.title',
+        srfSubTitle: 'entities.pcmtestresult.views.cpjggridview.subtitle',
         dataInfo: ''
     }
 
@@ -234,7 +234,7 @@ export default class TestResultCPJGGridViewBase extends GridViewBase {
             },
             grid: this.$refs.grid,
             searchform: this.$refs.searchform,
-            keyPSDEField: 'testresult',
+            keyPSDEField: 'pcmtestresult',
             majorPSDEField: 'testresultname',
             isLoadDefault: true,
         });
@@ -390,7 +390,7 @@ export default class TestResultCPJGGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"TestResult");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PcmTestResult");
     }
 
     /**
@@ -419,7 +419,7 @@ export default class TestResultCPJGGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"TestResult");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PcmTestResult");
     }
 
     /**
@@ -448,7 +448,7 @@ export default class TestResultCPJGGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"TestResult");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PcmTestResult");
     }
 
     /**
@@ -477,7 +477,7 @@ export default class TestResultCPJGGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"TestResult");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PcmTestResult");
     }
 
     /**
@@ -506,7 +506,7 @@ export default class TestResultCPJGGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"TestResult");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PcmTestResult");
     }
 
     /**
@@ -535,7 +535,7 @@ export default class TestResultCPJGGridViewBase extends GridViewBase {
             ]
         }
         const parameters: any[] = [
-            { pathName: 'testresults', parameterName: 'testresult' },
+            { pathName: 'pcmtestresults', parameterName: 'pcmtestresult' },
             { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;
@@ -572,7 +572,7 @@ export default class TestResultCPJGGridViewBase extends GridViewBase {
             ]
         }
         const parameters: any[] = [
-            { pathName: 'testresults', parameterName: 'testresult' },
+            { pathName: 'pcmtestresults', parameterName: 'pcmtestresult' },
             { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;

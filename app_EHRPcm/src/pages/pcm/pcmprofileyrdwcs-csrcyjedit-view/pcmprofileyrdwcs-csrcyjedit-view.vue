@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMPROFILEYRDWCS_CSRCYJEditViewBase from './pcmprofileyrdwcs-csrcyjedit-view-base.vue';
 
-import view_form from '@widgets/pcmprofile/yrdwcs-csrcyj-form/yrdwcs-csrcyj-form.vue';
+import view_form from '@widgets/pcm-profile/yrdwcs-csrcyj-form/yrdwcs-csrcyj-form.vue';
 
 /**
  * 用人单位初审

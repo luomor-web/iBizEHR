@@ -75,8 +75,24 @@ export default class OrmSignOrgServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let pimcontractsignorgsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs'),'undefined')){
+            pimcontractsignorgsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs') as any);
+            if(pimcontractsignorgsData && pimcontractsignorgsData.length && pimcontractsignorgsData.length > 0){
+                pimcontractsignorgsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.contractsignorgid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimcontractsignorgs = pimcontractsignorgsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/ormsignorgs/${context.ormsignorg}`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_pimcontractsignorgs',JSON.stringify(res.data.pimcontractsignorgs));
             return res;
     }
 
@@ -91,8 +107,24 @@ export default class OrmSignOrgServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let pimcontractsignorgsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs'),'undefined')){
+            pimcontractsignorgsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs') as any);
+            if(pimcontractsignorgsData && pimcontractsignorgsData.length && pimcontractsignorgsData.length > 0){
+                pimcontractsignorgsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.contractsignorgid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimcontractsignorgs = pimcontractsignorgsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/ormsignorgs/${context.ormsignorg}/save`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_pimcontractsignorgs',JSON.stringify(res.data.pimcontractsignorgs));
             return res;
     }
 
@@ -108,6 +140,7 @@ export default class OrmSignOrgServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/ormsignorgs/getdraft`,isloading);
         res.data.ormsignorg = data.ormsignorg;
+            this.tempStorage.setItem(context.srfsessionkey+'_pimcontractsignorgs',JSON.stringify(res.data.pimcontractsignorgs));
         return res;
     }
 
@@ -122,6 +155,7 @@ export default class OrmSignOrgServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/ormsignorgs/${context.ormsignorg}`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_pimcontractsignorgs',JSON.stringify(res.data.pimcontractsignorgs));
             return res;
 
     }
@@ -137,6 +171,21 @@ export default class OrmSignOrgServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let pimcontractsignorgsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs'),'undefined')){
+            pimcontractsignorgsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs') as any);
+            if(pimcontractsignorgsData && pimcontractsignorgsData.length && pimcontractsignorgsData.length > 0){
+                pimcontractsignorgsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.contractsignorgid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimcontractsignorgs = pimcontractsignorgsData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -146,6 +195,7 @@ export default class OrmSignOrgServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/ormsignorgs`,data,isloading);
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_pimcontractsignorgs',JSON.stringify(res.data.pimcontractsignorgs));
         return res;
     }
 

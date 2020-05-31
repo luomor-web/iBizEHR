@@ -68,7 +68,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMEDUCATIONService from '@/service/pimeducation/pimeducation-service';
+import PimEducationService from '@/service/pim-education/pim-education-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -89,10 +89,10 @@ export default class PIMEDUCATIONZDXLGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMEDUCATIONService}
+     * @type {PimEducationService}
      * @memberof PIMEDUCATIONZDXLGridViewBase
      */
-    public appEntityService: PIMEDUCATIONService = new PIMEDUCATIONService;
+    public appEntityService: PimEducationService = new PimEducationService;
 
 
     /**

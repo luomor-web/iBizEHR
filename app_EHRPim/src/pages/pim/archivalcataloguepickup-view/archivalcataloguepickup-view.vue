@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ARCHIVALCATALOGUEPickupViewBase from './archivalcataloguepickup-view-base.vue';
 
-import view_pickupviewpanel from '@widgets/archivalcatalogue/pickup-viewpickupviewpanel-pickupviewpanel/pickup-viewpickupviewpanel-pickupviewpanel.vue';
+import view_pickupviewpanel from '@widgets/pim-archival-catalogue/pickup-viewpickupviewpanel-pickupviewpanel/pickup-viewpickupviewpanel-pickupviewpanel.vue';
 
 /**
  * 档案目录数据选择视图

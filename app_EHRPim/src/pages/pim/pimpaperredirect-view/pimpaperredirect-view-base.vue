@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMPAPERService from '@/service/pimpaper/pimpaper-service';
+import PimPaperService from '@/service/pim-paper/pim-paper-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMPAPERRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMPAPERService}
+     * @type {PimPaperService}
      * @memberof PIMPAPERRedirectViewBase
      */
-    public appEntityService: PIMPAPERService = new PIMPAPERService;
+    public appEntityService: PimPaperService = new PimPaperService;
 
 
     /**

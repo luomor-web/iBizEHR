@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ARCHIVESMANAGEEditViewBase from './archivesmanageedit-view-base.vue';
 
-import view_form from '@widgets/archivesmanage/main-form/main-form.vue';
+import view_form from '@widgets/pim-archives-manage/main-form/main-form.vue';
 
 /**
  * 档案管理编辑视图

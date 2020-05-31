@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMEXPACCOUNTService from '@/service/pimexpaccount/pimexpaccount-service';
+import PimExpaccountService from '@/service/pim-expaccount/pim-expaccount-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMEXPACCOUNTRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMEXPACCOUNTService}
+     * @type {PimExpaccountService}
      * @memberof PIMEXPACCOUNTRedirectViewBase
      */
-    public appEntityService: PIMEXPACCOUNTService = new PIMEXPACCOUNTService;
+    public appEntityService: PimExpaccountService = new PimExpaccountService;
 
 
     /**

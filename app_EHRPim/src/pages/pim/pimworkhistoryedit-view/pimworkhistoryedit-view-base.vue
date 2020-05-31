@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMWORKHISTORYService from '@/service/pimworkhistory/pimworkhistory-service';
+import PimWorkHistoryService from '@/service/pim-work-history/pim-work-history-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMWORKHISTORYEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMWORKHISTORYService}
+     * @type {PimWorkHistoryService}
      * @memberof PIMWORKHISTORYEditViewBase
      */
-    public appEntityService: PIMWORKHISTORYService = new PIMWORKHISTORYService;
+    public appEntityService: PimWorkHistoryService = new PimWorkHistoryService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PIMWORKHISTORYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMWORKHISTORY");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimWorkHistory");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PIMWORKHISTORYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMWORKHISTORY");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimWorkHistory");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PIMWORKHISTORYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMWORKHISTORY");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimWorkHistory");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PIMWORKHISTORYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMWORKHISTORY");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimWorkHistory");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PIMWORKHISTORYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMWORKHISTORY");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimWorkHistory");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PIMWORKHISTORYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMWORKHISTORY");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimWorkHistory");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PIMWORKHISTORYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMWORKHISTORY");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimWorkHistory");
     }
 
     /**

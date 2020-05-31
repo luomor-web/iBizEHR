@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMEDUCATIONZDXLGridViewBase from './pimeducationzdxlgrid-view-base.vue';
 
-import view_grid from '@widgets/pimeducation/main-2-grid/main-2-grid.vue';
-import view_searchform from '@widgets/pimeducation/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-education/main-2-grid/main-2-grid.vue';
+import view_searchform from '@widgets/pim-education/default-searchform/default-searchform.vue';
 
 /**
  * 教育背景

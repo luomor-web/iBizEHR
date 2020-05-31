@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMARCHIVESArchivesRecordEditViewBase from './pimarchivesarchives-record-edit-view-base.vue';
 
-import view_form from '@widgets/pimarchives/main-callout-form/main-callout-form.vue';
+import view_form from '@widgets/pim-archives/main-callout-form/main-callout-form.vue';
 
 /**
  * 调档记录编辑视图

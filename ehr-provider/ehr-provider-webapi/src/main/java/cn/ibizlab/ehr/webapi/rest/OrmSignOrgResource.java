@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.orm.service.IOrmSignOrgService;
 import cn.ibizlab.ehr.core.orm.filter.OrmSignOrgSearchContext;
 
 @Slf4j
-@Api(tags = {"OrmSignOrg" })
+@Api(tags = {"法人主体" })
 @RestController("WebApi-ormsignorg")
 @RequestMapping("")
 public class OrmSignOrgResource {
@@ -46,14 +46,14 @@ public class OrmSignOrgResource {
     @Lazy
     public OrmSignOrgMapping ormsignorgMapping;
 
-    @ApiOperation(value = "CheckKey", tags = {"OrmSignOrg" },  notes = "CheckKey")
+    @ApiOperation(value = "检查法人主体", tags = {"法人主体" },  notes = "检查法人主体")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody OrmSignOrgDTO ormsignorgdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormsignorgService.checkKey(ormsignorgMapping.toDomain(ormsignorgdto)));
     }
 
     @PreAuthorize("hasPermission(this.ormsignorgService.get(#ormsignorg_id),'ehr-OrmSignOrg-Update')")
-    @ApiOperation(value = "Update", tags = {"OrmSignOrg" },  notes = "Update")
+    @ApiOperation(value = "更新法人主体", tags = {"法人主体" },  notes = "更新法人主体")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormsignorgs/{ormsignorg_id}")
     @Transactional
     public ResponseEntity<OrmSignOrgDTO> update(@PathVariable("ormsignorg_id") String ormsignorg_id, @RequestBody OrmSignOrgDTO ormsignorgdto) {
@@ -65,7 +65,7 @@ public class OrmSignOrgResource {
     }
 
     @PreAuthorize("hasPermission(this.ormsignorgService.getOrmsignorgByEntities(this.ormsignorgMapping.toDomain(#ormsignorgdtos)),'ehr-OrmSignOrg-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"OrmSignOrg" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新法人主体", tags = {"法人主体" },  notes = "批量更新法人主体")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormsignorgs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrmSignOrgDTO> ormsignorgdtos) {
         ormsignorgService.updateBatch(ormsignorgMapping.toDomain(ormsignorgdtos));
@@ -73,28 +73,28 @@ public class OrmSignOrgResource {
     }
 
     @PreAuthorize("hasPermission(this.ormsignorgMapping.toDomain(#ormsignorgdto),'ehr-OrmSignOrg-Save')")
-    @ApiOperation(value = "Save", tags = {"OrmSignOrg" },  notes = "Save")
+    @ApiOperation(value = "保存法人主体", tags = {"法人主体" },  notes = "保存法人主体")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/save")
     public ResponseEntity<Boolean> save(@RequestBody OrmSignOrgDTO ormsignorgdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormsignorgService.save(ormsignorgMapping.toDomain(ormsignorgdto)));
     }
 
     @PreAuthorize("hasPermission(this.ormsignorgMapping.toDomain(#ormsignorgdtos),'ehr-OrmSignOrg-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"OrmSignOrg" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存法人主体", tags = {"法人主体" },  notes = "批量保存法人主体")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<OrmSignOrgDTO> ormsignorgdtos) {
         ormsignorgService.saveBatch(ormsignorgMapping.toDomain(ormsignorgdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"OrmSignOrg" },  notes = "GetDraft")
+    @ApiOperation(value = "获取法人主体草稿", tags = {"法人主体" },  notes = "获取法人主体草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormsignorgs/getdraft")
     public ResponseEntity<OrmSignOrgDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormsignorgMapping.toDto(ormsignorgService.getDraft(new OrmSignOrg())));
     }
 
     @PostAuthorize("hasPermission(this.ormsignorgMapping.toDomain(returnObject.body),'ehr-OrmSignOrg-Get')")
-    @ApiOperation(value = "Get", tags = {"OrmSignOrg" },  notes = "Get")
+    @ApiOperation(value = "获取法人主体", tags = {"法人主体" },  notes = "获取法人主体")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormsignorgs/{ormsignorg_id}")
     public ResponseEntity<OrmSignOrgDTO> get(@PathVariable("ormsignorg_id") String ormsignorg_id) {
         OrmSignOrg domain = ormsignorgService.get(ormsignorg_id);
@@ -103,7 +103,7 @@ public class OrmSignOrgResource {
     }
 
     @PreAuthorize("hasPermission(this.ormsignorgMapping.toDomain(#ormsignorgdto),'ehr-OrmSignOrg-Create')")
-    @ApiOperation(value = "Create", tags = {"OrmSignOrg" },  notes = "Create")
+    @ApiOperation(value = "新建法人主体", tags = {"法人主体" },  notes = "新建法人主体")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs")
     @Transactional
     public ResponseEntity<OrmSignOrgDTO> create(@RequestBody OrmSignOrgDTO ormsignorgdto) {
@@ -114,7 +114,7 @@ public class OrmSignOrgResource {
     }
 
     @PreAuthorize("hasPermission(this.ormsignorgMapping.toDomain(#ormsignorgdtos),'ehr-OrmSignOrg-Create')")
-    @ApiOperation(value = "createBatch", tags = {"OrmSignOrg" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建法人主体", tags = {"法人主体" },  notes = "批量新建法人主体")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormsignorgs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrmSignOrgDTO> ormsignorgdtos) {
         ormsignorgService.createBatch(ormsignorgMapping.toDomain(ormsignorgdtos));
@@ -122,7 +122,7 @@ public class OrmSignOrgResource {
     }
 
     @PreAuthorize("hasPermission(this.ormsignorgService.get(#ormsignorg_id),'ehr-OrmSignOrg-Remove')")
-    @ApiOperation(value = "Remove", tags = {"OrmSignOrg" },  notes = "Remove")
+    @ApiOperation(value = "删除法人主体", tags = {"法人主体" },  notes = "删除法人主体")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormsignorgs/{ormsignorg_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("ormsignorg_id") String ormsignorg_id) {
@@ -130,7 +130,7 @@ public class OrmSignOrgResource {
     }
 
     @PreAuthorize("hasPermission(this.ormsignorgService.getOrmsignorgByIds(#ids),'ehr-OrmSignOrg-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"OrmSignOrg" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除法人主体", tags = {"法人主体" },  notes = "批量删除法人主体")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormsignorgs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         ormsignorgService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class OrmSignOrgResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-HTQDDW-all')")
-	@ApiOperation(value = "fetch合同签订单位", tags = {"OrmSignOrg" } ,notes = "fetch合同签订单位")
+	@ApiOperation(value = "获取合同签订单位", tags = {"法人主体" } ,notes = "获取合同签订单位")
     @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/fetchhtqddw")
 	public ResponseEntity<List<OrmSignOrgDTO>> fetchHTQDDW(OrmSignOrgSearchContext context) {
         Page<OrmSignOrg> domains = ormsignorgService.searchHTQDDW(context) ;
@@ -151,7 +151,7 @@ public class OrmSignOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-HTQDDW-all')")
-	@ApiOperation(value = "search合同签订单位", tags = {"OrmSignOrg" } ,notes = "search合同签订单位")
+	@ApiOperation(value = "查询合同签订单位", tags = {"法人主体" } ,notes = "查询合同签订单位")
     @RequestMapping(method= RequestMethod.POST , value="/ormsignorgs/searchhtqddw")
 	public ResponseEntity<Page<OrmSignOrgDTO>> searchHTQDDW(@RequestBody OrmSignOrgSearchContext context) {
         Page<OrmSignOrg> domains = ormsignorgService.searchHTQDDW(context) ;
@@ -159,7 +159,7 @@ public class OrmSignOrgResource {
                 .body(new PageImpl(ormsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"OrmSignOrg" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"法人主体" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/fetchdefault")
 	public ResponseEntity<List<OrmSignOrgDTO>> fetchDefault(OrmSignOrgSearchContext context) {
         Page<OrmSignOrg> domains = ormsignorgService.searchDefault(context) ;
@@ -172,7 +172,7 @@ public class OrmSignOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"OrmSignOrg" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询DEFAULT", tags = {"法人主体" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormsignorgs/searchdefault")
 	public ResponseEntity<Page<OrmSignOrgDTO>> searchDefault(@RequestBody OrmSignOrgSearchContext context) {
         Page<OrmSignOrg> domains = ormsignorgService.searchDefault(context) ;
@@ -180,7 +180,7 @@ public class OrmSignOrgResource {
                 .body(new PageImpl(ormsignorgMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-CKBDWDFRZT-all')")
-	@ApiOperation(value = "fetch证书注册单位", tags = {"OrmSignOrg" } ,notes = "fetch证书注册单位")
+	@ApiOperation(value = "获取证书注册单位", tags = {"法人主体" } ,notes = "获取证书注册单位")
     @RequestMapping(method= RequestMethod.GET , value="/ormsignorgs/fetchckbdwdfrzt")
 	public ResponseEntity<List<OrmSignOrgDTO>> fetchCKBDWDFRZT(OrmSignOrgSearchContext context) {
         Page<OrmSignOrg> domains = ormsignorgService.searchCKBDWDFRZT(context) ;
@@ -193,7 +193,7 @@ public class OrmSignOrgResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmSignOrg-CKBDWDFRZT-all')")
-	@ApiOperation(value = "search证书注册单位", tags = {"OrmSignOrg" } ,notes = "search证书注册单位")
+	@ApiOperation(value = "查询证书注册单位", tags = {"法人主体" } ,notes = "查询证书注册单位")
     @RequestMapping(method= RequestMethod.POST , value="/ormsignorgs/searchckbdwdfrzt")
 	public ResponseEntity<Page<OrmSignOrgDTO>> searchCKBDWDFRZT(@RequestBody OrmSignOrgSearchContext context) {
         Page<OrmSignOrg> domains = ormsignorgService.searchCKBDWDFRZT(context) ;

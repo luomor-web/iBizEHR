@@ -1,18 +1,18 @@
 export default {
-    PIMCL_JGXMFB: {
+    EhrCodeList0083: {
         '1': '局机关',
         '2': '二级单位',
         '3': '地区机关',
         '4': '项目人员',
         empty: '',
     },
-    PIMCL_LAYERNO: {
+    EhrCodeList0020: {
         '10': '上',
         '20': '中',
         '30': '下',
         empty: '',
     },
-    PIMCL_NLFB: {
+    EhrCodeList0056: {
         '55': '55岁以上',
         '51': '51~55岁',
         '46': '46~50岁',
@@ -22,36 +22,36 @@ export default {
         '30': '30岁以下',
         empty: '',
     },
-    PIM_XL2: {
+    EhrCodeList0117: {
         empty: '',
     },
-    CFPLX: {
+    EhrCodeList0237: {
         empty: '',
     },
-    ORMCL_PostNature: {
+    EhrCodeList0190: {
         '10': '标准工时制',
         '20': '非标准工时制',
         empty: '',
     },
-    PIMCL_GZZT: {
+    EhrCodeList0228: {
         '10': '挂职进',
         '20': '挂职出',
         empty: '',
     },
-    PIMCL_ZCDJ: {
+    EhrCodeList0024: {
         empty: '',
     },
-    PARCL_Quarter: {
+    EhrCodeList0177: {
         '10': '第一季度',
         '20': '第二季度',
         '30': '第三季度',
         '40': '第四季度',
         empty: '',
     },
-    PIMCL_XX: {
+    EhrCodeList0018: {
         empty: '',
     },
-    PIMCL_ND: {
+    EhrCodeList0115: {
         '2012': '2012年',
         '2013': '2013年',
         '2014': '2014年',
@@ -73,18 +73,18 @@ export default {
         '2030': '2030年',
         empty: '',
     },
-    PCMCL_XKML: {
+    EhrCodeList0093: {
         empty: '',
     },
-    PIMCL_ZJ: {
+    EhrCodeList0234: {
         empty: '',
     },
-    PIMCL_YGXXJLSS: {
+    EhrCodeList0034: {
         '10': '管理员',
         '20': '个人',
         empty: '',
     },
-    PIMCL_XL3: {
+    EhrCodeList0236: {
         '1DR': '博士',
         '2MD': '硕士',
         '3UNDERGRAD': '本科',
@@ -92,7 +92,7 @@ export default {
         '5TECHSECSCH': '中专及以下',
         empty: '',
     },
-    PIMCL_TROOPTYPE: {
+    EhrCodeList0035: {
         empty: '',
     },
     CodeList82: {
@@ -110,46 +110,46 @@ export default {
         '12': '12月',
         empty: '',
     },
-    ORMCL_ZWLB: {
+    EhrCodeList0120: {
         '10': '局级机关',
         '20': '公司级机关',
         '30': '经理部机关',
         '40': '项目部',
         empty: '',
     },
-    PIMCL_KHJL: {
+    EhrCodeList0142: {
         empty: '',
     },
-    TRMCL_SPZT: {
+    EhrCodeList0127: {
         '10': '已通过',
         '20': '已拒绝',
         empty: '',
     },
-    SysOperator: {
+    EhrCodeList0249: {
         empty: '',
     },
-    PIMCL_HY: {
+    EhrCodeList0075: {
         empty: '',
     },
-    PIMCL_ZZMM: {
+    EhrCodeList0029: {
         empty: '',
     },
-    PIMCL_DAGHZT: {
+    EhrCodeList0149: {
         '10': '借阅中',
         '20': '已归还',
         empty: '',
     },
-    YesNo: {
+    EhrCodeList0054: {
         1: '是',
         0: '否',
         empty: '',
     },
-    PIMCL_BMLX: {
+    EhrCodeList0019: {
         '10': '机关部门',
         '20': '项目部门',
         empty: '',
     },
-    PIMCL_EXPACCOUNT: {
+    EhrCodeList0162: {
         '10': '老干部活动费',
         '20': '津补贴',
         '30': '企业效益奖金',
@@ -158,65 +158,65 @@ export default {
         '60': '其他费用（备注明细）',
         empty: '',
     },
-    PIMCL_STAFFTYPE: {
+    EhrCodeList0048: {
         '1000': '需审核',
         '2000': '不需审核',
         empty: '',
     },
-    PIMCL_YYZL: {
+    EhrCodeList0122: {
         empty: '',
     },
-    ORMCL_GWFL: {
+    EhrCodeList0073: {
         '0': '党内',
         '1': '行政',
         empty: '',
     },
-    PIMCL_RZLB: {
+    EhrCodeList0041: {
         empty: '',
     },
-    ORMCL_LEVEL2ORG: {
+    EhrCodeList0211: {
         empty: '',
     },
-    ZQ: {
+    EhrCodeList0076: {
         '10': '上半年度',
         '20': '下半年度',
         '30': '年度',
         empty: '',
     },
-    ORMCL_LegalEntity: {
+    EhrCodeList0022: {
         '10': '法人单位',
         '20': '非法人单位',
         empty: '',
     },
-    WORKSTATE: {
+    EhrCodeList0123: {
         '10': '可调配',
         '20': '不可调配',
         empty: '',
     },
-    PARCL_JXKHLX: {
+    EhrCodeList0092: {
         '10': '月度',
         '20': '季度',
         '30': '半年度',
         '40': '年度',
         empty: '',
     },
-    EhrCodeListDastate: {
+    EhrCodeList0057: {
         '10': '有效',
         '20': '失效',
         empty: '',
     },
-    PIMCL_HKLX: {
+    EhrCodeList0070: {
         empty: '',
     },
-    PIMCL_YGZT: {
+    EhrCodeList0014: {
         empty: '',
     },
-    PIMCL_EXITANDENTRY_TYPE: {
+    EhrCodeList0126: {
         '10': '因公',
         '20': '因私',
         empty: '',
     },
-    PIMCL_SPZT: {
+    EhrCodeList0138: {
         '10': '正常',
         '20': '待新增审批',
         '30': '待删除审批',
@@ -224,122 +224,122 @@ export default {
         '50': '已拒绝',
         empty: '',
     },
-    PIMCL_HTLX: {
+    EhrCodeList0084: {
         empty: '',
     },
-    PIMCL_ZJLX: {
+    EhrCodeList0231: {
         empty: '',
     },
-    PIMCL_JCLX: {
+    EhrCodeList0136: {
         empty: '',
     },
-    PIMCL_FPLX: {
+    EhrCodeList0205: {
         empty: '',
     },
-    PIMCL_TYPECONTRACT: {
+    EhrCodeList0107: {
         empty: '',
     },
-    PIMCL_JCJB: {
+    EhrCodeList0159: {
         empty: '',
     },
-    PIMCL_BGLX: {
+    EhrCodeList0232: {
         '10': '更新',
         '20': '更正',
         '30': '删除',
         empty: '',
     },
-    PIMCL_ZCLX: {
+    EhrCodeList0047: {
         empty: '',
     },
-    PIMCL_DANGJI: {
+    EhrCodeList0033: {
         empty: '',
     },
-    ATTCL_KQLX: {
+    EhrCodeList0098: {
         empty: '',
     },
-    PCMCL_RCXLLX: {
+    EhrCodeList0012: {
         'GL': '管理序列',
         'GW': '顾问序列',
         'ZY': '专业序列',
         'CZ': '操作序列',
         empty: '',
     },
-    ORMCL_QTBS: {
+    EhrCodeList0086: {
         '1': '启用',
         '0': '停用',
         empty: '',
     },
-    PIMCL_FPZT: {
+    EhrCodeList0137: {
         empty: '',
     },
-    DABGDD: {
+    EhrCodeList0040: {
         '10': '局总部',
         '20': '公司本部',
         '30': '其他',
         empty: '',
     },
-    PIMCL_RANK: {
+    EhrCodeList0025: {
         empty: '',
     },
-    PIMCL_XWLX: {
+    EhrCodeList0155: {
         empty: '',
     },
-    PIMCL_YGLX: {
+    EhrCodeList0167: {
         empty: '',
     },
-    ORMCL_QY: {
+    EhrCodeList0219: {
         empty: '',
     },
-    PIMCL_XXXZ: {
+    EhrCodeList0208: {
         empty: '',
     },
-    NATIVEPLACE: {
+    EhrCodeList0001: {
         empty: '',
     },
-    ORMCL_ZW: {
+    EhrCodeList0233: {
         empty: '',
     },
-    ORMCL_GW: {
+    EhrCodeList0050: {
         empty: '',
     },
-    ZSLX: {
+    EhrCodeList0109: {
         '10': '执（职）业资格证书',
         '5': '岗位（技能）证书',
         empty: '',
     },
-    EhrCodeListSsqy: {
+    EhrCodeList0250: {
         empty: '',
     },
-    PIMCL_XB: {
+    EhrCodeList0072: {
         empty: '',
     },
-    PIMCL_LEVEL: {
+    EhrCodeList0198: {
         empty: '',
     },
-    PIMCL_YBRGX: {
+    EhrCodeList0043: {
         empty: '',
     },
-    PIMCL_HTZT: {
+    EhrCodeList0030: {
         '20': '存续期',
         '30': '已过期',
         '50': '已终止',
         '40': '已续签',
         empty: '',
     },
-    PIMCL_JLCFLX: {
+    EhrCodeList0124: {
         'REWARD': '奖励',
         'PUNISHMENT': '惩罚',
         empty: '',
     },
-    PIMCL_SFLJ: {
+    EhrCodeList0097: {
         '1': '是',
         '0': '否',
         empty: '',
     },
-    PIMCL_XL: {
+    EhrCodeList0131: {
         empty: '',
     },
-    PIMCL_FJ: {
+    EhrCodeList0016: {
         '10': '学历',
         '20': '学位',
         '30': '证书',
@@ -351,10 +351,10 @@ export default {
         '80': '语言能力',
         empty: '',
     },
-    ORMCL_GWTYPE: {
+    EhrCodeList0140: {
         empty: '',
     },
-    PIMCL_EXITANDENTRY_WFState: {
+    EhrCodeList0106: {
         '10': '拟稿',
         '20': '审批中',
         '30': '已通过',
@@ -362,47 +362,47 @@ export default {
         '50': '已取消',
         empty: '',
     },
-    PIMCL_ARCHICEOPETYPE: {
+    EhrCodeList0227: {
         '10': '调出操作',
         '20': '调入操作',
         empty: '',
     },
-    PIMCL_JXQ: {
+    EhrCodeList0187: {
         '12': '1年',
         '6': '6个月',
         '3': '3个月',
         empty: '',
     },
-    PIMCL_NATION: {
+    EhrCodeList0066: {
         empty: '',
     },
-    PIMCL_JLCZZ: {
+    EhrCodeList0118: {
         'ACTION': '执行',
         'UNACTION': '不执行',
         empty: '',
     },
-    PARCL_PJ: {
+    EhrCodeList0005: {
         'A': 'A',
         'B': 'B',
         'C': 'C',
         empty: '',
     },
-    PIMCL_DAZT: {
+    EhrCodeList0169: {
         '10': '员工在档',
         '20': '员工不在档',
         '25': '非员工不在档',
         '30': '非员工在档',
         empty: '',
     },
-    LanguageLevel: {
+    EhrCodeList0146: {
         empty: '',
     },
-    PIMCL_ZGZT: {
+    EhrCodeList0179: {
         '10': '在岗',
         '20': '离岗',
         empty: '',
     },
-    PIMCL_XMJB: {
+    EhrCodeList0201: {
         '0': '特级',
         '1': '一级',
         '2': '二级',

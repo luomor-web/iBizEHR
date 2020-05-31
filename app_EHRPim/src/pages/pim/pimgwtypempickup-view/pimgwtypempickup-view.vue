@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMGWTYPEMPickupViewBase from './pimgwtypempickup-view-base.vue';
 
-import view_pickupviewpanel from '@widgets/pimgwtype/mpickup-viewpickupviewpanel-pickupviewpanel/mpickup-viewpickupviewpanel-pickupviewpanel.vue';
+import view_pickupviewpanel from '@widgets/pim-gw-type/mpickup-viewpickupviewpanel-pickupviewpanel/mpickup-viewpickupviewpanel-pickupviewpanel.vue';
 
 /**
  * 岗位类型

@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMARMYCADRESEditViewBase from './pimarmycadresedit-view-base.vue';
 
-import view_form from '@widgets/pimarmycadres/admin-gredit-form-form/admin-gredit-form-form.vue';
+import view_form from '@widgets/pim-armycadres/admin-gredit-form-form/admin-gredit-form-form.vue';
 
 /**
  * 军转干部编辑视图

@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMTITLECATALOGUEService from '@/service/pimtitlecatalogue/pimtitlecatalogue-service';
+import PimTitleCatalogueService from '@/service/pim-title-catalogue/pim-title-catalogue-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMTITLECATALOGUEGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMTITLECATALOGUEService}
+     * @type {PimTitleCatalogueService}
      * @memberof PIMTITLECATALOGUEGridViewBase
      */
-    public appEntityService: PIMTITLECATALOGUEService = new PIMTITLECATALOGUEService;
+    public appEntityService: PimTitleCatalogueService = new PimTitleCatalogueService;
 
 
     /**
@@ -390,7 +390,7 @@ export default class PIMTITLECATALOGUEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PIMTITLECATALOGUE");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PimTitleCatalogue");
     }
 
     /**
@@ -419,7 +419,7 @@ export default class PIMTITLECATALOGUEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PIMTITLECATALOGUE");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PimTitleCatalogue");
     }
 
     /**
@@ -448,7 +448,7 @@ export default class PIMTITLECATALOGUEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMTITLECATALOGUE");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimTitleCatalogue");
     }
 
     /**
@@ -477,7 +477,7 @@ export default class PIMTITLECATALOGUEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMTITLECATALOGUE");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimTitleCatalogue");
     }
 
     /**
@@ -506,7 +506,7 @@ export default class PIMTITLECATALOGUEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMTITLECATALOGUE");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimTitleCatalogue");
     }
 
     /**

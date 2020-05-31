@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PCMEducationExperienceService from '@/service/pcmeducation-experience/pcmeducation-experience-service';
+import PcmEducationExperienceService from '@/service/pcm-education-experience/pcm-education-experience-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PCMEducationExperienceJYBJGridViewBase extends GridViewBase
     /**
      * 实体服务对象
      *
-     * @type {PCMEducationExperienceService}
+     * @type {PcmEducationExperienceService}
      * @memberof PCMEducationExperienceJYBJGridViewBase
      */
-    public appEntityService: PCMEducationExperienceService = new PCMEducationExperienceService;
+    public appEntityService: PcmEducationExperienceService = new PcmEducationExperienceService;
 
 
     /**
@@ -390,7 +390,7 @@ export default class PCMEducationExperienceJYBJGridViewBase extends GridViewBase
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PCMEducationExperience");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PcmEducationExperience");
     }
 
     /**
@@ -419,7 +419,7 @@ export default class PCMEducationExperienceJYBJGridViewBase extends GridViewBase
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PCMEducationExperience");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PcmEducationExperience");
     }
 
     /**
@@ -448,7 +448,7 @@ export default class PCMEducationExperienceJYBJGridViewBase extends GridViewBase
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PCMEducationExperience");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PcmEducationExperience");
     }
 
     /**
@@ -477,7 +477,7 @@ export default class PCMEducationExperienceJYBJGridViewBase extends GridViewBase
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PCMEducationExperience");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PcmEducationExperience");
     }
 
     /**
@@ -506,7 +506,7 @@ export default class PCMEducationExperienceJYBJGridViewBase extends GridViewBase
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PCMEducationExperience");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PcmEducationExperience");
     }
 
     /**

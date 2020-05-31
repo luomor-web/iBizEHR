@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMCONTRACTService from '@/service/pimcontract/pimcontract-service';
+import PimContractService from '@/service/pim-contract/pim-contract-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMCONTRACTEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMCONTRACTService}
+     * @type {PimContractService}
      * @memberof PIMCONTRACTEditViewBase
      */
-    public appEntityService: PIMCONTRACTService = new PIMCONTRACTService;
+    public appEntityService: PimContractService = new PimContractService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PIMCONTRACTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimContract");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PIMCONTRACTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimContract");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PIMCONTRACTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimContract");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PIMCONTRACTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimContract");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PIMCONTRACTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimContract");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PIMCONTRACTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimContract");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PIMCONTRACTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimContract");
     }
 
     /**

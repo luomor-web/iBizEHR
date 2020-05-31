@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMBMGWBZEditViewBase from './ormbmgwbzedit-view-base.vue';
 
-import view_form from '@widgets/ormbmgwbz/main-form/main-form.vue';
+import view_form from '@widgets/orm-bmgwbz/main-form/main-form.vue';
 
 /**
  * 岗位编制明细

@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMTYPECONTRACTService from '@/service/pimtypecontract/pimtypecontract-service';
+import PimTypeContractService from '@/service/pim-type-contract/pim-type-contract-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMTYPECONTRACTRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMTYPECONTRACTService}
+     * @type {PimTypeContractService}
      * @memberof PIMTYPECONTRACTRedirectViewBase
      */
-    public appEntityService: PIMTYPECONTRACTService = new PIMTYPECONTRACTService;
+    public appEntityService: PimTypeContractService = new PimTypeContractService;
 
 
     /**

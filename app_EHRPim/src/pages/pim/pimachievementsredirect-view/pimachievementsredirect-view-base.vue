@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMACHIEVEMENTSService from '@/service/pimachievements/pimachievements-service';
+import PimAchievementsService from '@/service/pim-achievements/pim-achievements-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMACHIEVEMENTSRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMACHIEVEMENTSService}
+     * @type {PimAchievementsService}
      * @memberof PIMACHIEVEMENTSRedirectViewBase
      */
-    public appEntityService: PIMACHIEVEMENTSService = new PIMACHIEVEMENTSService;
+    public appEntityService: PimAchievementsService = new PimAchievementsService;
 
 
     /**

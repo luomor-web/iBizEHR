@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMDETAILEditViewBase from './pcmdetailedit-view-base.vue';
 
-import view_form from '@widgets/pcmdetail/main-form/main-form.vue';
+import view_form from '@widgets/pcm-detail/main-form/main-form.vue';
 
 /**
  * 人员明细表编辑视图

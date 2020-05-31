@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMPROFILESPYYEditViewBase from './pcmprofilespyyedit-view-base.vue';
 
-import view_form from '@widgets/pcmprofilespyy/main-form/main-form.vue';
+import view_form from '@widgets/pcm-profile-spyy/main-form/main-form.vue';
 
 /**
  * 应聘者审批原因编辑视图

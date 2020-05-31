@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMEXPACCOUNTService from '@/service/pimexpaccount/pimexpaccount-service';
+import PimExpaccountService from '@/service/pim-expaccount/pim-expaccount-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMEXPACCOUNTGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMEXPACCOUNTService}
+     * @type {PimExpaccountService}
      * @memberof PIMEXPACCOUNTGridViewBase
      */
-    public appEntityService: PIMEXPACCOUNTService = new PIMEXPACCOUNTService;
+    public appEntityService: PimExpaccountService = new PimExpaccountService;
 
 
     /**
@@ -393,7 +393,7 @@ export default class PIMEXPACCOUNTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.New(datas, contextJO,paramJO,  $event, xData,this,"PIMEXPACCOUNT");
+        this.New(datas, contextJO,paramJO,  $event, xData,this,"PimExpaccount");
     }
 
     /**
@@ -422,7 +422,7 @@ export default class PIMEXPACCOUNTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMEXPACCOUNT");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimExpaccount");
     }
 
     /**
@@ -451,7 +451,7 @@ export default class PIMEXPACCOUNTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PIMEXPACCOUNT");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PimExpaccount");
     }
 
     /**
@@ -480,7 +480,7 @@ export default class PIMEXPACCOUNTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMEXPACCOUNT");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimExpaccount");
     }
 
     /**
@@ -509,7 +509,7 @@ export default class PIMEXPACCOUNTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMEXPACCOUNT");
+        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PimExpaccount");
     }
 
     /**
@@ -538,7 +538,7 @@ export default class PIMEXPACCOUNTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMEXPACCOUNT");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimExpaccount");
     }
 
     /**

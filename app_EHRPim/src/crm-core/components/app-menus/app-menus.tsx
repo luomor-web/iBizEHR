@@ -96,6 +96,7 @@ export class AppMenus extends Vue {
         if (this.$route && this.$route.matched.length <= 1) {
             this.calcDefaultActive(this.menus);
             this.defaultOpeneds = this.defaultOpeneds.reverse();
+            this.calcDefaultOpend(this.menus);
         }
     }
 
@@ -118,6 +119,23 @@ export class AppMenus extends Vue {
                 this.defaultActive = item.id;
                 this.menuActive(item);
                 return true;
+            }
+        });
+    }
+    /**
+     * 递归计算默认展开
+     *
+     * @protected
+     * @param {any[]} menus
+     * @memberof AppMenus
+     */
+    protected calcDefaultOpend(menus: any[]){
+       menus.forEach((item: any) => {
+            if (item.items) {
+                this.calcDefaultOpend(item.items);
+            }
+            if(item.expanded){
+                this.defaultOpeneds.push(item.id)
             }
         });
     }
@@ -188,7 +206,7 @@ export class AppMenus extends Vue {
      */
     protected renderLeftModeMenu(): any {
         return <div class="app-menus-vertical-wrapper">
-            <el-menu class="app-menus-vertical" default-active={this.defaultActive}>
+            <el-menu class="app-menus-vertical" default-active={this.defaultActive} default-openeds={this.defaultOpeneds}>
                 {this.menus.map((item: any) => {
                     if (item.hidden) {
                         return;

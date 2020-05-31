@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PCMPROFILEService from '@/service/pcmprofile/pcmprofile-service';
+import PcmProfileService from '@/service/pcm-profile/pcm-profile-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PCMPROFILEYPZXX_CSRCYJEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMPROFILEService}
+     * @type {PcmProfileService}
      * @memberof PCMPROFILEYPZXX_CSRCYJEditViewBase
      */
-    public appEntityService: PCMPROFILEService = new PCMPROFILEService;
+    public appEntityService: PcmProfileService = new PcmProfileService;
 
 
     /**
@@ -288,7 +288,7 @@ export default class PCMPROFILEYPZXX_CSRCYJEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILE");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PcmProfile");
     }
 
     /**
@@ -317,7 +317,7 @@ export default class PCMPROFILEYPZXX_CSRCYJEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILE");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmProfile");
     }
 
     /**
@@ -346,7 +346,7 @@ export default class PCMPROFILEYPZXX_CSRCYJEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PCMPROFILE");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PcmProfile");
     }
 
     /**

@@ -47,11 +47,11 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMPERSONService from '@/service/pimperson/pimperson-service';
+import PimPersonService from '@/service/pim-person/pim-person-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
-import PIMPERSONUIService from '@/uiservice/pimperson/pimperson-ui-service';
+import PimPersonUIService from '@/uiservice/pim-person/pim-person-ui-service';
 
 /**
  * 员工信息基类
@@ -67,10 +67,10 @@ export default class PIMPERSONZDEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMPERSONService}
+     * @type {PimPersonService}
      * @memberof PIMPERSONZDEditViewBase
      */
-    public appEntityService: PIMPERSONService = new PIMPERSONService;
+    public appEntityService: PimPersonService = new PimPersonService;
 
 
     /**
@@ -279,8 +279,8 @@ export default class PIMPERSONZDEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:PIMPERSONUIService  = new PIMPERSONUIService();
-        curUIService.PIMPERSON_OpenEditView(datas,contextJO, paramJO,  $event, xData,this,"PIMPERSON");
+        const curUIService:PimPersonUIService  = new PimPersonUIService();
+        curUIService.PimPerson_OpenEditView(datas,contextJO, paramJO,  $event, xData,this,"PimPerson");
     }
 
 

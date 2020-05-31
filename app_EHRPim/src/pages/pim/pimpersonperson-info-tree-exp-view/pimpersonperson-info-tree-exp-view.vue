@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMPERSONPersonInfoTreeExpViewBase from './pimpersonperson-info-tree-exp-view-base.vue';
 
-import view_treeexpbar from '@widgets/pimperson/person-info-tree-exp-viewtreeexpbar-treeexpbar/person-info-tree-exp-viewtreeexpbar-treeexpbar.vue';
+import view_treeexpbar from '@widgets/pim-person/person-info-tree-exp-viewtreeexpbar-treeexpbar/person-info-tree-exp-viewtreeexpbar-treeexpbar.vue';
 
 /**
  * 人员信息树导航视图

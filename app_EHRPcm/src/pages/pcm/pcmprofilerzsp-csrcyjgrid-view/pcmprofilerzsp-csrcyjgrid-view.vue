@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PCMPROFILERZSP_CSRCYJGridViewBase from './pcmprofilerzsp-csrcyjgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmprofile/rzsp-csrcyj-grid/rzsp-csrcyj-grid.vue';
-import view_searchform from '@widgets/pcmprofile/serach-csrcyj-searchform/serach-csrcyj-searchform.vue';
+import view_grid from '@widgets/pcm-profile/rzsp-csrcyj-grid/rzsp-csrcyj-grid.vue';
+import view_searchform from '@widgets/pcm-profile/serach-csrcyj-searchform/serach-csrcyj-searchform.vue';
 
 /**
  * 局总部初审

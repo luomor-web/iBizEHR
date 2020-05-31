@@ -67,7 +67,7 @@
         "caption": "组织选择表格视图",
         "viewtype": "DEPICKUPGRIDVIEW",
         "viewmodule": "ORM",
-        "viewname": "ORMORGXMBQPickupGridView",
+        "viewname": "OrmOrgXMBQPickupGridView",
         "viewtag": "03478df3682bcaae0f318d655b7373a4",
         "memo": ""
     },
@@ -297,7 +297,7 @@
         "memo": ""
     },
     "contractsignorggridview": {
-        "title": "法人主体设置表格视图",
+        "title": "法人主体设置",
         "caption": "法人主体设置",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "ORM",
@@ -613,7 +613,7 @@
     },
     "ormpostmpickupview": {
         "title": "岗位管理数据多项选择视图",
-        "caption": "岗位集",
+        "caption": "岗位",
         "viewtype": "DEMPICKUPVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMPOSTMPickupView",
@@ -829,7 +829,7 @@
     },
     "ormposteditview2": {
         "title": "岗位管理编辑视图",
-        "caption": "岗位集",
+        "caption": "岗位",
         "viewtype": "DEEDITVIEW2",
         "viewmodule": "ORM",
         "viewname": "ORMPOSTEditView2",
@@ -991,7 +991,7 @@
     },
     "ormpostpickupview": {
         "title": "岗位管理数据选择视图",
-        "caption": "岗位集",
+        "caption": "岗位",
         "viewtype": "DEPICKUPVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMPOSTPickupView",
@@ -1161,8 +1161,8 @@
         "memo": ""
     },
     "ormpostgwxhwhgridview": {
-        "title": "岗位集设置",
-        "caption": "岗位集设置",
+        "title": "岗位设置",
+        "caption": "岗位设置",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMPOSTGWXHWHGridView",
@@ -1279,7 +1279,7 @@
     },
     "ormpostpickupgridview": {
         "title": "岗位管理选择表格视图",
-        "caption": "岗位集",
+        "caption": "岗位",
         "viewtype": "DEPICKUPGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMPOSTPickupGridView",
@@ -1458,8 +1458,8 @@
         "memo": ""
     },
     "ormsignorggridview": {
-        "title": "法人主体表格视图",
-        "caption": "法人主体",
+        "title": "法人主体维护",
+        "caption": "法人主体维护",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "ORM",
         "viewname": "OrmSignOrgGridView",
@@ -1538,6 +1538,15 @@
         "viewtag": "9f6ce73e8538cadb8176c23ba63a1c04",
         "memo": ""
     },
+    "ormpostxjgridview": {
+        "title": "岗位设置",
+        "caption": "岗位设置",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "ORM",
+        "viewname": "OrmPostXJGridView",
+        "viewtag": "a103d0ea2d848ed7acc56f4c8679a619",
+        "memo": ""
+    },
     "ormpostdetailspickupview": {
         "title": "岗位明细数据选择视图",
         "caption": "岗位明细",
@@ -1585,7 +1594,7 @@
     },
     "ormpostorgidpickupview": {
         "title": "岗位管理数据选择视图",
-        "caption": "岗位集",
+        "caption": "岗位",
         "viewtype": "DEPICKUPVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMPOSTORGIDPickupView",
@@ -1945,7 +1954,7 @@
     },
     "ormpostredirectview": {
         "title": "岗位管理数据重定向视图",
-        "caption": "岗位集",
+        "caption": "岗位",
         "viewtype": "DEREDIRECTVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMPOSTRedirectView",
@@ -2143,7 +2152,7 @@
     },
     "ormpostejormorgidpickupview": {
         "title": "岗位管理数据选择视图",
-        "caption": "岗位集",
+        "caption": "岗位",
         "viewtype": "DEPICKUPVIEW",
         "viewmodule": "ORM",
         "viewname": "ORMPOSTEJORMORGIDPickupView",

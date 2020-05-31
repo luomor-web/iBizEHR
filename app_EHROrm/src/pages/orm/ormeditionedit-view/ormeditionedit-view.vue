@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMEDITIONEditViewBase from './ormeditionedit-view-base.vue';
 
-import view_form from '@widgets/ormedition/main-form/main-form.vue';
+import view_form from '@widgets/orm-edition/main-form/main-form.vue';
 
 /**
  * 版本对照表编辑视图

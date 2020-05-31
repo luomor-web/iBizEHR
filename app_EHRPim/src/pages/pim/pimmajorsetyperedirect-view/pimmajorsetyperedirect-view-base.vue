@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMMAJORSETYPEService from '@/service/pimmajorsetype/pimmajorsetype-service';
+import PimMajorSetypeService from '@/service/pim-major-setype/pim-major-setype-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMMAJORSETYPERedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMMAJORSETYPEService}
+     * @type {PimMajorSetypeService}
      * @memberof PIMMAJORSETYPERedirectViewBase
      */
-    public appEntityService: PIMMAJORSETYPEService = new PIMMAJORSETYPEService;
+    public appEntityService: PimMajorSetypeService = new PimMajorSetypeService;
 
 
     /**

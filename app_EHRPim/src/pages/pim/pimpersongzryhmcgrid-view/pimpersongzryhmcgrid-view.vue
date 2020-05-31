@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMPERSONGZRYHMCGridViewBase from './pimpersongzryhmcgrid-view-base.vue';
 
-import view_grid from '@widgets/pimperson/gzdq-grid/gzdq-grid.vue';
-import view_searchform from '@widgets/pimperson/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-person/gzdq-grid/gzdq-grid.vue';
+import view_searchform from '@widgets/pim-person/default-searchform/default-searchform.vue';
 
 /**
  * 挂职人员花名册

@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import TDZWXXEditViewBase from './tdzwxxedit-view-base.vue';
 
-import view_form from '@widgets/tdzwxx/main-form/main-form.vue';
+import view_form from '@widgets/pcm-tdzwxx/main-form/main-form.vue';
 
 /**
  * 投递职位摘要信息

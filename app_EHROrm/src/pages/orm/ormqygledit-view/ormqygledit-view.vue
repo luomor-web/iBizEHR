@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMQYGLEditViewBase from './ormqygledit-view-base.vue';
 
-import view_form from '@widgets/ormqygl/main-form/main-form.vue';
+import view_form from '@widgets/orm-qygl/main-form/main-form.vue';
 
 /**
  * 区域补贴

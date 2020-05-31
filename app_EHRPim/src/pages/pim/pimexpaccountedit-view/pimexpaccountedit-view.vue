@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMEXPACCOUNTEditViewBase from './pimexpaccountedit-view-base.vue';
 
-import view_form from '@widgets/pimexpaccount/main-form/main-form.vue';
+import view_form from '@widgets/pim-expaccount/main-form/main-form.vue';
 
 /**
  * 费用台账编辑视图

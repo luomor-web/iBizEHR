@@ -479,7 +479,7 @@ const router = new Router({
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormorgxmbqpickup-grid-view/ormorgxmbqpickup-grid-view.vue'),
+                    component: () => import('@pages/orm/orm-org-xmbqpickup-grid-view/orm-org-xmbqpickup-grid-view.vue'),
                 },
                 {
                     path: 'pimqualtypes/:pimqualtype?/pickupview/:pickupview?',
@@ -1499,12 +1499,12 @@ const router = new Router({
                     component: () => import('@pages/pim/pimworkhistorypim-work-grid-view/pimworkhistorypim-work-grid-view.vue'),
                 },
                 {
-                    path: 'archivescenters/:archivescenter?/editview/:editview?',
+                    path: 'pimarchivescenters/:pimarchivescenter?/editview/:editview?',
                     meta: {
-                        caption: 'entities.archivescenter.views.editview.caption',
+                        caption: 'entities.pimarchivescenter.views.editview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'archivescenters', parameterName: 'archivescenter' },
+                            { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
                             { pathName: 'editview', parameterName: 'editview' },
                         ],
                         requireAuth: true,
@@ -1543,12 +1543,12 @@ const router = new Router({
                     component: () => import('@pages/pim/pimresearchfindingsresearchgrid-view/pimresearchfindingsresearchgrid-view.vue'),
                 },
                 {
-                    path: 'archivescenters/:archivescenter?/pickupgridview/:pickupgridview?',
+                    path: 'pimarchivescenters/:pimarchivescenter?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.archivescenter.views.pickupgridview.caption',
+                        caption: 'entities.pimarchivescenter.views.pickupgridview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'archivescenters', parameterName: 'archivescenter' },
+                            { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
                             { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
                         ],
                         requireAuth: true,
@@ -2024,6 +2024,20 @@ const router = new Router({
                     component: () => import('@pages/pim/pimpersonchangehis-rec-grid-view/pimpersonchangehis-rec-grid-view.vue'),
                 },
                 {
+                    path: 'ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
+                    meta: {
+                        caption: 'entities.ormpost.views.ejormorgidpickupgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormposts', parameterName: 'ormpost' },
+                            { pathName: 'ejormorgidpickupgridview', parameterName: 'ejormorgidpickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormpostejormorgidpickup-grid-view/ormpostejormorgidpickup-grid-view.vue'),
+                },
+                {
                     path: 'ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
                     meta: {
                         caption: 'entities.ormpost.views.ejormorgidpickupgridview.caption',
@@ -2090,6 +2104,20 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/orm-sign-org-bdwpickup-view/orm-sign-org-bdwpickup-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupview/:ejormorgidpickupview?',
+                    meta: {
+                        caption: 'entities.ormpost.views.ejormorgidpickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormposts', parameterName: 'ormpost' },
+                            { pathName: 'ejormorgidpickupview', parameterName: 'ejormorgidpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormpostejormorgidpickup-view/ormpostejormorgidpickup-view.vue'),
                 },
                 {
                     path: 'ormposts/:ormpost?/ejormorgidpickupview/:ejormorgidpickupview?',
@@ -2332,13 +2360,13 @@ const router = new Router({
                     component: () => import('@pages/pim/pimresearchfindingsedit-view/pimresearchfindingsedit-view.vue'),
                 },
                 {
-                    path: 'pimpeople/:pimperson?/trmtrianpeople/:trmtrianperson?/editview/:editview?',
+                    path: 'pimpeople/:pimperson?/trmtrainpeople/:trmtrainperson?/editview/:editview?',
                     meta: {
-                        caption: 'entities.trmtrianperson.views.editview.caption',
+                        caption: 'entities.trmtrainperson.views.editview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'trmtrianpeople', parameterName: 'trmtrianperson' },
+                            { pathName: 'trmtrainpeople', parameterName: 'trmtrainperson' },
                             { pathName: 'editview', parameterName: 'editview' },
                         ],
                         requireAuth: true,
@@ -2346,12 +2374,12 @@ const router = new Router({
                     component: () => import('@pages/trm/trmtrianpersonedit-view/trmtrianpersonedit-view.vue'),
                 },
                 {
-                    path: 'trmtrianpeople/:trmtrianperson?/editview/:editview?',
+                    path: 'trmtrainpeople/:trmtrainperson?/editview/:editview?',
                     meta: {
-                        caption: 'entities.trmtrianperson.views.editview.caption',
+                        caption: 'entities.trmtrainperson.views.editview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'trmtrianpeople', parameterName: 'trmtrianperson' },
+                            { pathName: 'trmtrainpeople', parameterName: 'trmtrainperson' },
                             { pathName: 'editview', parameterName: 'editview' },
                         ],
                         requireAuth: true,
@@ -2833,12 +2861,12 @@ const router = new Router({
                     component: () => import('@pages/orm/ormorghtgldwqpickup-grid-view/ormorghtgldwqpickup-grid-view.vue'),
                 },
                 {
-                    path: 'archivescenters/:archivescenter?/gridview/:gridview?',
+                    path: 'pimarchivescenters/:pimarchivescenter?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.archivescenter.views.gridview.caption',
+                        caption: 'entities.pimarchivescenter.views.gridview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'archivescenters', parameterName: 'archivescenter' },
+                            { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
                             { pathName: 'gridview', parameterName: 'gridview' },
                         ],
                         requireAuth: true,
@@ -3008,15 +3036,15 @@ const router = new Router({
                     component: () => import('@pages/pim/pimcontractwssgrid-view/pimcontractwssgrid-view.vue'),
                 },
                 {
-                    path: 'pimpeople/:pimperson?/trmtrianpeople/:trmtrianperson?/gridview/:gridview?',
+                    path: 'pimpeople/:pimperson?/trmtrainpeople/:trmtrainperson?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.trmtrianperson.views.gridview.caption',
+                        caption: 'entities.trmtrainperson.views.gridview.caption',
                         imgPath: '../../../img/kfgl/1/peixunjiluguanli.png',
                         iconCls: '',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'trmtrianpeople', parameterName: 'trmtrianperson' },
+                            { pathName: 'trmtrainpeople', parameterName: 'trmtrainperson' },
                             { pathName: 'gridview', parameterName: 'gridview' },
                         ],
                         requireAuth: true,
@@ -3024,14 +3052,14 @@ const router = new Router({
                     component: () => import('@pages/trm/trmtrianpersongrid-view/trmtrianpersongrid-view.vue'),
                 },
                 {
-                    path: 'trmtrianpeople/:trmtrianperson?/gridview/:gridview?',
+                    path: 'trmtrainpeople/:trmtrainperson?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.trmtrianperson.views.gridview.caption',
+                        caption: 'entities.trmtrainperson.views.gridview.caption',
                         imgPath: '../../../img/kfgl/1/peixunjiluguanli.png',
                         iconCls: '',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'trmtrianpeople', parameterName: 'trmtrianperson' },
+                            { pathName: 'trmtrainpeople', parameterName: 'trmtrainperson' },
                             { pathName: 'gridview', parameterName: 'gridview' },
                         ],
                         requireAuth: true,
@@ -3131,12 +3159,12 @@ const router = new Router({
                     component: () => import('@pages/pim/pimpersonedit-view/pimpersonedit-view.vue'),
                 },
                 {
-                    path: 'archivescenters/:archivescenter?/pickupview/:pickupview?',
+                    path: 'pimarchivescenters/:pimarchivescenter?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.archivescenter.views.pickupview.caption',
+                        caption: 'entities.pimarchivescenter.views.pickupview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'archivescenters', parameterName: 'archivescenter' },
+                            { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
                             { pathName: 'pickupview', parameterName: 'pickupview' },
                         ],
                         requireAuth: true,
@@ -3693,7 +3721,7 @@ const router = new Router({
             {
                 path: 'archivalcatalogueredirectview/:archivalcatalogueredirectview?',
                 meta: {
-                    caption: 'entities.archivalcatalogue.views.redirectview.caption',
+                    caption: 'entities.pimarchivalcatalogue.views.redirectview.caption',
                     parameters: [
                         { pathName: 'archivalcatalogueredirectview', parameterName: 'archivalcatalogueredirectview' },
                     ],
@@ -3770,7 +3798,7 @@ const router = new Router({
             {
                 path: 'archivescenterredirectview/:archivescenterredirectview?',
                 meta: {
-                    caption: 'entities.archivescenter.views.redirectview.caption',
+                    caption: 'entities.pimarchivescenter.views.redirectview.caption',
                     parameters: [
                         { pathName: 'archivescenterredirectview', parameterName: 'archivescenterredirectview' },
                     ],
@@ -3858,7 +3886,7 @@ const router = new Router({
             {
                 path: 'contractsignorgredirectview/:contractsignorgredirectview?',
                 meta: {
-                    caption: 'entities.contractsignorg.views.redirectview.caption',
+                    caption: 'entities.pimcontractsignorg.views.redirectview.caption',
                     parameters: [
                         { pathName: 'contractsignorgredirectview', parameterName: 'contractsignorgredirectview' },
                     ],
@@ -3935,7 +3963,7 @@ const router = new Router({
             {
                 path: 'archivesmanageredirectview/:archivesmanageredirectview?',
                 meta: {
-                    caption: 'entities.archivesmanage.views.redirectview.caption',
+                    caption: 'entities.pimarchivesmanage.views.redirectview.caption',
                     parameters: [
                         { pathName: 'archivesmanageredirectview', parameterName: 'archivesmanageredirectview' },
                     ],
@@ -4077,11 +4105,11 @@ const router = new Router({
         component: () => import('@pages/pim/pimtitlegrid-view/pimtitlegrid-view.vue'),
     },
     {
-        path: '/archivalcatalogues/:archivalcatalogue?/editview/:editview?',
+        path: '/pimarchivalcatalogues/:pimarchivalcatalogue?/editview/:editview?',
         meta: {
-            caption: 'entities.archivalcatalogue.views.editview.caption',
+            caption: 'entities.pimarchivalcatalogue.views.editview.caption',
             parameters: [
-                { pathName: 'archivalcatalogues', parameterName: 'archivalcatalogue' },
+                { pathName: 'pimarchivalcatalogues', parameterName: 'pimarchivalcatalogue' },
                 { pathName: 'editview', parameterName: 'editview' },
             ],
             requireAuth: true,
@@ -4163,11 +4191,11 @@ const router = new Router({
         component: () => import('@pages/pim/pimqualtypepickup-view/pimqualtypepickup-view.vue'),
     },
     {
-        path: '/archivalcatalogues/:archivalcatalogue?/pickupgridview/:pickupgridview?',
+        path: '/pimarchivalcatalogues/:pimarchivalcatalogue?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.archivalcatalogue.views.pickupgridview.caption',
+            caption: 'entities.pimarchivalcatalogue.views.pickupgridview.caption',
             parameters: [
-                { pathName: 'archivalcatalogues', parameterName: 'archivalcatalogue' },
+                { pathName: 'pimarchivalcatalogues', parameterName: 'pimarchivalcatalogue' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
             ],
             requireAuth: true,
@@ -4783,11 +4811,11 @@ const router = new Router({
                 component: () => import('@pages/pim/pimvocationalcatalogredirect-view/pimvocationalcatalogredirect-view.vue'),
             },
     {
-        path: '/archivesmanages/:archivesmanage?/editview/:editview?',
+        path: '/pimarchivesmanages/:pimarchivesmanage?/editview/:editview?',
         meta: {
-            caption: 'entities.archivesmanage.views.editview.caption',
+            caption: 'entities.pimarchivesmanage.views.editview.caption',
             parameters: [
-                { pathName: 'archivesmanages', parameterName: 'archivesmanage' },
+                { pathName: 'pimarchivesmanages', parameterName: 'pimarchivesmanage' },
                 { pathName: 'editview', parameterName: 'editview' },
             ],
             requireAuth: true,
@@ -4870,11 +4898,11 @@ const router = new Router({
         component: () => import('@pages/pim/pimarchivesrecordedit-view/pimarchivesrecordedit-view.vue'),
     },
     {
-        path: '/archivalcatalogues/:archivalcatalogue?/pickupview/:pickupview?',
+        path: '/pimarchivalcatalogues/:pimarchivalcatalogue?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.archivalcatalogue.views.pickupview.caption',
+            caption: 'entities.pimarchivalcatalogue.views.pickupview.caption',
             parameters: [
-                { pathName: 'archivalcatalogues', parameterName: 'archivalcatalogue' },
+                { pathName: 'pimarchivalcatalogues', parameterName: 'pimarchivalcatalogue' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
             ],
             requireAuth: true,
@@ -4952,6 +4980,19 @@ const router = new Router({
         component: () => import('@pages/pim/pimcontractgrid-view/pimcontractgrid-view.vue'),
     },
     {
+        path: '/ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupview/:ejormorgidpickupview?',
+        meta: {
+            caption: 'entities.ormpost.views.ejormorgidpickupview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormposts', parameterName: 'ormpost' },
+                { pathName: 'ejormorgidpickupview', parameterName: 'ejormorgidpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormpostejormorgidpickup-view/ormpostejormorgidpickup-view.vue'),
+    },
+    {
         path: '/ormposts/:ormpost?/ejormorgidpickupview/:ejormorgidpickupview?',
         meta: {
             caption: 'entities.ormpost.views.ejormorgidpickupview.caption',
@@ -4973,7 +5014,7 @@ const router = new Router({
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/ormorgxmbqpickup-grid-view/ormorgxmbqpickup-grid-view.vue'),
+        component: () => import('@pages/orm/orm-org-xmbqpickup-grid-view/orm-org-xmbqpickup-grid-view.vue'),
     },
     {
         path: '/pcmdetails/:pcmdetail?/editview/:editview?',
@@ -5043,11 +5084,11 @@ const router = new Router({
         component: () => import('@pages/pim/pimpersongzryhmcgrid-view/pimpersongzryhmcgrid-view.vue'),
     },
     {
-        path: '/archivescenters/:archivescenter?/pickupview/:pickupview?',
+        path: '/pimarchivescenters/:pimarchivescenter?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.archivescenter.views.pickupview.caption',
+            caption: 'entities.pimarchivescenter.views.pickupview.caption',
             parameters: [
-                { pathName: 'archivescenters', parameterName: 'archivescenter' },
+                { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
             ],
             requireAuth: true,
@@ -5220,12 +5261,12 @@ const router = new Router({
         component: () => import('@pages/pim/pimarchivesgrid-view/pimarchivesgrid-view.vue'),
     },
     {
-        path: '/pimpeople/:pimperson?/trmtrianpeople/:trmtrianperson?/editview/:editview?',
+        path: '/pimpeople/:pimperson?/trmtrainpeople/:trmtrainperson?/editview/:editview?',
         meta: {
-            caption: 'entities.trmtrianperson.views.editview.caption',
+            caption: 'entities.trmtrainperson.views.editview.caption',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'trmtrianpeople', parameterName: 'trmtrianperson' },
+                { pathName: 'trmtrainpeople', parameterName: 'trmtrainperson' },
                 { pathName: 'editview', parameterName: 'editview' },
             ],
             requireAuth: true,
@@ -5233,11 +5274,11 @@ const router = new Router({
         component: () => import('@pages/trm/trmtrianpersonedit-view/trmtrianpersonedit-view.vue'),
     },
     {
-        path: '/trmtrianpeople/:trmtrianperson?/editview/:editview?',
+        path: '/trmtrainpeople/:trmtrainperson?/editview/:editview?',
         meta: {
-            caption: 'entities.trmtrianperson.views.editview.caption',
+            caption: 'entities.trmtrainperson.views.editview.caption',
             parameters: [
-                { pathName: 'trmtrianpeople', parameterName: 'trmtrianperson' },
+                { pathName: 'trmtrainpeople', parameterName: 'trmtrainperson' },
                 { pathName: 'editview', parameterName: 'editview' },
             ],
             requireAuth: true,
@@ -5341,11 +5382,11 @@ const router = new Router({
         component: () => import('@pages/pim/pimarmycadresedit-view/pimarmycadresedit-view.vue'),
     },
     {
-        path: '/archivescenters/:archivescenter?/pickupgridview/:pickupgridview?',
+        path: '/pimarchivescenters/:pimarchivescenter?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.archivescenter.views.pickupgridview.caption',
+            caption: 'entities.pimarchivescenter.views.pickupgridview.caption',
             parameters: [
-                { pathName: 'archivescenters', parameterName: 'archivescenter' },
+                { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
             ],
             requireAuth: true,
@@ -5870,6 +5911,19 @@ const router = new Router({
         component: () => import('@pages/pim/pimfaminfoedit-view/pimfaminfoedit-view.vue'),
     },
     {
+        path: '/ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
+        meta: {
+            caption: 'entities.ormpost.views.ejormorgidpickupgridview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormposts', parameterName: 'ormpost' },
+                { pathName: 'ejormorgidpickupgridview', parameterName: 'ejormorgidpickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormpostejormorgidpickup-grid-view/ormpostejormorgidpickup-grid-view.vue'),
+    },
+    {
         path: '/ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
         meta: {
             caption: 'entities.ormpost.views.ejormorgidpickupgridview.caption',
@@ -5981,7 +6035,7 @@ const router = new Router({
             {
                 path: '/archivalcatalogueredirectview/:archivalcatalogueredirectview?',
                 meta: {
-                    caption: 'entities.archivalcatalogue.views.redirectview.caption',
+                    caption: 'entities.pimarchivalcatalogue.views.redirectview.caption',
                     parameters: [
                         { pathName: 'archivalcatalogueredirectview', parameterName: 'archivalcatalogueredirectview' },
                     ],
@@ -6466,11 +6520,11 @@ const router = new Router({
         component: () => import('@pages/pim/pimtitlecataloguegrid-view/pimtitlecataloguegrid-view.vue'),
     },
     {
-        path: '/archivescenters/:archivescenter?/editview/:editview?',
+        path: '/pimarchivescenters/:pimarchivescenter?/editview/:editview?',
         meta: {
-            caption: 'entities.archivescenter.views.editview.caption',
+            caption: 'entities.pimarchivescenter.views.editview.caption',
             parameters: [
-                { pathName: 'archivescenters', parameterName: 'archivescenter' },
+                { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
                 { pathName: 'editview', parameterName: 'editview' },
             ],
             requireAuth: true,
@@ -6598,7 +6652,7 @@ const router = new Router({
             {
                 path: '/archivescenterredirectview/:archivescenterredirectview?',
                 meta: {
-                    caption: 'entities.archivescenter.views.redirectview.caption',
+                    caption: 'entities.pimarchivescenter.views.redirectview.caption',
                     parameters: [
                         { pathName: 'archivescenterredirectview', parameterName: 'archivescenterredirectview' },
                     ],
@@ -7120,11 +7174,11 @@ const router = new Router({
         component: () => import('@pages/pim/pimpatentpatentgrid-view/pimpatentpatentgrid-view.vue'),
     },
     {
-        path: '/archivescenters/:archivescenter?/gridview/:gridview?',
+        path: '/pimarchivescenters/:pimarchivescenter?/gridview/:gridview?',
         meta: {
-            caption: 'entities.archivescenter.views.gridview.caption',
+            caption: 'entities.pimarchivescenter.views.gridview.caption',
             parameters: [
-                { pathName: 'archivescenters', parameterName: 'archivescenter' },
+                { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
                 { pathName: 'gridview', parameterName: 'gridview' },
             ],
             requireAuth: true,
@@ -7132,11 +7186,37 @@ const router = new Router({
         component: () => import('@pages/pim/archivescentergrid-view/archivescentergrid-view.vue'),
     },
     {
-        path: '/contractsignorgs/:contractsignorg?/editview/:editview?',
+        path: '/ormsignorgs/:ormsignorg?/pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
         meta: {
-            caption: 'entities.contractsignorg.views.editview.caption',
+            caption: 'entities.pimcontractsignorg.views.editview.caption',
             parameters: [
-                { pathName: 'contractsignorgs', parameterName: 'contractsignorg' },
+                { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
+                { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/pim/contract-sign-orgedit-view/contract-sign-orgedit-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
+        meta: {
+            caption: 'entities.pimcontractsignorg.views.editview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/pim/contract-sign-orgedit-view/contract-sign-orgedit-view.vue'),
+    },
+    {
+        path: '/pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
+        meta: {
+            caption: 'entities.pimcontractsignorg.views.editview.caption',
+            parameters: [
+                { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
                 { pathName: 'editview', parameterName: 'editview' },
             ],
             requireAuth: true,
@@ -7298,7 +7378,7 @@ const router = new Router({
             {
                 path: '/contractsignorgredirectview/:contractsignorgredirectview?',
                 meta: {
-                    caption: 'entities.contractsignorg.views.redirectview.caption',
+                    caption: 'entities.pimcontractsignorg.views.redirectview.caption',
                     parameters: [
                         { pathName: 'contractsignorgredirectview', parameterName: 'contractsignorgredirectview' },
                     ],
@@ -7666,14 +7746,14 @@ const router = new Router({
         component: () => import('@pages/orm/orm-sign-org-pickup-grid-view/orm-sign-org-pickup-grid-view.vue'),
     },
     {
-        path: '/pimpeople/:pimperson?/trmtrianpeople/:trmtrianperson?/gridview/:gridview?',
+        path: '/pimpeople/:pimperson?/trmtrainpeople/:trmtrainperson?/gridview/:gridview?',
         meta: {
-            caption: 'entities.trmtrianperson.views.gridview.caption',
+            caption: 'entities.trmtrainperson.views.gridview.caption',
             imgPath: '../../../img/kfgl/1/peixunjiluguanli.png',
             iconCls: '',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'trmtrianpeople', parameterName: 'trmtrianperson' },
+                { pathName: 'trmtrainpeople', parameterName: 'trmtrainperson' },
                 { pathName: 'gridview', parameterName: 'gridview' },
             ],
             requireAuth: true,
@@ -7681,13 +7761,13 @@ const router = new Router({
         component: () => import('@pages/trm/trmtrianpersongrid-view/trmtrianpersongrid-view.vue'),
     },
     {
-        path: '/trmtrianpeople/:trmtrianperson?/gridview/:gridview?',
+        path: '/trmtrainpeople/:trmtrainperson?/gridview/:gridview?',
         meta: {
-            caption: 'entities.trmtrianperson.views.gridview.caption',
+            caption: 'entities.trmtrainperson.views.gridview.caption',
             imgPath: '../../../img/kfgl/1/peixunjiluguanli.png',
             iconCls: '',
             parameters: [
-                { pathName: 'trmtrianpeople', parameterName: 'trmtrianperson' },
+                { pathName: 'trmtrainpeople', parameterName: 'trmtrainperson' },
                 { pathName: 'gridview', parameterName: 'gridview' },
             ],
             requireAuth: true,
@@ -7708,7 +7788,7 @@ const router = new Router({
             {
                 path: '/archivesmanageredirectview/:archivesmanageredirectview?',
                 meta: {
-                    caption: 'entities.archivesmanage.views.redirectview.caption',
+                    caption: 'entities.pimarchivesmanage.views.redirectview.caption',
                     parameters: [
                         { pathName: 'archivesmanageredirectview', parameterName: 'archivesmanageredirectview' },
                     ],

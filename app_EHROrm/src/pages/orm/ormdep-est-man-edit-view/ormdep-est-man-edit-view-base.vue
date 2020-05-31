@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import ORMDepEstManService from '@/service/ormdep-est-man/ormdep-est-man-service';
+import OrmDepEstManService from '@/service/orm-dep-est-man/orm-dep-est-man-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class ORMDepEstManEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMDepEstManService}
+     * @type {OrmDepEstManService}
      * @memberof ORMDepEstManEditViewBase
      */
-    public appEntityService: ORMDepEstManService = new ORMDepEstManService;
+    public appEntityService: OrmDepEstManService = new OrmDepEstManService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class ORMDepEstManEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"ORMDepEstMan");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"OrmDepEstMan");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class ORMDepEstManEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"ORMDepEstMan");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"OrmDepEstMan");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class ORMDepEstManEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ORMDepEstMan");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"OrmDepEstMan");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class ORMDepEstManEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ORMDepEstMan");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"OrmDepEstMan");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class ORMDepEstManEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"ORMDepEstMan");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"OrmDepEstMan");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class ORMDepEstManEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"ORMDepEstMan");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"OrmDepEstMan");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class ORMDepEstManEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"ORMDepEstMan");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"OrmDepEstMan");
     }
 
     /**

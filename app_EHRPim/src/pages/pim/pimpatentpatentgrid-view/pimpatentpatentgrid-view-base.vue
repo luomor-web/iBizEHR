@@ -53,7 +53,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMPATENTService from '@/service/pimpatent/pimpatent-service';
+import PimPatentService from '@/service/pim-patent/pim-patent-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -74,10 +74,10 @@ export default class PIMPATENTPATENTGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMPATENTService}
+     * @type {PimPatentService}
      * @memberof PIMPATENTPATENTGridViewBase
      */
-    public appEntityService: PIMPATENTService = new PIMPATENTService;
+    public appEntityService: PimPatentService = new PimPatentService;
 
 
     /**
@@ -336,7 +336,7 @@ export default class PIMPATENTPATENTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PimPatent");
     }
 
     /**
@@ -365,7 +365,7 @@ export default class PIMPATENTPATENTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PimPatent");
     }
 
     /**
@@ -394,7 +394,7 @@ export default class PIMPATENTPATENTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimPatent");
     }
 
     /**
@@ -423,7 +423,7 @@ export default class PIMPATENTPATENTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimPatent");
     }
 
     /**
@@ -452,7 +452,7 @@ export default class PIMPATENTPATENTGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMPATENT");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimPatent");
     }
 
     /**

@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMDepEstManEditViewBase from './ormdep-est-man-edit-view-base.vue';
 
-import view_form from '@widgets/ormdep-est-man/main-form/main-form.vue';
+import view_form from '@widgets/orm-dep-est-man/main-form/main-form.vue';
 
 /**
  * 部门编制管理编辑视图

@@ -44,7 +44,7 @@
     loaddraftAction=""
     loadAction=""
     createAction=""
-    fetchAction="FetchCurND"
+    fetchAction="FetchDefault"
     :newdata="newdata"
     :opendata="opendata"
     name="grid"  
@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PCMZPMEGLService from '@/service/pcmzpmegl/pcmzpmegl-service';
+import PcmZpmeglService from '@/service/pcm-zpmegl/pcm-zpmegl-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PCMZPMEGLCurNDGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMZPMEGLService}
+     * @type {PcmZpmeglService}
      * @memberof PCMZPMEGLCurNDGridViewBase
      */
-    public appEntityService: PCMZPMEGLService = new PCMZPMEGLService;
+    public appEntityService: PcmZpmeglService = new PcmZpmeglService;
 
 
     /**
@@ -388,7 +388,7 @@ export default class PCMZPMEGLCurNDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.New(datas, contextJO,paramJO,  $event, xData,this,"PCMZPMEGL");
+        this.New(datas, contextJO,paramJO,  $event, xData,this,"PcmZpmegl");
     }
 
     /**
@@ -417,7 +417,7 @@ export default class PCMZPMEGLCurNDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PCMZPMEGL");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PcmZpmegl");
     }
 
     /**
@@ -446,7 +446,7 @@ export default class PCMZPMEGLCurNDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PCMZPMEGL");
+        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PcmZpmegl");
     }
 
     /**
@@ -475,7 +475,7 @@ export default class PCMZPMEGLCurNDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PCMZPMEGL");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PcmZpmegl");
     }
 
     /**
@@ -504,7 +504,7 @@ export default class PCMZPMEGLCurNDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PCMZPMEGL");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PcmZpmegl");
     }
 
     /**

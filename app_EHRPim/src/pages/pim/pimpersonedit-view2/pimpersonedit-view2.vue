@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMPERSONEditView2Base from './pimpersonedit-view2-base.vue';
 
-import view_drbar from '@widgets/pimperson/ygcd-drbar/ygcd-drbar.vue';
+import view_drbar from '@widgets/pim-person/ygcd-drbar/ygcd-drbar.vue';
 
 /**
  * 员工首页编辑视图

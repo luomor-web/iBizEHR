@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMQUALTYPEGridViewBase from './pimqualtypegrid-view-base.vue';
 
-import view_grid from '@widgets/pimqualtype/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pimqualtype/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-qual-type/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pim-qual-type/default-searchform/default-searchform.vue';
 
 /**
  * 岗位（技能）证书别表格视图

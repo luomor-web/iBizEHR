@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[组合查询条件设置]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

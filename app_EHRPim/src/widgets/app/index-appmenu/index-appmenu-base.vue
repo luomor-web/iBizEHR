@@ -315,7 +315,7 @@ export default class IndexBase extends AppMenusCtrlBase {
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
         const parameters: any[] = [
-            { pathName: 'archivescenters', parameterName: 'archivescenter' },
+            { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
             { pathName: 'gridview', parameterName: 'gridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);

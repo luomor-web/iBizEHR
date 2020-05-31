@@ -53,7 +53,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PCMDETAILService from '@/service/pcmdetail/pcmdetail-service';
+import PcmDetailService from '@/service/pcm-detail/pcm-detail-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -74,10 +74,10 @@ export default class PCMDETAILGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMDETAILService}
+     * @type {PcmDetailService}
      * @memberof PCMDETAILGridViewBase
      */
-    public appEntityService: PCMDETAILService = new PCMDETAILService;
+    public appEntityService: PcmDetailService = new PcmDetailService;
 
 
     /**
@@ -316,7 +316,7 @@ export default class PCMDETAILGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PCMDETAIL");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PcmDetail");
     }
 
     /**

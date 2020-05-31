@@ -57,7 +57,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, PickupViewBase } from '@/crm-core';
-import ARCHIVALCATALOGUEService from '@/service/archivalcatalogue/archivalcatalogue-service';
+import PimArchivalCatalogueService from '@/service/pim-archival-catalogue/pim-archival-catalogue-service';
 
 import PickupGridViewEngine from '@engine/view/pickup-grid-view-engine';
 
@@ -76,10 +76,10 @@ export default class ARCHIVALCATALOGUEPickupGridViewBase extends PickupViewBase 
     /**
      * 实体服务对象
      *
-     * @type {ARCHIVALCATALOGUEService}
+     * @type {PimArchivalCatalogueService}
      * @memberof ARCHIVALCATALOGUEPickupGridViewBase
      */
-    public appEntityService: ARCHIVALCATALOGUEService = new ARCHIVALCATALOGUEService;
+    public appEntityService: PimArchivalCatalogueService = new PimArchivalCatalogueService;
 
 
     /**
@@ -144,9 +144,9 @@ export default class ARCHIVALCATALOGUEPickupGridViewBase extends PickupViewBase 
      * @memberof ARCHIVALCATALOGUEPickupGridViewBase
      */
     public model: any = {
-        srfCaption: 'entities.archivalcatalogue.views.pickupgridview.caption',
-        srfTitle: 'entities.archivalcatalogue.views.pickupgridview.title',
-        srfSubTitle: 'entities.archivalcatalogue.views.pickupgridview.subtitle',
+        srfCaption: 'entities.pimarchivalcatalogue.views.pickupgridview.caption',
+        srfTitle: 'entities.pimarchivalcatalogue.views.pickupgridview.title',
+        srfSubTitle: 'entities.pimarchivalcatalogue.views.pickupgridview.subtitle',
         dataInfo: ''
     }
 
@@ -192,7 +192,7 @@ export default class ARCHIVALCATALOGUEPickupGridViewBase extends PickupViewBase 
             view: this,
             grid: this.$refs.grid,
             searchform: this.$refs.searchform,
-            keyPSDEField: 'archivalcatalogue',
+            keyPSDEField: 'pimarchivalcatalogue',
             majorPSDEField: 'archivalcataloguename',
             isLoadDefault: true,
         });

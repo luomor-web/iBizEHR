@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PCMAWARDSWONSService from '@/service/pcmawardswons/pcmawardswons-service';
+import PcmAwardsWonsService from '@/service/pcm-awards-wons/pcm-awards-wons-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PCMAWARDSWONSEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMAWARDSWONSService}
+     * @type {PcmAwardsWonsService}
      * @memberof PCMAWARDSWONSEditViewBase
      */
-    public appEntityService: PCMAWARDSWONSService = new PCMAWARDSWONSService;
+    public appEntityService: PcmAwardsWonsService = new PcmAwardsWonsService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PCMAWARDSWONSEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PCMAWARDSWONS");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PcmAwardsWons");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PCMAWARDSWONSEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PCMAWARDSWONS");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PcmAwardsWons");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PCMAWARDSWONSEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PCMAWARDSWONS");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmAwardsWons");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PCMAWARDSWONSEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PCMAWARDSWONS");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmAwardsWons");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PCMAWARDSWONSEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PCMAWARDSWONS");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PcmAwardsWons");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PCMAWARDSWONSEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PCMAWARDSWONS");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PcmAwardsWons");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PCMAWARDSWONSEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PCMAWARDSWONS");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PcmAwardsWons");
     }
 
     /**

@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMWORKRESUMEEditViewBase from './pcmworkresumeedit-view-base.vue';
 
-import view_form from '@widgets/pcmworkresume/main-form/main-form.vue';
+import view_form from '@widgets/pcm-work-resume/main-form/main-form.vue';
 
 /**
  * 工作履历

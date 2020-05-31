@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMPAPEREditViewBase from './pimpaperedit-view-base.vue';
 
-import view_form from '@widgets/pimpaper/main-form/main-form.vue';
+import view_form from '@widgets/pim-paper/main-form/main-form.vue';
 
 /**
  * 论文信息编辑视图

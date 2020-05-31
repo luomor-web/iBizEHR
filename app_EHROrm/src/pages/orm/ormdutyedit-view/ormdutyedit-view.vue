@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMDUTYEditViewBase from './ormdutyedit-view-base.vue';
 
-import view_form from '@widgets/ormduty/main-form/main-form.vue';
+import view_form from '@widgets/orm-duty/main-form/main-form.vue';
 
 /**
  * 职务设置

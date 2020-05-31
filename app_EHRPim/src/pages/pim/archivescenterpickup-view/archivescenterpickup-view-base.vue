@@ -42,7 +42,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, PickupViewBase } from '@/crm-core';
-import ARCHIVESCENTERService from '@/service/archivescenter/archivescenter-service';
+import PimArchivesCenterService from '@/service/pim-archives-center/pim-archives-center-service';
 
 import PickupViewEngine from '@engine/view/pickup-view-engine';
 
@@ -61,10 +61,10 @@ export default class ARCHIVESCENTERPickupViewBase extends PickupViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ARCHIVESCENTERService}
+     * @type {PimArchivesCenterService}
      * @memberof ARCHIVESCENTERPickupViewBase
      */
-    public appEntityService: ARCHIVESCENTERService = new ARCHIVESCENTERService;
+    public appEntityService: PimArchivesCenterService = new PimArchivesCenterService;
 
 
     /**
@@ -129,9 +129,9 @@ export default class ARCHIVESCENTERPickupViewBase extends PickupViewBase {
      * @memberof ARCHIVESCENTERPickupViewBase
      */
     public model: any = {
-        srfCaption: 'entities.archivescenter.views.pickupview.caption',
-        srfTitle: 'entities.archivescenter.views.pickupview.title',
-        srfSubTitle: 'entities.archivescenter.views.pickupview.subtitle',
+        srfCaption: 'entities.pimarchivescenter.views.pickupview.caption',
+        srfTitle: 'entities.pimarchivescenter.views.pickupview.title',
+        srfSubTitle: 'entities.pimarchivescenter.views.pickupview.subtitle',
         dataInfo: ''
     }
 
@@ -181,7 +181,7 @@ export default class ARCHIVESCENTERPickupViewBase extends PickupViewBase {
         this.engine.init({
             view: this,
             pickupviewpanel: this.$refs.pickupviewpanel,
-            keyPSDEField: 'archivescenter',
+            keyPSDEField: 'pimarchivescenter',
             majorPSDEField: 'position',
             isLoadDefault: true,
         });

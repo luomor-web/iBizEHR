@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.att.service.IAttendRecordDetailService;
 import cn.ibizlab.ehr.core.att.filter.AttendRecordDetailSearchContext;
 
 @Slf4j
-@Api(tags = {"AttendRecordDetail" })
+@Api(tags = {"考勤记录明细" })
 @RestController("WebApi-attendrecorddetail")
 @RequestMapping("")
 public class AttendRecordDetailResource {
@@ -47,7 +47,7 @@ public class AttendRecordDetailResource {
     public AttendRecordDetailMapping attendrecorddetailMapping;
 
     @PreAuthorize("hasPermission(this.attendrecorddetailMapping.toDomain(#attendrecorddetaildto),'ehr-AttendRecordDetail-Create')")
-    @ApiOperation(value = "Create", tags = {"AttendRecordDetail" },  notes = "Create")
+    @ApiOperation(value = "新建考勤记录明细", tags = {"考勤记录明细" },  notes = "新建考勤记录明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendrecorddetails")
     @Transactional
     public ResponseEntity<AttendRecordDetailDTO> create(@RequestBody AttendRecordDetailDTO attendrecorddetaildto) {
@@ -58,21 +58,21 @@ public class AttendRecordDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.attendrecorddetailMapping.toDomain(#attendrecorddetaildtos),'ehr-AttendRecordDetail-Create')")
-    @ApiOperation(value = "createBatch", tags = {"AttendRecordDetail" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建考勤记录明细", tags = {"考勤记录明细" },  notes = "批量新建考勤记录明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendrecorddetails/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<AttendRecordDetailDTO> attendrecorddetaildtos) {
         attendrecorddetailService.createBatch(attendrecorddetailMapping.toDomain(attendrecorddetaildtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"AttendRecordDetail" },  notes = "GetDraft")
+    @ApiOperation(value = "获取考勤记录明细草稿", tags = {"考勤记录明细" },  notes = "获取考勤记录明细草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendrecorddetails/getdraft")
     public ResponseEntity<AttendRecordDetailDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(attendrecorddetailMapping.toDto(attendrecorddetailService.getDraft(new AttendRecordDetail())));
     }
 
     @PostAuthorize("hasPermission(this.attendrecorddetailMapping.toDomain(returnObject.body),'ehr-AttendRecordDetail-Get')")
-    @ApiOperation(value = "Get", tags = {"AttendRecordDetail" },  notes = "Get")
+    @ApiOperation(value = "获取考勤记录明细", tags = {"考勤记录明细" },  notes = "获取考勤记录明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/attendrecorddetails/{attendrecorddetail_id}")
     public ResponseEntity<AttendRecordDetailDTO> get(@PathVariable("attendrecorddetail_id") String attendrecorddetail_id) {
         AttendRecordDetail domain = attendrecorddetailService.get(attendrecorddetail_id);
@@ -80,21 +80,21 @@ public class AttendRecordDetailResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"AttendRecordDetail" },  notes = "CheckKey")
+    @ApiOperation(value = "检查考勤记录明细", tags = {"考勤记录明细" },  notes = "检查考勤记录明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendrecorddetails/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody AttendRecordDetailDTO attendrecorddetaildto) {
         return  ResponseEntity.status(HttpStatus.OK).body(attendrecorddetailService.checkKey(attendrecorddetailMapping.toDomain(attendrecorddetaildto)));
     }
 
     @PreAuthorize("hasPermission(this.attendrecorddetailMapping.toDomain(#attendrecorddetaildto),'ehr-AttendRecordDetail-Save')")
-    @ApiOperation(value = "Save", tags = {"AttendRecordDetail" },  notes = "Save")
+    @ApiOperation(value = "保存考勤记录明细", tags = {"考勤记录明细" },  notes = "保存考勤记录明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendrecorddetails/save")
     public ResponseEntity<Boolean> save(@RequestBody AttendRecordDetailDTO attendrecorddetaildto) {
         return ResponseEntity.status(HttpStatus.OK).body(attendrecorddetailService.save(attendrecorddetailMapping.toDomain(attendrecorddetaildto)));
     }
 
     @PreAuthorize("hasPermission(this.attendrecorddetailMapping.toDomain(#attendrecorddetaildtos),'ehr-AttendRecordDetail-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"AttendRecordDetail" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存考勤记录明细", tags = {"考勤记录明细" },  notes = "批量保存考勤记录明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/attendrecorddetails/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<AttendRecordDetailDTO> attendrecorddetaildtos) {
         attendrecorddetailService.saveBatch(attendrecorddetailMapping.toDomain(attendrecorddetaildtos));
@@ -102,7 +102,7 @@ public class AttendRecordDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.attendrecorddetailService.get(#attendrecorddetail_id),'ehr-AttendRecordDetail-Update')")
-    @ApiOperation(value = "Update", tags = {"AttendRecordDetail" },  notes = "Update")
+    @ApiOperation(value = "更新考勤记录明细", tags = {"考勤记录明细" },  notes = "更新考勤记录明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendrecorddetails/{attendrecorddetail_id}")
     @Transactional
     public ResponseEntity<AttendRecordDetailDTO> update(@PathVariable("attendrecorddetail_id") String attendrecorddetail_id, @RequestBody AttendRecordDetailDTO attendrecorddetaildto) {
@@ -114,7 +114,7 @@ public class AttendRecordDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.attendrecorddetailService.getAttendrecorddetailByEntities(this.attendrecorddetailMapping.toDomain(#attendrecorddetaildtos)),'ehr-AttendRecordDetail-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"AttendRecordDetail" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新考勤记录明细", tags = {"考勤记录明细" },  notes = "批量更新考勤记录明细")
 	@RequestMapping(method = RequestMethod.PUT, value = "/attendrecorddetails/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<AttendRecordDetailDTO> attendrecorddetaildtos) {
         attendrecorddetailService.updateBatch(attendrecorddetailMapping.toDomain(attendrecorddetaildtos));
@@ -122,7 +122,7 @@ public class AttendRecordDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.attendrecorddetailService.get(#attendrecorddetail_id),'ehr-AttendRecordDetail-Remove')")
-    @ApiOperation(value = "Remove", tags = {"AttendRecordDetail" },  notes = "Remove")
+    @ApiOperation(value = "删除考勤记录明细", tags = {"考勤记录明细" },  notes = "删除考勤记录明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendrecorddetails/{attendrecorddetail_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("attendrecorddetail_id") String attendrecorddetail_id) {
@@ -130,7 +130,7 @@ public class AttendRecordDetailResource {
     }
 
     @PreAuthorize("hasPermission(this.attendrecorddetailService.getAttendrecorddetailByIds(#ids),'ehr-AttendRecordDetail-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"AttendRecordDetail" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除考勤记录明细", tags = {"考勤记录明细" },  notes = "批量删除考勤记录明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/attendrecorddetails/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         attendrecorddetailService.removeBatch(ids);
@@ -138,7 +138,7 @@ public class AttendRecordDetailResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttendRecordDetail-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"AttendRecordDetail" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"考勤记录明细" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/attendrecorddetails/fetchdefault")
 	public ResponseEntity<List<AttendRecordDetailDTO>> fetchDefault(AttendRecordDetailSearchContext context) {
         Page<AttendRecordDetail> domains = attendrecorddetailService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class AttendRecordDetailResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttendRecordDetail-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"AttendRecordDetail" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询DEFAULT", tags = {"考勤记录明细" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/attendrecorddetails/searchdefault")
 	public ResponseEntity<Page<AttendRecordDetailDTO>> searchDefault(@RequestBody AttendRecordDetailSearchContext context) {
         Page<AttendRecordDetail> domains = attendrecorddetailService.searchDefault(context) ;

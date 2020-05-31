@@ -29,7 +29,6 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 /**
  * 实体[组织管理关系表]
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor

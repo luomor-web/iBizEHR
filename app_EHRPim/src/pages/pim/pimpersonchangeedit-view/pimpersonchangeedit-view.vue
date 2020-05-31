@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMPERSONCHANGEEditViewBase from './pimpersonchangeedit-view-base.vue';
 
-import view_form from '@widgets/pimpersonchange/main-form/main-form.vue';
+import view_form from '@widgets/pim-person-change/main-form/main-form.vue';
 
 /**
  * 员工信息审核编辑视图

@@ -46,120 +46,120 @@ public class OrmOrgsectorServiceImpl extends ServiceImpl<OrmOrgsectorMapper, Orm
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDANCERECORDTEMPService attendancerecordtempService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndanceRecordTempService attendancerecordtempService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDENCEORMORGSECTORService attendenceormorgsectorService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndenceOrmorgscetorService attendenceormorgscetorService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMBMGWBZService ormbmgwbzService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmBmgwbzService ormbmgwbzService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmBmkqdzService ormbmkqdzService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMDepEstManService ormdepestmanService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmDepEstManService ormdepestmanService;
 
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService = this;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMUSERService ormuserService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmUserService ormuserService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMXMBMXService ormxmbmxService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmXmbmxService ormxmbmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMXMRYPZXQService ormxmrypzxqService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmXmrypzxqService ormxmrypzxqService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARJGBMPJBZService parjgbmpjbzService;
+    private cn.ibizlab.ehr.core.par.service.IParJgbmpjbzService parjgbmpjbzService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARYDGZJHService parydgzjhService;
+    private cn.ibizlab.ehr.core.par.service.IParYdgzjhService parydgzjhService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARZNBMMXService parznbmmxService;
+    private cn.ibizlab.ehr.core.par.service.IParZnbmmxService parznbmmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARZNBMNDLHMBService parznbmndlhmbService;
+    private cn.ibizlab.ehr.core.par.service.IParZnbmndlhmbService parznbmndlhmbService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMBDSQDMXService pcmbdsqdmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmBdsqdmxService pcmbdsqdmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMDDSQDMXService pcmddsqdmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmDdsqdmxService pcmddsqdmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPCMDETAILService pcmdetailService;
+    private cn.ibizlab.ehr.core.pim.service.IPcmDetailService pcmdetailService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMJXSBDJLService pcmjxsbdjlService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmJxsbdjlService pcmjxsbdjlService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMNoticeService pcmnoticeService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmNoticeService pcmnoticeService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMPROFILEService pcmprofileService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmProfileService pcmprofileService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMRecruitmentService pcmrecruitmentService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmRecruitmentService pcmrecruitmentService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMYDDGMXService pcmyddgmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYddgmxService pcmyddgmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMYDJDMXService pcmydjdmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdjdmxService pcmydjdmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMYDJZMXService pcmydjzmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdjzmxService pcmydjzmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMYDMXService pcmydmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdmxService pcmydmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMDISTIRBUTIONService pimdistirbutionService;
+    private cn.ibizlab.ehr.core.pim.service.IPimDistirbutionService pimdistirbutionService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
+    private cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMVOCATIONALService pimvocationalService;
+    private cn.ibizlab.ehr.core.pim.service.IPimVocationalService pimvocationalService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALPERSONSTDService salpersonstdService;
+    private cn.ibizlab.ehr.core.sal.service.ISalPersonStdService salpersonstdService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSALARYBILLService salsalarybillService;
+    private cn.ibizlab.ehr.core.sal.service.ISalSalaryBillService salsalarybillService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSALARYService salsalaryService;
+    private cn.ibizlab.ehr.core.sal.service.ISalSalaryService salsalaryService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMDEPARTService trmdepartService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmDepartService trmdepartService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMDUTYCADRESService trmdutycadresService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmDutyCadresService trmdutycadresService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMGRADECADRESService trmgradecadresService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmGradecadresService trmgradecadresService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMPLANFORMUService trmplanformuService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmPlanFormuService trmplanformuService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINACTAPPLYService trmtrainactapplyService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainActapplyService trmtrainactapplyService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINFILLINService trmtrainfillinService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainFillinService trmtrainfillinService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.vac.service.IVACSYSTEMAPPLICATIONService vacsystemapplicationService;
+    private cn.ibizlab.ehr.core.vac.service.IVacSystemApplicationService vacsystemapplicationService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMXMGLService ormxmglService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmXmglService ormxmglService;
 
     private int batchSize = 500;
 
@@ -561,9 +561,9 @@ public class OrmOrgsectorServiceImpl extends ServiceImpl<OrmOrgsectorMapper, Orm
         }
         //实体关系[DER1N_ORMORGSECTOR_ORMXMGL_ORMXMGLID]
         if(!ObjectUtils.isEmpty(et.getOrmxmglid())){
-            cn.ibizlab.ehr.core.orm.domain.ORMXMGL ormxmgl=et.getOrmxmgl();
+            cn.ibizlab.ehr.core.orm.domain.OrmXmgl ormxmgl=et.getOrmxmgl();
             if(ObjectUtils.isEmpty(ormxmgl)){
-                cn.ibizlab.ehr.core.orm.domain.ORMXMGL majorEntity=ormxmglService.get(et.getOrmxmglid());
+                cn.ibizlab.ehr.core.orm.domain.OrmXmgl majorEntity=ormxmglService.get(et.getOrmxmglid());
                 et.setOrmxmgl(majorEntity);
                 ormxmgl=majorEntity;
             }
@@ -573,9 +573,9 @@ public class OrmOrgsectorServiceImpl extends ServiceImpl<OrmOrgsectorMapper, Orm
         }
         //实体关系[DER1N_ORMORGSECTOR_PIMPERSON_PIMPERSONID]
         if(!ObjectUtils.isEmpty(et.getPimpersonid())){
-            cn.ibizlab.ehr.core.pim.domain.PIMPERSON pimperson=et.getPimperson();
+            cn.ibizlab.ehr.core.pim.domain.PimPerson pimperson=et.getPimperson();
             if(ObjectUtils.isEmpty(pimperson)){
-                cn.ibizlab.ehr.core.pim.domain.PIMPERSON majorEntity=pimpersonService.get(et.getPimpersonid());
+                cn.ibizlab.ehr.core.pim.domain.PimPerson majorEntity=pimpersonService.get(et.getPimpersonid());
                 et.setPimperson(majorEntity);
                 pimperson=majorEntity;
             }
@@ -583,9 +583,9 @@ public class OrmOrgsectorServiceImpl extends ServiceImpl<OrmOrgsectorMapper, Orm
         }
         //实体关系[DER1N_ORMORGSECTOR_PIMPERSON_PROLEADERID]
         if(!ObjectUtils.isEmpty(et.getProleaderid())){
-            cn.ibizlab.ehr.core.pim.domain.PIMPERSON proleader=et.getProleader();
+            cn.ibizlab.ehr.core.pim.domain.PimPerson proleader=et.getProleader();
             if(ObjectUtils.isEmpty(proleader)){
-                cn.ibizlab.ehr.core.pim.domain.PIMPERSON majorEntity=pimpersonService.get(et.getProleaderid());
+                cn.ibizlab.ehr.core.pim.domain.PimPerson majorEntity=pimpersonService.get(et.getProleaderid());
                 et.setProleader(majorEntity);
                 proleader=majorEntity;
             }

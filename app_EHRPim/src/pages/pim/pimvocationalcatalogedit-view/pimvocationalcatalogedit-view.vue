@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMVOCATIONALCATALOGEditViewBase from './pimvocationalcatalogedit-view-base.vue';
 
-import view_form from '@widgets/pimvocationalcatalog/main-form/main-form.vue';
+import view_form from '@widgets/pim-vocational-catalog/main-form/main-form.vue';
 
 /**
  * 职（执）业资格目录管理编辑视图

@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import TestResultService from '@/service/test-result/test-result-service';
+import PcmTestResultService from '@/service/pcm-test-result/pcm-test-result-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class TestResultEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {TestResultService}
+     * @type {PcmTestResultService}
      * @memberof TestResultEditViewBase
      */
-    public appEntityService: TestResultService = new TestResultService;
+    public appEntityService: PcmTestResultService = new PcmTestResultService;
 
 
     /**
@@ -134,9 +134,9 @@ export default class TestResultEditViewBase extends EditViewBase {
      * @memberof TestResultEditViewBase
      */
     public model: any = {
-        srfCaption: 'entities.testresult.views.editview.caption',
-        srfTitle: 'entities.testresult.views.editview.title',
-        srfSubTitle: 'entities.testresult.views.editview.subtitle',
+        srfCaption: 'entities.pcmtestresult.views.editview.caption',
+        srfTitle: 'entities.pcmtestresult.views.editview.title',
+        srfSubTitle: 'entities.pcmtestresult.views.editview.subtitle',
         dataInfo: ''
     }
 
@@ -202,7 +202,7 @@ export default class TestResultEditViewBase extends EditViewBase {
             view: this,
             form: this.$refs.form,
             p2k: '0',
-            keyPSDEField: 'testresult',
+            keyPSDEField: 'pcmtestresult',
             majorPSDEField: 'testresultname',
             isLoadDefault: true,
         });
@@ -304,7 +304,7 @@ export default class TestResultEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"TestResult");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PcmTestResult");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class TestResultEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"TestResult");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PcmTestResult");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class TestResultEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"TestResult");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmTestResult");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class TestResultEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"TestResult");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmTestResult");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class TestResultEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"TestResult");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PcmTestResult");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class TestResultEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"TestResult");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PcmTestResult");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class TestResultEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"TestResult");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PcmTestResult");
     }
 
     /**

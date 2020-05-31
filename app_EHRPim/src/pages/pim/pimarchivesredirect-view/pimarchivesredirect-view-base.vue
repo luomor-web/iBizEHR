@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMARCHIVESService from '@/service/pimarchives/pimarchives-service';
+import PimArchivesService from '@/service/pim-archives/pim-archives-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMARCHIVESRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMARCHIVESService}
+     * @type {PimArchivesService}
      * @memberof PIMARCHIVESRedirectViewBase
      */
-    public appEntityService: PIMARCHIVESService = new PIMARCHIVESService;
+    public appEntityService: PimArchivesService = new PimArchivesService;
 
 
     /**

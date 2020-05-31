@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMLABOURCAMPANYGridViewBase from './pimlabourcampanygrid-view-base.vue';
 
-import view_grid from '@widgets/pimlabourcampany/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pimlabourcampany/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-labourcampany/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pim-labourcampany/default-searchform/default-searchform.vue';
 
 /**
  * 劳务派遣公司表格视图

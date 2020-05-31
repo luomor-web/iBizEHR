@@ -32,7 +32,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, TreeExpViewBase } from '@/crm-core';
-import PIMCONTRACTService from '@/service/pimcontract/pimcontract-service';
+import PimContractService from '@/service/pim-contract/pim-contract-service';
 
 import TreeExpViewEngine from '@engine/view/tree-exp-view-engine';
 
@@ -51,10 +51,10 @@ export default class PIMCONTRACTTreeExpViewBase extends TreeExpViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMCONTRACTService}
+     * @type {PimContractService}
      * @memberof PIMCONTRACTTreeExpViewBase
      */
-    public appEntityService: PIMCONTRACTService = new PIMCONTRACTService;
+    public appEntityService: PimContractService = new PimContractService;
 
 
     /**

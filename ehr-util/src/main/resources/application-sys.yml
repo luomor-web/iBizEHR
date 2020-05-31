@@ -21,10 +21,10 @@ spring:
         max-idle: 16
         min-idle: 8
   datasource:
-    username: ibizehr
-    password: 'ibizehr'
-    url: jdbc:oracle:thin:@172.16.240.110:21512:xe
-    driver-class-name: oracle.jdbc.driver.OracleDriver
+    username: a_LAB01_fb710d59e
+    password: 'bD@@681@'
+    url: jdbc:mysql://172.16.186.185:3306/a_LAB01_fb710d59e?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useOldAliasMetadataBehavior=true
+    driver-class-name: com.mysql.jdbc.Driver
     filters: stat,wall,log4j2
     #配置初始化大小/最小/最大
     initial-size: 1
@@ -44,7 +44,7 @@ spring:
     pool-prepared-statements: false
     max-pool-prepared-statement-per-connection-size: 20
     isSyncDBSchema: false
-    defaultSchema: ibizehr
+    defaultSchema: a_LAB01_fb710d59e
     conf: classpath:liquibase/master.xml
 
 #Mybatis-plus配置
@@ -84,4 +84,17 @@ ribbon:
 ibiz:
   enablePermissionValid: false
   cacheLevel: L1 #(L1)一级本地caffeine缓存;(L2)caffeine缓存+Redis缓存
+
+#xxl-job定时服务
+xxl:
+  job:
+    accessToken:
+    admin:
+      addresses: #127.0.0.1
+    executor:
+      appname: ehr
+      ip:
+      port: 9999
+      logpath: /app/joblog
+      logretentiondays: -1
 

@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMEducationExperienceJYBJ_WSSWBJGridViewBase from './pcmeducation-experience-jybj-wsswbjgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmeducation-experience/ck-grid/ck-grid.vue';
+import view_grid from '@widgets/pcm-education-experience/ck-grid/ck-grid.vue';
 
 /**
  * 教育信息

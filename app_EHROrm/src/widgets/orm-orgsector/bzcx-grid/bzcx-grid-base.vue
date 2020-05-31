@@ -1,6 +1,7 @@
 <template>
 <div class='grid' style="height:100%;">
-        <el-table v-if="isDisplay === true"
+      <i-form style="height:100%">
+    <el-table v-if="isDisplay === true"
         :default-sort="{ prop: minorSortPSDEF, order: Object.is(minorSortDir, 'ASC') ? 'ascending' : Object.is(minorSortDir, 'DESC') ? 'descending' : '' }"  
         @sort-change="onSortChange($event)"  
         :border="isDragendCol"
@@ -23,12 +24,17 @@
             </template>
             <template v-if="getColumnState('orgname')">
                 <el-table-column show-overflow-tooltip :prop="'orgname'" :label="$t('entities.ormorgsector.bzcx_grid.columns.orgname')" :width="400"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <app-column-link deKeyField='ormorg' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'ormorgredirect-view', height: 0,width: 0,title: $t('entities.ormorg.views.redirectview.title'),placement: '', isRedirectView: true,deResParameters: [
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.ormorgsector.bzcx_grid.columns.orgname')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <app-column-link deKeyField='ormorg' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'ormorgedit-view9', height: 0,width: 0,title: $t('entities.ormorg.views.editview9.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
             ]
             ,parameters: [
             { pathName: 'ormorgs', parameterName: 'ormorg' },
-            { pathName: 'redirectview', parameterName: 'redirectview' }
+            { pathName: 'editview9', parameterName: 'editview9' }
             ]}" valueitem="orgid">
                             <span>{{row.orgname}}</span>
                         </app-column-link >
@@ -37,29 +43,57 @@
             </template>
             <template v-if="getColumnState('orgsectorname')">
                 <el-table-column show-overflow-tooltip :prop="'orgsectorname'" :label="$t('entities.ormorgsector.bzcx_grid.columns.orgsectorname')" :width="300"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.orgsectorname}}</span>
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.ormorgsector.bzcx_grid.columns.orgsectorname')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <app-column-link deKeyField='ormorgsector' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'ormorgsectoredit-view9', height: 0,width: 0,title: $t('entities.ormorgsector.views.editview9.title'),placement: 'DRAWER_TOP', isRedirectView: false,deResParameters: [
+            { pathName: 'ormorgs', parameterName: 'ormorg' },
+            ]
+            ,parameters: [
+            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+            { pathName: 'editview9', parameterName: 'editview9' }
+            ]}" valueitem="srfkey">
+                            <span>{{row.orgsectorname}}</span>
+                        </app-column-link >
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('orgcode')">
                 <el-table-column show-overflow-tooltip :prop="'orgcode'" :label="$t('entities.ormorgsector.bzcx_grid.columns.orgcode')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.ormorgsector.bzcx_grid.columns.orgcode')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.orgcode}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('bmbzrs')">
                 <el-table-column show-overflow-tooltip :prop="'bmbzrs'" :label="$t('entities.ormorgsector.bzcx_grid.columns.bmbzrs')" :width="130"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.ormorgsector.bzcx_grid.columns.bmbzrs')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
                         <span>{{row.bmbzrs}}</span>
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('sjbzrs')">
-                <el-table-column show-overflow-tooltip :prop="'sjbzrs'" :label="$t('entities.ormorgsector.bzcx_grid.columns.sjbzrs')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot="{row,column}">
-                        <span>{{row.sjbzrs}}</span>
+            <template v-if="getColumnState('sjrs')">
+                <el-table-column show-overflow-tooltip :prop="'sjrs'" :label="$t('entities.ormorgsector.bzcx_grid.columns.sjrs')" :width="160"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.ormorgsector.bzcx_grid.columns.sjrs')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <span>{{row.sjrs}}</span>
                     </template>
                 </el-table-column>
             </template>
@@ -67,6 +101,7 @@
                 <el-table-column></el-table-column>
             </template>
     </el-table>
+  
     <row class='grid-pagination' v-show="items.length > 0">
         <page class='pull-right' @on-change="pageOnChange($event)" 
             @on-page-size-change="onPageSizeChange($event)"
@@ -102,6 +137,7 @@
             </span>
         </page>
     </row>
+  </i-form>
 </div>
 </template>
 <script lang='tsx'>
@@ -114,6 +150,7 @@ import OrmOrgsectorService from '@/service/orm-orgsector/orm-orgsector-service';
 import BZCXService from './bzcx-grid-service';
 
 import CodeListService from "@service/app/codelist-service";
+import { FormItemModel } from '@/model/form-detail';
 
 
 @Component({
@@ -567,13 +604,34 @@ export default class BZCXBase extends Vue implements ControlInterface {
             util: 'PX'
         },
         {
-            name: 'sjbzrs',
+            name: 'sjrs',
             label: '实际编制人数',
-            langtag: 'entities.ormorgsector.bzcx_grid.columns.sjbzrs',
+            langtag: 'entities.ormorgsector.bzcx_grid.columns.sjrs',
             show: true,
             util: 'PX'
         },
     ]
+
+    /**
+     * 表格模型集合
+     *
+     * @type {*}
+     * @memberof BZCX
+     */
+    public gridItemsModel: any[] = [];
+
+    /**
+     * 获取表格行模型
+     *
+     * @type {*}
+     * @memberof BZCX
+     */
+    public getGridRowModel(){
+        return {
+          sjbzrs_color: new FormItemModel(),
+          srfkey: new FormItemModel(),
+        }
+    }
 
     /**
      * 属性值规则
@@ -590,6 +648,50 @@ export default class BZCXBase extends Vue implements ControlInterface {
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '部门标识 值不能为空', trigger: 'change' },
             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '部门标识 值不能为空', trigger: 'blur' },
         ],
+    }
+
+    /**
+     * 表格行编辑项校验
+     *
+     * @param {string} property 属性名
+     * @param {*} data 行数据
+     * @param {number} rowIndex 行索引
+     * @returns Promise<any>
+     * 
+     * @memberof BZCX
+     */
+    public validate(property:string, data:any, rowIndex:number):Promise<any>{
+        return new Promise((resolve, reject) => {
+            this.$util.validateItem(property,data,this.rules).then(()=>{
+                this.gridItemsModel[rowIndex][property].setError(null);
+                resolve(true);
+            }).catch(({ errors, fields }) => {
+                this.gridItemsModel[rowIndex][property].setError(errors[0].message);
+                resolve(false);
+            });
+        });
+    }
+
+    /**
+     * 校验所有修改过的编辑项
+     *
+     * @returns Promise<any>
+     * @memberof BZCX
+     */
+    public async validateAll(){
+        let validateState = true;
+        let index = -1;
+        for(let item of this.items){
+          index++;
+          if(item.rowDataState === "create" || item.rowDataState === "update"){
+            for(let property of Object.keys(this.rules)){
+              if(!await this.validate(property,item,index)){
+                validateState = false;
+              }
+            }
+          }
+        }
+        return validateState;
     }
 
     /**
@@ -634,8 +736,10 @@ export default class BZCXBase extends Vue implements ControlInterface {
             const data: any = response.data;
             this.totalrow = response.total;
             this.items = JSON.parse(JSON.stringify(data));
-            // 清空selections
+            // 清空selections,gridItemsModel
             this.selections = [];
+            this.gridItemsModel = [];
+            this.items.forEach(()=>{this.gridItemsModel.push(this.getGridRowModel())});
             this.$emit('load', this.items);
             // 设置默认选中
             let _this = this;
@@ -684,6 +788,7 @@ export default class BZCXBase extends Vue implements ControlInterface {
                 this.items.some((val: any, num: number) =>{
                     if(JSON.stringify(val) == JSON.stringify(record)){
                         this.items.splice(num,1);
+                        this.gridItemsModel.splice(num,1);
                         return true;
                     }
                 }); 
@@ -719,8 +824,9 @@ export default class BZCXBase extends Vue implements ControlInterface {
                 keys.push(data.srfkey);
             });
             let _removeAction = keys.length > 1 ? 'removeBatch' : this.removeAction ;
+            let _keys = keys.length > 1 ? keys : keys[0] ;
             const context:any = JSON.parse(JSON.stringify(this.context));
-            const post: Promise<any> = this.service.delete(_removeAction,Object.assign(context,{ ormorgsector: keys.join(';') }),Object.assign({ ormorgsector: keys.join(';') },{viewparams:this.viewparams}), this.showBusyIndicator);
+            const post: Promise<any> = this.service.delete(_removeAction,Object.assign(context,{ ormorgsector: _keys }),Object.assign({ ormorgsector: _keys },{viewparams:this.viewparams}), this.showBusyIndicator);
             return new Promise((resolve: any, reject: any) => {
                 post.then((response: any) => {
                     if (!response || response.status !== 200) {
@@ -732,9 +838,10 @@ export default class BZCXBase extends Vue implements ControlInterface {
                     //删除items中已删除的项
                     console.log(this.items);
                     _datas.forEach((data: any) => {
-                      this.items.some((item:any,index:number)=>{
-                        if(Object.is(item.srfkey,data.srfkey)){
-                          this.items.splice(index,1);
+                        this.items.some((item:any,index:number)=>{
+                            if(Object.is(item.srfkey,data.srfkey)){
+                                this.items.splice(index,1);
+                                this.gridItemsModel.splice(index,1);
                                 return true;
                             }
                         });
@@ -1297,41 +1404,56 @@ export default class BZCXBase extends Vue implements ControlInterface {
      * 保存
      *
      * @param {*} $event
-     * @returns {void}
+     * @returns {Promise<any>}
      * @memberof BZCX
      */
-    public save(args: any[], params?: any, $event?: any, xData?: any): void {
+    public async save(args: any[], params?: any, $event?: any, xData?: any){
         let _this = this;
-        let promises:any = [];
-        _this.items.forEach((item:any)=>{
-            if(!item.rowDataState){
-                return;
-            } else if(Object.is(item.rowDataState, 'create')){
-                if(!this.createAction){
-                    this.$Notice.error({ title: '错误', desc: 'ORMORGSECTORBZCXGridView视图表格createAction参数未配置' });
-                    return;
+        if(!await this.validateAll()){
+            this.$Notice.error({ title: '错误', desc: '值规则校验异常' });
+            return [];
+        }
+        let successItems:any = [];
+        let errorItems:any = [];
+        let errorMessage:any = [];
+        for (const item of _this.items) {
+            try {
+                if(Object.is(item.rowDataState, 'create')){
+                    if(!this.createAction){
+                        this.$Notice.error({ title: '错误', desc: 'ORMORGSECTORBZCXGridView视图表格createAction参数未配置' });
+                    }else{
+                      Object.assign(item,{viewparams:this.viewparams});
+                      let response = await this.service.add(this.createAction, JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator);
+                      successItems.push(JSON.parse(JSON.stringify(response.data)));
+                    }
+                }else if(Object.is(item.rowDataState, 'update')){
+                    if(!this.updateAction){
+                        this.$Notice.error({ title: '错误', desc: 'ORMORGSECTORBZCXGridView视图表格updateAction参数未配置' });
+                    }else{
+                        Object.assign(item,{viewparams:this.viewparams});
+                        if(item.ormorgsector){
+                            Object.assign(this.context,{ormorgsector:item.ormorgsector});
+                        }
+                        let response = await this.service.add(this.updateAction,JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator);
+                        successItems.push(JSON.parse(JSON.stringify(response.data)));
+                    }
                 }
-                Object.assign(item,{viewparams:this.viewparams});
-                promises.push(this.service.add(this.createAction, JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator));
-            }else if(Object.is(item.rowDataState, 'update')){
-                if(!this.updateAction){
-                    this.$Notice.error({ title: '错误', desc: 'ORMORGSECTORBZCXGridView视图表格updateAction参数未配置' });
-                    return;
-                }
-                Object.assign(item,{viewparams:this.viewparams});
-                if(item.ormorgsector){
-                    Object.assign(this.context,{ormorgsector:item.ormorgsector})
-                }
-                promises.push(this.service.add(this.updateAction,JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator));
+            } catch (error) {
+                errorItems.push(JSON.parse(JSON.stringify(item)));
+                errorMessage.push(error);
             }
-        });
-        Promise.all(promises).then((response: any) => {
-            this.$emit('save', response);
+        }
+        this.$emit('save', successItems);
+        this.refresh([]);
+        if(errorItems.length === 0){
             this.$Notice.success({ title: '', desc: '保存成功!' });
-            this.refresh([]);
-        }).catch((response: any) => {
-            this.$Notice.error({ title: '错误', desc: '系统异常' });
-        });
+        }else{
+          errorItems.forEach((item:any,index:number)=>{
+            this.$Notice.error({ title: '保存失败', desc: item.majorentityname+'保存失败！' });
+            console.error(errorMessage[index]);
+          });
+        }
+        return successItems;
     }
 
 

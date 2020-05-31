@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMCONTRACTService from '@/service/pimcontract/pimcontract-service';
+import PimContractService from '@/service/pim-contract/pim-contract-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMCONTRACTLWGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMCONTRACTService}
+     * @type {PimContractService}
      * @memberof PIMCONTRACTLWGridViewBase
      */
-    public appEntityService: PIMCONTRACTService = new PIMCONTRACTService;
+    public appEntityService: PimContractService = new PimContractService;
 
 
     /**
@@ -378,7 +378,7 @@ export default class PIMCONTRACTLWGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
+        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PimContract");
     }
 
     /**
@@ -407,7 +407,7 @@ export default class PIMCONTRACTLWGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimContract");
     }
 
     /**
@@ -436,7 +436,7 @@ export default class PIMCONTRACTLWGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PimContract");
     }
 
     /**

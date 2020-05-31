@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import TestResultCPJG_WSSWBJGridViewBase from './test-result-cpjg-wsswbjgrid-view-base.vue';
 
-import view_grid from '@widgets/test-result/main-grid/main-grid.vue';
+import view_grid from '@widgets/pcm-test-result/main-grid/main-grid.vue';
 
 /**
  * 测评结果摘要信息

@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PCMSCHOOLOFFICEService from '@/service/pcmschooloffice/pcmschooloffice-service';
+import PcmSchoolOfficeService from '@/service/pcm-school-office/pcm-school-office-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PCMSCHOOLOFFICEZXZWGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMSCHOOLOFFICEService}
+     * @type {PcmSchoolOfficeService}
      * @memberof PCMSCHOOLOFFICEZXZWGridViewBase
      */
-    public appEntityService: PCMSCHOOLOFFICEService = new PCMSCHOOLOFFICEService;
+    public appEntityService: PcmSchoolOfficeService = new PcmSchoolOfficeService;
 
 
     /**
@@ -390,7 +390,7 @@ export default class PCMSCHOOLOFFICEZXZWGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PCMSCHOOLOFFICE");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PcmSchoolOffice");
     }
 
     /**
@@ -419,7 +419,7 @@ export default class PCMSCHOOLOFFICEZXZWGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PCMSCHOOLOFFICE");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PcmSchoolOffice");
     }
 
     /**
@@ -448,7 +448,7 @@ export default class PCMSCHOOLOFFICEZXZWGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PCMSCHOOLOFFICE");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PcmSchoolOffice");
     }
 
     /**
@@ -477,7 +477,7 @@ export default class PCMSCHOOLOFFICEZXZWGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PCMSCHOOLOFFICE");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PcmSchoolOffice");
     }
 
     /**
@@ -506,7 +506,7 @@ export default class PCMSCHOOLOFFICEZXZWGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PCMSCHOOLOFFICE");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PcmSchoolOffice");
     }
 
     /**

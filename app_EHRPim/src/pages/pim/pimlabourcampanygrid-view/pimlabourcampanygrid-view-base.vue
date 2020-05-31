@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMLABOURCAMPANYService from '@/service/pimlabourcampany/pimlabourcampany-service';
+import PimLabourcampanyService from '@/service/pim-labourcampany/pim-labourcampany-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMLABOURCAMPANYGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMLABOURCAMPANYService}
+     * @type {PimLabourcampanyService}
      * @memberof PIMLABOURCAMPANYGridViewBase
      */
-    public appEntityService: PIMLABOURCAMPANYService = new PIMLABOURCAMPANYService;
+    public appEntityService: PimLabourcampanyService = new PimLabourcampanyService;
 
 
     /**
@@ -393,7 +393,7 @@ export default class PIMLABOURCAMPANYGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.New(datas, contextJO,paramJO,  $event, xData,this,"PIMLABOURCAMPANY");
+        this.New(datas, contextJO,paramJO,  $event, xData,this,"PimLabourcampany");
     }
 
     /**
@@ -422,7 +422,7 @@ export default class PIMLABOURCAMPANYGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMLABOURCAMPANY");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimLabourcampany");
     }
 
     /**
@@ -451,7 +451,7 @@ export default class PIMLABOURCAMPANYGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PIMLABOURCAMPANY");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PimLabourcampany");
     }
 
     /**
@@ -480,7 +480,7 @@ export default class PIMLABOURCAMPANYGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMLABOURCAMPANY");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimLabourcampany");
     }
 
     /**
@@ -509,7 +509,7 @@ export default class PIMLABOURCAMPANYGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMLABOURCAMPANY");
+        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PimLabourcampany");
     }
 
     /**
@@ -538,7 +538,7 @@ export default class PIMLABOURCAMPANYGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMLABOURCAMPANY");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimLabourcampany");
     }
 
     /**

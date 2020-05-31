@@ -46,13 +46,13 @@ public class OrmSignOrgServiceImpl extends ServiceImpl<OrmSignOrgMapper, OrmSign
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IContractSignORGService contractsignorgService;
+    private cn.ibizlab.ehr.core.pim.service.IPimContractSignOrgService pimcontractsignorgService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMCONTRACTService pimcontractService;
+    private cn.ibizlab.ehr.core.pim.service.IPimContractService pimcontractService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMVOCATIONALService pimvocationalService;
+    private cn.ibizlab.ehr.core.pim.service.IPimVocationalService pimvocationalService;
 
     private int batchSize = 500;
 

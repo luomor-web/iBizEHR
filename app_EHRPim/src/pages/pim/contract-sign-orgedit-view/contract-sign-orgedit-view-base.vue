@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import ContractSignORGService from '@/service/contract-sign-org/contract-sign-org-service';
+import PimContractSignOrgService from '@/service/pim-contract-sign-org/pim-contract-sign-org-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class ContractSignORGEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ContractSignORGService}
+     * @type {PimContractSignOrgService}
      * @memberof ContractSignORGEditViewBase
      */
-    public appEntityService: ContractSignORGService = new ContractSignORGService;
+    public appEntityService: PimContractSignOrgService = new PimContractSignOrgService;
 
 
     /**
@@ -134,9 +134,9 @@ export default class ContractSignORGEditViewBase extends EditViewBase {
      * @memberof ContractSignORGEditViewBase
      */
     public model: any = {
-        srfCaption: 'entities.contractsignorg.views.editview.caption',
-        srfTitle: 'entities.contractsignorg.views.editview.title',
-        srfSubTitle: 'entities.contractsignorg.views.editview.subtitle',
+        srfCaption: 'entities.pimcontractsignorg.views.editview.caption',
+        srfTitle: 'entities.pimcontractsignorg.views.editview.title',
+        srfSubTitle: 'entities.pimcontractsignorg.views.editview.subtitle',
         dataInfo: ''
     }
 
@@ -202,7 +202,7 @@ export default class ContractSignORGEditViewBase extends EditViewBase {
             view: this,
             form: this.$refs.form,
             p2k: '0',
-            keyPSDEField: 'contractsignorg',
+            keyPSDEField: 'pimcontractsignorg',
             majorPSDEField: 'contractsignorgname',
             isLoadDefault: true,
         });
@@ -304,7 +304,7 @@ export default class ContractSignORGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"ContractSignORG");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimContractSignOrg");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class ContractSignORGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"ContractSignORG");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimContractSignOrg");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class ContractSignORGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ContractSignORG");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimContractSignOrg");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class ContractSignORGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ContractSignORG");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimContractSignOrg");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class ContractSignORGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"ContractSignORG");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimContractSignOrg");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class ContractSignORGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"ContractSignORG");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimContractSignOrg");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class ContractSignORGEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"ContractSignORG");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimContractSignOrg");
     }
 
     /**

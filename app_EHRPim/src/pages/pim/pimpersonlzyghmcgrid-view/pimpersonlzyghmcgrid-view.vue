@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMPERSONLZYGHMCGridViewBase from './pimpersonlzyghmcgrid-view-base.vue';
 
-import view_grid from '@widgets/pimperson/txlxyg-2-grid/txlxyg-2-grid.vue';
-import view_searchform from '@widgets/pimperson/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-person/txlxyg-2-grid/txlxyg-2-grid.vue';
+import view_searchform from '@widgets/pim-person/default-searchform/default-searchform.vue';
 
 /**
  * 离职员工

@@ -1,5 +1,5 @@
 <template>
-    <i-form :model="this.data" class='app-form' ref='form'  id='form' style="">
+    <i-form :model="this.data" class='app-form' ref='form'  id='ormorgsector_bmbzgl' style="">
     <input style="display:none;" />
     <row >
             
@@ -32,7 +32,7 @@
 </i-col>
 <i-col v-show="detailsModel.bmlx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='bmlx' :itemRules="this.rules.bmlx" class='' :caption="$t('entities.ormorgsector.bmbzgl_form.details.bmlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bmlx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.bmlx" :data="data" :itemParam="{}" :disabled="detailsModel.bmlx.disabled"  tag='PIMCL_BMLX' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list v-model="data.bmlx" :data="data" :itemParam="{}" :disabled="detailsModel.bmlx.disabled"  tag='EhrCodeList0019' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -63,19 +63,19 @@
 </i-col>
 <i-col v-show="detailsModel.belongregion.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='belongregion' :itemRules="this.rules.belongregion" class='' :caption="$t('entities.ormorgsector.bmbzgl_form.details.belongregion')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.belongregion.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.belongregion" :data="data" :itemParam="{}" :disabled="detailsModel.belongregion.disabled"  tag='EhrCodeListSsqy' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list v-model="data.belongregion" :data="data" :itemParam="{}" :disabled="detailsModel.belongregion.disabled"  tag='EhrCodeList0250' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.qy.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='qy' :itemRules="this.rules.qy" class='' :caption="$t('entities.ormorgsector.bmbzgl_form.details.qy')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.qy.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.qy" :data="data" :itemParam="{}" :disabled="detailsModel.qy.disabled"  tag='ORMCL_QY' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list v-model="data.qy" :data="data" :itemParam="{}" :disabled="detailsModel.qy.disabled"  tag='EhrCodeList0219' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.gkjz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='gkjz' :itemRules="this.rules.gkjz" class='' :caption="$t('entities.ormorgsector.bmbzgl_form.details.gkjz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gkjz.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.gkjz" :data="data" :itemParam="{}" :disabled="detailsModel.gkjz.disabled"  tag='ORMCL_JZ' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list v-model="data.gkjz" :data="data" :itemParam="{}" :disabled="detailsModel.gkjz.disabled"  tag='EhrCodeList0156' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -87,7 +87,7 @@
 </i-col>
 <i-col v-show="detailsModel.startstopsign.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='startstopsign' :itemRules="this.rules.startstopsign" class='' :caption="$t('entities.ormorgsector.bmbzgl_form.details.startstopsign')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.startstopsign.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.startstopsign"  :disabled="detailsModel.startstopsign.disabled"  name="startstopsign" tag='ORMCL_QTBS' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group v-model="data.startstopsign"  :disabled="detailsModel.startstopsign.disabled"  name="startstopsign" tag='EhrCodeList0086' codelistType='STATIC'  style=""></app-radio-group>
 </app-form-item>
 
 </i-col>
@@ -235,6 +235,12 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
     }
 
 
+    /**
+     * 工作流审批意见控件绑定值
+     *
+     * @memberof BMBZGL
+     */
+    public srfwfmemo:string = "";
     
     /**
      * 获取多项数据
@@ -1384,7 +1390,7 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'form',popTitle:'部门/项目部信息<主编辑>'});
+        _this.$print({id:'ormorgsector_bmbzgl',popTitle:'部门/项目部信息<主编辑>'});
     }
 
     /**
@@ -1756,6 +1762,10 @@ export default class BMBZGLBase extends Vue implements ControlInterface {
                 // 准备提交参数
                 if(this.viewparams){
                     Object.assign(arg,{viewparams:this.viewparams});
+                }
+                // 强制补充srfwfmemo
+                if(this.srfwfmemo){
+                    Object.assign(arg,{srfwfmemo:this.srfwfmemo});
                 }
                 const result: Promise<any> = this.service.wfsubmit(_this.WFSubmitAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
                 result.then((response: any) => {

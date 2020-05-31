@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMPERSONXSCGEditViewBase from './pimpersonxscgedit-view-base.vue';
 
-import view_form from '@widgets/pimperson/ryinfo-form-4-form/ryinfo-form-4-form.vue';
+import view_form from '@widgets/pim-person/ryinfo-form-4-form/ryinfo-form-4-form.vue';
 
 /**
  * 学术成果编辑视图

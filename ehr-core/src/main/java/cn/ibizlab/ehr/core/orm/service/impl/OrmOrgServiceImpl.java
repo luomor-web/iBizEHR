@@ -46,28 +46,28 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IARCHIVESCENTERService archivescenterService;
+    private cn.ibizlab.ehr.core.pim.service.IPimArchivesCenterService pimarchivescenterService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDANCEMREPORTService attendancemreportService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndanceMreportService attendancemreportService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDANCERECORDTEMPService attendancerecordtempService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndanceRecordTempService attendancerecordtempService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDENCECALENDARService attendencecalendarService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndenceCalendarService attendencecalendarService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.att.service.IATTENDENCESETUPService attendencesetupService;
+    private cn.ibizlab.ehr.core.att.service.IAttEndenceSetupService attendencesetupService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IBUDGETService budgetService;
+    private cn.ibizlab.ehr.core.pim.service.IPimBudgetService pimbudgetService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IContractSignORGService contractsignorgService;
+    private cn.ibizlab.ehr.core.pim.service.IPimContractSignOrgService pimcontractsignorgService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IDateRuleService dateruleService;
+    private cn.ibizlab.ehr.core.pim.service.IPimDateRuleService pimdateruleService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgdzService ormorgdzService;
@@ -78,247 +78,247 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService = this;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMPOSTService ormpostService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmPostService ormpostService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMQYBZWHService ormqybzwhService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmQybzwhService ormqybzwhService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMQYGLService ormqyglService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmQyglService ormqyglService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMUSERService ormuserService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmUserService ormuserService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMXMBQService ormxmbqService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmXmbqService ormxmbqService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.orm.service.IORMZWDQGZService ormzwdqgzService;
+    private cn.ibizlab.ehr.core.orm.service.IOrmZwdqgzService ormzwdqgzService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARJGBMPJBZService parjgbmpjbzService;
+    private cn.ibizlab.ehr.core.par.service.IParJgbmpjbzService parjgbmpjbzService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARJXBZGLService parjxbzglService;
+    private cn.ibizlab.ehr.core.par.service.IParJxbzglService parjxbzglService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARJXKHJCSZService parjxkhjcszService;
+    private cn.ibizlab.ehr.core.par.service.IParJxkhjcszService parjxkhjcszService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARJXKHMBService parjxkhmbService;
+    private cn.ibizlab.ehr.core.par.service.IParJxkhmbService parjxkhmbService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARJXQDSZService parjxqdszService;
+    private cn.ibizlab.ehr.core.par.service.IParJxqdszService parjxqdszService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.par.service.IPARXMBPJBZService parxmbpjbzService;
+    private cn.ibizlab.ehr.core.par.service.IParXmbpjbzService parxmbpjbzService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMBDSQDMXService pcmbdsqdmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmBdsqdmxService pcmbdsqdmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMDDSQDMXService pcmddsqdmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmDdsqdmxService pcmddsqdmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPCMDETAILService pcmdetailService;
+    private cn.ibizlab.ehr.core.pim.service.IPcmDetailService pcmdetailService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMJXSBDJLService pcmjxsbdjlService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmJxsbdjlService pcmjxsbdjlService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMNoticeService pcmnoticeService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmNoticeService pcmnoticeService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMPROFILEINITNUMBERService pcmprofileinitnumberService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmProfileInitNumberService pcmprofileinitnumberService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMPROFILENUMBEPREFIXService pcmprofilenumbeprefixService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmProfileNumBeprefixService pcmprofilenumbeprefixService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMPROFILEService pcmprofileService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmProfileService pcmprofileService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMRecruitmentService pcmrecruitmentService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmRecruitmentService pcmrecruitmentService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMSYQGZService pcmsyqgzService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmSyqgzService pcmsyqgzService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMYDJDMXService pcmydjdmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdjdmxService pcmydjdmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMYDJZMXService pcmydjzmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdjzmxService pcmydjzmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMYDMXService pcmydmxService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdmxService pcmydmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pcm.service.IPCMZPMEGLService pcmzpmeglService;
+    private cn.ibizlab.ehr.core.pcm.service.IPcmZpmeglService pcmzpmeglService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMARCHIVESCHANGEService pimarchiveschangeService;
+    private cn.ibizlab.ehr.core.pim.service.IPimArchivesChangeService pimarchiveschangeService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMARCHIVESService pimarchivesService;
+    private cn.ibizlab.ehr.core.pim.service.IPimArchivesService pimarchivesService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMCONTRACTTYPEService pimcontracttypeService;
+    private cn.ibizlab.ehr.core.pim.service.IPimContractTypeService pimcontracttypeService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMCONTRACTService pimcontractService;
+    private cn.ibizlab.ehr.core.pim.service.IPimContractService pimcontractService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMDISTIRBUTIONService pimdistirbutionService;
+    private cn.ibizlab.ehr.core.pim.service.IPimDistirbutionService pimdistirbutionService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMEXPACCOUNTService pimexpaccountService;
+    private cn.ibizlab.ehr.core.pim.service.IPimExpaccountService pimexpaccountService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMLABOURCAMPANYService pimlabourcampanyService;
+    private cn.ibizlab.ehr.core.pim.service.IPimLabourcampanyService pimlabourcampanyService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMOUTPUTService pimoutputService;
+    private cn.ibizlab.ehr.core.pim.service.IPimOutputService pimoutputService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMPERSONService pimpersonService;
+    private cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMQUALMAJORService pimqualmajorService;
+    private cn.ibizlab.ehr.core.pim.service.IPimQualMajorService pimqualmajorService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMTITLECATALOGUEService pimtitlecatalogueService;
+    private cn.ibizlab.ehr.core.pim.service.IPimTitleCatalogueService pimtitlecatalogueService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMVOCATIONALService pimvocationalService;
+    private cn.ibizlab.ehr.core.pim.service.IPimVocationalService pimvocationalService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.pim.service.IPIMWorkflowService pimworkflowService;
+    private cn.ibizlab.ehr.core.pim.service.IPimWorkflowService pimworkflowService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALITEMSUBService salitemsubService;
+    private cn.ibizlab.ehr.core.sal.service.ISalItemSubService salitemsubService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALPERSONSTDService salpersonstdService;
+    private cn.ibizlab.ehr.core.sal.service.ISalPersonStdService salpersonstdService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALPLANService salplanService;
+    private cn.ibizlab.ehr.core.sal.service.ISalPlanService salplanService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSALARYBILLService salsalarybillService;
+    private cn.ibizlab.ehr.core.sal.service.ISalSalaryBillService salsalarybillService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSALARYService salsalaryService;
+    private cn.ibizlab.ehr.core.sal.service.ISalSalaryService salsalaryService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSCHEMEService salschemeService;
+    private cn.ibizlab.ehr.core.sal.service.ISalSchemeService salschemeService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSTDDSZNService salstddsznService;
+    private cn.ibizlab.ehr.core.sal.service.ISalStddsznService salstddsznService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSTDGLService salstdglService;
+    private cn.ibizlab.ehr.core.sal.service.ISalStdglService salstdglService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSTDGWGZRATEService salstdgwgzrateService;
+    private cn.ibizlab.ehr.core.sal.service.ISalStdGwGzrateService salstdgwgzrateService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSTDGWGZService salstdgwgzService;
+    private cn.ibizlab.ehr.core.sal.service.ISalStdgwgzService salstdgwgzService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSTDGWService salstdgwService;
+    private cn.ibizlab.ehr.core.sal.service.ISalStdgwService salstdgwService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSTDXMGZRATEService salstdxmgzrateService;
+    private cn.ibizlab.ehr.core.sal.service.ISalStdXmgzRateService salstdxmgzrateService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSTDXMGZService salstdxmgzService;
+    private cn.ibizlab.ehr.core.sal.service.ISalStdXmgzService salstdxmgzService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSTDZCService salstdzcService;
+    private cn.ibizlab.ehr.core.sal.service.ISalStdzcService salstdzcService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSTDZJService salstdzjService;
+    private cn.ibizlab.ehr.core.sal.service.ISalStdzjService salstdzjService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSTDZXService salstdzxService;
+    private cn.ibizlab.ehr.core.sal.service.ISalStdzxService salstdzxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.sal.service.ISALSTDZYZGService salstdzyzgService;
+    private cn.ibizlab.ehr.core.sal.service.ISalStdzyzgService salstdzyzgService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.soc.service.ISOCCOMPANYWELService soccompanywelService;
+    private cn.ibizlab.ehr.core.soc.service.ISocCompanyWelService soccompanywelService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.soc.service.ISOCSELFAREBASEService socselfarebaseService;
+    private cn.ibizlab.ehr.core.soc.service.ISocSelfareBaseService socselfarebaseService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMDEMDEFTIONService trmdemdeftionService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmDemdeftionService trmdemdeftionService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMDEPARTService trmdepartService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmDepartService trmdepartService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMDUTYCADRESService trmdutycadresService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmDutyCadresService trmdutycadresService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMEMPLOYRETIONService trmemployretionService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmEmployeeRetionService trmemployeeretionService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMGRADECADRESService trmgradecadresService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmGradecadresService trmgradecadresService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMHMATSERService trmhmatserService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmHmatserService trmhmatserService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMLGBCOSTService trmlgbcostService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmLgbCostService trmlgbcostService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMPLANFORMUService trmplanformuService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmPlanFormuService trmplanformuService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMSTAFFService trmstaffService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmStaffService trmstaffService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINADDRESSService trmtrainaddressService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainAddressService trmtrainaddressService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINAGENCYService trmtrainagencyService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainAgencyService trmtrainagencyService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINBUAPPLYService trmtrainbuapplyService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainBuapplyService trmtrainbuapplyService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINCOURSEService trmtraincourseService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainCourseService trmtraincourseService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINDATAService trmtraindataService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainDataService trmtraindataService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINDEMANDSUMService trmtraindemandsumService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainDemandSumService trmtraindemandsumService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINDEMANDService trmtraindemandService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainDemandService trmtraindemandService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINFILLINService trmtrainfillinService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainFillinService trmtrainfillinService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINPLANService trmtrainplanService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainPlanService trmtrainplanService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.trm.service.ITRMTRAINTEACHERService trmtrainteacherService;
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainTeacherService trmtrainteacherService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.vac.service.IVACHOLIDAYRULESService vacholidayrulesService;
+    private cn.ibizlab.ehr.core.vac.service.IVacHolidayRulesService vacholidayrulesService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.vac.service.IVACINITNXJService vacinitnxjService;
+    private cn.ibizlab.ehr.core.vac.service.IVacInitnxjService vacinitnxjService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.vac.service.IVACLEAVESYSTEMService vacleavesystemService;
+    private cn.ibizlab.ehr.core.vac.service.IVacLeaveSystemService vacleavesystemService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.vac.service.IVACOVERALLTIONService vacoveralltionService;
+    private cn.ibizlab.ehr.core.vac.service.IVacOveralltionService vacoveralltionService;
 
     private int batchSize = 500;
 

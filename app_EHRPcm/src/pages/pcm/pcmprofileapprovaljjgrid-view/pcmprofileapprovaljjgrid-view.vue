@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMPROFILEAPPROVALJJGridViewBase from './pcmprofileapprovaljjgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmprofileapproval/ck-grid/ck-grid.vue';
+import view_grid from '@widgets/pcm-profile-approval/ck-grid/ck-grid.vue';
 
 /**
  * 应聘者审批表

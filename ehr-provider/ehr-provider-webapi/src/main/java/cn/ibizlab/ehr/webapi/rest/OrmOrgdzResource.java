@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.orm.service.IOrmOrgdzService;
 import cn.ibizlab.ehr.core.orm.filter.OrmOrgdzSearchContext;
 
 @Slf4j
-@Api(tags = {"OrmOrgdz" })
+@Api(tags = {"组织地址维护" })
 @RestController("WebApi-ormorgdz")
 @RequestMapping("")
 public class OrmOrgdzResource {
@@ -47,7 +47,7 @@ public class OrmOrgdzResource {
     public OrmOrgdzMapping ormorgdzMapping;
 
     @PostAuthorize("hasPermission(this.ormorgdzMapping.toDomain(returnObject.body),'ehr-OrmOrgdz-Get')")
-    @ApiOperation(value = "Get", tags = {"OrmOrgdz" },  notes = "Get")
+    @ApiOperation(value = "获取组织地址维护", tags = {"组织地址维护" },  notes = "获取组织地址维护")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorgdzs/{ormorgdz_id}")
     public ResponseEntity<OrmOrgdzDTO> get(@PathVariable("ormorgdz_id") String ormorgdz_id) {
         OrmOrgdz domain = ormorgdzService.get(ormorgdz_id);
@@ -55,14 +55,14 @@ public class OrmOrgdzResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"OrmOrgdz" },  notes = "GetDraft")
+    @ApiOperation(value = "获取组织地址维护草稿", tags = {"组织地址维护" },  notes = "获取组织地址维护草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorgdzs/getdraft")
     public ResponseEntity<OrmOrgdzDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(ormorgdzMapping.toDto(ormorgdzService.getDraft(new OrmOrgdz())));
     }
 
     @PreAuthorize("hasPermission(this.ormorgdzService.get(#ormorgdz_id),'ehr-OrmOrgdz-Remove')")
-    @ApiOperation(value = "Remove", tags = {"OrmOrgdz" },  notes = "Remove")
+    @ApiOperation(value = "删除组织地址维护", tags = {"组织地址维护" },  notes = "删除组织地址维护")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgdzs/{ormorgdz_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("ormorgdz_id") String ormorgdz_id) {
@@ -70,7 +70,7 @@ public class OrmOrgdzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormorgdzService.getOrmorgdzByIds(#ids),'ehr-OrmOrgdz-Remove')")
-    @ApiOperation(value = "RemoveBatch", tags = {"OrmOrgdz" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除组织地址维护", tags = {"组织地址维护" },  notes = "批量删除组织地址维护")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgdzs/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         ormorgdzService.removeBatch(ids);
@@ -78,14 +78,14 @@ public class OrmOrgdzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormorgdzMapping.toDomain(#ormorgdzdto),'ehr-OrmOrgdz-Save')")
-    @ApiOperation(value = "Save", tags = {"OrmOrgdz" },  notes = "Save")
+    @ApiOperation(value = "保存组织地址维护", tags = {"组织地址维护" },  notes = "保存组织地址维护")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgdzs/save")
     public ResponseEntity<Boolean> save(@RequestBody OrmOrgdzDTO ormorgdzdto) {
         return ResponseEntity.status(HttpStatus.OK).body(ormorgdzService.save(ormorgdzMapping.toDomain(ormorgdzdto)));
     }
 
     @PreAuthorize("hasPermission(this.ormorgdzMapping.toDomain(#ormorgdzdtos),'ehr-OrmOrgdz-Save')")
-    @ApiOperation(value = "SaveBatch", tags = {"OrmOrgdz" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存组织地址维护", tags = {"组织地址维护" },  notes = "批量保存组织地址维护")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgdzs/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<OrmOrgdzDTO> ormorgdzdtos) {
         ormorgdzService.saveBatch(ormorgdzMapping.toDomain(ormorgdzdtos));
@@ -93,7 +93,7 @@ public class OrmOrgdzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormorgdzMapping.toDomain(#ormorgdzdto),'ehr-OrmOrgdz-Create')")
-    @ApiOperation(value = "Create", tags = {"OrmOrgdz" },  notes = "Create")
+    @ApiOperation(value = "新建组织地址维护", tags = {"组织地址维护" },  notes = "新建组织地址维护")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgdzs")
     @Transactional
     public ResponseEntity<OrmOrgdzDTO> create(@RequestBody OrmOrgdzDTO ormorgdzdto) {
@@ -104,7 +104,7 @@ public class OrmOrgdzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormorgdzMapping.toDomain(#ormorgdzdtos),'ehr-OrmOrgdz-Create')")
-    @ApiOperation(value = "createBatch", tags = {"OrmOrgdz" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建组织地址维护", tags = {"组织地址维护" },  notes = "批量新建组织地址维护")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgdzs/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<OrmOrgdzDTO> ormorgdzdtos) {
         ormorgdzService.createBatch(ormorgdzMapping.toDomain(ormorgdzdtos));
@@ -112,7 +112,7 @@ public class OrmOrgdzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormorgdzService.get(#ormorgdz_id),'ehr-OrmOrgdz-Update')")
-    @ApiOperation(value = "Update", tags = {"OrmOrgdz" },  notes = "Update")
+    @ApiOperation(value = "更新组织地址维护", tags = {"组织地址维护" },  notes = "更新组织地址维护")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgdzs/{ormorgdz_id}")
     @Transactional
     public ResponseEntity<OrmOrgdzDTO> update(@PathVariable("ormorgdz_id") String ormorgdz_id, @RequestBody OrmOrgdzDTO ormorgdzdto) {
@@ -124,21 +124,21 @@ public class OrmOrgdzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormorgdzService.getOrmorgdzByEntities(this.ormorgdzMapping.toDomain(#ormorgdzdtos)),'ehr-OrmOrgdz-Update')")
-    @ApiOperation(value = "UpdateBatch", tags = {"OrmOrgdz" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新组织地址维护", tags = {"组织地址维护" },  notes = "批量更新组织地址维护")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgdzs/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<OrmOrgdzDTO> ormorgdzdtos) {
         ormorgdzService.updateBatch(ormorgdzMapping.toDomain(ormorgdzdtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"OrmOrgdz" },  notes = "CheckKey")
+    @ApiOperation(value = "检查组织地址维护", tags = {"组织地址维护" },  notes = "检查组织地址维护")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgdzs/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody OrmOrgdzDTO ormorgdzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormorgdzService.checkKey(ormorgdzMapping.toDomain(ormorgdzdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgdz-Default-all')")
-	@ApiOperation(value = "fetchDEFAULT", tags = {"OrmOrgdz" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"组织地址维护" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgdzs/fetchdefault")
 	public ResponseEntity<List<OrmOrgdzDTO>> fetchDefault(OrmOrgdzSearchContext context) {
         Page<OrmOrgdz> domains = ormorgdzService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class OrmOrgdzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgdz-Default-all')")
-	@ApiOperation(value = "searchDEFAULT", tags = {"OrmOrgdz" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询DEFAULT", tags = {"组织地址维护" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgdzs/searchdefault")
 	public ResponseEntity<Page<OrmOrgdzDTO>> searchDefault(@RequestBody OrmOrgdzSearchContext context) {
         Page<OrmOrgdz> domains = ormorgdzService.searchDefault(context) ;
@@ -159,7 +159,7 @@ public class OrmOrgdzResource {
                 .body(new PageImpl(ormorgdzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PostAuthorize("hasPermission(this.ormorgdzMapping.toDomain(returnObject.body),'ehr-OrmOrgdz-Get')")
-    @ApiOperation(value = "GetByOrmOrg", tags = {"OrmOrgdz" },  notes = "GetByOrmOrg")
+    @ApiOperation(value = "根据组织管理获取组织地址维护", tags = {"组织地址维护" },  notes = "根据组织管理获取组织地址维护")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormorgdzs/{ormorgdz_id}")
     public ResponseEntity<OrmOrgdzDTO> getByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgdz_id") String ormorgdz_id) {
         OrmOrgdz domain = ormorgdzService.get(ormorgdz_id);
@@ -167,7 +167,7 @@ public class OrmOrgdzResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "GetDraftByOrmOrg", tags = {"OrmOrgdz" },  notes = "GetDraftByOrmOrg")
+    @ApiOperation(value = "根据组织管理获取组织地址维护草稿", tags = {"组织地址维护" },  notes = "根据组织管理获取组织地址维护草稿")
     @RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormorgdzs/getdraft")
     public ResponseEntity<OrmOrgdzDTO> getDraftByOrmOrg(@PathVariable("ormorg_id") String ormorg_id) {
         OrmOrgdz domain = new OrmOrgdz();
@@ -176,7 +176,7 @@ public class OrmOrgdzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormorgdzService.get(#ormorgdz_id),'ehr-OrmOrgdz-Remove')")
-    @ApiOperation(value = "RemoveByOrmOrg", tags = {"OrmOrgdz" },  notes = "RemoveByOrmOrg")
+    @ApiOperation(value = "根据组织管理删除组织地址维护", tags = {"组织地址维护" },  notes = "根据组织管理删除组织地址维护")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormorgdzs/{ormorgdz_id}")
     @Transactional
     public ResponseEntity<Boolean> removeByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgdz_id") String ormorgdz_id) {
@@ -184,7 +184,7 @@ public class OrmOrgdzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormorgdzService.getOrmorgdzByIds(#ids),'ehr-OrmOrgdz-Remove')")
-    @ApiOperation(value = "RemoveBatchByOrmOrg", tags = {"OrmOrgdz" },  notes = "RemoveBatchByOrmOrg")
+    @ApiOperation(value = "根据组织管理批量删除组织地址维护", tags = {"组织地址维护" },  notes = "根据组织管理批量删除组织地址维护")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/ormorgs/{ormorg_id}/ormorgdzs/batch")
     public ResponseEntity<Boolean> removeBatchByOrmOrg(@RequestBody List<String> ids) {
         ormorgdzService.removeBatch(ids);
@@ -192,7 +192,7 @@ public class OrmOrgdzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormorgdzMapping.toDomain(#ormorgdzdto),'ehr-OrmOrgdz-Save')")
-    @ApiOperation(value = "SaveByOrmOrg", tags = {"OrmOrgdz" },  notes = "SaveByOrmOrg")
+    @ApiOperation(value = "根据组织管理保存组织地址维护", tags = {"组织地址维护" },  notes = "根据组织管理保存组织地址维护")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgdzs/save")
     public ResponseEntity<Boolean> saveByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody OrmOrgdzDTO ormorgdzdto) {
         OrmOrgdz domain = ormorgdzMapping.toDomain(ormorgdzdto);
@@ -201,7 +201,7 @@ public class OrmOrgdzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormorgdzMapping.toDomain(#ormorgdzdtos),'ehr-OrmOrgdz-Save')")
-    @ApiOperation(value = "SaveBatchByOrmOrg", tags = {"OrmOrgdz" },  notes = "SaveBatchByOrmOrg")
+    @ApiOperation(value = "根据组织管理批量保存组织地址维护", tags = {"组织地址维护" },  notes = "根据组织管理批量保存组织地址维护")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgdzs/savebatch")
     public ResponseEntity<Boolean> saveBatchByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody List<OrmOrgdzDTO> ormorgdzdtos) {
         List<OrmOrgdz> domainlist=ormorgdzMapping.toDomain(ormorgdzdtos);
@@ -213,7 +213,7 @@ public class OrmOrgdzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormorgdzMapping.toDomain(#ormorgdzdto),'ehr-OrmOrgdz-Create')")
-    @ApiOperation(value = "CreateByOrmOrg", tags = {"OrmOrgdz" },  notes = "CreateByOrmOrg")
+    @ApiOperation(value = "根据组织管理建立组织地址维护", tags = {"组织地址维护" },  notes = "根据组织管理建立组织地址维护")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgdzs")
     @Transactional
     public ResponseEntity<OrmOrgdzDTO> createByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody OrmOrgdzDTO ormorgdzdto) {
@@ -225,7 +225,7 @@ public class OrmOrgdzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormorgdzMapping.toDomain(#ormorgdzdtos),'ehr-OrmOrgdz-Create')")
-    @ApiOperation(value = "createBatchByOrmOrg", tags = {"OrmOrgdz" },  notes = "createBatchByOrmOrg")
+    @ApiOperation(value = "根据组织管理批量建立组织地址维护", tags = {"组织地址维护" },  notes = "根据组织管理批量建立组织地址维护")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgdzs/batch")
     public ResponseEntity<Boolean> createBatchByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody List<OrmOrgdzDTO> ormorgdzdtos) {
         List<OrmOrgdz> domainlist=ormorgdzMapping.toDomain(ormorgdzdtos);
@@ -237,7 +237,7 @@ public class OrmOrgdzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormorgdzService.get(#ormorgdz_id),'ehr-OrmOrgdz-Update')")
-    @ApiOperation(value = "UpdateByOrmOrg", tags = {"OrmOrgdz" },  notes = "UpdateByOrmOrg")
+    @ApiOperation(value = "根据组织管理更新组织地址维护", tags = {"组织地址维护" },  notes = "根据组织管理更新组织地址维护")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormorgdzs/{ormorgdz_id}")
     @Transactional
     public ResponseEntity<OrmOrgdzDTO> updateByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgdz_id") String ormorgdz_id, @RequestBody OrmOrgdzDTO ormorgdzdto) {
@@ -250,7 +250,7 @@ public class OrmOrgdzResource {
     }
 
     @PreAuthorize("hasPermission(this.ormorgdzService.getOrmorgdzByEntities(this.ormorgdzMapping.toDomain(#ormorgdzdtos)),'ehr-OrmOrgdz-Update')")
-    @ApiOperation(value = "UpdateBatchByOrmOrg", tags = {"OrmOrgdz" },  notes = "UpdateBatchByOrmOrg")
+    @ApiOperation(value = "根据组织管理批量更新组织地址维护", tags = {"组织地址维护" },  notes = "根据组织管理批量更新组织地址维护")
 	@RequestMapping(method = RequestMethod.PUT, value = "/ormorgs/{ormorg_id}/ormorgdzs/batch")
     public ResponseEntity<Boolean> updateBatchByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody List<OrmOrgdzDTO> ormorgdzdtos) {
         List<OrmOrgdz> domainlist=ormorgdzMapping.toDomain(ormorgdzdtos);
@@ -261,14 +261,14 @@ public class OrmOrgdzResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKeyByOrmOrg", tags = {"OrmOrgdz" },  notes = "CheckKeyByOrmOrg")
+    @ApiOperation(value = "根据组织管理检查组织地址维护", tags = {"组织地址维护" },  notes = "根据组织管理检查组织地址维护")
 	@RequestMapping(method = RequestMethod.POST, value = "/ormorgs/{ormorg_id}/ormorgdzs/checkkey")
     public ResponseEntity<Boolean> checkKeyByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody OrmOrgdzDTO ormorgdzdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(ormorgdzService.checkKey(ormorgdzMapping.toDomain(ormorgdzdto)));
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgdz-Default-all')")
-	@ApiOperation(value = "fetchDEFAULTByOrmOrg", tags = {"OrmOrgdz" } ,notes = "fetchDEFAULTByOrmOrg")
+	@ApiOperation(value = "根据组织管理获取DEFAULT", tags = {"组织地址维护" } ,notes = "根据组织管理获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/ormorgs/{ormorg_id}/ormorgdzs/fetchdefault")
 	public ResponseEntity<List<OrmOrgdzDTO>> fetchOrmOrgdzDefaultByOrmOrg(@PathVariable("ormorg_id") String ormorg_id,OrmOrgdzSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);
@@ -282,7 +282,7 @@ public class OrmOrgdzResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-OrmOrgdz-Default-all')")
-	@ApiOperation(value = "searchDEFAULTByOrmOrg", tags = {"OrmOrgdz" } ,notes = "searchDEFAULTByOrmOrg")
+	@ApiOperation(value = "根据组织管理查询DEFAULT", tags = {"组织地址维护" } ,notes = "根据组织管理查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormorgdzs/searchdefault")
 	public ResponseEntity<Page<OrmOrgdzDTO>> searchOrmOrgdzDefaultByOrmOrg(@PathVariable("ormorg_id") String ormorg_id, @RequestBody OrmOrgdzSearchContext context) {
         context.setN_ormorgid_eq(ormorg_id);

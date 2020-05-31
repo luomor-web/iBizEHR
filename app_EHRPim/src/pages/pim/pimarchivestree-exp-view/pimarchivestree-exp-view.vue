@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMARCHIVESTreeExpViewBase from './pimarchivestree-exp-view-base.vue';
 
-import view_treeexpbar from '@widgets/pimarchives/tree-exp-viewtreeexpbar-treeexpbar/tree-exp-viewtreeexpbar-treeexpbar.vue';
+import view_treeexpbar from '@widgets/pim-archives/tree-exp-viewtreeexpbar-treeexpbar/tree-exp-viewtreeexpbar-treeexpbar.vue';
 
 /**
  * 档案信息树导航视图

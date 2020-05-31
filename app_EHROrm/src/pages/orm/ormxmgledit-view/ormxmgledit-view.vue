@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMXMGLEditViewBase from './ormxmgledit-view-base.vue';
 
-import view_form from '@widgets/ormxmgl/main-form/main-form.vue';
+import view_form from '@widgets/orm-xmgl/main-form/main-form.vue';
 
 /**
  * ERP项目信息

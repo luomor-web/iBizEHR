@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import ORMDUTYService from '@/service/ormduty/ormduty-service';
+import OrmDutyService from '@/service/orm-duty/orm-duty-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class ORMDUTYEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMDUTYService}
+     * @type {OrmDutyService}
      * @memberof ORMDUTYEditViewBase
      */
-    public appEntityService: ORMDUTYService = new ORMDUTYService;
+    public appEntityService: OrmDutyService = new OrmDutyService;
 
 
     /**
@@ -288,7 +288,7 @@ export default class ORMDUTYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"ORMDUTY");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"OrmDuty");
     }
 
     /**
@@ -317,7 +317,7 @@ export default class ORMDUTYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ORMDUTY");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"OrmDuty");
     }
 
     /**
@@ -346,7 +346,7 @@ export default class ORMDUTYEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"ORMDUTY");
+        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"OrmDuty");
     }
 
     /**

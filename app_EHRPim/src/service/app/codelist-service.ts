@@ -1,45 +1,45 @@
-import PIM_XL2 from '@/codelist/pim-xl2';   
-import CFPLX from '@/codelist/cfplx';   
-import PIMCL_ZCDJ from '@/codelist/pimcl-zcdj';   
-import PIMCL_XX from '@/codelist/pimcl-xx';   
-import PCMCL_XKML from '@/codelist/pcmcl-xkml';   
-import PIMCL_ZJ from '@/codelist/pimcl-zj';   
-import PIMCL_TROOPTYPE from '@/codelist/pimcl-trooptype';   
-import PIMCL_KHJL from '@/codelist/pimcl-khjl';   
-import SysOperator from '@/codelist/sys-operator';   
-import PIMCL_HY from '@/codelist/pimcl-hy';   
-import PIMCL_ZZMM from '@/codelist/pimcl-zzmm';   
-import PIMCL_YYZL from '@/codelist/pimcl-yyzl';   
-import PIMCL_RZLB from '@/codelist/pimcl-rzlb';   
-import ORMCL_LEVEL2ORG from '@/codelist/ormcl-level2-org';   
-import PIMCL_HKLX from '@/codelist/pimcl-hklx';   
-import PIMCL_YGZT from '@/codelist/pimcl-ygzt';   
-import PIMCL_HTLX from '@/codelist/pimcl-htlx';   
-import PIMCL_ZJLX from '@/codelist/pimcl-zjlx';   
-import PIMCL_JCLX from '@/codelist/pimcl-jclx';   
-import PIMCL_FPLX from '@/codelist/pimcl-fplx';   
-import PIMCL_TYPECONTRACT from '@/codelist/pimcl-typecontract';   
-import PIMCL_JCJB from '@/codelist/pimcl-jcjb';   
-import PIMCL_ZCLX from '@/codelist/pimcl-zclx';   
-import PIMCL_DANGJI from '@/codelist/pimcl-dangji';   
-import ATTCL_KQLX from '@/codelist/attcl-kqlx';   
-import PIMCL_FPZT from '@/codelist/pimcl-fpzt';   
-import PIMCL_RANK from '@/codelist/pimcl-rank';   
-import PIMCL_XWLX from '@/codelist/pimcl-xwlx';   
-import PIMCL_YGLX from '@/codelist/pimcl-yglx';   
-import ORMCL_QY from '@/codelist/ormcl-qy';   
-import PIMCL_XXXZ from '@/codelist/pimcl-xxxz';   
-import NATIVEPLACE from '@/codelist/nativeplace';   
-import ORMCL_ZW from '@/codelist/ormcl-zw';   
-import ORMCL_GW from '@/codelist/ormcl-gw';   
-import EhrCodeListSsqy from '@/codelist/ehr-code-list-ssqy';   
-import PIMCL_XB from '@/codelist/pimcl-xb';   
-import PIMCL_LEVEL from '@/codelist/pimcl-level';   
-import PIMCL_YBRGX from '@/codelist/pimcl-ybrgx';   
-import PIMCL_XL from '@/codelist/pimcl-xl';   
-import ORMCL_GWTYPE from '@/codelist/ormcl-gwtype';   
-import PIMCL_NATION from '@/codelist/pimcl-nation';   
-import LanguageLevel from '@/codelist/language-level';   
+import EhrCodeList0117 from '@/codelist/ehr-code-list0117';   
+import EhrCodeList0237 from '@/codelist/ehr-code-list0237';   
+import EhrCodeList0024 from '@/codelist/ehr-code-list0024';   
+import EhrCodeList0018 from '@/codelist/ehr-code-list0018';   
+import EhrCodeList0093 from '@/codelist/ehr-code-list0093';   
+import EhrCodeList0234 from '@/codelist/ehr-code-list0234';   
+import EhrCodeList0035 from '@/codelist/ehr-code-list0035';   
+import EhrCodeList0142 from '@/codelist/ehr-code-list0142';   
+import EhrCodeList0249 from '@/codelist/ehr-code-list0249';   
+import EhrCodeList0075 from '@/codelist/ehr-code-list0075';   
+import EhrCodeList0029 from '@/codelist/ehr-code-list0029';   
+import EhrCodeList0122 from '@/codelist/ehr-code-list0122';   
+import EhrCodeList0041 from '@/codelist/ehr-code-list0041';   
+import EhrCodeList0211 from '@/codelist/ehr-code-list0211';   
+import EhrCodeList0070 from '@/codelist/ehr-code-list0070';   
+import EhrCodeList0014 from '@/codelist/ehr-code-list0014';   
+import EhrCodeList0084 from '@/codelist/ehr-code-list0084';   
+import EhrCodeList0231 from '@/codelist/ehr-code-list0231';   
+import EhrCodeList0136 from '@/codelist/ehr-code-list0136';   
+import EhrCodeList0205 from '@/codelist/ehr-code-list0205';   
+import EhrCodeList0107 from '@/codelist/ehr-code-list0107';   
+import EhrCodeList0159 from '@/codelist/ehr-code-list0159';   
+import EhrCodeList0047 from '@/codelist/ehr-code-list0047';   
+import EhrCodeList0033 from '@/codelist/ehr-code-list0033';   
+import EhrCodeList0098 from '@/codelist/ehr-code-list0098';   
+import EhrCodeList0137 from '@/codelist/ehr-code-list0137';   
+import EhrCodeList0025 from '@/codelist/ehr-code-list0025';   
+import EhrCodeList0155 from '@/codelist/ehr-code-list0155';   
+import EhrCodeList0167 from '@/codelist/ehr-code-list0167';   
+import EhrCodeList0219 from '@/codelist/ehr-code-list0219';   
+import EhrCodeList0208 from '@/codelist/ehr-code-list0208';   
+import EhrCodeList0001 from '@/codelist/ehr-code-list0001';   
+import EhrCodeList0233 from '@/codelist/ehr-code-list0233';   
+import EhrCodeList0050 from '@/codelist/ehr-code-list0050';   
+import EhrCodeList0250 from '@/codelist/ehr-code-list0250';   
+import EhrCodeList0072 from '@/codelist/ehr-code-list0072';   
+import EhrCodeList0198 from '@/codelist/ehr-code-list0198';   
+import EhrCodeList0043 from '@/codelist/ehr-code-list0043';   
+import EhrCodeList0131 from '@/codelist/ehr-code-list0131';   
+import EhrCodeList0140 from '@/codelist/ehr-code-list0140';   
+import EhrCodeList0066 from '@/codelist/ehr-code-list0066';   
+import EhrCodeList0146 from '@/codelist/ehr-code-list0146';   
 import { Store } from 'vuex';
 
 /**
@@ -86,338 +86,338 @@ export default class CodeListService {
     /**
      * 代码表--学历
      *
-     * @type {PIM_XL2}
+     * @type {EhrCodeList0117}
      * @memberof CodeListService
      */
-    public PIM_XL2: PIM_XL2 = new PIM_XL2();
+    public EhrCodeList0117: EhrCodeList0117 = new EhrCodeList0117();
 
     /**
      * 代码表--次分配类型
      *
-     * @type {CFPLX}
+     * @type {EhrCodeList0237}
      * @memberof CodeListService
      */
-    public CFPLX: CFPLX = new CFPLX();
+    public EhrCodeList0237: EhrCodeList0237 = new EhrCodeList0237();
 
     /**
      * 代码表--职称等级
      *
-     * @type {PIMCL_ZCDJ}
+     * @type {EhrCodeList0024}
      * @memberof CodeListService
      */
-    public PIMCL_ZCDJ: PIMCL_ZCDJ = new PIMCL_ZCDJ();
+    public EhrCodeList0024: EhrCodeList0024 = new EhrCodeList0024();
 
     /**
      * 代码表--血型
      *
-     * @type {PIMCL_XX}
+     * @type {EhrCodeList0018}
      * @memberof CodeListService
      */
-    public PIMCL_XX: PIMCL_XX = new PIMCL_XX();
+    public EhrCodeList0018: EhrCodeList0018 = new EhrCodeList0018();
 
     /**
      * 代码表--学科目录
      *
-     * @type {PCMCL_XKML}
+     * @type {EhrCodeList0093}
      * @memberof CodeListService
      */
-    public PCMCL_XKML: PCMCL_XKML = new PCMCL_XKML();
+    public EhrCodeList0093: EhrCodeList0093 = new EhrCodeList0093();
 
     /**
      * 代码表--专家类型
      *
-     * @type {PIMCL_ZJ}
+     * @type {EhrCodeList0234}
      * @memberof CodeListService
      */
-    public PIMCL_ZJ: PIMCL_ZJ = new PIMCL_ZJ();
+    public EhrCodeList0234: EhrCodeList0234 = new EhrCodeList0234();
 
     /**
      * 代码表--军转类型
      *
-     * @type {PIMCL_TROOPTYPE}
+     * @type {EhrCodeList0035}
      * @memberof CodeListService
      */
-    public PIMCL_TROOPTYPE: PIMCL_TROOPTYPE = new PIMCL_TROOPTYPE();
+    public EhrCodeList0035: EhrCodeList0035 = new EhrCodeList0035();
 
     /**
      * 代码表--考核结论
      *
-     * @type {PIMCL_KHJL}
+     * @type {EhrCodeList0142}
      * @memberof CodeListService
      */
-    public PIMCL_KHJL: PIMCL_KHJL = new PIMCL_KHJL();
+    public EhrCodeList0142: EhrCodeList0142 = new EhrCodeList0142();
 
     /**
      * 代码表--云系统操作者
      *
-     * @type {SysOperator}
+     * @type {EhrCodeList0249}
      * @memberof CodeListService
      */
-    public SysOperator: SysOperator = new SysOperator();
+    public EhrCodeList0249: EhrCodeList0249 = new EhrCodeList0249();
 
     /**
      * 代码表--婚姻状况
      *
-     * @type {PIMCL_HY}
+     * @type {EhrCodeList0075}
      * @memberof CodeListService
      */
-    public PIMCL_HY: PIMCL_HY = new PIMCL_HY();
+    public EhrCodeList0075: EhrCodeList0075 = new EhrCodeList0075();
 
     /**
      * 代码表--政治面貌
      *
-     * @type {PIMCL_ZZMM}
+     * @type {EhrCodeList0029}
      * @memberof CodeListService
      */
-    public PIMCL_ZZMM: PIMCL_ZZMM = new PIMCL_ZZMM();
+    public EhrCodeList0029: EhrCodeList0029 = new EhrCodeList0029();
 
     /**
      * 代码表--语言种类
      *
-     * @type {PIMCL_YYZL}
+     * @type {EhrCodeList0122}
      * @memberof CodeListService
      */
-    public PIMCL_YYZL: PIMCL_YYZL = new PIMCL_YYZL();
+    public EhrCodeList0122: EhrCodeList0122 = new EhrCodeList0122();
 
     /**
      * 代码表--入职渠道
      *
-     * @type {PIMCL_RZLB}
+     * @type {EhrCodeList0041}
      * @memberof CodeListService
      */
-    public PIMCL_RZLB: PIMCL_RZLB = new PIMCL_RZLB();
+    public EhrCodeList0041: EhrCodeList0041 = new EhrCodeList0041();
 
     /**
      * 代码表--二级组织(图表)
      *
-     * @type {ORMCL_LEVEL2ORG}
+     * @type {EhrCodeList0211}
      * @memberof CodeListService
      */
-    public ORMCL_LEVEL2ORG: ORMCL_LEVEL2ORG = new ORMCL_LEVEL2ORG();
+    public EhrCodeList0211: EhrCodeList0211 = new EhrCodeList0211();
 
     /**
      * 代码表--户口类型
      *
-     * @type {PIMCL_HKLX}
+     * @type {EhrCodeList0070}
      * @memberof CodeListService
      */
-    public PIMCL_HKLX: PIMCL_HKLX = new PIMCL_HKLX();
+    public EhrCodeList0070: EhrCodeList0070 = new EhrCodeList0070();
 
     /**
      * 代码表--员工状态
      *
-     * @type {PIMCL_YGZT}
+     * @type {EhrCodeList0014}
      * @memberof CodeListService
      */
-    public PIMCL_YGZT: PIMCL_YGZT = new PIMCL_YGZT();
+    public EhrCodeList0014: EhrCodeList0014 = new EhrCodeList0014();
 
     /**
      * 代码表--合同类别
      *
-     * @type {PIMCL_HTLX}
+     * @type {EhrCodeList0084}
      * @memberof CodeListService
      */
-    public PIMCL_HTLX: PIMCL_HTLX = new PIMCL_HTLX();
+    public EhrCodeList0084: EhrCodeList0084 = new EhrCodeList0084();
 
     /**
      * 代码表--证件类型
      *
-     * @type {PIMCL_ZJLX}
+     * @type {EhrCodeList0231}
      * @memberof CodeListService
      */
-    public PIMCL_ZJLX: PIMCL_ZJLX = new PIMCL_ZJLX();
+    public EhrCodeList0231: EhrCodeList0231 = new EhrCodeList0231();
 
     /**
      * 代码表--惩罚类型
      *
-     * @type {PIMCL_JCLX}
+     * @type {EhrCodeList0136}
      * @memberof CodeListService
      */
-    public PIMCL_JCLX: PIMCL_JCLX = new PIMCL_JCLX();
+    public EhrCodeList0136: EhrCodeList0136 = new EhrCodeList0136();
 
     /**
      * 代码表--分配类型
      *
-     * @type {PIMCL_FPLX}
+     * @type {EhrCodeList0205}
      * @memberof CodeListService
      */
-    public PIMCL_FPLX: PIMCL_FPLX = new PIMCL_FPLX();
+    public EhrCodeList0205: EhrCodeList0205 = new EhrCodeList0205();
 
     /**
      * 代码表--合同类型
      *
-     * @type {PIMCL_TYPECONTRACT}
+     * @type {EhrCodeList0107}
      * @memberof CodeListService
      */
-    public PIMCL_TYPECONTRACT: PIMCL_TYPECONTRACT = new PIMCL_TYPECONTRACT();
+    public EhrCodeList0107: EhrCodeList0107 = new EhrCodeList0107();
 
     /**
      * 代码表--奖惩级别
      *
-     * @type {PIMCL_JCJB}
+     * @type {EhrCodeList0159}
      * @memberof CodeListService
      */
-    public PIMCL_JCJB: PIMCL_JCJB = new PIMCL_JCJB();
+    public EhrCodeList0159: EhrCodeList0159 = new EhrCodeList0159();
 
     /**
      * 代码表--职称类型
      *
-     * @type {PIMCL_ZCLX}
+     * @type {EhrCodeList0047}
      * @memberof CodeListService
      */
-    public PIMCL_ZCLX: PIMCL_ZCLX = new PIMCL_ZCLX();
+    public EhrCodeList0047: EhrCodeList0047 = new EhrCodeList0047();
 
     /**
      * 代码表--档级
      *
-     * @type {PIMCL_DANGJI}
+     * @type {EhrCodeList0033}
      * @memberof CodeListService
      */
-    public PIMCL_DANGJI: PIMCL_DANGJI = new PIMCL_DANGJI();
+    public EhrCodeList0033: EhrCodeList0033 = new EhrCodeList0033();
 
     /**
      * 代码表--考勤类型
      *
-     * @type {ATTCL_KQLX}
+     * @type {EhrCodeList0098}
      * @memberof CodeListService
      */
-    public ATTCL_KQLX: ATTCL_KQLX = new ATTCL_KQLX();
+    public EhrCodeList0098: EhrCodeList0098 = new EhrCodeList0098();
 
     /**
      * 代码表--分配状态
      *
-     * @type {PIMCL_FPZT}
+     * @type {EhrCodeList0137}
      * @memberof CodeListService
      */
-    public PIMCL_FPZT: PIMCL_FPZT = new PIMCL_FPZT();
+    public EhrCodeList0137: EhrCodeList0137 = new EhrCodeList0137();
 
     /**
      * 代码表--职级
      *
-     * @type {PIMCL_RANK}
+     * @type {EhrCodeList0025}
      * @memberof CodeListService
      */
-    public PIMCL_RANK: PIMCL_RANK = new PIMCL_RANK();
+    public EhrCodeList0025: EhrCodeList0025 = new EhrCodeList0025();
 
     /**
      * 代码表--学位
      *
-     * @type {PIMCL_XWLX}
+     * @type {EhrCodeList0155}
      * @memberof CodeListService
      */
-    public PIMCL_XWLX: PIMCL_XWLX = new PIMCL_XWLX();
+    public EhrCodeList0155: EhrCodeList0155 = new EhrCodeList0155();
 
     /**
      * 代码表--员工类型
      *
-     * @type {PIMCL_YGLX}
+     * @type {EhrCodeList0167}
      * @memberof CodeListService
      */
-    public PIMCL_YGLX: PIMCL_YGLX = new PIMCL_YGLX();
+    public EhrCodeList0167: EhrCodeList0167 = new EhrCodeList0167();
 
     /**
      * 代码表--补贴标准
      *
-     * @type {ORMCL_QY}
+     * @type {EhrCodeList0219}
      * @memberof CodeListService
      */
-    public ORMCL_QY: ORMCL_QY = new ORMCL_QY();
+    public EhrCodeList0219: EhrCodeList0219 = new EhrCodeList0219();
 
     /**
      * 代码表--学校性质
      *
-     * @type {PIMCL_XXXZ}
+     * @type {EhrCodeList0208}
      * @memberof CodeListService
      */
-    public PIMCL_XXXZ: PIMCL_XXXZ = new PIMCL_XXXZ();
+    public EhrCodeList0208: EhrCodeList0208 = new EhrCodeList0208();
 
     /**
      * 代码表--籍贯（户籍所在地）
      *
-     * @type {NATIVEPLACE}
+     * @type {EhrCodeList0001}
      * @memberof CodeListService
      */
-    public NATIVEPLACE: NATIVEPLACE = new NATIVEPLACE();
+    public EhrCodeList0001: EhrCodeList0001 = new EhrCodeList0001();
 
     /**
      * 代码表--职务（基础管理）
      *
-     * @type {ORMCL_ZW}
+     * @type {EhrCodeList0233}
      * @memberof CodeListService
      */
-    public ORMCL_ZW: ORMCL_ZW = new ORMCL_ZW();
+    public EhrCodeList0233: EhrCodeList0233 = new EhrCodeList0233();
 
     /**
      * 代码表--岗位（基础管理）
      *
-     * @type {ORMCL_GW}
+     * @type {EhrCodeList0050}
      * @memberof CodeListService
      */
-    public ORMCL_GW: ORMCL_GW = new ORMCL_GW();
+    public EhrCodeList0050: EhrCodeList0050 = new EhrCodeList0050();
 
     /**
      * 代码表--所属区域
      *
-     * @type {EhrCodeListSsqy}
+     * @type {EhrCodeList0250}
      * @memberof CodeListService
      */
-    public EhrCodeListSsqy: EhrCodeListSsqy = new EhrCodeListSsqy();
+    public EhrCodeList0250: EhrCodeList0250 = new EhrCodeList0250();
 
     /**
      * 代码表--性别
      *
-     * @type {PIMCL_XB}
+     * @type {EhrCodeList0072}
      * @memberof CodeListService
      */
-    public PIMCL_XB: PIMCL_XB = new PIMCL_XB();
+    public EhrCodeList0072: EhrCodeList0072 = new EhrCodeList0072();
 
     /**
      * 代码表--军转级别
      *
-     * @type {PIMCL_LEVEL}
+     * @type {EhrCodeList0198}
      * @memberof CodeListService
      */
-    public PIMCL_LEVEL: PIMCL_LEVEL = new PIMCL_LEVEL();
+    public EhrCodeList0198: EhrCodeList0198 = new EhrCodeList0198();
 
     /**
      * 代码表--家庭情况-与本人关系
      *
-     * @type {PIMCL_YBRGX}
+     * @type {EhrCodeList0043}
      * @memberof CodeListService
      */
-    public PIMCL_YBRGX: PIMCL_YBRGX = new PIMCL_YBRGX();
+    public EhrCodeList0043: EhrCodeList0043 = new EhrCodeList0043();
 
     /**
      * 代码表--学习形式
      *
-     * @type {PIMCL_XL}
+     * @type {EhrCodeList0131}
      * @memberof CodeListService
      */
-    public PIMCL_XL: PIMCL_XL = new PIMCL_XL();
+    public EhrCodeList0131: EhrCodeList0131 = new EhrCodeList0131();
 
     /**
      * 代码表--岗位类型
      *
-     * @type {ORMCL_GWTYPE}
+     * @type {EhrCodeList0140}
      * @memberof CodeListService
      */
-    public ORMCL_GWTYPE: ORMCL_GWTYPE = new ORMCL_GWTYPE();
+    public EhrCodeList0140: EhrCodeList0140 = new EhrCodeList0140();
 
     /**
      * 代码表--民族
      *
-     * @type {PIMCL_NATION}
+     * @type {EhrCodeList0066}
      * @memberof CodeListService
      */
-    public PIMCL_NATION: PIMCL_NATION = new PIMCL_NATION();
+    public EhrCodeList0066: EhrCodeList0066 = new EhrCodeList0066();
 
     /**
      * 代码表--外语考试等级
      *
-     * @type {LanguageLevel}
+     * @type {EhrCodeList0146}
      * @memberof CodeListService
      */
-    public LanguageLevel: LanguageLevel = new LanguageLevel();
+    public EhrCodeList0146: EhrCodeList0146 = new EhrCodeList0146();
 
     /**
      * 获取动态代码表

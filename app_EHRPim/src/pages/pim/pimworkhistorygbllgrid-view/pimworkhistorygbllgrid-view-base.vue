@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMWORKHISTORYService from '@/service/pimworkhistory/pimworkhistory-service';
+import PimWorkHistoryService from '@/service/pim-work-history/pim-work-history-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMWORKHISTORYGBLLGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMWORKHISTORYService}
+     * @type {PimWorkHistoryService}
      * @memberof PIMWORKHISTORYGBLLGridViewBase
      */
-    public appEntityService: PIMWORKHISTORYService = new PIMWORKHISTORYService;
+    public appEntityService: PimWorkHistoryService = new PimWorkHistoryService;
 
 
     /**

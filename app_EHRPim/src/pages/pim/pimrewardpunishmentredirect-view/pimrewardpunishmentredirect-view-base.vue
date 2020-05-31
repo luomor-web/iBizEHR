@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMREWARDPUNISHMENTService from '@/service/pimrewardpunishment/pimrewardpunishment-service';
+import PimRewardPunishmentService from '@/service/pim-reward-punishment/pim-reward-punishment-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMREWARDPUNISHMENTRedirectViewBase extends WizardViewBase 
     /**
      * 实体服务对象
      *
-     * @type {PIMREWARDPUNISHMENTService}
+     * @type {PimRewardPunishmentService}
      * @memberof PIMREWARDPUNISHMENTRedirectViewBase
      */
-    public appEntityService: PIMREWARDPUNISHMENTService = new PIMREWARDPUNISHMENTService;
+    public appEntityService: PimRewardPunishmentService = new PimRewardPunishmentService;
 
 
     /**

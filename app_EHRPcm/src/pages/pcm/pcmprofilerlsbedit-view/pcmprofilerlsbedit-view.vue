@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMPROFILERLSBEditViewBase from './pcmprofilerlsbedit-view-base.vue';
 
-import view_form from '@widgets/pcmprofile/rlsb-form/rlsb-form.vue';
+import view_form from '@widgets/pcm-profile/rlsb-form/rlsb-form.vue';
 
 /**
  * 人力上报

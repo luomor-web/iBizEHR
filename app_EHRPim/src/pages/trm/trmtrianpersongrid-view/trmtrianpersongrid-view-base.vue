@@ -53,7 +53,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import TRMTRIANPERSONService from '@/service/trmtrianperson/trmtrianperson-service';
+import TrmTrainPersonService from '@/service/trm-train-person/trm-train-person-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -74,10 +74,10 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {TRMTRIANPERSONService}
+     * @type {TrmTrainPersonService}
      * @memberof TRMTRIANPERSONGridViewBase
      */
-    public appEntityService: TRMTRIANPERSONService = new TRMTRIANPERSONService;
+    public appEntityService: TrmTrainPersonService = new TrmTrainPersonService;
 
 
     /**
@@ -142,9 +142,9 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
      * @memberof TRMTRIANPERSONGridViewBase
      */
     public model: any = {
-        srfCaption: 'entities.trmtrianperson.views.gridview.caption',
-        srfTitle: 'entities.trmtrianperson.views.gridview.title',
-        srfSubTitle: 'entities.trmtrianperson.views.gridview.subtitle',
+        srfCaption: 'entities.trmtrainperson.views.gridview.caption',
+        srfTitle: 'entities.trmtrainperson.views.gridview.title',
+        srfSubTitle: 'entities.trmtrainperson.views.gridview.subtitle',
         dataInfo: ''
     }
 
@@ -210,7 +210,7 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
                 this.newdata(args, params, $event, xData);
             },
             grid: this.$refs.grid,
-            keyPSDEField: 'trmtrianperson',
+            keyPSDEField: 'trmtrainperson',
             majorPSDEField: 'trmtrianpersonname',
             isLoadDefault: true,
         });
@@ -321,7 +321,7 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"TRMTRIANPERSON");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"TrmTrainPerson");
     }
 
     /**
@@ -350,7 +350,7 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"TRMTRIANPERSON");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"TrmTrainPerson");
     }
 
     /**
@@ -379,7 +379,7 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
             ]
         }
         const parameters: any[] = [
-            { pathName: 'trmtrianpeople', parameterName: 'trmtrianperson' },
+            { pathName: 'trmtrainpeople', parameterName: 'trmtrainperson' },
             { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;
@@ -416,7 +416,7 @@ export default class TRMTRIANPERSONGridViewBase extends GridViewBase {
             ]
         }
         const parameters: any[] = [
-            { pathName: 'trmtrianpeople', parameterName: 'trmtrianperson' },
+            { pathName: 'trmtrainpeople', parameterName: 'trmtrainperson' },
             { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;

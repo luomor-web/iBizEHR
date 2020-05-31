@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMQUALMAJORService from '@/service/pimqualmajor/pimqualmajor-service';
+import PimQualMajorService from '@/service/pim-qual-major/pim-qual-major-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMQUALMAJORRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMQUALMAJORService}
+     * @type {PimQualMajorService}
      * @memberof PIMQUALMAJORRedirectViewBase
      */
-    public appEntityService: PIMQUALMAJORService = new PIMQUALMAJORService;
+    public appEntityService: PimQualMajorService = new PimQualMajorService;
 
 
     /**

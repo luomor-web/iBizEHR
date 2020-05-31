@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMPersonAbilityEditViewBase from './pimperson-ability-edit-view-base.vue';
 
-import view_form from '@widgets/pimperson-ability/main-form/main-form.vue';
+import view_form from '@widgets/pim-person-ability/main-form/main-form.vue';
 
 /**
  * 员工能力编辑视图

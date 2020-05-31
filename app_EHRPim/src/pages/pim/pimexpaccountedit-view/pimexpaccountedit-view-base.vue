@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMEXPACCOUNTService from '@/service/pimexpaccount/pimexpaccount-service';
+import PimExpaccountService from '@/service/pim-expaccount/pim-expaccount-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMEXPACCOUNTEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMEXPACCOUNTService}
+     * @type {PimExpaccountService}
      * @memberof PIMEXPACCOUNTEditViewBase
      */
-    public appEntityService: PIMEXPACCOUNTService = new PIMEXPACCOUNTService;
+    public appEntityService: PimExpaccountService = new PimExpaccountService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PIMEXPACCOUNTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMEXPACCOUNT");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimExpaccount");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PIMEXPACCOUNTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMEXPACCOUNT");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimExpaccount");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PIMEXPACCOUNTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMEXPACCOUNT");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimExpaccount");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PIMEXPACCOUNTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMEXPACCOUNT");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimExpaccount");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PIMEXPACCOUNTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMEXPACCOUNT");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimExpaccount");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PIMEXPACCOUNTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMEXPACCOUNT");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimExpaccount");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PIMEXPACCOUNTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMEXPACCOUNT");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimExpaccount");
     }
 
     /**

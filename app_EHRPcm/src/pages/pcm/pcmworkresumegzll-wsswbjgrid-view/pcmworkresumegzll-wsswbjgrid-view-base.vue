@@ -52,7 +52,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PCMWORKRESUMEService from '@/service/pcmworkresume/pcmworkresume-service';
+import PcmWorkResumeService from '@/service/pcm-work-resume/pcm-work-resume-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -73,10 +73,10 @@ export default class PCMWORKRESUMEGZLL_WSSWBJGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMWORKRESUMEService}
+     * @type {PcmWorkResumeService}
      * @memberof PCMWORKRESUMEGZLL_WSSWBJGridViewBase
      */
-    public appEntityService: PCMWORKRESUMEService = new PCMWORKRESUMEService;
+    public appEntityService: PcmWorkResumeService = new PcmWorkResumeService;
 
 
     /**

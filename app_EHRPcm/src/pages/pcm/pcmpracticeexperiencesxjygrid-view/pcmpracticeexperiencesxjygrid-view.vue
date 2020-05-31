@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PCMPRACTICEEXPERIENCESXJYGridViewBase from './pcmpracticeexperiencesxjygrid-view-base.vue';
 
-import view_grid from '@widgets/pcmpracticeexperience/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pcmpracticeexperience/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pcm-practice-experience/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pcm-practice-experience/default-searchform/default-searchform.vue';
 
 /**
  * 实习信息（要求：带*必填）

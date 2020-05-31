@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMARCHIVESCHANGEService from '@/service/pimarchiveschange/pimarchiveschange-service';
+import PimArchivesChangeService from '@/service/pim-archives-change/pim-archives-change-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMARCHIVESCHANGEEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMARCHIVESCHANGEService}
+     * @type {PimArchivesChangeService}
      * @memberof PIMARCHIVESCHANGEEditViewBase
      */
-    public appEntityService: PIMARCHIVESCHANGEService = new PIMARCHIVESCHANGEService;
+    public appEntityService: PimArchivesChangeService = new PimArchivesChangeService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PIMARCHIVESCHANGEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESCHANGE");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesChange");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PIMARCHIVESCHANGEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESCHANGE");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesChange");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PIMARCHIVESCHANGEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESCHANGE");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesChange");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PIMARCHIVESCHANGEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESCHANGE");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesChange");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PIMARCHIVESCHANGEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESCHANGE");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesChange");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PIMARCHIVESCHANGEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESCHANGE");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesChange");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PIMARCHIVESCHANGEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESCHANGE");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesChange");
     }
 
     /**

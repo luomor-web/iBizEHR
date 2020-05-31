@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMENCLOSUREEditViewBase from './pimenclosureedit-view-base.vue';
 
-import view_form from '@widgets/pimenclosure/main-form/main-form.vue';
+import view_form from '@widgets/pim-enclosure/main-form/main-form.vue';
 
 /**
  * 附件信息编辑视图

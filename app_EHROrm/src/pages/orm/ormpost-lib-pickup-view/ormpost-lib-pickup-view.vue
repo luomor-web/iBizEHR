@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMPostLibPickupViewBase from './ormpost-lib-pickup-view-base.vue';
 
-import view_pickupviewpanel from '@widgets/ormpost-lib/pickup-viewpickupviewpanel-pickupviewpanel/pickup-viewpickupviewpanel-pickupviewpanel.vue';
+import view_pickupviewpanel from '@widgets/orm-post-lib/pickup-viewpickupviewpanel-pickupviewpanel/pickup-viewpickupviewpanel-pickupviewpanel.vue';
 
 /**
  * 标准岗位

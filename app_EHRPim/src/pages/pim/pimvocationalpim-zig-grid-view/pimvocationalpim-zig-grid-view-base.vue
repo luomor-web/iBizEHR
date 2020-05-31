@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMVOCATIONALService from '@/service/pimvocational/pimvocational-service';
+import PimVocationalService from '@/service/pim-vocational/pim-vocational-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMVOCATIONALPimZigGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMVOCATIONALService}
+     * @type {PimVocationalService}
      * @memberof PIMVOCATIONALPimZigGridViewBase
      */
-    public appEntityService: PIMVOCATIONALService = new PIMVOCATIONALService;
+    public appEntityService: PimVocationalService = new PimVocationalService;
 
 
     /**
@@ -371,7 +371,7 @@ export default class PIMVOCATIONALPimZigGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.View(datas, contextJO,paramJO,  $event, xData,this,"PIMVOCATIONAL");
+        this.View(datas, contextJO,paramJO,  $event, xData,this,"PimVocational");
     }
 
     /**
@@ -400,7 +400,7 @@ export default class PIMVOCATIONALPimZigGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMVOCATIONAL");
+        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PimVocational");
     }
 
     /**

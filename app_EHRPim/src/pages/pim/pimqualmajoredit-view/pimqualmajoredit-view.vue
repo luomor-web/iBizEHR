@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMQUALMAJOREditViewBase from './pimqualmajoredit-view-base.vue';
 
-import view_form from '@widgets/pimqualmajor/main-form/main-form.vue';
+import view_form from '@widgets/pim-qual-major/main-form/main-form.vue';
 
 /**
  * 执业资格专业

@@ -57,7 +57,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, PickupViewBase } from '@/crm-core';
-import PCMXKMLService from '@/service/pcmxkml/pcmxkml-service';
+import PcmXkmlService from '@/service/pcm-xkml/pcm-xkml-service';
 
 import PickupGridViewEngine from '@engine/view/pickup-grid-view-engine';
 
@@ -76,10 +76,10 @@ export default class PCMXKMLPickupGridViewBase extends PickupViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMXKMLService}
+     * @type {PcmXkmlService}
      * @memberof PCMXKMLPickupGridViewBase
      */
-    public appEntityService: PCMXKMLService = new PCMXKMLService;
+    public appEntityService: PcmXkmlService = new PcmXkmlService;
 
 
     /**

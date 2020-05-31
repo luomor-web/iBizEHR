@@ -7,16 +7,16 @@ import EntityService from '../entity-service';
  * 员工状态管理服务对象基类
  *
  * @export
- * @class PersonStateMGRServiceBase
+ * @class PersonStateMgrServiceBase
  * @extends {EntityServie}
  */
-export default class PersonStateMGRServiceBase extends EntityService {
+export default class PersonStateMgrServiceBase extends EntityService {
 
     /**
-     * Creates an instance of  PersonStateMGRServiceBase.
+     * Creates an instance of  PersonStateMgrServiceBase.
      * 
      * @param {*} [opts={}]
-     * @memberof  PersonStateMGRServiceBase
+     * @memberof  PersonStateMgrServiceBase
      */
     constructor(opts: any = {}) {
         super(opts);
@@ -25,7 +25,7 @@ export default class PersonStateMGRServiceBase extends EntityService {
     /**
      * 初始化基础数据
      *
-     * @memberof PersonStateMGRServiceBase
+     * @memberof PersonStateMgrServiceBase
      */
     public initBasicData(){
         this.APPLYDEKEY ='personstatemgr';
@@ -45,7 +45,7 @@ export default class PersonStateMGRServiceBase extends EntityService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof PersonStateMGRServiceBase
+     * @memberof PersonStateMgrServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             return Http.getInstance().get(`/personstatemgrs/${context.personstatemgr}/select`,isloading);
@@ -58,7 +58,7 @@ export default class PersonStateMGRServiceBase extends EntityService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof PersonStateMGRServiceBase
+     * @memberof PersonStateMgrServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
@@ -74,7 +74,7 @@ export default class PersonStateMGRServiceBase extends EntityService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof PersonStateMGRServiceBase
+     * @memberof PersonStateMgrServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             return Http.getInstance().post(`/personstatemgrs/${context.personstatemgr}/checkkey`,data,isloading);
@@ -87,7 +87,7 @@ export default class PersonStateMGRServiceBase extends EntityService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof PersonStateMGRServiceBase
+     * @memberof PersonStateMgrServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/personstatemgrs/getdraft`,isloading);
@@ -102,7 +102,7 @@ export default class PersonStateMGRServiceBase extends EntityService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof PersonStateMGRServiceBase
+     * @memberof PersonStateMgrServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/personstatemgrs/${context.personstatemgr}`,isloading);
@@ -117,7 +117,7 @@ export default class PersonStateMGRServiceBase extends EntityService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof PersonStateMGRServiceBase
+     * @memberof PersonStateMgrServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
@@ -140,7 +140,7 @@ export default class PersonStateMGRServiceBase extends EntityService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof PersonStateMGRServiceBase
+     * @memberof PersonStateMgrServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
@@ -156,7 +156,7 @@ export default class PersonStateMGRServiceBase extends EntityService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof PersonStateMGRServiceBase
+     * @memberof PersonStateMgrServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             return Http.getInstance().delete(`/personstatemgrs/${context.personstatemgr}`,isloading);
@@ -170,7 +170,7 @@ export default class PersonStateMGRServiceBase extends EntityService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof PersonStateMGRServiceBase
+     * @memberof PersonStateMgrServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));

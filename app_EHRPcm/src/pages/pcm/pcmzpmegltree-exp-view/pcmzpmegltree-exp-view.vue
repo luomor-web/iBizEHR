@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMZPMEGLTreeExpViewBase from './pcmzpmegltree-exp-view-base.vue';
 
-import view_treeexpbar from '@widgets/pcmzpmegl/tree-exp-viewtreeexpbar-treeexpbar/tree-exp-viewtreeexpbar-treeexpbar.vue';
+import view_treeexpbar from '@widgets/pcm-zpmegl/tree-exp-viewtreeexpbar-treeexpbar/tree-exp-viewtreeexpbar-treeexpbar.vue';
 
 /**
  * 招聘名额管理树导航视图

@@ -8,7 +8,7 @@
       <i-col :xs="{ span: 8, offset: 0}" :sm="{ span: 8, offset: 0}" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
         <card class="portlet-card" :bordered="false" dis-hover :padding="0">
           <span>
-          <view_db_sysportlet1 
+                      <view_db_sysportlet1 
               :viewState="viewState"  
               :viewparams="viewparams" 
               :context="context" 
@@ -22,7 +22,7 @@
       <i-col :xs="{ span: 16, offset: 0}" :sm="{ span: 16, offset: 0}" :md="{ span: 16, offset: 0 }" :lg="{ span: 16, offset: 0 }">
         <card class="portlet-card" :bordered="false" dis-hover :padding="0">
           <span>
-          <view_db_sysportlet2 
+                      <view_db_sysportlet2 
               :viewState="viewState"  
               :viewparams="viewparams" 
               :context="context" 
@@ -36,7 +36,7 @@
       <i-col :xs="{ span: 8, offset: 0}" :sm="{ span: 8, offset: 0}" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
         <card class="portlet-card" :bordered="false" dis-hover :padding="0">
           <span>
-          <view_db_sysportlet4 
+                      <view_db_sysportlet4 
               :viewState="viewState"  
               :viewparams="viewparams" 
               :context="context" 
@@ -50,7 +50,7 @@
       <i-col :xs="{ span: 8, offset: 0}" :sm="{ span: 8, offset: 0}" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
         <card class="portlet-card" :bordered="false" dis-hover :padding="0">
           <span>
-          <view_db_sysportlet3 
+                      <view_db_sysportlet3 
               :viewState="viewState"  
               :viewparams="viewparams" 
               :context="context" 
@@ -64,7 +64,7 @@
       <i-col :xs="{ span: 8, offset: 0}" :sm="{ span: 8, offset: 0}" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
         <card class="portlet-card" :bordered="false" dis-hover :padding="0">
           <span>
-          <view_db_sysportlet5 
+                      <view_db_sysportlet5 
               :viewState="viewState"  
               :viewparams="viewparams" 
               :context="context" 
@@ -75,7 +75,7 @@
           </span>
         </card>
       </i-col>
-          </div>
+      </div>
     </row>
     <row v-if="isHasCustomized" style="width: 100%;min-height: calc(100% - 40px);">
       <div class="portlet-container" style="position: relative;width:100%;">

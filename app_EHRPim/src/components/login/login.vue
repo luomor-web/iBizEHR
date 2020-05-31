@@ -10,12 +10,14 @@
         <div class='login-con'>
             <card :bordered="false">
                 <p slot='title'>
-                    <icon type='ios-log-in'></icon>
-                    &nbsp;&nbsp;{{this.$t('components.login.caption')}}
+                    <!-- <icon type='ios-log-in'></icon> -->
+                    <!-- &nbsp;&nbsp; -->
+                    {{this.$t('components.login.caption')}}
                 </p>
                 <div class='form-con'>
                     <i-form ref='loginForm' :rules="rules" :model="form">
                         <form-item prop='loginname'>
+                            <p>用户名</p>
                             <i-input
                                 prefix='ios-contact'
                                 v-model="form.loginname"
@@ -23,6 +25,7 @@
                             </i-input>
                         </form-item>
                         <form-item prop='password'>
+                            <p>密码</p>
                             <i-input
                                 prefix='ios-key'
                                 v-model="form.password"

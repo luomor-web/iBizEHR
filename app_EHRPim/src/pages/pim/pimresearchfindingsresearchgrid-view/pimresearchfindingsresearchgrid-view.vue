@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMRESEARCHFINDINGSRESEARCHGridViewBase from './pimresearchfindingsresearchgrid-view-base.vue';
 
-import view_grid from '@widgets/pimresearchfindings/main-grid/main-grid.vue';
+import view_grid from '@widgets/pim-research-findings/main-grid/main-grid.vue';
 
 /**
  * 科研成果表格视图

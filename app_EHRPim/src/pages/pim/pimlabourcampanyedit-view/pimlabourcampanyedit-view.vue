@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMLABOURCAMPANYEditViewBase from './pimlabourcampanyedit-view-base.vue';
 
-import view_form from '@widgets/pimlabourcampany/main-form/main-form.vue';
+import view_form from '@widgets/pim-labourcampany/main-form/main-form.vue';
 
 /**
  * 劳务派遣公司编辑视图

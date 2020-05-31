@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMFAMINFOPimfimGridViewBase from './pimfaminfopimfim-grid-view-base.vue';
 
-import view_grid from '@widgets/pimfaminfo/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pimfaminfo/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-faminfo/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pim-faminfo/default-searchform/default-searchform.vue';
 
 /**
  * 家庭情况表格视图

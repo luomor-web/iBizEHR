@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMXMBQEditViewBase from './ormxmbqedit-view-base.vue';
 
-import view_form from '@widgets/ormxmbq/main-form/main-form.vue';
+import view_form from '@widgets/orm-xmbq/main-form/main-form.vue';
 
 /**
  * 项目标签编辑视图

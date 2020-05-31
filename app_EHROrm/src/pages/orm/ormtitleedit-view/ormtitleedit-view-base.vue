@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import ORMTITLEService from '@/service/ormtitle/ormtitle-service';
+import OrmTitleService from '@/service/orm-title/orm-title-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class ORMTITLEEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMTITLEService}
+     * @type {OrmTitleService}
      * @memberof ORMTITLEEditViewBase
      */
-    public appEntityService: ORMTITLEService = new ORMTITLEService;
+    public appEntityService: OrmTitleService = new OrmTitleService;
 
 
     /**
@@ -278,7 +278,7 @@ export default class ORMTITLEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ORMTITLE");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"OrmTitle");
     }
 
     /**

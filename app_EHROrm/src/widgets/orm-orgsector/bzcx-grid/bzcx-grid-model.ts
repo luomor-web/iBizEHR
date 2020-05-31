@@ -82,11 +82,6 @@ export default class BZCXModel {
           dataType: 'TEXT',
         },
         {
-          name: 'sjbzrs',
-          prop: 'sjbzrs',
-          dataType: 'TEXT',
-        },
-        {
           name: 'orgid',
           prop: 'orgid',
           dataType: 'PICKUP',
@@ -105,6 +100,11 @@ export default class BZCXModel {
           name: 'orgsectorname',
           prop: 'orgsectorname',
           dataType: 'TEXT',
+        },
+        {
+          name: 'sjrs',
+          prop: 'sjrs',
+          dataType: 'INT',
         },
         {
           name: 'ormorgsector',

@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMLABOURCAMPANYPickupViewBase from './pimlabourcampanypickup-view-base.vue';
 
-import view_pickupviewpanel from '@widgets/pimlabourcampany/pickup-viewpickupviewpanel-pickupviewpanel/pickup-viewpickupviewpanel-pickupviewpanel.vue';
+import view_pickupviewpanel from '@widgets/pim-labourcampany/pickup-viewpickupviewpanel-pickupviewpanel/pickup-viewpickupviewpanel-pickupviewpanel.vue';
 
 /**
  * 劳务派遣公司管理数据选择视图

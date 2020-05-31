@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMPersonAbilityService from '@/service/pimperson-ability/pimperson-ability-service';
+import PimPersonAbilityService from '@/service/pim-person-ability/pim-person-ability-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMPersonAbilityEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMPersonAbilityService}
+     * @type {PimPersonAbilityService}
      * @memberof PIMPersonAbilityEditViewBase
      */
-    public appEntityService: PIMPersonAbilityService = new PIMPersonAbilityService;
+    public appEntityService: PimPersonAbilityService = new PimPersonAbilityService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PIMPersonAbilityEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMPersonAbility");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimPersonAbility");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PIMPersonAbilityEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMPersonAbility");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimPersonAbility");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PIMPersonAbilityEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMPersonAbility");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimPersonAbility");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PIMPersonAbilityEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMPersonAbility");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimPersonAbility");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PIMPersonAbilityEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMPersonAbility");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimPersonAbility");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PIMPersonAbilityEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMPersonAbility");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimPersonAbility");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PIMPersonAbilityEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMPersonAbility");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimPersonAbility");
     }
 
     /**

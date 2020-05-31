@@ -53,7 +53,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMARCHIVESLOANANDRETURNService from '@/service/pimarchivesloanandreturn/pimarchivesloanandreturn-service';
+import PimArchiveSloanandreturnService from '@/service/pim-archive-sloanandreturn/pim-archive-sloanandreturn-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -74,10 +74,10 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMARCHIVESLOANANDRETURNService}
+     * @type {PimArchiveSloanandreturnService}
      * @memberof PIMARCHIVESLOANANDRETURNGridViewBase
      */
-    public appEntityService: PIMARCHIVESLOANANDRETURNService = new PIMARCHIVESLOANANDRETURNService;
+    public appEntityService: PimArchiveSloanandreturnService = new PimArchiveSloanandreturnService;
 
 
     /**
@@ -336,7 +336,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PimArchiveSloanandreturn");
     }
 
     /**
@@ -365,7 +365,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PimArchiveSloanandreturn");
     }
 
     /**
@@ -394,7 +394,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimArchiveSloanandreturn");
     }
 
     /**
@@ -423,7 +423,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimArchiveSloanandreturn");
     }
 
     /**
@@ -452,7 +452,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimArchiveSloanandreturn");
     }
 
     /**

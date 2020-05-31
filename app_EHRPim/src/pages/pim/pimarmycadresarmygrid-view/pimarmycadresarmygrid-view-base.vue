@@ -53,7 +53,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMARMYCADRESService from '@/service/pimarmycadres/pimarmycadres-service';
+import PimArmycadresService from '@/service/pim-armycadres/pim-armycadres-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -74,10 +74,10 @@ export default class PIMARMYCADRESARMYGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMARMYCADRESService}
+     * @type {PimArmycadresService}
      * @memberof PIMARMYCADRESARMYGridViewBase
      */
-    public appEntityService: PIMARMYCADRESService = new PIMARMYCADRESService;
+    public appEntityService: PimArmycadresService = new PimArmycadresService;
 
 
     /**
@@ -336,7 +336,7 @@ export default class PIMARMYCADRESARMYGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PIMARMYCADRES");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PimArmycadres");
     }
 
     /**
@@ -365,7 +365,7 @@ export default class PIMARMYCADRESARMYGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PIMARMYCADRES");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PimArmycadres");
     }
 
     /**
@@ -394,7 +394,7 @@ export default class PIMARMYCADRESARMYGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMARMYCADRES");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimArmycadres");
     }
 
     /**
@@ -423,7 +423,7 @@ export default class PIMARMYCADRESARMYGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMARMYCADRES");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimArmycadres");
     }
 
     /**
@@ -452,7 +452,7 @@ export default class PIMARMYCADRESARMYGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMARMYCADRES");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimArmycadres");
     }
 
     /**

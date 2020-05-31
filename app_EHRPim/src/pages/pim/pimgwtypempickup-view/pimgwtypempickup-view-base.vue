@@ -77,7 +77,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, MPickupViewBase } from '@/crm-core';
-import PIMGWTYPEService from '@/service/pimgwtype/pimgwtype-service';
+import PimGwTypeService from '@/service/pim-gw-type/pim-gw-type-service';
 
 import MPickupViewEngine from '@engine/view/mpickup-view-engine';
 
@@ -96,10 +96,10 @@ export default class PIMGWTYPEMPickupViewBase extends MPickupViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMGWTYPEService}
+     * @type {PimGwTypeService}
      * @memberof PIMGWTYPEMPickupViewBase
      */
-    public appEntityService: PIMGWTYPEService = new PIMGWTYPEService;
+    public appEntityService: PimGwTypeService = new PimGwTypeService;
 
 
     /**

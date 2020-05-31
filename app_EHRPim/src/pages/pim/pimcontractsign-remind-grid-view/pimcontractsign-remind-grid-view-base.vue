@@ -68,11 +68,11 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMCONTRACTService from '@/service/pimcontract/pimcontract-service';
+import PimContractService from '@/service/pim-contract/pim-contract-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
-import PIMCONTRACTUIService from '@/uiservice/pimcontract/pimcontract-ui-service';
+import PimContractUIService from '@/uiservice/pim-contract/pim-contract-ui-service';
 import CodeListService from "@service/app/codelist-service";
 
 
@@ -90,10 +90,10 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMCONTRACTService}
+     * @type {PimContractService}
      * @memberof PIMCONTRACTSignRemindGridViewBase
      */
-    public appEntityService: PIMCONTRACTService = new PIMCONTRACTService;
+    public appEntityService: PimContractService = new PimContractService;
 
 
     /**
@@ -392,7 +392,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PimContract");
     }
 
     /**
@@ -421,7 +421,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimContract");
     }
 
     /**
@@ -450,7 +450,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimContract");
     }
 
     /**
@@ -479,7 +479,7 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMCONTRACT");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimContract");
     }
 
     /**
@@ -508,8 +508,8 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:PIMCONTRACTUIService  = new PIMCONTRACTUIService();
-        curUIService.PIMCONTRACT_Signnew(datas,contextJO, paramJO,  $event, xData,this,"PIMCONTRACT");
+        const curUIService:PimContractUIService  = new PimContractUIService();
+        curUIService.PimContract_Signnew(datas,contextJO, paramJO,  $event, xData,this,"PimContract");
     }
 
     /**
@@ -538,8 +538,8 @@ export default class PIMCONTRACTSignRemindGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:PIMCONTRACTUIService  = new PIMCONTRACTUIService();
-        curUIService.PIMCONTRACT_Renew(datas,contextJO, paramJO,  $event, xData,this,"PIMCONTRACT");
+        const curUIService:PimContractUIService  = new PimContractUIService();
+        curUIService.PimContract_Renew(datas,contextJO, paramJO,  $event, xData,this,"PimContract");
     }
 
     /**

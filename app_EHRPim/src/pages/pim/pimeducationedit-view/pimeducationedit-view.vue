@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMEDUCATIONEditViewBase from './pimeducationedit-view-base.vue';
 
-import view_form from '@widgets/pimeducation/main-form/main-form.vue';
+import view_form from '@widgets/pim-education/main-form/main-form.vue';
 
 /**
  * 教育信息编辑视图

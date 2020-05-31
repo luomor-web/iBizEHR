@@ -1,36 +1,36 @@
-import pcmworkresume_zh_CN from '@locale/lanres/pcmworkresume/pcmworkresume_zh_CN';
-import pcmprofileapproval_zh_CN from '@locale/lanres/pcmprofileapproval/pcmprofileapproval_zh_CN';
-import pcmgxml_zh_CN from '@locale/lanres/pcmgxml/pcmgxml_zh_CN';
+import pcmworkresume_zh_CN from '@locale/lanres/pcm-work-resume/pcm-work-resume_zh_CN';
+import pcmprofileapproval_zh_CN from '@locale/lanres/pcm-profile-approval/pcm-profile-approval_zh_CN';
+import pcmgxml_zh_CN from '@locale/lanres/pcm-gxml/pcm-gxml_zh_CN';
 import ormorg_zh_CN from '@locale/lanres/orm-org/orm-org_zh_CN';
-import pcmpracticeexperience_zh_CN from '@locale/lanres/pcmpracticeexperience/pcmpracticeexperience_zh_CN';
-import ormduty_zh_CN from '@locale/lanres/ormduty/ormduty_zh_CN';
-import pimcity_zh_CN from '@locale/lanres/pimcity/pimcity_zh_CN';
-import pcmprofileinitnumber_zh_CN from '@locale/lanres/pcmprofileinitnumber/pcmprofileinitnumber_zh_CN';
-import pimstafftype_zh_CN from '@locale/lanres/pimstafftype/pimstafftype_zh_CN';
-import pcmprofileszyjtj_zh_CN from '@locale/lanres/pcmprofileszyjtj/pcmprofileszyjtj_zh_CN';
-import pcmxkml_zh_CN from '@locale/lanres/pcmxkml/pcmxkml_zh_CN';
-import pcmprofileyjtjtemp_zh_CN from '@locale/lanres/pcmprofileyjtjtemp/pcmprofileyjtjtemp_zh_CN';
-import pcmprofilespyy_zh_CN from '@locale/lanres/pcmprofilespyy/pcmprofilespyy_zh_CN';
-import ormqygl_zh_CN from '@locale/lanres/ormqygl/ormqygl_zh_CN';
-import pcmprofilefj_zh_CN from '@locale/lanres/pcmprofilefj/pcmprofilefj_zh_CN';
-import pcmzpmeglmx_zh_CN from '@locale/lanres/pcmzpmeglmx/pcmzpmeglmx_zh_CN';
+import pcmpracticeexperience_zh_CN from '@locale/lanres/pcm-practice-experience/pcm-practice-experience_zh_CN';
+import ormduty_zh_CN from '@locale/lanres/orm-duty/orm-duty_zh_CN';
+import pimcity_zh_CN from '@locale/lanres/pim-city/pim-city_zh_CN';
+import pcmprofileinitnumber_zh_CN from '@locale/lanres/pcm-profile-init-number/pcm-profile-init-number_zh_CN';
+import pimstafftype_zh_CN from '@locale/lanres/pim-stafftype/pim-stafftype_zh_CN';
+import pcmprofileszyjtj_zh_CN from '@locale/lanres/pcm-profile-szyjtj/pcm-profile-szyjtj_zh_CN';
+import pcmxkml_zh_CN from '@locale/lanres/pcm-xkml/pcm-xkml_zh_CN';
+import pcmprofileyjtjtemp_zh_CN from '@locale/lanres/pcm-profile-yjtj-temp/pcm-profile-yjtj-temp_zh_CN';
+import pcmprofilespyy_zh_CN from '@locale/lanres/pcm-profile-spyy/pcm-profile-spyy_zh_CN';
+import ormqygl_zh_CN from '@locale/lanres/orm-qygl/orm-qygl_zh_CN';
+import pcmprofilefj_zh_CN from '@locale/lanres/pcm-profile-fj/pcm-profile-fj_zh_CN';
+import pcmzpmeglmx_zh_CN from '@locale/lanres/pcm-zpmeglmx/pcm-zpmeglmx_zh_CN';
 import codeitem_zh_CN from '@locale/lanres/code-item/code-item_zh_CN';
-import pcmprofilenumbeprefix_zh_CN from '@locale/lanres/pcmprofilenumbeprefix/pcmprofilenumbeprefix_zh_CN';
-import pcmcertofreg_zh_CN from '@locale/lanres/pcmcertofreg/pcmcertofreg_zh_CN';
-import tdzwxx_zh_CN from '@locale/lanres/tdzwxx/tdzwxx_zh_CN';
+import pcmprofilenumbeprefix_zh_CN from '@locale/lanres/pcm-profile-num-beprefix/pcm-profile-num-beprefix_zh_CN';
+import pcmcertofreg_zh_CN from '@locale/lanres/pcm-certofreg/pcm-certofreg_zh_CN';
+import pcmtdzwxx_zh_CN from '@locale/lanres/pcm-tdzwxx/pcm-tdzwxx_zh_CN';
 import codelist1_zh_CN from '@locale/lanres/code-list1/code-list1_zh_CN';
 import ormorgsector_zh_CN from '@locale/lanres/orm-orgsector/orm-orgsector_zh_CN';
-import pcmschooloffice_zh_CN from '@locale/lanres/pcmschooloffice/pcmschooloffice_zh_CN';
-import testresult_zh_CN from '@locale/lanres/test-result/test-result_zh_CN';
-import pcmzpmegl_zh_CN from '@locale/lanres/pcmzpmegl/pcmzpmegl_zh_CN';
-import pcmprofile_zh_CN from '@locale/lanres/pcmprofile/pcmprofile_zh_CN';
-import pcmawardswons_zh_CN from '@locale/lanres/pcmawardswons/pcmawardswons_zh_CN';
-import pcmeducationexperience_zh_CN from '@locale/lanres/pcmeducation-experience/pcmeducation-experience_zh_CN';
-import ormpost_zh_CN from '@locale/lanres/ormpost/ormpost_zh_CN';
-import pimqualmajor_zh_CN from '@locale/lanres/pimqualmajor/pimqualmajor_zh_CN';
-import wzd0001_zh_CN from '@locale/lanres/wzd0001/wzd0001_zh_CN';
-import pimperson_zh_CN from '@locale/lanres/pimperson/pimperson_zh_CN';
-import pcmgxxktemp_zh_CN from '@locale/lanres/pcmgxxktemp/pcmgxxktemp_zh_CN';
+import pcmschooloffice_zh_CN from '@locale/lanres/pcm-school-office/pcm-school-office_zh_CN';
+import pcmtestresult_zh_CN from '@locale/lanres/pcm-test-result/pcm-test-result_zh_CN';
+import pcmzpmegl_zh_CN from '@locale/lanres/pcm-zpmegl/pcm-zpmegl_zh_CN';
+import pcmprofile_zh_CN from '@locale/lanres/pcm-profile/pcm-profile_zh_CN';
+import pcmawardswons_zh_CN from '@locale/lanres/pcm-awards-wons/pcm-awards-wons_zh_CN';
+import pcmeducationexperience_zh_CN from '@locale/lanres/pcm-education-experience/pcm-education-experience_zh_CN';
+import ormpost_zh_CN from '@locale/lanres/orm-post/orm-post_zh_CN';
+import pimqualmajor_zh_CN from '@locale/lanres/pim-qual-major/pim-qual-major_zh_CN';
+import pcmwzd0001_zh_CN from '@locale/lanres/pcm-wzd0001/pcm-wzd0001_zh_CN';
+import pimperson_zh_CN from '@locale/lanres/pim-person/pim-person_zh_CN';
+import pcmgxxktemp_zh_CN from '@locale/lanres/pcmgxxk-temp/pcmgxxk-temp_zh_CN';
 import components_zh_CN from '@locale/lanres/components/components_zh_CN';
 import codelist_zh_CN from '@locale/lanres/codelist/codelist_zh_CN';
 import userCustom_zh_CN from '@locale/lanres/userCustom/userCustom_zh_CN';
@@ -130,18 +130,18 @@ export default {
         codeitem: codeitem_zh_CN,
         pcmprofilenumbeprefix: pcmprofilenumbeprefix_zh_CN,
         pcmcertofreg: pcmcertofreg_zh_CN,
-        tdzwxx: tdzwxx_zh_CN,
+        pcmtdzwxx: pcmtdzwxx_zh_CN,
         codelist1: codelist1_zh_CN,
         ormorgsector: ormorgsector_zh_CN,
         pcmschooloffice: pcmschooloffice_zh_CN,
-        testresult: testresult_zh_CN,
+        pcmtestresult: pcmtestresult_zh_CN,
         pcmzpmegl: pcmzpmegl_zh_CN,
         pcmprofile: pcmprofile_zh_CN,
         pcmawardswons: pcmawardswons_zh_CN,
         pcmeducationexperience: pcmeducationexperience_zh_CN,
         ormpost: ormpost_zh_CN,
         pimqualmajor: pimqualmajor_zh_CN,
-        wzd0001: wzd0001_zh_CN,
+        pcmwzd0001: pcmwzd0001_zh_CN,
         pimperson: pimperson_zh_CN,
         pcmgxxktemp: pcmgxxktemp_zh_CN,
     },

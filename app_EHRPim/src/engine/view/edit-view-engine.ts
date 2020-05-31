@@ -247,9 +247,9 @@ export default class EditViewEngine extends ViewEngine {
      */
     public setTabCaption(info: string): void {
         let viewdata: any = this.view.model;
-        let viewParam = this.view.$store.getters['viewaction/getAppView'](this.view.viewtag);
-        if (viewdata && viewParam && info && !Object.is(info, '') && this.view.$tabPageExp) {
-            this.view.$tabPageExp.setCurPageCaption(`${viewParam.viewmodule}_${viewParam.viewname}`.toLocaleLowerCase(), viewdata.srfCaption, info);
+        if (viewdata  && info && !Object.is(info, '') && this.view.$tabPageExp && (viewdata.srfTitle.indexOf(" - ") === -1)) {
+            this.view.$tabPageExp.setCurPageCaption(viewdata.srfCaption, viewdata.srfTitle, info);
+            this.view.model.srfTitle = `${this.view.$t(viewdata.srfTitle)} - ${viewdata.dataInfo}`;
         }
     }
 

@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import ORMXMBQGridViewBase from './ormxmbqgrid-view-base.vue';
 
-import view_grid from '@widgets/ormxmbq/main-grid/main-grid.vue';
-import view_searchform from '@widgets/ormxmbq/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/orm-xmbq/main-grid/main-grid.vue';
+import view_searchform from '@widgets/orm-xmbq/default-searchform/default-searchform.vue';
 
 /**
  * 项目标签

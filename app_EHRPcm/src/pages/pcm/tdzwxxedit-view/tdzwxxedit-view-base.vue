@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import TDZWXXService from '@/service/tdzwxx/tdzwxx-service';
+import PcmTdzwxxService from '@/service/pcm-tdzwxx/pcm-tdzwxx-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class TDZWXXEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {TDZWXXService}
+     * @type {PcmTdzwxxService}
      * @memberof TDZWXXEditViewBase
      */
-    public appEntityService: TDZWXXService = new TDZWXXService;
+    public appEntityService: PcmTdzwxxService = new PcmTdzwxxService;
 
 
     /**
@@ -134,9 +134,9 @@ export default class TDZWXXEditViewBase extends EditViewBase {
      * @memberof TDZWXXEditViewBase
      */
     public model: any = {
-        srfCaption: 'entities.tdzwxx.views.editview.caption',
-        srfTitle: 'entities.tdzwxx.views.editview.title',
-        srfSubTitle: 'entities.tdzwxx.views.editview.subtitle',
+        srfCaption: 'entities.pcmtdzwxx.views.editview.caption',
+        srfTitle: 'entities.pcmtdzwxx.views.editview.title',
+        srfSubTitle: 'entities.pcmtdzwxx.views.editview.subtitle',
         dataInfo: ''
     }
 
@@ -202,7 +202,7 @@ export default class TDZWXXEditViewBase extends EditViewBase {
             view: this,
             form: this.$refs.form,
             p2k: '0',
-            keyPSDEField: 'tdzwxx',
+            keyPSDEField: 'pcmtdzwxx',
             majorPSDEField: 'tdzwxxname',
             isLoadDefault: true,
         });
@@ -304,7 +304,7 @@ export default class TDZWXXEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"TDZWXX");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PcmTdzwxx");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class TDZWXXEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"TDZWXX");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PcmTdzwxx");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class TDZWXXEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"TDZWXX");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmTdzwxx");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class TDZWXXEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"TDZWXX");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmTdzwxx");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class TDZWXXEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"TDZWXX");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PcmTdzwxx");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class TDZWXXEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"TDZWXX");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PcmTdzwxx");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class TDZWXXEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"TDZWXX");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PcmTdzwxx");
     }
 
     /**

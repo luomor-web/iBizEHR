@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMACHIEVEMENTSPimJixGridViewBase from './pimachievementspim-jix-grid-view-base.vue';
 
-import view_grid from '@widgets/pimachievements/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pimachievements/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-achievements/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pim-achievements/default-searchform/default-searchform.vue';
 
 /**
  * 绩效信息表格视图

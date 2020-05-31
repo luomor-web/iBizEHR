@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.r7rt_dyna.service.IDynaDashboardService;
 import cn.ibizlab.ehr.core.r7rt_dyna.filter.DynaDashboardSearchContext;
 
 @Slf4j
-@Api(tags = {"DynaDashboard" })
+@Api(tags = {"动态数据看板" })
 @RestController("WebApi-dynadashboard")
 @RequestMapping("")
 public class DynaDashboardResource {
@@ -46,20 +46,20 @@ public class DynaDashboardResource {
     @Lazy
     public DynaDashboardMapping dynadashboardMapping;
 
-    @ApiOperation(value = "Save", tags = {"DynaDashboard" },  notes = "Save")
+    @ApiOperation(value = "保存动态数据看板", tags = {"动态数据看板" },  notes = "保存动态数据看板")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/save")
     public ResponseEntity<Boolean> save(@RequestBody DynaDashboardDTO dynadashboarddto) {
         return ResponseEntity.status(HttpStatus.OK).body(dynadashboardService.save(dynadashboardMapping.toDomain(dynadashboarddto)));
     }
 
-    @ApiOperation(value = "SaveBatch", tags = {"DynaDashboard" },  notes = "SaveBatch")
+    @ApiOperation(value = "批量保存动态数据看板", tags = {"动态数据看板" },  notes = "批量保存动态数据看板")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<DynaDashboardDTO> dynadashboarddtos) {
         dynadashboardService.saveBatch(dynadashboardMapping.toDomain(dynadashboarddtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "Update", tags = {"DynaDashboard" },  notes = "Update")
+    @ApiOperation(value = "更新动态数据看板", tags = {"动态数据看板" },  notes = "更新动态数据看板")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dynadashboards/{dynadashboard_id}")
 
     public ResponseEntity<DynaDashboardDTO> update(@PathVariable("dynadashboard_id") String dynadashboard_id, @RequestBody DynaDashboardDTO dynadashboarddto) {
@@ -70,14 +70,14 @@ public class DynaDashboardResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "UpdateBatch", tags = {"DynaDashboard" },  notes = "UpdateBatch")
+    @ApiOperation(value = "批量更新动态数据看板", tags = {"动态数据看板" },  notes = "批量更新动态数据看板")
 	@RequestMapping(method = RequestMethod.PUT, value = "/dynadashboards/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<DynaDashboardDTO> dynadashboarddtos) {
         dynadashboardService.updateBatch(dynadashboardMapping.toDomain(dynadashboarddtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "Get", tags = {"DynaDashboard" },  notes = "Get")
+    @ApiOperation(value = "获取动态数据看板", tags = {"动态数据看板" },  notes = "获取动态数据看板")
 	@RequestMapping(method = RequestMethod.GET, value = "/dynadashboards/{dynadashboard_id}")
     public ResponseEntity<DynaDashboardDTO> get(@PathVariable("dynadashboard_id") String dynadashboard_id) {
         DynaDashboard domain = dynadashboardService.get(dynadashboard_id);
@@ -85,33 +85,33 @@ public class DynaDashboardResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "Remove", tags = {"DynaDashboard" },  notes = "Remove")
+    @ApiOperation(value = "删除动态数据看板", tags = {"动态数据看板" },  notes = "删除动态数据看板")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dynadashboards/{dynadashboard_id}")
 
     public ResponseEntity<Boolean> remove(@PathVariable("dynadashboard_id") String dynadashboard_id) {
          return ResponseEntity.status(HttpStatus.OK).body(dynadashboardService.remove(dynadashboard_id));
     }
 
-    @ApiOperation(value = "RemoveBatch", tags = {"DynaDashboard" },  notes = "RemoveBatch")
+    @ApiOperation(value = "批量删除动态数据看板", tags = {"动态数据看板" },  notes = "批量删除动态数据看板")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/dynadashboards/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         dynadashboardService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "CheckKey", tags = {"DynaDashboard" },  notes = "CheckKey")
+    @ApiOperation(value = "检查动态数据看板", tags = {"动态数据看板" },  notes = "检查动态数据看板")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody DynaDashboardDTO dynadashboarddto) {
         return  ResponseEntity.status(HttpStatus.OK).body(dynadashboardService.checkKey(dynadashboardMapping.toDomain(dynadashboarddto)));
     }
 
-    @ApiOperation(value = "GetDraft", tags = {"DynaDashboard" },  notes = "GetDraft")
+    @ApiOperation(value = "获取动态数据看板草稿", tags = {"动态数据看板" },  notes = "获取动态数据看板草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/dynadashboards/getdraft")
     public ResponseEntity<DynaDashboardDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(dynadashboardMapping.toDto(dynadashboardService.getDraft(new DynaDashboard())));
     }
 
-    @ApiOperation(value = "Create", tags = {"DynaDashboard" },  notes = "Create")
+    @ApiOperation(value = "新建动态数据看板", tags = {"动态数据看板" },  notes = "新建动态数据看板")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynadashboards")
 
     public ResponseEntity<DynaDashboardDTO> create(@RequestBody DynaDashboardDTO dynadashboarddto) {
@@ -121,14 +121,14 @@ public class DynaDashboardResource {
 		return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "createBatch", tags = {"DynaDashboard" },  notes = "createBatch")
+    @ApiOperation(value = "批量新建动态数据看板", tags = {"动态数据看板" },  notes = "批量新建动态数据看板")
 	@RequestMapping(method = RequestMethod.POST, value = "/dynadashboards/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<DynaDashboardDTO> dynadashboarddtos) {
         dynadashboardService.createBatch(dynadashboardMapping.toDomain(dynadashboarddtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-	@ApiOperation(value = "fetchDEFAULT", tags = {"DynaDashboard" } ,notes = "fetchDEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"动态数据看板" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/dynadashboards/fetchdefault")
 	public ResponseEntity<List<DynaDashboardDTO>> fetchDefault(DynaDashboardSearchContext context) {
         Page<DynaDashboard> domains = dynadashboardService.searchDefault(context) ;
@@ -140,7 +140,7 @@ public class DynaDashboardResource {
                 .body(list);
 	}
 
-	@ApiOperation(value = "searchDEFAULT", tags = {"DynaDashboard" } ,notes = "searchDEFAULT")
+	@ApiOperation(value = "查询DEFAULT", tags = {"动态数据看板" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/dynadashboards/searchdefault")
 	public ResponseEntity<Page<DynaDashboardDTO>> searchDefault(@RequestBody DynaDashboardSearchContext context) {
         Page<DynaDashboard> domains = dynadashboardService.searchDefault(context) ;

@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import ORMEDITIONService from '@/service/ormedition/ormedition-service';
+import OrmEditionService from '@/service/orm-edition/orm-edition-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class ORMEDITIONEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMEDITIONService}
+     * @type {OrmEditionService}
      * @memberof ORMEDITIONEditViewBase
      */
-    public appEntityService: ORMEDITIONService = new ORMEDITIONService;
+    public appEntityService: OrmEditionService = new OrmEditionService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class ORMEDITIONEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"ORMEDITION");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"OrmEdition");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class ORMEDITIONEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"ORMEDITION");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"OrmEdition");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class ORMEDITIONEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ORMEDITION");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"OrmEdition");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class ORMEDITIONEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ORMEDITION");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"OrmEdition");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class ORMEDITIONEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"ORMEDITION");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"OrmEdition");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class ORMEDITIONEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"ORMEDITION");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"OrmEdition");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class ORMEDITIONEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"ORMEDITION");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"OrmEdition");
     }
 
     /**

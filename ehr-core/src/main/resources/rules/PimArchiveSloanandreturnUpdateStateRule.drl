@@ -1,0 +1,36 @@
+package cn.ibizlab.ehr.pim.logic.pimarchivesloanandreturnlogic.updatestate;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pim.domain.PimArchiveSloanandreturn pimarchivesloanandreturnupdatestatedefault;
+global cn.ibizlab.ehr.core.pim.service.IPimArchiveSloanandreturnService iBzSysPimarchivesloanandreturnDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[已归还]
+rule "prepareparam4"
+ruleflow-group "pimarchivesloanandreturnupdatestateprepareparam4"
+    when
+    then
+    pimarchivesloanandreturnupdatestatedefault.set("zt","20");
+    update(pimarchivesloanandreturnupdatestatedefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pimarchivesloanandreturnupdatestatebegin"
+    when
+    then
+    end
+
+//逻辑处理节点[借阅中]
+rule "prepareparam3"
+ruleflow-group "pimarchivesloanandreturnupdatestateprepareparam3"
+    when
+    then
+    pimarchivesloanandreturnupdatestatedefault.set("zt","10");
+    update(pimarchivesloanandreturnupdatestatedefault);//更新fact中变量值
+    end
+

@@ -35,19 +35,6 @@ const router = new Router({
             component: () => import('@pages/orm/index/index.vue'),
             children: [
                 {
-                    path: 'ormpostlibs/:ormpostlib?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormpostlib.views.gridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpost-lib-grid-view/ormpost-lib-grid-view.vue'),
-                },
-                {
                     path: 'ormduties/:ormduty?/editview/:editview?',
                     meta: {
                         caption: 'entities.ormduty.views.editview.caption',
@@ -63,32 +50,6 @@ const router = new Router({
                     component: () => import('@pages/orm/ormdutyedit-view/ormdutyedit-view.vue'),
                 },
                 {
-                    path: 'ormposts/:ormpost?/gwxhwhgridview/:gwxhwhgridview?',
-                    meta: {
-                        caption: 'entities.ormpost.views.gwxhwhgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormposts', parameterName: 'ormpost' },
-                            { pathName: 'gwxhwhgridview', parameterName: 'gwxhwhgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpostgwxhwhgrid-view/ormpostgwxhwhgrid-view.vue'),
-                },
-                {
-                    path: 'pimpeople/:pimperson?/curleaderpickupview/:curleaderpickupview?',
-                    meta: {
-                        caption: 'entities.pimperson.views.curleaderpickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'curleaderpickupview', parameterName: 'curleaderpickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/pimpersoncur-leader-pickup-view/pimpersoncur-leader-pickup-view.vue'),
-                },
-                {
                     path: 'ormorgs/:ormorg?/orgtreeexpview/:orgtreeexpview?',
                     meta: {
                         caption: 'entities.ormorg.views.orgtreeexpview.caption',
@@ -102,6 +63,19 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/ormorgorg-tree-exp-view/ormorgorg-tree-exp-view.vue'),
+                },
+                {
+                    path: 'pimpeople/:pimperson?/curleaderpickupview/:curleaderpickupview?',
+                    meta: {
+                        caption: 'entities.pimperson.views.curleaderpickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'curleaderpickupview', parameterName: 'curleaderpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/pimpersoncur-leader-pickup-view/pimpersoncur-leader-pickup-view.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/ormorgdzs/:ormorgdz?/editview/:editview?',
@@ -185,19 +159,6 @@ const router = new Router({
                     component: () => import('@pages/orm/ormerporglegal-mpickup-view/ormerporglegal-mpickup-view.vue'),
                 },
                 {
-                    path: 'ormpostlibs/:ormpostlib?/pickupgridview/:pickupgridview?',
-                    meta: {
-                        caption: 'entities.ormpostlib.views.pickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpost-lib-pickup-grid-view/ormpost-lib-pickup-grid-view.vue'),
-                },
-                {
                     path: 'ormorgs/:ormorg?/sjorgpickupgridview/:sjorgpickupgridview?',
                     meta: {
                         caption: 'entities.ormorg.views.sjorgpickupgridview.caption',
@@ -209,19 +170,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/ormorgsjorg-pickup-grid-view/ormorgsjorg-pickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormpostlibs/:ormpostlib?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormpostlib.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpost-lib-edit-view/ormpost-lib-edit-view.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/ormorgdzs/:ormorgdz?/gridview/:gridview?',
@@ -255,19 +203,65 @@ const router = new Router({
                     component: () => import('@pages/orm/ormorgdzgrid-view/ormorgdzgrid-view.vue'),
                 },
                 {
-                    path: 'contractsignorgs/:contractsignorg?/gridview/:gridview?',
+                    path: 'ormsignorgs/:ormsignorg?/pimcontractsignorgs/:pimcontractsignorg?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.contractsignorg.views.gridview.caption',
+                        caption: 'entities.pimcontractsignorg.views.gridview.caption',
                         imgPath: '../../../img/newimage/1/kaoqinshezhi.png',
                         iconCls: '',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'contractsignorgs', parameterName: 'contractsignorg' },
+                            { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
+                            { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
                             { pathName: 'gridview', parameterName: 'gridview' },
                         ],
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/contract-sign-orggrid-view/contract-sign-orggrid-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/pimcontractsignorgs/:pimcontractsignorg?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.pimcontractsignorg.views.gridview.caption',
+                        imgPath: '../../../img/newimage/1/kaoqinshezhi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/contract-sign-orggrid-view/contract-sign-orggrid-view.vue'),
+                },
+                {
+                    path: 'pimcontractsignorgs/:pimcontractsignorg?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.pimcontractsignorg.views.gridview.caption',
+                        imgPath: '../../../img/newimage/1/kaoqinshezhi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/contract-sign-orggrid-view/contract-sign-orggrid-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/ormxmbqs/:ormxmbq?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.ormxmbq.views.gridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormxmbqgrid-view/ormxmbqgrid-view.vue'),
                 },
                 {
                     path: 'ormxmbqs/:ormxmbq?/gridview/:gridview?',
@@ -344,47 +338,6 @@ const router = new Router({
                     component: () => import('@pages/orm/ormbmkqdzbmkqdzgrid-view/ormbmkqdzbmkqdzgrid-view.vue'),
                 },
                 {
-                    path: 'ormposts/:ormpost?/ormpostdetails/:ormpostdetails?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormpostdetails.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormposts', parameterName: 'ormpost' },
-                            { pathName: 'ormpostdetails', parameterName: 'ormpostdetails' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpost-details-edit-view/ormpost-details-edit-view.vue'),
-                },
-                {
-                    path: 'ormpostlibs/:ormpostlib?/ormpostdetails/:ormpostdetails?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormpostdetails.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-                            { pathName: 'ormpostdetails', parameterName: 'ormpostdetails' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpost-details-edit-view/ormpost-details-edit-view.vue'),
-                },
-                {
-                    path: 'ormpostdetails/:ormpostdetails?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.ormpostdetails.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormpostdetails', parameterName: 'ormpostdetails' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpost-details-edit-view/ormpost-details-edit-view.vue'),
-                },
-                {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzeditview/:bmkqdzeditview?',
                     meta: {
                         caption: 'entities.ormbmkqdz.views.bmkqdzeditview.caption',
@@ -433,53 +386,6 @@ const router = new Router({
                     component: () => import('@pages/orm/ormbmkqdzbmkqdzedit-view/ormbmkqdzbmkqdzedit-view.vue'),
                 },
                 {
-                    path: 'ormposts/:ormpost?/ormpostdetails/:ormpostdetails?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormpostdetails.views.gridview.caption',
-                        imgPath: '../../../img/zzgl/1/gangweiguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormposts', parameterName: 'ormpost' },
-                            { pathName: 'ormpostdetails', parameterName: 'ormpostdetails' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpost-details-grid-view/ormpost-details-grid-view.vue'),
-                },
-                {
-                    path: 'ormpostlibs/:ormpostlib?/ormpostdetails/:ormpostdetails?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormpostdetails.views.gridview.caption',
-                        imgPath: '../../../img/zzgl/1/gangweiguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-                            { pathName: 'ormpostdetails', parameterName: 'ormpostdetails' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpost-details-grid-view/ormpost-details-grid-view.vue'),
-                },
-                {
-                    path: 'ormpostdetails/:ormpostdetails?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.ormpostdetails.views.gridview.caption',
-                        imgPath: '../../../img/zzgl/1/gangweiguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormpostdetails', parameterName: 'ormpostdetails' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpost-details-grid-view/ormpost-details-grid-view.vue'),
-                },
-                {
                     path: 'ormorgs/:ormorg?/allleveltwoorgpickupgridview/:allleveltwoorgpickupgridview?',
                     meta: {
                         caption: 'entities.ormorg.views.allleveltwoorgpickupgridview.caption',
@@ -491,19 +397,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/ormorgall-level-two-org-pickup-grid-view/ormorgall-level-two-org-pickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormpostlibs/:ormpostlib?/pickupview/:pickupview?',
-                    meta: {
-                        caption: 'entities.ormpostlib.views.pickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-                            { pathName: 'pickupview', parameterName: 'pickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpost-lib-pickup-view/ormpost-lib-pickup-view.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/editview9/:editview9?',
@@ -529,7 +422,7 @@ const router = new Router({
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormorgxmbqpickup-grid-view/ormorgxmbqpickup-grid-view.vue'),
+                    component: () => import('@pages/orm/orm-org-xmbqpickup-grid-view/orm-org-xmbqpickup-grid-view.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/xmbqpickupview/:xmbqpickupview?',
@@ -576,19 +469,6 @@ const router = new Router({
                     component: () => import('@pages/orm/ormorgsectorgrid-view/ormorgsectorgrid-view.vue'),
                 },
                 {
-                    path: 'ormpostlibs/:ormpostlib?/mpickupview/:mpickupview?',
-                    meta: {
-                        caption: 'entities.ormpostlib.views.mpickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpost-lib-mpickup-view/ormpost-lib-mpickup-view.vue'),
-                },
-                {
                     path: 'ormorgs/:ormorg?/allleveltwoorgpickupview/:allleveltwoorgpickupview?',
                     meta: {
                         caption: 'entities.ormorg.views.allleveltwoorgpickupview.caption',
@@ -602,12 +482,40 @@ const router = new Router({
                     component: () => import('@pages/orm/ormorgall-level-two-org-pickup-view/ormorgall-level-two-org-pickup-view.vue'),
                 },
                 {
-                    path: 'contractsignorgs/:contractsignorg?/editview/:editview?',
+                    path: 'ormsignorgs/:ormsignorg?/pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
                     meta: {
-                        caption: 'entities.contractsignorg.views.editview.caption',
+                        caption: 'entities.pimcontractsignorg.views.editview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'contractsignorgs', parameterName: 'contractsignorg' },
+                            { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
+                            { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/contract-sign-orgedit-view/contract-sign-orgedit-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.pimcontractsignorg.views.editview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/contract-sign-orgedit-view/contract-sign-orgedit-view.vue'),
+                },
+                {
+                    path: 'pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.pimcontractsignorg.views.editview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
                             { pathName: 'editview', parameterName: 'editview' },
                         ],
                         requireAuth: true,
@@ -655,32 +563,6 @@ const router = new Router({
                     component: () => import('@pages/orm/orm-sign-org-grid-view/orm-sign-org-grid-view.vue'),
                 },
                 {
-                    path: 'ormposts/:ormpost?/pickupgridview/:pickupgridview?',
-                    meta: {
-                        caption: 'entities.ormpost.views.pickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormposts', parameterName: 'ormpost' },
-                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpostpickup-grid-view/ormpostpickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormposts/:ormpost?/mpickupview/:mpickupview?',
-                    meta: {
-                        caption: 'entities.ormpost.views.mpickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormposts', parameterName: 'ormpost' },
-                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/ormpostmpickup-view/ormpostmpickup-view.vue'),
-                },
-                {
                     path: 'ormerporgs/:ormerporg?/legalpickupgridview/:legalpickupgridview?',
                     meta: {
                         caption: 'entities.ormerporg.views.legalpickupgridview.caption',
@@ -692,6 +574,37 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/ormerporglegal-pickup-grid-view/ormerporglegal-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/ormposts/:ormpost?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.ormpost.views.editview.caption',
+                        imgPath: '../../../img/zzgl/1/gangweiguanli.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormposts', parameterName: 'ormpost' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormpostedit-view/ormpostedit-view.vue'),
+                },
+                {
+                    path: 'ormposts/:ormpost?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.ormpost.views.editview.caption',
+                        imgPath: '../../../img/zzgl/1/gangweiguanli.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormposts', parameterName: 'ormpost' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/ormpostedit-view/ormpostedit-view.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/editview9_editmode/:editview9_editmode?',
@@ -775,6 +688,33 @@ const router = new Router({
                     component: () => import('@pages/orm/ormorgorg-tree-grid-view/ormorgorg-tree-grid-view.vue'),
                 },
                 {
+                    path: 'ormorgs/:ormorg?/ormposts/:ormpost?/xjgridview/:xjgridview?',
+                    meta: {
+                        caption: 'entities.ormpost.views.xjgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormposts', parameterName: 'ormpost' },
+                            { pathName: 'xjgridview', parameterName: 'xjgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/orm-post-xjgrid-view/orm-post-xjgrid-view.vue'),
+                },
+                {
+                    path: 'ormposts/:ormpost?/xjgridview/:xjgridview?',
+                    meta: {
+                        caption: 'entities.ormpost.views.xjgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormposts', parameterName: 'ormpost' },
+                            { pathName: 'xjgridview', parameterName: 'xjgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/orm-post-xjgrid-view/orm-post-xjgrid-view.vue'),
+                },
+                {
                     path: 'ormsignorgs/:ormsignorg?/pickupview/:pickupview?',
                     meta: {
                         caption: 'entities.ormsignorg.views.pickupview.caption',
@@ -788,17 +728,18 @@ const router = new Router({
                     component: () => import('@pages/orm/orm-sign-org-pickup-view/orm-sign-org-pickup-view.vue'),
                 },
                 {
-                    path: 'ormposts/:ormpost?/gwxhwheditview/:gwxhwheditview?',
+                    path: 'ormorgs/:ormorg?/ormxmbqs/:ormxmbq?/editview/:editview?',
                     meta: {
-                        caption: 'entities.ormpost.views.gwxhwheditview.caption',
+                        caption: 'entities.ormxmbq.views.editview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormposts', parameterName: 'ormpost' },
-                            { pathName: 'gwxhwheditview', parameterName: 'gwxhwheditview' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
+                            { pathName: 'editview', parameterName: 'editview' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormpostgwxhwhedit-view/ormpostgwxhwhedit-view.vue'),
+                    component: () => import('@pages/orm/ormxmbqedit-view/ormxmbqedit-view.vue'),
                 },
                 {
                     path: 'ormxmbqs/:ormxmbq?/editview/:editview?',
@@ -920,7 +861,7 @@ const router = new Router({
             {
                 path: 'contractsignorgredirectview/:contractsignorgredirectview?',
                 meta: {
-                    caption: 'entities.contractsignorg.views.redirectview.caption',
+                    caption: 'entities.pimcontractsignorg.views.redirectview.caption',
                     parameters: [
                         { pathName: 'contractsignorgredirectview', parameterName: 'contractsignorgredirectview' },
                     ],
@@ -1130,6 +1071,19 @@ const router = new Router({
             ],
         },
     {
+        path: '/ormorgs/:ormorg?/ormxmbqs/:ormxmbq?/editview/:editview?',
+        meta: {
+            caption: 'entities.ormxmbq.views.editview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormxmbqedit-view/ormxmbqedit-view.vue'),
+    },
+    {
         path: '/ormxmbqs/:ormxmbq?/editview/:editview?',
         meta: {
             caption: 'entities.ormxmbq.views.editview.caption',
@@ -1173,7 +1127,7 @@ const router = new Router({
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/ormorgxmbqpickup-grid-view/ormorgxmbqpickup-grid-view.vue'),
+        component: () => import('@pages/orm/orm-org-xmbqpickup-grid-view/orm-org-xmbqpickup-grid-view.vue'),
     },
     {
         path: '/ormxmgls/:ormxmgl?/editview/:editview?',
@@ -1198,18 +1152,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/ormorgedit-view9-edit-mode/ormorgedit-view9-edit-mode.vue'),
-    },
-    {
-        path: '/ormpostlibs/:ormpostlib?/mpickupview/:mpickupview?',
-        meta: {
-            caption: 'entities.ormpostlib.views.mpickupview.caption',
-            parameters: [
-                { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-                { pathName: 'mpickupview', parameterName: 'mpickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormpost-lib-mpickup-view/ormpost-lib-mpickup-view.vue'),
     },
     {
         path: '/pimpeople/:pimperson?/pickupgridview/:pickupgridview?',
@@ -1276,7 +1218,7 @@ const router = new Router({
             {
                 path: '/contractsignorgredirectview/:contractsignorgredirectview?',
                 meta: {
-                    caption: 'entities.contractsignorg.views.redirectview.caption',
+                    caption: 'entities.pimcontractsignorg.views.redirectview.caption',
                     parameters: [
                         { pathName: 'contractsignorgredirectview', parameterName: 'contractsignorgredirectview' },
                     ],
@@ -1310,13 +1252,43 @@ const router = new Router({
                 component: () => import('@pages/orm/ormorgdzredirect-view/ormorgdzredirect-view.vue'),
             },
     {
-        path: '/contractsignorgs/:contractsignorg?/gridview/:gridview?',
+        path: '/ormsignorgs/:ormsignorg?/pimcontractsignorgs/:pimcontractsignorg?/gridview/:gridview?',
         meta: {
-            caption: 'entities.contractsignorg.views.gridview.caption',
+            caption: 'entities.pimcontractsignorg.views.gridview.caption',
             imgPath: '../../../img/newimage/1/kaoqinshezhi.png',
             iconCls: '',
             parameters: [
-                { pathName: 'contractsignorgs', parameterName: 'contractsignorg' },
+                { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
+                { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/contract-sign-orggrid-view/contract-sign-orggrid-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/pimcontractsignorgs/:pimcontractsignorg?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.pimcontractsignorg.views.gridview.caption',
+            imgPath: '../../../img/newimage/1/kaoqinshezhi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/contract-sign-orggrid-view/contract-sign-orggrid-view.vue'),
+    },
+    {
+        path: '/pimcontractsignorgs/:pimcontractsignorg?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.pimcontractsignorg.views.gridview.caption',
+            imgPath: '../../../img/newimage/1/kaoqinshezhi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
                 { pathName: 'gridview', parameterName: 'gridview' },
             ],
             requireAuth: true,
@@ -1506,62 +1478,6 @@ const router = new Router({
         },
         component: () => import('@pages/orm/orm-sign-org-pickup-grid-view/orm-sign-org-pickup-grid-view.vue'),
     },
-    {
-        path: '/ormposts/:ormpost?/ormpostdetails/:ormpostdetails?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.ormpostdetails.views.gridview.caption',
-            imgPath: '../../../img/zzgl/1/gangweiguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormposts', parameterName: 'ormpost' },
-                { pathName: 'ormpostdetails', parameterName: 'ormpostdetails' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormpost-details-grid-view/ormpost-details-grid-view.vue'),
-    },
-    {
-        path: '/ormpostlibs/:ormpostlib?/ormpostdetails/:ormpostdetails?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.ormpostdetails.views.gridview.caption',
-            imgPath: '../../../img/zzgl/1/gangweiguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-                { pathName: 'ormpostdetails', parameterName: 'ormpostdetails' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormpost-details-grid-view/ormpost-details-grid-view.vue'),
-    },
-    {
-        path: '/ormpostdetails/:ormpostdetails?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.ormpostdetails.views.gridview.caption',
-            imgPath: '../../../img/zzgl/1/gangweiguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormpostdetails', parameterName: 'ormpostdetails' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormpost-details-grid-view/ormpost-details-grid-view.vue'),
-    },
-    {
-        path: '/ormposts/:ormpost?/mpickupview/:mpickupview?',
-        meta: {
-            caption: 'entities.ormpost.views.mpickupview.caption',
-            parameters: [
-                { pathName: 'ormposts', parameterName: 'ormpost' },
-                { pathName: 'mpickupview', parameterName: 'mpickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormpostmpickup-view/ormpostmpickup-view.vue'),
-    },
             {
                 path: '/ormorgredirectview/:ormorgredirectview?',
                 meta: {
@@ -1574,16 +1490,18 @@ const router = new Router({
                 component: () => import('@pages/orm/ormorgredirect-view/ormorgredirect-view.vue'),
             },
     {
-        path: '/ormposts/:ormpost?/gwxhwheditview/:gwxhwheditview?',
+        path: '/ormorgs/:ormorg?/ormposts/:ormpost?/ormpostdetails/:ormpostdetails?/editview/:editview?',
         meta: {
-            caption: 'entities.ormpost.views.gwxhwheditview.caption',
+            caption: 'entities.ormpostdetails.views.editview.caption',
             parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
-                { pathName: 'gwxhwheditview', parameterName: 'gwxhwheditview' },
+                { pathName: 'ormpostdetails', parameterName: 'ormpostdetails' },
+                { pathName: 'editview', parameterName: 'editview' },
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/ormpostgwxhwhedit-view/ormpostgwxhwhedit-view.vue'),
+        component: () => import('@pages/orm/ormpost-details-edit-view/ormpost-details-edit-view.vue'),
     },
     {
         path: '/ormposts/:ormpost?/ormpostdetails/:ormpostdetails?/editview/:editview?',
@@ -1648,6 +1566,19 @@ const router = new Router({
         component: () => import('@pages/orm/ormorgall-level-two-org-pickup-view/ormorgall-level-two-org-pickup-view.vue'),
     },
     {
+        path: '/ormorgs/:ormorg?/ormxmbqs/:ormxmbq?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.ormxmbq.views.gridview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormxmbqgrid-view/ormxmbqgrid-view.vue'),
+    },
+    {
         path: '/ormxmbqs/:ormxmbq?/gridview/:gridview?',
         meta: {
             caption: 'entities.ormxmbq.views.gridview.caption',
@@ -1703,6 +1634,19 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/ormbmkqdzbmkqdzgrid-view/ormbmkqdzbmkqdzgrid-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/ormposts/:ormpost?/pickupview/:pickupview?',
+        meta: {
+            caption: 'entities.ormpost.views.pickupview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormposts', parameterName: 'ormpost' },
+                { pathName: 'pickupview', parameterName: 'pickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormpostpickup-view/ormpostpickup-view.vue'),
     },
     {
         path: '/ormposts/:ormpost?/pickupview/:pickupview?',
@@ -1769,18 +1713,6 @@ const router = new Router({
         },
         component: () => import('@pages/orm/ormorgdzgrid-view/ormorgdzgrid-view.vue'),
     },
-    {
-        path: '/ormpostlibs/:ormpostlib?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.ormpostlib.views.gridview.caption',
-            parameters: [
-                { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/ormpost-lib-grid-view/ormpost-lib-grid-view.vue'),
-    },
             {
                 path: '/ormxmbmxredirectview/:ormxmbmxredirectview?',
                 meta: {
@@ -1793,23 +1725,37 @@ const router = new Router({
                 component: () => import('@pages/orm/ormxmbmxredirect-view/ormxmbmxredirect-view.vue'),
             },
     {
-        path: '/ormposts/:ormpost?/gwxhwhgridview/:gwxhwhgridview?',
+        path: '/ormsignorgs/:ormsignorg?/pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
         meta: {
-            caption: 'entities.ormpost.views.gwxhwhgridview.caption',
+            caption: 'entities.pimcontractsignorg.views.editview.caption',
             parameters: [
-                { pathName: 'ormposts', parameterName: 'ormpost' },
-                { pathName: 'gwxhwhgridview', parameterName: 'gwxhwhgridview' },
+                { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
+                { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
+                { pathName: 'editview', parameterName: 'editview' },
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/ormpostgwxhwhgrid-view/ormpostgwxhwhgrid-view.vue'),
+        component: () => import('@pages/orm/contract-sign-orgedit-view/contract-sign-orgedit-view.vue'),
     },
     {
-        path: '/contractsignorgs/:contractsignorg?/editview/:editview?',
+        path: '/ormorgs/:ormorg?/pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
         meta: {
-            caption: 'entities.contractsignorg.views.editview.caption',
+            caption: 'entities.pimcontractsignorg.views.editview.caption',
             parameters: [
-                { pathName: 'contractsignorgs', parameterName: 'contractsignorg' },
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/contract-sign-orgedit-view/contract-sign-orgedit-view.vue'),
+    },
+    {
+        path: '/pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
+        meta: {
+            caption: 'entities.pimcontractsignorg.views.editview.caption',
+            parameters: [
+                { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
                 { pathName: 'editview', parameterName: 'editview' },
             ],
             requireAuth: true,
@@ -1854,6 +1800,19 @@ const router = new Router({
         component: () => import('@pages/orm/pimpersonpickup-view/pimpersonpickup-view.vue'),
     },
     {
+        path: '/ormorgs/:ormorg?/ormposts/:ormpost?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.ormpost.views.pickupgridview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormposts', parameterName: 'ormpost' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormpostpickup-grid-view/ormpostpickup-grid-view.vue'),
+    },
+    {
         path: '/ormposts/:ormpost?/pickupgridview/:pickupgridview?',
         meta: {
             caption: 'entities.ormpost.views.pickupgridview.caption',
@@ -1887,6 +1846,21 @@ const router = new Router({
                 },
                 component: () => import('@pages/orm/ormrelation-redirect-view/ormrelation-redirect-view.vue'),
             },
+    {
+        path: '/ormorgs/:ormorg?/ormposts/:ormpost?/editview/:editview?',
+        meta: {
+            caption: 'entities.ormpost.views.editview.caption',
+            imgPath: '../../../img/zzgl/1/gangweiguanli.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormposts', parameterName: 'ormpost' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormpostedit-view/ormpostedit-view.vue'),
+    },
     {
         path: '/ormposts/:ormpost?/editview/:editview?',
         meta: {
@@ -1986,6 +1960,20 @@ const router = new Router({
         component: () => import('@pages/orm/orm-sign-org-grid-view/orm-sign-org-grid-view.vue'),
     },
     {
+        path: '/ormorgs/:ormorg?/ormposts/:ormpost?/ormbmgwbzs/:ormbmgwbz?/editview/:editview?',
+        meta: {
+            caption: 'entities.ormbmgwbz.views.editview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormposts', parameterName: 'ormpost' },
+                { pathName: 'ormbmgwbzs', parameterName: 'ormbmgwbz' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/ormbmgwbzedit-view/ormbmgwbzedit-view.vue'),
+    },
+    {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmgwbzs/:ormbmgwbz?/editview/:editview?',
         meta: {
             caption: 'entities.ormbmgwbz.views.editview.caption',
@@ -2076,6 +2064,31 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/ormorgsectorgrid-view/ormorgsectorgrid-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/ormposts/:ormpost?/xjgridview/:xjgridview?',
+        meta: {
+            caption: 'entities.ormpost.views.xjgridview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormposts', parameterName: 'ormpost' },
+                { pathName: 'xjgridview', parameterName: 'xjgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/orm-post-xjgrid-view/orm-post-xjgrid-view.vue'),
+    },
+    {
+        path: '/ormposts/:ormpost?/xjgridview/:xjgridview?',
+        meta: {
+            caption: 'entities.ormpost.views.xjgridview.caption',
+            parameters: [
+                { pathName: 'ormposts', parameterName: 'ormpost' },
+                { pathName: 'xjgridview', parameterName: 'xjgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/orm-post-xjgrid-view/orm-post-xjgrid-view.vue'),
     },
     {
         path: '/ormorgs/:ormorg?/allleveltwoorgpickupgridview/:allleveltwoorgpickupgridview?',

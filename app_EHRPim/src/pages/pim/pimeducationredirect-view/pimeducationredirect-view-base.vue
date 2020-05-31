@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMEDUCATIONService from '@/service/pimeducation/pimeducation-service';
+import PimEducationService from '@/service/pim-education/pim-education-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMEDUCATIONRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMEDUCATIONService}
+     * @type {PimEducationService}
      * @memberof PIMEDUCATIONRedirectViewBase
      */
-    public appEntityService: PIMEDUCATIONService = new PIMEDUCATIONService;
+    public appEntityService: PimEducationService = new PimEducationService;
 
 
     /**

@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import ORMDUTYGridViewBase from './ormdutygrid-view-base.vue';
 
-import view_grid from '@widgets/ormduty/main-grid/main-grid.vue';
-import view_searchform from '@widgets/ormduty/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/orm-duty/main-grid/main-grid.vue';
+import view_searchform from '@widgets/orm-duty/default-searchform/default-searchform.vue';
 
 /**
  * 职务设置

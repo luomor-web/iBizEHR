@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMDISTIRBUTIONService from '@/service/pimdistirbution/pimdistirbution-service';
+import PimDistirbutionService from '@/service/pim-distirbution/pim-distirbution-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMDISTIRBUTIONJDRYHMCGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMDISTIRBUTIONService}
+     * @type {PimDistirbutionService}
      * @memberof PIMDISTIRBUTIONJDRYHMCGridViewBase
      */
-    public appEntityService: PIMDISTIRBUTIONService = new PIMDISTIRBUTIONService;
+    public appEntityService: PimDistirbutionService = new PimDistirbutionService;
 
 
     /**
@@ -378,7 +378,7 @@ export default class PIMDISTIRBUTIONJDRYHMCGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMDISTIRBUTION");
+        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PimDistirbution");
     }
 
     /**
@@ -407,7 +407,7 @@ export default class PIMDISTIRBUTIONJDRYHMCGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMDISTIRBUTION");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimDistirbution");
     }
 
     /**
@@ -436,7 +436,7 @@ export default class PIMDISTIRBUTIONJDRYHMCGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PIMDISTIRBUTION");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PimDistirbution");
     }
 
     /**

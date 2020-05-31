@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PCMCERTOFREGZCZSGridViewBase from './pcmcertofregzczsgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmcertofreg/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pcmcertofreg/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pcm-certofreg/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pcm-certofreg/default-searchform/default-searchform.vue';
 
 /**
  * 注册证书（要求：带*必填）

@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PCMGXMLPickupGridViewBase from './pcmgxmlpickup-grid-view-base.vue';
 
-import view_grid from '@widgets/pcmgxml/main-grid/main-grid.vue';
-import view_searchform from '@widgets/pcmgxml/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pcm-gxml/main-grid/main-grid.vue';
+import view_searchform from '@widgets/pcm-gxml/default-searchform/default-searchform.vue';
 
 /**
  * 高校名录选择表格视图

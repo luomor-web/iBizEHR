@@ -57,7 +57,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, PickupViewBase } from '@/crm-core';
-import PIMQUALTYPEService from '@/service/pimqualtype/pimqualtype-service';
+import PimQualTypeService from '@/service/pim-qual-type/pim-qual-type-service';
 
 import PickupGridViewEngine from '@engine/view/pickup-grid-view-engine';
 
@@ -76,10 +76,10 @@ export default class PIMQUALTYPEPickupGridViewBase extends PickupViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMQUALTYPEService}
+     * @type {PimQualTypeService}
      * @memberof PIMQUALTYPEPickupGridViewBase
      */
-    public appEntityService: PIMQUALTYPEService = new PIMQUALTYPEService;
+    public appEntityService: PimQualTypeService = new PimQualTypeService;
 
 
     /**

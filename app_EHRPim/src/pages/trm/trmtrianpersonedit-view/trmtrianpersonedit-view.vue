@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import TRMTRIANPERSONEditViewBase from './trmtrianpersonedit-view-base.vue';
 
-import view_form from '@widgets/trmtrianperson/main-form/main-form.vue';
+import view_form from '@widgets/trm-train-person/main-form/main-form.vue';
 
 /**
  * 培训人员编辑视图

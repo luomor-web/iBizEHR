@@ -1,5 +1,5 @@
 <template>
-    <i-form :model="this.data" class='app-form' ref='form'  id='form' style="">
+    <i-form :model="this.data" class='app-form' ref='form'  id='ormorgsector_main' style="">
     <input style="display:none;" />
     <row >
     <tabs :animated="false" name='main' :value="detailsModel.form.activiedPage" 
@@ -42,7 +42,7 @@
 </i-col>
 <i-col v-show="detailsModel.bmlx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='bmlx' :itemRules="this.rules.bmlx" class='' :caption="$t('entities.ormorgsector.main_form.details.bmlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bmlx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.bmlx" :data="data" :itemParam="{}" :disabled="detailsModel.bmlx.disabled"  tag='PIMCL_BMLX' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list v-model="data.bmlx" :data="data" :itemParam="{}" :disabled="detailsModel.bmlx.disabled"  tag='EhrCodeList0019' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -73,7 +73,7 @@
 </i-col>
 <i-col v-show="detailsModel.qy.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='qy' :itemRules="this.rules.qy" class='' :caption="$t('entities.ormorgsector.main_form.details.qy')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.qy.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.qy" :data="data" :itemParam="{}" :disabled="detailsModel.qy.disabled"  tag='ORMCL_QY' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list v-model="data.qy" :data="data" :itemParam="{}" :disabled="detailsModel.qy.disabled"  tag='EhrCodeList0219' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -85,7 +85,7 @@
 </i-col>
 <i-col v-show="detailsModel.gkjz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='gkjz' :itemRules="this.rules.gkjz" class='' :caption="$t('entities.ormorgsector.main_form.details.gkjz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gkjz.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.gkjz" :data="data" :itemParam="{}" :disabled="detailsModel.gkjz.disabled"  tag='ORMCL_JZ' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list v-model="data.gkjz" :data="data" :itemParam="{}" :disabled="detailsModel.gkjz.disabled"  tag='EhrCodeList0156' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -102,7 +102,7 @@
   deMajorField='pimpersonname'
   deKeyField='pimperson'
   :service="service"
-  :acParams="{ serviceName: 'PIMPERSONService', interfaceName: 'FetchCurLeader'}"
+  :acParams="{ serviceName: 'PimPersonService', interfaceName: 'FetchCurLeader'}"
   valueitem='pimpersonid' 
   :value="data.pimpersonname" 
   editortype="" 
@@ -116,7 +116,7 @@
 </i-col>
 <i-col v-show="detailsModel.validflag.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='validflag' :itemRules="this.rules.validflag" class='' :caption="$t('entities.ormorgsector.main_form.details.validflag')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.validflag.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.validflag" :data="data" :itemParam="{}" :disabled="detailsModel.validflag.disabled" style="width:100px;width: 100px;" tag='YesNo' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
+     <dropdown-list v-model="data.validflag" :data="data" :itemParam="{}" :disabled="detailsModel.validflag.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0054' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -296,6 +296,12 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
 
+    /**
+     * 工作流审批意见控件绑定值
+     *
+     * @memberof Main
+     */
+    public srfwfmemo:string = "";
     
     /**
      * 获取多项数据
@@ -1360,7 +1366,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'form',popTitle:'部门'});
+        _this.$print({id:'ormorgsector_main',popTitle:'部门'});
     }
 
     /**
@@ -1732,6 +1738,10 @@ export default class MainBase extends Vue implements ControlInterface {
                 // 准备提交参数
                 if(this.viewparams){
                     Object.assign(arg,{viewparams:this.viewparams});
+                }
+                // 强制补充srfwfmemo
+                if(this.srfwfmemo){
+                    Object.assign(arg,{srfwfmemo:this.srfwfmemo});
                 }
                 const result: Promise<any> = this.service.wfsubmit(_this.WFSubmitAction, JSON.parse(JSON.stringify(this.context)),arg, this.showBusyIndicator,localdata);
                 result.then((response: any) => {

@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMEDUCATIONService from '@/service/pimeducation/pimeducation-service';
+import PimEducationService from '@/service/pim-education/pim-education-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMEDUCATIONPimEduGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMEDUCATIONService}
+     * @type {PimEducationService}
      * @memberof PIMEDUCATIONPimEduGridViewBase
      */
-    public appEntityService: PIMEDUCATIONService = new PIMEDUCATIONService;
+    public appEntityService: PimEducationService = new PimEducationService;
 
 
     /**
@@ -390,7 +390,7 @@ export default class PIMEDUCATIONPimEduGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PIMEDUCATION");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PimEducation");
     }
 
     /**
@@ -419,7 +419,7 @@ export default class PIMEDUCATIONPimEduGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PIMEDUCATION");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PimEducation");
     }
 
     /**
@@ -448,7 +448,7 @@ export default class PIMEDUCATIONPimEduGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMEDUCATION");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimEducation");
     }
 
     /**
@@ -477,7 +477,7 @@ export default class PIMEDUCATIONPimEduGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMEDUCATION");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimEducation");
     }
 
     /**
@@ -506,7 +506,7 @@ export default class PIMEDUCATIONPimEduGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMEDUCATION");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimEducation");
     }
 
     /**

@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMPERSONLTXYGGridViewBase from './pimpersonltxyggrid-view-base.vue';
 
-import view_grid from '@widgets/pimperson/txlxyg-grid/txlxyg-grid.vue';
-import view_searchform from '@widgets/pimperson/ryinfo-search-form-searchform/ryinfo-search-form-searchform.vue';
+import view_grid from '@widgets/pim-person/txlxyg-grid/txlxyg-grid.vue';
+import view_searchform from '@widgets/pim-person/ryinfo-search-form-searchform/ryinfo-search-form-searchform.vue';
 
 /**
  * 离（退）休人员

@@ -42,7 +42,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, PickupViewBase } from '@/crm-core';
-import ARCHIVALCATALOGUEService from '@/service/archivalcatalogue/archivalcatalogue-service';
+import PimArchivalCatalogueService from '@/service/pim-archival-catalogue/pim-archival-catalogue-service';
 
 import PickupViewEngine from '@engine/view/pickup-view-engine';
 
@@ -61,10 +61,10 @@ export default class ARCHIVALCATALOGUEPickupViewBase extends PickupViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ARCHIVALCATALOGUEService}
+     * @type {PimArchivalCatalogueService}
      * @memberof ARCHIVALCATALOGUEPickupViewBase
      */
-    public appEntityService: ARCHIVALCATALOGUEService = new ARCHIVALCATALOGUEService;
+    public appEntityService: PimArchivalCatalogueService = new PimArchivalCatalogueService;
 
 
     /**
@@ -129,9 +129,9 @@ export default class ARCHIVALCATALOGUEPickupViewBase extends PickupViewBase {
      * @memberof ARCHIVALCATALOGUEPickupViewBase
      */
     public model: any = {
-        srfCaption: 'entities.archivalcatalogue.views.pickupview.caption',
-        srfTitle: 'entities.archivalcatalogue.views.pickupview.title',
-        srfSubTitle: 'entities.archivalcatalogue.views.pickupview.subtitle',
+        srfCaption: 'entities.pimarchivalcatalogue.views.pickupview.caption',
+        srfTitle: 'entities.pimarchivalcatalogue.views.pickupview.title',
+        srfSubTitle: 'entities.pimarchivalcatalogue.views.pickupview.subtitle',
         dataInfo: ''
     }
 
@@ -181,7 +181,7 @@ export default class ARCHIVALCATALOGUEPickupViewBase extends PickupViewBase {
         this.engine.init({
             view: this,
             pickupviewpanel: this.$refs.pickupviewpanel,
-            keyPSDEField: 'archivalcatalogue',
+            keyPSDEField: 'pimarchivalcatalogue',
             majorPSDEField: 'archivalcataloguename',
             isLoadDefault: true,
         });

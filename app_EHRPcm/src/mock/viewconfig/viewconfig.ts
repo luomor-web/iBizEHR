@@ -25,7 +25,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ormpostejormorgidpickupview": {
             "title": "岗位管理数据选择视图",
-            "caption": "岗位集",
+            "caption": "岗位",
             "viewtype": "DEPICKUPVIEW",
             "viewmodule": "ORM",
             "viewname": "ORMPOSTEJORMORGIDPickupView",
@@ -92,7 +92,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "高校名录",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "PCM",
-            "viewname": "PCMGXMLCurNDGridView",
+            "viewname": "PcmGxmlCurNDGridView",
             "viewtag": "16f45c559b919f73db542c707116ce73"
         },
         "pcmprofilebhsp_csrcyjeditview": {

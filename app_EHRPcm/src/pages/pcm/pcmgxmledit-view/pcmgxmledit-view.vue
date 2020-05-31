@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMGXMLEditViewBase from './pcmgxmledit-view-base.vue';
 
-import view_form from '@widgets/pcmgxml/main-form/main-form.vue';
+import view_form from '@widgets/pcm-gxml/main-form/main-form.vue';
 
 /**
  * 高校名录编辑视图

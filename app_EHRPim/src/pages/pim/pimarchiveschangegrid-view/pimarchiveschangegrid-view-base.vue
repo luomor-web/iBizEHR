@@ -48,7 +48,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMARCHIVESCHANGEService from '@/service/pimarchiveschange/pimarchiveschange-service';
+import PimArchivesChangeService from '@/service/pim-archives-change/pim-archives-change-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -69,10 +69,10 @@ export default class PIMARCHIVESCHANGEGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMARCHIVESCHANGEService}
+     * @type {PimArchivesChangeService}
      * @memberof PIMARCHIVESCHANGEGridViewBase
      */
-    public appEntityService: PIMARCHIVESCHANGEService = new PIMARCHIVESCHANGEService;
+    public appEntityService: PimArchivesChangeService = new PimArchivesChangeService;
 
 
     /**

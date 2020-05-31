@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMARCHIVESLOANANDRETURNService from '@/service/pimarchivesloanandreturn/pimarchivesloanandreturn-service';
+import PimArchiveSloanandreturnService from '@/service/pim-archive-sloanandreturn/pim-archive-sloanandreturn-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMARCHIVESLOANANDRETURNEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMARCHIVESLOANANDRETURNService}
+     * @type {PimArchiveSloanandreturnService}
      * @memberof PIMARCHIVESLOANANDRETURNEditViewBase
      */
-    public appEntityService: PIMARCHIVESLOANANDRETURNService = new PIMARCHIVESLOANANDRETURNService;
+    public appEntityService: PimArchiveSloanandreturnService = new PimArchiveSloanandreturnService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PIMARCHIVESLOANANDRETURNEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimArchiveSloanandreturn");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PIMARCHIVESLOANANDRETURNEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimArchiveSloanandreturn");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PIMARCHIVESLOANANDRETURNEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimArchiveSloanandreturn");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PIMARCHIVESLOANANDRETURNEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimArchiveSloanandreturn");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PIMARCHIVESLOANANDRETURNEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimArchiveSloanandreturn");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PIMARCHIVESLOANANDRETURNEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimArchiveSloanandreturn");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PIMARCHIVESLOANANDRETURNEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVESLOANANDRETURN");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimArchiveSloanandreturn");
     }
 
     /**

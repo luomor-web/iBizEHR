@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import ARCHIVESCENTERService from '@/service/archivescenter/archivescenter-service';
+import PimArchivesCenterService from '@/service/pim-archives-center/pim-archives-center-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class ARCHIVESCENTERRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ARCHIVESCENTERService}
+     * @type {PimArchivesCenterService}
      * @memberof ARCHIVESCENTERRedirectViewBase
      */
-    public appEntityService: ARCHIVESCENTERService = new ARCHIVESCENTERService;
+    public appEntityService: PimArchivesCenterService = new PimArchivesCenterService;
 
 
     /**
@@ -98,9 +98,9 @@ export default class ARCHIVESCENTERRedirectViewBase extends WizardViewBase {
      * @memberof ARCHIVESCENTERRedirectViewBase
      */
     public model: any = {
-        srfCaption: 'entities.archivescenter.views.redirectview.caption',
-        srfTitle: 'entities.archivescenter.views.redirectview.title',
-        srfSubTitle: 'entities.archivescenter.views.redirectview.subtitle',
+        srfCaption: 'entities.pimarchivescenter.views.redirectview.caption',
+        srfTitle: 'entities.pimarchivescenter.views.redirectview.title',
+        srfSubTitle: 'entities.pimarchivescenter.views.redirectview.subtitle',
         dataInfo: ''
     }
 

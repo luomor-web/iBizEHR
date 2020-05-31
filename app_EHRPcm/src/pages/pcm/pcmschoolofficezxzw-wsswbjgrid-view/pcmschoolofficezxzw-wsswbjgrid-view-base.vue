@@ -52,7 +52,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PCMSCHOOLOFFICEService from '@/service/pcmschooloffice/pcmschooloffice-service';
+import PcmSchoolOfficeService from '@/service/pcm-school-office/pcm-school-office-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -73,10 +73,10 @@ export default class PCMSCHOOLOFFICEZXZW_WSSWBJGridViewBase extends GridViewBase
     /**
      * 实体服务对象
      *
-     * @type {PCMSCHOOLOFFICEService}
+     * @type {PcmSchoolOfficeService}
      * @memberof PCMSCHOOLOFFICEZXZW_WSSWBJGridViewBase
      */
-    public appEntityService: PCMSCHOOLOFFICEService = new PCMSCHOOLOFFICEService;
+    public appEntityService: PcmSchoolOfficeService = new PcmSchoolOfficeService;
 
 
     /**

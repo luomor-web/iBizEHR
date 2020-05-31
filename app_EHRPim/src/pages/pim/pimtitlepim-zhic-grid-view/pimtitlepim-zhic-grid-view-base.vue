@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMTITLEService from '@/service/pimtitle/pimtitle-service';
+import PimTitleService from '@/service/pim-title/pim-title-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMTITLEPimZhicGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMTITLEService}
+     * @type {PimTitleService}
      * @memberof PIMTITLEPimZhicGridViewBase
      */
-    public appEntityService: PIMTITLEService = new PIMTITLEService;
+    public appEntityService: PimTitleService = new PimTitleService;
 
 
     /**
@@ -371,7 +371,7 @@ export default class PIMTITLEPimZhicGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.View(datas, contextJO,paramJO,  $event, xData,this,"PIMTITLE");
+        this.View(datas, contextJO,paramJO,  $event, xData,this,"PimTitle");
     }
 
     /**
@@ -400,7 +400,7 @@ export default class PIMTITLEPimZhicGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMTITLE");
+        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PimTitle");
     }
 
     /**

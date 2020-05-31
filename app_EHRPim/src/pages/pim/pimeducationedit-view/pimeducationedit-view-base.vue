@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PIMEDUCATIONService from '@/service/pimeducation/pimeducation-service';
+import PimEducationService from '@/service/pim-education/pim-education-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PIMEDUCATIONEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMEDUCATIONService}
+     * @type {PimEducationService}
      * @memberof PIMEDUCATIONEditViewBase
      */
-    public appEntityService: PIMEDUCATIONService = new PIMEDUCATIONService;
+    public appEntityService: PimEducationService = new PimEducationService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PIMEDUCATIONEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PIMEDUCATION");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimEducation");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PIMEDUCATIONEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PIMEDUCATION");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimEducation");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PIMEDUCATIONEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMEDUCATION");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimEducation");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PIMEDUCATIONEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PIMEDUCATION");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimEducation");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PIMEDUCATIONEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PIMEDUCATION");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimEducation");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PIMEDUCATIONEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PIMEDUCATION");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimEducation");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PIMEDUCATIONEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMEDUCATION");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimEducation");
     }
 
     /**

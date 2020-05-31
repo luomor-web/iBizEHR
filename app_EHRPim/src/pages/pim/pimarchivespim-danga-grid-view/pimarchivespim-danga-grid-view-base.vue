@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMARCHIVESService from '@/service/pimarchives/pimarchives-service';
+import PimArchivesService from '@/service/pim-archives/pim-archives-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMARCHIVESPimDangaGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMARCHIVESService}
+     * @type {PimArchivesService}
      * @memberof PIMARCHIVESPimDangaGridViewBase
      */
-    public appEntityService: PIMARCHIVESService = new PIMARCHIVESService;
+    public appEntityService: PimArchivesService = new PimArchivesService;
 
 
     /**

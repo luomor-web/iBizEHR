@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMACHIEVEMENTSService from '@/service/pimachievements/pimachievements-service';
+import PimAchievementsService from '@/service/pim-achievements/pim-achievements-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMACHIEVEMENTSPimJixGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMACHIEVEMENTSService}
+     * @type {PimAchievementsService}
      * @memberof PIMACHIEVEMENTSPimJixGridViewBase
      */
-    public appEntityService: PIMACHIEVEMENTSService = new PIMACHIEVEMENTSService;
+    public appEntityService: PimAchievementsService = new PimAchievementsService;
 
 
     /**
@@ -375,7 +375,7 @@ export default class PIMACHIEVEMENTSPimJixGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMACHIEVEMENTS");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimAchievements");
     }
 
     /**
@@ -404,7 +404,7 @@ export default class PIMACHIEVEMENTSPimJixGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMACHIEVEMENTS");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimAchievements");
     }
 
     /**

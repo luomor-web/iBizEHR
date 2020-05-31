@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMCONTRACTTYPEGridViewBase from './pimcontracttypegrid-view-base.vue';
 
-import view_grid from '@widgets/pimcontracttype/main-grid/main-grid.vue';
+import view_grid from '@widgets/pim-contract-type/main-grid/main-grid.vue';
 
 /**
  * 合同类别表格视图

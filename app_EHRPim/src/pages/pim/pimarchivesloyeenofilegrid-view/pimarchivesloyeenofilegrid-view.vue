@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMARCHIVESLOYEENOFILEGridViewBase from './pimarchivesloyeenofilegrid-view-base.vue';
 
-import view_grid from '@widgets/pimarchives/main-ygbzd-grid/main-ygbzd-grid.vue';
-import view_searchform from '@widgets/pimarchives/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-archives/main-ygbzd-grid/main-ygbzd-grid.vue';
+import view_searchform from '@widgets/pim-archives/default-searchform/default-searchform.vue';
 
 /**
  * 员工不在档提醒表格视图

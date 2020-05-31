@@ -69,11 +69,11 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import ATTENDANCEMREPORTMXService from '@/service/attendancemreportmx/attendancemreportmx-service';
+import AttEndanceMreportmxService from '@/service/att-endance-mreportmx/att-endance-mreportmx-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
-import ATTENDANCEMREPORTMXUIService from '@/uiservice/attendancemreportmx/attendancemreportmx-ui-service';
+import AttEndanceMreportmxUIService from '@/uiservice/att-endance-mreportmx/att-endance-mreportmx-ui-service';
 import CodeListService from "@service/app/codelist-service";
 
 
@@ -91,10 +91,10 @@ export default class ATTENDANCEMREPORTMXWscGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ATTENDANCEMREPORTMXService}
+     * @type {AttEndanceMreportmxService}
      * @memberof ATTENDANCEMREPORTMXWscGridViewBase
      */
-    public appEntityService: ATTENDANCEMREPORTMXService = new ATTENDANCEMREPORTMXService;
+    public appEntityService: AttEndanceMreportmxService = new AttEndanceMreportmxService;
 
 
     /**
@@ -376,8 +376,8 @@ export default class ATTENDANCEMREPORTMXWscGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:ATTENDANCEMREPORTMXUIService  = new ATTENDANCEMREPORTMXUIService();
-        curUIService.ATTENDANCEMREPORTMX_export2Excel(datas,contextJO, paramJO,  $event, xData,this,"ATTENDANCEMREPORTMX");
+        const curUIService:AttEndanceMreportmxUIService  = new AttEndanceMreportmxUIService();
+        curUIService.AttEndanceMreportmx_export2Excel(datas,contextJO, paramJO,  $event, xData,this,"AttEndanceMreportmx");
     }
 
     /**
@@ -406,7 +406,7 @@ export default class ATTENDANCEMREPORTMXWscGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"ATTENDANCEMREPORTMX");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"AttEndanceMreportmx");
     }
 
     /**

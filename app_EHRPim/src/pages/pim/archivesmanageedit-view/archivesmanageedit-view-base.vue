@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import ARCHIVESMANAGEService from '@/service/archivesmanage/archivesmanage-service';
+import PimArchivesManageService from '@/service/pim-archives-manage/pim-archives-manage-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class ARCHIVESMANAGEEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ARCHIVESMANAGEService}
+     * @type {PimArchivesManageService}
      * @memberof ARCHIVESMANAGEEditViewBase
      */
-    public appEntityService: ARCHIVESMANAGEService = new ARCHIVESMANAGEService;
+    public appEntityService: PimArchivesManageService = new PimArchivesManageService;
 
 
     /**
@@ -134,9 +134,9 @@ export default class ARCHIVESMANAGEEditViewBase extends EditViewBase {
      * @memberof ARCHIVESMANAGEEditViewBase
      */
     public model: any = {
-        srfCaption: 'entities.archivesmanage.views.editview.caption',
-        srfTitle: 'entities.archivesmanage.views.editview.title',
-        srfSubTitle: 'entities.archivesmanage.views.editview.subtitle',
+        srfCaption: 'entities.pimarchivesmanage.views.editview.caption',
+        srfTitle: 'entities.pimarchivesmanage.views.editview.title',
+        srfSubTitle: 'entities.pimarchivesmanage.views.editview.subtitle',
         dataInfo: ''
     }
 
@@ -202,7 +202,7 @@ export default class ARCHIVESMANAGEEditViewBase extends EditViewBase {
             view: this,
             form: this.$refs.form,
             p2k: '0',
-            keyPSDEField: 'archivesmanage',
+            keyPSDEField: 'pimarchivesmanage',
             majorPSDEField: 'archivesmanagename',
             isLoadDefault: true,
         });
@@ -304,7 +304,7 @@ export default class ARCHIVESMANAGEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESMANAGE");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesManage");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class ARCHIVESMANAGEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESMANAGE");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesManage");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class ARCHIVESMANAGEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESMANAGE");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesManage");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class ARCHIVESMANAGEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESMANAGE");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesManage");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class ARCHIVESMANAGEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESMANAGE");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesManage");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class ARCHIVESMANAGEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESMANAGE");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesManage");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class ARCHIVESMANAGEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESMANAGE");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesManage");
     }
 
     /**

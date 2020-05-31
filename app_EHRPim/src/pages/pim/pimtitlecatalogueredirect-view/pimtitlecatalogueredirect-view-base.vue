@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMTITLECATALOGUEService from '@/service/pimtitlecatalogue/pimtitlecatalogue-service';
+import PimTitleCatalogueService from '@/service/pim-title-catalogue/pim-title-catalogue-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMTITLECATALOGUERedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMTITLECATALOGUEService}
+     * @type {PimTitleCatalogueService}
      * @memberof PIMTITLECATALOGUERedirectViewBase
      */
-    public appEntityService: PIMTITLECATALOGUEService = new PIMTITLECATALOGUEService;
+    public appEntityService: PimTitleCatalogueService = new PimTitleCatalogueService;
 
 
     /**

@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMXKMLXKMLTreeExpViewBase from './pcmxkmlxkmltree-exp-view-base.vue';
 
-import view_treeexpbar from '@widgets/pcmxkml/xkmltree-exp-viewtreeexpbar-treeexpbar/xkmltree-exp-viewtreeexpbar-treeexpbar.vue';
+import view_treeexpbar from '@widgets/pcm-xkml/xkmltree-exp-viewtreeexpbar-treeexpbar/xkmltree-exp-viewtreeexpbar-treeexpbar.vue';
 
 /**
  * 学科目录树导航视图

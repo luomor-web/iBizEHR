@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PCMAWARDSWONSService from '@/service/pcmawardswons/pcmawardswons-service';
+import PcmAwardsWonsService from '@/service/pcm-awards-wons/pcm-awards-wons-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PCMAWARDSWONSHJQKGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMAWARDSWONSService}
+     * @type {PcmAwardsWonsService}
      * @memberof PCMAWARDSWONSHJQKGridViewBase
      */
-    public appEntityService: PCMAWARDSWONSService = new PCMAWARDSWONSService;
+    public appEntityService: PcmAwardsWonsService = new PcmAwardsWonsService;
 
 
     /**
@@ -390,7 +390,7 @@ export default class PCMAWARDSWONSHJQKGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PCMAWARDSWONS");
+        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"PcmAwardsWons");
     }
 
     /**
@@ -419,7 +419,7 @@ export default class PCMAWARDSWONSHJQKGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PCMAWARDSWONS");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"PcmAwardsWons");
     }
 
     /**
@@ -448,7 +448,7 @@ export default class PCMAWARDSWONSHJQKGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PCMAWARDSWONS");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PcmAwardsWons");
     }
 
     /**
@@ -477,7 +477,7 @@ export default class PCMAWARDSWONSHJQKGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PCMAWARDSWONS");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PcmAwardsWons");
     }
 
     /**
@@ -506,7 +506,7 @@ export default class PCMAWARDSWONSHJQKGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PCMAWARDSWONS");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PcmAwardsWons");
     }
 
     /**

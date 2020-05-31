@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMPRACTICEEXPERIENCEEditViewBase from './pcmpracticeexperienceedit-view-base.vue';
 
-import view_form from '@widgets/pcmpracticeexperience/main-form/main-form.vue';
+import view_form from '@widgets/pcm-practice-experience/main-form/main-form.vue';
 
 /**
  * 实习经验

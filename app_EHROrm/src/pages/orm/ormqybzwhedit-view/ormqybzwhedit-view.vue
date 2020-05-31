@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMQYBZWHEditViewBase from './ormqybzwhedit-view-base.vue';
 
-import view_form from '@widgets/ormqybzwh/main-form/main-form.vue';
+import view_form from '@widgets/orm-qybzwh/main-form/main-form.vue';
 
 /**
  * 区域标准维护编辑视图

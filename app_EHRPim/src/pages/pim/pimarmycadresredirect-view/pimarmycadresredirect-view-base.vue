@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMARMYCADRESService from '@/service/pimarmycadres/pimarmycadres-service';
+import PimArmycadresService from '@/service/pim-armycadres/pim-armycadres-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMARMYCADRESRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMARMYCADRESService}
+     * @type {PimArmycadresService}
      * @memberof PIMARMYCADRESRedirectViewBase
      */
-    public appEntityService: PIMARMYCADRESService = new PIMARMYCADRESService;
+    public appEntityService: PimArmycadresService = new PimArmycadresService;
 
 
     /**

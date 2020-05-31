@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMPERSONService from '@/service/pimperson/pimperson-service';
+import PimPersonService from '@/service/pim-person/pim-person-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMPERSONHMDGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMPERSONService}
+     * @type {PimPersonService}
      * @memberof PIMPERSONHMDGridViewBase
      */
-    public appEntityService: PIMPERSONService = new PIMPERSONService;
+    public appEntityService: PimPersonService = new PimPersonService;
 
 
     /**
@@ -380,7 +380,7 @@ export default class PIMPERSONHMDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMPERSON");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimPerson");
     }
 
     /**
@@ -409,7 +409,7 @@ export default class PIMPERSONHMDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PIMPERSON");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PimPerson");
     }
 
     /**
@@ -438,7 +438,7 @@ export default class PIMPERSONHMDGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PIMPERSON");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimPerson");
     }
 
     /**

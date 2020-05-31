@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMXKMLMPickupViewBase from './pcmxkmlmpickup-view-base.vue';
 
-import view_pickupviewpanel from '@widgets/pcmxkml/mpickup-viewpickupviewpanel-pickupviewpanel/mpickup-viewpickupviewpanel-pickupviewpanel.vue';
+import view_pickupviewpanel from '@widgets/pcm-xkml/mpickup-viewpickupviewpanel-pickupviewpanel/mpickup-viewpickupviewpanel-pickupviewpanel.vue';
 
 /**
  * 学科目录数据多项选择视图

@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import TRMLGBCOSTService from '@/service/trmlgbcost/trmlgbcost-service';
+import TrmLgbCostService from '@/service/trm-lgb-cost/trm-lgb-cost-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class TRMLGBCOSTEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {TRMLGBCOSTService}
+     * @type {TrmLgbCostService}
      * @memberof TRMLGBCOSTEditViewBase
      */
-    public appEntityService: TRMLGBCOSTService = new TRMLGBCOSTService;
+    public appEntityService: TrmLgbCostService = new TrmLgbCostService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class TRMLGBCOSTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"TRMLGBCOST");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"TrmLgbCost");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class TRMLGBCOSTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"TRMLGBCOST");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"TrmLgbCost");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class TRMLGBCOSTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"TRMLGBCOST");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"TrmLgbCost");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class TRMLGBCOSTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"TRMLGBCOST");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"TrmLgbCost");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class TRMLGBCOSTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"TRMLGBCOST");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"TrmLgbCost");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class TRMLGBCOSTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"TRMLGBCOST");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"TrmLgbCost");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class TRMLGBCOSTEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"TRMLGBCOST");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"TrmLgbCost");
     }
 
     /**

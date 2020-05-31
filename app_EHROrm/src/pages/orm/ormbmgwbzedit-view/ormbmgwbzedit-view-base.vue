@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import ORMBMGWBZService from '@/service/ormbmgwbz/ormbmgwbz-service';
+import OrmBmgwbzService from '@/service/orm-bmgwbz/orm-bmgwbz-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class ORMBMGWBZEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMBMGWBZService}
+     * @type {OrmBmgwbzService}
      * @memberof ORMBMGWBZEditViewBase
      */
-    public appEntityService: ORMBMGWBZService = new ORMBMGWBZService;
+    public appEntityService: OrmBmgwbzService = new OrmBmgwbzService;
 
 
     /**
@@ -278,7 +278,7 @@ export default class ORMBMGWBZEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ORMBMGWBZ");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"OrmBmgwbz");
     }
 
     /**

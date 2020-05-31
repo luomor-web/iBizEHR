@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import ORMEDITIONService from '@/service/ormedition/ormedition-service';
+import OrmEditionService from '@/service/orm-edition/orm-edition-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class ORMEDITIONRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMEDITIONService}
+     * @type {OrmEditionService}
      * @memberof ORMEDITIONRedirectViewBase
      */
-    public appEntityService: ORMEDITIONService = new ORMEDITIONService;
+    public appEntityService: OrmEditionService = new OrmEditionService;
 
 
     /**

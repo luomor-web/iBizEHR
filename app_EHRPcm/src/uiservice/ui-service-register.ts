@@ -39,39 +39,39 @@ export class UIServiceRegister {
      * @memberof UIServiceRegister
      */
     protected init(): void {
-                this.allUIService.set('pcmworkresume', () => import('@/uiservice/pcmworkresume/pcmworkresume-ui-service'));
-        this.allUIService.set('pcmprofileapproval', () => import('@/uiservice/pcmprofileapproval/pcmprofileapproval-ui-service'));
-        this.allUIService.set('pcmgxml', () => import('@/uiservice/pcmgxml/pcmgxml-ui-service'));
+                this.allUIService.set('pcmworkresume', () => import('@/uiservice/pcm-work-resume/pcm-work-resume-ui-service'));
+        this.allUIService.set('pcmprofileapproval', () => import('@/uiservice/pcm-profile-approval/pcm-profile-approval-ui-service'));
+        this.allUIService.set('pcmgxml', () => import('@/uiservice/pcm-gxml/pcm-gxml-ui-service'));
         this.allUIService.set('ormorg', () => import('@/uiservice/orm-org/orm-org-ui-service'));
-        this.allUIService.set('pcmpracticeexperience', () => import('@/uiservice/pcmpracticeexperience/pcmpracticeexperience-ui-service'));
-        this.allUIService.set('ormduty', () => import('@/uiservice/ormduty/ormduty-ui-service'));
-        this.allUIService.set('pimcity', () => import('@/uiservice/pimcity/pimcity-ui-service'));
-        this.allUIService.set('pcmprofileinitnumber', () => import('@/uiservice/pcmprofileinitnumber/pcmprofileinitnumber-ui-service'));
-        this.allUIService.set('pimstafftype', () => import('@/uiservice/pimstafftype/pimstafftype-ui-service'));
-        this.allUIService.set('pcmprofileszyjtj', () => import('@/uiservice/pcmprofileszyjtj/pcmprofileszyjtj-ui-service'));
-        this.allUIService.set('pcmxkml', () => import('@/uiservice/pcmxkml/pcmxkml-ui-service'));
-        this.allUIService.set('pcmprofileyjtjtemp', () => import('@/uiservice/pcmprofileyjtjtemp/pcmprofileyjtjtemp-ui-service'));
-        this.allUIService.set('pcmprofilespyy', () => import('@/uiservice/pcmprofilespyy/pcmprofilespyy-ui-service'));
-        this.allUIService.set('ormqygl', () => import('@/uiservice/ormqygl/ormqygl-ui-service'));
-        this.allUIService.set('pcmprofilefj', () => import('@/uiservice/pcmprofilefj/pcmprofilefj-ui-service'));
-        this.allUIService.set('pcmzpmeglmx', () => import('@/uiservice/pcmzpmeglmx/pcmzpmeglmx-ui-service'));
+        this.allUIService.set('pcmpracticeexperience', () => import('@/uiservice/pcm-practice-experience/pcm-practice-experience-ui-service'));
+        this.allUIService.set('ormduty', () => import('@/uiservice/orm-duty/orm-duty-ui-service'));
+        this.allUIService.set('pimcity', () => import('@/uiservice/pim-city/pim-city-ui-service'));
+        this.allUIService.set('pcmprofileinitnumber', () => import('@/uiservice/pcm-profile-init-number/pcm-profile-init-number-ui-service'));
+        this.allUIService.set('pimstafftype', () => import('@/uiservice/pim-stafftype/pim-stafftype-ui-service'));
+        this.allUIService.set('pcmprofileszyjtj', () => import('@/uiservice/pcm-profile-szyjtj/pcm-profile-szyjtj-ui-service'));
+        this.allUIService.set('pcmxkml', () => import('@/uiservice/pcm-xkml/pcm-xkml-ui-service'));
+        this.allUIService.set('pcmprofileyjtjtemp', () => import('@/uiservice/pcm-profile-yjtj-temp/pcm-profile-yjtj-temp-ui-service'));
+        this.allUIService.set('pcmprofilespyy', () => import('@/uiservice/pcm-profile-spyy/pcm-profile-spyy-ui-service'));
+        this.allUIService.set('ormqygl', () => import('@/uiservice/orm-qygl/orm-qygl-ui-service'));
+        this.allUIService.set('pcmprofilefj', () => import('@/uiservice/pcm-profile-fj/pcm-profile-fj-ui-service'));
+        this.allUIService.set('pcmzpmeglmx', () => import('@/uiservice/pcm-zpmeglmx/pcm-zpmeglmx-ui-service'));
         this.allUIService.set('codeitem', () => import('@/uiservice/code-item/code-item-ui-service'));
-        this.allUIService.set('pcmprofilenumbeprefix', () => import('@/uiservice/pcmprofilenumbeprefix/pcmprofilenumbeprefix-ui-service'));
-        this.allUIService.set('pcmcertofreg', () => import('@/uiservice/pcmcertofreg/pcmcertofreg-ui-service'));
-        this.allUIService.set('tdzwxx', () => import('@/uiservice/tdzwxx/tdzwxx-ui-service'));
+        this.allUIService.set('pcmprofilenumbeprefix', () => import('@/uiservice/pcm-profile-num-beprefix/pcm-profile-num-beprefix-ui-service'));
+        this.allUIService.set('pcmcertofreg', () => import('@/uiservice/pcm-certofreg/pcm-certofreg-ui-service'));
+        this.allUIService.set('pcmtdzwxx', () => import('@/uiservice/pcm-tdzwxx/pcm-tdzwxx-ui-service'));
         this.allUIService.set('codelist1', () => import('@/uiservice/code-list1/code-list1-ui-service'));
         this.allUIService.set('ormorgsector', () => import('@/uiservice/orm-orgsector/orm-orgsector-ui-service'));
-        this.allUIService.set('pcmschooloffice', () => import('@/uiservice/pcmschooloffice/pcmschooloffice-ui-service'));
-        this.allUIService.set('testresult', () => import('@/uiservice/test-result/test-result-ui-service'));
-        this.allUIService.set('pcmzpmegl', () => import('@/uiservice/pcmzpmegl/pcmzpmegl-ui-service'));
-        this.allUIService.set('pcmprofile', () => import('@/uiservice/pcmprofile/pcmprofile-ui-service'));
-        this.allUIService.set('pcmawardswons', () => import('@/uiservice/pcmawardswons/pcmawardswons-ui-service'));
-        this.allUIService.set('pcmeducationexperience', () => import('@/uiservice/pcmeducation-experience/pcmeducation-experience-ui-service'));
-        this.allUIService.set('ormpost', () => import('@/uiservice/ormpost/ormpost-ui-service'));
-        this.allUIService.set('pimqualmajor', () => import('@/uiservice/pimqualmajor/pimqualmajor-ui-service'));
-        this.allUIService.set('wzd0001', () => import('@/uiservice/wzd0001/wzd0001-ui-service'));
-        this.allUIService.set('pimperson', () => import('@/uiservice/pimperson/pimperson-ui-service'));
-        this.allUIService.set('pcmgxxktemp', () => import('@/uiservice/pcmgxxktemp/pcmgxxktemp-ui-service'));
+        this.allUIService.set('pcmschooloffice', () => import('@/uiservice/pcm-school-office/pcm-school-office-ui-service'));
+        this.allUIService.set('pcmtestresult', () => import('@/uiservice/pcm-test-result/pcm-test-result-ui-service'));
+        this.allUIService.set('pcmzpmegl', () => import('@/uiservice/pcm-zpmegl/pcm-zpmegl-ui-service'));
+        this.allUIService.set('pcmprofile', () => import('@/uiservice/pcm-profile/pcm-profile-ui-service'));
+        this.allUIService.set('pcmawardswons', () => import('@/uiservice/pcm-awards-wons/pcm-awards-wons-ui-service'));
+        this.allUIService.set('pcmeducationexperience', () => import('@/uiservice/pcm-education-experience/pcm-education-experience-ui-service'));
+        this.allUIService.set('ormpost', () => import('@/uiservice/orm-post/orm-post-ui-service'));
+        this.allUIService.set('pimqualmajor', () => import('@/uiservice/pim-qual-major/pim-qual-major-ui-service'));
+        this.allUIService.set('pcmwzd0001', () => import('@/uiservice/pcm-wzd0001/pcm-wzd0001-ui-service'));
+        this.allUIService.set('pimperson', () => import('@/uiservice/pim-person/pim-person-ui-service'));
+        this.allUIService.set('pcmgxxktemp', () => import('@/uiservice/pcmgxxk-temp/pcmgxxk-temp-ui-service'));
     }
 
     /**

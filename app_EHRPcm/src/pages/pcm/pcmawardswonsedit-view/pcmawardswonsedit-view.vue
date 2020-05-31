@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMAWARDSWONSEditViewBase from './pcmawardswonsedit-view-base.vue';
 
-import view_form from '@widgets/pcmawardswons/main-form/main-form.vue';
+import view_form from '@widgets/pcm-awards-wons/main-form/main-form.vue';
 
 /**
  * 获奖情况

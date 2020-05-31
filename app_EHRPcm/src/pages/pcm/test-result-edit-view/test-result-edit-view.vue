@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import TestResultEditViewBase from './test-result-edit-view-base.vue';
 
-import view_form from '@widgets/test-result/main-form/main-form.vue';
+import view_form from '@widgets/pcm-test-result/main-form/main-form.vue';
 
 /**
  * 测评结果摘要信息

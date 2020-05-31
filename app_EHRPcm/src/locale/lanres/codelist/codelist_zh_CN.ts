@@ -1,30 +1,30 @@
 export default {
-    PCMCL_REASON: {
+    EhrCodeList0239: {
         empty: '',
     },
-    PIMCL_XKML: {
+    EhrCodeList0116: {
         empty: '',
     },
-    PCMCL_PASSORREJECT: {
+    EhrCodeList0173: {
         '10': '通过',
         '20': '拒绝',
         empty: '',
     },
-    PIMCL_ZJLX: {
+    EhrCodeList0231: {
         empty: '',
     },
-    PIM_XL2: {
+    EhrCodeList0117: {
         empty: '',
     },
-    ORMCL_PostNature: {
+    EhrCodeList0190: {
         '10': '标准工时制',
         '20': '非标准工时制',
         empty: '',
     },
-    PIMCL_XX: {
+    EhrCodeList0018: {
         empty: '',
     },
-    PIMCL_ND: {
+    EhrCodeList0115: {
         '2012': '2012年',
         '2013': '2013年',
         '2014': '2014年',
@@ -46,7 +46,7 @@ export default {
         '2030': '2030年',
         empty: '',
     },
-    PCMCL_YYDJ: {
+    EhrCodeList0204: {
         '10': 'CET-4',
         '20': 'CET-6',
         '30': '英语专四',
@@ -55,10 +55,10 @@ export default {
         '60': '无',
         empty: '',
     },
-    PCMCL_XKML: {
+    EhrCodeList0093: {
         empty: '',
     },
-    PCMCL_PROFILEType: {
+    EhrCodeList0203: {
         '10': '录入',
         '15': '待公司初审',
         '20': '公司初审不通过',
@@ -79,15 +79,15 @@ export default {
         '90': '失效',
         empty: '',
     },
-    ORMCL_QTBS: {
+    EhrCodeList0086: {
         '1': '启用',
         '0': '停用',
         empty: '',
     },
-    PIMCL_RANK: {
+    EhrCodeList0025: {
         empty: '',
     },
-    PCMCL_HJDJ: {
+    EhrCodeList0152: {
         '80': '学校校级',
         '90': '学校院级',
         '10': '国家级',
@@ -99,29 +99,29 @@ export default {
         '70': '国际国外',
         empty: '',
     },
-    PIMCL_YGLX: {
+    EhrCodeList0167: {
         empty: '',
     },
-    ORMCL_QY: {
+    EhrCodeList0219: {
         empty: '',
     },
-    PIMCL_XXXZ: {
+    EhrCodeList0208: {
         empty: '',
     },
-    ORMCL_ZWLB: {
+    EhrCodeList0120: {
         '10': '局级机关',
         '20': '公司级机关',
         '30': '经理部机关',
         '40': '项目部',
         empty: '',
     },
-    PCMCL_SBLX: {
+    EhrCodeList0096: {
         empty: '',
     },
-    NATIVEPLACE: {
+    EhrCodeList0001: {
         empty: '',
     },
-    PIMCL_ND2: {
+    EhrCodeList0009: {
         '2019': '2019年',
         '2020': '2020年',
         '2021': '2021年',
@@ -136,7 +136,7 @@ export default {
         '2030': '2030年',
         empty: '',
     },
-    PCMCL_YPZGWLB: {
+    EhrCodeList0004: {
         '10': '房屋建筑类',
         '20': '基础设施类',
         '30': '金融投资类',
@@ -144,88 +144,88 @@ export default {
         '50': '职能管理类',
         empty: '',
     },
-    ORMCL_ZW: {
+    EhrCodeList0233: {
         empty: '',
     },
-    PCMCL_YesNo: {
+    EhrCodeList0181: {
         1: '是',
         0: '否',
         empty: '',
     },
-    SysOperator: {
+    EhrCodeList0249: {
         empty: '',
     },
-    ORMCL_GW: {
+    EhrCodeList0050: {
         empty: '',
     },
-    PIMCL_HY: {
+    EhrCodeList0075: {
         empty: '',
     },
-    PIMCL_ZZMM: {
+    EhrCodeList0029: {
         empty: '',
     },
-    ORMCL_LEVELTWOORG: {
+    EhrCodeList0216: {
         empty: '',
     },
-    YesNo: {
+    EhrCodeList0054: {
         1: '是',
         0: '否',
         empty: '',
     },
-    EhrCodeListSsqy: {
+    EhrCodeList0250: {
         empty: '',
     },
-    PIMCL_BMLX: {
+    EhrCodeList0019: {
         '10': '机关部门',
         '20': '项目部门',
         empty: '',
     },
-    PIMCL_XB: {
+    EhrCodeList0072: {
         empty: '',
     },
-    PIMCL_YW: {
+    EhrCodeList0222: {
         '0': '无',
         '1': '有',
         empty: '',
     },
-    PIMCL_SFLJ: {
+    EhrCodeList0097: {
         '1': '是',
         '0': '否',
         empty: '',
     },
-    PIMCL_RZLB: {
+    EhrCodeList0041: {
         empty: '',
     },
-    ORMCL_LegalEntity: {
+    EhrCodeList0022: {
         '10': '法人单位',
         '20': '非法人单位',
         empty: '',
     },
-    PIMCL_XL: {
+    EhrCodeList0131: {
         empty: '',
     },
-    ORMCL_GWTYPE: {
+    EhrCodeList0140: {
         empty: '',
     },
-    PIMCL_NATION: {
+    EhrCodeList0066: {
         empty: '',
     },
-    PCMCL_QTZP: {
+    EhrCodeList0071: {
         '40': '建筑系统调入',
         '60': '军人安置',
         '90': '其他',
         empty: '',
     },
-    PIMCL_HKLX: {
+    EhrCodeList0070: {
         empty: '',
     },
-    PCMCL_PROFILEType_Search: {
+    EhrCodeList0078: {
         '65': '待报到',
         '70': '已报到',
         '80': '逾期未报到',
         empty: '',
     },
-    PCMCL_RLSBPROFILEType: {
+    EhrCodeList0062: {
         '10': '待上报',
         '20': '待局总部审批',
         '30': '局总部审批不通过',

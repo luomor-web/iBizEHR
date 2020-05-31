@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMRESEARCHFINDINGSEditViewBase from './pimresearchfindingsedit-view-base.vue';
 
-import view_form from '@widgets/pimresearchfindings/main-form/main-form.vue';
+import view_form from '@widgets/pim-research-findings/main-form/main-form.vue';
 
 /**
  * 科研成果编辑视图

@@ -2,8 +2,8 @@
 import { Component } from 'vue-property-decorator';
 import PIMDISTIRBUTIONYGFenPeiGridViewBase from './pimdistirbutionygfen-pei-grid-view-base.vue';
 
-import view_grid from '@widgets/pimdistirbution/fpxx-grid/fpxx-grid.vue';
-import view_searchform from '@widgets/pimdistirbution/default-searchform/default-searchform.vue';
+import view_grid from '@widgets/pim-distirbution/fpxx-grid/fpxx-grid.vue';
+import view_searchform from '@widgets/pim-distirbution/default-searchform/default-searchform.vue';
 
 /**
  * 分配信息表格视图

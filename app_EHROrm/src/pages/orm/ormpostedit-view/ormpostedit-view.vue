@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMPOSTEditViewBase from './ormpostedit-view-base.vue';
 
-import view_form from '@widgets/ormpost/gwgl-form/gwgl-form.vue';
+import view_form from '@widgets/orm-post/gwgl-form/gwgl-form.vue';
 
 /**
  * 岗位设置

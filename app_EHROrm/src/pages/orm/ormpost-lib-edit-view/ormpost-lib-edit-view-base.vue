@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import ORMPostLibService from '@/service/ormpost-lib/ormpost-lib-service';
+import OrmPostLibService from '@/service/orm-post-lib/orm-post-lib-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class ORMPostLibEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ORMPostLibService}
+     * @type {OrmPostLibService}
      * @memberof ORMPostLibEditViewBase
      */
-    public appEntityService: ORMPostLibService = new ORMPostLibService;
+    public appEntityService: OrmPostLibService = new OrmPostLibService;
 
 
     /**
@@ -278,7 +278,7 @@ export default class ORMPostLibEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ORMPostLib");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"OrmPostLib");
     }
 
     /**

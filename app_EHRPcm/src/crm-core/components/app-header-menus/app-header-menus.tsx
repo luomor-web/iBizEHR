@@ -86,6 +86,15 @@ export class AppHeaderMenus extends Vue {
     protected searchValue!: string;
 
     /**
+     * input绑定的搜索框值
+     *
+     * @protected
+     * @type {string}
+     * @memberof AppHeaderMenus
+     */
+    protected inputSearchValue: string = this.searchValue;
+
+    /**
      * 搜索框提示内容
      *
      * @protected
@@ -122,6 +131,20 @@ export class AppHeaderMenus extends Vue {
                     this.items.push(val[key]);
                 }
             });
+        }
+    }
+
+    /**
+     * 监控searchValue
+     *
+     * @param {*} val
+     * @param {*} oldVal
+     * @memberof AppHeaderMenus
+     */
+    @Watch('searchValue', { immediate: true })
+    public watchSearchValue(val: any, oldVal: any): void {
+        if(val && val !== this.inputSearchValue){
+          this.inputSearchValue = val;
         }
     }
 
@@ -264,12 +287,8 @@ export class AppHeaderMenus extends Vue {
      * @param {*} val
      * @memberof AppHeaderMenus
      */
-    protected searchValChange(val: any): void {
-        if (val) {
-            this.$emit('change', this.searchValue + val);
-        } else {
-            this.$emit('change', '');
-        }
+    protected searchValChange($event: any): void {
+        this.$emit('change', this.inputSearchValue);
     }
 
     /**
@@ -290,7 +309,7 @@ export class AppHeaderMenus extends Vue {
             searchMenu = <i-button type={this.isModeOne() ? 'text' : 'default'} shape="circle" icon="ios-search" on-click={() => this.activeSearch()} />
         }
         return <div class={"app-view-quick-search " + this.mode}>
-            <i-input v-show={this.isActiveSearch} ref="search" value={this.searchValue} autofocus autocomplete="on" search placeholder={this.searchPlaceholder} on-on-change={(e: any) => this.searchValChange(e.data)} on-on-blur={() => this.searchBlur()} on-on-search={(val: string) => this.search(val)} />
+            <i-input v-show={this.isActiveSearch} ref="search" v-model={this.inputSearchValue} autofocus autocomplete="on" search placeholder={this.searchPlaceholder} on-on-change={(e: any) => this.searchValChange(e)} on-on-blur={() => this.searchBlur()} on-on-search={(val: string) => this.search(val)} />
             {!this.isActiveSearch ? searchMenu : null}
         </div>
     }

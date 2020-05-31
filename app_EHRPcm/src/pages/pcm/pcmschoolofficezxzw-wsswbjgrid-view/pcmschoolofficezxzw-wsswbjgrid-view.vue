@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMSCHOOLOFFICEZXZW_WSSWBJGridViewBase from './pcmschoolofficezxzw-wsswbjgrid-view-base.vue';
 
-import view_grid from '@widgets/pcmschooloffice/main-grid/main-grid.vue';
+import view_grid from '@widgets/pcm-school-office/main-grid/main-grid.vue';
 
 /**
  * 在校职务

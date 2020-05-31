@@ -42,7 +42,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, PickupViewBase } from '@/crm-core';
-import PIMTITLECATALOGUEService from '@/service/pimtitlecatalogue/pimtitlecatalogue-service';
+import PimTitleCatalogueService from '@/service/pim-title-catalogue/pim-title-catalogue-service';
 
 import PickupViewEngine from '@engine/view/pickup-view-engine';
 
@@ -61,10 +61,10 @@ export default class PIMTITLECATALOGUEPickupViewBase extends PickupViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMTITLECATALOGUEService}
+     * @type {PimTitleCatalogueService}
      * @memberof PIMTITLECATALOGUEPickupViewBase
      */
-    public appEntityService: PIMTITLECATALOGUEService = new PIMTITLECATALOGUEService;
+    public appEntityService: PimTitleCatalogueService = new PimTitleCatalogueService;
 
 
     /**

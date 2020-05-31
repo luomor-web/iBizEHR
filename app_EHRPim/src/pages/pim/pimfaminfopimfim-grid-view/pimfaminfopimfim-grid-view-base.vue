@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMFAMINFOService from '@/service/pimfaminfo/pimfaminfo-service';
+import PimFaminfoService from '@/service/pim-faminfo/pim-faminfo-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -90,10 +90,10 @@ export default class PIMFAMINFOPimfimGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMFAMINFOService}
+     * @type {PimFaminfoService}
      * @memberof PIMFAMINFOPimfimGridViewBase
      */
-    public appEntityService: PIMFAMINFOService = new PIMFAMINFOService;
+    public appEntityService: PimFaminfoService = new PimFaminfoService;
 
 
     /**
@@ -385,7 +385,7 @@ export default class PIMFAMINFOPimfimGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.New(datas, contextJO,paramJO,  $event, xData,this,"PIMFAMINFO");
+        this.New(datas, contextJO,paramJO,  $event, xData,this,"PimFaminfo");
     }
 
     /**
@@ -414,7 +414,7 @@ export default class PIMFAMINFOPimfimGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PIMFAMINFO");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PimFaminfo");
     }
 
     /**
@@ -443,7 +443,7 @@ export default class PIMFAMINFOPimfimGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PIMFAMINFO");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"PimFaminfo");
     }
 
     /**
@@ -472,7 +472,7 @@ export default class PIMFAMINFOPimfimGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMFAMINFO");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimFaminfo");
     }
 
     /**

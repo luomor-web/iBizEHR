@@ -69,11 +69,11 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PIMARCHIVESService from '@/service/pimarchives/pimarchives-service';
+import PimArchivesService from '@/service/pim-archives/pim-archives-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
-import PIMARCHIVESUIService from '@/uiservice/pimarchives/pimarchives-ui-service';
+import PimArchivesUIService from '@/uiservice/pim-archives/pim-archives-ui-service';
 import CodeListService from "@service/app/codelist-service";
 
 
@@ -91,10 +91,10 @@ export default class PIMARCHIVESLOYEENOFILEGridViewBase extends GridViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMARCHIVESService}
+     * @type {PimArchivesService}
      * @memberof PIMARCHIVESLOYEENOFILEGridViewBase
      */
-    public appEntityService: PIMARCHIVESService = new PIMARCHIVESService;
+    public appEntityService: PimArchivesService = new PimArchivesService;
 
 
     /**
@@ -379,7 +379,7 @@ export default class PIMARCHIVESLOYEENOFILEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVES");
+        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PimArchives");
     }
 
     /**
@@ -408,7 +408,7 @@ export default class PIMARCHIVESLOYEENOFILEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVES");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimArchives");
     }
 
     /**
@@ -437,7 +437,7 @@ export default class PIMARCHIVESLOYEENOFILEGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PIMARCHIVES");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PimArchives");
     }
 
     /**

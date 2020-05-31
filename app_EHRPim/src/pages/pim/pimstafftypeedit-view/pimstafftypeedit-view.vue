@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMSTAFFTYPEEditViewBase from './pimstafftypeedit-view-base.vue';
 
-import view_form from '@widgets/pimstafftype/main-form/main-form.vue';
+import view_form from '@widgets/pim-stafftype/main-form/main-form.vue';
 
 /**
  * 员工类型编辑视图

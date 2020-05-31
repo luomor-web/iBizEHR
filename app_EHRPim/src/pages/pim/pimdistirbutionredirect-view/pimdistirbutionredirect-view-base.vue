@@ -10,7 +10,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, WizardViewBase } from '@/crm-core';
-import PIMDISTIRBUTIONService from '@/service/pimdistirbution/pimdistirbution-service';
+import PimDistirbutionService from '@/service/pim-distirbution/pim-distirbution-service';
 
 
 import UIService from '@/uiservice/ui-service';
@@ -30,10 +30,10 @@ export default class PIMDISTIRBUTIONRedirectViewBase extends WizardViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PIMDISTIRBUTIONService}
+     * @type {PimDistirbutionService}
      * @memberof PIMDISTIRBUTIONRedirectViewBase
      */
-    public appEntityService: PIMDISTIRBUTIONService = new PIMDISTIRBUTIONService;
+    public appEntityService: PimDistirbutionService = new PimDistirbutionService;
 
 
     /**

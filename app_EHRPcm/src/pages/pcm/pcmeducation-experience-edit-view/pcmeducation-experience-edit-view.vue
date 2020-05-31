@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PCMEducationExperienceEditViewBase from './pcmeducation-experience-edit-view-base.vue';
 
-import view_form from '@widgets/pcmeducation-experience/main-form/main-form.vue';
+import view_form from '@widgets/pcm-education-experience/main-form/main-form.vue';
 
 /**
  * 教育背景

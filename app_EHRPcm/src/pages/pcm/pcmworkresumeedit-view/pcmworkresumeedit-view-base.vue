@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import PCMWORKRESUMEService from '@/service/pcmworkresume/pcmworkresume-service';
+import PcmWorkResumeService from '@/service/pcm-work-resume/pcm-work-resume-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class PCMWORKRESUMEEditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {PCMWORKRESUMEService}
+     * @type {PcmWorkResumeService}
      * @memberof PCMWORKRESUMEEditViewBase
      */
-    public appEntityService: PCMWORKRESUMEService = new PCMWORKRESUMEService;
+    public appEntityService: PcmWorkResumeService = new PcmWorkResumeService;
 
 
     /**
@@ -304,7 +304,7 @@ export default class PCMWORKRESUMEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PCMWORKRESUME");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PcmWorkResume");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class PCMWORKRESUMEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PCMWORKRESUME");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PcmWorkResume");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class PCMWORKRESUMEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PCMWORKRESUME");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmWorkResume");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class PCMWORKRESUMEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PCMWORKRESUME");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmWorkResume");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class PCMWORKRESUMEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PCMWORKRESUME");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PcmWorkResume");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class PCMWORKRESUMEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PCMWORKRESUME");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PcmWorkResume");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class PCMWORKRESUMEEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PCMWORKRESUME");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PcmWorkResume");
     }
 
     /**

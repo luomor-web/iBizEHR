@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PIMEXITANDENTRYYSCGJXJEditViewBase from './pimexitandentryyscgjxjedit-view-base.vue';
 
-import view_form from '@widgets/pimexitandentry/yscgj-form/yscgj-form.vue';
+import view_form from '@widgets/pim-exitandentry/yscgj-form/yscgj-form.vue';
 
 /**
  * 出（国）境基本信息

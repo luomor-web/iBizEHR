@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import ORMTITLEEditViewBase from './ormtitleedit-view-base.vue';
 
-import view_form from '@widgets/ormtitle/main-form/main-form.vue';
+import view_form from '@widgets/orm-title/main-form/main-form.vue';
 
 /**
  * 标准头衔设置

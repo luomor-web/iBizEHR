@@ -47,7 +47,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import ARCHIVESCENTERService from '@/service/archivescenter/archivescenter-service';
+import PimArchivesCenterService from '@/service/pim-archives-center/pim-archives-center-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
@@ -66,10 +66,10 @@ export default class ARCHIVESCENTEREditViewBase extends EditViewBase {
     /**
      * 实体服务对象
      *
-     * @type {ARCHIVESCENTERService}
+     * @type {PimArchivesCenterService}
      * @memberof ARCHIVESCENTEREditViewBase
      */
-    public appEntityService: ARCHIVESCENTERService = new ARCHIVESCENTERService;
+    public appEntityService: PimArchivesCenterService = new PimArchivesCenterService;
 
 
     /**
@@ -134,9 +134,9 @@ export default class ARCHIVESCENTEREditViewBase extends EditViewBase {
      * @memberof ARCHIVESCENTEREditViewBase
      */
     public model: any = {
-        srfCaption: 'entities.archivescenter.views.editview.caption',
-        srfTitle: 'entities.archivescenter.views.editview.title',
-        srfSubTitle: 'entities.archivescenter.views.editview.subtitle',
+        srfCaption: 'entities.pimarchivescenter.views.editview.caption',
+        srfTitle: 'entities.pimarchivescenter.views.editview.title',
+        srfSubTitle: 'entities.pimarchivescenter.views.editview.subtitle',
         dataInfo: ''
     }
 
@@ -202,7 +202,7 @@ export default class ARCHIVESCENTEREditViewBase extends EditViewBase {
             view: this,
             form: this.$refs.form,
             p2k: '0',
-            keyPSDEField: 'archivescenter',
+            keyPSDEField: 'pimarchivescenter',
             majorPSDEField: 'position',
             isLoadDefault: true,
         });
@@ -304,7 +304,7 @@ export default class ARCHIVESCENTEREditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESCENTER");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesCenter");
     }
 
     /**
@@ -333,7 +333,7 @@ export default class ARCHIVESCENTEREditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESCENTER");
+        this.SaveAndNew(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesCenter");
     }
 
     /**
@@ -362,7 +362,7 @@ export default class ARCHIVESCENTEREditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESCENTER");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesCenter");
     }
 
     /**
@@ -391,7 +391,7 @@ export default class ARCHIVESCENTEREditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESCENTER");
+        this.RemoveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesCenter");
     }
 
     /**
@@ -420,7 +420,7 @@ export default class ARCHIVESCENTEREditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESCENTER");
+        this.ViewWFStep(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesCenter");
     }
 
     /**
@@ -449,7 +449,7 @@ export default class ARCHIVESCENTEREditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Print(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESCENTER");
+        this.Print(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesCenter");
     }
 
     /**
@@ -478,7 +478,7 @@ export default class ARCHIVESCENTEREditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Help(datas, contextJO,paramJO,  $event, xData,this,"ARCHIVESCENTER");
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"PimArchivesCenter");
     }
 
     /**
