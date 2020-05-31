@@ -65,7 +65,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
 	textcls: '',
-	appfunctag: '_4',
+	appfunctag: 'Auto4',
 	resourcetag: '',
 },
 		{
@@ -83,7 +83,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/yleiyuangongzhuanzheng.png',
 	textcls: '',
-	appfunctag: '_14',
+	appfunctag: 'Auto16',
 	resourcetag: '',
 },
 		{
@@ -101,7 +101,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/zhijizhiwuguanxi.png',
 	textcls: '',
-	appfunctag: '_6',
+	appfunctag: 'Auto7',
 	resourcetag: '',
 },
 		{
@@ -119,7 +119,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/jcgl/1/hetongguanli.png',
 	textcls: '',
-	appfunctag: '_15',
+	appfunctag: 'Auto17',
 	resourcetag: '',
 },
 		{
@@ -137,7 +137,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/jcgl/1/xinqianhetong.png',
 	textcls: '',
-	appfunctag: '_7',
+	appfunctag: 'Auto8',
 	resourcetag: '',
 },
 	],
@@ -175,7 +175,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/chengshurencaizhaopin.png',
 	textcls: '',
-	appfunctag: '_12',
+	appfunctag: 'Auto14',
 	resourcetag: '',
 },
 		{
@@ -193,7 +193,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
 	textcls: '',
-	appfunctag: '_2',
+	appfunctag: 'Auto1',
 	resourcetag: '',
 },
 		{
@@ -211,7 +211,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/yleiyuangongzhuanzheng.png',
 	textcls: '',
-	appfunctag: '_5',
+	appfunctag: 'Auto6',
 	resourcetag: '',
 },
 		{
@@ -229,7 +229,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/zhijizhiwuguanxi.png',
 	textcls: '',
-	appfunctag: '_10',
+	appfunctag: 'Auto12',
 	resourcetag: '',
 },
 		{
@@ -247,7 +247,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/jcgl/1/hetongguanli.png',
 	textcls: '',
-	appfunctag: '_11',
+	appfunctag: 'Auto13',
 	resourcetag: '',
 },
 		{
@@ -265,7 +265,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/jcgl/1/xinqianhetong.png',
 	textcls: '',
-	appfunctag: '_9',
+	appfunctag: 'Auto11',
 	resourcetag: '',
 },
 	],
@@ -303,7 +303,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
 	textcls: '',
-	appfunctag: '_16',
+	appfunctag: 'Auto18',
 	resourcetag: '',
 },
 		{
@@ -321,7 +321,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/jcgl/1/danganxinxi.png',
 	textcls: '',
-	appfunctag: '_8',
+	appfunctag: 'Auto9',
 	resourcetag: '',
 },
 		{
@@ -339,7 +339,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/jcgl/1/zhichengmuluguanli.png',
 	textcls: '',
-	appfunctag: '_13',
+	appfunctag: 'Auto15',
 	resourcetag: '',
 },
 		{
@@ -357,7 +357,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/kfgl/1/peixunjiluguanli.png',
 	textcls: '',
-	appfunctag: '_3',
+	appfunctag: 'Auto3',
 	resourcetag: '',
 },
 	],
