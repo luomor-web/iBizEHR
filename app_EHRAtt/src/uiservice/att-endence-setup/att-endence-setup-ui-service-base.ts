@@ -79,9 +79,11 @@ export default class AttEndenceSetupUIServiceBase extends UIService {
      * @memberof  AttEndenceSetupUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set(':',{viewname:'kqbypickupview',srfappde:'attendencesetups'});
         this.allViewMap.set(':',{viewname:'curorgkqszgridview',srfappde:'attendencesetups'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'attendencesetups'});
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'attendencesetups'});
+        this.allViewMap.set(':',{viewname:'kqbpickupgridview',srfappde:'attendencesetups'});
         this.allViewMap.set(':',{viewname:'kqszwizardview',srfappde:'attendencesetups'});
         this.allViewMap.set(':',{viewname:'kqsztreeexpview',srfappde:'attendencesetups'});
         this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'attendencesetups'});

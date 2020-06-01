@@ -1188,7 +1188,7 @@
 
 
     <!--输出实体[WZD0001]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-wzd0001-26-38">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-wzd0001-27-38">
         <createTable tableName="T_WZD0001">
                 <column name="PEOPLENUM" remarks="" type="INT">
                 </column>
@@ -1300,7 +1300,7 @@
 
 
     <!--输出实体[VACSYNJCX]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-vacsynjcx-21-41">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-vacsynjcx-22-41">
         <createTable tableName="T_VACSYNJCX">
                 <column name="BZ" remarks="" type="VARCHAR(1000)">
                 </column>
@@ -1678,7 +1678,7 @@
 
 
     <!--输出实体[ATTENDANCEMREPORTMX]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-attendancemreportmx-55-51">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-attendancemreportmx-57-51">
         <createTable tableName="T_ATTENDANCEMREPORTMX">
                 <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
                 </column>
@@ -1944,7 +1944,7 @@
 
 
     <!--输出实体[VACLEAVEMANAGE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-vacleavemanage-39-57">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-vacleavemanage-49-57">
         <createTable tableName="T_VACLEAVEMANAGE">
                 <column name="VACLEAVEMANAGENAME" remarks="" type="VARCHAR(200)">
                 </column>
@@ -2128,7 +2128,7 @@
 
 
     <!--输出实体[PIMPERSON]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pimperson-356-60">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pimperson-358-60">
         <createTable tableName="T_PIMPERSON">
                 <column name="GZZT" remarks="" type="VARCHAR(60)">
                 </column>
@@ -2606,7 +2606,7 @@
 
 
     <!--输出实体[VACLEAVEDETAIL]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-vacleavedetail-41-66">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-vacleavedetail-49-66">
         <createTable tableName="T_VACLEAVEDETAIL">
                 <column name="VACLEAVEDETAILID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_VACLEAVEDETAIL_VACLEAVEDETA"/>
@@ -4164,7 +4164,7 @@
 
 
     <!--输出实体[ATTENDANCEMREPORT]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-attendancemreport-22-103">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-attendancemreport-24-103">
         <createTable tableName="T_ATTENDANCEMREPORT">
                 <column name="UPDATEDATE" remarks="" type="DATETIME">
                 </column>
@@ -4614,7 +4614,7 @@
 
 
     <!--输出实体[ORMORG]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormorg-335-116">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormorg-337-116">
         <createTable tableName="T_SRFORG">
                 <column name="BTQY" remarks="" type="VARCHAR(60)">
                 </column>
@@ -5552,7 +5552,7 @@
 
 
     <!--输出实体[VACLEACETYPE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-vacleacetype-13-138">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-vacleacetype-14-138">
         <createTable tableName="T_VACLEACETYPE">
                 <column name="ENABLE" remarks="" type="INT">
                 </column>
@@ -5856,7 +5856,7 @@
 
 
     <!--输出实体[ATTENDENCETYPE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-attendencetype-12-146">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-attendencetype-13-146">
         <createTable tableName="T_ATTENDENCETYPE">
                 <column name="ATTENDENCETYPEID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_ATTENDENCETYPE_ATTENDENCETY"/>
@@ -6823,7 +6823,7 @@
 
 
     <!--输出实体[ORMBMKQDZ]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormbmkqdz-53-174">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormbmkqdz-55-174">
         <createTable tableName="T_ORMBMKQDZ">
                 <column name="ORMORGDZID" remarks="" type="VARCHAR(200)">
                 </column>
@@ -9823,7 +9823,7 @@
 
 
     <!--输出实体[ATTENDENCESETUP]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-attendencesetup-12-252">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-attendencesetup-14-252">
         <createTable tableName="T_ATTENDENCESETUP">
                 <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
                 </column>
@@ -9881,7 +9881,7 @@
 
 
     <!--输出实体[ATTENDANCERECORD]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-attendancerecord-26-254">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-attendancerecord-27-254">
         <createTable tableName="T_ATTENDANCERECORD">
                 <column name="CREATEDATE" remarks="" type="DATETIME">
                 </column>
@@ -11285,7 +11285,7 @@
 
 
     <!--输出实体[ATTENSUMMARY]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-attensummary-56-288">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-attensummary-57-288">
         <createTable tableName="T_ATTENSUMMARY">
                 <column name="GS" remarks="" type="FLOAT">
                 </column>
@@ -12098,7 +12098,7 @@
     </changeSet>
         <!--输出实体[PCMMSPJXX]外键关系 -->
         <!--输出实体[VACSYNJCX]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-vacsynjcx-21-339">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-vacsynjcx-22-339">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_VACSYNJCX" constraintName="DER1N_VACSYNJCX_PIMPERSON_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[UNITEDPERSON]外键关系 -->
@@ -12162,10 +12162,10 @@
         <!--输出实体[ORMPOSTLIB]外键关系 -->
         <!--输出实体[PIMSEARCHMODAL]外键关系 -->
         <!--输出实体[ATTENDANCEMREPORTMX]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendancemreportmx-55-357">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendancemreportmx-57-357">
        <addForeignKeyConstraint baseColumnNames="ATTENDANCEMREPORTID2" baseTableName="T_ATTENDANCEMREPORTMX" constraintName="DER1N_ATTENDANCEMREPORTMX_ATTE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ATTENDANCEMREPORTID" referencedTableName="T_ATTENDANCEMREPORT" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendancemreportmx-55-358">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendancemreportmx-57-358">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_ATTENDANCEMREPORTMX" constraintName="DER1N_ATTENDANCEMREPORTMX_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[VACHOLIDAYRULES]外键关系 -->
@@ -12192,7 +12192,7 @@
        <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_PARYDGZJH" constraintName="DER1N_PARYDGZJH_ORMORGSECTOR_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
     </changeSet>
         <!--输出实体[VACLEAVEMANAGE]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-vacleavemanage-39-365">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-vacleavemanage-49-365">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_VACLEAVEMANAGE" constraintName="DER1N_VACLEAVEMANAGE_PIMPERSON" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[PIMBYZZJLMX]外键关系 -->
@@ -12210,25 +12210,25 @@
     </changeSet>
         <!--输出实体[SALSOURCE]外键关系 -->
         <!--输出实体[PIMPERSON]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-356-370">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-358-370">
        <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_PIMPERSON" constraintName="DER1N_PIMPERSON_ORMORGSECTOR_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-356-371">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-358-371">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PIMPERSON" constraintName="DER1N_PIMPERSON_ORMORG_ORMORGI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-356-372">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-358-372">
        <addForeignKeyConstraint baseColumnNames="PCMJXSYGZZJLMXID" baseTableName="T_PIMPERSON" constraintName="DER1N_PIMPERSON_PCMJXSYGZZJLMX" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMJXSYGZZJLMXID" referencedTableName="T_PCMJXSYGZZJLMX" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-356-373">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-358-373">
        <addForeignKeyConstraint baseColumnNames="PCMRCXLID" baseTableName="T_PIMPERSON" constraintName="DER1N_PIMPERSON_PCMRCXL_PCMRCX" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMRCXLID" referencedTableName="T_PCMRCXL" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-356-374">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-358-374">
        <addForeignKeyConstraint baseColumnNames="PIMCITYID" baseTableName="T_PIMPERSON" constraintName="DER1N_PIMPERSON_PIMCITY_PIMCIT" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMCITYID" referencedTableName="T_PIMCITY" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-356-375">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-358-375">
        <addForeignKeyConstraint baseColumnNames="PIMMAJORSETYPEID" baseTableName="T_PIMPERSON" constraintName="DER1N_PIMPERSON_PIMMAJORSETYPE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMMAJORSETYPEID" referencedTableName="T_PIMMAJORSETYPE" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-356-376">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-358-376">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID2" baseTableName="T_PIMPERSON" constraintName="DER1N_PIMPERSON_PIMPERSON_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[ORMQYBZWH]外键关系 -->
@@ -12252,7 +12252,7 @@
        <addForeignKeyConstraint baseColumnNames="TRMTRAINAGENCYID" baseTableName="T_TRMINVOICE" constraintName="DER1N_TRMINVOICE_TRMTRAINAGENC" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="TRMTRAINAGENCYID" referencedTableName="T_TRMTRAINAGENCY" validate="true"/>
     </changeSet>
         <!--输出实体[VACLEAVEDETAIL]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-vacleavedetail-41-383">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-vacleavedetail-49-383">
        <addForeignKeyConstraint baseColumnNames="VACLEAVEMANAGEID" baseTableName="T_VACLEAVEDETAIL" constraintName="DER1N_VACLEAVEDETAIL_VACLEAVEM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="VACLEAVEMANAGEID" referencedTableName="T_VACLEAVEMANAGE" validate="true"/>
     </changeSet>
         <!--输出实体[PCMGXXKTEMP]外键关系 -->
@@ -12499,10 +12499,10 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PARJXLHMB" constraintName="DER1N_PARJXLHMB_PIMPERSON_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[ATTENDANCEMREPORT]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendancemreport-22-459">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendancemreport-24-459">
        <addForeignKeyConstraint baseColumnNames="ATTENDENCESETUPID" baseTableName="T_ATTENDANCEMREPORT" constraintName="DER1N_ATTENDANCEMREPORT_ATTEND" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ATTENDENCESETUPID" referencedTableName="T_ATTENDENCESETUP" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendancemreport-22-460">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendancemreport-24-460">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_ATTENDANCEMREPORT" constraintName="DER1N_ATTENDANCEMREPORT_ORMORG" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[PARJZSZPSJG]外键关系 -->
@@ -12554,7 +12554,7 @@
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_SALSTDZX" constraintName="DER1N_SALSTDZX_ORMORG_ORMORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[ORMORG]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorg-335-474">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorg-337-474">
        <addForeignKeyConstraint baseColumnNames="PORGID" baseTableName="T_SRFORG" constraintName="DER1N_ORMORG_ORMORG_PORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[PARPTRYNDLHMBMX]外键关系 -->
@@ -12804,7 +12804,7 @@
     </changeSet>
         <!--输出实体[PCMYDBXMX]外键关系 -->
         <!--输出实体[ORMBMKQDZ]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormbmkqdz-53-541">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormbmkqdz-55-541">
        <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_ORMBMKQDZ" constraintName="DER1N_ORMBMKQDZ_ORMORGSECTOR_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
     </changeSet>
         <!--输出实体[ARCHIVESMANAGE]外键关系 -->
@@ -13206,27 +13206,27 @@
        <addForeignKeyConstraint baseColumnNames="REALPEROSNID" baseTableName="T_ORMXMRYPZXQ" constraintName="DER1N_ORMXMRYPZXQ_PIMPERSON_RE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[ATTENDENCESETUP]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendencesetup-12-654">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendencesetup-14-654">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_ATTENDENCESETUP" constraintName="DER1N_ATTENDENCESETUP_ORMORG_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendencesetup-12-655">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendencesetup-14-655">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_ATTENDENCESETUP" constraintName="DER1N_ATTENDENCESETUP_PIMPERSO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendencesetup-12-656">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendencesetup-14-656">
        <addForeignKeyConstraint baseColumnNames="VACHOLIDAYRULESID" baseTableName="T_ATTENDENCESETUP" constraintName="DER1N_ATTENDENCESETUP_VACHOLID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="VACHOLIDAYRULESID" referencedTableName="T_VACHOLIDAYRULES" validate="true"/>
     </changeSet>
         <!--输出实体[PIMFILEBATVHUPLOAD]外键关系 -->
         <!--输出实体[ATTENDANCERECORD]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendancerecord-26-657">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendancerecord-27-657">
        <addForeignKeyConstraint baseColumnNames="ATTENDANCEMREPORTMXID" baseTableName="T_ATTENDANCERECORD" constraintName="DER1N_ATTENDANCERECORD_ATTENDA" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ATTENDANCEMREPORTMXID" referencedTableName="T_ATTENDANCEMREPORTMX" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendancerecord-26-658">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendancerecord-27-658">
        <addForeignKeyConstraint baseColumnNames="ORMBMKQDZID" baseTableName="T_ATTENDANCERECORD" constraintName="DER1N_ATTENDANCERECORD_ORMBMKQ" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMBMKQDZID" referencedTableName="T_ORMBMKQDZ" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendancerecord-26-659">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendancerecord-27-659">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_ATTENDANCERECORD" constraintName="DER1N_ATTENDANCERECORD_PIMPERS" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendancerecord-26-660">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendancerecord-27-660">
        <addForeignKeyConstraint baseColumnNames="TRMTRAINPLANTERMID" baseTableName="T_ATTENDANCERECORD" constraintName="DER1N_ATTENDANCERECORD_TRMTRAI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="TRMTRAINPLANTERMID" referencedTableName="T_TRMTRAINPLANTERM" validate="true"/>
     </changeSet>
         <!--输出实体[PARJGBMPJBZ]外键关系 -->
@@ -13434,7 +13434,7 @@
        <addForeignKeyConstraint baseColumnNames="TRMTRAINADDRESSID" baseTableName="T_TRMTRAINFACIES" constraintName="DER1N_TRMTRAINFACIES_TRMTRAINA" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="TRMTRAINADDRESSID" referencedTableName="T_TRMTRAINADDRESS" validate="true"/>
     </changeSet>
         <!--输出实体[ATTENSUMMARY]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-attensummary-56-728">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-attensummary-57-728">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_ATTENSUMMARY" constraintName="DER1N_ATTENSUMMARY_PIMPERSON_P" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[ORMSIGNORG]外键关系 -->

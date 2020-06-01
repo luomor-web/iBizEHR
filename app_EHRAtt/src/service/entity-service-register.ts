@@ -39,16 +39,26 @@ export class EntityServiceRegister {
      * @memberof EntityServiceRegister
      */
     protected init(): void {
-                this.allEntityService.set('vacleavetips', () => import('@/service/vac-leave-tips/vac-leave-tips-service'));
+                this.allEntityService.set('attendencetype', () => import('@/service/att-endence-type/att-endence-type-service'));
+        this.allEntityService.set('vacleavedetail', () => import('@/service/vac-leave-detail/vac-leave-detail-service'));
+        this.allEntityService.set('vacleavetips', () => import('@/service/vac-leave-tips/vac-leave-tips-service'));
         this.allEntityService.set('ormorg', () => import('@/service/orm-org/orm-org-service'));
+        this.allEntityService.set('attendancemreport', () => import('@/service/att-endance-mreport/att-endance-mreport-service'));
         this.allEntityService.set('pimperson', () => import('@/service/pim-person/pim-person-service'));
         this.allEntityService.set('vacholidayrules', () => import('@/service/vac-holiday-rules/vac-holiday-rules-service'));
         this.allEntityService.set('attendenceormorgscetor', () => import('@/service/att-endence-ormorgscetor/att-endence-ormorgscetor-service'));
+        this.allEntityService.set('attensummary', () => import('@/service/att-ensummary/att-ensummary-service'));
+        this.allEntityService.set('vacsynjcx', () => import('@/service/vac-synjcx/vac-synjcx-service'));
         this.allEntityService.set('ormorgsector', () => import('@/service/orm-orgsector/orm-orgsector-service'));
         this.allEntityService.set('vacholiday', () => import('@/service/vac-holiday/vac-holiday-service'));
         this.allEntityService.set('attendencesetup', () => import('@/service/att-endence-setup/att-endence-setup-service'));
         this.allEntityService.set('attendancesettings', () => import('@/service/att-endance-settings/att-endance-settings-service'));
         this.allEntityService.set('ormbmkqdz', () => import('@/service/orm-bmkqdz/orm-bmkqdz-service'));
+        this.allEntityService.set('attendancemreportmx', () => import('@/service/att-endance-mreportmx/att-endance-mreportmx-service'));
+        this.allEntityService.set('vacleacetype', () => import('@/service/vac-leace-type/vac-leace-type-service'));
+        this.allEntityService.set('vacleavemanage', () => import('@/service/vac-leave-manage/vac-leave-manage-service'));
+        this.allEntityService.set('attendancerecord', () => import('@/service/att-endance-record/att-endance-record-service'));
+        this.allEntityService.set('pcmwzd0001', () => import('@/service/pcm-wzd0001/pcm-wzd0001-service'));
     }
 
     /**

@@ -22,6 +22,10 @@ export default {
     vacholidayrulesid: '考勤规则标识',
   },
 	views: {
+		kqbypickupview: {
+			caption: "考勤设置",
+      title: '考勤设置',
+		},
 		curorgkqszgridview: {
 			caption: "考勤设置",
       title: '考勤设置',
@@ -31,6 +35,10 @@ export default {
       title: '考勤设置',
 		},
 		pickupgridview: {
+			caption: "考勤设置",
+      title: '考勤设置',
+		},
+		kqbpickupgridview: {
 			caption: "考勤设置",
       title: '考勤设置',
 		},

@@ -17,6 +17,10 @@ export default {
     attendancerange: '考勤范围',
   },
 	views: {
+		pickupview: {
+			caption: "部门地址维护",
+      title: '部门地址维护',
+		},
 		bmkqdzeditview: {
 			caption: "部门考勤地址",
       title: '部门考勤地址',
@@ -24,6 +28,10 @@ export default {
 		bmkqdzgridview: {
 			caption: "考勤地址信息",
       title: '考勤地址信息',
+		},
+		pickupgridview: {
+			caption: "部门地址维护",
+      title: '部门地址维护',
 		},
 	},
 	main_2_form: {
@@ -53,6 +61,16 @@ export default {
 			attendancerange: "考勤范围",
 			updateman: "更新人",
 			updatedate: "更新时间",
+		},
+		uiactions: {
+		},
+	},
+	main_grid: {
+		columns: {
+			ormbmkqdzname: "部门地址",
+			sfmrkqdz: "默认考勤地址",
+			createman: "建立人",
+			createdate: "建立时间",
 		},
 		uiactions: {
 		},

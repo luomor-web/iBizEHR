@@ -8,14 +8,6 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
     let status = MockAdapter.mockStatus(config);
     return [status, [
         {
-        "srfkey": "EhrCodeList0233",
-        "emptytext": "",
-        "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
-        "items": []
-    },
-    {
         srfkey: 'EhrCodeList0052',
         emptytext: '未定义',
         "codelisttype":"static",
@@ -53,73 +45,14 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "EhrCodeList0249",
-        "emptytext": "未定义",
-        "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
-        "items": []
-    },
-    {
-        "srfkey": "EhrCodeList0050",
-        "emptytext": "",
-        "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
-        "items": []
-    },
-    {
-        "srfkey": "EhrCodeList0013",
-        "emptytext": "未定义",
-        "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
-        "items": []
-    },
-    {
-        srfkey: 'EhrCodeList0054',
-        emptytext: '未定义',
-        "codelisttype":"static",
-        items: [
-            {
-                id: '1',
-                label: '是',
-                text: '是',
-                "data":"",
-                "codename":"Item_1",
-                value: 1,
-                
-                disabled: false,
-            },
-            {
-                id: '0',
-                label: '否',
-                text: '否',
-                "data":"",
-                "codename":"Item_0",
-                value: 0,
-                
-                disabled: false,
-            },
-        ]
-    },
-    {
-        "srfkey": "EhrCodeList0250",
-        "emptytext": "",
-        "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
-        "items": []
-    },
-    {
-        srfkey: 'EhrCodeList0019',
+        srfkey: 'EhrCodeList0110',
         emptytext: '未定义',
         "codelisttype":"static",
         items: [
             {
                 id: '10',
-                label: '机关部门',
-                text: '机关部门',
+                label: '上午',
+                text: '上午',
                 "data":"",
                 "codename":"Item_10",
                 value: '10',
@@ -128,8 +61,8 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
             },
             {
                 id: '20',
-                label: '项目部门',
-                text: '项目部门',
+                label: '下午',
+                text: '下午',
                 "data":"",
                 "codename":"Item_20",
                 value: '20',
@@ -194,14 +127,6 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 disabled: false,
             },
         ]
-    },
-    {
-        "srfkey": "EhrCodeList0072",
-        "emptytext": "",
-        "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
-        "items": []
     },
     {
         srfkey: 'EhrCodeList0115',
@@ -401,58 +326,12 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        srfkey: 'EhrCodeList0022',
-        emptytext: '',
-        "codelisttype":"static",
-        items: [
-            {
-                id: '10',
-                label: '法人单位',
-                text: '法人单位',
-                "data":"",
-                "codename":"Item_10",
-                value: '10',
-                
-                disabled: false,
-            },
-            {
-                id: '20',
-                label: '非法人单位',
-                text: '非法人单位',
-                "data":"",
-                "codename":"Item_20",
-                value: '20',
-                
-                disabled: false,
-            },
-        ]
-    },
-    {
-        srfkey: 'EhrCodeList0123',
-        emptytext: '未定义',
-        "codelisttype":"static",
-        items: [
-            {
-                id: '10',
-                label: '可调配',
-                text: '可调配',
-                "data":"",
-                "codename":"Item_10",
-                value: '10',
-                
-                disabled: false,
-            },
-            {
-                id: '20',
-                label: '不可调配',
-                text: '不可调配',
-                "data":"",
-                "codename":"Item_20",
-                value: '20',
-                
-                disabled: false,
-            },
-        ]
+        "srfkey": "EhrCodeList0098",
+        "emptytext": "未定义",
+        "codelisttype":"dynamic",
+        "appdataentity":"AttEndenceType",
+        "appdedataset":"FetchDefault",
+        "items": []
     },
     {
         srfkey: 'EhrCodeList0086',
@@ -524,12 +403,431 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
+        srfkey: 'CodeList82',
+        emptytext: '',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '01',
+                label: '1月',
+                text: '1月',
+                "data":"",
+                "codename":"Item_01",
+                value: '01',
+                
+                disabled: false,
+            },
+            {
+                id: '02',
+                label: '2月',
+                text: '2月',
+                "data":"",
+                "codename":"Item_02",
+                value: '02',
+                
+                disabled: false,
+            },
+            {
+                id: '03',
+                label: '3月',
+                text: '3月',
+                "data":"",
+                "codename":"Item_03",
+                value: '03',
+                
+                disabled: false,
+            },
+            {
+                id: '04',
+                label: '4月',
+                text: '4月',
+                "data":"",
+                "codename":"Item_04",
+                value: '04',
+                
+                disabled: false,
+            },
+            {
+                id: '05',
+                label: '5月',
+                text: '5月',
+                "data":"",
+                "codename":"Item_05",
+                value: '05',
+                
+                disabled: false,
+            },
+            {
+                id: '06',
+                label: '6月',
+                text: '6月',
+                "data":"",
+                "codename":"Item_06",
+                value: '06',
+                
+                disabled: false,
+            },
+            {
+                id: '07',
+                label: '7月',
+                text: '7月',
+                "data":"",
+                "codename":"Item_07",
+                value: '07',
+                
+                disabled: false,
+            },
+            {
+                id: '08',
+                label: '8月',
+                text: '8月',
+                "data":"",
+                "codename":"Item_08",
+                value: '08',
+                
+                disabled: false,
+            },
+            {
+                id: '09',
+                label: '9月',
+                text: '9月',
+                "data":"",
+                "codename":"Item_09",
+                value: '09',
+                
+                disabled: false,
+            },
+            {
+                id: '10',
+                label: '10月',
+                text: '10月',
+                "data":"",
+                "codename":"Item_10",
+                value: '10',
+                
+                disabled: false,
+            },
+            {
+                id: '11',
+                label: '11月',
+                text: '11月',
+                "data":"",
+                "codename":"Item_11",
+                value: '11',
+                
+                disabled: false,
+            },
+            {
+                id: '12',
+                label: '12月',
+                text: '12月',
+                "data":"",
+                "codename":"Item_12",
+                value: '12',
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
         "srfkey": "EhrCodeList0219",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"",
         "appdedataset":"",
         "items": []
+    },
+    {
+        "srfkey": "EhrCodeList0233",
+        "emptytext": "",
+        "codelisttype":"dynamic",
+        "appdataentity":"",
+        "appdedataset":"",
+        "items": []
+    },
+    {
+        "srfkey": "EhrCodeList0249",
+        "emptytext": "未定义",
+        "codelisttype":"dynamic",
+        "appdataentity":"",
+        "appdedataset":"",
+        "items": []
+    },
+    {
+        "srfkey": "EhrCodeList0050",
+        "emptytext": "",
+        "codelisttype":"dynamic",
+        "appdataentity":"",
+        "appdedataset":"",
+        "items": []
+    },
+    {
+        "srfkey": "EhrCodeList0075",
+        "emptytext": "",
+        "codelisttype":"dynamic",
+        "appdataentity":"",
+        "appdedataset":"",
+        "items": []
+    },
+    {
+        srfkey: 'EhrCodeList0134',
+        emptytext: '',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '10',
+                label: '拟稿',
+                text: '拟稿',
+                "data":"",
+                "codename":"Item_10",
+                value: '10',
+                
+                disabled: false,
+            },
+            {
+                id: '20',
+                label: '审批中',
+                text: '审批中',
+                "data":"",
+                "codename":"Item_20",
+                "color": "Blue",
+                value: '20',
+                
+                disabled: false,
+            },
+            {
+                id: '25',
+                label: '待销假',
+                text: '待销假',
+                "data":"",
+                "codename":"Item_25",
+                "color": "Blue",
+                value: '25',
+                
+                disabled: false,
+            },
+            {
+                id: '30',
+                label: '已通过',
+                text: '已通过',
+                "data":"",
+                "codename":"Item_30",
+                "color": "Green",
+                value: '30',
+                
+                disabled: false,
+            },
+            {
+                id: '40',
+                label: '已驳回',
+                text: '已驳回',
+                "data":"",
+                "codename":"Item_40",
+                "color": "Red",
+                value: '40',
+                
+                disabled: false,
+            },
+            {
+                id: '50',
+                label: '已取消',
+                text: '已取消',
+                "data":"",
+                "codename":"Item_50",
+                "color": "Red",
+                value: '50',
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
+        "srfkey": "EhrCodeList0013",
+        "emptytext": "未定义",
+        "codelisttype":"dynamic",
+        "appdataentity":"VacLeaceType",
+        "appdedataset":"FetchDefault",
+        "items": []
+    },
+    {
+        srfkey: 'EhrCodeList0054',
+        emptytext: '未定义',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '1',
+                label: '是',
+                text: '是',
+                "data":"",
+                "codename":"Item_1",
+                value: 1,
+                
+                disabled: false,
+            },
+            {
+                id: '0',
+                label: '否',
+                text: '否',
+                "data":"",
+                "codename":"Item_0",
+                value: 0,
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
+        "srfkey": "EhrCodeList0250",
+        "emptytext": "",
+        "codelisttype":"dynamic",
+        "appdataentity":"",
+        "appdedataset":"",
+        "items": []
+    },
+    {
+        srfkey: 'EhrCodeList0019',
+        emptytext: '未定义',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '10',
+                label: '机关部门',
+                text: '机关部门',
+                "data":"",
+                "codename":"Item_10",
+                value: '10',
+                
+                disabled: false,
+            },
+            {
+                id: '20',
+                label: '项目部门',
+                text: '项目部门',
+                "data":"",
+                "codename":"Item_20",
+                value: '20',
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
+        "srfkey": "EhrCodeList0072",
+        "emptytext": "",
+        "codelisttype":"dynamic",
+        "appdataentity":"",
+        "appdedataset":"",
+        "items": []
+    },
+    {
+        srfkey: 'EhrCodeList0245',
+        emptytext: '',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '10',
+                label: '探父母',
+                text: '探父母',
+                "data":"",
+                "codename":"Item_10",
+                value: '10',
+                
+                disabled: false,
+            },
+            {
+                id: '20',
+                label: '探配偶',
+                text: '探配偶',
+                "data":"",
+                "codename":"Item_20",
+                value: '20',
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
+        srfkey: 'EhrCodeList0097',
+        emptytext: '',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '1',
+                label: '是',
+                text: '是',
+                "data":"",
+                "codename":"Item_1",
+                "color": "Blue",
+                value: '1',
+                
+                disabled: false,
+            },
+            {
+                id: '0',
+                label: '否',
+                text: '否',
+                "data":"",
+                "codename":"Item_0",
+                "color": "Red",
+                value: '0',
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
+        srfkey: 'EhrCodeList0022',
+        emptytext: '',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '10',
+                label: '法人单位',
+                text: '法人单位',
+                "data":"",
+                "codename":"Item_10",
+                value: '10',
+                
+                disabled: false,
+            },
+            {
+                id: '20',
+                label: '非法人单位',
+                text: '非法人单位',
+                "data":"",
+                "codename":"Item_20",
+                value: '20',
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
+        srfkey: 'EhrCodeList0123',
+        emptytext: '未定义',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '10',
+                label: '可调配',
+                text: '可调配',
+                "data":"",
+                "codename":"Item_10",
+                value: '10',
+                
+                disabled: false,
+            },
+            {
+                id: '20',
+                label: '不可调配',
+                text: '不可调配',
+                "data":"",
+                "codename":"Item_20",
+                value: '20',
+                
+                disabled: false,
+            },
+        ]
     },
     {
         srfkey: 'EhrCodeList0179',
@@ -565,6 +863,46 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "appdataentity":"",
         "appdedataset":"",
         "items": []
+    },
+    {
+        srfkey: 'EhrCodeList0100',
+        emptytext: '未定义',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '5',
+                label: '待生成',
+                text: '待生成',
+                "data":"",
+                "codename":"Item_5",
+                "color": "Orange",
+                value: '5',
+                
+                disabled: false,
+            },
+            {
+                id: '10',
+                label: '待确认',
+                text: '待确认',
+                "data":"",
+                "codename":"Item_10",
+                "color": "Red",
+                value: '10',
+                
+                disabled: false,
+            },
+            {
+                id: '20',
+                label: '已确认',
+                text: '已确认',
+                "data":"",
+                "codename":"Item_20",
+                "color": "Green",
+                value: '20',
+                
+                disabled: false,
+            },
+        ]
     }
     ]];
 });

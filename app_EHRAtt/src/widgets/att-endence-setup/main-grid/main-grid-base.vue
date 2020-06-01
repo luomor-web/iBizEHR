@@ -731,7 +731,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public load(opt: any = {}, pageReset: boolean = false): void {
         if(!this.fetchAction){
-            this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupPickupGridView视图表格fetchAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupKQBPickupGridView视图表格fetchAction参数未配置' });
             return;
         }
         if(pageReset){
@@ -808,7 +808,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public async remove(datas: any[]): Promise<any> {
         if(!this.removeAction){
-            this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupPickupGridView视图表格removeAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupKQBPickupGridView视图表格removeAction参数未配置' });
             return;
         }
         let _datas:any[] = [];
@@ -914,7 +914,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public addBatch(arg: any = {}): void {
         if(!this.fetchAction){
-            this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupPickupGridView视图表格fetchAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupKQBPickupGridView视图表格fetchAction参数未配置' });
             return;
         }
         if(!arg){
@@ -1473,7 +1473,7 @@ export default class MainBase extends Vue implements ControlInterface {
             try {
                 if(Object.is(item.rowDataState, 'create')){
                     if(!this.createAction){
-                        this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupPickupGridView视图表格createAction参数未配置' });
+                        this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupKQBPickupGridView视图表格createAction参数未配置' });
                     }else{
                       Object.assign(item,{viewparams:this.viewparams});
                       let response = await this.service.add(this.createAction, JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator);
@@ -1481,7 +1481,7 @@ export default class MainBase extends Vue implements ControlInterface {
                     }
                 }else if(Object.is(item.rowDataState, 'update')){
                     if(!this.updateAction){
-                        this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupPickupGridView视图表格updateAction参数未配置' });
+                        this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupKQBPickupGridView视图表格updateAction参数未配置' });
                     }else{
                         Object.assign(item,{viewparams:this.viewparams});
                         if(item.attendencesetup){

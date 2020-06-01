@@ -26,9 +26,17 @@ export default {
 			caption: "考勤人员",
       title: '考勤人员',
 		},
+		fygzzkqgridview: {
+			caption: "非员工终止考勤",
+      title: '非员工终止考勤',
+		},
 		gridview: {
 			caption: "考勤人员",
       title: '考勤人员',
+		},
+		ygszkqgridview: {
+			caption: "员工设置考勤",
+      title: '员工设置考勤',
 		},
 	},
 	main_form: {
@@ -53,6 +61,31 @@ export default {
 			pimpersonname: "员工姓名",
 			ormorgsectorname: "部门",
 			dkfs: "打卡方式",
+		},
+		uiactions: {
+		},
+	},
+	fygzzkq_grid: {
+		columns: {
+			ygbh: "员工编号",
+			pimpersonname: "员工姓名",
+			zzdzs: "人员组织简称",
+			ormorgsectorname: "部门",
+			ygzt: "员工状态",
+			attendencesetupname: "所属考勤表",
+			ormorgname2: "考勤表组织简称",
+			dkfs: "打卡方式",
+		},
+		uiactions: {
+		},
+	},
+	ygszkq_grid: {
+		columns: {
+			ygbh: "员工编号",
+			pimpersonname: "员工姓名",
+			zzdzs: "人员组织简称",
+			ormorgsectorname: "部门",
+			ygzt: "员工状态",
 		},
 		uiactions: {
 		},
@@ -112,6 +145,38 @@ export default {
 			tip: "开启行编辑",
 		},
 		deuiaction1: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	fygzzkqgridviewtoolbar_toolbar: {
+		tbitem8: {
+			caption: "Remove",
+			tip: "Remove {0}",
+		},
+		tbitem13: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
+		tbitem19: {
+			caption: "Filter",
+			tip: "Filter",
+		},
+		tbitem18: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	ygszkqgridviewtoolbar_toolbar: {
+		tbitem1_addtokqz: {
+			caption: "添加到考勤组",
+			tip: "添加到考勤组",
+		},
+		deuiaction1: {
+			caption: "Filter",
+			tip: "Filter",
+		},
+		tbitem18: {
 			caption: "Help",
 			tip: "Help",
 		},

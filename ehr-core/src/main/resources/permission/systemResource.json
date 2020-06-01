@@ -2844,7 +2844,7 @@
             {
                "appid":"EHRAtt",
                "appname":"EHRATT（假勤管理）",
-               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"考勤管理" , "items":[{ "id":"menuitem2" , "name":"考勤规则" },{ "id":"menuitem3" , "name":"考勤设置" },{ "id":"menuitem4" , "name":"考勤记录" },{ "id":"menuitem5" , "name":"考勤月报" },{ "id":"menuitem6" , "name":"考勤汇总" },{ "id":"menuitem7" , "name":"员工设置考勤" },{ "id":"menuitem8" , "name":"非员工终止考勤" }]},{ "id":"menuitem9" , "name":"休假管理" , "items":[{ "id":"menuitem11" , "name":"请假管理" },{ "id":"menuitem12" , "name":"年休假查询" }]},{ "id":"menuitem10" , "name":"标准化数据设置" , "items":[{ "id":"menuitem13" , "name":"休假类型" },{ "id":"menuitem14" , "name":"考勤类型" }]}] }]
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"考勤管理" , "items":[{ "id":"menuitem2" , "name":"考勤规则" },{ "id":"menuitem3" , "name":"考勤设置" },{ "id":"menuitem4" , "name":"考勤记录" },{ "id":"menuitem5" , "name":"考勤月报" },{ "id":"menuitem6" , "name":"考勤汇总" },{ "id":"menuitem7" , "name":"员工考勤设置" },{ "id":"menuitem8" , "name":"非员工终止考勤" }]},{ "id":"menuitem9" , "name":"休假管理" , "items":[{ "id":"menuitem11" , "name":"请假管理" },{ "id":"menuitem12" , "name":"年休假查询" }]},{ "id":"menuitem10" , "name":"标准化数据设置" , "items":[{ "id":"menuitem13" , "name":"休假类型" },{ "id":"menuitem14" , "name":"考勤类型" }]}] }]
             }
             ,
             {

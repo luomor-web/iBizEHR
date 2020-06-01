@@ -7,13 +7,23 @@ import './login/login';
 import './upload/upload';
 
 // 实体级接口对象
+import './entity/att-endence-types/att-endence-types';
+import './entity/vac-leave-details/vac-leave-details';
 import './entity/vac-leave-tipss/vac-leave-tipss';
 import './entity/orm-orgs/orm-orgs';
+import './entity/att-endance-mreports/att-endance-mreports';
 import './entity/pim-persons/pim-persons';
 import './entity/vac-holiday-ruless/vac-holiday-ruless';
 import './entity/att-endence-ormorgscetors/att-endence-ormorgscetors';
+import './entity/att-ensummarys/att-ensummarys';
+import './entity/vac-synjcxs/vac-synjcxs';
 import './entity/orm-orgsectors/orm-orgsectors';
 import './entity/vac-holidays/vac-holidays';
 import './entity/att-endence-setups/att-endence-setups';
 import './entity/att-endance-settingss/att-endance-settingss';
 import './entity/orm-bmkqdzs/orm-bmkqdzs';
+import './entity/att-endance-mreportmxs/att-endance-mreportmxs';
+import './entity/vac-leace-types/vac-leace-types';
+import './entity/vac-leave-manages/vac-leave-manages';
+import './entity/att-endance-records/att-endance-records';
+import './entity/pcm-wzd0001s/pcm-wzd0001s';

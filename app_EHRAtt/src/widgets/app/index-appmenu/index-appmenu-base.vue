@@ -65,8 +65,35 @@ export default class IndexBase extends AppMenusCtrlBase {
                 case '_3': 
                     this.click_3(item);
                     return;
+                case '_11': 
+                    this.click_11(item);
+                    return;
+                case '_7': 
+                    this.click_7(item);
+                    return;
+                case '_12': 
+                    this.click_12(item);
+                    return;
                 case '_2': 
                     this.click_2(item);
+                    return;
+                case '_4': 
+                    this.click_4(item);
+                    return;
+                case '_8': 
+                    this.click_8(item);
+                    return;
+                case '_9': 
+                    this.click_9(item);
+                    return;
+                case '_10': 
+                    this.click_10(item);
+                    return;
+                case '_5': 
+                    this.click_5(item);
+                    return;
+                case '_6': 
+                    this.click_6(item);
                     return;
                 default:
                     console.warn('未指定应用功能');
@@ -75,12 +102,66 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
-     * 考勤设置
+     * 员工设置考勤
      *
      * @param {*} [item={}]
      * @memberof Index
      */
     public click_3(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'attendancesettings', parameterName: 'attendancesettings' },
+            { pathName: 'ygszkqgridview', parameterName: 'ygszkqgridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 请假管理
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_11(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
+            { pathName: 'gridview', parameterName: 'gridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 年休假查询
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_7(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'vacsynjcxes', parameterName: 'vacsynjcx' },
+            { pathName: 'gridview', parameterName: 'gridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 考勤设置
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_12(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -93,7 +174,7 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
-     * 考勤规则
+     * 休假类型
      *
      * @param {*} [item={}]
      * @memberof Index
@@ -103,8 +184,116 @@ export default class IndexBase extends AppMenusCtrlBase {
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
         const parameters: any[] = [
+            { pathName: 'vacleacetypes', parameterName: 'vacleacetype' },
+            { pathName: 'gridview', parameterName: 'gridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 考勤月报
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_4(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'attendancemreports', parameterName: 'attendancemreport' },
+            { pathName: 'kqybtreeexpview', parameterName: 'kqybtreeexpview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 非员工终止考勤
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_8(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'attendancesettings', parameterName: 'attendancesettings' },
+            { pathName: 'fygzzkqgridview', parameterName: 'fygzzkqgridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 考勤规则
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_9(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
             { pathName: 'vacholidayrules', parameterName: 'vacholidayrules' },
             { pathName: 'gridview', parameterName: 'gridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 考勤类型
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_10(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'attendencetypes', parameterName: 'attendencetype' },
+            { pathName: 'gridview', parameterName: 'gridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 考勤记录
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_5(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'attendancerecords', parameterName: 'attendancerecord' },
+            { pathName: 'gridview', parameterName: 'gridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 考勤汇总
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_6(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'attensummaries', parameterName: 'attensummary' },
+            { pathName: 'kqhztreeexpview', parameterName: 'kqhztreeexpview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
         this.$router.push(path);

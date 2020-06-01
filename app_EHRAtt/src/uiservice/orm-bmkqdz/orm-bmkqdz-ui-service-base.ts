@@ -79,8 +79,10 @@ export default class OrmBmkqdzUIServiceBase extends UIService {
      * @memberof  OrmBmkqdzUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'ormbmkqdzs'});
         this.allViewMap.set(':',{viewname:'bmkqdzeditview',srfappde:'ormbmkqdzs'});
         this.allViewMap.set(':',{viewname:'bmkqdzgridview',srfappde:'ormbmkqdzs'});
+        this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'ormbmkqdzs'});
     }
 
     /**

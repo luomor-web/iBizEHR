@@ -39,16 +39,26 @@ export class UIServiceRegister {
      * @memberof UIServiceRegister
      */
     protected init(): void {
-                this.allUIService.set('vacleavetips', () => import('@/uiservice/vac-leave-tips/vac-leave-tips-ui-service'));
+                this.allUIService.set('attendencetype', () => import('@/uiservice/att-endence-type/att-endence-type-ui-service'));
+        this.allUIService.set('vacleavedetail', () => import('@/uiservice/vac-leave-detail/vac-leave-detail-ui-service'));
+        this.allUIService.set('vacleavetips', () => import('@/uiservice/vac-leave-tips/vac-leave-tips-ui-service'));
         this.allUIService.set('ormorg', () => import('@/uiservice/orm-org/orm-org-ui-service'));
+        this.allUIService.set('attendancemreport', () => import('@/uiservice/att-endance-mreport/att-endance-mreport-ui-service'));
         this.allUIService.set('pimperson', () => import('@/uiservice/pim-person/pim-person-ui-service'));
         this.allUIService.set('vacholidayrules', () => import('@/uiservice/vac-holiday-rules/vac-holiday-rules-ui-service'));
         this.allUIService.set('attendenceormorgscetor', () => import('@/uiservice/att-endence-ormorgscetor/att-endence-ormorgscetor-ui-service'));
+        this.allUIService.set('attensummary', () => import('@/uiservice/att-ensummary/att-ensummary-ui-service'));
+        this.allUIService.set('vacsynjcx', () => import('@/uiservice/vac-synjcx/vac-synjcx-ui-service'));
         this.allUIService.set('ormorgsector', () => import('@/uiservice/orm-orgsector/orm-orgsector-ui-service'));
         this.allUIService.set('vacholiday', () => import('@/uiservice/vac-holiday/vac-holiday-ui-service'));
         this.allUIService.set('attendencesetup', () => import('@/uiservice/att-endence-setup/att-endence-setup-ui-service'));
         this.allUIService.set('attendancesettings', () => import('@/uiservice/att-endance-settings/att-endance-settings-ui-service'));
         this.allUIService.set('ormbmkqdz', () => import('@/uiservice/orm-bmkqdz/orm-bmkqdz-ui-service'));
+        this.allUIService.set('attendancemreportmx', () => import('@/uiservice/att-endance-mreportmx/att-endance-mreportmx-ui-service'));
+        this.allUIService.set('vacleacetype', () => import('@/uiservice/vac-leace-type/vac-leace-type-ui-service'));
+        this.allUIService.set('vacleavemanage', () => import('@/uiservice/vac-leave-manage/vac-leave-manage-ui-service'));
+        this.allUIService.set('attendancerecord', () => import('@/uiservice/att-endance-record/att-endance-record-ui-service'));
+        this.allUIService.set('pcmwzd0001', () => import('@/uiservice/pcm-wzd0001/pcm-wzd0001-ui-service'));
     }
 
     /**

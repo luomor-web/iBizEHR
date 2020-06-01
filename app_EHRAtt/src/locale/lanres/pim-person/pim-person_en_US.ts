@@ -164,6 +164,14 @@ export default {
 			caption: "人员信息",
       title: '人员信息',
 		},
+		kqjrypickupview: {
+			caption: "人员信息",
+      title: '人员信息',
+		},
+		kqjrypickupgridview: {
+			caption: "人员信息",
+      title: '人员信息',
+		},
 	},
 	ryinfogrid_grid: {
 		columns: {

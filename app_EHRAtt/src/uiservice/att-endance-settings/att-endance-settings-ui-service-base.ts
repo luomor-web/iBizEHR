@@ -80,7 +80,9 @@ export default class AttEndanceSettingsUIServiceBase extends UIService {
      */  
     public initViewMap(){
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'attendancesettings'});
+        this.allViewMap.set(':',{viewname:'fygzzkqgridview',srfappde:'attendancesettings'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'attendancesettings'});
+        this.allViewMap.set(':',{viewname:'ygszkqgridview',srfappde:'attendancesettings'});
     }
 
     /**
@@ -89,6 +91,62 @@ export default class AttEndanceSettingsUIServiceBase extends UIService {
      * @memberof  AttEndanceSettingsUIServiceBase
      */  
     public initDeMainStateMap(){
+    }
+
+    /**
+     * 添加到考勤组
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async AttEndanceSettings_AddToKqz(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'MULTIKEY';
+        Object.assign(context, { attendancesettings: '%attendancesettings%' });
+        Object.assign(params, { attendancesettingsid: '%attendancesettings%' });
+        Object.assign(params, { attendancesettingsname: '%attendancesettingsname%' });
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmwzd0001s', parameterName: 'pcmwzd0001' },
+        ];
+            const openPopupModal = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if (xData && xData.refresh && xData.refresh instanceof Function) {
+                        xData.refresh(args);
+                    }
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
+            }
+            const view: any = {
+                viewname: 'pcm-wzd0001-ygszkqoption-view', 
+                height: 400, 
+                width: 800,  
+                title: actionContext.$t('entities.pcmwzd0001.views.ygszkqoptionview.title'),
+            };
+            openPopupModal(view, data);
     }
 
 

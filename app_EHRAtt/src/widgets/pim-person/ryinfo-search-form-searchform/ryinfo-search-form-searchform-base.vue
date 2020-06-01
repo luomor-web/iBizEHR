@@ -757,7 +757,7 @@ export default class RYInfoSearchFormBase extends Vue implements ControlInterfac
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
-            this.$Notice.error({ title: '错误', desc: 'PimPersonCurOrgPimpersonPickupGridView视图搜索表单loadAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'PimPersonKQJRYPickupGridView视图搜索表单loadAction参数未配置' });
             return;
         }
         const arg: any = { ...opt };
@@ -794,7 +794,7 @@ export default class RYInfoSearchFormBase extends Vue implements ControlInterfac
      */
     public loadDraft(opt: any = {},mode?:string): void {
         if(!this.loaddraftAction){
-            this.$Notice.error({ title: '错误', desc: 'PimPersonCurOrgPimpersonPickupGridView视图搜索表单loaddraftAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'PimPersonKQJRYPickupGridView视图搜索表单loaddraftAction参数未配置' });
             return;
         }
         const arg: any = { ...opt } ;
