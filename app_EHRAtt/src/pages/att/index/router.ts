@@ -48,6 +48,19 @@ const router = new Router({
                     component: () => import('@pages/vac/vac-holiday-rules-cur-ormorg-pickup-view/vac-holiday-rules-cur-ormorg-pickup-view.vue'),
                 },
                 {
+                    path: 'attendencesetups/:attendencesetup?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.attendencesetup.views.pickupgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'attendencesetups', parameterName: 'attendencesetup' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/att/att-endence-setup-pickup-grid-view/att-endence-setup-pickup-grid-view.vue'),
+                },
+                {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzgridview/:bmkqdzgridview?',
                     meta: {
                         caption: 'entities.ormbmkqdz.views.bmkqdzgridview.caption',
@@ -109,6 +122,37 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/vac/vac-holiday-rules-kqgzwizard-view/vac-holiday-rules-kqgzwizard-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/curzzbm_kqszpickupgridview/:curzzbm_kqszpickupgridview?',
+                    meta: {
+                        caption: 'entities.ormorgsector.views.curzzbm_kqszpickupgridview.caption',
+                        imgPath: '../../../img/zzgl/1/bumenguanli.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'curzzbm_kqszpickupgridview', parameterName: 'curzzbm_kqszpickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/orm-orgsector-cur-zzbm-kqszpickup-grid-view/orm-orgsector-cur-zzbm-kqszpickup-grid-view.vue'),
+                },
+                {
+                    path: 'ormorgsectors/:ormorgsector?/curzzbm_kqszpickupgridview/:curzzbm_kqszpickupgridview?',
+                    meta: {
+                        caption: 'entities.ormorgsector.views.curzzbm_kqszpickupgridview.caption',
+                        imgPath: '../../../img/zzgl/1/bumenguanli.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'curzzbm_kqszpickupgridview', parameterName: 'curzzbm_kqszpickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/orm-orgsector-cur-zzbm-kqszpickup-grid-view/orm-orgsector-cur-zzbm-kqszpickup-grid-view.vue'),
                 },
                 {
                     path: 'attendencesetups/:attendencesetup?/kqsztreeexpview/:kqsztreeexpview?',
@@ -291,6 +335,19 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/att/att-endence-setup-edit-view/att-endence-setup-edit-view.vue'),
+                },
+                {
+                    path: 'attendencesetups/:attendencesetup?/mpickupview/:mpickupview?',
+                    meta: {
+                        caption: 'entities.attendencesetup.views.mpickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'attendencesetups', parameterName: 'attendencesetup' },
+                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/att/att-endence-setup-mpickup-view/att-endence-setup-mpickup-view.vue'),
                 },
                 {
                     path: 'attendenceormorgscetors/:attendenceormorgscetor?/editview/:editview?',
@@ -495,6 +552,21 @@ const router = new Router({
                     component: () => import('@pages/vac/vac-leave-tips-edit-view/vac-leave-tips-edit-view.vue'),
                 },
                 {
+                    path: 'attendancesettings/:attendancesettings?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.attendancesettings.views.editview.caption',
+                        imgPath: '../../../img/newimage/1/kaoqinshezhi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'attendancesettings', parameterName: 'attendancesettings' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/att/att-endance-settings-edit-view/att-endance-settings-edit-view.vue'),
+                },
+                {
                     path: 'attendenceormorgscetors/:attendenceormorgscetor?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.attendenceormorgscetor.views.gridview.caption',
@@ -510,19 +582,31 @@ const router = new Router({
                     component: () => import('@pages/att/att-endence-ormorgscetor-grid-view/att-endence-ormorgscetor-grid-view.vue'),
                 },
                 {
-                    path: 'attendancesettings/:attendancesettings?/editview/:editview?',
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/kqszmpickupview/:kqszmpickupview?',
                     meta: {
-                        caption: 'entities.attendancesettings.views.editview.caption',
-                        imgPath: '../../../img/newimage/1/kaoqinshezhi.png',
-                        iconCls: '',
+                        caption: 'entities.ormorgsector.views.kqszmpickupview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'attendancesettings', parameterName: 'attendancesettings' },
-                            { pathName: 'editview', parameterName: 'editview' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'kqszmpickupview', parameterName: 'kqszmpickupview' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/att/att-endance-settings-edit-view/att-endance-settings-edit-view.vue'),
+                    component: () => import('@pages/orm/orm-orgsector-kqszmpickup-view/orm-orgsector-kqszmpickup-view.vue'),
+                },
+                {
+                    path: 'ormorgsectors/:ormorgsector?/kqszmpickupview/:kqszmpickupview?',
+                    meta: {
+                        caption: 'entities.ormorgsector.views.kqszmpickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'kqszmpickupview', parameterName: 'kqszmpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/orm-orgsector-kqszmpickup-view/orm-orgsector-kqszmpickup-view.vue'),
                 },
             ...indexRoutes,
             ],
@@ -703,6 +787,18 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/att/att-endance-settings-grid-view/att-endance-settings-grid-view.vue'),
+    },
+    {
+        path: '/attendencesetups/:attendencesetup?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.attendencesetup.views.pickupgridview.caption',
+            parameters: [
+                { pathName: 'attendencesetups', parameterName: 'attendencesetup' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/att/att-endence-setup-pickup-grid-view/att-endence-setup-pickup-grid-view.vue'),
     },
     {
         path: '/attendencesetups/:attendencesetup?/kqszwizardview/:kqszwizardview?',
@@ -983,6 +1079,72 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/vac/vac-holiday-rules-grid-view/vac-holiday-rules-grid-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/curzzbm_kqszpickupgridview/:curzzbm_kqszpickupgridview?',
+        meta: {
+            caption: 'entities.ormorgsector.views.curzzbm_kqszpickupgridview.caption',
+            imgPath: '../../../img/zzgl/1/bumenguanli.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'curzzbm_kqszpickupgridview', parameterName: 'curzzbm_kqszpickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/orm-orgsector-cur-zzbm-kqszpickup-grid-view/orm-orgsector-cur-zzbm-kqszpickup-grid-view.vue'),
+    },
+    {
+        path: '/ormorgsectors/:ormorgsector?/curzzbm_kqszpickupgridview/:curzzbm_kqszpickupgridview?',
+        meta: {
+            caption: 'entities.ormorgsector.views.curzzbm_kqszpickupgridview.caption',
+            imgPath: '../../../img/zzgl/1/bumenguanli.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'curzzbm_kqszpickupgridview', parameterName: 'curzzbm_kqszpickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/orm-orgsector-cur-zzbm-kqszpickup-grid-view/orm-orgsector-cur-zzbm-kqszpickup-grid-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/kqszmpickupview/:kqszmpickupview?',
+        meta: {
+            caption: 'entities.ormorgsector.views.kqszmpickupview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'kqszmpickupview', parameterName: 'kqszmpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/orm-orgsector-kqszmpickup-view/orm-orgsector-kqszmpickup-view.vue'),
+    },
+    {
+        path: '/ormorgsectors/:ormorgsector?/kqszmpickupview/:kqszmpickupview?',
+        meta: {
+            caption: 'entities.ormorgsector.views.kqszmpickupview.caption',
+            parameters: [
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'kqszmpickupview', parameterName: 'kqszmpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/orm-orgsector-kqszmpickup-view/orm-orgsector-kqszmpickup-view.vue'),
+    },
+    {
+        path: '/attendencesetups/:attendencesetup?/mpickupview/:mpickupview?',
+        meta: {
+            caption: 'entities.attendencesetup.views.mpickupview.caption',
+            parameters: [
+                { pathName: 'attendencesetups', parameterName: 'attendencesetup' },
+                { pathName: 'mpickupview', parameterName: 'mpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/att/att-endence-setup-mpickup-view/att-endence-setup-mpickup-view.vue'),
     },
         ...globalRoutes,
         {

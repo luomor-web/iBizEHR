@@ -15,6 +15,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "AttEndanceSettingsEditView",
             "viewtag": "03511dfb145e54bb23246d7f2b417a36"
         },
+        "ormorgsectormpickupview": {
+            "title": "部门管理数据多项选择视图",
+            "caption": "部门管理",
+            "viewtype": "DEMPICKUPVIEW",
+            "viewmodule": "ORM",
+            "viewname": "OrmOrgsectorMPickupView",
+            "viewtag": "07d14c54e2627a1b2fbcd2c5773a89d1"
+        },
         "pimpersoncurorgpimpersonpickupview": {
             "title": "人员信息",
             "caption": "人员信息",
@@ -94,6 +102,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "ATT",
             "viewname": "Index",
             "viewtag": "55D522D7-A7FF-4A3C-9CD9-67755DF8651C"
+        },
+        "attendencesetuppickupgridview": {
+            "title": "考勤设置选择表格视图",
+            "caption": "考勤设置",
+            "viewtype": "DEPICKUPGRIDVIEW",
+            "viewmodule": "ATT",
+            "viewname": "AttEndenceSetupPickupGridView",
+            "viewtag": "64d9c76c20bf971502eb7c8ea1c2d7e2"
         },
         "attendencesetupkqszwizardview": {
             "title": "考勤设置向导视图",
@@ -215,6 +231,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "VacHolidayRulesGridView",
             "viewtag": "cfe9d69998fd484c2c7bcb0cd98b60d7"
         },
+        "ormorgsectorcurzzbm_kqszpickupgridview": {
+            "title": "部门管理选择表格视图",
+            "caption": "部门管理",
+            "viewtype": "DEPICKUPGRIDVIEW",
+            "viewmodule": "ORM",
+            "viewname": "OrmOrgsectorCurZZBM_KQSZPickupGridView",
+            "viewtag": "d276e912d89e2e6e7c9595022aa20189"
+        },
         "ormorgsectorpickupview": {
             "title": "部门管理数据选择视图",
             "caption": "部门管理",
@@ -222,6 +246,22 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "ORM",
             "viewname": "OrmOrgsectorPickupView",
             "viewtag": "d40c4a8cb38f7938d2883e90d53d1d9e"
+        },
+        "ormorgsectorkqszmpickupview": {
+            "title": "部门管理数据多项选择视图",
+            "caption": "部门管理",
+            "viewtype": "DEMPICKUPVIEW",
+            "viewmodule": "ORM",
+            "viewname": "OrmOrgsectorKQSZMPickupView",
+            "viewtag": "efb6d23ba2d645798922bd74edd568ce"
+        },
+        "attendencesetupmpickupview": {
+            "title": "考勤设置数据多项选择视图",
+            "caption": "考勤设置",
+            "viewtype": "DEMPICKUPVIEW",
+            "viewmodule": "ATT",
+            "viewname": "AttEndenceSetupMPickupView",
+            "viewtag": "fda0fddd972d90b7d9335a0aa20c6cf4"
         }
     }];
 });

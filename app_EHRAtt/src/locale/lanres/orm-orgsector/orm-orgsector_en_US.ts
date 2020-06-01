@@ -74,6 +74,10 @@ export default {
     orgid: '组织机构标识',
   },
 	views: {
+		mpickupview: {
+			caption: "部门管理",
+      title: '部门管理',
+		},
 		bmkqszeditview: {
 			caption: "部门管理",
       title: '部门管理',
@@ -82,7 +86,15 @@ export default {
 			caption: "部门管理",
       title: '部门管理',
 		},
+		curzzbm_kqszpickupgridview: {
+			caption: "部门管理",
+      title: '部门管理',
+		},
 		pickupview: {
+			caption: "部门管理",
+      title: '部门管理',
+		},
+		kqszmpickupview: {
 			caption: "部门管理",
       title: '部门管理',
 		},
@@ -123,11 +135,29 @@ export default {
 		uiactions: {
 		},
 	},
+	bmkqsz_grid: {
+		columns: {
+			orgname: "组织机构",
+			zzdzs: "组织简称",
+			orgsectorname: "部门/项目部",
+		},
+		uiactions: {
+		},
+	},
 	default_searchform: {
 		details: {
 			formpage1: "常规条件", 
 			n_zzdzs_like: "组织简称", 
 			n_orgsectorname_like: "部门/项目部", 
+		},
+		uiactions: {
+		},
+	},
+	default_2_searchform: {
+		details: {
+			formpage1: "常规条件", 
+			n_orgname_eq: "所属组织", 
+			n_ormxmglname_like: "项目名称", 
 		},
 		uiactions: {
 		},

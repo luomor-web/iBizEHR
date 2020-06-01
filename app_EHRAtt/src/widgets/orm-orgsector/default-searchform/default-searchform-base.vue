@@ -4,15 +4,15 @@
   <row>
     <i-col span="20" class="form-content">
       <row>
-                    <i-col v-show="detailsModel.n_ormorgname_like.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-              <app-form-item name='n_ormorgname_like' :itemRules="this.rules.n_ormorgname_like" class='' :caption="$t('entities.attendencesetup.default_searchform.details.n_ormorgname_like')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_ormorgname_like.error" :isEmptyCaption="false" labelPos="LEFT"> 
-              <input-box v-model="data.n_ormorgname_like"  @enter="onEnter($event)"    :disabled="detailsModel.n_ormorgname_like.disabled" type='text'  style=""></input-box>
+                    <i-col v-show="detailsModel.n_zzdzs_like.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+              <app-form-item name='n_zzdzs_like' :itemRules="this.rules.n_zzdzs_like" class='' :caption="$t('entities.ormorgsector.default_searchform.details.n_zzdzs_like')" uiStyle="DEFAULT" :labelWidth="100" :isShowCaption="true" :error="detailsModel.n_zzdzs_like.error" :isEmptyCaption="false" labelPos="LEFT"> 
+              <input-box v-model="data.n_zzdzs_like"  @enter="onEnter($event)"    :disabled="detailsModel.n_zzdzs_like.disabled" type='text'  style=""></input-box>
           </app-form-item>
           
           </i-col>
-          <i-col v-show="detailsModel.n_attendencesetupname_like.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-              <app-form-item name='n_attendencesetupname_like' :itemRules="this.rules.n_attendencesetupname_like" class='' :caption="$t('entities.attendencesetup.default_searchform.details.n_attendencesetupname_like')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_attendencesetupname_like.error" :isEmptyCaption="false" labelPos="LEFT"> 
-              <input-box v-model="data.n_attendencesetupname_like"  @enter="onEnter($event)"    :disabled="detailsModel.n_attendencesetupname_like.disabled" type='text'  style=""></input-box>
+          <i-col v-show="detailsModel.n_orgsectorname_like.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+              <app-form-item name='n_orgsectorname_like' :itemRules="this.rules.n_orgsectorname_like" class='' :caption="$t('entities.ormorgsector.default_searchform.details.n_orgsectorname_like')" uiStyle="DEFAULT" :labelWidth="100" :isShowCaption="true" :error="detailsModel.n_orgsectorname_like.error" :isEmptyCaption="false" labelPos="LEFT"> 
+              <input-box v-model="data.n_orgsectorname_like"  @enter="onEnter($event)"    :disabled="detailsModel.n_orgsectorname_like.disabled" type='text'  style=""></input-box>
           </app-form-item>
           
           </i-col>
@@ -33,7 +33,7 @@ import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
-import AttEndenceSetupService from '@/service/att-endence-setup/att-endence-setup-service';
+import OrmOrgsectorService from '@/service/orm-orgsector/orm-orgsector-service';
 import DefaultService from './default-searchform-service';
 
 import { FormButtonModel, FormPageModel, FormItemModel, FormDRUIPartModel, FormPartModel, FormGroupPanelModel, FormIFrameModel, FormRowItemModel, FormTabPageModel, FormTabPanelModel, FormUserControlModel } from '@/model/form-detail';
@@ -119,10 +119,10 @@ export default class DefaultBase extends Vue implements ControlInterface {
     /**
      * 实体服务对象
      *
-     * @type {AttEndenceSetupService}
+     * @type {OrmOrgsectorService}
      * @memberof Default
      */
-    public appEntityService: AttEndenceSetupService = new AttEndenceSetupService({ $store: this.$store });
+    public appEntityService: OrmOrgsectorService = new OrmOrgsectorService({ $store: this.$store });
     
 
 
@@ -256,8 +256,8 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @memberof DefaultBase
      */
     public data: any = {
-        n_ormorgname_like: null,
-        n_attendencesetupname_like: null,
+        n_zzdzs_like: null,
+        n_orgsectorname_like: null,
     };
 
     /**
@@ -267,17 +267,17 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @memberof DefaultBase
      */
     public rules: any = {
-        n_ormorgname_like: [
-            { type: 'string', message: '组织名称(%) 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '组织名称(%) 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '组织名称(%) 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '组织名称(%) 值不能为空', trigger: 'blur' },
+        n_zzdzs_like: [
+            { type: 'string', message: '组织简称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '组织简称 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '组织简称 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '组织简称 值不能为空', trigger: 'blur' },
         ],
-        n_attendencesetupname_like: [
-            { type: 'string', message: '考勤表名称(%) 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '考勤表名称(%) 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '考勤表名称(%) 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '考勤表名称(%) 值不能为空', trigger: 'blur' },
+        n_orgsectorname_like: [
+            { type: 'string', message: '部门/项目部 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '部门/项目部 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '部门/项目部 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '部门/项目部 值不能为空', trigger: 'blur' },
         ],
     }
 
@@ -290,34 +290,34 @@ export default class DefaultBase extends Vue implements ControlInterface {
     public detailsModel: any = {
         formpage1: new FormPageModel({ caption: '常规条件', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
-        n_ormorgname_like: new FormItemModel({ caption: '组织名称(%)', detailType: 'FORMITEM', name: 'n_ormorgname_like', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        n_zzdzs_like: new FormItemModel({ caption: '组织简称', detailType: 'FORMITEM', name: 'n_zzdzs_like', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        n_attendencesetupname_like: new FormItemModel({ caption: '考勤表名称(%)', detailType: 'FORMITEM', name: 'n_attendencesetupname_like', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        n_orgsectorname_like: new FormItemModel({ caption: '部门/项目部', detailType: 'FORMITEM', name: 'n_orgsectorname_like', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
     };
 
     /**
-     * 监控表单属性 n_ormorgname_like 值
+     * 监控表单属性 n_zzdzs_like 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof DefaultBase
      */
-    @Watch('data.n_ormorgname_like')
-    onN_ormorgname_likeChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'n_ormorgname_like', newVal: newVal, oldVal: oldVal });
+    @Watch('data.n_zzdzs_like')
+    onN_zzdzs_likeChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'n_zzdzs_like', newVal: newVal, oldVal: oldVal });
     }
 
     /**
-     * 监控表单属性 n_attendencesetupname_like 值
+     * 监控表单属性 n_orgsectorname_like 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof DefaultBase
      */
-    @Watch('data.n_attendencesetupname_like')
-    onN_attendencesetupname_likeChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'n_attendencesetupname_like', newVal: newVal, oldVal: oldVal });
+    @Watch('data.n_orgsectorname_like')
+    onN_orgsectorname_likeChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'n_orgsectorname_like', newVal: newVal, oldVal: oldVal });
     }
 
 
@@ -617,7 +617,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
-            this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupPickupGridView视图搜索表单loadAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'OrmOrgsectorCurZZBM_KQSZPickupGridView视图搜索表单loadAction参数未配置' });
             return;
         }
         const arg: any = { ...opt };
@@ -654,7 +654,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      */
     public loadDraft(opt: any = {},mode?:string): void {
         if(!this.loaddraftAction){
-            this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupPickupGridView视图搜索表单loaddraftAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'OrmOrgsectorCurZZBM_KQSZPickupGridView视图搜索表单loaddraftAction参数未配置' });
             return;
         }
         const arg: any = { ...opt } ;

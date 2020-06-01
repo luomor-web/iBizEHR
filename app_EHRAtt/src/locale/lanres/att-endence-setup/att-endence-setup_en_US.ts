@@ -30,11 +30,19 @@ export default {
 			caption: "考勤设置",
       title: '考勤设置',
 		},
+		pickupgridview: {
+			caption: "考勤设置",
+      title: '考勤设置',
+		},
 		kqszwizardview: {
 			caption: "考勤设置向导",
       title: '考勤设置向导',
 		},
 		kqsztreeexpview: {
+			caption: "考勤设置",
+      title: '考勤设置',
+		},
+		mpickupview: {
 			caption: "考勤设置",
       title: '考勤设置',
 		},

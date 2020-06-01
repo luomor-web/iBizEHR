@@ -418,6 +418,14 @@ export default class AttEndenceOrmorgscetorGridViewBase extends GridViewBase {
      * @memberof AttEndenceOrmorgscetorGridView
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
+        const batchAddPSAppViews=[
+            {view:{viewname:'att-endence-setup-mpickup-view',height: 0,width: 0,title: '考勤设置数据多项选择视图'},
+            res:[],
+            'resAppKey':''},
+            {view:{viewname:'orm-orgsector-kqszmpickup-view',height: 0,width: 0,title: '部门管理数据多项选择视图'},
+            res:['OrmOrgsector'],
+            'resAppKey':''}
+        ];
         if(batchAddPSAppViews.length == 0 || !this.context.srfparentdename){
             this.$Notice.warning({ title: '错误', desc: '批量添加需添加N:N关系' });
             return;

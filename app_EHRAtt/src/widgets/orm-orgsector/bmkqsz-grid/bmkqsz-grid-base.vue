@@ -22,105 +22,39 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('ormorgname')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.attendencesetup.main_grid.columns.ormorgname')" :width="200"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('orgname')">
+                <el-table-column show-overflow-tooltip :prop="'orgname'" :label="$t('entities.ormorgsector.bmkqsz_grid.columns.orgname')" :width="300"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.attendencesetup.main_grid.columns.ormorgname')}}
+                        {{$t('entities.ormorgsector.bmkqsz_grid.columns.orgname')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.ormorgname}}</span>
+                        <span>{{row.orgname}}</span>
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('attendencesetupname1')">
-                <el-table-column show-overflow-tooltip :prop="'attendencesetupname1'" :label="$t('entities.attendencesetup.main_grid.columns.attendencesetupname1')" :width="250"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('zzdzs')">
+                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.ormorgsector.bmkqsz_grid.columns.zzdzs')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.attendencesetup.main_grid.columns.attendencesetupname1')}}
+                        {{$t('entities.ormorgsector.bmkqsz_grid.columns.zzdzs')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.attendencesetupname1}}</span>
+                        <span>{{row.zzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('vacholidayrulesname')">
-                <el-table-column show-overflow-tooltip :prop="'vacholidayrulesname'" :label="$t('entities.attendencesetup.main_grid.columns.vacholidayrulesname')" :width="250"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('orgsectorname')">
+                <el-table-column show-overflow-tooltip :prop="'orgsectorname'" :label="$t('entities.ormorgsector.bmkqsz_grid.columns.orgsectorname')" :width="400"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.attendencesetup.main_grid.columns.vacholidayrulesname')}}
+                        {{$t('entities.ormorgsector.bmkqsz_grid.columns.orgsectorname')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.vacholidayrulesname}}</span>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.attendencesetup.main_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.attendencesetup.main_grid.columns.pimpersonname')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.pimpersonname}}</span>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('dkfs')">
-                <el-table-column show-overflow-tooltip :prop="'dkfs'" :label="$t('entities.attendencesetup.main_grid.columns.dkfs')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.attendencesetup.main_grid.columns.dkfs')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <template >
-            <codelist :value="row.dkfs" tag='EhrCodeList0007' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('allowoutwork')">
-                <el-table-column show-overflow-tooltip :prop="'allowoutwork'" :label="$t('entities.attendencesetup.main_grid.columns.allowoutwork')" :min-width="120"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.attendencesetup.main_grid.columns.allowoutwork')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <template >
-            <codelist :value="row.allowoutwork" tag='EhrCodeList0054' codelistType='STATIC' ></codelist>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('createman')">
-                <el-table-column show-overflow-tooltip :prop="'createman'" :label="$t('entities.attendencesetup.main_grid.columns.createman')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.attendencesetup.main_grid.columns.createman')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <template >
-            <codelist :value="row.createman" tag='EhrCodeList0249' codelistType='DYNAMIC' ></codelist>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('createdate')">
-                <el-table-column show-overflow-tooltip :prop="'createdate'" :label="$t('entities.attendencesetup.main_grid.columns.createdate')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.attendencesetup.main_grid.columns.createdate')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <app-format-data format="%1$tY-%1$tm-%1$td" :data="row.createdate"></app-format-data>
+                        <span>{{row.orgsectorname}}</span>
                     </template>
                 </el-table-column>
             </template>
@@ -173,8 +107,8 @@ import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
-import AttEndenceSetupService from '@/service/att-endence-setup/att-endence-setup-service';
-import MainService from './main-grid-service';
+import OrmOrgsectorService from '@/service/orm-orgsector/orm-orgsector-service';
+import BMKQSZService from './bmkqsz-grid-service';
 
 import CodeListService from "@service/app/codelist-service";
 import { FormItemModel } from '@/model/form-detail';
@@ -185,13 +119,13 @@ import { FormItemModel } from '@/model/form-detail';
       
     }
 })
-export default class MainBase extends Vue implements ControlInterface {
+export default class BMKQSZBase extends Vue implements ControlInterface {
 
     /**
      * 名称
      *
      * @type {string}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     @Prop() public name?: string;
 
@@ -199,7 +133,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -207,7 +141,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     @Prop() public context: any;
 
@@ -215,7 +149,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     @Prop() public viewparams: any;
 
@@ -224,7 +158,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -232,7 +166,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public getControlType(): string {
         return 'GRID'
@@ -244,25 +178,25 @@ export default class MainBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof Main
+     * @memberof BMKQSZ
      */    
     public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
      *
-     * @type {MainService}
-     * @memberof Main
+     * @type {BMKQSZService}
+     * @memberof BMKQSZ
      */
-    public service: MainService = new MainService({ $store: this.$store });
+    public service: BMKQSZService = new BMKQSZService({ $store: this.$store });
 
     /**
      * 实体服务对象
      *
-     * @type {AttEndenceSetupService}
-     * @memberof Main
+     * @type {OrmOrgsectorService}
+     * @memberof BMKQSZ
      */
-    public appEntityService: AttEndenceSetupService = new AttEndenceSetupService({ $store: this.$store });
+    public appEntityService: OrmOrgsectorService = new OrmOrgsectorService({ $store: this.$store });
     
 
 
@@ -270,7 +204,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -280,7 +214,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public counterRefresh(){
         const _this:any =this;
@@ -298,7 +232,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 代码表服务对象
      *
      * @type {CodeListService}
-     * @memberof Main
+     * @memberof BMKQSZ
      */  
     public codeListService:CodeListService = new CodeListService({ $store: this.$store });
 
@@ -306,7 +240,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public getDatas(): any[] {
         return this.selections;
@@ -316,7 +250,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public getData(): any {
         return this.selections[0];
@@ -327,7 +261,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -335,7 +269,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--update
      *
      * @type {string}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     @Prop() public updateAction!: string;
     
@@ -343,7 +277,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--fetch
      *
      * @type {string}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     @Prop() public fetchAction!: string;
     
@@ -351,7 +285,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     @Prop() public removeAction!: string;
     
@@ -359,7 +293,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--load
      *
      * @type {string}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     @Prop() public loadAction!: string;
     
@@ -367,7 +301,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     @Prop() public loaddraftAction!: string;
     
@@ -375,7 +309,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     @Prop() public createAction!: string;
 
@@ -383,7 +317,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 当前页
      *
      * @type {number}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public curPage: number = 1;
 
@@ -391,7 +325,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 数据
      *
      * @type {any[]}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public items: any[] = [];
 
@@ -399,7 +333,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 是否支持分页
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public isEnablePagingBar: boolean = true;
 
@@ -407,7 +341,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 是否禁用排序
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public isNoSort: boolean = false;
 
@@ -415,7 +349,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 排序方向
      *
      * @type {string}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public minorSortDir: string = '';
 
@@ -423,7 +357,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 排序字段
      *
      * @type {string}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public minorSortPSDEF: string = '';
 
@@ -431,15 +365,15 @@ export default class MainBase extends Vue implements ControlInterface {
      * 分页条数
      *
      * @type {number}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
-    public limit: number = 20;
+    public limit: number = 100;
 
     /**
      * 是否显示标题
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public isHideHeader: boolean = false;
 
@@ -447,7 +381,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 是否默认选中第一条数据
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     @Prop({ default: false }) public isSelectFirstDefault!: boolean;
 
@@ -455,7 +389,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 是否单选
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     @Prop() public isSingleSelect?: boolean;
 
@@ -463,7 +397,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 选中数据字符串
      *
      * @type {string}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     @Prop() public selectedData?: string;
 
@@ -500,7 +434,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 2 双击激活
      *
      * @type {(number | 0 | 1 | 2)}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     @Prop({default: 2}) public gridRowActiveMode!: number;
 
@@ -508,7 +442,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 是否开启行编辑
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     @Prop({default: false}) public isOpenEdit!: boolean;
 
@@ -516,7 +450,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 实际是否开启行编辑
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public actualIsOpenEdit: boolean = this.isOpenEdit;
 
@@ -524,7 +458,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 总条数
      *
      * @type {number}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public totalrow: number = 0;
 
@@ -551,7 +485,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 表格是否显示
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public isDisplay:boolean = true;
 
@@ -559,7 +493,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public refresh(args: any[]): void {
         this.load();
@@ -585,62 +519,27 @@ export default class MainBase extends Vue implements ControlInterface {
      * 所有列成员
      *
      * @type {any[]}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public allColumns: any[] = [
         {
-            name: 'ormorgname',
-            label: '组织名称',
-            langtag: 'entities.attendencesetup.main_grid.columns.ormorgname',
+            name: 'orgname',
+            label: '组织机构',
+            langtag: 'entities.ormorgsector.bmkqsz_grid.columns.orgname',
             show: true,
             util: 'PX'
         },
         {
-            name: 'attendencesetupname1',
-            label: '考勤表名称',
-            langtag: 'entities.attendencesetup.main_grid.columns.attendencesetupname1',
+            name: 'zzdzs',
+            label: '组织简称',
+            langtag: 'entities.ormorgsector.bmkqsz_grid.columns.zzdzs',
             show: true,
             util: 'PX'
         },
         {
-            name: 'vacholidayrulesname',
-            label: '考勤规则',
-            langtag: 'entities.attendencesetup.main_grid.columns.vacholidayrulesname',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'pimpersonname',
-            label: '考勤员',
-            langtag: 'entities.attendencesetup.main_grid.columns.pimpersonname',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'dkfs',
-            label: '打卡方式',
-            langtag: 'entities.attendencesetup.main_grid.columns.dkfs',
-            show: true,
-            util: 'px'
-        },
-        {
-            name: 'allowoutwork',
-            label: '允许外勤',
-            langtag: 'entities.attendencesetup.main_grid.columns.allowoutwork',
-            show: true,
-            util: 'STAR'
-        },
-        {
-            name: 'createman',
-            label: '建立人',
-            langtag: 'entities.attendencesetup.main_grid.columns.createman',
-            show: true,
-            util: 'px'
-        },
-        {
-            name: 'createdate',
-            label: '建立时间',
-            langtag: 'entities.attendencesetup.main_grid.columns.createdate',
+            name: 'orgsectorname',
+            label: '部门/项目部',
+            langtag: 'entities.ormorgsector.bmkqsz_grid.columns.orgsectorname',
             show: true,
             util: 'PX'
         },
@@ -650,7 +549,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 表格模型集合
      *
      * @type {*}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public gridItemsModel: any[] = [];
 
@@ -658,7 +557,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取表格行模型
      *
      * @type {*}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public getGridRowModel(){
         return {
@@ -670,12 +569,12 @@ export default class MainBase extends Vue implements ControlInterface {
      * 属性值规则
      *
      * @type {*}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public rules: any = {
         srfkey: [
-             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '考勤设置标识 值不能为空', trigger: 'change' },
-            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '考勤设置标识 值不能为空', trigger: 'blur' },
+             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '部门标识 值不能为空', trigger: 'change' },
+            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '部门标识 值不能为空', trigger: 'blur' },
         ],
     }
 
@@ -687,7 +586,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {number} rowIndex 行索引
      * @returns Promise<any>
      * 
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public validate(property:string, data:any, rowIndex:number):Promise<any>{
         return new Promise((resolve, reject) => {
@@ -705,7 +604,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 校验所有修改过的编辑项
      *
      * @returns Promise<any>
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public async validateAll(){
         let validateState = true;
@@ -727,11 +626,11 @@ export default class MainBase extends Vue implements ControlInterface {
      * 表格数据加载
      *
      * @param {*} [arg={}]
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public load(opt: any = {}, pageReset: boolean = false): void {
         if(!this.fetchAction){
-            this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupPickupGridView视图表格fetchAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'OrmOrgsectorCurZZBM_KQSZPickupGridView视图表格fetchAction参数未配置' });
             return;
         }
         if(pageReset){
@@ -804,11 +703,11 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {any[]} datas
      * @returns {Promise<any>}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public async remove(datas: any[]): Promise<any> {
         if(!this.removeAction){
-            this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupPickupGridView视图表格removeAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'OrmOrgsectorCurZZBM_KQSZPickupGridView视图表格removeAction参数未配置' });
             return;
         }
         let _datas:any[] = [];
@@ -830,7 +729,7 @@ export default class MainBase extends Vue implements ControlInterface {
         }
         let dataInfo = '';
         _datas.forEach((record: any, index: number) => {
-            let srfmajortext = record.attendencesetupname;
+            let srfmajortext = record.orgsectorname;
             if (index < 5) {
                 if (!Object.is(dataInfo, '')) {
                     dataInfo += '、';
@@ -855,7 +754,7 @@ export default class MainBase extends Vue implements ControlInterface {
             let _removeAction = keys.length > 1 ? 'removeBatch' : this.removeAction ;
             let _keys = keys.length > 1 ? keys : keys[0] ;
             const context:any = JSON.parse(JSON.stringify(this.context));
-            const post: Promise<any> = this.service.delete(_removeAction,Object.assign(context,{ attendencesetup: _keys }),Object.assign({ attendencesetup: _keys },{viewparams:this.viewparams}), this.showBusyIndicator);
+            const post: Promise<any> = this.service.delete(_removeAction,Object.assign(context,{ ormorgsector: _keys }),Object.assign({ ormorgsector: _keys },{viewparams:this.viewparams}), this.showBusyIndicator);
             return new Promise((resolve: any, reject: any) => {
                 post.then((response: any) => {
                     if (!response || response.status !== 200) {
@@ -910,11 +809,11 @@ export default class MainBase extends Vue implements ControlInterface {
      * 批量添加
      *
      * @param {*} [arg={}]
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public addBatch(arg: any = {}): void {
         if(!this.fetchAction){
-            this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupPickupGridView视图表格fetchAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'OrmOrgsectorCurZZBM_KQSZPickupGridView视图表格fetchAction参数未配置' });
             return;
         }
         if(!arg){
@@ -927,7 +826,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 数据导入
      *
      * @param {*} data
-     * @memberof Main
+     * @memberof BMKQSZ
      */
      public importExcel(data:any ={}):void{
         //导入excel
@@ -956,7 +855,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 数据导出
      *
      * @param {*} data
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public exportExcel(data: any = {}): void {
         // 导出Excel
@@ -972,7 +871,7 @@ export default class MainBase extends Vue implements ControlInterface {
                 excel.export_json_to_excel({
                   header: tHeader, //表头 必填
                   data, //具体数据 必填
-                  filename: "考勤设置表", //非必填
+                  filename: "部门管理表", //非必填
                   autoWidth: true, //非必填
                   bookType: "xlsx" //非必填
                 });
@@ -1027,34 +926,10 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {*} filterVal
      * @param {*} jsonData
      * @returns {[]}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public async formatExcelData(filterVal:any, jsonData:any) {
         let codelistColumns:Array<any> = [
-          {
-            name: 'dkfs',
-            srfkey: 'EhrCodeList0007',
-            codelistType : 'STATIC',
-            textSeparator: '、',
-            renderMode: 'string',
-            valueSeparator: ";",
-          },
-          {
-            name: 'allowoutwork',
-            srfkey: 'EhrCodeList0054',
-            codelistType : 'STATIC',
-            renderMode: 'other',
-            textSeparator: '、',
-            valueSeparator: ',',
-          },
-          {
-            name: 'createman',
-            srfkey: 'EhrCodeList0249',
-            codelistType : 'DYNAMIC',
-            renderMode: 'other',
-            textSeparator: '、',
-            valueSeparator: ',',
-          },
         ];
         let _this = this;
         for (const codelist of codelistColumns) {
@@ -1083,7 +958,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {any[]} items 代码表数据
      * @param {*} value
      * @returns {*}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public getCodelistValue(items: any[], value: any, codelist: any,){
         if(!value){
@@ -1136,7 +1011,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {any[]} items
      * @param {*} value
      * @returns {*}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public getItem(items: any[], value: any, codelist: any): any {
         const arr: Array<any> = items.filter(item => {return item.value == value});
@@ -1153,7 +1028,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 生命周期
      *
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public created(): void {
         this.afterCreated();
@@ -1162,7 +1037,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 执行created后的逻辑
      *
-     *  @memberof Main
+     *  @memberof BMKQSZ
      */    
     public afterCreated(){
         this.setColState();
@@ -1187,7 +1062,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public destroyed() {
         this.afterDestroy();
@@ -1196,7 +1071,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -1208,7 +1083,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取选中行胡数据
      *
      * @returns {any[]}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public getSelection(): any[] {
         return this.selections;
@@ -1219,7 +1094,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} $event
      * @returns {void}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public rowDBLClick($event: any): void {
         if (!$event || this.actualIsOpenEdit || Object.is(this.gridRowActiveMode,0)) {
@@ -1243,7 +1118,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} $event
      * @returns {void}
-     * @memberof  Main
+     * @memberof  BMKQSZ
      */
     public select($event: any): void {
         if (!$event) {
@@ -1258,7 +1133,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 复选框数据全部选中
      *
      * @param {*} $event
-     * @memberof  Main
+     * @memberof  BMKQSZ
      */
     public selectAll($event: any): void {
         if (!$event) {
@@ -1275,7 +1150,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} $event
      * @returns {void}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public rowClick($event: any, ifAlways: boolean = false): void {
         if (!ifAlways && (!$event || this.actualIsOpenEdit)) {
@@ -1290,7 +1165,7 @@ export default class MainBase extends Vue implements ControlInterface {
         }
         // 已选中则删除，没选中则添加
         let selectIndex = this.selections.findIndex((item:any)=>{
-            return Object.is(item.attendencesetup,$event.attendencesetup);
+            return Object.is(item.ormorgsector,$event.ormorgsector);
         });
         if (Object.is(selectIndex,-1)){
           this.selections.push(JSON.parse(JSON.stringify($event)));
@@ -1317,7 +1192,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} $event
      * @returns {void}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public pageOnChange($event: any): void {
         if (!$event) {
@@ -1335,7 +1210,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} $event
      * @returns {void}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public onPageSizeChange($event: any): void {
         if (!$event) {
@@ -1353,7 +1228,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 分页刷新
      *
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public pageRefresh(): void {
         this.load({});
@@ -1363,7 +1238,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 排序变化
      *
      * @param {{ column: any, prop: any, order: any }} { column, prop, order }
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public onSortChange({ column, prop, order }: { column: any, prop: any, order: any }): void {
         const dir = Object.is(order, 'ascending') ? 'asc' : Object.is(order, 'descending') ? 'desc' : '';
@@ -1380,7 +1255,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {{ row: any, rowIndex: any }} { row, rowIndex }
      * @returns {string}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public onRowClassName({ row, rowIndex }: { row: any, rowIndex: any }): string {
         const index = this.selections.findIndex((select: any) => Object.is(select.srfkey, row.srfkey));
@@ -1395,7 +1270,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {*} row
      * @param {*} tag
      * @param {*} $event
-     * @memberof Main
+     * @memberof BMKQSZ
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
@@ -1404,10 +1279,10 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 设置列状态
      *
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public setColState() {
-		const _data: any = localStorage.getItem('attendencesetup_main_grid');
+		const _data: any = localStorage.getItem('ormorgsector_bmkqsz_grid');
 		if (_data) {
 			let columns = JSON.parse(_data);
 			columns.forEach((col: any) => {
@@ -1422,10 +1297,10 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 列变化
      *
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public onColChange() {
-        localStorage.setItem('attendencesetup_main_grid', JSON.stringify(this.allColumns));
+        localStorage.setItem('ormorgsector_bmkqsz_grid', JSON.stringify(this.allColumns));
     }
 
     /**
@@ -1433,7 +1308,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {string} name
      * @returns {boolean}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public getColumnState(name: string): boolean {
         let column = this.allColumns.find((col: any) =>
@@ -1447,7 +1322,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @readonly
      * @type {boolean}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     get adaptiveState(): boolean {
         return !this.allColumns.find((column: any) => column.show && Object.is(column.util, 'STAR'));
@@ -1458,7 +1333,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} $event
      * @returns {Promise<any>}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public async save(args: any[], params?: any, $event?: any, xData?: any){
         let _this = this;
@@ -1473,7 +1348,7 @@ export default class MainBase extends Vue implements ControlInterface {
             try {
                 if(Object.is(item.rowDataState, 'create')){
                     if(!this.createAction){
-                        this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupPickupGridView视图表格createAction参数未配置' });
+                        this.$Notice.error({ title: '错误', desc: 'OrmOrgsectorCurZZBM_KQSZPickupGridView视图表格createAction参数未配置' });
                     }else{
                       Object.assign(item,{viewparams:this.viewparams});
                       let response = await this.service.add(this.createAction, JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator);
@@ -1481,11 +1356,11 @@ export default class MainBase extends Vue implements ControlInterface {
                     }
                 }else if(Object.is(item.rowDataState, 'update')){
                     if(!this.updateAction){
-                        this.$Notice.error({ title: '错误', desc: 'AttEndenceSetupPickupGridView视图表格updateAction参数未配置' });
+                        this.$Notice.error({ title: '错误', desc: 'OrmOrgsectorCurZZBM_KQSZPickupGridView视图表格updateAction参数未配置' });
                     }else{
                         Object.assign(item,{viewparams:this.viewparams});
-                        if(item.attendencesetup){
-                            Object.assign(this.context,{attendencesetup:item.attendencesetup});
+                        if(item.ormorgsector){
+                            Object.assign(this.context,{ormorgsector:item.ormorgsector});
                         }
                         let response = await this.service.add(this.updateAction,JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator);
                         successItems.push(JSON.parse(JSON.stringify(response.data)));
@@ -1515,11 +1390,11 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} $args row 行数据，rowIndex 行索引
      * @returns {void}
-     * @memberof Main
+     * @memberof BMKQSZ
      */
     public getRowClassName(args:{row: any,rowIndex: number}){
         let isSelected = this.selections.some((item:any)=>{
-            return Object.is(item.attendencesetup,args.row.attendencesetup);
+            return Object.is(item.ormorgsector,args.row.ormorgsector);
         });
         return isSelected ? "grid-selected-row" : "";
     }
@@ -1527,5 +1402,5 @@ export default class MainBase extends Vue implements ControlInterface {
 </script>
 
 <style lang='less'>
-@import './main-grid.less';
+@import './bmkqsz-grid.less';
 </style>

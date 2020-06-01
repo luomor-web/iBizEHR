@@ -102,6 +102,7 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '03511dfb145e54bb23246d7f2b417a36',
+                'fda0fddd972d90b7d9335a0aa20c6cf4',
             ],
         },
         {
@@ -113,6 +114,15 @@ export const viewstate: any = {
             refviews: [
                 'cfe9d69998fd484c2c7bcb0cd98b60d7',
                 '8dfb451be615b1dd6bd681453572ee50',
+            ],
+        },
+        {
+            viewtag: '64d9c76c20bf971502eb7c8ea1c2d7e2',
+            viewmodule: 'ATT',
+            viewname: 'AttEndenceSetupPickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
             ],
         },
         {
@@ -137,6 +147,8 @@ export const viewstate: any = {
             refviews: [
                 '8dc4b335c6da32e29f4f6f082d4b2020',
                 '402c44c268001c72d0260161d2bece56',
+                'efb6d23ba2d645798922bd74edd568ce',
+                'fda0fddd972d90b7d9335a0aa20c6cf4',
             ],
         },
         {
@@ -257,6 +269,35 @@ export const viewstate: any = {
             refviews: [
                 'bc7fada1d639bc3887a156c0b6414daf',
                 'b7c9f4962c358749929067f91d7a09f8',
+            ],
+        },
+        {
+            viewtag: 'd276e912d89e2e6e7c9595022aa20189',
+            viewmodule: 'ORM',
+            viewname: 'OrmOrgsectorCurZZBM_KQSZPickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
+            viewtag: 'efb6d23ba2d645798922bd74edd568ce',
+            viewmodule: 'ORM',
+            viewname: 'OrmOrgsectorKQSZMPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'd276e912d89e2e6e7c9595022aa20189',
+            ],
+        },
+        {
+            viewtag: 'fda0fddd972d90b7d9335a0aa20c6cf4',
+            viewmodule: 'ATT',
+            viewname: 'AttEndenceSetupMPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '64d9c76c20bf971502eb7c8ea1c2d7e2',
             ],
         },
     ],
