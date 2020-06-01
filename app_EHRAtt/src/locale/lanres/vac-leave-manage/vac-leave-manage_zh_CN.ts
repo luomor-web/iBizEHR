@@ -38,95 +38,13 @@ export default {
     pimpersonid: '人员信息标识',
   },
 	views: {
-		wfproxyresultview: {
-			caption: '请假管理',
-      title: '请假管理',
-		},
-		spzeditview: {
-			caption: '请假管理',
-      title: '请假管理',
-		},
-		wfproxystartview: {
-			caption: '流程启动',
-      title: '流程启动',
-		},
-		ytgeditview: {
-			caption: '请假管理',
-      title: '请假管理',
-		},
 		ngeditview: {
-			caption: '请假管理',
-      title: '请假管理',
-		},
-		yqxeditview: {
 			caption: '请假管理',
       title: '请假管理',
 		},
 		gridview: {
 			caption: '请假管理',
       title: '请假管理',
-		},
-		ybheditview: {
-			caption: '请假管理',
-      title: '请假管理',
-		},
-		xjeditview: {
-			caption: '销假',
-      title: '销假',
-		},
-	},
-	spz_form: {
-		details: {
-			group1: '请假信息', 
-			druipart2: '', 
-			grouppanel2: '请假明细', 
-			formpage1: '基本信息', 
-			srfupdatedate: '更新时间', 
-			srforikey: '', 
-			srfkey: '请假管理标识', 
-			srfmajortext: '请假人员', 
-			srftempmode: '', 
-			srfuf: '', 
-			srfdeid: '', 
-			srfsourcekey: '', 
-			pimpersonid: '人员信息标识', 
-			pimpersonname: '请假人员', 
-			ormorgid: '组织标识', 
-			ormorgname: '组织名称', 
-			ormorgsectorid: '部门标识', 
-			ormorgsectorname: '部门/项目部', 
-			qjsy: '请假事由', 
-			wfqqjstate: '请销假状态', 
-			vacleavemanageid: '请假管理标识', 
-		},
-		uiactions: {
-		},
-	},
-	ytg_form: {
-		details: {
-			group1: '请假信息', 
-			druipart2: '', 
-			grouppanel2: '请假明细', 
-			formpage1: '基本信息', 
-			srfupdatedate: '更新时间', 
-			srforikey: '', 
-			srfkey: '请假管理标识', 
-			srfmajortext: '请假人员', 
-			srftempmode: '', 
-			srfuf: '', 
-			srfdeid: '', 
-			srfsourcekey: '', 
-			pimpersonid: '人员信息标识', 
-			pimpersonname: '请假人员', 
-			ormorgid: '组织标识', 
-			ormorgname: '组织名称', 
-			ormorgsectorid: '部门标识', 
-			ormorgsectorname: '部门/项目部', 
-			qjsy: '请假事由', 
-			wfqqjstate: '请销假状态', 
-			vacleavemanageid: '请假管理标识', 
-		},
-		uiactions: {
 		},
 	},
 	ng_form: {
@@ -157,87 +75,6 @@ export default {
 		uiactions: {
 		},
 	},
-	xj_form: {
-		details: {
-			group1: '请假信息', 
-			druipart2: '', 
-			grouppanel2: '请假明细', 
-			formpage1: '基本信息', 
-			srfupdatedate: '更新时间', 
-			srforikey: '', 
-			srfkey: '请假管理标识', 
-			srfmajortext: '请假人员', 
-			srftempmode: '', 
-			srfuf: '', 
-			srfdeid: '', 
-			srfsourcekey: '', 
-			pimpersonid: '人员信息标识', 
-			pimpersonname: '请假人员', 
-			ormorgid: '组织标识', 
-			ormorgname: '组织名称', 
-			ormorgsectorid: '部门标识', 
-			ormorgsectorname: '部门/项目部', 
-			qjsy: '请假事由', 
-			wfqqjstate: '请销假状态', 
-			vacleavemanageid: '请假管理标识', 
-		},
-		uiactions: {
-		},
-	},
-	yqx_form: {
-		details: {
-			group1: '请假信息', 
-			druipart2: '', 
-			grouppanel2: '请假明细', 
-			formpage1: '基本信息', 
-			srfupdatedate: '更新时间', 
-			srforikey: '', 
-			srfkey: '请假管理标识', 
-			srfmajortext: '请假人员', 
-			srftempmode: '', 
-			srfuf: '', 
-			srfdeid: '', 
-			srfsourcekey: '', 
-			pimpersonid: '人员信息标识', 
-			pimpersonname: '请假人员', 
-			ormorgid: '组织标识', 
-			ormorgname: '组织名称', 
-			ormorgsectorid: '部门标识', 
-			ormorgsectorname: '部门/项目部', 
-			qjsy: '请假事由', 
-			wfqqjstate: '请销假状态', 
-			vacleavemanageid: '请假管理标识', 
-		},
-		uiactions: {
-		},
-	},
-	ybh_form: {
-		details: {
-			group1: '请假信息', 
-			druipart2: '', 
-			grouppanel2: '请假明细', 
-			formpage1: '基本信息', 
-			srfupdatedate: '更新时间', 
-			srforikey: '', 
-			srfkey: '请假管理标识', 
-			srfmajortext: '请假人员', 
-			srftempmode: '', 
-			srfuf: '', 
-			srfdeid: '', 
-			srfsourcekey: '', 
-			pimpersonid: '人员信息标识', 
-			pimpersonname: '请假人员', 
-			ormorgid: '组织标识', 
-			ormorgname: '组织名称', 
-			ormorgsectorid: '部门标识', 
-			ormorgsectorname: '部门/项目部', 
-			qjsy: '请假事由', 
-			wfqqjstate: '请销假状态', 
-			vacleavemanageid: '请假管理标识', 
-		},
-		uiactions: {
-		},
-	},
 	main_grid: {
 		columns: {
 			pimpersonname: '请假人员',
@@ -261,26 +98,6 @@ export default {
 		uiactions: {
 		},
 	},
-	spzeditviewtoolbar_toolbar: {
-		tbitem1_cx: {
-			caption: '撤销',
-			tip: '撤销',
-		},
-		tbitem1_cb: {
-			caption: '催办',
-			tip: '催办',
-		},
-		deuiaction1: {
-			caption: '关闭',
-			tip: '关闭',
-		},
-	},
-	ytgeditviewtoolbar_toolbar: {
-		deuiaction1: {
-			caption: '关闭',
-			tip: '关闭',
-		},
-	},
 	gridviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: '新建',
@@ -296,119 +113,9 @@ export default {
 		},
 	},
 	ngeditviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: '保存',
-			tip: '保存',
-		},
-		tbitem4: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
 		tbitem5: {
 			caption: '保存并关闭',
 			tip: '保存并关闭',
-		},
-		tbitem6: {
-			caption: '-',
-			tip: '',
-		},
-		tbitem7: {
-			caption: '删除并关闭',
-			tip: '删除并关闭',
-		},
-		tbitem8: {
-			caption: '-',
-			tip: '',
-		},
-		tbitem9: {
-			caption: '开始流程',
-			tip: '开始流程',
-		},
-		tbitem10: {
-			caption: '当前流程步骤',
-			tip: '当前流程步骤',
-		},
-		tbitem11: {
-			caption: '-',
-			tip: '',
-		},
-		tbitem12: {
-			caption: '新建',
-			tip: '新建',
-		},
-		tbitem13: {
-			caption: '-',
-			tip: '',
-		},
-		tbitem14: {
-			caption: '拷贝',
-			tip: '拷贝',
-		},
-		tbitem16: {
-			caption: '-',
-			tip: '',
-		},
-		tbitem23: {
-			caption: '第一个记录',
-			tip: '第一个记录',
-		},
-		tbitem24: {
-			caption: '上一个记录',
-			tip: '上一个记录',
-		},
-		tbitem25: {
-			caption: '下一个记录',
-			tip: '下一个记录',
-		},
-		tbitem26: {
-			caption: '最后一个记录',
-			tip: '最后一个记录',
-		},
-		tbitem21: {
-			caption: '-',
-			tip: '',
-		},
-		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
-		},
-	},
-	xjeditviewtoolbar_toolbar: {
-		deuiaction5: {
-			caption: '确认',
-			tip: '确认',
-		},
-		deuiaction1: {
-			caption: '退出',
-			tip: '退出',
-		},
-	},
-	yqxeditviewtoolbar_toolbar: {
-		deuiaction1: {
-			caption: '关闭',
-			tip: '关闭',
-		},
-	},
-	ybheditviewtoolbar_toolbar: {
-		deuiaction3: {
-			caption: '保存',
-			tip: '保存',
-		},
-		deuiaction2: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
-		tbitem9: {
-			caption: '提交',
-			tip: '提交',
-		},
-		deuiaction1: {
-			caption: '关闭',
-			tip: '关闭',
-		},
-		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 };

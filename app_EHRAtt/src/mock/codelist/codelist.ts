@@ -82,7 +82,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '100米',
                 "data":"",
                 "codename":"Item_100",
-                value: '100',
+                value: 100,
                 
                 disabled: false,
             },
@@ -92,7 +92,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '200米',
                 "data":"",
                 "codename":"Item_200",
-                value: '200',
+                value: 200,
                 
                 disabled: false,
             },
@@ -102,7 +102,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '300米',
                 "data":"",
                 "codename":"Item_300",
-                value: '300',
+                value: 300,
                 
                 disabled: false,
             },
@@ -112,7 +112,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '400米',
                 "data":"",
                 "codename":"Item_400",
-                value: '400',
+                value: 400,
                 
                 disabled: false,
             },
@@ -122,7 +122,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '500米',
                 "data":"",
                 "codename":"Item_500",
-                value: '500',
+                value: 500,
                 
                 disabled: false,
             },

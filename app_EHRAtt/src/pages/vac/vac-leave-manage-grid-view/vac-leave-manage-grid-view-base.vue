@@ -174,7 +174,6 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
         view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
         view_grid: { name: 'grid', type: 'GRID' },
         view_searchform: { name: 'searchform', type: 'SEARCHFORM' },
-        wflinks: [],
     };
 
     /**

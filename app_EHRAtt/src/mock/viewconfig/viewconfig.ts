@@ -15,14 +15,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "AttEndanceSettingsEditView",
             "viewtag": "03511dfb145e54bb23246d7f2b417a36"
         },
-        "vacleavemanagewfproxyresultview": {
-            "title": "请假管理",
-            "caption": "请假管理",
-            "viewtype": "DEWFPROXYRESULTVIEW",
-            "viewmodule": "VAC",
-            "viewname": "VacLeaveManageWFProxyResultView",
-            "viewtag": "0361b45e3b9378abb8d90087987f746b"
-        },
         "ormorgsectormpickupview": {
             "title": "部门管理数据多项选择视图",
             "caption": "部门管理",
@@ -38,14 +30,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "ATT",
             "viewname": "AttEndenceSetupKQBYPickupView",
             "viewtag": "08aa713f08b89900801451e961cf368b"
-        },
-        "vacleavemanagespzeditview": {
-            "title": "请假管理",
-            "caption": "请假管理",
-            "viewtype": "DEEDITVIEW",
-            "viewmodule": "VAC",
-            "viewname": "VacLeaveManageSPZEditView",
-            "viewtag": "0bb928071e5b4c7d12b658219559994f"
         },
         "pimpersoncurorgpimpersonpickupview": {
             "title": "人员信息",
@@ -127,14 +111,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "VacLeaveDetailJHQJMX_EditView",
             "viewtag": "3451991293c2ae164b404d7a256b348e"
         },
-        "vacleavemanagewfproxystartview": {
-            "title": "流程启动",
-            "caption": "流程启动",
-            "viewtype": "DEWFPROXYSTARTVIEW",
-            "viewmodule": "VAC",
-            "viewname": "VacLeaveManageWFProxyStartView",
-            "viewtag": "3b1af739a51547cab59a33fc26d11c54"
-        },
         "ormorgsectorbmkqszeditview": {
             "title": "部门管理",
             "caption": "部门管理",
@@ -166,14 +142,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "VAC",
             "viewname": "VacLeaveDetailJHQJMX_GridView",
             "viewtag": "46624dab5e7a5e5026cab5092952f020"
-        },
-        "vacleavemanageytgeditview": {
-            "title": "请假管理",
-            "caption": "请假管理",
-            "viewtype": "DEEDITVIEW",
-            "viewmodule": "VAC",
-            "viewname": "VacLeaveManageYTGEditView",
-            "viewtag": "4761d5f43f4134c2e7834bc34ed57d12"
         },
         "attendancesettingsgridview": {
             "title": "考勤人员",
@@ -399,14 +367,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "AttEndanceMreportCurZZKQYBGridView",
             "viewtag": "afe13502a4b571a985bd43564512c74f"
         },
-        "vacleavemanageyqxeditview": {
-            "title": "请假管理",
-            "caption": "请假管理",
-            "viewtype": "DEEDITVIEW",
-            "viewmodule": "VAC",
-            "viewname": "VacLeaveManageYQXEditView",
-            "viewtag": "b26a9887e75ee79382d98bb3e628b22e"
-        },
         "attendancemreportkqybtreeexpview": {
             "title": "考勤月报树导航视图",
             "caption": "考勤月报",
@@ -462,14 +422,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PIM",
             "viewname": "PimPersonCurOrgPimpersonPickupGridView",
             "viewtag": "c26ad79b88eb56eb4d6abba57f3f35d1"
-        },
-        "vacleavemanageybheditview": {
-            "title": "请假管理",
-            "caption": "请假管理",
-            "viewtype": "DEEDITVIEW",
-            "viewmodule": "VAC",
-            "viewname": "VacLeaveManageYBHEditView",
-            "viewtag": "c9775c254d7a9feb29196a8b41d9bc26"
         },
         "vacholidayrulesgridview": {
             "title": "考勤规则",
@@ -542,14 +494,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "ATT",
             "viewname": "AttEndenceTypeEditView",
             "viewtag": "e1887c627c5d3e6b1a34311ecc990535"
-        },
-        "vacleavemanagexjeditview": {
-            "title": "销假",
-            "caption": "销假",
-            "viewtype": "DEEDITVIEW",
-            "viewmodule": "VAC",
-            "viewname": "VacLeaveManageXJEditView",
-            "viewtag": "e9af4f629b977549a5ec1ff26085c67d"
         },
         "vacleacetypeeditview": {
             "title": "休假类型管理编辑视图",

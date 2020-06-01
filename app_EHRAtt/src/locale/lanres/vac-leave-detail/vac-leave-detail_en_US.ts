@@ -69,41 +69,6 @@ export default {
       title: '请假明细',
 		},
 	},
-	jhqjmx_ck_form: {
-		details: {
-			grouppanel1: "计划", 
-			group1: "请假明细", 
-			formpage1: "基本信息", 
-			srfupdatedate: "更新时间", 
-			srforikey: "", 
-			srfkey: "请销假明细标识", 
-			srfmajortext: "请销假明细名称", 
-			srftempmode: "", 
-			srfuf: "", 
-			srfdeid: "", 
-			srfsourcekey: "", 
-			vacleavemanageid: "请销假管理标识", 
-			ormorgid: "组织标识", 
-			ormorgsectorid: "部门标识", 
-			pimpersonid: "人员信息标识", 
-			pimpersonname: "请假人员", 
-			qjzl: "请假种类", 
-			hyzk: "婚姻状况", 
-			tqlx: "探亲类型", 
-			njsy: "假期使用情况", 
-			tips: "温馨提示", 
-			jhkssj: "计划开始时间", 
-			jhkssxw: "计划开始上下午", 
-			jhjssj: "计划结束时间", 
-			jhjssxw: "计划结束上下午", 
-			jhts: "计划天数", 
-			fj: "附件", 
-			bz: "备注", 
-			vacleavedetailid: "请销假明细标识", 
-		},
-		uiactions: {
-		},
-	},
 	sjqjmx_form: {
 		details: {
 			grouppanel1: "计划", 
@@ -221,7 +186,42 @@ export default {
 		uiactions: {
 		},
 	},
-	ck_grid: {
+	jhqjmx_ck_form: {
+		details: {
+			grouppanel1: "计划", 
+			group1: "请假明细", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "请销假明细标识", 
+			srfmajortext: "请销假明细名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			vacleavemanageid: "请销假管理标识", 
+			ormorgid: "组织标识", 
+			ormorgsectorid: "部门标识", 
+			pimpersonid: "人员信息标识", 
+			pimpersonname: "请假人员", 
+			qjzl: "请假种类", 
+			hyzk: "婚姻状况", 
+			tqlx: "探亲类型", 
+			njsy: "假期使用情况", 
+			tips: "温馨提示", 
+			jhkssj: "计划开始时间", 
+			jhkssxw: "计划开始上下午", 
+			jhjssj: "计划结束时间", 
+			jhjssxw: "计划结束上下午", 
+			jhts: "计划天数", 
+			fj: "附件", 
+			bz: "备注", 
+			vacleavedetailid: "请销假明细标识", 
+		},
+		uiactions: {
+		},
+	},
+	main_grid: {
 		columns: {
 			pimpersonname: "请假人员",
 			qjzl: "请假种类",
@@ -236,7 +236,7 @@ export default {
 		uiactions: {
 		},
 	},
-	main_grid: {
+	ck_grid: {
 		columns: {
 			pimpersonname: "请假人员",
 			qjzl: "请假种类",
@@ -257,18 +257,6 @@ export default {
 			n_qjzl_eq: "请假种类(=)", 
 		},
 		uiactions: {
-		},
-	},
-	jhqjmx_ck_gridviewtoolbar_toolbar: {
-		deuiaction5: {
-			caption: "Help",
-			tip: "Help",
-		},
-	},
-	jhqjmx_ck_editviewtoolbar_toolbar: {
-		deuiaction1: {
-			caption: "退出",
-			tip: "退出",
 		},
 	},
 	sjqjmx_editviewtoolbar_toolbar: {
@@ -301,13 +289,25 @@ export default {
 			tip: "Remove {0}",
 		},
 	},
+	sjqjmx_ck_editviewtoolbar_toolbar: {
+		deuiaction1: {
+			caption: "退出",
+			tip: "退出",
+		},
+	},
 	sjqjmx_ck_gridviewtoolbar_toolbar: {
 		deuiaction5: {
 			caption: "Help",
 			tip: "Help",
 		},
 	},
-	sjqjmx_ck_editviewtoolbar_toolbar: {
+	jhqjmx_ck_gridviewtoolbar_toolbar: {
+		deuiaction5: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	jhqjmx_ck_editviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: "退出",
 			tip: "退出",

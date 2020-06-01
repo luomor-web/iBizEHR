@@ -83,9 +83,5 @@ zuul:
       path: /pcmwzd0001s/**
       serviceId: ehr-webapi
       stripPrefix: false
-    wfcore:
-      path: /wfcore/**
-      serviceId: ibzwf-api
-      stripPrefix: true
   sensitive-headers:
     - Cookie,Set-Cookie,Authorization
