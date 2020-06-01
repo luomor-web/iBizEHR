@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pim.service.logic.pimpersongenratepersonfile" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pim.service.logic.pimpersongenratepersonfile">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pimpersongenratepersonfiledefault" type="cn.ibizlab.ehr.core.pim.domain.PimPerson" />
+        </extensionElements>
+     <startEvent id="a5b1ff5492fb257102e028e77a897e42" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimpersongenratepersonfiledeaction1" id="f30463e2afbc1021c613c7ead60dba95" implementation="http://www.jboss.org/drools/rule" name="生成档案"/>
+     <endEvent id="f30463e2afbc1021c613c7ead60dba95_End" name="End"/>
+     <sequenceFlow id="f30463e2afbc1021c613c7ead60dba95_End_Line" sourceRef="f30463e2afbc1021c613c7ead60dba95" targetRef="f30463e2afbc1021c613c7ead60dba95_End"/>
+     <sequenceFlow id="98b60f5a15066dc4a6d8ab5a1de8ead7" sourceRef="a5b1ff5492fb257102e028e77a897e42" targetRef="f30463e2afbc1021c613c7ead60dba95">
+     </sequenceFlow>
+    </process>
+</definitions>
+

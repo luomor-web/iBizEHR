@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.orm.mapper.OrmUserMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="OrmUserResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPID`, t1.`MEMO`, t1.`ORGID`, t1.`ORGNAME`, t1.`ORGSECTORID`, t1.`ORGSECTORNAME`, t1.`ORGUSERID`, t1.`ORGUSERNAME`, t1.`UNUSERID`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERCODE`, t1.`VALIDFLAG` FROM `T_SRFORGUSER` t1  ) t1 where orguserid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="OrmUserResultMap" type="cn.ibizlab.ehr.core.orm.domain.OrmUser" autoMapping="true">
+        <id property="orguserid" column="orguserid" /><!--主键字段映射-->
+		<result property="orgid" column="orgid" />
+		<result property="orgsectorid" column="orgsectorid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="orgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="org" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="orgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ORMUSER_ORMORGSECTOR_ORGSECTORID] -->
+	 <select id="selectByOrgsectorid" resultMap="OrmUserResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  orgsectorid=#{orgsectorid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ORMUSER_ORMORG_ORGID] -->
+	 <select id="selectByOrgid" resultMap="OrmUserResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  orgid=#{orgid}
+     </select>
+
+    <!--数据集合[DQZZJXJZZ]-->
+	 <select id="searchDQZZJXJZZ"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmUserSearchContext"  resultMap="OrmUserResultMap">
+         select t1.* from (
+                <include refid="DQZZJXJZZ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmUserSearchContext"  resultMap="OrmUserResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPID`, t1.`MEMO`, t1.`ORGID`, t1.`ORGNAME`, t1.`ORGSECTORID`, t1.`ORGSECTORNAME`, t1.`ORGUSERID`, t1.`ORGUSERNAME`, t1.`UNUSERID`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERCODE`, t1.`VALIDFLAG` FROM `T_SRFORGUSER` t1  
+			]]>
+    </sql>
+
+    <!--数据查询[DQZZJXJZZ]-->
+    <sql id="DQZZJXJZZ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPID`, t1.`MEMO`, t1.`ORGID`, t1.`ORGNAME`, t1.`ORGSECTORID`, t1.`ORGSECTORNAME`, t1.`ORGUSERID`, t1.`ORGUSERNAME`, t1.`UNUSERID`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERCODE`, t1.`VALIDFLAG` FROM `T_SRFORGUSER` t1  LEFT JOIN T_SRFORG t11 ON t1.ORGID = t11.ORGID  
+				 WHERE 	( ( t11.`ORGID` =  #{srf.sessioncontext.SRFORGID}  OR  '64BCDCC1-24AA-42E4-AC7A-FB6F242F3FF1' = #{srf.sessioncontext.SRFORGID')}  OR  'ibzadmin' = (select t.loginaccountname from t_srfloginaccount t where t.loginaccountid = #{srf.sessioncontext.SRFPERSONID')})  OR  instr(t11.levelcode, ( select a.levelcode from t_srforg a where a.orgid = #{srf.sessioncontext.SRFORGID')} ) )=1 ) )
+					 AND ( t1.`VALIDFLAG` = 1 )
+			]]>
+    </sql>
+
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPID`, t1.`MEMO`, t1.`ORGID`, t1.`ORGNAME`, t1.`ORGSECTORID`, t1.`ORGSECTORNAME`, t1.`ORGUSERID`, t1.`ORGUSERNAME`, t1.`UNUSERID`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERCODE`, t1.`VALIDFLAG` FROM `T_SRFORGUSER` t1  
+			]]>
+    </sql>
+
+</mapper>
+

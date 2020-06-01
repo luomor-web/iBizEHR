@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmtxfpsqfillpersoninfo" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmtxfpsqfillpersoninfo">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmtxfpsqfillpersoninfodefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmTxfpsq" />
+        <tns:global identifier="pcmtxfpsqfillpersoninfopimperson" type="cn.ibizlab.ehr.core.pim.domain.PimPerson" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmtxfpsqfillpersoninfoprepareparam1" id="681c85c88fc068a290b6086f908bee93" implementation="http://www.jboss.org/drools/rule" name="设置人员id"/>
+     <startEvent id="07e9c7cf12c5a5f2e161ff625ea866d0" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmtxfpsqfillpersoninfodeaction1" id="710883f0d36d6a031c7a5b7f99792e24" implementation="http://www.jboss.org/drools/rule" name="查询人员信息"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmtxfpsqfillpersoninfoprepareparam2" id="f80c91b08039d4c3dbfcc8a18b1c53df" implementation="http://www.jboss.org/drools/rule" name="填充用户信息"/>
+     <endEvent id="f80c91b08039d4c3dbfcc8a18b1c53df_End" name="End"/>
+     <sequenceFlow id="f80c91b08039d4c3dbfcc8a18b1c53df_End_Line" sourceRef="f80c91b08039d4c3dbfcc8a18b1c53df" targetRef="f80c91b08039d4c3dbfcc8a18b1c53df_End"/>
+     <sequenceFlow id="3166a0403e16f8f098aaf6a54c2f4bd6" sourceRef="07e9c7cf12c5a5f2e161ff625ea866d0" targetRef="681c85c88fc068a290b6086f908bee93">
+     </sequenceFlow>
+     <sequenceFlow id="23cbce4d573c561754f7161810479413" sourceRef="681c85c88fc068a290b6086f908bee93" targetRef="710883f0d36d6a031c7a5b7f99792e24">
+     </sequenceFlow>
+     <sequenceFlow id="4959665cd59bccab367aca17b28050ff" sourceRef="710883f0d36d6a031c7a5b7f99792e24" targetRef="f80c91b08039d4c3dbfcc8a18b1c53df">
+     </sequenceFlow>
+    </process>
+</definitions>
+

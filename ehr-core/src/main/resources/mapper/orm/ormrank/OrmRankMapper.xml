@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.orm.mapper.OrmRankMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="OrmRankResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  ) t1 where ormrankid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="OrmRankResultMap" type="cn.ibizlab.ehr.core.orm.domain.OrmRank" autoMapping="true">
+        <id property="ormrankid" column="ormrankid" /><!--主键字段映射-->
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[JZRANK]-->
+	 <select id="searchJZRANK"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmRankSearchContext"  resultMap="OrmRankResultMap">
+         select t1.* from (
+                <include refid="JZRANK" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[JSRANK]-->
+	 <select id="searchJSRANK"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmRankSearchContext"  resultMap="OrmRankResultMap">
+         select t1.* from (
+                <include refid="JSRANK" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[DJYX]-->
+	 <select id="searchDJYX"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmRankSearchContext"  resultMap="OrmRankResultMap">
+         select t1.* from (
+                <include refid="DJYX" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[JSNRANK]-->
+	 <select id="searchJSNRANK"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmRankSearchContext"  resultMap="OrmRankResultMap">
+         select t1.* from (
+                <include refid="JSNRANK" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmRankSearchContext"  resultMap="OrmRankResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[CurRank]-->
+	 <select id="searchCurRank"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmRankSearchContext"  resultMap="OrmRankResultMap">
+         select t1.* from (
+                <include refid="CurRank" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[CurRank]-->
+    <sql id="CurRank" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  
+				 WHERE 	( (((select orgcode from t_srforg a where a.orgid = #{srf.sessioncontext.SRFORGID')}) in ('BG','100','10101')) or ((select orgcode from t_srforg a where a.orgid = #{srf.sessioncontext.SRFORGID')}) not in ('BG','100','10101')  and   t1.xh>=(select xh from t_ormrank where ormrankid='D1')) or ('ibzadmin' = (select t.loginaccountname from t_srfloginaccount t where t.loginaccountid = #{srf.sessioncontext.SRFPERSONID')}))) )
+			]]>
+    </sql>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  
+			]]>
+    </sql>
+
+    <!--数据查询[DJYX]-->
+    <sql id="DJYX" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  
+				 WHERE 	( t1.xh>=(select xh from t_ormrank where ormrankid='D1') )
+			]]>
+    </sql>
+
+    <!--数据查询[JSNRANK]-->
+    <sql id="JSNRANK" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  
+				 WHERE 	( ( t1.xh<(select xh from t_ormrank a where a.ormrankid=(select b.rank from v_Pimperson b where b.PIMPERSONID=#{srf.datacontext.PIMPERSONID}))  OR  exists ( select * from v_Pimperson b where b.rank is NULL and b.pimpersonid=#{srf.datacontext.PIMPERSONID} and b.enable=1 and b.jlss='10') )  AND  t1.xh>=(select xh from t_ormrank where ormrankid='D1') )
+			]]>
+    </sql>
+
+    <!--数据查询[JSRANK]-->
+    <sql id="JSRANK" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  
+				 WHERE 	( ( t1.xh<(select xh from t_ormrank a where a.ormrankid=(select b.rank from v_Pimperson b where b.PIMPERSONID=#{srf.datacontext.PIMPERSONID}))  OR  exists ( select * from v_Pimperson b where b.rank is NULL and b.pimpersonid=#{srf.datacontext.PIMPERSONID} and b.enable=1 and b.jlss='10') ) )
+			]]>
+    </sql>
+
+    <!--数据查询[JZRANK]-->
+    <sql id="JZRANK" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  
+				 WHERE 	( ( t1.xh>(select xh from t_ormrank a where a.ormrankname=(select b.rank from v_pimperson b where b.PIMPERSONID=#{srf.datacontext.PIMPERSONID')}))  OR  t1.xh>(select xh from t_ormrank a where a.ormrankname=(select b.rank from v_pimperson b where b.PIMPERSONID=#{srf.webcontext.pimpersonid')})) ) )
+			]]>
+    </sql>
+
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  
+			]]>
+    </sql>
+
+</mapper>
+
