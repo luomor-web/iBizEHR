@@ -281,6 +281,20 @@ export default {
 			tip: '关闭',
 		},
 	},
+	gridviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: '新建',
+			tip: '新建',
+		},
+		deuiaction1: {
+			caption: '删除',
+			tip: '删除',
+		},
+		tbitem19: {
+			caption: '过滤',
+			tip: '过滤',
+		},
+	},
 	ngeditviewtoolbar_toolbar: {
 		deuiaction3: {
 			caption: '保存',
@@ -299,28 +313,6 @@ export default {
 			tip: '关闭',
 		},
 		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
-		},
-	},
-	gridviewtoolbar_toolbar: {
-		tbitem1_xjqj: {
-			caption: '新建',
-			tip: '新建',
-		},
-		tbitem1_kscqj: {
-			caption: '删除',
-			tip: '删除',
-		},
-		tbitem19: {
-			caption: '过滤',
-			tip: '过滤',
-		},
-		tbitem13: {
-			caption: '导出数据',
-			tip: '导出数据',
-		},
-		tbitem18: {
 			caption: '帮助',
 			tip: '帮助',
 		},
