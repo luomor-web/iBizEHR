@@ -49,54 +49,24 @@ export default {
 		uiactions: {
 		},
 	},
-	default_searchform: {
-		details: {
-			formpage1: "常规条件", 
-			n_vacleacetypename_like: "休假类型名称", 
-		},
-		uiactions: {
-		},
-	},
-	gridviewtoolbar2_toolbar: {
+	gridviewtoolbar_toolbar: {
 		deuiaction1: {
-			caption: "New",
-			tip: "New",
+			caption: "新建",
+			tip: "新建",
 		},
 		deuiaction2: {
 			caption: "保存",
 			tip: "保存",
 		},
+		deuiaction3: {
+			caption: "Remove",
+			tip: "Remove {0}",
+		},
 		deuiaction4: {
-			caption: "Remove",
-			tip: "Remove {0}",
-		},
-		deuiaction3: {
-			caption: "关闭行编辑",
-			tip: "关闭行编辑",
-		},
-	},
-	gridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "New",
-			tip: "New",
-		},
-		tbitem8: {
-			caption: "Remove",
-			tip: "Remove {0}",
-		},
-		deuiaction2: {
-			caption: "Filter",
-			tip: "Filter",
-		},
-		deuiaction1: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
-		},
-		deuiaction3: {
 			caption: "导入",
 			tip: "导入",
 		},
-		tbitem13: {
+		deuiaction5: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
 		},

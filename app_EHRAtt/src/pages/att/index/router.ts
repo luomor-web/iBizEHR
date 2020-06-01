@@ -2679,6 +2679,20 @@ const router = new Router({
         component: () => import('@pages/vac/vac-leace-type-grid-view/vac-leace-type-grid-view.vue'),
     },
     {
+        path: '/attendencetypes/:attendencetype?/editview/:editview?',
+        meta: {
+            caption: 'entities.attendencetype.views.editview.caption',
+            imgPath: '../../../img/newimage/1/kaoqinleixing.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'attendencetypes', parameterName: 'attendencetype' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/att/att-endence-type-edit-view/att-endence-type-edit-view.vue'),
+    },
+    {
         path: '/pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/xjeditview/:xjeditview?',
         meta: {
             caption: 'entities.vacleavemanage.views.xjeditview.caption',

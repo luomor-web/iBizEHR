@@ -653,6 +653,15 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'e1887c627c5d3e6b1a34311ecc990535',
+            viewmodule: 'ATT',
+            viewname: 'AttEndenceTypeEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
             viewtag: 'e9af4f629b977549a5ec1ff26085c67d',
             viewmodule: 'VAC',
             viewname: 'VacLeaveManageXJEditView',

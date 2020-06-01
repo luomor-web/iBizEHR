@@ -48,16 +48,7 @@ export default {
 		uiactions: {
 		},
 	},
-	default_searchform: {
-		details: {
-			formpage1: '常规条件', 
-			n_typecode_like: '考勤类型代码(%)', 
-			n_attendencetypename_like: '考勤类型名称(%)', 
-		},
-		uiactions: {
-		},
-	},
-	gridviewtoolbar2_toolbar: {
+	gridviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: '新建',
 			tip: '新建',
@@ -66,37 +57,15 @@ export default {
 			caption: '保存',
 			tip: '保存',
 		},
+		deuiaction3: {
+			caption: '删除',
+			tip: '删除',
+		},
 		deuiaction4: {
-			caption: '删除',
-			tip: '删除',
-		},
-		deuiaction3: {
-			caption: '关闭行编辑',
-			tip: '关闭行编辑',
-		},
-	},
-	gridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: '新建',
-			tip: '新建',
-		},
-		tbitem8: {
-			caption: '删除',
-			tip: '删除',
-		},
-		deuiaction2: {
-			caption: '过滤',
-			tip: '过滤',
-		},
-		deuiaction1: {
-			caption: '开启行编辑',
-			tip: '开启行编辑',
-		},
-		deuiaction3: {
 			caption: '导入',
 			tip: '导入',
 		},
-		tbitem13: {
+		deuiaction5: {
 			caption: '导出',
 			tip: '导出',
 		},
@@ -106,13 +75,21 @@ export default {
 			caption: '保存',
 			tip: '保存',
 		},
+		tbitem4: {
+			caption: '保存并新建',
+			tip: '保存并新建',
+		},
 		tbitem5: {
 			caption: '保存并关闭',
 			tip: '保存并关闭',
 		},
-		deuiaction1: {
-			caption: '关闭',
-			tip: '关闭',
+		tbitem7: {
+			caption: '删除并关闭',
+			tip: '删除并关闭',
+		},
+		tbitem22: {
+			caption: '帮助',
+			tip: '帮助',
 		},
 	},
 };

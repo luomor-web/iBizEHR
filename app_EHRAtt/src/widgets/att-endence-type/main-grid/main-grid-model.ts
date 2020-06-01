@@ -70,17 +70,6 @@ export default class MainModel {
           name: 'attendencetype',
           prop: 'attendencetypeid',
         },
-      {
-        name: 'n_typecode_like',
-        prop: 'n_typecode_like',
-        dataType: 'TEXT',
-      },
-      {
-        name: 'n_attendencetypename_like',
-        prop: 'n_attendencetypename_like',
-        dataType: 'TEXT',
-      },
-
         {
           name:'size',
           prop:'size'

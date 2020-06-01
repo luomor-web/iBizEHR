@@ -70,12 +70,6 @@ export default class MainModel {
           name: 'vacleacetype',
           prop: 'vacleacetypeid',
         },
-      {
-        name: 'n_vacleacetypename_like',
-        prop: 'n_vacleacetypename_like',
-        dataType: 'TEXT',
-      },
-
         {
           name:'size',
           prop:'size'
