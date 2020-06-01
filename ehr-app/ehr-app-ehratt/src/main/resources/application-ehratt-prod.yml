@@ -3,5 +3,45 @@ server:
 #zuul网关路由设置
 zuul:
   routes:
+    vacleavetips:
+      path: /vacleavetips/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorg:
+      path: /ormorgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimperson:
+      path: /pimpeople/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacholidayrules:
+      path: /vacholidayrules/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attendenceormorgsector:
+      path: /attendenceormorgscetors/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorgsector:
+      path: /ormorgsectors/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    vacholiday:
+      path: /vacholidays/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attendencesetup:
+      path: /attendencesetups/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    attendancesettings:
+      path: /attendancesettings/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormbmkqdz:
+      path: /ormbmkqdzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
   sensitive-headers:
     - Cookie,Set-Cookie,Authorization
