@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmprofilegroupconfirm" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmprofilegroupconfirm">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmprofilegroupconfirmdefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmProfile" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmprofilegroupconfirmprepareparam1" id="17936D00-489B-4985-835D-AC79EB03BFFD" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+     <startEvent id="1EC500A1-D2F6-40EE-B6A6-52A78DE01A1D" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmprofilegroupconfirmdeaction1" id="DB75C73E-B6D0-430D-ADE5-FCB8C959F174" implementation="http://www.jboss.org/drools/rule" name="变更状态为待审批编号"/>
+     <endEvent id="DB75C73E-B6D0-430D-ADE5-FCB8C959F174_End" name="End"/>
+     <sequenceFlow id="DB75C73E-B6D0-430D-ADE5-FCB8C959F174_End_Line" sourceRef="DB75C73E-B6D0-430D-ADE5-FCB8C959F174" targetRef="DB75C73E-B6D0-430D-ADE5-FCB8C959F174_End"/>
+     <sequenceFlow id="6770EAF4-EDEA-4DF3-951A-CC133EC57918" sourceRef="17936D00-489B-4985-835D-AC79EB03BFFD" targetRef="DB75C73E-B6D0-430D-ADE5-FCB8C959F174">
+     </sequenceFlow>
+     <sequenceFlow id="C1C60AC7-79BB-4F5D-BF26-FB346D9C697E" sourceRef="1EC500A1-D2F6-40EE-B6A6-52A78DE01A1D" targetRef="17936D00-489B-4985-835D-AC79EB03BFFD">
+     </sequenceFlow>
+    </process>
+</definitions>
+
