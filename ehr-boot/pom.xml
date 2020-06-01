@@ -51,6 +51,11 @@
         </dependency>
         <dependency>
             <groupId>cn.ibizlab.ehr</groupId>
+            <artifactId>ehr-app-ehratt</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.ibizlab.ehr</groupId>
             <artifactId>ehr-app-ehrpim</artifactId>
             <version>${project.version}</version>
         </dependency>

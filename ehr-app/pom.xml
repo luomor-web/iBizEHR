@@ -20,6 +20,7 @@
         <module>ehr-app-ehrmob</module>
         <module>ehr-app-ehrpcm</module>
         <module>ehr-app-ehrorm</module>
+        <module>ehr-app-ehratt</module>
         <module>ehr-app-ehrpim</module>
     </modules>
 

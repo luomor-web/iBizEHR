@@ -296,7 +296,7 @@ export default class OrgTreeExpViewtreeexpbarBase extends Vue implements Control
         if (Object.is(expmode, 'ORMORG')) {
             return {  
                 viewname: 'ormorgorg-tree-grid-view', 
-                parentdata: {"srfparentdefname":"n_porgid_eq","srfparentdename":"ORMORG","srfparentmode":"DER1N_ORMORG_ORMORG_PORGID","nodeid":"%NODEID%"},
+                parentdata: {"srfparentdefname":"n_porgid_eq","srfparentdename":"ORMORG","srfparentmode":"DER1N_ORMORG_ORMORG_PORGID"},
                 deKeyField:'ormorg'
 			};
         }
@@ -310,7 +310,7 @@ export default class OrgTreeExpViewtreeexpbarBase extends Vue implements Control
         if (Object.is(expmode, 'SUBORG')) {
             return {  
                 viewname: 'ormorgorg-tree-grid-view', 
-                parentdata: {"srfparentdefname":"n_porgid_eq","srfparentdename":"ORMORG","srfparentmode":"DER1N_ORMORG_ORMORG_PORGID","nodeid":"%NODEID%"},
+                parentdata: {"srfparentdefname":"n_porgid_eq","srfparentdename":"ORMORG","srfparentmode":"DER1N_ORMORG_ORMORG_PORGID"},
                 deKeyField:'ormorg'
 			};
         }

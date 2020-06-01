@@ -42,7 +42,7 @@
       cd ehr-app/ehr-app-ehrorm
       mvn -Pehrorm docker:build
       mvn -Pehrorm docker:push
-      docker -H $para1 stack deploy --compose-file=src/main/docker/ehr-app-ehrorm.yaml iBizDemo --with-registry-auth
+      docker -H $para1 stack deploy --compose-file=src/main/docker/ehr-app-ehrorm.yaml iBizEE --with-registry-auth
       </command>
     </hudson.tasks.Shell>
   </builders>

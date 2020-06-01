@@ -2834,6 +2834,12 @@
             }
             ,
             {
+               "appid":"EHRAtt",
+               "appname":"EHRATT（假勤管理）",
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[] }]
+            }
+            ,
+            {
                "appid":"EHRPim",
                "appname":"EHRPIM（基础管理）",
                "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem45" , "name":"门户首页" },{ "id":"menuitem1" , "name":"人员信息" , "items":[{ "id":"menuitem2" , "name":"员工信息" },{ "id":"menuitem3" , "name":"自助信息审核" },{ "id":"menuitem10" , "name":"黑名单" }]},{ "id":"menuitem46" , "name":"人员花名册" , "items":[{ "id":"menuitem11" , "name":"人员花名册" },{ "id":"menuitem4" , "name":"见习员工" },{ "id":"menuitem5" , "name":"试用员工" },{ "id":"menuitem6" , "name":"离(退)休人员" },{ "id":"menuitem7" , "name":"离职人员" },{ "id":"menuitem8" , "name":"借调员工" },{ "id":"menuitem9" , "name":"挂职员工" }]},{ "id":"menuitem13" , "name":"合同管理" , "items":[{ "id":"menuitem20" , "name":"劳务派遣公司" },{ "id":"menuitem21" , "name":"合同信息" },{ "id":"menuitem22" , "name":"初签(续签)提醒" },{ "id":"menuitem23" , "name":"终止提醒" }]},{ "id":"menuitem14" , "name":"档案管理" , "items":[{ "id":"menuitem24" , "name":"档案信息" },{ "id":"menuitem25" , "name":"非员工在档提醒" },{ "id":"menuitem26" , "name":"员工不在档提醒" },{ "id":"menuitem27" , "name":"档案转出记录" }]},{ "id":"menuitem15" , "name":"证书管理" , "items":[{ "id":"menuitem28" , "name":"证书信息" }]},{ "id":"menuitem16" , "name":"职称管理" , "items":[{ "id":"menuitem29" , "name":"职称信息" }]},{ "id":"menuitem17" , "name":"出(国)境管理" , "items":[{ "id":"menuitem30" , "name":"因公出(国)境" },{ "id":"menuitem31" , "name":"因私出(国)境" }]},{ "id":"menuitem18" , "name":"离(退)休管理" , "items":[{ "id":"menuitem32" , "name":"离(退)休人员" },{ "id":"menuitem33" , "name":"老干部活动" },{ "id":"menuitem34" , "name":"费用台账" }]},{ "id":"menuitem19" , "name":"标准化数据设置" , "items":[{ "id":"menuitem36" , "name":"合同类别" },{ "id":"menuitem37" , "name":"合同类型" },{ "id":"menuitem40" , "name":"执业资格证书" },{ "id":"menuitem41" , "name":"岗位(技能)证书" },{ "id":"menuitem43" , "name":"职称目录" },{ "id":"menuitem44" , "name":"档案室" }]}] }]

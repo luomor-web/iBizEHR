@@ -1,7 +1,7 @@
 version: "3.2"
 services:
-  ehr-app-ehrpcm2:
-    image: registry.cn-shanghai.aliyuncs.com/ibizsys/ehr-app-ehrpcm2:latest
+  ehr-app-ehratt:
+    image: registry.cn-shanghai.aliyuncs.com/ibizsys/ehr-app-ehratt:latest
     ports:
       - "6091:6091"
     networks:
