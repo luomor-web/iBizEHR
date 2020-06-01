@@ -46,6 +46,10 @@ export default {
 			caption: "考勤设置向导",
       title: '考勤设置向导',
 		},
+		gridview: {
+			caption: "考勤设置",
+      title: '考勤设置',
+		},
 		kqsztreeexpview: {
 			caption: "考勤设置",
       title: '考勤设置',
@@ -208,6 +212,28 @@ export default {
 		deuiaction1: {
 			caption: "关闭",
 			tip: "关闭",
+		},
+	},
+	gridviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "New",
+			tip: "New",
+		},
+		tbitem8: {
+			caption: "Remove",
+			tip: "Remove {0}",
+		},
+		tbitem19: {
+			caption: "Filter",
+			tip: "Filter",
+		},
+		tbitem13: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
+		tbitem18: {
+			caption: "Help",
+			tip: "Help",
 		},
 	},
 	attendencesetuptree_treeview: {

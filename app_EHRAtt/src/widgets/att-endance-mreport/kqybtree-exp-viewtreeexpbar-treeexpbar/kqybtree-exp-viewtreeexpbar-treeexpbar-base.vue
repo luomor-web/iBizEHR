@@ -292,15 +292,15 @@ export default class KQYBTreeExpViewtreeexpbarBase extends Vue implements Contro
         }
         if (Object.is(expmode, 'ORMORG')) {
             return {  
-                viewname: 'att-endance-mreport-cur-zzkqybgrid-view', 
+                viewname: 'att-endance-mreport-grid-view', 
                 parentdata: {"nodeid":"%NODEID%"},
                 deKeyField:'attendancemreport'
 			};
         }
         if (Object.is(expmode, 'SUBORG')) {
             return {  
-                viewname: 'att-endance-mreport-cur-zzkqybgrid-view', 
-                parentdata: {"nodeid":"%NODEID%"},
+                viewname: 'att-endance-mreport-grid-view', 
+                parentdata: {"srfparentdefname":"n_ormorgid_eq","srfparentdename":"ORMORG","srfparentmode":"DER1N_ATTENDANCEMREPORT_ORMORG_ORMORGID","nodeid":"%NODEID%"},
                 deKeyField:'attendancemreport'
 			};
         }

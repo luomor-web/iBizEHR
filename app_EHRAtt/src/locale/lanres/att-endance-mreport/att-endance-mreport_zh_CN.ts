@@ -19,6 +19,10 @@ export default {
     attendencesetupid: '考勤设置标识',
   },
 	views: {
+		gridview: {
+			caption: '考勤月报',
+      title: '考勤月报',
+		},
 		editview: {
 			caption: '考勤月报',
       title: '考勤月报',
@@ -83,7 +87,7 @@ export default {
 		uiactions: {
 		},
 	},
-	curzzkqybgridviewtoolbar_toolbar: {
+	gridviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: '新建',
 			tip: '新建',
@@ -96,13 +100,13 @@ export default {
 			caption: '生成月报',
 			tip: '生成月报',
 		},
-		tbitem14_exportkqyb: {
-			caption: '导出月报',
-			tip: '导出月报',
-		},
-		deuiaction2_qr: {
+		tbitem14_qr: {
 			caption: '确认月报',
 			tip: '确认月报',
+		},
+		deuiaction2_printkqyb: {
+			caption: '打印月报',
+			tip: '打印月报',
 		},
 		tbitem19: {
 			caption: '过滤',
@@ -131,6 +135,36 @@ export default {
 			tip: '删除并关闭',
 		},
 		tbitem22: {
+			caption: '帮助',
+			tip: '帮助',
+		},
+	},
+	curzzkqybgridviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: '新建',
+			tip: '新建',
+		},
+		tbitem8: {
+			caption: '删除',
+			tip: '删除',
+		},
+		tbitem1_sckqyb: {
+			caption: '生成月报',
+			tip: '生成月报',
+		},
+		tbitem14_exportkqyb: {
+			caption: '导出月报',
+			tip: '导出月报',
+		},
+		deuiaction2_qr: {
+			caption: '确认月报',
+			tip: '确认月报',
+		},
+		tbitem19: {
+			caption: '过滤',
+			tip: '过滤',
+		},
+		tbitem18: {
 			caption: '帮助',
 			tip: '帮助',
 		},

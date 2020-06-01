@@ -79,6 +79,14 @@
         "viewname": "AttEndanceSettingsFYGZZKQGridView",
         "viewtag": "21c8d14633617b68f310969a0f6225c6"
     },
+    "attendancemreportgridview": {
+        "title": "考勤月报",
+        "caption": "考勤月报",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "ATT",
+        "viewname": "AttEndanceMreportGridView",
+        "viewtag": "2391d49830a35dc8463624f367328220"
+    },
     "vacleavedetailsjqjmx_editview": {
         "title": "请假明细",
         "caption": "请假明细",
@@ -231,6 +239,14 @@
         "viewname": "AttEndenceSetupKQSZWizardView",
         "viewtag": "74aaa92a32b08041d98ae05afa42f240"
     },
+    "attendencesetupgridview": {
+        "title": "考勤设置表格视图",
+        "caption": "考勤设置",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "ATT",
+        "viewname": "AttEndenceSetupGridView",
+        "viewtag": "77e4fa1cbbb1ba59a3fe409f9fdd5a69"
+    },
     "ormbmkqdzpickupview": {
         "title": "部门地址维护数据选择视图",
         "caption": "部门地址维护",
@@ -246,6 +262,14 @@
         "viewmodule": "PCM",
         "viewname": "PcmWzd0001YGSZKQOptionView",
         "viewtag": "7f5fde30882cd704aa8fdaf922c320fa"
+    },
+    "attensummarygridview": {
+        "title": "考勤汇总",
+        "caption": "考勤汇总",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "ATT",
+        "viewname": "AttEnsummaryGridView",
+        "viewtag": "84cae1f3f8f9a64e17f8889bc7dc1b2d"
     },
     "attendenceormorgscetorgridview": {
         "title": "考勤部门",

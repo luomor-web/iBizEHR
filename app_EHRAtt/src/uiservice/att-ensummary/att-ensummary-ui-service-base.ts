@@ -80,6 +80,7 @@ export default class AttEnsummaryUIServiceBase extends UIService {
      */  
     public initViewMap(){
         this.allViewMap.set(':',{viewname:'curzzkqhzgridview',srfappde:'attensummaries'});
+        this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'attensummaries'});
         this.allViewMap.set(':',{viewname:'kqhztreeexpview',srfappde:'attensummaries'});
     }
 

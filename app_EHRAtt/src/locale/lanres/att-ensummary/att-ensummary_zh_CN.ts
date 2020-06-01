@@ -64,6 +64,10 @@ export default {
 			caption: '考勤汇总',
       title: '考勤汇总',
 		},
+		gridview: {
+			caption: '考勤汇总',
+      title: '考勤汇总',
+		},
 		kqhztreeexpview: {
 			caption: '考勤汇总',
       title: '考勤汇总',
@@ -128,6 +132,24 @@ export default {
 		},
 	},
 	curzzkqhzgridviewtoolbar_toolbar: {
+		deuiaction1: {
+			caption: '数据导出',
+			tip: '数据导出',
+		},
+		tbitem23: {
+			caption: '数据导入',
+			tip: '数据导入',
+		},
+		tbitem19: {
+			caption: '过滤',
+			tip: '过滤',
+		},
+		tbitem18: {
+			caption: '帮助',
+			tip: '帮助',
+		},
+	},
+	gridviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: '数据导出',
 			tip: '数据导出',

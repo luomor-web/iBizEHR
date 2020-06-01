@@ -418,6 +418,14 @@ export default class ATTENDENCESETUPTreeService extends ControlService {
         filter = this.handleResNavParams(context,filter,rsNavParams,rsParams);
         return new Promise((resolve:any,reject:any) =>{
             let searchFilter: any = {};
+            if (Object.is(filter.strNodeType, this.TREENODE_SUBORG)) {
+                Object.assign(searchFilter, { n_porgid_eq: filter.nodeid });
+            }
+
+            if (Object.is(filter.strNodeType, this.TREENODE_ORMORG)) {
+                Object.assign(searchFilter, { n_porgid_eq: filter.nodeid });
+            }
+
             Object.assign(searchFilter, { total: false });
             Object.assign(searchFilter, { query: filter.srfnodefilter });
             let bFirst: boolean = true;
@@ -443,6 +451,7 @@ export default class ATTENDENCESETUPTreeService extends ControlService {
                         Object.assign(treeNode, { id: strNodeId });
                         Object.assign(treeNode, { expanded: filter.isautoexpand });
                         Object.assign(treeNode, { leaf: false });
+                        Object.assign(treeNode, { navfilter: "n_ormorgid_eq" });
                         Object.assign(treeNode, { navparams: '{"nodeid":"%NODEID%"}' });
                         Object.assign(treeNode, { nodeid: treeNode.srfkey });
                         Object.assign(treeNode, { nodeid2: filter.strRealNodeId });

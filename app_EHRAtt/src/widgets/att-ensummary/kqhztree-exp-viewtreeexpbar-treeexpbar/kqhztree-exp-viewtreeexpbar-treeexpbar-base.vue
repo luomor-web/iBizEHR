@@ -292,7 +292,7 @@ export default class KQHZTreeExpViewtreeexpbarBase extends Vue implements Contro
         }
         if (Object.is(expmode, 'ORMORG')) {
             return {  
-                viewname: 'att-ensummary-cur-zzkqhzgrid-view', 
+                viewname: 'att-ensummary-grid-view', 
                 parentdata: {"nodeid":"%NODEID%"},
                 deKeyField:'attensummary'
 			};

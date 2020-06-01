@@ -33,17 +33,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '0e3c8ea0609ff239614c28a75a94ea87',
-            viewmodule: 'ATT',
-            viewname: 'AttEndenceSetupCurOrgKQSZGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '74aaa92a32b08041d98ae05afa42f240',
-                '1670d8d1ba576d381e759a1968ca96d9',
-            ],
-        },
-        {
             viewtag: '106a8c5b57b9dc11b0eaf030ef117458',
             viewmodule: 'ORM',
             viewname: 'OrmOrgJQGZSYFPXXPickupView',
@@ -95,6 +84,16 @@ export const viewstate: any = {
             refviews: [
                 '03511dfb145e54bb23246d7f2b417a36',
                 'fda0fddd972d90b7d9335a0aa20c6cf4',
+            ],
+        },
+        {
+            viewtag: '2391d49830a35dc8463624f367328220',
+            viewmodule: 'ATT',
+            viewname: 'AttEndanceMreportGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '6b3008117fb17fb739d7fa3a19cec37b',
             ],
         },
         {
@@ -226,16 +225,13 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '74aaa92a32b08041d98ae05afa42f240',
+            viewtag: '77e4fa1cbbb1ba59a3fe409f9fdd5a69',
             viewmodule: 'ATT',
-            viewname: 'AttEndenceSetupKQSZWizardView',
+            viewname: 'AttEndenceSetupGridView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'a0616d69352ba5fc46e1e359b78a810a',
-                '49181fed112a6e7d9c86a8a261583959',
-                '8994b647b6c3896f2b2a29a78ffffccb',
-                '0df297d269c07a0970657b7f56adb1ea',
+                '1670d8d1ba576d381e759a1968ca96d9',
             ],
         },
         {
@@ -256,6 +252,15 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '08aa713f08b89900801451e961cf368b',
+            ],
+        },
+        {
+            viewtag: '84cae1f3f8f9a64e17f8889bc7dc1b2d',
+            viewmodule: 'ATT',
+            viewname: 'AttEnsummaryGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
             ],
         },
         {
@@ -296,7 +301,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '0e3c8ea0609ff239614c28a75a94ea87',
+                '77e4fa1cbbb1ba59a3fe409f9fdd5a69',
             ],
         },
         {
@@ -348,23 +353,13 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: 'afe13502a4b571a985bd43564512c74f',
-            viewmodule: 'ATT',
-            viewname: 'AttEndanceMreportCurZZKQYBGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '6b3008117fb17fb739d7fa3a19cec37b',
-            ],
-        },
-        {
             viewtag: 'b3d5e8674764efcf3f73cf0b6292d898',
             viewmodule: 'ATT',
             viewname: 'AttEndanceMreportKQYBTreeExpView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'afe13502a4b571a985bd43564512c74f',
+                '2391d49830a35dc8463624f367328220',
             ],
         },
         {
@@ -474,6 +469,7 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '64d9d612dfb1fcc1a6f5f599e5f62308',
+                '84cae1f3f8f9a64e17f8889bc7dc1b2d',
             ],
         },
         {
