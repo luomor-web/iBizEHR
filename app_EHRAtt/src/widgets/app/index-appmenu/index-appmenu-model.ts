@@ -45,7 +45,7 @@ export default class IndexModel {
 	hidesidebar: false,
 	opendefault: false,
 	iconcls: '',
-	icon: '',
+	icon: '../../../img/newimage/1/jiejiariguanli.png',
 	textcls: '',
 	appfunctag: '_2',
 	resourcetag: '',
