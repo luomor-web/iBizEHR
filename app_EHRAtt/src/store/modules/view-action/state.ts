@@ -13,15 +13,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '0361b45e3b9378abb8d90087987f746b',
-            viewmodule: 'VAC',
-            viewname: 'VacLeaveManageWFProxyResultView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-            ],
-        },
-        {
             viewtag: '08aa713f08b89900801451e961cf368b',
             viewmodule: 'ATT',
             viewname: 'AttEndenceSetupKQBYPickupView',

@@ -258,7 +258,7 @@
         "viewmodule": "VAC",
         "viewname": "VacLeaveManageNGEditView",
         "viewtag": "674c3fe6e36a1eb0f72af7c6a7f76905",
-        "memo": "系统自动添加"
+        "memo": ""
     },
     "attendancemreporteditview": {
         "title": "考勤月报",

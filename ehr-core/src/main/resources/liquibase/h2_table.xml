@@ -1944,7 +1944,7 @@
 
 
     <!--输出实体[VACLEAVEMANAGE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-vacleavemanage-50-57">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-vacleavemanage-60-57">
         <createTable tableName="T_VACLEAVEMANAGE">
                 <column name="VACLEAVEMANAGENAME" remarks="" type="VARCHAR(200)">
                 </column>
@@ -12192,7 +12192,7 @@
        <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_PARYDGZJH" constraintName="DER1N_PARYDGZJH_ORMORGSECTOR_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
     </changeSet>
         <!--输出实体[VACLEAVEMANAGE]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-vacleavemanage-50-365">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-vacleavemanage-60-365">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_VACLEAVEMANAGE" constraintName="DER1N_VACLEAVEMANAGE_PIMPERSON" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[PIMBYZZJLMX]外键关系 -->

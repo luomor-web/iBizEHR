@@ -1511,35 +1511,6 @@ const router = new Router({
         component: () => import('@pages/att/att-endance-settings-edit-view/att-endance-settings-edit-view.vue'),
     },
     {
-        path: '/pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/wfproxyresultview/:wfproxyresultview?',
-        meta: {
-            caption: 'entities.vacleavemanage.views.wfproxyresultview.caption',
-            imgPath: '../../../img/newimage/1/qingjiaguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                { pathName: 'wfproxyresultview', parameterName: 'wfproxyresultview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/vac/vac-leave-manage-wfproxy-result-view/vac-leave-manage-wfproxy-result-view.vue'),
-    },
-    {
-        path: '/vacleavemanages/:vacleavemanage?/wfproxyresultview/:wfproxyresultview?',
-        meta: {
-            caption: 'entities.vacleavemanage.views.wfproxyresultview.caption',
-            imgPath: '../../../img/newimage/1/qingjiaguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                { pathName: 'wfproxyresultview', parameterName: 'wfproxyresultview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/vac/vac-leave-manage-wfproxy-result-view/vac-leave-manage-wfproxy-result-view.vue'),
-    },
-    {
         path: '/attendencesetups/:attendencesetup?/kqbypickupview/:kqbypickupview?',
         meta: {
             caption: 'entities.attendencesetup.views.kqbypickupview.caption',
