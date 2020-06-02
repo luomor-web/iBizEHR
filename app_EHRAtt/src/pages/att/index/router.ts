@@ -574,6 +574,22 @@ const router = new Router({
                     component: () => import('@pages/att/att-endance-mreportmx-edit-view/att-endance-mreportmx-edit-view.vue'),
                 },
                 {
+                    path: 'attendancemreports/:attendancemreport?/attendancemreportmxes/:attendancemreportmx?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.attendancemreportmx.views.editview.caption',
+                        imgPath: '../../../img/newimage/1/kaoqinyuebao.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'attendancemreports', parameterName: 'attendancemreport' },
+                            { pathName: 'attendancemreportmxes', parameterName: 'attendancemreportmx' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/att/att-endance-mreportmx-edit-view/att-endance-mreportmx-edit-view.vue'),
+                },
+                {
                     path: 'attendancemreportmxes/:attendancemreportmx?/editview/:editview?',
                     meta: {
                         caption: 'entities.attendancemreportmx.views.editview.caption',
@@ -660,6 +676,22 @@ const router = new Router({
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'attendancemreportmxes', parameterName: 'attendancemreportmx' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/att/att-endance-mreportmx-grid-view/att-endance-mreportmx-grid-view.vue'),
+                },
+                {
+                    path: 'attendancemreports/:attendancemreport?/attendancemreportmxes/:attendancemreportmx?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.attendancemreportmx.views.gridview.caption',
+                        imgPath: '../../../img/newimage/1/kaoqinyuebao.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'attendancemreports', parameterName: 'attendancemreport' },
                             { pathName: 'attendancemreportmxes', parameterName: 'attendancemreportmx' },
                             { pathName: 'gridview', parameterName: 'gridview' },
                         ],
@@ -1796,6 +1828,21 @@ const router = new Router({
         component: () => import('@pages/att/att-endance-mreportmx-grid-view/att-endance-mreportmx-grid-view.vue'),
     },
     {
+        path: '/attendancemreports/:attendancemreport?/attendancemreportmxes/:attendancemreportmx?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.attendancemreportmx.views.gridview.caption',
+            imgPath: '../../../img/newimage/1/kaoqinyuebao.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'attendancemreports', parameterName: 'attendancemreport' },
+                { pathName: 'attendancemreportmxes', parameterName: 'attendancemreportmx' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/att/att-endance-mreportmx-grid-view/att-endance-mreportmx-grid-view.vue'),
+    },
+    {
         path: '/attendancemreportmxes/:attendancemreportmx?/gridview/:gridview?',
         meta: {
             caption: 'entities.attendancemreportmx.views.gridview.caption',
@@ -2468,6 +2515,21 @@ const router = new Router({
             iconCls: '',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'attendancemreportmxes', parameterName: 'attendancemreportmx' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/att/att-endance-mreportmx-edit-view/att-endance-mreportmx-edit-view.vue'),
+    },
+    {
+        path: '/attendancemreports/:attendancemreport?/attendancemreportmxes/:attendancemreportmx?/editview/:editview?',
+        meta: {
+            caption: 'entities.attendancemreportmx.views.editview.caption',
+            imgPath: '../../../img/newimage/1/kaoqinyuebao.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'attendancemreports', parameterName: 'attendancemreport' },
                 { pathName: 'attendancemreportmxes', parameterName: 'attendancemreportmx' },
                 { pathName: 'editview', parameterName: 'editview' },
             ],

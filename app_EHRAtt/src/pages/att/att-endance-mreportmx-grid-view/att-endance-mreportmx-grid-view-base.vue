@@ -429,9 +429,9 @@ export default class AttEndanceMreportmxGridViewBase extends GridViewBase {
             Object.assign(curViewParam,args[0]);
         }
         let deResParameters: any[] = [];
-        if(curViewParam.pimperson && true){
+        if(curViewParam.attendancemreport && true){
             deResParameters = [
-            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            { pathName: 'attendancemreports', parameterName: 'attendancemreport' },
             ]
         }
         const parameters: any[] = [
@@ -466,9 +466,9 @@ export default class AttEndanceMreportmxGridViewBase extends GridViewBase {
             Object.assign(curViewParam,args[0]);
         }
         let deResParameters: any[] = [];
-        if(curViewParam.pimperson && true){
+        if(curViewParam.attendancemreport && true){
             deResParameters = [
-            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            { pathName: 'attendancemreports', parameterName: 'attendancemreport' },
             ]
         }
         const parameters: any[] = [

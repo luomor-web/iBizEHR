@@ -451,7 +451,7 @@ export default class VacLeaveDetailJHQJMX_GridViewBase extends GridViewBase {
         const view: any = {
             viewname: 'vac-leave-detail-jhqjmx-edit-view', 
             height: 700, 
-            width: 1024,  
+            width: 1366,  
             title: this.$t('entities.vacleavedetail.views.jhqjmx_editview.title'),
             placement: 'DRAWER_RIGHT',
         };
@@ -500,7 +500,7 @@ export default class VacLeaveDetailJHQJMX_GridViewBase extends GridViewBase {
         const view: any = {
             viewname: 'vac-leave-detail-jhqjmx-edit-view', 
             height: 700, 
-            width: 1024,  
+            width: 1366,  
             title: this.$t('entities.vacleavedetail.views.jhqjmx_editview.title'),
             placement: 'DRAWER_RIGHT',
         };

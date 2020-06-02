@@ -51,6 +51,9 @@ export default class AttEndanceMreportmxServiceBase extends EntityService {
         if(context.pimperson && context.attendancemreportmx){
             return Http.getInstance().get(`/pimpeople/${context.pimperson}/attendancemreportmxes/${context.attendancemreportmx}/select`,isloading);
         }
+        if(context.attendancemreport && context.attendancemreportmx){
+            return Http.getInstance().get(`/attendancemreports/${context.attendancemreport}/attendancemreportmxes/${context.attendancemreportmx}/select`,isloading);
+        }
             return Http.getInstance().get(`/attendancemreportmxes/${context.attendancemreportmx}/select`,isloading);
     }
 
@@ -66,6 +69,9 @@ export default class AttEndanceMreportmxServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         if(context.pimperson && true){
             return Http.getInstance().get(`/pimpeople/${context.pimperson}/attendancemreportmxes/getdraft`,isloading);
+        }
+        if(context.attendancemreport && true){
+            return Http.getInstance().get(`/attendancemreports/${context.attendancemreport}/attendancemreportmxes/getdraft`,isloading);
         }
         let res:any = await  Http.getInstance().get(`/attendancemreportmxes/getdraft`,isloading);
         res.data.attendancemreportmx = data.attendancemreportmx;
@@ -84,6 +90,9 @@ export default class AttEndanceMreportmxServiceBase extends EntityService {
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         if(context.pimperson && context.attendancemreportmx){
             return Http.getInstance().put(`/pimpeople/${context.pimperson}/attendancemreportmxes/${context.attendancemreportmx}`,data,isloading);
+        }
+        if(context.attendancemreport && context.attendancemreportmx){
+            return Http.getInstance().put(`/attendancemreports/${context.attendancemreport}/attendancemreportmxes/${context.attendancemreportmx}`,data,isloading);
         }
         let masterData:any = {};
         Object.assign(data,masterData);
@@ -104,6 +113,9 @@ export default class AttEndanceMreportmxServiceBase extends EntityService {
         if(context.pimperson && context.attendancemreportmx){
             return Http.getInstance().delete(`/pimpeople/${context.pimperson}/attendancemreportmxes/${context.attendancemreportmx}`,isloading);
         }
+        if(context.attendancemreport && context.attendancemreportmx){
+            return Http.getInstance().delete(`/attendancemreports/${context.attendancemreport}/attendancemreportmxes/${context.attendancemreportmx}`,isloading);
+        }
             return Http.getInstance().delete(`/attendancemreportmxes/${context.attendancemreportmx}`,isloading);
 
     }
@@ -121,6 +133,9 @@ export default class AttEndanceMreportmxServiceBase extends EntityService {
         if(context.pimperson && context.attendancemreportmx){
             return Http.getInstance().post(`/pimpeople/${context.pimperson}/attendancemreportmxes/${context.attendancemreportmx}/checkkey`,data,isloading);
         }
+        if(context.attendancemreport && context.attendancemreportmx){
+            return Http.getInstance().post(`/attendancemreports/${context.attendancemreport}/attendancemreportmxes/${context.attendancemreportmx}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/attendancemreportmxes/${context.attendancemreportmx}/checkkey`,data,isloading);
     }
 
@@ -136,6 +151,9 @@ export default class AttEndanceMreportmxServiceBase extends EntityService {
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         if(context.pimperson && context.attendancemreportmx){
             return Http.getInstance().get(`/pimpeople/${context.pimperson}/attendancemreportmxes/${context.attendancemreportmx}`,isloading);
+        }
+        if(context.attendancemreport && context.attendancemreportmx){
+            return Http.getInstance().get(`/attendancemreports/${context.attendancemreport}/attendancemreportmxes/${context.attendancemreportmx}`,isloading);
         }
             let res:any = await Http.getInstance().get(`/attendancemreportmxes/${context.attendancemreportmx}`,isloading);
             return res;
@@ -154,6 +172,9 @@ export default class AttEndanceMreportmxServiceBase extends EntityService {
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         if(context.pimperson && context.attendancemreportmx){
             return Http.getInstance().post(`/pimpeople/${context.pimperson}/attendancemreportmxes/${context.attendancemreportmx}/save`,data,isloading);
+        }
+        if(context.attendancemreport && context.attendancemreportmx){
+            return Http.getInstance().post(`/attendancemreports/${context.attendancemreport}/attendancemreportmxes/${context.attendancemreportmx}/save`,data,isloading);
         }
         let masterData:any = {};
         Object.assign(data,masterData);
@@ -179,6 +200,15 @@ export default class AttEndanceMreportmxServiceBase extends EntityService {
                 delete data.srffrontuf;
             }
             return Http.getInstance().post(`/pimpeople/${context.pimperson}/attendancemreportmxes`,data,isloading);
+        }
+        if(context.attendancemreport && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/attendancemreports/${context.attendancemreport}/attendancemreportmxes`,data,isloading);
         }
         let masterData:any = {};
         Object.assign(data,masterData);
@@ -206,6 +236,9 @@ export default class AttEndanceMreportmxServiceBase extends EntityService {
         if(context.pimperson && context.attendancemreportmx){
             return Http.getInstance().post(`/pimpeople/${context.pimperson}/attendancemreportmxes/${context.attendancemreportmx}/export2excel`,data,isloading);
         }
+        if(context.attendancemreport && context.attendancemreportmx){
+            return Http.getInstance().post(`/attendancemreports/${context.attendancemreport}/attendancemreportmxes/${context.attendancemreportmx}/export2excel`,data,isloading);
+        }
             return Http.getInstance().post(`/attendancemreportmxes/${context.attendancemreportmx}/export2excel`,data,isloading);
     }
 
@@ -222,6 +255,10 @@ export default class AttEndanceMreportmxServiceBase extends EntityService {
         if(context.pimperson && true){
             let tempData:any = JSON.parse(JSON.stringify(data));
             return Http.getInstance().get(`/pimpeople/${context.pimperson}/attendancemreportmxes/fetchdefault`,tempData,isloading);
+        }
+        if(context.attendancemreport && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/attendancemreports/${context.attendancemreport}/attendancemreportmxes/fetchdefault`,tempData,isloading);
         }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/attendancemreportmxes/fetchdefault`,tempData,isloading);
@@ -241,6 +278,10 @@ export default class AttEndanceMreportmxServiceBase extends EntityService {
             let tempData:any = JSON.parse(JSON.stringify(data));
             return Http.getInstance().get(`/pimpeople/${context.pimperson}/attendancemreportmxes/fetchkqybmxdy`,tempData,isloading);
         }
+        if(context.attendancemreport && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/attendancemreports/${context.attendancemreport}/attendancemreportmxes/fetchkqybmxdy`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/attendancemreportmxes/fetchkqybmxdy`,tempData,isloading);
     }
@@ -258,6 +299,10 @@ export default class AttEndanceMreportmxServiceBase extends EntityService {
         if(context.pimperson && true){
             let tempData:any = JSON.parse(JSON.stringify(data));
             return Http.getInstance().get(`/pimpeople/${context.pimperson}/attendancemreportmxes/fetchcurperson`,tempData,isloading);
+        }
+        if(context.attendancemreport && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/attendancemreports/${context.attendancemreport}/attendancemreportmxes/fetchcurperson`,tempData,isloading);
         }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/attendancemreportmxes/fetchcurperson`,tempData,isloading);

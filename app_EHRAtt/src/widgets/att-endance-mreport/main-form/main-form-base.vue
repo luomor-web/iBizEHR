@@ -90,7 +90,7 @@
     paramItem='attendancemreport' 
     :parentdata='{"srfparentdefname":"ATTENDANCEMREPORTID2","srfparentdename":"ATTENDANCEMREPORT","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_ATTENDANCEMREPORTMX_ATTENDANCEMREPORT_ATTENDANCEMREPORTID2","SRFDER1NID":"DER1N_ATTENDANCEMREPORTMX_ATTENDANCEMREPORT_ATTENDANCEMREPORTID2"}'
     :parameters="[
-        { pathName: 'pimpeople', parameterName: 'pimperson' },
+        { pathName: 'attendancemreports', parameterName: 'attendancemreport' },
     ]"
     :context="context"
     :viewparams="viewparams"
