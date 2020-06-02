@@ -19,22 +19,11 @@
             <artifactId>ehr-core</artifactId>
             <version>${project.version}</version>
         </dependency>
-
-        <!--  Swagger2  -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-        </dependency>
     </dependencies>
 
     <properties>
         <docker.image.prefix>registry.cn-shanghai.aliyuncs.com/ibizsys</docker.image.prefix>
     </properties>
-
 
     <profiles>
         <profile>
@@ -68,7 +57,6 @@
                         </executions>
                     </plugin>
 
-
                     <plugin>
                             <groupId>com.spotify</groupId>
                             <artifactId>docker-maven-plugin</artifactId>
@@ -86,7 +74,6 @@
                             </resources>
                             </configuration>
                     </plugin>                    
-                  
                 </plugins>
             </build>
         </profile>

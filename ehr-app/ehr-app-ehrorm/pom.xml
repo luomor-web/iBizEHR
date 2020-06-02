@@ -21,7 +21,6 @@
 		</dependency>
     </dependencies>
 
-
     <properties>
         <docker.image.prefix>registry.cn-shanghai.aliyuncs.com/ibizsys</docker.image.prefix>
     </properties>
@@ -98,6 +97,7 @@
                             </execution>
                         </executions>
                     </plugin>
+                    
                     <plugin>
                             <groupId>com.spotify</groupId>
                             <artifactId>docker-maven-plugin</artifactId>
