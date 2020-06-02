@@ -420,8 +420,8 @@ export default class AttEndenceOrmorgscetorGridViewBase extends GridViewBase {
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const batchAddPSAppViews=[
             {view:{viewname:'att-endence-setup-mpickup-view',height: 0,width: 0,title: '考勤设置数据多项选择视图'},
-            res:[],
-            'resAppKey':''},
+            res:['AttEndenceSetup'],
+            'resAppKey':'attendencesetupid'},
             {view:{viewname:'orm-orgsector-kqszmpickup-view',height: 0,width: 0,title: '部门管理数据多项选择视图'},
             res:['OrmOrgsector'],
             'resAppKey':''}
@@ -481,7 +481,12 @@ export default class AttEndenceOrmorgscetorGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.attendencesetup && true){
+            deResParameters = [
+            { pathName: 'attendencesetups', parameterName: 'attendencesetup' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'attendenceormorgscetors', parameterName: 'attendenceormorgscetor' },
             { pathName: 'editview', parameterName: 'editview' },

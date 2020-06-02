@@ -76,32 +76,6 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('updateman')">
-                <el-table-column show-overflow-tooltip :prop="'updateman'" :label="$t('entities.attendencetype.main_grid.columns.updateman')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.attendencetype.main_grid.columns.updateman')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <template >
-            <codelist :value="row.updateman" tag='EhrCodeList0249' codelistType='DYNAMIC' ></codelist>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('updatedate')">
-                <el-table-column show-overflow-tooltip :prop="'updatedate'" :label="$t('entities.attendencetype.main_grid.columns.updatedate')" :width="180"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.attendencetype.main_grid.columns.updatedate')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <app-format-data format="%1$tY-%1$tm-%1$td" :data="row.updatedate"></app-format-data>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="adaptiveState">
                 <el-table-column></el-table-column>
             </template>
@@ -409,7 +383,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof Main
      */
-    public minorSortDir: string = 'DESC';
+    public minorSortDir: string = 'ASC';
 
     /**
      * 排序字段
@@ -591,20 +565,6 @@ export default class MainBase extends Vue implements ControlInterface {
             name: 'attendencetypename',
             label: '考勤类型名称',
             langtag: 'entities.attendencetype.main_grid.columns.attendencetypename',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'updateman',
-            label: '更新人',
-            langtag: 'entities.attendencetype.main_grid.columns.updateman',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'updatedate',
-            label: '更新时间',
-            langtag: 'entities.attendencetype.main_grid.columns.updatedate',
             show: true,
             util: 'PX'
         },
@@ -1010,14 +970,6 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public async formatExcelData(filterVal:any, jsonData:any) {
         let codelistColumns:Array<any> = [
-          {
-            name: 'updateman',
-            srfkey: 'EhrCodeList0249',
-            codelistType : 'DYNAMIC',
-            renderMode: 'other',
-            textSeparator: '、',
-            valueSeparator: ',',
-          },
         ];
         let _this = this;
         for (const codelist of codelistColumns) {

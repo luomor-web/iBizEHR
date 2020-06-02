@@ -42,8 +42,6 @@ export default {
 		columns: {
 			typecode: '考勤类型代码',
 			attendencetypename: '考勤类型名称',
-			updateman: '更新人',
-			updatedate: '更新时间',
 		},
 		uiactions: {
 		},

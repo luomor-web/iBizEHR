@@ -48,6 +48,9 @@ export default class AttEndenceOrmorgscetorServiceBase extends EntityService {
      * @memberof AttEndenceOrmorgscetorServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && context.attendenceormorgscetor){
+            return Http.getInstance().get(`/attendencesetups/${context.attendencesetup}/attendenceormorgscetors/${context.attendenceormorgscetor}/select`,isloading);
+        }
             return Http.getInstance().get(`/attendenceormorgscetors/${context.attendenceormorgscetor}/select`,isloading);
     }
 
@@ -61,6 +64,9 @@ export default class AttEndenceOrmorgscetorServiceBase extends EntityService {
      * @memberof AttEndenceOrmorgscetorServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && context.attendenceormorgscetor){
+            return Http.getInstance().get(`/attendencesetups/${context.attendencesetup}/attendenceormorgscetors/${context.attendenceormorgscetor}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/attendenceormorgscetors/${context.attendenceormorgscetor}`,isloading);
             return res;
 
@@ -76,6 +82,15 @@ export default class AttEndenceOrmorgscetorServiceBase extends EntityService {
      * @memberof AttEndenceOrmorgscetorServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/attendencesetups/${context.attendencesetup}/attendenceormorgscetors`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -99,6 +114,9 @@ export default class AttEndenceOrmorgscetorServiceBase extends EntityService {
      * @memberof AttEndenceOrmorgscetorServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && context.attendenceormorgscetor){
+            return Http.getInstance().put(`/attendencesetups/${context.attendencesetup}/attendenceormorgscetors/${context.attendenceormorgscetor}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/attendenceormorgscetors/${context.attendenceormorgscetor}`,data,isloading);
@@ -115,6 +133,9 @@ export default class AttEndenceOrmorgscetorServiceBase extends EntityService {
      * @memberof AttEndenceOrmorgscetorServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && context.attendenceormorgscetor){
+            return Http.getInstance().post(`/attendencesetups/${context.attendencesetup}/attendenceormorgscetors/${context.attendenceormorgscetor}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/attendenceormorgscetors/${context.attendenceormorgscetor}/checkkey`,data,isloading);
     }
 
@@ -128,6 +149,9 @@ export default class AttEndenceOrmorgscetorServiceBase extends EntityService {
      * @memberof AttEndenceOrmorgscetorServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && context.attendenceormorgscetor){
+            return Http.getInstance().delete(`/attendencesetups/${context.attendencesetup}/attendenceormorgscetors/${context.attendenceormorgscetor}`,isloading);
+        }
             return Http.getInstance().delete(`/attendenceormorgscetors/${context.attendenceormorgscetor}`,isloading);
 
     }
@@ -142,6 +166,9 @@ export default class AttEndenceOrmorgscetorServiceBase extends EntityService {
      * @memberof AttEndenceOrmorgscetorServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && true){
+            return Http.getInstance().get(`/attendencesetups/${context.attendencesetup}/attendenceormorgscetors/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/attendenceormorgscetors/getdraft`,isloading);
         res.data.attendenceormorgscetor = data.attendenceormorgscetor;
         return res;
@@ -157,6 +184,9 @@ export default class AttEndenceOrmorgscetorServiceBase extends EntityService {
      * @memberof AttEndenceOrmorgscetorServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && context.attendenceormorgscetor){
+            return Http.getInstance().post(`/attendencesetups/${context.attendencesetup}/attendenceormorgscetors/${context.attendenceormorgscetor}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/attendenceormorgscetors/${context.attendenceormorgscetor}/save`,data,isloading);
@@ -173,6 +203,10 @@ export default class AttEndenceOrmorgscetorServiceBase extends EntityService {
      * @memberof AttEndenceOrmorgscetorServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/attendencesetups/${context.attendencesetup}/attendenceormorgscetors/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/attendenceormorgscetors/fetchdefault`,tempData,isloading);
     }

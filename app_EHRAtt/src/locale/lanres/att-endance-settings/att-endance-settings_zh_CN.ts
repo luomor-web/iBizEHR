@@ -120,16 +120,6 @@ export default {
 			tip: '帮助',
 		},
 	},
-	gridviewtoolbar2_toolbar: {
-		deuiaction2: {
-			caption: '保存',
-			tip: '保存',
-		},
-		deuiaction3: {
-			caption: '关闭行编辑',
-			tip: '关闭行编辑',
-		},
-	},
 	gridviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: '新建',
@@ -140,8 +130,8 @@ export default {
 			tip: '删除',
 		},
 		deuiaction2: {
-			caption: '开启行编辑',
-			tip: '开启行编辑',
+			caption: '保存',
+			tip: '保存',
 		},
 		deuiaction1: {
 			caption: '帮助',

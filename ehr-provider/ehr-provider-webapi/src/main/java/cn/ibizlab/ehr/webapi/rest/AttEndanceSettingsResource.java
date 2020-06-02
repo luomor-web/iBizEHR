@@ -212,5 +212,195 @@ public class AttEndanceSettingsResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(attendancesettingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndanceSettings-AddToKqz-all')")
+    @ApiOperation(value = "根据考勤设置考勤人员", tags = {"考勤人员" },  notes = "根据考勤设置考勤人员")
+	@RequestMapping(method = RequestMethod.POST, value = "/attendencesetups/{attendencesetup_id}/attendancesettings/{attendancesettings_id}/addtokqz")
+    @Transactional
+    public ResponseEntity<AttEndanceSettingsDTO> addToKqzByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id, @PathVariable("attendancesettings_id") String attendancesettings_id, @RequestBody AttEndanceSettingsDTO attendancesettingsdto) {
+        AttEndanceSettings domain = attendancesettingsMapping.toDomain(attendancesettingsdto);
+        domain.setAttendencesetupid(attendencesetup_id);
+        domain = attendancesettingsService.addToKqz(domain) ;
+        attendancesettingsdto = attendancesettingsMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(attendancesettingsdto);
+    }
+
+    @PreAuthorize("hasPermission(this.attendancesettingsService.get(#attendancesettings_id),'ehr-AttEndanceSettings-Update')")
+    @ApiOperation(value = "根据考勤设置更新考勤人员", tags = {"考勤人员" },  notes = "根据考勤设置更新考勤人员")
+	@RequestMapping(method = RequestMethod.PUT, value = "/attendencesetups/{attendencesetup_id}/attendancesettings/{attendancesettings_id}")
+    @Transactional
+    public ResponseEntity<AttEndanceSettingsDTO> updateByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id, @PathVariable("attendancesettings_id") String attendancesettings_id, @RequestBody AttEndanceSettingsDTO attendancesettingsdto) {
+        AttEndanceSettings domain = attendancesettingsMapping.toDomain(attendancesettingsdto);
+        domain.setAttendencesetupid(attendencesetup_id);
+        domain.setAttendancesettingsid(attendancesettings_id);
+		attendancesettingsService.update(domain);
+        AttEndanceSettingsDTO dto = attendancesettingsMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.attendancesettingsService.getAttendancesettingsByEntities(this.attendancesettingsMapping.toDomain(#attendancesettingsdtos)),'ehr-AttEndanceSettings-Update')")
+    @ApiOperation(value = "根据考勤设置批量更新考勤人员", tags = {"考勤人员" },  notes = "根据考勤设置批量更新考勤人员")
+	@RequestMapping(method = RequestMethod.PUT, value = "/attendencesetups/{attendencesetup_id}/attendancesettings/batch")
+    public ResponseEntity<Boolean> updateBatchByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id, @RequestBody List<AttEndanceSettingsDTO> attendancesettingsdtos) {
+        List<AttEndanceSettings> domainlist=attendancesettingsMapping.toDomain(attendancesettingsdtos);
+        for(AttEndanceSettings domain:domainlist){
+            domain.setAttendencesetupid(attendencesetup_id);
+        }
+        attendancesettingsService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.attendancesettingsMapping.toDomain(#attendancesettingsdto),'ehr-AttEndanceSettings-Create')")
+    @ApiOperation(value = "根据考勤设置建立考勤人员", tags = {"考勤人员" },  notes = "根据考勤设置建立考勤人员")
+	@RequestMapping(method = RequestMethod.POST, value = "/attendencesetups/{attendencesetup_id}/attendancesettings")
+    @Transactional
+    public ResponseEntity<AttEndanceSettingsDTO> createByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id, @RequestBody AttEndanceSettingsDTO attendancesettingsdto) {
+        AttEndanceSettings domain = attendancesettingsMapping.toDomain(attendancesettingsdto);
+        domain.setAttendencesetupid(attendencesetup_id);
+		attendancesettingsService.create(domain);
+        AttEndanceSettingsDTO dto = attendancesettingsMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.attendancesettingsMapping.toDomain(#attendancesettingsdtos),'ehr-AttEndanceSettings-Create')")
+    @ApiOperation(value = "根据考勤设置批量建立考勤人员", tags = {"考勤人员" },  notes = "根据考勤设置批量建立考勤人员")
+	@RequestMapping(method = RequestMethod.POST, value = "/attendencesetups/{attendencesetup_id}/attendancesettings/batch")
+    public ResponseEntity<Boolean> createBatchByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id, @RequestBody List<AttEndanceSettingsDTO> attendancesettingsdtos) {
+        List<AttEndanceSettings> domainlist=attendancesettingsMapping.toDomain(attendancesettingsdtos);
+        for(AttEndanceSettings domain:domainlist){
+            domain.setAttendencesetupid(attendencesetup_id);
+        }
+        attendancesettingsService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.attendancesettingsMapping.toDomain(#attendancesettingsdto),'ehr-AttEndanceSettings-Save')")
+    @ApiOperation(value = "根据考勤设置保存考勤人员", tags = {"考勤人员" },  notes = "根据考勤设置保存考勤人员")
+	@RequestMapping(method = RequestMethod.POST, value = "/attendencesetups/{attendencesetup_id}/attendancesettings/save")
+    public ResponseEntity<Boolean> saveByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id, @RequestBody AttEndanceSettingsDTO attendancesettingsdto) {
+        AttEndanceSettings domain = attendancesettingsMapping.toDomain(attendancesettingsdto);
+        domain.setAttendencesetupid(attendencesetup_id);
+        return ResponseEntity.status(HttpStatus.OK).body(attendancesettingsService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.attendancesettingsMapping.toDomain(#attendancesettingsdtos),'ehr-AttEndanceSettings-Save')")
+    @ApiOperation(value = "根据考勤设置批量保存考勤人员", tags = {"考勤人员" },  notes = "根据考勤设置批量保存考勤人员")
+	@RequestMapping(method = RequestMethod.POST, value = "/attendencesetups/{attendencesetup_id}/attendancesettings/savebatch")
+    public ResponseEntity<Boolean> saveBatchByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id, @RequestBody List<AttEndanceSettingsDTO> attendancesettingsdtos) {
+        List<AttEndanceSettings> domainlist=attendancesettingsMapping.toDomain(attendancesettingsdtos);
+        for(AttEndanceSettings domain:domainlist){
+             domain.setAttendencesetupid(attendencesetup_id);
+        }
+        attendancesettingsService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PostAuthorize("hasPermission(this.attendancesettingsMapping.toDomain(returnObject.body),'ehr-AttEndanceSettings-Get')")
+    @ApiOperation(value = "根据考勤设置获取考勤人员", tags = {"考勤人员" },  notes = "根据考勤设置获取考勤人员")
+	@RequestMapping(method = RequestMethod.GET, value = "/attendencesetups/{attendencesetup_id}/attendancesettings/{attendancesettings_id}")
+    public ResponseEntity<AttEndanceSettingsDTO> getByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id, @PathVariable("attendancesettings_id") String attendancesettings_id) {
+        AttEndanceSettings domain = attendancesettingsService.get(attendancesettings_id);
+        AttEndanceSettingsDTO dto = attendancesettingsMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.attendancesettingsService.get(#attendancesettings_id),'ehr-AttEndanceSettings-Remove')")
+    @ApiOperation(value = "根据考勤设置删除考勤人员", tags = {"考勤人员" },  notes = "根据考勤设置删除考勤人员")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/attendencesetups/{attendencesetup_id}/attendancesettings/{attendancesettings_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id, @PathVariable("attendancesettings_id") String attendancesettings_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(attendancesettingsService.remove(attendancesettings_id));
+    }
+
+    @PreAuthorize("hasPermission(this.attendancesettingsService.getAttendancesettingsByIds(#ids),'ehr-AttEndanceSettings-Remove')")
+    @ApiOperation(value = "根据考勤设置批量删除考勤人员", tags = {"考勤人员" },  notes = "根据考勤设置批量删除考勤人员")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/attendencesetups/{attendencesetup_id}/attendancesettings/batch")
+    public ResponseEntity<Boolean> removeBatchByAttEndenceSetup(@RequestBody List<String> ids) {
+        attendancesettingsService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "根据考勤设置检查考勤人员", tags = {"考勤人员" },  notes = "根据考勤设置检查考勤人员")
+	@RequestMapping(method = RequestMethod.POST, value = "/attendencesetups/{attendencesetup_id}/attendancesettings/checkkey")
+    public ResponseEntity<Boolean> checkKeyByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id, @RequestBody AttEndanceSettingsDTO attendancesettingsdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(attendancesettingsService.checkKey(attendancesettingsMapping.toDomain(attendancesettingsdto)));
+    }
+
+    @ApiOperation(value = "根据考勤设置获取考勤人员草稿", tags = {"考勤人员" },  notes = "根据考勤设置获取考勤人员草稿")
+    @RequestMapping(method = RequestMethod.GET, value = "/attendencesetups/{attendencesetup_id}/attendancesettings/getdraft")
+    public ResponseEntity<AttEndanceSettingsDTO> getDraftByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id) {
+        AttEndanceSettings domain = new AttEndanceSettings();
+        domain.setAttendencesetupid(attendencesetup_id);
+        return ResponseEntity.status(HttpStatus.OK).body(attendancesettingsMapping.toDto(attendancesettingsService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndanceSettings-YGSZKQ-all')")
+	@ApiOperation(value = "根据考勤设置获取员工设置考勤视图", tags = {"考勤人员" } ,notes = "根据考勤设置获取员工设置考勤视图")
+    @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/{attendencesetup_id}/attendancesettings/fetchygszkq")
+	public ResponseEntity<List<AttEndanceSettingsDTO>> fetchAttEndanceSettingsYGSZKQByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id,AttEndanceSettingsSearchContext context) {
+        context.setN_attendencesetupid_eq(attendencesetup_id);
+        Page<AttEndanceSettings> domains = attendancesettingsService.searchYGSZKQ(context) ;
+        List<AttEndanceSettingsDTO> list = attendancesettingsMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndanceSettings-YGSZKQ-all')")
+	@ApiOperation(value = "根据考勤设置查询员工设置考勤视图", tags = {"考勤人员" } ,notes = "根据考勤设置查询员工设置考勤视图")
+    @RequestMapping(method= RequestMethod.POST , value="/attendencesetups/{attendencesetup_id}/attendancesettings/searchygszkq")
+	public ResponseEntity<Page<AttEndanceSettingsDTO>> searchAttEndanceSettingsYGSZKQByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id, @RequestBody AttEndanceSettingsSearchContext context) {
+        context.setN_attendencesetupid_eq(attendencesetup_id);
+        Page<AttEndanceSettings> domains = attendancesettingsService.searchYGSZKQ(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(attendancesettingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndanceSettings-FYGZZKQ-all')")
+	@ApiOperation(value = "根据考勤设置获取非员工终止考勤视图", tags = {"考勤人员" } ,notes = "根据考勤设置获取非员工终止考勤视图")
+    @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/{attendencesetup_id}/attendancesettings/fetchfygzzkq")
+	public ResponseEntity<List<AttEndanceSettingsDTO>> fetchAttEndanceSettingsFYGZZKQByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id,AttEndanceSettingsSearchContext context) {
+        context.setN_attendencesetupid_eq(attendencesetup_id);
+        Page<AttEndanceSettings> domains = attendancesettingsService.searchFYGZZKQ(context) ;
+        List<AttEndanceSettingsDTO> list = attendancesettingsMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndanceSettings-FYGZZKQ-all')")
+	@ApiOperation(value = "根据考勤设置查询非员工终止考勤视图", tags = {"考勤人员" } ,notes = "根据考勤设置查询非员工终止考勤视图")
+    @RequestMapping(method= RequestMethod.POST , value="/attendencesetups/{attendencesetup_id}/attendancesettings/searchfygzzkq")
+	public ResponseEntity<Page<AttEndanceSettingsDTO>> searchAttEndanceSettingsFYGZZKQByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id, @RequestBody AttEndanceSettingsSearchContext context) {
+        context.setN_attendencesetupid_eq(attendencesetup_id);
+        Page<AttEndanceSettings> domains = attendancesettingsService.searchFYGZZKQ(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(attendancesettingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndanceSettings-Default-all')")
+	@ApiOperation(value = "根据考勤设置获取DEFAULT", tags = {"考勤人员" } ,notes = "根据考勤设置获取DEFAULT")
+    @RequestMapping(method= RequestMethod.GET , value="/attendencesetups/{attendencesetup_id}/attendancesettings/fetchdefault")
+	public ResponseEntity<List<AttEndanceSettingsDTO>> fetchAttEndanceSettingsDefaultByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id,AttEndanceSettingsSearchContext context) {
+        context.setN_attendencesetupid_eq(attendencesetup_id);
+        Page<AttEndanceSettings> domains = attendancesettingsService.searchDefault(context) ;
+        List<AttEndanceSettingsDTO> list = attendancesettingsMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-AttEndanceSettings-Default-all')")
+	@ApiOperation(value = "根据考勤设置查询DEFAULT", tags = {"考勤人员" } ,notes = "根据考勤设置查询DEFAULT")
+    @RequestMapping(method= RequestMethod.POST , value="/attendencesetups/{attendencesetup_id}/attendancesettings/searchdefault")
+	public ResponseEntity<Page<AttEndanceSettingsDTO>> searchAttEndanceSettingsDefaultByAttEndenceSetup(@PathVariable("attendencesetup_id") String attendencesetup_id, @RequestBody AttEndanceSettingsSearchContext context) {
+        context.setN_attendencesetupid_eq(attendencesetup_id);
+        Page<AttEndanceSettings> domains = attendancesettingsService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(attendancesettingsMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
 }
 

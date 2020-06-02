@@ -37,16 +37,6 @@ export default class MainModel {
           dataType: 'TEXT',
         },
         {
-          name: 'updateman',
-          prop: 'updateman',
-          dataType: 'TEXT',
-        },
-        {
-          name: 'updatedate',
-          prop: 'updatedate',
-          dataType: 'DATETIME',
-        },
-        {
           name: 'srfmajortext',
           prop: 'vacleacetypename',
           dataType: 'TEXT',

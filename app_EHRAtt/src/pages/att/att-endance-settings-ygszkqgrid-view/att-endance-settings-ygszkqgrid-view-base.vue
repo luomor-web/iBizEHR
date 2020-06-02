@@ -9,7 +9,7 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="考勤人员名称，员工编号，员工姓名" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="员工编号，员工姓名" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
@@ -456,8 +456,8 @@ export default class AttEndanceSettingsYGSZKQGridViewBase extends GridViewBase {
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const batchAddPSAppViews=[
             {view:{viewname:'att-endence-setup-mpickup-view',height: 0,width: 0,title: '考勤设置数据多项选择视图'},
-            res:[],
-            'resAppKey':''}
+            res:['AttEndenceSetup'],
+            'resAppKey':'attendencesetupid'}
         ];
         if(batchAddPSAppViews.length == 0 || !this.context.srfparentdename){
             this.$Notice.warning({ title: '错误', desc: '批量添加需添加N:N关系' });
@@ -514,7 +514,12 @@ export default class AttEndanceSettingsYGSZKQGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.attendencesetup && true){
+            deResParameters = [
+            { pathName: 'attendencesetups', parameterName: 'attendencesetup' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'attendancesettings', parameterName: 'attendancesettings' },
         ];

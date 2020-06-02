@@ -162,7 +162,8 @@ public class AttEndanceRecordSearchContext extends QueryWrapperContext<AttEndanc
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
             this.getSelectCond().and( wrapper ->
-                     wrapper.like("attendancerecordname", query)   
+                     wrapper.like("pimpersonname", query)   
+                        .or().like("ygbh", query)            
             );
 		 }
 	}

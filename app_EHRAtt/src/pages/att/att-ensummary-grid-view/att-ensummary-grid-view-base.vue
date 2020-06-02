@@ -655,7 +655,7 @@ export default class AttEnsummaryGridViewBase extends GridViewBase {
      * @type {(number | 0 | 1 | 2)}
      * @memberof AttEnsummaryGridViewBase
      */
-    public gridRowActiveMode: number | 0 | 1 | 2 = 2;
+    public gridRowActiveMode: number | 0 | 1 | 2 = 0;
 
     /**
      * 快速搜索

@@ -48,6 +48,9 @@ export default class AttEndanceSettingsServiceBase extends EntityService {
      * @memberof AttEndanceSettingsServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && context.attendancesettings){
+            return Http.getInstance().get(`/attendencesetups/${context.attendencesetup}/attendancesettings/${context.attendancesettings}/select`,isloading);
+        }
             return Http.getInstance().get(`/attendancesettings/${context.attendancesettings}/select`,isloading);
     }
 
@@ -61,6 +64,9 @@ export default class AttEndanceSettingsServiceBase extends EntityService {
      * @memberof AttEndanceSettingsServiceBase
      */
     public async AddToKqz(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && context.attendancesettings){
+            return Http.getInstance().post(`/attendencesetups/${context.attendencesetup}/attendancesettings/${context.attendancesettings}/addtokqz`,data,isloading);
+        }
             return Http.getInstance().post(`/attendancesettings/${context.attendancesettings}/addtokqz`,data,isloading);
     }
 
@@ -74,6 +80,9 @@ export default class AttEndanceSettingsServiceBase extends EntityService {
      * @memberof AttEndanceSettingsServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && context.attendancesettings){
+            return Http.getInstance().put(`/attendencesetups/${context.attendencesetup}/attendancesettings/${context.attendancesettings}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/attendancesettings/${context.attendancesettings}`,data,isloading);
@@ -90,6 +99,15 @@ export default class AttEndanceSettingsServiceBase extends EntityService {
      * @memberof AttEndanceSettingsServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/attendencesetups/${context.attendencesetup}/attendancesettings`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -113,6 +131,9 @@ export default class AttEndanceSettingsServiceBase extends EntityService {
      * @memberof AttEndanceSettingsServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && context.attendancesettings){
+            return Http.getInstance().post(`/attendencesetups/${context.attendencesetup}/attendancesettings/${context.attendancesettings}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/attendancesettings/${context.attendancesettings}/save`,data,isloading);
@@ -129,6 +150,9 @@ export default class AttEndanceSettingsServiceBase extends EntityService {
      * @memberof AttEndanceSettingsServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && context.attendancesettings){
+            return Http.getInstance().get(`/attendencesetups/${context.attendencesetup}/attendancesettings/${context.attendancesettings}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/attendancesettings/${context.attendancesettings}`,isloading);
             return res;
 
@@ -144,6 +168,9 @@ export default class AttEndanceSettingsServiceBase extends EntityService {
      * @memberof AttEndanceSettingsServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && context.attendancesettings){
+            return Http.getInstance().delete(`/attendencesetups/${context.attendencesetup}/attendancesettings/${context.attendancesettings}`,isloading);
+        }
             return Http.getInstance().delete(`/attendancesettings/${context.attendancesettings}`,isloading);
 
     }
@@ -158,6 +185,9 @@ export default class AttEndanceSettingsServiceBase extends EntityService {
      * @memberof AttEndanceSettingsServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && context.attendancesettings){
+            return Http.getInstance().post(`/attendencesetups/${context.attendencesetup}/attendancesettings/${context.attendancesettings}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/attendancesettings/${context.attendancesettings}/checkkey`,data,isloading);
     }
 
@@ -171,6 +201,9 @@ export default class AttEndanceSettingsServiceBase extends EntityService {
      * @memberof AttEndanceSettingsServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && true){
+            return Http.getInstance().get(`/attendencesetups/${context.attendencesetup}/attendancesettings/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/attendancesettings/getdraft`,isloading);
         res.data.attendancesettings = data.attendancesettings;
         return res;
@@ -186,6 +219,10 @@ export default class AttEndanceSettingsServiceBase extends EntityService {
      * @memberof AttEndanceSettingsServiceBase
      */
     public async FetchYGSZKQ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/attendencesetups/${context.attendencesetup}/attendancesettings/fetchygszkq`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/attendancesettings/fetchygszkq`,tempData,isloading);
     }
@@ -200,6 +237,10 @@ export default class AttEndanceSettingsServiceBase extends EntityService {
      * @memberof AttEndanceSettingsServiceBase
      */
     public async FetchFYGZZKQ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/attendencesetups/${context.attendencesetup}/attendancesettings/fetchfygzzkq`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/attendancesettings/fetchfygzzkq`,tempData,isloading);
     }
@@ -214,6 +255,10 @@ export default class AttEndanceSettingsServiceBase extends EntityService {
      * @memberof AttEndanceSettingsServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.attendencesetup && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/attendencesetups/${context.attendencesetup}/attendancesettings/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/attendancesettings/fetchdefault`,tempData,isloading);
     }

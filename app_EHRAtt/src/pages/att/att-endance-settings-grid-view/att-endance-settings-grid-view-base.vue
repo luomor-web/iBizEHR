@@ -9,7 +9,7 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="考勤人员名称，员工编号，员工姓名" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="员工编号，员工姓名" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
@@ -171,7 +171,6 @@ export default class AttEndanceSettingsGridViewBase extends GridViewBase {
      * @memberof AttEndanceSettingsGridViewBase
      */
     public containerModel: any = {
-        view_toolbar2: { name: 'toolbar2', type: 'TOOLBAR' },
         view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
         view_grid: { name: 'grid', type: 'GRID' },
         view_searchform: { name: 'searchform', type: 'SEARCHFORM' },
@@ -196,7 +195,7 @@ export default class AttEndanceSettingsGridViewBase extends GridViewBase {
 
         tbitem8: { name: 'tbitem8', caption: '删除','isShowCaption':true,'isShowIcon':true, tooltip: '删除', iconcls: 'fa fa-remove', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYGXML', uiaction: { tag: 'Remove', target: 'MULTIKEY' }, class: '' },
 
-        deuiaction2: { name: 'deuiaction2', caption: '开启行编辑','isShowCaption':true,'isShowIcon':true, tooltip: '开启行编辑', iconcls: 'fa fa-edit', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYZW', uiaction: { tag: 'OpenRowEdit', target: '' }, class: '' },
+        deuiaction2: { name: 'deuiaction2', caption: '保存','isShowCaption':true,'isShowIcon':true, tooltip: '保存', iconcls: 'fa fa-save', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'SaveRow', target: '' }, class: '' },
 
         deuiaction1: { name: 'deuiaction1', caption: '帮助','isShowCaption':true,'isShowIcon':true, tooltip: '帮助', iconcls: 'fa fa-question', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'Help', target: '' }, class: '' },
 
@@ -237,23 +236,6 @@ export default class AttEndanceSettingsGridViewBase extends GridViewBase {
             majorPSDEField: 'attendancesettingsname',
             isLoadDefault: true,
         });
-    }
-
-
-    /**
-     * toolbar2 部件 click 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof AttEndanceSettingsGridViewBase
-     */
-    public toolbar2_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'deuiaction2')) {
-            this.toolbar2_deuiaction2_click(null, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction3')) {
-            this.toolbar2_deuiaction3_click(null, '', $event2);
-        }
     }
 
 
@@ -385,64 +367,6 @@ export default class AttEndanceSettingsGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar2_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        if(params){
-          datas = [params];
-        }
-        // 界面行为
-        this.SaveAllEditRow(datas, contextJO,paramJO,  $event, xData,this,"AttEndanceSettings");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar2_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        if(params){
-          datas = [params];
-        }
-        // 界面行为
-        this.CloseRowEdit(datas, contextJO,paramJO,  $event, xData,this,"AttEndanceSettings");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
     public toolbar_tbitem3_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
@@ -519,7 +443,7 @@ export default class AttEndanceSettingsGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.OpenRowEdit(datas, contextJO,paramJO,  $event, xData,this,"AttEndanceSettings");
+        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"AttEndanceSettings");
     }
 
     /**
@@ -564,8 +488,8 @@ export default class AttEndanceSettingsGridViewBase extends GridViewBase {
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const batchAddPSAppViews=[
             {view:{viewname:'att-endence-setup-mpickup-view',height: 0,width: 0,title: '考勤设置数据多项选择视图'},
-            res:[],
-            'resAppKey':''}
+            res:['AttEndenceSetup'],
+            'resAppKey':'attendencesetupid'}
         ];
         if(batchAddPSAppViews.length == 0 || !this.context.srfparentdename){
             this.$Notice.warning({ title: '错误', desc: '批量添加需添加N:N关系' });
@@ -622,7 +546,12 @@ export default class AttEndanceSettingsGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.attendencesetup && true){
+            deResParameters = [
+            { pathName: 'attendencesetups', parameterName: 'attendencesetup' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'attendancesettings', parameterName: 'attendancesettings' },
         ];
@@ -649,34 +578,6 @@ export default class AttEndanceSettingsGridViewBase extends GridViewBase {
     }
 
 
-    /**
-     * 保存所有编辑行
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof AttEndanceSettingsGridViewBase
-     */
-    protected SaveAllEditRow(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        
-    }
-    /**
-     * 关闭行编辑
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof AttEndanceSettingsGridViewBase
-     */
-    protected CloseRowEdit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        
-    }
     /**
      * 新建
      *
@@ -717,7 +618,7 @@ export default class AttEndanceSettingsGridViewBase extends GridViewBase {
     }
 
     /**
-     * 开启行编辑
+     * 保存行
      *
      * @param {any[]} args 当前数据
      * @param {any} contextJO 行为附加上下文
@@ -727,8 +628,14 @@ export default class AttEndanceSettingsGridViewBase extends GridViewBase {
      * @param {*} [actionContext]  执行行为上下文
      * @memberof AttEndanceSettingsGridViewBase
      */
-    protected OpenRowEdit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        
+    public SaveRow(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        // 界面行为容器对象 _this
+        const _this: any = this;
+        if (xData && xData.save instanceof Function) {
+            xData.save();
+        } else if (_this.save && _this.save instanceof Function) {
+            _this.save();
+        }
     }
     /**
      * 帮助

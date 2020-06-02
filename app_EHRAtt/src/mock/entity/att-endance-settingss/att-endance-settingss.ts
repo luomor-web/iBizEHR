@@ -87,6 +87,35 @@ mock.onDelete(new RegExp(/^\/attendancesettings\/batch$/)).reply((config: any) =
 });
 
 
+
+// Select
+mock.onGet(new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})\/select$/)).reply((config: any) => {
+    console.groupCollapsed("实体:attendancesettings 方法: Select");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['attendencesetupid','attendancesettingsid'];
+    const matchArray:any = new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})\/select$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    let _items = items.find((item: any) => Object.is(item.attendancesettingsid, tempValue.attendancesettingsid));
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(_items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, _items];
+});
+
 // Select
 mock.onGet(new RegExp(/^\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})\/select$/)).reply((config: any) => {
     console.groupCollapsed("实体:attendancesettings 方法: Select");
@@ -113,6 +142,33 @@ mock.onGet(new RegExp(/^\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})\/select$/)
     console.groupEnd();
     console.groupEnd();
     return [status, _items];
+});
+
+    
+// AddToKqz
+mock.onPost(new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})\/addtokqz$/)).reply((config: any) => {
+    console.groupCollapsed("实体:attendancesettings 方法: AddToKqz");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['attendencesetupid','attendancesettingsid'];
+    const matchArray:any = new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})\/addtokqz$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // AddToKqz
@@ -152,6 +208,33 @@ mock.onPost(new RegExp(/^\/attendancesettings\/?([a-zA-Z0-9\-\;]{0,35})\/addtokq
     console.groupEnd();
     return [status, data];
 });
+
+    
+// Update
+mock.onPut(new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:attendancesettings 方法: Update");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['attendencesetupid','attendancesettingsid'];
+    const matchArray:any = new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
         
 // Update
 mock.onPut(new RegExp(/^\/attendancesettings\/?([a-zA-Z0-9\-\;]{0,35})$/)).reply((config: any) => {
@@ -190,6 +273,33 @@ mock.onPut(new RegExp(/^\/attendancesettings\/?([a-zA-Z0-9\-\;]{0,35})$/)).reply
     console.groupEnd();
     return [status, data];
 });
+
+    
+// Create
+mock.onPost(new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:attendancesettings 方法: Create");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['attendencesetupid','attendancesettingsid'];
+    const matchArray:any = new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
         
 // Create
 mock.onPost(new RegExp(/^\/attendancesettings\/?([a-zA-Z0-9\-\;]{0,35})$/)).reply((config: any) => {
@@ -215,6 +325,33 @@ mock.onPost(new RegExp(/^\/attendancesettings\/?([a-zA-Z0-9\-\;]{0,35})$/)).repl
     console.groupEnd();
     console.groupEnd();
     return [status, mockDatas[0]];
+});
+
+    
+// Save
+mock.onPost(new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})\/save$/)).reply((config: any) => {
+    console.groupCollapsed("实体:attendancesettings 方法: Save");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['attendencesetupid','attendancesettingsid'];
+    const matchArray:any = new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})\/save$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // Save
@@ -253,6 +390,35 @@ mock.onPost(new RegExp(/^\/attendancesettings\/?([a-zA-Z0-9\-\;]{0,35})\/save$/)
     console.groupEnd();
     console.groupEnd();
     return [status, data];
+});
+
+
+
+    
+// CheckKey
+mock.onPost(new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})\/checkkey$/)).reply((config: any) => {
+    console.groupCollapsed("实体:attendancesettings 方法: CheckKey");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['attendencesetupid','attendancesettingsid'];
+    const matchArray:any = new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})\/checkkey$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
 });
         
 // CheckKey
@@ -293,6 +459,23 @@ mock.onPost(new RegExp(/^\/attendancesettings\/?([a-zA-Z0-9\-\;]{0,35})\/checkke
     return [status, data];
 });
 
+
+// GetDraft
+mock.onGet(new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/getdraft$/)).reply((config: any) => {
+    console.groupCollapsed("实体:attendancesettings 方法: GetDraft");
+    console.table({url:config.url, method: config.method, data:config.data});
+    // GetDraft
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table({});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, {}];
+});
+
 // GetDraft
 mock.onGet(new RegExp(/^\/attendancesettings\/getdraft$/)).reply((config: any) => {
     console.groupCollapsed("实体:attendancesettings 方法: GetDraft");
@@ -307,6 +490,51 @@ mock.onGet(new RegExp(/^\/attendancesettings\/getdraft$/)).reply((config: any) =
     console.groupEnd();
     console.groupEnd();
     return [status, {}];
+});
+
+
+// FetchYGSZKQ
+mock.onGet(new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/fetchygszkq$/)).reply((config: any) => {
+    console.groupCollapsed("实体:attendancesettings 方法: FetchYGSZKQ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['attendencesetupid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/fetchygszkq$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
 });
     
 // FetchYGSZKQ
@@ -352,6 +580,51 @@ mock.onGet(new RegExp(/^\/attendancesettings\/fetchygszkq(\?[\w-./?%&=,]*)*$/)).
     console.groupEnd();
     return [status, records ?  records : []];
 });
+
+
+// FetchFYGZZKQ
+mock.onGet(new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/fetchfygzzkq$/)).reply((config: any) => {
+    console.groupCollapsed("实体:attendancesettings 方法: FetchFYGZZKQ");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['attendencesetupid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/fetchfygzzkq$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
+});
     
 // FetchFYGZZKQ
 mock.onGet(new RegExp(/^\/attendancesettings\/fetchfygzzkq$/)).reply((config: any) => {
@@ -395,6 +668,51 @@ mock.onGet(new RegExp(/^\/attendancesettings\/fetchfygzzkq(\?[\w-./?%&=,]*)*$/))
     console.groupEnd();
     console.groupEnd();
     return [status, records ?  records : []];
+});
+
+
+// FetchDefault
+mock.onGet(new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/fetchdefault$/)).reply((config: any) => {
+    console.groupCollapsed("实体:attendancesettings 方法: FetchDefault");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }
+    const paramArray:Array<any> = ['attendencesetupid'];
+    let tempValue: any = {};
+    const matchArray:any = new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/fetchdefault$/).exec(config.url);
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    if (items.length > 0 && paramArray.length > 0) {
+        paramArray.forEach((paramkey: any) => {
+            if (tempValue[paramkey] && tempValue[paramkey].indexOf(";") > 0) {
+                let keysGrounp: Array<any> = tempValue[paramkey].split(new RegExp(/[\;]/));
+                let tempArray: Array<any> = [];
+                keysGrounp.forEach((singlekey: any) => {
+                    let _items =  items.filter((item: any) => { return item[paramkey] == singlekey });
+                   if(_items.length >0){
+                    tempArray.push(..._items);
+                   }
+                })
+                items = tempArray;
+            } else {
+                items = items.filter((item: any) => { return item[paramkey] == tempValue[paramkey] });
+            }
+        })
+    }
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(items);
+    console.groupEnd();
+    console.groupEnd();
+    return [status, items];
 });
     
 // FetchDefault
@@ -440,14 +758,56 @@ mock.onGet(new RegExp(/^\/attendancesettings\/fetchdefault(\?[\w-./?%&=,]*)*$/))
     console.groupEnd();
     return [status, records ?  records : []];
 });
-// URI参数传递情况未实现
-// URI参数传递情况未实现
-// URI参数传递情况未实现
-// URI参数传递情况未实现
-// URI参数传递情况未实现
+
 // URI参数传递情况未实现
 // URI参数传递情况未实现
 
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+// URI参数传递情况未实现
+// URI参数传递情况未实现
+
+
+// Get
+mock.onGet(new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:attendancesettings 方法: Get");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }    
+    const paramArray:Array<any> = ['attendencesetupid','attendancesettingsid'];
+    const matchArray:any = new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    let _items = items.find((item: any) => Object.is(item.attendancesettingsid, tempValue.attendancesettingsid));
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(_items?_items:{});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, _items?_items:{}];
+});
 
 // Get
 mock.onGet(new RegExp(/^\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
@@ -459,6 +819,34 @@ mock.onGet(new RegExp(/^\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})$/)).reply(
     }    
     const paramArray:Array<any> = ['attendancesettingsid'];
     const matchArray:any = new RegExp(/^\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    let tempValue: any = {};
+    if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
+        paramArray.forEach((item: any, index: number) => {
+            Object.defineProperty(tempValue, item, {
+                enumerable: true,
+                value: matchArray[index + 1]
+            });
+        });
+    }
+    let items = mockDatas ? mockDatas : [];
+    let _items = items.find((item: any) => Object.is(item.attendancesettingsid, tempValue.attendancesettingsid));
+    console.groupCollapsed("response数据  status: "+status+" data: ");
+    console.table(_items?_items:{});
+    console.groupEnd();
+    console.groupEnd();
+    return [status, _items?_items:{}];
+});
+
+// Remove
+mock.onDelete(new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})$/)).reply((config: any) => {
+    console.groupCollapsed("实体:attendancesettings 方法: Remove");
+    console.table({url:config.url, method: config.method, data:config.data});
+    let status = MockAdapter.mockStatus(config);
+    if (status !== 200) {
+        return [status, null];
+    }    
+    const paramArray:Array<any> = ['attendencesetupid','attendancesettingsid'];
+    const matchArray:any = new RegExp(/^\/attendencesetups\/([a-zA-Z0-9\-\;]{1,35})\/attendancesettings\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
     let tempValue: any = {};
     if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
         paramArray.forEach((item: any, index: number) => {

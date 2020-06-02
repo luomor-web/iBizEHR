@@ -96,6 +96,7 @@
     paramItem='attendencesetup' 
     :parentdata='{"srfparentdefname":"ATTENDENCESETUPID","srfparentdename":"ATTENDENCESETUP","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_ATTENDENCEORMORGSECTOR_ATTENDENCESETUP_ATTENDENCESETUPID","SRFDER1NID":"DER1N_ATTENDENCEORMORGSECTOR_ATTENDENCESETUP_ATTENDENCESETUPID"}'
     :parameters="[
+        { pathName: 'attendencesetups', parameterName: 'attendencesetup' },
     ]"
     :context="context"
     :viewparams="viewparams"
@@ -127,6 +128,7 @@
     paramItem='attendencesetup' 
     :parentdata='{"srfparentdefname":"ATTENDENCESETUPID","srfparentdename":"ATTENDENCESETUP","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_ATTENDANCESETTINGS_ATTENDENCESETUP_ATTENDENCESETUPID","SRFDER1NID":"DER1N_ATTENDANCESETTINGS_ATTENDENCESETUP_ATTENDENCESETUPID"}'
     :parameters="[
+        { pathName: 'attendencesetups', parameterName: 'attendencesetup' },
     ]"
     :context="context"
     :viewparams="viewparams"

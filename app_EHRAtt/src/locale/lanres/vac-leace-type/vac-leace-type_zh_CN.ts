@@ -42,8 +42,6 @@ export default {
 		columns: {
 			typecode: '休假类型代码',
 			vacleacetypename: '休假类型名称',
-			updateman: '更新人',
-			updatedate: '更新时间',
 		},
 		uiactions: {
 		},

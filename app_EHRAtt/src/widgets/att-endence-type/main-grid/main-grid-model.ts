@@ -32,19 +32,9 @@ export default class MainModel {
           dataType: 'TEXT',
         },
         {
-          name: 'updateman',
-          prop: 'updateman',
-          dataType: 'TEXT',
-        },
-        {
           name: 'attendencetypeid',
           prop: 'attendencetypeid',
           dataType: 'GUID',
-        },
-        {
-          name: 'updatedate',
-          prop: 'updatedate',
-          dataType: 'DATETIME',
         },
         {
           name: 'attendencetypename',

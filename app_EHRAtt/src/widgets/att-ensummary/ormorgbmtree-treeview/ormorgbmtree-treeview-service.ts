@@ -381,7 +381,7 @@ export default class ORMORGBMTreeService extends ControlService {
                         strNodeId += this.TREENODE_SEPARATOR;
                         strNodeId += strId;
                         Object.assign(treeNode, { id: strNodeId });
-                        Object.assign(treeNode, { expanded: filter.isautoexpand });
+                        Object.assign(treeNode, { expanded: true });
                         Object.assign(treeNode, { leaf: false });
                         Object.assign(treeNode, { navparams: '{"nodeid":"%NODEID%"}' });
                         Object.assign(treeNode, { nodeid: treeNode.srfkey });

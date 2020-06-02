@@ -231,7 +231,7 @@ export default class KQHZTreeExpViewtreeexpbarBase extends Vue implements Contro
      * @type {number}
      * @memberof KQHZTreeExpViewtreeexpbarBase
      */
-    public ctrlWidth:number = 0;
+    public ctrlWidth:number = 250;
 
     /**
      * 过滤值
