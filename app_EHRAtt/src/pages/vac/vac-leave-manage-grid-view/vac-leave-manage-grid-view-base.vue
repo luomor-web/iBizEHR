@@ -485,7 +485,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
         const view: any = {
             viewname: 'vac-leave-manage-ngedit-view', 
             height: 0, 
-            width: 1024,  
+            width: 1366,  
             title: this.$t('entities.vacleavemanage.views.ngeditview.title'),
             placement: 'DRAWER_RIGHT',
         };
@@ -534,7 +534,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
         const view: any = {
             viewname: 'vac-leave-manage-ngedit-view', 
             height: 0, 
-            width: 1024,  
+            width: 1366,  
             title: this.$t('entities.vacleavemanage.views.ngeditview.title'),
             placement: 'DRAWER_RIGHT',
         };

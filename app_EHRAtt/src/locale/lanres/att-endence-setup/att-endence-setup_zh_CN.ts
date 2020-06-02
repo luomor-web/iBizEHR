@@ -157,7 +157,7 @@ export default {
 	main_grid: {
 		columns: {
 			ormorgname: '组织名称',
-			attendencesetupname1: '考勤表名称',
+			attendencesetupname: '考勤表名称',
 			vacholidayrulesname: '考勤规则',
 			pimpersonname: '考勤员',
 			dkfs: '打卡方式',

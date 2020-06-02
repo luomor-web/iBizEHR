@@ -101,6 +101,7 @@ export default class VacLeaveManageServiceBase extends EntityService {
         }
         let res:any = await  Http.getInstance().get(`/vacleavemanages/getdraft`,isloading);
         res.data.vacleavemanage = data.vacleavemanage;
+            this.tempStorage.setItem(context.srfsessionkey+'_vacleavedetails',JSON.stringify(res.data.vacleavedetails));
         return res;
     }
 
@@ -134,8 +135,24 @@ export default class VacLeaveManageServiceBase extends EntityService {
             return Http.getInstance().put(`/pimpeople/${context.pimperson}/vacleavemanages/${context.vacleavemanage}`,data,isloading);
         }
         let masterData:any = {};
+        let vacleavedetailsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_vacleavedetails'),'undefined')){
+            vacleavedetailsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_vacleavedetails') as any);
+            if(vacleavedetailsData && vacleavedetailsData.length && vacleavedetailsData.length > 0){
+                vacleavedetailsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.vacleavedetailid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.vacleavedetails = vacleavedetailsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/vacleavemanages/${context.vacleavemanage}`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_vacleavedetails',JSON.stringify(res.data.vacleavedetails));
             return res;
     }
 
@@ -170,6 +187,7 @@ export default class VacLeaveManageServiceBase extends EntityService {
             return Http.getInstance().get(`/pimpeople/${context.pimperson}/vacleavemanages/${context.vacleavemanage}/getfjsjofperson`,isloading);
         }
             let res:any = await Http.getInstance().get(`/vacleavemanages/${context.vacleavemanage}/getfjsjofperson`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_vacleavedetails',JSON.stringify(res.data.vacleavedetails));
             return res;
 
     }
@@ -188,8 +206,24 @@ export default class VacLeaveManageServiceBase extends EntityService {
             return Http.getInstance().post(`/pimpeople/${context.pimperson}/vacleavemanages/${context.vacleavemanage}/save`,data,isloading);
         }
         let masterData:any = {};
+        let vacleavedetailsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_vacleavedetails'),'undefined')){
+            vacleavedetailsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_vacleavedetails') as any);
+            if(vacleavedetailsData && vacleavedetailsData.length && vacleavedetailsData.length > 0){
+                vacleavedetailsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.vacleavedetailid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.vacleavedetails = vacleavedetailsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/vacleavemanages/${context.vacleavemanage}/save`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_vacleavedetails',JSON.stringify(res.data.vacleavedetails));
             return res;
     }
 
@@ -213,6 +247,21 @@ export default class VacLeaveManageServiceBase extends EntityService {
             return Http.getInstance().post(`/pimpeople/${context.pimperson}/vacleavemanages`,data,isloading);
         }
         let masterData:any = {};
+        let vacleavedetailsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_vacleavedetails'),'undefined')){
+            vacleavedetailsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_vacleavedetails') as any);
+            if(vacleavedetailsData && vacleavedetailsData.length && vacleavedetailsData.length > 0){
+                vacleavedetailsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.vacleavedetailid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.vacleavedetails = vacleavedetailsData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -222,6 +271,7 @@ export default class VacLeaveManageServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/vacleavemanages`,data,isloading);
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_vacleavedetails',JSON.stringify(res.data.vacleavedetails));
         return res;
     }
 
@@ -239,6 +289,7 @@ export default class VacLeaveManageServiceBase extends EntityService {
             return Http.getInstance().get(`/pimpeople/${context.pimperson}/vacleavemanages/${context.vacleavemanage}`,isloading);
         }
             let res:any = await Http.getInstance().get(`/vacleavemanages/${context.vacleavemanage}`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_vacleavedetails',JSON.stringify(res.data.vacleavedetails));
             return res;
 
     }

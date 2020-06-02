@@ -426,7 +426,12 @@ export default class VacLeaveDetailJHQJMX_GridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.vacleavemanage && true){
+            deResParameters = [
+            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
         ];
@@ -446,7 +451,7 @@ export default class VacLeaveDetailJHQJMX_GridViewBase extends GridViewBase {
         const view: any = {
             viewname: 'vac-leave-detail-jhqjmx-edit-view', 
             height: 700, 
-            width: 0,  
+            width: 1024,  
             title: this.$t('entities.vacleavedetail.views.jhqjmx_editview.title'),
         };
         openPopupModal(view, data);
@@ -469,7 +474,12 @@ export default class VacLeaveDetailJHQJMX_GridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.vacleavemanage && true){
+            deResParameters = [
+            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
         ];
@@ -489,7 +499,7 @@ export default class VacLeaveDetailJHQJMX_GridViewBase extends GridViewBase {
         const view: any = {
             viewname: 'vac-leave-detail-jhqjmx-edit-view', 
             height: 700, 
-            width: 0,  
+            width: 1024,  
             title: this.$t('entities.vacleavedetail.views.jhqjmx_editview.title'),
         };
         openPopupModal(view, data);

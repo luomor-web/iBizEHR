@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="vacleavedetailjhqjmx_editview" viewTitle="请假明细" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'vac-leave-detail-jhqjmx-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="vacleavedetailjhqjmx_editview" viewTitle="请假明细" :isShowCaptionBar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'vac-leave-detail-jhqjmx-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 

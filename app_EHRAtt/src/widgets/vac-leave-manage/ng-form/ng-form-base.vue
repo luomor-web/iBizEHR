@@ -48,6 +48,7 @@
     paramItem='vacleavemanage' 
     :parentdata='{"srfparentdefname":"VACLEAVEMANAGEID","srfparentdename":"VACLEAVEMANAGE","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_VACLEAVEDETAIL_VACLEAVEMANAGE_VACLEAVEMANAGEID","SRFDER1NID":"DER1N_VACLEAVEDETAIL_VACLEAVEMANAGE_VACLEAVEMANAGEID"}'
     :parameters="[
+        { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
     ]"
     :context="context"
     :viewparams="viewparams"

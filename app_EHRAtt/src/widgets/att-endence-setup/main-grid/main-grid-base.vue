@@ -34,15 +34,15 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('attendencesetupname1')">
-                <el-table-column show-overflow-tooltip :prop="'attendencesetupname1'" :label="$t('entities.attendencesetup.main_grid.columns.attendencesetupname1')" :width="250"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('attendencesetupname')">
+                <el-table-column show-overflow-tooltip :prop="'attendencesetupname'" :label="$t('entities.attendencesetup.main_grid.columns.attendencesetupname')" :width="250"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.attendencesetup.main_grid.columns.attendencesetupname1')}}
+                        {{$t('entities.attendencesetup.main_grid.columns.attendencesetupname')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.attendencesetupname1}}</span>
+                        <span>{{row.attendencesetupname}}</span>
                     </template>
                 </el-table-column>
             </template>
@@ -610,9 +610,9 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'PX'
         },
         {
-            name: 'attendencesetupname1',
+            name: 'attendencesetupname',
             label: '考勤表名称',
-            langtag: 'entities.attendencesetup.main_grid.columns.attendencesetupname1',
+            langtag: 'entities.attendencesetup.main_grid.columns.attendencesetupname',
             show: true,
             util: 'PX'
         },
