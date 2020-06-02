@@ -133,14 +133,6 @@ export default {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-		deuiaction2: {
-			caption: "保存",
-			tip: "保存",
-		},
-		deuiaction1: {
-			caption: "Help",
-			tip: "Help",
-		},
 	},
 	fygzzkqgridviewtoolbar_toolbar: {
 		tbitem8: {
