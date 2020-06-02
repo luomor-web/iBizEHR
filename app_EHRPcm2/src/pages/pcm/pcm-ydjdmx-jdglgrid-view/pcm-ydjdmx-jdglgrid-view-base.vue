@@ -39,11 +39,11 @@
     :isOpenEdit="false"
     :gridRowActiveMode="gridRowActiveMode"
     @save="onSave"
-    updateAction="Update"
+    updateAction=""
     removeAction="Remove"
-    loaddraftAction="GetDraft"
-    loadAction="Get"
-    createAction="Create"
+    loaddraftAction=""
+    loadAction=""
+    createAction=""
     fetchAction="FetchJDGLDQ"
     :newdata="newdata"
     :opendata="opendata"
@@ -172,7 +172,6 @@ export default class PcmYdjdmxJDGLGridViewBase extends GridViewBase {
      * @memberof PcmYdjdmxJDGLGridViewBase
      */
     public containerModel: any = {
-        view_toolbar2: { name: 'toolbar2', type: 'TOOLBAR' },
         view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
         view_grid: { name: 'grid', type: 'GRID' },
         view_searchform: { name: 'searchform', type: 'SEARCHFORM' },
@@ -193,17 +192,15 @@ export default class PcmYdjdmxJDGLGridViewBase extends GridViewBase {
      * @memberof PcmYdjdmxJDGLGridView
      */
     public toolBarModels: any = {
-        deuiaction1_xzmx: { name: 'deuiaction1_xzmx', caption: '新增','isShowCaption':true,'isShowIcon':true, tooltip: '新增', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'XZMX', target: 'NONE' }, class: '' },
+        tbitem1_xzmx: { name: 'tbitem1_xzmx', caption: '新增','isShowCaption':true,'isShowIcon':true, tooltip: '新增', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'XZMX', target: 'NONE' }, class: '' },
 
-        deuiaction1_remove: { name: 'deuiaction1_remove', caption: '删除','isShowCaption':true,'isShowIcon':true, tooltip: '删除', iconcls: 'fa fa-remove', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYGXML', uiaction: { tag: 'Remove', target: 'MULTIKEY' }, class: '' },
+        tbitem1_remove: { name: 'tbitem1_remove', caption: '删除','isShowCaption':true,'isShowIcon':true, tooltip: '删除', iconcls: 'fa fa-remove', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYGXML', uiaction: { tag: 'Remove', target: 'MULTIKEY' }, class: '' },
 
-        deuiaction1_lsjdjl: { name: 'deuiaction1_lsjdjl', caption: '借调记录','isShowCaption':true,'isShowIcon':true, tooltip: '借调记录', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'LSJDJL', target: 'NONE' }, class: '' },
+        tbitem1_lsjdjl: { name: 'tbitem1_lsjdjl', caption: '借调记录','isShowCaption':true,'isShowIcon':true, tooltip: '借调记录', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'LSJDJL', target: 'NONE' }, class: '' },
 
-        deuiaction3: { name: 'deuiaction3', caption: '开启行编辑','isShowCaption':true,'isShowIcon':true, tooltip: '开启行编辑', iconcls: 'fa fa-edit', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYZW', uiaction: { tag: 'OpenRowEdit', target: '' }, class: '' },
+        tbitem13: { name: 'tbitem13', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
 
-        deuiaction6: { name: 'deuiaction6', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
-
-        deuiaction2: { name: 'deuiaction2', caption: '过滤','isShowCaption':true,'isShowIcon':true, tooltip: '过滤', iconcls: 'fa fa-filter', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYKQLX', uiaction: { tag: 'ToggleFilter', target: '' }, class: '' },
+        tbitem19: { name: 'tbitem19', caption: '过滤','isShowCaption':true,'isShowIcon':true, tooltip: '过滤', iconcls: 'fa fa-filter', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYKQLX', uiaction: { tag: 'ToggleFilter', target: '' }, class: '' },
 
     };
 
@@ -246,23 +243,6 @@ export default class PcmYdjdmxJDGLGridViewBase extends GridViewBase {
 
 
     /**
-     * toolbar2 部件 click 事件
-     *
-     * @param {*} [args={}]
-     * @param {*} $event
-     * @memberof PcmYdjdmxJDGLGridViewBase
-     */
-    public toolbar2_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'deuiaction2')) {
-            this.toolbar2_deuiaction2_click(null, '', $event2);
-        }
-        if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar2_deuiaction1_click(null, '', $event2);
-        }
-    }
-
-
-    /**
      * toolbar 部件 click 事件
      *
      * @param {*} [args={}]
@@ -270,23 +250,23 @@ export default class PcmYdjdmxJDGLGridViewBase extends GridViewBase {
      * @memberof PcmYdjdmxJDGLGridViewBase
      */
     public toolbar_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'deuiaction1_xzmx')) {
-            this.toolbar_deuiaction1_xzmx_click(null, '', $event2);
+        if (Object.is($event.tag, 'tbitem1_xzmx')) {
+            this.toolbar_tbitem1_xzmx_click(null, '', $event2);
         }
-        if (Object.is($event.tag, 'deuiaction1_remove')) {
-            this.toolbar_deuiaction1_remove_click(null, '', $event2);
+        if (Object.is($event.tag, 'tbitem1_remove')) {
+            this.toolbar_tbitem1_remove_click(null, '', $event2);
         }
-        if (Object.is($event.tag, 'deuiaction1_lsjdjl')) {
-            this.toolbar_deuiaction1_lsjdjl_click(null, '', $event2);
+        if (Object.is($event.tag, 'tbitem1_lsjdjl')) {
+            this.toolbar_tbitem1_lsjdjl_click(null, '', $event2);
         }
-        if (Object.is($event.tag, 'deuiaction3')) {
-            this.toolbar_deuiaction3_click(null, '', $event2);
+        if (Object.is($event.tag, 'deuiaction1')) {
+            this.toolbar_deuiaction1_click(null, '', $event2);
         }
-        if (Object.is($event.tag, 'deuiaction6')) {
-            this.toolbar_deuiaction6_click(null, '', $event2);
+        if (Object.is($event.tag, 'tbitem13')) {
+            this.toolbar_tbitem13_click(null, '', $event2);
         }
-        if (Object.is($event.tag, 'deuiaction2')) {
-            this.toolbar_deuiaction2_click(null, '', $event2);
+        if (Object.is($event.tag, 'tbitem19')) {
+            this.toolbar_tbitem19_click(null, '', $event2);
         }
     }
 
@@ -396,65 +376,7 @@ export default class PcmYdjdmxJDGLGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar2_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        if(params){
-          datas = [params];
-        }
-        // 界面行为
-        this.SaveAllEditRow(datas, contextJO,paramJO,  $event, xData,this,"PcmYdjdmx");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar2_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        if(params){
-          datas = [params];
-        }
-        // 界面行为
-        this.CloseRowEdit(datas, contextJO,paramJO,  $event, xData,this,"PcmYdjdmx");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_deuiaction1_xzmx_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem1_xzmx_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -484,7 +406,7 @@ export default class PcmYdjdmxJDGLGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_deuiaction1_remove_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem1_remove_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -513,7 +435,7 @@ export default class PcmYdjdmxJDGLGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_deuiaction1_lsjdjl_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem1_lsjdjl_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -543,7 +465,7 @@ export default class PcmYdjdmxJDGLGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -572,7 +494,7 @@ export default class PcmYdjdmxJDGLGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_deuiaction6_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem13_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -601,7 +523,7 @@ export default class PcmYdjdmxJDGLGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem19_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -687,34 +609,6 @@ export default class PcmYdjdmxJDGLGridViewBase extends GridViewBase {
     }
 
 
-    /**
-     * 保存所有编辑行
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof PcmYdjdmxJDGLGridViewBase
-     */
-    protected SaveAllEditRow(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        
-    }
-    /**
-     * 关闭行编辑
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof PcmYdjdmxJDGLGridViewBase
-     */
-    protected CloseRowEdit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        
-    }
     /**
      * 删除
      *

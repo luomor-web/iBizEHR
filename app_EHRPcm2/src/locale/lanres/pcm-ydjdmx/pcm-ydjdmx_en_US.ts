@@ -290,16 +290,6 @@ export default {
 			tip: "Help",
 		},
 	},
-	jdglgridviewtoolbar2_toolbar: {
-		deuiaction2: {
-			caption: "保存",
-			tip: "保存",
-		},
-		deuiaction1: {
-			caption: "关闭行编辑",
-			tip: "关闭行编辑",
-		},
-	},
 	ydmxeditviewtoolbar_toolbar: {
 		deuiaction2_saveandexit: {
 			caption: "确认",
@@ -311,27 +301,23 @@ export default {
 		},
 	},
 	jdglgridviewtoolbar_toolbar: {
-		deuiaction1_xzmx: {
+		tbitem1_xzmx: {
 			caption: "新增",
 			tip: "新增",
 		},
-		deuiaction1_remove: {
+		tbitem1_remove: {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-		deuiaction1_lsjdjl: {
+		tbitem1_lsjdjl: {
 			caption: "借调记录",
 			tip: "借调记录",
 		},
-		deuiaction3: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
-		},
-		deuiaction6: {
+		tbitem13: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
 		},
-		deuiaction2: {
+		tbitem19: {
 			caption: "Filter",
 			tip: "Filter",
 		},
