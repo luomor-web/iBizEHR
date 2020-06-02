@@ -436,8 +436,8 @@ export default class VacLeaveDetailJHQJMX_GridViewBase extends GridViewBase {
             { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
         ];
         const _this: any = this;
-        const openPopupModal = (view: any, data: any) => {
-            let container: Subject<any> = this.$appmodal.openModal(view, curViewParam, data);
+        const openDrawer = (view: any, data: any) => {
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, curViewParam, data);
             container.subscribe((result: any) => {
                 if (!result || !Object.is(result.ret, 'OK')) {
                     return;
@@ -453,8 +453,9 @@ export default class VacLeaveDetailJHQJMX_GridViewBase extends GridViewBase {
             height: 700, 
             width: 1024,  
             title: this.$t('entities.vacleavedetail.views.jhqjmx_editview.title'),
+            placement: 'DRAWER_RIGHT',
         };
-        openPopupModal(view, data);
+        openDrawer(view, data);
     }
 
 
@@ -484,8 +485,8 @@ export default class VacLeaveDetailJHQJMX_GridViewBase extends GridViewBase {
             { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
         ];
         const _this: any = this;
-        const openPopupModal = (view: any, data: any) => {
-            let container: Subject<any> = this.$appmodal.openModal(view, curViewParam, data);
+        const openDrawer = (view: any, data: any) => {
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, curViewParam, data);
             container.subscribe((result: any) => {
                 if (!result || !Object.is(result.ret, 'OK')) {
                     return;
@@ -501,8 +502,9 @@ export default class VacLeaveDetailJHQJMX_GridViewBase extends GridViewBase {
             height: 700, 
             width: 1024,  
             title: this.$t('entities.vacleavedetail.views.jhqjmx_editview.title'),
+            placement: 'DRAWER_RIGHT',
         };
-        openPopupModal(view, data);
+        openDrawer(view, data);
     }
 
 
