@@ -192,7 +192,7 @@ export default class PcmDdsqdmxDDSQGridViewBase extends GridViewBase {
      * @memberof PcmDdsqdmxDDSQGridView
      */
     public toolBarModels: any = {
-        tbitem3: { name: 'tbitem3', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', iconcls: 'fa fa-file-text-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'New', target: '' }, class: '' },
+        tbitem3: { name: 'tbitem3', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', iconcls: 'fa fa-file-text-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'New', target: '' }, class: '' },
 
         tbitem1_tydd: { name: 'tbitem1_tydd', caption: '同意调动','isShowCaption':true,'isShowIcon':true, tooltip: '同意调动', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'TYDD', target: 'SINGLEKEY' }, class: '' },
 
