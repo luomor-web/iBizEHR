@@ -12,7 +12,7 @@
               :viewState='wizardState'
               :context="context"
               :viewparams="viewparams"
-              updateAction="Save"
+              updateAction="Update"
               removeAction=""
               loadAction="Get"
               @save="wizardpanel_form_wizard01_save" 
@@ -26,7 +26,7 @@
               :viewState='wizardState'
               :context="context"
               :viewparams="viewparams"
-              updateAction="Save"
+              updateAction="Update"
               removeAction=""
               loadAction="GetDraft"
               @save="wizardpanel_form_wizard02_save" 
@@ -40,7 +40,7 @@
               :viewState='wizardState'
               :context="context"
               :viewparams="viewparams"
-              updateAction="Save"
+              updateAction="Update"
               removeAction=""
               loadAction="GetDraft"
               @save="wizardpanel_form_wizard03_save" 
