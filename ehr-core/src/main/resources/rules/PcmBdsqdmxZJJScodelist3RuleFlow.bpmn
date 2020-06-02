@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmbdsqdmxzjjscodelist3" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmbdsqdmxzjjscodelist3">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmbdsqdmxzjjscodelist3default" type="cn.ibizlab.ehr.core.pcm.domain.PcmBdsqdmx" />
+        <tns:global identifier="pcmbdsqdmxzjjscodelist3zjcodelist" type="cn.ibizlab.ehr.core.common.domain.CodeList1" />
+        </extensionElements>
+     <startEvent id="5a3a687929db4cb3500caea9569839bc" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxzjjscodelist3prepareparam1" id="190e16a2c6199faa5380a08a9e2de671" implementation="http://www.jboss.org/drools/rule" name="ZjcodeList"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxzjjscodelist3deaction1" id="791926d229134493a076b7895b5bcd70" implementation="http://www.jboss.org/drools/rule" name="刷新代码表"/>
+     <endEvent id="791926d229134493a076b7895b5bcd70_End" name="End"/>
+     <sequenceFlow id="791926d229134493a076b7895b5bcd70_End_Line" sourceRef="791926d229134493a076b7895b5bcd70" targetRef="791926d229134493a076b7895b5bcd70_End"/>
+     <sequenceFlow id="fa5331507b9b6576fecdf7bbf29aadeb" sourceRef="190e16a2c6199faa5380a08a9e2de671" targetRef="791926d229134493a076b7895b5bcd70">
+     </sequenceFlow>
+     <sequenceFlow id="dcc1fc9b8722a834dac9183a9df75d5a" sourceRef="5a3a687929db4cb3500caea9569839bc" targetRef="190e16a2c6199faa5380a08a9e2de671">
+     </sequenceFlow>
+    </process>
+</definitions>
+
