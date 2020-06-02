@@ -494,6 +494,7 @@ export default class MainBase extends Vue implements ControlInterface {
         lx: null,
         sfgbdd: null,
         rzwj: null,
+        finishdd: null,
         orgsectorid: null,
         ormdutyid: null,
         ormpostid: null,
@@ -685,6 +686,12 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '任职文件 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '任职文件 值不能为空', trigger: 'blur' },
         ],
+        finishdd: [
+            { type: 'number', message: '完成调动 值必须为数值类型', trigger: 'change' },
+            { type: 'number', message: '完成调动 值必须为数值类型', trigger: 'blur' },
+            { required: false, type: 'number', message: '完成调动 值不能为空', trigger: 'change' },
+            { required: false, type: 'number', message: '完成调动 值不能为空', trigger: 'blur' },
+        ],
         orgsectorid: [
             { type: 'string', message: '部门标识 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '部门标识 值必须为字符串类型', trigger: 'blur' },
@@ -775,6 +782,8 @@ export default class MainBase extends Vue implements ControlInterface {
         sfgbdd: new FormItemModel({ caption: '是否干部调动', detailType: 'FORMITEM', name: 'sfgbdd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         rzwj: new FormItemModel({ caption: '任职文件', detailType: 'FORMITEM', name: 'rzwj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        finishdd: new FormItemModel({ caption: '完成调动', detailType: 'FORMITEM', name: 'finishdd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         orgsectorid: new FormItemModel({ caption: '部门标识', detailType: 'FORMITEM', name: 'orgsectorid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -1077,6 +1086,18 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
+     * 监控表单属性 finishdd 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.finishdd')
+    onFinishddChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'finishdd', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
      * 监控表单属性 orgsectorid 值
      *
      * @param {*} newVal
@@ -1179,6 +1200,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
+
 
 
 
@@ -2112,7 +2134,10 @@ export default class MainBase extends Vue implements ControlInterface {
             this.data['lx'] = '10';
         }
         if (this.data.hasOwnProperty('sfgbdd')) {
-            this.data['sfgbdd'] = this.viewparams['sfgbdd'];
+            this.data['sfgbdd'] = 0;
+        }
+        if (this.data.hasOwnProperty('finishdd')) {
+            this.data['finishdd'] = 1;
         }
     }
 

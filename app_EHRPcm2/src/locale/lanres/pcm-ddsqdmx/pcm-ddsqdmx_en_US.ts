@@ -205,6 +205,7 @@ export default {
 			lx: "类型", 
 			sfgbdd: "是否干部调动", 
 			rzwj: "任职文件", 
+			finishdd: "完成调动", 
 			orgsectorid: "部门标识", 
 			ormdutyid: "职务ID", 
 			ormpostid: "岗位ID", 

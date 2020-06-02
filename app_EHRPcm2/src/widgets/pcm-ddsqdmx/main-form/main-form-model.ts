@@ -136,6 +136,11 @@ export default class MainModel {
         dataType: 'LONGTEXT_1000',
       },
       {
+        name: 'finishdd',
+        prop: 'finishdd',
+        dataType: 'YESNO',
+      },
+      {
         name: 'orgsectorid',
         prop: 'orgsectorid',
         dataType: 'PICKUP',
