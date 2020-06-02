@@ -1,0 +1,37 @@
+package cn.ibizlab.ehr.pcm.logic.pcmprofilelogic.groupconfirm;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pcm.domain.PcmProfile pcmprofilegroupconfirmdefault;
+global cn.ibizlab.ehr.core.pcm.service.IPcmProfileService pcmprofileservice;
+global cn.ibizlab.ehr.core.pcm.service.IPcmProfileService iBzSysPcmprofileDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[准备参数]
+rule "prepareparam1"
+ruleflow-group "pcmprofilegroupconfirmprepareparam1"
+    when
+    then
+    pcmprofilegroupconfirmdefault.set("profiletype","62");
+    update(pcmprofilegroupconfirmdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pcmprofilegroupconfirmbegin"
+    when
+    then
+    end
+
+//逻辑处理节点[变更状态为待审批编号]
+rule "deaction1"
+ruleflow-group "pcmprofilegroupconfirmdeaction1"
+    when
+    then
+    pcmprofileservice.update(pcmprofilegroupconfirmdefault);
+    update(pcmprofilegroupconfirmdefault);//更新fact中变量值
+    end
+

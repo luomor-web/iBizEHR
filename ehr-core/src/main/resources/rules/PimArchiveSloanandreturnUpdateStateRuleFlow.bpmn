@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pim.service.logic.pimarchivesloanandreturnupdatestate" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pim.service.logic.pimarchivesloanandreturnupdatestate">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pimarchivesloanandreturnupdatestatedefault" type="cn.ibizlab.ehr.core.pim.domain.PimArchiveSloanandreturn" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimarchivesloanandreturnupdatestateprepareparam4" id="a3d986365b3d06e7711e455ecefdc337" implementation="http://www.jboss.org/drools/rule" name="已归还"/>
+     <endEvent id="a3d986365b3d06e7711e455ecefdc337_End" name="End"/>
+     <sequenceFlow id="a3d986365b3d06e7711e455ecefdc337_End_Line" sourceRef="a3d986365b3d06e7711e455ecefdc337" targetRef="a3d986365b3d06e7711e455ecefdc337_End"/>
+     <startEvent id="ac39dd7df9ce92e4ef79c88b97684793" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimarchivesloanandreturnupdatestateprepareparam3" id="3a7fd688a0d19456f335a79de883099e" implementation="http://www.jboss.org/drools/rule" name="借阅中"/>
+     <endEvent id="3a7fd688a0d19456f335a79de883099e_End" name="End"/>
+     <sequenceFlow id="3a7fd688a0d19456f335a79de883099e_End_Line" sourceRef="3a7fd688a0d19456f335a79de883099e" targetRef="3a7fd688a0d19456f335a79de883099e_End"/>
+     <sequenceFlow id="134a44ee9487a8458aa8e7f0c04bc458" sourceRef="gateway-ac39dd7df9ce92e4ef79c88b97684793" targetRef="3a7fd688a0d19456f335a79de883099e">
+            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+            $pimarchivesloanandreturnupdatestatedefault:PimArchiveSloanandreturn();
+            eval($pimarchivesloanandreturnupdatestatedefault==pimarchivesloanandreturnupdatestatedefault);
+                eval((RuleUtils.test($pimarchivesloanandreturnupdatestatedefault.get("JYQSSJ"),"ISNOTNULL",""))&&(RuleUtils.test($pimarchivesloanandreturnupdatestatedefault.get("GHRQ"),"ISNULL","")))
+                ]]>
+            </conditionExpression>
+     </sequenceFlow>
+     <sequenceFlow id="9e76781ea4ecb77686414256676a3932" sourceRef="gateway-ac39dd7df9ce92e4ef79c88b97684793" targetRef="a3d986365b3d06e7711e455ecefdc337">
+            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+            $pimarchivesloanandreturnupdatestatedefault:PimArchiveSloanandreturn();
+            eval($pimarchivesloanandreturnupdatestatedefault==pimarchivesloanandreturnupdatestatedefault);
+                eval((RuleUtils.test($pimarchivesloanandreturnupdatestatedefault.get("JYQSSJ"),"ISNOTNULL",""))&&(RuleUtils.test($pimarchivesloanandreturnupdatestatedefault.get("GHRQ"),"ISNOTNULL","")))
+                ]]>
+            </conditionExpression>
+     </sequenceFlow>
+    <exclusiveGateway id="gateway-ac39dd7df9ce92e4ef79c88b97684793" name="Gateway" gatewayDirection="Diverging" default="gateway-ac39dd7df9ce92e4ef79c88b97684793_End_Line"></exclusiveGateway>
+    <sequenceFlow id="134a44ee9487a8458aa8e7f0c04bc458-gatewayline" sourceRef="ac39dd7df9ce92e4ef79c88b97684793" targetRef="gateway-ac39dd7df9ce92e4ef79c88b97684793"></sequenceFlow>
+    <sequenceFlow id="gateway-ac39dd7df9ce92e4ef79c88b97684793_End_Line" sourceRef="gateway-ac39dd7df9ce92e4ef79c88b97684793" targetRef="gateway-ac39dd7df9ce92e4ef79c88b97684793_End"/>
+    <endEvent id="gateway-ac39dd7df9ce92e4ef79c88b97684793_End" name="End"/>
+    </process>
+</definitions>
+

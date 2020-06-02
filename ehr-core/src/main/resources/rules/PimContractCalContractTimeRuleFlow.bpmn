@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pim.service.logic.pimcontractcalcontracttime" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pim.service.logic.pimcontractcalcontracttime">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pimcontractcalcontracttimedefault" type="cn.ibizlab.ehr.core.pim.domain.PimContract" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimcontractcalcontracttimedeaction1" id="070918ddd5d34c789b5b71d9dd8d32ac" implementation="http://www.jboss.org/drools/rule" name="计算合同签订次数"/>
+     <endEvent id="070918ddd5d34c789b5b71d9dd8d32ac_End" name="End"/>
+     <sequenceFlow id="070918ddd5d34c789b5b71d9dd8d32ac_End_Line" sourceRef="070918ddd5d34c789b5b71d9dd8d32ac" targetRef="070918ddd5d34c789b5b71d9dd8d32ac_End"/>
+     <startEvent id="3ee8a2ea63999f6832516f5ef3d08fcf" isInterrupting="true"/>
+     <sequenceFlow id="8b5b5fd079a5a8a39c77062583d14b90" sourceRef="3ee8a2ea63999f6832516f5ef3d08fcf" targetRef="070918ddd5d34c789b5b71d9dd8d32ac">
+     </sequenceFlow>
+    </process>
+</definitions>
+
