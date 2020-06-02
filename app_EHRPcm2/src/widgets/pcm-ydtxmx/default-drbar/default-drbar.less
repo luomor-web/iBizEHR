@@ -1,0 +1,80 @@
+.app-dr-bar {
+    height: 100%;
+    width: 100%;
+    background: white;
+    >.ivu-layout-sider {
+        background: white;
+        border-right: solid 1px #e6e6e6;
+        margin-bottom: 10px;
+        >.ivu-layout-sider-children {
+            overflow: auto;
+            >.el-menu {
+                height: 100%;
+                border-right: solid 0px #e6e6e6;
+            }
+            > .el-menu {
+                margin-top: -1px;
+                border-right: 0;
+                .el-submenu__title i, .el-menu-item i {
+                    font-size: 14px;
+                    width: 14px;
+                }
+                .el-menu-item, .el-submenu__title {
+                    height: 36px;
+                    font-size: 14px;
+                    line-height: 32px;
+                    > img {
+                        height: 18px;
+                        width: 18px;
+                        margin-top: -2px;
+                        margin-right: 5px;
+                    }
+                }
+                .el-menu-item, .el-submenu, .el-menu {
+                    border-top: 1px solid #fff;
+                }
+                .el-menu-item, .el-submenu > .el-submenu__title {
+                    height: 40px;
+                    line-height: 36px;
+                    border-left: 3px solid transparent;
+                    padding-left: 16px !important;
+                }
+                .el-menu-item.is-active {
+                    background: #e9e9e9 !important;
+                    color: #666666 !important;
+                    border-left: 3px solid #3fd5c0;
+                    i {
+                        color: #666666;
+                    }
+                }
+                // .app-menu-icon {
+                //     margin-right: 3px;
+                // }
+                > .el-submenu {
+                    > .el-menu {
+                        > .el-menu-item, > .el-submenu > .el-submenu__title {
+                            padding-left: 38px !important;
+                        }
+                        > .el-submenu {
+                            > .el-menu {
+                                > .el-menu-item, > .el-submenu > .el-submenu__title {
+                                    padding-left: 58px !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    >content {
+        height: 100%;
+        .main-data {
+            width: 100%;
+            height: 100%;
+            padding: 0 15px;
+        }
+    }
+}
+
+// this is less
