@@ -378,8 +378,8 @@ export default class PimDistirbutionDDRMgrGridViewBase extends GridViewBase {
         let xData: any = null;
         // _this 指向容器对象
         const _this: any = this;
-        let paramJO:any = {"sfjzb":"1","n_pimdistirbutionid_eq":""};
-        Object.assign(paramJO,{"sfjzb":"1","n_pimdistirbutionid_eq":""});
+        let paramJO:any = {"PCMDDSQDMX":"%pimdistirbutionid%"};
+        Object.assign(paramJO,{"PCMDDSQDMX":"%pimdistirbutionid%"});
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {

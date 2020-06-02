@@ -145,7 +145,7 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                         <template >
-            <codelist :value="row.sfhmd" tag='EhrCodeList0054' codelistType='STATIC' ></codelist>
+            <codelist :value="row.sfhmd" tag='EhrCodeList0054' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -1113,9 +1113,9 @@ export default class MainBase extends Vue implements ControlInterface {
             name: 'sfhmd',
             srfkey: 'EhrCodeList0054',
             codelistType : 'STATIC',
-            renderMode: 'other',
             textSeparator: '、',
-            valueSeparator: ',',
+            renderMode: 'string',
+            valueSeparator: ";",
           },
         ];
         let _this = this;

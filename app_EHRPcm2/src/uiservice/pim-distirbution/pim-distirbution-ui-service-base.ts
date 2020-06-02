@@ -265,8 +265,8 @@ export default class PimDistirbutionUIServiceBase extends UIService {
         const _args: any[] = Util.deepCopy(args);
         const _this: any = actionContext;
         const actionTarget: string | null = 'SINGLEKEY';
-        Object.assign(context, { pimdistirbution: '%pimdistirbutionid%' });
-        Object.assign(params, { pimdistirbutionid: '%pimdistirbutionid%' });
+        Object.assign(context, { pimdistirbution: '%pimdistirbution%' });
+        Object.assign(params, { pimdistirbutionid: '%pimdistirbution%' });
         Object.assign(params, { pimpersonname: '%pimpersonname%' });
         context = UIActionTool.handleContextParam(actionTarget,_args,context);
         data = UIActionTool.handleActionParam(actionTarget,_args,params);

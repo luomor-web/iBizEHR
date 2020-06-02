@@ -201,7 +201,7 @@
                             </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
-            <codelist :value="row.sfhmd" tag='EhrCodeList0054' codelistType='STATIC' ></codelist>
+            <codelist :value="row.sfhmd" tag='EhrCodeList0054' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -1203,9 +1203,9 @@ export default class GLGridBase extends Vue implements ControlInterface {
             name: 'sfhmd',
             srfkey: 'EhrCodeList0054',
             codelistType : 'STATIC',
-            renderMode: 'other',
             textSeparator: '、',
-            valueSeparator: ',',
+            renderMode: 'string',
+            valueSeparator: ";",
           },
         ];
         let _this = this;

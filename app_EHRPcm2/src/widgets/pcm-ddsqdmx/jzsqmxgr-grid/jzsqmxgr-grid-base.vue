@@ -151,7 +151,7 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                         <template >
-            <codelist :value="row.finishdd" tag='EhrCodeList0054' codelistType='STATIC' ></codelist>
+            <codelist :value="row.finishdd" tag='EhrCodeList0054' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -1123,9 +1123,9 @@ export default class JZSQMXGRBase extends Vue implements ControlInterface {
             name: 'finishdd',
             srfkey: 'EhrCodeList0054',
             codelistType : 'STATIC',
-            renderMode: 'other',
             textSeparator: '、',
-            valueSeparator: ',',
+            renderMode: 'string',
+            valueSeparator: ";",
           },
           {
             name: 'checkstatus',
