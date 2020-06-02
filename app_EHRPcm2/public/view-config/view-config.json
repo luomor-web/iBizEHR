@@ -134,6 +134,15 @@
         "viewtag": "159292dd22ecc474ce32296c4689c46f",
         "memo": ""
     },
+    "ormpostpickupgridview": {
+        "title": "岗位管理选择表格视图",
+        "caption": "岗位",
+        "viewtype": "DEPICKUPGRIDVIEW",
+        "viewmodule": "ORM",
+        "viewname": "OrmPostPickupGridView",
+        "viewtag": "17114a21969d91354a3e122609578082",
+        "memo": "系统自动添加"
+    },
     "pcmyddgmxjsrqqreditview": {
         "title": "请确认/修改待岗结束日期",
         "caption": "异动待岗明细",
@@ -340,6 +349,15 @@
         "viewname": "PcmYdbxmxBXGLGridView",
         "viewtag": "371096cd964f4d024b2bf9cb7924bb54",
         "memo": ""
+    },
+    "ormdutypickupgridview": {
+        "title": "职务库",
+        "caption": "职务库",
+        "viewtype": "DEPICKUPGRIDVIEW",
+        "viewmodule": "ORM",
+        "viewname": "OrmDutyPickupGridView",
+        "viewtag": "389e3ed8ad377cd6c118da032f0520e1",
+        "memo": "系统自动添加"
     },
     "pcmddsqdmxddckeditview": {
         "title": "异动调动明细",
@@ -908,6 +926,15 @@
         "viewtag": "89d8f4dbdb50b6fb724c0509252a1578",
         "memo": ""
     },
+    "ormdutypickupview": {
+        "title": "职务库",
+        "caption": "职务库",
+        "viewtype": "DEPICKUPVIEW",
+        "viewmodule": "ORM",
+        "viewname": "OrmDutyPickupView",
+        "viewtag": "89f7715eedf04be9cb4cb910eb347230",
+        "memo": "系统自动添加"
+    },
     "pimpersontxqreditview": {
         "title": "请确认/修改退休信息",
         "caption": "人员信息",
@@ -1293,6 +1320,15 @@
         "viewmodule": "ORM",
         "viewname": "OrmPostORGIDPickupView",
         "viewtag": "c507f3bdcb7df05aef06e375f29a9a9c",
+        "memo": "系统自动添加"
+    },
+    "ormpostpickupview": {
+        "title": "岗位管理数据选择视图",
+        "caption": "岗位",
+        "viewtype": "DEPICKUPVIEW",
+        "viewmodule": "ORM",
+        "viewname": "OrmPostPickupView",
+        "viewtag": "c5f651d460c0e56f27bebf49905d0afc",
         "memo": "系统自动添加"
     },
     "pcmddsqdmxsqjdsheditview": {

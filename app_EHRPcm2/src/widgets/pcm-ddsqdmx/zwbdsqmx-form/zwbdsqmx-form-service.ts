@@ -110,11 +110,11 @@ export default class ZWBDSQMXService extends ControlService {
         if (Object.is(serviceName, 'PimDistirbutionService') && Object.is(interfaceName, 'FetchKDDYXZFP')) {
             return this.doItems(this.pimdistirbutionService.FetchKDDYXZFP(JSON.parse(JSON.stringify(context)),data, isloading), 'pimdistirbutionid', 'pimdistirbution');
         }
-        if (Object.is(serviceName, 'OrmDutyService') && Object.is(interfaceName, 'FetchCurOrgsector')) {
-            return this.doItems(this.ormdutyService.FetchCurOrgsector(JSON.parse(JSON.stringify(context)),data, isloading), 'ormdutyid', 'ormduty');
+        if (Object.is(serviceName, 'OrmDutyService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.ormdutyService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'ormdutyid', 'ormduty');
         }
-        if (Object.is(serviceName, 'OrmPostService') && Object.is(interfaceName, 'FetchDQORGGW')) {
-            return this.doItems(this.ormpostService.FetchDQORGGW(JSON.parse(JSON.stringify(context)),data, isloading), 'ormpostid', 'ormpost');
+        if (Object.is(serviceName, 'OrmPostService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.ormpostService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'ormpostid', 'ormpost');
         }
 
         return Promise.reject([])

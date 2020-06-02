@@ -119,14 +119,14 @@ export default class JDSQMXService extends ControlService {
         if (Object.is(serviceName, 'PimDistirbutionService') && Object.is(interfaceName, 'FetchKDDYXZFP')) {
             return this.doItems(this.pimdistirbutionService.FetchKDDYXZFP(JSON.parse(JSON.stringify(context)),data, isloading), 'pimdistirbutionid', 'pimdistirbution');
         }
-        if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchAuthSJYXZZ')) {
-            return this.doItems(this.ormorgService.FetchAuthSJYXZZ(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
+        if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.ormorgService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
         }
-        if (Object.is(serviceName, 'OrmOrgsectorService') && Object.is(interfaceName, 'FetchCURORG')) {
-            return this.doItems(this.ormorgsectorService.FetchCURORG(JSON.parse(JSON.stringify(context)),data, isloading), 'orgsectorid', 'ormorgsector');
+        if (Object.is(serviceName, 'OrmOrgsectorService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.ormorgsectorService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgsectorid', 'ormorgsector');
         }
-        if (Object.is(serviceName, 'OrmPostService') && Object.is(interfaceName, 'FetchDQORGGW')) {
-            return this.doItems(this.ormpostService.FetchDQORGGW(JSON.parse(JSON.stringify(context)),data, isloading), 'ormpostid', 'ormpost');
+        if (Object.is(serviceName, 'OrmPostService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.ormpostService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'ormpostid', 'ormpost');
         }
 
         return Promise.reject([])

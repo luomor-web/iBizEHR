@@ -80,8 +80,10 @@ export default class OrmPostUIServiceBase extends UIService {
      */  
     public initViewMap(){
         this.allViewMap.set(':',{viewname:'orgidpickupgridview',srfappde:'ormposts'});
+        this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'ormposts'});
         this.allViewMap.set(':',{viewname:'ejormorgidpickupview',srfappde:'ormposts'});
         this.allViewMap.set(':',{viewname:'orgidpickupview',srfappde:'ormposts'});
+        this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'ormposts'});
         this.allViewMap.set(':',{viewname:'ejormorgidpickupgridview',srfappde:'ormposts'});
     }
 

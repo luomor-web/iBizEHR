@@ -19,6 +19,14 @@ export default {
 			caption: '职务库',
       title: '职务库',
 		},
+		pickupgridview: {
+			caption: '职务库',
+      title: '职务库',
+		},
+		pickupview: {
+			caption: '职务库',
+      title: '职务库',
+		},
 		orgsectorpickupview: {
 			caption: '职务库',
       title: '职务库',
@@ -48,6 +56,16 @@ export default {
 			formpage1: '常规条件', 
 			n_ormdutyname_like: '职务名称', 
 			n_fglx_like: '职务编码', 
+		},
+		uiactions: {
+		},
+	},
+	default_searchform: {
+		details: {
+			formpage1: '常规条件', 
+			n_ormdutyname_like: '职务名称', 
+			n_fglx_like: '职务编码', 
+			n_zwlb_like: '层级', 
 		},
 		uiactions: {
 		},

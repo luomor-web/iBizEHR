@@ -65,11 +65,11 @@
   deMajorField='orgname'
   deKeyField='ormorg'
   :service="service"
-  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchAuthSJYXZZ'}"
+  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchDefault'}"
   valueitem='orgid' 
   :value="data.orgname" 
   editortype="" 
-  :pickupView="{ viewname: 'orm-org-sjyxzzqxpickup-view', title: $t('entities.ormorg.views.sjyxzzqxpickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, { pathName: 'sjyxzzqxpickupview', parameterName: 'sjyxzzqxpickupview' } ], placement:'' }"
+  :pickupView="{ viewname: 'orm-org-pickup-view', title: $t('entities.ormorg.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
   style=""  
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>
@@ -90,7 +90,7 @@
   deMajorField='orgsectorname'
   deKeyField='ormorgsector'
   :service="service"
-  :acParams="{ serviceName: 'OrmOrgsectorService', interfaceName: 'FetchCURORG'}"
+  :acParams="{ serviceName: 'OrmOrgsectorService', interfaceName: 'FetchDefault'}"
   valueitem='orgsectorid' 
   :value="data.orgsectorname" 
   editortype="" 
@@ -115,11 +115,11 @@
   deMajorField='ormpostname'
   deKeyField='ormpost'
   :service="service"
-  :acParams="{ serviceName: 'OrmPostService', interfaceName: 'FetchDQORGGW'}"
+  :acParams="{ serviceName: 'OrmPostService', interfaceName: 'FetchDefault'}"
   valueitem='ormpostid' 
   :value="data.ormpostname" 
   editortype="" 
-  :pickupView="{ viewname: 'orm-post-orgidpickup-view', title: $t('entities.ormpost.views.orgidpickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormposts', parameterName: 'ormpost' }, { pathName: 'orgidpickupview', parameterName: 'orgidpickupview' } ], placement:'' }"
+  :pickupView="{ viewname: 'orm-post-pickup-view', title: $t('entities.ormpost.views.pickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormposts', parameterName: 'ormpost' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
   style=""  
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>

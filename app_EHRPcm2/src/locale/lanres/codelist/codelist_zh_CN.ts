@@ -129,6 +129,11 @@ export default {
     EhrCodeList0043: {
         empty: '',
     },
+    EhrCodeList0073: {
+        '0': '党内',
+        '1': '行政',
+        empty: '',
+    },
     EhrCodeList0165: {
         empty: '',
     },

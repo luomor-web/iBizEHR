@@ -683,6 +683,35 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
+        srfkey: 'EhrCodeList0073',
+        emptytext: '',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '0',
+                label: '党内',
+                text: '党内',
+                "data":"",
+                "codename":"Item_0",
+                "color": "Red",
+                value: '0',
+                
+                disabled: false,
+            },
+            {
+                id: '1',
+                label: '行政',
+                text: '行政',
+                "data":"",
+                "codename":"Item_1",
+                "color": "Blue",
+                value: '1',
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
         "srfkey": "EhrCodeList0165",
         "emptytext": "未定义",
         "codelisttype":"dynamic",

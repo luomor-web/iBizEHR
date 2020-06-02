@@ -27,11 +27,19 @@ export default {
 			caption: '岗位选择',
       title: '岗位选择',
 		},
+		pickupgridview: {
+			caption: '岗位',
+      title: '岗位',
+		},
 		ejormorgidpickupview: {
 			caption: '岗位',
       title: '岗位',
 		},
 		orgidpickupview: {
+			caption: '岗位',
+      title: '岗位',
+		},
+		pickupview: {
 			caption: '岗位',
       title: '岗位',
 		},
@@ -47,6 +55,21 @@ export default {
 			postnature: '岗位性质',
 			createman: '建立人',
 			createdate: '建立时间',
+		},
+		uiactions: {
+		},
+	},
+	main_grid: {
+		columns: {
+			xh: '排序',
+			ormpostname: '岗位名称',
+			gwfl: '岗位分类',
+			nx: '建议交流年限',
+			bxjlnx: '必须交流年限',
+			isconfidential: '是否保密岗',
+			postnature: '岗位性质',
+			iskeypostion: '是否关键岗位',
+			startstopsign: '启用标识',
 		},
 		uiactions: {
 		},
