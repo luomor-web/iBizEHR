@@ -324,17 +324,31 @@ export default class PcmYdjdmxUIServiceBase extends UIService {
         let deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
-            { pathName: 'ydmxeditview', parameterName: 'ydmxeditview' },
         ];
-        const openIndexViewTab = (data: any) => {
-            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
-            actionContext.$router.push(routePath);
-            if (xData && xData.refresh && xData.refresh instanceof Function) {
-                xData.refresh(args);
+            const openPopupModal = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if (xData && xData.refresh && xData.refresh instanceof Function) {
+                        xData.refresh(args);
+                    }
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
             }
-            return null;
-        }
-        openIndexViewTab(data);
+            const view: any = {
+                viewname: 'pcm-ydjdmx-ydmxedit-view', 
+                height: 750, 
+                width: 0,  
+                title: actionContext.$t('entities.pcmydjdmx.views.ydmxeditview.title'),
+            };
+            openPopupModal(view, data);
     }
 
 

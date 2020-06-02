@@ -22,15 +22,21 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('cz')">
-                <el-table-column show-overflow-tooltip :prop="'cz'" :label="$t('entities.pcmydjdmx.jdgl2_grid.columns.cz')" :width="100"  :align="'center'" :sortable="'custom'">
+            <template v-if="getColumnState('uagridcolumn1')">
+                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.pcmydjdmx.jdgl2_grid.columns.uagridcolumn1')" :width="150"  :align="'center'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.pcmydjdmx.jdgl2_grid.columns.cz')}}
+                        {{$t('entities.pcmydjdmx.jdgl2_grid.columns.uagridcolumn1')}}
                       </span>
                     </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.cz}}</span>
+                    <template slot-scope="scope">
+                        <span>
+                            
+                            <a @click="uiAction(scope.row, 'JSQRTC', $event)">
+                              <i class=''></i>
+                              {{$t('entities.pcmydjdmx.jdgl2_grid.uiactions.jsqrtc')}}
+                            </a>
+                        </span>
                     </template>
                 </el-table-column>
             </template>
@@ -59,7 +65,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pcmydjdmx.jdgl2_grid.columns.zzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pcmydjdmx.jdgl2_grid.columns.zzdzs')" :width="220"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmydjdmx.jdgl2_grid.columns.zzdzs')}}
@@ -210,6 +216,7 @@ import { UIActionTool,Util } from '@/utils';
 import PcmYdjdmxService from '@/service/pcm-ydjdmx/pcm-ydjdmx-service';
 import JDGL2Service from './jdgl2-grid-service';
 
+import PcmYdjdmxUIService from '@/uiservice/pcm-ydjdmx/pcm-ydjdmx-ui-service';
 import CodeListService from "@service/app/codelist-service";
 import { FormItemModel } from '@/model/form-detail';
 
@@ -298,6 +305,35 @@ export default class JDGL2Base extends Vue implements ControlInterface {
      */
     public appEntityService: PcmYdjdmxService = new PcmYdjdmxService({ $store: this.$store });
     
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public grid_uagridcolumn1_uc56da9a_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:PcmYdjdmxUIService  = new PcmYdjdmxUIService();
+        curUIService.PcmYdjdmx_JSQRTC(datas,contextJO, paramJO,  $event, xData,this,"PcmYdjdmx");
+    }
 
 
     /**
@@ -637,9 +673,9 @@ export default class JDGL2Base extends Vue implements ControlInterface {
      */
     public allColumns: any[] = [
         {
-            name: 'cz',
+            name: 'uagridcolumn1',
             label: '操作',
-            langtag: 'entities.pcmydjdmx.jdgl2_grid.columns.cz',
+            langtag: 'entities.pcmydjdmx.jdgl2_grid.columns.uagridcolumn1',
             show: true,
             util: 'PX'
         },
@@ -1475,6 +1511,9 @@ export default class JDGL2Base extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        if(Object.is('JSQRTC', tag)) {
+            this.grid_uagridcolumn1_uc56da9a_click(row, tag, $event);
+        }
     }
 
     /**

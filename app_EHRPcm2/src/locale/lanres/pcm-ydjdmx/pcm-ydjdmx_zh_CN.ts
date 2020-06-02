@@ -216,7 +216,7 @@ export default {
 	},
 	jdgl2_grid: {
 		columns: {
-			cz: '操作',
+			uagridcolumn1: '操作',
 			ygbh: '员工编号',
 			pimpersonname: '员工姓名',
 			zzdzs: '所属组织',
@@ -228,6 +228,8 @@ export default {
 			checkstatus: '审核状态',
 		},
 		uiactions: {
+			jsqrtc: '结束',
+			ryhg: '结束',
 		},
 	},
 	default_searchform: {

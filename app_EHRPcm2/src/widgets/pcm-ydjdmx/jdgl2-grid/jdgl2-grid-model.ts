@@ -27,9 +27,9 @@ export default class JDGL2Model {
     }else{
 		  return [
         {
-          name: 'jdshortname',
-          prop: 'jdshortname',
-          dataType: 'PICKUPDATA',
+          name: 'ygw',
+          prop: 'ygw',
+          dataType: 'INHERIT',
         },
         {
           name: 'ygbh',
@@ -37,69 +37,9 @@ export default class JDGL2Model {
           dataType: 'INHERIT',
         },
         {
-          name: 'ormorgsectorid',
-          prop: 'ormorgsectorid',
-          dataType: 'PICKUP',
-        },
-        {
-          name: 'ormpostname',
-          prop: 'ormpostname',
-          dataType: 'PICKUPTEXT',
-        },
-        {
-          name: 'ormpostid',
-          prop: 'ormpostid',
-          dataType: 'PICKUP',
-        },
-        {
-          name: 'ormorgid',
-          prop: 'ormorgid',
-          dataType: 'PICKUP',
-        },
-        {
-          name: 'jdzzdzs',
-          prop: 'jdzzdzs',
+          name: 'jdshortname',
+          prop: 'jdshortname',
           dataType: 'PICKUPDATA',
-        },
-        {
-          name: 'srfmajortext',
-          prop: 'pcmydjdmxname',
-          dataType: 'TEXT',
-        },
-        {
-          name: 'srfkey',
-          prop: 'pcmydjdmxid',
-          dataType: 'GUID',
-        },
-        {
-          name: 'srfdataaccaction',
-          prop: 'pcmydjdmxid',
-          dataType: 'GUID',
-        },
-        {
-          name: 'jdjsrq',
-          prop: 'jdjsrq',
-          dataType: 'DATE',
-        },
-        {
-          name: 'ormdutyid',
-          prop: 'ormdutyid',
-          dataType: 'PICKUP',
-        },
-        {
-          name: 'yzw',
-          prop: 'yzw',
-          dataType: 'INHERIT',
-        },
-        {
-          name: 'shortname',
-          prop: 'shortname',
-          dataType: 'INHERIT',
-        },
-        {
-          name: 'ygw',
-          prop: 'ygw',
-          dataType: 'INHERIT',
         },
         {
           name: 'pcmydjdmxid',
@@ -112,8 +52,28 @@ export default class JDGL2Model {
           dataType: 'PICKUP',
         },
         {
-          name: 'cz',
-          prop: 'cz',
+          name: 'ormpostid',
+          prop: 'ormpostid',
+          dataType: 'PICKUP',
+        },
+        {
+          name: 'ormpostname',
+          prop: 'ormpostname',
+          dataType: 'PICKUPTEXT',
+        },
+        {
+          name: 'ormorgsectorid',
+          prop: 'ormorgsectorid',
+          dataType: 'PICKUP',
+        },
+        {
+          name: 'ormorgid',
+          prop: 'ormorgid',
+          dataType: 'PICKUP',
+        },
+        {
+          name: 'syyf_color',
+          prop: 'syyf_color',
           dataType: 'TEXT',
         },
         {
@@ -122,19 +82,44 @@ export default class JDGL2Model {
           dataType: 'INT',
         },
         {
-          name: 'syyf_color',
-          prop: 'syyf_color',
-          dataType: 'TEXT',
-        },
-        {
           name: 'jdksrq',
           prop: 'jdksrq',
           dataType: 'DATE',
         },
         {
+          name: 'jdzzdzs',
+          prop: 'jdzzdzs',
+          dataType: 'PICKUPDATA',
+        },
+        {
+          name: 'srfmajortext',
+          prop: 'pcmydjdmxname',
+          dataType: 'TEXT',
+        },
+        {
+          name: 'srfdataaccaction',
+          prop: 'pcmydjdmxid',
+          dataType: 'GUID',
+        },
+        {
+          name: 'srfkey',
+          prop: 'pcmydjdmxid',
+          dataType: 'GUID',
+        },
+        {
           name: 'ormdutyname',
           prop: 'ormdutyname',
           dataType: 'PICKUPTEXT',
+        },
+        {
+          name: 'jdjsrq',
+          prop: 'jdjsrq',
+          dataType: 'DATE',
+        },
+        {
+          name: 'ormdutyid',
+          prop: 'ormdutyid',
+          dataType: 'PICKUP',
         },
         {
           name: 'zzdzs',
@@ -144,6 +129,16 @@ export default class JDGL2Model {
         {
           name: 'checkstatus',
           prop: 'checkstatus',
+          dataType: 'INHERIT',
+        },
+        {
+          name: 'yzw',
+          prop: 'yzw',
+          dataType: 'INHERIT',
+        },
+        {
+          name: 'shortname',
+          prop: 'shortname',
           dataType: 'INHERIT',
         },
         {
