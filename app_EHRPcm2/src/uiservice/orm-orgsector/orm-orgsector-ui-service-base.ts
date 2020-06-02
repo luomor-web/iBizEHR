@@ -81,6 +81,7 @@ export default class OrmOrgsectorUIServiceBase extends UIService {
     public initViewMap(){
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'ormorgsectors'});
         this.allViewMap.set(':',{viewname:'fpxxpickupgridview',srfappde:'ormorgsectors'});
+        this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'ormorgsectors'});
         this.allViewMap.set(':',{viewname:'ydbmpickupview',srfappde:'ormorgsectors'});
         this.allViewMap.set(':',{viewname:'ydbmpickupgridview',srfappde:'ormorgsectors'});
         this.allViewMap.set(':',{viewname:'fpxxpickupview',srfappde:'ormorgsectors'});

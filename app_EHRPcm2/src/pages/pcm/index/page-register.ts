@@ -1,6 +1,7 @@
 export const PageComponents = {
     install(Vue: any, opt: any) {
                 Vue.component('pcm-ydjzmx-jsrqqredit-view', () => import('@pages/pcm/pcm-ydjzmx-jsrqqredit-view/pcm-ydjzmx-jsrqqredit-view.vue'));
+        Vue.component('orm-orgsector-pickup-view', () => import('@pages/orm/orm-orgsector-pickup-view/orm-orgsector-pickup-view.vue'));
         Vue.component('orm-orgsector-pickup-grid-view', () => import('@pages/pcm/orm-orgsector-pickup-grid-view/orm-orgsector-pickup-grid-view.vue'));
         Vue.component('pcm-ydgzmx-gzcedit-view', () => import('@pages/pcm/pcm-ydgzmx-gzcedit-view/pcm-ydgzmx-gzcedit-view.vue'));
         Vue.component('pim-distirbution-kddpickup-view', () => import('@pages/pcm/pim-distirbution-kddpickup-view/pim-distirbution-kddpickup-view.vue'));

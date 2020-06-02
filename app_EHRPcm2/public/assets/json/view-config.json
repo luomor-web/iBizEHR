@@ -1175,6 +1175,14 @@
         "viewname": "OrmPostORGIDPickupView",
         "viewtag": "c507f3bdcb7df05aef06e375f29a9a9c"
     },
+    "ormorgsectorpickupview": {
+        "title": "部门管理数据选择视图",
+        "caption": "部门管理",
+        "viewtype": "DEPICKUPVIEW",
+        "viewmodule": "ORM",
+        "viewname": "OrmOrgsectorPickupView",
+        "viewtag": "c56eb0c8dc84112d4f696ea5066e1c8c"
+    },
     "ormpostpickupview": {
         "title": "岗位管理数据选择视图",
         "caption": "岗位",

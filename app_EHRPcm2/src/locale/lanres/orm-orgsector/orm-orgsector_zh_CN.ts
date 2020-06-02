@@ -81,6 +81,10 @@ export default {
 			caption: '部门选择',
       title: '部门选择',
 		},
+		pickupview: {
+			caption: '部门管理',
+      title: '部门管理',
+		},
 		ydbmpickupview: {
 			caption: '部门选择',
       title: '部门选择',

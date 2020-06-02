@@ -160,7 +160,7 @@
               valueitem='orgsectorid' 
               :value="row[column.property]" 
               editortype="" 
-              :pickupView="{ viewname: 'orm-orgsector-fpxxpickup-view', title: $t('entities.ormorgsector.views.fpxxpickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'fpxxpickupview', parameterName: 'fpxxpickupview' } ], placement:'' }"
+              :pickupView="{ viewname: 'orm-orgsector-pickup-view', title: $t('entities.ormorgsector.views.pickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
               style=""  
               @formitemvaluechange="($event)=>{onGridItemValueChange(row,$event,$index)}">
             </app-picker>

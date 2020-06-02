@@ -111,8 +111,8 @@ export default {
         empty: '',
     },
     EhrCodeList0054: {
-        1: '是',
-        0: '否',
+        '1': '是',
+        '0': '否',
         empty: '',
     },
     EhrCodeList0250: {

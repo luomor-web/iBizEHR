@@ -376,7 +376,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'f6cbf1fae6d1d16e04649f31728c7bed',
+                'c56eb0c8dc84112d4f696ea5066e1c8c',
                 'ebb043cf58054089938d982a7fafa0be',
                 '8b64d4b8a0e3f209aa52001c312117f1',
                 'c5f651d460c0e56f27bebf49905d0afc',
@@ -411,7 +411,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'f6cbf1fae6d1d16e04649f31728c7bed',
+                'c56eb0c8dc84112d4f696ea5066e1c8c',
                 'ebb043cf58054089938d982a7fafa0be',
                 '89f7715eedf04be9cb4cb910eb347230',
                 '8b64d4b8a0e3f209aa52001c312117f1',
@@ -484,7 +484,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'f6cbf1fae6d1d16e04649f31728c7bed',
+                'c56eb0c8dc84112d4f696ea5066e1c8c',
                 'ebb043cf58054089938d982a7fafa0be',
                 '89f7715eedf04be9cb4cb910eb347230',
                 '8b64d4b8a0e3f209aa52001c312117f1',
@@ -605,7 +605,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'f6cbf1fae6d1d16e04649f31728c7bed',
+                'c56eb0c8dc84112d4f696ea5066e1c8c',
                 'ebb043cf58054089938d982a7fafa0be',
                 '8b64d4b8a0e3f209aa52001c312117f1',
                 'c5f651d460c0e56f27bebf49905d0afc',
@@ -644,7 +644,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'f6cbf1fae6d1d16e04649f31728c7bed',
+                'c56eb0c8dc84112d4f696ea5066e1c8c',
                 'ebb043cf58054089938d982a7fafa0be',
                 '89f7715eedf04be9cb4cb910eb347230',
                 '8b64d4b8a0e3f209aa52001c312117f1',
@@ -711,7 +711,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'f6cbf1fae6d1d16e04649f31728c7bed',
+                'c56eb0c8dc84112d4f696ea5066e1c8c',
                 'ebb043cf58054089938d982a7fafa0be',
                 '89f7715eedf04be9cb4cb910eb347230',
                 '8b64d4b8a0e3f209aa52001c312117f1',
@@ -813,7 +813,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'f6cbf1fae6d1d16e04649f31728c7bed',
+                'c56eb0c8dc84112d4f696ea5066e1c8c',
                 'ebb043cf58054089938d982a7fafa0be',
                 '89f7715eedf04be9cb4cb910eb347230',
                 '8b64d4b8a0e3f209aa52001c312117f1',
@@ -1021,7 +1021,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'f6cbf1fae6d1d16e04649f31728c7bed',
+                'c56eb0c8dc84112d4f696ea5066e1c8c',
                 'ebb043cf58054089938d982a7fafa0be',
                 '8b64d4b8a0e3f209aa52001c312117f1',
                 'c5f651d460c0e56f27bebf49905d0afc',
@@ -1091,7 +1091,7 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '9d844432837c96fe861ddb479ab59c7c',
-                'f6cbf1fae6d1d16e04649f31728c7bed',
+                'c56eb0c8dc84112d4f696ea5066e1c8c',
                 'ebb043cf58054089938d982a7fafa0be',
                 '89f7715eedf04be9cb4cb910eb347230',
                 '8b64d4b8a0e3f209aa52001c312117f1',
@@ -1147,7 +1147,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'f6cbf1fae6d1d16e04649f31728c7bed',
+                'c56eb0c8dc84112d4f696ea5066e1c8c',
                 'a17267710aad72743e662159e330fd57',
                 'd754cb941b0de239e7e88c9c8bbfc1d0',
                 '89f7715eedf04be9cb4cb910eb347230',
@@ -1575,6 +1575,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'c56eb0c8dc84112d4f696ea5066e1c8c',
+            viewmodule: 'ORM',
+            viewname: 'OrmOrgsectorPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '93910ee5e6c7441c09aa8809597bcba9',
+            ],
+        },
+        {
             viewtag: 'c5f651d460c0e56f27bebf49905d0afc',
             viewmodule: 'ORM',
             viewname: 'OrmPostPickupView',
@@ -1591,7 +1601,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'f6cbf1fae6d1d16e04649f31728c7bed',
+                'c56eb0c8dc84112d4f696ea5066e1c8c',
                 'ebb043cf58054089938d982a7fafa0be',
                 '8b64d4b8a0e3f209aa52001c312117f1',
                 'c5f651d460c0e56f27bebf49905d0afc',
@@ -1749,7 +1759,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'f6cbf1fae6d1d16e04649f31728c7bed',
+                'c56eb0c8dc84112d4f696ea5066e1c8c',
                 'ebb043cf58054089938d982a7fafa0be',
                 '89f7715eedf04be9cb4cb910eb347230',
                 '8b64d4b8a0e3f209aa52001c312117f1',
@@ -1837,7 +1847,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'f6cbf1fae6d1d16e04649f31728c7bed',
+                'c56eb0c8dc84112d4f696ea5066e1c8c',
                 'ebb043cf58054089938d982a7fafa0be',
                 '8b64d4b8a0e3f209aa52001c312117f1',
                 'c5f651d460c0e56f27bebf49905d0afc',
