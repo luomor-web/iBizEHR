@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="vacleavemanagegridview" viewTitle="请假管理实体表格视图" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'vac-leave-manage-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="vacleavedetailjhqjmx_gridview" viewTitle="请假明细" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'vac-leave-detail-jhqjmx-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -9,7 +9,7 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="请假人员" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode"/>
       </div>
     </template>
     <template slot="content">
@@ -69,7 +69,7 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import VacLeaveManageService from '@/service/vac-leave-manage/vac-leave-manage-service';
+import VacLeaveDetailService from '@/service/vac-leave-detail/vac-leave-detail-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
@@ -77,30 +77,30 @@ import CodeListService from "@service/app/codelist-service";
 
 
 /**
- * 请假管理实体表格视图基类
+ * 请假明细基类
  *
  * @export
- * @class VacLeaveManageGridViewBase
+ * @class VacLeaveDetailJHQJMX_GridViewBase
  * @extends {GridViewBase}
  */
 @Component({})
 @VueLifeCycleProcessing
-export default class VacLeaveManageGridViewBase extends GridViewBase {
+export default class VacLeaveDetailJHQJMX_GridViewBase extends GridViewBase {
 
     /**
      * 实体服务对象
      *
-     * @type {VacLeaveManageService}
-     * @memberof VacLeaveManageGridViewBase
+     * @type {VacLeaveDetailService}
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
-    public appEntityService: VacLeaveManageService = new VacLeaveManageService;
+    public appEntityService: VacLeaveDetailService = new VacLeaveDetailService;
 
 
     /**
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */    
     public counterServiceArray:Array<any> = [];
     
@@ -109,7 +109,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      *
      * @param {*} val
      * @returns {*}
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     @Emit() 
     public viewDatasChange(val: any):any {
@@ -120,16 +120,16 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
 	 * 视图标识
 	 *
 	 * @type {string}
-	 * @memberof VacLeaveManageGridViewBase
+	 * @memberof VacLeaveDetailJHQJMX_GridViewBase
 	 */
-	public viewtag: string = 'bafd71cd0552e86505f6d85e2dbdd9fb';
+	public viewtag: string = '46624dab5e7a5e5026cab5092952f020';
 
     /**
      * 父数据对象
      *
      * @protected
      * @type {*}
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     protected srfparentdata: any = {};
 
@@ -137,7 +137,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
 	 * 自定义视图导航上下文集合
 	 *
 	 * @type {*}
-	 * @memberof VacLeaveManageGridViewBase
+	 * @memberof VacLeaveDetailJHQJMX_GridViewBase
 	 */
     public customViewNavContexts:any ={
     };
@@ -146,7 +146,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
 	 * 自定义视图导航参数集合
 	 *
 	 * @type {*}
-	 * @memberof VacLeaveManageGridViewBase
+	 * @memberof VacLeaveDetailJHQJMX_GridViewBase
 	 */
     public customViewParams:any ={
     };
@@ -155,12 +155,12 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      * 视图模型数据
      *
      * @type {*}
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public model: any = {
-        srfCaption: 'entities.vacleavemanage.views.gridview.caption',
-        srfTitle: 'entities.vacleavemanage.views.gridview.title',
-        srfSubTitle: 'entities.vacleavemanage.views.gridview.subtitle',
+        srfCaption: 'entities.vacleavedetail.views.jhqjmx_gridview.caption',
+        srfTitle: 'entities.vacleavedetail.views.jhqjmx_gridview.title',
+        srfSubTitle: 'entities.vacleavedetail.views.jhqjmx_gridview.subtitle',
         dataInfo: ''
     }
 
@@ -168,7 +168,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      * 容器模型
      *
      * @type {*}
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public containerModel: any = {
         view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
@@ -181,21 +181,19 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      *
      * @public
      * @type {Subject<{action: string, data: any}>}
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
     /**
      * 工具栏模型
      *
      * @type {*}
-     * @memberof VacLeaveManageGridView
+     * @memberof VacLeaveDetailJHQJMX_GridView
      */
     public toolBarModels: any = {
         tbitem3: { name: 'tbitem3', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', iconcls: 'fa fa-file-text-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'New', target: '' }, class: '' },
 
-        deuiaction1: { name: 'deuiaction1', caption: '删除','isShowCaption':true,'isShowIcon':true, tooltip: '删除', iconcls: 'fa fa-remove', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYGXML', uiaction: { tag: 'Remove', target: 'MULTIKEY' }, class: '' },
-
-        tbitem19: { name: 'tbitem19', caption: '过滤','isShowCaption':true,'isShowIcon':true, tooltip: '过滤', iconcls: 'fa fa-filter', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYKQLX', uiaction: { tag: 'ToggleFilter', target: '' }, class: '' },
+        tbitem8: { name: 'tbitem8', caption: '删除','isShowCaption':true,'isShowIcon':true, tooltip: '删除', iconcls: 'fa fa-remove', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYGXML', uiaction: { tag: 'Remove', target: 'MULTIKEY' }, class: '' },
 
     };
 
@@ -208,7 +206,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      *
      * @public
      * @type {Engine}
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public engine: GridViewEngine = new GridViewEngine();
 	
@@ -217,7 +215,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      * 引擎初始化
      *
      * @public
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public engineInit(): void {
         this.engine.init({
@@ -230,8 +228,8 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
             },
             grid: this.$refs.grid,
             searchform: this.$refs.searchform,
-            keyPSDEField: 'vacleavemanage',
-            majorPSDEField: 'pimpersonname',
+            keyPSDEField: 'vacleavedetail',
+            majorPSDEField: 'vacleavedetailname',
             isLoadDefault: true,
         });
     }
@@ -242,17 +240,14 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'tbitem3')) {
             this.toolbar_tbitem3_click(null, '', $event2);
         }
-        if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar_deuiaction1_click(null, '', $event2);
-        }
-        if (Object.is($event.tag, 'tbitem19')) {
-            this.toolbar_tbitem19_click(null, '', $event2);
+        if (Object.is($event.tag, 'tbitem8')) {
+            this.toolbar_tbitem8_click(null, '', $event2);
         }
     }
 
@@ -262,7 +257,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public grid_selectionchange($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'selectionchange', $event);
@@ -274,7 +269,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public grid_beforeload($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'beforeload', $event);
@@ -286,7 +281,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public grid_rowdblclick($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'rowdblclick', $event);
@@ -298,7 +293,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public grid_remove($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'remove', $event);
@@ -310,7 +305,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public grid_load($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'load', $event);
@@ -322,7 +317,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public searchform_save($event: any, $event2?: any) {
         this.engine.onCtrlEvent('searchform', 'save', $event);
@@ -334,7 +329,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public searchform_search($event: any, $event2?: any) {
         this.engine.onCtrlEvent('searchform', 'search', $event);
@@ -346,7 +341,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public searchform_load($event: any, $event2?: any) {
         this.engine.onCtrlEvent('searchform', 'load', $event);
@@ -380,7 +375,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.New(datas, contextJO,paramJO,  $event, xData,this,"VacLeaveManage");
+        this.New(datas, contextJO,paramJO,  $event, xData,this,"VacLeaveDetail");
     }
 
     /**
@@ -391,7 +386,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem8_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -409,36 +404,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"VacLeaveManage");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_tbitem19_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        if(params){
-          datas = [params];
-        }
-        // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"VacLeaveManage");
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"VacLeaveDetail");
     }
 
     /**
@@ -449,7 +415,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      * @param {*} [fullargs]
      * @param {*} [$event]
      * @param {*} [xData]
-     * @memberof VacLeaveManageGridView
+     * @memberof VacLeaveDetailJHQJMX_GridView
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         const data: any = {};
@@ -460,18 +426,13 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        let deResParameters: any[] = [];
-        if(curViewParam.pimperson && true){
-            deResParameters = [
-            { pathName: 'pimpeople', parameterName: 'pimperson' },
-            ]
-        }
+        const deResParameters: any[] = [];
         const parameters: any[] = [
-            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
+            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
         ];
         const _this: any = this;
-        const openDrawer = (view: any, data: any) => {
-            let container: Subject<any> = this.$appdrawer.openDrawer(view, curViewParam, data);
+        const openPopupModal = (view: any, data: any) => {
+            let container: Subject<any> = this.$appmodal.openModal(view, curViewParam, data);
             container.subscribe((result: any) => {
                 if (!result || !Object.is(result.ret, 'OK')) {
                     return;
@@ -483,13 +444,12 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
             });
         }
         const view: any = {
-            viewname: 'vac-leave-manage-ngedit-view', 
-            height: 0, 
-            width: 1024,  
-            title: this.$t('entities.vacleavemanage.views.ngeditview.title'),
-            placement: 'DRAWER_RIGHT',
+            viewname: 'vac-leave-detail-jhqjmx-edit-view', 
+            height: 700, 
+            width: 0,  
+            title: this.$t('entities.vacleavedetail.views.jhqjmx_editview.title'),
         };
-        openDrawer(view, data);
+        openPopupModal(view, data);
     }
 
 
@@ -501,7 +461,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      * @param {*} [fullargs]
      * @param {*} [$event]
      * @param {*} [xData]
-     * @memberof VacLeaveManageGridView
+     * @memberof VacLeaveDetailJHQJMX_GridView
      */
     public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
         const data: any = {};
@@ -509,18 +469,13 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        let deResParameters: any[] = [];
-        if(curViewParam.pimperson && true){
-            deResParameters = [
-            { pathName: 'pimpeople', parameterName: 'pimperson' },
-            ]
-        }
+        const deResParameters: any[] = [];
         const parameters: any[] = [
-            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
+            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
         ];
         const _this: any = this;
-        const openDrawer = (view: any, data: any) => {
-            let container: Subject<any> = this.$appdrawer.openDrawer(view, curViewParam, data);
+        const openPopupModal = (view: any, data: any) => {
+            let container: Subject<any> = this.$appmodal.openModal(view, curViewParam, data);
             container.subscribe((result: any) => {
                 if (!result || !Object.is(result.ret, 'OK')) {
                     return;
@@ -532,13 +487,12 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
             });
         }
         const view: any = {
-            viewname: 'vac-leave-manage-ngedit-view', 
-            height: 0, 
-            width: 1024,  
-            title: this.$t('entities.vacleavemanage.views.ngeditview.title'),
-            placement: 'DRAWER_RIGHT',
+            viewname: 'vac-leave-detail-jhqjmx-edit-view', 
+            height: 700, 
+            width: 0,  
+            title: this.$t('entities.vacleavedetail.views.jhqjmx_editview.title'),
         };
-        openDrawer(view, data);
+        openPopupModal(view, data);
     }
 
 
@@ -551,7 +505,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      * @param {*} [$event] 事件源
      * @param {*} [xData]  执行行为所需当前部件
      * @param {*} [actionContext]  执行行为上下文
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public New(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
          const _this: any = this;
@@ -571,7 +525,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      * @param {*} [$event] 事件源
      * @param {*} [xData]  执行行为所需当前部件
      * @param {*} [actionContext]  执行行为上下文
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public Remove(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
@@ -581,29 +535,12 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
         xData.remove(args);
     }
 
-    /**
-     * 过滤
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof VacLeaveManageGridViewBase
-     */
-    public ToggleFilter(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        const _this: any = this;
-        if (_this.hasOwnProperty('isExpandSearchForm')) {
-            _this.isExpandSearchForm = !_this.isExpandSearchForm;
-        }
-    }
 
 
     /**
      * 销毁视图回调
      *
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public destroyed(){
         if(this.viewDefaultUsage){
@@ -623,7 +560,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      * 是否单选
      *
      * @type {boolean}
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public isSingleSelect: boolean = false;
 
@@ -652,7 +589,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
     * 界面关系通讯对象
     *
     * @type {Subject<ViewState>}
-    * @memberof VacLeaveManageGridViewBase
+    * @memberof VacLeaveDetailJHQJMX_GridViewBase
     */
     @Prop() public formDruipart?: Subject<ViewState>;
 
@@ -660,7 +597,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      * 搜索值
      *
      * @type {string}
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public query: string = '';
 
@@ -668,7 +605,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      * 是否展开搜索表单
      *
      * @type {boolean}
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public isExpandSearchForm: boolean = false;
 
@@ -679,7 +616,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      * 2 双击激活
      *
      * @type {(number | 0 | 1 | 2)}
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public gridRowActiveMode: number | 0 | 1 | 2 = 2;
 
@@ -687,7 +624,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      * 快速搜索
      *
      * @param {*} $event
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     public onSearch($event: any): void {
         const grid: any = this.$refs.grid;
@@ -712,7 +649,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      *
      * @readonly
      * @type {(number | null)}
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     get refreshdata(): number | null {
         return this.$store.getters['viewaction/getRefreshData'](this.viewtag);
@@ -724,7 +661,7 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
      * @param {*} newVal
      * @param {*} oldVal
      * @returns
-     * @memberof VacLeaveManageGridViewBase
+     * @memberof VacLeaveDetailJHQJMX_GridViewBase
      */
     @Watch('refreshdata')
     onRefreshData(newVal: any, oldVal: any) {
@@ -744,5 +681,5 @@ export default class VacLeaveManageGridViewBase extends GridViewBase {
 </script>
 
 <style lang='less'>
-@import './vac-leave-manage-grid-view.less';
+@import './vac-leave-detail-jhqjmx-grid-view.less';
 </style>

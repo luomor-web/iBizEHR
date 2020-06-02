@@ -107,6 +107,15 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '3451991293c2ae164b404d7a256b348e',
+            viewmodule: 'VAC',
+            viewname: 'VacLeaveDetailJHQJMX_EditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
             viewtag: '402c44c268001c72d0260161d2bece56',
             viewmodule: 'ORM',
             viewname: 'OrmOrgsectorBMKQSZEditView',
@@ -132,6 +141,16 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+            ],
+        },
+        {
+            viewtag: '46624dab5e7a5e5026cab5092952f020',
+            viewmodule: 'VAC',
+            viewname: 'VacLeaveDetailJHQJMX_GridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '3451991293c2ae164b404d7a256b348e',
             ],
         },
         {
@@ -191,6 +210,16 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+            ],
+        },
+        {
+            viewtag: '674c3fe6e36a1eb0f72af7c6a7f76905',
+            viewmodule: 'VAC',
+            viewname: 'VacLeaveManageNGEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '46624dab5e7a5e5026cab5092952f020',
             ],
         },
         {
@@ -381,6 +410,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '674c3fe6e36a1eb0f72af7c6a7f76905',
             ],
         },
         {
