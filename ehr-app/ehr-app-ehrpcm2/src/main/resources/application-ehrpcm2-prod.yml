@@ -11,6 +11,10 @@ zuul:
       path: /pcmjxsgzs/**
       serviceId: ehr-webapi
       stripPrefix: false
+    ormpost:
+      path: /ormposts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     pcmydtxmx:
       path: /pcmydtxmxes/**
       serviceId: ehr-webapi
@@ -19,12 +23,20 @@ zuul:
       path: /pcmydgzmxes/**
       serviceId: ehr-webapi
       stripPrefix: false
+    ormorg:
+      path: /ormorgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     pimdistirbution:
       path: /pimdistirbutions/**
       serviceId: ehr-webapi
       stripPrefix: false
     pcmyddgmx:
       path: /pcmyddgmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormduty:
+      path: /ormduties/**
       serviceId: ehr-webapi
       stripPrefix: false
     pcmtxbz:
@@ -45,6 +57,10 @@ zuul:
       stripPrefix: false
     pcmydmx:
       path: /pcmydmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmrecruitment:
+      path: /pcmrecruitments/**
       serviceId: ehr-webapi
       stripPrefix: false
     pcmtxfpsq:
@@ -69,22 +85,6 @@ zuul:
       stripPrefix: false
     pcmnotice:
       path: /pcmnotices/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    ormpost:
-      path: /ormposts/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    ormorg:
-      path: /ormorgs/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    ormduty:
-      path: /ormduties/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    pcmrecruitment:
-      path: /pcmrecruitments/**
       serviceId: ehr-webapi
       stripPrefix: false
     pcmprofile:
