@@ -10,16 +10,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-            ],
-        },
-        {
-            viewtag: '08aa713f08b89900801451e961cf368b',
-            viewmodule: 'ATT',
-            viewname: 'AttEndenceSetupKQBYPickupView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '6f6f4d9860d050ea30424cb66f86d122',
+                '5e6a1f31db30d4ee28936a3b346da59f',
             ],
         },
         {
@@ -33,16 +24,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '106a8c5b57b9dc11b0eaf030ef117458',
-            viewmodule: 'ORM',
-            viewname: 'OrmOrgJQGZSYFPXXPickupView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '46169808698693a25081ae7671f85f3f',
-            ],
-        },
-        {
             viewtag: '1670d8d1ba576d381e759a1968ca96d9',
             viewmodule: 'ATT',
             viewname: 'AttEndenceSetupEditView',
@@ -51,6 +32,7 @@ export const viewstate: any = {
             refviews: [
                 'a0616d69352ba5fc46e1e359b78a810a',
                 '49181fed112a6e7d9c86a8a261583959',
+                '20fc72240f5e586b7cf92ebf229bffd1',
                 '8994b647b6c3896f2b2a29a78ffffccb',
                 '0df297d269c07a0970657b7f56adb1ea',
             ],
@@ -135,15 +117,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '46169808698693a25081ae7671f85f3f',
-            viewmodule: 'ORM',
-            viewname: 'OrmOrgJQGZSYPickupGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-            ],
-        },
-        {
             viewtag: '46624dab5e7a5e5026cab5092952f020',
             viewmodule: 'VAC',
             viewname: 'VacLeaveDetailJHQJMX_GridView',
@@ -182,6 +155,16 @@ export const viewstate: any = {
                 'a02235606b74a1e7ea69396bd40e14c8',
                 '332ebe6a595ac81f1e42a327e3c911e1',
                 '641ae929e09d36459bd7fa494f762d04',
+            ],
+        },
+        {
+            viewtag: '5e6a1f31db30d4ee28936a3b346da59f',
+            viewmodule: 'ATT',
+            viewname: 'AttEndenceSetupPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '64d9c76c20bf971502eb7c8ea1c2d7e2',
             ],
         },
         {
@@ -229,18 +212,9 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '5e6a1f31db30d4ee28936a3b346da59f',
                 '20fc72240f5e586b7cf92ebf229bffd1',
                 '729c5fcb6684b43de26f6004de2ae301',
-                '08aa713f08b89900801451e961cf368b',
-            ],
-        },
-        {
-            viewtag: '6f6f4d9860d050ea30424cb66f86d122',
-            viewmodule: 'ATT',
-            viewname: 'AttEndenceSetupKQBPickupGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
             ],
         },
         {
@@ -271,16 +245,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'd66a73e83c5a991b3b4093216ddbd5c8',
-            ],
-        },
-        {
-            viewtag: '7f5fde30882cd704aa8fdaf922c320fa',
-            viewmodule: 'PCM',
-            viewname: 'PcmWzd0001YGSZKQOptionView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '08aa713f08b89900801451e961cf368b',
             ],
         },
         {
@@ -399,8 +363,8 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'a6c5ff62b4c8ef40868249987ff31957',
+                '20fc72240f5e586b7cf92ebf229bffd1',
                 '1964763f853ddc6c622f5de9e7b36f39',
-                '106a8c5b57b9dc11b0eaf030ef117458',
             ],
         },
         {
@@ -421,8 +385,8 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'a6c5ff62b4c8ef40868249987ff31957',
+                '20fc72240f5e586b7cf92ebf229bffd1',
                 '1964763f853ddc6c622f5de9e7b36f39',
-                '106a8c5b57b9dc11b0eaf030ef117458',
             ],
         },
         {
@@ -547,7 +511,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '7f5fde30882cd704aa8fdaf922c320fa',
                 '03511dfb145e54bb23246d7f2b417a36',
                 'fda0fddd972d90b7d9335a0aa20c6cf4',
             ],

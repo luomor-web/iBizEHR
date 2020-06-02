@@ -101,8 +101,8 @@ export default class MainService extends ControlService {
         if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchDefault')) {
             return this.doItems(this.ormorgService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
         }
-        if (Object.is(serviceName, 'AttEndenceSetupService') && Object.is(interfaceName, 'FetchKQYBXKQB')) {
-            return this.doItems(this.attendencesetupService.FetchKQYBXKQB(JSON.parse(JSON.stringify(context)),data, isloading), 'attendencesetupid', 'attendencesetup');
+        if (Object.is(serviceName, 'AttEndenceSetupService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.attendencesetupService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'attendencesetupid', 'attendencesetup');
         }
 
         return Promise.reject([])

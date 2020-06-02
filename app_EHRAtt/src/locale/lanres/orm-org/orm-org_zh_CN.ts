@@ -29,17 +29,9 @@ export default {
     porgid: '组织机构标识',
   },
 	views: {
-		jqgzsyfpxxpickupview: {
-			caption: '组织数据选择视图',
-      title: '组织数据选择视图',
-		},
 		pickupview: {
 			caption: '组织管理',
       title: '组织管理',
-		},
-		jqgzsypickupgridview: {
-			caption: '组织选择表格视图',
-      title: '组织选择表格视图',
 		},
 		pickupgridview: {
 			caption: '组织管理',

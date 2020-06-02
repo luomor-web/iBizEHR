@@ -82,48 +82,26 @@ export default {
 			tip: '退出',
 		},
 	},
-	jjrtxsbgridviewtoolbar2_toolbar: {
+	jjrtxsbgridviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: '新建',
 			tip: '新建',
-		},
-		deuiaction5_appointjzbjjr: {
-			caption: '引用局总部节假日',
-			tip: '引用局总部节假日',
 		},
 		deuiaction2: {
 			caption: '保存',
 			tip: '保存',
 		},
-		deuiaction4: {
-			caption: '删除',
-			tip: '删除',
-		},
 		deuiaction3: {
-			caption: '关闭行编辑',
-			tip: '关闭行编辑',
-		},
-	},
-	jjrtxsbgridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: '新建',
-			tip: '新建',
-		},
-		tbitem1_appointjzbjjr: {
-			caption: '引用局总部节假日',
-			tip: '引用局总部节假日',
-		},
-		tbitem8: {
 			caption: '删除',
 			tip: '删除',
 		},
-		deuiaction1: {
-			caption: '开启行编辑',
-			tip: '开启行编辑',
+		deuiaction4: {
+			caption: '导入',
+			tip: '导入',
 		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
+		deuiaction5: {
+			caption: '导出',
+			tip: '导出',
 		},
 	},
 };

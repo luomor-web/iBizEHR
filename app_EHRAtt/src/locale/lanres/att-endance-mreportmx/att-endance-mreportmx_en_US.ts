@@ -175,8 +175,8 @@ export default {
 	},
 	gridviewtoolbar_toolbar: {
 		tbitem14_export2excel: {
-			caption: "导出明细",
-			tip: "导出明细",
+			caption: "导出",
+			tip: "导出",
 		},
 		tbitem13: {
 			caption: "导入",

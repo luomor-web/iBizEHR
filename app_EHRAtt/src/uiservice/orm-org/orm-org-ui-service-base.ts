@@ -79,9 +79,7 @@ export default class OrmOrgUIServiceBase extends UIService {
      * @memberof  OrmOrgUIServiceBase
      */  
     public initViewMap(){
-        this.allViewMap.set(':',{viewname:'jqgzsyfpxxpickupview',srfappde:'ormorgs'});
         this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'ormorgs'});
-        this.allViewMap.set(':',{viewname:'jqgzsypickupgridview',srfappde:'ormorgs'});
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'ormorgs'});
     }
 

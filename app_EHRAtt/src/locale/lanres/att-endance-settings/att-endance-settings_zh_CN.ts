@@ -49,6 +49,9 @@ export default {
 			srfuf: '', 
 			srfdeid: '', 
 			srfsourcekey: '', 
+			pimpersonid: '人员信息标识', 
+			attendencesetupid: '考勤设置标识', 
+			attendencesetupname: '所属考勤表', 
 			attendancesettingsid: '考勤人员标识', 
 		},
 		uiactions: {

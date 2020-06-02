@@ -23,14 +23,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "OrmOrgsectorMPickupView",
             "viewtag": "07d14c54e2627a1b2fbcd2c5773a89d1"
         },
-        "attendencesetupkqbypickupview": {
-            "title": "考勤设置数据选择视图",
-            "caption": "考勤设置",
-            "viewtype": "DEPICKUPVIEW",
-            "viewmodule": "ATT",
-            "viewname": "AttEndenceSetupKQBYPickupView",
-            "viewtag": "08aa713f08b89900801451e961cf368b"
-        },
         "pimpersoncurorgpimpersonpickupview": {
             "title": "人员信息",
             "caption": "人员信息",
@@ -38,22 +30,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PIM",
             "viewname": "PimPersonCurOrgPimpersonPickupView",
             "viewtag": "0df297d269c07a0970657b7f56adb1ea"
-        },
-        "attendencesetupcurorgkqszgridview": {
-            "title": "考勤设置表格视图",
-            "caption": "考勤设置",
-            "viewtype": "DEGRIDVIEW",
-            "viewmodule": "ATT",
-            "viewname": "AttEndenceSetupCurOrgKQSZGridView",
-            "viewtag": "0e3c8ea0609ff239614c28a75a94ea87"
-        },
-        "ormorgjqgzsyfpxxpickupview": {
-            "title": "组织数据选择视图",
-            "caption": "组织数据选择视图",
-            "viewtype": "DEPICKUPVIEW",
-            "viewmodule": "ORM",
-            "viewname": "OrmOrgJQGZSYFPXXPickupView",
-            "viewtag": "106a8c5b57b9dc11b0eaf030ef117458"
         },
         "attendencesetupeditview": {
             "title": "考勤设置编辑视图",
@@ -143,14 +119,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "VacHolidayEditView",
             "viewtag": "43382b00685ac886ac519967af516ee9"
         },
-        "ormorgjqgzsypickupgridview": {
-            "title": "组织选择表格视图",
-            "caption": "组织选择表格视图",
-            "viewtype": "DEPICKUPGRIDVIEW",
-            "viewmodule": "ORM",
-            "viewname": "OrmOrgJQGZSYPickupGridView",
-            "viewtag": "46169808698693a25081ae7671f85f3f"
-        },
         "vacleavedetailjhqjmx_gridview": {
             "title": "请假明细",
             "caption": "请假明细",
@@ -190,6 +158,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "ATT",
             "viewname": "Index",
             "viewtag": "55D522D7-A7FF-4A3C-9CD9-67755DF8651C"
+        },
+        "attendencesetuppickupview": {
+            "title": "考勤设置数据选择视图",
+            "caption": "考勤设置",
+            "viewtype": "DEPICKUPVIEW",
+            "viewmodule": "ATT",
+            "viewname": "AttEndenceSetupPickupView",
+            "viewtag": "5e6a1f31db30d4ee28936a3b346da59f"
         },
         "attendencetypegridview": {
             "title": "考勤类型表格视图",
@@ -231,14 +207,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "AttEndanceMreportEditView",
             "viewtag": "6b3008117fb17fb739d7fa3a19cec37b"
         },
-        "attendencesetupkqbpickupgridview": {
-            "title": "考勤设置选择表格视图",
-            "caption": "考勤设置",
-            "viewtype": "DEPICKUPGRIDVIEW",
-            "viewmodule": "ATT",
-            "viewname": "AttEndenceSetupKQBPickupGridView",
-            "viewtag": "6f6f4d9860d050ea30424cb66f86d122"
-        },
         "attendancemreportmxgridview": {
             "title": "考勤月报明细",
             "caption": "考勤月报明细",
@@ -246,14 +214,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "ATT",
             "viewname": "AttEndanceMreportmxGridView",
             "viewtag": "729c5fcb6684b43de26f6004de2ae301"
-        },
-        "attendencesetupkqszwizardview": {
-            "title": "考勤设置向导视图",
-            "caption": "考勤设置向导",
-            "viewtype": "DEWIZARDVIEW",
-            "viewmodule": "ATT",
-            "viewname": "AttEndenceSetupKQSZWizardView",
-            "viewtag": "74aaa92a32b08041d98ae05afa42f240"
         },
         "attendencesetupgridview": {
             "title": "考勤设置表格视图",

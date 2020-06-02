@@ -19,11 +19,11 @@
   deMajorField='orgname'
   deKeyField='ormorg'
   :service="service"
-  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchKZXLXZ'}"
+  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchDefault'}"
   valueitem='ormorgid' 
   :value="data.ormorgname" 
   editortype="" 
-  :pickupView="{ viewname: 'orm-org-jqgzsyfpxxpickup-view', title: $t('entities.ormorg.views.jqgzsyfpxxpickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, { pathName: 'jqgzsyfpxxpickupview', parameterName: 'jqgzsyfpxxpickupview' } ], placement:'' }"
+  :pickupView="{ viewname: 'orm-org-pickup-view', title: $t('entities.ormorg.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
   style=""  
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>
@@ -104,6 +104,12 @@
     
     </row>
 </app-form-group>
+
+</i-col>
+<i-col v-show="detailsModel.rawitem1.visible" :style="{'height': '30px !important',}"  :lg="{ span: 24, offset: 0 }">
+    <div class="" style="height: 30px;">
+    
+</div>
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel3.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
@@ -581,8 +587,8 @@ export default class MainBase extends Vue implements ControlInterface {
         sfqy: [
             { type: 'string', message: '是否启用 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '是否启用 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '是否启用 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '是否启用 值不能为空', trigger: 'blur' },
+            { required: true, type: 'string', message: '是否启用 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '是否启用 值不能为空', trigger: 'blur' },
         ],
         vacholidayrulesid: [
             { type: 'string', message: '考勤规则标识 值必须为字符串类型', trigger: 'change' },
@@ -606,6 +612,8 @@ export default class MainBase extends Vue implements ControlInterface {
         druipart1: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart1', visible: true, isShowCaption: true, form: this })
 , 
         grouppanel1: new FormGroupPanelModel({ caption: '节假日/调休上班', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.vacholidayrules.main_form', extractMode: 'ITEM', details: [] } })
+, 
+        rawitem1: new FormRowItemModel({ caption: '', detailType: 'RAWITEM', name: 'rawitem1', visible: true, isShowCaption: true, form: this })
 , 
         druipart2: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart2', visible: true, isShowCaption: true, form: this })
 , 
@@ -875,6 +883,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
+
 
 
 
@@ -1803,7 +1812,7 @@ export default class MainBase extends Vue implements ControlInterface {
             this.data['ormorgname'] = this.context['SRFORGNAME'];
         }
         if (this.data.hasOwnProperty('sfqy')) {
-            this.data['sfqy'] = '0';
+            this.data['sfqy'] = '1';
         }
     }
 
@@ -1817,6 +1826,9 @@ export default class MainBase extends Vue implements ControlInterface {
         }
         if (this.data.hasOwnProperty('ormorgname') && !this.data.ormorgname) {
             this.data['ormorgname'] = this.context['SRFORGNAME'];
+        }
+        if (this.data.hasOwnProperty('sfqy') && !this.data.sfqy) {
+            this.data['sfqy'] = '1';
         }
     }
 

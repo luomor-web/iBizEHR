@@ -56,6 +56,21 @@ export default class MainModel {
         name: 'srfsourcekey',
       },
       {
+        name: 'pimpersonid',
+        prop: 'pimpersonid',
+        dataType: 'PICKUP',
+      },
+      {
+        name: 'attendencesetupid',
+        prop: 'attendencesetupid',
+        dataType: 'PICKUP',
+      },
+      {
+        name: 'attendencesetupname',
+        prop: 'attendencesetupname',
+        dataType: 'PICKUPTEXT',
+      },
+      {
         name: 'attendancesettingsid',
         prop: 'attendancesettingsid',
         dataType: 'GUID',

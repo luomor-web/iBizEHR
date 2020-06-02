@@ -2,6 +2,7 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import AttEndanceSettingsService from '@/service/att-endance-settings/att-endance-settings-service';
 import MainModel from './main-form-model';
+import AttEndenceSetupService from '@/service/att-endence-setup/att-endence-setup-service';
 
 
 /**
@@ -42,6 +43,14 @@ export default class MainService extends ControlService {
     }
 
     /**
+     * 考勤设置服务对象
+     *
+     * @type {AttEndenceSetupService}
+     * @memberof MainService
+     */
+    public attendencesetupService: AttEndenceSetupService = new AttEndenceSetupService();
+
+    /**
      * 处理数据
      *
      * @private
@@ -80,6 +89,9 @@ export default class MainService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
+        if (Object.is(serviceName, 'AttEndenceSetupService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.attendencesetupService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'attendencesetupid', 'attendencesetup');
+        }
 
         return Promise.reject([])
     }

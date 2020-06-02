@@ -3,6 +3,31 @@
     <input style="display:none;" />
     <row >
             
+<i-col v-show="detailsModel.attendencesetupname.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-item name='attendencesetupname' :itemRules="this.rules.attendencesetupname" class='' :caption="$t('entities.attendancesettings.main_form.details.attendencesetupname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.attendencesetupname.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-picker 
+  :formState="formState"
+  :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam='{ }' 
+  :disabled="detailsModel.attendencesetupname.disabled"
+  name='attendencesetupname'
+  deMajorField='attendencesetupname'
+  deKeyField='attendencesetup'
+  :service="service"
+  :acParams="{ serviceName: 'AttEndenceSetupService', interfaceName: 'FetchDefault'}"
+  valueitem='attendencesetupid' 
+  :value="data.attendencesetupname" 
+  editortype="" 
+  :pickupView="{ viewname: 'att-endence-setup-pickup-view', title: $t('entities.attendencesetup.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'attendencesetups', parameterName: 'attendencesetup' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
+  style=""  
+  @formitemvaluechange="onFormItemValueChange">
+</app-picker>
+
+</app-form-item>
+
+</i-col>
 
 
     </row>
@@ -309,6 +334,9 @@ export default class MainBase extends Vue implements ControlInterface {
         srfuf: null,
         srfdeid: null,
         srfsourcekey: null,
+        pimpersonid: null,
+        attendencesetupid: null,
+        attendencesetupname: null,
         attendancesettingsid: null,
         attendancesettings:null,
     };
@@ -400,6 +428,24 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
+        pimpersonid: [
+            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'blur' },
+        ],
+        attendencesetupid: [
+            { type: 'string', message: '考勤设置标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '考勤设置标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '考勤设置标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '考勤设置标识 值不能为空', trigger: 'blur' },
+        ],
+        attendencesetupname: [
+            { type: 'string', message: '所属考勤表 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '所属考勤表 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '所属考勤表 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '所属考勤表 值不能为空', trigger: 'blur' },
+        ],
         attendancesettingsid: [
             { type: 'string', message: '考勤人员标识 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '考勤人员标识 值必须为字符串类型', trigger: 'blur' },
@@ -432,6 +478,12 @@ export default class MainBase extends Vue implements ControlInterface {
         srfdeid: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfdeid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        pimpersonid: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        attendencesetupid: new FormItemModel({ caption: '考勤设置标识', detailType: 'FORMITEM', name: 'attendencesetupid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        attendencesetupname: new FormItemModel({ caption: '所属考勤表', detailType: 'FORMITEM', name: 'attendencesetupname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         attendancesettingsid: new FormItemModel({ caption: '考勤人员标识', detailType: 'FORMITEM', name: 'attendancesettingsid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -534,6 +586,42 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
+     * 监控表单属性 pimpersonid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.pimpersonid')
+    onPimpersonidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'pimpersonid', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 attendencesetupid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.attendencesetupid')
+    onAttendencesetupidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'attendencesetupid', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 attendencesetupname 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.attendencesetupname')
+    onAttendencesetupnameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'attendencesetupname', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
      * 监控表单属性 attendancesettingsid 值
      *
      * @param {*} newVal
@@ -581,6 +669,9 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
+
+
+
 
 
 

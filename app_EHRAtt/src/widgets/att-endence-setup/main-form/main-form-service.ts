@@ -2,6 +2,7 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import AttEndenceSetupService from '@/service/att-endence-setup/att-endence-setup-service';
 import MainModel from './main-form-model';
+import OrmOrgService from '@/service/orm-org/orm-org-service';
 import PimPersonService from '@/service/pim-person/pim-person-service';
 import VacHolidayRulesService from '@/service/vac-holiday-rules/vac-holiday-rules-service';
 
@@ -42,6 +43,14 @@ export default class MainService extends ControlService {
         super(opts);
         this.model = new MainModel();
     }
+
+    /**
+     * 组织管理服务对象
+     *
+     * @type {OrmOrgService}
+     * @memberof MainService
+     */
+    public ormorgService: OrmOrgService = new OrmOrgService();
 
     /**
      * 人员信息服务对象
@@ -98,6 +107,9 @@ export default class MainService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
+        if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.ormorgService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
+        }
         if (Object.is(serviceName, 'PimPersonService') && Object.is(interfaceName, 'FetchCurOrgPimperson')) {
             return this.doItems(this.pimpersonService.FetchCurOrgPimperson(JSON.parse(JSON.stringify(context)),data, isloading), 'pimpersonid', 'pimperson');
         }

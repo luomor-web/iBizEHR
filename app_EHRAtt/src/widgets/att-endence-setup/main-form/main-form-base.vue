@@ -8,7 +8,26 @@
     <row>
         <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.attendencesetup.main_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.ormorgname"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.ormorgname.disabled" type='text'  style=""></input-box>
+    <app-picker 
+  :formState="formState"
+  :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam='{ }' 
+  :disabled="detailsModel.ormorgname.disabled"
+  name='ormorgname'
+  deMajorField='orgname'
+  deKeyField='ormorg'
+  :service="service"
+  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchDefault'}"
+  valueitem='ormorgid' 
+  :value="data.ormorgname" 
+  editortype="" 
+  :pickupView="{ viewname: 'orm-org-pickup-view', title: $t('entities.ormorg.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
+  style=""  
+  @formitemvaluechange="onFormItemValueChange">
+</app-picker>
+
 </app-form-item>
 
 </i-col>
@@ -115,6 +134,12 @@
     
     </row>
 </app-form-group>
+
+</i-col>
+<i-col v-show="detailsModel.rawitem1.visible" :style="{'height': '30px !important',}"  :lg="{ span: 24, offset: 0 }">
+    <div class="" style="">
+    
+</div>
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel2.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
@@ -566,8 +591,8 @@ export default class MainBase extends Vue implements ControlInterface {
         ormorgname: [
             { type: 'string', message: '组织名称 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '组织名称 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '组织名称 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '组织名称 值不能为空', trigger: 'blur' },
+            { required: true, type: 'string', message: '组织名称 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '组织名称 值不能为空', trigger: 'blur' },
         ],
         attendencesetupname: [
             { type: 'string', message: '考勤表名称 值必须为字符串类型', trigger: 'change' },
@@ -644,6 +669,8 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         grouppanel1: new FormGroupPanelModel({ caption: '考勤部门', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.attendencesetup.main_form', extractMode: 'ITEM', details: [] } })
 , 
+        rawitem1: new FormRowItemModel({ caption: '', detailType: 'RAWITEM', name: 'rawitem1', visible: true, isShowCaption: true, form: this })
+, 
         druipart2: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart2', visible: true, isShowCaption: true, form: this })
 , 
         grouppanel2: new FormGroupPanelModel({ caption: '考勤人员', detailType: 'GROUPPANEL', name: 'grouppanel2', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.attendencesetup.main_form', extractMode: 'ITEM', details: [] } })
@@ -668,7 +695,7 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         ormorgid: new FormItemModel({ caption: '组织标识', detailType: 'FORMITEM', name: 'ormorgid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        ormorgname: new FormItemModel({ caption: '组织名称', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+        ormorgname: new FormItemModel({ caption: '组织名称', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         attendencesetupname: new FormItemModel({ caption: '考勤表名称', detailType: 'FORMITEM', name: 'attendencesetupname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -968,6 +995,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
+
 
 
 

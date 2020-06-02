@@ -109,7 +109,7 @@ export default class AttEndanceSettingsUIServiceBase extends UIService {
         let data: any = {};
         const _args: any[] = Util.deepCopy(args);
         const _this: any = actionContext;
-        const actionTarget: string | null = 'MULTIKEY';
+        const actionTarget: string | null = 'SINGLEKEY';
         Object.assign(context, { attendancesettings: '%attendancesettings%' });
         Object.assign(params, { attendancesettingsid: '%attendancesettings%' });
         Object.assign(params, { attendancesettingsname: '%attendancesettingsname%' });
@@ -120,8 +120,13 @@ export default class AttEndanceSettingsUIServiceBase extends UIService {
         Object.assign(data,parentObj);
         Object.assign(context,parentObj);
         let deResParameters: any[] = [];
+        if(context.attendencesetup && true){
+            deResParameters = [
+            { pathName: 'attendencesetups', parameterName: 'attendencesetup' },
+            ]
+        }
         const parameters: any[] = [
-            { pathName: 'pcmwzd0001s', parameterName: 'pcmwzd0001' },
+            { pathName: 'attendancesettings', parameterName: 'attendancesettings' },
         ];
             const openPopupModal = (view: any, data: any) => {
                 let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
@@ -141,10 +146,10 @@ export default class AttEndanceSettingsUIServiceBase extends UIService {
                 });
             }
             const view: any = {
-                viewname: 'pcm-wzd0001-ygszkqoption-view', 
-                height: 400, 
-                width: 800,  
-                title: actionContext.$t('entities.pcmwzd0001.views.ygszkqoptionview.title'),
+                viewname: 'att-endance-settings-edit-view', 
+                height: 300, 
+                width: 400,  
+                title: actionContext.$t('entities.attendancesettings.views.editview.title'),
             };
             openPopupModal(view, data);
     }

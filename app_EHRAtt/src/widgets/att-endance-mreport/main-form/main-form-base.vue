@@ -56,11 +56,11 @@
   deMajorField='attendencesetupname'
   deKeyField='attendencesetup'
   :service="service"
-  :acParams="{ serviceName: 'AttEndenceSetupService', interfaceName: 'FetchKQYBXKQB'}"
+  :acParams="{ serviceName: 'AttEndenceSetupService', interfaceName: 'FetchDefault'}"
   valueitem='attendencesetupid' 
   :value="data.attendencesetupname" 
   editortype="" 
-  :pickupView="{ viewname: 'att-endence-setup-kqbypickup-view', title: $t('entities.attendencesetup.views.kqbypickupview.title'), deResParameters: [], parameters: [{ pathName: 'attendencesetups', parameterName: 'attendencesetup' }, { pathName: 'kqbypickupview', parameterName: 'kqbypickupview' } ], placement:'' }"
+  :pickupView="{ viewname: 'att-endence-setup-pickup-view', title: $t('entities.attendencesetup.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'attendencesetups', parameterName: 'attendencesetup' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
   style=""  
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>

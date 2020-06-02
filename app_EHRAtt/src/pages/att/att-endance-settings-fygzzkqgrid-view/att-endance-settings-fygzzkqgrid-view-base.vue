@@ -570,8 +570,8 @@ export default class AttEndanceSettingsFYGZZKQGridViewBase extends GridViewBase 
         }
         const view: any = {
             viewname: 'att-endance-settings-edit-view', 
-            height: 0, 
-            width: 0,  
+            height: 300, 
+            width: 400,  
             title: this.$t('entities.attendancesettings.views.editview.title'),
         };
         openPopupModal(view, data);

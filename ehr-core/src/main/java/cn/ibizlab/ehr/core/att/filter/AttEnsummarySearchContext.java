@@ -123,8 +123,7 @@ public class AttEnsummarySearchContext extends QueryWrapperContext<AttEnsummary>
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
             this.getSelectCond().and( wrapper ->
-                     wrapper.like("attensummaryname", query)   
-                        .or().like("ormorgname", query)            
+                     wrapper.like("ormorgname", query)   
                         .or().like("pimpersonname", query)            
             );
 		 }

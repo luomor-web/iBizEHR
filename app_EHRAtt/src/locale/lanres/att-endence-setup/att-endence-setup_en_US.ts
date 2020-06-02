@@ -22,29 +22,17 @@ export default {
     vacholidayrulesid: '考勤规则标识',
   },
 	views: {
-		kqbypickupview: {
-			caption: "考勤设置",
-      title: '考勤设置',
-		},
-		curorgkqszgridview: {
-			caption: "考勤设置",
-      title: '考勤设置',
-		},
 		editview: {
+			caption: "考勤设置",
+      title: '考勤设置',
+		},
+		pickupview: {
 			caption: "考勤设置",
       title: '考勤设置',
 		},
 		pickupgridview: {
 			caption: "考勤设置",
       title: '考勤设置',
-		},
-		kqbpickupgridview: {
-			caption: "考勤设置",
-      title: '考勤设置',
-		},
-		kqszwizardview: {
-			caption: "考勤设置向导",
-      title: '考勤设置向导',
 		},
 		gridview: {
 			caption: "考勤设置",
@@ -59,75 +47,12 @@ export default {
       title: '考勤设置',
 		},
 	},
-	kqsz_form: {
-		details: {
-			group1: "基本信息", 
-			formpage1: "基本信息", 
-			srfupdatedate: "更新时间", 
-			srforikey: "", 
-			srfkey: "考勤设置标识", 
-			srfmajortext: "考勤表名称", 
-			srftempmode: "", 
-			srfuf: "", 
-			srfdeid: "", 
-			srfsourcekey: "", 
-			ormorgid: "组织标识", 
-			ormorgname: "组织名称", 
-			attendencesetupname: "考勤表名称", 
-			pimpersonid: "人员信息标识", 
-			pimpersonname: "考勤员", 
-			vacholidayrulesid: "考勤规则标识", 
-			vacholidayrulesname: "考勤规则", 
-			sbsj: "上班时间", 
-			xbsj: "下班时间", 
-			dkfs: "打卡方式", 
-			allowoutwork: "允许外勤", 
-			attendencesetupid: "考勤设置标识", 
-		},
-		uiactions: {
-		},
-	},
-	kqbm_form: {
-		details: {
-			druipart1: "", 
-			grouppanel1: "考勤部门", 
-			formpage1: "基本信息", 
-			srfupdatedate: "更新时间", 
-			srforikey: "", 
-			srfkey: "考勤设置标识", 
-			srfmajortext: "考勤表名称", 
-			srftempmode: "", 
-			srfuf: "", 
-			srfdeid: "", 
-			srfsourcekey: "", 
-			attendencesetupid: "考勤设置标识", 
-		},
-		uiactions: {
-		},
-	},
-	bmygkqsz_form: {
-		details: {
-			druipart1: "", 
-			grouppanel1: "考勤人员", 
-			formpage1: "基本信息", 
-			srfupdatedate: "更新时间", 
-			srforikey: "", 
-			srfkey: "考勤设置标识", 
-			srfmajortext: "考勤表名称", 
-			srftempmode: "", 
-			srfuf: "", 
-			srfdeid: "", 
-			srfsourcekey: "", 
-			attendencesetupid: "考勤设置标识", 
-		},
-		uiactions: {
-		},
-	},
 	main_form: {
 		details: {
 			group1: "基本信息", 
 			druipart1: "", 
 			grouppanel1: "考勤部门", 
+			rawitem1: "", 
 			druipart2: "", 
 			grouppanel2: "考勤人员", 
 			formpage1: "基本信息", 
@@ -176,28 +101,6 @@ export default {
 			n_attendencesetupname_like: "考勤表名称(%)", 
 		},
 		uiactions: {
-		},
-	},
-	curorgkqszgridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "New",
-			tip: "New",
-		},
-		tbitem8: {
-			caption: "Remove",
-			tip: "Remove {0}",
-		},
-		tbitem19: {
-			caption: "Filter",
-			tip: "Filter",
-		},
-		tbitem13: {
-			caption: "Export",
-			tip: "Export {0} Data To Excel",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 	editviewtoolbar_toolbar: {

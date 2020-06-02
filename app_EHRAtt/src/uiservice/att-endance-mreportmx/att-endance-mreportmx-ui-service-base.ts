@@ -92,7 +92,7 @@ export default class AttEndanceMreportmxUIServiceBase extends UIService {
     }
 
     /**
-     * 导出明细
+     * 导出
      *
      * @param {any[]} args 当前数据
      * @param {any} context 行为附加上下文

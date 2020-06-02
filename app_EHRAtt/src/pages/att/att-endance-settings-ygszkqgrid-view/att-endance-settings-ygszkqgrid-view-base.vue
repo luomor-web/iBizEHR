@@ -192,7 +192,7 @@ export default class AttEndanceSettingsYGSZKQGridViewBase extends GridViewBase {
      * @memberof AttEndanceSettingsYGSZKQGridView
      */
     public toolBarModels: any = {
-        tbitem1_addtokqz: { name: 'tbitem1_addtokqz', caption: '添加到考勤组','isShowCaption':true,'isShowIcon':true, tooltip: '添加到考勤组', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'AddToKqz', target: 'MULTIKEY' }, class: '' },
+        tbitem1_addtokqz: { name: 'tbitem1_addtokqz', caption: '添加到考勤组','isShowCaption':true,'isShowIcon':true, tooltip: '添加到考勤组', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'AddToKqz', target: 'SINGLEKEY' }, class: '' },
 
         deuiaction1: { name: 'deuiaction1', caption: '过滤','isShowCaption':true,'isShowIcon':true, tooltip: '过滤', iconcls: 'fa fa-filter', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYKQLX', uiaction: { tag: 'ToggleFilter', target: '' }, class: '' },
 
@@ -370,8 +370,8 @@ export default class AttEndanceSettingsYGSZKQGridViewBase extends GridViewBase {
         let xData: any = null;
         // _this 指向容器对象
         const _this: any = this;
-        let paramJO:any = {};
-        
+        let paramJO:any = {"ATTENDANCESETTINGS":"%pimpersonid%"};
+        Object.assign(paramJO,{"ATTENDANCESETTINGS":"%pimpersonid%"});
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -538,8 +538,8 @@ export default class AttEndanceSettingsYGSZKQGridViewBase extends GridViewBase {
         }
         const view: any = {
             viewname: 'att-endance-settings-edit-view', 
-            height: 0, 
-            width: 0,  
+            height: 300, 
+            width: 400,  
             title: this.$t('entities.attendancesettings.views.editview.title'),
         };
         openPopupModal(view, data);

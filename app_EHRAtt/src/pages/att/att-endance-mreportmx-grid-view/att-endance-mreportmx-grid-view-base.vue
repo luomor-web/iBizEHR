@@ -9,7 +9,7 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="考勤月报明细名称，姓名" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="姓名" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
@@ -192,7 +192,7 @@ export default class AttEndanceMreportmxGridViewBase extends GridViewBase {
      * @memberof AttEndanceMreportmxGridView
      */
     public toolBarModels: any = {
-        tbitem14_export2excel: { name: 'tbitem14_export2excel', caption: '导出明细','isShowCaption':true,'isShowIcon':true, tooltip: '导出明细', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'export2Excel', target: 'MULTIDATA' }, class: '' },
+        tbitem14_export2excel: { name: 'tbitem14_export2excel', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'export2Excel', target: 'MULTIDATA' }, class: '' },
 
         tbitem13: { name: 'tbitem13', caption: '导入','isShowCaption':true,'isShowIcon':true, tooltip: '导入', iconcls: 'fa fa-upload', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'Import', target: '' }, class: '' },
 

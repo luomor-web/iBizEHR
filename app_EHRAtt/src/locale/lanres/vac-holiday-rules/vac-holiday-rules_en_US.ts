@@ -107,6 +107,7 @@ export default {
 			grouppanel2: "分组面板", 
 			druipart1: "", 
 			grouppanel1: "节假日/调休上班", 
+			rawitem1: "", 
 			druipart2: "", 
 			grouppanel3: "请假提示", 
 			formpage1: "基本信息", 

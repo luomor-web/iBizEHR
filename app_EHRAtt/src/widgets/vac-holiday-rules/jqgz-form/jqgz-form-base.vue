@@ -19,11 +19,11 @@
   deMajorField='orgname'
   deKeyField='ormorg'
   :service="service"
-  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchKZXLXZ'}"
+  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchDefault'}"
   valueitem='ormorgid' 
   :value="data.ormorgname" 
   editortype="" 
-  :pickupView="{ viewname: 'orm-org-jqgzsyfpxxpickup-view', title: $t('entities.ormorg.views.jqgzsyfpxxpickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, { pathName: 'jqgzsyfpxxpickupview', parameterName: 'jqgzsyfpxxpickupview' } ], placement:'' }"
+  :pickupView="{ viewname: 'orm-org-pickup-view', title: $t('entities.ormorg.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
   style=""  
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>
@@ -517,8 +517,8 @@ export default class JQGZBase extends Vue implements ControlInterface {
         sfqy: [
             { type: 'string', message: '是否启用 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '是否启用 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '是否启用 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '是否启用 值不能为空', trigger: 'blur' },
+            { required: true, type: 'string', message: '是否启用 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '是否启用 值不能为空', trigger: 'blur' },
         ],
         vacholidayrulesid: [
             { type: 'string', message: '考勤规则标识 值必须为字符串类型', trigger: 'change' },
@@ -1724,7 +1724,7 @@ export default class JQGZBase extends Vue implements ControlInterface {
             this.data['ormorgname'] = this.context['SRFORGNAME'];
         }
         if (this.data.hasOwnProperty('sfqy')) {
-            this.data['sfqy'] = '0';
+            this.data['sfqy'] = '1';
         }
     }
 
@@ -1738,6 +1738,9 @@ export default class JQGZBase extends Vue implements ControlInterface {
         }
         if (this.data.hasOwnProperty('ormorgname') && !this.data.ormorgname) {
             this.data['ormorgname'] = this.context['SRFORGNAME'];
+        }
+        if (this.data.hasOwnProperty('sfqy') && !this.data.sfqy) {
+            this.data['sfqy'] = '1';
         }
     }
 
