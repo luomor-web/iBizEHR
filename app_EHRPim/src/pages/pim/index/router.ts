@@ -1214,7 +1214,7 @@ const router = new Router({
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/pim/pimdistirbutionjdryhmcgrid-view/pimdistirbutionjdryhmcgrid-view.vue'),
+                    component: () => import('@pages/pim/pim-distirbution-jdryhmcgrid-view/pim-distirbution-jdryhmcgrid-view.vue'),
                 },
                 {
                     path: 'pimdistirbutions/:pimdistirbution?/jdryhmcgridview/:jdryhmcgridview?',
@@ -1229,7 +1229,7 @@ const router = new Router({
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/pim/pimdistirbutionjdryhmcgrid-view/pimdistirbutionjdryhmcgrid-view.vue'),
+                    component: () => import('@pages/pim/pim-distirbution-jdryhmcgrid-view/pim-distirbution-jdryhmcgrid-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/pimarchives/:pimarchives?/loyeenofilegridview/:loyeenofilegridview?',
@@ -7706,7 +7706,7 @@ const router = new Router({
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/pim/pimdistirbutionjdryhmcgrid-view/pimdistirbutionjdryhmcgrid-view.vue'),
+        component: () => import('@pages/pim/pim-distirbution-jdryhmcgrid-view/pim-distirbution-jdryhmcgrid-view.vue'),
     },
     {
         path: '/pimdistirbutions/:pimdistirbution?/jdryhmcgridview/:jdryhmcgridview?',
@@ -7720,7 +7720,7 @@ const router = new Router({
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/pim/pimdistirbutionjdryhmcgrid-view/pimdistirbutionjdryhmcgrid-view.vue'),
+        component: () => import('@pages/pim/pim-distirbution-jdryhmcgrid-view/pim-distirbution-jdryhmcgrid-view.vue'),
     },
             {
                 path: '/pimpaperredirectview/:pimpaperredirectview?',

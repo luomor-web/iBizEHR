@@ -1967,7 +1967,7 @@ export const viewstate: any = {
         {
             viewtag: 'ed44db0490d330fba632498accfecc6a',
             viewmodule: 'PIM',
-            viewname: 'PIMDISTIRBUTIONJDRYHMCGridView',
+            viewname: 'PimDistirbutionJDRYHMCGridView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
