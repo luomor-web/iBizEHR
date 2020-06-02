@@ -9,6 +9,15 @@ global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
 
 no-loop
 
+//逻辑处理节点[设置审核状态=审核通过]
+rule "prepareparam1"
+ruleflow-group "pcmydjdmxsetcheckstatusprepareparam1"
+    when
+    then
+    pcmydjdmxsetcheckstatusdefault.set("checkstatus","3");
+    update(pcmydjdmxsetcheckstatusdefault);//更新fact中变量值
+    end
+
 //逻辑处理节点[开始]
 rule "begin"
 ruleflow-group "pcmydjdmxsetcheckstatusbegin"

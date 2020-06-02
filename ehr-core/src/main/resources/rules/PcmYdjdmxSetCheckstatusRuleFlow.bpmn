@@ -7,9 +7,12 @@
             <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
         <tns:global identifier="pcmydjdmxsetcheckstatusdefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmYdjdmx" />
         </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmydjdmxsetcheckstatusprepareparam1" id="B22EE9FD-59B2-44D9-9F34-F80C5AC78CB7" implementation="http://www.jboss.org/drools/rule" name="设置审核状态=审核通过"/>
+     <endEvent id="B22EE9FD-59B2-44D9-9F34-F80C5AC78CB7_End" name="End"/>
+     <sequenceFlow id="B22EE9FD-59B2-44D9-9F34-F80C5AC78CB7_End_Line" sourceRef="B22EE9FD-59B2-44D9-9F34-F80C5AC78CB7" targetRef="B22EE9FD-59B2-44D9-9F34-F80C5AC78CB7_End"/>
      <startEvent id="DC08513D-AA11-47D0-980A-817334349920" isInterrupting="true"/>
-     <endEvent id="DC08513D-AA11-47D0-980A-817334349920_End" name="End"/>
-     <sequenceFlow id="DC08513D-AA11-47D0-980A-817334349920_End_Line" sourceRef="DC08513D-AA11-47D0-980A-817334349920" targetRef="DC08513D-AA11-47D0-980A-817334349920_End"/>
+     <sequenceFlow id="84DA1FE9-EC9C-4327-97D8-61BFDBA36673" sourceRef="DC08513D-AA11-47D0-980A-817334349920" targetRef="B22EE9FD-59B2-44D9-9F34-F80C5AC78CB7">
+     </sequenceFlow>
     </process>
 </definitions>
 

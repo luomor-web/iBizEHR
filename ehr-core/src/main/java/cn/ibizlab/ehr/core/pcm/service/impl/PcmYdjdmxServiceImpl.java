@@ -60,6 +60,10 @@ public class PcmYdjdmxServiceImpl extends ServiceImpl<PcmYdjdmxMapper, PcmYdjdmx
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPimDistirbutionService pimdistirbutionService;
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmYdjdmxSetCheckstatusLogic setcheckstatusLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -168,6 +172,7 @@ public class PcmYdjdmxServiceImpl extends ServiceImpl<PcmYdjdmxMapper, PcmYdjdmx
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPcmydjdmxid()),et);
+        setcheckstatusLogic.execute(et);
         return true;
     }
 
