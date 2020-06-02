@@ -119,6 +119,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "VacLeaveDetailJHQJMX_EditView",
             "viewtag": "3451991293c2ae164b404d7a256b348e"
         },
+        "pimpersonpickupgridview": {
+            "title": "人员信息选择表格视图",
+            "caption": "人员信息",
+            "viewtype": "DEPICKUPGRIDVIEW",
+            "viewmodule": "ATT",
+            "viewname": "PimPersonPickupGridView",
+            "viewtag": "3a13660bb95e945397ffbf8a6e51a9d3"
+        },
         "ormorgsectorbmkqszeditview": {
             "title": "部门管理",
             "caption": "部门管理",
@@ -278,6 +286,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "ATT",
             "viewname": "AttEnsummaryGridView",
             "viewtag": "84cae1f3f8f9a64e17f8889bc7dc1b2d"
+        },
+        "pimpersonmpickupview": {
+            "title": "人员信息数据多项选择视图",
+            "caption": "人员信息",
+            "viewtype": "DEMPICKUPVIEW",
+            "viewmodule": "ATT",
+            "viewname": "PimPersonMPickupView",
+            "viewtag": "8948a5606031ac246f782f05654883a7"
         },
         "attendenceormorgscetorgridview": {
             "title": "考勤部门",

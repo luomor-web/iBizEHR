@@ -160,6 +160,14 @@ export default {
 			caption: "人员信息",
       title: '人员信息',
 		},
+		pickupgridview: {
+			caption: "人员信息",
+      title: '人员信息',
+		},
+		mpickupview: {
+			caption: "人员信息",
+      title: '人员信息',
+		},
 		curorgpimpersonpickupgridview: {
 			caption: "人员信息",
       title: '人员信息',
@@ -188,6 +196,23 @@ export default {
 			lxdh: "手机号码",
 			ygzt: "员工状态",
 			workstate: "工作状态",
+		},
+		uiactions: {
+		},
+	},
+	main_grid: {
+		columns: {
+			ygbh: "员工编号",
+			pimpersonname: "员工姓名",
+			zzdzs: "组织",
+			ormorgsectorname: "部门",
+			zw: "职务",
+			gw: "岗位",
+			zjhm: "证件号码",
+			csrq: "出生日期",
+			nj: "年龄",
+			lxdh: "手机号码",
+			ygzt: "员工状态",
 		},
 		uiactions: {
 		},
