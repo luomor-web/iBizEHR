@@ -23,7 +23,7 @@ services:
     deploy:
       resources:
            limits:
-               memory: 2048M
+               memory: 4048M
            reservations:
                memory: 400M    
       mode: replicated
