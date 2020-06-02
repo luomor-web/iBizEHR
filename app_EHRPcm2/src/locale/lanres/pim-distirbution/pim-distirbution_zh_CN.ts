@@ -352,10 +352,6 @@ export default {
 		},
 	},
 	ddmgrgridviewtoolbar_toolbar: {
-		deuiaction4_xzpdd: {
-			caption: '新增批调动',
-			tip: '新增批调动',
-		},
 		deuiaction4_sqdd: {
 			caption: '调动',
 			tip: '调动',
@@ -392,10 +388,6 @@ export default {
 		},
 	},
 	ddrmgrgridviewtoolbar_toolbar: {
-		deuiaction1_xzpdd: {
-			caption: '新增批调动',
-			tip: '新增批调动',
-		},
 		deuiaction1_sqdd: {
 			caption: '调动',
 			tip: '调动',

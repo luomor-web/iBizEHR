@@ -192,8 +192,6 @@ export default class PimDistirbutionDDMgrGridViewBase extends GridViewBase {
      * @memberof PimDistirbutionDDMgrGridView
      */
     public toolBarModels: any = {
-        deuiaction4_xzpdd: { name: 'deuiaction4_xzpdd', caption: '新增批调动','isShowCaption':true,'isShowIcon':true, tooltip: '新增批调动', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'XZPDD', target: 'NONE' }, class: '' },
-
         deuiaction4_sqdd: { name: 'deuiaction4_sqdd', caption: '调动','isShowCaption':true,'isShowIcon':true, tooltip: '调动', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'SQDD', target: 'SINGLEKEY' }, class: '' },
 
         deuiaction4_ddjl: { name: 'deuiaction4_ddjl', caption: '调动记录','isShowCaption':true,'isShowIcon':true, tooltip: '调动记录', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'DDJL', target: 'NONE' }, class: '' },
@@ -250,9 +248,6 @@ export default class PimDistirbutionDDMgrGridViewBase extends GridViewBase {
      * @memberof PimDistirbutionDDMgrGridViewBase
      */
     public toolbar_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'deuiaction4_xzpdd')) {
-            this.toolbar_deuiaction4_xzpdd_click(null, '', $event2);
-        }
         if (Object.is($event.tag, 'deuiaction4_sqdd')) {
             this.toolbar_deuiaction4_sqdd_click(null, '', $event2);
         }
@@ -376,36 +371,6 @@ export default class PimDistirbutionDDMgrGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_deuiaction4_xzpdd_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        if(params){
-          datas = [params];
-        }
-        // 界面行为
-        const curUIService:PimDistirbutionUIService  = new PimDistirbutionUIService();
-        curUIService.PimDistirbution_XZPDD(datas,contextJO, paramJO,  $event, xData,this,"PimDistirbution");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
     public toolbar_deuiaction4_sqdd_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
@@ -413,8 +378,8 @@ export default class PimDistirbutionDDMgrGridViewBase extends GridViewBase {
         let xData: any = null;
         // _this 指向容器对象
         const _this: any = this;
-        let paramJO:any = {"sfjzb":"1"};
-        Object.assign(paramJO,{"sfjzb":"1"});
+        let paramJO:any = {"sfjzb":"1","n_pimdistirbutionid_eq":""};
+        Object.assign(paramJO,{"sfjzb":"1","n_pimdistirbutionid_eq":""});
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
