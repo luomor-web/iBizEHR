@@ -116,6 +116,9 @@ export default {
 			jdksrq: '借调开始日期', 
 			jdjsrq: '借调结束日期', 
 			pcmydjdmxid: '异动借调明细标识', 
+			finished: '是否审核', 
+			pimpersonid: '人员信息标识', 
+			pimdistirbutionid: '分配信息标识', 
 		},
 		uiactions: {
 		},

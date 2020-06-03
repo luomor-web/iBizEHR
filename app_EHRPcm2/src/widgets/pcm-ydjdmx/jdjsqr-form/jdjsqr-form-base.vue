@@ -326,6 +326,9 @@ export default class JDJSQRBase extends Vue implements ControlInterface {
         jdksrq: null,
         jdjsrq: null,
         pcmydjdmxid: null,
+        finished: null,
+        pimpersonid: null,
+        pimdistirbutionid: null,
         pcmydjdmx:null,
     };
 
@@ -434,6 +437,24 @@ export default class JDJSQRBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '异动借调明细标识 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '异动借调明细标识 值不能为空', trigger: 'blur' },
         ],
+        finished: [
+            { type: 'number', message: '是否审核 值必须为数值类型', trigger: 'change' },
+            { type: 'number', message: '是否审核 值必须为数值类型', trigger: 'blur' },
+            { required: false, type: 'number', message: '是否审核 值不能为空', trigger: 'change' },
+            { required: false, type: 'number', message: '是否审核 值不能为空', trigger: 'blur' },
+        ],
+        pimpersonid: [
+            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'blur' },
+        ],
+        pimdistirbutionid: [
+            { type: 'string', message: '分配信息标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '分配信息标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '分配信息标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '分配信息标识 值不能为空', trigger: 'blur' },
+        ],
     }
 
     /**
@@ -468,6 +489,12 @@ export default class JDJSQRBase extends Vue implements ControlInterface {
         jdjsrq: new FormItemModel({ caption: '借调结束日期', detailType: 'FORMITEM', name: 'jdjsrq', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         pcmydjdmxid: new FormItemModel({ caption: '异动借调明细标识', detailType: 'FORMITEM', name: 'pcmydjdmxid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        finished: new FormItemModel({ caption: '是否审核', detailType: 'FORMITEM', name: 'finished', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        pimpersonid: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        pimdistirbutionid: new FormItemModel({ caption: '分配信息标识', detailType: 'FORMITEM', name: 'pimdistirbutionid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
     };
 
@@ -603,6 +630,42 @@ export default class JDJSQRBase extends Vue implements ControlInterface {
         this.formDataChange({ name: 'pcmydjdmxid', newVal: newVal, oldVal: oldVal });
     }
 
+    /**
+     * 监控表单属性 finished 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof JDJSQR
+     */
+    @Watch('data.finished')
+    onFinishedChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'finished', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 pimpersonid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof JDJSQR
+     */
+    @Watch('data.pimpersonid')
+    onPimpersonidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'pimpersonid', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 pimdistirbutionid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof JDJSQR
+     */
+    @Watch('data.pimdistirbutionid')
+    onPimdistirbutionidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'pimdistirbutionid', newVal: newVal, oldVal: oldVal });
+    }
+
 
     /**
      * 重置表单项值
@@ -639,6 +702,9 @@ export default class JDJSQRBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
+
+
+
 
 
 

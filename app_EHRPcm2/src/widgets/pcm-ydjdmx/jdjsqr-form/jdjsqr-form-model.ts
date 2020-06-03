@@ -71,6 +71,21 @@ export default class JDJSQRModel {
         dataType: 'GUID',
       },
       {
+        name: 'finished',
+        prop: 'finished',
+        dataType: 'INHERIT',
+      },
+      {
+        name: 'pimpersonid',
+        prop: 'pimpersonid',
+        dataType: 'INHERIT',
+      },
+      {
+        name: 'pimdistirbutionid',
+        prop: 'pimdistirbutionid',
+        dataType: 'PICKUP',
+      },
+      {
         name: 'pcmydjdmx',
         prop: 'pcmydjdmxid',
         dataType: 'FONTKEY',
