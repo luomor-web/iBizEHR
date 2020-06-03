@@ -46,6 +46,7 @@ export default {
     ormorgid: '借调组织标识',
     ormpostid: '借调岗位标识',
     pimdistirbutionid: '分配信息标识',
+    isfinished: '是否完成',
   },
 	views: {
 		jdjsqreditview: {
@@ -119,6 +120,7 @@ export default {
 			finished: '是否审核', 
 			pimpersonid: '人员信息标识', 
 			pimdistirbutionid: '分配信息标识', 
+			isfinished: '是否完成', 
 		},
 		uiactions: {
 		},

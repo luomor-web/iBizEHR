@@ -329,6 +329,7 @@ export default class JDJSQRBase extends Vue implements ControlInterface {
         finished: null,
         pimpersonid: null,
         pimdistirbutionid: null,
+        isfinished: null,
         pcmydjdmx:null,
     };
 
@@ -455,6 +456,12 @@ export default class JDJSQRBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '分配信息标识 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '分配信息标识 值不能为空', trigger: 'blur' },
         ],
+        isfinished: [
+            { type: 'number', message: '是否完成 值必须为数值类型', trigger: 'change' },
+            { type: 'number', message: '是否完成 值必须为数值类型', trigger: 'blur' },
+            { required: false, type: 'number', message: '是否完成 值不能为空', trigger: 'change' },
+            { required: false, type: 'number', message: '是否完成 值不能为空', trigger: 'blur' },
+        ],
     }
 
     /**
@@ -495,6 +502,8 @@ export default class JDJSQRBase extends Vue implements ControlInterface {
         pimpersonid: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         pimdistirbutionid: new FormItemModel({ caption: '分配信息标识', detailType: 'FORMITEM', name: 'pimdistirbutionid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        isfinished: new FormItemModel({ caption: '是否完成', detailType: 'FORMITEM', name: 'isfinished', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
     };
 
@@ -666,6 +675,18 @@ export default class JDJSQRBase extends Vue implements ControlInterface {
         this.formDataChange({ name: 'pimdistirbutionid', newVal: newVal, oldVal: oldVal });
     }
 
+    /**
+     * 监控表单属性 isfinished 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof JDJSQR
+     */
+    @Watch('data.isfinished')
+    onIsfinishedChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'isfinished', newVal: newVal, oldVal: oldVal });
+    }
+
 
     /**
      * 重置表单项值
@@ -702,6 +723,7 @@ export default class JDJSQRBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
+
 
 
 

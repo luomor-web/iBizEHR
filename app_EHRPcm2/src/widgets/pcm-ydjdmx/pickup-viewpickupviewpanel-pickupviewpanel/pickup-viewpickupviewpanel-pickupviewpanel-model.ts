@@ -153,6 +153,9 @@ export default class PickupViewpickupviewpanelModel {
       {
         name: 'pimdistirbutionid',
       },
+      {
+        name: 'isfinished',
+      },
     ]
   }
 

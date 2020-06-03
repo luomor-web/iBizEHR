@@ -116,9 +116,25 @@ export default class PimDistirbutionServiceBase extends EntityService {
             }
         }
         masterData.pcmddsqdmxes = pcmddsqdmxesData;
+        let pcmydjdmxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmydjdmxes'),'undefined')){
+            pcmydjdmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmydjdmxes') as any);
+            if(pcmydjdmxesData && pcmydjdmxesData.length && pcmydjdmxesData.length > 0){
+                pcmydjdmxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmydjdmxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmydjdmxes = pcmydjdmxesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/pimdistirbutions/${context.pimdistirbution}`,data,isloading);
             this.tempStorage.setItem(context.srfsessionkey+'_pcmddsqdmxes',JSON.stringify(res.data.pcmddsqdmxes));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmydjdmxes',JSON.stringify(res.data.pcmydjdmxes));
             return res;
     }
 
@@ -138,6 +154,7 @@ export default class PimDistirbutionServiceBase extends EntityService {
         let res:any = await  Http.getInstance().get(`/pimdistirbutions/getdraft`,isloading);
         res.data.pimdistirbution = data.pimdistirbution;
             this.tempStorage.setItem(context.srfsessionkey+'_pcmddsqdmxes',JSON.stringify(res.data.pcmddsqdmxes));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmydjdmxes',JSON.stringify(res.data.pcmydjdmxes));
         return res;
     }
 
@@ -186,9 +203,25 @@ export default class PimDistirbutionServiceBase extends EntityService {
             }
         }
         masterData.pcmddsqdmxes = pcmddsqdmxesData;
+        let pcmydjdmxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmydjdmxes'),'undefined')){
+            pcmydjdmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmydjdmxes') as any);
+            if(pcmydjdmxesData && pcmydjdmxesData.length && pcmydjdmxesData.length > 0){
+                pcmydjdmxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmydjdmxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmydjdmxes = pcmydjdmxesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/pimdistirbutions/${context.pimdistirbution}/save`,data,isloading);
             this.tempStorage.setItem(context.srfsessionkey+'_pcmddsqdmxes',JSON.stringify(res.data.pcmddsqdmxes));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmydjdmxes',JSON.stringify(res.data.pcmydjdmxes));
             return res;
     }
 
@@ -227,6 +260,21 @@ export default class PimDistirbutionServiceBase extends EntityService {
             }
         }
         masterData.pcmddsqdmxes = pcmddsqdmxesData;
+        let pcmydjdmxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmydjdmxes'),'undefined')){
+            pcmydjdmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmydjdmxes') as any);
+            if(pcmydjdmxesData && pcmydjdmxesData.length && pcmydjdmxesData.length > 0){
+                pcmydjdmxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pcmydjdmxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pcmydjdmxes = pcmydjdmxesData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -237,6 +285,7 @@ export default class PimDistirbutionServiceBase extends EntityService {
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/pimdistirbutions`,data,isloading);
         this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmddsqdmxes',JSON.stringify(res.data.pcmddsqdmxes));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmydjdmxes',JSON.stringify(res.data.pcmydjdmxes));
         return res;
     }
 
@@ -255,6 +304,7 @@ export default class PimDistirbutionServiceBase extends EntityService {
         }
             let res:any = await Http.getInstance().get(`/pimdistirbutions/${context.pimdistirbution}`,isloading);
             this.tempStorage.setItem(context.srfsessionkey+'_pcmddsqdmxes',JSON.stringify(res.data.pcmddsqdmxes));
+            this.tempStorage.setItem(context.srfsessionkey+'_pcmydjdmxes',JSON.stringify(res.data.pcmydjdmxes));
             return res;
 
     }

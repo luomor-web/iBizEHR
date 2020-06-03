@@ -153,6 +153,9 @@ export default class MPickupViewpickupviewpanelModel {
       {
         name: 'pimdistirbutionid',
       },
+      {
+        name: 'isfinished',
+      },
     ]
   }
 

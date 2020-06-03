@@ -153,6 +153,9 @@ export default class DefaultModel {
       {
         name: 'pimdistirbutionid',
       },
+      {
+        name: 'isfinished',
+      },
     ]
   }
 

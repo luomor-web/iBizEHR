@@ -86,6 +86,11 @@ export default class JDJSQRModel {
         dataType: 'PICKUP',
       },
       {
+        name: 'isfinished',
+        prop: 'isfinished',
+        dataType: 'YESNO',
+      },
+      {
         name: 'pcmydjdmx',
         prop: 'pcmydjdmxid',
         dataType: 'FONTKEY',
