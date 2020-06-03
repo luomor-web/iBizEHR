@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pim.service.logic.pimpersongetjtlxrdh" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pim.service.logic.pimpersongetjtlxrdh">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pimpersongetjtlxrdhdefault" type="cn.ibizlab.ehr.core.pim.domain.PimPerson" />
+        <tns:global identifier="pimpersongetjtlxrdhpimfaminfo" type="cn.ibizlab.ehr.core.pim.domain.PimFaminfo" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimpersongetjtlxrdhdeaction1" id="71a5fc24f1ea3e8056c17248b0a20849" implementation="http://www.jboss.org/drools/rule" name="获取联系人信息"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimpersongetjtlxrdhprepareparam2" id="3f681d2249a4d76c5aaa30818e45d94f" implementation="http://www.jboss.org/drools/rule" name="回填电话号码"/>
+     <endEvent id="3f681d2249a4d76c5aaa30818e45d94f_End" name="End"/>
+     <sequenceFlow id="3f681d2249a4d76c5aaa30818e45d94f_End_Line" sourceRef="3f681d2249a4d76c5aaa30818e45d94f" targetRef="3f681d2249a4d76c5aaa30818e45d94f_End"/>
+     <startEvent id="675164ec5bc869a96a3220c2ad27d36d" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimpersongetjtlxrdhprepareparam1" id="b060663478f6d2d87d482b992494fb58" implementation="http://www.jboss.org/drools/rule" name="设置联系人id"/>
+     <sequenceFlow id="7df42b57ec6f0ec5fbf452a8eeb8b409" sourceRef="gateway-675164ec5bc869a96a3220c2ad27d36d" targetRef="b060663478f6d2d87d482b992494fb58">
+            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+            $pimpersongetjtlxrdhdefault:PimPerson();
+            $pimpersongetjtlxrdhpimfaminfo:PimFaminfo();
+            eval($pimpersongetjtlxrdhdefault==pimpersongetjtlxrdhdefault && $pimpersongetjtlxrdhpimfaminfo==pimpersongetjtlxrdhpimfaminfo);
+                eval((RuleUtils.test($pimpersongetjtlxrdhdefault.get("JTLXRID"),"ISNOTNULL","")))
+                ]]>
+            </conditionExpression>
+     </sequenceFlow>
+     <sequenceFlow id="d1f9e58450a7b579ab973442db7bfb86" sourceRef="71a5fc24f1ea3e8056c17248b0a20849" targetRef="3f681d2249a4d76c5aaa30818e45d94f">
+     </sequenceFlow>
+     <sequenceFlow id="16b30be925d2827ba9ec29494fdc5a6e" sourceRef="gateway-b060663478f6d2d87d482b992494fb58" targetRef="71a5fc24f1ea3e8056c17248b0a20849">
+            <conditionExpression  language="http://www.jboss.org/drools/rule" ><![CDATA[
+            $pimpersongetjtlxrdhdefault:PimPerson();
+            $pimpersongetjtlxrdhpimfaminfo:PimFaminfo();
+            eval($pimpersongetjtlxrdhdefault==pimpersongetjtlxrdhdefault && $pimpersongetjtlxrdhpimfaminfo==pimpersongetjtlxrdhpimfaminfo);
+                eval((RuleUtils.test($pimpersongetjtlxrdhpimfaminfo.get("PIMFAMINFOID"),"ISNOTNULL","")))
+                ]]>
+            </conditionExpression>
+     </sequenceFlow>
+    <exclusiveGateway id="gateway-675164ec5bc869a96a3220c2ad27d36d" name="Gateway" gatewayDirection="Diverging" default="gateway-675164ec5bc869a96a3220c2ad27d36d_End_Line"></exclusiveGateway>
+    <sequenceFlow id="7df42b57ec6f0ec5fbf452a8eeb8b409-gatewayline" sourceRef="675164ec5bc869a96a3220c2ad27d36d" targetRef="gateway-675164ec5bc869a96a3220c2ad27d36d"></sequenceFlow>
+    <sequenceFlow id="gateway-675164ec5bc869a96a3220c2ad27d36d_End_Line" sourceRef="gateway-675164ec5bc869a96a3220c2ad27d36d" targetRef="gateway-675164ec5bc869a96a3220c2ad27d36d_End"/>
+    <endEvent id="gateway-675164ec5bc869a96a3220c2ad27d36d_End" name="End"/>
+    <exclusiveGateway id="gateway-b060663478f6d2d87d482b992494fb58" name="Gateway" gatewayDirection="Diverging" default="gateway-b060663478f6d2d87d482b992494fb58_End_Line"></exclusiveGateway>
+    <sequenceFlow id="16b30be925d2827ba9ec29494fdc5a6e-gatewayline" sourceRef="b060663478f6d2d87d482b992494fb58" targetRef="gateway-b060663478f6d2d87d482b992494fb58"></sequenceFlow>
+    <sequenceFlow id="gateway-b060663478f6d2d87d482b992494fb58_End_Line" sourceRef="gateway-b060663478f6d2d87d482b992494fb58" targetRef="gateway-b060663478f6d2d87d482b992494fb58_End"/>
+    <endEvent id="gateway-b060663478f6d2d87d482b992494fb58_End" name="End"/>
+    </process>
+</definitions>
+

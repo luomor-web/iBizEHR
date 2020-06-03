@@ -1,0 +1,50 @@
+package cn.ibizlab.ehr.pim.logic.pimpersonlogic.getjtlxrdh;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pim.domain.PimPerson pimpersongetjtlxrdhdefault;
+global cn.ibizlab.ehr.core.pim.domain.PimFaminfo pimpersongetjtlxrdhpimfaminfo;
+global cn.ibizlab.ehr.core.pim.service.IPimFaminfoService pimfaminfoservice;
+global cn.ibizlab.ehr.core.pim.service.IPimPersonService iBzSysPimpersonDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[获取联系人信息]
+rule "deaction1"
+ruleflow-group "pimpersongetjtlxrdhdeaction1"
+    when
+    then
+    cn.ibizlab.ehr.util.helper.CachedBeanCopier.copy(pimfaminfoservice.get(pimpersongetjtlxrdhpimfaminfo.getPimfaminfoid()),pimpersongetjtlxrdhpimfaminfo);
+    update(pimpersongetjtlxrdhdefault);//更新fact中变量值
+    update(pimpersongetjtlxrdhpimfaminfo);//更新fact中变量值
+    end
+
+//逻辑处理节点[回填电话号码]
+rule "prepareparam2"
+ruleflow-group "pimpersongetjtlxrdhprepareparam2"
+    when
+    then
+    pimpersongetjtlxrdhdefault.set("jtlxrdh",pimpersongetjtlxrdhpimfaminfo.get("telphone"));
+    update(pimpersongetjtlxrdhdefault);//更新fact中变量值
+    update(pimpersongetjtlxrdhpimfaminfo);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pimpersongetjtlxrdhbegin"
+    when
+    then
+    end
+
+//逻辑处理节点[设置联系人id]
+rule "prepareparam1"
+ruleflow-group "pimpersongetjtlxrdhprepareparam1"
+    when
+    then
+    pimpersongetjtlxrdhpimfaminfo.set("pimfaminfoid",pimpersongetjtlxrdhdefault.get("jtlxrid"));
+    update(pimpersongetjtlxrdhdefault);//更新fact中变量值
+    update(pimpersongetjtlxrdhpimfaminfo);//更新fact中变量值
+    end
+

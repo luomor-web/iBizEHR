@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ehr</artifactId>
+    <groupId>cn.ibizlab.ehr</groupId>
+    <version>1.0.0.0</version>
+    <name>Ehr</name>
+    <description></description>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>cn.ibizlab.ehr</groupId>
+        <artifactId>ehr-dependencies</artifactId>
+        <version>1.0.0.0</version>
+        <relativePath>ehr-dependencies/pom.xml</relativePath>
+    </parent>
+
+    <modules>
+        <!-- dependencies -->
+        <module>ehr-dependencies</module>
+        <!-- utils -->
+        <module>ehr-util</module>
+        <!-- cores -->
+        <module>ehr-core</module>
+        <!-- services -->
+        <module>ehr-provider</module>
+        <!-- apps -->
+        <module>ehr-app</module>
+        <!-- boot -->
+        <module>ehr-boot</module>
+    </modules>
+
+
+    <repositories>
+		<repository>
+			<id>aliyunmaven</id>
+			<name>阿里云公共仓库</name>
+			<url>https://maven.aliyun.com/repository/public/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+</project>

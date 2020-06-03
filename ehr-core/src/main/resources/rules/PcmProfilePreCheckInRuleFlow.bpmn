@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmprofileprecheckin" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmprofileprecheckin">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmprofileprecheckindefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmProfile" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmprofileprecheckindeaction1" id="55553820-78DE-4E11-A566-858AFE2CB649" implementation="http://www.jboss.org/drools/rule" name="变更状态为待报到"/>
+     <endEvent id="55553820-78DE-4E11-A566-858AFE2CB649_End" name="End"/>
+     <sequenceFlow id="55553820-78DE-4E11-A566-858AFE2CB649_End_Line" sourceRef="55553820-78DE-4E11-A566-858AFE2CB649" targetRef="55553820-78DE-4E11-A566-858AFE2CB649_End"/>
+     <startEvent id="605799F4-9BAF-4A4E-9AAE-8CEFD9F198D6" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmprofileprecheckinprepareparam1" id="54AA010C-93A2-449C-B5B5-CE4928788E7F" implementation="http://www.jboss.org/drools/rule" name="准备参数"/>
+     <sequenceFlow id="671BC871-A375-4985-80CB-D0F574E7B71B" sourceRef="54AA010C-93A2-449C-B5B5-CE4928788E7F" targetRef="55553820-78DE-4E11-A566-858AFE2CB649">
+     </sequenceFlow>
+     <sequenceFlow id="7AF21C7D-3A01-4AB9-B381-62DAEE40FDF7" sourceRef="605799F4-9BAF-4A4E-9AAE-8CEFD9F198D6" targetRef="54AA010C-93A2-449C-B5B5-CE4928788E7F">
+     </sequenceFlow>
+    </process>
+</definitions>
+

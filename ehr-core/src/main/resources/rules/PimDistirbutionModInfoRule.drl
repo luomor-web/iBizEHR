@@ -1,0 +1,46 @@
+package cn.ibizlab.ehr.pim.logic.pimdistirbutionlogic.modinfo;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pim.domain.PimDistirbution pimdistirbutionmodinfodefault;
+global cn.ibizlab.ehr.core.pim.domain.PimPerson pimdistirbutionmodinfopimperson;
+global cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonservice;
+global cn.ibizlab.ehr.core.pim.service.IPimDistirbutionService iBzSysPimdistirbutionDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pimdistirbutionmodinfobegin"
+    when
+    then
+    end
+
+//逻辑处理节点[更新员工信息]
+rule "deaction1"
+ruleflow-group "pimdistirbutionmodinfodeaction1"
+    when
+    then
+    pimpersonservice.update(pimdistirbutionmodinfopimperson);
+    update(pimdistirbutionmodinfodefault);//更新fact中变量值
+    update(pimdistirbutionmodinfopimperson);//更新fact中变量值
+    end
+
+//逻辑处理节点[根据分配中的组织、部门更新]
+rule "prepareparam1"
+ruleflow-group "pimdistirbutionmodinfoprepareparam1"
+    when
+    then
+    pimdistirbutionmodinfopimperson.set("zw",pimdistirbutionmodinfodefault.get("ormdutyid"));
+    pimdistirbutionmodinfopimperson.set("gw",pimdistirbutionmodinfodefault.get("ormpostid"));
+    pimdistirbutionmodinfopimperson.set("pimpersonid",pimdistirbutionmodinfodefault.get("pimpersonid"));
+    pimdistirbutionmodinfopimperson.set("ormorgid",pimdistirbutionmodinfodefault.get("ormorgid"));
+    pimdistirbutionmodinfopimperson.set("ormorgname",pimdistirbutionmodinfodefault.get("ormorgname"));
+    pimdistirbutionmodinfopimperson.set("ormorgsectorid",pimdistirbutionmodinfodefault.get("ormorgsectorid"));
+    pimdistirbutionmodinfopimperson.set("ormorgsectorname",pimdistirbutionmodinfodefault.get("ormorgsectorname"));
+    update(pimdistirbutionmodinfodefault);//更新fact中变量值
+    update(pimdistirbutionmodinfopimperson);//更新fact中变量值
+    end
+
