@@ -1,0 +1,58 @@
+package cn.ibizlab.ehr.pcm.logic.pcmxygzzjlmxlogic.setpersoninfo;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pcm.domain.PcmXygzzjlmx pcmxygzzjlmxsetpersoninfodefault;
+global cn.ibizlab.ehr.core.pim.domain.PimPerson pcmxygzzjlmxsetpersoninfopimperson;
+global cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonservice;
+global cn.ibizlab.ehr.core.pcm.service.IPcmXygzzjlmxService iBzSysPcmxygzzjlmxDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[设置人员id]
+rule "prepareparam1"
+ruleflow-group "pcmxygzzjlmxsetpersoninfoprepareparam1"
+    when
+    then
+    pcmxygzzjlmxsetpersoninfopimperson.set("pimpersonid",pcmxygzzjlmxsetpersoninfodefault.get("pimpersonid"));
+    update(pcmxygzzjlmxsetpersoninfodefault);//更新fact中变量值
+    update(pcmxygzzjlmxsetpersoninfopimperson);//更新fact中变量值
+    end
+
+//逻辑处理节点[获取人员信息]
+rule "deaction1"
+ruleflow-group "pcmxygzzjlmxsetpersoninfodeaction1"
+    when
+    then
+    cn.ibizlab.ehr.util.helper.CachedBeanCopier.copy(pimpersonservice.get(pcmxygzzjlmxsetpersoninfopimperson.getPimpersonid()),pcmxygzzjlmxsetpersoninfopimperson);
+    update(pcmxygzzjlmxsetpersoninfodefault);//更新fact中变量值
+    update(pcmxygzzjlmxsetpersoninfopimperson);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pcmxygzzjlmxsetpersoninfobegin"
+    when
+    then
+    end
+
+//逻辑处理节点[填充人员信息]
+rule "prepareparam2"
+ruleflow-group "pcmxygzzjlmxsetpersoninfoprepareparam2"
+    when
+    then
+    pcmxygzzjlmxsetpersoninfodefault.set("zzid",pcmxygzzjlmxsetpersoninfopimperson.get("ormorgid"));
+    pcmxygzzjlmxsetpersoninfodefault.set("zz",pcmxygzzjlmxsetpersoninfopimperson.get("ormorgname"));
+    pcmxygzzjlmxsetpersoninfodefault.set("ygbh",pcmxygzzjlmxsetpersoninfopimperson.get("ygbh"));
+    pcmxygzzjlmxsetpersoninfodefault.set("bmid",pcmxygzzjlmxsetpersoninfopimperson.get("ormorgsectorid"));
+    pcmxygzzjlmxsetpersoninfodefault.set("rzqd",pcmxygzzjlmxsetpersoninfopimperson.get("rzqd"));
+    pcmxygzzjlmxsetpersoninfodefault.set("bm",pcmxygzzjlmxsetpersoninfopimperson.get("ormorgsectorname"));
+    pcmxygzzjlmxsetpersoninfodefault.set("qssj",pcmxygzzjlmxsetpersoninfopimperson.get("dzjbjsj"));
+    pcmxygzzjlmxsetpersoninfodefault.set("zzgw",pcmxygzzjlmxsetpersoninfopimperson.get("gw"));
+    pcmxygzzjlmxsetpersoninfodefault.set("jssj",pcmxygzzjlmxsetpersoninfopimperson.get("sydq"));
+    update(pcmxygzzjlmxsetpersoninfodefault);//更新fact中变量值
+    update(pcmxygzzjlmxsetpersoninfopimperson);//更新fact中变量值
+    end
+

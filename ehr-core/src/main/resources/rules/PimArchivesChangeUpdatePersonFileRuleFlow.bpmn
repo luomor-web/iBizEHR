@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pim.service.logic.pimarchiveschangeupdatepersonfile" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pim.service.logic.pimarchiveschangeupdatepersonfile">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pimarchiveschangeupdatepersonfiledefault" type="cn.ibizlab.ehr.core.pim.domain.PimArchivesChange" />
+        </extensionElements>
+     <startEvent id="9e2a1b908d07ae3e985c6429ef3b8bc3" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimarchiveschangeupdatepersonfiledeaction1" id="897887dbaacbee3e20721bf728733d6c" implementation="http://www.jboss.org/drools/rule" name="更新档案信息"/>
+     <endEvent id="897887dbaacbee3e20721bf728733d6c_End" name="End"/>
+     <sequenceFlow id="897887dbaacbee3e20721bf728733d6c_End_Line" sourceRef="897887dbaacbee3e20721bf728733d6c" targetRef="897887dbaacbee3e20721bf728733d6c_End"/>
+     <sequenceFlow id="a6d793b3ade0fa9733788d77957c30a5" sourceRef="9e2a1b908d07ae3e985c6429ef3b8bc3" targetRef="897887dbaacbee3e20721bf728733d6c">
+     </sequenceFlow>
+    </process>
+</definitions>
+

@@ -1,0 +1,115 @@
+server:
+  port: 6094
+#zuul网关路由设置
+zuul:
+  routes:
+    pcmydjzmx:
+      path: /pcmydjzmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmjxsgz:
+      path: /pcmjxsgzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormpost:
+      path: /ormposts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydtxmx:
+      path: /pcmydtxmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydgzmx:
+      path: /pcmydgzmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorg:
+      path: /ormorgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimdistirbution:
+      path: /pimdistirbutions/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmyddgmx:
+      path: /pcmyddgmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormduty:
+      path: /ormduties/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmtxbz:
+      path: /pcmtxbzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydjpmx:
+      path: /pcmydjpmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydjdmx:
+      path: /pcmydjdmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmddsqd:
+      path: /pcmddsqds/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydmx:
+      path: /pcmydmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmrecruitment:
+      path: /pcmrecruitments/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmtxfpsq:
+      path: /pcmtxfpsqs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmddsqdmx:
+      path: /pcmddsqdmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydntmx:
+      path: /pcmydntmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydlzmx:
+      path: /pcmydlzmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmydbxmx:
+      path: /pcmydbxmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmnotice:
+      path: /pcmnotices/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmprofile:
+      path: /pcmprofiles/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimfaminfo:
+      path: /pimfaminfos/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimperson:
+      path: /pimpeople/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorgsector:
+      path: /ormorgsectors/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    loginv7:
+      path: /v7/login
+      serviceId: ibzuaa-api
+      stripPrefix: false
+    oucore:
+      path: /ibzorganizations/**
+      serviceId: ibzou-api
+      stripPrefix: false
+  sensitive-headers:
+    - Cookie,Set-Cookie,Authorization

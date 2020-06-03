@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    include: sys , ehrpcm2-prod
+  application:
+    name: ehr-ehrpcm2

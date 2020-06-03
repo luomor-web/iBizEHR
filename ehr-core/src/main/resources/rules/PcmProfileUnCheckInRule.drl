@@ -1,0 +1,37 @@
+package cn.ibizlab.ehr.pcm.logic.pcmprofilelogic.uncheckin;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pcm.domain.PcmProfile pcmprofileuncheckindefault;
+global cn.ibizlab.ehr.core.pcm.service.IPcmProfileService pcmprofileservice;
+global cn.ibizlab.ehr.core.pcm.service.IPcmProfileService iBzSysPcmprofileDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[准备参数]
+rule "prepareparam1"
+ruleflow-group "pcmprofileuncheckinprepareparam1"
+    when
+    then
+    pcmprofileuncheckindefault.set("profiletype","80");
+    update(pcmprofileuncheckindefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pcmprofileuncheckinbegin"
+    when
+    then
+    end
+
+//逻辑处理节点[变更状态为逾期未报到]
+rule "deaction1"
+ruleflow-group "pcmprofileuncheckindeaction1"
+    when
+    then
+    pcmprofileservice.update(pcmprofileuncheckindefault);
+    update(pcmprofileuncheckindefault);//更新fact中变量值
+    end
+

@@ -1,0 +1,55 @@
+package cn.ibizlab.ehr.trm.logic.trmdutycadreslogic.setnqgbxx;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pim.domain.PimPerson trmdutycadressetnqgbxxpimperson;
+global cn.ibizlab.ehr.core.trm.domain.TrmDutyCadres trmdutycadressetnqgbxxdefault;
+global cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonservice;
+global cn.ibizlab.ehr.core.trm.service.ITrmDutyCadresService iBzSysTrmdutycadresDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[获取年轻干部信息]
+rule "deaction1"
+ruleflow-group "trmdutycadressetnqgbxxdeaction1"
+    when
+    then
+    cn.ibizlab.ehr.util.helper.CachedBeanCopier.copy(pimpersonservice.get(trmdutycadressetnqgbxxpimperson.getPimpersonid()),trmdutycadressetnqgbxxpimperson);
+    update(trmdutycadressetnqgbxxpimperson);//更新fact中变量值
+    update(trmdutycadressetnqgbxxdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[设置年轻干部信息]
+rule "prepareparam2"
+ruleflow-group "trmdutycadressetnqgbxxprepareparam2"
+    when
+    then
+    trmdutycadressetnqgbxxdefault.set("ygbh",trmdutycadressetnqgbxxpimperson.get("ygbh"));
+    trmdutycadressetnqgbxxdefault.set("ormorgname2",trmdutycadressetnqgbxxpimperson.get("ormorgname"));
+    trmdutycadressetnqgbxxdefault.set("ormorgsectorname2",trmdutycadressetnqgbxxpimperson.get("ormorgsectorname"));
+    trmdutycadressetnqgbxxdefault.set("rank",trmdutycadressetnqgbxxpimperson.get("rank"));
+    trmdutycadressetnqgbxxdefault.set("zw",trmdutycadressetnqgbxxpimperson.get("zw"));
+    trmdutycadressetnqgbxxdefault.set("gw",trmdutycadressetnqgbxxpimperson.get("gw"));
+    update(trmdutycadressetnqgbxxpimperson);//更新fact中变量值
+    update(trmdutycadressetnqgbxxdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[设置年轻干部id]
+rule "prepareparam1"
+ruleflow-group "trmdutycadressetnqgbxxprepareparam1"
+    when
+    then
+    trmdutycadressetnqgbxxpimperson.set("pimpersonid",trmdutycadressetnqgbxxdefault.get("pimpersonid2"));
+    update(trmdutycadressetnqgbxxpimperson);//更新fact中变量值
+    update(trmdutycadressetnqgbxxdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "trmdutycadressetnqgbxxbegin"
+    when
+    then
+    end
+
