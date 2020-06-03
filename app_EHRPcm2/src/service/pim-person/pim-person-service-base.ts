@@ -387,6 +387,20 @@ export default class PimPersonServiceBase extends EntityService {
     }
 
     /**
+     * FetchSetAttRules接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof PimPersonServiceBase
+     */
+    public async FetchSetAttRules(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        let tempData:any = JSON.parse(JSON.stringify(data));
+        return Http.getInstance().get(`/pimpeople/fetchsetattrules`,tempData,isloading);
+    }
+
+    /**
      * FetchYGXXGLY接口方法
      *
      * @param {*} [context={}]

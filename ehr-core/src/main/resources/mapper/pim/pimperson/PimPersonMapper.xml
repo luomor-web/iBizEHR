@@ -108,6 +108,15 @@
          <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
      </select>
 
+    <!--数据集合[SetAttRules]-->
+	 <select id="searchSetAttRules"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimPersonSearchContext"  resultMap="PimPersonResultMap">
+         select t1.* from (
+                <include refid="SetAttRules" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
     <!--数据集合[YGXXGLY]-->
 	 <select id="searchYGXXGLY"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimPersonSearchContext"  resultMap="PimPersonResultMap">
          select t1.* from (

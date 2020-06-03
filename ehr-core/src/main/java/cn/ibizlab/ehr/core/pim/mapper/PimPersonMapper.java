@@ -20,6 +20,7 @@ import com.alibaba.fastjson.JSONObject;
 public interface PimPersonMapper extends BaseMapper<PimPerson>{
 
     Page<PimPerson> searchKFPRY(IPage page, @Param("srf") PimPersonSearchContext context, @Param("ew") Wrapper<PimPerson> wrapper) ;
+    Page<PimPerson> searchSetAttRules(IPage page, @Param("srf") PimPersonSearchContext context, @Param("ew") Wrapper<PimPerson> wrapper) ;
     Page<PimPerson> searchYGXXGLY(IPage page, @Param("srf") PimPersonSearchContext context, @Param("ew") Wrapper<PimPerson> wrapper) ;
     Page<PimPerson> searchXMBRYCX(IPage page, @Param("srf") PimPersonSearchContext context, @Param("ew") Wrapper<PimPerson> wrapper) ;
     Page<PimPerson> searchCurOrgPerson(IPage page, @Param("srf") PimPersonSearchContext context, @Param("ew") Wrapper<PimPerson> wrapper) ;

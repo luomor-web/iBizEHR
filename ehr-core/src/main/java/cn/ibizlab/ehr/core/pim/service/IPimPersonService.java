@@ -45,6 +45,7 @@ public interface IPimPersonService extends IService<PimPerson>{
     PimPerson getDraft(PimPerson et) ;
     PimPerson generatePersonFile(PimPerson et) ;
     Page<PimPerson> searchKFPRY(PimPersonSearchContext context) ;
+    Page<PimPerson> searchSetAttRules(PimPersonSearchContext context) ;
     Page<PimPerson> searchYGXXGLY(PimPersonSearchContext context) ;
     Page<PimPerson> searchXMBRYCX(PimPersonSearchContext context) ;
     Page<PimPerson> searchCurOrgPerson(PimPersonSearchContext context) ;
