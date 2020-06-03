@@ -4,13 +4,13 @@
   <row>
     <i-col span="20" class="form-content">
       <row>
-                    <i-col v-show="detailsModel.n_zzdzs_like.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+                    <i-col v-show="detailsModel.n_zzdzs_like.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
               <app-form-item name='n_zzdzs_like' :itemRules="this.rules.n_zzdzs_like" class='' :caption="$t('entities.ormorgsector.default_searchform.details.n_zzdzs_like')" uiStyle="DEFAULT" :labelWidth="100" :isShowCaption="true" :error="detailsModel.n_zzdzs_like.error" :isEmptyCaption="false" labelPos="LEFT"> 
               <input-box v-model="data.n_zzdzs_like"  @enter="onEnter($event)"    :disabled="detailsModel.n_zzdzs_like.disabled" type='text'  style=""></input-box>
           </app-form-item>
           
           </i-col>
-          <i-col v-show="detailsModel.n_orgsectorname_like.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+          <i-col v-show="detailsModel.n_orgsectorname_like.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
               <app-form-item name='n_orgsectorname_like' :itemRules="this.rules.n_orgsectorname_like" class='' :caption="$t('entities.ormorgsector.default_searchform.details.n_orgsectorname_like')" uiStyle="DEFAULT" :labelWidth="100" :isShowCaption="true" :error="detailsModel.n_orgsectorname_like.error" :isEmptyCaption="false" labelPos="LEFT"> 
               <input-box v-model="data.n_orgsectorname_like"  @enter="onEnter($event)"    :disabled="detailsModel.n_orgsectorname_like.disabled" type='text'  style=""></input-box>
           </app-form-item>
