@@ -5184,7 +5184,7 @@
 
 
     <!--输出实体[VACHOLIDAY]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-vacholiday-37-129">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-vacholiday-38-129">
         <createTable tableName="T_VACHOLIDAY">
                 <column name="UPDATEDATE" remarks="" type="DATETIME">
                 </column>
@@ -12617,7 +12617,7 @@
        <addForeignKeyConstraint baseColumnNames="PIMTITLECATALOGUEID2" baseTableName="T_PIMTITLECATALOGUE" constraintName="DER1N_PIMTITLECATALOGUE_PIMTIT" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMTITLECATALOGUEID" referencedTableName="T_PIMTITLECATALOGUE" validate="true"/>
     </changeSet>
         <!--输出实体[VACHOLIDAY]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-vacholiday-37-490">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-vacholiday-38-490">
        <addForeignKeyConstraint baseColumnNames="VACHOLIDAYRULESID" baseTableName="T_VACHOLIDAY" constraintName="DER1N_VACHOLIDAY_VACHOLIDAYRUL" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="VACHOLIDAYRULESID" referencedTableName="T_VACHOLIDAYRULES" validate="true"/>
     </changeSet>
         <!--输出实体[TRMZZOBM]外键关系 -->

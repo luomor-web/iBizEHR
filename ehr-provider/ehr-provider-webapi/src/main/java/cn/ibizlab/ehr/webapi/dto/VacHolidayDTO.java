@@ -181,6 +181,14 @@ public class VacHolidayDTO extends DTOBase implements Serializable {
     }
 
     /**
+     * 设置 [ENABLE]
+     */
+    public void setEnable(Integer  enable){
+        this.enable = enable ;
+        this.modify("enable",enable);
+    }
+
+    /**
      * 设置 [VACHOLIDAYNAME]
      */
     public void setVacholidayname(String  vacholidayname){
