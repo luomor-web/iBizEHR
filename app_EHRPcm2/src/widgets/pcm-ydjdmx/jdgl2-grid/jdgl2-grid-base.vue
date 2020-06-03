@@ -310,8 +310,8 @@ export default class JDGL2Base extends Vue implements ControlInterface {
         let xData: any = null;
         // _this 指向容器对象
         const _this: any = this;
-        let paramJO:any = {};
-        
+        let paramJO:any = {"PCMYDJDMX":"%pimdistirbutionid%"};
+        Object.assign(paramJO,{"PCMYDJDMX":"%pimdistirbutionid%"});
         let contextJO:any = {};
         xData = this;
         if (_this.getDatas && _this.getDatas instanceof Function) {
