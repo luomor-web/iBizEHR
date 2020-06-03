@@ -149,18 +149,6 @@ public class VacHolidayResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacHoliday-CheckTime-all')")
-    @ApiOperation(value = "校验开始时间、结束时间", tags = {"节假日管理" },  notes = "校验开始时间、结束时间")
-	@RequestMapping(method = RequestMethod.POST, value = "/vacholidays/{vacholiday_id}/checktime")
-    @Transactional
-    public ResponseEntity<VacHolidayDTO> checkTime(@PathVariable("vacholiday_id") String vacholiday_id, @RequestBody VacHolidayDTO vacholidaydto) {
-        VacHoliday vacholiday = vacholidayMapping.toDomain(vacholidaydto);
-        vacholiday.setVacholidayid(vacholiday_id);
-        vacholiday = vacholidayService.checkTime(vacholiday);
-        vacholidaydto = vacholidayMapping.toDto(vacholiday);
-        return ResponseEntity.status(HttpStatus.OK).body(vacholidaydto);
-    }
-
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacHoliday-Default-all')")
 	@ApiOperation(value = "获取DEFAULT", tags = {"节假日管理" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/vacholidays/fetchdefault")
@@ -301,18 +289,6 @@ public class VacHolidayResource {
         }
         vacholidayService.createBatch(domainlist);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
-    }
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacHoliday-CheckTime-all')")
-    @ApiOperation(value = "根据考勤规则节假日管理", tags = {"节假日管理" },  notes = "根据考勤规则节假日管理")
-	@RequestMapping(method = RequestMethod.POST, value = "/vacholidayrules/{vacholidayrules_id}/vacholidays/{vacholiday_id}/checktime")
-    @Transactional
-    public ResponseEntity<VacHolidayDTO> checkTimeByVacHolidayRules(@PathVariable("vacholidayrules_id") String vacholidayrules_id, @PathVariable("vacholiday_id") String vacholiday_id, @RequestBody VacHolidayDTO vacholidaydto) {
-        VacHoliday domain = vacholidayMapping.toDomain(vacholidaydto);
-        domain.setVacholidayrulesid(vacholidayrules_id);
-        domain = vacholidayService.checkTime(domain) ;
-        vacholidaydto = vacholidayMapping.toDto(domain);
-        return ResponseEntity.status(HttpStatus.OK).body(vacholidaydto);
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacHoliday-Default-all')")
