@@ -563,7 +563,12 @@ export default class PcmYdjdmxJDGLGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.ormduty && true){
+            deResParameters = [
+            { pathName: 'ormduties', parameterName: 'ormduty' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
             { pathName: 'editview', parameterName: 'editview' },
@@ -595,7 +600,12 @@ export default class PcmYdjdmxJDGLGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.ormduty && true){
+            deResParameters = [
+            { pathName: 'ormduties', parameterName: 'ormduty' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
             { pathName: 'editview', parameterName: 'editview' },

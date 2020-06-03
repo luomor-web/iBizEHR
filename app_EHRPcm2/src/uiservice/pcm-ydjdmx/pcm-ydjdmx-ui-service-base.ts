@@ -126,6 +126,11 @@ export default class PcmYdjdmxUIServiceBase extends UIService {
         Object.assign(data,parentObj);
         Object.assign(context,parentObj);
         let deResParameters: any[] = [];
+        if(context.ormduty && true){
+            deResParameters = [
+            { pathName: 'ormduties', parameterName: 'ormduty' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
             { pathName: 'jdlsjlgridview', parameterName: 'jdlsjlgridview' },
@@ -280,6 +285,11 @@ export default class PcmYdjdmxUIServiceBase extends UIService {
         Object.assign(data,parentObj);
         Object.assign(context,parentObj);
         let deResParameters: any[] = [];
+        if(context.ormduty && true){
+            deResParameters = [
+            { pathName: 'ormduties', parameterName: 'ormduty' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
         ];
@@ -336,6 +346,11 @@ export default class PcmYdjdmxUIServiceBase extends UIService {
         Object.assign(data,parentObj);
         Object.assign(context,parentObj);
         let deResParameters: any[] = [];
+        if(context.ormduty && true){
+            deResParameters = [
+            { pathName: 'ormduties', parameterName: 'ormduty' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
         ];

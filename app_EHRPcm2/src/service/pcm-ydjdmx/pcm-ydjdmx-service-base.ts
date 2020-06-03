@@ -52,6 +52,24 @@ export default class PcmYdjdmxServiceBase extends EntityService {
      * @memberof PcmYdjdmxServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.pcmydjdmx){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/pcmydjdmxes/${context.pcmydjdmx}/select`,isloading);
+        }
+        if(context.ormorg && context.ormorgsector && context.pcmydjdmx){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}/select`,isloading);
+        }
+        if(context.ormpost && context.pcmydjdmx){
+            return Http.getInstance().get(`/ormposts/${context.ormpost}/pcmydjdmxes/${context.pcmydjdmx}/select`,isloading);
+        }
+        if(context.ormorg && context.pcmydjdmx){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/pcmydjdmxes/${context.pcmydjdmx}/select`,isloading);
+        }
+        if(context.ormorgsector && context.pcmydjdmx){
+            return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}/select`,isloading);
+        }
+        if(context.ormduty && context.pcmydjdmx){
+            return Http.getInstance().get(`/ormduties/${context.ormduty}/pcmydjdmxes/${context.pcmydjdmx}/select`,isloading);
+        }
             return Http.getInstance().get(`/pcmydjdmxes/${context.pcmydjdmx}/select`,isloading);
     }
 
@@ -65,6 +83,24 @@ export default class PcmYdjdmxServiceBase extends EntityService {
      * @memberof PcmYdjdmxServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.pcmydjdmx){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
+        }
+        if(context.ormorg && context.ormorgsector && context.pcmydjdmx){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
+        }
+        if(context.ormpost && context.pcmydjdmx){
+            return Http.getInstance().get(`/ormposts/${context.ormpost}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
+        }
+        if(context.ormorg && context.pcmydjdmx){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
+        }
+        if(context.ormorgsector && context.pcmydjdmx){
+            return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
+        }
+        if(context.ormduty && context.pcmydjdmx){
+            return Http.getInstance().get(`/ormduties/${context.ormduty}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
             return res;
 
@@ -80,6 +116,24 @@ export default class PcmYdjdmxServiceBase extends EntityService {
      * @memberof PcmYdjdmxServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && true){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/pcmydjdmxes/getdraft`,isloading);
+        }
+        if(context.ormorg && context.ormorgsector && true){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/getdraft`,isloading);
+        }
+        if(context.ormpost && true){
+            return Http.getInstance().get(`/ormposts/${context.ormpost}/pcmydjdmxes/getdraft`,isloading);
+        }
+        if(context.ormorg && true){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/pcmydjdmxes/getdraft`,isloading);
+        }
+        if(context.ormorgsector && true){
+            return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/getdraft`,isloading);
+        }
+        if(context.ormduty && true){
+            return Http.getInstance().get(`/ormduties/${context.ormduty}/pcmydjdmxes/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/pcmydjdmxes/getdraft`,isloading);
         res.data.pcmydjdmx = data.pcmydjdmx;
         return res;
@@ -95,6 +149,24 @@ export default class PcmYdjdmxServiceBase extends EntityService {
      * @memberof PcmYdjdmxServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.pcmydjdmx){
+            return Http.getInstance().put(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/pcmydjdmxes/${context.pcmydjdmx}`,data,isloading);
+        }
+        if(context.ormorg && context.ormorgsector && context.pcmydjdmx){
+            return Http.getInstance().put(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}`,data,isloading);
+        }
+        if(context.ormpost && context.pcmydjdmx){
+            return Http.getInstance().put(`/ormposts/${context.ormpost}/pcmydjdmxes/${context.pcmydjdmx}`,data,isloading);
+        }
+        if(context.ormorg && context.pcmydjdmx){
+            return Http.getInstance().put(`/ormorgs/${context.ormorg}/pcmydjdmxes/${context.pcmydjdmx}`,data,isloading);
+        }
+        if(context.ormorgsector && context.pcmydjdmx){
+            return Http.getInstance().put(`/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}`,data,isloading);
+        }
+        if(context.ormduty && context.pcmydjdmx){
+            return Http.getInstance().put(`/ormduties/${context.ormduty}/pcmydjdmxes/${context.pcmydjdmx}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/pcmydjdmxes/${context.pcmydjdmx}`,data,isloading);
@@ -111,6 +183,24 @@ export default class PcmYdjdmxServiceBase extends EntityService {
      * @memberof PcmYdjdmxServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.pcmydjdmx){
+            return Http.getInstance().delete(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
+        }
+        if(context.ormorg && context.ormorgsector && context.pcmydjdmx){
+            return Http.getInstance().delete(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
+        }
+        if(context.ormpost && context.pcmydjdmx){
+            return Http.getInstance().delete(`/ormposts/${context.ormpost}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
+        }
+        if(context.ormorg && context.pcmydjdmx){
+            return Http.getInstance().delete(`/ormorgs/${context.ormorg}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
+        }
+        if(context.ormorgsector && context.pcmydjdmx){
+            return Http.getInstance().delete(`/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
+        }
+        if(context.ormduty && context.pcmydjdmx){
+            return Http.getInstance().delete(`/ormduties/${context.ormduty}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
+        }
             return Http.getInstance().delete(`/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
 
     }
@@ -155,6 +245,24 @@ export default class PcmYdjdmxServiceBase extends EntityService {
      * @memberof PcmYdjdmxServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.pcmydjdmx){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/pcmydjdmxes/${context.pcmydjdmx}/checkkey`,data,isloading);
+        }
+        if(context.ormorg && context.ormorgsector && context.pcmydjdmx){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}/checkkey`,data,isloading);
+        }
+        if(context.ormpost && context.pcmydjdmx){
+            return Http.getInstance().post(`/ormposts/${context.ormpost}/pcmydjdmxes/${context.pcmydjdmx}/checkkey`,data,isloading);
+        }
+        if(context.ormorg && context.pcmydjdmx){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/pcmydjdmxes/${context.pcmydjdmx}/checkkey`,data,isloading);
+        }
+        if(context.ormorgsector && context.pcmydjdmx){
+            return Http.getInstance().post(`/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}/checkkey`,data,isloading);
+        }
+        if(context.ormduty && context.pcmydjdmx){
+            return Http.getInstance().post(`/ormduties/${context.ormduty}/pcmydjdmxes/${context.pcmydjdmx}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/pcmydjdmxes/${context.pcmydjdmx}/checkkey`,data,isloading);
     }
 
@@ -168,6 +276,24 @@ export default class PcmYdjdmxServiceBase extends EntityService {
      * @memberof PcmYdjdmxServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && context.pcmydjdmx){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/pcmydjdmxes/${context.pcmydjdmx}/save`,data,isloading);
+        }
+        if(context.ormorg && context.ormorgsector && context.pcmydjdmx){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}/save`,data,isloading);
+        }
+        if(context.ormpost && context.pcmydjdmx){
+            return Http.getInstance().post(`/ormposts/${context.ormpost}/pcmydjdmxes/${context.pcmydjdmx}/save`,data,isloading);
+        }
+        if(context.ormorg && context.pcmydjdmx){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/pcmydjdmxes/${context.pcmydjdmx}/save`,data,isloading);
+        }
+        if(context.ormorgsector && context.pcmydjdmx){
+            return Http.getInstance().post(`/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}/save`,data,isloading);
+        }
+        if(context.ormduty && context.pcmydjdmx){
+            return Http.getInstance().post(`/ormduties/${context.ormduty}/pcmydjdmxes/${context.pcmydjdmx}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/pcmydjdmxes/${context.pcmydjdmx}/save`,data,isloading);
@@ -184,6 +310,60 @@ export default class PcmYdjdmxServiceBase extends EntityService {
      * @memberof PcmYdjdmxServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/pcmydjdmxes`,data,isloading);
+        }
+        if(context.ormorg && context.ormorgsector && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes`,data,isloading);
+        }
+        if(context.ormpost && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormposts/${context.ormpost}/pcmydjdmxes`,data,isloading);
+        }
+        if(context.ormorg && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/pcmydjdmxes`,data,isloading);
+        }
+        if(context.ormorgsector && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormorgsectors/${context.ormorgsector}/pcmydjdmxes`,data,isloading);
+        }
+        if(context.ormduty && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormduties/${context.ormduty}/pcmydjdmxes`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -207,6 +387,30 @@ export default class PcmYdjdmxServiceBase extends EntityService {
      * @memberof PcmYdjdmxServiceBase
      */
     public async FetchJDGLDQ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/pcmydjdmxes/fetchjdgldq`,tempData,isloading);
+        }
+        if(context.ormorg && context.ormorgsector && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/fetchjdgldq`,tempData,isloading);
+        }
+        if(context.ormpost && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormposts/${context.ormpost}/pcmydjdmxes/fetchjdgldq`,tempData,isloading);
+        }
+        if(context.ormorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/pcmydjdmxes/fetchjdgldq`,tempData,isloading);
+        }
+        if(context.ormorgsector && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/fetchjdgldq`,tempData,isloading);
+        }
+        if(context.ormduty && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormduties/${context.ormduty}/pcmydjdmxes/fetchjdgldq`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pcmydjdmxes/fetchjdgldq`,tempData,isloading);
     }
@@ -221,6 +425,30 @@ export default class PcmYdjdmxServiceBase extends EntityService {
      * @memberof PcmYdjdmxServiceBase
      */
     public async FetchJDLSJLDQ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/pcmydjdmxes/fetchjdlsjldq`,tempData,isloading);
+        }
+        if(context.ormorg && context.ormorgsector && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/fetchjdlsjldq`,tempData,isloading);
+        }
+        if(context.ormpost && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormposts/${context.ormpost}/pcmydjdmxes/fetchjdlsjldq`,tempData,isloading);
+        }
+        if(context.ormorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/pcmydjdmxes/fetchjdlsjldq`,tempData,isloading);
+        }
+        if(context.ormorgsector && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/fetchjdlsjldq`,tempData,isloading);
+        }
+        if(context.ormduty && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormduties/${context.ormduty}/pcmydjdmxes/fetchjdlsjldq`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pcmydjdmxes/fetchjdlsjldq`,tempData,isloading);
     }
@@ -235,6 +463,30 @@ export default class PcmYdjdmxServiceBase extends EntityService {
      * @memberof PcmYdjdmxServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.ormorg && context.ormpost && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormposts/${context.ormpost}/pcmydjdmxes/fetchdefault`,tempData,isloading);
+        }
+        if(context.ormorg && context.ormorgsector && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/fetchdefault`,tempData,isloading);
+        }
+        if(context.ormpost && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormposts/${context.ormpost}/pcmydjdmxes/fetchdefault`,tempData,isloading);
+        }
+        if(context.ormorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/pcmydjdmxes/fetchdefault`,tempData,isloading);
+        }
+        if(context.ormorgsector && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/fetchdefault`,tempData,isloading);
+        }
+        if(context.ormduty && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormduties/${context.ormduty}/pcmydjdmxes/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pcmydjdmxes/fetchdefault`,tempData,isloading);
     }
