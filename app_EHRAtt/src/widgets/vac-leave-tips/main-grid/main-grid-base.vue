@@ -73,41 +73,6 @@
             </template>
     </el-table>
   
-    <row class='grid-pagination' v-show="items.length > 0">
-        <page class='pull-right' @on-change="pageOnChange($event)" 
-            @on-page-size-change="onPageSizeChange($event)"
-            :transfer="true" :total="totalrow"
-            show-sizer :current="curPage" :page-size="limit"
-            :page-size-opts="[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]" show-elevator show-total>
-            <span>
-                <span class="page-column">
-                    <poptip transfer placement="top-start">
-                        <i-button icon="md-menu">{{$t('app.gridpage.choicecolumns')}}</i-button>
-                        <div slot="content">
-                            <template v-for="col in allColumns">
-                                <div :key="col.name"><el-checkbox v-model="col.show" @change="onColChange()">{{$t(col.langtag)}}</el-checkbox></div>
-                            </template>
-                        </div>
-                    </poptip>
-                </span>
-                <span v-if="selections.length > 0" class="batch-toolbar">
-                </span>
-                <span class="page-button"><i-button icon="md-refresh" :title="$t('app.gridpage.refresh')" @click="pageRefresh()"></i-button></span>&nbsp;
-                <span>
-                    {{$t('app.gridpage.show')}}&nbsp;
-                    <span>
-                        <template v-if="items.length === 1">
-                        1
-                        </template>
-                        <template v-else>
-                            <span>{{(curPage - 1) * limit + 1}}&nbsp;-&nbsp;{{totalrow > curPage * limit ? curPage * limit : totalrow}}</span>
-                        </template>
-                    </span>&nbsp;
-                    {{$t('app.gridpage.records')}}，{{$t('app.gridpage.totle')}}&nbsp;{{totalrow}}&nbsp;{{$t('app.gridpage.records')}}
-                </span>
-            </span>
-        </page>
-    </row>
   </i-form>
 </div>
 </template>
@@ -359,7 +324,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof Main
      */
-    public isEnablePagingBar: boolean = true;
+    public isEnablePagingBar: boolean = false;
 
     /**
      * 是否禁用排序

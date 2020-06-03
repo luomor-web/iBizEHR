@@ -65,7 +65,6 @@ export default class MainModel {
           name: 'vacleavetips',
           prop: 'vacleavetipsid',
         },
-
         {
           name:'size',
           prop:'size'

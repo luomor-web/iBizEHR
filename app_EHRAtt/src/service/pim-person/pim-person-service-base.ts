@@ -65,6 +65,21 @@ export default class PimPersonServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let vacleavemanagesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_vacleavemanages'),'undefined')){
+            vacleavemanagesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_vacleavemanages') as any);
+            if(vacleavemanagesData && vacleavemanagesData.length && vacleavemanagesData.length > 0){
+                vacleavemanagesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.vacleavemanageid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.vacleavemanages = vacleavemanagesData;
         let attendancemreportmxesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_attendancemreportmxes'),'undefined')){
             attendancemreportmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_attendancemreportmxes') as any);
@@ -95,21 +110,6 @@ export default class PimPersonServiceBase extends EntityService {
             }
         }
         masterData.attendancesettings = attendancesettingsData;
-        let vacleavemanagesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_vacleavemanages'),'undefined')){
-            vacleavemanagesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_vacleavemanages') as any);
-            if(vacleavemanagesData && vacleavemanagesData.length && vacleavemanagesData.length > 0){
-                vacleavemanagesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.vacleavemanageid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.vacleavemanages = vacleavemanagesData;
         let attendancerecordsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_attendancerecords'),'undefined')){
             attendancerecordsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_attendancerecords') as any);
@@ -127,9 +127,9 @@ export default class PimPersonServiceBase extends EntityService {
         masterData.attendancerecords = attendancerecordsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/pimpeople/${context.pimperson}`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_vacleavemanages',JSON.stringify(res.data.vacleavemanages));
             this.tempStorage.setItem(context.srfsessionkey+'_attendancemreportmxes',JSON.stringify(res.data.attendancemreportmxes));
             this.tempStorage.setItem(context.srfsessionkey+'_attendancesettings',JSON.stringify(res.data.attendancesettings));
-            this.tempStorage.setItem(context.srfsessionkey+'_vacleavemanages',JSON.stringify(res.data.vacleavemanages));
             this.tempStorage.setItem(context.srfsessionkey+'_attendancerecords',JSON.stringify(res.data.attendancerecords));
             return res;
     }
@@ -171,9 +171,9 @@ export default class PimPersonServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/pimpeople/${context.pimperson}`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_vacleavemanages',JSON.stringify(res.data.vacleavemanages));
             this.tempStorage.setItem(context.srfsessionkey+'_attendancemreportmxes',JSON.stringify(res.data.attendancemreportmxes));
             this.tempStorage.setItem(context.srfsessionkey+'_attendancesettings',JSON.stringify(res.data.attendancesettings));
-            this.tempStorage.setItem(context.srfsessionkey+'_vacleavemanages',JSON.stringify(res.data.vacleavemanages));
             this.tempStorage.setItem(context.srfsessionkey+'_attendancerecords',JSON.stringify(res.data.attendancerecords));
             return res;
 
@@ -216,6 +216,21 @@ export default class PimPersonServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let vacleavemanagesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_vacleavemanages'),'undefined')){
+            vacleavemanagesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_vacleavemanages') as any);
+            if(vacleavemanagesData && vacleavemanagesData.length && vacleavemanagesData.length > 0){
+                vacleavemanagesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.vacleavemanageid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.vacleavemanages = vacleavemanagesData;
         let attendancemreportmxesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_attendancemreportmxes'),'undefined')){
             attendancemreportmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_attendancemreportmxes') as any);
@@ -246,21 +261,6 @@ export default class PimPersonServiceBase extends EntityService {
             }
         }
         masterData.attendancesettings = attendancesettingsData;
-        let vacleavemanagesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_vacleavemanages'),'undefined')){
-            vacleavemanagesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_vacleavemanages') as any);
-            if(vacleavemanagesData && vacleavemanagesData.length && vacleavemanagesData.length > 0){
-                vacleavemanagesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.vacleavemanageid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.vacleavemanages = vacleavemanagesData;
         let attendancerecordsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_attendancerecords'),'undefined')){
             attendancerecordsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_attendancerecords') as any);
@@ -285,9 +285,9 @@ export default class PimPersonServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/pimpeople`,data,isloading);
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_vacleavemanages',JSON.stringify(res.data.vacleavemanages));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_attendancemreportmxes',JSON.stringify(res.data.attendancemreportmxes));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_attendancesettings',JSON.stringify(res.data.attendancesettings));
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_vacleavemanages',JSON.stringify(res.data.vacleavemanages));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_attendancerecords',JSON.stringify(res.data.attendancerecords));
         return res;
     }
@@ -303,6 +303,21 @@ export default class PimPersonServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let vacleavemanagesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_vacleavemanages'),'undefined')){
+            vacleavemanagesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_vacleavemanages') as any);
+            if(vacleavemanagesData && vacleavemanagesData.length && vacleavemanagesData.length > 0){
+                vacleavemanagesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.vacleavemanageid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.vacleavemanages = vacleavemanagesData;
         let attendancemreportmxesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_attendancemreportmxes'),'undefined')){
             attendancemreportmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_attendancemreportmxes') as any);
@@ -333,21 +348,6 @@ export default class PimPersonServiceBase extends EntityService {
             }
         }
         masterData.attendancesettings = attendancesettingsData;
-        let vacleavemanagesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_vacleavemanages'),'undefined')){
-            vacleavemanagesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_vacleavemanages') as any);
-            if(vacleavemanagesData && vacleavemanagesData.length && vacleavemanagesData.length > 0){
-                vacleavemanagesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.vacleavemanageid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.vacleavemanages = vacleavemanagesData;
         let attendancerecordsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_attendancerecords'),'undefined')){
             attendancerecordsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_attendancerecords') as any);
@@ -365,9 +365,9 @@ export default class PimPersonServiceBase extends EntityService {
         masterData.attendancerecords = attendancerecordsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/pimpeople/${context.pimperson}/save`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_vacleavemanages',JSON.stringify(res.data.vacleavemanages));
             this.tempStorage.setItem(context.srfsessionkey+'_attendancemreportmxes',JSON.stringify(res.data.attendancemreportmxes));
             this.tempStorage.setItem(context.srfsessionkey+'_attendancesettings',JSON.stringify(res.data.attendancesettings));
-            this.tempStorage.setItem(context.srfsessionkey+'_vacleavemanages',JSON.stringify(res.data.vacleavemanages));
             this.tempStorage.setItem(context.srfsessionkey+'_attendancerecords',JSON.stringify(res.data.attendancerecords));
             return res;
     }
@@ -452,9 +452,9 @@ export default class PimPersonServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/pimpeople/getdraft`,isloading);
         res.data.pimperson = data.pimperson;
+            this.tempStorage.setItem(context.srfsessionkey+'_vacleavemanages',JSON.stringify(res.data.vacleavemanages));
             this.tempStorage.setItem(context.srfsessionkey+'_attendancemreportmxes',JSON.stringify(res.data.attendancemreportmxes));
             this.tempStorage.setItem(context.srfsessionkey+'_attendancesettings',JSON.stringify(res.data.attendancesettings));
-            this.tempStorage.setItem(context.srfsessionkey+'_vacleavemanages',JSON.stringify(res.data.vacleavemanages));
             this.tempStorage.setItem(context.srfsessionkey+'_attendancerecords',JSON.stringify(res.data.attendancerecords));
         return res;
     }

@@ -76,16 +76,6 @@ export default class MainModel {
         dataType: 'SSCODELIST',
       },
       {
-        name: 'kssj',
-        prop: 'kssj',
-        dataType: 'DATE',
-      },
-      {
-        name: 'jssj',
-        prop: 'jssj',
-        dataType: 'DATE',
-      },
-      {
         name: 'vacholidayid',
         prop: 'vacholidayid',
         dataType: 'GUID',

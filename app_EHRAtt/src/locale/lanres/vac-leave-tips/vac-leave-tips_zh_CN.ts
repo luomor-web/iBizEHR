@@ -50,13 +50,6 @@ export default {
 		uiactions: {
 		},
 	},
-	default_searchform: {
-		details: {
-			formpage1: '常规条件', 
-		},
-		uiactions: {
-		},
-	},
 	qjtsgridviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: '新建',
@@ -69,14 +62,6 @@ export default {
 		deuiaction3: {
 			caption: '删除',
 			tip: '删除',
-		},
-		deuiaction4: {
-			caption: '导入',
-			tip: '导入',
-		},
-		deuiaction5: {
-			caption: '导出',
-			tip: '导出',
 		},
 	},
 	editviewtoolbar_toolbar: {

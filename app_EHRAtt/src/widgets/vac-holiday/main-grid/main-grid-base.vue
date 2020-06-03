@@ -68,84 +68,11 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('kssj')">
-                <el-table-column show-overflow-tooltip :prop="'kssj'" :label="$t('entities.vacholiday.main_grid.columns.kssj')" :width="250"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.vacholiday.main_grid.columns.kssj')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <template v-if="actualIsOpenEdit">
-                            <app-form-item :error="gridItemsModel[$index][column.property].error">
-                                <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" :value="row[column.property]" style="" @on-change="(val1, val2) => { row[column.property] = val1; gridEditItemChange(row, column.property, val1, $index)}"></date-picker>
-                            </app-form-item>
-                        </template>
-                        <template v-if="!actualIsOpenEdit">
-                                <app-span name='kssj' editorType="DATEPICKER" :value="row.kssj"></app-span>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('jssj')">
-                <el-table-column show-overflow-tooltip :prop="'jssj'" :label="$t('entities.vacholiday.main_grid.columns.jssj')" :width="250"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.vacholiday.main_grid.columns.jssj')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <template v-if="actualIsOpenEdit">
-                            <app-form-item :error="gridItemsModel[$index][column.property].error">
-                                <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" :value="row[column.property]" style="" @on-change="(val1, val2) => { row[column.property] = val1; gridEditItemChange(row, column.property, val1, $index)}"></date-picker>
-                            </app-form-item>
-                        </template>
-                        <template v-if="!actualIsOpenEdit">
-                                <app-span name='jssj' editorType="DATEPICKER" :value="row.jssj"></app-span>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="adaptiveState">
                 <el-table-column></el-table-column>
             </template>
     </el-table>
   
-    <row class='grid-pagination' v-show="items.length > 0">
-        <page class='pull-right' @on-change="pageOnChange($event)" 
-            @on-page-size-change="onPageSizeChange($event)"
-            :transfer="true" :total="totalrow"
-            show-sizer :current="curPage" :page-size="limit"
-            :page-size-opts="[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]" show-elevator show-total>
-            <span>
-                <span class="page-column">
-                    <poptip transfer placement="top-start">
-                        <i-button icon="md-menu">{{$t('app.gridpage.choicecolumns')}}</i-button>
-                        <div slot="content">
-                            <template v-for="col in allColumns">
-                                <div :key="col.name"><el-checkbox v-model="col.show" @change="onColChange()">{{$t(col.langtag)}}</el-checkbox></div>
-                            </template>
-                        </div>
-                    </poptip>
-                </span>
-                <span v-if="selections.length > 0" class="batch-toolbar">
-                </span>
-                <span class="page-button"><i-button icon="md-refresh" :title="$t('app.gridpage.refresh')" @click="pageRefresh()"></i-button></span>&nbsp;
-                <span>
-                    {{$t('app.gridpage.show')}}&nbsp;
-                    <span>
-                        <template v-if="items.length === 1">
-                        1
-                        </template>
-                        <template v-else>
-                            <span>{{(curPage - 1) * limit + 1}}&nbsp;-&nbsp;{{totalrow > curPage * limit ? curPage * limit : totalrow}}</span>
-                        </template>
-                    </span>&nbsp;
-                    {{$t('app.gridpage.records')}}，{{$t('app.gridpage.totle')}}&nbsp;{{totalrow}}&nbsp;{{$t('app.gridpage.records')}}
-                </span>
-            </span>
-        </page>
-    </row>
   </i-form>
 </div>
 </template>
@@ -397,7 +324,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof Main
      */
-    public isEnablePagingBar: boolean = true;
+    public isEnablePagingBar: boolean = false;
 
     /**
      * 是否禁用排序
@@ -598,20 +525,6 @@ export default class MainBase extends Vue implements ControlInterface {
             show: true,
             util: 'PX'
         },
-        {
-            name: 'kssj',
-            label: '开始时间',
-            langtag: 'entities.vacholiday.main_grid.columns.kssj',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'jssj',
-            label: '结束时间',
-            langtag: 'entities.vacholiday.main_grid.columns.jssj',
-            show: true,
-            util: 'PX'
-        },
     ]
 
     /**
@@ -631,8 +544,6 @@ export default class MainBase extends Vue implements ControlInterface {
     public getGridRowModel(){
         return {
           vacholidayname: new FormItemModel(),
-          jssj: new FormItemModel(),
-          kssj: new FormItemModel(),
           vacholidayrulesid: new FormItemModel(),
           srfkey: new FormItemModel(),
           jjrlx: new FormItemModel(),
@@ -649,14 +560,6 @@ export default class MainBase extends Vue implements ControlInterface {
         vacholidayname: [
              { required: true, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '名称 值不能为空', trigger: 'change' },
             { required: true, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '名称 值不能为空', trigger: 'blur' },
-        ],
-        jssj: [
-             { required: true, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '结束时间 值不能为空', trigger: 'change' },
-            { required: true, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '结束时间 值不能为空', trigger: 'blur' },
-        ],
-        kssj: [
-             { required: true, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '开始时间 值不能为空', trigger: 'change' },
-            { required: true, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '开始时间 值不能为空', trigger: 'blur' },
         ],
         vacholidayrulesid: [
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '考勤规则标识 值不能为空', trigger: 'change' },
@@ -1555,14 +1458,6 @@ export default class MainBase extends Vue implements ControlInterface {
     public gridEditItemChange(row: any, property: string, value: any, rowIndex: number){
         row.rowDataState = row.rowDataState ? row.rowDataState : "update" ;
         this.validate(property,row,rowIndex);
-        if(Object.is(property, 'jssj')){
-            const details: string[] = ['jssj', 'kssj'];
-            this.updateGridEditItem('CheckTime', row, details, true);
-        }
-        if(Object.is(property, 'kssj')){
-            const details: string[] = ['jssj', 'kssj'];
-            this.updateGridEditItem('CheckTime', row, details, true);
-        }
     }
 
     /**

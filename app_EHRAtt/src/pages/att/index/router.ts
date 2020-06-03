@@ -35,6 +35,33 @@ const router = new Router({
             component: () => import('@pages/att/index/index.vue'),
             children: [
                 {
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.ormorgsector.views.pickupgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/orm-orgsector-pickup-grid-view/orm-orgsector-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.ormorgsector.views.pickupgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/orm-orgsector-pickup-grid-view/orm-orgsector-pickup-grid-view.vue'),
+                },
+                {
                     path: 'vacholidayrules/:vacholidayrules?/curormorgpickupview/:curormorgpickupview?',
                     meta: {
                         caption: 'entities.vacholidayrules.views.curormorgpickupview.caption',
@@ -854,33 +881,6 @@ const router = new Router({
                     component: () => import('@pages/orm/orm-bmkqdz-pickup-grid-view/orm-bmkqdz-pickup-grid-view.vue'),
                 },
                 {
-                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/kqszmpickupview/:kqszmpickupview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.kqszmpickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'kqszmpickupview', parameterName: 'kqszmpickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/orm-orgsector-kqszmpickup-view/orm-orgsector-kqszmpickup-view.vue'),
-                },
-                {
-                    path: 'ormorgsectors/:ormorgsector?/kqszmpickupview/:kqszmpickupview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.kqszmpickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'kqszmpickupview', parameterName: 'kqszmpickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/orm-orgsector-kqszmpickup-view/orm-orgsector-kqszmpickup-view.vue'),
-                },
-                {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/pickupview/:pickupview?',
                     meta: {
                         caption: 'entities.ormbmkqdz.views.pickupview.caption',
@@ -999,37 +999,6 @@ const router = new Router({
                     component: () => import('@pages/orm/orm-org-pickup-view/orm-org-pickup-view.vue'),
                 },
                 {
-                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/curzzbm_kqszpickupgridview/:curzzbm_kqszpickupgridview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.curzzbm_kqszpickupgridview.caption',
-                        imgPath: '../../../img/zzgl/1/bumenguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'curzzbm_kqszpickupgridview', parameterName: 'curzzbm_kqszpickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/orm-orgsector-cur-zzbm-kqszpickup-grid-view/orm-orgsector-cur-zzbm-kqszpickup-grid-view.vue'),
-                },
-                {
-                    path: 'ormorgsectors/:ormorgsector?/curzzbm_kqszpickupgridview/:curzzbm_kqszpickupgridview?',
-                    meta: {
-                        caption: 'entities.ormorgsector.views.curzzbm_kqszpickupgridview.caption',
-                        imgPath: '../../../img/zzgl/1/bumenguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                            { pathName: 'curzzbm_kqszpickupgridview', parameterName: 'curzzbm_kqszpickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/orm-orgsector-cur-zzbm-kqszpickup-grid-view/orm-orgsector-cur-zzbm-kqszpickup-grid-view.vue'),
-                },
-                {
                     path: 'attendencesetups/:attendencesetup?/kqsztreeexpview/:kqsztreeexpview?',
                     meta: {
                         caption: 'entities.attendencesetup.views.kqsztreeexpview.caption',
@@ -1058,6 +1027,33 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/att/att-endence-type-edit-view/att-endence-type-edit-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/mpickupview/:mpickupview?',
+                    meta: {
+                        caption: 'entities.ormorgsector.views.mpickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/orm-orgsector-mpickup-view/orm-orgsector-mpickup-view.vue'),
+                },
+                {
+                    path: 'ormorgsectors/:ormorgsector?/mpickupview/:mpickupview?',
+                    meta: {
+                        caption: 'entities.ormorgsector.views.mpickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/orm-orgsector-mpickup-view/orm-orgsector-mpickup-view.vue'),
                 },
                 {
                     path: 'vacholidayrules/:vacholidayrules?/gridview/:gridview?',
@@ -1440,6 +1436,31 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/att/att-endance-settings-edit-view/att-endance-settings-edit-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/mpickupview/:mpickupview?',
+        meta: {
+            caption: 'entities.ormorgsector.views.mpickupview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'mpickupview', parameterName: 'mpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/orm-orgsector-mpickup-view/orm-orgsector-mpickup-view.vue'),
+    },
+    {
+        path: '/ormorgsectors/:ormorgsector?/mpickupview/:mpickupview?',
+        meta: {
+            caption: 'entities.ormorgsector.views.mpickupview.caption',
+            parameters: [
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'mpickupview', parameterName: 'mpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/orm-orgsector-mpickup-view/orm-orgsector-mpickup-view.vue'),
     },
     {
         path: '/pimpeople/:pimperson?/curorgpimpersonpickupview/:curorgpimpersonpickupview?',
@@ -2190,6 +2211,31 @@ const router = new Router({
         component: () => import('@pages/vac/vac-holiday-rules-cur-ormorg-pickup-view/vac-holiday-rules-cur-ormorg-pickup-view.vue'),
     },
     {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.ormorgsector.views.pickupgridview.caption',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/orm-orgsector-pickup-grid-view/orm-orgsector-pickup-grid-view.vue'),
+    },
+    {
+        path: '/ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.ormorgsector.views.pickupgridview.caption',
+            parameters: [
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/orm-orgsector-pickup-grid-view/orm-orgsector-pickup-grid-view.vue'),
+    },
+    {
         path: '/vacholidayrules/:vacholidayrules?/vacholidays/:vacholiday?/jjrtxsbgridview/:jjrtxsbgridview?',
         meta: {
             caption: 'entities.vacholiday.views.jjrtxsbgridview.caption',
@@ -2377,35 +2423,6 @@ const router = new Router({
         component: () => import('@pages/vac/vac-holiday-rules-grid-view/vac-holiday-rules-grid-view.vue'),
     },
     {
-        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/curzzbm_kqszpickupgridview/:curzzbm_kqszpickupgridview?',
-        meta: {
-            caption: 'entities.ormorgsector.views.curzzbm_kqszpickupgridview.caption',
-            imgPath: '../../../img/zzgl/1/bumenguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormorgs', parameterName: 'ormorg' },
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'curzzbm_kqszpickupgridview', parameterName: 'curzzbm_kqszpickupgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/orm-orgsector-cur-zzbm-kqszpickup-grid-view/orm-orgsector-cur-zzbm-kqszpickup-grid-view.vue'),
-    },
-    {
-        path: '/ormorgsectors/:ormorgsector?/curzzbm_kqszpickupgridview/:curzzbm_kqszpickupgridview?',
-        meta: {
-            caption: 'entities.ormorgsector.views.curzzbm_kqszpickupgridview.caption',
-            imgPath: '../../../img/zzgl/1/bumenguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'curzzbm_kqszpickupgridview', parameterName: 'curzzbm_kqszpickupgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/orm-orgsector-cur-zzbm-kqszpickup-grid-view/orm-orgsector-cur-zzbm-kqszpickup-grid-view.vue'),
-    },
-    {
         path: '/ormorgs/:ormorg?/pickupgridview/:pickupgridview?',
         meta: {
             caption: 'entities.ormorg.views.pickupgridview.caption',
@@ -2511,31 +2528,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/vac/vac-leace-type-edit-view/vac-leace-type-edit-view.vue'),
-    },
-    {
-        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/kqszmpickupview/:kqszmpickupview?',
-        meta: {
-            caption: 'entities.ormorgsector.views.kqszmpickupview.caption',
-            parameters: [
-                { pathName: 'ormorgs', parameterName: 'ormorg' },
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'kqszmpickupview', parameterName: 'kqszmpickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/orm-orgsector-kqszmpickup-view/orm-orgsector-kqszmpickup-view.vue'),
-    },
-    {
-        path: '/ormorgsectors/:ormorgsector?/kqszmpickupview/:kqszmpickupview?',
-        meta: {
-            caption: 'entities.ormorgsector.views.kqszmpickupview.caption',
-            parameters: [
-                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
-                { pathName: 'kqszmpickupview', parameterName: 'kqszmpickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/orm-orgsector-kqszmpickup-view/orm-orgsector-kqszmpickup-view.vue'),
     },
     {
         path: '/attendencesetups/:attendencesetup?/attendancesettings/:attendancesettings?/ygszkqgridview/:ygszkqgridview?',

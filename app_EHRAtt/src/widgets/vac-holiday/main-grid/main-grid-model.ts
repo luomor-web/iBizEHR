@@ -32,16 +32,6 @@ export default class MainModel {
           dataType: 'TEXT',
         },
         {
-          name: 'jssj',
-          prop: 'jssj',
-          dataType: 'DATE',
-        },
-        {
-          name: 'kssj',
-          prop: 'kssj',
-          dataType: 'DATE',
-        },
-        {
           name: 'vacholidayrulesid',
           prop: 'vacholidayrulesid',
           dataType: 'PICKUP',
@@ -70,12 +60,6 @@ export default class MainModel {
           name: 'vacholiday',
           prop: 'vacholidayid',
         },
-      {
-        name: 'n_vacholidayname_like',
-        prop: 'n_vacholidayname_like',
-        dataType: 'TEXT',
-      },
-
         {
           name:'size',
           prop:'size'

@@ -1,6 +1,7 @@
 export const PageComponents = {
     install(Vue: any, opt: any) {
-                Vue.component('vac-holiday-rules-cur-ormorg-pickup-view', () => import('@pages/vac/vac-holiday-rules-cur-ormorg-pickup-view/vac-holiday-rules-cur-ormorg-pickup-view.vue'));
+                Vue.component('orm-orgsector-pickup-grid-view', () => import('@pages/orm/orm-orgsector-pickup-grid-view/orm-orgsector-pickup-grid-view.vue'));
+        Vue.component('vac-holiday-rules-cur-ormorg-pickup-view', () => import('@pages/vac/vac-holiday-rules-cur-ormorg-pickup-view/vac-holiday-rules-cur-ormorg-pickup-view.vue'));
         Vue.component('att-endance-settings-ygszkqgrid-view', () => import('@pages/att/att-endance-settings-ygszkqgrid-view/att-endance-settings-ygszkqgrid-view.vue'));
         Vue.component('att-endence-setup-pickup-grid-view', () => import('@pages/att/att-endence-setup-pickup-grid-view/att-endence-setup-pickup-grid-view.vue'));
         Vue.component('att-endance-settings-fygzzkqgrid-view', () => import('@pages/att/att-endance-settings-fygzzkqgrid-view/att-endance-settings-fygzzkqgrid-view.vue'));
@@ -29,14 +30,13 @@ export const PageComponents = {
         Vue.component('att-endance-settings-edit-view', () => import('@pages/att/att-endance-settings-edit-view/att-endance-settings-edit-view.vue'));
         Vue.component('att-endence-ormorgscetor-grid-view', () => import('@pages/att/att-endence-ormorgscetor-grid-view/att-endence-ormorgscetor-grid-view.vue'));
         Vue.component('orm-bmkqdz-pickup-grid-view', () => import('@pages/orm/orm-bmkqdz-pickup-grid-view/orm-bmkqdz-pickup-grid-view.vue'));
-        Vue.component('orm-orgsector-kqszmpickup-view', () => import('@pages/orm/orm-orgsector-kqszmpickup-view/orm-orgsector-kqszmpickup-view.vue'));
         Vue.component('orm-bmkqdz-pickup-view', () => import('@pages/orm/orm-bmkqdz-pickup-view/orm-bmkqdz-pickup-view.vue'));
         Vue.component('orm-bmkqdz-bmkqdzgrid-view', () => import('@pages/orm/orm-bmkqdz-bmkqdzgrid-view/orm-bmkqdz-bmkqdzgrid-view.vue'));
         Vue.component('vac-holiday-rules-kqgzwizard-view', () => import('@pages/vac/vac-holiday-rules-kqgzwizard-view/vac-holiday-rules-kqgzwizard-view.vue'));
         Vue.component('orm-org-pickup-view', () => import('@pages/orm/orm-org-pickup-view/orm-org-pickup-view.vue'));
-        Vue.component('orm-orgsector-cur-zzbm-kqszpickup-grid-view', () => import('@pages/orm/orm-orgsector-cur-zzbm-kqszpickup-grid-view/orm-orgsector-cur-zzbm-kqszpickup-grid-view.vue'));
         Vue.component('att-endence-setup-kqsztree-exp-view', () => import('@pages/att/att-endence-setup-kqsztree-exp-view/att-endence-setup-kqsztree-exp-view.vue'));
         Vue.component('att-endence-type-edit-view', () => import('@pages/att/att-endence-type-edit-view/att-endence-type-edit-view.vue'));
+        Vue.component('orm-orgsector-mpickup-view', () => import('@pages/orm/orm-orgsector-mpickup-view/orm-orgsector-mpickup-view.vue'));
         Vue.component('vac-holiday-rules-grid-view', () => import('@pages/vac/vac-holiday-rules-grid-view/vac-holiday-rules-grid-view.vue'));
         Vue.component('pim-person-mpickup-view', () => import('@pages/att/pim-person-mpickup-view/pim-person-mpickup-view.vue'));
         Vue.component('pim-person-cur-org-pimperson-pickup-view', () => import('@pages/pim/pim-person-cur-org-pimperson-pickup-view/pim-person-cur-org-pimperson-pickup-view.vue'));

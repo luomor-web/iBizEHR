@@ -210,22 +210,6 @@ export default class VacHolidayServiceBase extends EntityService {
     }
 
     /**
-     * CheckTime接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof VacHolidayServiceBase
-     */
-    public async CheckTime(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        if(context.vacholidayrules && context.vacholiday){
-            return Http.getInstance().post(`/vacholidayrules/${context.vacholidayrules}/vacholidays/${context.vacholiday}/checktime`,data,isloading);
-        }
-            return Http.getInstance().post(`/vacholidays/${context.vacholiday}/checktime`,data,isloading);
-    }
-
-    /**
      * FetchDefault接口方法
      *
      * @param {*} [context={}]

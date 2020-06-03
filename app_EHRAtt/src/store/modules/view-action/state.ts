@@ -14,6 +14,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '07d14c54e2627a1b2fbcd2c5773a89d1',
+            viewmodule: 'ORM',
+            viewname: 'OrmOrgsectorMPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'a0ab24547d6ad910d03d81a5a6e3f83d',
+            ],
+        },
+        {
             viewtag: '0df297d269c07a0970657b7f56adb1ea',
             viewmodule: 'PIM',
             viewname: 'PimPersonCurOrgPimpersonPickupView',
@@ -284,9 +294,9 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '07d14c54e2627a1b2fbcd2c5773a89d1',
                 '8dc4b335c6da32e29f4f6f082d4b2020',
                 '402c44c268001c72d0260161d2bece56',
-                'efb6d23ba2d645798922bd74edd568ce',
                 'fda0fddd972d90b7d9335a0aa20c6cf4',
             ],
         },
@@ -354,6 +364,15 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '94ecb4d9f696cdeb9d6aafb13e04c7a3',
+            ],
+        },
+        {
+            viewtag: 'a0ab24547d6ad910d03d81a5a6e3f83d',
+            viewmodule: 'ORM',
+            viewname: 'OrmOrgsectorPickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
             ],
         },
         {
@@ -450,15 +469,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: 'd276e912d89e2e6e7c9595022aa20189',
-            viewmodule: 'ORM',
-            viewname: 'OrmOrgsectorCurZZBM_KQSZPickupGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-            ],
-        },
-        {
             viewtag: 'd6182a52f2ff9bde43a0581a32703944',
             viewmodule: 'ORM',
             viewname: 'OrmOrgPickupGridView',
@@ -513,16 +523,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-            ],
-        },
-        {
-            viewtag: 'efb6d23ba2d645798922bd74edd568ce',
-            viewmodule: 'ORM',
-            viewname: 'OrmOrgsectorKQSZMPickupView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                'd276e912d89e2e6e7c9595022aa20189',
             ],
         },
         {

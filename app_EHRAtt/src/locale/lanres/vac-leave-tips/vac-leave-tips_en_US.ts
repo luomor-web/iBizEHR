@@ -51,13 +51,6 @@ export default {
 		uiactions: {
 		},
 	},
-	default_searchform: {
-		details: {
-			formpage1: "常规条件", 
-		},
-		uiactions: {
-		},
-	},
 	qjtsgridviewtoolbar_toolbar: {
 		deuiaction1: {
 			caption: "新建",
@@ -70,14 +63,6 @@ export default {
 		deuiaction3: {
 			caption: "Remove",
 			tip: "Remove {0}",
-		},
-		deuiaction4: {
-			caption: "导入",
-			tip: "导入",
-		},
-		deuiaction5: {
-			caption: "Export",
-			tip: "Export {0} Data To Excel",
 		},
 	},
 	editviewtoolbar_toolbar: {

@@ -108,7 +108,7 @@ export default {
 			grouppanel1: '节假日/调休上班', 
 			rawitem1: '', 
 			druipart2: '', 
-			grouppanel3: '请假提示', 
+			grouppanel3: '温馨提示', 
 			formpage1: '基本信息', 
 			srfupdatedate: '更新时间', 
 			srforikey: '', 

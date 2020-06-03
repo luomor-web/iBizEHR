@@ -35,19 +35,7 @@
 <i-col v-show="detailsModel.grouppanel2.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel2.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.vacholiday.main_form.details.grouppanel2')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.kssj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='kssj' :itemRules="this.rules.kssj" class='' :caption="$t('entities.vacholiday.main_form.details.kssj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kssj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.kssj" :disabled="detailsModel.kssj.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.kssj = val1 }"></date-picker>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.jssj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='jssj' :itemRules="this.rules.jssj" class='' :caption="$t('entities.vacholiday.main_form.details.jssj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jssj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.jssj" :disabled="detailsModel.jssj.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.jssj = val1 }"></date-picker>
-</app-form-item>
-
-</i-col>
-    
+            
     </row>
 </app-form-group>
 
@@ -367,8 +355,6 @@ export default class MainBase extends Vue implements ControlInterface {
         vacholidayrulesname: null,
         vacholidayname: null,
         jjrlx: null,
-        kssj: null,
-        jssj: null,
         vacholidayid: null,
         vacholiday:null,
     };
@@ -484,18 +470,6 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: true, type: 'string', message: '类型 值不能为空', trigger: 'change' },
             { required: true, type: 'string', message: '类型 值不能为空', trigger: 'blur' },
         ],
-        kssj: [
-            { type: 'string', message: '开始时间 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '开始时间 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '开始时间 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '开始时间 值不能为空', trigger: 'blur' },
-        ],
-        jssj: [
-            { type: 'string', message: '结束时间 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '结束时间 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '结束时间 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '结束时间 值不能为空', trigger: 'blur' },
-        ],
         vacholidayid: [
             { type: 'string', message: '节假日管理标识 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '节假日管理标识 值必须为字符串类型', trigger: 'blur' },
@@ -542,10 +516,6 @@ export default class MainBase extends Vue implements ControlInterface {
         vacholidayname: new FormItemModel({ caption: '名称', detailType: 'FORMITEM', name: 'vacholidayname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         jjrlx: new FormItemModel({ caption: '类型', detailType: 'FORMITEM', name: 'jjrlx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        kssj: new FormItemModel({ caption: '开始时间', detailType: 'FORMITEM', name: 'kssj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        jssj: new FormItemModel({ caption: '结束时间', detailType: 'FORMITEM', name: 'jssj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         vacholidayid: new FormItemModel({ caption: '节假日管理标识', detailType: 'FORMITEM', name: 'vacholidayid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -696,30 +666,6 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 kssj 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.kssj')
-    onKssjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'kssj', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 jssj 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.jssj')
-    onJssjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'jssj', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 vacholidayid 值
      *
      * @param {*} newVal
@@ -784,18 +730,6 @@ export default class MainBase extends Vue implements ControlInterface {
 
 
 
-
-
-
-        if(Object.is(name, 'kssj')){
-            const details: string[] = ['jssj', 'kssj'];
-            this.updateFormItems('CheckTime', this.data, details, true);
-        }
-
-        if(Object.is(name, 'jssj')){
-            const details: string[] = ['jssj', 'kssj'];
-            this.updateFormItems('CheckTime', this.data, details, true);
-        }
     }
 
     /**

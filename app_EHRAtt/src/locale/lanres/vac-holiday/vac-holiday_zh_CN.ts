@@ -47,8 +47,6 @@ export default {
 			vacholidayrulesname: '考勤规则名称', 
 			vacholidayname: '名称', 
 			jjrlx: '类型', 
-			kssj: '开始时间', 
-			jssj: '结束时间', 
 			vacholidayid: '节假日管理标识', 
 		},
 		uiactions: {
@@ -58,16 +56,6 @@ export default {
 		columns: {
 			vacholidayname: '名称',
 			jjrlx: '类型',
-			kssj: '开始时间',
-			jssj: '结束时间',
-		},
-		uiactions: {
-		},
-	},
-	default_searchform: {
-		details: {
-			formpage1: '常规条件', 
-			n_vacholidayname_like: '节假日类型名称', 
 		},
 		uiactions: {
 		},
@@ -94,14 +82,6 @@ export default {
 		deuiaction3: {
 			caption: '删除',
 			tip: '删除',
-		},
-		deuiaction4: {
-			caption: '导入',
-			tip: '导入',
-		},
-		deuiaction5: {
-			caption: '导出',
-			tip: '导出',
 		},
 	},
 };

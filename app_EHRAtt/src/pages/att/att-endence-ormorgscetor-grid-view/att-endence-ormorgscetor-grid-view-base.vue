@@ -9,7 +9,7 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="考勤部门名称" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="部门名称" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
@@ -422,7 +422,7 @@ export default class AttEndenceOrmorgscetorGridViewBase extends GridViewBase {
             {view:{viewname:'att-endence-setup-mpickup-view',height: 0,width: 0,title: '考勤设置数据多项选择视图'},
             res:['AttEndenceSetup'],
             'resAppKey':'attendencesetupid'},
-            {view:{viewname:'orm-orgsector-kqszmpickup-view',height: 0,width: 0,title: '部门管理数据多项选择视图'},
+            {view:{viewname:'orm-orgsector-mpickup-view',height: 0,width: 0,title: '部门管理数据多项选择视图'},
             res:['OrmOrgsector'],
             'resAppKey':''}
         ];
