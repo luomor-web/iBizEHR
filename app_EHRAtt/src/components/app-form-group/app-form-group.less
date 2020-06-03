@@ -1,0 +1,33 @@
+.app-form-group {
+    >.ivu-card-head {
+        >p {
+            >i {
+                margin-right: 8px;
+                cursor: pointer;
+            }
+        }
+    }
+    >.ivu-card-extra {
+        .item-extract-mode {
+            display: flex;
+            .item {
+                margin-left: 12px;
+            }
+        }
+    }
+}
+
+.app-form-group.app-group-collapse-contant {
+    .ivu-card-body {
+        display: none;
+    }
+}
+
+.app-group-flex {
+    height: 100%;
+    overflow: auto;
+    > .ivu-card-body {
+        height: calc(100% - 51px);
+        overflow: auto;
+    }
+}
