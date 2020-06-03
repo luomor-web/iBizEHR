@@ -4224,7 +4224,7 @@
 
 
     <!--输出实体[PCMYDJDMX]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmydjdmx-104-105">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmydjdmx-106-105">
         <createTable tableName="T_PCMYDJDMX">
                 <column name="JDJSRQ" remarks="" type="DATETIME">
                 </column>
@@ -5182,7 +5182,7 @@
 
 
     <!--输出实体[VACHOLIDAY]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-vacholiday-31-129">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-vacholiday-32-129">
         <createTable tableName="T_VACHOLIDAY">
                 <column name="UPDATEDATE" remarks="" type="DATETIME">
                 </column>
@@ -12510,19 +12510,19 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PARJZSZPSJG" constraintName="DER1N_PARJZSZPSJG_PIMPERSON_PI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[PCMYDJDMX]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmydjdmx-104-462">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmydjdmx-106-462">
        <addForeignKeyConstraint baseColumnNames="ORMDUTYID" baseTableName="T_PCMYDJDMX" constraintName="DER1N_PCMYDJDMX_ORMDUTY_ORMDUT" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMDUTYID" referencedTableName="T_ORMDUTY" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmydjdmx-104-463">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmydjdmx-106-463">
        <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_PCMYDJDMX" constraintName="DER1N_PCMYDJDMX_ORMORGSECTOR_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmydjdmx-104-464">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmydjdmx-106-464">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PCMYDJDMX" constraintName="DER1N_PCMYDJDMX_ORMORG_ORMORGI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmydjdmx-104-465">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmydjdmx-106-465">
        <addForeignKeyConstraint baseColumnNames="ORMPOSTID" baseTableName="T_PCMYDJDMX" constraintName="DER1N_PCMYDJDMX_ORMPOST_ORMPOS" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMPOSTID" referencedTableName="T_ORMPOST" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmydjdmx-104-466">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmydjdmx-106-466">
        <addForeignKeyConstraint baseColumnNames="PIMDISTIRBUTIONID" baseTableName="T_PCMYDJDMX" constraintName="DER1N_PCMYDJDMX_PIMDISTIRBUTIO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMDISTIRBUTIONID" referencedTableName="T_PIMDISTIRBUTION" validate="true"/>
     </changeSet>
         <!--输出实体[PIMCITY]外键关系 -->
@@ -12615,7 +12615,7 @@
        <addForeignKeyConstraint baseColumnNames="PIMTITLECATALOGUEID2" baseTableName="T_PIMTITLECATALOGUE" constraintName="DER1N_PIMTITLECATALOGUE_PIMTIT" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMTITLECATALOGUEID" referencedTableName="T_PIMTITLECATALOGUE" validate="true"/>
     </changeSet>
         <!--输出实体[VACHOLIDAY]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-vacholiday-31-490">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-vacholiday-32-490">
        <addForeignKeyConstraint baseColumnNames="VACHOLIDAYRULESID" baseTableName="T_VACHOLIDAY" constraintName="DER1N_VACHOLIDAY_VACHOLIDAYRUL" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="VACHOLIDAYRULESID" referencedTableName="T_VACHOLIDAYRULES" validate="true"/>
     </changeSet>
         <!--输出实体[TRMZZOBM]外键关系 -->

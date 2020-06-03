@@ -104,6 +104,7 @@ public class PcmYdjdmxServiceImpl extends ServiceImpl<PcmYdjdmxMapper, PcmYdjdmx
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pcmydjdmxid",et.getPcmydjdmxid())))
             return false;
         CachedBeanCopier.copy(get(et.getPcmydjdmxid()),et);
+        ryhgLogic.execute(et);
         return true;
     }
 
