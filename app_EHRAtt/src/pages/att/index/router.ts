@@ -321,6 +321,19 @@ const router = new Router({
                     component: () => import('@pages/vac/vac-leave-manage-grid-view/vac-leave-manage-grid-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.pimperson.views.pickupgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/att/pim-person-pickup-grid-view/pim-person-pickup-grid-view.vue'),
+                },
+                {
                     path: 'pimpeople/:pimperson?/curorgpimpersonpickupgridview/:curorgpimpersonpickupgridview?',
                     meta: {
                         caption: 'entities.pimperson.views.curorgpimpersonpickupgridview.caption',
@@ -1014,6 +1027,19 @@ const router = new Router({
                     component: () => import('@pages/vac/vac-holiday-rules-grid-view/vac-holiday-rules-grid-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/mpickupview/:mpickupview?',
+                    meta: {
+                        caption: 'entities.pimperson.views.mpickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/att/pim-person-mpickup-view/pim-person-mpickup-view.vue'),
+                },
+                {
                     path: 'pimpeople/:pimperson?/curorgpimpersonpickupview/:curorgpimpersonpickupview?',
                     meta: {
                         caption: 'entities.pimperson.views.curorgpimpersonpickupview.caption',
@@ -1502,6 +1528,18 @@ const router = new Router({
         component: () => import('@pages/vac/vac-leave-detail-jhqjmx-edit-view/vac-leave-detail-jhqjmx-edit-view.vue'),
     },
     {
+        path: '/pimpeople/:pimperson?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.pimperson.views.pickupgridview.caption',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/att/pim-person-pickup-grid-view/pim-person-pickup-grid-view.vue'),
+    },
+    {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/bmkqszeditview/:bmkqszeditview?',
         meta: {
             caption: 'entities.ormorgsector.views.bmkqszeditview.caption',
@@ -1834,6 +1872,18 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/att/att-ensummary-grid-view/att-ensummary-grid-view.vue'),
+    },
+    {
+        path: '/pimpeople/:pimperson?/mpickupview/:mpickupview?',
+        meta: {
+            caption: 'entities.pimperson.views.mpickupview.caption',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'mpickupview', parameterName: 'mpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/att/pim-person-mpickup-view/pim-person-mpickup-view.vue'),
     },
     {
         path: '/attendencesetups/:attendencesetup?/attendenceormorgscetors/:attendenceormorgscetor?/gridview/:gridview?',

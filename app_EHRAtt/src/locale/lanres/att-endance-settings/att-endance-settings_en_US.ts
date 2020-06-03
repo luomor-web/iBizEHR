@@ -103,25 +103,13 @@ export default {
 		},
 	},
 	editviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "Save",
-			tip: "Save",
-		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
-		tbitem5: {
+		deuiaction5: {
 			caption: "Save And Close",
 			tip: "Save And Close Window",
 		},
-		tbitem7: {
-			caption: "Remove And Close",
-			tip: "Remove And Close Window",
-		},
-		tbitem22: {
-			caption: "Help",
-			tip: "Help",
+		deuiaction1: {
+			caption: "退出",
+			tip: "退出",
 		},
 	},
 	gridviewtoolbar_toolbar: {

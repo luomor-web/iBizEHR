@@ -147,8 +147,8 @@ export default class AttEndanceSettingsUIServiceBase extends UIService {
             }
             const view: any = {
                 viewname: 'att-endance-settings-edit-view', 
-                height: 300, 
-                width: 400,  
+                height: 400, 
+                width: 600,  
                 title: actionContext.$t('entities.attendancesettings.views.editview.title'),
             };
             openPopupModal(view, data);

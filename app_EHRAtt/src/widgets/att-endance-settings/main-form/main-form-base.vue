@@ -3,6 +3,18 @@
     <input style="display:none;" />
     <row >
             
+<i-col v-show="detailsModel.pimpersonid.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-item name='pimpersonid' :itemRules="this.rules.pimpersonid" class='' :caption="$t('entities.attendancesettings.main_form.details.pimpersonid')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonid.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.pimpersonid"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.pimpersonid.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.attendencesetupid.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-item name='attendencesetupid' :itemRules="this.rules.attendencesetupid" class='' :caption="$t('entities.attendancesettings.main_form.details.attendencesetupid')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.attendencesetupid.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.attendencesetupid"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.attendencesetupid.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
 <i-col v-show="detailsModel.attendencesetupname.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='attendencesetupname' :itemRules="this.rules.attendencesetupname" class='' :caption="$t('entities.attendancesettings.main_form.details.attendencesetupname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.attendencesetupname.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-picker 
@@ -443,8 +455,8 @@ export default class MainBase extends Vue implements ControlInterface {
         attendencesetupname: [
             { type: 'string', message: '所属考勤表 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '所属考勤表 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '所属考勤表 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '所属考勤表 值不能为空', trigger: 'blur' },
+            { required: true, type: 'string', message: '所属考勤表 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '所属考勤表 值不能为空', trigger: 'blur' },
         ],
         attendancesettingsid: [
             { type: 'string', message: '考勤人员标识 值必须为字符串类型', trigger: 'change' },

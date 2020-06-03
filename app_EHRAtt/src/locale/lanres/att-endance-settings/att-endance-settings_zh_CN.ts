@@ -102,25 +102,13 @@ export default {
 		},
 	},
 	editviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: '保存',
-			tip: '保存',
+		deuiaction5: {
+			caption: '确认',
+			tip: '确认',
 		},
-		tbitem4: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
-		tbitem5: {
-			caption: '保存并关闭',
-			tip: '保存并关闭',
-		},
-		tbitem7: {
-			caption: '删除并关闭',
-			tip: '删除并关闭',
-		},
-		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
+		deuiaction1: {
+			caption: '退出',
+			tip: '退出',
 		},
 	},
 	gridviewtoolbar_toolbar: {

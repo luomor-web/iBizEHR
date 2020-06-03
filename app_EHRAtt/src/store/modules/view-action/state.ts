@@ -64,6 +64,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '8948a5606031ac246f782f05654883a7',
                 '03511dfb145e54bb23246d7f2b417a36',
                 'fda0fddd972d90b7d9335a0aa20c6cf4',
             ],
@@ -92,6 +93,15 @@ export const viewstate: any = {
             viewtag: '3451991293c2ae164b404d7a256b348e',
             viewmodule: 'VAC',
             viewname: 'VacLeaveDetailJHQJMX_EditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
+            viewtag: '3a13660bb95e945397ffbf8a6e51a9d3',
+            viewmodule: 'ATT',
+            viewname: 'PimPersonPickupGridView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
@@ -133,6 +143,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '8948a5606031ac246f782f05654883a7',
                 '03511dfb145e54bb23246d7f2b417a36',
                 'fda0fddd972d90b7d9335a0aa20c6cf4',
             ],
@@ -254,6 +265,16 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+            ],
+        },
+        {
+            viewtag: '8948a5606031ac246f782f05654883a7',
+            viewmodule: 'ATT',
+            viewname: 'PimPersonMPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '3a13660bb95e945397ffbf8a6e51a9d3',
             ],
         },
         {
@@ -511,6 +532,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '8948a5606031ac246f782f05654883a7',
                 '03511dfb145e54bb23246d7f2b417a36',
                 'fda0fddd972d90b7d9335a0aa20c6cf4',
             ],
