@@ -296,9 +296,9 @@ export default {
 		},
 	},
 	ydmxeditviewtoolbar_toolbar: {
-		deuiaction2_saveandexit: {
-			caption: "确认",
-			tip: "确认",
+		deuiaction5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
 		},
 		deuiaction1: {
 			caption: "退出",

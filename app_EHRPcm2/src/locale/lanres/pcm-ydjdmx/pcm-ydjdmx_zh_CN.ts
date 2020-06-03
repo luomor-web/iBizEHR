@@ -295,7 +295,7 @@ export default {
 		},
 	},
 	ydmxeditviewtoolbar_toolbar: {
-		deuiaction2_saveandexit: {
+		deuiaction5: {
 			caption: '确认',
 			tip: '确认',
 		},
