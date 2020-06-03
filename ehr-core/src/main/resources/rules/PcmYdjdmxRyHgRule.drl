@@ -5,22 +5,11 @@ import java.util.HashMap;
 import com.alibaba.fastjson.JSONObject;
 global cn.ibizlab.ehr.core.pcm.domain.PcmYdjdmx pcmydjdmxryhgdefault;
 global cn.ibizlab.ehr.core.pim.domain.PimDistirbution pcmydjdmxryhgpimdistirbution;
-global cn.ibizlab.ehr.core.pcm.service.IPcmYdjdmxService pcmydjdmxservice;
 global cn.ibizlab.ehr.core.pim.service.IPimDistirbutionService pimdistirbutionservice;
 global cn.ibizlab.ehr.core.pcm.service.IPcmYdjdmxService iBzSysPcmydjdmxDefaultService;
 global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
 
 no-loop
-
-//逻辑处理节点[更新]
-rule "deaction1"
-ruleflow-group "pcmydjdmxryhgdeaction1"
-    when
-    then
-    pcmydjdmxservice.update(pcmydjdmxryhgdefault);
-    update(pcmydjdmxryhgdefault);//更新fact中变量值
-    update(pcmydjdmxryhgpimdistirbution);//更新fact中变量值
-    end
 
 //逻辑处理节点[更新分配表]
 rule "prepareparam2"
@@ -38,16 +27,6 @@ rule "begin"
 ruleflow-group "pcmydjdmxryhgbegin"
     when
     then
-    end
-
-//逻辑处理节点[人员回归]
-rule "prepareparam1"
-ruleflow-group "pcmydjdmxryhgprepareparam1"
-    when
-    then
-    pcmydjdmxryhgdefault.set("finished","1");
-    update(pcmydjdmxryhgdefault);//更新fact中变量值
-    update(pcmydjdmxryhgpimdistirbution);//更新fact中变量值
     end
 
 //逻辑处理节点[更新分配表]

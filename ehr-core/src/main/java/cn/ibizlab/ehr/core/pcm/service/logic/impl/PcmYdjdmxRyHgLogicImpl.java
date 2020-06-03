@@ -27,13 +27,6 @@ public class PcmYdjdmxRyHgLogicImpl implements IPcmYdjdmxRyHgLogic{
     private KieContainer kieContainer;
 
     @Autowired
-    private cn.ibizlab.ehr.core.pcm.service.IPcmYdjdmxService pcmydjdmxservice;
-
-    public cn.ibizlab.ehr.core.pcm.service.IPcmYdjdmxService getPcmydjdmxService() {
-        return this.pcmydjdmxservice;
-    }
-
-    @Autowired
     private cn.ibizlab.ehr.core.pim.service.IPimDistirbutionService pimdistirbutionservice;
 
     public cn.ibizlab.ehr.core.pim.service.IPimDistirbutionService getPimdistirbutionService() {
@@ -58,7 +51,6 @@ public class PcmYdjdmxRyHgLogicImpl implements IPcmYdjdmxRyHgLogic{
            cn.ibizlab.ehr.core.pim.domain.PimDistirbution  pcmydjdmxryhgpimdistirbution =new cn.ibizlab.ehr.core.pim.domain.PimDistirbution();
            kieSession.insert(pcmydjdmxryhgpimdistirbution); 
            kieSession.setGlobal("pcmydjdmxryhgpimdistirbution",pcmydjdmxryhgpimdistirbution);
-           kieSession.setGlobal("pcmydjdmxservice",pcmydjdmxservice);
            kieSession.setGlobal("pimdistirbutionservice",pimdistirbutionservice);
            kieSession.setGlobal("iBzSysPcmydjdmxDefaultService",iBzSysDefaultService);
            kieSession.setGlobal("curuser", cn.ibizlab.ehr.util.security.AuthenticationUser.getAuthenticationUser());
