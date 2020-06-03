@@ -5,7 +5,7 @@ import VacLeaveTipsQJTSGridViewBase from './vac-leave-tips-qjtsgrid-view-base.vu
 import view_grid from '@widgets/vac-leave-tips/main-grid/main-grid.vue';
 
 /**
- * 请假提示
+ * 温馨提示
  *
  * @export
  * @class VacLeaveTipsQJTSGridView

@@ -164,6 +164,10 @@ export default {
 			caption: "人员信息",
       title: '人员信息',
 		},
+		setattrulesgridview: {
+			caption: "员工考勤设置",
+      title: '员工考勤设置',
+		},
 		mpickupview: {
 			caption: "人员信息",
       title: '人员信息',
@@ -229,6 +233,20 @@ export default {
 			n_zgcode_eq: "在岗状态", 
 		},
 		uiactions: {
+		},
+	},
+	setattrulesgridviewtoolbar_toolbar: {
+		tbitem1_addattrules: {
+			caption: "添加考勤组",
+			tip: "添加考勤组",
+		},
+		tbitem13: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
+		tbitem19: {
+			caption: "Filter",
+			tip: "Filter",
 		},
 	},
 };

@@ -2,70 +2,70 @@ import { Environment } from '@/environments/environment';
 import { UIActionTool,Util } from '@/utils';
 import UIService from '../ui-service';
 import { Subject } from 'rxjs';
-import PimPersonService from '@/service/pim-person/pim-person-service';
+import PersonStateMgrService from '@/service/person-state-mgr/person-state-mgr-service';
 
 /**
- * 人员信息UI服务对象基类
+ * 员工状态管理UI服务对象基类
  *
  * @export
- * @class PimPersonUIServiceBase
+ * @class PersonStateMgrUIServiceBase
  */
-export default class PimPersonUIServiceBase extends UIService {
+export default class PersonStateMgrUIServiceBase extends UIService {
 
     /**
      * 是否支持工作流
      * 
-     * @memberof  PimPersonUIServiceBase
+     * @memberof  PersonStateMgrUIServiceBase
      */
     public isEnableWorkflow:boolean = false;
 
     /**
      * 当前UI服务对应的数据服务对象
      * 
-     * @memberof  PimPersonUIServiceBase
+     * @memberof  PersonStateMgrUIServiceBase
      */
-    public dataService:PimPersonService = new PimPersonService();
+    public dataService:PersonStateMgrService = new PersonStateMgrService();
 
     /**
      * 所有关联视图
      * 
-     * @memberof  PimPersonUIServiceBase
+     * @memberof  PersonStateMgrUIServiceBase
      */ 
     public allViewMap: Map<string, Object> = new Map();
 
     /**
      * 状态值
      * 
-     * @memberof  PimPersonUIServiceBase
+     * @memberof  PersonStateMgrUIServiceBase
      */ 
     public stateValue: number = 0;
 
     /**
      * 状态属性
      * 
-     * @memberof  PimPersonUIServiceBase
+     * @memberof  PersonStateMgrUIServiceBase
      */ 
     public stateField: string = "";
 
     /**
      * 主状态属性集合
      * 
-     * @memberof  PimPersonUIServiceBase
+     * @memberof  PersonStateMgrUIServiceBase
      */  
     public mainStateFields:Array<any> = [];
 
     /**
      * 主状态集合Map
      * 
-     * @memberof  PimPersonUIServiceBase
+     * @memberof  PersonStateMgrUIServiceBase
      */  
     public allDeMainStateMap:Map<string,string> = new Map();
 
     /**
-     * Creates an instance of  PimPersonUIServiceBase.
+     * Creates an instance of  PersonStateMgrUIServiceBase.
      * 
      * @param {*} [opts={}]
-     * @memberof  PimPersonUIServiceBase
+     * @memberof  PersonStateMgrUIServiceBase
      */
     constructor(opts: any = {}) {
         super(opts);
@@ -76,85 +76,17 @@ export default class PimPersonUIServiceBase extends UIService {
     /**
      * 初始化视图Map
      * 
-     * @memberof  PimPersonUIServiceBase
+     * @memberof  PersonStateMgrUIServiceBase
      */  
     public initViewMap(){
-        this.allViewMap.set(':',{viewname:'curorgpimpersonpickupview',srfappde:'pimpeople'});
-        this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'pimpeople'});
-        this.allViewMap.set(':',{viewname:'setattrulesgridview',srfappde:'pimpeople'});
-        this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'pimpeople'});
-        this.allViewMap.set(':',{viewname:'curorgpimpersonpickupgridview',srfappde:'pimpeople'});
-        this.allViewMap.set(':',{viewname:'kqjrypickupview',srfappde:'pimpeople'});
-        this.allViewMap.set(':',{viewname:'kqjrypickupgridview',srfappde:'pimpeople'});
     }
 
     /**
      * 初始化主状态集合
      * 
-     * @memberof  PimPersonUIServiceBase
+     * @memberof  PersonStateMgrUIServiceBase
      */  
     public initDeMainStateMap(){
-    }
-
-    /**
-     * 添加考勤组
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} context 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @param {*} [srfParentDeName] 父实体名称
-     * @returns {Promise<any>}
-     */
-    public async PimPerson_AddAttRules(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        let data: any = {};
-        const _args: any[] = Util.deepCopy(args);
-        const _this: any = actionContext;
-        const actionTarget: string | null = 'SINGLEKEY';
-        Object.assign(context, { pimperson: '%pimperson%' });
-        Object.assign(params, { pimpersonid: '%pimperson%' });
-        Object.assign(params, { pimpersonname: '%pimpersonname%' });
-        context = UIActionTool.handleContextParam(actionTarget,_args,context);
-        data = UIActionTool.handleActionParam(actionTarget,_args,params);
-        context = Object.assign({},actionContext.context,context);
-        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
-        Object.assign(data,parentObj);
-        Object.assign(context,parentObj);
-        let deResParameters: any[] = [];
-        if(context.pimperson && true){
-            deResParameters = [
-            { pathName: 'pimpeople', parameterName: 'pimperson' },
-            ]
-        }
-        const parameters: any[] = [
-            { pathName: 'attendancesettings', parameterName: 'attendancesettings' },
-        ];
-            const openPopupModal = (view: any, data: any) => {
-                let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
-                container.subscribe((result: any) => {
-                    if (!result || !Object.is(result.ret, 'OK')) {
-                        return;
-                    }
-                    const _this: any = actionContext;
-                    if (xData && xData.refresh && xData.refresh instanceof Function) {
-                        xData.refresh(args);
-                    }
-                    if(window.opener){
-                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
-                        window.close();
-                    }
-                    return result.datas;
-                });
-            }
-            const view: any = {
-                viewname: 'att-endance-settings-edit-view', 
-                height: 400, 
-                width: 600,  
-                title: actionContext.$t('entities.attendancesettings.views.editview.title'),
-            };
-            openPopupModal(view, data);
     }
 
 
@@ -163,12 +95,12 @@ export default class PimPersonUIServiceBase extends UIService {
      * 
      * @param srfkey 数据主键
      * @param isEnableWorkflow  重定向视图是否需要处理流程中的数据
-     * @memberof  PimPersonUIServiceBase
+     * @memberof  PersonStateMgrUIServiceBase
      */
     public async getRDAppView(srfkey:string,isEnableWorkflow:boolean){
         this.isEnableWorkflow = isEnableWorkflow;
         // 进行数据查询
-        let result:any = await this.dataService.Get({pimperson:srfkey});
+        let result:any = await this.dataService.Get({personstatemgr:srfkey});
         const curData:any = result.data;
         //判断当前数据模式,默认为true，todo
         const iRealDEModel:boolean = true;
@@ -195,7 +127,7 @@ export default class PimPersonUIServiceBase extends UIService {
     /**
 	 * 获取实际的数据类型
      * 
-     * @memberof  PimPersonUIServiceBase
+     * @memberof  PersonStateMgrUIServiceBase
 	 */
 	public getRealDEType(entity:any){
 
@@ -207,7 +139,7 @@ export default class PimPersonUIServiceBase extends UIService {
      * @param curData 当前数据
      * @param bDataInWF 是否有数据在工作流中
      * @param bWFMode   是否工作流模式
-     * @memberof  PimPersonUIServiceBase
+     * @memberof  PersonStateMgrUIServiceBase
      */
     public async getDESDDEViewPDTParam(curData:any, bDataInWF:boolean, bWFMode:boolean){
         let strPDTParam:string = '';
@@ -241,7 +173,7 @@ export default class PimPersonUIServiceBase extends UIService {
      * 获取数据对象的主状态标识
      * 
      * @param curData 当前数据
-     * @memberof  PimPersonUIServiceBase
+     * @memberof  PersonStateMgrUIServiceBase
      */  
     public async getDEMainStateTag(curData:any){
         if(this.mainStateFields.length === 0) return null;

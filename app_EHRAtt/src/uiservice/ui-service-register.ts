@@ -59,6 +59,7 @@ export class UIServiceRegister {
         this.allUIService.set('vacleavemanage', () => import('@/uiservice/vac-leave-manage/vac-leave-manage-ui-service'));
         this.allUIService.set('attendancerecord', () => import('@/uiservice/att-endance-record/att-endance-record-ui-service'));
         this.allUIService.set('pcmwzd0001', () => import('@/uiservice/pcm-wzd0001/pcm-wzd0001-ui-service'));
+        this.allUIService.set('personstatemgr', () => import('@/uiservice/person-state-mgr/person-state-mgr-ui-service'));
     }
 
     /**

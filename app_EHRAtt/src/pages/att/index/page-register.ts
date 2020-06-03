@@ -2,7 +2,6 @@ export const PageComponents = {
     install(Vue: any, opt: any) {
                 Vue.component('orm-orgsector-pickup-grid-view', () => import('@pages/orm/orm-orgsector-pickup-grid-view/orm-orgsector-pickup-grid-view.vue'));
         Vue.component('vac-holiday-rules-cur-ormorg-pickup-view', () => import('@pages/vac/vac-holiday-rules-cur-ormorg-pickup-view/vac-holiday-rules-cur-ormorg-pickup-view.vue'));
-        Vue.component('att-endance-settings-ygszkqgrid-view', () => import('@pages/att/att-endance-settings-ygszkqgrid-view/att-endance-settings-ygszkqgrid-view.vue'));
         Vue.component('att-endence-setup-pickup-grid-view', () => import('@pages/att/att-endence-setup-pickup-grid-view/att-endence-setup-pickup-grid-view.vue'));
         Vue.component('att-endance-settings-fygzzkqgrid-view', () => import('@pages/att/att-endance-settings-fygzzkqgrid-view/att-endance-settings-fygzzkqgrid-view.vue'));
         Vue.component('vac-leave-manage-ngedit-view', () => import('@pages/vac/vac-leave-manage-ngedit-view/vac-leave-manage-ngedit-view.vue'));
@@ -24,6 +23,7 @@ export const PageComponents = {
         Vue.component('att-endance-record-grid-view', () => import('@pages/att/att-endance-record-grid-view/att-endance-record-grid-view.vue'));
         Vue.component('vac-holiday-rules-cur-ormorg-pickup-grid-view', () => import('@pages/vac/vac-holiday-rules-cur-ormorg-pickup-grid-view/vac-holiday-rules-cur-ormorg-pickup-grid-view.vue'));
         Vue.component('att-endance-mreportmx-edit-view', () => import('@pages/att/att-endance-mreportmx-edit-view/att-endance-mreportmx-edit-view.vue'));
+        Vue.component('pim-person-set-att-rules-grid-view', () => import('@pages/pim/pim-person-set-att-rules-grid-view/pim-person-set-att-rules-grid-view.vue'));
         Vue.component('vac-holiday-rules-edit-view', () => import('@pages/vac/vac-holiday-rules-edit-view/vac-holiday-rules-edit-view.vue'));
         Vue.component('vac-leave-detail-jhqjmx-grid-view', () => import('@pages/vac/vac-leave-detail-jhqjmx-grid-view/vac-leave-detail-jhqjmx-grid-view.vue'));
         Vue.component('att-endance-mreportmx-grid-view', () => import('@pages/att/att-endance-mreportmx-grid-view/att-endance-mreportmx-grid-view.vue'));

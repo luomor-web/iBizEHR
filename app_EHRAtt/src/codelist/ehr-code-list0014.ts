@@ -1,3 +1,4 @@
+import PersonStateMgrService from '@service/person-state-mgr/person-state-mgr-service';
 /**
  * 代码表--员工状态
  *
@@ -56,20 +57,64 @@ export default class EhrCodeList0014 {
      * @memberof EhrCodeList0014
      */
     public queryParamNames:any ={
+        sort: 'orderno,asc'
     }
 
+    /**
+     * 员工状态管理应用实体服务对象
+     *
+     * @type {PersonStateMgrService}
+     * @memberof EhrCodeList0014
+     */
+    public personstatemgrService: PersonStateMgrService = new PersonStateMgrService();
 
+
+    /**
+     * 处理数据
+     *
+     * @public
+     * @param {any[]} items
+     * @returns {any[]}
+     * @memberof EhrCodeList0014
+     */
+    public doItems(items: any[]): any[] {
+        let _items: any[] = [];
+        items.forEach((item: any) => {
+            let itemdata:any = {};
+            Object.assign(itemdata,{id:item.personstatecode});
+            Object.assign(itemdata,{value:item.personstatecode});
+            Object.assign(itemdata,{text:item.personstatemgrname});
+            
+            _items.push(itemdata);
+        });
+        return _items;
+    }
 
     /**
      * 获取数据项
      *
+     * @param {*} context
      * @param {*} data
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
      * @memberof EhrCodeList0014
      */
-    public getItems(data: any={}, isloading?: boolean): Promise<any> {
-        return Promise.reject([]);
+    public getItems(context: any={}, data: any={}, isloading?: boolean): Promise<any> {
+        return new Promise((resolve, reject) => {
+            data = this.handleQueryParam(data);
+            const promise: Promise<any> = this.personstatemgrService.FetchDefault(context, data, isloading);
+            promise.then((response: any) => {
+                if (response && response.status === 200) {
+                    const data =  response.data;
+                    resolve(this.doItems(data));
+                } else {
+                    resolve([]);
+                }
+            }).catch((response: any) => {
+                console.error(response);
+                reject(response);
+            });
+        });
     }
 
     /**

@@ -18,6 +18,7 @@ import vacleacetype_zh_CN from '@locale/lanres/vac-leace-type/vac-leace-type_zh_
 import vacleavemanage_zh_CN from '@locale/lanres/vac-leave-manage/vac-leave-manage_zh_CN';
 import attendancerecord_zh_CN from '@locale/lanres/att-endance-record/att-endance-record_zh_CN';
 import pcmwzd0001_zh_CN from '@locale/lanres/pcm-wzd0001/pcm-wzd0001_zh_CN';
+import personstatemgr_zh_CN from '@locale/lanres/person-state-mgr/person-state-mgr_zh_CN';
 import components_zh_CN from '@locale/lanres/components/components_zh_CN';
 import codelist_zh_CN from '@locale/lanres/codelist/codelist_zh_CN';
 import userCustom_zh_CN from '@locale/lanres/userCustom/userCustom_zh_CN';
@@ -113,6 +114,7 @@ export default {
         vacleavemanage: vacleavemanage_zh_CN,
         attendancerecord: attendancerecord_zh_CN,
         pcmwzd0001: pcmwzd0001_zh_CN,
+        personstatemgr: personstatemgr_zh_CN,
     },
     components: components_zh_CN,
     codelist: codelist_zh_CN,

@@ -112,8 +112,8 @@ export default class IndexBase extends AppMenusCtrlBase {
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
         const parameters: any[] = [
-            { pathName: 'attendancesettings', parameterName: 'attendancesettings' },
-            { pathName: 'ygszkqgridview', parameterName: 'ygszkqgridview' },
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            { pathName: 'setattrulesgridview', parameterName: 'setattrulesgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
         this.$router.push(path);

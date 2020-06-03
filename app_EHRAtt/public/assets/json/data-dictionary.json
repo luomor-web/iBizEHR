@@ -852,8 +852,8 @@
         "srfkey": "EhrCodeList0014",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"PersonStateMgr",
+        "appdedataset":"FetchDefault",
         "items": []
     }, 
     {

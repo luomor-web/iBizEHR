@@ -286,12 +286,12 @@ export default class IndexModel {
             appfunctag: '_3',
             appfuncyype: 'APPVIEW',
             openmode: '',
-            codename: 'attendancesettingsygszkqgridview',
+            codename: 'pimpersonsetattrulesgridview',
             deResParameters: [],
-            routepath: '/index/:index?/attendancesettings/:attendancesettings?/ygszkqgridview/:ygszkqgridview?',
+            routepath: '/index/:index?/pimpeople/:pimperson?/setattrulesgridview/:setattrulesgridview?',
             parameters: [
-                { pathName: 'attendancesettings', parameterName: 'attendancesettings' },
-                { pathName: 'ygszkqgridview', parameterName: 'ygszkqgridview' },
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'setattrulesgridview', parameterName: 'setattrulesgridview' },
             ],
         },
         {

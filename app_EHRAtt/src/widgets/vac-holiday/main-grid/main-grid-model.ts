@@ -32,6 +32,16 @@ export default class MainModel {
           dataType: 'TEXT',
         },
         {
+          name: 'jssj',
+          prop: 'jssj',
+          dataType: 'DATE',
+        },
+        {
+          name: 'kssj',
+          prop: 'kssj',
+          dataType: 'DATE',
+        },
+        {
           name: 'vacholidayrulesid',
           prop: 'vacholidayrulesid',
           dataType: 'PICKUP',

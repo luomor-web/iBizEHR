@@ -14,8 +14,8 @@ export default {
   },
 	views: {
 		qjtsgridview: {
-			caption: "请假提示",
-      title: '请假提示',
+			caption: "温馨提示",
+      title: '温馨提示',
 		},
 		editview: {
 			caption: "请假提示",

@@ -166,8 +166,8 @@ export default {
 			tip: '删除',
 		},
 		tbitem13: {
-			caption: '导出数据',
-			tip: '导出数据',
+			caption: '导出',
+			tip: '导出',
 		},
 		tbitem19: {
 			caption: '过滤',

@@ -68,6 +68,30 @@
                     </template>
                 </el-table-column>
             </template>
+            <template v-if="getColumnState('kssj')">
+                <el-table-column show-overflow-tooltip :prop="'kssj'" :label="$t('entities.vacholiday.main_grid.columns.kssj')" :width="150"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.vacholiday.main_grid.columns.kssj')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <app-format-data format="YYYY-MM-DD" :data="row.kssj"></app-format-data>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('jssj')">
+                <el-table-column show-overflow-tooltip :prop="'jssj'" :label="$t('entities.vacholiday.main_grid.columns.jssj')" :width="150"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.vacholiday.main_grid.columns.jssj')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <app-format-data format="YYYY-MM-DD" :data="row.jssj"></app-format-data>
+                    </template>
+                </el-table-column>
+            </template>
             <template v-if="adaptiveState">
                 <el-table-column></el-table-column>
             </template>
@@ -522,6 +546,20 @@ export default class MainBase extends Vue implements ControlInterface {
             name: 'jjrlx',
             label: '类型',
             langtag: 'entities.vacholiday.main_grid.columns.jjrlx',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'kssj',
+            label: '开始时间',
+            langtag: 'entities.vacholiday.main_grid.columns.kssj',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'jssj',
+            label: '结束时间',
+            langtag: 'entities.vacholiday.main_grid.columns.jssj',
             show: true,
             util: 'PX'
         },

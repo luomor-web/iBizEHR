@@ -75,53 +75,6 @@ const router = new Router({
                     component: () => import('@pages/vac/vac-holiday-rules-cur-ormorg-pickup-view/vac-holiday-rules-cur-ormorg-pickup-view.vue'),
                 },
                 {
-                    path: 'attendencesetups/:attendencesetup?/attendancesettings/:attendancesettings?/ygszkqgridview/:ygszkqgridview?',
-                    meta: {
-                        caption: 'entities.attendancesettings.views.ygszkqgridview.caption',
-                        imgPath: '../../../img/newimage/1/guazhidaoqiguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'attendencesetups', parameterName: 'attendencesetup' },
-                            { pathName: 'attendancesettings', parameterName: 'attendancesettings' },
-                            { pathName: 'ygszkqgridview', parameterName: 'ygszkqgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/att/att-endance-settings-ygszkqgrid-view/att-endance-settings-ygszkqgrid-view.vue'),
-                },
-                {
-                    path: 'pimpeople/:pimperson?/attendancesettings/:attendancesettings?/ygszkqgridview/:ygszkqgridview?',
-                    meta: {
-                        caption: 'entities.attendancesettings.views.ygszkqgridview.caption',
-                        imgPath: '../../../img/newimage/1/guazhidaoqiguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'attendancesettings', parameterName: 'attendancesettings' },
-                            { pathName: 'ygszkqgridview', parameterName: 'ygszkqgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/att/att-endance-settings-ygszkqgrid-view/att-endance-settings-ygszkqgrid-view.vue'),
-                },
-                {
-                    path: 'attendancesettings/:attendancesettings?/ygszkqgridview/:ygszkqgridview?',
-                    meta: {
-                        caption: 'entities.attendancesettings.views.ygszkqgridview.caption',
-                        imgPath: '../../../img/newimage/1/guazhidaoqiguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'attendancesettings', parameterName: 'attendancesettings' },
-                            { pathName: 'ygszkqgridview', parameterName: 'ygszkqgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/att/att-endance-settings-ygszkqgrid-view/att-endance-settings-ygszkqgrid-view.vue'),
-                },
-                {
                     path: 'attendencesetups/:attendencesetup?/pickupgridview/:pickupgridview?',
                     meta: {
                         caption: 'entities.attendencesetup.views.pickupgridview.caption',
@@ -649,6 +602,19 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/att/att-endance-mreportmx-edit-view/att-endance-mreportmx-edit-view.vue'),
+                },
+                {
+                    path: 'pimpeople/:pimperson?/setattrulesgridview/:setattrulesgridview?',
+                    meta: {
+                        caption: 'entities.pimperson.views.setattrulesgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'setattrulesgridview', parameterName: 'setattrulesgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pim/pim-person-set-att-rules-grid-view/pim-person-set-att-rules-grid-view.vue'),
                 },
                 {
                     path: 'vacholidayrules/:vacholidayrules?/editview/:editview?',
@@ -1798,6 +1764,18 @@ const router = new Router({
         component: () => import('@pages/att/att-endance-settings-grid-view/att-endance-settings-grid-view.vue'),
     },
     {
+        path: '/pimpeople/:pimperson?/setattrulesgridview/:setattrulesgridview?',
+        meta: {
+            caption: 'entities.pimperson.views.setattrulesgridview.caption',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'setattrulesgridview', parameterName: 'setattrulesgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/pim/pim-person-set-att-rules-grid-view/pim-person-set-att-rules-grid-view.vue'),
+    },
+    {
         path: '/attendencesetups/:attendencesetup?/pickupview/:pickupview?',
         meta: {
             caption: 'entities.attendencesetup.views.pickupview.caption',
@@ -2528,50 +2506,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/vac/vac-leace-type-edit-view/vac-leace-type-edit-view.vue'),
-    },
-    {
-        path: '/attendencesetups/:attendencesetup?/attendancesettings/:attendancesettings?/ygszkqgridview/:ygszkqgridview?',
-        meta: {
-            caption: 'entities.attendancesettings.views.ygszkqgridview.caption',
-            imgPath: '../../../img/newimage/1/guazhidaoqiguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'attendencesetups', parameterName: 'attendencesetup' },
-                { pathName: 'attendancesettings', parameterName: 'attendancesettings' },
-                { pathName: 'ygszkqgridview', parameterName: 'ygszkqgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/att/att-endance-settings-ygszkqgrid-view/att-endance-settings-ygszkqgrid-view.vue'),
-    },
-    {
-        path: '/pimpeople/:pimperson?/attendancesettings/:attendancesettings?/ygszkqgridview/:ygszkqgridview?',
-        meta: {
-            caption: 'entities.attendancesettings.views.ygszkqgridview.caption',
-            imgPath: '../../../img/newimage/1/guazhidaoqiguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'attendancesettings', parameterName: 'attendancesettings' },
-                { pathName: 'ygszkqgridview', parameterName: 'ygszkqgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/att/att-endance-settings-ygszkqgrid-view/att-endance-settings-ygszkqgrid-view.vue'),
-    },
-    {
-        path: '/attendancesettings/:attendancesettings?/ygszkqgridview/:ygszkqgridview?',
-        meta: {
-            caption: 'entities.attendancesettings.views.ygszkqgridview.caption',
-            imgPath: '../../../img/newimage/1/guazhidaoqiguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'attendancesettings', parameterName: 'attendancesettings' },
-                { pathName: 'ygszkqgridview', parameterName: 'ygszkqgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/att/att-endance-settings-ygszkqgrid-view/att-endance-settings-ygszkqgrid-view.vue'),
     },
     {
         path: '/pimpeople/:pimperson?/attendancemreportmxes/:attendancemreportmx?/editview/:editview?',

@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="vacholidayjjrtxsbgridview" viewTitle="节假日/调休上班" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'vac-holiday-jjrtxsbgrid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="pimpersonsetattrulesgridview" viewTitle="员工考勤设置" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'pim-person-set-att-rules-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -9,26 +9,42 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="员工编号，员工姓名" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
       <div class="view-content-wrapper">
-        <view_grid 
+        <view_searchform 
+    :viewState="viewState"  
+    :viewparams="viewparams" 
+    :context="context" 
+    :showBusyIndicator="true"
+    v-show="isExpandSearchForm"
+    loaddraftAction="FilterGetDraft"
+    loadAction="FilterGet"
+
+    name="searchform"  
+    ref='searchform' 
+    @save="searchform_save($event)"  
+    @search="searchform_search($event)"  
+    @load="searchform_load($event)"  
+    @closeview="closeView($event)">
+</view_searchform>
+<view_grid 
     :viewState="viewState"  
     :viewparams="viewparams" 
     :context="context" 
     :isSingleSelect="isSingleSelect"
     :showBusyIndicator="true"
-    :isOpenEdit="true"
+    :isOpenEdit="false"
     :gridRowActiveMode="gridRowActiveMode"
     @save="onSave"
-    updateAction="Update"
+    updateAction=""
     removeAction="Remove"
-    loaddraftAction="GetDraft"
-    loadAction="Get"
-    createAction="Create"
-    fetchAction="FetchDefault"
+    loaddraftAction=""
+    loadAction=""
+    createAction=""
+    fetchAction="FetchSetAttRules"
     :newdata="newdata"
     :opendata="opendata"
     name="grid"  
@@ -53,38 +69,39 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import VacHolidayService from '@/service/vac-holiday/vac-holiday-service';
+import PimPersonService from '@/service/pim-person/pim-person-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
+import PimPersonUIService from '@/uiservice/pim-person/pim-person-ui-service';
 import CodeListService from "@service/app/codelist-service";
 
 
 /**
- * 节假日/调休上班基类
+ * 员工考勤设置基类
  *
  * @export
- * @class VacHolidayJJRTXSBGridViewBase
+ * @class PimPersonSetAttRulesGridViewBase
  * @extends {GridViewBase}
  */
 @Component({})
 @VueLifeCycleProcessing
-export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
+export default class PimPersonSetAttRulesGridViewBase extends GridViewBase {
 
     /**
      * 实体服务对象
      *
-     * @type {VacHolidayService}
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @type {PimPersonService}
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
-    public appEntityService: VacHolidayService = new VacHolidayService;
+    public appEntityService: PimPersonService = new PimPersonService;
 
 
     /**
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */    
     public counterServiceArray:Array<any> = [];
     
@@ -93,7 +110,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      *
      * @param {*} val
      * @returns {*}
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     @Emit() 
     public viewDatasChange(val: any):any {
@@ -104,16 +121,16 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
 	 * 视图标识
 	 *
 	 * @type {string}
-	 * @memberof VacHolidayJJRTXSBGridViewBase
+	 * @memberof PimPersonSetAttRulesGridViewBase
 	 */
-	public viewtag: string = 'a6c5ff62b4c8ef40868249987ff31957';
+	public viewtag: string = '4986fb1b1e1cfe921dc7c855a1fda4f4';
 
     /**
      * 父数据对象
      *
      * @protected
      * @type {*}
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     protected srfparentdata: any = {};
 
@@ -121,7 +138,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
 	 * 自定义视图导航上下文集合
 	 *
 	 * @type {*}
-	 * @memberof VacHolidayJJRTXSBGridViewBase
+	 * @memberof PimPersonSetAttRulesGridViewBase
 	 */
     public customViewNavContexts:any ={
     };
@@ -130,7 +147,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
 	 * 自定义视图导航参数集合
 	 *
 	 * @type {*}
-	 * @memberof VacHolidayJJRTXSBGridViewBase
+	 * @memberof PimPersonSetAttRulesGridViewBase
 	 */
     public customViewParams:any ={
     };
@@ -139,12 +156,12 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      * 视图模型数据
      *
      * @type {*}
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public model: any = {
-        srfCaption: 'entities.vacholiday.views.jjrtxsbgridview.caption',
-        srfTitle: 'entities.vacholiday.views.jjrtxsbgridview.title',
-        srfSubTitle: 'entities.vacholiday.views.jjrtxsbgridview.subtitle',
+        srfCaption: 'entities.pimperson.views.setattrulesgridview.caption',
+        srfTitle: 'entities.pimperson.views.setattrulesgridview.title',
+        srfSubTitle: 'entities.pimperson.views.setattrulesgridview.subtitle',
         dataInfo: ''
     }
 
@@ -152,11 +169,12 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      * 容器模型
      *
      * @type {*}
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public containerModel: any = {
         view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
         view_grid: { name: 'grid', type: 'GRID' },
+        view_searchform: { name: 'searchform', type: 'SEARCHFORM' },
     };
 
     /**
@@ -164,21 +182,21 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      *
      * @public
      * @type {Subject<{action: string, data: any}>}
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
     /**
      * 工具栏模型
      *
      * @type {*}
-     * @memberof VacHolidayJJRTXSBGridView
+     * @memberof PimPersonSetAttRulesGridView
      */
     public toolBarModels: any = {
-        deuiaction1: { name: 'deuiaction1', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', iconcls: 'fa fa-plus', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'NewRow', target: '' }, class: '' },
+        tbitem1_addattrules: { name: 'tbitem1_addattrules', caption: '添加考勤组','isShowCaption':true,'isShowIcon':true, tooltip: '添加考勤组', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'AddAttRules', target: 'SINGLEKEY' }, class: '' },
 
-        deuiaction2: { name: 'deuiaction2', caption: '保存','isShowCaption':true,'isShowIcon':true, tooltip: '保存', iconcls: 'fa fa-save', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'SaveRow', target: '' }, class: '' },
+        tbitem13: { name: 'tbitem13', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
 
-        deuiaction3: { name: 'deuiaction3', caption: '删除','isShowCaption':true,'isShowIcon':true, tooltip: '删除', iconcls: 'fa fa-remove', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYGXML', uiaction: { tag: 'Remove', target: 'MULTIKEY' }, class: '' },
+        tbitem19: { name: 'tbitem19', caption: '过滤','isShowCaption':true,'isShowIcon':true, tooltip: '过滤', iconcls: 'fa fa-filter', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYKQLX', uiaction: { tag: 'ToggleFilter', target: '' }, class: '' },
 
     };
 
@@ -191,7 +209,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      *
      * @public
      * @type {Engine}
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public engine: GridViewEngine = new GridViewEngine();
 	
@@ -200,7 +218,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      * 引擎初始化
      *
      * @public
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public engineInit(): void {
         this.engine.init({
@@ -212,8 +230,9 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
                 this.newdata(args, params, $event, xData);
             },
             grid: this.$refs.grid,
-            keyPSDEField: 'vacholiday',
-            majorPSDEField: 'vacholidayname',
+            searchform: this.$refs.searchform,
+            keyPSDEField: 'pimperson',
+            majorPSDEField: 'pimpersonname',
             isLoadDefault: true,
         });
     }
@@ -224,17 +243,17 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public toolbar_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar_deuiaction1_click(null, '', $event2);
+        if (Object.is($event.tag, 'tbitem1_addattrules')) {
+            this.toolbar_tbitem1_addattrules_click(null, '', $event2);
         }
-        if (Object.is($event.tag, 'deuiaction2')) {
-            this.toolbar_deuiaction2_click(null, '', $event2);
+        if (Object.is($event.tag, 'tbitem13')) {
+            this.toolbar_tbitem13_click(null, '', $event2);
         }
-        if (Object.is($event.tag, 'deuiaction3')) {
-            this.toolbar_deuiaction3_click(null, '', $event2);
+        if (Object.is($event.tag, 'tbitem19')) {
+            this.toolbar_tbitem19_click(null, '', $event2);
         }
     }
 
@@ -244,7 +263,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public grid_selectionchange($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'selectionchange', $event);
@@ -256,7 +275,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public grid_beforeload($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'beforeload', $event);
@@ -268,7 +287,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public grid_rowdblclick($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'rowdblclick', $event);
@@ -280,7 +299,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public grid_remove($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'remove', $event);
@@ -292,13 +311,49 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public grid_load($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'load', $event);
     }
 
 
+    /**
+     * searchform 部件 save 事件
+     *
+     * @param {*} [args={}]
+     * @param {*} $event
+     * @memberof PimPersonSetAttRulesGridViewBase
+     */
+    public searchform_save($event: any, $event2?: any) {
+        this.engine.onCtrlEvent('searchform', 'save', $event);
+    }
+
+
+    /**
+     * searchform 部件 search 事件
+     *
+     * @param {*} [args={}]
+     * @param {*} $event
+     * @memberof PimPersonSetAttRulesGridViewBase
+     */
+    public searchform_search($event: any, $event2?: any) {
+        this.engine.onCtrlEvent('searchform', 'search', $event);
+    }
+
+
+    /**
+     * searchform 部件 load 事件
+     *
+     * @param {*} [args={}]
+     * @param {*} $event
+     * @memberof PimPersonSetAttRulesGridViewBase
+     */
+    public searchform_load($event: any, $event2?: any) {
+        this.engine.onCtrlEvent('searchform', 'load', $event);
+    }
+
+
 
     /**
      * 逻辑事件
@@ -308,15 +363,15 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem1_addattrules_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
         let xData: any = null;
         // _this 指向容器对象
         const _this: any = this;
-        let paramJO:any = {};
-        
+        let paramJO:any = {"ATTENDANCESETTINGS":"%pimpersonid%"};
+        Object.assign(paramJO,{"ATTENDANCESETTINGS":"%pimpersonid%"});
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -326,7 +381,8 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.NewRow(datas, contextJO,paramJO,  $event, xData,this,"VacHoliday");
+        const curUIService:PimPersonUIService  = new PimPersonUIService();
+        curUIService.PimPerson_AddAttRules(datas,contextJO, paramJO,  $event, xData,this,"PimPerson");
     }
 
     /**
@@ -337,7 +393,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem13_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -355,7 +411,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveRow(datas, contextJO,paramJO,  $event, xData,this,"VacHoliday");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimPerson");
     }
 
     /**
@@ -366,7 +422,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem19_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -384,7 +440,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"VacHoliday");
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PimPerson");
     }
 
     /**
@@ -395,46 +451,10 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      * @param {*} [fullargs]
      * @param {*} [$event]
      * @param {*} [xData]
-     * @memberof VacHolidayJJRTXSBGridView
+     * @memberof PimPersonSetAttRulesGridView
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
-        const data: any = {};
-        if(args[0].srfsourcekey){
-            data.srfsourcekey = args[0].srfsourcekey;
-        }
-        let curViewParam = JSON.parse(JSON.stringify(this.context));
-        if(args.length >0){
-            Object.assign(curViewParam,args[0]);
-        }
-        let deResParameters: any[] = [];
-        if(curViewParam.vacholidayrules && true){
-            deResParameters = [
-            { pathName: 'vacholidayrules', parameterName: 'vacholidayrules' },
-            ]
-        }
-        const parameters: any[] = [
-            { pathName: 'vacholidays', parameterName: 'vacholiday' },
-        ];
-        const _this: any = this;
-        const openPopupModal = (view: any, data: any) => {
-            let container: Subject<any> = this.$appmodal.openModal(view, curViewParam, data);
-            container.subscribe((result: any) => {
-                if (!result || !Object.is(result.ret, 'OK')) {
-                    return;
-                }
-                if (!xData || !(xData.refresh instanceof Function)) {
-                    return;
-                }
-                xData.refresh(result.datas);
-            });
-        }
-        const view: any = {
-            viewname: 'vac-holiday-edit-view', 
-            height: 500, 
-            width: 800,  
-            title: this.$t('entities.vacholiday.views.editview.title'),
-        };
-        openPopupModal(view, data);
+    this.$Notice.warning({ title: '错误', desc: '未指定关系视图' });
     }
 
 
@@ -446,48 +466,15 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      * @param {*} [fullargs]
      * @param {*} [$event]
      * @param {*} [xData]
-     * @memberof VacHolidayJJRTXSBGridView
+     * @memberof PimPersonSetAttRulesGridView
      */
     public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
-        const data: any = {};
-        let curViewParam = JSON.parse(JSON.stringify(this.context));
-        if(args.length >0){
-            Object.assign(curViewParam,args[0]);
-        }
-        let deResParameters: any[] = [];
-        if(curViewParam.vacholidayrules && true){
-            deResParameters = [
-            { pathName: 'vacholidayrules', parameterName: 'vacholidayrules' },
-            ]
-        }
-        const parameters: any[] = [
-            { pathName: 'vacholidays', parameterName: 'vacholiday' },
-        ];
-        const _this: any = this;
-        const openPopupModal = (view: any, data: any) => {
-            let container: Subject<any> = this.$appmodal.openModal(view, curViewParam, data);
-            container.subscribe((result: any) => {
-                if (!result || !Object.is(result.ret, 'OK')) {
-                    return;
-                }
-                if (!xData || !(xData.refresh instanceof Function)) {
-                    return;
-                }
-                xData.refresh(result.datas);
-            });
-        }
-        const view: any = {
-            viewname: 'vac-holiday-edit-view', 
-            height: 500, 
-            width: 800,  
-            title: this.$t('entities.vacholiday.views.editview.title'),
-        };
-        openPopupModal(view, data);
+    this.$Notice.warning({ title: '错误', desc: '未指定关系视图' });
     }
 
 
     /**
-     * 新建行
+     * 导出
      *
      * @param {any[]} args 当前数据
      * @param {any} contextJO 行为附加上下文
@@ -495,64 +482,38 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      * @param {*} [$event] 事件源
      * @param {*} [xData]  执行行为所需当前部件
      * @param {*} [actionContext]  执行行为上下文
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
-    public NewRow(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    public ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
-        const data: any = {};
-        if (_this.newRow && _this.newRow instanceof Function) {
-            _this.newRow([{ ...data }], params, $event, xData);
-        } else if(xData.newRow && xData.newRow instanceof Function) {
-            xData.newRow([{ ...data }], params, $event, xData);
-        }else{
-            _this.$Notice.error({ title: '错误', desc: 'newRow 视图处理逻辑不存在，请添加!' });
-        }
-    }
-    /**
-     * 保存行
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof VacHolidayJJRTXSBGridViewBase
-     */
-    public SaveRow(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        // 界面行为容器对象 _this
-        const _this: any = this;
-        if (xData && xData.save instanceof Function) {
-            xData.save();
-        } else if (_this.save && _this.save instanceof Function) {
-            _this.save();
-        }
-    }
-    /**
-     * 删除
-     *
-     * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
-     * @param {*} [params] 附加参数
-     * @param {*} [$event] 事件源
-     * @param {*} [xData]  执行行为所需当前部件
-     * @param {*} [actionContext]  执行行为上下文
-     * @memberof VacHolidayJJRTXSBGridViewBase
-     */
-    public Remove(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        const _this: any = this;
-        if (!xData || !(xData.remove instanceof Function)) {
+        if (!xData || !(xData.exportExcel instanceof Function) || !$event) {
             return ;
         }
-        xData.remove(args);
+        xData.exportExcel($event.exportparms);
     }
-
+    /**
+     * 过滤
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} contextJO 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @memberof PimPersonSetAttRulesGridViewBase
+     */
+    public ToggleFilter(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        const _this: any = this;
+        if (_this.hasOwnProperty('isExpandSearchForm')) {
+            _this.isExpandSearchForm = !_this.isExpandSearchForm;
+        }
+    }
 
 
     /**
      * 销毁视图回调
      *
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public destroyed(){
         if(this.viewDefaultUsage){
@@ -572,7 +533,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      * 是否单选
      *
      * @type {boolean}
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public isSingleSelect: boolean = false;
 
@@ -601,7 +562,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
     * 界面关系通讯对象
     *
     * @type {Subject<ViewState>}
-    * @memberof VacHolidayJJRTXSBGridViewBase
+    * @memberof PimPersonSetAttRulesGridViewBase
     */
     @Prop() public formDruipart?: Subject<ViewState>;
 
@@ -609,7 +570,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      * 搜索值
      *
      * @type {string}
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public query: string = '';
 
@@ -617,7 +578,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      * 是否展开搜索表单
      *
      * @type {boolean}
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public isExpandSearchForm: boolean = false;
 
@@ -628,7 +589,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      * 2 双击激活
      *
      * @type {(number | 0 | 1 | 2)}
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public gridRowActiveMode: number | 0 | 1 | 2 = 0;
 
@@ -636,7 +597,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      * 快速搜索
      *
      * @param {*} $event
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     public onSearch($event: any): void {
         const grid: any = this.$refs.grid;
@@ -661,7 +622,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      *
      * @readonly
      * @type {(number | null)}
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     get refreshdata(): number | null {
         return this.$store.getters['viewaction/getRefreshData'](this.viewtag);
@@ -673,7 +634,7 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
      * @param {*} newVal
      * @param {*} oldVal
      * @returns
-     * @memberof VacHolidayJJRTXSBGridViewBase
+     * @memberof PimPersonSetAttRulesGridViewBase
      */
     @Watch('refreshdata')
     onRefreshData(newVal: any, oldVal: any) {
@@ -693,5 +654,5 @@ export default class VacHolidayJJRTXSBGridViewBase extends GridViewBase {
 </script>
 
 <style lang='less'>
-@import './vac-holiday-jjrtxsbgrid-view.less';
+@import './pim-person-set-att-rules-grid-view.less';
 </style>

@@ -159,13 +159,23 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '4986fb1b1e1cfe921dc7c855a1fda4f4',
+            viewmodule: 'PIM',
+            viewname: 'PimPersonSetAttRulesGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '03511dfb145e54bb23246d7f2b417a36',
+            ],
+        },
+        {
             viewtag: '55D522D7-A7FF-4A3C-9CD9-67755DF8651C',
             viewmodule: 'ATT',
             viewname: 'Index',
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'f1bf8f7a05fdca378d78e966738be76c',
+                '4986fb1b1e1cfe921dc7c855a1fda4f4',
                 'e0aef4185645d7c736afe9da6e2de2a7',
                 'bafd71cd0552e86505f6d85e2dbdd9fb',
                 'cfe9d69998fd484c2c7bcb0cd98b60d7',
@@ -523,18 +533,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-            ],
-        },
-        {
-            viewtag: 'f1bf8f7a05fdca378d78e966738be76c',
-            viewmodule: 'ATT',
-            viewname: 'AttEndanceSettingsYGSZKQGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '8948a5606031ac246f782f05654883a7',
-                '03511dfb145e54bb23246d7f2b417a36',
-                'fda0fddd972d90b7d9335a0aa20c6cf4',
             ],
         },
         {

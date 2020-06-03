@@ -40,8 +40,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "1670d8d1ba576d381e759a1968ca96d9"
         },
         "vacleavetipsqjtsgridview": {
-            "title": "请假提示",
-            "caption": "请假提示",
+            "title": "温馨提示",
+            "caption": "温馨提示",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "VAC",
             "viewname": "VacLeaveTipsQJTSGridView",
@@ -134,6 +134,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "ATT",
             "viewname": "AttEndanceSettingsGridView",
             "viewtag": "49181fed112a6e7d9c86a8a261583959"
+        },
+        "pimpersonsetattrulesgridview": {
+            "title": "员工考勤设置",
+            "caption": "员工考勤设置",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PIM",
+            "viewname": "PimPersonSetAttRulesGridView",
+            "viewtag": "4986fb1b1e1cfe921dc7c855a1fda4f4"
         },
         "vacleavedetailsjqjmx_ck_editview": {
             "title": "请假明细",

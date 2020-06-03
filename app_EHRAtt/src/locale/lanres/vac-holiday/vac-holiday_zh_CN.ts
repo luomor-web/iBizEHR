@@ -56,6 +56,8 @@ export default {
 		columns: {
 			vacholidayname: '名称',
 			jjrlx: '类型',
+			kssj: '开始时间',
+			jssj: '结束时间',
 		},
 		uiactions: {
 		},

@@ -27,3 +27,4 @@ import './entity/vac-leace-types/vac-leace-types';
 import './entity/vac-leave-manages/vac-leave-manages';
 import './entity/att-endance-records/att-endance-records';
 import './entity/pcm-wzd0001s/pcm-wzd0001s';
+import './entity/person-state-mgrs/person-state-mgrs';

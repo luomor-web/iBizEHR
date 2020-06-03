@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="vacleavetipsqjtsgridview" viewTitle="请假提示" :isShowCaptionBar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'vac-leave-tips-qjtsgrid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="vacleavetipsqjtsgridview" viewTitle="温馨提示" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'vac-leave-tips-qjtsgrid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -61,7 +61,7 @@ import CodeListService from "@service/app/codelist-service";
 
 
 /**
- * 请假提示基类
+ * 温馨提示基类
  *
  * @export
  * @class VacLeaveTipsQJTSGridViewBase
