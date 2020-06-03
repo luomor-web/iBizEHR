@@ -1033,6 +1033,208 @@ public class PcmYdjdmxResource {
                 .body(new PageImpl(pcmydjdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
     @PostAuthorize("hasPermission(this.pcmydjdmxMapping.toDomain(returnObject.body),'ehr-PcmYdjdmx-Get')")
+    @ApiOperation(value = "根据分配信息获取异动借调明细", tags = {"异动借调明细" },  notes = "根据分配信息获取异动借调明细")
+	@RequestMapping(method = RequestMethod.GET, value = "/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/{pcmydjdmx_id}")
+    public ResponseEntity<PcmYdjdmxDTO> getByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id, @PathVariable("pcmydjdmx_id") String pcmydjdmx_id) {
+        PcmYdjdmx domain = pcmydjdmxService.get(pcmydjdmx_id);
+        PcmYdjdmxDTO dto = pcmydjdmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @ApiOperation(value = "根据分配信息获取异动借调明细草稿", tags = {"异动借调明细" },  notes = "根据分配信息获取异动借调明细草稿")
+    @RequestMapping(method = RequestMethod.GET, value = "/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/getdraft")
+    public ResponseEntity<PcmYdjdmxDTO> getDraftByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id) {
+        PcmYdjdmx domain = new PcmYdjdmx();
+        domain.setPimdistirbutionid(pimdistirbution_id);
+        return ResponseEntity.status(HttpStatus.OK).body(pcmydjdmxMapping.toDto(pcmydjdmxService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydjdmxService.get(#pcmydjdmx_id),'ehr-PcmYdjdmx-Update')")
+    @ApiOperation(value = "根据分配信息更新异动借调明细", tags = {"异动借调明细" },  notes = "根据分配信息更新异动借调明细")
+	@RequestMapping(method = RequestMethod.PUT, value = "/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/{pcmydjdmx_id}")
+    @Transactional
+    public ResponseEntity<PcmYdjdmxDTO> updateByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id, @PathVariable("pcmydjdmx_id") String pcmydjdmx_id, @RequestBody PcmYdjdmxDTO pcmydjdmxdto) {
+        PcmYdjdmx domain = pcmydjdmxMapping.toDomain(pcmydjdmxdto);
+        domain.setPimdistirbutionid(pimdistirbution_id);
+        domain.setPcmydjdmxid(pcmydjdmx_id);
+		pcmydjdmxService.update(domain);
+        PcmYdjdmxDTO dto = pcmydjdmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydjdmxService.getPcmydjdmxByEntities(this.pcmydjdmxMapping.toDomain(#pcmydjdmxdtos)),'ehr-PcmYdjdmx-Update')")
+    @ApiOperation(value = "根据分配信息批量更新异动借调明细", tags = {"异动借调明细" },  notes = "根据分配信息批量更新异动借调明细")
+	@RequestMapping(method = RequestMethod.PUT, value = "/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/batch")
+    public ResponseEntity<Boolean> updateBatchByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody List<PcmYdjdmxDTO> pcmydjdmxdtos) {
+        List<PcmYdjdmx> domainlist=pcmydjdmxMapping.toDomain(pcmydjdmxdtos);
+        for(PcmYdjdmx domain:domainlist){
+            domain.setPimdistirbutionid(pimdistirbution_id);
+        }
+        pcmydjdmxService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydjdmxService.get(#pcmydjdmx_id),'ehr-PcmYdjdmx-Remove')")
+    @ApiOperation(value = "根据分配信息删除异动借调明细", tags = {"异动借调明细" },  notes = "根据分配信息删除异动借调明细")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/{pcmydjdmx_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id, @PathVariable("pcmydjdmx_id") String pcmydjdmx_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(pcmydjdmxService.remove(pcmydjdmx_id));
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydjdmxService.getPcmydjdmxByIds(#ids),'ehr-PcmYdjdmx-Remove')")
+    @ApiOperation(value = "根据分配信息批量删除异动借调明细", tags = {"异动借调明细" },  notes = "根据分配信息批量删除异动借调明细")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/batch")
+    public ResponseEntity<Boolean> removeBatchByPimDistirbution(@RequestBody List<String> ids) {
+        pcmydjdmxService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-PersonBack-all')")
+    @ApiOperation(value = "根据分配信息异动借调明细", tags = {"异动借调明细" },  notes = "根据分配信息异动借调明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/{pcmydjdmx_id}/personback")
+    @Transactional
+    public ResponseEntity<PcmYdjdmxDTO> personBackByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id, @PathVariable("pcmydjdmx_id") String pcmydjdmx_id, @RequestBody PcmYdjdmxDTO pcmydjdmxdto) {
+        PcmYdjdmx domain = pcmydjdmxMapping.toDomain(pcmydjdmxdto);
+        domain.setPimdistirbutionid(pimdistirbution_id);
+        domain = pcmydjdmxService.personBack(domain) ;
+        pcmydjdmxdto = pcmydjdmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(pcmydjdmxdto);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-PersonInfo-all')")
+    @ApiOperation(value = "根据分配信息异动借调明细", tags = {"异动借调明细" },  notes = "根据分配信息异动借调明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/{pcmydjdmx_id}/personinfo")
+    @Transactional
+    public ResponseEntity<PcmYdjdmxDTO> personInfoByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id, @PathVariable("pcmydjdmx_id") String pcmydjdmx_id, @RequestBody PcmYdjdmxDTO pcmydjdmxdto) {
+        PcmYdjdmx domain = pcmydjdmxMapping.toDomain(pcmydjdmxdto);
+        domain.setPimdistirbutionid(pimdistirbution_id);
+        domain = pcmydjdmxService.personInfo(domain) ;
+        pcmydjdmxdto = pcmydjdmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(pcmydjdmxdto);
+    }
+
+    @ApiOperation(value = "根据分配信息检查异动借调明细", tags = {"异动借调明细" },  notes = "根据分配信息检查异动借调明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/checkkey")
+    public ResponseEntity<Boolean> checkKeyByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody PcmYdjdmxDTO pcmydjdmxdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(pcmydjdmxService.checkKey(pcmydjdmxMapping.toDomain(pcmydjdmxdto)));
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydjdmxMapping.toDomain(#pcmydjdmxdto),'ehr-PcmYdjdmx-Save')")
+    @ApiOperation(value = "根据分配信息保存异动借调明细", tags = {"异动借调明细" },  notes = "根据分配信息保存异动借调明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/save")
+    public ResponseEntity<Boolean> saveByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody PcmYdjdmxDTO pcmydjdmxdto) {
+        PcmYdjdmx domain = pcmydjdmxMapping.toDomain(pcmydjdmxdto);
+        domain.setPimdistirbutionid(pimdistirbution_id);
+        return ResponseEntity.status(HttpStatus.OK).body(pcmydjdmxService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydjdmxMapping.toDomain(#pcmydjdmxdtos),'ehr-PcmYdjdmx-Save')")
+    @ApiOperation(value = "根据分配信息批量保存异动借调明细", tags = {"异动借调明细" },  notes = "根据分配信息批量保存异动借调明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/savebatch")
+    public ResponseEntity<Boolean> saveBatchByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody List<PcmYdjdmxDTO> pcmydjdmxdtos) {
+        List<PcmYdjdmx> domainlist=pcmydjdmxMapping.toDomain(pcmydjdmxdtos);
+        for(PcmYdjdmx domain:domainlist){
+             domain.setPimdistirbutionid(pimdistirbution_id);
+        }
+        pcmydjdmxService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydjdmxMapping.toDomain(#pcmydjdmxdto),'ehr-PcmYdjdmx-Create')")
+    @ApiOperation(value = "根据分配信息建立异动借调明细", tags = {"异动借调明细" },  notes = "根据分配信息建立异动借调明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes")
+    @Transactional
+    public ResponseEntity<PcmYdjdmxDTO> createByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody PcmYdjdmxDTO pcmydjdmxdto) {
+        PcmYdjdmx domain = pcmydjdmxMapping.toDomain(pcmydjdmxdto);
+        domain.setPimdistirbutionid(pimdistirbution_id);
+		pcmydjdmxService.create(domain);
+        PcmYdjdmxDTO dto = pcmydjdmxMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydjdmxMapping.toDomain(#pcmydjdmxdtos),'ehr-PcmYdjdmx-Create')")
+    @ApiOperation(value = "根据分配信息批量建立异动借调明细", tags = {"异动借调明细" },  notes = "根据分配信息批量建立异动借调明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/batch")
+    public ResponseEntity<Boolean> createBatchByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody List<PcmYdjdmxDTO> pcmydjdmxdtos) {
+        List<PcmYdjdmx> domainlist=pcmydjdmxMapping.toDomain(pcmydjdmxdtos);
+        for(PcmYdjdmx domain:domainlist){
+            domain.setPimdistirbutionid(pimdistirbution_id);
+        }
+        pcmydjdmxService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-JDGLDQ-all')")
+	@ApiOperation(value = "根据分配信息获取借调管理查询", tags = {"异动借调明细" } ,notes = "根据分配信息获取借调管理查询")
+    @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/fetchjdgldq")
+	public ResponseEntity<List<PcmYdjdmxDTO>> fetchPcmYdjdmxJDGLDQByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id,PcmYdjdmxSearchContext context) {
+        context.setN_pimdistirbutionid_eq(pimdistirbution_id);
+        Page<PcmYdjdmx> domains = pcmydjdmxService.searchJDGLDQ(context) ;
+        List<PcmYdjdmxDTO> list = pcmydjdmxMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-JDGLDQ-all')")
+	@ApiOperation(value = "根据分配信息查询借调管理查询", tags = {"异动借调明细" } ,notes = "根据分配信息查询借调管理查询")
+    @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/searchjdgldq")
+	public ResponseEntity<Page<PcmYdjdmxDTO>> searchPcmYdjdmxJDGLDQByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody PcmYdjdmxSearchContext context) {
+        context.setN_pimdistirbutionid_eq(pimdistirbution_id);
+        Page<PcmYdjdmx> domains = pcmydjdmxService.searchJDGLDQ(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(pcmydjdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-JDLSJLDQ-all')")
+	@ApiOperation(value = "根据分配信息获取借调历史记录查询", tags = {"异动借调明细" } ,notes = "根据分配信息获取借调历史记录查询")
+    @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/fetchjdlsjldq")
+	public ResponseEntity<List<PcmYdjdmxDTO>> fetchPcmYdjdmxJDLSJLDQByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id,PcmYdjdmxSearchContext context) {
+        context.setN_pimdistirbutionid_eq(pimdistirbution_id);
+        Page<PcmYdjdmx> domains = pcmydjdmxService.searchJDLSJLDQ(context) ;
+        List<PcmYdjdmxDTO> list = pcmydjdmxMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-JDLSJLDQ-all')")
+	@ApiOperation(value = "根据分配信息查询借调历史记录查询", tags = {"异动借调明细" } ,notes = "根据分配信息查询借调历史记录查询")
+    @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/searchjdlsjldq")
+	public ResponseEntity<Page<PcmYdjdmxDTO>> searchPcmYdjdmxJDLSJLDQByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody PcmYdjdmxSearchContext context) {
+        context.setN_pimdistirbutionid_eq(pimdistirbution_id);
+        Page<PcmYdjdmx> domains = pcmydjdmxService.searchJDLSJLDQ(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(pcmydjdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-Default-all')")
+	@ApiOperation(value = "根据分配信息获取DEFAULT", tags = {"异动借调明细" } ,notes = "根据分配信息获取DEFAULT")
+    @RequestMapping(method= RequestMethod.GET , value="/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/fetchdefault")
+	public ResponseEntity<List<PcmYdjdmxDTO>> fetchPcmYdjdmxDefaultByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id,PcmYdjdmxSearchContext context) {
+        context.setN_pimdistirbutionid_eq(pimdistirbution_id);
+        Page<PcmYdjdmx> domains = pcmydjdmxService.searchDefault(context) ;
+        List<PcmYdjdmxDTO> list = pcmydjdmxMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-Default-all')")
+	@ApiOperation(value = "根据分配信息查询DEFAULT", tags = {"异动借调明细" } ,notes = "根据分配信息查询DEFAULT")
+    @RequestMapping(method= RequestMethod.POST , value="/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/searchdefault")
+	public ResponseEntity<Page<PcmYdjdmxDTO>> searchPcmYdjdmxDefaultByPimDistirbution(@PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody PcmYdjdmxSearchContext context) {
+        context.setN_pimdistirbutionid_eq(pimdistirbution_id);
+        Page<PcmYdjdmx> domains = pcmydjdmxService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(pcmydjdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PostAuthorize("hasPermission(this.pcmydjdmxMapping.toDomain(returnObject.body),'ehr-PcmYdjdmx-Get')")
     @ApiOperation(value = "根据组织管理部门管理获取异动借调明细", tags = {"异动借调明细" },  notes = "根据组织管理部门管理获取异动借调明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/ormorgs/{ormorg_id}/ormorgsectors/{ormorgsector_id}/pcmydjdmxes/{pcmydjdmx_id}")
     public ResponseEntity<PcmYdjdmxDTO> getByOrmOrgOrmOrgsector(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormorgsector_id") String ormorgsector_id, @PathVariable("pcmydjdmx_id") String pcmydjdmx_id) {
@@ -1432,6 +1634,208 @@ public class PcmYdjdmxResource {
     @RequestMapping(method= RequestMethod.POST , value="/ormorgs/{ormorg_id}/ormposts/{ormpost_id}/pcmydjdmxes/searchdefault")
 	public ResponseEntity<Page<PcmYdjdmxDTO>> searchPcmYdjdmxDefaultByOrmOrgOrmPost(@PathVariable("ormorg_id") String ormorg_id, @PathVariable("ormpost_id") String ormpost_id, @RequestBody PcmYdjdmxSearchContext context) {
         context.setN_ormpostid_eq(ormpost_id);
+        Page<PcmYdjdmx> domains = pcmydjdmxService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(pcmydjdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PostAuthorize("hasPermission(this.pcmydjdmxMapping.toDomain(returnObject.body),'ehr-PcmYdjdmx-Get')")
+    @ApiOperation(value = "根据人员信息分配信息获取异动借调明细", tags = {"异动借调明细" },  notes = "根据人员信息分配信息获取异动借调明细")
+	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/{pcmydjdmx_id}")
+    public ResponseEntity<PcmYdjdmxDTO> getByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id, @PathVariable("pcmydjdmx_id") String pcmydjdmx_id) {
+        PcmYdjdmx domain = pcmydjdmxService.get(pcmydjdmx_id);
+        PcmYdjdmxDTO dto = pcmydjdmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @ApiOperation(value = "根据人员信息分配信息获取异动借调明细草稿", tags = {"异动借调明细" },  notes = "根据人员信息分配信息获取异动借调明细草稿")
+    @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/getdraft")
+    public ResponseEntity<PcmYdjdmxDTO> getDraftByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id) {
+        PcmYdjdmx domain = new PcmYdjdmx();
+        domain.setPimdistirbutionid(pimdistirbution_id);
+        return ResponseEntity.status(HttpStatus.OK).body(pcmydjdmxMapping.toDto(pcmydjdmxService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydjdmxService.get(#pcmydjdmx_id),'ehr-PcmYdjdmx-Update')")
+    @ApiOperation(value = "根据人员信息分配信息更新异动借调明细", tags = {"异动借调明细" },  notes = "根据人员信息分配信息更新异动借调明细")
+	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/{pcmydjdmx_id}")
+    @Transactional
+    public ResponseEntity<PcmYdjdmxDTO> updateByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id, @PathVariable("pcmydjdmx_id") String pcmydjdmx_id, @RequestBody PcmYdjdmxDTO pcmydjdmxdto) {
+        PcmYdjdmx domain = pcmydjdmxMapping.toDomain(pcmydjdmxdto);
+        domain.setPimdistirbutionid(pimdistirbution_id);
+        domain.setPcmydjdmxid(pcmydjdmx_id);
+		pcmydjdmxService.update(domain);
+        PcmYdjdmxDTO dto = pcmydjdmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydjdmxService.getPcmydjdmxByEntities(this.pcmydjdmxMapping.toDomain(#pcmydjdmxdtos)),'ehr-PcmYdjdmx-Update')")
+    @ApiOperation(value = "根据人员信息分配信息批量更新异动借调明细", tags = {"异动借调明细" },  notes = "根据人员信息分配信息批量更新异动借调明细")
+	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/batch")
+    public ResponseEntity<Boolean> updateBatchByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody List<PcmYdjdmxDTO> pcmydjdmxdtos) {
+        List<PcmYdjdmx> domainlist=pcmydjdmxMapping.toDomain(pcmydjdmxdtos);
+        for(PcmYdjdmx domain:domainlist){
+            domain.setPimdistirbutionid(pimdistirbution_id);
+        }
+        pcmydjdmxService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydjdmxService.get(#pcmydjdmx_id),'ehr-PcmYdjdmx-Remove')")
+    @ApiOperation(value = "根据人员信息分配信息删除异动借调明细", tags = {"异动借调明细" },  notes = "根据人员信息分配信息删除异动借调明细")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/{pcmydjdmx_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id, @PathVariable("pcmydjdmx_id") String pcmydjdmx_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(pcmydjdmxService.remove(pcmydjdmx_id));
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydjdmxService.getPcmydjdmxByIds(#ids),'ehr-PcmYdjdmx-Remove')")
+    @ApiOperation(value = "根据人员信息分配信息批量删除异动借调明细", tags = {"异动借调明细" },  notes = "根据人员信息分配信息批量删除异动借调明细")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/batch")
+    public ResponseEntity<Boolean> removeBatchByPimPersonPimDistirbution(@RequestBody List<String> ids) {
+        pcmydjdmxService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-PersonBack-all')")
+    @ApiOperation(value = "根据人员信息分配信息异动借调明细", tags = {"异动借调明细" },  notes = "根据人员信息分配信息异动借调明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/{pcmydjdmx_id}/personback")
+    @Transactional
+    public ResponseEntity<PcmYdjdmxDTO> personBackByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id, @PathVariable("pcmydjdmx_id") String pcmydjdmx_id, @RequestBody PcmYdjdmxDTO pcmydjdmxdto) {
+        PcmYdjdmx domain = pcmydjdmxMapping.toDomain(pcmydjdmxdto);
+        domain.setPimdistirbutionid(pimdistirbution_id);
+        domain = pcmydjdmxService.personBack(domain) ;
+        pcmydjdmxdto = pcmydjdmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(pcmydjdmxdto);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-PersonInfo-all')")
+    @ApiOperation(value = "根据人员信息分配信息异动借调明细", tags = {"异动借调明细" },  notes = "根据人员信息分配信息异动借调明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/{pcmydjdmx_id}/personinfo")
+    @Transactional
+    public ResponseEntity<PcmYdjdmxDTO> personInfoByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id, @PathVariable("pcmydjdmx_id") String pcmydjdmx_id, @RequestBody PcmYdjdmxDTO pcmydjdmxdto) {
+        PcmYdjdmx domain = pcmydjdmxMapping.toDomain(pcmydjdmxdto);
+        domain.setPimdistirbutionid(pimdistirbution_id);
+        domain = pcmydjdmxService.personInfo(domain) ;
+        pcmydjdmxdto = pcmydjdmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(pcmydjdmxdto);
+    }
+
+    @ApiOperation(value = "根据人员信息分配信息检查异动借调明细", tags = {"异动借调明细" },  notes = "根据人员信息分配信息检查异动借调明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/checkkey")
+    public ResponseEntity<Boolean> checkKeyByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody PcmYdjdmxDTO pcmydjdmxdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(pcmydjdmxService.checkKey(pcmydjdmxMapping.toDomain(pcmydjdmxdto)));
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydjdmxMapping.toDomain(#pcmydjdmxdto),'ehr-PcmYdjdmx-Save')")
+    @ApiOperation(value = "根据人员信息分配信息保存异动借调明细", tags = {"异动借调明细" },  notes = "根据人员信息分配信息保存异动借调明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/save")
+    public ResponseEntity<Boolean> saveByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody PcmYdjdmxDTO pcmydjdmxdto) {
+        PcmYdjdmx domain = pcmydjdmxMapping.toDomain(pcmydjdmxdto);
+        domain.setPimdistirbutionid(pimdistirbution_id);
+        return ResponseEntity.status(HttpStatus.OK).body(pcmydjdmxService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydjdmxMapping.toDomain(#pcmydjdmxdtos),'ehr-PcmYdjdmx-Save')")
+    @ApiOperation(value = "根据人员信息分配信息批量保存异动借调明细", tags = {"异动借调明细" },  notes = "根据人员信息分配信息批量保存异动借调明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/savebatch")
+    public ResponseEntity<Boolean> saveBatchByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody List<PcmYdjdmxDTO> pcmydjdmxdtos) {
+        List<PcmYdjdmx> domainlist=pcmydjdmxMapping.toDomain(pcmydjdmxdtos);
+        for(PcmYdjdmx domain:domainlist){
+             domain.setPimdistirbutionid(pimdistirbution_id);
+        }
+        pcmydjdmxService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydjdmxMapping.toDomain(#pcmydjdmxdto),'ehr-PcmYdjdmx-Create')")
+    @ApiOperation(value = "根据人员信息分配信息建立异动借调明细", tags = {"异动借调明细" },  notes = "根据人员信息分配信息建立异动借调明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes")
+    @Transactional
+    public ResponseEntity<PcmYdjdmxDTO> createByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody PcmYdjdmxDTO pcmydjdmxdto) {
+        PcmYdjdmx domain = pcmydjdmxMapping.toDomain(pcmydjdmxdto);
+        domain.setPimdistirbutionid(pimdistirbution_id);
+		pcmydjdmxService.create(domain);
+        PcmYdjdmxDTO dto = pcmydjdmxMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydjdmxMapping.toDomain(#pcmydjdmxdtos),'ehr-PcmYdjdmx-Create')")
+    @ApiOperation(value = "根据人员信息分配信息批量建立异动借调明细", tags = {"异动借调明细" },  notes = "根据人员信息分配信息批量建立异动借调明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/batch")
+    public ResponseEntity<Boolean> createBatchByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody List<PcmYdjdmxDTO> pcmydjdmxdtos) {
+        List<PcmYdjdmx> domainlist=pcmydjdmxMapping.toDomain(pcmydjdmxdtos);
+        for(PcmYdjdmx domain:domainlist){
+            domain.setPimdistirbutionid(pimdistirbution_id);
+        }
+        pcmydjdmxService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-JDGLDQ-all')")
+	@ApiOperation(value = "根据人员信息分配信息获取借调管理查询", tags = {"异动借调明细" } ,notes = "根据人员信息分配信息获取借调管理查询")
+    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/fetchjdgldq")
+	public ResponseEntity<List<PcmYdjdmxDTO>> fetchPcmYdjdmxJDGLDQByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id,PcmYdjdmxSearchContext context) {
+        context.setN_pimdistirbutionid_eq(pimdistirbution_id);
+        Page<PcmYdjdmx> domains = pcmydjdmxService.searchJDGLDQ(context) ;
+        List<PcmYdjdmxDTO> list = pcmydjdmxMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-JDGLDQ-all')")
+	@ApiOperation(value = "根据人员信息分配信息查询借调管理查询", tags = {"异动借调明细" } ,notes = "根据人员信息分配信息查询借调管理查询")
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/searchjdgldq")
+	public ResponseEntity<Page<PcmYdjdmxDTO>> searchPcmYdjdmxJDGLDQByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody PcmYdjdmxSearchContext context) {
+        context.setN_pimdistirbutionid_eq(pimdistirbution_id);
+        Page<PcmYdjdmx> domains = pcmydjdmxService.searchJDGLDQ(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(pcmydjdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-JDLSJLDQ-all')")
+	@ApiOperation(value = "根据人员信息分配信息获取借调历史记录查询", tags = {"异动借调明细" } ,notes = "根据人员信息分配信息获取借调历史记录查询")
+    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/fetchjdlsjldq")
+	public ResponseEntity<List<PcmYdjdmxDTO>> fetchPcmYdjdmxJDLSJLDQByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id,PcmYdjdmxSearchContext context) {
+        context.setN_pimdistirbutionid_eq(pimdistirbution_id);
+        Page<PcmYdjdmx> domains = pcmydjdmxService.searchJDLSJLDQ(context) ;
+        List<PcmYdjdmxDTO> list = pcmydjdmxMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-JDLSJLDQ-all')")
+	@ApiOperation(value = "根据人员信息分配信息查询借调历史记录查询", tags = {"异动借调明细" } ,notes = "根据人员信息分配信息查询借调历史记录查询")
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/searchjdlsjldq")
+	public ResponseEntity<Page<PcmYdjdmxDTO>> searchPcmYdjdmxJDLSJLDQByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody PcmYdjdmxSearchContext context) {
+        context.setN_pimdistirbutionid_eq(pimdistirbution_id);
+        Page<PcmYdjdmx> domains = pcmydjdmxService.searchJDLSJLDQ(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(pcmydjdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-Default-all')")
+	@ApiOperation(value = "根据人员信息分配信息获取DEFAULT", tags = {"异动借调明细" } ,notes = "根据人员信息分配信息获取DEFAULT")
+    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/fetchdefault")
+	public ResponseEntity<List<PcmYdjdmxDTO>> fetchPcmYdjdmxDefaultByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id,PcmYdjdmxSearchContext context) {
+        context.setN_pimdistirbutionid_eq(pimdistirbution_id);
+        Page<PcmYdjdmx> domains = pcmydjdmxService.searchDefault(context) ;
+        List<PcmYdjdmxDTO> list = pcmydjdmxMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjdmx-Default-all')")
+	@ApiOperation(value = "根据人员信息分配信息查询DEFAULT", tags = {"异动借调明细" } ,notes = "根据人员信息分配信息查询DEFAULT")
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pimdistirbutions/{pimdistirbution_id}/pcmydjdmxes/searchdefault")
+	public ResponseEntity<Page<PcmYdjdmxDTO>> searchPcmYdjdmxDefaultByPimPersonPimDistirbution(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pimdistirbution_id") String pimdistirbution_id, @RequestBody PcmYdjdmxSearchContext context) {
+        context.setN_pimdistirbutionid_eq(pimdistirbution_id);
         Page<PcmYdjdmx> domains = pcmydjdmxService.searchDefault(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmydjdmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
