@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.orm.service.logic.ormdutysetordernum" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.orm.service.logic.ormdutysetordernum">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="ormdutysetordernumdefault" type="cn.ibizlab.ehr.core.orm.domain.OrmDuty" />
+        </extensionElements>
+     <startEvent id="192fc1d6593ff0a48f8cce039a0da8a0" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="ormdutysetordernumrawsqlcall1" id="1eff3ac43afb083ef7560f9547a28169" implementation="http://www.jboss.org/drools/rule" name="设置排序规则"/>
+     <endEvent id="1eff3ac43afb083ef7560f9547a28169_End" name="End"/>
+     <sequenceFlow id="1eff3ac43afb083ef7560f9547a28169_End_Line" sourceRef="1eff3ac43afb083ef7560f9547a28169" targetRef="1eff3ac43afb083ef7560f9547a28169_End"/>
+     <sequenceFlow id="c95c430b4962693ee1a2d0d154a16798" sourceRef="192fc1d6593ff0a48f8cce039a0da8a0" targetRef="1eff3ac43afb083ef7560f9547a28169">
+     </sequenceFlow>
+    </process>
+</definitions>
+

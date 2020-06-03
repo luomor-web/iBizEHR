@@ -1,0 +1,58 @@
+package cn.ibizlab.ehr.pcm.logic.pcmydjdmxlogic.fillpersoninfo;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pim.domain.PimPerson pcmydjdmxfillpersoninfopimperson;
+global cn.ibizlab.ehr.core.pcm.domain.PcmYdjdmx pcmydjdmxfillpersoninfodefault;
+global cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonservice;
+global cn.ibizlab.ehr.core.pcm.service.IPcmYdjdmxService iBzSysPcmydjdmxDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[填充借调明细表]
+rule "prepareparam2"
+ruleflow-group "pcmydjdmxfillpersoninfoprepareparam2"
+    when
+    then
+    pcmydjdmxfillpersoninfodefault.set("pimpersonid",pcmydjdmxfillpersoninfopimperson.get("pimpersonid"));
+    pcmydjdmxfillpersoninfodefault.set("pimpersonname",pcmydjdmxfillpersoninfopimperson.get("pimpersonname"));
+    pcmydjdmxfillpersoninfodefault.set("ygbh",pcmydjdmxfillpersoninfopimperson.get("ygbh"));
+    pcmydjdmxfillpersoninfodefault.set("zz",pcmydjdmxfillpersoninfopimperson.get("ormorgname"));
+    pcmydjdmxfillpersoninfodefault.set("bm",pcmydjdmxfillpersoninfopimperson.get("ormorgsectorname"));
+    pcmydjdmxfillpersoninfodefault.set("yzw",pcmydjdmxfillpersoninfopimperson.get("zw"));
+    pcmydjdmxfillpersoninfodefault.set("ygw",pcmydjdmxfillpersoninfopimperson.get("gw"));
+    pcmydjdmxfillpersoninfodefault.set("zzid",pcmydjdmxfillpersoninfopimperson.get("ormorgid"));
+    pcmydjdmxfillpersoninfodefault.set("bmid",pcmydjdmxfillpersoninfopimperson.get("ormorgsectorid"));
+    update(pcmydjdmxfillpersoninfopimperson);//更新fact中变量值
+    update(pcmydjdmxfillpersoninfodefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[获取人员信息]
+rule "deaction1"
+ruleflow-group "pcmydjdmxfillpersoninfodeaction1"
+    when
+    then
+    cn.ibizlab.ehr.util.helper.CachedBeanCopier.copy(pimpersonservice.get(pcmydjdmxfillpersoninfopimperson.getPimpersonid()),pcmydjdmxfillpersoninfopimperson);
+    update(pcmydjdmxfillpersoninfopimperson);//更新fact中变量值
+    update(pcmydjdmxfillpersoninfodefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pcmydjdmxfillpersoninfobegin"
+    when
+    then
+    end
+
+//逻辑处理节点[设置人员id]
+rule "prepareparam1"
+ruleflow-group "pcmydjdmxfillpersoninfoprepareparam1"
+    when
+    then
+    pcmydjdmxfillpersoninfopimperson.set("pimpersonid",pcmydjdmxfillpersoninfodefault.get("pimpersonid"));
+    update(pcmydjdmxfillpersoninfopimperson);//更新fact中变量值
+    update(pcmydjdmxfillpersoninfodefault);//更新fact中变量值
+    end
+
