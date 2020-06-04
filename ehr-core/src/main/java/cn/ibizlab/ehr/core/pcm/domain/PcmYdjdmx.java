@@ -372,6 +372,7 @@ public class PcmYdjdmx extends EntityMP implements Serializable {
     /**
      * 是否完成
      */
+    @DEField(defaultValue = "0")
     @TableField(value = "isfinished")
     @JSONField(name = "isfinished")
     @JsonProperty("isfinished")
