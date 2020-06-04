@@ -396,6 +396,14 @@ public class OrmOrgDTO extends DTOBase implements Serializable {
     }
 
     /**
+     * 设置 [ORGNAME]
+     */
+    public void setOrgname(String  orgname){
+        this.orgname = orgname ;
+        this.modify("orgname",orgname);
+    }
+
+    /**
      * 设置 [PORGID]
      */
     public void setPorgid(String  porgid){
