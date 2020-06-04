@@ -40,18 +40,15 @@
 				 WHERE 	( t1.`nd` =  #{srf.webcontext.n_nd_eq} )
 			]]>
     </sql>
-
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GXLB`, t1.`NATIONAREA`, t1.`ND`, t1.`PCMGXMLID`, t1.`PCMGXMLNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`XXXZ` FROM `T_PCMGXML` t1  
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GXLB`, t1.`NATIONAREA`, t1.`ND`, t1.`PCMGXMLID`, t1.`PCMGXMLNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`XXXZ` FROM `T_PCMGXML` t1  
 			]]>
     </sql>
-
 </mapper>
 

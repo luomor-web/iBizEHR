@@ -30,12 +30,10 @@
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`KHLX`, t1.`KHX`, t1.`ND`, t1.`PARJXZGPCID`, t1.`PARJXZGPCNAME`, t1.`PFLD`, t1.`PFLDID`, t1.`SSBM`, t1.`SSBMID`, t1.`SSZZ`, t1.`SSZZID`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGID`, t1.`YGNAME`, t1.`ZDF` FROM `T_PARJXZGPC` t1  
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`KHLX`, t1.`KHX`, t1.`ND`, t1.`PARJXZGPCID`, t1.`PARJXZGPCNAME`, t1.`PFLD`, t1.`PFLDID`, t1.`SSBM`, t1.`SSBMID`, t1.`SSZZ`, t1.`SSZZID`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGID`, t1.`YGNAME`, t1.`ZDF` FROM `T_PARJXZGPC` t1  
 			]]>
     </sql>
-
 </mapper>
 

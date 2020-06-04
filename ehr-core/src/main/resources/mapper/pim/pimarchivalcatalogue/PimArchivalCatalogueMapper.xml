@@ -41,13 +41,11 @@
 				 WHERE 	t1.enable = 1
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`ARCHIVALCATALOGUEID`, t1.`ARCHIVALCATALOGUENAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`PIMARCHIVESID`, t11.`PIMARCHIVESNAME`, t1.`SERIALNUMBER`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ARCHIVALCATALOGUE` t1  LEFT JOIN T_PIMARCHIVES t11 ON t1.PIMARCHIVESID = t11.PIMARCHIVESID  
 				 WHERE 	t1.enable = 1
 			]]>
     </sql>
-
 </mapper>
 

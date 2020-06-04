@@ -76,45 +76,38 @@
 				 WHERE 	( ( (  instr(t1.zwlb, (select  t.referjoblevel  from  v_ormorgsector  t  where  t.orgsectorid = #{srf.datacontext.srfparentkey')}) ) >0 )  or  (  instr(t1.zwlb, (select  t.referjoblevel  from  v_ormorgsector  t  where  t.orgsectorid = #{srf.datacontext.ormzwbzid')}) ) >0 ) ) )
 			]]>
     </sql>
-
     <!--数据查询[CurOrg]-->
     <sql id="CurOrg" databaseId="mysql">
        <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DYZJ`, t1.`FGLX`, t1.`NX`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZWJB`, t1.`ZWLB` FROM `T_ORMDUTY` t1  
 				 WHERE 	( ( ( ( t1.`zwlb` like '%10%'  or  t1.`zwlb` = '40' )  and  ( #{srf.sessioncontext.srforgid')}  in  (select t.orgid from t_srforg t where t.porgid is null) ) )  or  ( ( t1.`zwlb` like '%20%'  or  t1.`zwlb` = '30'  or  t1.`zwlb` = '40' )  and  ( #{srf.sessioncontext.srforgid')}  not in  (select t.orgid from t_srforg t where t.porgid is null) ) ) ) )
 			]]>
     </sql>
-
     <!--数据查询[CurOrgsector]-->
     <sql id="CurOrgsector" databaseId="mysql">
        <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DYZJ`, t1.`FGLX`, t1.`NX`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZWJB`, t1.`ZWLB` FROM `T_ORMDUTY` t1  
 				 WHERE 	( instr(t1.zwlb, ( select referjoblevel from t_srforgsector where orgsectorid =  #{srf.datacontext.orgsectorid} ))>0 )
 			]]>
     </sql>
-
     <!--数据查询[CurOrmorgsector]-->
     <sql id="CurOrmorgsector" databaseId="mysql">
        <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DYZJ`, t1.`FGLX`, t1.`NX`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZWJB`, t1.`ZWLB` FROM `T_ORMDUTY` t1  
 			]]>
     </sql>
-
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DYZJ`, t1.`FGLX`, t1.`NX`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZWJB`, t1.`ZWLB` FROM `T_ORMDUTY` t1  
 			]]>
     </sql>
-
     <!--数据查询[SrfOrgData]-->
     <sql id="SrfOrgData" databaseId="mysql">
        <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DYZJ`, t1.`FGLX`, t1.`NX`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZWJB`, t1.`ZWLB` FROM `T_ORMDUTY` t1  
 				 WHERE 	( ( ( ( t1.`zwlb` like '%10%'  or  t1.`zwlb` = '40' )  and  ( #{srf.sessioncontext.srforgid')}  in  (select t.orgid from t_srforg t where t.porgid is null) ) )  or  ( ( t1.`zwlb` like '%20%'  or  t1.`zwlb` = '30'  or  t1.`zwlb` = '40' )  and  ( #{srf.sessioncontext.srforgid')}  not in  (select t.orgid from t_srforg t where t.porgid is null) ) ) ) )
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`BXJLNX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DYZJ`, t1.`FGLX`, t1.`NX`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZWJB`, t1.`ZWLB` FROM `T_ORMDUTY` t1  
 			]]>
     </sql>
-
 </mapper>
 

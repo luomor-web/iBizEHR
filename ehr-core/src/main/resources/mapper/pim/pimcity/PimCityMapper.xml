@@ -31,13 +31,11 @@
 				 WHERE 	t1.enable = 1
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`PIMCITYID`, t1.`PIMCITYNAME`, t1.`PROTYPE`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PIMCITY` t1  
 				 WHERE 	t1.enable = 1
 			]]>
     </sql>
-
 </mapper>
 

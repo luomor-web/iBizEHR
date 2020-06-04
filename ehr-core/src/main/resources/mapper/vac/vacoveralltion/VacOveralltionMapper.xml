@@ -51,13 +51,11 @@
 				 WHERE 	t1.enable = 1
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JSSJ`, t1.`KCXJTS`, t1.`KSSJ`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACOVERALLTIONID`, t1.`VACOVERALLTIONNAME`, t1.`XJLX` FROM `T_VACOVERALLTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  
 				 WHERE 	t1.enable = 1
 			]]>
     </sql>
-
 </mapper>
 

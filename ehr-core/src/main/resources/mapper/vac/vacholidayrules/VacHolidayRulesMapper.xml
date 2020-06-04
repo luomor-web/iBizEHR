@@ -50,19 +50,16 @@
 				 WHERE 	( t1.`vacholidayrulesname` is not null )
 			]]>
     </sql>
-
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DEFAULTRULE`, t1.`ND`, t11.`ORGCODE`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ZZDZS` AS `ORMORGNAME`, t1.`SBSJ`, t1.`SFQY`, t1.`TSZXJZZ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACHOLIDAYRULESID`, t1.`VACHOLIDAYRULESNAME`, t1.`XBSJ` FROM `T_VACHOLIDAYRULES` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
 				 WHERE 	( t1.`vacholidayrulesname` is not null )
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DEFAULTRULE`, t1.`ND`, t11.`ORGCODE`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ZZDZS` AS `ORMORGNAME`, t1.`SBSJ`, t1.`SFQY`, t1.`TSZXJZZ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACHOLIDAYRULESID`, t1.`VACHOLIDAYRULESNAME`, t1.`XBSJ` FROM `T_VACHOLIDAYRULES` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
 			]]>
     </sql>
-
 </mapper>
 

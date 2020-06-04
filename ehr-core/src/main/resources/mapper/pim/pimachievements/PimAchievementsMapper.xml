@@ -59,7 +59,6 @@
 				 WHERE 	t1.enable = 1
 			]]>
     </sql>
-
     <!--数据查询[JLSS]-->
     <sql id="JLSS" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJ`, t1.`ENABLE`, t1.`EVALUATIONUNIT`, t1.`JD`, t1.`JSRQ`, t1.`KHDF`, t1.`KHJL`, t1.`KHLX`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t11.`ORMORGSECTORID`, t1.`PIMACHIEVEMENTSID`, t1.`PIMACHIEVEMENTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`QSRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XMJB`, t1.`YD`, t11.`YGBH` FROM `T_PIMACHIEVEMENTS` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
@@ -67,14 +66,12 @@
 					 AND ( t1.`pimpersonid` =  #{srf.sessioncontext.srfpersonid} )
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJ`, t1.`ENABLE`, t1.`EVALUATIONUNIT`, t1.`JD`, t1.`JSRQ`, t1.`KHDF`, t1.`KHJL`, t1.`KHLX`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t11.`ORMORGSECTORID`, t1.`PIMACHIEVEMENTSID`, t1.`PIMACHIEVEMENTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`QSRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XMJB`, t1.`YD`, t11.`YGBH` FROM `T_PIMACHIEVEMENTS` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
 				 WHERE 	t1.enable = 1
 			]]>
     </sql>
-
     <!--数据查询[ZIZHU]-->
     <sql id="ZIZHU" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJ`, t1.`ENABLE`, t1.`EVALUATIONUNIT`, t1.`JD`, t1.`JSRQ`, t1.`KHDF`, t1.`KHJL`, t1.`KHLX`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t11.`ORMORGSECTORID`, t1.`PIMACHIEVEMENTSID`, t1.`PIMACHIEVEMENTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`QSRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XMJB`, t1.`YD`, t11.`YGBH` FROM `T_PIMACHIEVEMENTS` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
@@ -82,6 +79,5 @@
 					 AND ( t1.`pimpersonid` =  #{srf.sessioncontext.srfpersonid} )
 			]]>
     </sql>
-
 </mapper>
 

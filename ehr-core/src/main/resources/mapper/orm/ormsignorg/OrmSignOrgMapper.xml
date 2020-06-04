@@ -49,25 +49,21 @@
 				 WHERE 	( ( exists( select * from t_contractsignorg t2 where t2.enable = 1 and t2.ormsignorgid=t1.ormsignorgid  and  t2.ormorgid  in ( select t.companyflag from t_srforg t where t.orgid in ( select ormorgid from t_pimperson where jlss='10' and pimpersonid = #{srf.datacontext.pimpersonid')} ) ) )  or  'ibzadmin' = ( select t.loginaccountname from t_srfloginaccount t where t.loginaccountid  =  #{srf.sessioncontext.srfpersonid')} ) ) )
 			]]>
     </sql>
-
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORGCODE`, t1.`ORMSIGNORGID`, t1.`ORMSIGNORGNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZZJC` FROM `T_ORMSIGNORG` t1  
 			]]>
     </sql>
-
     <!--数据查询[HTQDDW]-->
     <sql id="HTQDDW" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORGCODE`, t1.`ORMSIGNORGID`, t1.`ORMSIGNORGNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZZJC` FROM `T_ORMSIGNORG` t1  
 				 WHERE 	( ( exists( select * from t_contractsignorg t2 where  t2.enable=1 and t2.ormsignorgid=t1.ormsignorgid  and  t2.ormorgid in (select companyflag from v_ormorg a where a.orgid = #{srf.datacontext.ormorgid')}) ) ) )
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORGCODE`, t1.`ORMSIGNORGID`, t1.`ORMSIGNORGNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZZJC` FROM `T_ORMSIGNORG` t1  
 			]]>
     </sql>
-
 </mapper>
 

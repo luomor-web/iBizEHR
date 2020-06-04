@@ -76,46 +76,39 @@
 				 WHERE 	( (((select orgcode from t_srforg a where a.orgid = #{srf.sessioncontext.srforgid')}) in ('bg','100','10101')) or ((select orgcode from t_srforg a where a.orgid = #{srf.sessioncontext.srforgid')}) not in ('bg','100','10101')  and   t1.xh>=(select xh from t_ormrank where ormrankid='d1')) or ('ibzadmin' = (select t.loginaccountname from t_srfloginaccount t where t.loginaccountid = #{srf.sessioncontext.srfpersonid')}))) )
 			]]>
     </sql>
-
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  
 			]]>
     </sql>
-
     <!--数据查询[DJYX]-->
     <sql id="DJYX" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  
 				 WHERE 	( t1.xh>=(select xh from t_ormrank where ormrankid='d1') )
 			]]>
     </sql>
-
     <!--数据查询[JSNRANK]-->
     <sql id="JSNRANK" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  
 				 WHERE 	( ( t1.xh<(select xh from t_ormrank a where a.ormrankid=(select b.rank from v_pimperson b where b.pimpersonid=#{srf.datacontext.pimpersonid}))  or  exists ( select * from v_pimperson b where b.rank is null and b.pimpersonid=#{srf.datacontext.pimpersonid} and b.enable=1 and b.jlss='10') )  and  t1.xh>=(select xh from t_ormrank where ormrankid='d1') )
 			]]>
     </sql>
-
     <!--数据查询[JSRANK]-->
     <sql id="JSRANK" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  
 				 WHERE 	( ( t1.xh<(select xh from t_ormrank a where a.ormrankid=(select b.rank from v_pimperson b where b.pimpersonid=#{srf.datacontext.pimpersonid}))  or  exists ( select * from v_pimperson b where b.rank is null and b.pimpersonid=#{srf.datacontext.pimpersonid} and b.enable=1 and b.jlss='10') ) )
 			]]>
     </sql>
-
     <!--数据查询[JZRANK]-->
     <sql id="JZRANK" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  
 				 WHERE 	( ( t1.xh>(select xh from t_ormrank a where a.ormrankname=(select b.rank from v_pimperson b where b.pimpersonid=#{srf.datacontext.pimpersonid')}))  or  t1.xh>(select xh from t_ormrank a where a.ormrankname=(select b.rank from v_pimperson b where b.pimpersonid=#{srf.webcontext.pimpersonid')})) ) )
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`JYJLNX`, t1.`ORMRANKID`, t1.`ORMRANKNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZJSM` FROM `T_ORMRANK` t1  
 			]]>
     </sql>
-
 </mapper>
 

@@ -41,18 +41,15 @@
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORGID`, t1.`ORMXMRLCBID`, t1.`ORMXMRLCBNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XCED`, t1.`XCRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XCRY_COLOR`, t1.`XM`, t1.`XMB`, t1.`XMJHRY`, t1.`XMJHZCCB`, t1.`XMSJRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XMSJRY_COLOR`, t1.`XMSJZCCB`, t1.`ZZMC` FROM `T_ORMXMRLCB` t1  
 			]]>
     </sql>
-
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORGID`, t1.`ORMXMRLCBID`, t1.`ORMXMRLCBNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XCED`, t1.`XCRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XCRY_COLOR`, t1.`XM`, t1.`XMB`, t1.`XMJHRY`, t1.`XMJHZCCB`, t1.`XMSJRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XMSJRY_COLOR`, t1.`XMSJZCCB`, t1.`ZZMC` FROM `T_ORMXMRLCB` t1  
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORGID`, t1.`ORMXMRLCBID`, t1.`ORMXMRLCBNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XCED`, t1.`XCRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XCRY_COLOR`, t1.`XM`, t1.`XMB`, t1.`XMJHRY`, t1.`XMJHZCCB`, t1.`XMSJRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XMSJRY_COLOR`, t1.`XMSJZCCB`, t1.`ZZMC` FROM `T_ORMXMRLCB` t1  
 			]]>
     </sql>
-
 </mapper>
 

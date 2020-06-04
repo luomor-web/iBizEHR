@@ -59,7 +59,6 @@
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPID`, t1.`MEMO`, t1.`ORGID`, t1.`ORGNAME`, t1.`ORGSECTORID`, t1.`ORGSECTORNAME`, t1.`ORGUSERID`, t1.`ORGUSERNAME`, t1.`UNUSERID`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERCODE`, t1.`VALIDFLAG` FROM `T_SRFORGUSER` t1  
 			]]>
     </sql>
-
     <!--数据查询[DQZZJXJZZ]-->
     <sql id="DQZZJXJZZ" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPID`, t1.`MEMO`, t1.`ORGID`, t1.`ORGNAME`, t1.`ORGSECTORID`, t1.`ORGSECTORNAME`, t1.`ORGUSERID`, t1.`ORGUSERNAME`, t1.`UNUSERID`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERCODE`, t1.`VALIDFLAG` FROM `T_SRFORGUSER` t1  LEFT JOIN T_SRFORG t11 ON t1.ORGID = t11.ORGID  
@@ -67,12 +66,10 @@
 					 AND ( t1.`validflag` = 1 )
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPID`, t1.`MEMO`, t1.`ORGID`, t1.`ORGNAME`, t1.`ORGSECTORID`, t1.`ORGSECTORNAME`, t1.`ORGUSERID`, t1.`ORGUSERNAME`, t1.`UNUSERID`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`USERCODE`, t1.`VALIDFLAG` FROM `T_SRFORGUSER` t1  
 			]]>
     </sql>
-
 </mapper>
 

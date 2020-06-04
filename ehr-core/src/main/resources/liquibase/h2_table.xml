@@ -6295,7 +6295,7 @@
 
 
     <!--输出实体[PARZNBMMX]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-parznbmmx-15-159">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-parznbmmx-16-159">
         <createTable tableName="T_PARZNBMMX">
                 <column name="UPDATEDATE" remarks="" type="DATETIME">
                 </column>
@@ -12755,10 +12755,10 @@
     </changeSet>
         <!--输出实体[ORMXMXQHZ]外键关系 -->
         <!--输出实体[PARZNBMMX]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-parznbmmx-15-524">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-parznbmmx-16-524">
        <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_PARZNBMMX" constraintName="DER1N_PARZNBMMX_ORMORGSECTOR_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-parznbmmx-15-525">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-parznbmmx-16-525">
        <addForeignKeyConstraint baseColumnNames="PARTZGGID" baseTableName="T_PARZNBMMX" constraintName="DER1N_PARZNBMMX_PARTZGG_PARTZG" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PARTZGGID" referencedTableName="T_PARTZGG" validate="true"/>
     </changeSet>
         <!--输出实体[VACINITNXJ]外键关系 -->

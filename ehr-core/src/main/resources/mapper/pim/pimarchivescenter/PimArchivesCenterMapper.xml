@@ -41,13 +41,11 @@
 				 WHERE 	t1.enable = 1
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`ARCHIVESCENTERID`, t1.`ARCHIVESCENTERNAME`, t1.`BNUMBER`, t1.`CABINETNO`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`LAYERNO`, t1.`MEMO`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, concat(t1.`ARCHIVESCENTERNAME`,t1.`CABINETNO`,(case when t1.`LAYERNO`='10' then '上层'  when t1.`LAYERNO`='20' then '中层' when t1.`LAYERNO`='30' then '下层' else ' ' end),t1.`BNUMBER`) AS `POSITION`, t1.`SERIALNO`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ARCHIVESCENTER` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
 				 WHERE 	t1.enable = 1
 			]]>
     </sql>
-
 </mapper>
 
