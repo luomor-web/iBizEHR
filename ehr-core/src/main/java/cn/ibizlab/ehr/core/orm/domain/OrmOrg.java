@@ -218,6 +218,7 @@ public class OrmOrg extends EntityMP implements Serializable {
     /**
      * 组织名称
      */
+    @DEField(preType = DEPredefinedFieldType.ORGNAME)
     @TableField(value = "orgname")
     @JSONField(name = "orgname")
     @JsonProperty("orgname")
@@ -379,13 +380,6 @@ public class OrmOrg extends EntityMP implements Serializable {
     public void setZzlx(String zzlx){
         this.zzlx = zzlx ;
         this.modify("zzlx",zzlx);
-    }
-    /**
-     * 设置 [组织名称]
-     */
-    public void setOrgname(String orgname){
-        this.orgname = orgname ;
-        this.modify("orgname",orgname);
     }
     /**
      * 设置 [组织机构标识]
