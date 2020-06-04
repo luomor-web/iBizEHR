@@ -47,11 +47,6 @@ export default class GLGridModel {
           dataType: 'TEXT',
         },
         {
-          name: 'cz',
-          prop: 'cz',
-          dataType: 'TEXT',
-        },
-        {
           name: 'srfmajortext',
           prop: 'pcmydntmxname',
           dataType: 'TEXT',

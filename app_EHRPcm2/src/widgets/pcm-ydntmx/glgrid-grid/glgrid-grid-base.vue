@@ -22,20 +22,26 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('cz')">
-                <el-table-column show-overflow-tooltip :prop="'cz'" :label="$t('entities.pcmydntmx.glgrid_grid.columns.cz')" :width="100"  :align="'center'" :sortable="'custom'">
+            <template v-if="getColumnState('uagridcolumn1')">
+                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.pcmydntmx.glgrid_grid.columns.uagridcolumn1')" :width="150"  :align="'center'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.pcmydntmx.glgrid_grid.columns.cz')}}
+                        {{$t('entities.pcmydntmx.glgrid_grid.columns.uagridcolumn1')}}
                       </span>
                     </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.cz}}</span>
+                    <template slot-scope="scope">
+                        <span>
+                            
+                            <a @click="uiAction(scope.row, 'FinishNT', $event)">
+                              <i class=''></i>
+                              {{$t('entities.pcmydntmx.glgrid_grid.uiactions.finishnt')}}
+                            </a>
+                        </span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pcmydntmx.glgrid_grid.columns.ygbh')" :width="130"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pcmydntmx.glgrid_grid.columns.ygbh')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmydntmx.glgrid_grid.columns.ygbh')}}
@@ -47,7 +53,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pcmydntmx.glgrid_grid.columns.pimpersonname')" :width="130"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pcmydntmx.glgrid_grid.columns.pimpersonname')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmydntmx.glgrid_grid.columns.pimpersonname')}}
@@ -71,7 +77,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('shortname')">
-                <el-table-column show-overflow-tooltip :prop="'shortname'" :label="$t('entities.pcmydntmx.glgrid_grid.columns.shortname')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'shortname'" :label="$t('entities.pcmydntmx.glgrid_grid.columns.shortname')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmydntmx.glgrid_grid.columns.shortname')}}
@@ -130,12 +136,7 @@
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <template v-if="actualIsOpenEdit">
-                            <app-form-item :error="gridItemsModel[$index][column.property].error">
-                                <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" :value="row[column.property]" style="" @on-change="(val1, val2) => { row[column.property] = val1; gridEditItemChange(row, column.property, val1, $index)}"></date-picker>
-                            </app-form-item>
-                        </template>
-                        <template v-if="!actualIsOpenEdit">
+                        <template >
                                 <app-span name='sxrq' editorType="DATEPICKER" :value="row.sxrq"></app-span>
                         </template>
                     </template>
@@ -149,20 +150,7 @@
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <template v-if="actualIsOpenEdit">
-                            <app-form-item :error="gridItemsModel[$index][column.property].error">
-                                <input-box 
-              :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
-              v-model="row[column.property]" 
-              style=""
-              type="text"
-              
-              
-              @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}">
-            </input-box>
-                            </app-form-item>
-                        </template>
-                        <template v-if="!actualIsOpenEdit">
+                        <template >
                                 <app-span name='reason' editorType="TEXTBOX" :value="row.reason"></app-span>
                         </template>
                     </template>
@@ -234,6 +222,7 @@ import { UIActionTool,Util } from '@/utils';
 import PcmYdntmxService from '@/service/pcm-ydntmx/pcm-ydntmx-service';
 import GLGridService from './glgrid-grid-service';
 
+import PcmYdntmxUIService from '@/uiservice/pcm-ydntmx/pcm-ydntmx-ui-service';
 import CodeListService from "@service/app/codelist-service";
 import { FormItemModel } from '@/model/form-detail';
 
@@ -322,6 +311,35 @@ export default class GLGridBase extends Vue implements ControlInterface {
      */
     public appEntityService: PcmYdntmxService = new PcmYdntmxService({ $store: this.$store });
     
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public grid_uagridcolumn1_u6fa402c_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:PcmYdntmxUIService  = new PcmYdntmxUIService();
+        curUIService.PcmYdntmx_FinishNT(datas,contextJO, paramJO,  $event, xData,this,"PcmYdntmx");
+    }
 
 
     /**
@@ -661,9 +679,9 @@ export default class GLGridBase extends Vue implements ControlInterface {
      */
     public allColumns: any[] = [
         {
-            name: 'cz',
+            name: 'uagridcolumn1',
             label: '操作',
-            langtag: 'entities.pcmydntmx.glgrid_grid.columns.cz',
+            langtag: 'entities.pcmydntmx.glgrid_grid.columns.uagridcolumn1',
             show: true,
             util: 'PX'
         },
@@ -1502,6 +1520,9 @@ export default class GLGridBase extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        if(Object.is('FinishNT', tag)) {
+            this.grid_uagridcolumn1_u6fa402c_click(row, tag, $event);
+        }
     }
 
     /**
@@ -1612,119 +1633,6 @@ export default class GLGridBase extends Vue implements ControlInterface {
         return successItems;
     }
 
-    /**
-     * 新建行
-     *
-     * @param {*} $event
-     * @returns {void}
-     * @memberof GLGrid
-     */
-    public newRow(args: any[], params?: any, $event?: any, xData?: any): void {
-        if(!this.loaddraftAction){
-            this.$Notice.error({ title: '错误', desc: 'PcmYdntmxNTGLGridView视图表格loaddraftAction参数未配置' });
-            return;
-        }
-        let _this = this;
-        Object.assign(args[0],{viewparams:this.viewparams});
-        let post: Promise<any> = this.service.loadDraft(this.loaddraftAction, JSON.parse(JSON.stringify(this.context)), args[0], this.showBusyIndicator);
-        post.then((response: any) => {
-            if (!response.status || response.status !== 200) {
-                if (response.errorMessage) {
-                    this.$Notice.error({ title: '错误', desc: response.errorMessage });
-                }
-                return;
-            }
-            const data = response.data;
-            data.rowDataState = "create";
-            _this.items.push(data);
-            _this.gridItemsModel.push(_this.getGridRowModel());
-        }).catch((response: any) => {
-            if (response && response.status === 401) {
-                return;
-            }
-            if (!response || !response.status || !response.data) {
-                this.$Notice.error({ title: '错误', desc: '系统异常' });
-                return;
-            }
-        });
-    }
-
-    /**
-     * 表格编辑项值变更
-     *  
-     * @param row 行数据
-     * @param {{ name: string, value: any }} $event
-     * @returns {void}
-     * @memberof GLGrid
-     */
-    public onGridItemValueChange(row: any,$event: { name: string, value: any },rowIndex: number): void {
-        if (!$event) {
-            return;
-        }
-        if (!$event.name || Object.is($event.name, '') || !row.hasOwnProperty($event.name)) {
-            return;
-        }
-        row[$event.name] = $event.value;
-        this.gridEditItemChange(row, $event.name, $event.value, rowIndex);
-    }
-
-    /**
-     * 表格编辑项值变化
-     *
-     * @public
-     * @param row 行数据
-     * @param property 列编辑项名
-     * @param row 列编辑项值
-     * @returns {void}
-     * @memberof GLGrid
-     */
-    public gridEditItemChange(row: any, property: string, value: any, rowIndex: number){
-        row.rowDataState = row.rowDataState ? row.rowDataState : "update" ;
-        this.validate(property,row,rowIndex);
-    }
-
-    /**
-     * 表格编辑项更新
-     *
-     * @param {string} mode 界面行为名称
-     * @param {*} [data={}] 请求数据
-     * @param {string[]} updateDetails 更新项
-     * @param {boolean} [showloading] 是否显示加载状态
-     * @returns {void}
-     * @memberof GLGrid
-     */
-    public updateGridEditItem(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
-        if (!mode || (mode && Object.is(mode, ''))) {
-            return;
-        }
-        const arg: any = JSON.parse(JSON.stringify(data));
-        Object.assign(arg,{viewparams:this.viewparams});
-        const post: Promise<any> = this.service.frontLogic(mode,JSON.parse(JSON.stringify(this.context)),arg, showloading);
-        post.then((response: any) => {
-            if (!response || response.status !== 200) {
-                this.$Notice.error({ title: '错误', desc: '表单项更新失败' });
-                return;
-            }
-            const _data: any = response.data;
-            if(!_data){
-                return;
-            }
-            updateDetails.forEach((name: string) => {
-                if (!_data.hasOwnProperty(name)) {
-                    return;
-                }
-                data[name] = _data[name];
-            });
-        }).catch((response: any) => {
-            if (response && response.status === 401) {
-                return;
-            }
-            if (!response || !response.status || !response.data) {
-                this.$Notice.error({ title: '错误', desc: '系统异常' });
-                return;
-            }
-        });
-    }
 
     /**
      * 获取对应行class

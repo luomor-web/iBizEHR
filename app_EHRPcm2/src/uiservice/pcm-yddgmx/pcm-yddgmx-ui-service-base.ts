@@ -141,7 +141,7 @@ export default class PcmYddgmxUIServiceBase extends UIService {
     }
 
     /**
-     * 结束
+     * 结束待岗
      *
      * @param {any[]} args 当前数据
      * @param {any} context 行为附加上下文

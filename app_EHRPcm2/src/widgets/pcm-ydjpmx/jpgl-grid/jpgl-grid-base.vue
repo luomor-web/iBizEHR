@@ -22,20 +22,26 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('cz')">
-                <el-table-column show-overflow-tooltip :prop="'cz'" :label="$t('entities.pcmydjpmx.jpgl_grid.columns.cz')" :width="100"  :align="'center'" :sortable="'custom'">
+            <template v-if="getColumnState('uagridcolumn1')">
+                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.pcmydjpmx.jpgl_grid.columns.uagridcolumn1')" :width="150"  :align="'center'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.pcmydjpmx.jpgl_grid.columns.cz')}}
+                        {{$t('entities.pcmydjpmx.jpgl_grid.columns.uagridcolumn1')}}
                       </span>
                     </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.cz}}</span>
+                    <template slot-scope="scope">
+                        <span>
+                            
+                            <a @click="uiAction(scope.row, 'JPWC', $event)">
+                              <i class=''></i>
+                              {{$t('entities.pcmydjpmx.jpgl_grid.uiactions.jpwc')}}
+                            </a>
+                        </span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pcmydjpmx.jpgl_grid.columns.ygbh')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pcmydjpmx.jpgl_grid.columns.ygbh')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmydjpmx.jpgl_grid.columns.ygbh')}}
@@ -47,7 +53,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pcmydjpmx.jpgl_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pcmydjpmx.jpgl_grid.columns.pimpersonname')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmydjpmx.jpgl_grid.columns.pimpersonname')}}
@@ -71,7 +77,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('shortname')">
-                <el-table-column show-overflow-tooltip :prop="'shortname'" :label="$t('entities.pcmydjpmx.jpgl_grid.columns.shortname')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'shortname'" :label="$t('entities.pcmydjpmx.jpgl_grid.columns.shortname')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmydjpmx.jpgl_grid.columns.shortname')}}
@@ -231,6 +237,7 @@ import { UIActionTool,Util } from '@/utils';
 import PcmYdjpmxService from '@/service/pcm-ydjpmx/pcm-ydjpmx-service';
 import JPGLService from './jpgl-grid-service';
 
+import PcmYdjpmxUIService from '@/uiservice/pcm-ydjpmx/pcm-ydjpmx-ui-service';
 import CodeListService from "@service/app/codelist-service";
 import { FormItemModel } from '@/model/form-detail';
 
@@ -319,6 +326,35 @@ export default class JPGLBase extends Vue implements ControlInterface {
      */
     public appEntityService: PcmYdjpmxService = new PcmYdjpmxService({ $store: this.$store });
     
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public grid_uagridcolumn1_u8c6b96c_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:PcmYdjpmxUIService  = new PcmYdjpmxUIService();
+        curUIService.PcmYdjpmx_JPWC(datas,contextJO, paramJO,  $event, xData,this,"PcmYdjpmx");
+    }
 
 
     /**
@@ -658,9 +694,9 @@ export default class JPGLBase extends Vue implements ControlInterface {
      */
     public allColumns: any[] = [
         {
-            name: 'cz',
+            name: 'uagridcolumn1',
             label: '操作',
-            langtag: 'entities.pcmydjpmx.jpgl_grid.columns.cz',
+            langtag: 'entities.pcmydjpmx.jpgl_grid.columns.uagridcolumn1',
             show: true,
             util: 'PX'
         },
@@ -1512,6 +1548,9 @@ export default class JPGLBase extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        if(Object.is('JPWC', tag)) {
+            this.grid_uagridcolumn1_u8c6b96c_click(row, tag, $event);
+        }
     }
 
     /**

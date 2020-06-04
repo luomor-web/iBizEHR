@@ -143,7 +143,7 @@ export default {
 	},
 	glgrid_grid: {
 		columns: {
-			cz: "操作",
+			uagridcolumn1: "操作",
 			ygbh: "员工编号",
 			pimpersonname: "员工姓名",
 			zzdzs: "所属组织",
@@ -157,6 +157,7 @@ export default {
 			sfhmd: "是否加入黑名单",
 		},
 		uiactions: {
+			finishlz: "确认离职",
 		},
 	},
 	default_searchform: {

@@ -37,11 +37,6 @@ export default class GLGridModel {
           dataType: 'INHERIT',
         },
         {
-          name: 'cz',
-          prop: 'cz',
-          dataType: 'TEXT',
-        },
-        {
           name: 'jsrq',
           prop: 'jsrq',
           dataType: 'DATE',
@@ -52,17 +47,17 @@ export default class GLGridModel {
           dataType: 'TEXT',
         },
         {
-          name: 'srfdataaccaction',
-          prop: 'pcmydbxmxid',
-          dataType: 'GUID',
-        },
-        {
           name: 'sxrq',
           prop: 'sxrq',
           dataType: 'INHERIT',
         },
         {
           name: 'srfkey',
+          prop: 'pcmydbxmxid',
+          dataType: 'GUID',
+        },
+        {
+          name: 'srfdataaccaction',
           prop: 'pcmydbxmxid',
           dataType: 'GUID',
         },

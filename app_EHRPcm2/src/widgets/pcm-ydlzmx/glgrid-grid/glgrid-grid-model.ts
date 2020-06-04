@@ -37,11 +37,6 @@ export default class GLGridModel {
           dataType: 'INHERIT',
         },
         {
-          name: 'cz',
-          prop: 'cz',
-          dataType: 'TEXT',
-        },
-        {
           name: 'yytype',
           prop: 'yytype',
           dataType: 'SSCODELIST',
@@ -77,11 +72,6 @@ export default class GLGridModel {
           dataType: 'PICKUP',
         },
         {
-          name: 'sfhmd',
-          prop: 'sfhmd',
-          dataType: 'YESNO',
-        },
-        {
           name: 'zzdzs',
           prop: 'zzdzs',
           dataType: 'INHERIT',
@@ -90,6 +80,11 @@ export default class GLGridModel {
           name: 'yytype_text',
           prop: 'yytype',
           dataType: 'SSCODELIST',
+        },
+        {
+          name: 'sfhmd',
+          prop: 'sfhmd',
+          dataType: 'YESNO',
         },
         {
           name: 'lxdh',

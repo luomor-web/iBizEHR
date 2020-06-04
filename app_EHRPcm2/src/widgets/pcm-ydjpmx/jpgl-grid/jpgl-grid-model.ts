@@ -47,11 +47,6 @@ export default class JPGLModel {
           dataType: 'SSCODELIST',
         },
         {
-          name: 'cz',
-          prop: 'cz',
-          dataType: 'TEXT',
-        },
-        {
           name: 'srfmajortext',
           prop: 'pcmydjpmxname',
           dataType: 'TEXT',

@@ -52,11 +52,6 @@ export default class DGGLGridModel {
           dataType: 'TEXT',
         },
         {
-          name: 'cz',
-          prop: 'cz',
-          dataType: 'TEXT',
-        },
-        {
           name: 'jsrq',
           prop: 'jsrq',
           dataType: 'DATE',

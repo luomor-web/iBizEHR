@@ -188,7 +188,7 @@ export default {
 	},
 	glgrid_grid: {
 		columns: {
-			cz: '操作',
+			uagridcolumn1: '操作',
 			ygbh: '员工编号',
 			pimpersonname: '员工姓名',
 			zzdzs: '所属组织',
@@ -201,6 +201,7 @@ export default {
 			checkstatus: '审核状态',
 		},
 		uiactions: {
+			finishnt: '结束',
 		},
 	},
 	default_searchform: {
@@ -280,16 +281,6 @@ export default {
 			tip: '退出',
 		},
 	},
-	ntglgridviewtoolbar2_toolbar: {
-		deuiaction2: {
-			caption: '保存',
-			tip: '保存',
-		},
-		deuiaction1: {
-			caption: '关闭行编辑',
-			tip: '关闭行编辑',
-		},
-	},
 	ntjlgridviewtoolbar_toolbar: {
 		deuiaction1_remove: {
 			caption: '删除',
@@ -316,10 +307,6 @@ export default {
 		deuiaction1_ntjl: {
 			caption: '内退记录',
 			tip: '内退记录',
-		},
-		deuiaction3: {
-			caption: '开启行编辑',
-			tip: '开启行编辑',
 		},
 		deuiaction6: {
 			caption: '导出',

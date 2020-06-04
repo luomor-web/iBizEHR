@@ -232,7 +232,7 @@ export default class PcmYdjpmxUIServiceBase extends UIService {
     }
 
     /**
-     * 确认
+     * 确认解聘
      *
      * @param {any[]} args 当前数据
      * @param {any} context 行为附加上下文
@@ -269,7 +269,7 @@ export default class PcmYdjpmxUIServiceBase extends UIService {
                     actionContext.$Notice.error({ title: '错误', desc: response.message });
                     return;
                 }
-                actionContext.$Notice.success({ title: '成功', desc: '确认成功！' });
+                actionContext.$Notice.success({ title: '成功', desc: '确认解聘成功！' });
 
                 const _this: any = actionContext;
                 if (xData && xData.refresh && xData.refresh instanceof Function) {

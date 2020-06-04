@@ -177,7 +177,7 @@ export default class PcmYdbxmxUIServiceBase extends UIService {
     }
 
     /**
-     * 结束
+     * 结束病休
      *
      * @param {any[]} args 当前数据
      * @param {any} context 行为附加上下文
