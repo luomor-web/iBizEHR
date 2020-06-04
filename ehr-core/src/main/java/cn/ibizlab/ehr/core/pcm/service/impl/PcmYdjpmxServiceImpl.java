@@ -45,6 +45,10 @@ import org.springframework.util.StringUtils;
 public class PcmYdjpmxServiceImpl extends ServiceImpl<PcmYdjpmxMapper, PcmYdjpmx> implements IPcmYdjpmxService {
 
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmYdjpmxSetFinishedLogic setfinishedLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -111,6 +115,13 @@ public class PcmYdjpmxServiceImpl extends ServiceImpl<PcmYdjpmxMapper, PcmYdjpmx
 
     @Override
     @Transactional
+    public PcmYdjpmx isFinished(PcmYdjpmx et) {
+        setfinishedLogic.execute(et);
+         return et ;
+    }
+
+    @Override
+    @Transactional
     public PcmYdjpmx get(String key) {
         PcmYdjpmx et = getById(key);
         if(et==null){
@@ -119,13 +130,6 @@ public class PcmYdjpmxServiceImpl extends ServiceImpl<PcmYdjpmxMapper, PcmYdjpmx
         }
         else{
         }
-        return et;
-    }
-
-    @Override
-    @Transactional
-    public PcmYdjpmx jPWC(PcmYdjpmx et) {
-        //自定义代码
         return et;
     }
 

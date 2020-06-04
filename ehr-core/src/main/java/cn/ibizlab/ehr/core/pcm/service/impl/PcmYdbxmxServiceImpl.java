@@ -45,6 +45,10 @@ import org.springframework.util.StringUtils;
 public class PcmYdbxmxServiceImpl extends ServiceImpl<PcmYdbxmxMapper, PcmYdbxmx> implements IPcmYdbxmxService {
 
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmYdbxmxSetFinishedLogic setfinishedLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -75,6 +79,7 @@ public class PcmYdbxmxServiceImpl extends ServiceImpl<PcmYdbxmxMapper, PcmYdbxmx
     @Override
     @Transactional
     public boolean update(PcmYdbxmx et) {
+        setfinishedLogic.execute(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pcmydbxmxid",et.getPcmydbxmxid())))
             return false;
         CachedBeanCopier.copy(get(et.getPcmydbxmxid()),et);

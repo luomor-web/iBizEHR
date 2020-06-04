@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmydntmxsetfinished" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmydntmxsetfinished">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmydntmxsetfinisheddefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmYdntmx" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmydntmxsetfinishedprepareparam1" id="168BD4B3-5E5B-499C-8164-08CA3A482F2D" implementation="http://www.jboss.org/drools/rule" name="设置参数准备"/>
+     <endEvent id="168BD4B3-5E5B-499C-8164-08CA3A482F2D_End" name="End"/>
+     <sequenceFlow id="168BD4B3-5E5B-499C-8164-08CA3A482F2D_End_Line" sourceRef="168BD4B3-5E5B-499C-8164-08CA3A482F2D" targetRef="168BD4B3-5E5B-499C-8164-08CA3A482F2D_End"/>
+     <startEvent id="DA9A0F93-6DB2-4634-A304-EEB81D5E477D" isInterrupting="true"/>
+     <sequenceFlow id="34C5151F-C75C-4980-B9BA-AC4BF497080C" sourceRef="DA9A0F93-6DB2-4634-A304-EEB81D5E477D" targetRef="168BD4B3-5E5B-499C-8164-08CA3A482F2D">
+     </sequenceFlow>
+    </process>
+</definitions>
+

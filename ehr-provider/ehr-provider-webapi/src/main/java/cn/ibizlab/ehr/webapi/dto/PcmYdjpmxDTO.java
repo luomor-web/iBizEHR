@@ -298,14 +298,6 @@ public class PcmYdjpmxDTO extends DTOBase implements Serializable {
     private String zzdzs;
 
     /**
-     * 属性 [FINISHED]
-     *
-     */
-    @JSONField(name = "finished")
-    @JsonProperty("finished")
-    private Integer finished;
-
-    /**
      * 属性 [YRANK]
      *
      */
@@ -344,6 +336,14 @@ public class PcmYdjpmxDTO extends DTOBase implements Serializable {
     @JSONField(name = "sfzfbcj")
     @JsonProperty("sfzfbcj")
     private Integer sfzfbcj;
+
+    /**
+     * 属性 [ISFINISHED]
+     *
+     */
+    @JSONField(name = "isfinished")
+    @JsonProperty("isfinished")
+    private String isfinished;
 
 
     /**
@@ -448,6 +448,14 @@ public class PcmYdjpmxDTO extends DTOBase implements Serializable {
     public void setSfzfbcj(Integer  sfzfbcj){
         this.sfzfbcj = sfzfbcj ;
         this.modify("sfzfbcj",sfzfbcj);
+    }
+
+    /**
+     * 设置 [ISFINISHED]
+     */
+    public void setIsfinished(String  isfinished){
+        this.isfinished = isfinished ;
+        this.modify("isfinished",isfinished);
     }
 
 

@@ -48,6 +48,10 @@ public class PcmYdlzmxServiceImpl extends ServiceImpl<PcmYdlzmxMapper, PcmYdlzmx
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonService;
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmYdlzmxSetFinishedLogic setfinishedLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -64,6 +68,13 @@ public class PcmYdlzmxServiceImpl extends ServiceImpl<PcmYdlzmxMapper, PcmYdlzmx
     public void updateBatch(List<PcmYdlzmx> list) {
         list.forEach(item->fillParentData(item));
         updateBatchById(list,batchSize);
+    }
+
+    @Override
+    @Transactional
+    public PcmYdlzmx isFinished(PcmYdlzmx et) {
+        setfinishedLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -105,13 +116,6 @@ public class PcmYdlzmxServiceImpl extends ServiceImpl<PcmYdlzmxMapper, PcmYdlzmx
     @Override
     public boolean checkKey(PcmYdlzmx et) {
         return (!ObjectUtils.isEmpty(et.getPcmydlzmxid()))&&(!Objects.isNull(this.getById(et.getPcmydlzmxid())));
-    }
-
-    @Override
-    @Transactional
-    public PcmYdlzmx finishLZ(PcmYdlzmx et) {
-        //自定义代码
-        return et;
     }
 
     @Override

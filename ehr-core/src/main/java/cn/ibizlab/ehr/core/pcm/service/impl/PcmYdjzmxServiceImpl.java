@@ -57,6 +57,14 @@ public class PcmYdjzmxServiceImpl extends ServiceImpl<PcmYdjzmxMapper, PcmYdjzmx
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmPostService ormpostService;
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmYdjzmxRyHgLogic ryhgLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmYdjzmxSetFinishedLogic setfinishedLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -122,9 +130,11 @@ public class PcmYdjzmxServiceImpl extends ServiceImpl<PcmYdjzmxMapper, PcmYdjzmx
     @Transactional
     public boolean update(PcmYdjzmx et) {
         fillParentData(et);
+        setfinishedLogic.execute(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pcmydjzmxid",et.getPcmydjzmxid())))
             return false;
         CachedBeanCopier.copy(get(et.getPcmydjzmxid()),et);
+        ryhgLogic.execute(et);
         return true;
     }
 

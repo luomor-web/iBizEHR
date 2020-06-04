@@ -62,6 +62,13 @@ public class PcmYdntmxSearchContext extends QueryWrapperContext<PcmYdntmx> {
             this.getSelectCond().like("bm", n_bm_like);
         }
     }
+	private String n_isfinished_eq;//[是否完成]
+	public void setN_isfinished_eq(String n_isfinished_eq) {
+        this.n_isfinished_eq = n_isfinished_eq;
+        if(!ObjectUtils.isEmpty(this.n_isfinished_eq)){
+            this.getSelectCond().eq("isfinished", n_isfinished_eq);
+        }
+    }
 
     /**
 	 * 启用快速搜索

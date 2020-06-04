@@ -105,6 +105,18 @@ public class PcmYdjpmxResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjpmx-IsFinished-all')")
+    @ApiOperation(value = "是否完成解聘", tags = {"异动解聘明细" },  notes = "是否完成解聘")
+	@RequestMapping(method = RequestMethod.POST, value = "/pcmydjpmxes/{pcmydjpmx_id}/isfinished")
+    @Transactional
+    public ResponseEntity<PcmYdjpmxDTO> isFinished(@PathVariable("pcmydjpmx_id") String pcmydjpmx_id, @RequestBody PcmYdjpmxDTO pcmydjpmxdto) {
+        PcmYdjpmx pcmydjpmx = pcmydjpmxMapping.toDomain(pcmydjpmxdto);
+        pcmydjpmx.setPcmydjpmxid(pcmydjpmx_id);
+        pcmydjpmx = pcmydjpmxService.isFinished(pcmydjpmx);
+        pcmydjpmxdto = pcmydjpmxMapping.toDto(pcmydjpmx);
+        return ResponseEntity.status(HttpStatus.OK).body(pcmydjpmxdto);
+    }
+
     @PostAuthorize("hasPermission(this.pcmydjpmxMapping.toDomain(returnObject.body),'ehr-PcmYdjpmx-Get')")
     @ApiOperation(value = "获取异动解聘明细", tags = {"异动解聘明细" },  notes = "获取异动解聘明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/pcmydjpmxes/{pcmydjpmx_id}")
@@ -112,18 +124,6 @@ public class PcmYdjpmxResource {
         PcmYdjpmx domain = pcmydjpmxService.get(pcmydjpmx_id);
         PcmYdjpmxDTO dto = pcmydjpmxMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
-    }
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdjpmx-JPWC-all')")
-    @ApiOperation(value = "解聘完成", tags = {"异动解聘明细" },  notes = "解聘完成")
-	@RequestMapping(method = RequestMethod.POST, value = "/pcmydjpmxes/{pcmydjpmx_id}/jpwc")
-    @Transactional
-    public ResponseEntity<PcmYdjpmxDTO> jPWC(@PathVariable("pcmydjpmx_id") String pcmydjpmx_id, @RequestBody PcmYdjpmxDTO pcmydjpmxdto) {
-        PcmYdjpmx pcmydjpmx = pcmydjpmxMapping.toDomain(pcmydjpmxdto);
-        pcmydjpmx.setPcmydjpmxid(pcmydjpmx_id);
-        pcmydjpmx = pcmydjpmxService.jPWC(pcmydjpmx);
-        pcmydjpmxdto = pcmydjpmxMapping.toDto(pcmydjpmx);
-        return ResponseEntity.status(HttpStatus.OK).body(pcmydjpmxdto);
     }
 
     @PreAuthorize("hasPermission(this.pcmydjpmxMapping.toDomain(#pcmydjpmxdto),'ehr-PcmYdjpmx-Create')")

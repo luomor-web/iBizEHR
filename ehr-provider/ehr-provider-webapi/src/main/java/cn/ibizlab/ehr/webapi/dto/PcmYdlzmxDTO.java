@@ -32,14 +32,6 @@ public class PcmYdlzmxDTO extends DTOBase implements Serializable {
     private Integer nl;
 
     /**
-     * 属性 [FINISHED]
-     *
-     */
-    @JSONField(name = "finished")
-    @JsonProperty("finished")
-    private Integer finished;
-
-    /**
      * 属性 [CHECKSTATUS]
      *
      */
@@ -321,6 +313,14 @@ public class PcmYdlzmxDTO extends DTOBase implements Serializable {
     @JsonProperty("lzmtrid")
     private String lzmtrid;
 
+    /**
+     * 属性 [ISFINISHED]
+     *
+     */
+    @JSONField(name = "isfinished")
+    @JsonProperty("isfinished")
+    private String isfinished;
+
 
     /**
      * 设置 [SFHMD]
@@ -400,6 +400,14 @@ public class PcmYdlzmxDTO extends DTOBase implements Serializable {
     public void setLzmtrid(String  lzmtrid){
         this.lzmtrid = lzmtrid ;
         this.modify("lzmtrid",lzmtrid);
+    }
+
+    /**
+     * 设置 [ISFINISHED]
+     */
+    public void setIsfinished(String  isfinished){
+        this.isfinished = isfinished ;
+        this.modify("isfinished",isfinished);
     }
 
 

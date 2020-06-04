@@ -32,8 +32,8 @@ public interface IPcmYdjpmxService extends IService<PcmYdjpmx>{
     boolean checkKey(PcmYdjpmx et) ;
     boolean save(PcmYdjpmx et) ;
     void saveBatch(List<PcmYdjpmx> list) ;
+    PcmYdjpmx isFinished(PcmYdjpmx et) ;
     PcmYdjpmx get(String key) ;
-    PcmYdjpmx jPWC(PcmYdjpmx et) ;
     boolean create(PcmYdjpmx et) ;
     void createBatch(List<PcmYdjpmx> list) ;
     boolean remove(String key) ;
