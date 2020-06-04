@@ -156,6 +156,11 @@ export default class XZJDEditFormModel {
         dataType: 'INHERIT',
       },
       {
+        name: 'isfinished',
+        prop: 'isfinished',
+        dataType: 'YESNO',
+      },
+      {
         name: 'pcmydjdmxid',
         prop: 'pcmydjdmxid',
         dataType: 'GUID',

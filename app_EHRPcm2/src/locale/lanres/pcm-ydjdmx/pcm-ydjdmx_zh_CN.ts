@@ -196,6 +196,7 @@ export default {
 			ormpostname: '借调岗位', 
 			ormpostid: '借调岗位标识', 
 			finished: '是否审核', 
+			isfinished: '是否完成', 
 			pcmydjdmxid: '异动借调明细标识', 
 		},
 		uiactions: {

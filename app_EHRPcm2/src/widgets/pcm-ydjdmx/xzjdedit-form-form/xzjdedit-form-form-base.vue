@@ -512,6 +512,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
         ormpostname: null,
         ormpostid: null,
         finished: null,
+        isfinished: null,
         pcmydjdmxid: null,
         pcmydjdmx:null,
     };
@@ -723,6 +724,12 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
             { required: false, type: 'number', message: '是否审核 值不能为空', trigger: 'change' },
             { required: false, type: 'number', message: '是否审核 值不能为空', trigger: 'blur' },
         ],
+        isfinished: [
+            { type: 'number', message: '是否完成 值必须为数值类型', trigger: 'change' },
+            { type: 'number', message: '是否完成 值必须为数值类型', trigger: 'blur' },
+            { required: false, type: 'number', message: '是否完成 值不能为空', trigger: 'change' },
+            { required: false, type: 'number', message: '是否完成 值不能为空', trigger: 'blur' },
+        ],
         pcmydjdmxid: [
             { type: 'string', message: '异动借调明细标识 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '异动借调明细标识 值必须为字符串类型', trigger: 'blur' },
@@ -799,6 +806,8 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
         ormpostid: new FormItemModel({ caption: '借调岗位标识', detailType: 'FORMITEM', name: 'ormpostid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         finished: new FormItemModel({ caption: '是否审核', detailType: 'FORMITEM', name: 'finished', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        isfinished: new FormItemModel({ caption: '是否完成', detailType: 'FORMITEM', name: 'isfinished', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         pcmydjdmxid: new FormItemModel({ caption: '异动借调明细标识', detailType: 'FORMITEM', name: 'pcmydjdmxid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -1141,6 +1150,18 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
     }
 
     /**
+     * 监控表单属性 isfinished 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof XZJDEditForm
+     */
+    @Watch('data.isfinished')
+    onIsfinishedChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'isfinished', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
      * 监控表单属性 pcmydjdmxid 值
      *
      * @param {*} newVal
@@ -1188,6 +1209,7 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
+
 
 
 
@@ -2130,6 +2152,9 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
     public createDefault(){                    
         if (this.data.hasOwnProperty('finished')) {
             this.data['finished'] = 0;
+        }
+        if (this.data.hasOwnProperty('isfinished')) {
+            this.data['isfinished'] = 0;
         }
     }
 

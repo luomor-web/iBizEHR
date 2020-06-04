@@ -62,6 +62,9 @@ export default class PcmYdjdmxServiceBase extends EntityService {
         if(context.ormorg && context.ormorgsector && context.pcmydjdmx){
             return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}/select`,isloading);
         }
+        if(context.pimperson && context.pcmydjdmx){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmydjdmxes/${context.pcmydjdmx}/select`,isloading);
+        }
         if(context.pimdistirbution && context.pcmydjdmx){
             return Http.getInstance().get(`/pimdistirbutions/${context.pimdistirbution}/pcmydjdmxes/${context.pcmydjdmx}/select`,isloading);
         }
@@ -98,6 +101,9 @@ export default class PcmYdjdmxServiceBase extends EntityService {
         }
         if(context.ormorg && context.ormorgsector && context.pcmydjdmx){
             return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
+        }
+        if(context.pimperson && context.pcmydjdmx){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
         }
         if(context.pimdistirbution && context.pcmydjdmx){
             return Http.getInstance().get(`/pimdistirbutions/${context.pimdistirbution}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
@@ -138,6 +144,9 @@ export default class PcmYdjdmxServiceBase extends EntityService {
         if(context.ormorg && context.ormorgsector && true){
             return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/getdraft`,isloading);
         }
+        if(context.pimperson && true){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmydjdmxes/getdraft`,isloading);
+        }
         if(context.pimdistirbution && true){
             return Http.getInstance().get(`/pimdistirbutions/${context.pimdistirbution}/pcmydjdmxes/getdraft`,isloading);
         }
@@ -176,6 +185,9 @@ export default class PcmYdjdmxServiceBase extends EntityService {
         }
         if(context.ormorg && context.ormorgsector && context.pcmydjdmx){
             return Http.getInstance().put(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}`,data,isloading);
+        }
+        if(context.pimperson && context.pcmydjdmx){
+            return Http.getInstance().put(`/pimpeople/${context.pimperson}/pcmydjdmxes/${context.pcmydjdmx}`,data,isloading);
         }
         if(context.pimdistirbution && context.pcmydjdmx){
             return Http.getInstance().put(`/pimdistirbutions/${context.pimdistirbution}/pcmydjdmxes/${context.pcmydjdmx}`,data,isloading);
@@ -216,6 +228,9 @@ export default class PcmYdjdmxServiceBase extends EntityService {
         }
         if(context.ormorg && context.ormorgsector && context.pcmydjdmx){
             return Http.getInstance().delete(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
+        }
+        if(context.pimperson && context.pcmydjdmx){
+            return Http.getInstance().delete(`/pimpeople/${context.pimperson}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
         }
         if(context.pimdistirbution && context.pcmydjdmx){
             return Http.getInstance().delete(`/pimdistirbutions/${context.pimdistirbution}/pcmydjdmxes/${context.pcmydjdmx}`,isloading);
@@ -285,6 +300,9 @@ export default class PcmYdjdmxServiceBase extends EntityService {
         if(context.ormorg && context.ormorgsector && context.pcmydjdmx){
             return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}/checkkey`,data,isloading);
         }
+        if(context.pimperson && context.pcmydjdmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmydjdmxes/${context.pcmydjdmx}/checkkey`,data,isloading);
+        }
         if(context.pimdistirbution && context.pcmydjdmx){
             return Http.getInstance().post(`/pimdistirbutions/${context.pimdistirbution}/pcmydjdmxes/${context.pcmydjdmx}/checkkey`,data,isloading);
         }
@@ -321,6 +339,9 @@ export default class PcmYdjdmxServiceBase extends EntityService {
         }
         if(context.ormorg && context.ormorgsector && context.pcmydjdmx){
             return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/${context.pcmydjdmx}/save`,data,isloading);
+        }
+        if(context.pimperson && context.pcmydjdmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmydjdmxes/${context.pcmydjdmx}/save`,data,isloading);
         }
         if(context.pimdistirbution && context.pcmydjdmx){
             return Http.getInstance().post(`/pimdistirbutions/${context.pimdistirbution}/pcmydjdmxes/${context.pcmydjdmx}/save`,data,isloading);
@@ -379,6 +400,15 @@ export default class PcmYdjdmxServiceBase extends EntityService {
                 delete data.srffrontuf;
             }
             return Http.getInstance().post(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes`,data,isloading);
+        }
+        if(context.pimperson && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmydjdmxes`,data,isloading);
         }
         if(context.pimdistirbution && true){
             if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -460,6 +490,10 @@ export default class PcmYdjdmxServiceBase extends EntityService {
             let tempData:any = JSON.parse(JSON.stringify(data));
             return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/fetchjdgldq`,tempData,isloading);
         }
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmydjdmxes/fetchjdgldq`,tempData,isloading);
+        }
         if(context.pimdistirbution && true){
             let tempData:any = JSON.parse(JSON.stringify(data));
             return Http.getInstance().get(`/pimdistirbutions/${context.pimdistirbution}/pcmydjdmxes/fetchjdgldq`,tempData,isloading);
@@ -506,6 +540,10 @@ export default class PcmYdjdmxServiceBase extends EntityService {
             let tempData:any = JSON.parse(JSON.stringify(data));
             return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/fetchjdlsjldq`,tempData,isloading);
         }
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmydjdmxes/fetchjdlsjldq`,tempData,isloading);
+        }
         if(context.pimdistirbution && true){
             let tempData:any = JSON.parse(JSON.stringify(data));
             return Http.getInstance().get(`/pimdistirbutions/${context.pimdistirbution}/pcmydjdmxes/fetchjdlsjldq`,tempData,isloading);
@@ -551,6 +589,10 @@ export default class PcmYdjdmxServiceBase extends EntityService {
         if(context.ormorg && context.ormorgsector && true){
             let tempData:any = JSON.parse(JSON.stringify(data));
             return Http.getInstance().get(`/ormorgs/${context.ormorg}/ormorgsectors/${context.ormorgsector}/pcmydjdmxes/fetchdefault`,tempData,isloading);
+        }
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmydjdmxes/fetchdefault`,tempData,isloading);
         }
         if(context.pimdistirbution && true){
             let tempData:any = JSON.parse(JSON.stringify(data));
