@@ -41,6 +41,7 @@ export class EntityServiceRegister {
     protected init(): void {
                 this.allEntityService.set('attendencetype', () => import('@/service/att-endence-type/att-endence-type-service'));
         this.allEntityService.set('vacleavedetail', () => import('@/service/vac-leave-detail/vac-leave-detail-service'));
+        this.allEntityService.set('personstatemgr', () => import('@/service/person-state-mgr/person-state-mgr-service'));
         this.allEntityService.set('vacleavetips', () => import('@/service/vac-leave-tips/vac-leave-tips-service'));
         this.allEntityService.set('ormorg', () => import('@/service/orm-org/orm-org-service'));
         this.allEntityService.set('attendancemreport', () => import('@/service/att-endance-mreport/att-endance-mreport-service'));
@@ -59,7 +60,6 @@ export class EntityServiceRegister {
         this.allEntityService.set('vacleavemanage', () => import('@/service/vac-leave-manage/vac-leave-manage-service'));
         this.allEntityService.set('attendancerecord', () => import('@/service/att-endance-record/att-endance-record-service'));
         this.allEntityService.set('pcmwzd0001', () => import('@/service/pcm-wzd0001/pcm-wzd0001-service'));
-        this.allEntityService.set('personstatemgr', () => import('@/service/person-state-mgr/person-state-mgr-service'));
     }
 
     /**

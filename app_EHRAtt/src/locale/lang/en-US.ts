@@ -1,5 +1,6 @@
 import attendencetype_en_US from '@locale/lanres/att-endence-type/att-endence-type_en_US';
 import vacleavedetail_en_US from '@locale/lanres/vac-leave-detail/vac-leave-detail_en_US';
+import personstatemgr_en_US from '@locale/lanres/person-state-mgr/person-state-mgr_en_US';
 import vacleavetips_en_US from '@locale/lanres/vac-leave-tips/vac-leave-tips_en_US';
 import ormorg_en_US from '@locale/lanres/orm-org/orm-org_en_US';
 import attendancemreport_en_US from '@locale/lanres/att-endance-mreport/att-endance-mreport_en_US';
@@ -18,7 +19,6 @@ import vacleacetype_en_US from '@locale/lanres/vac-leace-type/vac-leace-type_en_
 import vacleavemanage_en_US from '@locale/lanres/vac-leave-manage/vac-leave-manage_en_US';
 import attendancerecord_en_US from '@locale/lanres/att-endance-record/att-endance-record_en_US';
 import pcmwzd0001_en_US from '@locale/lanres/pcm-wzd0001/pcm-wzd0001_en_US';
-import personstatemgr_en_US from '@locale/lanres/person-state-mgr/person-state-mgr_en_US';
 import components_en_US from '@locale/lanres/components/components_en_US';
 import codelist_en_US from '@locale/lanres/codelist/codelist_en_US';
 import userCustom_en_US from '@locale/lanres/userCustom/userCustom_en_US';
@@ -96,6 +96,7 @@ export default {
     entities: {
         attendencetype: attendencetype_en_US,
         vacleavedetail: vacleavedetail_en_US,
+        personstatemgr: personstatemgr_en_US,
         vacleavetips: vacleavetips_en_US,
         ormorg: ormorg_en_US,
         attendancemreport: attendancemreport_en_US,
@@ -114,7 +115,6 @@ export default {
         vacleavemanage: vacleavemanage_en_US,
         attendancerecord: attendancerecord_en_US,
         pcmwzd0001: pcmwzd0001_en_US,
-        personstatemgr: personstatemgr_en_US,
     },
     components: components_en_US,
     codelist: codelist_en_US,

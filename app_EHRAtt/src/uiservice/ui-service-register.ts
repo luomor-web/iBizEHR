@@ -41,6 +41,7 @@ export class UIServiceRegister {
     protected init(): void {
                 this.allUIService.set('attendencetype', () => import('@/uiservice/att-endence-type/att-endence-type-ui-service'));
         this.allUIService.set('vacleavedetail', () => import('@/uiservice/vac-leave-detail/vac-leave-detail-ui-service'));
+        this.allUIService.set('personstatemgr', () => import('@/uiservice/person-state-mgr/person-state-mgr-ui-service'));
         this.allUIService.set('vacleavetips', () => import('@/uiservice/vac-leave-tips/vac-leave-tips-ui-service'));
         this.allUIService.set('ormorg', () => import('@/uiservice/orm-org/orm-org-ui-service'));
         this.allUIService.set('attendancemreport', () => import('@/uiservice/att-endance-mreport/att-endance-mreport-ui-service'));
@@ -59,7 +60,6 @@ export class UIServiceRegister {
         this.allUIService.set('vacleavemanage', () => import('@/uiservice/vac-leave-manage/vac-leave-manage-ui-service'));
         this.allUIService.set('attendancerecord', () => import('@/uiservice/att-endance-record/att-endance-record-ui-service'));
         this.allUIService.set('pcmwzd0001', () => import('@/uiservice/pcm-wzd0001/pcm-wzd0001-ui-service'));
-        this.allUIService.set('personstatemgr', () => import('@/uiservice/person-state-mgr/person-state-mgr-ui-service'));
     }
 
     /**
