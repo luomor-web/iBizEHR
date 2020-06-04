@@ -81,7 +81,7 @@
 </i-col>
 <i-col v-show="detailsModel.sfzgzc.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfzgzc' :itemRules="this.rules.sfzgzc" class='' :caption="$t('entities.pimtitle.main_3_form.details.sfzgzc')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfzgzc.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.sfzgzc"  :disabled="detailsModel.sfzgzc.disabled"  name="sfzgzc" tag='EhrCodeList0054' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group v-model="data.sfzgzc"  :disabled="detailsModel.sfzgzc.disabled"  name="sfzgzc" tag='EhrCodeList0400' codelistType='STATIC'  style=""></app-radio-group>
 </app-form-item>
 
 </i-col>

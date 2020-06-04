@@ -81,13 +81,13 @@
 </i-col>
 <i-col v-show="detailsModel.sfdyxl.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfdyxl' :itemRules="this.rules.sfdyxl" class='' :caption="$t('entities.pimeducation.main_form.details.sfdyxl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfdyxl.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.sfdyxl"  :disabled="detailsModel.sfdyxl.disabled"  name="sfdyxl" tag='EhrCodeList0054' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group v-model="data.sfdyxl"  :disabled="detailsModel.sfdyxl.disabled"  name="sfdyxl" tag='EhrCodeList0400' codelistType='STATIC'  style=""></app-radio-group>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.sfzgxl.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfzgxl' :itemRules="this.rules.sfzgxl" class='' :caption="$t('entities.pimeducation.main_form.details.sfzgxl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfzgxl.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.sfzgxl"  :disabled="detailsModel.sfzgxl.disabled"  name="sfzgxl" tag='EhrCodeList0054' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group v-model="data.sfzgxl"  :disabled="detailsModel.sfzgxl.disabled"  name="sfzgxl" tag='EhrCodeList0400' codelistType='STATIC'  style=""></app-radio-group>
 </app-form-item>
 
 </i-col>

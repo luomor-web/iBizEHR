@@ -355,7 +355,7 @@
 <i-col v-show="detailsModel.hmd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hmd' :itemRules="this.rules.hmd" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.hmd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hmd.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='hmd'
-:value="data.hmd" tag='EhrCodeList0054' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" style=""></app-span>
+:value="data.hmd" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" style=""></app-span>
 </app-form-item>
 
 </i-col>

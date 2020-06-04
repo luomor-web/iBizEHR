@@ -81,7 +81,7 @@
 </i-col>
 <i-col v-show="detailsModel.sfzs.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfzs' :itemRules="this.rules.sfzs" class='' :caption="$t('entities.trmtrainperson.main_form.details.sfzs')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfzs.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.sfzs" :data="data" :itemParam="{}" :disabled="detailsModel.sfzs.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0054' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
+     <dropdown-list v-model="data.sfzs" :data="data" :itemParam="{}" :disabled="detailsModel.sfzs.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0400' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
 </app-form-item>
 
 </i-col>

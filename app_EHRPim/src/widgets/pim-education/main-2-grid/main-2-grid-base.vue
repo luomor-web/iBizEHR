@@ -143,7 +143,7 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                         <template >
-            <codelist :value="row.sfdyxl" tag='EhrCodeList0054' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+            <codelist :value="row.sfdyxl" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -157,7 +157,7 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                         <template >
-            <codelist :value="row.sfzgxl" tag='EhrCodeList0054' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+            <codelist :value="row.sfzgxl" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -1144,19 +1144,19 @@ export default class Main_2Base extends Vue implements ControlInterface {
           },
           {
             name: 'sfdyxl',
-            srfkey: 'EhrCodeList0054',
+            srfkey: 'EhrCodeList0400',
             codelistType : 'STATIC',
+            renderMode: 'number',
             textSeparator: '、',
-            renderMode: 'string',
-            valueSeparator: ";",
+            valueSeparator: ',',
           },
           {
             name: 'sfzgxl',
-            srfkey: 'EhrCodeList0054',
+            srfkey: 'EhrCodeList0400',
             codelistType : 'STATIC',
+            renderMode: 'number',
             textSeparator: '、',
-            renderMode: 'string',
-            valueSeparator: ";",
+            valueSeparator: ',',
           },
         ];
         let _this = this;

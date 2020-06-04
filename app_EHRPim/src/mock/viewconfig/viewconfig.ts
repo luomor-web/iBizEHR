@@ -3068,7 +3068,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "人员信息",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PIM",
-            "viewname": "PIMPERSONTXQREditView",
+            "viewname": "PimPersonTXQREditView",
             "viewtag": "bcbbd9e4830d5e5c37306d5084f1d674"
         },
         "pimarchivespimdangagridview": {

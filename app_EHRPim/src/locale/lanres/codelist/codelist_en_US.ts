@@ -139,11 +139,6 @@ export default {
         '20': '已归还',
         empty: '',
     },
-    EhrCodeList0054: {
-        '1': '是',
-        '0': '否',
-        empty: '',
-    },
     EhrCodeList0019: {
         '10': '机关部门',
         '20': '项目部门',
@@ -214,6 +209,11 @@ export default {
     EhrCodeList0126: {
         '10': '因公',
         '20': '因私',
+        empty: '',
+    },
+    EhrCodeList0400: {
+        1: '是',
+        0: '否',
         empty: '',
     },
     EhrCodeList0138: {

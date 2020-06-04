@@ -4,14 +4,14 @@
   <row>
     <i-col span="20" class="form-content">
       <row>
-                    <i-col v-show="detailsModel.n_zzdzs_like.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-              <app-form-item name='n_zzdzs_like' :itemRules="this.rules.n_zzdzs_like" class='' :caption="$t('entities.ormorgsector.default_searchform.details.n_zzdzs_like')" uiStyle="DEFAULT" :labelWidth="100" :isShowCaption="true" :error="detailsModel.n_zzdzs_like.error" :isEmptyCaption="false" labelPos="LEFT"> 
-              <input-box v-model="data.n_zzdzs_like"  @enter="onEnter($event)"    :disabled="detailsModel.n_zzdzs_like.disabled" type='text'  style=""></input-box>
+                    <i-col v-show="detailsModel.n_orgname_like.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
+              <app-form-item name='n_orgname_like' :itemRules="this.rules.n_orgname_like" class='' :caption="$t('entities.ormorgsector.default_searchform.details.n_orgname_like')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_orgname_like.error" :isEmptyCaption="false" labelPos="LEFT"> 
+              <input-box v-model="data.n_orgname_like"  @enter="onEnter($event)"    :disabled="detailsModel.n_orgname_like.disabled" type='text'  style=""></input-box>
           </app-form-item>
           
           </i-col>
           <i-col v-show="detailsModel.n_orgsectorname_like.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-              <app-form-item name='n_orgsectorname_like' :itemRules="this.rules.n_orgsectorname_like" class='' :caption="$t('entities.ormorgsector.default_searchform.details.n_orgsectorname_like')" uiStyle="DEFAULT" :labelWidth="100" :isShowCaption="true" :error="detailsModel.n_orgsectorname_like.error" :isEmptyCaption="false" labelPos="LEFT"> 
+              <app-form-item name='n_orgsectorname_like' :itemRules="this.rules.n_orgsectorname_like" class='' :caption="$t('entities.ormorgsector.default_searchform.details.n_orgsectorname_like')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_orgsectorname_like.error" :isEmptyCaption="false" labelPos="LEFT"> 
               <input-box v-model="data.n_orgsectorname_like"  @enter="onEnter($event)"    :disabled="detailsModel.n_orgsectorname_like.disabled" type='text'  style=""></input-box>
           </app-form-item>
           
@@ -256,7 +256,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @memberof DefaultBase
      */
     public data: any = {
-        n_zzdzs_like: null,
+        n_orgname_like: null,
         n_orgsectorname_like: null,
     };
 
@@ -267,11 +267,11 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @memberof DefaultBase
      */
     public rules: any = {
-        n_zzdzs_like: [
-            { type: 'string', message: '组织简称 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '组织简称 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '组织简称 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '组织简称 值不能为空', trigger: 'blur' },
+        n_orgname_like: [
+            { type: 'string', message: '组织全称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '组织全称 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '组织全称 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '组织全称 值不能为空', trigger: 'blur' },
         ],
         n_orgsectorname_like: [
             { type: 'string', message: '部门/项目部 值必须为字符串类型', trigger: 'change' },
@@ -290,22 +290,22 @@ export default class DefaultBase extends Vue implements ControlInterface {
     public detailsModel: any = {
         formpage1: new FormPageModel({ caption: '常规条件', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
-        n_zzdzs_like: new FormItemModel({ caption: '组织简称', detailType: 'FORMITEM', name: 'n_zzdzs_like', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        n_orgname_like: new FormItemModel({ caption: '组织全称', detailType: 'FORMITEM', name: 'n_orgname_like', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         n_orgsectorname_like: new FormItemModel({ caption: '部门/项目部', detailType: 'FORMITEM', name: 'n_orgsectorname_like', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
     };
 
     /**
-     * 监控表单属性 n_zzdzs_like 值
+     * 监控表单属性 n_orgname_like 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof DefaultBase
      */
-    @Watch('data.n_zzdzs_like')
-    onN_zzdzs_likeChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'n_zzdzs_like', newVal: newVal, oldVal: oldVal });
+    @Watch('data.n_orgname_like')
+    onN_orgname_likeChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'n_orgname_like', newVal: newVal, oldVal: oldVal });
     }
 
     /**

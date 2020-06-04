@@ -131,13 +131,13 @@
 </i-col>
 <i-col v-show="detailsModel.firsteducation.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='firsteducation' :itemRules="this.rules.firsteducation" class='' :caption="$t('entities.pcmdetail.main_form.details.firsteducation')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.firsteducation.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.firsteducation" :data="data" :itemParam="{}" :disabled="detailsModel.firsteducation.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0054' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
+     <dropdown-list v-model="data.firsteducation" :data="data" :itemParam="{}" :disabled="detailsModel.firsteducation.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0400' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.sfzgxl.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfzgxl' :itemRules="this.rules.sfzgxl" class='' :caption="$t('entities.pcmdetail.main_form.details.sfzgxl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfzgxl.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.sfzgxl" :data="data" :itemParam="{}" :disabled="detailsModel.sfzgxl.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0054' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
+     <dropdown-list v-model="data.sfzgxl" :data="data" :itemParam="{}" :disabled="detailsModel.sfzgxl.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0400' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -289,7 +289,7 @@
 </i-col>
 <i-col v-show="detailsModel.sfzckjs.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfzckjs' :itemRules="this.rules.sfzckjs" class='' :caption="$t('entities.pcmdetail.main_form.details.sfzckjs')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfzckjs.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.sfzckjs" :data="data" :itemParam="{}" :disabled="detailsModel.sfzckjs.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0054' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
+     <dropdown-list v-model="data.sfzckjs" :data="data" :itemParam="{}" :disabled="detailsModel.sfzckjs.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0400' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
 </app-form-item>
 
 </i-col>

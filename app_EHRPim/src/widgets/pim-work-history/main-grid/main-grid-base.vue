@@ -197,11 +197,11 @@
                     <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
                             <app-form-item :error="gridItemsModel[$index][column.property].error">
-                                 <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" style="width: 100px;" tag='EhrCodeList0054' codelistType='STATIC' placeholder='请选择...' @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}"></dropdown-list>
+                                 <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" style="width: 100px;" tag='EhrCodeList0400' codelistType='STATIC' placeholder='请选择...' @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}"></dropdown-list>
                             </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
-            <codelist :value="row.experience" tag='EhrCodeList0054' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+            <codelist :value="row.experience" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -1187,11 +1187,11 @@ export default class MainBase extends Vue implements ControlInterface {
           },
           {
             name: 'experience',
-            srfkey: 'EhrCodeList0054',
+            srfkey: 'EhrCodeList0400',
             codelistType : 'STATIC',
+            renderMode: 'number',
             textSeparator: '、',
-            renderMode: 'string',
-            valueSeparator: ";",
+            valueSeparator: ',',
           },
         ];
         let _this = this;

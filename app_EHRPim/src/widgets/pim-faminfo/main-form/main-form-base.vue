@@ -74,7 +74,7 @@
 </i-col>
 <i-col v-show="detailsModel.sruvivors.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sruvivors' :itemRules="this.rules.sruvivors" class='' :caption="$t('entities.pimfaminfo.main_form.details.sruvivors')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sruvivors.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.sruvivors"  :disabled="detailsModel.sruvivors.disabled"  name="sruvivors" tag='EhrCodeList0054' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group v-model="data.sruvivors"  :disabled="detailsModel.sruvivors.disabled"  name="sruvivors" tag='EhrCodeList0400' codelistType='STATIC'  style=""></app-radio-group>
 </app-form-item>
 
 </i-col>

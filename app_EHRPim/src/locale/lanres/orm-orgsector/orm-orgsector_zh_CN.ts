@@ -121,7 +121,7 @@ export default {
 	default_searchform: {
 		details: {
 			formpage1: '常规条件', 
-			n_zzdzs_like: '组织简称', 
+			n_orgname_like: '组织全称', 
 			n_orgsectorname_like: '部门/项目部', 
 		},
 		uiactions: {
