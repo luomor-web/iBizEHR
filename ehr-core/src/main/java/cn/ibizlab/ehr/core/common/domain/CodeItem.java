@@ -41,6 +41,7 @@ public class CodeItem extends EntityMP implements Serializable {
     /**
      * 排序值
      */
+    @DEField(preType = DEPredefinedFieldType.ORDERVALUE)
     @TableField(value = "ordervalue")
     @JSONField(name = "ordervalue")
     @JsonProperty("ordervalue")
@@ -162,13 +163,6 @@ public class CodeItem extends EntityMP implements Serializable {
 
 
 
-    /**
-     * 设置 [排序值]
-     */
-    public void setOrdervalue(Integer ordervalue){
-        this.ordervalue = ordervalue ;
-        this.modify("ordervalue",ordervalue);
-    }
     /**
      * 设置 [快捷输入]
      */

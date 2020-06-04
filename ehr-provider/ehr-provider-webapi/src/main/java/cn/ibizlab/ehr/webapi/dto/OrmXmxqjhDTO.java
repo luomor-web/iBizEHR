@@ -627,14 +627,6 @@ public class OrmXmxqjhDTO extends DTOBase implements Serializable {
     }
 
     /**
-     * 设置 [ORDERVALUE]
-     */
-    public void setOrdervalue(Integer  ordervalue){
-        this.ordervalue = ordervalue ;
-        this.modify("ordervalue",ordervalue);
-    }
-
-    /**
      * 设置 [XMBJC]
      */
     public void setXmbjc(String  xmbjc){

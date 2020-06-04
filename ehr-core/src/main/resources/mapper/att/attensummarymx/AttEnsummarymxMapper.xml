@@ -29,14 +29,14 @@
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`ATTENSUMMARYMXID`, t1.`ATTENSUMMARYMXNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`KQLX`, t1.`SJTS`, t1.`TS`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ATTENSUMMARYMX` t1  
-				 WHERE 	t1.ENABLE = 1
+				 WHERE 	t1.enable = 1
 			]]>
     </sql>
 
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`ATTENSUMMARYMXID`, t1.`ATTENSUMMARYMXNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`KQLX`, t1.`SJTS`, t1.`TS`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ATTENSUMMARYMX` t1  
-				 WHERE 	t1.ENABLE = 1
+				 WHERE 	t1.enable = 1
 			]]>
     </sql>
 

@@ -37,7 +37,7 @@
     <!--数据查询[CurND]-->
     <sql id="CurND" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ND`, t1.`PCMXKMLID`, t1.`PCMXKMLNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`XKML` FROM `T_PCMXKML` t1  
-				 WHERE 	( t1.`ND` =  #{srf.webcontext.nodeid} )
+				 WHERE 	( t1.`nd` =  #{srf.webcontext.nodeid} )
 			]]>
     </sql>
 

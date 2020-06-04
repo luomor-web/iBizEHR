@@ -64,6 +64,7 @@ public class PimGwType extends EntityMP implements Serializable {
     /**
      * 排序值
      */
+    @DEField(preType = DEPredefinedFieldType.ORDERVALUE)
     @TableField(value = "ordervalue")
     @JSONField(name = "ordervalue")
     @JsonProperty("ordervalue")
@@ -126,13 +127,6 @@ public class PimGwType extends EntityMP implements Serializable {
     public void setGwlx(String gwlx){
         this.gwlx = gwlx ;
         this.modify("gwlx",gwlx);
-    }
-    /**
-     * 设置 [排序值]
-     */
-    public void setOrdervalue(Integer ordervalue){
-        this.ordervalue = ordervalue ;
-        this.modify("ordervalue",ordervalue);
     }
 
 }

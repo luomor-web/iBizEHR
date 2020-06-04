@@ -38,14 +38,14 @@
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`BUDGET`, t1.`BUDGETID`, t1.`BUDGETNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YEAR` FROM `T_BUDGET` t1  
-				 WHERE 	t1.ENABLE = 1
+				 WHERE 	t1.enable = 1
 			]]>
     </sql>
 
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`BUDGET`, t1.`BUDGETID`, t1.`BUDGETNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YEAR` FROM `T_BUDGET` t1  
-				 WHERE 	t1.ENABLE = 1
+				 WHERE 	t1.enable = 1
 			]]>
     </sql>
 

@@ -28,14 +28,14 @@
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`ARCHIVESMANAGEID`, t1.`ARCHIVESMANAGENAME`, t1.`ARCHIVESNO`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ARCHIVESMANAGE` t1  
-				 WHERE 	t1.ENABLE = 1
+				 WHERE 	t1.enable = 1
 			]]>
     </sql>
 
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`ARCHIVESMANAGEID`, t1.`ARCHIVESMANAGENAME`, t1.`ARCHIVESNO`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ARCHIVESMANAGE` t1  
-				 WHERE 	t1.ENABLE = 1
+				 WHERE 	t1.enable = 1
 			]]>
     </sql>
 

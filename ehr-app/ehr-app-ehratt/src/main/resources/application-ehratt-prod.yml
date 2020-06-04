@@ -11,6 +11,10 @@ zuul:
       path: /vacleavedetails/**
       serviceId: ehr-webapi
       stripPrefix: false
+    personstatemgr:
+      path: /personstatemgrs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     vacleavetips:
       path: /vacleavetips/**
       serviceId: ehr-webapi
@@ -81,10 +85,6 @@ zuul:
       stripPrefix: false
     wzd0001:
       path: /pcmwzd0001s/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    personstatemgr:
-      path: /personstatemgrs/**
       serviceId: ehr-webapi
       stripPrefix: false
     loginv7:

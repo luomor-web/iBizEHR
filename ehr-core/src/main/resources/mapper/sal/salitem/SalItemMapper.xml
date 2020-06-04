@@ -38,14 +38,14 @@
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`SALITEMID`, t1.`SALITEMNAME`, t1.`SALSUBJECTID`, t11.`SALSUBJECTNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH` FROM `T_SALITEM` t1  LEFT JOIN T_SALSUBJECT t11 ON t1.SALSUBJECTID = t11.SALSUBJECTID  
-				 WHERE 	t1.ENABLE = 1
+				 WHERE 	t1.enable = 1
 			]]>
     </sql>
 
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`SALITEMID`, t1.`SALITEMNAME`, t1.`SALSUBJECTID`, t11.`SALSUBJECTNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH` FROM `T_SALITEM` t1  LEFT JOIN T_SALSUBJECT t11 ON t1.SALSUBJECTID = t11.SALSUBJECTID  
-				 WHERE 	t1.ENABLE = 1
+				 WHERE 	t1.enable = 1
 			]]>
     </sql>
 

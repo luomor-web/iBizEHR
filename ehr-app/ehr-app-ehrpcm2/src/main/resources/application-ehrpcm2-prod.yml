@@ -71,6 +71,10 @@ zuul:
       path: /pcmddsqdmxes/**
       serviceId: ehr-webapi
       stripPrefix: false
+    pcmreason:
+      path: /pcmreasons/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     pcmydntmx:
       path: /pcmydntmxes/**
       serviceId: ehr-webapi

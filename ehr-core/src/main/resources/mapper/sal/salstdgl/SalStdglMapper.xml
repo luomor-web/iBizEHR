@@ -38,14 +38,14 @@
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JSGL`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`QSGL`, t1.`SALSTDGLID`, t1.`SALSTDGLNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SALSTDGL` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
-				 WHERE 	t1.ENABLE = 1
+				 WHERE 	t1.enable = 1
 			]]>
     </sql>
 
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JSGL`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`QSGL`, t1.`SALSTDGLID`, t1.`SALSTDGLNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SALSTDGL` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
-				 WHERE 	t1.ENABLE = 1
+				 WHERE 	t1.enable = 1
 			]]>
     </sql>
 

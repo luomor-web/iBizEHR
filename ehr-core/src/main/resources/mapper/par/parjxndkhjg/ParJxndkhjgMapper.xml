@@ -53,7 +53,7 @@
     <!--数据查询[LastTwoYear]-->
     <sql id="LastTwoYear" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`KHND`, t1.`KHPGDJ`, t1.`KHZQ`, t1.`PARJXNDKHJGID`, t1.`PARJXNDKHJGNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PM`, t1.`SFTX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`ZF` FROM `T_PARJXNDKHJG` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
-				 WHERE 	( t1.`KHZQ` = '20' )
+				 WHERE 	( t1.`khzq` = '20' )
 			]]>
     </sql>
 

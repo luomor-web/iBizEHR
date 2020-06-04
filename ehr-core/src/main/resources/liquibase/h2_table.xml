@@ -8811,7 +8811,7 @@
 
 
     <!--输出实体[PCMYDJPMX]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmydjpmx-28-226">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmydjpmx-53-226">
         <createTable tableName="T_PCMYDJPMX">
                 <column name="JSRQ" remarks="" type="VARCHAR(100)">
                 </column>

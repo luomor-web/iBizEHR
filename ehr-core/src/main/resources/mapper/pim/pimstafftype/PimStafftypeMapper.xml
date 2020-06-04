@@ -37,22 +37,22 @@
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`PIMSTAFFTYPEID`, t1.`PIMSTAFFTYPENAME`, t1.`SBM`, t1.`SHGZ`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PIMSTAFFTYPE` t1  
-				 WHERE 	t1.ENABLE = 1
-					 AND ( t1.`SBM` <> 'BX' )
+				 WHERE 	t1.enable = 1
+					 AND ( t1.`sbm` <> 'bx' )
 			]]>
     </sql>
 
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`PIMSTAFFTYPEID`, t1.`PIMSTAFFTYPENAME`, t1.`SBM`, t1.`SHGZ`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PIMSTAFFTYPE` t1  
-				 WHERE 	t1.ENABLE = 1
+				 WHERE 	t1.enable = 1
 			]]>
     </sql>
 
     <!--数据查询[YPZ]-->
     <sql id="YPZ" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`PIMSTAFFTYPEID`, t1.`PIMSTAFFTYPENAME`, t1.`SBM`, t1.`SHGZ`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PIMSTAFFTYPE` t1  
-				 WHERE 	t1.ENABLE = 1
+				 WHERE 	t1.enable = 1
 			]]>
     </sql>
 
