@@ -1,0 +1,56 @@
+package cn.ibizlab.ehr.pcm.logic.pcmydjdmxlogic.newdisinfo;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pim.domain.PimDistirbution pcmydjdmxnewdisinfopimdistirbution;
+global cn.ibizlab.ehr.core.pcm.domain.PcmYdjdmx pcmydjdmxnewdisinfodefault;
+global cn.ibizlab.ehr.core.pim.service.IPimDistirbutionService pimdistirbutionservice;
+global cn.ibizlab.ehr.core.pcm.service.IPcmYdjdmxService iBzSysPcmydjdmxDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[创建次分配信息]
+rule "deaction1"
+ruleflow-group "pcmydjdmxnewdisinfodeaction1"
+    when
+    then
+    pimdistirbutionservice.create(pcmydjdmxnewdisinfopimdistirbution);
+    update(pcmydjdmxnewdisinfopimdistirbution);//更新fact中变量值
+    update(pcmydjdmxnewdisinfodefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[设置分配参数变量]
+rule "prepareparam1"
+ruleflow-group "pcmydjdmxnewdisinfoprepareparam1"
+    when
+    then
+    pcmydjdmxnewdisinfopimdistirbution.set("pimpersonid",pcmydjdmxnewdisinfodefault.get("pimpersonid"));
+    pcmydjdmxnewdisinfopimdistirbution.set("pimdistirbutionname",pcmydjdmxnewdisinfodefault.get("pimpersonname"));
+    pcmydjdmxnewdisinfopimdistirbution.set("yzzid",pcmydjdmxnewdisinfodefault.get("zzid"));
+    pcmydjdmxnewdisinfopimdistirbution.set("ybmid",pcmydjdmxnewdisinfodefault.get("bmid"));
+    pcmydjdmxnewdisinfopimdistirbution.set("ygw",pcmydjdmxnewdisinfodefault.get("ygw"));
+    pcmydjdmxnewdisinfopimdistirbution.set("yzw",pcmydjdmxnewdisinfodefault.get("yzw"));
+    pcmydjdmxnewdisinfopimdistirbution.set("ormorgid",pcmydjdmxnewdisinfodefault.get("ormorgid"));
+    pcmydjdmxnewdisinfopimdistirbution.set("ormorgsectorid",pcmydjdmxnewdisinfodefault.get("ormorgsectorid"));
+    pcmydjdmxnewdisinfopimdistirbution.set("ormdutyid",pcmydjdmxnewdisinfodefault.get("ormdutyid"));
+    pcmydjdmxnewdisinfopimdistirbution.set("ormpostid",pcmydjdmxnewdisinfodefault.get("ormpostid"));
+    pcmydjdmxnewdisinfopimdistirbution.set("rzkssj",pcmydjdmxnewdisinfodefault.get("jdksrq"));
+    pcmydjdmxnewdisinfopimdistirbution.set("rzjssj",pcmydjdmxnewdisinfodefault.get("jdjsrq"));
+    pcmydjdmxnewdisinfopimdistirbution.set("fplx","CFP");
+    pcmydjdmxnewdisinfopimdistirbution.set("cfplx","10");
+    pcmydjdmxnewdisinfopimdistirbution.set("fpzt","YXFP");
+    pcmydjdmxnewdisinfopimdistirbution.set("ydmxid",pcmydjdmxnewdisinfodefault.get("pcmydjdmxid"));
+    pcmydjdmxnewdisinfopimdistirbution.set("isoutrecord","0");
+    update(pcmydjdmxnewdisinfopimdistirbution);//更新fact中变量值
+    update(pcmydjdmxnewdisinfodefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pcmydjdmxnewdisinfobegin"
+    when
+    then
+    end
+

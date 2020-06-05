@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>ehr</artifactId>
+        <groupId>cn.ibizlab.ehr</groupId>
+        <version>1.0.0.0</version>
+    </parent>
+
+    <artifactId>ehr-core</artifactId>
+    <name>Ehr Core</name>
+    <description>Ehr Core</description>
+
+    <dependencies>
+		<dependency>
+			<groupId>cn.ibizlab.ehr</groupId>
+			<artifactId>ehr-util</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+        
+        <dependency>
+		    <groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
+		</dependency>
+        
+        <!--  JBPM  -->
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-flow-builder</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-bpmn2</artifactId>
+        </dependency>
+
+        <!--  Drools  -->
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-compiler</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-spring</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+
+        <!--  MySQL数据库  -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!--  Druid阿里连接池  -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+        </dependency>
+
+        <!--MapStruct高性能属性映射工具-->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-jdk8</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+        </dependency>
+
+        <!--MongoDB-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+
+        <!--Liquibase数据库版本更新工具-->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
+
+        <!--xxl-job定时服务 -->
+        <dependency>
+            <groupId>com.xuxueli</groupId>
+            <artifactId>xxl-job-core</artifactId>
+        </dependency>
+
+	</dependencies>
+
+    <properties>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+    </properties>
+    <profiles>
+        <profile>
+            <id>diff</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <version>${liquibase.version}</version>
+                        <executions>
+                            <execution>
+                                <id>prepare-newdb</id>
+                                <configuration>
+                                    <changeLogFile>${project.basedir}/src/main/resources/liquibase/h2_table.xml</changeLogFile>
+                                    <driver>org.h2.Driver</driver>
+                                    <url>jdbc:h2:file:${project.build.directory}/db/new;MODE=mysql</url>
+                                    <username>root</username>
+                                    <dropFirst>true</dropFirst>
+                                </configuration>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>update</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>prepare-olddb</id>
+                                <configuration>
+                                    <changeLogFile>${project.basedir}/src/main/resources/liquibase/master_table.xml</changeLogFile>
+                                    <driver>org.h2.Driver</driver>
+                                    <url>jdbc:h2:file:${project.build.directory}/db/last;MODE=mysql</url>
+                                    <username>root</username>
+                                    <dropFirst>true</dropFirst>
+                                </configuration>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>update</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>make-diff</id>
+                                <configuration>
+                                    <changeLogFile>${project.basedir}/src/main/resources/liquibase/empty.xml</changeLogFile>
+                                    <diffChangeLogFile>${project.basedir}/src/main/resources/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
+                                    <driver>org.h2.Driver</driver>
+                                    <url>jdbc:h2:file:${project.build.directory}/db/last;MODE=mysql</url>
+                                    <username>root</username>
+                                    <password></password>
+                                    <referenceUrl>jdbc:h2:file:${project.build.directory}/db/new;MODE=mysql</referenceUrl>
+                                    <referenceDriver>org.h2.Driver</referenceDriver>
+                                    <referenceUsername>root</referenceUsername>
+                                    <verbose>true</verbose>
+                                    <logging>debug</logging>
+                                    <contexts>!test</contexts>
+                                    <diffExcludeObjects>Index:.*,table:ibzfile,ibzuser,ibzdataaudit,IBZFILE,IBZUSER,IBZDATAAUDIT</diffExcludeObjects>
+                                </configuration>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>diff</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

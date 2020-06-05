@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TrmCouarrangeMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TrmCouarrangeResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CKZL`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`KCNR`, t1.`KCXS`, t1.`PJ`, t1.`SKJSSJ`, t1.`SKKSRQ`, t1.`SKKSSJ`, t1.`TRMAGENCYRECORDID`, t101.`TRMAGENCYRECORDNAME`, t1.`TRMCOUARRANGEID`, t1.`TRMCOUARRANGENAME`, t1.`TRMCOURSESYSTEMID`, t71.`TRMCOURSESYSTEMNAME`, t1.`TRMTRAINACTAPPLYID`, t31.`TRMTRAINACTAPPLYNAME`, t1.`TRMTRAINADDRESSID`, t41.`TRMTRAINADDRESSNAME`, t1.`TRMTRAINAGENCYID`, t11.`TRMTRAINAGENCYNAME`, t1.`TRMTRAINCOURSEID`, t61.`TRMTRAINCOURSENAME`, t1.`TRMTRAINFACIESID`, t81.`TRMTRAINFACIESNAME`, t1.`TRMTRAINPLANTERMID`, t21.`TRMTRAINPLANTERMNAME`, t1.`TRMTRAINTEACHERID`, t91.`TRMTRAINTEACHERNAME`, t1.`TRMTRIANPERSONID`, t51.`TRMTRIANPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YBZS` FROM `T_TRMCOUARRANGE` t1  LEFT JOIN T_TRMTRAINAGENCY t11 ON t1.TRMTRAINAGENCYID = t11.TRMTRAINAGENCYID  LEFT JOIN T_TRMTRAINPLANTERM t21 ON t1.TRMTRAINPLANTERMID = t21.TRMTRAINPLANTERMID  LEFT JOIN T_TRMTRAINACTAPPLY t31 ON t1.TRMTRAINACTAPPLYID = t31.TRMTRAINACTAPPLYID  LEFT JOIN T_TRMTRAINADDRESS t41 ON t1.TRMTRAINADDRESSID = t41.TRMTRAINADDRESSID  LEFT JOIN T_TRMTRIANPERSON t51 ON t1.TRMTRIANPERSONID = t51.TRMTRIANPERSONID  LEFT JOIN T_TRMTRAINCOURSE t61 ON t1.TRMTRAINCOURSEID = t61.TRMTRAINCOURSEID  LEFT JOIN T_TRMCOURSESYSTEM t71 ON t1.TRMCOURSESYSTEMID = t71.TRMCOURSESYSTEMID  LEFT JOIN T_TRMTRAINFACIES t81 ON t1.TRMTRAINFACIESID = t81.TRMTRAINFACIESID  LEFT JOIN T_TRMTRAINTEACHER t91 ON t1.TRMTRAINTEACHERID = t91.TRMTRAINTEACHERID  LEFT JOIN T_TRMAGENCYRECORD t101 ON t1.TRMAGENCYRECORDID = t101.TRMAGENCYRECORDID  ) t1 where trmcouarrangeid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="TrmCouarrangeResultMap" type="cn.ibizlab.ehr.core.trm.domain.TrmCouarrange" autoMapping="true">
+        <id property="trmcouarrangeid" column="trmcouarrangeid" /><!--主键字段映射-->
+		<result property="trmtrianpersonid" column="trmtrianpersonid" />
+		<result property="trmtrainteacherid" column="trmtrainteacherid" />
+		<result property="trmtrainfaciesid" column="trmtrainfaciesid" />
+		<result property="trmtrainagencyid" column="trmtrainagencyid" />
+		<result property="trmtrainplantermid" column="trmtrainplantermid" />
+		<result property="trmtrainactapplyid" column="trmtrainactapplyid" />
+		<result property="trmtrainaddressid" column="trmtrainaddressid" />
+		<result property="trmagencyrecordid" column="trmagencyrecordid" />
+		<result property="trmtraincourseid" column="trmtraincourseid" />
+		<result property="trmcoursesystemid" column="trmcoursesystemid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmagencyrecord" javaType="cn.ibizlab.ehr.core.trm.domain.TrmAgencyRecord" column="trmagencyrecordid" select="cn.ibizlab.ehr.core.trm.mapper.TrmAgencyRecordMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmcoursesystem" javaType="cn.ibizlab.ehr.core.trm.domain.TrmCourseSystem" column="trmcoursesystemid" select="cn.ibizlab.ehr.core.trm.mapper.TrmCourseSystemMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmtrainactapply" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainActapply" column="trmtrainactapplyid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainActapplyMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmtrainaddress" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainAddress" column="trmtrainaddressid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainAddressMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmtrainagency" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainAgency" column="trmtrainagencyid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainAgencyMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmtraincourse" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainCourse" column="trmtraincourseid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainCourseMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmtrainfacies" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainFacies" column="trmtrainfaciesid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainFaciesMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmtrainplanterm" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainPlanterm" column="trmtrainplantermid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainPlantermMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmtrainteacher" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainTeacher" column="trmtrainteacherid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainTeacherMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmtrianperson" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainPerson" column="trmtrianpersonid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMCOUARRANGE_TRMAGENCYRECORD_TRMAGENCYRECORDID] -->
+	 <select id="selectByTrmagencyrecordid" resultMap="TrmCouarrangeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmagencyrecordid=#{trmagencyrecordid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMCOUARRANGE_TRMCOURSESYSTEM_TRMCOURSESYSTEMID] -->
+	 <select id="selectByTrmcoursesystemid" resultMap="TrmCouarrangeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmcoursesystemid=#{trmcoursesystemid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMCOUARRANGE_TRMTRAINACTAPPLY_TRMTRAINACTAPPLYID] -->
+	 <select id="selectByTrmtrainactapplyid" resultMap="TrmCouarrangeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmtrainactapplyid=#{trmtrainactapplyid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMCOUARRANGE_TRMTRAINADDRESS_TRMTRAINADDRESSID] -->
+	 <select id="selectByTrmtrainaddressid" resultMap="TrmCouarrangeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmtrainaddressid=#{trmtrainaddressid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMCOUARRANGE_TRMTRAINAGENCY_TRMTRAINAGENCYID] -->
+	 <select id="selectByTrmtrainagencyid" resultMap="TrmCouarrangeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmtrainagencyid=#{trmtrainagencyid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMCOUARRANGE_TRMTRAINCOURSE_TRMTRAINCOURSEID] -->
+	 <select id="selectByTrmtraincourseid" resultMap="TrmCouarrangeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmtraincourseid=#{trmtraincourseid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMCOUARRANGE_TRMTRAINFACIES_TRMTRAINFACIESID] -->
+	 <select id="selectByTrmtrainfaciesid" resultMap="TrmCouarrangeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmtrainfaciesid=#{trmtrainfaciesid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMCOUARRANGE_TRMTRAINPLANTERM_TRMTRAINPLANTERMID] -->
+	 <select id="selectByTrmtrainplantermid" resultMap="TrmCouarrangeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmtrainplantermid=#{trmtrainplantermid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMCOUARRANGE_TRMTRAINTEACHER_TRMTRAINTEACHERID] -->
+	 <select id="selectByTrmtrainteacherid" resultMap="TrmCouarrangeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmtrainteacherid=#{trmtrainteacherid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMCOUARRANGE_TRMTRIANPERSON_TRMTRIANPERSONID] -->
+	 <select id="selectByTrmtrianpersonid" resultMap="TrmCouarrangeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmtrianpersonid=#{trmtrianpersonid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.trm.filter.TrmCouarrangeSearchContext"  resultMap="TrmCouarrangeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CKZL`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`KCNR`, t1.`KCXS`, t1.`PJ`, t1.`SKJSSJ`, t1.`SKKSRQ`, t1.`SKKSSJ`, t1.`TRMAGENCYRECORDID`, t101.`TRMAGENCYRECORDNAME`, t1.`TRMCOUARRANGEID`, t1.`TRMCOUARRANGENAME`, t1.`TRMCOURSESYSTEMID`, t71.`TRMCOURSESYSTEMNAME`, t1.`TRMTRAINACTAPPLYID`, t31.`TRMTRAINACTAPPLYNAME`, t1.`TRMTRAINADDRESSID`, t41.`TRMTRAINADDRESSNAME`, t1.`TRMTRAINAGENCYID`, t11.`TRMTRAINAGENCYNAME`, t1.`TRMTRAINCOURSEID`, t61.`TRMTRAINCOURSENAME`, t1.`TRMTRAINFACIESID`, t81.`TRMTRAINFACIESNAME`, t1.`TRMTRAINPLANTERMID`, t21.`TRMTRAINPLANTERMNAME`, t1.`TRMTRAINTEACHERID`, t91.`TRMTRAINTEACHERNAME`, t1.`TRMTRIANPERSONID`, t51.`TRMTRIANPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YBZS` FROM `T_TRMCOUARRANGE` t1  LEFT JOIN T_TRMTRAINAGENCY t11 ON t1.TRMTRAINAGENCYID = t11.TRMTRAINAGENCYID  LEFT JOIN T_TRMTRAINPLANTERM t21 ON t1.TRMTRAINPLANTERMID = t21.TRMTRAINPLANTERMID  LEFT JOIN T_TRMTRAINACTAPPLY t31 ON t1.TRMTRAINACTAPPLYID = t31.TRMTRAINACTAPPLYID  LEFT JOIN T_TRMTRAINADDRESS t41 ON t1.TRMTRAINADDRESSID = t41.TRMTRAINADDRESSID  LEFT JOIN T_TRMTRIANPERSON t51 ON t1.TRMTRIANPERSONID = t51.TRMTRIANPERSONID  LEFT JOIN T_TRMTRAINCOURSE t61 ON t1.TRMTRAINCOURSEID = t61.TRMTRAINCOURSEID  LEFT JOIN T_TRMCOURSESYSTEM t71 ON t1.TRMCOURSESYSTEMID = t71.TRMCOURSESYSTEMID  LEFT JOIN T_TRMTRAINFACIES t81 ON t1.TRMTRAINFACIESID = t81.TRMTRAINFACIESID  LEFT JOIN T_TRMTRAINTEACHER t91 ON t1.TRMTRAINTEACHERID = t91.TRMTRAINTEACHERID  LEFT JOIN T_TRMAGENCYRECORD t101 ON t1.TRMAGENCYRECORDID = t101.TRMAGENCYRECORDID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CKZL`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`KCNR`, t1.`KCXS`, t1.`PJ`, t1.`SKJSSJ`, t1.`SKKSRQ`, t1.`SKKSSJ`, t1.`TRMAGENCYRECORDID`, t101.`TRMAGENCYRECORDNAME`, t1.`TRMCOUARRANGEID`, t1.`TRMCOUARRANGENAME`, t1.`TRMCOURSESYSTEMID`, t71.`TRMCOURSESYSTEMNAME`, t1.`TRMTRAINACTAPPLYID`, t31.`TRMTRAINACTAPPLYNAME`, t1.`TRMTRAINADDRESSID`, t41.`TRMTRAINADDRESSNAME`, t1.`TRMTRAINAGENCYID`, t11.`TRMTRAINAGENCYNAME`, t1.`TRMTRAINCOURSEID`, t61.`TRMTRAINCOURSENAME`, t1.`TRMTRAINFACIESID`, t81.`TRMTRAINFACIESNAME`, t1.`TRMTRAINPLANTERMID`, t21.`TRMTRAINPLANTERMNAME`, t1.`TRMTRAINTEACHERID`, t91.`TRMTRAINTEACHERNAME`, t1.`TRMTRIANPERSONID`, t51.`TRMTRIANPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YBZS` FROM `T_TRMCOUARRANGE` t1  LEFT JOIN T_TRMTRAINAGENCY t11 ON t1.TRMTRAINAGENCYID = t11.TRMTRAINAGENCYID  LEFT JOIN T_TRMTRAINPLANTERM t21 ON t1.TRMTRAINPLANTERMID = t21.TRMTRAINPLANTERMID  LEFT JOIN T_TRMTRAINACTAPPLY t31 ON t1.TRMTRAINACTAPPLYID = t31.TRMTRAINACTAPPLYID  LEFT JOIN T_TRMTRAINADDRESS t41 ON t1.TRMTRAINADDRESSID = t41.TRMTRAINADDRESSID  LEFT JOIN T_TRMTRIANPERSON t51 ON t1.TRMTRIANPERSONID = t51.TRMTRIANPERSONID  LEFT JOIN T_TRMTRAINCOURSE t61 ON t1.TRMTRAINCOURSEID = t61.TRMTRAINCOURSEID  LEFT JOIN T_TRMCOURSESYSTEM t71 ON t1.TRMCOURSESYSTEMID = t71.TRMCOURSESYSTEMID  LEFT JOIN T_TRMTRAINFACIES t81 ON t1.TRMTRAINFACIESID = t81.TRMTRAINFACIESID  LEFT JOIN T_TRMTRAINTEACHER t91 ON t1.TRMTRAINTEACHERID = t91.TRMTRAINTEACHERID  LEFT JOIN T_TRMAGENCYRECORD t101 ON t1.TRMAGENCYRECORDID = t101.TRMAGENCYRECORDID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

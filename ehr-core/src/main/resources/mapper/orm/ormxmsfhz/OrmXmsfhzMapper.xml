@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.orm.mapper.OrmXmsfhzMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="OrmXmsfhzResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`APY`, ( case when  t1.`APY`<0  then  '20'  else  '30'  end ) AS `APY_COLOR`, t1.`AUGY`, ( case when  t1.`AUGY`<0  then  '20'  else  '30'  end ) AS `AUGY_COLOR`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EY`, ( case when  t1.`EY`<0  then  '20'  else  '30'  end ) AS `EY_COLOR`, t1.`GW`, t1.`JY`, ( case when  t1.`JY`<0  then  '20'  else  '30'  end ) AS `JY_COLOR`, t1.`LY`, ( case when  t1.`LY`<0  then  '20'  else  '30'  end ) AS `LY_COLOR`, t1.`MONTH`, t1.`ND`, t1.`OCTY`, ( case when  t1.`OCTY`<0  then  '20'  else  '30'  end ) AS `OCTY_COLOR`, t1.`ORGID`, t1.`ORMXMSFHZID`, t1.`ORMXMSFHZNAME`, t1.`QY`, ( case when  t1.`QY`<0  then  '20'  else  '30'  end ) AS `QY_COLOR`, t1.`RS`, t1.`SY`, t1.`SYY`, ( case when  t1.`SYY`<0  then  '20'  else  '30'  end ) AS `SYY_COLOR`, ( case when  t1.`SY`<0  then  '20'  else  '30'  end ) AS `SY_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WY`, ( case when  t1.`WY`<0  then  '20'  else  '30'  end ) AS `WY_COLOR`, t1.`XH`, t1.`XM`, t1.`YF`, ( case when  t1.`YF`<0  then  '20'  else  '30'  end ) AS `YF_COLOR`, t1.`YY`, ( case when  t1.`YY`<0  then  '20'  else  '30'  end ) AS `YY_COLOR`, t1.`ZZ` FROM `T_ORMXMSFHZ` t1  ) t1 where ormxmsfhzid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="OrmXmsfhzResultMap" type="cn.ibizlab.ehr.core.orm.domain.OrmXmsfhz" autoMapping="true">
+        <id property="ormxmsfhzid" column="ormxmsfhzid" /><!--主键字段映射-->
+		<result property="augyColor" column="augy_color" />
+		<result property="yfColor" column="yf_color" />
+		<result property="qyColor" column="qy_color" />
+		<result property="syyColor" column="syy_color" />
+		<result property="syColor" column="sy_color" />
+		<result property="wyColor" column="wy_color" />
+		<result property="eyColor" column="ey_color" />
+		<result property="apyColor" column="apy_color" />
+		<result property="yyColor" column="yy_color" />
+		<result property="jyColor" column="jy_color" />
+		<result property="lyColor" column="ly_color" />
+		<result property="octyColor" column="octy_color" />
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[AccOrg]-->
+	 <select id="searchAccOrg"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmXmsfhzSearchContext"  resultMap="OrmXmsfhzResultMap">
+         select t1.* from (
+                <include refid="AccOrg" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmXmsfhzSearchContext"  resultMap="OrmXmsfhzResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[AccOrg]-->
+    <sql id="AccOrg" databaseId="mysql">
+       <![CDATA[	SELECT t1.`APY`, ( case when  t1.`APY`<0  then  '20'  else  '30'  end ) AS `APY_COLOR`, t1.`AUGY`, ( case when  t1.`AUGY`<0  then  '20'  else  '30'  end ) AS `AUGY_COLOR`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EY`, ( case when  t1.`EY`<0  then  '20'  else  '30'  end ) AS `EY_COLOR`, t1.`GW`, t1.`JY`, ( case when  t1.`JY`<0  then  '20'  else  '30'  end ) AS `JY_COLOR`, t1.`LY`, ( case when  t1.`LY`<0  then  '20'  else  '30'  end ) AS `LY_COLOR`, t1.`MONTH`, t1.`ND`, t1.`OCTY`, ( case when  t1.`OCTY`<0  then  '20'  else  '30'  end ) AS `OCTY_COLOR`, t1.`ORGID`, t1.`ORMXMSFHZID`, t1.`ORMXMSFHZNAME`, t1.`QY`, ( case when  t1.`QY`<0  then  '20'  else  '30'  end ) AS `QY_COLOR`, t1.`RS`, t1.`SY`, t1.`SYY`, ( case when  t1.`SYY`<0  then  '20'  else  '30'  end ) AS `SYY_COLOR`, ( case when  t1.`SY`<0  then  '20'  else  '30'  end ) AS `SY_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WY`, ( case when  t1.`WY`<0  then  '20'  else  '30'  end ) AS `WY_COLOR`, t1.`XH`, t1.`XM`, t1.`YF`, ( case when  t1.`YF`<0  then  '20'  else  '30'  end ) AS `YF_COLOR`, t1.`YY`, ( case when  t1.`YY`<0  then  '20'  else  '30'  end ) AS `YY_COLOR`, t1.`ZZ` FROM `T_ORMXMSFHZ` t1  
+				 WHERE 	( t1.`MONTH` IS NULL )
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`APY`, ( case when  t1.`APY`<0  then  '20'  else  '30'  end ) AS `APY_COLOR`, t1.`AUGY`, ( case when  t1.`AUGY`<0  then  '20'  else  '30'  end ) AS `AUGY_COLOR`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EY`, ( case when  t1.`EY`<0  then  '20'  else  '30'  end ) AS `EY_COLOR`, t1.`GW`, t1.`JY`, ( case when  t1.`JY`<0  then  '20'  else  '30'  end ) AS `JY_COLOR`, t1.`LY`, ( case when  t1.`LY`<0  then  '20'  else  '30'  end ) AS `LY_COLOR`, t1.`MONTH`, t1.`ND`, t1.`OCTY`, ( case when  t1.`OCTY`<0  then  '20'  else  '30'  end ) AS `OCTY_COLOR`, t1.`ORGID`, t1.`ORMXMSFHZID`, t1.`ORMXMSFHZNAME`, t1.`QY`, ( case when  t1.`QY`<0  then  '20'  else  '30'  end ) AS `QY_COLOR`, t1.`RS`, t1.`SY`, t1.`SYY`, ( case when  t1.`SYY`<0  then  '20'  else  '30'  end ) AS `SYY_COLOR`, ( case when  t1.`SY`<0  then  '20'  else  '30'  end ) AS `SY_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WY`, ( case when  t1.`WY`<0  then  '20'  else  '30'  end ) AS `WY_COLOR`, t1.`XH`, t1.`XM`, t1.`YF`, ( case when  t1.`YF`<0  then  '20'  else  '30'  end ) AS `YF_COLOR`, t1.`YY`, ( case when  t1.`YY`<0  then  '20'  else  '30'  end ) AS `YY_COLOR`, t1.`ZZ` FROM `T_ORMXMSFHZ` t1  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`APY`, ( case when  t1.`APY`<0  then  '20'  else  '30'  end ) AS `APY_COLOR`, t1.`AUGY`, ( case when  t1.`AUGY`<0  then  '20'  else  '30'  end ) AS `AUGY_COLOR`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EY`, ( case when  t1.`EY`<0  then  '20'  else  '30'  end ) AS `EY_COLOR`, t1.`GW`, t1.`JY`, ( case when  t1.`JY`<0  then  '20'  else  '30'  end ) AS `JY_COLOR`, t1.`LY`, ( case when  t1.`LY`<0  then  '20'  else  '30'  end ) AS `LY_COLOR`, t1.`MONTH`, t1.`ND`, t1.`OCTY`, ( case when  t1.`OCTY`<0  then  '20'  else  '30'  end ) AS `OCTY_COLOR`, t1.`ORGID`, t1.`ORMXMSFHZID`, t1.`ORMXMSFHZNAME`, t1.`QY`, ( case when  t1.`QY`<0  then  '20'  else  '30'  end ) AS `QY_COLOR`, t1.`RS`, t1.`SY`, t1.`SYY`, ( case when  t1.`SYY`<0  then  '20'  else  '30'  end ) AS `SYY_COLOR`, ( case when  t1.`SY`<0  then  '20'  else  '30'  end ) AS `SY_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WY`, ( case when  t1.`WY`<0  then  '20'  else  '30'  end ) AS `WY_COLOR`, t1.`XH`, t1.`XM`, t1.`YF`, ( case when  t1.`YF`<0  then  '20'  else  '30'  end ) AS `YF_COLOR`, t1.`YY`, ( case when  t1.`YY`<0  then  '20'  else  '30'  end ) AS `YY_COLOR`, t1.`ZZ` FROM `T_ORMXMSFHZ` t1  
+			]]>
+    </sql>
+</mapper>
+

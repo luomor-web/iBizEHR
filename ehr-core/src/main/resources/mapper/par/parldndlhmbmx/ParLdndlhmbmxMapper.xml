@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.par.mapper.ParLdndlhmbmxMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="ParLdndlhmbmxResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FGLDPF`, t1.`FZ`, t1.`JZSZPSFS`, t1.`KHBF`, t1.`MBLHYQ`, t1.`MBLX`, t1.`PARLDNDLHMBID`, t1.`PARLDNDLHMBMXID`, t1.`PARLDNDLHMBMXNAME`, t11.`PARLDNDLHMBNAME`, t1.`SPZT`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WCQK`, t1.`XGRZ`, t1.`ZMCL`, t1.`ZPFS`, t1.`ZT` FROM `T_PARLDNDLHMBMX` t1  LEFT JOIN T_PARLDNDLHMB t11 ON t1.PARLDNDLHMBID = t11.PARLDNDLHMBID  ) t1 where parldndlhmbmxid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="ParLdndlhmbmxResultMap" type="cn.ibizlab.ehr.core.par.domain.ParLdndlhmbmx" autoMapping="true">
+        <id property="parldndlhmbmxid" column="parldndlhmbmxid" /><!--主键字段映射-->
+		<result property="parldndlhmbid" column="parldndlhmbid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="parldndlhmb" javaType="cn.ibizlab.ehr.core.par.domain.ParLdndlhmb" column="parldndlhmbid" select="cn.ibizlab.ehr.core.par.mapper.ParLdndlhmbMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PARLDNDLHMBMX_PARLDNDLHMB_PARLDNDLHMBID] -->
+	 <select id="selectByParldndlhmbid" resultMap="ParLdndlhmbmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  parldndlhmbid=#{parldndlhmbid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.par.filter.ParLdndlhmbmxSearchContext"  resultMap="ParLdndlhmbmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FGLDPF`, t1.`FZ`, t1.`JZSZPSFS`, t1.`KHBF`, t1.`MBLHYQ`, t1.`MBLX`, t1.`PARLDNDLHMBID`, t1.`PARLDNDLHMBMXID`, t1.`PARLDNDLHMBMXNAME`, t11.`PARLDNDLHMBNAME`, t1.`SPZT`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WCQK`, t1.`XGRZ`, t1.`ZMCL`, t1.`ZPFS`, t1.`ZT` FROM `T_PARLDNDLHMBMX` t1  LEFT JOIN T_PARLDNDLHMB t11 ON t1.PARLDNDLHMBID = t11.PARLDNDLHMBID  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FGLDPF`, t1.`FZ`, t1.`JZSZPSFS`, t1.`KHBF`, t1.`MBLHYQ`, t1.`MBLX`, t1.`PARLDNDLHMBID`, t1.`PARLDNDLHMBMXID`, t1.`PARLDNDLHMBMXNAME`, t11.`PARLDNDLHMBNAME`, t1.`SPZT`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WCQK`, t1.`XGRZ`, t1.`ZMCL`, t1.`ZPFS`, t1.`ZT` FROM `T_PARLDNDLHMBMX` t1  LEFT JOIN T_PARLDNDLHMB t11 ON t1.PARLDNDLHMBID = t11.PARLDNDLHMBID  
+			]]>
+    </sql>
+</mapper>
+

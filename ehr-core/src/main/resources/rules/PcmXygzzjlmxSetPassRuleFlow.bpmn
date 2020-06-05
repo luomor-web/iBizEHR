@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmxygzzjlmxsetpass" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmxygzzjlmxsetpass">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmxygzzjlmxsetpassdefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmXygzzjlmx" />
+        </extensionElements>
+     <startEvent id="DD2C3F96-71B4-4AB6-A077-933DBA1746A9" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmxygzzjlmxsetpassprepareparam1" id="13634971-9105-41E9-9288-6ED9979E52A8" implementation="http://www.jboss.org/drools/rule" name="设置准备参数"/>
+     <endEvent id="13634971-9105-41E9-9288-6ED9979E52A8_End" name="End"/>
+     <sequenceFlow id="13634971-9105-41E9-9288-6ED9979E52A8_End_Line" sourceRef="13634971-9105-41E9-9288-6ED9979E52A8" targetRef="13634971-9105-41E9-9288-6ED9979E52A8_End"/>
+     <sequenceFlow id="61D07560-4B89-4D2B-9D0E-28AF6AD0D91F" sourceRef="DD2C3F96-71B4-4AB6-A077-933DBA1746A9" targetRef="13634971-9105-41E9-9288-6ED9979E52A8">
+     </sequenceFlow>
+    </process>
+</definitions>
+

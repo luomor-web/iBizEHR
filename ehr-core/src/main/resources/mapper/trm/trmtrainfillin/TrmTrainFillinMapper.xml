@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TrmTrainFillinMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TrmTrainFillinResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t21.`JD`, t21.`JZRQ`, t21.`ND`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t41.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t41.`SHORTNAME`, t1.`TRMDEPARTID`, t21.`TRMDEPARTNAME`, t1.`TRMTRAINFILLINID`, t1.`TRMTRAINFILLINID2`, t1.`TRMTRAINFILLINNAME`, t11.`TRMTRAINFILLINNAME` AS `TRMTRAINFILLINNAME2`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t31.`ZZDZS` FROM `T_TRMTRAINFILLIN` t1  LEFT JOIN T_TRMTRAINFILLIN t11 ON t1.TRMTRAINFILLINID2 = t11.TRMTRAINFILLINID  LEFT JOIN T_TRMDEPART t21 ON t1.TRMDEPARTID = t21.TRMDEPARTID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_SRFORGSECTOR t41 ON t1.ORMORGSECTORID = t41.ORGSECTORID  ) t1 where trmtrainfillinid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="TrmTrainFillinResultMap" type="cn.ibizlab.ehr.core.trm.domain.TrmTrainFillin" autoMapping="true">
+        <id property="trmtrainfillinid" column="trmtrainfillinid" /><!--主键字段映射-->
+		<result property="ormorgid" column="ormorgid" />
+		<result property="trmtrainfillinid2" column="trmtrainfillinid2" />
+		<result property="trmdepartid" column="trmdepartid" />
+		<result property="ormorgsectorid" column="ormorgsectorid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmdepart" javaType="cn.ibizlab.ehr.core.trm.domain.TrmDepart" column="trmdepartid" select="cn.ibizlab.ehr.core.trm.mapper.TrmDepartMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmtrainfillin2" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainFillin" column="trmtrainfillinid2" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainFillinMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMTRAINFILLIN_ORMORGSECTOR_ORMORGSECTORID] -->
+	 <select id="selectByOrmorgsectorid" resultMap="TrmTrainFillinResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgsectorid=#{orgsectorid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMTRAINFILLIN_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="TrmTrainFillinResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMTRAINFILLIN_TRMDEPART_TRMDEPARTID] -->
+	 <select id="selectByTrmdepartid" resultMap="TrmTrainFillinResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmdepartid=#{trmdepartid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMTRAINFILLIN_TRMTRAINFILLIN_TRMTRAINFILLINID2] -->
+	 <select id="selectByTrmtrainfillinid2" resultMap="TrmTrainFillinResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmtrainfillinid2=#{trmtrainfillinid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.trm.filter.TrmTrainFillinSearchContext"  resultMap="TrmTrainFillinResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t21.`JD`, t21.`JZRQ`, t21.`ND`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t41.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t41.`SHORTNAME`, t1.`TRMDEPARTID`, t21.`TRMDEPARTNAME`, t1.`TRMTRAINFILLINID`, t1.`TRMTRAINFILLINID2`, t1.`TRMTRAINFILLINNAME`, t11.`TRMTRAINFILLINNAME` AS `TRMTRAINFILLINNAME2`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t31.`ZZDZS` FROM `T_TRMTRAINFILLIN` t1  LEFT JOIN T_TRMTRAINFILLIN t11 ON t1.TRMTRAINFILLINID2 = t11.TRMTRAINFILLINID  LEFT JOIN T_TRMDEPART t21 ON t1.TRMDEPARTID = t21.TRMDEPARTID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_SRFORGSECTOR t41 ON t1.ORMORGSECTORID = t41.ORGSECTORID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t21.`JD`, t21.`JZRQ`, t21.`ND`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t41.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t41.`SHORTNAME`, t1.`TRMDEPARTID`, t21.`TRMDEPARTNAME`, t1.`TRMTRAINFILLINID`, t1.`TRMTRAINFILLINID2`, t1.`TRMTRAINFILLINNAME`, t11.`TRMTRAINFILLINNAME` AS `TRMTRAINFILLINNAME2`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t31.`ZZDZS` FROM `T_TRMTRAINFILLIN` t1  LEFT JOIN T_TRMTRAINFILLIN t11 ON t1.TRMTRAINFILLINID2 = t11.TRMTRAINFILLINID  LEFT JOIN T_TRMDEPART t21 ON t1.TRMDEPARTID = t21.TRMDEPARTID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_SRFORGSECTOR t41 ON t1.ORMORGSECTORID = t41.ORGSECTORID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

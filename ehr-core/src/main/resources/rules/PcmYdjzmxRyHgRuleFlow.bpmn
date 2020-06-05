@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmydjzmxryhg" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmydjzmxryhg">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmydjzmxryhgpimdistirbution" type="cn.ibizlab.ehr.core.pim.domain.PimDistirbution" />
+        <tns:global identifier="pcmydjzmxryhgdefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmYdjzmx" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmydjzmxryhgprepareparam1" id="4886C924-F431-4A68-A11D-729F5D6C71D0" implementation="http://www.jboss.org/drools/rule" name="设置参数准备"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmydjzmxryhgdeaction1" id="31E8774B-2250-4A4E-8EA0-1C0F5E37B73F" implementation="http://www.jboss.org/drools/rule" name="更新分配表"/>
+     <endEvent id="31E8774B-2250-4A4E-8EA0-1C0F5E37B73F_End" name="End"/>
+     <sequenceFlow id="31E8774B-2250-4A4E-8EA0-1C0F5E37B73F_End_Line" sourceRef="31E8774B-2250-4A4E-8EA0-1C0F5E37B73F" targetRef="31E8774B-2250-4A4E-8EA0-1C0F5E37B73F_End"/>
+     <startEvent id="7305E327-3500-43B4-AD14-B86CE9CFC36A" isInterrupting="true"/>
+     <sequenceFlow id="F839084E-8957-4282-85FB-3C06AB7CF961" sourceRef="4886C924-F431-4A68-A11D-729F5D6C71D0" targetRef="31E8774B-2250-4A4E-8EA0-1C0F5E37B73F">
+     </sequenceFlow>
+     <sequenceFlow id="CA7F50A8-49C3-48A3-ABB9-99700B78206F" sourceRef="7305E327-3500-43B4-AD14-B86CE9CFC36A" targetRef="4886C924-F431-4A68-A11D-729F5D6C71D0">
+     </sequenceFlow>
+    </process>
+</definitions>
+

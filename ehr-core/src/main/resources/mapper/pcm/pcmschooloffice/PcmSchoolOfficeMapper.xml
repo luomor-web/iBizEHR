@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PcmSchoolOfficeMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PcmSchoolOfficeResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BBSJ`, t1.`CADREDESCRIPTION`, t1.`CADREENDDATETIME`, t1.`CADRENAME`, t1.`CADRESTARTDATETIME`, t11.`CERTIFICATENUMBER`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FLAG`, t1.`PCMPROFILEID`, t11.`PCMPROFILENAME`, t1.`PCMSCHOOLOFFICEID`, t1.`PCMSCHOOLOFFICENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PCMSCHOOLOFFICE` t1  LEFT JOIN T_PCMPROFILE t11 ON t1.PCMPROFILEID = t11.PCMPROFILEID  ) t1 where pcmschoolofficeid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PcmSchoolOfficeResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PcmSchoolOffice" autoMapping="true">
+        <id property="pcmschoolofficeid" column="pcmschoolofficeid" /><!--主键字段映射-->
+		<result property="pcmprofileid" column="pcmprofileid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pcmprofile" javaType="cn.ibizlab.ehr.core.pcm.domain.PcmProfile" column="pcmprofileid" select="cn.ibizlab.ehr.core.pcm.mapper.PcmProfileMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMSCHOOLOFFICE_PCMPROFILE_PCMPROFILEID] -->
+	 <select id="selectByPcmprofileid" resultMap="PcmSchoolOfficeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pcmprofileid=#{pcmprofileid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmSchoolOfficeSearchContext"  resultMap="PcmSchoolOfficeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BBSJ`, t1.`CADREDESCRIPTION`, t1.`CADREENDDATETIME`, t1.`CADRENAME`, t1.`CADRESTARTDATETIME`, t11.`CERTIFICATENUMBER`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FLAG`, t1.`PCMPROFILEID`, t11.`PCMPROFILENAME`, t1.`PCMSCHOOLOFFICEID`, t1.`PCMSCHOOLOFFICENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PCMSCHOOLOFFICE` t1  LEFT JOIN T_PCMPROFILE t11 ON t1.PCMPROFILEID = t11.PCMPROFILEID  
+				 WHERE 	( t1.`FLAG` = '1' )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BBSJ`, t1.`CADREDESCRIPTION`, t1.`CADREENDDATETIME`, t1.`CADRENAME`, t1.`CADRESTARTDATETIME`, t11.`CERTIFICATENUMBER`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FLAG`, t1.`PCMPROFILEID`, t11.`PCMPROFILENAME`, t1.`PCMSCHOOLOFFICEID`, t1.`PCMSCHOOLOFFICENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PCMSCHOOLOFFICE` t1  LEFT JOIN T_PCMPROFILE t11 ON t1.PCMPROFILEID = t11.PCMPROFILEID  
+			]]>
+    </sql>
+</mapper>
+

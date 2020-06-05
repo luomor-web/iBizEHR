@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    include: sys , ehratt-prod
+  application:
+    name: ehr-ehratt

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.orm.mapper.OrmXmrlcbMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="OrmXmrlcbResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORGID`, t1.`ORMXMRLCBID`, t1.`ORMXMRLCBNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XCED`, t1.`XCRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XCRY_COLOR`, t1.`XM`, t1.`XMB`, t1.`XMJHRY`, t1.`XMJHZCCB`, t1.`XMSJRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XMSJRY_COLOR`, t1.`XMSJZCCB`, t1.`ZZMC` FROM `T_ORMXMRLCB` t1  ) t1 where ormxmrlcbid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="OrmXmrlcbResultMap" type="cn.ibizlab.ehr.core.orm.domain.OrmXmrlcb" autoMapping="true">
+        <id property="ormxmrlcbid" column="ormxmrlcbid" /><!--主键字段映射-->
+		<result property="xcryColor" column="xcry_color" />
+		<result property="xmsjryColor" column="xmsjry_color" />
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[CBCX]-->
+	 <select id="searchCBCX"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmXmrlcbSearchContext"  resultMap="OrmXmrlcbResultMap">
+         select t1.* from (
+                <include refid="CBCX" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmXmrlcbSearchContext"  resultMap="OrmXmrlcbResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[CBCX]-->
+    <sql id="CBCX" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORGID`, t1.`ORMXMRLCBID`, t1.`ORMXMRLCBNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XCED`, t1.`XCRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XCRY_COLOR`, t1.`XM`, t1.`XMB`, t1.`XMJHRY`, t1.`XMJHZCCB`, t1.`XMSJRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XMSJRY_COLOR`, t1.`XMSJZCCB`, t1.`ZZMC` FROM `T_ORMXMRLCB` t1  
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORGID`, t1.`ORMXMRLCBID`, t1.`ORMXMRLCBNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XCED`, t1.`XCRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XCRY_COLOR`, t1.`XM`, t1.`XMB`, t1.`XMJHRY`, t1.`XMJHZCCB`, t1.`XMSJRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XMSJRY_COLOR`, t1.`XMSJZCCB`, t1.`ZZMC` FROM `T_ORMXMRLCB` t1  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORGID`, t1.`ORMXMRLCBID`, t1.`ORMXMRLCBNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XCED`, t1.`XCRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XCRY_COLOR`, t1.`XM`, t1.`XMB`, t1.`XMJHRY`, t1.`XMJHZCCB`, t1.`XMSJRY`, ( case when  t1.`XMSJRY`>t1.`XMJHRY`  then  '20'  else  '30'  end ) AS `XMSJRY_COLOR`, t1.`XMSJZCCB`, t1.`ZZMC` FROM `T_ORMXMRLCB` t1  
+			]]>
+    </sql>
+</mapper>
+

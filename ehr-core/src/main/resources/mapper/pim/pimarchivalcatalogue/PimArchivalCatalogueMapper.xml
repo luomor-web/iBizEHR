@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PimArchivalCatalogueMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PimArchivalCatalogueResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`ARCHIVALCATALOGUEID`, t1.`ARCHIVALCATALOGUENAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`PIMARCHIVESID`, t11.`PIMARCHIVESNAME`, t1.`SERIALNUMBER`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ARCHIVALCATALOGUE` t1  LEFT JOIN T_PIMARCHIVES t11 ON t1.PIMARCHIVESID = t11.PIMARCHIVESID  ) t1 where archivalcatalogueid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PimArchivalCatalogueResultMap" type="cn.ibizlab.ehr.core.pim.domain.PimArchivalCatalogue" autoMapping="true">
+        <id property="archivalcatalogueid" column="archivalcatalogueid" /><!--主键字段映射-->
+		<result property="pimarchivesid" column="pimarchivesid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimarchives" javaType="cn.ibizlab.ehr.core.pim.domain.PimArchives" column="pimarchivesid" select="cn.ibizlab.ehr.core.pim.mapper.PimArchivesMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ARCHIVALCATALOGUE_PIMARCHIVES_PIMARCHIVESID] -->
+	 <select id="selectByPimarchivesid" resultMap="PimArchivalCatalogueResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimarchivesid=#{pimarchivesid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimArchivalCatalogueSearchContext"  resultMap="PimArchivalCatalogueResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ARCHIVALCATALOGUEID`, t1.`ARCHIVALCATALOGUENAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`PIMARCHIVESID`, t11.`PIMARCHIVESNAME`, t1.`SERIALNUMBER`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ARCHIVALCATALOGUE` t1  LEFT JOIN T_PIMARCHIVES t11 ON t1.PIMARCHIVESID = t11.PIMARCHIVESID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ARCHIVALCATALOGUEID`, t1.`ARCHIVALCATALOGUENAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`PIMARCHIVESID`, t11.`PIMARCHIVESNAME`, t1.`SERIALNUMBER`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ARCHIVALCATALOGUE` t1  LEFT JOIN T_PIMARCHIVES t11 ON t1.PIMARCHIVESID = t11.PIMARCHIVESID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

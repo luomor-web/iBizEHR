@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PimByzzjlmxMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PimByzzjlmxResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BM`, t1.`BMID`, t1.`CHECKSTATUS`, t11.`CJGZSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DATZQK`, (case when t1.`CHECKSTATUS` = '100' then '10' else (case when t1.`CHECKSTATUS` = '60' then '30' else '20' end) end) AS `DQZT`, t11.`DZJBJSJ`, t1.`FINISHED`, t1.`FS`, t11.`HIGHTITLE`, t11.`HJDZ`, t11.`HKLX`, t1.`ISTEMP`, t11.`JG`, t11.`JKZK`, t1.`JSRQ`, t31.`JSSJ`, t1.`JZBSHYJ`, t1.`JZBSPYJ`, t1.`JZPSPYJ`, t11.`LXDH`, t11.`MZ`, t1.`NZZYGLX`, t1.`OLDYGBH`, t1.`OLDYGLX`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PEOPLENUM`, t1.`PIMBYYGZZSQID`, t41.`PIMBYYGZZSQNAME`, t1.`PIMBYZZJLMXID`, t1.`PIMBYZZJLMXNAME`, t1.`PIMEXAMINATIONRESULTSID`, t31.`PIMEXAMINATIONRESULTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PJ`, t11.`POSTALADDRESS`, t1.`PROFILELIST`, t1.`QSRQ`, t31.`QSSJ`, t1.`REASON`, t1.`SBCL`, t1.`SSLWGS`, t1.`SSLWGSDZ`, t1.`STANDARDCAUSE`, t1.`SXRQ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`XYGBH`, t1.`YBHQYSJ`, t1.`YGBH`, t11.`GW` AS `YGW`, (case when t1.`CHECKSTATUS` = '60' then  t1.`JZPSPYJ`  else  '' end) AS `YJ`, t1.`YWZDJBS`, t1.`YYGLX`, t1.`YZBM`, t11.`ZJHM`, t1.`ZTYY`, t1.`ZZ`, t1.`ZZID`, t11.`ZZMM` FROM `T_PIMBYZZJLMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_PIMEXAMINATIONRESULTS t31 ON t1.PIMEXAMINATIONRESULTSID = t31.PIMEXAMINATIONRESULTSID  LEFT JOIN T_PIMBYYGZZSQ t41 ON t1.PIMBYYGZZSQID = t41.PIMBYYGZZSQID  ) t1 where pimbyzzjlmxid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PimByzzjlmxResultMap" type="cn.ibizlab.ehr.core.pim.domain.PimByzzjlmx" autoMapping="true">
+        <id property="pimbyzzjlmxid" column="pimbyzzjlmxid" /><!--主键字段映射-->
+		<result property="pimpersonid" column="pimpersonid" />
+		<result property="pimexaminationresultsid" column="pimexaminationresultsid" />
+		<result property="pimbyygzzsqid" column="pimbyygzzsqid" />
+		<result property="ormpostid" column="ormpostid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormpost" javaType="cn.ibizlab.ehr.core.orm.domain.OrmPost" column="ormpostid" select="cn.ibizlab.ehr.core.orm.mapper.OrmPostMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimbyygzzsq" javaType="cn.ibizlab.ehr.core.pim.domain.PimByygzzsq" column="pimbyygzzsqid" select="cn.ibizlab.ehr.core.pim.mapper.PimByygzzsqMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimexaminationresults" javaType="cn.ibizlab.ehr.core.pim.domain.PimExaminationResults" column="pimexaminationresultsid" select="cn.ibizlab.ehr.core.pim.mapper.PimExaminationResultsMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMBYZZJLMX_ORMPOST_ORMPOSTID] -->
+	 <select id="selectByOrmpostid" resultMap="PimByzzjlmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormpostid=#{ormpostid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMBYZZJLMX_PIMBYYGZZSQ_PIMBYYGZZSQID] -->
+	 <select id="selectByPimbyygzzsqid" resultMap="PimByzzjlmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimbyygzzsqid=#{pimbyygzzsqid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMBYZZJLMX_PIMEXAMINATIONRESULTS_PIMEXAMINATIONRESULTSID] -->
+	 <select id="selectByPimexaminationresultsid" resultMap="PimByzzjlmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimexaminationresultsid=#{pimexaminationresultsid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMBYZZJLMX_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="PimByzzjlmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[ZZWSHDS]-->
+	 <select id="searchZZWSHDS"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimByzzjlmxSearchContext"  resultMap="PimByzzjlmxResultMap">
+         select t1.* from (
+                <include refid="ZZWSHDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[UnApproved]-->
+	 <select id="searchUnApproved"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimByzzjlmxSearchContext"  resultMap="PimByzzjlmxResultMap">
+         select t1.* from (
+                <include refid="UnApproved" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[DDJZBSH]-->
+	 <select id="searchDDJZBSH"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimByzzjlmxSearchContext"  resultMap="PimByzzjlmxResultMap">
+         select t1.* from (
+                <include refid="DDJZBSH" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[BYLZZJL]-->
+	 <select id="searchBYLZZJL"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimByzzjlmxSearchContext"  resultMap="PimByzzjlmxResultMap">
+         select t1.* from (
+                <include refid="BYLZZJL" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[DGSDSZSH]-->
+	 <select id="searchDGSDSZSH"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimByzzjlmxSearchContext"  resultMap="PimByzzjlmxResultMap">
+         select t1.* from (
+                <include refid="DGSDSZSH" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[HTRY]-->
+	 <select id="searchHTRY"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimByzzjlmxSearchContext"  resultMap="PimByzzjlmxResultMap">
+         select t1.* from (
+                <include refid="HTRY" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[DJZBSP]-->
+	 <select id="searchDJZBSP"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimByzzjlmxSearchContext"  resultMap="PimByzzjlmxResultMap">
+         select t1.* from (
+                <include refid="DJZBSP" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[DSB]-->
+	 <select id="searchDSB"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimByzzjlmxSearchContext"  resultMap="PimByzzjlmxResultMap">
+         select t1.* from (
+                <include refid="DSB" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[FinishYGBH]-->
+	 <select id="searchFinishYGBH"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimByzzjlmxSearchContext"  resultMap="PimByzzjlmxResultMap">
+         select t1.* from (
+                <include refid="FinishYGBH" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[DJZBSH]-->
+	 <select id="searchDJZBSH"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimByzzjlmxSearchContext"  resultMap="PimByzzjlmxResultMap">
+         select t1.* from (
+                <include refid="DJZBSH" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimByzzjlmxSearchContext"  resultMap="PimByzzjlmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[BYLZZJL]-->
+    <sql id="BYLZZJL" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`CHECKSTATUS`, t11.`CJGZSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DATZQK`, (case when t1.`CHECKSTATUS` = '100' then '10' else (case when t1.`CHECKSTATUS` = '60' then '30' else '20' end) end) AS `DQZT`, t11.`DZJBJSJ`, t1.`FINISHED`, t1.`FS`, t11.`HIGHTITLE`, t11.`HJDZ`, t11.`HKLX`, t1.`ISTEMP`, t11.`JG`, t11.`JKZK`, t1.`JSRQ`, t31.`JSSJ`, t1.`JZBSHYJ`, t1.`JZBSPYJ`, t1.`JZPSPYJ`, t11.`LXDH`, t11.`MZ`, t1.`NZZYGLX`, t1.`OLDYGBH`, t1.`OLDYGLX`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PEOPLENUM`, t1.`PIMBYYGZZSQID`, t41.`PIMBYYGZZSQNAME`, t1.`PIMBYZZJLMXID`, t1.`PIMBYZZJLMXNAME`, t1.`PIMEXAMINATIONRESULTSID`, t31.`PIMEXAMINATIONRESULTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PJ`, t11.`POSTALADDRESS`, t1.`QSRQ`, t31.`QSSJ`, t1.`REASON`, t1.`SBCL`, t1.`SSLWGS`, t1.`SSLWGSDZ`, t1.`STANDARDCAUSE`, t1.`SXRQ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`XYGBH`, t1.`YBHQYSJ`, t1.`YGBH`, t11.`GW` AS `YGW`, (case when t1.`CHECKSTATUS` = '60' then  t1.`JZPSPYJ`  else  '' end) AS `YJ`, t1.`YWZDJBS`, t1.`YYGLX`, t1.`YZBM`, t11.`ZJHM`, t1.`ZTYY`, t1.`ZZ`, t1.`ZZID`, t11.`ZZMM` FROM `T_PIMBYZZJLMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_PIMEXAMINATIONRESULTS t31 ON t1.PIMEXAMINATIONRESULTSID = t31.PIMEXAMINATIONRESULTSID  LEFT JOIN T_PIMBYYGZZSQ t41 ON t1.PIMBYYGZZSQID = t41.PIMBYYGZZSQID  
+				 WHERE 	( ( t1.`ISTEMP` <> 1  OR  t1.`ISTEMP` IS NULL ) )
+			]]>
+    </sql>
+    <!--数据查询[DDJZBSH]-->
+    <sql id="DDJZBSH" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`CHECKSTATUS`, t11.`CJGZSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DATZQK`, (case when t1.`CHECKSTATUS` = '100' then '10' else (case when t1.`CHECKSTATUS` = '60' then '30' else '20' end) end) AS `DQZT`, t11.`DZJBJSJ`, t1.`FINISHED`, t1.`FS`, t11.`HIGHTITLE`, t11.`HJDZ`, t11.`HKLX`, t1.`ISTEMP`, t11.`JG`, t11.`JKZK`, t1.`JSRQ`, t31.`JSSJ`, t1.`JZBSHYJ`, t1.`JZBSPYJ`, t1.`JZPSPYJ`, t11.`LXDH`, t11.`MZ`, t1.`NZZYGLX`, t1.`OLDYGBH`, t1.`OLDYGLX`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PEOPLENUM`, t1.`PIMBYYGZZSQID`, t41.`PIMBYYGZZSQNAME`, t1.`PIMBYZZJLMXID`, t1.`PIMBYZZJLMXNAME`, t1.`PIMEXAMINATIONRESULTSID`, t31.`PIMEXAMINATIONRESULTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PJ`, t11.`POSTALADDRESS`, t1.`QSRQ`, t31.`QSSJ`, t1.`REASON`, t1.`SBCL`, t1.`SSLWGS`, t1.`SSLWGSDZ`, t1.`STANDARDCAUSE`, t1.`SXRQ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`XYGBH`, t1.`YBHQYSJ`, t1.`YGBH`, t11.`GW` AS `YGW`, (case when t1.`CHECKSTATUS` = '60' then  t1.`JZPSPYJ`  else  '' end) AS `YJ`, t1.`YWZDJBS`, t1.`YYGLX`, t1.`YZBM`, t11.`ZJHM`, t1.`ZTYY`, t1.`ZZ`, t1.`ZZID`, t11.`ZZMM` FROM `T_PIMBYZZJLMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_PIMEXAMINATIONRESULTS t31 ON t1.PIMEXAMINATIONRESULTSID = t31.PIMEXAMINATIONRESULTSID  LEFT JOIN T_PIMBYYGZZSQ t41 ON t1.PIMBYYGZZSQID = t41.PIMBYYGZZSQID  
+				 WHERE 	( t1.`CHECKSTATUS` = '65'  AND  t1.`ISTEMP` = 0 )
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`CHECKSTATUS`, t11.`CJGZSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DATZQK`, (case when t1.`CHECKSTATUS` = '100' then '10' else (case when t1.`CHECKSTATUS` = '60' then '30' else '20' end) end) AS `DQZT`, t11.`DZJBJSJ`, t1.`FINISHED`, t1.`FS`, t11.`HIGHTITLE`, t11.`HJDZ`, t11.`HKLX`, t1.`ISTEMP`, t11.`JG`, t11.`JKZK`, t1.`JSRQ`, t31.`JSSJ`, t1.`JZBSHYJ`, t1.`JZBSPYJ`, t1.`JZPSPYJ`, t11.`LXDH`, t11.`MZ`, t1.`NZZYGLX`, t1.`OLDYGBH`, t1.`OLDYGLX`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PEOPLENUM`, t1.`PIMBYYGZZSQID`, t41.`PIMBYYGZZSQNAME`, t1.`PIMBYZZJLMXID`, t1.`PIMBYZZJLMXNAME`, t1.`PIMEXAMINATIONRESULTSID`, t31.`PIMEXAMINATIONRESULTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PJ`, t11.`POSTALADDRESS`, t1.`QSRQ`, t31.`QSSJ`, t1.`REASON`, t1.`SBCL`, t1.`SSLWGS`, t1.`SSLWGSDZ`, t1.`STANDARDCAUSE`, t1.`SXRQ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`XYGBH`, t1.`YBHQYSJ`, t1.`YGBH`, t11.`GW` AS `YGW`, (case when t1.`CHECKSTATUS` = '60' then  t1.`JZPSPYJ`  else  '' end) AS `YJ`, t1.`YWZDJBS`, t1.`YYGLX`, t1.`YZBM`, t11.`ZJHM`, t1.`ZTYY`, t1.`ZZ`, t1.`ZZID`, t11.`ZZMM` FROM `T_PIMBYZZJLMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_PIMEXAMINATIONRESULTS t31 ON t1.PIMEXAMINATIONRESULTSID = t31.PIMEXAMINATIONRESULTSID  LEFT JOIN T_PIMBYYGZZSQ t41 ON t1.PIMBYYGZZSQID = t41.PIMBYYGZZSQID  
+			]]>
+    </sql>
+    <!--数据查询[DGSDSZSH]-->
+    <sql id="DGSDSZSH" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`CHECKSTATUS`, t11.`CJGZSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DATZQK`, (case when t1.`CHECKSTATUS` = '100' then '10' else (case when t1.`CHECKSTATUS` = '60' then '30' else '20' end) end) AS `DQZT`, t11.`DZJBJSJ`, t1.`FINISHED`, t1.`FS`, t11.`HIGHTITLE`, t11.`HJDZ`, t11.`HKLX`, t1.`ISTEMP`, t11.`JG`, t11.`JKZK`, t1.`JSRQ`, t31.`JSSJ`, t1.`JZBSHYJ`, t1.`JZBSPYJ`, t1.`JZPSPYJ`, t11.`LXDH`, t11.`MZ`, t1.`NZZYGLX`, t1.`OLDYGBH`, t1.`OLDYGLX`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PEOPLENUM`, t1.`PIMBYYGZZSQID`, t41.`PIMBYYGZZSQNAME`, t1.`PIMBYZZJLMXID`, t1.`PIMBYZZJLMXNAME`, t1.`PIMEXAMINATIONRESULTSID`, t31.`PIMEXAMINATIONRESULTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PJ`, t11.`POSTALADDRESS`, t1.`QSRQ`, t31.`QSSJ`, t1.`REASON`, t1.`SBCL`, t1.`SSLWGS`, t1.`SSLWGSDZ`, t1.`STANDARDCAUSE`, t1.`SXRQ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`XYGBH`, t1.`YBHQYSJ`, t1.`YGBH`, t11.`GW` AS `YGW`, (case when t1.`CHECKSTATUS` = '60' then  t1.`JZPSPYJ`  else  '' end) AS `YJ`, t1.`YWZDJBS`, t1.`YYGLX`, t1.`YZBM`, t11.`ZJHM`, t1.`ZTYY`, t1.`ZZ`, t1.`ZZID`, t11.`ZZMM` FROM `T_PIMBYZZJLMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_PIMEXAMINATIONRESULTS t31 ON t1.PIMEXAMINATIONRESULTSID = t31.PIMEXAMINATIONRESULTSID  LEFT JOIN T_PIMBYYGZZSQ t41 ON t1.PIMBYYGZZSQID = t41.PIMBYYGZZSQID  
+				 WHERE 	( t1.`CHECKSTATUS` = '30'  AND  t1.`ISTEMP` = 0 )
+			]]>
+    </sql>
+    <!--数据查询[DJZBSH]-->
+    <sql id="DJZBSH" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`CHECKSTATUS`, t11.`CJGZSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DATZQK`, (case when t1.`CHECKSTATUS` = '100' then '10' else (case when t1.`CHECKSTATUS` = '60' then '30' else '20' end) end) AS `DQZT`, t11.`DZJBJSJ`, t1.`FINISHED`, t1.`FS`, t11.`HIGHTITLE`, t11.`HJDZ`, t11.`HKLX`, t1.`ISTEMP`, t11.`JG`, t11.`JKZK`, t1.`JSRQ`, t31.`JSSJ`, t1.`JZBSHYJ`, t1.`JZBSPYJ`, t1.`JZPSPYJ`, t11.`LXDH`, t11.`MZ`, t1.`NZZYGLX`, t1.`OLDYGBH`, t1.`OLDYGLX`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PEOPLENUM`, t1.`PIMBYYGZZSQID`, t41.`PIMBYYGZZSQNAME`, t1.`PIMBYZZJLMXID`, t1.`PIMBYZZJLMXNAME`, t1.`PIMEXAMINATIONRESULTSID`, t31.`PIMEXAMINATIONRESULTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PJ`, t11.`POSTALADDRESS`, t1.`QSRQ`, t31.`QSSJ`, t1.`REASON`, t1.`SBCL`, t1.`SSLWGS`, t1.`SSLWGSDZ`, t1.`STANDARDCAUSE`, t1.`SXRQ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`XYGBH`, t1.`YBHQYSJ`, t1.`YGBH`, t11.`GW` AS `YGW`, (case when t1.`CHECKSTATUS` = '60' then  t1.`JZPSPYJ`  else  '' end) AS `YJ`, t1.`YWZDJBS`, t1.`YYGLX`, t1.`YZBM`, t11.`ZJHM`, t1.`ZTYY`, t1.`ZZ`, t1.`ZZID`, t11.`ZZMM` FROM `T_PIMBYZZJLMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_PIMEXAMINATIONRESULTS t31 ON t1.PIMEXAMINATIONRESULTSID = t31.PIMEXAMINATIONRESULTSID  LEFT JOIN T_PIMBYYGZZSQ t41 ON t1.PIMBYYGZZSQID = t41.PIMBYYGZZSQID  
+				 WHERE 	( t1.`CHECKSTATUS` = '50'  AND  t1.`ISTEMP` = 0 )
+			]]>
+    </sql>
+    <!--数据查询[DJZBSP]-->
+    <sql id="DJZBSP" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`CHECKSTATUS`, t11.`CJGZSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DATZQK`, (case when t1.`CHECKSTATUS` = '100' then '10' else (case when t1.`CHECKSTATUS` = '60' then '30' else '20' end) end) AS `DQZT`, t11.`DZJBJSJ`, t1.`FINISHED`, t1.`FS`, t11.`HIGHTITLE`, t11.`HJDZ`, t11.`HKLX`, t1.`ISTEMP`, t11.`JG`, t11.`JKZK`, t1.`JSRQ`, t31.`JSSJ`, t1.`JZBSHYJ`, t1.`JZBSPYJ`, t1.`JZPSPYJ`, t11.`LXDH`, t11.`MZ`, t1.`NZZYGLX`, t1.`OLDYGBH`, t1.`OLDYGLX`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PEOPLENUM`, t1.`PIMBYYGZZSQID`, t41.`PIMBYYGZZSQNAME`, t1.`PIMBYZZJLMXID`, t1.`PIMBYZZJLMXNAME`, t1.`PIMEXAMINATIONRESULTSID`, t31.`PIMEXAMINATIONRESULTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PJ`, t11.`POSTALADDRESS`, t1.`QSRQ`, t31.`QSSJ`, t1.`REASON`, t1.`SBCL`, t1.`SSLWGS`, t1.`SSLWGSDZ`, t1.`STANDARDCAUSE`, t1.`SXRQ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`XYGBH`, t1.`YBHQYSJ`, t1.`YGBH`, t11.`GW` AS `YGW`, (case when t1.`CHECKSTATUS` = '60' then  t1.`JZPSPYJ`  else  '' end) AS `YJ`, t1.`YWZDJBS`, t1.`YYGLX`, t1.`YZBM`, t11.`ZJHM`, t1.`ZTYY`, t1.`ZZ`, t1.`ZZID`, t11.`ZZMM` FROM `T_PIMBYZZJLMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_PIMEXAMINATIONRESULTS t31 ON t1.PIMEXAMINATIONRESULTSID = t31.PIMEXAMINATIONRESULTSID  LEFT JOIN T_PIMBYYGZZSQ t41 ON t1.PIMBYYGZZSQID = t41.PIMBYYGZZSQID  
+				 WHERE 	( t1.`CHECKSTATUS` = '70'  AND  t1.`ISTEMP` = 0 )
+			]]>
+    </sql>
+    <!--数据查询[DSB]-->
+    <sql id="DSB" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`CHECKSTATUS`, t11.`CJGZSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DATZQK`, (case when t1.`CHECKSTATUS` = '100' then '10' else (case when t1.`CHECKSTATUS` = '60' then '30' else '20' end) end) AS `DQZT`, t11.`DZJBJSJ`, t1.`FINISHED`, t1.`FS`, t11.`HIGHTITLE`, t11.`HJDZ`, t11.`HKLX`, t1.`ISTEMP`, t11.`JG`, t11.`JKZK`, t1.`JSRQ`, t31.`JSSJ`, t1.`JZBSHYJ`, t1.`JZBSPYJ`, t1.`JZPSPYJ`, t11.`LXDH`, t11.`MZ`, t1.`NZZYGLX`, t1.`OLDYGBH`, t1.`OLDYGLX`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PEOPLENUM`, t1.`PIMBYYGZZSQID`, t41.`PIMBYYGZZSQNAME`, t1.`PIMBYZZJLMXID`, t1.`PIMBYZZJLMXNAME`, t1.`PIMEXAMINATIONRESULTSID`, t31.`PIMEXAMINATIONRESULTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PJ`, t11.`POSTALADDRESS`, t1.`QSRQ`, t31.`QSSJ`, t1.`REASON`, t1.`SBCL`, t1.`SSLWGS`, t1.`SSLWGSDZ`, t1.`STANDARDCAUSE`, t1.`SXRQ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`XYGBH`, t1.`YBHQYSJ`, t1.`YGBH`, t11.`GW` AS `YGW`, (case when t1.`CHECKSTATUS` = '60' then  t1.`JZPSPYJ`  else  '' end) AS `YJ`, t1.`YWZDJBS`, t1.`YYGLX`, t1.`YZBM`, t11.`ZJHM`, t1.`ZTYY`, t1.`ZZ`, t1.`ZZID`, t11.`ZZMM` FROM `T_PIMBYZZJLMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_PIMEXAMINATIONRESULTS t31 ON t1.PIMEXAMINATIONRESULTSID = t31.PIMEXAMINATIONRESULTSID  LEFT JOIN T_PIMBYYGZZSQ t41 ON t1.PIMBYYGZZSQID = t41.PIMBYYGZZSQID  
+				 WHERE 	( t1.`ISTEMP` = 0  AND  ( t1.`CHECKSTATUS` = '50'  OR  t1.`CHECKSTATUS` = '60'  OR  t1.`CHECKSTATUS` = '65'  OR  t1.`CHECKSTATUS` = '68'  OR  t1.`CHECKSTATUS` = '70'  OR  t1.`CHECKSTATUS` = '80'  OR  t1.`CHECKSTATUS` = '100' ) )
+			]]>
+    </sql>
+    <!--数据查询[FinishYGBH]-->
+    <sql id="FinishYGBH" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`CHECKSTATUS`, t11.`CJGZSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DATZQK`, (case when t1.`CHECKSTATUS` = '100' then '10' else (case when t1.`CHECKSTATUS` = '60' then '30' else '20' end) end) AS `DQZT`, t11.`DZJBJSJ`, t1.`FINISHED`, t1.`FS`, t11.`HIGHTITLE`, t11.`HJDZ`, t11.`HKLX`, t1.`ISTEMP`, t11.`JG`, t11.`JKZK`, t1.`JSRQ`, t31.`JSSJ`, t1.`JZBSHYJ`, t1.`JZBSPYJ`, t1.`JZPSPYJ`, t11.`LXDH`, t11.`MZ`, t1.`NZZYGLX`, t1.`OLDYGBH`, t1.`OLDYGLX`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PEOPLENUM`, t1.`PIMBYYGZZSQID`, t41.`PIMBYYGZZSQNAME`, t1.`PIMBYZZJLMXID`, t1.`PIMBYZZJLMXNAME`, t1.`PIMEXAMINATIONRESULTSID`, t31.`PIMEXAMINATIONRESULTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PJ`, t11.`POSTALADDRESS`, t1.`QSRQ`, t31.`QSSJ`, t1.`REASON`, t1.`SBCL`, t1.`SSLWGS`, t1.`SSLWGSDZ`, t1.`STANDARDCAUSE`, t1.`SXRQ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`XYGBH`, t1.`YBHQYSJ`, t1.`YGBH`, t11.`GW` AS `YGW`, (case when t1.`CHECKSTATUS` = '60' then  t1.`JZPSPYJ`  else  '' end) AS `YJ`, t1.`YWZDJBS`, t1.`YYGLX`, t1.`YZBM`, t11.`ZJHM`, t1.`ZTYY`, t1.`ZZ`, t1.`ZZID`, t11.`ZZMM` FROM `T_PIMBYZZJLMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_PIMEXAMINATIONRESULTS t31 ON t1.PIMEXAMINATIONRESULTSID = t31.PIMEXAMINATIONRESULTSID  LEFT JOIN T_PIMBYYGZZSQ t41 ON t1.PIMBYYGZZSQID = t41.PIMBYYGZZSQID  
+				 WHERE 	( t1.`ISTEMP` = 0  AND  t1.`FINISHED` = 1  AND  t1.`CHECKSTATUS` = '90' )
+			]]>
+    </sql>
+    <!--数据查询[HTRY]-->
+    <sql id="HTRY" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`CHECKSTATUS`, t11.`CJGZSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DATZQK`, (case when t1.`CHECKSTATUS` = '100' then '10' else (case when t1.`CHECKSTATUS` = '60' then '30' else '20' end) end) AS `DQZT`, t11.`DZJBJSJ`, t1.`FINISHED`, t1.`FS`, t11.`HIGHTITLE`, t11.`HJDZ`, t11.`HKLX`, t1.`ISTEMP`, t11.`JG`, t11.`JKZK`, t1.`JSRQ`, t31.`JSSJ`, t1.`JZBSHYJ`, t1.`JZBSPYJ`, t1.`JZPSPYJ`, t11.`LXDH`, t11.`MZ`, t1.`NZZYGLX`, t1.`OLDYGBH`, t1.`OLDYGLX`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PEOPLENUM`, t1.`PIMBYYGZZSQID`, t41.`PIMBYYGZZSQNAME`, t1.`PIMBYZZJLMXID`, t1.`PIMBYZZJLMXNAME`, t1.`PIMEXAMINATIONRESULTSID`, t31.`PIMEXAMINATIONRESULTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PJ`, t11.`POSTALADDRESS`, t1.`QSRQ`, t31.`QSSJ`, t1.`REASON`, t1.`SBCL`, t1.`SSLWGS`, t1.`SSLWGSDZ`, t1.`STANDARDCAUSE`, t1.`SXRQ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`XYGBH`, t1.`YBHQYSJ`, t1.`YGBH`, t11.`GW` AS `YGW`, (case when t1.`CHECKSTATUS` = '60' then  t1.`JZPSPYJ`  else  '' end) AS `YJ`, t1.`YWZDJBS`, t1.`YYGLX`, t1.`YZBM`, t11.`ZJHM`, t1.`ZTYY`, t1.`ZZ`, t1.`ZZID`, t11.`ZZMM` FROM `T_PIMBYZZJLMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_PIMEXAMINATIONRESULTS t31 ON t1.PIMEXAMINATIONRESULTSID = t31.PIMEXAMINATIONRESULTSID  LEFT JOIN T_PIMBYYGZZSQ t41 ON t1.PIMBYYGZZSQID = t41.PIMBYYGZZSQID  
+				 WHERE 	( ( t1.`CHECKSTATUS` = '68'  OR  t1.`CHECKSTATUS` = '80' )  AND  t1.`ISTEMP` = 0 )
+			]]>
+    </sql>
+    <!--数据查询[SXSB]-->
+    <sql id="SXSB" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`CHECKSTATUS`, t11.`CJGZSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DATZQK`, (case when t1.`CHECKSTATUS` = '100' then '10' else (case when t1.`CHECKSTATUS` = '60' then '30' else '20' end) end) AS `DQZT`, t11.`DZJBJSJ`, t1.`FINISHED`, t1.`FS`, t11.`HIGHTITLE`, t11.`HJDZ`, t11.`HKLX`, t1.`ISTEMP`, t11.`JG`, t11.`JKZK`, t1.`JSRQ`, t31.`JSSJ`, t1.`JZBSHYJ`, t1.`JZBSPYJ`, t1.`JZPSPYJ`, t11.`LXDH`, t11.`MZ`, t1.`NZZYGLX`, t1.`OLDYGBH`, t1.`OLDYGLX`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PEOPLENUM`, t1.`PIMBYYGZZSQID`, t41.`PIMBYYGZZSQNAME`, t1.`PIMBYZZJLMXID`, t1.`PIMBYZZJLMXNAME`, t1.`PIMEXAMINATIONRESULTSID`, t31.`PIMEXAMINATIONRESULTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PJ`, t11.`POSTALADDRESS`, t1.`QSRQ`, t31.`QSSJ`, t1.`REASON`, t1.`SBCL`, t1.`SSLWGS`, t1.`SSLWGSDZ`, t1.`STANDARDCAUSE`, t1.`SXRQ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`XYGBH`, t1.`YBHQYSJ`, t1.`YGBH`, t11.`GW` AS `YGW`, (case when t1.`CHECKSTATUS` = '60' then  t1.`JZPSPYJ`  else  '' end) AS `YJ`, t1.`YWZDJBS`, t1.`YYGLX`, t1.`YZBM`, t11.`ZJHM`, t1.`ZTYY`, t1.`ZZ`, t1.`ZZID`, t11.`ZZMM` FROM `T_PIMBYZZJLMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_PIMEXAMINATIONRESULTS t31 ON t1.PIMEXAMINATIONRESULTSID = t31.PIMEXAMINATIONRESULTSID  LEFT JOIN T_PIMBYYGZZSQ t41 ON t1.PIMBYYGZZSQID = t41.PIMBYYGZZSQID  
+				 WHERE 	( ( t1.`CHECKSTATUS` = '50'  OR  t1.`CHECKSTATUS` = '60'  OR  t1.`CHECKSTATUS` = '65'  OR  t1.`CHECKSTATUS` = '68'  OR  t1.`CHECKSTATUS` = '70'  OR  t1.`CHECKSTATUS` = '80'  OR  t1.`CHECKSTATUS` = '100' ) )
+			]]>
+    </sql>
+    <!--数据查询[UnApproved]-->
+    <sql id="UnApproved" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`CHECKSTATUS`, t11.`CJGZSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DATZQK`, (case when t1.`CHECKSTATUS` = '100' then '10' else (case when t1.`CHECKSTATUS` = '60' then '30' else '20' end) end) AS `DQZT`, t11.`DZJBJSJ`, t1.`FINISHED`, t1.`FS`, t11.`HIGHTITLE`, t11.`HJDZ`, t11.`HKLX`, t1.`ISTEMP`, t11.`JG`, t11.`JKZK`, t1.`JSRQ`, t31.`JSSJ`, t1.`JZBSHYJ`, t1.`JZBSPYJ`, t1.`JZPSPYJ`, t11.`LXDH`, t11.`MZ`, t1.`NZZYGLX`, t1.`OLDYGBH`, t1.`OLDYGLX`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PEOPLENUM`, t1.`PIMBYYGZZSQID`, t41.`PIMBYYGZZSQNAME`, t1.`PIMBYZZJLMXID`, t1.`PIMBYZZJLMXNAME`, t1.`PIMEXAMINATIONRESULTSID`, t31.`PIMEXAMINATIONRESULTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PJ`, t11.`POSTALADDRESS`, t1.`QSRQ`, t31.`QSSJ`, t1.`REASON`, t1.`SBCL`, t1.`SSLWGS`, t1.`SSLWGSDZ`, t1.`STANDARDCAUSE`, t1.`SXRQ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`XYGBH`, t1.`YBHQYSJ`, t1.`YGBH`, t11.`GW` AS `YGW`, (case when t1.`CHECKSTATUS` = '60' then  t1.`JZPSPYJ`  else  '' end) AS `YJ`, t1.`YWZDJBS`, t1.`YYGLX`, t1.`YZBM`, t11.`ZJHM`, t1.`ZTYY`, t1.`ZZ`, t1.`ZZID`, t11.`ZZMM` FROM `T_PIMBYZZJLMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_PIMEXAMINATIONRESULTS t31 ON t1.PIMEXAMINATIONRESULTSID = t31.PIMEXAMINATIONRESULTSID  LEFT JOIN T_PIMBYYGZZSQ t41 ON t1.PIMBYYGZZSQID = t41.PIMBYYGZZSQID  
+				 WHERE 	( t1.`CHECKSTATUS` = '10'  AND  t1.`ISTEMP` = 0 )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`CHECKSTATUS`, t11.`CJGZSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DATZQK`, (case when t1.`CHECKSTATUS` = '100' then '10' else (case when t1.`CHECKSTATUS` = '60' then '30' else '20' end) end) AS `DQZT`, t11.`DZJBJSJ`, t1.`FINISHED`, t1.`FS`, t11.`HIGHTITLE`, t11.`HJDZ`, t11.`HKLX`, t1.`ISTEMP`, t11.`JG`, t11.`JKZK`, t1.`JSRQ`, t31.`JSSJ`, t1.`JZBSHYJ`, t1.`JZBSPYJ`, t1.`JZPSPYJ`, t11.`LXDH`, t11.`MZ`, t1.`NZZYGLX`, t1.`OLDYGBH`, t1.`OLDYGLX`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PEOPLENUM`, t1.`PIMBYYGZZSQID`, t41.`PIMBYYGZZSQNAME`, t1.`PIMBYZZJLMXID`, t1.`PIMBYZZJLMXNAME`, t1.`PIMEXAMINATIONRESULTSID`, t31.`PIMEXAMINATIONRESULTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PJ`, t11.`POSTALADDRESS`, t1.`PROFILELIST`, t1.`QSRQ`, t31.`QSSJ`, t1.`REASON`, t1.`SBCL`, t1.`SSLWGS`, t1.`SSLWGSDZ`, t1.`STANDARDCAUSE`, t1.`SXRQ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`XYGBH`, t1.`YBHQYSJ`, t1.`YGBH`, t11.`GW` AS `YGW`, (case when t1.`CHECKSTATUS` = '60' then  t1.`JZPSPYJ`  else  '' end) AS `YJ`, t1.`YWZDJBS`, t1.`YYGLX`, t1.`YZBM`, t11.`ZJHM`, t1.`ZTYY`, t1.`ZZ`, t1.`ZZID`, t11.`ZZMM` FROM `T_PIMBYZZJLMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_PIMEXAMINATIONRESULTS t31 ON t1.PIMEXAMINATIONRESULTSID = t31.PIMEXAMINATIONRESULTSID  LEFT JOIN T_PIMBYYGZZSQ t41 ON t1.PIMBYYGZZSQID = t41.PIMBYYGZZSQID  
+			]]>
+    </sql>
+    <!--数据查询[YXSB]-->
+    <sql id="YXSB" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`CHECKSTATUS`, t11.`CJGZSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DATZQK`, (case when t1.`CHECKSTATUS` = '100' then '10' else (case when t1.`CHECKSTATUS` = '60' then '30' else '20' end) end) AS `DQZT`, t11.`DZJBJSJ`, t1.`FINISHED`, t1.`FS`, t11.`HIGHTITLE`, t11.`HJDZ`, t11.`HKLX`, t1.`ISTEMP`, t11.`JG`, t11.`JKZK`, t1.`JSRQ`, t31.`JSSJ`, t1.`JZBSHYJ`, t1.`JZBSPYJ`, t1.`JZPSPYJ`, t11.`LXDH`, t11.`MZ`, t1.`NZZYGLX`, t1.`OLDYGBH`, t1.`OLDYGLX`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PEOPLENUM`, t1.`PIMBYYGZZSQID`, t41.`PIMBYYGZZSQNAME`, t1.`PIMBYZZJLMXID`, t1.`PIMBYZZJLMXNAME`, t1.`PIMEXAMINATIONRESULTSID`, t31.`PIMEXAMINATIONRESULTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PJ`, t11.`POSTALADDRESS`, t1.`QSRQ`, t31.`QSSJ`, t1.`REASON`, t1.`SBCL`, t1.`SSLWGS`, t1.`SSLWGSDZ`, t1.`STANDARDCAUSE`, t1.`SXRQ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`XYGBH`, t1.`YBHQYSJ`, t1.`YGBH`, t11.`GW` AS `YGW`, (case when t1.`CHECKSTATUS` = '60' then  t1.`JZPSPYJ`  else  '' end) AS `YJ`, t1.`YWZDJBS`, t1.`YYGLX`, t1.`YZBM`, t11.`ZJHM`, t1.`ZTYY`, t1.`ZZ`, t1.`ZZID`, t11.`ZZMM` FROM `T_PIMBYZZJLMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_PIMEXAMINATIONRESULTS t31 ON t1.PIMEXAMINATIONRESULTSID = t31.PIMEXAMINATIONRESULTSID  LEFT JOIN T_PIMBYYGZZSQ t41 ON t1.PIMBYYGZZSQID = t41.PIMBYYGZZSQID  
+				 WHERE 	( ( t1.`CHECKSTATUS` = '60'  OR  t1.`CHECKSTATUS` = '100' ) )
+			]]>
+    </sql>
+    <!--数据查询[ZZWSHDQ]-->
+    <sql id="ZZWSHDQ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`CHECKSTATUS`, t11.`CJGZSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DATZQK`, (case when t1.`CHECKSTATUS` = '100' then '10' else (case when t1.`CHECKSTATUS` = '60' then '30' else '20' end) end) AS `DQZT`, t11.`DZJBJSJ`, t1.`FINISHED`, t1.`FS`, t11.`HIGHTITLE`, t11.`HJDZ`, t11.`HKLX`, t1.`ISTEMP`, t11.`JG`, t11.`JKZK`, t1.`JSRQ`, t31.`JSSJ`, t1.`JZBSHYJ`, t1.`JZBSPYJ`, t1.`JZPSPYJ`, t11.`LXDH`, t11.`MZ`, t1.`NZZYGLX`, t1.`OLDYGBH`, t1.`OLDYGLX`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PEOPLENUM`, t1.`PIMBYYGZZSQID`, t41.`PIMBYYGZZSQNAME`, t1.`PIMBYZZJLMXID`, t1.`PIMBYZZJLMXNAME`, t1.`PIMEXAMINATIONRESULTSID`, t31.`PIMEXAMINATIONRESULTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PJ`, t11.`POSTALADDRESS`, t1.`QSRQ`, t31.`QSSJ`, t1.`REASON`, t1.`SBCL`, t1.`SSLWGS`, t1.`SSLWGSDZ`, t1.`STANDARDCAUSE`, t1.`SXRQ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`XYGBH`, t1.`YBHQYSJ`, t1.`YGBH`, t11.`GW` AS `YGW`, (case when t1.`CHECKSTATUS` = '60' then  t1.`JZPSPYJ`  else  '' end) AS `YJ`, t1.`YWZDJBS`, t1.`YYGLX`, t1.`YZBM`, t11.`ZJHM`, t1.`ZTYY`, t1.`ZZ`, t1.`ZZID`, t11.`ZZMM` FROM `T_PIMBYZZJLMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_PIMEXAMINATIONRESULTS t31 ON t1.PIMEXAMINATIONRESULTSID = t31.PIMEXAMINATIONRESULTSID  LEFT JOIN T_PIMBYYGZZSQ t41 ON t1.PIMBYYGZZSQID = t41.PIMBYYGZZSQID  
+				 WHERE 	( t1.`FINISHED` IS NOT NULL )
+			]]>
+    </sql>
+</mapper>
+

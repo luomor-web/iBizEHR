@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PcmYdbxmxMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PcmYdbxmxResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t11.`BM`, t11.`BMID`, t1.`BXYY`, t1.`BZ`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DISTIRBUTIONID`, t1.`ISFINISHED`, t1.`JSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`PCMYDBXMXID`, t1.`PCMYDBXMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t41.`PIMPERSONNAME`, t31.`SHORTNAME`, t11.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t21.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDBXMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDBXMXID = t11.PCMYDMXID  LEFT JOIN T_SRFORG t21 ON t11.ZZID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.BMID = t31.ORGSECTORID  LEFT JOIN T_PIMPERSON t41 ON t11.PIMPERSONID = t41.PIMPERSONID  ) t1 where pcmydbxmxid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PcmYdbxmxResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PcmYdbxmx" autoMapping="true">
+        <id property="pcmydbxmxid" column="pcmydbxmxid" /><!--主键字段映射-->
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[GLDS]-->
+	 <select id="searchGLDS"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmYdbxmxSearchContext"  resultMap="PcmYdbxmxResultMap">
+         select t1.* from (
+                <include refid="GLDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmYdbxmxSearchContext"  resultMap="PcmYdbxmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[JLDS]-->
+	 <select id="searchJLDS"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmYdbxmxSearchContext"  resultMap="PcmYdbxmxResultMap">
+         select t1.* from (
+                <include refid="JLDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t1.`BXYY`, t1.`BZ`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DISTIRBUTIONID`, t1.`ISFINISHED`, t1.`JSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`PCMYDBXMXID`, t1.`PCMYDBXMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t41.`PIMPERSONNAME`, t31.`SHORTNAME`, t11.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t21.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDBXMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDBXMXID = t11.PCMYDMXID  LEFT JOIN T_SRFORG t21 ON t11.ZZID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.BMID = t31.ORGSECTORID  LEFT JOIN T_PIMPERSON t41 ON t11.PIMPERSONID = t41.PIMPERSONID  
+			]]>
+    </sql>
+    <!--数据查询[GLDQ]-->
+    <sql id="GLDQ" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t1.`BXYY`, t1.`BZ`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DISTIRBUTIONID`, t1.`ISFINISHED`, t1.`JSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`PCMYDBXMXID`, t1.`PCMYDBXMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t41.`PIMPERSONNAME`, t31.`SHORTNAME`, t11.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t21.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDBXMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDBXMXID = t11.PCMYDMXID  LEFT JOIN T_SRFORG t21 ON t11.ZZID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.BMID = t31.ORGSECTORID  LEFT JOIN T_PIMPERSON t41 ON t11.PIMPERSONID = t41.PIMPERSONID  
+				 WHERE 	( t1.`ISFINISHED` = '0' )
+			]]>
+    </sql>
+    <!--数据查询[JLDQ]-->
+    <sql id="JLDQ" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t1.`BXYY`, t1.`BZ`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DISTIRBUTIONID`, t1.`ISFINISHED`, t1.`JSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`PCMYDBXMXID`, t1.`PCMYDBXMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t41.`PIMPERSONNAME`, t31.`SHORTNAME`, t11.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t21.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDBXMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDBXMXID = t11.PCMYDMXID  LEFT JOIN T_SRFORG t21 ON t11.ZZID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.BMID = t31.ORGSECTORID  LEFT JOIN T_PIMPERSON t41 ON t11.PIMPERSONID = t41.PIMPERSONID  
+				 WHERE 	( t1.`ISFINISHED` = '1' )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t1.`BXYY`, t1.`BZ`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DISTIRBUTIONID`, t1.`ISFINISHED`, t1.`JSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`PCMYDBXMXID`, t1.`PCMYDBXMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t41.`PIMPERSONNAME`, t31.`SHORTNAME`, t11.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t21.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDBXMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDBXMXID = t11.PCMYDMXID  LEFT JOIN T_SRFORG t21 ON t11.ZZID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.BMID = t31.ORGSECTORID  LEFT JOIN T_PIMPERSON t41 ON t11.PIMPERSONID = t41.PIMPERSONID  
+			]]>
+    </sql>
+</mapper>
+

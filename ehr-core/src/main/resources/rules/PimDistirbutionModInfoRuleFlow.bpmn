@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pim.service.logic.pimdistirbutionmodinfo" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pim.service.logic.pimdistirbutionmodinfo">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pimdistirbutionmodinfodefault" type="cn.ibizlab.ehr.core.pim.domain.PimDistirbution" />
+        <tns:global identifier="pimdistirbutionmodinfopimperson" type="cn.ibizlab.ehr.core.pim.domain.PimPerson" />
+        </extensionElements>
+     <startEvent id="065FC36E-3752-4BFC-AD3E-DDD8D2F72506" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimdistirbutionmodinfodeaction1" id="9AE226BA-BDC6-444A-B97F-0E61F8F21622" implementation="http://www.jboss.org/drools/rule" name="更新员工信息"/>
+     <endEvent id="9AE226BA-BDC6-444A-B97F-0E61F8F21622_End" name="End"/>
+     <sequenceFlow id="9AE226BA-BDC6-444A-B97F-0E61F8F21622_End_Line" sourceRef="9AE226BA-BDC6-444A-B97F-0E61F8F21622" targetRef="9AE226BA-BDC6-444A-B97F-0E61F8F21622_End"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimdistirbutionmodinfoprepareparam1" id="453621C5-3EC5-4918-984A-96E5521D668A" implementation="http://www.jboss.org/drools/rule" name="根据分配中的组织、部门更新"/>
+     <sequenceFlow id="AE71159E-CDB0-4146-9470-3AB6F4447CBC" sourceRef="065FC36E-3752-4BFC-AD3E-DDD8D2F72506" targetRef="453621C5-3EC5-4918-984A-96E5521D668A">
+     </sequenceFlow>
+     <sequenceFlow id="11D53990-69AC-4D08-98D4-2EA044A8C56F" sourceRef="453621C5-3EC5-4918-984A-96E5521D668A" targetRef="9AE226BA-BDC6-444A-B97F-0E61F8F21622">
+     </sequenceFlow>
+    </process>
+</definitions>
+

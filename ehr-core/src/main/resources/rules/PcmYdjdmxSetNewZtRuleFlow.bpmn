@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmydjdmxsetnewzt" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmydjdmxsetnewzt">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmydjdmxsetnewztdefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmYdjdmx" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmydjdmxsetnewztprepareparam1" id="4B1F9E47-53DB-4680-9B6E-A4442AAEB0BF" implementation="http://www.jboss.org/drools/rule" name="设置参数"/>
+     <endEvent id="4B1F9E47-53DB-4680-9B6E-A4442AAEB0BF_End" name="End"/>
+     <sequenceFlow id="4B1F9E47-53DB-4680-9B6E-A4442AAEB0BF_End_Line" sourceRef="4B1F9E47-53DB-4680-9B6E-A4442AAEB0BF" targetRef="4B1F9E47-53DB-4680-9B6E-A4442AAEB0BF_End"/>
+     <startEvent id="3AC064EA-A618-4F89-9520-D6D652A936D8" isInterrupting="true"/>
+     <sequenceFlow id="23B8CE52-50E3-42CA-B762-BACB382B3532" sourceRef="3AC064EA-A618-4F89-9520-D6D652A936D8" targetRef="4B1F9E47-53DB-4680-9B6E-A4442AAEB0BF">
+     </sequenceFlow>
+    </process>
+</definitions>
+

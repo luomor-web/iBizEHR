@@ -1,0 +1,89 @@
+package cn.ibizlab.ehr.pcm.logic.pcmbdsqdmxlogic.setpersoninfonew;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.common.domain.CodeList1 pcmbdsqdmxsetpersoninfonewzjcodelist;
+global cn.ibizlab.ehr.core.pim.domain.PimPerson pcmbdsqdmxsetpersoninfonewpimperson;
+global cn.ibizlab.ehr.core.pcm.domain.PcmBdsqdmx pcmbdsqdmxsetpersoninfonewdefault;
+global cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonservice;
+global cn.ibizlab.ehr.core.common.service.ICodeList1Service codelist1service;
+global cn.ibizlab.ehr.core.pcm.service.IPcmBdsqdmxService iBzSysPcmbdsqdmxDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[获取人员的组织部门职级]
+rule "deaction1"
+ruleflow-group "pcmbdsqdmxsetpersoninfonewdeaction1"
+    when
+    then
+    cn.ibizlab.ehr.util.helper.CachedBeanCopier.copy(pimpersonservice.get(pcmbdsqdmxsetpersoninfonewpimperson.getPimpersonid()),pcmbdsqdmxsetpersoninfonewpimperson);
+    update(pcmbdsqdmxsetpersoninfonewzjcodelist);//更新fact中变量值
+    update(pcmbdsqdmxsetpersoninfonewpimperson);//更新fact中变量值
+    update(pcmbdsqdmxsetpersoninfonewdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[设置人员id]
+rule "prepareparam1"
+ruleflow-group "pcmbdsqdmxsetpersoninfonewprepareparam1"
+    when
+    then
+    pcmbdsqdmxsetpersoninfonewpimperson.set("pimpersonid",pcmbdsqdmxsetpersoninfonewdefault.get("pimpersonid"));
+    update(pcmbdsqdmxsetpersoninfonewzjcodelist);//更新fact中变量值
+    update(pcmbdsqdmxsetpersoninfonewpimperson);//更新fact中变量值
+    update(pcmbdsqdmxsetpersoninfonewdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[刷新代码表]
+rule "deaction2"
+ruleflow-group "pcmbdsqdmxsetpersoninfonewdeaction2"
+    when
+    then
+    codelist1service.refreshModel(pcmbdsqdmxsetpersoninfonewzjcodelist);
+    update(pcmbdsqdmxsetpersoninfonewzjcodelist);//更新fact中变量值
+    update(pcmbdsqdmxsetpersoninfonewpimperson);//更新fact中变量值
+    update(pcmbdsqdmxsetpersoninfonewdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[设置职级、部门、组织]
+rule "prepareparam2"
+ruleflow-group "pcmbdsqdmxsetpersoninfonewprepareparam2"
+    when
+    then
+    pcmbdsqdmxsetpersoninfonewdefault.set("ygbh",pcmbdsqdmxsetpersoninfonewpimperson.get("ygbh"));
+    pcmbdsqdmxsetpersoninfonewdefault.set("zzid",pcmbdsqdmxsetpersoninfonewpimperson.get("ormorgid"));
+    pcmbdsqdmxsetpersoninfonewdefault.set("zz",pcmbdsqdmxsetpersoninfonewpimperson.get("ormorgname"));
+    pcmbdsqdmxsetpersoninfonewdefault.set("ormorgid",pcmbdsqdmxsetpersoninfonewpimperson.get("ormorgid"));
+    pcmbdsqdmxsetpersoninfonewdefault.set("ormorgname",pcmbdsqdmxsetpersoninfonewpimperson.get("ormorgname"));
+    pcmbdsqdmxsetpersoninfonewdefault.set("bmid",pcmbdsqdmxsetpersoninfonewpimperson.get("ormorgsectorid"));
+    pcmbdsqdmxsetpersoninfonewdefault.set("bm",pcmbdsqdmxsetpersoninfonewpimperson.get("ormorgsectorname"));
+    pcmbdsqdmxsetpersoninfonewdefault.set("ormorgsectorid",pcmbdsqdmxsetpersoninfonewpimperson.get("ormorgsectorid"));
+    pcmbdsqdmxsetpersoninfonewdefault.set("ormorgsectorname",pcmbdsqdmxsetpersoninfonewpimperson.get("ormorgsectorname"));
+    pcmbdsqdmxsetpersoninfonewdefault.set("ygw",pcmbdsqdmxsetpersoninfonewpimperson.get("gw"));
+    pcmbdsqdmxsetpersoninfonewdefault.set("rank",pcmbdsqdmxsetpersoninfonewpimperson.get("rank"));
+    pcmbdsqdmxsetpersoninfonewdefault.set("yzw",pcmbdsqdmxsetpersoninfonewpimperson.get("zw"));
+    pcmbdsqdmxsetpersoninfonewdefault.set("zzmm",pcmbdsqdmxsetpersoninfonewpimperson.get("zzmm"));
+    update(pcmbdsqdmxsetpersoninfonewzjcodelist);//更新fact中变量值
+    update(pcmbdsqdmxsetpersoninfonewpimperson);//更新fact中变量值
+    update(pcmbdsqdmxsetpersoninfonewdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[zjcodelist]
+rule "prepareparam3"
+ruleflow-group "pcmbdsqdmxsetpersoninfonewprepareparam3"
+    when
+    then
+    pcmbdsqdmxsetpersoninfonewzjcodelist.set("codelistid","BC61C8E1-837D-4711-9E49-3061DBBFAFEA");
+    update(pcmbdsqdmxsetpersoninfonewzjcodelist);//更新fact中变量值
+    update(pcmbdsqdmxsetpersoninfonewpimperson);//更新fact中变量值
+    update(pcmbdsqdmxsetpersoninfonewdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pcmbdsqdmxsetpersoninfonewbegin"
+    when
+    then
+    end
+

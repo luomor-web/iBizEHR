@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PcmGxmlMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PcmGxmlResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GXLB`, t1.`NATIONAREA`, t1.`ND`, t1.`PCMGXMLID`, t1.`PCMGXMLNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`XXXZ` FROM `T_PCMGXML` t1  ) t1 where pcmgxmlid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PcmGxmlResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PcmGxml" autoMapping="true">
+        <id property="pcmgxmlid" column="pcmgxmlid" /><!--主键字段映射-->
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmGxmlSearchContext"  resultMap="PcmGxmlResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[CurND]-->
+	 <select id="searchCurND"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmGxmlSearchContext"  resultMap="PcmGxmlResultMap">
+         select t1.* from (
+                <include refid="CurND" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[CurND]-->
+    <sql id="CurND" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GXLB`, t1.`NATIONAREA`, t1.`ND`, t1.`PCMGXMLID`, t1.`PCMGXMLNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`XXXZ` FROM `T_PCMGXML` t1  
+				 WHERE 	( t1.`ND` =  #{srf.webcontext.n_nd_eq} )
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GXLB`, t1.`NATIONAREA`, t1.`ND`, t1.`PCMGXMLID`, t1.`PCMGXMLNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`XXXZ` FROM `T_PCMGXML` t1  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GXLB`, t1.`NATIONAREA`, t1.`ND`, t1.`PCMGXMLID`, t1.`PCMGXMLNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`XXXZ` FROM `T_PCMGXML` t1  
+			]]>
+    </sql>
+</mapper>
+

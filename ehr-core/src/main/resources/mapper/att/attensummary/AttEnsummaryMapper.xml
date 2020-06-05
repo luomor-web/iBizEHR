@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.att.mapper.AttEnsummaryMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="AttEnsummaryResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`ATTENSUMMARYID`, t1.`ATTENSUMMARYNAME`, t1.`BEGINDATE`, t1.`BJ`, t1.`BQ`, t1.`BR`, t1.`BZ`, t1.`CC`, t1.`CD`, t1.`CDC`, t1.`CDF`, t1.`CJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DESCRIPTION`, t1.`ENABLE`, t1.`ENDDATE`, t1.`FDJRJB`, t1.`GS`, t1.`GZRJB`, t1.`JH`, t1.`JS`, t1.`KG`, t1.`ND`, t1.`NX`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t21.`ZZDZS` AS `ORMORGNAME`, t11.`ORMORGSECTORID`, t31.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`PC`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`QQ`, t1.`QT`, t1.`QTDXJ`, t1.`REMARKREASON`, t1.`SDT`, t1.`SJ`, t1.`SJCQTS`, t1.`SZ`, t1.`TCXX`, t1.`TQ`, t1.`TX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WQDTS`, t1.`XXRJB`, t1.`YF`, t1.`YGBH`, t1.`YQ`, t1.`ZHTS`, t11.`ZJHM`, t1.`ZT`, t1.`ZTC`, t1.`ZTF`, t11.`ZW` FROM `T_ATTENSUMMARY` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORG t21 ON t11.ORMORGID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.ORMORGSECTORID = t31.ORGSECTORID  ) t1 where attensummaryid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="AttEnsummaryResultMap" type="cn.ibizlab.ehr.core.att.domain.AttEnsummary" autoMapping="true">
+        <id property="attensummaryid" column="attensummaryid" /><!--主键字段映射-->
+		<result property="pimpersonid" column="pimpersonid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ATTENSUMMARY_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="AttEnsummaryResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[CurZZKQHZ]-->
+	 <select id="searchCurZZKQHZ"  parameterType="cn.ibizlab.ehr.core.att.filter.AttEnsummarySearchContext"  resultMap="AttEnsummaryResultMap">
+         select t1.* from (
+                <include refid="CurZZKQHZ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.att.filter.AttEnsummarySearchContext"  resultMap="AttEnsummaryResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[CurZZKQHZ]-->
+    <sql id="CurZZKQHZ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ATTENSUMMARYID`, t1.`ATTENSUMMARYNAME`, t1.`BEGINDATE`, t1.`BJ`, t1.`BQ`, t1.`BR`, t1.`BZ`, t1.`CC`, t1.`CD`, t1.`CDC`, t1.`CDF`, t1.`CJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DESCRIPTION`, t1.`ENABLE`, t1.`ENDDATE`, t1.`FDJRJB`, t1.`GS`, t1.`GZRJB`, t1.`JH`, t1.`JS`, t1.`KG`, t1.`ND`, t1.`NX`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t21.`ZZDZS` AS `ORMORGNAME`, t11.`ORMORGSECTORID`, t31.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`PC`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`QQ`, t1.`QT`, t1.`QTDXJ`, t1.`REMARKREASON`, t1.`SDT`, t1.`SJ`, t1.`SJCQTS`, t1.`SZ`, t1.`TCXX`, t1.`TQ`, t1.`TX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WQDTS`, t1.`XXRJB`, t1.`YF`, t1.`YGBH`, t1.`YQ`, t1.`ZHTS`, t11.`ZJHM`, t1.`ZT`, t1.`ZTC`, t1.`ZTF`, t11.`ZW` FROM `T_ATTENSUMMARY` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORG t21 ON t11.ORMORGID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.ORMORGSECTORID = t31.ORGSECTORID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t11.`ORMORGID` =  #{srf.webcontext.nodeid} )
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ATTENSUMMARYID`, t1.`ATTENSUMMARYNAME`, t1.`BEGINDATE`, t1.`BJ`, t1.`BQ`, t1.`BR`, t1.`BZ`, t1.`CC`, t1.`CD`, t1.`CDC`, t1.`CDF`, t1.`CJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DESCRIPTION`, t1.`ENABLE`, t1.`ENDDATE`, t1.`FDJRJB`, t1.`GS`, t1.`GZRJB`, t1.`JH`, t1.`JS`, t1.`KG`, t1.`ND`, t1.`NX`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t21.`ZZDZS` AS `ORMORGNAME`, t11.`ORMORGSECTORID`, t31.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`PC`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`QQ`, t1.`QT`, t1.`QTDXJ`, t1.`REMARKREASON`, t1.`SDT`, t1.`SJ`, t1.`SJCQTS`, t1.`SZ`, t1.`TCXX`, t1.`TQ`, t1.`TX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WQDTS`, t1.`XXRJB`, t1.`YF`, t1.`YGBH`, t1.`YQ`, t1.`ZHTS`, t11.`ZJHM`, t1.`ZT`, t1.`ZTC`, t1.`ZTF`, t11.`ZW` FROM `T_ATTENSUMMARY` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORG t21 ON t11.ORMORGID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.ORMORGSECTORID = t31.ORGSECTORID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ATTENSUMMARYID`, t1.`ATTENSUMMARYNAME`, t1.`BEGINDATE`, t1.`BJ`, t1.`BQ`, t1.`BR`, t1.`BZ`, t1.`CC`, t1.`CD`, t1.`CDC`, t1.`CDF`, t1.`CJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DESCRIPTION`, t1.`ENABLE`, t1.`ENDDATE`, t1.`FDJRJB`, t1.`GS`, t1.`GZRJB`, t1.`JH`, t1.`JS`, t1.`KG`, t1.`ND`, t1.`NX`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t21.`ZZDZS` AS `ORMORGNAME`, t11.`ORMORGSECTORID`, t31.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`PC`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`QQ`, t1.`QT`, t1.`QTDXJ`, t1.`REMARKREASON`, t1.`SDT`, t1.`SJ`, t1.`SJCQTS`, t1.`SZ`, t1.`TCXX`, t1.`TQ`, t1.`TX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WQDTS`, t1.`XXRJB`, t1.`YF`, t1.`YGBH`, t1.`YQ`, t1.`ZHTS`, t11.`ZJHM`, t1.`ZT`, t1.`ZTC`, t1.`ZTF`, t11.`ZW` FROM `T_ATTENSUMMARY` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORG t21 ON t11.ORMORGID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.ORMORGSECTORID = t31.ORGSECTORID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

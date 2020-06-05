@@ -1,0 +1,29 @@
+package cn.ibizlab.ehr.orm.logic.ormdutylogic.setordernum;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.orm.domain.OrmDuty ormdutysetordernumdefault;
+global cn.ibizlab.ehr.core.orm.service.IOrmDutyService iBzSysOrmdutyDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "ormdutysetordernumbegin"
+    when
+    then
+    end
+
+//逻辑处理节点[设置排序规则]
+rule "rawsqlcall1"
+ruleflow-group "ormdutysetordernumrawsqlcall1"
+    when
+    then
+    Map param = null;
+    String strSql="select (EQTYPE_SEQ.NEXTVAL) xh from dual;";
+    iBzSysOrmdutyDefaultService.execute(strSql,param);//SQL调用
+    update(ormdutysetordernumdefault);//更新fact中变量值
+    end
+

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TrmDemdeftionMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TrmDemdeftionResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BMJZSJ`, t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DCBJB`, t1.`DCBLX`, t1.`DCDXLX`, t1.`DCJZRQ`, t1.`DCSCJD`, t1.`DCSCND`, t1.`DCYGLB`, t1.`ENABLE`, t1.`ND`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`PIMPERSONID`, t51.`PIMPERSONNAME`, t1.`PXBMC`, t1.`PXDD`, t1.`PXDX`, t1.`PXJSSJ`, t1.`PXKSSJ`, t1.`PXMK`, t1.`PXRS`, t1.`PXZYNR`, t1.`SFFB`, t1.`TRMDEMDEFTIONID`, t1.`TRMDEMDEFTIONNAME`, t1.`TRMDEPARTID`, t41.`TRMDEPARTNAME`, t1.`TRMTRAINCOURSEID`, t11.`TRMTRAINCOURSENAME`, t1.`TRMTRAINFILLINID`, t21.`TRMTRAINFILLINNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`XQFL`, t1.`ZDSJ` FROM `T_TRMDEMDEFTION` t1  LEFT JOIN T_TRMTRAINCOURSE t11 ON t1.TRMTRAINCOURSEID = t11.TRMTRAINCOURSEID  LEFT JOIN T_TRMTRAINFILLIN t21 ON t1.TRMTRAINFILLINID = t21.TRMTRAINFILLINID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_TRMDEPART t41 ON t1.TRMDEPARTID = t41.TRMDEPARTID  LEFT JOIN T_PIMPERSON t51 ON t1.PIMPERSONID = t51.PIMPERSONID  ) t1 where trmdemdeftionid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="TrmDemdeftionResultMap" type="cn.ibizlab.ehr.core.trm.domain.TrmDemdeftion" autoMapping="true">
+        <id property="trmdemdeftionid" column="trmdemdeftionid" /><!--主键字段映射-->
+		<result property="ormorgid" column="ormorgid" />
+		<result property="trmtrainfillinid" column="trmtrainfillinid" />
+		<result property="trmtraincourseid" column="trmtraincourseid" />
+		<result property="trmdepartid" column="trmdepartid" />
+		<result property="pimpersonid" column="pimpersonid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmdepart" javaType="cn.ibizlab.ehr.core.trm.domain.TrmDepart" column="trmdepartid" select="cn.ibizlab.ehr.core.trm.mapper.TrmDepartMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmtraincourse" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainCourse" column="trmtraincourseid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainCourseMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmtrainfillin" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainFillin" column="trmtrainfillinid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainFillinMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMDEMDEFTION_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="TrmDemdeftionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMDEMDEFTION_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="TrmDemdeftionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMDEMDEFTION_TRMDEPART_TRMDEPARTID] -->
+	 <select id="selectByTrmdepartid" resultMap="TrmDemdeftionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmdepartid=#{trmdepartid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMDEMDEFTION_TRMTRAINCOURSE_TRMTRAINCOURSEID] -->
+	 <select id="selectByTrmtraincourseid" resultMap="TrmDemdeftionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmtraincourseid=#{trmtraincourseid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMDEMDEFTION_TRMTRAINFILLIN_TRMTRAINFILLINID] -->
+	 <select id="selectByTrmtrainfillinid" resultMap="TrmDemdeftionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmtrainfillinid=#{trmtrainfillinid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.trm.filter.TrmDemdeftionSearchContext"  resultMap="TrmDemdeftionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BMJZSJ`, t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DCBJB`, t1.`DCBLX`, t1.`DCDXLX`, t1.`DCJZRQ`, t1.`DCSCJD`, t1.`DCSCND`, t1.`DCYGLB`, t1.`ENABLE`, t1.`ND`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`PIMPERSONID`, t51.`PIMPERSONNAME`, t1.`PXBMC`, t1.`PXDD`, t1.`PXDX`, t1.`PXJSSJ`, t1.`PXKSSJ`, t1.`PXMK`, t1.`PXRS`, t1.`PXZYNR`, t1.`SFFB`, t1.`TRMDEMDEFTIONID`, t1.`TRMDEMDEFTIONNAME`, t1.`TRMDEPARTID`, t41.`TRMDEPARTNAME`, t1.`TRMTRAINCOURSEID`, t11.`TRMTRAINCOURSENAME`, t1.`TRMTRAINFILLINID`, t21.`TRMTRAINFILLINNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`XQFL`, t1.`ZDSJ` FROM `T_TRMDEMDEFTION` t1  LEFT JOIN T_TRMTRAINCOURSE t11 ON t1.TRMTRAINCOURSEID = t11.TRMTRAINCOURSEID  LEFT JOIN T_TRMTRAINFILLIN t21 ON t1.TRMTRAINFILLINID = t21.TRMTRAINFILLINID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_TRMDEPART t41 ON t1.TRMDEPARTID = t41.TRMDEPARTID  LEFT JOIN T_PIMPERSON t51 ON t1.PIMPERSONID = t51.PIMPERSONID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BMJZSJ`, t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DCBJB`, t1.`DCBLX`, t1.`DCDXLX`, t1.`DCJZRQ`, t1.`DCSCJD`, t1.`DCSCND`, t1.`DCYGLB`, t1.`ENABLE`, t1.`ND`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`PIMPERSONID`, t51.`PIMPERSONNAME`, t1.`PXBMC`, t1.`PXDD`, t1.`PXDX`, t1.`PXJSSJ`, t1.`PXKSSJ`, t1.`PXMK`, t1.`PXRS`, t1.`PXZYNR`, t1.`SFFB`, t1.`TRMDEMDEFTIONID`, t1.`TRMDEMDEFTIONNAME`, t1.`TRMDEPARTID`, t41.`TRMDEPARTNAME`, t1.`TRMTRAINCOURSEID`, t11.`TRMTRAINCOURSENAME`, t1.`TRMTRAINFILLINID`, t21.`TRMTRAINFILLINNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`XQFL`, t1.`ZDSJ` FROM `T_TRMDEMDEFTION` t1  LEFT JOIN T_TRMTRAINCOURSE t11 ON t1.TRMTRAINCOURSEID = t11.TRMTRAINCOURSEID  LEFT JOIN T_TRMTRAINFILLIN t21 ON t1.TRMTRAINFILLINID = t21.TRMTRAINFILLINID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_TRMDEPART t41 ON t1.TRMDEPARTID = t41.TRMDEPARTID  LEFT JOIN T_PIMPERSON t51 ON t1.PIMPERSONID = t51.PIMPERSONID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

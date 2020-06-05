@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PcmProfileMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PcmProfileResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`ELINKURL`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`ISBLACKLISTREASON`, t1.`JKZK`, t1.`JLDSPYJ`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJ`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`OTHERFILE`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZFJ`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SFZ`, t1.`SYQDQSJ`, t1.`SZYJTJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZCZS`, t1.`ZCZS2`, t1.`ZP`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  ) t1 where pcmprofileid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PcmProfileResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PcmProfile" autoMapping="true">
+        <id property="pcmprofileid" column="pcmprofileid" /><!--主键字段映射-->
+		<result property="rLastdiscipline" column="r_lastdiscipline" />
+		<result property="rSchoolis211" column="r_schoolis211" />
+		<result property="rSchoolis985" column="r_schoolis985" />
+		<result property="rlsbYpzzt" column="rlsb_ypzzt" />
+		<result property="rLastschool" column="r_lastschool" />
+		<result property="rInitializeapplydate" column="r_initializeapplydate" />
+		<result property="jspyjRlsb" column="jspyj_rlsb" />
+		<result property="rCertnames" column="r_certnames" />
+		<result property="pimpersonid" column="pimpersonid" />
+		<result property="ormorgsectorid" column="ormorgsectorid" />
+		<result property="ormpostid" column="ormpostid" />
+		<result property="ormdutyid" column="ormdutyid" />
+		<result property="ormorgid" column="ormorgid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormduty" javaType="cn.ibizlab.ehr.core.orm.domain.OrmDuty" column="ormdutyid" select="cn.ibizlab.ehr.core.orm.mapper.OrmDutyMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormpost" javaType="cn.ibizlab.ehr.core.orm.domain.OrmPost" column="ormpostid" select="cn.ibizlab.ehr.core.orm.mapper.OrmPostMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMPROFILE_ORMDUTY_ORMDUTYID] -->
+	 <select id="selectByOrmdutyid" resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormdutyid=#{ormdutyid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMPROFILE_ORMORGSECTOR_ORMORGSECTORID] -->
+	 <select id="selectByOrmorgsectorid" resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgsectorid=#{orgsectorid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMPROFILE_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMPROFILE_ORMPOST_ORMPOSTID] -->
+	 <select id="selectByOrmpostid" resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormpostid=#{ormpostid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMPROFILE_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[YRDWSH_CSRCYJ]-->
+	 <select id="searchYRDWSH_CSRCYJ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="YRDWSH_CSRCYJ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[JLDSP]-->
+	 <select id="searchJLDSP"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="JLDSP" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[BD_CSRCYJ]-->
+	 <select id="searchBD_CSRCYJ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="BD_CSRCYJ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[YPZSPB_CSRCYJ]-->
+	 <select id="searchYPZSPB_CSRCYJ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="YPZSPB_CSRCYJ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[ZPDWSH]-->
+	 <select id="searchZPDWSH"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="ZPDWSH" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[BD]-->
+	 <select id="searchBD"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="BD" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[BHSP]-->
+	 <select id="searchBHSP"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="BHSP" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[LR]-->
+	 <select id="searchLR"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="LR" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[RLSB]-->
+	 <select id="searchRLSB"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="RLSB" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[HTRY_CSRCYJ]-->
+	 <select id="searchHTRY_CSRCYJ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="HTRY_CSRCYJ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[JZBSP]-->
+	 <select id="searchJZBSP"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="JZBSP" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[RZSP_CSRCYJ]-->
+	 <select id="searchRZSP_CSRCYJ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="RZSP_CSRCYJ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[JLDSP_CSRCYJ]-->
+	 <select id="searchJLDSP_CSRCYJ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="JLDSP_CSRCYJ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[BHSP_CSRCYJ]-->
+	 <select id="searchBHSP_CSRCYJ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="BHSP_CSRCYJ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[LR_CSRCYJ]-->
+	 <select id="searchLR_CSRCYJ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="LR_CSRCYJ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[YPZBB_READ]-->
+	 <select id="searchYPZBB_READ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="YPZBB_READ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[HTRY]-->
+	 <select id="searchHTRY"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="HTRY" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[RZSP]-->
+	 <select id="searchRZSP"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="RZSP" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[YRDWCS_CSRCYJ]-->
+	 <select id="searchYRDWCS_CSRCYJ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="YRDWCS_CSRCYJ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[JZBSP_CSRCYJ]-->
+	 <select id="searchJZBSP_CSRCYJ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="JZBSP_CSRCYJ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[RLSB_CSRCYJ]-->
+	 <select id="searchRLSB_CSRCYJ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileSearchContext"  resultMap="PcmProfileResultMap">
+         select t1.* from (
+                <include refid="RLSB_CSRCYJ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[BD]-->
+    <sql id="BD" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` = '10'  AND  ( t1.`PROFILETYPE` = '65'  OR  t1.`PROFILETYPE` = '70' ) )
+			]]>
+    </sql>
+    <!--数据查询[BDANCXQX]-->
+    <sql id="BDANCXQX" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`PROFILETYPE` = '65' )
+			]]>
+    </sql>
+    <!--数据查询[BD_CSRCYJ]-->
+    <sql id="BD_CSRCYJ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` <> '10'  AND  ( t1.`PROFILETYPE` = '65'  OR  t1.`PROFILETYPE` = '70' ) )
+			]]>
+    </sql>
+    <!--数据查询[BHSP]-->
+    <sql id="BHSP" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` = '10'  AND  t1.`PROFILETYPE` = '62' )
+			]]>
+    </sql>
+    <!--数据查询[BHSP_CSRCYJ]-->
+    <sql id="BHSP_CSRCYJ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` <> '10'  AND  t1.`PROFILETYPE` = '62' )
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+			]]>
+    </sql>
+    <!--数据查询[HTRY]-->
+    <sql id="HTRY" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` = '10'  AND  ( t1.`PROFILETYPE` = '60'  OR  t1.`PROFILETYPE` = '63' ) )
+			]]>
+    </sql>
+    <!--数据查询[HTRY_CSRCYJ]-->
+    <sql id="HTRY_CSRCYJ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` <> '10'  AND  ( t1.`PROFILETYPE` = '60'  OR  t1.`PROFILETYPE` = '63' ) )
+			]]>
+    </sql>
+    <!--数据查询[JLDSP]-->
+    <sql id="JLDSP" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` = '10'  AND  t1.`PROFILETYPE` = '55' )
+			]]>
+    </sql>
+    <!--数据查询[JLDSP_CSRCYJ]-->
+    <sql id="JLDSP_CSRCYJ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` <> '10'  AND  t1.`PROFILETYPE` = '55' )
+			]]>
+    </sql>
+    <!--数据查询[JZBSP]-->
+    <sql id="JZBSP" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` = '10'  AND  t1.`PROFILETYPE` = '61' )
+			]]>
+    </sql>
+    <!--数据查询[JZBSP_CSRCYJ]-->
+    <sql id="JZBSP_CSRCYJ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` <> '10'  AND  t1.`PROFILETYPE` = '61' )
+			]]>
+    </sql>
+    <!--数据查询[LR]-->
+    <sql id="LR" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`PCMPROFILENAME` IS NOT NULL  AND  t1.`RZQD` = '10'  AND  t1.`PROFILETYPE` = '10' )
+			]]>
+    </sql>
+    <!--数据查询[LR_CSRCYJ]-->
+    <sql id="LR_CSRCYJ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`PCMPROFILENAME` IS NOT NULL  AND  t1.`RZQD` <> '10'  AND  t1.`PROFILETYPE` = '10' )
+			]]>
+    </sql>
+    <!--数据查询[RETURNCXQX]-->
+    <sql id="RETURNCXQX" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( ( t1.`PROFILETYPE` = '25'  OR  t1.`PROFILETYPE` = '30'  OR  t1.`PROFILETYPE` = '50'  OR  t1.`PROFILETYPE` = '55'  OR  t1.`PROFILETYPE` = '58'  OR  t1.`PROFILETYPE` = '60'  OR  t1.`PROFILETYPE` = '61'  OR  t1.`PROFILETYPE` = '62'  OR  t1.`PROFILETYPE` = '63' ) )
+			]]>
+    </sql>
+    <!--数据查询[RLSB]-->
+    <sql id="RLSB" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` = '10'  AND  ( t1.`PROFILETYPE` = '25'  OR  t1.`PROFILETYPE` = '50'  OR  t1.`PROFILETYPE` = '60'  OR  t1.`PROFILETYPE` = '63' ) )
+			]]>
+    </sql>
+    <!--数据查询[RLSB_CSRCYJ]-->
+    <sql id="RLSB_CSRCYJ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` <> '10'  AND  ( t1.`PROFILETYPE` = '25'  OR  t1.`PROFILETYPE` = '50'  OR  t1.`PROFILETYPE` = '60'  OR  t1.`PROFILETYPE` = '63' ) )
+			]]>
+    </sql>
+    <!--数据查询[RZSP]-->
+    <sql id="RZSP" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` = '10'  AND  t1.`PROFILETYPE` = '30' )
+			]]>
+    </sql>
+    <!--数据查询[RZSP_CSRCYJ]-->
+    <sql id="RZSP_CSRCYJ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` <> '10'  AND  t1.`PROFILETYPE` = '30' )
+			]]>
+    </sql>
+    <!--数据查询[SBJZBCXQX]-->
+    <sql id="SBJZBCXQX" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( ( t1.`PROFILETYPE` = '25'  OR  t1.`PROFILETYPE` = '50' ) )
+			]]>
+    </sql>
+    <!--数据查询[TJANCXQX]-->
+    <sql id="TJANCXQX" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( ( t1.`PROFILETYPE` = '10'  OR  t1.`PROFILETYPE` = '20'  OR  t1.`PROFILETYPE` = '22' ) )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`ELINKURL`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`ISBLACKLISTREASON`, t1.`JKZK`, t1.`JLDSPYJ`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJ`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`OTHERFILE`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZFJ`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SFZ`, t1.`SYQDQSJ`, t1.`SZYJTJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZCZS`, t1.`ZCZS2`, t1.`ZP`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+			]]>
+    </sql>
+    <!--数据查询[YPZBB_READ]-->
+    <sql id="YPZBB_READ" databaseId="mysql">
+       <![CDATA[	
+			]]>
+    </sql>
+    <!--数据查询[YPZSPB_CSRCYJ]-->
+    <sql id="YPZSPB_CSRCYJ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` <> '10'  AND  ( t1.`PROFILETYPE` = '65'  OR  t1.`PROFILETYPE` = '70' ) )
+			]]>
+    </sql>
+    <!--数据查询[YQWBDCXQX]-->
+    <sql id="YQWBDCXQX" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`PROFILETYPE` = '65' )
+			]]>
+    </sql>
+    <!--数据查询[YRDWCS_CSRCYJ]-->
+    <sql id="YRDWCS_CSRCYJ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` <> '10'  AND  t1.`PROFILETYPE` = '15' )
+			]]>
+    </sql>
+    <!--数据查询[YRDWSH_CSRCYJ]-->
+    <sql id="YRDWSH_CSRCYJ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` <> '10'  AND  t1.`PROFILETYPE` = '21' )
+			]]>
+    </sql>
+    <!--数据查询[ZPDWSH]-->
+    <sql id="ZPDWSH" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ADDRESS`, t1.`APPLICANTID`, t1.`BIRTHDAY`, t1.`BLOODTYPE`, t1.`BZ`, t1.`CADIDATEID`, t1.`CERTIFICATENUMBER`, t1.`CERTIFICATETYPE`, t1.`CHECKRESULT`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSD`, t1.`CYM`, t1.`CZ`, t1.`CZ2`, t1.`CZ3`, t1.`CZ4`, t1.`CZ5`, t1.`DEGREETYPE`, t1.`EDUCATIONLEVEL`, t1.`EDUCATIONSTUDYMODE`, t1.`EMAIL`, t1.`ENTRANTDATE`, t1.`GENDER`, t1.`GRADUATIONDATE`, t1.`GWLB`, t1.`GZBT`, t1.`GZJSSJ`, t1.`GZKSSJ`, t1.`HIGHESTDEGREE`, t1.`HJDZ`, t1.`HKLX`, t1.`HOBBIES`, t1.`ISABROAD`, t1.`ISBLACKLIST`, t1.`JKZK`, t1.`JLDSPYJYY`, case when  t1.`JZPSPYJ`  in ( '通过' )  then ''  else  t1.`JZPSPYJ`  end AS `JSPYJ_RLSB`, t1.`JZBSPYJ`, t1.`JZBSPYJYY`, t1.`JZPSPYJYY`, t1.`MOBILE`, t1.`NAPXM`, t1.`NAPXMJGWMC`, t1.`NATION`, t1.`NATIVEPLACE`, t1.`NF`, t1.`NL`, t1.`NQDLDHTQX`, t1.`ORMORGID` AS `ORGID`, t1.`ORMDUTYID`, t11.`ORMDUTYNAME`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMPROFILEID`, t1.`PCMPROFILENAME`, t1.`PCMYDGZMXID`, t1.`PERSONNELFILEPLACE`, t1.`PHASEINFO`, t1.`PIMPERSONID`, t41.`PIMPERSONNAME`, t1.`POLITY`, t1.`PROFILETYPE`, t1.`QZSM`, t1.`RDSJ`, t1.`RESIDENCESTATE`, t1.`RGJYTG`, case when  t1.`PROFILETYPE` in ('25') then '10' WHEN t1.`PROFILETYPE` in ('30','55','58','60','61','63')  THEN '20' WHEN  t1.`PROFILETYPE` in ('50') THEN '30' WHEN t1.`PROFILETYPE` in ('62') THEN '40' else  ''  end AS `RLSB_YPZZT`, t1.`RPR`, t1.`RTSJ`, t1.`RZQD`, t1.`R_CERTNAMES`, t1.`R_INITIALIZEAPPLYDATE`, t1.`R_LASTDISCIPLINE`, t1.`R_LASTSCHOOL`, t1.`R_SCHOOLIS211`, t1.`R_SCHOOLIS985`, t1.`SBSJ`, t1.`SFTGCP`, t1.`SFXZBJNBRY`, t1.`SFXZY`, t1.`SYQDQSJ`, t1.`TJQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WBZZJGDM`, t1.`WEDSTATE`, t1.`WORKBEGINDATE`, t1.`XKML`, t1.`XXXZ`, t1.`XZC`, t1.`XZNF`, t1.`YGBH`, t1.`YGLX`, t1.`YGLXSHGZ`, t1.`YJSNF`, t1.`YWZDJBS`, t1.`YYDJ`, t1.`YYDJMC`, t1.`YZBM`, t1.`ZPLX`, case when  t1.`PROFILETYPE` in ('20','22','50','60','63') then '1' else '0' end AS `ZTCODE`, t1.`ZTYY`, t31.`ZZDZS` FROM `T_PCMPROFILE` t1  LEFT JOIN T_ORMDUTY t11 ON t1.ORMDUTYID = t11.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_PIMPERSON t41 ON t1.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  
+				 WHERE 	( t1.`RZQD` = '10'  AND  t1.`PROFILETYPE` = '15' )
+			]]>
+    </sql>
+</mapper>
+

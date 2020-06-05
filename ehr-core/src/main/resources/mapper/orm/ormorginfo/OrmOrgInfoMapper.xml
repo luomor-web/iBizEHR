@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.orm.mapper.OrmOrgInfoMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="OrmOrgInfoResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BELONGREGION`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORDERNUM`, t1.`ORGCODE`, t1.`ORGTYPE`, t1.`ORGTYPENAME`, t1.`ORMORGINFOID`, t1.`ORMORGINFONAME`, t1.`OUID`, t1.`PORGID`, t1.`PORGSECTORID`, t1.`POSTINFO`, t1.`SHORTNAME`, t1.`STARTSTOPSIGN`, t1.`SUBSTANDARD`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ORMORGINFO` t1  ) t1 where ormorginfoid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="OrmOrgInfoResultMap" type="cn.ibizlab.ehr.core.orm.domain.OrmOrgInfo" autoMapping="true">
+        <id property="ormorginfoid" column="ormorginfoid" /><!--主键字段映射-->
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[SubOrgsector]-->
+	 <select id="searchSubOrgsector"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmOrgInfoSearchContext"  resultMap="OrmOrgInfoResultMap">
+         select t1.* from (
+                <include refid="SubOrgsector" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[CX]-->
+	 <select id="searchCX"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmOrgInfoSearchContext"  resultMap="OrmOrgInfoResultMap">
+         select t1.* from (
+                <include refid="CX" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[CurOrgsector]-->
+	 <select id="searchCurOrgsector"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmOrgInfoSearchContext"  resultMap="OrmOrgInfoResultMap">
+         select t1.* from (
+                <include refid="CurOrgsector" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[CurChild]-->
+	 <select id="searchCurChild"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmOrgInfoSearchContext"  resultMap="OrmOrgInfoResultMap">
+         select t1.* from (
+                <include refid="CurChild" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[CurPorg]-->
+	 <select id="searchCurPorg"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmOrgInfoSearchContext"  resultMap="OrmOrgInfoResultMap">
+         select t1.* from (
+                <include refid="CurPorg" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[SubPerson]-->
+	 <select id="searchSubPerson"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmOrgInfoSearchContext"  resultMap="OrmOrgInfoResultMap">
+         select t1.* from (
+                <include refid="SubPerson" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmOrgInfoSearchContext"  resultMap="OrmOrgInfoResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Suborg]-->
+	 <select id="searchSuborg"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmOrgInfoSearchContext"  resultMap="OrmOrgInfoResultMap">
+         select t1.* from (
+                <include refid="Suborg" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[CurChild]-->
+    <sql id="CurChild" databaseId="mysql">
+       <![CDATA[	SELECT * FROM   (SELECT t1.gsss as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.px as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED5' as ORGTYPE, '组织结构' as ORGTYPENAME, t1.orgid as ORMORGINFOID, t1.orgname as ORMORGINFONAME, t1.ssou as OUID, t1.porgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.btqy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO     FROM t_srforg t1) t1 
+				 WHERE 	( t1.STARTSTOPSIGN ='1')
+			]]>
+    </sql>
+    <!--数据查询[CurOrgsector]-->
+    <sql id="CurOrgsector" databaseId="mysql">
+       <![CDATA[	SELECT * FROM   (SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED6' as ORGTYPE, '部门' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO, t1.porgsectorid as PORGSECTORID  FROM t_srforgsector t1 where t1.bmlx='10' and t1.orgtype='CCEED6'   UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED7' as ORGTYPE, '项目部' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO, t1.porgsectorid as PORGSECTORID   FROM t_srforgsector t1 where t1.bmlx='20'   UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED9' as ORGTYPE, '领导班子' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO, t1.porgsectorid as PORGSECTORID   FROM t_srforgsector t1 where t1.bmlx='10' and t1.orgtype='CCEED9') t1
+			]]>
+    </sql>
+    <!--数据查询[CurPorg]-->
+    <sql id="CurPorg" databaseId="mysql">
+       <![CDATA[	SELECT * FROM   (SELECT t1.gsss as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.px as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED5' as ORGTYPE, '组织结构' as ORGTYPENAME, t1.orgid as ORMORGINFOID, t1.orgname as ORMORGINFONAME, t1.ssou as OUID, t1.porgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.btqy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO   FROM t_srforg t1   UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED6' as ORGTYPE, '部门' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO    FROM t_srforgsector t1 where t1.bmlx='10' and t1.orgtype='CCEED6'    UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED7' as ORGTYPE, '项目部' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO    FROM t_srforgsector t1 where t1.bmlx='20'  UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED9' as ORGTYPE, '领导班子' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO       FROM t_srforgsector t1 where t1.bmlx='10' and t1.orgtype='CCEED9') t1 
+				 WHERE 	(t1.STARTSTOPSIGN ='1' and t1.porgid is null and t1.ORMORGINFOID<>'DEFAULT')
+			]]>
+    </sql>
+    <!--数据查询[CX]-->
+    <sql id="CX" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BELONGREGION`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORDERNUM`, t1.`ORGCODE`, t1.`ORGTYPE`, t1.`ORGTYPENAME`, t1.`ORMERPORGID`, t1.`ORMORGINFOID`, t1.`ORMORGINFONAME`, t1.`OUID`, t1.`PORGID`, t11.`ORMORGINFONAME` AS `PORGNAME`, t1.`SHORTNAME`, t1.`SUBSTANDARD`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ORMORGINFO` t1  LEFT JOIN T_ORMORGINFO t11 ON t1.PORGID = t11.ORMORGINFOID  
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BELONGREGION`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORDERNUM`, t1.`ORGCODE`, t1.`ORGTYPE`, t1.`ORGTYPENAME`, t1.`ORMORGINFOID`, t1.`ORMORGINFONAME`, t1.`OUID`, t1.`PORGID`, t1.`PORGSECTORID`, t1.`POSTINFO`, t1.`SHORTNAME`, t1.`STARTSTOPSIGN`, t1.`SUBSTANDARD`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ORMORGINFO` t1  
+			]]>
+    </sql>
+    <!--数据查询[Suborg]-->
+    <sql id="Suborg" databaseId="mysql">
+       <![CDATA[	SELECT * FROM   (SELECT t1.gsss as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.px as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED5' as ORGTYPE, '组织结构' as ORGTYPENAME, t1.orgid as ORMORGINFOID, t1.orgname as ORMORGINFONAME, t1.ssou as OUID, t1.porgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.btqy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO  FROM t_srforg t1   UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED6' as ORGTYPE, '部门' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO  FROM t_srforgsector t1 where t1.bmlx='10' and t1.orgtype='CCEED6'    UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED7' as ORGTYPE, '项目部' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN,  '' as POSTINFO    FROM t_srforgsector t1 where t1.bmlx='20'     UNION  SELECT t1.BELONGREGION as BELONGREGION, t1.createdate as CREATEDATE, t1.createman as CREATEMAN, t1.ORDERVALUE as ORDERNUM, t1.orgcode as ORGCODE, 'CCEED9' as ORGTYPE, '领导班子' as ORGTYPENAME, t1.orgsectorid as ORMORGINFOID, t1.orgsectorname as ORMORGINFONAME, t1.BELONGOU as OUID, t1.orgid as PORGID, '' AS PORGNAME, t1.SHORTNAME as SHORTNAME, t1.qy as SUBSTANDARD, t1.updatedate as UPDATEDATE, t1.updatedate as UPDATEMAN, t1.STARTSTOPSIGN  as  STARTSTOPSIGN, '' as POSTINFO  FROM t_srforgsector t1 where t1.bmlx='10' and t1.orgtype='CCEED9'   ) t1
+			]]>
+    </sql>
+    <!--数据查询[SubOrgsector]-->
+    <sql id="SubOrgsector" databaseId="mysql">
+       <![CDATA[	
+			]]>
+    </sql>
+    <!--数据查询[SubPerson]-->
+    <sql id="SubPerson" databaseId="mysql">
+       <![CDATA[	
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BELONGREGION`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORDERNUM`, t1.`ORGCODE`, t1.`ORGTYPE`, t1.`ORGTYPENAME`, t1.`ORMORGINFOID`, t1.`ORMORGINFONAME`, t1.`OUID`, t1.`PORGID`, t1.`PORGSECTORID`, t1.`POSTINFO`, t1.`SHORTNAME`, t1.`STARTSTOPSIGN`, t1.`SUBSTANDARD`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ORMORGINFO` t1  
+			]]>
+    </sql>
+</mapper>
+

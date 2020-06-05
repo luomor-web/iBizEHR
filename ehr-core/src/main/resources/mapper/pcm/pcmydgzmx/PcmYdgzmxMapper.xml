@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PcmYdgzmxMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PcmYdgzmxResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t11.`BM`, t11.`BMID`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t11.`FINISHED`, t1.`GZTYPE`, t1.`JSRQ`, t1.`KSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMYDGZMXID`, t1.`PCMYDGZMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t21.`PIMPERSONNAME`, case when now() > t1.`JSRQ` then 1 else 0  END AS `SFDQ`, t41.`SHORTNAME`, t11.`SXRQ`, ROUND(TIMESTAMPDIFF(MONTH,now(),t1.`JSRQ`)) AS `SYYF`, case when now() >  t1.`JSRQ`  then 20 else 10 END AS `SYYF_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WWZZID`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t31.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDGZMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDGZMXID = t11.PCMYDMXID  LEFT JOIN T_PIMPERSON t21 ON t11.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_SRFORG t31 ON t11.ZZID = t31.ORGID  LEFT JOIN T_SRFORGSECTOR t41 ON t11.BMID = t41.ORGSECTORID  ) t1 where pcmydgzmxid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PcmYdgzmxResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PcmYdgzmx" autoMapping="true">
+        <id property="pcmydgzmxid" column="pcmydgzmxid" /><!--主键字段映射-->
+		<result property="syyfColor" column="syyf_color" />
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[GZCRYDQ]-->
+	 <select id="searchGZCRYDQ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmYdgzmxSearchContext"  resultMap="PcmYdgzmxResultMap">
+         select t1.* from (
+                <include refid="GZCRYDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[GZJLSJLDQ]-->
+	 <select id="searchGZJLSJLDQ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmYdgzmxSearchContext"  resultMap="PcmYdgzmxResultMap">
+         select t1.* from (
+                <include refid="GZJLSJLDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[GZJRY]-->
+	 <select id="searchGZJRY"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmYdgzmxSearchContext"  resultMap="PcmYdgzmxResultMap">
+         select t1.* from (
+                <include refid="GZJRYDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmYdgzmxSearchContext"  resultMap="PcmYdgzmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[GZCLSJLDQ]-->
+	 <select id="searchGZCLSJLDQ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmYdgzmxSearchContext"  resultMap="PcmYdgzmxResultMap">
+         select t1.* from (
+                <include refid="GZCLSJLDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t11.`FINISHED`, t1.`GZTYPE`, t1.`JSRQ`, t1.`KSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMYDGZMXID`, t1.`PCMYDGZMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t21.`PIMPERSONNAME`, case when now() > t1.`JSRQ` then 1 else 0  END AS `SFDQ`, t41.`SHORTNAME`, t11.`SXRQ`, ROUND(TIMESTAMPDIFF(MONTH,now(),t1.`JSRQ`)) AS `SYYF`, case when now() >  t1.`JSRQ`  then 20 else 10 END AS `SYYF_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WWZZID`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t31.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDGZMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDGZMXID = t11.PCMYDMXID  LEFT JOIN T_PIMPERSON t21 ON t11.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_SRFORG t31 ON t11.ZZID = t31.ORGID  LEFT JOIN T_SRFORGSECTOR t41 ON t11.BMID = t41.ORGSECTORID  
+			]]>
+    </sql>
+    <!--数据查询[GZCLSJLDQ]-->
+    <sql id="GZCLSJLDQ" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t11.`FINISHED`, t1.`GZTYPE`, t1.`JSRQ`, t1.`KSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMYDGZMXID`, t1.`PCMYDGZMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t21.`PIMPERSONNAME`, case when now() > t1.`JSRQ` then 1 else 0  END AS `SFDQ`, t41.`SHORTNAME`, t11.`SXRQ`, ROUND(TIMESTAMPDIFF(MONTH,now(),t1.`JSRQ`)) AS `SYYF`, case when now() >  t1.`JSRQ`  then 20 else 10 END AS `SYYF_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WWZZID`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t31.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDGZMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDGZMXID = t11.PCMYDMXID  LEFT JOIN T_PIMPERSON t21 ON t11.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_SRFORG t31 ON t11.ZZID = t31.ORGID  LEFT JOIN T_SRFORGSECTOR t41 ON t11.BMID = t41.ORGSECTORID  
+				 WHERE 	( t1.`GZTYPE` = '20'  AND  t11.`FINISHED` = 1 )
+			]]>
+    </sql>
+    <!--数据查询[GZCRYDQ]-->
+    <sql id="GZCRYDQ" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t11.`FINISHED`, t1.`GZTYPE`, t1.`JSRQ`, t1.`KSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMYDGZMXID`, t1.`PCMYDGZMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t21.`PIMPERSONNAME`, case when now() > t1.`JSRQ` then 1 else 0  END AS `SFDQ`, t41.`SHORTNAME`, t11.`SXRQ`, ROUND(TIMESTAMPDIFF(MONTH,now(),t1.`JSRQ`)) AS `SYYF`, case when now() >  t1.`JSRQ`  then 20 else 10 END AS `SYYF_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WWZZID`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t31.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDGZMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDGZMXID = t11.PCMYDMXID  LEFT JOIN T_PIMPERSON t21 ON t11.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_SRFORG t31 ON t11.ZZID = t31.ORGID  LEFT JOIN T_SRFORGSECTOR t41 ON t11.BMID = t41.ORGSECTORID  
+				 WHERE 	( t1.`GZTYPE` = '20'  AND  t11.`FINISHED` = 0 )
+			]]>
+    </sql>
+    <!--数据查询[GZJLSJLDQ]-->
+    <sql id="GZJLSJLDQ" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t11.`FINISHED`, t1.`GZTYPE`, t1.`JSRQ`, t1.`KSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMYDGZMXID`, t1.`PCMYDGZMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t21.`PIMPERSONNAME`, case when now() > t1.`JSRQ` then 1 else 0  END AS `SFDQ`, t41.`SHORTNAME`, t11.`SXRQ`, ROUND(TIMESTAMPDIFF(MONTH,now(),t1.`JSRQ`)) AS `SYYF`, case when now() >  t1.`JSRQ`  then 20 else 10 END AS `SYYF_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WWZZID`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t31.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDGZMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDGZMXID = t11.PCMYDMXID  LEFT JOIN T_PIMPERSON t21 ON t11.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_SRFORG t31 ON t11.ZZID = t31.ORGID  LEFT JOIN T_SRFORGSECTOR t41 ON t11.BMID = t41.ORGSECTORID  
+				 WHERE 	( t1.`GZTYPE` = '10'  AND  t11.`FINISHED` = 1 )
+			]]>
+    </sql>
+    <!--数据查询[GZJRYDQ]-->
+    <sql id="GZJRYDQ" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t11.`FINISHED`, t1.`GZTYPE`, t1.`JSRQ`, t1.`KSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMYDGZMXID`, t1.`PCMYDGZMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t21.`PIMPERSONNAME`, case when now() > t1.`JSRQ` then 1 else 0  END AS `SFDQ`, t41.`SHORTNAME`, t11.`SXRQ`, ROUND(TIMESTAMPDIFF(MONTH,now(),t1.`JSRQ`)) AS `SYYF`, case when now() >  t1.`JSRQ`  then 20 else 10 END AS `SYYF_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WWZZID`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t31.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDGZMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDGZMXID = t11.PCMYDMXID  LEFT JOIN T_PIMPERSON t21 ON t11.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_SRFORG t31 ON t11.ZZID = t31.ORGID  LEFT JOIN T_SRFORGSECTOR t41 ON t11.BMID = t41.ORGSECTORID  
+				 WHERE 	( t1.`GZTYPE` = '10'  AND  t11.`FINISHED` = 0 )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t11.`FINISHED`, t1.`GZTYPE`, t1.`JSRQ`, t1.`KSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMYDGZMXID`, t1.`PCMYDGZMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t21.`PIMPERSONNAME`, case when now() > t1.`JSRQ` then 1 else 0  END AS `SFDQ`, t41.`SHORTNAME`, t11.`SXRQ`, ROUND(TIMESTAMPDIFF(MONTH,now(),t1.`JSRQ`)) AS `SYYF`, case when now() >  t1.`JSRQ`  then 20 else 10 END AS `SYYF_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBBM`, t1.`WBGW`, t1.`WBZW`, t1.`WBZZ`, t1.`WWZZID`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t31.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDGZMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDGZMXID = t11.PCMYDMXID  LEFT JOIN T_PIMPERSON t21 ON t11.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_SRFORG t31 ON t11.ZZID = t31.ORGID  LEFT JOIN T_SRFORGSECTOR t41 ON t11.BMID = t41.ORGSECTORID  
+			]]>
+    </sql>
+</mapper>
+

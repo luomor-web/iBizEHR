@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmjxsygzzjlmxsetreject" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmjxsygzzjlmxsetreject">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmjxsygzzjlmxsetrejectdefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmJxsygzzjlmx" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmjxsygzzjlmxsetrejectprepareparam1" id="877D27B4-AFBE-4736-8067-A41D63F8E2AF" implementation="http://www.jboss.org/drools/rule" name="设置准备参数"/>
+     <endEvent id="877D27B4-AFBE-4736-8067-A41D63F8E2AF_End" name="End"/>
+     <sequenceFlow id="877D27B4-AFBE-4736-8067-A41D63F8E2AF_End_Line" sourceRef="877D27B4-AFBE-4736-8067-A41D63F8E2AF" targetRef="877D27B4-AFBE-4736-8067-A41D63F8E2AF_End"/>
+     <startEvent id="109AC1FC-E7E7-4281-8103-E830A1C337F2" isInterrupting="true"/>
+     <sequenceFlow id="17EBFD24-AAFE-4843-B8D1-F7FF75B1DE65" sourceRef="109AC1FC-E7E7-4281-8103-E830A1C337F2" targetRef="877D27B4-AFBE-4736-8067-A41D63F8E2AF">
+     </sequenceFlow>
+    </process>
+</definitions>
+
