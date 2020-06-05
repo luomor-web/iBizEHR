@@ -83,27 +83,6 @@ public class VacLeaveDetailSearchContext extends QueryWrapperContext<VacLeaveDet
             this.getSelectCond().eq("sjkssxw", n_sjkssxw_eq);
         }
     }
-	private String n_vacleavemanagename_eq;//[请销假管理名称]
-	public void setN_vacleavemanagename_eq(String n_vacleavemanagename_eq) {
-        this.n_vacleavemanagename_eq = n_vacleavemanagename_eq;
-        if(!ObjectUtils.isEmpty(this.n_vacleavemanagename_eq)){
-            this.getSelectCond().eq("vacleavemanagename", n_vacleavemanagename_eq);
-        }
-    }
-	private String n_vacleavemanagename_like;//[请销假管理名称]
-	public void setN_vacleavemanagename_like(String n_vacleavemanagename_like) {
-        this.n_vacleavemanagename_like = n_vacleavemanagename_like;
-        if(!ObjectUtils.isEmpty(this.n_vacleavemanagename_like)){
-            this.getSelectCond().like("vacleavemanagename", n_vacleavemanagename_like);
-        }
-    }
-	private String n_vacleavemanageid_eq;//[请销假管理标识]
-	public void setN_vacleavemanageid_eq(String n_vacleavemanageid_eq) {
-        this.n_vacleavemanageid_eq = n_vacleavemanageid_eq;
-        if(!ObjectUtils.isEmpty(this.n_vacleavemanageid_eq)){
-            this.getSelectCond().eq("vacleavemanageid", n_vacleavemanageid_eq);
-        }
-    }
 
     /**
 	 * 启用快速搜索
@@ -112,9 +91,6 @@ public class VacLeaveDetailSearchContext extends QueryWrapperContext<VacLeaveDet
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
-                     wrapper.like("pimpersonname", query)   
-            );
 		 }
 	}
 }

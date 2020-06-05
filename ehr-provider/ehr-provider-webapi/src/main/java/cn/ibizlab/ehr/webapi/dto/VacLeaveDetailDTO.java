@@ -245,54 +245,6 @@ public class VacLeaveDetailDTO extends DTOBase implements Serializable {
     @JsonProperty("jhjssj")
     private Timestamp jhjssj;
 
-    /**
-     * 属性 [ORMORGSECTORID]
-     *
-     */
-    @JSONField(name = "ormorgsectorid")
-    @JsonProperty("ormorgsectorid")
-    private String ormorgsectorid;
-
-    /**
-     * 属性 [ORMORGID]
-     *
-     */
-    @JSONField(name = "ormorgid")
-    @JsonProperty("ormorgid")
-    private String ormorgid;
-
-    /**
-     * 属性 [PIMPERSONID]
-     *
-     */
-    @JSONField(name = "pimpersonid")
-    @JsonProperty("pimpersonid")
-    private String pimpersonid;
-
-    /**
-     * 属性 [PIMPERSONNAME]
-     *
-     */
-    @JSONField(name = "pimpersonname")
-    @JsonProperty("pimpersonname")
-    private String pimpersonname;
-
-    /**
-     * 属性 [VACLEAVEMANAGENAME]
-     *
-     */
-    @JSONField(name = "vacleavemanagename")
-    @JsonProperty("vacleavemanagename")
-    private String vacleavemanagename;
-
-    /**
-     * 属性 [VACLEAVEMANAGEID]
-     *
-     */
-    @JSONField(name = "vacleavemanageid")
-    @JsonProperty("vacleavemanageid")
-    private String vacleavemanageid;
-
 
     /**
      * 设置 [HYZK]
@@ -436,30 +388,6 @@ public class VacLeaveDetailDTO extends DTOBase implements Serializable {
     public void setJhjssj(Timestamp  jhjssj){
         this.jhjssj = jhjssj ;
         this.modify("jhjssj",jhjssj);
-    }
-
-    /**
-     * 设置 [PIMPERSONID]
-     */
-    public void setPimpersonid(String  pimpersonid){
-        this.pimpersonid = pimpersonid ;
-        this.modify("pimpersonid",pimpersonid);
-    }
-
-    /**
-     * 设置 [PIMPERSONNAME]
-     */
-    public void setPimpersonname(String  pimpersonname){
-        this.pimpersonname = pimpersonname ;
-        this.modify("pimpersonname",pimpersonname);
-    }
-
-    /**
-     * 设置 [VACLEAVEMANAGEID]
-     */
-    public void setVacleavemanageid(String  vacleavemanageid){
-        this.vacleavemanageid = vacleavemanageid ;
-        this.modify("vacleavemanageid",vacleavemanageid);
     }
 
 

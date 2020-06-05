@@ -46,9 +46,6 @@ public class VacLeaveManageServiceImpl extends ServiceImpl<VacLeaveManageMapper,
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.vac.service.IVacLeaveDetailService vacleavedetailService;
-    @Autowired
-    @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonService;
 
     private int batchSize = 500;

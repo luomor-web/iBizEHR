@@ -116,20 +116,6 @@ public class VacUseNxjmx extends EntityMP implements Serializable {
     @JsonProperty("qjzl")
     private String qjzl;
     /**
-     * 请假人员id
-     */
-    @TableField(exist = false)
-    @JSONField(name = "pimpersonid")
-    @JsonProperty("pimpersonid")
-    private String pimpersonid;
-    /**
-     * 请假人员
-     */
-    @TableField(exist = false)
-    @JSONField(name = "pimpersonname")
-    @JsonProperty("pimpersonname")
-    private String pimpersonname;
-    /**
      * 请销假明细标识
      */
     @TableField(value = "vacleavedetailid")

@@ -47,9 +47,6 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.vac.service.IVacUseNxjmxService vacusenxjmxService;
-    @Autowired
-    @Lazy
-    private cn.ibizlab.ehr.core.vac.service.IVacLeaveManageService vacleavemanageService;
 
     @Autowired
     @Lazy
@@ -79,7 +76,6 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
     @Override
     @Transactional
     public boolean create(VacLeaveDetail et) {
-        fillParentData(et);
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getVacleavedetailid()),et);
@@ -88,14 +84,12 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
 
     @Override
     public void createBatch(List<VacLeaveDetail> list) {
-        list.forEach(item->fillParentData(item));
         this.saveBatch(list,batchSize);
     }
 
     @Override
     @Transactional
     public boolean update(VacLeaveDetail et) {
-        fillParentData(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("vacleavedetailid",et.getVacleavedetailid())))
             return false;
         CachedBeanCopier.copy(get(et.getVacleavedetailid()),et);
@@ -104,7 +98,6 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
 
     @Override
     public void updateBatch(List<VacLeaveDetail> list) {
-        list.forEach(item->fillParentData(item));
         updateBatchById(list,batchSize);
     }
 
@@ -137,14 +130,12 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
 
     @Override
     public boolean saveBatch(Collection<VacLeaveDetail> list) {
-        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
         return true;
     }
 
     @Override
     public void saveBatch(List<VacLeaveDetail> list) {
-        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
     }
 
@@ -175,20 +166,9 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
 
     @Override
     public VacLeaveDetail getDraft(VacLeaveDetail et) {
-        fillParentData(et);
         return et;
     }
 
-
-	@Override
-    public List<VacLeaveDetail> selectByVacleavemanageid(String vacleavemanageid) {
-        return baseMapper.selectByVacleavemanageid(vacleavemanageid);
-    }
-
-    @Override
-    public void removeByVacleavemanageid(String vacleavemanageid) {
-        this.remove(new QueryWrapper<VacLeaveDetail>().eq("vacleavemanageid",vacleavemanageid));
-    }
 
 
     /**
@@ -202,26 +182,6 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
 
 
 
-    /**
-     * 为当前实体填充父数据（外键值文本、外键值附加数据）
-     * @param et
-     */
-    private void fillParentData(VacLeaveDetail et){
-        //实体关系[DER1N_VACLEAVEDETAIL_VACLEAVEMANAGE_VACLEAVEMANAGEID]
-        if(!ObjectUtils.isEmpty(et.getVacleavemanageid())){
-            cn.ibizlab.ehr.core.vac.domain.VacLeaveManage vacleavemanage=et.getVacleavemanage();
-            if(ObjectUtils.isEmpty(vacleavemanage)){
-                cn.ibizlab.ehr.core.vac.domain.VacLeaveManage majorEntity=vacleavemanageService.get(et.getVacleavemanageid());
-                et.setVacleavemanage(majorEntity);
-                vacleavemanage=majorEntity;
-            }
-            et.setOrmorgsectorid(vacleavemanage.getOrmorgsectorid());
-            et.setOrmorgid(vacleavemanage.getOrmorgid());
-            et.setPimpersonid(vacleavemanage.getPimpersonid());
-            et.setPimpersonname(vacleavemanage.getPimpersonname());
-            et.setVacleavemanagename(vacleavemanage.getVacleavemanagename());
-        }
-    }
 
 
     @Override

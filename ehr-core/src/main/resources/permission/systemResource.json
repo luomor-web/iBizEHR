@@ -2533,7 +2533,7 @@
     "delogicname":"见习生员工转正记录引用明细",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"WSHSQ" , "name":"未审核完成的申请"},{"id":"JXSZZJL" , "name":"见习生转正记录"},{"id":"ALLDS" , "name":"所有的申请明细"}],
-    "deaction":[{"id":"SHBTG" , "name":"审核不通过" , "type":"USERCUSTOM" },{"id":"SHTG" , "name":"审核通过" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"FillPersonInfo" , "type":"DELOGIC" },{"id":"ZZCZ" , "name":"转正操作" , "type":"USERCUSTOM" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
+    "deaction":[{"id":"SHBTG" , "name":"审核不通过" , "type":"USERCUSTOM" },{"id":"SHTG" , "name":"审核通过" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"FillPersonInfo" , "type":"DELOGIC" },{"id":"ZZCZ" , "name":"转正操作" , "type":"USERCUSTOM" },{"id":"SetPass" , "name":"审核通过" , "type":"DELOGIC" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"SetReject" , "name":"审核不通过" , "type":"DELOGIC" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -2820,7 +2820,7 @@
             {
                "appid":"EHRPcm2",
                "appname":"EHRPCM2（人员异动）",
-               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem4" , "name":"人员异动" , "items":[{ "id":"menuitem1" , "name":"调动管理" },{ "id":"menuitem2" , "name":"借调管理" },{ "id":"menuitem3" , "name":"兼职管理" },{ "id":"menuitem7" , "name":"待岗管理" },{ "id":"menuitem8" , "name":"内退管理" },{ "id":"menuitem9" , "name":"病休管理" },{ "id":"menuitem10" , "name":"离职管理" },{ "id":"menuitem11" , "name":"解聘管理" },{ "id":"menuitem12" , "name":"退休管理" }]},{ "id":"menuitem5" , "name":"试用期转正" , "items":[{ "id":"menuitem6" , "name":"试用期转正申请" },{ "id":"menuitem15" , "name":"试用期转正审核" }]}] }]
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem4" , "name":"人员异动" , "items":[{ "id":"menuitem1" , "name":"调动管理" },{ "id":"menuitem2" , "name":"借调管理" },{ "id":"menuitem3" , "name":"兼职管理" },{ "id":"menuitem7" , "name":"待岗管理" },{ "id":"menuitem8" , "name":"内退管理" },{ "id":"menuitem9" , "name":"病休管理" },{ "id":"menuitem10" , "name":"离职管理" },{ "id":"menuitem11" , "name":"解聘管理" },{ "id":"menuitem12" , "name":"退休管理" }]},{ "id":"menuitem5" , "name":"试用期转正" , "items":[{ "id":"menuitem6" , "name":"试用期转正申请" },{ "id":"menuitem15" , "name":"试用期转正审核" }]},{ "id":"menuitem13" , "name":"见习期转正" , "items":[{ "id":"menuitem14" , "name":"见习期转正申请" },{ "id":"menuitem16" , "name":"见习期转正审核" }]}] }]
             }
             ,
             {

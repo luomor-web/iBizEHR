@@ -238,56 +238,6 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
     @JSONField(name = "jhjssj" , format="yyyy-MM-dd")
     @JsonProperty("jhjssj")
     private Timestamp jhjssj;
-    /**
-     * 部门标识
-     */
-    @TableField(exist = false)
-    @JSONField(name = "ormorgsectorid")
-    @JsonProperty("ormorgsectorid")
-    private String ormorgsectorid;
-    /**
-     * 组织标识
-     */
-    @TableField(exist = false)
-    @JSONField(name = "ormorgid")
-    @JsonProperty("ormorgid")
-    private String ormorgid;
-    /**
-     * 人员信息标识
-     */
-    @TableField(value = "pimpersonid")
-    @JSONField(name = "pimpersonid")
-    @JsonProperty("pimpersonid")
-    private String pimpersonid;
-    /**
-     * 请假人员
-     */
-    @TableField(value = "pimpersonname")
-    @JSONField(name = "pimpersonname")
-    @JsonProperty("pimpersonname")
-    private String pimpersonname;
-    /**
-     * 请销假管理名称
-     */
-    @TableField(exist = false)
-    @JSONField(name = "vacleavemanagename")
-    @JsonProperty("vacleavemanagename")
-    private String vacleavemanagename;
-    /**
-     * 请销假管理标识
-     */
-    @TableField(value = "vacleavemanageid")
-    @JSONField(name = "vacleavemanageid")
-    @JsonProperty("vacleavemanageid")
-    private String vacleavemanageid;
-
-    /**
-     * 请假管理-请假明细
-     */
-    @JsonIgnore
-    @JSONField(serialize = false)
-    @TableField(exist = false)
-    private cn.ibizlab.ehr.core.vac.domain.VacLeaveManage vacleavemanage;
 
 
 
@@ -416,27 +366,6 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
     public void setJhjssj(Timestamp jhjssj){
         this.jhjssj = jhjssj ;
         this.modify("jhjssj",jhjssj);
-    }
-    /**
-     * 设置 [人员信息标识]
-     */
-    public void setPimpersonid(String pimpersonid){
-        this.pimpersonid = pimpersonid ;
-        this.modify("pimpersonid",pimpersonid);
-    }
-    /**
-     * 设置 [请假人员]
-     */
-    public void setPimpersonname(String pimpersonname){
-        this.pimpersonname = pimpersonname ;
-        this.modify("pimpersonname",pimpersonname);
-    }
-    /**
-     * 设置 [请销假管理标识]
-     */
-    public void setVacleavemanageid(String vacleavemanageid){
-        this.vacleavemanageid = vacleavemanageid ;
-        this.modify("vacleavemanageid",vacleavemanageid);
     }
 
 }

@@ -62,6 +62,4 @@ public interface VacLeaveDetailMapper extends BaseMapper<VacLeaveDetail>{
     @Delete("${sql}")
     boolean deleteBySQL(@Param("sql") String sql, @Param("et")Map param);
 
-    List<VacLeaveDetail> selectByVacleavemanageid(@Param("vacleavemanageid") Serializable vacleavemanageid) ;
-
 }

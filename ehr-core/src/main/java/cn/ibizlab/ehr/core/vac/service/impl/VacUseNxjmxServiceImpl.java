@@ -70,7 +70,6 @@ public class VacUseNxjmxServiceImpl extends ServiceImpl<VacUseNxjmxMapper, VacUs
     @Override
     @Transactional
     public boolean create(VacUseNxjmx et) {
-        fillParentData(et);
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getVacusenxjmxid()),et);
@@ -79,14 +78,12 @@ public class VacUseNxjmxServiceImpl extends ServiceImpl<VacUseNxjmxMapper, VacUs
 
     @Override
     public void createBatch(List<VacUseNxjmx> list) {
-        list.forEach(item->fillParentData(item));
         this.saveBatch(list,batchSize);
     }
 
     @Override
     @Transactional
     public boolean update(VacUseNxjmx et) {
-        fillParentData(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("vacusenxjmxid",et.getVacusenxjmxid())))
             return false;
         CachedBeanCopier.copy(get(et.getVacusenxjmxid()),et);
@@ -95,7 +92,6 @@ public class VacUseNxjmxServiceImpl extends ServiceImpl<VacUseNxjmxMapper, VacUs
 
     @Override
     public void updateBatch(List<VacUseNxjmx> list) {
-        list.forEach(item->fillParentData(item));
         updateBatchById(list,batchSize);
     }
 
@@ -121,20 +117,17 @@ public class VacUseNxjmxServiceImpl extends ServiceImpl<VacUseNxjmxMapper, VacUs
 
     @Override
     public boolean saveBatch(Collection<VacUseNxjmx> list) {
-        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
         return true;
     }
 
     @Override
     public void saveBatch(List<VacUseNxjmx> list) {
-        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
     }
 
     @Override
     public VacUseNxjmx getDraft(VacUseNxjmx et) {
-        fillParentData(et);
         return et;
     }
 
@@ -174,23 +167,6 @@ public class VacUseNxjmxServiceImpl extends ServiceImpl<VacUseNxjmxMapper, VacUs
 
 
 
-    /**
-     * 为当前实体填充父数据（外键值文本、外键值附加数据）
-     * @param et
-     */
-    private void fillParentData(VacUseNxjmx et){
-        //实体关系[DER1N_VACUSENXJMX_VACLEAVEDETAIL_VACLEAVEDETAILID]
-        if(!ObjectUtils.isEmpty(et.getVacleavedetailid())){
-            cn.ibizlab.ehr.core.vac.domain.VacLeaveDetail vacleavedetail=et.getVacleavedetail();
-            if(ObjectUtils.isEmpty(vacleavedetail)){
-                cn.ibizlab.ehr.core.vac.domain.VacLeaveDetail majorEntity=vacleavedetailService.get(et.getVacleavedetailid());
-                et.setVacleavedetail(majorEntity);
-                vacleavedetail=majorEntity;
-            }
-            et.setPimpersonid(vacleavedetail.getPimpersonid());
-            et.setPimpersonname(vacleavedetail.getPimpersonname());
-        }
-    }
 
 
     @Override

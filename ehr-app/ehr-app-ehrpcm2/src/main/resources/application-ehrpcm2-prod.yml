@@ -47,6 +47,10 @@ zuul:
       path: /pimdistirbutions/**
       serviceId: ehr-webapi
       stripPrefix: false
+    pcmxygzzsqmx:
+      path: /pcmxygzzsqmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     pcmyddgmx:
       path: /pcmyddgmxes/**
       serviceId: ehr-webapi
@@ -129,10 +133,6 @@ zuul:
       stripPrefix: false
     ormorgsector:
       path: /ormorgsectors/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    pcmxygzzsqmx:
-      path: /pcmxygzzsqmxes/**
       serviceId: ehr-webapi
       stripPrefix: false
     loginv7:

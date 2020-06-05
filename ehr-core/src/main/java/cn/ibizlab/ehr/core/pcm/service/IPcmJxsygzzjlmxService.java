@@ -31,8 +31,10 @@ public interface IPcmJxsygzzjlmxService extends IService<PcmJxsygzzjlmx>{
     void saveBatch(List<PcmJxsygzzjlmx> list) ;
     PcmJxsygzzjlmx fillPersonInfo(PcmJxsygzzjlmx et) ;
     PcmJxsygzzjlmx zZCZ(PcmJxsygzzjlmx et) ;
+    PcmJxsygzzjlmx setPass(PcmJxsygzzjlmx et) ;
     PcmJxsygzzjlmx getDraft(PcmJxsygzzjlmx et) ;
     PcmJxsygzzjlmx get(String key) ;
+    PcmJxsygzzjlmx setReject(PcmJxsygzzjlmx et) ;
     boolean remove(String key) ;
     void removeBatch(Collection<String> idList) ;
     boolean create(PcmJxsygzzjlmx et) ;

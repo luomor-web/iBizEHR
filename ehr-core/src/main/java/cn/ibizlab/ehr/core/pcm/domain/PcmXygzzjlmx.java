@@ -128,6 +128,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
     /**
      * 是否为临时数据
      */
+    @DEField(defaultValue = "0")
     @TableField(value = "istemp")
     @JSONField(name = "istemp")
     @JsonProperty("istemp")
