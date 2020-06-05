@@ -14,7 +14,17 @@
 </i-col>
 <i-col v-show="detailsModel.wydj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='wydj' :itemRules="this.rules.wydj" class='' :caption="$t('entities.pimlanguageability.main_2_form.details.wydj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.wydj.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.wydj" :data="data" :itemParam="{}" :disabled="detailsModel.wydj.disabled"  tag='EhrCodeList0146' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.wydj" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.wydj.disabled"  
+    tag='EhrCodeList0146' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

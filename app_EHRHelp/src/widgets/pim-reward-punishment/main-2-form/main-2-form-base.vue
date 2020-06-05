@@ -8,7 +8,17 @@
     <row>
         <i-col v-show="detailsModel.lx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='lx' :itemRules="this.rules.lx" class='' :caption="$t('entities.pimrewardpunishment.main_2_form.details.lx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.lx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.lx" :data="data" :itemParam="{}" :disabled="detailsModel.lx.disabled"  tag='EhrCodeList0124' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.lx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.lx.disabled"  
+    tag='EhrCodeList0124' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -20,7 +30,17 @@
 </i-col>
 <i-col v-show="detailsModel.jcjb.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='jcjb' :itemRules="this.rules.jcjb" class='' :caption="$t('entities.pimrewardpunishment.main_2_form.details.jcjb')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jcjb.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.jcjb" :data="data" :itemParam="{}" :disabled="detailsModel.jcjb.disabled"  tag='EhrCodeList0159' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.jcjb" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.jcjb.disabled"  
+    tag='EhrCodeList0159' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -55,7 +75,17 @@
     <row>
         <i-col v-show="detailsModel.cflx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='cflx' :itemRules="this.rules.cflx" class='' :caption="$t('entities.pimrewardpunishment.main_2_form.details.cflx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.cflx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.cflx" :data="data" :itemParam="{}" :disabled="detailsModel.cflx.disabled"  tag='EhrCodeList0136' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.cflx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.cflx.disabled"  
+    tag='EhrCodeList0136' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

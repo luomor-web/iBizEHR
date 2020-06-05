@@ -261,7 +261,7 @@ export default class PcmYdjdmxServiceBase extends EntityService {
      * @memberof PcmYdjdmxServiceBase
      */
     public async PersonBack(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:RyHgLogic = new RyHgLogic();
+        let appLogic:RyHgLogic = new RyHgLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }
@@ -276,7 +276,7 @@ export default class PcmYdjdmxServiceBase extends EntityService {
      * @memberof PcmYdjdmxServiceBase
      */
     public async PersonInfo(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:FillPersonInfoLogic = new FillPersonInfoLogic();
+        let appLogic:FillPersonInfoLogic = new FillPersonInfoLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }

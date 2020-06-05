@@ -32,13 +32,31 @@ export default class ZJJScodelist2LogicBase {
     private defaultParamName:string = "Default";
 
     /**
+     * 参数集合
+     * 
+     * @memberof  ZJJScodelist2LogicBase
+     */
+    private paramsMap:Map<string,any> = new Map();
+
+    /**
      * Creates an instance of  ZJJScodelist2LogicBase.
      * 
      * @param {*} [opts={}]
      * @memberof  ZJJScodelist2LogicBase
      */
     constructor(opts: any = {}) {
-        
+        this.initParams(opts);
+    }
+
+    /**
+     * 初始化参数集合
+     * 
+     * @param {*} [opts={}]
+     * @memberof  ZJJScodelist2LogicBase
+     */
+    public initParams(opts:any){
+        this.paramsMap.set('zjcodeList',{});
+        this.paramsMap.set('Default',opts);
     }
 
 
@@ -80,13 +98,14 @@ export default class ZJJScodelist2LogicBase {
     private async executeDeaction1(context:any,params:any,isloading:boolean){
         // 行为处理节点
         let result: any;
+        let actionParam:any = this.paramsMap.get('zjcodeList');
         const targetService:CodeList1Service = new CodeList1Service();
         if (targetService['RefreshModel'] && targetService['RefreshModel'] instanceof Function) {
-            result = await targetService['RefreshModel'](context,params, false);
+            result = await targetService['RefreshModel'](actionParam.context,actionParam.data, false);
         }
         if(result && result.status == 200){
-            Object.assign(params,result.data);
-        return params;
+            Object.assign(actionParam.data,result.data);
+        return this.paramsMap.get(this.defaultParamName).data;
         }
     }
 
@@ -98,7 +117,11 @@ export default class ZJJScodelist2LogicBase {
     */
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
-        Object.assign(params,{codelistid:params.codelistid});
+    let tempDstParam0Context:any = this.paramsMap.get('zjcodeList').context?this.paramsMap.get('zjcodeList').context:{};
+    let tempDstParam0Data:any = this.paramsMap.get('zjcodeList').data?this.paramsMap.get('zjcodeList').data:{};
+    Object.assign(tempDstParam0Context,{codelist1:8DC14D09-48F5-44E7-B912-BE4A6B4CCF6E});
+    Object.assign(tempDstParam0Data,{codelistid:"8DC14D09-48F5-44E7-B912-BE4A6B4CCF6E"});
+    this.paramsMap.set('zjcodeList',{data:tempDstParam0Data,context:tempDstParam0Context});
         if(this.compute0Cond(params)){
             return this.executeDeaction1(context,params,isloading);   
         }

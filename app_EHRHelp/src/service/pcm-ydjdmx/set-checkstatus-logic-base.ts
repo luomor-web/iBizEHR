@@ -31,13 +31,30 @@ export default class SetCheckstatusLogicBase {
     private defaultParamName:string = "Default";
 
     /**
+     * 参数集合
+     * 
+     * @memberof  SetCheckstatusLogicBase
+     */
+    private paramsMap:Map<string,any> = new Map();
+
+    /**
      * Creates an instance of  SetCheckstatusLogicBase.
      * 
      * @param {*} [opts={}]
      * @memberof  SetCheckstatusLogicBase
      */
     constructor(opts: any = {}) {
-        
+        this.initParams(opts);
+    }
+
+    /**
+     * 初始化参数集合
+     * 
+     * @param {*} [opts={}]
+     * @memberof  SetCheckstatusLogicBase
+     */
+    public initParams(opts:any){
+        this.paramsMap.set('Default',opts);
     }
 
 
@@ -69,8 +86,11 @@ export default class SetCheckstatusLogicBase {
     */
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
-        Object.assign(params,{checkstatus:params.checkstatus});
-        return params;
+    let tempDstParam0Context:any = this.paramsMap.get('Default').context?this.paramsMap.get('Default').context:{};
+    let tempDstParam0Data:any = this.paramsMap.get('Default').data?this.paramsMap.get('Default').data:{};
+    Object.assign(tempDstParam0Data,{checkstatus:"3"});
+    this.paramsMap.set('Default',{data:tempDstParam0Data,context:tempDstParam0Context});
+        return this.paramsMap.get(this.defaultParamName).data;
     }
 
     /**

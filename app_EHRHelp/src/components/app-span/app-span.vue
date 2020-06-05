@@ -1,12 +1,11 @@
 <template>
-    <codelist v-if="tag" :tag="tag" :value="value" :codelistType="codelistType" :renderMode="renderMode" :valueSeparator="valueSeparator" :textSeparator="textSeparator"></codelist>
+    <codelist v-if="tag" :tag="tag" :value="value" :codelistType="codelistType" :renderMode="renderMode" :valueSeparator="valueSeparator" :textSeparator="textSeparator" :data="data" :itemParam="itemParam" :context="context" :viewparams="viewparams"></codelist>
     <app-upload-file-info v-else-if="Object.is(this.editorType,'PICTURE') || Object.is(this.editorType,'PICTURE_ONE') || Object.is(this.editorType,'FILEUPLOADER')" :value="value" :name="name"></app-upload-file-info>
     <span class="app-span" v-else >{{text}}</span>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch, Model } from 'vue-property-decorator';
-import CodeListService from "@service/app/codelist-service";
 
 @Component({})
 export default class AppSpan extends Vue {
@@ -63,6 +62,38 @@ export default class AppSpan extends Vue {
      * @memberof AppSpan
      */
     @Prop({default:','}) public valueSeparator?: string;
+
+    /**
+     * 传入表单数据
+     *
+     * @type {*}
+     * @memberof AppSpan
+     */
+    @Prop() public data?: any;
+
+    /**
+     * 传入额外参数
+     *
+     * @type {*}
+     * @memberof AppSpan
+     */
+    @Prop() public itemParam?: any;
+
+    /**
+     * 视图上下文
+     *
+     * @type {*}
+     * @memberof AppSpan
+     */
+    @Prop() public context!: any;
+
+    /**
+     * 视图参数
+     *
+     * @type {*}
+     * @memberof AppSpan
+     */
+    @Prop() public viewparams!: any;
 
     /**
      * 监控表单属性 data 值

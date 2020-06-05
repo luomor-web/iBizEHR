@@ -8,13 +8,33 @@
     <row>
         <i-col v-show="detailsModel.trooptype.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='trooptype' :itemRules="this.rules.trooptype" class='' :caption="$t('entities.pimarmycadres.greditform_form.details.trooptype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.trooptype.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.trooptype" :data="data" :itemParam="{}" :disabled="detailsModel.trooptype.disabled"  tag='EhrCodeList0035' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.trooptype" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.trooptype.disabled"  
+    tag='EhrCodeList0035' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.leveltype.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='leveltype' :itemRules="this.rules.leveltype" class='' :caption="$t('entities.pimarmycadres.greditform_form.details.leveltype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.leveltype.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.leveltype" :data="data" :itemParam="{}" :disabled="detailsModel.leveltype.disabled"  tag='EhrCodeList0198' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.leveltype" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.leveltype.disabled"  
+    tag='EhrCodeList0198' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

@@ -471,6 +471,7 @@ export default class PIMARCHIVESLOANANDRETURNGridViewBase extends GridViewBase {
             data.srfsourcekey = args[0].srfsourcekey;
         }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
+        delete curViewParam.pimarchivesloanandreturn;
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }

@@ -117,16 +117,18 @@ export declare interface Util {
      * @memberof Util
      */
     srfFilePath2(name: string): string;
+    
     /**
      * 附加参数格式化
      *
      * @static
      * @param {any} arg 表单数据
+     * @param {any} parent 外层context或viewparams
      * @param {any} params 附加参数
      * @returns {any}
      * @memberof Util
      */
-    formatData(arg: any, params: any): any
+    formatData(arg: any,parent:any, params: any): any ;
 
     /**
      * 日期格式化

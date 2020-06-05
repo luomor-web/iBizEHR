@@ -153,7 +153,7 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async KB(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:KBLogic = new KBLogic();
+        let appLogic:KBLogic = new KBLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }
@@ -191,7 +191,7 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async QX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:QXLogic = new QXLogic();
+        let appLogic:QXLogic = new QXLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }
@@ -206,7 +206,7 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async LX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:LXLogic = new LXLogic();
+        let appLogic:LXLogic = new LXLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }

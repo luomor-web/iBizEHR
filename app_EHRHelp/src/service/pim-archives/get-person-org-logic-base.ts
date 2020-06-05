@@ -32,13 +32,31 @@ export default class GetPersonOrgLogicBase {
     private defaultParamName:string = "Default";
 
     /**
+     * 参数集合
+     * 
+     * @memberof  GetPersonOrgLogicBase
+     */
+    private paramsMap:Map<string,any> = new Map();
+
+    /**
      * Creates an instance of  GetPersonOrgLogicBase.
      * 
      * @param {*} [opts={}]
      * @memberof  GetPersonOrgLogicBase
      */
     constructor(opts: any = {}) {
-        
+        this.initParams(opts);
+    }
+
+    /**
+     * 初始化参数集合
+     * 
+     * @param {*} [opts={}]
+     * @memberof  GetPersonOrgLogicBase
+     */
+    public initParams(opts:any){
+        this.paramsMap.set('Default',opts);
+        this.paramsMap.set('GerPersonInfo',{});
     }
 
 
@@ -79,10 +97,17 @@ export default class GetPersonOrgLogicBase {
     */
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
-        Object.assign(params,{ormorgid:params.ormorgid});
-        Object.assign(context,{pimarchives:params.ormorgid ? params.ormorgid : null});
-        Object.assign(params,{ormorgname:params.ormorgname});
-        return params;
+    let tempDstParam0Context:any = this.paramsMap.get('Default').context?this.paramsMap.get('Default').context:{};
+    let tempDstParam0Data:any = this.paramsMap.get('Default').data?this.paramsMap.get('Default').data:{};
+    let tempSrcParam0Data:any = this.paramsMap.get('GerPersonInfo').data?this.paramsMap.get('GerPersonInfo').data:{};
+    Object.assign(tempDstParam0Data,{ormorgid:tempSrcParam0Data['ormorgid']});
+    this.paramsMap.set('Default',{data:tempDstParam0Data,context:tempDstParam0Context});
+    let tempDstParam1Context:any = this.paramsMap.get('Default').context?this.paramsMap.get('Default').context:{};
+    let tempDstParam1Data:any = this.paramsMap.get('Default').data?this.paramsMap.get('Default').data:{};
+    let tempSrcParam1Data:any = this.paramsMap.get('GerPersonInfo').data?this.paramsMap.get('GerPersonInfo').data:{};
+    Object.assign(tempDstParam1Data,{ormorgname:tempSrcParam1Data['ormorgname']});
+    this.paramsMap.set('Default',{data:tempDstParam1Data,context:tempDstParam1Context});
+        return this.paramsMap.get(this.defaultParamName).data;
     }
 
     /**
@@ -106,12 +131,13 @@ export default class GetPersonOrgLogicBase {
     private async executeDeaction1(context:any,params:any,isloading:boolean){
         // 行为处理节点
         let result: any;
+        let actionParam:any = this.paramsMap.get('GerPersonInfo');
         const targetService:PimPersonService = new PimPersonService();
         if (targetService['Get'] && targetService['Get'] instanceof Function) {
-            result = await targetService['Get'](context,params, false);
+            result = await targetService['Get'](actionParam.context,actionParam.data, false);
         }
         if(result && result.status == 200){
-            Object.assign(params,result.data);
+            Object.assign(actionParam.data,result.data);
         if(this.compute1Cond(params)){
             return this.executePrepareparam1(context,params,isloading);   
         }

@@ -32,13 +32,30 @@ export default class CalContractTimeLogicBase {
     private defaultParamName:string = "Default";
 
     /**
+     * 参数集合
+     * 
+     * @memberof  CalContractTimeLogicBase
+     */
+    private paramsMap:Map<string,any> = new Map();
+
+    /**
      * Creates an instance of  CalContractTimeLogicBase.
      * 
      * @param {*} [opts={}]
      * @memberof  CalContractTimeLogicBase
      */
     constructor(opts: any = {}) {
-        
+        this.initParams(opts);
+    }
+
+    /**
+     * 初始化参数集合
+     * 
+     * @param {*} [opts={}]
+     * @memberof  CalContractTimeLogicBase
+     */
+    public initParams(opts:any){
+        this.paramsMap.set('Default',opts);
     }
 
 
@@ -71,13 +88,14 @@ export default class CalContractTimeLogicBase {
     private async executeDeaction1(context:any,params:any,isloading:boolean){
         // 行为处理节点
         let result: any;
+        let actionParam:any = this.paramsMap.get('Default');
         const targetService:PimContractService = new PimContractService();
         if (targetService['CalContractTime'] && targetService['CalContractTime'] instanceof Function) {
-            result = await targetService['CalContractTime'](context,params, false);
+            result = await targetService['CalContractTime'](actionParam.context,actionParam.data, false);
         }
         if(result && result.status == 200){
-            Object.assign(params,result.data);
-        return params;
+            Object.assign(actionParam.data,result.data);
+        return this.paramsMap.get(this.defaultParamName).data;
         }
     }
 

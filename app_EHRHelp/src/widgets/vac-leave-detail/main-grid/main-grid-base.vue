@@ -16,8 +16,6 @@
         ref='multipleTable' :data="items" :show-header="!isHideHeader">
             <template slot="empty">
                 无数据 
-                <span class="quick-toolbar">
-                </span>
             </template>
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>

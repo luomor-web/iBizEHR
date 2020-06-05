@@ -103,7 +103,7 @@ export default class PcmXygzzjlmxServiceBase extends EntityService {
      * @memberof PcmXygzzjlmxServiceBase
      */
     public async FillPersonInfo(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:SetPersonInfoLogic = new SetPersonInfoLogic();
+        let appLogic:SetPersonInfoLogic = new SetPersonInfoLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }

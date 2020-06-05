@@ -8,19 +8,49 @@
     <row>
         <i-col v-show="detailsModel.fplx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='fplx' :itemRules="this.rules.fplx" class='' :caption="$t('entities.pimdistirbution.grdividereditgrid_form.details.fplx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.fplx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.fplx" :data="data" :itemParam="{}" :disabled="detailsModel.fplx.disabled"  tag='EhrCodeList0205' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.fplx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.fplx.disabled"  
+    tag='EhrCodeList0205' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.fpzt.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='fpzt' :itemRules="this.rules.fpzt" class='' :caption="$t('entities.pimdistirbution.grdividereditgrid_form.details.fpzt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.fpzt.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.fpzt" :data="data" :itemParam="{}" :disabled="detailsModel.fpzt.disabled"  tag='EhrCodeList0137' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.fpzt" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.fpzt.disabled"  
+    tag='EhrCodeList0137' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.cfplx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='cfplx' :itemRules="this.rules.cfplx" class='' :caption="$t('entities.pimdistirbution.grdividereditgrid_form.details.cfplx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.cfplx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.cfplx" :data="data" :itemParam="{}" :disabled="detailsModel.cfplx.disabled"  tag='EhrCodeList0237' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.cfplx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.cfplx.disabled"  
+    tag='EhrCodeList0237' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

@@ -67,7 +67,7 @@ export class AuthGuard {
                         }
                         router.app.$store.commit('addAppData', data);
                         // 提交统一资源数据
-                        router.app.$store.dispatch('unifiedresource/commitResourceData', data);
+                        router.app.$store.dispatch('authresource/commitAuthData', data);
                     }
                 }
                 resolve(true);

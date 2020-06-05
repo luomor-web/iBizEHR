@@ -419,6 +419,7 @@ export default class PIMARCHIVESGRPimDangaGridViewBase extends GridViewBase {
             data.srfsourcekey = args[0].srfsourcekey;
         }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
+        delete curViewParam.pimarchives;
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }

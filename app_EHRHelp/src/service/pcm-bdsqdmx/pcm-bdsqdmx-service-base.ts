@@ -74,7 +74,7 @@ export default class PcmBdsqdmxServiceBase extends EntityService {
      * @memberof PcmBdsqdmxServiceBase
      */
     public async ZJJSDMB(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:ZJJScodelist2Logic = new ZJJScodelist2Logic();
+        let appLogic:ZJJScodelist2Logic = new ZJJScodelist2Logic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }
@@ -108,7 +108,7 @@ export default class PcmBdsqdmxServiceBase extends EntityService {
      * @memberof PcmBdsqdmxServiceBase
      */
     public async SXJSDMB(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:SetPersonInfoNewLogic = new SetPersonInfoNewLogic();
+        let appLogic:SetPersonInfoNewLogic = new SetPersonInfoNewLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }
@@ -142,7 +142,7 @@ export default class PcmBdsqdmxServiceBase extends EntityService {
      * @memberof PcmBdsqdmxServiceBase
      */
     public async SXJSDMB2(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:SetPersonInfoNew2Logic = new SetPersonInfoNew2Logic();
+        let appLogic:SetPersonInfoNew2Logic = new SetPersonInfoNew2Logic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }
@@ -217,7 +217,7 @@ export default class PcmBdsqdmxServiceBase extends EntityService {
      * @memberof PcmBdsqdmxServiceBase
      */
     public async SXDMB(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:ZJcodelistLogic = new ZJcodelistLogic();
+        let appLogic:ZJcodelistLogic = new ZJcodelistLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }
@@ -251,7 +251,7 @@ export default class PcmBdsqdmxServiceBase extends EntityService {
      * @memberof PcmBdsqdmxServiceBase
      */
     public async SetPersonInfo(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:SetPersonInfoLogic = new SetPersonInfoLogic();
+        let appLogic:SetPersonInfoLogic = new SetPersonInfoLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }
@@ -524,7 +524,7 @@ export default class PcmBdsqdmxServiceBase extends EntityService {
      * @memberof PcmBdsqdmxServiceBase
      */
     public async JZJJSDMB(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:ZJJScodelist3Logic = new ZJJScodelist3Logic();
+        let appLogic:ZJJScodelist3Logic = new ZJJScodelist3Logic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }

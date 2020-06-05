@@ -78,7 +78,7 @@ export default class PcmYdlzmxServiceBase extends EntityService {
      * @memberof PcmYdlzmxServiceBase
      */
     public async IsFinished(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:SetFinishedLogic = new SetFinishedLogic();
+        let appLogic:SetFinishedLogic = new SetFinishedLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }

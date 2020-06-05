@@ -14,7 +14,17 @@
 </i-col>
 <i-col v-show="detailsModel.htlx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='htlx' :itemRules="this.rules.htlx" class='' :caption="$t('entities.pimcontract.grcontracteditgrid_form.details.htlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.htlx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.htlx" :data="data" :itemParam="{}" :disabled="detailsModel.htlx.disabled"  tag='EhrCodeList0084' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.htlx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.htlx.disabled"  
+    tag='EhrCodeList0084' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -32,7 +42,17 @@
 </i-col>
 <i-col v-show="detailsModel.htzt.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='htzt' :itemRules="this.rules.htzt" class='' :caption="$t('entities.pimcontract.grcontracteditgrid_form.details.htzt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.htzt.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.htzt" :data="data" :itemParam="{}" :disabled="detailsModel.htzt.disabled"  tag='EhrCodeList0030' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.htzt" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.htzt.disabled"  
+    tag='EhrCodeList0030' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

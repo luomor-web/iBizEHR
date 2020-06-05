@@ -118,19 +118,49 @@
           </i-col>
           <i-col v-show="detailsModel.n_fplx_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_fplx_eq' :itemRules="this.rules.n_fplx_eq" class='' :caption="$t('entities.pimdistirbution.default_searchform.details.n_fplx_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_fplx_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list v-model="data.n_fplx_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_fplx_eq.disabled"  tag='EhrCodeList0205' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_fplx_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_fplx_eq.disabled"  
+              tag='EhrCodeList0205' 
+              codelistType='DYNAMIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>
           <i-col v-show="detailsModel.n_cfplx_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_cfplx_eq' :itemRules="this.rules.n_cfplx_eq" class='' :caption="$t('entities.pimdistirbution.default_searchform.details.n_cfplx_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_cfplx_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list v-model="data.n_cfplx_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_cfplx_eq.disabled"  tag='EhrCodeList0237' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_cfplx_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_cfplx_eq.disabled"  
+              tag='EhrCodeList0237' 
+              codelistType='DYNAMIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>
           <i-col v-show="detailsModel.n_fpzt_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_fpzt_eq' :itemRules="this.rules.n_fpzt_eq" class='' :caption="$t('entities.pimdistirbution.default_searchform.details.n_fpzt_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_fpzt_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list v-model="data.n_fpzt_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_fpzt_eq.disabled"  tag='EhrCodeList0137' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_fpzt_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_fpzt_eq.disabled"  
+              tag='EhrCodeList0137' 
+              codelistType='DYNAMIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>

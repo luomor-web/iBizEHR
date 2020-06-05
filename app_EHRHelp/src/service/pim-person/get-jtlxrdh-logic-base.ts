@@ -32,13 +32,31 @@ export default class GetJTLXRDHLogicBase {
     private defaultParamName:string = "Default";
 
     /**
+     * 参数集合
+     * 
+     * @memberof  GetJTLXRDHLogicBase
+     */
+    private paramsMap:Map<string,any> = new Map();
+
+    /**
      * Creates an instance of  GetJTLXRDHLogicBase.
      * 
      * @param {*} [opts={}]
      * @memberof  GetJTLXRDHLogicBase
      */
     constructor(opts: any = {}) {
-        
+        this.initParams(opts);
+    }
+
+    /**
+     * 初始化参数集合
+     * 
+     * @param {*} [opts={}]
+     * @memberof  GetJTLXRDHLogicBase
+     */
+    public initParams(opts:any){
+        this.paramsMap.set('Default',opts);
+        this.paramsMap.set('PIMFAMINFO',{});
     }
 
 
@@ -97,12 +115,13 @@ export default class GetJTLXRDHLogicBase {
     private async executeDeaction1(context:any,params:any,isloading:boolean){
         // 行为处理节点
         let result: any;
+        let actionParam:any = this.paramsMap.get('PIMFAMINFO');
         const targetService:PimFaminfoService = new PimFaminfoService();
         if (targetService['Get'] && targetService['Get'] instanceof Function) {
-            result = await targetService['Get'](context,params, false);
+            result = await targetService['Get'](actionParam.context,actionParam.data, false);
         }
         if(result && result.status == 200){
-            Object.assign(params,result.data);
+            Object.assign(actionParam.data,result.data);
         if(this.compute1Cond(params)){
             return this.executePrepareparam2(context,params,isloading);   
         }
@@ -117,8 +136,12 @@ export default class GetJTLXRDHLogicBase {
     */
     private async executePrepareparam2(context:any,params:any,isloading:boolean){
         // 准备参数节点
-        Object.assign(params,{jtlxrdh:params.telphone});
-        return params;
+    let tempDstParam0Context:any = this.paramsMap.get('Default').context?this.paramsMap.get('Default').context:{};
+    let tempDstParam0Data:any = this.paramsMap.get('Default').data?this.paramsMap.get('Default').data:{};
+    let tempSrcParam0Data:any = this.paramsMap.get('PIMFAMINFO').data?this.paramsMap.get('PIMFAMINFO').data:{};
+    Object.assign(tempDstParam0Data,{jtlxrdh:tempSrcParam0Data['telphone']});
+    this.paramsMap.set('Default',{data:tempDstParam0Data,context:tempDstParam0Context});
+        return this.paramsMap.get(this.defaultParamName).data;
     }
 
     /**
@@ -141,8 +164,12 @@ export default class GetJTLXRDHLogicBase {
     */
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
-        Object.assign(params,{pimfaminfoid:params.jtlxrid});
-        Object.assign(context,{pimfaminfo:params.jtlxrid ? params.jtlxrid : null});
+    let tempDstParam0Context:any = this.paramsMap.get('PIMFAMINFO').context?this.paramsMap.get('PIMFAMINFO').context:{};
+    let tempDstParam0Data:any = this.paramsMap.get('PIMFAMINFO').data?this.paramsMap.get('PIMFAMINFO').data:{};
+    let tempSrcParam0Data:any = this.paramsMap.get('Default').data?this.paramsMap.get('Default').data:{};
+    Object.assign(tempDstParam0Context,{pimfaminfo:tempSrcParam0Data['jtlxrid']});
+    Object.assign(tempDstParam0Data,{pimfaminfoid:tempSrcParam0Data['jtlxrid']});
+    this.paramsMap.set('PIMFAMINFO',{data:tempDstParam0Data,context:tempDstParam0Context});
         if(this.compute2Cond(params)){
             return this.executeDeaction1(context,params,isloading);   
         }

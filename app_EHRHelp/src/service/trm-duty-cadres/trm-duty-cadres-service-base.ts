@@ -80,7 +80,7 @@ export default class TrmDutyCadresServiceBase extends EntityService {
      * @memberof TrmDutyCadresServiceBase
      */
     public async SetNQGBXX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:SetNQGBXXLogic = new SetNQGBXXLogic();
+        let appLogic:SetNQGBXXLogic = new SetNQGBXXLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }
@@ -95,7 +95,7 @@ export default class TrmDutyCadresServiceBase extends EntityService {
      * @memberof TrmDutyCadresServiceBase
      */
     public async SX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:UpdateSateteSXLogic = new UpdateSateteSXLogic();
+        let appLogic:UpdateSateteSXLogic = new UpdateSateteSXLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }
@@ -161,7 +161,7 @@ export default class TrmDutyCadresServiceBase extends EntityService {
      * @memberof TrmDutyCadresServiceBase
      */
     public async XX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:UpdateStateXXLogic = new UpdateStateXXLogic();
+        let appLogic:UpdateStateXXLogic = new UpdateStateXXLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }

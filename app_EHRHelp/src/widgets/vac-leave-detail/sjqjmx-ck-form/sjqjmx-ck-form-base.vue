@@ -14,7 +14,17 @@
 </i-col>
 <i-col v-show="detailsModel.qjzl.visible" :style="{}"  :lg="{ span: 9, offset: 0 }">
     <app-form-item name='qjzl' :itemRules="this.rules.qjzl" class='' :caption="$t('entities.vacleavedetail.sjqjmx_ck_form.details.qjzl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.qjzl.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.qjzl" :data="data" :itemParam="{}" :disabled="detailsModel.qjzl.disabled"  tag='EhrCodeList0013' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.qjzl" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.qjzl.disabled"  
+    tag='EhrCodeList0013' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -33,14 +43,22 @@
 <i-col v-show="detailsModel.njsy.visible" :style="{}"  :lg="{ span: 18, offset: 0 }">
     <app-form-item name='njsy' :itemRules="this.rules.njsy" class='' :caption="$t('entities.vacleavedetail.sjqjmx_ck_form.details.njsy')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.njsy.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='njsy'
-:value="data.njsy" style=""></app-span>
+:value="data.njsy"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.tips.visible" :style="{}"  :lg="{ span: 18, offset: 0 }">
     <app-form-item name='tips' :itemRules="this.rules.tips" class='' :caption="$t('entities.vacleavedetail.sjqjmx_ck_form.details.tips')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.tips.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='tips'
-:value="data.tips" style=""></app-span>
+:value="data.tips"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -55,7 +73,17 @@
 </i-col>
 <i-col v-show="detailsModel.jhkssxw.visible" :style="{}"  :lg="{ span: 3, offset: 0 }">
     <app-form-item name='jhkssxw' :itemRules="this.rules.jhkssxw" class='' :caption="$t('entities.vacleavedetail.sjqjmx_ck_form.details.jhkssxw')" uiStyle="DEFAULT" :labelWidth="0" :isShowCaption="false" :error="detailsModel.jhkssxw.error" :isEmptyCaption="false" labelPos="NONE">
-     <dropdown-list v-model="data.jhkssxw" :data="data" :itemParam="{}" :disabled="detailsModel.jhkssxw.disabled"  tag='EhrCodeList0110' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.jhkssxw" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.jhkssxw.disabled"  
+    tag='EhrCodeList0110' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -67,7 +95,17 @@
 </i-col>
 <i-col v-show="detailsModel.jhjssxw.visible" :style="{}"  :lg="{ span: 3, offset: 0 }">
     <app-form-item name='jhjssxw' :itemRules="this.rules.jhjssxw" class='' :caption="$t('entities.vacleavedetail.sjqjmx_ck_form.details.jhjssxw')" uiStyle="DEFAULT" :labelWidth="0" :isShowCaption="false" :error="detailsModel.jhjssxw.error" :isEmptyCaption="false" labelPos="NONE">
-     <dropdown-list v-model="data.jhjssxw" :data="data" :itemParam="{}" :disabled="detailsModel.jhjssxw.disabled"  tag='EhrCodeList0110' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.jhjssxw" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.jhjssxw.disabled"  
+    tag='EhrCodeList0110' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -107,7 +145,17 @@
 </i-col>
 <i-col v-show="detailsModel.sjkssxw.visible" :style="{}"  :lg="{ span: 3, offset: 0 }">
     <app-form-item name='sjkssxw' :itemRules="this.rules.sjkssxw" class='' :caption="$t('entities.vacleavedetail.sjqjmx_ck_form.details.sjkssxw')" uiStyle="DEFAULT" :labelWidth="0" :isShowCaption="false" :error="detailsModel.sjkssxw.error" :isEmptyCaption="false" labelPos="NONE">
-     <dropdown-list v-model="data.sjkssxw" :data="data" :itemParam="{}" :disabled="detailsModel.sjkssxw.disabled"  tag='EhrCodeList0110' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.sjkssxw" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.sjkssxw.disabled"  
+    tag='EhrCodeList0110' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -119,7 +167,17 @@
 </i-col>
 <i-col v-show="detailsModel.sjjssxw.visible" :style="{}"  :lg="{ span: 3, offset: 0 }">
     <app-form-item name='sjjssxw' :itemRules="this.rules.sjjssxw" class='' :caption="$t('entities.vacleavedetail.sjqjmx_ck_form.details.sjjssxw')" uiStyle="DEFAULT" :labelWidth="0" :isShowCaption="false" :error="detailsModel.sjjssxw.error" :isEmptyCaption="false" labelPos="NONE">
-     <dropdown-list v-model="data.sjjssxw" :data="data" :itemParam="{}" :disabled="detailsModel.sjjssxw.disabled"  tag='EhrCodeList0110' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.sjjssxw" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.sjjssxw.disabled"  
+    tag='EhrCodeList0110' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

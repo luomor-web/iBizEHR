@@ -423,6 +423,7 @@ export default class PIMFAMINFOGRPimfimGridViewBase extends GridViewBase {
             data.srfsourcekey = args[0].srfsourcekey;
         }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
+        delete curViewParam.pimfaminfo;
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }

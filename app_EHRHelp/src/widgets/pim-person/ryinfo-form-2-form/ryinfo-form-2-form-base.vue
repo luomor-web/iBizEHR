@@ -23,7 +23,17 @@
 </div>
 <div v-show="detailsModel.zjlx.visible">
     <app-form-item name='zjlx' :itemRules="this.rules.zjlx" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.zjlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zjlx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.zjlx" :data="data" :itemParam="{}" :disabled="detailsModel.zjlx.disabled"  tag='EhrCodeList0231' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.zjlx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.zjlx.disabled"  
+    tag='EhrCodeList0231' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </div>
@@ -47,13 +57,33 @@
 </div>
 <div v-show="detailsModel.xb.visible">
     <app-form-item name='xb' :itemRules="this.rules.xb" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.xb')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xb.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.xb" :data="data" :itemParam="{}" :disabled="detailsModel.xb.disabled"  tag='EhrCodeList0072' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.xb" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.xb.disabled"  
+    tag='EhrCodeList0072' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </div>
 <div v-show="detailsModel.xx.visible">
     <app-form-item name='xx' :itemRules="this.rules.xx" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.xx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.xx" :data="data" :itemParam="{}" :disabled="detailsModel.xx.disabled"  tag='EhrCodeList0018' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.xx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.xx.disabled"  
+    tag='EhrCodeList0018' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </div>
@@ -81,19 +111,49 @@
     <row>
         <div v-show="detailsModel.hyzk.visible">
     <app-form-item name='hyzk' :itemRules="this.rules.hyzk" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.hyzk')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hyzk.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.hyzk" :data="data" :itemParam="{}" :disabled="detailsModel.hyzk.disabled"  tag='EhrCodeList0075' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.hyzk" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.hyzk.disabled"  
+    tag='EhrCodeList0075' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </div>
 <div v-show="detailsModel.mz.visible">
     <app-form-item name='mz' :itemRules="this.rules.mz" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.mz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.mz.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.mz" :data="data" :itemParam="{}" :disabled="detailsModel.mz.disabled"  tag='EhrCodeList0066' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.mz" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.mz.disabled"  
+    tag='EhrCodeList0066' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </div>
 <div v-show="detailsModel.hklx.visible">
     <app-form-item name='hklx' :itemRules="this.rules.hklx" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.hklx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hklx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.hklx" :data="data" :itemParam="{}" :disabled="detailsModel.hklx.disabled"  tag='EhrCodeList0070' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.hklx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.hklx.disabled"  
+    tag='EhrCodeList0070' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </div>
@@ -120,7 +180,17 @@
 </div>
 <div v-show="detailsModel.hjszd.visible">
     <app-form-item name='hjszd' :itemRules="this.rules.hjszd" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.hjszd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hjszd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.hjszd" :data="data" :itemParam="{}" :disabled="detailsModel.hjszd.disabled"  tag='EhrCodeList0001' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.hjszd" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.hjszd.disabled"  
+    tag='EhrCodeList0001' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </div>
@@ -189,7 +259,18 @@
 </div>
 <div v-show="detailsModel.sfdszn.visible">
     <app-form-item name='sfdszn' :itemRules="this.rules.sfdszn" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.sfdszn')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfdszn.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.sfdszn"  :disabled="detailsModel.sfdszn.disabled"  name="sfdszn" tag='EhrCodeList0097' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group 
+  v-model="data.sfdszn"
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"   
+  :disabled="detailsModel.sfdszn.disabled"  
+  name="sfdszn" 
+  :itemParam="{}" 
+  tag='EhrCodeList0097' 
+  codelistType='STATIC' 
+  style="">
+</app-radio-group>
 </app-form-item>
 
 </div>
@@ -214,7 +295,17 @@
     <row>
         <div v-show="detailsModel.zzmm.visible">
     <app-form-item name='zzmm' :itemRules="this.rules.zzmm" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.zzmm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zzmm.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.zzmm" :data="data" :itemParam="{}" :disabled="detailsModel.zzmm.disabled"  tag='EhrCodeList0029' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.zzmm" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.zzmm.disabled"  
+    tag='EhrCodeList0029' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </div>
@@ -240,13 +331,33 @@
     <row>
         <div v-show="detailsModel.ygzt.visible">
     <app-form-item name='ygzt' :itemRules="this.rules.ygzt" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.ygzt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygzt.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.ygzt" :data="data" :itemParam="{}" :disabled="detailsModel.ygzt.disabled"  tag='EhrCodeList0014' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.ygzt" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.ygzt.disabled"  
+    tag='EhrCodeList0014' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </div>
 <div v-show="detailsModel.rzqd.visible">
     <app-form-item name='rzqd' :itemRules="this.rules.rzqd" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.rzqd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rzqd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.rzqd" :data="data" :itemParam="{}" :disabled="detailsModel.rzqd.disabled"  tag='EhrCodeList0041' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.rzqd" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.rzqd.disabled"  
+    tag='EhrCodeList0041' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </div>
@@ -258,7 +369,17 @@
 </div>
 <div v-show="detailsModel.zj.visible">
     <app-form-item name='zj' :itemRules="this.rules.zj" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.zj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zj.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.zj" :data="data" :itemParam="{}" :disabled="detailsModel.zj.disabled"  tag='EhrCodeList0234' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.zj" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.zj.disabled"  
+    tag='EhrCodeList0234' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </div>

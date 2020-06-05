@@ -31,6 +31,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem4',
 	items: [
 		{
 	id: '7783838d0a4d46a5e5a314c5b87ed8f8',
@@ -49,6 +50,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto400',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem5',
 },
 		{
 	id: '635b53d9b5d87168e9788021bbfe36a5',
@@ -67,6 +69,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto87',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem6',
 },
 		{
 	id: '68bf542285117a0308169a1ed73989f4',
@@ -85,6 +88,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto311',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem7',
 },
 		{
 	id: '53957621dcb281fde71315180c031f6c',
@@ -103,6 +107,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto58',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem8',
 },
 		{
 	id: 'b400d6848ac392820850a640eaa8fe46',
@@ -121,6 +126,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto110',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem9',
 },
 		{
 	id: 'bf9374f5f6ef1211e02409cf48ec1c21',
@@ -139,6 +145,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto272',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem10',
 },
 		{
 	id: '2d561f3b75f94483469ef875fe5f7f1e',
@@ -157,6 +164,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto430',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem11',
 },
 		{
 	id: 'fe67b35144210a22edb76b89f34f81ca',
@@ -175,6 +183,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto178',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem12',
 },
 		{
 	id: '3040b7896794510053064b4f3103551a',
@@ -193,6 +202,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto385',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem13',
 },
 		{
 	id: 'c415c9a6e05f3abd49e22aeb8e107ca3',
@@ -211,6 +221,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto319',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem14',
 },
 		{
 	id: '27241d8702d679b56bbf305daf1d8fac',
@@ -229,6 +240,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto56',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem15',
 },
 		{
 	id: '11d88d5f940694fdfbf727a7d51c9579',
@@ -247,6 +259,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto297',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem16',
 },
 	],
 },
@@ -267,6 +280,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem17',
 	items: [
 		{
 	id: 'b15d98f25246f4482030276991d1edc0',
@@ -285,6 +299,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto159',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem19',
 },
 		{
 	id: 'd67778367a36029c0bd7a635e1d3eea3',
@@ -303,6 +318,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto276',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem20',
 },
 		{
 	id: '2961d366e9fa97176c0e87c484a1a3cb',
@@ -321,6 +337,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto180',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem21',
 },
 		{
 	id: 'fbc090f26ec269f928d7367e6480309e',
@@ -339,6 +356,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto57',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem22',
 },
 		{
 	id: '0fe884bbb3aca267699fae1c80483d27',
@@ -357,6 +375,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto416',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem23',
 },
 	],
 },
@@ -377,6 +396,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem18',
 	items: [
 		{
 	id: 'd671e001174c57d93b0ef6ca745a5d7d',
@@ -395,6 +415,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto36',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem24',
 },
 		{
 	id: 'ec65a10addc4342a9c641f9ff297060a',
@@ -413,6 +434,7 @@ export default class ZIZHUModel {
 	textcls: '',
 	appfunctag: 'Auto5',
 	resourcetag: '',
+	authtag:'EHRHelp-ZIZHU-menuitem25',
 },
 	],
 },

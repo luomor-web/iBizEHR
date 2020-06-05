@@ -12,13 +12,33 @@
           </i-col>
           <i-col v-show="detailsModel.n_qjzl_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_qjzl_eq' :itemRules="this.rules.n_qjzl_eq" class='' :caption="$t('entities.vacleavemanage.default_searchform.details.n_qjzl_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_qjzl_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list v-model="data.n_qjzl_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_qjzl_eq.disabled"  tag='EhrCodeList0013' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_qjzl_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_qjzl_eq.disabled"  
+              tag='EhrCodeList0013' 
+              codelistType='DYNAMIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>
           <i-col v-show="detailsModel.n_wfqqjstate_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_wfqqjstate_eq' :itemRules="this.rules.n_wfqqjstate_eq" class='' :caption="$t('entities.vacleavemanage.default_searchform.details.n_wfqqjstate_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_wfqqjstate_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list v-model="data.n_wfqqjstate_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_wfqqjstate_eq.disabled"  tag='EhrCodeList0134' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_wfqqjstate_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_wfqqjstate_eq.disabled"  
+              tag='EhrCodeList0134' 
+              codelistType='STATIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>

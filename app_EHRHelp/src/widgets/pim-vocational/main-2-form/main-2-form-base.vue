@@ -14,7 +14,17 @@
 </i-col>
 <i-col v-show="detailsModel.zslx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zslx' :itemRules="this.rules.zslx" class='' :caption="$t('entities.pimvocational.main_2_form.details.zslx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zslx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.zslx" :data="data" :itemParam="{}" :disabled="detailsModel.zslx.disabled"  tag='EhrCodeList0109' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.zslx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.zslx.disabled"  
+    tag='EhrCodeList0109' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

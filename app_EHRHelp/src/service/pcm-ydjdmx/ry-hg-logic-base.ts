@@ -32,13 +32,31 @@ export default class RyHgLogicBase {
     private defaultParamName:string = "Default";
 
     /**
+     * 参数集合
+     * 
+     * @memberof  RyHgLogicBase
+     */
+    private paramsMap:Map<string,any> = new Map();
+
+    /**
      * Creates an instance of  RyHgLogicBase.
      * 
      * @param {*} [opts={}]
      * @memberof  RyHgLogicBase
      */
     constructor(opts: any = {}) {
-        
+        this.initParams(opts);
+    }
+
+    /**
+     * 初始化参数集合
+     * 
+     * @param {*} [opts={}]
+     * @memberof  RyHgLogicBase
+     */
+    public initParams(opts:any){
+        this.paramsMap.set('Default',opts);
+        this.paramsMap.set('pimDistirbution',{});
     }
 
 
@@ -79,9 +97,16 @@ export default class RyHgLogicBase {
     */
     private async executePrepareparam2(context:any,params:any,isloading:boolean){
         // 准备参数节点
-        Object.assign(params,{pimdistirbutionid:params.pimdistirbutionid});
-        Object.assign(context,{pimdistirbution:params.pimdistirbutionid ? params.pimdistirbutionid : null});
-        Object.assign(params,{fpzt:params.fpzt});
+    let tempDstParam0Context:any = this.paramsMap.get('pimDistirbution').context?this.paramsMap.get('pimDistirbution').context:{};
+    let tempDstParam0Data:any = this.paramsMap.get('pimDistirbution').data?this.paramsMap.get('pimDistirbution').data:{};
+    let tempSrcParam0Data:any = this.paramsMap.get('Default').data?this.paramsMap.get('Default').data:{};
+    Object.assign(tempDstParam0Context,{pimdistirbution:tempSrcParam0Data['pimdistirbutionid']});
+    Object.assign(tempDstParam0Data,{pimdistirbutionid:tempSrcParam0Data['pimdistirbutionid']});
+    this.paramsMap.set('pimDistirbution',{data:tempDstParam0Data,context:tempDstParam0Context});
+    let tempDstParam1Context:any = this.paramsMap.get('pimDistirbution').context?this.paramsMap.get('pimDistirbution').context:{};
+    let tempDstParam1Data:any = this.paramsMap.get('pimDistirbution').data?this.paramsMap.get('pimDistirbution').data:{};
+    Object.assign(tempDstParam1Data,{fpzt:"ZZFP"});
+    this.paramsMap.set('pimDistirbution',{data:tempDstParam1Data,context:tempDstParam1Context});
         if(this.compute1Cond(params)){
             return this.executeDeaction2(context,params,isloading);   
         }
@@ -108,13 +133,14 @@ export default class RyHgLogicBase {
     private async executeDeaction2(context:any,params:any,isloading:boolean){
         // 行为处理节点
         let result: any;
+        let actionParam:any = this.paramsMap.get('pimDistirbution');
         const targetService:PimDistirbutionService = new PimDistirbutionService();
         if (targetService['Update'] && targetService['Update'] instanceof Function) {
-            result = await targetService['Update'](context,params, false);
+            result = await targetService['Update'](actionParam.context,actionParam.data, false);
         }
         if(result && result.status == 200){
-            Object.assign(params,result.data);
-        return params;
+            Object.assign(actionParam.data,result.data);
+        return this.paramsMap.get(this.defaultParamName).data;
         }
     }
 

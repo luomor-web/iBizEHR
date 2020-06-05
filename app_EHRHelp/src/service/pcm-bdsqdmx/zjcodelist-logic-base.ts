@@ -32,13 +32,31 @@ export default class ZJcodelistLogicBase {
     private defaultParamName:string = "Default";
 
     /**
+     * 参数集合
+     * 
+     * @memberof  ZJcodelistLogicBase
+     */
+    private paramsMap:Map<string,any> = new Map();
+
+    /**
      * Creates an instance of  ZJcodelistLogicBase.
      * 
      * @param {*} [opts={}]
      * @memberof  ZJcodelistLogicBase
      */
     constructor(opts: any = {}) {
-        
+        this.initParams(opts);
+    }
+
+    /**
+     * 初始化参数集合
+     * 
+     * @param {*} [opts={}]
+     * @memberof  ZJcodelistLogicBase
+     */
+    public initParams(opts:any){
+        this.paramsMap.set('zjcodeList',{});
+        this.paramsMap.set('Default',opts);
     }
 
 
@@ -80,13 +98,14 @@ export default class ZJcodelistLogicBase {
     private async executeDeaction1(context:any,params:any,isloading:boolean){
         // 行为处理节点
         let result: any;
+        let actionParam:any = this.paramsMap.get('zjcodeList');
         const targetService:CodeList1Service = new CodeList1Service();
         if (targetService['RefreshModel'] && targetService['RefreshModel'] instanceof Function) {
-            result = await targetService['RefreshModel'](context,params, false);
+            result = await targetService['RefreshModel'](actionParam.context,actionParam.data, false);
         }
         if(result && result.status == 200){
-            Object.assign(params,result.data);
-        return params;
+            Object.assign(actionParam.data,result.data);
+        return this.paramsMap.get(this.defaultParamName).data;
         }
     }
 
@@ -110,7 +129,11 @@ export default class ZJcodelistLogicBase {
     */
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
-        Object.assign(params,{codelistid:params.codelistid});
+    let tempDstParam0Context:any = this.paramsMap.get('zjcodeList').context?this.paramsMap.get('zjcodeList').context:{};
+    let tempDstParam0Data:any = this.paramsMap.get('zjcodeList').data?this.paramsMap.get('zjcodeList').data:{};
+    Object.assign(tempDstParam0Context,{codelist1:22792924-ABD8-4FD5-999E-D939B310242F});
+    Object.assign(tempDstParam0Data,{codelistid:"22792924-ABD8-4FD5-999E-D939B310242F"});
+    this.paramsMap.set('zjcodeList',{data:tempDstParam0Data,context:tempDstParam0Context});
         if(this.compute0Cond(params)){
             return this.executeDeaction1(context,params,isloading);   
         }

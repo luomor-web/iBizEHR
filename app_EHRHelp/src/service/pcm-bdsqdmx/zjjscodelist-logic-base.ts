@@ -32,13 +32,31 @@ export default class ZJJScodelistLogicBase {
     private defaultParamName:string = "Default";
 
     /**
+     * 参数集合
+     * 
+     * @memberof  ZJJScodelistLogicBase
+     */
+    private paramsMap:Map<string,any> = new Map();
+
+    /**
      * Creates an instance of  ZJJScodelistLogicBase.
      * 
      * @param {*} [opts={}]
      * @memberof  ZJJScodelistLogicBase
      */
     constructor(opts: any = {}) {
-        
+        this.initParams(opts);
+    }
+
+    /**
+     * 初始化参数集合
+     * 
+     * @param {*} [opts={}]
+     * @memberof  ZJJScodelistLogicBase
+     */
+    public initParams(opts:any){
+        this.paramsMap.set('Default',opts);
+        this.paramsMap.set('zjcodeList',{});
     }
 
 
@@ -91,7 +109,11 @@ export default class ZJJScodelistLogicBase {
     */
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
-        Object.assign(params,{codelistid:params.codelistid});
+    let tempDstParam0Context:any = this.paramsMap.get('zjcodeList').context?this.paramsMap.get('zjcodeList').context:{};
+    let tempDstParam0Data:any = this.paramsMap.get('zjcodeList').data?this.paramsMap.get('zjcodeList').data:{};
+    Object.assign(tempDstParam0Context,{codelist1:BC61C8E1-837D-4711-9E49-3061DBBFAFEA});
+    Object.assign(tempDstParam0Data,{codelistid:"BC61C8E1-837D-4711-9E49-3061DBBFAFEA"});
+    this.paramsMap.set('zjcodeList',{data:tempDstParam0Data,context:tempDstParam0Context});
         if(this.compute0Cond(params)){
             return this.executeDeaction1(context,params,isloading);   
         }
@@ -106,13 +128,14 @@ export default class ZJJScodelistLogicBase {
     private async executeDeaction1(context:any,params:any,isloading:boolean){
         // 行为处理节点
         let result: any;
+        let actionParam:any = this.paramsMap.get('zjcodeList');
         const targetService:CodeList1Service = new CodeList1Service();
         if (targetService['RefreshModel'] && targetService['RefreshModel'] instanceof Function) {
-            result = await targetService['RefreshModel'](context,params, false);
+            result = await targetService['RefreshModel'](actionParam.context,actionParam.data, false);
         }
         if(result && result.status == 200){
-            Object.assign(params,result.data);
-        return params;
+            Object.assign(actionParam.data,result.data);
+        return this.paramsMap.get(this.defaultParamName).data;
         }
     }
 
