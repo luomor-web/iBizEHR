@@ -1,0 +1,61 @@
+/**
+ * PickupViewpickupviewpanel 部件模型
+ *
+ * @export
+ * @class PickupViewpickupviewpanelModel
+ */
+export default class PickupViewpickupviewpanelModel {
+
+  /**
+    * 获取数据项集合
+    *
+    * @returns {any[]}
+    * @memberof PickupViewpickupviewpanelModel
+    */
+  public getDataItems(): any[] {
+    return [
+      {
+        name: 'mustexcyear',
+      },
+      {
+        name: 'postnature',
+      },
+      {
+        name: 'createdate',
+      },
+      {
+        name: 'jobdesc',
+      },
+      {
+        name: 'ormpostlib',
+        prop: 'ormpostlibid',
+      },
+      {
+        name: 'gwflag',
+      },
+      {
+        name: 'sugexcyear',
+      },
+      {
+        name: 'updatedate',
+      },
+      {
+        name: 'gwtype',
+      },
+      {
+        name: 'isconfidential',
+      },
+      {
+        name: 'createman',
+      },
+      {
+        name: 'ormpostlibname',
+      },
+      {
+        name: 'updateman',
+      },
+    ]
+  }
+
+
+}
