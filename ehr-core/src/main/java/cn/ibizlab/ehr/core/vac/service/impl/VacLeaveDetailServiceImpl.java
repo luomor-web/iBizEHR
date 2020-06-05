@@ -51,6 +51,10 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
     @Lazy
     private cn.ibizlab.ehr.core.vac.service.IVacLeaveManageService vacleavemanageService;
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.vac.service.logic.IVacLeaveDetailCalcPlanDaysLogic calcplandaysLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -147,8 +151,8 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
     @Override
     @Transactional
     public VacLeaveDetail calcJHQJTS(VacLeaveDetail et) {
-        //自定义代码
-        return et;
+        calcplandaysLogic.execute(et);
+         return et ;
     }
 
     @Override

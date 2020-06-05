@@ -34,7 +34,7 @@ ruleflow-group "vacleavedetailcalcplandaysrawsqlcall1"
     param.put("param1",vacleavedetailcalcplandaysdefault.get("jhjssj"));
     param.put("param2",vacleavedetailcalcplandaysdefault.get("jhkssxw"));
     param.put("param3",vacleavedetailcalcplandaysdefault.get("jhjssxw"));
-    String strSql="";
+    String strSql="select DATEDIFF(%1$s,%2$s)+case when %3$s is null then 0.5 when %3$s='10' then 0.5 else 0 end+case when %4$s is null then 0.5 when %4$s='20' then 0.5 else 0 end as jhts from dual";
     java.util.List<JSONObject> entities=iBzSysVacleavedetailDefaultService.select(strSql,param);//SQL调用
     if(entities.size()>0){
         JSONObject entity=entities.get(0);
