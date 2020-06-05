@@ -5,7 +5,7 @@ import PcmJxsygzzjlmxXZEditViewBase from './pcm-jxsygzzjlmx-xzedit-view-base.vue
 import view_form from '@widgets/pcm-jxsygzzjlmx/new-data-form-form/new-data-form-form.vue';
 
 /**
- * 见习生员工转正记录引用明细
+ * 见习期员工转正申请
  *
  * @export
  * @class PcmJxsygzzjlmxXZEditView

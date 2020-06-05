@@ -43,18 +43,6 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pcmxygzzjlmx.main_grid.columns.pimpersonname')" :width="130"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.pcmxygzzjlmx.main_grid.columns.pimpersonname')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.pimpersonname}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('ygbh')">
                 <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pcmxygzzjlmx.main_grid.columns.ygbh')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
@@ -67,8 +55,20 @@
                     </template>
                 </el-table-column>
             </template>
+            <template v-if="getColumnState('pimpersonname')">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pcmxygzzjlmx.main_grid.columns.pimpersonname')" :width="130"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmxygzzjlmx.main_grid.columns.pimpersonname')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <span>{{row.pimpersonname}}</span>
+                    </template>
+                </el-table-column>
+            </template>
             <template v-if="getColumnState('zz')">
-                <el-table-column show-overflow-tooltip :prop="'zz'" :label="$t('entities.pcmxygzzjlmx.main_grid.columns.zz')" :width="220"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zz'" :label="$t('entities.pcmxygzzjlmx.main_grid.columns.zz')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmxygzzjlmx.main_grid.columns.zz')}}
@@ -168,7 +168,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pj')">
-                <el-table-column show-overflow-tooltip :prop="'pj'" :label="$t('entities.pcmxygzzjlmx.main_grid.columns.pj')" :width="120"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pj'" :label="$t('entities.pcmxygzzjlmx.main_grid.columns.pj')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmxygzzjlmx.main_grid.columns.pj')}}
@@ -177,6 +177,20 @@
                     <template v-slot="{row,column,$index}">
                         <template >
             <codelist :value="row.pj" tag='EhrCodeList0046' codelistType='STATIC' ></codelist>
+                        </template>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('checkstatus')">
+                <el-table-column show-overflow-tooltip :prop="'checkstatus'" :label="$t('entities.pcmxygzzjlmx.main_grid.columns.checkstatus')" :width="120"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmxygzzjlmx.main_grid.columns.checkstatus')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <template >
+            <codelist :value="row.checkstatus" tag='EhrCodeList0087' codelistType='STATIC' ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -742,16 +756,16 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'PX'
         },
         {
-            name: 'pimpersonname',
-            label: '员工姓名',
-            langtag: 'entities.pcmxygzzjlmx.main_grid.columns.pimpersonname',
+            name: 'ygbh',
+            label: '员工编号',
+            langtag: 'entities.pcmxygzzjlmx.main_grid.columns.ygbh',
             show: true,
             util: 'px'
         },
         {
-            name: 'ygbh',
-            label: '员工编号',
-            langtag: 'entities.pcmxygzzjlmx.main_grid.columns.ygbh',
+            name: 'pimpersonname',
+            label: '员工姓名',
+            langtag: 'entities.pcmxygzzjlmx.main_grid.columns.pimpersonname',
             show: true,
             util: 'px'
         },
@@ -817,6 +831,13 @@ export default class MainBase extends Vue implements ControlInterface {
             langtag: 'entities.pcmxygzzjlmx.main_grid.columns.pj',
             show: true,
             util: 'px'
+        },
+        {
+            name: 'checkstatus',
+            label: '审核状态',
+            langtag: 'entities.pcmxygzzjlmx.main_grid.columns.checkstatus',
+            show: true,
+            util: 'PX'
         },
     ]
 
@@ -1224,6 +1245,14 @@ export default class MainBase extends Vue implements ControlInterface {
           {
             name: 'pj',
             srfkey: 'EhrCodeList0046',
+            codelistType : 'STATIC',
+            renderMode: 'other',
+            textSeparator: '、',
+            valueSeparator: ',',
+          },
+          {
+            name: 'checkstatus',
+            srfkey: 'EhrCodeList0087',
             codelistType : 'STATIC',
             renderMode: 'other',
             textSeparator: '、',

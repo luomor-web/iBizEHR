@@ -54,6 +54,7 @@
     paramItem='pcmjxsygzzsq' 
     :parentdata='{"srfparentdefname":"PCMJXSYGZZSQID","srfparentdename":"PCMJXSYGZZSQ","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_PCMJXSYGZZJLMX_PCMJXSYGZZSQ_PCMJXSYGZZSQID","SRFDER1NID":"DER1N_PCMJXSYGZZJLMX_PCMJXSYGZZSQ_PCMJXSYGZZSQID"}'
     :parameters="[
+        { pathName: 'pimpeople', parameterName: 'pimperson' },
     ]"
     :context="context"
     :viewparams="viewparams"

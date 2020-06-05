@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PimPersonSYJXEditViewBase from './pim-person-syjxedit-view-base.vue';
 
-import view_form from '@widgets/pim-person/main-form/main-form.vue';
+import view_form from '@widgets/pim-person/jxsyedit-form-form/jxsyedit-form-form.vue';
 
 /**
  * 人员信息

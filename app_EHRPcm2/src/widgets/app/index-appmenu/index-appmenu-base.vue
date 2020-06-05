@@ -62,38 +62,44 @@ export default class IndexBase extends AppMenusCtrlBase {
     protected click(item: any) {
         if (item) {
             switch (item.appfunctag) {
-                case '_12': 
-                    this.click_12(item);
+                case '_9': 
+                    this.click_9(item);
                     return;
-                case '_8': 
-                    this.click_8(item);
-                    return;
-                case '_7': 
-                    this.click_7(item);
-                    return;
-                case '_2': 
-                    this.click_2(item);
-                    return;
-                case '_4': 
-                    this.click_4(item);
-                    return;
-                case '_3': 
-                    this.click_3(item);
-                    return;
-                case '_10': 
-                    this.click_10(item);
-                    return;
-                case '_11': 
-                    this.click_11(item);
-                    return;
-                case '_6': 
-                    this.click_6(item);
+                case '_14': 
+                    this.click_14(item);
                     return;
                 case '_5': 
                     this.click_5(item);
                     return;
-                case '_9': 
-                    this.click_9(item);
+                case '_4': 
+                    this.click_4(item);
+                    return;
+                case '_7': 
+                    this.click_7(item);
+                    return;
+                case '_13': 
+                    this.click_13(item);
+                    return;
+                case '_2': 
+                    this.click_2(item);
+                    return;
+                case '_10': 
+                    this.click_10(item);
+                    return;
+                case '_8': 
+                    this.click_8(item);
+                    return;
+                case '_3': 
+                    this.click_3(item);
+                    return;
+                case '_12': 
+                    this.click_12(item);
+                    return;
+                case '_6': 
+                    this.click_6(item);
+                    return;
+                case '_11': 
+                    this.click_11(item);
                     return;
                 default:
                     console.warn('未指定应用功能');
@@ -102,30 +108,12 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
-     * 解聘管理<配置管理模块>
-     *
-     * @param {*} [item={}]
-     * @memberof Index
-     */
-    public click_12(item: any = {}) {
-        const viewparam: any = {};
-        Object.assign(viewparam, {});
-        const deResParameters: any[] = [];
-        const parameters: any[] = [
-            { pathName: 'pcmydjpmxes', parameterName: 'pcmydjpmx' },
-            { pathName: 'glgridview', parameterName: 'glgridview' },
-        ];
-        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
-    }
-    
-    /**
      * 病休管理<配置管理模块>
      *
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_8(item: any = {}) {
+    public click_9(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -138,35 +126,17 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
-     * 内退管理<配置管理模块>
+     * 解聘管理<配置管理模块>
      *
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_7(item: any = {}) {
+    public click_14(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
         const parameters: any[] = [
-            { pathName: 'pcmydntmxes', parameterName: 'pcmydntmx' },
-            { pathName: 'ntglgridview', parameterName: 'ntglgridview' },
-        ];
-        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
-    }
-    
-    /**
-     * 离职管理<配置管理模块>
-     *
-     * @param {*} [item={}]
-     * @memberof Index
-     */
-    public click_2(item: any = {}) {
-        const viewparam: any = {};
-        Object.assign(viewparam, {});
-        const deResParameters: any[] = [];
-        const parameters: any[] = [
-            { pathName: 'pcmydlzmxes', parameterName: 'pcmydlzmx' },
+            { pathName: 'pcmydjpmxes', parameterName: 'pcmydjpmx' },
             { pathName: 'glgridview', parameterName: 'glgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
@@ -179,7 +149,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_4(item: any = {}) {
+    public click_5(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -197,7 +167,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_3(item: any = {}) {
+    public click_4(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -210,48 +180,12 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
-     * 试用期转正审核<配置管理模块>
-     *
-     * @param {*} [item={}]
-     * @memberof Index
-     */
-    public click_10(item: any = {}) {
-        const viewparam: any = {};
-        Object.assign(viewparam, {});
-        const deResParameters: any[] = [];
-        const parameters: any[] = [
-            { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
-            { pathName: 'approvalgridview', parameterName: 'approvalgridview' },
-        ];
-        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
-    }
-    
-    /**
-     * 退休管理<配置管理模块>
-     *
-     * @param {*} [item={}]
-     * @memberof Index
-     */
-    public click_11(item: any = {}) {
-        const viewparam: any = {};
-        Object.assign(viewparam, {});
-        const deResParameters: any[] = [];
-        const parameters: any[] = [
-            { pathName: 'pimpeople', parameterName: 'pimperson' },
-            { pathName: 'txglgridview', parameterName: 'txglgridview' },
-        ];
-        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
-    }
-    
-    /**
      * 调动管理<配置管理模块>
      *
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_6(item: any = {}) {
+    public click_7(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -264,12 +198,120 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
+     * 退休管理<配置管理模块>
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_13(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            { pathName: 'txglgridview', parameterName: 'txglgridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 见习期转正审核<配置管理模块>
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_2(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
+            { pathName: 'approavlgridview', parameterName: 'approavlgridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 见习期转正申请<配置管理模块>
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_10(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            { pathName: 'sqjxqzzgridview', parameterName: 'sqjxqzzgridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 内退管理<配置管理模块>
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_8(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmydntmxes', parameterName: 'pcmydntmx' },
+            { pathName: 'ntglgridview', parameterName: 'ntglgridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 离职管理<配置管理模块>
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_3(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmydlzmxes', parameterName: 'pcmydlzmx' },
+            { pathName: 'glgridview', parameterName: 'glgridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 试用期转正审核<配置管理模块>
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_12(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
+            { pathName: 'approvalgridview', parameterName: 'approvalgridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
      * 兼职管理<配置管理模块>
      *
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_5(item: any = {}) {
+    public click_6(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -287,7 +329,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_9(item: any = {}) {
+    public click_11(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];

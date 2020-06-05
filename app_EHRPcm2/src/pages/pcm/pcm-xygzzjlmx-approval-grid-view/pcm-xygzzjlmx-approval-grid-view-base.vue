@@ -569,10 +569,10 @@ export default class PcmXygzzjlmxApprovalGridViewBase extends GridViewBase {
             });
         }
         const view: any = {
-            viewname: 'pcm-xygzzjlmx-edit-view', 
+            viewname: 'pcm-xygzzjlmx-edit-view9', 
             height: 750, 
             width: 0,  
-            title: this.$t('entities.pcmxygzzjlmx.views.editview.title'),
+            title: this.$t('entities.pcmxygzzjlmx.views.editview9.title'),
         };
         openPopupModal(view, data);
     }

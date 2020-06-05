@@ -256,8 +256,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "26afe15295bfa7f302bf704fd618b89a"
         },
         "pcmjxsygzzjlmxxzeditview": {
-            "title": "见习生员工转正记录引用明细",
-            "caption": "见习生员工转正记录引用明细",
+            "title": "见习期员工转正申请",
+            "caption": "见习期员工转正申请",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PCM",
             "viewname": "PcmJxsygzzjlmxXZEditView",
@@ -512,8 +512,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "46c527e5e4f0aec93ddec88f8e014f43"
         },
         "pcmjxsygzzjlmxzzjlgridview": {
-            "title": "见习生期转正记录",
-            "caption": "见习生期转正记录",
+            "title": "见习期转正记录",
+            "caption": "见习期转正记录",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "PCM",
             "viewname": "PcmJxsygzzjlmxZZJLGridView",
@@ -887,6 +887,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "PcmXygzzsqPickupView",
             "viewtag": "727f4f522e24e5f58477a5eebc56b053"
         },
+        "pcmjxsygzzjlmxapproavlgridview": {
+            "title": "见习期员工转正审核",
+            "caption": "见习期员工转正审核",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PCM",
+            "viewname": "PcmJxsygzzjlmxApproavlGridView",
+            "viewtag": "74806f40a80f744d1f9f899fe5bc2aab"
+        },
         "pcmjxsygzzjlmxeditview": {
             "title": "见习生员工转正记录引用明细编辑视图",
             "caption": "见习生员工转正记录引用明细",
@@ -1087,6 +1095,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "PcmYdjzmxPickupView",
             "viewtag": "95e137dc5997202183596373696aa384"
         },
+        "pcmjxsygzzjlmxeditview9": {
+            "title": "见习期员工转正",
+            "caption": "见习期员工转正",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "PCM",
+            "viewname": "PcmJxsygzzjlmxEditView9",
+            "viewtag": "967f9b0b15d69f68860fbc8ccd67c7a0"
+        },
         "pcmydtxmxpickupgridview": {
             "title": "异动病休明细选择表格视图",
             "caption": "异动退休明细",
@@ -1224,8 +1240,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "a93b6b6efe8a9ccf0a6f5a46cdbbc5a5"
         },
         "pcmxygzzjlmxeditview9": {
-            "title": "试用期员工转正信息",
-            "caption": "试用期员工转正信息",
+            "title": "试用期员工转正",
+            "caption": "试用期员工转正",
             "viewtype": "DEEDITVIEW9",
             "viewmodule": "PCM",
             "viewname": "PcmXygzzjlmxEditView9",
@@ -1848,8 +1864,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "f36d97311f976fed4a7a6b253fd77176"
         },
         "pimpersonsqjxqzzgridview": {
-            "title": "见习期转正管理",
-            "caption": "见习期可转正人员信息",
+            "title": "见习期转正申请",
+            "caption": "见习期转正申请",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "PCM",
             "viewname": "PimPersonSQJXQZZGridView",
@@ -1888,8 +1904,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "f6cbf1fae6d1d16e04649f31728c7bed"
         },
         "pimpersonsqsyqzzgridview": {
-            "title": "试用期转正管理",
-            "caption": "试用期转正管理",
+            "title": "试用期转正申请",
+            "caption": "试用期转正申请",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "PCM",
             "viewname": "PimPersonSQSYQZZGridView",

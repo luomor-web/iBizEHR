@@ -72,11 +72,6 @@ export default class MainModel {
           dataType: 'GUID',
         },
         {
-          name: 'qssj',
-          prop: 'qssj',
-          dataType: 'PICKUPDATA',
-        },
-        {
           name: 'duration',
           prop: 'duration',
           dataType: 'PICKUPDATA',
@@ -92,14 +87,14 @@ export default class MainModel {
           dataType: 'SSCODELIST',
         },
         {
-          name: 'pcmjxsygzzsqid',
-          prop: 'pcmjxsygzzsqid',
-          dataType: 'PICKUP',
-        },
-        {
           name: 'bm',
           prop: 'bm',
           dataType: 'PICKUPDATA',
+        },
+        {
+          name: 'pcmjxsygzzsqid',
+          prop: 'pcmjxsygzzsqid',
+          dataType: 'PICKUP',
         },
         {
           name: 'fs',

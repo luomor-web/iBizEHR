@@ -20,8 +20,31 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
+            <template v-if="getColumnState('uagridcolumn1')">
+                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.uagridcolumn1')" :width="150"  :align="'center'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmjxsygzzjlmx.main_grid.columns.uagridcolumn1')}}
+                      </span>
+                    </template>
+                    <template slot-scope="scope">
+                        <span>
+                            
+                            <a @click="uiAction(scope.row, 'CheckDetail', $event)">
+                              <i class=''></i>
+                              {{$t('entities.pcmjxsygzzjlmx.main_grid.uiactions.checkdetail')}}
+                            </a>
+                            <divider type='vertical'></divider>
+                            <a @click="uiAction(scope.row, 'Remove', $event)">
+                              <i class='fa fa-remove'></i>
+                              {{$t('entities.pcmjxsygzzjlmx.main_grid.uiactions.remove')}}
+                            </a>
+                        </span>
+                    </template>
+                </el-table-column>
+            </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.ygbh')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.ygbh')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmjxsygzzjlmx.main_grid.columns.ygbh')}}
@@ -33,7 +56,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.pimpersonname')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmjxsygzzjlmx.main_grid.columns.pimpersonname')}}
@@ -45,7 +68,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zz')">
-                <el-table-column show-overflow-tooltip :prop="'zz'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.zz')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zz'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.zz')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmjxsygzzjlmx.main_grid.columns.zz')}}
@@ -69,7 +92,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zzgw')">
-                <el-table-column show-overflow-tooltip :prop="'zzgw'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.zzgw')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zzgw'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.zzgw')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmjxsygzzjlmx.main_grid.columns.zzgw')}}
@@ -83,7 +106,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('duration')">
-                <el-table-column show-overflow-tooltip :prop="'duration'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.duration')" :width="200"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'duration'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.duration')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmjxsygzzjlmx.main_grid.columns.duration')}}
@@ -97,7 +120,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('rzqd')">
-                <el-table-column show-overflow-tooltip :prop="'rzqd'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.rzqd')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'rzqd'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.rzqd')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmjxsygzzjlmx.main_grid.columns.rzqd')}}
@@ -110,20 +133,8 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('qssj')">
-                <el-table-column show-overflow-tooltip :prop="'qssj'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.qssj')" :width="180"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.pcmjxsygzzjlmx.main_grid.columns.qssj')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.qssj}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('jssj')">
-                <el-table-column show-overflow-tooltip :prop="'jssj'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.jssj')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jssj'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.jssj')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmjxsygzzjlmx.main_grid.columns.jssj')}}
@@ -135,7 +146,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('fs')">
-                <el-table-column show-overflow-tooltip :prop="'fs'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.fs')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'fs'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.fs')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmjxsygzzjlmx.main_grid.columns.fs')}}
@@ -146,22 +157,8 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('checkstatus')">
-                <el-table-column show-overflow-tooltip :prop="'checkstatus'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.checkstatus')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.pcmjxsygzzjlmx.main_grid.columns.checkstatus')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <template >
-            <codelist :value="row.checkstatus" tag='EhrCodeList0087' codelistType='STATIC' ></codelist>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('pj')">
-                <el-table-column show-overflow-tooltip :prop="'pj'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.pj')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pj'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.pj')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pcmjxsygzzjlmx.main_grid.columns.pj')}}
@@ -170,6 +167,20 @@
                     <template v-slot="{row,column,$index}">
                         <template >
             <codelist :value="row.pj" tag='EhrCodeList0046' codelistType='STATIC' ></codelist>
+                        </template>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('checkstatus')">
+                <el-table-column show-overflow-tooltip :prop="'checkstatus'" :label="$t('entities.pcmjxsygzzjlmx.main_grid.columns.checkstatus')" :width="120"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.pcmjxsygzzjlmx.main_grid.columns.checkstatus')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <template >
+            <codelist :value="row.checkstatus" tag='EhrCodeList0087' codelistType='STATIC' ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -224,6 +235,7 @@ import { UIActionTool,Util } from '@/utils';
 import PcmJxsygzzjlmxService from '@/service/pcm-jxsygzzjlmx/pcm-jxsygzzjlmx-service';
 import MainService from './main-grid-service';
 
+import PcmJxsygzzjlmxUIService from '@/uiservice/pcm-jxsygzzjlmx/pcm-jxsygzzjlmx-ui-service';
 import CodeListService from "@service/app/codelist-service";
 import { FormItemModel } from '@/model/form-detail';
 
@@ -312,6 +324,82 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public appEntityService: PcmJxsygzzjlmxService = new PcmJxsygzzjlmxService({ $store: this.$store });
     
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public grid_uagridcolumn1_ub912247_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:PcmJxsygzzjlmxUIService  = new PcmJxsygzzjlmxUIService();
+        curUIService.PcmJxsygzzjlmx_CheckDetail(datas,contextJO, paramJO,  $event, xData,this,"PcmJxsygzzjlmx");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public grid_uagridcolumn1_u06c8772_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"PcmJxsygzzjlmx");
+    }
+
+    /**
+     * 删除
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} contextJO 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @memberof PcmJxsygzzjlmxApproavlGridViewBase
+     */
+    public Remove(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        const _this: any = this;
+        if (!xData || !(xData.remove instanceof Function)) {
+            return ;
+        }
+        xData.remove(args);
+    }
 
 
     /**
@@ -651,6 +739,13 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public allColumns: any[] = [
         {
+            name: 'uagridcolumn1',
+            label: '操作',
+            langtag: 'entities.pcmjxsygzzjlmx.main_grid.columns.uagridcolumn1',
+            show: true,
+            util: 'PX'
+        },
+        {
             name: 'ygbh',
             label: '员工编号',
             langtag: 'entities.pcmjxsygzzjlmx.main_grid.columns.ygbh',
@@ -700,13 +795,6 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'px'
         },
         {
-            name: 'qssj',
-            label: '到局时间',
-            langtag: 'entities.pcmjxsygzzjlmx.main_grid.columns.qssj',
-            show: true,
-            util: 'PX'
-        },
-        {
             name: 'jssj',
             label: '见习到期时间',
             langtag: 'entities.pcmjxsygzzjlmx.main_grid.columns.jssj',
@@ -721,18 +809,18 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'px'
         },
         {
-            name: 'checkstatus',
-            label: '审核状态',
-            langtag: 'entities.pcmjxsygzzjlmx.main_grid.columns.checkstatus',
-            show: true,
-            util: 'px'
-        },
-        {
             name: 'pj',
             label: '评价',
             langtag: 'entities.pcmjxsygzzjlmx.main_grid.columns.pj',
             show: true,
             util: 'PX'
+        },
+        {
+            name: 'checkstatus',
+            label: '审核状态',
+            langtag: 'entities.pcmjxsygzzjlmx.main_grid.columns.checkstatus',
+            show: true,
+            util: 'px'
         },
     ]
 
@@ -821,7 +909,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public load(opt: any = {}, pageReset: boolean = false): void {
         if(!this.fetchAction){
-            this.$Notice.error({ title: '错误', desc: 'PcmJxsygzzjlmxZZJLGridView视图表格fetchAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'PcmJxsygzzjlmxApproavlGridView视图表格fetchAction参数未配置' });
             return;
         }
         if(pageReset){
@@ -898,7 +986,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public async remove(datas: any[]): Promise<any> {
         if(!this.removeAction){
-            this.$Notice.error({ title: '错误', desc: 'PcmJxsygzzjlmxZZJLGridView视图表格removeAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'PcmJxsygzzjlmxApproavlGridView视图表格removeAction参数未配置' });
             return;
         }
         let _datas:any[] = [];
@@ -1004,7 +1092,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public addBatch(arg: any = {}): void {
         if(!this.fetchAction){
-            this.$Notice.error({ title: '错误', desc: 'PcmJxsygzzjlmxZZJLGridView视图表格fetchAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'PcmJxsygzzjlmxApproavlGridView视图表格fetchAction参数未配置' });
             return;
         }
         if(!arg){
@@ -1146,16 +1234,16 @@ export default class MainBase extends Vue implements ControlInterface {
             valueSeparator: ',',
           },
           {
-            name: 'checkstatus',
-            srfkey: 'EhrCodeList0087',
+            name: 'pj',
+            srfkey: 'EhrCodeList0046',
             codelistType : 'STATIC',
             renderMode: 'other',
             textSeparator: '、',
             valueSeparator: ',',
           },
           {
-            name: 'pj',
-            srfkey: 'EhrCodeList0046',
+            name: 'checkstatus',
+            srfkey: 'EhrCodeList0087',
             codelistType : 'STATIC',
             renderMode: 'other',
             textSeparator: '、',
@@ -1505,6 +1593,12 @@ export default class MainBase extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        if(Object.is('CheckDetail', tag)) {
+            this.grid_uagridcolumn1_ub912247_click(row, tag, $event);
+        }
+        if(Object.is('Remove', tag)) {
+            this.grid_uagridcolumn1_u06c8772_click(row, tag, $event);
+        }
     }
 
     /**
@@ -1579,7 +1673,7 @@ export default class MainBase extends Vue implements ControlInterface {
             try {
                 if(Object.is(item.rowDataState, 'create')){
                     if(!this.createAction){
-                        this.$Notice.error({ title: '错误', desc: 'PcmJxsygzzjlmxZZJLGridView视图表格createAction参数未配置' });
+                        this.$Notice.error({ title: '错误', desc: 'PcmJxsygzzjlmxApproavlGridView视图表格createAction参数未配置' });
                     }else{
                       Object.assign(item,{viewparams:this.viewparams});
                       let response = await this.service.add(this.createAction, JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator);
@@ -1587,7 +1681,7 @@ export default class MainBase extends Vue implements ControlInterface {
                     }
                 }else if(Object.is(item.rowDataState, 'update')){
                     if(!this.updateAction){
-                        this.$Notice.error({ title: '错误', desc: 'PcmJxsygzzjlmxZZJLGridView视图表格updateAction参数未配置' });
+                        this.$Notice.error({ title: '错误', desc: 'PcmJxsygzzjlmxApproavlGridView视图表格updateAction参数未配置' });
                     }else{
                         Object.assign(item,{viewparams:this.viewparams});
                         if(item.pcmjxsygzzjlmx){

@@ -6,7 +6,7 @@ import view_grid from '@widgets/pim-person/sydqyg-grid/sydqyg-grid.vue';
 import view_searchform from '@widgets/pim-person/syqygsearch-form-searchform/syqygsearch-form-searchform.vue';
 
 /**
- * 试用期转正管理
+ * 试用期转正申请
  *
  * @export
  * @class PimPersonSQSYQZZGridView

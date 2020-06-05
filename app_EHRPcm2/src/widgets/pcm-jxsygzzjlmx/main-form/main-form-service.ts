@@ -2,8 +2,6 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import PcmJxsygzzjlmxService from '@/service/pcm-jxsygzzjlmx/pcm-jxsygzzjlmx-service';
 import MainModel from './main-form-model';
-import PimPersonService from '@/service/pim-person/pim-person-service';
-import PcmJxszzkhjgjlService from '@/service/pcm-jxszzkhjgjl/pcm-jxszzkhjgjl-service';
 
 
 /**
@@ -44,22 +42,6 @@ export default class MainService extends ControlService {
     }
 
     /**
-     * 人员信息服务对象
-     *
-     * @type {PimPersonService}
-     * @memberof MainService
-     */
-    public pimpersonService: PimPersonService = new PimPersonService();
-
-    /**
-     * 见习生员工转正考核结果记录服务对象
-     *
-     * @type {PcmJxszzkhjgjlService}
-     * @memberof MainService
-     */
-    public pcmjxszzkhjgjlService: PcmJxszzkhjgjlService = new PcmJxszzkhjgjlService();
-
-    /**
      * 处理数据
      *
      * @private
@@ -98,12 +80,6 @@ export default class MainService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'PimPersonService') && Object.is(interfaceName, 'FetchJXQYGCX')) {
-            return this.doItems(this.pimpersonService.FetchJXQYGCX(JSON.parse(JSON.stringify(context)),data, isloading), 'pimpersonid', 'pimperson');
-        }
-        if (Object.is(serviceName, 'PcmJxszzkhjgjlService') && Object.is(interfaceName, 'FetchDefault')) {
-            return this.doItems(this.pcmjxszzkhjgjlService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'pcmjxszzkhjgjlid', 'pcmjxszzkhjgjl');
-        }
 
         return Promise.reject([])
     }

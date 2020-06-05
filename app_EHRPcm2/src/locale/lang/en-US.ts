@@ -9,6 +9,7 @@ import pcmxygzzkhjgjl_en_US from '@locale/lanres/entities/pcm-xygzzkhjgjl/pcm-xy
 import pcmydgzmx_en_US from '@locale/lanres/entities/pcm-ydgzmx/pcm-ydgzmx_en_US';
 import ormorg_en_US from '@locale/lanres/entities/orm-org/orm-org_en_US';
 import pimdistirbution_en_US from '@locale/lanres/entities/pim-distirbution/pim-distirbution_en_US';
+import pcmxygzzsqmx_en_US from '@locale/lanres/entities/pcm-xygzzsqmx/pcm-xygzzsqmx_en_US';
 import pcmyddgmx_en_US from '@locale/lanres/entities/pcm-yddgmx/pcm-yddgmx_en_US';
 import ormduty_en_US from '@locale/lanres/entities/orm-duty/orm-duty_en_US';
 import pcmtxbz_en_US from '@locale/lanres/entities/pcm-txbz/pcm-txbz_en_US';
@@ -30,7 +31,6 @@ import pcmprofile_en_US from '@locale/lanres/entities/pcm-profile/pcm-profile_en
 import pimfaminfo_en_US from '@locale/lanres/entities/pim-faminfo/pim-faminfo_en_US';
 import pimperson_en_US from '@locale/lanres/entities/pim-person/pim-person_en_US';
 import ormorgsector_en_US from '@locale/lanres/entities/orm-orgsector/orm-orgsector_en_US';
-import pcmxygzzsqmx_en_US from '@locale/lanres/entities/pcm-xygzzsqmx/pcm-xygzzsqmx_en_US';
 import components_en_US from '@locale/lanres/components/components_en_US';
 import codelist_en_US from '@locale/lanres/codelist/codelist_en_US';
 import userCustom_en_US from '@locale/lanres/userCustom/userCustom_en_US';
@@ -101,6 +101,9 @@ export default {
                 menuitem5: '试用期转正',
                 menuitem6: '试用期转正申请',
                 menuitem15: '试用期转正审核',
+                menuitem13: '见习期转正',
+                menuitem14: '见习期转正申请',
+                menuitem16: '见习期转正审核',
             },
         },
     },
@@ -116,6 +119,7 @@ export default {
         pcmydgzmx: pcmydgzmx_en_US,
         ormorg: ormorg_en_US,
         pimdistirbution: pimdistirbution_en_US,
+        pcmxygzzsqmx: pcmxygzzsqmx_en_US,
         pcmyddgmx: pcmyddgmx_en_US,
         ormduty: ormduty_en_US,
         pcmtxbz: pcmtxbz_en_US,
@@ -137,7 +141,6 @@ export default {
         pimfaminfo: pimfaminfo_en_US,
         pimperson: pimperson_en_US,
         ormorgsector: ormorgsector_en_US,
-        pcmxygzzsqmx: pcmxygzzsqmx_en_US,
     },
     components: components_en_US,
     codelist: codelist_en_US,

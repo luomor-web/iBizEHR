@@ -267,6 +267,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '967f9b0b15d69f68860fbc8ccd67c7a0',
                 '27a97b7eacb124875a7ef2c61a832c85',
             ],
         },
@@ -534,7 +535,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '4d66cd024a4ad18845836220e338982f',
                 '127a9ba3a71a0255a388142951b7e831',
                 'a9827f5ee0e883f0c48c5a5f2d89b124',
             ],
@@ -649,7 +649,7 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '75b62ccd6984832138d637517d537ad4',
-                '709535b1264b99a64c5cba6a067d96d8',
+                '967f9b0b15d69f68860fbc8ccd67c7a0',
             ],
         },
         {
@@ -1136,8 +1136,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '7ec5fb97b7ba11433f95907572b724fd',
-                'b8d4e7512bdcc67e170881d1c642e679',
             ],
         },
         {
@@ -1151,14 +1149,23 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '74806f40a80f744d1f9f899fe5bc2aab',
+            viewmodule: 'PCM',
+            viewname: 'PcmJxsygzzjlmxApproavlGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '967f9b0b15d69f68860fbc8ccd67c7a0',
+                '27a97b7eacb124875a7ef2c61a832c85',
+            ],
+        },
+        {
             viewtag: '75b62ccd6984832138d637517d537ad4',
             viewmodule: 'PCM',
             viewname: 'PcmJxsygzzjlmxEditView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '7ec5fb97b7ba11433f95907572b724fd',
-                'b8d4e7512bdcc67e170881d1c642e679',
             ],
         },
         {
@@ -1429,6 +1436,15 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'ca70101b76c2aaf440708283ee7a3142',
+            ],
+        },
+        {
+            viewtag: '967f9b0b15d69f68860fbc8ccd67c7a0',
+            viewmodule: 'PCM',
+            viewname: 'PcmJxsygzzjlmxEditView9',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
             ],
         },
         {
@@ -2137,6 +2153,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                'f3e7742ed5683077e42010283b9996b6',
                 '4abb758e93c0bb397ee7084592bbd4e4',
                 '949f5b85bbe9b04326627caa6086a289',
                 '7b11f4b33a5097e773dca5b66a9357e5',
@@ -2147,6 +2164,7 @@ export const viewstate: any = {
                 '9aa581b1142b959b87730e54c16e1da3',
                 '55fa31bd5d3123da7490f3ae76b5b54d',
                 '559fd7ee3353c55129a761c38f68b6fd',
+                '74806f40a80f744d1f9f899fe5bc2aab',
                 'f88aeef09f6cf239b0d9fad901c62efd',
             ],
         },
@@ -2439,8 +2457,8 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '0fc510e3278ad0b28cca4ac41d8920e1',
-                'c9d851de066f529a7ede68865f9067af',
                 '472606b801b7bcc144af917f32c36acb',
+                '27a97b7eacb124875a7ef2c61a832c85',
             ],
         },
         {

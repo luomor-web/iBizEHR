@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="pcmjxsygzzjlmxzzjlgridview" viewTitle="见习生期转正记录" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'pcm-jxsygzzjlmx-zzjlgrid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="pcmjxsygzzjlmxzzjlgridview" viewTitle="见习期转正记录" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'pcm-jxsygzzjlmx-zzjlgrid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -77,7 +77,7 @@ import CodeListService from "@service/app/codelist-service";
 
 
 /**
- * 见习生期转正记录基类
+ * 见习期转正记录基类
  *
  * @export
  * @class PcmJxsygzzjlmxZZJLGridViewBase
@@ -493,7 +493,12 @@ export default class PcmJxsygzzjlmxZZJLGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.pimperson && true){
+            deResParameters = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
             { pathName: 'editview', parameterName: 'editview' },
@@ -525,17 +530,35 @@ export default class PcmJxsygzzjlmxZZJLGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.pimperson && true){
+            deResParameters = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
-            { pathName: 'ckeditview', parameterName: 'ckeditview' },
         ];
         const _this: any = this;
-        const openIndexViewTab = (data: any) => {
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, curViewParam, deResParameters, parameters, args, data);
-            this.$router.push(routePath);
+        const openPopupModal = (view: any, data: any) => {
+            let container: Subject<any> = this.$appmodal.openModal(view, curViewParam, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
         }
-        openIndexViewTab(data);
+        const view: any = {
+            viewname: 'pcm-jxsygzzjlmx-edit-view9', 
+            height: 750, 
+            width: 0,  
+            title: this.$t('entities.pcmjxsygzzjlmx.views.editview9.title'),
+        };
+        openPopupModal(view, data);
     }
 
 

@@ -237,17 +237,17 @@ export default {
       title: '人员信息',
 		},
 		sqjxqzzgridview: {
-			caption: "见习期可转正人员信息",
-      title: '见习期可转正人员信息',
+			caption: "见习期转正申请",
+      title: '见习期转正申请',
 		},
 		sqsyqzzgridview: {
-			caption: "试用期转正管理",
-      title: '试用期转正管理',
+			caption: "试用期转正申请",
+      title: '试用期转正申请',
 		},
 	},
-	main_form: {
+	jxsyeditform_form: {
 		details: {
-			group1: "人员信息基本信息", 
+			group1: "详细信息", 
 			formpage1: "基本信息", 
 			srfupdatedate: "更新时间", 
 			srforikey: "", 
@@ -607,14 +607,14 @@ export default {
 			tip: "打开编辑页面",
 		},
 	},
-	sqsyqzzgridviewtoolbar_toolbar: {
-		deuiaction1_sqsyqzz: {
+	sqjxqzzgridviewtoolbar_toolbar: {
+		deuiaction1_sqjxszz: {
 			caption: "转正",
 			tip: "转正",
 		},
-		deuiaction4_syqzzjl: {
-			caption: "试用期转正记录",
-			tip: "试用期转正记录",
+		deuiaction4_jxqzzjl: {
+			caption: "见习期转正记录",
+			tip: "见习期转正记录",
 		},
 		deuiaction6: {
 			caption: "Export",
@@ -625,28 +625,14 @@ export default {
 			tip: "Filter",
 		},
 	},
-	sqjxqzzgridviewtoolbar2_toolbar: {
-		deuiaction2: {
-			caption: "保存",
-			tip: "保存",
-		},
-		deuiaction1: {
-			caption: "关闭行编辑",
-			tip: "关闭行编辑",
-		},
-	},
-	sqjxqzzgridviewtoolbar_toolbar: {
-		deuiaction1_sqjxszz: {
+	sqsyqzzgridviewtoolbar_toolbar: {
+		deuiaction1_sqsyqzz: {
 			caption: "转正",
 			tip: "转正",
 		},
-		deuiaction4_jxqzzjl: {
-			caption: "见习期转正记录",
-			tip: "见习期转正记录",
-		},
-		deuiaction3: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
+		deuiaction4_syqzzjl: {
+			caption: "试用期转正记录",
+			tip: "试用期转正记录",
 		},
 		deuiaction6: {
 			caption: "Export",

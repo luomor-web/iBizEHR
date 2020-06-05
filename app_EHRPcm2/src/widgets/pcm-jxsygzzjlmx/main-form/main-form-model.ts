@@ -146,11 +146,6 @@ export default class MainModel {
         dataType: 'GUID',
       },
       {
-        name: 'pimpersonid',
-        prop: 'pimpersonid',
-        dataType: 'PICKUP',
-      },
-      {
         name: 'pcmjxsygzzjlmx',
         prop: 'pcmjxsygzzjlmxid',
         dataType: 'FONTKEY',

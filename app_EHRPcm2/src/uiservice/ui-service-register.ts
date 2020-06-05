@@ -50,6 +50,7 @@ export class UIServiceRegister {
         this.allUIService.set('pcmydgzmx', () => import('@/uiservice/pcm-ydgzmx/pcm-ydgzmx-ui-service'));
         this.allUIService.set('ormorg', () => import('@/uiservice/orm-org/orm-org-ui-service'));
         this.allUIService.set('pimdistirbution', () => import('@/uiservice/pim-distirbution/pim-distirbution-ui-service'));
+        this.allUIService.set('pcmxygzzsqmx', () => import('@/uiservice/pcm-xygzzsqmx/pcm-xygzzsqmx-ui-service'));
         this.allUIService.set('pcmyddgmx', () => import('@/uiservice/pcm-yddgmx/pcm-yddgmx-ui-service'));
         this.allUIService.set('ormduty', () => import('@/uiservice/orm-duty/orm-duty-ui-service'));
         this.allUIService.set('pcmtxbz', () => import('@/uiservice/pcm-txbz/pcm-txbz-ui-service'));
@@ -71,7 +72,6 @@ export class UIServiceRegister {
         this.allUIService.set('pimfaminfo', () => import('@/uiservice/pim-faminfo/pim-faminfo-ui-service'));
         this.allUIService.set('pimperson', () => import('@/uiservice/pim-person/pim-person-ui-service'));
         this.allUIService.set('ormorgsector', () => import('@/uiservice/orm-orgsector/orm-orgsector-ui-service'));
-        this.allUIService.set('pcmxygzzsqmx', () => import('@/uiservice/pcm-xygzzsqmx/pcm-xygzzsqmx-ui-service'));
     }
 
     /**

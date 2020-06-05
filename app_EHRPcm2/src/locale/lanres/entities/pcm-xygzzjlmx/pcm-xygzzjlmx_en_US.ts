@@ -54,8 +54,8 @@ export default {
       title: '试用期员工转正结果引用明细',
 		},
 		editview9: {
-			caption: "试用期员工转正信息",
-      title: '试用期员工转正信息',
+			caption: "试用期员工转正",
+      title: '试用期员工转正',
 		},
 	},
 	main_form: {
@@ -136,8 +136,8 @@ export default {
 	main_grid: {
 		columns: {
 			uagridcolumn1: "操作",
-			pimpersonname: "员工姓名",
 			ygbh: "员工编号",
+			pimpersonname: "员工姓名",
 			zz: "组织",
 			bm: "部门",
 			rzqd: "入职渠道",
@@ -147,6 +147,7 @@ export default {
 			jssj: "试用期到期时间",
 			fs: "分数",
 			pj: "评价",
+			checkstatus: "审核状态",
 		},
 		uiactions: {
 			checkdetail: "查看",

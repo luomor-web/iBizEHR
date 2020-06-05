@@ -171,6 +171,11 @@ export default class PimPersonUIServiceBase extends UIService {
         Object.assign(data,parentObj);
         Object.assign(context,parentObj);
         let deResParameters: any[] = [];
+        if(context.pimperson && true){
+            deResParameters = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
             { pathName: 'zzjlgridview', parameterName: 'zzjlgridview' },
@@ -252,9 +257,9 @@ export default class PimPersonUIServiceBase extends UIService {
         let data: any = {};
         const _args: any[] = Util.deepCopy(args);
         const _this: any = actionContext;
-        const actionTarget: string | null = 'MULTIKEY';
-        Object.assign(context, { pimperson: '%pimpersonid%' });
-        Object.assign(params, { pimpersonid: '%pimpersonid%' });
+        const actionTarget: string | null = 'SINGLEKEY';
+        Object.assign(context, { pimperson: '%pimperson%' });
+        Object.assign(params, { pimpersonid: '%pimperson%' });
         Object.assign(params, { pimpersonname: '%pimpersonname%' });
         context = UIActionTool.handleContextParam(actionTarget,_args,context);
         data = UIActionTool.handleActionParam(actionTarget,_args,params);
@@ -263,19 +268,38 @@ export default class PimPersonUIServiceBase extends UIService {
         Object.assign(data,parentObj);
         Object.assign(context,parentObj);
         let deResParameters: any[] = [];
-        const parameters: any[] = [
-            { pathName: 'pcmjxsygzzsqs', parameterName: 'pcmjxsygzzsq' },
-            { pathName: 'jxszzsqjmeditview', parameterName: 'jxszzsqjmeditview' },
-        ];
-        const openIndexViewTab = (data: any) => {
-            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
-            actionContext.$router.push(routePath);
-            if (xData && xData.refresh && xData.refresh instanceof Function) {
-                xData.refresh(args);
-            }
-            return null;
+        if(context.pimperson && true){
+            deResParameters = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            ]
         }
-        openIndexViewTab(data);
+        const parameters: any[] = [
+            { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
+        ];
+            const openPopupModal = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if (xData && xData.refresh && xData.refresh instanceof Function) {
+                        xData.refresh(args);
+                    }
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
+            }
+            const view: any = {
+                viewname: 'pcm-jxsygzzjlmx-xzedit-view', 
+                height: 750, 
+                width: 0,  
+                title: actionContext.$t('entities.pcmjxsygzzjlmx.views.xzeditview.title'),
+            };
+            openPopupModal(view, data);
     }
 
     /**

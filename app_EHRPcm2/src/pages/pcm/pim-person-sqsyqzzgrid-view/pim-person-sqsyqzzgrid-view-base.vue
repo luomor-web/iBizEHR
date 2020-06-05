@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="pimpersonsqsyqzzgridview" viewTitle="试用期转正管理" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'pim-person-sqsyqzzgrid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="pimpersonsqsyqzzgridview" viewTitle="试用期转正申请" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'pim-person-sqsyqzzgrid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -78,7 +78,7 @@ import CodeListService from "@service/app/codelist-service";
 
 
 /**
- * 试用期转正管理基类
+ * 试用期转正申请基类
  *
  * @export
  * @class PimPersonSQSYQZZGridViewBase

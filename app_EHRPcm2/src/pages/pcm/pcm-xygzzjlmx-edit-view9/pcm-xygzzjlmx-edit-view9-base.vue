@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="pcmxygzzjlmxeditview9" viewTitle="试用期员工转正信息" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview9': true, 'pcm-xygzzjlmx-edit-view9': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="pcmxygzzjlmxeditview9" viewTitle="试用期员工转正" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview9': true, 'pcm-xygzzjlmx-edit-view9': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -53,7 +53,7 @@ import EditView9Engine from '@engine/view/edit-view9-engine';
 
 
 /**
- * 试用期员工转正信息基类
+ * 试用期员工转正基类
  *
  * @export
  * @class PcmXygzzjlmxEditView9Base
