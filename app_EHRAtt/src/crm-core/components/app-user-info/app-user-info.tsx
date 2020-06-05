@@ -33,6 +33,42 @@ export class AppUserInfo extends Vue {
     }
 
     /**
+     * 下拉选选中回调
+     *
+     * @param {*} data
+     * @memberof AppUserInfo
+     */
+    public userSelect(data: any) {
+        if (Object.is(data, 'logout')) {
+            const title: any = this.$t('components.appUser.surelogout');
+            this.$Modal.confirm({
+                title: title,
+                onOk: () => {
+                    this.logout();
+                }
+            });
+        }
+    }
+
+    /**
+     * 退出登录
+     *
+     * @memberof AppUserInfo
+     */
+    public logout() {
+        const get: Promise<any> = this.$http.get('v7/logout');
+        get.then((response:any) =>{
+            if (response && response.status === 200) {
+                localStorage.removeItem('user');
+                localStorage.removeItem('token');
+                this.$router.push({ name: 'login' });
+            }
+        }).catch((error: any) =>{
+            console.error(error);
+        })
+    }
+
+    /**
      * 绘制用户信息内容
      *
      * @returns {*}
@@ -40,12 +76,20 @@ export class AppUserInfo extends Vue {
      */
     public render(): any {
         return <div class="crm-app-user-info">
+          <dropdown on-on-click={this.userSelect} transfer={true}>
             <div class="user-head-sculpture">
                 {this.username}
             </div>
             <span>
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAUCAYAAACqJ5zlAAAAN0lEQVQoU2PsmLzCk5Hh/0wGBgaG/wyM6Yydk5c/+s/AIAsSYGRgeIwpgKEFpBQZMJIhMIzcAQAhOjo7JEcKTQAAAABJRU5ErkJggg=="></img>
             </span>
+            <dropdown-menu class='menu' slot='list' style='font-size: 15px !important;'>
+                <dropdown-item name='logout' style='font-size: 15px !important;'>
+                    <span><i aria-hidden='true' class='fa fa-cogs' style='margin-right: 8px;'></i></span>
+                    <span>{this.$t('components.appUser.logout')}</span>
+                </dropdown-item>
+            </dropdown-menu>
+          </dropdown>
         </div>;
     }
 

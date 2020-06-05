@@ -51,7 +51,17 @@
 </i-col>
 <i-col v-show="detailsModel.dkfs.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='dkfs' :itemRules="this.rules.dkfs" class='' :caption="$t('entities.attendancerecord.main_form.details.dkfs')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dkfs.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.dkfs" :data="data" :itemParam="{}" :disabled="detailsModel.dkfs.disabled"  tag='EhrCodeList0007' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.dkfs" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.dkfs.disabled"  
+    tag='EhrCodeList0007' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

@@ -23,7 +23,17 @@
 </i-col>
 <i-col v-show="detailsModel.jjrlx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='jjrlx' :itemRules="this.rules.jjrlx" class='' :caption="$t('entities.vacholiday.main_form.details.jjrlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jjrlx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.jjrlx" :data="data" :itemParam="{}" :disabled="detailsModel.jjrlx.disabled"  tag='EhrCodeList0052' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.jjrlx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.jjrlx.disabled"  
+    tag='EhrCodeList0052' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

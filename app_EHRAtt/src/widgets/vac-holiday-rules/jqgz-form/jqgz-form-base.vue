@@ -33,7 +33,17 @@
 </i-col>
 <i-col v-show="detailsModel.nd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='nd' :itemRules="this.rules.nd" class='' :caption="$t('entities.vacholidayrules.jqgz_form.details.nd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.nd" :data="data" :itemParam="{}" :disabled="detailsModel.nd.disabled"  tag='EhrCodeList0115' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.nd" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.nd.disabled"  
+    tag='EhrCodeList0115' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -65,7 +75,18 @@
 </i-col>
 <i-col v-show="detailsModel.sfqy.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfqy' :itemRules="this.rules.sfqy" class='' :caption="$t('entities.vacholidayrules.jqgz_form.details.sfqy')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfqy.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.sfqy"  :disabled="detailsModel.sfqy.disabled"  name="sfqy" tag='EhrCodeList0054' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group 
+  v-model="data.sfqy"
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"   
+  :disabled="detailsModel.sfqy.disabled"  
+  name="sfqy" 
+  :itemParam="{}" 
+  tag='EhrCodeList0054' 
+  codelistType='STATIC' 
+  style="">
+</app-radio-group>
 </app-form-item>
 
 </i-col>

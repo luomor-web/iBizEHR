@@ -79,7 +79,7 @@ export class UIActionTool {
                     });
                 }
                 if(values.length !== noPropertyNum){
-                    Object.assign(_data, { [name]: values.length > 0 ? values.join(';') : value });
+                    Object.assign(_data, { [name]: values.length > 0 ? values.join(',') : value });
                 }
             });
         }

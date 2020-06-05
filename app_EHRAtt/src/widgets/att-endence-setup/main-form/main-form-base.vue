@@ -89,13 +89,34 @@
 </i-col>
 <i-col v-show="detailsModel.dkfs.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='dkfs' :itemRules="this.rules.dkfs" class='' :caption="$t('entities.attendencesetup.main_form.details.dkfs')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dkfs.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.dkfs" :data="data" :itemParam="{}" :disabled="detailsModel.dkfs.disabled"  tag='EhrCodeList0007' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.dkfs" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.dkfs.disabled"  
+    tag='EhrCodeList0007' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.allowoutwork.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='allowoutwork' :itemRules="this.rules.allowoutwork" class='' :caption="$t('entities.attendencesetup.main_form.details.allowoutwork')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.allowoutwork.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.allowoutwork"  :disabled="detailsModel.allowoutwork.disabled"  name="allowoutwork" tag='EhrCodeList0054' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group 
+  v-model="data.allowoutwork"
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"   
+  :disabled="detailsModel.allowoutwork.disabled"  
+  name="allowoutwork" 
+  :itemParam="{}" 
+  tag='EhrCodeList0054' 
+  codelistType='STATIC' 
+  style="">
+</app-radio-group>
 </app-form-item>
 
 </i-col>

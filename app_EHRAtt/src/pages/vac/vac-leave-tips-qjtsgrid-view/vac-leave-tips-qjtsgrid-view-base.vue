@@ -403,6 +403,7 @@ export default class VacLeaveTipsQJTSGridViewBase extends GridViewBase {
             data.srfsourcekey = args[0].srfsourcekey;
         }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
+        delete curViewParam.vacleavetips;
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }

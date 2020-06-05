@@ -14,7 +14,17 @@
 </i-col>
 <i-col v-show="detailsModel.qjzl.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='qjzl' :itemRules="this.rules.qjzl" class='' :caption="$t('entities.vacleavetips.main_form.details.qjzl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.qjzl.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.qjzl" :data="data" :itemParam="{}" :disabled="detailsModel.qjzl.disabled"  tag='EhrCodeList0013' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.qjzl" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.qjzl.disabled"  
+    tag='EhrCodeList0013' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

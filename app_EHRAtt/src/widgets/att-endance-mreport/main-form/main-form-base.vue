@@ -33,13 +33,33 @@
 </i-col>
 <i-col v-show="detailsModel.nd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='nd' :itemRules="this.rules.nd" class='' :caption="$t('entities.attendancemreport.main_form.details.nd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.nd" :data="data" :itemParam="{}" :disabled="detailsModel.nd.disabled"  tag='EhrCodeList0115' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.nd" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.nd.disabled"  
+    tag='EhrCodeList0115' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.yf.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='yf' :itemRules="this.rules.yf" class='' :caption="$t('entities.attendancemreport.main_form.details.yf')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yf.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.yf" :data="data" :itemParam="{}" :disabled="detailsModel.yf.disabled"  tag='CodeList82' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.yf" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.yf.disabled"  
+    tag='CodeList82' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

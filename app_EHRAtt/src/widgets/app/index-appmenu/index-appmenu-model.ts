@@ -31,6 +31,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
+	authtag:'EHRAtt-Index-menuitem1',
 	items: [
 		{
 	id: 'AE742C5D-A723-4BB6-A448-3A263D913356',
@@ -49,6 +50,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_9',
 	resourcetag: '',
+	authtag:'EHRAtt-Index-menuitem2',
 },
 		{
 	id: '73494895-12B5-490C-A30E-4F8D1CFEF636',
@@ -67,6 +69,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_12',
 	resourcetag: '',
+	authtag:'EHRAtt-Index-menuitem3',
 },
 		{
 	id: '400F8A17-1717-44A0-81D5-33B27F3264FD',
@@ -85,6 +88,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_5',
 	resourcetag: '',
+	authtag:'EHRAtt-Index-menuitem4',
 },
 		{
 	id: 'A9C4ED03-483D-46F8-B479-FA98B1C08733',
@@ -103,6 +107,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_4',
 	resourcetag: '',
+	authtag:'EHRAtt-Index-menuitem5',
 },
 		{
 	id: '4399C466-BCF3-46AB-9817-7AFAF5C8A08F',
@@ -121,6 +126,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_6',
 	resourcetag: '',
+	authtag:'EHRAtt-Index-menuitem6',
 },
 		{
 	id: '899EC7A0-0BEA-4943-973C-9C570C5A68FE',
@@ -139,6 +145,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_3',
 	resourcetag: '',
+	authtag:'EHRAtt-Index-menuitem7',
 },
 		{
 	id: '607C5F0B-AE47-4DC9-B5D2-0BE1612E46C6',
@@ -157,6 +164,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_8',
 	resourcetag: '',
+	authtag:'EHRAtt-Index-menuitem8',
 },
 	],
 },
@@ -177,6 +185,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
+	authtag:'EHRAtt-Index-menuitem9',
 	items: [
 		{
 	id: 'BA927B75-E1E0-4EB8-8405-942C84E4C274',
@@ -195,6 +204,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_11',
 	resourcetag: '',
+	authtag:'EHRAtt-Index-menuitem11',
 },
 		{
 	id: '7AF5135A-C7B8-4CEA-AC32-1E2B7B6CE6CA',
@@ -213,6 +223,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_7',
 	resourcetag: '',
+	authtag:'EHRAtt-Index-menuitem12',
 },
 	],
 },
@@ -233,6 +244,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
+	authtag:'EHRAtt-Index-menuitem10',
 	items: [
 		{
 	id: '055E7E95-7554-4A9B-8544-2A7E097379BE',
@@ -251,6 +263,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_2',
 	resourcetag: '',
+	authtag:'EHRAtt-Index-menuitem13',
 },
 		{
 	id: '9C798278-2258-4492-9DD0-256B410DDFD8',
@@ -269,6 +282,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_10',
 	resourcetag: '',
+	authtag:'EHRAtt-Index-menuitem14',
 },
 	],
 },

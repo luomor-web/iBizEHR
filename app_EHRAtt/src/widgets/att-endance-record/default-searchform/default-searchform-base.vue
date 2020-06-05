@@ -12,7 +12,17 @@
           </i-col>
           <i-col v-show="detailsModel.n_dkfs_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_dkfs_eq' :itemRules="this.rules.n_dkfs_eq" class='' :caption="$t('entities.attendancerecord.default_searchform.details.n_dkfs_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_dkfs_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list v-model="data.n_dkfs_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_dkfs_eq.disabled"  tag='EhrCodeList0007' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_dkfs_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_dkfs_eq.disabled"  
+              tag='EhrCodeList0007' 
+              codelistType='STATIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>
