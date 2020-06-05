@@ -33,7 +33,17 @@
           </i-col>
           <i-col v-show="detailsModel.n_ygzt_eq.visible" :style="{}"  :sm="{ span: 6, offset: 0 }" :md="{ span: 6, offset: 0 }" :lg="{ span: 6, offset: 0 }" :xl="{ span: 6, offset: 0 }">
               <app-form-item name='n_ygzt_eq' :itemRules="this.rules.n_ygzt_eq" class='' :caption="$t('entities.pimperson.ydryinfosearchform_searchform.details.n_ygzt_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_ygzt_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list v-model="data.n_ygzt_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_ygzt_eq.disabled"  tag='EhrCodeList0014' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_ygzt_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_ygzt_eq.disabled"  
+              tag='EhrCodeList0014' 
+              codelistType='DYNAMIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>

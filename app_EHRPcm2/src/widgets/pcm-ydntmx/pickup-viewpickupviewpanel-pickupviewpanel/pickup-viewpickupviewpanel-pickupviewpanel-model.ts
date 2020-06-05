@@ -30,9 +30,6 @@ export default class PickupViewpickupviewpanelModel {
         name: 'distirbutionid',
       },
       {
-        name: 'finished',
-      },
-      {
         name: 'updateman',
       },
       {
@@ -113,6 +110,9 @@ export default class PickupViewpickupviewpanelModel {
       },
       {
         name: 'shortname',
+      },
+      {
+        name: 'isfinished',
       },
     ]
   }

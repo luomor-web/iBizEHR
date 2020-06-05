@@ -286,6 +286,7 @@ public class SalPersonStdServiceImpl extends ServiceImpl<SalPersonStdMapper, Sal
         }
     }
 
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);

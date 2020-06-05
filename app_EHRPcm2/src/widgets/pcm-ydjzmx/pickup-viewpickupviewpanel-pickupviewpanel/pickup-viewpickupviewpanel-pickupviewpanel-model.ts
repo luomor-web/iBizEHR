@@ -37,9 +37,6 @@ export default class PickupViewpickupviewpanelModel {
         name: 'pimdistirbutionid',
       },
       {
-        name: 'finished',
-      },
-      {
         name: 'jsrq',
       },
       {
@@ -149,6 +146,9 @@ export default class PickupViewpickupviewpanelModel {
       },
       {
         name: 'ormorgsectorid',
+      },
+      {
+        name: 'isfinished',
       },
     ]
   }

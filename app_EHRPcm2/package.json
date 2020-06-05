@@ -27,7 +27,7 @@
     "file-saver": "^2.0.2",
     "font-awesome": "^4.7.0",
     "ibiz-gantt-elastic": "^1.0.15",
-    "ibiz-vue-lib": "^0.1.9",
+    "ibiz-vue-lib": "^0.1.10",
     "interactjs": "^1.9.4",
     "moment": "^2.24.0",
     "path-to-regexp": "^6.1.0",

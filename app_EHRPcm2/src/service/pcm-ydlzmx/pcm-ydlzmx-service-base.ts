@@ -1,5 +1,6 @@
 import { Http,Util } from '@/utils';
 import EntityService from '../entity-service';
+import SetFinishedLogic from '@/service/pcm-ydlzmx/set-finished-logic';
 
 
 
@@ -68,6 +69,21 @@ export default class PcmYdlzmxServiceBase extends EntityService {
     }
 
     /**
+     * IsFinished接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof PcmYdlzmxServiceBase
+     */
+    public async IsFinished(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        let appLogic:SetFinishedLogic = new SetFinishedLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
+        const result = await appLogic.onExecute(context,data,isloading?true:false);
+        return {status:200,data:result};
+    }
+
+    /**
      * FillPersonInfo接口方法
      *
      * @param {*} [context={}]
@@ -129,19 +145,6 @@ export default class PcmYdlzmxServiceBase extends EntityService {
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             return Http.getInstance().post(`/pcmydlzmxes/${context.pcmydlzmx}/checkkey`,data,isloading);
-    }
-
-    /**
-     * FinishLZ接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof PcmYdlzmxServiceBase
-     */
-    public async FinishLZ(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().post(`/pcmydlzmxes/${context.pcmydlzmx}/finishlz`,data,isloading);
     }
 
     /**

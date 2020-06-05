@@ -30,9 +30,6 @@ export default class DefaultModel {
         name: 'distirbutionid',
       },
       {
-        name: 'finished',
-      },
-      {
         name: 'updateman',
       },
       {
@@ -113,6 +110,9 @@ export default class DefaultModel {
       },
       {
         name: 'shortname',
+      },
+      {
+        name: 'isfinished',
       },
     ]
   }

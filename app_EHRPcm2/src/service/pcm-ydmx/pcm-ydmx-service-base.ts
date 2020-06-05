@@ -101,7 +101,7 @@ export default class PcmYdmxServiceBase extends EntityService {
      * @memberof PcmYdmxServiceBase
      */
     public async FillPersonInfo(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:FillPersonInfoLogic = new FillPersonInfoLogic();
+        let appLogic:FillPersonInfoLogic = new FillPersonInfoLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }

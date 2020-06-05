@@ -16,8 +16,6 @@
         ref='multipleTable' :data="items" :show-header="!isHideHeader">
             <template slot="empty">
                 无数据 
-                <span class="quick-toolbar">
-                </span>
             </template>
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
@@ -145,7 +143,7 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                         <template >
-            <codelist :value="row.sfhmd" tag='EhrCodeList0054' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+            <codelist :value="row.sfhmd" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -171,8 +169,6 @@
                             </template>
                         </div>
                     </poptip>
-                </span>
-                <span v-if="selections.length > 0" class="batch-toolbar">
                 </span>
                 <span class="page-button"><i-button icon="md-refresh" :title="$t('app.gridpage.refresh')" @click="pageRefresh()"></i-button></span>&nbsp;
                 <span>
@@ -1111,11 +1107,11 @@ export default class MainBase extends Vue implements ControlInterface {
           },
           {
             name: 'sfhmd',
-            srfkey: 'EhrCodeList0054',
+            srfkey: 'EhrCodeList0400',
             codelistType : 'STATIC',
+            renderMode: 'number',
             textSeparator: '、',
-            renderMode: 'string',
-            valueSeparator: ";",
+            valueSeparator: ',',
           },
         ];
         let _this = this;

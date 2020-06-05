@@ -4,7 +4,7 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydjpmx.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydjpmx.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.ygbh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ygbh' :itemRules="this.rules.ygbh" class='' :caption="$t('entities.pcmydjpmx.main_form.details.ygbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygbh.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -51,19 +51,49 @@
 </i-col>
 <i-col v-show="detailsModel.yrank.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='yrank' :itemRules="this.rules.yrank" class='' :caption="$t('entities.pcmydjpmx.main_form.details.yrank')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yrank.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.yrank" :data="data" :itemParam="{}" :disabled="detailsModel.yrank.disabled"  tag='EhrCodeList0025' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.yrank" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.yrank.disabled"  
+    tag='EhrCodeList0025' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.yzw.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='yzw' :itemRules="this.rules.yzw" class='' :caption="$t('entities.pcmydjpmx.main_form.details.yzw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yzw.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.yzw" :data="data" :itemParam="{}" :disabled="detailsModel.yzw.disabled"  tag='EhrCodeList0233' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.yzw" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.yzw.disabled"  
+    tag='EhrCodeList0233' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ygw.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ygw' :itemRules="this.rules.ygw" class='' :caption="$t('entities.pcmydjpmx.main_form.details.ygw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygw.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.ygw" :data="data" :itemParam="{}" :disabled="detailsModel.ygw.disabled"  tag='EhrCodeList0050' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.ygw" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.ygw.disabled"  
+    tag='EhrCodeList0050' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -79,7 +109,7 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydjpmx.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydjpmx.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.sxrq.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='sxrq' :itemRules="this.rules.sxrq" class='' :caption="$t('entities.pcmydjpmx.main_form.details.sxrq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sxrq.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -89,13 +119,34 @@
 </i-col>
 <i-col v-show="detailsModel.sfhmd.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='sfhmd' :itemRules="this.rules.sfhmd" class='' :caption="$t('entities.pcmydjpmx.main_form.details.sfhmd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfhmd.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.sfhmd"  :disabled="detailsModel.sfhmd.disabled"  name="sfhmd" tag='EhrCodeList0054' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group 
+  v-model="data.sfhmd"
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"   
+  :disabled="detailsModel.sfhmd.disabled"  
+  name="sfhmd" 
+  :itemParam="{}" 
+  tag='EhrCodeList0400' 
+  codelistType='STATIC' 
+  style="">
+</app-radio-group>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.reason.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='reason' :itemRules="this.rules.reason" class='' :caption="$t('entities.pcmydjpmx.main_form.details.reason')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.reason.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.reason" :data="data" :itemParam="{}" :disabled="detailsModel.reason.disabled"  tag='EhrCodeList0165' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.reason" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.reason.disabled"  
+    tag='EhrCodeList0165' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -127,14 +178,25 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel2.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel2.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydjpmx.main_form.details.grouppanel2')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel2.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydjpmx.main_form.details.grouppanel2')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.grouppanel3.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel3.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydjpmx.main_form.details.grouppanel3')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.sfzfbcj.visible" :style="{}"  :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='sfzfbcj' :itemRules="this.rules.sfzfbcj" class='' :caption="$t('entities.pcmydjpmx.main_form.details.sfzfbcj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfzfbcj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.sfzfbcj"  :disabled="detailsModel.sfzfbcj.disabled"  name="sfzfbcj" tag='EhrCodeList0054' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group 
+  v-model="data.sfzfbcj"
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"   
+  :disabled="detailsModel.sfzfbcj.disabled"  
+  name="sfzfbcj" 
+  :itemParam="{}" 
+  tag='EhrCodeList0400' 
+  codelistType='STATIC' 
+  style="">
+</app-radio-group>
 </app-form-item>
 
 </i-col>
@@ -154,13 +216,35 @@
     <row>
         <i-col v-show="detailsModel.sfldzy.visible" :style="{}"  :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='sfldzy' :itemRules="this.rules.sfldzy" class='' :caption="$t('entities.pcmydjpmx.main_form.details.sfldzy')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfldzy.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.sfldzy"  :disabled="detailsModel.sfldzy.disabled"  name="sfldzy" tag='EhrCodeList0054' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group 
+  v-model="data.sfldzy"
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"   
+  :disabled="detailsModel.sfldzy.disabled"  
+  name="sfldzy" 
+  :itemParam="{}" 
+  tag='EhrCodeList0400' 
+  codelistType='STATIC' 
+  style="">
+</app-radio-group>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ldzytype.visible" :style="{}"  :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ldzytype' :itemRules="this.rules.ldzytype" class='' :caption="$t('entities.pcmydjpmx.main_form.details.ldzytype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ldzytype.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.ldzytype"  :disabled="detailsModel.ldzytype.disabled"  name="ldzytype" tag='EhrCodeList0182' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group 
+  v-model="data.ldzytype"
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"   
+  :disabled="detailsModel.ldzytype.disabled"  
+  name="ldzytype" 
+  :itemParam="{}" 
+  tag='EhrCodeList0182' 
+  codelistType='STATIC' 
+  style="">
+</app-radio-group>
 </app-form-item>
 
 </i-col>
@@ -503,7 +587,7 @@ export default class MainBase extends Vue implements ControlInterface {
         jpfj: null,
         bz: null,
         remarks: null,
-        finished: null,
+        isfinished: null,
         sfzfbcj: null,
         bcjse: null,
         sfldzy: null,
@@ -702,11 +786,11 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '备注 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '备注 值不能为空', trigger: 'blur' },
         ],
-        finished: [
-            { type: 'number', message: '是否审核 值必须为数值类型', trigger: 'change' },
-            { type: 'number', message: '是否审核 值必须为数值类型', trigger: 'blur' },
-            { required: false, type: 'number', message: '是否审核 值不能为空', trigger: 'change' },
-            { required: false, type: 'number', message: '是否审核 值不能为空', trigger: 'blur' },
+        isfinished: [
+            { type: 'string', message: '是否完成 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '是否完成 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '是否完成 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '是否完成 值不能为空', trigger: 'blur' },
         ],
         sfzfbcj: [
             { type: 'number', message: '是否支付补偿金 值必须为数值类型', trigger: 'change' },
@@ -815,7 +899,7 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         remarks: new FormItemModel({ caption: '备注', detailType: 'FORMITEM', name: 'remarks', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        finished: new FormItemModel({ caption: '是否审核', detailType: 'FORMITEM', name: 'finished', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        isfinished: new FormItemModel({ caption: '是否完成', detailType: 'FORMITEM', name: 'isfinished', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         sfzfbcj: new FormItemModel({ caption: '是否支付补偿金', detailType: 'FORMITEM', name: 'sfzfbcj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -1132,15 +1216,15 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 finished 值
+     * 监控表单属性 isfinished 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof Main
      */
-    @Watch('data.finished')
-    onFinishedChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'finished', newVal: newVal, oldVal: oldVal });
+    @Watch('data.isfinished')
+    onIsfinishedChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'isfinished', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -1700,7 +1784,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
-            this.$Notice.error({ title: '错误', desc: 'PcmYdjpmxCKEditView视图表单loadAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'PcmYdjpmxXZEditView视图表单loadAction参数未配置' });
             return;
         }
         const arg: any = { ...opt };
@@ -1735,7 +1819,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
-            this.$Notice.error({ title: '错误', desc: 'PcmYdjpmxCKEditView视图表单loaddraftAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'PcmYdjpmxXZEditView视图表单loaddraftAction参数未配置' });
             return;
         }
         const arg: any = { ...opt } ;
@@ -1797,7 +1881,7 @@ export default class MainBase extends Vue implements ControlInterface {
         const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
         if(!action){
             let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
-            this.$Notice.error({ title: '错误', desc: 'PcmYdjpmxCKEditView视图表单'+actionName+'参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'PcmYdjpmxXZEditView视图表单'+actionName+'参数未配置' });
             return;
         }
         Object.assign(arg,{viewparams:this.viewparams});
@@ -1861,7 +1945,7 @@ export default class MainBase extends Vue implements ControlInterface {
             const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
             if(!action){
                 let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
-                this.$Notice.error({ title: '错误', desc: 'PcmYdjpmxCKEditView视图表单'+actionName+'参数未配置' });
+                this.$Notice.error({ title: '错误', desc: 'PcmYdjpmxXZEditView视图表单'+actionName+'参数未配置' });
                 return;
             }
             Object.assign(arg,{viewparams:this.viewparams});
@@ -1911,7 +1995,7 @@ export default class MainBase extends Vue implements ControlInterface {
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
             if(!this.removeAction){
-                this.$Notice.error({ title: '错误', desc: 'PcmYdjpmxCKEditView视图表单removeAction参数未配置' });
+                this.$Notice.error({ title: '错误', desc: 'PcmYdjpmxXZEditView视图表单removeAction参数未配置' });
                 return;
             }
             const arg: any = opt[0];
@@ -2227,9 +2311,6 @@ export default class MainBase extends Vue implements ControlInterface {
     public createDefault(){                    
         if (this.data.hasOwnProperty('sfhmd')) {
             this.data['sfhmd'] = 0;
-        }
-        if (this.data.hasOwnProperty('finished')) {
-            this.data['finished'] = 0;
         }
         if (this.data.hasOwnProperty('sfzfbcj')) {
             this.data['sfzfbcj'] = 0;

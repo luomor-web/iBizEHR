@@ -121,9 +121,9 @@ export default class BMXMJCModel {
           prop: 'orgsectorid',
         },
       {
-        name: 'n_zzdzs_like',
-        prop: 'n_zzdzs_like',
-        dataType: 'PICKUPDATA',
+        name: 'n_orgname_like',
+        prop: 'n_orgname_like',
+        dataType: 'PICKUPTEXT',
       },
       {
         name: 'n_orgsectorname_like',

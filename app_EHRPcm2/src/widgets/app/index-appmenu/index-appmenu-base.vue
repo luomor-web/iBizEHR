@@ -65,9 +65,6 @@ export default class IndexBase extends AppMenusCtrlBase {
                 case '_10': 
                     this.click_10(item);
                     return;
-                case '_12': 
-                    this.click_12(item);
-                    return;
                 case '_8': 
                     this.click_8(item);
                     return;
@@ -86,9 +83,6 @@ export default class IndexBase extends AppMenusCtrlBase {
                 case '_9': 
                     this.click_9(item);
                     return;
-                case '_11': 
-                    this.click_11(item);
-                    return;
                 case '_6': 
                     this.click_6(item);
                     return;
@@ -102,30 +96,12 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
-     * 挂职出管理<配置管理模块>
-     *
-     * @param {*} [item={}]
-     * @memberof Index
-     */
-    public click_10(item: any = {}) {
-        const viewparam: any = {};
-        Object.assign(viewparam, {});
-        const deResParameters: any[] = [];
-        const parameters: any[] = [
-            { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-            { pathName: 'gzcglgridview', parameterName: 'gzcglgridview' },
-        ];
-        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
-    }
-    
-    /**
      * 解聘管理<配置管理模块>
      *
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_12(item: any = {}) {
+    public click_10(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -228,30 +204,12 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
-     * 挂职进管理<配置管理模块>
-     *
-     * @param {*} [item={}]
-     * @memberof Index
-     */
-    public click_9(item: any = {}) {
-        const viewparam: any = {};
-        Object.assign(viewparam, {});
-        const deResParameters: any[] = [];
-        const parameters: any[] = [
-            { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-            { pathName: 'gzrglgridview', parameterName: 'gzrglgridview' },
-        ];
-        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
-    }
-    
-    /**
      * 退休管理<配置管理模块>
      *
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_11(item: any = {}) {
+    public click_9(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];

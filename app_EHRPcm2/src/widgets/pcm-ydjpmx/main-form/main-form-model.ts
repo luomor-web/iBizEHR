@@ -118,7 +118,7 @@ export default class MainModel {
       {
         name: 'sfhmd',
         prop: 'sfhmd',
-        dataType: 'YESNO',
+        dataType: 'INT',
       },
       {
         name: 'reason',
@@ -141,14 +141,14 @@ export default class MainModel {
         dataType: 'LONGTEXT_1000',
       },
       {
-        name: 'finished',
-        prop: 'finished',
-        dataType: 'INHERIT',
+        name: 'isfinished',
+        prop: 'isfinished',
+        dataType: 'SSCODELIST',
       },
       {
         name: 'sfzfbcj',
         prop: 'sfzfbcj',
-        dataType: 'YESNO',
+        dataType: 'INT',
       },
       {
         name: 'bcjse',
@@ -158,7 +158,7 @@ export default class MainModel {
       {
         name: 'sfldzy',
         prop: 'sfldzy',
-        dataType: 'YESNO',
+        dataType: 'INT',
       },
       {
         name: 'ldzytype',

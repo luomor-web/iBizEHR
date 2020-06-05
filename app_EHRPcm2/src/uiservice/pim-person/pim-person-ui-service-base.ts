@@ -93,6 +93,7 @@ export default class PimPersonUIServiceBase extends UIService {
         this.allViewMap.set(':',{viewname:'yxzfppickupgridview',srfappde:'pimpeople'});
         this.allViewMap.set(':',{viewname:'txryeditview',srfappde:'pimpeople'});
         this.allViewMap.set(':',{viewname:'txqreditview',srfappde:'pimpeople'});
+        this.allViewMap.set(':',{viewname:'editview9',srfappde:'pimpeople'});
         this.allViewMap.set(':',{viewname:'curorgpimpersonpickupview',srfappde:'pimpeople'});
         this.allViewMap.set(':',{viewname:'jxqpickupgridview',srfappde:'pimpeople'});
         this.allViewMap.set(':',{viewname:'jxspickupview',srfappde:'pimpeople'});
@@ -144,7 +145,60 @@ export default class PimPersonUIServiceBase extends UIService {
     }
 
     /**
-     * 退休
+     * 打开编辑页面
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async PimPerson_OpenTxEditView(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'SINGLEKEY';
+        Object.assign(context, { pimperson: '%pimperson%' });
+        Object.assign(params, { pimpersonid: '%pimperson%' });
+        Object.assign(params, { pimpersonname: '%pimpersonname%' });
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+        ];
+            const openPopupModal = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
+            }
+            const view: any = {
+                viewname: 'pim-person-txryedit-view', 
+                height: 750, 
+                width: 0,  
+                title: actionContext.$t('entities.pimperson.views.txryeditview.title'),
+            };
+            openPopupModal(view, data);
+    }
+
+    /**
+     * 确认退休
      *
      * @param {any[]} args 当前数据
      * @param {any} context 行为附加上下文
@@ -172,14 +226,28 @@ export default class PimPersonUIServiceBase extends UIService {
         let deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'pimpeople', parameterName: 'pimperson' },
-            { pathName: 'txqreditview', parameterName: 'txqreditview' },
         ];
-        const openIndexViewTab = (data: any) => {
-            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
-            actionContext.$router.push(routePath);
-            return null;
-        }
-        openIndexViewTab(data);
+            const openPopupModal = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
+            }
+            const view: any = {
+                viewname: 'pim-person-txqredit-view', 
+                height: 400, 
+                width: 500,  
+                title: actionContext.$t('entities.pimperson.views.txqreditview.title'),
+            };
+            openPopupModal(view, data);
     }
 
 

@@ -1,63 +1,74 @@
 <template>
-    <i-form :model="this.data" class='app-form' ref='form'  id='pcmydjzmx_main' style="">
+    <i-form :model="this.data" class='app-form info-form-mode' ref='form'  id='pcmydjzmx_main' style="">
     <input style="display:none;" />
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydjzmx.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydjzmx.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="2" :isInfoGroupMode="true" >    
     <row>
         <i-col v-show="detailsModel.ygbh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ygbh' :itemRules="this.rules.ygbh" class='' :caption="$t('entities.pcmydjzmx.main_form.details.ygbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygbh.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.ygbh"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.ygbh.disabled" type='text'  style=""></input-box>
+    <app-span   name='ygbh'
+:value="data.ygbh"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pcmydjzmx.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
+    <app-span   name='pimpersonname'
+:value="data.pimpersonname"   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.pimpersonname.disabled"
-  name='pimpersonname'
-  deMajorField='pimpersonname'
-  deKeyField='pimperson'
-  :service="service"
-  :acParams="{ serviceName: 'PimPersonService', interfaceName: 'FetchYXZFPRYDS'}"
-  valueitem='pimpersonid' 
-  :value="data.pimpersonname" 
-  editortype="" 
-  :pickupView="{ viewname: 'pim-person-yxzfppickup-view', title: $t('entities.pimperson.views.yxzfppickupview.title'), deResParameters: [], parameters: [{ pathName: 'pimpeople', parameterName: 'pimperson' }, { pathName: 'yxzfppickupview', parameterName: 'yxzfppickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.zz.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='zz' :itemRules="this.rules.zz" class='' :caption="$t('entities.pcmydjzmx.main_form.details.zz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.zz"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.zz.disabled" type='text'  style=""></input-box>
+    <app-span   name='zz'
+:value="data.zz"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.bm.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='bm' :itemRules="this.rules.bm" class='' :caption="$t('entities.pcmydjzmx.main_form.details.bm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bm.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.bm"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.bm.disabled" type='text'  style=""></input-box>
+    <app-span   name='bm'
+:value="data.bm"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ygw.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ygw' :itemRules="this.rules.ygw" class='' :caption="$t('entities.pcmydjzmx.main_form.details.ygw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygw.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.ygw"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.ygw.disabled" type='text'  style=""></input-box>
+    <app-span   name='ygw'
+:value="data.ygw" tag='EhrCodeList0050' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.yzw.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='yzw' :itemRules="this.rules.yzw" class='' :caption="$t('entities.pcmydjzmx.main_form.details.yzw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yzw.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.yzw"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.yzw.disabled" type='text'  style=""></input-box>
+    <app-span   name='yzw'
+:value="data.yzw" tag='EhrCodeList0233' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -67,117 +78,71 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydjzmx.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydjzmx.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="true" >    
     <row>
         <i-col v-show="detailsModel.ksrq.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ksrq' :itemRules="this.rules.ksrq" class='' :caption="$t('entities.pcmydjzmx.main_form.details.ksrq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ksrq.error" :isEmptyCaption="false" labelPos="LEFT">
-    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.ksrq" :disabled="detailsModel.ksrq.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.ksrq = val1 }"></date-picker>
+    <app-span   name='ksrq'
+:value="data.ksrq"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.jsrq.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='jsrq' :itemRules="this.rules.jsrq" class='' :caption="$t('entities.pcmydjzmx.main_form.details.jsrq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jsrq.error" :isEmptyCaption="false" labelPos="LEFT">
-    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.jsrq" :disabled="detailsModel.jsrq.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.jsrq = val1 }"></date-picker>
+    <app-span   name='jsrq'
+:value="data.jsrq"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.pcmydjzmx.main_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
+    <app-span   name='ormorgname'
+:value="data.ormorgname"   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.ormorgname.disabled"
-  name='ormorgname'
-  deMajorField='orgname'
-  deKeyField='ormorg'
-  :service="service"
-  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchSJYXZZ'}"
-  valueitem='ormorgid' 
-  :value="data.ormorgname" 
-  editortype="" 
-  :pickupView="{ viewname: 'orm-org-sjyxzzpickup-view', title: $t('entities.ormorg.views.sjyxzzpickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, { pathName: 'sjyxzzpickupview', parameterName: 'sjyxzzpickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ormorgsectorname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ormorgsectorname' :itemRules="this.rules.ormorgsectorname" class='' :caption="$t('entities.pcmydjzmx.main_form.details.ormorgsectorname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgsectorname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
+    <app-span   name='ormorgsectorname'
+:value="data.ormorgsectorname"   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.ormorgsectorname.disabled"
-  name='ormorgsectorname'
-  deMajorField='orgsectorname'
-  deKeyField='ormorgsector'
-  :service="service"
-  :acParams="{ serviceName: 'OrmOrgsectorService', interfaceName: 'FetchCURORMORG'}"
-  valueitem='ormorgsectorid' 
-  :value="data.ormorgsectorname" 
-  editortype="" 
-  :pickupView="{ viewname: 'orm-orgsector-ydbmpickup-view', title: $t('entities.ormorgsector.views.ydbmpickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'ydbmpickupview', parameterName: 'ydbmpickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ormpostname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ormpostname' :itemRules="this.rules.ormpostname" class='' :caption="$t('entities.pcmydjzmx.main_form.details.ormpostname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormpostname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
+    <app-span   name='ormpostname'
+:value="data.ormpostname"   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.ormpostname.disabled"
-  name='ormpostname'
-  deMajorField='ormpostname'
-  deKeyField='ormpost'
-  :service="service"
-  :acParams="{ serviceName: 'OrmPostService', interfaceName: 'FetchEJZZGW'}"
-  valueitem='ormpostid' 
-  :value="data.ormpostname" 
-  editortype="" 
-  :pickupView="{ viewname: 'orm-post-ejormorgidpickup-view', title: $t('entities.ormpost.views.ejormorgidpickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormposts', parameterName: 'ormpost' }, { pathName: 'ejormorgidpickupview', parameterName: 'ejormorgidpickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ormdutyname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ormdutyname' :itemRules="this.rules.ormdutyname" class='' :caption="$t('entities.pcmydjzmx.main_form.details.ormdutyname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormdutyname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
+    <app-span   name='ormdutyname'
+:value="data.ormdutyname"   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.ormdutyname.disabled"
-  name='ormdutyname'
-  deMajorField='ormdutyname'
-  deKeyField='ormduty'
-  :service="service"
-  :acParams="{ serviceName: 'OrmDutyService', interfaceName: 'FetchCurOrmorgsector'}"
-  valueitem='ormdutyid' 
-  :value="data.ormdutyname" 
-  editortype="" 
-  :pickupView="{ viewname: 'orm-duty-orm-org-sector-pickup-view', title: $t('entities.ormduty.views.ormorgsectorpickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormduties', parameterName: 'ormduty' }, { pathName: 'ormorgsectorpickupview', parameterName: 'ormorgsectorpickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -511,7 +476,6 @@ export default class MainBase extends Vue implements ControlInterface {
         ormpostid: null,
         ormdutyid: null,
         ormdutyname: null,
-        finished: null,
         pcmydjzmxid: null,
         pcmydjzmx:null,
     };
@@ -612,8 +576,8 @@ export default class MainBase extends Vue implements ControlInterface {
         pimpersonname: [
             { type: 'string', message: '员工姓名 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '员工姓名 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '员工姓名 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '员工姓名 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '员工姓名 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '员工姓名 值不能为空', trigger: 'blur' },
         ],
         zz: [
             { type: 'string', message: '所属组织 值必须为字符串类型', trigger: 'change' },
@@ -660,20 +624,20 @@ export default class MainBase extends Vue implements ControlInterface {
         ksrq: [
             { type: 'string', message: '兼职开始日期 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '兼职开始日期 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '兼职开始日期 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '兼职开始日期 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '兼职开始日期 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '兼职开始日期 值不能为空', trigger: 'blur' },
         ],
         jsrq: [
             { type: 'string', message: '兼职结束日期 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '兼职结束日期 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '兼职结束日期 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '兼职结束日期 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '兼职结束日期 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '兼职结束日期 值不能为空', trigger: 'blur' },
         ],
         ormorgname: [
             { type: 'string', message: '兼职组织 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '兼职组织 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '兼职组织 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '兼职组织 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '兼职组织 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '兼职组织 值不能为空', trigger: 'blur' },
         ],
         ormorgid: [
             { type: 'string', message: '兼职组织标识 值必须为字符串类型', trigger: 'change' },
@@ -684,8 +648,8 @@ export default class MainBase extends Vue implements ControlInterface {
         ormorgsectorname: [
             { type: 'string', message: '兼职部门 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '兼职部门 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '兼职部门 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '兼职部门 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '兼职部门 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '兼职部门 值不能为空', trigger: 'blur' },
         ],
         ormorgsectorid: [
             { type: 'string', message: '兼职部门标识 值必须为字符串类型', trigger: 'change' },
@@ -716,12 +680,6 @@ export default class MainBase extends Vue implements ControlInterface {
             { type: 'string', message: '兼职职务 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '兼职职务 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '兼职职务 值不能为空', trigger: 'blur' },
-        ],
-        finished: [
-            { type: 'number', message: '是否审核 值必须为数值类型', trigger: 'change' },
-            { type: 'number', message: '是否审核 值必须为数值类型', trigger: 'blur' },
-            { required: false, type: 'number', message: '是否审核 值不能为空', trigger: 'change' },
-            { required: false, type: 'number', message: '是否审核 值不能为空', trigger: 'blur' },
         ],
         pcmydjzmxid: [
             { type: 'string', message: '异动兼职明细标识 值必须为字符串类型', trigger: 'change' },
@@ -797,8 +755,6 @@ export default class MainBase extends Vue implements ControlInterface {
         ormdutyid: new FormItemModel({ caption: '兼职职务标识', detailType: 'FORMITEM', name: 'ormdutyid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         ormdutyname: new FormItemModel({ caption: '兼职职务', detailType: 'FORMITEM', name: 'ormdutyname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        finished: new FormItemModel({ caption: '是否审核', detailType: 'FORMITEM', name: 'finished', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         pcmydjzmxid: new FormItemModel({ caption: '异动兼职明细标识', detailType: 'FORMITEM', name: 'pcmydjzmxid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -1129,18 +1085,6 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 finished 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.finished')
-    onFinishedChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'finished', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 pcmydjzmxid 值
      *
      * @param {*} newVal
@@ -1188,7 +1132,6 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
-
 
 
 
@@ -1544,7 +1487,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'pcmydjzmx_main',popTitle:'主编辑表单'});
+        _this.$print({id:'pcmydjzmx_main',popTitle:'主信息表单'});
     }
 
     /**
@@ -2123,9 +2066,6 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public createDefault(){                    
-        if (this.data.hasOwnProperty('finished')) {
-            this.data['finished'] = 0;
-        }
     }
 
     /**

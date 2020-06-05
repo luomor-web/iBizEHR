@@ -195,6 +195,7 @@ public class PcmSgqMgrServiceImpl extends ServiceImpl<PcmSgqMgrMapper, PcmSgqMgr
 
 
 
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);

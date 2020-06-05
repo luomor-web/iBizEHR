@@ -104,7 +104,7 @@ export default class AppRichTextEditor extends Vue {
      * @type {*}
      * @memberof AppRichTextEditor
      */
-    public langu: any = localStorage.getItem('local') ? localStorage.getItem('local') : 'zh_CN' ;
+    public langu: any = localStorage.getItem('local') ? localStorage.getItem('local') : 'zh-CN' ;
     
     /**
      * 语言映射文件

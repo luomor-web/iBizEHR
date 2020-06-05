@@ -73,11 +73,19 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "pcmydlzmxxzeditview": {
             "title": "新增离职",
-            "caption": "异动离职明细",
+            "caption": "新增离职",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PCM",
             "viewname": "PcmYdlzmxXZEditView",
             "viewtag": "09ed0f4be9f3ab5b9eb28cd9323a7692"
+        },
+        "pcmydjzmxeditview9": {
+            "title": "兼职明细信息",
+            "caption": "兼职明细信息",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "PCM",
+            "viewname": "PcmYdjzmxEditView9",
+            "viewtag": "0f74943ebe3d1919f6d166d74e32ae49"
         },
         "ormorgsjyxzzqxpickupgridview": {
             "title": "组织选择",
@@ -110,6 +118,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PCM",
             "viewname": "PcmYdjpmxEditView",
             "viewtag": "1296e9fa7cfba6b54cd535ecacbe09fd"
+        },
+        "pcmydlzmxeditview9": {
+            "title": "离职明细信息",
+            "caption": "离职明细信息",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "PCM",
+            "viewname": "PcmYdlzmxEditView9",
+            "viewtag": "135f884c5d8c04d9ee0e5d12b9d6d050"
         },
         "pcmddsqdmxgbddjlgridview": {
             "title": "干部调动记录",
@@ -455,6 +471,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "PimDistirbutionMaturityDueEditView",
             "viewtag": "4880095fa928f20096fe9fce0692351f"
         },
+        "pcmydjpmxeditview9": {
+            "title": "解聘明细信息",
+            "caption": "解聘明细信息",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "PCM",
+            "viewname": "PcmYdjpmxEditView9",
+            "viewtag": "48c1378bdb9278289adfeb4d200b02c3"
+        },
         "pcmydjdmxjdqroptionview": {
             "title": "请确认/修改借调结束时间",
             "caption": "异动借调明细",
@@ -647,6 +671,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "PcmYdtxmxEditView2",
             "viewtag": "60392ec1e472b8f85da89b34faada1f6"
         },
+        "pcmydbxmxeditview9": {
+            "title": "病休明细信息",
+            "caption": "病休明细信息",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "PCM",
+            "viewname": "PcmYdbxmxEditView9",
+            "viewtag": "60fbad7a0ec6fd399d6e0fb4c119bda6"
+        },
         "pcmydjdmxpickupgridview": {
             "title": "异动借调明细选择表格视图",
             "caption": "异动借调明细",
@@ -726,6 +758,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PCM",
             "viewname": "PimDistirbutionDDRMgrGridView",
             "viewtag": "77ebb4c718553020312d2622c5041415"
+        },
+        "pcmydjdmxeditview9": {
+            "title": "借调信息",
+            "caption": "借调信息",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "PCM",
+            "viewname": "PcmYdjdmxEditView9",
+            "viewtag": "78f5df1d24b502abd692327db916b875"
         },
         "pcmyddgmxeditview": {
             "title": "异动待岗明细",
@@ -921,7 +961,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "pcmydntmxxzeditview": {
             "title": "新增内退",
-            "caption": "异动内退明细",
+            "caption": "新增内退",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PCM",
             "viewname": "PcmYdntmxXZEditView",
@@ -950,6 +990,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PCM",
             "viewname": "PcmRecruitmentPickupView",
             "viewtag": "9d844432837c96fe861ddb479ab59c7c"
+        },
+        "pimpersoneditview9": {
+            "title": "人员信息编辑视图（退休）",
+            "caption": "退休人员信息",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "PIM",
+            "viewname": "PimPersonEditView9",
+            "viewtag": "9e47fdb719e865755ac0d5481dc4a166"
         },
         "ormorgypzsyfpxxpickupview": {
             "title": "组织数据选择视图",
@@ -1016,8 +1064,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "a93b6b6efe8a9ccf0a6f5a46cdbbc5a5"
         },
         "pcmydjdmxeditview": {
-            "title": "异动借调明细编辑视图",
-            "caption": "异动借调明细",
+            "title": "借调明细信息",
+            "caption": "借调明细信息",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PCM",
             "viewname": "PcmYdjdmxEditView",
@@ -1255,6 +1303,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "PcmYdjpmxCKEditView",
             "viewtag": "cbe113145c7cda2dc98b928056c33107"
         },
+        "pcmyddgmxeditview9": {
+            "title": "待岗明细信息",
+            "caption": "待岗明细信息",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "PCM",
+            "viewname": "PcmYddgmxEditView9",
+            "viewtag": "ce973658492cf60faa71d3b68bd858d1"
+        },
         "ormpostejormorgidpickupgridview": {
             "title": "岗位选择",
             "caption": "岗位选择",
@@ -1318,6 +1374,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PCM",
             "viewname": "PimDistirbutionDDCOptionView",
             "viewtag": "d54722f265cb0c770a693ca748a95bd5"
+        },
+        "pcmydntmxeditview9": {
+            "title": "内退明细信息",
+            "caption": "内退明细信息",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "PCM",
+            "viewname": "PcmYdntmxEditView9",
+            "viewtag": "d5bc5dbf5ec9e9da8f2f80b549e8bbf6"
         },
         "pcmydgzmxpickupgridview": {
             "title": "异动挂职明细选择表格视图",
@@ -1473,7 +1537,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "pcmydjzmxxzeditview": {
             "title": "新增兼职",
-            "caption": "异动兼职明细",
+            "caption": "新增兼职",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PCM",
             "viewname": "PcmYdjzmxXZEditView",

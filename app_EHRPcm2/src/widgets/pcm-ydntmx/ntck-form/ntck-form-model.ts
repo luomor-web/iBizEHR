@@ -111,11 +111,6 @@ export default class NTCKModel {
         dataType: 'INHERIT',
       },
       {
-        name: 'finished',
-        prop: 'finished',
-        dataType: 'INHERIT',
-      },
-      {
         name: 'sxrq',
         prop: 'sxrq',
         dataType: 'INHERIT',
@@ -134,6 +129,11 @@ export default class NTCKModel {
         name: 'bz',
         prop: 'bz',
         dataType: 'LONGTEXT_1000',
+      },
+      {
+        name: 'isfinished',
+        prop: 'isfinished',
+        dataType: 'SSCODELIST',
       },
       {
         name: 'pcmydntmxid',

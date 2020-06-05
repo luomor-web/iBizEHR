@@ -27,6 +27,11 @@ export default class KTXYGModel {
     }else{
 		  return [
         {
+          name: 'retiplace',
+          prop: 'retiplace',
+          dataType: 'TEXT',
+        },
+        {
           name: 'ygbh',
           prop: 'ygbh',
           dataType: 'TEXT',
@@ -42,8 +47,23 @@ export default class KTXYGModel {
           dataType: 'PICKUP',
         },
         {
+          name: 'gw',
+          prop: 'gw',
+          dataType: 'SSCODELIST',
+        },
+        {
+          name: 'txnx_color',
+          prop: 'txnx_color',
+          dataType: 'TEXT',
+        },
+        {
           name: 'pimmajorsetypeid',
           prop: 'pimmajorsetypeid',
+          dataType: 'PICKUP',
+        },
+        {
+          name: 'pcmrcxlid',
+          prop: 'pcmrcxlid',
           dataType: 'PICKUP',
         },
         {
@@ -52,53 +72,18 @@ export default class KTXYGModel {
           dataType: 'TEXT',
         },
         {
-          name: 'srfkey',
-          prop: 'pimpersonid',
-          dataType: 'GUID',
-        },
-        {
           name: 'srfdataaccaction',
           prop: 'pimpersonid',
           dataType: 'GUID',
         },
         {
-          name: 'zw',
-          prop: 'zw',
-          dataType: 'SSCODELIST',
+          name: 'srfkey',
+          prop: 'pimpersonid',
+          dataType: 'GUID',
         },
         {
-          name: 'pimpersonid2',
-          prop: 'pimpersonid2',
-          dataType: 'PICKUP',
-        },
-        {
-          name: 'pimpersonid3',
-          prop: 'pimpersonid3',
-          dataType: 'PICKUP',
-        },
-        {
-          name: 'retiplace',
-          prop: 'retiplace',
-          dataType: 'TEXT',
-        },
-        {
-          name: 'gw',
-          prop: 'gw',
-          dataType: 'SSCODELIST',
-        },
-        {
-          name: 'cz',
-          prop: 'cz',
-          dataType: 'TEXT',
-        },
-        {
-          name: 'txnx_color',
-          prop: 'txnx_color',
-          dataType: 'TEXT',
-        },
-        {
-          name: 'pcmrcxlid',
-          prop: 'pcmrcxlid',
+          name: 'pimcityid',
+          prop: 'pimcityid',
           dataType: 'PICKUP',
         },
         {
@@ -107,9 +92,9 @@ export default class KTXYGModel {
           dataType: 'PICKUPTEXT',
         },
         {
-          name: 'pimcityid',
-          prop: 'pimcityid',
-          dataType: 'PICKUP',
+          name: 'zw',
+          prop: 'zw',
+          dataType: 'SSCODELIST',
         },
         {
           name: 'sjtxrq',
@@ -127,9 +112,19 @@ export default class KTXYGModel {
           dataType: 'PICKUPDATA',
         },
         {
+          name: 'pimpersonid2',
+          prop: 'pimpersonid2',
+          dataType: 'PICKUP',
+        },
+        {
           name: 'postaladdress',
           prop: 'postaladdress',
           dataType: 'TEXT',
+        },
+        {
+          name: 'pimpersonid3',
+          prop: 'pimpersonid3',
+          dataType: 'PICKUP',
         },
         {
           name: 'lxdh',

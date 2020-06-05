@@ -63,9 +63,6 @@ export default class DefaultModel {
         name: 'distirbutionid',
       },
       {
-        name: 'finished',
-      },
-      {
         name: 'pcmydmxtype',
       },
       {
@@ -113,6 +110,9 @@ export default class DefaultModel {
       },
       {
         name: 'pimpersonname',
+      },
+      {
+        name: 'isfinished',
       },
     ]
   }

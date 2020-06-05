@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="pcmydjdmxeditview" viewTitle="异动借调明细编辑视图" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'pcm-ydjdmx-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="pcmydjdmxeditview" viewTitle="借调明细信息" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'pcm-ydjdmx-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -53,7 +53,7 @@ import EditViewEngine from '@engine/view/edit-view-engine';
 
 
 /**
- * 异动借调明细编辑视图基类
+ * 借调明细信息基类
  *
  * @export
  * @class PcmYdjdmxEditViewBase

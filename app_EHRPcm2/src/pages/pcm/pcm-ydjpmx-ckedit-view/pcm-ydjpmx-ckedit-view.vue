@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import PcmYdjpmxCKEditViewBase from './pcm-ydjpmx-ckedit-view-base.vue';
 
-import view_form from '@widgets/pcm-ydjpmx/main-form/main-form.vue';
+import view_form from '@widgets/pcm-ydjpmx/main2-form/main2-form.vue';
 
 /**
  * 异动解聘明细

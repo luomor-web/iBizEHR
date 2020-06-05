@@ -2,10 +2,10 @@
 import { Component } from 'vue-property-decorator';
 import PcmYdjdmxEditViewBase from './pcm-ydjdmx-edit-view-base.vue';
 
-import view_form from '@widgets/pcm-ydjdmx/main-form/main-form.vue';
+import view_form from '@widgets/pcm-ydjdmx/xzjdedit-form-form/xzjdedit-form-form.vue';
 
 /**
- * 异动借调明细编辑视图
+ * 借调明细信息
  *
  * @export
  * @class PcmYdjdmxEditView

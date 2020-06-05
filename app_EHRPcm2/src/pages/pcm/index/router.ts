@@ -102,19 +102,6 @@ const router = new Router({
                     component: () => import('@pages/pcm/orm-orgsector-pickup-grid-view/orm-orgsector-pickup-grid-view.vue'),
                 },
                 {
-                    path: 'pcmydgzmxes/:pcmydgzmx?/gzceditview/:gzceditview?',
-                    meta: {
-                        caption: 'entities.pcmydgzmx.views.gzceditview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                            { pathName: 'gzceditview', parameterName: 'gzceditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcm-ydgzmx-gzcedit-view/pcm-ydgzmx-gzcedit-view.vue'),
-                },
-                {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/kddpickupview/:kddpickupview?',
                     meta: {
                         caption: 'entities.pimdistirbution.views.kddpickupview.caption',
@@ -198,19 +185,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pcm/pcm-ydlzmx-lsjlgrid-view/pcm-ydlzmx-lsjlgrid-view.vue'),
-                },
-                {
-                    path: 'pcmydgzmxes/:pcmydgzmx?/gzclsjlgridview/:gzclsjlgridview?',
-                    meta: {
-                        caption: 'entities.pcmydgzmx.views.gzclsjlgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                            { pathName: 'gzclsjlgridview', parameterName: 'gzclsjlgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcm-ydgzmx-gzclsjlgrid-view/pcm-ydgzmx-gzclsjlgrid-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
@@ -355,19 +329,17 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcm-ydjdmx-edit-view/pcm-ydjdmx-edit-view.vue'),
                 },
                 {
-                    path: 'pcmydgzmxes/:pcmydgzmx?/gzcglgridview/:gzcglgridview?',
+                    path: 'pcmydjpmxes/:pcmydjpmx?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.pcmydgzmx.views.gzcglgridview.caption',
-                        imgPath: '../../../img/pzgl/1/guazhiguanli.png',
-                        iconCls: '',
+                        caption: 'entities.pcmydjpmx.views.editview9.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                            { pathName: 'gzcglgridview', parameterName: 'gzcglgridview' },
+                            { pathName: 'pcmydjpmxes', parameterName: 'pcmydjpmx' },
+                            { pathName: 'editview9', parameterName: 'editview9' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/pcm/pcm-ydgzmx-gzcglgrid-view/pcm-ydgzmx-gzcglgrid-view.vue'),
+                    component: () => import('@pages/pcm/pcm-ydjpmx-edit-view9/pcm-ydjpmx-edit-view9.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/kddmpickupview/:kddmpickupview?',
@@ -441,6 +413,19 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pcm/pim-distirbution-edit-view/pim-distirbution-edit-view.vue'),
+                },
+                {
+                    path: 'pcmydjzmxes/:pcmydjzmx?/editview9/:editview9?',
+                    meta: {
+                        caption: 'entities.pcmydjzmx.views.editview9.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pcmydjzmxes', parameterName: 'pcmydjzmx' },
+                            { pathName: 'editview9', parameterName: 'editview9' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pcm/pcm-ydjzmx-edit-view9/pcm-ydjzmx-edit-view9.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/yxzfppickupgridview/:yxzfppickupgridview?',
@@ -723,19 +708,6 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcm-yddgmx-dgjlgrid-view/pcm-yddgmx-dgjlgrid-view.vue'),
                 },
                 {
-                    path: 'ormorgs/:ormorg?/ypzxxsypickupgridview/:ypzxxsypickupgridview?',
-                    meta: {
-                        caption: 'entities.ormorg.views.ypzxxsypickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ypzxxsypickupgridview', parameterName: 'ypzxxsypickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/orm-org-ypzxxsypickup-grid-view/orm-org-ypzxxsypickup-grid-view.vue'),
-                },
-                {
                     path: 'pcmydjzmxes/:pcmydjzmx?/jlckeditview/:jlckeditview?',
                     meta: {
                         caption: 'entities.pcmydjzmx.views.jlckeditview.caption',
@@ -760,19 +732,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pcm/pim-person-yxzfppickup-view/pim-person-yxzfppickup-view.vue'),
-                },
-                {
-                    path: 'pimpeople/:pimperson?/txqreditview/:txqreditview?',
-                    meta: {
-                        caption: 'entities.pimperson.views.txqreditview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'txqreditview', parameterName: 'txqreditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pim-person-txqredit-view/pim-person-txqredit-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
@@ -937,6 +896,19 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcm-ydjdmx-jdglgrid-view/pcm-ydjdmx-jdglgrid-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/txqreditview/:txqreditview?',
+                    meta: {
+                        caption: 'entities.pimperson.views.txqreditview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'txqreditview', parameterName: 'txqreditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pcm/pim-person-txqredit-view/pim-person-txqredit-view.vue'),
+                },
+                {
                     path: 'ormduties/:ormduty?/pickupgridview/:pickupgridview?',
                     meta: {
                         caption: 'entities.ormduty.views.pickupgridview.caption',
@@ -963,17 +935,17 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcm-ydlzmx-edit-view/pcm-ydlzmx-edit-view.vue'),
                 },
                 {
-                    path: 'pcmydgzmxes/:pcmydgzmx?/type_gzjeditview3/:type_gzjeditview3?',
+                    path: 'pimpeople/:pimperson?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.pcmydgzmx.views.type_gzjeditview3.caption',
+                        caption: 'entities.pimperson.views.editview9.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                            { pathName: 'type_gzjeditview3', parameterName: 'type_gzjeditview3' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'editview9', parameterName: 'editview9' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/pcm/pcm-ydgzmx-type-gzjedit-view3/pcm-ydgzmx-type-gzjedit-view3.vue'),
+                    component: () => import('@pages/pim/pim-person-edit-view9/pim-person-edit-view9.vue'),
                 },
                 {
                     path: 'ormduties/:ormduty?/ormorgsectorpickupgridview/:ormorgsectorpickupgridview?',
@@ -1029,19 +1001,17 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcm-ydjpmx-xzedit-view/pcm-ydjpmx-xzedit-view.vue'),
                 },
                 {
-                    path: 'pcmydgzmxes/:pcmydgzmx?/gzrglgridview/:gzrglgridview?',
+                    path: 'pcmydbxmxes/:pcmydbxmx?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.pcmydgzmx.views.gzrglgridview.caption',
-                        imgPath: '../../../img/pzgl/1/guazhiguanli.png',
-                        iconCls: '',
+                        caption: 'entities.pcmydbxmx.views.editview9.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                            { pathName: 'gzrglgridview', parameterName: 'gzrglgridview' },
+                            { pathName: 'pcmydbxmxes', parameterName: 'pcmydbxmx' },
+                            { pathName: 'editview9', parameterName: 'editview9' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/pcm/pcm-ydgzmx-gzrglgrid-view/pcm-ydgzmx-gzrglgrid-view.vue'),
+                    component: () => import('@pages/pcm/pcm-ydbxmx-edit-view9/pcm-ydbxmx-edit-view9.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/fpxxpickupview/:fpxxpickupview?',
@@ -1071,19 +1041,6 @@ const router = new Router({
                     component: () => import('@pages/pcm/orm-orgsector-fpxxpickup-view/orm-orgsector-fpxxpickup-view.vue'),
                 },
                 {
-                    path: 'pcmprofiles/:pcmprofile?/gzjryeditview/:gzjryeditview?',
-                    meta: {
-                        caption: 'entities.pcmprofile.views.gzjryeditview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
-                            { pathName: 'gzjryeditview', parameterName: 'gzjryeditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcm-profile-gzjryedit-view/pcm-profile-gzjryedit-view.vue'),
-                },
-                {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/fpxxpickupgridview/:fpxxpickupgridview?',
                     meta: {
                         caption: 'entities.ormorgsector.views.fpxxpickupgridview.caption',
@@ -1109,19 +1066,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pcm/orm-orgsector-fpxxpickup-grid-view/orm-orgsector-fpxxpickup-grid-view.vue'),
-                },
-                {
-                    path: 'pcmyddgmxes/:pcmyddgmx?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.pcmyddgmx.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmyddgmxes', parameterName: 'pcmyddgmx' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcm-yddgmx-edit-view/pcm-yddgmx-edit-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/pimfaminfos/:pimfaminfo?/jtlxrpickupgridview/:jtlxrpickupgridview?',
@@ -1205,19 +1149,6 @@ const router = new Router({
                     component: () => import('@pages/pcm/orm-org-sjyxzzpickup-grid-view/orm-org-sjyxzzpickup-grid-view.vue'),
                 },
                 {
-                    path: 'ormorgs/:ormorg?/pickupview/:pickupview?',
-                    meta: {
-                        caption: 'entities.ormorg.views.pickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'pickupview', parameterName: 'pickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/orm-org-pickup-view/orm-org-pickup-view.vue'),
-                },
-                {
                     path: 'pcmydjzmxes/:pcmydjzmx?/xzeditview/:xzeditview?',
                     meta: {
                         caption: 'entities.pcmydjzmx.views.xzeditview.caption',
@@ -1242,6 +1173,19 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pcm/pcm-ydlzmx-xzedit-view/pcm-ydlzmx-xzedit-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.ormorg.views.pickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pcm/orm-org-pickup-view/orm-org-pickup-view.vue'),
                 },
                 {
                     path: 'ormduties/:ormduty?/ormorgsectorpickupview/:ormorgsectorpickupview?',
@@ -1285,6 +1229,19 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcm-yddgmx-ckedit-view/pcm-yddgmx-ckedit-view.vue'),
                 },
                 {
+                    path: 'pcmydlzmxes/:pcmydlzmx?/editview9/:editview9?',
+                    meta: {
+                        caption: 'entities.pcmydlzmx.views.editview9.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pcmydlzmxes', parameterName: 'pcmydlzmx' },
+                            { pathName: 'editview9', parameterName: 'editview9' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pcm/pcm-ydlzmx-edit-view9/pcm-ydlzmx-edit-view9.vue'),
+                },
+                {
                     path: 'pcmydbxmxes/:pcmydbxmx?/ckeditview/:ckeditview?',
                     meta: {
                         caption: 'entities.pcmydbxmx.views.ckeditview.caption',
@@ -1313,19 +1270,6 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcm-yddgmx-dgglgrid-view/pcm-yddgmx-dgglgrid-view.vue'),
                 },
                 {
-                    path: 'pcmydbxmxes/:pcmydbxmx?/xzeditview/:xzeditview?',
-                    meta: {
-                        caption: 'entities.pcmydbxmx.views.xzeditview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmydbxmxes', parameterName: 'pcmydbxmx' },
-                            { pathName: 'xzeditview', parameterName: 'xzeditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcm-ydbxmx-xzedit-view/pcm-ydbxmx-xzedit-view.vue'),
-                },
-                {
                     path: 'pcmydbxmxes/:pcmydbxmx?/editview/:editview?',
                     meta: {
                         caption: 'entities.pcmydbxmx.views.editview.caption',
@@ -1337,6 +1281,19 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pcm/pcm-ydbxmx-edit-view/pcm-ydbxmx-edit-view.vue'),
+                },
+                {
+                    path: 'pcmydbxmxes/:pcmydbxmx?/xzeditview/:xzeditview?',
+                    meta: {
+                        caption: 'entities.pcmydbxmx.views.xzeditview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pcmydbxmxes', parameterName: 'pcmydbxmx' },
+                            { pathName: 'xzeditview', parameterName: 'xzeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pcm/pcm-ydbxmx-xzedit-view/pcm-ydbxmx-xzedit-view.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ydbmpickupview/:ydbmpickupview?',
@@ -1474,17 +1431,17 @@ const router = new Router({
                     component: () => import('@pages/pcm/pim-person-pickup-grid-view/pim-person-pickup-grid-view.vue'),
                 },
                 {
-                    path: 'pimpeople/:pimperson?/txryeditview/:txryeditview?',
+                    path: 'pcmydntmxes/:pcmydntmx?/ckeditview/:ckeditview?',
                     meta: {
-                        caption: 'entities.pimperson.views.txryeditview.caption',
+                        caption: 'entities.pcmydntmx.views.ckeditview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'txryeditview', parameterName: 'txryeditview' },
+                            { pathName: 'pcmydntmxes', parameterName: 'pcmydntmx' },
+                            { pathName: 'ckeditview', parameterName: 'ckeditview' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/pcm/pim-person-txryedit-view/pim-person-txryedit-view.vue'),
+                    component: () => import('@pages/pcm/pcm-ydntmx-ckedit-view/pcm-ydntmx-ckedit-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/ddmgrgridview/:ddmgrgridview?',
@@ -1518,17 +1475,17 @@ const router = new Router({
                     component: () => import('@pages/pcm/pim-distirbution-ddmgr-grid-view/pim-distirbution-ddmgr-grid-view.vue'),
                 },
                 {
-                    path: 'pcmydntmxes/:pcmydntmx?/ckeditview/:ckeditview?',
+                    path: 'pimpeople/:pimperson?/txryeditview/:txryeditview?',
                     meta: {
-                        caption: 'entities.pcmydntmx.views.ckeditview.caption',
+                        caption: 'entities.pimperson.views.txryeditview.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmydntmxes', parameterName: 'pcmydntmx' },
-                            { pathName: 'ckeditview', parameterName: 'ckeditview' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'txryeditview', parameterName: 'txryeditview' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/pcm/pcm-ydntmx-ckedit-view/pcm-ydntmx-ckedit-view.vue'),
+                    component: () => import('@pages/pcm/pim-person-txryedit-view/pim-person-txryedit-view.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
@@ -1742,6 +1699,19 @@ const router = new Router({
                     component: () => import('@pages/pcm/pim-distirbution-kddfppickup-grid-view/pim-distirbution-kddfppickup-grid-view.vue'),
                 },
                 {
+                    path: 'pcmydntmxes/:pcmydntmx?/editview9/:editview9?',
+                    meta: {
+                        caption: 'entities.pcmydntmx.views.editview9.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pcmydntmxes', parameterName: 'pcmydntmx' },
+                            { pathName: 'editview9', parameterName: 'editview9' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pcm/pcm-ydntmx-edit-view9/pcm-ydntmx-edit-view9.vue'),
+                },
+                {
                     path: 'ormorgs/:ormorg?/fpxxpickupgridview/:fpxxpickupgridview?',
                     meta: {
                         caption: 'entities.ormorg.views.fpxxpickupgridview.caption',
@@ -1753,19 +1723,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pcm/orm-org-fpxxpickup-grid-view/orm-org-fpxxpickup-grid-view.vue'),
-                },
-                {
-                    path: 'pcmydjzmxes/:pcmydjzmx?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.pcmydjzmx.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmydjzmxes', parameterName: 'pcmydjzmx' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcm-ydjzmx-edit-view/pcm-ydjzmx-edit-view.vue'),
                 },
                 {
                     path: 'pcmyddgmxes/:pcmyddgmx?/xzeditview/:xzeditview?',
@@ -1794,19 +1751,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pcm/pcm-ydntmx-ntjlgrid-view/pcm-ydntmx-ntjlgrid-view.vue'),
-                },
-                {
-                    path: 'ormorgs/:ormorg?/ypzsyfpxxpickupview/:ypzsyfpxxpickupview?',
-                    meta: {
-                        caption: 'entities.ormorg.views.ypzsyfpxxpickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'ormorgs', parameterName: 'ormorg' },
-                            { pathName: 'ypzsyfpxxpickupview', parameterName: 'ypzsyfpxxpickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/orm/orm-org-ypzsyfpxxpickup-view/orm-org-ypzsyfpxxpickup-view.vue'),
                 },
                 {
                     path: 'pcmydtxmxes/:pcmydtxmx?/ckeditview/:ckeditview?',
@@ -1911,32 +1855,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pcm/pcm-ddsqdmx-ddjlgrid-view/pcm-ddsqdmx-ddjlgrid-view.vue'),
-                },
-                {
-                    path: 'pcmydgzmxes/:pcmydgzmx?/type_gzceditview3/:type_gzceditview3?',
-                    meta: {
-                        caption: 'entities.pcmydgzmx.views.type_gzceditview3.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                            { pathName: 'type_gzceditview3', parameterName: 'type_gzceditview3' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcm-ydgzmx-type-gzcedit-view3/pcm-ydgzmx-type-gzcedit-view3.vue'),
-                },
-                {
-                    path: 'pcmydgzmxes/:pcmydgzmx?/gzrlsjlgridview/:gzrlsjlgridview?',
-                    meta: {
-                        caption: 'entities.pcmydgzmx.views.gzrlsjlgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                            { pathName: 'gzrlsjlgridview', parameterName: 'gzrlsjlgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcm-ydgzmx-gzrlsjlgrid-view/pcm-ydgzmx-gzrlsjlgrid-view.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ydbmpickupgridview/:ydbmpickupgridview?',
@@ -2270,30 +2188,17 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcm-ydjdmx-ydmxedit-view/pcm-ydjdmx-ydmxedit-view.vue'),
                 },
                 {
-                    path: 'pcmydgzmxes/:pcmydgzmx?/editview/:editview?',
+                    path: 'pcmyddgmxes/:pcmyddgmx?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.pcmydgzmx.views.editview.caption',
+                        caption: 'entities.pcmyddgmx.views.editview9.caption',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                            { pathName: 'editview', parameterName: 'editview' },
+                            { pathName: 'pcmyddgmxes', parameterName: 'pcmyddgmx' },
+                            { pathName: 'editview9', parameterName: 'editview9' },
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/pcm/pcm-ydgzmx-edit-view/pcm-ydgzmx-edit-view.vue'),
-                },
-                {
-                    path: 'pcmydgzmxes/:pcmydgzmx?/jsrqqreditview/:jsrqqreditview?',
-                    meta: {
-                        caption: 'entities.pcmydgzmx.views.jsrqqreditview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                            { pathName: 'jsrqqreditview', parameterName: 'jsrqqreditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcm-ydgzmx-jsrqqredit-view/pcm-ydgzmx-jsrqqredit-view.vue'),
+                    component: () => import('@pages/pcm/pcm-yddgmx-edit-view9/pcm-yddgmx-edit-view9.vue'),
                 },
                 {
                     path: 'pcmydbxmxes/:pcmydbxmx?/jlgridview/:jlgridview?',
@@ -2363,6 +2268,21 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcm-yddgmx-jsrqqredit-view/pcm-yddgmx-jsrqqredit-view.vue'),
                 },
                 {
+                    path: 'pcmydjzmxes/:pcmydjzmx?/glgridview/:glgridview?',
+                    meta: {
+                        caption: 'entities.pcmydjzmx.views.glgridview.caption',
+                        imgPath: '../../../img/pzgl/1/jianzhijilu.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pcmydjzmxes', parameterName: 'pcmydjzmx' },
+                            { pathName: 'glgridview', parameterName: 'glgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pcm/pcm-ydjzmx-glgrid-view/pcm-ydjzmx-glgrid-view.vue'),
+                },
+                {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmddsqdmxes/:pcmddsqdmx?/ddeditview/:ddeditview?',
                     meta: {
                         caption: 'entities.pcmddsqdmx.views.ddeditview.caption',
@@ -2417,21 +2337,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pcm/pcm-ddsqdmx-ddedit-view/pcm-ddsqdmx-ddedit-view.vue'),
-                },
-                {
-                    path: 'pcmydjzmxes/:pcmydjzmx?/glgridview/:glgridview?',
-                    meta: {
-                        caption: 'entities.pcmydjzmx.views.glgridview.caption',
-                        imgPath: '../../../img/pzgl/1/jianzhijilu.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pcmydjzmxes', parameterName: 'pcmydjzmx' },
-                            { pathName: 'glgridview', parameterName: 'glgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcm-ydjzmx-glgrid-view/pcm-ydjzmx-glgrid-view.vue'),
                 },
             {
                 path: 'pcmydjpmxredirectview/:pcmydjpmxredirectview?',
@@ -2597,6 +2502,18 @@ const router = new Router({
         component: () => import('@pages/pcm/pcm-ydlzmx-xzedit-view/pcm-ydlzmx-xzedit-view.vue'),
     },
     {
+        path: '/pcmydjzmxes/:pcmydjzmx?/editview9/:editview9?',
+        meta: {
+            caption: 'entities.pcmydjzmx.views.editview9.caption',
+            parameters: [
+                { pathName: 'pcmydjzmxes', parameterName: 'pcmydjzmx' },
+                { pathName: 'editview9', parameterName: 'editview9' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/pcm/pcm-ydjzmx-edit-view9/pcm-ydjzmx-edit-view9.vue'),
+    },
+    {
         path: '/pimpeople/:pimperson?/pimfaminfos/:pimfaminfo?/jtlxrpickupview/:jtlxrpickupview?',
         meta: {
             caption: 'entities.pimfaminfo.views.jtlxrpickupview.caption',
@@ -2632,6 +2549,18 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pcm/pcm-ydjpmx-edit-view/pcm-ydjpmx-edit-view.vue'),
+    },
+    {
+        path: '/pcmydlzmxes/:pcmydlzmx?/editview9/:editview9?',
+        meta: {
+            caption: 'entities.pcmydlzmx.views.editview9.caption',
+            parameters: [
+                { pathName: 'pcmydlzmxes', parameterName: 'pcmydlzmx' },
+                { pathName: 'editview9', parameterName: 'editview9' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/pcm/pcm-ydlzmx-edit-view9/pcm-ydlzmx-edit-view9.vue'),
     },
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/pickupgridview/:pickupgridview?',
@@ -3039,18 +2968,6 @@ const router = new Router({
         component: () => import('@pages/pcm/pcm-ydbxmx-bxjsrqqredit-view/pcm-ydbxmx-bxjsrqqredit-view.vue'),
     },
     {
-        path: '/pcmydgzmxes/:pcmydgzmx?/jsrqqreditview/:jsrqqreditview?',
-        meta: {
-            caption: 'entities.pcmydgzmx.views.jsrqqreditview.caption',
-            parameters: [
-                { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                { pathName: 'jsrqqreditview', parameterName: 'jsrqqreditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-ydgzmx-jsrqqredit-view/pcm-ydgzmx-jsrqqredit-view.vue'),
-    },
-    {
         path: '/ormduties/:ormduty?/ormorgsectorpickupview/:ormorgsectorpickupview?',
         meta: {
             caption: 'entities.ormduty.views.ormorgsectorpickupview.caption',
@@ -3190,18 +3107,6 @@ const router = new Router({
         component: () => import('@pages/pcm/pcm-ddsqdmx-ddckedit-view/pcm-ddsqdmx-ddckedit-view.vue'),
     },
     {
-        path: '/pcmydgzmxes/:pcmydgzmx?/gzceditview/:gzceditview?',
-        meta: {
-            caption: 'entities.pcmydgzmx.views.gzceditview.caption',
-            parameters: [
-                { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                { pathName: 'gzceditview', parameterName: 'gzceditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-ydgzmx-gzcedit-view/pcm-ydgzmx-gzcedit-view.vue'),
-    },
-    {
         path: '/pcmydjzmxes/:pcmydjzmx?/jsrqqreditview/:jsrqqreditview?',
         meta: {
             caption: 'entities.pcmydjzmx.views.jsrqqreditview.caption',
@@ -3214,18 +3119,16 @@ const router = new Router({
         component: () => import('@pages/pcm/pcm-ydjzmx-jsrqqredit-view/pcm-ydjzmx-jsrqqredit-view.vue'),
     },
     {
-        path: '/pcmydgzmxes/:pcmydgzmx?/gzcglgridview/:gzcglgridview?',
+        path: '/pcmydjpmxes/:pcmydjpmx?/editview9/:editview9?',
         meta: {
-            caption: 'entities.pcmydgzmx.views.gzcglgridview.caption',
-            imgPath: '../../../img/pzgl/1/guazhiguanli.png',
-            iconCls: '',
+            caption: 'entities.pcmydjpmx.views.editview9.caption',
             parameters: [
-                { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                { pathName: 'gzcglgridview', parameterName: 'gzcglgridview' },
+                { pathName: 'pcmydjpmxes', parameterName: 'pcmydjpmx' },
+                { pathName: 'editview9', parameterName: 'editview9' },
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/pcm/pcm-ydgzmx-gzcglgrid-view/pcm-ydgzmx-gzcglgrid-view.vue'),
+        component: () => import('@pages/pcm/pcm-ydjpmx-edit-view9/pcm-ydjpmx-edit-view9.vue'),
     },
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmddsqdmxes/:pcmddsqdmx?/ddeditview/:ddeditview?',
@@ -3292,18 +3195,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pcm/pim-person-txglgrid-view/pim-person-txglgrid-view.vue'),
-    },
-    {
-        path: '/pcmydgzmxes/:pcmydgzmx?/gzrlsjlgridview/:gzrlsjlgridview?',
-        meta: {
-            caption: 'entities.pcmydgzmx.views.gzrlsjlgridview.caption',
-            parameters: [
-                { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                { pathName: 'gzrlsjlgridview', parameterName: 'gzrlsjlgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-ydgzmx-gzrlsjlgrid-view/pcm-ydgzmx-gzrlsjlgrid-view.vue'),
     },
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/ddmgrgridview/:ddmgrgridview?',
@@ -3507,6 +3398,18 @@ const router = new Router({
         component: () => import('@pages/pcm/pcm-ydjdmx-jdjlckedit-view/pcm-ydjdmx-jdjlckedit-view.vue'),
     },
     {
+        path: '/pcmydbxmxes/:pcmydbxmx?/editview9/:editview9?',
+        meta: {
+            caption: 'entities.pcmydbxmx.views.editview9.caption',
+            parameters: [
+                { pathName: 'pcmydbxmxes', parameterName: 'pcmydbxmx' },
+                { pathName: 'editview9', parameterName: 'editview9' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/pcm/pcm-ydbxmx-edit-view9/pcm-ydbxmx-edit-view9.vue'),
+    },
+    {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/kddfppickupgridview/:kddfppickupgridview?',
         meta: {
             caption: 'entities.pimdistirbution.views.kddfppickupgridview.caption',
@@ -3532,18 +3435,6 @@ const router = new Router({
         component: () => import('@pages/pcm/pim-distirbution-kddfppickup-grid-view/pim-distirbution-kddfppickup-grid-view.vue'),
     },
     {
-        path: '/pcmydgzmxes/:pcmydgzmx?/type_gzjeditview3/:type_gzjeditview3?',
-        meta: {
-            caption: 'entities.pcmydgzmx.views.type_gzjeditview3.caption',
-            parameters: [
-                { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                { pathName: 'type_gzjeditview3', parameterName: 'type_gzjeditview3' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-ydgzmx-type-gzjedit-view3/pcm-ydgzmx-type-gzjedit-view3.vue'),
-    },
-    {
         path: '/pcmydlzmxes/:pcmydlzmx?/editview/:editview?',
         meta: {
             caption: 'entities.pcmydlzmx.views.editview.caption',
@@ -3554,30 +3445,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pcm/pcm-ydlzmx-edit-view/pcm-ydlzmx-edit-view.vue'),
-    },
-    {
-        path: '/pcmyddgmxes/:pcmyddgmx?/editview/:editview?',
-        meta: {
-            caption: 'entities.pcmyddgmx.views.editview.caption',
-            parameters: [
-                { pathName: 'pcmyddgmxes', parameterName: 'pcmyddgmx' },
-                { pathName: 'editview', parameterName: 'editview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-yddgmx-edit-view/pcm-yddgmx-edit-view.vue'),
-    },
-    {
-        path: '/ormorgs/:ormorg?/ypzxxsypickupgridview/:ypzxxsypickupgridview?',
-        meta: {
-            caption: 'entities.ormorg.views.ypzxxsypickupgridview.caption',
-            parameters: [
-                { pathName: 'ormorgs', parameterName: 'ormorg' },
-                { pathName: 'ypzxxsypickupgridview', parameterName: 'ypzxxsypickupgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/orm/orm-org-ypzxxsypickup-grid-view/orm-org-ypzxxsypickup-grid-view.vue'),
     },
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
@@ -3767,18 +3634,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pcm/pim-person-yxzfppickup-grid-view/pim-person-yxzfppickup-grid-view.vue'),
-    },
-    {
-        path: '/pcmydgzmxes/:pcmydgzmx?/gzclsjlgridview/:gzclsjlgridview?',
-        meta: {
-            caption: 'entities.pcmydgzmx.views.gzclsjlgridview.caption',
-            parameters: [
-                { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                { pathName: 'gzclsjlgridview', parameterName: 'gzclsjlgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-ydgzmx-gzclsjlgrid-view/pcm-ydgzmx-gzclsjlgrid-view.vue'),
     },
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
@@ -4106,16 +3961,16 @@ const router = new Router({
         component: () => import('@pages/pcm/pim-distirbution-edit-view/pim-distirbution-edit-view.vue'),
     },
     {
-        path: '/ormorgs/:ormorg?/ypzsyfpxxpickupview/:ypzsyfpxxpickupview?',
+        path: '/pimpeople/:pimperson?/editview9/:editview9?',
         meta: {
-            caption: 'entities.ormorg.views.ypzsyfpxxpickupview.caption',
+            caption: 'entities.pimperson.views.editview9.caption',
             parameters: [
-                { pathName: 'ormorgs', parameterName: 'ormorg' },
-                { pathName: 'ypzsyfpxxpickupview', parameterName: 'ypzsyfpxxpickupview' },
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'editview9', parameterName: 'editview9' },
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/orm-org-ypzsyfpxxpickup-view/orm-org-ypzsyfpxxpickup-view.vue'),
+        component: () => import('@pages/pim/pim-person-edit-view9/pim-person-edit-view9.vue'),
     },
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/kddmpickupview/:kddmpickupview?',
@@ -4301,18 +4156,6 @@ const router = new Router({
         component: () => import('@pages/pcm/pcm-ydtxmx-ckedit-view/pcm-ydtxmx-ckedit-view.vue'),
     },
     {
-        path: '/pcmydgzmxes/:pcmydgzmx?/editview/:editview?',
-        meta: {
-            caption: 'entities.pcmydgzmx.views.editview.caption',
-            parameters: [
-                { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                { pathName: 'editview', parameterName: 'editview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-ydgzmx-edit-view/pcm-ydgzmx-edit-view.vue'),
-    },
-    {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pickupview/:pickupview?',
         meta: {
             caption: 'entities.ormorgsector.views.pickupview.caption',
@@ -4388,18 +4231,6 @@ const router = new Router({
         component: () => import('@pages/pcm/orm-orgsector-ydbmpickup-view/orm-orgsector-ydbmpickup-view.vue'),
     },
     {
-        path: '/pcmydgzmxes/:pcmydgzmx?/type_gzceditview3/:type_gzceditview3?',
-        meta: {
-            caption: 'entities.pcmydgzmx.views.type_gzceditview3.caption',
-            parameters: [
-                { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                { pathName: 'type_gzceditview3', parameterName: 'type_gzceditview3' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-ydgzmx-type-gzcedit-view3/pcm-ydgzmx-type-gzcedit-view3.vue'),
-    },
-    {
         path: '/pcmydjpmxes/:pcmydjpmx?/ckeditview/:ckeditview?',
         meta: {
             caption: 'entities.pcmydjpmx.views.ckeditview.caption',
@@ -4410,6 +4241,18 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pcm/pcm-ydjpmx-ckedit-view/pcm-ydjpmx-ckedit-view.vue'),
+    },
+    {
+        path: '/pcmyddgmxes/:pcmyddgmx?/editview9/:editview9?',
+        meta: {
+            caption: 'entities.pcmyddgmx.views.editview9.caption',
+            parameters: [
+                { pathName: 'pcmyddgmxes', parameterName: 'pcmyddgmx' },
+                { pathName: 'editview9', parameterName: 'editview9' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/pcm/pcm-yddgmx-edit-view9/pcm-yddgmx-edit-view9.vue'),
     },
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
@@ -4475,6 +4318,18 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pcm/pcm-ydtxmx-jlgrid-view/pcm-ydtxmx-jlgrid-view.vue'),
+    },
+    {
+        path: '/pcmydntmxes/:pcmydntmx?/editview9/:editview9?',
+        meta: {
+            caption: 'entities.pcmydntmx.views.editview9.caption',
+            parameters: [
+                { pathName: 'pcmydntmxes', parameterName: 'pcmydntmx' },
+                { pathName: 'editview9', parameterName: 'editview9' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/pcm/pcm-ydntmx-edit-view9/pcm-ydntmx-edit-view9.vue'),
     },
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ydbmpickupgridview/:ydbmpickupgridview?',
@@ -4576,18 +4431,6 @@ const router = new Router({
         component: () => import('@pages/pcm/pim-person-pickup-view/pim-person-pickup-view.vue'),
     },
     {
-        path: '/pcmydjzmxes/:pcmydjzmx?/editview/:editview?',
-        meta: {
-            caption: 'entities.pcmydjzmx.views.editview.caption',
-            parameters: [
-                { pathName: 'pcmydjzmxes', parameterName: 'pcmydjzmx' },
-                { pathName: 'editview', parameterName: 'editview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-ydjzmx-edit-view/pcm-ydjzmx-edit-view.vue'),
-    },
-    {
         path: '/ormorgs/:ormorg?/pickupgridview/:pickupgridview?',
         meta: {
             caption: 'entities.ormorg.views.pickupgridview.caption',
@@ -4610,18 +4453,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pcm/pcm-ydjzmx-xzedit-view/pcm-ydjzmx-xzedit-view.vue'),
-    },
-    {
-        path: '/pcmprofiles/:pcmprofile?/gzjryeditview/:gzjryeditview?',
-        meta: {
-            caption: 'entities.pcmprofile.views.gzjryeditview.caption',
-            parameters: [
-                { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
-                { pathName: 'gzjryeditview', parameterName: 'gzjryeditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-profile-gzjryedit-view/pcm-profile-gzjryedit-view.vue'),
     },
     {
         path: '/ormorgs/:ormorg?/fpxxpickupgridview/:fpxxpickupgridview?',
@@ -4711,20 +4542,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pcm/pcm-ydntmx-ntjlgrid-view/pcm-ydntmx-ntjlgrid-view.vue'),
-    },
-    {
-        path: '/pcmydgzmxes/:pcmydgzmx?/gzrglgridview/:gzrglgridview?',
-        meta: {
-            caption: 'entities.pcmydgzmx.views.gzrglgridview.caption',
-            imgPath: '../../../img/pzgl/1/guazhiguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                { pathName: 'gzrglgridview', parameterName: 'gzrglgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-ydgzmx-gzrglgrid-view/pcm-ydgzmx-gzrglgrid-view.vue'),
     },
     {
         path: '/pcmydjzmxes/:pcmydjzmx?/jlckeditview/:jlckeditview?',

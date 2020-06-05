@@ -63,9 +63,6 @@ export default class PickupViewpickupviewpanelModel {
         name: 'distirbutionid',
       },
       {
-        name: 'finished',
-      },
-      {
         name: 'pcmydmxtype',
       },
       {
@@ -113,6 +110,9 @@ export default class PickupViewpickupviewpanelModel {
       },
       {
         name: 'pimpersonname',
+      },
+      {
+        name: 'isfinished',
       },
     ]
   }

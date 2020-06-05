@@ -18,9 +18,6 @@ export default class MPickupViewpickupviewpanelModel {
         name: 'nl',
       },
       {
-        name: 'finished',
-      },
-      {
         name: 'checkstatus',
       },
       {
@@ -125,6 +122,9 @@ export default class MPickupViewpickupviewpanelModel {
       },
       {
         name: 'lzmtrid',
+      },
+      {
+        name: 'isfinished',
       },
     ]
   }

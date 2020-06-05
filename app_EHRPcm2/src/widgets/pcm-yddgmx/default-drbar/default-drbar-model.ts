@@ -72,9 +72,6 @@ export default class DefaultModel {
         name: 'dglx',
       },
       {
-        name: 'finished',
-      },
-      {
         name: 'shortname',
       },
       {
@@ -128,6 +125,9 @@ export default class DefaultModel {
       },
       {
         name: 'ormorgsectorid',
+      },
+      {
+        name: 'isfinished',
       },
     ]
   }

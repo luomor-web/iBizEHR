@@ -131,9 +131,9 @@ export default class JLEditFormModel {
         dataType: 'LONGTEXT_1000',
       },
       {
-        name: 'finished',
-        prop: 'finished',
-        dataType: 'INHERIT',
+        name: 'isfinished',
+        prop: 'isfinished',
+        dataType: 'SSCODELIST',
       },
       {
         name: 'pcmydbxmxid',

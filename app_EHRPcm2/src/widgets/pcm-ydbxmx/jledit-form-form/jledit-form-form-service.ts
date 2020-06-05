@@ -2,7 +2,6 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import PcmYdbxmxService from '@/service/pcm-ydbxmx/pcm-ydbxmx-service';
 import JLEditFormModel from './jledit-form-form-model';
-import PimPersonService from '@/service/pim-person/pim-person-service';
 
 
 /**
@@ -43,14 +42,6 @@ export default class JLEditFormService extends ControlService {
     }
 
     /**
-     * 人员信息服务对象
-     *
-     * @type {PimPersonService}
-     * @memberof JLEditFormService
-     */
-    public pimpersonService: PimPersonService = new PimPersonService();
-
-    /**
      * 处理数据
      *
      * @private
@@ -89,9 +80,6 @@ export default class JLEditFormService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'PimPersonService') && Object.is(interfaceName, 'FetchYXZFPRYDS')) {
-            return this.doItems(this.pimpersonService.FetchYXZFPRYDS(JSON.parse(JSON.stringify(context)),data, isloading), 'pimpersonid', 'pimperson');
-        }
 
         return Promise.reject([])
     }

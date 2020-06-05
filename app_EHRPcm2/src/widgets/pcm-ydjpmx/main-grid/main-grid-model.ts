@@ -79,7 +79,7 @@ export default class MainModel {
         {
           name: 'sfhmd',
           prop: 'sfhmd',
-          dataType: 'YESNO',
+          dataType: 'INT',
         },
         {
           name: 'lxdh',

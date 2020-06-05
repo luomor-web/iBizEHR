@@ -118,9 +118,6 @@ export default class DefaultModel {
         name: 'zzdzs',
       },
       {
-        name: 'finished',
-      },
-      {
         name: 'yrank',
       },
       {
@@ -134,6 +131,9 @@ export default class DefaultModel {
       },
       {
         name: 'sfzfbcj',
+      },
+      {
+        name: 'isfinished',
       },
     ]
   }

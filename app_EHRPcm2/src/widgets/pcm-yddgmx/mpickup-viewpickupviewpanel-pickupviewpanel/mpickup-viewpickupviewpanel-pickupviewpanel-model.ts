@@ -72,9 +72,6 @@ export default class MPickupViewpickupviewpanelModel {
         name: 'dglx',
       },
       {
-        name: 'finished',
-      },
-      {
         name: 'shortname',
       },
       {
@@ -128,6 +125,9 @@ export default class MPickupViewpickupviewpanelModel {
       },
       {
         name: 'ormorgsectorid',
+      },
+      {
+        name: 'isfinished',
       },
     ]
   }

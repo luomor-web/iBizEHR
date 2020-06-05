@@ -34,21 +34,33 @@
 <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.pcmddsqdmx.lgsqmx_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='ormorgname'
-:value="data.ormorgname" style=""></app-span>
+:value="data.ormorgname"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ormorgsectorname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgsectorname' :itemRules="this.rules.ormorgsectorname" class='' :caption="$t('entities.pcmddsqdmx.lgsqmx_form.details.ormorgsectorname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgsectorname.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='ormorgsectorname'
-:value="data.ormorgsectorname" style=""></app-span>
+:value="data.ormorgsectorname"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ormygw.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormygw' :itemRules="this.rules.ormygw" class='' :caption="$t('entities.pcmddsqdmx.lgsqmx_form.details.ormygw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormygw.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='ormygw'
-:value="data.ormygw" style=""></app-span>
+:value="data.ormygw"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>

@@ -207,6 +207,7 @@ public class SocSelfarebasemxServiceImpl extends ServiceImpl<SocSelfarebasemxMap
         }
     }
 
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);

@@ -151,9 +151,9 @@ export default class MainModel {
         dataType: 'PICKUP',
       },
       {
-        name: 'finished',
-        prop: 'finished',
-        dataType: 'INHERIT',
+        name: 'isfinished',
+        prop: 'isfinished',
+        dataType: 'YESNO',
       },
       {
         name: 'pcmydjdmxid',

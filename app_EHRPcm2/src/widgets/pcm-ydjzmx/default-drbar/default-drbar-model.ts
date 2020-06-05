@@ -37,9 +37,6 @@ export default class DefaultModel {
         name: 'pimdistirbutionid',
       },
       {
-        name: 'finished',
-      },
-      {
         name: 'jsrq',
       },
       {
@@ -149,6 +146,9 @@ export default class DefaultModel {
       },
       {
         name: 'ormorgsectorid',
+      },
+      {
+        name: 'isfinished',
       },
     ]
   }

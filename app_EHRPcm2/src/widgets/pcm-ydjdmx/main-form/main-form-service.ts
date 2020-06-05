@@ -2,11 +2,6 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import PcmYdjdmxService from '@/service/pcm-ydjdmx/pcm-ydjdmx-service';
 import MainModel from './main-form-model';
-import PimPersonService from '@/service/pim-person/pim-person-service';
-import OrmOrgService from '@/service/orm-org/orm-org-service';
-import OrmOrgsectorService from '@/service/orm-orgsector/orm-orgsector-service';
-import OrmDutyService from '@/service/orm-duty/orm-duty-service';
-import OrmPostService from '@/service/orm-post/orm-post-service';
 
 
 /**
@@ -47,46 +42,6 @@ export default class MainService extends ControlService {
     }
 
     /**
-     * 人员信息服务对象
-     *
-     * @type {PimPersonService}
-     * @memberof MainService
-     */
-    public pimpersonService: PimPersonService = new PimPersonService();
-
-    /**
-     * 组织管理服务对象
-     *
-     * @type {OrmOrgService}
-     * @memberof MainService
-     */
-    public ormorgService: OrmOrgService = new OrmOrgService();
-
-    /**
-     * 部门管理服务对象
-     *
-     * @type {OrmOrgsectorService}
-     * @memberof MainService
-     */
-    public ormorgsectorService: OrmOrgsectorService = new OrmOrgsectorService();
-
-    /**
-     * 职务管理服务对象
-     *
-     * @type {OrmDutyService}
-     * @memberof MainService
-     */
-    public ormdutyService: OrmDutyService = new OrmDutyService();
-
-    /**
-     * 岗位服务对象
-     *
-     * @type {OrmPostService}
-     * @memberof MainService
-     */
-    public ormpostService: OrmPostService = new OrmPostService();
-
-    /**
      * 处理数据
      *
      * @private
@@ -125,21 +80,6 @@ export default class MainService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'PimPersonService') && Object.is(interfaceName, 'FetchYXZFPRYDS')) {
-            return this.doItems(this.pimpersonService.FetchYXZFPRYDS(JSON.parse(JSON.stringify(context)),data, isloading), 'pimpersonid', 'pimperson');
-        }
-        if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchDefault')) {
-            return this.doItems(this.ormorgService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
-        }
-        if (Object.is(serviceName, 'OrmOrgsectorService') && Object.is(interfaceName, 'FetchDefault')) {
-            return this.doItems(this.ormorgsectorService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgsectorid', 'ormorgsector');
-        }
-        if (Object.is(serviceName, 'OrmDutyService') && Object.is(interfaceName, 'FetchDefault')) {
-            return this.doItems(this.ormdutyService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'ormdutyid', 'ormduty');
-        }
-        if (Object.is(serviceName, 'OrmPostService') && Object.is(interfaceName, 'FetchDefault')) {
-            return this.doItems(this.ormpostService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'ormpostid', 'ormpost');
-        }
 
         return Promise.reject([])
     }

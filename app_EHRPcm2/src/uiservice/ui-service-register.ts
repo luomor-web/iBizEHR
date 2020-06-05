@@ -56,6 +56,7 @@ export class UIServiceRegister {
         this.allUIService.set('pcmrecruitment', () => import('@/uiservice/pcm-recruitment/pcm-recruitment-ui-service'));
         this.allUIService.set('pcmtxfpsq', () => import('@/uiservice/pcm-txfpsq/pcm-txfpsq-ui-service'));
         this.allUIService.set('pcmddsqdmx', () => import('@/uiservice/pcm-ddsqdmx/pcm-ddsqdmx-ui-service'));
+        this.allUIService.set('pcmreason', () => import('@/uiservice/pcm-reason/pcm-reason-ui-service'));
         this.allUIService.set('pcmydntmx', () => import('@/uiservice/pcm-ydntmx/pcm-ydntmx-ui-service'));
         this.allUIService.set('pcmydlzmx', () => import('@/uiservice/pcm-ydlzmx/pcm-ydlzmx-ui-service'));
         this.allUIService.set('pcmydbxmx', () => import('@/uiservice/pcm-ydbxmx/pcm-ydbxmx-ui-service'));

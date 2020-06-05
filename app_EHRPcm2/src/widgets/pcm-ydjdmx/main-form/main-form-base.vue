@@ -1,39 +1,30 @@
 <template>
-    <i-form :model="this.data" class='app-form' ref='form'  id='pcmydjdmx_main' style="">
+    <i-form :model="this.data" class='app-form info-form-mode' ref='form'  id='pcmydjdmx_main' style="">
     <input style="display:none;" />
     <row >
             
 <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydjdmx.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydjdmx.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="2" :isInfoGroupMode="true" >    
     <row>
         <i-col v-show="detailsModel.ygbh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ygbh' :itemRules="this.rules.ygbh" class='' :caption="$t('entities.pcmydjdmx.main_form.details.ygbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygbh.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.ygbh"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.ygbh.disabled" type='text'  style=""></input-box>
+    <app-span   name='ygbh'
+:value="data.ygbh"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pcmydjdmx.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
+    <app-span   name='pimpersonname'
+:value="data.pimpersonname"   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.pimpersonname.disabled"
-  name='pimpersonname'
-  deMajorField='pimpersonname'
-  deKeyField='pimperson'
-  :service="service"
-  :acParams="{ serviceName: 'PimPersonService', interfaceName: 'FetchYXZFPRYDS'}"
-  valueitem='pimpersonid' 
-  :value="data.pimpersonname" 
-  editortype="" 
-  :pickupView="{ viewname: 'pim-person-yxzfppickup-view', title: $t('entities.pimperson.views.yxzfppickupview.title'), deResParameters: [], parameters: [{ pathName: 'pimpeople', parameterName: 'pimperson' }, { pathName: 'yxzfppickupview', parameterName: 'yxzfppickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -67,117 +58,71 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel2.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel2.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydjdmx.main_form.details.grouppanel2')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel2.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydjdmx.main_form.details.grouppanel2')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="true" >    
     <row>
         <i-col v-show="detailsModel.jdksrq.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='jdksrq' :itemRules="this.rules.jdksrq" class='' :caption="$t('entities.pcmydjdmx.main_form.details.jdksrq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jdksrq.error" :isEmptyCaption="false" labelPos="LEFT">
-    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.jdksrq" :disabled="detailsModel.jdksrq.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.jdksrq = val1 }"></date-picker>
+    <app-span   name='jdksrq'
+:value="data.jdksrq"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.jdjsrq.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='jdjsrq' :itemRules="this.rules.jdjsrq" class='' :caption="$t('entities.pcmydjdmx.main_form.details.jdjsrq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jdjsrq.error" :isEmptyCaption="false" labelPos="LEFT">
-    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.jdjsrq" :disabled="detailsModel.jdjsrq.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.jdjsrq = val1 }"></date-picker>
+    <app-span   name='jdjsrq'
+:value="data.jdjsrq"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.pcmydjdmx.main_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
+    <app-span   name='ormorgname'
+:value="data.ormorgname"   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.ormorgname.disabled"
-  name='ormorgname'
-  deMajorField='orgname'
-  deKeyField='ormorg'
-  :service="service"
-  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchDefault'}"
-  valueitem='ormorgid' 
-  :value="data.ormorgname" 
-  editortype="" 
-  :pickupView="{ viewname: 'orm-org-pickup-view', title: $t('entities.ormorg.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ormorgsectorname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ormorgsectorname' :itemRules="this.rules.ormorgsectorname" class='' :caption="$t('entities.pcmydjdmx.main_form.details.ormorgsectorname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgsectorname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
+    <app-span   name='ormorgsectorname'
+:value="data.ormorgsectorname"   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.ormorgsectorname.disabled"
-  name='ormorgsectorname'
-  deMajorField='orgsectorname'
-  deKeyField='ormorgsector'
-  :service="service"
-  :acParams="{ serviceName: 'OrmOrgsectorService', interfaceName: 'FetchDefault'}"
-  valueitem='ormorgsectorid' 
-  :value="data.ormorgsectorname" 
-  editortype="" 
-  :pickupView="{ viewname: 'orm-orgsector-ydbmpickup-view', title: $t('entities.ormorgsector.views.ydbmpickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'ydbmpickupview', parameterName: 'ydbmpickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ormdutyname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ormdutyname' :itemRules="this.rules.ormdutyname" class='' :caption="$t('entities.pcmydjdmx.main_form.details.ormdutyname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormdutyname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
+    <app-span   name='ormdutyname'
+:value="data.ormdutyname"   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.ormdutyname.disabled"
-  name='ormdutyname'
-  deMajorField='ormdutyname'
-  deKeyField='ormduty'
-  :service="service"
-  :acParams="{ serviceName: 'OrmDutyService', interfaceName: 'FetchDefault'}"
-  valueitem='ormdutyid' 
-  :value="data.ormdutyname" 
-  editortype="" 
-  :pickupView="{ viewname: 'orm-duty-pickup-view', title: $t('entities.ormduty.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormduties', parameterName: 'ormduty' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ormpostname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ormpostname' :itemRules="this.rules.ormpostname" class='' :caption="$t('entities.pcmydjdmx.main_form.details.ormpostname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormpostname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
+    <app-span   name='ormpostname'
+:value="data.ormpostname"   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.ormpostname.disabled"
-  name='ormpostname'
-  deMajorField='ormpostname'
-  deKeyField='ormpost'
-  :service="service"
-  :acParams="{ serviceName: 'OrmPostService', interfaceName: 'FetchDefault'}"
-  valueitem='ormpostid' 
-  :value="data.ormpostname" 
-  editortype="" 
-  :pickupView="{ viewname: 'orm-post-pickup-view', title: $t('entities.ormpost.views.pickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormposts', parameterName: 'ormpost' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -511,7 +456,7 @@ export default class MainBase extends Vue implements ControlInterface {
         ormdutyid: null,
         ormpostname: null,
         ormpostid: null,
-        finished: null,
+        isfinished: null,
         pcmydjdmxid: null,
         pcmydjdmx:null,
     };
@@ -618,8 +563,8 @@ export default class MainBase extends Vue implements ControlInterface {
         pimpersonname: [
             { type: 'string', message: '员工姓名 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '员工姓名 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '员工姓名 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '员工姓名 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '员工姓名 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '员工姓名 值不能为空', trigger: 'blur' },
         ],
         zz: [
             { type: 'string', message: '所属组织 值必须为字符串类型', trigger: 'change' },
@@ -660,20 +605,20 @@ export default class MainBase extends Vue implements ControlInterface {
         jdksrq: [
             { type: 'string', message: '借调开始日期 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '借调开始日期 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '借调开始日期 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '借调开始日期 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '借调开始日期 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '借调开始日期 值不能为空', trigger: 'blur' },
         ],
         jdjsrq: [
             { type: 'string', message: '借调结束日期 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '借调结束日期 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '借调结束日期 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '借调结束日期 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '借调结束日期 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '借调结束日期 值不能为空', trigger: 'blur' },
         ],
         ormorgname: [
             { type: 'string', message: '借调组织 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '借调组织 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '借调组织 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '借调组织 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '借调组织 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '借调组织 值不能为空', trigger: 'blur' },
         ],
         ormorgid: [
             { type: 'string', message: '借调组织标识 值必须为字符串类型', trigger: 'change' },
@@ -684,8 +629,8 @@ export default class MainBase extends Vue implements ControlInterface {
         ormorgsectorname: [
             { type: 'string', message: '借调部门 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '借调部门 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '借调部门 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '借调部门 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '借调部门 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '借调部门 值不能为空', trigger: 'blur' },
         ],
         ormorgsectorid: [
             { type: 'string', message: '借调部门标识 值必须为字符串类型', trigger: 'change' },
@@ -717,11 +662,11 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '借调岗位标识 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '借调岗位标识 值不能为空', trigger: 'blur' },
         ],
-        finished: [
-            { type: 'number', message: '是否审核 值必须为数值类型', trigger: 'change' },
-            { type: 'number', message: '是否审核 值必须为数值类型', trigger: 'blur' },
-            { required: false, type: 'number', message: '是否审核 值不能为空', trigger: 'change' },
-            { required: false, type: 'number', message: '是否审核 值不能为空', trigger: 'blur' },
+        isfinished: [
+            { type: 'number', message: '是否完成 值必须为数值类型', trigger: 'change' },
+            { type: 'number', message: '是否完成 值必须为数值类型', trigger: 'blur' },
+            { required: false, type: 'number', message: '是否完成 值不能为空', trigger: 'change' },
+            { required: false, type: 'number', message: '是否完成 值不能为空', trigger: 'blur' },
         ],
         pcmydjdmxid: [
             { type: 'string', message: '异动借调明细标识 值必须为字符串类型', trigger: 'change' },
@@ -798,7 +743,7 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         ormpostid: new FormItemModel({ caption: '借调岗位标识', detailType: 'FORMITEM', name: 'ormpostid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        finished: new FormItemModel({ caption: '是否审核', detailType: 'FORMITEM', name: 'finished', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        isfinished: new FormItemModel({ caption: '是否完成', detailType: 'FORMITEM', name: 'isfinished', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         pcmydjdmxid: new FormItemModel({ caption: '异动借调明细标识', detailType: 'FORMITEM', name: 'pcmydjdmxid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -1129,15 +1074,15 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 finished 值
+     * 监控表单属性 isfinished 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof Main
      */
-    @Watch('data.finished')
-    onFinishedChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'finished', newVal: newVal, oldVal: oldVal });
+    @Watch('data.isfinished')
+    onIsfinishedChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'isfinished', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -1544,7 +1489,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'pcmydjdmx_main',popTitle:'主编辑表单'});
+        _this.$print({id:'pcmydjdmx_main',popTitle:'主信息表单'});
     }
 
     /**
@@ -1598,7 +1543,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
-            this.$Notice.error({ title: '错误', desc: 'PcmYdjdmxEditView视图表单loadAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'PcmYdjdmxEditView9视图表单loadAction参数未配置' });
             return;
         }
         const arg: any = { ...opt };
@@ -1633,7 +1578,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
-            this.$Notice.error({ title: '错误', desc: 'PcmYdjdmxEditView视图表单loaddraftAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'PcmYdjdmxEditView9视图表单loaddraftAction参数未配置' });
             return;
         }
         const arg: any = { ...opt } ;
@@ -1695,7 +1640,7 @@ export default class MainBase extends Vue implements ControlInterface {
         const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
         if(!action){
             let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
-            this.$Notice.error({ title: '错误', desc: 'PcmYdjdmxEditView视图表单'+actionName+'参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'PcmYdjdmxEditView9视图表单'+actionName+'参数未配置' });
             return;
         }
         Object.assign(arg,{viewparams:this.viewparams});
@@ -1759,7 +1704,7 @@ export default class MainBase extends Vue implements ControlInterface {
             const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
             if(!action){
                 let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
-                this.$Notice.error({ title: '错误', desc: 'PcmYdjdmxEditView视图表单'+actionName+'参数未配置' });
+                this.$Notice.error({ title: '错误', desc: 'PcmYdjdmxEditView9视图表单'+actionName+'参数未配置' });
                 return;
             }
             Object.assign(arg,{viewparams:this.viewparams});
@@ -1809,7 +1754,7 @@ export default class MainBase extends Vue implements ControlInterface {
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
             if(!this.removeAction){
-                this.$Notice.error({ title: '错误', desc: 'PcmYdjdmxEditView视图表单removeAction参数未配置' });
+                this.$Notice.error({ title: '错误', desc: 'PcmYdjdmxEditView9视图表单removeAction参数未配置' });
                 return;
             }
             const arg: any = opt[0];
@@ -2123,9 +2068,6 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public createDefault(){                    
-        if (this.data.hasOwnProperty('finished')) {
-            this.data['finished'] = 0;
-        }
     }
 
     /**

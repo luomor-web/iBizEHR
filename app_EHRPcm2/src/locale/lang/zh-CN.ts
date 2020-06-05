@@ -1,28 +1,29 @@
-import pcmydjzmx_zh_CN from '@locale/lanres/pcm-ydjzmx/pcm-ydjzmx_zh_CN';
-import pcmjxsgz_zh_CN from '@locale/lanres/pcm-jxsgz/pcm-jxsgz_zh_CN';
-import ormpost_zh_CN from '@locale/lanres/orm-post/orm-post_zh_CN';
-import pcmydtxmx_zh_CN from '@locale/lanres/pcm-ydtxmx/pcm-ydtxmx_zh_CN';
-import pcmydgzmx_zh_CN from '@locale/lanres/pcm-ydgzmx/pcm-ydgzmx_zh_CN';
-import ormorg_zh_CN from '@locale/lanres/orm-org/orm-org_zh_CN';
-import pimdistirbution_zh_CN from '@locale/lanres/pim-distirbution/pim-distirbution_zh_CN';
-import pcmyddgmx_zh_CN from '@locale/lanres/pcm-yddgmx/pcm-yddgmx_zh_CN';
-import ormduty_zh_CN from '@locale/lanres/orm-duty/orm-duty_zh_CN';
-import pcmtxbz_zh_CN from '@locale/lanres/pcm-txbz/pcm-txbz_zh_CN';
-import pcmydjpmx_zh_CN from '@locale/lanres/pcm-ydjpmx/pcm-ydjpmx_zh_CN';
-import pcmydjdmx_zh_CN from '@locale/lanres/pcm-ydjdmx/pcm-ydjdmx_zh_CN';
-import pcmddsqd_zh_CN from '@locale/lanres/pcm-ddsqd/pcm-ddsqd_zh_CN';
-import pcmydmx_zh_CN from '@locale/lanres/pcm-ydmx/pcm-ydmx_zh_CN';
-import pcmrecruitment_zh_CN from '@locale/lanres/pcm-recruitment/pcm-recruitment_zh_CN';
-import pcmtxfpsq_zh_CN from '@locale/lanres/pcm-txfpsq/pcm-txfpsq_zh_CN';
-import pcmddsqdmx_zh_CN from '@locale/lanres/pcm-ddsqdmx/pcm-ddsqdmx_zh_CN';
-import pcmydntmx_zh_CN from '@locale/lanres/pcm-ydntmx/pcm-ydntmx_zh_CN';
-import pcmydlzmx_zh_CN from '@locale/lanres/pcm-ydlzmx/pcm-ydlzmx_zh_CN';
-import pcmydbxmx_zh_CN from '@locale/lanres/pcm-ydbxmx/pcm-ydbxmx_zh_CN';
-import pcmnotice_zh_CN from '@locale/lanres/pcm-notice/pcm-notice_zh_CN';
-import pcmprofile_zh_CN from '@locale/lanres/pcm-profile/pcm-profile_zh_CN';
-import pimfaminfo_zh_CN from '@locale/lanres/pim-faminfo/pim-faminfo_zh_CN';
-import pimperson_zh_CN from '@locale/lanres/pim-person/pim-person_zh_CN';
-import ormorgsector_zh_CN from '@locale/lanres/orm-orgsector/orm-orgsector_zh_CN';
+import pcmydjzmx_zh_CN from '@locale/lanres/entities/pcm-ydjzmx/pcm-ydjzmx_zh_CN';
+import pcmjxsgz_zh_CN from '@locale/lanres/entities/pcm-jxsgz/pcm-jxsgz_zh_CN';
+import ormpost_zh_CN from '@locale/lanres/entities/orm-post/orm-post_zh_CN';
+import pcmydtxmx_zh_CN from '@locale/lanres/entities/pcm-ydtxmx/pcm-ydtxmx_zh_CN';
+import pcmydgzmx_zh_CN from '@locale/lanres/entities/pcm-ydgzmx/pcm-ydgzmx_zh_CN';
+import ormorg_zh_CN from '@locale/lanres/entities/orm-org/orm-org_zh_CN';
+import pimdistirbution_zh_CN from '@locale/lanres/entities/pim-distirbution/pim-distirbution_zh_CN';
+import pcmyddgmx_zh_CN from '@locale/lanres/entities/pcm-yddgmx/pcm-yddgmx_zh_CN';
+import ormduty_zh_CN from '@locale/lanres/entities/orm-duty/orm-duty_zh_CN';
+import pcmtxbz_zh_CN from '@locale/lanres/entities/pcm-txbz/pcm-txbz_zh_CN';
+import pcmydjpmx_zh_CN from '@locale/lanres/entities/pcm-ydjpmx/pcm-ydjpmx_zh_CN';
+import pcmydjdmx_zh_CN from '@locale/lanres/entities/pcm-ydjdmx/pcm-ydjdmx_zh_CN';
+import pcmddsqd_zh_CN from '@locale/lanres/entities/pcm-ddsqd/pcm-ddsqd_zh_CN';
+import pcmydmx_zh_CN from '@locale/lanres/entities/pcm-ydmx/pcm-ydmx_zh_CN';
+import pcmrecruitment_zh_CN from '@locale/lanres/entities/pcm-recruitment/pcm-recruitment_zh_CN';
+import pcmtxfpsq_zh_CN from '@locale/lanres/entities/pcm-txfpsq/pcm-txfpsq_zh_CN';
+import pcmddsqdmx_zh_CN from '@locale/lanres/entities/pcm-ddsqdmx/pcm-ddsqdmx_zh_CN';
+import pcmreason_zh_CN from '@locale/lanres/entities/pcm-reason/pcm-reason_zh_CN';
+import pcmydntmx_zh_CN from '@locale/lanres/entities/pcm-ydntmx/pcm-ydntmx_zh_CN';
+import pcmydlzmx_zh_CN from '@locale/lanres/entities/pcm-ydlzmx/pcm-ydlzmx_zh_CN';
+import pcmydbxmx_zh_CN from '@locale/lanres/entities/pcm-ydbxmx/pcm-ydbxmx_zh_CN';
+import pcmnotice_zh_CN from '@locale/lanres/entities/pcm-notice/pcm-notice_zh_CN';
+import pcmprofile_zh_CN from '@locale/lanres/entities/pcm-profile/pcm-profile_zh_CN';
+import pimfaminfo_zh_CN from '@locale/lanres/entities/pim-faminfo/pim-faminfo_zh_CN';
+import pimperson_zh_CN from '@locale/lanres/entities/pim-person/pim-person_zh_CN';
+import ormorgsector_zh_CN from '@locale/lanres/entities/orm-orgsector/orm-orgsector_zh_CN';
 import components_zh_CN from '@locale/lanres/components/components_zh_CN';
 import codelist_zh_CN from '@locale/lanres/codelist/codelist_zh_CN';
 import userCustom_zh_CN from '@locale/lanres/userCustom/userCustom_zh_CN';
@@ -84,8 +85,6 @@ export default {
                 menuitem1: '调动管理',
                 menuitem2: '借调管理',
                 menuitem3: '兼职管理',
-                menuitem5: '挂职调入',
-                menuitem6: '挂职调出',
                 menuitem7: '待岗管理',
                 menuitem8: '内退管理',
                 menuitem9: '病休管理',
@@ -115,6 +114,7 @@ export default {
         pcmrecruitment: pcmrecruitment_zh_CN,
         pcmtxfpsq: pcmtxfpsq_zh_CN,
         pcmddsqdmx: pcmddsqdmx_zh_CN,
+        pcmreason: pcmreason_zh_CN,
         pcmydntmx: pcmydntmx_zh_CN,
         pcmydlzmx: pcmydlzmx_zh_CN,
         pcmydbxmx: pcmydbxmx_zh_CN,

@@ -151,9 +151,9 @@ export default class XZJZEditFormModel {
         dataType: 'PICKUPTEXT',
       },
       {
-        name: 'finished',
-        prop: 'finished',
-        dataType: 'INHERIT',
+        name: 'isfinished',
+        prop: 'isfinished',
+        dataType: 'SSCODELIST',
       },
       {
         name: 'pcmydjzmxid',

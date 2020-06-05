@@ -52,7 +52,11 @@
 <i-col v-show="detailsModel.ormyzw.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='ormyzw' :itemRules="this.rules.ormyzw" class='' :caption="$t('entities.pcmddsqdmx.zzsqjdform_form.details.ormyzw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormyzw.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='ormyzw'
-:value="data.ormyzw" style=""></app-span>
+:value="data.ormyzw"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>

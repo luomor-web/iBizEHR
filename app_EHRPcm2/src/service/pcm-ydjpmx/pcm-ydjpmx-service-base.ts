@@ -1,5 +1,6 @@
 import { Http,Util } from '@/utils';
 import EntityService from '../entity-service';
+import SetFinishedLogic from '@/service/pcm-ydjpmx/set-finished-logic';
 
 
 
@@ -125,6 +126,21 @@ export default class PcmYdjpmxServiceBase extends EntityService {
     }
 
     /**
+     * IsFinished接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof PcmYdjpmxServiceBase
+     */
+    public async IsFinished(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        let appLogic:SetFinishedLogic = new SetFinishedLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
+        const result = await appLogic.onExecute(context,data,isloading?true:false);
+        return {status:200,data:result};
+    }
+
+    /**
      * Get接口方法
      *
      * @param {*} [context={}]
@@ -137,19 +153,6 @@ export default class PcmYdjpmxServiceBase extends EntityService {
             let res:any = await Http.getInstance().get(`/pcmydjpmxes/${context.pcmydjpmx}`,isloading);
             return res;
 
-    }
-
-    /**
-     * JPWC接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof PcmYdjpmxServiceBase
-     */
-    public async JPWC(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().post(`/pcmydjpmxes/${context.pcmydjpmx}/jpwc`,data,isloading);
     }
 
     /**

@@ -24,6 +24,7 @@ import './entity/pcm-ydmxs/pcm-ydmxs';
 import './entity/pcm-recruitments/pcm-recruitments';
 import './entity/pcm-txfpsqs/pcm-txfpsqs';
 import './entity/pcm-ddsqdmxs/pcm-ddsqdmxs';
+import './entity/pcm-reasons/pcm-reasons';
 import './entity/pcm-ydntmxs/pcm-ydntmxs';
 import './entity/pcm-ydlzmxs/pcm-ydlzmxs';
 import './entity/pcm-ydbxmxs/pcm-ydbxmxs';

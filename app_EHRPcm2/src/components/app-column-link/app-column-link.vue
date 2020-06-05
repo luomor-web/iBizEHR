@@ -279,8 +279,8 @@ export default class AppColumnLink extends Vue {
             return false;
         }
         // 合并表单参数
-        arg.param = JSON.parse(JSON.stringify(this.viewparams));
-        arg.context = JSON.parse(JSON.stringify(this.context));
+        arg.param = this.viewparams ? JSON.parse(JSON.stringify(this.viewparams)) : {};
+        arg.context = this.context ? JSON.parse(JSON.stringify(this.context)) : {};
         return true;
     }
 

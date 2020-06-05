@@ -33,13 +33,33 @@
           </i-col>
           <i-col v-show="detailsModel.n_gw_eq.visible" :style="{}"  :sm="{ span: 6, offset: 0 }" :md="{ span: 6, offset: 0 }" :lg="{ span: 6, offset: 0 }" :xl="{ span: 6, offset: 0 }">
               <app-form-item name='n_gw_eq' :itemRules="this.rules.n_gw_eq" class='' :caption="$t('entities.pimperson.jxqygsearchform_searchform.details.n_gw_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_gw_eq.error" :isEmptyCaption="false" labelPos="RIGHT"> 
-               <dropdown-list v-model="data.n_gw_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_gw_eq.disabled"  tag='EhrCodeList0050' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_gw_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_gw_eq.disabled"  
+              tag='EhrCodeList0050' 
+              codelistType='DYNAMIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>
           <i-col v-show="detailsModel.n_duration_eq.visible" :style="{}"  :sm="{ span: 6, offset: 0 }" :md="{ span: 6, offset: 0 }" :lg="{ span: 6, offset: 0 }" :xl="{ span: 6, offset: 0 }">
               <app-form-item name='n_duration_eq' :itemRules="this.rules.n_duration_eq" class='' :caption="$t('entities.pimperson.jxqygsearchform_searchform.details.n_duration_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_duration_eq.error" :isEmptyCaption="false" labelPos="RIGHT"> 
-               <dropdown-list v-model="data.n_duration_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_duration_eq.disabled"  tag='EhrCodeList0187' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_duration_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_duration_eq.disabled"  
+              tag='EhrCodeList0187' 
+              codelistType='STATIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>
@@ -51,7 +71,17 @@
           </i-col>
           <i-col v-show="detailsModel.n_rzqd_eq.visible" :style="{}"  :sm="{ span: 6, offset: 0 }" :md="{ span: 6, offset: 0 }" :lg="{ span: 6, offset: 0 }" :xl="{ span: 6, offset: 0 }">
               <app-form-item name='n_rzqd_eq' :itemRules="this.rules.n_rzqd_eq" class='' :caption="$t('entities.pimperson.jxqygsearchform_searchform.details.n_rzqd_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_rzqd_eq.error" :isEmptyCaption="false" labelPos="RIGHT"> 
-               <dropdown-list v-model="data.n_rzqd_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_rzqd_eq.disabled"  tag='EhrCodeList0041' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_rzqd_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_rzqd_eq.disabled"  
+              tag='EhrCodeList0041' 
+              codelistType='DYNAMIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>

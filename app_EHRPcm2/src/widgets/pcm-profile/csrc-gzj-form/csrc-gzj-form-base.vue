@@ -23,7 +23,17 @@
 </i-col>
 <i-col v-show="detailsModel.certificatetype.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='certificatetype' :itemRules="this.rules.certificatetype" class='' :caption="$t('entities.pcmprofile.csrc_gzj_form.details.certificatetype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.certificatetype.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.certificatetype" :data="data" :itemParam="{}" :disabled="detailsModel.certificatetype.disabled"  tag='EhrCodeList0231' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.certificatetype" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.certificatetype.disabled"  
+    tag='EhrCodeList0231' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -47,13 +57,33 @@
 </i-col>
 <i-col v-show="detailsModel.gender.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='gender' :itemRules="this.rules.gender" class='' :caption="$t('entities.pcmprofile.csrc_gzj_form.details.gender')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gender.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.gender" :data="data" :itemParam="{}" :disabled="detailsModel.gender.disabled"  tag='EhrCodeList0072' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.gender" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.gender.disabled"  
+    tag='EhrCodeList0072' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.bloodtype.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='bloodtype' :itemRules="this.rules.bloodtype" class='' :caption="$t('entities.pcmprofile.csrc_gzj_form.details.bloodtype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bloodtype.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.bloodtype" :data="data" :itemParam="{}" :disabled="detailsModel.bloodtype.disabled"  tag='EhrCodeList0018' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.bloodtype" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.bloodtype.disabled"  
+    tag='EhrCodeList0018' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -93,19 +123,49 @@
 </i-col>
 <i-col v-show="detailsModel.wedstate.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='wedstate' :itemRules="this.rules.wedstate" class='' :caption="$t('entities.pcmprofile.csrc_gzj_form.details.wedstate')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.wedstate.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.wedstate" :data="data" :itemParam="{}" :disabled="detailsModel.wedstate.disabled"  tag='EhrCodeList0075' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.wedstate" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.wedstate.disabled"  
+    tag='EhrCodeList0075' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.nation.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='nation' :itemRules="this.rules.nation" class='' :caption="$t('entities.pcmprofile.csrc_gzj_form.details.nation')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nation.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.nation" :data="data" :itemParam="{}" :disabled="detailsModel.nation.disabled"  tag='EhrCodeList0066' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.nation" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.nation.disabled"  
+    tag='EhrCodeList0066' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.hklx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='hklx' :itemRules="this.rules.hklx" class='' :caption="$t('entities.pcmprofile.csrc_gzj_form.details.hklx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hklx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.hklx" :data="data" :itemParam="{}" :disabled="detailsModel.hklx.disabled"  tag='EhrCodeList0070' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.hklx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.hklx.disabled"  
+    tag='EhrCodeList0070' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -130,7 +190,17 @@
 </i-col>
 <i-col v-show="detailsModel.rpr.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='rpr' :itemRules="this.rules.rpr" class='' :caption="$t('entities.pcmprofile.csrc_gzj_form.details.rpr')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rpr.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.rpr" :data="data" :itemParam="{}" :disabled="detailsModel.rpr.disabled"  tag='EhrCodeList0001' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.rpr" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.rpr.disabled"  
+    tag='EhrCodeList0001' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -187,7 +257,17 @@
     <row>
         <i-col v-show="detailsModel.polity.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='polity' :itemRules="this.rules.polity" class='' :caption="$t('entities.pcmprofile.csrc_gzj_form.details.polity')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.polity.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.polity" :data="data" :itemParam="{}" :disabled="detailsModel.polity.disabled"  tag='EhrCodeList0029' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.polity" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.polity.disabled"  
+    tag='EhrCodeList0029' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -201,7 +281,17 @@
     <row>
         <i-col v-show="detailsModel.yglx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='yglx' :itemRules="this.rules.yglx" class='' :caption="$t('entities.pcmprofile.csrc_gzj_form.details.yglx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yglx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.yglx" :data="data" :itemParam="{}" :disabled="detailsModel.yglx.disabled"  tag='EhrCodeList0096' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.yglx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.yglx.disabled"  
+    tag='EhrCodeList0096' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

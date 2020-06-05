@@ -84,7 +84,7 @@ export default class JPGLModel {
         {
           name: 'sfhmd',
           prop: 'sfhmd',
-          dataType: 'YESNO',
+          dataType: 'INT',
         },
         {
           name: 'lxdh',

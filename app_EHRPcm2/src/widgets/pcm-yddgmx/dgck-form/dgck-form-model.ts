@@ -146,13 +146,13 @@ export default class DGCKModel {
         dataType: 'LONGTEXT_1000',
       },
       {
-        name: 'finished',
-        prop: 'finished',
-        dataType: 'INHERIT',
-      },
-      {
         name: 'dglx',
         prop: 'dglx',
+        dataType: 'SSCODELIST',
+      },
+      {
+        name: 'isfinished',
+        prop: 'isfinished',
         dataType: 'SSCODELIST',
       },
       {

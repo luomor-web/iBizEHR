@@ -275,26 +275,30 @@ export default class IBizGroupPicker extends Vue {
 </script>
 
 <style lang="less">
-.ibiz-group-container {
-    display: flex;
-    height: calc(100% - 65px);
-    .ibiz-group-tree {
-        width: 400px;
-        border-right: 1px solid #ddd;
-        padding: 0 10px;
-        overflow: auto;
-        height: 100%;
-    }
-    .ibiz-group-content {
-        flex-grow: 1;
-        padding: 0 10px;
-        overflow: auto;
-        height: 100%;
-    }
-}
-.ibiz-group-footer {
-    padding: 16px;
-    text-align: right;
-    border-top: 1px solid #ddd;
+.ibiz-group-picker{
+  width: 100%;
+  height: 100%;
+  .ibiz-group-container {
+      display: flex;
+      height: calc(100% - 65px);
+      .ibiz-group-tree {
+          min-width: 200px;
+          border-right: 1px solid #ddd;
+          padding: 0 34px 0 10px;
+          overflow: auto;
+          height: 100%;
+      }
+      .ibiz-group-content {
+          flex-grow: 1;
+          padding: 0 10px;
+          overflow: auto;
+          height: 100%;
+      }
+  }
+  .ibiz-group-footer {
+      padding: 16px;
+      text-align: right;
+      border-top: 1px solid #ddd;
+  }
 }
 </style>

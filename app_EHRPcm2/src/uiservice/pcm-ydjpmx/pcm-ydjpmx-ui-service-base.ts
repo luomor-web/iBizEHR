@@ -84,6 +84,7 @@ export default class PcmYdjpmxUIServiceBase extends UIService {
         this.allViewMap.set('REDIRECTVIEW:',{viewname:'redirectview',srfappde:'pcmydjpmxes'});
         this.allViewMap.set(':',{viewname:'editview2',srfappde:'pcmydjpmxes'});
         this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'pcmydjpmxes'});
+        this.allViewMap.set(':',{viewname:'editview9',srfappde:'pcmydjpmxes'});
         this.allViewMap.set(':',{viewname:'xzeditview',srfappde:'pcmydjpmxes'});
         this.allViewMap.set(':',{viewname:'glgridview',srfappde:'pcmydjpmxes'});
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'pcmydjpmxes'});
@@ -218,17 +219,84 @@ export default class PcmYdjpmxUIServiceBase extends UIService {
         let deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'pcmydjpmxes', parameterName: 'pcmydjpmx' },
-            { pathName: 'xzeditview', parameterName: 'xzeditview' },
         ];
-        const openIndexViewTab = (data: any) => {
-            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
-            actionContext.$router.push(routePath);
-            if (xData && xData.refresh && xData.refresh instanceof Function) {
-                xData.refresh(args);
+            const openPopupModal = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if (xData && xData.refresh && xData.refresh instanceof Function) {
+                        xData.refresh(args);
+                    }
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
             }
-            return null;
-        }
-        openIndexViewTab(data);
+            const view: any = {
+                viewname: 'pcm-ydjpmx-xzedit-view', 
+                height: 750, 
+                width: 0,  
+                title: actionContext.$t('entities.pcmydjpmx.views.xzeditview.title'),
+            };
+            openPopupModal(view, data);
+    }
+
+    /**
+     * 打开编辑视图
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async PcmYdjpmx_OpenEditView(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'SINGLEKEY';
+        Object.assign(context, { pcmydjpmx: '%pcmydjpmx%' });
+        Object.assign(params, { pcmydjpmxid: '%pcmydjpmx%' });
+        Object.assign(params, { pcmydjpmxname: '%pcmydjpmxname%' });
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmydjpmxes', parameterName: 'pcmydjpmx' },
+        ];
+            const openPopupModal = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
+            }
+            const view: any = {
+                viewname: 'pcm-ydjpmx-xzedit-view', 
+                height: 750, 
+                width: 0,  
+                title: actionContext.$t('entities.pcmydjpmx.views.xzeditview.title'),
+            };
+            openPopupModal(view, data);
     }
 
     /**
@@ -244,6 +312,17 @@ export default class PcmYdjpmxUIServiceBase extends UIService {
      * @returns {Promise<any>}
      */
     public async PcmYdjpmx_JPWC(args: any[],context:any = {}, params?: any, $event?: any, xData?: any,actionContext?: any,srfParentDeName?:string){
+        let confirmResult:boolean = await new Promise((resolve: any, reject: any) => {
+          actionContext.$Modal.confirm({
+              title: '警告',
+              content: '确认解聘？',
+              onOk: () => {resolve(true);},
+              onCancel: () => {resolve(false);}
+          });
+        });
+        if(!confirmResult){
+            return;
+        }
         let data: any = {};
         const _args: any[] = Util.deepCopy(args);
         const _this: any = actionContext;
@@ -264,12 +343,12 @@ export default class PcmYdjpmxUIServiceBase extends UIService {
         }
         const backend = () => {
             const curService:PcmYdjpmxService =  new PcmYdjpmxService();
-            curService.JPWC(context,data, true).then((response: any) => {
+            curService.IsFinished(context,data, true).then((response: any) => {
                 if (!response || response.status !== 200) {
                     actionContext.$Notice.error({ title: '错误', desc: response.message });
                     return;
                 }
-                actionContext.$Notice.success({ title: '成功', desc: '确认解聘成功！' });
+                actionContext.$Notice.success({ title: '成功', desc: '解聘操作成功！' });
 
                 const _this: any = actionContext;
                 if (xData && xData.refresh && xData.refresh instanceof Function) {

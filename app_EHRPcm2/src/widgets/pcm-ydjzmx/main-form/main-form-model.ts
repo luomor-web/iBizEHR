@@ -151,11 +151,6 @@ export default class MainModel {
         dataType: 'PICKUPTEXT',
       },
       {
-        name: 'finished',
-        prop: 'finished',
-        dataType: 'INHERIT',
-      },
-      {
         name: 'pcmydjzmxid',
         prop: 'pcmydjzmxid',
         dataType: 'GUID',

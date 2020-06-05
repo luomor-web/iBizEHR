@@ -2,8 +2,6 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import PcmYddgmxService from '@/service/pcm-yddgmx/pcm-yddgmx-service';
 import DGCKModel from './dgck-form-model';
-import PimPersonService from '@/service/pim-person/pim-person-service';
-import OrmOrgsectorService from '@/service/orm-orgsector/orm-orgsector-service';
 
 
 /**
@@ -44,22 +42,6 @@ export default class DGCKService extends ControlService {
     }
 
     /**
-     * 人员信息服务对象
-     *
-     * @type {PimPersonService}
-     * @memberof DGCKService
-     */
-    public pimpersonService: PimPersonService = new PimPersonService();
-
-    /**
-     * 部门管理服务对象
-     *
-     * @type {OrmOrgsectorService}
-     * @memberof DGCKService
-     */
-    public ormorgsectorService: OrmOrgsectorService = new OrmOrgsectorService();
-
-    /**
      * 处理数据
      *
      * @private
@@ -98,12 +80,6 @@ export default class DGCKService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'PimPersonService') && Object.is(interfaceName, 'FetchYXZFPRYDS')) {
-            return this.doItems(this.pimpersonService.FetchYXZFPRYDS(JSON.parse(JSON.stringify(context)),data, isloading), 'pimpersonid', 'pimperson');
-        }
-        if (Object.is(serviceName, 'OrmOrgsectorService') && Object.is(interfaceName, 'FetchCURORMORG')) {
-            return this.doItems(this.ormorgsectorService.FetchCURORMORG(JSON.parse(JSON.stringify(context)),data, isloading), 'orgsectorid', 'ormorgsector');
-        }
 
         return Promise.reject([])
     }

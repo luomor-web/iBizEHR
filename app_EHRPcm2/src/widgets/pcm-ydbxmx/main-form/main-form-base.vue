@@ -4,7 +4,7 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydbxmx.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydbxmx.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.ygbh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ygbh' :itemRules="this.rules.ygbh" class='' :caption="$t('entities.pcmydbxmx.main_form.details.ygbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygbh.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -51,19 +51,49 @@
 </i-col>
 <i-col v-show="detailsModel.yrank.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='yrank' :itemRules="this.rules.yrank" class='' :caption="$t('entities.pcmydbxmx.main_form.details.yrank')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yrank.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.yrank" :data="data" :itemParam="{}" :disabled="detailsModel.yrank.disabled"  tag='EhrCodeList0025' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.yrank" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.yrank.disabled"  
+    tag='EhrCodeList0025' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.yzw.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='yzw' :itemRules="this.rules.yzw" class='' :caption="$t('entities.pcmydbxmx.main_form.details.yzw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yzw.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.yzw" :data="data" :itemParam="{}" :disabled="detailsModel.yzw.disabled"  tag='EhrCodeList0233' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.yzw" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.yzw.disabled"  
+    tag='EhrCodeList0233' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ygw.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ygw' :itemRules="this.rules.ygw" class='' :caption="$t('entities.pcmydbxmx.main_form.details.ygw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygw.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.ygw" :data="data" :itemParam="{}" :disabled="detailsModel.ygw.disabled"  tag='EhrCodeList0050' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.ygw" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.ygw.disabled"  
+    tag='EhrCodeList0050' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -79,7 +109,7 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydbxmx.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pcmydbxmx.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.sxrq.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='sxrq' :itemRules="this.rules.sxrq" class='' :caption="$t('entities.pcmydbxmx.main_form.details.sxrq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sxrq.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -426,7 +456,7 @@ export default class MainBase extends Vue implements ControlInterface {
         sxrq: null,
         bxyy: null,
         bz: null,
-        finished: null,
+        isfinished: null,
         pcmydbxmxid: null,
         pcmydbxmx:null,
     };
@@ -602,11 +632,11 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '备注 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '备注 值不能为空', trigger: 'blur' },
         ],
-        finished: [
-            { type: 'number', message: '是否审核 值必须为数值类型', trigger: 'change' },
-            { type: 'number', message: '是否审核 值必须为数值类型', trigger: 'blur' },
-            { required: false, type: 'number', message: '是否审核 值不能为空', trigger: 'change' },
-            { required: false, type: 'number', message: '是否审核 值不能为空', trigger: 'blur' },
+        isfinished: [
+            { type: 'string', message: '是否完成 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '是否完成 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '是否完成 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '是否完成 值不能为空', trigger: 'blur' },
         ],
         pcmydbxmxid: [
             { type: 'string', message: '异动病休明细标识 值必须为字符串类型', trigger: 'change' },
@@ -673,7 +703,7 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         bz: new FormItemModel({ caption: '备注', detailType: 'FORMITEM', name: 'bz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        finished: new FormItemModel({ caption: '是否审核', detailType: 'FORMITEM', name: 'finished', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        isfinished: new FormItemModel({ caption: '是否完成', detailType: 'FORMITEM', name: 'isfinished', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         pcmydbxmxid: new FormItemModel({ caption: '异动病休明细标识', detailType: 'FORMITEM', name: 'pcmydbxmxid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -944,15 +974,15 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 finished 值
+     * 监控表单属性 isfinished 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof Main
      */
-    @Watch('data.finished')
-    onFinishedChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'finished', newVal: newVal, oldVal: oldVal });
+    @Watch('data.isfinished')
+    onIsfinishedChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'isfinished', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -1933,9 +1963,6 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public createDefault(){                    
-        if (this.data.hasOwnProperty('finished')) {
-            this.data['finished'] = 0;
-        }
     }
 
     /**

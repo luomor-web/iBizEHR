@@ -31,6 +31,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
+	authtag:'EHRPcm2-Index-menuitem4',
 	items: [
 		{
 	id: '82339241-A705-4EC6-8072-E809C7B39152',
@@ -49,6 +50,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_6',
 	resourcetag: '',
+	authtag:'EHRPcm2-Index-menuitem1',
 },
 		{
 	id: 'BA8084C6-166C-481E-9384-5D1339FFF2A1',
@@ -67,6 +69,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_4',
 	resourcetag: '',
+	authtag:'EHRPcm2-Index-menuitem2',
 },
 		{
 	id: '197F49E7-BA8D-405C-A0A0-837219E82D9C',
@@ -85,42 +88,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_5',
 	resourcetag: '',
-},
-		{
-	id: '17490C3D-B7E6-40B8-AD67-27801C86C9C1',
-	name: 'menuitem5',
-	text: '挂职调入',
-	type: 'MENUITEM',
-	counterid: '',
-	tooltip: '挂职调入',
-	expanded: false,
-	separator: false,
-	hidden: false,
-	hidesidebar: false,
-	opendefault: false,
-	iconcls: '',
-	icon: '../../../img/pzgl/1/zhijizhiwuguanxi.png',
-	textcls: '',
-	appfunctag: '_9',
-	resourcetag: '',
-},
-		{
-	id: 'EB1AA73E-57CC-4F5B-9402-82FD8011D3CC',
-	name: 'menuitem6',
-	text: '挂职调出',
-	type: 'MENUITEM',
-	counterid: '',
-	tooltip: '挂职调出',
-	expanded: false,
-	separator: false,
-	hidden: false,
-	hidesidebar: false,
-	opendefault: false,
-	iconcls: '',
-	icon: '../../../img/pzgl/1/guazhiguanli.png',
-	textcls: '',
-	appfunctag: '_10',
-	resourcetag: '',
+	authtag:'EHRPcm2-Index-menuitem3',
 },
 		{
 	id: 'E0108CF4-713E-49BC-8086-999DCF02B0AB',
@@ -139,6 +107,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_3',
 	resourcetag: '',
+	authtag:'EHRPcm2-Index-menuitem7',
 },
 		{
 	id: 'A6E8D8EE-0446-44EE-89EF-EC245288260D',
@@ -157,6 +126,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_7',
 	resourcetag: '',
+	authtag:'EHRPcm2-Index-menuitem8',
 },
 		{
 	id: '1C08415A-3674-449D-AAF1-9132C826596A',
@@ -175,6 +145,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_8',
 	resourcetag: '',
+	authtag:'EHRPcm2-Index-menuitem9',
 },
 		{
 	id: '543D3A50-4BF9-4602-8F34-ACC197D72D29',
@@ -193,6 +164,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '_2',
 	resourcetag: '',
+	authtag:'EHRPcm2-Index-menuitem10',
 },
 		{
 	id: '962DB420-ED0C-4354-8CA6-5AD41A295AAC',
@@ -209,8 +181,9 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/jiepinguanli.png',
 	textcls: '',
-	appfunctag: '_12',
+	appfunctag: '_10',
 	resourcetag: '',
+	authtag:'EHRPcm2-Index-menuitem11',
 },
 		{
 	id: '812AFEB2-8721-45E1-A708-EEB06FAB18CB',
@@ -227,8 +200,9 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/tuixiuguanli.png',
 	textcls: '',
-	appfunctag: '_11',
+	appfunctag: '_9',
 	resourcetag: '',
+	authtag:'EHRPcm2-Index-menuitem12',
 },
 		{
 	id: '36DD8AC8-9E85-4AA0-8F4C-18C01951ADB6',
@@ -247,6 +221,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
+	authtag:'EHRPcm2-Index-menuitem13',
 },
 		{
 	id: '327233BA-8691-45B6-BB6B-DBA8B9F930B9',
@@ -265,6 +240,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
+	authtag:'EHRPcm2-Index-menuitem14',
 },
 	],
 },
@@ -280,18 +256,6 @@ export default class IndexModel {
 	public funcs: any[] = [
         {
             appfunctag: '_10',
-            appfuncyype: 'APPVIEW',
-            openmode: '',
-            codename: 'pcmydgzmxgzcglgridview',
-            deResParameters: [],
-            routepath: '/index/:index?/pcmydgzmxes/:pcmydgzmx?/gzcglgridview/:gzcglgridview?',
-            parameters: [
-                { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                { pathName: 'gzcglgridview', parameterName: 'gzcglgridview' },
-            ],
-        },
-        {
-            appfunctag: '_12',
             appfuncyype: 'APPVIEW',
             openmode: '',
             codename: 'pcmydjpmxglgridview',
@@ -364,18 +328,6 @@ export default class IndexModel {
         },
         {
             appfunctag: '_9',
-            appfuncyype: 'APPVIEW',
-            openmode: '',
-            codename: 'pcmydgzmxgzrglgridview',
-            deResParameters: [],
-            routepath: '/index/:index?/pcmydgzmxes/:pcmydgzmx?/gzrglgridview/:gzrglgridview?',
-            parameters: [
-                { pathName: 'pcmydgzmxes', parameterName: 'pcmydgzmx' },
-                { pathName: 'gzrglgridview', parameterName: 'gzrglgridview' },
-            ],
-        },
-        {
-            appfunctag: '_11',
             appfuncyype: 'APPVIEW',
             openmode: '',
             codename: 'pimpersontxglgridview',

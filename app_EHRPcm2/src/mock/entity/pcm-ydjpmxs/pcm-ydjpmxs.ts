@@ -283,16 +283,16 @@ mock.onPost(new RegExp(/^\/pcmydjpmxes\/?([a-zA-Z0-9\-\;]{0,35})\/save$/)).reply
     return [status, data];
 });
         
-// JPWC
-mock.onPost(new RegExp(/^\/pcmydjpmxes\/?([a-zA-Z0-9\-\;]{0,35})\/jpwc$/)).reply((config: any) => {
-    console.groupCollapsed("实体:pcmydjpmx 方法: JPWC");
+// IsFinished
+mock.onPost(new RegExp(/^\/pcmydjpmxes\/?([a-zA-Z0-9\-\;]{0,35})\/isfinished$/)).reply((config: any) => {
+    console.groupCollapsed("实体:pcmydjpmx 方法: IsFinished");
     console.table({url:config.url, method: config.method, data:config.data});
     let status = MockAdapter.mockStatus(config);
     if (status !== 200) {
         return [status, null];
     }    
     const paramArray:Array<any> = ['pcmydjpmxid'];
-    const matchArray:any = new RegExp(/^\/pcmydjpmxes\/([a-zA-Z0-9\-\;]{1,35})\/jpwc$/).exec(config.url);
+    const matchArray:any = new RegExp(/^\/pcmydjpmxes\/([a-zA-Z0-9\-\;]{1,35})\/isfinished$/).exec(config.url);
     let tempValue: any = {};
     if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
         paramArray.forEach((item: any, index: number) => {

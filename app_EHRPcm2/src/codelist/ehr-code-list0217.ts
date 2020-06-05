@@ -1,3 +1,4 @@
+import PcmReasonService from '@service/pcm-reason/pcm-reason-service';
 /**
  * 代码表--离职原因
  *
@@ -56,20 +57,64 @@ export default class EhrCodeList0217 {
      * @memberof EhrCodeList0217
      */
     public queryParamNames:any ={
+        sort: 'px,asc'
     }
 
+    /**
+     * 配置原因代码表应用实体服务对象
+     *
+     * @type {PcmReasonService}
+     * @memberof EhrCodeList0217
+     */
+    public pcmreasonService: PcmReasonService = new PcmReasonService();
 
+
+    /**
+     * 处理数据
+     *
+     * @public
+     * @param {any[]} items
+     * @returns {any[]}
+     * @memberof EhrCodeList0217
+     */
+    public doItems(items: any[]): any[] {
+        let _items: any[] = [];
+        items.forEach((item: any) => {
+            let itemdata:any = {};
+            Object.assign(itemdata,{id:item.pcmreasonid});
+            Object.assign(itemdata,{value:item.pcmreasonid});
+            Object.assign(itemdata,{text:item.pcmreasonname});
+            
+            _items.push(itemdata);
+        });
+        return _items;
+    }
 
     /**
      * 获取数据项
      *
+     * @param {*} context
      * @param {*} data
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
      * @memberof EhrCodeList0217
      */
-    public getItems(data: any={}, isloading?: boolean): Promise<any> {
-        return Promise.reject([]);
+    public getItems(context: any={}, data: any={}, isloading?: boolean): Promise<any> {
+        return new Promise((resolve, reject) => {
+            data = this.handleQueryParam(data);
+            const promise: Promise<any> = this.pcmreasonService.FetchDefault(context, data, isloading);
+            promise.then((response: any) => {
+                if (response && response.status === 200) {
+                    const data =  response.data;
+                    resolve(this.doItems(data));
+                } else {
+                    resolve([]);
+                }
+            }).catch((response: any) => {
+                console.error(response);
+                reject(response);
+            });
+        });
     }
 
     /**

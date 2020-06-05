@@ -18,9 +18,6 @@ export default class DefaultModel {
         name: 'nl',
       },
       {
-        name: 'finished',
-      },
-      {
         name: 'checkstatus',
       },
       {
@@ -125,6 +122,9 @@ export default class DefaultModel {
       },
       {
         name: 'lzmtrid',
+      },
+      {
+        name: 'isfinished',
       },
     ]
   }

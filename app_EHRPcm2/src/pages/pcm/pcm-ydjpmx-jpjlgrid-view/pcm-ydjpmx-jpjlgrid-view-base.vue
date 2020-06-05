@@ -489,6 +489,7 @@ export default class PcmYdjpmxJPJLGridViewBase extends GridViewBase {
             data.srfsourcekey = args[0].srfsourcekey;
         }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
+        delete curViewParam.pcmydjpmx;
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
@@ -527,14 +528,28 @@ export default class PcmYdjpmxJPJLGridViewBase extends GridViewBase {
         const deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'pcmydjpmxes', parameterName: 'pcmydjpmx' },
-            { pathName: 'ckeditview', parameterName: 'ckeditview' },
         ];
         const _this: any = this;
-        const openIndexViewTab = (data: any) => {
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, curViewParam, deResParameters, parameters, args, data);
-            this.$router.push(routePath);
+        const openDrawer = (view: any, data: any) => {
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, curViewParam, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
         }
-        openIndexViewTab(data);
+        const view: any = {
+            viewname: 'pcm-ydjpmx-ckedit-view', 
+            height: 0, 
+            width: 0,  
+            title: this.$t('entities.pcmydjpmx.views.ckeditview.title'),
+            placement: 'DRAWER_TOP',
+        };
+        openDrawer(view, data);
     }
 
 

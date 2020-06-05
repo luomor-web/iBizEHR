@@ -56,6 +56,7 @@ export class EntityServiceRegister {
         this.allEntityService.set('pcmrecruitment', () => import('@/service/pcm-recruitment/pcm-recruitment-service'));
         this.allEntityService.set('pcmtxfpsq', () => import('@/service/pcm-txfpsq/pcm-txfpsq-service'));
         this.allEntityService.set('pcmddsqdmx', () => import('@/service/pcm-ddsqdmx/pcm-ddsqdmx-service'));
+        this.allEntityService.set('pcmreason', () => import('@/service/pcm-reason/pcm-reason-service'));
         this.allEntityService.set('pcmydntmx', () => import('@/service/pcm-ydntmx/pcm-ydntmx-service'));
         this.allEntityService.set('pcmydlzmx', () => import('@/service/pcm-ydlzmx/pcm-ydlzmx-service'));
         this.allEntityService.set('pcmydbxmx', () => import('@/service/pcm-ydbxmx/pcm-ydbxmx-service'));

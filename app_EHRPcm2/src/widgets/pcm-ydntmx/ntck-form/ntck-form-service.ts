@@ -2,7 +2,6 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import PcmYdntmxService from '@/service/pcm-ydntmx/pcm-ydntmx-service';
 import NTCKModel from './ntck-form-model';
-import PimPersonService from '@/service/pim-person/pim-person-service';
 
 
 /**
@@ -43,14 +42,6 @@ export default class NTCKService extends ControlService {
     }
 
     /**
-     * 人员信息服务对象
-     *
-     * @type {PimPersonService}
-     * @memberof NTCKService
-     */
-    public pimpersonService: PimPersonService = new PimPersonService();
-
-    /**
      * 处理数据
      *
      * @private
@@ -89,9 +80,6 @@ export default class NTCKService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'PimPersonService') && Object.is(interfaceName, 'FetchYXZFPRYDS')) {
-            return this.doItems(this.pimpersonService.FetchYXZFPRYDS(JSON.parse(JSON.stringify(context)),data, isloading), 'pimpersonid', 'pimperson');
-        }
 
         return Promise.reject([])
     }
