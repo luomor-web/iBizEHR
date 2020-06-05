@@ -72,6 +72,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
     /**
      * 审核状态
      */
+    @DEField(defaultValue = "2")
     @TableField(value = "checkstatus")
     @JSONField(name = "checkstatus")
     @JsonProperty("checkstatus")
@@ -96,6 +97,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
     /**
      * 是否完成
      */
+    @DEField(defaultValue = "0")
     @TableField(value = "finished")
     @JSONField(name = "finished")
     @JsonProperty("finished")

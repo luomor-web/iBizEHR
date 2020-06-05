@@ -7,8 +7,20 @@ zuul:
       path: /pcmydjzmxes/**
       serviceId: ehr-webapi
       stripPrefix: false
+    pcmxygzzsq:
+      path: /pcmxygzzsqs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     pcmjxsgz:
       path: /pcmjxsgzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmjxsygzzsq:
+      path: /pcmjxsygzzsqs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmjxsygzzjlmx:
+      path: /pcmjxsygzzjlmxes/**
       serviceId: ehr-webapi
       stripPrefix: false
     ormpost:
@@ -17,6 +29,10 @@ zuul:
       stripPrefix: false
     pcmydtxmx:
       path: /pcmydtxmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmxygzzkhjgjl:
+      path: /pcmxygzzkhjgjls/**
       serviceId: ehr-webapi
       stripPrefix: false
     pcmydgzmx:
@@ -83,6 +99,14 @@ zuul:
       path: /pcmydlzmxes/**
       serviceId: ehr-webapi
       stripPrefix: false
+    pcmjxszzkhjgjl:
+      path: /pcmjxszzkhjgjls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pcmxygzzjlmx:
+      path: /pcmxygzzjlmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     pcmydbxmx:
       path: /pcmydbxmxes/**
       serviceId: ehr-webapi
@@ -107,28 +131,8 @@ zuul:
       path: /ormorgsectors/**
       serviceId: ehr-webapi
       stripPrefix: false
-    pcmxygzzsq:
-      path: /pcmxygzzsqs/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    pcmjxsygzzsq:
-      path: /pcmjxsygzzsqs/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    pcmjxsygzzjlmx:
-      path: /pcmjxsygzzjlmxes/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    pcmxygzzkhjgjl:
-      path: /pcmxygzzkhjgjls/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    pcmjxszzkhjgjl:
-      path: /pcmjxszzkhjgjls/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    pcmxygzzjlmx:
-      path: /pcmxygzzjlmxes/**
+    pcmxygzzsqmx:
+      path: /pcmxygzzsqmxes/**
       serviceId: ehr-webapi
       stripPrefix: false
     loginv7:

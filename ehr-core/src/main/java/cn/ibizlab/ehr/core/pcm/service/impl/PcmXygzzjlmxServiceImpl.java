@@ -58,6 +58,14 @@ public class PcmXygzzjlmxServiceImpl extends ServiceImpl<PcmXygzzjlmxMapper, Pcm
     @Lazy
     private cn.ibizlab.ehr.core.pcm.service.logic.IPcmXygzzjlmxSetPersonInfoLogic setpersoninfoLogic;
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmXygzzjlmxSetPassLogic setpassLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmXygzzjlmxSetRejectLogic setrejectLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -91,6 +99,13 @@ public class PcmXygzzjlmxServiceImpl extends ServiceImpl<PcmXygzzjlmxMapper, Pcm
     @Transactional
     public PcmXygzzjlmx fillPersonInfo(PcmXygzzjlmx et) {
         setpersoninfoLogic.execute(et);
+         return et ;
+    }
+
+    @Override
+    @Transactional
+    public PcmXygzzjlmx setPass(PcmXygzzjlmx et) {
+        setpassLogic.execute(et);
          return et ;
     }
 
@@ -147,6 +162,13 @@ public class PcmXygzzjlmxServiceImpl extends ServiceImpl<PcmXygzzjlmxMapper, Pcm
     public PcmXygzzjlmx getDraft(PcmXygzzjlmx et) {
         fillParentData(et);
         return et;
+    }
+
+    @Override
+    @Transactional
+    public PcmXygzzjlmx setRejcet(PcmXygzzjlmx et) {
+        setrejectLogic.execute(et);
+         return et ;
     }
 
     @Override
