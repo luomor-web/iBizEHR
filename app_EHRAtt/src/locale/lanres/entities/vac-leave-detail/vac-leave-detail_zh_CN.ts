@@ -36,8 +36,8 @@ export default {
   },
 	views: {
 		editview: {
-			caption: '请假明细',
-      title: '请假明细',
+			caption: '请假申请',
+      title: '请假申请',
 		},
 		gridview: {
 			caption: '请假明细',

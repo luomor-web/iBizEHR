@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="vacleavedetaileditview" viewTitle="请销假明细编辑视图" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'vac-leave-detail-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="vacleavedetaileditview" viewTitle="请假申请" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'vac-leave-detail-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -53,7 +53,7 @@ import EditViewEngine from '@engine/view/edit-view-engine';
 
 
 /**
- * 请销假明细编辑视图基类
+ * 请假申请基类
  *
  * @export
  * @class VacLeaveDetailEditViewBase

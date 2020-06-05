@@ -1,5 +1,6 @@
 import { Http,Util } from '@/utils';
 import EntityService from '../entity-service';
+import CalcPlanDaysLogic from '@/service/vac-leave-detail/calc-plan-days-logic';
 
 
 
@@ -212,13 +213,9 @@ export default class VacLeaveDetailServiceBase extends EntityService {
      * @memberof VacLeaveDetailServiceBase
      */
     public async CalcJHQJTS(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        if(context.pimperson && context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().post(`/pimpeople/${context.pimperson}/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}/calcjhqjts`,data,isloading);
-        }
-        if(context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().post(`/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}/calcjhqjts`,data,isloading);
-        }
-            return Http.getInstance().post(`/vacleavedetails/${context.vacleavedetail}/calcjhqjts`,data,isloading);
+        let appLogic:CalcPlanDaysLogic = new CalcPlanDaysLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
+        const result = await appLogic.onExecute(context,data,isloading?true:false);
+        return {status:200,data:result};
     }
 
     /**

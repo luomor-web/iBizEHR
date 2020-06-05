@@ -200,8 +200,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "7f5fde30882cd704aa8fdaf922c320fa"
         },
         "vacleavedetaileditview": {
-            "title": "请销假明细编辑视图",
-            "caption": "请假明细",
+            "title": "请假申请",
+            "caption": "请假申请",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "VAC",
             "viewname": "VacLeaveDetailEditView",

@@ -5,7 +5,7 @@ import VacLeaveDetailEditViewBase from './vac-leave-detail-edit-view-base.vue';
 import view_form from '@widgets/vac-leave-detail/jhqjmx-form/jhqjmx-form.vue';
 
 /**
- * 请销假明细编辑视图
+ * 请假申请
  *
  * @export
  * @class VacLeaveDetailEditView
