@@ -220,6 +220,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '6c24367c55229dc2e438fd531f7a4bc0',
+            viewmodule: 'PIM',
+            viewname: 'PimPersonPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '3a13660bb95e945397ffbf8a6e51a9d3',
+            ],
+        },
+        {
             viewtag: '729c5fcb6684b43de26f6004de2ae301',
             viewmodule: 'ATT',
             viewname: 'AttEndanceMreportmxGridView',
@@ -256,6 +266,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '6c24367c55229dc2e438fd531f7a4bc0',
             ],
         },
         {

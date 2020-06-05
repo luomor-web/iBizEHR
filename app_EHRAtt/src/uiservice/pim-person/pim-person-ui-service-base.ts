@@ -82,6 +82,7 @@ export default class PimPersonUIServiceBase extends UIService {
         this.allViewMap.set(':',{viewname:'curorgpimpersonpickupview',srfappde:'pimpeople'});
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'pimpeople'});
         this.allViewMap.set(':',{viewname:'setattrulesgridview',srfappde:'pimpeople'});
+        this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'pimpeople'});
         this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'pimpeople'});
         this.allViewMap.set(':',{viewname:'curorgpimpersonpickupgridview',srfappde:'pimpeople'});
         this.allViewMap.set(':',{viewname:'kqjrypickupview',srfappde:'pimpeople'});

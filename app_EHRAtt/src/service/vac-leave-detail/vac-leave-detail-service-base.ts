@@ -49,12 +49,6 @@ export default class VacLeaveDetailServiceBase extends EntityService {
      * @memberof VacLeaveDetailServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        if(context.pimperson && context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().get(`/pimpeople/${context.pimperson}/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}/select`,isloading);
-        }
-        if(context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().get(`/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}/select`,isloading);
-        }
             return Http.getInstance().get(`/vacleavedetails/${context.vacleavedetail}/select`,isloading);
     }
 
@@ -68,12 +62,6 @@ export default class VacLeaveDetailServiceBase extends EntityService {
      * @memberof VacLeaveDetailServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        if(context.pimperson && context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().delete(`/pimpeople/${context.pimperson}/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}`,isloading);
-        }
-        if(context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().delete(`/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}`,isloading);
-        }
             return Http.getInstance().delete(`/vacleavedetails/${context.vacleavedetail}`,isloading);
 
     }
@@ -88,12 +76,6 @@ export default class VacLeaveDetailServiceBase extends EntityService {
      * @memberof VacLeaveDetailServiceBase
      */
     public async CalcSJQJTS(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        if(context.pimperson && context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().post(`/pimpeople/${context.pimperson}/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}/calcsjqjts`,data,isloading);
-        }
-        if(context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().post(`/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}/calcsjqjts`,data,isloading);
-        }
             return Http.getInstance().post(`/vacleavedetails/${context.vacleavedetail}/calcsjqjts`,data,isloading);
     }
 
@@ -107,24 +89,6 @@ export default class VacLeaveDetailServiceBase extends EntityService {
      * @memberof VacLeaveDetailServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        if(context.pimperson && context.vacleavemanage && true){
-            if(!data.srffrontuf || data.srffrontuf !== "1"){
-                data[this.APPDEKEY] = null;
-            }
-            if(data.srffrontuf){
-                delete data.srffrontuf;
-            }
-            return Http.getInstance().post(`/pimpeople/${context.pimperson}/vacleavemanages/${context.vacleavemanage}/vacleavedetails`,data,isloading);
-        }
-        if(context.vacleavemanage && true){
-            if(!data.srffrontuf || data.srffrontuf !== "1"){
-                data[this.APPDEKEY] = null;
-            }
-            if(data.srffrontuf){
-                delete data.srffrontuf;
-            }
-            return Http.getInstance().post(`/vacleavemanages/${context.vacleavemanage}/vacleavedetails`,data,isloading);
-        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -148,12 +112,6 @@ export default class VacLeaveDetailServiceBase extends EntityService {
      * @memberof VacLeaveDetailServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        if(context.pimperson && context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().put(`/pimpeople/${context.pimperson}/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}`,data,isloading);
-        }
-        if(context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().put(`/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}`,data,isloading);
-        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/vacleavedetails/${context.vacleavedetail}`,data,isloading);
@@ -170,12 +128,6 @@ export default class VacLeaveDetailServiceBase extends EntityService {
      * @memberof VacLeaveDetailServiceBase
      */
     public async GetNianJia(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        if(context.pimperson && context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().get(`/pimpeople/${context.pimperson}/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}/getnianjia`,isloading);
-        }
-        if(context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().get(`/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}/getnianjia`,isloading);
-        }
             let res:any = await Http.getInstance().get(`/vacleavedetails/${context.vacleavedetail}/getnianjia`,isloading);
             return res;
 
@@ -191,12 +143,6 @@ export default class VacLeaveDetailServiceBase extends EntityService {
      * @memberof VacLeaveDetailServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        if(context.pimperson && context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().post(`/pimpeople/${context.pimperson}/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}/save`,data,isloading);
-        }
-        if(context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().post(`/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}/save`,data,isloading);
-        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/vacleavedetails/${context.vacleavedetail}/save`,data,isloading);
@@ -228,12 +174,6 @@ export default class VacLeaveDetailServiceBase extends EntityService {
      * @memberof VacLeaveDetailServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        if(context.pimperson && context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().get(`/pimpeople/${context.pimperson}/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}`,isloading);
-        }
-        if(context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().get(`/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}`,isloading);
-        }
             let res:any = await Http.getInstance().get(`/vacleavedetails/${context.vacleavedetail}`,isloading);
             return res;
 
@@ -249,12 +189,6 @@ export default class VacLeaveDetailServiceBase extends EntityService {
      * @memberof VacLeaveDetailServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        if(context.pimperson && context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().post(`/pimpeople/${context.pimperson}/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}/checkkey`,data,isloading);
-        }
-        if(context.vacleavemanage && context.vacleavedetail){
-            return Http.getInstance().post(`/vacleavemanages/${context.vacleavemanage}/vacleavedetails/${context.vacleavedetail}/checkkey`,data,isloading);
-        }
             return Http.getInstance().post(`/vacleavedetails/${context.vacleavedetail}/checkkey`,data,isloading);
     }
 
@@ -268,12 +202,6 @@ export default class VacLeaveDetailServiceBase extends EntityService {
      * @memberof VacLeaveDetailServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        if(context.pimperson && context.vacleavemanage && true){
-            return Http.getInstance().get(`/pimpeople/${context.pimperson}/vacleavemanages/${context.vacleavemanage}/vacleavedetails/getdraft`,isloading);
-        }
-        if(context.vacleavemanage && true){
-            return Http.getInstance().get(`/vacleavemanages/${context.vacleavemanage}/vacleavedetails/getdraft`,isloading);
-        }
         let res:any = await  Http.getInstance().get(`/vacleavedetails/getdraft`,isloading);
         res.data.vacleavedetail = data.vacleavedetail;
         return res;
@@ -289,14 +217,6 @@ export default class VacLeaveDetailServiceBase extends EntityService {
      * @memberof VacLeaveDetailServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        if(context.pimperson && context.vacleavemanage && true){
-            let tempData:any = JSON.parse(JSON.stringify(data));
-            return Http.getInstance().get(`/pimpeople/${context.pimperson}/vacleavemanages/${context.vacleavemanage}/vacleavedetails/fetchdefault`,tempData,isloading);
-        }
-        if(context.vacleavemanage && true){
-            let tempData:any = JSON.parse(JSON.stringify(data));
-            return Http.getInstance().get(`/vacleavemanages/${context.vacleavemanage}/vacleavedetails/fetchdefault`,tempData,isloading);
-        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/vacleavedetails/fetchdefault`,tempData,isloading);
     }

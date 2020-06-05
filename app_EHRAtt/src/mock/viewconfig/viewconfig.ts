@@ -167,6 +167,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "AttEndanceMreportEditView",
             "viewtag": "6b3008117fb17fb739d7fa3a19cec37b"
         },
+        "pimpersonpickupview": {
+            "title": "人员信息数据选择视图",
+            "caption": "人员信息",
+            "viewtype": "DEPICKUPVIEW",
+            "viewmodule": "PIM",
+            "viewname": "PimPersonPickupView",
+            "viewtag": "6c24367c55229dc2e438fd531f7a4bc0"
+        },
         "attendancemreportmxgridview": {
             "title": "考勤月报明细",
             "caption": "考勤月报明细",

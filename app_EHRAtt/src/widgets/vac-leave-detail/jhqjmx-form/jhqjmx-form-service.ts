@@ -2,6 +2,7 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import VacLeaveDetailService from '@/service/vac-leave-detail/vac-leave-detail-service';
 import JHQJMXModel from './jhqjmx-form-model';
+import PimPersonService from '@/service/pim-person/pim-person-service';
 
 
 /**
@@ -42,6 +43,14 @@ export default class JHQJMXService extends ControlService {
     }
 
     /**
+     * 人员信息服务对象
+     *
+     * @type {PimPersonService}
+     * @memberof JHQJMXService
+     */
+    public pimpersonService: PimPersonService = new PimPersonService();
+
+    /**
      * 处理数据
      *
      * @private
@@ -80,6 +89,9 @@ export default class JHQJMXService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
+        if (Object.is(serviceName, 'PimPersonService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.pimpersonService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'pimpersonid', 'pimperson');
+        }
 
         return Promise.reject([])
     }

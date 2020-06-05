@@ -570,6 +570,78 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
+        srfkey: 'EhrCodeList0134',
+        emptytext: '',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '10',
+                label: '拟稿',
+                text: '拟稿',
+                "data":"",
+                "codename":"Item_10",
+                value: '10',
+                
+                disabled: false,
+            },
+            {
+                id: '20',
+                label: '审批中',
+                text: '审批中',
+                "data":"",
+                "codename":"Item_20",
+                "color": "Blue",
+                value: '20',
+                
+                disabled: false,
+            },
+            {
+                id: '25',
+                label: '待销假',
+                text: '待销假',
+                "data":"",
+                "codename":"Item_25",
+                "color": "Blue",
+                value: '25',
+                
+                disabled: false,
+            },
+            {
+                id: '30',
+                label: '已通过',
+                text: '已通过',
+                "data":"",
+                "codename":"Item_30",
+                "color": "Green",
+                value: '30',
+                
+                disabled: false,
+            },
+            {
+                id: '40',
+                label: '已驳回',
+                text: '已驳回',
+                "data":"",
+                "codename":"Item_40",
+                "color": "Red",
+                value: '40',
+                
+                disabled: false,
+            },
+            {
+                id: '50',
+                label: '已取消',
+                text: '已取消',
+                "data":"",
+                "codename":"Item_50",
+                "color": "Red",
+                value: '50',
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
         "srfkey": "EhrCodeList0013",
         "emptytext": "未定义",
         "codelisttype":"dynamic",

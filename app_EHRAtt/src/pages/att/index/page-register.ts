@@ -38,6 +38,7 @@ export const PageComponents = {
         Vue.component('pim-person-mpickup-view', () => import('@pages/att/pim-person-mpickup-view/pim-person-mpickup-view.vue'));
         Vue.component('pim-person-cur-org-pimperson-pickup-view', () => import('@pages/pim/pim-person-cur-org-pimperson-pickup-view/pim-person-cur-org-pimperson-pickup-view.vue'));
         Vue.component('att-endence-setup-mpickup-view', () => import('@pages/att/att-endence-setup-mpickup-view/att-endence-setup-mpickup-view.vue'));
+        Vue.component('pim-person-pickup-view', () => import('@pages/pim/pim-person-pickup-view/pim-person-pickup-view.vue'));
         Vue.component('orm-orgsector-bmkqszedit-view', () => import('@pages/orm/orm-orgsector-bmkqszedit-view/orm-orgsector-bmkqszedit-view.vue'));
         Vue.component('att-ensummary-kqhztree-exp-view', () => import('@pages/att/att-ensummary-kqhztree-exp-view/att-ensummary-kqhztree-exp-view.vue'));
         Vue.component('att-endence-setup-pickup-view', () => import('@pages/att/att-endence-setup-pickup-view/att-endence-setup-pickup-view.vue'));

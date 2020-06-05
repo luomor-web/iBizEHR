@@ -9,7 +9,7 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="请假人员" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
@@ -561,12 +561,7 @@ export default class VacLeaveDetailGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        let deResParameters: any[] = [];
-        if(curViewParam.vacleavemanage && true){
-            deResParameters = [
-            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-            ]
-        }
+        const deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
         ];
@@ -610,12 +605,7 @@ export default class VacLeaveDetailGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        let deResParameters: any[] = [];
-        if(curViewParam.vacleavemanage && true){
-            deResParameters = [
-            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-            ]
-        }
+        const deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
         ];

@@ -84,6 +84,15 @@ export default {
     EhrCodeList0075: {
         empty: '',
     },
+    EhrCodeList0134: {
+          '10': '拟稿',
+          '20': '审批中',
+          '25': '待销假',
+          '30': '已通过',
+          '40': '已驳回',
+          '50': '已取消',
+        empty: '',
+    },
     EhrCodeList0013: {
         empty: '',
     },

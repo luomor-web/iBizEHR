@@ -27,14 +27,14 @@ export default class MainModel {
     }else{
 		  return [
         {
+          name: 'pimpersonid',
+          prop: 'pimpersonid',
+          dataType: 'PICKUP',
+        },
+        {
           name: 'bz',
           prop: 'bz',
           dataType: 'TEXT',
-        },
-        {
-          name: 'pimpersonid',
-          prop: 'pimpersonid',
-          dataType: 'PICKUPDATA',
         },
         {
           name: 'sjqjks',
@@ -42,9 +42,9 @@ export default class MainModel {
           dataType: 'TEXT',
         },
         {
-          name: 'vacleavemanageid',
-          prop: 'vacleavemanageid',
-          dataType: 'PICKUP',
+          name: 'state',
+          prop: 'state',
+          dataType: 'SSCODELIST',
         },
         {
           name: 'vacleavedetailid',
@@ -65,6 +65,16 @@ export default class MainModel {
           name: 'srfkey',
           prop: 'vacleavedetailid',
           dataType: 'GUID',
+        },
+        {
+          name: 'ormorgname',
+          prop: 'ormorgname',
+          dataType: 'PICKUPDATA',
+        },
+        {
+          name: 'ormorgsectorname',
+          prop: 'ormorgsectorname',
+          dataType: 'PICKUPDATA',
         },
         {
           name: 'jhqjks',
@@ -94,7 +104,7 @@ export default class MainModel {
         {
           name: 'pimpersonname',
           prop: 'pimpersonname',
-          dataType: 'PICKUPDATA',
+          dataType: 'PICKUPTEXT',
         },
         {
           name: 'jhts',

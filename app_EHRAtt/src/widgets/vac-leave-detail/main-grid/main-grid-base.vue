@@ -32,6 +32,30 @@
                     </template>
                 </el-table-column>
             </template>
+            <template v-if="getColumnState('ormorgname')">
+                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.vacleavedetail.main_grid.columns.ormorgname')" :width="150"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.vacleavedetail.main_grid.columns.ormorgname')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <span>{{row.ormorgname}}</span>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('ormorgsectorname')">
+                <el-table-column show-overflow-tooltip :prop="'ormorgsectorname'" :label="$t('entities.vacleavedetail.main_grid.columns.ormorgsectorname')" :width="150"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.vacleavedetail.main_grid.columns.ormorgsectorname')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <span>{{row.ormorgsectorname}}</span>
+                    </template>
+                </el-table-column>
+            </template>
             <template v-if="getColumnState('qjzl')">
                 <el-table-column show-overflow-tooltip :prop="'qjzl'" :label="$t('entities.vacleavedetail.main_grid.columns.qjzl')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
@@ -79,6 +103,20 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                             <app-format-data dataType="FLOAT" precision="0" :data="row.jhts"></app-format-data>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('state')">
+                <el-table-column show-overflow-tooltip :prop="'state'" :label="$t('entities.vacleavedetail.main_grid.columns.state')" :width="100"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.vacleavedetail.main_grid.columns.state')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <template >
+            <codelist :value="row.state" tag='EhrCodeList0134' codelistType='STATIC' ></codelist>
+                        </template>
                     </template>
                 </el-table-column>
             </template>
@@ -135,6 +173,39 @@
             </template>
     </el-table>
   
+    <row class='grid-pagination' v-show="items.length > 0">
+        <page class='pull-right' @on-change="pageOnChange($event)" 
+            @on-page-size-change="onPageSizeChange($event)"
+            :transfer="true" :total="totalrow"
+            show-sizer :current="curPage" :page-size="limit"
+            :page-size-opts="[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]" show-elevator show-total>
+            <span>
+                <span class="page-column">
+                    <poptip transfer placement="top-start">
+                        <i-button icon="md-menu">{{$t('app.gridpage.choicecolumns')}}</i-button>
+                        <div slot="content">
+                            <template v-for="col in allColumns">
+                                <div :key="col.name"><el-checkbox v-model="col.show" @change="onColChange()">{{$t(col.langtag)}}</el-checkbox></div>
+                            </template>
+                        </div>
+                    </poptip>
+                </span>
+                <span class="page-button"><i-button icon="md-refresh" :title="$t('app.gridpage.refresh')" @click="pageRefresh()"></i-button></span>&nbsp;
+                <span>
+                    {{$t('app.gridpage.show')}}&nbsp;
+                    <span>
+                        <template v-if="items.length === 1">
+                        1
+                        </template>
+                        <template v-else>
+                            <span>{{(curPage - 1) * limit + 1}}&nbsp;-&nbsp;{{totalrow > curPage * limit ? curPage * limit : totalrow}}</span>
+                        </template>
+                    </span>&nbsp;
+                    {{$t('app.gridpage.records')}}，{{$t('app.gridpage.totle')}}&nbsp;{{totalrow}}&nbsp;{{$t('app.gridpage.records')}}
+                </span>
+            </span>
+        </page>
+    </row>
   </i-form>
 </div>
 </template>
@@ -386,7 +457,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof Main
      */
-    public isEnablePagingBar: boolean = false;
+    public isEnablePagingBar: boolean = true;
 
     /**
      * 是否禁用排序
@@ -402,7 +473,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof Main
      */
-    public minorSortDir: string = 'ASC';
+    public minorSortDir: string = 'DESC';
 
     /**
      * 排序字段
@@ -575,8 +646,22 @@ export default class MainBase extends Vue implements ControlInterface {
     public allColumns: any[] = [
         {
             name: 'pimpersonname',
-            label: '请假人员',
+            label: '员工姓名',
             langtag: 'entities.vacleavedetail.main_grid.columns.pimpersonname',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'ormorgname',
+            label: '组织',
+            langtag: 'entities.vacleavedetail.main_grid.columns.ormorgname',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'ormorgsectorname',
+            label: '部门',
+            langtag: 'entities.vacleavedetail.main_grid.columns.ormorgsectorname',
             show: true,
             util: 'PX'
         },
@@ -605,6 +690,13 @@ export default class MainBase extends Vue implements ControlInterface {
             name: 'jhts',
             label: '计划天数',
             langtag: 'entities.vacleavedetail.main_grid.columns.jhts',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'state',
+            label: '状态',
+            langtag: 'entities.vacleavedetail.main_grid.columns.state',
             show: true,
             util: 'PX'
         },
@@ -1030,6 +1122,14 @@ export default class MainBase extends Vue implements ControlInterface {
             textSeparator: '、',
             renderMode: 'string',
             valueSeparator: ";",
+          },
+          {
+            name: 'state',
+            srfkey: 'EhrCodeList0134',
+            codelistType : 'STATIC',
+            renderMode: 'other',
+            textSeparator: '、',
+            valueSeparator: ',',
           },
         ];
         let _this = this;

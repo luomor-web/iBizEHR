@@ -8,12 +8,26 @@
     <row>
         <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 9, offset: 0 }" :xl="{ span: 9, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='pimpersonname'
-:value="data.pimpersonname"   :data="data"
+    <app-picker 
+  :formState="formState"
+  :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+  :itemParam='{ }' 
+  :disabled="detailsModel.pimpersonname.disabled"
+  name='pimpersonname'
+  deMajorField='pimpersonname'
+  deKeyField='pimperson'
+  :service="service"
+  :acParams="{ serviceName: 'PimPersonService', interfaceName: 'FetchDefault'}"
+  valueitem='pimpersonid' 
+  :value="data.pimpersonname" 
+  editortype="" 
+  :pickupView="{ viewname: 'pim-person-pickup-view', title: $t('entities.pimperson.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'pimpeople', parameterName: 'pimperson' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
+  style=""  
+  @formitemvaluechange="onFormItemValueChange">
+</app-picker>
+
 </app-form-item>
 
 </i-col>
@@ -470,10 +484,6 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
         srfuf: null,
         srfdeid: null,
         srfsourcekey: null,
-        vacleavemanageid: null,
-        ormorgid: null,
-        ormorgsectorid: null,
-        pimpersonid: null,
         pimpersonname: null,
         qjzl: null,
         hyzk: null,
@@ -487,6 +497,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
         jhts: null,
         fj: null,
         bz: null,
+        pimpersonid: null,
         vacleavedetailid: null,
         vacleavedetail:null,
     };
@@ -578,35 +589,11 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
-        vacleavemanageid: [
-            { type: 'string', message: '请销假管理标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '请销假管理标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '请销假管理标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '请销假管理标识 值不能为空', trigger: 'blur' },
-        ],
-        ormorgid: [
-            { type: 'string', message: '组织标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '组织标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '组织标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '组织标识 值不能为空', trigger: 'blur' },
-        ],
-        ormorgsectorid: [
-            { type: 'string', message: '部门标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '部门标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '部门标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '部门标识 值不能为空', trigger: 'blur' },
-        ],
-        pimpersonid: [
-            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'blur' },
-        ],
         pimpersonname: [
-            { type: 'string', message: '请假人员 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '请假人员 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '请假人员 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '请假人员 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '员工姓名 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '员工姓名 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '员工姓名 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '员工姓名 值不能为空', trigger: 'blur' },
         ],
         qjzl: [
             { type: 'string', message: '请假种类 值必须为字符串类型', trigger: 'change' },
@@ -680,6 +667,12 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '备注 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '备注 值不能为空', trigger: 'blur' },
         ],
+        pimpersonid: [
+            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'blur' },
+        ],
         vacleavedetailid: [
             { type: 'string', message: '请销假明细标识 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '请销假明细标识 值必须为字符串类型', trigger: 'blur' },
@@ -717,15 +710,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        vacleavemanageid: new FormItemModel({ caption: '请销假管理标识', detailType: 'FORMITEM', name: 'vacleavemanageid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        ormorgid: new FormItemModel({ caption: '组织标识', detailType: 'FORMITEM', name: 'ormorgid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        ormorgsectorid: new FormItemModel({ caption: '部门标识', detailType: 'FORMITEM', name: 'ormorgsectorid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pimpersonid: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pimpersonname: new FormItemModel({ caption: '请假人员', detailType: 'FORMITEM', name: 'pimpersonname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        pimpersonname: new FormItemModel({ caption: '员工姓名', detailType: 'FORMITEM', name: 'pimpersonname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         qjzl: new FormItemModel({ caption: '请假种类', detailType: 'FORMITEM', name: 'qjzl', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -750,6 +735,8 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
         fj: new FormItemModel({ caption: '附件', detailType: 'FORMITEM', name: 'fj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         bz: new FormItemModel({ caption: '备注', detailType: 'FORMITEM', name: 'bz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        pimpersonid: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         vacleavedetailid: new FormItemModel({ caption: '请销假明细标识', detailType: 'FORMITEM', name: 'vacleavedetailid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -849,54 +836,6 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'srfsourcekey', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 vacleavemanageid 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof JHQJMX
-     */
-    @Watch('data.vacleavemanageid')
-    onVacleavemanageidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'vacleavemanageid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 ormorgid 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof JHQJMX
-     */
-    @Watch('data.ormorgid')
-    onOrmorgidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'ormorgid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 ormorgsectorid 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof JHQJMX
-     */
-    @Watch('data.ormorgsectorid')
-    onOrmorgsectoridChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'ormorgsectorid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pimpersonid 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof JHQJMX
-     */
-    @Watch('data.pimpersonid')
-    onPimpersonidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pimpersonid', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -1056,6 +995,18 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
     }
 
     /**
+     * 监控表单属性 pimpersonid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof JHQJMX
+     */
+    @Watch('data.pimpersonid')
+    onPimpersonidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'pimpersonid', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
      * 监控表单属性 vacleavedetailid 值
      *
      * @param {*} newVal
@@ -1116,10 +1067,6 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
 
 
 
-
-
-
-
         if (Object.is(name, '') || Object.is(name, 'qjzl')) {
             let ret = false;
             const _qjzl = this.data.qjzl;
@@ -1163,6 +1110,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
             }
             this.detailsModel.tips.setVisible(ret);
         }
+
 
 
 

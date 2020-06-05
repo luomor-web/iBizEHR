@@ -88,35 +88,6 @@ const router = new Router({
                     component: () => import('@pages/att/att-endence-setup-pickup-grid-view/att-endence-setup-pickup-grid-view.vue'),
                 },
                 {
-                    path: 'pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.vacleavedetail.views.gridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/vac/vac-leave-detail-grid-view/vac-leave-detail-grid-view.vue'),
-                },
-                {
-                    path: 'vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.vacleavedetail.views.gridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/vac/vac-leave-detail-grid-view/vac-leave-detail-grid-view.vue'),
-                },
-                {
                     path: 'vacleavedetails/:vacleavedetail?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.vacleavedetail.views.gridview.caption',
@@ -968,6 +939,19 @@ const router = new Router({
                     component: () => import('@pages/att/att-endence-setup-mpickup-view/att-endence-setup-mpickup-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.pimperson.views.pickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pim/pim-person-pickup-view/pim-person-pickup-view.vue'),
+                },
+                {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/bmkqszeditview/:bmkqszeditview?',
                     meta: {
                         caption: 'entities.ormorgsector.views.bmkqszeditview.caption',
@@ -1230,35 +1214,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/vac/vac-synjcx-grid-view/vac-synjcx-grid-view.vue'),
-                },
-                {
-                    path: 'pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.vacleavedetail.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/vac/vac-leave-detail-edit-view/vac-leave-detail-edit-view.vue'),
-                },
-                {
-                    path: 'vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.vacleavedetail.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/vac/vac-leave-detail-edit-view/vac-leave-detail-edit-view.vue'),
                 },
                 {
                     path: 'vacleavedetails/:vacleavedetail?/editview/:editview?',
@@ -1690,6 +1645,18 @@ const router = new Router({
         component: () => import('@pages/att/att-endance-mreport-edit-view/att-endance-mreport-edit-view.vue'),
     },
     {
+        path: '/pimpeople/:pimperson?/pickupview/:pickupview?',
+        meta: {
+            caption: 'entities.pimperson.views.pickupview.caption',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'pickupview', parameterName: 'pickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/pim/pim-person-pickup-view/pim-person-pickup-view.vue'),
+    },
+    {
         path: '/pimpeople/:pimperson?/attendancemreportmxes/:attendancemreportmx?/gridview/:gridview?',
         meta: {
             caption: 'entities.attendancemreportmx.views.gridview.caption',
@@ -1785,33 +1752,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/orm-bmkqdz-pickup-view/orm-bmkqdz-pickup-view.vue'),
-    },
-    {
-        path: '/pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/editview/:editview?',
-        meta: {
-            caption: 'entities.vacleavedetail.views.editview.caption',
-            parameters: [
-                { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                { pathName: 'editview', parameterName: 'editview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/vac/vac-leave-detail-edit-view/vac-leave-detail-edit-view.vue'),
-    },
-    {
-        path: '/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/editview/:editview?',
-        meta: {
-            caption: 'entities.vacleavedetail.views.editview.caption',
-            parameters: [
-                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                { pathName: 'editview', parameterName: 'editview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/vac/vac-leave-detail-edit-view/vac-leave-detail-edit-view.vue'),
     },
     {
         path: '/vacleavedetails/:vacleavedetail?/editview/:editview?',
@@ -2070,33 +2010,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/orm-orgsector-pickup-grid-view/orm-orgsector-pickup-grid-view.vue'),
-    },
-    {
-        path: '/pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.vacleavedetail.views.gridview.caption',
-            parameters: [
-                { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/vac/vac-leave-detail-grid-view/vac-leave-detail-grid-view.vue'),
-    },
-    {
-        path: '/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.vacleavedetail.views.gridview.caption',
-            parameters: [
-                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/vac/vac-leave-detail-grid-view/vac-leave-detail-grid-view.vue'),
     },
     {
         path: '/vacleavedetails/:vacleavedetail?/gridview/:gridview?',

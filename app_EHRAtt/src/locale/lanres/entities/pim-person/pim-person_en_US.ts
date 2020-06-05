@@ -168,6 +168,10 @@ export default {
 			caption: "员工考勤设置",
       title: '员工考勤设置',
 		},
+		pickupview: {
+			caption: "人员信息",
+      title: '人员信息',
+		},
 		mpickupview: {
 			caption: "人员信息",
       title: '人员信息',

@@ -56,29 +56,9 @@ export default class JHQJMXModel {
         name: 'srfsourcekey',
       },
       {
-        name: 'vacleavemanageid',
-        prop: 'vacleavemanageid',
-        dataType: 'PICKUP',
-      },
-      {
-        name: 'ormorgid',
-        prop: 'ormorgid',
-        dataType: 'PICKUPDATA',
-      },
-      {
-        name: 'ormorgsectorid',
-        prop: 'ormorgsectorid',
-        dataType: 'PICKUPDATA',
-      },
-      {
-        name: 'pimpersonid',
-        prop: 'pimpersonid',
-        dataType: 'PICKUPDATA',
-      },
-      {
         name: 'pimpersonname',
         prop: 'pimpersonname',
-        dataType: 'PICKUPDATA',
+        dataType: 'PICKUPTEXT',
       },
       {
         name: 'qjzl',
@@ -139,6 +119,11 @@ export default class JHQJMXModel {
         name: 'bz',
         prop: 'bz',
         dataType: 'TEXT',
+      },
+      {
+        name: 'pimpersonid',
+        prop: 'pimpersonid',
+        dataType: 'PICKUP',
       },
       {
         name: 'vacleavedetailid',
