@@ -98,8 +98,6 @@ export default {
                 menuitem10: '离职管理',
                 menuitem11: '解聘管理',
                 menuitem12: '退休管理',
-                menuitem13: '试用期转正管理',
-                menuitem14: '见习生转正管理',
                 menuitem5: '试用期转正',
                 menuitem6: '试用期转正申请',
                 menuitem15: '试用期转正审核',
