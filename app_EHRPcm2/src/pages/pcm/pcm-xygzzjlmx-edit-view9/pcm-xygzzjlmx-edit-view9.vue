@@ -1,15 +1,15 @@
 <script lang='tsx'>
 import { Component } from 'vue-property-decorator';
-import PimPersonSYJXEditViewBase from './pim-person-syjxedit-view-base.vue';
+import PcmXygzzjlmxEditView9Base from './pcm-xygzzjlmx-edit-view9-base.vue';
 
-import view_form from '@widgets/pim-person/main-form/main-form.vue';
+import view_form from '@widgets/pcm-xygzzjlmx/main2-form/main2-form.vue';
 
 /**
- * 人员信息
+ * 试用期员工转正信息
  *
  * @export
- * @class PimPersonSYJXEditView
- * @extends {PimPersonSYJXEditViewBase}
+ * @class PcmXygzzjlmxEditView9
+ * @extends {PcmXygzzjlmxEditView9Base}
  */
 @Component({
     components: {
@@ -21,5 +21,5 @@ import view_form from '@widgets/pim-person/main-form/main-form.vue';
         });
     },
 })
-export default class PimPersonSYJXEditView extends PimPersonSYJXEditViewBase { }
+export default class PcmXygzzjlmxEditView9 extends PcmXygzzjlmxEditView9Base { }
 </script>

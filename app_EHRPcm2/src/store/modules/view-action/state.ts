@@ -536,6 +536,7 @@ export const viewstate: any = {
             refviews: [
                 '4d66cd024a4ad18845836220e338982f',
                 '127a9ba3a71a0255a388142951b7e831',
+                'a9827f5ee0e883f0c48c5a5f2d89b124',
             ],
         },
         {
@@ -1024,6 +1025,7 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '127a9ba3a71a0255a388142951b7e831',
+                'a9827f5ee0e883f0c48c5a5f2d89b124',
             ],
         },
         {
@@ -1054,6 +1056,7 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '127a9ba3a71a0255a388142951b7e831',
+                'a9827f5ee0e883f0c48c5a5f2d89b124',
             ],
         },
         {
@@ -1606,6 +1609,16 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '220a5f087f07a2507bb87d71828db112',
+            ],
+        },
+        {
+            viewtag: 'a9827f5ee0e883f0c48c5a5f2d89b124',
+            viewmodule: 'PCM',
+            viewname: 'PcmXygzzjlmxEditView9',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '4061e9159d0ed321448b9652a5d6a372',
             ],
         },
         {

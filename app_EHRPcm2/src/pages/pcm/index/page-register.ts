@@ -88,6 +88,7 @@ export const PageComponents = {
         Vue.component('pcm-ydbxmx-jlgrid-view', () => import('@pages/pcm/pcm-ydbxmx-jlgrid-view/pcm-ydbxmx-jlgrid-view.vue'));
         Vue.component('pcm-ydntmx-ntjsrqqredit-view', () => import('@pages/pcm/pcm-ydntmx-ntjsrqqredit-view/pcm-ydntmx-ntjsrqqredit-view.vue'));
         Vue.component('orm-org-fpxxpickup-view', () => import('@pages/pcm/orm-org-fpxxpickup-view/orm-org-fpxxpickup-view.vue'));
+        Vue.component('pcm-xygzzjlmx-edit-view9', () => import('@pages/pcm/pcm-xygzzjlmx-edit-view9/pcm-xygzzjlmx-edit-view9.vue'));
         Vue.component('pcm-ydbxmx-bxjsrqqredit-view', () => import('@pages/pcm/pcm-ydbxmx-bxjsrqqredit-view/pcm-ydbxmx-bxjsrqqredit-view.vue'));
         Vue.component('pcm-yddgmx-jsrqqredit-view', () => import('@pages/pcm/pcm-yddgmx-jsrqqredit-view/pcm-yddgmx-jsrqqredit-view.vue'));
         Vue.component('pcm-ddsqdmx-ddedit-view', () => import('@pages/pcm/pcm-ddsqdmx-ddedit-view/pcm-ddsqdmx-ddedit-view.vue'));

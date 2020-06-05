@@ -53,6 +53,10 @@ export default {
 			caption: "试用期员工转正结果引用明细",
       title: '试用期员工转正结果引用明细',
 		},
+		editview9: {
+			caption: "试用期员工转正信息",
+      title: '试用期员工转正信息',
+		},
 	},
 	main_form: {
 		details: {
@@ -92,10 +96,48 @@ export default {
 		uiactions: {
 		},
 	},
+	main2_form: {
+		details: {
+			group1: "员工信息", 
+			grouppanel1: "转正考核成绩", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "试用期员工转正结果引用明细标识", 
+			srfmajortext: "试用期员工转正结果引用明细名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			pcmxygzzsqid: "试用期员工转正申请标识", 
+			ygbh: "员工编号", 
+			pimpersonname: "员工姓名", 
+			zz: "组织", 
+			zzid: "组织ID", 
+			bm: "部门", 
+			bmid: "部门ID", 
+			rzqd: "入职渠道", 
+			zzgw: "转正岗位", 
+			pimpersonid: "人员信息标识", 
+			istemp: "是否为临时数据", 
+			finished: "是否完成", 
+			checkstatus: "审核状态", 
+			pcmxygzzkhjgjlname: "考核结果记录", 
+			jssj: "试用期到期时间", 
+			qssj: "到局时间", 
+			zzsj: "转正时间", 
+			fs: "分数", 
+			pj: "评价", 
+			pcmxygzzjlmxid: "试用期员工转正结果引用明细标识", 
+		},
+		uiactions: {
+		},
+	},
 	main_grid: {
 		columns: {
-			ygbh: "员工编号",
+			uagridcolumn1: "操作",
 			pimpersonname: "员工姓名",
+			ygbh: "员工编号",
 			zz: "组织",
 			bm: "部门",
 			rzqd: "入职渠道",
@@ -107,6 +149,8 @@ export default {
 			pj: "评价",
 		},
 		uiactions: {
+			checkdetail: "查看",
+			remove: "Remove",
 		},
 	},
 	default_searchform: {
@@ -128,6 +172,12 @@ export default {
 		deuiaction1: {
 			caption: "退出",
 			tip: "退出",
+		},
+	},
+	editview9toolbar_toolbar: {
+		deuiaction1: {
+			caption: "关闭",
+			tip: "关闭",
 		},
 	},
 	zzsqlsjmgridviewtoolbar_toolbar: {

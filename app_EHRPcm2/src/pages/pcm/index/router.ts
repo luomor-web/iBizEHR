@@ -2421,6 +2421,33 @@ const router = new Router({
                     component: () => import('@pages/pcm/orm-org-fpxxpickup-view/orm-org-fpxxpickup-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/pcmxygzzjlmxes/:pcmxygzzjlmx?/editview9/:editview9?',
+                    meta: {
+                        caption: 'entities.pcmxygzzjlmx.views.editview9.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
+                            { pathName: 'editview9', parameterName: 'editview9' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pcm/pcm-xygzzjlmx-edit-view9/pcm-xygzzjlmx-edit-view9.vue'),
+                },
+                {
+                    path: 'pcmxygzzjlmxes/:pcmxygzzjlmx?/editview9/:editview9?',
+                    meta: {
+                        caption: 'entities.pcmxygzzjlmx.views.editview9.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
+                            { pathName: 'editview9', parameterName: 'editview9' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pcm/pcm-xygzzjlmx-edit-view9/pcm-xygzzjlmx-edit-view9.vue'),
+                },
+                {
                     path: 'pcmydbxmxes/:pcmydbxmx?/bxjsrqqreditview/:bxjsrqqreditview?',
                     meta: {
                         caption: 'entities.pcmydbxmx.views.bxjsrqqreditview.caption',
@@ -4369,6 +4396,31 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pcm/pcm-ydlzmx-glgrid-view/pcm-ydlzmx-glgrid-view.vue'),
+    },
+    {
+        path: '/pimpeople/:pimperson?/pcmxygzzjlmxes/:pcmxygzzjlmx?/editview9/:editview9?',
+        meta: {
+            caption: 'entities.pcmxygzzjlmx.views.editview9.caption',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
+                { pathName: 'editview9', parameterName: 'editview9' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/pcm/pcm-xygzzjlmx-edit-view9/pcm-xygzzjlmx-edit-view9.vue'),
+    },
+    {
+        path: '/pcmxygzzjlmxes/:pcmxygzzjlmx?/editview9/:editview9?',
+        meta: {
+            caption: 'entities.pcmxygzzjlmx.views.editview9.caption',
+            parameters: [
+                { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
+                { pathName: 'editview9', parameterName: 'editview9' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/pcm/pcm-xygzzjlmx-edit-view9/pcm-xygzzjlmx-edit-view9.vue'),
     },
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',

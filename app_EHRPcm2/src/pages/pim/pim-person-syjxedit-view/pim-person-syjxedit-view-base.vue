@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="pimpersonsyjxeditview" viewTitle="人员信息编辑视图" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'pim-person-syjxedit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="pimpersonsyjxeditview" viewTitle="人员信息" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'pim-person-syjxedit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -53,7 +53,7 @@ import EditViewEngine from '@engine/view/edit-view-engine';
 
 
 /**
- * 人员信息编辑视图基类
+ * 人员信息基类
  *
  * @export
  * @class PimPersonSYJXEditViewBase

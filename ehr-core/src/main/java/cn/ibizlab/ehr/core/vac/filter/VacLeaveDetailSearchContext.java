@@ -113,7 +113,7 @@ public class VacLeaveDetailSearchContext extends QueryWrapperContext<VacLeaveDet
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
             this.getSelectCond().and( wrapper ->
-                     wrapper.like("vacleavedetailname", query)   
+                     wrapper.like("pimpersonname", query)   
             );
 		 }
 	}

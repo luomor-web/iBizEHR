@@ -533,16 +533,27 @@ export default class PimPersonSQSYQZZGridViewBase extends GridViewBase {
         const deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'pimpeople', parameterName: 'pimperson' },
-            { pathName: 'syjxeditview', parameterName: 'syjxeditview' },
         ];
         const _this: any = this;
-        const openIndexViewTab = (data: any) => {
-            const _data: any = { w: (new Date().getTime()) };
-            Object.assign(_data, data);
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, curViewParam, deResParameters, parameters, args, _data);
-            this.$router.push(routePath);
+        const openPopupModal = (view: any, data: any) => {
+            let container: Subject<any> = this.$appmodal.openModal(view, curViewParam, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
         }
-        openIndexViewTab(data);
+        const view: any = {
+            viewname: 'pim-person-syjxedit-view', 
+            height: 650, 
+            width: 0,  
+            title: this.$t('entities.pimperson.views.syjxeditview.title'),
+        };
+        openPopupModal(view, data);
     }
 
 
@@ -565,14 +576,27 @@ export default class PimPersonSQSYQZZGridViewBase extends GridViewBase {
         const deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'pimpeople', parameterName: 'pimperson' },
-            { pathName: 'syjxeditview', parameterName: 'syjxeditview' },
         ];
         const _this: any = this;
-        const openIndexViewTab = (data: any) => {
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, curViewParam, deResParameters, parameters, args, data);
-            this.$router.push(routePath);
+        const openPopupModal = (view: any, data: any) => {
+            let container: Subject<any> = this.$appmodal.openModal(view, curViewParam, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
         }
-        openIndexViewTab(data);
+        const view: any = {
+            viewname: 'pim-person-syjxedit-view', 
+            height: 650, 
+            width: 0,  
+            title: this.$t('entities.pimperson.views.syjxeditview.title'),
+        };
+        openPopupModal(view, data);
     }
 
 

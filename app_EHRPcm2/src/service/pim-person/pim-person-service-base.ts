@@ -65,21 +65,6 @@ export default class PimPersonServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let pimfaminfosData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimfaminfos'),'undefined')){
-            pimfaminfosData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimfaminfos') as any);
-            if(pimfaminfosData && pimfaminfosData.length && pimfaminfosData.length > 0){
-                pimfaminfosData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pimfaminfoid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pimfaminfos = pimfaminfosData;
         let pcmxygzzjlmxesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmxygzzjlmxes'),'undefined')){
             pcmxygzzjlmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmxygzzjlmxes') as any);
@@ -110,6 +95,21 @@ export default class PimPersonServiceBase extends EntityService {
             }
         }
         masterData.pimdistirbutions = pimdistirbutionsData;
+        let pimfaminfosData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimfaminfos'),'undefined')){
+            pimfaminfosData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimfaminfos') as any);
+            if(pimfaminfosData && pimfaminfosData.length && pimfaminfosData.length > 0){
+                pimfaminfosData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pimfaminfoid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimfaminfos = pimfaminfosData;
         let pcmydjdmxesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmydjdmxes'),'undefined')){
             pcmydjdmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmydjdmxes') as any);
@@ -127,9 +127,9 @@ export default class PimPersonServiceBase extends EntityService {
         masterData.pcmydjdmxes = pcmydjdmxesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/pimpeople/${context.pimperson}`,data,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_pimfaminfos',JSON.stringify(res.data.pimfaminfos));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmxygzzjlmxes',JSON.stringify(res.data.pcmxygzzjlmxes));
             this.tempStorage.setItem(context.srfsessionkey+'_pimdistirbutions',JSON.stringify(res.data.pimdistirbutions));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimfaminfos',JSON.stringify(res.data.pimfaminfos));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmydjdmxes',JSON.stringify(res.data.pcmydjdmxes));
             return res;
     }
@@ -171,9 +171,9 @@ export default class PimPersonServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/pimpeople/${context.pimperson}`,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_pimfaminfos',JSON.stringify(res.data.pimfaminfos));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmxygzzjlmxes',JSON.stringify(res.data.pcmxygzzjlmxes));
             this.tempStorage.setItem(context.srfsessionkey+'_pimdistirbutions',JSON.stringify(res.data.pimdistirbutions));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimfaminfos',JSON.stringify(res.data.pimfaminfos));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmydjdmxes',JSON.stringify(res.data.pcmydjdmxes));
             return res;
 
@@ -216,21 +216,6 @@ export default class PimPersonServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let pimfaminfosData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimfaminfos'),'undefined')){
-            pimfaminfosData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimfaminfos') as any);
-            if(pimfaminfosData && pimfaminfosData.length && pimfaminfosData.length > 0){
-                pimfaminfosData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pimfaminfoid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pimfaminfos = pimfaminfosData;
         let pcmxygzzjlmxesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmxygzzjlmxes'),'undefined')){
             pcmxygzzjlmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmxygzzjlmxes') as any);
@@ -261,6 +246,21 @@ export default class PimPersonServiceBase extends EntityService {
             }
         }
         masterData.pimdistirbutions = pimdistirbutionsData;
+        let pimfaminfosData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimfaminfos'),'undefined')){
+            pimfaminfosData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimfaminfos') as any);
+            if(pimfaminfosData && pimfaminfosData.length && pimfaminfosData.length > 0){
+                pimfaminfosData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pimfaminfoid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimfaminfos = pimfaminfosData;
         let pcmydjdmxesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmydjdmxes'),'undefined')){
             pcmydjdmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmydjdmxes') as any);
@@ -285,9 +285,9 @@ export default class PimPersonServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/pimpeople`,data,isloading);
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_pimfaminfos',JSON.stringify(res.data.pimfaminfos));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmxygzzjlmxes',JSON.stringify(res.data.pcmxygzzjlmxes));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_pimdistirbutions',JSON.stringify(res.data.pimdistirbutions));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_pimfaminfos',JSON.stringify(res.data.pimfaminfos));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmydjdmxes',JSON.stringify(res.data.pcmydjdmxes));
         return res;
     }
@@ -303,21 +303,6 @@ export default class PimPersonServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let pimfaminfosData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimfaminfos'),'undefined')){
-            pimfaminfosData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimfaminfos') as any);
-            if(pimfaminfosData && pimfaminfosData.length && pimfaminfosData.length > 0){
-                pimfaminfosData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pimfaminfoid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pimfaminfos = pimfaminfosData;
         let pcmxygzzjlmxesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmxygzzjlmxes'),'undefined')){
             pcmxygzzjlmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmxygzzjlmxes') as any);
@@ -348,6 +333,21 @@ export default class PimPersonServiceBase extends EntityService {
             }
         }
         masterData.pimdistirbutions = pimdistirbutionsData;
+        let pimfaminfosData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimfaminfos'),'undefined')){
+            pimfaminfosData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimfaminfos') as any);
+            if(pimfaminfosData && pimfaminfosData.length && pimfaminfosData.length > 0){
+                pimfaminfosData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pimfaminfoid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimfaminfos = pimfaminfosData;
         let pcmydjdmxesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pcmydjdmxes'),'undefined')){
             pcmydjdmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pcmydjdmxes') as any);
@@ -365,9 +365,9 @@ export default class PimPersonServiceBase extends EntityService {
         masterData.pcmydjdmxes = pcmydjdmxesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/pimpeople/${context.pimperson}/save`,data,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_pimfaminfos',JSON.stringify(res.data.pimfaminfos));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmxygzzjlmxes',JSON.stringify(res.data.pcmxygzzjlmxes));
             this.tempStorage.setItem(context.srfsessionkey+'_pimdistirbutions',JSON.stringify(res.data.pimdistirbutions));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimfaminfos',JSON.stringify(res.data.pimfaminfos));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmydjdmxes',JSON.stringify(res.data.pcmydjdmxes));
             return res;
     }
@@ -452,9 +452,9 @@ export default class PimPersonServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/pimpeople/getdraft`,isloading);
         res.data.pimperson = data.pimperson;
-            this.tempStorage.setItem(context.srfsessionkey+'_pimfaminfos',JSON.stringify(res.data.pimfaminfos));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmxygzzjlmxes',JSON.stringify(res.data.pcmxygzzjlmxes));
             this.tempStorage.setItem(context.srfsessionkey+'_pimdistirbutions',JSON.stringify(res.data.pimdistirbutions));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimfaminfos',JSON.stringify(res.data.pimfaminfos));
             this.tempStorage.setItem(context.srfsessionkey+'_pcmydjdmxes',JSON.stringify(res.data.pcmydjdmxes));
         return res;
     }

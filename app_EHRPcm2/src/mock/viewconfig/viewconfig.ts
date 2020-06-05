@@ -88,7 +88,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "0f74943ebe3d1919f6d166d74e32ae49"
         },
         "pimpersonsyjxeditview": {
-            "title": "人员信息编辑视图",
+            "title": "人员信息",
             "caption": "人员信息",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PIM",
@@ -1222,6 +1222,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PCM",
             "viewname": "PcmYdntmxEditView2",
             "viewtag": "a93b6b6efe8a9ccf0a6f5a46cdbbc5a5"
+        },
+        "pcmxygzzjlmxeditview9": {
+            "title": "试用期员工转正信息",
+            "caption": "试用期员工转正信息",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "PCM",
+            "viewname": "PcmXygzzjlmxEditView9",
+            "viewtag": "a9827f5ee0e883f0c48c5a5f2d89b124"
         },
         "pcmydjdmxeditview": {
             "title": "借调明细信息",
