@@ -133,7 +133,7 @@
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :itemParam='{ context:{"ORMORG":"%ormorgid%"},param:{"n_orgid_eq":"%ormorgid%"},}' 
   :disabled="detailsModel.ormorgsectorname.disabled"
   name='ormorgsectorname'
   deMajorField='orgsectorname'
@@ -1202,6 +1202,13 @@ export default class XZJDEditFormBase extends Vue implements ControlInterface {
      * @memberof XZJDEditForm
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+        if (Object.is(name, 'ormorgid')) {
+            this.onFormItemValueChange({ name: 'ormorgsectorname', value: null });
+            this.onFormItemValueChange({ name: 'ormorgsectorid', value: null });
+        }
+        if (Object.is(name, 'ormorgid')) {
+            this.onFormItemValueChange({ name: 'ormorgsectorid', value: null });
+        }
     }
 
     /**

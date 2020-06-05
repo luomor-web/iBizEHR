@@ -79,6 +79,7 @@ export default class PimPersonUIServiceBase extends UIService {
      * @memberof  PimPersonUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set(':',{viewname:'syjxeditview',srfappde:'pimpeople'});
         this.allViewMap.set(':',{viewname:'bylygpickupview',srfappde:'pimpeople'});
         this.allViewMap.set(':',{viewname:'yxzfppickupview',srfappde:'pimpeople'});
         this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'pimpeople'});
@@ -98,6 +99,8 @@ export default class PimPersonUIServiceBase extends UIService {
         this.allViewMap.set(':',{viewname:'jxqpickupgridview',srfappde:'pimpeople'});
         this.allViewMap.set(':',{viewname:'jxspickupview',srfappde:'pimpeople'});
         this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'pimpeople'});
+        this.allViewMap.set(':',{viewname:'sqjxqzzgridview',srfappde:'pimpeople'});
+        this.allViewMap.set(':',{viewname:'sqsyqzzgridview',srfappde:'pimpeople'});
     }
 
     /**
@@ -135,6 +138,42 @@ export default class PimPersonUIServiceBase extends UIService {
         const parameters: any[] = [
             { pathName: 'pcmydtxmxes', parameterName: 'pcmydtxmx' },
             { pathName: 'jlgridview', parameterName: 'jlgridview' },
+        ];
+        const openIndexViewTab = (data: any) => {
+            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
+            actionContext.$router.push(routePath);
+            return null;
+        }
+        openIndexViewTab(data);
+    }
+
+    /**
+     * 见习期转正记录
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async PimPerson_JXQZZJL(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'NONE';
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
+            { pathName: 'zzjlgridview', parameterName: 'zzjlgridview' },
         ];
         const openIndexViewTab = (data: any) => {
             const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
@@ -198,6 +237,48 @@ export default class PimPersonUIServiceBase extends UIService {
     }
 
     /**
+     * 转正
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async PimPerson_SQJXSZZ(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'MULTIKEY';
+        Object.assign(context, { pimperson: '%pimpersonid%' });
+        Object.assign(params, { pimpersonid: '%pimpersonid%' });
+        Object.assign(params, { pimpersonname: '%pimpersonname%' });
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmjxsygzzsqs', parameterName: 'pcmjxsygzzsq' },
+            { pathName: 'jxszzsqjmeditview', parameterName: 'jxszzsqjmeditview' },
+        ];
+        const openIndexViewTab = (data: any) => {
+            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
+            actionContext.$router.push(routePath);
+            if (xData && xData.refresh && xData.refresh instanceof Function) {
+                xData.refresh(args);
+            }
+            return null;
+        }
+        openIndexViewTab(data);
+    }
+
+    /**
      * 确认退休
      *
      * @param {any[]} args 当前数据
@@ -248,6 +329,84 @@ export default class PimPersonUIServiceBase extends UIService {
                 title: actionContext.$t('entities.pimperson.views.txqreditview.title'),
             };
             openPopupModal(view, data);
+    }
+
+    /**
+     * 试用期转正记录
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async PimPerson_SYQZZJL(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'NONE';
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
+            { pathName: 'syqzzjlgridview', parameterName: 'syqzzjlgridview' },
+        ];
+        const openIndexViewTab = (data: any) => {
+            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
+            actionContext.$router.push(routePath);
+            return null;
+        }
+        openIndexViewTab(data);
+    }
+
+    /**
+     * 转正
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async PimPerson_SQSYQZZ(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'MULTIKEY';
+        Object.assign(context, { pimperson: '%pimpersonid%' });
+        Object.assign(params, { pimpersonid: '%pimpersonid%' });
+        Object.assign(params, { pimpersonname: '%pimpersonname%' });
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'pcmxygzzsqs', parameterName: 'pcmxygzzsq' },
+            { pathName: 'zzsqjmeditview', parameterName: 'zzsqjmeditview' },
+        ];
+        const openIndexViewTab = (data: any) => {
+            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
+            actionContext.$router.push(routePath);
+            if (xData && xData.refresh && xData.refresh instanceof Function) {
+                xData.refresh(args);
+            }
+            return null;
+        }
+        openIndexViewTab(data);
     }
 
 

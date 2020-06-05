@@ -118,7 +118,12 @@
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <template >
+                        <template v-if="actualIsOpenEdit">
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" :value="row[column.property]" style="" @on-change="(val1, val2) => { row[column.property] = val1; gridEditItemChange(row, column.property, val1, $index)}"></date-picker>
+                            </app-form-item>
+                        </template>
+                        <template v-if="!actualIsOpenEdit">
                                 <app-span name='dbdwsj' editorType="DATEPICKER" :value="row.dbdwsj"></app-span>
                         </template>
                     </template>
@@ -132,7 +137,12 @@
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <template >
+                        <template v-if="actualIsOpenEdit">
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" :value="row[column.property]" style="" @on-change="(val1, val2) => { row[column.property] = val1; gridEditItemChange(row, column.property, val1, $index)}"></date-picker>
+                            </app-form-item>
+                        </template>
+                        <template v-if="!actualIsOpenEdit">
                                 <app-span name='jxdq' editorType="DATEPICKER" :value="row.jxdq"></app-span>
                         </template>
                     </template>
@@ -334,6 +344,20 @@ export default class JXDQYGBase extends Vue implements ControlInterface {
         return this.selections[0];
     }
 
+    /**
+     * 打开新建数据视图
+     *
+     * @type {any}
+     * @memberof JXDQYG
+     */
+    @Prop() public newdata: any;
+    /**
+     * 打开编辑数据视图
+     *
+     * @type {any}
+     * @memberof JXDQYG
+     */
+    @Prop() public opendata: any;
 
     /**
      * 显示处理提示
@@ -760,7 +784,7 @@ export default class JXDQYGBase extends Vue implements ControlInterface {
      */
     public load(opt: any = {}, pageReset: boolean = false): void {
         if(!this.fetchAction){
-            this.$Notice.error({ title: '错误', desc: 'PimPersonJXQPickupGridView视图表格fetchAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'PimPersonSQJXQZZGridView视图表格fetchAction参数未配置' });
             return;
         }
         if(pageReset){
@@ -837,7 +861,7 @@ export default class JXDQYGBase extends Vue implements ControlInterface {
      */
     public async remove(datas: any[]): Promise<any> {
         if(!this.removeAction){
-            this.$Notice.error({ title: '错误', desc: 'PimPersonJXQPickupGridView视图表格removeAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'PimPersonSQJXQZZGridView视图表格removeAction参数未配置' });
             return;
         }
         let _datas:any[] = [];
@@ -943,7 +967,7 @@ export default class JXDQYGBase extends Vue implements ControlInterface {
      */
     public addBatch(arg: any = {}): void {
         if(!this.fetchAction){
-            this.$Notice.error({ title: '错误', desc: 'PimPersonJXQPickupGridView视图表格fetchAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'PimPersonSQJXQZZGridView视图表格fetchAction参数未配置' });
             return;
         }
         if(!arg){
@@ -1502,7 +1526,7 @@ export default class JXDQYGBase extends Vue implements ControlInterface {
             try {
                 if(Object.is(item.rowDataState, 'create')){
                     if(!this.createAction){
-                        this.$Notice.error({ title: '错误', desc: 'PimPersonJXQPickupGridView视图表格createAction参数未配置' });
+                        this.$Notice.error({ title: '错误', desc: 'PimPersonSQJXQZZGridView视图表格createAction参数未配置' });
                     }else{
                       Object.assign(item,{viewparams:this.viewparams});
                       let response = await this.service.add(this.createAction, JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator);
@@ -1510,7 +1534,7 @@ export default class JXDQYGBase extends Vue implements ControlInterface {
                     }
                 }else if(Object.is(item.rowDataState, 'update')){
                     if(!this.updateAction){
-                        this.$Notice.error({ title: '错误', desc: 'PimPersonJXQPickupGridView视图表格updateAction参数未配置' });
+                        this.$Notice.error({ title: '错误', desc: 'PimPersonSQJXQZZGridView视图表格updateAction参数未配置' });
                     }else{
                         Object.assign(item,{viewparams:this.viewparams});
                         if(item.pimperson){
@@ -1538,6 +1562,119 @@ export default class JXDQYGBase extends Vue implements ControlInterface {
         return successItems;
     }
 
+    /**
+     * 新建行
+     *
+     * @param {*} $event
+     * @returns {void}
+     * @memberof JXDQYG
+     */
+    public newRow(args: any[], params?: any, $event?: any, xData?: any): void {
+        if(!this.loaddraftAction){
+            this.$Notice.error({ title: '错误', desc: 'PimPersonSQJXQZZGridView视图表格loaddraftAction参数未配置' });
+            return;
+        }
+        let _this = this;
+        Object.assign(args[0],{viewparams:this.viewparams});
+        let post: Promise<any> = this.service.loadDraft(this.loaddraftAction, JSON.parse(JSON.stringify(this.context)), args[0], this.showBusyIndicator);
+        post.then((response: any) => {
+            if (!response.status || response.status !== 200) {
+                if (response.errorMessage) {
+                    this.$Notice.error({ title: '错误', desc: response.errorMessage });
+                }
+                return;
+            }
+            const data = response.data;
+            data.rowDataState = "create";
+            _this.items.push(data);
+            _this.gridItemsModel.push(_this.getGridRowModel());
+        }).catch((response: any) => {
+            if (response && response.status === 401) {
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
+
+    /**
+     * 表格编辑项值变更
+     *  
+     * @param row 行数据
+     * @param {{ name: string, value: any }} $event
+     * @returns {void}
+     * @memberof JXDQYG
+     */
+    public onGridItemValueChange(row: any,$event: { name: string, value: any },rowIndex: number): void {
+        if (!$event) {
+            return;
+        }
+        if (!$event.name || Object.is($event.name, '') || !row.hasOwnProperty($event.name)) {
+            return;
+        }
+        row[$event.name] = $event.value;
+        this.gridEditItemChange(row, $event.name, $event.value, rowIndex);
+    }
+
+    /**
+     * 表格编辑项值变化
+     *
+     * @public
+     * @param row 行数据
+     * @param property 列编辑项名
+     * @param row 列编辑项值
+     * @returns {void}
+     * @memberof JXDQYG
+     */
+    public gridEditItemChange(row: any, property: string, value: any, rowIndex: number){
+        row.rowDataState = row.rowDataState ? row.rowDataState : "update" ;
+        this.validate(property,row,rowIndex);
+    }
+
+    /**
+     * 表格编辑项更新
+     *
+     * @param {string} mode 界面行为名称
+     * @param {*} [data={}] 请求数据
+     * @param {string[]} updateDetails 更新项
+     * @param {boolean} [showloading] 是否显示加载状态
+     * @returns {void}
+     * @memberof JXDQYG
+     */
+    public updateGridEditItem(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
+        if (!mode || (mode && Object.is(mode, ''))) {
+            return;
+        }
+        const arg: any = JSON.parse(JSON.stringify(data));
+        Object.assign(arg,{viewparams:this.viewparams});
+        const post: Promise<any> = this.service.frontLogic(mode,JSON.parse(JSON.stringify(this.context)),arg, showloading);
+        post.then((response: any) => {
+            if (!response || response.status !== 200) {
+                this.$Notice.error({ title: '错误', desc: '表单项更新失败' });
+                return;
+            }
+            const _data: any = response.data;
+            if(!_data){
+                return;
+            }
+            updateDetails.forEach((name: string) => {
+                if (!_data.hasOwnProperty(name)) {
+                    return;
+                }
+                data[name] = _data[name];
+            });
+        }).catch((response: any) => {
+            if (response && response.status === 401) {
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
 
     /**
      * 获取对应行class

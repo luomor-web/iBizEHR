@@ -126,6 +126,10 @@ export default class OrmOrgsectorPickupGridViewBase extends PickupViewBase {
 	 * @memberof OrmOrgsectorPickupGridViewBase
 	 */
     public customViewNavContexts:any ={
+    "ZZDZS":{"isRawValue":true,"value":"null"},
+    "ORMORG":{"isRawValue":true,"value":"null"},
+    "ORGID":{"isRawValue":true,"value":"null"},
+    "ORGNAME":{"isRawValue":true,"value":"null"}
     };
 
 	/**

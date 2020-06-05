@@ -424,6 +424,14 @@
         "items": []
     }, 
     {
+        "srfkey": "EhrCodeList0167",
+        "emptytext": "",
+        "codelisttype":"dynamic",
+        "appdataentity":"",
+        "appdedataset":"",
+        "items": []
+    }, 
+    {
         "srfkey": "EhrCodeList0219",
         "emptytext": "",
         "codelisttype":"dynamic",
@@ -667,6 +675,43 @@
         "items": []
     }, 
     {
+        "srfkey": "EhrCodeList0021",
+        "emptytext": "",
+        "codelisttype":"static",
+        "items": [
+             {
+                "id": "10",
+                "label": "B/Y类员工转正",
+                "text": "B/Y类员工转正",
+                "data":"",
+                "codename":"Item_10",
+                "value": "10",
+                
+                "disabled": false
+            }
+            , {
+                "id": "20",
+                "label": "试用期员工转正",
+                "text": "试用期员工转正",
+                "data":"",
+                "codename":"Item_20",
+                "value": "20",
+                
+                "disabled": false
+            }
+            , {
+                "id": "30",
+                "label": "见习期员工转正",
+                "text": "见习期员工转正",
+                "data":"",
+                "codename":"Item_30",
+                "value": "30",
+                
+                "disabled": false
+            }
+        ]
+    }, 
+    {
         "srfkey": "EhrCodeList0043",
         "emptytext": "",
         "codelisttype":"dynamic",
@@ -747,6 +792,43 @@
         "appdataentity":"",
         "appdedataset":"",
         "items": []
+    }, 
+    {
+        "srfkey": "EhrCodeList0085",
+        "emptytext": "未定义",
+        "codelisttype":"static",
+        "items": [
+             {
+                "id": "1",
+                "label": "1个月",
+                "text": "1个月",
+                "data":"",
+                "codename":"Item_1",
+                "value": "1",
+                
+                "disabled": false
+            }
+            , {
+                "id": "2",
+                "label": "2个月",
+                "text": "2个月",
+                "data":"",
+                "codename":"Item_2",
+                "value": "2",
+                
+                "disabled": false
+            }
+            , {
+                "id": "6",
+                "label": "6个月",
+                "text": "6个月",
+                "data":"",
+                "codename":"Item_6",
+                "value": "6",
+                
+                "disabled": false
+            }
+        ]
     }, 
     {
         "srfkey": "EhrCodeList0022",
@@ -950,6 +1032,53 @@
         "appdataentity":"",
         "appdedataset":"",
         "items": []
+    }, 
+    {
+        "srfkey": "EhrCodeList0046",
+        "emptytext": "",
+        "codelisttype":"static",
+        "items": [
+             {
+                "id": "10",
+                "label": "优秀",
+                "text": "优秀",
+                "data":"",
+                "codename":"Item_10",
+                "value": "10",
+                
+                "disabled": false
+            }
+            , {
+                "id": "20",
+                "label": "良好",
+                "text": "良好",
+                "data":"",
+                "codename":"Item_20",
+                "value": "20",
+                
+                "disabled": false
+            }
+            , {
+                "id": "30",
+                "label": "一般",
+                "text": "一般",
+                "data":"",
+                "codename":"Item_30",
+                "value": "30",
+                
+                "disabled": false
+            }
+            , {
+                "id": "40",
+                "label": "不合格",
+                "text": "不合格",
+                "data":"",
+                "codename":"Item_40",
+                "value": "40",
+                
+                "disabled": false
+            }
+        ]
     }, 
     {
         "srfkey": "EhrCodeList0179",

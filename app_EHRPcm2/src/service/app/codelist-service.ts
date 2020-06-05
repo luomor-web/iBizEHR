@@ -4,6 +4,7 @@ import EhrCodeList0205 from '@/codelist/ehr-code-list0205';
 import EhrCodeList0018 from '@/codelist/ehr-code-list0018';   
 import EhrCodeList0137 from '@/codelist/ehr-code-list0137';   
 import EhrCodeList0025 from '@/codelist/ehr-code-list0025';   
+import EhrCodeList0167 from '@/codelist/ehr-code-list0167';   
 import EhrCodeList0219 from '@/codelist/ehr-code-list0219';   
 import EhrCodeList0096 from '@/codelist/ehr-code-list0096';   
 import EhrCodeList0001 from '@/codelist/ehr-code-list0001';   
@@ -120,6 +121,14 @@ export default class CodeListService {
      * @memberof CodeListService
      */
     public EhrCodeList0025: EhrCodeList0025 = new EhrCodeList0025();
+
+    /**
+     * 代码表--员工类型
+     *
+     * @type {EhrCodeList0167}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0167: EhrCodeList0167 = new EhrCodeList0167();
 
     /**
      * 代码表--补贴标准

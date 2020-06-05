@@ -66,6 +66,9 @@ export default {
     EhrCodeList0025: {
         empty: '',
     },
+    EhrCodeList0167: {
+        empty: '',
+    },
     EhrCodeList0219: {
         empty: '',
     },
@@ -126,6 +129,12 @@ export default {
     EhrCodeList0072: {
         empty: '',
     },
+    EhrCodeList0021: {
+          '10': 'B/Y类员工转正',
+          '20': '试用期员工转正',
+          '30': '见习期员工转正',
+        empty: '',
+    },
     EhrCodeList0043: {
         empty: '',
     },
@@ -143,6 +152,12 @@ export default {
         empty: '',
     },
     EhrCodeList0041: {
+        empty: '',
+    },
+    EhrCodeList0085: {
+          '1': '1个月',
+          '2': '2个月',
+          '6': '6个月',
         empty: '',
     },
     EhrCodeList0022: {
@@ -181,6 +196,13 @@ export default {
         empty: '',
     },
     EhrCodeList0070: {
+        empty: '',
+    },
+    EhrCodeList0046: {
+          '10': '优秀',
+          '20': '良好',
+          '30': '一般',
+          '40': '不合格',
         empty: '',
     },
     EhrCodeList0179: {

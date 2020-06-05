@@ -156,6 +156,10 @@ export default {
     pimpersonid3: '人员信息标识',
   },
 	views: {
+		syjxeditview: {
+			caption: "人员信息",
+      title: '人员信息',
+		},
 		bylygpickupview: {
 			caption: "人员信息",
       title: '人员信息',
@@ -231,6 +235,45 @@ export default {
 		pickupview: {
 			caption: "人员信息",
       title: '人员信息',
+		},
+		sqjxqzzgridview: {
+			caption: "见习期可转正人员信息",
+      title: '见习期可转正人员信息',
+		},
+		sqsyqzzgridview: {
+			caption: "试用期转正管理",
+      title: '试用期转正管理',
+		},
+	},
+	main_form: {
+		details: {
+			group1: "人员信息基本信息", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "人员信息标识", 
+			srfmajortext: "员工姓名", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			srfip_ygbh: "", 
+			srfip_pimpersonname: "", 
+			srfip_zjlx: "", 
+			srfip_zjhm: "", 
+			ygbh: "员工编号", 
+			pimpersonname: "员工姓名", 
+			yglx: "员工类型", 
+			zjlx: "证件类型", 
+			zjhm: "证件号码", 
+			dbdwsj: "到本单位时间", 
+			ygzt: "员工状态", 
+			duration: "实习/试用期限", 
+			jxdq: "见习到期时间", 
+			sydq: "试用到期时间", 
+			pimpersonid: "人员信息标识", 
+		},
+		uiactions: {
 		},
 	},
 	txqreditform_form: {
@@ -343,6 +386,35 @@ export default {
 		uiactions: {
 		},
 	},
+	sydqyg_grid: {
+		columns: {
+			ygbh: "员工编号",
+			pimpersonname: "员工姓名",
+			zzdzs: "组织",
+			ormorgsectorname: "部门",
+			zw: "职务",
+			gw: "岗位",
+			dbdwsj: "到本单位时间",
+			sydq: "试用到期时间",
+		},
+		uiactions: {
+		},
+	},
+	jxdqyg_grid: {
+		columns: {
+			ygbh: "员工编号",
+			pimpersonname: "员工姓名",
+			zzdzs: "组织",
+			ormorgsectorname: "部门",
+			zw: "职务",
+			gw: "岗位",
+			duration: "见习期限(月)",
+			dbdwsj: "到本单位时间",
+			jxdq: "见习到期时间",
+		},
+		uiactions: {
+		},
+	},
 	txlxyg_grid: {
 		columns: {
 			ygbh: "员工编号",
@@ -362,20 +434,6 @@ export default {
 			sjtxrq: "实际退休时间",
 			lxdh: "手机号码",
 			spdylje: "审批的养老金额",
-		},
-		uiactions: {
-		},
-	},
-	sydqyg_grid: {
-		columns: {
-			ygbh: "员工编号",
-			pimpersonname: "员工姓名",
-			zzdzs: "组织",
-			ormorgsectorname: "部门",
-			zw: "职务",
-			gw: "岗位",
-			dbdwsj: "到本单位时间",
-			sydq: "试用到期时间",
 		},
 		uiactions: {
 		},
@@ -419,21 +477,6 @@ export default {
 		uiactions: {
 		},
 	},
-	jxdqyg_grid: {
-		columns: {
-			ygbh: "员工编号",
-			pimpersonname: "员工姓名",
-			zzdzs: "组织",
-			ormorgsectorname: "部门",
-			zw: "职务",
-			gw: "岗位",
-			duration: "见习期限(月)",
-			dbdwsj: "到本单位时间",
-			jxdq: "见习到期时间",
-		},
-		uiactions: {
-		},
-	},
 	ydryinfosearchform_searchform: {
 		details: {
 			grouppanel1: "", 
@@ -461,20 +504,6 @@ export default {
 		uiactions: {
 		},
 	},
-	txrysearchform_searchform: {
-		details: {
-			grouppanel1: "", 
-			formpage1: "常规条件", 
-			n_ygbh_like: "员工编号", 
-			n_pimpersonname_like: "员工姓名(%)", 
-			n_ormorgname_like: "组织(%)", 
-			n_ormorgsectorname_like: "部门(%)", 
-			n_sjtxrq_gtandeq: "实际退休时间(>=)", 
-			n_sjtxrq_ltandeq: "实际退休时间(<=)", 
-		},
-		uiactions: {
-		},
-	},
 	default_searchform: {
 		details: {
 			formpage1: "常规条件", 
@@ -496,6 +525,46 @@ export default {
 			n_rzqd_eq: "入职渠道", 
 		},
 		uiactions: {
+		},
+	},
+	txrysearchform_searchform: {
+		details: {
+			grouppanel1: "", 
+			formpage1: "常规条件", 
+			n_ygbh_like: "员工编号", 
+			n_pimpersonname_like: "员工姓名(%)", 
+			n_ormorgname_like: "组织(%)", 
+			n_ormorgsectorname_like: "部门(%)", 
+			n_sjtxrq_gtandeq: "实际退休时间(>=)", 
+			n_sjtxrq_ltandeq: "实际退休时间(<=)", 
+		},
+		uiactions: {
+		},
+	},
+	syqygsearchform_searchform: {
+		details: {
+			grouppanel1: "", 
+			formpage1: "常规条件", 
+			n_pimpersonname_like: "员工姓名", 
+			n_ygbh_like: "员工编号", 
+			n_ormorgname_like: "组织", 
+			n_ormorgsectorname_like: "部门", 
+			n_gw_eq: "岗位", 
+			n_duration_eq: "试用期限（月）", 
+			n_sydq_ltandeq: "试用到期时间(<=)", 
+			n_rzqd_eq: "入职渠道", 
+		},
+		uiactions: {
+		},
+	},
+	syjxeditviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
 		},
 	},
 	txqreditviewtoolbar_toolbar: {
@@ -536,6 +605,70 @@ export default {
 		tbitem1_opentxeditview: {
 			caption: "打开编辑页面",
 			tip: "打开编辑页面",
+		},
+	},
+	sqjxqzzgridviewtoolbar2_toolbar: {
+		deuiaction2: {
+			caption: "保存",
+			tip: "保存",
+		},
+		deuiaction1: {
+			caption: "关闭行编辑",
+			tip: "关闭行编辑",
+		},
+	},
+	sqjxqzzgridviewtoolbar_toolbar: {
+		deuiaction1_sqjxszz: {
+			caption: "转正",
+			tip: "转正",
+		},
+		deuiaction4_jxqzzjl: {
+			caption: "见习期转正记录",
+			tip: "见习期转正记录",
+		},
+		deuiaction3: {
+			caption: "开启行编辑",
+			tip: "开启行编辑",
+		},
+		deuiaction6: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
+		deuiaction2: {
+			caption: "Filter",
+			tip: "Filter",
+		},
+	},
+	sqsyqzzgridviewtoolbar2_toolbar: {
+		deuiaction2: {
+			caption: "保存",
+			tip: "保存",
+		},
+		deuiaction1: {
+			caption: "关闭行编辑",
+			tip: "关闭行编辑",
+		},
+	},
+	sqsyqzzgridviewtoolbar_toolbar: {
+		deuiaction1_sqsyqzz: {
+			caption: "转正",
+			tip: "转正",
+		},
+		deuiaction4_syqzzjl: {
+			caption: "试用期转正记录",
+			tip: "试用期转正记录",
+		},
+		deuiaction3: {
+			caption: "开启行编辑",
+			tip: "开启行编辑",
+		},
+		deuiaction6: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
+		deuiaction2: {
+			caption: "Filter",
+			tip: "Filter",
 		},
 	},
 };

@@ -125,6 +125,46 @@ export default class SYDQYGModel {
           name: 'pimperson',
           prop: 'pimpersonid',
         },
+      {
+        name: 'n_pimpersonname_like',
+        prop: 'n_pimpersonname_like',
+        dataType: 'TEXT',
+      },
+      {
+        name: 'n_ygbh_like',
+        prop: 'n_ygbh_like',
+        dataType: 'TEXT',
+      },
+      {
+        name: 'n_ormorgname_like',
+        prop: 'n_ormorgname_like',
+        dataType: 'PICKUPTEXT',
+      },
+      {
+        name: 'n_ormorgsectorname_like',
+        prop: 'n_ormorgsectorname_like',
+        dataType: 'PICKUPTEXT',
+      },
+      {
+        name: 'n_gw_eq',
+        prop: 'n_gw_eq',
+        dataType: 'SSCODELIST',
+      },
+      {
+        name: 'n_duration_eq',
+        prop: 'n_duration_eq',
+        dataType: 'TEXT',
+      },
+      {
+        name: 'n_sydq_ltandeq',
+        prop: 'n_sydq_ltandeq',
+        dataType: 'DATE',
+      },
+      {
+        name: 'n_rzqd_eq',
+        prop: 'n_rzqd_eq',
+        dataType: 'SSCODELIST',
+      },
 
         {
           name:'size',

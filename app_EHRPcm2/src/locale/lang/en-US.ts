@@ -24,6 +24,12 @@ import pcmprofile_en_US from '@locale/lanres/entities/pcm-profile/pcm-profile_en
 import pimfaminfo_en_US from '@locale/lanres/entities/pim-faminfo/pim-faminfo_en_US';
 import pimperson_en_US from '@locale/lanres/entities/pim-person/pim-person_en_US';
 import ormorgsector_en_US from '@locale/lanres/entities/orm-orgsector/orm-orgsector_en_US';
+import pcmxygzzsq_en_US from '@locale/lanres/entities/pcm-xygzzsq/pcm-xygzzsq_en_US';
+import pcmjxsygzzsq_en_US from '@locale/lanres/entities/pcm-jxsygzzsq/pcm-jxsygzzsq_en_US';
+import pcmjxsygzzjlmx_en_US from '@locale/lanres/entities/pcm-jxsygzzjlmx/pcm-jxsygzzjlmx_en_US';
+import pcmxygzzkhjgjl_en_US from '@locale/lanres/entities/pcm-xygzzkhjgjl/pcm-xygzzkhjgjl_en_US';
+import pcmjxszzkhjgjl_en_US from '@locale/lanres/entities/pcm-jxszzkhjgjl/pcm-jxszzkhjgjl_en_US';
+import pcmxygzzjlmx_en_US from '@locale/lanres/entities/pcm-xygzzjlmx/pcm-xygzzjlmx_en_US';
 import components_en_US from '@locale/lanres/components/components_en_US';
 import codelist_en_US from '@locale/lanres/codelist/codelist_en_US';
 import userCustom_en_US from '@locale/lanres/userCustom/userCustom_en_US';
@@ -123,6 +129,12 @@ export default {
         pimfaminfo: pimfaminfo_en_US,
         pimperson: pimperson_en_US,
         ormorgsector: ormorgsector_en_US,
+        pcmxygzzsq: pcmxygzzsq_en_US,
+        pcmjxsygzzsq: pcmjxsygzzsq_en_US,
+        pcmjxsygzzjlmx: pcmjxsygzzjlmx_en_US,
+        pcmxygzzkhjgjl: pcmxygzzkhjgjl_en_US,
+        pcmjxszzkhjgjl: pcmjxszzkhjgjl_en_US,
+        pcmxygzzjlmx: pcmxygzzjlmx_en_US,
     },
     components: components_en_US,
     codelist: codelist_en_US,

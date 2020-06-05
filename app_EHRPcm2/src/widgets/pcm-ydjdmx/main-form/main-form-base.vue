@@ -1106,6 +1106,13 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+        if (Object.is(name, 'ormorgid')) {
+            this.onFormItemValueChange({ name: 'ormorgsectorname', value: null });
+            this.onFormItemValueChange({ name: 'ormorgsectorid', value: null });
+        }
+        if (Object.is(name, 'ormorgid')) {
+            this.onFormItemValueChange({ name: 'ormorgsectorid', value: null });
+        }
     }
 
     /**

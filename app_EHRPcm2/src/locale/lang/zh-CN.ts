@@ -24,6 +24,12 @@ import pcmprofile_zh_CN from '@locale/lanres/entities/pcm-profile/pcm-profile_zh
 import pimfaminfo_zh_CN from '@locale/lanres/entities/pim-faminfo/pim-faminfo_zh_CN';
 import pimperson_zh_CN from '@locale/lanres/entities/pim-person/pim-person_zh_CN';
 import ormorgsector_zh_CN from '@locale/lanres/entities/orm-orgsector/orm-orgsector_zh_CN';
+import pcmxygzzsq_zh_CN from '@locale/lanres/entities/pcm-xygzzsq/pcm-xygzzsq_zh_CN';
+import pcmjxsygzzsq_zh_CN from '@locale/lanres/entities/pcm-jxsygzzsq/pcm-jxsygzzsq_zh_CN';
+import pcmjxsygzzjlmx_zh_CN from '@locale/lanres/entities/pcm-jxsygzzjlmx/pcm-jxsygzzjlmx_zh_CN';
+import pcmxygzzkhjgjl_zh_CN from '@locale/lanres/entities/pcm-xygzzkhjgjl/pcm-xygzzkhjgjl_zh_CN';
+import pcmjxszzkhjgjl_zh_CN from '@locale/lanres/entities/pcm-jxszzkhjgjl/pcm-jxszzkhjgjl_zh_CN';
+import pcmxygzzjlmx_zh_CN from '@locale/lanres/entities/pcm-xygzzjlmx/pcm-xygzzjlmx_zh_CN';
 import components_zh_CN from '@locale/lanres/components/components_zh_CN';
 import codelist_zh_CN from '@locale/lanres/codelist/codelist_zh_CN';
 import userCustom_zh_CN from '@locale/lanres/userCustom/userCustom_zh_CN';
@@ -123,6 +129,12 @@ export default {
         pimfaminfo: pimfaminfo_zh_CN,
         pimperson: pimperson_zh_CN,
         ormorgsector: ormorgsector_zh_CN,
+        pcmxygzzsq: pcmxygzzsq_zh_CN,
+        pcmjxsygzzsq: pcmjxsygzzsq_zh_CN,
+        pcmjxsygzzjlmx: pcmjxsygzzjlmx_zh_CN,
+        pcmxygzzkhjgjl: pcmxygzzkhjgjl_zh_CN,
+        pcmjxszzkhjgjl: pcmjxszzkhjgjl_zh_CN,
+        pcmxygzzjlmx: pcmxygzzjlmx_zh_CN,
     },
     components: components_zh_CN,
     codelist: codelist_zh_CN,
