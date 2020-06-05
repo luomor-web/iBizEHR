@@ -1,7 +1,11 @@
 import pcmydjzmx_zh_CN from '@locale/lanres/entities/pcm-ydjzmx/pcm-ydjzmx_zh_CN';
+import pcmxygzzsq_zh_CN from '@locale/lanres/entities/pcm-xygzzsq/pcm-xygzzsq_zh_CN';
 import pcmjxsgz_zh_CN from '@locale/lanres/entities/pcm-jxsgz/pcm-jxsgz_zh_CN';
+import pcmjxsygzzsq_zh_CN from '@locale/lanres/entities/pcm-jxsygzzsq/pcm-jxsygzzsq_zh_CN';
+import pcmjxsygzzjlmx_zh_CN from '@locale/lanres/entities/pcm-jxsygzzjlmx/pcm-jxsygzzjlmx_zh_CN';
 import ormpost_zh_CN from '@locale/lanres/entities/orm-post/orm-post_zh_CN';
 import pcmydtxmx_zh_CN from '@locale/lanres/entities/pcm-ydtxmx/pcm-ydtxmx_zh_CN';
+import pcmxygzzkhjgjl_zh_CN from '@locale/lanres/entities/pcm-xygzzkhjgjl/pcm-xygzzkhjgjl_zh_CN';
 import pcmydgzmx_zh_CN from '@locale/lanres/entities/pcm-ydgzmx/pcm-ydgzmx_zh_CN';
 import ormorg_zh_CN from '@locale/lanres/entities/orm-org/orm-org_zh_CN';
 import pimdistirbution_zh_CN from '@locale/lanres/entities/pim-distirbution/pim-distirbution_zh_CN';
@@ -18,18 +22,15 @@ import pcmddsqdmx_zh_CN from '@locale/lanres/entities/pcm-ddsqdmx/pcm-ddsqdmx_zh
 import pcmreason_zh_CN from '@locale/lanres/entities/pcm-reason/pcm-reason_zh_CN';
 import pcmydntmx_zh_CN from '@locale/lanres/entities/pcm-ydntmx/pcm-ydntmx_zh_CN';
 import pcmydlzmx_zh_CN from '@locale/lanres/entities/pcm-ydlzmx/pcm-ydlzmx_zh_CN';
+import pcmjxszzkhjgjl_zh_CN from '@locale/lanres/entities/pcm-jxszzkhjgjl/pcm-jxszzkhjgjl_zh_CN';
+import pcmxygzzjlmx_zh_CN from '@locale/lanres/entities/pcm-xygzzjlmx/pcm-xygzzjlmx_zh_CN';
 import pcmydbxmx_zh_CN from '@locale/lanres/entities/pcm-ydbxmx/pcm-ydbxmx_zh_CN';
 import pcmnotice_zh_CN from '@locale/lanres/entities/pcm-notice/pcm-notice_zh_CN';
 import pcmprofile_zh_CN from '@locale/lanres/entities/pcm-profile/pcm-profile_zh_CN';
 import pimfaminfo_zh_CN from '@locale/lanres/entities/pim-faminfo/pim-faminfo_zh_CN';
 import pimperson_zh_CN from '@locale/lanres/entities/pim-person/pim-person_zh_CN';
 import ormorgsector_zh_CN from '@locale/lanres/entities/orm-orgsector/orm-orgsector_zh_CN';
-import pcmxygzzsq_zh_CN from '@locale/lanres/entities/pcm-xygzzsq/pcm-xygzzsq_zh_CN';
-import pcmjxsygzzsq_zh_CN from '@locale/lanres/entities/pcm-jxsygzzsq/pcm-jxsygzzsq_zh_CN';
-import pcmjxsygzzjlmx_zh_CN from '@locale/lanres/entities/pcm-jxsygzzjlmx/pcm-jxsygzzjlmx_zh_CN';
-import pcmxygzzkhjgjl_zh_CN from '@locale/lanres/entities/pcm-xygzzkhjgjl/pcm-xygzzkhjgjl_zh_CN';
-import pcmjxszzkhjgjl_zh_CN from '@locale/lanres/entities/pcm-jxszzkhjgjl/pcm-jxszzkhjgjl_zh_CN';
-import pcmxygzzjlmx_zh_CN from '@locale/lanres/entities/pcm-xygzzjlmx/pcm-xygzzjlmx_zh_CN';
+import pcmxygzzsqmx_zh_CN from '@locale/lanres/entities/pcm-xygzzsqmx/pcm-xygzzsqmx_zh_CN';
 import components_zh_CN from '@locale/lanres/components/components_zh_CN';
 import codelist_zh_CN from '@locale/lanres/codelist/codelist_zh_CN';
 import userCustom_zh_CN from '@locale/lanres/userCustom/userCustom_zh_CN';
@@ -99,14 +100,21 @@ export default {
                 menuitem12: '退休管理',
                 menuitem13: '试用期转正管理',
                 menuitem14: '见习生转正管理',
+                menuitem5: '试用期转正',
+                menuitem6: '试用期转正申请',
+                menuitem15: '试用期转正审核',
             },
         },
     },
     entities: {
         pcmydjzmx: pcmydjzmx_zh_CN,
+        pcmxygzzsq: pcmxygzzsq_zh_CN,
         pcmjxsgz: pcmjxsgz_zh_CN,
+        pcmjxsygzzsq: pcmjxsygzzsq_zh_CN,
+        pcmjxsygzzjlmx: pcmjxsygzzjlmx_zh_CN,
         ormpost: ormpost_zh_CN,
         pcmydtxmx: pcmydtxmx_zh_CN,
+        pcmxygzzkhjgjl: pcmxygzzkhjgjl_zh_CN,
         pcmydgzmx: pcmydgzmx_zh_CN,
         ormorg: ormorg_zh_CN,
         pimdistirbution: pimdistirbution_zh_CN,
@@ -123,18 +131,15 @@ export default {
         pcmreason: pcmreason_zh_CN,
         pcmydntmx: pcmydntmx_zh_CN,
         pcmydlzmx: pcmydlzmx_zh_CN,
+        pcmjxszzkhjgjl: pcmjxszzkhjgjl_zh_CN,
+        pcmxygzzjlmx: pcmxygzzjlmx_zh_CN,
         pcmydbxmx: pcmydbxmx_zh_CN,
         pcmnotice: pcmnotice_zh_CN,
         pcmprofile: pcmprofile_zh_CN,
         pimfaminfo: pimfaminfo_zh_CN,
         pimperson: pimperson_zh_CN,
         ormorgsector: ormorgsector_zh_CN,
-        pcmxygzzsq: pcmxygzzsq_zh_CN,
-        pcmjxsygzzsq: pcmjxsygzzsq_zh_CN,
-        pcmjxsygzzjlmx: pcmjxsygzzjlmx_zh_CN,
-        pcmxygzzkhjgjl: pcmxygzzkhjgjl_zh_CN,
-        pcmjxszzkhjgjl: pcmjxszzkhjgjl_zh_CN,
-        pcmxygzzjlmx: pcmxygzzjlmx_zh_CN,
+        pcmxygzzsqmx: pcmxygzzsqmx_zh_CN,
     },
     components: components_zh_CN,
     codelist: codelist_zh_CN,

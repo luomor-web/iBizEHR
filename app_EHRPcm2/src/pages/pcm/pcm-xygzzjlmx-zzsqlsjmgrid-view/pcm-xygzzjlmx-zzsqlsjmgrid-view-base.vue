@@ -561,7 +561,12 @@ export default class PcmXygzzjlmxZZSQLSJMGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.pimperson && true){
+            deResParameters = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
         ];
@@ -580,7 +585,7 @@ export default class PcmXygzzjlmxZZSQLSJMGridViewBase extends GridViewBase {
         }
         const view: any = {
             viewname: 'pcm-xygzzjlmx-edit-view', 
-            height: 0, 
+            height: 750, 
             width: 0,  
             title: this.$t('entities.pcmxygzzjlmx.views.editview.title'),
         };
@@ -604,7 +609,12 @@ export default class PcmXygzzjlmxZZSQLSJMGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.pimperson && true){
+            deResParameters = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
         ];
@@ -623,7 +633,7 @@ export default class PcmXygzzjlmxZZSQLSJMGridViewBase extends GridViewBase {
         }
         const view: any = {
             viewname: 'pcm-xygzzjlmx-edit-view', 
-            height: 0, 
+            height: 750, 
             width: 0,  
             title: this.$t('entities.pcmxygzzjlmx.views.editview.title'),
         };

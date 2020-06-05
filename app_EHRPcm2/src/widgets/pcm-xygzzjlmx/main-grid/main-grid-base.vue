@@ -120,18 +120,6 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('qssj')">
-                <el-table-column show-overflow-tooltip :prop="'qssj'" :label="$t('entities.pcmxygzzjlmx.main_grid.columns.qssj')" :width="200"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.pcmxygzzjlmx.main_grid.columns.qssj')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.qssj}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('jssj')">
                 <el-table-column show-overflow-tooltip :prop="'jssj'" :label="$t('entities.pcmxygzzjlmx.main_grid.columns.jssj')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
@@ -701,13 +689,6 @@ export default class MainBase extends Vue implements ControlInterface {
             langtag: 'entities.pcmxygzzjlmx.main_grid.columns.zzsj',
             show: true,
             util: 'px'
-        },
-        {
-            name: 'qssj',
-            label: '到局时间',
-            langtag: 'entities.pcmxygzzjlmx.main_grid.columns.qssj',
-            show: true,
-            util: 'PX'
         },
         {
             name: 'jssj',

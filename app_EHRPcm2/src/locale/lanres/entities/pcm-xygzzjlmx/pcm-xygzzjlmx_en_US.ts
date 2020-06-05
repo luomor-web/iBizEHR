@@ -34,8 +34,8 @@ export default {
   },
 	views: {
 		editview: {
-			caption: "试用期员工转正记录引用明细",
-      title: '试用期员工转正记录引用明细',
+			caption: "试用期员工转正申请",
+      title: '试用期员工转正申请',
 		},
 		syqzzjlgridview: {
 			caption: "试用期转正记录",
@@ -44,6 +44,10 @@ export default {
 		ckeditview: {
 			caption: "试用期员工转正记录引用明细",
       title: '试用期员工转正记录引用明细',
+		},
+		approvalgridview: {
+			caption: "试用期员工转正",
+      title: '试用期员工转正',
 		},
 		zzsqlsjmgridview: {
 			caption: "试用期员工转正结果引用明细",
@@ -98,7 +102,6 @@ export default {
 			duration: "试用期限（月）",
 			zzgw: "转正岗位",
 			zzsj: "转正时间",
-			qssj: "到局时间",
 			jssj: "试用期到期时间",
 			fs: "分数",
 			pj: "评价",
@@ -118,23 +121,33 @@ export default {
 		},
 	},
 	editviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "Save",
-			tip: "Save",
-		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
-		tbitem5: {
+		deuiaction5: {
 			caption: "Save And Close",
 			tip: "Save And Close Window",
 		},
-		tbitem7: {
-			caption: "Remove And Close",
-			tip: "Remove And Close Window",
+		deuiaction1: {
+			caption: "退出",
+			tip: "退出",
 		},
-		tbitem22: {
+	},
+	zzsqlsjmgridviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "New",
+			tip: "New",
+		},
+		tbitem8: {
+			caption: "Remove",
+			tip: "Remove {0}",
+		},
+		tbitem19: {
+			caption: "Filter",
+			tip: "Filter",
+		},
+		tbitem13: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
+		tbitem18: {
 			caption: "Help",
 			tip: "Help",
 		},
@@ -159,22 +172,18 @@ export default {
 			tip: "退出",
 		},
 	},
-	zzsqlsjmgridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "New",
-			tip: "New",
+	approvalgridviewtoolbar_toolbar: {
+		tbitem1_shtg: {
+			caption: "审核通过",
+			tip: "审核通过",
 		},
-		tbitem8: {
-			caption: "Remove",
-			tip: "Remove {0}",
+		tbitem1_shbtg: {
+			caption: "审核不通过",
+			tip: "审核不通过",
 		},
 		tbitem19: {
 			caption: "Filter",
 			tip: "Filter",
-		},
-		tbitem13: {
-			caption: "Export",
-			tip: "Export {0} Data To Excel",
 		},
 		tbitem18: {
 			caption: "Help",

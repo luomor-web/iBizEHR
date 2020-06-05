@@ -40,9 +40,13 @@ export class EntityServiceRegister {
      */
     protected init(): void {
                 this.allEntityService.set('pcmydjzmx', () => import('@/service/pcm-ydjzmx/pcm-ydjzmx-service'));
+        this.allEntityService.set('pcmxygzzsq', () => import('@/service/pcm-xygzzsq/pcm-xygzzsq-service'));
         this.allEntityService.set('pcmjxsgz', () => import('@/service/pcm-jxsgz/pcm-jxsgz-service'));
+        this.allEntityService.set('pcmjxsygzzsq', () => import('@/service/pcm-jxsygzzsq/pcm-jxsygzzsq-service'));
+        this.allEntityService.set('pcmjxsygzzjlmx', () => import('@/service/pcm-jxsygzzjlmx/pcm-jxsygzzjlmx-service'));
         this.allEntityService.set('ormpost', () => import('@/service/orm-post/orm-post-service'));
         this.allEntityService.set('pcmydtxmx', () => import('@/service/pcm-ydtxmx/pcm-ydtxmx-service'));
+        this.allEntityService.set('pcmxygzzkhjgjl', () => import('@/service/pcm-xygzzkhjgjl/pcm-xygzzkhjgjl-service'));
         this.allEntityService.set('pcmydgzmx', () => import('@/service/pcm-ydgzmx/pcm-ydgzmx-service'));
         this.allEntityService.set('ormorg', () => import('@/service/orm-org/orm-org-service'));
         this.allEntityService.set('pimdistirbution', () => import('@/service/pim-distirbution/pim-distirbution-service'));
@@ -59,18 +63,15 @@ export class EntityServiceRegister {
         this.allEntityService.set('pcmreason', () => import('@/service/pcm-reason/pcm-reason-service'));
         this.allEntityService.set('pcmydntmx', () => import('@/service/pcm-ydntmx/pcm-ydntmx-service'));
         this.allEntityService.set('pcmydlzmx', () => import('@/service/pcm-ydlzmx/pcm-ydlzmx-service'));
+        this.allEntityService.set('pcmjxszzkhjgjl', () => import('@/service/pcm-jxszzkhjgjl/pcm-jxszzkhjgjl-service'));
+        this.allEntityService.set('pcmxygzzjlmx', () => import('@/service/pcm-xygzzjlmx/pcm-xygzzjlmx-service'));
         this.allEntityService.set('pcmydbxmx', () => import('@/service/pcm-ydbxmx/pcm-ydbxmx-service'));
         this.allEntityService.set('pcmnotice', () => import('@/service/pcm-notice/pcm-notice-service'));
         this.allEntityService.set('pcmprofile', () => import('@/service/pcm-profile/pcm-profile-service'));
         this.allEntityService.set('pimfaminfo', () => import('@/service/pim-faminfo/pim-faminfo-service'));
         this.allEntityService.set('pimperson', () => import('@/service/pim-person/pim-person-service'));
         this.allEntityService.set('ormorgsector', () => import('@/service/orm-orgsector/orm-orgsector-service'));
-        this.allEntityService.set('pcmxygzzsq', () => import('@/service/pcm-xygzzsq/pcm-xygzzsq-service'));
-        this.allEntityService.set('pcmjxsygzzsq', () => import('@/service/pcm-jxsygzzsq/pcm-jxsygzzsq-service'));
-        this.allEntityService.set('pcmjxsygzzjlmx', () => import('@/service/pcm-jxsygzzjlmx/pcm-jxsygzzjlmx-service'));
-        this.allEntityService.set('pcmxygzzkhjgjl', () => import('@/service/pcm-xygzzkhjgjl/pcm-xygzzkhjgjl-service'));
-        this.allEntityService.set('pcmjxszzkhjgjl', () => import('@/service/pcm-jxszzkhjgjl/pcm-jxszzkhjgjl-service'));
-        this.allEntityService.set('pcmxygzzjlmx', () => import('@/service/pcm-xygzzjlmx/pcm-xygzzjlmx-service'));
+        this.allEntityService.set('pcmxygzzsqmx', () => import('@/service/pcm-xygzzsqmx/pcm-xygzzsqmx-service'));
     }
 
     /**

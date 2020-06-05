@@ -79,7 +79,14 @@ export default class PcmXygzzsqUIServiceBase extends UIService {
      * @memberof  PcmXygzzsqUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'pcmxygzzsqs'});
+        this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'pcmxygzzsqs'});
+        this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'pcmxygzzsqs'});
+        this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'pcmxygzzsqs'});
+        this.allViewMap.set('REDIRECTVIEW:',{viewname:'redirectview',srfappde:'pcmxygzzsqs'});
+        this.allViewMap.set(':',{viewname:'editview2',srfappde:'pcmxygzzsqs'});
         this.allViewMap.set(':',{viewname:'zzsqjmeditview',srfappde:'pcmxygzzsqs'});
+        this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'pcmxygzzsqs'});
     }
 
     /**

@@ -493,19 +493,35 @@ export default class PcmXygzzjlmxSYQZZJLGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.pimperson && true){
+            deResParameters = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
-            { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;
-        const openIndexViewTab = (data: any) => {
-            const _data: any = { w: (new Date().getTime()) };
-            Object.assign(_data, data);
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, curViewParam, deResParameters, parameters, args, _data);
-            this.$router.push(routePath);
+        const openPopupModal = (view: any, data: any) => {
+            let container: Subject<any> = this.$appmodal.openModal(view, curViewParam, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
         }
-        openIndexViewTab(data);
+        const view: any = {
+            viewname: 'pcm-xygzzjlmx-edit-view', 
+            height: 750, 
+            width: 0,  
+            title: this.$t('entities.pcmxygzzjlmx.views.editview.title'),
+        };
+        openPopupModal(view, data);
     }
 
 
@@ -525,7 +541,12 @@ export default class PcmXygzzjlmxSYQZZJLGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(curViewParam.pimperson && true){
+            deResParameters = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
             { pathName: 'ckeditview', parameterName: 'ckeditview' },

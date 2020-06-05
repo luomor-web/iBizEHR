@@ -5,7 +5,7 @@ import PcmXygzzjlmxEditViewBase from './pcm-xygzzjlmx-edit-view-base.vue';
 import view_form from '@widgets/pcm-xygzzjlmx/main-form/main-form.vue';
 
 /**
- * 试用期员工转正结果引用明细编辑视图
+ * 试用期员工转正申请
  *
  * @export
  * @class PcmXygzzjlmxEditView

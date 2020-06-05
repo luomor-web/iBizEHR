@@ -439,6 +439,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '34f739b4b59de8e527e14833b2ac55b8',
+            viewmodule: 'PCM',
+            viewname: 'PcmXygzzsqGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'ccdc9bfae5d1ca066e16c5b5e674f7b2',
+            ],
+        },
+        {
             viewtag: '354427f0670d912b99b3f05d347f6ef4',
             viewmodule: 'PCM',
             viewname: 'PcmDdsqdmxJDSQMXEditView',
@@ -449,6 +459,16 @@ export const viewstate: any = {
                 'ebb043cf58054089938d982a7fafa0be',
                 '8b64d4b8a0e3f209aa52001c312117f1',
                 'c5f651d460c0e56f27bebf49905d0afc',
+            ],
+        },
+        {
+            viewtag: '35d3d0f6de3bee6c0a7ccbf87612141e',
+            viewmodule: 'PCM',
+            viewname: 'PcmXygzzsqMPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '52dfa733a583ee824acb9bc4eda06164',
             ],
         },
         {
@@ -824,6 +844,15 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '52dfa733a583ee824acb9bc4eda06164',
+            viewmodule: 'PCM',
+            viewname: 'PcmXygzzsqPickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
             viewtag: '55221b154d4eda6a91fc503cf60d85d9',
             viewmodule: 'PCM',
             viewname: 'PcmDdsqdmxDDSQOptionView',
@@ -988,6 +1017,26 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '61b21d2f8041091311c35e8dc8fef06d',
+            viewmodule: 'PCM',
+            viewname: 'PcmXygzzjlmxApprovalGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '127a9ba3a71a0255a388142951b7e831',
+            ],
+        },
+        {
+            viewtag: '61e224a44cc2b1ca41013b5b85d177a3',
+            viewmodule: 'PCM',
+            viewname: 'PcmXygzzsqmxEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'e24e284009007c8c0190582460d38f0c',
+            ],
+        },
+        {
             viewtag: '634aeaa7c4db8f6ffaade689f25804f8',
             viewmodule: 'PCM',
             viewname: 'PcmYdbxmxRedirectView',
@@ -1086,6 +1135,16 @@ export const viewstate: any = {
             refviews: [
                 '7ec5fb97b7ba11433f95907572b724fd',
                 'b8d4e7512bdcc67e170881d1c642e679',
+            ],
+        },
+        {
+            viewtag: '727f4f522e24e5f58477a5eebc56b053',
+            viewmodule: 'PCM',
+            viewname: 'PcmXygzzsqPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '52dfa733a583ee824acb9bc4eda06164',
             ],
         },
         {
@@ -1410,6 +1469,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '999153f1294f6e92da439ff8555f5b50',
+            viewmodule: 'PCM',
+            viewname: 'PcmXygzzsqRedirectView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'ccdc9bfae5d1ca066e16c5b5e674f7b2',
+            ],
+        },
+        {
             viewtag: '9aa581b1142b959b87730e54c16e1da3',
             viewmodule: 'PCM',
             viewname: 'PcmYdjpmxGLGridView',
@@ -1608,6 +1677,17 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'ae79a8c5e519c5ae185b82826828ee27',
+            viewmodule: 'PCM',
+            viewname: 'PcmXygzzsqEditView2',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'b8417dce40cadb61d0b9559fdbf901ac',
+                '64778fdae321216fbcccab69d0ae73d7',
+            ],
+        },
+        {
             viewtag: 'afefcaa892dc7bd4537d74f21bbe5119',
             viewmodule: 'PCM',
             viewname: 'PcmYdjpmxPickupGridView',
@@ -1652,6 +1732,16 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'f36d97311f976fed4a7a6b253fd77176',
+            ],
+        },
+        {
+            viewtag: 'b8417dce40cadb61d0b9559fdbf901ac',
+            viewmodule: 'PCM',
+            viewname: 'PcmXygzzsqmxGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '61e224a44cc2b1ca41013b5b85d177a3',
             ],
         },
         {
@@ -1870,6 +1960,17 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'ccdc9bfae5d1ca066e16c5b5e674f7b2',
+            viewmodule: 'PCM',
+            viewname: 'PcmXygzzsqEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'b8417dce40cadb61d0b9559fdbf901ac',
+                '64778fdae321216fbcccab69d0ae73d7',
+            ],
+        },
+        {
             viewtag: 'ce973658492cf60faa71d3b68bd858d1',
             viewmodule: 'PCM',
             viewname: 'PcmYddgmxEditView9',
@@ -2028,10 +2129,12 @@ export const viewstate: any = {
                 '7b11f4b33a5097e773dca5b66a9357e5',
                 'a71693acbf5a4d77b4407ccad0899624',
                 'dbdb48c6a8f3668e25609bac1c4d73de',
+                '61b21d2f8041091311c35e8dc8fef06d',
                 '371096cd964f4d024b2bf9cb7924bb54',
                 '9aa581b1142b959b87730e54c16e1da3',
                 '55fa31bd5d3123da7490f3ae76b5b54d',
                 '559fd7ee3353c55129a761c38f68b6fd',
+                'f88aeef09f6cf239b0d9fad901c62efd',
             ],
         },
         {
@@ -2376,7 +2479,7 @@ export const viewstate: any = {
             refviews: [
                 '3c86db51a9f9692e282d44098444cb6f',
                 '0fc510e3278ad0b28cca4ac41d8920e1',
-                'c033c817e7c00e3eda6a72541f396992',
+                '127a9ba3a71a0255a388142951b7e831',
             ],
         },
         {

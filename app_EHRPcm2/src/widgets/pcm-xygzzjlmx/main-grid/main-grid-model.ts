@@ -82,11 +82,6 @@ export default class MainModel {
           dataType: 'GUID',
         },
         {
-          name: 'qssj',
-          prop: 'qssj',
-          dataType: 'PICKUPDATA',
-        },
-        {
           name: 'duration',
           prop: 'duration',
           dataType: 'PICKUPDATA',

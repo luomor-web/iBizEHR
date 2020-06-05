@@ -606,6 +606,24 @@ export default {
 			tip: '打开编辑页面',
 		},
 	},
+	sqsyqzzgridviewtoolbar_toolbar: {
+		deuiaction1_sqsyqzz: {
+			caption: '转正',
+			tip: '转正',
+		},
+		deuiaction4_syqzzjl: {
+			caption: '试用期转正记录',
+			tip: '试用期转正记录',
+		},
+		deuiaction6: {
+			caption: '导出',
+			tip: '导出',
+		},
+		deuiaction2: {
+			caption: '过滤',
+			tip: '过滤',
+		},
+	},
 	sqjxqzzgridviewtoolbar2_toolbar: {
 		deuiaction2: {
 			caption: '保存',
@@ -624,38 +642,6 @@ export default {
 		deuiaction4_jxqzzjl: {
 			caption: '见习期转正记录',
 			tip: '见习期转正记录',
-		},
-		deuiaction3: {
-			caption: '开启行编辑',
-			tip: '开启行编辑',
-		},
-		deuiaction6: {
-			caption: '导出',
-			tip: '导出',
-		},
-		deuiaction2: {
-			caption: '过滤',
-			tip: '过滤',
-		},
-	},
-	sqsyqzzgridviewtoolbar2_toolbar: {
-		deuiaction2: {
-			caption: '保存',
-			tip: '保存',
-		},
-		deuiaction1: {
-			caption: '关闭行编辑',
-			tip: '关闭行编辑',
-		},
-	},
-	sqsyqzzgridviewtoolbar_toolbar: {
-		deuiaction1_sqsyqzz: {
-			caption: '转正',
-			tip: '转正',
-		},
-		deuiaction4_syqzzjl: {
-			caption: '试用期转正记录',
-			tip: '试用期转正记录',
 		},
 		deuiaction3: {
 			caption: '开启行编辑',

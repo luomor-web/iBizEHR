@@ -15,9 +15,62 @@ export default {
     createdate: '建立时间',
   },
 	views: {
+		gridview: {
+			caption: '试用期员工转正申请',
+      title: '试用期员工转正申请',
+		},
+		mpickupview: {
+			caption: '试用期员工转正申请',
+      title: '试用期员工转正申请',
+		},
+		pickupgridview: {
+			caption: '试用期员工转正申请',
+      title: '试用期员工转正申请',
+		},
+		pickupview: {
+			caption: '试用期员工转正申请',
+      title: '试用期员工转正申请',
+		},
+		redirectview: {
+			caption: '试用期员工转正申请',
+      title: '试用期员工转正申请',
+		},
+		editview2: {
+			caption: '试用期员工转正申请',
+      title: '试用期员工转正申请',
+		},
 		zzsqjmeditview: {
 			caption: '试用期员工转正申请',
       title: '试用期员工转正申请',
+		},
+		editview: {
+			caption: '试用期员工转正申请',
+      title: '试用期员工转正申请',
+		},
+	},
+	main_form: {
+		details: {
+			druipart1: '', 
+			druipart2: '', 
+			group1: '试用期员工转正申请基本信息', 
+			formpage1: '基本信息', 
+			srfupdatedate: '更新时间', 
+			srforikey: '', 
+			srfkey: '试用期员工转正申请标识', 
+			srfmajortext: '试用期员工转正申请名称', 
+			srftempmode: '', 
+			srfuf: '', 
+			srfdeid: '', 
+			srfsourcekey: '', 
+			pcmxygzzsqname: '标题', 
+			czr: '操作人', 
+			czrq: '操作日期', 
+			sxrq: '生效日期', 
+			zzlx: '转正类型', 
+			bz: '备注', 
+			pcmxygzzsqid: '试用期员工转正申请标识', 
+		},
+		uiactions: {
 		},
 	},
 	xygzz_form: {
@@ -43,6 +96,89 @@ export default {
 			bz: '备注', 
 		},
 		uiactions: {
+		},
+	},
+	main_grid: {
+		columns: {
+			pcmxygzzsqname: '标题',
+			czr: '操作人',
+			czrq: '操作日期',
+			sxrq: '生效日期',
+		},
+		uiactions: {
+		},
+	},
+	default_searchform: {
+		details: {
+			formpage1: '常规条件', 
+		},
+		uiactions: {
+		},
+	},
+	gridviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: '新建',
+			tip: '新建',
+		},
+		tbitem8: {
+			caption: '删除',
+			tip: '删除',
+		},
+		tbitem19: {
+			caption: '过滤',
+			tip: '过滤',
+		},
+		tbitem13: {
+			caption: '导出',
+			tip: '导出',
+		},
+		tbitem18: {
+			caption: '帮助',
+			tip: '帮助',
+		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: '保存',
+			tip: '保存',
+		},
+		tbitem4: {
+			caption: '保存并新建',
+			tip: '保存并新建',
+		},
+		tbitem5: {
+			caption: '保存并关闭',
+			tip: '保存并关闭',
+		},
+		tbitem7: {
+			caption: '删除并关闭',
+			tip: '删除并关闭',
+		},
+		tbitem22: {
+			caption: '帮助',
+			tip: '帮助',
+		},
+	},
+	editview2toolbar_toolbar: {
+		tbitem3: {
+			caption: '保存',
+			tip: '保存',
+		},
+		tbitem4: {
+			caption: '保存并新建',
+			tip: '保存并新建',
+		},
+		tbitem5: {
+			caption: '保存并关闭',
+			tip: '保存并关闭',
+		},
+		tbitem7: {
+			caption: '删除并关闭',
+			tip: '删除并关闭',
+		},
+		tbitem22: {
+			caption: '帮助',
+			tip: '帮助',
 		},
 	},
 	zzsqjmeditviewtoolbar_toolbar: {
