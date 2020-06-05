@@ -238,6 +238,64 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
     @JSONField(name = "jhjssj" , format="yyyy-MM-dd")
     @JsonProperty("jhjssj")
     private Timestamp jhjssj;
+    /**
+     * 人员信息标识
+     */
+    @TableField(value = "pimpersonid")
+    @JSONField(name = "pimpersonid")
+    @JsonProperty("pimpersonid")
+    private String pimpersonid;
+    /**
+     * 员工姓名
+     */
+    @TableField(exist = false)
+    @JSONField(name = "pimpersonname")
+    @JsonProperty("pimpersonname")
+    private String pimpersonname;
+    /**
+     * 组织标识
+     */
+    @TableField(exist = false)
+    @JSONField(name = "ormorgid")
+    @JsonProperty("ormorgid")
+    private String ormorgid;
+    /**
+     * 部门标识
+     */
+    @TableField(exist = false)
+    @JSONField(name = "ormorgsectorid")
+    @JsonProperty("ormorgsectorid")
+    private String ormorgsectorid;
+    /**
+     * 组织
+     */
+    @TableField(exist = false)
+    @JSONField(name = "ormorgname")
+    @JsonProperty("ormorgname")
+    private String ormorgname;
+    /**
+     * 部门
+     */
+    @TableField(exist = false)
+    @JSONField(name = "ormorgsectorname")
+    @JsonProperty("ormorgsectorname")
+    private String ormorgsectorname;
+    /**
+     * 状态
+     */
+    @DEField(defaultValue = "10" , defaultValueType = DEFieldDefaultValueType.PARAM)
+    @TableField(value = "state")
+    @JSONField(name = "state")
+    @JsonProperty("state")
+    private String state;
+
+    /**
+     * 人员信息-请假明细
+     */
+    @JsonIgnore
+    @JSONField(serialize = false)
+    @TableField(exist = false)
+    private cn.ibizlab.ehr.core.pim.domain.PimPerson pimperson;
 
 
 
@@ -366,6 +424,20 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
     public void setJhjssj(Timestamp jhjssj){
         this.jhjssj = jhjssj ;
         this.modify("jhjssj",jhjssj);
+    }
+    /**
+     * 设置 [人员信息标识]
+     */
+    public void setPimpersonid(String pimpersonid){
+        this.pimpersonid = pimpersonid ;
+        this.modify("pimpersonid",pimpersonid);
+    }
+    /**
+     * 设置 [状态]
+     */
+    public void setState(String state){
+        this.state = state ;
+        this.modify("state",state);
     }
 
 }

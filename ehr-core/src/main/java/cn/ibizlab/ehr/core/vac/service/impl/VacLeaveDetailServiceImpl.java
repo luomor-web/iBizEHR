@@ -47,6 +47,9 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.vac.service.IVacUseNxjmxService vacusenxjmxService;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonService;
 
     @Autowired
     @Lazy
@@ -76,6 +79,7 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
     @Override
     @Transactional
     public boolean create(VacLeaveDetail et) {
+        fillParentData(et);
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getVacleavedetailid()),et);
@@ -84,12 +88,14 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
 
     @Override
     public void createBatch(List<VacLeaveDetail> list) {
+        list.forEach(item->fillParentData(item));
         this.saveBatch(list,batchSize);
     }
 
     @Override
     @Transactional
     public boolean update(VacLeaveDetail et) {
+        fillParentData(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("vacleavedetailid",et.getVacleavedetailid())))
             return false;
         CachedBeanCopier.copy(get(et.getVacleavedetailid()),et);
@@ -98,6 +104,7 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
 
     @Override
     public void updateBatch(List<VacLeaveDetail> list) {
+        list.forEach(item->fillParentData(item));
         updateBatchById(list,batchSize);
     }
 
@@ -130,12 +137,14 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
 
     @Override
     public boolean saveBatch(Collection<VacLeaveDetail> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
         return true;
     }
 
     @Override
     public void saveBatch(List<VacLeaveDetail> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
     }
 
@@ -166,9 +175,20 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
 
     @Override
     public VacLeaveDetail getDraft(VacLeaveDetail et) {
+        fillParentData(et);
         return et;
     }
 
+
+	@Override
+    public List<VacLeaveDetail> selectByPimpersonid(String pimpersonid) {
+        return baseMapper.selectByPimpersonid(pimpersonid);
+    }
+
+    @Override
+    public void removeByPimpersonid(String pimpersonid) {
+        this.remove(new QueryWrapper<VacLeaveDetail>().eq("pimpersonid",pimpersonid));
+    }
 
 
     /**
@@ -182,6 +202,26 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
 
 
 
+    /**
+     * 为当前实体填充父数据（外键值文本、外键值附加数据）
+     * @param et
+     */
+    private void fillParentData(VacLeaveDetail et){
+        //实体关系[DER1N_VACLEAVEDETAIL_PIMPERSON_PIMPERSONID]
+        if(!ObjectUtils.isEmpty(et.getPimpersonid())){
+            cn.ibizlab.ehr.core.pim.domain.PimPerson pimperson=et.getPimperson();
+            if(ObjectUtils.isEmpty(pimperson)){
+                cn.ibizlab.ehr.core.pim.domain.PimPerson majorEntity=pimpersonService.get(et.getPimpersonid());
+                et.setPimperson(majorEntity);
+                pimperson=majorEntity;
+            }
+            et.setPimpersonname(pimperson.getPimpersonname());
+            et.setOrmorgid(pimperson.getOrmorgid());
+            et.setOrmorgsectorid(pimperson.getOrmorgsectorid());
+            et.setOrmorgname(pimperson.getZzdzs());
+            et.setOrmorgsectorname(pimperson.getOrmorgsectorname());
+        }
+    }
 
 
     @Override

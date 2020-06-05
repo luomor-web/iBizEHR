@@ -282,6 +282,9 @@ public class PimPersonServiceImpl extends ServiceImpl<PimPersonMapper, PimPerson
     private cn.ibizlab.ehr.core.trm.service.ITrmTrainPersonService trmtrainpersonService;
     @Autowired
     @Lazy
+    private cn.ibizlab.ehr.core.vac.service.IVacLeaveDetailService vacleavedetailService;
+    @Autowired
+    @Lazy
     private cn.ibizlab.ehr.core.vac.service.IVacLeaveManageService vacleavemanageService;
     @Autowired
     @Lazy

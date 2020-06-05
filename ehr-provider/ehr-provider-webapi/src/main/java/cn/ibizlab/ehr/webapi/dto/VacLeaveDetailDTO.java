@@ -245,6 +245,62 @@ public class VacLeaveDetailDTO extends DTOBase implements Serializable {
     @JsonProperty("jhjssj")
     private Timestamp jhjssj;
 
+    /**
+     * 属性 [PIMPERSONID]
+     *
+     */
+    @JSONField(name = "pimpersonid")
+    @JsonProperty("pimpersonid")
+    private String pimpersonid;
+
+    /**
+     * 属性 [PIMPERSONNAME]
+     *
+     */
+    @JSONField(name = "pimpersonname")
+    @JsonProperty("pimpersonname")
+    private String pimpersonname;
+
+    /**
+     * 属性 [ORMORGID]
+     *
+     */
+    @JSONField(name = "ormorgid")
+    @JsonProperty("ormorgid")
+    private String ormorgid;
+
+    /**
+     * 属性 [ORMORGSECTORID]
+     *
+     */
+    @JSONField(name = "ormorgsectorid")
+    @JsonProperty("ormorgsectorid")
+    private String ormorgsectorid;
+
+    /**
+     * 属性 [ORMORGNAME]
+     *
+     */
+    @JSONField(name = "ormorgname")
+    @JsonProperty("ormorgname")
+    private String ormorgname;
+
+    /**
+     * 属性 [ORMORGSECTORNAME]
+     *
+     */
+    @JSONField(name = "ormorgsectorname")
+    @JsonProperty("ormorgsectorname")
+    private String ormorgsectorname;
+
+    /**
+     * 属性 [STATE]
+     *
+     */
+    @JSONField(name = "state")
+    @JsonProperty("state")
+    private String state;
+
 
     /**
      * 设置 [HYZK]
@@ -388,6 +444,22 @@ public class VacLeaveDetailDTO extends DTOBase implements Serializable {
     public void setJhjssj(Timestamp  jhjssj){
         this.jhjssj = jhjssj ;
         this.modify("jhjssj",jhjssj);
+    }
+
+    /**
+     * 设置 [PIMPERSONID]
+     */
+    public void setPimpersonid(String  pimpersonid){
+        this.pimpersonid = pimpersonid ;
+        this.modify("pimpersonid",pimpersonid);
+    }
+
+    /**
+     * 设置 [STATE]
+     */
+    public void setState(String  state){
+        this.state = state ;
+        this.modify("state",state);
     }
 
 

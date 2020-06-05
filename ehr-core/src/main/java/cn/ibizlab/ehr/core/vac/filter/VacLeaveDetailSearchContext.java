@@ -83,6 +83,34 @@ public class VacLeaveDetailSearchContext extends QueryWrapperContext<VacLeaveDet
             this.getSelectCond().eq("sjkssxw", n_sjkssxw_eq);
         }
     }
+	private String n_pimpersonid_eq;//[人员信息标识]
+	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
+        this.n_pimpersonid_eq = n_pimpersonid_eq;
+        if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
+            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+        }
+    }
+	private String n_pimpersonname_eq;//[员工姓名]
+	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
+        this.n_pimpersonname_eq = n_pimpersonname_eq;
+        if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
+            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+        }
+    }
+	private String n_pimpersonname_like;//[员工姓名]
+	public void setN_pimpersonname_like(String n_pimpersonname_like) {
+        this.n_pimpersonname_like = n_pimpersonname_like;
+        if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
+            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+        }
+    }
+	private String n_state_eq;//[状态]
+	public void setN_state_eq(String n_state_eq) {
+        this.n_state_eq = n_state_eq;
+        if(!ObjectUtils.isEmpty(this.n_state_eq)){
+            this.getSelectCond().eq("state", n_state_eq);
+        }
+    }
 
     /**
 	 * 启用快速搜索
