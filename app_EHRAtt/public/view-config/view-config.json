@@ -71,15 +71,6 @@
         "viewtag": "2391d49830a35dc8463624f367328220",
         "memo": ""
     },
-    "vacleavedetailsjqjmx_editview": {
-        "title": "请假明细",
-        "caption": "请假明细",
-        "viewtype": "DEEDITVIEW",
-        "viewmodule": "VAC",
-        "viewname": "VacLeaveDetailSJQJMX_EditView",
-        "viewtag": "3262fd74050152966a989a7aa4f46db0",
-        "memo": "系统自动添加"
-    },
     "vacsynjcxgridview": {
         "title": "年休假查询",
         "caption": "年休假查询",
@@ -88,15 +79,6 @@
         "viewname": "VacSynjcxGridView",
         "viewtag": "332ebe6a595ac81f1e42a327e3c911e1",
         "memo": ""
-    },
-    "vacleavedetailjhqjmx_editview": {
-        "title": "请假明细",
-        "caption": "请假明细",
-        "viewtype": "DEEDITVIEW",
-        "viewmodule": "VAC",
-        "viewname": "VacLeaveDetailJHQJMX_EditView",
-        "viewtag": "3451991293c2ae164b404d7a256b348e",
-        "memo": "系统自动添加"
     },
     "pimpersonpickupgridview": {
         "title": "人员信息选择表格视图",
@@ -125,15 +107,6 @@
         "viewtag": "43382b00685ac886ac519967af516ee9",
         "memo": "系统自动添加"
     },
-    "vacleavedetailjhqjmx_gridview": {
-        "title": "请假明细",
-        "caption": "请假明细",
-        "viewtype": "DEGRIDVIEW",
-        "viewmodule": "VAC",
-        "viewname": "VacLeaveDetailJHQJMX_GridView",
-        "viewtag": "46624dab5e7a5e5026cab5092952f020",
-        "memo": "系统自动添加"
-    },
     "attendancesettingsgridview": {
         "title": "考勤人员",
         "caption": "考勤人员",
@@ -151,24 +124,6 @@
         "viewname": "PimPersonSetAttRulesGridView",
         "viewtag": "4986fb1b1e1cfe921dc7c855a1fda4f4",
         "memo": ""
-    },
-    "vacleavedetailsjqjmx_ck_editview": {
-        "title": "请假明细",
-        "caption": "请假明细",
-        "viewtype": "DEEDITVIEW",
-        "viewmodule": "VAC",
-        "viewname": "VacLeaveDetailSJQJMX_CK_EditView",
-        "viewtag": "4f0a59a47a9f69d0c45d34c921233032",
-        "memo": "系统自动添加"
-    },
-    "vacleavedetailsjqjmx_ck_gridview": {
-        "title": "请假明细",
-        "caption": "请假明细",
-        "viewtype": "DEGRIDVIEW",
-        "viewmodule": "VAC",
-        "viewname": "VacLeaveDetailSJQJMX_CK_GridView",
-        "viewtag": "5504fe93683e145068c188c9e43ccb68",
-        "memo": "系统自动添加"
     },
     "index": {
         "title": "EHR-假勤管理",
@@ -215,15 +170,6 @@
         "viewtag": "64d9d612dfb1fcc1a6f5f599e5f62308",
         "memo": ""
     },
-    "vacleavemanagengeditview": {
-        "title": "请假管理",
-        "caption": "请假管理",
-        "viewtype": "DEEDITVIEW",
-        "viewmodule": "VAC",
-        "viewname": "VacLeaveManageNGEditView",
-        "viewtag": "674c3fe6e36a1eb0f72af7c6a7f76905",
-        "memo": ""
-    },
     "attendancemreporteditview": {
         "title": "考勤月报",
         "caption": "考勤月报",
@@ -268,6 +214,15 @@
         "viewname": "PcmWzd0001YGSZKQOptionView",
         "viewtag": "7f5fde30882cd704aa8fdaf922c320fa",
         "memo": "系统自动添加"
+    },
+    "vacleavedetaileditview": {
+        "title": "请销假明细编辑视图",
+        "caption": "请假明细",
+        "viewtype": "DEEDITVIEW",
+        "viewmodule": "VAC",
+        "viewname": "VacLeaveDetailEditView",
+        "viewtag": "83cda3483d6fd6d7bee8547f799a3eb0",
+        "memo": ""
     },
     "attensummarygridview": {
         "title": "考勤汇总",
@@ -341,15 +296,6 @@
         "viewtag": "94ecb4d9f696cdeb9d6aafb13e04c7a3",
         "memo": "系统自动添加"
     },
-    "vacleavedetailjhqjmx_ck_gridview": {
-        "title": "请假明细",
-        "caption": "请假明细",
-        "viewtype": "DEGRIDVIEW",
-        "viewmodule": "VAC",
-        "viewname": "VacLeaveDetailJHQJMX_CK_GridView",
-        "viewtag": "9971376d76b7b06e5a2d38291f7805e6",
-        "memo": "系统自动添加"
-    },
     "attendancerecordgridview": {
         "title": "考勤记录表格视图",
         "caption": "考勤记录",
@@ -377,14 +323,14 @@
         "viewtag": "a0ab24547d6ad910d03d81a5a6e3f83d",
         "memo": "系统自动添加"
     },
-    "vacleavedetailjhqjmx_ck_editview": {
-        "title": "请假明细",
+    "vacleavedetailgridview": {
+        "title": "请销假明细表格视图",
         "caption": "请假明细",
-        "viewtype": "DEEDITVIEW",
+        "viewtype": "DEGRIDVIEW",
         "viewmodule": "VAC",
-        "viewname": "VacLeaveDetailJHQJMX_CK_EditView",
-        "viewtag": "a48d109fb3e4e472f9c86c6b12187d51",
-        "memo": "系统自动添加"
+        "viewname": "VacLeaveDetailGridView",
+        "viewtag": "a61f579d24205c8f6693d783563a54ad",
+        "memo": ""
     },
     "vacholidayjjrtxsbgridview": {
         "title": "节假日/调休上班",
@@ -393,15 +339,6 @@
         "viewmodule": "VAC",
         "viewname": "VacHolidayJJRTXSBGridView",
         "viewtag": "a6c5ff62b4c8ef40868249987ff31957",
-        "memo": "系统自动添加"
-    },
-    "vacleavedetailsjqjmx_gridview": {
-        "title": "请假明细",
-        "caption": "请假明细",
-        "viewtype": "DEGRIDVIEW",
-        "viewmodule": "VAC",
-        "viewname": "VacLeaveDetailSJQJMX_GridView",
-        "viewtag": "a6f62d2019e0803c18258a097fbb4e78",
         "memo": "系统自动添加"
     },
     "attendancemreportcurzzkqybgridview": {
@@ -430,15 +367,6 @@
         "viewname": "VacHolidayRulesKQGZWizardView",
         "viewtag": "b7c9f4962c358749929067f91d7a09f8",
         "memo": "系统自动添加"
-    },
-    "vacleavemanagegridview": {
-        "title": "请假管理实体表格视图",
-        "caption": "请假管理",
-        "viewtype": "DEGRIDVIEW",
-        "viewmodule": "VAC",
-        "viewname": "VacLeaveManageGridView",
-        "viewtag": "bafd71cd0552e86505f6d85e2dbdd9fb",
-        "memo": ""
     },
     "vacholidayruleseditview": {
         "title": "考勤规则",

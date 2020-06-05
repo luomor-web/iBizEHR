@@ -1,13 +1,33 @@
 export default {
+    EhrCodeList0233: {
+        empty: '',
+    },
     EhrCodeList0052: {
           '10': '法定节假日',
           '20': '年休假',
           '30': '调休上班',
         empty: '',
     },
-    EhrCodeList0110: {
-          '10': '上午',
-          '20': '下午',
+    EhrCodeList0249: {
+        empty: '',
+    },
+    EhrCodeList0050: {
+        empty: '',
+    },
+    EhrCodeList0013: {
+        empty: '',
+    },
+    EhrCodeList0054: {
+          '1': '是',
+          '0': '否',
+        empty: '',
+    },
+    EhrCodeList0250: {
+        empty: '',
+    },
+    EhrCodeList0019: {
+          '10': '机关部门',
+          '20': '项目部门',
         empty: '',
     },
     EhrCodeList0148: {
@@ -16,6 +36,9 @@ export default {
           300: '300米',
           400: '400米',
           500: '500米',
+        empty: '',
+    },
+    EhrCodeList0072: {
         empty: '',
     },
     EhrCodeList0115: {
@@ -38,6 +61,21 @@ export default {
           '2028': '2028年',
           '2029': '2029年',
           '2030': '2030年',
+        empty: '',
+    },
+    EhrCodeList0097: {
+          '1': '是',
+          '0': '否',
+        empty: '',
+    },
+    EhrCodeList0022: {
+          '10': '法人单位',
+          '20': '非法人单位',
+        empty: '',
+    },
+    EhrCodeList0123: {
+          '10': '可调配',
+          '20': '不可调配',
         empty: '',
     },
     EhrCodeList0098: {
@@ -70,66 +108,6 @@ export default {
         empty: '',
     },
     EhrCodeList0219: {
-        empty: '',
-    },
-    EhrCodeList0233: {
-        empty: '',
-    },
-    EhrCodeList0249: {
-        empty: '',
-    },
-    EhrCodeList0050: {
-        empty: '',
-    },
-    EhrCodeList0075: {
-        empty: '',
-    },
-    EhrCodeList0134: {
-          '10': '拟稿',
-          '20': '审批中',
-          '25': '待销假',
-          '30': '已通过',
-          '40': '已驳回',
-          '50': '已取消',
-        empty: '',
-    },
-    EhrCodeList0013: {
-        empty: '',
-    },
-    EhrCodeList0054: {
-          '1': '是',
-          '0': '否',
-        empty: '',
-    },
-    EhrCodeList0250: {
-        empty: '',
-    },
-    EhrCodeList0019: {
-          '10': '机关部门',
-          '20': '项目部门',
-        empty: '',
-    },
-    EhrCodeList0072: {
-        empty: '',
-    },
-    EhrCodeList0245: {
-          '10': '探父母',
-          '20': '探配偶',
-        empty: '',
-    },
-    EhrCodeList0097: {
-          '1': '是',
-          '0': '否',
-        empty: '',
-    },
-    EhrCodeList0022: {
-          '10': '法人单位',
-          '20': '非法人单位',
-        empty: '',
-    },
-    EhrCodeList0123: {
-          '10': '可调配',
-          '20': '不可调配',
         empty: '',
     },
     EhrCodeList0179: {

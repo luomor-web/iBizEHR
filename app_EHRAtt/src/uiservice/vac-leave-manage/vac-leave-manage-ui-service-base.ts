@@ -79,8 +79,6 @@ export default class VacLeaveManageUIServiceBase extends UIService {
      * @memberof  VacLeaveManageUIServiceBase
      */  
     public initViewMap(){
-        this.allViewMap.set('EDITVIEW:10',{viewname:'ngeditview',srfappde:'vacleavemanages'});
-        this.allViewMap.set(':',{viewname:'gridview',srfappde:'vacleavemanages'});
     }
 
     /**

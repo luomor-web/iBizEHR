@@ -1,12 +1,11 @@
-import EhrCodeList0098 from '@/codelist/ehr-code-list0098';   
-import EhrCodeList0219 from '@/codelist/ehr-code-list0219';   
 import EhrCodeList0233 from '@/codelist/ehr-code-list0233';   
 import EhrCodeList0249 from '@/codelist/ehr-code-list0249';   
 import EhrCodeList0050 from '@/codelist/ehr-code-list0050';   
-import EhrCodeList0075 from '@/codelist/ehr-code-list0075';   
 import EhrCodeList0013 from '@/codelist/ehr-code-list0013';   
 import EhrCodeList0250 from '@/codelist/ehr-code-list0250';   
 import EhrCodeList0072 from '@/codelist/ehr-code-list0072';   
+import EhrCodeList0098 from '@/codelist/ehr-code-list0098';   
+import EhrCodeList0219 from '@/codelist/ehr-code-list0219';   
 import EhrCodeList0014 from '@/codelist/ehr-code-list0014';   
 import { Store } from 'vuex';
 
@@ -60,22 +59,6 @@ export default class CodeListService {
 
 
     /**
-     * 代码表--考勤类型
-     *
-     * @type {EhrCodeList0098}
-     * @memberof CodeListService
-     */
-    public EhrCodeList0098: EhrCodeList0098 = new EhrCodeList0098();
-
-    /**
-     * 代码表--补贴标准
-     *
-     * @type {EhrCodeList0219}
-     * @memberof CodeListService
-     */
-    public EhrCodeList0219: EhrCodeList0219 = new EhrCodeList0219();
-
-    /**
      * 代码表--职务（基础管理）
      *
      * @type {EhrCodeList0233}
@@ -100,14 +83,6 @@ export default class CodeListService {
     public EhrCodeList0050: EhrCodeList0050 = new EhrCodeList0050();
 
     /**
-     * 代码表--婚姻状况
-     *
-     * @type {EhrCodeList0075}
-     * @memberof CodeListService
-     */
-    public EhrCodeList0075: EhrCodeList0075 = new EhrCodeList0075();
-
-    /**
      * 代码表--休假类型
      *
      * @type {EhrCodeList0013}
@@ -130,6 +105,22 @@ export default class CodeListService {
      * @memberof CodeListService
      */
     public EhrCodeList0072: EhrCodeList0072 = new EhrCodeList0072();
+
+    /**
+     * 代码表--考勤类型
+     *
+     * @type {EhrCodeList0098}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0098: EhrCodeList0098 = new EhrCodeList0098();
+
+    /**
+     * 代码表--补贴标准
+     *
+     * @type {EhrCodeList0219}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0219: EhrCodeList0219 = new EhrCodeList0219();
 
     /**
      * 代码表--员工状态

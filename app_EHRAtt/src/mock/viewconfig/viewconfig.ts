@@ -71,14 +71,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "AttEndanceMreportGridView",
             "viewtag": "2391d49830a35dc8463624f367328220"
         },
-        "vacleavedetailsjqjmx_editview": {
-            "title": "请假明细",
-            "caption": "请假明细",
-            "viewtype": "DEEDITVIEW",
-            "viewmodule": "VAC",
-            "viewname": "VacLeaveDetailSJQJMX_EditView",
-            "viewtag": "3262fd74050152966a989a7aa4f46db0"
-        },
         "vacsynjcxgridview": {
             "title": "年休假查询",
             "caption": "年休假查询",
@@ -86,14 +78,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "VAC",
             "viewname": "VacSynjcxGridView",
             "viewtag": "332ebe6a595ac81f1e42a327e3c911e1"
-        },
-        "vacleavedetailjhqjmx_editview": {
-            "title": "请假明细",
-            "caption": "请假明细",
-            "viewtype": "DEEDITVIEW",
-            "viewmodule": "VAC",
-            "viewname": "VacLeaveDetailJHQJMX_EditView",
-            "viewtag": "3451991293c2ae164b404d7a256b348e"
         },
         "pimpersonpickupgridview": {
             "title": "人员信息选择表格视图",
@@ -119,14 +103,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "VacHolidayEditView",
             "viewtag": "43382b00685ac886ac519967af516ee9"
         },
-        "vacleavedetailjhqjmx_gridview": {
-            "title": "请假明细",
-            "caption": "请假明细",
-            "viewtype": "DEGRIDVIEW",
-            "viewmodule": "VAC",
-            "viewname": "VacLeaveDetailJHQJMX_GridView",
-            "viewtag": "46624dab5e7a5e5026cab5092952f020"
-        },
         "attendancesettingsgridview": {
             "title": "考勤人员",
             "caption": "考勤人员",
@@ -142,22 +118,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PIM",
             "viewname": "PimPersonSetAttRulesGridView",
             "viewtag": "4986fb1b1e1cfe921dc7c855a1fda4f4"
-        },
-        "vacleavedetailsjqjmx_ck_editview": {
-            "title": "请假明细",
-            "caption": "请假明细",
-            "viewtype": "DEEDITVIEW",
-            "viewmodule": "VAC",
-            "viewname": "VacLeaveDetailSJQJMX_CK_EditView",
-            "viewtag": "4f0a59a47a9f69d0c45d34c921233032"
-        },
-        "vacleavedetailsjqjmx_ck_gridview": {
-            "title": "请假明细",
-            "caption": "请假明细",
-            "viewtype": "DEGRIDVIEW",
-            "viewmodule": "VAC",
-            "viewname": "VacLeaveDetailSJQJMX_CK_GridView",
-            "viewtag": "5504fe93683e145068c188c9e43ccb68"
         },
         "index": {
             "title": "EHR-假勤管理",
@@ -199,14 +159,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "AttEnsummaryCurZZKQHZGridView",
             "viewtag": "64d9d612dfb1fcc1a6f5f599e5f62308"
         },
-        "vacleavemanagengeditview": {
-            "title": "请假管理",
-            "caption": "请假管理",
-            "viewtype": "DEEDITVIEW",
-            "viewmodule": "VAC",
-            "viewname": "VacLeaveManageNGEditView",
-            "viewtag": "674c3fe6e36a1eb0f72af7c6a7f76905"
-        },
         "attendancemreporteditview": {
             "title": "考勤月报",
             "caption": "考勤月报",
@@ -246,6 +198,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PCM",
             "viewname": "PcmWzd0001YGSZKQOptionView",
             "viewtag": "7f5fde30882cd704aa8fdaf922c320fa"
+        },
+        "vacleavedetaileditview": {
+            "title": "请销假明细编辑视图",
+            "caption": "请假明细",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "VAC",
+            "viewname": "VacLeaveDetailEditView",
+            "viewtag": "83cda3483d6fd6d7bee8547f799a3eb0"
         },
         "attensummarygridview": {
             "title": "考勤汇总",
@@ -311,14 +271,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "VacHolidayRulesCurOrmorgPickupGridView",
             "viewtag": "94ecb4d9f696cdeb9d6aafb13e04c7a3"
         },
-        "vacleavedetailjhqjmx_ck_gridview": {
-            "title": "请假明细",
-            "caption": "请假明细",
-            "viewtype": "DEGRIDVIEW",
-            "viewmodule": "VAC",
-            "viewname": "VacLeaveDetailJHQJMX_CK_GridView",
-            "viewtag": "9971376d76b7b06e5a2d38291f7805e6"
-        },
         "attendancerecordgridview": {
             "title": "考勤记录表格视图",
             "caption": "考勤记录",
@@ -343,13 +295,13 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "OrmOrgsectorPickupGridView",
             "viewtag": "a0ab24547d6ad910d03d81a5a6e3f83d"
         },
-        "vacleavedetailjhqjmx_ck_editview": {
-            "title": "请假明细",
+        "vacleavedetailgridview": {
+            "title": "请销假明细表格视图",
             "caption": "请假明细",
-            "viewtype": "DEEDITVIEW",
+            "viewtype": "DEGRIDVIEW",
             "viewmodule": "VAC",
-            "viewname": "VacLeaveDetailJHQJMX_CK_EditView",
-            "viewtag": "a48d109fb3e4e472f9c86c6b12187d51"
+            "viewname": "VacLeaveDetailGridView",
+            "viewtag": "a61f579d24205c8f6693d783563a54ad"
         },
         "vacholidayjjrtxsbgridview": {
             "title": "节假日/调休上班",
@@ -358,14 +310,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "VAC",
             "viewname": "VacHolidayJJRTXSBGridView",
             "viewtag": "a6c5ff62b4c8ef40868249987ff31957"
-        },
-        "vacleavedetailsjqjmx_gridview": {
-            "title": "请假明细",
-            "caption": "请假明细",
-            "viewtype": "DEGRIDVIEW",
-            "viewmodule": "VAC",
-            "viewname": "VacLeaveDetailSJQJMX_GridView",
-            "viewtag": "a6f62d2019e0803c18258a097fbb4e78"
         },
         "attendancemreportcurzzkqybgridview": {
             "title": "考勤月报",
@@ -390,14 +334,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "VAC",
             "viewname": "VacHolidayRulesKQGZWizardView",
             "viewtag": "b7c9f4962c358749929067f91d7a09f8"
-        },
-        "vacleavemanagegridview": {
-            "title": "请假管理实体表格视图",
-            "caption": "请假管理",
-            "viewtype": "DEGRIDVIEW",
-            "viewmodule": "VAC",
-            "viewname": "VacLeaveManageGridView",
-            "viewtag": "bafd71cd0552e86505f6d85e2dbdd9fb"
         },
         "vacholidayruleseditview": {
             "title": "考勤规则",

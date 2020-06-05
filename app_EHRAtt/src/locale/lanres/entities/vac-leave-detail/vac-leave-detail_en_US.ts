@@ -36,43 +36,17 @@ export default {
     vacleavemanageid: '请销假管理标识',
   },
 	views: {
-		sjqjmx_editview: {
+		editview: {
 			caption: "请假明细",
       title: '请假明细',
 		},
-		jhqjmx_editview: {
-			caption: "请假明细",
-      title: '请假明细',
-		},
-		jhqjmx_gridview: {
-			caption: "请假明细",
-      title: '请假明细',
-		},
-		sjqjmx_ck_editview: {
-			caption: "请假明细",
-      title: '请假明细',
-		},
-		sjqjmx_ck_gridview: {
-			caption: "请假明细",
-      title: '请假明细',
-		},
-		jhqjmx_ck_gridview: {
-			caption: "请假明细",
-      title: '请假明细',
-		},
-		jhqjmx_ck_editview: {
-			caption: "请假明细",
-      title: '请假明细',
-		},
-		sjqjmx_gridview: {
+		gridview: {
 			caption: "请假明细",
       title: '请假明细',
 		},
 	},
-	sjqjmx_form: {
+	main_form: {
 		details: {
-			grouppanel1: "计划", 
-			grouppanel2: "实际", 
 			group1: "请假明细", 
 			formpage1: "基本信息", 
 			srfupdatedate: "更新时间", 
@@ -83,160 +57,12 @@ export default {
 			srfuf: "", 
 			srfdeid: "", 
 			srfsourcekey: "", 
-			vacleavemanageid: "请销假管理标识", 
-			ormorgid: "组织标识", 
-			ormorgsectorid: "部门标识", 
-			pimpersonid: "人员信息标识", 
-			pimpersonname: "请假人员", 
-			qjzl: "请假种类", 
-			hyzk: "婚姻状况", 
-			tqlx: "探亲类型", 
-			njsy: "假期使用情况", 
-			tips: "温馨提示", 
-			jhkssj: "计划开始时间", 
-			jhkssxw: "计划开始上下午", 
-			jhjssj: "计划结束时间", 
-			jhjssxw: "计划结束上下午", 
-			jhts: "计划天数", 
-			fj: "附件", 
-			bz: "备注", 
-			sjkssj: "实际开始时间", 
-			sjkssxw: "实际开始上下午", 
-			sjjssj: "实际结束时间", 
-			sjjssxw: "实际结束上下午", 
-			sjts: "实际天数", 
-			vacleavedetailid: "请销假明细标识", 
-		},
-		uiactions: {
-		},
-	},
-	jhqjmx_form: {
-		details: {
-			grouppanel1: "计划", 
-			group1: "请假明细", 
-			formpage1: "基本信息", 
-			srfupdatedate: "更新时间", 
-			srforikey: "", 
-			srfkey: "请销假明细标识", 
-			srfmajortext: "请销假明细名称", 
-			srftempmode: "", 
-			srfuf: "", 
-			srfdeid: "", 
-			srfsourcekey: "", 
-			vacleavemanageid: "请销假管理标识", 
-			ormorgid: "组织标识", 
-			ormorgsectorid: "部门标识", 
-			pimpersonid: "人员信息标识", 
-			pimpersonname: "请假人员", 
-			qjzl: "请假种类", 
-			hyzk: "婚姻状况", 
-			tqlx: "探亲类型", 
-			njsy: "假期使用情况", 
-			tips: "温馨提示", 
-			jhkssj: "计划开始时间", 
-			jhkssxw: "计划开始上下午", 
-			jhjssj: "计划结束时间", 
-			jhjssxw: "计划结束上下午", 
-			jhts: "计划天数", 
-			fj: "附件", 
-			bz: "备注", 
-			vacleavedetailid: "请销假明细标识", 
-		},
-		uiactions: {
-		},
-	},
-	sjqjmx_ck_form: {
-		details: {
-			grouppanel1: "计划", 
-			grouppanel2: "实际", 
-			group1: "请假明细", 
-			formpage1: "基本信息", 
-			srfupdatedate: "更新时间", 
-			srforikey: "", 
-			srfkey: "请销假明细标识", 
-			srfmajortext: "请销假明细名称", 
-			srftempmode: "", 
-			srfuf: "", 
-			srfdeid: "", 
-			srfsourcekey: "", 
-			vacleavemanageid: "请销假管理标识", 
-			ormorgid: "组织标识", 
-			ormorgsectorid: "部门标识", 
-			pimpersonid: "人员信息标识", 
-			pimpersonname: "请假人员", 
-			qjzl: "请假种类", 
-			hyzk: "婚姻状况", 
-			tqlx: "探亲类型", 
-			njsy: "假期使用情况", 
-			tips: "温馨提示", 
-			jhkssj: "计划开始时间", 
-			jhkssxw: "计划开始上下午", 
-			jhjssj: "计划结束时间", 
-			jhjssxw: "计划结束上下午", 
-			jhts: "计划天数", 
-			fj: "附件", 
-			bz: "备注", 
-			sjkssj: "实际开始时间", 
-			sjkssxw: "实际开始上下午", 
-			sjjssj: "实际结束时间", 
-			sjjssxw: "实际结束上下午", 
-			sjts: "实际天数", 
-			vacleavedetailid: "请销假明细标识", 
-		},
-		uiactions: {
-		},
-	},
-	jhqjmx_ck_form: {
-		details: {
-			grouppanel1: "计划", 
-			group1: "请假明细", 
-			formpage1: "基本信息", 
-			srfupdatedate: "更新时间", 
-			srforikey: "", 
-			srfkey: "请销假明细标识", 
-			srfmajortext: "请销假明细名称", 
-			srftempmode: "", 
-			srfuf: "", 
-			srfdeid: "", 
-			srfsourcekey: "", 
-			vacleavemanageid: "请销假管理标识", 
-			ormorgid: "组织标识", 
-			ormorgsectorid: "部门标识", 
-			pimpersonid: "人员信息标识", 
-			pimpersonname: "请假人员", 
-			qjzl: "请假种类", 
-			hyzk: "婚姻状况", 
-			tqlx: "探亲类型", 
-			njsy: "假期使用情况", 
-			tips: "温馨提示", 
-			jhkssj: "计划开始时间", 
-			jhkssxw: "计划开始上下午", 
-			jhjssj: "计划结束时间", 
-			jhjssxw: "计划结束上下午", 
-			jhts: "计划天数", 
-			fj: "附件", 
-			bz: "备注", 
 			vacleavedetailid: "请销假明细标识", 
 		},
 		uiactions: {
 		},
 	},
 	main_grid: {
-		columns: {
-			pimpersonname: "请假人员",
-			qjzl: "请假种类",
-			jhqjks: "计划请假开始",
-			jhqjjs: "计划请假结束",
-			jhts: "计划天数",
-			bz: "备注",
-			sjqjks: "实际请假开始",
-			sjqjjs: "实际请假结束",
-			sjts: "实际天数",
-		},
-		uiactions: {
-		},
-	},
-	ck_grid: {
 		columns: {
 			pimpersonname: "请假人员",
 			qjzl: "请假种类",
@@ -259,27 +85,7 @@ export default {
 		uiactions: {
 		},
 	},
-	sjqjmx_editviewtoolbar_toolbar: {
-		deuiaction5: {
-			caption: "Save And Close",
-			tip: "Save And Close Window",
-		},
-		deuiaction1: {
-			caption: "退出",
-			tip: "退出",
-		},
-	},
-	jhqjmx_editviewtoolbar_toolbar: {
-		deuiaction5: {
-			caption: "Save And Close",
-			tip: "Save And Close Window",
-		},
-		deuiaction1: {
-			caption: "退出",
-			tip: "退出",
-		},
-	},
-	jhqjmx_gridviewtoolbar_toolbar: {
+	gridviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: "New",
 			tip: "New",
@@ -288,33 +94,37 @@ export default {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-	},
-	sjqjmx_ck_editviewtoolbar_toolbar: {
-		deuiaction1: {
-			caption: "退出",
-			tip: "退出",
+		tbitem19: {
+			caption: "Filter",
+			tip: "Filter",
 		},
-	},
-	sjqjmx_ck_gridviewtoolbar_toolbar: {
-		deuiaction5: {
+		tbitem13: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
+		tbitem18: {
 			caption: "Help",
 			tip: "Help",
 		},
 	},
-	jhqjmx_ck_gridviewtoolbar_toolbar: {
-		deuiaction5: {
-			caption: "Help",
-			tip: "Help",
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
 		},
-	},
-	jhqjmx_ck_editviewtoolbar_toolbar: {
-		deuiaction1: {
-			caption: "退出",
-			tip: "退出",
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
 		},
-	},
-	sjqjmx_gridviewtoolbar_toolbar: {
-		deuiaction5: {
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+		tbitem7: {
+			caption: "Remove And Close",
+			tip: "Remove And Close Window",
+		},
+		tbitem22: {
 			caption: "Help",
 			tip: "Help",
 		},

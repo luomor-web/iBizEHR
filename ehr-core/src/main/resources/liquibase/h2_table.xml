@@ -9837,7 +9837,7 @@
 
 
     <!--输出实体[ATTENDENCESETUP]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-attendencesetup-32-252">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-attendencesetup-33-252">
         <createTable tableName="T_ATTENDENCESETUP">
                 <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
                 </column>
@@ -13220,13 +13220,13 @@
        <addForeignKeyConstraint baseColumnNames="REALPEROSNID" baseTableName="T_ORMXMRYPZXQ" constraintName="DER1N_ORMXMRYPZXQ_PIMPERSON_RE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[ATTENDENCESETUP]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendencesetup-32-654">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendencesetup-33-654">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_ATTENDENCESETUP" constraintName="DER1N_ATTENDENCESETUP_ORMORG_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendencesetup-32-655">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendencesetup-33-655">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_ATTENDENCESETUP" constraintName="DER1N_ATTENDENCESETUP_PIMPERSO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendencesetup-32-656">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-attendencesetup-33-656">
        <addForeignKeyConstraint baseColumnNames="VACHOLIDAYRULESID" baseTableName="T_ATTENDENCESETUP" constraintName="DER1N_ATTENDENCESETUP_VACHOLID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="VACHOLIDAYRULESID" referencedTableName="T_VACHOLIDAYRULES" validate="true"/>
     </changeSet>
         <!--输出实体[PIMFILEBATVHUPLOAD]外键关系 -->

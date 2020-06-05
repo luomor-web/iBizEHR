@@ -79,14 +79,8 @@ export default class VacLeaveDetailUIServiceBase extends UIService {
      * @memberof  VacLeaveDetailUIServiceBase
      */  
     public initViewMap(){
-        this.allViewMap.set(':',{viewname:'sjqjmx_editview',srfappde:'vacleavedetails'});
-        this.allViewMap.set(':',{viewname:'jhqjmx_editview',srfappde:'vacleavedetails'});
-        this.allViewMap.set(':',{viewname:'jhqjmx_gridview',srfappde:'vacleavedetails'});
-        this.allViewMap.set(':',{viewname:'sjqjmx_ck_editview',srfappde:'vacleavedetails'});
-        this.allViewMap.set(':',{viewname:'sjqjmx_ck_gridview',srfappde:'vacleavedetails'});
-        this.allViewMap.set(':',{viewname:'jhqjmx_ck_gridview',srfappde:'vacleavedetails'});
-        this.allViewMap.set(':',{viewname:'jhqjmx_ck_editview',srfappde:'vacleavedetails'});
-        this.allViewMap.set(':',{viewname:'sjqjmx_gridview',srfappde:'vacleavedetails'});
+        this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'vacleavedetails'});
+        this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'vacleavedetails'});
     }
 
     /**

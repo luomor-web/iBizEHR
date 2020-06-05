@@ -100,15 +100,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '3451991293c2ae164b404d7a256b348e',
-            viewmodule: 'VAC',
-            viewname: 'VacLeaveDetailJHQJMX_EditView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-            ],
-        },
-        {
             viewtag: '3a13660bb95e945397ffbf8a6e51a9d3',
             viewmodule: 'ATT',
             viewname: 'PimPersonPickupGridView',
@@ -134,16 +125,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-            ],
-        },
-        {
-            viewtag: '46624dab5e7a5e5026cab5092952f020',
-            viewmodule: 'VAC',
-            viewname: 'VacLeaveDetailJHQJMX_GridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '3451991293c2ae164b404d7a256b348e',
             ],
         },
         {
@@ -177,8 +158,8 @@ export const viewstate: any = {
             refviews: [
                 '4986fb1b1e1cfe921dc7c855a1fda4f4',
                 'e0aef4185645d7c736afe9da6e2de2a7',
-                'bafd71cd0552e86505f6d85e2dbdd9fb',
                 'cfe9d69998fd484c2c7bcb0cd98b60d7',
+                'a61f579d24205c8f6693d783563a54ad',
                 'b3d5e8674764efcf3f73cf0b6292d898',
                 '8dfb451be615b1dd6bd681453572ee50',
                 'dd8870fbf7f0b9e6759dcceb4513643b',
@@ -227,16 +208,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '674c3fe6e36a1eb0f72af7c6a7f76905',
-            viewmodule: 'VAC',
-            viewname: 'VacLeaveManageNGEditView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '46624dab5e7a5e5026cab5092952f020',
-            ],
-        },
-        {
             viewtag: '6b3008117fb17fb739d7fa3a19cec37b',
             viewmodule: 'ATT',
             viewname: 'AttEndanceMreportEditView',
@@ -276,6 +247,15 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'd66a73e83c5a991b3b4093216ddbd5c8',
+            ],
+        },
+        {
+            viewtag: '83cda3483d6fd6d7bee8547f799a3eb0',
+            viewmodule: 'VAC',
+            viewname: 'VacLeaveDetailEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
             ],
         },
         {
@@ -386,6 +366,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'a61f579d24205c8f6693d783563a54ad',
+            viewmodule: 'VAC',
+            viewname: 'VacLeaveDetailGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '83cda3483d6fd6d7bee8547f799a3eb0',
+            ],
+        },
+        {
             viewtag: 'a6c5ff62b4c8ef40868249987ff31957',
             viewmodule: 'VAC',
             viewname: 'VacHolidayJJRTXSBGridView',
@@ -415,16 +405,6 @@ export const viewstate: any = {
                 'a6c5ff62b4c8ef40868249987ff31957',
                 '20fc72240f5e586b7cf92ebf229bffd1',
                 '1964763f853ddc6c622f5de9e7b36f39',
-            ],
-        },
-        {
-            viewtag: 'bafd71cd0552e86505f6d85e2dbdd9fb',
-            viewmodule: 'VAC',
-            viewname: 'VacLeaveManageGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '674c3fe6e36a1eb0f72af7c6a7f76905',
             ],
         },
         {

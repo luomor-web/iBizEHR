@@ -88,6 +88,48 @@ const router = new Router({
                     component: () => import('@pages/att/att-endence-setup-pickup-grid-view/att-endence-setup-pickup-grid-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.vacleavedetail.views.gridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
+                            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/vac/vac-leave-detail-grid-view/vac-leave-detail-grid-view.vue'),
+                },
+                {
+                    path: 'vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.vacleavedetail.views.gridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
+                            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/vac/vac-leave-detail-grid-view/vac-leave-detail-grid-view.vue'),
+                },
+                {
+                    path: 'vacleavedetails/:vacleavedetail?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.vacleavedetail.views.gridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/vac/vac-leave-detail-grid-view/vac-leave-detail-grid-view.vue'),
+                },
+                {
                     path: 'attendencesetups/:attendencesetup?/attendancesettings/:attendancesettings?/fygzzkqgridview/:fygzzkqgridview?',
                     meta: {
                         caption: 'entities.attendancesettings.views.fygzzkqgridview.caption',
@@ -133,79 +175,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/att/att-endance-settings-fygzzkqgrid-view/att-endance-settings-fygzzkqgrid-view.vue'),
-                },
-                {
-                    path: 'pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/ngeditview/:ngeditview?',
-                    meta: {
-                        caption: 'entities.vacleavemanage.views.ngeditview.caption',
-                        imgPath: '../../../img/newimage/1/qingjiaguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                            { pathName: 'ngeditview', parameterName: 'ngeditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/vac/vac-leave-manage-ngedit-view/vac-leave-manage-ngedit-view.vue'),
-                },
-                {
-                    path: 'vacleavemanages/:vacleavemanage?/ngeditview/:ngeditview?',
-                    meta: {
-                        caption: 'entities.vacleavemanage.views.ngeditview.caption',
-                        imgPath: '../../../img/newimage/1/qingjiaguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                            { pathName: 'ngeditview', parameterName: 'ngeditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/vac/vac-leave-manage-ngedit-view/vac-leave-manage-ngedit-view.vue'),
-                },
-                {
-                    path: 'pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/jhqjmx_editview/:jhqjmx_editview?',
-                    meta: {
-                        caption: 'entities.vacleavedetail.views.jhqjmx_editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                            { pathName: 'jhqjmx_editview', parameterName: 'jhqjmx_editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/vac/vac-leave-detail-jhqjmx-edit-view/vac-leave-detail-jhqjmx-edit-view.vue'),
-                },
-                {
-                    path: 'vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/jhqjmx_editview/:jhqjmx_editview?',
-                    meta: {
-                        caption: 'entities.vacleavedetail.views.jhqjmx_editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                            { pathName: 'jhqjmx_editview', parameterName: 'jhqjmx_editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/vac/vac-leave-detail-jhqjmx-edit-view/vac-leave-detail-jhqjmx-edit-view.vue'),
-                },
-                {
-                    path: 'vacleavedetails/:vacleavedetail?/jhqjmx_editview/:jhqjmx_editview?',
-                    meta: {
-                        caption: 'entities.vacleavedetail.views.jhqjmx_editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                            { pathName: 'jhqjmx_editview', parameterName: 'jhqjmx_editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/vac/vac-leave-detail-jhqjmx-edit-view/vac-leave-detail-jhqjmx-edit-view.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzeditview/:bmkqdzeditview?',
@@ -300,37 +269,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/att/att-ensummary-cur-zzkqhzgrid-view/att-ensummary-cur-zzkqhzgrid-view.vue'),
-                },
-                {
-                    path: 'pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.vacleavemanage.views.gridview.caption',
-                        imgPath: '../../../img/newimage/1/qingjiaguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/vac/vac-leave-manage-grid-view/vac-leave-manage-grid-view.vue'),
-                },
-                {
-                    path: 'vacleavemanages/:vacleavemanage?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.vacleavemanage.views.gridview.caption',
-                        imgPath: '../../../img/newimage/1/qingjiaguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/vac/vac-leave-manage-grid-view/vac-leave-manage-grid-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/pickupgridview/:pickupgridview?',
@@ -630,54 +568,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/vac/vac-holiday-rules-edit-view/vac-holiday-rules-edit-view.vue'),
-                },
-                {
-                    path: 'pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/jhqjmx_gridview/:jhqjmx_gridview?',
-                    meta: {
-                        caption: 'entities.vacleavedetail.views.jhqjmx_gridview.caption',
-                        imgPath: '../../../img/newimage/1/qingjiaguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                            { pathName: 'jhqjmx_gridview', parameterName: 'jhqjmx_gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/vac/vac-leave-detail-jhqjmx-grid-view/vac-leave-detail-jhqjmx-grid-view.vue'),
-                },
-                {
-                    path: 'vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/jhqjmx_gridview/:jhqjmx_gridview?',
-                    meta: {
-                        caption: 'entities.vacleavedetail.views.jhqjmx_gridview.caption',
-                        imgPath: '../../../img/newimage/1/qingjiaguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                            { pathName: 'jhqjmx_gridview', parameterName: 'jhqjmx_gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/vac/vac-leave-detail-jhqjmx-grid-view/vac-leave-detail-jhqjmx-grid-view.vue'),
-                },
-                {
-                    path: 'vacleavedetails/:vacleavedetail?/jhqjmx_gridview/:jhqjmx_gridview?',
-                    meta: {
-                        caption: 'entities.vacleavedetail.views.jhqjmx_gridview.caption',
-                        imgPath: '../../../img/newimage/1/qingjiaguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                            { pathName: 'jhqjmx_gridview', parameterName: 'jhqjmx_gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/vac/vac-leave-detail-jhqjmx-grid-view/vac-leave-detail-jhqjmx-grid-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/attendancemreportmxes/:attendancemreportmx?/gridview/:gridview?',
@@ -1342,6 +1232,48 @@ const router = new Router({
                     component: () => import('@pages/vac/vac-synjcx-grid-view/vac-synjcx-grid-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.vacleavedetail.views.editview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
+                            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/vac/vac-leave-detail-edit-view/vac-leave-detail-edit-view.vue'),
+                },
+                {
+                    path: 'vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.vacleavedetail.views.editview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
+                            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/vac/vac-leave-detail-edit-view/vac-leave-detail-edit-view.vue'),
+                },
+                {
+                    path: 'vacleavedetails/:vacleavedetail?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.vacleavedetail.views.editview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/vac/vac-leave-detail-edit-view/vac-leave-detail-edit-view.vue'),
+                },
+                {
                     path: 'attendencetypes/:attendencetype?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.attendencetype.views.gridview.caption',
@@ -1570,45 +1502,6 @@ const router = new Router({
         component: () => import('@pages/vac/vac-synjcx-grid-view/vac-synjcx-grid-view.vue'),
     },
     {
-        path: '/pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/jhqjmx_editview/:jhqjmx_editview?',
-        meta: {
-            caption: 'entities.vacleavedetail.views.jhqjmx_editview.caption',
-            parameters: [
-                { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                { pathName: 'jhqjmx_editview', parameterName: 'jhqjmx_editview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/vac/vac-leave-detail-jhqjmx-edit-view/vac-leave-detail-jhqjmx-edit-view.vue'),
-    },
-    {
-        path: '/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/jhqjmx_editview/:jhqjmx_editview?',
-        meta: {
-            caption: 'entities.vacleavedetail.views.jhqjmx_editview.caption',
-            parameters: [
-                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                { pathName: 'jhqjmx_editview', parameterName: 'jhqjmx_editview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/vac/vac-leave-detail-jhqjmx-edit-view/vac-leave-detail-jhqjmx-edit-view.vue'),
-    },
-    {
-        path: '/vacleavedetails/:vacleavedetail?/jhqjmx_editview/:jhqjmx_editview?',
-        meta: {
-            caption: 'entities.vacleavedetail.views.jhqjmx_editview.caption',
-            parameters: [
-                { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                { pathName: 'jhqjmx_editview', parameterName: 'jhqjmx_editview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/vac/vac-leave-detail-jhqjmx-edit-view/vac-leave-detail-jhqjmx-edit-view.vue'),
-    },
-    {
         path: '/pimpeople/:pimperson?/pickupgridview/:pickupgridview?',
         meta: {
             caption: 'entities.pimperson.views.pickupgridview.caption',
@@ -1673,51 +1566,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/vac/vac-holiday-edit-view/vac-holiday-edit-view.vue'),
-    },
-    {
-        path: '/pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/jhqjmx_gridview/:jhqjmx_gridview?',
-        meta: {
-            caption: 'entities.vacleavedetail.views.jhqjmx_gridview.caption',
-            imgPath: '../../../img/newimage/1/qingjiaguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                { pathName: 'jhqjmx_gridview', parameterName: 'jhqjmx_gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/vac/vac-leave-detail-jhqjmx-grid-view/vac-leave-detail-jhqjmx-grid-view.vue'),
-    },
-    {
-        path: '/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/jhqjmx_gridview/:jhqjmx_gridview?',
-        meta: {
-            caption: 'entities.vacleavedetail.views.jhqjmx_gridview.caption',
-            imgPath: '../../../img/newimage/1/qingjiaguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                { pathName: 'jhqjmx_gridview', parameterName: 'jhqjmx_gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/vac/vac-leave-detail-jhqjmx-grid-view/vac-leave-detail-jhqjmx-grid-view.vue'),
-    },
-    {
-        path: '/vacleavedetails/:vacleavedetail?/jhqjmx_gridview/:jhqjmx_gridview?',
-        meta: {
-            caption: 'entities.vacleavedetail.views.jhqjmx_gridview.caption',
-            imgPath: '../../../img/newimage/1/qingjiaguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
-                { pathName: 'jhqjmx_gridview', parameterName: 'jhqjmx_gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/vac/vac-leave-detail-jhqjmx-grid-view/vac-leave-detail-jhqjmx-grid-view.vue'),
     },
     {
         path: '/attendencesetups/:attendencesetup?/attendancesettings/:attendancesettings?/gridview/:gridview?',
@@ -1826,35 +1674,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/att/att-ensummary-cur-zzkqhzgrid-view/att-ensummary-cur-zzkqhzgrid-view.vue'),
-    },
-    {
-        path: '/pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/ngeditview/:ngeditview?',
-        meta: {
-            caption: 'entities.vacleavemanage.views.ngeditview.caption',
-            imgPath: '../../../img/newimage/1/qingjiaguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                { pathName: 'ngeditview', parameterName: 'ngeditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/vac/vac-leave-manage-ngedit-view/vac-leave-manage-ngedit-view.vue'),
-    },
-    {
-        path: '/vacleavemanages/:vacleavemanage?/ngeditview/:ngeditview?',
-        meta: {
-            caption: 'entities.vacleavemanage.views.ngeditview.caption',
-            imgPath: '../../../img/newimage/1/qingjiaguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                { pathName: 'ngeditview', parameterName: 'ngeditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/vac/vac-leave-manage-ngedit-view/vac-leave-manage-ngedit-view.vue'),
     },
     {
         path: '/attendancemreports/:attendancemreport?/editview/:editview?',
@@ -1966,6 +1785,45 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/orm-bmkqdz-pickup-view/orm-bmkqdz-pickup-view.vue'),
+    },
+    {
+        path: '/pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/editview/:editview?',
+        meta: {
+            caption: 'entities.vacleavedetail.views.editview.caption',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
+                { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/vac/vac-leave-detail-edit-view/vac-leave-detail-edit-view.vue'),
+    },
+    {
+        path: '/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/editview/:editview?',
+        meta: {
+            caption: 'entities.vacleavedetail.views.editview.caption',
+            parameters: [
+                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
+                { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/vac/vac-leave-detail-edit-view/vac-leave-detail-edit-view.vue'),
+    },
+    {
+        path: '/vacleavedetails/:vacleavedetail?/editview/:editview?',
+        meta: {
+            caption: 'entities.vacleavedetail.views.editview.caption',
+            parameters: [
+                { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/vac/vac-leave-detail-edit-view/vac-leave-detail-edit-view.vue'),
     },
     {
         path: '/attensummaries/:attensummary?/gridview/:gridview?',
@@ -2214,6 +2072,45 @@ const router = new Router({
         component: () => import('@pages/orm/orm-orgsector-pickup-grid-view/orm-orgsector-pickup-grid-view.vue'),
     },
     {
+        path: '/pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.vacleavedetail.views.gridview.caption',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
+                { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/vac/vac-leave-detail-grid-view/vac-leave-detail-grid-view.vue'),
+    },
+    {
+        path: '/vacleavemanages/:vacleavemanage?/vacleavedetails/:vacleavedetail?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.vacleavedetail.views.gridview.caption',
+            parameters: [
+                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
+                { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/vac/vac-leave-detail-grid-view/vac-leave-detail-grid-view.vue'),
+    },
+    {
+        path: '/vacleavedetails/:vacleavedetail?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.vacleavedetail.views.gridview.caption',
+            parameters: [
+                { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/vac/vac-leave-detail-grid-view/vac-leave-detail-grid-view.vue'),
+    },
+    {
         path: '/vacholidayrules/:vacholidayrules?/vacholidays/:vacholiday?/jjrtxsbgridview/:jjrtxsbgridview?',
         meta: {
             caption: 'entities.vacholiday.views.jjrtxsbgridview.caption',
@@ -2269,35 +2166,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/vac/vac-holiday-rules-kqgzwizard-view/vac-holiday-rules-kqgzwizard-view.vue'),
-    },
-    {
-        path: '/pimpeople/:pimperson?/vacleavemanages/:vacleavemanage?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.vacleavemanage.views.gridview.caption',
-            imgPath: '../../../img/newimage/1/qingjiaguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/vac/vac-leave-manage-grid-view/vac-leave-manage-grid-view.vue'),
-    },
-    {
-        path: '/vacleavemanages/:vacleavemanage?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.vacleavemanage.views.gridview.caption',
-            imgPath: '../../../img/newimage/1/qingjiaguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'vacleavemanages', parameterName: 'vacleavemanage' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/vac/vac-leave-manage-grid-view/vac-leave-manage-grid-view.vue'),
     },
     {
         path: '/vacholidayrules/:vacholidayrules?/editview/:editview?',
