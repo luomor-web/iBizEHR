@@ -26,7 +26,7 @@ public class IBZConfigService extends ServiceImpl<IBZConfigMapper, IBZConfig> im
     @Value("${ibiz.admin.userid:0100}")
     private String adminuserid;
 
-    @Cacheable( value="ibzrt_configs",key = "'cfgid:'+#p0+'||'+#p1+'||'+#p2")
+    @Cacheable( value="ehr_configs",key = "'cfgid:'+#p0+'||'+#p1+'||'+#p2")
     public JSONObject getConfig(String cfgType,String targetType,String userId)
     {
         if(StringUtils.isEmpty(userId)||StringUtils.isEmpty(cfgType)||StringUtils.isEmpty(targetType))
@@ -41,7 +41,7 @@ public class IBZConfigService extends ServiceImpl<IBZConfigMapper, IBZConfig> im
         return JSON.parseObject(config.getCfg());
     }
 
-    @CacheEvict( value="ibzrt_configs",key = "'cfgid:'+#p0+'||'+#p1+'||'+#p2")
+    @CacheEvict( value="ehr_configs",key = "'cfgid:'+#p0+'||'+#p1+'||'+#p2")
     public boolean saveConfig(String cfgType,String targetType,String userId,JSONObject config)
     {
         if(StringUtils.isEmpty(userId)||StringUtils.isEmpty(cfgType)||StringUtils.isEmpty(targetType))
@@ -52,7 +52,7 @@ public class IBZConfigService extends ServiceImpl<IBZConfigMapper, IBZConfig> im
         return this.saveOrUpdate(IBZConfig.builder().systemId(systemId).cfgType(cfgType).targetType(targetType).userId(userId).cfg(cfg).updateDate(DataObject.getNow()).build());
     }
 
-    @CacheEvict( value="ibzrt_configs",key = "'cfgid:'+#p0+'||'+#p1+'||'+#p2")
+    @CacheEvict( value="ehr_configs",key = "'cfgid:'+#p0+'||'+#p1+'||'+#p2")
     public void resetConfig(String cfgType,String targetType,String userId)
     {
         if(StringUtils.isEmpty(userId)||StringUtils.isEmpty(cfgType)||StringUtils.isEmpty(targetType))

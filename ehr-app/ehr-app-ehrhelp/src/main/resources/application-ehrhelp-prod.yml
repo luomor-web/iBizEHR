@@ -1063,13 +1063,5 @@ zuul:
       path: /wfcore/**
       serviceId: ibzwf-api
       stripPrefix: true
-    loginv7:
-      path: /v7/login
-      serviceId: ibzuaa-api
-      stripPrefix: false
-    oucore:
-      path: /ibzorganizations/**
-      serviceId: ibzou-api
-      stripPrefix: false
   sensitive-headers:
     - Cookie,Set-Cookie,Authorization

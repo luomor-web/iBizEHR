@@ -18,7 +18,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
  */
 @Primary
 @Service("SimpleUserService")
-@ConditionalOnExpression("(!${ibiz.enablePermissionValid:false})&&'${ibiz.auth.service:IBZUAAUserService}'.equals('SimpleUserService')")
+@ConditionalOnExpression("(!${ibiz.enablePermissionValid:false})&&'${ibiz.auth.service:SimpleUserService}'.equals('SimpleUserService')")
 public class SimpleUserService implements AuthenticationUserService{
 
 	@Override

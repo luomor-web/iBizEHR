@@ -20,7 +20,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
  * 实体[IBZUSER] 服务对象接口实现
  */
 @Service("IBZUSERService")
-@ConditionalOnExpression("(!${ibiz.enablePermissionValid:false})&&'${ibiz.auth.service:IBZUAAUserService}'.equals('IBZUSERService')")
+@ConditionalOnExpression("(!${ibiz.enablePermissionValid:false})&&'${ibiz.auth.service:SimpleUserService}'.equals('IBZUSERService')")
 public class IBZUSERServiceImpl extends ServiceImpl<IBZUSERMapper, IBZUSER> implements IBZUSERService,AuthenticationUserService{
 
 	@Value("${ibiz.auth.pwencrymode:0}")

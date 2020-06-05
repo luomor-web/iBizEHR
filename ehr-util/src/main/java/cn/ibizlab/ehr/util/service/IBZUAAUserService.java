@@ -18,7 +18,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
  * 实体[IBZUSER] 服务对象接口实现
  */
 @Service("IBZUAAUserService")
-@ConditionalOnExpression("${ibiz.enablePermissionValid:false}||'${ibiz.auth.service:IBZUAAUserService}'.equals('IBZUAAUserService')")
+@ConditionalOnExpression("${ibiz.enablePermissionValid:false}||'${ibiz.auth.service:SimpleUserService}'.equals('IBZUAAUserService')")
 public class IBZUAAUserService implements AuthenticationUserService{
 
 	@Autowired
