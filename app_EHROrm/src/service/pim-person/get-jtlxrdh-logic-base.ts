@@ -31,13 +31,31 @@ export default class GetJTLXRDHLogicBase {
     private defaultParamName:string = "Default";
 
     /**
+     * 参数集合
+     * 
+     * @memberof  GetJTLXRDHLogicBase
+     */
+    private paramsMap:Map<string,any> = new Map();
+
+    /**
      * Creates an instance of  GetJTLXRDHLogicBase.
      * 
      * @param {*} [opts={}]
      * @memberof  GetJTLXRDHLogicBase
      */
     constructor(opts: any = {}) {
-        
+        this.initParams(opts);
+    }
+
+    /**
+     * 初始化参数集合
+     * 
+     * @param {*} [opts={}]
+     * @memberof  GetJTLXRDHLogicBase
+     */
+    public initParams(opts:any){
+        this.paramsMap.set('Default',opts);
+        this.paramsMap.set('PIMFAMINFO',{});
     }
 
 
@@ -105,8 +123,12 @@ export default class GetJTLXRDHLogicBase {
     */
     private async executePrepareparam2(context:any,params:any,isloading:boolean){
         // 准备参数节点
-        Object.assign(params,{jtlxrdh:params.telphone});
-        return params;
+    let tempDstParam0Context:any = this.paramsMap.get('Default').context?this.paramsMap.get('Default').context:{};
+    let tempDstParam0Data:any = this.paramsMap.get('Default').data?this.paramsMap.get('Default').data:{};
+    let tempSrcParam0Data:any = this.paramsMap.get('PIMFAMINFO').data?this.paramsMap.get('PIMFAMINFO').data:{};
+    Object.assign(tempDstParam0Data,{jtlxrdh:tempSrcParam0Data['telphone']});
+    this.paramsMap.set('Default',{data:tempDstParam0Data,context:tempDstParam0Context});
+        return this.paramsMap.get(this.defaultParamName).data;
     }
 
     /**
@@ -129,7 +151,11 @@ export default class GetJTLXRDHLogicBase {
     */
     private async executePrepareparam1(context:any,params:any,isloading:boolean){
         // 准备参数节点
-        Object.assign(params,{pimfaminfoid:params.jtlxrid});
+    let tempDstParam0Context:any = this.paramsMap.get('PIMFAMINFO').context?this.paramsMap.get('PIMFAMINFO').context:{};
+    let tempDstParam0Data:any = this.paramsMap.get('PIMFAMINFO').data?this.paramsMap.get('PIMFAMINFO').data:{};
+    let tempSrcParam0Data:any = this.paramsMap.get('Default').data?this.paramsMap.get('Default').data:{};
+    Object.assign(tempDstParam0Data,{pimfaminfoid:tempSrcParam0Data['jtlxrid']});
+    this.paramsMap.set('PIMFAMINFO',{data:tempDstParam0Data,context:tempDstParam0Context});
         if(this.compute2Cond(params)){
             return this.executeDeaction1(context,params,isloading);   
         }

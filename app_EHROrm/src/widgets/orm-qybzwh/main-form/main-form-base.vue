@@ -39,7 +39,17 @@
 </i-col>
 <i-col v-show="detailsModel.ormqybzwhname.visible" :style="{}"  :lg="{ span: 9, offset: 0 }">
     <app-form-item name='ormqybzwhname' :itemRules="this.rules.ormqybzwhname" class='' :caption="$t('entities.ormqybzwh.main_form.details.ormqybzwhname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormqybzwhname.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.ormqybzwhname" :data="data" :itemParam="{}" :disabled="detailsModel.ormqybzwhname.disabled"  tag='EhrCodeList0219' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.ormqybzwhname" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.ormqybzwhname.disabled"  
+    tag='EhrCodeList0219' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

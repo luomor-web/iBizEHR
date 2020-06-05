@@ -21,6 +21,8 @@ export const Environment = {
     uniteAddress: "http://172.16.100.202:8114",
     // 是否为开发模式
     devMode: true,
+    // 是否开启权限认证
+    enablePermissionValid:false,
     // 项目模板地址
     ProjectUrl: "http://demo.ibizlab.cn/ibizr7pfstdtempl/ibizvuer7plus",
     // 配置平台地址

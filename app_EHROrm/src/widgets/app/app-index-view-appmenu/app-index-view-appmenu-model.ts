@@ -31,6 +31,7 @@ export default class AppIndexViewModel {
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
+	authtag:'EHROrm-AppIndexView-menuitem1',
 	items: [
 		{
 	id: 'fbcffd8a04377251a1306d64ec986718',
@@ -49,6 +50,7 @@ export default class AppIndexViewModel {
 	textcls: '',
 	appfunctag: 'Auto486',
 	resourcetag: '',
+	authtag:'EHROrm-AppIndexView-menuitem3',
 },
 		{
 	id: '66b6adc82026f738ebec0c3a64723e31',
@@ -67,6 +69,7 @@ export default class AppIndexViewModel {
 	textcls: '',
 	appfunctag: 'Auto468',
 	resourcetag: '',
+	authtag:'EHROrm-AppIndexView-menuitem2',
 },
 	],
 },
@@ -87,6 +90,7 @@ export default class AppIndexViewModel {
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
+	authtag:'EHROrm-AppIndexView-menuitem4',
 	items: [
 		{
 	id: '184af6a08026aab3a9ca6d792da7869d',
@@ -105,6 +109,7 @@ export default class AppIndexViewModel {
 	textcls: '',
 	appfunctag: 'Auto461',
 	resourcetag: '',
+	authtag:'EHROrm-AppIndexView-menuitem5',
 },
 		{
 	id: 'f77a8337aad1c2768a9c8a2af7938ced',
@@ -123,6 +128,7 @@ export default class AppIndexViewModel {
 	textcls: '',
 	appfunctag: 'Auto465',
 	resourcetag: '',
+	authtag:'EHROrm-AppIndexView-menuitem9',
 },
 		{
 	id: '2783327117d0981e84fb6292b1d007f0',
@@ -141,6 +147,7 @@ export default class AppIndexViewModel {
 	textcls: '',
 	appfunctag: 'Auto456',
 	resourcetag: '',
+	authtag:'EHROrm-AppIndexView-menuitem10',
 },
 		{
 	id: 'c5e4abc5f66a1415f842d99f2a1c2d44',
@@ -159,6 +166,7 @@ export default class AppIndexViewModel {
 	textcls: '',
 	appfunctag: 'Auto453',
 	resourcetag: '',
+	authtag:'EHROrm-AppIndexView-menuitem11',
 },
 		{
 	id: '20d9f2a7f789de9d60d600e2b1a01cd8',
@@ -177,6 +185,7 @@ export default class AppIndexViewModel {
 	textcls: '',
 	appfunctag: 'Auto483',
 	resourcetag: '',
+	authtag:'EHROrm-AppIndexView-menuitem12',
 },
 	],
 },

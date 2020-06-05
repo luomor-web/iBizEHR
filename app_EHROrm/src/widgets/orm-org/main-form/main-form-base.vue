@@ -57,13 +57,33 @@
 </i-col>
 <i-col v-show="detailsModel.gsss.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='gsss' :itemRules="this.rules.gsss" class='' :caption="$t('entities.ormorg.main_form.details.gsss')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gsss.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.gsss" :data="data" :itemParam="{}" :disabled="detailsModel.gsss.disabled"  tag='EhrCodeList0250' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.gsss" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.gsss.disabled"  
+    tag='EhrCodeList0250' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.btqy.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='btqy' :itemRules="this.rules.btqy" class='' :caption="$t('entities.ormorg.main_form.details.btqy')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.btqy.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.btqy" :data="data" :itemParam="{}" :disabled="detailsModel.btqy.disabled"  tag='EhrCodeList0219' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.btqy" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.btqy.disabled"  
+    tag='EhrCodeList0219' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -81,13 +101,34 @@
 </i-col>
 <i-col v-show="detailsModel.legalentity.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='legalentity' :itemRules="this.rules.legalentity" class='' :caption="$t('entities.ormorg.main_form.details.legalentity')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.legalentity.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.legalentity" :data="data" :itemParam="{}" :disabled="detailsModel.legalentity.disabled"  tag='EhrCodeList0022' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.legalentity" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.legalentity.disabled"  
+    tag='EhrCodeList0022' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.startstopsign.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='startstopsign' :itemRules="this.rules.startstopsign" class='' :caption="$t('entities.ormorg.main_form.details.startstopsign')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.startstopsign.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.startstopsign"  :disabled="detailsModel.startstopsign.disabled"  name="startstopsign" tag='EhrCodeList0086' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group 
+  v-model="data.startstopsign"
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"   
+  :disabled="detailsModel.startstopsign.disabled"  
+  name="startstopsign" 
+  :itemParam="{}" 
+  tag='EhrCodeList0086' 
+  codelistType='STATIC' 
+  style="">
+</app-radio-group>
 </app-form-item>
 
 </i-col>
@@ -100,6 +141,7 @@
     name="correspondingorg"
     :context="context"
     :viewparams="viewparams"
+    :itemParam='{ }' 
     :service="service"
     :acParams="{ }"
     :pickupView="{ viewname: 'ormerporglegal-mpickup-view', title: $t('entities.ormerporg.views.legalmpickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormerporgs', parameterName: 'ormerporg' }, { pathName: 'legalmpickupview', parameterName: 'legalmpickupview' } ], placement:'' }"

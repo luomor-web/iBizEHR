@@ -8,7 +8,17 @@
     <row>
         <i-col v-show="detailsModel.gwtype.visible" :style="{}"  :sm="{ span: 8, offset: 0 }" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='gwtype' :itemRules="this.rules.gwtype" class='' :caption="$t('entities.ormpostlib.main_form.details.gwtype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gwtype.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.gwtype" :data="data" :itemParam="{}" :disabled="detailsModel.gwtype.disabled"  tag='EhrCodeList0140' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.gwtype" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.gwtype.disabled"  
+    tag='EhrCodeList0140' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -20,7 +30,17 @@
 </i-col>
 <i-col v-show="detailsModel.gwflag.visible" :style="{}"  :sm="{ span: 8, offset: 0 }" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='gwflag' :itemRules="this.rules.gwflag" class='' :caption="$t('entities.ormpostlib.main_form.details.gwflag')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gwflag.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.gwflag" :data="data" :itemParam="{}" :disabled="detailsModel.gwflag.disabled"  tag='EhrCodeList0073' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.gwflag" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.gwflag.disabled"  
+    tag='EhrCodeList0073' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -38,13 +58,34 @@
 </i-col>
 <i-col v-show="detailsModel.isconfidential.visible" :style="{}"  :sm="{ span: 8, offset: 0 }" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='isconfidential' :itemRules="this.rules.isconfidential" class='' :caption="$t('entities.ormpostlib.main_form.details.isconfidential')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.isconfidential.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.isconfidential"  :disabled="detailsModel.isconfidential.disabled"  name="isconfidential" tag='EhrCodeList0097' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group 
+  v-model="data.isconfidential"
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"   
+  :disabled="detailsModel.isconfidential.disabled"  
+  name="isconfidential" 
+  :itemParam="{}" 
+  tag='EhrCodeList0097' 
+  codelistType='STATIC' 
+  style="">
+</app-radio-group>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.postnature.visible" :style="{}"  :sm="{ span: 8, offset: 0 }" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='postnature' :itemRules="this.rules.postnature" class='' :caption="$t('entities.ormpostlib.main_form.details.postnature')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.postnature.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.postnature" :data="data" :itemParam="{}" :disabled="detailsModel.postnature.disabled"  tag='EhrCodeList0190' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.postnature" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.postnature.disabled"  
+    tag='EhrCodeList0190' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

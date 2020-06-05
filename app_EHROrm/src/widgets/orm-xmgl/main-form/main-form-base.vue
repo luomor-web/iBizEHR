@@ -58,31 +58,81 @@
 </i-col>
 <i-col v-show="detailsModel.engineeringbustype.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='engineeringbustype' :itemRules="this.rules.engineeringbustype" class='' :caption="$t('entities.ormxmgl.main_form.details.engineeringbustype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.engineeringbustype.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.engineeringbustype" :data="data" :itemParam="{}" :disabled="detailsModel.engineeringbustype.disabled"  tag='EhrCodeList0193' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.engineeringbustype" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.engineeringbustype.disabled"  
+    tag='EhrCodeList0193' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.engineeringpurpose.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='engineeringpurpose' :itemRules="this.rules.engineeringpurpose" class='' :caption="$t('entities.ormxmgl.main_form.details.engineeringpurpose')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.engineeringpurpose.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.engineeringpurpose" :data="data" :itemParam="{}" :disabled="detailsModel.engineeringpurpose.disabled"  tag='EhrCodeList0023' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.engineeringpurpose" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.engineeringpurpose.disabled"  
+    tag='EhrCodeList0023' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.engineeringscale.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='engineeringscale' :itemRules="this.rules.engineeringscale" class='' :caption="$t('entities.ormxmgl.main_form.details.engineeringscale')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.engineeringscale.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.engineeringscale" :data="data" :itemParam="{}" :disabled="detailsModel.engineeringscale.disabled"  tag='EhrCodeList0240' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.engineeringscale" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.engineeringscale.disabled"  
+    tag='EhrCodeList0240' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.isdirectlymanage.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='isdirectlymanage' :itemRules="this.rules.isdirectlymanage" class='' :caption="$t('entities.ormxmgl.main_form.details.isdirectlymanage')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.isdirectlymanage.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.isdirectlymanage" :data="data" :itemParam="{}" :disabled="detailsModel.isdirectlymanage.disabled"  tag='EhrCodeList0191' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.isdirectlymanage" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.isdirectlymanage.disabled"  
+    tag='EhrCodeList0191' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.procapitalatt.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='procapitalatt' :itemRules="this.rules.procapitalatt" class='' :caption="$t('entities.ormxmgl.main_form.details.procapitalatt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.procapitalatt.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.procapitalatt" :data="data" :itemParam="{}" :disabled="detailsModel.procapitalatt.disabled"  tag='EhrCodeList0028' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.procapitalatt" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.procapitalatt.disabled"  
+    tag='EhrCodeList0028' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

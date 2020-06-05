@@ -45,6 +45,14 @@ export default class AppMpicker extends Vue {
     @Prop() curvalue?: any;
 
     /**
+     * 表单项参数
+     * 
+     * @type {any}
+     * @memberof AppPicker
+     */
+    @Prop() public itemParam: any;
+
+    /**
      * 表单项名称
      */
     @Prop() name: any;
@@ -147,9 +155,18 @@ export default class AppMpicker extends Vue {
      * @memberof AppMpicker
      */
     public onSearch(query: any) {
-        let param: any = { query: query };
+        // 公共参数处理
+        let data: any = {};
+        const bcancel: boolean = this.handlePublicParams(data);
+        if (!bcancel) {
+            return;
+        }
+        // 参数处理
+        let _context = data.context;
+        let _param = data.param;
+        Object.assign(_param ,{ query: query });
         if (this.activeData) {
-            Object.assign(param, { srfreferdata: this.activeData });
+            Object.assign(_param, { srfreferdata: this.activeData });
         }
         // 错误信息国际化
         let error: string = (this.$t('components.appMpicker.error') as any);
@@ -162,7 +179,7 @@ export default class AppMpicker extends Vue {
         } else if(!this.acParams.interfaceName) {
             this.$Notice.error({ title: error, desc: miss+'interfaceName' });
         } else {
-          this.service.getItems(this.acParams.serviceName,this.acParams.interfaceName, param).then((response: any) => {
+          this.service.getItems(this.acParams.serviceName,this.acParams.interfaceName, _context, _param).then((response: any) => {
               if (!response) {
                   this.$Notice.error({ title: error, desc: requestException });
               } else {
@@ -217,6 +234,33 @@ export default class AppMpicker extends Vue {
     }
 
     /**
+     * 公共参数处理
+     *
+     * @param {*} arg
+     * @returns
+     * @memberof AppMpicker
+     */
+    public handlePublicParams(arg: any): boolean {
+        if (!this.activeData) {
+            this.$Notice.error({ title: (this.$t('components.appPicker.error') as any), desc: (this.$t('components.appPicker.formdataException') as any) });
+            return false;
+        }
+        // 合并表单参数
+        arg.param = this.viewparams ? JSON.parse(JSON.stringify(this.viewparams)) : {};
+        arg.context = this.context ? JSON.parse(JSON.stringify(this.context)) : {};
+        // 附加参数处理
+        if (this.itemParam && this.itemParam.context) {
+          let _context = this.$util.formatData(this.activeData,arg.context,this.itemParam.context);
+            Object.assign(arg.context,_context);
+        }
+        if (this.itemParam  && this.itemParam.param) {
+          let _param = this.$util.formatData(this.activeData,arg.param,this.itemParam.param);
+            Object.assign(arg.param,_param);
+        }
+        return true;
+    }
+
+    /**
      * 打开视图
      *
      * @returns
@@ -229,8 +273,15 @@ export default class AppMpicker extends Vue {
         if (this.pickupView && Object.keys(this.pickupView).length > 0) {
             // 参数处理
             const view = { ...this.pickupView };
-            let _viewparams = JSON.parse(JSON.stringify(this.viewparams));
-            let _context = JSON.parse(JSON.stringify(this.context));
+            // 公共参数处理
+            let data: any = {};
+            const bcancel: boolean = this.handlePublicParams(data);
+            if (!bcancel) {
+                return;
+            }
+            // 参数处理
+            let _context = data.context;
+            let _viewparams = data.param;
             let _selectItems = JSON.parse(JSON.stringify(this.selectItems));
             if(!Object.is(this.deKeyField,"srfkey")){
                 _selectItems.forEach((item:any, index:number)=>{

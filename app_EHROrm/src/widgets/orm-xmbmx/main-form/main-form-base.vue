@@ -39,7 +39,17 @@
 </i-col>
 <i-col v-show="detailsModel.xmrylx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='xmrylx' :itemRules="this.rules.xmrylx" class='' :caption="$t('entities.ormxmbmx.main_form.details.xmrylx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xmrylx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.xmrylx" :data="data" :itemParam="{}" :disabled="detailsModel.xmrylx.disabled"  tag='EhrCodeList0132' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.xmrylx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.xmrylx.disabled"  
+    tag='EhrCodeList0132' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

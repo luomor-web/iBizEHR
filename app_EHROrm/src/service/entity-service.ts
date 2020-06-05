@@ -637,6 +637,36 @@ export default class EntityService {
         }
     }
 
+    /**
+     * getDynaModel(获取动态模型)接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof EntityService
+     */
+    public async getDynaModel(context: any = {},data: any, isloading?: boolean):Promise<any> {
+        if(data && data.configType && data.targetType){
+            return Http.getInstance().get(`/configs/${data.configType}/${data.targetType}`);
+        }
+    }
+
+    /**
+     * setDynaModel(设置动态模型)接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof EntityService
+     */
+    public async setDynaModel(context: any = {},data: any, isloading?: boolean):Promise<any> {
+        if(data && data.configType && data.targetType){
+            return Http.getInstance().put(`/configs/${data.configType}/${data.targetType}`,{model:data.model});
+        }
+    }
+
 	/**
      * WFStart接口方法
      *

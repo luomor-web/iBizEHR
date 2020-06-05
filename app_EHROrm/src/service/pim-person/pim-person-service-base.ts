@@ -235,7 +235,7 @@ export default class PimPersonServiceBase extends EntityService {
      * @memberof PimPersonServiceBase
      */
     public async GetJTLXRDH(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:GetJTLXRDHLogic = new GetJTLXRDHLogic();
+        let appLogic:GetJTLXRDHLogic = new GetJTLXRDHLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }
