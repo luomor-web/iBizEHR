@@ -146,6 +146,7 @@ export default class OrmOrgsectorMPickupViewBase extends MPickupViewBase {
 	 * @memberof OrmOrgsectorMPickupViewBase
 	 */
     public customViewNavContexts:any ={
+    "ORGNAME":{"isRawValue":true,"value":"null"}
     };
 
 	/**
