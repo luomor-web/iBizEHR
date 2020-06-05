@@ -126,8 +126,8 @@
         "memo": ""
     },
     "index": {
-        "title": "EHR-假勤管理",
-        "caption": "EHR-假勤管理",
+        "title": "EHR—假勤管理",
+        "caption": "EHR—假勤管理",
         "viewtype": "APPINDEXVIEW",
         "viewmodule": "ATT",
         "viewname": "Index",

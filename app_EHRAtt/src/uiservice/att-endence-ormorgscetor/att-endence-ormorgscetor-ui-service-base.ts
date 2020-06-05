@@ -104,7 +104,35 @@ export default class AttEndenceOrmorgscetorUIServiceBase extends UIService {
      * @returns {Promise<any>}
      */
     public async AttEndenceOrmorgscetor_XGKQDZ(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        actionContext.$Notice.error({ title: '错误', desc: '不支持单项数据' });
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'SINGLEKEY';
+        Object.assign(context, { attendenceormorgscetor: '%attendenceormorgscetor%' });
+        Object.assign(params, { attendenceormorgsectorid: '%attendenceormorgscetor%' });
+        Object.assign(params, { attendenceormorgsectorname: '%attendenceormorgsectorname%' });
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        if(context.ormorg && true){
+            deResParameters = [
+            { pathName: 'ormorgs', parameterName: 'ormorg' },
+            ]
+        }
+        const parameters: any[] = [
+            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+            { pathName: 'bmkqszeditview', parameterName: 'bmkqszeditview' },
+        ];
+        const openIndexViewTab = (data: any) => {
+            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
+            actionContext.$router.push(routePath);
+            return null;
+        }
+        openIndexViewTab(data);
     }
 
 

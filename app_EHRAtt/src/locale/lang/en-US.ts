@@ -65,8 +65,8 @@ export default {
         // 非实体视图
         views: {
             index: {
-                caption: 'EHR-假勤管理',
-                title: 'EHR-假勤管理',
+                caption: 'EHR—假勤管理',
+                title: 'EHR—假勤管理',
             },
         },
         utilview:{

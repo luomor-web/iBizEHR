@@ -120,8 +120,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "4986fb1b1e1cfe921dc7c855a1fda4f4"
         },
         "index": {
-            "title": "EHR-假勤管理",
-            "caption": "EHR-假勤管理",
+            "title": "EHR—假勤管理",
+            "caption": "EHR—假勤管理",
             "viewtype": "APPINDEXVIEW",
             "viewmodule": "ATT",
             "viewname": "Index",

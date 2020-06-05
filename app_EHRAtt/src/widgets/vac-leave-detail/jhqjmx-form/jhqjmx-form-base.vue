@@ -6,13 +6,18 @@
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.vacleavedetail.jhqjmx_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 9, offset: 0 }">
+        <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 9, offset: 0 }" :xl="{ span: 9, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.pimpersonname"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.pimpersonname.disabled" type='text'  style=""></input-box>
+    <app-span   name='pimpersonname'
+:value="data.pimpersonname"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.qjzl.visible" :style="{}"  :lg="{ span: 9, offset: 0 }">
+<i-col v-show="detailsModel.qjzl.visible" :style="{}"  :lg="{ span: 9, offset: 0 }" :xl="{ span: 9, offset: 0 }">
     <app-form-item name='qjzl' :itemRules="this.rules.qjzl" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.qjzl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.qjzl.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list 
     v-model="data.qjzl" 
@@ -28,7 +33,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.hyzk.visible" :style="{}"  :lg="{ span: 9, offset: 0 }">
+<i-col v-show="detailsModel.hyzk.visible" :style="{}"  :lg="{ span: 9, offset: 0 }" :xl="{ span: 9, offset: 0 }">
     <app-form-item name='hyzk' :itemRules="this.rules.hyzk" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.hyzk')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hyzk.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list 
     v-model="data.hyzk" 
@@ -44,7 +49,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.tqlx.visible" :style="{}"  :lg="{ span: 9, offset: 0 }">
+<i-col v-show="detailsModel.tqlx.visible" :style="{}"  :lg="{ span: 9, offset: 0 }" :xl="{ span: 9, offset: 0 }">
     <app-form-item name='tqlx' :itemRules="this.rules.tqlx" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.tqlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.tqlx.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list 
     v-model="data.tqlx" 
@@ -85,13 +90,13 @@ style=""></app-span>
 <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.vacleavedetail.jhqjmx_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.jhkssj.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
+        <i-col v-show="detailsModel.jhkssj.visible" :style="{}"  :lg="{ span: 6, offset: 0 }" :xl="{ span: 6, offset: 0 }">
     <app-form-item name='jhkssj' :itemRules="this.rules.jhkssj" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.jhkssj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jhkssj.error" :isEmptyCaption="false" labelPos="LEFT">
     <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.jhkssj" :disabled="detailsModel.jhkssj.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.jhkssj = val1 }"></date-picker>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.jhkssxw.visible" :style="{}"  :lg="{ span: 3, offset: 0 }">
+<i-col v-show="detailsModel.jhkssxw.visible" :style="{}"  :lg="{ span: 3, offset: 0 }" :xl="{ span: 3, offset: 0 }">
     <app-form-item name='jhkssxw' :itemRules="this.rules.jhkssxw" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.jhkssxw')" uiStyle="DEFAULT" :labelWidth="0" :isShowCaption="false" :error="detailsModel.jhkssxw.error" :isEmptyCaption="false" labelPos="NONE">
      <dropdown-list 
     v-model="data.jhkssxw" 
@@ -107,13 +112,13 @@ style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.jhjssj.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
+<i-col v-show="detailsModel.jhjssj.visible" :style="{}"  :lg="{ span: 6, offset: 0 }" :xl="{ span: 6, offset: 0 }">
     <app-form-item name='jhjssj' :itemRules="this.rules.jhjssj" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.jhjssj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jhjssj.error" :isEmptyCaption="false" labelPos="LEFT">
     <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.jhjssj" :disabled="detailsModel.jhjssj.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.jhjssj = val1 }"></date-picker>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.jhjssxw.visible" :style="{}"  :lg="{ span: 3, offset: 0 }">
+<i-col v-show="detailsModel.jhjssxw.visible" :style="{}"  :lg="{ span: 3, offset: 0 }" :xl="{ span: 3, offset: 0 }">
     <app-form-item name='jhjssxw' :itemRules="this.rules.jhjssxw" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.jhjssxw')" uiStyle="DEFAULT" :labelWidth="0" :isShowCaption="false" :error="detailsModel.jhjssxw.error" :isEmptyCaption="false" labelPos="NONE">
      <dropdown-list 
     v-model="data.jhjssxw" 
@@ -129,7 +134,7 @@ style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.jhts.visible" :style="{}"  :lg="{ span: 9, offset: 0 }">
+<i-col v-show="detailsModel.jhts.visible" :style="{}"  :lg="{ span: 9, offset: 0 }" :xl="{ span: 9, offset: 0 }">
     <app-form-item name='jhts' :itemRules="this.rules.jhts" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.jhts')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jhts.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.jhts"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.jhts.disabled" type='number'  style=""></input-box>
 </app-form-item>
@@ -720,7 +725,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
 , 
         pimpersonid: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        pimpersonname: new FormItemModel({ caption: '请假人员', detailType: 'FORMITEM', name: 'pimpersonname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+        pimpersonname: new FormItemModel({ caption: '请假人员', detailType: 'FORMITEM', name: 'pimpersonname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         qjzl: new FormItemModel({ caption: '请假种类', detailType: 'FORMITEM', name: 'qjzl', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 

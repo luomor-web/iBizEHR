@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { IndexViewBase } from '@/crm-core';
 
 /**
- * EHR-假勤管理基类
+ * EHR—假勤管理基类
  *
  * @export
  * @class IndexBase
@@ -28,7 +28,7 @@ export default class IndexBase extends IndexViewBase {
      * @memberof IndexBase
      */
     public model: any = {
-        srfTitle: 'EHR-假勤管理',
+        srfTitle: 'EHR—假勤管理',
         srfCaption: 'app.views.index.caption',
         srfSubCaption: '',
         dataInfo: ''
@@ -47,7 +47,7 @@ export default class IndexBase extends IndexViewBase {
 
     public render(): any {
         return (<div class="app-container">
-            <app-layout viewName="index" viewTitle="EHR-假勤管理" className={{ index_view: true }}>
+            <app-layout viewName="index" viewTitle="EHR—假勤管理" className={{ index_view: true }}>
         <template slot="headerLeft">
           <div class="app-header-left">
             <img class="logo" src="./assets/img/logo.png" />
