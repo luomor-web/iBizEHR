@@ -571,8 +571,8 @@ export default class VacLeaveDetailGridViewBase extends GridViewBase {
             { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
         ];
         const _this: any = this;
-        const openPopupModal = (view: any, data: any) => {
-            let container: Subject<any> = this.$appmodal.openModal(view, curViewParam, data);
+        const openDrawer = (view: any, data: any) => {
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, curViewParam, data);
             container.subscribe((result: any) => {
                 if (!result || !Object.is(result.ret, 'OK')) {
                     return;
@@ -585,11 +585,12 @@ export default class VacLeaveDetailGridViewBase extends GridViewBase {
         }
         const view: any = {
             viewname: 'vac-leave-detail-edit-view', 
-            height: 600, 
-            width: 1025,  
+            height: 800, 
+            width: 1366,  
             title: this.$t('entities.vacleavedetail.views.editview.title'),
+            placement: 'DRAWER_RIGHT',
         };
-        openPopupModal(view, data);
+        openDrawer(view, data);
     }
 
 
@@ -619,8 +620,8 @@ export default class VacLeaveDetailGridViewBase extends GridViewBase {
             { pathName: 'vacleavedetails', parameterName: 'vacleavedetail' },
         ];
         const _this: any = this;
-        const openPopupModal = (view: any, data: any) => {
-            let container: Subject<any> = this.$appmodal.openModal(view, curViewParam, data);
+        const openDrawer = (view: any, data: any) => {
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, curViewParam, data);
             container.subscribe((result: any) => {
                 if (!result || !Object.is(result.ret, 'OK')) {
                     return;
@@ -633,11 +634,12 @@ export default class VacLeaveDetailGridViewBase extends GridViewBase {
         }
         const view: any = {
             viewname: 'vac-leave-detail-edit-view', 
-            height: 600, 
-            width: 1025,  
+            height: 800, 
+            width: 1366,  
             title: this.$t('entities.vacleavedetail.views.editview.title'),
+            placement: 'DRAWER_RIGHT',
         };
-        openPopupModal(view, data);
+        openDrawer(view, data);
     }
 
 

@@ -2,7 +2,7 @@
 import { Component } from 'vue-property-decorator';
 import VacLeaveDetailEditViewBase from './vac-leave-detail-edit-view-base.vue';
 
-import view_form from '@widgets/vac-leave-detail/main-form/main-form.vue';
+import view_form from '@widgets/vac-leave-detail/jhqjmx-form/jhqjmx-form.vue';
 
 /**
  * 请销假明细编辑视图

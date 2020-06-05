@@ -126,6 +126,7 @@ export default class OrmOrgsectorPickupGridViewBase extends PickupViewBase {
 	 * @memberof OrmOrgsectorPickupGridViewBase
 	 */
     public customViewNavContexts:any ={
+    "ORGNAME":{"isRawValue":true,"value":"null"}
     };
 
 	/**

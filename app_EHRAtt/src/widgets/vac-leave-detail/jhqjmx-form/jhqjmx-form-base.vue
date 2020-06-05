@@ -1565,7 +1565,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
-            this.$Notice.error({ title: '错误', desc: 'VacLeaveDetailJHQJMX_EditView视图表单loadAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'VacLeaveDetailEditView视图表单loadAction参数未配置' });
             return;
         }
         const arg: any = { ...opt };
@@ -1600,7 +1600,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
-            this.$Notice.error({ title: '错误', desc: 'VacLeaveDetailJHQJMX_EditView视图表单loaddraftAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'VacLeaveDetailEditView视图表单loaddraftAction参数未配置' });
             return;
         }
         const arg: any = { ...opt } ;
@@ -1662,7 +1662,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
         const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
         if(!action){
             let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
-            this.$Notice.error({ title: '错误', desc: 'VacLeaveDetailJHQJMX_EditView视图表单'+actionName+'参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'VacLeaveDetailEditView视图表单'+actionName+'参数未配置' });
             return;
         }
         Object.assign(arg,{viewparams:this.viewparams});
@@ -1726,7 +1726,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
             const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
             if(!action){
                 let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
-                this.$Notice.error({ title: '错误', desc: 'VacLeaveDetailJHQJMX_EditView视图表单'+actionName+'参数未配置' });
+                this.$Notice.error({ title: '错误', desc: 'VacLeaveDetailEditView视图表单'+actionName+'参数未配置' });
                 return;
             }
             Object.assign(arg,{viewparams:this.viewparams});
@@ -1776,7 +1776,7 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
             if(!this.removeAction){
-                this.$Notice.error({ title: '错误', desc: 'VacLeaveDetailJHQJMX_EditView视图表单removeAction参数未配置' });
+                this.$Notice.error({ title: '错误', desc: 'VacLeaveDetailEditView视图表单removeAction参数未配置' });
                 return;
             }
             const arg: any = opt[0];
