@@ -1,0 +1,36 @@
+.tree-right-menu {
+    .ivu-divider-horizontal {
+        width: 100%;
+        min-width: 100%;
+        margin: 0 auto;
+    }
+    .ivu-dropdown-item {
+        position: relative;
+        padding-left: 32px;
+        > i {
+            position: absolute;
+            left: 16px;
+            top: 10px;
+        }
+        .ivu-icon-ios-arrow-forward {
+            left: initial;
+            right: 4px;
+        }
+    }
+    .ivu-dropdown {
+        .ivu-select-dropdown {
+            margin: 0;
+        }
+    }
+}
+
+.el-tree .context-menu-component .tree-node{
+    width: calc(100% - 15px);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    .icon{
+      padding-right: 10px;
+    }
+}
+// this is less
