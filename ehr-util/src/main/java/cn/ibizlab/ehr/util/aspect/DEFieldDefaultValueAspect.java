@@ -253,7 +253,7 @@ public class DEFieldDefaultValueAspect
                         et.set(fieldname,curUser.getMdeptname());
                     break;
                 case LOGICVALID:
-                    if(!StringUtils.isEmpty(logicValue)){
+                    if(StringUtils.isEmpty(logicValue)){
                         logicValue="1";
                     }
                     et.set(fieldname,logicValue);
