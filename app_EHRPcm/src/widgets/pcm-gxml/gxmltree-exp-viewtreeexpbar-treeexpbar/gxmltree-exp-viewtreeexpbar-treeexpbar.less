@@ -1,0 +1,56 @@
+.app-tree-exp-bar {
+    > .ivu-split-horizontal {
+        > .ivu-split-trigger-con {
+            height: 100%;
+            width: 1px;
+            .ivu-split-trigger-vertical{
+              width: 2px;
+            }
+        }
+        > .ivu-split-pane {
+            > div {
+                height: 100%;
+                overflow-y: auto;
+                overflow-x: hidden;
+                display: flex;
+                flex-direction: column;
+                .tree-exp-bar-header {
+                    line-height: 36px;
+                    border-bottom: 1px solid #ddd;
+                    >div {
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: black;
+                        padding-left: 8px;
+                        i {
+                            font-size: 20px;
+                            margin-top: -2px;
+                        }
+                    } 
+                }
+                .search-content {
+                    width: 100%;
+                    height: 48px;
+                    padding: 6px;
+                }
+                .tree-exp-content {
+                                    height: calc(100% - 40px);
+                    overflow: auto;
+                    margin-bottom: 10px;
+                }
+                .tree-exp-content2 {
+                    height: 100%;
+                    overflow: auto;
+                    flex-grow: 1;
+                }
+            }
+        }
+        > .right-pane.ivu-split-pane {
+            > div {
+                padding-left: 10px;
+            }
+        }
+    }
+}
+
+// this is less
