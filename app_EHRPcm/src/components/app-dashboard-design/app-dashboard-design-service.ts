@@ -65,14 +65,21 @@ export default class AppDashboardDesignService {
     public loadPortletList(context: any, viewparams: any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
             Http.getInstance().get('./assets/json/portlet-data.json').then((response: any) => {
-                if (response && response.status === 200 && response.data && Array.isArray(response.data)) {
-                    const datas: any[] = this.filterData(response.data, viewparams.appdeName);
+                if (response && response.status === 200 && response.data) {
+                    let result:Array<any> = [];
+                    if(typeof(response.data)=='string'){
+                        const index:number = response.data.lastIndexOf(",");
+                        result = JSON.parse((response.data).slice(0,index)+']');
+                    }else{
+                        result = response.data;
+                    }
+                    const datas: any[] = this.filterData(result, viewparams.appdeName);
                     const list = this.prepareList(datas);
                     const groups = this.prepareGroup(datas);
                     resolve({data: datas, result: list.reverse(), groups: groups});
                 }
-            }).catch((response: any) => {
-                console.log(response.status);
+            }).catch((error: any) => {
+                console.log(error);
             });
         });
     }
