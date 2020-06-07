@@ -248,6 +248,7 @@ public class OrmZwdqgzServiceImpl extends ServiceImpl<OrmZwdqgzMapper, OrmZwdqgz
         }
     }
 
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);

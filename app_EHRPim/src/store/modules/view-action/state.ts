@@ -615,7 +615,7 @@ export const viewstate: any = {
         {
             viewtag: '492e5642bbb450d400f58157a24ffb6c',
             viewmodule: 'ORM',
-            viewname: 'ORMORGXjPickupGridView',
+            viewname: 'OrmOrgXjPickupGridView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
@@ -1234,7 +1234,7 @@ export const viewstate: any = {
         {
             viewtag: '9a798be3d9be3d78987794d7465a1db6',
             viewmodule: 'ORM',
-            viewname: 'ORMORGSECTORPickupGridView',
+            viewname: 'OrmOrgsectorPickupGridView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
@@ -1374,7 +1374,7 @@ export const viewstate: any = {
         {
             viewtag: 'a25f063acc6b1ebe129f9869c0a427b0',
             viewmodule: 'ORM',
-            viewname: 'ORMORGSECTORPickupView',
+            viewname: 'OrmOrgsectorPickupView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
@@ -1967,7 +1967,7 @@ export const viewstate: any = {
         {
             viewtag: 'ed44db0490d330fba632498accfecc6a',
             viewmodule: 'PIM',
-            viewname: 'PIMDISTIRBUTIONJDRYHMCGridView',
+            viewname: 'PimDistirbutionJDRYHMCGridView',
             viewaction: '',
             viewdatachange: false,
             refviews: [

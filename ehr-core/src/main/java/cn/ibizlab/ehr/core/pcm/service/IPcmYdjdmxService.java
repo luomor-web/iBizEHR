@@ -26,13 +26,13 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface IPcmYdjdmxService extends IService<PcmYdjdmx>{
 
     PcmYdjdmx get(String key) ;
-    PcmYdjdmx fillPersonInfo(PcmYdjdmx et) ;
     PcmYdjdmx getDraft(PcmYdjdmx et) ;
     boolean update(PcmYdjdmx et) ;
     void updateBatch(List<PcmYdjdmx> list) ;
     boolean remove(String key) ;
     void removeBatch(Collection<String> idList) ;
-    PcmYdjdmx rYHG(PcmYdjdmx et) ;
+    PcmYdjdmx personBack(PcmYdjdmx et) ;
+    PcmYdjdmx personInfo(PcmYdjdmx et) ;
     boolean checkKey(PcmYdjdmx et) ;
     boolean save(PcmYdjdmx et) ;
     void saveBatch(List<PcmYdjdmx> list) ;

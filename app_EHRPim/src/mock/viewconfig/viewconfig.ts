@@ -60,7 +60,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "工作履历",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PIM",
-            "viewname": "PIMDISTIRBUTIONGRWorkHistoryEditView",
+            "viewname": "PimDistirbutionGRWorkHistoryEditView",
             "viewtag": "015fcf2bd4d760e8c6d67fc272e530c9"
         },
         "pimdistirbutionexpereencegridview": {
@@ -68,7 +68,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "工作履历",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "PIM",
-            "viewname": "PIMDISTIRBUTIONEXPEREENCEGridView",
+            "viewname": "PimDistirbutionEXPEREENCEGridView",
             "viewtag": "01c1894cc1cbcd11c02eea70ed16e937"
         },
         "pimeducationzdxlgridview": {
@@ -324,7 +324,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "分配信息",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "PIM",
-            "viewname": "PIMDISTIRBUTIONFenPeiGridView",
+            "viewname": "PimDistirbutionFenPeiGridView",
             "viewtag": "11cdabdfa7d7d2a5f74bcba9e238a17b"
         },
         "pimarchivesloanandreturnpickupgridview": {
@@ -860,7 +860,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "岗位",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "ORM",
-            "viewname": "ORMPOSTPickupGridView",
+            "viewname": "OrmPostPickupGridView",
             "viewtag": "32e52ab38bce18fb15d605419635af02"
         },
         "pimlabourcampanypickupgridview": {
@@ -996,7 +996,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "工作履历",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "PIM",
-            "viewname": "PIMDISTIRBUTIONGRWorkHistoryGridView",
+            "viewname": "PimDistirbutionGRWorkHistoryGridView",
             "viewtag": "3908d2b6ccf45f47d2ad80ec5f1c71be"
         },
         "pimpersonabilityeditview": {
@@ -1064,11 +1064,11 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "3d3a14330db483a15da655cd3ebe262b"
         },
         "pimpersonsyjxeditview": {
-            "title": "人员信息编辑视图",
+            "title": "人员信息",
             "caption": "人员信息",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PIM",
-            "viewname": "PIMPERSONSYJXEditView",
+            "viewname": "PimPersonSYJXEditView",
             "viewtag": "3ea82284a147805bff89e283adf3f6ec"
         },
         "ormpostejormorgidpickupview": {
@@ -1196,7 +1196,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "组织管理",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "ORM",
-            "viewname": "ORMORGXjPickupGridView",
+            "viewname": "OrmOrgXjPickupGridView",
             "viewtag": "492e5642bbb450d400f58157a24ffb6c"
         },
         "pimpersontxyggridview": {
@@ -1252,7 +1252,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "分配信息",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PIM",
-            "viewname": "PIMDISTIRBUTIONGRDividerEditView",
+            "viewname": "PimDistirbutionGRDividerEditView",
             "viewtag": "4ca0cccec501e3cbc13f558f18b5b085"
         },
         "pimtitlecatalogueselgridview": {
@@ -2060,7 +2060,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "分配信息",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "PIM",
-            "viewname": "PIMDISTIRBUTIONPImFenpGridView",
+            "viewname": "PimDistirbutionPImFenpGridView",
             "viewtag": "7fbc9b7e6a428e773b18ea130a7b86b3"
         },
         "archivalcatalogueredirectview": {
@@ -2428,7 +2428,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "部门管理",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "ORM",
-            "viewname": "ORMORGSECTORPickupGridView",
+            "viewname": "OrmOrgsectorPickupGridView",
             "viewtag": "9a798be3d9be3d78987794d7465a1db6"
         },
         "ormorghtgldwqpickupgridview": {
@@ -2492,7 +2492,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "工作履历",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "PIM",
-            "viewname": "PIMDISTIRBUTIONGZLLGridView",
+            "viewname": "PimDistirbutionGZLLGridView",
             "viewtag": "9bd0fd6c3029eb4d1124d6207b635066"
         },
         "pimenclosureeditview": {
@@ -2508,7 +2508,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "工作履历",
             "viewtype": "DECUSTOMVIEW",
             "viewmodule": "PIM",
-            "viewname": "PIMDISTIRBUTIONWorkRecordCustomView",
+            "viewname": "PimDistirbutionWorkRecordCustomView",
             "viewtag": "9c5e75d6468729cdfc5774aa8ddfa8d7"
         },
         "pimexitandentryeditview_ybh": {
@@ -2636,7 +2636,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "部门管理",
             "viewtype": "DEPICKUPVIEW",
             "viewmodule": "ORM",
-            "viewname": "ORMORGSECTORPickupView",
+            "viewname": "OrmOrgsectorPickupView",
             "viewtag": "a25f063acc6b1ebe129f9869c0a427b0"
         },
         "pimtitlepimzhicgridview": {
@@ -3068,7 +3068,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "人员信息",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PIM",
-            "viewname": "PIMPERSONTXQREditView",
+            "viewname": "PimPersonTXQREditView",
             "viewtag": "bcbbd9e4830d5e5c37306d5084f1d674"
         },
         "pimarchivespimdangagridview": {
@@ -3228,7 +3228,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "分配信息",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "PIM",
-            "viewname": "PIMDISTIRBUTIONGRPImFenpGridView",
+            "viewname": "PimDistirbutionGRPImFenpGridView",
             "viewtag": "ca97bed3bb453441300668716e458757"
         },
         "pimtitlepickupview": {
@@ -3724,7 +3724,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "分配信息",
             "viewtype": "DEEDITVIEW2",
             "viewmodule": "PIM",
-            "viewname": "PIMDISTIRBUTIONEditView2",
+            "viewname": "PimDistirbutionEditView2",
             "viewtag": "eb36f882b7cde138668e4de83557ea8a"
         },
         "pimcontracttypegridview": {
@@ -3796,7 +3796,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "借调人员花名册",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "PIM",
-            "viewname": "PIMDISTIRBUTIONJDRYHMCGridView",
+            "viewname": "PimDistirbutionJDRYHMCGridView",
             "viewtag": "ed44db0490d330fba632498accfecc6a"
         },
         "pimdistirbutionkddmpickupview": {
@@ -3852,7 +3852,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "工作履历",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PIM",
-            "viewname": "PIMDISTIRBUTIONGZLLEditView",
+            "viewname": "PimDistirbutionGZLLEditView",
             "viewtag": "f1915e9b6d210f5364baf497579d33e6"
         },
         "ormsignorgpickupgridview": {
@@ -4060,7 +4060,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "轮岗查询",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PIM",
-            "viewname": "PIMDISTIRBUTIONLGEditView",
+            "viewname": "PimDistirbutionLGEditView",
             "viewtag": "fc41d3f5d38424e69ff086dd8c712b95"
         },
         "pimcontracttypepickupgridview": {

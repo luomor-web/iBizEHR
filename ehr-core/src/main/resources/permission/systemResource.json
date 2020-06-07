@@ -1021,7 +1021,7 @@
     "delogicname":"节假日管理",
     "sysmoudle":{"id":"VAC","name":"休假管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"APPOINTJZBJJR" , "name":"引用局总部节假日" , "type":"USERCUSTOM" },{"id":"CreateTempMajor" , "name":"CreateTempMajor" , "type":"BUILTIN" },{"id":"GetTemp" , "name":"GetTemp" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"UpdateTemp" , "name":"UpdateTemp" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"RemoveTempMajor" , "name":"RemoveTempMajor" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"RemoveTemp" , "name":"RemoveTemp" , "type":"BUILTIN" },{"id":"UpdateTempMajor" , "name":"UpdateTempMajor" , "type":"BUILTIN" },{"id":"GetTempMajor" , "name":"GetTempMajor" , "type":"BUILTIN" },{"id":"CreateTemp" , "name":"CreateTemp" , "type":"BUILTIN" },{"id":"GetDraftTempMajor" , "name":"GetDraftTempMajor" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckTime" , "name":"校验开始时间、结束时间" , "type":"USERCUSTOM" },{"id":"GetDraftTemp" , "name":"GetDraftTemp" , "type":"BUILTIN" }],
+    "deaction":[{"id":"APPOINTJZBJJR" , "name":"引用局总部节假日" , "type":"USERCUSTOM" },{"id":"CreateTempMajor" , "name":"CreateTempMajor" , "type":"BUILTIN" },{"id":"GetTemp" , "name":"GetTemp" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"UpdateTemp" , "name":"UpdateTemp" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"RemoveTempMajor" , "name":"RemoveTempMajor" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"RemoveTemp" , "name":"RemoveTemp" , "type":"BUILTIN" },{"id":"UpdateTempMajor" , "name":"UpdateTempMajor" , "type":"BUILTIN" },{"id":"GetTempMajor" , "name":"GetTempMajor" , "type":"BUILTIN" },{"id":"CreateTemp" , "name":"CreateTemp" , "type":"BUILTIN" },{"id":"GetDraftTempMajor" , "name":"GetDraftTempMajor" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraftTemp" , "name":"GetDraftTemp" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -1212,7 +1212,7 @@
     "dename":"PimPerson",
     "delogicname":"人员信息",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
-    "dedataset":[{"id":"KFPRY" , "name":"可返聘人员"},{"id":"YGXXGLY" , "name":"员工信息（管理员）"},{"id":"XMBRYCX" , "name":"项目部人员查询"},{"id":"CurOrgPerson" , "name":"当前组织实际可选人员"},{"id":"JLSSGR" , "name":"记录所属（个人）"},{"id":"CurLeader" , "name":"部门负责人选择范围"},{"id":"SFHMD" , "name":"是否黑名单"},{"id":"SSTRERSONINFO" , "name":"人员信息树视图"},{"id":"CurJHRY" , "name":"当前组织可选计划人员"},{"id":"KTXYG" , "name":"可退休人员"},{"id":"BYLYG" , "name":"非A类员工"},{"id":"GBHMC" , "name":"干部花名册"},{"id":"GZDQGL" , "name":"挂职到期管理"},{"id":"KQJRYCX" , "name":"可请假员工查询"},{"id":"LTXSTAFF" , "name":"离（退）休员工"},{"id":"REP_PERSONORGTYPE" , "name":"机关 项目人员分布"},{"id":"AuthPerson" , "name":"显示人员（权限控制）"},{"id":"Default" , "name":"DEFAULT"},{"id":"KGZRY" , "name":"可挂职人员"},{"id":"SELFHELPID" , "name":"员工自助登录人员ID"},{"id":"SYQYGCX" , "name":"试用期员工查询"},{"id":"LZRYHMC" , "name":"离职人员花名册"},{"id":"TitleUse" , "name":"头衔专用"},{"id":"JXQYGCX" , "name":"见习期员工查询"},{"id":"YXZFPRYDS" , "name":"存在有效分配的主分配的人员"},{"id":"RYZT_30" , "name":"在职人员"},{"id":"DTXYG" , "name":"待退休人员"},{"id":"XZKQRY" , "name":"新增考勤人员（考勤设置）"},{"id":"REP_PERSONAGE" , "name":"年龄分布"},{"id":"SYQKZZRY" , "name":"试用期可转正人员"},{"id":"JXQKZZRY" , "name":"见习期可转正人员"},{"id":"TXGB" , "name":"退休干部"},{"id":"KZJBDRY" , "name":"可进行职级变动的人员"},{"id":"CurOrgPimperson" , "name":"当前组织下人员"},{"id":"TXRYCX" , "name":"退休员工查询"},{"id":"KXZSYQKZZRYDS" , "name":"申请单可选择试用期可转正人员"}],
+    "dedataset":[{"id":"KFPRY" , "name":"可返聘人员"},{"id":"SetAttRules" , "name":"待设置考勤人员"},{"id":"YGXXGLY" , "name":"员工信息（管理员）"},{"id":"XMBRYCX" , "name":"项目部人员查询"},{"id":"CurOrgPerson" , "name":"当前组织实际可选人员"},{"id":"JLSSGR" , "name":"记录所属（个人）"},{"id":"CurLeader" , "name":"部门负责人选择范围"},{"id":"SFHMD" , "name":"是否黑名单"},{"id":"SSTRERSONINFO" , "name":"人员信息树视图"},{"id":"CurJHRY" , "name":"当前组织可选计划人员"},{"id":"KTXYG" , "name":"可退休人员"},{"id":"BYLYG" , "name":"非A类员工"},{"id":"GBHMC" , "name":"干部花名册"},{"id":"GZDQGL" , "name":"挂职到期管理"},{"id":"KQJRYCX" , "name":"可请假员工查询"},{"id":"LTXSTAFF" , "name":"离（退）休员工"},{"id":"REP_PERSONORGTYPE" , "name":"机关 项目人员分布"},{"id":"AuthPerson" , "name":"显示人员（权限控制）"},{"id":"Default" , "name":"DEFAULT"},{"id":"KGZRY" , "name":"可挂职人员"},{"id":"SELFHELPID" , "name":"员工自助登录人员ID"},{"id":"SYQYGCX" , "name":"试用期员工查询"},{"id":"LZRYHMC" , "name":"离职人员花名册"},{"id":"TitleUse" , "name":"头衔专用"},{"id":"JXQYGCX" , "name":"见习期员工查询"},{"id":"YXZFPRYDS" , "name":"存在有效分配的主分配的人员"},{"id":"RYZT_30" , "name":"在职人员"},{"id":"DTXYG" , "name":"待退休人员"},{"id":"XZKQRY" , "name":"新增考勤人员（考勤设置）"},{"id":"REP_PERSONAGE" , "name":"年龄分布"},{"id":"SYQKZZRY" , "name":"试用期可转正人员"},{"id":"JXQKZZRY" , "name":"见习期可转正人员"},{"id":"TXGB" , "name":"退休干部"},{"id":"KZJBDRY" , "name":"可进行职级变动的人员"},{"id":"CurOrgPimperson" , "name":"当前组织下人员"},{"id":"TXRYCX" , "name":"退休员工查询"},{"id":"KXZSYQKZZRYDS" , "name":"申请单可选择试用期可转正人员"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"YZSFYZFP" , "name":"验证是否有（有效的）主分配" , "type":"USERCUSTOM" },{"id":"ToggleLeader" , "name":"设置/取消为领导班子" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"PersonUpdateInfo" , "name":"根据证件号更改出生日期、性别、年龄" , "type":"USERCUSTOM" },{"id":"FillPersonType" , "name":"根据员工编号更新员工类型" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetJTLXRDH" , "name":"获取家庭联系人电话" , "type":"DELOGIC" },{"id":"SynPerson" , "name":"推送员工信息" , "type":"USERCUSTOM" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"QRTX" , "name":"确认退休" , "type":"USERCUSTOM" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"GeneratePersonFile" , "name":"生成人员档案" , "type":"USERCUSTOM" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
@@ -1269,7 +1269,7 @@
     "delogicname":"请假明细",
     "sysmoudle":{"id":"VAC","name":"休假管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CalcSJQJTS" , "name":"计算实际请假天数" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetNianJia" , "name":"获取假期使用情况、温馨提示、计算计划请假天数" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CalcJHQJTS" , "name":"计算计划请假天数" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
+    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CalcSJQJTS" , "name":"计算实际请假天数" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetNianJia" , "name":"获取假期使用情况、温馨提示、计算计划请假天数" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CalcJHQJTS" , "name":"计算计划请假天数" , "type":"DELOGIC" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -1477,7 +1477,7 @@
     "delogicname":"异动离职明细",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"GLDQ" , "name":"管理查询"},{"id":"JLDQ" , "name":"记录查询"},{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"填充人员信息" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"FinishLZ" , "name":"完成离职操作" , "type":"USERCUSTOM" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
+    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"IsFinished" , "name":"是否完成离职操作" , "type":"DELOGIC" },{"id":"FillPersonInfo" , "name":"填充人员信息" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -1653,7 +1653,7 @@
     "delogicname":"异动解聘明细",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"JLDS" , "name":"记录查询"},{"id":"Default" , "name":"DEFAULT"},{"id":"GLDS" , "name":"管理查询"}],
-    "deaction":[{"id":"FillPersonInfo" , "name":"填充人员信息" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"JPWC" , "name":"解聘完成" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
+    "deaction":[{"id":"FillPersonInfo" , "name":"填充人员信息" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"IsFinished" , "name":"是否完成解聘" , "type":"DELOGIC" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -1677,7 +1677,7 @@
     "delogicname":"异动借调明细",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"JDGLDQ" , "name":"借调管理查询"},{"id":"JDLSJLDQ" , "name":"借调历史记录查询"},{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"填充员工信息" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"RYHG" , "name":"人员回归" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
+    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"PersonBack" , "name":"人员回归" , "type":"DELOGIC" },{"id":"PersonInfo" , "name":"填充人员信息" , "type":"DELOGIC" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -2349,7 +2349,7 @@
     "delogicname":"试用期员工转正记录引用明细",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"ZZWSHDS" , "name":"试用期转正申请未审核"},{"id":"ALLDS" , "name":"所有的试用期转正申请"},{"id":"SYQZZJL" , "name":"试用期转正记录"},{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"XYGZZCZ" , "name":"新员工转正操作" , "type":"USERCUSTOM" },{"id":"GetDraftTemp" , "name":"GetDraftTemp" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"RemoveTemp" , "name":"RemoveTemp" , "type":"BUILTIN" },{"id":"SHTG" , "name":"审核通过" , "type":"USERCUSTOM" },{"id":"GetDraftTempMajor" , "name":"GetDraftTempMajor" , "type":"BUILTIN" },{"id":"CreateTempMajor" , "name":"CreateTempMajor" , "type":"BUILTIN" },{"id":"GetTemp" , "name":"GetTemp" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"设置人员信息" , "type":"DELOGIC" },{"id":"GetTempMajor" , "name":"GetTempMajor" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"UpdateTempMajor" , "name":"UpdateTempMajor" , "type":"BUILTIN" },{"id":"RemoveTempMajor" , "name":"RemoveTempMajor" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"UpdateTemp" , "name":"UpdateTemp" , "type":"BUILTIN" },{"id":"SHBTG" , "name":"审核不通过" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CreateTemp" , "name":"CreateTemp" , "type":"BUILTIN" }],
+    "deaction":[{"id":"XYGZZCZ" , "name":"新员工转正操作" , "type":"USERCUSTOM" },{"id":"GetDraftTemp" , "name":"GetDraftTemp" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"RemoveTemp" , "name":"RemoveTemp" , "type":"BUILTIN" },{"id":"SHTG" , "name":"审核通过" , "type":"USERCUSTOM" },{"id":"GetDraftTempMajor" , "name":"GetDraftTempMajor" , "type":"BUILTIN" },{"id":"CreateTempMajor" , "name":"CreateTempMajor" , "type":"BUILTIN" },{"id":"GetTemp" , "name":"GetTemp" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"设置人员信息" , "type":"DELOGIC" },{"id":"GetTempMajor" , "name":"GetTempMajor" , "type":"BUILTIN" },{"id":"SetPass" , "name":"审核通过" , "type":"DELOGIC" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"UpdateTempMajor" , "name":"UpdateTempMajor" , "type":"BUILTIN" },{"id":"RemoveTempMajor" , "name":"RemoveTempMajor" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"UpdateTemp" , "name":"UpdateTemp" , "type":"BUILTIN" },{"id":"SetRejcet" , "name":"审核不通过" , "type":"DELOGIC" },{"id":"SHBTG" , "name":"审核不通过" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CreateTemp" , "name":"CreateTemp" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -2533,7 +2533,7 @@
     "delogicname":"见习生员工转正记录引用明细",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"WSHSQ" , "name":"未审核完成的申请"},{"id":"JXSZZJL" , "name":"见习生转正记录"},{"id":"ALLDS" , "name":"所有的申请明细"}],
-    "deaction":[{"id":"SHBTG" , "name":"审核不通过" , "type":"USERCUSTOM" },{"id":"SHTG" , "name":"审核通过" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"FillPersonInfo" , "type":"DELOGIC" },{"id":"ZZCZ" , "name":"转正操作" , "type":"USERCUSTOM" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
+    "deaction":[{"id":"SHBTG" , "name":"审核不通过" , "type":"USERCUSTOM" },{"id":"SHTG" , "name":"审核通过" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"FillPersonInfo" , "name":"FillPersonInfo" , "type":"DELOGIC" },{"id":"ZZCZ" , "name":"转正操作" , "type":"USERCUSTOM" },{"id":"SetPass" , "name":"审核通过" , "type":"DELOGIC" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"SetReject" , "name":"审核不通过" , "type":"DELOGIC" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
@@ -2753,6 +2753,14 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
+    "dename":"VacLeaveTips",
+    "delogicname":"请假提示",
+    "sysmoudle":{"id":"VAC","name":"休假管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"CheckQJZL" , "name":"检查请假种类" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"CheckRepeat" , "name":"检查重复" , "type":"USERCUSTOM" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
     "dename":"PimSearchFieldSet",
     "delogicname":"组合查询条件设置",
     "sysmoudle":{"id":"PIM","name":"基础管理"},
@@ -2812,7 +2820,7 @@
             {
                "appid":"EHRPcm2",
                "appname":"EHRPCM2（人员异动）",
-               "appmenu":[]
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem4" , "name":"人员异动" , "items":[{ "id":"menuitem1" , "name":"调动管理" },{ "id":"menuitem2" , "name":"借调管理" },{ "id":"menuitem3" , "name":"兼职管理" },{ "id":"menuitem7" , "name":"待岗管理" },{ "id":"menuitem8" , "name":"内退管理" },{ "id":"menuitem9" , "name":"病休管理" },{ "id":"menuitem10" , "name":"离职管理" },{ "id":"menuitem11" , "name":"解聘管理" },{ "id":"menuitem12" , "name":"退休管理" }]},{ "id":"menuitem5" , "name":"试用期转正" , "items":[{ "id":"menuitem6" , "name":"试用期转正申请" },{ "id":"menuitem15" , "name":"试用期转正审核" }]},{ "id":"menuitem13" , "name":"见习期转正" , "items":[{ "id":"menuitem14" , "name":"见习期转正申请" },{ "id":"menuitem16" , "name":"见习期转正审核" }]}] }]
             }
             ,
             {
@@ -2831,6 +2839,12 @@
                "appid":"EHROrm",
                "appname":"EHRORM（组织管理）",
                "appmenu":[{"menuid":"AppIndexView", "menuname":"AppIndexView", "menuitem":[{ "id":"menuitem1" , "name":"组织管理" , "items":[{ "id":"menuitem3" , "name":"组织管理" },{ "id":"menuitem2" , "name":"编制查询" }]},{ "id":"menuitem4" , "name":"标准化数据设置" , "items":[{ "id":"menuitem5" , "name":"职务设置" },{ "id":"menuitem9" , "name":"岗位设置" },{ "id":"menuitem10" , "name":"项目标签" },{ "id":"menuitem11" , "name":"法人主体维护" },{ "id":"menuitem12" , "name":"法人主体设置" }]}] },{"menuid":"orm", "menuname":"orm", "menuitem":[{ "id":"menuitem1" , "name":"组织管理" , "items":[{ "id":"menuitem2" , "name":"组织管理" },{ "id":"menuitem3" , "name":"编制查询" }]},{ "id":"menuitem4" , "name":"标准化数据设置" , "items":[{ "id":"menuitem5" , "name":"职务设置" },{ "id":"menuitem6" , "name":"标准岗位设置" },{ "id":"menuitem7" , "name":"标准岗位查询" },{ "id":"menuitem8" , "name":"岗位集设置" },{ "id":"menuitem9" , "name":"补贴标准" },{ "id":"menuitem10" , "name":"头衔设置" },{ "id":"menuitem11" , "name":"项目标签" },{ "id":"menuitem12" , "name":"ERP项目" },{ "id":"menuitem13" , "name":"法人主体" },{ "id":"menuitem14" , "name":"法人主体设置" }]}] }]
+            }
+            ,
+            {
+               "appid":"EHRAtt",
+               "appname":"EHRATT（假勤管理）",
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"考勤管理" , "items":[{ "id":"menuitem2" , "name":"考勤规则" },{ "id":"menuitem3" , "name":"考勤设置" },{ "id":"menuitem4" , "name":"考勤记录" },{ "id":"menuitem5" , "name":"考勤月报" },{ "id":"menuitem6" , "name":"考勤汇总" },{ "id":"menuitem7" , "name":"员工考勤设置" },{ "id":"menuitem8" , "name":"非员工终止考勤" }]},{ "id":"menuitem9" , "name":"休假管理" , "items":[{ "id":"menuitem11" , "name":"请假管理" },{ "id":"menuitem12" , "name":"年休假查询" }]},{ "id":"menuitem10" , "name":"标准化数据设置" , "items":[{ "id":"menuitem13" , "name":"休假类型" },{ "id":"menuitem14" , "name":"考勤类型" }]}] }]
             }
             ,
             {

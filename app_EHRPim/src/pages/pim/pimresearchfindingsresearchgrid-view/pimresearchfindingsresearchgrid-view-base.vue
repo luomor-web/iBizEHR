@@ -471,6 +471,7 @@ export default class PIMRESEARCHFINDINGSRESEARCHGridViewBase extends GridViewBas
             data.srfsourcekey = args[0].srfsourcekey;
         }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
+        delete curViewParam.pimresearchfindings;
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }

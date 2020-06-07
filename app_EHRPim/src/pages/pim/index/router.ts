@@ -672,7 +672,7 @@ const router = new Router({
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormorgsectorpickup-view/ormorgsectorpickup-view.vue'),
+                    component: () => import('@pages/orm/orm-orgsector-pickup-view/orm-orgsector-pickup-view.vue'),
                 },
                 {
                     path: 'ormorgsectors/:ormorgsector?/pickupview/:pickupview?',
@@ -685,7 +685,7 @@ const router = new Router({
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormorgsectorpickup-view/ormorgsectorpickup-view.vue'),
+                    component: () => import('@pages/orm/orm-orgsector-pickup-view/orm-orgsector-pickup-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/pimpapers/:pimpaper?/editview/:editview?',
@@ -966,7 +966,7 @@ const router = new Router({
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormorgxj-pickup-grid-view/ormorgxj-pickup-grid-view.vue'),
+                    component: () => import('@pages/orm/orm-org-xj-pickup-grid-view/orm-org-xj-pickup-grid-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/lzyghmcgridview/:lzyghmcgridview?',
@@ -1214,7 +1214,7 @@ const router = new Router({
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/pim/pimdistirbutionjdryhmcgrid-view/pimdistirbutionjdryhmcgrid-view.vue'),
+                    component: () => import('@pages/pim/pim-distirbution-jdryhmcgrid-view/pim-distirbution-jdryhmcgrid-view.vue'),
                 },
                 {
                     path: 'pimdistirbutions/:pimdistirbution?/jdryhmcgridview/:jdryhmcgridview?',
@@ -1229,7 +1229,7 @@ const router = new Router({
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/pim/pimdistirbutionjdryhmcgrid-view/pimdistirbutionjdryhmcgrid-view.vue'),
+                    component: () => import('@pages/pim/pim-distirbution-jdryhmcgrid-view/pim-distirbution-jdryhmcgrid-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/pimarchives/:pimarchives?/loyeenofilegridview/:loyeenofilegridview?',
@@ -2267,7 +2267,7 @@ const router = new Router({
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormorgsectorpickup-grid-view/ormorgsectorpickup-grid-view.vue'),
+                    component: () => import('@pages/orm/orm-orgsector-pickup-grid-view/orm-orgsector-pickup-grid-view.vue'),
                 },
                 {
                     path: 'ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
@@ -2280,7 +2280,7 @@ const router = new Router({
                         ],
                         requireAuth: true,
                     },
-                    component: () => import('@pages/orm/ormorgsectorpickup-grid-view/ormorgsectorpickup-grid-view.vue'),
+                    component: () => import('@pages/orm/orm-orgsector-pickup-grid-view/orm-orgsector-pickup-grid-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/zdeditview/:zdeditview?',
@@ -5134,7 +5134,7 @@ const router = new Router({
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/ormorgxj-pickup-grid-view/ormorgxj-pickup-grid-view.vue'),
+        component: () => import('@pages/orm/orm-org-xj-pickup-grid-view/orm-org-xj-pickup-grid-view.vue'),
     },
             {
                 path: '/pimarchiveschangeredirectview/:pimarchiveschangeredirectview?',
@@ -6355,7 +6355,7 @@ const router = new Router({
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/ormorgsectorpickup-grid-view/ormorgsectorpickup-grid-view.vue'),
+        component: () => import('@pages/orm/orm-orgsector-pickup-grid-view/orm-orgsector-pickup-grid-view.vue'),
     },
     {
         path: '/ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
@@ -6367,7 +6367,7 @@ const router = new Router({
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/ormorgsectorpickup-grid-view/ormorgsectorpickup-grid-view.vue'),
+        component: () => import('@pages/orm/orm-orgsector-pickup-grid-view/orm-orgsector-pickup-grid-view.vue'),
     },
     {
         path: '/ormorgs/:ormorg?/htgldwqpickupgridview/:htgldwqpickupgridview?',
@@ -6542,7 +6542,7 @@ const router = new Router({
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/ormorgsectorpickup-view/ormorgsectorpickup-view.vue'),
+        component: () => import('@pages/orm/orm-orgsector-pickup-view/orm-orgsector-pickup-view.vue'),
     },
     {
         path: '/ormorgsectors/:ormorgsector?/pickupview/:pickupview?',
@@ -6554,7 +6554,7 @@ const router = new Router({
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/ormorgsectorpickup-view/ormorgsectorpickup-view.vue'),
+        component: () => import('@pages/orm/orm-orgsector-pickup-view/orm-orgsector-pickup-view.vue'),
     },
     {
         path: '/pimpeople/:pimperson?/pimtitles/:pimtitle?/pimzhicgridview/:pimzhicgridview?',
@@ -7706,7 +7706,7 @@ const router = new Router({
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/pim/pimdistirbutionjdryhmcgrid-view/pimdistirbutionjdryhmcgrid-view.vue'),
+        component: () => import('@pages/pim/pim-distirbution-jdryhmcgrid-view/pim-distirbution-jdryhmcgrid-view.vue'),
     },
     {
         path: '/pimdistirbutions/:pimdistirbution?/jdryhmcgridview/:jdryhmcgridview?',
@@ -7720,7 +7720,7 @@ const router = new Router({
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/pim/pimdistirbutionjdryhmcgrid-view/pimdistirbutionjdryhmcgrid-view.vue'),
+        component: () => import('@pages/pim/pim-distirbution-jdryhmcgrid-view/pim-distirbution-jdryhmcgrid-view.vue'),
     },
             {
                 path: '/pimpaperredirectview/:pimpaperredirectview?',

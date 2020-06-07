@@ -293,11 +293,12 @@ export class Util {
      *
      * @static
      * @param {any} arg 表单数据
+     * @param {any} parent 外层context或viewparams
      * @param {any} params 附加参数
      * @returns {any}
      * @memberof Util
      */
-    public static formatData(arg: any, params: any): any {
+    public static formatData(arg: any,parent:any, params: any): any {
         let _data: any = {};
         Object.keys(params).forEach((name: string) => {
             if (!name) {
@@ -307,7 +308,13 @@ export class Util {
             if (value && value.startsWith('%') && value.endsWith('%')) {
                 const key = value.substring(1, value.length - 1);
                 if (arg && arg.hasOwnProperty(key)) {
-                    value = (arg[key] !== null && arg[key] !== undefined) ? arg[key] : null;
+                    if(arg[key] !== null && arg[key] !== undefined){
+                        value = arg[key];
+                    }else if(parent[key] !== null && parent[key] !== undefined){
+                        value = parent[key];
+                    }else{
+                        value = null;
+                    }
                 } else {
                     value = null;
                 }

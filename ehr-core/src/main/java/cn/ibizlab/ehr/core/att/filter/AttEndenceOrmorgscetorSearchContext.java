@@ -85,7 +85,7 @@ public class AttEndenceOrmorgscetorSearchContext extends QueryWrapperContext<Att
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
             this.getSelectCond().and( wrapper ->
-                     wrapper.like("attendenceormorgsectorname", query)   
+                     wrapper.like("ormorgsectorname", query)   
             );
 		 }
 	}

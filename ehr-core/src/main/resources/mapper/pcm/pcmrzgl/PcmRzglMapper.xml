@@ -50,24 +50,20 @@
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DQZJXZW`, t1.`GW`, t1.`NL`, t1.`NLDQ`, t1.`ORGID`, t1.`ORGSECTORID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORNAME`, t1.`PCMRZGLID`, t1.`PCMRZGLNAME`, t1.`RZNX`, t1.`RZNX_COLOR`, t1.`SEX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t1.`YGID`, t1.`YGNAME`, t1.`ZJ`, t1.`ZJNX`, t1.`ZJNX_COLOR`, t1.`ZJRQ`, t1.`ZWRQ` FROM `T_PCMRZGL` t1  
 			]]>
     </sql>
-
     <!--数据查询[GBRZQXDQ]-->
     <sql id="GBRZQXDQ" databaseId="mysql">
        <![CDATA[	
 			]]>
     </sql>
-
     <!--数据查询[RQCX]-->
     <sql id="RQCX" databaseId="mysql">
        <![CDATA[	
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DQZJXZW`, t1.`GW`, t1.`NL`, t1.`NLDQ`, t1.`ORGID`, t1.`ORGSECTORID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORNAME`, t1.`PCMRZGLID`, t1.`PCMRZGLNAME`, t1.`RZNX`, t1.`RZNX_COLOR`, t1.`SEX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t1.`YGID`, t1.`YGNAME`, t1.`ZJ`, t1.`ZJNX`, t1.`ZJNX_COLOR`, t1.`ZJRQ`, t1.`ZWRQ` FROM `T_PCMRZGL` t1  
 			]]>
     </sql>
-
 </mapper>
 

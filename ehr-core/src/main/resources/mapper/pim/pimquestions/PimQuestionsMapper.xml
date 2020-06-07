@@ -39,19 +39,16 @@
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GN`, t1.`JJCD`, t1.`JT`, t1.`KFZ`, t1.`LXDH`, t1.`MK`, t1.`QUESTIONMAN`, t1.`QUESTIONSID`, t1.`QUESTIONSNAME`, t1.`TCSJ`, t1.`TWURL`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WCSJ`, t1.`WTBH`, t1.`WTFK`, t1.`WTMS`, t1.`WTZT`, t1.`YM`, t1.`YMMC` FROM `T_QUESTIONS` t1  
 			]]>
     </sql>
-
     <!--数据查询[QUERYcurrentQUESTION]-->
     <sql id="QUERYcurrentQUESTION" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GN`, t1.`JJCD`, t1.`JT`, t1.`KFZ`, t1.`LXDH`, t1.`MK`, t1.`QUESTIONMAN`, t1.`QUESTIONSID`, t1.`QUESTIONSNAME`, t1.`TCSJ`, t1.`TWURL`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WCSJ`, t1.`WTBH`, t1.`WTFK`, t1.`WTMS`, t1.`WTZT`, t1.`YM`, t1.`YMMC` FROM `T_QUESTIONS` t1  
 				 WHERE 	( t1.`YMMC` =  #{srf.datacontext.ymmc} )
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GN`, t1.`JJCD`, t1.`JT`, t1.`KFZ`, t1.`LXDH`, t1.`MK`, t1.`QUESTIONMAN`, t1.`QUESTIONSID`, t1.`QUESTIONSNAME`, t1.`TCSJ`, t1.`TWURL`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WCSJ`, t1.`WTBH`, t1.`WTFK`, t1.`WTMS`, t1.`WTZT`, t1.`YM`, t1.`YMMC` FROM `T_QUESTIONS` t1  
 			]]>
     </sql>
-
 </mapper>
 

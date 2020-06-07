@@ -42,7 +42,17 @@
 </i-col>
 <i-col v-show="detailsModel.bmlx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='bmlx' :itemRules="this.rules.bmlx" class='' :caption="$t('entities.ormorgsector.main_form.details.bmlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bmlx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.bmlx" :data="data" :itemParam="{}" :disabled="detailsModel.bmlx.disabled"  tag='EhrCodeList0019' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.bmlx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.bmlx.disabled"  
+    tag='EhrCodeList0019' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -73,7 +83,17 @@
 </i-col>
 <i-col v-show="detailsModel.qy.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='qy' :itemRules="this.rules.qy" class='' :caption="$t('entities.ormorgsector.main_form.details.qy')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.qy.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.qy" :data="data" :itemParam="{}" :disabled="detailsModel.qy.disabled"  tag='EhrCodeList0219' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.qy" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.qy.disabled"  
+    tag='EhrCodeList0219' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -85,7 +105,17 @@
 </i-col>
 <i-col v-show="detailsModel.gkjz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='gkjz' :itemRules="this.rules.gkjz" class='' :caption="$t('entities.ormorgsector.main_form.details.gkjz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gkjz.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.gkjz" :data="data" :itemParam="{}" :disabled="detailsModel.gkjz.disabled"  tag='EhrCodeList0156' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.gkjz" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.gkjz.disabled"  
+    tag='EhrCodeList0156' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -116,7 +146,18 @@
 </i-col>
 <i-col v-show="detailsModel.validflag.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='validflag' :itemRules="this.rules.validflag" class='' :caption="$t('entities.ormorgsector.main_form.details.validflag')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.validflag.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.validflag" :data="data" :itemParam="{}" :disabled="detailsModel.validflag.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0054' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
+     <dropdown-list 
+  v-model="data.validflag" 
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+  :disabled="detailsModel.validflag.disabled" 
+  style="width:100px;width: 100px;" 
+  tag='EhrCodeList0400' 
+  codelistType='STATIC'
+  placeholder='请选择...'>
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

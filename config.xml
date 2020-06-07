@@ -32,17 +32,16 @@
     <hudson.tasks.Shell>
       <command>
       BUILD_ID=DONTKILLME
-      echo "registry.cn-shanghai.aliyuncs.com/ibizsys"
       source /etc/profile
       rm -rf ehr
 	  git clone -b dev $para2 ehr/
       export NODE_OPTIONS=--max-old-space-size=4096
       cd ehr/
-      mvn clean package -Pehrorm
-      cd ehr-app/ehr-app-ehrorm
-      mvn -Pehrorm docker:build
-      mvn -Pehrorm docker:push
-      docker -H $para1 stack deploy --compose-file=src/main/docker/ehr-app-ehrorm.yaml iBizDemo --with-registry-auth
+      mvn clean package -Pwebapi
+      cd ehr-provider/ehr-provider-webapi
+      mvn -Pwebapi docker:build
+      mvn -Pwebapi docker:push
+      docker -H $para1 stack deploy --compose-file=src/main/docker/ehr-provider-webapi.yaml iBizEE --with-registry-auth      
       </command>
     </hudson.tasks.Shell>
   </builders>

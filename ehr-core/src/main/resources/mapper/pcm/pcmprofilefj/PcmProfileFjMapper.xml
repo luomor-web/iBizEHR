@@ -39,18 +39,15 @@
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FJ`, t1.`FJNAME`, t1.`PCMPROFILEFJID`, t1.`PCMPROFILEFJNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PCMPROFILEFJ` t1  
 			]]>
     </sql>
-
     <!--数据查询[PROFILEFJ]-->
     <sql id="PROFILEFJ" databaseId="mysql">
        <![CDATA[	
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FJ`, t1.`FJNAME`, t1.`PCMPROFILEFJID`, t1.`PCMPROFILEFJNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PCMPROFILEFJ` t1  
 			]]>
     </sql>
-
 </mapper>
 

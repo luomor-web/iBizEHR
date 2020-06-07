@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmydjdmxryhg" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmydjdmxryhg">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmydjdmxryhgdefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmYdjdmx" />
+        <tns:global identifier="pcmydjdmxryhgpimdistirbution" type="cn.ibizlab.ehr.core.pim.domain.PimDistirbution" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmydjdmxryhgprepareparam2" id="CA45EF0F-B432-43CB-BAFD-6F5CB17E00B3" implementation="http://www.jboss.org/drools/rule" name="更新分配表"/>
+     <startEvent id="C9845525-5396-4599-9BE2-C30F6A890A52" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmydjdmxryhgdeaction2" id="4092B0B1-1D48-4BFA-A95C-56759CD3F413" implementation="http://www.jboss.org/drools/rule" name="更新分配表"/>
+     <endEvent id="4092B0B1-1D48-4BFA-A95C-56759CD3F413_End" name="End"/>
+     <sequenceFlow id="4092B0B1-1D48-4BFA-A95C-56759CD3F413_End_Line" sourceRef="4092B0B1-1D48-4BFA-A95C-56759CD3F413" targetRef="4092B0B1-1D48-4BFA-A95C-56759CD3F413_End"/>
+     <sequenceFlow id="040AF357-F4C3-4D75-9713-376C054205F5" sourceRef="C9845525-5396-4599-9BE2-C30F6A890A52" targetRef="CA45EF0F-B432-43CB-BAFD-6F5CB17E00B3">
+     </sequenceFlow>
+     <sequenceFlow id="BD9E01AA-118B-40AC-88C8-58F319A82072" sourceRef="CA45EF0F-B432-43CB-BAFD-6F5CB17E00B3" targetRef="4092B0B1-1D48-4BFA-A95C-56759CD3F413">
+     </sequenceFlow>
+    </process>
+</definitions>
+

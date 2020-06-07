@@ -20,7 +20,17 @@
 </i-col>
 <i-col v-show="detailsModel.shgz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='shgz' :itemRules="this.rules.shgz" class='' :caption="$t('entities.pimstafftype.main_form.details.shgz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.shgz.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.shgz" :data="data" :itemParam="{}" :disabled="detailsModel.shgz.disabled"  tag='EhrCodeList0048' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.shgz" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.shgz.disabled"  
+    tag='EhrCodeList0048' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

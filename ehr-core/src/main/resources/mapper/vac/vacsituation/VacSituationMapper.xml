@@ -41,13 +41,11 @@
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`BCTS`, t1.`BNSYTS`, t1.`BNTS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`LJSYTS`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`SNZRTS`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACSITUATIONID`, t1.`VACSITUATIONNAME`, t1.`YYTS`, t1.`ZTS` FROM `T_VACSITUATION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>
-
 </mapper>
 

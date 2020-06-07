@@ -16,8 +16,6 @@
         ref='multipleTable' :data="items" :show-header="!isHideHeader">
             <template slot="empty">
                 无数据 
-                <span class="quick-toolbar">
-                </span>
             </template>
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
@@ -148,7 +146,7 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                         <template >
-            <codelist :value="row.sfzgzc" tag='EhrCodeList0054' codelistType='STATIC' ></codelist>
+            <codelist :value="row.sfzgzc" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -1106,9 +1104,9 @@ export default class MainBase extends Vue implements ControlInterface {
           },
           {
             name: 'sfzgzc',
-            srfkey: 'EhrCodeList0054',
+            srfkey: 'EhrCodeList0400',
             codelistType : 'STATIC',
-            renderMode: 'other',
+            renderMode: 'number',
             textSeparator: '、',
             valueSeparator: ',',
           },

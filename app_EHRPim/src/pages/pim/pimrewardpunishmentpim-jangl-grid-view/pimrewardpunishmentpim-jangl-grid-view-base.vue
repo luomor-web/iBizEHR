@@ -174,7 +174,7 @@ export default class PIMREWARDPUNISHMENTPimJanglGridViewBase extends GridViewBas
      * @memberof PIMREWARDPUNISHMENTPimJanglGridView
      */
     public toolBarModels: any = {
-        deuiaction1: { name: 'deuiaction1', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', iconcls: 'fa fa-file-text-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'New', target: '' }, class: '' },
+        deuiaction1: { name: 'deuiaction1', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', iconcls: 'fa fa-file-text-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'New', target: '' }, class: '' },
 
         deuiaction3: { name: 'deuiaction3', caption: '删除','isShowCaption':true,'isShowIcon':true, tooltip: '删除', iconcls: 'fa fa-remove', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYGXML', uiaction: { tag: 'Remove', target: 'MULTIKEY' }, class: '' },
 
@@ -437,6 +437,7 @@ export default class PIMREWARDPUNISHMENTPimJanglGridViewBase extends GridViewBas
             data.srfsourcekey = args[0].srfsourcekey;
         }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
+        delete curViewParam.pimrewardpunishment;
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }

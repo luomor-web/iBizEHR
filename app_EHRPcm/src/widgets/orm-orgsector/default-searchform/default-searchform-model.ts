@@ -26,9 +26,9 @@ export default class DefaultModel {
         dataType: 'TEXT',
       },
       {
-        name: 'n_zzdzs_like',
-        prop: 'zzdzs',
-        dataType: 'PICKUPDATA',
+        name: 'n_orgname_like',
+        prop: 'orgname',
+        dataType: 'PICKUPTEXT',
       },
       {
         name: 'n_orgsectorname_like',

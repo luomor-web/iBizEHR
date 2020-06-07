@@ -9,7 +9,11 @@
         <i-col v-show="detailsModel.serialnumber.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='serialnumber' :itemRules="this.rules.serialnumber" class='' :caption="$t('entities.pimarchivesrecord.main_form.details.serialnumber')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.serialnumber.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='serialnumber'
-:value="data.serialnumber" style=""></app-span>
+:value="data.serialnumber"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>

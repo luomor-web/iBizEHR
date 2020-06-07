@@ -31,13 +31,30 @@ export default class SetOrderNumLogicBase {
     private defaultParamName:string = "Default";
 
     /**
+     * 参数集合
+     * 
+     * @memberof  SetOrderNumLogicBase
+     */
+    private paramsMap:Map<string,any> = new Map();
+
+    /**
      * Creates an instance of  SetOrderNumLogicBase.
      * 
      * @param {*} [opts={}]
      * @memberof  SetOrderNumLogicBase
      */
     constructor(opts: any = {}) {
-        
+        this.initParams(opts);
+    }
+
+    /**
+     * 初始化参数集合
+     * 
+     * @param {*} [opts={}]
+     * @memberof  SetOrderNumLogicBase
+     */
+    public initParams(opts:any){
+        this.paramsMap.set('Default',opts);
     }
 
 
@@ -82,7 +99,7 @@ export default class SetOrderNumLogicBase {
     private async executeRawsqlcall1(context:any,params:any,isloading:boolean){
         // RAWSQLCALL暂未支持
         console.log("RAWSQLCALL暂未支持");
-        return params;
+        return this.paramsMap.get(this.defaultParamName).data;
     }
 
 

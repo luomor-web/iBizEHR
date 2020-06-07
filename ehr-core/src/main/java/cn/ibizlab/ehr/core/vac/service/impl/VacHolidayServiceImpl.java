@@ -161,13 +161,6 @@ public class VacHolidayServiceImpl extends ServiceImpl<VacHolidayMapper, VacHoli
         this.saveBatch(list,batchSize);
     }
 
-    @Override
-    @Transactional
-    public VacHoliday checkTime(VacHoliday et) {
-        //自定义代码
-        return et;
-    }
-
 
 	@Override
     public List<VacHoliday> selectByVacholidayrulesid(String vacholidayrulesid) {
@@ -209,6 +202,7 @@ public class VacHolidayServiceImpl extends ServiceImpl<VacHolidayMapper, VacHoli
             et.setOrmorgid(vacholidayrules.getOrmorgid());
         }
     }
+
 
     @Override
     public List<JSONObject> select(String sql, Map param){

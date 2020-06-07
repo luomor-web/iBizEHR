@@ -39,19 +39,16 @@
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`PCMPROFILESZYJTJID`, t1.`PCMPROFILESZYJTJNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`YGLX` FROM `T_PCMPROFILESZYJTJ` t1  
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`PCMPROFILESZYJTJID`, t1.`PCMPROFILESZYJTJNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`YGLX` FROM `T_PCMPROFILESZYJTJ` t1  
 			]]>
     </sql>
-
     <!--数据查询[YGLX]-->
     <sql id="YGLX" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`PCMPROFILESZYJTJID`, t1.`PCMPROFILESZYJTJNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`YGLX` FROM `T_PCMPROFILESZYJTJ` t1  
 				 WHERE 	( t1.yglx=  #{srf.datacontext.yglx')} )
 			]]>
     </sql>
-
 </mapper>
 

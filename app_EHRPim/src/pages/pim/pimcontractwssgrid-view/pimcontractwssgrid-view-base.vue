@@ -369,6 +369,7 @@ export default class PIMCONTRACTWSSGridViewBase extends GridViewBase {
             data.srfsourcekey = args[0].srfsourcekey;
         }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
+        delete curViewParam.pimcontract;
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }

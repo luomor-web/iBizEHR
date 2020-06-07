@@ -39,7 +39,18 @@
 </i-col>
 <i-col v-show="detailsModel.sfxjd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfxjd' :itemRules="this.rules.sfxjd" class='' :caption="$t('entities.pimarchives.main_form.details.sfxjd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfxjd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.sfxjd" :data="data" :itemParam="{}" :disabled="detailsModel.sfxjd.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0054' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
+     <dropdown-list 
+  v-model="data.sfxjd" 
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+  :disabled="detailsModel.sfxjd.disabled" 
+  style="width:100px;width: 100px;" 
+  tag='EhrCodeList0400' 
+  codelistType='STATIC'
+  placeholder='请选择...'>
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -73,7 +84,17 @@
     <row>
         <i-col v-show="detailsModel.dabgdd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='dabgdd' :itemRules="this.rules.dabgdd" class='' :caption="$t('entities.pimarchives.main_form.details.dabgdd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dabgdd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.dabgdd" :data="data" :itemParam="{}" :disabled="detailsModel.dabgdd.disabled"  tag='EhrCodeList0040' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.dabgdd" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.dabgdd.disabled"  
+    tag='EhrCodeList0040' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -127,7 +148,17 @@
 </i-col>
 <i-col v-show="detailsModel.education.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='education' :itemRules="this.rules.education" class='' :caption="$t('entities.pimarchives.main_form.details.education')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.education.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.education" :data="data" :itemParam="{}" :disabled="detailsModel.education.disabled"  tag='EhrCodeList0117' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.education" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.education.disabled"  
+    tag='EhrCodeList0117' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -151,7 +182,17 @@
 </i-col>
 <i-col v-show="detailsModel.dastate.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='dastate' :itemRules="this.rules.dastate" class='' :caption="$t('entities.pimarchives.main_form.details.dastate')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dastate.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.dastate" :data="data" :itemParam="{}" :disabled="detailsModel.dastate.disabled"  tag='EhrCodeList0057' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.dastate" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.dastate.disabled"  
+    tag='EhrCodeList0057' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

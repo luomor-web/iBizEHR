@@ -32,13 +32,30 @@ export default class UpdateArchiveStateLogicBase {
     private defaultParamName:string = "Default";
 
     /**
+     * 参数集合
+     * 
+     * @memberof  UpdateArchiveStateLogicBase
+     */
+    private paramsMap:Map<string,any> = new Map();
+
+    /**
      * Creates an instance of  UpdateArchiveStateLogicBase.
      * 
      * @param {*} [opts={}]
      * @memberof  UpdateArchiveStateLogicBase
      */
     constructor(opts: any = {}) {
-        
+        this.initParams(opts);
+    }
+
+    /**
+     * 初始化参数集合
+     * 
+     * @param {*} [opts={}]
+     * @memberof  UpdateArchiveStateLogicBase
+     */
+    public initParams(opts:any){
+        this.paramsMap.set('Default',opts);
     }
 
 
@@ -83,13 +100,14 @@ export default class UpdateArchiveStateLogicBase {
     private async executeDeaction1(context:any,params:any,isloading:boolean){
         // 行为处理节点
         let result: any;
+        let actionParam:any = this.paramsMap.get('Default');
         const targetService:PimArchiveSloanandreturnService = new PimArchiveSloanandreturnService();
         if (targetService['UpdateArchiveState'] && targetService['UpdateArchiveState'] instanceof Function) {
-            result = await targetService['UpdateArchiveState'](context,params, false);
+            result = await targetService['UpdateArchiveState'](actionParam.context,actionParam.data, false);
         }
         if(result && result.status == 200){
-            Object.assign(params,result.data);
-        return params;
+            Object.assign(actionParam.data,result.data);
+        return this.paramsMap.get(this.defaultParamName).data;
         }
     }
 

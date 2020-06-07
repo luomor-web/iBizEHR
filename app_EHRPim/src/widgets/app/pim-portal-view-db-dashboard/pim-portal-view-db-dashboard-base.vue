@@ -356,7 +356,7 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
     public loadModel(){
         if(this.isEnableCustomized){
           this.utilService.getService(this.utilServiceName).then((service:any) =>{
-            service.loadModelData(JSON.parse(JSON.stringify(this.context)),{modelid:this.modelId}).then((res:any) =>{
+            service.loadModelData(JSON.parse(JSON.stringify(this.context)),{modelid:this.modelId,utilServiceName:this.utilServiceName}).then((res:any) =>{
               if(res && res.status == 200){
                 const data:any = res.data;
                 if(data && data.length >0){

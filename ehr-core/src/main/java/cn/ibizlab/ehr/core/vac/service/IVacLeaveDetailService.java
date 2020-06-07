@@ -40,8 +40,8 @@ public interface IVacLeaveDetailService extends IService<VacLeaveDetail>{
     boolean checkKey(VacLeaveDetail et) ;
     VacLeaveDetail getDraft(VacLeaveDetail et) ;
     Page<VacLeaveDetail> searchDefault(VacLeaveDetailSearchContext context) ;
-    List<VacLeaveDetail> selectByVacleavemanageid(String vacleavemanageid) ;
-    void removeByVacleavemanageid(String vacleavemanageid) ;
+    List<VacLeaveDetail> selectByPimpersonid(String pimpersonid) ;
+    void removeByPimpersonid(String pimpersonid) ;
     /**
      *自定义查询SQL
      * @param sql  select * from table where id =#{et.param}

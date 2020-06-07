@@ -31,13 +31,30 @@ export default class UpdateStateLogicBase {
     private defaultParamName:string = "Default";
 
     /**
+     * 参数集合
+     * 
+     * @memberof  UpdateStateLogicBase
+     */
+    private paramsMap:Map<string,any> = new Map();
+
+    /**
      * Creates an instance of  UpdateStateLogicBase.
      * 
      * @param {*} [opts={}]
      * @memberof  UpdateStateLogicBase
      */
     constructor(opts: any = {}) {
-        
+        this.initParams(opts);
+    }
+
+    /**
+     * 初始化参数集合
+     * 
+     * @param {*} [opts={}]
+     * @memberof  UpdateStateLogicBase
+     */
+    public initParams(opts:any){
+        this.paramsMap.set('Default',opts);
     }
 
 
@@ -86,8 +103,11 @@ export default class UpdateStateLogicBase {
     */
     private async executePrepareparam4(context:any,params:any,isloading:boolean){
         // 准备参数节点
-        Object.assign(params,{zt:params.zt});
-        return params;
+    let tempDstParam0Context:any = this.paramsMap.get('Default').context?this.paramsMap.get('Default').context:{};
+    let tempDstParam0Data:any = this.paramsMap.get('Default').data?this.paramsMap.get('Default').data:{};
+    Object.assign(tempDstParam0Data,{zt:"20"});
+    this.paramsMap.set('Default',{data:tempDstParam0Data,context:tempDstParam0Context});
+        return this.paramsMap.get(this.defaultParamName).data;
     }
 
     /**
@@ -113,8 +133,11 @@ export default class UpdateStateLogicBase {
     */
     private async executePrepareparam3(context:any,params:any,isloading:boolean){
         // 准备参数节点
-        Object.assign(params,{zt:params.zt});
-        return params;
+    let tempDstParam0Context:any = this.paramsMap.get('Default').context?this.paramsMap.get('Default').context:{};
+    let tempDstParam0Data:any = this.paramsMap.get('Default').data?this.paramsMap.get('Default').data:{};
+    Object.assign(tempDstParam0Data,{zt:"10"});
+    this.paramsMap.set('Default',{data:tempDstParam0Data,context:tempDstParam0Context});
+        return this.paramsMap.get(this.defaultParamName).data;
     }
 
 

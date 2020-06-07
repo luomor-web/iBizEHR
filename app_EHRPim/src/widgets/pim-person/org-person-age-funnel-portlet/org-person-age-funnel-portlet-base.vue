@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet org-person-age-funnel ' :style="{'height': isAdaptiveSize ? 'clac(100% - 16px)' : '666px',}">
+    <div class='portlet org-person-age-funnel ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : '666px',}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_db_sysportlet4_chart 

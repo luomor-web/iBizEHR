@@ -45,7 +45,17 @@
 </i-col>
 <i-col v-show="detailsModel.zclc.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zclc' :itemRules="this.rules.zclc" class='' :caption="$t('entities.pimtitlecatalogue.main_form.details.zclc')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zclc.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.zclc" :data="data" :itemParam="{}" :disabled="detailsModel.zclc.disabled"  tag='EhrCodeList0047' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.zclc" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.zclc.disabled"  
+    tag='EhrCodeList0047' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

@@ -14,7 +14,17 @@
 </i-col>
 <i-col v-show="detailsModel.xkml.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='xkml' :itemRules="this.rules.xkml" class='' :caption="$t('entities.pcmxkml.main_form.details.xkml')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xkml.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.xkml" :data="data" :itemParam="{}" :disabled="detailsModel.xkml.disabled"  tag='EhrCodeList0116' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.xkml" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.xkml.disabled"  
+    tag='EhrCodeList0116' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

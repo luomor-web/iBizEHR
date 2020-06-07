@@ -18,7 +18,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '100米',
                 "data":"",
                 "codename":"Item_100",
-                value: '100',
+                value: 100,
                 
                 disabled: false,
             },
@@ -28,7 +28,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '200米',
                 "data":"",
                 "codename":"Item_200",
-                value: '200',
+                value: 200,
                 
                 disabled: false,
             },
@@ -38,7 +38,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '300米',
                 "data":"",
                 "codename":"Item_300",
-                value: '300',
+                value: 300,
                 
                 disabled: false,
             },
@@ -48,7 +48,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '400米',
                 "data":"",
                 "codename":"Item_400",
-                value: '400',
+                value: 400,
                 
                 disabled: false,
             },
@@ -58,7 +58,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '500米',
                 "data":"",
                 "codename":"Item_500",
-                value: '500',
+                value: 500,
                 
                 disabled: false,
             },
@@ -373,33 +373,6 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
-        srfkey: 'EhrCodeList0054',
-        emptytext: '未定义',
-        "codelisttype":"static",
-        items: [
-            {
-                id: '1',
-                label: '是',
-                text: '是',
-                "data":"",
-                "codename":"Item_1",
-                value: 1,
-                
-                disabled: false,
-            },
-            {
-                id: '0',
-                label: '否',
-                text: '否',
-                "data":"",
-                "codename":"Item_0",
-                value: 0,
-                
-                disabled: false,
-            },
-        ]
-    },
-    {
         "srfkey": "EhrCodeList0250",
         "emptytext": "",
         "codelisttype":"dynamic",
@@ -658,6 +631,33 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 "data":"",
                 "codename":"Item_20",
                 value: '20',
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
+        srfkey: 'EhrCodeList0400',
+        emptytext: '未定义',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '1',
+                label: '是',
+                text: '是',
+                "data":"",
+                "codename":"Item_1",
+                value: 1,
+                
+                disabled: false,
+            },
+            {
+                id: '0',
+                label: '否',
+                text: '否',
+                "data":"",
+                "codename":"Item_0",
+                value: 0,
                 
                 disabled: false,
             },

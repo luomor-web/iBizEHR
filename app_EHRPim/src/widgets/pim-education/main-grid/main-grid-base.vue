@@ -16,8 +16,6 @@
         ref='multipleTable' :data="items" :show-header="!isHideHeader">
             <template slot="empty">
                 无数据 
-                <span class="quick-toolbar">
-                </span>
             </template>
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
@@ -200,11 +198,11 @@
                     <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
                             <app-form-item :error="gridItemsModel[$index][column.property].error">
-                                 <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" style="width: 100px;" tag='EhrCodeList0054' codelistType='STATIC' placeholder='请选择...' @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}"></dropdown-list>
+                                 <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" style="width: 100px;" tag='EhrCodeList0400' codelistType='STATIC' placeholder='请选择...' @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}"></dropdown-list>
                             </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
-            <codelist :value="row.sfdyxl" tag='EhrCodeList0054' codelistType='STATIC' ></codelist>
+            <codelist :value="row.sfdyxl" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -219,11 +217,11 @@
                     <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
                             <app-form-item :error="gridItemsModel[$index][column.property].error">
-                                 <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" style="width: 100px;" tag='EhrCodeList0054' codelistType='STATIC' placeholder='请选择...' @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}"></dropdown-list>
+                                 <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" style="width: 100px;" tag='EhrCodeList0400' codelistType='STATIC' placeholder='请选择...' @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}"></dropdown-list>
                             </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
-            <codelist :value="row.sfzgxl" tag='EhrCodeList0054' codelistType='STATIC' ></codelist>
+            <codelist :value="row.sfzgxl" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -373,8 +371,6 @@
                             </template>
                         </div>
                     </poptip>
-                </span>
-                <span v-if="selections.length > 0" class="batch-toolbar">
                 </span>
                 <span class="page-button"><i-button icon="md-refresh" :title="$t('app.gridpage.refresh')" @click="pageRefresh()"></i-button></span>&nbsp;
                 <span>
@@ -1429,17 +1425,17 @@ export default class MainBase extends Vue implements ControlInterface {
           },
           {
             name: 'sfdyxl',
-            srfkey: 'EhrCodeList0054',
+            srfkey: 'EhrCodeList0400',
             codelistType : 'STATIC',
-            renderMode: 'other',
+            renderMode: 'number',
             textSeparator: '、',
             valueSeparator: ',',
           },
           {
             name: 'sfzgxl',
-            srfkey: 'EhrCodeList0054',
+            srfkey: 'EhrCodeList0400',
             codelistType : 'STATIC',
-            renderMode: 'other',
+            renderMode: 'number',
             textSeparator: '、',
             valueSeparator: ',',
           },

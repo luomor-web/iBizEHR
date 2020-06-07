@@ -58,6 +58,14 @@ public class PcmJxsygzzjlmxServiceImpl extends ServiceImpl<PcmJxsygzzjlmxMapper,
     @Lazy
     private cn.ibizlab.ehr.core.pcm.service.logic.IPcmJxsygzzjlmxFillPersonInfoLogic fillpersoninfoLogic;
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmJxsygzzjlmxSetPassLogic setpassLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmJxsygzzjlmxSetRejectLogic setrejectLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -122,6 +130,13 @@ public class PcmJxsygzzjlmxServiceImpl extends ServiceImpl<PcmJxsygzzjlmxMapper,
     }
 
     @Override
+    @Transactional
+    public PcmJxsygzzjlmx setPass(PcmJxsygzzjlmx et) {
+        setpassLogic.execute(et);
+         return et ;
+    }
+
+    @Override
     public PcmJxsygzzjlmx getDraft(PcmJxsygzzjlmx et) {
         fillParentData(et);
         return et;
@@ -138,6 +153,13 @@ public class PcmJxsygzzjlmxServiceImpl extends ServiceImpl<PcmJxsygzzjlmxMapper,
         else{
         }
         return et;
+    }
+
+    @Override
+    @Transactional
+    public PcmJxsygzzjlmx setReject(PcmJxsygzzjlmx et) {
+        setrejectLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -307,6 +329,7 @@ public class PcmJxsygzzjlmxServiceImpl extends ServiceImpl<PcmJxsygzzjlmxMapper,
             et.setZzgw(pimperson.getGw());
         }
     }
+
 
     @Override
     public List<JSONObject> select(String sql, Map param){

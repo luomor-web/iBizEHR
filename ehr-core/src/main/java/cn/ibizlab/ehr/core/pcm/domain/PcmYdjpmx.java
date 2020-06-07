@@ -284,13 +284,6 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
     @JsonProperty("zzdzs")
     private String zzdzs;
     /**
-     * 是否审核
-     */
-    @TableField(exist = false)
-    @JSONField(name = "finished")
-    @JsonProperty("finished")
-    private Integer finished;
-    /**
      * 职级
      */
     @TableField(exist = false)
@@ -325,6 +318,14 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
     @JSONField(name = "sfzfbcj")
     @JsonProperty("sfzfbcj")
     private Integer sfzfbcj;
+    /**
+     * 是否完成
+     */
+    @DEField(defaultValue = "0")
+    @TableField(value = "isfinished")
+    @JSONField(name = "isfinished")
+    @JsonProperty("isfinished")
+    private String isfinished;
 
 
 
@@ -418,6 +419,13 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
     public void setSfzfbcj(Integer sfzfbcj){
         this.sfzfbcj = sfzfbcj ;
         this.modify("sfzfbcj",sfzfbcj);
+    }
+    /**
+     * 设置 [是否完成]
+     */
+    public void setIsfinished(String isfinished){
+        this.isfinished = isfinished ;
+        this.modify("isfinished",isfinished);
     }
 
 }

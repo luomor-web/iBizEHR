@@ -20,6 +20,7 @@
         <module>ehr-app-ehrmob</module>
         <module>ehr-app-ehrpcm</module>
         <module>ehr-app-ehrorm</module>
+        <module>ehr-app-ehratt</module>
         <module>ehr-app-ehrpim</module>
     </modules>
 
@@ -40,12 +41,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc6</artifactId>
-            <version>11.2.0.3</version>
         </dependency>
 
     </dependencies>

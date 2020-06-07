@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet orm-pnum-list ' :style="{'height': isAdaptiveSize ? 'clac(100% - 16px)' : '300px',}">
+    <div class='portlet orm-pnum-list ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : '300px',}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_portlet_OrmPNumList_list 

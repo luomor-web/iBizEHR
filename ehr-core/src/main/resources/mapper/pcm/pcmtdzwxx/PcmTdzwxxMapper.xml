@@ -41,12 +41,10 @@
 				 WHERE 	( t1.`FLAG` = '1' )
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`BBSJ`, t11.`CERTIFICATENUMBER`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DEPARTMENT`, t1.`FLAG`, t1.`INITAPPLYDATE`, t1.`JOBCODE`, t1.`JOBID`, t1.`ORGANIZATION`, t1.`PCMPROFILEID`, t11.`PCMPROFILENAME`, t1.`PHASEINFO`, t1.`STATUSINFO`, t1.`TDZWXXID`, t1.`TDZWXXNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_TDZWXX` t1  LEFT JOIN T_PCMPROFILE t11 ON t1.PCMPROFILEID = t11.PCMPROFILEID  
 			]]>
     </sql>
-
 </mapper>
 

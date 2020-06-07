@@ -51,7 +51,17 @@
 </i-col>
 <i-col v-show="detailsModel.lx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='lx' :itemRules="this.rules.lx" class='' :caption="$t('entities.pimexitandentry.ygcgj_form.details.lx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.lx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.lx" :data="data" :itemParam="{}" :disabled="detailsModel.lx.disabled"  tag='EhrCodeList0126' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.lx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.lx.disabled"  
+    tag='EhrCodeList0126' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

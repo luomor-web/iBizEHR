@@ -48,6 +48,13 @@ public class PcmYdjdmxSearchContext extends QueryWrapperContext<PcmYdjdmx> {
             this.getSelectCond().like("ygbh", n_ygbh_like);
         }
     }
+	private String n_pimpersonid_eq;//[人员信息标识]
+	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
+        this.n_pimpersonid_eq = n_pimpersonid_eq;
+        if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
+            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+        }
+    }
 	private String n_pcmydjdmxname_like;//[异动借调明细名称]
 	public void setN_pcmydjdmxname_like(String n_pcmydjdmxname_like) {
         this.n_pcmydjdmxname_like = n_pcmydjdmxname_like;

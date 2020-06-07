@@ -1810,7 +1810,7 @@ const router = new Router({
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/ormpostpickup-grid-view/ormpostpickup-grid-view.vue'),
+        component: () => import('@pages/orm/orm-post-pickup-grid-view/orm-post-pickup-grid-view.vue'),
     },
     {
         path: '/ormposts/:ormpost?/pickupgridview/:pickupgridview?',
@@ -1822,7 +1822,7 @@ const router = new Router({
             ],
             requireAuth: true,
         },
-        component: () => import('@pages/orm/ormpostpickup-grid-view/ormpostpickup-grid-view.vue'),
+        component: () => import('@pages/orm/orm-post-pickup-grid-view/orm-post-pickup-grid-view.vue'),
     },
             {
                 path: '/ormdutyredirectview/:ormdutyredirectview?',

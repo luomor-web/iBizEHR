@@ -58,7 +58,18 @@
 </i-col>
 <i-col v-show="detailsModel.isdefaultsignorg.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='isdefaultsignorg' :itemRules="this.rules.isdefaultsignorg" class='' :caption="$t('entities.pimcontractsignorg.main_form.details.isdefaultsignorg')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.isdefaultsignorg.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.isdefaultsignorg"  :disabled="detailsModel.isdefaultsignorg.disabled"  name="isdefaultsignorg" tag='EhrCodeList0054' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group 
+  v-model="data.isdefaultsignorg"
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"   
+  :disabled="detailsModel.isdefaultsignorg.disabled"  
+  name="isdefaultsignorg" 
+  :itemParam="{}" 
+  tag='EhrCodeList0400' 
+  codelistType='STATIC' 
+  style="">
+</app-radio-group>
 </app-form-item>
 
 </i-col>

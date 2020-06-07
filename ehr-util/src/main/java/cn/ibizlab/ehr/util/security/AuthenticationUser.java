@@ -143,14 +143,14 @@ public class AuthenticationUser implements UserDetails
 			return new HashMap<>();
     }
 
-	public Collection<GrantedAuthority> getAuthorities() {
+	public void setPermissionList(JSONObject permissionList) {
+		this.permissionList = permissionList;
 		if(authorities==null && permissionList !=null){
-			if(permissionList.getJSONArray("authorities")!=null){
-				authorities=new ArrayList<>();
-				permissionList.getJSONArray("authorities").
+		if(permissionList.getJSONArray("authorities")!=null){
+			authorities=new ArrayList<>();
+			permissionList.getJSONArray("authorities").
 				forEach(item->authorities.add(new SimpleGrantedAuthority(String.valueOf(item))));
 			}
 		}
-		return authorities;
 	}
 }

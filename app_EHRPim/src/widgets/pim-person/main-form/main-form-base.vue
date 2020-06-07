@@ -20,13 +20,33 @@
 </i-col>
 <i-col v-show="detailsModel.yglx.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='yglx' :itemRules="this.rules.yglx" class='' :caption="$t('entities.pimperson.main_form.details.yglx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yglx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.yglx" :data="data" :itemParam="{}" :disabled="detailsModel.yglx.disabled"  tag='EhrCodeList0167' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.yglx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.yglx.disabled"  
+    tag='EhrCodeList0167' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.zjlx.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='zjlx' :itemRules="this.rules.zjlx" class='' :caption="$t('entities.pimperson.main_form.details.zjlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zjlx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.zjlx" :data="data" :itemParam="{}" :disabled="detailsModel.zjlx.disabled"  tag='EhrCodeList0231' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.zjlx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.zjlx.disabled"  
+    tag='EhrCodeList0231' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

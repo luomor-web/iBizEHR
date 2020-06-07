@@ -302,8 +302,7 @@ public class AttEndanceMreportmxSearchContext extends QueryWrapperContext<AttEnd
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
             this.getSelectCond().and( wrapper ->
-                     wrapper.like("attendancemreportmxname", query)   
-                        .or().like("pimpersonname", query)            
+                     wrapper.like("pimpersonname", query)   
             );
 		 }
 	}

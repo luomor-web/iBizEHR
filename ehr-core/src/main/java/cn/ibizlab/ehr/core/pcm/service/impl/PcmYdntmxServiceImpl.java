@@ -45,6 +45,10 @@ import org.springframework.util.StringUtils;
 public class PcmYdntmxServiceImpl extends ServiceImpl<PcmYdntmxMapper, PcmYdntmx> implements IPcmYdntmxService {
 
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmYdntmxSetFinishedLogic setfinishedLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -76,6 +80,7 @@ public class PcmYdntmxServiceImpl extends ServiceImpl<PcmYdntmxMapper, PcmYdntmx
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPcmydntmxid()),et);
+        createIndexMajorEntityData(et);
         return true;
     }
 
@@ -119,6 +124,7 @@ public class PcmYdntmxServiceImpl extends ServiceImpl<PcmYdntmxMapper, PcmYdntmx
     @Transactional
     public boolean remove(String key) {
         boolean result=removeById(key);
+        pcmydmxService.remove(key);
         return result ;
     }
 
@@ -137,9 +143,11 @@ public class PcmYdntmxServiceImpl extends ServiceImpl<PcmYdntmxMapper, PcmYdntmx
     @Override
     @Transactional
     public boolean update(PcmYdntmx et) {
+        setfinishedLogic.execute(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pcmydntmxid",et.getPcmydntmxid())))
             return false;
         CachedBeanCopier.copy(get(et.getPcmydntmxid()),et);
+        pcmydmxService.update(pcmydntmxInheritMapping.toPcmydmx(et));
         return true;
     }
 
@@ -186,6 +194,24 @@ public class PcmYdntmxServiceImpl extends ServiceImpl<PcmYdntmxMapper, PcmYdntmx
 
 
 
+
+    @Autowired
+    cn.ibizlab.ehr.core.pcm.mapping.PcmYdntmxInheritMapping pcmydntmxInheritMapping;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdmxService pcmydmxService;
+
+    /**
+     * 创建索引主实体数据
+     * @param et
+     */
+    private void createIndexMajorEntityData(PcmYdntmx et){
+        if(ObjectUtils.isEmpty(et.getPcmydntmxid()))
+            et.setPcmydntmxid((String)et.getDefaultKey(true));
+        cn.ibizlab.ehr.core.pcm.domain.PcmYdmx pcmydmx =pcmydntmxInheritMapping.toPcmydmx(et);
+        pcmydmx.set("pcmydmxtype","60");
+        pcmydmxService.create(pcmydmx);
+    }
 
     @Override
     public List<JSONObject> select(String sql, Map param){

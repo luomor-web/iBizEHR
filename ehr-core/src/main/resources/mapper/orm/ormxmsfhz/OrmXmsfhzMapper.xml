@@ -52,18 +52,15 @@
 				 WHERE 	( t1.`MONTH` IS NULL )
 			]]>
     </sql>
-
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`APY`, ( case when  t1.`APY`<0  then  '20'  else  '30'  end ) AS `APY_COLOR`, t1.`AUGY`, ( case when  t1.`AUGY`<0  then  '20'  else  '30'  end ) AS `AUGY_COLOR`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EY`, ( case when  t1.`EY`<0  then  '20'  else  '30'  end ) AS `EY_COLOR`, t1.`GW`, t1.`JY`, ( case when  t1.`JY`<0  then  '20'  else  '30'  end ) AS `JY_COLOR`, t1.`LY`, ( case when  t1.`LY`<0  then  '20'  else  '30'  end ) AS `LY_COLOR`, t1.`MONTH`, t1.`ND`, t1.`OCTY`, ( case when  t1.`OCTY`<0  then  '20'  else  '30'  end ) AS `OCTY_COLOR`, t1.`ORGID`, t1.`ORMXMSFHZID`, t1.`ORMXMSFHZNAME`, t1.`QY`, ( case when  t1.`QY`<0  then  '20'  else  '30'  end ) AS `QY_COLOR`, t1.`RS`, t1.`SY`, t1.`SYY`, ( case when  t1.`SYY`<0  then  '20'  else  '30'  end ) AS `SYY_COLOR`, ( case when  t1.`SY`<0  then  '20'  else  '30'  end ) AS `SY_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WY`, ( case when  t1.`WY`<0  then  '20'  else  '30'  end ) AS `WY_COLOR`, t1.`XH`, t1.`XM`, t1.`YF`, ( case when  t1.`YF`<0  then  '20'  else  '30'  end ) AS `YF_COLOR`, t1.`YY`, ( case when  t1.`YY`<0  then  '20'  else  '30'  end ) AS `YY_COLOR`, t1.`ZZ` FROM `T_ORMXMSFHZ` t1  
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`APY`, ( case when  t1.`APY`<0  then  '20'  else  '30'  end ) AS `APY_COLOR`, t1.`AUGY`, ( case when  t1.`AUGY`<0  then  '20'  else  '30'  end ) AS `AUGY_COLOR`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EY`, ( case when  t1.`EY`<0  then  '20'  else  '30'  end ) AS `EY_COLOR`, t1.`GW`, t1.`JY`, ( case when  t1.`JY`<0  then  '20'  else  '30'  end ) AS `JY_COLOR`, t1.`LY`, ( case when  t1.`LY`<0  then  '20'  else  '30'  end ) AS `LY_COLOR`, t1.`MONTH`, t1.`ND`, t1.`OCTY`, ( case when  t1.`OCTY`<0  then  '20'  else  '30'  end ) AS `OCTY_COLOR`, t1.`ORGID`, t1.`ORMXMSFHZID`, t1.`ORMXMSFHZNAME`, t1.`QY`, ( case when  t1.`QY`<0  then  '20'  else  '30'  end ) AS `QY_COLOR`, t1.`RS`, t1.`SY`, t1.`SYY`, ( case when  t1.`SYY`<0  then  '20'  else  '30'  end ) AS `SYY_COLOR`, ( case when  t1.`SY`<0  then  '20'  else  '30'  end ) AS `SY_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WY`, ( case when  t1.`WY`<0  then  '20'  else  '30'  end ) AS `WY_COLOR`, t1.`XH`, t1.`XM`, t1.`YF`, ( case when  t1.`YF`<0  then  '20'  else  '30'  end ) AS `YF_COLOR`, t1.`YY`, ( case when  t1.`YY`<0  then  '20'  else  '30'  end ) AS `YY_COLOR`, t1.`ZZ` FROM `T_ORMXMSFHZ` t1  
 			]]>
     </sql>
-
 </mapper>
 

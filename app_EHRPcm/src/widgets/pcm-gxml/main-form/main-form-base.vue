@@ -14,7 +14,17 @@
 </i-col>
 <i-col v-show="detailsModel.nd.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }">
     <app-form-item name='nd' :itemRules="this.rules.nd" class='' :caption="$t('entities.pcmgxml.main_form.details.nd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.nd" :data="data" :itemParam="{}" :disabled="detailsModel.nd.disabled"  tag='EhrCodeList0115' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.nd" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.nd.disabled"  
+    tag='EhrCodeList0115' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -32,7 +42,17 @@
 </i-col>
 <i-col v-show="detailsModel.xxxz.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }">
     <app-form-item name='xxxz' :itemRules="this.rules.xxxz" class='' :caption="$t('entities.pcmgxml.main_form.details.xxxz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xxxz.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.xxxz" :data="data" :itemParam="{}" :disabled="detailsModel.xxxz.disabled"  tag='EhrCodeList0208' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.xxxz" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.xxxz.disabled"  
+    tag='EhrCodeList0208' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

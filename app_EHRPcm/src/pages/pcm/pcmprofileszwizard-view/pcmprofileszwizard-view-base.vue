@@ -14,7 +14,7 @@
                 :viewparams="viewparams" 
                 :context="context" 
               :showBusyIndicator="true"
-                finishAction='Save' 
+                finishAction='Update' 
                 initAction='Create' 
                 name="wizardpanel"  
                 ref='wizardpanel' 

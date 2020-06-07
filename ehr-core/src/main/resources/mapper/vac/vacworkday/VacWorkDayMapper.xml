@@ -30,12 +30,10 @@
        <![CDATA[	SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JSSJ`, t1.`KSSJ`, t1.`ND`, t1.`SBSJ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACWORKDAYID`, t1.`VACWORKDAYNAME`, t1.`XBSJ` FROM `T_VACWORKDAY` t1  
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JSSJ`, t1.`KSSJ`, t1.`ND`, t1.`SBSJ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACWORKDAYID`, t1.`VACWORKDAYNAME`, t1.`XBSJ` FROM `T_VACWORKDAY` t1  
 			]]>
     </sql>
-
 </mapper>
 

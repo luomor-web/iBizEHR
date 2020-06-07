@@ -525,6 +525,7 @@ export default class PCMCERTOFREGZCZSGridViewBase extends GridViewBase {
             data.srfsourcekey = args[0].srfsourcekey;
         }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
+        delete curViewParam.pcmcertofreg;
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }

@@ -81,7 +81,7 @@ export default class DropDownListDynamic extends Vue {
     @Watch('data',{ deep: true })
     onDataChange(newVal: any, val: any){
         if(newVal){
-            this.handleOtherParam();
+            
         }
     }
 
@@ -145,26 +145,40 @@ export default class DropDownListDynamic extends Vue {
     public items: any[] = [];
 
     /**
-     * 处理额外参数
+     * 视图上下文
+     *
+     * @type {*}
+     * @memberof AppAutocomplete
      */
-    public handleOtherParam(){
-        if(this.itemParam){
-            this.queryParam = {};
-            this.otherParam = this.itemParam.parentdata;
-            if(this.otherParam && Object.keys(this.otherParam).length >0){
-                Object.keys(this.otherParam).forEach((item:any) =>{
-                    let value: string | null = this.otherParam[item];
-                    if (value && value.startsWith('%') && value.endsWith('%')) {
-                        const key = value.substring(1, value.length - 1);
-                        if (this.data && this.data.hasOwnProperty(key)) {
-                            value = (this.data[key] !== null && this.data[key] !== undefined) ? this.data[key] : null;
-                        } else {
-                            value = null;
-                        }
-                    }
-                    Object.assign(this.queryParam,{[item]:value});
-                })
-            }
+    @Prop() public context!: any;
+
+    /**
+     * 视图参数
+     *
+     * @type {*}
+     * @memberof AppFormDRUIPart
+     */
+    @Prop() public viewparams!: any;
+
+    /**
+     * 公共参数处理
+     *
+     * @param {*} arg
+     * @returns
+     * @memberof DropDownListDynamic
+     */
+    public handlePublicParams(arg: any) {
+        // 合并表单参数
+        arg.param = this.viewparams ? JSON.parse(JSON.stringify(this.viewparams)) : {};
+        arg.context = this.context ? JSON.parse(JSON.stringify(this.context)) : {};
+        // 附加参数处理
+        if (this.itemParam.context) {
+          let _context = this.$util.formatData(this.data,arg.context,this.itemParam.context);
+            Object.assign(arg.context,_context);
+        }
+        if (this.itemParam.param) {
+          let _param = this.$util.formatData(this.data,arg.param,this.itemParam.param);
+            Object.assign(arg.param,_param);
         }
     }
 
@@ -182,7 +196,13 @@ export default class DropDownListDynamic extends Vue {
               console.log(`----${this.tag}----代码表不存在`);
           }
       }else if(this.tag && Object.is(this.codelistType,"DYNAMIC")){
-          this.codeListService.getItems(this.tag,{},this.queryParam).then((res:any) => {
+          // 公共参数处理
+          let data: any = {};
+          this.handlePublicParams(data);
+          // 参数处理
+          let _context = data.context;
+          let _param = data.param;
+          this.codeListService.getItems(this.tag,_context,_param).then((res:any) => {
               this.items = res;
           }).catch((error:any) => {
               console.log(`----${this.tag}----代码表不存在`);
@@ -199,7 +219,13 @@ export default class DropDownListDynamic extends Vue {
     public onClick($event:any){
         if($event){
             if(this.tag && Object.is(this.codelistType,"DYNAMIC")){
-                this.codeListService.getItems(this.tag,{},this.queryParam).then((res:any) => {
+                // 公共参数处理
+                let data: any = {};
+                this.handlePublicParams(data);
+                // 参数处理
+                let _context = data.context;
+                let _param = data.param;
+                this.codeListService.getItems(this.tag,_context,_param).then((res:any) => {
                     this.items = res;
                 }).catch((error:any) => {
                     console.log(`----${this.tag}----代码表不存在`);

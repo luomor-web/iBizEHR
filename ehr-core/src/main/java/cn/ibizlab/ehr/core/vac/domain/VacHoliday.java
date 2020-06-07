@@ -57,7 +57,6 @@ public class VacHoliday extends EntityMP implements Serializable {
     /**
      * 逻辑有效标志
      */
-    @DEField(preType = DEPredefinedFieldType.LOGICVALID)
     @TableField(value = "enable")
     @JSONField(name = "enable")
     @JsonProperty("enable")
@@ -191,6 +190,13 @@ public class VacHoliday extends EntityMP implements Serializable {
     public void setNd(String nd){
         this.nd = nd ;
         this.modify("nd",nd);
+    }
+    /**
+     * 设置 [逻辑有效标志]
+     */
+    public void setEnable(Integer enable){
+        this.enable = enable ;
+        this.modify("enable",enable);
     }
     /**
      * 设置 [名称]

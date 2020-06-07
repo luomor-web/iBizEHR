@@ -196,6 +196,7 @@ public class PimQualMajorServiceImpl extends ServiceImpl<PimQualMajorMapper, Pim
 
 
 
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);

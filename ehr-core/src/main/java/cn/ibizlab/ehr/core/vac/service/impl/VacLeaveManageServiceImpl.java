@@ -46,9 +46,6 @@ public class VacLeaveManageServiceImpl extends ServiceImpl<VacLeaveManageMapper,
 
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.vac.service.IVacLeaveDetailService vacleavedetailService;
-    @Autowired
-    @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonService;
 
     private int batchSize = 500;
@@ -206,7 +203,6 @@ public class VacLeaveManageServiceImpl extends ServiceImpl<VacLeaveManageMapper,
      */
     @Override
     public Page<VacLeaveManage> searchFormType(VacLeaveManageSearchContext context) {
-        fillWFTaskContext(context);
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<VacLeaveManage> pages=baseMapper.searchFormType(context.getPages(),context,context.getSelectCond());
         return new PageImpl<VacLeaveManage>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
@@ -216,7 +212,6 @@ public class VacLeaveManageServiceImpl extends ServiceImpl<VacLeaveManageMapper,
      */
     @Override
     public Page<VacLeaveManage> searchGR(VacLeaveManageSearchContext context) {
-        fillWFTaskContext(context);
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<VacLeaveManage> pages=baseMapper.searchGR(context.getPages(),context,context.getSelectCond());
         return new PageImpl<VacLeaveManage>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
@@ -226,7 +221,6 @@ public class VacLeaveManageServiceImpl extends ServiceImpl<VacLeaveManageMapper,
      */
     @Override
     public Page<VacLeaveManage> searchMOBJLSS(VacLeaveManageSearchContext context) {
-        fillWFTaskContext(context);
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<VacLeaveManage> pages=baseMapper.searchMOBJLSS(context.getPages(),context,context.getSelectCond());
         return new PageImpl<VacLeaveManage>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
@@ -236,7 +230,6 @@ public class VacLeaveManageServiceImpl extends ServiceImpl<VacLeaveManageMapper,
      */
     @Override
     public Page<VacLeaveManage> searchJLSS(VacLeaveManageSearchContext context) {
-        fillWFTaskContext(context);
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<VacLeaveManage> pages=baseMapper.searchJLSS(context.getPages(),context,context.getSelectCond());
         return new PageImpl<VacLeaveManage>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
@@ -246,7 +239,6 @@ public class VacLeaveManageServiceImpl extends ServiceImpl<VacLeaveManageMapper,
      */
     @Override
     public Page<VacLeaveManage> searchDefault(VacLeaveManageSearchContext context) {
-        fillWFTaskContext(context);
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<VacLeaveManage> pages=baseMapper.searchDefault(context.getPages(),context,context.getSelectCond());
         return new PageImpl<VacLeaveManage>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
@@ -256,31 +248,11 @@ public class VacLeaveManageServiceImpl extends ServiceImpl<VacLeaveManageMapper,
      */
     @Override
     public Page<VacLeaveManage> searchOnlySPTY(VacLeaveManageSearchContext context) {
-        fillWFTaskContext(context);
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<VacLeaveManage> pages=baseMapper.searchOnlySPTY(context.getPages(),context,context.getSelectCond());
         return new PageImpl<VacLeaveManage>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
 
 
-    @Autowired
-    private cn.ibizlab.ehr.util.client.IBZWFFeignClient ibzwfFeignClient;
-
-    /**
-     * 查询工作流待办
-     * @param context
-     */
-    private void fillWFTaskContext(VacLeaveManageSearchContext context){
-
-        if(!StringUtils.isEmpty(context.getUserTaskId()) && !StringUtils.isEmpty(context.getProcessDefinitionKey())){
-            List<String> businessKeys= ibzwfFeignClient.getbusinesskeysByUserId("ehr", cn.ibizlab.ehr.util.security.AuthenticationUser.getAuthenticationUser().getUserid(),"vacleavemanages",context.getProcessDefinitionKey(),context.getUserTaskId());
-            if(businessKeys.size()>0){
-                context.getSelectCond().in("vacleavemanageid",businessKeys);
-            }
-            else{
-                context.getSelectCond().apply("1<>1");
-            }
-        }
-    }
 
     /**
      * 为当前实体填充父数据（外键值文本、外键值附加数据）
@@ -305,6 +277,7 @@ public class VacLeaveManageServiceImpl extends ServiceImpl<VacLeaveManageMapper,
             et.setJlss(pimperson.getJlss());
         }
     }
+
 
     @Override
     public List<JSONObject> select(String sql, Map param){

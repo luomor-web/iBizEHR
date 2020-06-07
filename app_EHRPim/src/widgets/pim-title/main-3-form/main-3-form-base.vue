@@ -51,7 +51,17 @@
 </i-col>
 <i-col v-show="detailsModel.zcdj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zcdj' :itemRules="this.rules.zcdj" class='' :caption="$t('entities.pimtitle.main_3_form.details.zcdj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zcdj.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.zcdj" :data="data" :itemParam="{}" :disabled="detailsModel.zcdj.disabled"  tag='EhrCodeList0024' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.zcdj" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.zcdj.disabled"  
+    tag='EhrCodeList0024' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -81,7 +91,18 @@
 </i-col>
 <i-col v-show="detailsModel.sfzgzc.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfzgzc' :itemRules="this.rules.sfzgzc" class='' :caption="$t('entities.pimtitle.main_3_form.details.sfzgzc')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfzgzc.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.sfzgzc"  :disabled="detailsModel.sfzgzc.disabled"  name="sfzgzc" tag='EhrCodeList0054' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group 
+  v-model="data.sfzgzc"
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"   
+  :disabled="detailsModel.sfzgzc.disabled"  
+  name="sfzgzc" 
+  :itemParam="{}" 
+  tag='EhrCodeList0400' 
+  codelistType='STATIC' 
+  style="">
+</app-radio-group>
 </app-form-item>
 
 </i-col>

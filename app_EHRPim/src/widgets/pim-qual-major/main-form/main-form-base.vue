@@ -39,6 +39,7 @@
     name="gwtype"
     :context="context"
     :viewparams="viewparams"
+    :itemParam='{ }' 
     :service="service"
     :acParams="{ }"
     :pickupView="{ viewname: 'pimgwtypempickup-view', title: $t('entities.pimgwtype.views.mpickupview.title'), deResParameters: [], parameters: [{ pathName: 'pimgwtypes', parameterName: 'pimgwtype' }, { pathName: 'mpickupview', parameterName: 'mpickupview' } ], placement:'' }"

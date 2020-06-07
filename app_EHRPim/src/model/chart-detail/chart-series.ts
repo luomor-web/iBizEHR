@@ -123,6 +123,14 @@ export class ChartSeries {
     public seriesLayoutBy:string = "column";
 
     /**
+     * 序列代码表
+     *
+     * @type {*}
+     * @memberof ChartSeries
+     */
+    public seriesCodeList:any;
+
+    /**
      * Creates an instance of ChartSeries.
      * ChartSeries 实例
      * 
@@ -144,6 +152,7 @@ export class ChartSeries {
         this.dataSetFields = opts.dataSetFields ? opts.dataSetFields:[];
         this.seriesMap = opts.seriesMap ? opts.seriesMap:null;
         this.seriesIndex = opts.seriesIndex? opts.seriesIndex:0;
+        this.seriesCodeList = opts.seriesCodeList?opts.seriesCodeList:null;
     }
 
     /**
@@ -284,5 +293,15 @@ export class ChartSeries {
      */
     public setSeriesIndex(state: number): void {
         this.seriesIndex = state;
+    }
+
+    /**
+     * 设置序列代码表
+     *
+     * @param {any} state
+     * @memberof ChartSeries
+     */
+    public setSeriesCodeList(state: any): void {
+        this.seriesCodeList = state;
     }
 }

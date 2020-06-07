@@ -45,6 +45,10 @@ import org.springframework.util.StringUtils;
 public class PcmYdjpmxServiceImpl extends ServiceImpl<PcmYdjpmxMapper, PcmYdjpmx> implements IPcmYdjpmxService {
 
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmYdjpmxSetFinishedLogic setfinishedLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -60,6 +64,7 @@ public class PcmYdjpmxServiceImpl extends ServiceImpl<PcmYdjpmxMapper, PcmYdjpmx
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pcmydjpmxid",et.getPcmydjpmxid())))
             return false;
         CachedBeanCopier.copy(get(et.getPcmydjpmxid()),et);
+        pcmydmxService.update(pcmydjpmxInheritMapping.toPcmydmx(et));
         return true;
     }
 
@@ -111,6 +116,13 @@ public class PcmYdjpmxServiceImpl extends ServiceImpl<PcmYdjpmxMapper, PcmYdjpmx
 
     @Override
     @Transactional
+    public PcmYdjpmx isFinished(PcmYdjpmx et) {
+        setfinishedLogic.execute(et);
+         return et ;
+    }
+
+    @Override
+    @Transactional
     public PcmYdjpmx get(String key) {
         PcmYdjpmx et = getById(key);
         if(et==null){
@@ -124,17 +136,11 @@ public class PcmYdjpmxServiceImpl extends ServiceImpl<PcmYdjpmxMapper, PcmYdjpmx
 
     @Override
     @Transactional
-    public PcmYdjpmx jPWC(PcmYdjpmx et) {
-        //自定义代码
-        return et;
-    }
-
-    @Override
-    @Transactional
     public boolean create(PcmYdjpmx et) {
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPcmydjpmxid()),et);
+        createIndexMajorEntityData(et);
         return true;
     }
 
@@ -147,6 +153,7 @@ public class PcmYdjpmxServiceImpl extends ServiceImpl<PcmYdjpmxMapper, PcmYdjpmx
     @Transactional
     public boolean remove(String key) {
         boolean result=removeById(key);
+        pcmydmxService.remove(key);
         return result ;
     }
 
@@ -186,6 +193,24 @@ public class PcmYdjpmxServiceImpl extends ServiceImpl<PcmYdjpmxMapper, PcmYdjpmx
 
 
 
+
+    @Autowired
+    cn.ibizlab.ehr.core.pcm.mapping.PcmYdjpmxInheritMapping pcmydjpmxInheritMapping;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdmxService pcmydmxService;
+
+    /**
+     * 创建索引主实体数据
+     * @param et
+     */
+    private void createIndexMajorEntityData(PcmYdjpmx et){
+        if(ObjectUtils.isEmpty(et.getPcmydjpmxid()))
+            et.setPcmydjpmxid((String)et.getDefaultKey(true));
+        cn.ibizlab.ehr.core.pcm.domain.PcmYdmx pcmydmx =pcmydjpmxInheritMapping.toPcmydmx(et);
+        pcmydmx.set("pcmydmxtype","40");
+        pcmydmxService.create(pcmydmx);
+    }
 
     @Override
     public List<JSONObject> select(String sql, Map param){

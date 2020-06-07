@@ -66,6 +66,18 @@ public class PcmYdlzmxResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdlzmx-IsFinished-all')")
+    @ApiOperation(value = "是否完成离职操作", tags = {"异动离职明细" },  notes = "是否完成离职操作")
+	@RequestMapping(method = RequestMethod.POST, value = "/pcmydlzmxes/{pcmydlzmx_id}/isfinished")
+    @Transactional
+    public ResponseEntity<PcmYdlzmxDTO> isFinished(@PathVariable("pcmydlzmx_id") String pcmydlzmx_id, @RequestBody PcmYdlzmxDTO pcmydlzmxdto) {
+        PcmYdlzmx pcmydlzmx = pcmydlzmxMapping.toDomain(pcmydlzmxdto);
+        pcmydlzmx.setPcmydlzmxid(pcmydlzmx_id);
+        pcmydlzmx = pcmydlzmxService.isFinished(pcmydlzmx);
+        pcmydlzmxdto = pcmydlzmxMapping.toDto(pcmydlzmx);
+        return ResponseEntity.status(HttpStatus.OK).body(pcmydlzmxdto);
+    }
+
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdlzmx-FillPersonInfo-all')")
     @ApiOperation(value = "填充人员信息", tags = {"异动离职明细" },  notes = "填充人员信息")
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydlzmxes/{pcmydlzmx_id}/fillpersoninfo")
@@ -110,18 +122,6 @@ public class PcmYdlzmxResource {
 	@RequestMapping(method = RequestMethod.POST, value = "/pcmydlzmxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody PcmYdlzmxDTO pcmydlzmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(pcmydlzmxService.checkKey(pcmydlzmxMapping.toDomain(pcmydlzmxdto)));
-    }
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdlzmx-FinishLZ-all')")
-    @ApiOperation(value = "完成离职操作", tags = {"异动离职明细" },  notes = "完成离职操作")
-	@RequestMapping(method = RequestMethod.POST, value = "/pcmydlzmxes/{pcmydlzmx_id}/finishlz")
-    @Transactional
-    public ResponseEntity<PcmYdlzmxDTO> finishLZ(@PathVariable("pcmydlzmx_id") String pcmydlzmx_id, @RequestBody PcmYdlzmxDTO pcmydlzmxdto) {
-        PcmYdlzmx pcmydlzmx = pcmydlzmxMapping.toDomain(pcmydlzmxdto);
-        pcmydlzmx.setPcmydlzmxid(pcmydlzmx_id);
-        pcmydlzmx = pcmydlzmxService.finishLZ(pcmydlzmx);
-        pcmydlzmxdto = pcmydlzmxMapping.toDto(pcmydlzmx);
-        return ResponseEntity.status(HttpStatus.OK).body(pcmydlzmxdto);
     }
 
     @ApiOperation(value = "获取异动离职明细草稿", tags = {"异动离职明细" },  notes = "获取异动离职明细草稿")

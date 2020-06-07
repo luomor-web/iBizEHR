@@ -193,7 +193,7 @@ export default class PimArchiveSloanandreturnServiceBase extends EntityService {
      * @memberof PimArchiveSloanandreturnServiceBase
      */
     public async UpdateState(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:UpdateStateLogic = new UpdateStateLogic();
+        let appLogic:UpdateStateLogic = new UpdateStateLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }

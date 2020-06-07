@@ -6,7 +6,17 @@
       <row>
                     <i-col v-show="detailsModel.n_gwlx_eq.visible" :style="{}"  :sm="{ span: 8, offset: 0 }" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
               <app-form-item name='n_gwlx_eq' :itemRules="this.rules.n_gwlx_eq" class='' :caption="$t('entities.pimgwtype.default_searchform.details.n_gwlx_eq')" uiStyle="DEFAULT" :labelWidth="100" :isShowCaption="true" :error="detailsModel.n_gwlx_eq.error" :isEmptyCaption="false" labelPos="RIGHT"> 
-               <dropdown-list v-model="data.n_gwlx_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_gwlx_eq.disabled"  tag='EhrCodeList0140' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_gwlx_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_gwlx_eq.disabled"  
+              tag='EhrCodeList0140' 
+              codelistType='DYNAMIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>

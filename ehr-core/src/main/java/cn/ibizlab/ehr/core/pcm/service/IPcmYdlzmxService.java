@@ -27,12 +27,12 @@ public interface IPcmYdlzmxService extends IService<PcmYdlzmx>{
 
     boolean update(PcmYdlzmx et) ;
     void updateBatch(List<PcmYdlzmx> list) ;
+    PcmYdlzmx isFinished(PcmYdlzmx et) ;
     PcmYdlzmx fillPersonInfo(PcmYdlzmx et) ;
     PcmYdlzmx get(String key) ;
     boolean create(PcmYdlzmx et) ;
     void createBatch(List<PcmYdlzmx> list) ;
     boolean checkKey(PcmYdlzmx et) ;
-    PcmYdlzmx finishLZ(PcmYdlzmx et) ;
     PcmYdlzmx getDraft(PcmYdlzmx et) ;
     boolean save(PcmYdlzmx et) ;
     void saveBatch(List<PcmYdlzmx> list) ;

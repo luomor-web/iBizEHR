@@ -12,13 +12,33 @@
           </i-col>
           <i-col v-show="detailsModel.n_xl_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_xl_eq' :itemRules="this.rules.n_xl_eq" class='' :caption="$t('entities.pimeducation.default_searchform.details.n_xl_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_xl_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list v-model="data.n_xl_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_xl_eq.disabled"  tag='EhrCodeList0117' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_xl_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_xl_eq.disabled"  
+              tag='EhrCodeList0117' 
+              codelistType='DYNAMIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>
           <i-col v-show="detailsModel.n_xxxz_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_xxxz_eq' :itemRules="this.rules.n_xxxz_eq" class='' :caption="$t('entities.pimeducation.default_searchform.details.n_xxxz_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_xxxz_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list v-model="data.n_xxxz_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_xxxz_eq.disabled"  tag='EhrCodeList0208' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_xxxz_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_xxxz_eq.disabled"  
+              tag='EhrCodeList0208' 
+              codelistType='DYNAMIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>

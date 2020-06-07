@@ -192,7 +192,7 @@ export default class ATTENDANCEMREPORTMXWscGridViewBase extends GridViewBase {
      * @memberof ATTENDANCEMREPORTMXWscGridView
      */
     public toolBarModels: any = {
-        tbitem14_export2excel: { name: 'tbitem14_export2excel', caption: '导出明细','isShowCaption':true,'isShowIcon':true, tooltip: '导出明细', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'export2Excel', target: 'MULTIDATA' }, class: '' },
+        tbitem14_export2excel: { name: 'tbitem14_export2excel', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'export2Excel', target: 'MULTIDATA' }, class: '' },
 
         tbitem13: { name: 'tbitem13', caption: '导入','isShowCaption':true,'isShowIcon':true, tooltip: '导入', iconcls: 'fa fa-upload', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'Import', target: '' }, class: '' },
 
@@ -425,6 +425,7 @@ export default class ATTENDANCEMREPORTMXWscGridViewBase extends GridViewBase {
             data.srfsourcekey = args[0].srfsourcekey;
         }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
+        delete curViewParam.attendancemreportmx;
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }

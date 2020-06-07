@@ -52,6 +52,14 @@ export default class CodeListService {
      */
     public static codelistCache:Map<string,any> = new Map();
 
+    /**
+     * 动态代码表缓存(已完成)
+     *
+     * @type {Map<string,any>}
+     * @memberof CodeListService
+     */
+    public static codelistCached:Map<string,any> = new Map();
+
 
     /**
      * 代码表--项目资金属性
@@ -159,31 +167,22 @@ export default class CodeListService {
      */
     public getItems(tag: string,context:any = {}, data?: any, isloading?: boolean,): Promise<any[]> {
         let _this: any = this;
+        if(context && context.srfsessionid){
+            delete context.srfsessionid;
+        }
         let isEnableCache:boolean = _this[tag].isEnableCache;
         let cacheTimeout:any = _this[tag].cacheTimeout;
         return new Promise((resolve:any,reject:any) =>{
-            // 如有查询参数传递过来，需直接加载，不能使用缓存
-            if(data && Object.keys(data).length >0){
-                if (_this[tag]) {
-                    _this[tag].getItems(context,JSON.parse(JSON.stringify(data)),isloading).then((result:any) =>{
-                        resolve(result);
-                    }).catch((error:any) =>{
-                        Promise.reject([]);
-                    })
-                }else{
-                    return Promise.reject([]);
-                }
-            }else{
                 // 启用缓存
                 if(isEnableCache){
-                    // 加载完成,从store获取
-                    if(this.$store &&  _this.$store.getters){
-                        let items:any = _this.$store.getters.getCodeListItems(tag);
+                    // 加载完成,从本地缓存获取
+                    if(CodeListService.codelistCached.get(`${JSON.stringify(context)}-${JSON.stringify(data)}-${tag}`)){
+                        let items:any = CodeListService.codelistCached.get(`${JSON.stringify(context)}-${JSON.stringify(data)}-${tag}`);
                         if(items.length >0){
                             if(cacheTimeout !== -1){
                                 if(new Date().getTime() > _this[tag].expirationTime){
                                     _this[tag].getItems(context,data,isloading).then((result:any) =>{
-                                        _this.$store.commit('updateCodeList',{srfkey:tag,items:result});
+                                        CodeListService.codelistCached.set(`${JSON.stringify(context)}-${JSON.stringify(data)}-${tag}`,{items:result});
                                         _this[tag].expirationTime = new Date().getTime() + cacheTimeout;
                                         resolve(result);
                                     }).catch((error:any) =>{
@@ -198,10 +197,11 @@ export default class CodeListService {
                         }
                     }
                     if (_this[tag]) {
-                        const callback:Function = (tag:string,promise:Promise<any>) =>{
+                        const callback:Function = (context:any ={},data:any ={},tag:string,promise:Promise<any>) =>{
                             promise.then((result:any) =>{
+                                console.log()
                                 if(result.length > 0){
-                                    _this.$store.commit('updateCodeList',{srfkey:tag,items:result});
+                                    CodeListService.codelistCached.set(`${JSON.stringify(context)}-${JSON.stringify(data)}-${tag}`,{items:result});
                                     return resolve(result);
                                 }else{
                                     return resolve([]);
@@ -211,15 +211,15 @@ export default class CodeListService {
                             })
                         }
                         // 加载中，UI又需要数据，解决连续加载同一代码表问题
-                        if(CodeListService.codelistCache.get(tag)){
-                            callback(tag,CodeListService.codelistCache.get(tag));
+                        if(CodeListService.codelistCache.get(`${JSON.stringify(context)}-${JSON.stringify(data)}-${tag}`)){
+                            callback(context,data,tag,CodeListService.codelistCache.get(`${JSON.stringify(context)}-${JSON.stringify(data)}-${tag}`));
                         }else{
                             let result:Promise<any> = _this[tag].getItems(context,data,isloading);
-                            CodeListService.codelistCache.set(tag,result);
+                            CodeListService.codelistCache.set(`${JSON.stringify(context)}-${JSON.stringify(data)}-${tag}`,result);
                             if(cacheTimeout !== -1){
                                 _this[tag].expirationTime = new Date().getTime() + cacheTimeout;
                             }
-                            callback(tag,result);
+                            callback(context,data,tag,result);
                         }
                     }
                 }else{
@@ -233,7 +233,6 @@ export default class CodeListService {
                         return Promise.reject([]);
                     } 
                 }
-            }
         })
     }
 }

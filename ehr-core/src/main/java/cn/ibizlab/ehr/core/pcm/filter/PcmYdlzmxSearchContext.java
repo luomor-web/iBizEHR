@@ -111,6 +111,13 @@ public class PcmYdlzmxSearchContext extends QueryWrapperContext<PcmYdlzmx> {
             this.getSelectCond().eq("lzmtrid", n_lzmtrid_eq);
         }
     }
+	private String n_isfinished_eq;//[是否完成]
+	public void setN_isfinished_eq(String n_isfinished_eq) {
+        this.n_isfinished_eq = n_isfinished_eq;
+        if(!ObjectUtils.isEmpty(this.n_isfinished_eq)){
+            this.getSelectCond().eq("isfinished", n_isfinished_eq);
+        }
+    }
 
     /**
 	 * 启用快速搜索

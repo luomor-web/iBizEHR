@@ -37,14 +37,14 @@ export default class CodeList extends Vue {
      * 代码表类型
      *
      * @type {string}
-     * @memberof AppCheckBox
+     * @memberof CodeList
      */
     @Prop() public codelistType?: string;
 
     /**
      * 当前值
      * @type {any}
-     * @memberof SelectPicker
+     * @memberof CodeList
      * 
      */
     @Prop() public value?: string;
@@ -52,23 +52,55 @@ export default class CodeList extends Vue {
     /**
      * 获取或模式
      * @type {boolean}
-     * @memberof SelectPicker
+     * @memberof CodeList
      */
     @Prop({default:"STR"}) public renderMode?: string;
 
     /**
      * 文本分隔符
      * @type {boolean}
-     * @memberof SelectPicker
+     * @memberof CodeList
      */
     @Prop({default:'、'}) public textSeparator?: string;
 
     /**
      * 值分隔符
      * @type {boolean}
-     * @memberof SelectPicker
+     * @memberof CodeList
      */
     @Prop({default:','}) public valueSeparator?: string;
+
+    /**
+     * 传入表单数据
+     *
+     * @type {*}
+     * @memberof CodeList
+     */
+    @Prop() public data?: any;
+
+    /**
+     * 传入额外参数
+     *
+     * @type {*}
+     * @memberof CodeList
+     */
+    @Prop() public itemParam?: any;
+
+    /**
+     * 视图上下文
+     *
+     * @type {*}
+     * @memberof CodeList
+     */
+    @Prop() public context!: any;
+
+    /**
+     * 视图参数
+     *
+     * @type {*}
+     * @memberof CodeList
+     */
+    @Prop() public viewparams!: any;
 
     /**
      * 是否为空
@@ -101,7 +133,7 @@ export default class CodeList extends Vue {
      */
     public isUseLangres:boolean = false;
 
-   /**
+    /**
      * 数据值变化
      *
      * @param {*} newval
@@ -112,7 +144,18 @@ export default class CodeList extends Vue {
     @Watch('value')
     public onValueChange(newVal: any, oldVal: any) {
         this.dataHandle();
+    }
 
+    /**
+     * 监听表单数据变化
+     * 
+     * @memberof CodeList
+     */
+    @Watch('data',{immediate:true,deep:true})
+    onDataChange(newVal: any, oldVal: any) {
+        if(newVal){
+            this.dataHandle();
+        }
     }
 
     /**
@@ -131,7 +174,13 @@ export default class CodeList extends Vue {
       this.ifEmpty = false;
       // 动态代码表处理
       if (Object.is(this.codelistType, "DYNAMIC")) {
-          this.codeListService.getItems(this.tag).then((res: any) => {
+          // 公共参数处理
+          let data: any = {};
+          this.handlePublicParams(data);
+          // 参数处理
+          let _context = data.context;
+          let _param = data.param;
+          this.codeListService.getItems(this.tag,_context,_param).then((res:any) => {
               let items = res;
               _this.setItems(items, _this);
           }).catch((error: any) => {
@@ -206,6 +255,28 @@ export default class CodeList extends Vue {
             return value;
         }else{
             return result;
+        }
+    }
+
+    /**
+     * 公共参数处理
+     *
+     * @param {*} arg
+     * @returns
+     * @memberof CodeList
+     */
+    public handlePublicParams(arg: any) {
+        // 合并表单参数
+        arg.param = this.viewparams ? JSON.parse(JSON.stringify(this.viewparams)) : {};
+        arg.context = this.context ? JSON.parse(JSON.stringify(this.context)) : {};
+        // 附加参数处理
+        if (this.itemParam && this.itemParam.context) {
+          let _context = this.$util.formatData(this.data,arg.context,this.itemParam.context);
+            Object.assign(arg.context,_context);
+        }
+        if (this.itemParam && this.itemParam.param) {
+          let _param = this.$util.formatData(this.data,arg.param,this.itemParam.param);
+            Object.assign(arg.param,_param);
         }
     }
 

@@ -48,6 +48,10 @@ public class PcmYdlzmxServiceImpl extends ServiceImpl<PcmYdlzmxMapper, PcmYdlzmx
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonService;
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmYdlzmxSetFinishedLogic setfinishedLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -57,6 +61,7 @@ public class PcmYdlzmxServiceImpl extends ServiceImpl<PcmYdlzmxMapper, PcmYdlzmx
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pcmydlzmxid",et.getPcmydlzmxid())))
             return false;
         CachedBeanCopier.copy(get(et.getPcmydlzmxid()),et);
+        pcmydmxService.update(pcmydlzmxInheritMapping.toPcmydmx(et));
         return true;
     }
 
@@ -64,6 +69,13 @@ public class PcmYdlzmxServiceImpl extends ServiceImpl<PcmYdlzmxMapper, PcmYdlzmx
     public void updateBatch(List<PcmYdlzmx> list) {
         list.forEach(item->fillParentData(item));
         updateBatchById(list,batchSize);
+    }
+
+    @Override
+    @Transactional
+    public PcmYdlzmx isFinished(PcmYdlzmx et) {
+        setfinishedLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -93,6 +105,7 @@ public class PcmYdlzmxServiceImpl extends ServiceImpl<PcmYdlzmxMapper, PcmYdlzmx
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPcmydlzmxid()),et);
+        createIndexMajorEntityData(et);
         return true;
     }
 
@@ -105,13 +118,6 @@ public class PcmYdlzmxServiceImpl extends ServiceImpl<PcmYdlzmxMapper, PcmYdlzmx
     @Override
     public boolean checkKey(PcmYdlzmx et) {
         return (!ObjectUtils.isEmpty(et.getPcmydlzmxid()))&&(!Objects.isNull(this.getById(et.getPcmydlzmxid())));
-    }
-
-    @Override
-    @Transactional
-    public PcmYdlzmx finishLZ(PcmYdlzmx et) {
-        //自定义代码
-        return et;
     }
 
     @Override
@@ -157,6 +163,7 @@ public class PcmYdlzmxServiceImpl extends ServiceImpl<PcmYdlzmxMapper, PcmYdlzmx
     @Transactional
     public boolean remove(String key) {
         boolean result=removeById(key);
+        pcmydmxService.remove(key);
         return result ;
     }
 
@@ -221,6 +228,24 @@ public class PcmYdlzmxServiceImpl extends ServiceImpl<PcmYdlzmxMapper, PcmYdlzmx
             }
             et.setLzmtrname(lzmtr.getPimpersonname());
         }
+    }
+
+    @Autowired
+    cn.ibizlab.ehr.core.pcm.mapping.PcmYdlzmxInheritMapping pcmydlzmxInheritMapping;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdmxService pcmydmxService;
+
+    /**
+     * 创建索引主实体数据
+     * @param et
+     */
+    private void createIndexMajorEntityData(PcmYdlzmx et){
+        if(ObjectUtils.isEmpty(et.getPcmydlzmxid()))
+            et.setPcmydlzmxid((String)et.getDefaultKey(true));
+        cn.ibizlab.ehr.core.pcm.domain.PcmYdmx pcmydmx =pcmydlzmxInheritMapping.toPcmydmx(et);
+        pcmydmx.set("pcmydmxtype","30");
+        pcmydmxService.create(pcmydmx);
     }
 
     @Override

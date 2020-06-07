@@ -246,22 +246,6 @@ public class VacLeaveDetailDTO extends DTOBase implements Serializable {
     private Timestamp jhjssj;
 
     /**
-     * 属性 [ORMORGSECTORID]
-     *
-     */
-    @JSONField(name = "ormorgsectorid")
-    @JsonProperty("ormorgsectorid")
-    private String ormorgsectorid;
-
-    /**
-     * 属性 [ORMORGID]
-     *
-     */
-    @JSONField(name = "ormorgid")
-    @JsonProperty("ormorgid")
-    private String ormorgid;
-
-    /**
      * 属性 [PIMPERSONID]
      *
      */
@@ -278,20 +262,44 @@ public class VacLeaveDetailDTO extends DTOBase implements Serializable {
     private String pimpersonname;
 
     /**
-     * 属性 [VACLEAVEMANAGENAME]
+     * 属性 [ORMORGID]
      *
      */
-    @JSONField(name = "vacleavemanagename")
-    @JsonProperty("vacleavemanagename")
-    private String vacleavemanagename;
+    @JSONField(name = "ormorgid")
+    @JsonProperty("ormorgid")
+    private String ormorgid;
 
     /**
-     * 属性 [VACLEAVEMANAGEID]
+     * 属性 [ORMORGSECTORID]
      *
      */
-    @JSONField(name = "vacleavemanageid")
-    @JsonProperty("vacleavemanageid")
-    private String vacleavemanageid;
+    @JSONField(name = "ormorgsectorid")
+    @JsonProperty("ormorgsectorid")
+    private String ormorgsectorid;
+
+    /**
+     * 属性 [ORMORGNAME]
+     *
+     */
+    @JSONField(name = "ormorgname")
+    @JsonProperty("ormorgname")
+    private String ormorgname;
+
+    /**
+     * 属性 [ORMORGSECTORNAME]
+     *
+     */
+    @JSONField(name = "ormorgsectorname")
+    @JsonProperty("ormorgsectorname")
+    private String ormorgsectorname;
+
+    /**
+     * 属性 [STATE]
+     *
+     */
+    @JSONField(name = "state")
+    @JsonProperty("state")
+    private String state;
 
 
     /**
@@ -447,19 +455,11 @@ public class VacLeaveDetailDTO extends DTOBase implements Serializable {
     }
 
     /**
-     * 设置 [PIMPERSONNAME]
+     * 设置 [STATE]
      */
-    public void setPimpersonname(String  pimpersonname){
-        this.pimpersonname = pimpersonname ;
-        this.modify("pimpersonname",pimpersonname);
-    }
-
-    /**
-     * 设置 [VACLEAVEMANAGEID]
-     */
-    public void setVacleavemanageid(String  vacleavemanageid){
-        this.vacleavemanageid = vacleavemanageid ;
-        this.modify("vacleavemanageid",vacleavemanageid);
+    public void setState(String  state){
+        this.state = state ;
+        this.modify("state",state);
     }
 
 

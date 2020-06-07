@@ -239,12 +239,19 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
     @JsonProperty("jhjssj")
     private Timestamp jhjssj;
     /**
-     * 部门标识
+     * 人员信息标识
+     */
+    @TableField(value = "pimpersonid")
+    @JSONField(name = "pimpersonid")
+    @JsonProperty("pimpersonid")
+    private String pimpersonid;
+    /**
+     * 员工姓名
      */
     @TableField(exist = false)
-    @JSONField(name = "ormorgsectorid")
-    @JsonProperty("ormorgsectorid")
-    private String ormorgsectorid;
+    @JSONField(name = "pimpersonname")
+    @JsonProperty("pimpersonname")
+    private String pimpersonname;
     /**
      * 组织标识
      */
@@ -253,41 +260,42 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
     @JsonProperty("ormorgid")
     private String ormorgid;
     /**
-     * 人员信息标识
-     */
-    @TableField(value = "pimpersonid")
-    @JSONField(name = "pimpersonid")
-    @JsonProperty("pimpersonid")
-    private String pimpersonid;
-    /**
-     * 请假人员
-     */
-    @TableField(value = "pimpersonname")
-    @JSONField(name = "pimpersonname")
-    @JsonProperty("pimpersonname")
-    private String pimpersonname;
-    /**
-     * 请销假管理名称
+     * 部门标识
      */
     @TableField(exist = false)
-    @JSONField(name = "vacleavemanagename")
-    @JsonProperty("vacleavemanagename")
-    private String vacleavemanagename;
+    @JSONField(name = "ormorgsectorid")
+    @JsonProperty("ormorgsectorid")
+    private String ormorgsectorid;
     /**
-     * 请销假管理标识
+     * 组织
      */
-    @TableField(value = "vacleavemanageid")
-    @JSONField(name = "vacleavemanageid")
-    @JsonProperty("vacleavemanageid")
-    private String vacleavemanageid;
+    @TableField(exist = false)
+    @JSONField(name = "ormorgname")
+    @JsonProperty("ormorgname")
+    private String ormorgname;
+    /**
+     * 部门
+     */
+    @TableField(exist = false)
+    @JSONField(name = "ormorgsectorname")
+    @JsonProperty("ormorgsectorname")
+    private String ormorgsectorname;
+    /**
+     * 状态
+     */
+    @DEField(defaultValue = "10" , defaultValueType = DEFieldDefaultValueType.PARAM)
+    @TableField(value = "state")
+    @JSONField(name = "state")
+    @JsonProperty("state")
+    private String state;
 
     /**
-     * 请假管理-请假明细
+     * 人员信息-请假明细
      */
     @JsonIgnore
     @JSONField(serialize = false)
     @TableField(exist = false)
-    private cn.ibizlab.ehr.core.vac.domain.VacLeaveManage vacleavemanage;
+    private cn.ibizlab.ehr.core.pim.domain.PimPerson pimperson;
 
 
 
@@ -425,18 +433,11 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.modify("pimpersonid",pimpersonid);
     }
     /**
-     * 设置 [请假人员]
+     * 设置 [状态]
      */
-    public void setPimpersonname(String pimpersonname){
-        this.pimpersonname = pimpersonname ;
-        this.modify("pimpersonname",pimpersonname);
-    }
-    /**
-     * 设置 [请销假管理标识]
-     */
-    public void setVacleavemanageid(String vacleavemanageid){
-        this.vacleavemanageid = vacleavemanageid ;
-        this.modify("vacleavemanageid",vacleavemanageid);
+    public void setState(String state){
+        this.state = state ;
+        this.modify("state",state);
     }
 
 }

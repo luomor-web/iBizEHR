@@ -60,6 +60,26 @@ public class PcmYdjdmxServiceImpl extends ServiceImpl<PcmYdjdmxMapper, PcmYdjdmx
     @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPimDistirbutionService pimdistirbutionService;
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmYdjdmxSetNewZtLogic setnewztLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmYdjdmxRyHgLogic ryhgLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmYdjdmxFillPersonInfoLogic fillpersoninfoLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmYdjdmxSetCheckstatusLogic setcheckstatusLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmYdjdmxNewDisInfoLogic newdisinfoLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -76,13 +96,6 @@ public class PcmYdjdmxServiceImpl extends ServiceImpl<PcmYdjdmxMapper, PcmYdjdmx
     }
 
     @Override
-    @Transactional
-    public PcmYdjdmx fillPersonInfo(PcmYdjdmx et) {
-        //自定义代码
-        return et;
-    }
-
-    @Override
     public PcmYdjdmx getDraft(PcmYdjdmx et) {
         fillParentData(et);
         return et;
@@ -92,9 +105,12 @@ public class PcmYdjdmxServiceImpl extends ServiceImpl<PcmYdjdmxMapper, PcmYdjdmx
     @Transactional
     public boolean update(PcmYdjdmx et) {
         fillParentData(et);
+        setnewztLogic.execute(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pcmydjdmxid",et.getPcmydjdmxid())))
             return false;
         CachedBeanCopier.copy(get(et.getPcmydjdmxid()),et);
+        pcmydmxService.update(pcmydjdmxInheritMapping.toPcmydmx(et));
+        ryhgLogic.execute(et);
         return true;
     }
 
@@ -108,6 +124,7 @@ public class PcmYdjdmxServiceImpl extends ServiceImpl<PcmYdjdmxMapper, PcmYdjdmx
     @Transactional
     public boolean remove(String key) {
         boolean result=removeById(key);
+        pcmydmxService.remove(key);
         return result ;
     }
 
@@ -118,9 +135,16 @@ public class PcmYdjdmxServiceImpl extends ServiceImpl<PcmYdjdmxMapper, PcmYdjdmx
 
     @Override
     @Transactional
-    public PcmYdjdmx rYHG(PcmYdjdmx et) {
-        //自定义代码
-        return et;
+    public PcmYdjdmx personBack(PcmYdjdmx et) {
+        ryhgLogic.execute(et);
+         return et ;
+    }
+
+    @Override
+    @Transactional
+    public PcmYdjdmx personInfo(PcmYdjdmx et) {
+        fillpersoninfoLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -168,6 +192,9 @@ public class PcmYdjdmxServiceImpl extends ServiceImpl<PcmYdjdmxMapper, PcmYdjdmx
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPcmydjdmxid()),et);
+        setcheckstatusLogic.execute(et);
+        newdisinfoLogic.execute(et);
+        createIndexMajorEntityData(et);
         return true;
     }
 
@@ -305,6 +332,24 @@ public class PcmYdjdmxServiceImpl extends ServiceImpl<PcmYdjdmxMapper, PcmYdjdmx
             }
             et.setOrmpostname(ormpost.getOrmpostname());
         }
+    }
+
+    @Autowired
+    cn.ibizlab.ehr.core.pcm.mapping.PcmYdjdmxInheritMapping pcmydjdmxInheritMapping;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdmxService pcmydmxService;
+
+    /**
+     * 创建索引主实体数据
+     * @param et
+     */
+    private void createIndexMajorEntityData(PcmYdjdmx et){
+        if(ObjectUtils.isEmpty(et.getPcmydjdmxid()))
+            et.setPcmydjdmxid((String)et.getDefaultKey(true));
+        cn.ibizlab.ehr.core.pcm.domain.PcmYdmx pcmydmx =pcmydjdmxInheritMapping.toPcmydmx(et);
+        pcmydmx.set("pcmydmxtype","90");
+        pcmydmxService.create(pcmydmx);
     }
 
     @Override

@@ -282,6 +282,9 @@ public class PimPersonServiceImpl extends ServiceImpl<PimPersonMapper, PimPerson
     private cn.ibizlab.ehr.core.trm.service.ITrmTrainPersonService trmtrainpersonService;
     @Autowired
     @Lazy
+    private cn.ibizlab.ehr.core.vac.service.IVacLeaveDetailService vacleavedetailService;
+    @Autowired
+    @Lazy
     private cn.ibizlab.ehr.core.vac.service.IVacLeaveManageService vacleavemanageService;
     @Autowired
     @Lazy
@@ -569,6 +572,15 @@ public class PimPersonServiceImpl extends ServiceImpl<PimPersonMapper, PimPerson
     @Override
     public Page<PimPerson> searchKFPRY(PimPersonSearchContext context) {
         com.baomidou.mybatisplus.extension.plugins.pagination.Page<PimPerson> pages=baseMapper.searchKFPRY(context.getPages(),context,context.getSelectCond());
+        return new PageImpl<PimPerson>(pages.getRecords(), context.getPageable(), pages.getTotal());
+    }
+
+    /**
+     * 查询集合 待设置考勤人员
+     */
+    @Override
+    public Page<PimPerson> searchSetAttRules(PimPersonSearchContext context) {
+        com.baomidou.mybatisplus.extension.plugins.pagination.Page<PimPerson> pages=baseMapper.searchSetAttRules(context.getPages(),context,context.getSelectCond());
         return new PageImpl<PimPerson>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
 
@@ -968,6 +980,7 @@ public class PimPersonServiceImpl extends ServiceImpl<PimPersonMapper, PimPerson
             et.setPimpersonname3(pimperson3.getPimpersonname());
         }
     }
+
 
     @Override
     public List<JSONObject> select(String sql, Map param){

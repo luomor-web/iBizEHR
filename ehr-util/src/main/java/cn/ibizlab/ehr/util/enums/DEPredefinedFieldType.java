@@ -49,6 +49,10 @@ public enum DEPredefinedFieldType {
      */
     LOGICVALID,
     /**
+     * 排序
+     */
+    ORDERVALUE,
+    /**
      * 不处理
      */
     NONE

@@ -20,23 +20,28 @@ import org.springframework.util.StringUtils;
 @Service
 public class IBZConfigService extends ServiceImpl<IBZConfigMapper, IBZConfig> implements IService<IBZConfig> {
 
-
     @Value("${ibiz.systemid:ehr}")
 	private String systemId;
 
-    @Cacheable( value="ibzou_configs",key = "'cfgid:'+#p0+'||'+#p1+'||'+#p2")
+    @Value("${ibiz.admin.userid:0100}")
+    private String adminuserid;
+
+    @Cacheable( value="ehr_configs",key = "'cfgid:'+#p0+'||'+#p1+'||'+#p2")
     public JSONObject getConfig(String cfgType,String targetType,String userId)
     {
         if(StringUtils.isEmpty(userId)||StringUtils.isEmpty(cfgType)||StringUtils.isEmpty(targetType))
             throw new BadRequestAlertException("获取配置失败，参数缺失","IBZConfig",cfgType);
         IBZConfig config=this.getOne(Wrappers.query(IBZConfig.builder().systemId(systemId).cfgType(cfgType).targetType(targetType).userId(userId).build()),false);
-        if(config==null)
-            return new JSONObject();
-        else
-            return JSON.parseObject(config.getCfg());
+        if(config==null) {
+            config=this.getOne(Wrappers.query(IBZConfig.builder().systemId(systemId).cfgType(cfgType).targetType(targetType).userId(adminuserid).build()),false);
+            if(config==null) {
+                return new JSONObject();
+            }
+        }
+        return JSON.parseObject(config.getCfg());
     }
 
-    @CacheEvict( value="ibzou_configs",key = "'cfgid:'+#p0+'||'+#p1+'||'+#p2")
+    @CacheEvict( value="ehr_configs",key = "'cfgid:'+#p0+'||'+#p1+'||'+#p2")
     public boolean saveConfig(String cfgType,String targetType,String userId,JSONObject config)
     {
         if(StringUtils.isEmpty(userId)||StringUtils.isEmpty(cfgType)||StringUtils.isEmpty(targetType))
@@ -47,7 +52,7 @@ public class IBZConfigService extends ServiceImpl<IBZConfigMapper, IBZConfig> im
         return this.saveOrUpdate(IBZConfig.builder().systemId(systemId).cfgType(cfgType).targetType(targetType).userId(userId).cfg(cfg).updateDate(DataObject.getNow()).build());
     }
 
-    @CacheEvict( value="ibzou_configs",key = "'cfgid:'+#p0+'||'+#p1+'||'+#p2")
+    @CacheEvict( value="ehr_configs",key = "'cfgid:'+#p0+'||'+#p1+'||'+#p2")
     public void resetConfig(String cfgType,String targetType,String userId)
     {
         if(StringUtils.isEmpty(userId)||StringUtils.isEmpty(cfgType)||StringUtils.isEmpty(targetType))

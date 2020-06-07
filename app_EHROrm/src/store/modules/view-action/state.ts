@@ -393,7 +393,7 @@ export const viewstate: any = {
         {
             viewtag: '855de99194a1f051419ad4cb529588b8',
             viewmodule: 'ORM',
-            viewname: 'ORMPOSTPickupGridView',
+            viewname: 'OrmPostPickupGridView',
             viewaction: '',
             viewdatachange: false,
             refviews: [

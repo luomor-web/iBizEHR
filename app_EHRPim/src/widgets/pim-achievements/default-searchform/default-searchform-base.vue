@@ -12,19 +12,49 @@
           </i-col>
           <i-col v-show="detailsModel.n_khjl_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_khjl_eq' :itemRules="this.rules.n_khjl_eq" class='' :caption="$t('entities.pimachievements.default_searchform.details.n_khjl_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_khjl_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list v-model="data.n_khjl_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_khjl_eq.disabled"  tag='EhrCodeList0142' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_khjl_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_khjl_eq.disabled"  
+              tag='EhrCodeList0142' 
+              codelistType='DYNAMIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>
           <i-col v-show="detailsModel.n_xmjb_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_xmjb_eq' :itemRules="this.rules.n_xmjb_eq" class='' :caption="$t('entities.pimachievements.default_searchform.details.n_xmjb_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_xmjb_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list v-model="data.n_xmjb_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_xmjb_eq.disabled"  tag='EhrCodeList0201' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_xmjb_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_xmjb_eq.disabled"  
+              tag='EhrCodeList0201' 
+              codelistType='STATIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>
           <i-col v-show="detailsModel.n_dj_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_dj_eq' :itemRules="this.rules.n_dj_eq" class='' :caption="$t('entities.pimachievements.default_searchform.details.n_dj_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_dj_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list v-model="data.n_dj_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_dj_eq.disabled"  tag='EhrCodeList0033' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_dj_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_dj_eq.disabled"  
+              tag='EhrCodeList0033' 
+              codelistType='DYNAMIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>

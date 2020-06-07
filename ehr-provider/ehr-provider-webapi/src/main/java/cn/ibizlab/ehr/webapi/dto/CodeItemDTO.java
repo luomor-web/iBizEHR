@@ -139,14 +139,6 @@ public class CodeItemDTO extends DTOBase implements Serializable {
 
 
     /**
-     * 设置 [ORDERVALUE]
-     */
-    public void setOrdervalue(Integer  ordervalue){
-        this.ordervalue = ordervalue ;
-        this.modify("ordervalue",ordervalue);
-    }
-
-    /**
      * 设置 [SHORTKEY]
      */
     public void setShortkey(String  shortkey){

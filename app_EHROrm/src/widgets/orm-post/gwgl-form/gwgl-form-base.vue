@@ -39,7 +39,19 @@
 </i-col>
 <i-col v-show="detailsModel.gwtype.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='gwtype' :itemRules="this.rules.gwtype" class='' :caption="$t('entities.ormpost.gwgl_form.details.gwtype')" uiStyle="DEFAULT" :labelWidth="160" :isShowCaption="true" :error="detailsModel.gwtype.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-checkbox-list v-model="data.gwtype" :disabled="detailsModel.gwtype.disabled"  tag='EhrCodeList0140' codelistType='DYNAMIC'   mode="" name="gwtype" style=""></app-checkbox-list>
+    <app-checkbox-list 
+  v-model="data.gwtype" 
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams" 
+  :disabled="detailsModel.gwtype.disabled" 
+  :itemParam="{}" 
+  tag='EhrCodeList0140' 
+  codelistType='DYNAMIC' 
+  mode=""
+  name="gwtype" 
+  style="">
+</app-checkbox-list>
 </app-form-item>
 
 </i-col>
@@ -51,7 +63,18 @@
 </i-col>
 <i-col v-show="detailsModel.isconfidential.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='isconfidential' :itemRules="this.rules.isconfidential" class='' :caption="$t('entities.ormpost.gwgl_form.details.isconfidential')" uiStyle="DEFAULT" :labelWidth="160" :isShowCaption="true" :error="detailsModel.isconfidential.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.isconfidential"  :disabled="detailsModel.isconfidential.disabled"  name="isconfidential" tag='EhrCodeList0097' codelistType='STATIC'  style=""></app-radio-group>
+    <app-radio-group 
+  v-model="data.isconfidential"
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"   
+  :disabled="detailsModel.isconfidential.disabled"  
+  name="isconfidential" 
+  :itemParam="{}" 
+  tag='EhrCodeList0097' 
+  codelistType='STATIC' 
+  style="">
+</app-radio-group>
 </app-form-item>
 
 </i-col>

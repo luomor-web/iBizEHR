@@ -41,12 +41,10 @@
 				 WHERE 	( floor(months_between(sysdate,recorddate))<=2 )
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EDUSCORE`, t1.`MONTH`, t1.`PERFORMSCORE`, t1.`PIMPERSONABILITYID`, t1.`PIMPERSONABILITYNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PRACSCORE`, t1.`RECORDDATE`, t1.`TECHSCORE`, t1.`TRAINRESULTSCORE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YEAR` FROM `T_PIMPERSONABILITY` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
 			]]>
     </sql>
-
 </mapper>
 

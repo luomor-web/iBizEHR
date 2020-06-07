@@ -255,20 +255,16 @@ export default class AppPickerSelectView extends Vue {
             return false;
         }
         // 合并表单参数
-        arg.param = JSON.parse(JSON.stringify(this.viewparams));
-        arg.context = JSON.parse(JSON.stringify(this.context));
+        arg.param = this.viewparams ? JSON.parse(JSON.stringify(this.viewparams)) : {};
+        arg.context = this.context ? JSON.parse(JSON.stringify(this.context)) : {};
         // 附加参数处理
         if (this.itemParam.context) {
-          let _context = this.$util.formatData(this.data,this.itemParam.context);
+          let _context = this.$util.formatData(this.data,arg.context,this.itemParam.context);
             Object.assign(arg.context,_context);
         }
         if (this.itemParam.param) {
-          let _param = this.$util.formatData(this.data,this.itemParam.param);
+          let _param = this.$util.formatData(this.data,arg.param,this.itemParam.param);
             Object.assign(arg.param,_param);
-        }
-        if (this.itemParam.parentdata) {
-          let _parentdata = this.$util.formatData(this.data,this.itemParam.parentdata);
-            Object.assign(arg.param,_parentdata);
         }
         return true;
     }

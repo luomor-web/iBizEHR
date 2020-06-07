@@ -18,13 +18,35 @@
           </i-col>
           <i-col v-show="detailsModel.n_startstopsign_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_startstopsign_eq' :itemRules="this.rules.n_startstopsign_eq" class='' :caption="$t('entities.ormpost.default_searchform.details.n_startstopsign_eq')" uiStyle="DEFAULT" :labelWidth="100" :isShowCaption="true" :error="detailsModel.n_startstopsign_eq.error" :isEmptyCaption="false" labelPos="RIGHT"> 
-               <dropdown-list v-model="data.n_startstopsign_eq" :data="data" :itemParam="{}" :disabled="detailsModel.n_startstopsign_eq.disabled"  tag='EhrCodeList0086' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+               <dropdown-list 
+              v-model="data.n_startstopsign_eq" 
+              :data="data" 
+              :context="context"
+              :viewparams="viewparams"
+              :itemParam="{}" 
+              :disabled="detailsModel.n_startstopsign_eq.disabled"  
+              tag='EhrCodeList0086' 
+              codelistType='STATIC'
+              placeholder='请选择...' style="">
+           </dropdown-list>
           </app-form-item>
           
           </i-col>
           <i-col v-show="detailsModel.n_gwtype_eq.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
               <app-form-item name='n_gwtype_eq' :itemRules="this.rules.n_gwtype_eq" class='' :caption="$t('entities.ormpost.default_searchform.details.n_gwtype_eq')" uiStyle="DEFAULT" :labelWidth="100" :isShowCaption="true" :error="detailsModel.n_gwtype_eq.error" :isEmptyCaption="false" labelPos="RIGHT"> 
-              <app-checkbox-list v-model="data.n_gwtype_eq" :disabled="detailsModel.n_gwtype_eq.disabled"  tag='EhrCodeList0140' codelistType='DYNAMIC'   mode="" name="n_gwtype_eq" style=""></app-checkbox-list>
+              <app-checkbox-list 
+            v-model="data.n_gwtype_eq" 
+            :data="data" 
+            :context="context"
+            :viewparams="viewparams" 
+            :disabled="detailsModel.n_gwtype_eq.disabled" 
+            :itemParam="{}" 
+            tag='EhrCodeList0140' 
+            codelistType='DYNAMIC' 
+            mode=""
+            name="n_gwtype_eq" 
+            style="">
+          </app-checkbox-list>
           </app-form-item>
           
           </i-col>

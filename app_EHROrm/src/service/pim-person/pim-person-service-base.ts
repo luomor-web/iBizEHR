@@ -235,7 +235,7 @@ export default class PimPersonServiceBase extends EntityService {
      * @memberof PimPersonServiceBase
      */
     public async GetJTLXRDH(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:GetJTLXRDHLogic = new GetJTLXRDHLogic();
+        let appLogic:GetJTLXRDHLogic = new GetJTLXRDHLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
         const result = await appLogic.onExecute(context,data,isloading?true:false);
         return {status:200,data:result};
     }
@@ -334,6 +334,20 @@ export default class PimPersonServiceBase extends EntityService {
     public async FetchKFPRY(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pimpeople/fetchkfpry`,tempData,isloading);
+    }
+
+    /**
+     * FetchSetAttRules接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof PimPersonServiceBase
+     */
+    public async FetchSetAttRules(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        let tempData:any = JSON.parse(JSON.stringify(data));
+        return Http.getInstance().get(`/pimpeople/fetchsetattrules`,tempData,isloading);
     }
 
     /**

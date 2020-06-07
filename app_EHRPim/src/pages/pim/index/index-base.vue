@@ -78,6 +78,7 @@ export default class IndexBase extends IndexViewBase {
           </div>
         </template>
       </app-layout>
+
         </div>);
     }
 }

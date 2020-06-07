@@ -37,7 +37,6 @@ public interface IVacHolidayService extends IService<VacHoliday>{
     void saveBatch(List<VacHoliday> list) ;
     boolean create(VacHoliday et) ;
     void createBatch(List<VacHoliday> list) ;
-    VacHoliday checkTime(VacHoliday et) ;
     Page<VacHoliday> searchDefault(VacHolidaySearchContext context) ;
     List<VacHoliday> selectByVacholidayrulesid(String vacholidayrulesid) ;
     void removeByVacholidayrulesid(String vacholidayrulesid) ;

@@ -20,7 +20,17 @@
 </i-col>
 <i-col v-show="detailsModel.bglx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='bglx' :itemRules="this.rules.bglx" class='' :caption="$t('entities.pimpersonchange.main_form.details.bglx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bglx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.bglx" :data="data" :itemParam="{}" :disabled="detailsModel.bglx.disabled"  tag='EhrCodeList0232' codelistType='STATIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.bglx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.bglx.disabled"  
+    tag='EhrCodeList0232' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

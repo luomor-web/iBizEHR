@@ -45,28 +45,44 @@
         <i-col v-show="detailsModel.createman.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='createman' :itemRules="this.rules.createman" class='' :caption="$t('entities.pimarchivesmanage.main_form.details.createman')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.createman.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='createman'
-:value="data.createman" tag='EhrCodeList0249' codelistType='DYNAMIC' style=""></app-span>
+:value="data.createman" tag='EhrCodeList0249' codelistType='DYNAMIC'   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.createdate.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='createdate' :itemRules="this.rules.createdate" class='' :caption="$t('entities.pimarchivesmanage.main_form.details.createdate')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.createdate.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='createdate'
-:value="data.createdate" style=""></app-span>
+:value="data.createdate"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.updateman.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='updateman' :itemRules="this.rules.updateman" class='' :caption="$t('entities.pimarchivesmanage.main_form.details.updateman')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.updateman.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='updateman'
-:value="data.updateman" tag='EhrCodeList0249' codelistType='DYNAMIC' style=""></app-span>
+:value="data.updateman" tag='EhrCodeList0249' codelistType='DYNAMIC'   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.updatedate.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='updatedate' :itemRules="this.rules.updatedate" class='' :caption="$t('entities.pimarchivesmanage.main_form.details.updatedate')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.updatedate.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='updatedate'
-:value="data.updatedate" style=""></app-span>
+:value="data.updatedate"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>

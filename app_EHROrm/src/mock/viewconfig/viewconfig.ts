@@ -156,7 +156,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "部门管理",
             "viewtype": "DEMPICKUPVIEW",
             "viewmodule": "ORM",
-            "viewname": "ORMORGSECTORMPickupView",
+            "viewname": "OrmOrgsectorMPickupView",
             "viewtag": "0e46f8be3d5e20ad6335a555f1980a61"
         },
         "ormorgsectorcurzzbmkqszgridview": {
@@ -852,7 +852,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "部门管理",
             "viewtype": "DEPICKUPVIEW",
             "viewmodule": "ORM",
-            "viewname": "ORMORGSECTORPickupView",
+            "viewname": "OrmOrgsectorPickupView",
             "viewtag": "5cb59e6581d926f5700f66d39409551d"
         },
         "ormdutympickupview": {
@@ -988,7 +988,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "部门管理",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "ORM",
-            "viewname": "ORMORGSECTORPickupGridView",
+            "viewname": "OrmOrgsectorPickupGridView",
             "viewtag": "6b7c50ef65ada8954275cd9bcd415232"
         },
         "ormorginfopickupgridview": {
@@ -1148,7 +1148,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "岗位",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "ORM",
-            "viewname": "ORMPOSTPickupGridView",
+            "viewname": "OrmPostPickupGridView",
             "viewtag": "855de99194a1f051419ad4cb529588b8"
         },
         "ormorgsectorkqsztreeexpview": {
@@ -1828,7 +1828,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "组织管理",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "ORM",
-            "viewname": "ORMORGXjPickupGridView",
+            "viewname": "OrmOrgXjPickupGridView",
             "viewtag": "e197970aa722788e772f38c9b9d403ac"
         },
         "ormdutyormorgsectorpickupview": {
@@ -2028,7 +2028,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "职务库",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "ORM",
-            "viewname": "ORMDUTYPickupGridView",
+            "viewname": "OrmDutyPickupGridView",
             "viewtag": "fb53017980e4b51d1ef3d6d9c9eeb4ac"
         },
         "ormxmglgridview": {

@@ -1,0 +1,27 @@
+package cn.ibizlab.ehr.pcm.logic.pcmydbxmxlogic.setfinished;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pcm.domain.PcmYdbxmx pcmydbxmxsetfinisheddefault;
+global cn.ibizlab.ehr.core.pcm.service.IPcmYdbxmxService iBzSysPcmydbxmxDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pcmydbxmxsetfinishedbegin"
+    when
+    then
+    end
+
+//逻辑处理节点[设置参数准备]
+rule "prepareparam1"
+ruleflow-group "pcmydbxmxsetfinishedprepareparam1"
+    when
+    then
+    pcmydbxmxsetfinisheddefault.set("isfinished","1");
+    update(pcmydbxmxsetfinisheddefault);//更新fact中变量值
+    end
+

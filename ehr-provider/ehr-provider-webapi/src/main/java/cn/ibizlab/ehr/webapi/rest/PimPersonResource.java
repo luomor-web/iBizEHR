@@ -254,6 +254,27 @@ public class PimPersonResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-SetAttRules-all')")
+	@ApiOperation(value = "获取待设置考勤人员", tags = {"人员信息" } ,notes = "获取待设置考勤人员")
+    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchsetattrules")
+	public ResponseEntity<List<PimPersonDTO>> fetchSetAttRules(PimPersonSearchContext context) {
+        Page<PimPerson> domains = pimpersonService.searchSetAttRules(context) ;
+        List<PimPersonDTO> list = pimpersonMapping.toDto(domains.getContent());
+        return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-SetAttRules-all')")
+	@ApiOperation(value = "查询待设置考勤人员", tags = {"人员信息" } ,notes = "查询待设置考勤人员")
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchsetattrules")
+	public ResponseEntity<Page<PimPersonDTO>> searchSetAttRules(@RequestBody PimPersonSearchContext context) {
+        Page<PimPerson> domains = pimpersonService.searchSetAttRules(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-YGXXGLY-all')")
 	@ApiOperation(value = "获取员工信息（管理员）", tags = {"人员信息" } ,notes = "获取员工信息（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchygxxgly")

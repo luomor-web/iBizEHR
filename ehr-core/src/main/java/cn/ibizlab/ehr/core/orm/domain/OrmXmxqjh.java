@@ -311,6 +311,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
     /**
      * 排序
      */
+    @DEField(preType = DEPredefinedFieldType.ORDERVALUE)
     @TableField(value = "ordervalue")
     @JSONField(name = "ordervalue")
     @JsonProperty("ordervalue")
@@ -592,13 +593,6 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
     public void setXmjbqk(String xmjbqk){
         this.xmjbqk = xmjbqk ;
         this.modify("xmjbqk",xmjbqk);
-    }
-    /**
-     * 设置 [排序]
-     */
-    public void setOrdervalue(Integer ordervalue){
-        this.ordervalue = ordervalue ;
-        this.modify("ordervalue",ordervalue);
     }
     /**
      * 设置 [项目部简称]

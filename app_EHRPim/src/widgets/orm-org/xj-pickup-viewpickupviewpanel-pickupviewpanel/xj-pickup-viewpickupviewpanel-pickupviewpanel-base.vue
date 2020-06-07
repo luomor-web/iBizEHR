@@ -180,7 +180,7 @@ export default class XjPickupViewpickupviewpanelBase extends Vue implements Cont
      * @memberof XjPickupViewpickupviewpanel
      */
     protected view: any = {
-        viewname: 'ormorgxj-pickup-grid-view',
+        viewname: 'orm-org-xj-pickup-grid-view',
         data: {},
     }
 

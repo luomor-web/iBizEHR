@@ -48,12 +48,17 @@ public class PcmYddgmxServiceImpl extends ServiceImpl<PcmYddgmxMapper, PcmYddgmx
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgsectorService ormorgsectorService;
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.logic.IPcmYddgmxSetFinishedLogic setfinishedLogic;
+
     private int batchSize = 500;
 
     @Override
     @Transactional
     public boolean remove(String key) {
         boolean result=removeById(key);
+        pcmydmxService.remove(key);
         return result ;
     }
 
@@ -120,6 +125,7 @@ public class PcmYddgmxServiceImpl extends ServiceImpl<PcmYddgmxMapper, PcmYddgmx
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPcmyddgmxid()),et);
+        createIndexMajorEntityData(et);
         return true;
     }
 
@@ -153,9 +159,11 @@ public class PcmYddgmxServiceImpl extends ServiceImpl<PcmYddgmxMapper, PcmYddgmx
     @Transactional
     public boolean update(PcmYddgmx et) {
         fillParentData(et);
+        setfinishedLogic.execute(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pcmyddgmxid",et.getPcmyddgmxid())))
             return false;
         CachedBeanCopier.copy(get(et.getPcmyddgmxid()),et);
+        pcmydmxService.update(pcmyddgmxInheritMapping.toPcmydmx(et));
         return true;
     }
 
@@ -222,6 +230,24 @@ public class PcmYddgmxServiceImpl extends ServiceImpl<PcmYddgmxMapper, PcmYddgmx
             et.setOrmorgsectorname(ormorgsector.getShortname());
             et.setDgshortname(ormorgsector.getShortname());
         }
+    }
+
+    @Autowired
+    cn.ibizlab.ehr.core.pcm.mapping.PcmYddgmxInheritMapping pcmyddgmxInheritMapping;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdmxService pcmydmxService;
+
+    /**
+     * 创建索引主实体数据
+     * @param et
+     */
+    private void createIndexMajorEntityData(PcmYddgmx et){
+        if(ObjectUtils.isEmpty(et.getPcmyddgmxid()))
+            et.setPcmyddgmxid((String)et.getDefaultKey(true));
+        cn.ibizlab.ehr.core.pcm.domain.PcmYdmx pcmydmx =pcmyddgmxInheritMapping.toPcmydmx(et);
+        pcmydmx.set("pcmydmxtype","50");
+        pcmydmxService.create(pcmydmx);
     }
 
     @Override

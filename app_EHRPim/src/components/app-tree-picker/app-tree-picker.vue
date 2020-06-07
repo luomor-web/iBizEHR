@@ -220,15 +220,15 @@ export default class AppTreePicker extends Vue {
         let context: any = JSON.parse(JSON.stringify(this.context));
         // 附加参数处理
         if (this.itemParam.context) {
-            let _context = this.$util.formatData(activeData,this.itemParam.context);
+            let _context = this.$util.formatData(activeData,context,this.itemParam.context);
             Object.assign(context,_context);
         }
         if (this.itemParam.param) {
-            let _param = this.$util.formatData(activeData,this.itemParam.param);
+            let _param = this.$util.formatData(activeData,param,this.itemParam.param);
             Object.assign(param,_param);
         }
         if (this.itemParam.parentdata) {
-            let _parentdata = this.$util.formatData(activeData,this.itemParam.parentdata);
+            let _parentdata = this.$util.formatData(activeData,param,this.itemParam.parentdata);
             Object.assign(param,_parentdata);
         }
         this.viewdata = JSON.stringify(context);

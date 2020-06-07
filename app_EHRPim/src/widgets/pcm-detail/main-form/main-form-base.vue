@@ -32,7 +32,15 @@
 </i-col>
 <i-col v-show="detailsModel.jg.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='jg' :itemRules="this.rules.jg" class='' :caption="$t('entities.pcmdetail.main_form.details.jg')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jg.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.jg" :data="data" :itemParam="{}" :disabled="detailsModel.jg.disabled"   placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.jg" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.jg.disabled"  
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -44,7 +52,17 @@
 </i-col>
 <i-col v-show="detailsModel.xb.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='xb' :itemRules="this.rules.xb" class='' :caption="$t('entities.pcmdetail.main_form.details.xb')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xb.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.xb" :data="data" :itemParam="{}" :disabled="detailsModel.xb.disabled"  tag='EhrCodeList0072' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.xb" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.xb.disabled"  
+    tag='EhrCodeList0072' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -56,19 +74,49 @@
 </i-col>
 <i-col v-show="detailsModel.hyzk.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='hyzk' :itemRules="this.rules.hyzk" class='' :caption="$t('entities.pcmdetail.main_form.details.hyzk')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hyzk.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.hyzk" :data="data" :itemParam="{}" :disabled="detailsModel.hyzk.disabled"  tag='EhrCodeList0075' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.hyzk" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.hyzk.disabled"  
+    tag='EhrCodeList0075' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.mz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='mz' :itemRules="this.rules.mz" class='' :caption="$t('entities.pcmdetail.main_form.details.mz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.mz.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.mz" :data="data" :itemParam="{}" :disabled="detailsModel.mz.disabled"  tag='EhrCodeList0066' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.mz" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.mz.disabled"  
+    tag='EhrCodeList0066' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.hkxz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='hkxz' :itemRules="this.rules.hkxz" class='' :caption="$t('entities.pcmdetail.main_form.details.hkxz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hkxz.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.hkxz" :data="data" :itemParam="{}" :disabled="detailsModel.hkxz.disabled"  tag='EhrCodeList0070' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.hkxz" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.hkxz.disabled"  
+    tag='EhrCodeList0070' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -92,7 +140,17 @@
 </i-col>
 <i-col v-show="detailsModel.rzqd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='rzqd' :itemRules="this.rules.rzqd" class='' :caption="$t('entities.pcmdetail.main_form.details.rzqd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rzqd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.rzqd" :data="data" :itemParam="{}" :disabled="detailsModel.rzqd.disabled"  tag='EhrCodeList0041' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.rzqd" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.rzqd.disabled"  
+    tag='EhrCodeList0041' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -131,13 +189,35 @@
 </i-col>
 <i-col v-show="detailsModel.firsteducation.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='firsteducation' :itemRules="this.rules.firsteducation" class='' :caption="$t('entities.pcmdetail.main_form.details.firsteducation')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.firsteducation.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.firsteducation" :data="data" :itemParam="{}" :disabled="detailsModel.firsteducation.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0054' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
+     <dropdown-list 
+  v-model="data.firsteducation" 
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+  :disabled="detailsModel.firsteducation.disabled" 
+  style="width:100px;width: 100px;" 
+  tag='EhrCodeList0400' 
+  codelistType='STATIC'
+  placeholder='请选择...'>
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.sfzgxl.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfzgxl' :itemRules="this.rules.sfzgxl" class='' :caption="$t('entities.pcmdetail.main_form.details.sfzgxl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfzgxl.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.sfzgxl" :data="data" :itemParam="{}" :disabled="detailsModel.sfzgxl.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0054' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
+     <dropdown-list 
+  v-model="data.sfzgxl" 
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+  :disabled="detailsModel.sfzgxl.disabled" 
+  style="width:100px;width: 100px;" 
+  tag='EhrCodeList0400' 
+  codelistType='STATIC'
+  placeholder='请选择...'>
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -155,13 +235,33 @@
 </i-col>
 <i-col v-show="detailsModel.xllx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='xllx' :itemRules="this.rules.xllx" class='' :caption="$t('entities.pcmdetail.main_form.details.xllx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xllx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.xllx" :data="data" :itemParam="{}" :disabled="detailsModel.xllx.disabled"  tag='EhrCodeList0131' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.xllx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.xllx.disabled"  
+    tag='EhrCodeList0131' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.xxlb.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='xxlb' :itemRules="this.rules.xxlb" class='' :caption="$t('entities.pcmdetail.main_form.details.xxlb')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xxlb.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.xxlb" :data="data" :itemParam="{}" :disabled="detailsModel.xxlb.disabled"  tag='EhrCodeList0208' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.xxlb" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.xxlb.disabled"  
+    tag='EhrCodeList0208' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -173,7 +273,17 @@
 </i-col>
 <i-col v-show="detailsModel.zzmm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zzmm' :itemRules="this.rules.zzmm" class='' :caption="$t('entities.pcmdetail.main_form.details.zzmm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zzmm.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.zzmm" :data="data" :itemParam="{}" :disabled="detailsModel.zzmm.disabled"  tag='EhrCodeList0029' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.zzmm" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.zzmm.disabled"  
+    tag='EhrCodeList0029' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -235,7 +345,17 @@
 </i-col>
 <i-col v-show="detailsModel.rank.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='rank' :itemRules="this.rules.rank" class='' :caption="$t('entities.pcmdetail.main_form.details.rank')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rank.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.rank" :data="data" :itemParam="{}" :disabled="detailsModel.rank.disabled"  tag='EhrCodeList0025' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.rank" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.rank.disabled"  
+    tag='EhrCodeList0025' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -265,7 +385,17 @@
 </i-col>
 <i-col v-show="detailsModel.gwtype.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='gwtype' :itemRules="this.rules.gwtype" class='' :caption="$t('entities.pcmdetail.main_form.details.gwtype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gwtype.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.gwtype" :data="data" :itemParam="{}" :disabled="detailsModel.gwtype.disabled"  tag='EhrCodeList0140' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.gwtype" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.gwtype.disabled"  
+    tag='EhrCodeList0140' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -277,7 +407,17 @@
 </i-col>
 <i-col v-show="detailsModel.zw.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zw' :itemRules="this.rules.zw" class='' :caption="$t('entities.pcmdetail.main_form.details.zw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zw.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.zw" :data="data" :itemParam="{}" :disabled="detailsModel.zw.disabled"  tag='EhrCodeList0233' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.zw" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.zw.disabled"  
+    tag='EhrCodeList0233' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -289,7 +429,18 @@
 </i-col>
 <i-col v-show="detailsModel.sfzckjs.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfzckjs' :itemRules="this.rules.sfzckjs" class='' :caption="$t('entities.pcmdetail.main_form.details.sfzckjs')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfzckjs.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.sfzckjs" :data="data" :itemParam="{}" :disabled="detailsModel.sfzckjs.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0054' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
+     <dropdown-list 
+  v-model="data.sfzckjs" 
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+  :disabled="detailsModel.sfzckjs.disabled" 
+  style="width:100px;width: 100px;" 
+  tag='EhrCodeList0400' 
+  codelistType='STATIC'
+  placeholder='请选择...'>
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -310,7 +461,7 @@
   valueitem='ormorgsectorid' 
   :value="data.ormorgsectorname" 
   editortype="" 
-  :pickupView="{ viewname: 'ormorgsectorpickup-view', title: $t('entities.ormorgsector.views.pickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
+  :pickupView="{ viewname: 'orm-orgsector-pickup-view', title: $t('entities.ormorgsector.views.pickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
   style=""  
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>
@@ -384,7 +535,17 @@
 </i-col>
 <i-col v-show="detailsModel.contracttype.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='contracttype' :itemRules="this.rules.contracttype" class='' :caption="$t('entities.pcmdetail.main_form.details.contracttype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.contracttype.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.contracttype" :data="data" :itemParam="{}" :disabled="detailsModel.contracttype.disabled"  tag='EhrCodeList0107' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.contracttype" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.contracttype.disabled"  
+    tag='EhrCodeList0107' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

@@ -46,13 +46,6 @@ public class PcmYdlzmx extends EntityMP implements Serializable {
     @JsonProperty("nl")
     private Integer nl;
     /**
-     * 是否审核
-     */
-    @TableField(exist = false)
-    @JSONField(name = "finished")
-    @JsonProperty("finished")
-    private Integer finished;
-    /**
      * 审核状态
      */
     @TableField(exist = false)
@@ -304,6 +297,14 @@ public class PcmYdlzmx extends EntityMP implements Serializable {
     @JSONField(name = "lzmtrid")
     @JsonProperty("lzmtrid")
     private String lzmtrid;
+    /**
+     * 是否完成
+     */
+    @DEField(defaultValue = "0")
+    @TableField(value = "isfinished")
+    @JSONField(name = "isfinished")
+    @JsonProperty("isfinished")
+    private String isfinished;
 
     /**
      * 离职面谈人
@@ -384,6 +385,13 @@ public class PcmYdlzmx extends EntityMP implements Serializable {
     public void setLzmtrid(String lzmtrid){
         this.lzmtrid = lzmtrid ;
         this.modify("lzmtrid",lzmtrid);
+    }
+    /**
+     * 设置 [是否完成]
+     */
+    public void setIsfinished(String isfinished){
+        this.isfinished = isfinished ;
+        this.modify("isfinished",isfinished);
     }
 
 }

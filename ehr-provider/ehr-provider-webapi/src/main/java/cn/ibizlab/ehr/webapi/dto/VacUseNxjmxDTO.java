@@ -106,22 +106,6 @@ public class VacUseNxjmxDTO extends DTOBase implements Serializable {
     private String qjzl;
 
     /**
-     * 属性 [PIMPERSONID]
-     *
-     */
-    @JSONField(name = "pimpersonid")
-    @JsonProperty("pimpersonid")
-    private String pimpersonid;
-
-    /**
-     * 属性 [PIMPERSONNAME]
-     *
-     */
-    @JSONField(name = "pimpersonname")
-    @JsonProperty("pimpersonname")
-    private String pimpersonname;
-
-    /**
      * 属性 [VACLEAVEDETAILID]
      *
      */

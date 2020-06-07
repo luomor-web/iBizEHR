@@ -90,8 +90,10 @@ export class ViewBase extends Vue {
     @Watch("viewdata")
     protected onViewData(newVal: any, oldVal: any): void {
         if (!Object.is(newVal, oldVal) && this.engine) {
-            this.parseViewParam();
-            this.engine.load();
+            this.$nextTick(()=>{
+              this.parseViewParam();
+              this.engine.load();
+            });
         }
     }
 

@@ -246,6 +246,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
     
     categorField:'agetype',
     categorCodeList:{type:'STATIC',tag:'EhrCodeList0056',emptycode:'empty',emptytext:'未定义'},
+    
     valueField:'countnum',
     seriesValues:[],
     seriesIndex:0,
@@ -369,7 +370,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
         Object.assign(arg,{viewparams:this.viewparams,page:0,size:1000});
         this.service.search(this.fetchAction,JSON.parse(JSON.stringify(this.context)),arg,this.showBusyIndicator).then((res) => {
             if (res) {
-               this.transformToBasicChartSetData(res.data,() =>{_this.drawCharts()});
+               this.transformToBasicChartSetData(res.data,(codelist:any) =>{_this.drawCharts(codelist)});
             }
         }).catch((error) => {
             console.error(error);
@@ -382,12 +383,12 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
      * @returns {*} 
      * @memberof Db_sysportlet4_chartBase
      */
-    public drawCharts(){
+    public drawCharts(codelist:any){
         if(!this.myChart){
           let element:any =  document.getElementById(this.chartId);
           this.myChart = echarts.init(element);
         }
-        this.handleChartOPtion();
+        this.handleChartOPtion(codelist);
         console.log(this.chartOption);
         this.myChart.setOption(this.chartOption);
         this.myChart.resize();
@@ -398,7 +399,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
      * 
      * @memberof Db_sysportlet4_chartBase
      */
-    public handleChartOPtion(){
+    public handleChartOPtion(allcodelist:any){
         if(Object.keys(this.seriesModel).length > 0){
             let tempDataSourceMap:Map<string,any> = new Map();
             for(let i=0;i<Object.keys(this.seriesModel).length;i++){
@@ -429,28 +430,18 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
                 }
                 //设置多序列
                 let tempSeries:any = this.seriesModel[seriesName];
-                // 雷达图
-                if(tempSeries.type && Object.is(tempSeries.type,'radar') && tempSeries.seriesIdField && tempSeries.seriesValues.length > 0){
-                    let tempIndicator:any = [];
-                    tempSeries.seriesValues.forEach((item:any) =>{
-                        let singleIndicatorObj:any = {name:item,max:100};
-                        tempIndicator.push(singleIndicatorObj);
+                // 非雷达图
+                if(tempSeries && tempSeries.seriesIdField && tempSeries.seriesValues.length > 0 && !Object.is(tempSeries.type,'radar')){
+                    const returnIndex:number = this.chartOption.series.findIndex((item:any) =>{
+                        return Object.is(item.id,seriesName);
                     })
-                    this.chartOption.radar = {'indicator':tempIndicator};
-                }else{
-                    // 非雷达图
-                    if(tempSeries && tempSeries.seriesIdField && tempSeries.seriesValues.length > 0){
-                        const returnIndex:number = this.chartOption.series.findIndex((item:any) =>{
-                            return Object.is(item.id,seriesName);
-                        })
-                        this.chartOption.series.splice(returnIndex,1);
-                        let tempSeriesArray:Array<any> = [];
-                        tempSeries.seriesValues.forEach((seriesvalueItem:any) =>{
-                            let tempSeriesTemp:any = JSON.parse(JSON.stringify(tempSeries.seriesTemp));
-                            Object.assign(tempSeriesTemp,{name:tempSeries.seriesMap[seriesvalueItem],datasetIndex:tempSeries.seriesIndex,encode:{x:tempSeries.categorField,y:`${seriesvalueItem}`}});
-                            this.chartOption.series.push(tempSeriesTemp);
-                        })
-                    }
+                    this.chartOption.series.splice(returnIndex,1);
+                    let tempSeriesArray:Array<any> = [];
+                    tempSeries.seriesValues.forEach((seriesvalueItem:any) =>{
+                        let tempSeriesTemp:any = JSON.parse(JSON.stringify(tempSeries.seriesTemp));
+                        Object.assign(tempSeriesTemp,{name:tempSeries.seriesMap[seriesvalueItem],datasetIndex:tempSeries.seriesIndex,encode:{x:tempSeries.categorField,y:`${seriesvalueItem}`}});
+                        this.chartOption.series.push(tempSeriesTemp);
+                    })
                 }
             })
         }
@@ -510,9 +501,18 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
                         }
                     }else{
                         // 序列属性存在时
-                        let tempSeriesValueItem = tempSeriesValues.get(item[singleSeries.seriesIdField]);
-                        if(!tempSeriesValueItem){
-                            tempSeriesValues.set(item[singleSeries.seriesIdField],item[singleSeries.seriesNameField]);
+                        // 序列代码表存在时,翻译tempSeriesValues的键值对
+                        if(singleSeries.seriesCodeList){
+                            const seriesCodeList:Map<string,any> = allCodeList.get(singleSeries.seriesCodeList.tag);
+                            let tempSeriesValueItem = tempSeriesValues.get(seriesCodeList.get(item[singleSeries.seriesIdField]));
+                            if(!tempSeriesValueItem){
+                                tempSeriesValues.set(seriesCodeList.get(item[singleSeries.seriesIdField]),seriesCodeList.get(item[singleSeries.seriesIdField]));
+                            }
+                        }else{
+                            let tempSeriesValueItem = tempSeriesValues.get(item[singleSeries.seriesIdField]);
+                            if(!tempSeriesValueItem){
+                                tempSeriesValues.set(item[singleSeries.seriesIdField],item[singleSeries.seriesNameField]);
+                            }
                         }
                         Object.assign(tempChartSetDataItem,{name:item[singleSeries.seriesIdField]});
                         if(singleSeries.dataSetFields && singleSeries.dataSetFields.length >0){
@@ -525,6 +525,14 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
                 })
                 // 补全数据集合
                 this.completeDataSet(tempChartSetData,singleSeries,allCodeList);
+                // 序列代码表存在时,补全序列
+                if(singleSeries.seriesCodeList){
+                    const seriesCodeList:Map<string,any> = allCodeList.get(singleSeries.seriesCodeList.tag);
+                    tempSeriesValues = new Map();
+                    seriesCodeList.forEach((item:any) =>{
+                        tempSeriesValues.set(item,item);
+                    })
+                }
                 singleSeries.seriesValues = [...tempSeriesValues.keys()];
                 let tempSeriesMapObj:any = {};
                 tempSeriesValues.forEach((value:any,key:any) =>{
@@ -589,7 +597,7 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
             item.data = this.groupAndAdd(tempGroupField,[],tempValueField,data,item,groupField,allCodeList);
         }
         if(callback && callback instanceof Function){
-            callback();
+            callback(allCodeList);
         }
     }
 
@@ -703,11 +711,19 @@ export default class OrgPersonAgeBase extends Vue implements ControlInterface {
         }
         returnArray = this.sortReturnArray(returnArray,groupFieldModel,allCodeList);
         // 雷达图数据格式处理
-        if(Object.is(item.type,'radar')){
-            returnArray.forEach((item:any) =>{
-                item.type = item[groupField[0]];
-                delete item[groupField[0]];
-            })
+        if(Object.is(item.type,'radar') && returnArray.length >0){
+            let tempReturnArray:Array<any> = [];
+            let seriesValues:Array<any> = item.seriesValues;
+            if(seriesValues && seriesValues.length >0){
+                seriesValues.forEach((singleSeriesName:any) =>{
+                    let singleSeriesObj:any = {type:singleSeriesName};
+                    returnArray.forEach((item:any) =>{
+                        Object.assign(singleSeriesObj,{[item[groupField[0]]]:item[singleSeriesName]});
+                    })
+                    tempReturnArray.push(singleSeriesObj);
+                })
+            }
+            returnArray = tempReturnArray;
         }
         console.log(JSON.stringify(returnArray));
         return returnArray;

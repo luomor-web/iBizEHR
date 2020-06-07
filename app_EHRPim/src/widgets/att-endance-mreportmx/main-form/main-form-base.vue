@@ -58,187 +58,497 @@
     <row>
         <i-col v-show="detailsModel.day1.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day1' :itemRules="this.rules.day1" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day1')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day1.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day1" :data="data" :itemParam="{}" :disabled="detailsModel.day1.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day1" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day1.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day2.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day2' :itemRules="this.rules.day2" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day2')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day2.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day2" :data="data" :itemParam="{}" :disabled="detailsModel.day2.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day2" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day2.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day3.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day3' :itemRules="this.rules.day3" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day3')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day3.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day3" :data="data" :itemParam="{}" :disabled="detailsModel.day3.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day3" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day3.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day4.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day4' :itemRules="this.rules.day4" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day4')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day4.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day4" :data="data" :itemParam="{}" :disabled="detailsModel.day4.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day4" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day4.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day5.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day5' :itemRules="this.rules.day5" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day5')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day5.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day5" :data="data" :itemParam="{}" :disabled="detailsModel.day5.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day5" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day5.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day6.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day6' :itemRules="this.rules.day6" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day6')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day6.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day6" :data="data" :itemParam="{}" :disabled="detailsModel.day6.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day6" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day6.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day7.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day7' :itemRules="this.rules.day7" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day7')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day7.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day7" :data="data" :itemParam="{}" :disabled="detailsModel.day7.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day7" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day7.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day8.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day8' :itemRules="this.rules.day8" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day8')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day8.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day8" :data="data" :itemParam="{}" :disabled="detailsModel.day8.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day8" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day8.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day9.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day9' :itemRules="this.rules.day9" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day9')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day9.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day9" :data="data" :itemParam="{}" :disabled="detailsModel.day9.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day9" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day9.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day10.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day10' :itemRules="this.rules.day10" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day10')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day10.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day10" :data="data" :itemParam="{}" :disabled="detailsModel.day10.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day10" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day10.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day11.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day11' :itemRules="this.rules.day11" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day11')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day11.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day11" :data="data" :itemParam="{}" :disabled="detailsModel.day11.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day11" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day11.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day12.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day12' :itemRules="this.rules.day12" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day12')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day12.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day12" :data="data" :itemParam="{}" :disabled="detailsModel.day12.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day12" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day12.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day13.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day13' :itemRules="this.rules.day13" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day13')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day13.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day13" :data="data" :itemParam="{}" :disabled="detailsModel.day13.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day13" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day13.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day14.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day14' :itemRules="this.rules.day14" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day14')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day14.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day14" :data="data" :itemParam="{}" :disabled="detailsModel.day14.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day14" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day14.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day15.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day15' :itemRules="this.rules.day15" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day15')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day15.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day15" :data="data" :itemParam="{}" :disabled="detailsModel.day15.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day15" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day15.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day16.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day16' :itemRules="this.rules.day16" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day16')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day16.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day16" :data="data" :itemParam="{}" :disabled="detailsModel.day16.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day16" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day16.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day17.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day17' :itemRules="this.rules.day17" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day17')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day17.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day17" :data="data" :itemParam="{}" :disabled="detailsModel.day17.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day17" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day17.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day18.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day18' :itemRules="this.rules.day18" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day18')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day18.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day18" :data="data" :itemParam="{}" :disabled="detailsModel.day18.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day18" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day18.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day19.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day19' :itemRules="this.rules.day19" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day19')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day19.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day19" :data="data" :itemParam="{}" :disabled="detailsModel.day19.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day19" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day19.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day20.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day20' :itemRules="this.rules.day20" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day20')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day20.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day20" :data="data" :itemParam="{}" :disabled="detailsModel.day20.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day20" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day20.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day21.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day21' :itemRules="this.rules.day21" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day21')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day21.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day21" :data="data" :itemParam="{}" :disabled="detailsModel.day21.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day21" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day21.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day22.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day22' :itemRules="this.rules.day22" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day22')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day22.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day22" :data="data" :itemParam="{}" :disabled="detailsModel.day22.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day22" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day22.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day23.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day23' :itemRules="this.rules.day23" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day23')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day23.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day23" :data="data" :itemParam="{}" :disabled="detailsModel.day23.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day23" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day23.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day24.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day24' :itemRules="this.rules.day24" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day24')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day24.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day24" :data="data" :itemParam="{}" :disabled="detailsModel.day24.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day24" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day24.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day25.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day25' :itemRules="this.rules.day25" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day25')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day25.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day25" :data="data" :itemParam="{}" :disabled="detailsModel.day25.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day25" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day25.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day26.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day26' :itemRules="this.rules.day26" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day26')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day26.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day26" :data="data" :itemParam="{}" :disabled="detailsModel.day26.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day26" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day26.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day27.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day27' :itemRules="this.rules.day27" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day27')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day27.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day27" :data="data" :itemParam="{}" :disabled="detailsModel.day27.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day27" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day27.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day28.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day28' :itemRules="this.rules.day28" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day28')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day28.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day28" :data="data" :itemParam="{}" :disabled="detailsModel.day28.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day28" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day28.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day29.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day29' :itemRules="this.rules.day29" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day29')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day29.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day29" :data="data" :itemParam="{}" :disabled="detailsModel.day29.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day29" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day29.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day30.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day30' :itemRules="this.rules.day30" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day30')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day30.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day30" :data="data" :itemParam="{}" :disabled="detailsModel.day30.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day30" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day30.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.day31.visible" :style="{}"  :lg="{ span: 4, offset: 0 }">
     <app-form-item name='day31' :itemRules="this.rules.day31" class='' :caption="$t('entities.attendancemreportmx.main_form.details.day31')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.day31.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.day31" :data="data" :itemParam="{}" :disabled="detailsModel.day31.disabled"  tag='EhrCodeList0098' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.day31" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.day31.disabled"  
+    tag='EhrCodeList0098' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

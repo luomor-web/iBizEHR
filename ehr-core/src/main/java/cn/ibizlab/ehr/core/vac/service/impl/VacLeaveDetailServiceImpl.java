@@ -49,7 +49,11 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
     private cn.ibizlab.ehr.core.vac.service.IVacUseNxjmxService vacusenxjmxService;
     @Autowired
     @Lazy
-    private cn.ibizlab.ehr.core.vac.service.IVacLeaveManageService vacleavemanageService;
+    private cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonService;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.vac.service.logic.IVacLeaveDetailCalcPlanDaysLogic calcplandaysLogic;
 
     private int batchSize = 500;
 
@@ -147,8 +151,8 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
     @Override
     @Transactional
     public VacLeaveDetail calcJHQJTS(VacLeaveDetail et) {
-        //自定义代码
-        return et;
+        calcplandaysLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -177,13 +181,13 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
 
 
 	@Override
-    public List<VacLeaveDetail> selectByVacleavemanageid(String vacleavemanageid) {
-        return baseMapper.selectByVacleavemanageid(vacleavemanageid);
+    public List<VacLeaveDetail> selectByPimpersonid(String pimpersonid) {
+        return baseMapper.selectByPimpersonid(pimpersonid);
     }
 
     @Override
-    public void removeByVacleavemanageid(String vacleavemanageid) {
-        this.remove(new QueryWrapper<VacLeaveDetail>().eq("vacleavemanageid",vacleavemanageid));
+    public void removeByPimpersonid(String pimpersonid) {
+        this.remove(new QueryWrapper<VacLeaveDetail>().eq("pimpersonid",pimpersonid));
     }
 
 
@@ -203,21 +207,22 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
      * @param et
      */
     private void fillParentData(VacLeaveDetail et){
-        //实体关系[DER1N_VACLEAVEDETAIL_VACLEAVEMANAGE_VACLEAVEMANAGEID]
-        if(!ObjectUtils.isEmpty(et.getVacleavemanageid())){
-            cn.ibizlab.ehr.core.vac.domain.VacLeaveManage vacleavemanage=et.getVacleavemanage();
-            if(ObjectUtils.isEmpty(vacleavemanage)){
-                cn.ibizlab.ehr.core.vac.domain.VacLeaveManage majorEntity=vacleavemanageService.get(et.getVacleavemanageid());
-                et.setVacleavemanage(majorEntity);
-                vacleavemanage=majorEntity;
+        //实体关系[DER1N_VACLEAVEDETAIL_PIMPERSON_PIMPERSONID]
+        if(!ObjectUtils.isEmpty(et.getPimpersonid())){
+            cn.ibizlab.ehr.core.pim.domain.PimPerson pimperson=et.getPimperson();
+            if(ObjectUtils.isEmpty(pimperson)){
+                cn.ibizlab.ehr.core.pim.domain.PimPerson majorEntity=pimpersonService.get(et.getPimpersonid());
+                et.setPimperson(majorEntity);
+                pimperson=majorEntity;
             }
-            et.setOrmorgsectorid(vacleavemanage.getOrmorgsectorid());
-            et.setOrmorgid(vacleavemanage.getOrmorgid());
-            et.setPimpersonid(vacleavemanage.getPimpersonid());
-            et.setPimpersonname(vacleavemanage.getPimpersonname());
-            et.setVacleavemanagename(vacleavemanage.getVacleavemanagename());
+            et.setPimpersonname(pimperson.getPimpersonname());
+            et.setOrmorgid(pimperson.getOrmorgid());
+            et.setOrmorgsectorid(pimperson.getOrmorgsectorid());
+            et.setOrmorgname(pimperson.getZzdzs());
+            et.setOrmorgsectorname(pimperson.getOrmorgsectorname());
         }
     }
+
 
     @Override
     public List<JSONObject> select(String sql, Map param){

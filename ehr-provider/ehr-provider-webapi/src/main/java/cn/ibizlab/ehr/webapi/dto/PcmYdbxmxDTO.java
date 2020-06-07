@@ -153,14 +153,6 @@ public class PcmYdbxmxDTO extends DTOBase implements Serializable {
     private String distirbutionid;
 
     /**
-     * 属性 [FINISHED]
-     *
-     */
-    @JSONField(name = "finished")
-    @JsonProperty("finished")
-    private Integer finished;
-
-    /**
      * 属性 [PCMYDMXTYPE]
      *
      */
@@ -290,6 +282,14 @@ public class PcmYdbxmxDTO extends DTOBase implements Serializable {
     @JsonProperty("pimpersonname")
     private String pimpersonname;
 
+    /**
+     * 属性 [ISFINISHED]
+     *
+     */
+    @JSONField(name = "isfinished")
+    @JsonProperty("isfinished")
+    private String isfinished;
+
 
     /**
      * 设置 [BXYY]
@@ -337,6 +337,14 @@ public class PcmYdbxmxDTO extends DTOBase implements Serializable {
     public void setJsrq(Timestamp  jsrq){
         this.jsrq = jsrq ;
         this.modify("jsrq",jsrq);
+    }
+
+    /**
+     * 设置 [ISFINISHED]
+     */
+    public void setIsfinished(String  isfinished){
+        this.isfinished = isfinished ;
+        this.modify("isfinished",isfinished);
     }
 
 

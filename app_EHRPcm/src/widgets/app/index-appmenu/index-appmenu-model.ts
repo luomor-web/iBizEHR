@@ -31,6 +31,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto499',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem2',
 	items: [
 		{
 	id: 'd7cd6c0305b469dd469ed647293f2cd7',
@@ -49,6 +50,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto499',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem1',
 },
 		{
 	id: '2BDA8CB3-15F3-42AD-8CC6-0AC8B7C77530',
@@ -67,6 +69,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto4',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem3',
 },
 		{
 	id: '3B7D53A1-C97A-414E-8F5A-314F63373DEA',
@@ -85,6 +88,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto16',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem4',
 },
 		{
 	id: '6921287A-54F6-4BB5-A767-24F8BA49BA52',
@@ -103,6 +107,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto7',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem5',
 },
 		{
 	id: 'E4B23A6F-7E35-4690-87A9-A660AB229BDA',
@@ -121,6 +126,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto17',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem6',
 },
 		{
 	id: '5FF495D3-421E-4A19-BDA5-FDEEF2925FEB',
@@ -139,6 +145,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto8',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem7',
 },
 	],
 },
@@ -159,6 +166,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem8',
 	items: [
 		{
 	id: 'BE1F3DA6-03C5-4230-81A6-F802CC0B332E',
@@ -177,6 +185,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto14',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem9',
 },
 		{
 	id: 'D6BC76ED-68F5-434E-819A-90384CA6E8FD',
@@ -195,6 +204,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto1',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem10',
 },
 		{
 	id: '3F3AD256-D204-486E-8DE2-EB7F53F71F7D',
@@ -213,6 +223,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto6',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem11',
 },
 		{
 	id: '99341193-BE31-4790-B539-138EAB86D419',
@@ -231,6 +242,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto12',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem12',
 },
 		{
 	id: 'BEAD1172-E61C-45A9-A556-0A706028CE1A',
@@ -249,6 +261,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto13',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem13',
 },
 		{
 	id: '7BBCD702-0D49-4EB2-B7EC-BADCC7FCA75F',
@@ -267,6 +280,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto11',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem14',
 },
 	],
 },
@@ -287,6 +301,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem15',
 	items: [
 		{
 	id: '423828DA-7116-414F-ACD3-B52D0169DBB7',
@@ -305,6 +320,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto18',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem16',
 },
 		{
 	id: '15BB5FA6-1931-4049-A227-BE7F95ECB954',
@@ -323,6 +339,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto9',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem17',
 },
 		{
 	id: '369B75B7-93E0-4C22-9621-4687EF533246',
@@ -341,6 +358,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto15',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem18',
 },
 		{
 	id: '043A6115-6C1E-4815-9F52-1878181498D5',
@@ -359,6 +377,7 @@ export default class IndexModel {
 	textcls: '',
 	appfunctag: 'Auto3',
 	resourcetag: '',
+	authtag:'EHRPcm-Index-menuitem19',
 },
 	],
 },

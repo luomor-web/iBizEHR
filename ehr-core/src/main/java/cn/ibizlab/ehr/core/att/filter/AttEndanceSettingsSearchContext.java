@@ -99,8 +99,7 @@ public class AttEndanceSettingsSearchContext extends QueryWrapperContext<AttEnda
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
             this.getSelectCond().and( wrapper ->
-                     wrapper.like("attendancesettingsname", query)   
-                        .or().like("ygbh", query)            
+                     wrapper.like("ygbh", query)   
                         .or().like("pimpersonname", query)            
             );
 		 }

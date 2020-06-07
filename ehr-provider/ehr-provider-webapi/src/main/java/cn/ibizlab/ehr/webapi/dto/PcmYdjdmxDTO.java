@@ -395,6 +395,14 @@ public class PcmYdjdmxDTO extends DTOBase implements Serializable {
     @JsonProperty("pimdistirbutionid")
     private String pimdistirbutionid;
 
+    /**
+     * 属性 [ISFINISHED]
+     *
+     */
+    @JSONField(name = "isfinished")
+    @JsonProperty("isfinished")
+    private Integer isfinished;
+
 
     /**
      * 设置 [JDJSRQ]
@@ -466,6 +474,14 @@ public class PcmYdjdmxDTO extends DTOBase implements Serializable {
     public void setPimdistirbutionid(String  pimdistirbutionid){
         this.pimdistirbutionid = pimdistirbutionid ;
         this.modify("pimdistirbutionid",pimdistirbutionid);
+    }
+
+    /**
+     * 设置 [ISFINISHED]
+     */
+    public void setIsfinished(Integer  isfinished){
+        this.isfinished = isfinished ;
+        this.modify("isfinished",isfinished);
     }
 
 

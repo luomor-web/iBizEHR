@@ -51,6 +51,7 @@ public class PcmYdtxmxServiceImpl extends ServiceImpl<PcmYdtxmxMapper, PcmYdtxmx
     @Transactional
     public boolean remove(String key) {
         boolean result=removeById(key);
+        pcmydmxService.remove(key);
         return result ;
     }
 
@@ -65,6 +66,7 @@ public class PcmYdtxmxServiceImpl extends ServiceImpl<PcmYdtxmxMapper, PcmYdtxmx
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getPcmydtxmxid()),et);
+        createIndexMajorEntityData(et);
         return true;
     }
 
@@ -133,6 +135,7 @@ public class PcmYdtxmxServiceImpl extends ServiceImpl<PcmYdtxmxMapper, PcmYdtxmx
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pcmydtxmxid",et.getPcmydtxmxid())))
             return false;
         CachedBeanCopier.copy(get(et.getPcmydtxmxid()),et);
+        pcmydmxService.update(pcmydtxmxInheritMapping.toPcmydmx(et));
         return true;
     }
 
@@ -179,6 +182,24 @@ public class PcmYdtxmxServiceImpl extends ServiceImpl<PcmYdtxmxMapper, PcmYdtxmx
 
 
 
+
+    @Autowired
+    cn.ibizlab.ehr.core.pcm.mapping.PcmYdtxmxInheritMapping pcmydtxmxInheritMapping;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pcm.service.IPcmYdmxService pcmydmxService;
+
+    /**
+     * 创建索引主实体数据
+     * @param et
+     */
+    private void createIndexMajorEntityData(PcmYdtxmx et){
+        if(ObjectUtils.isEmpty(et.getPcmydtxmxid()))
+            et.setPcmydtxmxid((String)et.getDefaultKey(true));
+        cn.ibizlab.ehr.core.pcm.domain.PcmYdmx pcmydmx =pcmydtxmxInheritMapping.toPcmydmx(et);
+        pcmydmx.set("pcmydmxtype","70");
+        pcmydmxService.create(pcmydmx);
+    }
 
     @Override
     public List<JSONObject> select(String sql, Map param){

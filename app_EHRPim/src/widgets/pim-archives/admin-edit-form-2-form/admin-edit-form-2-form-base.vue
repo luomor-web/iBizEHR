@@ -40,7 +40,11 @@
 <i-col v-show="detailsModel.ygbh.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ygbh' :itemRules="this.rules.ygbh" class='' :caption="$t('entities.pimarchives.admineditform_2_form.details.ygbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygbh.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='ygbh'
-:value="data.ygbh" style=""></app-span>
+:value="data.ygbh"   :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -95,7 +99,17 @@
 </i-col>
 <i-col v-show="detailsModel.education.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='education' :itemRules="this.rules.education" class='' :caption="$t('entities.pimarchives.admineditform_2_form.details.education')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.education.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.education" :data="data" :itemParam="{}" :disabled="detailsModel.education.disabled"  tag='EhrCodeList0117' codelistType='DYNAMIC' placeholder='请选择...' style=""></dropdown-list>
+     <dropdown-list 
+    v-model="data.education" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :itemParam="{}" 
+    :disabled="detailsModel.education.disabled"  
+    tag='EhrCodeList0117' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

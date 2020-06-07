@@ -16,14 +16,12 @@
         ref='multipleTable' :data="items" :show-header="!isHideHeader">
             <template slot="empty">
                 无数据 
-                <span class="quick-toolbar">
-                </span>
             </template>
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('ygbh')">
-                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimperson.sydqyg_grid.columns.ygbh')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ygbh'" :label="$t('entities.pimperson.sydqyg_grid.columns.ygbh')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pimperson.sydqyg_grid.columns.ygbh')}}
@@ -35,7 +33,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimperson.sydqyg_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.pimperson.sydqyg_grid.columns.pimpersonname')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pimperson.sydqyg_grid.columns.pimpersonname')}}
@@ -54,7 +52,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimperson.sydqyg_grid.columns.zzdzs')" :min-width="2"  :align="'center'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.pimperson.sydqyg_grid.columns.zzdzs')" :width="220"  :align="'center'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.pimperson.sydqyg_grid.columns.zzdzs')}}
@@ -113,9 +111,7 @@
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <template >
-                                <app-span name='dbdwsj' editorType="DATEPICKER" :value="row.dbdwsj"></app-span>
-                        </template>
+                        <app-format-data format="YYYY-MM-DD" :data="row.dbdwsj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
@@ -127,9 +123,7 @@
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <template >
-                                <app-span name='sydq' editorType="DATEPICKER" :value="row.sydq"></app-span>
-                        </template>
+                        <app-format-data format="YYYY-MM-DD" :data="row.sydq"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
@@ -154,8 +148,6 @@
                             </template>
                         </div>
                     </poptip>
-                </span>
-                <span v-if="selections.length > 0" class="batch-toolbar">
                 </span>
                 <span class="page-button"><i-button icon="md-refresh" :title="$t('app.gridpage.refresh')" @click="pageRefresh()"></i-button></span>&nbsp;
                 <span>
@@ -630,14 +622,14 @@ export default class SYDQYGBase extends Vue implements ControlInterface {
             label: '组织',
             langtag: 'entities.pimperson.sydqyg_grid.columns.zzdzs',
             show: true,
-            util: 'STAR'
+            util: 'PX'
         },
         {
             name: 'ormorgsectorname',
             label: '部门',
             langtag: 'entities.pimperson.sydqyg_grid.columns.ormorgsectorname',
             show: true,
-            util: 'px'
+            util: 'PX'
         },
         {
             name: 'zw',
@@ -685,8 +677,6 @@ export default class SYDQYGBase extends Vue implements ControlInterface {
      */
     public getGridRowModel(){
         return {
-          sydq: new FormItemModel(),
-          dbdwsj: new FormItemModel(),
           srfkey: new FormItemModel(),
         }
     }
@@ -698,14 +688,6 @@ export default class SYDQYGBase extends Vue implements ControlInterface {
      * @memberof SYDQYG
      */
     public rules: any = {
-        sydq: [
-             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '试用到期时间 值不能为空', trigger: 'change' },
-            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '试用到期时间 值不能为空', trigger: 'blur' },
-        ],
-        dbdwsj: [
-             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '到本单位时间 值不能为空', trigger: 'change' },
-            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '到本单位时间 值不能为空', trigger: 'blur' },
-        ],
         srfkey: [
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '人员信息标识 值不能为空', trigger: 'change' },
             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '人员信息标识 值不能为空', trigger: 'blur' },

@@ -56,13 +56,35 @@
 </i-col>
 <i-col v-show="detailsModel.searchtag.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='searchtag' :itemRules="this.rules.searchtag" class='' :caption="$t('entities.pimsearchfieldset.main_form.details.searchtag')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.searchtag.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.searchtag" :data="data" :itemParam="{}" :disabled="detailsModel.searchtag.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0054' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
+     <dropdown-list 
+  v-model="data.searchtag" 
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+  :disabled="detailsModel.searchtag.disabled" 
+  style="width:100px;width: 100px;" 
+  tag='EhrCodeList0400' 
+  codelistType='STATIC'
+  placeholder='请选择...'>
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.isshown.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='isshown' :itemRules="this.rules.isshown" class='' :caption="$t('entities.pimsearchfieldset.main_form.details.isshown')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.isshown.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list v-model="data.isshown" :data="data" :itemParam="{}" :disabled="detailsModel.isshown.disabled" style="width:100px;width: 100px;" tag='EhrCodeList0054' codelistType='STATIC'  placeholder='请选择...'></dropdown-list>
+     <dropdown-list 
+  v-model="data.isshown" 
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam="{}" 
+  :disabled="detailsModel.isshown.disabled" 
+  style="width:100px;width: 100px;" 
+  tag='EhrCodeList0400' 
+  codelistType='STATIC'
+  placeholder='请选择...'>
+ </dropdown-list>
 </app-form-item>
 
 </i-col>

@@ -33,13 +33,35 @@
 </i-col>
 <i-col v-show="detailsModel.wyyz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='wyyz' :itemRules="this.rules.wyyz" class='' :caption="$t('entities.pimlanguageability.main_form.details.wyyz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.wyyz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.wyyz"  :disabled="detailsModel.wyyz.disabled"  name="wyyz" tag='EhrCodeList0122' codelistType='DYNAMIC'  style=""></app-radio-group>
+    <app-radio-group 
+  v-model="data.wyyz"
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"   
+  :disabled="detailsModel.wyyz.disabled"  
+  name="wyyz" 
+  :itemParam="{}" 
+  tag='EhrCodeList0122' 
+  codelistType='DYNAMIC' 
+  style="">
+</app-radio-group>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.wydj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='wydj' :itemRules="this.rules.wydj" class='' :caption="$t('entities.pimlanguageability.main_form.details.wydj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.wydj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group v-model="data.wydj"  :disabled="detailsModel.wydj.disabled"  name="wydj" tag='EhrCodeList0146' codelistType='DYNAMIC'  style=""></app-radio-group>
+    <app-radio-group 
+  v-model="data.wydj"
+  :data="data" 
+  :context="context"
+  :viewparams="viewparams"   
+  :disabled="detailsModel.wydj.disabled"  
+  name="wydj" 
+  :itemParam="{}" 
+  tag='EhrCodeList0146' 
+  codelistType='DYNAMIC' 
+  style="">
+</app-radio-group>
 </app-form-item>
 
 </i-col>

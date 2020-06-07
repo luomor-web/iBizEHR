@@ -191,7 +191,7 @@ export default class ORMORGOrgTreeGridViewBase extends GridViewBase {
      * @memberof ORMORGOrgTreeGridView
      */
     public toolBarModels: any = {
-        tbitem3: { name: 'tbitem3', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', iconcls: 'fa fa-file-text-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'New', target: '' }, class: '' },
+        tbitem3: { name: 'tbitem3', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', iconcls: 'fa fa-file-text-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'New', target: '' }, class: '' },
 
         deuiaction1: { name: 'deuiaction1', caption: '编辑','isShowCaption':true,'isShowIcon':true, tooltip: '编辑', iconcls: 'fa fa-edit', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'Edit', target: 'SINGLEKEY' }, class: '' },
 
@@ -457,6 +457,7 @@ export default class ORMORGOrgTreeGridViewBase extends GridViewBase {
             data.srfsourcekey = args[0].srfsourcekey;
         }
         let curViewParam = JSON.parse(JSON.stringify(this.context));
+        delete curViewParam.ormorg;
         if(args.length >0){
             Object.assign(curViewParam,args[0]);
         }

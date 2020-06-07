@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet org-bar ' :style="{'height': isAdaptiveSize ? 'clac(100% - 16px)' : '932px',}">
+    <div class='portlet org-bar ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : '932px',}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_db_sysportlet1_chart 

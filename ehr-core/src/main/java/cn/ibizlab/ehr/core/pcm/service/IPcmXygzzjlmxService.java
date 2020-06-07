@@ -29,6 +29,7 @@ public interface IPcmXygzzjlmxService extends IService<PcmXygzzjlmx>{
     PcmXygzzjlmx get(String key) ;
     PcmXygzzjlmx sHTG(PcmXygzzjlmx et) ;
     PcmXygzzjlmx fillPersonInfo(PcmXygzzjlmx et) ;
+    PcmXygzzjlmx setPass(PcmXygzzjlmx et) ;
     boolean create(PcmXygzzjlmx et) ;
     void createBatch(List<PcmXygzzjlmx> list) ;
     boolean remove(String key) ;
@@ -37,6 +38,7 @@ public interface IPcmXygzzjlmxService extends IService<PcmXygzzjlmx>{
     boolean update(PcmXygzzjlmx et) ;
     void updateBatch(List<PcmXygzzjlmx> list) ;
     PcmXygzzjlmx getDraft(PcmXygzzjlmx et) ;
+    PcmXygzzjlmx setRejcet(PcmXygzzjlmx et) ;
     PcmXygzzjlmx sHBTG(PcmXygzzjlmx et) ;
     boolean save(PcmXygzzjlmx et) ;
     void saveBatch(List<PcmXygzzjlmx> list) ;

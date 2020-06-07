@@ -16,8 +16,6 @@
         ref='multipleTable' :data="items" :show-header="!isHideHeader">
             <template slot="empty">
                 无数据 
-                <span class="quick-toolbar">
-                </span>
             </template>
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
@@ -143,7 +141,7 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                         <template >
-            <codelist :value="row.sfdyxl" tag='EhrCodeList0054' codelistType='STATIC' ></codelist>
+            <codelist :value="row.sfdyxl" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -157,7 +155,7 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                         <template >
-            <codelist :value="row.sfzgxl" tag='EhrCodeList0054' codelistType='STATIC' ></codelist>
+            <codelist :value="row.sfzgxl" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -1144,17 +1142,17 @@ export default class Main_2Base extends Vue implements ControlInterface {
           },
           {
             name: 'sfdyxl',
-            srfkey: 'EhrCodeList0054',
+            srfkey: 'EhrCodeList0400',
             codelistType : 'STATIC',
-            renderMode: 'other',
+            renderMode: 'number',
             textSeparator: '、',
             valueSeparator: ',',
           },
           {
             name: 'sfzgxl',
-            srfkey: 'EhrCodeList0054',
+            srfkey: 'EhrCodeList0400',
             codelistType : 'STATIC',
-            renderMode: 'other',
+            renderMode: 'number',
             textSeparator: '、',
             valueSeparator: ',',
           },

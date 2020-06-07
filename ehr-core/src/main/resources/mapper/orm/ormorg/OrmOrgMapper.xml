@@ -218,127 +218,108 @@
 				 WHERE 	( t1.`PORGID` = '64BCDCC1-24AA-42E4-AC7A-FB6F242F3FF1'  AND  t1.`STARTSTOPSIGN` = '1' )
 			]]>
     </sql>
-
     <!--数据查询[AllLevelTwoOrg2]-->
     <sql id="AllLevelTwoOrg2" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
 				 WHERE 	( length(t1.ORGCODE)=3 )
 			]]>
     </sql>
-
     <!--数据查询[AllSignORG]-->
     <sql id="AllSignORG" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
 				 WHERE 	( t1.`LEGALENTITY` = '10' )
 			]]>
     </sql>
-
     <!--数据查询[CurChild]-->
     <sql id="CurChild" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
 				 WHERE 	( t1.`PORGID` IS NOT NULL  AND  t1.`STARTSTOPSIGN` = '1' )
 			]]>
     </sql>
-
     <!--数据查询[CurPorg]-->
     <sql id="CurPorg" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
 				 WHERE 	( t1.`PORGID` IS NULL  AND  t1.`STARTSTOPSIGN` = '1' )
 			]]>
     </sql>
-
     <!--数据查询[DanQian]-->
     <sql id="DanQian" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
-				 WHERE 	( t1.`STARTSTOPSIGN` = '1'  AND  ( t1.`ORGID` =  #{srf.sessioncontext.SRFORGID}  OR  t1.`PORGID` =  #{srf.sessioncontext.SRFORGID}  OR  'ibzadmin' = (select t.loginaccountname from t_srfloginaccount t where t.loginaccountid = #{srf.sessioncontext.SRFPERSONID')}) ) )
+				 WHERE 	( t1.`STARTSTOPSIGN` = '1'  AND  ( t1.`ORGID` =  #{srf.sessioncontext.srforgid}  OR  t1.`PORGID` =  #{srf.sessioncontext.srforgid}  OR  'ibzadmin' = (select t.loginaccountname from t_srfloginaccount t where t.loginaccountid = #{srf.sessioncontext.srfpersonid')}) ) )
 			]]>
     </sql>
-
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
 				 WHERE 	( t1.`ORGID` <> 'DEFAULT' )
 			]]>
     </sql>
-
     <!--数据查询[GSGWZY]-->
     <sql id="GSGWZY" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
-				 WHERE 	( ( t1.`ORGID` =  #{srf.sessioncontext.SRFORGID}  OR  'ibzadmin' = (select t.loginaccountname from t_srfloginaccount t where t.loginaccountid = #{srf.sessioncontext.SRFPERSONID')}) ) )
+				 WHERE 	( ( t1.`ORGID` =  #{srf.sessioncontext.srforgid}  OR  'ibzadmin' = (select t.loginaccountname from t_srfloginaccount t where t.loginaccountid = #{srf.sessioncontext.srfpersonid')}) ) )
 			]]>
     </sql>
-
     <!--数据查询[HTGLDW]-->
     <sql id="HTGLDW" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
-				 WHERE 	( ( 'ibzadmin' = (select t.loginaccountname from t_srfloginaccount t where t.loginaccountid = #{srf.sessioncontext.SRFPERSONID')})  OR  instr(t1.levelcode, ( select a.levelcode from t_srforg a where a.orgid = #{srf.sessioncontext.SRFORGID')} ) )=1 ) )
+				 WHERE 	( ( 'ibzadmin' = (select t.loginaccountname from t_srfloginaccount t where t.loginaccountid = #{srf.sessioncontext.srfpersonid')})  OR  instr(t1.levelcode, ( select a.levelcode from t_srforg a where a.orgid = #{srf.sessioncontext.srforgid')} ) )=1 ) )
 			]]>
     </sql>
-
     <!--数据查询[KZSJZZXZ]-->
     <sql id="KZSJZZXZ" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
 			]]>
     </sql>
-
     <!--数据查询[KZXLXZ]-->
     <sql id="KZXLXZ" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
 			]]>
     </sql>
-
     <!--数据查询[Orglist_Profile]-->
     <sql id="Orglist_Profile" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
 				 WHERE 	( t1.companyflag=t1.orgid  AND  t1.`STARTSTOPSIGN` = '1' )
 			]]>
     </sql>
-
     <!--数据查询[REP_ORG]-->
     <sql id="REP_ORG" databaseId="mysql">
        <![CDATA[	select t2.orgid ,count(1) as countnum from t_pimperson t left outer join t_srforg t1 on t.ormorgid=t1.orgid left outer join t_srforg t2 on t1.companyflag=t2.orgid  where jlss='10' and t.YGZT not in ('40','50','51','60','130')  group by t2.orgid
 			]]>
     </sql>
-
     <!--数据查询[REP_ORGPNUM]-->
     <sql id="REP_ORGPNUM" databaseId="mysql">
        <![CDATA[	select * from  ( select shortname as orgname from t_srforg where orgcode like 'BG%' ) v1 left outer join  (  select count(1) as countnum from t_pimperson t  where jlss='10' and t.YGZT not in ('40','50','51','60','130')  ) v2 on 1=1
 			]]>
     </sql>
-
     <!--数据查询[SJYXZZ]-->
     <sql id="SJYXZZ" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
 				 WHERE 	( length(t1.ORGCODE)>=5 )
 			]]>
     </sql>
-
     <!--数据查询[SubOrg]-->
     <sql id="SubOrg" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
 				 WHERE 	( ( t1.`ORGID` =  #{srf.webcontext.nodeid}  OR  t1.`PORGID` =  #{srf.webcontext.nodeid} ) )
 			]]>
     </sql>
-
     <!--数据查询[SubSubOrg]-->
     <sql id="SubSubOrg" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
 				 WHERE 	( ( t1.`ORGID` =  #{srf.webcontext.nodeid}  OR  t1.`PORGID` =  #{srf.webcontext.nodeid} ) )
 			]]>
     </sql>
-
     <!--数据查询[UseByFP]-->
     <sql id="UseByFP" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
-				 WHERE 	( ( length(t1.ORGCODE)>=5   and   ( t1.companyflag  = #{srf.sessioncontext.SRFORGID')}  or 'ibzadmin' = (select a.loginaccountname from t_srfloginaccount a where a.loginaccountid = #{srf.sessioncontext.SRFPERSONID')})  or  ((select a.orgcode from t_srforg a where orgid = #{srf.sessioncontext.SRFORGID')})  in ('10101','100','BG')) ) ) )
+				 WHERE 	( ( length(t1.ORGCODE)>=5   and   ( t1.companyflag  = #{srf.sessioncontext.srforgid')}  or 'ibzadmin' = (select a.loginaccountname from t_srfloginaccount a where a.loginaccountid = #{srf.sessioncontext.srfpersonid')})  or  ((select a.orgcode from t_srforg a where orgid = #{srf.sessioncontext.srforgid')})  in ('10101','100','BG')) ) ) )
 			]]>
     </sql>
-
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
        <![CDATA[	SELECT t1.`BTQY`, t1.`COMPANYFLAG`, t1.`CORRESPONDINGORG`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ERPORGID`, t1.`GSSS`, t1.`LEGALENTITY`, t1.`LEVELCODE`, t1.`ORGCODE`, t1.`ORGID`, t1.`ORGNAME`, t1.`PORGID`, t11.`ORGNAME` AS `PORGNAME`, t1.`PX`, t1.`SHORTNAME`, t1.`SSOU`, t1.`STARTSTOPSIGN`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XN`, t1.`ZZCJSJ`, t1.`ZZDZBM`, t1.`ZZDZE`, t1.`ZZDZS`, t1.`ZZDZY`, t1.`ZZLX` FROM `T_SRFORG` t1  LEFT JOIN T_SRFORG t11 ON t1.PORGID = t11.ORGID  
 			]]>
     </sql>
-
 </mapper>
 

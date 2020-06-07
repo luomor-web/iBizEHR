@@ -607,14 +607,6 @@ public class OrmOrgsectorDTO extends DTOBase implements Serializable {
     }
 
     /**
-     * 设置 [ORDERVALUE]
-     */
-    public void setOrdervalue(Integer  ordervalue){
-        this.ordervalue = ordervalue ;
-        this.modify("ordervalue",ordervalue);
-    }
-
-    /**
      * 设置 [QY]
      */
     public void setQy(String  qy){

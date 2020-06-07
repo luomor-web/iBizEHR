@@ -214,6 +214,7 @@ public class SalLogServiceImpl extends ServiceImpl<SalLogMapper, SalLog> impleme
         }
     }
 
+
     @Override
     public List<JSONObject> select(String sql, Map param){
         return this.baseMapper.selectBySQL(sql,param);
