@@ -1,5 +1,5 @@
 server:
-  port: 6095
+  port: 36095
 #zuul网关路由设置
 zuul:
   routes:

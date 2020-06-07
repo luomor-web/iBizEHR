@@ -716,10 +716,11 @@ export default class OrgPersonOrgTypeBase extends Vue implements ControlInterfac
             let seriesValues:Array<any> = item.seriesValues;
             if(seriesValues && seriesValues.length >0){
                 seriesValues.forEach((singleSeriesName:any) =>{
-                    let singleSeriesObj:any = {type:singleSeriesName};
+                    let singleSeriesObj:any = {};
                     returnArray.forEach((item:any) =>{
                         Object.assign(singleSeriesObj,{[item[groupField[0]]]:item[singleSeriesName]});
                     })
+                    Object.assign(singleSeriesObj,{type:singleSeriesName});
                     tempReturnArray.push(singleSeriesObj);
                 })
             }
