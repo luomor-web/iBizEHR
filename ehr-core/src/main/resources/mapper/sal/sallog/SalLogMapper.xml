@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.sal.mapper.SalLogMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="SalLogResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`SALLOGID`, t1.`SALLOGNAME`, t1.`SALSALARYDETAILID`, t21.`SALSALARYDETAILNAME`, t1.`SALSALARYID`, t11.`SALSALARYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VAL1`, t1.`VAL2` FROM `T_SALLOG` t1  LEFT JOIN T_SALSALARY t11 ON t1.SALSALARYID = t11.SALSALARYID  LEFT JOIN T_SALSALARYDETAIL t21 ON t1.SALSALARYDETAILID = t21.SALSALARYDETAILID  ) t1 where sallogid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="SalLogResultMap" type="cn.ibizlab.ehr.core.sal.domain.SalLog" autoMapping="true">
+        <id property="sallogid" column="sallogid" /><!--主键字段映射-->
+		<result property="salsalarydetailid" column="salsalarydetailid" />
+		<result property="salsalaryid" column="salsalaryid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="salsalarydetail" javaType="cn.ibizlab.ehr.core.sal.domain.SalSalaryDetail" column="salsalarydetailid" select="cn.ibizlab.ehr.core.sal.mapper.SalSalaryDetailMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="salsalary" javaType="cn.ibizlab.ehr.core.sal.domain.SalSalary" column="salsalaryid" select="cn.ibizlab.ehr.core.sal.mapper.SalSalaryMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALLOG_SALSALARYDETAIL_SALSALARYDETAILID] -->
+	 <select id="selectBySalsalarydetailid" resultMap="SalLogResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  salsalarydetailid=#{salsalarydetailid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALLOG_SALSALARY_SALSALARYID] -->
+	 <select id="selectBySalsalaryid" resultMap="SalLogResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  salsalaryid=#{salsalaryid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.sal.filter.SalLogSearchContext"  resultMap="SalLogResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`SALLOGID`, t1.`SALLOGNAME`, t1.`SALSALARYDETAILID`, t21.`SALSALARYDETAILNAME`, t1.`SALSALARYID`, t11.`SALSALARYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VAL1`, t1.`VAL2` FROM `T_SALLOG` t1  LEFT JOIN T_SALSALARY t11 ON t1.SALSALARYID = t11.SALSALARYID  LEFT JOIN T_SALSALARYDETAIL t21 ON t1.SALSALARYDETAILID = t21.SALSALARYDETAILID  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`SALLOGID`, t1.`SALLOGNAME`, t1.`SALSALARYDETAILID`, t21.`SALSALARYDETAILNAME`, t1.`SALSALARYID`, t11.`SALSALARYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VAL1`, t1.`VAL2` FROM `T_SALLOG` t1  LEFT JOIN T_SALSALARY t11 ON t1.SALSALARYID = t11.SALSALARYID  LEFT JOIN T_SALSALARYDETAIL t21 ON t1.SALSALARYDETAILID = t21.SALSALARYDETAILID  
+			]]>
+    </sql>
+</mapper>
+

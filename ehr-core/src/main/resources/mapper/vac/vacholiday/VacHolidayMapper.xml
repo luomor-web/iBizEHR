@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.vac.mapper.VacHolidayMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="VacHolidayResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`AGE`, t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JJRLX`, t1.`JSSJ`, t1.`KSSJ`, t1.`ND`, t11.`ORMORGID`, t21.`ZZDZS` AS `ORMORGNAME`, t1.`SEX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACHOLIDAYID`, t1.`VACHOLIDAYNAME`, t1.`VACHOLIDAYRULESID`, t11.`VACHOLIDAYRULESNAME` FROM `T_VACHOLIDAY` t1  LEFT JOIN T_VACHOLIDAYRULES t11 ON t1.VACHOLIDAYRULESID = t11.VACHOLIDAYRULESID  LEFT JOIN T_SRFORG t21 ON t11.ORMORGID = t21.ORGID  ) t1 where vacholidayid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="VacHolidayResultMap" type="cn.ibizlab.ehr.core.vac.domain.VacHoliday" autoMapping="true">
+        <id property="vacholidayid" column="vacholidayid" /><!--主键字段映射-->
+		<result property="vacholidayrulesid" column="vacholidayrulesid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="vacholidayrules" javaType="cn.ibizlab.ehr.core.vac.domain.VacHolidayRules" column="vacholidayrulesid" select="cn.ibizlab.ehr.core.vac.mapper.VacHolidayRulesMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_VACHOLIDAY_VACHOLIDAYRULES_VACHOLIDAYRULESID] -->
+	 <select id="selectByVacholidayrulesid" resultMap="VacHolidayResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  vacholidayrulesid=#{vacholidayrulesid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.vac.filter.VacHolidaySearchContext"  resultMap="VacHolidayResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`AGE`, t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JJRLX`, t1.`JSSJ`, t1.`KSSJ`, t1.`ND`, t11.`ORMORGID`, t21.`ZZDZS` AS `ORMORGNAME`, t1.`SEX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACHOLIDAYID`, t1.`VACHOLIDAYNAME`, t1.`VACHOLIDAYRULESID`, t11.`VACHOLIDAYRULESNAME` FROM `T_VACHOLIDAY` t1  LEFT JOIN T_VACHOLIDAYRULES t11 ON t1.VACHOLIDAYRULESID = t11.VACHOLIDAYRULESID  LEFT JOIN T_SRFORG t21 ON t11.ORMORGID = t21.ORGID  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`AGE`, t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JJRLX`, t1.`JSSJ`, t1.`KSSJ`, t1.`ND`, t11.`ORMORGID`, t21.`ZZDZS` AS `ORMORGNAME`, t1.`SEX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACHOLIDAYID`, t1.`VACHOLIDAYNAME`, t1.`VACHOLIDAYRULESID`, t11.`VACHOLIDAYRULESNAME` FROM `T_VACHOLIDAY` t1  LEFT JOIN T_VACHOLIDAYRULES t11 ON t1.VACHOLIDAYRULESID = t11.VACHOLIDAYRULESID  LEFT JOIN T_SRFORG t21 ON t11.ORMORGID = t21.ORGID  
+			]]>
+    </sql>
+</mapper>
+

@@ -1,0 +1,47 @@
+package cn.ibizlab.ehr.vac.logic.vacleavedetaillogic.calcplandays;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.vac.domain.VacLeaveDetail vacleavedetailcalcplandaysdefault;
+global cn.ibizlab.ehr.core.vac.service.IVacLeaveDetailService iBzSysVacleavedetailDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[参数准备]
+rule "prepareparam1"
+ruleflow-group "vacleavedetailcalcplandaysprepareparam1"
+    when
+    then
+    update(vacleavedetailcalcplandaysdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "vacleavedetailcalcplandaysbegin"
+    when
+    then
+    end
+
+//逻辑处理节点[计算计划请假天数]
+rule "rawsqlcall1"
+ruleflow-group "vacleavedetailcalcplandaysrawsqlcall1"
+    when
+    then
+    Map param =new HashMap();
+    param.put("param0",vacleavedetailcalcplandaysdefault.get("jhkssj"));
+    param.put("param1",vacleavedetailcalcplandaysdefault.get("jhjssj"));
+    param.put("param2",vacleavedetailcalcplandaysdefault.get("jhkssxw"));
+    param.put("param3",vacleavedetailcalcplandaysdefault.get("jhjssxw"));
+    String strSql="select DATEDIFF(%1$s,%2$s)+case when %3$s is null then 0.5 when %3$s='10' then 0.5 else 0 end+case when %4$s is null then 0.5 when %4$s='20' then 0.5 else 0 end as jhts from dual";
+    java.util.List<JSONObject> entities=iBzSysVacleavedetailDefaultService.select(strSql,param);//SQL调用
+    if(entities.size()>0){
+        JSONObject entity=entities.get(0);
+        for (Map.Entry entry : entity.entrySet()) {
+            vacleavedetailcalcplandaysdefault.set(String.valueOf(entry.getKey()),entry.getValue());
+        }
+    }
+    update(vacleavedetailcalcplandaysdefault);//更新fact中变量值
+    end
+

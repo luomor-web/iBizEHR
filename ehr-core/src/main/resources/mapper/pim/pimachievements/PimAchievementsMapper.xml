@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PimAchievementsMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PimAchievementsResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJ`, t1.`ENABLE`, t1.`EVALUATIONUNIT`, t1.`JD`, t1.`JSRQ`, t1.`KHDF`, t1.`KHJL`, t1.`KHLX`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t11.`ORMORGSECTORID`, t1.`PIMACHIEVEMENTSID`, t1.`PIMACHIEVEMENTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`QSRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XMJB`, t1.`YD`, t11.`YGBH` FROM `T_PIMACHIEVEMENTS` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  ) t1 where pimachievementsid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PimAchievementsResultMap" type="cn.ibizlab.ehr.core.pim.domain.PimAchievements" autoMapping="true">
+        <id property="pimachievementsid" column="pimachievementsid" /><!--主键字段映射-->
+		<result property="pimpersonid" column="pimpersonid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMACHIEVEMENTS_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="PimAchievementsResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[JLSS]-->
+	 <select id="searchJLSS"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimAchievementsSearchContext"  resultMap="PimAchievementsResultMap">
+         select t1.* from (
+                <include refid="JLSS" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimAchievementsSearchContext"  resultMap="PimAchievementsResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[ZIZHU]-->
+	 <select id="searchZIZHU"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimAchievementsSearchContext"  resultMap="PimAchievementsResultMap">
+         select t1.* from (
+                <include refid="ZIZHU" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJ`, t1.`ENABLE`, t1.`EVALUATIONUNIT`, t1.`JD`, t1.`JSRQ`, t1.`KHDF`, t1.`KHJL`, t1.`KHLX`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t11.`ORMORGSECTORID`, t1.`PIMACHIEVEMENTSID`, t1.`PIMACHIEVEMENTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`QSRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XMJB`, t1.`YD`, t11.`YGBH` FROM `T_PIMACHIEVEMENTS` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[JLSS]-->
+    <sql id="JLSS" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJ`, t1.`ENABLE`, t1.`EVALUATIONUNIT`, t1.`JD`, t1.`JSRQ`, t1.`KHDF`, t1.`KHJL`, t1.`KHLX`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t11.`ORMORGSECTORID`, t1.`PIMACHIEVEMENTSID`, t1.`PIMACHIEVEMENTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`QSRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XMJB`, t1.`YD`, t11.`YGBH` FROM `T_PIMACHIEVEMENTS` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`PIMPERSONID` =  #{srf.sessioncontext.srfpersonid} )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJ`, t1.`ENABLE`, t1.`EVALUATIONUNIT`, t1.`JD`, t1.`JSRQ`, t1.`KHDF`, t1.`KHJL`, t1.`KHLX`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t11.`ORMORGSECTORID`, t1.`PIMACHIEVEMENTSID`, t1.`PIMACHIEVEMENTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`QSRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XMJB`, t1.`YD`, t11.`YGBH` FROM `T_PIMACHIEVEMENTS` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[ZIZHU]-->
+    <sql id="ZIZHU" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJ`, t1.`ENABLE`, t1.`EVALUATIONUNIT`, t1.`JD`, t1.`JSRQ`, t1.`KHDF`, t1.`KHJL`, t1.`KHLX`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t11.`ORMORGSECTORID`, t1.`PIMACHIEVEMENTSID`, t1.`PIMACHIEVEMENTSNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`QSRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XMJB`, t1.`YD`, t11.`YGBH` FROM `T_PIMACHIEVEMENTS` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`PIMPERSONID` =  #{srf.sessioncontext.srfpersonid} )
+			]]>
+    </sql>
+</mapper>
+

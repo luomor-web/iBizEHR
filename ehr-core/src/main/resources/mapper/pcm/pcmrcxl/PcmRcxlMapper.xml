@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PcmRcxlMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PcmRcxlResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CODE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`PCMRCXLID`, t1.`PCMRCXLID2`, t1.`PCMRCXLNAME`, t11.`PCMRCXLNAME` AS `PCMRCXLNAME2`, t1.`RCXLLX`, (case when t1.`XLDJ` is null then t1.`CODE` else concat(t1.`CODE`,'-',t1.`XLDJ`) end) AS `RCXLMC`, t1.`SNUMBER`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XLDJ` FROM `T_PCMRCXL` t1  LEFT JOIN T_PCMRCXL t11 ON t1.PCMRCXLID2 = t11.PCMRCXLID  ) t1 where pcmrcxlid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PcmRcxlResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PcmRcxl" autoMapping="true">
+        <id property="pcmrcxlid" column="pcmrcxlid" /><!--主键字段映射-->
+		<result property="pcmrcxlid2" column="pcmrcxlid2" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pcmrcxl2" javaType="cn.ibizlab.ehr.core.pcm.domain.PcmRcxl" column="pcmrcxlid2" select="cn.ibizlab.ehr.core.pcm.mapper.PcmRcxlMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMRCXL_PCMRCXL_PCMRCXLID2] -->
+	 <select id="selectByPcmrcxlid2" resultMap="PcmRcxlResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pcmrcxlid2=#{pcmrcxlid}
+     </select>
+
+    <!--数据集合[Current]-->
+	 <select id="searchCurrent"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmRcxlSearchContext"  resultMap="PcmRcxlResultMap">
+         select t1.* from (
+                <include refid="Current" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[RCXLPPXLLX]-->
+	 <select id="searchRCXLPPXLLX"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmRcxlSearchContext"  resultMap="PcmRcxlResultMap">
+         select t1.* from (
+                <include refid="RCXLPPXLLX" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[ZiDQ]-->
+	 <select id="searchZiDQ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmRcxlSearchContext"  resultMap="PcmRcxlResultMap">
+         select t1.* from (
+                <include refid="ZiDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmRcxlSearchContext"  resultMap="PcmRcxlResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[GenDQ]-->
+	 <select id="searchGenDQ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmRcxlSearchContext"  resultMap="PcmRcxlResultMap">
+         select t1.* from (
+                <include refid="GenDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Current]-->
+    <sql id="Current" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CODE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`PCMRCXLID`, t1.`PCMRCXLID2`, t1.`PCMRCXLNAME`, t11.`PCMRCXLNAME` AS `PCMRCXLNAME2`, t1.`RCXLLX`, (case when t1.`XLDJ` is null then t1.`CODE` else concat(t1.`CODE`,'-',t1.`XLDJ`) end) AS `RCXLMC`, t1.`SNUMBER`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XLDJ` FROM `T_PCMRCXL` t1  LEFT JOIN T_PCMRCXL t11 ON t1.PCMRCXLID2 = t11.PCMRCXLID  
+				 WHERE 	( ( t1.`PCMRCXLID2` =  #{srf.webcontext.nodeid}  OR  t1.`PCMRCXLID` =  #{srf.webcontext.nodeid} ) )
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CODE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`PCMRCXLID`, t1.`PCMRCXLID2`, t1.`PCMRCXLNAME`, t11.`PCMRCXLNAME` AS `PCMRCXLNAME2`, t1.`RCXLLX`, (case when t1.`XLDJ` is null then t1.`CODE` else concat(t1.`CODE`,'-',t1.`XLDJ`) end) AS `RCXLMC`, t1.`SNUMBER`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XLDJ` FROM `T_PCMRCXL` t1  LEFT JOIN T_PCMRCXL t11 ON t1.PCMRCXLID2 = t11.PCMRCXLID  
+			]]>
+    </sql>
+    <!--数据查询[GenDQ]-->
+    <sql id="GenDQ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CODE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`PCMRCXLID`, t1.`PCMRCXLID2`, t1.`PCMRCXLNAME`, t11.`PCMRCXLNAME` AS `PCMRCXLNAME2`, t1.`RCXLLX`, (case when t1.`XLDJ` is null then t1.`CODE` else concat(t1.`CODE`,'-',t1.`XLDJ`) end) AS `RCXLMC`, t1.`SNUMBER`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XLDJ` FROM `T_PCMRCXL` t1  LEFT JOIN T_PCMRCXL t11 ON t1.PCMRCXLID2 = t11.PCMRCXLID  
+				 WHERE 	( t1.`PCMRCXLID2` IS NULL )
+			]]>
+    </sql>
+    <!--数据查询[RCXLPPXLLX]-->
+    <sql id="RCXLPPXLLX" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CODE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`PCMRCXLID`, t1.`PCMRCXLID2`, t1.`PCMRCXLNAME`, t11.`PCMRCXLNAME` AS `PCMRCXLNAME2`, t1.`RCXLLX`, (case when t1.`XLDJ` is null then t1.`CODE` else concat(t1.`CODE`,'-',t1.`XLDJ`) end) AS `RCXLMC`, t1.`SNUMBER`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XLDJ` FROM `T_PCMRCXL` t1  LEFT JOIN T_PCMRCXL t11 ON t1.PCMRCXLID2 = t11.PCMRCXLID  
+				 WHERE 	( t1.`RCXLLX` =  #{srf.datacontext.rcxllx} )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CODE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`PCMRCXLID`, t1.`PCMRCXLID2`, t1.`PCMRCXLNAME`, t11.`PCMRCXLNAME` AS `PCMRCXLNAME2`, t1.`RCXLLX`, (case when t1.`XLDJ` is null then t1.`CODE` else concat(t1.`CODE`,'-',t1.`XLDJ`) end) AS `RCXLMC`, t1.`SNUMBER`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XLDJ` FROM `T_PCMRCXL` t1  LEFT JOIN T_PCMRCXL t11 ON t1.PCMRCXLID2 = t11.PCMRCXLID  
+			]]>
+    </sql>
+    <!--数据查询[ZiDQ]-->
+    <sql id="ZiDQ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CODE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`PCMRCXLID`, t1.`PCMRCXLID2`, t1.`PCMRCXLNAME`, t11.`PCMRCXLNAME` AS `PCMRCXLNAME2`, t1.`RCXLLX`, (case when t1.`XLDJ` is null then t1.`CODE` else concat(t1.`CODE`,'-',t1.`XLDJ`) end) AS `RCXLMC`, t1.`SNUMBER`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XLDJ` FROM `T_PCMRCXL` t1  LEFT JOIN T_PCMRCXL t11 ON t1.PCMRCXLID2 = t11.PCMRCXLID  
+				 WHERE 	( t1.`PCMRCXLID2` =  #{srf.datacontext.nodeid} )
+			]]>
+    </sql>
+</mapper>
+

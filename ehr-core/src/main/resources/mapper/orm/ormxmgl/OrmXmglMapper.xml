@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.orm.mapper.OrmXmglMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="OrmXmglResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EHR_ORG_ID`, t1.`ENGINEERINGBUSTYPE`, t1.`ENGINEERINGPURPOSE`, t1.`ENGINEERINGSCALE`, t1.`ISDIRECTLYMANAGE`, t1.`ORG_ID`, t1.`ORMXMGLID`, t1.`ORMXMGLNAME`, t1.`PROCAPITALATT`, t1.`PROJECT_FULL_NAME`, t1.`PROJECT_NAME`, t1.`PROJECT_NUMBER`, t1.`PROJECT_SIZE`, t1.`PROJECT_STATUS_CODE`, t1.`PROJECT_STATUS_NAME`, t1.`PROJECT_TYPE`, t1.`TARGET_FINISH_DATE`, t1.`TARGET_START_DATE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XMBH` FROM `T_ORMXMGL` t1  ) t1 where ormxmglid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="OrmXmglResultMap" type="cn.ibizlab.ehr.core.orm.domain.OrmXmgl" autoMapping="true">
+        <id property="ormxmglid" column="ormxmglid" /><!--主键字段映射-->
+		<result property="ehrOrgId" column="ehr_org_id" />
+		<result property="targetFinishDate" column="target_finish_date" />
+		<result property="projectName" column="project_name" />
+		<result property="projectType" column="project_type" />
+		<result property="projectStatusCode" column="project_status_code" />
+		<result property="projectStatusName" column="project_status_name" />
+		<result property="projectSize" column="project_size" />
+		<result property="projectFullName" column="project_full_name" />
+		<result property="orgId" column="org_id" />
+		<result property="projectNumber" column="project_number" />
+		<result property="targetStartDate" column="target_start_date" />
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmXmglSearchContext"  resultMap="OrmXmglResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[ValidPro]-->
+	 <select id="searchValidPro"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmXmglSearchContext"  resultMap="OrmXmglResultMap">
+         select t1.* from (
+                <include refid="ValidPro" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EHR_ORG_ID`, t1.`ENGINEERINGBUSTYPE`, t1.`ENGINEERINGPURPOSE`, t1.`ENGINEERINGSCALE`, t1.`ISDIRECTLYMANAGE`, t1.`ORG_ID`, t1.`ORMXMGLID`, t1.`ORMXMGLNAME`, t1.`PROCAPITALATT`, t1.`PROJECT_FULL_NAME`, t1.`PROJECT_NAME`, t1.`PROJECT_NUMBER`, t1.`PROJECT_SIZE`, t1.`PROJECT_STATUS_CODE`, t1.`PROJECT_STATUS_NAME`, t1.`PROJECT_TYPE`, t1.`TARGET_FINISH_DATE`, t1.`TARGET_START_DATE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XMBH` FROM `T_ORMXMGL` t1  
+			]]>
+    </sql>
+    <!--数据查询[ValidPro]-->
+    <sql id="ValidPro" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EHR_ORG_ID`, t1.`ENGINEERINGBUSTYPE`, t1.`ENGINEERINGPURPOSE`, t1.`ENGINEERINGSCALE`, t1.`ISDIRECTLYMANAGE`, t1.`ORG_ID`, t1.`ORMXMGLID`, t1.`ORMXMGLNAME`, t1.`PROCAPITALATT`, t1.`PROJECT_FULL_NAME`, t1.`PROJECT_NAME`, t1.`PROJECT_NUMBER`, t1.`PROJECT_SIZE`, t1.`PROJECT_STATUS_CODE`, t1.`PROJECT_STATUS_NAME`, t1.`PROJECT_TYPE`, t1.`TARGET_FINISH_DATE`, t1.`TARGET_START_DATE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XMBH` FROM `T_ORMXMGL` t1  
+				 WHERE 	( t1.`PROJECT_TYPE` <> '营销开拓'  AND  ( instr(t1.project_number,'T')  <>1 ) )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EHR_ORG_ID`, t1.`ENGINEERINGBUSTYPE`, t1.`ENGINEERINGPURPOSE`, t1.`ENGINEERINGSCALE`, t1.`ISDIRECTLYMANAGE`, t1.`ORG_ID`, t1.`ORMXMGLID`, t1.`ORMXMGLNAME`, t1.`PROCAPITALATT`, t1.`PROJECT_FULL_NAME`, t1.`PROJECT_NAME`, t1.`PROJECT_NUMBER`, t1.`PROJECT_SIZE`, t1.`PROJECT_STATUS_CODE`, t1.`PROJECT_STATUS_NAME`, t1.`PROJECT_TYPE`, t1.`TARGET_FINISH_DATE`, t1.`TARGET_START_DATE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XMBH` FROM `T_ORMXMGL` t1  
+			]]>
+    </sql>
+</mapper>
+

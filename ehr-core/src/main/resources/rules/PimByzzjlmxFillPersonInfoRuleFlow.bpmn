@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pim.service.logic.pimbyzzjlmxfillpersoninfo" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pim.service.logic.pimbyzzjlmxfillpersoninfo">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pimbyzzjlmxfillpersoninfodefault" type="cn.ibizlab.ehr.core.pim.domain.PimByzzjlmx" />
+        <tns:global identifier="pimbyzzjlmxfillpersoninfopimperson" type="cn.ibizlab.ehr.core.pim.domain.PimPerson" />
+        </extensionElements>
+     <startEvent id="179eebdc374dbdf38d068da02c7f804d" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimbyzzjlmxfillpersoninfoprepareparam2" id="56b70dd39d0be1e2eeea1b8cbbd74154" implementation="http://www.jboss.org/drools/rule" name="填充人员信息"/>
+     <endEvent id="56b70dd39d0be1e2eeea1b8cbbd74154_End" name="End"/>
+     <sequenceFlow id="56b70dd39d0be1e2eeea1b8cbbd74154_End_Line" sourceRef="56b70dd39d0be1e2eeea1b8cbbd74154" targetRef="56b70dd39d0be1e2eeea1b8cbbd74154_End"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimbyzzjlmxfillpersoninfoprepareparam1" id="f34a0c55f6986ce878a967b87bac4c1b" implementation="http://www.jboss.org/drools/rule" name="设置人员id"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimbyzzjlmxfillpersoninfodeaction1" id="e8ce2be66e917472fdfb42e4763b4102" implementation="http://www.jboss.org/drools/rule" name="获取人员信息"/>
+     <sequenceFlow id="b8350ba704cd4cb5fa617c2a2768f535" sourceRef="179eebdc374dbdf38d068da02c7f804d" targetRef="f34a0c55f6986ce878a967b87bac4c1b">
+     </sequenceFlow>
+     <sequenceFlow id="e346d52ee8356c542abaa1f0c5e13ea2" sourceRef="e8ce2be66e917472fdfb42e4763b4102" targetRef="56b70dd39d0be1e2eeea1b8cbbd74154">
+     </sequenceFlow>
+     <sequenceFlow id="d450ad00769fafcae29f7bddb5eedf89" sourceRef="f34a0c55f6986ce878a967b87bac4c1b" targetRef="e8ce2be66e917472fdfb42e4763b4102">
+     </sequenceFlow>
+    </process>
+</definitions>
+

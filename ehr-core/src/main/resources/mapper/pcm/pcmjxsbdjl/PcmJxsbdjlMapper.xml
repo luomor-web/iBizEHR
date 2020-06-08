@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PcmJxsbdjlMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PcmJxsbdjlResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BDQKSM`, t1.`BDQSSJ`, t1.`BDSJSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t51.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t41.`ORMPOSTNAME`, t1.`PCMJXSBDJLID`, t1.`PCMJXSBDJLNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t21.`SHORTNAME` AS `YBM`, t11.`YGBH`, t11.`GW` AS `YGW`, t11.`ORMORGNAME` AS `YZZ` FROM `T_PCMJXSBDJL` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_ORMPOST t41 ON t1.ORMPOSTID = t41.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t51 ON t1.ORMORGSECTORID = t51.ORGSECTORID  ) t1 where pcmjxsbdjlid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PcmJxsbdjlResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PcmJxsbdjl" autoMapping="true">
+        <id property="pcmjxsbdjlid" column="pcmjxsbdjlid" /><!--主键字段映射-->
+		<result property="pimpersonid" column="pimpersonid" />
+		<result property="ormpostid" column="ormpostid" />
+		<result property="ormorgid" column="ormorgid" />
+		<result property="ormorgsectorid" column="ormorgsectorid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormpost" javaType="cn.ibizlab.ehr.core.orm.domain.OrmPost" column="ormpostid" select="cn.ibizlab.ehr.core.orm.mapper.OrmPostMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMJXSBDJL_ORMORGSECTOR_ORMORGSECTORID] -->
+	 <select id="selectByOrmorgsectorid" resultMap="PcmJxsbdjlResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgsectorid=#{orgsectorid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMJXSBDJL_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="PcmJxsbdjlResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMJXSBDJL_ORMPOST_ORMPOSTID] -->
+	 <select id="selectByOrmpostid" resultMap="PcmJxsbdjlResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormpostid=#{ormpostid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMJXSBDJL_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="PcmJxsbdjlResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmJxsbdjlSearchContext"  resultMap="PcmJxsbdjlResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[ZIZHU]-->
+	 <select id="searchZIZHU"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmJxsbdjlSearchContext"  resultMap="PcmJxsbdjlResultMap">
+         select t1.* from (
+                <include refid="ZIZHU" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[JLSS]-->
+	 <select id="searchJLSS"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmJxsbdjlSearchContext"  resultMap="PcmJxsbdjlResultMap">
+         select t1.* from (
+                <include refid="JLSS" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BDQKSM`, t1.`BDQSSJ`, t1.`BDSJSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t51.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t41.`ORMPOSTNAME`, t1.`PCMJXSBDJLID`, t1.`PCMJXSBDJLNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t21.`SHORTNAME` AS `YBM`, t11.`YGBH`, t11.`GW` AS `YGW`, t11.`ORMORGNAME` AS `YZZ` FROM `T_PCMJXSBDJL` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_ORMPOST t41 ON t1.ORMPOSTID = t41.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t51 ON t1.ORMORGSECTORID = t51.ORGSECTORID  
+			]]>
+    </sql>
+    <!--数据查询[JLSS]-->
+    <sql id="JLSS" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BDQKSM`, t1.`BDQSSJ`, t1.`BDSJSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t51.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t41.`ORMPOSTNAME`, t1.`PCMJXSBDJLID`, t1.`PCMJXSBDJLNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t21.`SHORTNAME` AS `YBM`, t11.`YGBH`, t11.`GW` AS `YGW`, t11.`ORMORGNAME` AS `YZZ` FROM `T_PCMJXSBDJL` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_ORMPOST t41 ON t1.ORMPOSTID = t41.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t51 ON t1.ORMORGSECTORID = t51.ORGSECTORID  
+				 WHERE 	( t1.`PIMPERSONID` =  #{srf.sessioncontext.srfpersonid} )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BDQKSM`, t1.`BDQSSJ`, t1.`BDSJSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t51.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t41.`ORMPOSTNAME`, t1.`PCMJXSBDJLID`, t1.`PCMJXSBDJLNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t21.`SHORTNAME` AS `YBM`, t11.`YGBH`, t11.`GW` AS `YGW`, t11.`ORMORGNAME` AS `YZZ` FROM `T_PCMJXSBDJL` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_ORMPOST t41 ON t1.ORMPOSTID = t41.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t51 ON t1.ORMORGSECTORID = t51.ORGSECTORID  
+			]]>
+    </sql>
+    <!--数据查询[ZIZHU]-->
+    <sql id="ZIZHU" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BDQKSM`, t1.`BDQSSJ`, t1.`BDSJSJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t51.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t41.`ORMPOSTNAME`, t1.`PCMJXSBDJLID`, t1.`PCMJXSBDJLNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t21.`SHORTNAME` AS `YBM`, t11.`YGBH`, t11.`GW` AS `YGW`, t11.`ORMORGNAME` AS `YZZ` FROM `T_PCMJXSBDJL` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  LEFT JOIN T_ORMPOST t41 ON t1.ORMPOSTID = t41.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t51 ON t1.ORMORGSECTORID = t51.ORGSECTORID  
+				 WHERE 	( t1.`PIMPERSONID` =  #{srf.sessioncontext.srfselfserviceid} )
+			]]>
+    </sql>
+</mapper>
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PcmRzglMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PcmRzglResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DQZJXZW`, t1.`GW`, t1.`NL`, t1.`NLDQ`, t1.`ORGID`, t1.`ORGSECTORID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORNAME`, t1.`PCMRZGLID`, t1.`PCMRZGLNAME`, t1.`RZNX`, t1.`RZNX_COLOR`, t1.`SEX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t1.`YGID`, t1.`YGNAME`, t1.`ZJ`, t1.`ZJNX`, t1.`ZJNX_COLOR`, t1.`ZJRQ`, t1.`ZWRQ` FROM `T_PCMRZGL` t1  ) t1 where pcmrzglid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PcmRzglResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PcmRzgl" autoMapping="true">
+        <id property="pcmrzglid" column="pcmrzglid" /><!--主键字段映射-->
+		<result property="rznxColor" column="rznx_color" />
+		<result property="zjnxColor" column="zjnx_color" />
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmRzglSearchContext"  resultMap="PcmRzglResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[GBRZQXDQ]-->
+	 <select id="searchGBRZQXDQ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmRzglSearchContext"  resultMap="PcmRzglResultMap">
+         select t1.* from (
+                <include refid="GBRZQXDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[RQCX]-->
+	 <select id="searchRQCX"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmRzglSearchContext"  resultMap="PcmRzglResultMap">
+         select t1.* from (
+                <include refid="RQCX" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DQZJXZW`, t1.`GW`, t1.`NL`, t1.`NLDQ`, t1.`ORGID`, t1.`ORGSECTORID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORNAME`, t1.`PCMRZGLID`, t1.`PCMRZGLNAME`, t1.`RZNX`, t1.`RZNX_COLOR`, t1.`SEX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t1.`YGID`, t1.`YGNAME`, t1.`ZJ`, t1.`ZJNX`, t1.`ZJNX_COLOR`, t1.`ZJRQ`, t1.`ZWRQ` FROM `T_PCMRZGL` t1  
+			]]>
+    </sql>
+    <!--数据查询[GBRZQXDQ]-->
+    <sql id="GBRZQXDQ" databaseId="mysql">
+       <![CDATA[	
+			]]>
+    </sql>
+    <!--数据查询[RQCX]-->
+    <sql id="RQCX" databaseId="mysql">
+       <![CDATA[	
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DQZJXZW`, t1.`GW`, t1.`NL`, t1.`NLDQ`, t1.`ORGID`, t1.`ORGSECTORID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORNAME`, t1.`PCMRZGLID`, t1.`PCMRZGLNAME`, t1.`RZNX`, t1.`RZNX_COLOR`, t1.`SEX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t1.`YGID`, t1.`YGNAME`, t1.`ZJ`, t1.`ZJNX`, t1.`ZJNX_COLOR`, t1.`ZJRQ`, t1.`ZWRQ` FROM `T_PCMRZGL` t1  
+			]]>
+    </sql>
+</mapper>
+

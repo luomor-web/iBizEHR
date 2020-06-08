@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.common.mapper.CodeList1Mapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="CodeList1ResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CLMODEL`, t1.`CLPARAM`, t1.`CLPATH`, t1.`CLVERSION`, t1.`CODELISTID`, t1.`CODELISTNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPTYTEXT`, t1.`FILLER`, t1.`ISSYSTEM`, t1.`ISUSERSCOPE`, t1.`MEMO`, t1.`NOVALUEEMPTY`, t1.`ORMODE`, t1.`RESERVER`, t1.`RESERVER2`, t1.`RESERVER3`, t1.`RESERVER4`, t1.`RESERVER5`, t1.`SEPERATOR`, t1.`SRFSYSPUB`, t1.`SRFUSERPUB`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VALUESEPERATOR` FROM `T_SRFCODELIST` t1  ) t1 where codelistid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="CodeList1ResultMap" type="cn.ibizlab.ehr.core.common.domain.CodeList1" autoMapping="true">
+        <id property="codelistid" column="codelistid" /><!--主键字段映射-->
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[PersonUse]-->
+	 <select id="searchPersonUse"  parameterType="cn.ibizlab.ehr.core.common.filter.CodeList1SearchContext"  resultMap="CodeList1ResultMap">
+         select t1.* from (
+                <include refid="PersonUse" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.common.filter.CodeList1SearchContext"  resultMap="CodeList1ResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="db2">
+       <![CDATA[	SELECT t1.CLPATH, t1.CLVERSION, t1.CODELISTID, t1.CODELISTNAME, t1.CREATEDATE, t1.CREATEMAN, t1.DEID, t11.DENAME, t1.EMPTYTEXT, t1.FILLER, t1.ISSYSTEM, t1.ISUSERSCOPE, t1.MEMO, t1.NOVALUEEMPTY, t1.ORMODE, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.RESERVER5, t1.SEPERATOR, t1.SRFSYSPUB, t1.SRFUSERPUB, t1.UPDATEDATE, t1.UPDATEMAN, t1.VALUESEPERATOR FROM T_SRFCODELIST t1  LEFT JOIN t_srfdataentity t11 ON t1.DEID = t11.DEID
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CLPATH`, t1.`CLVERSION`, t1.`CODELISTID`, t1.`CODELISTNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPTYTEXT`, t1.`FILLER`, t1.`ISSYSTEM`, t1.`ISUSERSCOPE`, t1.`MEMO`, t1.`NOVALUEEMPTY`, t1.`ORMODE`, t1.`RESERVER`, t1.`RESERVER2`, t1.`RESERVER3`, t1.`RESERVER4`, t1.`RESERVER5`, t1.`SEPERATOR`, t1.`SRFSYSPUB`, t1.`SRFUSERPUB`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VALUESEPERATOR` FROM `T_SRFCODELIST` t1  
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="postgresql">
+       <![CDATA[	SELECT t1.CLPATH, t1.CLVERSION, t1.CODELISTID, t1.CODELISTNAME, t1.CREATEDATE, t1.CREATEMAN, t1.DEID, t11.DENAME, t1.EMPTYTEXT, t1.FILLER, t1.ISSYSTEM, t1.ISUSERSCOPE, t1.MEMO, t1.NOVALUEEMPTY, t1.ORMODE, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.RESERVER5, t1.SEPERATOR, t1.SRFSYSPUB, t1.SRFUSERPUB, t1.UPDATEDATE, t1.UPDATEMAN, t1.VALUESEPERATOR FROM T_SRFCODELIST t1  LEFT JOIN t_srfdataentity t11 ON t1.DEID = t11.DEID
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="ppas">
+       <![CDATA[	SELECT t1.CLPATH, t1.CLVERSION, t1.CODELISTID, t1.CODELISTNAME, t1.CREATEDATE, t1.CREATEMAN, t1.DEID, t11.DENAME, t1.EMPTYTEXT, t1.FILLER, t1.ISSYSTEM, t1.ISUSERSCOPE, t1.MEMO, t1.NOVALUEEMPTY, t1.ORMODE, t1.RESERVER, t1.RESERVER2, t1.RESERVER3, t1.RESERVER4, t1.RESERVER5, t1.SEPERATOR, t1.SRFSYSPUB, t1.SRFUSERPUB, t1.UPDATEDATE, t1.UPDATEMAN, t1.VALUESEPERATOR FROM T_SRFCODELIST t1  LEFT JOIN t_srfdataentity t11 ON t1.DEID = t11.DEID
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="sqlserver">
+       <![CDATA[	SELECT t1.[CLPATH], t1.[CLVERSION], t1.[CODELISTID], t1.[CODELISTNAME], t1.[CREATEDATE], t1.[CREATEMAN], t1.[DEID], t11.[DENAME], t1.[EMPTYTEXT], t1.[FILLER], t1.[ISSYSTEM], t1.[ISUSERSCOPE], t1.[MEMO], t1.[NOVALUEEMPTY], t1.[ORMODE], t1.[RESERVER], t1.[RESERVER2], t1.[RESERVER3], t1.[RESERVER4], t1.[RESERVER5], t1.[SEPERATOR], t1.[SRFSYSPUB], t1.[SRFUSERPUB], t1.[UPDATEDATE], t1.[UPDATEMAN], t1.[VALUESEPERATOR] FROM [T_SRFCODELIST] t1  LEFT JOIN t_srfdataentity t11 ON t1.DEID = t11.DEID
+			]]>
+    </sql>
+    <!--数据查询[PersonUse]-->
+    <sql id="PersonUse" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CLPATH`, t1.`CLVERSION`, t1.`CODELISTID`, t1.`CODELISTNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPTYTEXT`, t1.`FILLER`, t1.`ISSYSTEM`, t1.`ISUSERSCOPE`, t1.`MEMO`, t1.`NOVALUEEMPTY`, t1.`ORMODE`, t1.`RESERVER`, t1.`RESERVER2`, t1.`RESERVER3`, t1.`RESERVER4`, t1.`RESERVER5`, t1.`SEPERATOR`, t1.`SRFSYSPUB`, t1.`SRFUSERPUB`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VALUESEPERATOR` FROM `T_SRFCODELIST` t1  
+				 WHERE 	( t1.`RESERVER3` = '1' )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CLMODEL`, t1.`CLPARAM`, t1.`CLPATH`, t1.`CLVERSION`, t1.`CODELISTID`, t1.`CODELISTNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`EMPTYTEXT`, t1.`FILLER`, t1.`ISSYSTEM`, t1.`ISUSERSCOPE`, t1.`MEMO`, t1.`NOVALUEEMPTY`, t1.`ORMODE`, t1.`RESERVER`, t1.`RESERVER2`, t1.`RESERVER3`, t1.`RESERVER4`, t1.`RESERVER5`, t1.`SEPERATOR`, t1.`SRFSYSPUB`, t1.`SRFUSERPUB`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VALUESEPERATOR` FROM `T_SRFCODELIST` t1  
+			]]>
+    </sql>
+</mapper>
+

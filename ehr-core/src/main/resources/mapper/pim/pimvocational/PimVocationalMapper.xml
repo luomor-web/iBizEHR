@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PimVocationalMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PimVocationalResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`ALTERATION`, t1.`BCARDNUMBER`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSZCSJ`, t1.`ENABLE`, t1.`FJ`, t1.`FZYXQ`, t1.`JBFL`, t1.`JLCZZ`, t1.`JLGLBH`, t1.`JLSPZT`, t1.`JLSS`, t1.`NJSJ`, t1.`NSQK`, t21.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t21.`ORMORGID` AS `ORMORGID2`, t51.`ORGNAME` AS `ORMORGNAME`, t21.`ORMORGNAME` AS `ORMORGNAME2`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMSIGNORGID`, t61.`ORMSIGNORGNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`PIMQUALMAJORID`, t1.`PIMQUALMAJORNAME`, t1.`PIMQUALTYPEID`, t11.`PIMQUALTYPENAME`, t1.`PIMVOCATIONALCATALOGID`, t31.`PIMVOCATIONALCATALOGNAME`, t1.`PIMVOCATIONALID`, t1.`PIMVOCATIONALNAME`, t1.`PRACTQUALCERTNO`, t1.`REASON`, t1.`REGISNUMBER`, t1.`SOCSECPAYUNIT`, case when t1.`JLSPZT` !='10' then 1 else 0 end AS `SPSTATE`, t1.`SXRQ`, case when  DATEDIFF(t1.`SXRQ`,now())<60  then 20 else 10 END AS `SXRQ_COLOR`, t1.`SYQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XZCSJ`, t1.`YGBH`, t21.`YGZT`, t1.`ZCDW`, t1.`ZGHQRQ`, t1.`ZGSYDW`, t1.`ZGZSBH`, t1.`ZSLX`, IFNULL(t11.`PIMQUALTYPENAME`,t1.`PIMQUALMAJORNAME`) AS `ZSMC`, DATEDIFF(t1.`SXRQ`,now()) AS `ZSSYTS`, t1.`ZYFL`, t41.`ZZDZS` FROM `T_PIMVOCATIONAL` t1  LEFT JOIN T_PIMQUALTYPE t11 ON t1.PIMQUALTYPEID = t11.PIMQUALTYPEID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_PIMVOCATIONALCATALOG t31 ON t1.PIMVOCATIONALCATALOGID = t31.PIMVOCATIONALCATALOGID  LEFT JOIN T_SRFORG t41 ON t21.ORMORGID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_ORMSIGNORG t61 ON t1.ORMSIGNORGID = t61.ORMSIGNORGID  ) t1 where pimvocationalid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PimVocationalResultMap" type="cn.ibizlab.ehr.core.pim.domain.PimVocational" autoMapping="true">
+        <id property="pimvocationalid" column="pimvocationalid" /><!--主键字段映射-->
+		<result property="sxrqColor" column="sxrq_color" />
+		<result property="ormorgsectorid" column="ormorgsectorid" />
+		<result property="ormorgid" column="ormorgid" />
+		<result property="pimvocationalcatalogid" column="pimvocationalcatalogid" />
+		<result property="ormsignorgid" column="ormsignorgid" />
+		<result property="pimpersonid" column="pimpersonid" />
+		<result property="pimqualmajorid" column="pimqualmajorid" />
+		<result property="pimqualtypeid" column="pimqualtypeid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormsignorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmSignOrg" column="ormsignorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmSignOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimqualmajor" javaType="cn.ibizlab.ehr.core.pim.domain.PimQualMajor" column="pimqualmajorid" select="cn.ibizlab.ehr.core.pim.mapper.PimQualMajorMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimqualtype" javaType="cn.ibizlab.ehr.core.pim.domain.PimQualType" column="pimqualtypeid" select="cn.ibizlab.ehr.core.pim.mapper.PimQualTypeMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimvocationalcatalog" javaType="cn.ibizlab.ehr.core.pim.domain.PimVocationalCatalog" column="pimvocationalcatalogid" select="cn.ibizlab.ehr.core.pim.mapper.PimVocationalCatalogMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMVOCATIONAL_ORMORGSECTOR_ORMORGSECTORID] -->
+	 <select id="selectByOrmorgsectorid" resultMap="PimVocationalResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgsectorid=#{orgsectorid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMVOCATIONAL_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="PimVocationalResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMVOCATIONAL_ORMSIGNORG_ORMSIGNORGID] -->
+	 <select id="selectByOrmsignorgid" resultMap="PimVocationalResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormsignorgid=#{ormsignorgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMVOCATIONAL_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="PimVocationalResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMVOCATIONAL_PIMQUALMAJOR_PIMQUALMAJORID] -->
+	 <select id="selectByPimqualmajorid" resultMap="PimVocationalResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimqualmajorid=#{pimqualmajorid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMVOCATIONAL_PIMQUALTYPE_PIMQUALTYPEID] -->
+	 <select id="selectByPimqualtypeid" resultMap="PimVocationalResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimqualtypeid=#{pimqualtypeid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMVOCATIONAL_PIMVOCATIONALCATALOG_PIMVOCATIONALCATALOGID] -->
+	 <select id="selectByPimvocationalcatalogid" resultMap="PimVocationalResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimvocationalcatalogid=#{pimvocationalcatalogid}
+     </select>
+
+    <!--数据集合[REP_VOCATIONAL]-->
+	 <select id="searchREP_VOCATIONAL"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimVocationalSearchContext"  resultType="java.util.HashMap">
+	 	select countnum as "countnum",zsmc as "zsmc" from (
+         select t1.* from (
+                <include refid="REP_VOCATIONAL" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+		 ) groupinfo
+		 group by countnum,zsmc
+     </select>
+
+    <!--数据集合[AscriptionSysDQ]-->
+	 <select id="searchAscriptionSysDQ"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimVocationalSearchContext"  resultMap="PimVocationalResultMap">
+         select t1.* from (
+                <include refid="AscriptionSysDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimVocationalSearchContext"  resultMap="PimVocationalResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[JLSS]-->
+	 <select id="searchJLSS"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimVocationalSearchContext"  resultMap="PimVocationalResultMap">
+         select t1.* from (
+                <include refid="JLSS" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[ZIZHU]-->
+	 <select id="searchZIZHU"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimVocationalSearchContext"  resultMap="PimVocationalResultMap">
+         select t1.* from (
+                <include refid="ZIZHU" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[AscriptionSysDQ]-->
+    <sql id="AscriptionSysDQ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ALTERATION`, t1.`BCARDNUMBER`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSZCSJ`, t1.`ENABLE`, t1.`FJ`, t1.`FZYXQ`, t1.`JBFL`, t1.`JLCZZ`, t1.`JLGLBH`, t1.`JLSPZT`, t1.`JLSS`, t1.`NJSJ`, t1.`NSQK`, t21.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t21.`ORMORGID` AS `ORMORGID2`, t51.`ORGNAME` AS `ORMORGNAME`, t21.`ORMORGNAME` AS `ORMORGNAME2`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMSIGNORGID`, t61.`ORMSIGNORGNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`PIMQUALMAJORID`, t1.`PIMQUALMAJORNAME`, t1.`PIMQUALTYPEID`, t11.`PIMQUALTYPENAME`, t1.`PIMVOCATIONALCATALOGID`, t31.`PIMVOCATIONALCATALOGNAME`, t1.`PIMVOCATIONALID`, t1.`PIMVOCATIONALNAME`, t1.`PRACTQUALCERTNO`, t1.`REASON`, t1.`REGISNUMBER`, t1.`SOCSECPAYUNIT`, case when t1.`JLSPZT` !='10' then 1 else 0 end AS `SPSTATE`, t1.`SXRQ`, case when  DATEDIFF(t1.`SXRQ`,now())<60  then 20 else 10 END AS `SXRQ_COLOR`, t1.`SYQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XZCSJ`, t1.`YGBH`, t21.`YGZT`, t1.`ZCDW`, t1.`ZGHQRQ`, t1.`ZGSYDW`, t1.`ZGZSBH`, t1.`ZSLX`, IFNULL(t11.`PIMQUALTYPENAME`,t1.`PIMQUALMAJORNAME`) AS `ZSMC`, DATEDIFF(t1.`SXRQ`,now()) AS `ZSSYTS`, t1.`ZYFL`, t41.`ZZDZS` FROM `T_PIMVOCATIONAL` t1  LEFT JOIN T_PIMQUALTYPE t11 ON t1.PIMQUALTYPEID = t11.PIMQUALTYPEID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_PIMVOCATIONALCATALOG t31 ON t1.PIMVOCATIONALCATALOGID = t31.PIMVOCATIONALCATALOGID  LEFT JOIN T_SRFORG t41 ON t21.ORMORGID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_ORMSIGNORG t61 ON t1.ORMSIGNORGID = t61.ORMSIGNORGID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( ( t1.`JLSS` = '10'  OR  t1.`JLSS` IS NULL ) )
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ALTERATION`, t1.`BCARDNUMBER`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSZCSJ`, t1.`ENABLE`, t1.`FJ`, t1.`FZYXQ`, t1.`JBFL`, t1.`JLCZZ`, t1.`JLGLBH`, t1.`JLSPZT`, t1.`JLSS`, t1.`NJSJ`, t1.`NSQK`, t21.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t21.`ORMORGID` AS `ORMORGID2`, t51.`ORGNAME` AS `ORMORGNAME`, t21.`ORMORGNAME` AS `ORMORGNAME2`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMSIGNORGID`, t61.`ORMSIGNORGNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`PIMQUALMAJORID`, t1.`PIMQUALMAJORNAME`, t1.`PIMQUALTYPEID`, t11.`PIMQUALTYPENAME`, t1.`PIMVOCATIONALCATALOGID`, t31.`PIMVOCATIONALCATALOGNAME`, t1.`PIMVOCATIONALID`, t1.`PIMVOCATIONALNAME`, t1.`PRACTQUALCERTNO`, t1.`REASON`, t1.`REGISNUMBER`, t1.`SOCSECPAYUNIT`, case when t1.`JLSPZT` !='10' then 1 else 0 end AS `SPSTATE`, t1.`SXRQ`, case when  DATEDIFF(t1.`SXRQ`,now())<60  then 20 else 10 END AS `SXRQ_COLOR`, t1.`SYQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XZCSJ`, t1.`YGBH`, t21.`YGZT`, t1.`ZCDW`, t1.`ZGHQRQ`, t1.`ZGSYDW`, t1.`ZGZSBH`, t1.`ZSLX`, IFNULL(t11.`PIMQUALTYPENAME`,t1.`PIMQUALMAJORNAME`) AS `ZSMC`, DATEDIFF(t1.`SXRQ`,now()) AS `ZSSYTS`, t1.`ZYFL`, t41.`ZZDZS` FROM `T_PIMVOCATIONAL` t1  LEFT JOIN T_PIMQUALTYPE t11 ON t1.PIMQUALTYPEID = t11.PIMQUALTYPEID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_PIMVOCATIONALCATALOG t31 ON t1.PIMVOCATIONALCATALOGID = t31.PIMVOCATIONALCATALOGID  LEFT JOIN T_SRFORG t41 ON t21.ORMORGID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_ORMSIGNORG t61 ON t1.ORMSIGNORGID = t61.ORMSIGNORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[JLSS]-->
+    <sql id="JLSS" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ALTERATION`, t1.`BCARDNUMBER`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSZCSJ`, t1.`ENABLE`, t1.`FJ`, t1.`FZYXQ`, t1.`JBFL`, t1.`JLCZZ`, t1.`JLGLBH`, t1.`JLSPZT`, t1.`JLSS`, t1.`NJSJ`, t1.`NSQK`, t21.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t21.`ORMORGID` AS `ORMORGID2`, t51.`ORGNAME` AS `ORMORGNAME`, t21.`ORMORGNAME` AS `ORMORGNAME2`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMSIGNORGID`, t61.`ORMSIGNORGNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`PIMQUALMAJORID`, t1.`PIMQUALMAJORNAME`, t1.`PIMQUALTYPEID`, t11.`PIMQUALTYPENAME`, t1.`PIMVOCATIONALCATALOGID`, t31.`PIMVOCATIONALCATALOGNAME`, t1.`PIMVOCATIONALID`, t1.`PIMVOCATIONALNAME`, t1.`PRACTQUALCERTNO`, t1.`REASON`, t1.`REGISNUMBER`, t1.`SOCSECPAYUNIT`, case when t1.`JLSPZT` !='10' then 1 else 0 end AS `SPSTATE`, t1.`SXRQ`, case when  DATEDIFF(t1.`SXRQ`,now())<60  then 20 else 10 END AS `SXRQ_COLOR`, t1.`SYQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XZCSJ`, t1.`YGBH`, t21.`YGZT`, t1.`ZCDW`, t1.`ZGHQRQ`, t1.`ZGSYDW`, t1.`ZGZSBH`, t1.`ZSLX`, IFNULL(t11.`PIMQUALTYPENAME`,t1.`PIMQUALMAJORNAME`) AS `ZSMC`, DATEDIFF(t1.`SXRQ`,now()) AS `ZSSYTS`, t1.`ZYFL`, t41.`ZZDZS` FROM `T_PIMVOCATIONAL` t1  LEFT JOIN T_PIMQUALTYPE t11 ON t1.PIMQUALTYPEID = t11.PIMQUALTYPEID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_PIMVOCATIONALCATALOG t31 ON t1.PIMVOCATIONALCATALOGID = t31.PIMVOCATIONALCATALOGID  LEFT JOIN T_SRFORG t41 ON t21.ORMORGID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_ORMSIGNORG t61 ON t1.ORMSIGNORGID = t61.ORMSIGNORGID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`PIMPERSONID` =  #{srf.sessioncontext.srfselfserviceid}  AND  t1.`JLSS` = '20' )
+			]]>
+    </sql>
+    <!--数据查询[REP_VOCATIONAL]-->
+    <sql id="REP_VOCATIONAL" databaseId="mysql">
+       <![CDATA[	select ifnull(t.PIMQUALMAJORNAME,d.PIMQUALTYPENAME) as zsmc,count(1) as countnum from T_PIMVOCATIONAL a   left join t_PIMPERSON c     on a.PIMPERSONID = c.PIMPERSONID   left join t_srforg b     on c.ormorgid = b.orgid   left join t_PIMQUALTYPE d     on c.PIMQUALTYPEID = d.PIMQUALTYPEID   left join T_PIMQUALMAJOR t     on t.PIMQUALMAJORID = a.PIMQUALMAJORID  where (a.jlss = 10 or a.jlss is null)    and a.enable = 1    and ifnull(t.PIMQUALMAJORNAME,d.PIMQUALTYPENAME) is not null     and c.ygzt != '40'    and c.ygzt != '60'    and c.ygzt != '50'    and c.ygzt != '51'    and c.ygzt != '130'    group by ifnull(t.PIMQUALMAJORNAME,d.PIMQUALTYPENAME) 
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ALTERATION`, t1.`BCARDNUMBER`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSZCSJ`, t1.`ENABLE`, t1.`FJ`, t1.`FZYXQ`, t1.`JBFL`, t1.`JLCZZ`, t1.`JLGLBH`, t1.`JLSPZT`, t1.`JLSS`, t1.`NJSJ`, t1.`NSQK`, t21.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t21.`ORMORGID` AS `ORMORGID2`, t51.`ORGNAME` AS `ORMORGNAME`, t21.`ORMORGNAME` AS `ORMORGNAME2`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMSIGNORGID`, t61.`ORMSIGNORGNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`PIMQUALMAJORID`, t1.`PIMQUALMAJORNAME`, t1.`PIMQUALTYPEID`, t11.`PIMQUALTYPENAME`, t1.`PIMVOCATIONALCATALOGID`, t31.`PIMVOCATIONALCATALOGNAME`, t1.`PIMVOCATIONALID`, t1.`PIMVOCATIONALNAME`, t1.`PRACTQUALCERTNO`, t1.`REASON`, t1.`REGISNUMBER`, t1.`SOCSECPAYUNIT`, case when t1.`JLSPZT` !='10' then 1 else 0 end AS `SPSTATE`, t1.`SXRQ`, case when  DATEDIFF(t1.`SXRQ`,now())<60  then 20 else 10 END AS `SXRQ_COLOR`, t1.`SYQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XZCSJ`, t1.`YGBH`, t21.`YGZT`, t1.`ZCDW`, t1.`ZGHQRQ`, t1.`ZGSYDW`, t1.`ZGZSBH`, t1.`ZSLX`, IFNULL(t11.`PIMQUALTYPENAME`,t1.`PIMQUALMAJORNAME`) AS `ZSMC`, DATEDIFF(t1.`SXRQ`,now()) AS `ZSSYTS`, t1.`ZYFL`, t41.`ZZDZS` FROM `T_PIMVOCATIONAL` t1  LEFT JOIN T_PIMQUALTYPE t11 ON t1.PIMQUALTYPEID = t11.PIMQUALTYPEID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_PIMVOCATIONALCATALOG t31 ON t1.PIMVOCATIONALCATALOGID = t31.PIMVOCATIONALCATALOGID  LEFT JOIN T_SRFORG t41 ON t21.ORMORGID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_ORMSIGNORG t61 ON t1.ORMSIGNORGID = t61.ORMSIGNORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[ZIZHU]-->
+    <sql id="ZIZHU" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ALTERATION`, t1.`BCARDNUMBER`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSZCSJ`, t1.`ENABLE`, t1.`FJ`, t1.`FZYXQ`, t1.`JBFL`, t1.`JLCZZ`, t1.`JLGLBH`, t1.`JLSPZT`, t1.`JLSS`, t1.`NJSJ`, t1.`NSQK`, t21.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t21.`ORMORGID` AS `ORMORGID2`, t51.`ORGNAME` AS `ORMORGNAME`, t21.`ORMORGNAME` AS `ORMORGNAME2`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMSIGNORGID`, t61.`ORMSIGNORGNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`PIMQUALMAJORID`, t1.`PIMQUALMAJORNAME`, t1.`PIMQUALTYPEID`, t11.`PIMQUALTYPENAME`, t1.`PIMVOCATIONALCATALOGID`, t31.`PIMVOCATIONALCATALOGNAME`, t1.`PIMVOCATIONALID`, t1.`PIMVOCATIONALNAME`, t1.`PRACTQUALCERTNO`, t1.`REASON`, t1.`REGISNUMBER`, t1.`SOCSECPAYUNIT`, case when t1.`JLSPZT` !='10' then 1 else 0 end AS `SPSTATE`, t1.`SXRQ`, case when  DATEDIFF(t1.`SXRQ`,now())<60  then 20 else 10 END AS `SXRQ_COLOR`, t1.`SYQK`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XZCSJ`, t1.`YGBH`, t21.`YGZT`, t1.`ZCDW`, t1.`ZGHQRQ`, t1.`ZGSYDW`, t1.`ZGZSBH`, t1.`ZSLX`, IFNULL(t11.`PIMQUALTYPENAME`,t1.`PIMQUALMAJORNAME`) AS `ZSMC`, DATEDIFF(t1.`SXRQ`,now()) AS `ZSSYTS`, t1.`ZYFL`, t41.`ZZDZS` FROM `T_PIMVOCATIONAL` t1  LEFT JOIN T_PIMQUALTYPE t11 ON t1.PIMQUALTYPEID = t11.PIMQUALTYPEID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_PIMVOCATIONALCATALOG t31 ON t1.PIMVOCATIONALCATALOGID = t31.PIMVOCATIONALCATALOGID  LEFT JOIN T_SRFORG t41 ON t21.ORMORGID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_ORMSIGNORG t61 ON t1.ORMSIGNORGID = t61.ORMSIGNORGID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`PIMPERSONID` =  #{srf.sessioncontext.srfselfserviceid} )
+			]]>
+    </sql>
+</mapper>
+

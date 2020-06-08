@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TrmTrainBuapplyMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TrmTrainBuapplyResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BZ`, t1.`CDZJ`, t1.`CLF`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JFLX`, t1.`JGFY`, t1.`ND`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`QTFY`, t1.`SZF`, t1.`TRMTRAINBUAPPLYID`, t1.`TRMTRAINBUAPPLYNAME`, t1.`TRMTRAINPLANTERMID`, t11.`TRMTRAINPLANTERMNAME`, t1.`TZJE`, t1.`TZYSXM`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YSZJE` FROM `T_TRMTRAINBUAPPLY` t1  LEFT JOIN T_TRMTRAINPLANTERM t11 ON t1.TRMTRAINPLANTERMID = t11.TRMTRAINPLANTERMID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  ) t1 where trmtrainbuapplyid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="TrmTrainBuapplyResultMap" type="cn.ibizlab.ehr.core.trm.domain.TrmTrainBuapply" autoMapping="true">
+        <id property="trmtrainbuapplyid" column="trmtrainbuapplyid" /><!--主键字段映射-->
+		<result property="ormorgid" column="ormorgid" />
+		<result property="trmtrainplantermid" column="trmtrainplantermid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmtrainplanterm" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainPlanterm" column="trmtrainplantermid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainPlantermMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMTRAINBUAPPLY_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="TrmTrainBuapplyResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMTRAINBUAPPLY_TRMTRAINPLANTERM_TRMTRAINPLANTERMID] -->
+	 <select id="selectByTrmtrainplantermid" resultMap="TrmTrainBuapplyResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmtrainplantermid=#{trmtrainplantermid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.trm.filter.TrmTrainBuapplySearchContext"  resultMap="TrmTrainBuapplyResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CDZJ`, t1.`CLF`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JFLX`, t1.`JGFY`, t1.`ND`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`QTFY`, t1.`SZF`, t1.`TRMTRAINBUAPPLYID`, t1.`TRMTRAINBUAPPLYNAME`, t1.`TRMTRAINPLANTERMID`, t11.`TRMTRAINPLANTERMNAME`, t1.`TZJE`, t1.`TZYSXM`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YSZJE` FROM `T_TRMTRAINBUAPPLY` t1  LEFT JOIN T_TRMTRAINPLANTERM t11 ON t1.TRMTRAINPLANTERMID = t11.TRMTRAINPLANTERMID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CDZJ`, t1.`CLF`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`JFLX`, t1.`JGFY`, t1.`ND`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`QTFY`, t1.`SZF`, t1.`TRMTRAINBUAPPLYID`, t1.`TRMTRAINBUAPPLYNAME`, t1.`TRMTRAINPLANTERMID`, t11.`TRMTRAINPLANTERMNAME`, t1.`TZJE`, t1.`TZYSXM`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YSZJE` FROM `T_TRMTRAINBUAPPLY` t1  LEFT JOIN T_TRMTRAINPLANTERM t11 ON t1.TRMTRAINPLANTERMID = t11.TRMTRAINPLANTERMID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

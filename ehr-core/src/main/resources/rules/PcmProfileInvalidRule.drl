@@ -1,0 +1,37 @@
+package cn.ibizlab.ehr.pcm.logic.pcmprofilelogic.invalid;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pcm.domain.PcmProfile pcmprofileinvaliddefault;
+global cn.ibizlab.ehr.core.pcm.service.IPcmProfileService pcmprofileservice;
+global cn.ibizlab.ehr.core.pcm.service.IPcmProfileService iBzSysPcmprofileDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[准备参数]
+rule "prepareparam1"
+ruleflow-group "pcmprofileinvalidprepareparam1"
+    when
+    then
+    pcmprofileinvaliddefault.set("profiletype","90");
+    update(pcmprofileinvaliddefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[变更状态为失效]
+rule "deaction1"
+ruleflow-group "pcmprofileinvaliddeaction1"
+    when
+    then
+    pcmprofileservice.update(pcmprofileinvaliddefault);
+    update(pcmprofileinvaliddefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pcmprofileinvalidbegin"
+    when
+    then
+    end
+

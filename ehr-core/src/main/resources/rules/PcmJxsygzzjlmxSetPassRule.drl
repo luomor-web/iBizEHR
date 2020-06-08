@@ -1,0 +1,28 @@
+package cn.ibizlab.ehr.pcm.logic.pcmjxsygzzjlmxlogic.setpass;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pcm.domain.PcmJxsygzzjlmx pcmjxsygzzjlmxsetpassdefault;
+global cn.ibizlab.ehr.core.pcm.service.IPcmJxsygzzjlmxService iBzSysPcmjxsygzzjlmxDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[设置准备参数]
+rule "prepareparam1"
+ruleflow-group "pcmjxsygzzjlmxsetpassprepareparam1"
+    when
+    then
+    pcmjxsygzzjlmxsetpassdefault.set("finished","1");
+    pcmjxsygzzjlmxsetpassdefault.set("checkstatus","3");
+    update(pcmjxsygzzjlmxsetpassdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pcmjxsygzzjlmxsetpassbegin"
+    when
+    then
+    end
+

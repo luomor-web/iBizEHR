@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.sal.mapper.SalRuleDetailMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="SalRuleDetailResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CHECKRULE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`SALPARAMID`, t1.`SALPARAMID2`, t21.`SALPARAMNAME`, t31.`SALPARAMNAME` AS `SALPARAMNAME2`, t1.`SALRULEDETAILID`, t1.`SALRULEDETAILNAME`, t1.`SALRULEID`, t11.`SALRULENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SALRULEDETAIL` t1  LEFT JOIN T_SALRULE t11 ON t1.SALRULEID = t11.SALRULEID  LEFT JOIN T_SALPARAM t21 ON t1.SALPARAMID = t21.SALPARAMID  LEFT JOIN T_SALPARAM t31 ON t1.SALPARAMID2 = t31.SALPARAMID  ) t1 where salruledetailid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="SalRuleDetailResultMap" type="cn.ibizlab.ehr.core.sal.domain.SalRuleDetail" autoMapping="true">
+        <id property="salruledetailid" column="salruledetailid" /><!--主键字段映射-->
+		<result property="salparamid" column="salparamid" />
+		<result property="salruleid" column="salruleid" />
+		<result property="salparamid2" column="salparamid2" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="salparam" javaType="cn.ibizlab.ehr.core.sal.domain.SalParam" column="salparamid" select="cn.ibizlab.ehr.core.sal.mapper.SalParamMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="salparam2" javaType="cn.ibizlab.ehr.core.sal.domain.SalParam" column="salparamid2" select="cn.ibizlab.ehr.core.sal.mapper.SalParamMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="salrule" javaType="cn.ibizlab.ehr.core.sal.domain.SalRule" column="salruleid" select="cn.ibizlab.ehr.core.sal.mapper.SalRuleMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALRULEDETAIL_SALPARAM_SALPARAMID] -->
+	 <select id="selectBySalparamid" resultMap="SalRuleDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  salparamid=#{salparamid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALRULEDETAIL_SALPARAM_SALPARAMID2] -->
+	 <select id="selectBySalparamid2" resultMap="SalRuleDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  salparamid2=#{salparamid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALRULEDETAIL_SALRULE_SALRULEID] -->
+	 <select id="selectBySalruleid" resultMap="SalRuleDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  salruleid=#{salruleid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.sal.filter.SalRuleDetailSearchContext"  resultMap="SalRuleDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CHECKRULE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`SALPARAMID`, t1.`SALPARAMID2`, t21.`SALPARAMNAME`, t31.`SALPARAMNAME` AS `SALPARAMNAME2`, t1.`SALRULEDETAILID`, t1.`SALRULEDETAILNAME`, t1.`SALRULEID`, t11.`SALRULENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SALRULEDETAIL` t1  LEFT JOIN T_SALRULE t11 ON t1.SALRULEID = t11.SALRULEID  LEFT JOIN T_SALPARAM t21 ON t1.SALPARAMID = t21.SALPARAMID  LEFT JOIN T_SALPARAM t31 ON t1.SALPARAMID2 = t31.SALPARAMID  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CHECKRULE`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`SALPARAMID`, t1.`SALPARAMID2`, t21.`SALPARAMNAME`, t31.`SALPARAMNAME` AS `SALPARAMNAME2`, t1.`SALRULEDETAILID`, t1.`SALRULEDETAILNAME`, t1.`SALRULEID`, t11.`SALRULENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SALRULEDETAIL` t1  LEFT JOIN T_SALRULE t11 ON t1.SALRULEID = t11.SALRULEID  LEFT JOIN T_SALPARAM t21 ON t1.SALPARAMID = t21.SALPARAMID  LEFT JOIN T_SALPARAM t31 ON t1.SALPARAMID2 = t31.SALPARAMID  
+			]]>
+    </sql>
+</mapper>
+

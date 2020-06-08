@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmydjdmxnewdisinfo" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmydjdmxnewdisinfo">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmydjdmxnewdisinfopimdistirbution" type="cn.ibizlab.ehr.core.pim.domain.PimDistirbution" />
+        <tns:global identifier="pcmydjdmxnewdisinfodefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmYdjdmx" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmydjdmxnewdisinfodeaction1" id="CBF58789-0B32-4E00-93C0-F6C3511E5594" implementation="http://www.jboss.org/drools/rule" name="创建次分配信息"/>
+     <endEvent id="CBF58789-0B32-4E00-93C0-F6C3511E5594_End" name="End"/>
+     <sequenceFlow id="CBF58789-0B32-4E00-93C0-F6C3511E5594_End_Line" sourceRef="CBF58789-0B32-4E00-93C0-F6C3511E5594" targetRef="CBF58789-0B32-4E00-93C0-F6C3511E5594_End"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmydjdmxnewdisinfoprepareparam1" id="1827D685-57CD-461E-AF4B-07180E9AF8B5" implementation="http://www.jboss.org/drools/rule" name="设置分配参数变量"/>
+     <startEvent id="8BFB5EA1-DAFF-4281-A384-8F773203FC4C" isInterrupting="true"/>
+     <sequenceFlow id="7653DF6A-282E-48C6-A337-A21E6D9AF5E8" sourceRef="1827D685-57CD-461E-AF4B-07180E9AF8B5" targetRef="CBF58789-0B32-4E00-93C0-F6C3511E5594">
+     </sequenceFlow>
+     <sequenceFlow id="39810454-B929-4677-B61E-9EF8E5862ACE" sourceRef="8BFB5EA1-DAFF-4281-A384-8F773203FC4C" targetRef="1827D685-57CD-461E-AF4B-07180E9AF8B5">
+     </sequenceFlow>
+    </process>
+</definitions>
+

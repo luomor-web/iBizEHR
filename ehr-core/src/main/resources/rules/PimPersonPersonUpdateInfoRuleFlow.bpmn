@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pim.service.logic.pimpersonpersonupdateinfo" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pim.service.logic.pimpersonpersonupdateinfo">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pimpersonpersonupdateinfodefault" type="cn.ibizlab.ehr.core.pim.domain.PimPerson" />
+        </extensionElements>
+     <startEvent id="409244cc0e60f19fea36af9366157170" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimpersonpersonupdateinfodeaction1" id="4919a1f4aa732fb1150fc4449c5ab9a7" implementation="http://www.jboss.org/drools/rule" name="计算出生日期、性别、年龄"/>
+     <endEvent id="4919a1f4aa732fb1150fc4449c5ab9a7_End" name="End"/>
+     <sequenceFlow id="4919a1f4aa732fb1150fc4449c5ab9a7_End_Line" sourceRef="4919a1f4aa732fb1150fc4449c5ab9a7" targetRef="4919a1f4aa732fb1150fc4449c5ab9a7_End"/>
+     <sequenceFlow id="363331bdecc5da0aee0300583aa3ffb6" sourceRef="409244cc0e60f19fea36af9366157170" targetRef="4919a1f4aa732fb1150fc4449c5ab9a7">
+     </sequenceFlow>
+    </process>
+</definitions>
+

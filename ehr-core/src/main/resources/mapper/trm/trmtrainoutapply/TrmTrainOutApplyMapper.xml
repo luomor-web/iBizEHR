@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TrmTrainOutApplyMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TrmTrainOutApplyResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJBH`, t1.`ENABLE`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PXDD`, t1.`PXFS`, t1.`PXJSRQ`, t1.`PXKSRQ`, t1.`PXLB`, t1.`PXMB`, t1.`PXNR`, t1.`SQRQ`, t1.`TRMTRAINOUTAPPLYID`, t1.`TRMTRAINOUTAPPLYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBPXJG`, t1.`YWLX`, t11.`ORMORGNAME` AS `ZZ` FROM `T_TRMTRAINOUTAPPLY` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  ) t1 where trmtrainoutapplyid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="TrmTrainOutApplyResultMap" type="cn.ibizlab.ehr.core.trm.domain.TrmTrainOutApply" autoMapping="true">
+        <id property="trmtrainoutapplyid" column="trmtrainoutapplyid" /><!--主键字段映射-->
+		<result property="pimpersonid" column="pimpersonid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMTRAINOUTAPPLY_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="TrmTrainOutApplyResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.trm.filter.TrmTrainOutApplySearchContext"  resultMap="TrmTrainOutApplyResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJBH`, t1.`ENABLE`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PXDD`, t1.`PXFS`, t1.`PXJSRQ`, t1.`PXKSRQ`, t1.`PXLB`, t1.`PXMB`, t1.`PXNR`, t1.`SQRQ`, t1.`TRMTRAINOUTAPPLYID`, t1.`TRMTRAINOUTAPPLYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBPXJG`, t1.`YWLX`, t11.`ORMORGNAME` AS `ZZ` FROM `T_TRMTRAINOUTAPPLY` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJBH`, t1.`ENABLE`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PXDD`, t1.`PXFS`, t1.`PXJSRQ`, t1.`PXKSRQ`, t1.`PXLB`, t1.`PXMB`, t1.`PXNR`, t1.`SQRQ`, t1.`TRMTRAINOUTAPPLYID`, t1.`TRMTRAINOUTAPPLYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WBPXJG`, t1.`YWLX`, t11.`ORMORGNAME` AS `ZZ` FROM `T_TRMTRAINOUTAPPLY` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

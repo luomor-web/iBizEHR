@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PimPersonChangeMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PimPersonChangeResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BGLX`, t1.`BGNR`, t1.`BGSJ`, t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZ`, t1.`CZDXBH`, t1.`CZDXMC`, t1.`FJ`, t1.`JLBH`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t11.`ORMORGSECTORID`, t1.`PIMPERSONCHANGEID`, t1.`PIMPERSONCHANGENAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`REASON`, t1.`SQSJ`, t1.`SXSJ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t1.`ZT` FROM `T_PIMPERSONCHANGE` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  ) t1 where pimpersonchangeid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PimPersonChangeResultMap" type="cn.ibizlab.ehr.core.pim.domain.PimPersonChange" autoMapping="true">
+        <id property="pimpersonchangeid" column="pimpersonchangeid" /><!--主键字段映射-->
+		<result property="pimpersonid" column="pimpersonid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMPERSONCHANGE_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="PimPersonChangeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[HistoryRec]-->
+	 <select id="searchHistoryRec"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimPersonChangeSearchContext"  resultMap="PimPersonChangeResultMap">
+         select t1.* from (
+                <include refid="HistoryRec" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[PIMCL_NOTAPPROVAL]-->
+	 <select id="searchPIMCL_NOTAPPROVAL"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimPersonChangeSearchContext"  resultMap="PimPersonChangeResultMap">
+         select t1.* from (
+                <include refid="PIMCL_NOTAPPROVAL" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[HeadRed]-->
+	 <select id="searchHeadRed"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimPersonChangeSearchContext"  resultMap="PimPersonChangeResultMap">
+         select t1.* from (
+                <include refid="HeadRed" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimPersonChangeSearchContext"  resultMap="PimPersonChangeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BGLX`, t1.`BGNR`, t1.`BGSJ`, t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZ`, t1.`CZDXBH`, t1.`CZDXMC`, t1.`FJ`, t1.`JLBH`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t11.`ORMORGSECTORID`, t1.`PIMPERSONCHANGEID`, t1.`PIMPERSONCHANGENAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`REASON`, t1.`SQSJ`, t1.`SXSJ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t1.`ZT` FROM `T_PIMPERSONCHANGE` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+			]]>
+    </sql>
+    <!--数据查询[HeadRed]-->
+    <sql id="HeadRed" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BGLX`, t1.`BGNR`, t1.`BGSJ`, t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZ`, t1.`CZDXBH`, t1.`CZDXMC`, t1.`FJ`, t1.`JLBH`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t11.`ORMORGSECTORID`, t1.`PIMPERSONCHANGEID`, t1.`PIMPERSONCHANGENAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`REASON`, t1.`SQSJ`, t1.`SXSJ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t1.`ZT` FROM `T_PIMPERSONCHANGE` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+				 WHERE 	( exists (select 1 from t_srforg a where t11.ormorgid=a.orgid and instr(a.levelcode,'0101')=1) )
+			]]>
+    </sql>
+    <!--数据查询[HistoryRec]-->
+    <sql id="HistoryRec" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BGLX`, t1.`BGNR`, t1.`BGSJ`, t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZ`, t1.`CZDXBH`, t1.`CZDXMC`, t1.`FJ`, t1.`JLBH`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t11.`ORMORGSECTORID`, t1.`PIMPERSONCHANGEID`, t1.`PIMPERSONCHANGENAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`REASON`, t1.`SQSJ`, t1.`SXSJ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t1.`ZT` FROM `T_PIMPERSONCHANGE` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+				 WHERE 	( t1.`ZT` IS NOT NULL )
+			]]>
+    </sql>
+    <!--数据查询[PIMCL_NOTAPPROVAL]-->
+    <sql id="PIMCL_NOTAPPROVAL" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BGLX`, t1.`BGNR`, t1.`BGSJ`, t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZ`, t1.`CZDXBH`, t1.`CZDXMC`, t1.`FJ`, t1.`JLBH`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t11.`ORMORGSECTORID`, t1.`PIMPERSONCHANGEID`, t1.`PIMPERSONCHANGENAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`REASON`, t1.`SQSJ`, t1.`SXSJ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t1.`ZT` FROM `T_PIMPERSONCHANGE` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+				 WHERE 	( t1.`ZT` IS NULL )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BGLX`, t1.`BGNR`, t1.`BGSJ`, t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZ`, t1.`CZDXBH`, t1.`CZDXMC`, t1.`FJ`, t1.`JLBH`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t11.`ORMORGSECTORID`, t1.`PIMPERSONCHANGEID`, t1.`PIMPERSONCHANGENAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`REASON`, t1.`SQSJ`, t1.`SXSJ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t1.`ZT` FROM `T_PIMPERSONCHANGE` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+			]]>
+    </sql>
+</mapper>
+

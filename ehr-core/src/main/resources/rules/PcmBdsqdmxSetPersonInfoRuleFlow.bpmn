@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmbdsqdmxsetpersoninfo" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmbdsqdmxsetpersoninfo">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmbdsqdmxsetpersoninfopimperson" type="cn.ibizlab.ehr.core.pim.domain.PimPerson" />
+        <tns:global identifier="pcmbdsqdmxsetpersoninfodefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmBdsqdmx" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxsetpersoninfoprepareparam1" id="406cbd3e4bcb19a0b83d1f5406627be0" implementation="http://www.jboss.org/drools/rule" name="设置人员id"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxsetpersoninfoprepareparam2" id="2eeed6406aae1d0e4e71b919088f8299" implementation="http://www.jboss.org/drools/rule" name="设置职级、部门、组织"/>
+     <endEvent id="2eeed6406aae1d0e4e71b919088f8299_End" name="End"/>
+     <sequenceFlow id="2eeed6406aae1d0e4e71b919088f8299_End_Line" sourceRef="2eeed6406aae1d0e4e71b919088f8299" targetRef="2eeed6406aae1d0e4e71b919088f8299_End"/>
+     <startEvent id="6922f577da624e5afad2e9108d343928" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxsetpersoninfodeaction1" id="0b9518540175c7407252d7d499aeb09a" implementation="http://www.jboss.org/drools/rule" name="获取人员的组织部门职级"/>
+     <sequenceFlow id="71bfc2f8418786c501c21509fd310362" sourceRef="0b9518540175c7407252d7d499aeb09a" targetRef="2eeed6406aae1d0e4e71b919088f8299">
+     </sequenceFlow>
+     <sequenceFlow id="8d94707f38f0408b8c43b813b27d2bca" sourceRef="406cbd3e4bcb19a0b83d1f5406627be0" targetRef="0b9518540175c7407252d7d499aeb09a">
+     </sequenceFlow>
+     <sequenceFlow id="5b886e999641082e9b9b5fa3efd9ac0c" sourceRef="6922f577da624e5afad2e9108d343928" targetRef="406cbd3e4bcb19a0b83d1f5406627be0">
+     </sequenceFlow>
+    </process>
+</definitions>
+

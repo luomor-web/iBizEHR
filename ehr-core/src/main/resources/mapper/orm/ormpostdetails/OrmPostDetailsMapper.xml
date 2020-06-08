@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.orm.mapper.OrmPostDetailsMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="OrmPostDetailsResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`GWFLAG`, t11.`GWTYPE`, t11.`ISCONFIDENTIAL`, t11.`MUSTEXCYEAR`, t1.`ORMPOSTDETAILSID`, t1.`ORMPOSTDETAILSNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTLIBID`, t11.`ORMPOSTLIBNAME`, t21.`ORMPOSTNAME`, t11.`POSTNATURE`, t11.`SUGEXCYEAR`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ORMPOSTDETAILS` t1  LEFT JOIN T_ORMPOSTLIB t11 ON t1.ORMPOSTLIBID = t11.ORMPOSTLIBID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  ) t1 where ormpostdetailsid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="OrmPostDetailsResultMap" type="cn.ibizlab.ehr.core.orm.domain.OrmPostDetails" autoMapping="true">
+        <id property="ormpostdetailsid" column="ormpostdetailsid" /><!--主键字段映射-->
+		<result property="ormpostid" column="ormpostid" />
+		<result property="ormpostlibid" column="ormpostlibid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormpostlib" javaType="cn.ibizlab.ehr.core.orm.domain.OrmPostLib" column="ormpostlibid" select="cn.ibizlab.ehr.core.orm.mapper.OrmPostLibMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormpost" javaType="cn.ibizlab.ehr.core.orm.domain.OrmPost" column="ormpostid" select="cn.ibizlab.ehr.core.orm.mapper.OrmPostMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ORMPOSTDETAILS_ORMPOSTLIB_ORMPOSTLIBID] -->
+	 <select id="selectByOrmpostlibid" resultMap="OrmPostDetailsResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormpostlibid=#{ormpostlibid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ORMPOSTDETAILS_ORMPOST_ORMPOSTID] -->
+	 <select id="selectByOrmpostid" resultMap="OrmPostDetailsResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormpostid=#{ormpostid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmPostDetailsSearchContext"  resultMap="OrmPostDetailsResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`GWFLAG`, t11.`GWTYPE`, t11.`ISCONFIDENTIAL`, t11.`MUSTEXCYEAR`, t1.`ORMPOSTDETAILSID`, t1.`ORMPOSTDETAILSNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTLIBID`, t11.`ORMPOSTLIBNAME`, t21.`ORMPOSTNAME`, t11.`POSTNATURE`, t11.`SUGEXCYEAR`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ORMPOSTDETAILS` t1  LEFT JOIN T_ORMPOSTLIB t11 ON t1.ORMPOSTLIBID = t11.ORMPOSTLIBID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`GWFLAG`, t11.`GWTYPE`, t11.`ISCONFIDENTIAL`, t11.`MUSTEXCYEAR`, t1.`ORMPOSTDETAILSID`, t1.`ORMPOSTDETAILSNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTLIBID`, t11.`ORMPOSTLIBNAME`, t21.`ORMPOSTNAME`, t11.`POSTNATURE`, t11.`SUGEXCYEAR`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ORMPOSTDETAILS` t1  LEFT JOIN T_ORMPOSTLIB t11 ON t1.ORMPOSTLIBID = t11.ORMPOSTLIBID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  
+			]]>
+    </sql>
+</mapper>
+

@@ -1,0 +1,111 @@
+server:
+  port: 6091
+#zuul网关路由设置
+zuul:
+  routes:
+    ormqygl:
+      path: /ormqygls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormpostdetails:
+      path: /ormpostdetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormsignorg:
+      path: /ormsignorgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormerporg:
+      path: /ormerporgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormxmbmx:
+      path: /ormxmbmxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorginfo:
+      path: /ormorginfos/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    codelist:
+      path: /codelist1s/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormedition:
+      path: /ormeditions/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorgdz:
+      path: /ormorgdzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    contractsignorg:
+      path: /pimcontractsignorgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormpost:
+      path: /ormposts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormbmkqdz:
+      path: /ormbmkqdzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormbmgwbz:
+      path: /ormbmgwbzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormrelation:
+      path: /ormrelations/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormpostlib:
+      path: /ormpostlibs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormdepestman:
+      path: /ormdepestmen/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    unitedperson:
+      path: /ormunitedpeople/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimperson:
+      path: /pimpeople/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorg:
+      path: /ormorgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormqybzwh:
+      path: /ormqybzwhs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormduty:
+      path: /ormduties/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    codeitem:
+      path: /codeitems/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormtitle:
+      path: /ormtitles/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormxmgl:
+      path: /ormxmgls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormxmbq:
+      path: /ormxmbqs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorgsector:
+      path: /ormorgsectors/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+  sensitive-headers:
+    - Cookie,Set-Cookie,Authorization

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PcmYddgmxMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PcmYddgmxResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t11.`BM`, t11.`BMID`, t1.`BZ`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DGDQ`, t1.`DGLX`, t51.`SHORTNAME` AS `DGSHORTNAME`, t1.`DISTIRBUTIONID`, t1.`ISFINISHED`, t1.`JSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGSECTORID`, t51.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`PCMYDDGMXID`, t1.`PCMYDDGMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t31.`PIMPERSONNAME`, t1.`REASON`, t21.`SHORTNAME`, t11.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t41.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDDGMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDDGMXID = t11.PCMYDMXID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.BMID = t21.ORGSECTORID  LEFT JOIN T_PIMPERSON t31 ON t11.PIMPERSONID = t31.PIMPERSONID  LEFT JOIN T_SRFORG t41 ON t11.ZZID = t41.ORGID  LEFT JOIN T_SRFORGSECTOR t51 ON t1.ORMORGSECTORID = t51.ORGSECTORID  ) t1 where pcmyddgmxid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PcmYddgmxResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PcmYddgmx" autoMapping="true">
+        <id property="pcmyddgmxid" column="pcmyddgmxid" /><!--主键字段映射-->
+		<result property="ormorgsectorid" column="ormorgsectorid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMYDDGMX_ORMORGSECTOR_ORMORGSECTORID] -->
+	 <select id="selectByOrmorgsectorid" resultMap="PcmYddgmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgsectorid=#{orgsectorid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmYddgmxSearchContext"  resultMap="PcmYddgmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[JLDS]-->
+	 <select id="searchJLDS"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmYddgmxSearchContext"  resultMap="PcmYddgmxResultMap">
+         select t1.* from (
+                <include refid="JLDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[GLDS]-->
+	 <select id="searchGLDS"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmYddgmxSearchContext"  resultMap="PcmYddgmxResultMap">
+         select t1.* from (
+                <include refid="GLDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t1.`BZ`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DGDQ`, t1.`DGLX`, t51.`SHORTNAME` AS `DGSHORTNAME`, t1.`DISTIRBUTIONID`, t1.`ISFINISHED`, t1.`JSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGSECTORID`, t51.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`PCMYDDGMXID`, t1.`PCMYDDGMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t31.`PIMPERSONNAME`, t1.`REASON`, t21.`SHORTNAME`, t11.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t41.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDDGMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDDGMXID = t11.PCMYDMXID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.BMID = t21.ORGSECTORID  LEFT JOIN T_PIMPERSON t31 ON t11.PIMPERSONID = t31.PIMPERSONID  LEFT JOIN T_SRFORG t41 ON t11.ZZID = t41.ORGID  LEFT JOIN T_SRFORGSECTOR t51 ON t1.ORMORGSECTORID = t51.ORGSECTORID  
+			]]>
+    </sql>
+    <!--数据查询[GLDQ]-->
+    <sql id="GLDQ" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t1.`BZ`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DGDQ`, t1.`DGLX`, t51.`SHORTNAME` AS `DGSHORTNAME`, t1.`DISTIRBUTIONID`, t1.`ISFINISHED`, t1.`JSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGSECTORID`, t51.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`PCMYDDGMXID`, t1.`PCMYDDGMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t31.`PIMPERSONNAME`, t1.`REASON`, t21.`SHORTNAME`, t11.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t41.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDDGMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDDGMXID = t11.PCMYDMXID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.BMID = t21.ORGSECTORID  LEFT JOIN T_PIMPERSON t31 ON t11.PIMPERSONID = t31.PIMPERSONID  LEFT JOIN T_SRFORG t41 ON t11.ZZID = t41.ORGID  LEFT JOIN T_SRFORGSECTOR t51 ON t1.ORMORGSECTORID = t51.ORGSECTORID  
+				 WHERE 	( t1.`ISFINISHED` = '0' )
+			]]>
+    </sql>
+    <!--数据查询[JLDQ]-->
+    <sql id="JLDQ" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t1.`BZ`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DGDQ`, t1.`DGLX`, t51.`SHORTNAME` AS `DGSHORTNAME`, t1.`DISTIRBUTIONID`, t1.`ISFINISHED`, t1.`JSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGSECTORID`, t51.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`PCMYDDGMXID`, t1.`PCMYDDGMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t31.`PIMPERSONNAME`, t1.`REASON`, t21.`SHORTNAME`, t11.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t41.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDDGMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDDGMXID = t11.PCMYDMXID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.BMID = t21.ORGSECTORID  LEFT JOIN T_PIMPERSON t31 ON t11.PIMPERSONID = t31.PIMPERSONID  LEFT JOIN T_SRFORG t41 ON t11.ZZID = t41.ORGID  LEFT JOIN T_SRFORGSECTOR t51 ON t1.ORMORGSECTORID = t51.ORGSECTORID  
+				 WHERE 	( t1.`ISFINISHED` = '1' )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t1.`BZ`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`DGDQ`, t1.`DGLX`, t51.`SHORTNAME` AS `DGSHORTNAME`, t1.`DISTIRBUTIONID`, t1.`ISFINISHED`, t1.`JSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGSECTORID`, t51.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`PCMYDDGMXID`, t1.`PCMYDDGMXNAME`, t11.`PCMYDMXTYPE`, t11.`PIMPERSONID`, t31.`PIMPERSONNAME`, t1.`REASON`, t21.`SHORTNAME`, t11.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t41.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDDGMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDDGMXID = t11.PCMYDMXID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.BMID = t21.ORGSECTORID  LEFT JOIN T_PIMPERSON t31 ON t11.PIMPERSONID = t31.PIMPERSONID  LEFT JOIN T_SRFORG t41 ON t11.ZZID = t41.ORGID  LEFT JOIN T_SRFORGSECTOR t51 ON t1.ORMORGSECTORID = t51.ORGSECTORID  
+			]]>
+    </sql>
+</mapper>
+

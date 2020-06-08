@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.vac.mapper.VacLeaveDetailMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="VacLeaveDetailResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FJ`, t1.`HYZK`, t1.`JHJSSJ`, t1.`JHJSSXW`, t1.`JHKSSJ`, t1.`JHKSSXW`, concat(date_format(t1.jhjssj, '%Y-%m-%d'),' ', (case when t1.jhjssxw ='20' then '下午' when t1.jhjssxw ='10' then '上午' else '' END)) AS `JHQJJS`, concat(date_format(t1.jhkssj, '%Y-%m-%d'),' ', (case when t1.jhkssxw='20' then '下午' when t1.jhkssxw='10' then '上午' else '' END)) AS `JHQJKS`, t1.`JHTS`, t1.`NJSY`, t11.`ORMORGID`, t21.`ZZDZS` AS `ORMORGNAME`, t11.`ORMORGSECTORID`, t31.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`QJZL`, t1.`SJJSSJ`, t1.`SJJSSXW`, t1.`SJKSSJ`, t1.`SJKSSXW`, concat(date_format(t1.sjjssj, '%Y-%m-%d'),' ', (case when t1.sjjssxw ='20' then '下午' when t1.sjjssxw ='10' then '上午' else '' END)) AS `SJQJJS`, concat(date_format(t1.sjkssj, '%Y-%m-%d'),' ', (case when t1.sjkssxw ='20' then '下午' when t1.sjkssxw ='10' then '上午' else '' END)) AS `SJQJKS`, t1.`SJTS`, t1.`STATE`, t1.`TIPS`, t1.`TQLX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACLEAVEDETAILID`, t1.`VACLEAVEDETAILNAME` FROM `T_VACLEAVEDETAIL` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORG t21 ON t11.ORMORGID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.ORMORGSECTORID = t31.ORGSECTORID  ) t1 where vacleavedetailid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="VacLeaveDetailResultMap" type="cn.ibizlab.ehr.core.vac.domain.VacLeaveDetail" autoMapping="true">
+        <id property="vacleavedetailid" column="vacleavedetailid" /><!--主键字段映射-->
+		<result property="pimpersonid" column="pimpersonid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_VACLEAVEDETAIL_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="VacLeaveDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.vac.filter.VacLeaveDetailSearchContext"  resultMap="VacLeaveDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FJ`, t1.`HYZK`, t1.`JHJSSJ`, t1.`JHJSSXW`, t1.`JHKSSJ`, t1.`JHKSSXW`, concat(date_format(t1.jhjssj, '%Y-%m-%d'),' ', (case when t1.jhjssxw ='20' then '下午' when t1.jhjssxw ='10' then '上午' else '' END)) AS `JHQJJS`, concat(date_format(t1.jhkssj, '%Y-%m-%d'),' ', (case when t1.jhkssxw='20' then '下午' when t1.jhkssxw='10' then '上午' else '' END)) AS `JHQJKS`, t1.`JHTS`, t1.`NJSY`, t11.`ORMORGID`, t21.`ZZDZS` AS `ORMORGNAME`, t11.`ORMORGSECTORID`, t31.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`QJZL`, t1.`SJJSSJ`, t1.`SJJSSXW`, t1.`SJKSSJ`, t1.`SJKSSXW`, concat(date_format(t1.sjjssj, '%Y-%m-%d'),' ', (case when t1.sjjssxw ='20' then '下午' when t1.sjjssxw ='10' then '上午' else '' END)) AS `SJQJJS`, concat(date_format(t1.sjkssj, '%Y-%m-%d'),' ', (case when t1.sjkssxw ='20' then '下午' when t1.sjkssxw ='10' then '上午' else '' END)) AS `SJQJKS`, t1.`SJTS`, t1.`STATE`, t1.`TIPS`, t1.`TQLX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACLEAVEDETAILID`, t1.`VACLEAVEDETAILNAME` FROM `T_VACLEAVEDETAIL` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORG t21 ON t11.ORMORGID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.ORMORGSECTORID = t31.ORGSECTORID  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FJ`, t1.`HYZK`, t1.`JHJSSJ`, t1.`JHJSSXW`, t1.`JHKSSJ`, t1.`JHKSSXW`, concat(date_format(t1.jhjssj, '%Y-%m-%d'),' ', (case when t1.jhjssxw ='20' then '下午' when t1.jhjssxw ='10' then '上午' else '' END)) AS `JHQJJS`, concat(date_format(t1.jhkssj, '%Y-%m-%d'),' ', (case when t1.jhkssxw='20' then '下午' when t1.jhkssxw='10' then '上午' else '' END)) AS `JHQJKS`, t1.`JHTS`, t1.`NJSY`, t11.`ORMORGID`, t21.`ZZDZS` AS `ORMORGNAME`, t11.`ORMORGSECTORID`, t31.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`QJZL`, t1.`SJJSSJ`, t1.`SJJSSXW`, t1.`SJKSSJ`, t1.`SJKSSXW`, concat(date_format(t1.sjjssj, '%Y-%m-%d'),' ', (case when t1.sjjssxw ='20' then '下午' when t1.sjjssxw ='10' then '上午' else '' END)) AS `SJQJJS`, concat(date_format(t1.sjkssj, '%Y-%m-%d'),' ', (case when t1.sjkssxw ='20' then '下午' when t1.sjkssxw ='10' then '上午' else '' END)) AS `SJQJKS`, t1.`SJTS`, t1.`STATE`, t1.`TIPS`, t1.`TQLX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACLEAVEDETAILID`, t1.`VACLEAVEDETAILNAME` FROM `T_VACLEAVEDETAIL` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORG t21 ON t11.ORMORGID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.ORMORGSECTORID = t31.ORGSECTORID  
+			]]>
+    </sql>
+</mapper>
+

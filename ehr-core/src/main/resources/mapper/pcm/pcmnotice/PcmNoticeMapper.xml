@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PcmNoticeMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PcmNoticeResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DONE`, t1.`NOTICE`, t1.`NOTICETYPE`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PCMNOTICEID`, t1.`PCMNOTICENAME`, t1.`PIMDISTIRBUTIONID`, t1.`PIMPERSONID`, t31.`PIMPERSONNAME`, t1.`ROLETYPE`, t21.`SHORTNAME`, t1.`SSFW`, t1.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t11.`ZZDZS` FROM `T_PCMNOTICE` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  ) t1 where pcmnoticeid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PcmNoticeResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PcmNotice" autoMapping="true">
+        <id property="pcmnoticeid" column="pcmnoticeid" /><!--主键字段映射-->
+		<result property="pimpersonid" column="pimpersonid" />
+		<result property="pimdistirbutionid" column="pimdistirbutionid" />
+		<result property="ormorgsectorid" column="ormorgsectorid" />
+		<result property="ormorgid" column="ormorgid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimdistirbution" javaType="cn.ibizlab.ehr.core.pim.domain.PimDistirbution" column="pimdistirbutionid" select="cn.ibizlab.ehr.core.pim.mapper.PimDistirbutionMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMNOTICE_ORMORGSECTOR_ORMORGSECTORID] -->
+	 <select id="selectByOrmorgsectorid" resultMap="PcmNoticeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgsectorid=#{orgsectorid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMNOTICE_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="PcmNoticeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMNOTICE_PIMDISTIRBUTION_PIMDISTIRBUTIONID] -->
+	 <select id="selectByPimdistirbutionid" resultMap="PcmNoticeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimdistirbutionid=#{pimdistirbutionid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMNOTICE_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="PcmNoticeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[NOTICE_DAGLYDQ]-->
+	 <select id="searchNOTICE_DAGLYDQ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmNoticeSearchContext"  resultMap="PcmNoticeResultMap">
+         select t1.* from (
+                <include refid="NOTICE_DAGLYDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[NOTICE_XCZYDQ]-->
+	 <select id="searchNOTICE_XCZYDQ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmNoticeSearchContext"  resultMap="PcmNoticeResultMap">
+         select t1.* from (
+                <include refid="NOTICE_XCZYDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[NOTICE_KQZYDQ]-->
+	 <select id="searchNOTICE_KQZYDQ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmNoticeSearchContext"  resultMap="PcmNoticeResultMap">
+         select t1.* from (
+                <include refid="NOTICE_KQZYDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[NOTICE_RSZYDQ]-->
+	 <select id="searchNOTICE_RSZYDQ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmNoticeSearchContext"  resultMap="PcmNoticeResultMap">
+         select t1.* from (
+                <include refid="NOTICE_RSZYDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmNoticeSearchContext"  resultMap="PcmNoticeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[NOTICE_SBFLZYDQ]-->
+	 <select id="searchNOTICE_SBFLZYDQ"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmNoticeSearchContext"  resultMap="PcmNoticeResultMap">
+         select t1.* from (
+                <include refid="NOTICE_SBFLZYDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DONE`, t1.`NOTICE`, t1.`NOTICETYPE`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PCMNOTICEID`, t1.`PCMNOTICENAME`, t1.`PIMDISTIRBUTIONID`, t1.`PIMPERSONID`, t31.`PIMPERSONNAME`, t1.`ROLETYPE`, t21.`SHORTNAME`, t1.`SSFW`, t1.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t11.`ZZDZS` FROM `T_PCMNOTICE` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  
+			]]>
+    </sql>
+    <!--数据查询[NOTICE_DAGLYDQ]-->
+    <sql id="NOTICE_DAGLYDQ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DONE`, t1.`NOTICE`, t1.`NOTICETYPE`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PCMNOTICEID`, t1.`PCMNOTICENAME`, t1.`PIMDISTIRBUTIONID`, t1.`PIMPERSONID`, t31.`PIMPERSONNAME`, t1.`ROLETYPE`, t21.`SHORTNAME`, t1.`SSFW`, t1.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t11.`ZZDZS` FROM `T_PCMNOTICE` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  
+				 WHERE 	( t1.`ROLETYPE` = 8 )
+			]]>
+    </sql>
+    <!--数据查询[NOTICE_KQZYDQ]-->
+    <sql id="NOTICE_KQZYDQ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DONE`, t1.`NOTICE`, t1.`NOTICETYPE`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PCMNOTICEID`, t1.`PCMNOTICENAME`, t1.`PIMDISTIRBUTIONID`, t1.`PIMPERSONID`, t31.`PIMPERSONNAME`, t1.`ROLETYPE`, t21.`SHORTNAME`, t1.`SSFW`, t1.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t11.`ZZDZS` FROM `T_PCMNOTICE` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  
+				 WHERE 	( t1.`ROLETYPE` = 1 )
+			]]>
+    </sql>
+    <!--数据查询[NOTICE_RSZYDQ]-->
+    <sql id="NOTICE_RSZYDQ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DONE`, t1.`NOTICE`, t1.`NOTICETYPE`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PCMNOTICEID`, t1.`PCMNOTICENAME`, t1.`PIMDISTIRBUTIONID`, t1.`PIMPERSONID`, t31.`PIMPERSONNAME`, t1.`ROLETYPE`, t21.`SHORTNAME`, t1.`SSFW`, t1.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t11.`ZZDZS` FROM `T_PCMNOTICE` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  
+				 WHERE 	( t1.`ROLETYPE` = 16 )
+			]]>
+    </sql>
+    <!--数据查询[NOTICE_SBFLZYDQ]-->
+    <sql id="NOTICE_SBFLZYDQ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DONE`, t1.`NOTICE`, t1.`NOTICETYPE`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PCMNOTICEID`, t1.`PCMNOTICENAME`, t1.`PIMDISTIRBUTIONID`, t1.`PIMPERSONID`, t31.`PIMPERSONNAME`, t1.`ROLETYPE`, t21.`SHORTNAME`, t1.`SSFW`, t1.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t11.`ZZDZS` FROM `T_PCMNOTICE` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  
+				 WHERE 	( t1.`ROLETYPE` = 4 )
+			]]>
+    </sql>
+    <!--数据查询[NOTICE_XCZYDQ]-->
+    <sql id="NOTICE_XCZYDQ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DONE`, t1.`NOTICE`, t1.`NOTICETYPE`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PCMNOTICEID`, t1.`PCMNOTICENAME`, t1.`PIMDISTIRBUTIONID`, t1.`PIMPERSONID`, t31.`PIMPERSONNAME`, t1.`ROLETYPE`, t21.`SHORTNAME`, t1.`SSFW`, t1.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t11.`ZZDZS` FROM `T_PCMNOTICE` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  
+				 WHERE 	( t1.`ROLETYPE` = 2 )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DONE`, t1.`NOTICE`, t1.`NOTICETYPE`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t21.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PCMNOTICEID`, t1.`PCMNOTICENAME`, t1.`PIMDISTIRBUTIONID`, t1.`PIMPERSONID`, t31.`PIMPERSONNAME`, t1.`ROLETYPE`, t21.`SHORTNAME`, t1.`SSFW`, t1.`SXRQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t11.`ZZDZS` FROM `T_PCMNOTICE` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  
+			]]>
+    </sql>
+</mapper>
+

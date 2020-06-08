@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.vac.mapper.VacSystemApplicationMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="VacSystemApplicationResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ORMORGSECTORID`, t31.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACLEAVESYSTEMID`, t11.`VACLEAVESYSTEMNAME`, t1.`VACSYSTEMAPPLICATIONID`, t1.`VACSYSTEMAPPLICATIONNAME` FROM `T_VACSYSTEMAPPLICATION` t1  LEFT JOIN T_VACLEAVESYSTEM t11 ON t1.VACLEAVESYSTEMID = t11.VACLEAVESYSTEMID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.ORMORGSECTORID = t31.ORGSECTORID  ) t1 where vacsystemapplicationid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="VacSystemApplicationResultMap" type="cn.ibizlab.ehr.core.vac.domain.VacSystemApplication" autoMapping="true">
+        <id property="vacsystemapplicationid" column="vacsystemapplicationid" /><!--主键字段映射-->
+		<result property="ormorgsectorid" column="ormorgsectorid" />
+		<result property="vacleavesystemid" column="vacleavesystemid" />
+		<result property="pimpersonid" column="pimpersonid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="vacleavesystem" javaType="cn.ibizlab.ehr.core.vac.domain.VacLeaveSystem" column="vacleavesystemid" select="cn.ibizlab.ehr.core.vac.mapper.VacLeaveSystemMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_VACSYSTEMAPPLICATION_ORMORGSECTOR_ORMORGSECTORID] -->
+	 <select id="selectByOrmorgsectorid" resultMap="VacSystemApplicationResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgsectorid=#{orgsectorid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_VACSYSTEMAPPLICATION_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="VacSystemApplicationResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_VACSYSTEMAPPLICATION_VACLEAVESYSTEM_VACLEAVESYSTEMID] -->
+	 <select id="selectByVacleavesystemid" resultMap="VacSystemApplicationResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  vacleavesystemid=#{vacleavesystemid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.vac.filter.VacSystemApplicationSearchContext"  resultMap="VacSystemApplicationResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ORMORGSECTORID`, t31.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACLEAVESYSTEMID`, t11.`VACLEAVESYSTEMNAME`, t1.`VACSYSTEMAPPLICATIONID`, t1.`VACSYSTEMAPPLICATIONNAME` FROM `T_VACSYSTEMAPPLICATION` t1  LEFT JOIN T_VACLEAVESYSTEM t11 ON t1.VACLEAVESYSTEMID = t11.VACLEAVESYSTEMID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.ORMORGSECTORID = t31.ORGSECTORID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ORMORGSECTORID`, t31.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACLEAVESYSTEMID`, t11.`VACLEAVESYSTEMNAME`, t1.`VACSYSTEMAPPLICATIONID`, t1.`VACSYSTEMAPPLICATIONNAME` FROM `T_VACSYSTEMAPPLICATION` t1  LEFT JOIN T_VACLEAVESYSTEM t11 ON t1.VACLEAVESYSTEMID = t11.VACLEAVESYSTEMID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.ORMORGSECTORID = t31.ORGSECTORID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

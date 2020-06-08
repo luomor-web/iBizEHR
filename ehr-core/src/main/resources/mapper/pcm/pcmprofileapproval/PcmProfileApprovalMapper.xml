@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PcmProfileApprovalMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PcmProfileApprovalResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`APPROVALDATE`, t1.`APPROVALOPINION`, t1.`APPROVALSTAGE`, t1.`APPROVER`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`FASTATE`, t1.`PASSORREJECT`, t1.`PCMPROFILEAPPROVALID`, t1.`PCMPROFILEAPPROVALNAME`, t1.`PCMPROFILEID`, t21.`PCMPROFILENAME`, t1.`PIMBYZZJLMXID`, t11.`PIMBYZZJLMXNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YJYY` FROM `T_PCMPROFILEAPPROVAL` t1  LEFT JOIN T_PIMBYZZJLMX t11 ON t1.PIMBYZZJLMXID = t11.PIMBYZZJLMXID  LEFT JOIN T_PCMPROFILE t21 ON t1.PCMPROFILEID = t21.PCMPROFILEID  ) t1 where pcmprofileapprovalid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PcmProfileApprovalResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PcmProfileApproval" autoMapping="true">
+        <id property="pcmprofileapprovalid" column="pcmprofileapprovalid" /><!--主键字段映射-->
+		<result property="pcmprofileid" column="pcmprofileid" />
+		<result property="pimbyzzjlmxid" column="pimbyzzjlmxid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pcmprofile" javaType="cn.ibizlab.ehr.core.pcm.domain.PcmProfile" column="pcmprofileid" select="cn.ibizlab.ehr.core.pcm.mapper.PcmProfileMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimbyzzjlmx" javaType="cn.ibizlab.ehr.core.pim.domain.PimByzzjlmx" column="pimbyzzjlmxid" select="cn.ibizlab.ehr.core.pim.mapper.PimByzzjlmxMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMPROFILEAPPROVAL_PCMPROFILE_PCMPROFILEID] -->
+	 <select id="selectByPcmprofileid" resultMap="PcmProfileApprovalResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pcmprofileid=#{pcmprofileid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMPROFILEAPPROVAL_PIMBYZZJLMX_PIMBYZZJLMXID] -->
+	 <select id="selectByPimbyzzjlmxid" resultMap="PcmProfileApprovalResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimbyzzjlmxid=#{pimbyzzjlmxid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileApprovalSearchContext"  resultMap="PcmProfileApprovalResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Disagree]-->
+	 <select id="searchDisagree"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmProfileApprovalSearchContext"  resultMap="PcmProfileApprovalResultMap">
+         select t1.* from (
+                <include refid="Disagree" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`APPROVALDATE`, t1.`APPROVALOPINION`, t1.`APPROVALSTAGE`, t1.`APPROVER`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`FASTATE`, t1.`PASSORREJECT`, t1.`PCMPROFILEAPPROVALID`, t1.`PCMPROFILEAPPROVALNAME`, t1.`PCMPROFILEID`, t21.`PCMPROFILENAME`, t1.`PIMBYZZJLMXID`, t11.`PIMBYZZJLMXNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YJYY` FROM `T_PCMPROFILEAPPROVAL` t1  LEFT JOIN T_PIMBYZZJLMX t11 ON t1.PIMBYZZJLMXID = t11.PIMBYZZJLMXID  LEFT JOIN T_PCMPROFILE t21 ON t1.PCMPROFILEID = t21.PCMPROFILEID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[Disagree]-->
+    <sql id="Disagree" databaseId="mysql">
+       <![CDATA[	SELECT t1.`APPROVALDATE`, t1.`APPROVALOPINION`, t1.`APPROVALSTAGE`, t1.`APPROVER`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`FASTATE`, t1.`PASSORREJECT`, t1.`PCMPROFILEAPPROVALID`, t1.`PCMPROFILEAPPROVALNAME`, t1.`PCMPROFILEID`, t21.`PCMPROFILENAME`, t1.`PIMBYZZJLMXID`, t11.`PIMBYZZJLMXNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YJYY` FROM `T_PCMPROFILEAPPROVAL` t1  LEFT JOIN T_PIMBYZZJLMX t11 ON t1.PIMBYZZJLMXID = t11.PIMBYZZJLMXID  LEFT JOIN T_PCMPROFILE t21 ON t1.PCMPROFILEID = t21.PCMPROFILEID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`PASSORREJECT` = '20' )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`APPROVALDATE`, t1.`APPROVALOPINION`, t1.`APPROVALSTAGE`, t1.`APPROVER`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`FASTATE`, t1.`PASSORREJECT`, t1.`PCMPROFILEAPPROVALID`, t1.`PCMPROFILEAPPROVALNAME`, t1.`PCMPROFILEID`, t21.`PCMPROFILENAME`, t1.`PIMBYZZJLMXID`, t11.`PIMBYZZJLMXNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YJYY` FROM `T_PCMPROFILEAPPROVAL` t1  LEFT JOIN T_PIMBYZZJLMX t11 ON t1.PIMBYZZJLMXID = t11.PIMBYZZJLMXID  LEFT JOIN T_PCMPROFILE t21 ON t1.PCMPROFILEID = t21.PCMPROFILEID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+
