@@ -35,19 +35,6 @@ const router = new Router({
             component: () => import('@pages/shp/index/index.vue'),
             children: [
                 {
-                    path: 'pimenclosures/:pimenclosure?/filepreviewcustomview/:filepreviewcustomview?',
-                    meta: {
-                        caption: 'entities.pimenclosure.views.filepreviewcustomview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimenclosures', parameterName: 'pimenclosure' },
-                            { pathName: 'filepreviewcustomview', parameterName: 'filepreviewcustomview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/shp/pimenclosurefile-pre-view-custom-view/pimenclosurefile-pre-view-custom-view.vue'),
-                },
-                {
                     path: 'pimpeople/:pimperson?/pimarmycadres/:pimarmycadres?/grarmygridview/:grarmygridview?',
                     meta: {
                         caption: 'entities.pimarmycadres.views.grarmygridview.caption',
@@ -915,37 +902,6 @@ const router = new Router({
                     component: () => import('@pages/shp/pimcontractgrcontract-edit-view/pimcontractgrcontract-edit-view.vue'),
                 },
                 {
-                    path: 'pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/editview_ybh/:editview_ybh?',
-                    meta: {
-                        caption: 'entities.pimexitandentry.views.editview_ybh.caption',
-                        imgPath: '../../../img/jcgl/1/chujing.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'pimexitandentries', parameterName: 'pimexitandentry' },
-                            { pathName: 'editview_ybh', parameterName: 'editview_ybh' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/shp/pimexitandentryedit-view-ybh/pimexitandentryedit-view-ybh.vue'),
-                },
-                {
-                    path: 'pimexitandentries/:pimexitandentry?/editview_ybh/:editview_ybh?',
-                    meta: {
-                        caption: 'entities.pimexitandentry.views.editview_ybh.caption',
-                        imgPath: '../../../img/jcgl/1/chujing.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimexitandentries', parameterName: 'pimexitandentry' },
-                            { pathName: 'editview_ybh', parameterName: 'editview_ybh' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/shp/pimexitandentryedit-view-ybh/pimexitandentryedit-view-ybh.vue'),
-                },
-                {
                     path: 'pimpeople/:pimperson?/pimtitles/:pimtitle?/greditview/:greditview?',
                     meta: {
                         caption: 'entities.pimtitle.views.greditview.caption',
@@ -1006,6 +962,37 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/shp/pimexitandentryedit-view-ng/pimexitandentryedit-view-ng.vue'),
+                },
+                {
+                    path: 'pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/editview_ybh/:editview_ybh?',
+                    meta: {
+                        caption: 'entities.pimexitandentry.views.editview_ybh.caption',
+                        imgPath: '../../../img/jcgl/1/chujing.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'pimexitandentries', parameterName: 'pimexitandentry' },
+                            { pathName: 'editview_ybh', parameterName: 'editview_ybh' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/shp/pimexitandentryedit-view-ybh/pimexitandentryedit-view-ybh.vue'),
+                },
+                {
+                    path: 'pimexitandentries/:pimexitandentry?/editview_ybh/:editview_ybh?',
+                    meta: {
+                        caption: 'entities.pimexitandentry.views.editview_ybh.caption',
+                        imgPath: '../../../img/jcgl/1/chujing.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimexitandentries', parameterName: 'pimexitandentry' },
+                            { pathName: 'editview_ybh', parameterName: 'editview_ybh' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/shp/pimexitandentryedit-view-ybh/pimexitandentryedit-view-ybh.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/xmbqpickupgridview/:xmbqpickupgridview?',
@@ -3866,18 +3853,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/shp/pimcontractgrcontract-grid-view/pimcontractgrcontract-grid-view.vue'),
-    },
-    {
-        path: '/pimenclosures/:pimenclosure?/filepreviewcustomview/:filepreviewcustomview?',
-        meta: {
-            caption: 'entities.pimenclosure.views.filepreviewcustomview.caption',
-            parameters: [
-                { pathName: 'pimenclosures', parameterName: 'pimenclosure' },
-                { pathName: 'filepreviewcustomview', parameterName: 'filepreviewcustomview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/shp/pimenclosurefile-pre-view-custom-view/pimenclosurefile-pre-view-custom-view.vue'),
     },
         ...globalRoutes,
         {

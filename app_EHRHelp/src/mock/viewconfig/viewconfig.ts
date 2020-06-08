@@ -1151,14 +1151,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "VACLEAVEDETAILSJQJMX_GridView",
             "viewtag": "fed14324e88f2e47f5fb67c1192ba27f"
         },
-        "pimenclosurefilepreviewcustomview": {
-            "title": "表格附件预览",
-            "caption": "附件预览",
-            "viewtype": "DECUSTOMVIEW",
-            "viewmodule": "Shp",
-            "viewname": "PIMENCLOSUREFilePreViewCustomView",
-            "viewtag": "fed525676864929d0d7b401aa86144d3"
-        },
         "xinximenu": {
             "title": "应用数据看板视图",
             "caption": "我的信息",

@@ -79,7 +79,6 @@ export default class PimEnclosureUIServiceBase extends UIService {
      * @memberof  PimEnclosureUIServiceBase
      */  
     public initViewMap(){
-        this.allViewMap.set(':',{viewname:'filepreviewcustomview',srfappde:'pimenclosures'});
     }
 
     /**

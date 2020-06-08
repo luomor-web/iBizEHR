@@ -627,7 +627,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'fcc2d91b5309470d632f56c66938be02',
-                'fed525676864929d0d7b401aa86144d3',
                 '4668af609fb63607ee49e3b93210ff6b',
                 '0381f5daeb17f3c1f499e56ec297fc33',
                 '940fc200799331fea59fb89973f1d281',
@@ -812,15 +811,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'aa1d98345f845c6bae1d129cd4de751b',
-            ],
-        },
-        {
-            viewtag: 'fed525676864929d0d7b401aa86144d3',
-            viewmodule: 'Shp',
-            viewname: 'PIMENCLOSUREFilePreViewCustomView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
             ],
         },
     ],

@@ -101,9 +101,6 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
                 case 'Auto319': 
                     this.clickAuto319(item);
                     return;
-                case 'Auto297': 
-                    this.clickAuto297(item);
-                    return;
                 case 'Auto276': 
                     this.clickAuto276(item);
                     return;
@@ -357,31 +354,6 @@ export default class ZIZHUBase extends AppMenusCtrlBase {
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
         this.$router.push(path);
-    }
-    
-    /**
-     * 附件预览
-     *
-     * @param {*} [item={}]
-     * @memberof ZIZHU
-     */
-    public clickAuto297(item: any = {}) {
-        const viewparam: any = {};
-        Object.assign(viewparam, {});
-        const deResParameters: any[] = [];
-        const parameters: any[] = [
-            { pathName: 'pimenclosures', parameterName: 'pimenclosure' },
-        ];
-        const view = { 
-            viewname: 'pimenclosurefile-pre-view-custom-view', 
-            title: (this.$t('entities.pimenclosure.views.filepreviewcustomview.title') as any),
-            height: 0, 
-            width: 0, 
-        };
-        const appmodal = this.$appmodal.openModal(view, JSON.parse(JSON.stringify(this.context)),viewparam);
-        appmodal.subscribe((result: any) => {
-            console.log(result);
-        });
     }
     
     /**

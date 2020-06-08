@@ -19,10 +19,4 @@ export default {
     ormorgid: '组织标识',
     pimpersonid: '人员信息标识',
   },
-	views: {
-		filepreviewcustomview: {
-			caption: '附件预览',
-      title: '附件预览',
-		},
-	},
 };

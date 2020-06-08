@@ -340,7 +340,6 @@ export default {
                 menuitem3: '我的申请',
                 menuitem17: '休假申请',
                 menuitem18: '出（国）境申请',
-                menuitem19: '附件预览',
             },
             zizhu: {
                 menuitem4: '我的信息',
@@ -355,7 +354,6 @@ export default {
                 menuitem13: '科研成果',
                 menuitem14: '专利信息',
                 menuitem15: '论文信息',
-                menuitem16: '附件预览',
                 menuitem17: '我的查询',
                 menuitem19: '分配信息',
                 menuitem20: '档案信息',
@@ -387,7 +385,6 @@ export default {
                 menuitem14: '科研成果',
                 menuitem15: '专利信息',
                 menuitem13: '论文信息',
-                menuitem6: '附件预览',
             },
         },
     },

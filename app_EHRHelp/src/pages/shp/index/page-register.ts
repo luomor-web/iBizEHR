@@ -1,7 +1,6 @@
 export const PageComponents = {
     install(Vue: any, opt: any) {
-                Vue.component('pimenclosurefile-pre-view-custom-view', () => import('@pages/shp/pimenclosurefile-pre-view-custom-view/pimenclosurefile-pre-view-custom-view.vue'));
-        Vue.component('pimarmycadresgrarmygrid-view', () => import('@pages/shp/pimarmycadresgrarmygrid-view/pimarmycadresgrarmygrid-view.vue'));
+                Vue.component('pimarmycadresgrarmygrid-view', () => import('@pages/shp/pimarmycadresgrarmygrid-view/pimarmycadresgrarmygrid-view.vue'));
         Vue.component('pimpersongrzzedit-view', () => import('@pages/shp/pimpersongrzzedit-view/pimpersongrzzedit-view.vue'));
         Vue.component('pimarmycadresgredit-view', () => import('@pages/shp/pimarmycadresgredit-view/pimarmycadresgredit-view.vue'));
         Vue.component('archivescenterpickup-view', () => import('@pages/shp/archivescenterpickup-view/archivescenterpickup-view.vue'));
@@ -33,9 +32,9 @@ export const PageComponents = {
         Vue.component('pimexitandentryedit-view-yqx', () => import('@pages/shp/pimexitandentryedit-view-yqx/pimexitandentryedit-view-yqx.vue'));
         Vue.component('pimexitandentryedit-view-spz', () => import('@pages/shp/pimexitandentryedit-view-spz/pimexitandentryedit-view-spz.vue'));
         Vue.component('pimcontractgrcontract-edit-view', () => import('@pages/shp/pimcontractgrcontract-edit-view/pimcontractgrcontract-edit-view.vue'));
-        Vue.component('pimexitandentryedit-view-ybh', () => import('@pages/shp/pimexitandentryedit-view-ybh/pimexitandentryedit-view-ybh.vue'));
         Vue.component('pimtitlegredit-view', () => import('@pages/shp/pimtitlegredit-view/pimtitlegredit-view.vue'));
         Vue.component('pimexitandentryedit-view-ng', () => import('@pages/shp/pimexitandentryedit-view-ng/pimexitandentryedit-view-ng.vue'));
+        Vue.component('pimexitandentryedit-view-ybh', () => import('@pages/shp/pimexitandentryedit-view-ybh/pimexitandentryedit-view-ybh.vue'));
         Vue.component('orm-org-xmbqpickup-grid-view', () => import('@pages/shp/orm-org-xmbqpickup-grid-view/orm-org-xmbqpickup-grid-view.vue'));
         Vue.component('pimqualmajorpickup-grid-view', () => import('@pages/shp/pimqualmajorpickup-grid-view/pimqualmajorpickup-grid-view.vue'));
         Vue.component('pimeducationgrpim-edu-grid-view', () => import('@pages/shp/pimeducationgrpim-edu-grid-view/pimeducationgrpim-edu-grid-view.vue'));
