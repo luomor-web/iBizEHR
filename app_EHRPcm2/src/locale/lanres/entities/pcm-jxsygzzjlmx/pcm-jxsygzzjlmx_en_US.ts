@@ -1,0 +1,266 @@
+
+export default {
+  fields: {
+    createman: '建立人',
+    finished: '是否审核完成',
+    checkstatus: '审核状态',
+    istemp: '是否为临时数据',
+    updateman: '更新人',
+    createdate: '建立时间',
+    orgid: '权限组织id',
+    pcmjxsygzzjlmxid: '见习生员工转正记录引用明细标识',
+    updatedate: '更新时间',
+    orgsectorid: '权限部门id',
+    pcmjxsygzzjlmxname: '见习生员工转正记录引用明细名称',
+    bmid: '部门ID',
+    rzqd: '入职渠道',
+    duration: '见习期限（月）',
+    zz: '组织',
+    pimpersonname: '员工姓名',
+    jssj: '见习到期时间',
+    ygbh: '员工编号',
+    bm: '部门',
+    zzid: '组织ID',
+    fs: '分数',
+    pj: '评价',
+    qssj: '到局时间',
+    zzgw: '转正岗位',
+    pcmjxsygzzsqname: '见习生员工转正申请名称',
+    pcmjxszzkhjgjlname: '员工',
+    pcmjxsygzzsqid: '见习生员工转正申请标识',
+    pcmjxszzkhjgjlid: '见习生员工转正考核结果记录标识',
+    pimpersonid: '人员信息标识',
+  },
+	views: {
+		sqtemplgridview: {
+			caption: "见习生员工转正记录引用明细",
+      title: '见习生员工转正记录引用明细',
+		},
+		xzeditview: {
+			caption: "见习期员工转正申请",
+      title: '见习期员工转正申请',
+		},
+		zzjlgridview: {
+			caption: "见习期转正记录",
+      title: '见习期转正记录',
+		},
+		ckeditview: {
+			caption: "见习生员工转正记录引用明细",
+      title: '见习生员工转正记录引用明细',
+		},
+		approavlgridview: {
+			caption: "见习期员工转正审核",
+      title: '见习期员工转正审核',
+		},
+		editview: {
+			caption: "见习生员工转正记录引用明细",
+      title: '见习生员工转正记录引用明细',
+		},
+		editview9: {
+			caption: "见习期员工转正",
+      title: '见习期员工转正',
+		},
+	},
+	main_form: {
+		details: {
+			group1: "详细信息", 
+			grouppanel1: "转正考核信息", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "见习生员工转正记录引用明细标识", 
+			srfmajortext: "见习生员工转正记录引用明细名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			pcmjxsygzzsqid: "见习生员工转正申请标识", 
+			pcmjxsygzzsqname: "标题", 
+			pcmjxszzkhjgjlid: "见习生员工转正考核结果记录标识", 
+			ygbh: "员工编号", 
+			pimpersonname: "员工姓名", 
+			zz: "组织", 
+			bm: "部门", 
+			zzgw: "转正岗位", 
+			rzqd: "入职渠道", 
+			istemp: "是否为临时数据", 
+			finished: "是否审核完成", 
+			checkstatus: "审核状态", 
+			pcmjxszzkhjgjlname: "考核结果", 
+			qssj: "到公司时间", 
+			jssj: "见习到期时间", 
+			fs: "分数", 
+			pj: "评价", 
+			pcmjxsygzzjlmxid: "见习生员工转正记录引用明细标识", 
+		},
+		uiactions: {
+		},
+	},
+	newdataform_form: {
+		details: {
+			group1: "详细信息", 
+			grouppanel1: "转正考核信息", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "见习生员工转正记录引用明细标识", 
+			srfmajortext: "见习生员工转正记录引用明细名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			pcmjxsygzzsqid: "见习生员工转正申请标识", 
+			pcmjxsygzzsqname: "标题", 
+			pcmjxszzkhjgjlid: "见习生员工转正考核结果记录标识", 
+			ygbh: "员工编号", 
+			pimpersonname: "员工姓名", 
+			zz: "组织", 
+			zzid: "组织ID", 
+			bm: "部门", 
+			bmid: "部门ID", 
+			zzgw: "转正岗位", 
+			rzqd: "入职渠道", 
+			istemp: "是否为临时数据", 
+			finished: "是否审核完成", 
+			checkstatus: "审核状态", 
+			pimpersonid: "人员信息标识", 
+			pcmjxszzkhjgjlname: "考核结果", 
+			qssj: "到公司时间", 
+			jssj: "见习到期时间", 
+			fs: "分数", 
+			pj: "评价", 
+			pcmjxsygzzjlmxid: "见习生员工转正记录引用明细标识", 
+		},
+		uiactions: {
+		},
+	},
+	main_grid: {
+		columns: {
+			uagridcolumn1: "操作",
+			ygbh: "员工编号",
+			pimpersonname: "员工姓名",
+			zz: "组织",
+			bm: "部门",
+			zzgw: "转正岗位",
+			duration: "见习期限（月）",
+			rzqd: "入职渠道",
+			jssj: "见习到期时间",
+			fs: "分数",
+			pj: "评价",
+			checkstatus: "审核状态",
+		},
+		uiactions: {
+			checkdetail: "查看",
+			remove: "Remove",
+		},
+	},
+	default_searchform: {
+		details: {
+			formpage1: "常规条件", 
+			n_pimpersonname_like: "员工姓名", 
+			n_ygbh_like: "员工编号", 
+			n_duration_eq: "见习期限（月）", 
+			n_checkstatus_eq: "审核状态", 
+		},
+		uiactions: {
+		},
+	},
+	editview9toolbar_toolbar: {
+		deuiaction1: {
+			caption: "关闭",
+			tip: "关闭",
+		},
+	},
+	sqtemplgridviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "New",
+			tip: "New",
+		},
+		tbitem8: {
+			caption: "Remove",
+			tip: "Remove {0}",
+		},
+		tbitem19: {
+			caption: "Filter",
+			tip: "Filter",
+		},
+		tbitem13: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
+		tbitem18: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	xzeditviewtoolbar_toolbar: {
+		deuiaction5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+		deuiaction1: {
+			caption: "退出",
+			tip: "退出",
+		},
+	},
+	zzjlgridviewtoolbar_toolbar: {
+		deuiaction1_remove: {
+			caption: "Remove",
+			tip: "Remove {0}",
+		},
+		deuiaction6: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
+		deuiaction2: {
+			caption: "Filter",
+			tip: "Filter",
+		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
+		},
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+		tbitem7: {
+			caption: "Remove And Close",
+			tip: "Remove And Close Window",
+		},
+		tbitem22: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	ckeditviewtoolbar_toolbar: {
+		deuiaction1: {
+			caption: "退出",
+			tip: "退出",
+		},
+	},
+	approavlgridviewtoolbar_toolbar: {
+		tbitem1_shtg: {
+			caption: "审核通过",
+			tip: "审核通过",
+		},
+		tbitem1_shbtg: {
+			caption: "审核不通过",
+			tip: "审核不通过",
+		},
+		tbitem19: {
+			caption: "Filter",
+			tip: "Filter",
+		},
+		tbitem18: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+};
