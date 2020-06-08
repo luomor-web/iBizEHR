@@ -9,7 +9,7 @@
     },
     "ehrportalview": {
         "title": "Ehr门户首页",
-        "caption": "门户首页",
+        "caption": "首页",
         "viewtype": "APPPORTALVIEW",
         "viewmodule": "Portal",
         "viewname": "EhrPortalView",

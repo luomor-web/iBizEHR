@@ -17,7 +17,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "ehrportalview": {
             "title": "Ehr门户首页",
-            "caption": "门户首页",
+            "caption": "首页",
             "viewtype": "APPPORTALVIEW",
             "viewmodule": "Portal",
             "viewname": "EhrPortalView",

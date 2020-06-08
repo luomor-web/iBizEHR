@@ -56,8 +56,8 @@ export default {
                 title: 'iBizEHR',
             },
             ehrportalview: {
-                caption: '门户首页',
-                title: '门户首页',
+                caption: '首页',
+                title: '首页',
             },
         },
         utilview:{
@@ -67,11 +67,11 @@ export default {
         },
         menus: {
             index: {
-                menuitem6: '门户首页',
+                menuitem6: '首页',
                 menuitem1: '组织管理',
                 menuitem2: '基础管理',
                 menuitem3: '招聘管理',
-                menuitem4: '人员异动管理',
+                menuitem4: '人员异动',
                 menuitem5: '假勤管理',
             },
         },
