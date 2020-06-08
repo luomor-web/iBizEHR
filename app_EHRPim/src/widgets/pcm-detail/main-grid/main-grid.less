@@ -1,0 +1,101 @@
+.grid {
+    flex-grow: 1;
+    height: 100%;
+    overflow: auto;
+    .el-table__body-wrapper::-webkit-scrollbar {
+      /*滚动条整体样式*/
+      width : 10px !important;  /*高宽分别对应横竖滚动条的尺寸*/
+      height: 10px !important;
+    }
+    .el-table__body-wrapper::-webkit-scrollbar-thumb {
+      /*滚动条颜色*/
+      border-radius   : 10px !important;
+      background-color: #cecece !important;
+    }
+    .el-table__body-wrapper::-webkit-scrollbar-track {
+      /*滚动条里面轨道*/
+      box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2) !important;
+      background   : #ededed !important;
+      border-radius: 10px !important;
+    }
+    /*表格文字过长省略*/
+    .el-table th>.cell, .el-table td>.cell{
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      word-break: break-all;
+    }
+    .el-table-column--selection .cell {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .app-column-link, .app-format-data{
+      display: inline;
+    }
+    .el-table {
+      .quick-toolbar{
+          display: inline-block;
+          button{
+            background: #ebf3fb;
+            color: #2575ca;
+            border: 0;
+        }
+      }
+      .el-tooltip{
+        .ivu-form-item{
+          margin-bottom: unset !important;
+        }
+      }
+    }
+    .grid-pagination {
+        height: 36px;
+        padding: 2px 0px;
+        button{
+          height: 22px;
+        }
+        span,.ivu-page-prev,.ivu-page-item,.ivu-page-next,.ivu-select-selection,.ivu-page-options-elevator,.ivu-page-options-elevator input,.ivu-select-selected-value{
+          height: 22px;
+          line-height: 22px;
+        }
+        .page-button {
+            button  {
+                padding: 0;
+                font-size: 14px;
+                width: 22px;
+                margin-right: 4px;
+            }
+        }
+        .page-column {
+            position: absolute;
+            left: 0;
+        }
+        .batch-toolbar{
+            position: absolute;
+            left: 105px;
+          >.toolbar-container{
+              button  {
+                  font-size: 16px;
+                  min-width: 32px;
+                  height: 32px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                  margin-bottom: 0;
+              }
+          }
+        }
+    }
+    .el-table__body-wrapper{
+      height: calc(100% - 60px) !important;
+    }
+}
+.ivu-modal-content{
+    .footer{
+        .ivu-row{
+            text-align: right;
+        }
+    }
+}
+
+
+
+// this is less

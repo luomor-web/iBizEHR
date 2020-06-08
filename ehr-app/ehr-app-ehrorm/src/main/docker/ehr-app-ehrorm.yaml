@@ -3,12 +3,12 @@ services:
   ehr-app-ehrorm:
     image: registry.cn-shanghai.aliyuncs.com/ibizsys/ehr-app-ehrorm:latest
     ports:
-      - "6093:6093"
+      - "6092:6092"
     networks:
       - agent_network
     environment:
       - SPRING_CLOUD_NACOS_DISCOVERY_IP=172.16.240.110
-      - SERVER_PORT=6093
+      - SERVER_PORT=6092
       - SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR=172.16.240.110:8848
       - SPRING_REDIS_HOST=172.16.100.243
       - SPRING_REDIS_PORT=6379
