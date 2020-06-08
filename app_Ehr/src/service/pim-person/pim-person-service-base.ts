@@ -65,36 +65,6 @@ export default class PimPersonServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let pimeducationsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimeducations'),'undefined')){
-            pimeducationsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimeducations') as any);
-            if(pimeducationsData && pimeducationsData.length && pimeducationsData.length > 0){
-                pimeducationsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pimeducationid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pimeducations = pimeducationsData;
-        let pimvocationalsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimvocationals'),'undefined')){
-            pimvocationalsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimvocationals') as any);
-            if(pimvocationalsData && pimvocationalsData.length && pimvocationalsData.length > 0){
-                pimvocationalsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pimvocationalid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pimvocationals = pimvocationalsData;
         let pimtitlesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimtitles'),'undefined')){
             pimtitlesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimtitles') as any);
@@ -110,11 +80,41 @@ export default class PimPersonServiceBase extends EntityService {
             }
         }
         masterData.pimtitles = pimtitlesData;
+        let pimvocationalsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimvocationals'),'undefined')){
+            pimvocationalsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimvocationals') as any);
+            if(pimvocationalsData && pimvocationalsData.length && pimvocationalsData.length > 0){
+                pimvocationalsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pimvocationalid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimvocationals = pimvocationalsData;
+        let pimeducationsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimeducations'),'undefined')){
+            pimeducationsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimeducations') as any);
+            if(pimeducationsData && pimeducationsData.length && pimeducationsData.length > 0){
+                pimeducationsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pimeducationid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimeducations = pimeducationsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/pimpeople/${context.pimperson}`,data,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_pimeducations',JSON.stringify(res.data.pimeducations));
-            this.tempStorage.setItem(context.srfsessionkey+'_pimvocationals',JSON.stringify(res.data.pimvocationals));
             this.tempStorage.setItem(context.srfsessionkey+'_pimtitles',JSON.stringify(res.data.pimtitles));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimvocationals',JSON.stringify(res.data.pimvocationals));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimeducations',JSON.stringify(res.data.pimeducations));
             return res;
     }
 
@@ -155,9 +155,9 @@ export default class PimPersonServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/pimpeople/${context.pimperson}`,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_pimeducations',JSON.stringify(res.data.pimeducations));
-            this.tempStorage.setItem(context.srfsessionkey+'_pimvocationals',JSON.stringify(res.data.pimvocationals));
             this.tempStorage.setItem(context.srfsessionkey+'_pimtitles',JSON.stringify(res.data.pimtitles));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimvocationals',JSON.stringify(res.data.pimvocationals));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimeducations',JSON.stringify(res.data.pimeducations));
             return res;
 
     }
@@ -199,36 +199,6 @@ export default class PimPersonServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let pimeducationsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimeducations'),'undefined')){
-            pimeducationsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimeducations') as any);
-            if(pimeducationsData && pimeducationsData.length && pimeducationsData.length > 0){
-                pimeducationsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pimeducationid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pimeducations = pimeducationsData;
-        let pimvocationalsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimvocationals'),'undefined')){
-            pimvocationalsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimvocationals') as any);
-            if(pimvocationalsData && pimvocationalsData.length && pimvocationalsData.length > 0){
-                pimvocationalsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pimvocationalid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pimvocationals = pimvocationalsData;
         let pimtitlesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimtitles'),'undefined')){
             pimtitlesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimtitles') as any);
@@ -244,6 +214,36 @@ export default class PimPersonServiceBase extends EntityService {
             }
         }
         masterData.pimtitles = pimtitlesData;
+        let pimvocationalsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimvocationals'),'undefined')){
+            pimvocationalsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimvocationals') as any);
+            if(pimvocationalsData && pimvocationalsData.length && pimvocationalsData.length > 0){
+                pimvocationalsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pimvocationalid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimvocationals = pimvocationalsData;
+        let pimeducationsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimeducations'),'undefined')){
+            pimeducationsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimeducations') as any);
+            if(pimeducationsData && pimeducationsData.length && pimeducationsData.length > 0){
+                pimeducationsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pimeducationid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimeducations = pimeducationsData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -253,9 +253,9 @@ export default class PimPersonServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/pimpeople`,data,isloading);
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_pimeducations',JSON.stringify(res.data.pimeducations));
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_pimvocationals',JSON.stringify(res.data.pimvocationals));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_pimtitles',JSON.stringify(res.data.pimtitles));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_pimvocationals',JSON.stringify(res.data.pimvocationals));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_pimeducations',JSON.stringify(res.data.pimeducations));
         return res;
     }
 
@@ -270,36 +270,6 @@ export default class PimPersonServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let pimeducationsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimeducations'),'undefined')){
-            pimeducationsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimeducations') as any);
-            if(pimeducationsData && pimeducationsData.length && pimeducationsData.length > 0){
-                pimeducationsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pimeducationid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pimeducations = pimeducationsData;
-        let pimvocationalsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimvocationals'),'undefined')){
-            pimvocationalsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimvocationals') as any);
-            if(pimvocationalsData && pimvocationalsData.length && pimvocationalsData.length > 0){
-                pimvocationalsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.pimvocationalid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pimvocationals = pimvocationalsData;
         let pimtitlesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimtitles'),'undefined')){
             pimtitlesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimtitles') as any);
@@ -315,11 +285,41 @@ export default class PimPersonServiceBase extends EntityService {
             }
         }
         masterData.pimtitles = pimtitlesData;
+        let pimvocationalsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimvocationals'),'undefined')){
+            pimvocationalsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimvocationals') as any);
+            if(pimvocationalsData && pimvocationalsData.length && pimvocationalsData.length > 0){
+                pimvocationalsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pimvocationalid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimvocationals = pimvocationalsData;
+        let pimeducationsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimeducations'),'undefined')){
+            pimeducationsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimeducations') as any);
+            if(pimeducationsData && pimeducationsData.length && pimeducationsData.length > 0){
+                pimeducationsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.pimeducationid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimeducations = pimeducationsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/pimpeople/${context.pimperson}/save`,data,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_pimeducations',JSON.stringify(res.data.pimeducations));
-            this.tempStorage.setItem(context.srfsessionkey+'_pimvocationals',JSON.stringify(res.data.pimvocationals));
             this.tempStorage.setItem(context.srfsessionkey+'_pimtitles',JSON.stringify(res.data.pimtitles));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimvocationals',JSON.stringify(res.data.pimvocationals));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimeducations',JSON.stringify(res.data.pimeducations));
             return res;
     }
 
@@ -403,9 +403,9 @@ export default class PimPersonServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/pimpeople/getdraft`,isloading);
         res.data.pimperson = data.pimperson;
-            this.tempStorage.setItem(context.srfsessionkey+'_pimeducations',JSON.stringify(res.data.pimeducations));
-            this.tempStorage.setItem(context.srfsessionkey+'_pimvocationals',JSON.stringify(res.data.pimvocationals));
             this.tempStorage.setItem(context.srfsessionkey+'_pimtitles',JSON.stringify(res.data.pimtitles));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimvocationals',JSON.stringify(res.data.pimvocationals));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimeducations',JSON.stringify(res.data.pimeducations));
         return res;
     }
 
