@@ -253,7 +253,7 @@ export default class EhrPortalView_dbBase extends Vue implements ControlInterfac
      * @type {string}
      * @memberof EhrPortalView_db
      */
-    public utilServiceName:string = "";
+    public utilServiceName:string = "dynadashboard";
 
     /**
      * 获取多项数据

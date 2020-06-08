@@ -13,7 +13,7 @@
                 :viewState="viewState"  
                 :viewparams="viewparams" 
                 :context="JSON.parse(JSON.stringify(context))" 
-                :isEnableCustomized = "false"
+                :isEnableCustomized = "true"
                 name="dashboard"  
                 ref='dashboard' 
                 @closeview="closeView($event)">

@@ -1,4 +1,11 @@
 export default {
+    EhrCodeList0083: {
+          '1': '局机关',
+          '2': '二级单位',
+          '3': '地区机关',
+          '4': '项目人员',
+        empty: '',
+    },
     EhrCodeList0211: {
         empty: '',
     },
