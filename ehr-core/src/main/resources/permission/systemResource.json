@@ -1185,14 +1185,6 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
-    "dename":"PcmBdsqd",
-    "delogicname":"变动申请单（停用）",
-    "sysmoudle":{"id":"PCM","name":"配置管理"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
     "dename":"PcmXkml",
     "delogicname":"学科目录",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
@@ -2519,14 +2511,6 @@
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
-     }
-    ,    {
-    "dename":"PcmBdsqdmx",
-    "delogicname":"职级变动明细",
-    "sysmoudle":{"id":"PCM","name":"配置管理"},
-    "dedataset":[{"id":"JPSQMX" , "name":"解聘申请（未审核）"},{"id":"NTSQMX" , "name":"内退申请明细（未审核）"},{"id":"NTSQMXGR" , "name":"内退申请明细（个人）"},{"id":"TXSQMX" , "name":"退休申请明细（未审核）"},{"id":"GZSQMX" , "name":"挂职申请明细（未审核）"},{"id":"ZJBDSQMX" , "name":"职级变动申请明细"},{"id":"DGSQMX" , "name":"待岗申请明细"},{"id":"CQBXSQMXDS" , "name":"长期病休申请明细"},{"id":"LZSQMX" , "name":"离职申请明细"},{"id":"LZSQMXGR" , "name":"离职申请明细（个人）"},{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"ZJJSDMB" , "name":"职级晋升代码表" , "type":"DELOGIC" },{"id":"CQBXCZ" , "name":"长期病休操作" , "type":"USERCUSTOM" },{"id":"SXJSDMB" , "name":"SXJSDMB" , "type":"DELOGIC" },{"id":"PDZJ" , "name":"判断职级" , "type":"USERCUSTOM" },{"id":"SXJSDMB2" , "name":"刷新代码表" , "type":"DELOGIC" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"ZZSQ" , "name":"自助申请" , "type":"USERCUSTOM" },{"id":"SXDMB" , "name":"职级降职代码表" , "type":"DELOGIC" },{"id":"DGCZ" , "name":"待岗操作" , "type":"USERCUSTOM" },{"id":"SetPersonInfo" , "name":"设置人员相关信息" , "type":"DELOGIC" },{"id":"GZCZ" , "name":"挂职操作" , "type":"USERCUSTOM" },{"id":"JPCZ" , "name":"解聘操作" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"LZCZ" , "name":"离职操作" , "type":"USERCUSTOM" },{"id":"NTCZ" , "name":"内退操作" , "type":"USERCUSTOM" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"SHBTG" , "name":"审核不通过" , "type":"USERCUSTOM" },{"id":"ZJBDCZ" , "name":"职级变动操作" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"TXCZ" , "name":"退休操作" , "type":"USERCUSTOM" },{"id":"JZJJSDMB" , "name":"局职级晋升代码表" , "type":"DELOGIC" },{"id":"SHTG" , "name":"审核通过" , "type":"USERCUSTOM" }],
-    "datascope":[{"id":"all","name":"全部数据"}, {"id":"curorg","name":"当前单位"},{"id":"porg","name":"上级单位"},{"id":"sorg","name":"下级单位"} , {"id":"curorgdept","name":"当前部门"},{"id":"porgdept","name":"上级部门"},{"id":"sorgdept","name":"下级部门"} , {"id":"createman","name":"创建人"}]
      }
     ,    {
     "dename":"PcmJxsygzzjlmx",
