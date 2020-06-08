@@ -43,7 +43,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/diaodongguanli.png',
 	textcls: '',
-	appfunctag: '_7',
+	appfunctag: 'Auto29',
 	resourcetag: '',
 },
 		{
@@ -61,7 +61,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/jiediaoguanli.png',
 	textcls: '',
-	appfunctag: '_5',
+	appfunctag: 'Auto25',
 	resourcetag: '',
 },
 		{
@@ -79,7 +79,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/jianzhijilu.png',
 	textcls: '',
-	appfunctag: '_6',
+	appfunctag: 'Auto28',
 	resourcetag: '',
 },
 		{
@@ -97,7 +97,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/daigangguanli.png',
 	textcls: '',
-	appfunctag: '_4',
+	appfunctag: 'Auto23',
 	resourcetag: '',
 },
 		{
@@ -115,7 +115,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/neituiguanli.png',
 	textcls: '',
-	appfunctag: '_8',
+	appfunctag: 'Auto30',
 	resourcetag: '',
 },
 		{
@@ -133,7 +133,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/newimage/1/xiujiaguanli.png',
 	textcls: '',
-	appfunctag: '_9',
+	appfunctag: 'Auto37',
 	resourcetag: '',
 },
 		{
@@ -151,7 +151,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/lizhiguanli.png',
 	textcls: '',
-	appfunctag: '_3',
+	appfunctag: 'Auto20',
 	resourcetag: '',
 },
 		{
@@ -169,7 +169,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/jiepinguanli.png',
 	textcls: '',
-	appfunctag: '_14',
+	appfunctag: 'Auto46',
 	resourcetag: '',
 },
 		{
@@ -187,7 +187,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/tuixiuguanli.png',
 	textcls: '',
-	appfunctag: '_13',
+	appfunctag: 'Auto44',
 	resourcetag: '',
 },
 	],
@@ -225,7 +225,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/shiyongqiguanli.png',
 	textcls: '',
-	appfunctag: '_11',
+	appfunctag: 'Auto39',
 	resourcetag: '',
 },
 		{
@@ -243,7 +243,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/zzgl/1/xiangmububianzhi.png',
 	textcls: '',
-	appfunctag: '_12',
+	appfunctag: 'Auto41',
 	resourcetag: '',
 },
 	],
@@ -281,7 +281,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/jianxiqiguanli.png',
 	textcls: '',
-	appfunctag: '_10',
+	appfunctag: 'Auto38',
 	resourcetag: '',
 },
 		{
@@ -299,7 +299,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/zzgl/1/xiangmurenyuanxuqiu.png',
 	textcls: '',
-	appfunctag: '_2',
+	appfunctag: 'Auto19',
 	resourcetag: '',
 },
 	],
