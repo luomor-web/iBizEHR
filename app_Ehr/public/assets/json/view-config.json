@@ -1,0 +1,10 @@
+{
+    "index": {
+        "title": "应用首页视图",
+        "caption": "EHR",
+        "viewtype": "APPINDEXVIEW",
+        "viewmodule": "Ungroup",
+        "viewname": "Index",
+        "viewtag": "65C2C358-B688-40A1-B818-47C79CEB16B5"
+    }
+}
