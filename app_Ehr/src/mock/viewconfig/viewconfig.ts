@@ -9,7 +9,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
     return [status,{
                 "index": {
             "title": "应用首页视图",
-            "caption": "EHR",
+            "caption": "iBizEHR",
             "viewtype": "APPINDEXVIEW",
             "viewmodule": "Ungroup",
             "viewname": "Index",

@@ -46,8 +46,8 @@ export default {
         // 非实体视图
         views: {
             index: {
-                caption: 'EHR',
-                title: 'EHR',
+                caption: 'iBizEHR',
+                title: 'iBizEHR',
             },
         },
         utilview:{

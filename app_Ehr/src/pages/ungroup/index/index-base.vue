@@ -30,7 +30,7 @@ export default class IndexBase extends IndexViewBase {
     public model: any = {
         srfTitle: '应用首页视图',
         srfCaption: 'app.views.index.caption',
-        srfSubCaption: 'EHR',
+        srfSubCaption: 'iBizEHR',
         dataInfo: ''
     }
 
