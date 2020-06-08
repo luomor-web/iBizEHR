@@ -39,8 +39,14 @@ export class UIServiceRegister {
      * @memberof UIServiceRegister
      */
     protected init(): void {
-                this.allUIService.set('dynachart', () => import('@/uiservice/dyna-chart/dyna-chart-ui-service'));
+                this.allUIService.set('pimtitle', () => import('@/uiservice/pim-title/pim-title-ui-service'));
+        this.allUIService.set('pimeducation', () => import('@/uiservice/pim-education/pim-education-ui-service'));
+        this.allUIService.set('pimperson', () => import('@/uiservice/pim-person/pim-person-ui-service'));
+        this.allUIService.set('ormorg', () => import('@/uiservice/orm-org/orm-org-ui-service'));
+        this.allUIService.set('pimoutput', () => import('@/uiservice/pim-output/pim-output-ui-service'));
+        this.allUIService.set('dynachart', () => import('@/uiservice/dyna-chart/dyna-chart-ui-service'));
         this.allUIService.set('dynadashboard', () => import('@/uiservice/dyna-dashboard/dyna-dashboard-ui-service'));
+        this.allUIService.set('pimvocational', () => import('@/uiservice/pim-vocational/pim-vocational-ui-service'));
     }
 
     /**

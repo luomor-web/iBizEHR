@@ -15,6 +15,25 @@ export default class IndexModel {
      */
     public items: any[] = [
         {
+	id: '0F92CD84-D833-41BE-93CD-BA1A1225469E',
+	name: 'menuitem6',
+	text: '门户首页',
+	type: 'MENUITEM',
+	counterid: '',
+	tooltip: '门户首页',
+	expanded: false,
+	separator: false,
+	hidden: false,
+	hidesidebar: false,
+	opendefault: false,
+	iconcls: 'desktop',
+	icon: '',
+	textcls: '',
+	appfunctag: 'EhrPortal',
+	resourcetag: '',
+	authtag:'Ehr-Index-menuitem6',
+},
+        {
 	id: '32A14A67-DCE3-4FFF-AE07-CFAF9BAA9956',
 	name: 'menuitem1',
 	text: '组织管理',
@@ -27,7 +46,7 @@ export default class IndexModel {
 	hidesidebar: false,
 	opendefault: false,
 	iconcls: '',
-	icon: '../../../img/zzgl/1/zuzhiguanli.png',
+	icon: '../../../img/jcgl/1/hetongguanli.png',
 	textcls: '',
 	appfunctag: 'EHROrm',
 	resourcetag: '',
@@ -126,6 +145,17 @@ export default class IndexModel {
         {
             appfunctag: 'EHRPcm',
             appfuncyype: 'OPENHTMLPAGE',
+        },
+        {
+            appfunctag: 'EhrPortal',
+            appfuncyype: 'APPVIEW',
+            openmode: '',
+            codename: 'ehrportalview',
+            deResParameters: [],
+            routepath: '/index/:index?/ehrportalview/:ehrportalview?',
+            parameters: [
+                { pathName: 'ehrportalview', parameterName: 'ehrportalview' },
+            ],
         },
         {
             appfunctag: 'EHRPcm2',

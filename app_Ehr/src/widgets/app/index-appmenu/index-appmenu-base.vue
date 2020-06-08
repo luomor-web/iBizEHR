@@ -68,6 +68,9 @@ export default class IndexBase extends AppMenusCtrlBase {
                 case 'EHRPcm': 
                     this.clickEHRPcm(item);
                     return;
+                case 'EhrPortal': 
+                    this.clickEhrPortal(item);
+                    return;
                 case 'EHRPcm2': 
                     this.clickEHRPcm2(item);
                     return;
@@ -103,6 +106,23 @@ export default class IndexBase extends AppMenusCtrlBase {
        const localdata: any = this.$store.getters.getLocalData();
        const url = `http://172.16.240.110:6093/#/index`;
        window.open(url, '_blank');
+    }
+    
+    /**
+     * Ehr门户首页
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public clickEhrPortal(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'ehrportalview', parameterName: 'ehrportalview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
     }
     /**
      * 人员异动管理

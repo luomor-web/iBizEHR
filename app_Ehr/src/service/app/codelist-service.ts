@@ -1,3 +1,5 @@
+import EhrCodeList0211 from '@/codelist/ehr-code-list0211';   
+import EhrCodeList0024 from '@/codelist/ehr-code-list0024';   
 import { Store } from 'vuex';
 
 /**
@@ -48,6 +50,22 @@ export default class CodeListService {
      */
     public static codelistCached:Map<string,any> = new Map();
 
+
+    /**
+     * 代码表--二级组织(图表)
+     *
+     * @type {EhrCodeList0211}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0211: EhrCodeList0211 = new EhrCodeList0211();
+
+    /**
+     * 代码表--职称等级
+     *
+     * @type {EhrCodeList0024}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0024: EhrCodeList0024 = new EhrCodeList0024();
 
     /**
      * 获取动态代码表

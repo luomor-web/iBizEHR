@@ -34,9 +34,32 @@ const router = new Router({
             },
             component: () => import('@pages/ungroup/index/index.vue'),
             children: [
+                {
+                    path: 'ehrportalview/:ehrportalview?',
+                    meta: {
+                        caption: 'app.views.ehrportalview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ehrportalview', parameterName: 'ehrportalview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/portal/ehr-portal-view/ehr-portal-view.vue'),
+                },
             ...indexRoutes,
             ],
         },
+    {
+        path: '/ehrportalview/:ehrportalview?',
+        meta: {
+            caption: 'app.views.ehrportalview.caption',
+            parameters: [
+                { pathName: 'ehrportalview', parameterName: 'ehrportalview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/portal/ehr-portal-view/ehr-portal-view.vue'),
+    },
         ...globalRoutes,
         {
             path: '/login/:login?',

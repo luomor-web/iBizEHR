@@ -1,5 +1,11 @@
+import pimtitle_en_US from '@locale/lanres/entities/pim-title/pim-title_en_US';
+import pimeducation_en_US from '@locale/lanres/entities/pim-education/pim-education_en_US';
+import pimperson_en_US from '@locale/lanres/entities/pim-person/pim-person_en_US';
+import ormorg_en_US from '@locale/lanres/entities/orm-org/orm-org_en_US';
+import pimoutput_en_US from '@locale/lanres/entities/pim-output/pim-output_en_US';
 import dynachart_en_US from '@locale/lanres/entities/dyna-chart/dyna-chart_en_US';
 import dynadashboard_en_US from '@locale/lanres/entities/dyna-dashboard/dyna-dashboard_en_US';
+import pimvocational_en_US from '@locale/lanres/entities/pim-vocational/pim-vocational_en_US';
 import components_en_US from '@locale/lanres/components/components_en_US';
 import codelist_en_US from '@locale/lanres/codelist/codelist_en_US';
 import userCustom_en_US from '@locale/lanres/userCustom/userCustom_en_US';
@@ -49,6 +55,10 @@ export default {
                 caption: 'iBizEHR',
                 title: 'iBizEHR',
             },
+            ehrportalview: {
+                caption: '门户首页',
+                title: '门户首页',
+            },
         },
         utilview:{
             importview:"Import Data",
@@ -57,6 +67,7 @@ export default {
         },
         menus: {
             index: {
+                menuitem6: '门户首页',
                 menuitem1: '组织管理',
                 menuitem2: '基础管理',
                 menuitem3: '招聘管理',
@@ -66,8 +77,14 @@ export default {
         },
     },
     entities: {
+        pimtitle: pimtitle_en_US,
+        pimeducation: pimeducation_en_US,
+        pimperson: pimperson_en_US,
+        ormorg: ormorg_en_US,
+        pimoutput: pimoutput_en_US,
         dynachart: dynachart_en_US,
         dynadashboard: dynadashboard_en_US,
+        pimvocational: pimvocational_en_US,
     },
     components: components_en_US,
     codelist: codelist_en_US,

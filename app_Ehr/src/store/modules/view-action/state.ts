@@ -10,6 +10,16 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '7C5E0D47-0C7A-43F4-B137-CB4EC96FE1D6',
+            ],
+        },
+        {
+            viewtag: '7C5E0D47-0C7A-43F4-B137-CB4EC96FE1D6',
+            viewmodule: 'Portal',
+            viewname: 'EhrPortalView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
             ],
         },
     ],
