@@ -2804,7 +2804,7 @@
             {
                "appid":"Ehr",
                "appname":"EHR（门户）",
-               "appmenu":[]
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[] }]
             }
             ,
             {
