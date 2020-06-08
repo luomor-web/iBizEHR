@@ -260,7 +260,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "caption": "附件预览",
             "viewtype": "DECUSTOMVIEW",
             "viewmodule": "PIM",
-            "viewname": "PIMENCLOSUREFilePreViewCustomView",
+            "viewname": "PimEnclosureFilePreViewCustomView",
             "viewtag": "0f1f6848ec80f5ad6f5aa294769d22e2"
         },
         "pimarchivesrecordgridview": {

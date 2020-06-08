@@ -311,10 +311,6 @@ zuul:
       path: /pimachievements/**
       serviceId: ehr-webapi
       stripPrefix: false
-    pcmbdsqd:
-      path: /pcmbdsqds/**
-      serviceId: ehr-webapi
-      stripPrefix: false
     pcmxkml:
       path: /pcmxkmls/**
       serviceId: ehr-webapi
@@ -977,10 +973,6 @@ zuul:
       stripPrefix: false
     vacsituation:
       path: /vacsituations/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    pcmbdsqdmx:
-      path: /pcmbdsqdmxes/**
       serviceId: ehr-webapi
       stripPrefix: false
     pcmjxsygzzjlmx:
