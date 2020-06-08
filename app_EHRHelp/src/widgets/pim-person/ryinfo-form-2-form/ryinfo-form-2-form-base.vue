@@ -15,12 +15,6 @@
 </app-form-item>
 
 </div>
-<div v-show="detailsModel.pimpersonname.visible">
-    <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.pimpersonname"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.pimpersonname.disabled" type='text'  style=""></input-box>
-</app-form-item>
-
-</div>
 <div v-show="detailsModel.zjlx.visible">
     <app-form-item name='zjlx' :itemRules="this.rules.zjlx" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.zjlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zjlx.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list 
@@ -37,21 +31,9 @@
 </app-form-item>
 
 </div>
-<div v-show="detailsModel.zjhm.visible">
-    <app-form-item name='zjhm' :itemRules="this.rules.zjhm" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.zjhm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zjhm.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.zjhm"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.zjhm.disabled" type='text'  style=""></input-box>
-</app-form-item>
-
-</div>
 <div v-show="detailsModel.csrq.visible">
     <app-form-item name='csrq' :itemRules="this.rules.csrq" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.csrq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.csrq.error" :isEmptyCaption="false" labelPos="LEFT">
     <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.csrq" :disabled="detailsModel.csrq.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.csrq = val1 }"></date-picker>
-</app-form-item>
-
-</div>
-<div v-show="detailsModel.nj.visible">
-    <app-form-item name='nj' :itemRules="this.rules.nj" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.nj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.nj"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.nj.disabled" type='number'  style=""></input-box>
 </app-form-item>
 
 </div>
@@ -68,6 +50,32 @@
     codelistType='DYNAMIC'
     placeholder='请选择...' style="">
  </dropdown-list>
+</app-form-item>
+
+</div>
+    
+    </row>
+</app-form-group>
+
+</div>
+<div v-show="detailsModel.grouppanel2.visible">
+    <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel2.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.ryinfoform_2_form.details.grouppanel2')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <row>
+        <div v-show="detailsModel.pimpersonname.visible">
+    <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.pimpersonname"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.pimpersonname.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</div>
+<div v-show="detailsModel.nj.visible">
+    <app-form-item name='nj' :itemRules="this.rules.nj" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.nj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nj.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.nj"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.nj.disabled" type='number'  style=""></input-box>
+</app-form-item>
+
+</div>
+<div v-show="detailsModel.zjhm.visible">
+    <app-form-item name='zjhm' :itemRules="this.rules.zjhm" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.zjhm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zjhm.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.zjhm"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.zjhm.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
 </div>
@@ -109,7 +117,7 @@
 <div v-show="detailsModel.grouppanel8.visible">
     <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel8.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.ryinfoform_2_form.details.grouppanel8')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <div v-show="detailsModel.hyzk.visible">
+        <i-col v-show="detailsModel.hyzk.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hyzk' :itemRules="this.rules.hyzk" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.hyzk')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hyzk.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list 
     v-model="data.hyzk" 
@@ -124,8 +132,8 @@
  </dropdown-list>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.mz.visible">
+</i-col>
+<i-col v-show="detailsModel.mz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='mz' :itemRules="this.rules.mz" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.mz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.mz.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list 
     v-model="data.mz" 
@@ -140,8 +148,8 @@
  </dropdown-list>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.hklx.visible">
+</i-col>
+<i-col v-show="detailsModel.hklx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hklx' :itemRules="this.rules.hklx" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.hklx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hklx.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list 
     v-model="data.hklx" 
@@ -156,8 +164,8 @@
  </dropdown-list>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.jg.visible">
+</i-col>
+<i-col v-show="detailsModel.jg.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='jg' :itemRules="this.rules.jg" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.jg')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jg.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-autocomplete 
     :data="data"
@@ -177,8 +185,8 @@
 </app-autocomplete>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.hjszd.visible">
+</i-col>
+<i-col v-show="detailsModel.hjszd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hjszd' :itemRules="this.rules.hjszd" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.hjszd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hjszd.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list 
     v-model="data.hjszd" 
@@ -193,8 +201,8 @@
  </dropdown-list>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.hjdz.visible">
+</i-col>
+<i-col v-show="detailsModel.hjdz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hjdz' :itemRules="this.rules.hjdz" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.hjdz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hjdz.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-autocomplete 
     :data="data"
@@ -214,8 +222,8 @@
 </app-autocomplete>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.csd.visible">
+</i-col>
+<i-col v-show="detailsModel.csd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='csd' :itemRules="this.rules.csd" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.csd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.csd.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-autocomplete 
     :data="data"
@@ -235,8 +243,8 @@
 </app-autocomplete>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.postaladdress.visible">
+</i-col>
+<i-col v-show="detailsModel.postaladdress.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='postaladdress' :itemRules="this.rules.postaladdress" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.postaladdress')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.postaladdress.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-autocomplete 
     :data="data"
@@ -256,8 +264,8 @@
 </app-autocomplete>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.sfdszn.visible">
+</i-col>
+<i-col v-show="detailsModel.sfdszn.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='sfdszn' :itemRules="this.rules.sfdszn" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.sfdszn')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfdszn.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-radio-group 
   v-model="data.sfdszn"
@@ -273,13 +281,13 @@
 </app-radio-group>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.ahtc.visible">
+</i-col>
+<i-col v-show="detailsModel.ahtc.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ahtc' :itemRules="this.rules.ahtc" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.ahtc')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ahtc.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.ahtc"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.ahtc.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
-</div>
+</i-col>
     
     </row>
 </app-form-group>
@@ -293,7 +301,7 @@
 <div v-show="detailsModel.grouppanel6.visible">
     <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel6.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.ryinfoform_2_form.details.grouppanel6')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <div v-show="detailsModel.zzmm.visible">
+        <i-col v-show="detailsModel.zzmm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='zzmm' :itemRules="this.rules.zzmm" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.zzmm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zzmm.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list 
     v-model="data.zzmm" 
@@ -308,19 +316,19 @@
  </dropdown-list>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.rtsj.visible">
+</i-col>
+<i-col v-show="detailsModel.rtsj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='rtsj' :itemRules="this.rules.rtsj" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.rtsj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rtsj.error" :isEmptyCaption="false" labelPos="LEFT">
     <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.rtsj" :disabled="detailsModel.rtsj.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.rtsj = val1 }"></date-picker>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.rdsj.visible">
+</i-col>
+<i-col v-show="detailsModel.rdsj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='rdsj' :itemRules="this.rules.rdsj" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.rdsj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rdsj.error" :isEmptyCaption="false" labelPos="LEFT">
     <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.rdsj" :disabled="detailsModel.rdsj.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.rdsj = val1 }"></date-picker>
 </app-form-item>
 
-</div>
+</i-col>
     
     </row>
 </app-form-group>
@@ -329,7 +337,7 @@
 <div v-show="detailsModel.grouppanel5.visible">
     <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel5.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.ryinfoform_2_form.details.grouppanel5')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <div v-show="detailsModel.ygzt.visible">
+        <i-col v-show="detailsModel.ygzt.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ygzt' :itemRules="this.rules.ygzt" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.ygzt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygzt.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list 
     v-model="data.ygzt" 
@@ -344,8 +352,8 @@
  </dropdown-list>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.rzqd.visible">
+</i-col>
+<i-col v-show="detailsModel.rzqd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='rzqd' :itemRules="this.rules.rzqd" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.rzqd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rzqd.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list 
     v-model="data.rzqd" 
@@ -360,14 +368,14 @@
  </dropdown-list>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.rank.visible">
+</i-col>
+<i-col v-show="detailsModel.rank.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='rank' :itemRules="this.rules.rank" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.rank')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rank.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.rank"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.rank.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.zj.visible">
+</i-col>
+<i-col v-show="detailsModel.zj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='zj' :itemRules="this.rules.zj" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.zj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zj.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list 
     v-model="data.zj" 
@@ -382,31 +390,31 @@
  </dropdown-list>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.cjgzsj.visible">
+</i-col>
+<i-col v-show="detailsModel.cjgzsj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='cjgzsj' :itemRules="this.rules.cjgzsj" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.cjgzsj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.cjgzsj.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.cjgzsj"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.cjgzsj.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.tozjdate.visible">
+</i-col>
+<i-col v-show="detailsModel.tozjdate.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='tozjdate' :itemRules="this.rules.tozjdate" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.tozjdate')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.tozjdate.error" :isEmptyCaption="false" labelPos="LEFT">
     <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.tozjdate" :disabled="detailsModel.tozjdate.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.tozjdate = val1 }"></date-picker>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.dzjbjsj.visible">
+</i-col>
+<i-col v-show="detailsModel.dzjbjsj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='dzjbjsj' :itemRules="this.rules.dzjbjsj" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.dzjbjsj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dzjbjsj.error" :isEmptyCaption="false" labelPos="LEFT">
     <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.dzjbjsj" :disabled="detailsModel.dzjbjsj.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.dzjbjsj = val1 }"></date-picker>
 </app-form-item>
 
-</div>
-<div v-show="detailsModel.dbdwsj.visible">
+</i-col>
+<i-col v-show="detailsModel.dbdwsj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='dbdwsj' :itemRules="this.rules.dbdwsj" class='' :caption="$t('entities.pimperson.ryinfoform_2_form.details.dbdwsj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dbdwsj.error" :isEmptyCaption="false" labelPos="LEFT">
     <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.dbdwsj" :disabled="detailsModel.dbdwsj.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.dbdwsj = val1 }"></date-picker>
 </app-form-item>
 
-</div>
+</i-col>
     
     </row>
 </app-form-group>
@@ -719,18 +727,18 @@ export default class RYInfoForm_2Base extends Vue implements ControlInterface {
         srfdeid: null,
         srfsourcekey: null,
         srfip_ygbh: null,
-        srfip_pimpersonname: null,
         srfip_zjlx: null,
+        srfip_pimpersonname: null,
         srfip_zjhm: null,
         ygbh: null,
-        pimpersonname: null,
         zjlx: null,
-        zjhm: null,
         csrq: null,
-        nj: null,
         xb: null,
-        xx: null,
         jlss: null,
+        pimpersonname: null,
+        nj: null,
+        zjhm: null,
+        xx: null,
         zp: null,
         lxdh: null,
         dzyx: null,
@@ -855,13 +863,13 @@ export default class RYInfoForm_2Base extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
-        srfip_pimpersonname: [
+        srfip_zjlx: [
             { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
-        srfip_zjlx: [
+        srfip_pimpersonname: [
             { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: ' 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
@@ -879,23 +887,11 @@ export default class RYInfoForm_2Base extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '员工编号 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '员工编号 值不能为空', trigger: 'blur' },
         ],
-        pimpersonname: [
-            { type: 'string', message: '员工姓名 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '员工姓名 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '员工姓名 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '员工姓名 值不能为空', trigger: 'blur' },
-        ],
         zjlx: [
             { type: 'string', message: '证件类型 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '证件类型 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '证件类型 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '证件类型 值不能为空', trigger: 'blur' },
-        ],
-        zjhm: [
-            { type: 'string', message: '证件号码 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '证件号码 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '证件号码 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '证件号码 值不能为空', trigger: 'blur' },
         ],
         csrq: [
             { type: 'string', message: '出生日期 值必须为字符串类型', trigger: 'change' },
@@ -903,29 +899,41 @@ export default class RYInfoForm_2Base extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '出生日期 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '出生日期 值不能为空', trigger: 'blur' },
         ],
-        nj: [
-            { type: 'number', message: '年龄 值必须为数值类型', trigger: 'change' },
-            { type: 'number', message: '年龄 值必须为数值类型', trigger: 'blur' },
-            { required: false, type: 'number', message: '年龄 值不能为空', trigger: 'change' },
-            { required: false, type: 'number', message: '年龄 值不能为空', trigger: 'blur' },
-        ],
         xb: [
             { type: 'string', message: '性别 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '性别 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '性别 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '性别 值不能为空', trigger: 'blur' },
         ],
-        xx: [
-            { type: 'string', message: '血型 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '血型 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '血型 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '血型 值不能为空', trigger: 'blur' },
-        ],
         jlss: [
             { type: 'string', message: '记录所属 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '记录所属 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '记录所属 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '记录所属 值不能为空', trigger: 'blur' },
+        ],
+        pimpersonname: [
+            { type: 'string', message: '员工姓名 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '员工姓名 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '员工姓名 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '员工姓名 值不能为空', trigger: 'blur' },
+        ],
+        nj: [
+            { type: 'number', message: '年龄 值必须为数值类型', trigger: 'change' },
+            { type: 'number', message: '年龄 值必须为数值类型', trigger: 'blur' },
+            { required: false, type: 'number', message: '年龄 值不能为空', trigger: 'change' },
+            { required: false, type: 'number', message: '年龄 值不能为空', trigger: 'blur' },
+        ],
+        zjhm: [
+            { type: 'string', message: '证件号码 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '证件号码 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '证件号码 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '证件号码 值不能为空', trigger: 'blur' },
+        ],
+        xx: [
+            { type: 'string', message: '血型 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '血型 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '血型 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '血型 值不能为空', trigger: 'blur' },
         ],
         zp: [
             { type: 'string', message: '照片 值必须为字符串类型', trigger: 'change' },
@@ -1106,6 +1114,8 @@ export default class RYInfoForm_2Base extends Vue implements ControlInterface {
     public detailsModel: any = {
         grouppanel4: new FormGroupPanelModel({ caption: '', detailType: 'GROUPPANEL', name: 'grouppanel4', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pimperson.ryinfoform_2_form', extractMode: 'ITEM', details: [] } })
 , 
+        grouppanel2: new FormGroupPanelModel({ caption: '分组面板', detailType: 'GROUPPANEL', name: 'grouppanel2', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pimperson.ryinfoform_2_form', extractMode: 'ITEM', details: [] } })
+, 
         grouppanel3: new FormGroupPanelModel({ caption: '照片', detailType: 'GROUPPANEL', name: 'grouppanel3', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pimperson.ryinfoform_2_form', extractMode: 'ITEM', details: [] } })
 , 
         grouppanel8: new FormGroupPanelModel({ caption: '相关信息', detailType: 'GROUPPANEL', name: 'grouppanel8', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.pimperson.ryinfoform_2_form', extractMode: 'ITEM', details: [] } })
@@ -1136,29 +1146,29 @@ export default class RYInfoForm_2Base extends Vue implements ControlInterface {
 , 
         srfip_ygbh: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfip_ygbh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        srfip_pimpersonname: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfip_pimpersonname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
         srfip_zjlx: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfip_zjlx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        srfip_pimpersonname: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfip_pimpersonname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         srfip_zjhm: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfip_zjhm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         ygbh: new FormItemModel({ caption: '员工编号', detailType: 'FORMITEM', name: 'ygbh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        pimpersonname: new FormItemModel({ caption: '员工姓名', detailType: 'FORMITEM', name: 'pimpersonname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
         zjlx: new FormItemModel({ caption: '证件类型', detailType: 'FORMITEM', name: 'zjlx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        zjhm: new FormItemModel({ caption: '证件号码', detailType: 'FORMITEM', name: 'zjhm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
         csrq: new FormItemModel({ caption: '出生日期', detailType: 'FORMITEM', name: 'csrq', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        nj: new FormItemModel({ caption: '年龄', detailType: 'FORMITEM', name: 'nj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
         xb: new FormItemModel({ caption: '性别', detailType: 'FORMITEM', name: 'xb', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        xx: new FormItemModel({ caption: '血型', detailType: 'FORMITEM', name: 'xx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
         jlss: new FormItemModel({ caption: '记录所属', detailType: 'FORMITEM', name: 'jlss', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        pimpersonname: new FormItemModel({ caption: '员工姓名', detailType: 'FORMITEM', name: 'pimpersonname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        nj: new FormItemModel({ caption: '年龄', detailType: 'FORMITEM', name: 'nj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        zjhm: new FormItemModel({ caption: '证件号码', detailType: 'FORMITEM', name: 'zjhm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        xx: new FormItemModel({ caption: '血型', detailType: 'FORMITEM', name: 'xx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         zp: new FormItemModel({ caption: '照片', detailType: 'FORMITEM', name: 'zp', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -1327,18 +1337,6 @@ export default class RYInfoForm_2Base extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 srfip_pimpersonname 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm_2
-     */
-    @Watch('data.srfip_pimpersonname')
-    onSrfip_pimpersonnameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'srfip_pimpersonname', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 srfip_zjlx 值
      *
      * @param {*} newVal
@@ -1348,6 +1346,18 @@ export default class RYInfoForm_2Base extends Vue implements ControlInterface {
     @Watch('data.srfip_zjlx')
     onSrfip_zjlxChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'srfip_zjlx', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 srfip_pimpersonname 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof RYInfoForm_2
+     */
+    @Watch('data.srfip_pimpersonname')
+    onSrfip_pimpersonnameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'srfip_pimpersonname', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -1375,18 +1385,6 @@ export default class RYInfoForm_2Base extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 pimpersonname 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm_2
-     */
-    @Watch('data.pimpersonname')
-    onPimpersonnameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pimpersonname', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 zjlx 值
      *
      * @param {*} newVal
@@ -1396,18 +1394,6 @@ export default class RYInfoForm_2Base extends Vue implements ControlInterface {
     @Watch('data.zjlx')
     onZjlxChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'zjlx', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 zjhm 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm_2
-     */
-    @Watch('data.zjhm')
-    onZjhmChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'zjhm', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -1423,18 +1409,6 @@ export default class RYInfoForm_2Base extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 nj 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm_2
-     */
-    @Watch('data.nj')
-    onNjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'nj', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 xb 值
      *
      * @param {*} newVal
@@ -1447,18 +1421,6 @@ export default class RYInfoForm_2Base extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 xx 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof RYInfoForm_2
-     */
-    @Watch('data.xx')
-    onXxChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'xx', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 jlss 值
      *
      * @param {*} newVal
@@ -1468,6 +1430,54 @@ export default class RYInfoForm_2Base extends Vue implements ControlInterface {
     @Watch('data.jlss')
     onJlssChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'jlss', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 pimpersonname 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof RYInfoForm_2
+     */
+    @Watch('data.pimpersonname')
+    onPimpersonnameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'pimpersonname', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 nj 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof RYInfoForm_2
+     */
+    @Watch('data.nj')
+    onNjChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'nj', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 zjhm 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof RYInfoForm_2
+     */
+    @Watch('data.zjhm')
+    onZjhmChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'zjhm', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 xx 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof RYInfoForm_2
+     */
+    @Watch('data.xx')
+    onXxChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'xx', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -1865,8 +1875,6 @@ export default class RYInfoForm_2Base extends Vue implements ControlInterface {
 
 
 
-
-
         if (Object.is(name, '') || Object.is(name, 'zjlx')) {
             let ret = false;
             const _zjlx = this.data.zjlx;
@@ -1875,6 +1883,9 @@ export default class RYInfoForm_2Base extends Vue implements ControlInterface {
             }
             this.detailsModel.xb.setDisabled(!ret);
         }
+
+
+
 
 
 

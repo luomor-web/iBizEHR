@@ -59,10 +59,10 @@ export default class RYInfoForm_2Model {
         name: 'srfip_ygbh',
       },
       {
-        name: 'srfip_pimpersonname',
+        name: 'srfip_zjlx',
       },
       {
-        name: 'srfip_zjlx',
+        name: 'srfip_pimpersonname',
       },
       {
         name: 'srfip_zjhm',
@@ -73,19 +73,9 @@ export default class RYInfoForm_2Model {
         dataType: 'TEXT',
       },
       {
-        name: 'pimpersonname',
-        prop: 'pimpersonname',
-        dataType: 'TEXT',
-      },
-      {
         name: 'zjlx',
         prop: 'zjlx',
         dataType: 'SSCODELIST',
-      },
-      {
-        name: 'zjhm',
-        prop: 'zjhm',
-        dataType: 'TEXT',
       },
       {
         name: 'csrq',
@@ -93,24 +83,34 @@ export default class RYInfoForm_2Model {
         dataType: 'DATE',
       },
       {
-        name: 'nj',
-        prop: 'nj',
-        dataType: 'INT',
-      },
-      {
         name: 'xb',
         prop: 'xb',
-        dataType: 'SSCODELIST',
-      },
-      {
-        name: 'xx',
-        prop: 'xx',
         dataType: 'SSCODELIST',
       },
       {
         name: 'jlss',
         prop: 'jlss',
         dataType: 'TEXT',
+      },
+      {
+        name: 'pimpersonname',
+        prop: 'pimpersonname',
+        dataType: 'TEXT',
+      },
+      {
+        name: 'nj',
+        prop: 'nj',
+        dataType: 'INT',
+      },
+      {
+        name: 'zjhm',
+        prop: 'zjhm',
+        dataType: 'TEXT',
+      },
+      {
+        name: 'xx',
+        prop: 'xx',
+        dataType: 'SSCODELIST',
       },
       {
         name: 'zp',
