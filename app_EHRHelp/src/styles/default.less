@@ -1,0 +1,263 @@
+@import '../../node_modules/font-awesome/less/font-awesome.less';
+@import '../theme/blue.theme.less';
+@import '../theme/dark-blue.theme.less';
+@import '../theme/default.theme.less';
+@import './var.css';
+
+.view-container {
+
+    .view-header-left {
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        >.view-caption {
+            font-size: 18px;
+            font-weight: 900;
+            color: black;
+            height: 32px;
+            line-height: 32px;
+            white-space: nowrap;
+            font-family: AlibabaPuHuiTiB, "Alibaba PuHuiTi";
+        }
+    }
+
+    .view-header-right {
+        height: 100%;
+
+        >.app-header-menus {
+
+            >.ivu-btn {
+                padding: 0px 6px;
+            }
+        }
+    }
+
+    .view-content-wrapper {
+        height: 100%;
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 32px;
+        background-color: white;
+
+        >* {
+            width: 60%;
+        }
+
+        >.pickupviewpanel {
+            height: calc(100% - 64px);
+        }
+    }
+}
+
+.ivu-spin-fullscreen.ivu-spin-fullscreen-wrapper {
+    
+    >.ivu-spin.ivu-spin-large.ivu-spin-fix.ivu-spin-fullscreen {
+        background-color: rgba(255,255,255,0.3);
+    }
+}
+
+.view-container.default-mode-view {
+
+    .view-content-wrapper {
+        padding-top: 0px;
+
+        >* {
+            width: 100%;
+        }
+    }
+}
+
+.grid-row-select {
+    background-color: #ecf5ff !important;
+
+    td {
+        background-color: #ecf5ff !important;
+    }
+}
+
+/***    BRGIN:表单错误信息2    ***/
+.app-form-item-error-info {
+    display: flex;
+
+    .icon {
+        width: 30px;
+        flex-shrink: 0;
+    }
+
+    .contant {
+        flex-grow: 1;
+    }
+}
+
+/***    END:表单错误信息2    ***/
+
+/***    BRGIN:多数据视图属性布局    ***/
+.property-layout-left,
+.property-layout-right {
+    display: flex;
+    height: 100%;
+
+    >div {
+        height: 100%;
+    }
+
+    >div:nth-child(1) {
+        flex-grow: 1;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    >div:nth-child(2) {
+        flex-shrink: 0;
+    }
+}
+
+.property-layout-top,
+.property-layout-bottom {
+    display: flex;
+    height: 100%;
+
+    >div:nth-child(1) {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    >div:nth-child(2) {
+        flex-shrink: 0;
+    }
+}
+
+.property-layout-left {
+    flex-direction: row-reverse;
+
+    >div:nth-child(1) {
+        border-left: 1px solid #ddd;
+        padding-left: 16px;
+    }
+}
+
+.property-layout-right {
+    flex-direction: row;
+
+    >div:nth-child(1) {
+        border-right: 1px solid #ddd;
+        padding-right: 16px;
+    }
+}
+
+.property-layout-top {
+    flex-direction: column-reverse;
+
+    >div:nth-child(1) {
+        border-top: 1px solid #ddd;
+        padding-top: 16px;
+    }
+}
+
+.property-layout-bottom {
+    flex-direction: column;
+
+    >div:nth-child(1) {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 16px;
+    }
+}
+
+// 表单分组
+.app-form-group {
+
+    .ivu-card-head {
+
+        >p {
+            color: #304265;
+            font-weight: 600;
+        }
+    }
+
+    .ivu-form-item,
+    app-form-item {
+
+        .ivu-form-item-label {
+            color: #304265;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    }
+
+    .ivu-card-body {
+        padding: 8px;
+    }
+
+    .ivu-card-head {
+        padding: 7px 0px;
+    }
+
+}
+
+// 信息表单分组
+.app-form-group.app-info-group-mode {
+
+    .ivu-form-item.app-form-item {
+        margin-bottom: 0px;
+    }
+
+}
+
+/***    END:多数据视图属性布局    ***/
+
+// 看板视图，卡片模式
+// .view-container.appportalview,.view-container.deportalview,.view-container.deportalview9{
+//   >.view-card>.ivu-card-body>.content-container{
+//     background: #efefef;
+//   }
+//   .dashboard{
+//     padding: 8px;
+//   }
+//   .portlet-container{
+//     background: #efefef;
+//   }
+//   .portlet-container::after{
+//     content: "";
+//     clear: both;
+//   }
+//   .portlet{
+//     margin: 8px;
+//     height: calc(100% - 16px);
+//     width: calc(100% - 16px);
+//     background: #fff;
+//     border-radius: 4px;
+//     box-shadow: 0 1px 1px rgba(0,0,0,.05), 0 2px 6px 0 rgba(0,0,0,.045);
+//     border: 1px solid transparent;
+//     >.portlet-with-title{
+//       margin-bottom: 12px;
+//       height: calc(100% - 64px);
+//     }
+//     >.portlet-without-title{
+//       margin-top: 12px;
+//       margin-bottom: 12px;
+//       height: calc(100% - 24px);
+//     }
+//   }
+// }
+
+// // 看板视图，无缝模式
+// .view-container.appportalview.seamless-mode,.view-container.deportalview.seamless-mode,.view-container.deportalview9.seamless-mode{
+//   >.view-card>.ivu-card-body>.content-container{
+//     background: transparent;
+//   }
+//   .portlet-container{
+//     background: transparent;
+//   }
+//   .portlet{
+//     background: transparent;
+//   }
+// }
+
+@import './user.less';
