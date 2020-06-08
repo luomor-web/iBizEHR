@@ -1,0 +1,62 @@
+package cn.ibizlab.ehr.pcm.logic.pcmydmxlogic.fillpersoninfo;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pim.domain.PimPerson pcmydmxfillpersoninfopimperson;
+global cn.ibizlab.ehr.core.pcm.domain.PcmYdmx pcmydmxfillpersoninfodefault;
+global cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonservice;
+global cn.ibizlab.ehr.core.pcm.service.IPcmYdmxService iBzSysPcmydmxDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[填充人员信息]
+rule "prepareparam2"
+ruleflow-group "pcmydmxfillpersoninfoprepareparam2"
+    when
+    then
+    pcmydmxfillpersoninfodefault.set("csrq",pcmydmxfillpersoninfopimperson.get("csrq"));
+    pcmydmxfillpersoninfodefault.set("lxdh",pcmydmxfillpersoninfopimperson.get("lxdh"));
+    pcmydmxfillpersoninfodefault.set("nl",pcmydmxfillpersoninfopimperson.get("nl"));
+    pcmydmxfillpersoninfodefault.set("zzid",pcmydmxfillpersoninfopimperson.get("ormorgid"));
+    pcmydmxfillpersoninfodefault.set("zz",pcmydmxfillpersoninfopimperson.get("ormorgname"));
+    pcmydmxfillpersoninfodefault.set("bmid",pcmydmxfillpersoninfopimperson.get("ormorgsectorid"));
+    pcmydmxfillpersoninfodefault.set("bm",pcmydmxfillpersoninfopimperson.get("ormorgsectorname"));
+    pcmydmxfillpersoninfodefault.set("pimpersonname",pcmydmxfillpersoninfopimperson.get("pimpersonname"));
+    pcmydmxfillpersoninfodefault.set("ygbh",pcmydmxfillpersoninfopimperson.get("ygbh"));
+    pcmydmxfillpersoninfodefault.set("ygw",pcmydmxfillpersoninfopimperson.get("gw"));
+    pcmydmxfillpersoninfodefault.set("yrank",pcmydmxfillpersoninfopimperson.get("rank"));
+    pcmydmxfillpersoninfodefault.set("yzw",pcmydmxfillpersoninfopimperson.get("zw"));
+    pcmydmxfillpersoninfodefault.set("nj",pcmydmxfillpersoninfopimperson.get("nj"));
+    update(pcmydmxfillpersoninfopimperson);//更新fact中变量值
+    update(pcmydmxfillpersoninfodefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[设置人员id]
+rule "prepareparam1"
+ruleflow-group "pcmydmxfillpersoninfoprepareparam1"
+    when
+    then
+    pcmydmxfillpersoninfopimperson.set("pimpersonid",pcmydmxfillpersoninfodefault.get("pimpersonid"));
+    update(pcmydmxfillpersoninfopimperson);//更新fact中变量值
+    update(pcmydmxfillpersoninfodefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[获取人员信息]
+rule "deaction1"
+ruleflow-group "pcmydmxfillpersoninfodeaction1"
+    when
+    then
+    cn.ibizlab.ehr.util.helper.CachedBeanCopier.copy(pimpersonservice.get(pcmydmxfillpersoninfopimperson.getPimpersonid()),pcmydmxfillpersoninfopimperson);
+    update(pcmydmxfillpersoninfopimperson);//更新fact中变量值
+    update(pcmydmxfillpersoninfodefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pcmydmxfillpersoninfobegin"
+    when
+    then
+    end
+

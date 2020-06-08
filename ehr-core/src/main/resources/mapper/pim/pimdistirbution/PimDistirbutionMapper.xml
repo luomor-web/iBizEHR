@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PimDistirbutionMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PimDistirbutionResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  ) t1 where pimdistirbutionid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PimDistirbutionResultMap" type="cn.ibizlab.ehr.core.pim.domain.PimDistirbution" autoMapping="true">
+        <id property="pimdistirbutionid" column="pimdistirbutionid" /><!--主键字段映射-->
+		<result property="ybmid" column="ybmid" />
+		<result property="ormorgsectorid" column="ormorgsectorid" />
+		<result property="ormpostid1" column="ormpostid1" />
+		<result property="ormpostid" column="ormpostid" />
+		<result property="ormdutyid" column="ormdutyid" />
+		<result property="yzzid" column="yzzid" />
+		<result property="ormorgid" column="ormorgid" />
+		<result property="pimpersonid" column="pimpersonid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormduty" javaType="cn.ibizlab.ehr.core.orm.domain.OrmDuty" column="ormdutyid" select="cn.ibizlab.ehr.core.orm.mapper.OrmDutyMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorgsectorYbm" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="ybmid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorgYzz" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="yzzid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormpost" javaType="cn.ibizlab.ehr.core.orm.domain.OrmPost" column="ormpostid" select="cn.ibizlab.ehr.core.orm.mapper.OrmPostMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormpost1" javaType="cn.ibizlab.ehr.core.orm.domain.OrmPost" column="ormpostid1" select="cn.ibizlab.ehr.core.orm.mapper.OrmPostMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMDISTIRBUTION_ORMDUTY_ORMDUTYID] -->
+	 <select id="selectByOrmdutyid" resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormdutyid=#{ormdutyid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMDISTIRBUTION_ORMORGSECTOR_ORMORGSECTORID] -->
+	 <select id="selectByOrmorgsectorid" resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgsectorid=#{orgsectorid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMDISTIRBUTION_ORMORGSECTOR_YBMID] -->
+	 <select id="selectByYbmid" resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ybmid=#{orgsectorid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMDISTIRBUTION_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMDISTIRBUTION_ORMORG_YZZID] -->
+	 <select id="selectByYzzid" resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  yzzid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMDISTIRBUTION_ORMPOST_ORMPOSTID] -->
+	 <select id="selectByOrmpostid" resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormpostid=#{ormpostid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMDISTIRBUTION_ORMPOST_ORMPOSTID1] -->
+	 <select id="selectByOrmpostid1" resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormpostid1=#{ormpostid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMDISTIRBUTION_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[GBYXZFP]-->
+	 <select id="searchGBYXZFP"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="GBYXZFP" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[LGTX]-->
+	 <select id="searchLGTX"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="LGTX" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[ISOUTRECORD]-->
+	 <select id="searchISOUTRECORD"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="ISOUTRECORD" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[YDCFP]-->
+	 <select id="searchYDCFP"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="YDCFP" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[YXFP]-->
+	 <select id="searchYXFP"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="YXFP" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[ZPCJFP]-->
+	 <select id="searchZPCJFP"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="ZPCJFP" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[YDWQX]-->
+	 <select id="searchYDWQX"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="YDWQX" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[DQYXFP]-->
+	 <select id="searchDQYXFP"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="DQYXFP" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[JDRYHMC]-->
+	 <select id="searchJDRYHMC"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="JDDQHMC" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[JDDQ]-->
+	 <select id="searchJDDQ"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="JDDQHMC" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[EXPEREENCE]-->
+	 <select id="searchEXPEREENCE"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="EXPEREENCE" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[JLSS]-->
+	 <select id="searchJLSS"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="JLSS" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[ZIZHU]-->
+	 <select id="searchZIZHU"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="ZIZHU" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[DQFP]-->
+	 <select id="searchDQFP"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="DQFP" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[MobDefault]-->
+	 <select id="searchMobDefault"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="MobDefault" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[KDDYXZFP]-->
+	 <select id="searchKDDYXZFP"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimDistirbutionSearchContext"  resultMap="PimDistirbutionResultMap">
+         select t1.* from (
+                <include refid="KDDYXZFP" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( ( t1.`FPLX` IS NOT NULL  OR  t1.`RZKSSJ` IS NOT NULL  OR  t1.`RZJSSJ` IS NOT NULL  OR  t1.`RECORD` IS NOT NULL ) )
+			]]>
+    </sql>
+    <!--数据查询[DQFP]-->
+    <sql id="DQFP" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( ( t1.`FPLX` IS NOT NULL  OR  t1.`FPZT` IS NOT NULL ) )
+			]]>
+    </sql>
+    <!--数据查询[DQYXFP]-->
+    <sql id="DQYXFP" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`FPLX` IS NOT NULL  AND  ( t1.`FPZT` = 'YXFP'  OR  t1.`FPZT` = 'ZTFP' ) )
+			]]>
+    </sql>
+    <!--数据查询[EXPEREENCE]-->
+    <sql id="EXPEREENCE" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`EXPERIENCE` = 1 )
+			]]>
+    </sql>
+    <!--数据查询[GBYXZFP]-->
+    <sql id="GBYXZFP" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`FPLX` = 'ZFP'  AND  t1.`FPZT` = 'YXFP'  AND  t11.`YDZT` IS NULL  AND  t11.`YGZT` = '30'  AND  t11.RANK IN (select ORMRANKID from T_ORMRANK where ORMRANKNAME < 'D') )
+			]]>
+    </sql>
+    <!--数据查询[ISOUTRECORD]-->
+    <sql id="ISOUTRECORD" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`ISOUTRECORD` = 1 )
+			]]>
+    </sql>
+    <!--数据查询[JDCRY]-->
+    <sql id="JDCRY" databaseId="mysql">
+       <![CDATA[	
+			]]>
+    </sql>
+    <!--数据查询[JDDQHMC]-->
+    <sql id="JDDQHMC" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`FPLX` = 'CFP'  AND  t1.`CFPLX` = '10' )
+			]]>
+    </sql>
+    <!--数据查询[JLSS]-->
+    <sql id="JLSS" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`PIMPERSONID` =  #{srf.sessioncontext.srfpersonid}  AND  t1.`FPZT` = 'YXFP' )
+			]]>
+    </sql>
+    <!--数据查询[KDDYXZFP]-->
+    <sql id="KDDYXZFP" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`FPLX` = 'ZFP'  AND  t1.`FPZT` = 'YXFP'  AND  t11.`YDZT` IS NULL  AND  case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end = '10'  AND  (t11.RANK NOT IN (select ORMRANKID from T_ORMRANK where ORMRANKNAME < 'D') OR t11.RANK IS NULL) )
+			]]>
+    </sql>
+    <!--数据查询[LGTX]-->
+    <sql id="LGTX" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`FPLX` = 'ZFP'  AND  t21.`LGNX` IS NOT NULL )
+			]]>
+    </sql>
+    <!--数据查询[MobDefault]-->
+    <sql id="MobDefault" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[YDCFP]-->
+    <sql id="YDCFP" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`FPLX` = 'ZFP'  AND  t1.`FPZT` = 'YXFP'  AND  t11.`YDZT` = 'DC' )
+			]]>
+    </sql>
+    <!--数据查询[YDWQX]-->
+    <sql id="YDWQX" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[YXFP]-->
+    <sql id="YXFP" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`FPZT` = 'YXFP'  AND  t1.`FPLX` IS NOT NULL )
+			]]>
+    </sql>
+    <!--数据查询[ZIZHU]-->
+    <sql id="ZIZHU" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`PIMPERSONID` =  #{srf.sessioncontext.srfselfserviceid} )
+			]]>
+    </sql>
+    <!--数据查询[ZPCJFP]-->
+    <sql id="ZPCJFP" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CFPLX`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`EXPERIENCE`, t1.`FPLX`, t1.`FPZT`, t1.`GZDD`, t1.`GZDQ`, t1.`ISOUTRECORD`, case when FPZT='YXFP' and CFPLX='10' then '借调中' when FPZT='ZZFP' and CFPLX='10' then '借调结束' else ' ' end AS `JDZT`, t21.`LGNX`, t1.`LOGCONTENT`, timestampdiff(year,t11.`CSRQ`,sysdate()) AS `NJ`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t1.`ORMDUTYNAME`, t1.`ORMORGID`, t1.`ORMORGNAME`, t1.`ORMORGSECTORID`, t1.`ORMORGSECTORNAME`, t1.`ORMPOSTID`, t1.`ORMPOSTID1`, t1.`ORMPOSTNAME`, t71.`ORMPOSTNAME` AS `ORMPOSTNAME1`, t1.`PIMDISTIRBUTIONID`, t1.`PIMDISTIRBUTIONNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMWORKHISTORYID`, t1.`RANK`, t1.`RECORD`, t1.`RZJSSJ`, t1.`RZKSSJ`, t61.`SHORTNAME`, 20 AS `SSFW`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`XB`, t1.`YBM`, t1.`YBMID`, t31.`SHORTNAME` AS `YBMSHORTNAME`, t1.`YDMXID`, t11.`YDZT`, t1.`YGBH`, t1.`YGW`, t11.`YGZT`, t1.`YZW`, t1.`YZZ`, t1.`YZZID`, t41.`ZZDZS` AS `YZZZZDZS`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t51.`ZZDZS`, t11.`ZZMM` FROM `T_PIMDISTIRBUTION` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SRFORGSECTOR t31 ON t1.YBMID = t31.ORGSECTORID  LEFT JOIN T_SRFORG t41 ON t1.YZZID = t41.ORGID  LEFT JOIN T_SRFORG t51 ON t1.ORMORGID = t51.ORGID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_ORMPOST t71 ON t1.ORMPOSTID1 = t71.ORMPOSTID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`FPZT` IS NOT NULL  AND  t1.`FPLX` IS NOT NULL )
+			]]>
+    </sql>
+</mapper>
+

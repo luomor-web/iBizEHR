@@ -1,0 +1,27 @@
+package cn.ibizlab.ehr.pcm.logic.pcmydjdmxlogic.setnewzt;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pcm.domain.PcmYdjdmx pcmydjdmxsetnewztdefault;
+global cn.ibizlab.ehr.core.pcm.service.IPcmYdjdmxService iBzSysPcmydjdmxDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[设置参数]
+rule "prepareparam1"
+ruleflow-group "pcmydjdmxsetnewztprepareparam1"
+    when
+    then
+    pcmydjdmxsetnewztdefault.set("isfinished","1");
+    update(pcmydjdmxsetnewztdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pcmydjdmxsetnewztbegin"
+    when
+    then
+    end
+

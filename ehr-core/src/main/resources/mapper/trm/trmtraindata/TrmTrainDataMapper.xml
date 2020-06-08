@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TrmTrainDataMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TrmTrainDataResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CBS`, t1.`CJGS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`SFGC`, t1.`SFGX`, t1.`TRMTRAINAGENCYID`, t21.`TRMTRAINAGENCYNAME`, t1.`TRMTRAINDATAID`, t1.`TRMTRAINDATANAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XYSL`, t1.`YYSL`, t1.`ZLBM`, t1.`ZLLB`, t1.`ZZ` FROM `T_TRMTRAINDATA` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_TRMTRAINAGENCY t21 ON t1.TRMTRAINAGENCYID = t21.TRMTRAINAGENCYID  ) t1 where trmtraindataid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="TrmTrainDataResultMap" type="cn.ibizlab.ehr.core.trm.domain.TrmTrainData" autoMapping="true">
+        <id property="trmtraindataid" column="trmtraindataid" /><!--主键字段映射-->
+		<result property="ormorgid" column="ormorgid" />
+		<result property="trmtrainagencyid" column="trmtrainagencyid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmtrainagency" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainAgency" column="trmtrainagencyid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainAgencyMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMTRAINDATA_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="TrmTrainDataResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMTRAINDATA_TRMTRAINAGENCY_TRMTRAINAGENCYID] -->
+	 <select id="selectByTrmtrainagencyid" resultMap="TrmTrainDataResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmtrainagencyid=#{trmtrainagencyid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.trm.filter.TrmTrainDataSearchContext"  resultMap="TrmTrainDataResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CBS`, t1.`CJGS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`SFGC`, t1.`SFGX`, t1.`TRMTRAINAGENCYID`, t21.`TRMTRAINAGENCYNAME`, t1.`TRMTRAINDATAID`, t1.`TRMTRAINDATANAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XYSL`, t1.`YYSL`, t1.`ZLBM`, t1.`ZLLB`, t1.`ZZ` FROM `T_TRMTRAINDATA` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_TRMTRAINAGENCY t21 ON t1.TRMTRAINAGENCYID = t21.TRMTRAINAGENCYID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CBS`, t1.`CJGS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`SFGC`, t1.`SFGX`, t1.`TRMTRAINAGENCYID`, t21.`TRMTRAINAGENCYNAME`, t1.`TRMTRAINDATAID`, t1.`TRMTRAINDATANAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XYSL`, t1.`YYSL`, t1.`ZLBM`, t1.`ZLLB`, t1.`ZZ` FROM `T_TRMTRAINDATA` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_TRMTRAINAGENCY t21 ON t1.TRMTRAINAGENCYID = t21.TRMTRAINAGENCYID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

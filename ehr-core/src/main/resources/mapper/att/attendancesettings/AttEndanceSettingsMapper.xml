@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.att.mapper.AttEndanceSettingsMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="AttEndanceSettingsResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`ATTENDANCESETTINGSID`, t1.`ATTENDANCESETTINGSNAME`, t1.`ATTENDENCESETUPID`, t11.`ATTENDENCESETUPNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DKFS`, t31.`ORMORGID`, t11.`ORMORGID` AS `ORMORGID2`, t21.`ZZDZS` AS `ORMORGNAME2`, t31.`ORMORGSECTORID`, t41.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t31.`YGZT`, t51.`ZZDZS` FROM `T_ATTENDANCESETTINGS` t1  LEFT JOIN T_ATTENDENCESETUP t11 ON t1.ATTENDENCESETUPID = t11.ATTENDENCESETUPID  LEFT JOIN T_SRFORG t21 ON t11.ORMORGID = t21.ORGID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t41 ON t31.ORMORGSECTORID = t41.ORGSECTORID  LEFT JOIN T_SRFORG t51 ON t31.ORMORGID = t51.ORGID  ) t1 where attendancesettingsid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="AttEndanceSettingsResultMap" type="cn.ibizlab.ehr.core.att.domain.AttEndanceSettings" autoMapping="true">
+        <id property="attendancesettingsid" column="attendancesettingsid" /><!--主键字段映射-->
+		<result property="attendencesetupid" column="attendencesetupid" />
+		<result property="pimpersonid" column="pimpersonid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="attendencesetup" javaType="cn.ibizlab.ehr.core.att.domain.AttEndenceSetup" column="attendencesetupid" select="cn.ibizlab.ehr.core.att.mapper.AttEndenceSetupMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ATTENDANCESETTINGS_ATTENDENCESETUP_ATTENDENCESETUPID] -->
+	 <select id="selectByAttendencesetupid" resultMap="AttEndanceSettingsResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  attendencesetupid=#{attendencesetupid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ATTENDANCESETTINGS_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="AttEndanceSettingsResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[YGSZKQ]-->
+	 <select id="searchYGSZKQ"  parameterType="cn.ibizlab.ehr.core.att.filter.AttEndanceSettingsSearchContext"  resultMap="AttEndanceSettingsResultMap">
+         select t1.* from (
+                <include refid="YGSZKQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[FYGZZKQ]-->
+	 <select id="searchFYGZZKQ"  parameterType="cn.ibizlab.ehr.core.att.filter.AttEndanceSettingsSearchContext"  resultMap="AttEndanceSettingsResultMap">
+         select t1.* from (
+                <include refid="FYGZZKQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.att.filter.AttEndanceSettingsSearchContext"  resultMap="AttEndanceSettingsResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ATTENDANCESETTINGSID`, t1.`ATTENDANCESETTINGSNAME`, t1.`ATTENDENCESETUPID`, t11.`ATTENDENCESETUPNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DKFS`, t31.`ORMORGID`, t11.`ORMORGID` AS `ORMORGID2`, t21.`ZZDZS` AS `ORMORGNAME2`, t31.`ORMORGSECTORID`, t41.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t31.`YGZT`, t51.`ZZDZS` FROM `T_ATTENDANCESETTINGS` t1  LEFT JOIN T_ATTENDENCESETUP t11 ON t1.ATTENDENCESETUPID = t11.ATTENDENCESETUPID  LEFT JOIN T_SRFORG t21 ON t11.ORMORGID = t21.ORGID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t41 ON t31.ORMORGSECTORID = t41.ORGSECTORID  LEFT JOIN T_SRFORG t51 ON t31.ORMORGID = t51.ORGID  
+			]]>
+    </sql>
+    <!--数据查询[FYGZZKQ]-->
+    <sql id="FYGZZKQ" databaseId="mysql">
+       <![CDATA[	SELECT t1.ATTENDANCESETTINGSNAME AS ATTENDANCESETTINGSNAME, t1.ATTENDANCESETTINGSID AS ATTENDANCESETTINGSID, t1.PIMPERSONID AS PIMPERSONID, t1.PIMPERSONNAME AS PIMPERSONNAME, t1.YGBH AS YGBH, t1.ATTENDENCESETUPID AS ATTENDENCESETUPID, t3.Attendencesetupname AS ATTENDENCESETUPNAME, t21.SHORTNAME AS ORMORGSECTORNAME, t11.ORMORGSECTORID AS ORMORGSECTORID, t1.DKFS AS DKFS, t11.ormorgid AS ORMORGID, t12.ZZDZS AS ZZDZS, t3.ormorgid AS ORMORGID2, t31.orgname AS ORMORGNAME2, t11.ygzt AS YGZT FROM T_ATTENDANCESETTINGS t1 LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID left join T_SRFORG t12 on t11.ORMORGID=t12.ORGID LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID LEFT JOIN T_ATTENDENCESETUP t3 ON t1.attendencesetupid=t3.attendencesetupid left join T_SRFORG t31 on t3.ORMORGID = t31.ORGID WHERE EXISTS (       select 1 from T_PIMPERSON temp left join T_SRFORG  temp1 on temp1.ORGID = temp.ormorgid       WHERE temp.PIMPERSONID=t1.PIMPERSONID       AND temp.ENABLE=1 and temp.JLSS = '10'       AND (INSTR(temp1.companyflag,t31.companyflag) <> 1 OR temp.ygzt IN('40','50','60','130','51')) )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ATTENDANCESETTINGSID`, t1.`ATTENDANCESETTINGSNAME`, t1.`ATTENDENCESETUPID`, t11.`ATTENDENCESETUPNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DKFS`, t31.`ORMORGID`, t11.`ORMORGID` AS `ORMORGID2`, t21.`ZZDZS` AS `ORMORGNAME2`, t31.`ORMORGSECTORID`, t41.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH`, t31.`YGZT`, t51.`ZZDZS` FROM `T_ATTENDANCESETTINGS` t1  LEFT JOIN T_ATTENDENCESETUP t11 ON t1.ATTENDENCESETUPID = t11.ATTENDENCESETUPID  LEFT JOIN T_SRFORG t21 ON t11.ORMORGID = t21.ORGID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t41 ON t31.ORMORGSECTORID = t41.ORGSECTORID  LEFT JOIN T_SRFORG t51 ON t31.ORMORGID = t51.ORGID  
+			]]>
+    </sql>
+    <!--数据查询[YGSZKQ]-->
+    <sql id="YGSZKQ" databaseId="mysql">
+       <![CDATA[	SELECT NULL AS ATTENDANCESETTINGSNAME, t11.pimpersonid AS ATTENDANCESETTINGSID, t11.PIMPERSONID AS PIMPERSONID, t11.PIMPERSONNAME AS PIMPERSONNAME, t11.YGBH AS YGBH, NULL AS ATTENDENCESETUPID, NULL AS ATTENDENCESETUPNAME, t21.SHORTNAME AS ORMORGSECTORNAME, t11.ORMORGSECTORID AS ORMORGSECTORID, NULL AS DKFS, t11.ormorgid AS ORMORGID, t31.ZZDZS AS ZZDZS, t31.orgid AS ORMORGID2, t31.zzdzs AS ORMORGNAME2, t11.ygzt AS YGZT FROM T_PIMPERSON t11 LEFT JOIN T_SRFORG t31 ON t11.ORMORGID = t31.ORGID LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID WHERE t11.ENABLE=1 and t11.JLSS = '10' and t11.YGZT <>'40' and t11.YGZT <>'50' and t11.YGZT <>'60' and t11.YGZT <>'130' and t11.YGZT <>'51' AND NOT EXISTS(     SELECT 1 FROM T_ATTENDANCESETTINGS temp WHERE temp.pimpersonid=t11.pimpersonid )
+			]]>
+    </sql>
+</mapper>
+

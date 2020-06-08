@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.par.mapper.ParJxzgpcmxMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="ParJxzgpcmxResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FZFW`, t1.`PARJXZGPCID`, t1.`PARJXZGPCMXID`, t1.`PARJXZGPCMXNAME`, t11.`PARJXZGPCNAME`, t1.`PF`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZB`, t1.`ZDDF`, t1.`ZGDF` FROM `T_PARJXZGPCMX` t1  LEFT JOIN T_PARJXZGPC t11 ON t1.PARJXZGPCID = t11.PARJXZGPCID  ) t1 where parjxzgpcmxid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="ParJxzgpcmxResultMap" type="cn.ibizlab.ehr.core.par.domain.ParJxzgpcmx" autoMapping="true">
+        <id property="parjxzgpcmxid" column="parjxzgpcmxid" /><!--主键字段映射-->
+		<result property="parjxzgpcid" column="parjxzgpcid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="parjxzgpc" javaType="cn.ibizlab.ehr.core.par.domain.ParJxzgpc" column="parjxzgpcid" select="cn.ibizlab.ehr.core.par.mapper.ParJxzgpcMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PARJXZGPCMX_PARJXZGPC_PARJXZGPCID] -->
+	 <select id="selectByParjxzgpcid" resultMap="ParJxzgpcmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  parjxzgpcid=#{parjxzgpcid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.par.filter.ParJxzgpcmxSearchContext"  resultMap="ParJxzgpcmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FZFW`, t1.`PARJXZGPCID`, t1.`PARJXZGPCMXID`, t1.`PARJXZGPCMXNAME`, t11.`PARJXZGPCNAME`, t1.`PF`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZB`, t1.`ZDDF`, t1.`ZGDF` FROM `T_PARJXZGPCMX` t1  LEFT JOIN T_PARJXZGPC t11 ON t1.PARJXZGPCID = t11.PARJXZGPCID  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FZFW`, t1.`PARJXZGPCID`, t1.`PARJXZGPCMXID`, t1.`PARJXZGPCMXNAME`, t11.`PARJXZGPCNAME`, t1.`PF`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`ZB`, t1.`ZDDF`, t1.`ZGDF` FROM `T_PARJXZGPCMX` t1  LEFT JOIN T_PARJXZGPC t11 ON t1.PARJXZGPCID = t11.PARJXZGPCID  
+			]]>
+    </sql>
+</mapper>
+

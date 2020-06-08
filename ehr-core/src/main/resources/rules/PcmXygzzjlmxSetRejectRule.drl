@@ -1,0 +1,28 @@
+package cn.ibizlab.ehr.pcm.logic.pcmxygzzjlmxlogic.setreject;
+
+import java.util.Map;
+import java.util.HashMap;
+import com.alibaba.fastjson.JSONObject;
+global cn.ibizlab.ehr.core.pcm.domain.PcmXygzzjlmx pcmxygzzjlmxsetrejectdefault;
+global cn.ibizlab.ehr.core.pcm.service.IPcmXygzzjlmxService iBzSysPcmxygzzjlmxDefaultService;
+global cn.ibizlab.ehr.util.security.AuthenticationUser curuser;
+
+no-loop
+
+//逻辑处理节点[设置准备参数]
+rule "prepareparam1"
+ruleflow-group "pcmxygzzjlmxsetrejectprepareparam1"
+    when
+    then
+    pcmxygzzjlmxsetrejectdefault.set("finished","1");
+    pcmxygzzjlmxsetrejectdefault.set("checkstatus","4");
+    update(pcmxygzzjlmxsetrejectdefault);//更新fact中变量值
+    end
+
+//逻辑处理节点[开始]
+rule "begin"
+ruleflow-group "pcmxygzzjlmxsetrejectbegin"
+    when
+    then
+    end
+

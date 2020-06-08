@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PcmEducationExperienceMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PcmEducationExperienceResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BBSJ`, t1.`BYZ`, t11.`CERTIFICATENUMBER`, t1.`CITY`, t1.`COLLEGENAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DEGREE`, t1.`EDUCATIONLEVEL`, t1.`ENDTIME`, t1.`FIRSTXL`, t1.`FLAG`, t1.`FORMSOFLEARNING`, t1.`HIGESTXL`, t1.`ISABROAD`, t1.`MAJORCATEGORY`, t1.`MAJORCOURSES`, t1.`MAJORDESCRIPTION`, t1.`MAJORNAME`, t1.`PCMEDUCATIONEXPERIENCEID`, t1.`PCMEDUCATIONEXPERIENCENAME`, t1.`PCMPROFILEID`, t11.`PCMPROFILENAME`, t1.`SCHOOLNAME`, t1.`SFXZY`, t1.`STARTTIME`, t1.`SUBJECTRESEARCH`, t1.`TRAININGMODE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XKML`, t1.`XL`, t1.`XLYZ`, t1.`XWZ`, t1.`XXXZ`, t11.`XZNF` FROM `T_PCMEDUCATIONEXPERIENCE` t1  LEFT JOIN T_PCMPROFILE t11 ON t1.PCMPROFILEID = t11.PCMPROFILEID  ) t1 where pcmeducationexperienceid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PcmEducationExperienceResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PcmEducationExperience" autoMapping="true">
+        <id property="pcmeducationexperienceid" column="pcmeducationexperienceid" /><!--主键字段映射-->
+		<result property="pcmprofileid" column="pcmprofileid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pcmprofile" javaType="cn.ibizlab.ehr.core.pcm.domain.PcmProfile" column="pcmprofileid" select="cn.ibizlab.ehr.core.pcm.mapper.PcmProfileMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMEDUCATIONEXPERIENCE_PCMPROFILE_PCMPROFILEID] -->
+	 <select id="selectByPcmprofileid" resultMap="PcmEducationExperienceResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pcmprofileid=#{pcmprofileid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmEducationExperienceSearchContext"  resultMap="PcmEducationExperienceResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BBSJ`, t1.`BYZ`, t11.`CERTIFICATENUMBER`, t1.`CITY`, t1.`COLLEGENAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DEGREE`, t1.`EDUCATIONLEVEL`, t1.`ENDTIME`, t1.`FIRSTXL`, t1.`FLAG`, t1.`FORMSOFLEARNING`, t1.`HIGESTXL`, t1.`ISABROAD`, t1.`MAJORCATEGORY`, t1.`MAJORCOURSES`, t1.`MAJORDESCRIPTION`, t1.`MAJORNAME`, t1.`PCMEDUCATIONEXPERIENCEID`, t1.`PCMEDUCATIONEXPERIENCENAME`, t1.`PCMPROFILEID`, t11.`PCMPROFILENAME`, t1.`SCHOOLNAME`, t1.`SFXZY`, t1.`STARTTIME`, t1.`SUBJECTRESEARCH`, t1.`TRAININGMODE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XKML`, t1.`XL`, t1.`XLYZ`, t1.`XWZ`, t1.`XXXZ`, t11.`XZNF` FROM `T_PCMEDUCATIONEXPERIENCE` t1  LEFT JOIN T_PCMPROFILE t11 ON t1.PCMPROFILEID = t11.PCMPROFILEID  
+				 WHERE 	( t1.`FLAG` = '1' )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BBSJ`, t1.`BYZ`, t11.`CERTIFICATENUMBER`, t1.`CITY`, t1.`COLLEGENAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DEGREE`, t1.`EDUCATIONLEVEL`, t1.`ENDTIME`, t1.`FIRSTXL`, t1.`FLAG`, t1.`FORMSOFLEARNING`, t1.`HIGESTXL`, t1.`ISABROAD`, t1.`MAJORCATEGORY`, t1.`MAJORCOURSES`, t1.`MAJORDESCRIPTION`, t1.`MAJORNAME`, t1.`PCMEDUCATIONEXPERIENCEID`, t1.`PCMEDUCATIONEXPERIENCENAME`, t1.`PCMPROFILEID`, t11.`PCMPROFILENAME`, t1.`SCHOOLNAME`, t1.`SFXZY`, t1.`STARTTIME`, t1.`SUBJECTRESEARCH`, t1.`TRAININGMODE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XKML`, t1.`XL`, t1.`XLYZ`, t1.`XWZ`, t1.`XXXZ`, t11.`XZNF` FROM `T_PCMEDUCATIONEXPERIENCE` t1  LEFT JOIN T_PCMPROFILE t11 ON t1.PCMPROFILEID = t11.PCMPROFILEID  
+			]]>
+    </sql>
+</mapper>
+

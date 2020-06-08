@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.att.mapper.AttEndanceRecordTempMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="AttEndanceRecordTempResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`ATTENDANCERECORDTEMPID`, t1.`ATTENDANCERECORDTEMPNAME`, t1.`CDF`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DAY`, t1.`DKSJQD`, t1.`DKSJQT`, t1.`ENABLE`, t1.`ISOUTLEAVE`, t1.`ISOUTOFFICE`, t1.`ISWEEKEND`, t1.`KQLX`, t1.`KQRQ`, t1.`ND`, t1.`ORMBMKQDZID`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t11.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`RSHD`, t1.`SBSJ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XBSJ`, t1.`YF`, t1.`YGBH`, t1.`ZTF` FROM `T_ATTENDANCERECORDTEMP` t1  LEFT JOIN T_SRFORGSECTOR t11 ON t1.ORMORGSECTORID = t11.ORGSECTORID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  ) t1 where attendancerecordtempid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="AttEndanceRecordTempResultMap" type="cn.ibizlab.ehr.core.att.domain.AttEndanceRecordTemp" autoMapping="true">
+        <id property="attendancerecordtempid" column="attendancerecordtempid" /><!--主键字段映射-->
+		<result property="ormorgid" column="ormorgid" />
+		<result property="pimpersonid" column="pimpersonid" />
+		<result property="ormorgsectorid" column="ormorgsectorid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ATTENDANCERECORDTEMP_ORMORGSECTOR_ORMORGSECTORID] -->
+	 <select id="selectByOrmorgsectorid" resultMap="AttEndanceRecordTempResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgsectorid=#{orgsectorid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ATTENDANCERECORDTEMP_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="AttEndanceRecordTempResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ATTENDANCERECORDTEMP_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="AttEndanceRecordTempResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.att.filter.AttEndanceRecordTempSearchContext"  resultMap="AttEndanceRecordTempResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ATTENDANCERECORDTEMPID`, t1.`ATTENDANCERECORDTEMPNAME`, t1.`CDF`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DAY`, t1.`DKSJQD`, t1.`DKSJQT`, t1.`ENABLE`, t1.`ISOUTLEAVE`, t1.`ISOUTOFFICE`, t1.`ISWEEKEND`, t1.`KQLX`, t1.`KQRQ`, t1.`ND`, t1.`ORMBMKQDZID`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t11.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`RSHD`, t1.`SBSJ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XBSJ`, t1.`YF`, t1.`YGBH`, t1.`ZTF` FROM `T_ATTENDANCERECORDTEMP` t1  LEFT JOIN T_SRFORGSECTOR t11 ON t1.ORMORGSECTORID = t11.ORGSECTORID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ATTENDANCERECORDTEMPID`, t1.`ATTENDANCERECORDTEMPNAME`, t1.`CDF`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DAY`, t1.`DKSJQD`, t1.`DKSJQT`, t1.`ENABLE`, t1.`ISOUTLEAVE`, t1.`ISOUTOFFICE`, t1.`ISWEEKEND`, t1.`KQLX`, t1.`KQRQ`, t1.`ND`, t1.`ORMBMKQDZID`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t11.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`RSHD`, t1.`SBSJ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XBSJ`, t1.`YF`, t1.`YGBH`, t1.`ZTF` FROM `T_ATTENDANCERECORDTEMP` t1  LEFT JOIN T_SRFORGSECTOR t11 ON t1.ORMORGSECTORID = t11.ORGSECTORID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

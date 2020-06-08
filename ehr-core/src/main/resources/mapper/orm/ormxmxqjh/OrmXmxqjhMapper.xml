@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.orm.mapper.OrmXmxqjhMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="OrmXmxqjhResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`APPROVALSTATUS`, t1.`BBH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DXMJLYQ`, t1.`DXMZGYQ`, t1.`EDITION`, t1.`EDITIONSTATE`, t1.`GCJS`, t1.`GCMCJBM`, t1.`GCSW`, t1.`GCZJ`, t1.`GQAP`, t1.`JHCB`, t1.`JZMJ`, t1.`OLDID`, t1.`ORDERVALUE`, t1.`ORGCODE`, t1.`ORGINFOID` AS `ORGID`, t1.`ORGINFOID`, t1.`ORGINFONAME`, t1.`ORGSECINFOID`, t1.`ORGSHORTNAME`, t1.`ORMXMGLID`, t11.`PROJECT_NAME` AS `ORMXMGLNAME`, t1.`ORMXMXQJHID`, t1.`ORMXMXQJHNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`QTJD`, t1.`REASON`, t1.`SGJD`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`PROJECT_NUMBER` AS `XMBH`, t1.`XMBJC`, t1.`XMBLX`, t1.`XMBMC`, t1.`XMGMMS`, t1.`XMJBQK`, t1.`XMLX`, t1.`XMLXQT`, t1.`ZSZX`, t1.`ZTSG` FROM `T_ORMXMXQJH` t1  LEFT JOIN T_ORMXMGL t11 ON t1.ORMXMGLID = t11.ORMXMGLID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  ) t1 where ormxmxqjhid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="OrmXmxqjhResultMap" type="cn.ibizlab.ehr.core.orm.domain.OrmXmxqjh" autoMapping="true">
+        <id property="ormxmxqjhid" column="ormxmxqjhid" /><!--主键字段映射-->
+		<result property="pimpersonid" column="pimpersonid" />
+		<result property="ormxmglid" column="ormxmglid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormxmgl" javaType="cn.ibizlab.ehr.core.orm.domain.OrmXmgl" column="ormxmglid" select="cn.ibizlab.ehr.core.orm.mapper.OrmXmglMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ORMXMXQJH_ORMXMGL_ORMXMGLID] -->
+	 <select id="selectByOrmxmglid" resultMap="OrmXmxqjhResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormxmglid=#{ormxmglid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ORMXMXQJH_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="OrmXmxqjhResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[BaseInfo]-->
+	 <select id="searchBaseInfo"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmXmxqjhSearchContext"  resultMap="OrmXmxqjhResultMap">
+         select t1.* from (
+                <include refid="BaseInfo" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[XMTJQX]-->
+	 <select id="searchXMTJQX"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmXmxqjhSearchContext"  resultMap="OrmXmxqjhResultMap">
+         select t1.* from (
+                <include refid="XMTJQX" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmXmxqjhSearchContext"  resultMap="OrmXmxqjhResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[RsshInfo]-->
+	 <select id="searchRsshInfo"  parameterType="cn.ibizlab.ehr.core.orm.filter.OrmXmxqjhSearchContext"  resultMap="OrmXmxqjhResultMap">
+         select t1.* from (
+                <include refid="RsshInfo" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[BaseInfo]-->
+    <sql id="BaseInfo" databaseId="mysql">
+       <![CDATA[	SELECT t1.`APPROVALSTATUS`, t1.`BBH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DXMJLYQ`, t1.`DXMZGYQ`, t1.`EDITION`, t1.`EDITIONSTATE`, t1.`GCMCJBM`, t1.`GCZJ`, t1.`JHCB`, t1.`JZMJ`, t1.`OLDID`, t1.`ORDERVALUE`, t1.`ORGCODE`, t1.`ORGINFOID` AS `ORGID`, t1.`ORGINFOID`, t1.`ORGINFONAME`, t1.`ORGSECINFOID`, t1.`ORGSHORTNAME`, t1.`ORMXMGLID`, t11.`PROJECT_NAME` AS `ORMXMGLNAME`, t1.`ORMXMXQJHID`, t1.`ORMXMXQJHNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`REASON`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`PROJECT_NUMBER` AS `XMBH`, t1.`XMBJC`, t1.`XMBLX`, t1.`XMBMC`, t1.`XMGMMS`, t1.`XMJBQK`, t1.`XMLX`, t1.`XMLXQT` FROM `T_ORMXMXQJH` t1  LEFT JOIN T_ORMXMGL t11 ON t1.ORMXMGLID = t11.ORMXMGLID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  
+				 WHERE 	( ( t1.`PIMPERSONID` =  #{srf.sessioncontext.srfpersonid}  OR  ( t1.`EDITIONSTATE` = '10'  AND  ( 'ibzadmin' = (select t.loginaccountname from t_srfloginaccount t where t.loginaccountid = #{srf.sessioncontext.srfpersonid')})  OR  (t1.orginfoid = #{srf.sessioncontext.srforgid')}   OR   INSTR( (select b.levelcode from t_srforg b  where b.orgid = t1.orginfoid ), (select a.levelcode from t_srforg a where a.orgid = #{srf.sessioncontext.srforgid')} )) = 1) ) ) ) )
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`APPROVALSTATUS`, t1.`BBH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DXMJLYQ`, t1.`DXMZGYQ`, t1.`EDITION`, t1.`EDITIONSTATE`, t1.`GCMCJBM`, t1.`GCZJ`, t1.`JHCB`, t1.`JZMJ`, t1.`OLDID`, t1.`ORDERVALUE`, t1.`ORGCODE`, t1.`ORGINFOID` AS `ORGID`, t1.`ORGINFOID`, t1.`ORGINFONAME`, t1.`ORGSECINFOID`, t1.`ORGSHORTNAME`, t1.`ORMXMGLID`, t11.`PROJECT_NAME` AS `ORMXMGLNAME`, t1.`ORMXMXQJHID`, t1.`ORMXMXQJHNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`REASON`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`PROJECT_NUMBER` AS `XMBH`, t1.`XMBJC`, t1.`XMBLX`, t1.`XMBMC`, t1.`XMGMMS`, t1.`XMJBQK`, t1.`XMLX`, t1.`XMLXQT` FROM `T_ORMXMXQJH` t1  LEFT JOIN T_ORMXMGL t11 ON t1.ORMXMGLID = t11.ORMXMGLID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  
+			]]>
+    </sql>
+    <!--数据查询[RsshInfo]-->
+    <sql id="RsshInfo" databaseId="mysql">
+       <![CDATA[	SELECT t1.`APPROVALSTATUS`, t1.`BBH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DXMJLYQ`, t1.`DXMZGYQ`, t1.`EDITION`, t1.`EDITIONSTATE`, t1.`GCMCJBM`, t1.`GCZJ`, t1.`JHCB`, t1.`JZMJ`, t1.`OLDID`, t1.`ORDERVALUE`, t1.`ORGCODE`, t1.`ORGINFOID` AS `ORGID`, t1.`ORGINFOID`, t1.`ORGINFONAME`, t1.`ORGSECINFOID`, t1.`ORGSHORTNAME`, t1.`ORMXMGLID`, t11.`PROJECT_NAME` AS `ORMXMGLNAME`, t1.`ORMXMXQJHID`, t1.`ORMXMXQJHNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`REASON`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`PROJECT_NUMBER` AS `XMBH`, t1.`XMBJC`, t1.`XMBLX`, t1.`XMBMC`, t1.`XMGMMS`, t1.`XMJBQK`, t1.`XMLX`, t1.`XMLXQT` FROM `T_ORMXMXQJH` t1  LEFT JOIN T_ORMXMGL t11 ON t1.ORMXMGLID = t11.ORMXMGLID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  
+				 WHERE 	( t1.`EDITIONSTATE` = '10'  AND  t1.`APPROVALSTATUS` = '20' )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`APPROVALSTATUS`, t1.`BBH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DXMJLYQ`, t1.`DXMZGYQ`, t1.`EDITION`, t1.`EDITIONSTATE`, t1.`GCJS`, t1.`GCMCJBM`, t1.`GCSW`, t1.`GCZJ`, t1.`GQAP`, t1.`JHCB`, t1.`JZMJ`, t1.`OLDID`, t1.`ORDERVALUE`, t1.`ORGCODE`, t1.`ORGINFOID` AS `ORGID`, t1.`ORGINFOID`, t1.`ORGINFONAME`, t1.`ORGSECINFOID`, t1.`ORGSHORTNAME`, t1.`ORMXMGLID`, t11.`PROJECT_NAME` AS `ORMXMGLNAME`, t1.`ORMXMXQJHID`, t1.`ORMXMXQJHNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`QTJD`, t1.`REASON`, t1.`SGJD`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`PROJECT_NUMBER` AS `XMBH`, t1.`XMBJC`, t1.`XMBLX`, t1.`XMBMC`, t1.`XMGMMS`, t1.`XMJBQK`, t1.`XMLX`, t1.`XMLXQT`, t1.`ZSZX`, t1.`ZTSG` FROM `T_ORMXMXQJH` t1  LEFT JOIN T_ORMXMGL t11 ON t1.ORMXMGLID = t11.ORMXMGLID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  
+			]]>
+    </sql>
+    <!--数据查询[XMTJQX]-->
+    <sql id="XMTJQX" databaseId="mysql">
+       <![CDATA[	SELECT t1.`APPROVALSTATUS`, t1.`BBH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DXMJLYQ`, t1.`DXMZGYQ`, t1.`EDITION`, t1.`EDITIONSTATE`, t1.`GCMCJBM`, t1.`GCZJ`, t1.`JHCB`, t1.`JZMJ`, t1.`OLDID`, t1.`ORDERVALUE`, t1.`ORGCODE`, t1.`ORGINFOID` AS `ORGID`, t1.`ORGINFOID`, t1.`ORGINFONAME`, t1.`ORGSECINFOID`, t1.`ORGSHORTNAME`, t1.`ORMXMGLID`, t11.`PROJECT_NAME` AS `ORMXMGLNAME`, t1.`ORMXMXQJHID`, t1.`ORMXMXQJHNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t1.`REASON`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`PROJECT_NUMBER` AS `XMBH`, t1.`XMBJC`, t1.`XMBLX`, t1.`XMBMC`, t1.`XMGMMS`, t1.`XMJBQK`, t1.`XMLX`, t1.`XMLXQT` FROM `T_ORMXMXQJH` t1  LEFT JOIN T_ORMXMGL t11 ON t1.ORMXMGLID = t11.ORMXMGLID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  
+				 WHERE 	( t1.`APPROVALSTATUS` <> '20' )
+			]]>
+    </sql>
+</mapper>
+

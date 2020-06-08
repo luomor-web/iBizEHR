@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmbdsqdmxzjjscodelist" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmbdsqdmxzjjscodelist">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmbdsqdmxzjjscodelistdefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmBdsqdmx" />
+        <tns:global identifier="pcmbdsqdmxzjjscodelistzjcodelist" type="cn.ibizlab.ehr.core.common.domain.CodeList1" />
+        </extensionElements>
+     <startEvent id="db37f2e63b0ff93cf05cbc1c8a6f8fa8" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxzjjscodelistprepareparam1" id="67b467c61ef139bfcbcc192325d65fd2" implementation="http://www.jboss.org/drools/rule" name="ZjcodeList"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmbdsqdmxzjjscodelistdeaction1" id="de09a724aa4635c991974a6d2160750b" implementation="http://www.jboss.org/drools/rule" name="刷新代码表"/>
+     <endEvent id="de09a724aa4635c991974a6d2160750b_End" name="End"/>
+     <sequenceFlow id="de09a724aa4635c991974a6d2160750b_End_Line" sourceRef="de09a724aa4635c991974a6d2160750b" targetRef="de09a724aa4635c991974a6d2160750b_End"/>
+     <sequenceFlow id="73953db4ddb73c7dad17c0e176c6b0cb" sourceRef="67b467c61ef139bfcbcc192325d65fd2" targetRef="de09a724aa4635c991974a6d2160750b">
+     </sequenceFlow>
+     <sequenceFlow id="9fbd223984b30d46d0e30b6a11be9e4e" sourceRef="db37f2e63b0ff93cf05cbc1c8a6f8fa8" targetRef="67b467c61ef139bfcbcc192325d65fd2">
+     </sequenceFlow>
+    </process>
+</definitions>
+

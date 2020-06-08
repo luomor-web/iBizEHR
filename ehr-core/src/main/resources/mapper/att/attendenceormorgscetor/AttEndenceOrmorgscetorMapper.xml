@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.att.mapper.AttEndenceOrmorgscetorMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="AttEndenceOrmorgscetorResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`ATTENDENCEORMORGSECTORID`, t1.`ATTENDENCEORMORGSECTORNAME`, t1.`ATTENDENCESETUPID`, t11.`ATTENDENCESETUPNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, (SELECT group_concat(ORMBMKQDZname) FROM T_ORMBMKQDZ WHERE ormorgsectorid=t1.`ORMORGSECTORID`) AS `DZ`, t1.`KQDZ`, t21.`ORGID`, t31.`ORGNAME`, t1.`ORMORGSECTORID`, t21.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ATTENDENCEORMORGSECTOR` t1  LEFT JOIN T_ATTENDENCESETUP t11 ON t1.ATTENDENCESETUPID = t11.ATTENDENCESETUPID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t21.ORGID = t31.ORGID  ) t1 where attendenceormorgsectorid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="AttEndenceOrmorgscetorResultMap" type="cn.ibizlab.ehr.core.att.domain.AttEndenceOrmorgscetor" autoMapping="true">
+        <id property="attendenceormorgsectorid" column="attendenceormorgsectorid" /><!--主键字段映射-->
+		<result property="ormorgsectorid" column="ormorgsectorid" />
+		<result property="attendencesetupid" column="attendencesetupid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="attendencesetup" javaType="cn.ibizlab.ehr.core.att.domain.AttEndenceSetup" column="attendencesetupid" select="cn.ibizlab.ehr.core.att.mapper.AttEndenceSetupMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ATTENDENCEORMORGSECTOR_ATTENDENCESETUP_ATTENDENCESETUPID] -->
+	 <select id="selectByAttendencesetupid" resultMap="AttEndenceOrmorgscetorResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  attendencesetupid=#{attendencesetupid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ATTENDENCEORMORGSECTOR_ORMORGSECTOR_ORMORGSECTORID] -->
+	 <select id="selectByOrmorgsectorid" resultMap="AttEndenceOrmorgscetorResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgsectorid=#{orgsectorid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.att.filter.AttEndenceOrmorgscetorSearchContext"  resultMap="AttEndenceOrmorgscetorResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ATTENDENCEORMORGSECTORID`, t1.`ATTENDENCEORMORGSECTORNAME`, t1.`ATTENDENCESETUPID`, t11.`ATTENDENCESETUPNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, (SELECT group_concat(ORMBMKQDZname) FROM T_ORMBMKQDZ WHERE ormorgsectorid=t1.`ORMORGSECTORID`) AS `DZ`, t1.`KQDZ`, t21.`ORGID`, t31.`ORGNAME`, t1.`ORMORGSECTORID`, t21.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ATTENDENCEORMORGSECTOR` t1  LEFT JOIN T_ATTENDENCESETUP t11 ON t1.ATTENDENCESETUPID = t11.ATTENDENCESETUPID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t21.ORGID = t31.ORGID  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ATTENDENCEORMORGSECTORID`, t1.`ATTENDENCEORMORGSECTORNAME`, t1.`ATTENDENCESETUPID`, t11.`ATTENDENCESETUPNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, (SELECT group_concat(ORMBMKQDZname) FROM T_ORMBMKQDZ WHERE ormorgsectorid=t1.`ORMORGSECTORID`) AS `DZ`, t1.`KQDZ`, t21.`ORGID`, t31.`ORGNAME`, t1.`ORMORGSECTORID`, t21.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_ATTENDENCEORMORGSECTOR` t1  LEFT JOIN T_ATTENDENCESETUP t11 ON t1.ATTENDENCESETUPID = t11.ATTENDENCESETUPID  LEFT JOIN T_SRFORGSECTOR t21 ON t1.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_SRFORG t31 ON t21.ORGID = t31.ORGID  
+			]]>
+    </sql>
+</mapper>
+

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PimCorrectionApplyMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PimCorrectionApplyResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t11.`GW`, t1.`PIMBYYGZZSQID`, t31.`PIMBYYGZZSQNAME`, t1.`PIMCORRECTIONAPPLYID`, t1.`PIMCORRECTIONAPPLYNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`RANK` AS `ZJ`, t11.`ZW`, t11.`ORMORGNAME` AS `ZZ` FROM `T_PIMCORRECTIONAPPLY` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_PIMBYYGZZSQ t31 ON t1.PIMBYYGZZSQID = t31.PIMBYYGZZSQID  ) t1 where pimcorrectionapplyid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PimCorrectionApplyResultMap" type="cn.ibizlab.ehr.core.pim.domain.PimCorrectionApply" autoMapping="true">
+        <id property="pimcorrectionapplyid" column="pimcorrectionapplyid" /><!--主键字段映射-->
+		<result property="pimbyygzzsqid" column="pimbyygzzsqid" />
+		<result property="pimpersonid" column="pimpersonid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimbyygzzsq" javaType="cn.ibizlab.ehr.core.pim.domain.PimByygzzsq" column="pimbyygzzsqid" select="cn.ibizlab.ehr.core.pim.mapper.PimByygzzsqMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMCORRECTIONAPPLY_PIMBYYGZZSQ_PIMBYYGZZSQID] -->
+	 <select id="selectByPimbyygzzsqid" resultMap="PimCorrectionApplyResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimbyygzzsqid=#{pimbyygzzsqid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMCORRECTIONAPPLY_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="PimCorrectionApplyResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimCorrectionApplySearchContext"  resultMap="PimCorrectionApplyResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t11.`GW`, t1.`PIMBYYGZZSQID`, t31.`PIMBYYGZZSQNAME`, t1.`PIMCORRECTIONAPPLYID`, t1.`PIMCORRECTIONAPPLYNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`RANK` AS `ZJ`, t11.`ZW`, t11.`ORMORGNAME` AS `ZZ` FROM `T_PIMCORRECTIONAPPLY` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_PIMBYYGZZSQ t31 ON t1.PIMBYYGZZSQID = t31.PIMBYYGZZSQID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t11.`GW`, t1.`PIMBYYGZZSQID`, t31.`PIMBYYGZZSQNAME`, t1.`PIMCORRECTIONAPPLYID`, t1.`PIMCORRECTIONAPPLYNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`RANK` AS `ZJ`, t11.`ZW`, t11.`ORMORGNAME` AS `ZZ` FROM `T_PIMCORRECTIONAPPLY` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_PIMBYYGZZSQ t31 ON t1.PIMBYYGZZSQID = t31.PIMBYYGZZSQID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

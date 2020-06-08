@@ -1,0 +1,25 @@
+
+export default {
+  fields: {
+    createman: '建立人',
+    yysl: '已用数量',
+    trmtraindataid: '培训资料标识',
+    zlbm: '资料编码',
+    sfgx: '是否共享',
+    cbs: '出版社',
+    createdate: '建立时间',
+    updatedate: '更新时间',
+    xysl: '现有数量',
+    cjgs: '创建公司',
+    trmtraindataname: '培训资料名称',
+    updateman: '更新人',
+    sfgc: '是否封存',
+    enable: '逻辑有效标志',
+    zz: '作者',
+    zllb: '资料类别',
+    ormorgname: '组织',
+    trmtrainagencyname: '培训机构名称',
+    ormorgid: '组织标识',
+    trmtrainagencyid: '培训机构标识',
+  },
+};

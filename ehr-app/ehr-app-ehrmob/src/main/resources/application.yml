@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    include: sys , ehrmob-prod
+  application:
+    name: ehr-ehrmob
