@@ -6,7 +6,7 @@ import IndexBase from './index-base.vue';
 import view_appmenu from '@widgets/app/index-appmenu/index-appmenu.vue';
 
 /**
- * 应用首页视图
+ * iBizEHR
  *
  * @export
  * @class Index
