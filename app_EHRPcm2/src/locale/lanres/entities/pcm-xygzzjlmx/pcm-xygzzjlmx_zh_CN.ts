@@ -45,8 +45,8 @@ export default {
       title: '试用期员工转正记录引用明细',
 		},
 		approvalgridview: {
-			caption: '试用期员工转正',
-      title: '试用期员工转正',
+			caption: '试用期转正审核',
+      title: '试用期转正审核',
 		},
 		zzsqlsjmgridview: {
 			caption: '试用期员工转正结果引用明细',

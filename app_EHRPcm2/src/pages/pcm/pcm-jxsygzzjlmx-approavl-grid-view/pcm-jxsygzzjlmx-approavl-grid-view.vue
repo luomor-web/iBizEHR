@@ -6,7 +6,7 @@ import view_grid from '@widgets/pcm-jxsygzzjlmx/main-grid/main-grid.vue';
 import view_searchform from '@widgets/pcm-jxsygzzjlmx/default-searchform/default-searchform.vue';
 
 /**
- * 见习期员工转正审核
+ * 见习期转正审核
  *
  * @export
  * @class PcmJxsygzzjlmxApproavlGridView

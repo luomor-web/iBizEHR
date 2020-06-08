@@ -784,8 +784,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "614f3395434a5a70b261f2e3fbfbd590"
         },
         "pcmxygzzjlmxapprovalgridview": {
-            "title": "试用期员工转正",
-            "caption": "试用期员工转正",
+            "title": "试用期转正审核",
+            "caption": "试用期转正审核",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "PCM",
             "viewname": "PcmXygzzjlmxApprovalGridView",
@@ -888,8 +888,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "727f4f522e24e5f58477a5eebc56b053"
         },
         "pcmjxsygzzjlmxapproavlgridview": {
-            "title": "见习期员工转正审核",
-            "caption": "见习期员工转正审核",
+            "title": "见习期转正审核",
+            "caption": "见习期转正审核",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "PCM",
             "viewname": "PcmJxsygzzjlmxApproavlGridView",

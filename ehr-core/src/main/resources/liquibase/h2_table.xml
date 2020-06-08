@@ -2130,7 +2130,7 @@
 
 
     <!--输出实体[PIMPERSON]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pimperson-475-60">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pimperson-477-60">
         <createTable tableName="T_PIMPERSON">
                 <column name="GZZT" remarks="" type="VARCHAR(60)">
                 </column>
@@ -8095,7 +8095,7 @@
 
 
     <!--输出实体[PIMENCLOSURE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pimenclosure-18-209">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pimenclosure-19-209">
         <createTable tableName="T_PIMENCLOSURE">
                 <column name="CREATEDATE" remarks="" type="DATETIME">
                 </column>
@@ -8485,7 +8485,7 @@
 
 
     <!--输出实体[PCMXYGZZJLMX]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmxygzzjlmx-168-218">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmxygzzjlmx-172-218">
         <createTable tableName="T_PCMXYGZZJLMX">
                 <column name="CREATEDATE" remarks="" type="DATETIME">
                 </column>
@@ -11463,7 +11463,7 @@
 
 
     <!--输出实体[PCMJXSYGZZJLMX]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmjxsygzzjlmx-102-291">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-pcmjxsygzzjlmx-104-291">
         <createTable tableName="T_PCMJXSYGZZJLMX">
                 <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
                 </column>
@@ -12222,25 +12222,25 @@
     </changeSet>
         <!--输出实体[SALSOURCE]外键关系 -->
         <!--输出实体[PIMPERSON]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-475-370">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-477-370">
        <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_PIMPERSON" constraintName="DER1N_PIMPERSON_ORMORGSECTOR_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-475-371">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-477-371">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PIMPERSON" constraintName="DER1N_PIMPERSON_ORMORG_ORMORGI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-475-372">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-477-372">
        <addForeignKeyConstraint baseColumnNames="PCMJXSYGZZJLMXID" baseTableName="T_PIMPERSON" constraintName="DER1N_PIMPERSON_PCMJXSYGZZJLMX" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMJXSYGZZJLMXID" referencedTableName="T_PCMJXSYGZZJLMX" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-475-373">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-477-373">
        <addForeignKeyConstraint baseColumnNames="PCMRCXLID" baseTableName="T_PIMPERSON" constraintName="DER1N_PIMPERSON_PCMRCXL_PCMRCX" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMRCXLID" referencedTableName="T_PCMRCXL" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-475-374">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-477-374">
        <addForeignKeyConstraint baseColumnNames="PIMCITYID" baseTableName="T_PIMPERSON" constraintName="DER1N_PIMPERSON_PIMCITY_PIMCIT" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMCITYID" referencedTableName="T_PIMCITY" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-475-375">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-477-375">
        <addForeignKeyConstraint baseColumnNames="PIMMAJORSETYPEID" baseTableName="T_PIMPERSON" constraintName="DER1N_PIMPERSON_PIMMAJORSETYPE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMMAJORSETYPEID" referencedTableName="T_PIMMAJORSETYPE" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-475-376">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimperson-477-376">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID2" baseTableName="T_PIMPERSON" constraintName="DER1N_PIMPERSON_PIMPERSON_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[ORMQYBZWH]外键关系 -->
@@ -13010,7 +13010,7 @@
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_DATERULE" constraintName="DER1N_DATERULE_ORMORG_ORMORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[PIMENCLOSURE]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimenclosure-18-595">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pimenclosure-19-595">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PIMENCLOSURE" constraintName="DER1N_PIMENCLOSURE_PIMPERSON_P" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[ATTENDANCEDATE]外键关系 -->
@@ -13058,13 +13058,13 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_TRMDEPART" constraintName="DER1N_TRMDEPART_PIMPERSON_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[PCMXYGZZJLMX]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmxygzzjlmx-168-611">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmxygzzjlmx-172-611">
        <addForeignKeyConstraint baseColumnNames="PCMXYGZZKHJGJLID" baseTableName="T_PCMXYGZZJLMX" constraintName="DER1N_PCMXYGZZJLMX_PCMXYGZZKHJ" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMXYGZZKHJGJLID" referencedTableName="T_PCMXYGZZKHJGJL" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmxygzzjlmx-168-612">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmxygzzjlmx-172-612">
        <addForeignKeyConstraint baseColumnNames="PCMXYGZZSQID" baseTableName="T_PCMXYGZZJLMX" constraintName="DER1N_PCMXYGZZJLMX_PCMXYGZZSQ_" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMXYGZZSQID" referencedTableName="T_PCMXYGZZSQ" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmxygzzjlmx-168-613">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmxygzzjlmx-172-613">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMXYGZZJLMX" constraintName="DER1N_PCMXYGZZJLMX_PIMPERSON_P" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[TRMTRAINADDRESS]外键关系 -->
@@ -13455,13 +13455,13 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PARJXNDKHJG" constraintName="DER1N_PARJXNDKHJG_PIMPERSON_PI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[PCMJXSYGZZJLMX]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmjxsygzzjlmx-102-730">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmjxsygzzjlmx-104-730">
        <addForeignKeyConstraint baseColumnNames="PCMJXSYGZZSQID" baseTableName="T_PCMJXSYGZZJLMX" constraintName="DER1N_PCMJXSYGZZJLMX_PCMJXSYGZ" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMJXSYGZZSQID" referencedTableName="T_PCMJXSYGZZSQ" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmjxsygzzjlmx-102-731">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmjxsygzzjlmx-104-731">
        <addForeignKeyConstraint baseColumnNames="PCMJXSZZKHJGJLID" baseTableName="T_PCMJXSYGZZJLMX" constraintName="DER1N_PCMJXSYGZZJLMX_PCMJXSZZK" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PCMJXSZZKHJGJLID" referencedTableName="T_PCMJXSZZKHJGJL" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmjxsygzzjlmx-102-732">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-pcmjxsygzzjlmx-104-732">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMJXSYGZZJLMX" constraintName="DER1N_PCMJXSYGZZJLMX_PIMPERSON" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[PCMPROFILE]外键关系 -->

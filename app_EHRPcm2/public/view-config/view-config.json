@@ -873,8 +873,8 @@
         "memo": ""
     },
     "pcmxygzzjlmxapprovalgridview": {
-        "title": "试用期员工转正",
-        "caption": "试用期员工转正",
+        "title": "试用期转正审核",
+        "caption": "试用期转正审核",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "PCM",
         "viewname": "PcmXygzzjlmxApprovalGridView",
@@ -990,8 +990,8 @@
         "memo": ""
     },
     "pcmjxsygzzjlmxapproavlgridview": {
-        "title": "见习期员工转正审核",
-        "caption": "见习期员工转正审核",
+        "title": "见习期转正审核",
+        "caption": "见习期转正审核",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "PCM",
         "viewname": "PcmJxsygzzjlmxApproavlGridView",

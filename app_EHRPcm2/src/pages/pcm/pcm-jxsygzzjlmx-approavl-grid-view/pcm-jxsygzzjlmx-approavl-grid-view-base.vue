@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="pcmjxsygzzjlmxapproavlgridview" viewTitle="见习期员工转正审核" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'pcm-jxsygzzjlmx-approavl-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="pcmjxsygzzjlmxapproavlgridview" viewTitle="见习期转正审核" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'pcm-jxsygzzjlmx-approavl-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -78,7 +78,7 @@ import CodeListService from "@service/app/codelist-service";
 
 
 /**
- * 见习期员工转正审核基类
+ * 见习期转正审核基类
  *
  * @export
  * @class PcmJxsygzzjlmxApproavlGridViewBase

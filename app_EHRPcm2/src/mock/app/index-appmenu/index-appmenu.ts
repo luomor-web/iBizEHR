@@ -23,7 +23,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	hidesidebar: false,
 	opendefault: false,
 	iconcls: '',
-	icon: '../../../img/pzgl/2/diaodongguanli.png',
+	icon: '../../../img/pzgl/1/diaodongguanli.png',
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
