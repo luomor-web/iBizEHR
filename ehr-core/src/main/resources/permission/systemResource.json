@@ -2804,7 +2804,7 @@
             {
                "appid":"Ehr",
                "appname":"EHR（门户）",
-               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[] }]
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"组织管理" },{ "id":"menuitem2" , "name":"基础管理" },{ "id":"menuitem3" , "name":"招聘管理" },{ "id":"menuitem4" , "name":"人员异动管理" },{ "id":"menuitem5" , "name":"假勤管理" }] }]
             }
             ,
             {
