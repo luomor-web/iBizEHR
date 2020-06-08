@@ -75,7 +75,6 @@ import pimpersonchange_en_US from '@locale/lanres/entities/pim-person-change/pim
 import pcmeducationexperience_en_US from '@locale/lanres/entities/pcm-education-experience/pcm-education-experience_en_US';
 import trmtrainplan_en_US from '@locale/lanres/entities/trm-train-plan/trm-train-plan_en_US';
 import pimachievements_en_US from '@locale/lanres/entities/pim-achievements/pim-achievements_en_US';
-import pcmbdsqd_en_US from '@locale/lanres/entities/pcm-bdsqd/pcm-bdsqd_en_US';
 import pcmxkml_en_US from '@locale/lanres/entities/pcm-xkml/pcm-xkml_en_US';
 import pimlanguageability_en_US from '@locale/lanres/entities/pim-language-ability/pim-language-ability_en_US';
 import pimperson_en_US from '@locale/lanres/entities/pim-person/pim-person_en_US';
@@ -242,7 +241,6 @@ import parbmfzjyx_en_US from '@locale/lanres/entities/par-bmfzjyx/par-bmfzjyx_en
 import pcmddsqd_en_US from '@locale/lanres/entities/pcm-ddsqd/pcm-ddsqd_en_US';
 import pcmjxsgz_en_US from '@locale/lanres/entities/pcm-jxsgz/pcm-jxsgz_en_US';
 import vacsituation_en_US from '@locale/lanres/entities/vac-situation/vac-situation_en_US';
-import pcmbdsqdmx_en_US from '@locale/lanres/entities/pcm-bdsqdmx/pcm-bdsqdmx_en_US';
 import pcmjxsygzzjlmx_en_US from '@locale/lanres/entities/pcm-jxsygzzjlmx/pcm-jxsygzzjlmx_en_US';
 import vacsystemapplication_en_US from '@locale/lanres/entities/vac-system-application/vac-system-application_en_US';
 import trmzzobm_en_US from '@locale/lanres/entities/trm-zzobm/trm-zzobm_en_US';
@@ -471,7 +469,6 @@ export default {
         pcmeducationexperience: pcmeducationexperience_en_US,
         trmtrainplan: trmtrainplan_en_US,
         pimachievements: pimachievements_en_US,
-        pcmbdsqd: pcmbdsqd_en_US,
         pcmxkml: pcmxkml_en_US,
         pimlanguageability: pimlanguageability_en_US,
         pimperson: pimperson_en_US,
@@ -638,7 +635,6 @@ export default {
         pcmddsqd: pcmddsqd_en_US,
         pcmjxsgz: pcmjxsgz_en_US,
         vacsituation: vacsituation_en_US,
-        pcmbdsqdmx: pcmbdsqdmx_en_US,
         pcmjxsygzzjlmx: pcmjxsygzzjlmx_en_US,
         vacsystemapplication: vacsystemapplication_en_US,
         trmzzobm: trmzzobm_en_US,

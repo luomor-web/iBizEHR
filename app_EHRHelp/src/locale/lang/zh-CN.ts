@@ -75,7 +75,6 @@ import pimpersonchange_zh_CN from '@locale/lanres/entities/pim-person-change/pim
 import pcmeducationexperience_zh_CN from '@locale/lanres/entities/pcm-education-experience/pcm-education-experience_zh_CN';
 import trmtrainplan_zh_CN from '@locale/lanres/entities/trm-train-plan/trm-train-plan_zh_CN';
 import pimachievements_zh_CN from '@locale/lanres/entities/pim-achievements/pim-achievements_zh_CN';
-import pcmbdsqd_zh_CN from '@locale/lanres/entities/pcm-bdsqd/pcm-bdsqd_zh_CN';
 import pcmxkml_zh_CN from '@locale/lanres/entities/pcm-xkml/pcm-xkml_zh_CN';
 import pimlanguageability_zh_CN from '@locale/lanres/entities/pim-language-ability/pim-language-ability_zh_CN';
 import pimperson_zh_CN from '@locale/lanres/entities/pim-person/pim-person_zh_CN';
@@ -242,7 +241,6 @@ import parbmfzjyx_zh_CN from '@locale/lanres/entities/par-bmfzjyx/par-bmfzjyx_zh
 import pcmddsqd_zh_CN from '@locale/lanres/entities/pcm-ddsqd/pcm-ddsqd_zh_CN';
 import pcmjxsgz_zh_CN from '@locale/lanres/entities/pcm-jxsgz/pcm-jxsgz_zh_CN';
 import vacsituation_zh_CN from '@locale/lanres/entities/vac-situation/vac-situation_zh_CN';
-import pcmbdsqdmx_zh_CN from '@locale/lanres/entities/pcm-bdsqdmx/pcm-bdsqdmx_zh_CN';
 import pcmjxsygzzjlmx_zh_CN from '@locale/lanres/entities/pcm-jxsygzzjlmx/pcm-jxsygzzjlmx_zh_CN';
 import vacsystemapplication_zh_CN from '@locale/lanres/entities/vac-system-application/vac-system-application_zh_CN';
 import trmzzobm_zh_CN from '@locale/lanres/entities/trm-zzobm/trm-zzobm_zh_CN';
@@ -471,7 +469,6 @@ export default {
         pcmeducationexperience: pcmeducationexperience_zh_CN,
         trmtrainplan: trmtrainplan_zh_CN,
         pimachievements: pimachievements_zh_CN,
-        pcmbdsqd: pcmbdsqd_zh_CN,
         pcmxkml: pcmxkml_zh_CN,
         pimlanguageability: pimlanguageability_zh_CN,
         pimperson: pimperson_zh_CN,
@@ -638,7 +635,6 @@ export default {
         pcmddsqd: pcmddsqd_zh_CN,
         pcmjxsgz: pcmjxsgz_zh_CN,
         vacsituation: vacsituation_zh_CN,
-        pcmbdsqdmx: pcmbdsqdmx_zh_CN,
         pcmjxsygzzjlmx: pcmjxsygzzjlmx_zh_CN,
         vacsystemapplication: vacsystemapplication_zh_CN,
         trmzzobm: trmzzobm_zh_CN,

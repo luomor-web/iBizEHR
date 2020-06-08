@@ -116,7 +116,6 @@ export class UIServiceRegister {
         this.allUIService.set('pcmeducationexperience', () => import('@/uiservice/pcm-education-experience/pcm-education-experience-ui-service'));
         this.allUIService.set('trmtrainplan', () => import('@/uiservice/trm-train-plan/trm-train-plan-ui-service'));
         this.allUIService.set('pimachievements', () => import('@/uiservice/pim-achievements/pim-achievements-ui-service'));
-        this.allUIService.set('pcmbdsqd', () => import('@/uiservice/pcm-bdsqd/pcm-bdsqd-ui-service'));
         this.allUIService.set('pcmxkml', () => import('@/uiservice/pcm-xkml/pcm-xkml-ui-service'));
         this.allUIService.set('pimlanguageability', () => import('@/uiservice/pim-language-ability/pim-language-ability-ui-service'));
         this.allUIService.set('pimperson', () => import('@/uiservice/pim-person/pim-person-ui-service'));
@@ -283,7 +282,6 @@ export class UIServiceRegister {
         this.allUIService.set('pcmddsqd', () => import('@/uiservice/pcm-ddsqd/pcm-ddsqd-ui-service'));
         this.allUIService.set('pcmjxsgz', () => import('@/uiservice/pcm-jxsgz/pcm-jxsgz-ui-service'));
         this.allUIService.set('vacsituation', () => import('@/uiservice/vac-situation/vac-situation-ui-service'));
-        this.allUIService.set('pcmbdsqdmx', () => import('@/uiservice/pcm-bdsqdmx/pcm-bdsqdmx-ui-service'));
         this.allUIService.set('pcmjxsygzzjlmx', () => import('@/uiservice/pcm-jxsygzzjlmx/pcm-jxsygzzjlmx-ui-service'));
         this.allUIService.set('vacsystemapplication', () => import('@/uiservice/vac-system-application/vac-system-application-ui-service'));
         this.allUIService.set('trmzzobm', () => import('@/uiservice/trm-zzobm/trm-zzobm-ui-service'));

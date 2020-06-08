@@ -116,7 +116,6 @@ export class EntityServiceRegister {
         this.allEntityService.set('pcmeducationexperience', () => import('@/service/pcm-education-experience/pcm-education-experience-service'));
         this.allEntityService.set('trmtrainplan', () => import('@/service/trm-train-plan/trm-train-plan-service'));
         this.allEntityService.set('pimachievements', () => import('@/service/pim-achievements/pim-achievements-service'));
-        this.allEntityService.set('pcmbdsqd', () => import('@/service/pcm-bdsqd/pcm-bdsqd-service'));
         this.allEntityService.set('pcmxkml', () => import('@/service/pcm-xkml/pcm-xkml-service'));
         this.allEntityService.set('pimlanguageability', () => import('@/service/pim-language-ability/pim-language-ability-service'));
         this.allEntityService.set('pimperson', () => import('@/service/pim-person/pim-person-service'));
@@ -283,7 +282,6 @@ export class EntityServiceRegister {
         this.allEntityService.set('pcmddsqd', () => import('@/service/pcm-ddsqd/pcm-ddsqd-service'));
         this.allEntityService.set('pcmjxsgz', () => import('@/service/pcm-jxsgz/pcm-jxsgz-service'));
         this.allEntityService.set('vacsituation', () => import('@/service/vac-situation/vac-situation-service'));
-        this.allEntityService.set('pcmbdsqdmx', () => import('@/service/pcm-bdsqdmx/pcm-bdsqdmx-service'));
         this.allEntityService.set('pcmjxsygzzjlmx', () => import('@/service/pcm-jxsygzzjlmx/pcm-jxsygzzjlmx-service'));
         this.allEntityService.set('vacsystemapplication', () => import('@/service/vac-system-application/vac-system-application-service'));
         this.allEntityService.set('trmzzobm', () => import('@/service/trm-zzobm/trm-zzobm-service'));
