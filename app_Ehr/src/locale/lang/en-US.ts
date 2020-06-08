@@ -1,3 +1,5 @@
+import dynachart_en_US from '@locale/lanres/entities/dyna-chart/dyna-chart_en_US';
+import dynadashboard_en_US from '@locale/lanres/entities/dyna-dashboard/dyna-dashboard_en_US';
 import components_en_US from '@locale/lanres/components/components_en_US';
 import codelist_en_US from '@locale/lanres/codelist/codelist_en_US';
 import userCustom_en_US from '@locale/lanres/userCustom/userCustom_en_US';
@@ -64,6 +66,8 @@ export default {
         },
     },
     entities: {
+        dynachart: dynachart_en_US,
+        dynadashboard: dynadashboard_en_US,
     },
     components: components_en_US,
     codelist: codelist_en_US,

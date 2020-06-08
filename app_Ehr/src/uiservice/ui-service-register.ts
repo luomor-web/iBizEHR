@@ -39,7 +39,9 @@ export class UIServiceRegister {
      * @memberof UIServiceRegister
      */
     protected init(): void {
-            }
+                this.allUIService.set('dynachart', () => import('@/uiservice/dyna-chart/dyna-chart-ui-service'));
+        this.allUIService.set('dynadashboard', () => import('@/uiservice/dyna-dashboard/dyna-dashboard-ui-service'));
+    }
 
     /**
      * 加载服务实体

@@ -1,3 +1,5 @@
+import dynachart_zh_CN from '@locale/lanres/entities/dyna-chart/dyna-chart_zh_CN';
+import dynadashboard_zh_CN from '@locale/lanres/entities/dyna-dashboard/dyna-dashboard_zh_CN';
 import components_zh_CN from '@locale/lanres/components/components_zh_CN';
 import codelist_zh_CN from '@locale/lanres/codelist/codelist_zh_CN';
 import userCustom_zh_CN from '@locale/lanres/userCustom/userCustom_zh_CN';
@@ -64,6 +66,8 @@ export default {
         },
     },
     entities: {
+        dynachart: dynachart_zh_CN,
+        dynadashboard: dynadashboard_zh_CN,
     },
     components: components_zh_CN,
     codelist: codelist_zh_CN,

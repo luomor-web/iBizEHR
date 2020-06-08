@@ -7,3 +7,5 @@ import './login/login';
 import './upload/upload';
 
 // 实体级接口对象
+import './entity/dyna-charts/dyna-charts';
+import './entity/dyna-dashboards/dyna-dashboards';

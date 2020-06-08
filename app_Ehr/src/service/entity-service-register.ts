@@ -39,7 +39,9 @@ export class EntityServiceRegister {
      * @memberof EntityServiceRegister
      */
     protected init(): void {
-            }
+                this.allEntityService.set('dynachart', () => import('@/service/dyna-chart/dyna-chart-service'));
+        this.allEntityService.set('dynadashboard', () => import('@/service/dyna-dashboard/dyna-dashboard-service'));
+    }
 
     /**
      * 加载实体数据服务
