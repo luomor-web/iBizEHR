@@ -41,7 +41,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	hidesidebar: false,
 	opendefault: false,
 	iconcls: '',
-	icon: '../../../img/potal_menu/potal_jcgl.png',
+	icon: '../../../img/jcgl/1/gerenxinxi.png',
 	textcls: '',
 	appfunctag: 'EHRPim',
 	resourcetag: '',

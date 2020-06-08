@@ -46,7 +46,7 @@ export default class IndexModel {
 	hidesidebar: false,
 	opendefault: false,
 	iconcls: '',
-	icon: '../../../img/potal_menu/potal_jcgl.png',
+	icon: '../../../img/jcgl/1/gerenxinxi.png',
 	textcls: '',
 	appfunctag: 'EHRPim',
 	resourcetag: '',
