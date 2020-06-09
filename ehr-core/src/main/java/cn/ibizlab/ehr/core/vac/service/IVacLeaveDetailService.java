@@ -37,6 +37,7 @@ public interface IVacLeaveDetailService extends IService<VacLeaveDetail>{
     void saveBatch(List<VacLeaveDetail> list) ;
     VacLeaveDetail calcJHQJTS(VacLeaveDetail et) ;
     VacLeaveDetail get(String key) ;
+    VacLeaveDetail calcPlanDays(VacLeaveDetail et) ;
     boolean checkKey(VacLeaveDetail et) ;
     VacLeaveDetail getDraft(VacLeaveDetail et) ;
     Page<VacLeaveDetail> searchDefault(VacLeaveDetailSearchContext context) ;

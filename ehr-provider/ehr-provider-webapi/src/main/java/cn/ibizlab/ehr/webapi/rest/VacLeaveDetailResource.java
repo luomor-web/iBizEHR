@@ -141,7 +141,7 @@ public class VacLeaveDetailResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveDetail-CalcJHQJTS-all')")
-    @ApiOperation(value = "计算计划请假天数", tags = {"请假明细" },  notes = "计算计划请假天数")
+    @ApiOperation(value = "计算计划请假天数(作废)", tags = {"请假明细" },  notes = "计算计划请假天数(作废)")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/{vacleavedetail_id}/calcjhqjts")
     @Transactional
     public ResponseEntity<VacLeaveDetailDTO> calcJHQJTS(@PathVariable("vacleavedetail_id") String vacleavedetail_id, @RequestBody VacLeaveDetailDTO vacleavedetaildto) {
@@ -159,6 +159,18 @@ public class VacLeaveDetailResource {
         VacLeaveDetail domain = vacleavedetailService.get(vacleavedetail_id);
         VacLeaveDetailDTO dto = vacleavedetailMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveDetail-CalcPlanDays-all')")
+    @ApiOperation(value = "计算计划请假天数", tags = {"请假明细" },  notes = "计算计划请假天数")
+	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/{vacleavedetail_id}/calcplandays")
+    @Transactional
+    public ResponseEntity<VacLeaveDetailDTO> calcPlanDays(@PathVariable("vacleavedetail_id") String vacleavedetail_id, @RequestBody VacLeaveDetailDTO vacleavedetaildto) {
+        VacLeaveDetail vacleavedetail = vacleavedetailMapping.toDomain(vacleavedetaildto);
+        vacleavedetail.setVacleavedetailid(vacleavedetail_id);
+        vacleavedetail = vacleavedetailService.calcPlanDays(vacleavedetail);
+        vacleavedetaildto = vacleavedetailMapping.toDto(vacleavedetail);
+        return ResponseEntity.status(HttpStatus.OK).body(vacleavedetaildto);
     }
 
     @ApiOperation(value = "检查请假明细", tags = {"请假明细" },  notes = "检查请假明细")

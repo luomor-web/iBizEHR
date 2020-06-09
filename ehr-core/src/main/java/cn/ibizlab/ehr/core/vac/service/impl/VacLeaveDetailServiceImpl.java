@@ -169,6 +169,13 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
     }
 
     @Override
+    @Transactional
+    public VacLeaveDetail calcPlanDays(VacLeaveDetail et) {
+        //自定义代码
+        return et;
+    }
+
+    @Override
     public boolean checkKey(VacLeaveDetail et) {
         return (!ObjectUtils.isEmpty(et.getVacleavedetailid()))&&(!Objects.isNull(this.getById(et.getVacleavedetailid())));
     }

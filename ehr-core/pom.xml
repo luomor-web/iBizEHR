@@ -156,7 +156,7 @@
                                     <verbose>true</verbose>
                                     <logging>debug</logging>
                                     <contexts>!test</contexts>
-                                    <diffExcludeObjects>Index:.*,table:ibzfile,ibzuser,ibzdataaudit,IBZFILE,IBZUSER,IBZDATAAUDIT</diffExcludeObjects>
+                                    <diffExcludeObjects>Index:.*,table:ibzfile,ibzuser,ibzdataaudit,ibzcfg,IBZFILE,IBZUSER,IBZDATAAUDIT,IBZCFG</diffExcludeObjects>
                                 </configuration>
                                 <phase>process-resources</phase>
                                 <goals>

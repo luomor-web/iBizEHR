@@ -1261,7 +1261,7 @@
     "delogicname":"请假明细",
     "sysmoudle":{"id":"VAC","name":"休假管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
-    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CalcSJQJTS" , "name":"计算实际请假天数" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetNianJia" , "name":"获取假期使用情况、温馨提示、计算计划请假天数" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CalcJHQJTS" , "name":"计算计划请假天数" , "type":"DELOGIC" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
+    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CalcSJQJTS" , "name":"计算实际请假天数" , "type":"USERCUSTOM" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetNianJia" , "name":"获取假期使用情况、温馨提示、计算计划请假天数" , "type":"USERCUSTOM" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CalcJHQJTS" , "name":"计算计划请假天数(作废)" , "type":"DELOGIC" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CalcPlanDays" , "name":"计算计划请假天数" , "type":"USERCUSTOM" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
