@@ -31,7 +31,7 @@ public class PimSearchModalSearchContext extends QueryWrapperContext<PimSearchMo
 	public void setN_pimsearchmodalname_like(String n_pimsearchmodalname_like) {
         this.n_pimsearchmodalname_like = n_pimsearchmodalname_like;
         if(!ObjectUtils.isEmpty(this.n_pimsearchmodalname_like)){
-            this.getSelectCond().like("pimsearchmodalname", n_pimsearchmodalname_like);
+            this.getSearchCond().like("pimsearchmodalname", n_pimsearchmodalname_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class PimSearchModalSearchContext extends QueryWrapperContext<PimSearchMo
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimsearchmodalname", query)   
             );
 		 }

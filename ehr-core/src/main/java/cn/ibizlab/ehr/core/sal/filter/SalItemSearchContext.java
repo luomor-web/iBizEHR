@@ -31,28 +31,28 @@ public class SalItemSearchContext extends QueryWrapperContext<SalItem> {
 	public void setN_salitemname_like(String n_salitemname_like) {
         this.n_salitemname_like = n_salitemname_like;
         if(!ObjectUtils.isEmpty(this.n_salitemname_like)){
-            this.getSelectCond().like("salitemname", n_salitemname_like);
+            this.getSearchCond().like("salitemname", n_salitemname_like);
         }
     }
 	private String n_salsubjectname_eq;//[财务科目]
 	public void setN_salsubjectname_eq(String n_salsubjectname_eq) {
         this.n_salsubjectname_eq = n_salsubjectname_eq;
         if(!ObjectUtils.isEmpty(this.n_salsubjectname_eq)){
-            this.getSelectCond().eq("salsubjectname", n_salsubjectname_eq);
+            this.getSearchCond().eq("salsubjectname", n_salsubjectname_eq);
         }
     }
 	private String n_salsubjectname_like;//[财务科目]
 	public void setN_salsubjectname_like(String n_salsubjectname_like) {
         this.n_salsubjectname_like = n_salsubjectname_like;
         if(!ObjectUtils.isEmpty(this.n_salsubjectname_like)){
-            this.getSelectCond().like("salsubjectname", n_salsubjectname_like);
+            this.getSearchCond().like("salsubjectname", n_salsubjectname_like);
         }
     }
 	private String n_salsubjectid_eq;//[财务科目标识]
 	public void setN_salsubjectid_eq(String n_salsubjectid_eq) {
         this.n_salsubjectid_eq = n_salsubjectid_eq;
         if(!ObjectUtils.isEmpty(this.n_salsubjectid_eq)){
-            this.getSelectCond().eq("salsubjectid", n_salsubjectid_eq);
+            this.getSearchCond().eq("salsubjectid", n_salsubjectid_eq);
         }
     }
 
@@ -63,7 +63,7 @@ public class SalItemSearchContext extends QueryWrapperContext<SalItem> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("salitemname", query)   
             );
 		 }

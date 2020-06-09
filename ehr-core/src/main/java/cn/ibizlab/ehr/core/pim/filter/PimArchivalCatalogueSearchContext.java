@@ -31,28 +31,28 @@ public class PimArchivalCatalogueSearchContext extends QueryWrapperContext<PimAr
 	public void setN_archivalcataloguename_like(String n_archivalcataloguename_like) {
         this.n_archivalcataloguename_like = n_archivalcataloguename_like;
         if(!ObjectUtils.isEmpty(this.n_archivalcataloguename_like)){
-            this.getSelectCond().like("archivalcataloguename", n_archivalcataloguename_like);
+            this.getSearchCond().like("archivalcataloguename", n_archivalcataloguename_like);
         }
     }
 	private String n_pimarchivesname_eq;//[档案信息名称]
 	public void setN_pimarchivesname_eq(String n_pimarchivesname_eq) {
         this.n_pimarchivesname_eq = n_pimarchivesname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimarchivesname_eq)){
-            this.getSelectCond().eq("pimarchivesname", n_pimarchivesname_eq);
+            this.getSearchCond().eq("pimarchivesname", n_pimarchivesname_eq);
         }
     }
 	private String n_pimarchivesname_like;//[档案信息名称]
 	public void setN_pimarchivesname_like(String n_pimarchivesname_like) {
         this.n_pimarchivesname_like = n_pimarchivesname_like;
         if(!ObjectUtils.isEmpty(this.n_pimarchivesname_like)){
-            this.getSelectCond().like("pimarchivesname", n_pimarchivesname_like);
+            this.getSearchCond().like("pimarchivesname", n_pimarchivesname_like);
         }
     }
 	private String n_pimarchivesid_eq;//[档案信息标识]
 	public void setN_pimarchivesid_eq(String n_pimarchivesid_eq) {
         this.n_pimarchivesid_eq = n_pimarchivesid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimarchivesid_eq)){
-            this.getSelectCond().eq("pimarchivesid", n_pimarchivesid_eq);
+            this.getSearchCond().eq("pimarchivesid", n_pimarchivesid_eq);
         }
     }
 
@@ -63,7 +63,7 @@ public class PimArchivalCatalogueSearchContext extends QueryWrapperContext<PimAr
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("archivalcataloguename", query)   
             );
 		 }

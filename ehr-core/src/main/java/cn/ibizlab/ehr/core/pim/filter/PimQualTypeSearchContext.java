@@ -31,14 +31,14 @@ public class PimQualTypeSearchContext extends QueryWrapperContext<PimQualType> {
 	public void setN_pimqualtypeid_like(String n_pimqualtypeid_like) {
         this.n_pimqualtypeid_like = n_pimqualtypeid_like;
         if(!ObjectUtils.isEmpty(this.n_pimqualtypeid_like)){
-            this.getSelectCond().like("pimqualtypeid", n_pimqualtypeid_like);
+            this.getSearchCond().like("pimqualtypeid", n_pimqualtypeid_like);
         }
     }
 	private String n_pimqualtypename_like;//[岗位（技能）证书]
 	public void setN_pimqualtypename_like(String n_pimqualtypename_like) {
         this.n_pimqualtypename_like = n_pimqualtypename_like;
         if(!ObjectUtils.isEmpty(this.n_pimqualtypename_like)){
-            this.getSelectCond().like("pimqualtypename", n_pimqualtypename_like);
+            this.getSearchCond().like("pimqualtypename", n_pimqualtypename_like);
         }
     }
 
@@ -49,7 +49,7 @@ public class PimQualTypeSearchContext extends QueryWrapperContext<PimQualType> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimqualtypename", query)   
             );
 		 }

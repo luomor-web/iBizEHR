@@ -31,35 +31,35 @@ public class SalStdGwGzrateSearchContext extends QueryWrapperContext<SalStdGwGzr
 	public void setN_khjl_eq(String n_khjl_eq) {
         this.n_khjl_eq = n_khjl_eq;
         if(!ObjectUtils.isEmpty(this.n_khjl_eq)){
-            this.getSelectCond().eq("khjl", n_khjl_eq);
+            this.getSearchCond().eq("khjl", n_khjl_eq);
         }
     }
 	private String n_salstdgwgzratename_like;//[岗位工资标准(绩效比例)名称]
 	public void setN_salstdgwgzratename_like(String n_salstdgwgzratename_like) {
         this.n_salstdgwgzratename_like = n_salstdgwgzratename_like;
         if(!ObjectUtils.isEmpty(this.n_salstdgwgzratename_like)){
-            this.getSelectCond().like("salstdgwgzratename", n_salstdgwgzratename_like);
+            this.getSearchCond().like("salstdgwgzratename", n_salstdgwgzratename_like);
         }
     }
 	private String n_ormorgname_eq;//[组织]
 	public void setN_ormorgname_eq(String n_ormorgname_eq) {
         this.n_ormorgname_eq = n_ormorgname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_eq)){
-            this.getSelectCond().eq("ormorgname", n_ormorgname_eq);
+            this.getSearchCond().eq("ormorgname", n_ormorgname_eq);
         }
     }
 	private String n_ormorgname_like;//[组织]
 	public void setN_ormorgname_like(String n_ormorgname_like) {
         this.n_ormorgname_like = n_ormorgname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_like)){
-            this.getSelectCond().like("ormorgname", n_ormorgname_like);
+            this.getSearchCond().like("ormorgname", n_ormorgname_like);
         }
     }
 	private String n_ormorgid_eq;//[组织标识]
 	public void setN_ormorgid_eq(String n_ormorgid_eq) {
         this.n_ormorgid_eq = n_ormorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
-            this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class SalStdGwGzrateSearchContext extends QueryWrapperContext<SalStdGwGzr
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("salstdgwgzratename", query)   
             );
 		 }

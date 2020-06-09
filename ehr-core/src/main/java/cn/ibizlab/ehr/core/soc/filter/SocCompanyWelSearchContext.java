@@ -31,49 +31,49 @@ public class SocCompanyWelSearchContext extends QueryWrapperContext<SocCompanyWe
 	public void setN_soccompanywelname_like(String n_soccompanywelname_like) {
         this.n_soccompanywelname_like = n_soccompanywelname_like;
         if(!ObjectUtils.isEmpty(this.n_soccompanywelname_like)){
-            this.getSelectCond().like("soccompanywelname", n_soccompanywelname_like);
+            this.getSearchCond().like("soccompanywelname", n_soccompanywelname_like);
         }
     }
 	private String n_ormorgname_eq;//[组织名称]
 	public void setN_ormorgname_eq(String n_ormorgname_eq) {
         this.n_ormorgname_eq = n_ormorgname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_eq)){
-            this.getSelectCond().eq("ormorgname", n_ormorgname_eq);
+            this.getSearchCond().eq("ormorgname", n_ormorgname_eq);
         }
     }
 	private String n_ormorgname_like;//[组织名称]
 	public void setN_ormorgname_like(String n_ormorgname_like) {
         this.n_ormorgname_like = n_ormorgname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_like)){
-            this.getSelectCond().like("ormorgname", n_ormorgname_like);
+            this.getSearchCond().like("ormorgname", n_ormorgname_like);
         }
     }
 	private String n_socselfarebasename_eq;//[社保参保地名称]
 	public void setN_socselfarebasename_eq(String n_socselfarebasename_eq) {
         this.n_socselfarebasename_eq = n_socselfarebasename_eq;
         if(!ObjectUtils.isEmpty(this.n_socselfarebasename_eq)){
-            this.getSelectCond().eq("socselfarebasename", n_socselfarebasename_eq);
+            this.getSearchCond().eq("socselfarebasename", n_socselfarebasename_eq);
         }
     }
 	private String n_socselfarebasename_like;//[社保参保地名称]
 	public void setN_socselfarebasename_like(String n_socselfarebasename_like) {
         this.n_socselfarebasename_like = n_socselfarebasename_like;
         if(!ObjectUtils.isEmpty(this.n_socselfarebasename_like)){
-            this.getSelectCond().like("socselfarebasename", n_socselfarebasename_like);
+            this.getSearchCond().like("socselfarebasename", n_socselfarebasename_like);
         }
     }
 	private String n_ormorgid_eq;//[组织标识]
 	public void setN_ormorgid_eq(String n_ormorgid_eq) {
         this.n_ormorgid_eq = n_ormorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
-            this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
         }
     }
 	private String n_socselfarebaseid_eq;//[社保参保地标识]
 	public void setN_socselfarebaseid_eq(String n_socselfarebaseid_eq) {
         this.n_socselfarebaseid_eq = n_socselfarebaseid_eq;
         if(!ObjectUtils.isEmpty(this.n_socselfarebaseid_eq)){
-            this.getSelectCond().eq("socselfarebaseid", n_socselfarebaseid_eq);
+            this.getSearchCond().eq("socselfarebaseid", n_socselfarebaseid_eq);
         }
     }
 
@@ -84,7 +84,7 @@ public class SocCompanyWelSearchContext extends QueryWrapperContext<SocCompanyWe
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("soccompanywelname", query)   
             );
 		 }

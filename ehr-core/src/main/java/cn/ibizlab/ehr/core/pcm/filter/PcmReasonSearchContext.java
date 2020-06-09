@@ -31,14 +31,14 @@ public class PcmReasonSearchContext extends QueryWrapperContext<PcmReason> {
 	public void setN_lx_eq(String n_lx_eq) {
         this.n_lx_eq = n_lx_eq;
         if(!ObjectUtils.isEmpty(this.n_lx_eq)){
-            this.getSelectCond().eq("lx", n_lx_eq);
+            this.getSearchCond().eq("lx", n_lx_eq);
         }
     }
 	private String n_pcmreasonname_like;//[配置原因代码表名称]
 	public void setN_pcmreasonname_like(String n_pcmreasonname_like) {
         this.n_pcmreasonname_like = n_pcmreasonname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmreasonname_like)){
-            this.getSelectCond().like("pcmreasonname", n_pcmreasonname_like);
+            this.getSearchCond().like("pcmreasonname", n_pcmreasonname_like);
         }
     }
 
@@ -49,7 +49,7 @@ public class PcmReasonSearchContext extends QueryWrapperContext<PcmReason> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmreasonname", query)   
             );
 		 }

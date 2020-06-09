@@ -31,28 +31,28 @@ public class VacUseNxjmxSearchContext extends QueryWrapperContext<VacUseNxjmx> {
 	public void setN_nd_eq(String n_nd_eq) {
         this.n_nd_eq = n_nd_eq;
         if(!ObjectUtils.isEmpty(this.n_nd_eq)){
-            this.getSelectCond().eq("nd", n_nd_eq);
+            this.getSearchCond().eq("nd", n_nd_eq);
         }
     }
 	private String n_vacusenxjmxname_like;//[假期使用明细名称]
 	public void setN_vacusenxjmxname_like(String n_vacusenxjmxname_like) {
         this.n_vacusenxjmxname_like = n_vacusenxjmxname_like;
         if(!ObjectUtils.isEmpty(this.n_vacusenxjmxname_like)){
-            this.getSelectCond().like("vacusenxjmxname", n_vacusenxjmxname_like);
+            this.getSearchCond().like("vacusenxjmxname", n_vacusenxjmxname_like);
         }
     }
 	private String n_qjzl_eq;//[请假种类]
 	public void setN_qjzl_eq(String n_qjzl_eq) {
         this.n_qjzl_eq = n_qjzl_eq;
         if(!ObjectUtils.isEmpty(this.n_qjzl_eq)){
-            this.getSelectCond().eq("qjzl", n_qjzl_eq);
+            this.getSearchCond().eq("qjzl", n_qjzl_eq);
         }
     }
 	private String n_vacleavedetailid_eq;//[请销假明细标识]
 	public void setN_vacleavedetailid_eq(String n_vacleavedetailid_eq) {
         this.n_vacleavedetailid_eq = n_vacleavedetailid_eq;
         if(!ObjectUtils.isEmpty(this.n_vacleavedetailid_eq)){
-            this.getSelectCond().eq("vacleavedetailid", n_vacleavedetailid_eq);
+            this.getSearchCond().eq("vacleavedetailid", n_vacleavedetailid_eq);
         }
     }
 
@@ -63,7 +63,7 @@ public class VacUseNxjmxSearchContext extends QueryWrapperContext<VacUseNxjmx> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("vacusenxjmxname", query)   
             );
 		 }

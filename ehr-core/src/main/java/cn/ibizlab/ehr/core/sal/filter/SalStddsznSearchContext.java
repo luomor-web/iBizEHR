@@ -31,35 +31,35 @@ public class SalStddsznSearchContext extends QueryWrapperContext<SalStddszn> {
 	public void setN_sfdszn_eq(String n_sfdszn_eq) {
         this.n_sfdszn_eq = n_sfdszn_eq;
         if(!ObjectUtils.isEmpty(this.n_sfdszn_eq)){
-            this.getSelectCond().eq("sfdszn", n_sfdszn_eq);
+            this.getSearchCond().eq("sfdszn", n_sfdszn_eq);
         }
     }
 	private String n_salstddsznname_like;//[独生子女标准名称]
 	public void setN_salstddsznname_like(String n_salstddsznname_like) {
         this.n_salstddsznname_like = n_salstddsznname_like;
         if(!ObjectUtils.isEmpty(this.n_salstddsznname_like)){
-            this.getSelectCond().like("salstddsznname", n_salstddsznname_like);
+            this.getSearchCond().like("salstddsznname", n_salstddsznname_like);
         }
     }
 	private String n_ormorgname_eq;//[组织]
 	public void setN_ormorgname_eq(String n_ormorgname_eq) {
         this.n_ormorgname_eq = n_ormorgname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_eq)){
-            this.getSelectCond().eq("ormorgname", n_ormorgname_eq);
+            this.getSearchCond().eq("ormorgname", n_ormorgname_eq);
         }
     }
 	private String n_ormorgname_like;//[组织]
 	public void setN_ormorgname_like(String n_ormorgname_like) {
         this.n_ormorgname_like = n_ormorgname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_like)){
-            this.getSelectCond().like("ormorgname", n_ormorgname_like);
+            this.getSearchCond().like("ormorgname", n_ormorgname_like);
         }
     }
 	private String n_ormorgid_eq;//[组织标识]
 	public void setN_ormorgid_eq(String n_ormorgid_eq) {
         this.n_ormorgid_eq = n_ormorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
-            this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class SalStddsznSearchContext extends QueryWrapperContext<SalStddszn> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("salstddsznname", query)   
             );
 		 }

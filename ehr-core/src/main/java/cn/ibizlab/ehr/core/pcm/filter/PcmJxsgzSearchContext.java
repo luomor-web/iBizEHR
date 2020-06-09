@@ -31,21 +31,21 @@ public class PcmJxsgzSearchContext extends QueryWrapperContext<PcmJxsgz> {
 	public void setN_xllx_eq(String n_xllx_eq) {
         this.n_xllx_eq = n_xllx_eq;
         if(!ObjectUtils.isEmpty(this.n_xllx_eq)){
-            this.getSelectCond().eq("xllx", n_xllx_eq);
+            this.getSearchCond().eq("xllx", n_xllx_eq);
         }
     }
 	private String n_duration_eq;//[见习期限]
 	public void setN_duration_eq(String n_duration_eq) {
         this.n_duration_eq = n_duration_eq;
         if(!ObjectUtils.isEmpty(this.n_duration_eq)){
-            this.getSelectCond().eq("duration", n_duration_eq);
+            this.getSearchCond().eq("duration", n_duration_eq);
         }
     }
 	private String n_pcmjxsgzname_like;//[见习生规则名称]
 	public void setN_pcmjxsgzname_like(String n_pcmjxsgzname_like) {
         this.n_pcmjxsgzname_like = n_pcmjxsgzname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmjxsgzname_like)){
-            this.getSelectCond().like("pcmjxsgzname", n_pcmjxsgzname_like);
+            this.getSearchCond().like("pcmjxsgzname", n_pcmjxsgzname_like);
         }
     }
 
@@ -56,7 +56,7 @@ public class PcmJxsgzSearchContext extends QueryWrapperContext<PcmJxsgz> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmjxsgzname", query)   
             );
 		 }

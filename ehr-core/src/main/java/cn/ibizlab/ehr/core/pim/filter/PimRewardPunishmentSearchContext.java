@@ -31,77 +31,77 @@ public class PimRewardPunishmentSearchContext extends QueryWrapperContext<PimRew
 	public void setN_jlczz_eq(String n_jlczz_eq) {
         this.n_jlczz_eq = n_jlczz_eq;
         if(!ObjectUtils.isEmpty(this.n_jlczz_eq)){
-            this.getSelectCond().eq("jlczz", n_jlczz_eq);
+            this.getSearchCond().eq("jlczz", n_jlczz_eq);
         }
     }
 	private String n_pimrewardpunishmentname_like;//[奖惩名称]
 	public void setN_pimrewardpunishmentname_like(String n_pimrewardpunishmentname_like) {
         this.n_pimrewardpunishmentname_like = n_pimrewardpunishmentname_like;
         if(!ObjectUtils.isEmpty(this.n_pimrewardpunishmentname_like)){
-            this.getSelectCond().like("pimrewardpunishmentname", n_pimrewardpunishmentname_like);
+            this.getSearchCond().like("pimrewardpunishmentname", n_pimrewardpunishmentname_like);
         }
     }
 	private String n_jlspzt_eq;//[记录审批状态]
 	public void setN_jlspzt_eq(String n_jlspzt_eq) {
         this.n_jlspzt_eq = n_jlspzt_eq;
         if(!ObjectUtils.isEmpty(this.n_jlspzt_eq)){
-            this.getSelectCond().eq("jlspzt", n_jlspzt_eq);
+            this.getSearchCond().eq("jlspzt", n_jlspzt_eq);
         }
     }
 	private String n_jlss_eq;//[记录所属]
 	public void setN_jlss_eq(String n_jlss_eq) {
         this.n_jlss_eq = n_jlss_eq;
         if(!ObjectUtils.isEmpty(this.n_jlss_eq)){
-            this.getSelectCond().eq("jlss", n_jlss_eq);
+            this.getSearchCond().eq("jlss", n_jlss_eq);
         }
     }
 	private String n_jcjb_eq;//[奖惩级别]
 	public void setN_jcjb_eq(String n_jcjb_eq) {
         this.n_jcjb_eq = n_jcjb_eq;
         if(!ObjectUtils.isEmpty(this.n_jcjb_eq)){
-            this.getSelectCond().eq("jcjb", n_jcjb_eq);
+            this.getSearchCond().eq("jcjb", n_jcjb_eq);
         }
     }
 	private String n_lx_eq;//[奖惩分类]
 	public void setN_lx_eq(String n_lx_eq) {
         this.n_lx_eq = n_lx_eq;
         if(!ObjectUtils.isEmpty(this.n_lx_eq)){
-            this.getSelectCond().eq("lx", n_lx_eq);
+            this.getSearchCond().eq("lx", n_lx_eq);
         }
     }
 	private String n_cflx_eq;//[惩罚类型]
 	public void setN_cflx_eq(String n_cflx_eq) {
         this.n_cflx_eq = n_cflx_eq;
         if(!ObjectUtils.isEmpty(this.n_cflx_eq)){
-            this.getSelectCond().eq("cflx", n_cflx_eq);
+            this.getSearchCond().eq("cflx", n_cflx_eq);
         }
     }
 	private String n_jclx_eq;//[奖励级别]
 	public void setN_jclx_eq(String n_jclx_eq) {
         this.n_jclx_eq = n_jclx_eq;
         if(!ObjectUtils.isEmpty(this.n_jclx_eq)){
-            this.getSelectCond().eq("jclx", n_jclx_eq);
+            this.getSearchCond().eq("jclx", n_jclx_eq);
         }
     }
 	private String n_pimpersonname_eq;//[人员信息名称]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[人员信息名称]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_pimpersonid_eq;//[人员信息标识]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 
@@ -112,7 +112,7 @@ public class PimRewardPunishmentSearchContext extends QueryWrapperContext<PimRew
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimrewardpunishmentname", query)   
             );
 		 }

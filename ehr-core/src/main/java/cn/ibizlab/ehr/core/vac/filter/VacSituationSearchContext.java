@@ -31,28 +31,28 @@ public class VacSituationSearchContext extends QueryWrapperContext<VacSituation>
 	public void setN_vacsituationname_like(String n_vacsituationname_like) {
         this.n_vacsituationname_like = n_vacsituationname_like;
         if(!ObjectUtils.isEmpty(this.n_vacsituationname_like)){
-            this.getSelectCond().like("vacsituationname", n_vacsituationname_like);
+            this.getSearchCond().like("vacsituationname", n_vacsituationname_like);
         }
     }
 	private String n_pimpersonname_eq;//[人员信息名称]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[人员信息名称]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_pimpersonid_eq;//[人员信息标识]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 
@@ -63,7 +63,7 @@ public class VacSituationSearchContext extends QueryWrapperContext<VacSituation>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("vacsituationname", query)   
             );
 		 }

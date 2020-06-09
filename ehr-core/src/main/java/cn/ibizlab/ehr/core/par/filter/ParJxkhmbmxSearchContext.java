@@ -31,28 +31,28 @@ public class ParJxkhmbmxSearchContext extends QueryWrapperContext<ParJxkhmbmx> {
 	public void setN_parjxkhmbmxname_like(String n_parjxkhmbmxname_like) {
         this.n_parjxkhmbmxname_like = n_parjxkhmbmxname_like;
         if(!ObjectUtils.isEmpty(this.n_parjxkhmbmxname_like)){
-            this.getSelectCond().like("parjxkhmbmxname", n_parjxkhmbmxname_like);
+            this.getSearchCond().like("parjxkhmbmxname", n_parjxkhmbmxname_like);
         }
     }
 	private String n_parjxkhmbname_eq;//[模板名称]
 	public void setN_parjxkhmbname_eq(String n_parjxkhmbname_eq) {
         this.n_parjxkhmbname_eq = n_parjxkhmbname_eq;
         if(!ObjectUtils.isEmpty(this.n_parjxkhmbname_eq)){
-            this.getSelectCond().eq("parjxkhmbname", n_parjxkhmbname_eq);
+            this.getSearchCond().eq("parjxkhmbname", n_parjxkhmbname_eq);
         }
     }
 	private String n_parjxkhmbname_like;//[模板名称]
 	public void setN_parjxkhmbname_like(String n_parjxkhmbname_like) {
         this.n_parjxkhmbname_like = n_parjxkhmbname_like;
         if(!ObjectUtils.isEmpty(this.n_parjxkhmbname_like)){
-            this.getSelectCond().like("parjxkhmbname", n_parjxkhmbname_like);
+            this.getSearchCond().like("parjxkhmbname", n_parjxkhmbname_like);
         }
     }
 	private String n_parjxkhmbid_eq;//[模板ID]
 	public void setN_parjxkhmbid_eq(String n_parjxkhmbid_eq) {
         this.n_parjxkhmbid_eq = n_parjxkhmbid_eq;
         if(!ObjectUtils.isEmpty(this.n_parjxkhmbid_eq)){
-            this.getSelectCond().eq("parjxkhmbid", n_parjxkhmbid_eq);
+            this.getSearchCond().eq("parjxkhmbid", n_parjxkhmbid_eq);
         }
     }
 
@@ -63,7 +63,7 @@ public class ParJxkhmbmxSearchContext extends QueryWrapperContext<ParJxkhmbmx> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("parjxkhmbmxname", query)   
             );
 		 }

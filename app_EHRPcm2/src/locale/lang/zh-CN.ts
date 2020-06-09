@@ -9,6 +9,7 @@ import pcmxygzzkhjgjl_zh_CN from '@locale/lanres/entities/pcm-xygzzkhjgjl/pcm-xy
 import pcmydgzmx_zh_CN from '@locale/lanres/entities/pcm-ydgzmx/pcm-ydgzmx_zh_CN';
 import ormorg_zh_CN from '@locale/lanres/entities/orm-org/orm-org_zh_CN';
 import pimdistirbution_zh_CN from '@locale/lanres/entities/pim-distirbution/pim-distirbution_zh_CN';
+import personstatemgr_zh_CN from '@locale/lanres/entities/person-state-mgr/person-state-mgr_zh_CN';
 import pcmxygzzsqmx_zh_CN from '@locale/lanres/entities/pcm-xygzzsqmx/pcm-xygzzsqmx_zh_CN';
 import pcmyddgmx_zh_CN from '@locale/lanres/entities/pcm-yddgmx/pcm-yddgmx_zh_CN';
 import ormduty_zh_CN from '@locale/lanres/entities/orm-duty/orm-duty_zh_CN';
@@ -119,6 +120,7 @@ export default {
         pcmydgzmx: pcmydgzmx_zh_CN,
         ormorg: ormorg_zh_CN,
         pimdistirbution: pimdistirbution_zh_CN,
+        personstatemgr: personstatemgr_zh_CN,
         pcmxygzzsqmx: pcmxygzzsqmx_zh_CN,
         pcmyddgmx: pcmyddgmx_zh_CN,
         ormduty: ormduty_zh_CN,

@@ -31,28 +31,28 @@ public class ParJxmtfkSearchContext extends QueryWrapperContext<ParJxmtfk> {
 	public void setN_parjxmtfkname_like(String n_parjxmtfkname_like) {
         this.n_parjxmtfkname_like = n_parjxmtfkname_like;
         if(!ObjectUtils.isEmpty(this.n_parjxmtfkname_like)){
-            this.getSelectCond().like("parjxmtfkname", n_parjxmtfkname_like);
+            this.getSearchCond().like("parjxmtfkname", n_parjxmtfkname_like);
         }
     }
 	private String n_pimpersonname_eq;//[员工]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[员工]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_pimpersonid_eq;//[员工ID]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 
@@ -63,7 +63,7 @@ public class ParJxmtfkSearchContext extends QueryWrapperContext<ParJxmtfk> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("parjxmtfkname", query)   
             );
 		 }

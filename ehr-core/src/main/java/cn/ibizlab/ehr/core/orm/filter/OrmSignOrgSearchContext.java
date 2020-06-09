@@ -31,14 +31,14 @@ public class OrmSignOrgSearchContext extends QueryWrapperContext<OrmSignOrg> {
 	public void setN_orgcode_like(String n_orgcode_like) {
         this.n_orgcode_like = n_orgcode_like;
         if(!ObjectUtils.isEmpty(this.n_orgcode_like)){
-            this.getSelectCond().like("orgcode", n_orgcode_like);
+            this.getSearchCond().like("orgcode", n_orgcode_like);
         }
     }
 	private String n_ormsignorgname_like;//[法人主体名称]
 	public void setN_ormsignorgname_like(String n_ormsignorgname_like) {
         this.n_ormsignorgname_like = n_ormsignorgname_like;
         if(!ObjectUtils.isEmpty(this.n_ormsignorgname_like)){
-            this.getSelectCond().like("ormsignorgname", n_ormsignorgname_like);
+            this.getSearchCond().like("ormsignorgname", n_ormsignorgname_like);
         }
     }
 
@@ -49,7 +49,7 @@ public class OrmSignOrgSearchContext extends QueryWrapperContext<OrmSignOrg> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("ormsignorgname", query)   
             );
 		 }

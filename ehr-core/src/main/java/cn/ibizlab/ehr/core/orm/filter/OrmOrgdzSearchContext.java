@@ -31,35 +31,35 @@ public class OrmOrgdzSearchContext extends QueryWrapperContext<OrmOrgdz> {
 	public void setN_deforgaddress_eq(String n_deforgaddress_eq) {
         this.n_deforgaddress_eq = n_deforgaddress_eq;
         if(!ObjectUtils.isEmpty(this.n_deforgaddress_eq)){
-            this.getSelectCond().eq("deforgaddress", n_deforgaddress_eq);
+            this.getSearchCond().eq("deforgaddress", n_deforgaddress_eq);
         }
     }
 	private String n_ormorgdzname_like;//[组织地址]
 	public void setN_ormorgdzname_like(String n_ormorgdzname_like) {
         this.n_ormorgdzname_like = n_ormorgdzname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgdzname_like)){
-            this.getSelectCond().like("ormorgdzname", n_ormorgdzname_like);
+            this.getSearchCond().like("ormorgdzname", n_ormorgdzname_like);
         }
     }
 	private String n_ormorgname_eq;//[组织名称]
 	public void setN_ormorgname_eq(String n_ormorgname_eq) {
         this.n_ormorgname_eq = n_ormorgname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_eq)){
-            this.getSelectCond().eq("ormorgname", n_ormorgname_eq);
+            this.getSearchCond().eq("ormorgname", n_ormorgname_eq);
         }
     }
 	private String n_ormorgname_like;//[组织名称]
 	public void setN_ormorgname_like(String n_ormorgname_like) {
         this.n_ormorgname_like = n_ormorgname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_like)){
-            this.getSelectCond().like("ormorgname", n_ormorgname_like);
+            this.getSearchCond().like("ormorgname", n_ormorgname_like);
         }
     }
 	private String n_ormorgid_eq;//[组织ID]
 	public void setN_ormorgid_eq(String n_ormorgid_eq) {
         this.n_ormorgid_eq = n_ormorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
-            this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class OrmOrgdzSearchContext extends QueryWrapperContext<OrmOrgdz> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("ormorgdzname", query)   
             );
 		 }

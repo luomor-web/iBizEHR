@@ -31,28 +31,28 @@ public class ParJxzgpcSearchContext extends QueryWrapperContext<ParJxzgpc> {
 	public void setN_khx_eq(String n_khx_eq) {
         this.n_khx_eq = n_khx_eq;
         if(!ObjectUtils.isEmpty(this.n_khx_eq)){
-            this.getSelectCond().eq("khx", n_khx_eq);
+            this.getSearchCond().eq("khx", n_khx_eq);
         }
     }
 	private String n_khlx_eq;//[考核类型]
 	public void setN_khlx_eq(String n_khlx_eq) {
         this.n_khlx_eq = n_khlx_eq;
         if(!ObjectUtils.isEmpty(this.n_khlx_eq)){
-            this.getSelectCond().eq("khlx", n_khlx_eq);
+            this.getSearchCond().eq("khlx", n_khlx_eq);
         }
     }
 	private String n_nd_eq;//[年度]
 	public void setN_nd_eq(String n_nd_eq) {
         this.n_nd_eq = n_nd_eq;
         if(!ObjectUtils.isEmpty(this.n_nd_eq)){
-            this.getSelectCond().eq("nd", n_nd_eq);
+            this.getSearchCond().eq("nd", n_nd_eq);
         }
     }
 	private String n_parjxzgpcname_like;//[标题]
 	public void setN_parjxzgpcname_like(String n_parjxzgpcname_like) {
         this.n_parjxzgpcname_like = n_parjxzgpcname_like;
         if(!ObjectUtils.isEmpty(this.n_parjxzgpcname_like)){
-            this.getSelectCond().like("parjxzgpcname", n_parjxzgpcname_like);
+            this.getSearchCond().like("parjxzgpcname", n_parjxzgpcname_like);
         }
     }
 
@@ -63,7 +63,7 @@ public class ParJxzgpcSearchContext extends QueryWrapperContext<ParJxzgpc> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("parjxzgpcname", query)   
             );
 		 }

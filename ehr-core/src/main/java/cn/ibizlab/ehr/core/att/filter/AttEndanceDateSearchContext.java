@@ -31,7 +31,7 @@ public class AttEndanceDateSearchContext extends QueryWrapperContext<AttEndanceD
 	public void setN_attendancedatename_like(String n_attendancedatename_like) {
         this.n_attendancedatename_like = n_attendancedatename_like;
         if(!ObjectUtils.isEmpty(this.n_attendancedatename_like)){
-            this.getSelectCond().like("attendancedatename", n_attendancedatename_like);
+            this.getSearchCond().like("attendancedatename", n_attendancedatename_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class AttEndanceDateSearchContext extends QueryWrapperContext<AttEndanceD
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("attendancedatename", query)   
             );
 		 }

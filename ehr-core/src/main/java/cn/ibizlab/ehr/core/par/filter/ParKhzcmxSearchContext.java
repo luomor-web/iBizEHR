@@ -31,28 +31,28 @@ public class ParKhzcmxSearchContext extends QueryWrapperContext<ParKhzcmx> {
 	public void setN_parkhzcmxname_like(String n_parkhzcmxname_like) {
         this.n_parkhzcmxname_like = n_parkhzcmxname_like;
         if(!ObjectUtils.isEmpty(this.n_parkhzcmxname_like)){
-            this.getSelectCond().like("parkhzcmxname", n_parkhzcmxname_like);
+            this.getSearchCond().like("parkhzcmxname", n_parkhzcmxname_like);
         }
     }
 	private String n_parjxkhjcszname_eq;//[考核方案]
 	public void setN_parjxkhjcszname_eq(String n_parjxkhjcszname_eq) {
         this.n_parjxkhjcszname_eq = n_parjxkhjcszname_eq;
         if(!ObjectUtils.isEmpty(this.n_parjxkhjcszname_eq)){
-            this.getSelectCond().eq("parjxkhjcszname", n_parjxkhjcszname_eq);
+            this.getSearchCond().eq("parjxkhjcszname", n_parjxkhjcszname_eq);
         }
     }
 	private String n_parjxkhjcszname_like;//[考核方案]
 	public void setN_parjxkhjcszname_like(String n_parjxkhjcszname_like) {
         this.n_parjxkhjcszname_like = n_parjxkhjcszname_like;
         if(!ObjectUtils.isEmpty(this.n_parjxkhjcszname_like)){
-            this.getSelectCond().like("parjxkhjcszname", n_parjxkhjcszname_like);
+            this.getSearchCond().like("parjxkhjcszname", n_parjxkhjcszname_like);
         }
     }
 	private String n_parjxkhjcszid_eq;//[考核方案ID]
 	public void setN_parjxkhjcszid_eq(String n_parjxkhjcszid_eq) {
         this.n_parjxkhjcszid_eq = n_parjxkhjcszid_eq;
         if(!ObjectUtils.isEmpty(this.n_parjxkhjcszid_eq)){
-            this.getSelectCond().eq("parjxkhjcszid", n_parjxkhjcszid_eq);
+            this.getSearchCond().eq("parjxkhjcszid", n_parjxkhjcszid_eq);
         }
     }
 
@@ -63,7 +63,7 @@ public class ParKhzcmxSearchContext extends QueryWrapperContext<ParKhzcmx> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("parkhzcmxname", query)   
             );
 		 }

@@ -31,49 +31,49 @@ public class VacSystemHistorySearchContext extends QueryWrapperContext<VacSystem
 	public void setN_vacsystemhistoryname_like(String n_vacsystemhistoryname_like) {
         this.n_vacsystemhistoryname_like = n_vacsystemhistoryname_like;
         if(!ObjectUtils.isEmpty(this.n_vacsystemhistoryname_like)){
-            this.getSelectCond().like("vacsystemhistoryname", n_vacsystemhistoryname_like);
+            this.getSearchCond().like("vacsystemhistoryname", n_vacsystemhistoryname_like);
         }
     }
 	private String n_vacleavesystemname_eq;//[模板名称]
 	public void setN_vacleavesystemname_eq(String n_vacleavesystemname_eq) {
         this.n_vacleavesystemname_eq = n_vacleavesystemname_eq;
         if(!ObjectUtils.isEmpty(this.n_vacleavesystemname_eq)){
-            this.getSelectCond().eq("vacleavesystemname", n_vacleavesystemname_eq);
+            this.getSearchCond().eq("vacleavesystemname", n_vacleavesystemname_eq);
         }
     }
 	private String n_vacleavesystemname_like;//[模板名称]
 	public void setN_vacleavesystemname_like(String n_vacleavesystemname_like) {
         this.n_vacleavesystemname_like = n_vacleavesystemname_like;
         if(!ObjectUtils.isEmpty(this.n_vacleavesystemname_like)){
-            this.getSelectCond().like("vacleavesystemname", n_vacleavesystemname_like);
+            this.getSearchCond().like("vacleavesystemname", n_vacleavesystemname_like);
         }
     }
 	private String n_pimpersonname_eq;//[人员信息名称]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[人员信息名称]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_pimpersonid_eq;//[人员信息标识]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 	private String n_vacleavesystemid_eq;//[休假制度管理标识]
 	public void setN_vacleavesystemid_eq(String n_vacleavesystemid_eq) {
         this.n_vacleavesystemid_eq = n_vacleavesystemid_eq;
         if(!ObjectUtils.isEmpty(this.n_vacleavesystemid_eq)){
-            this.getSelectCond().eq("vacleavesystemid", n_vacleavesystemid_eq);
+            this.getSearchCond().eq("vacleavesystemid", n_vacleavesystemid_eq);
         }
     }
 
@@ -84,7 +84,7 @@ public class VacSystemHistorySearchContext extends QueryWrapperContext<VacSystem
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("vacsystemhistoryname", query)   
             );
 		 }

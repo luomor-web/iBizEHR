@@ -31,14 +31,14 @@ public class ParKhfaSearchContext extends QueryWrapperContext<ParKhfa> {
 	public void setN_parkhfaname_like(String n_parkhfaname_like) {
         this.n_parkhfaname_like = n_parkhfaname_like;
         if(!ObjectUtils.isEmpty(this.n_parkhfaname_like)){
-            this.getSelectCond().like("parkhfaname", n_parkhfaname_like);
+            this.getSearchCond().like("parkhfaname", n_parkhfaname_like);
         }
     }
 	private String n_khdx_eq;//[考核对象]
 	public void setN_khdx_eq(String n_khdx_eq) {
         this.n_khdx_eq = n_khdx_eq;
         if(!ObjectUtils.isEmpty(this.n_khdx_eq)){
-            this.getSelectCond().eq("khdx", n_khdx_eq);
+            this.getSearchCond().eq("khdx", n_khdx_eq);
         }
     }
 
@@ -49,7 +49,7 @@ public class ParKhfaSearchContext extends QueryWrapperContext<ParKhfa> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("parkhfaname", query)   
             );
 		 }

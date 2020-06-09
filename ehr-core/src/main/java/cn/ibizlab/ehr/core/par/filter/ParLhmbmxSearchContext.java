@@ -31,28 +31,28 @@ public class ParLhmbmxSearchContext extends QueryWrapperContext<ParLhmbmx> {
 	public void setN_parlhmbmxname_like(String n_parlhmbmxname_like) {
         this.n_parlhmbmxname_like = n_parlhmbmxname_like;
         if(!ObjectUtils.isEmpty(this.n_parlhmbmxname_like)){
-            this.getSelectCond().like("parlhmbmxname", n_parlhmbmxname_like);
+            this.getSearchCond().like("parlhmbmxname", n_parlhmbmxname_like);
         }
     }
 	private String n_parjxlhmbname_eq;//[绩效量化目标名称]
 	public void setN_parjxlhmbname_eq(String n_parjxlhmbname_eq) {
         this.n_parjxlhmbname_eq = n_parjxlhmbname_eq;
         if(!ObjectUtils.isEmpty(this.n_parjxlhmbname_eq)){
-            this.getSelectCond().eq("parjxlhmbname", n_parjxlhmbname_eq);
+            this.getSearchCond().eq("parjxlhmbname", n_parjxlhmbname_eq);
         }
     }
 	private String n_parjxlhmbname_like;//[绩效量化目标名称]
 	public void setN_parjxlhmbname_like(String n_parjxlhmbname_like) {
         this.n_parjxlhmbname_like = n_parjxlhmbname_like;
         if(!ObjectUtils.isEmpty(this.n_parjxlhmbname_like)){
-            this.getSelectCond().like("parjxlhmbname", n_parjxlhmbname_like);
+            this.getSearchCond().like("parjxlhmbname", n_parjxlhmbname_like);
         }
     }
 	private String n_parjxlhmbid_eq;//[量化目标ID]
 	public void setN_parjxlhmbid_eq(String n_parjxlhmbid_eq) {
         this.n_parjxlhmbid_eq = n_parjxlhmbid_eq;
         if(!ObjectUtils.isEmpty(this.n_parjxlhmbid_eq)){
-            this.getSelectCond().eq("parjxlhmbid", n_parjxlhmbid_eq);
+            this.getSearchCond().eq("parjxlhmbid", n_parjxlhmbid_eq);
         }
     }
 
@@ -63,7 +63,7 @@ public class ParLhmbmxSearchContext extends QueryWrapperContext<ParLhmbmx> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("parlhmbmxname", query)   
             );
 		 }

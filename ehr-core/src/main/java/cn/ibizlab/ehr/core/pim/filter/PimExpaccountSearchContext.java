@@ -31,35 +31,35 @@ public class PimExpaccountSearchContext extends QueryWrapperContext<PimExpaccoun
 	public void setN_pimexpaccountname_like(String n_pimexpaccountname_like) {
         this.n_pimexpaccountname_like = n_pimexpaccountname_like;
         if(!ObjectUtils.isEmpty(this.n_pimexpaccountname_like)){
-            this.getSelectCond().like("pimexpaccountname", n_pimexpaccountname_like);
+            this.getSearchCond().like("pimexpaccountname", n_pimexpaccountname_like);
         }
     }
 	private String n_fylb_eq;//[费用类别]
 	public void setN_fylb_eq(String n_fylb_eq) {
         this.n_fylb_eq = n_fylb_eq;
         if(!ObjectUtils.isEmpty(this.n_fylb_eq)){
-            this.getSelectCond().eq("fylb", n_fylb_eq);
+            this.getSearchCond().eq("fylb", n_fylb_eq);
         }
     }
 	private String n_ormorgname_eq;//[组织名称]
 	public void setN_ormorgname_eq(String n_ormorgname_eq) {
         this.n_ormorgname_eq = n_ormorgname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_eq)){
-            this.getSelectCond().eq("ormorgname", n_ormorgname_eq);
+            this.getSearchCond().eq("ormorgname", n_ormorgname_eq);
         }
     }
 	private String n_ormorgname_like;//[组织名称]
 	public void setN_ormorgname_like(String n_ormorgname_like) {
         this.n_ormorgname_like = n_ormorgname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_like)){
-            this.getSelectCond().like("ormorgname", n_ormorgname_like);
+            this.getSearchCond().like("ormorgname", n_ormorgname_like);
         }
     }
 	private String n_ormorgid_eq;//[组织标识]
 	public void setN_ormorgid_eq(String n_ormorgid_eq) {
         this.n_ormorgid_eq = n_ormorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
-            this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class PimExpaccountSearchContext extends QueryWrapperContext<PimExpaccoun
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimexpaccountname", query)   
             );
 		 }

@@ -31,28 +31,28 @@ public class PcmZpmeglmxSearchContext extends QueryWrapperContext<PcmZpmeglmx> {
 	public void setN_pcmzpmeglmxname_like(String n_pcmzpmeglmxname_like) {
         this.n_pcmzpmeglmxname_like = n_pcmzpmeglmxname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmzpmeglmxname_like)){
-            this.getSelectCond().like("pcmzpmeglmxname", n_pcmzpmeglmxname_like);
+            this.getSearchCond().like("pcmzpmeglmxname", n_pcmzpmeglmxname_like);
         }
     }
 	private String n_pcmzpmeglname_eq;//[招聘名额管理名称]
 	public void setN_pcmzpmeglname_eq(String n_pcmzpmeglname_eq) {
         this.n_pcmzpmeglname_eq = n_pcmzpmeglname_eq;
         if(!ObjectUtils.isEmpty(this.n_pcmzpmeglname_eq)){
-            this.getSelectCond().eq("pcmzpmeglname", n_pcmzpmeglname_eq);
+            this.getSearchCond().eq("pcmzpmeglname", n_pcmzpmeglname_eq);
         }
     }
 	private String n_pcmzpmeglname_like;//[招聘名额管理名称]
 	public void setN_pcmzpmeglname_like(String n_pcmzpmeglname_like) {
         this.n_pcmzpmeglname_like = n_pcmzpmeglname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmzpmeglname_like)){
-            this.getSelectCond().like("pcmzpmeglname", n_pcmzpmeglname_like);
+            this.getSearchCond().like("pcmzpmeglname", n_pcmzpmeglname_like);
         }
     }
 	private String n_pcmzpmeglid_eq;//[招聘名额管理标识]
 	public void setN_pcmzpmeglid_eq(String n_pcmzpmeglid_eq) {
         this.n_pcmzpmeglid_eq = n_pcmzpmeglid_eq;
         if(!ObjectUtils.isEmpty(this.n_pcmzpmeglid_eq)){
-            this.getSelectCond().eq("pcmzpmeglid", n_pcmzpmeglid_eq);
+            this.getSearchCond().eq("pcmzpmeglid", n_pcmzpmeglid_eq);
         }
     }
 
@@ -63,7 +63,7 @@ public class PcmZpmeglmxSearchContext extends QueryWrapperContext<PcmZpmeglmx> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmzpmeglmxname", query)   
             );
 		 }

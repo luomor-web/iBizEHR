@@ -31,14 +31,14 @@ public class PimGwTypeSearchContext extends QueryWrapperContext<PimGwType> {
 	public void setN_pimgwtypename_like(String n_pimgwtypename_like) {
         this.n_pimgwtypename_like = n_pimgwtypename_like;
         if(!ObjectUtils.isEmpty(this.n_pimgwtypename_like)){
-            this.getSelectCond().like("pimgwtypename", n_pimgwtypename_like);
+            this.getSearchCond().like("pimgwtypename", n_pimgwtypename_like);
         }
     }
 	private String n_gwlx_eq;//[岗位类型]
 	public void setN_gwlx_eq(String n_gwlx_eq) {
         this.n_gwlx_eq = n_gwlx_eq;
         if(!ObjectUtils.isEmpty(this.n_gwlx_eq)){
-            this.getSelectCond().eq("gwlx", n_gwlx_eq);
+            this.getSearchCond().eq("gwlx", n_gwlx_eq);
         }
     }
 
@@ -49,7 +49,7 @@ public class PimGwTypeSearchContext extends QueryWrapperContext<PimGwType> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimgwtypename", query)   
                         .or().like("gwlx", query)            
             );

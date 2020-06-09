@@ -31,98 +31,98 @@ public class OrmOrgSearchContext extends QueryWrapperContext<OrmOrg> {
 	public void setN_btqy_eq(String n_btqy_eq) {
         this.n_btqy_eq = n_btqy_eq;
         if(!ObjectUtils.isEmpty(this.n_btqy_eq)){
-            this.getSelectCond().eq("btqy", n_btqy_eq);
+            this.getSearchCond().eq("btqy", n_btqy_eq);
         }
     }
 	private String n_startstopsign_eq;//[启停标识]
 	public void setN_startstopsign_eq(String n_startstopsign_eq) {
         this.n_startstopsign_eq = n_startstopsign_eq;
         if(!ObjectUtils.isEmpty(this.n_startstopsign_eq)){
-            this.getSelectCond().eq("startstopsign", n_startstopsign_eq);
+            this.getSearchCond().eq("startstopsign", n_startstopsign_eq);
         }
     }
 	private String n_legalentity_eq;//[组织性质]
 	public void setN_legalentity_eq(String n_legalentity_eq) {
         this.n_legalentity_eq = n_legalentity_eq;
         if(!ObjectUtils.isEmpty(this.n_legalentity_eq)){
-            this.getSelectCond().eq("legalentity", n_legalentity_eq);
+            this.getSearchCond().eq("legalentity", n_legalentity_eq);
         }
     }
 	private String n_gsss_eq;//[所属区域]
 	public void setN_gsss_eq(String n_gsss_eq) {
         this.n_gsss_eq = n_gsss_eq;
         if(!ObjectUtils.isEmpty(this.n_gsss_eq)){
-            this.getSelectCond().eq("gsss", n_gsss_eq);
+            this.getSearchCond().eq("gsss", n_gsss_eq);
         }
     }
 	private String n_orgcode_eq;//[组织编号]
 	public void setN_orgcode_eq(String n_orgcode_eq) {
         this.n_orgcode_eq = n_orgcode_eq;
         if(!ObjectUtils.isEmpty(this.n_orgcode_eq)){
-            this.getSelectCond().eq("orgcode", n_orgcode_eq);
+            this.getSearchCond().eq("orgcode", n_orgcode_eq);
         }
     }
 	private String n_orgcode_like;//[组织编号]
 	public void setN_orgcode_like(String n_orgcode_like) {
         this.n_orgcode_like = n_orgcode_like;
         if(!ObjectUtils.isEmpty(this.n_orgcode_like)){
-            this.getSelectCond().like("orgcode", n_orgcode_like);
+            this.getSearchCond().like("orgcode", n_orgcode_like);
         }
     }
 	private String n_zzdzs_like;//[组织显示名称]
 	public void setN_zzdzs_like(String n_zzdzs_like) {
         this.n_zzdzs_like = n_zzdzs_like;
         if(!ObjectUtils.isEmpty(this.n_zzdzs_like)){
-            this.getSelectCond().like("zzdzs", n_zzdzs_like);
+            this.getSearchCond().like("zzdzs", n_zzdzs_like);
         }
     }
 	private String n_shortname_eq;//[简称]
 	public void setN_shortname_eq(String n_shortname_eq) {
         this.n_shortname_eq = n_shortname_eq;
         if(!ObjectUtils.isEmpty(this.n_shortname_eq)){
-            this.getSelectCond().eq("shortname", n_shortname_eq);
+            this.getSearchCond().eq("shortname", n_shortname_eq);
         }
     }
 	private String n_shortname_like;//[简称]
 	public void setN_shortname_like(String n_shortname_like) {
         this.n_shortname_like = n_shortname_like;
         if(!ObjectUtils.isEmpty(this.n_shortname_like)){
-            this.getSelectCond().like("shortname", n_shortname_like);
+            this.getSearchCond().like("shortname", n_shortname_like);
         }
     }
 	private String n_zzlx_eq;//[组织类型]
 	public void setN_zzlx_eq(String n_zzlx_eq) {
         this.n_zzlx_eq = n_zzlx_eq;
         if(!ObjectUtils.isEmpty(this.n_zzlx_eq)){
-            this.getSelectCond().eq("zzlx", n_zzlx_eq);
+            this.getSearchCond().eq("zzlx", n_zzlx_eq);
         }
     }
 	private String n_orgname_like;//[组织名称]
 	public void setN_orgname_like(String n_orgname_like) {
         this.n_orgname_like = n_orgname_like;
         if(!ObjectUtils.isEmpty(this.n_orgname_like)){
-            this.getSelectCond().like("orgname", n_orgname_like);
+            this.getSearchCond().like("orgname", n_orgname_like);
         }
     }
 	private String n_porgname_eq;//[上级组织]
 	public void setN_porgname_eq(String n_porgname_eq) {
         this.n_porgname_eq = n_porgname_eq;
         if(!ObjectUtils.isEmpty(this.n_porgname_eq)){
-            this.getSelectCond().eq("porgname", n_porgname_eq);
+            this.getSearchCond().eq("porgname", n_porgname_eq);
         }
     }
 	private String n_porgname_like;//[上级组织]
 	public void setN_porgname_like(String n_porgname_like) {
         this.n_porgname_like = n_porgname_like;
         if(!ObjectUtils.isEmpty(this.n_porgname_like)){
-            this.getSelectCond().like("porgname", n_porgname_like);
+            this.getSearchCond().like("porgname", n_porgname_like);
         }
     }
 	private String n_porgid_eq;//[组织机构标识]
 	public void setN_porgid_eq(String n_porgid_eq) {
         this.n_porgid_eq = n_porgid_eq;
         if(!ObjectUtils.isEmpty(this.n_porgid_eq)){
-            this.getSelectCond().eq("porgid", n_porgid_eq);
+            this.getSearchCond().eq("porgid", n_porgid_eq);
         }
     }
 
@@ -133,7 +133,7 @@ public class OrmOrgSearchContext extends QueryWrapperContext<OrmOrg> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("orgname", query)   
             );
 		 }

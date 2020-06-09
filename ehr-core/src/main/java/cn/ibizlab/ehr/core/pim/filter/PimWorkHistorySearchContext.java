@@ -31,77 +31,77 @@ public class PimWorkHistorySearchContext extends QueryWrapperContext<PimWorkHist
 	public void setN_pimworkhistoryname_like(String n_pimworkhistoryname_like) {
         this.n_pimworkhistoryname_like = n_pimworkhistoryname_like;
         if(!ObjectUtils.isEmpty(this.n_pimworkhistoryname_like)){
-            this.getSelectCond().like("pimworkhistoryname", n_pimworkhistoryname_like);
+            this.getSearchCond().like("pimworkhistoryname", n_pimworkhistoryname_like);
         }
     }
 	private String n_jlss_eq;//[记录所属]
 	public void setN_jlss_eq(String n_jlss_eq) {
         this.n_jlss_eq = n_jlss_eq;
         if(!ObjectUtils.isEmpty(this.n_jlss_eq)){
-            this.getSelectCond().eq("jlss", n_jlss_eq);
+            this.getSearchCond().eq("jlss", n_jlss_eq);
         }
     }
 	private String n_cfplx_eq;//[兼职借调类型]
 	public void setN_cfplx_eq(String n_cfplx_eq) {
         this.n_cfplx_eq = n_cfplx_eq;
         if(!ObjectUtils.isEmpty(this.n_cfplx_eq)){
-            this.getSelectCond().eq("cfplx", n_cfplx_eq);
+            this.getSearchCond().eq("cfplx", n_cfplx_eq);
         }
     }
 	private String n_jlczz_eq;//[记录操作者]
 	public void setN_jlczz_eq(String n_jlczz_eq) {
         this.n_jlczz_eq = n_jlczz_eq;
         if(!ObjectUtils.isEmpty(this.n_jlczz_eq)){
-            this.getSelectCond().eq("jlczz", n_jlczz_eq);
+            this.getSearchCond().eq("jlczz", n_jlczz_eq);
         }
     }
 	private String n_jlspzt_eq;//[记录审批状态]
 	public void setN_jlspzt_eq(String n_jlspzt_eq) {
         this.n_jlspzt_eq = n_jlspzt_eq;
         if(!ObjectUtils.isEmpty(this.n_jlspzt_eq)){
-            this.getSelectCond().eq("jlspzt", n_jlspzt_eq);
+            this.getSearchCond().eq("jlspzt", n_jlspzt_eq);
         }
     }
 	private String n_pimpersonname_eq;//[人员信息名称]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[人员信息名称]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_ormrankname_eq;//[职级]
 	public void setN_ormrankname_eq(String n_ormrankname_eq) {
         this.n_ormrankname_eq = n_ormrankname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormrankname_eq)){
-            this.getSelectCond().eq("ormrankname", n_ormrankname_eq);
+            this.getSearchCond().eq("ormrankname", n_ormrankname_eq);
         }
     }
 	private String n_ormrankname_like;//[职级]
 	public void setN_ormrankname_like(String n_ormrankname_like) {
         this.n_ormrankname_like = n_ormrankname_like;
         if(!ObjectUtils.isEmpty(this.n_ormrankname_like)){
-            this.getSelectCond().like("ormrankname", n_ormrankname_like);
+            this.getSearchCond().like("ormrankname", n_ormrankname_like);
         }
     }
 	private String n_ormrankid_eq;//[职级标识]
 	public void setN_ormrankid_eq(String n_ormrankid_eq) {
         this.n_ormrankid_eq = n_ormrankid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormrankid_eq)){
-            this.getSelectCond().eq("ormrankid", n_ormrankid_eq);
+            this.getSearchCond().eq("ormrankid", n_ormrankid_eq);
         }
     }
 	private String n_pimpersonid_eq;//[人员信息标识]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 
@@ -112,7 +112,7 @@ public class PimWorkHistorySearchContext extends QueryWrapperContext<PimWorkHist
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimworkhistoryname", query)   
             );
 		 }

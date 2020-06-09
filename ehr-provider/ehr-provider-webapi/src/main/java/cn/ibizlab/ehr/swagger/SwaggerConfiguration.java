@@ -17,6 +17,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.spring.web.readers.operation.OperationParameterReader;
 import springfox.documentation.spring.web.readers.parameter.ModelAttributeParameterExpander;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger2
+@ConditionalOnExpression("${swagger.enable:false}")
 public class SwaggerConfiguration {
 
     @Bean

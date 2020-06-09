@@ -31,21 +31,21 @@ public class VacWorkDaySearchContext extends QueryWrapperContext<VacWorkDay> {
 	public void setN_nd_eq(String n_nd_eq) {
         this.n_nd_eq = n_nd_eq;
         if(!ObjectUtils.isEmpty(this.n_nd_eq)){
-            this.getSelectCond().eq("nd", n_nd_eq);
+            this.getSearchCond().eq("nd", n_nd_eq);
         }
     }
 	private String n_vacworkdayname_eq;//[工作日]
 	public void setN_vacworkdayname_eq(String n_vacworkdayname_eq) {
         this.n_vacworkdayname_eq = n_vacworkdayname_eq;
         if(!ObjectUtils.isEmpty(this.n_vacworkdayname_eq)){
-            this.getSelectCond().eq("vacworkdayname", n_vacworkdayname_eq);
+            this.getSearchCond().eq("vacworkdayname", n_vacworkdayname_eq);
         }
     }
 	private String n_vacworkdayname_like;//[工作日]
 	public void setN_vacworkdayname_like(String n_vacworkdayname_like) {
         this.n_vacworkdayname_like = n_vacworkdayname_like;
         if(!ObjectUtils.isEmpty(this.n_vacworkdayname_like)){
-            this.getSelectCond().like("vacworkdayname", n_vacworkdayname_like);
+            this.getSearchCond().like("vacworkdayname", n_vacworkdayname_like);
         }
     }
 
@@ -56,7 +56,7 @@ public class VacWorkDaySearchContext extends QueryWrapperContext<VacWorkDay> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("vacworkdayname", query)   
             );
 		 }

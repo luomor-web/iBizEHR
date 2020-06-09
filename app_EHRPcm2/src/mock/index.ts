@@ -18,6 +18,7 @@ import './entity/pcm-xygzzkhjgjls/pcm-xygzzkhjgjls';
 import './entity/pcm-ydgzmxs/pcm-ydgzmxs';
 import './entity/orm-orgs/orm-orgs';
 import './entity/pim-distirbutions/pim-distirbutions';
+import './entity/person-state-mgrs/person-state-mgrs';
 import './entity/pcm-xygzzsqmxs/pcm-xygzzsqmxs';
 import './entity/pcm-yddgmxs/pcm-yddgmxs';
 import './entity/orm-dutys/orm-dutys';

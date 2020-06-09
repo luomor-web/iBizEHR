@@ -31,49 +31,49 @@ public class PimArchivesRecordSearchContext extends QueryWrapperContext<PimArchi
 	public void setN_pimarchivesrecordname_like(String n_pimarchivesrecordname_like) {
         this.n_pimarchivesrecordname_like = n_pimarchivesrecordname_like;
         if(!ObjectUtils.isEmpty(this.n_pimarchivesrecordname_like)){
-            this.getSelectCond().like("pimarchivesrecordname", n_pimarchivesrecordname_like);
+            this.getSearchCond().like("pimarchivesrecordname", n_pimarchivesrecordname_like);
         }
     }
 	private String n_pimarchivesname_eq;//[档案信息名称]
 	public void setN_pimarchivesname_eq(String n_pimarchivesname_eq) {
         this.n_pimarchivesname_eq = n_pimarchivesname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimarchivesname_eq)){
-            this.getSelectCond().eq("pimarchivesname", n_pimarchivesname_eq);
+            this.getSearchCond().eq("pimarchivesname", n_pimarchivesname_eq);
         }
     }
 	private String n_pimarchivesname_like;//[档案信息名称]
 	public void setN_pimarchivesname_like(String n_pimarchivesname_like) {
         this.n_pimarchivesname_like = n_pimarchivesname_like;
         if(!ObjectUtils.isEmpty(this.n_pimarchivesname_like)){
-            this.getSelectCond().like("pimarchivesname", n_pimarchivesname_like);
+            this.getSearchCond().like("pimarchivesname", n_pimarchivesname_like);
         }
     }
 	private String n_archivalcataloguename_eq;//[档案目录名称]
 	public void setN_archivalcataloguename_eq(String n_archivalcataloguename_eq) {
         this.n_archivalcataloguename_eq = n_archivalcataloguename_eq;
         if(!ObjectUtils.isEmpty(this.n_archivalcataloguename_eq)){
-            this.getSelectCond().eq("archivalcataloguename", n_archivalcataloguename_eq);
+            this.getSearchCond().eq("archivalcataloguename", n_archivalcataloguename_eq);
         }
     }
 	private String n_archivalcataloguename_like;//[档案目录名称]
 	public void setN_archivalcataloguename_like(String n_archivalcataloguename_like) {
         this.n_archivalcataloguename_like = n_archivalcataloguename_like;
         if(!ObjectUtils.isEmpty(this.n_archivalcataloguename_like)){
-            this.getSelectCond().like("archivalcataloguename", n_archivalcataloguename_like);
+            this.getSearchCond().like("archivalcataloguename", n_archivalcataloguename_like);
         }
     }
 	private String n_archivalcatalogueid_eq;//[档案目录标识]
 	public void setN_archivalcatalogueid_eq(String n_archivalcatalogueid_eq) {
         this.n_archivalcatalogueid_eq = n_archivalcatalogueid_eq;
         if(!ObjectUtils.isEmpty(this.n_archivalcatalogueid_eq)){
-            this.getSelectCond().eq("archivalcatalogueid", n_archivalcatalogueid_eq);
+            this.getSearchCond().eq("archivalcatalogueid", n_archivalcatalogueid_eq);
         }
     }
 	private String n_pimarchivesid_eq;//[档案信息标识]
 	public void setN_pimarchivesid_eq(String n_pimarchivesid_eq) {
         this.n_pimarchivesid_eq = n_pimarchivesid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimarchivesid_eq)){
-            this.getSelectCond().eq("pimarchivesid", n_pimarchivesid_eq);
+            this.getSearchCond().eq("pimarchivesid", n_pimarchivesid_eq);
         }
     }
 
@@ -84,7 +84,7 @@ public class PimArchivesRecordSearchContext extends QueryWrapperContext<PimArchi
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimarchivesrecordname", query)   
             );
 		 }

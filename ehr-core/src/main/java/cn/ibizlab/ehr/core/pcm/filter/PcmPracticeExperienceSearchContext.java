@@ -31,35 +31,35 @@ public class PcmPracticeExperienceSearchContext extends QueryWrapperContext<PcmP
 	public void setN_flag_eq(String n_flag_eq) {
         this.n_flag_eq = n_flag_eq;
         if(!ObjectUtils.isEmpty(this.n_flag_eq)){
-            this.getSelectCond().eq("flag", n_flag_eq);
+            this.getSearchCond().eq("flag", n_flag_eq);
         }
     }
 	private String n_pcmpracticeexperiencename_like;//[实习经验名称]
 	public void setN_pcmpracticeexperiencename_like(String n_pcmpracticeexperiencename_like) {
         this.n_pcmpracticeexperiencename_like = n_pcmpracticeexperiencename_like;
         if(!ObjectUtils.isEmpty(this.n_pcmpracticeexperiencename_like)){
-            this.getSelectCond().like("pcmpracticeexperiencename", n_pcmpracticeexperiencename_like);
+            this.getSearchCond().like("pcmpracticeexperiencename", n_pcmpracticeexperiencename_like);
         }
     }
 	private String n_pcmprofilename_eq;//[姓名]
 	public void setN_pcmprofilename_eq(String n_pcmprofilename_eq) {
         this.n_pcmprofilename_eq = n_pcmprofilename_eq;
         if(!ObjectUtils.isEmpty(this.n_pcmprofilename_eq)){
-            this.getSelectCond().eq("pcmprofilename", n_pcmprofilename_eq);
+            this.getSearchCond().eq("pcmprofilename", n_pcmprofilename_eq);
         }
     }
 	private String n_pcmprofilename_like;//[姓名]
 	public void setN_pcmprofilename_like(String n_pcmprofilename_like) {
         this.n_pcmprofilename_like = n_pcmprofilename_like;
         if(!ObjectUtils.isEmpty(this.n_pcmprofilename_like)){
-            this.getSelectCond().like("pcmprofilename", n_pcmprofilename_like);
+            this.getSearchCond().like("pcmprofilename", n_pcmprofilename_like);
         }
     }
 	private String n_pcmprofileid_eq;//[应聘者ID]
 	public void setN_pcmprofileid_eq(String n_pcmprofileid_eq) {
         this.n_pcmprofileid_eq = n_pcmprofileid_eq;
         if(!ObjectUtils.isEmpty(this.n_pcmprofileid_eq)){
-            this.getSelectCond().eq("pcmprofileid", n_pcmprofileid_eq);
+            this.getSearchCond().eq("pcmprofileid", n_pcmprofileid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class PcmPracticeExperienceSearchContext extends QueryWrapperContext<PcmP
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmpracticeexperiencename", query)   
             );
 		 }

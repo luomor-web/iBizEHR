@@ -31,42 +31,42 @@ public class ParJxkhmbSearchContext extends QueryWrapperContext<ParJxkhmb> {
 	public void setN_parjxkhmbname_like(String n_parjxkhmbname_like) {
         this.n_parjxkhmbname_like = n_parjxkhmbname_like;
         if(!ObjectUtils.isEmpty(this.n_parjxkhmbname_like)){
-            this.getSelectCond().like("parjxkhmbname", n_parjxkhmbname_like);
+            this.getSearchCond().like("parjxkhmbname", n_parjxkhmbname_like);
         }
     }
 	private String n_khdx_eq;//[考核对象]
 	public void setN_khdx_eq(String n_khdx_eq) {
         this.n_khdx_eq = n_khdx_eq;
         if(!ObjectUtils.isEmpty(this.n_khdx_eq)){
-            this.getSelectCond().eq("khdx", n_khdx_eq);
+            this.getSearchCond().eq("khdx", n_khdx_eq);
         }
     }
 	private String n_khx_eq;//[考核内容]
 	public void setN_khx_eq(String n_khx_eq) {
         this.n_khx_eq = n_khx_eq;
         if(!ObjectUtils.isEmpty(this.n_khx_eq)){
-            this.getSelectCond().eq("khx", n_khx_eq);
+            this.getSearchCond().eq("khx", n_khx_eq);
         }
     }
 	private String n_ormorgname_eq;//[组织]
 	public void setN_ormorgname_eq(String n_ormorgname_eq) {
         this.n_ormorgname_eq = n_ormorgname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_eq)){
-            this.getSelectCond().eq("ormorgname", n_ormorgname_eq);
+            this.getSearchCond().eq("ormorgname", n_ormorgname_eq);
         }
     }
 	private String n_ormorgname_like;//[组织]
 	public void setN_ormorgname_like(String n_ormorgname_like) {
         this.n_ormorgname_like = n_ormorgname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_like)){
-            this.getSelectCond().like("ormorgname", n_ormorgname_like);
+            this.getSearchCond().like("ormorgname", n_ormorgname_like);
         }
     }
 	private String n_ormorgid_eq;//[组织ID]
 	public void setN_ormorgid_eq(String n_ormorgid_eq) {
         this.n_ormorgid_eq = n_ormorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
-            this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
         }
     }
 
@@ -77,7 +77,7 @@ public class ParJxkhmbSearchContext extends QueryWrapperContext<ParJxkhmb> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("parjxkhmbname", query)   
             );
 		 }

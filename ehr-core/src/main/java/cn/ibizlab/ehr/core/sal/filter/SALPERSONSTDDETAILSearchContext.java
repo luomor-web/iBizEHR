@@ -31,49 +31,49 @@ public class SALPERSONSTDDETAILSearchContext extends QueryWrapperContext<SALPERS
 	public void setN_salpersonstddetailname_like(String n_salpersonstddetailname_like) {
         this.n_salpersonstddetailname_like = n_salpersonstddetailname_like;
         if(!ObjectUtils.isEmpty(this.n_salpersonstddetailname_like)){
-            this.getSelectCond().like("salpersonstddetailname", n_salpersonstddetailname_like);
+            this.getSearchCond().like("salpersonstddetailname", n_salpersonstddetailname_like);
         }
     }
 	private String n_salpersonstdname_eq;//[员工薪酬标准名称]
 	public void setN_salpersonstdname_eq(String n_salpersonstdname_eq) {
         this.n_salpersonstdname_eq = n_salpersonstdname_eq;
         if(!ObjectUtils.isEmpty(this.n_salpersonstdname_eq)){
-            this.getSelectCond().eq("salpersonstdname", n_salpersonstdname_eq);
+            this.getSearchCond().eq("salpersonstdname", n_salpersonstdname_eq);
         }
     }
 	private String n_salpersonstdname_like;//[员工薪酬标准名称]
 	public void setN_salpersonstdname_like(String n_salpersonstdname_like) {
         this.n_salpersonstdname_like = n_salpersonstdname_like;
         if(!ObjectUtils.isEmpty(this.n_salpersonstdname_like)){
-            this.getSelectCond().like("salpersonstdname", n_salpersonstdname_like);
+            this.getSearchCond().like("salpersonstdname", n_salpersonstdname_like);
         }
     }
 	private String n_salschemeitemname_eq;//[要素项]
 	public void setN_salschemeitemname_eq(String n_salschemeitemname_eq) {
         this.n_salschemeitemname_eq = n_salschemeitemname_eq;
         if(!ObjectUtils.isEmpty(this.n_salschemeitemname_eq)){
-            this.getSelectCond().eq("salschemeitemname", n_salschemeitemname_eq);
+            this.getSearchCond().eq("salschemeitemname", n_salschemeitemname_eq);
         }
     }
 	private String n_salschemeitemname_like;//[要素项]
 	public void setN_salschemeitemname_like(String n_salschemeitemname_like) {
         this.n_salschemeitemname_like = n_salschemeitemname_like;
         if(!ObjectUtils.isEmpty(this.n_salschemeitemname_like)){
-            this.getSelectCond().like("salschemeitemname", n_salschemeitemname_like);
+            this.getSearchCond().like("salschemeitemname", n_salschemeitemname_like);
         }
     }
 	private String n_salpersonstdid_eq;//[员工薪酬标准标识]
 	public void setN_salpersonstdid_eq(String n_salpersonstdid_eq) {
         this.n_salpersonstdid_eq = n_salpersonstdid_eq;
         if(!ObjectUtils.isEmpty(this.n_salpersonstdid_eq)){
-            this.getSelectCond().eq("salpersonstdid", n_salpersonstdid_eq);
+            this.getSearchCond().eq("salpersonstdid", n_salpersonstdid_eq);
         }
     }
 	private String n_salschemeitemid_eq;//[方案要素项标识]
 	public void setN_salschemeitemid_eq(String n_salschemeitemid_eq) {
         this.n_salschemeitemid_eq = n_salschemeitemid_eq;
         if(!ObjectUtils.isEmpty(this.n_salschemeitemid_eq)){
-            this.getSelectCond().eq("salschemeitemid", n_salschemeitemid_eq);
+            this.getSearchCond().eq("salschemeitemid", n_salschemeitemid_eq);
         }
     }
 
@@ -84,7 +84,7 @@ public class SALPERSONSTDDETAILSearchContext extends QueryWrapperContext<SALPERS
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("salpersonstddetailname", query)   
             );
 		 }

@@ -31,42 +31,42 @@ public class ParZnbmndlhmbSearchContext extends QueryWrapperContext<ParZnbmndlhm
 	public void setN_nd_eq(String n_nd_eq) {
         this.n_nd_eq = n_nd_eq;
         if(!ObjectUtils.isEmpty(this.n_nd_eq)){
-            this.getSelectCond().eq("nd", n_nd_eq);
+            this.getSearchCond().eq("nd", n_nd_eq);
         }
     }
 	private String n_parznbmndlhmbname_like;//[年度量化目标（职能部门级）名称]
 	public void setN_parznbmndlhmbname_like(String n_parznbmndlhmbname_like) {
         this.n_parznbmndlhmbname_like = n_parznbmndlhmbname_like;
         if(!ObjectUtils.isEmpty(this.n_parznbmndlhmbname_like)){
-            this.getSelectCond().like("parznbmndlhmbname", n_parznbmndlhmbname_like);
+            this.getSearchCond().like("parznbmndlhmbname", n_parznbmndlhmbname_like);
         }
     }
 	private String n_jxjd_eq;//[当前阶段]
 	public void setN_jxjd_eq(String n_jxjd_eq) {
         this.n_jxjd_eq = n_jxjd_eq;
         if(!ObjectUtils.isEmpty(this.n_jxjd_eq)){
-            this.getSelectCond().eq("jxjd", n_jxjd_eq);
+            this.getSearchCond().eq("jxjd", n_jxjd_eq);
         }
     }
 	private String n_ormorgsectorname_eq;//[职能部门]
 	public void setN_ormorgsectorname_eq(String n_ormorgsectorname_eq) {
         this.n_ormorgsectorname_eq = n_ormorgsectorname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgsectorname_eq)){
-            this.getSelectCond().eq("ormorgsectorname", n_ormorgsectorname_eq);
+            this.getSearchCond().eq("ormorgsectorname", n_ormorgsectorname_eq);
         }
     }
 	private String n_ormorgsectorname_like;//[职能部门]
 	public void setN_ormorgsectorname_like(String n_ormorgsectorname_like) {
         this.n_ormorgsectorname_like = n_ormorgsectorname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgsectorname_like)){
-            this.getSelectCond().like("ormorgsectorname", n_ormorgsectorname_like);
+            this.getSearchCond().like("ormorgsectorname", n_ormorgsectorname_like);
         }
     }
 	private String n_ormorgsectorid_eq;//[职能部门ID]
 	public void setN_ormorgsectorid_eq(String n_ormorgsectorid_eq) {
         this.n_ormorgsectorid_eq = n_ormorgsectorid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgsectorid_eq)){
-            this.getSelectCond().eq("ormorgsectorid", n_ormorgsectorid_eq);
+            this.getSearchCond().eq("ormorgsectorid", n_ormorgsectorid_eq);
         }
     }
 
@@ -77,7 +77,7 @@ public class ParZnbmndlhmbSearchContext extends QueryWrapperContext<ParZnbmndlhm
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("parznbmndlhmbname", query)   
             );
 		 }

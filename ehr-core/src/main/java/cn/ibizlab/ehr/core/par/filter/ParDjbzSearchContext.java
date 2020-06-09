@@ -31,14 +31,14 @@ public class ParDjbzSearchContext extends QueryWrapperContext<ParDjbz> {
 	public void setN_khpgdj_eq(String n_khpgdj_eq) {
         this.n_khpgdj_eq = n_khpgdj_eq;
         if(!ObjectUtils.isEmpty(this.n_khpgdj_eq)){
-            this.getSelectCond().eq("khpgdj", n_khpgdj_eq);
+            this.getSearchCond().eq("khpgdj", n_khpgdj_eq);
         }
     }
 	private String n_pardjbzname_like;//[定级标准名称]
 	public void setN_pardjbzname_like(String n_pardjbzname_like) {
         this.n_pardjbzname_like = n_pardjbzname_like;
         if(!ObjectUtils.isEmpty(this.n_pardjbzname_like)){
-            this.getSelectCond().like("pardjbzname", n_pardjbzname_like);
+            this.getSearchCond().like("pardjbzname", n_pardjbzname_like);
         }
     }
 
@@ -49,7 +49,7 @@ public class ParDjbzSearchContext extends QueryWrapperContext<ParDjbz> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pardjbzname", query)   
             );
 		 }

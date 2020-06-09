@@ -31,21 +31,21 @@ public class PcmXkmlSearchContext extends QueryWrapperContext<PcmXkml> {
 	public void setN_nd_eq(String n_nd_eq) {
         this.n_nd_eq = n_nd_eq;
         if(!ObjectUtils.isEmpty(this.n_nd_eq)){
-            this.getSelectCond().eq("nd", n_nd_eq);
+            this.getSearchCond().eq("nd", n_nd_eq);
         }
     }
 	private String n_pcmxkmlname_like;//[学科名称]
 	public void setN_pcmxkmlname_like(String n_pcmxkmlname_like) {
         this.n_pcmxkmlname_like = n_pcmxkmlname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmxkmlname_like)){
-            this.getSelectCond().like("pcmxkmlname", n_pcmxkmlname_like);
+            this.getSearchCond().like("pcmxkmlname", n_pcmxkmlname_like);
         }
     }
 	private String n_xkml_eq;//[学科门类]
 	public void setN_xkml_eq(String n_xkml_eq) {
         this.n_xkml_eq = n_xkml_eq;
         if(!ObjectUtils.isEmpty(this.n_xkml_eq)){
-            this.getSelectCond().eq("xkml", n_xkml_eq);
+            this.getSearchCond().eq("xkml", n_xkml_eq);
         }
     }
 
@@ -56,7 +56,7 @@ public class PcmXkmlSearchContext extends QueryWrapperContext<PcmXkml> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmxkmlname", query)   
             );
 		 }

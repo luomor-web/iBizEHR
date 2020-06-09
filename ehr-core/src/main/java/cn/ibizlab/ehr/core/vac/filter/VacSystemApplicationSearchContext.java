@@ -31,70 +31,70 @@ public class VacSystemApplicationSearchContext extends QueryWrapperContext<VacSy
 	public void setN_vacsystemapplicationname_like(String n_vacsystemapplicationname_like) {
         this.n_vacsystemapplicationname_like = n_vacsystemapplicationname_like;
         if(!ObjectUtils.isEmpty(this.n_vacsystemapplicationname_like)){
-            this.getSelectCond().like("vacsystemapplicationname", n_vacsystemapplicationname_like);
+            this.getSearchCond().like("vacsystemapplicationname", n_vacsystemapplicationname_like);
         }
     }
 	private String n_vacleavesystemname_eq;//[模板名称]
 	public void setN_vacleavesystemname_eq(String n_vacleavesystemname_eq) {
         this.n_vacleavesystemname_eq = n_vacleavesystemname_eq;
         if(!ObjectUtils.isEmpty(this.n_vacleavesystemname_eq)){
-            this.getSelectCond().eq("vacleavesystemname", n_vacleavesystemname_eq);
+            this.getSearchCond().eq("vacleavesystemname", n_vacleavesystemname_eq);
         }
     }
 	private String n_vacleavesystemname_like;//[模板名称]
 	public void setN_vacleavesystemname_like(String n_vacleavesystemname_like) {
         this.n_vacleavesystemname_like = n_vacleavesystemname_like;
         if(!ObjectUtils.isEmpty(this.n_vacleavesystemname_like)){
-            this.getSelectCond().like("vacleavesystemname", n_vacleavesystemname_like);
+            this.getSearchCond().like("vacleavesystemname", n_vacleavesystemname_like);
         }
     }
 	private String n_pimpersonname_eq;//[人员信息名称]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[人员信息名称]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_ormorgsectorname_eq;//[部门]
 	public void setN_ormorgsectorname_eq(String n_ormorgsectorname_eq) {
         this.n_ormorgsectorname_eq = n_ormorgsectorname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgsectorname_eq)){
-            this.getSelectCond().eq("ormorgsectorname", n_ormorgsectorname_eq);
+            this.getSearchCond().eq("ormorgsectorname", n_ormorgsectorname_eq);
         }
     }
 	private String n_ormorgsectorname_like;//[部门]
 	public void setN_ormorgsectorname_like(String n_ormorgsectorname_like) {
         this.n_ormorgsectorname_like = n_ormorgsectorname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgsectorname_like)){
-            this.getSelectCond().like("ormorgsectorname", n_ormorgsectorname_like);
+            this.getSearchCond().like("ormorgsectorname", n_ormorgsectorname_like);
         }
     }
 	private String n_ormorgsectorid_eq;//[部门标识]
 	public void setN_ormorgsectorid_eq(String n_ormorgsectorid_eq) {
         this.n_ormorgsectorid_eq = n_ormorgsectorid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgsectorid_eq)){
-            this.getSelectCond().eq("ormorgsectorid", n_ormorgsectorid_eq);
+            this.getSearchCond().eq("ormorgsectorid", n_ormorgsectorid_eq);
         }
     }
 	private String n_vacleavesystemid_eq;//[休假制度管理标识]
 	public void setN_vacleavesystemid_eq(String n_vacleavesystemid_eq) {
         this.n_vacleavesystemid_eq = n_vacleavesystemid_eq;
         if(!ObjectUtils.isEmpty(this.n_vacleavesystemid_eq)){
-            this.getSelectCond().eq("vacleavesystemid", n_vacleavesystemid_eq);
+            this.getSearchCond().eq("vacleavesystemid", n_vacleavesystemid_eq);
         }
     }
 	private String n_pimpersonid_eq;//[人员信息标识]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 
@@ -105,7 +105,7 @@ public class VacSystemApplicationSearchContext extends QueryWrapperContext<VacSy
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("vacsystemapplicationname", query)   
             );
 		 }

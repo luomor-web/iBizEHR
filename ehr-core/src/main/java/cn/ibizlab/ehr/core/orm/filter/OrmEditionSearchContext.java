@@ -31,7 +31,7 @@ public class OrmEditionSearchContext extends QueryWrapperContext<OrmEdition> {
 	public void setN_ormeditionname_like(String n_ormeditionname_like) {
         this.n_ormeditionname_like = n_ormeditionname_like;
         if(!ObjectUtils.isEmpty(this.n_ormeditionname_like)){
-            this.getSelectCond().like("ormeditionname", n_ormeditionname_like);
+            this.getSearchCond().like("ormeditionname", n_ormeditionname_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class OrmEditionSearchContext extends QueryWrapperContext<OrmEdition> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("ormeditionname", query)   
             );
 		 }

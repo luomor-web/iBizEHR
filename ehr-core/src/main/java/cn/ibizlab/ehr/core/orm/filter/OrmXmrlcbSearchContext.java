@@ -31,7 +31,7 @@ public class OrmXmrlcbSearchContext extends QueryWrapperContext<OrmXmrlcb> {
 	public void setN_ormxmrlcbname_like(String n_ormxmrlcbname_like) {
         this.n_ormxmrlcbname_like = n_ormxmrlcbname_like;
         if(!ObjectUtils.isEmpty(this.n_ormxmrlcbname_like)){
-            this.getSelectCond().like("ormxmrlcbname", n_ormxmrlcbname_like);
+            this.getSearchCond().like("ormxmrlcbname", n_ormxmrlcbname_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class OrmXmrlcbSearchContext extends QueryWrapperContext<OrmXmrlcb> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("ormxmrlcbname", query)   
             );
 		 }

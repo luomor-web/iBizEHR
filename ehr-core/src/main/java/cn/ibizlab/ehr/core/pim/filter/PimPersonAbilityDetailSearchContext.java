@@ -31,14 +31,14 @@ public class PimPersonAbilityDetailSearchContext extends QueryWrapperContext<Pim
 	public void setN_pimpersonabilitydetailname_like(String n_pimpersonabilitydetailname_like) {
         this.n_pimpersonabilitydetailname_like = n_pimpersonabilitydetailname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonabilitydetailname_like)){
-            this.getSelectCond().like("pimpersonabilitydetailname", n_pimpersonabilitydetailname_like);
+            this.getSearchCond().like("pimpersonabilitydetailname", n_pimpersonabilitydetailname_like);
         }
     }
 	private String n_pimpersonabilityid_eq;//[员工能力标识]
 	public void setN_pimpersonabilityid_eq(String n_pimpersonabilityid_eq) {
         this.n_pimpersonabilityid_eq = n_pimpersonabilityid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonabilityid_eq)){
-            this.getSelectCond().eq("pimpersonabilityid", n_pimpersonabilityid_eq);
+            this.getSearchCond().eq("pimpersonabilityid", n_pimpersonabilityid_eq);
         }
     }
 
@@ -49,7 +49,7 @@ public class PimPersonAbilityDetailSearchContext extends QueryWrapperContext<Pim
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimpersonabilitydetailname", query)   
             );
 		 }

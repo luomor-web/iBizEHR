@@ -31,35 +31,35 @@ public class TrmInvoiceSearchContext extends QueryWrapperContext<TrmInvoice> {
 	public void setN_kplx_eq(String n_kplx_eq) {
         this.n_kplx_eq = n_kplx_eq;
         if(!ObjectUtils.isEmpty(this.n_kplx_eq)){
-            this.getSelectCond().eq("kplx", n_kplx_eq);
+            this.getSearchCond().eq("kplx", n_kplx_eq);
         }
     }
 	private String n_trminvoicename_like;//[开票名称]
 	public void setN_trminvoicename_like(String n_trminvoicename_like) {
         this.n_trminvoicename_like = n_trminvoicename_like;
         if(!ObjectUtils.isEmpty(this.n_trminvoicename_like)){
-            this.getSelectCond().like("trminvoicename", n_trminvoicename_like);
+            this.getSearchCond().like("trminvoicename", n_trminvoicename_like);
         }
     }
 	private String n_trmtrainagencyname_eq;//[培训机构名称]
 	public void setN_trmtrainagencyname_eq(String n_trmtrainagencyname_eq) {
         this.n_trmtrainagencyname_eq = n_trmtrainagencyname_eq;
         if(!ObjectUtils.isEmpty(this.n_trmtrainagencyname_eq)){
-            this.getSelectCond().eq("trmtrainagencyname", n_trmtrainagencyname_eq);
+            this.getSearchCond().eq("trmtrainagencyname", n_trmtrainagencyname_eq);
         }
     }
 	private String n_trmtrainagencyname_like;//[培训机构名称]
 	public void setN_trmtrainagencyname_like(String n_trmtrainagencyname_like) {
         this.n_trmtrainagencyname_like = n_trmtrainagencyname_like;
         if(!ObjectUtils.isEmpty(this.n_trmtrainagencyname_like)){
-            this.getSelectCond().like("trmtrainagencyname", n_trmtrainagencyname_like);
+            this.getSearchCond().like("trmtrainagencyname", n_trmtrainagencyname_like);
         }
     }
 	private String n_trmtrainagencyid_eq;//[培训机构标识]
 	public void setN_trmtrainagencyid_eq(String n_trmtrainagencyid_eq) {
         this.n_trmtrainagencyid_eq = n_trmtrainagencyid_eq;
         if(!ObjectUtils.isEmpty(this.n_trmtrainagencyid_eq)){
-            this.getSelectCond().eq("trmtrainagencyid", n_trmtrainagencyid_eq);
+            this.getSearchCond().eq("trmtrainagencyid", n_trmtrainagencyid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class TrmInvoiceSearchContext extends QueryWrapperContext<TrmInvoice> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("trminvoicename", query)   
             );
 		 }

@@ -31,91 +31,91 @@ public class PcmJxsygzzjlmxSearchContext extends QueryWrapperContext<PcmJxsygzzj
 	public void setN_checkstatus_eq(String n_checkstatus_eq) {
         this.n_checkstatus_eq = n_checkstatus_eq;
         if(!ObjectUtils.isEmpty(this.n_checkstatus_eq)){
-            this.getSelectCond().eq("checkstatus", n_checkstatus_eq);
+            this.getSearchCond().eq("checkstatus", n_checkstatus_eq);
         }
     }
 	private String n_pcmjxsygzzjlmxname_like;//[见习生员工转正记录引用明细名称]
 	public void setN_pcmjxsygzzjlmxname_like(String n_pcmjxsygzzjlmxname_like) {
         this.n_pcmjxsygzzjlmxname_like = n_pcmjxsygzzjlmxname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmjxsygzzjlmxname_like)){
-            this.getSelectCond().like("pcmjxsygzzjlmxname", n_pcmjxsygzzjlmxname_like);
+            this.getSearchCond().like("pcmjxsygzzjlmxname", n_pcmjxsygzzjlmxname_like);
         }
     }
 	private String n_duration_eq;//[见习期限（月）]
 	public void setN_duration_eq(String n_duration_eq) {
         this.n_duration_eq = n_duration_eq;
         if(!ObjectUtils.isEmpty(this.n_duration_eq)){
-            this.getSelectCond().eq("duration", n_duration_eq);
+            this.getSearchCond().eq("duration", n_duration_eq);
         }
     }
 	private String n_pimpersonname_eq;//[员工姓名]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[员工姓名]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_ygbh_like;//[员工编号]
 	public void setN_ygbh_like(String n_ygbh_like) {
         this.n_ygbh_like = n_ygbh_like;
         if(!ObjectUtils.isEmpty(this.n_ygbh_like)){
-            this.getSelectCond().like("ygbh", n_ygbh_like);
+            this.getSearchCond().like("ygbh", n_ygbh_like);
         }
     }
 	private String n_pcmjxsygzzsqname_eq;//[见习生员工转正申请名称]
 	public void setN_pcmjxsygzzsqname_eq(String n_pcmjxsygzzsqname_eq) {
         this.n_pcmjxsygzzsqname_eq = n_pcmjxsygzzsqname_eq;
         if(!ObjectUtils.isEmpty(this.n_pcmjxsygzzsqname_eq)){
-            this.getSelectCond().eq("pcmjxsygzzsqname", n_pcmjxsygzzsqname_eq);
+            this.getSearchCond().eq("pcmjxsygzzsqname", n_pcmjxsygzzsqname_eq);
         }
     }
 	private String n_pcmjxsygzzsqname_like;//[见习生员工转正申请名称]
 	public void setN_pcmjxsygzzsqname_like(String n_pcmjxsygzzsqname_like) {
         this.n_pcmjxsygzzsqname_like = n_pcmjxsygzzsqname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmjxsygzzsqname_like)){
-            this.getSelectCond().like("pcmjxsygzzsqname", n_pcmjxsygzzsqname_like);
+            this.getSearchCond().like("pcmjxsygzzsqname", n_pcmjxsygzzsqname_like);
         }
     }
 	private String n_pcmjxszzkhjgjlname_eq;//[员工]
 	public void setN_pcmjxszzkhjgjlname_eq(String n_pcmjxszzkhjgjlname_eq) {
         this.n_pcmjxszzkhjgjlname_eq = n_pcmjxszzkhjgjlname_eq;
         if(!ObjectUtils.isEmpty(this.n_pcmjxszzkhjgjlname_eq)){
-            this.getSelectCond().eq("pcmjxszzkhjgjlname", n_pcmjxszzkhjgjlname_eq);
+            this.getSearchCond().eq("pcmjxszzkhjgjlname", n_pcmjxszzkhjgjlname_eq);
         }
     }
 	private String n_pcmjxszzkhjgjlname_like;//[员工]
 	public void setN_pcmjxszzkhjgjlname_like(String n_pcmjxszzkhjgjlname_like) {
         this.n_pcmjxszzkhjgjlname_like = n_pcmjxszzkhjgjlname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmjxszzkhjgjlname_like)){
-            this.getSelectCond().like("pcmjxszzkhjgjlname", n_pcmjxszzkhjgjlname_like);
+            this.getSearchCond().like("pcmjxszzkhjgjlname", n_pcmjxszzkhjgjlname_like);
         }
     }
 	private String n_pcmjxsygzzsqid_eq;//[见习生员工转正申请标识]
 	public void setN_pcmjxsygzzsqid_eq(String n_pcmjxsygzzsqid_eq) {
         this.n_pcmjxsygzzsqid_eq = n_pcmjxsygzzsqid_eq;
         if(!ObjectUtils.isEmpty(this.n_pcmjxsygzzsqid_eq)){
-            this.getSelectCond().eq("pcmjxsygzzsqid", n_pcmjxsygzzsqid_eq);
+            this.getSearchCond().eq("pcmjxsygzzsqid", n_pcmjxsygzzsqid_eq);
         }
     }
 	private String n_pcmjxszzkhjgjlid_eq;//[见习生员工转正考核结果记录标识]
 	public void setN_pcmjxszzkhjgjlid_eq(String n_pcmjxszzkhjgjlid_eq) {
         this.n_pcmjxszzkhjgjlid_eq = n_pcmjxszzkhjgjlid_eq;
         if(!ObjectUtils.isEmpty(this.n_pcmjxszzkhjgjlid_eq)){
-            this.getSelectCond().eq("pcmjxszzkhjgjlid", n_pcmjxszzkhjgjlid_eq);
+            this.getSearchCond().eq("pcmjxszzkhjgjlid", n_pcmjxszzkhjgjlid_eq);
         }
     }
 	private String n_pimpersonid_eq;//[人员信息标识]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 
@@ -126,7 +126,7 @@ public class PcmJxsygzzjlmxSearchContext extends QueryWrapperContext<PcmJxsygzzj
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmjxsygzzjlmxname", query)   
                         .or().like("pimpersonname", query)            
                         .or().like("ygbh", query)            

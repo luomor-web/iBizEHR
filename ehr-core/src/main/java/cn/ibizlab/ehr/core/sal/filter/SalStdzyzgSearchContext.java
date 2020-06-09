@@ -31,42 +31,42 @@ public class SalStdzyzgSearchContext extends QueryWrapperContext<SalStdzyzg> {
 	public void setN_salstdzyzgname_like(String n_salstdzyzgname_like) {
         this.n_salstdzyzgname_like = n_salstdzyzgname_like;
         if(!ObjectUtils.isEmpty(this.n_salstdzyzgname_like)){
-            this.getSelectCond().like("salstdzyzgname", n_salstdzyzgname_like);
+            this.getSearchCond().like("salstdzyzgname", n_salstdzyzgname_like);
         }
     }
 	private String n_zyfl_eq;//[专业分类]
 	public void setN_zyfl_eq(String n_zyfl_eq) {
         this.n_zyfl_eq = n_zyfl_eq;
         if(!ObjectUtils.isEmpty(this.n_zyfl_eq)){
-            this.getSelectCond().eq("zyfl", n_zyfl_eq);
+            this.getSearchCond().eq("zyfl", n_zyfl_eq);
         }
     }
 	private String n_jbfl_eq;//[级别分类]
 	public void setN_jbfl_eq(String n_jbfl_eq) {
         this.n_jbfl_eq = n_jbfl_eq;
         if(!ObjectUtils.isEmpty(this.n_jbfl_eq)){
-            this.getSelectCond().eq("jbfl", n_jbfl_eq);
+            this.getSearchCond().eq("jbfl", n_jbfl_eq);
         }
     }
 	private String n_ormorgname_eq;//[组织]
 	public void setN_ormorgname_eq(String n_ormorgname_eq) {
         this.n_ormorgname_eq = n_ormorgname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_eq)){
-            this.getSelectCond().eq("ormorgname", n_ormorgname_eq);
+            this.getSearchCond().eq("ormorgname", n_ormorgname_eq);
         }
     }
 	private String n_ormorgname_like;//[组织]
 	public void setN_ormorgname_like(String n_ormorgname_like) {
         this.n_ormorgname_like = n_ormorgname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_like)){
-            this.getSelectCond().like("ormorgname", n_ormorgname_like);
+            this.getSearchCond().like("ormorgname", n_ormorgname_like);
         }
     }
 	private String n_ormorgid_eq;//[组织标识]
 	public void setN_ormorgid_eq(String n_ormorgid_eq) {
         this.n_ormorgid_eq = n_ormorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
-            this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
         }
     }
 
@@ -77,7 +77,7 @@ public class SalStdzyzgSearchContext extends QueryWrapperContext<SalStdzyzg> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("salstdzyzgname", query)   
             );
 		 }

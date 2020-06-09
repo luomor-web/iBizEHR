@@ -31,14 +31,14 @@ public class AttEnsummarymxSearchContext extends QueryWrapperContext<AttEnsummar
 	public void setN_attensummarymxname_like(String n_attensummarymxname_like) {
         this.n_attensummarymxname_like = n_attensummarymxname_like;
         if(!ObjectUtils.isEmpty(this.n_attensummarymxname_like)){
-            this.getSelectCond().like("attensummarymxname", n_attensummarymxname_like);
+            this.getSearchCond().like("attensummarymxname", n_attensummarymxname_like);
         }
     }
 	private String n_kqlx_eq;//[考勤类型]
 	public void setN_kqlx_eq(String n_kqlx_eq) {
         this.n_kqlx_eq = n_kqlx_eq;
         if(!ObjectUtils.isEmpty(this.n_kqlx_eq)){
-            this.getSelectCond().eq("kqlx", n_kqlx_eq);
+            this.getSearchCond().eq("kqlx", n_kqlx_eq);
         }
     }
 
@@ -49,7 +49,7 @@ public class AttEnsummarymxSearchContext extends QueryWrapperContext<AttEnsummar
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("attensummarymxname", query)   
             );
 		 }

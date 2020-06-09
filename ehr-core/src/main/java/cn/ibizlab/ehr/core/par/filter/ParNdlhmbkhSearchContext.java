@@ -31,21 +31,21 @@ public class ParNdlhmbkhSearchContext extends QueryWrapperContext<ParNdlhmbkh> {
 	public void setN_nd_eq(String n_nd_eq) {
         this.n_nd_eq = n_nd_eq;
         if(!ObjectUtils.isEmpty(this.n_nd_eq)){
-            this.getSelectCond().eq("nd", n_nd_eq);
+            this.getSearchCond().eq("nd", n_nd_eq);
         }
     }
 	private String n_parndlhmbkhname_like;//[量化目标考核]
 	public void setN_parndlhmbkhname_like(String n_parndlhmbkhname_like) {
         this.n_parndlhmbkhname_like = n_parndlhmbkhname_like;
         if(!ObjectUtils.isEmpty(this.n_parndlhmbkhname_like)){
-            this.getSelectCond().like("parndlhmbkhname", n_parndlhmbkhname_like);
+            this.getSearchCond().like("parndlhmbkhname", n_parndlhmbkhname_like);
         }
     }
 	private String n_khlx_eq;//[考核类型]
 	public void setN_khlx_eq(String n_khlx_eq) {
         this.n_khlx_eq = n_khlx_eq;
         if(!ObjectUtils.isEmpty(this.n_khlx_eq)){
-            this.getSelectCond().eq("khlx", n_khlx_eq);
+            this.getSearchCond().eq("khlx", n_khlx_eq);
         }
     }
 
@@ -56,7 +56,7 @@ public class ParNdlhmbkhSearchContext extends QueryWrapperContext<ParNdlhmbkh> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("parndlhmbkhname", query)   
             );
 		 }

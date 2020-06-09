@@ -50,6 +50,7 @@ export class EntityServiceRegister {
         this.allEntityService.set('pcmydgzmx', () => import('@/service/pcm-ydgzmx/pcm-ydgzmx-service'));
         this.allEntityService.set('ormorg', () => import('@/service/orm-org/orm-org-service'));
         this.allEntityService.set('pimdistirbution', () => import('@/service/pim-distirbution/pim-distirbution-service'));
+        this.allEntityService.set('personstatemgr', () => import('@/service/person-state-mgr/person-state-mgr-service'));
         this.allEntityService.set('pcmxygzzsqmx', () => import('@/service/pcm-xygzzsqmx/pcm-xygzzsqmx-service'));
         this.allEntityService.set('pcmyddgmx', () => import('@/service/pcm-yddgmx/pcm-yddgmx-service'));
         this.allEntityService.set('ormduty', () => import('@/service/orm-duty/orm-duty-service'));

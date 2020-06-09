@@ -31,7 +31,7 @@ public class SalSubjectSearchContext extends QueryWrapperContext<SalSubject> {
 	public void setN_salsubjectname_like(String n_salsubjectname_like) {
         this.n_salsubjectname_like = n_salsubjectname_like;
         if(!ObjectUtils.isEmpty(this.n_salsubjectname_like)){
-            this.getSelectCond().like("salsubjectname", n_salsubjectname_like);
+            this.getSearchCond().like("salsubjectname", n_salsubjectname_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class SalSubjectSearchContext extends QueryWrapperContext<SalSubject> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("salsubjectname", query)   
             );
 		 }

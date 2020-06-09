@@ -31,56 +31,56 @@ public class PimExitandentrySearchContext extends QueryWrapperContext<PimExitand
 	public void setN_lx_eq(String n_lx_eq) {
         this.n_lx_eq = n_lx_eq;
         if(!ObjectUtils.isEmpty(this.n_lx_eq)){
-            this.getSelectCond().eq("lx", n_lx_eq);
+            this.getSearchCond().eq("lx", n_lx_eq);
         }
     }
 	private String n_jlss_eq;//[记录所属]
 	public void setN_jlss_eq(String n_jlss_eq) {
         this.n_jlss_eq = n_jlss_eq;
         if(!ObjectUtils.isEmpty(this.n_jlss_eq)){
-            this.getSelectCond().eq("jlss", n_jlss_eq);
+            this.getSearchCond().eq("jlss", n_jlss_eq);
         }
     }
 	private String n_workflowstate_eq;//[流程状态]
 	public void setN_workflowstate_eq(String n_workflowstate_eq) {
         this.n_workflowstate_eq = n_workflowstate_eq;
         if(!ObjectUtils.isEmpty(this.n_workflowstate_eq)){
-            this.getSelectCond().eq("workflowstate", n_workflowstate_eq);
+            this.getSearchCond().eq("workflowstate", n_workflowstate_eq);
         }
     }
 	private String n_pimexitandentryname_like;//[出入境管理名称]
 	public void setN_pimexitandentryname_like(String n_pimexitandentryname_like) {
         this.n_pimexitandentryname_like = n_pimexitandentryname_like;
         if(!ObjectUtils.isEmpty(this.n_pimexitandentryname_like)){
-            this.getSelectCond().like("pimexitandentryname", n_pimexitandentryname_like);
+            this.getSearchCond().like("pimexitandentryname", n_pimexitandentryname_like);
         }
     }
 	private String n_ygbh_like;//[员工编号]
 	public void setN_ygbh_like(String n_ygbh_like) {
         this.n_ygbh_like = n_ygbh_like;
         if(!ObjectUtils.isEmpty(this.n_ygbh_like)){
-            this.getSelectCond().like("ygbh", n_ygbh_like);
+            this.getSearchCond().like("ygbh", n_ygbh_like);
         }
     }
 	private String n_pimpersonname_eq;//[员工姓名]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[员工姓名]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_pimpersonid_eq;//[人员信息标识]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 
@@ -91,7 +91,7 @@ public class PimExitandentrySearchContext extends QueryWrapperContext<PimExitand
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimexitandentryname", query)   
             );
 		 }

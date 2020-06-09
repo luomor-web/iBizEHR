@@ -31,14 +31,14 @@ public class PimVocationalCatalogSearchContext extends QueryWrapperContext<PimVo
 	public void setN_dh_eq(String n_dh_eq) {
         this.n_dh_eq = n_dh_eq;
         if(!ObjectUtils.isEmpty(this.n_dh_eq)){
-            this.getSelectCond().eq("dh", n_dh_eq);
+            this.getSearchCond().eq("dh", n_dh_eq);
         }
     }
 	private String n_pimvocationalcatalogname_like;//[职（执）业资格名称]
 	public void setN_pimvocationalcatalogname_like(String n_pimvocationalcatalogname_like) {
         this.n_pimvocationalcatalogname_like = n_pimvocationalcatalogname_like;
         if(!ObjectUtils.isEmpty(this.n_pimvocationalcatalogname_like)){
-            this.getSelectCond().like("pimvocationalcatalogname", n_pimvocationalcatalogname_like);
+            this.getSearchCond().like("pimvocationalcatalogname", n_pimvocationalcatalogname_like);
         }
     }
 
@@ -49,7 +49,7 @@ public class PimVocationalCatalogSearchContext extends QueryWrapperContext<PimVo
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimvocationalcatalogname", query)   
             );
 		 }

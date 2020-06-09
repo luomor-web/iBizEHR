@@ -31,63 +31,63 @@ public class OrmXmglSearchContext extends QueryWrapperContext<OrmXmgl> {
 	public void setN_isdirectlymanage_eq(String n_isdirectlymanage_eq) {
         this.n_isdirectlymanage_eq = n_isdirectlymanage_eq;
         if(!ObjectUtils.isEmpty(this.n_isdirectlymanage_eq)){
-            this.getSelectCond().eq("isdirectlymanage", n_isdirectlymanage_eq);
+            this.getSearchCond().eq("isdirectlymanage", n_isdirectlymanage_eq);
         }
     }
 	private String n_project_name_like;//[项目名称]
 	public void setN_project_name_like(String n_project_name_like) {
         this.n_project_name_like = n_project_name_like;
         if(!ObjectUtils.isEmpty(this.n_project_name_like)){
-            this.getSelectCond().like("project_name", n_project_name_like);
+            this.getSearchCond().like("project_name", n_project_name_like);
         }
     }
 	private String n_ormxmglname_like;//[项目名称]
 	public void setN_ormxmglname_like(String n_ormxmglname_like) {
         this.n_ormxmglname_like = n_ormxmglname_like;
         if(!ObjectUtils.isEmpty(this.n_ormxmglname_like)){
-            this.getSelectCond().like("ormxmglname", n_ormxmglname_like);
+            this.getSearchCond().like("ormxmglname", n_ormxmglname_like);
         }
     }
 	private String n_engineeringbustype_eq;//[工程业务类型]
 	public void setN_engineeringbustype_eq(String n_engineeringbustype_eq) {
         this.n_engineeringbustype_eq = n_engineeringbustype_eq;
         if(!ObjectUtils.isEmpty(this.n_engineeringbustype_eq)){
-            this.getSelectCond().eq("engineeringbustype", n_engineeringbustype_eq);
+            this.getSearchCond().eq("engineeringbustype", n_engineeringbustype_eq);
         }
     }
 	private String n_project_type_eq;//[项目类型]
 	public void setN_project_type_eq(String n_project_type_eq) {
         this.n_project_type_eq = n_project_type_eq;
         if(!ObjectUtils.isEmpty(this.n_project_type_eq)){
-            this.getSelectCond().eq("project_type", n_project_type_eq);
+            this.getSearchCond().eq("project_type", n_project_type_eq);
         }
     }
 	private String n_engineeringscale_eq;//[工程规模]
 	public void setN_engineeringscale_eq(String n_engineeringscale_eq) {
         this.n_engineeringscale_eq = n_engineeringscale_eq;
         if(!ObjectUtils.isEmpty(this.n_engineeringscale_eq)){
-            this.getSelectCond().eq("engineeringscale", n_engineeringscale_eq);
+            this.getSearchCond().eq("engineeringscale", n_engineeringscale_eq);
         }
     }
 	private String n_engineeringpurpose_eq;//[工程用途]
 	public void setN_engineeringpurpose_eq(String n_engineeringpurpose_eq) {
         this.n_engineeringpurpose_eq = n_engineeringpurpose_eq;
         if(!ObjectUtils.isEmpty(this.n_engineeringpurpose_eq)){
-            this.getSelectCond().eq("engineeringpurpose", n_engineeringpurpose_eq);
+            this.getSearchCond().eq("engineeringpurpose", n_engineeringpurpose_eq);
         }
     }
 	private String n_procapitalatt_eq;//[项目资金属性]
 	public void setN_procapitalatt_eq(String n_procapitalatt_eq) {
         this.n_procapitalatt_eq = n_procapitalatt_eq;
         if(!ObjectUtils.isEmpty(this.n_procapitalatt_eq)){
-            this.getSelectCond().eq("procapitalatt", n_procapitalatt_eq);
+            this.getSearchCond().eq("procapitalatt", n_procapitalatt_eq);
         }
     }
 	private String n_project_number_like;//[项目编号]
 	public void setN_project_number_like(String n_project_number_like) {
         this.n_project_number_like = n_project_number_like;
         if(!ObjectUtils.isEmpty(this.n_project_number_like)){
-            this.getSelectCond().like("project_number", n_project_number_like);
+            this.getSearchCond().like("project_number", n_project_number_like);
         }
     }
 
@@ -98,7 +98,7 @@ public class OrmXmglSearchContext extends QueryWrapperContext<OrmXmgl> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("project_name", query)   
             );
 		 }

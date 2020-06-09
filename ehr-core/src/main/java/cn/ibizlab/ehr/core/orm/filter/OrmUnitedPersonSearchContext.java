@@ -31,28 +31,28 @@ public class OrmUnitedPersonSearchContext extends QueryWrapperContext<OrmUnitedP
 	public void setN_unitedpersonname_like(String n_unitedpersonname_like) {
         this.n_unitedpersonname_like = n_unitedpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_unitedpersonname_like)){
-            this.getSelectCond().like("unitedpersonname", n_unitedpersonname_like);
+            this.getSearchCond().like("unitedpersonname", n_unitedpersonname_like);
         }
     }
 	private String n_refermark_eq;//[引用标志]
 	public void setN_refermark_eq(String n_refermark_eq) {
         this.n_refermark_eq = n_refermark_eq;
         if(!ObjectUtils.isEmpty(this.n_refermark_eq)){
-            this.getSelectCond().eq("refermark", n_refermark_eq);
+            this.getSearchCond().eq("refermark", n_refermark_eq);
         }
     }
 	private String n_employeename_like;//[姓名]
 	public void setN_employeename_like(String n_employeename_like) {
         this.n_employeename_like = n_employeename_like;
         if(!ObjectUtils.isEmpty(this.n_employeename_like)){
-            this.getSelectCond().like("employeename", n_employeename_like);
+            this.getSearchCond().like("employeename", n_employeename_like);
         }
     }
 	private String n_employeenumber_eq;//[用户编码]
 	public void setN_employeenumber_eq(String n_employeenumber_eq) {
         this.n_employeenumber_eq = n_employeenumber_eq;
         if(!ObjectUtils.isEmpty(this.n_employeenumber_eq)){
-            this.getSelectCond().eq("employeenumber", n_employeenumber_eq);
+            this.getSearchCond().eq("employeenumber", n_employeenumber_eq);
         }
     }
 
@@ -63,7 +63,7 @@ public class OrmUnitedPersonSearchContext extends QueryWrapperContext<OrmUnitedP
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("unitedpersonname", query)   
                         .or().like("employeename", query)            
                         .or().like("employeenumber", query)            

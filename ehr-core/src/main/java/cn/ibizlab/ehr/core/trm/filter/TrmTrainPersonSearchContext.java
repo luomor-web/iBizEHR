@@ -31,49 +31,49 @@ public class TrmTrainPersonSearchContext extends QueryWrapperContext<TrmTrainPer
 	public void setN_trmtrianpersonname_like(String n_trmtrianpersonname_like) {
         this.n_trmtrianpersonname_like = n_trmtrianpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_trmtrianpersonname_like)){
-            this.getSelectCond().like("trmtrianpersonname", n_trmtrianpersonname_like);
+            this.getSearchCond().like("trmtrianpersonname", n_trmtrianpersonname_like);
         }
     }
 	private String n_pimpersonname_eq;//[员工姓名]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[员工姓名]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_trmtrainplantermname_eq;//[培训计划项名称]
 	public void setN_trmtrainplantermname_eq(String n_trmtrainplantermname_eq) {
         this.n_trmtrainplantermname_eq = n_trmtrainplantermname_eq;
         if(!ObjectUtils.isEmpty(this.n_trmtrainplantermname_eq)){
-            this.getSelectCond().eq("trmtrainplantermname", n_trmtrainplantermname_eq);
+            this.getSearchCond().eq("trmtrainplantermname", n_trmtrainplantermname_eq);
         }
     }
 	private String n_trmtrainplantermname_like;//[培训计划项名称]
 	public void setN_trmtrainplantermname_like(String n_trmtrainplantermname_like) {
         this.n_trmtrainplantermname_like = n_trmtrainplantermname_like;
         if(!ObjectUtils.isEmpty(this.n_trmtrainplantermname_like)){
-            this.getSelectCond().like("trmtrainplantermname", n_trmtrainplantermname_like);
+            this.getSearchCond().like("trmtrainplantermname", n_trmtrainplantermname_like);
         }
     }
 	private String n_pimpersonid_eq;//[人员信息标识]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 	private String n_trmtrainplantermid_eq;//[培训计划项标识]
 	public void setN_trmtrainplantermid_eq(String n_trmtrainplantermid_eq) {
         this.n_trmtrainplantermid_eq = n_trmtrainplantermid_eq;
         if(!ObjectUtils.isEmpty(this.n_trmtrainplantermid_eq)){
-            this.getSelectCond().eq("trmtrainplantermid", n_trmtrainplantermid_eq);
+            this.getSearchCond().eq("trmtrainplantermid", n_trmtrainplantermid_eq);
         }
     }
 
@@ -84,7 +84,7 @@ public class TrmTrainPersonSearchContext extends QueryWrapperContext<TrmTrainPer
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("trmtrianpersonname", query)   
             );
 		 }

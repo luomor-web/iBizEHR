@@ -31,35 +31,35 @@ public class PimEnclosureSearchContext extends QueryWrapperContext<PimEnclosure>
 	public void setN_pimenclosurename_like(String n_pimenclosurename_like) {
         this.n_pimenclosurename_like = n_pimenclosurename_like;
         if(!ObjectUtils.isEmpty(this.n_pimenclosurename_like)){
-            this.getSelectCond().like("pimenclosurename", n_pimenclosurename_like);
+            this.getSearchCond().like("pimenclosurename", n_pimenclosurename_like);
         }
     }
 	private String n_fjfl_eq;//[附件分类]
 	public void setN_fjfl_eq(String n_fjfl_eq) {
         this.n_fjfl_eq = n_fjfl_eq;
         if(!ObjectUtils.isEmpty(this.n_fjfl_eq)){
-            this.getSelectCond().eq("fjfl", n_fjfl_eq);
+            this.getSearchCond().eq("fjfl", n_fjfl_eq);
         }
     }
 	private String n_pimpersonname_eq;//[人员信息名称]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[人员信息名称]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_pimpersonid_eq;//[人员信息标识]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class PimEnclosureSearchContext extends QueryWrapperContext<PimEnclosure>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimenclosurename", query)   
             );
 		 }

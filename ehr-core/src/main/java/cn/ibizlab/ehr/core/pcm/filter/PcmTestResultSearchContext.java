@@ -31,42 +31,42 @@ public class PcmTestResultSearchContext extends QueryWrapperContext<PcmTestResul
 	public void setN_testresultname_like(String n_testresultname_like) {
         this.n_testresultname_like = n_testresultname_like;
         if(!ObjectUtils.isEmpty(this.n_testresultname_like)){
-            this.getSelectCond().like("testresultname", n_testresultname_like);
+            this.getSearchCond().like("testresultname", n_testresultname_like);
         }
     }
 	private String n_psychologyhealthylevel_eq;//[心理健康等级]
 	public void setN_psychologyhealthylevel_eq(String n_psychologyhealthylevel_eq) {
         this.n_psychologyhealthylevel_eq = n_psychologyhealthylevel_eq;
         if(!ObjectUtils.isEmpty(this.n_psychologyhealthylevel_eq)){
-            this.getSelectCond().eq("psychologyhealthylevel", n_psychologyhealthylevel_eq);
+            this.getSearchCond().eq("psychologyhealthylevel", n_psychologyhealthylevel_eq);
         }
     }
 	private String n_flag_eq;//[是否有效]
 	public void setN_flag_eq(String n_flag_eq) {
         this.n_flag_eq = n_flag_eq;
         if(!ObjectUtils.isEmpty(this.n_flag_eq)){
-            this.getSelectCond().eq("flag", n_flag_eq);
+            this.getSearchCond().eq("flag", n_flag_eq);
         }
     }
 	private String n_pcmprofilename_eq;//[姓名]
 	public void setN_pcmprofilename_eq(String n_pcmprofilename_eq) {
         this.n_pcmprofilename_eq = n_pcmprofilename_eq;
         if(!ObjectUtils.isEmpty(this.n_pcmprofilename_eq)){
-            this.getSelectCond().eq("pcmprofilename", n_pcmprofilename_eq);
+            this.getSearchCond().eq("pcmprofilename", n_pcmprofilename_eq);
         }
     }
 	private String n_pcmprofilename_like;//[姓名]
 	public void setN_pcmprofilename_like(String n_pcmprofilename_like) {
         this.n_pcmprofilename_like = n_pcmprofilename_like;
         if(!ObjectUtils.isEmpty(this.n_pcmprofilename_like)){
-            this.getSelectCond().like("pcmprofilename", n_pcmprofilename_like);
+            this.getSearchCond().like("pcmprofilename", n_pcmprofilename_like);
         }
     }
 	private String n_pcmprofileid_eq;//[应聘者ID]
 	public void setN_pcmprofileid_eq(String n_pcmprofileid_eq) {
         this.n_pcmprofileid_eq = n_pcmprofileid_eq;
         if(!ObjectUtils.isEmpty(this.n_pcmprofileid_eq)){
-            this.getSelectCond().eq("pcmprofileid", n_pcmprofileid_eq);
+            this.getSearchCond().eq("pcmprofileid", n_pcmprofileid_eq);
         }
     }
 
@@ -77,7 +77,7 @@ public class PcmTestResultSearchContext extends QueryWrapperContext<PcmTestResul
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("testresultname", query)   
             );
 		 }

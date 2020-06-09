@@ -31,70 +31,70 @@ public class PimAchievementsSearchContext extends QueryWrapperContext<PimAchieve
 	public void setN_khjl_eq(String n_khjl_eq) {
         this.n_khjl_eq = n_khjl_eq;
         if(!ObjectUtils.isEmpty(this.n_khjl_eq)){
-            this.getSelectCond().eq("khjl", n_khjl_eq);
+            this.getSearchCond().eq("khjl", n_khjl_eq);
         }
     }
 	private String n_xmjb_eq;//[项目级别]
 	public void setN_xmjb_eq(String n_xmjb_eq) {
         this.n_xmjb_eq = n_xmjb_eq;
         if(!ObjectUtils.isEmpty(this.n_xmjb_eq)){
-            this.getSelectCond().eq("xmjb", n_xmjb_eq);
+            this.getSearchCond().eq("xmjb", n_xmjb_eq);
         }
     }
 	private String n_jd_eq;//[季度]
 	public void setN_jd_eq(String n_jd_eq) {
         this.n_jd_eq = n_jd_eq;
         if(!ObjectUtils.isEmpty(this.n_jd_eq)){
-            this.getSelectCond().eq("jd", n_jd_eq);
+            this.getSearchCond().eq("jd", n_jd_eq);
         }
     }
 	private String n_dj_eq;//[档级]
 	public void setN_dj_eq(String n_dj_eq) {
         this.n_dj_eq = n_dj_eq;
         if(!ObjectUtils.isEmpty(this.n_dj_eq)){
-            this.getSelectCond().eq("dj", n_dj_eq);
+            this.getSearchCond().eq("dj", n_dj_eq);
         }
     }
 	private String n_pimachievementsname_like;//[年度]
 	public void setN_pimachievementsname_like(String n_pimachievementsname_like) {
         this.n_pimachievementsname_like = n_pimachievementsname_like;
         if(!ObjectUtils.isEmpty(this.n_pimachievementsname_like)){
-            this.getSelectCond().like("pimachievementsname", n_pimachievementsname_like);
+            this.getSearchCond().like("pimachievementsname", n_pimachievementsname_like);
         }
     }
 	private String n_khlx_eq;//[绩效考核类型]
 	public void setN_khlx_eq(String n_khlx_eq) {
         this.n_khlx_eq = n_khlx_eq;
         if(!ObjectUtils.isEmpty(this.n_khlx_eq)){
-            this.getSelectCond().eq("khlx", n_khlx_eq);
+            this.getSearchCond().eq("khlx", n_khlx_eq);
         }
     }
 	private String n_yd_eq;//[月度]
 	public void setN_yd_eq(String n_yd_eq) {
         this.n_yd_eq = n_yd_eq;
         if(!ObjectUtils.isEmpty(this.n_yd_eq)){
-            this.getSelectCond().eq("yd", n_yd_eq);
+            this.getSearchCond().eq("yd", n_yd_eq);
         }
     }
 	private String n_pimpersonname_eq;//[员工姓名]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[员工姓名]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_pimpersonid_eq;//[人员信息标识]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 
@@ -105,7 +105,7 @@ public class PimAchievementsSearchContext extends QueryWrapperContext<PimAchieve
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimachievementsname", query)   
             );
 		 }

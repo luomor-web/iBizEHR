@@ -31,7 +31,7 @@ public class PimArchivesManageSearchContext extends QueryWrapperContext<PimArchi
 	public void setN_archivesmanagename_like(String n_archivesmanagename_like) {
         this.n_archivesmanagename_like = n_archivesmanagename_like;
         if(!ObjectUtils.isEmpty(this.n_archivesmanagename_like)){
-            this.getSelectCond().like("archivesmanagename", n_archivesmanagename_like);
+            this.getSearchCond().like("archivesmanagename", n_archivesmanagename_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class PimArchivesManageSearchContext extends QueryWrapperContext<PimArchi
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("archivesmanagename", query)   
             );
 		 }
