@@ -41,8 +41,10 @@ export class EntityServiceRegister {
     protected init(): void {
                 this.allEntityService.set('pimtitle', () => import('@/service/pim-title/pim-title-service'));
         this.allEntityService.set('pimvocational', () => import('@/service/pim-vocational/pim-vocational-service'));
+        this.allEntityService.set('codelist1', () => import('@/service/code-list1/code-list1-service'));
         this.allEntityService.set('pimeducation', () => import('@/service/pim-education/pim-education-service'));
         this.allEntityService.set('pimperson', () => import('@/service/pim-person/pim-person-service'));
+        this.allEntityService.set('codeitem', () => import('@/service/code-item/code-item-service'));
         this.allEntityService.set('ormorg', () => import('@/service/orm-org/orm-org-service'));
         this.allEntityService.set('pimoutput', () => import('@/service/pim-output/pim-output-service'));
         this.allEntityService.set('dynachart', () => import('@/service/dyna-chart/dyna-chart-service'));

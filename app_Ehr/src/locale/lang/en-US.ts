@@ -1,7 +1,9 @@
 import pimtitle_en_US from '@locale/lanres/entities/pim-title/pim-title_en_US';
 import pimvocational_en_US from '@locale/lanres/entities/pim-vocational/pim-vocational_en_US';
+import codelist1_en_US from '@locale/lanres/entities/code-list1/code-list1_en_US';
 import pimeducation_en_US from '@locale/lanres/entities/pim-education/pim-education_en_US';
 import pimperson_en_US from '@locale/lanres/entities/pim-person/pim-person_en_US';
+import codeitem_en_US from '@locale/lanres/entities/code-item/code-item_en_US';
 import ormorg_en_US from '@locale/lanres/entities/orm-org/orm-org_en_US';
 import pimoutput_en_US from '@locale/lanres/entities/pim-output/pim-output_en_US';
 import dynachart_en_US from '@locale/lanres/entities/dyna-chart/dyna-chart_en_US';
@@ -79,8 +81,10 @@ export default {
     entities: {
         pimtitle: pimtitle_en_US,
         pimvocational: pimvocational_en_US,
+        codelist1: codelist1_en_US,
         pimeducation: pimeducation_en_US,
         pimperson: pimperson_en_US,
+        codeitem: codeitem_en_US,
         ormorg: ormorg_en_US,
         pimoutput: pimoutput_en_US,
         dynachart: dynachart_en_US,

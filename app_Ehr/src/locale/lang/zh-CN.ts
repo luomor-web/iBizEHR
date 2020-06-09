@@ -1,7 +1,9 @@
 import pimtitle_zh_CN from '@locale/lanres/entities/pim-title/pim-title_zh_CN';
 import pimvocational_zh_CN from '@locale/lanres/entities/pim-vocational/pim-vocational_zh_CN';
+import codelist1_zh_CN from '@locale/lanres/entities/code-list1/code-list1_zh_CN';
 import pimeducation_zh_CN from '@locale/lanres/entities/pim-education/pim-education_zh_CN';
 import pimperson_zh_CN from '@locale/lanres/entities/pim-person/pim-person_zh_CN';
+import codeitem_zh_CN from '@locale/lanres/entities/code-item/code-item_zh_CN';
 import ormorg_zh_CN from '@locale/lanres/entities/orm-org/orm-org_zh_CN';
 import pimoutput_zh_CN from '@locale/lanres/entities/pim-output/pim-output_zh_CN';
 import dynachart_zh_CN from '@locale/lanres/entities/dyna-chart/dyna-chart_zh_CN';
@@ -79,8 +81,10 @@ export default {
     entities: {
         pimtitle: pimtitle_zh_CN,
         pimvocational: pimvocational_zh_CN,
+        codelist1: codelist1_zh_CN,
         pimeducation: pimeducation_zh_CN,
         pimperson: pimperson_zh_CN,
+        codeitem: codeitem_zh_CN,
         ormorg: ormorg_zh_CN,
         pimoutput: pimoutput_zh_CN,
         dynachart: dynachart_zh_CN,

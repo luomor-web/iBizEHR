@@ -192,8 +192,8 @@
         "srfkey": "EhrCodeList0024",
         "emptytext": "未定义",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     } 
 ]
