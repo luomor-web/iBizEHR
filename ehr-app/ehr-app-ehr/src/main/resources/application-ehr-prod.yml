@@ -7,6 +7,10 @@ zuul:
       path: /pimtitles/**
       serviceId: ehr-webapi
       stripPrefix: false
+    pimvocational:
+      path: /pimvocationals/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     pimeducation:
       path: /pimeducations/**
       serviceId: ehr-webapi
@@ -30,10 +34,6 @@ zuul:
     dynadashboard:
       path: /dynadashboards/**
       serviceId: r7rt-dyna
-      stripPrefix: false
-    pimvocational:
-      path: /pimvocationals/**
-      serviceId: ehr-webapi
       stripPrefix: false
   sensitive-headers:
     - Cookie,Set-Cookie,Authorization
