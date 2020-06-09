@@ -50,20 +50,6 @@
       <i-col :xs="{ span: 8, offset: 0}" :sm="{ span: 8, offset: 0}" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
         <card class="portlet-card" :bordered="false" dis-hover :padding="0">
           <span>
-                      <view_db_sysportlet3 
-              :viewState="viewState"  
-              :viewparams="viewparams" 
-              :context="context" 
-              name="db_sysportlet3"  
-              ref='db_sysportlet3' 
-              @closeview="closeView($event)">
-          </view_db_sysportlet3>
-          </span>
-        </card>
-      </i-col>
-      <i-col :xs="{ span: 8, offset: 0}" :sm="{ span: 8, offset: 0}" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
-        <card class="portlet-card" :bordered="false" dis-hover :padding="0">
-          <span>
                       <view_db_sysportlet5 
               :viewState="viewState"  
               :viewparams="viewparams" 
@@ -72,6 +58,20 @@
               ref='db_sysportlet5' 
               @closeview="closeView($event)">
           </view_db_sysportlet5>
+          </span>
+        </card>
+      </i-col>
+      <i-col :xs="{ span: 8, offset: 0}" :sm="{ span: 8, offset: 0}" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
+        <card class="portlet-card" :bordered="false" dis-hover :padding="0">
+          <span>
+                      <view_db_sysportlet3 
+              :viewState="viewState"  
+              :viewparams="viewparams" 
+              :context="context" 
+              name="db_sysportlet3"  
+              ref='db_sysportlet3' 
+              @closeview="closeView($event)">
+          </view_db_sysportlet3>
           </span>
         </card>
       </i-col>
