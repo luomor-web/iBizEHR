@@ -11,12 +11,20 @@ zuul:
       path: /pimvocationals/**
       serviceId: ehr-webapi
       stripPrefix: false
+    codelist:
+      path: /codelist1s/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     pimeducation:
       path: /pimeducations/**
       serviceId: ehr-webapi
       stripPrefix: false
     pimperson:
       path: /pimpeople/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    codeitem:
+      path: /codeitems/**
       serviceId: ehr-webapi
       stripPrefix: false
     ormorg:
