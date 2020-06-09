@@ -8,10 +8,10 @@ import './upload/upload';
 
 // 实体级接口对象
 import './entity/pim-titles/pim-titles';
+import './entity/pim-vocationals/pim-vocationals';
 import './entity/pim-educations/pim-educations';
 import './entity/pim-persons/pim-persons';
 import './entity/orm-orgs/orm-orgs';
 import './entity/pim-outputs/pim-outputs';
 import './entity/dyna-charts/dyna-charts';
 import './entity/dyna-dashboards/dyna-dashboards';
-import './entity/pim-vocationals/pim-vocationals';
