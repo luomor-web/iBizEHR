@@ -159,6 +159,78 @@ export default class IndexModel {
 	 * @memberof IndexModel
 	 */
 	public funcs: any[] = [
+        {
+            appfunctag: '_7',
+            appfuncyype: 'APPVIEW',
+            openmode: '',
+            codename: 'salitemgridview',
+            deResParameters: [],
+            routepath: '/index/:index?/salitems/:salitem?/gridview/:gridview?',
+            parameters: [
+                { pathName: 'salitems', parameterName: 'salitem' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+        },
+        {
+            appfunctag: '_4',
+            appfuncyype: 'APPVIEW',
+            openmode: '',
+            codename: 'salsourcegridview',
+            deResParameters: [],
+            routepath: '/index/:index?/salsources/:salsource?/gridview/:gridview?',
+            parameters: [
+                { pathName: 'salsources', parameterName: 'salsource' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+        },
+        {
+            appfunctag: '_6',
+            appfuncyype: 'APPVIEW',
+            openmode: '',
+            codename: 'saltypegridview',
+            deResParameters: [],
+            routepath: '/index/:index?/saltypes/:saltype?/gridview/:gridview?',
+            parameters: [
+                { pathName: 'saltypes', parameterName: 'saltype' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+        },
+        {
+            appfunctag: '_3',
+            appfuncyype: 'APPVIEW',
+            openmode: '',
+            codename: 'salparamgridview',
+            deResParameters: [],
+            routepath: '/index/:index?/salparams/:salparam?/gridview/:gridview?',
+            parameters: [
+                { pathName: 'salparams', parameterName: 'salparam' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+        },
+        {
+            appfunctag: '_5',
+            appfuncyype: 'APPVIEW',
+            openmode: '',
+            codename: 'salschemegridview',
+            deResParameters: [],
+            routepath: '/index/:index?/salschemes/:salscheme?/gridview/:gridview?',
+            parameters: [
+                { pathName: 'salschemes', parameterName: 'salscheme' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+        },
+        {
+            appfunctag: '_2',
+            appfuncyype: 'APPVIEW',
+            openmode: '',
+            codename: 'salrulegridview',
+            deResParameters: [],
+            routepath: '/index/:index?/salrules/:salrule?/gridview/:gridview?',
+            parameters: [
+                { pathName: 'salrules', parameterName: 'salrule' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+        },
 	];
 
     /**

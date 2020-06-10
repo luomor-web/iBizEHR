@@ -32,7 +32,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @type {CrmIndexService}
      * @memberof CrmIndex
      */
-    protected menuAlign: string = '';
+    protected menuAlign: string = 'LEFT';
 
     /**
      * 菜单模型
