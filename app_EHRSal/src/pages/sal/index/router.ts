@@ -175,6 +175,19 @@ const router = new Router({
                     component: () => import('@pages/sal/sal-rule-edit-view/sal-rule-edit-view.vue'),
                 },
                 {
+                    path: 'salschemes/:salscheme?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.salscheme.views.pickupgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'salschemes', parameterName: 'salscheme' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/sal/sal-scheme-pickup-grid-view/sal-scheme-pickup-grid-view.vue'),
+                },
+                {
                     path: 'ormorgs/:ormorg?/pickupview/:pickupview?',
                     meta: {
                         caption: 'entities.ormorg.views.pickupview.caption',
@@ -281,6 +294,19 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/sal/sal-scheme-item-grid-view/sal-scheme-item-grid-view.vue'),
+                },
+                {
+                    path: 'salschemes/:salscheme?/mpickupview/:mpickupview?',
+                    meta: {
+                        caption: 'entities.salscheme.views.mpickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'salschemes', parameterName: 'salscheme' },
+                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/sal/sal-scheme-mpickup-view/sal-scheme-mpickup-view.vue'),
                 },
                 {
                     path: 'salsubjects/:salsubject?/pickupgridview/:pickupgridview?',
@@ -464,6 +490,19 @@ const router = new Router({
                     component: () => import('@pages/sal/sal-type-grid-view/sal-type-grid-view.vue'),
                 },
                 {
+                    path: 'salitems/:salitem?/mpickupview/:mpickupview?',
+                    meta: {
+                        caption: 'entities.salitem.views.mpickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'salitems', parameterName: 'salitem' },
+                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/sal/sal-item-mpickup-view/sal-item-mpickup-view.vue'),
+                },
+                {
                     path: 'salsources/:salsource?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.salsource.views.gridview.caption',
@@ -596,6 +635,18 @@ const router = new Router({
         component: () => import('@pages/sal/sal-source-pickup-view/sal-source-pickup-view.vue'),
     },
     {
+        path: '/salitems/:salitem?/mpickupview/:mpickupview?',
+        meta: {
+            caption: 'entities.salitem.views.mpickupview.caption',
+            parameters: [
+                { pathName: 'salitems', parameterName: 'salitem' },
+                { pathName: 'mpickupview', parameterName: 'mpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/sal/sal-item-mpickup-view/sal-item-mpickup-view.vue'),
+    },
+    {
         path: '/salsources/:salsource?/pickupgridview/:pickupgridview?',
         meta: {
             caption: 'entities.salsource.views.pickupgridview.caption',
@@ -634,6 +685,18 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/sal/sal-source-edit-view/sal-source-edit-view.vue'),
+    },
+    {
+        path: '/salschemes/:salscheme?/mpickupview/:mpickupview?',
+        meta: {
+            caption: 'entities.salscheme.views.mpickupview.caption',
+            parameters: [
+                { pathName: 'salschemes', parameterName: 'salscheme' },
+                { pathName: 'mpickupview', parameterName: 'mpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/sal/sal-scheme-mpickup-view/sal-scheme-mpickup-view.vue'),
     },
     {
         path: '/salparams/:salparam?/pickupgridview/:pickupgridview?',
@@ -686,6 +749,18 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/sal/sal-rule-pickup-view/sal-rule-pickup-view.vue'),
+    },
+    {
+        path: '/salschemes/:salscheme?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.salscheme.views.pickupgridview.caption',
+            parameters: [
+                { pathName: 'salschemes', parameterName: 'salscheme' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/sal/sal-scheme-pickup-grid-view/sal-scheme-pickup-grid-view.vue'),
     },
     {
         path: '/salschemes/:salscheme?/salschemeitems/:salschemeitem?/gridview/:gridview?',

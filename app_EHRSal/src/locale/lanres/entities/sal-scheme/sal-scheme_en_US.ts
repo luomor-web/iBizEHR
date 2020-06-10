@@ -15,11 +15,23 @@ export default {
     ormorgid: '组织标识',
   },
 	views: {
+		pickupview: {
+			caption: "工资单",
+      title: '工资单',
+		},
 		editview: {
 			caption: "工资单",
       title: '工资单',
 		},
+		mpickupview: {
+			caption: "工资单",
+      title: '工资单',
+		},
 		gridview: {
+			caption: "工资单",
+      title: '工资单',
+		},
+		pickupgridview: {
 			caption: "工资单",
       title: '工资单',
 		},

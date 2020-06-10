@@ -17,6 +17,10 @@ export default {
 			caption: "薪酬要素项",
       title: '薪酬要素项',
 		},
+		mpickupview: {
+			caption: "薪酬要素项",
+      title: '薪酬要素项',
+		},
 		pickupview: {
 			caption: "薪酬要素项",
       title: '薪酬要素项',

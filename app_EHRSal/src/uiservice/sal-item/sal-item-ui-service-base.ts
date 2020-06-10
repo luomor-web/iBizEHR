@@ -80,6 +80,7 @@ export default class SalItemUIServiceBase extends UIService {
      */  
     public initViewMap(){
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'salitems'});
+        this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'salitems'});
         this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'salitems'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'salitems'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'salitems'});

@@ -23,6 +23,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "SalItemPickupGridView",
             "viewtag": "0a7cdd159443d6b7d164672308194872"
         },
+        "salschemepickupview": {
+            "title": "薪酬方案数据选择视图",
+            "caption": "工资单",
+            "viewtype": "DEPICKUPVIEW",
+            "viewmodule": "SAL",
+            "viewname": "SalSchemePickupView",
+            "viewtag": "1539fc789566f5acbceceefaf7463912"
+        },
         "salruleeditview": {
             "title": "薪酬规则编辑视图",
             "caption": "薪酬规则",
@@ -87,6 +95,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "SalSourcePickupView",
             "viewtag": "58ac9e12f096070e815322949bd7c478"
         },
+        "salitemmpickupview": {
+            "title": "薪酬要素项数据多项选择视图",
+            "caption": "薪酬要素项",
+            "viewtype": "DEMPICKUPVIEW",
+            "viewmodule": "SAL",
+            "viewname": "SalItemMPickupView",
+            "viewtag": "7048cb28f0e9f26c9a1515e6238d0580"
+        },
         "salsourcepickupgridview": {
             "title": "薪酬计算源选择表格视图",
             "caption": "薪酬计算源",
@@ -110,6 +126,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "SAL",
             "viewname": "SalSourceEditView",
             "viewtag": "a0bfdd5660561dd0f43d46568a486269"
+        },
+        "salschemempickupview": {
+            "title": "薪酬方案数据多项选择视图",
+            "caption": "工资单",
+            "viewtype": "DEMPICKUPVIEW",
+            "viewmodule": "SAL",
+            "viewname": "SalSchemeMPickupView",
+            "viewtag": "a63122cb1dbda97282ba0741f9859ef4"
         },
         "salparampickupgridview": {
             "title": "薪酬计算指标选择表格视图",
@@ -142,6 +166,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "SAL",
             "viewname": "SalRulePickupView",
             "viewtag": "b911fc03f2218e4dd73cc5c963f3031e"
+        },
+        "salschemepickupgridview": {
+            "title": "薪酬方案选择表格视图",
+            "caption": "工资单",
+            "viewtype": "DEPICKUPGRIDVIEW",
+            "viewmodule": "SAL",
+            "viewname": "SalSchemePickupGridView",
+            "viewtag": "cac79ffa1ad3275d974dab3a6d377a4b"
         },
         "salschemeitemgridview": {
             "title": "方案要素项表格视图",

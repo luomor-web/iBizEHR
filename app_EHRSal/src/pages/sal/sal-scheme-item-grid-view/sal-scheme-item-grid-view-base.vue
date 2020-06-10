@@ -552,6 +552,14 @@ export default class SalSchemeItemGridViewBase extends GridViewBase {
      * @memberof SalSchemeItemGridView
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
+        const batchAddPSAppViews=[
+            {view:{viewname:'sal-scheme-mpickup-view',height: 0,width: 0,title: '薪酬方案数据多项选择视图'},
+            res:['SalScheme'],
+            'resAppKey':'salschemeid'},
+            {view:{viewname:'sal-item-mpickup-view',height: 0,width: 0,title: '薪酬要素项数据多项选择视图'},
+            res:['SalItem'],
+            'resAppKey':'salitemid'}
+        ];
         if(batchAddPSAppViews.length == 0 || !this.context.srfparentdename){
             this.$Notice.warning({ title: '错误', desc: '批量添加需添加N:N关系' });
             return;

@@ -107,6 +107,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '7048cb28f0e9f26c9a1515e6238d0580',
+            viewmodule: 'SAL',
+            viewname: 'SalItemMPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '0a7cdd159443d6b7d164672308194872',
+            ],
+        },
+        {
             viewtag: '75c878ff7d82d0ffb35ca4b9e6ab5ac9',
             viewmodule: 'SAL',
             viewname: 'SalSourcePickupGridView',
@@ -133,6 +143,16 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+            ],
+        },
+        {
+            viewtag: 'a63122cb1dbda97282ba0741f9859ef4',
+            viewmodule: 'SAL',
+            viewname: 'SalSchemeMPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'cac79ffa1ad3275d974dab3a6d377a4b',
             ],
         },
         {
@@ -175,6 +195,15 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'cac79ffa1ad3275d974dab3a6d377a4b',
+            viewmodule: 'SAL',
+            viewname: 'SalSchemePickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
             viewtag: 'd0908e8c3011c16569051fa365a3678e',
             viewmodule: 'SAL',
             viewname: 'SalSchemeItemGridView',
@@ -182,6 +211,8 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'df88a72f2eabeebc4e7f05de730938f2',
+                '7048cb28f0e9f26c9a1515e6238d0580',
+                'a63122cb1dbda97282ba0741f9859ef4',
             ],
         },
         {
