@@ -126,7 +126,7 @@
 
 
     <!--输出实体[SALPARAM]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-salparam-21-5">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-salparam-24-5">
         <createTable tableName="T_SALPARAM">
                 <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
                 </column>
@@ -214,7 +214,7 @@
 
 
     <!--输出实体[SALTYPE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-saltype-12-7">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-saltype-13-7">
         <createTable tableName="T_SALTYPE">
                 <column name="SALTYPEID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_SALTYPE_SALTYPEID"/>
@@ -2104,7 +2104,7 @@
 
 
     <!--输出实体[SALSOURCE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-salsource-15-59">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-salsource-18-59">
         <createTable tableName="T_SALSOURCE">
                 <column name="SALSOURCENAME" remarks="" type="VARCHAR(200)">
                 </column>
@@ -2842,7 +2842,7 @@
 
 
     <!--输出实体[SALITEM]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-salitem-18-71">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-salitem-21-71">
         <createTable tableName="T_SALITEM">
                 <column name="ENABLE" remarks="" type="INT">
                 </column>
@@ -3402,7 +3402,7 @@
 
 
     <!--输出实体[SALSCHEME]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-salscheme-20-84">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-salscheme-21-84">
         <createTable tableName="T_SALSCHEME">
                 <column name="CREATEDATE" remarks="" type="DATETIME">
                 </column>
@@ -4618,7 +4618,7 @@
 
 
     <!--输出实体[ORMORG]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormorg-352-116">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormorg-354-116">
         <createTable tableName="T_SRFORG">
                 <column name="BTQY" remarks="" type="VARCHAR(60)">
                 </column>
@@ -6561,7 +6561,7 @@
 
 
     <!--输出实体[SALRULEDETAIL]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-salruledetail-17-167">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-salruledetail-19-167">
         <createTable tableName="T_SALRULEDETAIL">
                 <column name="SALRULEDETAILNAME" remarks="" type="VARCHAR(200)">
                 </column>
@@ -9999,7 +9999,7 @@
 
 
     <!--输出实体[SALRULE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-salrule-18-257">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-salrule-21-257">
         <createTable tableName="T_SALRULE">
                 <column name="SALRULENAME" remarks="" type="VARCHAR(200)">
                 </column>
@@ -11073,7 +11073,7 @@
 
 
     <!--输出实体[SALSCHEMEITEM]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-salschemeitem-27-282">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-salschemeitem-29-282">
         <createTable tableName="T_SALSCHEMEITEM">
                 <column name="BZ" remarks="" type="FLOAT">
                 </column>
@@ -11813,7 +11813,7 @@
 
 
     <!--输出实体[SALSUBJECT]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-salsubject-16-295">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-salsubject-18-295">
         <createTable tableName="T_SALSUBJECT">
                 <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
                 </column>
@@ -11972,7 +11972,7 @@
     </changeSet>
         <!--输出实体[ATTENMEMBWES]外键关系 -->
         <!--输出实体[SALPARAM]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salparam-21-304">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salparam-24-304">
        <addForeignKeyConstraint baseColumnNames="SALSOURCEID" baseTableName="T_SALPARAM" constraintName="DER1N_SALPARAM_SALSOURCE_SALSO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SALSOURCEID" referencedTableName="T_SALSOURCE" validate="true"/>
     </changeSet>
         <!--输出实体[PIMREWARDPUNISHMENT]外键关系 -->
@@ -12302,7 +12302,7 @@
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_PCMPROFILEINITNUMBER" constraintName="DER1N_PCMPROFILEINITNUMBER_ORM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[SALITEM]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salitem-18-394">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salitem-21-394">
        <addForeignKeyConstraint baseColumnNames="SALSUBJECTID" baseTableName="T_SALITEM" constraintName="DER1N_SALITEM_SALSUBJECT_SALSU" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SALSUBJECTID" referencedTableName="T_SALSUBJECT" validate="true"/>
     </changeSet>
         <!--输出实体[TRMDEMDEFTION]外键关系 -->
@@ -12387,7 +12387,7 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PIMPERSONABILITY" constraintName="DER1N_PIMPERSONABILITY_PIMPERS" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[SALSCHEME]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salscheme-20-418">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salscheme-21-418">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_SALSCHEME" constraintName="DER1N_SALSCHEME_ORMORG_ORMORGI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[TRMHMATSER]外键关系 -->
@@ -12566,7 +12566,7 @@
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_SALSTDZX" constraintName="DER1N_SALSTDZX_ORMORG_ORMORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[ORMORG]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorg-352-474">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-ormorg-354-474">
        <addForeignKeyConstraint baseColumnNames="PORGID" baseTableName="T_SRFORG" constraintName="DER1N_ORMORG_ORMORG_PORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[PARPTRYNDLHMBMX]外键关系 -->
@@ -12785,10 +12785,10 @@
        <addForeignKeyConstraint baseColumnNames="ORMZWBZID" baseTableName="T_ORMDEPESTMAN" constraintName="DER1N_ORMDEPESTMAN_ORMORGSECTO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
     </changeSet>
         <!--输出实体[SALRULEDETAIL]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salruledetail-17-532">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salruledetail-19-532">
        <addForeignKeyConstraint baseColumnNames="SALPARAMID" baseTableName="T_SALRULEDETAIL" constraintName="DER1N_SALRULEDETAIL_SALPARAM_S" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SALPARAMID" referencedTableName="T_SALPARAM" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salruledetail-17-534">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salruledetail-19-534">
        <addForeignKeyConstraint baseColumnNames="SALRULEID" baseTableName="T_SALRULEDETAIL" constraintName="DER1N_SALRULEDETAIL_SALRULE_SA" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SALRULEID" referencedTableName="T_SALRULE" validate="true"/>
     </changeSet>
         <!--输出实体[PARJXMTFK]外键关系 -->
@@ -13256,7 +13256,7 @@
        <addForeignKeyConstraint baseColumnNames="VACLEAVESYSTEMID" baseTableName="T_VACLEAVESYSTEMDETAIL" constraintName="DER1N_VACLEAVESYSTEMDETAIL_VAC" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="VACLEAVESYSTEMID" referencedTableName="T_VACLEAVESYSTEM" validate="true"/>
     </changeSet>
         <!--输出实体[SALRULE]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salrule-18-665">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salrule-21-665">
        <addForeignKeyConstraint baseColumnNames="SALPARAMID" baseTableName="T_SALRULE" constraintName="DER1N_SALRULE_SALPARAM_SALPARA" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SALPARAMID" referencedTableName="T_SALPARAM" validate="true"/>
     </changeSet>
         <!--输出实体[VACSYSTEMAPPLICATION]外键关系 -->
@@ -13410,13 +13410,13 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMLOG" constraintName="DER1N_PCMLOG_PIMPERSON_PIMPERS" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[SALSCHEMEITEM]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salschemeitem-27-717">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salschemeitem-29-717">
        <addForeignKeyConstraint baseColumnNames="SALITEMID" baseTableName="T_SALSCHEMEITEM" constraintName="DER1N_SALSCHEMEITEM_SALITEM_SA" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SALITEMID" referencedTableName="T_SALITEM" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salschemeitem-27-718">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salschemeitem-29-718">
        <addForeignKeyConstraint baseColumnNames="SALRULEID" baseTableName="T_SALSCHEMEITEM" constraintName="DER1N_SALSCHEMEITEM_SALRULE_SA" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SALRULEID" referencedTableName="T_SALRULE" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salschemeitem-27-719">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salschemeitem-29-719">
        <addForeignKeyConstraint baseColumnNames="SALSCHEMEID" baseTableName="T_SALSCHEMEITEM" constraintName="DER1N_SALSCHEMEITEM_SALSCHEME_" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SALSCHEMEID" referencedTableName="T_SALSCHEME" validate="true"/>
     </changeSet>
         <!--输出实体[TRMEMPLOYEERETION]外键关系 -->

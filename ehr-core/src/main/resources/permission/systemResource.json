@@ -2814,6 +2814,12 @@
             }
             ,
             {
+               "appid":"EHRSal",
+               "appname":"EHRSAL（薪酬管理）",
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"基础数据" , "items":[{ "id":"menuitem2" , "name":"薪酬类型" },{ "id":"menuitem3" , "name":"薪酬计算源" },{ "id":"menuitem4" , "name":"薪酬计算指标" },{ "id":"menuitem5" , "name":"薪酬规则" },{ "id":"menuitem6" , "name":"薪酬要素项" },{ "id":"menuitem7" , "name":"工资单" }]}] }]
+            }
+            ,
+            {
                "appid":"EHRMob",
                "appname":"EHRMOB（移动端）",
                "appmenu":[{"menuid":"ApplicationMenu", "menuname":"ApplicationMenu", "menuitem":[{ "id":"menuitem1" , "name":"申请" , "items":[{ "id":"menuitem4" , "name":"休假申请" },{ "id":"menuitem10" , "name":"出(国)境申请" }]}] },{"menuid":"MobApply", "menuname":"MobApply", "menuitem":[{ "id":"menuitem1" , "name":"自助申请" }] },{"menuid":"MobDefault", "menuname":"MobDefault", "menuitem":[{ "id":"menuitem2" , "name":"自助服务" }] },{"menuid":"SelfServiceMenu", "menuname":"SelfServiceMenu", "menuitem":[{ "id":"menuitem3" , "name":"个人信息" },{ "id":"menuitem15" , "name":"合同信息" },{ "id":"menuitem11" , "name":"工作履历" },{ "id":"menuitem12" , "name":"分配信息" },{ "id":"menuitem13" , "name":"档案信息" },{ "id":"menuitem14" , "name":"绩效信息" },{ "id":"menuitem24" , "name":"职称信息" },{ "id":"menuitem20" , "name":"奖惩信息" },{ "id":"menuitem25" , "name":"证书信息" },{ "id":"menuitem22" , "name":"语言能力" },{ "id":"menuitem21" , "name":"教育信息" },{ "id":"menuitem23" , "name":"家庭情况" }] }]
