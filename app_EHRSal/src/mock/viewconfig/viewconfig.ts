@@ -7,7 +7,15 @@ import Mock from 'mockjs'
 mock.onGet('./assets/json/view-config.json').reply((config: any) => {
     let status = MockAdapter.mockStatus(config);
     return [status,{
-                "ormorgpickupgridview": {
+                "salrulempickupview": {
+            "title": "薪酬规则数据多项选择视图",
+            "caption": "薪酬规则",
+            "viewtype": "DEMPICKUPVIEW",
+            "viewmodule": "SAL",
+            "viewname": "SalRuleMPickupView",
+            "viewtag": "0035bbf9195caf7bb14cc636a3737fd2"
+        },
+        "ormorgpickupgridview": {
             "title": "组织管理选择表格视图",
             "caption": "组织管理",
             "viewtype": "DEPICKUPGRIDVIEW",

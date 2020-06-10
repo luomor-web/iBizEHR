@@ -79,6 +79,7 @@ export default class SalRuleUIServiceBase extends UIService {
      * @memberof  SalRuleUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'salrules'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'salrules'});
         this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'salrules'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'salrules'});

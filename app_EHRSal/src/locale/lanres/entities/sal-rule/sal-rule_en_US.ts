@@ -13,6 +13,10 @@ export default {
     salparamid: '薪酬计算指标标识',
   },
 	views: {
+		mpickupview: {
+			caption: "薪酬规则",
+      title: '薪酬规则',
+		},
 		editview: {
 			caption: "薪酬规则",
       title: '薪酬规则',
