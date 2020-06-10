@@ -58,9 +58,9 @@ public class PcmYdlzmxServiceImpl extends ServiceImpl<PcmYdlzmxMapper, PcmYdlzmx
     @Transactional
     public boolean update(PcmYdlzmx et) {
         fillParentData(et);
+        pcmydmxService.update(pcmydlzmxInheritMapping.toPcmydmx(et));
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pcmydlzmxid",et.getPcmydlzmxid())))
             return false;
-        pcmydmxService.update(pcmydlzmxInheritMapping.toPcmydmx(et));
         CachedBeanCopier.copy(get(et.getPcmydlzmxid()),et);
         return true;
     }
@@ -102,9 +102,9 @@ public class PcmYdlzmxServiceImpl extends ServiceImpl<PcmYdlzmxMapper, PcmYdlzmx
     @Transactional
     public boolean create(PcmYdlzmx et) {
         fillParentData(et);
+        createIndexMajorEntityData(et);
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
-        createIndexMajorEntityData(et);
         CachedBeanCopier.copy(get(et.getPcmydlzmxid()),et);
         return true;
     }
