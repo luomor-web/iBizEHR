@@ -79,8 +79,8 @@ public class PcmYdntmxServiceImpl extends ServiceImpl<PcmYdntmxMapper, PcmYdntmx
     public boolean create(PcmYdntmx et) {
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
-        CachedBeanCopier.copy(get(et.getPcmydntmxid()),et);
         createIndexMajorEntityData(et);
+        CachedBeanCopier.copy(get(et.getPcmydntmxid()),et);
         return true;
     }
 
@@ -146,8 +146,8 @@ public class PcmYdntmxServiceImpl extends ServiceImpl<PcmYdntmxMapper, PcmYdntmx
         setfinishedLogic.execute(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("pcmydntmxid",et.getPcmydntmxid())))
             return false;
-        CachedBeanCopier.copy(get(et.getPcmydntmxid()),et);
         pcmydmxService.update(pcmydntmxInheritMapping.toPcmydmx(et));
+        CachedBeanCopier.copy(get(et.getPcmydntmxid()),et);
         return true;
     }
 
