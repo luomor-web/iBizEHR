@@ -51,6 +51,7 @@ export default {
 			srfuf: "", 
 			srfdeid: "", 
 			srfsourcekey: "", 
+			cycleid: "周期编码", 
 			parexamcycleid: "周期标识", 
 			parexamcyclename: "考核周期", 
 		},

@@ -125,6 +125,18 @@ const router = new Router({
             ],
         },
     {
+        path: '/partzggs/:partzgg?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.partzgg.views.pickupgridview.caption',
+            parameters: [
+                { pathName: 'partzggs', parameterName: 'partzgg' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-tzgg-pickup-grid-view/par-tzgg-pickup-grid-view.vue'),
+    },
+    {
         path: '/parexamcycles/:parexamcycle?/pickupview/:pickupview?',
         meta: {
             caption: 'entities.parexamcycle.views.pickupview.caption',
@@ -171,6 +183,18 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/par/par-exam-cycle-pickup-grid-view/par-exam-cycle-pickup-grid-view.vue'),
+    },
+    {
+        path: '/partzggs/:partzgg?/mpickupview/:mpickupview?',
+        meta: {
+            caption: 'entities.partzgg.views.mpickupview.caption',
+            parameters: [
+                { pathName: 'partzggs', parameterName: 'partzgg' },
+                { pathName: 'mpickupview', parameterName: 'mpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-tzgg-mpickup-view/par-tzgg-mpickup-view.vue'),
     },
     {
         path: '/partzggs/:partzgg?/gridview/:gridview?',

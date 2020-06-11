@@ -7,6 +7,7 @@ export const PageComponents = {
         Vue.component('par-exam-cycle-edit-view2', () => import('@pages/par/par-exam-cycle-edit-view2/par-exam-cycle-edit-view2.vue'));
         Vue.component('par-exam-cycle-grid-view', () => import('@pages/par/par-exam-cycle-grid-view/par-exam-cycle-grid-view.vue'));
         Vue.component('par-exam-cycle-pickup-grid-view', () => import('@pages/par/par-exam-cycle-pickup-grid-view/par-exam-cycle-pickup-grid-view.vue'));
+        Vue.component('par-tzgg-mpickup-view', () => import('@pages/par/par-tzgg-mpickup-view/par-tzgg-mpickup-view.vue'));
         Vue.component('par-exam-cycle-mpickup-view', () => import('@pages/par/par-exam-cycle-mpickup-view/par-exam-cycle-mpickup-view.vue'));
         Vue.component('par-exam-cycle-edit-view', () => import('@pages/par/par-exam-cycle-edit-view/par-exam-cycle-edit-view.vue'));
         Vue.component('par-tzgg-redirect-view', () => import('@pages/par/par-tzgg-redirect-view/par-tzgg-redirect-view.vue'));

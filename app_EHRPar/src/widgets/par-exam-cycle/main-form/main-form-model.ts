@@ -56,6 +56,11 @@ export default class MainModel {
         name: 'srfsourcekey',
       },
       {
+        name: 'cycleid',
+        prop: 'cycleid',
+        dataType: 'TEXT',
+      },
+      {
         name: 'parexamcycleid',
         prop: 'parexamcycleid',
         dataType: 'GUID',

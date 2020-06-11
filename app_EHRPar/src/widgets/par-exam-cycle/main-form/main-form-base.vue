@@ -6,9 +6,9 @@
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.parexamcycle.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.parexamcycleid.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
-    <app-form-item name='parexamcycleid' :itemRules="this.rules.parexamcycleid" class='' :caption="$t('entities.parexamcycle.main_form.details.parexamcycleid')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.parexamcycleid.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.parexamcycleid"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.parexamcycleid.disabled" type='text'  style=""></input-box>
+        <i-col v-show="detailsModel.cycleid.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='cycleid' :itemRules="this.rules.cycleid" class='' :caption="$t('entities.parexamcycle.main_form.details.cycleid')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.cycleid.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.cycleid"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.cycleid.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
 </i-col>
@@ -329,6 +329,7 @@ export default class MainBase extends Vue implements ControlInterface {
         srfuf: null,
         srfdeid: null,
         srfsourcekey: null,
+        cycleid: null,
         parexamcycleid: null,
         parexamcyclename: null,
         parexamcycle:null,
@@ -421,6 +422,12 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
+        cycleid: [
+            { type: 'string', message: '周期编码 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '周期编码 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '周期编码 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '周期编码 值不能为空', trigger: 'blur' },
+        ],
         parexamcycleid: [
             { type: 'string', message: '周期标识 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '周期标识 值必须为字符串类型', trigger: 'blur' },
@@ -461,6 +468,8 @@ export default class MainBase extends Vue implements ControlInterface {
         srfdeid: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfdeid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        cycleid: new FormItemModel({ caption: '周期编码', detailType: 'FORMITEM', name: 'cycleid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         parexamcycleid: new FormItemModel({ caption: '周期标识', detailType: 'FORMITEM', name: 'parexamcycleid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -565,6 +574,18 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
+     * 监控表单属性 cycleid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.cycleid')
+    onCycleidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'cycleid', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
      * 监控表单属性 parexamcycleid 值
      *
      * @param {*} newVal
@@ -624,6 +645,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
+
 
 
 

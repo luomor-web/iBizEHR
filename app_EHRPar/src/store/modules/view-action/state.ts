@@ -4,6 +4,15 @@
 export const viewstate: any = {
     appviews: [
         {
+            viewtag: '01dbe2eb55658778f14484a5fda6fb52',
+            viewmodule: 'PAR',
+            viewname: 'ParTzggPickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
             viewtag: '057fd0a13dc6d8415557b4c0c01ec673',
             viewmodule: 'PAR',
             viewname: 'ParExamCyclePickupView',
@@ -39,6 +48,16 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+            ],
+        },
+        {
+            viewtag: '48cb9678c112e2bfeceb56c96c8c0de5',
+            viewmodule: 'PAR',
+            viewname: 'ParTzggMPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '01dbe2eb55658778f14484a5fda6fb52',
             ],
         },
         {
