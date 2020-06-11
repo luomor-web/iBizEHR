@@ -1,8 +1,13 @@
-import EhrCodeList0036 from '@/codelist/ehr-code-list0036';   
-import EhrCodeList0249 from '@/codelist/ehr-code-list0249';   
-import EhrCodeList0250 from '@/codelist/ehr-code-list0250';   
+import EhrCodeList0024 from '@/codelist/ehr-code-list0024';   
 import EhrCodeList0033 from '@/codelist/ehr-code-list0033';   
 import EhrCodeList0219 from '@/codelist/ehr-code-list0219';   
+import EhrCodeList0233 from '@/codelist/ehr-code-list0233';   
+import EhrCodeList0036 from '@/codelist/ehr-code-list0036';   
+import EhrCodeList0249 from '@/codelist/ehr-code-list0249';   
+import EhrCodeList0050 from '@/codelist/ehr-code-list0050';   
+import EhrCodeList0250 from '@/codelist/ehr-code-list0250';   
+import EhrCodeList0140 from '@/codelist/ehr-code-list0140';   
+import EhrCodeList0014 from '@/codelist/ehr-code-list0014';   
 import { Store } from 'vuex';
 
 /**
@@ -55,28 +60,12 @@ export default class CodeListService {
 
 
     /**
-     * 代码表--薪酬类型
+     * 代码表--职称等级
      *
-     * @type {EhrCodeList0036}
+     * @type {EhrCodeList0024}
      * @memberof CodeListService
      */
-    public EhrCodeList0036: EhrCodeList0036 = new EhrCodeList0036();
-
-    /**
-     * 代码表--云系统操作者
-     *
-     * @type {EhrCodeList0249}
-     * @memberof CodeListService
-     */
-    public EhrCodeList0249: EhrCodeList0249 = new EhrCodeList0249();
-
-    /**
-     * 代码表--所属区域
-     *
-     * @type {EhrCodeList0250}
-     * @memberof CodeListService
-     */
-    public EhrCodeList0250: EhrCodeList0250 = new EhrCodeList0250();
+    public EhrCodeList0024: EhrCodeList0024 = new EhrCodeList0024();
 
     /**
      * 代码表--档级
@@ -93,6 +82,62 @@ export default class CodeListService {
      * @memberof CodeListService
      */
     public EhrCodeList0219: EhrCodeList0219 = new EhrCodeList0219();
+
+    /**
+     * 代码表--职务（基础管理）
+     *
+     * @type {EhrCodeList0233}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0233: EhrCodeList0233 = new EhrCodeList0233();
+
+    /**
+     * 代码表--薪酬类型
+     *
+     * @type {EhrCodeList0036}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0036: EhrCodeList0036 = new EhrCodeList0036();
+
+    /**
+     * 代码表--云系统操作者
+     *
+     * @type {EhrCodeList0249}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0249: EhrCodeList0249 = new EhrCodeList0249();
+
+    /**
+     * 代码表--岗位（基础管理）
+     *
+     * @type {EhrCodeList0050}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0050: EhrCodeList0050 = new EhrCodeList0050();
+
+    /**
+     * 代码表--所属区域
+     *
+     * @type {EhrCodeList0250}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0250: EhrCodeList0250 = new EhrCodeList0250();
+
+    /**
+     * 代码表--岗位类型
+     *
+     * @type {EhrCodeList0140}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0140: EhrCodeList0140 = new EhrCodeList0140();
+
+    /**
+     * 代码表--员工状态
+     *
+     * @type {EhrCodeList0014}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0014: EhrCodeList0014 = new EhrCodeList0014();
 
     /**
      * 获取动态代码表

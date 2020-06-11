@@ -50,10 +50,26 @@ export class EntityServiceRegister {
         this.allEntityService.set('salitem', () => import('@/service/sal-item/sal-item-service'));
         this.allEntityService.set('salschemeitem', () => import('@/service/sal-scheme-item/sal-scheme-item-service'));
         this.allEntityService.set('codelist1', () => import('@/service/code-list1/code-list1-service'));
+        this.allEntityService.set('sallog', () => import('@/service/sal-log/sal-log-service'));
+        this.allEntityService.set('salstdzyzg', () => import('@/service/sal-stdzyzg/sal-stdzyzg-service'));
+        this.allEntityService.set('salpersonstddetail', () => import('@/service/salpersonstddetail/salpersonstddetail-service'));
+        this.allEntityService.set('salstdgw', () => import('@/service/sal-stdgw/sal-stdgw-service'));
         this.allEntityService.set('salstdgwgz', () => import('@/service/sal-stdgwgz/sal-stdgwgz-service'));
         this.allEntityService.set('salstdxmgz', () => import('@/service/sal-std-xmgz/sal-std-xmgz-service'));
+        this.allEntityService.set('pimperson', () => import('@/service/pim-person/pim-person-service'));
+        this.allEntityService.set('ormpost', () => import('@/service/orm-post/orm-post-service'));
+        this.allEntityService.set('salstdzc', () => import('@/service/sal-stdzc/sal-stdzc-service'));
+        this.allEntityService.set('salsalarybill', () => import('@/service/sal-salary-bill/sal-salary-bill-service'));
+        this.allEntityService.set('salsalary', () => import('@/service/sal-salary/sal-salary-service'));
         this.allEntityService.set('ormduty', () => import('@/service/orm-duty/orm-duty-service'));
         this.allEntityService.set('codeitem', () => import('@/service/code-item/code-item-service'));
+        this.allEntityService.set('salsalarydetail', () => import('@/service/sal-salary-detail/sal-salary-detail-service'));
+        this.allEntityService.set('salplan', () => import('@/service/sal-plan/sal-plan-service'));
+        this.allEntityService.set('ormorgsector', () => import('@/service/orm-orgsector/orm-orgsector-service'));
+        this.allEntityService.set('salstdzx', () => import('@/service/sal-stdzx/sal-stdzx-service'));
+        this.allEntityService.set('salstddszn', () => import('@/service/sal-stddszn/sal-stddszn-service'));
+        this.allEntityService.set('salstdgl', () => import('@/service/sal-stdgl/sal-stdgl-service'));
+        this.allEntityService.set('salpersonstd', () => import('@/service/sal-person-std/sal-person-std-service'));
     }
 
     /**

@@ -22,6 +22,14 @@ export default {
     salitemid: '薪酬要素项标识',
   },
 	views: {
+		pickupview: {
+			caption: "工资单要素项",
+      title: '工资单要素项',
+		},
+		pickupgridview: {
+			caption: "工资单要素项",
+      title: '工资单要素项',
+		},
 		gridview: {
 			caption: "工资单要素项",
       title: '工资单要素项',

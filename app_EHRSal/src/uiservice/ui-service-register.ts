@@ -50,10 +50,26 @@ export class UIServiceRegister {
         this.allUIService.set('salitem', () => import('@/uiservice/sal-item/sal-item-ui-service'));
         this.allUIService.set('salschemeitem', () => import('@/uiservice/sal-scheme-item/sal-scheme-item-ui-service'));
         this.allUIService.set('codelist1', () => import('@/uiservice/code-list1/code-list1-ui-service'));
+        this.allUIService.set('sallog', () => import('@/uiservice/sal-log/sal-log-ui-service'));
+        this.allUIService.set('salstdzyzg', () => import('@/uiservice/sal-stdzyzg/sal-stdzyzg-ui-service'));
+        this.allUIService.set('salpersonstddetail', () => import('@/uiservice/salpersonstddetail/salpersonstddetail-ui-service'));
+        this.allUIService.set('salstdgw', () => import('@/uiservice/sal-stdgw/sal-stdgw-ui-service'));
         this.allUIService.set('salstdgwgz', () => import('@/uiservice/sal-stdgwgz/sal-stdgwgz-ui-service'));
         this.allUIService.set('salstdxmgz', () => import('@/uiservice/sal-std-xmgz/sal-std-xmgz-ui-service'));
+        this.allUIService.set('pimperson', () => import('@/uiservice/pim-person/pim-person-ui-service'));
+        this.allUIService.set('ormpost', () => import('@/uiservice/orm-post/orm-post-ui-service'));
+        this.allUIService.set('salstdzc', () => import('@/uiservice/sal-stdzc/sal-stdzc-ui-service'));
+        this.allUIService.set('salsalarybill', () => import('@/uiservice/sal-salary-bill/sal-salary-bill-ui-service'));
+        this.allUIService.set('salsalary', () => import('@/uiservice/sal-salary/sal-salary-ui-service'));
         this.allUIService.set('ormduty', () => import('@/uiservice/orm-duty/orm-duty-ui-service'));
         this.allUIService.set('codeitem', () => import('@/uiservice/code-item/code-item-ui-service'));
+        this.allUIService.set('salsalarydetail', () => import('@/uiservice/sal-salary-detail/sal-salary-detail-ui-service'));
+        this.allUIService.set('salplan', () => import('@/uiservice/sal-plan/sal-plan-ui-service'));
+        this.allUIService.set('ormorgsector', () => import('@/uiservice/orm-orgsector/orm-orgsector-ui-service'));
+        this.allUIService.set('salstdzx', () => import('@/uiservice/sal-stdzx/sal-stdzx-ui-service'));
+        this.allUIService.set('salstddszn', () => import('@/uiservice/sal-stddszn/sal-stddszn-ui-service'));
+        this.allUIService.set('salstdgl', () => import('@/uiservice/sal-stdgl/sal-stdgl-ui-service'));
+        this.allUIService.set('salpersonstd', () => import('@/uiservice/sal-person-std/sal-person-std-ui-service'));
     }
 
     /**

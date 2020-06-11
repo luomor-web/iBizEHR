@@ -79,6 +79,8 @@ export default class SalSchemeItemUIServiceBase extends UIService {
      * @memberof  SalSchemeItemUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'salschemeitems'});
+        this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'salschemeitems'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'salschemeitems'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'salschemeitems'});
     }
