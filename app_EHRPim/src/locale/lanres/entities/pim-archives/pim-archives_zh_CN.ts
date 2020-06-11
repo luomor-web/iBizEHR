@@ -331,6 +331,7 @@ export default {
 			uagridcolumn1: '操作列',
 		},
 		uiactions: {
+			drdatck: '调入档案',
 			filein: '调入档案',
 		},
 	},
@@ -365,6 +366,7 @@ export default {
 			uagridcolumn1: '操作列',
 		},
 		uiactions: {
+			dcdatck: '调出档案',
 			fileout: '调出档案',
 		},
 	},

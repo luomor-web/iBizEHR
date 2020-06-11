@@ -5580,7 +5580,7 @@
 
 
     <!--输出实体[PARTZGG]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-partzgg-83-139">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-partzgg-84-139">
         <createTable tableName="T_PARTZGG">
                 <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
                 </column>
@@ -7245,7 +7245,7 @@
 
 
     <!--输出实体[SALSALARY]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-salsalary-36-186">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-salsalary-37-186">
         <createTable tableName="T_SALSALARY">
                 <column name="SALSALARYID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_SALSALARY_SALSALARYID"/>
@@ -8015,7 +8015,7 @@
 
 
     <!--输出实体[PARKHFA]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-parkhfa-14-206">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-parkhfa-28-206">
         <createTable tableName="T_PARKHFA">
                 <column name="SZSJ" remarks="" type="DATETIME">
                 </column>
@@ -8035,6 +8035,8 @@
                 <column name="KHDX" remarks="" type="VARCHAR(60)">
                 </column>
                 <column name="CREATEMAN" remarks="" type="VARCHAR(60)">
+                </column>
+                <column name="AVAILABLEFLAG" remarks="" type="VARCHAR(60)">
                 </column>
         </createTable>
     </changeSet>
@@ -12907,25 +12909,25 @@
        <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_ATTENDENCEORMORGSECTOR" constraintName="DER1N_ATTENDENCEORMORGSECTOR_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
     </changeSet>
         <!--输出实体[SALSALARY]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salsalary-36-562">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salsalary-37-562">
        <addForeignKeyConstraint baseColumnNames="ORMDUTYID" baseTableName="T_SALSALARY" constraintName="DER1N_SALSALARY_ORMDUTY_ORMDUT" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMDUTYID" referencedTableName="T_ORMDUTY" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salsalary-36-563">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salsalary-37-563">
        <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_SALSALARY" constraintName="DER1N_SALSALARY_ORMORGSECTOR_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salsalary-36-564">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salsalary-37-564">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_SALSALARY" constraintName="DER1N_SALSALARY_ORMORG_ORMORGI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salsalary-36-565">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salsalary-37-565">
        <addForeignKeyConstraint baseColumnNames="ORMPOSTID" baseTableName="T_SALSALARY" constraintName="DER1N_SALSALARY_ORMPOST_ORMPOS" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMPOSTID" referencedTableName="T_ORMPOST" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salsalary-36-566">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salsalary-37-566">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_SALSALARY" constraintName="DER1N_SALSALARY_PIMPERSON_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salsalary-36-567">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salsalary-37-567">
        <addForeignKeyConstraint baseColumnNames="SALPLANID" baseTableName="T_SALSALARY" constraintName="DER1N_SALSALARY_SALPLAN_SALPLA" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SALPLANID" referencedTableName="T_SALPLAN" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salsalary-36-568">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salsalary-37-568">
        <addForeignKeyConstraint baseColumnNames="SALSALARYBILLID" baseTableName="T_SALSALARY" constraintName="DER1N_SALSALARY_SALSALARYBILL_" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SALSALARYBILLID" referencedTableName="T_SALSALARYBILL" validate="true"/>
     </changeSet>
         <!--输出实体[PARPTRYNDLHMB]外键关系 -->

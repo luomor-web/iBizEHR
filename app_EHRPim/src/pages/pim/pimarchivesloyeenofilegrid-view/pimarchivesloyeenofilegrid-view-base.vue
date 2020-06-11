@@ -73,7 +73,6 @@ import PimArchivesService from '@/service/pim-archives/pim-archives-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
-import PimArchivesUIService from '@/uiservice/pim-archives/pim-archives-ui-service';
 import CodeListService from "@service/app/codelist-service";
 
 

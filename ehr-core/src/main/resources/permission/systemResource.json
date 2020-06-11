@@ -2753,11 +2753,99 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
+    "dename":"ParPtryndlhmbmx",
+    "delogicname":"年度量化目标明细（部门副职及以下人员）",
+    "sysmoudle":{"id":"PAR","name":"绩效管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"ParZnbmndlhmb",
+    "delogicname":"年度量化目标（职能部门级）",
+    "sysmoudle":{"id":"PAR","name":"绩效管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"ParZnbmndlhmbmx",
+    "delogicname":"年度量化目标明细（职能部门级 ）",
+    "sysmoudle":{"id":"PAR","name":"绩效管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"ParLdndlhmbmx",
+    "delogicname":"年度量化目标明细（助理总经理级 ）",
+    "sysmoudle":{"id":"PAR","name":"绩效管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"ParYdgzjh",
+    "delogicname":"月度工作计划",
+    "sysmoudle":{"id":"PAR","name":"绩效管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"ParYdgzjhmx",
+    "delogicname":"月度工作计划明细",
+    "sysmoudle":{"id":"PAR","name":"绩效管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"ParPtryndlhmb",
+    "delogicname":"年度量化目标（部门副职及以下人员）",
+    "sysmoudle":{"id":"PAR","name":"绩效管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"ParLdndlhmb",
+    "delogicname":"年度量化目标（助理总经理级）",
+    "sysmoudle":{"id":"PAR","name":"绩效管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"ParDjbz",
+    "delogicname":"定级规则",
+    "sysmoudle":{"id":"PAR","name":"绩效管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
     "dename":"ParExamCycle",
     "delogicname":"考核周期",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
     "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
     "deaction":[{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"ParJzszpsjg",
+    "delogicname":"集中述职评审结果",
+    "sysmoudle":{"id":"PAR","name":"绩效管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"ParDxkhnrmx",
+    "delogicname":"考核评分表",
+    "sysmoudle":{"id":"PAR","name":"绩效管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {

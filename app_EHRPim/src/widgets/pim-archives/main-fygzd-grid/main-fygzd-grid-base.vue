@@ -312,6 +312,35 @@ export default class Main_FYGZDBase extends Vue implements ControlInterface {
      * @param {*} [$event]
      * @memberof 
      */
+    public grid_dcda_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {"archiveaction":"DCDATCK"};
+        Object.assign(paramJO,{"archiveaction":"DCDATCK"});
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:PimArchivesUIService  = new PimArchivesUIService();
+        curUIService.PimArchives_DCDATCK(datas,contextJO, paramJO,  $event, xData,this,"PimArchives");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
     public grid_uagridcolumn1_ud164ec4_click(params: any = {}, tag?: any, $event?: any) {
         // 取数
         let datas: any[] = [];
@@ -1487,6 +1516,9 @@ export default class Main_FYGZDBase extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        if(Object.is('DCDATCK', tag)) {
+            this.grid_dcda_click(row, tag, $event);
+        }
         if(Object.is('FILEOUT', tag)) {
             this.grid_uagridcolumn1_ud164ec4_click(row, tag, $event);
         }

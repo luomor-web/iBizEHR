@@ -109,6 +109,13 @@ public class ParKhfa extends EntityMP implements Serializable {
     @JSONField(name = "createman")
     @JsonProperty("createman")
     private String createman;
+    /**
+     * 是否有效
+     */
+    @TableField(value = "availableflag")
+    @JSONField(name = "availableflag")
+    @JsonProperty("availableflag")
+    private String availableflag;
 
 
 
@@ -139,6 +146,13 @@ public class ParKhfa extends EntityMP implements Serializable {
     public void setKhdx(String khdx){
         this.khdx = khdx ;
         this.modify("khdx",khdx);
+    }
+    /**
+     * 设置 [是否有效]
+     */
+    public void setAvailableflag(String availableflag){
+        this.availableflag = availableflag ;
+        this.modify("availableflag",availableflag);
     }
 
 }

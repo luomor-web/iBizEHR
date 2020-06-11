@@ -41,6 +41,13 @@ public class ParKhfaSearchContext extends QueryWrapperContext<ParKhfa> {
             this.getSearchCond().eq("khdx", n_khdx_eq);
         }
     }
+	private String n_availableflag_eq;//[是否有效]
+	public void setN_availableflag_eq(String n_availableflag_eq) {
+        this.n_availableflag_eq = n_availableflag_eq;
+        if(!ObjectUtils.isEmpty(this.n_availableflag_eq)){
+            this.getSearchCond().eq("availableflag", n_availableflag_eq);
+        }
+    }
 
     /**
 	 * 启用快速搜索

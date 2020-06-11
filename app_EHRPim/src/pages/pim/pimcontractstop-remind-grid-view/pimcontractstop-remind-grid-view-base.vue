@@ -72,7 +72,6 @@ import PimContractService from '@/service/pim-contract/pim-contract-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
-import PimContractUIService from '@/uiservice/pim-contract/pim-contract-ui-service';
 import CodeListService from "@service/app/codelist-service";
 
 
