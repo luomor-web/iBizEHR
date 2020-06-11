@@ -1,0 +1,92 @@
+.app-wf-approval{
+    width:100%;
+    .app-wf-approval-header{
+        width: 100%;
+        text-align: center;
+        background: #e5eaef;
+        height: 32px;
+        line-height: 32px;
+        font-size: 16px;
+        border: 1px solid #565656;
+        .approval-header-left{
+            margin-right: 24px;
+        }
+    }
+    .app-wf-approval-bottom{
+        width: 100%;
+        text-align: center;
+        background: #e5eaef;
+        height: 32px;
+        line-height: 32px;
+        font-size: 16px;
+        border-style: solid;
+        border-width: 0px 1px 1px 1px;
+        border-color: #565656;
+    }
+    .app-wf-approval-content{
+        border-left: 1px solid #565656;
+        border-right: 1px solid #565656;
+        .approval-content-item{
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            border-bottom: 1px solid #565656;
+            .approval-content-item-left{
+                width: 130px;
+                padding: 8px;
+                text-align: center;
+            }
+            .approval-content-item-right{
+                width: calc(100% - 130px);
+                border-left:1px solid #565656;
+                .approval-content-item-wait{
+                    padding: 0px 4px;
+                    height: 32px;
+                    line-height: 32px;
+                    font-size: 16px;
+                    border-bottom:1px solid #565656;
+                    background: #d1ef5c;
+                    >span{
+                        font-size: 18px;
+                        color: #000;
+                        font-weight: 600;
+                    }
+                }
+                .approval-content-item-info{
+                    .approval-content-item-info-item {
+                        padding: 0px 4px;
+                        height: 32px;
+                        line-height: 32px;
+                        border-bottom:1px solid #565656;
+                    }
+                    .approval-content-item-info-top{
+                        font-size: 16px;
+                    }
+                    .approval-content-item-info-bottom{
+                        font-size: 14px;
+                        text-align: right;
+                        >span{
+                            margin-right:6px;
+                        }
+                        .info-bottom-name{
+                            font-size: 18px;
+                            font-weight: 600;
+                        }
+                    }
+                    > div:nth-last-child(1){
+                        > .approval-content-item-info-item:nth-last-child(1){
+                            border-bottom: 0;
+                        }
+                    }
+                }
+                .approval-content-item-memo{
+                    padding: 0px 4px;
+                    .el-textarea__inner{
+                        border: 0px !important;
+                        padding: 0px !important;
+                    }
+                }
+            }
+        }
+    }
+}

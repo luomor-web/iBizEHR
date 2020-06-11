@@ -64,7 +64,7 @@ public class ParTzgg extends EntityMP implements Serializable {
     @JsonProperty("createdate")
     private Timestamp createdate;
     /**
-     * 量化指标模板附件
+     * 通知附件
      */
     @TableField(value = "lhzbmb")
     @JSONField(name = "lhzbmb")
@@ -134,7 +134,7 @@ public class ParTzgg extends EntityMP implements Serializable {
 
 
     /**
-     * 设置 [量化指标模板附件]
+     * 设置 [通知附件]
      */
     public void setLhzbmb(String lhzbmb){
         this.lhzbmb = lhzbmb ;
