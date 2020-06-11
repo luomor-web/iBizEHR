@@ -671,6 +671,20 @@ const router = new Router({
         component: () => import('@pages/sal/sal-subject-pickup-view/sal-subject-pickup-view.vue'),
     },
     {
+        path: '/salstdxmgzs/:salstdxmgz?/editview/:editview?',
+        meta: {
+            caption: 'entities.salstdxmgz.views.editview.caption',
+            imgPath: '../../../img/jlgl/1/xiangmugongzibiaozhun.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'salstdxmgzs', parameterName: 'salstdxmgz' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/sal/sal-std-xmgz-edit-view/sal-std-xmgz-edit-view.vue'),
+    },
+    {
         path: '/salruledetails/:salruledetail?/editview/:editview?',
         meta: {
             caption: 'entities.salruledetail.views.editview.caption',
