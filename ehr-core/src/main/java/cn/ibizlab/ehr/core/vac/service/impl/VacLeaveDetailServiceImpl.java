@@ -199,7 +199,7 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
             et.setNjsy(njsy);
             et.setTips(tips);
             //计算计划请假天数
-            this.calcJHQJTS(et);
+            this.calcPlanDays(et);
             return et;
         }
     @Override
