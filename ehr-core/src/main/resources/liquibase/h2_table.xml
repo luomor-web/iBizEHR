@@ -154,7 +154,7 @@
 
 
     <!--输出实体[PARINTEGRALRULE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-parintegralrule-16-6">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-parintegralrule-53-6">
         <createTable tableName="T_PARINTEGRALRULE">
                 <column name="PARINTEGRALRULEID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_PARINTEGRALRULE_PARINTEGRAL"/>
