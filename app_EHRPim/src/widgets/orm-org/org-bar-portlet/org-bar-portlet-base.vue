@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet org-bar ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : '932px',}">
+    <div class='portlet org-bar ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : (height > 0 ? height+'px' :'932px'),}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_db_sysportlet1_chart 
@@ -24,6 +24,7 @@ import { UIActionTool,Util } from '@/utils';
 import OrmOrgService from '@/service/orm-org/orm-org-service';
 import OrgBarService from './org-bar-portlet-service';
 
+import { Environment } from '@/environments/environment';
 
 
 @Component({
@@ -140,6 +141,22 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
     }
 
 
+    /**
+     * 长度
+     *
+     * @type {number}
+     * @memberof OrgBar
+     */
+    @Prop() public height?: number;
+
+    /**
+     * 宽度
+     *
+     * @type {number}
+     * @memberof OrgBar
+     */
+    @Prop() public width?: number;
+
 
 
     /**
@@ -218,9 +235,11 @@ export default class OrmOrgOrgBarBase extends Vue implements ControlInterface {
         }
     }
 
+
 }
 </script>
 
 <style lang='less'>
 @import './org-bar-portlet.less';
 </style>
+

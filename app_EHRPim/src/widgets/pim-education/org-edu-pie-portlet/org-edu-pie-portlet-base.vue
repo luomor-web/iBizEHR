@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet org-edu-pie ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : '325px',}">
+    <div class='portlet org-edu-pie ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : (height > 0 ? height+'px' :'325px'),}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_db_sysportlet3_chart 
@@ -24,6 +24,7 @@ import { UIActionTool,Util } from '@/utils';
 import PimEducationService from '@/service/pim-education/pim-education-service';
 import OrgEduPieService from './org-edu-pie-portlet-service';
 
+import { Environment } from '@/environments/environment';
 
 
 @Component({
@@ -140,6 +141,22 @@ export default class PimEducationOrgEduPieBase extends Vue implements ControlInt
     }
 
 
+    /**
+     * 长度
+     *
+     * @type {number}
+     * @memberof OrgEduPie
+     */
+    @Prop() public height?: number;
+
+    /**
+     * 宽度
+     *
+     * @type {number}
+     * @memberof OrgEduPie
+     */
+    @Prop() public width?: number;
+
 
 
     /**
@@ -218,9 +235,11 @@ export default class PimEducationOrgEduPieBase extends Vue implements ControlInt
         }
     }
 
+
 }
 </script>
 
 <style lang='less'>
 @import './org-edu-pie-portlet.less';
 </style>
+

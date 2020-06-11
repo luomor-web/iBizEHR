@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet org-person-org-type-pie ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : '300px',}">
+    <div class='portlet org-person-org-type-pie ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : (height > 0 ? height+'px' :'300px'),}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_portlet_OrgPersonOrgTypePie_chart 
@@ -24,6 +24,7 @@ import { UIActionTool,Util } from '@/utils';
 import PimPersonService from '@/service/pim-person/pim-person-service';
 import OrgPersonOrgTypePieService from './org-person-org-type-pie-portlet-service';
 
+import { Environment } from '@/environments/environment';
 
 
 @Component({
@@ -140,6 +141,22 @@ export default class PimPersonOrgPersonOrgTypePieBase extends Vue implements Con
     }
 
 
+    /**
+     * 长度
+     *
+     * @type {number}
+     * @memberof OrgPersonOrgTypePie
+     */
+    @Prop() public height?: number;
+
+    /**
+     * 宽度
+     *
+     * @type {number}
+     * @memberof OrgPersonOrgTypePie
+     */
+    @Prop() public width?: number;
+
 
 
     /**
@@ -218,9 +235,11 @@ export default class PimPersonOrgPersonOrgTypePieBase extends Vue implements Con
         }
     }
 
+
 }
 </script>
 
 <style lang='less'>
 @import './org-person-org-type-pie-portlet.less';
 </style>
+

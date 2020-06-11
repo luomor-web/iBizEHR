@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet org-title-bar ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : '325px',}">
+    <div class='portlet org-title-bar ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : (height > 0 ? height+'px' :'325px'),}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_db_sysportlet5_chart 
@@ -24,6 +24,7 @@ import { UIActionTool,Util } from '@/utils';
 import PimTitleService from '@/service/pim-title/pim-title-service';
 import OrgTitleBarService from './org-title-bar-portlet-service';
 
+import { Environment } from '@/environments/environment';
 
 
 @Component({
@@ -140,6 +141,22 @@ export default class PimTitleOrgTitleBarBase extends Vue implements ControlInter
     }
 
 
+    /**
+     * 长度
+     *
+     * @type {number}
+     * @memberof OrgTitleBar
+     */
+    @Prop() public height?: number;
+
+    /**
+     * 宽度
+     *
+     * @type {number}
+     * @memberof OrgTitleBar
+     */
+    @Prop() public width?: number;
+
 
 
     /**
@@ -218,9 +235,11 @@ export default class PimTitleOrgTitleBarBase extends Vue implements ControlInter
         }
     }
 
+
 }
 </script>
 
 <style lang='less'>
 @import './org-title-bar-portlet.less';
 </style>
+

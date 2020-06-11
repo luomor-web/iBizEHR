@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet org-person-age-funnel ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : '666px',}">
+    <div class='portlet org-person-age-funnel ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : (height > 0 ? height+'px' :'666px'),}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_db_sysportlet4_chart 
@@ -24,6 +24,7 @@ import { UIActionTool,Util } from '@/utils';
 import PimPersonService from '@/service/pim-person/pim-person-service';
 import OrgPersonAgeFunnelService from './org-person-age-funnel-portlet-service';
 
+import { Environment } from '@/environments/environment';
 
 
 @Component({
@@ -140,6 +141,22 @@ export default class PimPersonOrgPersonAgeFunnelBase extends Vue implements Cont
     }
 
 
+    /**
+     * 长度
+     *
+     * @type {number}
+     * @memberof OrgPersonAgeFunnel
+     */
+    @Prop() public height?: number;
+
+    /**
+     * 宽度
+     *
+     * @type {number}
+     * @memberof OrgPersonAgeFunnel
+     */
+    @Prop() public width?: number;
+
 
 
     /**
@@ -218,9 +235,11 @@ export default class PimPersonOrgPersonAgeFunnelBase extends Vue implements Cont
         }
     }
 
+
 }
 </script>
 
 <style lang='less'>
 @import './org-person-age-funnel-portlet.less';
 </style>
+

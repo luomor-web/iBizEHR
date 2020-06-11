@@ -4,14 +4,14 @@
       <app-build @handleClick="handleClick"></app-build>
     </row>
     <row v-if="!isHasCustomized">
-          <div style = ''>
-      <i-col :xs="{ span: 8, offset: 0}" :sm="{ span: 8, offset: 0}" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
+      <i-col :xs="{ span: 8, offset: 0 }" :sm="{ span: 8, offset: 0 }" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
         <card class="portlet-card" :bordered="false" dis-hover :padding="0">
           <span>
                       <view_db_sysportlet1 
               :viewState="viewState"  
               :viewparams="viewparams" 
               :context="context" 
+              :height="932"
               name="db_sysportlet1"  
               ref='db_sysportlet1' 
               @closeview="closeView($event)">
@@ -19,13 +19,14 @@
           </span>
         </card>
       </i-col>
-      <i-col :xs="{ span: 16, offset: 0}" :sm="{ span: 16, offset: 0}" :md="{ span: 16, offset: 0 }" :lg="{ span: 16, offset: 0 }">
+      <i-col :xs="{ span: 16, offset: 0 }" :sm="{ span: 16, offset: 0 }" :md="{ span: 16, offset: 0 }" :lg="{ span: 16, offset: 0 }">
         <card class="portlet-card" :bordered="false" dis-hover :padding="0">
           <span>
                       <view_db_sysportlet2 
               :viewState="viewState"  
               :viewparams="viewparams" 
               :context="context" 
+              :height="250"
               name="db_sysportlet2"  
               ref='db_sysportlet2' 
               @closeview="closeView($event)">
@@ -33,13 +34,14 @@
           </span>
         </card>
       </i-col>
-      <i-col :xs="{ span: 8, offset: 0}" :sm="{ span: 8, offset: 0}" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
+      <i-col :xs="{ span: 8, offset: 0 }" :sm="{ span: 8, offset: 0 }" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
         <card class="portlet-card" :bordered="false" dis-hover :padding="0">
           <span>
                       <view_db_sysportlet4 
               :viewState="viewState"  
               :viewparams="viewparams" 
               :context="context" 
+              :height="666"
               name="db_sysportlet4"  
               ref='db_sysportlet4' 
               @closeview="closeView($event)">
@@ -47,13 +49,14 @@
           </span>
         </card>
       </i-col>
-      <i-col :xs="{ span: 8, offset: 0}" :sm="{ span: 8, offset: 0}" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
+      <i-col :xs="{ span: 8, offset: 0 }" :sm="{ span: 8, offset: 0 }" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
         <card class="portlet-card" :bordered="false" dis-hover :padding="0">
           <span>
                       <view_db_sysportlet3 
               :viewState="viewState"  
               :viewparams="viewparams" 
               :context="context" 
+              :height="325"
               name="db_sysportlet3"  
               ref='db_sysportlet3' 
               @closeview="closeView($event)">
@@ -61,13 +64,14 @@
           </span>
         </card>
       </i-col>
-      <i-col :xs="{ span: 8, offset: 0}" :sm="{ span: 8, offset: 0}" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
+      <i-col :xs="{ span: 8, offset: 0 }" :sm="{ span: 8, offset: 0 }" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }">
         <card class="portlet-card" :bordered="false" dis-hover :padding="0">
           <span>
                       <view_db_sysportlet5 
               :viewState="viewState"  
               :viewparams="viewparams" 
               :context="context" 
+              :height="325"
               name="db_sysportlet5"  
               ref='db_sysportlet5' 
               @closeview="closeView($event)">
@@ -75,7 +79,6 @@
           </span>
         </card>
       </i-col>
-      </div>
     </row>
     <row v-if="isHasCustomized" style="width: 100%;min-height: calc(100% - 40px);">
       <div class="portlet-container" style="position: relative;width:100%;">
@@ -372,7 +375,12 @@ export default class PimPortalView_dbBase extends Vue implements ControlInterfac
                 this.isHasCustomized = false;
                 this.notifyState();
               }
-            })
+            }).catch((error:any)=>{
+                console.error("加载面板模型异常");
+                console.error(error);
+                this.isHasCustomized = false;
+                this.notifyState();
+            });
           })
         }else{
           this.notifyState();

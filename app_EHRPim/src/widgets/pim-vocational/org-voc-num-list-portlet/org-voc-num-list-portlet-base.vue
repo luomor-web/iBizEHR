@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet org-voc-num-list ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : '300px',}">
+    <div class='portlet org-voc-num-list ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : (height > 0 ? height+'px' :'300px'),}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_portlet_OrgVocNumList_list 
@@ -27,6 +27,7 @@ import { UIActionTool,Util } from '@/utils';
 import PimVocationalService from '@/service/pim-vocational/pim-vocational-service';
 import OrgVocNumListService from './org-voc-num-list-portlet-service';
 
+import { Environment } from '@/environments/environment';
 
 
 @Component({
@@ -143,6 +144,22 @@ export default class PimVocationalOrgVocNumListBase extends Vue implements Contr
     }
 
 
+    /**
+     * 长度
+     *
+     * @type {number}
+     * @memberof OrgVocNumList
+     */
+    @Prop() public height?: number;
+
+    /**
+     * 宽度
+     *
+     * @type {number}
+     * @memberof OrgVocNumList
+     */
+    @Prop() public width?: number;
+
 
 
     /**
@@ -221,9 +238,11 @@ export default class PimVocationalOrgVocNumListBase extends Vue implements Contr
         }
     }
 
+
 }
 </script>
 
 <style lang='less'>
 @import './org-voc-num-list-portlet.less';
 </style>
+

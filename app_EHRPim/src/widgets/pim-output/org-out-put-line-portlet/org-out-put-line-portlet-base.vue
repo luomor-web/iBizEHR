@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet org-out-put-line ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : '250px',}">
+    <div class='portlet org-out-put-line ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : (height > 0 ? height+'px' :'250px'),}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_db_sysportlet2_chart 
@@ -24,6 +24,7 @@ import { UIActionTool,Util } from '@/utils';
 import PimOutputService from '@/service/pim-output/pim-output-service';
 import OrgOutPutLineService from './org-out-put-line-portlet-service';
 
+import { Environment } from '@/environments/environment';
 
 
 @Component({
@@ -140,6 +141,22 @@ export default class PimOutputOrgOutPutLineBase extends Vue implements ControlIn
     }
 
 
+    /**
+     * 长度
+     *
+     * @type {number}
+     * @memberof OrgOutPutLine
+     */
+    @Prop() public height?: number;
+
+    /**
+     * 宽度
+     *
+     * @type {number}
+     * @memberof OrgOutPutLine
+     */
+    @Prop() public width?: number;
+
 
 
     /**
@@ -218,9 +235,11 @@ export default class PimOutputOrgOutPutLineBase extends Vue implements ControlIn
         }
     }
 
+
 }
 </script>
 
 <style lang='less'>
 @import './org-out-put-line-portlet.less';
 </style>
+

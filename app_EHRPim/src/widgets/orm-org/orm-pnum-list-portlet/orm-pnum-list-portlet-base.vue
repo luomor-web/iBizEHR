@@ -1,5 +1,5 @@
 <template>
-    <div class='portlet orm-pnum-list ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : '300px',}">
+    <div class='portlet orm-pnum-list ' :style="{'height': isAdaptiveSize ? 'calc(100% - 16px)' : (height > 0 ? height+'px' :'300px'),}">
         <div class="portlet-without-title">
         <!-- 测试 -->
               <view_portlet_OrmPNumList_list 
@@ -27,6 +27,7 @@ import { UIActionTool,Util } from '@/utils';
 import OrmOrgService from '@/service/orm-org/orm-org-service';
 import OrmPNumListService from './orm-pnum-list-portlet-service';
 
+import { Environment } from '@/environments/environment';
 
 
 @Component({
@@ -143,6 +144,22 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
     }
 
 
+    /**
+     * 长度
+     *
+     * @type {number}
+     * @memberof OrmPNumList
+     */
+    @Prop() public height?: number;
+
+    /**
+     * 宽度
+     *
+     * @type {number}
+     * @memberof OrmPNumList
+     */
+    @Prop() public width?: number;
+
 
 
     /**
@@ -221,9 +238,11 @@ export default class OrmOrgOrmPNumListBase extends Vue implements ControlInterfa
         }
     }
 
+
 }
 </script>
 
 <style lang='less'>
 @import './orm-pnum-list-portlet.less';
 </style>
+
