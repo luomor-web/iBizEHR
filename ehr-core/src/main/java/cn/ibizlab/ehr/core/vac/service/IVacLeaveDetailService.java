@@ -27,7 +27,6 @@ public interface IVacLeaveDetailService extends IService<VacLeaveDetail>{
 
     boolean remove(String key) ;
     void removeBatch(Collection<String> idList) ;
-    VacLeaveDetail calcSJQJTS(VacLeaveDetail et) ;
     boolean create(VacLeaveDetail et) ;
     void createBatch(List<VacLeaveDetail> list) ;
     boolean update(VacLeaveDetail et) ;
@@ -35,7 +34,6 @@ public interface IVacLeaveDetailService extends IService<VacLeaveDetail>{
     VacLeaveDetail getNianJia(VacLeaveDetail et) ;
     boolean save(VacLeaveDetail et) ;
     void saveBatch(List<VacLeaveDetail> list) ;
-    VacLeaveDetail calcJHQJTS(VacLeaveDetail et) ;
     VacLeaveDetail get(String key) ;
     VacLeaveDetail calcPlanDays(VacLeaveDetail et) ;
     boolean checkKey(VacLeaveDetail et) ;
