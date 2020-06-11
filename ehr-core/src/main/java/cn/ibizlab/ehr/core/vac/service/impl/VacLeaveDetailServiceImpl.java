@@ -108,14 +108,13 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
         updateBatchById(list,batchSize);
     }
 
-!!!!模版产生代码错误:----
-Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
-----
+    @Override
+    @Transactional
+    public VacLeaveDetail getNianJia(VacLeaveDetail et) {
+        //自定义代码
+        return et;
+    }
 
-----
-FTL stack trace ("~" means nesting-related):
-	- Failed at: #{et.pimpersonId}  [in template "TEMPLCODE_zh_CN" at line 81, column 68]
-----
     @Override
     @Transactional
     public boolean save(VacLeaveDetail et) {
@@ -169,14 +168,13 @@ FTL stack trace ("~" means nesting-related):
         return et;
     }
 
-!!!!模版产生代码错误:----
-Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
-----
+    @Override
+    @Transactional
+    public VacLeaveDetail calcPlanDays(VacLeaveDetail et) {
+        //自定义代码
+        return et;
+    }
 
-----
-FTL stack trace ("~" means nesting-related):
-	- Failed at: #{et.pimpersonid}  [in template "TEMPLCODE_zh_CN" at line 96, column 43]
-----
     @Override
     public boolean checkKey(VacLeaveDetail et) {
         return (!ObjectUtils.isEmpty(et.getVacleavedetailid()))&&(!Objects.isNull(this.getById(et.getVacleavedetailid())));

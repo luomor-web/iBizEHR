@@ -2944,7 +2944,7 @@
             {
                "appid":"EHRPar",
                "appname":"EHRPAR（绩效管理）",
-               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"通知发布" , "items":[{ "id":"menuitem7" , "name":"通知发布" }]},{ "id":"menuitem2" , "name":"基础设置" , "items":[{ "id":"menuitem6" , "name":"考核周期设置" },{ "id":"menuitem8" , "name":"考核对象设置" },{ "id":"menuitem9" , "name":"考核内容设置" },{ "id":"menuitem10" , "name":"评分权重设置" }]},{ "id":"menuitem3" , "name":"绩效考核" },{ "id":"menuitem4" , "name":"绩效定级" },{ "id":"menuitem5" , "name":"绩效应用" }] }]
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"通知发布" , "items":[{ "id":"menuitem7" , "name":"通知发布" }]},{ "id":"menuitem2" , "name":"基础设置" , "items":[{ "id":"menuitem6" , "name":"考核周期设置" },{ "id":"menuitem8" , "name":"考核对象设置" },{ "id":"menuitem9" , "name":"考核内容设置" },{ "id":"menuitem10" , "name":"评分权重设置" }]},{ "id":"menuitem12" , "name":"绩效标准" , "items":[{ "id":"menuitem11" , "name":"考核内容汇总" }]},{ "id":"menuitem3" , "name":"绩效考核" },{ "id":"menuitem4" , "name":"绩效定级" },{ "id":"menuitem5" , "name":"绩效应用" }] }]
             }
             ,
             {
