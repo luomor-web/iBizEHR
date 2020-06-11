@@ -108,13 +108,111 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
         updateBatchById(list,batchSize);
     }
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.att.service.impl.AttEndenceSetupServiceImpl attEndenceSetupService;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.att.service.impl.AttEndanceSettingsServiceImpl attEndenceSettingService;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.vac.service.impl.VacLeaveTipsServiceImpl vacLeaveTipsService;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.vac.service.impl.VacLeaceTypeServiceImpl vacLeaceTypeService;
+    
     @Override
     @Transactional
     public VacLeaveDetail getNianJia(VacLeaveDetail et) {
-        //自定义代码
+    	//获取请假人员id  
+    	String pimpersonid = et.getPimpersonid();
+//    	if(StringUtils.isEmpty(pimpersonid)) {
+//    		throw new Exception("请添加请假人员!");
+//    	}
+    	PimPerson pimPerson = pimpersonService.get(pimpersonid);
+//    	if(pimPerson == null) {
+//    		throw new Exception("EHR系统中不存在该请假人员!");
+//    	}
+    	//温馨提示
+    	String tips = null;
+    	//获取上年度和本年度和明年
+    	Calendar calendar = Calendar.getInstance();
+    	int lastyear = calendar.get(Calendar.YEAR) - 1;
+    	int curyear = calendar.get(Calendar.YEAR);
+    	int nextyear = calendar.get(Calendar.YEAR) + 1;
+    	//获取上年度和本年度总天数,假期使用情况
+    	Double lastsumSyts = 0d;
+    	Double cursumSyts = 0d;
+    	String njsy = "";
+    	//探亲回显信息
+    	if(et.getQjzl().equals("TQ")) {
+    		et.setHyzk(pimPerson.getHyzk());
+    		if(pimPerson.getHyzk().equals("20")) {
+    			et.setTqlx("20");
+    		}else {
+    			et.setTqlx("10");
+    		}
+    	}
+    	//获取温馨提示(用人员信息标识查考勤人员和考勤设置，将考勤设置标识相同的考勤规则标识提取，去查请假提示)
+    	String sql = "SELECT s.* FROM T_VACLEAVETIPS s WHERE s.vacholidayrulesid in("
+				+ " SELECT b.vacholidayrulesid FROM T_ATTENDANCESETTINGS a INNER JOIN T_ATTENDENCESETUP b ON a.attendencesetupid=b.attendencesetupid"
+				+ " WHERE a.pimpersonid=#{et.pimpersonid})";
+    	Map<String, String> param = new HashMap<>();
+    	param.put("pimpersonid", pimpersonid);
+		List<JSONObject> jsonVacLeaveTipsList = this.select(sql, param);
+    	if(jsonVacLeaveTipsList.size() > 0) {
+    		for (JSONObject jsonVacLeaveTips : jsonVacLeaveTipsList) {
+				VacLeaveTips vacLeaveTips = JSON.toJavaObject(jsonVacLeaveTips, VacLeaveTips.class);
+				if(et.getQjzl().equals(vacLeaveTips.getQjzl())) {
+					tips = vacLeaveTips.getTips();
+				}
+			}
+    	}
+    	//查询请假种类所表示的请假名称
+    	String leaveName = vacLeaceTypeService.get(et.getQjzl()).getVacleacetypename();
+    	//查询该请假人员当前请假种类上年度和本年度情况(用员工信息标识查询上个年度和本年度的计划天数和)
+    	List<VacLeaveDetail> vacLeaveDetailList = this.selectByPimpersonid(pimpersonid);
+    	if(vacLeaveDetailList.size() > 0) {
+    		for (VacLeaveDetail vacLeaveDetail : vacLeaveDetailList) {
+    			if(et.getQjzl().equals(vacLeaveDetail.getQjzl())) {
+    				String jhkssj = vacLeaveDetail.getJhkssj().toString().substring(0, 4);
+    				if(String.valueOf(lastyear).equals(jhkssj)) {
+    					lastsumSyts += vacLeaveDetail.getJhts();
+    				}else if(String.valueOf(curyear).equals(jhkssj)) {
+    					cursumSyts += vacLeaveDetail.getJhts();
+    				}
+    			}
+    		}
+    	}
+    	njsy +=  lastyear + "年已请" + leaveName + lastsumSyts + " 天;\n " 
+    		   + curyear  + "年已请" + leaveName + cursumSyts  + " 天; ";
+    	//如果是年休假，拼接年休假使用情况
+    	if(et.getQjzl().equals("NX")) {
+    		sql = "select * from T_VACSYNJCX where pimpersonId=#{et.pimpersonId}  and nd in (#{et.curyear},#{et.nextyear}) order by nd ASC";
+    		param.put("curyear", String.valueOf(curyear));
+    		param.put("nextyear", String.valueOf(nextyear));
+    		List<JSONObject> jsonVacSynjcxList = this.select(sql, param);
+    		if(jsonVacSynjcxList.size() > 0) {
+    			for (JSONObject jsonVacSynjcx : jsonVacSynjcxList) {
+    				VacSynjcx vacSynjcx = JSON.toJavaObject(jsonVacSynjcx,VacSynjcx.class);
+    				//年度，实休天数，剩余天数，开始有效时间，结束有效时间
+    				String nd = vacSynjcx.getNd();
+    				String sjbnts = vacSynjcx.getSjbnts().toString();
+    				String synjts = vacSynjcx.getSynjts().toString();
+    				String ksyxsj = vacSynjcx.getKsyxsj().toString();
+    				String jsyxsj = vacSynjcx.getJsyxsj().toString();
+    				njsy += nd + "年假:共 " + sjbnts + "天;剩余: " + synjts + "天;有效期: " + ksyxsj + " 至 " + jsyxsj + ";\n";
+				}
+    		} else {
+    			njsy = "暂未查询到您的年假使用情况！！！";
+    		}
+    	}
+    	et.setNjsy(njsy);
+    	et.setTips(tips);
+    	//计算计划请假天数
+    	this.calcJHQJTS(et);
         return et;
     }
-
     @Override
     @Transactional
     public boolean save(VacLeaveDetail et) {
