@@ -49,9 +49,11 @@ export class UIServiceRegister {
         this.allUIService.set('saltype', () => import('@/uiservice/sal-type/sal-type-ui-service'));
         this.allUIService.set('salitem', () => import('@/uiservice/sal-item/sal-item-ui-service'));
         this.allUIService.set('salschemeitem', () => import('@/uiservice/sal-scheme-item/sal-scheme-item-ui-service'));
+        this.allUIService.set('codelist1', () => import('@/uiservice/code-list1/code-list1-ui-service'));
         this.allUIService.set('salstdgwgz', () => import('@/uiservice/sal-stdgwgz/sal-stdgwgz-ui-service'));
         this.allUIService.set('salstdxmgz', () => import('@/uiservice/sal-std-xmgz/sal-std-xmgz-ui-service'));
         this.allUIService.set('ormduty', () => import('@/uiservice/orm-duty/orm-duty-ui-service'));
+        this.allUIService.set('codeitem', () => import('@/uiservice/code-item/code-item-ui-service'));
     }
 
     /**

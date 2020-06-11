@@ -69,6 +69,17 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '37c011e01d93d713ab87c482aa2908e8',
+            viewmodule: 'SAL',
+            viewname: 'SalStdXmgzEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'ef4104b2291a9e5496b77cedbb29e007',
+                '5a1c3b6c244e71fd16c6c2d2aa2033af',
+            ],
+        },
+        {
             viewtag: '3a0b5636f1cb242c9fac8211b31f9ddb',
             viewmodule: 'SAL',
             viewname: 'SalRuleDetailEditView',

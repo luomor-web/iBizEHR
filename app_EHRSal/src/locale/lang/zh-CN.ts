@@ -8,9 +8,11 @@ import salsubject_zh_CN from '@locale/lanres/entities/sal-subject/sal-subject_zh
 import saltype_zh_CN from '@locale/lanres/entities/sal-type/sal-type_zh_CN';
 import salitem_zh_CN from '@locale/lanres/entities/sal-item/sal-item_zh_CN';
 import salschemeitem_zh_CN from '@locale/lanres/entities/sal-scheme-item/sal-scheme-item_zh_CN';
+import codelist1_zh_CN from '@locale/lanres/entities/code-list1/code-list1_zh_CN';
 import salstdgwgz_zh_CN from '@locale/lanres/entities/sal-stdgwgz/sal-stdgwgz_zh_CN';
 import salstdxmgz_zh_CN from '@locale/lanres/entities/sal-std-xmgz/sal-std-xmgz_zh_CN';
 import ormduty_zh_CN from '@locale/lanres/entities/orm-duty/orm-duty_zh_CN';
+import codeitem_zh_CN from '@locale/lanres/entities/code-item/code-item_zh_CN';
 import components_zh_CN from '@locale/lanres/components/components_zh_CN';
 import codelist_zh_CN from '@locale/lanres/codelist/codelist_zh_CN';
 import userCustom_zh_CN from '@locale/lanres/userCustom/userCustom_zh_CN';
@@ -105,9 +107,11 @@ export default {
         saltype: saltype_zh_CN,
         salitem: salitem_zh_CN,
         salschemeitem: salschemeitem_zh_CN,
+        codelist1: codelist1_zh_CN,
         salstdgwgz: salstdgwgz_zh_CN,
         salstdxmgz: salstdxmgz_zh_CN,
         ormduty: ormduty_zh_CN,
+        codeitem: codeitem_zh_CN,
     },
     components: components_zh_CN,
     codelist: codelist_zh_CN,

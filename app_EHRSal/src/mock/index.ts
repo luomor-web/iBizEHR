@@ -17,6 +17,8 @@ import './entity/sal-subjects/sal-subjects';
 import './entity/sal-types/sal-types';
 import './entity/sal-items/sal-items';
 import './entity/sal-scheme-items/sal-scheme-items';
+import './entity/code-list1s/code-list1s';
 import './entity/sal-stdgwgzs/sal-stdgwgzs';
 import './entity/sal-std-xmgzs/sal-std-xmgzs';
 import './entity/orm-dutys/orm-dutys';
+import './entity/code-items/code-items';

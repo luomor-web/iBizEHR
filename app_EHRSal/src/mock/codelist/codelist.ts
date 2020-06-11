@@ -27,8 +27,8 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "srfkey": "EhrCodeList0250",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     },
     {
@@ -62,8 +62,8 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "srfkey": "EhrCodeList0033",
         "emptytext": "未定义",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"CodeItem",
+        "appdedataset":"FetchCurCL",
         "items": []
     },
     {
