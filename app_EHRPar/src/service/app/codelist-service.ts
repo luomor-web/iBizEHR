@@ -1,4 +1,8 @@
+import EhrCodeList0233 from '@/codelist/ehr-code-list0233';   
 import EhrCodeList0249 from '@/codelist/ehr-code-list0249';   
+import EhrCodeList0050 from '@/codelist/ehr-code-list0050';   
+import EhrCodeList0015 from '@/codelist/ehr-code-list0015';   
+import EhrCodeList0014 from '@/codelist/ehr-code-list0014';   
 import { Store } from 'vuex';
 
 /**
@@ -51,12 +55,44 @@ export default class CodeListService {
 
 
     /**
+     * 代码表--职务（基础管理）
+     *
+     * @type {EhrCodeList0233}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0233: EhrCodeList0233 = new EhrCodeList0233();
+
+    /**
      * 代码表--云系统操作者
      *
      * @type {EhrCodeList0249}
      * @memberof CodeListService
      */
     public EhrCodeList0249: EhrCodeList0249 = new EhrCodeList0249();
+
+    /**
+     * 代码表--岗位（基础管理）
+     *
+     * @type {EhrCodeList0050}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0050: EhrCodeList0050 = new EhrCodeList0050();
+
+    /**
+     * 代码表--考核对象（绩效管理）
+     *
+     * @type {EhrCodeList0015}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0015: EhrCodeList0015 = new EhrCodeList0015();
+
+    /**
+     * 代码表--员工状态
+     *
+     * @type {EhrCodeList0014}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0014: EhrCodeList0014 = new EhrCodeList0014();
 
     /**
      * 获取动态代码表

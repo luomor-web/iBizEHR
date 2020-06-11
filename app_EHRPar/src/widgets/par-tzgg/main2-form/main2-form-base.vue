@@ -20,7 +20,7 @@ style=""></app-span>
 <i-col v-show="detailsModel.nd.visible" :style="{}"  :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='nd' :itemRules="this.rules.nd" class='' :caption="$t('entities.partzgg.main2_form.details.nd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nd.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-span   name='nd'
-:value="data.nd" tag='EhrCodeList0115' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、"   :data="data"
+:value="data.nd" tag='EhrCodeList0009' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、"   :data="data"
   :context="context"
   :viewparams="viewparams"
   :itemParam="{}" 

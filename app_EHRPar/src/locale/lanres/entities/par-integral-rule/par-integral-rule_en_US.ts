@@ -1,0 +1,149 @@
+
+export default {
+  fields: {
+    parintegralruleid: '积分规则标识',
+    parintegralrulename: '积分规则名称',
+    createman: '建立人',
+    createdate: '建立时间',
+    updateman: '更新人',
+    updatedate: '更新时间',
+    nd: '年度',
+    integrals: '积分',
+    dj: '定级',
+  },
+	views: {
+		editview: {
+			caption: "积分规则",
+      title: '积分规则',
+		},
+		gridview: {
+			caption: "积分规则",
+      title: '积分规则',
+		},
+		pickupview: {
+			caption: "积分规则",
+      title: '积分规则',
+		},
+		redirectview: {
+			caption: "积分规则",
+      title: '积分规则',
+		},
+		mpickupview: {
+			caption: "积分规则",
+      title: '积分规则',
+		},
+		editview9: {
+			caption: "积分规则",
+      title: '积分规则',
+		},
+		editview2: {
+			caption: "积分规则",
+      title: '积分规则',
+		},
+		pickupgridview: {
+			caption: "积分规则",
+      title: '积分规则',
+		},
+	},
+	main_form: {
+		details: {
+			group1: "积分规则", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "积分规则标识", 
+			srfmajortext: "积分规则名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			nd: "年度", 
+			dj: "定级", 
+			integrals: "积分", 
+			parintegralrulename: "备注", 
+			parintegralruleid: "积分规则标识", 
+		},
+		uiactions: {
+		},
+	},
+	main2_form: {
+		details: {
+			group1: "积分规则", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "积分规则标识", 
+			srfmajortext: "积分规则名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			nd: "年度", 
+			dj: "定级", 
+			integrals: "积分", 
+			parintegralrulename: "备注", 
+			parintegralruleid: "积分规则标识", 
+		},
+		uiactions: {
+		},
+	},
+	main_grid: {
+		columns: {
+			uagridcolumn1: "操作",
+			nd: "年度",
+			dj: "定级",
+			integrals: "积分",
+			parintegralrulename: "备注",
+			updateman: "更新人",
+			updatedate: "更新时间",
+		},
+		uiactions: {
+			openeditview: "编辑",
+			remove: "Remove",
+			edit: "Edit",
+		},
+	},
+	default_searchform: {
+		details: {
+			formpage1: "常规条件", 
+		},
+		uiactions: {
+		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
+		},
+		deuiaction1: {
+			caption: "关闭",
+			tip: "关闭",
+		},
+	},
+	gridviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "New",
+			tip: "New",
+		},
+		tbitem13: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
+	},
+	editview9toolbar_toolbar: {
+		deuiaction1: {
+			caption: "关闭",
+			tip: "关闭",
+		},
+	},
+	editview2toolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+	},
+};

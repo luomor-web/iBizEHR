@@ -21,7 +21,7 @@
     :viewparams="viewparams"
     :itemParam="{}" 
     :disabled="detailsModel.nd.disabled"  
-    tag='EhrCodeList0115' 
+    tag='EhrCodeList0009' 
     codelistType='STATIC'
     placeholder='请选择...' style="">
  </dropdown-list>
