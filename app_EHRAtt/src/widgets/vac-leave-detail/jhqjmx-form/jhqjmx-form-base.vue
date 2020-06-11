@@ -1159,6 +1159,11 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
 
 
 
+        if(Object.is(name, 'qjzl')){
+            const details: string[] = ['tqlx', 'jhts', 'tips', 'hyzk', 'njsy'];
+            this.updateFormItems('GetNianJia', this.data, details, true);
+        }
+
         if(Object.is(name, 'jhkssj')){
             const details: string[] = ['jhts'];
             this.updateFormItems('CalcJHQJTS', this.data, details, true);
