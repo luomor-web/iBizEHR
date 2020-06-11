@@ -160,6 +160,17 @@ const router = new Router({
         },
         component: () => import('@pages/par/par-exam-cycle-edit-view/par-exam-cycle-edit-view.vue'),
     },
+            {
+                path: '/partzggredirectview/:partzggredirectview?',
+                meta: {
+                    caption: 'entities.partzgg.views.redirectview.caption',
+                    parameters: [
+                        { pathName: 'partzggredirectview', parameterName: 'partzggredirectview' },
+                    ],
+                    requireAuth: true,
+                },
+                component: () => import('@pages/par/par-tzgg-redirect-view/par-tzgg-redirect-view.vue'),
+            },
     {
         path: '/partzggs/:partzgg?/editview/:editview?',
         meta: {
@@ -184,6 +195,17 @@ const router = new Router({
         },
         component: () => import('@pages/par/par-tzgg-edit-view9/par-tzgg-edit-view9.vue'),
     },
+            {
+                path: '/parexamcycleredirectview/:parexamcycleredirectview?',
+                meta: {
+                    caption: 'entities.parexamcycle.views.redirectview.caption',
+                    parameters: [
+                        { pathName: 'parexamcycleredirectview', parameterName: 'parexamcycleredirectview' },
+                    ],
+                    requireAuth: true,
+                },
+                component: () => import('@pages/par/par-exam-cycle-redirect-view/par-exam-cycle-redirect-view.vue'),
+            },
         ...globalRoutes,
         {
             path: '/login/:login?',
