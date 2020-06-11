@@ -20,6 +20,7 @@ import ormpost_en_US from '@locale/lanres/entities/orm-post/orm-post_en_US';
 import salstdzc_en_US from '@locale/lanres/entities/sal-stdzc/sal-stdzc_en_US';
 import salsalarybill_en_US from '@locale/lanres/entities/sal-salary-bill/sal-salary-bill_en_US';
 import salsalary_en_US from '@locale/lanres/entities/sal-salary/sal-salary_en_US';
+import ormqygl_en_US from '@locale/lanres/entities/orm-qygl/orm-qygl_en_US';
 import ormduty_en_US from '@locale/lanres/entities/orm-duty/orm-duty_en_US';
 import codeitem_en_US from '@locale/lanres/entities/code-item/code-item_en_US';
 import salsalarydetail_en_US from '@locale/lanres/entities/sal-salary-detail/sal-salary-detail_en_US';
@@ -135,6 +136,7 @@ export default {
         salstdzc: salstdzc_en_US,
         salsalarybill: salsalarybill_en_US,
         salsalary: salsalary_en_US,
+        ormqygl: ormqygl_en_US,
         ormduty: ormduty_en_US,
         codeitem: codeitem_en_US,
         salsalarydetail: salsalarydetail_en_US,

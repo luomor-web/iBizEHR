@@ -86,16 +86,6 @@ export default class MainModel {
         dataType: 'PICKUPTEXT',
       },
       {
-        name: 'nyear',
-        prop: 'nyear',
-        dataType: 'PICKUPDATA',
-      },
-      {
-        name: 'nmonth',
-        prop: 'nmonth',
-        dataType: 'PICKUPDATA',
-      },
-      {
         name: 'xc',
         prop: 'xc',
         dataType: 'FLOAT',

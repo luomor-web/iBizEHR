@@ -4,7 +4,7 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.salsalary.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.salsalary.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.salsalary.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -153,18 +153,6 @@
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>
 
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.nyear.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='nyear' :itemRules="this.rules.nyear" class='' :caption="$t('entities.salsalary.main_form.details.nyear')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nyear.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.nyear"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.nyear.disabled" type='number'  style=""></input-box>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.nmonth.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='nmonth' :itemRules="this.rules.nmonth" class='' :caption="$t('entities.salsalary.main_form.details.nmonth')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nmonth.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.nmonth"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.nmonth.disabled" type='number'  style=""></input-box>
 </app-form-item>
 
 </i-col>
@@ -546,8 +534,6 @@ export default class MainBase extends Vue implements ControlInterface {
         ormdutyname: null,
         ormpostname: null,
         salsalarybillname: null,
-        nyear: null,
-        nmonth: null,
         xc: null,
         state: null,
         memo: null,
@@ -684,18 +670,6 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: true, type: 'string', message: '工资单名称 值不能为空', trigger: 'change' },
             { required: true, type: 'string', message: '工资单名称 值不能为空', trigger: 'blur' },
         ],
-        nyear: [
-            { type: 'string', message: '年 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '年 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '年 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '年 值不能为空', trigger: 'blur' },
-        ],
-        nmonth: [
-            { type: 'string', message: '月 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '月 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '月 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '月 值不能为空', trigger: 'blur' },
-        ],
         xc: [
             { type: 'number', message: '实发薪酬 值必须为数值类型', trigger: 'change' },
             { type: 'number', message: '实发薪酬 值必须为数值类型', trigger: 'blur' },
@@ -765,7 +739,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public detailsModel: any = {
-        group1: new FormGroupPanelModel({ caption: '员工薪酬', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.salsalary.main_form', extractMode: 'ITEM', details: [] } })
+        group1: new FormGroupPanelModel({ caption: '员工薪酬', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.salsalary.main_form', extractMode: 'ITEM', details: [] } })
 , 
         druipart1: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart1', visible: true, isShowCaption: true, form: this })
 , 
@@ -800,10 +774,6 @@ export default class MainBase extends Vue implements ControlInterface {
         ormpostname: new FormItemModel({ caption: '岗位', detailType: 'FORMITEM', name: 'ormpostname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
         salsalarybillname: new FormItemModel({ caption: '工资单名称', detailType: 'FORMITEM', name: 'salsalarybillname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        nyear: new FormItemModel({ caption: '年', detailType: 'FORMITEM', name: 'nyear', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        nmonth: new FormItemModel({ caption: '月', detailType: 'FORMITEM', name: 'nmonth', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         xc: new FormItemModel({ caption: '实发薪酬', detailType: 'FORMITEM', name: 'xc', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -996,30 +966,6 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 nyear 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.nyear')
-    onNyearChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'nyear', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 nmonth 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.nmonth')
-    onNmonthChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'nmonth', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 xc 值
      *
      * @param {*} newVal
@@ -1175,8 +1121,6 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
-
-
 
 
 

@@ -61,6 +61,7 @@ export class EntityServiceRegister {
         this.allEntityService.set('salstdzc', () => import('@/service/sal-stdzc/sal-stdzc-service'));
         this.allEntityService.set('salsalarybill', () => import('@/service/sal-salary-bill/sal-salary-bill-service'));
         this.allEntityService.set('salsalary', () => import('@/service/sal-salary/sal-salary-service'));
+        this.allEntityService.set('ormqygl', () => import('@/service/orm-qygl/orm-qygl-service'));
         this.allEntityService.set('ormduty', () => import('@/service/orm-duty/orm-duty-service'));
         this.allEntityService.set('codeitem', () => import('@/service/code-item/code-item-service'));
         this.allEntityService.set('salsalarydetail', () => import('@/service/sal-salary-detail/sal-salary-detail-service'));

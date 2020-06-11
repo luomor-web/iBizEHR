@@ -37,11 +37,11 @@
 	  git clone -b dev $para2 ehr/
       export NODE_OPTIONS=--max-old-space-size=4096
       cd ehr/
-      mvn clean package -Pwebapi
-      cd ehr-provider/ehr-provider-webapi
-      mvn -Pwebapi docker:build
-      mvn -Pwebapi docker:push
-      docker -H $para1 stack deploy --compose-file=src/main/docker/ehr-provider-webapi.yaml iBizEE --with-registry-auth      
+      mvn clean package -Pehrsal
+      cd ehr-app/ehr-app-ehrsal
+      mvn -Pehrsal docker:build
+      mvn -Pehrsal docker:push
+      docker -H $para1 stack deploy --compose-file=src/main/docker/ehr-app-ehrsal.yaml iBizEE --with-registry-auth
       </command>
     </hudson.tasks.Shell>
   </builders>

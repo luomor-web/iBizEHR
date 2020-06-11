@@ -4,21 +4,46 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.salstdgl.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.salstdgl.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.qsgl.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+        <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
+    <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.salstdgl.main_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-picker 
+  :formState="formState"
+  :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam='{ }' 
+  :disabled="detailsModel.ormorgname.disabled"
+  name='ormorgname'
+  deMajorField='orgname'
+  deKeyField='ormorg'
+  :service="service"
+  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchDefault'}"
+  valueitem='ormorgid' 
+  :value="data.ormorgname" 
+  editortype="" 
+  :pickupView="{ viewname: 'orm-org-pickup-view', title: $t('entities.ormorg.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
+  style=""  
+  @formitemvaluechange="onFormItemValueChange">
+</app-picker>
+
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.qsgl.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='qsgl' :itemRules="this.rules.qsgl" class='' :caption="$t('entities.salstdgl.main_form.details.qsgl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.qsgl.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.qsgl"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.qsgl.disabled" type='number'  style=""></input-box>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.jsgl.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.jsgl.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='jsgl' :itemRules="this.rules.jsgl" class='' :caption="$t('entities.salstdgl.main_form.details.jsgl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jsgl.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.jsgl"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.jsgl.disabled" type='number'  style=""></input-box>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.bz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.bz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='bz' :itemRules="this.rules.bz" class='' :caption="$t('entities.salstdgl.main_form.details.bz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bz.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.bz"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.bz.disabled" type='number'  style=""></input-box>
 </app-form-item>
@@ -335,9 +360,11 @@ export default class MainBase extends Vue implements ControlInterface {
         srfuf: null,
         srfdeid: null,
         srfsourcekey: null,
+        ormorgname: null,
         qsgl: null,
         jsgl: null,
         bz: null,
+        ormorgid: null,
         salstdglid: null,
         salstdgl:null,
     };
@@ -429,6 +456,12 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
+        ormorgname: [
+            { type: 'string', message: '组织 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '组织 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '组织 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '组织 值不能为空', trigger: 'blur' },
+        ],
         qsgl: [
             { type: 'number', message: '起始年功工龄 值必须为数值类型', trigger: 'change' },
             { type: 'number', message: '起始年功工龄 值必须为数值类型', trigger: 'blur' },
@@ -447,6 +480,12 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: true, type: 'number', message: '补贴标准 值不能为空', trigger: 'change' },
             { required: true, type: 'number', message: '补贴标准 值不能为空', trigger: 'blur' },
         ],
+        ormorgid: [
+            { type: 'string', message: '组织标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '组织标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '组织标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '组织标识 值不能为空', trigger: 'blur' },
+        ],
         salstdglid: [
             { type: 'string', message: '工龄工资标准标识 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '工龄工资标准标识 值必须为字符串类型', trigger: 'blur' },
@@ -462,7 +501,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public detailsModel: any = {
-        group1: new FormGroupPanelModel({ caption: '工龄工资标准信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.salstdgl.main_form', extractMode: 'ITEM', details: [] } })
+        group1: new FormGroupPanelModel({ caption: '工龄工资标准信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.salstdgl.main_form', extractMode: 'ITEM', details: [] } })
 , 
         formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
@@ -482,11 +521,15 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
+        ormorgname: new FormItemModel({ caption: '组织', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
         qsgl: new FormItemModel({ caption: '起始年功工龄', detailType: 'FORMITEM', name: 'qsgl', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         jsgl: new FormItemModel({ caption: '结束年功工龄', detailType: 'FORMITEM', name: 'jsgl', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         bz: new FormItemModel({ caption: '补贴标准', detailType: 'FORMITEM', name: 'bz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        ormorgid: new FormItemModel({ caption: '组织标识', detailType: 'FORMITEM', name: 'ormorgid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         salstdglid: new FormItemModel({ caption: '工龄工资标准标识', detailType: 'FORMITEM', name: 'salstdglid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -589,6 +632,18 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
+     * 监控表单属性 ormorgname 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.ormorgname')
+    onOrmorgnameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'ormorgname', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
      * 监控表单属性 qsgl 值
      *
      * @param {*} newVal
@@ -622,6 +677,18 @@ export default class MainBase extends Vue implements ControlInterface {
     @Watch('data.bz')
     onBzChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'bz', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 ormorgid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.ormorgid')
+    onOrmorgidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'ormorgid', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -672,6 +739,8 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
+
+
 
 
 

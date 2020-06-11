@@ -54,7 +54,7 @@ export default {
 	},
 	main_grid: {
 		columns: {
-			salparamname1: '薪酬计算指标名称',
+			salparamname: '薪酬计算指标名称',
 			salsourcename: '薪酬计算源',
 			param: '对应计算源属性',
 			updateman: '更新人',

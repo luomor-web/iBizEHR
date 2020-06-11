@@ -35,9 +35,11 @@ export default {
 			srfuf: '', 
 			srfdeid: '', 
 			srfsourcekey: '', 
+			ormorgname: '组织', 
 			qsgl: '起始年功工龄', 
 			jsgl: '结束年功工龄', 
 			bz: '补贴标准', 
+			ormorgid: '组织标识', 
 			salstdglid: '工龄工资标准标识', 
 		},
 		uiactions: {

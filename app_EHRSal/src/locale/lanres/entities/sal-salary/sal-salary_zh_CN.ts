@@ -59,8 +59,6 @@ export default {
 			ormdutyname: '职务', 
 			ormpostname: '岗位', 
 			salsalarybillname: '工资单名称', 
-			nyear: '年', 
-			nmonth: '月', 
 			xc: '实发薪酬', 
 			state: '状态', 
 			memo: '备注', 

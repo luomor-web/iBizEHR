@@ -4,15 +4,15 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.salplan.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.salplan.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.salplanname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+        <i-col v-show="detailsModel.salplanname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='salplanname' :itemRules="this.rules.salplanname" class='' :caption="$t('entities.salplan.main_form.details.salplanname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.salplanname.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.salplanname"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.salplanname.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.nyear.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.nyear.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='nyear' :itemRules="this.rules.nyear" class='' :caption="$t('entities.salplan.main_form.details.nyear')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nyear.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list 
     v-model="data.nyear" 
@@ -28,7 +28,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.nmonth.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.nmonth.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='nmonth' :itemRules="this.rules.nmonth" class='' :caption="$t('entities.salplan.main_form.details.nmonth')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nmonth.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list 
     v-model="data.nmonth" 
@@ -44,7 +44,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.salplan.main_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-picker 
   :formState="formState"
@@ -69,7 +69,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.salschemename.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.salschemename.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='salschemename' :itemRules="this.rules.salschemename" class='' :caption="$t('entities.salplan.main_form.details.salschemename')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.salschemename.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-picker 
   :formState="formState"
@@ -94,7 +94,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.state.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.state.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='state' :itemRules="this.rules.state" class='' :caption="$t('entities.salplan.main_form.details.state')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.state.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list 
     v-model="data.state" 
@@ -110,7 +110,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.memo.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+<i-col v-show="detailsModel.memo.visible" :style="{}"  :lg="{ span: 24, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='memo' :itemRules="this.rules.memo" class='' :caption="$t('entities.salplan.main_form.details.memo')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.memo.error" :isEmptyCaption="false" labelPos="LEFT">
     <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
     <textarea class="ivu-input" v-model="data.memo" :disabled="detailsModel.memo.disabled" style=""></textarea>
@@ -598,7 +598,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public detailsModel: any = {
-        group1: new FormGroupPanelModel({ caption: '薪酬计算计划信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.salplan.main_form', extractMode: 'ITEM', details: [] } })
+        group1: new FormGroupPanelModel({ caption: '薪酬计算计划信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.salplan.main_form', extractMode: 'ITEM', details: [] } })
 , 
         formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 

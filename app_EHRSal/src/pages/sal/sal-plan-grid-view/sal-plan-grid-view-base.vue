@@ -581,7 +581,7 @@ export default class SalPlanGridViewBase extends GridViewBase {
         const view: any = {
             viewname: 'sal-plan-edit-view', 
             height: 0, 
-            width: 0,  
+            width: 1366,  
             title: this.$t('entities.salplan.views.editview.title'),
             placement: 'DRAWER_RIGHT',
         };
@@ -625,7 +625,7 @@ export default class SalPlanGridViewBase extends GridViewBase {
         const view: any = {
             viewname: 'sal-plan-edit-view', 
             height: 0, 
-            width: 0,  
+            width: 1366,  
             title: this.$t('entities.salplan.views.editview.title'),
             placement: 'DRAWER_RIGHT',
         };

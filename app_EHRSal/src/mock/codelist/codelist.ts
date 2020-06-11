@@ -92,7 +92,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2012年',
                 "data":"",
                 "codename":"Item_2012",
-                value: '2012',
+                value: 2012,
                 
                 disabled: false,
             },
@@ -102,7 +102,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2013年',
                 "data":"",
                 "codename":"Item_2013",
-                value: '2013',
+                value: 2013,
                 
                 disabled: false,
             },
@@ -112,7 +112,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2014年',
                 "data":"",
                 "codename":"Item_2014",
-                value: '2014',
+                value: 2014,
                 
                 disabled: false,
             },
@@ -122,7 +122,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2015年',
                 "data":"",
                 "codename":"Item_2015",
-                value: '2015',
+                value: 2015,
                 
                 disabled: false,
             },
@@ -132,7 +132,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2016年',
                 "data":"",
                 "codename":"Item_2016",
-                value: '2016',
+                value: 2016,
                 
                 disabled: false,
             },
@@ -142,7 +142,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2017年',
                 "data":"",
                 "codename":"Item_2017",
-                value: '2017',
+                value: 2017,
                 
                 disabled: false,
             },
@@ -152,7 +152,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2018年',
                 "data":"",
                 "codename":"Item_2018",
-                value: '2018',
+                value: 2018,
                 
                 disabled: false,
             },
@@ -162,7 +162,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2019年',
                 "data":"",
                 "codename":"Item_2019",
-                value: '2019',
+                value: 2019,
                 
                 disabled: false,
             },
@@ -172,7 +172,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2020年',
                 "data":"",
                 "codename":"Item_2020",
-                value: '2020',
+                value: 2020,
                 
                 disabled: false,
             },
@@ -182,7 +182,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2021年',
                 "data":"",
                 "codename":"Item_2021",
-                value: '2021',
+                value: 2021,
                 
                 disabled: false,
             },
@@ -192,7 +192,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2022年',
                 "data":"",
                 "codename":"Item_2022",
-                value: '2022',
+                value: 2022,
                 
                 disabled: false,
             },
@@ -202,7 +202,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2023年',
                 "data":"",
                 "codename":"Item_2023",
-                value: '2023',
+                value: 2023,
                 
                 disabled: false,
             },
@@ -212,7 +212,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2024年',
                 "data":"",
                 "codename":"Item_2024",
-                value: '2024',
+                value: 2024,
                 
                 disabled: false,
             },
@@ -222,7 +222,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2025年',
                 "data":"",
                 "codename":"Item_2025",
-                value: '2025',
+                value: 2025,
                 
                 disabled: false,
             },
@@ -232,7 +232,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2026年',
                 "data":"",
                 "codename":"Item_2026",
-                value: '2026',
+                value: 2026,
                 
                 disabled: false,
             },
@@ -242,7 +242,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2027年',
                 "data":"",
                 "codename":"Item_2027",
-                value: '2027',
+                value: 2027,
                 
                 disabled: false,
             },
@@ -252,7 +252,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2028年',
                 "data":"",
                 "codename":"Item_2028",
-                value: '2028',
+                value: 2028,
                 
                 disabled: false,
             },
@@ -262,7 +262,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2029年',
                 "data":"",
                 "codename":"Item_2029",
-                value: '2029',
+                value: 2029,
                 
                 disabled: false,
             },
@@ -272,7 +272,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2030年',
                 "data":"",
                 "codename":"Item_2030",
-                value: '2030',
+                value: 2030,
                 
                 disabled: false,
             },
@@ -383,7 +383,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '1月',
                 "data":"",
                 "codename":"Item_01",
-                value: '01',
+                value: 01,
                 
                 disabled: false,
             },
@@ -393,7 +393,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2月',
                 "data":"",
                 "codename":"Item_02",
-                value: '02',
+                value: 02,
                 
                 disabled: false,
             },
@@ -403,7 +403,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '3月',
                 "data":"",
                 "codename":"Item_03",
-                value: '03',
+                value: 03,
                 
                 disabled: false,
             },
@@ -413,7 +413,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '4月',
                 "data":"",
                 "codename":"Item_04",
-                value: '04',
+                value: 04,
                 
                 disabled: false,
             },
@@ -423,7 +423,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '5月',
                 "data":"",
                 "codename":"Item_05",
-                value: '05',
+                value: 05,
                 
                 disabled: false,
             },
@@ -433,7 +433,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '6月',
                 "data":"",
                 "codename":"Item_06",
-                value: '06',
+                value: 06,
                 
                 disabled: false,
             },
@@ -443,7 +443,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '7月',
                 "data":"",
                 "codename":"Item_07",
-                value: '07',
+                value: 07,
                 
                 disabled: false,
             },
@@ -453,7 +453,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '8月',
                 "data":"",
                 "codename":"Item_08",
-                value: '08',
+                value: 08,
                 
                 disabled: false,
             },
@@ -463,7 +463,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '9月',
                 "data":"",
                 "codename":"Item_09",
-                value: '09',
+                value: 09,
                 
                 disabled: false,
             },
@@ -473,7 +473,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '10月',
                 "data":"",
                 "codename":"Item_10",
-                value: '10',
+                value: 10,
                 
                 disabled: false,
             },
@@ -483,7 +483,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '11月',
                 "data":"",
                 "codename":"Item_11",
-                value: '11',
+                value: 11,
                 
                 disabled: false,
             },
@@ -493,7 +493,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '12月',
                 "data":"",
                 "codename":"Item_12",
-                value: '12',
+                value: 12,
                 
                 disabled: false,
             },
@@ -503,8 +503,8 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "srfkey": "EhrCodeList0219",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"OrmQygl",
+        "appdedataset":"FetchDefault",
         "items": []
     },
     {

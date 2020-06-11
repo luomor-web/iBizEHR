@@ -29,6 +29,7 @@ import './entity/orm-posts/orm-posts';
 import './entity/sal-stdzcs/sal-stdzcs';
 import './entity/sal-salary-bills/sal-salary-bills';
 import './entity/sal-salarys/sal-salarys';
+import './entity/orm-qygls/orm-qygls';
 import './entity/orm-dutys/orm-dutys';
 import './entity/code-items/code-items';
 import './entity/sal-salary-details/sal-salary-details';

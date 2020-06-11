@@ -20,15 +20,15 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('salparamname1')">
-                <el-table-column show-overflow-tooltip :prop="'salparamname1'" :label="$t('entities.salparam.main_grid.columns.salparamname1')" :width="200"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('salparamname')">
+                <el-table-column show-overflow-tooltip :prop="'salparamname'" :label="$t('entities.salparam.main_grid.columns.salparamname')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.salparam.main_grid.columns.salparamname1')}}
+                        {{$t('entities.salparam.main_grid.columns.salparamname')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.salparamname1}}</span>
+                        <span>{{row.salparamname}}</span>
                     </template>
                 </el-table-column>
             </template>
@@ -559,9 +559,9 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public allColumns: any[] = [
         {
-            name: 'salparamname1',
+            name: 'salparamname',
             label: '薪酬计算指标名称',
-            langtag: 'entities.salparam.main_grid.columns.salparamname1',
+            langtag: 'entities.salparam.main_grid.columns.salparamname',
             show: true,
             util: 'PX'
         },

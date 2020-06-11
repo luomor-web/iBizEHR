@@ -61,6 +61,7 @@ export class UIServiceRegister {
         this.allUIService.set('salstdzc', () => import('@/uiservice/sal-stdzc/sal-stdzc-ui-service'));
         this.allUIService.set('salsalarybill', () => import('@/uiservice/sal-salary-bill/sal-salary-bill-ui-service'));
         this.allUIService.set('salsalary', () => import('@/uiservice/sal-salary/sal-salary-ui-service'));
+        this.allUIService.set('ormqygl', () => import('@/uiservice/orm-qygl/orm-qygl-ui-service'));
         this.allUIService.set('ormduty', () => import('@/uiservice/orm-duty/orm-duty-ui-service'));
         this.allUIService.set('codeitem', () => import('@/uiservice/code-item/code-item-ui-service'));
         this.allUIService.set('salsalarydetail', () => import('@/uiservice/sal-salary-detail/sal-salary-detail-ui-service'));

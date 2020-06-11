@@ -56,6 +56,11 @@ export default class MainModel {
         name: 'srfsourcekey',
       },
       {
+        name: 'ormorgname',
+        prop: 'ormorgname',
+        dataType: 'PICKUPTEXT',
+      },
+      {
         name: 'qsgl',
         prop: 'qsgl',
         dataType: 'INT',
@@ -69,6 +74,11 @@ export default class MainModel {
         name: 'bz',
         prop: 'bz',
         dataType: 'FLOAT',
+      },
+      {
+        name: 'ormorgid',
+        prop: 'ormorgid',
+        dataType: 'PICKUP',
       },
       {
         name: 'salstdglid',
