@@ -125,6 +125,30 @@ const router = new Router({
             ],
         },
     {
+        path: '/parexamcycles/:parexamcycle?/pickupview/:pickupview?',
+        meta: {
+            caption: 'entities.parexamcycle.views.pickupview.caption',
+            parameters: [
+                { pathName: 'parexamcycles', parameterName: 'parexamcycle' },
+                { pathName: 'pickupview', parameterName: 'pickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-exam-cycle-pickup-view/par-exam-cycle-pickup-view.vue'),
+    },
+    {
+        path: '/parexamcycles/:parexamcycle?/editview2/:editview2?',
+        meta: {
+            caption: 'entities.parexamcycle.views.editview2.caption',
+            parameters: [
+                { pathName: 'parexamcycles', parameterName: 'parexamcycle' },
+                { pathName: 'editview2', parameterName: 'editview2' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-exam-cycle-edit-view2/par-exam-cycle-edit-view2.vue'),
+    },
+    {
         path: '/parexamcycles/:parexamcycle?/gridview/:gridview?',
         meta: {
             caption: 'entities.parexamcycle.views.gridview.caption',
@@ -137,6 +161,18 @@ const router = new Router({
         component: () => import('@pages/par/par-exam-cycle-grid-view/par-exam-cycle-grid-view.vue'),
     },
     {
+        path: '/parexamcycles/:parexamcycle?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.parexamcycle.views.pickupgridview.caption',
+            parameters: [
+                { pathName: 'parexamcycles', parameterName: 'parexamcycle' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-exam-cycle-pickup-grid-view/par-exam-cycle-pickup-grid-view.vue'),
+    },
+    {
         path: '/partzggs/:partzgg?/gridview/:gridview?',
         meta: {
             caption: 'entities.partzgg.views.gridview.caption',
@@ -147,6 +183,18 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/par/par-tzgg-grid-view/par-tzgg-grid-view.vue'),
+    },
+    {
+        path: '/parexamcycles/:parexamcycle?/mpickupview/:mpickupview?',
+        meta: {
+            caption: 'entities.parexamcycle.views.mpickupview.caption',
+            parameters: [
+                { pathName: 'parexamcycles', parameterName: 'parexamcycle' },
+                { pathName: 'mpickupview', parameterName: 'mpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-exam-cycle-mpickup-view/par-exam-cycle-mpickup-view.vue'),
     },
     {
         path: '/parexamcycles/:parexamcycle?/editview/:editview?',
