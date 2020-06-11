@@ -5580,7 +5580,7 @@
 
 
     <!--输出实体[PARTZGG]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-partzgg-70-139">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-partzgg-74-139">
         <createTable tableName="T_PARTZGG">
                 <column name="UPDATEMAN" remarks="" type="VARCHAR(60)">
                 </column>
@@ -11463,7 +11463,7 @@
 
 
     <!--输出实体[PAREXAMCYCLE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-parexamcycle-40-291">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-parexamcycle-47-291">
         <createTable tableName="T_PAREXAMCYCLE">
                 <column name="PAREXAMCYCLEID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_PAREXAMCYCLE_PAREXAMCYCLEID"/>
