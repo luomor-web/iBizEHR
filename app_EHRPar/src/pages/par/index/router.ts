@@ -556,127 +556,6 @@ const router = new Router({
                     },
                     component: () => import('@pages/par/par-khzcmx-pickup-grid-view/par-khzcmx-pickup-grid-view.vue'),
                 },
-            {
-                path: 'parjxkhxhzredirectview/:parjxkhxhzredirectview?',
-                meta: {
-                    caption: 'entities.parjxkhxhz.views.redirectview.caption',
-                    parameters: [
-                        { pathName: 'parjxkhxhzredirectview', parameterName: 'parjxkhxhzredirectview' },
-                    ],
-                    requireAuth: true,
-                },
-                component: () => import('@pages/par/par-jxkhxhz-redirect-view/par-jxkhxhz-redirect-view.vue'),
-            },
-            {
-                path: 'parexamcontentredirectview/:parexamcontentredirectview?',
-                meta: {
-                    caption: 'entities.parexamcontent.views.redirectview.caption',
-                    parameters: [
-                        { pathName: 'parexamcontentredirectview', parameterName: 'parexamcontentredirectview' },
-                    ],
-                    requireAuth: true,
-                },
-                component: () => import('@pages/par/par-exam-content-redirect-view/par-exam-content-redirect-view.vue'),
-            },
-            {
-                path: 'parkhfaredirectview/:parkhfaredirectview?',
-                meta: {
-                    caption: 'entities.parkhfa.views.redirectview.caption',
-                    parameters: [
-                        { pathName: 'parkhfaredirectview', parameterName: 'parkhfaredirectview' },
-                    ],
-                    requireAuth: true,
-                },
-                component: () => import('@pages/par/par-khfa-redirect-view/par-khfa-redirect-view.vue'),
-            },
-            {
-                path: 'parintegralruleredirectview/:parintegralruleredirectview?',
-                meta: {
-                    caption: 'entities.parintegralrule.views.redirectview.caption',
-                    parameters: [
-                        { pathName: 'parintegralruleredirectview', parameterName: 'parintegralruleredirectview' },
-                    ],
-                    requireAuth: true,
-                },
-                component: () => import('@pages/par/par-integral-rule-redirect-view/par-integral-rule-redirect-view.vue'),
-            },
-            {
-                path: 'parldndlhmbmxredirectview/:parldndlhmbmxredirectview?',
-                meta: {
-                    caption: 'entities.parldndlhmbmx.views.redirectview.caption',
-                    parameters: [
-                        { pathName: 'parldndlhmbmxredirectview', parameterName: 'parldndlhmbmxredirectview' },
-                    ],
-                    requireAuth: true,
-                },
-                component: () => import('@pages/par/par-ldndlhmbmx-redirect-view/par-ldndlhmbmx-redirect-view.vue'),
-            },
-            {
-                path: 'parjxjgredirectview/:parjxjgredirectview?',
-                meta: {
-                    caption: 'entities.parjxjg.views.redirectview.caption',
-                    parameters: [
-                        { pathName: 'parjxjgredirectview', parameterName: 'parjxjgredirectview' },
-                    ],
-                    requireAuth: true,
-                },
-                component: () => import('@pages/par/par-jxjg-redirect-view/par-jxjg-redirect-view.vue'),
-            },
-            {
-                path: 'parldkhqzredirectview/:parldkhqzredirectview?',
-                meta: {
-                    caption: 'entities.parldkhqz.views.redirectview.caption',
-                    parameters: [
-                        { pathName: 'parldkhqzredirectview', parameterName: 'parldkhqzredirectview' },
-                    ],
-                    requireAuth: true,
-                },
-                component: () => import('@pages/par/par-ldkhqz-redirect-view/par-ldkhqz-redirect-view.vue'),
-            },
-            {
-                path: 'partzggredirectview/:partzggredirectview?',
-                meta: {
-                    caption: 'entities.partzgg.views.redirectview.caption',
-                    parameters: [
-                        { pathName: 'partzggredirectview', parameterName: 'partzggredirectview' },
-                    ],
-                    requireAuth: true,
-                },
-                component: () => import('@pages/par/par-tzgg-redirect-view/par-tzgg-redirect-view.vue'),
-            },
-            {
-                path: 'parldndlhmbredirectview/:parldndlhmbredirectview?',
-                meta: {
-                    caption: 'entities.parldndlhmb.views.redirectview.caption',
-                    parameters: [
-                        { pathName: 'parldndlhmbredirectview', parameterName: 'parldndlhmbredirectview' },
-                    ],
-                    requireAuth: true,
-                },
-                component: () => import('@pages/par/par-ldndlhmb-redirect-view/par-ldndlhmb-redirect-view.vue'),
-            },
-            {
-                path: 'pardjbzredirectview/:pardjbzredirectview?',
-                meta: {
-                    caption: 'entities.pardjbz.views.redirectview.caption',
-                    parameters: [
-                        { pathName: 'pardjbzredirectview', parameterName: 'pardjbzredirectview' },
-                    ],
-                    requireAuth: true,
-                },
-                component: () => import('@pages/par/par-djbz-redirect-view/par-djbz-redirect-view.vue'),
-            },
-            {
-                path: 'parexamcycleredirectview/:parexamcycleredirectview?',
-                meta: {
-                    caption: 'entities.parexamcycle.views.redirectview.caption',
-                    parameters: [
-                        { pathName: 'parexamcycleredirectview', parameterName: 'parexamcycleredirectview' },
-                    ],
-                    requireAuth: true,
-                },
-                component: () => import('@pages/par/par-exam-cycle-redirect-view/par-exam-cycle-redirect-view.vue'),
-            },
             ...indexRoutes,
             ],
         },
@@ -1073,17 +952,6 @@ const router = new Router({
         },
         component: () => import('@pages/par/par-khfa-edit-view/par-khfa-edit-view.vue'),
     },
-            {
-                path: '/partzggredirectview/:partzggredirectview?',
-                meta: {
-                    caption: 'entities.partzgg.views.redirectview.caption',
-                    parameters: [
-                        { pathName: 'partzggredirectview', parameterName: 'partzggredirectview' },
-                    ],
-                    requireAuth: true,
-                },
-                component: () => import('@pages/par/par-tzgg-redirect-view/par-tzgg-redirect-view.vue'),
-            },
     {
         path: '/parjxjgs/:parjxjg?/khdjeditview/:khdjeditview?',
         meta: {
@@ -1246,17 +1114,6 @@ const router = new Router({
         },
         component: () => import('@pages/par/par-khzcmx-pickup-view/par-khzcmx-pickup-view.vue'),
     },
-            {
-                path: '/parexamcycleredirectview/:parexamcycleredirectview?',
-                meta: {
-                    caption: 'entities.parexamcycle.views.redirectview.caption',
-                    parameters: [
-                        { pathName: 'parexamcycleredirectview', parameterName: 'parexamcycleredirectview' },
-                    ],
-                    requireAuth: true,
-                },
-                component: () => import('@pages/par/par-exam-cycle-redirect-view/par-exam-cycle-redirect-view.vue'),
-            },
         ...globalRoutes,
         {
             path: '/login/:login?',

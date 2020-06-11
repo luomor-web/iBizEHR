@@ -306,16 +306,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: 'a376a75f645d147c98157fe2f7e4ecaa',
-            viewmodule: 'PAR',
-            viewname: 'ParTzggRedirectView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                'b7f7b92b88ba971f28bbb5aa18145e46',
-            ],
-        },
-        {
             viewtag: 'a97ed731f303a44f10abb4df79b7bfc5',
             viewmodule: 'PAR',
             viewname: 'ParJxjgKHDJEditView',
@@ -441,16 +431,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '0587c03dd8511394456567f75983d68d',
-            ],
-        },
-        {
-            viewtag: 'fb33821a8e2454b3b8166fe954b46b25',
-            viewmodule: 'PAR',
-            viewname: 'ParExamCycleRedirectView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '963f9744f61222f20041022b8b7eba31',
             ],
         },
     ],

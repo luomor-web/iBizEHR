@@ -30,10 +30,6 @@ export default {
 			caption: '定级规则',
       title: '定级规则',
 		},
-		redirectview: {
-			caption: '定级规则',
-      title: '定级规则',
-		},
 		editview2: {
 			caption: '定级规则',
       title: '定级规则',

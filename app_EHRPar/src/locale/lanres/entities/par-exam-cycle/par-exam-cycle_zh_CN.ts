@@ -33,10 +33,6 @@ export default {
 			caption: '考核周期',
       title: '考核周期',
 		},
-		redirectview: {
-			caption: '考核周期',
-      title: '考核周期',
-		},
 	},
 	main_form: {
 		details: {

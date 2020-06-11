@@ -87,14 +87,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ParLdndlhmbmxPickupView",
             "viewtag": "10a541c6abb24b54d0e89c494a7390aa"
         },
-        "parjxkhxhzredirectview": {
-            "title": "绩效考核项得分汇总数据重定向视图",
-            "caption": "考核内容评分汇总",
-            "viewtype": "DEREDIRECTVIEW",
-            "viewmodule": "PAR",
-            "viewname": "ParJxkhxhzRedirectView",
-            "viewtag": "10e41befc6678153ec29f1fb787d66ba"
-        },
         "parjxjgjxpgdjgridview": {
             "title": "绩效评估定级",
             "caption": "绩效评估定级",
@@ -126,14 +118,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PAR",
             "viewname": "ParIntegralRuleGridView",
             "viewtag": "188a0a8121edcb88a352a84cf562aa58"
-        },
-        "parexamcontentredirectview": {
-            "title": "考核内容数据重定向视图",
-            "caption": "考核内容",
-            "viewtype": "DEREDIRECTVIEW",
-            "viewmodule": "PAR",
-            "viewname": "ParExamContentRedirectView",
-            "viewtag": "1a19566a666f7c2fcda16b5e1bef442f"
         },
         "parldkhqzmpickupview": {
             "title": "评分权重分配数据多项选择视图",
@@ -207,14 +191,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ParJxjgPickupView",
             "viewtag": "2d530e290e2578a430149e92621edbb1"
         },
-        "parkhfaredirectview": {
-            "title": "考核对象数据重定向视图",
-            "caption": "考核对象",
-            "viewtype": "DEREDIRECTVIEW",
-            "viewmodule": "PAR",
-            "viewname": "ParKhfaRedirectView",
-            "viewtag": "2e9d0842b54f810e7266db2ecef3b8c6"
-        },
         "parldndlhmbmxkheditview": {
             "title": "年度量化目标明细考核",
             "caption": "年度量化目标明细考核",
@@ -231,14 +207,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ParLdndlhmbNDLHMBXZGridView",
             "viewtag": "35977acfc0970b347cace0a7d8ccfac5"
         },
-        "parintegralruleredirectview": {
-            "title": "积分规则数据重定向视图",
-            "caption": "积分规则",
-            "viewtype": "DEREDIRECTVIEW",
-            "viewmodule": "PAR",
-            "viewname": "ParIntegralRuleRedirectView",
-            "viewtag": "41ae9310d1e61001b163e9eccccea675"
-        },
         "parexamcyclepickupgridview": {
             "title": "考核周期选择表格视图",
             "caption": "考核周期",
@@ -254,14 +222,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PAR",
             "viewname": "ParTzggMPickupView",
             "viewtag": "48cb9678c112e2bfeceb56c96c8c0de5"
-        },
-        "parldndlhmbmxredirectview": {
-            "title": "年度量化目标明细（助理总经理级领导 ）数据重定向视图",
-            "caption": "年度量化目标明细（助理总经理级 ）",
-            "viewtype": "DEREDIRECTVIEW",
-            "viewmodule": "PAR",
-            "viewname": "ParLdndlhmbmxRedirectView",
-            "viewtag": "4ba516bfe4303f6240cb9d4aa7692194"
         },
         "partzgggridview": {
             "title": "通知发布",
@@ -342,14 +302,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PAR",
             "viewname": "ParLdkhqzEditView",
             "viewtag": "663fc0adb5dc1b0c3d92e2bdeb30c163"
-        },
-        "parjxjgredirectview": {
-            "title": "绩效结果数据重定向视图",
-            "caption": "绩效结果",
-            "viewtype": "DEREDIRECTVIEW",
-            "viewmodule": "PAR",
-            "viewname": "ParJxjgRedirectView",
-            "viewtag": "688359d0681972faaa21804f9d725710"
         },
         "parldndlhmbeditview2": {
             "title": "年度量化目标（助理总经理级领导 ）编辑视图",
@@ -503,22 +455,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ParKhfaEditView",
             "viewtag": "a0562928c523c5554de86ca7cce6cf14"
         },
-        "parldkhqzredirectview": {
-            "title": "评分权重分配数据重定向视图",
-            "caption": "评分权重分配",
-            "viewtype": "DEREDIRECTVIEW",
-            "viewmodule": "PAR",
-            "viewname": "ParLdkhqzRedirectView",
-            "viewtag": "a13ebed894b0dbdc34448e68fb414ff1"
-        },
-        "partzggredirectview": {
-            "title": "通知公告数据重定向视图",
-            "caption": "通知发布",
-            "viewtype": "DEREDIRECTVIEW",
-            "viewmodule": "PAR",
-            "viewname": "ParTzggRedirectView",
-            "viewtag": "a376a75f645d147c98157fe2f7e4ecaa"
-        },
         "parjxkhxhzmpickupview": {
             "title": "绩效考核项得分汇总数据多项选择视图",
             "caption": "考核内容评分汇总",
@@ -598,22 +534,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PAR",
             "viewname": "ParJxjgGridView",
             "viewtag": "b8adaeafac9a1acdbd8f4aef296c22ee"
-        },
-        "parldndlhmbredirectview": {
-            "title": "年度量化目标（助理总经理级领导 ）数据重定向视图",
-            "caption": "年度量化目标（助理总经理级）",
-            "viewtype": "DEREDIRECTVIEW",
-            "viewmodule": "PAR",
-            "viewname": "ParLdndlhmbRedirectView",
-            "viewtag": "b942eb7e2e3fbd0af6c24d3a51d1ecda"
-        },
-        "pardjbzredirectview": {
-            "title": "定级标准数据重定向视图",
-            "caption": "定级规则",
-            "viewtype": "DEREDIRECTVIEW",
-            "viewmodule": "PAR",
-            "viewname": "ParDjbzRedirectView",
-            "viewtag": "bedaaf3f12e132cc323ecc9e195776a7"
         },
         "parldndlhmbndlhmbxzeditview": {
             "title": "年度量化目标修正",
@@ -790,14 +710,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PAR",
             "viewname": "ParJxjgMPickupView",
             "viewtag": "fa3c796f1f77cd9cda9f1d2feab7d9b2"
-        },
-        "parexamcycleredirectview": {
-            "title": "考核周期数据重定向视图",
-            "caption": "考核周期",
-            "viewtype": "DEREDIRECTVIEW",
-            "viewmodule": "PAR",
-            "viewname": "ParExamCycleRedirectView",
-            "viewtag": "fb33821a8e2454b3b8166fe954b46b25"
         }
     }];
 });

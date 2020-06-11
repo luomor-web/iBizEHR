@@ -82,7 +82,6 @@ export default class ParIntegralRuleUIServiceBase extends UIService {
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'parintegralrules'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'parintegralrules'});
         this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'parintegralrules'});
-        this.allViewMap.set('REDIRECTVIEW:',{viewname:'redirectview',srfappde:'parintegralrules'});
         this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'parintegralrules'});
         this.allViewMap.set(':',{viewname:'editview9',srfappde:'parintegralrules'});
         this.allViewMap.set(':',{viewname:'editview2',srfappde:'parintegralrules'});

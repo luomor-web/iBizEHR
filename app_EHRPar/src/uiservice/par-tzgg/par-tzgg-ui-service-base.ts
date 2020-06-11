@@ -84,7 +84,6 @@ export default class ParTzggUIServiceBase extends UIService {
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'partzggs'});
         this.allViewMap.set(':',{viewname:'editview2',srfappde:'partzggs'});
         this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'partzggs'});
-        this.allViewMap.set('REDIRECTVIEW:',{viewname:'redirectview',srfappde:'partzggs'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'partzggs'});
         this.allViewMap.set(':',{viewname:'editview9',srfappde:'partzggs'});
     }

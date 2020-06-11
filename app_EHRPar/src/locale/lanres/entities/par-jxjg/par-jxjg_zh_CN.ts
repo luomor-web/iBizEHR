@@ -33,10 +33,6 @@ export default {
 			caption: '绩效结果',
       title: '绩效结果',
 		},
-		redirectview: {
-			caption: '绩效结果',
-      title: '绩效结果',
-		},
 		khdjeditview: {
 			caption: '绩效考核定级',
       title: '绩效考核定级',

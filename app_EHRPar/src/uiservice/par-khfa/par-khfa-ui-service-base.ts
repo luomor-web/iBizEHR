@@ -81,7 +81,6 @@ export default class ParKhfaUIServiceBase extends UIService {
     public initViewMap(){
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'parkhfas'});
         this.allViewMap.set(':',{viewname:'editview9',srfappde:'parkhfas'});
-        this.allViewMap.set('REDIRECTVIEW:',{viewname:'redirectview',srfappde:'parkhfas'});
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'parkhfas'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'parkhfas'});
         this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'parkhfas'});

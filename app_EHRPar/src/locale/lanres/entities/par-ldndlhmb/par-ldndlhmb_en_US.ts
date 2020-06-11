@@ -37,10 +37,6 @@ export default {
 			caption: "年度量化目标（助理总经理级）",
       title: '年度量化目标（助理总经理级）',
 		},
-		redirectview: {
-			caption: "年度量化目标（助理总经理级）",
-      title: '年度量化目标（助理总经理级）',
-		},
 		ndlhmbxzeditview: {
 			caption: "年度量化目标修正",
       title: '年度量化目标修正',
@@ -183,28 +179,6 @@ export default {
 		uiactions: {
 		},
 	},
-	editviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "Save",
-			tip: "Save",
-		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
-		tbitem5: {
-			caption: "Save And Close",
-			tip: "Save And Close Window",
-		},
-		tbitem7: {
-			caption: "Remove And Close",
-			tip: "Remove And Close Window",
-		},
-		tbitem22: {
-			caption: "Help",
-			tip: "Help",
-		},
-	},
 	ndlhmbxzgridviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: "New",
@@ -223,6 +197,28 @@ export default {
 			tip: "Export {0} Data To Excel",
 		},
 		tbitem18: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
+		},
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+		tbitem7: {
+			caption: "Remove And Close",
+			tip: "Remove And Close Window",
+		},
+		tbitem22: {
 			caption: "Help",
 			tip: "Help",
 		},

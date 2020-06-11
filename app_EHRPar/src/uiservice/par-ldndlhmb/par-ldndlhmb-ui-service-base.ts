@@ -84,7 +84,6 @@ export default class ParLdndlhmbUIServiceBase extends UIService {
         this.allViewMap.set(':',{viewname:'editview2',srfappde:'parldndlhmbs'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'parldndlhmbs'});
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'parldndlhmbs'});
-        this.allViewMap.set('REDIRECTVIEW:',{viewname:'redirectview',srfappde:'parldndlhmbs'});
         this.allViewMap.set(':',{viewname:'ndlhmbxzeditview',srfappde:'parldndlhmbs'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'parldndlhmbs'});
         this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'parldndlhmbs'});

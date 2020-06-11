@@ -83,7 +83,6 @@ export default class ParJxjgUIServiceBase extends UIService {
         this.allViewMap.set(':',{viewname:'jxpgdjgridview',srfappde:'parjxjgs'});
         this.allViewMap.set(':',{viewname:'editview2',srfappde:'parjxjgs'});
         this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'parjxjgs'});
-        this.allViewMap.set('REDIRECTVIEW:',{viewname:'redirectview',srfappde:'parjxjgs'});
         this.allViewMap.set(':',{viewname:'khdjeditview',srfappde:'parjxjgs'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'parjxjgs'});
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'parjxjgs'});

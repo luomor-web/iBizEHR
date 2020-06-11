@@ -21,10 +21,6 @@ export default {
 			caption: "考核对象",
       title: '考核对象',
 		},
-		redirectview: {
-			caption: "考核对象",
-      title: '考核对象',
-		},
 		pickupgridview: {
 			caption: "考核对象",
       title: '考核对象',

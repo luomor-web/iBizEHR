@@ -43,10 +43,6 @@ export default {
 			caption: "年度量化目标明细考核",
       title: '年度量化目标明细考核',
 		},
-		redirectview: {
-			caption: "年度量化目标明细（助理总经理级 ）",
-      title: '年度量化目标明细（助理总经理级 ）',
-		},
 		gridview: {
 			caption: "年度量化目标明细（助理总经理级 ）",
       title: '年度量化目标明细（助理总经理级 ）',
@@ -66,30 +62,6 @@ export default {
 		editview2: {
 			caption: "年度量化目标明细（助理总经理级 ）",
       title: '年度量化目标明细（助理总经理级 ）',
-		},
-	},
-	main_form: {
-		details: {
-			group1: "年度量化目标明细", 
-			formpage1: "基本信息", 
-			srfupdatedate: "更新时间", 
-			srforikey: "", 
-			srfkey: "量化目标明细标识", 
-			srfmajortext: "量化目标", 
-			srftempmode: "", 
-			srfuf: "", 
-			srfdeid: "", 
-			srfsourcekey: "", 
-			parldndlhmbid: "年度量化目标ID", 
-			parldndlhmbname: "年度量化目标（助理总经理级领导 ）名称", 
-			mblx: "目标类型", 
-			parldndlhmbmxname: "量化目标", 
-			mblhyq: "目标量化要求", 
-			fz: "分值", 
-			khbf: "考核办法", 
-			parldndlhmbmxid: "量化目标明细标识", 
-		},
-		uiactions: {
 		},
 	},
 	ndlhmbxzmx_form: {
@@ -113,6 +85,30 @@ export default {
 			khbf: "考核办法", 
 			zt: "状态", 
 			xgrz: "修改日志", 
+			parldndlhmbmxid: "量化目标明细标识", 
+		},
+		uiactions: {
+		},
+	},
+	main_form: {
+		details: {
+			group1: "年度量化目标明细", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "量化目标明细标识", 
+			srfmajortext: "量化目标", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			parldndlhmbid: "年度量化目标ID", 
+			parldndlhmbname: "年度量化目标（助理总经理级领导 ）名称", 
+			mblx: "目标类型", 
+			parldndlhmbmxname: "量化目标", 
+			mblhyq: "目标量化要求", 
+			fz: "分值", 
+			khbf: "考核办法", 
 			parldndlhmbmxid: "量化目标明细标识", 
 		},
 		uiactions: {
@@ -196,29 +192,7 @@ export default {
 		uiactions: {
 		},
 	},
-	gridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "New",
-			tip: "New",
-		},
-		tbitem8: {
-			caption: "Remove",
-			tip: "Remove {0}",
-		},
-		tbitem19: {
-			caption: "Filter",
-			tip: "Filter",
-		},
-		tbitem13: {
-			caption: "Export",
-			tip: "Export {0} Data To Excel",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
-		},
-	},
-	editviewtoolbar_toolbar: {
+	xzeditviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: "Save",
 			tip: "Save",
@@ -240,7 +214,7 @@ export default {
 			tip: "Help",
 		},
 	},
-	xzeditviewtoolbar_toolbar: {
+	editviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: "Save",
 			tip: "Save",
@@ -280,6 +254,28 @@ export default {
 			tip: "Remove And Close Window",
 		},
 		tbitem22: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	gridviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "New",
+			tip: "New",
+		},
+		tbitem8: {
+			caption: "Remove",
+			tip: "Remove {0}",
+		},
+		tbitem19: {
+			caption: "Filter",
+			tip: "Filter",
+		},
+		tbitem13: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
+		tbitem18: {
 			caption: "Help",
 			tip: "Help",
 		},

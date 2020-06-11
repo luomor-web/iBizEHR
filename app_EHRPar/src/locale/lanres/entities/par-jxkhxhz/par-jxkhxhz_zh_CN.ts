@@ -20,10 +20,6 @@ export default {
     bm: '部门',
   },
 	views: {
-		redirectview: {
-			caption: '考核内容评分汇总',
-      title: '考核内容评分汇总',
-		},
 		ygkhxgridview: {
 			caption: '员工考核内容及评分汇总',
       title: '员工考核内容及评分汇总',
@@ -57,34 +53,6 @@ export default {
       title: '考核内容评分汇总',
 		},
 	},
-	main_form: {
-		details: {
-			group1: '考核项得分汇总', 
-			formpage1: '基本信息', 
-			srfupdatedate: '更新时间', 
-			srforikey: '', 
-			srfkey: '绩效考核项得分汇总标识', 
-			srfmajortext: '绩效考核项得分汇总名称', 
-			srftempmode: '', 
-			srfuf: '', 
-			srfdeid: '', 
-			srfsourcekey: '', 
-			ygid: '员工ID', 
-			xh: '排序号', 
-			yg: '员工', 
-			zz: '所属组织', 
-			bm: '部门', 
-			gzjx: '年度量化目标（工作述职）', 
-			gznljtd: '工作能力及态度评价（上半年）', 
-			ywnlks: '工作周报考核', 
-			szmzpy: '集中述职评审', 
-			jswmjc: '月度考核', 
-			parjxkhxhzname: '绩效考核项得分汇总名称', 
-			parjxkhxhzid: '绩效考核项得分汇总标识', 
-		},
-		uiactions: {
-		},
-	},
 	ygkhx_form: {
 		details: {
 			group1: '考核内容评分汇总', 
@@ -109,6 +77,34 @@ export default {
 			ywnlks: '工作周报考核', 
 			gznljtd: '工作能力及态度评价（上半年）', 
 			gznljtd_xbn: '工作能力及态度评价（下半年）', 
+			parjxkhxhzid: '绩效考核项得分汇总标识', 
+		},
+		uiactions: {
+		},
+	},
+	main_form: {
+		details: {
+			group1: '考核项得分汇总', 
+			formpage1: '基本信息', 
+			srfupdatedate: '更新时间', 
+			srforikey: '', 
+			srfkey: '绩效考核项得分汇总标识', 
+			srfmajortext: '绩效考核项得分汇总名称', 
+			srftempmode: '', 
+			srfuf: '', 
+			srfdeid: '', 
+			srfsourcekey: '', 
+			ygid: '员工ID', 
+			xh: '排序号', 
+			yg: '员工', 
+			zz: '所属组织', 
+			bm: '部门', 
+			gzjx: '年度量化目标（工作述职）', 
+			gznljtd: '工作能力及态度评价（上半年）', 
+			ywnlks: '工作周报考核', 
+			szmzpy: '集中述职评审', 
+			jswmjc: '月度考核', 
+			parjxkhxhzname: '绩效考核项得分汇总名称', 
 			parjxkhxhzid: '绩效考核项得分汇总标识', 
 		},
 		uiactions: {
@@ -150,28 +146,6 @@ export default {
 			formpage1: '常规条件', 
 		},
 		uiactions: {
-		},
-	},
-	editviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: '保存',
-			tip: '保存',
-		},
-		tbitem4: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
-		tbitem5: {
-			caption: '保存并关闭',
-			tip: '保存并关闭',
-		},
-		tbitem7: {
-			caption: '删除并关闭',
-			tip: '删除并关闭',
-		},
-		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 	ygkhxgridviewtoolbar_toolbar: {
@@ -236,6 +210,28 @@ export default {
 			tip: '导出',
 		},
 		tbitem18: {
+			caption: '帮助',
+			tip: '帮助',
+		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: '保存',
+			tip: '保存',
+		},
+		tbitem4: {
+			caption: '保存并新建',
+			tip: '保存并新建',
+		},
+		tbitem5: {
+			caption: '保存并关闭',
+			tip: '保存并关闭',
+		},
+		tbitem7: {
+			caption: '删除并关闭',
+			tip: '删除并关闭',
+		},
+		tbitem22: {
 			caption: '帮助',
 			tip: '帮助',
 		},

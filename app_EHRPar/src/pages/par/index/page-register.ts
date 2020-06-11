@@ -41,7 +41,5 @@ export const PageComponents = {
         Vue.component('par-tzgg-mpickup-view', () => import('@pages/par/par-tzgg-mpickup-view/par-tzgg-mpickup-view.vue'));
         Vue.component('par-exam-cycle-mpickup-view', () => import('@pages/par/par-exam-cycle-mpickup-view/par-exam-cycle-mpickup-view.vue'));
         Vue.component('par-exam-cycle-edit-view', () => import('@pages/par/par-exam-cycle-edit-view/par-exam-cycle-edit-view.vue'));
-        Vue.component('par-tzgg-redirect-view', () => import('@pages/par/par-tzgg-redirect-view/par-tzgg-redirect-view.vue'));
-        Vue.component('par-exam-cycle-redirect-view', () => import('@pages/par/par-exam-cycle-redirect-view/par-exam-cycle-redirect-view.vue'));
     }
 };

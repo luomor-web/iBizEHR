@@ -79,7 +79,6 @@ export default class ParJxkhxhzUIServiceBase extends UIService {
      * @memberof  ParJxkhxhzUIServiceBase
      */  
     public initViewMap(){
-        this.allViewMap.set('REDIRECTVIEW:',{viewname:'redirectview',srfappde:'parjxkhxhzs'});
         this.allViewMap.set(':',{viewname:'ygkhxgridview',srfappde:'parjxkhxhzs'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'parjxkhxhzs'});
         this.allViewMap.set(':',{viewname:'ygkhxeditview',srfappde:'parjxkhxhzs'});

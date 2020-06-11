@@ -79,7 +79,6 @@ export default class ParExamContentUIServiceBase extends UIService {
      * @memberof  ParExamContentUIServiceBase
      */  
     public initViewMap(){
-        this.allViewMap.set('REDIRECTVIEW:',{viewname:'redirectview',srfappde:'parexamcontents'});
         this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'parexamcontents'});
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'parexamcontents'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'parexamcontents'});

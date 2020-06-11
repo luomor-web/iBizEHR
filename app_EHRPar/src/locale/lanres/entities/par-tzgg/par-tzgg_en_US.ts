@@ -35,10 +35,6 @@ export default {
 			caption: "通知发布",
       title: '通知发布',
 		},
-		redirectview: {
-			caption: "通知发布",
-      title: '通知发布',
-		},
 		editview: {
 			caption: "通知信息",
       title: '通知信息',

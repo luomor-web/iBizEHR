@@ -21,10 +21,6 @@ export default {
     bm: '部门',
   },
 	views: {
-		redirectview: {
-			caption: "考核内容评分汇总",
-      title: '考核内容评分汇总',
-		},
 		ygkhxgridview: {
 			caption: "员工考核内容及评分汇总",
       title: '员工考核内容及评分汇总',
@@ -58,34 +54,6 @@ export default {
       title: '考核内容评分汇总',
 		},
 	},
-	main_form: {
-		details: {
-			group1: "考核项得分汇总", 
-			formpage1: "基本信息", 
-			srfupdatedate: "更新时间", 
-			srforikey: "", 
-			srfkey: "绩效考核项得分汇总标识", 
-			srfmajortext: "绩效考核项得分汇总名称", 
-			srftempmode: "", 
-			srfuf: "", 
-			srfdeid: "", 
-			srfsourcekey: "", 
-			ygid: "员工ID", 
-			xh: "排序号", 
-			yg: "员工", 
-			zz: "所属组织", 
-			bm: "部门", 
-			gzjx: "年度量化目标（工作述职）", 
-			gznljtd: "工作能力及态度评价（上半年）", 
-			ywnlks: "工作周报考核", 
-			szmzpy: "集中述职评审", 
-			jswmjc: "月度考核", 
-			parjxkhxhzname: "绩效考核项得分汇总名称", 
-			parjxkhxhzid: "绩效考核项得分汇总标识", 
-		},
-		uiactions: {
-		},
-	},
 	ygkhx_form: {
 		details: {
 			group1: "考核内容评分汇总", 
@@ -110,6 +78,34 @@ export default {
 			ywnlks: "工作周报考核", 
 			gznljtd: "工作能力及态度评价（上半年）", 
 			gznljtd_xbn: "工作能力及态度评价（下半年）", 
+			parjxkhxhzid: "绩效考核项得分汇总标识", 
+		},
+		uiactions: {
+		},
+	},
+	main_form: {
+		details: {
+			group1: "考核项得分汇总", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "绩效考核项得分汇总标识", 
+			srfmajortext: "绩效考核项得分汇总名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			ygid: "员工ID", 
+			xh: "排序号", 
+			yg: "员工", 
+			zz: "所属组织", 
+			bm: "部门", 
+			gzjx: "年度量化目标（工作述职）", 
+			gznljtd: "工作能力及态度评价（上半年）", 
+			ywnlks: "工作周报考核", 
+			szmzpy: "集中述职评审", 
+			jswmjc: "月度考核", 
+			parjxkhxhzname: "绩效考核项得分汇总名称", 
 			parjxkhxhzid: "绩效考核项得分汇总标识", 
 		},
 		uiactions: {
@@ -151,28 +147,6 @@ export default {
 			formpage1: "常规条件", 
 		},
 		uiactions: {
-		},
-	},
-	editviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "Save",
-			tip: "Save",
-		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
-		tbitem5: {
-			caption: "Save And Close",
-			tip: "Save And Close Window",
-		},
-		tbitem7: {
-			caption: "Remove And Close",
-			tip: "Remove And Close Window",
-		},
-		tbitem22: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 	ygkhxgridviewtoolbar_toolbar: {
@@ -237,6 +211,28 @@ export default {
 			tip: "Export {0} Data To Excel",
 		},
 		tbitem18: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
+		},
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+		tbitem7: {
+			caption: "Remove And Close",
+			tip: "Remove And Close Window",
+		},
+		tbitem22: {
 			caption: "Help",
 			tip: "Help",
 		},

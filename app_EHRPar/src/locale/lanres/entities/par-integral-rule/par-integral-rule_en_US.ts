@@ -24,10 +24,6 @@ export default {
 			caption: "积分规则",
       title: '积分规则',
 		},
-		redirectview: {
-			caption: "积分规则",
-      title: '积分规则',
-		},
 		mpickupview: {
 			caption: "积分规则",
       title: '积分规则',

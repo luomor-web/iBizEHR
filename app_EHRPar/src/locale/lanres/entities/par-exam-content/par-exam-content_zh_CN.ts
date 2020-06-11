@@ -9,10 +9,6 @@ export default {
     contentcode: '内容编码',
   },
 	views: {
-		redirectview: {
-			caption: '考核内容',
-      title: '考核内容',
-		},
 		pickupview: {
 			caption: '考核内容',
       title: '考核内容',
@@ -103,20 +99,6 @@ export default {
 		uiactions: {
 		},
 	},
-	editviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: '保存',
-			tip: '保存',
-		},
-		tbitem4: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
-		deuiaction1: {
-			caption: '关闭',
-			tip: '关闭',
-		},
-	},
 	gridviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: '新建',
@@ -133,6 +115,20 @@ export default {
 		tbitem13: {
 			caption: '导出',
 			tip: '导出',
+		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: '保存',
+			tip: '保存',
+		},
+		tbitem4: {
+			caption: '保存并新建',
+			tip: '保存并新建',
+		},
+		deuiaction1: {
+			caption: '关闭',
+			tip: '关闭',
 		},
 	},
 	editview9toolbar_toolbar: {

@@ -84,7 +84,6 @@ export default class ParDjbzUIServiceBase extends UIService {
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'pardjbzs'});
         this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'pardjbzs'});
         this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'pardjbzs'});
-        this.allViewMap.set('REDIRECTVIEW:',{viewname:'redirectview',srfappde:'pardjbzs'});
         this.allViewMap.set(':',{viewname:'editview2',srfappde:'pardjbzs'});
     }
 
