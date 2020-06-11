@@ -126,9 +126,9 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
         String tips = null;
         //获取上年度和本年度和明年
         java.util.Calendar calendar = java.util.Calendar.getInstance();
-        int lastyear = calendar.get(Calendar.YEAR) - 1;
-        int curyear = calendar.get(Calendar.YEAR);
-        int nextyear = calendar.get(Calendar.YEAR) + 1;
+        int lastyear = calendar.get(java.util.Calendar.YEAR) - 1;
+        int curyear = calendar.get(java.util.Calendar.YEAR);
+        int nextyear = calendar.get(java.util.Calendar.YEAR) + 1;
         //获取上年度和本年度总天数,假期使用情况
         Double lastsumSyts = 0d;
         Double cursumSyts = 0d;
