@@ -2769,6 +2769,14 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
+    "dename":"ParExamContent",
+    "delogicname":"考核内容",
+    "sysmoudle":{"id":"PAR","name":"绩效管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
     "dename":"ParZnbmndlhmbmx",
     "delogicname":"年度量化目标明细（职能部门级 ）",
     "sysmoudle":{"id":"PAR","name":"绩效管理"},
@@ -2936,7 +2944,7 @@
             {
                "appid":"EHRPar",
                "appname":"EHRPAR（绩效管理）",
-               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"通知发布" , "items":[{ "id":"menuitem7" , "name":"通知发布" }]},{ "id":"menuitem2" , "name":"基础设置" , "items":[{ "id":"menuitem6" , "name":"考核周期设置" }]},{ "id":"menuitem3" , "name":"绩效考核" },{ "id":"menuitem4" , "name":"绩效定级" },{ "id":"menuitem5" , "name":"绩效应用" }] }]
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"通知发布" , "items":[{ "id":"menuitem7" , "name":"通知发布" }]},{ "id":"menuitem2" , "name":"基础设置" , "items":[{ "id":"menuitem6" , "name":"考核周期设置" },{ "id":"menuitem8" , "name":"考核对象设置" },{ "id":"menuitem9" , "name":"考核内容设置" }]},{ "id":"menuitem3" , "name":"绩效考核" },{ "id":"menuitem4" , "name":"绩效定级" },{ "id":"menuitem5" , "name":"绩效应用" }] }]
             }
             ,
             {

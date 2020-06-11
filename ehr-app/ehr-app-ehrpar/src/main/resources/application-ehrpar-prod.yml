@@ -35,6 +35,10 @@ zuul:
       path: /parldkhqzs/**
       serviceId: ehr-webapi
       stripPrefix: false
+    parexamcontent:
+      path: /parexamcontents/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     parlhmbkhmx:
       path: /parlhmbkhmxes/**
       serviceId: ehr-webapi
@@ -165,6 +169,10 @@ zuul:
       stripPrefix: false
     parkhfa:
       path: /parkhfas/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimperson:
+      path: /pimpeople/**
       serviceId: ehr-webapi
       stripPrefix: false
   sensitive-headers:

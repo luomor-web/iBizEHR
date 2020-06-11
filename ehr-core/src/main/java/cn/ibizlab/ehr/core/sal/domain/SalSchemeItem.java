@@ -103,8 +103,7 @@ public class SalSchemeItem extends EntityMP implements Serializable {
     /**
      * 逻辑有效标志
      */
-    @DEField(preType = DEPredefinedFieldType.LOGICVALID, logicval = "1" , logicdelval="0")
-    @TableLogic(value= "1",delval="0")
+    @DEField(preType = DEPredefinedFieldType.LOGICVALID)
     @TableField(value = "enable")
     @JSONField(name = "enable")
     @JsonProperty("enable")
