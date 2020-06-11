@@ -97,6 +97,59 @@ export default class ParTzggUIServiceBase extends UIService {
     public initDeMainStateMap(){
     }
 
+    /**
+     * 编辑
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async ParTzgg_OpenEditView(args: any[], context:any = {} ,params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        let data: any = {};
+        const _args: any[] = Util.deepCopy(args);
+        const _this: any = actionContext;
+        const actionTarget: string | null = 'SINGLEKEY';
+        Object.assign(context, { partzgg: '%partzgg%' });
+        Object.assign(params, { partzggid: '%partzgg%' });
+        Object.assign(params, { partzggname: '%partzggname%' });
+        context = UIActionTool.handleContextParam(actionTarget,_args,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'partzggs', parameterName: 'partzgg' },
+        ];
+            const openPopupModal = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
+            }
+            const view: any = {
+                viewname: 'par-tzgg-edit-view', 
+                height: 750, 
+                width: 0,  
+                title: actionContext.$t('entities.partzgg.views.editview.title'),
+            };
+            openPopupModal(view, data);
+    }
+
 
     /**
      * 获取指定数据的重定向页面

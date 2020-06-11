@@ -142,6 +142,10 @@ export default {
 		},
 	},
 	editview9toolbar_toolbar: {
+		tbitem1_openeditview: {
+			caption: '编辑',
+			tip: '编辑',
+		},
 	},
 	editview2toolbar_toolbar: {
 		tbitem3: {

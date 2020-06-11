@@ -51,6 +51,7 @@ import ParTzggService from '@/service/par-tzgg/par-tzgg-service';
 
 import EditView9Engine from '@engine/view/edit-view9-engine';
 
+import ParTzggUIService from '@/uiservice/par-tzgg/par-tzgg-ui-service';
 
 /**
  * 通知信息基类
@@ -166,6 +167,8 @@ export default class ParTzggEditView9Base extends EditView9Base {
      * @memberof ParTzggEditView9
      */
     public toolBarModels: any = {
+        tbitem1_openeditview: { name: 'tbitem1_openeditview', caption: '编辑','isShowCaption':true,'isShowIcon':true, tooltip: '编辑', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'OpenEditView', target: 'SINGLEKEY' }, class: '' },
+
     };
 
 
@@ -195,6 +198,20 @@ export default class ParTzggEditView9Base extends EditView9Base {
             majorPSDEField: 'partzggname',
             isLoadDefault: true,
         });
+    }
+
+
+    /**
+     * toolbar 部件 click 事件
+     *
+     * @param {*} [args={}]
+     * @param {*} $event
+     * @memberof ParTzggEditView9Base
+     */
+    public toolbar_click($event: any, $event2?: any) {
+        if (Object.is($event.tag, 'tbitem1_openeditview')) {
+            this.toolbar_tbitem1_openeditview_click(null, '', $event2);
+        }
     }
 
 
@@ -234,6 +251,36 @@ export default class ParTzggEditView9Base extends EditView9Base {
     }
 
 
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public toolbar_tbitem1_openeditview_click(params: any = {}, tag?: any, $event?: any) {
+        // 参数
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        
+        let contextJO:any = {};
+        xData = this.$refs.form;
+        if (xData.getDatas && xData.getDatas instanceof Function) {
+            datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:ParTzggUIService  = new ParTzggUIService();
+        curUIService.ParTzgg_OpenEditView(datas,contextJO, paramJO,  $event, xData,this,"ParTzgg");
+    }
 
 
 

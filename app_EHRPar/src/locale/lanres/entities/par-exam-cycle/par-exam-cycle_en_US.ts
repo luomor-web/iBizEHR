@@ -96,6 +96,14 @@ export default {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
+		deuiaction4: {
+			caption: "导入",
+			tip: "导入",
+		},
+		deuiaction5: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
 	},
 	editviewtoolbar_toolbar: {
 		tbitem3: {

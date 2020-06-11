@@ -91,6 +91,10 @@ zuul:
       path: /salsalaries/**
       serviceId: ehr-webapi
       stripPrefix: false
+    ormqygl:
+      path: /ormqygls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     ormduty:
       path: /ormduties/**
       serviceId: ehr-webapi
