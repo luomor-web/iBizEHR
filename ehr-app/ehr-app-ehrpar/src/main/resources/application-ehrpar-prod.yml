@@ -43,6 +43,10 @@ zuul:
       path: /parlhmbkhmxes/**
       serviceId: ehr-webapi
       stripPrefix: false
+    parintegralrule:
+      path: /parintegralrules/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     parznbmndlhmbmx:
       path: /parznbmndlhmbmxes/**
       serviceId: ehr-webapi
@@ -111,6 +115,10 @@ zuul:
       path: /parydgzjhmxes/**
       serviceId: ehr-webapi
       stripPrefix: false
+    pimperson:
+      path: /pimpeople/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     codeitem:
       path: /codeitems/**
       serviceId: ehr-webapi
@@ -169,10 +177,6 @@ zuul:
       stripPrefix: false
     parkhfa:
       path: /parkhfas/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    pimperson:
-      path: /pimpeople/**
       serviceId: ehr-webapi
       stripPrefix: false
   sensitive-headers:

@@ -17,7 +17,15 @@ export default {
     salschemeid: '薪酬方案标识',
   },
 	views: {
+		pickupgridview: {
+			caption: '薪酬计算计划',
+      title: '薪酬计算计划',
+		},
 		gridview: {
+			caption: '薪酬计算计划',
+      title: '薪酬计算计划',
+		},
+		pickupview: {
 			caption: '薪酬计算计划',
       title: '薪酬计算计划',
 		},

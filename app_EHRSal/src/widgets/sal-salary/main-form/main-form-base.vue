@@ -6,7 +6,7 @@
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.salsalary.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+        <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.salsalary.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-picker 
   :formState="formState"
@@ -31,7 +31,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.salsalary.main_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-picker 
   :formState="formState"
@@ -56,7 +56,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.ormorgsectorname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.ormorgsectorname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgsectorname' :itemRules="this.rules.ormorgsectorname" class='' :caption="$t('entities.salsalary.main_form.details.ormorgsectorname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgsectorname.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-picker 
   :formState="formState"
@@ -81,7 +81,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.ormdutyname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.ormdutyname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ormdutyname' :itemRules="this.rules.ormdutyname" class='' :caption="$t('entities.salsalary.main_form.details.ormdutyname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormdutyname.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-picker 
   :formState="formState"
@@ -106,7 +106,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.ormpostname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.ormpostname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ormpostname' :itemRules="this.rules.ormpostname" class='' :caption="$t('entities.salsalary.main_form.details.ormpostname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormpostname.error" :isEmptyCaption="false" labelPos="LEFT">
     <app-picker 
   :formState="formState"
@@ -131,38 +131,13 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.salsalarybillname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='salsalarybillname' :itemRules="this.rules.salsalarybillname" class='' :caption="$t('entities.salsalary.main_form.details.salsalarybillname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.salsalarybillname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam='{ }' 
-  :disabled="detailsModel.salsalarybillname.disabled"
-  name='salsalarybillname'
-  deMajorField='salsalarybillname'
-  deKeyField='salsalarybill'
-  :service="service"
-  :acParams="{ serviceName: 'SalSalaryBillService', interfaceName: 'FetchDefault'}"
-  valueitem='salsalarybillid' 
-  :value="data.salsalarybillname" 
-  editortype="" 
-  :pickupView="{ viewname: 'sal-salary-bill-pickup-view', title: $t('entities.salsalarybill.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'salsalarybills', parameterName: 'salsalarybill' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.xc.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.xc.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='xc' :itemRules="this.rules.xc" class='' :caption="$t('entities.salsalary.main_form.details.xc')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xc.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.xc"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.xc.disabled" type='number'  style=""></input-box>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.state.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.state.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='state' :itemRules="this.rules.state" class='' :caption="$t('entities.salsalary.main_form.details.state')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.state.error" :isEmptyCaption="false" labelPos="LEFT">
      <dropdown-list 
     v-model="data.state" 
@@ -178,7 +153,32 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.memo.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+<i-col v-show="detailsModel.salplanname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
+    <app-form-item name='salplanname' :itemRules="this.rules.salplanname" class='' :caption="$t('entities.salsalary.main_form.details.salplanname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.salplanname.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-picker 
+  :formState="formState"
+  :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :itemParam='{ }' 
+  :disabled="detailsModel.salplanname.disabled"
+  name='salplanname'
+  deMajorField='salplanname'
+  deKeyField='salplan'
+  :service="service"
+  :acParams="{ serviceName: 'SalPlanService', interfaceName: 'FetchDefault'}"
+  valueitem='salplanid' 
+  :value="data.salplanname" 
+  editortype="" 
+  :pickupView="{ viewname: 'sal-plan-pickup-view', title: $t('entities.salplan.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'salplans', parameterName: 'salplan' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
+  style=""  
+  @formitemvaluechange="onFormItemValueChange">
+</app-picker>
+
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.memo.visible" :style="{}"  :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
     <app-form-item name='memo' :itemRules="this.rules.memo" class='' :caption="$t('entities.salsalary.main_form.details.memo')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.memo.error" :isEmptyCaption="false" labelPos="LEFT">
     <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
     <textarea class="ivu-input" v-model="data.memo" :disabled="detailsModel.memo.disabled" style=""></textarea>
@@ -533,17 +533,17 @@ export default class MainBase extends Vue implements ControlInterface {
         ormorgsectorname: null,
         ormdutyname: null,
         ormpostname: null,
-        salsalarybillname: null,
         xc: null,
         state: null,
+        salplanname: null,
         memo: null,
         salsalaryid: null,
         ormdutyid: null,
         ormpostid: null,
         ormorgsectorid: null,
         pimpersonid: null,
+        salplanid: null,
         ormorgid: null,
-        salsalarybillid: null,
         salsalary:null,
     };
 
@@ -664,12 +664,6 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '岗位 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '岗位 值不能为空', trigger: 'blur' },
         ],
-        salsalarybillname: [
-            { type: 'string', message: '工资单名称 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '工资单名称 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '工资单名称 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '工资单名称 值不能为空', trigger: 'blur' },
-        ],
         xc: [
             { type: 'number', message: '实发薪酬 值必须为数值类型', trigger: 'change' },
             { type: 'number', message: '实发薪酬 值必须为数值类型', trigger: 'blur' },
@@ -681,6 +675,12 @@ export default class MainBase extends Vue implements ControlInterface {
             { type: 'string', message: '状态 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '状态 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '状态 值不能为空', trigger: 'blur' },
+        ],
+        salplanname: [
+            { type: 'string', message: '薪酬计算计划 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '薪酬计算计划 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '薪酬计算计划 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '薪酬计算计划 值不能为空', trigger: 'blur' },
         ],
         memo: [
             { type: 'string', message: '备注 值必须为字符串类型', trigger: 'change' },
@@ -718,17 +718,17 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'blur' },
         ],
+        salplanid: [
+            { type: 'string', message: '薪酬计算计划标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '薪酬计算计划标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '薪酬计算计划标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '薪酬计算计划标识 值不能为空', trigger: 'blur' },
+        ],
         ormorgid: [
             { type: 'string', message: '组织标识 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '组织标识 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '组织标识 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '组织标识 值不能为空', trigger: 'blur' },
-        ],
-        salsalarybillid: [
-            { type: 'string', message: '工资单标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '工资单标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '工资单标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '工资单标识 值不能为空', trigger: 'blur' },
         ],
     }
 
@@ -773,11 +773,11 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         ormpostname: new FormItemModel({ caption: '岗位', detailType: 'FORMITEM', name: 'ormpostname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        salsalarybillname: new FormItemModel({ caption: '工资单名称', detailType: 'FORMITEM', name: 'salsalarybillname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
         xc: new FormItemModel({ caption: '实发薪酬', detailType: 'FORMITEM', name: 'xc', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         state: new FormItemModel({ caption: '状态', detailType: 'FORMITEM', name: 'state', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        salplanname: new FormItemModel({ caption: '薪酬计算计划', detailType: 'FORMITEM', name: 'salplanname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         memo: new FormItemModel({ caption: '备注', detailType: 'FORMITEM', name: 'memo', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -791,9 +791,9 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         pimpersonid: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        ormorgid: new FormItemModel({ caption: '组织标识', detailType: 'FORMITEM', name: 'ormorgid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        salplanid: new FormItemModel({ caption: '薪酬计算计划标识', detailType: 'FORMITEM', name: 'salplanid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        salsalarybillid: new FormItemModel({ caption: '工资单标识', detailType: 'FORMITEM', name: 'salsalarybillid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        ormorgid: new FormItemModel({ caption: '组织标识', detailType: 'FORMITEM', name: 'ormorgid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
     };
 
@@ -954,18 +954,6 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 salsalarybillname 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.salsalarybillname')
-    onSalsalarybillnameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'salsalarybillname', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 xc 值
      *
      * @param {*} newVal
@@ -987,6 +975,18 @@ export default class MainBase extends Vue implements ControlInterface {
     @Watch('data.state')
     onStateChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'state', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 salplanname 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.salplanname')
+    onSalplannameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'salplanname', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -1062,6 +1062,18 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
+     * 监控表单属性 salplanid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.salplanid')
+    onSalplanidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'salplanid', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
      * 监控表单属性 ormorgid 值
      *
      * @param {*} newVal
@@ -1071,18 +1083,6 @@ export default class MainBase extends Vue implements ControlInterface {
     @Watch('data.ormorgid')
     onOrmorgidChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'ormorgid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 salsalarybillid 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.salsalarybillid')
-    onSalsalarybillidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'salsalarybillid', newVal: newVal, oldVal: oldVal });
     }
 
 

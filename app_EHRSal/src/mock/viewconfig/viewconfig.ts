@@ -143,6 +143,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "OrmDutyPickupGridView",
             "viewtag": "3a6f2dca81a7ae749a411e670510767c"
         },
+        "salplanpickupgridview": {
+            "title": "薪酬计算计划选择表格视图",
+            "caption": "薪酬计算计划",
+            "viewtype": "DEPICKUPGRIDVIEW",
+            "viewmodule": "SAL",
+            "viewname": "SalPlanPickupGridView",
+            "viewtag": "3ea143b8fe38da1ec7899551e1fba028"
+        },
         "salstdgleditview": {
             "title": "工龄工资标准编辑视图",
             "caption": "工龄工资标准",
@@ -206,6 +214,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "SAL",
             "viewname": "SalRuleDetailGridView",
             "viewtag": "5605a1ba8ee791fefa7eabbec7b285a0"
+        },
+        "salplanpickupview": {
+            "title": "薪酬计算计划数据选择视图",
+            "caption": "薪酬计算计划",
+            "viewtype": "DEPICKUPVIEW",
+            "viewmodule": "SAL",
+            "viewname": "SalPlanPickupView",
+            "viewtag": "56b0139136984b06b6bddfcc88f4c8b5"
         },
         "salsourcepickupview": {
             "title": "薪酬计算源数据选择视图",

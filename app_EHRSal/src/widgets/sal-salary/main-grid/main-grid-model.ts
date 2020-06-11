@@ -92,19 +92,14 @@ export default class MainModel {
           dataType: 'PICKUPTEXT',
         },
         {
-          name: 'nmonth',
-          prop: 'nmonth',
-          dataType: 'PICKUPDATA',
-        },
-        {
           name: 'ormdutyid',
           prop: 'ormdutyid',
           dataType: 'PICKUP',
         },
         {
-          name: 'nyear',
-          prop: 'nyear',
-          dataType: 'PICKUPDATA',
+          name: 'salplanname',
+          prop: 'salplanname',
+          dataType: 'PICKUPTEXT',
         },
         {
           name: 'xc',

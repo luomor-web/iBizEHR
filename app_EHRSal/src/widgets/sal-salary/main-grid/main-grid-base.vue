@@ -68,34 +68,6 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('nyear')">
-                <el-table-column show-overflow-tooltip :prop="'nyear'" :label="$t('entities.salsalary.main_grid.columns.nyear')" :width="80"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.salsalary.main_grid.columns.nyear')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <template >
-            <codelist :value="row.nyear" tag='EhrCodeList0115' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('nmonth')">
-                <el-table-column show-overflow-tooltip :prop="'nmonth'" :label="$t('entities.salsalary.main_grid.columns.nmonth')" :width="80"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.salsalary.main_grid.columns.nmonth')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <template >
-            <codelist :value="row.nmonth" tag='CodeList82' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('xc')">
                 <el-table-column show-overflow-tooltip :prop="'xc'" :label="$t('entities.salsalary.main_grid.columns.xc')" :width="150"  :align="'right'" :sortable="'custom'">
                     <template v-slot:header="{column}">
@@ -119,6 +91,18 @@
                         <template >
             <codelist :value="row.state" tag='EhrCodeList0074' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('salplanname')">
+                <el-table-column show-overflow-tooltip :prop="'salplanname'" :label="$t('entities.salsalary.main_grid.columns.salplanname')" :width="100"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.salsalary.main_grid.columns.salplanname')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <span>{{row.salplanname}}</span>
                     </template>
                 </el-table-column>
             </template>
@@ -627,20 +611,6 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'px'
         },
         {
-            name: 'nyear',
-            label: '年',
-            langtag: 'entities.salsalary.main_grid.columns.nyear',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'nmonth',
-            label: '月',
-            langtag: 'entities.salsalary.main_grid.columns.nmonth',
-            show: true,
-            util: 'PX'
-        },
-        {
             name: 'xc',
             label: '实发薪酬',
             langtag: 'entities.salsalary.main_grid.columns.xc',
@@ -653,6 +623,13 @@ export default class MainBase extends Vue implements ControlInterface {
             langtag: 'entities.salsalary.main_grid.columns.state',
             show: true,
             util: 'px'
+        },
+        {
+            name: 'salplanname',
+            label: '薪酬计算计划',
+            langtag: 'entities.salsalary.main_grid.columns.salplanname',
+            show: true,
+            util: 'PX'
         },
     ]
 
@@ -1041,22 +1018,6 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public async formatExcelData(filterVal:any, jsonData:any) {
         let codelistColumns:Array<any> = [
-          {
-            name: 'nyear',
-            srfkey: 'EhrCodeList0115',
-            codelistType : 'STATIC',
-            textSeparator: '、',
-            renderMode: 'string',
-            valueSeparator: ";",
-          },
-          {
-            name: 'nmonth',
-            srfkey: 'CodeList82',
-            codelistType : 'STATIC',
-            textSeparator: '、',
-            renderMode: 'string',
-            valueSeparator: ";",
-          },
           {
             name: 'state',
             srfkey: 'EhrCodeList0074',

@@ -179,6 +179,15 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '3ea143b8fe38da1ec7899551e1fba028',
+            viewmodule: 'SAL',
+            viewname: 'SalPlanPickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
             viewtag: '413a44b0e0559d300b5cc17d970f9978',
             viewmodule: 'SAL',
             viewname: 'SalStdglEditView',
@@ -206,16 +215,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'd44ef037d312d50fd58de9dec03f4df7',
-            ],
-        },
-        {
-            viewtag: '442eb40ec649946d8d25cdf10b2fdb72',
-            viewmodule: 'SAL',
-            viewname: 'SalSalaryBillPickupView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '8eafe3d9252b6c4152ce5f15faef11e9',
             ],
         },
         {
@@ -256,6 +255,16 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '3a0b5636f1cb242c9fac8211b31f9ddb',
+            ],
+        },
+        {
+            viewtag: '56b0139136984b06b6bddfcc88f4c8b5',
+            viewmodule: 'SAL',
+            viewname: 'SalPlanPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '3ea143b8fe38da1ec7899551e1fba028',
             ],
         },
         {
@@ -354,22 +363,13 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '56b0139136984b06b6bddfcc88f4c8b5',
                 '4959432e8ccd53afd9a231dcba7035a5',
                 '7ad4a76da72e2f1008df453f9bca4280',
                 '42c53769e9715f972f726817185eea6e',
                 'ef4104b2291a9e5496b77cedbb29e007',
-                '442eb40ec649946d8d25cdf10b2fdb72',
                 '5a1c3b6c244e71fd16c6c2d2aa2033af',
                 '8211ae61b7d368f63a74af2bc1c38a57',
-            ],
-        },
-        {
-            viewtag: '8eafe3d9252b6c4152ce5f15faef11e9',
-            viewmodule: 'SAL',
-            viewname: 'SalSalaryBillPickupGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
             ],
         },
         {

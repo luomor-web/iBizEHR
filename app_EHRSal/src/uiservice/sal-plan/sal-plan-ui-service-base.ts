@@ -79,7 +79,9 @@ export default class SalPlanUIServiceBase extends UIService {
      * @memberof  SalPlanUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'salplans'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'salplans'});
+        this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'salplans'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'salplans'});
     }
 

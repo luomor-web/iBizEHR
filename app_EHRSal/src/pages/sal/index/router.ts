@@ -35,19 +35,6 @@ const router = new Router({
             component: () => import('@pages/sal/index/index.vue'),
             children: [
                 {
-                    path: 'salsalarybills/:salsalarybill?/pickupgridview/:pickupgridview?',
-                    meta: {
-                        caption: 'entities.salsalarybill.views.pickupgridview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'salsalarybills', parameterName: 'salsalarybill' },
-                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/sal/sal-salary-bill-pickup-grid-view/sal-salary-bill-pickup-grid-view.vue'),
-                },
-                {
                     path: 'salparams/:salparam?/pickupgridview/:pickupgridview?',
                     meta: {
                         caption: 'entities.salparam.views.pickupgridview.caption',
@@ -145,6 +132,19 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/sal/sal-stdzx-grid-view/sal-stdzx-grid-view.vue'),
+                },
+                {
+                    path: 'salplans/:salplan?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.salplan.views.pickupgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'salplans', parameterName: 'salplan' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/sal/sal-plan-pickup-grid-view/sal-plan-pickup-grid-view.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pickupview/:pickupview?',
@@ -843,6 +843,19 @@ const router = new Router({
                     component: () => import('@pages/orm/orm-org-pickup-grid-view/orm-org-pickup-grid-view.vue'),
                 },
                 {
+                    path: 'salplans/:salplan?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.salplan.views.pickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'salplans', parameterName: 'salplan' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/sal/sal-plan-pickup-view/sal-plan-pickup-view.vue'),
+                },
+                {
                     path: 'salitems/:salitem?/editview/:editview?',
                     meta: {
                         caption: 'entities.salitem.views.editview.caption',
@@ -1141,19 +1154,6 @@ const router = new Router({
                     component: () => import('@pages/sal/sal-type-grid-view/sal-type-grid-view.vue'),
                 },
                 {
-                    path: 'salsalarybills/:salsalarybill?/pickupview/:pickupview?',
-                    meta: {
-                        caption: 'entities.salsalarybill.views.pickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'salsalarybills', parameterName: 'salsalarybill' },
-                            { pathName: 'pickupview', parameterName: 'pickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/sal/sal-salary-bill-pickup-view/sal-salary-bill-pickup-view.vue'),
-                },
-                {
                     path: 'salsources/:salsource?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.salsource.views.gridview.caption',
@@ -1443,6 +1443,18 @@ const router = new Router({
         component: () => import('@pages/orm/orm-duty-pickup-grid-view/orm-duty-pickup-grid-view.vue'),
     },
     {
+        path: '/salplans/:salplan?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.salplan.views.pickupgridview.caption',
+            parameters: [
+                { pathName: 'salplans', parameterName: 'salplan' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/sal/sal-plan-pickup-grid-view/sal-plan-pickup-grid-view.vue'),
+    },
+    {
         path: '/salstdgls/:salstdgl?/editview/:editview?',
         meta: {
             caption: 'entities.salstdgl.views.editview.caption',
@@ -1481,18 +1493,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pim/pim-person-pickup-view/pim-person-pickup-view.vue'),
-    },
-    {
-        path: '/salsalarybills/:salsalarybill?/pickupview/:pickupview?',
-        meta: {
-            caption: 'entities.salsalarybill.views.pickupview.caption',
-            parameters: [
-                { pathName: 'salsalarybills', parameterName: 'salsalarybill' },
-                { pathName: 'pickupview', parameterName: 'pickupview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/sal/sal-salary-bill-pickup-view/sal-salary-bill-pickup-view.vue'),
     },
     {
         path: '/salplans/:salplan?/gridview/:gridview?',
@@ -1558,6 +1558,18 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/sal/sal-rule-detail-grid-view/sal-rule-detail-grid-view.vue'),
+    },
+    {
+        path: '/salplans/:salplan?/pickupview/:pickupview?',
+        meta: {
+            caption: 'entities.salplan.views.pickupview.caption',
+            parameters: [
+                { pathName: 'salplans', parameterName: 'salplan' },
+                { pathName: 'pickupview', parameterName: 'pickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/sal/sal-plan-pickup-view/sal-plan-pickup-view.vue'),
     },
     {
         path: '/salsources/:salsource?/pickupview/:pickupview?',
@@ -1699,18 +1711,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/sal/sal-salary-edit-view/sal-salary-edit-view.vue'),
-    },
-    {
-        path: '/salsalarybills/:salsalarybill?/pickupgridview/:pickupgridview?',
-        meta: {
-            caption: 'entities.salsalarybill.views.pickupgridview.caption',
-            parameters: [
-                { pathName: 'salsalarybills', parameterName: 'salsalarybill' },
-                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/sal/sal-salary-bill-pickup-grid-view/sal-salary-bill-pickup-grid-view.vue'),
     },
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/pickupgridview/:pickupgridview?',

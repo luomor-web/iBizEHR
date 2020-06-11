@@ -7,7 +7,7 @@ import OrmOrgService from '@/service/orm-org/orm-org-service';
 import OrmOrgsectorService from '@/service/orm-orgsector/orm-orgsector-service';
 import OrmDutyService from '@/service/orm-duty/orm-duty-service';
 import OrmPostService from '@/service/orm-post/orm-post-service';
-import SalSalaryBillService from '@/service/sal-salary-bill/sal-salary-bill-service';
+import SalPlanService from '@/service/sal-plan/sal-plan-service';
 
 
 /**
@@ -88,12 +88,12 @@ export default class MainService extends ControlService {
     public ormpostService: OrmPostService = new OrmPostService();
 
     /**
-     * 工资表服务对象
+     * 薪酬计算计划服务对象
      *
-     * @type {SalSalaryBillService}
+     * @type {SalPlanService}
      * @memberof MainService
      */
-    public salsalarybillService: SalSalaryBillService = new SalSalaryBillService();
+    public salplanService: SalPlanService = new SalPlanService();
 
     /**
      * 处理数据
@@ -149,8 +149,8 @@ export default class MainService extends ControlService {
         if (Object.is(serviceName, 'OrmPostService') && Object.is(interfaceName, 'FetchDefault')) {
             return this.doItems(this.ormpostService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'ormpostid', 'ormpost');
         }
-        if (Object.is(serviceName, 'SalSalaryBillService') && Object.is(interfaceName, 'FetchDefault')) {
-            return this.doItems(this.salsalarybillService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'salsalarybillid', 'salsalarybill');
+        if (Object.is(serviceName, 'SalPlanService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.salplanService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'salplanid', 'salplan');
         }
 
         return Promise.reject([])

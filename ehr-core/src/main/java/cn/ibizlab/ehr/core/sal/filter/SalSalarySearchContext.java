@@ -125,14 +125,14 @@ public class SalSalarySearchContext extends QueryWrapperContext<SalSalary> {
             this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
-	private String n_salplanname_eq;//[薪酬计算计划名称]
+	private String n_salplanname_eq;//[薪酬计算计划]
 	public void setN_salplanname_eq(String n_salplanname_eq) {
         this.n_salplanname_eq = n_salplanname_eq;
         if(!ObjectUtils.isEmpty(this.n_salplanname_eq)){
             this.getSearchCond().eq("salplanname", n_salplanname_eq);
         }
     }
-	private String n_salplanname_like;//[薪酬计算计划名称]
+	private String n_salplanname_like;//[薪酬计算计划]
 	public void setN_salplanname_like(String n_salplanname_like) {
         this.n_salplanname_like = n_salplanname_like;
         if(!ObjectUtils.isEmpty(this.n_salplanname_like)){

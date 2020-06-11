@@ -81,11 +81,6 @@ export default class MainModel {
         dataType: 'PICKUPTEXT',
       },
       {
-        name: 'salsalarybillname',
-        prop: 'salsalarybillname',
-        dataType: 'PICKUPTEXT',
-      },
-      {
         name: 'xc',
         prop: 'xc',
         dataType: 'FLOAT',
@@ -94,6 +89,11 @@ export default class MainModel {
         name: 'state',
         prop: 'state',
         dataType: 'SSCODELIST',
+      },
+      {
+        name: 'salplanname',
+        prop: 'salplanname',
+        dataType: 'PICKUPTEXT',
       },
       {
         name: 'memo',
@@ -126,13 +126,13 @@ export default class MainModel {
         dataType: 'PICKUP',
       },
       {
-        name: 'ormorgid',
-        prop: 'ormorgid',
+        name: 'salplanid',
+        prop: 'salplanid',
         dataType: 'PICKUP',
       },
       {
-        name: 'salsalarybillid',
-        prop: 'salsalarybillid',
+        name: 'ormorgid',
+        prop: 'ormorgid',
         dataType: 'PICKUP',
       },
       {

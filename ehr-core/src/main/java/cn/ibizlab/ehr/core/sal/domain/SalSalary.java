@@ -188,7 +188,7 @@ public class SalSalary extends EntityMP implements Serializable {
     @JsonProperty("pimpersonname")
     private String pimpersonname;
     /**
-     * 薪酬计算计划名称
+     * 薪酬计算计划
      */
     @TableField(exist = false)
     @JSONField(name = "salplanname")

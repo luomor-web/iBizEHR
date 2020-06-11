@@ -1,13 +1,13 @@
 export const PageComponents = {
     install(Vue: any, opt: any) {
-                Vue.component('sal-salary-bill-pickup-grid-view', () => import('@pages/sal/sal-salary-bill-pickup-grid-view/sal-salary-bill-pickup-grid-view.vue'));
-        Vue.component('sal-param-pickup-grid-view', () => import('@pages/sal/sal-param-pickup-grid-view/sal-param-pickup-grid-view.vue'));
+                Vue.component('sal-param-pickup-grid-view', () => import('@pages/sal/sal-param-pickup-grid-view/sal-param-pickup-grid-view.vue'));
         Vue.component('sal-param-pickup-view', () => import('@pages/sal/sal-param-pickup-view/sal-param-pickup-view.vue'));
         Vue.component('sal-plan-edit-view', () => import('@pages/sal/sal-plan-edit-view/sal-plan-edit-view.vue'));
         Vue.component('sal-rule-grid-view', () => import('@pages/sal/sal-rule-grid-view/sal-rule-grid-view.vue'));
         Vue.component('sal-rule-detail-grid-view', () => import('@pages/sal/sal-rule-detail-grid-view/sal-rule-detail-grid-view.vue'));
         Vue.component('sal-rule-edit-view', () => import('@pages/sal/sal-rule-edit-view/sal-rule-edit-view.vue'));
         Vue.component('sal-stdzx-grid-view', () => import('@pages/sal/sal-stdzx-grid-view/sal-stdzx-grid-view.vue'));
+        Vue.component('sal-plan-pickup-grid-view', () => import('@pages/sal/sal-plan-pickup-grid-view/sal-plan-pickup-grid-view.vue'));
         Vue.component('orm-orgsector-pickup-view', () => import('@pages/orm/orm-orgsector-pickup-view/orm-orgsector-pickup-view.vue'));
         Vue.component('sal-subject-pickup-view', () => import('@pages/sal/sal-subject-pickup-view/sal-subject-pickup-view.vue'));
         Vue.component('sal-scheme-grid-view', () => import('@pages/sal/sal-scheme-grid-view/sal-scheme-grid-view.vue'));
@@ -50,6 +50,7 @@ export const PageComponents = {
         Vue.component('orm-post-pickup-view', () => import('@pages/orm/orm-post-pickup-view/orm-post-pickup-view.vue'));
         Vue.component('sal-std-xmgz-grid-view', () => import('@pages/sal/sal-std-xmgz-grid-view/sal-std-xmgz-grid-view.vue'));
         Vue.component('orm-org-pickup-grid-view', () => import('@pages/orm/orm-org-pickup-grid-view/orm-org-pickup-grid-view.vue'));
+        Vue.component('sal-plan-pickup-view', () => import('@pages/sal/sal-plan-pickup-view/sal-plan-pickup-view.vue'));
         Vue.component('sal-item-edit-view', () => import('@pages/sal/sal-item-edit-view/sal-item-edit-view.vue'));
         Vue.component('sal-stdgl-edit-view', () => import('@pages/sal/sal-stdgl-edit-view/sal-stdgl-edit-view.vue'));
         Vue.component('sal-stdgw-grid-view', () => import('@pages/sal/sal-stdgw-grid-view/sal-stdgw-grid-view.vue'));
@@ -68,7 +69,6 @@ export const PageComponents = {
         Vue.component('sal-source-edit-view', () => import('@pages/sal/sal-source-edit-view/sal-source-edit-view.vue'));
         Vue.component('sal-stddszn-grid-view', () => import('@pages/sal/sal-stddszn-grid-view/sal-stddszn-grid-view.vue'));
         Vue.component('sal-type-grid-view', () => import('@pages/sal/sal-type-grid-view/sal-type-grid-view.vue'));
-        Vue.component('sal-salary-bill-pickup-view', () => import('@pages/sal/sal-salary-bill-pickup-view/sal-salary-bill-pickup-view.vue'));
         Vue.component('sal-source-grid-view', () => import('@pages/sal/sal-source-grid-view/sal-source-grid-view.vue'));
         Vue.component('orm-orgsector-pickup-grid-view', () => import('@pages/orm/orm-orgsector-pickup-grid-view/orm-orgsector-pickup-grid-view.vue'));
     }
