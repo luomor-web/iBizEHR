@@ -76,29 +76,25 @@ export default {
 		},
 	},
 	gridviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "New",
-			tip: "New",
+		deuiaction1: {
+			caption: "新建",
+			tip: "新建",
 		},
-		tbitem8: {
+		deuiaction2: {
+			caption: "保存",
+			tip: "保存",
+		},
+		deuiaction3: {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-		tbitem19: {
-			caption: "Filter",
-			tip: "Filter",
+		deuiaction4: {
+			caption: "导入",
+			tip: "导入",
 		},
-		tbitem13: {
+		deuiaction5: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-		deuiaction1: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 	editviewtoolbar_toolbar: {
