@@ -5,7 +5,7 @@
     <i-col span="20" class="form-content">
       <row>
                     <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-              <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.salitem.default_searchform.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false">
+              <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.salitem.default_searchform.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false">
               <row>
                   <i-col v-show="detailsModel.n_salitemname_like.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_salitemname_like' :itemRules="this.rules.n_salitemname_like" class='' :caption="$t('entities.salitem.default_searchform.details.n_salitemname_like')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_salitemname_like.error" :isEmptyCaption="false" labelPos="LEFT"> 
@@ -283,7 +283,7 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @memberof DefaultBase
      */
     public detailsModel: any = {
-        grouppanel1: new FormGroupPanelModel({ caption: '', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.salitem.default_searchform', extractMode: 'ITEM', details: [] } })
+        grouppanel1: new FormGroupPanelModel({ caption: '', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.salitem.default_searchform', extractMode: 'ITEM', details: [] } })
 , 
         formpage1: new FormPageModel({ caption: '常规条件', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
