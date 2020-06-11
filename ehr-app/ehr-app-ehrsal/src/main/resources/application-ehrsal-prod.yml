@@ -47,6 +47,22 @@ zuul:
       path: /codelist1s/**
       serviceId: ehr-webapi
       stripPrefix: false
+    sallog:
+      path: /sallogs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdzyzg:
+      path: /salstdzyzgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salpersonstddetail:
+      path: /salpersonstddetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdgw:
+      path: /salstdgws/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     salstdgwgz:
       path: /salstdgwgzs/**
       serviceId: ehr-webapi
@@ -55,12 +71,60 @@ zuul:
       path: /salstdxmgzs/**
       serviceId: ehr-webapi
       stripPrefix: false
+    pimperson:
+      path: /pimpeople/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormpost:
+      path: /ormposts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdzc:
+      path: /salstdzcs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salsalarybill:
+      path: /salsalarybills/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salsalary:
+      path: /salsalaries/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     ormduty:
       path: /ormduties/**
       serviceId: ehr-webapi
       stripPrefix: false
     codeitem:
       path: /codeitems/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salsalarydetail:
+      path: /salsalarydetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salplan:
+      path: /salplans/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorgsector:
+      path: /ormorgsectors/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdzx:
+      path: /salstdzxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstddszn:
+      path: /salstddszns/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdgl:
+      path: /salstdgls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salpersonstd:
+      path: /salpersonstds/**
       serviceId: ehr-webapi
       stripPrefix: false
   sensitive-headers:
