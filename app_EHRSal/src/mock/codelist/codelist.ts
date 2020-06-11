@@ -8,6 +8,30 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
     let status = MockAdapter.mockStatus(config);
     return [status, [
         {
+        "srfkey": "EhrCodeList0036",
+        "emptytext": "未定义",
+        "codelisttype":"dynamic",
+        "appdataentity":"SalType",
+        "appdedataset":"FetchDefault",
+        "items": []
+    },
+    {
+        "srfkey": "EhrCodeList0249",
+        "emptytext": "未定义",
+        "codelisttype":"dynamic",
+        "appdataentity":"",
+        "appdedataset":"",
+        "items": []
+    },
+    {
+        "srfkey": "EhrCodeList0250",
+        "emptytext": "",
+        "codelisttype":"dynamic",
+        "appdataentity":"",
+        "appdedataset":"",
+        "items": []
+    },
+    {
         srfkey: 'EhrCodeList0128',
         emptytext: '',
         "codelisttype":"static",
@@ -35,15 +59,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "EhrCodeList0036",
-        "emptytext": "未定义",
-        "codelisttype":"dynamic",
-        "appdataentity":"SalType",
-        "appdedataset":"FetchDefault",
-        "items": []
-    },
-    {
-        "srfkey": "EhrCodeList0249",
+        "srfkey": "EhrCodeList0033",
         "emptytext": "未定义",
         "codelisttype":"dynamic",
         "appdataentity":"",
@@ -164,14 +180,6 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         ]
     },
     {
-        "srfkey": "EhrCodeList0250",
-        "emptytext": "",
-        "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
-        "items": []
-    },
-    {
         srfkey: 'EhrCodeList0212',
         emptytext: '未定义',
         "codelisttype":"static",
@@ -215,6 +223,120 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "appdataentity":"",
         "appdedataset":"",
         "items": []
+    },
+    {
+        srfkey: 'EhrCodeList0120',
+        emptytext: '',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '10',
+                label: '局级机关',
+                text: '局级机关',
+                "data":"",
+                "codename":"Item_10",
+                value: '10',
+                
+                disabled: false,
+            },
+            {
+                id: '20',
+                label: '公司级机关',
+                text: '公司级机关',
+                "data":"",
+                "codename":"Item_20",
+                value: '20',
+                
+                disabled: false,
+            },
+            {
+                id: '30',
+                label: '经理部机关',
+                text: '经理部机关',
+                "data":"",
+                "codename":"Item_30",
+                value: '30',
+                
+                disabled: false,
+            },
+            {
+                id: '40',
+                label: '项目部',
+                text: '项目部',
+                "data":"",
+                "codename":"Item_40",
+                value: '40',
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
+        srfkey: 'EhrCodeList0201',
+        emptytext: '未定义',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '0',
+                label: '特级',
+                text: '特级',
+                "data":"",
+                "codename":"Item_0",
+                value: '0',
+                
+                disabled: false,
+            },
+            {
+                id: '1',
+                label: '一级',
+                text: '一级',
+                "data":"",
+                "codename":"Item_1",
+                value: '1',
+                
+                disabled: false,
+            },
+            {
+                id: '2',
+                label: '二级',
+                text: '二级',
+                "data":"",
+                "codename":"Item_2",
+                value: '2',
+                
+                disabled: false,
+            },
+            {
+                id: '3',
+                label: '三级',
+                text: '三级',
+                "data":"",
+                "codename":"Item_3",
+                value: '3',
+                
+                disabled: false,
+            },
+            {
+                id: '4',
+                label: '四级',
+                text: '四级',
+                "data":"",
+                "codename":"Item_4",
+                value: '4',
+                
+                disabled: false,
+            },
+            {
+                id: '5',
+                label: '五级',
+                text: '五级',
+                "data":"",
+                "codename":"Item_5",
+                value: '5',
+                
+                disabled: false,
+            },
+        ]
     },
     {
         srfkey: 'EhrCodeList0400',

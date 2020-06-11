@@ -63,6 +63,14 @@
         "viewname": "Index",
         "viewtag": "36630F8C-711F-41C5-B9E4-39298985A585"
     },
+    "salstdxmgzeditview": {
+        "title": "项目工资标准编辑视图",
+        "caption": "项目工资标准",
+        "viewtype": "DEEDITVIEW",
+        "viewmodule": "SAL",
+        "viewname": "SalStdXmgzEditView",
+        "viewtag": "37c011e01d93d713ab87c482aa2908e8"
+    },
     "salruledetaileditview": {
         "title": "薪酬规则明细编辑视图",
         "caption": "薪酬规则明细",
@@ -70,6 +78,14 @@
         "viewmodule": "SAL",
         "viewname": "SalRuleDetailEditView",
         "viewtag": "3a0b5636f1cb242c9fac8211b31f9ddb"
+    },
+    "ormdutypickupgridview": {
+        "title": "职务库",
+        "caption": "职务库",
+        "viewtype": "DEPICKUPGRIDVIEW",
+        "viewmodule": "ORM",
+        "viewname": "OrmDutyPickupGridView",
+        "viewtag": "3a6f2dca81a7ae749a411e670510767c"
     },
     "salparameditview": {
         "title": "薪酬计算指标编辑视图",
@@ -94,6 +110,22 @@
         "viewmodule": "SAL",
         "viewname": "SalSourcePickupView",
         "viewtag": "58ac9e12f096070e815322949bd7c478"
+    },
+    "ormdutypickupview": {
+        "title": "职务库",
+        "caption": "职务库",
+        "viewtype": "DEPICKUPVIEW",
+        "viewmodule": "ORM",
+        "viewname": "OrmDutyPickupView",
+        "viewtag": "5a1c3b6c244e71fd16c6c2d2aa2033af"
+    },
+    "salstdgwgzgridview": {
+        "title": "岗位工资标准表格视图",
+        "caption": "岗位工资标准",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "SAL",
+        "viewname": "SalStdgwgzGridView",
+        "viewtag": "5c199b2795b1d8e13f8efa3353618b9c"
     },
     "salitemmpickupview": {
         "title": "薪酬要素项数据多项选择视图",
@@ -247,6 +279,14 @@
         "viewname": "SalTypeGridView",
         "viewtag": "ecdae2be14321abf03a8a5498c9d1bf3"
     },
+    "salstdgwgzeditview": {
+        "title": "岗位工资标准编辑视图",
+        "caption": "岗位工资标准",
+        "viewtype": "DEEDITVIEW",
+        "viewmodule": "SAL",
+        "viewname": "SalStdgwgzEditView",
+        "viewtag": "eed4386059824f226425556c668ffd46"
+    },
     "ormorgpickupview": {
         "title": "组织管理数据选择视图",
         "caption": "组织管理",
@@ -254,6 +294,14 @@
         "viewmodule": "ORM",
         "viewname": "OrmOrgPickupView",
         "viewtag": "ef4104b2291a9e5496b77cedbb29e007"
+    },
+    "salstdxmgzgridview": {
+        "title": "项目工资标准表格视图",
+        "caption": "项目工资标准",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "SAL",
+        "viewname": "SalStdXmgzGridView",
+        "viewtag": "f169dd9ecee320263c3ff7f3bcf017a2"
     },
     "salsubjectpickupgridview": {
         "title": "财务科目选择表格视图",

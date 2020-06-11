@@ -1,6 +1,7 @@
 import EhrCodeList0036 from '@/codelist/ehr-code-list0036';   
 import EhrCodeList0249 from '@/codelist/ehr-code-list0249';   
 import EhrCodeList0250 from '@/codelist/ehr-code-list0250';   
+import EhrCodeList0033 from '@/codelist/ehr-code-list0033';   
 import EhrCodeList0219 from '@/codelist/ehr-code-list0219';   
 import { Store } from 'vuex';
 
@@ -76,6 +77,14 @@ export default class CodeListService {
      * @memberof CodeListService
      */
     public EhrCodeList0250: EhrCodeList0250 = new EhrCodeList0250();
+
+    /**
+     * 代码表--档级
+     *
+     * @type {EhrCodeList0033}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0033: EhrCodeList0033 = new EhrCodeList0033();
 
     /**
      * 代码表--补贴标准

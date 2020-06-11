@@ -40,7 +40,7 @@
 
 
     <!--输出实体[SALSTDXMGZ]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-salstdxmgz-20-2">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-salstdxmgz-21-2">
         <createTable tableName="T_SALSTDXMGZ">
                 <column name="DJ" remarks="" type="VARCHAR(60)">
                 </column>
@@ -3856,7 +3856,7 @@
 
 
     <!--输出实体[SALSTDGWGZ]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-salstdgwgz-19-95">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-salstdgwgz-20-95">
         <createTable tableName="T_SALSTDGWGZ">
                 <column name="JBGZBL" remarks="" type="FLOAT">
                 </column>
@@ -9533,7 +9533,7 @@
 
 
     <!--输出实体[ORMDUTY]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormduty-55-246">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-ormduty-57-246">
         <createTable tableName="T_ORMDUTY">
                 <column name="ORMDUTYID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_ORMDUTY_ORMDUTYID"/>
@@ -11982,10 +11982,10 @@
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_SOCSELFAREBASE" constraintName="DER1N_SOCSELFAREBASE_ORMORG_OR" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[SALSTDXMGZ]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salstdxmgz-20-302">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salstdxmgz-21-302">
        <addForeignKeyConstraint baseColumnNames="ORMDUTYID" baseTableName="T_SALSTDXMGZ" constraintName="DER1N_SALSTDXMGZ_ORMDUTY_ORMDU" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMDUTYID" referencedTableName="T_ORMDUTY" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salstdxmgz-20-303">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salstdxmgz-21-303">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_SALSTDXMGZ" constraintName="DER1N_SALSTDXMGZ_ORMORG_ORMORG" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[SALSTDZJ]外键关系 -->
@@ -12480,10 +12480,10 @@
     </changeSet>
         <!--输出实体[WFQJ]外键关系 -->
         <!--输出实体[SALSTDGWGZ]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salstdgwgz-19-443">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salstdgwgz-20-443">
        <addForeignKeyConstraint baseColumnNames="ORMDUTYID" baseTableName="T_SALSTDGWGZ" constraintName="DER1N_SALSTDGWGZ_ORMDUTY_ORMDU" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORMDUTYID" referencedTableName="T_ORMDUTY" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-salstdgwgz-19-444">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-salstdgwgz-20-444">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_SALSTDGWGZ" constraintName="DER1N_SALSTDGWGZ_ORMORG_ORMORG" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[PCMPROFILESZYJTJ]外键关系 -->

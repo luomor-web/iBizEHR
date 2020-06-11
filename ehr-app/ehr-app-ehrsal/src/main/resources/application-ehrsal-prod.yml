@@ -43,5 +43,17 @@ zuul:
       path: /salschemeitems/**
       serviceId: ehr-webapi
       stripPrefix: false
+    salstdgwgz:
+      path: /salstdgwgzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdxmgz:
+      path: /salstdxmgzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormduty:
+      path: /ormduties/**
+      serviceId: ehr-webapi
+      stripPrefix: false
   sensitive-headers:
     - Cookie,Set-Cookie,Authorization

@@ -62,20 +62,26 @@ export default class IndexBase extends AppMenusCtrlBase {
     protected click(item: any) {
         if (item) {
             switch (item.appfunctag) {
+                case '_9': 
+                    this.click_9(item);
+                    return;
                 case '_7': 
                     this.click_7(item);
+                    return;
+                case '_5': 
+                    this.click_5(item);
+                    return;
+                case '_8': 
+                    this.click_8(item);
                     return;
                 case '_4': 
                     this.click_4(item);
                     return;
-                case '_6': 
-                    this.click_6(item);
-                    return;
                 case '_3': 
                     this.click_3(item);
                     return;
-                case '_5': 
-                    this.click_5(item);
+                case '_6': 
+                    this.click_6(item);
                     return;
                 case '_2': 
                     this.click_2(item);
@@ -92,7 +98,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_7(item: any = {}) {
+    public click_9(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -105,12 +111,30 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
+     * 岗位工资标准
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_7(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'salstdgwgzs', parameterName: 'salstdgwgz' },
+            { pathName: 'gridview', parameterName: 'gridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
      * 薪酬计算源
      *
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_4(item: any = {}) {
+    public click_5(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -128,12 +152,30 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_6(item: any = {}) {
+    public click_8(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'saltypes', parameterName: 'saltype' },
+            { pathName: 'gridview', parameterName: 'gridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 项目工资标准
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_4(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'salstdxmgzs', parameterName: 'salstdxmgz' },
             { pathName: 'gridview', parameterName: 'gridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
@@ -164,7 +206,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_5(item: any = {}) {
+    public click_6(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];

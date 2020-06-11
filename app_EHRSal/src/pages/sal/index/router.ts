@@ -50,19 +50,6 @@ const router = new Router({
                     component: () => import('@pages/sal/sal-item-grid-view/sal-item-grid-view.vue'),
                 },
                 {
-                    path: 'salparams/:salparam?/pickupview/:pickupview?',
-                    meta: {
-                        caption: 'entities.salparam.views.pickupview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'salparams', parameterName: 'salparam' },
-                            { pathName: 'pickupview', parameterName: 'pickupview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/sal/sal-param-pickup-view/sal-param-pickup-view.vue'),
-                },
-                {
                     path: 'salparams/:salparam?/pickupgridview/:pickupgridview?',
                     meta: {
                         caption: 'entities.salparam.views.pickupgridview.caption',
@@ -74,6 +61,34 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/sal/sal-param-pickup-grid-view/sal-param-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'salstdxmgzs/:salstdxmgz?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.salstdxmgz.views.editview.caption',
+                        imgPath: '../../../img/jlgl/1/xiangmugongzibiaozhun.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'salstdxmgzs', parameterName: 'salstdxmgz' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/sal/sal-std-xmgz-edit-view/sal-std-xmgz-edit-view.vue'),
+                },
+                {
+                    path: 'salparams/:salparam?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.salparam.views.pickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'salparams', parameterName: 'salparam' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/sal/sal-param-pickup-view/sal-param-pickup-view.vue'),
                 },
                 {
                     path: 'salschemes/:salscheme?/salschemeitems/:salschemeitem?/editview/:editview?',
@@ -186,6 +201,21 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/sal/sal-scheme-pickup-grid-view/sal-scheme-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'salstdgwgzs/:salstdgwgz?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.salstdgwgz.views.editview.caption',
+                        imgPath: '../../../img/jlgl/1/gangweigongzibiaozhun.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'salstdgwgzs', parameterName: 'salstdgwgz' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/sal/sal-stdgwgz-edit-view/sal-stdgwgz-edit-view.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/pickupview/:pickupview?',
@@ -322,6 +352,21 @@ const router = new Router({
                     component: () => import('@pages/sal/sal-subject-pickup-grid-view/sal-subject-pickup-grid-view.vue'),
                 },
                 {
+                    path: 'salstdxmgzs/:salstdxmgz?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.salstdxmgz.views.gridview.caption',
+                        imgPath: '../../../img/jlgl/1/xiangmugongzibiaozhun.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'salstdxmgzs', parameterName: 'salstdxmgz' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/sal/sal-std-xmgz-grid-view/sal-std-xmgz-grid-view.vue'),
+                },
+                {
                     path: 'ormorgs/:ormorg?/pickupgridview/:pickupgridview?',
                     meta: {
                         caption: 'entities.ormorg.views.pickupgridview.caption',
@@ -365,6 +410,19 @@ const router = new Router({
                     component: () => import('@pages/sal/sal-item-edit-view/sal-item-edit-view.vue'),
                 },
                 {
+                    path: 'ormduties/:ormduty?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.ormduty.views.pickupgridview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormduties', parameterName: 'ormduty' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/orm-duty-pickup-grid-view/orm-duty-pickup-grid-view.vue'),
+                },
+                {
                     path: 'salsources/:salsource?/pickupview/:pickupview?',
                     meta: {
                         caption: 'entities.salsource.views.pickupview.caption',
@@ -404,6 +462,19 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/sal/sal-source-pickup-grid-view/sal-source-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'ormduties/:ormduty?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.ormduty.views.pickupview.caption',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormduties', parameterName: 'ormduty' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/orm/orm-duty-pickup-view/orm-duty-pickup-view.vue'),
                 },
                 {
                     path: 'salparams/:salparam?/gridview/:gridview?',
@@ -503,6 +574,21 @@ const router = new Router({
                     component: () => import('@pages/sal/sal-item-mpickup-view/sal-item-mpickup-view.vue'),
                 },
                 {
+                    path: 'salstdgwgzs/:salstdgwgz?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.salstdgwgz.views.gridview.caption',
+                        imgPath: '../../../img/jlgl/1/gangweigongzibiaozhun.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'salstdgwgzs', parameterName: 'salstdgwgz' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/sal/sal-stdgwgz-grid-view/sal-stdgwgz-grid-view.vue'),
+                },
+                {
                     path: 'salsources/:salsource?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.salsource.views.gridview.caption',
@@ -597,6 +683,18 @@ const router = new Router({
         component: () => import('@pages/sal/sal-rule-detail-edit-view/sal-rule-detail-edit-view.vue'),
     },
     {
+        path: '/ormduties/:ormduty?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.ormduty.views.pickupgridview.caption',
+            parameters: [
+                { pathName: 'ormduties', parameterName: 'ormduty' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/orm-duty-pickup-grid-view/orm-duty-pickup-grid-view.vue'),
+    },
+    {
         path: '/salparams/:salparam?/editview/:editview?',
         meta: {
             caption: 'entities.salparam.views.editview.caption',
@@ -633,6 +731,32 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/sal/sal-source-pickup-view/sal-source-pickup-view.vue'),
+    },
+    {
+        path: '/ormduties/:ormduty?/pickupview/:pickupview?',
+        meta: {
+            caption: 'entities.ormduty.views.pickupview.caption',
+            parameters: [
+                { pathName: 'ormduties', parameterName: 'ormduty' },
+                { pathName: 'pickupview', parameterName: 'pickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/orm/orm-duty-pickup-view/orm-duty-pickup-view.vue'),
+    },
+    {
+        path: '/salstdgwgzs/:salstdgwgz?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.salstdgwgz.views.gridview.caption',
+            imgPath: '../../../img/jlgl/1/gangweigongzibiaozhun.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'salstdgwgzs', parameterName: 'salstdgwgz' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/sal/sal-stdgwgz-grid-view/sal-stdgwgz-grid-view.vue'),
     },
     {
         path: '/salitems/:salitem?/mpickupview/:mpickupview?',
@@ -931,6 +1055,20 @@ const router = new Router({
         component: () => import('@pages/sal/sal-type-grid-view/sal-type-grid-view.vue'),
     },
     {
+        path: '/salstdgwgzs/:salstdgwgz?/editview/:editview?',
+        meta: {
+            caption: 'entities.salstdgwgz.views.editview.caption',
+            imgPath: '../../../img/jlgl/1/gangweigongzibiaozhun.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'salstdgwgzs', parameterName: 'salstdgwgz' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/sal/sal-stdgwgz-edit-view/sal-stdgwgz-edit-view.vue'),
+    },
+    {
         path: '/ormorgs/:ormorg?/pickupview/:pickupview?',
         meta: {
             caption: 'entities.ormorg.views.pickupview.caption',
@@ -941,6 +1079,20 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/orm-org-pickup-view/orm-org-pickup-view.vue'),
+    },
+    {
+        path: '/salstdxmgzs/:salstdxmgz?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.salstdxmgz.views.gridview.caption',
+            imgPath: '../../../img/jlgl/1/xiangmugongzibiaozhun.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'salstdxmgzs', parameterName: 'salstdxmgz' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/sal/sal-std-xmgz-grid-view/sal-std-xmgz-grid-view.vue'),
     },
     {
         path: '/salsubjects/:salsubject?/pickupgridview/:pickupgridview?',

@@ -8,6 +8,9 @@ import salsubject_zh_CN from '@locale/lanres/entities/sal-subject/sal-subject_zh
 import saltype_zh_CN from '@locale/lanres/entities/sal-type/sal-type_zh_CN';
 import salitem_zh_CN from '@locale/lanres/entities/sal-item/sal-item_zh_CN';
 import salschemeitem_zh_CN from '@locale/lanres/entities/sal-scheme-item/sal-scheme-item_zh_CN';
+import salstdgwgz_zh_CN from '@locale/lanres/entities/sal-stdgwgz/sal-stdgwgz_zh_CN';
+import salstdxmgz_zh_CN from '@locale/lanres/entities/sal-std-xmgz/sal-std-xmgz_zh_CN';
+import ormduty_zh_CN from '@locale/lanres/entities/orm-duty/orm-duty_zh_CN';
 import components_zh_CN from '@locale/lanres/components/components_zh_CN';
 import codelist_zh_CN from '@locale/lanres/codelist/codelist_zh_CN';
 import userCustom_zh_CN from '@locale/lanres/userCustom/userCustom_zh_CN';
@@ -72,6 +75,22 @@ export default {
                 menuitem5: '薪酬规则',
                 menuitem6: '薪酬要素项',
                 menuitem7: '工资单',
+                menuitem8: '薪酬标准',
+                menuitem11: '岗位工资标准',
+                menuitem12: '项目工资标准',
+                menuitem13: '工龄工资标准',
+                menuitem14: '技术津贴标准',
+                menuitem15: '专项津贴标准',
+                menuitem21: '执业资格津贴标准',
+                menuitem22: '独生子女标准',
+                menuitem23: '高温津贴标准',
+                menuitem9: '员工薪酬档案',
+                menuitem16: '员工薪酬档案',
+                menuitem17: '员工薪酬档案确认',
+                menuitem10: '薪酬管理',
+                menuitem18: '薪酬计算计划',
+                menuitem19: '员工工资',
+                menuitem20: '薪酬调整日志',
             },
         },
     },
@@ -86,6 +105,9 @@ export default {
         saltype: saltype_zh_CN,
         salitem: salitem_zh_CN,
         salschemeitem: salschemeitem_zh_CN,
+        salstdgwgz: salstdgwgz_zh_CN,
+        salstdxmgz: salstdxmgz_zh_CN,
+        ormduty: ormduty_zh_CN,
     },
     components: components_zh_CN,
     codelist: codelist_zh_CN,

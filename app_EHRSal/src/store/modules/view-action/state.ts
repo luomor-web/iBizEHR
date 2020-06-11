@@ -62,6 +62,8 @@ export const viewstate: any = {
                 'b0359cd7880295cf20f26a6de36b5b7d',
                 'e713eb5c29d843ac20c1a519648747b6',
                 'ecdae2be14321abf03a8a5498c9d1bf3',
+                'f169dd9ecee320263c3ff7f3bcf017a2',
+                '5c199b2795b1d8e13f8efa3353618b9c',
                 'b82a28f98dabe2147523367af496ce8a',
                 'd3fa27489dfbda569855b3305c9d8e3a',
             ],
@@ -74,6 +76,15 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'e616f28cf9678258f6b776b7618fda78',
+            ],
+        },
+        {
+            viewtag: '3a6f2dca81a7ae749a411e670510767c',
+            viewmodule: 'ORM',
+            viewname: 'OrmDutyPickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
             ],
         },
         {
@@ -104,6 +115,26 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '75c878ff7d82d0ffb35ca4b9e6ab5ac9',
+            ],
+        },
+        {
+            viewtag: '5a1c3b6c244e71fd16c6c2d2aa2033af',
+            viewmodule: 'ORM',
+            viewname: 'OrmDutyPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '3a6f2dca81a7ae749a411e670510767c',
+            ],
+        },
+        {
+            viewtag: '5c199b2795b1d8e13f8efa3353618b9c',
+            viewmodule: 'SAL',
+            viewname: 'SalStdgwgzGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'eed4386059824f226425556c668ffd46',
             ],
         },
         {
@@ -296,6 +327,17 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'eed4386059824f226425556c668ffd46',
+            viewmodule: 'SAL',
+            viewname: 'SalStdgwgzEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'ef4104b2291a9e5496b77cedbb29e007',
+                '5a1c3b6c244e71fd16c6c2d2aa2033af',
+            ],
+        },
+        {
             viewtag: 'ef4104b2291a9e5496b77cedbb29e007',
             viewmodule: 'ORM',
             viewname: 'OrmOrgPickupView',
@@ -303,6 +345,16 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '003e6c435a00b644dbb357eed210cb32',
+            ],
+        },
+        {
+            viewtag: 'f169dd9ecee320263c3ff7f3bcf017a2',
+            viewmodule: 'SAL',
+            viewname: 'SalStdXmgzGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '37c011e01d93d713ab87c482aa2908e8',
             ],
         },
         {
