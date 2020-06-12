@@ -40,6 +40,19 @@ export default class VacLeaveDetailServiceBase extends EntityService {
 // 实体接口
 
     /**
+     * GetNianJia接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof VacLeaveDetailServiceBase
+     */
+    public async GetNianJia(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+            return Http.getInstance().post(`/vacleavedetails/${context.vacleavedetail}`,data,isloading);
+    }
+
+    /**
      * Select接口方法
      *
      * @param {*} [context={}]
@@ -103,21 +116,6 @@ export default class VacLeaveDetailServiceBase extends EntityService {
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/vacleavedetails/${context.vacleavedetail}`,data,isloading);
             return res;
-    }
-
-    /**
-     * GetNianJia接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof VacLeaveDetailServiceBase
-     */
-    public async GetNianJia(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            let res:any = await Http.getInstance().get(`/vacleavedetails/${context.vacleavedetail}/getnianjia`,isloading);
-            return res;
-
     }
 
     /**
