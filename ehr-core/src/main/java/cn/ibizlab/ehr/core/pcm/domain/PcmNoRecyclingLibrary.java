@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -125,6 +126,7 @@ public class PcmNoRecyclingLibrary extends EntityMP implements Serializable {
         this.yglx = yglx ;
         this.modify("yglx",yglx);
     }
+
     /**
      * 设置 [组织]
      */
@@ -132,6 +134,7 @@ public class PcmNoRecyclingLibrary extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [员工编号回收库名称]
      */
@@ -139,6 +142,7 @@ public class PcmNoRecyclingLibrary extends EntityMP implements Serializable {
         this.pcmnorecyclinglibraryname = pcmnorecyclinglibraryname ;
         this.modify("pcmnorecyclinglibraryname",pcmnorecyclinglibraryname);
     }
+
     /**
      * 设置 [是否可用]
      */
@@ -146,6 +150,7 @@ public class PcmNoRecyclingLibrary extends EntityMP implements Serializable {
         this.useful = useful ;
         this.modify("useful",useful);
     }
+
     /**
      * 设置 [员工编号]
      */
@@ -153,6 +158,7 @@ public class PcmNoRecyclingLibrary extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
 
 }
 

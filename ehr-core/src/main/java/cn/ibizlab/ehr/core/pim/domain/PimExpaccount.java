@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -169,6 +170,17 @@ public class PimExpaccount extends EntityMP implements Serializable {
         this.ffsj = ffsj ;
         this.modify("ffsj",ffsj);
     }
+
+    /**
+     * 格式化日期 [发放时间]
+     */
+    public String formatFfsj(){
+        if (this.ffsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(ffsj);
+    }
     /**
      * 设置 [发放人数]
      */
@@ -176,6 +188,7 @@ public class PimExpaccount extends EntityMP implements Serializable {
         this.ffrs = ffrs ;
         this.modify("ffrs",ffrs);
     }
+
     /**
      * 设置 [费用金额]
      */
@@ -183,6 +196,7 @@ public class PimExpaccount extends EntityMP implements Serializable {
         this.fyje = fyje ;
         this.modify("fyje",fyje);
     }
+
     /**
      * 设置 [费用台账名称]
      */
@@ -190,6 +204,7 @@ public class PimExpaccount extends EntityMP implements Serializable {
         this.pimexpaccountname = pimexpaccountname ;
         this.modify("pimexpaccountname",pimexpaccountname);
     }
+
     /**
      * 设置 [费用标准]
      */
@@ -197,6 +212,7 @@ public class PimExpaccount extends EntityMP implements Serializable {
         this.ffybz = ffybz ;
         this.modify("ffybz",ffybz);
     }
+
     /**
      * 设置 [备注]
      */
@@ -204,6 +220,7 @@ public class PimExpaccount extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [费用类别]
      */
@@ -211,6 +228,7 @@ public class PimExpaccount extends EntityMP implements Serializable {
         this.fylb = fylb ;
         this.modify("fylb",fylb);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -218,6 +236,7 @@ public class PimExpaccount extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

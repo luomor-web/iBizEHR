@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -141,6 +142,17 @@ public class PcmXygzzkhjgjl extends EntityMP implements Serializable {
         this.jssj = jssj ;
         this.modify("jssj",jssj);
     }
+
+    /**
+     * 格式化日期 [结束时间]
+     */
+    public String formatJssj(){
+        if (this.jssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jssj);
+    }
     /**
      * 设置 [员工编号]
      */
@@ -148,6 +160,7 @@ public class PcmXygzzkhjgjl extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [评价]
      */
@@ -155,6 +168,7 @@ public class PcmXygzzkhjgjl extends EntityMP implements Serializable {
         this.pj = pj ;
         this.modify("pj",pj);
     }
+
     /**
      * 设置 [员工]
      */
@@ -162,6 +176,7 @@ public class PcmXygzzkhjgjl extends EntityMP implements Serializable {
         this.pcmxygzzkhjgjlname = pcmxygzzkhjgjlname ;
         this.modify("pcmxygzzkhjgjlname",pcmxygzzkhjgjlname);
     }
+
     /**
      * 设置 [逻辑有效标志]
      */
@@ -169,6 +184,7 @@ public class PcmXygzzkhjgjl extends EntityMP implements Serializable {
         this.enable = enable ;
         this.modify("enable",enable);
     }
+
     /**
      * 设置 [分数]
      */
@@ -176,12 +192,24 @@ public class PcmXygzzkhjgjl extends EntityMP implements Serializable {
         this.fs = fs ;
         this.modify("fs",fs);
     }
+
     /**
      * 设置 [起始时间]
      */
     public void setQssj(Timestamp qssj){
         this.qssj = qssj ;
         this.modify("qssj",qssj);
+    }
+
+    /**
+     * 格式化日期 [起始时间]
+     */
+    public String formatQssj(){
+        if (this.qssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(qssj);
     }
 
 }

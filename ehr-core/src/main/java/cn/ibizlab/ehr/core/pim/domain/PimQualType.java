@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -113,6 +114,7 @@ public class PimQualType extends EntityMP implements Serializable {
         this.seialno = seialno ;
         this.modify("seialno",seialno);
     }
+
     /**
      * 设置 [岗位（技能）证书]
      */
@@ -120,6 +122,7 @@ public class PimQualType extends EntityMP implements Serializable {
         this.pimqualtypename = pimqualtypename ;
         this.modify("pimqualtypename",pimqualtypename);
     }
+
 
 }
 

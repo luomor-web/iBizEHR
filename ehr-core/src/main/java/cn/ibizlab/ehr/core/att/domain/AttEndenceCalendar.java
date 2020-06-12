@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -186,6 +187,7 @@ public class AttEndenceCalendar extends EntityMP implements Serializable {
         this.attendencecalendarname = attendencecalendarname ;
         this.modify("attendencecalendarname",attendencecalendarname);
     }
+
     /**
      * 设置 [年度]
      */
@@ -193,6 +195,7 @@ public class AttEndenceCalendar extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [上班/休假]
      */
@@ -200,12 +203,24 @@ public class AttEndenceCalendar extends EntityMP implements Serializable {
         this.lx1 = lx1 ;
         this.modify("lx1",lx1);
     }
+
     /**
      * 设置 [日期]
      */
     public void setRq(Timestamp rq){
         this.rq = rq ;
         this.modify("rq",rq);
+    }
+
+    /**
+     * 格式化日期 [日期]
+     */
+    public String formatRq(){
+        if (this.rq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(rq);
     }
     /**
      * 设置 [组织标识]
@@ -214,6 +229,7 @@ public class AttEndenceCalendar extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [节假日管理标识]
      */
@@ -221,6 +237,7 @@ public class AttEndenceCalendar extends EntityMP implements Serializable {
         this.vacholidayid = vacholidayid ;
         this.modify("vacholidayid",vacholidayid);
     }
+
 
 }
 

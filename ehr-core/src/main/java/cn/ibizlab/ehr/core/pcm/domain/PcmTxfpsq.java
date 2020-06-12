@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -283,6 +284,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.finished = finished ;
         this.modify("finished",finished);
     }
+
     /**
      * 设置 [操作人ID]
      */
@@ -290,6 +292,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.czrid = czrid ;
         this.modify("czrid",czrid);
     }
+
     /**
      * 设置 [审核状态]
      */
@@ -297,6 +300,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.checkstatus = checkstatus ;
         this.modify("checkstatus",checkstatus);
     }
+
     /**
      * 设置 [操作人]
      */
@@ -304,12 +308,24 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.czr = czr ;
         this.modify("czr",czr);
     }
+
     /**
      * 设置 [返聘生效时间]
      */
     public void setFpsxsj(Timestamp fpsxsj){
         this.fpsxsj = fpsxsj ;
         this.modify("fpsxsj",fpsxsj);
+    }
+
+    /**
+     * 格式化日期 [返聘生效时间]
+     */
+    public String formatFpsxsj(){
+        if (this.fpsxsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(fpsxsj);
     }
     /**
      * 设置 [标题]
@@ -318,6 +334,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.pcmtxfpsqname = pcmtxfpsqname ;
         this.modify("pcmtxfpsqname",pcmtxfpsqname);
     }
+
     /**
      * 设置 [备注]
      */
@@ -325,6 +342,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [退休前组织]
      */
@@ -332,6 +350,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.zz = zz ;
         this.modify("zz",zz);
     }
+
     /**
      * 设置 [退休前职务]
      */
@@ -339,6 +358,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.yzw = yzw ;
         this.modify("yzw",yzw);
     }
+
     /**
      * 设置 [新员工编号]
      */
@@ -346,6 +366,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.xygbh = xygbh ;
         this.modify("xygbh",xygbh);
     }
+
     /**
      * 设置 [年龄]
      */
@@ -353,6 +374,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.nl = nl ;
         this.modify("nl",nl);
     }
+
     /**
      * 设置 [部门标志]
      */
@@ -360,6 +382,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.bmid = bmid ;
         this.modify("bmid",bmid);
     }
+
     /**
      * 设置 [原员工编号]
      */
@@ -367,6 +390,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [通讯地址]
      */
@@ -374,6 +398,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.postaladdress = postaladdress ;
         this.modify("postaladdress",postaladdress);
     }
+
     /**
      * 设置 [退休前岗位]
      */
@@ -381,6 +406,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.ygw = ygw ;
         this.modify("ygw",ygw);
     }
+
     /**
      * 设置 [退休前职级]
      */
@@ -388,6 +414,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.rank = rank ;
         this.modify("rank",rank);
     }
+
     /**
      * 设置 [组织id]
      */
@@ -395,12 +422,24 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.zzid = zzid ;
         this.modify("zzid",zzid);
     }
+
     /**
      * 设置 [退休时间]
      */
     public void setTxdq(Timestamp txdq){
         this.txdq = txdq ;
         this.modify("txdq",txdq);
+    }
+
+    /**
+     * 格式化日期 [退休时间]
+     */
+    public String formatTxdq(){
+        if (this.txdq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(txdq);
     }
     /**
      * 设置 [联系电话]
@@ -409,6 +448,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.lxdh = lxdh ;
         this.modify("lxdh",lxdh);
     }
+
     /**
      * 设置 [退休前部门]
      */
@@ -416,6 +456,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.bm = bm ;
         this.modify("bm",bm);
     }
+
     /**
      * 设置 [退休员工ID]
      */
@@ -423,6 +464,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [应聘者ID]
      */
@@ -430,6 +472,7 @@ public class PcmTxfpsq extends EntityMP implements Serializable {
         this.pcmprofileid = pcmprofileid ;
         this.modify("pcmprofileid",pcmprofileid);
     }
+
 
 }
 

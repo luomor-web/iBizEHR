@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -126,6 +127,17 @@ public class ParKhfa extends EntityMP implements Serializable {
         this.szsj = szsj ;
         this.modify("szsj",szsj);
     }
+
+    /**
+     * 格式化日期 [设置时间]
+     */
+    public String formatSzsj(){
+        if (this.szsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(szsj);
+    }
     /**
      * 设置 [排序号]
      */
@@ -133,6 +145,7 @@ public class ParKhfa extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [考核对象]
      */
@@ -140,6 +153,7 @@ public class ParKhfa extends EntityMP implements Serializable {
         this.parkhfaname = parkhfaname ;
         this.modify("parkhfaname",parkhfaname);
     }
+
     /**
      * 设置 [考核对象]
      */
@@ -147,6 +161,7 @@ public class ParKhfa extends EntityMP implements Serializable {
         this.khdx = khdx ;
         this.modify("khdx",khdx);
     }
+
     /**
      * 设置 [是否有效]
      */
@@ -154,6 +169,7 @@ public class ParKhfa extends EntityMP implements Serializable {
         this.availableflag = availableflag ;
         this.modify("availableflag",availableflag);
     }
+
 
 }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -288,6 +289,7 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.ormpostname = ormpostname ;
         this.modify("ormpostname",ormpostname);
     }
+
     /**
      * 设置 [职务(*)]
      */
@@ -295,6 +297,7 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.ormdutyname = ormdutyname ;
         this.modify("ormdutyname",ormdutyname);
     }
+
     /**
      * 设置 [是否主要经历]
      */
@@ -302,6 +305,7 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.experience = experience ;
         this.modify("experience",experience);
     }
+
     /**
      * 设置 [记录管理编号]
      */
@@ -309,6 +313,7 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.jlglbh = jlglbh ;
         this.modify("jlglbh",jlglbh);
     }
+
     /**
      * 设置 [工作履历名称]
      */
@@ -316,12 +321,24 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.pimworkhistoryname = pimworkhistoryname ;
         this.modify("pimworkhistoryname",pimworkhistoryname);
     }
+
     /**
      * 设置 [任职开始时间(*)]
      */
     public void setRzkssj(Timestamp rzkssj){
         this.rzkssj = rzkssj ;
         this.modify("rzkssj",rzkssj);
+    }
+
+    /**
+     * 格式化日期 [任职开始时间(*)]
+     */
+    public String formatRzkssj(){
+        if (this.rzkssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(rzkssj);
     }
     /**
      * 设置 [结束时间]
@@ -330,6 +347,17 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.jssj = jssj ;
         this.modify("jssj",jssj);
     }
+
+    /**
+     * 格式化日期 [结束时间]
+     */
+    public String formatJssj(){
+        if (this.jssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jssj);
+    }
     /**
      * 设置 [记录所属]
      */
@@ -337,12 +365,24 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.jlss = jlss ;
         this.modify("jlss",jlss);
     }
+
     /**
      * 设置 [任职结束时间]
      */
     public void setRzjssj(Timestamp rzjssj){
         this.rzjssj = rzjssj ;
         this.modify("rzjssj",rzjssj);
+    }
+
+    /**
+     * 格式化日期 [任职结束时间]
+     */
+    public String formatRzjssj(){
+        if (this.rzjssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(rzjssj);
     }
     /**
      * 设置 [起始时间]
@@ -351,6 +391,17 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.qssj = qssj ;
         this.modify("qssj",qssj);
     }
+
+    /**
+     * 格式化日期 [起始时间]
+     */
+    public String formatQssj(){
+        if (this.qssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(qssj);
+    }
     /**
      * 设置 [兼职借调类型]
      */
@@ -358,6 +409,7 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.cfplx = cfplx ;
         this.modify("cfplx",cfplx);
     }
+
     /**
      * 设置 [部门(*)]
      */
@@ -365,6 +417,7 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.ormorgsectorname = ormorgsectorname ;
         this.modify("ormorgsectorname",ormorgsectorname);
     }
+
     /**
      * 设置 [外单位履历]
      */
@@ -372,6 +425,7 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.isoutrecord = isoutrecord ;
         this.modify("isoutrecord",isoutrecord);
     }
+
     /**
      * 设置 [工作单位(*)]
      */
@@ -379,6 +433,7 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.ormorgname = ormorgname ;
         this.modify("ormorgname",ormorgname);
     }
+
     /**
      * 设置 [备注]
      */
@@ -386,6 +441,7 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [记录操作者]
      */
@@ -393,6 +449,7 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.jlczz = jlczz ;
         this.modify("jlczz",jlczz);
     }
+
     /**
      * 设置 [履历说明]
      */
@@ -400,6 +457,7 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.record = record ;
         this.modify("record",record);
     }
+
     /**
      * 设置 [记录审批状态]
      */
@@ -407,6 +465,7 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.jlspzt = jlspzt ;
         this.modify("jlspzt",jlspzt);
     }
+
     /**
      * 设置 [职级标识]
      */
@@ -414,6 +473,7 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.ormrankid = ormrankid ;
         this.modify("ormrankid",ormrankid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -421,6 +481,7 @@ public class PimWorkHistory extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

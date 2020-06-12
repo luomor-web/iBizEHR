@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -154,6 +155,7 @@ public class PcmRcxl extends EntityMP implements Serializable {
         this.code = code ;
         this.modify("code",code);
     }
+
     /**
      * 设置 [排序编码]
      */
@@ -161,6 +163,7 @@ public class PcmRcxl extends EntityMP implements Serializable {
         this.snumber = snumber ;
         this.modify("snumber",snumber);
     }
+
     /**
      * 设置 [人才序列类型]
      */
@@ -168,6 +171,7 @@ public class PcmRcxl extends EntityMP implements Serializable {
         this.rcxllx = rcxllx ;
         this.modify("rcxllx",rcxllx);
     }
+
     /**
      * 设置 [人才序列名称]
      */
@@ -175,6 +179,7 @@ public class PcmRcxl extends EntityMP implements Serializable {
         this.pcmrcxlname = pcmrcxlname ;
         this.modify("pcmrcxlname",pcmrcxlname);
     }
+
     /**
      * 设置 [序列等级]
      */
@@ -182,6 +187,7 @@ public class PcmRcxl extends EntityMP implements Serializable {
         this.xldj = xldj ;
         this.modify("xldj",xldj);
     }
+
     /**
      * 设置 [人才序列标识]
      */
@@ -189,6 +195,7 @@ public class PcmRcxl extends EntityMP implements Serializable {
         this.pcmrcxlid2 = pcmrcxlid2 ;
         this.modify("pcmrcxlid2",pcmrcxlid2);
     }
+
 
 }
 

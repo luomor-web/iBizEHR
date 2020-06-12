@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -154,6 +155,7 @@ public class ParNdlhmbkh extends EntityMP implements Serializable {
         this.ygname = ygname ;
         this.modify("ygname",ygname);
     }
+
     /**
      * 设置 [年度]
      */
@@ -161,12 +163,24 @@ public class ParNdlhmbkh extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [截止时间]
      */
     public void setJzsj(Timestamp jzsj){
         this.jzsj = jzsj ;
         this.modify("jzsj",jzsj);
+    }
+
+    /**
+     * 格式化日期 [截止时间]
+     */
+    public String formatJzsj(){
+        if (this.jzsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jzsj);
     }
     /**
      * 设置 [所属组织]
@@ -175,6 +189,7 @@ public class ParNdlhmbkh extends EntityMP implements Serializable {
         this.zz = zz ;
         this.modify("zz",zz);
     }
+
     /**
      * 设置 [所属部门]
      */
@@ -182,6 +197,7 @@ public class ParNdlhmbkh extends EntityMP implements Serializable {
         this.bm = bm ;
         this.modify("bm",bm);
     }
+
     /**
      * 设置 [总得分]
      */
@@ -189,6 +205,7 @@ public class ParNdlhmbkh extends EntityMP implements Serializable {
         this.zdf = zdf ;
         this.modify("zdf",zdf);
     }
+
     /**
      * 设置 [量化目标考核]
      */
@@ -196,6 +213,7 @@ public class ParNdlhmbkh extends EntityMP implements Serializable {
         this.parndlhmbkhname = parndlhmbkhname ;
         this.modify("parndlhmbkhname",parndlhmbkhname);
     }
+
     /**
      * 设置 [员工]
      */
@@ -203,6 +221,7 @@ public class ParNdlhmbkh extends EntityMP implements Serializable {
         this.ygid = ygid ;
         this.modify("ygid",ygid);
     }
+
     /**
      * 设置 [考核类型]
      */
@@ -210,6 +229,7 @@ public class ParNdlhmbkh extends EntityMP implements Serializable {
         this.khlx = khlx ;
         this.modify("khlx",khlx);
     }
+
 
 }
 

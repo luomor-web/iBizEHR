@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -233,6 +234,7 @@ public class PcmTestResult extends EntityMP implements Serializable {
         this.testresultname = testresultname ;
         this.modify("testresultname",testresultname);
     }
+
     /**
      * 设置 [胜任力（岗位匹配等级）]
      */
@@ -240,6 +242,7 @@ public class PcmTestResult extends EntityMP implements Serializable {
         this.matchdegree = matchdegree ;
         this.modify("matchdegree",matchdegree);
     }
+
     /**
      * 设置 [心理健康]
      */
@@ -247,6 +250,7 @@ public class PcmTestResult extends EntityMP implements Serializable {
         this.psychologystatus = psychologystatus ;
         this.modify("psychologystatus",psychologystatus);
     }
+
     /**
      * 设置 [能力（能力倾向得分）]
      */
@@ -254,12 +258,24 @@ public class PcmTestResult extends EntityMP implements Serializable {
         this.abilityscore = abilityscore ;
         this.modify("abilityscore",abilityscore);
     }
+
     /**
      * 设置 [版本时间]
      */
     public void setBbsj(Timestamp bbsj){
         this.bbsj = bbsj ;
         this.modify("bbsj",bbsj);
+    }
+
+    /**
+     * 格式化日期 [版本时间]
+     */
+    public String formatBbsj(){
+        if (this.bbsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(bbsj);
     }
     /**
      * 设置 [能力得分报告]
@@ -268,6 +284,7 @@ public class PcmTestResult extends EntityMP implements Serializable {
         this.abilityscorereports = abilityscorereports ;
         this.modify("abilityscorereports",abilityscorereports);
     }
+
     /**
      * 设置 [能力]
      */
@@ -275,6 +292,7 @@ public class PcmTestResult extends EntityMP implements Serializable {
         this.abilitygrade = abilitygrade ;
         this.modify("abilitygrade",abilitygrade);
     }
+
     /**
      * 设置 [心理健康等级]
      */
@@ -282,6 +300,7 @@ public class PcmTestResult extends EntityMP implements Serializable {
         this.psychologyhealthylevel = psychologyhealthylevel ;
         this.modify("psychologyhealthylevel",psychologyhealthylevel);
     }
+
     /**
      * 设置 [胜任力]
      */
@@ -289,6 +308,7 @@ public class PcmTestResult extends EntityMP implements Serializable {
         this.jobfitdegree = jobfitdegree ;
         this.modify("jobfitdegree",jobfitdegree);
     }
+
     /**
      * 设置 [是否有效]
      */
@@ -296,6 +316,7 @@ public class PcmTestResult extends EntityMP implements Serializable {
         this.flag = flag ;
         this.modify("flag",flag);
     }
+
     /**
      * 设置 [第一次测试]
      */
@@ -303,6 +324,7 @@ public class PcmTestResult extends EntityMP implements Serializable {
         this.firsttest = firsttest ;
         this.modify("firsttest",firsttest);
     }
+
     /**
      * 设置 [考试得分]
      */
@@ -310,6 +332,7 @@ public class PcmTestResult extends EntityMP implements Serializable {
         this.examscore = examscore ;
         this.modify("examscore",examscore);
     }
+
     /**
      * 设置 [考试报告]
      */
@@ -317,6 +340,7 @@ public class PcmTestResult extends EntityMP implements Serializable {
         this.examscorereports = examscorereports ;
         this.modify("examscorereports",examscorereports);
     }
+
     /**
      * 设置 [第二次测试]
      */
@@ -324,6 +348,7 @@ public class PcmTestResult extends EntityMP implements Serializable {
         this.secondtest = secondtest ;
         this.modify("secondtest",secondtest);
     }
+
     /**
      * 设置 [心理健康报告]
      */
@@ -331,6 +356,7 @@ public class PcmTestResult extends EntityMP implements Serializable {
         this.psychologyhealthylevelreports = psychologyhealthylevelreports ;
         this.modify("psychologyhealthylevelreports",psychologyhealthylevelreports);
     }
+
     /**
      * 设置 [胜任力测试报告]
      */
@@ -338,6 +364,7 @@ public class PcmTestResult extends EntityMP implements Serializable {
         this.matchdegreereports = matchdegreereports ;
         this.modify("matchdegreereports",matchdegreereports);
     }
+
     /**
      * 设置 [应聘者ID]
      */
@@ -345,6 +372,7 @@ public class PcmTestResult extends EntityMP implements Serializable {
         this.pcmprofileid = pcmprofileid ;
         this.modify("pcmprofileid",pcmprofileid);
     }
+
 
 }
 

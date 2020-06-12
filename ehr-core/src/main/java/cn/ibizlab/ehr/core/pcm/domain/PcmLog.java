@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -198,6 +199,7 @@ public class PcmLog extends EntityMP implements Serializable {
         this.optdeid = optdeid ;
         this.modify("optdeid",optdeid);
     }
+
     /**
      * 设置 [变动类型]
      */
@@ -205,6 +207,7 @@ public class PcmLog extends EntityMP implements Serializable {
         this.type = type ;
         this.modify("type",type);
     }
+
     /**
      * 设置 [操作的实体行为]
      */
@@ -212,6 +215,7 @@ public class PcmLog extends EntityMP implements Serializable {
         this.optdeaction = optdeaction ;
         this.modify("optdeaction",optdeaction);
     }
+
     /**
      * 设置 [操作的实体名称]
      */
@@ -219,6 +223,7 @@ public class PcmLog extends EntityMP implements Serializable {
         this.optdename = optdename ;
         this.modify("optdename",optdename);
     }
+
     /**
      * 设置 [是否生效]
      */
@@ -226,6 +231,7 @@ public class PcmLog extends EntityMP implements Serializable {
         this.sfsx = sfsx ;
         this.modify("sfsx",sfsx);
     }
+
     /**
      * 设置 [配置变动日志名称]
      */
@@ -233,6 +239,7 @@ public class PcmLog extends EntityMP implements Serializable {
         this.pcmlogname = pcmlogname ;
         this.modify("pcmlogname",pcmlogname);
     }
+
     /**
      * 设置 [变动内容]
      */
@@ -240,6 +247,7 @@ public class PcmLog extends EntityMP implements Serializable {
         this.content = content ;
         this.modify("content",content);
     }
+
     /**
      * 设置 [操作实体内容]
      */
@@ -247,6 +255,7 @@ public class PcmLog extends EntityMP implements Serializable {
         this.optcontent = optcontent ;
         this.modify("optcontent",optcontent);
     }
+
     /**
      * 设置 [是否需要定时操作]
      */
@@ -254,12 +263,24 @@ public class PcmLog extends EntityMP implements Serializable {
         this.needopt = needopt ;
         this.modify("needopt",needopt);
     }
+
     /**
      * 设置 [生效日期]
      */
     public void setSxrq(Timestamp sxrq){
         this.sxrq = sxrq ;
         this.modify("sxrq",sxrq);
+    }
+
+    /**
+     * 格式化日期 [生效日期]
+     */
+    public String formatSxrq(){
+        if (this.sxrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(sxrq);
     }
     /**
      * 设置 [员工编号]
@@ -268,6 +289,7 @@ public class PcmLog extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -275,6 +297,7 @@ public class PcmLog extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -177,6 +178,7 @@ public class SocSelfareBase extends EntityMP implements Serializable {
         this.socselfarebasename = socselfarebasename ;
         this.modify("socselfarebasename",socselfarebasename);
     }
+
     /**
      * 设置 [参保地区]
      */
@@ -184,6 +186,7 @@ public class SocSelfareBase extends EntityMP implements Serializable {
         this.cbdq = cbdq ;
         this.modify("cbdq",cbdq);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -191,6 +194,7 @@ public class SocSelfareBase extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [个人社保比例(%)]
      */
@@ -198,6 +202,7 @@ public class SocSelfareBase extends EntityMP implements Serializable {
         this.grsbbl = grsbbl ;
         this.modify("grsbbl",grsbbl);
     }
+
     /**
      * 设置 [社保福利类型]
      */
@@ -205,6 +210,7 @@ public class SocSelfareBase extends EntityMP implements Serializable {
         this.sblx = sblx ;
         this.modify("sblx",sblx);
     }
+
     /**
      * 设置 [参保单位]
      */
@@ -212,6 +218,7 @@ public class SocSelfareBase extends EntityMP implements Serializable {
         this.cbdw = cbdw ;
         this.modify("cbdw",cbdw);
     }
+
     /**
      * 设置 [单位社保比例(%)]
      */
@@ -219,6 +226,7 @@ public class SocSelfareBase extends EntityMP implements Serializable {
         this.dwsbbli = dwsbbli ;
         this.modify("dwsbbli",dwsbbli);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -226,6 +234,7 @@ public class SocSelfareBase extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

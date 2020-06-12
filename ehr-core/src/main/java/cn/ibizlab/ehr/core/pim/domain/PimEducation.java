@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -388,6 +389,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.bdwgznx = bdwgznx ;
         this.modify("bdwgznx",bdwgznx);
     }
+
     /**
      * 设置 [拒绝原因]
      */
@@ -395,6 +397,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [是否第一学历]
      */
@@ -402,6 +405,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.sfdyxl = sfdyxl ;
         this.modify("sfdyxl",sfdyxl);
     }
+
     /**
      * 设置 [记录操作者]
      */
@@ -409,6 +413,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.jlczz = jlczz ;
         this.modify("jlczz",jlczz);
     }
+
     /**
      * 设置 [备注]
      */
@@ -416,6 +421,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [教育名称]
      */
@@ -423,6 +429,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.jymc = jymc ;
         this.modify("jymc",jymc);
     }
+
     /**
      * 设置 [一级学科]
      */
@@ -430,12 +437,24 @@ public class PimEducation extends EntityMP implements Serializable {
         this.xkml = xkml ;
         this.modify("xkml",xkml);
     }
+
     /**
      * 设置 [参加工作时间]
      */
     public void setCjgzsj(Timestamp cjgzsj){
         this.cjgzsj = cjgzsj ;
         this.modify("cjgzsj",cjgzsj);
+    }
+
+    /**
+     * 格式化日期 [参加工作时间]
+     */
+    public String formatCjgzsj(){
+        if (this.cjgzsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(cjgzsj);
     }
     /**
      * 设置 [所学专业]
@@ -444,12 +463,24 @@ public class PimEducation extends EntityMP implements Serializable {
         this.sxzy = sxzy ;
         this.modify("sxzy",sxzy);
     }
+
     /**
      * 设置 [毕业时间]
      */
     public void setJssj(Timestamp jssj){
         this.jssj = jssj ;
         this.modify("jssj",jssj);
+    }
+
+    /**
+     * 格式化日期 [毕业时间]
+     */
+    public String formatJssj(){
+        if (this.jssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jssj);
     }
     /**
      * 设置 [局工作时间]
@@ -458,6 +489,17 @@ public class PimEducation extends EntityMP implements Serializable {
         this.dzjbjsj = dzjbjsj ;
         this.modify("dzjbjsj",dzjbjsj);
     }
+
+    /**
+     * 格式化日期 [局工作时间]
+     */
+    public String formatDzjbjsj(){
+        if (this.dzjbjsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(dzjbjsj);
+    }
     /**
      * 设置 [学位]
      */
@@ -465,6 +507,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.degree = degree ;
         this.modify("degree",degree);
     }
+
     /**
      * 设置 [学位证]
      */
@@ -472,6 +515,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.xwz = xwz ;
         this.modify("xwz",xwz);
     }
+
     /**
      * 设置 [学习形式]
      */
@@ -479,6 +523,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.xllx = xllx ;
         this.modify("xllx",xllx);
     }
+
     /**
      * 设置 [学校性质]
      */
@@ -486,12 +531,24 @@ public class PimEducation extends EntityMP implements Serializable {
         this.xxxz = xxxz ;
         this.modify("xxxz",xxxz);
     }
+
     /**
      * 设置 [建筑系统工作时间]
      */
     public void setTozjdate(Timestamp tozjdate){
         this.tozjdate = tozjdate ;
         this.modify("tozjdate",tozjdate);
+    }
+
+    /**
+     * 格式化日期 [建筑系统工作时间]
+     */
+    public String formatTozjdate(){
+        if (this.tozjdate == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(tozjdate);
     }
     /**
      * 设置 [记录管理编号]
@@ -500,6 +557,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.jlglbh = jlglbh ;
         this.modify("jlglbh",jlglbh);
     }
+
     /**
      * 设置 [记录审批状态]
      */
@@ -507,6 +565,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.jlspzt = jlspzt ;
         this.modify("jlspzt",jlspzt);
     }
+
     /**
      * 设置 [毕业证]
      */
@@ -514,6 +573,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.btz = btz ;
         this.modify("btz",btz);
     }
+
     /**
      * 设置 [学历验证]
      */
@@ -521,6 +581,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.xlcx = xlcx ;
         this.modify("xlcx",xlcx);
     }
+
     /**
      * 设置 [教育信息名称]
      */
@@ -528,6 +589,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.pimeducationname = pimeducationname ;
         this.modify("pimeducationname",pimeducationname);
     }
+
     /**
      * 设置 [毕业院校]
      */
@@ -535,12 +597,24 @@ public class PimEducation extends EntityMP implements Serializable {
         this.byyx = byyx ;
         this.modify("byyx",byyx);
     }
+
     /**
      * 设置 [入学时间]
      */
     public void setQssj(Timestamp qssj){
         this.qssj = qssj ;
         this.modify("qssj",qssj);
+    }
+
+    /**
+     * 格式化日期 [入学时间]
+     */
+    public String formatQssj(){
+        if (this.qssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(qssj);
     }
     /**
      * 设置 [工作年限]
@@ -549,6 +623,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.gznx = gznx ;
         this.modify("gznx",gznx);
     }
+
     /**
      * 设置 [记录所属]
      */
@@ -556,6 +631,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.jlss = jlss ;
         this.modify("jlss",jlss);
     }
+
     /**
      * 设置 [其他附件]
      */
@@ -563,6 +639,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [是否最高学历]
      */
@@ -570,6 +647,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.sfzgxl = sfzgxl ;
         this.modify("sfzgxl",sfzgxl);
     }
+
     /**
      * 设置 [学历]
      */
@@ -577,12 +655,24 @@ public class PimEducation extends EntityMP implements Serializable {
         this.xl = xl ;
         this.modify("xl",xl);
     }
+
     /**
      * 设置 [本单位工作时间]
      */
     public void setDbdwsj(Timestamp dbdwsj){
         this.dbdwsj = dbdwsj ;
         this.modify("dbdwsj",dbdwsj);
+    }
+
+    /**
+     * 格式化日期 [本单位工作时间]
+     */
+    public String formatDbdwsj(){
+        if (this.dbdwsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(dbdwsj);
     }
     /**
      * 设置 [建筑系统工作年限]
@@ -591,6 +681,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.zjxtgznx = zjxtgznx ;
         this.modify("zjxtgznx",zjxtgznx);
     }
+
     /**
      * 设置 [局工作年限]
      */
@@ -598,6 +689,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.bjgznx = bjgznx ;
         this.modify("bjgznx",bjgznx);
     }
+
     /**
      * 设置 [员工编号]
      */
@@ -605,6 +697,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -612,6 +705,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -619,6 +713,7 @@ public class PimEducation extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

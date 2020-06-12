@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -227,6 +228,7 @@ public class TrmTrainBuapply extends EntityMP implements Serializable {
         this.jgfy = jgfy ;
         this.modify("jgfy",jgfy);
     }
+
     /**
      * 设置 [备注]
      */
@@ -234,6 +236,7 @@ public class TrmTrainBuapply extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [实际费用]
      */
@@ -241,6 +244,7 @@ public class TrmTrainBuapply extends EntityMP implements Serializable {
         this.tzje = tzje ;
         this.modify("tzje",tzje);
     }
+
     /**
      * 设置 [培训预算申请名称]
      */
@@ -248,6 +252,7 @@ public class TrmTrainBuapply extends EntityMP implements Serializable {
         this.trmtrainbuapplyname = trmtrainbuapplyname ;
         this.modify("trmtrainbuapplyname",trmtrainbuapplyname);
     }
+
     /**
      * 设置 [师资费]
      */
@@ -255,6 +260,7 @@ public class TrmTrainBuapply extends EntityMP implements Serializable {
         this.szf = szf ;
         this.modify("szf",szf);
     }
+
     /**
      * 设置 [年度]
      */
@@ -262,6 +268,7 @@ public class TrmTrainBuapply extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [差旅费]
      */
@@ -269,6 +276,7 @@ public class TrmTrainBuapply extends EntityMP implements Serializable {
         this.clf = clf ;
         this.modify("clf",clf);
     }
+
     /**
      * 设置 [其他费用]
      */
@@ -276,6 +284,7 @@ public class TrmTrainBuapply extends EntityMP implements Serializable {
         this.qtfy = qtfy ;
         this.modify("qtfy",qtfy);
     }
+
     /**
      * 设置 [场地租金]
      */
@@ -283,6 +292,7 @@ public class TrmTrainBuapply extends EntityMP implements Serializable {
         this.cdzj = cdzj ;
         this.modify("cdzj",cdzj);
     }
+
     /**
      * 设置 [培训预算]
      */
@@ -290,6 +300,7 @@ public class TrmTrainBuapply extends EntityMP implements Serializable {
         this.yszje = yszje ;
         this.modify("yszje",yszje);
     }
+
     /**
      * 设置 [调整预算项目]
      */
@@ -297,6 +308,7 @@ public class TrmTrainBuapply extends EntityMP implements Serializable {
         this.tzysxm = tzysxm ;
         this.modify("tzysxm",tzysxm);
     }
+
     /**
      * 设置 [经费类型]
      */
@@ -304,6 +316,7 @@ public class TrmTrainBuapply extends EntityMP implements Serializable {
         this.jflx = jflx ;
         this.modify("jflx",jflx);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -311,6 +324,7 @@ public class TrmTrainBuapply extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [培训计划项标识]
      */
@@ -318,6 +332,7 @@ public class TrmTrainBuapply extends EntityMP implements Serializable {
         this.trmtrainplantermid = trmtrainplantermid ;
         this.modify("trmtrainplantermid",trmtrainplantermid);
     }
+
 
 }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -228,6 +229,7 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
         this.practicereferencesposition = practicereferencesposition ;
         this.modify("practicereferencesposition",practicereferencesposition);
     }
+
     /**
      * 设置 [单位介绍]
      */
@@ -235,12 +237,24 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
         this.practicecompanydescription = practicecompanydescription ;
         this.modify("practicecompanydescription",practicecompanydescription);
     }
+
     /**
      * 设置 [结束时间]
      */
     public void setEndtime(Timestamp endtime){
         this.endtime = endtime ;
         this.modify("endtime",endtime);
+    }
+
+    /**
+     * 格式化日期 [结束时间]
+     */
+    public String formatEndtime(){
+        if (this.endtime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(endtime);
     }
     /**
      * 设置 [实习单位]
@@ -249,6 +263,7 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
         this.practicecompanyname = practicecompanyname ;
         this.modify("practicecompanyname",practicecompanyname);
     }
+
     /**
      * 设置 [是否有效]
      */
@@ -256,12 +271,24 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
         this.flag = flag ;
         this.modify("flag",flag);
     }
+
     /**
      * 设置 [版本时间]
      */
     public void setBbsj(Timestamp bbsj){
         this.bbsj = bbsj ;
         this.modify("bbsj",bbsj);
+    }
+
+    /**
+     * 格式化日期 [版本时间]
+     */
+    public String formatBbsj(){
+        if (this.bbsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(bbsj);
     }
     /**
      * 设置 [实习内容]
@@ -270,6 +297,7 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
         this.practicecontent = practicecontent ;
         this.modify("practicecontent",practicecontent);
     }
+
     /**
      * 设置 [证明人]
      */
@@ -277,6 +305,7 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
         this.practicereferencesname = practicereferencesname ;
         this.modify("practicereferencesname",practicereferencesname);
     }
+
     /**
      * 设置 [证明人联系方式]
      */
@@ -284,6 +313,7 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
         this.practicereferencescontact = practicereferencescontact ;
         this.modify("practicereferencescontact",practicereferencescontact);
     }
+
     /**
      * 设置 [实习评价]
      */
@@ -291,6 +321,7 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
         this.sxpj = sxpj ;
         this.modify("sxpj",sxpj);
     }
+
     /**
      * 设置 [实习经验名称]
      */
@@ -298,6 +329,7 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
         this.pcmpracticeexperiencename = pcmpracticeexperiencename ;
         this.modify("pcmpracticeexperiencename",pcmpracticeexperiencename);
     }
+
     /**
      * 设置 [实习地点]
      */
@@ -305,6 +337,7 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
         this.practiceaddress = practiceaddress ;
         this.modify("practiceaddress",practiceaddress);
     }
+
     /**
      * 设置 [实习岗位]
      */
@@ -312,6 +345,7 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
         this.sxgw = sxgw ;
         this.modify("sxgw",sxgw);
     }
+
     /**
      * 设置 [证明人关系]
      */
@@ -319,12 +353,24 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
         this.practicereferencesrelation = practicereferencesrelation ;
         this.modify("practicereferencesrelation",practicereferencesrelation);
     }
+
     /**
      * 设置 [开始时间]
      */
     public void setStarttime(Timestamp starttime){
         this.starttime = starttime ;
         this.modify("starttime",starttime);
+    }
+
+    /**
+     * 格式化日期 [开始时间]
+     */
+    public String formatStarttime(){
+        if (this.starttime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(starttime);
     }
     /**
      * 设置 [应聘者ID]
@@ -333,6 +379,7 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
         this.pcmprofileid = pcmprofileid ;
         this.modify("pcmprofileid",pcmprofileid);
     }
+
 
 }
 

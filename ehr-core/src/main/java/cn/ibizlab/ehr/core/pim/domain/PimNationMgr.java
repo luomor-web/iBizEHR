@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -111,6 +112,7 @@ public class PimNationMgr extends EntityMP implements Serializable {
         this.orderno = orderno ;
         this.modify("orderno",orderno);
     }
+
     /**
      * 设置 [民族编码]
      */
@@ -118,6 +120,7 @@ public class PimNationMgr extends EntityMP implements Serializable {
         this.nationcode = nationcode ;
         this.modify("nationcode",nationcode);
     }
+
     /**
      * 设置 [民族管理名称]
      */
@@ -125,6 +128,7 @@ public class PimNationMgr extends EntityMP implements Serializable {
         this.nationmgrname = nationmgrname ;
         this.modify("nationmgrname",nationmgrname);
     }
+
 
 }
 

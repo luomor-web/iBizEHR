@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -177,6 +178,7 @@ public class VacSituation extends EntityMP implements Serializable {
         this.yyts = yyts ;
         this.modify("yyts",yyts);
     }
+
     /**
      * 设置 [用户休假情况名称]
      */
@@ -184,6 +186,7 @@ public class VacSituation extends EntityMP implements Serializable {
         this.vacsituationname = vacsituationname ;
         this.modify("vacsituationname",vacsituationname);
     }
+
     /**
      * 设置 [补偿天数]
      */
@@ -191,6 +194,7 @@ public class VacSituation extends EntityMP implements Serializable {
         this.bcts = bcts ;
         this.modify("bcts",bcts);
     }
+
     /**
      * 设置 [本年天数]
      */
@@ -198,6 +202,7 @@ public class VacSituation extends EntityMP implements Serializable {
         this.bnts = bnts ;
         this.modify("bnts",bnts);
     }
+
     /**
      * 设置 [上年转入天数]
      */
@@ -205,6 +210,7 @@ public class VacSituation extends EntityMP implements Serializable {
         this.snzrts = snzrts ;
         this.modify("snzrts",snzrts);
     }
+
     /**
      * 设置 [累计剩余天数]
      */
@@ -212,6 +218,7 @@ public class VacSituation extends EntityMP implements Serializable {
         this.ljsyts = ljsyts ;
         this.modify("ljsyts",ljsyts);
     }
+
     /**
      * 设置 [本年剩余天数]
      */
@@ -219,6 +226,7 @@ public class VacSituation extends EntityMP implements Serializable {
         this.bnsyts = bnsyts ;
         this.modify("bnsyts",bnsyts);
     }
+
     /**
      * 设置 [总天数]
      */
@@ -226,6 +234,7 @@ public class VacSituation extends EntityMP implements Serializable {
         this.zts = zts ;
         this.modify("zts",zts);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -233,6 +242,7 @@ public class VacSituation extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

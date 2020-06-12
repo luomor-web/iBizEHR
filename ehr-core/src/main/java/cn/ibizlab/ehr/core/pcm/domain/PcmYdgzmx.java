@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -344,12 +345,24 @@ public class PcmYdgzmx extends EntityMP implements Serializable {
         this.wbgw = wbgw ;
         this.modify("wbgw",wbgw);
     }
+
     /**
      * 设置 [挂职结束日期]
      */
     public void setJsrq(Timestamp jsrq){
         this.jsrq = jsrq ;
         this.modify("jsrq",jsrq);
+    }
+
+    /**
+     * 格式化日期 [挂职结束日期]
+     */
+    public String formatJsrq(){
+        if (this.jsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jsrq);
     }
     /**
      * 设置 [挂职类型]
@@ -358,6 +371,7 @@ public class PcmYdgzmx extends EntityMP implements Serializable {
         this.gztype = gztype ;
         this.modify("gztype",gztype);
     }
+
     /**
      * 设置 [外部组织机构代码]
      */
@@ -365,12 +379,24 @@ public class PcmYdgzmx extends EntityMP implements Serializable {
         this.wwzzid = wwzzid ;
         this.modify("wwzzid",wwzzid);
     }
+
     /**
      * 设置 [挂职开始日期]
      */
     public void setKsrq(Timestamp ksrq){
         this.ksrq = ksrq ;
         this.modify("ksrq",ksrq);
+    }
+
+    /**
+     * 格式化日期 [挂职开始日期]
+     */
+    public String formatKsrq(){
+        if (this.ksrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(ksrq);
     }
     /**
      * 设置 [异动挂职明细名称]
@@ -379,6 +405,7 @@ public class PcmYdgzmx extends EntityMP implements Serializable {
         this.pcmydgzmxname = pcmydgzmxname ;
         this.modify("pcmydgzmxname",pcmydgzmxname);
     }
+
     /**
      * 设置 [操作]
      */
@@ -386,6 +413,7 @@ public class PcmYdgzmx extends EntityMP implements Serializable {
         this.cz = cz ;
         this.modify("cz",cz);
     }
+
     /**
      * 设置 [挂职进人员信息id（应聘者信息）]
      */
@@ -393,6 +421,7 @@ public class PcmYdgzmx extends EntityMP implements Serializable {
         this.pcmprofileid = pcmprofileid ;
         this.modify("pcmprofileid",pcmprofileid);
     }
+
     /**
      * 设置 [外部组织]
      */
@@ -400,6 +429,7 @@ public class PcmYdgzmx extends EntityMP implements Serializable {
         this.wbzz = wbzz ;
         this.modify("wbzz",wbzz);
     }
+
     /**
      * 设置 [外部职务]
      */
@@ -407,6 +437,7 @@ public class PcmYdgzmx extends EntityMP implements Serializable {
         this.wbzw = wbzw ;
         this.modify("wbzw",wbzw);
     }
+
     /**
      * 设置 [外部部门]
      */
@@ -414,6 +445,7 @@ public class PcmYdgzmx extends EntityMP implements Serializable {
         this.wbbm = wbbm ;
         this.modify("wbbm",wbbm);
     }
+
 
 }
 

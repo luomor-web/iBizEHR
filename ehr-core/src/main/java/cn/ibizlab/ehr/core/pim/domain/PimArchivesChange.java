@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -250,6 +251,7 @@ public class PimArchivesChange extends EntityMP implements Serializable {
         this.pimarchiveschangename = pimarchiveschangename ;
         this.modify("pimarchiveschangename",pimarchiveschangename);
     }
+
     /**
      * 设置 [档案状态]
      */
@@ -257,6 +259,7 @@ public class PimArchivesChange extends EntityMP implements Serializable {
         this.dazt = dazt ;
         this.modify("dazt",dazt);
     }
+
     /**
      * 设置 [调出单位]
      */
@@ -264,6 +267,7 @@ public class PimArchivesChange extends EntityMP implements Serializable {
         this.dcdw = dcdw ;
         this.modify("dcdw",dcdw);
     }
+
     /**
      * 设置 [调档记录类型]
      */
@@ -271,6 +275,7 @@ public class PimArchivesChange extends EntityMP implements Serializable {
         this.ddjltype = ddjltype ;
         this.modify("ddjltype",ddjltype);
     }
+
     /**
      * 设置 [备注]
      */
@@ -278,6 +283,7 @@ public class PimArchivesChange extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [管理单位]
      */
@@ -285,12 +291,24 @@ public class PimArchivesChange extends EntityMP implements Serializable {
         this.xgdbgd = xgdbgd ;
         this.modify("xgdbgd",xgdbgd);
     }
+
     /**
      * 设置 [调动时间]
      */
     public void setJlcssj(Timestamp jlcssj){
         this.jlcssj = jlcssj ;
         this.modify("jlcssj",jlcssj);
+    }
+
+    /**
+     * 格式化日期 [调动时间]
+     */
+    public String formatJlcssj(){
+        if (this.jlcssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jlcssj);
     }
     /**
      * 设置 [调入单位]
@@ -299,12 +317,24 @@ public class PimArchivesChange extends EntityMP implements Serializable {
         this.drdw = drdw ;
         this.modify("drdw",drdw);
     }
+
     /**
      * 设置 [调动日期]
      */
     public void setDaddrq(Timestamp daddrq){
         this.daddrq = daddrq ;
         this.modify("daddrq",daddrq);
+    }
+
+    /**
+     * 格式化日期 [调动日期]
+     */
+    public String formatDaddrq(){
+        if (this.daddrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(daddrq);
     }
     /**
      * 设置 [调入单位]
@@ -313,6 +343,7 @@ public class PimArchivesChange extends EntityMP implements Serializable {
         this.ormorgname2 = ormorgname2 ;
         this.modify("ormorgname2",ormorgname2);
     }
+
     /**
      * 设置 [调出单位]
      */
@@ -320,6 +351,7 @@ public class PimArchivesChange extends EntityMP implements Serializable {
         this.ormorgname = ormorgname ;
         this.modify("ormorgname",ormorgname);
     }
+
     /**
      * 设置 [调入单位标识]
      */
@@ -327,6 +359,7 @@ public class PimArchivesChange extends EntityMP implements Serializable {
         this.ormorgid2 = ormorgid2 ;
         this.modify("ormorgid2",ormorgid2);
     }
+
     /**
      * 设置 [调出单位标识]
      */
@@ -334,6 +367,7 @@ public class PimArchivesChange extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [档案信息标识]
      */
@@ -341,6 +375,7 @@ public class PimArchivesChange extends EntityMP implements Serializable {
         this.pimarchivesid = pimarchivesid ;
         this.modify("pimarchivesid",pimarchivesid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -348,6 +383,7 @@ public class PimArchivesChange extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

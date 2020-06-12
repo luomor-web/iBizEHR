@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -385,6 +386,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         this.pj = pj ;
         this.modify("pj",pj);
     }
+
     /**
      * 设置 [参考资料]
      */
@@ -392,12 +394,24 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         this.ckzl = ckzl ;
         this.modify("ckzl",ckzl);
     }
+
     /**
      * 设置 [授课开始日期]
      */
     public void setSkksrq(Timestamp skksrq){
         this.skksrq = skksrq ;
         this.modify("skksrq",skksrq);
+    }
+
+    /**
+     * 格式化日期 [授课开始日期]
+     */
+    public String formatSkksrq(){
+        if (this.skksrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(skksrq);
     }
     /**
      * 设置 [课程学时]
@@ -406,12 +420,24 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         this.kcxs = kcxs ;
         this.modify("kcxs",kcxs);
     }
+
     /**
      * 设置 [授课结束时间]
      */
     public void setSkjssj(Timestamp skjssj){
         this.skjssj = skjssj ;
         this.modify("skjssj",skjssj);
+    }
+
+    /**
+     * 格式化日期 [授课结束时间]
+     */
+    public String formatSkjssj(){
+        if (this.skjssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(skjssj);
     }
     /**
      * 设置 [课程安排名称]
@@ -420,12 +446,24 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         this.trmcouarrangename = trmcouarrangename ;
         this.modify("trmcouarrangename",trmcouarrangename);
     }
+
     /**
      * 设置 [授课开始时间]
      */
     public void setSkkssj(Timestamp skkssj){
         this.skkssj = skkssj ;
         this.modify("skkssj",skkssj);
+    }
+
+    /**
+     * 格式化日期 [授课开始时间]
+     */
+    public String formatSkkssj(){
+        if (this.skkssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(skkssj);
     }
     /**
      * 设置 [预备知识]
@@ -434,6 +472,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         this.ybzs = ybzs ;
         this.modify("ybzs",ybzs);
     }
+
     /**
      * 设置 [课程内容]
      */
@@ -441,6 +480,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         this.kcnr = kcnr ;
         this.modify("kcnr",kcnr);
     }
+
     /**
      * 设置 [培训人员标识]
      */
@@ -448,6 +488,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         this.trmtrianpersonid = trmtrianpersonid ;
         this.modify("trmtrianpersonid",trmtrianpersonid);
     }
+
     /**
      * 设置 [培训教师标识]
      */
@@ -455,6 +496,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         this.trmtrainteacherid = trmtrainteacherid ;
         this.modify("trmtrainteacherid",trmtrainteacherid);
     }
+
     /**
      * 设置 [培训设施标识]
      */
@@ -462,6 +504,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         this.trmtrainfaciesid = trmtrainfaciesid ;
         this.modify("trmtrainfaciesid",trmtrainfaciesid);
     }
+
     /**
      * 设置 [培训机构标识]
      */
@@ -469,6 +512,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         this.trmtrainagencyid = trmtrainagencyid ;
         this.modify("trmtrainagencyid",trmtrainagencyid);
     }
+
     /**
      * 设置 [培训计划项标识]
      */
@@ -476,6 +520,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         this.trmtrainplantermid = trmtrainplantermid ;
         this.modify("trmtrainplantermid",trmtrainplantermid);
     }
+
     /**
      * 设置 [培训活动申请标识]
      */
@@ -483,6 +528,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         this.trmtrainactapplyid = trmtrainactapplyid ;
         this.modify("trmtrainactapplyid",trmtrainactapplyid);
     }
+
     /**
      * 设置 [培训地点标识]
      */
@@ -490,6 +536,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         this.trmtrainaddressid = trmtrainaddressid ;
         this.modify("trmtrainaddressid",trmtrainaddressid);
     }
+
     /**
      * 设置 [机构培训记录标识]
      */
@@ -497,6 +544,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         this.trmagencyrecordid = trmagencyrecordid ;
         this.modify("trmagencyrecordid",trmagencyrecordid);
     }
+
     /**
      * 设置 [培训课程标识]
      */
@@ -504,6 +552,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         this.trmtraincourseid = trmtraincourseid ;
         this.modify("trmtraincourseid",trmtraincourseid);
     }
+
     /**
      * 设置 [课程体系标识]
      */
@@ -511,6 +560,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         this.trmcoursesystemid = trmcoursesystemid ;
         this.modify("trmcoursesystemid",trmcoursesystemid);
     }
+
 
 }
 

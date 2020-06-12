@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -256,6 +257,7 @@ public class TrmTrainCourse extends EntityMP implements Serializable {
         this.jb = jb ;
         this.modify("jb",jb);
     }
+
     /**
      * 设置 [课程编码]
      */
@@ -263,6 +265,7 @@ public class TrmTrainCourse extends EntityMP implements Serializable {
         this.kcbm = kcbm ;
         this.modify("kcbm",kcbm);
     }
+
     /**
      * 设置 [课程类别]
      */
@@ -270,6 +273,7 @@ public class TrmTrainCourse extends EntityMP implements Serializable {
         this.kclb = kclb ;
         this.modify("kclb",kclb);
     }
+
     /**
      * 设置 [版本号]
      */
@@ -277,6 +281,7 @@ public class TrmTrainCourse extends EntityMP implements Serializable {
         this.bbh = bbh ;
         this.modify("bbh",bbh);
     }
+
     /**
      * 设置 [培训目标]
      */
@@ -284,6 +289,7 @@ public class TrmTrainCourse extends EntityMP implements Serializable {
         this.pxmb = pxmb ;
         this.modify("pxmb",pxmb);
     }
+
     /**
      * 设置 [课程介绍]
      */
@@ -291,6 +297,7 @@ public class TrmTrainCourse extends EntityMP implements Serializable {
         this.kcjs = kcjs ;
         this.modify("kcjs",kcjs);
     }
+
     /**
      * 设置 [培训课程名称]
      */
@@ -298,6 +305,7 @@ public class TrmTrainCourse extends EntityMP implements Serializable {
         this.trmtraincoursename = trmtraincoursename ;
         this.modify("trmtraincoursename",trmtraincoursename);
     }
+
     /**
      * 设置 [授课方式]
      */
@@ -305,6 +313,7 @@ public class TrmTrainCourse extends EntityMP implements Serializable {
         this.skfs = skfs ;
         this.modify("skfs",skfs);
     }
+
     /**
      * 设置 [版本]
      */
@@ -312,6 +321,7 @@ public class TrmTrainCourse extends EntityMP implements Serializable {
         this.bb = bb ;
         this.modify("bb",bb);
     }
+
     /**
      * 设置 [累积学时]
      */
@@ -319,6 +329,7 @@ public class TrmTrainCourse extends EntityMP implements Serializable {
         this.kcxs = kcxs ;
         this.modify("kcxs",kcxs);
     }
+
     /**
      * 设置 [是否封存]
      */
@@ -326,6 +337,7 @@ public class TrmTrainCourse extends EntityMP implements Serializable {
         this.sffc = sffc ;
         this.modify("sffc",sffc);
     }
+
     /**
      * 设置 [是否共享]
      */
@@ -333,6 +345,7 @@ public class TrmTrainCourse extends EntityMP implements Serializable {
         this.sfgx = sfgx ;
         this.modify("sfgx",sfgx);
     }
+
     /**
      * 设置 [培训机构标识]
      */
@@ -340,6 +353,7 @@ public class TrmTrainCourse extends EntityMP implements Serializable {
         this.trmtrainagencyid = trmtrainagencyid ;
         this.modify("trmtrainagencyid",trmtrainagencyid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -347,6 +361,7 @@ public class TrmTrainCourse extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [课程体系标识]
      */
@@ -354,6 +369,7 @@ public class TrmTrainCourse extends EntityMP implements Serializable {
         this.trmcoursesystemid = trmcoursesystemid ;
         this.modify("trmcoursesystemid",trmcoursesystemid);
     }
+
 
 }
 

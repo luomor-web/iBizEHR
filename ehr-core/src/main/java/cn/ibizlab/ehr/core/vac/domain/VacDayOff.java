@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -113,6 +114,7 @@ public class VacDayOff extends EntityMP implements Serializable {
         this.vacdayoffname = vacdayoffname ;
         this.modify("vacdayoffname",vacdayoffname);
     }
+
     /**
      * 设置 [开始时间]
      */
@@ -120,12 +122,34 @@ public class VacDayOff extends EntityMP implements Serializable {
         this.kssj = kssj ;
         this.modify("kssj",kssj);
     }
+
+    /**
+     * 格式化日期 [开始时间]
+     */
+    public String formatKssj(){
+        if (this.kssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(kssj);
+    }
     /**
      * 设置 [结束时间]
      */
     public void setJssj(Timestamp jssj){
         this.jssj = jssj ;
         this.modify("jssj",jssj);
+    }
+
+    /**
+     * 格式化日期 [结束时间]
+     */
+    public String formatJssj(){
+        if (this.jssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jssj);
     }
 
 }

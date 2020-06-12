@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -366,6 +367,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.pxrs = pxrs ;
         this.modify("pxrs",pxrs);
     }
+
     /**
      * 设置 [培训目标]
      */
@@ -373,12 +375,24 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.pxmb = pxmb ;
         this.modify("pxmb",pxmb);
     }
+
     /**
      * 设置 [计划结束时间]
      */
     public void setJhjssj(Timestamp jhjssj){
         this.jhjssj = jhjssj ;
         this.modify("jhjssj",jhjssj);
+    }
+
+    /**
+     * 格式化日期 [计划结束时间]
+     */
+    public String formatJhjssj(){
+        if (this.jhjssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jhjssj);
     }
     /**
      * 设置 [培训方式]
@@ -387,6 +401,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.pxfs = pxfs ;
         this.modify("pxfs",pxfs);
     }
+
     /**
      * 设置 [培训对象类别]
      */
@@ -394,6 +409,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.pxdxlb = pxdxlb ;
         this.modify("pxdxlb",pxdxlb);
     }
+
     /**
      * 设置 [培训次数]
      */
@@ -401,6 +417,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.pxcs = pxcs ;
         this.modify("pxcs",pxcs);
     }
+
     /**
      * 设置 [班级状态]
      */
@@ -408,6 +425,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.bjzt = bjzt ;
         this.modify("bjzt",bjzt);
     }
+
     /**
      * 设置 [培训类别]
      */
@@ -415,6 +433,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.pxlb = pxlb ;
         this.modify("pxlb",pxlb);
     }
+
     /**
      * 设置 [计划项编码]
      */
@@ -422,6 +441,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.jhxbm = jhxbm ;
         this.modify("jhxbm",jhxbm);
     }
+
     /**
      * 设置 [教师出处]
      */
@@ -429,6 +449,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.jscc = jscc ;
         this.modify("jscc",jscc);
     }
+
     /**
      * 设置 [费用预算]
      */
@@ -436,6 +457,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.fyys = fyys ;
         this.modify("fyys",fyys);
     }
+
     /**
      * 设置 [培训时长]
      */
@@ -443,6 +465,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.pxsc = pxsc ;
         this.modify("pxsc",pxsc);
     }
+
     /**
      * 设置 [班主任]
      */
@@ -450,6 +473,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.bzr = bzr ;
         this.modify("bzr",bzr);
     }
+
     /**
      * 设置 [审批意见]
      */
@@ -457,6 +481,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.spyj = spyj ;
         this.modify("spyj",spyj);
     }
+
     /**
      * 设置 [状态]
      */
@@ -464,6 +489,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.zt = zt ;
         this.modify("zt",zt);
     }
+
     /**
      * 设置 [培训备注]
      */
@@ -471,6 +497,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.pxfz = pxfz ;
         this.modify("pxfz",pxfz);
     }
+
     /**
      * 设置 [是否签订培训协议]
      */
@@ -478,12 +505,24 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.sfqdpxxy = sfqdpxxy ;
         this.modify("sfqdpxxy",sfqdpxxy);
     }
+
     /**
      * 设置 [计划开始时间]
      */
     public void setJhkssj(Timestamp jhkssj){
         this.jhkssj = jhkssj ;
         this.modify("jhkssj",jhkssj);
+    }
+
+    /**
+     * 格式化日期 [计划开始时间]
+     */
+    public String formatJhkssj(){
+        if (this.jhkssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jhkssj);
     }
     /**
      * 设置 [培训内容]
@@ -492,6 +531,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.pxnr = pxnr ;
         this.modify("pxnr",pxnr);
     }
+
     /**
      * 设置 [培训计划项名称]
      */
@@ -499,6 +539,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.trmtrainplantermname = trmtrainplantermname ;
         this.modify("trmtrainplantermname",trmtrainplantermname);
     }
+
     /**
      * 设置 [年度]
      */
@@ -506,6 +547,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [培训计划标识]
      */
@@ -513,6 +555,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.trmtrainplanid = trmtrainplanid ;
         this.modify("trmtrainplanid",trmtrainplanid);
     }
+
     /**
      * 设置 [培训教师标识]
      */
@@ -520,6 +563,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.trmtrainteacherid = trmtrainteacherid ;
         this.modify("trmtrainteacherid",trmtrainteacherid);
     }
+
     /**
      * 设置 [培训机构标识]
      */
@@ -527,6 +571,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.trmtrainagencyid = trmtrainagencyid ;
         this.modify("trmtrainagencyid",trmtrainagencyid);
     }
+
     /**
      * 设置 [培训课程标识]
      */
@@ -534,6 +579,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         this.trmtraincourseid = trmtraincourseid ;
         this.modify("trmtraincourseid",trmtraincourseid);
     }
+
 
 }
 

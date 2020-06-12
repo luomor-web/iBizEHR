@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -127,6 +128,17 @@ public class PcmZpmeglmx extends EntityMP implements Serializable {
         this.pfrq = pfrq ;
         this.modify("pfrq",pfrq);
     }
+
+    /**
+     * 格式化日期 [批复日期]
+     */
+    public String formatPfrq(){
+        if (this.pfrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(pfrq);
+    }
     /**
      * 设置 [招聘名额管理明细名称]
      */
@@ -134,6 +146,7 @@ public class PcmZpmeglmx extends EntityMP implements Serializable {
         this.pcmzpmeglmxname = pcmzpmeglmxname ;
         this.modify("pcmzpmeglmxname",pcmzpmeglmxname);
     }
+
     /**
      * 设置 [招聘名额管理标识]
      */
@@ -141,6 +154,7 @@ public class PcmZpmeglmx extends EntityMP implements Serializable {
         this.pcmzpmeglid = pcmzpmeglid ;
         this.modify("pcmzpmeglid",pcmzpmeglid);
     }
+
 
 }
 

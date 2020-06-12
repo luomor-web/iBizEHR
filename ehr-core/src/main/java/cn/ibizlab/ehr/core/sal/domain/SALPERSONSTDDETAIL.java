@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -171,6 +172,7 @@ public class SALPERSONSTDDETAIL extends EntityMP implements Serializable {
         this.ywz = ywz ;
         this.modify("ywz",ywz);
     }
+
     /**
      * 设置 [薪酬]
      */
@@ -178,6 +180,7 @@ public class SALPERSONSTDDETAIL extends EntityMP implements Serializable {
         this.xc = xc ;
         this.modify("xc",xc);
     }
+
     /**
      * 设置 [实际情况描述]
      */
@@ -185,6 +188,7 @@ public class SALPERSONSTDDETAIL extends EntityMP implements Serializable {
         this.ywms = ywms ;
         this.modify("ywms",ywms);
     }
+
     /**
      * 设置 [员工薪酬标准明细名称]
      */
@@ -192,6 +196,7 @@ public class SALPERSONSTDDETAIL extends EntityMP implements Serializable {
         this.salpersonstddetailname = salpersonstddetailname ;
         this.modify("salpersonstddetailname",salpersonstddetailname);
     }
+
     /**
      * 设置 [员工薪酬标准标识]
      */
@@ -199,6 +204,7 @@ public class SALPERSONSTDDETAIL extends EntityMP implements Serializable {
         this.salpersonstdid = salpersonstdid ;
         this.modify("salpersonstdid",salpersonstdid);
     }
+
     /**
      * 设置 [方案要素项标识]
      */
@@ -206,6 +212,7 @@ public class SALPERSONSTDDETAIL extends EntityMP implements Serializable {
         this.salschemeitemid = salschemeitemid ;
         this.modify("salschemeitemid",salschemeitemid);
     }
+
 
 }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -191,6 +192,7 @@ public class VacHoliday extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [逻辑有效标志]
      */
@@ -198,6 +200,7 @@ public class VacHoliday extends EntityMP implements Serializable {
         this.enable = enable ;
         this.modify("enable",enable);
     }
+
     /**
      * 设置 [名称]
      */
@@ -205,6 +208,7 @@ public class VacHoliday extends EntityMP implements Serializable {
         this.vacholidayname = vacholidayname ;
         this.modify("vacholidayname",vacholidayname);
     }
+
     /**
      * 设置 [年龄（及以下）]
      */
@@ -212,12 +216,24 @@ public class VacHoliday extends EntityMP implements Serializable {
         this.age = age ;
         this.modify("age",age);
     }
+
     /**
      * 设置 [结束时间]
      */
     public void setJssj(Timestamp jssj){
         this.jssj = jssj ;
         this.modify("jssj",jssj);
+    }
+
+    /**
+     * 格式化日期 [结束时间]
+     */
+    public String formatJssj(){
+        if (this.jssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jssj);
     }
     /**
      * 设置 [备注]
@@ -226,6 +242,7 @@ public class VacHoliday extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [类型]
      */
@@ -233,12 +250,24 @@ public class VacHoliday extends EntityMP implements Serializable {
         this.jjrlx = jjrlx ;
         this.modify("jjrlx",jjrlx);
     }
+
     /**
      * 设置 [开始时间]
      */
     public void setKssj(Timestamp kssj){
         this.kssj = kssj ;
         this.modify("kssj",kssj);
+    }
+
+    /**
+     * 格式化日期 [开始时间]
+     */
+    public String formatKssj(){
+        if (this.kssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(kssj);
     }
     /**
      * 设置 [性别]
@@ -247,6 +276,7 @@ public class VacHoliday extends EntityMP implements Serializable {
         this.sex = sex ;
         this.modify("sex",sex);
     }
+
     /**
      * 设置 [考勤规则标识]
      */
@@ -254,6 +284,7 @@ public class VacHoliday extends EntityMP implements Serializable {
         this.vacholidayrulesid = vacholidayrulesid ;
         this.modify("vacholidayrulesid",vacholidayrulesid);
     }
+
 
 }
 

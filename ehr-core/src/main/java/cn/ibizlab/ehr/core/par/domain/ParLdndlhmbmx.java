@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -203,6 +204,7 @@ public class ParLdndlhmbmx extends EntityMP implements Serializable {
         this.mblx = mblx ;
         this.modify("mblx",mblx);
     }
+
     /**
      * 设置 [完成情况]
      */
@@ -210,6 +212,7 @@ public class ParLdndlhmbmx extends EntityMP implements Serializable {
         this.wcqk = wcqk ;
         this.modify("wcqk",wcqk);
     }
+
     /**
      * 设置 [量化目标]
      */
@@ -217,6 +220,7 @@ public class ParLdndlhmbmx extends EntityMP implements Serializable {
         this.parldndlhmbmxname = parldndlhmbmxname ;
         this.modify("parldndlhmbmxname",parldndlhmbmxname);
     }
+
     /**
      * 设置 [修改日志]
      */
@@ -224,6 +228,7 @@ public class ParLdndlhmbmx extends EntityMP implements Serializable {
         this.xgrz = xgrz ;
         this.modify("xgrz",xgrz);
     }
+
     /**
      * 设置 [自评分数]
      */
@@ -231,6 +236,7 @@ public class ParLdndlhmbmx extends EntityMP implements Serializable {
         this.zpfs = zpfs ;
         this.modify("zpfs",zpfs);
     }
+
     /**
      * 设置 [考核办法]
      */
@@ -238,6 +244,7 @@ public class ParLdndlhmbmx extends EntityMP implements Serializable {
         this.khbf = khbf ;
         this.modify("khbf",khbf);
     }
+
     /**
      * 设置 [集中述职评审分数]
      */
@@ -245,6 +252,7 @@ public class ParLdndlhmbmx extends EntityMP implements Serializable {
         this.jzszpsfs = jzszpsfs ;
         this.modify("jzszpsfs",jzszpsfs);
     }
+
     /**
      * 设置 [分管领导评分]
      */
@@ -252,6 +260,7 @@ public class ParLdndlhmbmx extends EntityMP implements Serializable {
         this.fgldpf = fgldpf ;
         this.modify("fgldpf",fgldpf);
     }
+
     /**
      * 设置 [状态]
      */
@@ -259,6 +268,7 @@ public class ParLdndlhmbmx extends EntityMP implements Serializable {
         this.zt = zt ;
         this.modify("zt",zt);
     }
+
     /**
      * 设置 [审批状态]
      */
@@ -266,6 +276,7 @@ public class ParLdndlhmbmx extends EntityMP implements Serializable {
         this.spzt = spzt ;
         this.modify("spzt",spzt);
     }
+
     /**
      * 设置 [分值]
      */
@@ -273,6 +284,7 @@ public class ParLdndlhmbmx extends EntityMP implements Serializable {
         this.fz = fz ;
         this.modify("fz",fz);
     }
+
     /**
      * 设置 [证明材料]
      */
@@ -280,6 +292,7 @@ public class ParLdndlhmbmx extends EntityMP implements Serializable {
         this.zmcl = zmcl ;
         this.modify("zmcl",zmcl);
     }
+
     /**
      * 设置 [目标量化要求]
      */
@@ -287,6 +300,7 @@ public class ParLdndlhmbmx extends EntityMP implements Serializable {
         this.mblhyq = mblhyq ;
         this.modify("mblhyq",mblhyq);
     }
+
     /**
      * 设置 [年度量化目标ID]
      */
@@ -294,6 +308,7 @@ public class ParLdndlhmbmx extends EntityMP implements Serializable {
         this.parldndlhmbid = parldndlhmbid ;
         this.modify("parldndlhmbid",parldndlhmbid);
     }
+
 
 }
 

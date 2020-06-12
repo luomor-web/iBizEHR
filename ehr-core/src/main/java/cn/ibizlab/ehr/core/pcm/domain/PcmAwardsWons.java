@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -178,6 +179,7 @@ public class PcmAwardsWons extends EntityMP implements Serializable {
         this.awardlevel = awardlevel ;
         this.modify("awardlevel",awardlevel);
     }
+
     /**
      * 设置 [是否有效]
      */
@@ -185,6 +187,7 @@ public class PcmAwardsWons extends EntityMP implements Serializable {
         this.flag = flag ;
         this.modify("flag",flag);
     }
+
     /**
      * 设置 [获奖名称]
      */
@@ -192,12 +195,24 @@ public class PcmAwardsWons extends EntityMP implements Serializable {
         this.awardname = awardname ;
         this.modify("awardname",awardname);
     }
+
     /**
      * 设置 [获奖时间]
      */
     public void setAwardtime(Timestamp awardtime){
         this.awardtime = awardtime ;
         this.modify("awardtime",awardtime);
+    }
+
+    /**
+     * 格式化日期 [获奖时间]
+     */
+    public String formatAwardtime(){
+        if (this.awardtime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(awardtime);
     }
     /**
      * 设置 [获奖情况]
@@ -206,6 +221,7 @@ public class PcmAwardsWons extends EntityMP implements Serializable {
         this.awarddescription = awarddescription ;
         this.modify("awarddescription",awarddescription);
     }
+
     /**
      * 设置 [获奖情况名称]
      */
@@ -213,12 +229,24 @@ public class PcmAwardsWons extends EntityMP implements Serializable {
         this.pcmawardswonsname = pcmawardswonsname ;
         this.modify("pcmawardswonsname",pcmawardswonsname);
     }
+
     /**
      * 设置 [版本时间]
      */
     public void setBbsj(Timestamp bbsj){
         this.bbsj = bbsj ;
         this.modify("bbsj",bbsj);
+    }
+
+    /**
+     * 格式化日期 [版本时间]
+     */
+    public String formatBbsj(){
+        if (this.bbsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(bbsj);
     }
     /**
      * 设置 [评定机构]
@@ -227,6 +255,7 @@ public class PcmAwardsWons extends EntityMP implements Serializable {
         this.judgeorg = judgeorg ;
         this.modify("judgeorg",judgeorg);
     }
+
     /**
      * 设置 [应聘者ID]
      */
@@ -234,6 +263,7 @@ public class PcmAwardsWons extends EntityMP implements Serializable {
         this.pcmprofileid = pcmprofileid ;
         this.modify("pcmprofileid",pcmprofileid);
     }
+
 
 }
 

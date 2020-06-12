@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -135,6 +136,17 @@ public class PimDateRule extends EntityMP implements Serializable {
         this.startdate = startdate ;
         this.modify("startdate",startdate);
     }
+
+    /**
+     * 格式化日期 [开始日期]
+     */
+    public String formatStartdate(){
+        if (this.startdate == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(startdate);
+    }
     /**
      * 设置 [生效日期规则名称]
      */
@@ -142,12 +154,24 @@ public class PimDateRule extends EntityMP implements Serializable {
         this.daterulename = daterulename ;
         this.modify("daterulename",daterulename);
     }
+
     /**
      * 设置 [截止日期]
      */
     public void setEnddate(Timestamp enddate){
         this.enddate = enddate ;
         this.modify("enddate",enddate);
+    }
+
+    /**
+     * 格式化日期 [截止日期]
+     */
+    public String formatEnddate(){
+        if (this.enddate == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(enddate);
     }
     /**
      * 设置 [组织标识]
@@ -156,6 +180,7 @@ public class PimDateRule extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -155,6 +156,7 @@ public class PCMGxxkTemp extends EntityMP implements Serializable {
         this.pcmgxxktempname = pcmgxxktempname ;
         this.modify("pcmgxxktempname",pcmgxxktempname);
     }
+
     /**
      * 设置 [学科目录标识]
      */
@@ -162,6 +164,7 @@ public class PCMGxxkTemp extends EntityMP implements Serializable {
         this.pcmxkmlid = pcmxkmlid ;
         this.modify("pcmxkmlid",pcmxkmlid);
     }
+
     /**
      * 设置 [高校名录标识]
      */
@@ -169,6 +172,7 @@ public class PCMGxxkTemp extends EntityMP implements Serializable {
         this.pcmgxmlid = pcmgxmlid ;
         this.modify("pcmgxmlid",pcmgxmlid);
     }
+
 
     /**
      * 获取 [高校学科中间表标识]

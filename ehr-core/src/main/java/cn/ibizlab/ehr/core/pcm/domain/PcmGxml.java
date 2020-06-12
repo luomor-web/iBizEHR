@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -132,6 +133,7 @@ public class PcmGxml extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -139,6 +141,7 @@ public class PcmGxml extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [学校性质]
      */
@@ -146,6 +149,7 @@ public class PcmGxml extends EntityMP implements Serializable {
         this.xxxz = xxxz ;
         this.modify("xxxz",xxxz);
     }
+
     /**
      * 设置 [高校类型（停用）]
      */
@@ -153,6 +157,7 @@ public class PcmGxml extends EntityMP implements Serializable {
         this.gxlb = gxlb ;
         this.modify("gxlb",gxlb);
     }
+
     /**
      * 设置 [国家或地区]
      */
@@ -160,6 +165,7 @@ public class PcmGxml extends EntityMP implements Serializable {
         this.nationarea = nationarea ;
         this.modify("nationarea",nationarea);
     }
+
     /**
      * 设置 [高校名称]
      */
@@ -167,6 +173,7 @@ public class PcmGxml extends EntityMP implements Serializable {
         this.pcmgxmlname = pcmgxmlname ;
         this.modify("pcmgxmlname",pcmgxmlname);
     }
+
 
 }
 

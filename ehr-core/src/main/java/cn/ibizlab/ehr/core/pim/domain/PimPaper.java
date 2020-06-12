@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -248,6 +249,7 @@ public class PimPaper extends EntityMP implements Serializable {
         this.grzlwzzzdpm = grzlwzzzdpm ;
         this.modify("grzlwzzzdpm",grzlwzzzdpm);
     }
+
     /**
      * 设置 [记录管理编号]
      */
@@ -255,6 +257,7 @@ public class PimPaper extends EntityMP implements Serializable {
         this.jlglbh = jlglbh ;
         this.modify("jlglbh",jlglbh);
     }
+
     /**
      * 设置 [记录操作者]
      */
@@ -262,6 +265,7 @@ public class PimPaper extends EntityMP implements Serializable {
         this.jlczz = jlczz ;
         this.modify("jlczz",jlczz);
     }
+
     /**
      * 设置 [审批状态]
      */
@@ -269,6 +273,7 @@ public class PimPaper extends EntityMP implements Serializable {
         this.jlspzt = jlspzt ;
         this.modify("jlspzt",jlspzt);
     }
+
     /**
      * 设置 [拒绝原因]
      */
@@ -276,6 +281,7 @@ public class PimPaper extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [刊物名称(*)]
      */
@@ -283,6 +289,7 @@ public class PimPaper extends EntityMP implements Serializable {
         this.kwmc = kwmc ;
         this.modify("kwmc",kwmc);
     }
+
     /**
      * 设置 [附件]
      */
@@ -290,12 +297,24 @@ public class PimPaper extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [发表时间(*)]
      */
     public void setFbsj(Timestamp fbsj){
         this.fbsj = fbsj ;
         this.modify("fbsj",fbsj);
+    }
+
+    /**
+     * 格式化日期 [发表时间(*)]
+     */
+    public String formatFbsj(){
+        if (this.fbsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(fbsj);
     }
     /**
      * 设置 [论文名称(*)]
@@ -304,6 +323,7 @@ public class PimPaper extends EntityMP implements Serializable {
         this.pimpapername = pimpapername ;
         this.modify("pimpapername",pimpapername);
     }
+
     /**
      * 设置 [刊物期数]
      */
@@ -311,6 +331,7 @@ public class PimPaper extends EntityMP implements Serializable {
         this.kwqs = kwqs ;
         this.modify("kwqs",kwqs);
     }
+
     /**
      * 设置 [出版社(*)]
      */
@@ -318,6 +339,7 @@ public class PimPaper extends EntityMP implements Serializable {
         this.cbs = cbs ;
         this.modify("cbs",cbs);
     }
+
     /**
      * 设置 [出版社或刊物名称]
      */
@@ -325,6 +347,7 @@ public class PimPaper extends EntityMP implements Serializable {
         this.cbshkwmc = cbshkwmc ;
         this.modify("cbshkwmc",cbshkwmc);
     }
+
     /**
      * 设置 [记录所属]
      */
@@ -332,6 +355,7 @@ public class PimPaper extends EntityMP implements Serializable {
         this.jlss = jlss ;
         this.modify("jlss",jlss);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -339,6 +363,7 @@ public class PimPaper extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -169,6 +170,7 @@ public class PcmCertofreg extends EntityMP implements Serializable {
         this.lx = lx ;
         this.modify("lx",lx);
     }
+
     /**
      * 设置 [证书名称]
      */
@@ -176,6 +178,7 @@ public class PcmCertofreg extends EntityMP implements Serializable {
         this.pcmcertofregname = pcmcertofregname ;
         this.modify("pcmcertofregname",pcmcertofregname);
     }
+
     /**
      * 设置 [证书编号]
      */
@@ -183,6 +186,7 @@ public class PcmCertofreg extends EntityMP implements Serializable {
         this.bh = bh ;
         this.modify("bh",bh);
     }
+
     /**
      * 设置 [证书附件]
      */
@@ -190,6 +194,7 @@ public class PcmCertofreg extends EntityMP implements Serializable {
         this.zsfj = zsfj ;
         this.modify("zsfj",zsfj);
     }
+
     /**
      * 设置 [执业资格专业编码]
      */
@@ -197,6 +202,7 @@ public class PcmCertofreg extends EntityMP implements Serializable {
         this.pimqualmajorid = pimqualmajorid ;
         this.modify("pimqualmajorid",pimqualmajorid);
     }
+
     /**
      * 设置 [应聘者ID]
      */
@@ -204,6 +210,7 @@ public class PcmCertofreg extends EntityMP implements Serializable {
         this.pcmprofileid = pcmprofileid ;
         this.modify("pcmprofileid",pcmprofileid);
     }
+
 
 }
 

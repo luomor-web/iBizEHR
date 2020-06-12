@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -160,6 +161,7 @@ public class ParJxjg extends EntityMP implements Serializable {
         this.pm = pm ;
         this.modify("pm",pm);
     }
+
     /**
      * 设置 [部门]
      */
@@ -167,6 +169,7 @@ public class ParJxjg extends EntityMP implements Serializable {
         this.bm = bm ;
         this.modify("bm",bm);
     }
+
     /**
      * 设置 [考核定级]
      */
@@ -174,6 +177,7 @@ public class ParJxjg extends EntityMP implements Serializable {
         this.khpgdj = khpgdj ;
         this.modify("khpgdj",khpgdj);
     }
+
     /**
      * 设置 [绩效结果名称]
      */
@@ -181,6 +185,7 @@ public class ParJxjg extends EntityMP implements Serializable {
         this.parjxjgname = parjxjgname ;
         this.modify("parjxjgname",parjxjgname);
     }
+
     /**
      * 设置 [员工]
      */
@@ -188,6 +193,7 @@ public class ParJxjg extends EntityMP implements Serializable {
         this.yg = yg ;
         this.modify("yg",yg);
     }
+
     /**
      * 设置 [考核年度]
      */
@@ -195,6 +201,7 @@ public class ParJxjg extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [考核对象]
      */
@@ -202,6 +209,7 @@ public class ParJxjg extends EntityMP implements Serializable {
         this.khlx = khlx ;
         this.modify("khlx",khlx);
     }
+
     /**
      * 设置 [员工ID]
      */
@@ -209,6 +217,7 @@ public class ParJxjg extends EntityMP implements Serializable {
         this.ygid = ygid ;
         this.modify("ygid",ygid);
     }
+
     /**
      * 设置 [总分]
      */
@@ -216,6 +225,7 @@ public class ParJxjg extends EntityMP implements Serializable {
         this.zf = zf ;
         this.modify("zf",zf);
     }
+
     /**
      * 设置 [组织]
      */
@@ -223,6 +233,7 @@ public class ParJxjg extends EntityMP implements Serializable {
         this.zz = zz ;
         this.modify("zz",zz);
     }
+
 
 }
 

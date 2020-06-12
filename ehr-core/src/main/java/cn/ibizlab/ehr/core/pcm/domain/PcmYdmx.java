@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -263,6 +264,7 @@ public class PcmYdmx extends EntityMP implements Serializable {
         this.finished = finished ;
         this.modify("finished",finished);
     }
+
     /**
      * 设置 [异动明细名称]
      */
@@ -270,6 +272,7 @@ public class PcmYdmx extends EntityMP implements Serializable {
         this.pcmydmxname = pcmydmxname ;
         this.modify("pcmydmxname",pcmydmxname);
     }
+
     /**
      * 设置 [所属职务]
      */
@@ -277,6 +280,7 @@ public class PcmYdmx extends EntityMP implements Serializable {
         this.yzw = yzw ;
         this.modify("yzw",yzw);
     }
+
     /**
      * 设置 [分组类型]
      */
@@ -284,6 +288,7 @@ public class PcmYdmx extends EntityMP implements Serializable {
         this.pcmydmxtype = pcmydmxtype ;
         this.modify("pcmydmxtype",pcmydmxtype);
     }
+
     /**
      * 设置 [职级]
      */
@@ -291,12 +296,24 @@ public class PcmYdmx extends EntityMP implements Serializable {
         this.yrank = yrank ;
         this.modify("yrank",yrank);
     }
+
     /**
      * 设置 [生效日期]
      */
     public void setSxrq(Timestamp sxrq){
         this.sxrq = sxrq ;
         this.modify("sxrq",sxrq);
+    }
+
+    /**
+     * 格式化日期 [生效日期]
+     */
+    public String formatSxrq(){
+        if (this.sxrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(sxrq);
     }
     /**
      * 设置 [审核状态]
@@ -305,6 +322,7 @@ public class PcmYdmx extends EntityMP implements Serializable {
         this.checkstatus = checkstatus ;
         this.modify("checkstatus",checkstatus);
     }
+
     /**
      * 设置 [所属岗位]
      */
@@ -312,6 +330,7 @@ public class PcmYdmx extends EntityMP implements Serializable {
         this.ygw = ygw ;
         this.modify("ygw",ygw);
     }
+
     /**
      * 设置 [员工编号]
      */
@@ -319,6 +338,7 @@ public class PcmYdmx extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [证件号码]
      */
@@ -326,6 +346,7 @@ public class PcmYdmx extends EntityMP implements Serializable {
         this.zjhm = zjhm ;
         this.modify("zjhm",zjhm);
     }
+
     /**
      * 设置 [所属组织]
      */
@@ -333,12 +354,24 @@ public class PcmYdmx extends EntityMP implements Serializable {
         this.zz = zz ;
         this.modify("zz",zz);
     }
+
     /**
      * 设置 [出生日期]
      */
     public void setCsrq(Timestamp csrq){
         this.csrq = csrq ;
         this.modify("csrq",csrq);
+    }
+
+    /**
+     * 格式化日期 [出生日期]
+     */
+    public String formatCsrq(){
+        if (this.csrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(csrq);
     }
     /**
      * 设置 [联系电话]
@@ -347,6 +380,7 @@ public class PcmYdmx extends EntityMP implements Serializable {
         this.lxdh = lxdh ;
         this.modify("lxdh",lxdh);
     }
+
     /**
      * 设置 [年龄]
      */
@@ -354,6 +388,7 @@ public class PcmYdmx extends EntityMP implements Serializable {
         this.nl = nl ;
         this.modify("nl",nl);
     }
+
     /**
      * 设置 [所属部门]
      */
@@ -361,6 +396,7 @@ public class PcmYdmx extends EntityMP implements Serializable {
         this.bm = bm ;
         this.modify("bm",bm);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -368,6 +404,7 @@ public class PcmYdmx extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [所属组织标识]
      */
@@ -375,6 +412,7 @@ public class PcmYdmx extends EntityMP implements Serializable {
         this.zzid = zzid ;
         this.modify("zzid",zzid);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -382,6 +420,7 @@ public class PcmYdmx extends EntityMP implements Serializable {
         this.bmid = bmid ;
         this.modify("bmid",bmid);
     }
+
 
 }
 

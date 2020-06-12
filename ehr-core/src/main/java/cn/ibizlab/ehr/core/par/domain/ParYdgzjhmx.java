@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -176,6 +177,7 @@ public class ParYdgzjhmx extends EntityMP implements Serializable {
         this.wcbz = wcbz ;
         this.modify("wcbz",wcbz);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -183,6 +185,7 @@ public class ParYdgzjhmx extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [权重]
      */
@@ -190,6 +193,7 @@ public class ParYdgzjhmx extends EntityMP implements Serializable {
         this.qz = qz ;
         this.modify("qz",qz);
     }
+
     /**
      * 设置 [自评/评分]
      */
@@ -197,6 +201,7 @@ public class ParYdgzjhmx extends EntityMP implements Serializable {
         this.zppf = zppf ;
         this.modify("zppf",zppf);
     }
+
     /**
      * 设置 [完成情况]
      */
@@ -204,6 +209,7 @@ public class ParYdgzjhmx extends EntityMP implements Serializable {
         this.wcqk = wcqk ;
         this.modify("wcqk",wcqk);
     }
+
     /**
      * 设置 [修改后提交工作计划]
      */
@@ -211,6 +217,7 @@ public class ParYdgzjhmx extends EntityMP implements Serializable {
         this.xzhtjgzjh = xzhtjgzjh ;
         this.modify("xzhtjgzjh",xzhtjgzjh);
     }
+
     /**
      * 设置 [指标类型]
      */
@@ -218,12 +225,24 @@ public class ParYdgzjhmx extends EntityMP implements Serializable {
         this.zblx = zblx ;
         this.modify("zblx",zblx);
     }
+
     /**
      * 设置 [拟完成日期]
      */
     public void setNwcrq(Timestamp nwcrq){
         this.nwcrq = nwcrq ;
         this.modify("nwcrq",nwcrq);
+    }
+
+    /**
+     * 格式化日期 [拟完成日期]
+     */
+    public String formatNwcrq(){
+        if (this.nwcrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(nwcrq);
     }
     /**
      * 设置 [工作计划]
@@ -232,6 +251,7 @@ public class ParYdgzjhmx extends EntityMP implements Serializable {
         this.parydgzjhmxname = parydgzjhmxname ;
         this.modify("parydgzjhmxname",parydgzjhmxname);
     }
+
     /**
      * 设置 [月度工作计划ID]
      */
@@ -239,6 +259,7 @@ public class ParYdgzjhmx extends EntityMP implements Serializable {
         this.parydgzjhid = parydgzjhid ;
         this.modify("parydgzjhid",parydgzjhid);
     }
+
 
 }
 

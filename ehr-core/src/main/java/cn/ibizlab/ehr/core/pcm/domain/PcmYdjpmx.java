@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -336,6 +337,7 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
         this.jsrq = jsrq ;
         this.modify("jsrq",jsrq);
     }
+
     /**
      * 设置 [是否加黑名单]
      */
@@ -343,6 +345,7 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
         this.sfhmd = sfhmd ;
         this.modify("sfhmd",sfhmd);
     }
+
     /**
      * 设置 [是否有劳动争议]
      */
@@ -350,6 +353,7 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
         this.sfldzy = sfldzy ;
         this.modify("sfldzy",sfldzy);
     }
+
     /**
      * 设置 [备注]
      */
@@ -357,6 +361,7 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
         this.remarks = remarks ;
         this.modify("remarks",remarks);
     }
+
     /**
      * 设置 [补偿金数额（元）]
      */
@@ -364,6 +369,7 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
         this.bcjse = bcjse ;
         this.modify("bcjse",bcjse);
     }
+
     /**
      * 设置 [劳动争议类型]
      */
@@ -371,6 +377,7 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
         this.ldzytype = ldzytype ;
         this.modify("ldzytype",ldzytype);
     }
+
     /**
      * 设置 [赔偿金数额（元）]
      */
@@ -378,6 +385,7 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
         this.pcjse = pcjse ;
         this.modify("pcjse",pcjse);
     }
+
     /**
      * 设置 [解聘明细名称]
      */
@@ -385,6 +393,7 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
         this.pcmydjpmxname = pcmydjpmxname ;
         this.modify("pcmydjpmxname",pcmydjpmxname);
     }
+
     /**
      * 设置 [解聘原因]
      */
@@ -392,6 +401,7 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [解除劳动合同附件]
      */
@@ -399,6 +409,7 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
         this.jpfj = jpfj ;
         this.modify("jpfj",jpfj);
     }
+
     /**
      * 设置 [原因详情]
      */
@@ -406,6 +417,7 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [操作]
      */
@@ -413,6 +425,7 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
         this.cz = cz ;
         this.modify("cz",cz);
     }
+
     /**
      * 设置 [是否支付补偿金]
      */
@@ -420,6 +433,7 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
         this.sfzfbcj = sfzfbcj ;
         this.modify("sfzfbcj",sfzfbcj);
     }
+
     /**
      * 设置 [是否完成]
      */
@@ -427,6 +441,7 @@ public class PcmYdjpmx extends EntityMP implements Serializable {
         this.isfinished = isfinished ;
         this.modify("isfinished",isfinished);
     }
+
 
 }
 

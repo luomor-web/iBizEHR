@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -309,6 +310,7 @@ public class SalSalary extends EntityMP implements Serializable {
         this.memo = memo ;
         this.modify("memo",memo);
     }
+
     /**
      * 设置 [状态]
      */
@@ -316,6 +318,7 @@ public class SalSalary extends EntityMP implements Serializable {
         this.state = state ;
         this.modify("state",state);
     }
+
     /**
      * 设置 [实发薪酬]
      */
@@ -323,6 +326,7 @@ public class SalSalary extends EntityMP implements Serializable {
         this.xc = xc ;
         this.modify("xc",xc);
     }
+
     /**
      * 设置 [员工薪酬名称]
      */
@@ -330,6 +334,7 @@ public class SalSalary extends EntityMP implements Serializable {
         this.salsalaryname = salsalaryname ;
         this.modify("salsalaryname",salsalaryname);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -337,6 +342,7 @@ public class SalSalary extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -344,6 +350,7 @@ public class SalSalary extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [工资单标识]
      */
@@ -351,6 +358,7 @@ public class SalSalary extends EntityMP implements Serializable {
         this.salsalarybillid = salsalarybillid ;
         this.modify("salsalarybillid",salsalarybillid);
     }
+
     /**
      * 设置 [职务管理标识]
      */
@@ -358,6 +366,7 @@ public class SalSalary extends EntityMP implements Serializable {
         this.ormdutyid = ormdutyid ;
         this.modify("ormdutyid",ormdutyid);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -365,6 +374,7 @@ public class SalSalary extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [岗位管理标识]
      */
@@ -372,6 +382,7 @@ public class SalSalary extends EntityMP implements Serializable {
         this.ormpostid = ormpostid ;
         this.modify("ormpostid",ormpostid);
     }
+
     /**
      * 设置 [薪酬计算计划标识]
      */
@@ -379,6 +390,7 @@ public class SalSalary extends EntityMP implements Serializable {
         this.salplanid = salplanid ;
         this.modify("salplanid",salplanid);
     }
+
 
 }
 

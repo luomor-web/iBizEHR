@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -156,6 +157,7 @@ public class TrmStay extends EntityMP implements Serializable {
         this.lxr = lxr ;
         this.modify("lxr",lxr);
     }
+
     /**
      * 设置 [名称]
      */
@@ -163,6 +165,7 @@ public class TrmStay extends EntityMP implements Serializable {
         this.trmstayname = trmstayname ;
         this.modify("trmstayname",trmstayname);
     }
+
     /**
      * 设置 [房间类型]
      */
@@ -170,6 +173,7 @@ public class TrmStay extends EntityMP implements Serializable {
         this.fjlx = fjlx ;
         this.modify("fjlx",fjlx);
     }
+
     /**
      * 设置 [房间数量]
      */
@@ -177,6 +181,7 @@ public class TrmStay extends EntityMP implements Serializable {
         this.fjsl = fjsl ;
         this.modify("fjsl",fjsl);
     }
+
     /**
      * 设置 [联系电话]
      */
@@ -184,6 +189,7 @@ public class TrmStay extends EntityMP implements Serializable {
         this.lxdh = lxdh ;
         this.modify("lxdh",lxdh);
     }
+
     /**
      * 设置 [培训地点标识]
      */
@@ -191,6 +197,7 @@ public class TrmStay extends EntityMP implements Serializable {
         this.trmtrainaddressid = trmtrainaddressid ;
         this.modify("trmtrainaddressid",trmtrainaddressid);
     }
+
 
 }
 

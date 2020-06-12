@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -140,6 +141,7 @@ public class ParTzgg extends EntityMP implements Serializable {
         this.lhzbmb = lhzbmb ;
         this.modify("lhzbmb",lhzbmb);
     }
+
     /**
      * 设置 [周期类型]
      */
@@ -147,6 +149,7 @@ public class ParTzgg extends EntityMP implements Serializable {
         this.zqlx = zqlx ;
         this.modify("zqlx",zqlx);
     }
+
     /**
      * 设置 [年度]
      */
@@ -154,6 +157,7 @@ public class ParTzgg extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [月度]
      */
@@ -161,6 +165,7 @@ public class ParTzgg extends EntityMP implements Serializable {
         this.yd = yd ;
         this.modify("yd",yd);
     }
+
     /**
      * 设置 [通知类型]
      */
@@ -168,6 +173,7 @@ public class ParTzgg extends EntityMP implements Serializable {
         this.tzlx = tzlx ;
         this.modify("tzlx",tzlx);
     }
+
     /**
      * 设置 [标题]
      */
@@ -175,12 +181,24 @@ public class ParTzgg extends EntityMP implements Serializable {
         this.partzggname = partzggname ;
         this.modify("partzggname",partzggname);
     }
+
     /**
      * 设置 [截止时间]
      */
     public void setJzsj(Timestamp jzsj){
         this.jzsj = jzsj ;
         this.modify("jzsj",jzsj);
+    }
+
+    /**
+     * 格式化日期 [截止时间]
+     */
+    public String formatJzsj(){
+        if (this.jzsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jzsj);
     }
 
 }

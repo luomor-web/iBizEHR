@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -148,6 +149,7 @@ public class AttendRecordDetail extends EntityMP implements Serializable {
         this.lng = lng ;
         this.modify("lng",lng);
     }
+
     /**
      * 设置 [考勤记录明细名称]
      */
@@ -155,12 +157,24 @@ public class AttendRecordDetail extends EntityMP implements Serializable {
         this.attendrecorddetailname = attendrecorddetailname ;
         this.modify("attendrecorddetailname",attendrecorddetailname);
     }
+
     /**
      * 设置 [打卡时间]
      */
     public void setSigntime(Timestamp signtime){
         this.signtime = signtime ;
         this.modify("signtime",signtime);
+    }
+
+    /**
+     * 格式化日期 [打卡时间]
+     */
+    public String formatSigntime(){
+        if (this.signtime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(signtime);
     }
     /**
      * 设置 [打卡地点]
@@ -169,6 +183,7 @@ public class AttendRecordDetail extends EntityMP implements Serializable {
         this.signlocation = signlocation ;
         this.modify("signlocation",signlocation);
     }
+
     /**
      * 设置 [纬度]
      */
@@ -176,6 +191,7 @@ public class AttendRecordDetail extends EntityMP implements Serializable {
         this.lat = lat ;
         this.modify("lat",lat);
     }
+
     /**
      * 设置 [考勤记录标识]
      */
@@ -183,6 +199,7 @@ public class AttendRecordDetail extends EntityMP implements Serializable {
         this.attendancerecordid = attendancerecordid ;
         this.modify("attendancerecordid",attendancerecordid);
     }
+
 
 }
 

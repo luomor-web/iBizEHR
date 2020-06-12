@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -104,6 +105,7 @@ public class ParExamContent extends EntityMP implements Serializable {
         this.parexamcontentname = parexamcontentname ;
         this.modify("parexamcontentname",parexamcontentname);
     }
+
     /**
      * 设置 [内容编码]
      */
@@ -111,6 +113,7 @@ public class ParExamContent extends EntityMP implements Serializable {
         this.contentcode = contentcode ;
         this.modify("contentcode",contentcode);
     }
+
 
 }
 

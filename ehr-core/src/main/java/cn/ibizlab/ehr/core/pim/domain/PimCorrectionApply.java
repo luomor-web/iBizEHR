@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -185,6 +186,7 @@ public class PimCorrectionApply extends EntityMP implements Serializable {
         this.pimcorrectionapplyname = pimcorrectionapplyname ;
         this.modify("pimcorrectionapplyname",pimcorrectionapplyname);
     }
+
     /**
      * 设置 [B/Y类员工转正申请ID]
      */
@@ -192,6 +194,7 @@ public class PimCorrectionApply extends EntityMP implements Serializable {
         this.pimbyygzzsqid = pimbyygzzsqid ;
         this.modify("pimbyygzzsqid",pimbyygzzsqid);
     }
+
     /**
      * 设置 [员工标识]
      */
@@ -199,6 +202,7 @@ public class PimCorrectionApply extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -211,6 +212,7 @@ public class PimQuestions extends EntityMP implements Serializable {
         this.questionman = questionman ;
         this.modify("questionman",questionman);
     }
+
     /**
      * 设置 [问题页面Url]
      */
@@ -218,6 +220,7 @@ public class PimQuestions extends EntityMP implements Serializable {
         this.twurl = twurl ;
         this.modify("twurl",twurl);
     }
+
     /**
      * 设置 [紧急程度]
      */
@@ -225,6 +228,7 @@ public class PimQuestions extends EntityMP implements Serializable {
         this.jjcd = jjcd ;
         this.modify("jjcd",jjcd);
     }
+
     /**
      * 设置 [问题页面代码]
      */
@@ -232,6 +236,7 @@ public class PimQuestions extends EntityMP implements Serializable {
         this.ymmc = ymmc ;
         this.modify("ymmc",ymmc);
     }
+
     /**
      * 设置 [页面]
      */
@@ -239,6 +244,7 @@ public class PimQuestions extends EntityMP implements Serializable {
         this.ym = ym ;
         this.modify("ym",ym);
     }
+
     /**
      * 设置 [功能]
      */
@@ -246,6 +252,7 @@ public class PimQuestions extends EntityMP implements Serializable {
         this.gn = gn ;
         this.modify("gn",gn);
     }
+
     /**
      * 设置 [界面截图]
      */
@@ -253,6 +260,7 @@ public class PimQuestions extends EntityMP implements Serializable {
         this.jt = jt ;
         this.modify("jt",jt);
     }
+
     /**
      * 设置 [问题反馈]
      */
@@ -260,6 +268,7 @@ public class PimQuestions extends EntityMP implements Serializable {
         this.wtfk = wtfk ;
         this.modify("wtfk",wtfk);
     }
+
     /**
      * 设置 [联系电话]
      */
@@ -267,6 +276,7 @@ public class PimQuestions extends EntityMP implements Serializable {
         this.lxdh = lxdh ;
         this.modify("lxdh",lxdh);
     }
+
     /**
      * 设置 [问题描述]
      */
@@ -274,6 +284,7 @@ public class PimQuestions extends EntityMP implements Serializable {
         this.wtms = wtms ;
         this.modify("wtms",wtms);
     }
+
     /**
      * 设置 [模块]
      */
@@ -281,6 +292,7 @@ public class PimQuestions extends EntityMP implements Serializable {
         this.mk = mk ;
         this.modify("mk",mk);
     }
+
     /**
      * 设置 [问题]
      */
@@ -288,6 +300,7 @@ public class PimQuestions extends EntityMP implements Serializable {
         this.questionsname = questionsname ;
         this.modify("questionsname",questionsname);
     }
+
     /**
      * 设置 [开发者]
      */
@@ -295,12 +308,24 @@ public class PimQuestions extends EntityMP implements Serializable {
         this.kfz = kfz ;
         this.modify("kfz",kfz);
     }
+
     /**
      * 设置 [提出时间]
      */
     public void setTcsj(Timestamp tcsj){
         this.tcsj = tcsj ;
         this.modify("tcsj",tcsj);
+    }
+
+    /**
+     * 格式化日期 [提出时间]
+     */
+    public String formatTcsj(){
+        if (this.tcsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(tcsj);
     }
     /**
      * 设置 [完成时间]
@@ -309,6 +334,17 @@ public class PimQuestions extends EntityMP implements Serializable {
         this.wcsj = wcsj ;
         this.modify("wcsj",wcsj);
     }
+
+    /**
+     * 格式化日期 [完成时间]
+     */
+    public String formatWcsj(){
+        if (this.wcsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(wcsj);
+    }
     /**
      * 设置 [问题状态]
      */
@@ -316,6 +352,7 @@ public class PimQuestions extends EntityMP implements Serializable {
         this.wtzt = wtzt ;
         this.modify("wtzt",wtzt);
     }
+
     /**
      * 设置 [问题编号]
      */
@@ -323,6 +360,7 @@ public class PimQuestions extends EntityMP implements Serializable {
         this.wtbh = wtbh ;
         this.modify("wtbh",wtbh);
     }
+
 
 }
 

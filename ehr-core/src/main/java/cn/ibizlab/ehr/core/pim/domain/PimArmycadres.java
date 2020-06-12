@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -227,6 +228,7 @@ public class PimArmycadres extends EntityMP implements Serializable {
         this.pimarmycadresname = pimarmycadresname ;
         this.modify("pimarmycadresname",pimarmycadresname);
     }
+
     /**
      * 设置 [附件]
      */
@@ -234,6 +236,7 @@ public class PimArmycadres extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [记录所属]
      */
@@ -241,6 +244,7 @@ public class PimArmycadres extends EntityMP implements Serializable {
         this.jlss = jlss ;
         this.modify("jlss",jlss);
     }
+
     /**
      * 设置 [审批状态]
      */
@@ -248,6 +252,7 @@ public class PimArmycadres extends EntityMP implements Serializable {
         this.jlspzt = jlspzt ;
         this.modify("jlspzt",jlspzt);
     }
+
     /**
      * 设置 [类型(*)]
      */
@@ -255,6 +260,7 @@ public class PimArmycadres extends EntityMP implements Serializable {
         this.trooptype = trooptype ;
         this.modify("trooptype",trooptype);
     }
+
     /**
      * 设置 [级别(*)]
      */
@@ -262,12 +268,24 @@ public class PimArmycadres extends EntityMP implements Serializable {
         this.leveltype = leveltype ;
         this.modify("leveltype",leveltype);
     }
+
     /**
      * 设置 [发生时间(*)]
      */
     public void setFssj(Timestamp fssj){
         this.fssj = fssj ;
         this.modify("fssj",fssj);
+    }
+
+    /**
+     * 格式化日期 [发生时间(*)]
+     */
+    public String formatFssj(){
+        if (this.fssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(fssj);
     }
     /**
      * 设置 [拒绝原因]
@@ -276,6 +294,7 @@ public class PimArmycadres extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [记录操作者]
      */
@@ -283,6 +302,7 @@ public class PimArmycadres extends EntityMP implements Serializable {
         this.jlczz = jlczz ;
         this.modify("jlczz",jlczz);
     }
+
     /**
      * 设置 [记录管理编号]
      */
@@ -290,6 +310,7 @@ public class PimArmycadres extends EntityMP implements Serializable {
         this.jlglbh = jlglbh ;
         this.modify("jlglbh",jlglbh);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -297,6 +318,7 @@ public class PimArmycadres extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

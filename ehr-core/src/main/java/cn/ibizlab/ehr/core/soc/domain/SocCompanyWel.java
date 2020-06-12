@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -157,6 +158,7 @@ public class SocCompanyWel extends EntityMP implements Serializable {
         this.soccompanywelname = soccompanywelname ;
         this.modify("soccompanywelname",soccompanywelname);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -164,6 +166,7 @@ public class SocCompanyWel extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [社保参保地标识]
      */
@@ -171,6 +174,7 @@ public class SocCompanyWel extends EntityMP implements Serializable {
         this.socselfarebaseid = socselfarebaseid ;
         this.modify("socselfarebaseid",socselfarebaseid);
     }
+
 
 }
 

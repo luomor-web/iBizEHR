@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -126,6 +127,7 @@ public class PimWorkflowRef extends EntityMP implements Serializable {
         this.pimworkflowrefname = pimworkflowrefname ;
         this.modify("pimworkflowrefname",pimworkflowrefname);
     }
+
     /**
      * 设置 [流程配置]
      */
@@ -133,6 +135,7 @@ public class PimWorkflowRef extends EntityMP implements Serializable {
         this.pimworkflowid = pimworkflowid ;
         this.modify("pimworkflowid",pimworkflowid);
     }
+
 
     /**
      * 获取 [平台流程配置标识]

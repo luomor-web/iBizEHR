@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -169,12 +170,24 @@ public class PcmMspjxx extends EntityMP implements Serializable {
         this.officer = officer ;
         this.modify("officer",officer);
     }
+
     /**
      * 设置 [面试时间]
      */
     public void setInterviewtime(Timestamp interviewtime){
         this.interviewtime = interviewtime ;
         this.modify("interviewtime",interviewtime);
+    }
+
+    /**
+     * 格式化日期 [面试时间]
+     */
+    public String formatInterviewtime(){
+        if (this.interviewtime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(interviewtime);
     }
     /**
      * 设置 [面试评价信息名称]
@@ -183,6 +196,7 @@ public class PcmMspjxx extends EntityMP implements Serializable {
         this.pcmmspjxxname = pcmmspjxxname ;
         this.modify("pcmmspjxxname",pcmmspjxxname);
     }
+
     /**
      * 设置 [面试评价]
      */
@@ -190,6 +204,7 @@ public class PcmMspjxx extends EntityMP implements Serializable {
         this.evaluate = evaluate ;
         this.modify("evaluate",evaluate);
     }
+
     /**
      * 设置 [面试Id]
      */
@@ -197,6 +212,7 @@ public class PcmMspjxx extends EntityMP implements Serializable {
         this.interviewid = interviewid ;
         this.modify("interviewid",interviewid);
     }
+
     /**
      * 设置 [面试结果ID]
      */
@@ -204,12 +220,24 @@ public class PcmMspjxx extends EntityMP implements Serializable {
         this.interviewresultid = interviewresultid ;
         this.modify("interviewresultid",interviewresultid);
     }
+
     /**
      * 设置 [面试评价时间]
      */
     public void setEvaluatetime(Timestamp evaluatetime){
         this.evaluatetime = evaluatetime ;
         this.modify("evaluatetime",evaluatetime);
+    }
+
+    /**
+     * 格式化日期 [面试评价时间]
+     */
+    public String formatEvaluatetime(){
+        if (this.evaluatetime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(evaluatetime);
     }
     /**
      * 设置 [面试分数]
@@ -218,6 +246,7 @@ public class PcmMspjxx extends EntityMP implements Serializable {
         this.score = score ;
         this.modify("score",score);
     }
+
     /**
      * 设置 [面试结果]
      */
@@ -225,6 +254,7 @@ public class PcmMspjxx extends EntityMP implements Serializable {
         this.conclusion = conclusion ;
         this.modify("conclusion",conclusion);
     }
+
     /**
      * 设置 [面试官邮箱]
      */
@@ -232,6 +262,7 @@ public class PcmMspjxx extends EntityMP implements Serializable {
         this.officeremail = officeremail ;
         this.modify("officeremail",officeremail);
     }
+
     /**
      * 设置 [面试地点]
      */
@@ -239,6 +270,7 @@ public class PcmMspjxx extends EntityMP implements Serializable {
         this.location = location ;
         this.modify("location",location);
     }
+
 
 }
 

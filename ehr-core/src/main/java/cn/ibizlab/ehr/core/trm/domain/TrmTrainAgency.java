@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -368,6 +369,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.khhmc = khhmc ;
         this.modify("khhmc",khhmc);
     }
+
     /**
      * 设置 [纳税人识别号]
      */
@@ -375,6 +377,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.nsrsbh = nsrsbh ;
         this.modify("nsrsbh",nsrsbh);
     }
+
     /**
      * 设置 [培训次数]
      */
@@ -382,6 +385,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.pxcs = pxcs ;
         this.modify("pxcs",pxcs);
     }
+
     /**
      * 设置 [开户行]
      */
@@ -389,6 +393,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.khh = khh ;
         this.modify("khh",khh);
     }
+
     /**
      * 设置 [机构等级]
      */
@@ -396,6 +401,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.jgdj = jgdj ;
         this.modify("jgdj",jgdj);
     }
+
     /**
      * 设置 [机构类型]
      */
@@ -403,6 +409,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.jglx = jglx ;
         this.modify("jglx",jglx);
     }
+
     /**
      * 设置 [是否封存]
      */
@@ -410,6 +417,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.sffc = sffc ;
         this.modify("sffc",sffc);
     }
+
     /**
      * 设置 [是否共享]
      */
@@ -417,6 +425,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.sfgx = sfgx ;
         this.modify("sfgx",sfgx);
     }
+
     /**
      * 设置 [培训机构名称]
      */
@@ -424,6 +433,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.trmtrainagencyname = trmtrainagencyname ;
         this.modify("trmtrainagencyname",trmtrainagencyname);
     }
+
     /**
      * 设置 [联系人]
      */
@@ -431,6 +441,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.lxr = lxr ;
         this.modify("lxr",lxr);
     }
+
     /**
      * 设置 [机构编码]
      */
@@ -438,6 +449,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.jgbm = jgbm ;
         this.modify("jgbm",jgbm);
     }
+
     /**
      * 设置 [备注]
      */
@@ -445,6 +457,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [网址]
      */
@@ -452,6 +465,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.wz = wz ;
         this.modify("wz",wz);
     }
+
     /**
      * 设置 [开票类型]
      */
@@ -459,6 +473,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.kplx = kplx ;
         this.modify("kplx",kplx);
     }
+
     /**
      * 设置 [机构性质]
      */
@@ -466,6 +481,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.jglb = jglb ;
         this.modify("jglb",jglb);
     }
+
     /**
      * 设置 [注册信息]
      */
@@ -473,6 +489,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.zcxx = zcxx ;
         this.modify("zcxx",zcxx);
     }
+
     /**
      * 设置 [开户行账号]
      */
@@ -480,6 +497,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.khhzh = khhzh ;
         this.modify("khhzh",khhzh);
     }
+
     /**
      * 设置 [培训总时长]
      */
@@ -487,6 +505,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.pxzsc = pxzsc ;
         this.modify("pxzsc",pxzsc);
     }
+
     /**
      * 设置 [培训模块范围]
      */
@@ -494,6 +513,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.kctxfw = kctxfw ;
         this.modify("kctxfw",kctxfw);
     }
+
     /**
      * 设置 [电话]
      */
@@ -501,6 +521,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.kprdh = kprdh ;
         this.modify("kprdh",kprdh);
     }
+
     /**
      * 设置 [开票信息]
      */
@@ -508,6 +529,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.kpxx = kpxx ;
         this.modify("kpxx",kpxx);
     }
+
     /**
      * 设置 [电子信箱]
      */
@@ -515,6 +537,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.dzxx = dzxx ;
         this.modify("dzxx",dzxx);
     }
+
     /**
      * 设置 [简介]
      */
@@ -522,6 +545,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.jj = jj ;
         this.modify("jj",jj);
     }
+
     /**
      * 设置 [评价]
      */
@@ -529,6 +553,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.pj = pj ;
         this.modify("pj",pj);
     }
+
     /**
      * 设置 [开票人]
      */
@@ -536,6 +561,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.kpr = kpr ;
         this.modify("kpr",kpr);
     }
+
     /**
      * 设置 [开票名称]
      */
@@ -543,6 +569,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.kpmc = kpmc ;
         this.modify("kpmc",kpmc);
     }
+
     /**
      * 设置 [地址]
      */
@@ -550,6 +577,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.kpdz = kpdz ;
         this.modify("kpdz",kpdz);
     }
+
     /**
      * 设置 [联系电话]
      */
@@ -557,6 +585,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.lxdh = lxdh ;
         this.modify("lxdh",lxdh);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -564,6 +593,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -571,6 +601,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [培训机构标识]
      */
@@ -578,6 +609,7 @@ public class TrmTrainAgency extends EntityMP implements Serializable {
         this.trmtrainagencyid2 = trmtrainagencyid2 ;
         this.modify("trmtrainagencyid2",trmtrainagencyid2);
     }
+
 
 }
 

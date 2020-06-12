@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -341,6 +342,17 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.zjkssj = zjkssj ;
         this.modify("zjkssj",zjkssj);
     }
+
+    /**
+     * 格式化日期 [执教开始时间]
+     */
+    public String formatZjkssj(){
+        if (this.zjkssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(zjkssj);
+    }
     /**
      * 设置 [是否共享]
      */
@@ -348,6 +360,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.sfgx = sfgx ;
         this.modify("sfgx",sfgx);
     }
+
     /**
      * 设置 [培训讲师级别]
      */
@@ -355,6 +368,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.pxjsjb = pxjsjb ;
         this.modify("pxjsjb",pxjsjb);
     }
+
     /**
      * 设置 [照片]
      */
@@ -362,6 +376,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.zp = zp ;
         this.modify("zp",zp);
     }
+
     /**
      * 设置 [积分]
      */
@@ -369,6 +384,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.jf = jf ;
         this.modify("jf",jf);
     }
+
     /**
      * 设置 [讲师介绍]
      */
@@ -376,6 +392,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [教师类别]
      */
@@ -383,6 +400,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.jslb = jslb ;
         this.modify("jslb",jslb);
     }
+
     /**
      * 设置 [讲授课程]
      */
@@ -390,6 +408,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.jskc = jskc ;
         this.modify("jskc",jskc);
     }
+
     /**
      * 设置 [特征]
      */
@@ -397,6 +416,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.tz = tz ;
         this.modify("tz",tz);
     }
+
     /**
      * 设置 [教师编码]
      */
@@ -404,6 +424,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.jsbm = jsbm ;
         this.modify("jsbm",jsbm);
     }
+
     /**
      * 设置 [讲师类型]
      */
@@ -411,6 +432,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.jslx = jslx ;
         this.modify("jslx",jslx);
     }
+
     /**
      * 设置 [培训教师名称]
      */
@@ -418,6 +440,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.trmtrainteachername = trmtrainteachername ;
         this.modify("trmtrainteachername",trmtrainteachername);
     }
+
     /**
      * 设置 [等级]
      */
@@ -425,6 +448,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.dj = dj ;
         this.modify("dj",dj);
     }
+
     /**
      * 设置 [创建公司]
      */
@@ -432,6 +456,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.cjgs = cjgs ;
         this.modify("cjgs",cjgs);
     }
+
     /**
      * 设置 [是否封存]
      */
@@ -439,6 +464,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.sffc = sffc ;
         this.modify("sffc",sffc);
     }
+
     /**
      * 设置 [评价]
      */
@@ -446,6 +472,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.pj = pj ;
         this.modify("pj",pj);
     }
+
     /**
      * 设置 [年龄]
      */
@@ -453,6 +480,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.nl = nl ;
         this.modify("nl",nl);
     }
+
     /**
      * 设置 [性别]
      */
@@ -460,6 +488,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.xb = xb ;
         this.modify("xb",xb);
     }
+
     /**
      * 设置 [证件号码]
      */
@@ -467,6 +496,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.zjhm = zjhm ;
         this.modify("zjhm",zjhm);
     }
+
     /**
      * 设置 [姓名]
      */
@@ -474,6 +504,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.pimpersonname = pimpersonname ;
         this.modify("pimpersonname",pimpersonname);
     }
+
     /**
      * 设置 [联系电话]
      */
@@ -481,6 +512,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.lxdh = lxdh ;
         this.modify("lxdh",lxdh);
     }
+
     /**
      * 设置 [机构性质]
      */
@@ -488,6 +520,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.jglb = jglb ;
         this.modify("jglb",jglb);
     }
+
     /**
      * 设置 [特长]
      */
@@ -495,6 +528,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.ahtc = ahtc ;
         this.modify("ahtc",ahtc);
     }
+
     /**
      * 设置 [电子邮箱]
      */
@@ -502,6 +536,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.dzyx = dzyx ;
         this.modify("dzyx",dzyx);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -509,6 +544,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -516,6 +552,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [培训机构标识]
      */
@@ -523,6 +560,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         this.trmtrainagencyid = trmtrainagencyid ;
         this.modify("trmtrainagencyid",trmtrainagencyid);
     }
+
 
 }
 

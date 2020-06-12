@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -181,6 +182,7 @@ public class ParJxzgpc extends EntityMP implements Serializable {
         this.ygname = ygname ;
         this.modify("ygname",ygname);
     }
+
     /**
      * 设置 [评分领导]
      */
@@ -188,6 +190,7 @@ public class ParJxzgpc extends EntityMP implements Serializable {
         this.pfld = pfld ;
         this.modify("pfld",pfld);
     }
+
     /**
      * 设置 [考核项]
      */
@@ -195,6 +198,7 @@ public class ParJxzgpc extends EntityMP implements Serializable {
         this.khx = khx ;
         this.modify("khx",khx);
     }
+
     /**
      * 设置 [考核类型]
      */
@@ -202,6 +206,7 @@ public class ParJxzgpc extends EntityMP implements Serializable {
         this.khlx = khlx ;
         this.modify("khlx",khlx);
     }
+
     /**
      * 设置 [所属组织ID]
      */
@@ -209,6 +214,7 @@ public class ParJxzgpc extends EntityMP implements Serializable {
         this.sszzid = sszzid ;
         this.modify("sszzid",sszzid);
     }
+
     /**
      * 设置 [所属部门ID]
      */
@@ -216,6 +222,7 @@ public class ParJxzgpc extends EntityMP implements Serializable {
         this.ssbmid = ssbmid ;
         this.modify("ssbmid",ssbmid);
     }
+
     /**
      * 设置 [年度]
      */
@@ -223,6 +230,7 @@ public class ParJxzgpc extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [标题]
      */
@@ -230,6 +238,7 @@ public class ParJxzgpc extends EntityMP implements Serializable {
         this.parjxzgpcname = parjxzgpcname ;
         this.modify("parjxzgpcname",parjxzgpcname);
     }
+
     /**
      * 设置 [评分领导ID]
      */
@@ -237,6 +246,7 @@ public class ParJxzgpc extends EntityMP implements Serializable {
         this.pfldid = pfldid ;
         this.modify("pfldid",pfldid);
     }
+
     /**
      * 设置 [总得分]
      */
@@ -244,6 +254,7 @@ public class ParJxzgpc extends EntityMP implements Serializable {
         this.zdf = zdf ;
         this.modify("zdf",zdf);
     }
+
     /**
      * 设置 [所属部门]
      */
@@ -251,6 +262,7 @@ public class ParJxzgpc extends EntityMP implements Serializable {
         this.ssbm = ssbm ;
         this.modify("ssbm",ssbm);
     }
+
     /**
      * 设置 [员工ID]
      */
@@ -258,6 +270,7 @@ public class ParJxzgpc extends EntityMP implements Serializable {
         this.ygid = ygid ;
         this.modify("ygid",ygid);
     }
+
     /**
      * 设置 [所属组织]
      */
@@ -265,6 +278,7 @@ public class ParJxzgpc extends EntityMP implements Serializable {
         this.sszz = sszz ;
         this.modify("sszz",sszz);
     }
+
 
 }
 

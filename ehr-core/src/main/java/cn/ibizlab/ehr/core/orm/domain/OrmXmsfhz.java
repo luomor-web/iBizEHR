@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -322,6 +323,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.month = month ;
         this.modify("month",month);
     }
+
     /**
      * 设置 [8月]
      */
@@ -329,6 +331,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.augy = augy ;
         this.modify("augy",augy);
     }
+
     /**
      * 设置 [2月]
      */
@@ -336,6 +339,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.ey = ey ;
         this.modify("ey",ey);
     }
+
     /**
      * 设置 [9月]
      */
@@ -343,6 +347,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.jy = jy ;
         this.modify("jy",jy);
     }
+
     /**
      * 设置 [4月]
      */
@@ -350,6 +355,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.apy = apy ;
         this.modify("apy",apy);
     }
+
     /**
      * 设置 [1月]
      */
@@ -357,6 +363,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.yy = yy ;
         this.modify("yy",yy);
     }
+
     /**
      * 设置 [岗位]
      */
@@ -364,6 +371,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.gw = gw ;
         this.modify("gw",gw);
     }
+
     /**
      * 设置 [需求人数]
      */
@@ -371,6 +379,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.xm = xm ;
         this.modify("xm",xm);
     }
+
     /**
      * 设置 [11月]
      */
@@ -378,6 +387,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.syy = syy ;
         this.modify("syy",syy);
     }
+
     /**
      * 设置 [3月]
      */
@@ -385,6 +395,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.sy = sy ;
         this.modify("sy",sy);
     }
+
     /**
      * 设置 [10月]
      */
@@ -392,6 +403,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.octy = octy ;
         this.modify("octy",octy);
     }
+
     /**
      * 设置 [本岗位人数]
      */
@@ -399,6 +411,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.rs = rs ;
         this.modify("rs",rs);
     }
+
     /**
      * 设置 [标题]
      */
@@ -406,6 +419,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.ormxmsfhzname = ormxmsfhzname ;
         this.modify("ormxmsfhzname",ormxmsfhzname);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -413,6 +427,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [5月]
      */
@@ -420,6 +435,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.wy = wy ;
         this.modify("wy",wy);
     }
+
     /**
      * 设置 [组织]
      */
@@ -427,6 +443,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.zz = zz ;
         this.modify("zz",zz);
     }
+
     /**
      * 设置 [6月]
      */
@@ -434,6 +451,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.ly = ly ;
         this.modify("ly",ly);
     }
+
     /**
      * 设置 [12月]
      */
@@ -441,6 +459,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.yf = yf ;
         this.modify("yf",yf);
     }
+
     /**
      * 设置 [年度]
      */
@@ -448,6 +467,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [7月]
      */
@@ -455,6 +475,7 @@ public class OrmXmsfhz extends EntityMP implements Serializable {
         this.qy = qy ;
         this.modify("qy",qy);
     }
+
 
 }
 

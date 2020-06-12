@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -141,6 +142,7 @@ public class PcmBdsqd extends EntityMP implements Serializable {
         this.bzsm = bzsm ;
         this.modify("bzsm",bzsm);
     }
+
     /**
      * 设置 [类型]
      */
@@ -148,6 +150,7 @@ public class PcmBdsqd extends EntityMP implements Serializable {
         this.lx = lx ;
         this.modify("lx",lx);
     }
+
     /**
      * 设置 [标题]
      */
@@ -155,12 +158,24 @@ public class PcmBdsqd extends EntityMP implements Serializable {
         this.pcmbdsqdname = pcmbdsqdname ;
         this.modify("pcmbdsqdname",pcmbdsqdname);
     }
+
     /**
      * 设置 [申请时间]
      */
     public void setSqsj(Timestamp sqsj){
         this.sqsj = sqsj ;
         this.modify("sqsj",sqsj);
+    }
+
+    /**
+     * 格式化日期 [申请时间]
+     */
+    public String formatSqsj(){
+        if (this.sqsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(sqsj);
     }
     /**
      * 设置 [申请人ID]
@@ -169,6 +184,7 @@ public class PcmBdsqd extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

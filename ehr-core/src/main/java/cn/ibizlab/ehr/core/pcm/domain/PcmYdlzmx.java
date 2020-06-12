@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -323,6 +324,7 @@ public class PcmYdlzmx extends EntityMP implements Serializable {
         this.sfhmd = sfhmd ;
         this.modify("sfhmd",sfhmd);
     }
+
     /**
      * 设置 [离职理由]
      */
@@ -330,6 +332,7 @@ public class PcmYdlzmx extends EntityMP implements Serializable {
         this.yytype = yytype ;
         this.modify("yytype",yytype);
     }
+
     /**
      * 设置 [离职面谈附件]
      */
@@ -337,6 +340,7 @@ public class PcmYdlzmx extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [原因详情]
      */
@@ -344,6 +348,7 @@ public class PcmYdlzmx extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [异动离职明细名称]
      */
@@ -351,6 +356,7 @@ public class PcmYdlzmx extends EntityMP implements Serializable {
         this.pcmydlzmxname = pcmydlzmxname ;
         this.modify("pcmydlzmxname",pcmydlzmxname);
     }
+
     /**
      * 设置 [操作]
      */
@@ -358,6 +364,7 @@ public class PcmYdlzmx extends EntityMP implements Serializable {
         this.cz = cz ;
         this.modify("cz",cz);
     }
+
     /**
      * 设置 [备注]
      */
@@ -365,6 +372,7 @@ public class PcmYdlzmx extends EntityMP implements Serializable {
         this.remarks = remarks ;
         this.modify("remarks",remarks);
     }
+
     /**
      * 设置 [离职去向]
      */
@@ -372,6 +380,7 @@ public class PcmYdlzmx extends EntityMP implements Serializable {
         this.lzqx = lzqx ;
         this.modify("lzqx",lzqx);
     }
+
     /**
      * 设置 [离职面谈人]
      */
@@ -379,6 +388,7 @@ public class PcmYdlzmx extends EntityMP implements Serializable {
         this.lzmtrname = lzmtrname ;
         this.modify("lzmtrname",lzmtrname);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -386,6 +396,7 @@ public class PcmYdlzmx extends EntityMP implements Serializable {
         this.lzmtrid = lzmtrid ;
         this.modify("lzmtrid",lzmtrid);
     }
+
     /**
      * 设置 [是否完成]
      */
@@ -393,6 +404,7 @@ public class PcmYdlzmx extends EntityMP implements Serializable {
         this.isfinished = isfinished ;
         this.modify("isfinished",isfinished);
     }
+
 
 }
 

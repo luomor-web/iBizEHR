@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -181,6 +182,7 @@ public class OrmOrgInfo extends EntityMP implements Serializable {
         this.postinfo = postinfo ;
         this.modify("postinfo",postinfo);
     }
+
     /**
      * 设置 [上级部门ID]
      */
@@ -188,6 +190,7 @@ public class OrmOrgInfo extends EntityMP implements Serializable {
         this.porgsectorid = porgsectorid ;
         this.modify("porgsectorid",porgsectorid);
     }
+
     /**
      * 设置 [组织排序编号]
      */
@@ -195,6 +198,7 @@ public class OrmOrgInfo extends EntityMP implements Serializable {
         this.ordernum = ordernum ;
         this.modify("ordernum",ordernum);
     }
+
     /**
      * 设置 [所属OU的组织ID]
      */
@@ -202,6 +206,7 @@ public class OrmOrgInfo extends EntityMP implements Serializable {
         this.ouid = ouid ;
         this.modify("ouid",ouid);
     }
+
     /**
      * 设置 [组织简称]
      */
@@ -209,6 +214,7 @@ public class OrmOrgInfo extends EntityMP implements Serializable {
         this.shortname = shortname ;
         this.modify("shortname",shortname);
     }
+
     /**
      * 设置 [组织编码]
      */
@@ -216,6 +222,7 @@ public class OrmOrgInfo extends EntityMP implements Serializable {
         this.orgcode = orgcode ;
         this.modify("orgcode",orgcode);
     }
+
     /**
      * 设置 [启停标识]
      */
@@ -223,6 +230,7 @@ public class OrmOrgInfo extends EntityMP implements Serializable {
         this.startstopsign = startstopsign ;
         this.modify("startstopsign",startstopsign);
     }
+
     /**
      * 设置 [上级组织ID]
      */
@@ -230,6 +238,7 @@ public class OrmOrgInfo extends EntityMP implements Serializable {
         this.porgid = porgid ;
         this.modify("porgid",porgid);
     }
+
     /**
      * 设置 [组织类型释义]
      */
@@ -237,6 +246,7 @@ public class OrmOrgInfo extends EntityMP implements Serializable {
         this.orgtypename = orgtypename ;
         this.modify("orgtypename",orgtypename);
     }
+
     /**
      * 设置 [所属区域]
      */
@@ -244,6 +254,7 @@ public class OrmOrgInfo extends EntityMP implements Serializable {
         this.belongregion = belongregion ;
         this.modify("belongregion",belongregion);
     }
+
     /**
      * 设置 [组织类型]
      */
@@ -251,6 +262,7 @@ public class OrmOrgInfo extends EntityMP implements Serializable {
         this.orgtype = orgtype ;
         this.modify("orgtype",orgtype);
     }
+
     /**
      * 设置 [补贴标准]
      */
@@ -258,6 +270,7 @@ public class OrmOrgInfo extends EntityMP implements Serializable {
         this.substandard = substandard ;
         this.modify("substandard",substandard);
     }
+
     /**
      * 设置 [组织名称]
      */
@@ -265,6 +278,7 @@ public class OrmOrgInfo extends EntityMP implements Serializable {
         this.ormorginfoname = ormorginfoname ;
         this.modify("ormorginfoname",ormorginfoname);
     }
+
 
 }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -154,6 +155,7 @@ public class ParJxmtfk extends EntityMP implements Serializable {
         this.mtnr = mtnr ;
         this.modify("mtnr",mtnr);
     }
+
     /**
      * 设置 [员工陈述]
      */
@@ -161,6 +163,7 @@ public class ParJxmtfk extends EntityMP implements Serializable {
         this.ygcs = ygcs ;
         this.modify("ygcs",ygcs);
     }
+
     /**
      * 设置 [标题]
      */
@@ -168,6 +171,7 @@ public class ParJxmtfk extends EntityMP implements Serializable {
         this.parjxmtfkname = parjxmtfkname ;
         this.modify("parjxmtfkname",parjxmtfkname);
     }
+
     /**
      * 设置 [附件信息]
      */
@@ -175,6 +179,7 @@ public class ParJxmtfk extends EntityMP implements Serializable {
         this.fjxx = fjxx ;
         this.modify("fjxx",fjxx);
     }
+
     /**
      * 设置 [员工ID]
      */
@@ -182,6 +187,7 @@ public class ParJxmtfk extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

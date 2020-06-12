@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -295,6 +296,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.pcmxygzzjlmxname = pcmxygzzjlmxname ;
         this.modify("pcmxygzzjlmxname",pcmxygzzjlmxname);
     }
+
     /**
      * 设置 [审核状态]
      */
@@ -302,12 +304,24 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.checkstatus = checkstatus ;
         this.modify("checkstatus",checkstatus);
     }
+
     /**
      * 设置 [转正时间]
      */
     public void setZzsj(Timestamp zzsj){
         this.zzsj = zzsj ;
         this.modify("zzsj",zzsj);
+    }
+
+    /**
+     * 格式化日期 [转正时间]
+     */
+    public String formatZzsj(){
+        if (this.zzsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(zzsj);
     }
     /**
      * 设置 [是否完成]
@@ -316,6 +330,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.finished = finished ;
         this.modify("finished",finished);
     }
+
     /**
      * 设置 [是否为临时数据]
      */
@@ -323,6 +338,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.istemp = istemp ;
         this.modify("istemp",istemp);
     }
+
     /**
      * 设置 [入职渠道]
      */
@@ -330,6 +346,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.rzqd = rzqd ;
         this.modify("rzqd",rzqd);
     }
+
     /**
      * 设置 [部门]
      */
@@ -337,6 +354,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.bm = bm ;
         this.modify("bm",bm);
     }
+
     /**
      * 设置 [试用期限（月）]
      */
@@ -344,6 +362,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.duration = duration ;
         this.modify("duration",duration);
     }
+
     /**
      * 设置 [分数]
      */
@@ -351,6 +370,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.fs = fs ;
         this.modify("fs",fs);
     }
+
     /**
      * 设置 [员工编号]
      */
@@ -358,6 +378,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [组织]
      */
@@ -365,6 +386,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.zz = zz ;
         this.modify("zz",zz);
     }
+
     /**
      * 设置 [转正岗位]
      */
@@ -372,6 +394,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.zzgw = zzgw ;
         this.modify("zzgw",zzgw);
     }
+
     /**
      * 设置 [组织ID]
      */
@@ -379,6 +402,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.zzid = zzid ;
         this.modify("zzid",zzid);
     }
+
     /**
      * 设置 [评价]
      */
@@ -386,6 +410,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.pj = pj ;
         this.modify("pj",pj);
     }
+
     /**
      * 设置 [部门ID]
      */
@@ -393,6 +418,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.bmid = bmid ;
         this.modify("bmid",bmid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -400,6 +426,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [试用期员工转正申请标识]
      */
@@ -407,6 +434,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.pcmxygzzsqid = pcmxygzzsqid ;
         this.modify("pcmxygzzsqid",pcmxygzzsqid);
     }
+
     /**
      * 设置 [试用期员工转正考核结果记录标识]
      */
@@ -414,6 +442,7 @@ public class PcmXygzzjlmx extends EntityMP implements Serializable {
         this.pcmxygzzkhjgjlid = pcmxygzzkhjgjlid ;
         this.modify("pcmxygzzkhjgjlid",pcmxygzzkhjgjlid);
     }
+
 
 }
 

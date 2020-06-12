@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -135,6 +136,7 @@ public class PimArchivalCatalogue extends EntityMP implements Serializable {
         this.serialnumber = serialnumber ;
         this.modify("serialnumber",serialnumber);
     }
+
     /**
      * 设置 [档案目录名称]
      */
@@ -142,6 +144,7 @@ public class PimArchivalCatalogue extends EntityMP implements Serializable {
         this.archivalcataloguename = archivalcataloguename ;
         this.modify("archivalcataloguename",archivalcataloguename);
     }
+
     /**
      * 设置 [档案信息标识]
      */
@@ -149,6 +152,7 @@ public class PimArchivalCatalogue extends EntityMP implements Serializable {
         this.pimarchivesid = pimarchivesid ;
         this.modify("pimarchivesid",pimarchivesid);
     }
+
 
 }
 

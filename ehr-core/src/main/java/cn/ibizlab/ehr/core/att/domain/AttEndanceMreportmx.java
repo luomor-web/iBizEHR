@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -429,6 +430,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day14 = day14 ;
         this.modify("day14",day14);
     }
+
     /**
      * 设置 [10]
      */
@@ -436,6 +438,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day10 = day10 ;
         this.modify("day10",day10);
     }
+
     /**
      * 设置 [8]
      */
@@ -443,6 +446,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day8 = day8 ;
         this.modify("day8",day8);
     }
+
     /**
      * 设置 [2]
      */
@@ -450,6 +454,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day2 = day2 ;
         this.modify("day2",day2);
     }
+
     /**
      * 设置 [月份]
      */
@@ -457,6 +462,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.yf = yf ;
         this.modify("yf",yf);
     }
+
     /**
      * 设置 [30]
      */
@@ -464,6 +470,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day30 = day30 ;
         this.modify("day30",day30);
     }
+
     /**
      * 设置 [27]
      */
@@ -471,6 +478,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day27 = day27 ;
         this.modify("day27",day27);
     }
+
     /**
      * 设置 [1]
      */
@@ -478,6 +486,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day1 = day1 ;
         this.modify("day1",day1);
     }
+
     /**
      * 设置 [7]
      */
@@ -485,6 +494,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day7 = day7 ;
         this.modify("day7",day7);
     }
+
     /**
      * 设置 [24]
      */
@@ -492,6 +502,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day24 = day24 ;
         this.modify("day24",day24);
     }
+
     /**
      * 设置 [13]
      */
@@ -499,6 +510,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day13 = day13 ;
         this.modify("day13",day13);
     }
+
     /**
      * 设置 [3]
      */
@@ -506,6 +518,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day3 = day3 ;
         this.modify("day3",day3);
     }
+
     /**
      * 设置 [考勤月报明细名称]
      */
@@ -513,6 +526,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.attendancemreportname = attendancemreportname ;
         this.modify("attendancemreportmxname",attendancemreportname);
     }
+
     /**
      * 设置 [组织名称]
      */
@@ -520,6 +534,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.ormrogname = ormrogname ;
         this.modify("ormrogname",ormrogname);
     }
+
     /**
      * 设置 [11]
      */
@@ -527,6 +542,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day11 = day11 ;
         this.modify("day11",day11);
     }
+
     /**
      * 设置 [29]
      */
@@ -534,6 +550,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day29 = day29 ;
         this.modify("day29",day29);
     }
+
     /**
      * 设置 [4]
      */
@@ -541,6 +558,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day4 = day4 ;
         this.modify("day4",day4);
     }
+
     /**
      * 设置 [17]
      */
@@ -548,6 +566,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day17 = day17 ;
         this.modify("day17",day17);
     }
+
     /**
      * 设置 [16]
      */
@@ -555,6 +574,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day16 = day16 ;
         this.modify("day16",day16);
     }
+
     /**
      * 设置 [部门id]
      */
@@ -562,6 +582,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.ormrogsectorid = ormrogsectorid ;
         this.modify("ormrogsectorid",ormrogsectorid);
     }
+
     /**
      * 设置 [5]
      */
@@ -569,6 +590,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day5 = day5 ;
         this.modify("day5",day5);
     }
+
     /**
      * 设置 [年度]
      */
@@ -576,6 +598,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [28]
      */
@@ -583,6 +606,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day28 = day28 ;
         this.modify("day28",day28);
     }
+
     /**
      * 设置 [31]
      */
@@ -590,6 +614,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day31 = day31 ;
         this.modify("day31",day31);
     }
+
     /**
      * 设置 [部门名称]
      */
@@ -597,6 +622,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.ormrogsectorname = ormrogsectorname ;
         this.modify("ormrogsectorname",ormrogsectorname);
     }
+
     /**
      * 设置 [23]
      */
@@ -604,6 +630,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day23 = day23 ;
         this.modify("day23",day23);
     }
+
     /**
      * 设置 [21]
      */
@@ -611,6 +638,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day21 = day21 ;
         this.modify("day21",day21);
     }
+
     /**
      * 设置 [9]
      */
@@ -618,6 +646,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day9 = day9 ;
         this.modify("day9",day9);
     }
+
     /**
      * 设置 [20]
      */
@@ -625,6 +654,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day20 = day20 ;
         this.modify("day20",day20);
     }
+
     /**
      * 设置 [22]
      */
@@ -632,6 +662,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day22 = day22 ;
         this.modify("day22",day22);
     }
+
     /**
      * 设置 [组织id]
      */
@@ -639,6 +670,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.ormrogid = ormrogid ;
         this.modify("ormrogid",ormrogid);
     }
+
     /**
      * 设置 [26]
      */
@@ -646,6 +678,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day26 = day26 ;
         this.modify("day26",day26);
     }
+
     /**
      * 设置 [考勤汇总]
      */
@@ -653,6 +686,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.kqhz = kqhz ;
         this.modify("kqhz",kqhz);
     }
+
     /**
      * 设置 [6]
      */
@@ -660,6 +694,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day6 = day6 ;
         this.modify("day6",day6);
     }
+
     /**
      * 设置 [25]
      */
@@ -667,6 +702,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day25 = day25 ;
         this.modify("day25",day25);
     }
+
     /**
      * 设置 [18]
      */
@@ -674,6 +710,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day18 = day18 ;
         this.modify("day18",day18);
     }
+
     /**
      * 设置 [19]
      */
@@ -681,6 +718,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day19 = day19 ;
         this.modify("day19",day19);
     }
+
     /**
      * 设置 [12]
      */
@@ -688,6 +726,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day12 = day12 ;
         this.modify("day12",day12);
     }
+
     /**
      * 设置 [15]
      */
@@ -695,6 +734,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.day15 = day15 ;
         this.modify("day15",day15);
     }
+
     /**
      * 设置 [考勤设置标识]
      */
@@ -702,6 +742,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.attendencesetupid = attendencesetupid ;
         this.modify("attendencesetupid",attendencesetupid);
     }
+
     /**
      * 设置 [考勤月报标识]
      */
@@ -709,6 +750,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.attendancemreportid2 = attendancemreportid2 ;
         this.modify("attendancemreportid2",attendancemreportid2);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -716,6 +758,7 @@ public class AttEndanceMreportmx extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

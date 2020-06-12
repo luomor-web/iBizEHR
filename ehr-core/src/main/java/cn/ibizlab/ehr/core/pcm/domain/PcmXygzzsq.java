@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -149,6 +150,7 @@ public class PcmXygzzsq extends EntityMP implements Serializable {
         this.istemp = istemp ;
         this.modify("istemp",istemp);
     }
+
     /**
      * 设置 [操作人]
      */
@@ -156,12 +158,24 @@ public class PcmXygzzsq extends EntityMP implements Serializable {
         this.czr = czr ;
         this.modify("czr",czr);
     }
+
     /**
      * 设置 [生效日期]
      */
     public void setSxrq(Timestamp sxrq){
         this.sxrq = sxrq ;
         this.modify("sxrq",sxrq);
+    }
+
+    /**
+     * 格式化日期 [生效日期]
+     */
+    public String formatSxrq(){
+        if (this.sxrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(sxrq);
     }
     /**
      * 设置 [试用期员工转正申请名称]
@@ -170,6 +184,7 @@ public class PcmXygzzsq extends EntityMP implements Serializable {
         this.pcmxygzzsqname = pcmxygzzsqname ;
         this.modify("pcmxygzzsqname",pcmxygzzsqname);
     }
+
     /**
      * 设置 [备注]
      */
@@ -177,6 +192,7 @@ public class PcmXygzzsq extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [转正类型]
      */
@@ -184,12 +200,24 @@ public class PcmXygzzsq extends EntityMP implements Serializable {
         this.zzlx = zzlx ;
         this.modify("zzlx",zzlx);
     }
+
     /**
      * 设置 [操作日期]
      */
     public void setCzrq(Timestamp czrq){
         this.czrq = czrq ;
         this.modify("czrq",czrq);
+    }
+
+    /**
+     * 格式化日期 [操作日期]
+     */
+    public String formatCzrq(){
+        if (this.czrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(czrq);
     }
 
 }

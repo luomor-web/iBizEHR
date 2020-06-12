@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -182,6 +183,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [月度考核]
      */
@@ -189,6 +191,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
         this.jswmjc = jswmjc ;
         this.modify("jswmjc",jswmjc);
     }
+
     /**
      * 设置 [集中述职评审]
      */
@@ -196,6 +199,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
         this.szmzpy = szmzpy ;
         this.modify("szmzpy",szmzpy);
     }
+
     /**
      * 设置 [考核对象]
      */
@@ -203,6 +207,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
         this.khlx = khlx ;
         this.modify("khlx",khlx);
     }
+
     /**
      * 设置 [工作周报考核]
      */
@@ -210,6 +215,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
         this.ywnlks = ywnlks ;
         this.modify("ywnlks",ywnlks);
     }
+
     /**
      * 设置 [绩效考核项得分汇总名称]
      */
@@ -217,6 +223,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
         this.parjxkhxhzname = parjxkhxhzname ;
         this.modify("parjxkhxhzname",parjxkhxhzname);
     }
+
     /**
      * 设置 [所属组织]
      */
@@ -224,6 +231,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
         this.zz = zz ;
         this.modify("zz",zz);
     }
+
     /**
      * 设置 [员工ID]
      */
@@ -231,6 +239,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
         this.ygid = ygid ;
         this.modify("ygid",ygid);
     }
+
     /**
      * 设置 [工作能力及态度评价（上半年）]
      */
@@ -238,6 +247,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
         this.gznljtd = gznljtd ;
         this.modify("gznljtd",gznljtd);
     }
+
     /**
      * 设置 [工作能力及态度评价（下半年）]
      */
@@ -245,6 +255,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
         this.gznljtdXbn = gznljtdXbn ;
         this.modify("gznljtd_xbn",gznljtdXbn);
     }
+
     /**
      * 设置 [年度量化目标（工作述职）]
      */
@@ -252,6 +263,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
         this.gzjx = gzjx ;
         this.modify("gzjx",gzjx);
     }
+
     /**
      * 设置 [员工]
      */
@@ -259,6 +271,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
         this.yg = yg ;
         this.modify("yg",yg);
     }
+
     /**
      * 设置 [部门]
      */
@@ -266,6 +279,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
         this.bm = bm ;
         this.modify("bm",bm);
     }
+
 
 }
 

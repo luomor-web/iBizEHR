@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -168,6 +169,7 @@ public class ParJxzgpcmx extends EntityMP implements Serializable {
         this.fzfw = fzfw ;
         this.modify("fzfw",fzfw);
     }
+
     /**
      * 设置 [最高得分]
      */
@@ -175,6 +177,7 @@ public class ParJxzgpcmx extends EntityMP implements Serializable {
         this.zgdf = zgdf ;
         this.modify("zgdf",zgdf);
     }
+
     /**
      * 设置 [指标]
      */
@@ -182,6 +185,7 @@ public class ParJxzgpcmx extends EntityMP implements Serializable {
         this.zb = zb ;
         this.modify("zb",zb);
     }
+
     /**
      * 设置 [绩效主观评测明细名称]
      */
@@ -189,6 +193,7 @@ public class ParJxzgpcmx extends EntityMP implements Serializable {
         this.parjxzgpcmxname = parjxzgpcmxname ;
         this.modify("parjxzgpcmxname",parjxzgpcmxname);
     }
+
     /**
      * 设置 [评分]
      */
@@ -196,6 +201,7 @@ public class ParJxzgpcmx extends EntityMP implements Serializable {
         this.pf = pf ;
         this.modify("pf",pf);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -203,6 +209,7 @@ public class ParJxzgpcmx extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [最低得分]
      */
@@ -210,6 +217,7 @@ public class ParJxzgpcmx extends EntityMP implements Serializable {
         this.zddf = zddf ;
         this.modify("zddf",zddf);
     }
+
     /**
      * 设置 [备注]
      */
@@ -217,6 +225,7 @@ public class ParJxzgpcmx extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [主观评测ID]
      */
@@ -224,6 +233,7 @@ public class ParJxzgpcmx extends EntityMP implements Serializable {
         this.parjxzgpcid = parjxzgpcid ;
         this.modify("parjxzgpcid",parjxzgpcid);
     }
+
 
 }
 

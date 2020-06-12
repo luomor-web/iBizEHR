@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -170,6 +171,7 @@ public class CodeItem extends EntityMP implements Serializable {
         this.shortkey = shortkey ;
         this.modify("shortkey",shortkey);
     }
+
     /**
      * 设置 [代码项名称]
      */
@@ -177,6 +179,7 @@ public class CodeItem extends EntityMP implements Serializable {
         this.codeitemname = codeitemname ;
         this.modify("codeitemname",codeitemname);
     }
+
     /**
      * 设置 [备注]
      */
@@ -184,6 +187,7 @@ public class CodeItem extends EntityMP implements Serializable {
         this.memo = memo ;
         this.modify("memo",memo);
     }
+
     /**
      * 设置 [代码项值]
      */
@@ -191,6 +195,7 @@ public class CodeItem extends EntityMP implements Serializable {
         this.codeitemvalue = codeitemvalue ;
         this.modify("codeitemvalue",codeitemvalue);
     }
+
     /**
      * 设置 [上级代码项]
      */
@@ -198,6 +203,7 @@ public class CodeItem extends EntityMP implements Serializable {
         this.pcodeitemid = pcodeitemid ;
         this.modify("pcodeitemid",pcodeitemid);
     }
+
     /**
      * 设置 [代码表]
      */
@@ -205,6 +211,7 @@ public class CodeItem extends EntityMP implements Serializable {
         this.codelistid = codelistid ;
         this.modify("codelistid",codelistid);
     }
+
 
 }
 

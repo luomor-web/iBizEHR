@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -168,6 +169,7 @@ public class PcmSyqgz extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [最小合同期限（月）]
      */
@@ -175,6 +177,7 @@ public class PcmSyqgz extends EntityMP implements Serializable {
         this.minperiod = minperiod ;
         this.modify("minperiod",minperiod);
     }
+
     /**
      * 设置 [劳动合同期限（计算）]
      */
@@ -182,6 +185,7 @@ public class PcmSyqgz extends EntityMP implements Serializable {
         this.ldhtqxjs = ldhtqxjs ;
         this.modify("ldhtqxjs",ldhtqxjs);
     }
+
     /**
      * 设置 [劳动合同期限]
      */
@@ -189,6 +193,7 @@ public class PcmSyqgz extends EntityMP implements Serializable {
         this.ldhtqx = ldhtqx ;
         this.modify("ldhtqx",ldhtqx);
     }
+
     /**
      * 设置 [试用期限]
      */
@@ -196,6 +201,7 @@ public class PcmSyqgz extends EntityMP implements Serializable {
         this.duration = duration ;
         this.modify("duration",duration);
     }
+
     /**
      * 设置 [试用期（计算）]
      */
@@ -203,6 +209,7 @@ public class PcmSyqgz extends EntityMP implements Serializable {
         this.syqjs = syqjs ;
         this.modify("syqjs",syqjs);
     }
+
     /**
      * 设置 [试用期规则名称]
      */
@@ -210,6 +217,7 @@ public class PcmSyqgz extends EntityMP implements Serializable {
         this.pcmsyqgzname = pcmsyqgzname ;
         this.modify("pcmsyqgzname",pcmsyqgzname);
     }
+
     /**
      * 设置 [最大合同期限（月）]
      */
@@ -217,6 +225,7 @@ public class PcmSyqgz extends EntityMP implements Serializable {
         this.maxperiod = maxperiod ;
         this.modify("maxperiod",maxperiod);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -224,6 +233,7 @@ public class PcmSyqgz extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

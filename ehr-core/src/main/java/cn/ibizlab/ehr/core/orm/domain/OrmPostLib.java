@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -148,6 +149,7 @@ public class OrmPostLib extends EntityMP implements Serializable {
         this.mustexcyear = mustexcyear ;
         this.modify("mustexcyear",mustexcyear);
     }
+
     /**
      * 设置 [岗位性质]
      */
@@ -155,6 +157,7 @@ public class OrmPostLib extends EntityMP implements Serializable {
         this.postnature = postnature ;
         this.modify("postnature",postnature);
     }
+
     /**
      * 设置 [岗位职责说明]
      */
@@ -162,6 +165,7 @@ public class OrmPostLib extends EntityMP implements Serializable {
         this.jobdesc = jobdesc ;
         this.modify("jobdesc",jobdesc);
     }
+
     /**
      * 设置 [岗位标签]
      */
@@ -169,6 +173,7 @@ public class OrmPostLib extends EntityMP implements Serializable {
         this.gwflag = gwflag ;
         this.modify("gwflag",gwflag);
     }
+
     /**
      * 设置 [建议交流年限]
      */
@@ -176,6 +181,7 @@ public class OrmPostLib extends EntityMP implements Serializable {
         this.sugexcyear = sugexcyear ;
         this.modify("sugexcyear",sugexcyear);
     }
+
     /**
      * 设置 [岗位类型]
      */
@@ -183,6 +189,7 @@ public class OrmPostLib extends EntityMP implements Serializable {
         this.gwtype = gwtype ;
         this.modify("gwtype",gwtype);
     }
+
     /**
      * 设置 [是否保密岗]
      */
@@ -190,6 +197,7 @@ public class OrmPostLib extends EntityMP implements Serializable {
         this.isconfidential = isconfidential ;
         this.modify("isconfidential",isconfidential);
     }
+
     /**
      * 设置 [岗位名称]
      */
@@ -197,6 +205,7 @@ public class OrmPostLib extends EntityMP implements Serializable {
         this.ormpostlibname = ormpostlibname ;
         this.modify("ormpostlibname",ormpostlibname);
     }
+
 
 }
 

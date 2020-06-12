@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -215,6 +216,17 @@ public class TrmPlanFormu extends EntityMP implements Serializable {
         this.bzsj = bzsj ;
         this.modify("bzsj",bzsj);
     }
+
+    /**
+     * 格式化日期 [编制时间]
+     */
+    public String formatBzsj(){
+        if (this.bzsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(bzsj);
+    }
     /**
      * 设置 [季度]
      */
@@ -222,6 +234,7 @@ public class TrmPlanFormu extends EntityMP implements Serializable {
         this.jd = jd ;
         this.modify("jd",jd);
     }
+
     /**
      * 设置 [培训组织方]
      */
@@ -229,6 +242,7 @@ public class TrmPlanFormu extends EntityMP implements Serializable {
         this.pxzzf = pxzzf ;
         this.modify("pxzzf",pxzzf);
     }
+
     /**
      * 设置 [年度]
      */
@@ -236,6 +250,7 @@ public class TrmPlanFormu extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [培训计划制定名称]
      */
@@ -243,6 +258,7 @@ public class TrmPlanFormu extends EntityMP implements Serializable {
         this.trmplanformuname = trmplanformuname ;
         this.modify("trmplanformuname",trmplanformuname);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -250,6 +266,7 @@ public class TrmPlanFormu extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -257,6 +274,7 @@ public class TrmPlanFormu extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -264,6 +282,7 @@ public class TrmPlanFormu extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
 
 }
 

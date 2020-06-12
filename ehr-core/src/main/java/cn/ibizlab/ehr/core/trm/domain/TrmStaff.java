@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -250,6 +251,7 @@ public class TrmStaff extends EntityMP implements Serializable {
         this.trmstaffname = trmstaffname ;
         this.modify("trmstaffname",trmstaffname);
     }
+
     /**
      * 设置 [需求来源类型]
      */
@@ -257,6 +259,7 @@ public class TrmStaff extends EntityMP implements Serializable {
         this.xqlylx = xqlylx ;
         this.modify("xqlylx",xqlylx);
     }
+
     /**
      * 设置 [审批方式]
      */
@@ -264,12 +267,24 @@ public class TrmStaff extends EntityMP implements Serializable {
         this.spfs = spfs ;
         this.modify("spfs",spfs);
     }
+
     /**
      * 设置 [填单日期]
      */
     public void setTdrq(Timestamp tdrq){
         this.tdrq = tdrq ;
         this.modify("tdrq",tdrq);
+    }
+
+    /**
+     * 格式化日期 [填单日期]
+     */
+    public String formatTdrq(){
+        if (this.tdrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(tdrq);
     }
     /**
      * 设置 [流程类型]
@@ -278,6 +293,7 @@ public class TrmStaff extends EntityMP implements Serializable {
         this.lclx = lclx ;
         this.modify("lclx",lclx);
     }
+
     /**
      * 设置 [需求单编码]
      */
@@ -285,6 +301,7 @@ public class TrmStaff extends EntityMP implements Serializable {
         this.xqdbma = xqdbma ;
         this.modify("xqdbma",xqdbma);
     }
+
     /**
      * 设置 [职务]
      */
@@ -292,6 +309,7 @@ public class TrmStaff extends EntityMP implements Serializable {
         this.zw = zw ;
         this.modify("zw",zw);
     }
+
     /**
      * 设置 [工作职责]
      */
@@ -299,6 +317,7 @@ public class TrmStaff extends EntityMP implements Serializable {
         this.gzzz = gzzz ;
         this.modify("gzzz",gzzz);
     }
+
     /**
      * 设置 [岗位]
      */
@@ -306,6 +325,7 @@ public class TrmStaff extends EntityMP implements Serializable {
         this.gw = gw ;
         this.modify("gw",gw);
     }
+
     /**
      * 设置 [学历]
      */
@@ -313,6 +333,7 @@ public class TrmStaff extends EntityMP implements Serializable {
         this.xl = xl ;
         this.modify("xl",xl);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -320,6 +341,7 @@ public class TrmStaff extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -327,6 +349,7 @@ public class TrmStaff extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -334,6 +357,7 @@ public class TrmStaff extends EntityMP implements Serializable {
         this.pimpersonid2 = pimpersonid2 ;
         this.modify("pimpersonid2",pimpersonid2);
     }
+
 
 }
 

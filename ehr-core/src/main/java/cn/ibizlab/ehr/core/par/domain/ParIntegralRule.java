@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -118,6 +119,7 @@ public class ParIntegralRule extends EntityMP implements Serializable {
         this.parintegralrulename = parintegralrulename ;
         this.modify("parintegralrulename",parintegralrulename);
     }
+
     /**
      * 设置 [年度]
      */
@@ -125,6 +127,7 @@ public class ParIntegralRule extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [积分]
      */
@@ -132,6 +135,7 @@ public class ParIntegralRule extends EntityMP implements Serializable {
         this.integrals = integrals ;
         this.modify("integrals",integrals);
     }
+
     /**
      * 设置 [定级]
      */
@@ -139,6 +143,7 @@ public class ParIntegralRule extends EntityMP implements Serializable {
         this.dj = dj ;
         this.modify("dj",dj);
     }
+
 
 }
 

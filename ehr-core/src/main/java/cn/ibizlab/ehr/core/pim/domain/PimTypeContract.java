@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -134,6 +135,7 @@ public class PimTypeContract extends EntityMP implements Serializable {
         this.isorno = isorno ;
         this.modify("isorno",isorno);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -141,6 +143,7 @@ public class PimTypeContract extends EntityMP implements Serializable {
         this.sortno = sortno ;
         this.modify("sortno",sortno);
     }
+
     /**
      * 设置 [合同年限]
      */
@@ -148,6 +151,7 @@ public class PimTypeContract extends EntityMP implements Serializable {
         this.contractlife = contractlife ;
         this.modify("contractlife",contractlife);
     }
+
     /**
      * 设置 [合同类型代码]
      */
@@ -155,6 +159,7 @@ public class PimTypeContract extends EntityMP implements Serializable {
         this.typecode = typecode ;
         this.modify("typecode",typecode);
     }
+
     /**
      * 设置 [合同类型名称]
      */
@@ -162,6 +167,7 @@ public class PimTypeContract extends EntityMP implements Serializable {
         this.pimtypecontractname = pimtypecontractname ;
         this.modify("pimtypecontractname",pimtypecontractname);
     }
+
 
 }
 

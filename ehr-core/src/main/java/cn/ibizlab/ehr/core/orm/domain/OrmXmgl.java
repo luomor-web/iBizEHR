@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -227,6 +228,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.ehrOrgId = ehrOrgId ;
         this.modify("ehr_org_id",ehrOrgId);
     }
+
     /**
      * 设置 [项目结束时间]
      */
@@ -234,6 +236,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.targetFinishDate = targetFinishDate ;
         this.modify("target_finish_date",targetFinishDate);
     }
+
     /**
      * 设置 [是否局直管]
      */
@@ -241,6 +244,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.isdirectlymanage = isdirectlymanage ;
         this.modify("isdirectlymanage",isdirectlymanage);
     }
+
     /**
      * 设置 [项目名称]
      */
@@ -248,6 +252,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.projectName = projectName ;
         this.modify("project_name",projectName);
     }
+
     /**
      * 设置 [项目名称]
      */
@@ -255,6 +260,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.ormxmglname = ormxmglname ;
         this.modify("ormxmglname",ormxmglname);
     }
+
     /**
      * 设置 [工程业务类型]
      */
@@ -262,6 +268,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.engineeringbustype = engineeringbustype ;
         this.modify("engineeringbustype",engineeringbustype);
     }
+
     /**
      * 设置 [项目类型]
      */
@@ -269,6 +276,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.projectType = projectType ;
         this.modify("project_type",projectType);
     }
+
     /**
      * 设置 [项目状态]
      */
@@ -276,6 +284,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.projectStatusCode = projectStatusCode ;
         this.modify("project_status_code",projectStatusCode);
     }
+
     /**
      * 设置 [项目状态释义]
      */
@@ -283,6 +292,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.projectStatusName = projectStatusName ;
         this.modify("project_status_name",projectStatusName);
     }
+
     /**
      * 设置 [工程规模]
      */
@@ -290,6 +300,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.engineeringscale = engineeringscale ;
         this.modify("engineeringscale",engineeringscale);
     }
+
     /**
      * 设置 [工程用途]
      */
@@ -297,6 +308,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.engineeringpurpose = engineeringpurpose ;
         this.modify("engineeringpurpose",engineeringpurpose);
     }
+
     /**
      * 设置 [项目规模]
      */
@@ -304,6 +316,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.projectSize = projectSize ;
         this.modify("project_size",projectSize);
     }
+
     /**
      * 设置 [项目备用属性]
      */
@@ -311,6 +324,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.xmbh = xmbh ;
         this.modify("xmbh",xmbh);
     }
+
     /**
      * 设置 [项目全称]
      */
@@ -318,6 +332,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.projectFullName = projectFullName ;
         this.modify("project_full_name",projectFullName);
     }
+
     /**
      * 设置 [ERP组织ID]
      */
@@ -325,6 +340,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.orgId = orgId ;
         this.modify("org_id",orgId);
     }
+
     /**
      * 设置 [项目资金属性]
      */
@@ -332,6 +348,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.procapitalatt = procapitalatt ;
         this.modify("procapitalatt",procapitalatt);
     }
+
     /**
      * 设置 [项目编号]
      */
@@ -339,6 +356,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.projectNumber = projectNumber ;
         this.modify("project_number",projectNumber);
     }
+
     /**
      * 设置 [项目开始时间]
      */
@@ -346,6 +364,7 @@ public class OrmXmgl extends EntityMP implements Serializable {
         this.targetStartDate = targetStartDate ;
         this.modify("target_start_date",targetStartDate);
     }
+
 
 }
 

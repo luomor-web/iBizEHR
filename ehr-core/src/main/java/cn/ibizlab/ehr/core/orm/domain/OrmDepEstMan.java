@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -162,6 +163,7 @@ public class OrmDepEstMan extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [人数编制]
      */
@@ -169,6 +171,7 @@ public class OrmDepEstMan extends EntityMP implements Serializable {
         this.numcompilation = numcompilation ;
         this.modify("numcompilation",numcompilation);
     }
+
     /**
      * 设置 [部门编制管理名称]
      */
@@ -176,6 +179,7 @@ public class OrmDepEstMan extends EntityMP implements Serializable {
         this.ormdepestmanname = ormdepestmanname ;
         this.modify("ormdepestmanname",ormdepestmanname);
     }
+
     /**
      * 设置 [职务职责说明]
      */
@@ -183,6 +187,7 @@ public class OrmDepEstMan extends EntityMP implements Serializable {
         this.zwzzsm = zwzzsm ;
         this.modify("zwzzsm",zwzzsm);
     }
+
     /**
      * 设置 [职务编制ID]
      */
@@ -190,6 +195,7 @@ public class OrmDepEstMan extends EntityMP implements Serializable {
         this.ormzwbzid = ormzwbzid ;
         this.modify("ormzwbzid",ormzwbzid);
     }
+
     /**
      * 设置 [职务ID]
      */
@@ -197,6 +203,7 @@ public class OrmDepEstMan extends EntityMP implements Serializable {
         this.ormdutyid = ormdutyid ;
         this.modify("ormdutyid",ormdutyid);
     }
+
 
     /**
      * 获取 [部门编制管理标识]

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -183,6 +184,7 @@ public class PcmJxsygzzsqmx extends EntityMP implements Serializable {
         this.status = status ;
         this.modify("status",status);
     }
+
     /**
      * 设置 [见习生员工转正申请明细名称]
      */
@@ -190,6 +192,7 @@ public class PcmJxsygzzsqmx extends EntityMP implements Serializable {
         this.pcmjxsygzzsqmxname = pcmjxsygzzsqmxname ;
         this.modify("pcmjxsygzzsqmxname",pcmjxsygzzsqmxname);
     }
+
     /**
      * 设置 [部门]
      */
@@ -197,6 +200,7 @@ public class PcmJxsygzzsqmx extends EntityMP implements Serializable {
         this.bm = bm ;
         this.modify("bm",bm);
     }
+
     /**
      * 设置 [组织]
      */
@@ -204,6 +208,7 @@ public class PcmJxsygzzsqmx extends EntityMP implements Serializable {
         this.zz = zz ;
         this.modify("zz",zz);
     }
+
     /**
      * 设置 [岗位]
      */
@@ -211,6 +216,7 @@ public class PcmJxsygzzsqmx extends EntityMP implements Serializable {
         this.gw = gw ;
         this.modify("gw",gw);
     }
+
     /**
      * 设置 [职级]
      */
@@ -218,6 +224,7 @@ public class PcmJxsygzzsqmx extends EntityMP implements Serializable {
         this.zj = zj ;
         this.modify("zj",zj);
     }
+
     /**
      * 设置 [职务]
      */
@@ -225,6 +232,7 @@ public class PcmJxsygzzsqmx extends EntityMP implements Serializable {
         this.zw = zw ;
         this.modify("zw",zw);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -232,6 +240,7 @@ public class PcmJxsygzzsqmx extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [见习生员工转正申请标识]
      */
@@ -239,6 +248,7 @@ public class PcmJxsygzzsqmx extends EntityMP implements Serializable {
         this.pcmjxsygzzsqid = pcmjxsygzzsqid ;
         this.modify("pcmjxsygzzsqid",pcmjxsygzzsqid);
     }
+
 
 }
 

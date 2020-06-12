@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -120,6 +121,7 @@ public class VacSituationDetail extends EntityMP implements Serializable {
         this.xjlx = xjlx ;
         this.modify("xjlx",xjlx);
     }
+
     /**
      * 设置 [休假明细名称]
      */
@@ -127,6 +129,7 @@ public class VacSituationDetail extends EntityMP implements Serializable {
         this.vacsituationdetailname = vacsituationdetailname ;
         this.modify("vacsituationdetailname",vacsituationdetailname);
     }
+
     /**
      * 设置 [休假天数]
      */
@@ -134,6 +137,7 @@ public class VacSituationDetail extends EntityMP implements Serializable {
         this.xjts = xjts ;
         this.modify("xjts",xjts);
     }
+
 
 }
 

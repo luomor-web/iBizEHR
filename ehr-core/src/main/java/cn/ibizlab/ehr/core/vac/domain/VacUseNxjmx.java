@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -140,6 +141,7 @@ public class VacUseNxjmx extends EntityMP implements Serializable {
         this.vacsynjcxid = vacsynjcxid ;
         this.modify("vacsynjcxid",vacsynjcxid);
     }
+
     /**
      * 设置 [年度]
      */
@@ -147,6 +149,7 @@ public class VacUseNxjmx extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [假期使用明细名称]
      */
@@ -154,6 +157,7 @@ public class VacUseNxjmx extends EntityMP implements Serializable {
         this.vacusenxjmxname = vacusenxjmxname ;
         this.modify("vacusenxjmxname",vacusenxjmxname);
     }
+
     /**
      * 设置 [本次使用假期天数]
      */
@@ -161,6 +165,7 @@ public class VacUseNxjmx extends EntityMP implements Serializable {
         this.bcnxjts = bcnxjts ;
         this.modify("bcnxjts",bcnxjts);
     }
+
     /**
      * 设置 [请假种类]
      */
@@ -168,6 +173,7 @@ public class VacUseNxjmx extends EntityMP implements Serializable {
         this.qjzl = qjzl ;
         this.modify("qjzl",qjzl);
     }
+
     /**
      * 设置 [请销假明细标识]
      */
@@ -175,6 +181,7 @@ public class VacUseNxjmx extends EntityMP implements Serializable {
         this.vacleavedetailid = vacleavedetailid ;
         this.modify("vacleavedetailid",vacleavedetailid);
     }
+
 
 }
 

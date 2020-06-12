@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -176,6 +177,7 @@ public class PimPersonAbility extends EntityMP implements Serializable {
         this.performscore = performscore ;
         this.modify("performscore",performscore);
     }
+
     /**
      * 设置 [职称得分]
      */
@@ -183,6 +185,7 @@ public class PimPersonAbility extends EntityMP implements Serializable {
         this.techscore = techscore ;
         this.modify("techscore",techscore);
     }
+
     /**
      * 设置 [年]
      */
@@ -190,6 +193,7 @@ public class PimPersonAbility extends EntityMP implements Serializable {
         this.year = year ;
         this.modify("year",year);
     }
+
     /**
      * 设置 [执业资格得分]
      */
@@ -197,12 +201,24 @@ public class PimPersonAbility extends EntityMP implements Serializable {
         this.pracscore = pracscore ;
         this.modify("pracscore",pracscore);
     }
+
     /**
      * 设置 [记录月份]
      */
     public void setRecorddate(Timestamp recorddate){
         this.recorddate = recorddate ;
         this.modify("recorddate",recorddate);
+    }
+
+    /**
+     * 格式化日期 [记录月份]
+     */
+    public String formatRecorddate(){
+        if (this.recorddate == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(recorddate);
     }
     /**
      * 设置 [月]
@@ -211,6 +227,7 @@ public class PimPersonAbility extends EntityMP implements Serializable {
         this.month = month ;
         this.modify("month",month);
     }
+
     /**
      * 设置 [培训结果得分]
      */
@@ -218,6 +235,7 @@ public class PimPersonAbility extends EntityMP implements Serializable {
         this.trainresultscore = trainresultscore ;
         this.modify("trainresultscore",trainresultscore);
     }
+
     /**
      * 设置 [学历得分]
      */
@@ -225,6 +243,7 @@ public class PimPersonAbility extends EntityMP implements Serializable {
         this.eduscore = eduscore ;
         this.modify("eduscore",eduscore);
     }
+
     /**
      * 设置 [员工能力名称]
      */
@@ -232,6 +251,7 @@ public class PimPersonAbility extends EntityMP implements Serializable {
         this.pimpersonabilityname = pimpersonabilityname ;
         this.modify("pimpersonabilityname",pimpersonabilityname);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -239,6 +259,7 @@ public class PimPersonAbility extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

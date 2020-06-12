@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -172,6 +173,7 @@ public class PcmSchoolOffice extends EntityMP implements Serializable {
         this.pcmschoolofficename = pcmschoolofficename ;
         this.modify("pcmschoolofficename",pcmschoolofficename);
     }
+
     /**
      * 设置 [职务名称]
      */
@@ -179,12 +181,24 @@ public class PcmSchoolOffice extends EntityMP implements Serializable {
         this.cadrename = cadrename ;
         this.modify("cadrename",cadrename);
     }
+
     /**
      * 设置 [结束时间]
      */
     public void setCadreenddatetime(Timestamp cadreenddatetime){
         this.cadreenddatetime = cadreenddatetime ;
         this.modify("cadreenddatetime",cadreenddatetime);
+    }
+
+    /**
+     * 格式化日期 [结束时间]
+     */
+    public String formatCadreenddatetime(){
+        if (this.cadreenddatetime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(cadreenddatetime);
     }
     /**
      * 设置 [版本时间]
@@ -193,6 +207,17 @@ public class PcmSchoolOffice extends EntityMP implements Serializable {
         this.bbsj = bbsj ;
         this.modify("bbsj",bbsj);
     }
+
+    /**
+     * 格式化日期 [版本时间]
+     */
+    public String formatBbsj(){
+        if (this.bbsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(bbsj);
+    }
     /**
      * 设置 [是否有效]
      */
@@ -200,12 +225,24 @@ public class PcmSchoolOffice extends EntityMP implements Serializable {
         this.flag = flag ;
         this.modify("flag",flag);
     }
+
     /**
      * 设置 [开始时间]
      */
     public void setCadrestartdatetime(Timestamp cadrestartdatetime){
         this.cadrestartdatetime = cadrestartdatetime ;
         this.modify("cadrestartdatetime",cadrestartdatetime);
+    }
+
+    /**
+     * 格式化日期 [开始时间]
+     */
+    public String formatCadrestartdatetime(){
+        if (this.cadrestartdatetime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(cadrestartdatetime);
     }
     /**
      * 设置 [在校职务描述]
@@ -214,6 +251,7 @@ public class PcmSchoolOffice extends EntityMP implements Serializable {
         this.cadredescription = cadredescription ;
         this.modify("cadredescription",cadredescription);
     }
+
     /**
      * 设置 [应聘者ID]
      */
@@ -221,6 +259,7 @@ public class PcmSchoolOffice extends EntityMP implements Serializable {
         this.pcmprofileid = pcmprofileid ;
         this.modify("pcmprofileid",pcmprofileid);
     }
+
 
 }
 

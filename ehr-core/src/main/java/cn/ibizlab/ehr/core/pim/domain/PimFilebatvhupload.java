@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -104,6 +105,7 @@ public class PimFilebatvhupload extends EntityMP implements Serializable {
         this.pimfilebatvhuploadname = pimfilebatvhuploadname ;
         this.modify("pimfilebatvhuploadname",pimfilebatvhuploadname);
     }
+
     /**
      * 设置 [附件]
      */
@@ -111,6 +113,7 @@ public class PimFilebatvhupload extends EntityMP implements Serializable {
         this.files = files ;
         this.modify("files",files);
     }
+
 
 }
 

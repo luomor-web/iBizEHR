@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -510,6 +511,17 @@ public class PimVocational extends EntityMP implements Serializable {
         this.xzcsj = xzcsj ;
         this.modify("xzcsj",xzcsj);
     }
+
+    /**
+     * 格式化日期 [续注册时间]
+     */
+    public String formatXzcsj(){
+        if (this.xzcsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(xzcsj);
+    }
     /**
      * 设置 [注册编号]
      */
@@ -517,6 +529,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.regisnumber = regisnumber ;
         this.modify("regisnumber",regisnumber);
     }
+
     /**
      * 设置 [使用情况]
      */
@@ -524,6 +537,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.syqk = syqk ;
         this.modify("syqk",syqk);
     }
+
     /**
      * 设置 [证书名称]
      */
@@ -531,12 +545,24 @@ public class PimVocational extends EntityMP implements Serializable {
         this.pimvocationalname = pimvocationalname ;
         this.modify("pimvocationalname",pimvocationalname);
     }
+
     /**
      * 设置 [签发日期]
      */
     public void setZghqrq(Timestamp zghqrq){
         this.zghqrq = zghqrq ;
         this.modify("zghqrq",zghqrq);
+    }
+
+    /**
+     * 格式化日期 [签发日期]
+     */
+    public String formatZghqrq(){
+        if (this.zghqrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(zghqrq);
     }
     /**
      * 设置 [执业资格证书编号]
@@ -545,6 +571,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.practqualcertno = practqualcertno ;
         this.modify("practqualcertno",practqualcertno);
     }
+
     /**
      * 设置 [发证有效期]
      */
@@ -552,6 +579,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.fzyxq = fzyxq ;
         this.modify("fzyxq",fzyxq);
     }
+
     /**
      * 设置 [社保缴纳单位]
      */
@@ -559,6 +587,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.socsecpayunit = socsecpayunit ;
         this.modify("socsecpayunit",socsecpayunit);
     }
+
     /**
      * 设置 [一建配套B证编号]
      */
@@ -566,6 +595,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.bcardnumber = bcardnumber ;
         this.modify("bcardnumber",bcardnumber);
     }
+
     /**
      * 设置 [拒绝原因]
      */
@@ -573,12 +603,24 @@ public class PimVocational extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [年检时间]
      */
     public void setNjsj(Timestamp njsj){
         this.njsj = njsj ;
         this.modify("njsj",njsj);
+    }
+
+    /**
+     * 格式化日期 [年检时间]
+     */
+    public String formatNjsj(){
+        if (this.njsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(njsj);
     }
     /**
      * 设置 [附件]
@@ -587,6 +629,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [记录操作者]
      */
@@ -594,6 +637,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.jlczz = jlczz ;
         this.modify("jlczz",jlczz);
     }
+
     /**
      * 设置 [注册单位]
      */
@@ -601,6 +645,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.zcdw = zcdw ;
         this.modify("zcdw",zcdw);
     }
+
     /**
      * 设置 [专业分类]
      */
@@ -608,6 +653,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.zyfl = zyfl ;
         this.modify("zyfl",zyfl);
     }
+
     /**
      * 设置 [签发机构]
      */
@@ -615,6 +661,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.zgsydw = zgsydw ;
         this.modify("zgsydw",zgsydw);
     }
+
     /**
      * 设置 [记录管理编号]
      */
@@ -622,12 +669,24 @@ public class PimVocational extends EntityMP implements Serializable {
         this.jlglbh = jlglbh ;
         this.modify("jlglbh",jlglbh);
     }
+
     /**
      * 设置 [失效日期]
      */
     public void setSxrq(Timestamp sxrq){
         this.sxrq = sxrq ;
         this.modify("sxrq",sxrq);
+    }
+
+    /**
+     * 格式化日期 [失效日期]
+     */
+    public String formatSxrq(){
+        if (this.sxrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(sxrq);
     }
     /**
      * 设置 [年审情况]
@@ -636,6 +695,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.nsqk = nsqk ;
         this.modify("nsqk",nsqk);
     }
+
     /**
      * 设置 [证书类型]
      */
@@ -643,6 +703,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.zslx = zslx ;
         this.modify("zslx",zslx);
     }
+
     /**
      * 设置 [记录所属]
      */
@@ -650,12 +711,24 @@ public class PimVocational extends EntityMP implements Serializable {
         this.jlss = jlss ;
         this.modify("jlss",jlss);
     }
+
     /**
      * 设置 [初始注册时间]
      */
     public void setCszcsj(Timestamp cszcsj){
         this.cszcsj = cszcsj ;
         this.modify("cszcsj",cszcsj);
+    }
+
+    /**
+     * 格式化日期 [初始注册时间]
+     */
+    public String formatCszcsj(){
+        if (this.cszcsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(cszcsj);
     }
     /**
      * 设置 [记录审批状态]
@@ -664,6 +737,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.jlspzt = jlspzt ;
         this.modify("jlspzt",jlspzt);
     }
+
     /**
      * 设置 [级别分类]
      */
@@ -671,6 +745,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.jbfl = jbfl ;
         this.modify("jbfl",jbfl);
     }
+
     /**
      * 设置 [证书编号]
      */
@@ -678,6 +753,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.zgzsbh = zgzsbh ;
         this.modify("zgzsbh",zgzsbh);
     }
+
     /**
      * 设置 [变更情况]
      */
@@ -685,6 +761,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.alteration = alteration ;
         this.modify("alteration",alteration);
     }
+
     /**
      * 设置 [注册单位]
      */
@@ -692,6 +769,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.ormorgsectorname = ormorgsectorname ;
         this.modify("ormorgsectorname",ormorgsectorname);
     }
+
     /**
      * 设置 [职业资格专业]
      */
@@ -699,6 +777,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.pimqualmajorname = pimqualmajorname ;
         this.modify("pimqualmajorname",pimqualmajorname);
     }
+
     /**
      * 设置 [员工编号]
      */
@@ -706,6 +785,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -713,6 +793,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -720,6 +801,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [职（执）业资格管理标识]
      */
@@ -727,6 +809,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.pimvocationalcatalogid = pimvocationalcatalogid ;
         this.modify("pimvocationalcatalogid",pimvocationalcatalogid);
     }
+
     /**
      * 设置 [法人主体标识]
      */
@@ -734,6 +817,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.ormsignorgid = ormsignorgid ;
         this.modify("ormsignorgid",ormsignorgid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -741,6 +825,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [执业资格专业编码]
      */
@@ -748,6 +833,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.pimqualmajorid = pimqualmajorid ;
         this.modify("pimqualmajorid",pimqualmajorid);
     }
+
     /**
      * 设置 [岗位（技能）证书ID]
      */
@@ -755,6 +841,7 @@ public class PimVocational extends EntityMP implements Serializable {
         this.pimqualtypeid = pimqualtypeid ;
         this.modify("pimqualtypeid",pimqualtypeid);
     }
+
 
 }
 

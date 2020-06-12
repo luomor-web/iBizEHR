@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -120,6 +121,7 @@ public class PimStafftype extends EntityMP implements Serializable {
         this.shgz = shgz ;
         this.modify("shgz",shgz);
     }
+
     /**
      * 设置 [员工类型代码]
      */
@@ -127,6 +129,7 @@ public class PimStafftype extends EntityMP implements Serializable {
         this.sbm = sbm ;
         this.modify("sbm",sbm);
     }
+
     /**
      * 设置 [员工类型管理名称]
      */
@@ -134,6 +137,7 @@ public class PimStafftype extends EntityMP implements Serializable {
         this.pimstafftypename = pimstafftypename ;
         this.modify("pimstafftypename",pimstafftypename);
     }
+
 
 }
 

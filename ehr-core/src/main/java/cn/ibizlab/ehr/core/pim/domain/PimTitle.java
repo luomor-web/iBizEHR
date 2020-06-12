@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -334,6 +335,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [是否最高职称]
      */
@@ -341,6 +343,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.sfzgzc = sfzgzc ;
         this.modify("sfzgzc",sfzgzc);
     }
+
     /**
      * 设置 [记录管理编号]
      */
@@ -348,6 +351,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.jlglbh = jlglbh ;
         this.modify("jlglbh",jlglbh);
     }
+
     /**
      * 设置 [评审单位]
      */
@@ -355,6 +359,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.reviewbody = reviewbody ;
         this.modify("reviewbody",reviewbody);
     }
+
     /**
      * 设置 [职称获取月数]
      */
@@ -362,6 +367,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.duration = duration ;
         this.modify("duration",duration);
     }
+
     /**
      * 设置 [职称等级]
      */
@@ -369,6 +375,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.zcdj = zcdj ;
         this.modify("zcdj",zcdj);
     }
+
     /**
      * 设置 [专业名称]
      */
@@ -376,6 +383,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.careername = careername ;
         this.modify("careername",careername);
     }
+
     /**
      * 设置 [记录审批状态]
      */
@@ -383,6 +391,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.jlspzt = jlspzt ;
         this.modify("jlspzt",jlspzt);
     }
+
     /**
      * 设置 [拒绝原因]
      */
@@ -390,6 +399,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [评定机构]
      */
@@ -397,6 +407,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.pdjg = pdjg ;
         this.modify("pdjg",pdjg);
     }
+
     /**
      * 设置 [记录所属]
      */
@@ -404,12 +415,24 @@ public class PimTitle extends EntityMP implements Serializable {
         this.jlss = jlss ;
         this.modify("jlss",jlss);
     }
+
     /**
      * 设置 [职称聘用时间]
      */
     public void setEmploytime(Timestamp employtime){
         this.employtime = employtime ;
         this.modify("employtime",employtime);
+    }
+
+    /**
+     * 格式化日期 [职称聘用时间]
+     */
+    public String formatEmploytime(){
+        if (this.employtime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(employtime);
     }
     /**
      * 设置 [附件]
@@ -418,6 +441,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.enclosure = enclosure ;
         this.modify("enclosure",enclosure);
     }
+
     /**
      * 设置 [证书编号]
      */
@@ -425,12 +449,24 @@ public class PimTitle extends EntityMP implements Serializable {
         this.zcbh = zcbh ;
         this.modify("zcbh",zcbh);
     }
+
     /**
      * 设置 [职称获取日期]
      */
     public void setZchqrq(Timestamp zchqrq){
         this.zchqrq = zchqrq ;
         this.modify("zchqrq",zchqrq);
+    }
+
+    /**
+     * 格式化日期 [职称获取日期]
+     */
+    public String formatZchqrq(){
+        if (this.zchqrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(zchqrq);
     }
     /**
      * 设置 [专业类别]
@@ -439,6 +475,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.majorengaged = majorengaged ;
         this.modify("majorengaged",majorengaged);
     }
+
     /**
      * 设置 [签发机构]
      */
@@ -446,6 +483,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.lssuingagency = lssuingagency ;
         this.modify("lssuingagency",lssuingagency);
     }
+
     /**
      * 设置 [职称信息名称]
      */
@@ -453,6 +491,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.pimtitlename = pimtitlename ;
         this.modify("pimtitlename",pimtitlename);
     }
+
     /**
      * 设置 [记录操作者]
      */
@@ -460,6 +499,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.jlczz = jlczz ;
         this.modify("jlczz",jlczz);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -467,6 +507,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [职称管理标识]
      */
@@ -474,6 +515,7 @@ public class PimTitle extends EntityMP implements Serializable {
         this.pimtitlecatalogueid = pimtitlecatalogueid ;
         this.modify("pimtitlecatalogueid",pimtitlecatalogueid);
     }
+
 
 }
 

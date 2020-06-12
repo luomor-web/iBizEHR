@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -241,6 +242,7 @@ public class PimLanguageAbility extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [记录管理编号]
      */
@@ -248,12 +250,24 @@ public class PimLanguageAbility extends EntityMP implements Serializable {
         this.jlglbh = jlglbh ;
         this.modify("jlglbh",jlglbh);
     }
+
     /**
      * 设置 [外语等级获取时间]
      */
     public void setWydjhqsj(Timestamp wydjhqsj){
         this.wydjhqsj = wydjhqsj ;
         this.modify("wydjhqsj",wydjhqsj);
+    }
+
+    /**
+     * 格式化日期 [外语等级获取时间]
+     */
+    public String formatWydjhqsj(){
+        if (this.wydjhqsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(wydjhqsj);
     }
     /**
      * 设置 [附件]
@@ -262,6 +276,7 @@ public class PimLanguageAbility extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [语种]
      */
@@ -269,6 +284,7 @@ public class PimLanguageAbility extends EntityMP implements Serializable {
         this.wyyz = wyyz ;
         this.modify("wyyz",wyyz);
     }
+
     /**
      * 设置 [记录操作者]
      */
@@ -276,6 +292,7 @@ public class PimLanguageAbility extends EntityMP implements Serializable {
         this.jlczz = jlczz ;
         this.modify("jlczz",jlczz);
     }
+
     /**
      * 设置 [备注]
      */
@@ -283,6 +300,7 @@ public class PimLanguageAbility extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [记录所属]
      */
@@ -290,6 +308,7 @@ public class PimLanguageAbility extends EntityMP implements Serializable {
         this.jlss = jlss ;
         this.modify("jlss",jlss);
     }
+
     /**
      * 设置 [外语等级]
      */
@@ -297,6 +316,7 @@ public class PimLanguageAbility extends EntityMP implements Serializable {
         this.wydj = wydj ;
         this.modify("wydj",wydj);
     }
+
     /**
      * 设置 [语种]
      */
@@ -304,6 +324,7 @@ public class PimLanguageAbility extends EntityMP implements Serializable {
         this.pimlanguageabilityname = pimlanguageabilityname ;
         this.modify("pimlanguageabilityname",pimlanguageabilityname);
     }
+
     /**
      * 设置 [记录审批状态]
      */
@@ -311,6 +332,7 @@ public class PimLanguageAbility extends EntityMP implements Serializable {
         this.jlspzt = jlspzt ;
         this.modify("jlspzt",jlspzt);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -318,6 +340,7 @@ public class PimLanguageAbility extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

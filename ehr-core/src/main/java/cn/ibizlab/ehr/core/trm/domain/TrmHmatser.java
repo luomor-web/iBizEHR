@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -200,6 +201,7 @@ public class TrmHmatser extends EntityMP implements Serializable {
         this.trmhmatsername = trmhmatsername ;
         this.modify("trmhmatsername",trmhmatsername);
     }
+
     /**
      * 设置 [联系方式]
      */
@@ -207,6 +209,7 @@ public class TrmHmatser extends EntityMP implements Serializable {
         this.lxdh = lxdh ;
         this.modify("lxdh",lxdh);
     }
+
     /**
      * 设置 [班主任]
      */
@@ -214,6 +217,7 @@ public class TrmHmatser extends EntityMP implements Serializable {
         this.pimpersonname = pimpersonname ;
         this.modify("pimpersonname",pimpersonname);
     }
+
     /**
      * 设置 [身份证号码]
      */
@@ -221,6 +225,7 @@ public class TrmHmatser extends EntityMP implements Serializable {
         this.zjhm = zjhm ;
         this.modify("zjhm",zjhm);
     }
+
     /**
      * 设置 [性别]
      */
@@ -228,6 +233,7 @@ public class TrmHmatser extends EntityMP implements Serializable {
         this.xb = xb ;
         this.modify("xb",xb);
     }
+
     /**
      * 设置 [年龄]
      */
@@ -235,6 +241,7 @@ public class TrmHmatser extends EntityMP implements Serializable {
         this.nj = nj ;
         this.modify("nj",nj);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -242,6 +249,7 @@ public class TrmHmatser extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [培训机构标识]
      */
@@ -249,6 +257,7 @@ public class TrmHmatser extends EntityMP implements Serializable {
         this.trmtrainagencyid = trmtrainagencyid ;
         this.modify("trmtrainagencyid",trmtrainagencyid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -256,6 +265,7 @@ public class TrmHmatser extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

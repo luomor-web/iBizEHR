@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -206,6 +207,7 @@ public class PimQualMajor extends EntityMP implements Serializable {
         this.gwzs = gwzs ;
         this.modify("gwzs",gwzs);
     }
+
     /**
      * 设置 [岗位类型]
      */
@@ -213,6 +215,7 @@ public class PimQualMajor extends EntityMP implements Serializable {
         this.gwtype = gwtype ;
         this.modify("gwtype",gwtype);
     }
+
     /**
      * 设置 [专业技术职务]
      */
@@ -220,6 +223,7 @@ public class PimQualMajor extends EntityMP implements Serializable {
         this.zyjszw = zyjszw ;
         this.modify("zyjszw",zyjszw);
     }
+
     /**
      * 设置 [专业]
      */
@@ -227,6 +231,7 @@ public class PimQualMajor extends EntityMP implements Serializable {
         this.quamajor = quamajor ;
         this.modify("quamajor",quamajor);
     }
+
     /**
      * 设置 [岗位类型]
      */
@@ -234,6 +239,7 @@ public class PimQualMajor extends EntityMP implements Serializable {
         this.gwlx = gwlx ;
         this.modify("gwlx",gwlx);
     }
+
     /**
      * 设置 [级别]
      */
@@ -241,6 +247,7 @@ public class PimQualMajor extends EntityMP implements Serializable {
         this.qualevel = qualevel ;
         this.modify("qualevel",qualevel);
     }
+
     /**
      * 设置 [执业资格]
      */
@@ -248,6 +255,7 @@ public class PimQualMajor extends EntityMP implements Serializable {
         this.pimqualmajorname = pimqualmajorname ;
         this.modify("pimqualmajorname",pimqualmajorname);
     }
+
     /**
      * 设置 [执业资格类别]
      */
@@ -255,6 +263,7 @@ public class PimQualMajor extends EntityMP implements Serializable {
         this.professionaltype = professionaltype ;
         this.modify("professionaltype",professionaltype);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -262,6 +271,7 @@ public class PimQualMajor extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [执业资格类别标识]
      */
@@ -269,6 +279,7 @@ public class PimQualMajor extends EntityMP implements Serializable {
         this.pimqualtypeid = pimqualtypeid ;
         this.modify("pimqualtypeid",pimqualtypeid);
     }
+
 
 }
 

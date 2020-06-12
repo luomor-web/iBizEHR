@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -119,6 +120,7 @@ public class OrmRelation extends EntityMP implements Serializable {
         this.ormorgrelationname = ormorgrelationname ;
         this.modify("ormrelationname",ormorgrelationname);
     }
+
     /**
      * 设置 [管理单位ID]
      */
@@ -126,6 +128,7 @@ public class OrmRelation extends EntityMP implements Serializable {
         this.magunitid = magunitid ;
         this.modify("magunitid",magunitid);
     }
+
     /**
      * 设置 [组织编码]
      */
@@ -133,6 +136,7 @@ public class OrmRelation extends EntityMP implements Serializable {
         this.orgcode = orgcode ;
         this.modify("orgcode",orgcode);
     }
+
     /**
      * 设置 [管理单位]
      */
@@ -140,6 +144,7 @@ public class OrmRelation extends EntityMP implements Serializable {
         this.managementunits = managementunits ;
         this.modify("managementunits",managementunits);
     }
+
 
 }
 

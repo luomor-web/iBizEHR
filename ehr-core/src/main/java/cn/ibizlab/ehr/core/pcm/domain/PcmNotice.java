@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -257,6 +258,17 @@ public class PcmNotice extends EntityMP implements Serializable {
         this.sxrq = sxrq ;
         this.modify("sxrq",sxrq);
     }
+
+    /**
+     * 格式化日期 [生效日期]
+     */
+    public String formatSxrq(){
+        if (this.sxrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(sxrq);
+    }
     /**
      * 设置 [提醒类型]
      */
@@ -264,6 +276,7 @@ public class PcmNotice extends EntityMP implements Serializable {
         this.noticetype = noticetype ;
         this.modify("noticetype",noticetype);
     }
+
     /**
      * 设置 [通知角色类型]
      */
@@ -271,6 +284,7 @@ public class PcmNotice extends EntityMP implements Serializable {
         this.roletype = roletype ;
         this.modify("roletype",roletype);
     }
+
     /**
      * 设置 [是否已处理]
      */
@@ -278,6 +292,7 @@ public class PcmNotice extends EntityMP implements Serializable {
         this.done = done ;
         this.modify("done",done);
     }
+
     /**
      * 设置 [提醒消息名称]
      */
@@ -285,6 +300,7 @@ public class PcmNotice extends EntityMP implements Serializable {
         this.pcmnoticename = pcmnoticename ;
         this.modify("pcmnoticename",pcmnoticename);
     }
+
     /**
      * 设置 [所属范围]
      */
@@ -292,6 +308,7 @@ public class PcmNotice extends EntityMP implements Serializable {
         this.ssfw = ssfw ;
         this.modify("ssfw",ssfw);
     }
+
     /**
      * 设置 [提醒通知内容]
      */
@@ -299,6 +316,7 @@ public class PcmNotice extends EntityMP implements Serializable {
         this.notice = notice ;
         this.modify("notice",notice);
     }
+
     /**
      * 设置 [异动员工编号]
      */
@@ -306,6 +324,7 @@ public class PcmNotice extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -313,6 +332,7 @@ public class PcmNotice extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [分配信息标识]
      */
@@ -320,6 +340,7 @@ public class PcmNotice extends EntityMP implements Serializable {
         this.pimdistirbutionid = pimdistirbutionid ;
         this.modify("pimdistirbutionid",pimdistirbutionid);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -327,6 +348,7 @@ public class PcmNotice extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -334,6 +356,7 @@ public class PcmNotice extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

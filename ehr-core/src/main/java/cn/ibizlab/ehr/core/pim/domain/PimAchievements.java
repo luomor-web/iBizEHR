@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -235,6 +236,7 @@ public class PimAchievements extends EntityMP implements Serializable {
         this.evaluationunit = evaluationunit ;
         this.modify("evaluationunit",evaluationunit);
     }
+
     /**
      * 设置 [考核得分]
      */
@@ -242,12 +244,24 @@ public class PimAchievements extends EntityMP implements Serializable {
         this.khdf = khdf ;
         this.modify("khdf",khdf);
     }
+
     /**
      * 设置 [起始日期]
      */
     public void setQsrq(Timestamp qsrq){
         this.qsrq = qsrq ;
         this.modify("qsrq",qsrq);
+    }
+
+    /**
+     * 格式化日期 [起始日期]
+     */
+    public String formatQsrq(){
+        if (this.qsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(qsrq);
     }
     /**
      * 设置 [考核结论]
@@ -256,6 +270,7 @@ public class PimAchievements extends EntityMP implements Serializable {
         this.khjl = khjl ;
         this.modify("khjl",khjl);
     }
+
     /**
      * 设置 [项目级别]
      */
@@ -263,6 +278,7 @@ public class PimAchievements extends EntityMP implements Serializable {
         this.xmjb = xmjb ;
         this.modify("xmjb",xmjb);
     }
+
     /**
      * 设置 [季度]
      */
@@ -270,12 +286,24 @@ public class PimAchievements extends EntityMP implements Serializable {
         this.jd = jd ;
         this.modify("jd",jd);
     }
+
     /**
      * 设置 [结束日期]
      */
     public void setJsrq(Timestamp jsrq){
         this.jsrq = jsrq ;
         this.modify("jsrq",jsrq);
+    }
+
+    /**
+     * 格式化日期 [结束日期]
+     */
+    public String formatJsrq(){
+        if (this.jsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jsrq);
     }
     /**
      * 设置 [档级]
@@ -284,6 +312,7 @@ public class PimAchievements extends EntityMP implements Serializable {
         this.dj = dj ;
         this.modify("dj",dj);
     }
+
     /**
      * 设置 [年度]
      */
@@ -291,6 +320,7 @@ public class PimAchievements extends EntityMP implements Serializable {
         this.pimachievementsname = pimachievementsname ;
         this.modify("pimachievementsname",pimachievementsname);
     }
+
     /**
      * 设置 [绩效考核类型]
      */
@@ -298,6 +328,7 @@ public class PimAchievements extends EntityMP implements Serializable {
         this.khlx = khlx ;
         this.modify("khlx",khlx);
     }
+
     /**
      * 设置 [月度]
      */
@@ -305,6 +336,7 @@ public class PimAchievements extends EntityMP implements Serializable {
         this.yd = yd ;
         this.modify("yd",yd);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -312,6 +344,7 @@ public class PimAchievements extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

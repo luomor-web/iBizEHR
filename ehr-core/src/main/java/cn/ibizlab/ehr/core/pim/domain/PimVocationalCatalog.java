@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -120,6 +121,7 @@ public class PimVocationalCatalog extends EntityMP implements Serializable {
         this.dh = dh ;
         this.modify("dh",dh);
     }
+
     /**
      * 设置 [职（执）业资格名称]
      */
@@ -127,6 +129,7 @@ public class PimVocationalCatalog extends EntityMP implements Serializable {
         this.pimvocationalcatalogname = pimvocationalcatalogname ;
         this.modify("pimvocationalcatalogname",pimvocationalcatalogname);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -134,6 +137,7 @@ public class PimVocationalCatalog extends EntityMP implements Serializable {
         this.pxh = pxh ;
         this.modify("pxh",pxh);
     }
+
 
 }
 

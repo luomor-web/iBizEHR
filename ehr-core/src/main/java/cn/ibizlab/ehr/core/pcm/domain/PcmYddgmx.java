@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -331,12 +332,24 @@ public class PcmYddgmx extends EntityMP implements Serializable {
         this.dgdq = dgdq ;
         this.modify("dgdq",dgdq);
     }
+
     /**
      * 设置 [待岗结束日期]
      */
     public void setJsrq(Timestamp jsrq){
         this.jsrq = jsrq ;
         this.modify("jsrq",jsrq);
+    }
+
+    /**
+     * 格式化日期 [待岗结束日期]
+     */
+    public String formatJsrq(){
+        if (this.jsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jsrq);
     }
     /**
      * 设置 [备注]
@@ -345,6 +358,7 @@ public class PcmYddgmx extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [异动待岗明细名称]
      */
@@ -352,6 +366,7 @@ public class PcmYddgmx extends EntityMP implements Serializable {
         this.pcmyddgmxname = pcmyddgmxname ;
         this.modify("pcmyddgmxname",pcmyddgmxname);
     }
+
     /**
      * 设置 [待岗类型]
      */
@@ -359,6 +374,7 @@ public class PcmYddgmx extends EntityMP implements Serializable {
         this.dglx = dglx ;
         this.modify("dglx",dglx);
     }
+
     /**
      * 设置 [主分配id]
      */
@@ -366,6 +382,7 @@ public class PcmYddgmx extends EntityMP implements Serializable {
         this.distirbutionid = distirbutionid ;
         this.modify("distirbutionid",distirbutionid);
     }
+
     /**
      * 设置 [操作]
      */
@@ -373,6 +390,7 @@ public class PcmYddgmx extends EntityMP implements Serializable {
         this.cz = cz ;
         this.modify("cz",cz);
     }
+
     /**
      * 设置 [待岗原因]
      */
@@ -380,6 +398,7 @@ public class PcmYddgmx extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [待岗部门标识]
      */
@@ -387,6 +406,7 @@ public class PcmYddgmx extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [是否完成]
      */
@@ -394,6 +414,7 @@ public class PcmYddgmx extends EntityMP implements Serializable {
         this.isfinished = isfinished ;
         this.modify("isfinished",isfinished);
     }
+
 
 }
 

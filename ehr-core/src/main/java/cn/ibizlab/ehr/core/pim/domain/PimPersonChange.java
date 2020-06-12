@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -248,6 +249,7 @@ public class PimPersonChange extends EntityMP implements Serializable {
         this.cz = cz ;
         this.modify("cz",cz);
     }
+
     /**
      * 设置 [操作对象的名称]
      */
@@ -255,6 +257,7 @@ public class PimPersonChange extends EntityMP implements Serializable {
         this.czdxmc = czdxmc ;
         this.modify("czdxmc",czdxmc);
     }
+
     /**
      * 设置 [记录编号]
      */
@@ -262,6 +265,7 @@ public class PimPersonChange extends EntityMP implements Serializable {
         this.jlbh = jlbh ;
         this.modify("jlbh",jlbh);
     }
+
     /**
      * 设置 [操作对象的]
      */
@@ -269,12 +273,24 @@ public class PimPersonChange extends EntityMP implements Serializable {
         this.czdxbh = czdxbh ;
         this.modify("czdxbh",czdxbh);
     }
+
     /**
      * 设置 [生效时间]
      */
     public void setSxsj(Timestamp sxsj){
         this.sxsj = sxsj ;
         this.modify("sxsj",sxsj);
+    }
+
+    /**
+     * 格式化日期 [生效时间]
+     */
+    public String formatSxsj(){
+        if (this.sxsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(sxsj);
     }
     /**
      * 设置 [审批状态]
@@ -283,6 +299,7 @@ public class PimPersonChange extends EntityMP implements Serializable {
         this.zt = zt ;
         this.modify("zt",zt);
     }
+
     /**
      * 设置 [附件信息]
      */
@@ -290,6 +307,7 @@ public class PimPersonChange extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [拒绝原因]
      */
@@ -297,6 +315,7 @@ public class PimPersonChange extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [变更类型]
      */
@@ -304,6 +323,7 @@ public class PimPersonChange extends EntityMP implements Serializable {
         this.bglx = bglx ;
         this.modify("bglx",bglx);
     }
+
     /**
      * 设置 [备注]
      */
@@ -311,6 +331,7 @@ public class PimPersonChange extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [变更内容]
      */
@@ -318,12 +339,24 @@ public class PimPersonChange extends EntityMP implements Serializable {
         this.bgnr = bgnr ;
         this.modify("bgnr",bgnr);
     }
+
     /**
      * 设置 [变更时间]
      */
     public void setBgsj(Timestamp bgsj){
         this.bgsj = bgsj ;
         this.modify("bgsj",bgsj);
+    }
+
+    /**
+     * 格式化日期 [变更时间]
+     */
+    public String formatBgsj(){
+        if (this.bgsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(bgsj);
     }
     /**
      * 设置 [人员信息变更审核名称]
@@ -332,12 +365,24 @@ public class PimPersonChange extends EntityMP implements Serializable {
         this.pimpersonchangename = pimpersonchangename ;
         this.modify("pimpersonchangename",pimpersonchangename);
     }
+
     /**
      * 设置 [申请时间]
      */
     public void setSqsj(Timestamp sqsj){
         this.sqsj = sqsj ;
         this.modify("sqsj",sqsj);
+    }
+
+    /**
+     * 格式化日期 [申请时间]
+     */
+    public String formatSqsj(){
+        if (this.sqsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(sqsj);
     }
     /**
      * 设置 [人员信息标识]
@@ -346,6 +391,7 @@ public class PimPersonChange extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

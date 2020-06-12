@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -613,6 +614,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.xmjbqk = xmjbqk ;
         this.modify("xmjbqk",xmjbqk);
     }
+
     /**
      * 设置 [补贴标准]
      */
@@ -620,6 +622,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.qy = qy ;
         this.modify("qy",qy);
     }
+
     /**
      * 设置 [版本]
      */
@@ -627,12 +630,24 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.edition = edition ;
         this.modify("edition",edition);
     }
+
     /**
      * 设置 [上班时间]
      */
     public void setSbsj(Timestamp sbsj){
         this.sbsj = sbsj ;
         this.modify("sbsj",sbsj);
+    }
+
+    /**
+     * 格式化日期 [上班时间]
+     */
+    public String formatSbsj(){
+        if (this.sbsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(sbsj);
     }
     /**
      * 设置 [下班时间]
@@ -641,6 +656,17 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.xbsj = xbsj ;
         this.modify("xbsj",xbsj);
     }
+
+    /**
+     * 格式化日期 [下班时间]
+     */
+    public String formatXbsj(){
+        if (this.xbsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(xbsj);
+    }
     /**
      * 设置 [启停标识]
      */
@@ -648,6 +674,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.startstopsign = startstopsign ;
         this.modify("startstopsign",startstopsign);
     }
+
     /**
      * 设置 [部门计划编制人数]
      */
@@ -655,6 +682,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.bmbzrs = bmbzrs ;
         this.modify("bmbzrs",bmbzrs);
     }
+
     /**
      * 设置 [部门实际编制人数]
      */
@@ -662,6 +690,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.bmsjbzrs = bmsjbzrs ;
         this.modify("bmsjbzrs",bmsjbzrs);
     }
+
     /**
      * 设置 [工程名称及编码]
      */
@@ -669,6 +698,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.gcmcjbm = gcmcjbm ;
         this.modify("gcmcjbm",gcmcjbm);
     }
+
     /**
      * 设置 [项目标签]
      */
@@ -676,6 +706,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.xmbq = xmbq ;
         this.modify("xmbq",xmbq);
     }
+
     /**
      * 设置 [原纪录ID]
      */
@@ -683,12 +714,24 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.oldid = oldid ;
         this.modify("oldid",oldid);
     }
+
     /**
      * 设置 [上班考勤时间]
      */
     public void setKqkssj(Timestamp kqkssj){
         this.kqkssj = kqkssj ;
         this.modify("kqkssj",kqkssj);
+    }
+
+    /**
+     * 格式化日期 [上班考勤时间]
+     */
+    public String formatKqkssj(){
+        if (this.kqkssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(kqkssj);
     }
     /**
      * 设置 [部门编号]
@@ -697,6 +740,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.orgcode = orgcode ;
         this.modify("orgcode",orgcode);
     }
+
     /**
      * 设置 [计划人月]
      */
@@ -704,6 +748,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.jhry = jhry ;
         this.modify("jhry",jhry);
     }
+
     /**
      * 设置 [审批状态]
      */
@@ -711,12 +756,24 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.approvalstatus = approvalstatus ;
         this.modify("approvalstatus",approvalstatus);
     }
+
     /**
      * 设置 [下班考勤时间]
      */
     public void setKqjssj(Timestamp kqjssj){
         this.kqjssj = kqjssj ;
         this.modify("kqjssj",kqjssj);
+    }
+
+    /**
+     * 格式化日期 [下班考勤时间]
+     */
+    public String formatKqjssj(){
+        if (this.kqjssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(kqjssj);
     }
     /**
      * 设置 [项目类型]
@@ -725,6 +782,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.xmlx = xmlx ;
         this.modify("xmlx",xmlx);
     }
+
     /**
      * 设置 [组织类型]
      */
@@ -732,6 +790,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.orgtype = orgtype ;
         this.modify("orgtype",orgtype);
     }
+
     /**
      * 设置 [ERP部门ID]
      */
@@ -739,6 +798,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.erporgid = erporgid ;
         this.modify("erporgid",erporgid);
     }
+
     /**
      * 设置 [打卡方式]
      */
@@ -746,6 +806,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.dkfs = dkfs ;
         this.modify("dkfs",dkfs);
     }
+
     /**
      * 设置 [项目类型（其他）]
      */
@@ -753,6 +814,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.xmlxqt = xmlxqt ;
         this.modify("xmlxqt",xmlxqt);
     }
+
     /**
      * 设置 [实际人数（部门）]
      */
@@ -760,6 +822,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.sjrs = sjrs ;
         this.modify("sjrs",sjrs);
     }
+
     /**
      * 设置 [职务数量]
      */
@@ -767,6 +830,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.zwsl = zwsl ;
         this.modify("zwsl",zwsl);
     }
+
     /**
      * 设置 [所含岗位数量]
      */
@@ -774,6 +838,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.shgwsl = shgwsl ;
         this.modify("shgwsl",shgwsl);
     }
+
     /**
      * 设置 [项目规模]
      */
@@ -781,6 +846,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.xmgm = xmgm ;
         this.modify("xmgm",xmgm);
     }
+
     /**
      * 设置 [岗位数量]
      */
@@ -788,6 +854,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.gwsl = gwsl ;
         this.modify("gwsl",gwsl);
     }
+
     /**
      * 设置 [对项目经理的要求]
      */
@@ -795,6 +862,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.dxmjlyq = dxmjlyq ;
         this.modify("dxmjlyq",dxmjlyq);
     }
+
     /**
      * 设置 [对项目总工的要求]
      */
@@ -802,6 +870,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.dxmzgyq = dxmzgyq ;
         this.modify("dxmzgyq",dxmzgyq);
     }
+
     /**
      * 设置 [头衔]
      */
@@ -809,6 +878,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.title = title ;
         this.modify("title",title);
     }
+
     /**
      * 设置 [启用标志]
      */
@@ -816,6 +886,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.validflag = validflag ;
         this.modify("validflag",validflag);
     }
+
     /**
      * 设置 [参照职务层级]
      */
@@ -823,6 +894,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.referjoblevel = referjoblevel ;
         this.modify("referjoblevel",referjoblevel);
     }
+
     /**
      * 设置 [所属OU]
      */
@@ -830,6 +902,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.belongou = belongou ;
         this.modify("belongou",belongou);
     }
+
     /**
      * 设置 [所含职务数量]
      */
@@ -837,6 +910,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.shzwsl = shzwsl ;
         this.modify("shzwsl",shzwsl);
     }
+
     /**
      * 设置 [简称]
      */
@@ -844,6 +918,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.shortname = shortname ;
         this.modify("shortname",shortname);
     }
+
     /**
      * 设置 [工期安排]
      */
@@ -851,6 +926,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.gqap = gqap ;
         this.modify("gqap",gqap);
     }
+
     /**
      * 设置 [计划成本（万）]
      */
@@ -858,6 +934,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.jhcb = jhcb ;
         this.modify("jhcb",jhcb);
     }
+
     /**
      * 设置 [部门类型]
      */
@@ -865,6 +942,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.bmlx = bmlx ;
         this.modify("bmlx",bmlx);
     }
+
     /**
      * 设置 [项目部类型]
      */
@@ -872,6 +950,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.xmblx = xmblx ;
         this.modify("xmblx",xmblx);
     }
+
     /**
      * 设置 [管控机制]
      */
@@ -879,6 +958,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.gkjz = gkjz ;
         this.modify("gkjz",gkjz);
     }
+
     /**
      * 设置 [版本状态]
      */
@@ -886,6 +966,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.editionstate = editionstate ;
         this.modify("editionstate",editionstate);
     }
+
     /**
      * 设置 [实际成本（万）]
      */
@@ -893,6 +974,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.sjcb = sjcb ;
         this.modify("sjcb",sjcb);
     }
+
     /**
      * 设置 [实际人月]
      */
@@ -900,6 +982,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.sjry = sjry ;
         this.modify("sjry",sjry);
     }
+
     /**
      * 设置 [所属区域]
      */
@@ -907,6 +990,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.belongregion = belongregion ;
         this.modify("belongregion",belongregion);
     }
+
     /**
      * 设置 [部门负责人ID]
      */
@@ -914,6 +998,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [项目ID]
      */
@@ -921,6 +1006,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.ormxmglid = ormxmglid ;
         this.modify("ormxmglid",ormxmglid);
     }
+
     /**
      * 设置 [项目部ID]
      */
@@ -928,6 +1014,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.prodepid = prodepid ;
         this.modify("prodepid",prodepid);
     }
+
     /**
      * 设置 [项目负责人ID]
      */
@@ -935,6 +1022,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.proleaderid = proleaderid ;
         this.modify("proleaderid",proleaderid);
     }
+
     /**
      * 设置 [上级部门ID]
      */
@@ -942,6 +1030,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         this.porgsectorid = porgsectorid ;
         this.modify("porgsectorid",porgsectorid);
     }
+
 
 }
 

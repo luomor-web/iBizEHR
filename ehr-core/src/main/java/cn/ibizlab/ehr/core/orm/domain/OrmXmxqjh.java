@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -384,6 +385,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.oldid = oldid ;
         this.modify("oldid",oldid);
     }
+
     /**
      * 设置 [建筑面积（㎡）]
      */
@@ -391,6 +393,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.jzmj = jzmj ;
         this.modify("jzmj",jzmj);
     }
+
     /**
      * 设置 [组织简称]
      */
@@ -398,6 +401,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.orgshortname = orgshortname ;
         this.modify("orgshortname",orgshortname);
     }
+
     /**
      * 设置 [①施工前期准备阶段：]
      */
@@ -405,6 +409,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.gqap = gqap ;
         this.modify("gqap",gqap);
     }
+
     /**
      * 设置 [项目规模描述]
      */
@@ -412,6 +417,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.xmgmms = xmgmms ;
         this.modify("xmgmms",xmgmms);
     }
+
     /**
      * 设置 [审批状态]
      */
@@ -419,6 +425,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.approvalstatus = approvalstatus ;
         this.modify("approvalstatus",approvalstatus);
     }
+
     /**
      * 设置 [项目部ID]
      */
@@ -426,6 +433,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.orgsecinfoid = orgsecinfoid ;
         this.modify("orgsecinfoid",orgsecinfoid);
     }
+
     /**
      * 设置 [拒绝原因]
      */
@@ -433,6 +441,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [组织ID]
      */
@@ -440,6 +449,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.orginfoid = orginfoid ;
         this.modify("orginfoid",orginfoid);
     }
+
     /**
      * 设置 [项目部编号]
      */
@@ -447,6 +457,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.orgcode = orgcode ;
         this.modify("orgcode",orgcode);
     }
+
     /**
      * 设置 [工程名称及编码]
      */
@@ -454,6 +465,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.gcmcjbm = gcmcjbm ;
         this.modify("gcmcjbm",gcmcjbm);
     }
+
     /**
      * 设置 [③主体施工阶段：]
      */
@@ -461,6 +473,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.ztsg = ztsg ;
         this.modify("ztsg",ztsg);
     }
+
     /**
      * 设置 [版本号]
      */
@@ -468,6 +481,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.bbh = bbh ;
         this.modify("bbh",bbh);
     }
+
     /**
      * 设置 [对项目总工的要求]
      */
@@ -475,6 +489,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.dxmzgyq = dxmzgyq ;
         this.modify("dxmzgyq",dxmzgyq);
     }
+
     /**
      * 设置 [版本]
      */
@@ -482,6 +497,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.edition = edition ;
         this.modify("edition",edition);
     }
+
     /**
      * 设置 [计划成本（万）]
      */
@@ -489,6 +505,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.jhcb = jhcb ;
         this.modify("jhcb",jhcb);
     }
+
     /**
      * 设置 [所属组织]
      */
@@ -496,6 +513,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.orginfoname = orginfoname ;
         this.modify("orginfoname",orginfoname);
     }
+
     /**
      * 设置 [工程造价（万元）]
      */
@@ -503,6 +521,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.gczj = gczj ;
         this.modify("gczj",gczj);
     }
+
     /**
      * 设置 [项目类型]
      */
@@ -510,6 +529,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.xmlx = xmlx ;
         this.modify("xmlx",xmlx);
     }
+
     /**
      * 设置 [④装饰装修阶段：]
      */
@@ -517,6 +537,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.zszx = zszx ;
         this.modify("zszx",zszx);
     }
+
     /**
      * 设置 [项目需求计划名称]
      */
@@ -524,6 +545,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.ormxmxqjhname = ormxmxqjhname ;
         this.modify("ormxmxqjhname",ormxmxqjhname);
     }
+
     /**
      * 设置 [版本状态]
      */
@@ -531,6 +553,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.editionstate = editionstate ;
         this.modify("editionstate",editionstate);
     }
+
     /**
      * 设置 [⑥工程结算阶段：]
      */
@@ -538,6 +561,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.gcjs = gcjs ;
         this.modify("gcjs",gcjs);
     }
+
     /**
      * 设置 [⑤工程扫尾阶段：]
      */
@@ -545,6 +569,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.gcsw = gcsw ;
         this.modify("gcsw",gcsw);
     }
+
     /**
      * 设置 [⑦其他阶段：]
      */
@@ -552,6 +577,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.qtjd = qtjd ;
         this.modify("qtjd",qtjd);
     }
+
     /**
      * 设置 [项目部类型]
      */
@@ -559,6 +585,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.xmblx = xmblx ;
         this.modify("xmblx",xmblx);
     }
+
     /**
      * 设置 [对项目经理的要求]
      */
@@ -566,6 +593,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.dxmjlyq = dxmjlyq ;
         this.modify("dxmjlyq",dxmjlyq);
     }
+
     /**
      * 设置 [项目类型（其他）]
      */
@@ -573,6 +601,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.xmlxqt = xmlxqt ;
         this.modify("xmlxqt",xmlxqt);
     }
+
     /**
      * 设置 [项目部名称]
      */
@@ -580,6 +609,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.xmbmc = xmbmc ;
         this.modify("xmbmc",xmbmc);
     }
+
     /**
      * 设置 [②基础施工阶段：]
      */
@@ -587,6 +617,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.sgjd = sgjd ;
         this.modify("sgjd",sgjd);
     }
+
     /**
      * 设置 [项目基本情况]
      */
@@ -594,6 +625,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.xmjbqk = xmjbqk ;
         this.modify("xmjbqk",xmjbqk);
     }
+
     /**
      * 设置 [项目部简称]
      */
@@ -601,6 +633,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.xmbjc = xmbjc ;
         this.modify("xmbjc",xmbjc);
     }
+
     /**
      * 设置 [项目负责人ID]
      */
@@ -608,6 +641,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [项目ID]
      */
@@ -615,6 +649,7 @@ public class OrmXmxqjh extends EntityMP implements Serializable {
         this.ormxmglid = ormxmglid ;
         this.modify("ormxmglid",ormxmglid);
     }
+
 
 }
 

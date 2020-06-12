@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -133,6 +134,7 @@ public class OrmXmbq extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [项目标签]
      */
@@ -140,6 +142,7 @@ public class OrmXmbq extends EntityMP implements Serializable {
         this.ormxmbqname = ormxmbqname ;
         this.modify("ormxmbqname",ormxmbqname);
     }
+
     /**
      * 设置 [组织ID]
      */
@@ -147,6 +150,7 @@ public class OrmXmbq extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

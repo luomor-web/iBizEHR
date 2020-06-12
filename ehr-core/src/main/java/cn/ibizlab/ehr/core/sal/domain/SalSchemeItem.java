@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -213,6 +214,7 @@ public class SalSchemeItem extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [要素项类型]
      */
@@ -220,6 +222,7 @@ public class SalSchemeItem extends EntityMP implements Serializable {
         this.sitemtype = sitemtype ;
         this.modify("sitemtype",sitemtype);
     }
+
     /**
      * 设置 [工资单要素项名称]
      */
@@ -227,6 +230,7 @@ public class SalSchemeItem extends EntityMP implements Serializable {
         this.salschemeitemname = salschemeitemname ;
         this.modify("salschemeitemname",salschemeitemname);
     }
+
     /**
      * 设置 [备注]
      */
@@ -234,6 +238,7 @@ public class SalSchemeItem extends EntityMP implements Serializable {
         this.memo = memo ;
         this.modify("memo",memo);
     }
+
     /**
      * 设置 [公式]
      */
@@ -241,6 +246,7 @@ public class SalSchemeItem extends EntityMP implements Serializable {
         this.gs = gs ;
         this.modify("gs",gs);
     }
+
     /**
      * 设置 [增/减]
      */
@@ -248,6 +254,7 @@ public class SalSchemeItem extends EntityMP implements Serializable {
         this.sitemadd = sitemadd ;
         this.modify("sitemadd",sitemadd);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -255,6 +262,7 @@ public class SalSchemeItem extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [工资单标识]
      */
@@ -262,6 +270,7 @@ public class SalSchemeItem extends EntityMP implements Serializable {
         this.salschemeid = salschemeid ;
         this.modify("salschemeid",salschemeid);
     }
+
     /**
      * 设置 [薪酬规则标识]
      */
@@ -269,6 +278,7 @@ public class SalSchemeItem extends EntityMP implements Serializable {
         this.salruleid = salruleid ;
         this.modify("salruleid",salruleid);
     }
+
     /**
      * 设置 [薪酬要素项标识]
      */
@@ -276,6 +286,7 @@ public class SalSchemeItem extends EntityMP implements Serializable {
         this.salitemid = salitemid ;
         this.modify("salitemid",salitemid);
     }
+
 
 }
 

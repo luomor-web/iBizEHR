@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -106,6 +107,7 @@ public class PimLwgz extends EntityMP implements Serializable {
         this.pimlwgzname = pimlwgzname ;
         this.modify("pimlwgzname",pimlwgzname);
     }
+
 
 }
 

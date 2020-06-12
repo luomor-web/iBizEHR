@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -142,6 +143,17 @@ public class ParJxqdsz extends EntityMP implements Serializable {
         this.jzsj = jzsj ;
         this.modify("jzsj",jzsj);
     }
+
+    /**
+     * 格式化日期 [截止时间]
+     */
+    public String formatJzsj(){
+        if (this.jzsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jzsj);
+    }
     /**
      * 设置 [启动类型]
      */
@@ -149,12 +161,24 @@ public class ParJxqdsz extends EntityMP implements Serializable {
         this.qdlx = qdlx ;
         this.modify("qdlx",qdlx);
     }
+
     /**
      * 设置 [开启时间]
      */
     public void setKqsj(Timestamp kqsj){
         this.kqsj = kqsj ;
         this.modify("kqsj",kqsj);
+    }
+
+    /**
+     * 格式化日期 [开启时间]
+     */
+    public String formatKqsj(){
+        if (this.kqsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(kqsj);
     }
     /**
      * 设置 [标题]
@@ -163,6 +187,7 @@ public class ParJxqdsz extends EntityMP implements Serializable {
         this.parjxqdszname = parjxqdszname ;
         this.modify("parjxqdszname",parjxqdszname);
     }
+
     /**
      * 设置 [组织ID]
      */
@@ -170,6 +195,7 @@ public class ParJxqdsz extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

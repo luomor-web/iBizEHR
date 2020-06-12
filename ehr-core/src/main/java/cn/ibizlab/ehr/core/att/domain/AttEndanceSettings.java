@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -204,6 +205,7 @@ public class AttEndanceSettings extends EntityMP implements Serializable {
         this.attendancesettingsname = attendancesettingsname ;
         this.modify("attendancesettingsname",attendancesettingsname);
     }
+
     /**
      * 设置 [打卡方式]
      */
@@ -211,6 +213,7 @@ public class AttEndanceSettings extends EntityMP implements Serializable {
         this.dkfs = dkfs ;
         this.modify("dkfs",dkfs);
     }
+
     /**
      * 设置 [员工编号]
      */
@@ -218,6 +221,7 @@ public class AttEndanceSettings extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [员工姓名]
      */
@@ -225,6 +229,7 @@ public class AttEndanceSettings extends EntityMP implements Serializable {
         this.pimpersonname = pimpersonname ;
         this.modify("pimpersonname",pimpersonname);
     }
+
     /**
      * 设置 [考勤设置标识]
      */
@@ -232,6 +237,7 @@ public class AttEndanceSettings extends EntityMP implements Serializable {
         this.attendencesetupid = attendencesetupid ;
         this.modify("attendencesetupid",attendencesetupid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -239,6 +245,7 @@ public class AttEndanceSettings extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

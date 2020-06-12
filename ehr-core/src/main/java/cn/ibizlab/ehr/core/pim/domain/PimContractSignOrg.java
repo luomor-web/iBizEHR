@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -158,6 +159,7 @@ public class PimContractSignOrg extends EntityMP implements Serializable {
         this.contractsignorgname = contractsignorgname ;
         this.modify("contractsignorgname",contractsignorgname);
     }
+
     /**
      * 设置 [默认签约主体]
      */
@@ -165,6 +167,7 @@ public class PimContractSignOrg extends EntityMP implements Serializable {
         this.isdefaultsignorg = isdefaultsignorg ;
         this.modify("isdefaultsignorg",isdefaultsignorg);
     }
+
     /**
      * 设置 [法人主体标识]
      */
@@ -172,6 +175,7 @@ public class PimContractSignOrg extends EntityMP implements Serializable {
         this.ormsignorgid = ormsignorgid ;
         this.modify("ormsignorgid",ormsignorgid);
     }
+
     /**
      * 设置 [管理单位标识]
      */
@@ -179,6 +183,7 @@ public class PimContractSignOrg extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

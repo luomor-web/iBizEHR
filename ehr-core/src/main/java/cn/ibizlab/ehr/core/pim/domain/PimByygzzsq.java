@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -141,6 +142,7 @@ public class PimByygzzsq extends EntityMP implements Serializable {
         this.zzlx = zzlx ;
         this.modify("zzlx",zzlx);
     }
+
     /**
      * 设置 [是否为临时数据]
      */
@@ -148,12 +150,24 @@ public class PimByygzzsq extends EntityMP implements Serializable {
         this.istemp = istemp ;
         this.modify("istemp",istemp);
     }
+
     /**
      * 设置 [操作日期]
      */
     public void setCzrq(Timestamp czrq){
         this.czrq = czrq ;
         this.modify("czrq",czrq);
+    }
+
+    /**
+     * 格式化日期 [操作日期]
+     */
+    public String formatCzrq(){
+        if (this.czrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(czrq);
     }
     /**
      * 设置 [备注]
@@ -162,6 +176,7 @@ public class PimByygzzsq extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [标题]
      */
@@ -169,12 +184,24 @@ public class PimByygzzsq extends EntityMP implements Serializable {
         this.pimbyygzzsqname = pimbyygzzsqname ;
         this.modify("pimbyygzzsqname",pimbyygzzsqname);
     }
+
     /**
      * 设置 [生效日期]
      */
     public void setSxrq(Timestamp sxrq){
         this.sxrq = sxrq ;
         this.modify("sxrq",sxrq);
+    }
+
+    /**
+     * 格式化日期 [生效日期]
+     */
+    public String formatSxrq(){
+        if (this.sxrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(sxrq);
     }
     /**
      * 设置 [操作人]
@@ -183,6 +210,7 @@ public class PimByygzzsq extends EntityMP implements Serializable {
         this.czr = czr ;
         this.modify("czr",czr);
     }
+
 
 }
 

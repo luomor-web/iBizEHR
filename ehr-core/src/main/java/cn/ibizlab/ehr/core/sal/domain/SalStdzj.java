@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -142,6 +143,7 @@ public class SalStdzj extends EntityMP implements Serializable {
         this.zj = zj ;
         this.modify("zj",zj);
     }
+
     /**
      * 设置 [补贴标准]
      */
@@ -149,6 +151,7 @@ public class SalStdzj extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [专家津贴标准名称]
      */
@@ -156,6 +159,7 @@ public class SalStdzj extends EntityMP implements Serializable {
         this.salstdzjname = salstdzjname ;
         this.modify("salstdzjname",salstdzjname);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -163,6 +167,7 @@ public class SalStdzj extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

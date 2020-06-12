@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -163,6 +164,7 @@ public class PimVacation extends EntityMP implements Serializable {
         this.pimvacationname = pimvacationname ;
         this.modify("pimvacationname",pimvacationname);
     }
+
     /**
      * 设置 [休假天数]
      */
@@ -170,12 +172,24 @@ public class PimVacation extends EntityMP implements Serializable {
         this.xjts = xjts ;
         this.modify("xjts",xjts);
     }
+
     /**
      * 设置 [休假结束时间]
      */
     public void setXjjssj(Timestamp xjjssj){
         this.xjjssj = xjjssj ;
         this.modify("xjjssj",xjjssj);
+    }
+
+    /**
+     * 格式化日期 [休假结束时间]
+     */
+    public String formatXjjssj(){
+        if (this.xjjssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(xjjssj);
     }
     /**
      * 设置 [休假开始时间]
@@ -184,6 +198,17 @@ public class PimVacation extends EntityMP implements Serializable {
         this.xjkssj = xjkssj ;
         this.modify("xjkssj",xjkssj);
     }
+
+    /**
+     * 格式化日期 [休假开始时间]
+     */
+    public String formatXjkssj(){
+        if (this.xjkssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(xjkssj);
+    }
     /**
      * 设置 [休假类型]
      */
@@ -191,6 +216,7 @@ public class PimVacation extends EntityMP implements Serializable {
         this.xjlx = xjlx ;
         this.modify("xjlx",xjlx);
     }
+
     /**
      * 设置 [附件]
      */
@@ -198,6 +224,7 @@ public class PimVacation extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [备注]
      */
@@ -205,6 +232,7 @@ public class PimVacation extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -212,6 +240,7 @@ public class PimVacation extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

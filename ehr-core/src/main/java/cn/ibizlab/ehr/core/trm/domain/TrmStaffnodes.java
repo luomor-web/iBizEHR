@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -280,6 +281,7 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.xqyy = xqyy ;
         this.modify("xqyy",xqyy);
     }
+
     /**
      * 设置 [备注]
      */
@@ -287,6 +289,7 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [培训时长单位]
      */
@@ -294,6 +297,7 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.pxscdw = pxscdw ;
         this.modify("pxscdw",pxscdw);
     }
+
     /**
      * 设置 [预计费用总额]
      */
@@ -301,6 +305,7 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.yjfyze = yjfyze ;
         this.modify("yjfyze",yjfyze);
     }
+
     /**
      * 设置 [培训地点]
      */
@@ -308,6 +313,7 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.pxdd = pxdd ;
         this.modify("pxdd",pxdd);
     }
+
     /**
      * 设置 [培训内容]
      */
@@ -315,6 +321,7 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.pxnr = pxnr ;
         this.modify("pxnr",pxnr);
     }
+
     /**
      * 设置 [员工需求填报名称]
      */
@@ -322,6 +329,7 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.trmstaffnodesname = trmstaffnodesname ;
         this.modify("trmstaffnodesname",trmstaffnodesname);
     }
+
     /**
      * 设置 [培训目标]
      */
@@ -329,6 +337,7 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.pxmb = pxmb ;
         this.modify("pxmb",pxmb);
     }
+
     /**
      * 设置 [培训方式]
      */
@@ -336,12 +345,24 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.pxfs = pxfs ;
         this.modify("pxfs",pxfs);
     }
+
     /**
      * 设置 [填报时间]
      */
     public void setTbsj(Timestamp tbsj){
         this.tbsj = tbsj ;
         this.modify("tbsj",tbsj);
+    }
+
+    /**
+     * 格式化日期 [填报时间]
+     */
+    public String formatTbsj(){
+        if (this.tbsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(tbsj);
     }
     /**
      * 设置 [审批意见]
@@ -350,6 +371,7 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.spyj = spyj ;
         this.modify("spyj",spyj);
     }
+
     /**
      * 设置 [培训类别]
      */
@@ -357,6 +379,7 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.pxlb = pxlb ;
         this.modify("pxlb",pxlb);
     }
+
     /**
      * 设置 [培训时长]
      */
@@ -364,12 +387,24 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.pxsc = pxsc ;
         this.modify("pxsc",pxsc);
     }
+
     /**
      * 设置 [预计结束时间]
      */
     public void setYjjssj(Timestamp yjjssj){
         this.yjjssj = yjjssj ;
         this.modify("yjjssj",yjjssj);
+    }
+
+    /**
+     * 格式化日期 [预计结束时间]
+     */
+    public String formatYjjssj(){
+        if (this.yjjssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(yjjssj);
     }
     /**
      * 设置 [预计开始时间]
@@ -378,6 +413,17 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.yjkssj = yjkssj ;
         this.modify("yjkssj",yjkssj);
     }
+
+    /**
+     * 格式化日期 [预计开始时间]
+     */
+    public String formatYjkssj(){
+        if (this.yjkssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(yjkssj);
+    }
     /**
      * 设置 [紧迫程度]
      */
@@ -385,6 +431,7 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.jpcd = jpcd ;
         this.modify("jpcd",jpcd);
     }
+
     /**
      * 设置 [培训课程标识]
      */
@@ -392,6 +439,7 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.trmtraincourseid = trmtraincourseid ;
         this.modify("trmtraincourseid",trmtraincourseid);
     }
+
     /**
      * 设置 [培训机构标识]
      */
@@ -399,6 +447,7 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.trmtrainagencyid = trmtrainagencyid ;
         this.modify("trmtrainagencyid",trmtrainagencyid);
     }
+
     /**
      * 设置 [员工需求调查表标识]
      */
@@ -406,6 +455,7 @@ public class TrmStaffnodes extends EntityMP implements Serializable {
         this.trmstaffid = trmstaffid ;
         this.modify("trmstaffid",trmstaffid);
     }
+
 
 }
 

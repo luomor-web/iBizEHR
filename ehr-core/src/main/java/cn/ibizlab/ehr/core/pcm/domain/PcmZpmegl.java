@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -364,6 +365,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [招聘名额管理名称]
      */
@@ -371,6 +373,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.pcmzpmeglname = pcmzpmeglname ;
         this.modify("pcmzpmeglname",pcmzpmeglname);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -378,6 +381,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [校招B名额]
      */
@@ -385,6 +389,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.xyzpbme = xyzpbme ;
         this.modify("xyzpbme",xyzpbme);
     }
+
     /**
      * 设置 [已使用名额（社招计划外）]
      */
@@ -392,6 +397,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.ybdrsSzjhw = ybdrsSzjhw ;
         this.modify("ybdrs_szjhw",ybdrsSzjhw);
     }
+
     /**
      * 设置 [已使用名额（校招小专业）]
      */
@@ -399,6 +405,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.ybdrsXzxzy = ybdrsXzxzy ;
         this.modify("ybdrs_xzxzy",ybdrsXzxzy);
     }
+
     /**
      * 设置 [分配名额（社招B）]
      */
@@ -406,6 +413,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.fpmeSzb = fpmeSzb ;
         this.modify("fpme_szb",fpmeSzb);
     }
+
     /**
      * 设置 [社招Y名额]
      */
@@ -413,6 +421,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.shzpyme = shzpyme ;
         this.modify("shzpyme",shzpyme);
     }
+
     /**
      * 设置 [已使用名额（校招A）]
      */
@@ -420,6 +429,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.ybdrsXza = ybdrsXza ;
         this.modify("ybdrs_xza",ybdrsXza);
     }
+
     /**
      * 设置 [分配名额（社招计划外）]
      */
@@ -427,6 +437,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.fpmeSzjhw = fpmeSzjhw ;
         this.modify("fpme_szjhw",fpmeSzjhw);
     }
+
     /**
      * 设置 [已使用名额（社招B）]
      */
@@ -434,6 +445,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.ybdrsSzb = ybdrsSzb ;
         this.modify("ybdrs_szb",ybdrsSzb);
     }
+
     /**
      * 设置 [社招B名额]
      */
@@ -441,6 +453,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.shzpbme = shzpbme ;
         this.modify("shzpbme",shzpbme);
     }
+
     /**
      * 设置 [分配名额（校招小专业）]
      */
@@ -448,6 +461,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.fpmeXzxzy = fpmeXzxzy ;
         this.modify("fpme_xzxzy",fpmeXzxzy);
     }
+
     /**
      * 设置 [社招计划外名额]
      */
@@ -455,6 +469,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.shzpjhwme = shzpjhwme ;
         this.modify("shzpjhwme",shzpjhwme);
     }
+
     /**
      * 设置 [批复次数]
      */
@@ -462,6 +477,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.pfcs = pfcs ;
         this.modify("pfcs",pfcs);
     }
+
     /**
      * 设置 [分配名额（社招Y）]
      */
@@ -469,6 +485,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.fpmeSzy = fpmeSzy ;
         this.modify("fpme_szy",fpmeSzy);
     }
+
     /**
      * 设置 [校招A名额]
      */
@@ -476,6 +493,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.xyzpame = xyzpame ;
         this.modify("xyzpame",xyzpame);
     }
+
     /**
      * 设置 [校招小专业名额]
      */
@@ -483,6 +501,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.xyzpxzyme = xyzpxzyme ;
         this.modify("xyzpxzyme",xyzpxzyme);
     }
+
     /**
      * 设置 [分配名额（校招B）]
      */
@@ -490,6 +509,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.fpmeXzb = fpmeXzb ;
         this.modify("fpme_xzb",fpmeXzb);
     }
+
     /**
      * 设置 [已使用名额（社招A）]
      */
@@ -497,6 +517,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.ybdrsSza = ybdrsSza ;
         this.modify("ybdrs_sza",ybdrsSza);
     }
+
     /**
      * 设置 [分配名额（校招A）]
      */
@@ -504,6 +525,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.fpmeXza = fpmeXza ;
         this.modify("fpme_xza",fpmeXza);
     }
+
     /**
      * 设置 [已使用名额（校招B）]
      */
@@ -511,6 +533,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.ybdrsXzb = ybdrsXzb ;
         this.modify("ybdrs_xzb",ybdrsXzb);
     }
+
     /**
      * 设置 [分配名额（社招A）]
      */
@@ -518,6 +541,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.fpmeSza = fpmeSza ;
         this.modify("fpme_sza",fpmeSza);
     }
+
     /**
      * 设置 [已使用名额（社招Y）]
      */
@@ -525,6 +549,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.ybdrsSzy = ybdrsSzy ;
         this.modify("ybdrs_szy",ybdrsSzy);
     }
+
     /**
      * 设置 [社招A名额]
      */
@@ -532,6 +557,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.shzpame = shzpame ;
         this.modify("shzpame",shzpame);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -539,6 +565,7 @@ public class PcmZpmegl extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -194,12 +195,24 @@ public class TrmTrainDemandSum extends EntityMP implements Serializable {
         this.xqrs = xqrs ;
         this.modify("xqrs",xqrs);
     }
+
     /**
      * 设置 [汇总日期]
      */
     public void setHzrq(Timestamp hzrq){
         this.hzrq = hzrq ;
         this.modify("hzrq",hzrq);
+    }
+
+    /**
+     * 格式化日期 [汇总日期]
+     */
+    public String formatHzrq(){
+        if (this.hzrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(hzrq);
     }
     /**
      * 设置 [培训需求汇总明细名称]
@@ -208,6 +221,7 @@ public class TrmTrainDemandSum extends EntityMP implements Serializable {
         this.trmtraindemandsumname = trmtraindemandsumname ;
         this.modify("trmtraindemandsumname",trmtraindemandsumname);
     }
+
     /**
      * 设置 [培训课程标识]
      */
@@ -215,6 +229,7 @@ public class TrmTrainDemandSum extends EntityMP implements Serializable {
         this.trmtraincourseid = trmtraincourseid ;
         this.modify("trmtraincourseid",trmtraincourseid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -222,6 +237,7 @@ public class TrmTrainDemandSum extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [培训需求汇总标识]
      */
@@ -229,6 +245,7 @@ public class TrmTrainDemandSum extends EntityMP implements Serializable {
         this.trmtraindemandid = trmtraindemandid ;
         this.modify("trmtraindemandid",trmtraindemandid);
     }
+
 
 }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -202,6 +203,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
         this.linkfieldname = linkfieldname ;
         this.modify("linkfieldname",linkfieldname);
     }
+
     /**
      * 设置 [是否可查]
      */
@@ -209,6 +211,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
         this.searchtag = searchtag ;
         this.modify("searchtag",searchtag);
     }
+
     /**
      * 设置 [排序号2]
      */
@@ -216,6 +219,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
         this.pxh2 = pxh2 ;
         this.modify("pxh2",pxh2);
     }
+
     /**
      * 设置 [是否可见]
      */
@@ -223,6 +227,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
         this.isshown = isshown ;
         this.modify("isshown",isshown);
     }
+
     /**
      * 设置 [列名称]
      */
@@ -230,6 +235,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
         this.columnname = columnname ;
         this.modify("columnname",columnname);
     }
+
     /**
      * 设置 [宽度]
      */
@@ -237,6 +243,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
         this.columnwidth = columnwidth ;
         this.modify("columnwidth",columnwidth);
     }
+
     /**
      * 设置 [实体逻辑名称]
      */
@@ -244,6 +251,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
         this.entitylogicname = entitylogicname ;
         this.modify("entitylogicname",entitylogicname);
     }
+
     /**
      * 设置 [组合查询条件设置名称]
      */
@@ -251,6 +259,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
         this.pimsearchfieldsetname = pimsearchfieldsetname ;
         this.modify("pimsearchfieldsetname",pimsearchfieldsetname);
     }
+
     /**
      * 设置 [实体id]
      */
@@ -258,6 +267,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
         this.entityid = entityid ;
         this.modify("entityid",entityid);
     }
+
     /**
      * 设置 [列逻辑名称]
      */
@@ -265,6 +275,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
         this.columnlogicname = columnlogicname ;
         this.modify("columnlogicname",columnlogicname);
     }
+
     /**
      * 设置 [视图名称]
      */
@@ -272,6 +283,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
         this.vname = vname ;
         this.modify("vname",vname);
     }
+
     /**
      * 设置 [属性类型]
      */
@@ -279,6 +291,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
         this.fieldtype = fieldtype ;
         this.modify("fieldtype",fieldtype);
     }
+
     /**
      * 设置 [代码表]
      */
@@ -286,6 +299,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
         this.codelistid = codelistid ;
         this.modify("codelistid",codelistid);
     }
+
     /**
      * 设置 [实体名称]
      */
@@ -293,6 +307,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
         this.entityname = entityname ;
         this.modify("entityname",entityname);
     }
+
     /**
      * 设置 [表名称]
      */
@@ -300,6 +315,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
         this.tname = tname ;
         this.modify("tname",tname);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -307,6 +323,7 @@ public class PimSearchFieldSet extends EntityMP implements Serializable {
         this.pxh = pxh ;
         this.modify("pxh",pxh);
     }
+
 
 }
 

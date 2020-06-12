@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -226,6 +227,7 @@ public class VacSynjcx extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [已用天数]
      */
@@ -233,6 +235,7 @@ public class VacSynjcx extends EntityMP implements Serializable {
         this.yynj = yynj ;
         this.modify("yynj",yynj);
     }
+
     /**
      * 设置 [剩余天数]
      */
@@ -240,6 +243,7 @@ public class VacSynjcx extends EntityMP implements Serializable {
         this.synjts = synjts ;
         this.modify("synjts",synjts);
     }
+
     /**
      * 设置 [应休天数]
      */
@@ -247,12 +251,24 @@ public class VacSynjcx extends EntityMP implements Serializable {
         this.bnts = bnts ;
         this.modify("bnts",bnts);
     }
+
     /**
      * 设置 [开始有效时间]
      */
     public void setKsyxsj(Timestamp ksyxsj){
         this.ksyxsj = ksyxsj ;
         this.modify("ksyxsj",ksyxsj);
+    }
+
+    /**
+     * 格式化日期 [开始有效时间]
+     */
+    public String formatKsyxsj(){
+        if (this.ksyxsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(ksyxsj);
     }
     /**
      * 设置 [年休假查询名称]
@@ -261,6 +277,7 @@ public class VacSynjcx extends EntityMP implements Serializable {
         this.vacsynjcxname = vacsynjcxname ;
         this.modify("vacsynjcxname",vacsynjcxname);
     }
+
     /**
      * 设置 [实休天数]
      */
@@ -268,6 +285,7 @@ public class VacSynjcx extends EntityMP implements Serializable {
         this.sjbnts = sjbnts ;
         this.modify("sjbnts",sjbnts);
     }
+
     /**
      * 设置 [年度]
      */
@@ -275,12 +293,24 @@ public class VacSynjcx extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [结束有效时间]
      */
     public void setJsyxsj(Timestamp jsyxsj){
         this.jsyxsj = jsyxsj ;
         this.modify("jsyxsj",jsyxsj);
+    }
+
+    /**
+     * 格式化日期 [结束有效时间]
+     */
+    public String formatJsyxsj(){
+        if (this.jsyxsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jsyxsj);
     }
     /**
      * 设置 [补偿天数（停用）]
@@ -289,6 +319,7 @@ public class VacSynjcx extends EntityMP implements Serializable {
         this.bcts = bcts ;
         this.modify("bcts",bcts);
     }
+
     /**
      * 设置 [员工信息标识]
      */
@@ -296,6 +327,7 @@ public class VacSynjcx extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

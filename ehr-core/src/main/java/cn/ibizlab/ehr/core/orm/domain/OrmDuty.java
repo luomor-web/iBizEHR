@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -146,6 +147,7 @@ public class OrmDuty extends EntityMP implements Serializable {
         this.fglx = fglx ;
         this.modify("fglx",fglx);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -153,6 +155,7 @@ public class OrmDuty extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [职务级别]
      */
@@ -160,6 +163,7 @@ public class OrmDuty extends EntityMP implements Serializable {
         this.zwjb = zwjb ;
         this.modify("zwjb",zwjb);
     }
+
     /**
      * 设置 [对应职级]
      */
@@ -167,6 +171,7 @@ public class OrmDuty extends EntityMP implements Serializable {
         this.dyzj = dyzj ;
         this.modify("dyzj",dyzj);
     }
+
     /**
      * 设置 [建议交流年限]
      */
@@ -174,6 +179,7 @@ public class OrmDuty extends EntityMP implements Serializable {
         this.nx = nx ;
         this.modify("nx",nx);
     }
+
     /**
      * 设置 [层级]
      */
@@ -181,6 +187,7 @@ public class OrmDuty extends EntityMP implements Serializable {
         this.zwlb = zwlb ;
         this.modify("zwlb",zwlb);
     }
+
     /**
      * 设置 [必须交流年限]
      */
@@ -188,6 +195,7 @@ public class OrmDuty extends EntityMP implements Serializable {
         this.bxjlnx = bxjlnx ;
         this.modify("bxjlnx",bxjlnx);
     }
+
     /**
      * 设置 [职务]
      */
@@ -195,6 +203,7 @@ public class OrmDuty extends EntityMP implements Serializable {
         this.ormdutyname = ormdutyname ;
         this.modify("ormdutyname",ormdutyname);
     }
+
 
 }
 

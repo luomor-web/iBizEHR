@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -125,6 +126,7 @@ public class PimSearchModal extends EntityMP implements Serializable {
         this.pimsearchmodalname = pimsearchmodalname ;
         this.modify("pimsearchmodalname",pimsearchmodalname);
     }
+
     /**
      * 设置 [查询列]
      */
@@ -132,6 +134,7 @@ public class PimSearchModal extends EntityMP implements Serializable {
         this.searchfields = searchfields ;
         this.modify("searchfields",searchfields);
     }
+
     /**
      * 设置 [查询条件]
      */
@@ -139,6 +142,7 @@ public class PimSearchModal extends EntityMP implements Serializable {
         this.conditions = conditions ;
         this.modify("conditions",conditions);
     }
+
     /**
      * 设置 [包含下级组织]
      */
@@ -146,6 +150,7 @@ public class PimSearchModal extends EntityMP implements Serializable {
         this.contain = contain ;
         this.modify("contain",contain);
     }
+
     /**
      * 设置 [是否快速搜素]
      */
@@ -153,6 +158,7 @@ public class PimSearchModal extends EntityMP implements Serializable {
         this.isquick = isquick ;
         this.modify("isquick",isquick);
     }
+
 
 }
 

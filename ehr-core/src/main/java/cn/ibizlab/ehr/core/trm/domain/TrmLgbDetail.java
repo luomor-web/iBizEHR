@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -157,6 +158,7 @@ public class TrmLgbDetail extends EntityMP implements Serializable {
         this.trmlgbdetailname = trmlgbdetailname ;
         this.modify("trmlgbdetailname",trmlgbdetailname);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -164,6 +166,7 @@ public class TrmLgbDetail extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [老干部费用标识]
      */
@@ -171,6 +174,7 @@ public class TrmLgbDetail extends EntityMP implements Serializable {
         this.trmlgbcostid = trmlgbcostid ;
         this.modify("trmlgbcostid",trmlgbcostid);
     }
+
 
 }
 

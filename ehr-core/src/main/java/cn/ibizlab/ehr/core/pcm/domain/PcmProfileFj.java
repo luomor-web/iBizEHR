@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -111,6 +112,7 @@ public class PcmProfileFj extends EntityMP implements Serializable {
         this.fjname = fjname ;
         this.modify("fjname",fjname);
     }
+
     /**
      * 设置 [附件]
      */
@@ -118,6 +120,7 @@ public class PcmProfileFj extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [应聘者附件名称]
      */
@@ -125,6 +128,7 @@ public class PcmProfileFj extends EntityMP implements Serializable {
         this.pcmprofilefjname = pcmprofilefjname ;
         this.modify("pcmprofilefjname",pcmprofilefjname);
     }
+
 
 }
 

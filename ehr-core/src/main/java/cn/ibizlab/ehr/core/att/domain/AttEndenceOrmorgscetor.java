@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -169,6 +170,7 @@ public class AttEndenceOrmorgscetor extends EntityMP implements Serializable {
         this.attendenceormorgsectorname = attendenceormorgsectorname ;
         this.modify("attendenceormorgsectorname",attendenceormorgsectorname);
     }
+
     /**
      * 设置 [考勤地址（废弃）]
      */
@@ -176,6 +178,7 @@ public class AttEndenceOrmorgscetor extends EntityMP implements Serializable {
         this.kqdz = kqdz ;
         this.modify("kqdz",kqdz);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -183,6 +186,7 @@ public class AttEndenceOrmorgscetor extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [考勤设置标识]
      */
@@ -190,6 +194,7 @@ public class AttEndenceOrmorgscetor extends EntityMP implements Serializable {
         this.attendencesetupid = attendencesetupid ;
         this.modify("attendencesetupid",attendencesetupid);
     }
+
 
 }
 

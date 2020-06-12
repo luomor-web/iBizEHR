@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -258,6 +259,7 @@ public class TrmDepart extends EntityMP implements Serializable {
         this.trmdepartname = trmdepartname ;
         this.modify("trmdepartname",trmdepartname);
     }
+
     /**
      * 设置 [年度]
      */
@@ -265,6 +267,7 @@ public class TrmDepart extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [流程类型]
      */
@@ -272,6 +275,7 @@ public class TrmDepart extends EntityMP implements Serializable {
         this.lclx = lclx ;
         this.modify("lclx",lclx);
     }
+
     /**
      * 设置 [需求来源类型]
      */
@@ -279,6 +283,7 @@ public class TrmDepart extends EntityMP implements Serializable {
         this.xqlylx = xqlylx ;
         this.modify("xqlylx",xqlylx);
     }
+
     /**
      * 设置 [需求单编码]
      */
@@ -286,6 +291,7 @@ public class TrmDepart extends EntityMP implements Serializable {
         this.xqdbm = xqdbm ;
         this.modify("xqdbm",xqdbm);
     }
+
     /**
      * 设置 [审批方式]
      */
@@ -293,6 +299,7 @@ public class TrmDepart extends EntityMP implements Serializable {
         this.spfs = spfs ;
         this.modify("spfs",spfs);
     }
+
     /**
      * 设置 [通知类型]
      */
@@ -300,6 +307,7 @@ public class TrmDepart extends EntityMP implements Serializable {
         this.tzlx = tzlx ;
         this.modify("tzlx",tzlx);
     }
+
     /**
      * 设置 [附件]
      */
@@ -307,6 +315,7 @@ public class TrmDepart extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [季度]
      */
@@ -314,12 +323,24 @@ public class TrmDepart extends EntityMP implements Serializable {
         this.jd = jd ;
         this.modify("jd",jd);
     }
+
     /**
      * 设置 [填单日期]
      */
     public void setTdrq(Timestamp tdrq){
         this.tdrq = tdrq ;
         this.modify("tdrq",tdrq);
+    }
+
+    /**
+     * 格式化日期 [填单日期]
+     */
+    public String formatTdrq(){
+        if (this.tdrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(tdrq);
     }
     /**
      * 设置 [截止日期]
@@ -328,6 +349,17 @@ public class TrmDepart extends EntityMP implements Serializable {
         this.jzrq = jzrq ;
         this.modify("jzrq",jzrq);
     }
+
+    /**
+     * 格式化日期 [截止日期]
+     */
+    public String formatJzrq(){
+        if (this.jzrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jzrq);
+    }
     /**
      * 设置 [人员信息标识]
      */
@@ -335,6 +367,7 @@ public class TrmDepart extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -342,6 +375,7 @@ public class TrmDepart extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -349,6 +383,7 @@ public class TrmDepart extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

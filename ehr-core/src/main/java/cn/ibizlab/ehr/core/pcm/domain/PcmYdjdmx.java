@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -427,12 +428,34 @@ public class PcmYdjdmx extends EntityMP implements Serializable {
         this.jdjsrq = jdjsrq ;
         this.modify("jdjsrq",jdjsrq);
     }
+
+    /**
+     * 格式化日期 [借调结束日期]
+     */
+    public String formatJdjsrq(){
+        if (this.jdjsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jdjsrq);
+    }
     /**
      * 设置 [借调开始日期]
      */
     public void setJdksrq(Timestamp jdksrq){
         this.jdksrq = jdksrq ;
         this.modify("jdksrq",jdksrq);
+    }
+
+    /**
+     * 格式化日期 [借调开始日期]
+     */
+    public String formatJdksrq(){
+        if (this.jdksrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jdksrq);
     }
     /**
      * 设置 [操作]
@@ -441,6 +464,7 @@ public class PcmYdjdmx extends EntityMP implements Serializable {
         this.cz = cz ;
         this.modify("cz",cz);
     }
+
     /**
      * 设置 [异动借调明细名称]
      */
@@ -448,6 +472,7 @@ public class PcmYdjdmx extends EntityMP implements Serializable {
         this.pcmydjdmxname = pcmydjdmxname ;
         this.modify("pcmydjdmxname",pcmydjdmxname);
     }
+
     /**
      * 设置 [借调部门标识]
      */
@@ -455,6 +480,7 @@ public class PcmYdjdmx extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [借调职务标识]
      */
@@ -462,6 +488,7 @@ public class PcmYdjdmx extends EntityMP implements Serializable {
         this.ormdutyid = ormdutyid ;
         this.modify("ormdutyid",ormdutyid);
     }
+
     /**
      * 设置 [借调组织标识]
      */
@@ -469,6 +496,7 @@ public class PcmYdjdmx extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [借调岗位标识]
      */
@@ -476,6 +504,7 @@ public class PcmYdjdmx extends EntityMP implements Serializable {
         this.ormpostid = ormpostid ;
         this.modify("ormpostid",ormpostid);
     }
+
     /**
      * 设置 [分配信息标识]
      */
@@ -483,6 +512,7 @@ public class PcmYdjdmx extends EntityMP implements Serializable {
         this.pimdistirbutionid = pimdistirbutionid ;
         this.modify("pimdistirbutionid",pimdistirbutionid);
     }
+
     /**
      * 设置 [是否完成]
      */
@@ -490,6 +520,7 @@ public class PcmYdjdmx extends EntityMP implements Serializable {
         this.isfinished = isfinished ;
         this.modify("isfinished",isfinished);
     }
+
 
 }
 

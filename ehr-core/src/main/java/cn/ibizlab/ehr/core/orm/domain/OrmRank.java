@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -118,6 +119,7 @@ public class OrmRank extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [建议交流年限（年）]
      */
@@ -125,6 +127,7 @@ public class OrmRank extends EntityMP implements Serializable {
         this.jyjlnx = jyjlnx ;
         this.modify("jyjlnx",jyjlnx);
     }
+
     /**
      * 设置 [职级说明]
      */
@@ -132,6 +135,7 @@ public class OrmRank extends EntityMP implements Serializable {
         this.zjsm = zjsm ;
         this.modify("zjsm",zjsm);
     }
+
     /**
      * 设置 [职级]
      */
@@ -139,6 +143,7 @@ public class OrmRank extends EntityMP implements Serializable {
         this.ormrankname = ormrankname ;
         this.modify("ormrankname",ormrankname);
     }
+
 
 }
 

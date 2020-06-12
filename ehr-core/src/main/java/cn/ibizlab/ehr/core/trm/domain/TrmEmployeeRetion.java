@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -262,6 +263,7 @@ public class TrmEmployeeRetion extends EntityMP implements Serializable {
         this.pxnr = pxnr ;
         this.modify("pxnr",pxnr);
     }
+
     /**
      * 设置 [员工培训报名名称]
      */
@@ -269,6 +271,7 @@ public class TrmEmployeeRetion extends EntityMP implements Serializable {
         this.trmemployretionname = trmemployretionname ;
         this.modify("trmemployeeretionname",trmemployretionname);
     }
+
     /**
      * 设置 [报名条件]
      */
@@ -276,12 +279,24 @@ public class TrmEmployeeRetion extends EntityMP implements Serializable {
         this.bmtj = bmtj ;
         this.modify("bmtj",bmtj);
     }
+
     /**
      * 设置 [报名截止日期]
      */
     public void setBmjzrq(Timestamp bmjzrq){
         this.bmjzrq = bmjzrq ;
         this.modify("bmjzrq",bmjzrq);
+    }
+
+    /**
+     * 格式化日期 [报名截止日期]
+     */
+    public String formatBmjzrq(){
+        if (this.bmjzrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(bmjzrq);
     }
     /**
      * 设置 [报名开始时间]
@@ -290,6 +305,17 @@ public class TrmEmployeeRetion extends EntityMP implements Serializable {
         this.bmkssj = bmkssj ;
         this.modify("bmkssj",bmkssj);
     }
+
+    /**
+     * 格式化日期 [报名开始时间]
+     */
+    public String formatBmkssj(){
+        if (this.bmkssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(bmkssj);
+    }
     /**
      * 设置 [培训地点]
      */
@@ -297,6 +323,7 @@ public class TrmEmployeeRetion extends EntityMP implements Serializable {
         this.pxdd = pxdd ;
         this.modify("pxdd",pxdd);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -304,6 +331,7 @@ public class TrmEmployeeRetion extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [课程安排标识]
      */
@@ -311,6 +339,7 @@ public class TrmEmployeeRetion extends EntityMP implements Serializable {
         this.trmcouarrangeid = trmcouarrangeid ;
         this.modify("trmcouarrangeid",trmcouarrangeid);
     }
+
     /**
      * 设置 [培训活动申请标识]
      */
@@ -318,6 +347,7 @@ public class TrmEmployeeRetion extends EntityMP implements Serializable {
         this.trmtrainactapplyid = trmtrainactapplyid ;
         this.modify("trmtrainactapplyid",trmtrainactapplyid);
     }
+
     /**
      * 设置 [培训机构标识]
      */
@@ -325,6 +355,7 @@ public class TrmEmployeeRetion extends EntityMP implements Serializable {
         this.trmtrainagencyid = trmtrainagencyid ;
         this.modify("trmtrainagencyid",trmtrainagencyid);
     }
+
 
 }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -473,6 +474,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.gs = gs ;
         this.modify("gs",gs);
     }
+
     /**
      * 设置 [早退（分）]
      */
@@ -480,6 +482,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.ztf = ztf ;
         this.modify("ztf",ztf);
     }
+
     /**
      * 设置 [病假]
      */
@@ -487,6 +490,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.bj = bj ;
         this.modify("bj",bj);
     }
+
     /**
      * 设置 [出差]
      */
@@ -494,12 +498,24 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.cc = cc ;
         this.modify("cc",cc);
     }
+
     /**
      * 设置 [开始日期]
      */
     public void setBegindate(Timestamp begindate){
         this.begindate = begindate ;
         this.modify("begindate",begindate);
+    }
+
+    /**
+     * 格式化日期 [开始日期]
+     */
+    public String formatBegindate(){
+        if (this.begindate == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(begindate);
     }
     /**
      * 设置 [年度]
@@ -508,6 +524,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [年休假]
      */
@@ -515,6 +532,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.nx = nx ;
         this.modify("nx",nx);
     }
+
     /**
      * 设置 [旷工]
      */
@@ -522,6 +540,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.kg = kg ;
         this.modify("kg",kg);
     }
+
     /**
      * 设置 [月份]
      */
@@ -529,6 +548,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.yf = yf ;
         this.modify("yf",yf);
     }
+
     /**
      * 设置 [工作日加班]
      */
@@ -536,6 +556,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.gzrjb = gzrjb ;
         this.modify("gzrjb",gzrjb);
     }
+
     /**
      * 设置 [计划生育手术假]
      */
@@ -543,6 +564,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.js = js ;
         this.modify("js",js);
     }
+
     /**
      * 设置 [法定假日加班]
      */
@@ -550,6 +572,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.fdjrjb = fdjrjb ;
         this.modify("fdjrjb",fdjrjb);
     }
+
     /**
      * 设置 [迟到（分）]
      */
@@ -557,6 +580,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.cdf = cdf ;
         this.modify("cdf",cdf);
     }
+
     /**
      * 设置 [早退（次）]
      */
@@ -564,6 +588,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.ztc = ztc ;
         this.modify("ztc",ztc);
     }
+
     /**
      * 设置 [早退]
      */
@@ -571,6 +596,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.zt = zt ;
         this.modify("zt",zt);
     }
+
     /**
      * 设置 [脱产学习]
      */
@@ -578,6 +604,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.tcxx = tcxx ;
         this.modify("tcxx",tcxx);
     }
+
     /**
      * 设置 [部门审核并注明未签到（或缺勤）原因]
      */
@@ -585,6 +612,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.remarkreason = remarkreason ;
         this.modify("remarkreason",remarkreason);
     }
+
     /**
      * 设置 [本月在沪出勤天数]
      */
@@ -592,6 +620,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.zhts = zhts ;
         this.modify("zhts",zhts);
     }
+
     /**
      * 设置 [调休假]
      */
@@ -599,6 +628,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.tx = tx ;
         this.modify("tx",tx);
     }
+
     /**
      * 设置 [未签到天数]
      */
@@ -606,6 +636,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.wqdts = wqdts ;
         this.modify("wqdts",wqdts);
     }
+
     /**
      * 设置 [哺乳假]
      */
@@ -613,6 +644,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.br = br ;
         this.modify("br",br);
     }
+
     /**
      * 设置 [探亲假]
      */
@@ -620,6 +652,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.tq = tq ;
         this.modify("tq",tq);
     }
+
     /**
      * 设置 [事假]
      */
@@ -627,6 +660,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.sj = sj ;
         this.modify("sj",sj);
     }
+
     /**
      * 设置 [全勤]
      */
@@ -634,6 +668,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.qq = qq ;
         this.modify("qq",qq);
     }
+
     /**
      * 设置 [陪产假]
      */
@@ -641,6 +676,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.pc = pc ;
         this.modify("pc",pc);
     }
+
     /**
      * 设置 [丧葬假]
      */
@@ -648,6 +684,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.sz = sz ;
         this.modify("sz",sz);
     }
+
     /**
      * 设置 [迟到]
      */
@@ -655,6 +692,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.cd = cd ;
         this.modify("cd",cd);
     }
+
     /**
      * 设置 [半勤]
      */
@@ -662,6 +700,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.bq = bq ;
         this.modify("bq",bq);
     }
+
     /**
      * 设置 [结婚假]
      */
@@ -669,6 +708,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.jh = jh ;
         this.modify("jh",jh);
     }
+
     /**
      * 设置 [休息日加班]
      */
@@ -676,6 +716,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.xxrjb = xxrjb ;
         this.modify("xxrjb",xxrjb);
     }
+
     /**
      * 设置 [本月实际出勤天数]
      */
@@ -683,6 +724,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.sjcqts = sjcqts ;
         this.modify("sjcqts",sjcqts);
     }
+
     /**
      * 设置 [考勤汇总名称]
      */
@@ -690,6 +732,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.attensummaryname = attensummaryname ;
         this.modify("attensummaryname",attensummaryname);
     }
+
     /**
      * 设置 [说明]
      */
@@ -697,6 +740,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.description = description ;
         this.modify("description",description);
     }
+
     /**
      * 设置 [产假]
      */
@@ -704,6 +748,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.cj = cj ;
         this.modify("cj",cj);
     }
+
     /**
      * 设置 [其他]
      */
@@ -711,6 +756,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.qt = qt ;
         this.modify("qt",qt);
     }
+
     /**
      * 设置 [迟到（次）]
      */
@@ -718,12 +764,24 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.cdc = cdc ;
         this.modify("cdc",cdc);
     }
+
     /**
      * 设置 [结束日期]
      */
     public void setEnddate(Timestamp enddate){
         this.enddate = enddate ;
         this.modify("enddate",enddate);
+    }
+
+    /**
+     * 格式化日期 [结束日期]
+     */
+    public String formatEnddate(){
+        if (this.enddate == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(enddate);
     }
     /**
      * 设置 [备注]
@@ -732,6 +790,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [孕期假]
      */
@@ -739,6 +798,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.yq = yq ;
         this.modify("yq",yq);
     }
+
     /**
      * 设置 [其他带薪假]
      */
@@ -746,6 +806,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.qtdxj = qtdxj ;
         this.modify("qtdxj",qtdxj);
     }
+
     /**
      * 设置 [实到（天）]
      */
@@ -753,6 +814,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.sdt = sdt ;
         this.modify("sdt",sdt);
     }
+
     /**
      * 设置 [员工编号]
      */
@@ -760,6 +822,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [员工姓名]
      */
@@ -767,6 +830,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.pimpersonname = pimpersonname ;
         this.modify("pimpersonname",pimpersonname);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -774,6 +838,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

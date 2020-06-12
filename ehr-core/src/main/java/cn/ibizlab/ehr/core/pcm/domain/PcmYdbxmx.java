@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -288,6 +289,7 @@ public class PcmYdbxmx extends EntityMP implements Serializable {
         this.bxyy = bxyy ;
         this.modify("bxyy",bxyy);
     }
+
     /**
      * 设置 [异动病休明细名称]
      */
@@ -295,6 +297,7 @@ public class PcmYdbxmx extends EntityMP implements Serializable {
         this.pcmydbxmxname = pcmydbxmxname ;
         this.modify("pcmydbxmxname",pcmydbxmxname);
     }
+
     /**
      * 设置 [分配信息id]
      */
@@ -302,6 +305,7 @@ public class PcmYdbxmx extends EntityMP implements Serializable {
         this.distirbutionid = distirbutionid ;
         this.modify("distirbutionid",distirbutionid);
     }
+
     /**
      * 设置 [备注]
      */
@@ -309,6 +313,7 @@ public class PcmYdbxmx extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [操作]
      */
@@ -316,12 +321,24 @@ public class PcmYdbxmx extends EntityMP implements Serializable {
         this.cz = cz ;
         this.modify("cz",cz);
     }
+
     /**
      * 设置 [病休结束日期]
      */
     public void setJsrq(Timestamp jsrq){
         this.jsrq = jsrq ;
         this.modify("jsrq",jsrq);
+    }
+
+    /**
+     * 格式化日期 [病休结束日期]
+     */
+    public String formatJsrq(){
+        if (this.jsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jsrq);
     }
     /**
      * 设置 [是否完成]
@@ -330,6 +347,7 @@ public class PcmYdbxmx extends EntityMP implements Serializable {
         this.isfinished = isfinished ;
         this.modify("isfinished",isfinished);
     }
+
 
 }
 

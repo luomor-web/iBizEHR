@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -162,6 +163,7 @@ public class OrmBmgwbz extends EntityMP implements Serializable {
         this.gwzzsm = gwzzsm ;
         this.modify("gwzzsm",gwzzsm);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -169,6 +171,7 @@ public class OrmBmgwbz extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [人数编制]
      */
@@ -176,6 +179,7 @@ public class OrmBmgwbz extends EntityMP implements Serializable {
         this.numcompilation = numcompilation ;
         this.modify("numcompilation",numcompilation);
     }
+
     /**
      * 设置 [部门岗位编制名称]
      */
@@ -183,6 +187,7 @@ public class OrmBmgwbz extends EntityMP implements Serializable {
         this.ormbmgwbzname = ormbmgwbzname ;
         this.modify("ormbmgwbzname",ormbmgwbzname);
     }
+
     /**
      * 设置 [岗位ID]
      */
@@ -190,6 +195,7 @@ public class OrmBmgwbz extends EntityMP implements Serializable {
         this.ormpostid = ormpostid ;
         this.modify("ormpostid",ormpostid);
     }
+
     /**
      * 设置 [岗位编制ID]
      */
@@ -197,6 +203,7 @@ public class OrmBmgwbz extends EntityMP implements Serializable {
         this.ormgwbzid = ormgwbzid ;
         this.modify("ormgwbzid",ormgwbzid);
     }
+
 
     /**
      * 获取 [部门岗位编制标识]

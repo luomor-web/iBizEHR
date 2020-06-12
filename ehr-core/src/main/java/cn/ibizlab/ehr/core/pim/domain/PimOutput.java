@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -163,6 +164,7 @@ public class PimOutput extends EntityMP implements Serializable {
         this.yd = yd ;
         this.modify("yd",yd);
     }
+
     /**
      * 设置 [标题]
      */
@@ -170,6 +172,7 @@ public class PimOutput extends EntityMP implements Serializable {
         this.pimoutputname = pimoutputname ;
         this.modify("pimoutputname",pimoutputname);
     }
+
     /**
      * 设置 [年度]
      */
@@ -177,6 +180,7 @@ public class PimOutput extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [产值（亿）]
      */
@@ -184,6 +188,7 @@ public class PimOutput extends EntityMP implements Serializable {
         this.output = output ;
         this.modify("output",output);
     }
+
     /**
      * 设置 [组织ID]
      */
@@ -191,6 +196,7 @@ public class PimOutput extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -104,6 +105,7 @@ public class PimMajorSetype extends EntityMP implements Serializable {
         this.serialno = serialno ;
         this.modify("serialno",serialno);
     }
+
     /**
      * 设置 [专业序列类型]
      */
@@ -111,6 +113,7 @@ public class PimMajorSetype extends EntityMP implements Serializable {
         this.pimmajorsetypename = pimmajorsetypename ;
         this.modify("pimmajorsetypename",pimmajorsetypename);
     }
+
 
 }
 

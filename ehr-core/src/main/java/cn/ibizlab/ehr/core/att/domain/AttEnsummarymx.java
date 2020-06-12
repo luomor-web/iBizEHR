@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -128,6 +129,7 @@ public class AttEnsummarymx extends EntityMP implements Serializable {
         this.ts = ts ;
         this.modify("ts",ts);
     }
+
     /**
      * 设置 [实际天数（考勤）]
      */
@@ -135,6 +137,7 @@ public class AttEnsummarymx extends EntityMP implements Serializable {
         this.sjts = sjts ;
         this.modify("sjts",sjts);
     }
+
     /**
      * 设置 [考勤汇总明细名称]
      */
@@ -142,6 +145,7 @@ public class AttEnsummarymx extends EntityMP implements Serializable {
         this.attendancesummarymxname = attendancesummarymxname ;
         this.modify("attensummarymxname",attendancesummarymxname);
     }
+
     /**
      * 设置 [考勤类型]
      */
@@ -149,6 +153,7 @@ public class AttEnsummarymx extends EntityMP implements Serializable {
         this.kqlx = kqlx ;
         this.modify("kqlx",kqlx);
     }
+
 
 }
 

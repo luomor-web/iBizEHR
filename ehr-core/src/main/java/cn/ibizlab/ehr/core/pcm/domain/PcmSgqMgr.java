@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -185,12 +186,34 @@ public class PcmSgqMgr extends EntityMP implements Serializable {
         this.kssj = kssj ;
         this.modify("kssj",kssj);
     }
+
+    /**
+     * 格式化日期 [开始时间]
+     */
+    public String formatKssj(){
+        if (this.kssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(kssj);
+    }
     /**
      * 设置 [结束时间]
      */
     public void setJssj(Timestamp jssj){
         this.jssj = jssj ;
         this.modify("jssj",jssj);
+    }
+
+    /**
+     * 格式化日期 [结束时间]
+     */
+    public String formatJssj(){
+        if (this.jssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jssj);
     }
     /**
      * 设置 [是否通过审核]
@@ -199,6 +222,7 @@ public class PcmSgqMgr extends EntityMP implements Serializable {
         this.sftgsh = sftgsh ;
         this.modify("sftgsh",sftgsh);
     }
+
     /**
      * 设置 [备注]
      */
@@ -206,6 +230,7 @@ public class PcmSgqMgr extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [试岗状态]
      */
@@ -213,6 +238,7 @@ public class PcmSgqMgr extends EntityMP implements Serializable {
         this.sgzt = sgzt ;
         this.modify("sgzt",sgzt);
     }
+
     /**
      * 设置 [试岗期管理名称]
      */
@@ -220,6 +246,7 @@ public class PcmSgqMgr extends EntityMP implements Serializable {
         this.pcmsgqmgrname = pcmsgqmgrname ;
         this.modify("pcmsgqmgrname",pcmsgqmgrname);
     }
+
     /**
      * 设置 [员工编号]
      */
@@ -227,6 +254,7 @@ public class PcmSgqMgr extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -234,6 +262,7 @@ public class PcmSgqMgr extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [申请单明细标识]
      */
@@ -241,6 +270,7 @@ public class PcmSgqMgr extends EntityMP implements Serializable {
         this.pcmbdsqdmxid = pcmbdsqdmxid ;
         this.modify("pcmbdsqdmxid",pcmbdsqdmxid);
     }
+
 
 }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -1227,6 +1228,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.gzzt = gzzt ;
         this.modify("gzzt",gzzt);
     }
+
     /**
      * 设置 [证件类型]
      */
@@ -1234,6 +1236,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.zjlx = zjlx ;
         this.modify("zjlx",zjlx);
     }
+
     /**
      * 设置 [在岗状态]
      */
@@ -1241,6 +1244,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.zgzt = zgzt ;
         this.modify("zgzt",zgzt);
     }
+
     /**
      * 设置 [岗位]
      */
@@ -1248,6 +1252,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.gw = gw ;
         this.modify("gw",gw);
     }
+
     /**
      * 设置 [员工类型]
      */
@@ -1255,6 +1260,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.yglx = yglx ;
         this.modify("yglx",yglx);
     }
+
     /**
      * 设置 [档案学历]
      */
@@ -1262,12 +1268,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.daxl = daxl ;
         this.modify("daxl",daxl);
     }
+
     /**
      * 设置 [调动日期]
      */
     public void setTransferdate(Timestamp transferdate){
         this.transferdate = transferdate ;
         this.modify("transferdate",transferdate);
+    }
+
+    /**
+     * 格式化日期 [调动日期]
+     */
+    public String formatTransferdate(){
+        if (this.transferdate == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(transferdate);
     }
     /**
      * 设置 [爱好特长]
@@ -1276,6 +1294,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.ahtc = ahtc ;
         this.modify("ahtc",ahtc);
     }
+
     /**
      * 设置 [任职年龄到期(年)_干部花名册（作废）]
      */
@@ -1283,6 +1302,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.rznldq = rznldq ;
         this.modify("rznldq",rznldq);
     }
+
     /**
      * 设置 [通讯地址]
      */
@@ -1290,12 +1310,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.postaladdress = postaladdress ;
         this.modify("postaladdress",postaladdress);
     }
+
     /**
      * 设置 [试用到期时间]
      */
     public void setSydq(Timestamp sydq){
         this.sydq = sydq ;
         this.modify("sydq",sydq);
+    }
+
+    /**
+     * 格式化日期 [试用到期时间]
+     */
+    public String formatSydq(){
+        if (this.sydq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(sydq);
     }
     /**
      * 设置 [到局时间]
@@ -1304,6 +1336,17 @@ public class PimPerson extends EntityMP implements Serializable {
         this.dzjbjsj = dzjbjsj ;
         this.modify("dzjbjsj",dzjbjsj);
     }
+
+    /**
+     * 格式化日期 [到局时间]
+     */
+    public String formatDzjbjsj(){
+        if (this.dzjbjsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(dzjbjsj);
+    }
     /**
      * 设置 [家庭联系人ID]
      */
@@ -1311,6 +1354,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.jtlxrid = jtlxrid ;
         this.modify("jtlxrid",jtlxrid);
     }
+
     /**
      * 设置 [岗位到期(月)_干部花名册]
      */
@@ -1318,6 +1362,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.postexpiration = postexpiration ;
         this.modify("postexpiration",postexpiration);
     }
+
     /**
      * 设置 [籍贯]
      */
@@ -1325,6 +1370,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.jg = jg ;
         this.modify("jg",jg);
     }
+
     /**
      * 设置 [职级]
      */
@@ -1332,6 +1378,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.rank = rank ;
         this.modify("rank",rank);
     }
+
     /**
      * 设置 [挂职组织]
      */
@@ -1339,12 +1386,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.gzzz = gzzz ;
         this.modify("gzzz",gzzz);
     }
+
     /**
      * 设置 [上一次职级日期_干部花名册]
      */
     public void setSyczjrq(Timestamp syczjrq){
         this.syczjrq = syczjrq ;
         this.modify("syczjrq",syczjrq);
+    }
+
+    /**
+     * 格式化日期 [上一次职级日期_干部花名册]
+     */
+    public String formatSyczjrq(){
+        if (this.syczjrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(syczjrq);
     }
     /**
      * 设置 [最高职称]
@@ -1353,12 +1412,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.hightitle = hightitle ;
         this.modify("hightitle",hightitle);
     }
+
     /**
      * 设置 [挂职开始时间]
      */
     public void setGzkssj(Timestamp gzkssj){
         this.gzkssj = gzkssj ;
         this.modify("gzkssj",gzkssj);
+    }
+
+    /**
+     * 格式化日期 [挂职开始时间]
+     */
+    public String formatGzkssj(){
+        if (this.gzkssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(gzkssj);
     }
     /**
      * 设置 [审批的养老金额]
@@ -1367,6 +1438,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.spdylje = spdylje ;
         this.modify("spdylje",spdylje);
     }
+
     /**
      * 设置 [原员工编号]
      */
@@ -1374,6 +1446,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.yygbh = yygbh ;
         this.modify("yygbh",yygbh);
     }
+
     /**
      * 设置 [记录所属]
      */
@@ -1381,6 +1454,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.jlss = jlss ;
         this.modify("jlss",jlss);
     }
+
     /**
      * 设置 [是否属于领导班子]
      */
@@ -1388,6 +1462,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.isleaderteam = isleaderteam ;
         this.modify("isleaderteam",isleaderteam);
     }
+
     /**
      * 设置 [列入黑名单]
      */
@@ -1395,12 +1470,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.hmd = hmd ;
         this.modify("hmd",hmd);
     }
+
     /**
      * 设置 [档案出生日期]
      */
     public void setDacsrq(Timestamp dacsrq){
         this.dacsrq = dacsrq ;
         this.modify("dacsrq",dacsrq);
+    }
+
+    /**
+     * 格式化日期 [档案出生日期]
+     */
+    public String formatDacsrq(){
+        if (this.dacsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(dacsrq);
     }
     /**
      * 设置 [健康状况]
@@ -1409,6 +1496,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.jkzk = jkzk ;
         this.modify("jkzk",jkzk);
     }
+
     /**
      * 设置 [岗位状态]
      */
@@ -1416,12 +1504,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.gwzt = gwzt ;
         this.modify("gwzt",gwzt);
     }
+
     /**
      * 设置 [到本单位时间]
      */
     public void setDbdwsj(Timestamp dbdwsj){
         this.dbdwsj = dbdwsj ;
         this.modify("dbdwsj",dbdwsj);
+    }
+
+    /**
+     * 格式化日期 [到本单位时间]
+     */
+    public String formatDbdwsj(){
+        if (this.dbdwsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(dbdwsj);
     }
     /**
      * 设置 [执业资格_干部花名册]
@@ -1430,6 +1530,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.zyzg = zyzg ;
         this.modify("zyzg",zyzg);
     }
+
     /**
      * 设置 [出生地]
      */
@@ -1437,6 +1538,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.csd = csd ;
         this.modify("csd",csd);
     }
+
     /**
      * 设置 [家庭联系人电话]
      */
@@ -1444,12 +1546,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.jtlxrdh = jtlxrdh ;
         this.modify("jtlxrdh",jtlxrdh);
     }
+
     /**
      * 设置 [第一学历毕业时间_干部花名册]
      */
     public void setDyxlbysj(Timestamp dyxlbysj){
         this.dyxlbysj = dyxlbysj ;
         this.modify("dyxlbysj",dyxlbysj);
+    }
+
+    /**
+     * 格式化日期 [第一学历毕业时间_干部花名册]
+     */
+    public String formatDyxlbysj(){
+        if (this.dyxlbysj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(dyxlbysj);
     }
     /**
      * 设置 [员工编号]
@@ -1458,6 +1572,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [职级年限_干部花名册]
      */
@@ -1465,12 +1580,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.zjnx = zjnx ;
         this.modify("zjnx",zjnx);
     }
+
     /**
      * 设置 [任职年龄到期时间]
      */
     public void setRzdq(Timestamp rzdq){
         this.rzdq = rzdq ;
         this.modify("rzdq",rzdq);
+    }
+
+    /**
+     * 格式化日期 [任职年龄到期时间]
+     */
+    public String formatRzdq(){
+        if (this.rzdq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(rzdq);
     }
     /**
      * 设置 [户籍所在地]
@@ -1479,12 +1606,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.hjszd = hjszd ;
         this.modify("hjszd",hjszd);
     }
+
     /**
      * 设置 [挂职结束时间]
      */
     public void setGzjssj(Timestamp gzjssj){
         this.gzjssj = gzjssj ;
         this.modify("gzjssj",gzjssj);
+    }
+
+    /**
+     * 格式化日期 [挂职结束时间]
+     */
+    public String formatGzjssj(){
+        if (this.gzjssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(gzjssj);
     }
     /**
      * 设置 [是否内部返聘]
@@ -1493,12 +1632,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.sfnbfp = sfnbfp ;
         this.modify("sfnbfp",sfnbfp);
     }
+
     /**
      * 设置 [入党时间]
      */
     public void setRdsj(Timestamp rdsj){
         this.rdsj = rdsj ;
         this.modify("rdsj",rdsj);
+    }
+
+    /**
+     * 格式化日期 [入党时间]
+     */
+    public String formatRdsj(){
+        if (this.rdsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(rdsj);
     }
     /**
      * 设置 [轮岗开始时间_干部花名册]
@@ -1507,6 +1658,17 @@ public class PimPerson extends EntityMP implements Serializable {
         this.lgkssj = lgkssj ;
         this.modify("lgkssj",lgkssj);
     }
+
+    /**
+     * 格式化日期 [轮岗开始时间_干部花名册]
+     */
+    public String formatLgkssj(){
+        if (this.lgkssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(lgkssj);
+    }
     /**
      * 设置 [曾用名]
      */
@@ -1514,6 +1676,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.cym = cym ;
         this.modify("cym",cym);
     }
+
     /**
      * 设置 [试岗状态_干部花名册]
      */
@@ -1521,6 +1684,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.zt = zt ;
         this.modify("zt",zt);
     }
+
     /**
      * 设置 [年龄（废除）]
      */
@@ -1528,6 +1692,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.nl = nl ;
         this.modify("nl",nl);
     }
+
     /**
      * 设置 [记录审批状态]
      */
@@ -1535,6 +1700,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.jlspzt = jlspzt ;
         this.modify("jlspzt",jlspzt);
     }
+
     /**
      * 设置 [入职渠道]
      */
@@ -1542,12 +1708,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.rzqd = rzqd ;
         this.modify("rzqd",rzqd);
     }
+
     /**
      * 设置 [试岗结束日期_干部花名册]
      */
     public void setSgjsrq(Timestamp sgjsrq){
         this.sgjsrq = sgjsrq ;
         this.modify("sgjsrq",sgjsrq);
+    }
+
+    /**
+     * 格式化日期 [试岗结束日期_干部花名册]
+     */
+    public String formatSgjsrq(){
+        if (this.sgjsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(sgjsrq);
     }
     /**
      * 设置 [政治面貌]
@@ -1556,12 +1734,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.zzmm = zzmm ;
         this.modify("zzmm",zzmm);
     }
+
     /**
      * 设置 [见习到期时间]
      */
     public void setJxdq(Timestamp jxdq){
         this.jxdq = jxdq ;
         this.modify("jxdq",jxdq);
+    }
+
+    /**
+     * 格式化日期 [见习到期时间]
+     */
+    public String formatJxdq(){
+        if (this.jxdq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(jxdq);
     }
     /**
      * 设置 [考核成绩(近三年)]
@@ -1570,6 +1760,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.khcj = khcj ;
         this.modify("khcj",khcj);
     }
+
     /**
      * 设置 [性别]
      */
@@ -1577,6 +1768,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.xb = xb ;
         this.modify("xb",xb);
     }
+
     /**
      * 设置 [超级用户]
      */
@@ -1584,12 +1776,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.superuser = superuser ;
         this.modify("superuser",superuser);
     }
+
     /**
      * 设置 [试岗开始日期_干部花名册]
      */
     public void setSgksrq(Timestamp sgksrq){
         this.sgksrq = sgksrq ;
         this.modify("sgksrq",sgksrq);
+    }
+
+    /**
+     * 格式化日期 [试岗开始日期_干部花名册]
+     */
+    public String formatSgksrq(){
+        if (this.sgksrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(sgksrq);
     }
     /**
      * 设置 [数字主键]
@@ -1598,12 +1802,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.numcode = numcode ;
         this.modify("numcode",numcode);
     }
+
     /**
      * 设置 [惩罚影响结束日期_干部花名册]
      */
     public void setCfyxjsrq(Timestamp cfyxjsrq){
         this.cfyxjsrq = cfyxjsrq ;
         this.modify("cfyxjsrq",cfyxjsrq);
+    }
+
+    /**
+     * 格式化日期 [惩罚影响结束日期_干部花名册]
+     */
+    public String formatCfyxjsrq(){
+        if (this.cfyxjsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(cfyxjsrq);
     }
     /**
      * 设置 [执业证书]
@@ -1612,12 +1828,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.certtificate = certtificate ;
         this.modify("certtificate",certtificate);
     }
+
     /**
      * 设置 [出生日期]
      */
     public void setCsrq(Timestamp csrq){
         this.csrq = csrq ;
         this.modify("csrq",csrq);
+    }
+
+    /**
+     * 格式化日期 [出生日期]
+     */
+    public String formatCsrq(){
+        if (this.csrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(csrq);
     }
     /**
      * 设置 [离职日期]
@@ -1626,6 +1854,17 @@ public class PimPerson extends EntityMP implements Serializable {
         this.leavedate = leavedate ;
         this.modify("leavedate",leavedate);
     }
+
+    /**
+     * 格式化日期 [离职日期]
+     */
+    public String formatLeavedate(){
+        if (this.leavedate == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(leavedate);
+    }
     /**
      * 设置 [第一学历]
      */
@@ -1633,6 +1872,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.firsteducation = firsteducation ;
         this.modify("firsteducation",firsteducation);
     }
+
     /**
      * 设置 [工龄]
      */
@@ -1640,6 +1880,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.gly = gly ;
         this.modify("gly",gly);
     }
+
     /**
      * 设置 [见习期“业务导师”]
      */
@@ -1647,6 +1888,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.jxsywds = jxsywds ;
         this.modify("jxsywds",jxsywds);
     }
+
     /**
      * 设置 [任职年限_干部花名册]
      */
@@ -1654,6 +1896,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.rznx = rznx ;
         this.modify("rznx",rznx);
     }
+
     /**
      * 设置 [后取学历毕业院校_干部花名册]
      */
@@ -1661,6 +1904,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.hqxlbyyx = hqxlbyyx ;
         this.modify("hqxlbyyx",hqxlbyyx);
     }
+
     /**
      * 设置 [员工状态]
      */
@@ -1668,6 +1912,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.ygzt = ygzt ;
         this.modify("ygzt",ygzt);
     }
+
     /**
      * 设置 [操作]
      */
@@ -1675,6 +1920,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.cz = cz ;
         this.modify("cz",cz);
     }
+
     /**
      * 设置 [实习/试用期限]
      */
@@ -1682,6 +1928,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.duration = duration ;
         this.modify("duration",duration);
     }
+
     /**
      * 设置 [人才序列类型]
      */
@@ -1689,6 +1936,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.rcxllx = rcxllx ;
         this.modify("rcxllx",rcxllx);
     }
+
     /**
      * 设置 [后取学历所学专业_干部花名册]
      */
@@ -1696,6 +1944,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.hqxlsxzy = hqxlsxzy ;
         this.modify("hqxlsxzy",hqxlsxzy);
     }
+
     /**
      * 设置 [挂职部门]
      */
@@ -1703,12 +1952,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.gzbm = gzbm ;
         this.modify("gzbm",gzbm);
     }
+
     /**
      * 设置 [职务日期]
      */
     public void setZwrq(Timestamp zwrq){
         this.zwrq = zwrq ;
         this.modify("zwrq",zwrq);
+    }
+
+    /**
+     * 格式化日期 [职务日期]
+     */
+    public String formatZwrq(){
+        if (this.zwrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(zwrq);
     }
     /**
      * 设置 [手机号码]
@@ -1717,12 +1978,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.lxdh = lxdh ;
         this.modify("lxdh",lxdh);
     }
+
     /**
      * 设置 [档案入党时间]
      */
     public void setDardsj(Timestamp dardsj){
         this.dardsj = dardsj ;
         this.modify("dardsj",dardsj);
+    }
+
+    /**
+     * 格式化日期 [档案入党时间]
+     */
+    public String formatDardsj(){
+        if (this.dardsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(dardsj);
     }
     /**
      * 设置 [电子邮箱]
@@ -1731,6 +2004,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.dzyx = dzyx ;
         this.modify("dzyx",dzyx);
     }
+
     /**
      * 设置 [户口类型]
      */
@@ -1738,6 +2012,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.hklx = hklx ;
         this.modify("hklx",hklx);
     }
+
     /**
      * 设置 [工龄（明年）]
      */
@@ -1745,6 +2020,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.gly2 = gly2 ;
         this.modify("gly2",gly2);
     }
+
     /**
      * 设置 [退休地]
      */
@@ -1752,6 +2028,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.retiplace = retiplace ;
         this.modify("retiplace",retiplace);
     }
+
     /**
      * 设置 [最高学历]
      */
@@ -1759,6 +2036,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.higheducation = higheducation ;
         this.modify("higheducation",higheducation);
     }
+
     /**
      * 设置 [记录操作者]
      */
@@ -1766,6 +2044,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.jlczz = jlczz ;
         this.modify("jlczz",jlczz);
     }
+
     /**
      * 设置 [专家类型]
      */
@@ -1773,6 +2052,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.zj = zj ;
         this.modify("zj",zj);
     }
+
     /**
      * 设置 [婚姻状况]
      */
@@ -1780,6 +2060,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.hyzk = hyzk ;
         this.modify("hyzk",hyzk);
     }
+
     /**
      * 设置 [第一学历所属专业_干部花名册]
      */
@@ -1787,12 +2068,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.dyxlsszy = dyxlsszy ;
         this.modify("dyxlsszy",dyxlsszy);
     }
+
     /**
      * 设置 [退休时间]
      */
     public void setTxdq(Timestamp txdq){
         this.txdq = txdq ;
         this.modify("txdq",txdq);
+    }
+
+    /**
+     * 格式化日期 [退休时间]
+     */
+    public String formatTxdq(){
+        if (this.txdq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(txdq);
     }
     /**
      * 设置 [门户系统用户id]
@@ -1801,6 +2094,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.portaluserid = portaluserid ;
         this.modify("portaluserid",portaluserid);
     }
+
     /**
      * 设置 [同步员工信息]
      */
@@ -1808,6 +2102,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.sftberp = sftberp ;
         this.modify("sftberp",sftberp);
     }
+
     /**
      * 设置 [考核成绩提醒_干部花名册(作废)]
      */
@@ -1815,12 +2110,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.khcjtx = khcjtx ;
         this.modify("khcjtx",khcjtx);
     }
+
     /**
      * 设置 [档案参加工作时间]
      */
     public void setDacjgzsj(Timestamp dacjgzsj){
         this.dacjgzsj = dacjgzsj ;
         this.modify("dacjgzsj",dacjgzsj);
+    }
+
+    /**
+     * 格式化日期 [档案参加工作时间]
+     */
+    public String formatDacjgzsj(){
+        if (this.dacjgzsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(dacjgzsj);
     }
     /**
      * 设置 [兼职任职_干部花名册（作废）]
@@ -1829,12 +2136,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.jzrz = jzrz ;
         this.modify("jzrz",jzrz);
     }
+
     /**
      * 设置 [实际退休时间]
      */
     public void setSjtxrq(Timestamp sjtxrq){
         this.sjtxrq = sjtxrq ;
         this.modify("sjtxrq",sjtxrq);
+    }
+
+    /**
+     * 格式化日期 [实际退休时间]
+     */
+    public String formatSjtxrq(){
+        if (this.sjtxrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(sjtxrq);
     }
     /**
      * 设置 [血型]
@@ -1843,6 +2162,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.xx = xx ;
         this.modify("xx",xx);
     }
+
     /**
      * 设置 [见习期“思想导师”]
      */
@@ -1850,6 +2170,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.jxssxds = jxssxds ;
         this.modify("jxssxds",jxssxds);
     }
+
     /**
      * 设置 [第一学历毕业院校_干部花名册]
      */
@@ -1857,12 +2178,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.dyxlbyyx = dyxlbyyx ;
         this.modify("dyxlbyyx",dyxlbyyx);
     }
+
     /**
      * 设置 [任职时间]
      */
     public void setRzsj(Timestamp rzsj){
         this.rzsj = rzsj ;
         this.modify("rzsj",rzsj);
+    }
+
+    /**
+     * 格式化日期 [任职时间]
+     */
+    public String formatRzsj(){
+        if (this.rzsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(rzsj);
     }
     /**
      * 设置 [有独生子女证]
@@ -1871,6 +2204,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.sfdszn = sfdszn ;
         this.modify("sfdszn",sfdszn);
     }
+
     /**
      * 设置 [系统编号]
      */
@@ -1878,6 +2212,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.xtbh = xtbh ;
         this.modify("xtbh",xtbh);
     }
+
     /**
      * 设置 [员工姓名]
      */
@@ -1885,6 +2220,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.pimpersonname = pimpersonname ;
         this.modify("pimpersonname",pimpersonname);
     }
+
     /**
      * 设置 [工作状态]
      */
@@ -1892,12 +2228,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.workstate = workstate ;
         this.modify("workstate",workstate);
     }
+
     /**
      * 设置 [参加工作时间]
      */
     public void setCjgzsj(Timestamp cjgzsj){
         this.cjgzsj = cjgzsj ;
         this.modify("cjgzsj",cjgzsj);
+    }
+
+    /**
+     * 格式化日期 [参加工作时间]
+     */
+    public String formatCjgzsj(){
+        if (this.cjgzsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(cjgzsj);
     }
     /**
      * 设置 [岗位开始日期]
@@ -1906,12 +2254,34 @@ public class PimPerson extends EntityMP implements Serializable {
         this.gwksrq = gwksrq ;
         this.modify("gwksrq",gwksrq);
     }
+
+    /**
+     * 格式化日期 [岗位开始日期]
+     */
+    public String formatGwksrq(){
+        if (this.gwksrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(gwksrq);
+    }
     /**
      * 设置 [到建筑系统时间]
      */
     public void setTozjdate(Timestamp tozjdate){
         this.tozjdate = tozjdate ;
         this.modify("tozjdate",tozjdate);
+    }
+
+    /**
+     * 格式化日期 [到建筑系统时间]
+     */
+    public String formatTozjdate(){
+        if (this.tozjdate == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(tozjdate);
     }
     /**
      * 设置 [证件号码]
@@ -1920,6 +2290,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.zjhm = zjhm ;
         this.modify("zjhm",zjhm);
     }
+
     /**
      * 设置 [黑名单原因]
      */
@@ -1927,6 +2298,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.blacklistreasons = blacklistreasons ;
         this.modify("blacklistreasons",blacklistreasons);
     }
+
     /**
      * 设置 [户籍地址]
      */
@@ -1934,6 +2306,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.hjdz = hjdz ;
         this.modify("hjdz",hjdz);
     }
+
     /**
      * 设置 [职务年限_干部花名册]
      */
@@ -1941,12 +2314,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.zwnx = zwnx ;
         this.modify("zwnx",zwnx);
     }
+
     /**
      * 设置 [入团时间]
      */
     public void setRtsj(Timestamp rtsj){
         this.rtsj = rtsj ;
         this.modify("rtsj",rtsj);
+    }
+
+    /**
+     * 格式化日期 [入团时间]
+     */
+    public String formatRtsj(){
+        if (this.rtsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(rtsj);
     }
     /**
      * 设置 [身故原因]
@@ -1955,6 +2340,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.sgyy = sgyy ;
         this.modify("sgyy",sgyy);
     }
+
     /**
      * 设置 [记录管理编号]
      */
@@ -1962,6 +2348,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.jlglbh = jlglbh ;
         this.modify("jlglbh",jlglbh);
     }
+
     /**
      * 设置 [轮岗年限颜色_干部花名册]
      */
@@ -1969,6 +2356,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.lgnxColor = lgnxColor ;
         this.modify("lgnx_color",lgnxColor);
     }
+
     /**
      * 设置 [XX届应届生]
      */
@@ -1976,12 +2364,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.yjsnf = yjsnf ;
         this.modify("yjsnf",yjsnf);
     }
+
     /**
      * 设置 [职级日期]
      */
     public void setRankrq(Timestamp rankrq){
         this.rankrq = rankrq ;
         this.modify("rankrq",rankrq);
+    }
+
+    /**
+     * 格式化日期 [职级日期]
+     */
+    public String formatRankrq(){
+        if (this.rankrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(rankrq);
     }
     /**
      * 设置 [照片]
@@ -1990,6 +2390,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.zp = zp ;
         this.modify("zp",zp);
     }
+
     /**
      * 设置 [轮岗年限_干部花名册]
      */
@@ -1997,6 +2398,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.lgnx = lgnx ;
         this.modify("lgnx",lgnx);
     }
+
     /**
      * 设置 [家庭联系人]
      */
@@ -2004,12 +2406,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.jtlxr = jtlxr ;
         this.modify("jtlxr",jtlxr);
     }
+
     /**
      * 设置 [试用期到期时间（停用）]
      */
     public void setSyqdqsj(Timestamp syqdqsj){
         this.syqdqsj = syqdqsj ;
         this.modify("syqdqsj",syqdqsj);
+    }
+
+    /**
+     * 格式化日期 [试用期到期时间（停用）]
+     */
+    public String formatSyqdqsj(){
+        if (this.syqdqsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(syqdqsj);
     }
     /**
      * 设置 [职务]
@@ -2018,6 +2432,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.zw = zw ;
         this.modify("zw",zw);
     }
+
     /**
      * 设置 [合同签订次数]
      */
@@ -2025,6 +2440,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.htqdcs = htqdcs ;
         this.modify("htqdcs",htqdcs);
     }
+
     /**
      * 设置 [民族]
      */
@@ -2032,6 +2448,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.mz = mz ;
         this.modify("mz",mz);
     }
+
     /**
      * 设置 [身份证]
      */
@@ -2039,6 +2456,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.sfz = sfz ;
         this.modify("sfz",sfz);
     }
+
     /**
      * 设置 [任职年龄到期颜色_干部花名册（作废）]
      */
@@ -2046,6 +2464,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.rznldqColor = rznldqColor ;
         this.modify("rznldq_color",rznldqColor);
     }
+
     /**
      * 设置 [异动状态]
      */
@@ -2053,12 +2472,24 @@ public class PimPerson extends EntityMP implements Serializable {
         this.ydzt = ydzt ;
         this.modify("ydzt",ydzt);
     }
+
     /**
      * 设置 [员工编号启用时间]
      */
     public void setYgbhqysj(Timestamp ygbhqysj){
         this.ygbhqysj = ygbhqysj ;
         this.modify("ygbhqysj",ygbhqysj);
+    }
+
+    /**
+     * 格式化日期 [员工编号启用时间]
+     */
+    public String formatYgbhqysj(){
+        if (this.ygbhqysj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(ygbhqysj);
     }
     /**
      * 设置 [业务导师]
@@ -2067,6 +2498,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.pimpersonname3 = pimpersonname3 ;
         this.modify("pimpersonname3",pimpersonname3);
     }
+
     /**
      * 设置 [思想导师]
      */
@@ -2074,6 +2506,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.pimpersonname2 = pimpersonname2 ;
         this.modify("pimpersonname2",pimpersonname2);
     }
+
     /**
      * 设置 [组织]
      */
@@ -2081,6 +2514,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.ormorgname = ormorgname ;
         this.modify("ormorgname",ormorgname);
     }
+
     /**
      * 设置 [部门组织类型]
      */
@@ -2088,6 +2522,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.orgtype = orgtype ;
         this.modify("orgtype",orgtype);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -2095,6 +2530,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [人才序列标识]
      */
@@ -2102,6 +2538,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.pcmrcxlid = pcmrcxlid ;
         this.modify("pcmrcxlid",pcmrcxlid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -2109,6 +2546,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.pimpersonid2 = pimpersonid2 ;
         this.modify("pimpersonid2",pimpersonid2);
     }
+
     /**
      * 设置 [市标识]
      */
@@ -2116,6 +2554,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.pimcityid = pimcityid ;
         this.modify("pimcityid",pimcityid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -2123,6 +2562,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [见习生员工转正记录引用明细标识]
      */
@@ -2130,6 +2570,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.pcmjxsygzzjlmxid = pcmjxsygzzjlmxid ;
         this.modify("pcmjxsygzzjlmxid",pcmjxsygzzjlmxid);
     }
+
     /**
      * 设置 [专业序列类型标识]
      */
@@ -2137,6 +2578,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.pimmajorsetypeid = pimmajorsetypeid ;
         this.modify("pimmajorsetypeid",pimmajorsetypeid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -2144,6 +2586,7 @@ public class PimPerson extends EntityMP implements Serializable {
         this.pimpersonid3 = pimpersonid3 ;
         this.modify("pimpersonid3",pimpersonid3);
     }
+
 
 }
 

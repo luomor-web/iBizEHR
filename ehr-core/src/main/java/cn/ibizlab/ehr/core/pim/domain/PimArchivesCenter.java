@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -178,6 +179,7 @@ public class PimArchivesCenter extends EntityMP implements Serializable {
         this.cabinetno = cabinetno ;
         this.modify("cabinetno",cabinetno);
     }
+
     /**
      * 设置 [编号]
      */
@@ -185,6 +187,7 @@ public class PimArchivesCenter extends EntityMP implements Serializable {
         this.bnumber = bnumber ;
         this.modify("bnumber",bnumber);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -192,6 +195,7 @@ public class PimArchivesCenter extends EntityMP implements Serializable {
         this.serialno = serialno ;
         this.modify("serialno",serialno);
     }
+
     /**
      * 设置 [备注]
      */
@@ -199,6 +203,7 @@ public class PimArchivesCenter extends EntityMP implements Serializable {
         this.memo = memo ;
         this.modify("memo",memo);
     }
+
     /**
      * 设置 [档案室名称]
      */
@@ -206,6 +211,7 @@ public class PimArchivesCenter extends EntityMP implements Serializable {
         this.archivescentername = archivescentername ;
         this.modify("archivescentername",archivescentername);
     }
+
     /**
      * 设置 [层号]
      */
@@ -213,6 +219,7 @@ public class PimArchivesCenter extends EntityMP implements Serializable {
         this.layerno = layerno ;
         this.modify("layerno",layerno);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -220,6 +227,7 @@ public class PimArchivesCenter extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

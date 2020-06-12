@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -375,6 +376,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.dcbjb = dcbjb ;
         this.modify("dcbjb",dcbjb);
     }
+
     /**
      * 设置 [培训班名称]
      */
@@ -382,6 +384,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.pxbmc = pxbmc ;
         this.modify("pxbmc",pxbmc);
     }
+
     /**
      * 设置 [是否发布]
      */
@@ -389,12 +392,24 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.sffb = sffb ;
         this.modify("sffb",sffb);
     }
+
     /**
      * 设置 [报名截止时间]
      */
     public void setBmjzsj(Timestamp bmjzsj){
         this.bmjzsj = bmjzsj ;
         this.modify("bmjzsj",bmjzsj);
+    }
+
+    /**
+     * 格式化日期 [报名截止时间]
+     */
+    public String formatBmjzsj(){
+        if (this.bmjzsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(bmjzsj);
     }
     /**
      * 设置 [调查所处季度]
@@ -403,12 +418,24 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.dcscjd = dcscjd ;
         this.modify("dcscjd",dcscjd);
     }
+
     /**
      * 设置 [培训结束时间]
      */
     public void setPxjssj(Timestamp pxjssj){
         this.pxjssj = pxjssj ;
         this.modify("pxjssj",pxjssj);
+    }
+
+    /**
+     * 格式化日期 [培训结束时间]
+     */
+    public String formatPxjssj(){
+        if (this.pxjssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(pxjssj);
     }
     /**
      * 设置 [培训地点]
@@ -417,6 +444,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.pxdd = pxdd ;
         this.modify("pxdd",pxdd);
     }
+
     /**
      * 设置 [年度]
      */
@@ -424,6 +452,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [调查对象类型]
      */
@@ -431,6 +460,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.dcdxlx = dcdxlx ;
         this.modify("dcdxlx",dcdxlx);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -438,6 +468,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [培训人数]
      */
@@ -445,6 +476,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.pxrs = pxrs ;
         this.modify("pxrs",pxrs);
     }
+
     /**
      * 设置 [培训主要内容]
      */
@@ -452,6 +484,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.pxzynr = pxzynr ;
         this.modify("pxzynr",pxzynr);
     }
+
     /**
      * 设置 [调查员工类别]
      */
@@ -459,6 +492,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.dcyglb = dcyglb ;
         this.modify("dcyglb",dcyglb);
     }
+
     /**
      * 设置 [调查表类型]
      */
@@ -466,12 +500,24 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.dcblx = dcblx ;
         this.modify("dcblx",dcblx);
     }
+
     /**
      * 设置 [培训开始时间]
      */
     public void setPxkssj(Timestamp pxkssj){
         this.pxkssj = pxkssj ;
         this.modify("pxkssj",pxkssj);
+    }
+
+    /**
+     * 格式化日期 [培训开始时间]
+     */
+    public String formatPxkssj(){
+        if (this.pxkssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(pxkssj);
     }
     /**
      * 设置 [需求分类]
@@ -480,12 +526,24 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.xqfl = xqfl ;
         this.modify("xqfl",xqfl);
     }
+
     /**
      * 设置 [制定时间]
      */
     public void setZdsj(Timestamp zdsj){
         this.zdsj = zdsj ;
         this.modify("zdsj",zdsj);
+    }
+
+    /**
+     * 格式化日期 [制定时间]
+     */
+    public String formatZdsj(){
+        if (this.zdsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(zdsj);
     }
     /**
      * 设置 [培训汇总]
@@ -494,6 +552,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.trmdemdeftionname = trmdemdeftionname ;
         this.modify("trmdemdeftionname",trmdemdeftionname);
     }
+
     /**
      * 设置 [培训对象]
      */
@@ -501,6 +560,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.pxdx = pxdx ;
         this.modify("pxdx",pxdx);
     }
+
     /**
      * 设置 [备注]
      */
@@ -508,12 +568,24 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [调查截至日期]
      */
     public void setDcjzrq(Timestamp dcjzrq){
         this.dcjzrq = dcjzrq ;
         this.modify("dcjzrq",dcjzrq);
+    }
+
+    /**
+     * 格式化日期 [调查截至日期]
+     */
+    public String formatDcjzrq(){
+        if (this.dcjzrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(dcjzrq);
     }
     /**
      * 设置 [调查所处年度]
@@ -522,6 +594,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.dcscnd = dcscnd ;
         this.modify("dcscnd",dcscnd);
     }
+
     /**
      * 设置 [培训模块]
      */
@@ -529,6 +602,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.pxmk = pxmk ;
         this.modify("pxmk",pxmk);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -536,6 +610,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [培训项目部门填报标识]
      */
@@ -543,6 +618,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.trmtrainfillinid = trmtrainfillinid ;
         this.modify("trmtrainfillinid",trmtrainfillinid);
     }
+
     /**
      * 设置 [培训课程标识]
      */
@@ -550,6 +626,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.trmtraincourseid = trmtraincourseid ;
         this.modify("trmtraincourseid",trmtraincourseid);
     }
+
     /**
      * 设置 [培训需求填报标识]
      */
@@ -557,6 +634,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.trmdepartid = trmdepartid ;
         this.modify("trmdepartid",trmdepartid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -564,6 +642,7 @@ public class TrmDemdeftion extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

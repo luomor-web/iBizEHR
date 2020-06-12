@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -236,6 +237,17 @@ public class SocWelfareInfo extends EntityMP implements Serializable {
         this.sxsj2 = sxsj2 ;
         this.modify("sxsj2",sxsj2);
     }
+
+    /**
+     * 格式化日期 [失效时间]
+     */
+    public String formatSxsj2(){
+        if (this.sxsj2 == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(sxsj2);
+    }
     /**
      * 设置 [个人公积金账号]
      */
@@ -243,6 +255,7 @@ public class SocWelfareInfo extends EntityMP implements Serializable {
         this.grgjjzh = grgjjzh ;
         this.modify("grgjjzh",grgjjzh);
     }
+
     /**
      * 设置 [个人社保账号]
      */
@@ -250,6 +263,7 @@ public class SocWelfareInfo extends EntityMP implements Serializable {
         this.grsbzh = grsbzh ;
         this.modify("grsbzh",grsbzh);
     }
+
     /**
      * 设置 [个人社保福利名称]
      */
@@ -257,12 +271,24 @@ public class SocWelfareInfo extends EntityMP implements Serializable {
         this.socwelfareinfoname = socwelfareinfoname ;
         this.modify("socwelfareinfoname",socwelfareinfoname);
     }
+
     /**
      * 设置 [生效时间]
      */
     public void setSxsj(Timestamp sxsj){
         this.sxsj = sxsj ;
         this.modify("sxsj",sxsj);
+    }
+
+    /**
+     * 格式化日期 [生效时间]
+     */
+    public String formatSxsj(){
+        if (this.sxsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        return sdf.format(sxsj);
     }
     /**
      * 设置 [人员信息标识]
@@ -271,6 +297,7 @@ public class SocWelfareInfo extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [单位社保账户标识]
      */
@@ -278,6 +305,7 @@ public class SocWelfareInfo extends EntityMP implements Serializable {
         this.soccompanywelid = soccompanywelid ;
         this.modify("soccompanywelid",soccompanywelid);
     }
+
 
 }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -111,6 +112,7 @@ public class PersonStateMgr extends EntityMP implements Serializable {
         this.personstatemgrname = personstatemgrname ;
         this.modify("personstatemgrname",personstatemgrname);
     }
+
     /**
      * 设置 [排序值]
      */
@@ -118,6 +120,7 @@ public class PersonStateMgr extends EntityMP implements Serializable {
         this.orderno = orderno ;
         this.modify("orderno",orderno);
     }
+
     /**
      * 设置 [状态编码]
      */
@@ -125,6 +128,7 @@ public class PersonStateMgr extends EntityMP implements Serializable {
         this.personstatecode = personstatecode ;
         this.modify("personstatecode",personstatecode);
     }
+
 
 }
 
