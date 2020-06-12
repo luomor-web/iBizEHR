@@ -1,0 +1,47 @@
+export const PageComponents = {
+    install(Vue: any, opt: any) {
+                Vue.component('par-ldndlhmb-khedit-view', () => import('@pages/par/par-ldndlhmb-khedit-view/par-ldndlhmb-khedit-view.vue'));
+        Vue.component('par-integral-rule-edit-view', () => import('@pages/par/par-integral-rule-edit-view/par-integral-rule-edit-view.vue'));
+        Vue.component('par-ldndlhmbmx-khedit-view', () => import('@pages/par/par-ldndlhmbmx-khedit-view/par-ldndlhmbmx-khedit-view.vue'));
+        Vue.component('par-ldndlhmbmx-xzgrid-view', () => import('@pages/par/par-ldndlhmbmx-xzgrid-view/par-ldndlhmbmx-xzgrid-view.vue'));
+        Vue.component('par-ldndlhmb-edit-view', () => import('@pages/par/par-ldndlhmb-edit-view/par-ldndlhmb-edit-view.vue'));
+        Vue.component('par-khfa-grid-view', () => import('@pages/par/par-khfa-grid-view/par-khfa-grid-view.vue'));
+        Vue.component('pim-person-pickup-grid-view', () => import('@pages/pim/pim-person-pickup-grid-view/pim-person-pickup-grid-view.vue'));
+        Vue.component('par-ldndlhmb-ndlhmbxzgrid-view', () => import('@pages/par/par-ldndlhmb-ndlhmbxzgrid-view/par-ldndlhmb-ndlhmbxzgrid-view.vue'));
+        Vue.component('par-tzgg-edit-view9', () => import('@pages/par/par-tzgg-edit-view9/par-tzgg-edit-view9.vue'));
+        Vue.component('par-jxjg-khdjedit-view', () => import('@pages/par/par-jxjg-khdjedit-view/par-jxjg-khdjedit-view.vue'));
+        Vue.component('par-integral-rule-edit-view9', () => import('@pages/par/par-integral-rule-edit-view9/par-integral-rule-edit-view9.vue'));
+        Vue.component('par-khfa-edit-view9', () => import('@pages/par/par-khfa-edit-view9/par-khfa-edit-view9.vue'));
+        Vue.component('par-tzgg-edit-view', () => import('@pages/par/par-tzgg-edit-view/par-tzgg-edit-view.vue'));
+        Vue.component('par-ldndlhmbmx-grid-view', () => import('@pages/par/par-ldndlhmbmx-grid-view/par-ldndlhmbmx-grid-view.vue'));
+        Vue.component('par-jxkhxhz-ygkhxgrid-view', () => import('@pages/par/par-jxkhxhz-ygkhxgrid-view/par-jxkhxhz-ygkhxgrid-view.vue'));
+        Vue.component('par-khzcmx-edit-view', () => import('@pages/par/par-khzcmx-edit-view/par-khzcmx-edit-view.vue'));
+        Vue.component('pim-person-pickup-view', () => import('@pages/pim/pim-person-pickup-view/pim-person-pickup-view.vue'));
+        Vue.component('par-exam-content-edit-view', () => import('@pages/par/par-exam-content-edit-view/par-exam-content-edit-view.vue'));
+        Vue.component('par-ldndlhmb-ndlhmbxzedit-view', () => import('@pages/par/par-ldndlhmb-ndlhmbxzedit-view/par-ldndlhmb-ndlhmbxzedit-view.vue'));
+        Vue.component('par-integral-rule-grid-view', () => import('@pages/par/par-integral-rule-grid-view/par-integral-rule-grid-view.vue'));
+        Vue.component('par-ldkhqz-grid-view', () => import('@pages/par/par-ldkhqz-grid-view/par-ldkhqz-grid-view.vue'));
+        Vue.component('par-khzcmx-pickup-view', () => import('@pages/par/par-khzcmx-pickup-view/par-khzcmx-pickup-view.vue'));
+        Vue.component('par-exam-content-edit-view9', () => import('@pages/par/par-exam-content-edit-view9/par-exam-content-edit-view9.vue'));
+        Vue.component('par-exam-content-grid-view', () => import('@pages/par/par-exam-content-grid-view/par-exam-content-grid-view.vue'));
+        Vue.component('par-ldkhqz-edit-view', () => import('@pages/par/par-ldkhqz-edit-view/par-ldkhqz-edit-view.vue'));
+        Vue.component('par-jxjg-jxpgdjgrid-view', () => import('@pages/par/par-jxjg-jxpgdjgrid-view/par-jxjg-jxpgdjgrid-view.vue'));
+        Vue.component('par-ldndlhmb-khgrid-view', () => import('@pages/par/par-ldndlhmb-khgrid-view/par-ldndlhmb-khgrid-view.vue'));
+        Vue.component('par-tzgg-grid-view', () => import('@pages/par/par-tzgg-grid-view/par-tzgg-grid-view.vue'));
+        Vue.component('par-jxjg-grid-view', () => import('@pages/par/par-jxjg-grid-view/par-jxjg-grid-view.vue'));
+        Vue.component('par-khfa-edit-view', () => import('@pages/par/par-khfa-edit-view/par-khfa-edit-view.vue'));
+        Vue.component('par-jxkhxhz-ygkhxedit-view', () => import('@pages/par/par-jxkhxhz-ygkhxedit-view/par-jxkhxhz-ygkhxedit-view.vue'));
+        Vue.component('par-ldndlhmbmx-khgrid-view', () => import('@pages/par/par-ldndlhmbmx-khgrid-view/par-ldndlhmbmx-khgrid-view.vue'));
+        Vue.component('par-ldndlhmb-grid-view', () => import('@pages/par/par-ldndlhmb-grid-view/par-ldndlhmb-grid-view.vue'));
+        Vue.component('par-jxjg-edit-view', () => import('@pages/par/par-jxjg-edit-view/par-jxjg-edit-view.vue'));
+        Vue.component('par-ldndlhmbmx-edit-view', () => import('@pages/par/par-ldndlhmbmx-edit-view/par-ldndlhmbmx-edit-view.vue'));
+        Vue.component('par-khzcmx-pickup-grid-view', () => import('@pages/par/par-khzcmx-pickup-grid-view/par-khzcmx-pickup-grid-view.vue'));
+        Vue.component('par-exam-cycle-pickup-view', () => import('@pages/par/par-exam-cycle-pickup-view/par-exam-cycle-pickup-view.vue'));
+        Vue.component('par-exam-cycle-edit-view2', () => import('@pages/par/par-exam-cycle-edit-view2/par-exam-cycle-edit-view2.vue'));
+        Vue.component('par-exam-cycle-grid-view', () => import('@pages/par/par-exam-cycle-grid-view/par-exam-cycle-grid-view.vue'));
+        Vue.component('par-exam-cycle-pickup-grid-view', () => import('@pages/par/par-exam-cycle-pickup-grid-view/par-exam-cycle-pickup-grid-view.vue'));
+        Vue.component('par-tzgg-mpickup-view', () => import('@pages/par/par-tzgg-mpickup-view/par-tzgg-mpickup-view.vue'));
+        Vue.component('par-exam-cycle-mpickup-view', () => import('@pages/par/par-exam-cycle-mpickup-view/par-exam-cycle-mpickup-view.vue'));
+        Vue.component('par-exam-cycle-edit-view', () => import('@pages/par/par-exam-cycle-edit-view/par-exam-cycle-edit-view.vue'));
+    }
+};
