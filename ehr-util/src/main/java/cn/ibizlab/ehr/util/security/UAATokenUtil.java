@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Component
-@ConditionalOnExpression("${ibiz.enablePermissionValid:false}||'${ibiz.auth.service:SimpleTokenUtil}'.equals('UAATokenUtil')")
+@ConditionalOnExpression("${ibiz.enablePermissionValid:false}||'${ibiz.auth.token.util:SimpleTokenUtil}'.equals('UAATokenUtil')")
 public class UAATokenUtil implements AuthTokenUtil, Serializable {
 
     private static final long serialVersionUID = -3301605591108950415L;

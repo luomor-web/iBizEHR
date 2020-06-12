@@ -19,7 +19,7 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @Component
-@ConditionalOnExpression("(!${ibiz.enablePermissionValid:false})&&'${ibiz.auth.service:SimpleTokenUtil}'.equals('SimpleTokenUtil')")
+@ConditionalOnExpression("(!${ibiz.enablePermissionValid:false})&&'${ibiz.auth.token.util:SimpleTokenUtil}'.equals('SimpleTokenUtil')")
 public class SimpleTokenUtil implements AuthTokenUtil,Serializable {
 
     private static final long serialVersionUID = -3301605591108950415L;

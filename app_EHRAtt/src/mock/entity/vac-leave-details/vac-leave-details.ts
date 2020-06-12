@@ -87,16 +87,16 @@ mock.onDelete(new RegExp(/^\/vacleavedetails\/batch$/)).reply((config: any) => {
 });
 
         
-// GetNianJia
-mock.onPost(new RegExp(/^\/vacleavedetails\/?([a-zA-Z0-9\-\;]{0,35})$/)).reply((config: any) => {
-    console.groupCollapsed("实体:vacleavedetail 方法: GetNianJia");
+// GETNIANJIA
+mock.onPost(new RegExp(/^\/vacleavedetails\/?([a-zA-Z0-9\-\;]{0,35})\/getnianjia$/)).reply((config: any) => {
+    console.groupCollapsed("实体:vacleavedetail 方法: GETNIANJIA");
     console.table({url:config.url, method: config.method, data:config.data});
     let status = MockAdapter.mockStatus(config);
     if (status !== 200) {
         return [status, null];
     }    
     const paramArray:Array<any> = ['vacleavedetailid'];
-    const matchArray:any = new RegExp(/^\/vacleavedetails\/([a-zA-Z0-9\-\;]{1,35})$/).exec(config.url);
+    const matchArray:any = new RegExp(/^\/vacleavedetails\/([a-zA-Z0-9\-\;]{1,35})\/getnianjia$/).exec(config.url);
     let tempValue: any = {};
     if(matchArray && matchArray.length >1 && paramArray && paramArray.length >0){
         paramArray.forEach((item: any, index: number) => {
