@@ -1,0 +1,132 @@
+export default {
+  fields: {
+    bz: '备注',
+    vacsynjcxid: '年休假查询标识',
+    yynj: '已用天数',
+    createdate: '建立时间',
+    createman: '建立人',
+    synjts: '剩余天数',
+    bnts: '应休天数',
+    ksyxsj: '开始有效时间',
+    updatedate: '更新时间',
+    vacsynjcxname: '年休假查询名称',
+    sjbnts: '实休天数',
+    nd: '年度',
+    jsyxsj: '结束有效时间',
+    bcts: '补偿天数（停用）',
+    orgid: '组织id',
+    updateman: '更新人',
+    zz: '组织名称',
+    bm: '部门名称',
+    pimpersonname: '员工姓名',
+    gly: '工龄（年）',
+    ygbh: '员工编号',
+    ormorgid: '组织标识',
+    pimpersonid: '员工信息标识',
+  },
+	views: {
+		gridview: {
+			caption: '年休假查询',
+      title: '年休假查询',
+		},
+		editview: {
+			caption: '年休假查询',
+      title: '年休假查询编辑视图',
+		},
+	},
+	main_form: {
+		details: {
+			group1: '年休假查询基本信息', 
+			formpage1: '基本信息', 
+			srfupdatedate: '更新时间', 
+			srforikey: '', 
+			srfkey: '年休假查询标识', 
+			srfmajortext: '年休假查询名称', 
+			srftempmode: '', 
+			srfuf: '', 
+			srfdeid: '', 
+			srfsourcekey: '', 
+			pimpersonname: '员工姓名', 
+			ygbh: '员工编号', 
+			nd: '年度', 
+			gly: '工龄（年）', 
+			zz: '组织名称', 
+			bm: '部门名称', 
+			sjbnts: '实休天数', 
+			bnts: '应休天数', 
+			yynj: '已用天数', 
+			synjts: '剩余天数', 
+			ksyxsj: '开始有效时间', 
+			jsyxsj: '结束有效时间', 
+			bz: '备注', 
+			vacsynjcxid: '年休假查询标识', 
+		},
+		uiactions: {
+		},
+	},
+	main_grid: {
+		columns: {
+			ygbh: '员工编号',
+			pimpersonname: '员工姓名',
+			nd: '年度',
+			gly: '工龄（年）',
+			zz: '组织名称',
+			bm: '部门名称',
+			sjbnts: '实休天数',
+			bnts: '应休天数',
+			yynj: '已用天数',
+			synjts: '剩余天数',
+			ksyxsj: '开始有效时间',
+			jsyxsj: '结束有效时间',
+		},
+		uiactions: {
+		},
+	},
+	default_searchform: {
+		details: {
+			formpage1: '常规条件', 
+			n_pimpersonname_like: '员工姓名(%)', 
+			n_nd_eq: '年度(=)', 
+			n_zz_like: '组织名称(%)', 
+			n_bm_like: '部门名称(%)', 
+		},
+		uiactions: {
+		},
+	},
+	gridviewtoolbar_toolbar: {
+		tbitem8: {
+			caption: '删除',
+			tip: '删除',
+		},
+		tbitem13: {
+			caption: '导出',
+			tip: '导出',
+		},
+		tbitem19: {
+			caption: '过滤',
+			tip: '过滤',
+		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: '保存',
+			tip: '保存',
+		},
+		tbitem4: {
+			caption: '保存并新建',
+			tip: '保存并新建',
+		},
+		tbitem5: {
+			caption: '保存并关闭',
+			tip: '保存并关闭',
+		},
+		tbitem7: {
+			caption: '删除并关闭',
+			tip: '删除并关闭',
+		},
+		tbitem22: {
+			caption: '帮助',
+			tip: '帮助',
+		},
+	},
+};
