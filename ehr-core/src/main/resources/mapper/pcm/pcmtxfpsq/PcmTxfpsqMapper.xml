@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PcmTxfpsqMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PcmTxfpsqResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BM`, t1.`BMID`, t1.`BZ`, t1.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZR`, t1.`CZRID`, t1.`FINISHED`, t1.`FPSXSJ`, t1.`LXDH`, t1.`NL`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMTXFPSQID`, t1.`PCMTXFPSQNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`POSTALADDRESS`, t1.`RANK`, t1.`TXDQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XYGBH`, t1.`YGBH`, t1.`YGW`, t1.`YZW`, t1.`ZZ`, t1.`ZZID` FROM `T_PCMTXFPSQ` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  ) t1 where pcmtxfpsqid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PcmTxfpsqResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PcmTxfpsq" autoMapping="true">
+        <id property="pcmtxfpsqid" column="pcmtxfpsqid" /><!--主键字段映射-->
+		<result property="pimpersonid" column="pimpersonid" />
+		<result property="pcmprofileid" column="pcmprofileid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pcmprofile" javaType="cn.ibizlab.ehr.core.pcm.domain.PcmProfile" column="pcmprofileid" select="cn.ibizlab.ehr.core.pcm.mapper.PcmProfileMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMTXFPSQ_PCMPROFILE_PCMPROFILEID] -->
+	 <select id="selectByPcmprofileid" resultMap="PcmTxfpsqResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pcmprofileid=#{pcmprofileid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMTXFPSQ_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="PcmTxfpsqResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[FPJL]-->
+	 <select id="searchFPJL"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmTxfpsqSearchContext"  resultMap="PcmTxfpsqResultMap">
+         select t1.* from (
+                <include refid="FPJL" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmTxfpsqSearchContext"  resultMap="PcmTxfpsqResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[YXSQDS]-->
+	 <select id="searchYXSQDS"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmTxfpsqSearchContext"  resultMap="PcmTxfpsqResultMap">
+         select t1.* from (
+                <include refid="YXSQDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[FPGL]-->
+	 <select id="searchFPGL"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmTxfpsqSearchContext"  resultMap="PcmTxfpsqResultMap">
+         select t1.* from (
+                <include refid="FPGL" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`BZ`, t1.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZR`, t1.`CZRID`, t1.`FINISHED`, t1.`FPSXSJ`, t1.`LXDH`, t1.`NL`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMTXFPSQID`, t1.`PCMTXFPSQNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`POSTALADDRESS`, t1.`RANK`, t1.`TXDQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XYGBH`, t1.`YGBH`, t1.`YGW`, t1.`YZW`, t1.`ZZ`, t1.`ZZID` FROM `T_PCMTXFPSQ` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+			]]>
+    </sql>
+    <!--数据查询[FPGL]-->
+    <sql id="FPGL" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`BZ`, t1.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZR`, t1.`CZRID`, t1.`FINISHED`, t1.`FPSXSJ`, t1.`LXDH`, t1.`NL`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMTXFPSQID`, t1.`PCMTXFPSQNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`POSTALADDRESS`, t1.`RANK`, t1.`TXDQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XYGBH`, t1.`YGBH`, t1.`YGW`, t1.`YZW`, t1.`ZZ`, t1.`ZZID` FROM `T_PCMTXFPSQ` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+				 WHERE 	( t1.`FINISHED` = 0 )
+			]]>
+    </sql>
+    <!--数据查询[FPJL]-->
+    <sql id="FPJL" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`BZ`, t1.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZR`, t1.`CZRID`, t1.`FINISHED`, t1.`FPSXSJ`, t1.`LXDH`, t1.`NL`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMTXFPSQID`, t1.`PCMTXFPSQNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`POSTALADDRESS`, t1.`RANK`, t1.`TXDQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XYGBH`, t1.`YGBH`, t1.`YGW`, t1.`YZW`, t1.`ZZ`, t1.`ZZID` FROM `T_PCMTXFPSQ` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+				 WHERE 	( t1.`FINISHED` = 1 )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`BZ`, t1.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZR`, t1.`CZRID`, t1.`FINISHED`, t1.`FPSXSJ`, t1.`LXDH`, t1.`NL`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMTXFPSQID`, t1.`PCMTXFPSQNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`POSTALADDRESS`, t1.`RANK`, t1.`TXDQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XYGBH`, t1.`YGBH`, t1.`YGW`, t1.`YZW`, t1.`ZZ`, t1.`ZZID` FROM `T_PCMTXFPSQ` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+			]]>
+    </sql>
+    <!--数据查询[YXSQDQ]-->
+    <sql id="YXSQDQ" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BM`, t1.`BMID`, t1.`BZ`, t1.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CZR`, t1.`CZRID`, t1.`FINISHED`, t1.`FPSXSJ`, t1.`LXDH`, t1.`NL`, t1.`ZZID` AS `ORGID`, t1.`BMID` AS `ORGSECTORID`, t1.`PCMPROFILEID`, t1.`PCMTXFPSQID`, t1.`PCMTXFPSQNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`POSTALADDRESS`, t1.`RANK`, t1.`TXDQ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XYGBH`, t1.`YGBH`, t1.`YGW`, t1.`YZW`, t1.`ZZ`, t1.`ZZID` FROM `T_PCMTXFPSQ` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  
+				 WHERE 	( t1.`FINISHED` IS NOT NULL )
+			]]>
+    </sql>
+</mapper>
+

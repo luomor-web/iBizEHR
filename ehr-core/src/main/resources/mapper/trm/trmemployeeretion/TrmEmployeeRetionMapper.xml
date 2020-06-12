@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TrmEmployeeRetionMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TrmEmployeeRetionResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BMJZRQ`, t1.`BMKSSJ`, t1.`BMTJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t11.`KCXS`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`PXDD`, t31.`PXHDBM`, t1.`PXNR`, t11.`SKJSSJ`, t11.`SKKSRQ`, t1.`TRMCOUARRANGEID`, t11.`TRMCOUARRANGENAME`, t1.`TRMEMPLOYEERETIONID`, t1.`TRMEMPLOYEERETIONNAME`, t1.`TRMTRAINACTAPPLYID`, t31.`TRMTRAINACTAPPLYNAME`, t1.`TRMTRAINAGENCYID`, t41.`TRMTRAINAGENCYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_TRMEMPLOYEERETION` t1  LEFT JOIN T_TRMCOUARRANGE t11 ON t1.TRMCOUARRANGEID = t11.TRMCOUARRANGEID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  LEFT JOIN T_TRMTRAINACTAPPLY t31 ON t1.TRMTRAINACTAPPLYID = t31.TRMTRAINACTAPPLYID  LEFT JOIN T_TRMTRAINAGENCY t41 ON t1.TRMTRAINAGENCYID = t41.TRMTRAINAGENCYID  ) t1 where trmemployeeretionid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="TrmEmployeeRetionResultMap" type="cn.ibizlab.ehr.core.trm.domain.TrmEmployeeRetion" autoMapping="true">
+        <id property="trmemployretionid" column="trmemployeeretionid" /><!--主键字段映射-->
+		<result property="trmemployretionname" column="trmemployeeretionname" />
+		<result property="ormorgid" column="ormorgid" />
+		<result property="trmcouarrangeid" column="trmcouarrangeid" />
+		<result property="trmtrainactapplyid" column="trmtrainactapplyid" />
+		<result property="trmtrainagencyid" column="trmtrainagencyid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmcouarrange" javaType="cn.ibizlab.ehr.core.trm.domain.TrmCouarrange" column="trmcouarrangeid" select="cn.ibizlab.ehr.core.trm.mapper.TrmCouarrangeMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmtrainactapply" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainActapply" column="trmtrainactapplyid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainActapplyMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmtrainagency" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainAgency" column="trmtrainagencyid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainAgencyMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMEMPLOYEERETION_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="TrmEmployeeRetionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMEMPLOYEERETION_TRMCOUARRANGE_TRMCOUARRANGEID] -->
+	 <select id="selectByTrmcouarrangeid" resultMap="TrmEmployeeRetionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmcouarrangeid=#{trmcouarrangeid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMEMPLOYEERETION_TRMTRAINACTAPPLY_TRMTRAINACTAPPLYID] -->
+	 <select id="selectByTrmtrainactapplyid" resultMap="TrmEmployeeRetionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmtrainactapplyid=#{trmtrainactapplyid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMEMPLOYEERETION_TRMTRAINAGENCY_TRMTRAINAGENCYID] -->
+	 <select id="selectByTrmtrainagencyid" resultMap="TrmEmployeeRetionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmtrainagencyid=#{trmtrainagencyid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.trm.filter.TrmEmployeeRetionSearchContext"  resultMap="TrmEmployeeRetionResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BMJZRQ`, t1.`BMKSSJ`, t1.`BMTJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t11.`KCXS`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`PXDD`, t31.`PXHDBM`, t1.`PXNR`, t11.`SKJSSJ`, t11.`SKKSRQ`, t1.`TRMCOUARRANGEID`, t11.`TRMCOUARRANGENAME`, t1.`TRMEMPLOYEERETIONID`, t1.`TRMEMPLOYEERETIONNAME`, t1.`TRMTRAINACTAPPLYID`, t31.`TRMTRAINACTAPPLYNAME`, t1.`TRMTRAINAGENCYID`, t41.`TRMTRAINAGENCYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_TRMEMPLOYEERETION` t1  LEFT JOIN T_TRMCOUARRANGE t11 ON t1.TRMCOUARRANGEID = t11.TRMCOUARRANGEID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  LEFT JOIN T_TRMTRAINACTAPPLY t31 ON t1.TRMTRAINACTAPPLYID = t31.TRMTRAINACTAPPLYID  LEFT JOIN T_TRMTRAINAGENCY t41 ON t1.TRMTRAINAGENCYID = t41.TRMTRAINAGENCYID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BMJZRQ`, t1.`BMKSSJ`, t1.`BMTJ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t11.`KCXS`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`PXDD`, t31.`PXHDBM`, t1.`PXNR`, t11.`SKJSSJ`, t11.`SKKSRQ`, t1.`TRMCOUARRANGEID`, t11.`TRMCOUARRANGENAME`, t1.`TRMEMPLOYEERETIONID`, t1.`TRMEMPLOYEERETIONNAME`, t1.`TRMTRAINACTAPPLYID`, t31.`TRMTRAINACTAPPLYNAME`, t1.`TRMTRAINAGENCYID`, t41.`TRMTRAINAGENCYNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_TRMEMPLOYEERETION` t1  LEFT JOIN T_TRMCOUARRANGE t11 ON t1.TRMCOUARRANGEID = t11.TRMCOUARRANGEID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  LEFT JOIN T_TRMTRAINACTAPPLY t31 ON t1.TRMTRAINACTAPPLYID = t31.TRMTRAINACTAPPLYID  LEFT JOIN T_TRMTRAINAGENCY t41 ON t1.TRMTRAINAGENCYID = t41.TRMTRAINAGENCYID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

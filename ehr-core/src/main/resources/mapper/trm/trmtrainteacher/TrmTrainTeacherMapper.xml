@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TrmTrainTeacherMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TrmTrainTeacherResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`AHTC`, t1.`BZ`, t1.`CJGS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJ`, t1.`DZYX`, t1.`ENABLE`, t1.`JF`, t1.`JGLB`, t1.`JSBM`, t1.`JSKC`, t1.`JSLB`, t1.`JSLX`, t1.`LXDH`, t1.`NL`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`PJ`, t1.`PXJSJB`, t1.`SFFC`, t1.`SFGX`, t1.`TRMTRAINAGENCYID`, t21.`TRMTRAINAGENCYNAME`, t1.`TRMTRAINTEACHERID`, t1.`TRMTRAINTEACHERNAME`, t1.`TZ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XB`, t1.`ZJHM`, t1.`ZJKSSJ`, t1.`ZP`, t31.`ZW`, t11.`ZZDZS` FROM `T_TRMTRAINTEACHER` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_TRMTRAINAGENCY t21 ON t1.TRMTRAINAGENCYID = t21.TRMTRAINAGENCYID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  ) t1 where trmtrainteacherid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="TrmTrainTeacherResultMap" type="cn.ibizlab.ehr.core.trm.domain.TrmTrainTeacher" autoMapping="true">
+        <id property="trmtrainteacherid" column="trmtrainteacherid" /><!--主键字段映射-->
+		<result property="ormorgid" column="ormorgid" />
+		<result property="pimpersonid" column="pimpersonid" />
+		<result property="trmtrainagencyid" column="trmtrainagencyid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="trmtrainagency" javaType="cn.ibizlab.ehr.core.trm.domain.TrmTrainAgency" column="trmtrainagencyid" select="cn.ibizlab.ehr.core.trm.mapper.TrmTrainAgencyMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMTRAINTEACHER_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="TrmTrainTeacherResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMTRAINTEACHER_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="TrmTrainTeacherResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMTRAINTEACHER_TRMTRAINAGENCY_TRMTRAINAGENCYID] -->
+	 <select id="selectByTrmtrainagencyid" resultMap="TrmTrainTeacherResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  trmtrainagencyid=#{trmtrainagencyid}
+     </select>
+
+    <!--数据集合[NBJS]-->
+	 <select id="searchNBJS"  parameterType="cn.ibizlab.ehr.core.trm.filter.TrmTrainTeacherSearchContext"  resultMap="TrmTrainTeacherResultMap">
+         select t1.* from (
+                <include refid="NBJS" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[WBJS]-->
+	 <select id="searchWBJS"  parameterType="cn.ibizlab.ehr.core.trm.filter.TrmTrainTeacherSearchContext"  resultMap="TrmTrainTeacherResultMap">
+         select t1.* from (
+                <include refid="WBJS" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.trm.filter.TrmTrainTeacherSearchContext"  resultMap="TrmTrainTeacherResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`AHTC`, t1.`BZ`, t1.`CJGS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJ`, t1.`DZYX`, t1.`ENABLE`, t1.`JF`, t1.`JGLB`, t1.`JSBM`, t1.`JSKC`, t1.`JSLB`, t1.`JSLX`, t1.`LXDH`, t1.`NL`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`PJ`, t1.`PXJSJB`, t1.`SFFC`, t1.`SFGX`, t1.`TRMTRAINAGENCYID`, t21.`TRMTRAINAGENCYNAME`, t1.`TRMTRAINTEACHERID`, t1.`TRMTRAINTEACHERNAME`, t1.`TZ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XB`, t1.`ZJHM`, t1.`ZJKSSJ`, t1.`ZP`, t31.`ZW`, t11.`ZZDZS` FROM `T_TRMTRAINTEACHER` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_TRMTRAINAGENCY t21 ON t1.TRMTRAINAGENCYID = t21.TRMTRAINAGENCYID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[NBJS]-->
+    <sql id="NBJS" databaseId="mysql">
+       <![CDATA[	SELECT t1.`AHTC`, t1.`BZ`, t1.`CJGS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJ`, t1.`DZYX`, t1.`ENABLE`, t1.`JF`, t1.`JGLB`, t1.`JSBM`, t1.`JSKC`, t1.`JSLB`, t1.`JSLX`, t1.`LXDH`, t1.`NL`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`PJ`, t1.`PXJSJB`, t1.`SFFC`, t1.`SFGX`, t1.`TRMTRAINAGENCYID`, t21.`TRMTRAINAGENCYNAME`, t1.`TRMTRAINTEACHERID`, t1.`TRMTRAINTEACHERNAME`, t1.`TZ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XB`, t1.`ZJHM`, t1.`ZJKSSJ`, t1.`ZP`, t31.`ZW`, t11.`ZZDZS` FROM `T_TRMTRAINTEACHER` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_TRMTRAINAGENCY t21 ON t1.TRMTRAINAGENCYID = t21.TRMTRAINAGENCYID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`JSLX` = '10' )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`AHTC`, t1.`BZ`, t1.`CJGS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJ`, t1.`DZYX`, t1.`ENABLE`, t1.`JF`, t1.`JGLB`, t1.`JSBM`, t1.`JSKC`, t1.`JSLB`, t1.`JSLX`, t1.`LXDH`, t1.`NL`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`PJ`, t1.`PXJSJB`, t1.`SFFC`, t1.`SFGX`, t1.`TRMTRAINAGENCYID`, t21.`TRMTRAINAGENCYNAME`, t1.`TRMTRAINTEACHERID`, t1.`TRMTRAINTEACHERNAME`, t1.`TZ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XB`, t1.`ZJHM`, t1.`ZJKSSJ`, t1.`ZP`, t31.`ZW`, t11.`ZZDZS` FROM `T_TRMTRAINTEACHER` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_TRMTRAINAGENCY t21 ON t1.TRMTRAINAGENCYID = t21.TRMTRAINAGENCYID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[WBJS]-->
+    <sql id="WBJS" databaseId="mysql">
+       <![CDATA[	SELECT t1.`AHTC`, t1.`BZ`, t1.`CJGS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DJ`, t1.`DZYX`, t1.`ENABLE`, t1.`JF`, t1.`JGLB`, t1.`JSBM`, t1.`JSKC`, t1.`JSLB`, t1.`JSLX`, t1.`LXDH`, t1.`NL`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`PIMPERSONID`, t1.`PIMPERSONNAME`, t1.`PJ`, t1.`PXJSJB`, t1.`SFFC`, t1.`SFGX`, t1.`TRMTRAINAGENCYID`, t21.`TRMTRAINAGENCYNAME`, t1.`TRMTRAINTEACHERID`, t1.`TRMTRAINTEACHERNAME`, t1.`TZ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XB`, t1.`ZJHM`, t1.`ZJKSSJ`, t1.`ZP`, t31.`ZW`, t11.`ZZDZS` FROM `T_TRMTRAINTEACHER` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  LEFT JOIN T_TRMTRAINAGENCY t21 ON t1.TRMTRAINAGENCYID = t21.TRMTRAINAGENCYID  LEFT JOIN T_PIMPERSON t31 ON t1.PIMPERSONID = t31.PIMPERSONID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`JSLX` = '20' )
+			]]>
+    </sql>
+</mapper>
+

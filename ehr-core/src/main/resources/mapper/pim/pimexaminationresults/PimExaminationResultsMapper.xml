@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PimExaminationResultsMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PimExaminationResultsResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`FS`, t1.`JSSJ`, t1.`PIMEXAMINATIONRESULTSID`, t1.`PIMEXAMINATIONRESULTSNAME`, t1.`PJ`, t1.`QSSJ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH` FROM `T_PIMEXAMINATIONRESULTS` t1  ) t1 where pimexaminationresultsid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PimExaminationResultsResultMap" type="cn.ibizlab.ehr.core.pim.domain.PimExaminationResults" autoMapping="true">
+        <id property="pimexaminationresultsid" column="pimexaminationresultsid" /><!--主键字段映射-->
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimExaminationResultsSearchContext"  resultMap="PimExaminationResultsResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`FS`, t1.`JSSJ`, t1.`PIMEXAMINATIONRESULTSID`, t1.`PIMEXAMINATIONRESULTSNAME`, t1.`PJ`, t1.`QSSJ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH` FROM `T_PIMEXAMINATIONRESULTS` t1  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`FS`, t1.`JSSJ`, t1.`PIMEXAMINATIONRESULTSID`, t1.`PIMEXAMINATIONRESULTSNAME`, t1.`PJ`, t1.`QSSJ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YGBH` FROM `T_PIMEXAMINATIONRESULTS` t1  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.vac.mapper.VacLeaveSystemDtailMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="VacLeaveSystemDtailResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACLEAVESYSTEMDETAILID`, t1.`VACLEAVESYSTEMDETAILNAME`, t1.`VACLEAVESYSTEMID`, t11.`VACLEAVESYSTEMNAME`, t1.`XJGZ`, t1.`XJGZGS`, t1.`XJLX` FROM `T_VACLEAVESYSTEMDETAIL` t1  LEFT JOIN T_VACLEAVESYSTEM t11 ON t1.VACLEAVESYSTEMID = t11.VACLEAVESYSTEMID  ) t1 where vacleavesystemdetailid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="VacLeaveSystemDtailResultMap" type="cn.ibizlab.ehr.core.vac.domain.VacLeaveSystemDtail" autoMapping="true">
+        <id property="vacleavesystemdetailid" column="vacleavesystemdetailid" /><!--主键字段映射-->
+		<result property="vacleavesystemid" column="vacleavesystemid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="vacleavesystem" javaType="cn.ibizlab.ehr.core.vac.domain.VacLeaveSystem" column="vacleavesystemid" select="cn.ibizlab.ehr.core.vac.mapper.VacLeaveSystemMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_VACLEAVESYSTEMDETAIL_VACLEAVESYSTEM_VACLEAVESYSTEMID] -->
+	 <select id="selectByVacleavesystemid" resultMap="VacLeaveSystemDtailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  vacleavesystemid=#{vacleavesystemid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.vac.filter.VacLeaveSystemDtailSearchContext"  resultMap="VacLeaveSystemDtailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACLEAVESYSTEMDETAILID`, t1.`VACLEAVESYSTEMDETAILNAME`, t1.`VACLEAVESYSTEMID`, t11.`VACLEAVESYSTEMNAME`, t1.`XJGZ`, t1.`XJGZGS`, t1.`XJLX` FROM `T_VACLEAVESYSTEMDETAIL` t1  LEFT JOIN T_VACLEAVESYSTEM t11 ON t1.VACLEAVESYSTEMID = t11.VACLEAVESYSTEMID  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACLEAVESYSTEMDETAILID`, t1.`VACLEAVESYSTEMDETAILNAME`, t1.`VACLEAVESYSTEMID`, t11.`VACLEAVESYSTEMNAME`, t1.`XJGZ`, t1.`XJGZGS`, t1.`XJLX` FROM `T_VACLEAVESYSTEMDETAIL` t1  LEFT JOIN T_VACLEAVESYSTEM t11 ON t1.VACLEAVESYSTEMID = t11.VACLEAVESYSTEMID  
+			]]>
+    </sql>
+</mapper>
+

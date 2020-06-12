@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.sal.mapper.SALPERSONSTDDETAILMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="SALPERSONSTDDETAILResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`SALPERSONSTDDETAILID`, t1.`SALPERSONSTDDETAILNAME`, t1.`SALPERSONSTDID`, t11.`SALPERSONSTDNAME`, t1.`SALSCHEMEITEMID`, t21.`SALSCHEMEITEMNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XC`, t1.`YWMS`, t1.`YWZ` FROM `T_SALPERSONSTDDETAIL` t1  LEFT JOIN T_SALPERSONSTD t11 ON t1.SALPERSONSTDID = t11.SALPERSONSTDID  LEFT JOIN T_SALSCHEMEITEM t21 ON t1.SALSCHEMEITEMID = t21.SALSCHEMEITEMID  ) t1 where salpersonstddetailid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="SALPERSONSTDDETAILResultMap" type="cn.ibizlab.ehr.core.sal.domain.SALPERSONSTDDETAIL" autoMapping="true">
+        <id property="salpersonstddetailid" column="salpersonstddetailid" /><!--主键字段映射-->
+		<result property="salpersonstdid" column="salpersonstdid" />
+		<result property="salschemeitemid" column="salschemeitemid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="salpersonstd" javaType="cn.ibizlab.ehr.core.sal.domain.SalPersonStd" column="salpersonstdid" select="cn.ibizlab.ehr.core.sal.mapper.SalPersonStdMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="salschemeitem" javaType="cn.ibizlab.ehr.core.sal.domain.SalSchemeItem" column="salschemeitemid" select="cn.ibizlab.ehr.core.sal.mapper.SalSchemeItemMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALPERSONSTDDETAIL_SALPERSONSTD_SALPERSONSTDID] -->
+	 <select id="selectBySalpersonstdid" resultMap="SALPERSONSTDDETAILResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  salpersonstdid=#{salpersonstdid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALPERSONSTDDETAIL_SALSCHEMEITEM_SALSCHEMEITEMID] -->
+	 <select id="selectBySalschemeitemid" resultMap="SALPERSONSTDDETAILResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  salschemeitemid=#{salschemeitemid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.sal.filter.SALPERSONSTDDETAILSearchContext"  resultMap="SALPERSONSTDDETAILResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`SALPERSONSTDDETAILID`, t1.`SALPERSONSTDDETAILNAME`, t1.`SALPERSONSTDID`, t11.`SALPERSONSTDNAME`, t1.`SALSCHEMEITEMID`, t21.`SALSCHEMEITEMNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XC`, t1.`YWMS`, t1.`YWZ` FROM `T_SALPERSONSTDDETAIL` t1  LEFT JOIN T_SALPERSONSTD t11 ON t1.SALPERSONSTDID = t11.SALPERSONSTDID  LEFT JOIN T_SALSCHEMEITEM t21 ON t1.SALSCHEMEITEMID = t21.SALSCHEMEITEMID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`SALPERSONSTDDETAILID`, t1.`SALPERSONSTDDETAILNAME`, t1.`SALPERSONSTDID`, t11.`SALPERSONSTDNAME`, t1.`SALSCHEMEITEMID`, t21.`SALSCHEMEITEMNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XC`, t1.`YWMS`, t1.`YWZ` FROM `T_SALPERSONSTDDETAIL` t1  LEFT JOIN T_SALPERSONSTD t11 ON t1.SALPERSONSTDID = t11.SALPERSONSTDID  LEFT JOIN T_SALSCHEMEITEM t21 ON t1.SALSCHEMEITEMID = t21.SALSCHEMEITEMID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

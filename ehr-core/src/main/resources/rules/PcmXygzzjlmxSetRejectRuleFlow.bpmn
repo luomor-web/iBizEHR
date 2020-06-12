@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pcm.service.logic.pcmxygzzjlmxsetreject" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pcm.service.logic.pcmxygzzjlmxsetreject">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pcmxygzzjlmxsetrejectdefault" type="cn.ibizlab.ehr.core.pcm.domain.PcmXygzzjlmx" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pcmxygzzjlmxsetrejectprepareparam1" id="3BEFA22D-B931-487B-A280-398F384C063D" implementation="http://www.jboss.org/drools/rule" name="设置准备参数"/>
+     <endEvent id="3BEFA22D-B931-487B-A280-398F384C063D_End" name="End"/>
+     <sequenceFlow id="3BEFA22D-B931-487B-A280-398F384C063D_End_Line" sourceRef="3BEFA22D-B931-487B-A280-398F384C063D" targetRef="3BEFA22D-B931-487B-A280-398F384C063D_End"/>
+     <startEvent id="0D3C3455-9602-4F55-A904-361A497F7DC4" isInterrupting="true"/>
+     <sequenceFlow id="23050F14-836F-41BC-9D62-C013F8E27170" sourceRef="0D3C3455-9602-4F55-A904-361A497F7DC4" targetRef="3BEFA22D-B931-487B-A280-398F384C063D">
+     </sequenceFlow>
+    </process>
+</definitions>
+

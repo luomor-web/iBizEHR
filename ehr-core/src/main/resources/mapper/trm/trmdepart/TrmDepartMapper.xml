@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.trm.mapper.TrmDepartMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="TrmDepartResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`FJ`, t1.`JD`, t1.`JZRQ`, t1.`LCLX`, t1.`ND`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t11.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t11.`SHORTNAME`, t1.`SPFS`, t1.`TDRQ`, t1.`TRMDEPARTID`, t1.`TRMDEPARTNAME`, t1.`TZLX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XQDBM`, t1.`XQLYLX`, t31.`ZZDZS` FROM `T_TRMDEPART` t1  LEFT JOIN T_SRFORGSECTOR t11 ON t1.ORMORGSECTORID = t11.ORGSECTORID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  ) t1 where trmdepartid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="TrmDepartResultMap" type="cn.ibizlab.ehr.core.trm.domain.TrmDepart" autoMapping="true">
+        <id property="trmdepartid" column="trmdepartid" /><!--主键字段映射-->
+		<result property="pimpersonid" column="pimpersonid" />
+		<result property="ormorgsectorid" column="ormorgsectorid" />
+		<result property="ormorgid" column="ormorgid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMDEPART_ORMORGSECTOR_ORMORGSECTORID] -->
+	 <select id="selectByOrmorgsectorid" resultMap="TrmDepartResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgsectorid=#{orgsectorid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMDEPART_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="TrmDepartResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_TRMDEPART_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="TrmDepartResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.trm.filter.TrmDepartSearchContext"  resultMap="TrmDepartResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`FJ`, t1.`JD`, t1.`JZRQ`, t1.`LCLX`, t1.`ND`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t11.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t11.`SHORTNAME`, t1.`SPFS`, t1.`TDRQ`, t1.`TRMDEPARTID`, t1.`TRMDEPARTNAME`, t1.`TZLX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XQDBM`, t1.`XQLYLX`, t31.`ZZDZS` FROM `T_TRMDEPART` t1  LEFT JOIN T_SRFORGSECTOR t11 ON t1.ORMORGSECTORID = t11.ORGSECTORID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`FJ`, t1.`JD`, t1.`JZRQ`, t1.`LCLX`, t1.`ND`, t1.`ORMORGID`, t31.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t11.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`PIMPERSONID`, t21.`PIMPERSONNAME`, t11.`SHORTNAME`, t1.`SPFS`, t1.`TDRQ`, t1.`TRMDEPARTID`, t1.`TRMDEPARTNAME`, t1.`TZLX`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XQDBM`, t1.`XQLYLX`, t31.`ZZDZS` FROM `T_TRMDEPART` t1  LEFT JOIN T_SRFORGSECTOR t11 ON t1.ORMORGSECTORID = t11.ORGSECTORID  LEFT JOIN T_PIMPERSON t21 ON t1.PIMPERSONID = t21.PIMPERSONID  LEFT JOIN T_SRFORG t31 ON t1.ORMORGID = t31.ORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

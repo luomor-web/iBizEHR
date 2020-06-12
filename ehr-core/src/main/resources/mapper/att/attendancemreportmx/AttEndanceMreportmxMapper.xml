@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.att.mapper.AttEndanceMreportmxMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="AttEndanceMreportmxResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`ATTENDANCEMREPORTID2`, t1.`ATTENDANCEMREPORTMXID`, t1.`ATTENDANCEMREPORTMXNAME`, t1.`ATTENDENCESETUPID`, t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DAY1`, t1.`DAY10`, t1.`DAY11`, t1.`DAY12`, t1.`DAY13`, t1.`DAY14`, t1.`DAY15`, t1.`DAY16`, t1.`DAY17`, t1.`DAY18`, t1.`DAY19`, t1.`DAY2`, t1.`DAY20`, t1.`DAY21`, t1.`DAY22`, t1.`DAY23`, t1.`DAY24`, t1.`DAY25`, t1.`DAY26`, t1.`DAY27`, t1.`DAY28`, t1.`DAY29`, t1.`DAY3`, t1.`DAY30`, t1.`DAY31`, t1.`DAY4`, t1.`DAY5`, t1.`DAY6`, t1.`DAY7`, t1.`DAY8`, t1.`DAY9`, t11.`GW`, t1.`KQHZ`, t1.`ND`, t1.`ORMROGID`, t1.`ORMROGNAME`, t1.`ORMROGSECTORID`, t1.`ORMROGSECTORNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YF`, t11.`YGBH` FROM `T_ATTENDANCEMREPORTMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  ) t1 where attendancemreportmxid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="AttEndanceMreportmxResultMap" type="cn.ibizlab.ehr.core.att.domain.AttEndanceMreportmx" autoMapping="true">
+        <id property="attendancemreportmxid" column="attendancemreportmxid" /><!--主键字段映射-->
+		<result property="attendancemreportname" column="attendancemreportmxname" />
+		<result property="attendancemreportid2" column="attendancemreportid2" />
+		<result property="pimpersonid" column="pimpersonid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="attendancemreport2" javaType="cn.ibizlab.ehr.core.att.domain.AttEndanceMreport" column="attendancemreportid2" select="cn.ibizlab.ehr.core.att.mapper.AttEndanceMreportMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ATTENDANCEMREPORTMX_ATTENDANCEMREPORT_ATTENDANCEMREPORTID2] -->
+	 <select id="selectByAttendancemreportid2" resultMap="AttEndanceMreportmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  attendancemreportid2=#{attendancemreportid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_ATTENDANCEMREPORTMX_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="AttEndanceMreportmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.att.filter.AttEndanceMreportmxSearchContext"  resultMap="AttEndanceMreportmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[KQYBMXDY]-->
+	 <select id="searchKQYBMXDY"  parameterType="cn.ibizlab.ehr.core.att.filter.AttEndanceMreportmxSearchContext"  resultMap="AttEndanceMreportmxResultMap">
+         select t1.* from (
+                <include refid="KQYBMXDY" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[CurPerson]-->
+	 <select id="searchCurPerson"  parameterType="cn.ibizlab.ehr.core.att.filter.AttEndanceMreportmxSearchContext"  resultMap="AttEndanceMreportmxResultMap">
+         select t1.* from (
+                <include refid="CurPerson" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[CurPerson]-->
+    <sql id="CurPerson" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ATTENDANCEMREPORTID2`, t1.`ATTENDANCEMREPORTMXID`, t1.`ATTENDANCEMREPORTMXNAME`, t1.`ATTENDENCESETUPID`, t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DAY1`, t1.`DAY10`, t1.`DAY11`, t1.`DAY12`, t1.`DAY13`, t1.`DAY14`, t1.`DAY15`, t1.`DAY16`, t1.`DAY17`, t1.`DAY18`, t1.`DAY19`, t1.`DAY2`, t1.`DAY20`, t1.`DAY21`, t1.`DAY22`, t1.`DAY23`, t1.`DAY24`, t1.`DAY25`, t1.`DAY26`, t1.`DAY27`, t1.`DAY28`, t1.`DAY29`, t1.`DAY3`, t1.`DAY30`, t1.`DAY31`, t1.`DAY4`, t1.`DAY5`, t1.`DAY6`, t1.`DAY7`, t1.`DAY8`, t1.`DAY9`, t11.`GW`, t1.`KQHZ`, t1.`ND`, t1.`ORMROGID`, t1.`ORMROGNAME`, t1.`ORMROGSECTORID`, t1.`ORMROGSECTORNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YF`, t11.`YGBH` FROM `T_ATTENDANCEMREPORTMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  
+				 WHERE 	( t1.`PIMPERSONID` =  #{srf.webcontext.pimpersonid} )
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ATTENDANCEMREPORTID2`, t1.`ATTENDANCEMREPORTMXID`, t1.`ATTENDANCEMREPORTMXNAME`, t1.`ATTENDENCESETUPID`, t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DAY1`, t1.`DAY10`, t1.`DAY11`, t1.`DAY12`, t1.`DAY13`, t1.`DAY14`, t1.`DAY15`, t1.`DAY16`, t1.`DAY17`, t1.`DAY18`, t1.`DAY19`, t1.`DAY2`, t1.`DAY20`, t1.`DAY21`, t1.`DAY22`, t1.`DAY23`, t1.`DAY24`, t1.`DAY25`, t1.`DAY26`, t1.`DAY27`, t1.`DAY28`, t1.`DAY29`, t1.`DAY3`, t1.`DAY30`, t1.`DAY31`, t1.`DAY4`, t1.`DAY5`, t1.`DAY6`, t1.`DAY7`, t1.`DAY8`, t1.`DAY9`, t11.`GW`, t1.`KQHZ`, t1.`ND`, t1.`ORMROGID`, t1.`ORMROGNAME`, t1.`ORMROGSECTORID`, t1.`ORMROGSECTORNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YF`, t11.`YGBH` FROM `T_ATTENDANCEMREPORTMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  
+			]]>
+    </sql>
+    <!--数据查询[KQYBMXDY]-->
+    <sql id="KQYBMXDY" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ATTENDANCEMREPORTID2`, t1.`ATTENDANCEMREPORTMXID`, t1.`ATTENDANCEMREPORTMXNAME`, t1.`ATTENDENCESETUPID`, t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DAY1`, t1.`DAY10`, t1.`DAY11`, t1.`DAY12`, t1.`DAY13`, t1.`DAY14`, t1.`DAY15`, t1.`DAY16`, t1.`DAY17`, t1.`DAY18`, t1.`DAY19`, t1.`DAY2`, t1.`DAY20`, t1.`DAY21`, t1.`DAY22`, t1.`DAY23`, t1.`DAY24`, t1.`DAY25`, t1.`DAY26`, t1.`DAY27`, t1.`DAY28`, t1.`DAY29`, t1.`DAY3`, t1.`DAY30`, t1.`DAY31`, t1.`DAY4`, t1.`DAY5`, t1.`DAY6`, t1.`DAY7`, t1.`DAY8`, t1.`DAY9`, t11.`GW`, t1.`KQHZ`, t1.`ND`, t1.`ORMROGID`, t1.`ORMROGNAME`, t1.`ORMROGSECTORID`, t1.`ORMROGSECTORNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YF`, t11.`YGBH` FROM `T_ATTENDANCEMREPORTMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  
+				 WHERE 	( t1.`ATTENDANCEMREPORTID2` =  #{srf.webcontext.srfkey} )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ATTENDANCEMREPORTID2`, t1.`ATTENDANCEMREPORTMXID`, t1.`ATTENDANCEMREPORTMXNAME`, t1.`ATTENDENCESETUPID`, t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DAY1`, t1.`DAY10`, t1.`DAY11`, t1.`DAY12`, t1.`DAY13`, t1.`DAY14`, t1.`DAY15`, t1.`DAY16`, t1.`DAY17`, t1.`DAY18`, t1.`DAY19`, t1.`DAY2`, t1.`DAY20`, t1.`DAY21`, t1.`DAY22`, t1.`DAY23`, t1.`DAY24`, t1.`DAY25`, t1.`DAY26`, t1.`DAY27`, t1.`DAY28`, t1.`DAY29`, t1.`DAY3`, t1.`DAY30`, t1.`DAY31`, t1.`DAY4`, t1.`DAY5`, t1.`DAY6`, t1.`DAY7`, t1.`DAY8`, t1.`DAY9`, t11.`GW`, t1.`KQHZ`, t1.`ND`, t1.`ORMROGID`, t1.`ORMROGNAME`, t1.`ORMROGSECTORID`, t1.`ORMROGSECTORNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`YF`, t11.`YGBH` FROM `T_ATTENDANCEMREPORTMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  
+			]]>
+    </sql>
+</mapper>
+

@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+#zuul网关路由设置
+zuul:
+  routes:
+      dynachart:
+        path: /dynacharts/**
+        serviceId: r7rt-dyna
+        stripPrefix: false
+      dynadashboard:
+        path: /dynadashboards/**
+        serviceId: r7rt-dyna
+        stripPrefix: false
+      wfcore:
+        path: /wfcore/**
+        serviceId: ibzwf-api
+        stripPrefix: true
+  sensitive-headers:
+    - Cookie,Set-Cookie,Authorization

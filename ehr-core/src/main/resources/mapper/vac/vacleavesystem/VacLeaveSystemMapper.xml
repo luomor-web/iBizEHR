@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.vac.mapper.VacLeaveSystemMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="VacLeaveSystemResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ND`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`SFQY`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACLEAVESYSTEMID`, t1.`VACLEAVESYSTEMNAME`, t1.`YXQJS`, t1.`YXQKS`, t11.`ZZDZS` FROM `T_VACLEAVESYSTEM` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  ) t1 where vacleavesystemid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="VacLeaveSystemResultMap" type="cn.ibizlab.ehr.core.vac.domain.VacLeaveSystem" autoMapping="true">
+        <id property="vacleavesystemid" column="vacleavesystemid" /><!--主键字段映射-->
+		<result property="ormorgid" column="ormorgid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_VACLEAVESYSTEM_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="VacLeaveSystemResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.vac.filter.VacLeaveSystemSearchContext"  resultMap="VacLeaveSystemResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ND`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`SFQY`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACLEAVESYSTEMID`, t1.`VACLEAVESYSTEMNAME`, t1.`YXQJS`, t1.`YXQKS`, t11.`ZZDZS` FROM `T_VACLEAVESYSTEM` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ND`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`SFQY`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`VACLEAVESYSTEMID`, t1.`VACLEAVESYSTEMNAME`, t1.`YXQJS`, t1.`YXQKS`, t11.`ZZDZS` FROM `T_VACLEAVESYSTEM` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+			]]>
+    </sql>
+</mapper>
+

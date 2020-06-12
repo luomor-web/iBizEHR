@@ -1,0 +1,17 @@
+package cn.ibizlab.ehr.core.util.job;
+
+import com.xxl.job.core.biz.model.ReturnT;
+import com.xxl.job.core.handler.IJobHandler;
+import com.xxl.job.core.handler.annotation.JobHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@JobHandler(value="SyncARRecordJobHandler")
+@Component
+public class SyncARRecordJobHandler extends IJobHandler {
+
+    @Override
+    public ReturnT<String> execute(String params) throws Exception {
+        return new ReturnT(200, "服务调用成功");
+    }
+}

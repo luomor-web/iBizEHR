@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PcmYdjzmxMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PcmYdjzmxResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t11.`BM`, t11.`BMID`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`ISFINISHED`, t1.`JSRQ`, t81.`SHORTNAME` AS `JZSHORTNAME`, t61.`ZZDZS` AS `JZZZDZS`, t1.`KSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t71.`ORMDUTYNAME`, t1.`ORMORGID`, t61.`ZZDZS` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t81.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMYDJZMXID`, t1.`PCMYDJZMXNAME`, t11.`PCMYDMXTYPE`, t1.`PIMDISTIRBUTIONID`, t11.`PIMPERSONID`, t41.`PIMPERSONNAME`, case when now() > t1.`JSRQ` then 1 else 0  END AS `SFDQ`, t31.`SHORTNAME`, t11.`SXRQ`, ROUND(TIMESTAMPDIFF(MONTH,now(),t1.`JSRQ`)) AS `SYYF`, case when now() >  t1.`JSRQ`  then 20 else 10 END AS `SYYF_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t21.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDJZMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDJZMXID = t11.PCMYDMXID  LEFT JOIN T_SRFORG t21 ON t11.ZZID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.BMID = t31.ORGSECTORID  LEFT JOIN T_PIMPERSON t41 ON t11.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  LEFT JOIN T_SRFORG t61 ON t1.ORMORGID = t61.ORGID  LEFT JOIN T_ORMDUTY t71 ON t1.ORMDUTYID = t71.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t81 ON t1.ORMORGSECTORID = t81.ORGSECTORID  ) t1 where pcmydjzmxid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PcmYdjzmxResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PcmYdjzmx" autoMapping="true">
+        <id property="pcmydjzmxid" column="pcmydjzmxid" /><!--主键字段映射-->
+		<result property="syyfColor" column="syyf_color" />
+		<result property="ormpostid" column="ormpostid" />
+		<result property="ormorgid" column="ormorgid" />
+		<result property="ormdutyid" column="ormdutyid" />
+		<result property="ormorgsectorid" column="ormorgsectorid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormduty" javaType="cn.ibizlab.ehr.core.orm.domain.OrmDuty" column="ormdutyid" select="cn.ibizlab.ehr.core.orm.mapper.OrmDutyMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormpost" javaType="cn.ibizlab.ehr.core.orm.domain.OrmPost" column="ormpostid" select="cn.ibizlab.ehr.core.orm.mapper.OrmPostMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMYDJZMX_ORMDUTY_ORMDUTYID] -->
+	 <select id="selectByOrmdutyid" resultMap="PcmYdjzmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormdutyid=#{ormdutyid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMYDJZMX_ORMORGSECTOR_ORMORGSECTORID] -->
+	 <select id="selectByOrmorgsectorid" resultMap="PcmYdjzmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgsectorid=#{orgsectorid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMYDJZMX_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="PcmYdjzmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMYDJZMX_ORMPOST_ORMPOSTID] -->
+	 <select id="selectByOrmpostid" resultMap="PcmYdjzmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormpostid=#{ormpostid}
+     </select>
+
+    <!--数据集合[GLDS]-->
+	 <select id="searchGLDS"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmYdjzmxSearchContext"  resultMap="PcmYdjzmxResultMap">
+         select t1.* from (
+                <include refid="GLDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[LSJLDS]-->
+	 <select id="searchLSJLDS"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmYdjzmxSearchContext"  resultMap="PcmYdjzmxResultMap">
+         select t1.* from (
+                <include refid="LSJLDQ" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmYdjzmxSearchContext"  resultMap="PcmYdjzmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`ISFINISHED`, t1.`JSRQ`, t81.`SHORTNAME` AS `JZSHORTNAME`, t61.`ZZDZS` AS `JZZZDZS`, t1.`KSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t71.`ORMDUTYNAME`, t1.`ORMORGID`, t61.`ZZDZS` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t81.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMYDJZMXID`, t1.`PCMYDJZMXNAME`, t11.`PCMYDMXTYPE`, t1.`PIMDISTIRBUTIONID`, t11.`PIMPERSONID`, t41.`PIMPERSONNAME`, case when now() > t1.`JSRQ` then 1 else 0  END AS `SFDQ`, t31.`SHORTNAME`, t11.`SXRQ`, ROUND(TIMESTAMPDIFF(MONTH,now(),t1.`JSRQ`)) AS `SYYF`, case when now() >  t1.`JSRQ`  then 20 else 10 END AS `SYYF_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t21.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDJZMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDJZMXID = t11.PCMYDMXID  LEFT JOIN T_SRFORG t21 ON t11.ZZID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.BMID = t31.ORGSECTORID  LEFT JOIN T_PIMPERSON t41 ON t11.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  LEFT JOIN T_SRFORG t61 ON t1.ORMORGID = t61.ORGID  LEFT JOIN T_ORMDUTY t71 ON t1.ORMDUTYID = t71.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t81 ON t1.ORMORGSECTORID = t81.ORGSECTORID  
+			]]>
+    </sql>
+    <!--数据查询[GLDQ]-->
+    <sql id="GLDQ" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`ISFINISHED`, t1.`JSRQ`, t81.`SHORTNAME` AS `JZSHORTNAME`, t61.`ZZDZS` AS `JZZZDZS`, t1.`KSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t71.`ORMDUTYNAME`, t1.`ORMORGID`, t61.`ZZDZS` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t81.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMYDJZMXID`, t1.`PCMYDJZMXNAME`, t11.`PCMYDMXTYPE`, t1.`PIMDISTIRBUTIONID`, t11.`PIMPERSONID`, t41.`PIMPERSONNAME`, case when now() > t1.`JSRQ` then 1 else 0  END AS `SFDQ`, t31.`SHORTNAME`, t11.`SXRQ`, ROUND(TIMESTAMPDIFF(MONTH,now(),t1.`JSRQ`)) AS `SYYF`, case when now() >  t1.`JSRQ`  then 20 else 10 END AS `SYYF_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t21.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDJZMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDJZMXID = t11.PCMYDMXID  LEFT JOIN T_SRFORG t21 ON t11.ZZID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.BMID = t31.ORGSECTORID  LEFT JOIN T_PIMPERSON t41 ON t11.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  LEFT JOIN T_SRFORG t61 ON t1.ORMORGID = t61.ORGID  LEFT JOIN T_ORMDUTY t71 ON t1.ORMDUTYID = t71.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t81 ON t1.ORMORGSECTORID = t81.ORGSECTORID  
+				 WHERE 	( t1.`ISFINISHED` = '0' )
+			]]>
+    </sql>
+    <!--数据查询[LSJLDQ]-->
+    <sql id="LSJLDQ" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`ISFINISHED`, t1.`JSRQ`, t81.`SHORTNAME` AS `JZSHORTNAME`, t61.`ZZDZS` AS `JZZZDZS`, t1.`KSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t71.`ORMDUTYNAME`, t1.`ORMORGID`, t61.`ZZDZS` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t81.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMYDJZMXID`, t1.`PCMYDJZMXNAME`, t11.`PCMYDMXTYPE`, t1.`PIMDISTIRBUTIONID`, t11.`PIMPERSONID`, t41.`PIMPERSONNAME`, case when now() > t1.`JSRQ` then 1 else 0  END AS `SFDQ`, t31.`SHORTNAME`, t11.`SXRQ`, ROUND(TIMESTAMPDIFF(MONTH,now(),t1.`JSRQ`)) AS `SYYF`, case when now() >  t1.`JSRQ`  then 20 else 10 END AS `SYYF_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t21.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDJZMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDJZMXID = t11.PCMYDMXID  LEFT JOIN T_SRFORG t21 ON t11.ZZID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.BMID = t31.ORGSECTORID  LEFT JOIN T_PIMPERSON t41 ON t11.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  LEFT JOIN T_SRFORG t61 ON t1.ORMORGID = t61.ORGID  LEFT JOIN T_ORMDUTY t71 ON t1.ORMDUTYID = t71.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t81 ON t1.ORMORGSECTORID = t81.ORGSECTORID  
+				 WHERE 	( t1.`ISFINISHED` = '1' )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t11.`BM`, t11.`BMID`, t11.`CHECKSTATUS`, t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`CSRQ`, t1.`CZ`, t1.`ISFINISHED`, t1.`JSRQ`, t81.`SHORTNAME` AS `JZSHORTNAME`, t61.`ZZDZS` AS `JZZZDZS`, t1.`KSRQ`, t11.`LXDH`, t11.`NL`, t11.`ZZID` AS `ORGID`, t11.`BMID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t71.`ORMDUTYNAME`, t1.`ORMORGID`, t61.`ZZDZS` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t81.`SHORTNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t51.`ORMPOSTNAME`, t1.`PCMYDJZMXID`, t1.`PCMYDJZMXNAME`, t11.`PCMYDMXTYPE`, t1.`PIMDISTIRBUTIONID`, t11.`PIMPERSONID`, t41.`PIMPERSONNAME`, case when now() > t1.`JSRQ` then 1 else 0  END AS `SFDQ`, t31.`SHORTNAME`, t11.`SXRQ`, ROUND(TIMESTAMPDIFF(MONTH,now(),t1.`JSRQ`)) AS `SYYF`, case when now() >  t1.`JSRQ`  then 20 else 10 END AS `SYYF_COLOR`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGW`, t11.`YRANK`, t11.`YZW`, t11.`ZJHM`, t11.`ZZ`, t21.`ZZDZS`, t11.`ZZID` FROM `T_PCMYDJZMX` t1  LEFT JOIN T_PCMYDMX t11 ON t1.PCMYDJZMXID = t11.PCMYDMXID  LEFT JOIN T_SRFORG t21 ON t11.ZZID = t21.ORGID  LEFT JOIN T_SRFORGSECTOR t31 ON t11.BMID = t31.ORGSECTORID  LEFT JOIN T_PIMPERSON t41 ON t11.PIMPERSONID = t41.PIMPERSONID  LEFT JOIN T_ORMPOST t51 ON t1.ORMPOSTID = t51.ORMPOSTID  LEFT JOIN T_SRFORG t61 ON t1.ORMORGID = t61.ORGID  LEFT JOIN T_ORMDUTY t71 ON t1.ORMDUTYID = t71.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t81 ON t1.ORMORGSECTORID = t81.ORGSECTORID  
+			]]>
+    </sql>
+</mapper>
+

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PimContractSignOrgMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PimContractSignOrgResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CONTRACTSIGNORGID`, t1.`CONTRACTSIGNORGNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ISDEFAULTSIGNORG`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`ORMSIGNORGID`, t11.`ORMSIGNORGNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_CONTRACTSIGNORG` t1  LEFT JOIN T_ORMSIGNORG t11 ON t1.ORMSIGNORGID = t11.ORMSIGNORGID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  ) t1 where contractsignorgid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PimContractSignOrgResultMap" type="cn.ibizlab.ehr.core.pim.domain.PimContractSignOrg" autoMapping="true">
+        <id property="contractsignorgid" column="contractsignorgid" /><!--主键字段映射-->
+		<result property="ormsignorgid" column="ormsignorgid" />
+		<result property="ormorgid" column="ormorgid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormsignorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmSignOrg" column="ormsignorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmSignOrgMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_CONTRACTSIGNORG_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="PimContractSignOrgResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_CONTRACTSIGNORG_ORMSIGNORG_ORMSIGNORGID] -->
+	 <select id="selectByOrmsignorgid" resultMap="PimContractSignOrgResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormsignorgid=#{ormsignorgid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimContractSignOrgSearchContext"  resultMap="PimContractSignOrgResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default2]-->
+	 <select id="searchDefault2"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimContractSignOrgSearchContext"  resultMap="PimContractSignOrgResultMap">
+         select t1.* from (
+                <include refid="Default2" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CONTRACTSIGNORGID`, t1.`CONTRACTSIGNORGNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ISDEFAULTSIGNORG`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`ORMSIGNORGID`, t11.`ORMSIGNORGNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_CONTRACTSIGNORG` t1  LEFT JOIN T_ORMSIGNORG t11 ON t1.ORMSIGNORGID = t11.ORMSIGNORGID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[Default2]-->
+    <sql id="Default2" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CONTRACTSIGNORGID`, t1.`CONTRACTSIGNORGNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ISDEFAULTSIGNORG`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`ORMSIGNORGID`, t11.`ORMSIGNORGNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_CONTRACTSIGNORG` t1  LEFT JOIN T_ORMSIGNORG t11 ON t1.ORMSIGNORGID = t11.ORMSIGNORGID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CONTRACTSIGNORGID`, t1.`CONTRACTSIGNORGNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`ISDEFAULTSIGNORG`, t1.`ORMORGID`, t21.`ORGNAME` AS `ORMORGNAME`, t1.`ORMSIGNORGID`, t11.`ORMSIGNORGNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_CONTRACTSIGNORG` t1  LEFT JOIN T_ORMSIGNORG t11 ON t1.ORMSIGNORGID = t11.ORMSIGNORGID  LEFT JOIN T_SRFORG t21 ON t1.ORMORGID = t21.ORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

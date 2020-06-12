@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.par.mapper.ParDxkhnrmxMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="ParDxkhnrmxResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`KHDF`, t41.`KHLX` AS `KHDX`, t1.`ND`, t1.`PARDXKHNRMXID`, t1.`PARDXKHNRMXNAME`, t1.`PARKHZCMXID`, t31.`PARKHZCMXNAME`, t1.`PFZT`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`ZJHM`, t1.`ZQ`, t11.`ORMORGNAME` AS `ZZ` FROM `T_PARDXKHNRMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_PARKHZCMX t31 ON t1.PARKHZCMXID = t31.PARKHZCMXID  LEFT JOIN T_PARJXKHJCSZ t41 ON t31.PARJXKHJCSZID = t41.PARJXKHJCSZID  ) t1 where pardxkhnrmxid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="ParDxkhnrmxResultMap" type="cn.ibizlab.ehr.core.par.domain.ParDxkhnrmx" autoMapping="true">
+        <id property="pardxkhnrmxid" column="pardxkhnrmxid" /><!--主键字段映射-->
+		<result property="pimpersonid" column="pimpersonid" />
+		<result property="parkhzcmxid" column="parkhzcmxid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="parkhzcmx" javaType="cn.ibizlab.ehr.core.par.domain.ParKhzcmx" column="parkhzcmxid" select="cn.ibizlab.ehr.core.par.mapper.ParKhzcmxMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PARDXKHNRMX_PARKHZCMX_PARKHZCMXID] -->
+	 <select id="selectByParkhzcmxid" resultMap="ParDxkhnrmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  parkhzcmxid=#{parkhzcmxid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PARDXKHNRMX_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="ParDxkhnrmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.par.filter.ParDxkhnrmxSearchContext"  resultMap="ParDxkhnrmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`KHDF`, t41.`KHLX` AS `KHDX`, t1.`ND`, t1.`PARDXKHNRMXID`, t1.`PARDXKHNRMXNAME`, t1.`PARKHZCMXID`, t31.`PARKHZCMXNAME`, t1.`PFZT`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`ZJHM`, t1.`ZQ`, t11.`ORMORGNAME` AS `ZZ` FROM `T_PARDXKHNRMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_PARKHZCMX t31 ON t1.PARKHZCMXID = t31.PARKHZCMXID  LEFT JOIN T_PARJXKHJCSZ t41 ON t31.PARJXKHJCSZID = t41.PARJXKHJCSZID  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t21.`SHORTNAME` AS `BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`KHDF`, t41.`KHLX` AS `KHDX`, t1.`ND`, t1.`PARDXKHNRMXID`, t1.`PARDXKHNRMXNAME`, t1.`PARKHZCMXID`, t31.`PARKHZCMXNAME`, t1.`PFZT`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`ZJHM`, t1.`ZQ`, t11.`ORMORGNAME` AS `ZZ` FROM `T_PARDXKHNRMX` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_SRFORGSECTOR t21 ON t11.ORMORGSECTORID = t21.ORGSECTORID  LEFT JOIN T_PARKHZCMX t31 ON t1.PARKHZCMXID = t31.PARKHZCMXID  LEFT JOIN T_PARJXKHJCSZ t41 ON t31.PARJXKHJCSZID = t41.PARJXKHJCSZID  
+			]]>
+    </sql>
+</mapper>
+

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PimTitleMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PimTitleResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CAREERNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DURATION`, t1.`EMPLOYTIME`, t1.`ENABLE`, t1.`ENCLOSURE`, t1.`FJ`, t1.`JLCZZ`, t1.`JLGLBH`, t1.`JLSPZT`, t1.`JLSS`, t1.`LSSUINGAGENCY`, t1.`MAJORENGAGED`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t31.`ZZDZS` AS `ORMORGNAME`, t11.`ORMORGSECTORID`, t1.`PDJG`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMTITLECATALOGUEID`, t21.`PIMTITLECATALOGUENAME`, t1.`PIMTITLEID`, t1.`PIMTITLENAME`, t1.`REASON`, t1.`REVIEWBODY`, t1.`SFZGZC`, case when t1.`JLSPZT` !='10' then 1 else 0 end AS `SPSTATE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGZT`, t1.`ZCBH`, t1.`ZCDJ`, t1.`ZCHQRQ` FROM `T_PIMTITLE` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_PIMTITLECATALOGUE t21 ON t1.PIMTITLECATALOGUEID = t21.PIMTITLECATALOGUEID  LEFT JOIN T_SRFORG t31 ON t11.ORMORGID = t31.ORGID  ) t1 where pimtitleid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PimTitleResultMap" type="cn.ibizlab.ehr.core.pim.domain.PimTitle" autoMapping="true">
+        <id property="pimtitleid" column="pimtitleid" /><!--主键字段映射-->
+		<result property="pimpersonid" column="pimpersonid" />
+		<result property="pimtitlecatalogueid" column="pimtitlecatalogueid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimtitlecatalogue" javaType="cn.ibizlab.ehr.core.pim.domain.PimTitleCatalogue" column="pimtitlecatalogueid" select="cn.ibizlab.ehr.core.pim.mapper.PimTitleCatalogueMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMTITLE_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="PimTitleResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMTITLE_PIMTITLECATALOGUE_PIMTITLECATALOGUEID] -->
+	 <select id="selectByPimtitlecatalogueid" resultMap="PimTitleResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimtitlecatalogueid=#{pimtitlecatalogueid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimTitleSearchContext"  resultMap="PimTitleResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[JLSS]-->
+	 <select id="searchJLSS"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimTitleSearchContext"  resultMap="PimTitleResultMap">
+         select t1.* from (
+                <include refid="JLSS" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[AscriptionSys]-->
+	 <select id="searchAscriptionSys"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimTitleSearchContext"  resultMap="PimTitleResultMap">
+         select t1.* from (
+                <include refid="AscriptionSys" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[REP_TITLE]-->
+	 <select id="searchREP_TITLE"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimTitleSearchContext"  resultType="java.util.HashMap">
+	 	select countnum as "countnum",PROFESSOR_TYPE as "professor_type" from (
+         select t1.* from (
+                <include refid="REP_TITLE" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+		 ) groupinfo
+		 group by countnum,PROFESSOR_TYPE
+     </select>
+
+    <!--数据集合[ZIZHU]-->
+	 <select id="searchZIZHU"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimTitleSearchContext"  resultMap="PimTitleResultMap">
+         select t1.* from (
+                <include refid="ZIZHU" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[AscriptionSys]-->
+    <sql id="AscriptionSys" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CAREERNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DURATION`, t1.`EMPLOYTIME`, t1.`ENABLE`, t1.`ENCLOSURE`, t1.`FJ`, t1.`JLCZZ`, t1.`JLGLBH`, t1.`JLSPZT`, t1.`JLSS`, t1.`LSSUINGAGENCY`, t1.`MAJORENGAGED`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t31.`ZZDZS` AS `ORMORGNAME`, t11.`ORMORGSECTORID`, t1.`PDJG`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMTITLECATALOGUEID`, t21.`PIMTITLECATALOGUENAME`, t1.`PIMTITLEID`, t1.`PIMTITLENAME`, t1.`REASON`, t1.`REVIEWBODY`, t1.`SFZGZC`, case when t1.`JLSPZT` !='10' then 1 else 0 end AS `SPSTATE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGZT`, t1.`ZCBH`, t1.`ZCDJ`, t1.`ZCHQRQ` FROM `T_PIMTITLE` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_PIMTITLECATALOGUE t21 ON t1.PIMTITLECATALOGUEID = t21.PIMTITLECATALOGUEID  LEFT JOIN T_SRFORG t31 ON t11.ORMORGID = t31.ORGID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( ( t1.`JLSS` = '10'  OR  t1.`JLSS` IS NULL ) )
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CAREERNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DURATION`, t1.`EMPLOYTIME`, t1.`ENABLE`, t1.`ENCLOSURE`, t1.`FJ`, t1.`JLCZZ`, t1.`JLGLBH`, t1.`JLSPZT`, t1.`JLSS`, t1.`LSSUINGAGENCY`, t1.`MAJORENGAGED`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t31.`ZZDZS` AS `ORMORGNAME`, t11.`ORMORGSECTORID`, t1.`PDJG`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMTITLECATALOGUEID`, t21.`PIMTITLECATALOGUENAME`, t1.`PIMTITLEID`, t1.`PIMTITLENAME`, t1.`REASON`, t1.`REVIEWBODY`, t1.`SFZGZC`, case when t1.`JLSPZT` !='10' then 1 else 0 end AS `SPSTATE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGZT`, t1.`ZCBH`, t1.`ZCDJ`, t1.`ZCHQRQ` FROM `T_PIMTITLE` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_PIMTITLECATALOGUE t21 ON t1.PIMTITLECATALOGUEID = t21.PIMTITLECATALOGUEID  LEFT JOIN T_SRFORG t31 ON t11.ORMORGID = t31.ORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[JLSS]-->
+    <sql id="JLSS" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CAREERNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DURATION`, t1.`EMPLOYTIME`, t1.`ENABLE`, t1.`ENCLOSURE`, t1.`FJ`, t1.`JLCZZ`, t1.`JLGLBH`, t1.`JLSPZT`, t1.`JLSS`, t1.`LSSUINGAGENCY`, t1.`MAJORENGAGED`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t31.`ZZDZS` AS `ORMORGNAME`, t11.`ORMORGSECTORID`, t1.`PDJG`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMTITLECATALOGUEID`, t21.`PIMTITLECATALOGUENAME`, t1.`PIMTITLEID`, t1.`PIMTITLENAME`, t1.`REASON`, t1.`REVIEWBODY`, t1.`SFZGZC`, case when t1.`JLSPZT` !='10' then 1 else 0 end AS `SPSTATE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGZT`, t1.`ZCBH`, t1.`ZCDJ`, t1.`ZCHQRQ` FROM `T_PIMTITLE` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_PIMTITLECATALOGUE t21 ON t1.PIMTITLECATALOGUEID = t21.PIMTITLECATALOGUEID  LEFT JOIN T_SRFORG t31 ON t11.ORMORGID = t31.ORGID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`JLSS` = '20'  AND  t1.`PIMPERSONID` =  #{srf.sessioncontext.srfselfserviceid} )
+			]]>
+    </sql>
+    <!--数据查询[REP_TITLE]-->
+    <sql id="REP_TITLE" databaseId="mysql">
+       <![CDATA[	select PROFESSOR_TYPE,count(1) as countnum from BIS_PROFESSORANALYSIS_T group by PROFESSOR_TYPE
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CAREERNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DURATION`, t1.`EMPLOYTIME`, t1.`ENABLE`, t1.`ENCLOSURE`, t1.`FJ`, t1.`JLCZZ`, t1.`JLGLBH`, t1.`JLSPZT`, t1.`JLSS`, t1.`LSSUINGAGENCY`, t1.`MAJORENGAGED`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t31.`ZZDZS` AS `ORMORGNAME`, t11.`ORMORGSECTORID`, t1.`PDJG`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMTITLECATALOGUEID`, t21.`PIMTITLECATALOGUENAME`, t1.`PIMTITLEID`, t1.`PIMTITLENAME`, t1.`REASON`, t1.`REVIEWBODY`, t1.`SFZGZC`, case when t1.`JLSPZT` !='10' then 1 else 0 end AS `SPSTATE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGZT`, t1.`ZCBH`, t1.`ZCDJ`, t1.`ZCHQRQ` FROM `T_PIMTITLE` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_PIMTITLECATALOGUE t21 ON t1.PIMTITLECATALOGUEID = t21.PIMTITLECATALOGUEID  LEFT JOIN T_SRFORG t31 ON t11.ORMORGID = t31.ORGID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[ZIZHU]-->
+    <sql id="ZIZHU" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CAREERNAME`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DURATION`, t1.`EMPLOYTIME`, t1.`ENABLE`, t1.`ENCLOSURE`, t1.`FJ`, t1.`JLCZZ`, t1.`JLGLBH`, t1.`JLSPZT`, t1.`JLSS`, t1.`LSSUINGAGENCY`, t1.`MAJORENGAGED`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGSECTORID` AS `ORGSECTORID`, t11.`ORMORGID`, t31.`ZZDZS` AS `ORMORGNAME`, t11.`ORMORGSECTORID`, t1.`PDJG`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`PIMTITLECATALOGUEID`, t21.`PIMTITLECATALOGUENAME`, t1.`PIMTITLEID`, t1.`PIMTITLENAME`, t1.`REASON`, t1.`REVIEWBODY`, t1.`SFZGZC`, case when t1.`JLSPZT` !='10' then 1 else 0 end AS `SPSTATE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t11.`YGBH`, t11.`YGZT`, t1.`ZCBH`, t1.`ZCDJ`, t1.`ZCHQRQ` FROM `T_PIMTITLE` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_PIMTITLECATALOGUE t21 ON t1.PIMTITLECATALOGUEID = t21.PIMTITLECATALOGUEID  LEFT JOIN T_SRFORG t31 ON t11.ORMORGID = t31.ORGID  
+				 WHERE 	t1.ENABLE = 1
+					 AND ( t1.`PIMPERSONID` =  #{srf.sessioncontext.srfselfserviceid} )
+			]]>
+    </sql>
+</mapper>
+

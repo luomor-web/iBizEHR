@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PcmZpmeglMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PcmZpmeglResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FPME_SZA`, t1.`FPME_SZB`, t1.`FPME_SZJHW`, t1.`FPME_SZY`, t1.`FPME_XZA`, t1.`FPME_XZB`, t1.`FPME_XZXZY`, t1.`ND`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`PCMZPMEGLID`, t1.`PCMZPMEGLNAME`, t1.`PFCS`, case  when t1.`YBDRS_SZA` > t1.`SHZPAME`  then 1 else 0 end AS `SFCE_SZA`, case  when t1.`YBDRS_SZB` > t1.`SHZPBME`  then 1 else 0 end AS `SFCE_SZB`, case  when t1.`YBDRS_SZJHW` > t1.`SHZPJHWME`  then 1 else 0 end AS `SFCE_SZJHW`, case  when t1.`YBDRS_SZY` > t1.`SHZPYME`  then 1 else 0 end AS `SFCE_SZY`, case  when t1.`YBDRS_XZA` > t1.`XYZPAME`  then 1 else 0 end AS `SFCE_XZA`, case  when t1.`YBDRS_XZB` > t1.`XYZPBME`  then 1 else 0 end AS `SFCE_XZB`, case  when t1.`YBDRS_XZXZY` > t1.`XYZPXZYME`  then 1 else 0 end AS `SFCE_XZXZY`, t1.`SHZPAME`, t1.`SHZPBME`, t1.`SHZPJHWME`, t1.`SHZPYME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`XYZPAME`, t1.`XYZPBME`, t1.`XYZPXZYME`, t1.`YBDRS_SZA`, t1.`YBDRS_SZB`, t1.`YBDRS_SZJHW`, t1.`YBDRS_SZY`, t1.`YBDRS_XZA`, t1.`YBDRS_XZB`, t1.`YBDRS_XZXZY`, t11.`ZZDZS` FROM `T_PCMZPMEGL` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  ) t1 where pcmzpmeglid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PcmZpmeglResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PcmZpmegl" autoMapping="true">
+        <id property="pcmzpmeglid" column="pcmzpmeglid" /><!--主键字段映射-->
+		<result property="sfceSzy" column="sfce_szy" />
+		<result property="ybdrsSzjhw" column="ybdrs_szjhw" />
+		<result property="sfceXza" column="sfce_xza" />
+		<result property="sfceSzb" column="sfce_szb" />
+		<result property="ybdrsXzxzy" column="ybdrs_xzxzy" />
+		<result property="sfceSzjhw" column="sfce_szjhw" />
+		<result property="fpmeSzb" column="fpme_szb" />
+		<result property="ybdrsXza" column="ybdrs_xza" />
+		<result property="fpmeSzjhw" column="fpme_szjhw" />
+		<result property="ybdrsSzb" column="ybdrs_szb" />
+		<result property="fpmeXzxzy" column="fpme_xzxzy" />
+		<result property="fpmeSzy" column="fpme_szy" />
+		<result property="sfceSza" column="sfce_sza" />
+		<result property="fpmeXzb" column="fpme_xzb" />
+		<result property="ybdrsSza" column="ybdrs_sza" />
+		<result property="sfceXzb" column="sfce_xzb" />
+		<result property="fpmeXza" column="fpme_xza" />
+		<result property="ybdrsXzb" column="ybdrs_xzb" />
+		<result property="fpmeSza" column="fpme_sza" />
+		<result property="sfceXzxzy" column="sfce_xzxzy" />
+		<result property="ybdrsSzy" column="ybdrs_szy" />
+		<result property="ormorgid" column="ormorgid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PCMZPMEGL_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="PcmZpmeglResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+
+    <!--数据集合[CurND]-->
+	 <select id="searchCurND"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmZpmeglSearchContext"  resultMap="PcmZpmeglResultMap">
+         select t1.* from (
+                <include refid="CurND" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmZpmeglSearchContext"  resultMap="PcmZpmeglResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[CurND]-->
+    <sql id="CurND" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FPME_SZA`, t1.`FPME_SZB`, t1.`FPME_SZJHW`, t1.`FPME_SZY`, t1.`FPME_XZA`, t1.`FPME_XZB`, t1.`FPME_XZXZY`, t1.`ND`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`PCMZPMEGLID`, t1.`PCMZPMEGLNAME`, t1.`PFCS`, case  when t1.`YBDRS_SZA` > t1.`SHZPAME`  then 1 else 0 end AS `SFCE_SZA`, case  when t1.`YBDRS_SZB` > t1.`SHZPBME`  then 1 else 0 end AS `SFCE_SZB`, case  when t1.`YBDRS_SZJHW` > t1.`SHZPJHWME`  then 1 else 0 end AS `SFCE_SZJHW`, case  when t1.`YBDRS_SZY` > t1.`SHZPYME`  then 1 else 0 end AS `SFCE_SZY`, case  when t1.`YBDRS_XZA` > t1.`XYZPAME`  then 1 else 0 end AS `SFCE_XZA`, case  when t1.`YBDRS_XZB` > t1.`XYZPBME`  then 1 else 0 end AS `SFCE_XZB`, case  when t1.`YBDRS_XZXZY` > t1.`XYZPXZYME`  then 1 else 0 end AS `SFCE_XZXZY`, t1.`SHZPAME`, t1.`SHZPBME`, t1.`SHZPJHWME`, t1.`SHZPYME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`XYZPAME`, t1.`XYZPBME`, t1.`XYZPXZYME`, t1.`YBDRS_SZA`, t1.`YBDRS_SZB`, t1.`YBDRS_SZJHW`, t1.`YBDRS_SZY`, t1.`YBDRS_XZA`, t1.`YBDRS_XZB`, t1.`YBDRS_XZXZY`, t11.`ZZDZS` FROM `T_PCMZPMEGL` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+				 WHERE 	( t1.`ND` =  #{srf.webcontext.nodeid} )
+			]]>
+    </sql>
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FPME_SZA`, t1.`FPME_SZB`, t1.`FPME_SZJHW`, t1.`FPME_SZY`, t1.`FPME_XZA`, t1.`FPME_XZB`, t1.`FPME_XZXZY`, t1.`ND`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`PCMZPMEGLID`, t1.`PCMZPMEGLNAME`, t1.`PFCS`, case  when t1.`YBDRS_SZA` > t1.`SHZPAME`  then 1 else 0 end AS `SFCE_SZA`, case  when t1.`YBDRS_SZB` > t1.`SHZPBME`  then 1 else 0 end AS `SFCE_SZB`, case  when t1.`YBDRS_SZJHW` > t1.`SHZPJHWME`  then 1 else 0 end AS `SFCE_SZJHW`, case  when t1.`YBDRS_SZY` > t1.`SHZPYME`  then 1 else 0 end AS `SFCE_SZY`, case  when t1.`YBDRS_XZA` > t1.`XYZPAME`  then 1 else 0 end AS `SFCE_XZA`, case  when t1.`YBDRS_XZB` > t1.`XYZPBME`  then 1 else 0 end AS `SFCE_XZB`, case  when t1.`YBDRS_XZXZY` > t1.`XYZPXZYME`  then 1 else 0 end AS `SFCE_XZXZY`, t1.`SHZPAME`, t1.`SHZPBME`, t1.`SHZPJHWME`, t1.`SHZPYME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`XYZPAME`, t1.`XYZPBME`, t1.`XYZPXZYME`, t1.`YBDRS_SZA`, t1.`YBDRS_SZB`, t1.`YBDRS_SZJHW`, t1.`YBDRS_SZY`, t1.`YBDRS_XZA`, t1.`YBDRS_XZB`, t1.`YBDRS_XZXZY`, t11.`ZZDZS` FROM `T_PCMZPMEGL` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`FPME_SZA`, t1.`FPME_SZB`, t1.`FPME_SZJHW`, t1.`FPME_SZY`, t1.`FPME_XZA`, t1.`FPME_XZB`, t1.`FPME_XZXZY`, t1.`ND`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`PCMZPMEGLID`, t1.`PCMZPMEGLNAME`, t1.`PFCS`, case  when t1.`YBDRS_SZA` > t1.`SHZPAME`  then 1 else 0 end AS `SFCE_SZA`, case  when t1.`YBDRS_SZB` > t1.`SHZPBME`  then 1 else 0 end AS `SFCE_SZB`, case  when t1.`YBDRS_SZJHW` > t1.`SHZPJHWME`  then 1 else 0 end AS `SFCE_SZJHW`, case  when t1.`YBDRS_SZY` > t1.`SHZPYME`  then 1 else 0 end AS `SFCE_SZY`, case  when t1.`YBDRS_XZA` > t1.`XYZPAME`  then 1 else 0 end AS `SFCE_XZA`, case  when t1.`YBDRS_XZB` > t1.`XYZPBME`  then 1 else 0 end AS `SFCE_XZB`, case  when t1.`YBDRS_XZXZY` > t1.`XYZPXZYME`  then 1 else 0 end AS `SFCE_XZXZY`, t1.`SHZPAME`, t1.`SHZPBME`, t1.`SHZPJHWME`, t1.`SHZPYME`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`XYZPAME`, t1.`XYZPBME`, t1.`XYZPXZYME`, t1.`YBDRS_SZA`, t1.`YBDRS_SZB`, t1.`YBDRS_SZJHW`, t1.`YBDRS_SZY`, t1.`YBDRS_XZA`, t1.`YBDRS_XZB`, t1.`YBDRS_XZXZY`, t11.`ZZDZS` FROM `T_PCMZPMEGL` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+			]]>
+    </sql>
+</mapper>
+

@@ -1,0 +1,32 @@
+version: "3.2"
+services:
+  ehr-app-ehrpim:
+    image: registry.cn-shanghai.aliyuncs.com/ibizsys/ehr-app-ehrpim:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - agent_network
+    deploy:
+      resources:
+           limits:
+               memory: 800M
+           reservations:
+               memory: 400M    
+      mode: replicated
+      replicas: 1
+    volumes:
+      - "nfs:/app/file"
+
+volumes:
+  nfs:
+    driver: local
+    driver_opts:
+      type: "nfs"
+      o: "addr=172.16.240.109,rw"
+      device: ":/nfs"
+
+networks:
+  agent_network:
+    driver: overlay
+    attachable: true
+

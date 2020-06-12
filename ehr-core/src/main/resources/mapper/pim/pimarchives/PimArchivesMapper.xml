@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PimArchivesMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PimArchivesResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`ARCHIVESCENTERID`, concat(t21.`ARCHIVESCENTERNAME`,t21.`CABINETNO`,(case when t21.`LAYERNO`='10' then '上层'  when t21.`LAYERNO`='20' then '中层' when t21.`LAYERNO`='30' then '下层' else ' ' end),t21.`BNUMBER`) AS `ARCHIVESCENTERNAME`, t1.`BZ`, t1.`CFGH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DABGD`, t1.`DABGDD`, t1.`DABH`, t1.`DADCDW`, t1.`DADRRQ`, t1.`DALYD`, t1.`DAMU`, t1.`DASTATE`, t1.`DATEOFBIRTH`, t1.`DAZT`, t11.`DBDWSJ`, t1.`DCDA`, t1.`DRDA`, t1.`DURATION`, t1.`EDUCATION`, t1.`ENABLE`, t1.`FILEAUDIT`, t1.`FJ`, t41.`ZZDZS` AS `GLZZDZS`, t1.`JOINPARTYDATE`, t11.`LEAVEDATE`, t1.`OPERATIONDATE`, t1.`OPERATIONS`, t41.`ORGCODE`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGID`, t1.`ORMORGID2`, t1.`ORMORGID3`, t31.`ZZDZS` AS `ORMORGNAME`, t1.`ORMORGNAME2`, t41.`ORGNAME` AS `ORMORGNAME3`, t1.`PIMARCHIVESID`, t1.`PIMARCHIVESNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`SFXJD`, t31.`ZZDZS` AS `SSZZDZS`, t1.`STARTWORKDATAE`, t1.`TRANSTOOUT`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XDABGDW`, t11.`YGBH`, t11.`YGZT`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t1.`ZT`, t41.`ZZDZS` FROM `T_PIMARCHIVES` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ARCHIVESCENTER t21 ON t1.ARCHIVESCENTERID = t21.ARCHIVESCENTERID  LEFT JOIN T_SRFORG t31 ON t11.ORMORGID = t31.ORGID  LEFT JOIN T_SRFORG t41 ON t1.ORMORGID3 = t41.ORGID  ) t1 where pimarchivesid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PimArchivesResultMap" type="cn.ibizlab.ehr.core.pim.domain.PimArchives" autoMapping="true">
+        <id property="pimarchivesid" column="pimarchivesid" /><!--主键字段映射-->
+		<result property="archivescenterid" column="archivescenterid" />
+		<result property="pimpersonid" column="pimpersonid" />
+		<result property="ormorgid2" column="ormorgid2" />
+		<result property="ormorgid3" column="ormorgid3" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="archivescenter" javaType="cn.ibizlab.ehr.core.pim.domain.PimArchivesCenter" column="archivescenterid" select="cn.ibizlab.ehr.core.pim.mapper.PimArchivesCenterMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid2" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg3" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid3" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMARCHIVES_ARCHIVESCENTER_ARCHIVESCENTERID] -->
+	 <select id="selectByArchivescenterid" resultMap="PimArchivesResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  archivescenterid=#{archivescenterid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMARCHIVES_ORMORG_ORMORGID2] -->
+	 <select id="selectByOrmorgid2" resultMap="PimArchivesResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid2=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMARCHIVES_ORMORG_ORMORGID3] -->
+	 <select id="selectByOrmorgid3" resultMap="PimArchivesResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid3=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMARCHIVES_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="PimArchivesResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+
+    <!--数据集合[EMLOYEENOFILE]-->
+	 <select id="searchEMLOYEENOFILE"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimArchivesSearchContext"  resultMap="PimArchivesResultMap">
+         select t1.* from (
+                <include refid="EMLOYEENOFILE" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[SysOrgIsSrfOrg]-->
+	 <select id="searchSysOrgIsSrfOrg"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimArchivesSearchContext"  resultMap="PimArchivesResultMap">
+         select t1.* from (
+                <include refid="SysOrgIsSrfOrg" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimArchivesSearchContext"  resultMap="PimArchivesResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[JLSS]-->
+	 <select id="searchJLSS"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimArchivesSearchContext"  resultMap="PimArchivesResultMap">
+         select t1.* from (
+                <include refid="JLSS" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[ZIZHU]-->
+	 <select id="searchZIZHU"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimArchivesSearchContext"  resultMap="PimArchivesResultMap">
+         select t1.* from (
+                <include refid="ZIZHU" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[NOEMLOYEENOFILE]-->
+	 <select id="searchNOEMLOYEENOFILE"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimArchivesSearchContext"  resultMap="PimArchivesResultMap">
+         select t1.* from (
+                <include refid="NOEMLOYEENOFILE" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据集合[PIMREADGJD]-->
+	 <select id="searchPIMREADGJD"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimArchivesSearchContext"  resultMap="PimArchivesResultMap">
+         select t1.* from (
+                <include refid="PIMREADGJD" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ARCHIVESCENTERID`, concat(t21.`ARCHIVESCENTERNAME`,t21.`CABINETNO`,(case when t21.`LAYERNO`='10' then '上层'  when t21.`LAYERNO`='20' then '中层' when t21.`LAYERNO`='30' then '下层' else ' ' end),t21.`BNUMBER`) AS `ARCHIVESCENTERNAME`, t1.`BZ`, t1.`CFGH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DABGD`, t1.`DABGDD`, t1.`DABH`, t1.`DADCDW`, t1.`DADRRQ`, t1.`DALYD`, t1.`DAMU`, t1.`DASTATE`, t1.`DATEOFBIRTH`, t1.`DAZT`, t11.`DBDWSJ`, t1.`DCDA`, t1.`DRDA`, t1.`DURATION`, t1.`EDUCATION`, t1.`ENABLE`, t1.`FILEAUDIT`, t1.`FJ`, t41.`ZZDZS` AS `GLZZDZS`, t1.`JOINPARTYDATE`, t11.`LEAVEDATE`, t1.`OPERATIONDATE`, t1.`OPERATIONS`, t41.`ORGCODE`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGID`, t1.`ORMORGID2`, t1.`ORMORGID3`, t31.`ZZDZS` AS `ORMORGNAME`, t1.`ORMORGNAME2`, t41.`ORGNAME` AS `ORMORGNAME3`, t1.`PIMARCHIVESID`, t1.`PIMARCHIVESNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`SFXJD`, t31.`ZZDZS` AS `SSZZDZS`, t1.`STARTWORKDATAE`, t1.`TRANSTOOUT`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XDABGDW`, t11.`YGBH`, t11.`YGZT`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t1.`ZT`, t41.`ZZDZS` FROM `T_PIMARCHIVES` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ARCHIVESCENTER t21 ON t1.ARCHIVESCENTERID = t21.ARCHIVESCENTERID  LEFT JOIN T_SRFORG t31 ON t11.ORMORGID = t31.ORGID  LEFT JOIN T_SRFORG t41 ON t1.ORMORGID3 = t41.ORGID  
+			]]>
+    </sql>
+    <!--数据查询[EMLOYEENOFILE]-->
+    <sql id="EMLOYEENOFILE" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ARCHIVESCENTERID`, concat(t21.`ARCHIVESCENTERNAME`,t21.`CABINETNO`,(case when t21.`LAYERNO`='10' then '上层'  when t21.`LAYERNO`='20' then '中层' when t21.`LAYERNO`='30' then '下层' else ' ' end),t21.`BNUMBER`) AS `ARCHIVESCENTERNAME`, t1.`BZ`, t1.`CFGH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DABGD`, t1.`DABGDD`, t1.`DABH`, t1.`DADCDW`, t1.`DADRRQ`, t1.`DALYD`, t1.`DAMU`, t1.`DASTATE`, t1.`DATEOFBIRTH`, t1.`DAZT`, t11.`DBDWSJ`, t1.`DCDA`, t1.`DRDA`, t1.`DURATION`, t1.`EDUCATION`, t1.`ENABLE`, t1.`FILEAUDIT`, t1.`FJ`, t41.`ZZDZS` AS `GLZZDZS`, t1.`JOINPARTYDATE`, t11.`LEAVEDATE`, t1.`OPERATIONDATE`, t1.`OPERATIONS`, t41.`ORGCODE`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGID`, t1.`ORMORGID2`, t1.`ORMORGID3`, t31.`ZZDZS` AS `ORMORGNAME`, t1.`ORMORGNAME2`, t41.`ORGNAME` AS `ORMORGNAME3`, t1.`PIMARCHIVESID`, t1.`PIMARCHIVESNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`SFXJD`, t31.`ZZDZS` AS `SSZZDZS`, t1.`STARTWORKDATAE`, t1.`TRANSTOOUT`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XDABGDW`, t11.`YGBH`, t11.`YGZT`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t1.`ZT`, t41.`ZZDZS` FROM `T_PIMARCHIVES` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ARCHIVESCENTER t21 ON t1.ARCHIVESCENTERID = t21.ARCHIVESCENTERID  LEFT JOIN T_SRFORG t31 ON t11.ORMORGID = t31.ORGID  LEFT JOIN T_SRFORG t41 ON t1.ORMORGID3 = t41.ORGID  
+				 WHERE 	( (t11.ygzt not in('40','50','51','130','60'))  AND  t1.`ORMORGID3` IS NULL )
+			]]>
+    </sql>
+    <!--数据查询[JLSS]-->
+    <sql id="JLSS" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ARCHIVESCENTERID`, concat(t21.`ARCHIVESCENTERNAME`,t21.`CABINETNO`,(case when t21.`LAYERNO`='10' then '上层'  when t21.`LAYERNO`='20' then '中层' when t21.`LAYERNO`='30' then '下层' else ' ' end),t21.`BNUMBER`) AS `ARCHIVESCENTERNAME`, t1.`BZ`, t1.`CFGH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DABGD`, t1.`DABGDD`, t1.`DABH`, t1.`DADCDW`, t1.`DADRRQ`, t1.`DALYD`, t1.`DAMU`, t1.`DASTATE`, t1.`DATEOFBIRTH`, t1.`DAZT`, t11.`DBDWSJ`, t1.`DCDA`, t1.`DRDA`, t1.`DURATION`, t1.`EDUCATION`, t1.`ENABLE`, t1.`FILEAUDIT`, t1.`FJ`, t41.`ZZDZS` AS `GLZZDZS`, t1.`JOINPARTYDATE`, t11.`LEAVEDATE`, t1.`OPERATIONDATE`, t1.`OPERATIONS`, t41.`ORGCODE`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGID`, t1.`ORMORGID2`, t1.`ORMORGID3`, t31.`ZZDZS` AS `ORMORGNAME`, t1.`ORMORGNAME2`, t41.`ORGNAME` AS `ORMORGNAME3`, t1.`PIMARCHIVESID`, t1.`PIMARCHIVESNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`SFXJD`, t31.`ZZDZS` AS `SSZZDZS`, t1.`STARTWORKDATAE`, t1.`TRANSTOOUT`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XDABGDW`, t11.`YGBH`, t11.`YGZT`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t1.`ZT`, t41.`ZZDZS` FROM `T_PIMARCHIVES` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ARCHIVESCENTER t21 ON t1.ARCHIVESCENTERID = t21.ARCHIVESCENTERID  LEFT JOIN T_SRFORG t31 ON t11.ORMORGID = t31.ORGID  LEFT JOIN T_SRFORG t41 ON t1.ORMORGID3 = t41.ORGID  
+				 WHERE 	( t1.`PIMPERSONID` =  #{srf.sessioncontext.srfpersonid} )
+			]]>
+    </sql>
+    <!--数据查询[NOEMLOYEENOFILE]-->
+    <sql id="NOEMLOYEENOFILE" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ARCHIVESCENTERID`, concat(t21.`ARCHIVESCENTERNAME`,t21.`CABINETNO`,(case when t21.`LAYERNO`='10' then '上层'  when t21.`LAYERNO`='20' then '中层' when t21.`LAYERNO`='30' then '下层' else ' ' end),t21.`BNUMBER`) AS `ARCHIVESCENTERNAME`, t1.`BZ`, t1.`CFGH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DABGD`, t1.`DABGDD`, t1.`DABH`, t1.`DADCDW`, t1.`DADRRQ`, t1.`DALYD`, t1.`DAMU`, t1.`DASTATE`, t1.`DATEOFBIRTH`, t1.`DAZT`, t11.`DBDWSJ`, t1.`DCDA`, t1.`DRDA`, t1.`DURATION`, t1.`EDUCATION`, t1.`ENABLE`, t1.`FILEAUDIT`, t1.`FJ`, t41.`ZZDZS` AS `GLZZDZS`, t1.`JOINPARTYDATE`, t11.`LEAVEDATE`, t1.`OPERATIONDATE`, t1.`OPERATIONS`, t41.`ORGCODE`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGID`, t1.`ORMORGID2`, t1.`ORMORGID3`, t31.`ZZDZS` AS `ORMORGNAME`, t1.`ORMORGNAME2`, t41.`ORGNAME` AS `ORMORGNAME3`, t1.`PIMARCHIVESID`, t1.`PIMARCHIVESNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`SFXJD`, t31.`ZZDZS` AS `SSZZDZS`, t1.`STARTWORKDATAE`, t1.`TRANSTOOUT`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XDABGDW`, t11.`YGBH`, t11.`YGZT`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t1.`ZT`, t41.`ZZDZS` FROM `T_PIMARCHIVES` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ARCHIVESCENTER t21 ON t1.ARCHIVESCENTERID = t21.ARCHIVESCENTERID  LEFT JOIN T_SRFORG t31 ON t11.ORMORGID = t31.ORGID  LEFT JOIN T_SRFORG t41 ON t1.ORMORGID3 = t41.ORGID  
+				 WHERE 	( ( t11.`YGZT` = '40'  OR  t11.`YGZT` = '60' )  AND  t1.`ORMORGID3` IS NOT NULL )
+			]]>
+    </sql>
+    <!--数据查询[PIMREADGJD]-->
+    <sql id="PIMREADGJD" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ARCHIVESCENTERID`, concat(t21.`ARCHIVESCENTERNAME`,t21.`CABINETNO`,(case when t21.`LAYERNO`='10' then '上层'  when t21.`LAYERNO`='20' then '中层' when t21.`LAYERNO`='30' then '下层' else ' ' end),t21.`BNUMBER`) AS `ARCHIVESCENTERNAME`, t1.`BZ`, t1.`CFGH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DABGD`, t1.`DABGDD`, t1.`DABH`, t1.`DADCDW`, t1.`DADRRQ`, t1.`DALYD`, t1.`DAMU`, t1.`DASTATE`, t1.`DATEOFBIRTH`, t1.`DAZT`, t11.`DBDWSJ`, t1.`DCDA`, t1.`DRDA`, t1.`DURATION`, t1.`EDUCATION`, t1.`ENABLE`, t1.`FILEAUDIT`, t1.`FJ`, t41.`ZZDZS` AS `GLZZDZS`, t1.`JOINPARTYDATE`, t11.`LEAVEDATE`, t1.`OPERATIONDATE`, t1.`OPERATIONS`, t41.`ORGCODE`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGID`, t1.`ORMORGID2`, t1.`ORMORGID3`, t31.`ZZDZS` AS `ORMORGNAME`, t1.`ORMORGNAME2`, t41.`ORGNAME` AS `ORMORGNAME3`, t1.`PIMARCHIVESID`, t1.`PIMARCHIVESNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`SFXJD`, t31.`ZZDZS` AS `SSZZDZS`, t1.`STARTWORKDATAE`, t1.`TRANSTOOUT`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XDABGDW`, t11.`YGBH`, t11.`YGZT`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t1.`ZT`, t41.`ZZDZS` FROM `T_PIMARCHIVES` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ARCHIVESCENTER t21 ON t1.ARCHIVESCENTERID = t21.ARCHIVESCENTERID  LEFT JOIN T_SRFORG t31 ON t11.ORMORGID = t31.ORGID  LEFT JOIN T_SRFORG t41 ON t1.ORMORGID3 = t41.ORGID  
+				 WHERE 	( t1.`ORMORGID3` IS NOT NULL )
+			]]>
+    </sql>
+    <!--数据查询[SysOrgIsSrfOrg]-->
+    <sql id="SysOrgIsSrfOrg" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ARCHIVESCENTERID`, concat(t21.`ARCHIVESCENTERNAME`,t21.`CABINETNO`,(case when t21.`LAYERNO`='10' then '上层'  when t21.`LAYERNO`='20' then '中层' when t21.`LAYERNO`='30' then '下层' else ' ' end),t21.`BNUMBER`) AS `ARCHIVESCENTERNAME`, t1.`BZ`, t1.`CFGH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DABGD`, t1.`DABGDD`, t1.`DABH`, t1.`DADCDW`, t1.`DADRRQ`, t1.`DALYD`, t1.`DAMU`, t1.`DASTATE`, t1.`DATEOFBIRTH`, t1.`DAZT`, t11.`DBDWSJ`, t1.`DCDA`, t1.`DRDA`, t1.`DURATION`, t1.`EDUCATION`, t1.`ENABLE`, t1.`FILEAUDIT`, t1.`FJ`, t41.`ZZDZS` AS `GLZZDZS`, t1.`JOINPARTYDATE`, t11.`LEAVEDATE`, t1.`OPERATIONDATE`, t1.`OPERATIONS`, t41.`ORGCODE`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGID`, t1.`ORMORGID2`, t1.`ORMORGID3`, t31.`ZZDZS` AS `ORMORGNAME`, t1.`ORMORGNAME2`, t41.`ORGNAME` AS `ORMORGNAME3`, t1.`PIMARCHIVESID`, t1.`PIMARCHIVESNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`SFXJD`, t31.`ZZDZS` AS `SSZZDZS`, t1.`STARTWORKDATAE`, t1.`TRANSTOOUT`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XDABGDW`, t11.`YGBH`, t11.`YGZT`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t1.`ZT`, t41.`ZZDZS` FROM `T_PIMARCHIVES` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ARCHIVESCENTER t21 ON t1.ARCHIVESCENTERID = t21.ARCHIVESCENTERID  LEFT JOIN T_SRFORG t31 ON t11.ORMORGID = t31.ORGID  LEFT JOIN T_SRFORG t41 ON t1.ORMORGID3 = t41.ORGID  
+				 WHERE 	( t1.`ORMORGID3` =  #{srf.sessioncontext.srforgid} )
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ARCHIVESCENTERID`, concat(t21.`ARCHIVESCENTERNAME`,t21.`CABINETNO`,(case when t21.`LAYERNO`='10' then '上层'  when t21.`LAYERNO`='20' then '中层' when t21.`LAYERNO`='30' then '下层' else ' ' end),t21.`BNUMBER`) AS `ARCHIVESCENTERNAME`, t1.`BZ`, t1.`CFGH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DABGD`, t1.`DABGDD`, t1.`DABH`, t1.`DADCDW`, t1.`DADRRQ`, t1.`DALYD`, t1.`DAMU`, t1.`DASTATE`, t1.`DATEOFBIRTH`, t1.`DAZT`, t11.`DBDWSJ`, t1.`DCDA`, t1.`DRDA`, t1.`DURATION`, t1.`EDUCATION`, t1.`ENABLE`, t1.`FILEAUDIT`, t1.`FJ`, t41.`ZZDZS` AS `GLZZDZS`, t1.`JOINPARTYDATE`, t11.`LEAVEDATE`, t1.`OPERATIONDATE`, t1.`OPERATIONS`, t41.`ORGCODE`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGID`, t1.`ORMORGID2`, t1.`ORMORGID3`, t31.`ZZDZS` AS `ORMORGNAME`, t1.`ORMORGNAME2`, t41.`ORGNAME` AS `ORMORGNAME3`, t1.`PIMARCHIVESID`, t1.`PIMARCHIVESNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`SFXJD`, t31.`ZZDZS` AS `SSZZDZS`, t1.`STARTWORKDATAE`, t1.`TRANSTOOUT`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XDABGDW`, t11.`YGBH`, t11.`YGZT`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t1.`ZT`, t41.`ZZDZS` FROM `T_PIMARCHIVES` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ARCHIVESCENTER t21 ON t1.ARCHIVESCENTERID = t21.ARCHIVESCENTERID  LEFT JOIN T_SRFORG t31 ON t11.ORMORGID = t31.ORGID  LEFT JOIN T_SRFORG t41 ON t1.ORMORGID3 = t41.ORGID  
+			]]>
+    </sql>
+    <!--数据查询[ZIZHU]-->
+    <sql id="ZIZHU" databaseId="mysql">
+       <![CDATA[	SELECT t1.`ARCHIVESCENTERID`, concat(t21.`ARCHIVESCENTERNAME`,t21.`CABINETNO`,(case when t21.`LAYERNO`='10' then '上层'  when t21.`LAYERNO`='20' then '中层' when t21.`LAYERNO`='30' then '下层' else ' ' end),t21.`BNUMBER`) AS `ARCHIVESCENTERNAME`, t1.`BZ`, t1.`CFGH`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`DABGD`, t1.`DABGDD`, t1.`DABH`, t1.`DADCDW`, t1.`DADRRQ`, t1.`DALYD`, t1.`DAMU`, t1.`DASTATE`, t1.`DATEOFBIRTH`, t1.`DAZT`, t11.`DBDWSJ`, t1.`DCDA`, t1.`DRDA`, t1.`DURATION`, t1.`EDUCATION`, t1.`ENABLE`, t1.`FILEAUDIT`, t1.`FJ`, t41.`ZZDZS` AS `GLZZDZS`, t1.`JOINPARTYDATE`, t11.`LEAVEDATE`, t1.`OPERATIONDATE`, t1.`OPERATIONS`, t41.`ORGCODE`, t11.`ORMORGID` AS `ORGID`, t11.`ORMORGID`, t1.`ORMORGID2`, t1.`ORMORGID3`, t31.`ZZDZS` AS `ORMORGNAME`, t1.`ORMORGNAME2`, t41.`ORGNAME` AS `ORMORGNAME3`, t1.`PIMARCHIVESID`, t1.`PIMARCHIVESNAME`, t1.`PIMPERSONID`, t11.`PIMPERSONNAME`, t1.`SFXJD`, t31.`ZZDZS` AS `SSZZDZS`, t1.`STARTWORKDATAE`, t1.`TRANSTOOUT`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XDABGDW`, t11.`YGBH`, t11.`YGZT`, case when  t11.`YGZT` in ('40','50','60','130','51') then '20' else '10' end AS `ZGCODE`, t1.`ZT`, t41.`ZZDZS` FROM `T_PIMARCHIVES` t1  LEFT JOIN T_PIMPERSON t11 ON t1.PIMPERSONID = t11.PIMPERSONID  LEFT JOIN T_ARCHIVESCENTER t21 ON t1.ARCHIVESCENTERID = t21.ARCHIVESCENTERID  LEFT JOIN T_SRFORG t31 ON t11.ORMORGID = t31.ORGID  LEFT JOIN T_SRFORG t41 ON t1.ORMORGID3 = t41.ORGID  
+				 WHERE 	( t1.`PIMPERSONID` =  #{srf.sessioncontext.srfpersonid} )
+			]]>
+    </sql>
+</mapper>
+

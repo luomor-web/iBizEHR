@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    include: sys , ehrsal-prod
+  application:
+    name: ehr-ehrsal

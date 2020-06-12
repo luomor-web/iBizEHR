@@ -1,0 +1,98 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="Think (generated)" id="1561433044682-1">
+        <createTable remarks="文件" tableName="IBZFILE">
+            <column name="FILEID" type="VARCHAR2(100 BYTE)">
+                <constraints primaryKey="true" primaryKeyName="SYS_C00168533"/>
+            </column>
+            <column name="FILENAME" type="VARCHAR2(200 BYTE)"/>
+            <column name="FILEPATH" type="VARCHAR2(500 BYTE)"/>
+            <column name="FOLDER" type="VARCHAR2(20 BYTE)"/>
+            <column name="CREATEMAN" type="VARCHAR2(60 BYTE)"/>
+            <column name="CREATEDATE" type="date"/>
+            <column name="UPDATEMAN" type="VARCHAR2(60 BYTE)"/>
+            <column name="UPDATEDATE" type="date"/>
+            <column name="FILEEXT" type="VARCHAR2(10 BYTE)"/>
+            <column name="FILESIZE" type="INTEGER"/>
+            <column name="DIGESTCODE" type="VARCHAR2(64 BYTE)"/>
+            <column name="OWNERTYPE" type="VARCHAR2(100 BYTE)"/>
+            <column name="OWNERID" type="VARCHAR2(100 BYTE)"/>
+            <column name="MEMO" type="VARCHAR2(500 BYTE)"/>
+            <column name="RESERVER" type="VARCHAR2(100 BYTE)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Think (generated)" id="1561433044682-2">
+        <createTable remarks="用户" tableName="IBZUSER">
+            <column name="USERID" type="VARCHAR2(100 BYTE)">
+                <constraints primaryKey="true" primaryKeyName="SYS_C00168531"/>
+            </column>
+            <column name="PERSONNAME" type="VARCHAR2(200 BYTE)"/>
+            <column name="USERNAME" type="VARCHAR2(200 BYTE)"/>
+            <column name="USERCODE" type="VARCHAR2(100 BYTE)"/>
+            <column name="LOGINNAME" type="VARCHAR2(100 BYTE)"/>
+            <column name="PASSWORD" type="VARCHAR2(100 BYTE)"/>
+            <column name="DOMAINS" type="VARCHAR2(100 BYTE)"/>
+            <column name="MDEPTID" type="VARCHAR2(100 BYTE)"/>
+            <column name="MDEPTCODE" type="VARCHAR2(100 BYTE)"/>
+            <column name="MDEPTNAME" type="VARCHAR2(200 BYTE)"/>
+            <column name="BCODE" type="VARCHAR2(100 BYTE)"/>
+            <column name="POSTID" type="VARCHAR2(100 BYTE)"/>
+            <column name="POSTCODE" type="VARCHAR2(100 BYTE)"/>
+            <column name="POSTNAME" type="VARCHAR2(200 BYTE)"/>
+            <column name="ORGID" type="VARCHAR2(100 BYTE)"/>
+            <column name="ORGCODE" type="VARCHAR2(100 BYTE)"/>
+            <column name="ORGNAME" type="VARCHAR2(200 BYTE)"/>
+            <column name="NICKNAME" type="VARCHAR2(36 BYTE)"/>
+            <column name="EMAIL" type="VARCHAR2(100 BYTE)"/>
+            <column name="AVATAR" type="VARCHAR2(100 BYTE)"/>
+            <column name="PHONE" type="VARCHAR2(100 BYTE)"/>
+            <column name="RESERVER" type="VARCHAR2(100 BYTE)"/>
+            <column name="USERICON" type="VARCHAR2(100 BYTE)"/>
+            <column name="SEX" type="VARCHAR2(10 BYTE)"/>
+            <column name="BIRTHDAY" type="date"/>
+            <column name="CERTCODE" type="VARCHAR2(36 BYTE)"/>
+            <column name="ADDR" type="VARCHAR2(200 BYTE)"/>
+            <column name="THEME" type="VARCHAR2(100 BYTE)"/>
+            <column name="FONTSIZE" type="VARCHAR2(10 BYTE)"/>
+            <column name="LANG" type="VARCHAR2(100 BYTE)"/>
+            <column name="MEMO" type="VARCHAR2(500 BYTE)"/>
+            <column name="SUPERUSER" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Think (generated)" id="1561433044682-3">
+        <insert tableName="IBZUSER">
+            <column name="USERID" value="0100"/>
+            <column name="PERSONNAME" value="管理员"/>
+            <column name="USERNAME" value="系统管理员"/>
+            <column name="USERCODE" value="0100"/>
+            <column name="LOGINNAME" value="ibzadmin"/>
+            <column name="SUPERUSER" value="1"/>
+            <column name="PASSWORD" value="123456"/>
+            <column name="DOMAINS" value="100000"/>
+            <column name="MDEPTID"/>
+            <column name="MDEPTCODE"/>
+            <column name="MDEPTNAME"/>
+            <column name="BCODE"/>
+            <column name="POSTID"/>
+            <column name="POSTCODE"/>
+            <column name="POSTNAME"/>
+            <column name="ORGID"/>
+            <column name="ORGCODE"/>
+            <column name="ORGNAME"/>
+            <column name="NICKNAME"/>
+            <column name="EMAIL"/>
+            <column name="AVATAR"/>
+            <column name="PHONE"/>
+            <column name="RESERVER"/>
+            <column name="USERICON"/>
+            <column name="SEX"/>
+            <column name="BIRTHDAY"/>
+            <column name="CERTCODE"/>
+            <column name="ADDR"/>
+            <column name="THEME"/>
+            <column name="FONTSIZE"/>
+            <column name="LANG"/>
+            <column name="MEMO"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

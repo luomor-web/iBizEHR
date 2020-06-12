@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PimPersonAbilityDetailMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PimPersonAbilityDetailResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`PIMPERSONABILITYDETAILID`, t1.`PIMPERSONABILITYDETAILNAME`, t1.`PIMPERSONABILITYID`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PIMPERSONABILITYDETAIL` t1  ) t1 where pimpersonabilitydetailid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PimPersonAbilityDetailResultMap" type="cn.ibizlab.ehr.core.pim.domain.PimPersonAbilityDetail" autoMapping="true">
+        <id property="pimpersonabilitydetailid" column="pimpersonabilitydetailid" /><!--主键字段映射-->
+		<result property="pimpersonabilityid" column="pimpersonabilityid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimpersonability" javaType="cn.ibizlab.ehr.core.pim.domain.PimPersonAbility" column="pimpersonabilityid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonAbilityMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PIMPERSONABILITYDETAIL_PIMPERSONABILITY_PIMPERSONABILITYID] -->
+	 <select id="selectByPimpersonabilityid" resultMap="PimPersonAbilityDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonabilityid=#{pimpersonabilityid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimPersonAbilityDetailSearchContext"  resultMap="PimPersonAbilityDetailResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`PIMPERSONABILITYDETAILID`, t1.`PIMPERSONABILITYDETAILNAME`, t1.`PIMPERSONABILITYID`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PIMPERSONABILITYDETAIL` t1  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`PIMPERSONABILITYDETAILID`, t1.`PIMPERSONABILITYDETAILNAME`, t1.`PIMPERSONABILITYID`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PIMPERSONABILITYDETAIL` t1  
+			]]>
+    </sql>
+</mapper>
+

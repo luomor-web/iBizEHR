@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.pim.service.logic.pimfaminfoupdatecontact" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.pim.service.logic.pimfaminfoupdatecontact">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="pimfaminfoupdatecontactdefault" type="cn.ibizlab.ehr.core.pim.domain.PimFaminfo" />
+        </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="pimfaminfoupdatecontactdeaction1" id="49c8a0d56cb4dd834fff962feb3b097b" implementation="http://www.jboss.org/drools/rule" name="更新紧急联络人"/>
+     <endEvent id="49c8a0d56cb4dd834fff962feb3b097b_End" name="End"/>
+     <sequenceFlow id="49c8a0d56cb4dd834fff962feb3b097b_End_Line" sourceRef="49c8a0d56cb4dd834fff962feb3b097b" targetRef="49c8a0d56cb4dd834fff962feb3b097b_End"/>
+     <startEvent id="51ae0a161c383983534563771ad4144b" isInterrupting="true"/>
+     <sequenceFlow id="82e8d07e702b685f7eebc1b8b8c6323c" sourceRef="51ae0a161c383983534563771ad4144b" targetRef="49c8a0d56cb4dd834fff962feb3b097b">
+     </sequenceFlow>
+    </process>
+</definitions>
+

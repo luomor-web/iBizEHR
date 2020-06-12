@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.sal.mapper.SalSalaryMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="SalSalaryResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`MEMO`, t31.`NMONTH`, t31.`NYEAR`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t51.`ORMDUTYNAME`, t1.`ORMORGID`, t41.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t61.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PIMPERSONID`, t71.`PIMPERSONNAME`, t1.`SALPLANID`, t31.`SALPLANNAME`, t1.`SALSALARYBILLID`, t11.`SALSALARYBILLNAME`, t1.`SALSALARYID`, t1.`SALSALARYNAME`, t1.`STATE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XC` FROM `T_SALSALARY` t1  LEFT JOIN T_SALSALARYBILL t11 ON t1.SALSALARYBILLID = t11.SALSALARYBILLID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SALPLAN t31 ON t1.SALPLANID = t31.SALPLANID  LEFT JOIN T_SRFORG t41 ON t1.ORMORGID = t41.ORGID  LEFT JOIN T_ORMDUTY t51 ON t1.ORMDUTYID = t51.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_PIMPERSON t71 ON t1.PIMPERSONID = t71.PIMPERSONID  ) t1 where salsalaryid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="SalSalaryResultMap" type="cn.ibizlab.ehr.core.sal.domain.SalSalary" autoMapping="true">
+        <id property="salsalaryid" column="salsalaryid" /><!--主键字段映射-->
+		<result property="ormorgid" column="ormorgid" />
+		<result property="pimpersonid" column="pimpersonid" />
+		<result property="salsalarybillid" column="salsalarybillid" />
+		<result property="ormdutyid" column="ormdutyid" />
+		<result property="ormorgsectorid" column="ormorgsectorid" />
+		<result property="ormpostid" column="ormpostid" />
+		<result property="salplanid" column="salplanid" />
+            
+		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormduty" javaType="cn.ibizlab.ehr.core.orm.domain.OrmDuty" column="ormdutyid" select="cn.ibizlab.ehr.core.orm.mapper.OrmDutyMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorgsector" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrgsector" column="ormorgsectorid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgsectorMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormorg" javaType="cn.ibizlab.ehr.core.orm.domain.OrmOrg" column="ormorgid" select="cn.ibizlab.ehr.core.orm.mapper.OrmOrgMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="ormpost" javaType="cn.ibizlab.ehr.core.orm.domain.OrmPost" column="ormpostid" select="cn.ibizlab.ehr.core.orm.mapper.OrmPostMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="pimperson" javaType="cn.ibizlab.ehr.core.pim.domain.PimPerson" column="pimpersonid" select="cn.ibizlab.ehr.core.pim.mapper.PimPersonMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="salplan" javaType="cn.ibizlab.ehr.core.sal.domain.SalPlan" column="salplanid" select="cn.ibizlab.ehr.core.sal.mapper.SalPlanMapper.selectById" fetchType="lazy"></association>
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="salsalarybill" javaType="cn.ibizlab.ehr.core.sal.domain.SalSalaryBill" column="salsalarybillid" select="cn.ibizlab.ehr.core.sal.mapper.SalSalaryBillMapper.selectById" fetchType="lazy"></association>
+    </resultMap>
+
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALSALARY_ORMDUTY_ORMDUTYID] -->
+	 <select id="selectByOrmdutyid" resultMap="SalSalaryResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormdutyid=#{ormdutyid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALSALARY_ORMORGSECTOR_ORMORGSECTORID] -->
+	 <select id="selectByOrmorgsectorid" resultMap="SalSalaryResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgsectorid=#{orgsectorid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALSALARY_ORMORG_ORMORGID] -->
+	 <select id="selectByOrmorgid" resultMap="SalSalaryResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormorgid=#{orgid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALSALARY_ORMPOST_ORMPOSTID] -->
+	 <select id="selectByOrmpostid" resultMap="SalSalaryResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  ormpostid=#{ormpostid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALSALARY_PIMPERSON_PIMPERSONID] -->
+	 <select id="selectByPimpersonid" resultMap="SalSalaryResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  pimpersonid=#{pimpersonid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALSALARY_SALPLAN_SALPLANID] -->
+	 <select id="selectBySalplanid" resultMap="SalSalaryResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  salplanid=#{salplanid}
+     </select>
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_SALSALARY_SALSALARYBILL_SALSALARYBILLID] -->
+	 <select id="selectBySalsalarybillid" resultMap="SalSalaryResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  salsalarybillid=#{salsalarybillid}
+     </select>
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.sal.filter.SalSalarySearchContext"  resultMap="SalSalaryResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`MEMO`, t31.`NMONTH`, t31.`NYEAR`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t51.`ORMDUTYNAME`, t1.`ORMORGID`, t41.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t61.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PIMPERSONID`, t71.`PIMPERSONNAME`, t1.`SALPLANID`, t31.`SALPLANNAME`, t1.`SALSALARYBILLID`, t11.`SALSALARYBILLNAME`, t1.`SALSALARYID`, t1.`SALSALARYNAME`, t1.`STATE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XC` FROM `T_SALSALARY` t1  LEFT JOIN T_SALSALARYBILL t11 ON t1.SALSALARYBILLID = t11.SALSALARYBILLID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SALPLAN t31 ON t1.SALPLANID = t31.SALPLANID  LEFT JOIN T_SRFORG t41 ON t1.ORMORGID = t41.ORGID  LEFT JOIN T_ORMDUTY t51 ON t1.ORMDUTYID = t51.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_PIMPERSON t71 ON t1.PIMPERSONID = t71.PIMPERSONID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`MEMO`, t31.`NMONTH`, t31.`NYEAR`, t1.`ORMORGID` AS `ORGID`, t1.`ORMORGSECTORID` AS `ORGSECTORID`, t1.`ORMDUTYID`, t51.`ORMDUTYNAME`, t1.`ORMORGID`, t41.`ORGNAME` AS `ORMORGNAME`, t1.`ORMORGSECTORID`, t61.`ORGSECTORNAME` AS `ORMORGSECTORNAME`, t1.`ORMPOSTID`, t21.`ORMPOSTNAME`, t1.`PIMPERSONID`, t71.`PIMPERSONNAME`, t1.`SALPLANID`, t31.`SALPLANNAME`, t1.`SALSALARYBILLID`, t11.`SALSALARYBILLNAME`, t1.`SALSALARYID`, t1.`SALSALARYNAME`, t1.`STATE`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XC` FROM `T_SALSALARY` t1  LEFT JOIN T_SALSALARYBILL t11 ON t1.SALSALARYBILLID = t11.SALSALARYBILLID  LEFT JOIN T_ORMPOST t21 ON t1.ORMPOSTID = t21.ORMPOSTID  LEFT JOIN T_SALPLAN t31 ON t1.SALPLANID = t31.SALPLANID  LEFT JOIN T_SRFORG t41 ON t1.ORMORGID = t41.ORGID  LEFT JOIN T_ORMDUTY t51 ON t1.ORMDUTYID = t51.ORMDUTYID  LEFT JOIN T_SRFORGSECTOR t61 ON t1.ORMORGSECTORID = t61.ORGSECTORID  LEFT JOIN T_PIMPERSON t71 ON t1.PIMPERSONID = t71.PIMPERSONID  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+

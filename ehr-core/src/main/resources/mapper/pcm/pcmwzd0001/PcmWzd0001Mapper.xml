@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pcm.mapper.PcmWzd0001Mapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PcmWzd0001ResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`BDSJ`, t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSYJ`, t1.`CSYY`, t1.`PEOPLENUM`, t1.`PROFILELIST`, t1.`SHYJ`, t1.`SHYY`, t1.`SPYJ`, t1.`SPYY`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WZD0001ID`, t1.`WZD0001NAME`, t1.`YGLX`, t1.`ZPME` FROM `T_WZD0001` t1  ) t1 where wzd0001id=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PcmWzd0001ResultMap" type="cn.ibizlab.ehr.core.pcm.domain.PcmWzd0001" autoMapping="true">
+        <id property="wzd0001id" column="wzd0001id" /><!--主键字段映射-->
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pcm.filter.PcmWzd0001SearchContext"  resultMap="PcmWzd0001ResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BDSJ`, t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSYJ`, t1.`CSYY`, t1.`PEOPLENUM`, t1.`SHYJ`, t1.`SHYY`, t1.`SPYJ`, t1.`SPYY`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WZD0001ID`, t1.`WZD0001NAME`, t1.`YGLX`, t1.`ZPME` FROM `T_WZD0001` t1  
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`BDSJ`, t1.`BZ`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`CSYJ`, t1.`CSYY`, t1.`PEOPLENUM`, t1.`PROFILELIST`, t1.`SHYJ`, t1.`SHYY`, t1.`SPYJ`, t1.`SPYY`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`WZD0001ID`, t1.`WZD0001NAME`, t1.`YGLX`, t1.`ZPME` FROM `T_WZD0001` t1  
+			]]>
+    </sql>
+</mapper>
+

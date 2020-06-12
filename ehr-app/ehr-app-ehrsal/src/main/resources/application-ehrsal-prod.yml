@@ -1,0 +1,135 @@
+server:
+  port: 6097
+#zuul网关路由设置
+zuul:
+  routes:
+    salscheme:
+      path: /salschemes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    codelist:
+      path: /codelist1s/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salruledetail:
+      path: /salruledetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    sallog:
+      path: /sallogs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdzyzg:
+      path: /salstdzyzgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salrule:
+      path: /salrules/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salpersonstddetail:
+      path: /salpersonstddetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salsource:
+      path: /salsources/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdgw:
+      path: /salstdgws/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdgwgz:
+      path: /salstdgwgzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salparam:
+      path: /salparams/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdxmgz:
+      path: /salstdxmgzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimperson:
+      path: /pimpeople/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormpost:
+      path: /ormposts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorg:
+      path: /ormorgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salsubject:
+      path: /salsubjects/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdzc:
+      path: /salstdzcs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salsalarybill:
+      path: /salsalarybills/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    saltype:
+      path: /saltypes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salsalary:
+      path: /salsalaries/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salitem:
+      path: /salitems/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormqygl:
+      path: /ormqygls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormduty:
+      path: /ormduties/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    codeitem:
+      path: /codeitems/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salsalarydetail:
+      path: /salsalarydetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salschemeitem:
+      path: /salschemeitems/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salplan:
+      path: /salplans/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorgsector:
+      path: /ormorgsectors/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdzx:
+      path: /salstdzxes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstddszn:
+      path: /salstddszns/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salstdgl:
+      path: /salstdgls/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    salpersonstd:
+      path: /salpersonstds/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+  sensitive-headers:
+    - Cookie,Set-Cookie,Authorization

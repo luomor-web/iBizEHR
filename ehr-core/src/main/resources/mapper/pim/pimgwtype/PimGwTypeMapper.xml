@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper	namespace="cn.ibizlab.ehr.core.pim.mapper.PimGwTypeMapper">
+
+    <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
+	<select id="selectById"  resultMap="PimGwTypeResultMap" databaseId="mysql">
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`GWLX`, t1.`ORDERVALUE`, t1.`PIMGWTYPEID`, t1.`PIMGWTYPENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PIMGWTYPE` t1  ) t1 where pimgwtypeid=#{id}]]>
+    </select>
+
+    <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
+    <resultMap id="PimGwTypeResultMap" type="cn.ibizlab.ehr.core.pim.domain.PimGwType" autoMapping="true">
+        <id property="pimgwtypeid" column="pimgwtypeid" /><!--主键字段映射-->
+            
+		
+    </resultMap>
+
+
+    <!--数据集合[Default]-->
+	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.pim.filter.PimGwTypeSearchContext"  resultMap="PimGwTypeResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         )t1
+         <where><if test="ew!=null and ew.sqlSegment!=null and !ew.emptyOfWhere">${ew.sqlSegment}</if></where>
+         <if test="ew!=null and ew.sqlSegment!=null and ew.emptyOfWhere">${ew.sqlSegment}</if>
+     </select>
+
+    <!--数据查询[Default]-->
+    <sql id="Default" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`GWLX`, t1.`ORDERVALUE`, t1.`PIMGWTYPEID`, t1.`PIMGWTYPENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PIMGWTYPE` t1  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+    <!--数据查询[View]-->
+    <sql id="View" databaseId="mysql">
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`GWLX`, t1.`ORDERVALUE`, t1.`PIMGWTYPEID`, t1.`PIMGWTYPENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PIMGWTYPE` t1  
+				 WHERE 	t1.ENABLE = 1
+			]]>
+    </sql>
+</mapper>
+
