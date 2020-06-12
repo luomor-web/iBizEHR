@@ -28,7 +28,7 @@ public class PcmEducationExperienceServiceEx extends PcmEducationExperienceServi
     @Override
     @Transactional
     public PcmEducationExperience checkHighestEdu(PcmEducationExperience et) {
-        return et;
+        return super.checkHighestEdu(et);
     }
     /**
      * 自定义行为[CheckRepeatXL]用户扩展
@@ -38,7 +38,7 @@ public class PcmEducationExperienceServiceEx extends PcmEducationExperienceServi
     @Override
     @Transactional
     public PcmEducationExperience checkRepeatXL(PcmEducationExperience et) {
-        return et;
+        return super.checkRepeatXL(et);
     }
     /**
      * 自定义行为[CheckTime]用户扩展
@@ -48,7 +48,7 @@ public class PcmEducationExperienceServiceEx extends PcmEducationExperienceServi
     @Override
     @Transactional
     public PcmEducationExperience checkTime(PcmEducationExperience et) {
-        return et;
+        return super.checkTime(et);
     }
 }
 

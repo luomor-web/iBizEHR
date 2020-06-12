@@ -28,7 +28,7 @@ public class PimWorkflowServiceEx extends PimWorkflowServiceImpl {
     @Override
     @Transactional
     public PimWorkflow sync(PimWorkflow et) {
-        return et;
+        return super.sync(et);
     }
 }
 

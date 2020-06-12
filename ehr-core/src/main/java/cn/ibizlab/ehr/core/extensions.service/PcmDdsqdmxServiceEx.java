@@ -28,7 +28,7 @@ public class PcmDdsqdmxServiceEx extends PcmDdsqdmxServiceImpl {
     @Override
     @Transactional
     public PcmDdsqdmx dDUpdate(PcmDdsqdmx et) {
-        return et;
+        return super.dDUpdate(et);
     }
     /**
      * 自定义行为[SQBTG]用户扩展
@@ -38,7 +38,7 @@ public class PcmDdsqdmxServiceEx extends PcmDdsqdmxServiceImpl {
     @Override
     @Transactional
     public PcmDdsqdmx sQBTG(PcmDdsqdmx et) {
-        return et;
+        return super.sQBTG(et);
     }
     /**
      * 自定义行为[JDCZ]用户扩展
@@ -48,7 +48,7 @@ public class PcmDdsqdmxServiceEx extends PcmDdsqdmxServiceImpl {
     @Override
     @Transactional
     public PcmDdsqdmx jDCZ(PcmDdsqdmx et) {
-        return et;
+        return super.jDCZ(et);
     }
     /**
      * 自定义行为[DDCreate]用户扩展
@@ -58,7 +58,7 @@ public class PcmDdsqdmxServiceEx extends PcmDdsqdmxServiceImpl {
     @Override
     @Transactional
     public PcmDdsqdmx dDCreate(PcmDdsqdmx et) {
-        return et;
+        return super.dDCreate(et);
     }
     /**
      * 自定义行为[ZZSQ]用户扩展
@@ -68,7 +68,7 @@ public class PcmDdsqdmxServiceEx extends PcmDdsqdmxServiceImpl {
     @Override
     @Transactional
     public PcmDdsqdmx zZSQ(PcmDdsqdmx et) {
-        return et;
+        return super.zZSQ(et);
     }
     /**
      * 自定义行为[DDCZ]用户扩展
@@ -78,7 +78,7 @@ public class PcmDdsqdmxServiceEx extends PcmDdsqdmxServiceImpl {
     @Override
     @Transactional
     public PcmDdsqdmx dDCZ(PcmDdsqdmx et) {
-        return et;
+        return super.dDCZ(et);
     }
     /**
      * 自定义行为[SQTG]用户扩展
@@ -88,7 +88,7 @@ public class PcmDdsqdmxServiceEx extends PcmDdsqdmxServiceImpl {
     @Override
     @Transactional
     public PcmDdsqdmx sQTG(PcmDdsqdmx et) {
-        return et;
+        return super.sQTG(et);
     }
     /**
      * 自定义行为[JZCZ]用户扩展
@@ -98,7 +98,7 @@ public class PcmDdsqdmxServiceEx extends PcmDdsqdmxServiceImpl {
     @Override
     @Transactional
     public PcmDdsqdmx jZCZ(PcmDdsqdmx et) {
-        return et;
+        return super.jZCZ(et);
     }
 }
 

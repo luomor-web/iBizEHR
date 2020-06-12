@@ -28,7 +28,7 @@ public class AttEnsummaryServiceEx extends AttEnsummaryServiceImpl {
     @Override
     @Transactional
     public AttEnsummary exportKQHZ(AttEnsummary et) {
-        return et;
+        return super.exportKQHZ(et);
     }
 }
 

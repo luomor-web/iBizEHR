@@ -28,7 +28,7 @@ public class CodeList1ServiceEx extends CodeList1ServiceImpl {
     @Override
     @Transactional
     public CodeList1 refreshModel(CodeList1 et) {
-        return et;
+        return super.refreshModel(et);
     }
 }
 

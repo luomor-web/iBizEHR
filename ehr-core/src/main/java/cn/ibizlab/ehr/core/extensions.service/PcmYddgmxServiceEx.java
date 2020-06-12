@@ -28,7 +28,7 @@ public class PcmYddgmxServiceEx extends PcmYddgmxServiceImpl {
     @Override
     @Transactional
     public PcmYddgmx qXDG(PcmYddgmx et) {
-        return et;
+        return super.qXDG(et);
     }
 }
 

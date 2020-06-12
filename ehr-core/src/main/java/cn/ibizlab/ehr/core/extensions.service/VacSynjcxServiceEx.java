@@ -28,7 +28,7 @@ public class VacSynjcxServiceEx extends VacSynjcxServiceImpl {
     @Override
     @Transactional
     public VacSynjcx jSTS(VacSynjcx et) {
-        return et;
+        return super.jSTS(et);
     }
 }
 

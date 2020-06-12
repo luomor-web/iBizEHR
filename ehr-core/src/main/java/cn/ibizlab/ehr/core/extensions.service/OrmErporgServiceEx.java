@@ -28,7 +28,7 @@ public class OrmErporgServiceEx extends OrmErporgServiceImpl {
     @Override
     @Transactional
     public OrmErporg synOrg(OrmErporg et) {
-        return et;
+        return super.synOrg(et);
     }
 }
 

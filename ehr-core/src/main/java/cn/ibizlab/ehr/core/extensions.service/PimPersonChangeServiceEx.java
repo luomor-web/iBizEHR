@@ -28,7 +28,7 @@ public class PimPersonChangeServiceEx extends PimPersonChangeServiceImpl {
     @Override
     @Transactional
     public PimPersonChange bH(PimPersonChange et) {
-        return et;
+        return super.bH(et);
     }
     /**
      * 自定义行为[Ensure]用户扩展
@@ -38,7 +38,7 @@ public class PimPersonChangeServiceEx extends PimPersonChangeServiceImpl {
     @Override
     @Transactional
     public PimPersonChange ensure(PimPersonChange et) {
-        return et;
+        return super.ensure(et);
     }
     /**
      * 自定义行为[QR]用户扩展
@@ -48,7 +48,7 @@ public class PimPersonChangeServiceEx extends PimPersonChangeServiceImpl {
     @Override
     @Transactional
     public PimPersonChange qR(PimPersonChange et) {
-        return et;
+        return super.qR(et);
     }
 }
 

@@ -28,7 +28,7 @@ public class PimTitleServiceEx extends PimTitleServiceImpl {
     @Override
     @Transactional
     public PimTitle ensureHighestTech(PimTitle et) {
-        return et;
+        return super.ensureHighestTech(et);
     }
 }
 

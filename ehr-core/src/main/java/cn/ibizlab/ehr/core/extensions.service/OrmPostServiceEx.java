@@ -28,7 +28,7 @@ public class OrmPostServiceEx extends OrmPostServiceImpl {
     @Override
     @Transactional
     public OrmPost setGwJb(OrmPost et) {
-        return et;
+        return super.setGwJb(et);
     }
 }
 

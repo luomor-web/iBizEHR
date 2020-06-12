@@ -28,7 +28,7 @@ public class PimPersonAbilityServiceEx extends PimPersonAbilityServiceImpl {
     @Override
     @Transactional
     public PimPersonAbility initData(PimPersonAbility et) {
-        return et;
+        return super.initData(et);
     }
 }
 

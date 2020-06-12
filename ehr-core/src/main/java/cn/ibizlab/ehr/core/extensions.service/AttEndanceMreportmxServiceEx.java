@@ -28,7 +28,7 @@ public class AttEndanceMreportmxServiceEx extends AttEndanceMreportmxServiceImpl
     @Override
     @Transactional
     public AttEndanceMreportmx export2Excel(AttEndanceMreportmx et) {
-        return et;
+        return super.export2Excel(et);
     }
 }
 

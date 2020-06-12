@@ -28,7 +28,7 @@ public class PimArchivesChangeServiceEx extends PimArchivesChangeServiceImpl {
     @Override
     @Transactional
     public PimArchivesChange updatePersonFile(PimArchivesChange et) {
-        return et;
+        return super.updatePersonFile(et);
     }
 }
 

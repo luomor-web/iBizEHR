@@ -28,7 +28,7 @@ public class PimEducationServiceEx extends PimEducationServiceImpl {
     @Override
     @Transactional
     public PimEducation checkHighestEdu(PimEducation et) {
-        return et;
+        return super.checkHighestEdu(et);
     }
 }
 

@@ -28,7 +28,7 @@ public class PcmGbhmcServiceEx extends PcmGbhmcServiceImpl {
     @Override
     @Transactional
     public PcmGbhmc toggleLeader(PcmGbhmc et) {
-        return et;
+        return super.toggleLeader(et);
     }
     /**
      * 自定义行为[SGTG]用户扩展
@@ -38,7 +38,7 @@ public class PcmGbhmcServiceEx extends PcmGbhmcServiceImpl {
     @Override
     @Transactional
     public PcmGbhmc sGTG(PcmGbhmc et) {
-        return et;
+        return super.sGTG(et);
     }
     /**
      * 自定义行为[SGBTG]用户扩展
@@ -48,7 +48,7 @@ public class PcmGbhmcServiceEx extends PcmGbhmcServiceImpl {
     @Override
     @Transactional
     public PcmGbhmc sGBTG(PcmGbhmc et) {
-        return et;
+        return super.sGBTG(et);
     }
 }
 

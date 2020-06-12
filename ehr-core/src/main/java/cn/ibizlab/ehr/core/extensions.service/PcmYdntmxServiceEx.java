@@ -28,7 +28,7 @@ public class PcmYdntmxServiceEx extends PcmYdntmxServiceImpl {
     @Override
     @Transactional
     public PcmYdntmx finishNT(PcmYdntmx et) {
-        return et;
+        return super.finishNT(et);
     }
 }
 

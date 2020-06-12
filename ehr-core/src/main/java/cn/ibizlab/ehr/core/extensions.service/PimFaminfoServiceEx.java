@@ -28,7 +28,7 @@ public class PimFaminfoServiceEx extends PimFaminfoServiceImpl {
     @Override
     @Transactional
     public PimFaminfo updateInfo(PimFaminfo et) {
-        return et;
+        return super.updateInfo(et);
     }
     /**
      * 自定义行为[UpdateContact]用户扩展
@@ -38,7 +38,7 @@ public class PimFaminfoServiceEx extends PimFaminfoServiceImpl {
     @Override
     @Transactional
     public PimFaminfo updateContact(PimFaminfo et) {
-        return et;
+        return super.updateContact(et);
     }
 }
 

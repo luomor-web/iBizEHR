@@ -28,7 +28,7 @@ public class PimArchiveSloanandreturnServiceEx extends PimArchiveSloanandreturnS
     @Override
     @Transactional
     public PimArchiveSloanandreturn updateArchiveState(PimArchiveSloanandreturn et) {
-        return et;
+        return super.updateArchiveState(et);
     }
 }
 

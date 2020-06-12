@@ -28,7 +28,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx sHTG(PimByzzjlmx et) {
-        return et;
+        return super.sHTG(et);
     }
     /**
      * 自定义行为[ReturnYPZ]用户扩展
@@ -38,7 +38,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx returnYPZ(PimByzzjlmx et) {
-        return et;
+        return super.returnYPZ(et);
     }
     /**
      * 自定义行为[JSPTG]用户扩展
@@ -48,7 +48,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx jSPTG(PimByzzjlmx et) {
-        return et;
+        return super.jSPTG(et);
     }
     /**
      * 自定义行为[JSHTG]用户扩展
@@ -58,7 +58,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx jSHTG(PimByzzjlmx et) {
-        return et;
+        return super.jSHTG(et);
     }
     /**
      * 自定义行为[JSHBTG]用户扩展
@@ -68,7 +68,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx jSHBTG(PimByzzjlmx et) {
-        return et;
+        return super.jSHBTG(et);
     }
     /**
      * 自定义行为[Ensure]用户扩展
@@ -78,7 +78,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx ensure(PimByzzjlmx et) {
-        return et;
+        return super.ensure(et);
     }
     /**
      * 自定义行为[SHBTG]用户扩展
@@ -88,7 +88,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx sHBTG(PimByzzjlmx et) {
-        return et;
+        return super.sHBTG(et);
     }
     /**
      * 自定义行为[GSDSZSP]用户扩展
@@ -98,7 +98,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx gSDSZSP(PimByzzjlmx et) {
-        return et;
+        return super.gSDSZSP(et);
     }
     /**
      * 自定义行为[ZZCZ]用户扩展
@@ -108,7 +108,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx zZCZ(PimByzzjlmx et) {
-        return et;
+        return super.zZCZ(et);
     }
     /**
      * 自定义行为[DSB]用户扩展
@@ -118,7 +118,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx dSB(PimByzzjlmx et) {
-        return et;
+        return super.dSB(et);
     }
     /**
      * 自定义行为[JZBSHQR]用户扩展
@@ -128,7 +128,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx jZBSHQR(PimByzzjlmx et) {
-        return et;
+        return super.jZBSHQR(et);
     }
     /**
      * 自定义行为[GSDSZSPBTG]用户扩展
@@ -138,7 +138,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx gSDSZSPBTG(PimByzzjlmx et) {
-        return et;
+        return super.gSDSZSPBTG(et);
     }
     /**
      * 自定义行为[GSCSBTG]用户扩展
@@ -148,7 +148,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx gSCSBTG(PimByzzjlmx et) {
-        return et;
+        return super.gSCSBTG(et);
     }
     /**
      * 自定义行为[JSPBTG]用户扩展
@@ -158,7 +158,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx jSPBTG(PimByzzjlmx et) {
-        return et;
+        return super.jSPBTG(et);
     }
     /**
      * 自定义行为[GSCS]用户扩展
@@ -168,7 +168,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx gSCS(PimByzzjlmx et) {
-        return et;
+        return super.gSCS(et);
     }
     /**
      * 自定义行为[UpdatePeopleNum]用户扩展
@@ -178,7 +178,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx updatePeopleNum(PimByzzjlmx et) {
-        return et;
+        return super.updatePeopleNum(et);
     }
     /**
      * 自定义行为[JZBSPQR]用户扩展
@@ -188,7 +188,7 @@ public class PimByzzjlmxServiceEx extends PimByzzjlmxServiceImpl {
     @Override
     @Transactional
     public PimByzzjlmx jZBSPQR(PimByzzjlmx et) {
-        return et;
+        return super.jZBSPQR(et);
     }
 }
 

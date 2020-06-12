@@ -28,7 +28,7 @@ public class PcmYdjzmxServiceEx extends PcmYdjzmxServiceImpl {
     @Override
     @Transactional
     public PcmYdjzmx rYHG(PcmYdjzmx et) {
-        return et;
+        return super.rYHG(et);
     }
 }
 

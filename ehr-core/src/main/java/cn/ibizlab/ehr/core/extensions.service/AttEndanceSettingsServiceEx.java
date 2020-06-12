@@ -28,7 +28,7 @@ public class AttEndanceSettingsServiceEx extends AttEndanceSettingsServiceImpl {
     @Override
     @Transactional
     public AttEndanceSettings addToKqz(AttEndanceSettings et) {
-        return et;
+        return super.addToKqz(et);
     }
 }
 

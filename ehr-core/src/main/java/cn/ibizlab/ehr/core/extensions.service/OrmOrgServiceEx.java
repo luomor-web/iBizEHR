@@ -28,7 +28,7 @@ public class OrmOrgServiceEx extends OrmOrgServiceImpl {
     @Override
     @Transactional
     public OrmOrg synOrg(OrmOrg et) {
-        return et;
+        return super.synOrg(et);
     }
 }
 

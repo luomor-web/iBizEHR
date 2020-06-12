@@ -28,7 +28,7 @@ public class PcmJxsygzzsqmxServiceEx extends PcmJxsygzzsqmxServiceImpl {
     @Override
     @Transactional
     public PcmJxsygzzsqmx zZAction(PcmJxsygzzsqmx et) {
-        return et;
+        return super.zZAction(et);
     }
 }
 

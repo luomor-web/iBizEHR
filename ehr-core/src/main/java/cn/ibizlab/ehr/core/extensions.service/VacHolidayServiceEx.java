@@ -28,7 +28,7 @@ public class VacHolidayServiceEx extends VacHolidayServiceImpl {
     @Override
     @Transactional
     public VacHoliday aPPOINTJZBJJR(VacHoliday et) {
-        return et;
+        return super.aPPOINTJZBJJR(et);
     }
 }
 

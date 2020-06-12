@@ -28,7 +28,7 @@ public class OrmXmglServiceEx extends OrmXmglServiceImpl {
     @Override
     @Transactional
     public OrmXmgl synchro(OrmXmgl et) {
-        return et;
+        return super.synchro(et);
     }
 }
 

@@ -28,7 +28,7 @@ public class PcmYdbxmxServiceEx extends PcmYdbxmxServiceImpl {
     @Override
     @Transactional
     public PcmYdbxmx finishBX(PcmYdbxmx et) {
-        return et;
+        return super.finishBX(et);
     }
 }
 

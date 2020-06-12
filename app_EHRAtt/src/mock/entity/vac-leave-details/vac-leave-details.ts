@@ -87,9 +87,9 @@ mock.onDelete(new RegExp(/^\/vacleavedetails\/batch$/)).reply((config: any) => {
 });
 
         
-// GETNIANJIA
+// GetNianJia
 mock.onPost(new RegExp(/^\/vacleavedetails\/?([a-zA-Z0-9\-\;]{0,35})\/getnianjia$/)).reply((config: any) => {
-    console.groupCollapsed("实体:vacleavedetail 方法: GETNIANJIA");
+    console.groupCollapsed("实体:vacleavedetail 方法: GetNianJia");
     console.table({url:config.url, method: config.method, data:config.data});
     let status = MockAdapter.mockStatus(config);
     if (status !== 200) {

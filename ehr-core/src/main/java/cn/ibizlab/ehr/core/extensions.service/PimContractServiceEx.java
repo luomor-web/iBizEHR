@@ -28,7 +28,7 @@ public class PimContractServiceEx extends PimContractServiceImpl {
     @Override
     @Transactional
     public PimContract calContractTime(PimContract et) {
-        return et;
+        return super.calContractTime(et);
     }
     /**
      * 自定义行为[StopContract]用户扩展
@@ -38,7 +38,7 @@ public class PimContractServiceEx extends PimContractServiceImpl {
     @Override
     @Transactional
     public PimContract stopContract(PimContract et) {
-        return et;
+        return super.stopContract(et);
     }
 }
 

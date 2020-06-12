@@ -28,7 +28,7 @@ public class OrmUnitedPersonServiceEx extends OrmUnitedPersonServiceImpl {
     @Override
     @Transactional
     public OrmUnitedPerson getUnitedUser(OrmUnitedPerson et) {
-        return et;
+        return super.getUnitedUser(et);
     }
 }
 

@@ -28,7 +28,7 @@ public class OrmXmxqjhServiceEx extends OrmXmxqjhServiceImpl {
     @Override
     @Transactional
     public OrmXmxqjh tJ(OrmXmxqjh et) {
-        return et;
+        return super.tJ(et);
     }
     /**
      * 自定义行为[CLWC]用户扩展
@@ -38,7 +38,7 @@ public class OrmXmxqjhServiceEx extends OrmXmxqjhServiceImpl {
     @Override
     @Transactional
     public OrmXmxqjh cLWC(OrmXmxqjh et) {
-        return et;
+        return super.cLWC(et);
     }
     /**
      * 自定义行为[SHBTG]用户扩展
@@ -48,7 +48,7 @@ public class OrmXmxqjhServiceEx extends OrmXmxqjhServiceImpl {
     @Override
     @Transactional
     public OrmXmxqjh sHBTG(OrmXmxqjh et) {
-        return et;
+        return super.sHBTG(et);
     }
     /**
      * 自定义行为[Ensure]用户扩展
@@ -58,7 +58,7 @@ public class OrmXmxqjhServiceEx extends OrmXmxqjhServiceImpl {
     @Override
     @Transactional
     public OrmXmxqjh ensure(OrmXmxqjh et) {
-        return et;
+        return super.ensure(et);
     }
 }
 

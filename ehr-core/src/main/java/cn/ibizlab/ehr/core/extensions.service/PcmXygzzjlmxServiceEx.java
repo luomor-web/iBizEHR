@@ -28,7 +28,7 @@ public class PcmXygzzjlmxServiceEx extends PcmXygzzjlmxServiceImpl {
     @Override
     @Transactional
     public PcmXygzzjlmx xYGZZCZ(PcmXygzzjlmx et) {
-        return et;
+        return super.xYGZZCZ(et);
     }
     /**
      * 自定义行为[SHTG]用户扩展
@@ -38,7 +38,7 @@ public class PcmXygzzjlmxServiceEx extends PcmXygzzjlmxServiceImpl {
     @Override
     @Transactional
     public PcmXygzzjlmx sHTG(PcmXygzzjlmx et) {
-        return et;
+        return super.sHTG(et);
     }
     /**
      * 自定义行为[SHBTG]用户扩展
@@ -48,7 +48,7 @@ public class PcmXygzzjlmxServiceEx extends PcmXygzzjlmxServiceImpl {
     @Override
     @Transactional
     public PcmXygzzjlmx sHBTG(PcmXygzzjlmx et) {
-        return et;
+        return super.sHBTG(et);
     }
 }
 

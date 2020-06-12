@@ -28,7 +28,7 @@ public class AttEndanceRecordServiceEx extends AttEndanceRecordServiceImpl {
     @Override
     @Transactional
     public AttEndanceRecord reflushPersonInfo(AttEndanceRecord et) {
-        return et;
+        return super.reflushPersonInfo(et);
     }
 }
 

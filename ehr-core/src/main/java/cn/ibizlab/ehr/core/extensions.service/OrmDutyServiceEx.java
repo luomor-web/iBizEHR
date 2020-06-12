@@ -28,7 +28,7 @@ public class OrmDutyServiceEx extends OrmDutyServiceImpl {
     @Override
     @Transactional
     public OrmDuty synOrderNum(OrmDuty et) {
-        return et;
+        return super.synOrderNum(et);
     }
 }
 

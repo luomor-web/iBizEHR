@@ -28,7 +28,7 @@ public class AttEndenceSetupServiceEx extends AttEndenceSetupServiceImpl {
     @Override
     @Transactional
     public AttEndenceSetup reflushUpdatedate(AttEndenceSetup et) {
-        return et;
+        return super.reflushUpdatedate(et);
     }
 }
 

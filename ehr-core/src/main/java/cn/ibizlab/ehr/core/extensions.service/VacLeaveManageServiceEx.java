@@ -28,7 +28,7 @@ public class VacLeaveManageServiceEx extends VacLeaveManageServiceImpl {
     @Override
     @Transactional
     public VacLeaveManage updateQJMX(VacLeaveManage et) {
-        return et;
+        return super.updateQJMX(et);
     }
     /**
      * 自定义行为[CB]用户扩展
@@ -38,7 +38,7 @@ public class VacLeaveManageServiceEx extends VacLeaveManageServiceImpl {
     @Override
     @Transactional
     public VacLeaveManage cB(VacLeaveManage et) {
-        return et;
+        return super.cB(et);
     }
     /**
      * 自定义行为[CX]用户扩展
@@ -48,7 +48,7 @@ public class VacLeaveManageServiceEx extends VacLeaveManageServiceImpl {
     @Override
     @Transactional
     public VacLeaveManage cX(VacLeaveManage et) {
-        return et;
+        return super.cX(et);
     }
     /**
      * 自定义行为[GetFJSJofPerson]用户扩展
@@ -58,7 +58,7 @@ public class VacLeaveManageServiceEx extends VacLeaveManageServiceImpl {
     @Override
     @Transactional
     public VacLeaveManage getFJSJofPerson(VacLeaveManage et) {
-        return et;
+        return super.getFJSJofPerson(et);
     }
     /**
      * 自定义行为[MobStart]用户扩展
@@ -68,7 +68,7 @@ public class VacLeaveManageServiceEx extends VacLeaveManageServiceImpl {
     @Override
     @Transactional
     public VacLeaveManage mobStart(VacLeaveManage et) {
-        return et;
+        return super.mobStart(et);
     }
 }
 

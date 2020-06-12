@@ -28,7 +28,7 @@ public class PcmWzd0001ServiceEx extends PcmWzd0001ServiceImpl {
     @Override
     @Transactional
     public PcmWzd0001 updatePeopleNum(PcmWzd0001 et) {
-        return et;
+        return super.updatePeopleNum(et);
     }
 }
 

@@ -28,7 +28,7 @@ public class SocWelfareInfoServiceEx extends SocWelfareInfoServiceImpl {
     @Override
     @Transactional
     public SocWelfareInfo getFJSJofPerson(SocWelfareInfo et) {
-        return et;
+        return super.getFJSJofPerson(et);
     }
     /**
      * 自定义行为[GetCBDofSOCCOMPANYWEL]用户扩展
@@ -38,7 +38,7 @@ public class SocWelfareInfoServiceEx extends SocWelfareInfoServiceImpl {
     @Override
     @Transactional
     public SocWelfareInfo getCBDofSOCCOMPANYWEL(SocWelfareInfo et) {
-        return et;
+        return super.getCBDofSOCCOMPANYWEL(et);
     }
 }
 

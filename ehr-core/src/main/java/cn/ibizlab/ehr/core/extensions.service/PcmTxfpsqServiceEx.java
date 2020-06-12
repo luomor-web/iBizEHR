@@ -28,7 +28,7 @@ public class PcmTxfpsqServiceEx extends PcmTxfpsqServiceImpl {
     @Override
     @Transactional
     public PcmTxfpsq fPCZ(PcmTxfpsq et) {
-        return et;
+        return super.fPCZ(et);
     }
     /**
      * 自定义行为[FinishFP]用户扩展
@@ -38,7 +38,7 @@ public class PcmTxfpsqServiceEx extends PcmTxfpsqServiceImpl {
     @Override
     @Transactional
     public PcmTxfpsq finishFP(PcmTxfpsq et) {
-        return et;
+        return super.finishFP(et);
     }
     /**
      * 自定义行为[SHTG]用户扩展
@@ -48,7 +48,7 @@ public class PcmTxfpsqServiceEx extends PcmTxfpsqServiceImpl {
     @Override
     @Transactional
     public PcmTxfpsq sHTG(PcmTxfpsq et) {
-        return et;
+        return super.sHTG(et);
     }
     /**
      * 自定义行为[SHBTG]用户扩展
@@ -58,7 +58,7 @@ public class PcmTxfpsqServiceEx extends PcmTxfpsqServiceImpl {
     @Override
     @Transactional
     public PcmTxfpsq sHBTG(PcmTxfpsq et) {
-        return et;
+        return super.sHBTG(et);
     }
 }
 

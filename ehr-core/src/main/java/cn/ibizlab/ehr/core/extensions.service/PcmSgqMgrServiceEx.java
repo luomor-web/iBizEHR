@@ -28,7 +28,7 @@ public class PcmSgqMgrServiceEx extends PcmSgqMgrServiceImpl {
     @Override
     @Transactional
     public PcmSgqMgr sGTG(PcmSgqMgr et) {
-        return et;
+        return super.sGTG(et);
     }
     /**
      * 自定义行为[SGBTG]用户扩展
@@ -38,7 +38,7 @@ public class PcmSgqMgrServiceEx extends PcmSgqMgrServiceImpl {
     @Override
     @Transactional
     public PcmSgqMgr sGBTG(PcmSgqMgr et) {
-        return et;
+        return super.sGBTG(et);
     }
 }
 

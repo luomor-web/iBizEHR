@@ -28,7 +28,7 @@ public class OrmOrgsectorServiceEx extends OrmOrgsectorServiceImpl {
     @Override
     @Transactional
     public OrmOrgsector changeEdition(OrmOrgsector et) {
-        return et;
+        return super.changeEdition(et);
     }
     /**
      * 自定义行为[SynOrgSectPro]用户扩展
@@ -38,7 +38,7 @@ public class OrmOrgsectorServiceEx extends OrmOrgsectorServiceImpl {
     @Override
     @Transactional
     public OrmOrgsector synOrgSectPro(OrmOrgsector et) {
-        return et;
+        return super.synOrgSectPro(et);
     }
     /**
      * 自定义行为[CLWC]用户扩展
@@ -48,7 +48,7 @@ public class OrmOrgsectorServiceEx extends OrmOrgsectorServiceImpl {
     @Override
     @Transactional
     public OrmOrgsector cLWC(OrmOrgsector et) {
-        return et;
+        return super.cLWC(et);
     }
     /**
      * 自定义行为[TJ]用户扩展
@@ -58,7 +58,7 @@ public class OrmOrgsectorServiceEx extends OrmOrgsectorServiceImpl {
     @Override
     @Transactional
     public OrmOrgsector tJ(OrmOrgsector et) {
-        return et;
+        return super.tJ(et);
     }
     /**
      * 自定义行为[SynOrgSectOderNum]用户扩展
@@ -68,7 +68,7 @@ public class OrmOrgsectorServiceEx extends OrmOrgsectorServiceImpl {
     @Override
     @Transactional
     public OrmOrgsector synOrgSectOderNum(OrmOrgsector et) {
-        return et;
+        return super.synOrgSectOderNum(et);
     }
     /**
      * 自定义行为[SynOrgSec]用户扩展
@@ -78,7 +78,7 @@ public class OrmOrgsectorServiceEx extends OrmOrgsectorServiceImpl {
     @Override
     @Transactional
     public OrmOrgsector synOrgSec(OrmOrgsector et) {
-        return et;
+        return super.synOrgSec(et);
     }
 }
 

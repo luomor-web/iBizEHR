@@ -28,7 +28,7 @@ public class VacLeaveDetailServiceEx extends VacLeaveDetailServiceImpl {
     @Override
     @Transactional
     public VacLeaveDetail getNianJia(VacLeaveDetail et) {
-        return et;
+        return super.getNianJia(et);
     }
     /**
      * 自定义行为[CalcPlanDays]用户扩展
@@ -38,7 +38,7 @@ public class VacLeaveDetailServiceEx extends VacLeaveDetailServiceImpl {
     @Override
     @Transactional
     public VacLeaveDetail calcPlanDays(VacLeaveDetail et) {
-        return et;
+        return super.calcPlanDays(et);
     }
 }
 

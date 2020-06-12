@@ -28,7 +28,7 @@ public class VacHolidayRulesServiceEx extends VacHolidayRulesServiceImpl {
     @Override
     @Transactional
     public VacHolidayRules copyKQGZData(VacHolidayRules et) {
-        return et;
+        return super.copyKQGZData(et);
     }
 }
 

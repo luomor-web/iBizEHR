@@ -28,7 +28,7 @@ public class PimPersonServiceEx extends PimPersonServiceImpl {
     @Override
     @Transactional
     public PimPerson yZSFYZFP(PimPerson et) {
-        return et;
+        return super.yZSFYZFP(et);
     }
     /**
      * 自定义行为[ToggleLeader]用户扩展
@@ -38,7 +38,7 @@ public class PimPersonServiceEx extends PimPersonServiceImpl {
     @Override
     @Transactional
     public PimPerson toggleLeader(PimPerson et) {
-        return et;
+        return super.toggleLeader(et);
     }
     /**
      * 自定义行为[PersonUpdateInfo]用户扩展
@@ -48,7 +48,7 @@ public class PimPersonServiceEx extends PimPersonServiceImpl {
     @Override
     @Transactional
     public PimPerson personUpdateInfo(PimPerson et) {
-        return et;
+        return super.personUpdateInfo(et);
     }
     /**
      * 自定义行为[FillPersonType]用户扩展
@@ -58,7 +58,7 @@ public class PimPersonServiceEx extends PimPersonServiceImpl {
     @Override
     @Transactional
     public PimPerson fillPersonType(PimPerson et) {
-        return et;
+        return super.fillPersonType(et);
     }
     /**
      * 自定义行为[SynPerson]用户扩展
@@ -68,7 +68,7 @@ public class PimPersonServiceEx extends PimPersonServiceImpl {
     @Override
     @Transactional
     public PimPerson synPerson(PimPerson et) {
-        return et;
+        return super.synPerson(et);
     }
     /**
      * 自定义行为[QRTX]用户扩展
@@ -78,7 +78,7 @@ public class PimPersonServiceEx extends PimPersonServiceImpl {
     @Override
     @Transactional
     public PimPerson qRTX(PimPerson et) {
-        return et;
+        return super.qRTX(et);
     }
     /**
      * 自定义行为[GeneratePersonFile]用户扩展
@@ -88,7 +88,7 @@ public class PimPersonServiceEx extends PimPersonServiceImpl {
     @Override
     @Transactional
     public PimPerson generatePersonFile(PimPerson et) {
-        return et;
+        return super.generatePersonFile(et);
     }
 }
 

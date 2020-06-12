@@ -28,7 +28,7 @@ public class PimDistirbutionServiceEx extends PimDistirbutionServiceImpl {
     @Override
     @Transactional
     public PimDistirbution dDCZC(PimDistirbution et) {
-        return et;
+        return super.dDCZC(et);
     }
 }
 

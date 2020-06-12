@@ -28,7 +28,7 @@ public class PimLanguageAbilityServiceEx extends PimLanguageAbilityServiceImpl {
     @Override
     @Transactional
     public PimLanguageAbility custRemove(PimLanguageAbility et) {
-        return et;
+        return super.custRemove(et);
     }
 }
 

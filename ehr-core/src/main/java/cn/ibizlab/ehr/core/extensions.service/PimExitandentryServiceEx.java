@@ -28,7 +28,7 @@ public class PimExitandentryServiceEx extends PimExitandentryServiceImpl {
     @Override
     @Transactional
     public PimExitandentry cX(PimExitandentry et) {
-        return et;
+        return super.cX(et);
     }
     /**
      * 自定义行为[MobStart]用户扩展
@@ -38,7 +38,7 @@ public class PimExitandentryServiceEx extends PimExitandentryServiceImpl {
     @Override
     @Transactional
     public PimExitandentry mobStart(PimExitandentry et) {
-        return et;
+        return super.mobStart(et);
     }
     /**
      * 自定义行为[CB]用户扩展
@@ -48,7 +48,7 @@ public class PimExitandentryServiceEx extends PimExitandentryServiceImpl {
     @Override
     @Transactional
     public PimExitandentry cB(PimExitandentry et) {
-        return et;
+        return super.cB(et);
     }
     /**
      * 自定义行为[Start]用户扩展
@@ -58,7 +58,7 @@ public class PimExitandentryServiceEx extends PimExitandentryServiceImpl {
     @Override
     @Transactional
     public PimExitandentry start(PimExitandentry et) {
-        return et;
+        return super.start(et);
     }
 }
 

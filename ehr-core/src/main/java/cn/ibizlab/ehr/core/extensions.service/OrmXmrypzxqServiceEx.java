@@ -28,7 +28,7 @@ public class OrmXmrypzxqServiceEx extends OrmXmrypzxqServiceImpl {
     @Override
     @Transactional
     public OrmXmrypzxq synTJ(OrmXmrypzxq et) {
-        return et;
+        return super.synTJ(et);
     }
     /**
      * 自定义行为[MODSPTG]用户扩展
@@ -38,7 +38,7 @@ public class OrmXmrypzxqServiceEx extends OrmXmrypzxqServiceImpl {
     @Override
     @Transactional
     public OrmXmrypzxq mODSPTG(OrmXmrypzxq et) {
-        return et;
+        return super.mODSPTG(et);
     }
     /**
      * 自定义行为[SFBH]用户扩展
@@ -48,7 +48,7 @@ public class OrmXmrypzxqServiceEx extends OrmXmrypzxqServiceImpl {
     @Override
     @Transactional
     public OrmXmrypzxq sFBH(OrmXmrypzxq et) {
-        return et;
+        return super.sFBH(et);
     }
     /**
      * 自定义行为[Ensure]用户扩展
@@ -58,7 +58,7 @@ public class OrmXmrypzxqServiceEx extends OrmXmrypzxqServiceImpl {
     @Override
     @Transactional
     public OrmXmrypzxq ensure(OrmXmrypzxq et) {
-        return et;
+        return super.ensure(et);
     }
     /**
      * 自定义行为[SynDeployInfo]用户扩展
@@ -68,7 +68,7 @@ public class OrmXmrypzxqServiceEx extends OrmXmrypzxqServiceImpl {
     @Override
     @Transactional
     public OrmXmrypzxq synDeployInfo(OrmXmrypzxq et) {
-        return et;
+        return super.synDeployInfo(et);
     }
     /**
      * 自定义行为[MODBH]用户扩展
@@ -78,7 +78,7 @@ public class OrmXmrypzxqServiceEx extends OrmXmrypzxqServiceImpl {
     @Override
     @Transactional
     public OrmXmrypzxq mODBH(OrmXmrypzxq et) {
-        return et;
+        return super.mODBH(et);
     }
     /**
      * 自定义行为[SFQR]用户扩展
@@ -88,7 +88,7 @@ public class OrmXmrypzxqServiceEx extends OrmXmrypzxqServiceImpl {
     @Override
     @Transactional
     public OrmXmrypzxq sFQR(OrmXmrypzxq et) {
-        return et;
+        return super.sFQR(et);
     }
     /**
      * 自定义行为[SynPersonInfo]用户扩展
@@ -98,7 +98,7 @@ public class OrmXmrypzxqServiceEx extends OrmXmrypzxqServiceImpl {
     @Override
     @Transactional
     public OrmXmrypzxq synPersonInfo(OrmXmrypzxq et) {
-        return et;
+        return super.synPersonInfo(et);
     }
     /**
      * 自定义行为[SynRelease]用户扩展
@@ -108,7 +108,7 @@ public class OrmXmrypzxqServiceEx extends OrmXmrypzxqServiceImpl {
     @Override
     @Transactional
     public OrmXmrypzxq synRelease(OrmXmrypzxq et) {
-        return et;
+        return super.synRelease(et);
     }
     /**
      * 自定义行为[SHTG]用户扩展
@@ -118,7 +118,7 @@ public class OrmXmrypzxqServiceEx extends OrmXmrypzxqServiceImpl {
     @Override
     @Transactional
     public OrmXmrypzxq sHTG(OrmXmrypzxq et) {
-        return et;
+        return super.sHTG(et);
     }
     /**
      * 自定义行为[TPSPTG]用户扩展
@@ -128,7 +128,7 @@ public class OrmXmrypzxqServiceEx extends OrmXmrypzxqServiceImpl {
     @Override
     @Transactional
     public OrmXmrypzxq tPSPTG(OrmXmrypzxq et) {
-        return et;
+        return super.tPSPTG(et);
     }
     /**
      * 自定义行为[BH]用户扩展
@@ -138,7 +138,7 @@ public class OrmXmrypzxqServiceEx extends OrmXmrypzxqServiceImpl {
     @Override
     @Transactional
     public OrmXmrypzxq bH(OrmXmrypzxq et) {
-        return et;
+        return super.bH(et);
     }
     /**
      * 自定义行为[SFSPTG]用户扩展
@@ -148,7 +148,7 @@ public class OrmXmrypzxqServiceEx extends OrmXmrypzxqServiceImpl {
     @Override
     @Transactional
     public OrmXmrypzxq sFSPTG(OrmXmrypzxq et) {
-        return et;
+        return super.sFSPTG(et);
     }
     /**
      * 自定义行为[TPBH]用户扩展
@@ -158,7 +158,7 @@ public class OrmXmrypzxqServiceEx extends OrmXmrypzxqServiceImpl {
     @Override
     @Transactional
     public OrmXmrypzxq tPBH(OrmXmrypzxq et) {
-        return et;
+        return super.tPBH(et);
     }
     /**
      * 自定义行为[TPQR]用户扩展
@@ -168,7 +168,7 @@ public class OrmXmrypzxqServiceEx extends OrmXmrypzxqServiceImpl {
     @Override
     @Transactional
     public OrmXmrypzxq tPQR(OrmXmrypzxq et) {
-        return et;
+        return super.tPQR(et);
     }
 }
 

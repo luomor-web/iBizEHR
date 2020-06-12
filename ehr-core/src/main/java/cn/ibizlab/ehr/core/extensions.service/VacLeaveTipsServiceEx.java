@@ -28,7 +28,7 @@ public class VacLeaveTipsServiceEx extends VacLeaveTipsServiceImpl {
     @Override
     @Transactional
     public VacLeaveTips checkQJZL(VacLeaveTips et) {
-        return et;
+        return super.checkQJZL(et);
     }
     /**
      * 自定义行为[CheckRepeat]用户扩展
@@ -38,7 +38,7 @@ public class VacLeaveTipsServiceEx extends VacLeaveTipsServiceImpl {
     @Override
     @Transactional
     public VacLeaveTips checkRepeat(VacLeaveTips et) {
-        return et;
+        return super.checkRepeat(et);
     }
 }
 

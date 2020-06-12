@@ -28,7 +28,7 @@ public class PcmDdsqdServiceEx extends PcmDdsqdServiceImpl {
     @Override
     @Transactional
     public PcmDdsqd pDD(PcmDdsqd et) {
-        return et;
+        return super.pDD(et);
     }
 }
 

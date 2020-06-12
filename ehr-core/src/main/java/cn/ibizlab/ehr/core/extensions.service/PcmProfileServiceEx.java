@@ -28,7 +28,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile jSPBTG(PcmProfile et) {
-        return et;
+        return super.jSPBTG(et);
     }
     /**
      * 自定义行为[PrintSPB]用户扩展
@@ -38,7 +38,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile printSPB(PcmProfile et) {
-        return et;
+        return super.printSPB(et);
     }
     /**
      * 自定义行为[GetYPZNL]用户扩展
@@ -48,7 +48,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile getYPZNL(PcmProfile et) {
-        return et;
+        return super.getYPZNL(et);
     }
     /**
      * 自定义行为[ClearPersonUpdateInfo]用户扩展
@@ -58,7 +58,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile clearPersonUpdateInfo(PcmProfile et) {
-        return et;
+        return super.clearPersonUpdateInfo(et);
     }
     /**
      * 自定义行为[Invalid2]用户扩展
@@ -68,7 +68,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile invalid2(PcmProfile et) {
-        return et;
+        return super.invalid2(et);
     }
     /**
      * 自定义行为[JLDTG]用户扩展
@@ -78,7 +78,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile jLDTG(PcmProfile et) {
-        return et;
+        return super.jLDTG(et);
     }
     /**
      * 自定义行为[CheckYJSNF]用户扩展
@@ -88,7 +88,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile checkYJSNF(PcmProfile et) {
-        return et;
+        return super.checkYJSNF(et);
     }
     /**
      * 自定义行为[CheckEmail]用户扩展
@@ -98,7 +98,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile checkEmail(PcmProfile et) {
-        return et;
+        return super.checkEmail(et);
     }
     /**
      * 自定义行为[GetPcmprofileInfo]用户扩展
@@ -108,7 +108,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile getPcmprofileInfo(PcmProfile et) {
-        return et;
+        return super.getPcmprofileInfo(et);
     }
     /**
      * 自定义行为[CheckYglxIsChanged]用户扩展
@@ -118,7 +118,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile checkYglxIsChanged(PcmProfile et) {
-        return et;
+        return super.checkYglxIsChanged(et);
     }
     /**
      * 自定义行为[SX]用户扩展
@@ -128,7 +128,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile sX(PcmProfile et) {
-        return et;
+        return super.sX(et);
     }
     /**
      * 自定义行为[ClearYPZ]用户扩展
@@ -138,7 +138,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile clearYPZ(PcmProfile et) {
-        return et;
+        return super.clearYPZ(et);
     }
     /**
      * 自定义行为[CheckFP]用户扩展
@@ -148,7 +148,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile checkFP(PcmProfile et) {
-        return et;
+        return super.checkFP(et);
     }
     /**
      * 自定义行为[ClearYYDJMC]用户扩展
@@ -158,7 +158,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile clearYYDJMC(PcmProfile et) {
-        return et;
+        return super.clearYYDJMC(et);
     }
     /**
      * 自定义行为[PersonUpdateInfo]用户扩展
@@ -168,7 +168,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile personUpdateInfo(PcmProfile et) {
-        return et;
+        return super.personUpdateInfo(et);
     }
     /**
      * 自定义行为[GSCS]用户扩展
@@ -178,7 +178,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile gSCS(PcmProfile et) {
-        return et;
+        return super.gSCS(et);
     }
     /**
      * 自定义行为[FillingYPZ]用户扩展
@@ -188,7 +188,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile fillingYPZ(PcmProfile et) {
-        return et;
+        return super.fillingYPZ(et);
     }
     /**
      * 自定义行为[USEYBH]用户扩展
@@ -198,7 +198,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile uSEYBH(PcmProfile et) {
-        return et;
+        return super.uSEYBH(et);
     }
     /**
      * 自定义行为[CheckMobieNumber]用户扩展
@@ -208,7 +208,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile checkMobieNumber(PcmProfile et) {
-        return et;
+        return super.checkMobieNumber(et);
     }
     /**
      * 自定义行为[JLDBTG]用户扩展
@@ -218,7 +218,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile jLDBTG(PcmProfile et) {
-        return et;
+        return super.jLDBTG(et);
     }
     /**
      * 自定义行为[JSPTG]用户扩展
@@ -228,7 +228,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile jSPTG(PcmProfile et) {
-        return et;
+        return super.jSPTG(et);
     }
     /**
      * 自定义行为[SetNQDLDHTQX]用户扩展
@@ -238,7 +238,7 @@ public class PcmProfileServiceEx extends PcmProfileServiceImpl {
     @Override
     @Transactional
     public PcmProfile setNQDLDHTQX(PcmProfile et) {
-        return et;
+        return super.setNQDLDHTQX(et);
     }
 }
 

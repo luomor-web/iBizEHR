@@ -28,7 +28,7 @@ public class PimSearchFieldSetServiceEx extends PimSearchFieldSetServiceImpl {
     @Override
     @Transactional
     public PimSearchFieldSet initDictionary(PimSearchFieldSet et) {
-        return et;
+        return super.initDictionary(et);
     }
 }
 

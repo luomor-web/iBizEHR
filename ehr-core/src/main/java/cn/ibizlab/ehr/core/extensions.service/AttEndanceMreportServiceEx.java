@@ -28,7 +28,7 @@ public class AttEndanceMreportServiceEx extends AttEndanceMreportServiceImpl {
     @Override
     @Transactional
     public AttEndanceMreport getAttendencemanOfKQSZ(AttEndanceMreport et) {
-        return et;
+        return super.getAttendencemanOfKQSZ(et);
     }
     /**
      * 自定义行为[ExportKQYB]用户扩展
@@ -38,7 +38,7 @@ public class AttEndanceMreportServiceEx extends AttEndanceMreportServiceImpl {
     @Override
     @Transactional
     public AttEndanceMreport exportKQYB(AttEndanceMreport et) {
-        return et;
+        return super.exportKQYB(et);
     }
     /**
      * 自定义行为[SCKQYB]用户扩展
@@ -48,7 +48,7 @@ public class AttEndanceMreportServiceEx extends AttEndanceMreportServiceImpl {
     @Override
     @Transactional
     public AttEndanceMreport sCKQYB(AttEndanceMreport et) {
-        return et;
+        return super.sCKQYB(et);
     }
     /**
      * 自定义行为[QR]用户扩展
@@ -58,7 +58,7 @@ public class AttEndanceMreportServiceEx extends AttEndanceMreportServiceImpl {
     @Override
     @Transactional
     public AttEndanceMreport qR(AttEndanceMreport et) {
-        return et;
+        return super.qR(et);
     }
     /**
      * 自定义行为[PrintKQYB]用户扩展
@@ -68,7 +68,7 @@ public class AttEndanceMreportServiceEx extends AttEndanceMreportServiceImpl {
     @Override
     @Transactional
     public AttEndanceMreport printKQYB(AttEndanceMreport et) {
-        return et;
+        return super.printKQYB(et);
     }
 }
 
