@@ -136,7 +136,7 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
         //探亲回显信息
         if(et.getQjzl().equals("TQ")) {
             et.setHyzk(pimPerson.getHyzk());
-            if(pimPerson.getHyzk().equals("20")) {
+            if("20".equals(pimPerson.getHyzk())) {
                 et.setTqlx("20");
             }else {
                 et.setTqlx("10");
@@ -163,11 +163,11 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
             List<VacLeaveDetail> vacLeaveDetailList = this.selectByPimpersonid(pimpersonid);
             if(vacLeaveDetailList.size() > 0) {
                 for (VacLeaveDetail vacLeaveDetail : vacLeaveDetailList) {
-                    if(et.getQjzl().equals(vacLeaveDetail.getQjzl())) {
+                    if(et.getQjzl().equals(vacLeaveDetail.getQjzl()) && !et.getQjzl().equals("NX")) {
                         String jhkssj = vacLeaveDetail.getJhkssj().toString().substring(0, 4);
-                        if(String.valueOf(lastyear).equals(jhkssj)) {
+                        if(String.valueOf(lastyear).equals(jhkssj) && vacLeaveDetail.getJhts() != null) {
                             lastsumSyts += vacLeaveDetail.getJhts();
-                        }else if(String.valueOf(curyear).equals(jhkssj)) {
+                        }else if(String.valueOf(curyear).equals(jhkssj) && vacLeaveDetail.getJhts() != null) {
                             cursumSyts += vacLeaveDetail.getJhts();
                         }
                     }
@@ -283,30 +283,27 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
                 //上下午差值计算
                 double sxw = 0;
                 if (et.getJhkssxw() == null && et.getJhjssxw() == null) {
-                    sxw = 0.5;
+                    sxw = 1;
                 }
                 if (et.getJhkssxw() == null && et.getJhjssxw() != null) {
                     if ("10".equals(et.getJhjssxw())) {
-                        sxw = 1;
-                    } else if ("20".equals(et.getJhjssxw())) {
                         sxw = 0.5;
+                    } else if ("20".equals(et.getJhjssxw())) {
+                        sxw = 1;
                     }
                 }
                 if (et.getJhkssxw() != null && et.getJhjssxw() == null) {
                     if ("10".equals(et.getJhkssxw())) {
-                        sxw = 0.5;
-                    } else if ("20".equals(et.getJhkssxw())) {
                         sxw = 1;
+                    } else if ("20".equals(et.getJhkssxw())) {
+                        sxw = 0.5;
                     }
                 }
                 if (et.getJhkssxw() != null && et.getJhjssxw() != null) {
                     if (Integer.parseInt(et.getJhjssxw()) > Integer.parseInt(et.getJhkssxw())) {
-                        sxw = 0.5;
-                    } else if (Integer.parseInt(et.getJhjssxw()) < Integer.parseInt(et.getJhkssxw())) {
-                        sxw = -0.5;
-                    }
-                    if (et.getJhkssxw().equals(et.getJhjssxw())) {
                         sxw = 1;
+                    } else if (et.getJhkssxw().equals(et.getJhjssxw())) {
+                        sxw = 0.5;
                     }
                 }
                 //计划请假天数为
