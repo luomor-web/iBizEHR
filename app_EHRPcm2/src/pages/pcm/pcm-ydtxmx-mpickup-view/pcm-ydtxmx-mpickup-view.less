@@ -1,0 +1,72 @@
+.pcm-ydtxmx-mpickup-view{
+    position: relative;
+}
+
+
+
+.pickup-view {
+    height: 100%;
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+    >.translate-contant {
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
+        height: calc(100% - 64px);
+        .translate-buttons {
+            width: 80px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            button {
+                margin-bottom: 5px;
+            }
+        }
+        .left, .right {
+            width: 300px;
+        }
+        .right {
+            border: 1px solid #e9e9e9;
+            .mpicker-select {
+                font-family: helvetica, sans-serif;
+                font-size: 16px;
+                text-align: justify; 
+                word-spacing: -3.8pt;
+                line-height: 1.6;
+                font-weight: bold;
+                word-spacing: 10px;
+                height: 100%;
+                overflow: auto;
+            }
+            .mpicker-select > div {
+                padding: 3px 10px;
+                font-size: 14px;
+                color: rgba(0, 0, 0, 0.85);
+                font-weight: initial;
+                cursor: pointer;
+                min-height: 28px;
+                border: 1px solid #e9e9e9;
+                margin: 4px 4px;
+                transition: all .3s;
+            }
+            .mpicker-select > div:hover {
+                background: #ecf6fd;
+            }
+            .mpicker-select > .select{
+                color: #108ee9;
+                background: #ecf6fd;
+            }
+        }
+        .center{
+            width: calc(100% - 380px);
+            .pickupviewpanel {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    >.footer {
+        height: 64px;
+    }
+}

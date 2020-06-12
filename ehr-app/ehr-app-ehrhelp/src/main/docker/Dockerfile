@@ -9,6 +9,6 @@ CMD echo "The application will start in ${IBIZ_SLEEP}s..." && \
     sleep ${IBIZ_SLEEP} && \
     java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -jar /ehr-app-ehrhelp.jar
 
-EXPOSE 6091
+EXPOSE 6094
 
 ADD ehr-app-ehrhelp.jar /ehr-app-ehrhelp.jar

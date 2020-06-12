@@ -1,0 +1,393 @@
+<template>
+  <app-layout viewName="pcmydjzmxjsrqqreditview" viewTitle="请确认/修改兼职结束时间" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'pcm-ydjzmx-jsrqqredit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+    <template slot="headerLeft">
+      <div class="view-header-left">
+
+        <div class="view-caption" v-if="isDefaultView()">{{$t(model.srfCaption)}}</div>
+        <modal-breadcrumb v-if="isModalView()"/>
+      </div>
+    </template>
+    <template slot="headerRight">
+      <div class="view-header-right">
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode"/>
+      </div>
+    </template>
+    <template slot="content">
+      <div class="view-content-wrapper">
+                <view_form 
+            :viewState="viewState"  
+            :viewparams="viewparams" 
+            :context="context" 
+            :autosave="false" 
+            :viewtag="viewtag"
+            :showBusyIndicator="true"
+            updateAction="Update"
+            removeAction="Remove"
+            loaddraftAction="GetDraft"
+            loadAction="Get"
+            createAction="Create"
+            WFSubmitAction=""
+            WFStartAction=""
+            style='' 
+            name="form"  
+            ref='form' 
+            @save="form_save($event)"  
+            @remove="form_remove($event)"  
+            @load="form_load($event)"  
+            @closeview="closeView($event)">
+        </view_form>
+
+      </div>
+    </template>
+  </app-layout>
+</template>
+
+<script lang='tsx'>
+import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorator';
+import { Subject } from 'rxjs';
+import { UIActionTool, Util } from '@/utils';
+import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
+import PcmYdjzmxService from '@/service/pcm-ydjzmx/pcm-ydjzmx-service';
+
+import EditViewEngine from '@engine/view/edit-view-engine';
+
+
+/**
+ * 请确认/修改兼职结束时间基类
+ *
+ * @export
+ * @class PcmYdjzmxJSRQQREditViewBase
+ * @extends {EditViewBase}
+ */
+@Component({})
+@VueLifeCycleProcessing
+export default class PcmYdjzmxJSRQQREditViewBase extends EditViewBase {
+
+    /**
+     * 实体服务对象
+     *
+     * @type {PcmYdjzmxService}
+     * @memberof PcmYdjzmxJSRQQREditViewBase
+     */
+    public appEntityService: PcmYdjzmxService = new PcmYdjzmxService;
+
+
+    /**
+     * 计数器服务对象集合
+     *
+     * @type {Array<*>}
+     * @memberof PcmYdjzmxJSRQQREditViewBase
+     */    
+    public counterServiceArray:Array<any> = [];
+    
+    /**
+     * 数据变化
+     *
+     * @param {*} val
+     * @returns {*}
+     * @memberof PcmYdjzmxJSRQQREditViewBase
+     */
+    @Emit() 
+    public viewDatasChange(val: any):any {
+        return val;
+    }
+
+	/**
+	 * 视图标识
+	 *
+	 * @type {string}
+	 * @memberof PcmYdjzmxJSRQQREditViewBase
+	 */
+	public viewtag: string = '40a24d4c9f59b69b0f292923bc922f93';
+
+    /**
+     * 父数据对象
+     *
+     * @protected
+     * @type {*}
+     * @memberof PcmYdjzmxJSRQQREditViewBase
+     */
+    protected srfparentdata: any = {};
+
+	/**
+	 * 自定义视图导航上下文集合
+	 *
+	 * @type {*}
+	 * @memberof PcmYdjzmxJSRQQREditViewBase
+	 */
+    public customViewNavContexts:any ={
+    };
+
+	/**
+	 * 自定义视图导航参数集合
+	 *
+	 * @type {*}
+	 * @memberof PcmYdjzmxJSRQQREditViewBase
+	 */
+    public customViewParams:any ={
+    };
+
+    /**
+     * 视图模型数据
+     *
+     * @type {*}
+     * @memberof PcmYdjzmxJSRQQREditViewBase
+     */
+    public model: any = {
+        srfCaption: 'entities.pcmydjzmx.views.jsrqqreditview.caption',
+        srfTitle: 'entities.pcmydjzmx.views.jsrqqreditview.title',
+        srfSubTitle: 'entities.pcmydjzmx.views.jsrqqreditview.subtitle',
+        dataInfo: ''
+    }
+
+    /**
+     * 容器模型
+     *
+     * @type {*}
+     * @memberof PcmYdjzmxJSRQQREditViewBase
+     */
+    public containerModel: any = {
+        view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
+        view_form: { name: 'form', type: 'FORM' },
+    };
+
+    /**
+     * 视图状态订阅对象
+     *
+     * @public
+     * @type {Subject<{action: string, data: any}>}
+     * @memberof PcmYdjzmxJSRQQREditViewBase
+     */
+    public viewState: Subject<ViewState> = new Subject();
+    /**
+     * 工具栏模型
+     *
+     * @type {*}
+     * @memberof PcmYdjzmxJSRQQREditView
+     */
+    public toolBarModels: any = {
+        deuiaction5: { name: 'deuiaction5', caption: '确认','isShowCaption':true,'isShowIcon':true, tooltip: '确认', iconcls: 'sx-tb-saveandclose', icon: '../sasrfex/images/default/icon_saveandclose.png', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYXKML', uiaction: { tag: 'SaveAndExit', target: '' }, class: '' },
+
+        deuiaction1: { name: 'deuiaction1', caption: '退出','isShowCaption':true,'isShowIcon':true, tooltip: '退出', iconcls: 'fa fa-sign-out', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'Exit', target: '' }, class: '' },
+
+    };
+
+
+
+
+    /**
+     * 视图引擎
+     *
+     * @public
+     * @type {Engine}
+     * @memberof PcmYdjzmxJSRQQREditViewBase
+     */
+    public engine: EditViewEngine = new EditViewEngine();
+	
+
+    /**
+     * 引擎初始化
+     *
+     * @public
+     * @memberof PcmYdjzmxJSRQQREditViewBase
+     */
+    public engineInit(): void {
+        this.engine.init({
+            view: this,
+            form: this.$refs.form,
+            p2k: '0',
+            keyPSDEField: 'pcmydjzmx',
+            majorPSDEField: 'pcmydjzmxname',
+            isLoadDefault: true,
+        });
+    }
+
+
+    /**
+     * toolbar 部件 click 事件
+     *
+     * @param {*} [args={}]
+     * @param {*} $event
+     * @memberof PcmYdjzmxJSRQQREditViewBase
+     */
+    public toolbar_click($event: any, $event2?: any) {
+        if (Object.is($event.tag, 'deuiaction5')) {
+            this.toolbar_deuiaction5_click(null, '', $event2);
+        }
+        if (Object.is($event.tag, 'deuiaction1')) {
+            this.toolbar_deuiaction1_click(null, '', $event2);
+        }
+    }
+
+
+    /**
+     * form 部件 save 事件
+     *
+     * @param {*} [args={}]
+     * @param {*} $event
+     * @memberof PcmYdjzmxJSRQQREditViewBase
+     */
+    public form_save($event: any, $event2?: any) {
+        this.engine.onCtrlEvent('form', 'save', $event);
+    }
+
+
+    /**
+     * form 部件 remove 事件
+     *
+     * @param {*} [args={}]
+     * @param {*} $event
+     * @memberof PcmYdjzmxJSRQQREditViewBase
+     */
+    public form_remove($event: any, $event2?: any) {
+        this.engine.onCtrlEvent('form', 'remove', $event);
+    }
+
+
+    /**
+     * form 部件 load 事件
+     *
+     * @param {*} [args={}]
+     * @param {*} $event
+     * @memberof PcmYdjzmxJSRQQREditViewBase
+     */
+    public form_load($event: any, $event2?: any) {
+        this.engine.onCtrlEvent('form', 'load', $event);
+    }
+
+
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public toolbar_deuiaction5_click(params: any = {}, tag?: any, $event?: any) {
+        // 参数
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        let contextJO:any = {};
+        xData = this.$refs.form;
+        if (xData.getDatas && xData.getDatas instanceof Function) {
+            datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"PcmYdjzmx");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
+        // 参数
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        let contextJO:any = {};
+        xData = this.$refs.form;
+        if (xData.getDatas && xData.getDatas instanceof Function) {
+            datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"PcmYdjzmx");
+    }
+
+    /**
+     * 保存并关闭
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} contextJO 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @memberof PcmYdjzmxJSRQQREditViewBase
+     */
+    public SaveAndExit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        const _this: any = this;
+        if (xData && xData.saveAndExit instanceof Function) {
+            xData.saveAndExit().then((response: any) => {
+                if (!response || response.status !== 200) {
+                    return;
+                }
+                if(window.parent){
+                    window.parent.postMessage([{ ...response.data }],'*');
+                }
+            });
+        } else if (_this.saveAndExit && _this.saveAndExit instanceof Function) {
+            _this.saveAndExit().then((response: any) => {
+                if (!response || response.status !== 200) {
+                    return;
+                }
+                if(window.parent){
+                    window.parent.postMessage([{ ...response.data }],'*');
+                }
+            });
+        }
+    }
+    /**
+     * 关闭
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} contextJO 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @memberof PcmYdjzmxJSRQQREditViewBase
+     */
+    public Exit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        this.closeView(args);
+        if(window.parent){
+            window.parent.postMessage([{ ...args }],'*');
+        }
+    }
+
+
+
+    /**
+     * 销毁视图回调
+     *
+     * @memberof PcmYdjzmxJSRQQREditViewBase
+     */
+    public destroyed(){
+        if(this.viewDefaultUsage){
+            let localStoreLength = Object.keys(localStorage);
+            if(localStoreLength.length > 0){
+                localStoreLength.forEach((item:string) =>{
+                if(item.startsWith(this.context.srfsessionid)){
+                    localStorage.removeItem(item);
+                }
+                })
+            }
+        }
+    }
+
+
+}
+</script>
+
+<style lang='less'>
+@import './pcm-ydjzmx-jsrqqredit-view.less';
+</style>
