@@ -27,7 +27,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 
 
 /**
- * 实体[年度量化目标明细（助理总经理级 ）]
+ * 实体[年度量化目标明细（公司领导类 ）]
  */
 @Getter
 @Setter
@@ -172,7 +172,7 @@ public class ParLdndlhmbmx extends EntityMP implements Serializable {
     @JsonProperty("mblhyq")
     private String mblhyq;
     /**
-     * 年度量化目标（助理总经理级领导 ）名称
+     * 年度量化目标名称
      */
     @TableField(exist = false)
     @JSONField(name = "parldndlhmbname")

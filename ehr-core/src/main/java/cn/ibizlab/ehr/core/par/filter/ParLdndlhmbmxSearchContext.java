@@ -55,14 +55,14 @@ public class ParLdndlhmbmxSearchContext extends QueryWrapperContext<ParLdndlhmbm
             this.getSearchCond().eq("spzt", n_spzt_eq);
         }
     }
-	private String n_parldndlhmbname_eq;//[年度量化目标（助理总经理级领导 ）名称]
+	private String n_parldndlhmbname_eq;//[年度量化目标名称]
 	public void setN_parldndlhmbname_eq(String n_parldndlhmbname_eq) {
         this.n_parldndlhmbname_eq = n_parldndlhmbname_eq;
         if(!ObjectUtils.isEmpty(this.n_parldndlhmbname_eq)){
             this.getSearchCond().eq("parldndlhmbname", n_parldndlhmbname_eq);
         }
     }
-	private String n_parldndlhmbname_like;//[年度量化目标（助理总经理级领导 ）名称]
+	private String n_parldndlhmbname_like;//[年度量化目标名称]
 	public void setN_parldndlhmbname_like(String n_parldndlhmbname_like) {
         this.n_parldndlhmbname_like = n_parldndlhmbname_like;
         if(!ObjectUtils.isEmpty(this.n_parldndlhmbname_like)){

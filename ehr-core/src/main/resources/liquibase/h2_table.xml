@@ -1880,7 +1880,7 @@
 
 
     <!--输出实体[PARLDNDLHMB]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-parldndlhmb-21-55">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-parldndlhmb-72-55">
         <createTable tableName="T_PARLDNDLHMB">
                 <column name="CREATEDATE" remarks="" type="DATETIME">
                 </column>
@@ -8893,7 +8893,7 @@
 
 
     <!--输出实体[PARLDNDLHMBMX]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-parldndlhmbmx-24-228">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-parldndlhmbmx-27-228">
         <createTable tableName="T_PARLDNDLHMBMX">
                 <column name="MBLX" remarks="" type="VARCHAR(60)">
                 </column>
@@ -12262,7 +12262,7 @@
        <addForeignKeyConstraint baseColumnNames="LZMTRID" baseTableName="T_PCMYDLZMX" constraintName="DER1N_PCMYDLZMX_PIMPERSON_LZMT" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[PARLDNDLHMB]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-parldndlhmb-21-364">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-parldndlhmb-72-364">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PARLDNDLHMB" constraintName="DER1N_PARLDNDLHMB_PIMPERSON_PI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[PARXMBPJBZ]外键关系 -->
@@ -13167,7 +13167,7 @@
     </changeSet>
         <!--输出实体[PCMYDJPMX]外键关系 -->
         <!--输出实体[PARLDNDLHMBMX]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-parldndlhmbmx-24-623">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-parldndlhmbmx-27-623">
        <addForeignKeyConstraint baseColumnNames="PARLDNDLHMBID" baseTableName="T_PARLDNDLHMBMX" constraintName="DER1N_PARLDNDLHMBMX_PARLDNDLHM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PARLDNDLHMBID" referencedTableName="T_PARLDNDLHMB" validate="true"/>
     </changeSet>
         <!--输出实体[CODEITEM]外键关系 -->

@@ -27,7 +27,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 
 
 /**
- * 实体[年度量化目标（助理总经理级）]
+ * 实体[年度量化目标（公司领导类）]
  */
 @Getter
 @Setter
@@ -48,7 +48,7 @@ public class ParLdndlhmb extends EntityMP implements Serializable {
     @JsonProperty("createdate")
     private Timestamp createdate;
     /**
-     * 年度量化目标（助理总经理级领导 ）名称
+     * 年度量化目标名称
      */
     @TableField(value = "parldndlhmbname")
     @JSONField(name = "parldndlhmbname")
@@ -77,7 +77,7 @@ public class ParLdndlhmb extends EntityMP implements Serializable {
     @JsonProperty("sszz")
     private String sszz;
     /**
-     * 年度量化目标（助理总经理级领导 ）标识
+     * 年度量化目标标识
      */
     @DEField(isKeyField=true)
     @TableId(value= "parldndlhmbid",type=IdType.UUID)
@@ -155,7 +155,7 @@ public class ParLdndlhmb extends EntityMP implements Serializable {
 
 
     /**
-     * 设置 [年度量化目标（助理总经理级领导 ）名称]
+     * 设置 [年度量化目标名称]
      */
     public void setParldndlhmbname(String parldndlhmbname){
         this.parldndlhmbname = parldndlhmbname ;

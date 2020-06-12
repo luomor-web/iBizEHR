@@ -34,7 +34,7 @@ import cn.ibizlab.ehr.core.par.service.IParLdndlhmbmxService;
 import cn.ibizlab.ehr.core.par.filter.ParLdndlhmbmxSearchContext;
 
 @Slf4j
-@Api(tags = {"年度量化目标明细（助理总经理级 ）" })
+@Api(tags = {"年度量化目标明细（公司领导类 ）" })
 @RestController("WebApi-parldndlhmbmx")
 @RequestMapping("")
 public class ParLdndlhmbmxResource {
@@ -47,7 +47,7 @@ public class ParLdndlhmbmxResource {
     public ParLdndlhmbmxMapping parldndlhmbmxMapping;
 
     @PostAuthorize("hasPermission(this.parldndlhmbmxMapping.toDomain(returnObject.body),'ehr-ParLdndlhmbmx-Get')")
-    @ApiOperation(value = "获取年度量化目标明细（助理总经理级 ）", tags = {"年度量化目标明细（助理总经理级 ）" },  notes = "获取年度量化目标明细（助理总经理级 ）")
+    @ApiOperation(value = "获取年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "获取年度量化目标明细（公司领导类 ）")
 	@RequestMapping(method = RequestMethod.GET, value = "/parldndlhmbmxes/{parldndlhmbmx_id}")
     public ResponseEntity<ParLdndlhmbmxDTO> get(@PathVariable("parldndlhmbmx_id") String parldndlhmbmx_id) {
         ParLdndlhmbmx domain = parldndlhmbmxService.get(parldndlhmbmx_id);
@@ -55,14 +55,14 @@ public class ParLdndlhmbmxResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
-    @ApiOperation(value = "获取年度量化目标明细（助理总经理级 ）草稿", tags = {"年度量化目标明细（助理总经理级 ）" },  notes = "获取年度量化目标明细（助理总经理级 ）草稿")
+    @ApiOperation(value = "获取年度量化目标明细（公司领导类 ）草稿", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "获取年度量化目标明细（公司领导类 ）草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/parldndlhmbmxes/getdraft")
     public ResponseEntity<ParLdndlhmbmxDTO> getDraft() {
         return ResponseEntity.status(HttpStatus.OK).body(parldndlhmbmxMapping.toDto(parldndlhmbmxService.getDraft(new ParLdndlhmbmx())));
     }
 
     @PreAuthorize("hasPermission(this.parldndlhmbmxMapping.toDomain(#parldndlhmbmxdto),'ehr-ParLdndlhmbmx-Create')")
-    @ApiOperation(value = "新建年度量化目标明细（助理总经理级 ）", tags = {"年度量化目标明细（助理总经理级 ）" },  notes = "新建年度量化目标明细（助理总经理级 ）")
+    @ApiOperation(value = "新建年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "新建年度量化目标明细（公司领导类 ）")
 	@RequestMapping(method = RequestMethod.POST, value = "/parldndlhmbmxes")
     @Transactional
     public ResponseEntity<ParLdndlhmbmxDTO> create(@RequestBody ParLdndlhmbmxDTO parldndlhmbmxdto) {
@@ -73,7 +73,7 @@ public class ParLdndlhmbmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parldndlhmbmxMapping.toDomain(#parldndlhmbmxdtos),'ehr-ParLdndlhmbmx-Create')")
-    @ApiOperation(value = "批量新建年度量化目标明细（助理总经理级 ）", tags = {"年度量化目标明细（助理总经理级 ）" },  notes = "批量新建年度量化目标明细（助理总经理级 ）")
+    @ApiOperation(value = "批量新建年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "批量新建年度量化目标明细（公司领导类 ）")
 	@RequestMapping(method = RequestMethod.POST, value = "/parldndlhmbmxes/batch")
     public ResponseEntity<Boolean> createBatch(@RequestBody List<ParLdndlhmbmxDTO> parldndlhmbmxdtos) {
         parldndlhmbmxService.createBatch(parldndlhmbmxMapping.toDomain(parldndlhmbmxdtos));
@@ -81,14 +81,14 @@ public class ParLdndlhmbmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parldndlhmbmxMapping.toDomain(#parldndlhmbmxdto),'ehr-ParLdndlhmbmx-Save')")
-    @ApiOperation(value = "保存年度量化目标明细（助理总经理级 ）", tags = {"年度量化目标明细（助理总经理级 ）" },  notes = "保存年度量化目标明细（助理总经理级 ）")
+    @ApiOperation(value = "保存年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "保存年度量化目标明细（公司领导类 ）")
 	@RequestMapping(method = RequestMethod.POST, value = "/parldndlhmbmxes/save")
     public ResponseEntity<Boolean> save(@RequestBody ParLdndlhmbmxDTO parldndlhmbmxdto) {
         return ResponseEntity.status(HttpStatus.OK).body(parldndlhmbmxService.save(parldndlhmbmxMapping.toDomain(parldndlhmbmxdto)));
     }
 
     @PreAuthorize("hasPermission(this.parldndlhmbmxMapping.toDomain(#parldndlhmbmxdtos),'ehr-ParLdndlhmbmx-Save')")
-    @ApiOperation(value = "批量保存年度量化目标明细（助理总经理级 ）", tags = {"年度量化目标明细（助理总经理级 ）" },  notes = "批量保存年度量化目标明细（助理总经理级 ）")
+    @ApiOperation(value = "批量保存年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "批量保存年度量化目标明细（公司领导类 ）")
 	@RequestMapping(method = RequestMethod.POST, value = "/parldndlhmbmxes/savebatch")
     public ResponseEntity<Boolean> saveBatch(@RequestBody List<ParLdndlhmbmxDTO> parldndlhmbmxdtos) {
         parldndlhmbmxService.saveBatch(parldndlhmbmxMapping.toDomain(parldndlhmbmxdtos));
@@ -96,7 +96,7 @@ public class ParLdndlhmbmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parldndlhmbmxService.get(#parldndlhmbmx_id),'ehr-ParLdndlhmbmx-Remove')")
-    @ApiOperation(value = "删除年度量化目标明细（助理总经理级 ）", tags = {"年度量化目标明细（助理总经理级 ）" },  notes = "删除年度量化目标明细（助理总经理级 ）")
+    @ApiOperation(value = "删除年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "删除年度量化目标明细（公司领导类 ）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parldndlhmbmxes/{parldndlhmbmx_id}")
     @Transactional
     public ResponseEntity<Boolean> remove(@PathVariable("parldndlhmbmx_id") String parldndlhmbmx_id) {
@@ -104,21 +104,21 @@ public class ParLdndlhmbmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parldndlhmbmxService.getParldndlhmbmxByIds(#ids),'ehr-ParLdndlhmbmx-Remove')")
-    @ApiOperation(value = "批量删除年度量化目标明细（助理总经理级 ）", tags = {"年度量化目标明细（助理总经理级 ）" },  notes = "批量删除年度量化目标明细（助理总经理级 ）")
+    @ApiOperation(value = "批量删除年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "批量删除年度量化目标明细（公司领导类 ）")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/parldndlhmbmxes/batch")
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         parldndlhmbmxService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @ApiOperation(value = "检查年度量化目标明细（助理总经理级 ）", tags = {"年度量化目标明细（助理总经理级 ）" },  notes = "检查年度量化目标明细（助理总经理级 ）")
+    @ApiOperation(value = "检查年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "检查年度量化目标明细（公司领导类 ）")
 	@RequestMapping(method = RequestMethod.POST, value = "/parldndlhmbmxes/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody ParLdndlhmbmxDTO parldndlhmbmxdto) {
         return  ResponseEntity.status(HttpStatus.OK).body(parldndlhmbmxService.checkKey(parldndlhmbmxMapping.toDomain(parldndlhmbmxdto)));
     }
 
     @PreAuthorize("hasPermission(this.parldndlhmbmxService.get(#parldndlhmbmx_id),'ehr-ParLdndlhmbmx-Update')")
-    @ApiOperation(value = "更新年度量化目标明细（助理总经理级 ）", tags = {"年度量化目标明细（助理总经理级 ）" },  notes = "更新年度量化目标明细（助理总经理级 ）")
+    @ApiOperation(value = "更新年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "更新年度量化目标明细（公司领导类 ）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parldndlhmbmxes/{parldndlhmbmx_id}")
     @Transactional
     public ResponseEntity<ParLdndlhmbmxDTO> update(@PathVariable("parldndlhmbmx_id") String parldndlhmbmx_id, @RequestBody ParLdndlhmbmxDTO parldndlhmbmxdto) {
@@ -130,7 +130,7 @@ public class ParLdndlhmbmxResource {
     }
 
     @PreAuthorize("hasPermission(this.parldndlhmbmxService.getParldndlhmbmxByEntities(this.parldndlhmbmxMapping.toDomain(#parldndlhmbmxdtos)),'ehr-ParLdndlhmbmx-Update')")
-    @ApiOperation(value = "批量更新年度量化目标明细（助理总经理级 ）", tags = {"年度量化目标明细（助理总经理级 ）" },  notes = "批量更新年度量化目标明细（助理总经理级 ）")
+    @ApiOperation(value = "批量更新年度量化目标明细（公司领导类 ）", tags = {"年度量化目标明细（公司领导类 ）" },  notes = "批量更新年度量化目标明细（公司领导类 ）")
 	@RequestMapping(method = RequestMethod.PUT, value = "/parldndlhmbmxes/batch")
     public ResponseEntity<Boolean> updateBatch(@RequestBody List<ParLdndlhmbmxDTO> parldndlhmbmxdtos) {
         parldndlhmbmxService.updateBatch(parldndlhmbmxMapping.toDomain(parldndlhmbmxdtos));
@@ -138,7 +138,7 @@ public class ParLdndlhmbmxResource {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParLdndlhmbmx-Default-all')")
-	@ApiOperation(value = "获取DEFAULT", tags = {"年度量化目标明细（助理总经理级 ）" } ,notes = "获取DEFAULT")
+	@ApiOperation(value = "获取DEFAULT", tags = {"年度量化目标明细（公司领导类 ）" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/parldndlhmbmxes/fetchdefault")
 	public ResponseEntity<List<ParLdndlhmbmxDTO>> fetchDefault(ParLdndlhmbmxSearchContext context) {
         Page<ParLdndlhmbmx> domains = parldndlhmbmxService.searchDefault(context) ;
@@ -151,7 +151,7 @@ public class ParLdndlhmbmxResource {
 	}
 
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParLdndlhmbmx-Default-all')")
-	@ApiOperation(value = "查询DEFAULT", tags = {"年度量化目标明细（助理总经理级 ）" } ,notes = "查询DEFAULT")
+	@ApiOperation(value = "查询DEFAULT", tags = {"年度量化目标明细（公司领导类 ）" } ,notes = "查询DEFAULT")
     @RequestMapping(method= RequestMethod.POST , value="/parldndlhmbmxes/searchdefault")
 	public ResponseEntity<Page<ParLdndlhmbmxDTO>> searchDefault(@RequestBody ParLdndlhmbmxSearchContext context) {
         Page<ParLdndlhmbmx> domains = parldndlhmbmxService.searchDefault(context) ;

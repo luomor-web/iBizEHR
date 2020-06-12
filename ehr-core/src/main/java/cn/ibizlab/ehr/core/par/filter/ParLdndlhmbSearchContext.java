@@ -27,7 +27,7 @@ import cn.ibizlab.ehr.core.par.domain.ParLdndlhmb;
 @Data
 public class ParLdndlhmbSearchContext extends QueryWrapperContext<ParLdndlhmb> {
 
-	private String n_parldndlhmbname_like;//[年度量化目标（助理总经理级领导 ）名称]
+	private String n_parldndlhmbname_like;//[年度量化目标名称]
 	public void setN_parldndlhmbname_like(String n_parldndlhmbname_like) {
         this.n_parldndlhmbname_like = n_parldndlhmbname_like;
         if(!ObjectUtils.isEmpty(this.n_parldndlhmbname_like)){
