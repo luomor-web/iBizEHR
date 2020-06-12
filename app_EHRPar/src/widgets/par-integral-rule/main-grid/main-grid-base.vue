@@ -21,7 +21,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('uagridcolumn1')">
-                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.parintegralrule.main_grid.columns.uagridcolumn1')" :width="150"  :align="'center'">
+                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.parintegralrule.main_grid.columns.uagridcolumn1')" :width="240"  :align="'center'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                           <i class='fa fa-files-o'></i>

@@ -28,7 +28,7 @@ export default {
 		},
 		editview: {
 			caption: "评分权重分配",
-      title: '评分权重分配编辑视图',
+      title: '评分权重分配',
 		},
 		editview2: {
 			caption: "评分权重分配",

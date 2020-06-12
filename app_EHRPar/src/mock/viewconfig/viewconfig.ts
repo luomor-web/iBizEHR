@@ -296,7 +296,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "6633c1c5f36292278b6d17b103d0d4fa"
         },
         "parldkhqzeditview": {
-            "title": "评分权重分配编辑视图",
+            "title": "评分权重分配",
             "caption": "评分权重分配",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PAR",

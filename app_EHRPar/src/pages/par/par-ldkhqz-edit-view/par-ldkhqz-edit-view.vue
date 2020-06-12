@@ -5,7 +5,7 @@ import ParLdkhqzEditViewBase from './par-ldkhqz-edit-view-base.vue';
 import view_form from '@widgets/par-ldkhqz/qzfp-form/qzfp-form.vue';
 
 /**
- * 评分权重分配编辑视图
+ * 评分权重分配
  *
  * @export
  * @class ParLdkhqzEditView

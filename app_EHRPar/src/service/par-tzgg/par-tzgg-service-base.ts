@@ -64,8 +64,8 @@ export default class ParTzggServiceBase extends EntityService {
         let res:any = await  Http.getInstance().get(`/partzggs/getdraft`,isloading);
         res.data.partzgg = data.partzgg;
             this.tempStorage.setItem(context.srfsessionkey+'_parbmfzjyxes',JSON.stringify(res.data.parbmfzjyxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_parfzsmxes',JSON.stringify(res.data.parfzsmxes));
             this.tempStorage.setItem(context.srfsessionkey+'_parznbmmxes',JSON.stringify(res.data.parznbmmxes));
+            this.tempStorage.setItem(context.srfsessionkey+'_parfzsmxes',JSON.stringify(res.data.parfzsmxes));
         return res;
     }
 
@@ -109,21 +109,6 @@ export default class ParTzggServiceBase extends EntityService {
             }
         }
         masterData.parbmfzjyxes = parbmfzjyxesData;
-        let parfzsmxesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parfzsmxes'),'undefined')){
-            parfzsmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parfzsmxes') as any);
-            if(parfzsmxesData && parfzsmxesData.length && parfzsmxesData.length > 0){
-                parfzsmxesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.parfzsmxid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.parfzsmxes = parfzsmxesData;
         let parznbmmxesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parznbmmxes'),'undefined')){
             parznbmmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parznbmmxes') as any);
@@ -139,11 +124,26 @@ export default class ParTzggServiceBase extends EntityService {
             }
         }
         masterData.parznbmmxes = parznbmmxesData;
+        let parfzsmxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parfzsmxes'),'undefined')){
+            parfzsmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parfzsmxes') as any);
+            if(parfzsmxesData && parfzsmxesData.length && parfzsmxesData.length > 0){
+                parfzsmxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.parfzsmxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.parfzsmxes = parfzsmxesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/partzggs/${context.partzgg}/save`,data,isloading);
             this.tempStorage.setItem(context.srfsessionkey+'_parbmfzjyxes',JSON.stringify(res.data.parbmfzjyxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_parfzsmxes',JSON.stringify(res.data.parfzsmxes));
             this.tempStorage.setItem(context.srfsessionkey+'_parznbmmxes',JSON.stringify(res.data.parznbmmxes));
+            this.tempStorage.setItem(context.srfsessionkey+'_parfzsmxes',JSON.stringify(res.data.parfzsmxes));
             return res;
     }
 
@@ -173,21 +173,6 @@ export default class ParTzggServiceBase extends EntityService {
             }
         }
         masterData.parbmfzjyxes = parbmfzjyxesData;
-        let parfzsmxesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parfzsmxes'),'undefined')){
-            parfzsmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parfzsmxes') as any);
-            if(parfzsmxesData && parfzsmxesData.length && parfzsmxesData.length > 0){
-                parfzsmxesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.parfzsmxid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.parfzsmxes = parfzsmxesData;
         let parznbmmxesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parznbmmxes'),'undefined')){
             parznbmmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parznbmmxes') as any);
@@ -203,6 +188,21 @@ export default class ParTzggServiceBase extends EntityService {
             }
         }
         masterData.parznbmmxes = parznbmmxesData;
+        let parfzsmxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parfzsmxes'),'undefined')){
+            parfzsmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parfzsmxes') as any);
+            if(parfzsmxesData && parfzsmxesData.length && parfzsmxesData.length > 0){
+                parfzsmxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.parfzsmxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.parfzsmxes = parfzsmxesData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -213,8 +213,8 @@ export default class ParTzggServiceBase extends EntityService {
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/partzggs`,data,isloading);
         this.tempStorage.setItem(tempContext.srfsessionkey+'_parbmfzjyxes',JSON.stringify(res.data.parbmfzjyxes));
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_parfzsmxes',JSON.stringify(res.data.parfzsmxes));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_parznbmmxes',JSON.stringify(res.data.parznbmmxes));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_parfzsmxes',JSON.stringify(res.data.parfzsmxes));
         return res;
     }
 
@@ -230,8 +230,8 @@ export default class ParTzggServiceBase extends EntityService {
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/partzggs/${context.partzgg}`,isloading);
             this.tempStorage.setItem(context.srfsessionkey+'_parbmfzjyxes',JSON.stringify(res.data.parbmfzjyxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_parfzsmxes',JSON.stringify(res.data.parfzsmxes));
             this.tempStorage.setItem(context.srfsessionkey+'_parznbmmxes',JSON.stringify(res.data.parznbmmxes));
+            this.tempStorage.setItem(context.srfsessionkey+'_parfzsmxes',JSON.stringify(res.data.parfzsmxes));
             return res;
 
     }
@@ -275,21 +275,6 @@ export default class ParTzggServiceBase extends EntityService {
             }
         }
         masterData.parbmfzjyxes = parbmfzjyxesData;
-        let parfzsmxesData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parfzsmxes'),'undefined')){
-            parfzsmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parfzsmxes') as any);
-            if(parfzsmxesData && parfzsmxesData.length && parfzsmxesData.length > 0){
-                parfzsmxesData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.parfzsmxid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.parfzsmxes = parfzsmxesData;
         let parznbmmxesData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parznbmmxes'),'undefined')){
             parznbmmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parznbmmxes') as any);
@@ -305,11 +290,26 @@ export default class ParTzggServiceBase extends EntityService {
             }
         }
         masterData.parznbmmxes = parznbmmxesData;
+        let parfzsmxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parfzsmxes'),'undefined')){
+            parfzsmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parfzsmxes') as any);
+            if(parfzsmxesData && parfzsmxesData.length && parfzsmxesData.length > 0){
+                parfzsmxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.parfzsmxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.parfzsmxes = parfzsmxesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/partzggs/${context.partzgg}`,data,isloading);
             this.tempStorage.setItem(context.srfsessionkey+'_parbmfzjyxes',JSON.stringify(res.data.parbmfzjyxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_parfzsmxes',JSON.stringify(res.data.parfzsmxes));
             this.tempStorage.setItem(context.srfsessionkey+'_parznbmmxes',JSON.stringify(res.data.parznbmmxes));
+            this.tempStorage.setItem(context.srfsessionkey+'_parfzsmxes',JSON.stringify(res.data.parfzsmxes));
             return res;
     }
 

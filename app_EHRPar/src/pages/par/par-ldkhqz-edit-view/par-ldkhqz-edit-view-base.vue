@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="parldkhqzeditview" viewTitle="评分权重分配编辑视图" :isShowCaptionBar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'par-ldkhqz-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="parldkhqzeditview" viewTitle="评分权重分配" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'par-ldkhqz-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -53,7 +53,7 @@ import EditViewEngine from '@engine/view/edit-view-engine';
 
 
 /**
- * 评分权重分配编辑视图基类
+ * 评分权重分配基类
  *
  * @export
  * @class ParLdkhqzEditViewBase
