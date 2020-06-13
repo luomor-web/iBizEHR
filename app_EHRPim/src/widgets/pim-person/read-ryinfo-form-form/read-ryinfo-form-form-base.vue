@@ -48,6 +48,13 @@
 </app-form-item>
 
 </i-col>
+<i-col v-show="detailsModel.jg.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-item name='jg' :itemRules="this.rules.jg" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.jg')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jg.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='jg' :value="data.jg" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
     
     </row>
 </app-form-group>
@@ -84,6 +91,13 @@
 </app-form-item>
 
 </i-col>
+<i-col v-show="detailsModel.hyzk.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-item name='hyzk' :itemRules="this.rules.hyzk" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.hyzk')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hyzk.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='hyzk' :value="data.hyzk" tag='EhrCodeList0075' codelistType='DYNAMIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
     
     </row>
 </app-form-group>
@@ -94,7 +108,7 @@
     <row>
         <i-col v-show="detailsModel.zp.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='zp' :itemRules="this.rules.zp" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.zp')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zp.error" :isEmptyCaption="false" labelPos="LEFT">
-     <app-image-preview :formState="formState" name='zp' :value="data.zp" style=""></app-image-preview>
+     <app-image-preview :formState="formState" name='zp' :value="data.zp" style="height:130px;width:100px;"></app-image-preview>
 </app-form-item>
 
 </i-col>
@@ -111,21 +125,7 @@
 <div v-show="detailsModel.grouppanel8.visible">
     <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel8.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.readryinfoform_form.details.grouppanel8')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
     <row>
-        <i-col v-show="detailsModel.jg.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='jg' :itemRules="this.rules.jg" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.jg')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jg.error" :isEmptyCaption="false" labelPos="LEFT">
-    
-<app-span name='jg' :value="data.jg" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.hyzk.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='hyzk' :itemRules="this.rules.hyzk" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.hyzk')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hyzk.error" :isEmptyCaption="false" labelPos="LEFT">
-    
-<app-span name='hyzk' :value="data.hyzk" tag='EhrCodeList0075' codelistType='DYNAMIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.zzmm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
+        <i-col v-show="detailsModel.zzmm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='zzmm' :itemRules="this.rules.zzmm" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.zzmm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zzmm.error" :isEmptyCaption="false" labelPos="LEFT">
     
 <app-span name='zzmm' :value="data.zzmm" tag='EhrCodeList0029' codelistType='DYNAMIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
@@ -716,13 +716,13 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
         zjlx: null,
         csrq: null,
         xb: null,
+        jg: null,
         ygbh: null,
         zjhm: null,
         nj: null,
         mz: null,
-        zp: null,
-        jg: null,
         hyzk: null,
+        zp: null,
         zzmm: null,
         rank: null,
         cjgzsj: null,
@@ -901,6 +901,12 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
             { required: false, type: 'string', message: '性别 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '性别 值不能为空', trigger: 'blur' },
         ],
+        jg: [
+            { type: 'string', message: '籍贯 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '籍贯 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '籍贯 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '籍贯 值不能为空', trigger: 'blur' },
+        ],
         ygbh: [
             { type: 'string', message: '员工编号 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '员工编号 值必须为字符串类型', trigger: 'blur' },
@@ -925,23 +931,17 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
             { required: false, type: 'string', message: '民族 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '民族 值不能为空', trigger: 'blur' },
         ],
-        zp: [
-            { type: 'string', message: '照片 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '照片 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '照片 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '照片 值不能为空', trigger: 'blur' },
-        ],
-        jg: [
-            { type: 'string', message: '籍贯 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '籍贯 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '籍贯 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '籍贯 值不能为空', trigger: 'blur' },
-        ],
         hyzk: [
             { type: 'string', message: '婚姻状况 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '婚姻状况 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '婚姻状况 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '婚姻状况 值不能为空', trigger: 'blur' },
+        ],
+        zp: [
+            { type: 'string', message: '照片 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '照片 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '照片 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '照片 值不能为空', trigger: 'blur' },
         ],
         zzmm: [
             { type: 'string', message: '政治面貌 值必须为字符串类型', trigger: 'change' },
@@ -1186,6 +1186,8 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
 , 
         xb: new FormItemModel({ caption: '性别', detailType: 'FORMITEM', name: 'xb', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
+        jg: new FormItemModel({ caption: '籍贯', detailType: 'FORMITEM', name: 'jg', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
         ygbh: new FormItemModel({ caption: '员工编号', detailType: 'FORMITEM', name: 'ygbh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         zjhm: new FormItemModel({ caption: '证件号码', detailType: 'FORMITEM', name: 'zjhm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
@@ -1194,11 +1196,9 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
 , 
         mz: new FormItemModel({ caption: '民族', detailType: 'FORMITEM', name: 'mz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        zp: new FormItemModel({ caption: '照片', detailType: 'FORMITEM', name: 'zp', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        jg: new FormItemModel({ caption: '籍贯', detailType: 'FORMITEM', name: 'jg', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
         hyzk: new FormItemModel({ caption: '婚姻状况', detailType: 'FORMITEM', name: 'hyzk', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        zp: new FormItemModel({ caption: '照片', detailType: 'FORMITEM', name: 'zp', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
         zzmm: new FormItemModel({ caption: '政治面貌', detailType: 'FORMITEM', name: 'zzmm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
@@ -1475,6 +1475,18 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     }
 
     /**
+     * 监控表单属性 jg 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof ReadRYInfoForm
+     */
+    @Watch('data.jg')
+    onJgChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'jg', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
      * 监控表单属性 ygbh 值
      *
      * @param {*} newVal
@@ -1523,30 +1535,6 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     }
 
     /**
-     * 监控表单属性 zp 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof ReadRYInfoForm
-     */
-    @Watch('data.zp')
-    onZpChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'zp', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 jg 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof ReadRYInfoForm
-     */
-    @Watch('data.jg')
-    onJgChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'jg', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 hyzk 值
      *
      * @param {*} newVal
@@ -1556,6 +1544,18 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     @Watch('data.hyzk')
     onHyzkChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'hyzk', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 zp 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof ReadRYInfoForm
+     */
+    @Watch('data.zp')
+    onZpChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'zp', newVal: newVal, oldVal: oldVal });
     }
 
     /**
