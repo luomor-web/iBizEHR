@@ -410,7 +410,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         if (this.skksrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(skksrq);
     }
     /**
@@ -436,7 +436,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         if (this.skjssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(skjssj);
     }
     /**
@@ -462,7 +462,7 @@ public class TrmCouarrange extends EntityMP implements Serializable {
         if (this.skkssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(skkssj);
     }
     /**

@@ -144,7 +144,7 @@ public class PimDateRule extends EntityMP implements Serializable {
         if (this.startdate == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(startdate);
     }
     /**
@@ -170,7 +170,7 @@ public class PimDateRule extends EntityMP implements Serializable {
         if (this.enddate == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(enddate);
     }
     /**

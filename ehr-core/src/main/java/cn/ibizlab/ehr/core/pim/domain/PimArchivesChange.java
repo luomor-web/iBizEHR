@@ -307,7 +307,7 @@ public class PimArchivesChange extends EntityMP implements Serializable {
         if (this.jlcssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(jlcssj);
     }
     /**
@@ -333,7 +333,7 @@ public class PimArchivesChange extends EntityMP implements Serializable {
         if (this.daddrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(daddrq);
     }
     /**

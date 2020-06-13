@@ -197,7 +197,7 @@ public class PcmSchoolOffice extends EntityMP implements Serializable {
         if (this.cadreenddatetime == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(cadreenddatetime);
     }
     /**
@@ -215,7 +215,7 @@ public class PcmSchoolOffice extends EntityMP implements Serializable {
         if (this.bbsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(bbsj);
     }
     /**
@@ -241,7 +241,7 @@ public class PcmSchoolOffice extends EntityMP implements Serializable {
         if (this.cadrestartdatetime == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(cadrestartdatetime);
     }
     /**

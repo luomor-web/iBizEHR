@@ -402,7 +402,7 @@ public class TrmTrainPerson extends EntityMP implements Serializable {
         if (this.trainbegin == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(trainbegin);
     }
     /**
@@ -420,7 +420,7 @@ public class TrmTrainPerson extends EntityMP implements Serializable {
         if (this.trainend == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(trainend);
     }
     /**
@@ -454,7 +454,7 @@ public class TrmTrainPerson extends EntityMP implements Serializable {
         if (this.pxjssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(pxjssj);
     }
     /**
@@ -552,7 +552,7 @@ public class TrmTrainPerson extends EntityMP implements Serializable {
         if (this.pxkssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(pxkssj);
     }
     /**

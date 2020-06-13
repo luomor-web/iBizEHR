@@ -514,7 +514,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         if (this.begindate == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(begindate);
     }
     /**
@@ -780,7 +780,7 @@ public class AttEnsummary extends EntityMP implements Serializable {
         if (this.enddate == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(enddate);
     }
     /**

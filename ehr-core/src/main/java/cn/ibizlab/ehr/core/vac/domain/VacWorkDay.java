@@ -184,7 +184,7 @@ public class VacWorkDay extends EntityMP implements Serializable {
         if (this.jssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(jssj);
     }
     /**
@@ -202,7 +202,7 @@ public class VacWorkDay extends EntityMP implements Serializable {
         if (this.sbsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         return sdf.format(sbsj);
     }
     /**
@@ -220,7 +220,7 @@ public class VacWorkDay extends EntityMP implements Serializable {
         if (this.xbsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         return sdf.format(xbsj);
     }
     /**
@@ -238,7 +238,7 @@ public class VacWorkDay extends EntityMP implements Serializable {
         if (this.kssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(kssj);
     }
 

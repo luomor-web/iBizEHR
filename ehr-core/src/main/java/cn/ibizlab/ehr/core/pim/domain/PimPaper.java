@@ -313,7 +313,7 @@ public class PimPaper extends EntityMP implements Serializable {
         if (this.fbsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(fbsj);
     }
     /**

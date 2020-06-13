@@ -174,7 +174,7 @@ public class ParJxkhjcsz extends EntityMP implements Serializable {
         if (this.szsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(szsj);
     }
     /**

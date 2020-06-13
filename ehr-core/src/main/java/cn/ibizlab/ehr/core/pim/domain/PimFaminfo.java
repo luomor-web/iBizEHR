@@ -378,7 +378,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         if (this.csrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(csrq);
     }
     /**

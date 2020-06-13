@@ -253,7 +253,7 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
         if (this.endtime == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(endtime);
     }
     /**
@@ -287,7 +287,7 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
         if (this.bbsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(bbsj);
     }
     /**
@@ -369,7 +369,7 @@ public class PcmPracticeExperience extends EntityMP implements Serializable {
         if (this.starttime == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(starttime);
     }
     /**

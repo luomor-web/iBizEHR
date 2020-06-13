@@ -266,7 +266,7 @@ public class PcmNotice extends EntityMP implements Serializable {
         if (this.sxrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(sxrq);
     }
     /**

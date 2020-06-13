@@ -263,7 +263,7 @@ public class PimArchiveSloanandreturn extends EntityMP implements Serializable {
         if (this.spdate == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(spdate);
     }
     /**
@@ -289,7 +289,7 @@ public class PimArchiveSloanandreturn extends EntityMP implements Serializable {
         if (this.ghrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(ghrq);
     }
     /**
@@ -315,7 +315,7 @@ public class PimArchiveSloanandreturn extends EntityMP implements Serializable {
         if (this.jyqssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(jyqssj);
     }
     /**

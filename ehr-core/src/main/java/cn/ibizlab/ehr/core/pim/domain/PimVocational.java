@@ -519,7 +519,7 @@ public class PimVocational extends EntityMP implements Serializable {
         if (this.xzcsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(xzcsj);
     }
     /**
@@ -561,7 +561,7 @@ public class PimVocational extends EntityMP implements Serializable {
         if (this.zghqrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(zghqrq);
     }
     /**
@@ -619,7 +619,7 @@ public class PimVocational extends EntityMP implements Serializable {
         if (this.njsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(njsj);
     }
     /**
@@ -685,7 +685,7 @@ public class PimVocational extends EntityMP implements Serializable {
         if (this.sxrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(sxrq);
     }
     /**
@@ -727,7 +727,7 @@ public class PimVocational extends EntityMP implements Serializable {
         if (this.cszcsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(cszcsj);
     }
     /**

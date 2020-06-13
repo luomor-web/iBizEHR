@@ -224,7 +224,7 @@ public class TrmPlanFormu extends EntityMP implements Serializable {
         if (this.bzsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(bzsj);
     }
     /**

@@ -289,7 +289,7 @@ public class PimPersonChange extends EntityMP implements Serializable {
         if (this.sxsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(sxsj);
     }
     /**
@@ -355,7 +355,7 @@ public class PimPersonChange extends EntityMP implements Serializable {
         if (this.bgsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(bgsj);
     }
     /**
@@ -381,7 +381,7 @@ public class PimPersonChange extends EntityMP implements Serializable {
         if (this.sqsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(sqsj);
     }
     /**

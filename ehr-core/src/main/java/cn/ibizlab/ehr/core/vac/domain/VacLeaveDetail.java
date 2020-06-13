@@ -363,7 +363,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         if (this.sjjssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(sjjssj);
     }
     /**
@@ -397,7 +397,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         if (this.sjkssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(sjkssj);
     }
     /**
@@ -431,7 +431,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         if (this.jhkssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(jhkssj);
     }
     /**
@@ -481,7 +481,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         if (this.jhjssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(jhjssj);
     }
     /**

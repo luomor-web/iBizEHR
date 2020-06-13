@@ -286,7 +286,7 @@ public class SalPersonStd extends EntityMP implements Serializable {
         if (this.begintime == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(begintime);
     }
     /**
@@ -312,7 +312,7 @@ public class SalPersonStd extends EntityMP implements Serializable {
         if (this.endtime == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(endtime);
     }
     /**

@@ -181,7 +181,7 @@ public class TrmLgbCost extends EntityMP implements Serializable {
         if (this.kssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(kssj);
     }
     /**
@@ -199,7 +199,7 @@ public class TrmLgbCost extends EntityMP implements Serializable {
         if (this.jssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(jssj);
     }
     /**

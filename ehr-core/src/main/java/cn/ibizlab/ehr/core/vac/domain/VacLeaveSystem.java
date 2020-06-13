@@ -187,7 +187,7 @@ public class VacLeaveSystem extends EntityMP implements Serializable {
         if (this.yxqjs == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(yxqjs);
     }
     /**
@@ -237,7 +237,7 @@ public class VacLeaveSystem extends EntityMP implements Serializable {
         if (this.yxqks == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(yxqks);
     }
     /**

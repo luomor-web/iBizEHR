@@ -194,7 +194,7 @@ public class PcmWorkResume extends EntityMP implements Serializable {
         if (this.serveendtime == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(serveendtime);
     }
     /**
@@ -252,7 +252,7 @@ public class PcmWorkResume extends EntityMP implements Serializable {
         if (this.servebegintime == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(servebegintime);
     }
     /**

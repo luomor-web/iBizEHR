@@ -516,7 +516,7 @@ public class PimArchives extends EntityMP implements Serializable {
         if (this.operationdate == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(operationdate);
     }
     /**
@@ -550,7 +550,7 @@ public class PimArchives extends EntityMP implements Serializable {
         if (this.startworkdatae == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(startworkdatae);
     }
     /**
@@ -600,7 +600,7 @@ public class PimArchives extends EntityMP implements Serializable {
         if (this.dateofbirth == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(dateofbirth);
     }
     /**
@@ -618,7 +618,7 @@ public class PimArchives extends EntityMP implements Serializable {
         if (this.dadrrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(dadrrq);
     }
     /**
@@ -660,7 +660,7 @@ public class PimArchives extends EntityMP implements Serializable {
         if (this.joinpartydate == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(joinpartydate);
     }
     /**

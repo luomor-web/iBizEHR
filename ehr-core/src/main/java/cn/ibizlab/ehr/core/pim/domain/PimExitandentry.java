@@ -281,7 +281,7 @@ public class PimExitandentry extends EntityMP implements Serializable {
         if (this.cjsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(cjsj);
     }
     /**
@@ -331,7 +331,7 @@ public class PimExitandentry extends EntityMP implements Serializable {
         if (this.rjsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(rjsj);
     }
     /**

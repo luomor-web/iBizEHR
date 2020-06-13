@@ -571,7 +571,7 @@ public class PcmBdsqdmx extends EntityMP implements Serializable {
         if (this.gzkssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(gzkssj);
     }
     /**
@@ -645,7 +645,7 @@ public class PcmBdsqdmx extends EntityMP implements Serializable {
         if (this.sxrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(sxrq);
     }
     /**
@@ -663,7 +663,7 @@ public class PcmBdsqdmx extends EntityMP implements Serializable {
         if (this.lzsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(lzsj);
     }
     /**
@@ -777,7 +777,7 @@ public class PcmBdsqdmx extends EntityMP implements Serializable {
         if (this.gzjssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(gzjssj);
     }
     /**

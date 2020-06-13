@@ -431,7 +431,7 @@ public class PimTitle extends EntityMP implements Serializable {
         if (this.employtime == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(employtime);
     }
     /**
@@ -465,7 +465,7 @@ public class PimTitle extends EntityMP implements Serializable {
         if (this.zchqrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(zchqrq);
     }
     /**

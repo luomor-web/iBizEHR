@@ -453,7 +453,7 @@ public class PimEducation extends EntityMP implements Serializable {
         if (this.cjgzsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(cjgzsj);
     }
     /**
@@ -479,7 +479,7 @@ public class PimEducation extends EntityMP implements Serializable {
         if (this.jssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(jssj);
     }
     /**
@@ -497,7 +497,7 @@ public class PimEducation extends EntityMP implements Serializable {
         if (this.dzjbjsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(dzjbjsj);
     }
     /**
@@ -547,7 +547,7 @@ public class PimEducation extends EntityMP implements Serializable {
         if (this.tozjdate == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(tozjdate);
     }
     /**
@@ -613,7 +613,7 @@ public class PimEducation extends EntityMP implements Serializable {
         if (this.qssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(qssj);
     }
     /**
@@ -671,7 +671,7 @@ public class PimEducation extends EntityMP implements Serializable {
         if (this.dbdwsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(dbdwsj);
     }
     /**

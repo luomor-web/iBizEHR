@@ -267,7 +267,7 @@ public class VacSynjcx extends EntityMP implements Serializable {
         if (this.ksyxsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(ksyxsj);
     }
     /**
@@ -309,7 +309,7 @@ public class VacSynjcx extends EntityMP implements Serializable {
         if (this.jsyxsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(jsyxsj);
     }
     /**

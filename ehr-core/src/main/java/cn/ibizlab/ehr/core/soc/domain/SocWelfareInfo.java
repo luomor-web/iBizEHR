@@ -245,7 +245,7 @@ public class SocWelfareInfo extends EntityMP implements Serializable {
         if (this.sxsj2 == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(sxsj2);
     }
     /**
@@ -287,7 +287,7 @@ public class SocWelfareInfo extends EntityMP implements Serializable {
         if (this.sxsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(sxsj);
     }
     /**

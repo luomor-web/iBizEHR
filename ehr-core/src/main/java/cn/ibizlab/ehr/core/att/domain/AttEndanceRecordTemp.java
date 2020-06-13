@@ -313,7 +313,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         if (this.dksjqt == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(dksjqt);
     }
     /**
@@ -347,7 +347,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         if (this.sbsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         return sdf.format(sbsj);
     }
     /**
@@ -381,7 +381,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         if (this.xbsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         return sdf.format(xbsj);
     }
     /**
@@ -431,7 +431,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         if (this.dksjqd == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(dksjqd);
     }
     /**
@@ -465,7 +465,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         if (this.kqrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(kqrq);
     }
     /**

@@ -10,6 +10,10 @@ public class CustomJacksonSerializer<T> extends Jackson2JsonRedisSerializer<T>  
 
     public static final String DEFAULT_PACKAGE ="[\\w+\\.]+\\.AuthenticationUser";
 
+    public static final String CLASSNAME_EX="_$$_";
+
+    public static final String CLASSNAME_EX_PATTEN="(_\\$\\$_)(\\w+)";
+
     public static final String USER_PACKAGE= AuthenticationUser.class.getName();
 
     public CustomJacksonSerializer(Class type) {
@@ -20,6 +24,12 @@ public class CustomJacksonSerializer<T> extends Jackson2JsonRedisSerializer<T>  
     public T deserialize(byte[] bytes) throws SerializationException {
         String serializerContent = new String(bytes, DEFAULT_CHARSET);
         Matcher matcher = Pattern.compile(DEFAULT_PACKAGE).matcher(serializerContent);
-        return matcher.find()?super.deserialize(serializerContent.replaceAll(DEFAULT_PACKAGE,USER_PACKAGE).getBytes()):super.deserialize(bytes);
+        if(matcher.find()){
+            serializerContent=serializerContent.replaceAll(DEFAULT_PACKAGE,USER_PACKAGE);
+        }
+        if(serializerContent.contains(CLASSNAME_EX)){
+            serializerContent=serializerContent.replaceAll(CLASSNAME_EX_PATTEN,"");
+        }
+        return super.deserialize(serializerContent.getBytes());
     }
 }

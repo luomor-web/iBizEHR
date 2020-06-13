@@ -350,7 +350,7 @@ public class TrmTrainTeacher extends EntityMP implements Serializable {
         if (this.zjkssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(zjkssj);
     }
     /**

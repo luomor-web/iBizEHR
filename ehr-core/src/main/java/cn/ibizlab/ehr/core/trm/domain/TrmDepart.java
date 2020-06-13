@@ -339,7 +339,7 @@ public class TrmDepart extends EntityMP implements Serializable {
         if (this.tdrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(tdrq);
     }
     /**
@@ -357,7 +357,7 @@ public class TrmDepart extends EntityMP implements Serializable {
         if (this.jzrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(jzrq);
     }
     /**

@@ -186,7 +186,7 @@ public class VacHolidayRules extends EntityMP implements Serializable {
         if (this.sbsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         return sdf.format(sbsj);
     }
     /**
@@ -204,7 +204,7 @@ public class VacHolidayRules extends EntityMP implements Serializable {
         if (this.xbsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         return sdf.format(xbsj);
     }
     /**

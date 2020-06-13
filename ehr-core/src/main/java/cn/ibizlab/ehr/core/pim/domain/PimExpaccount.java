@@ -178,7 +178,7 @@ public class PimExpaccount extends EntityMP implements Serializable {
         if (this.ffsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(ffsj);
     }
     /**

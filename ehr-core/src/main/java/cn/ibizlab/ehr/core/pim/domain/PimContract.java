@@ -468,7 +468,7 @@ public class PimContract extends EntityMP implements Serializable {
         if (this.sydqsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(sydqsj);
     }
     /**
@@ -534,7 +534,7 @@ public class PimContract extends EntityMP implements Serializable {
         if (this.jsrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(jsrq);
     }
     /**
@@ -576,7 +576,7 @@ public class PimContract extends EntityMP implements Serializable {
         if (this.qsrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(qsrq);
     }
     /**

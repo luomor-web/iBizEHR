@@ -525,7 +525,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         if (this.rzjssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(rzjssj);
     }
     /**
@@ -559,7 +559,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         if (this.rzkssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(rzkssj);
     }
     /**

@@ -312,7 +312,7 @@ public class AttEndanceRecord extends EntityMP implements Serializable {
         if (this.attenddate == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(attenddate);
     }
     /**
@@ -330,7 +330,7 @@ public class AttEndanceRecord extends EntityMP implements Serializable {
         if (this.dksjqt == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(dksjqt);
     }
     /**
@@ -372,7 +372,7 @@ public class AttEndanceRecord extends EntityMP implements Serializable {
         if (this.dksjqd == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(dksjqd);
     }
     /**

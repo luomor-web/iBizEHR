@@ -391,7 +391,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         if (this.jhjssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(jhjssj);
     }
     /**
@@ -521,7 +521,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
         if (this.jhkssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(jhkssj);
     }
     /**

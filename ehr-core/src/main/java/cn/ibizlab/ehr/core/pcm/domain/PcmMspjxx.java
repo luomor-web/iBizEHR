@@ -186,7 +186,7 @@ public class PcmMspjxx extends EntityMP implements Serializable {
         if (this.interviewtime == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(interviewtime);
     }
     /**
@@ -236,7 +236,7 @@ public class PcmMspjxx extends EntityMP implements Serializable {
         if (this.evaluatetime == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(evaluatetime);
     }
     /**

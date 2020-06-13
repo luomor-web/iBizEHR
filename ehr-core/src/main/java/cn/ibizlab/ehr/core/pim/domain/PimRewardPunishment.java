@@ -317,7 +317,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         if (this.jlsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(jlsj);
     }
     /**
@@ -391,7 +391,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         if (this.yxqjsrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(yxqjsrq);
     }
     /**
@@ -417,7 +417,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         if (this.cfsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(cfsj);
     }
     /**
@@ -467,7 +467,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         if (this.csrq == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(csrq);
     }
     /**

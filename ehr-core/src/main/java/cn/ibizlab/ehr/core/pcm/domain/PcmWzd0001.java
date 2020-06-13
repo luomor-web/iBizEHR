@@ -255,7 +255,7 @@ public class PcmWzd0001 extends EntityMP implements Serializable {
         if (this.bdsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(bdsj);
     }
     /**

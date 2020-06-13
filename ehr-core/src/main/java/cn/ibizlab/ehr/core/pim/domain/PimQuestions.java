@@ -324,7 +324,7 @@ public class PimQuestions extends EntityMP implements Serializable {
         if (this.tcsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(tcsj);
     }
     /**
@@ -342,7 +342,7 @@ public class PimQuestions extends EntityMP implements Serializable {
         if (this.wcsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(wcsj);
     }
     /**

@@ -297,7 +297,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         if (this.reserver5 == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(reserver5);
     }
     /**

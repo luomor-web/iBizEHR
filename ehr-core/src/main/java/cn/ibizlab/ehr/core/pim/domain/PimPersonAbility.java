@@ -217,7 +217,7 @@ public class PimPersonAbility extends EntityMP implements Serializable {
         if (this.recorddate == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(recorddate);
     }
     /**

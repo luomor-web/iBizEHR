@@ -646,7 +646,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         if (this.sbsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         return sdf.format(sbsj);
     }
     /**
@@ -664,7 +664,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         if (this.xbsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         return sdf.format(xbsj);
     }
     /**
@@ -730,7 +730,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         if (this.kqkssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         return sdf.format(kqkssj);
     }
     /**
@@ -772,7 +772,7 @@ public class OrmOrgsector extends EntityMP implements Serializable {
         if (this.kqjssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         return sdf.format(kqjssj);
     }
     /**

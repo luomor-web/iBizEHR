@@ -211,7 +211,7 @@ public class PcmAwardsWons extends EntityMP implements Serializable {
         if (this.awardtime == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(awardtime);
     }
     /**
@@ -245,7 +245,7 @@ public class PcmAwardsWons extends EntityMP implements Serializable {
         if (this.bbsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(bbsj);
     }
     /**

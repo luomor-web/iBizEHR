@@ -267,7 +267,7 @@ public class PcmJxsbdjl extends EntityMP implements Serializable {
         if (this.bdsjsj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(bdsjsj);
     }
     /**
@@ -285,7 +285,7 @@ public class PcmJxsbdjl extends EntityMP implements Serializable {
         if (this.bdqssj == null) {
             return null;
         }
-        SimpleDateFormat sdf = new SimpleDateFormat("defieldFormatStr");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(bdqssj);
     }
     /**
