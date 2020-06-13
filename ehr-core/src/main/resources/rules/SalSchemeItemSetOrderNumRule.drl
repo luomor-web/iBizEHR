@@ -23,7 +23,7 @@ ruleflow-group "salschemeitemsetordernumrawsqlcall1"
     then
     Map param =new HashMap();
     param.put("param0",salschemeitemsetordernumdefault.get("salitemid"));
-    String strSql="select xh  from T_SALITEM where SALITEMID=%1$s and enable=1";
+    String strSql="select XH  as XH from T_SALITEM where SALITEMID=#{et.param0} and enable=1";
     java.util.List<JSONObject> entities=iBzSysSalschemeitemDefaultService.select(strSql,param);//SQL调用
     if(entities.size()>0){
         JSONObject entity=entities.get(0);
