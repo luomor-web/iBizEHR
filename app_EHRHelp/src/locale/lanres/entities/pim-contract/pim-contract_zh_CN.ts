@@ -54,11 +54,11 @@ export default {
 	views: {
 		grcontracteditview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息编辑视图',
 		},
 		grcontractgridview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息表格视图',
 		},
 	},
 	grcontracteditgrid_form: {

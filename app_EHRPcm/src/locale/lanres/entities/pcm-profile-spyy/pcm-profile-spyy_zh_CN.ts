@@ -12,11 +12,11 @@ export default {
 	views: {
 		gridview: {
 			caption: '应聘者审批原因',
-      title: '应聘者审批原因',
+      title: '应聘者审批原因表格视图',
 		},
 		editview: {
 			caption: '应聘者审批原因',
-      title: '应聘者审批原因',
+      title: '应聘者审批原因编辑视图',
 		},
 	},
 	main_form: {

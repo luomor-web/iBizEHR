@@ -14,12 +14,14 @@
 </i-col>
 <i-col v-show="detailsModel.zyzgzy.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zyzgzy' :itemRules="this.rules.zyzgzy" class='' :caption="$t('entities.pcmcertofreg.main_form.details.zyzgzy')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zyzgzy.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.zyzgzy.disabled"
   name='zyzgzy'
   deMajorField='zyzgzy'

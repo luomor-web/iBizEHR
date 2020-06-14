@@ -26,13 +26,15 @@
 </i-col>
 <i-col v-show="detailsModel.zwlb.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='zwlb' :itemRules="this.rules.zwlb" class='' :caption="$t('entities.ormduty.main_form.details.zwlb')" uiStyle="DEFAULT" :labelWidth="170" :isShowCaption="true" :error="detailsModel.zwlb.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-checkbox-list 
+    
+<app-checkbox-list 
   v-model="data.zwlb" 
   :data="data" 
   :context="context"
   :viewparams="viewparams" 
   :disabled="detailsModel.zwlb.disabled" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0120' 
   codelistType='STATIC' 
   mode=""

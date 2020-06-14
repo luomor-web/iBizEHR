@@ -220,6 +220,8 @@ export default class PIMCONTRACTTreeExpViewBase extends TreeExpViewBase {
      * @memberof PIMCONTRACTTreeExpView
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
+        let localContext:any = null;
+        let localViewParam:any =null;
     this.$Notice.warning({ title: '错误', desc: '未指定关系视图' });
     }
 
@@ -235,6 +237,8 @@ export default class PIMCONTRACTTreeExpViewBase extends TreeExpViewBase {
      * @memberof PIMCONTRACTTreeExpView
      */
     public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
+        let localContext:any = null;
+        let localViewParam:any =null;
     this.$Notice.warning({ title: '错误', desc: '未指定关系视图' });
     }
 

@@ -31,14 +31,14 @@ public class VacWFQjSearchContext extends QueryWrapperContext<VacWFQj> {
 	public void setN_qjstate_eq(String n_qjstate_eq) {
         this.n_qjstate_eq = n_qjstate_eq;
         if(!ObjectUtils.isEmpty(this.n_qjstate_eq)){
-            this.getSelectCond().eq("qjstate", n_qjstate_eq);
+            this.getSearchCond().eq("qjstate", n_qjstate_eq);
         }
     }
 	private String n_wfqjname_like;//[请假（WF）名称]
 	public void setN_wfqjname_like(String n_wfqjname_like) {
         this.n_wfqjname_like = n_wfqjname_like;
         if(!ObjectUtils.isEmpty(this.n_wfqjname_like)){
-            this.getSelectCond().like("wfqjname", n_wfqjname_like);
+            this.getSearchCond().like("wfqjname", n_wfqjname_like);
         }
     }
 
@@ -49,7 +49,7 @@ public class VacWFQjSearchContext extends QueryWrapperContext<VacWFQj> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("wfqjname", query)   
             );
 		 }

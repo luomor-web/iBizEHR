@@ -101,7 +101,7 @@ export default class EditViewEngine extends ViewEngine {
      * @memberof EditViewEngine
      */
     public onFormLoad(arg: any): void {
-        this.view.model.dataInfo = Object.is(arg.srfuf, '1') ? arg.srfmajortext : '新建';
+        this.view.model.dataInfo = Object.is(arg.srfuf, '1') ? (this.majorPSDEField?arg[this.majorPSDEField]:arg.srfmajortext) : this.view.$t('app.local.new');
 
         this.setTabCaption(this.view.model.dataInfo);
         const newdata: boolean = !Object.is(arg.srfuf, '1');
@@ -115,7 +115,7 @@ export default class EditViewEngine extends ViewEngine {
      * @memberof EditViewEngine
      */
     public onFormSave(arg: any): void {
-        this.view.model.dataInfo = Object.is(arg.srfuf, '1') ? arg.srfmajortext : '新建';
+        this.view.model.dataInfo = Object.is(arg.srfuf, '1') ? (this.majorPSDEField?arg[this.majorPSDEField]:arg.srfmajortext) : this.view.$t('app.local.new');
 
         this.setTabCaption(this.view.model.dataInfo);
         const newdata: boolean = !Object.is(arg.srfuf, '1');
@@ -248,7 +248,10 @@ export default class EditViewEngine extends ViewEngine {
     public setTabCaption(info: string): void {
         let viewdata: any = this.view.model;
         if (viewdata  && info && !Object.is(info, '') && this.view.$tabPageExp && (viewdata.srfTitle.indexOf(" - ") === -1)) {
-            this.view.$tabPageExp.setCurPageCaption(viewdata.srfCaption, viewdata.srfTitle, info);
+            this.view.$tabPageExp.setCurPageCaption(viewdata.srfTitle, viewdata.srfTitle, info);
+            if(this.view.$route){
+                this.view.$route.meta.info = info;
+            }
             this.view.model.srfTitle = `${this.view.$t(viewdata.srfTitle)} - ${viewdata.dataInfo}`;
         }
     }

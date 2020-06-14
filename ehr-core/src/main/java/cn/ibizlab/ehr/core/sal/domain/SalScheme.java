@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[工资单]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_SALSCHEME",resultMap = "SalSchemeResultMap")
 public class SalScheme extends EntityMP implements Serializable {
 
@@ -149,6 +150,7 @@ public class SalScheme extends EntityMP implements Serializable {
         this.saltype = saltype ;
         this.modify("saltype",saltype);
     }
+
     /**
      * 设置 [备注]
      */
@@ -156,6 +158,7 @@ public class SalScheme extends EntityMP implements Serializable {
         this.memo = memo ;
         this.modify("memo",memo);
     }
+
     /**
      * 设置 [工资单名称]
      */
@@ -163,6 +166,7 @@ public class SalScheme extends EntityMP implements Serializable {
         this.salschemename = salschemename ;
         this.modify("salschemename",salschemename);
     }
+
     /**
      * 设置 [是否启用]
      */
@@ -170,6 +174,7 @@ public class SalScheme extends EntityMP implements Serializable {
         this.validflag = validflag ;
         this.modify("validflag",validflag);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -177,6 +182,7 @@ public class SalScheme extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

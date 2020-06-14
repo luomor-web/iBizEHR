@@ -31,28 +31,28 @@ public class AttendRecordDetailSearchContext extends QueryWrapperContext<AttendR
 	public void setN_attendrecorddetailname_like(String n_attendrecorddetailname_like) {
         this.n_attendrecorddetailname_like = n_attendrecorddetailname_like;
         if(!ObjectUtils.isEmpty(this.n_attendrecorddetailname_like)){
-            this.getSelectCond().like("attendrecorddetailname", n_attendrecorddetailname_like);
+            this.getSearchCond().like("attendrecorddetailname", n_attendrecorddetailname_like);
         }
     }
 	private String n_attendancerecordname_eq;//[考勤记录名称]
 	public void setN_attendancerecordname_eq(String n_attendancerecordname_eq) {
         this.n_attendancerecordname_eq = n_attendancerecordname_eq;
         if(!ObjectUtils.isEmpty(this.n_attendancerecordname_eq)){
-            this.getSelectCond().eq("attendancerecordname", n_attendancerecordname_eq);
+            this.getSearchCond().eq("attendancerecordname", n_attendancerecordname_eq);
         }
     }
 	private String n_attendancerecordname_like;//[考勤记录名称]
 	public void setN_attendancerecordname_like(String n_attendancerecordname_like) {
         this.n_attendancerecordname_like = n_attendancerecordname_like;
         if(!ObjectUtils.isEmpty(this.n_attendancerecordname_like)){
-            this.getSelectCond().like("attendancerecordname", n_attendancerecordname_like);
+            this.getSearchCond().like("attendancerecordname", n_attendancerecordname_like);
         }
     }
 	private String n_attendancerecordid_eq;//[考勤记录标识]
 	public void setN_attendancerecordid_eq(String n_attendancerecordid_eq) {
         this.n_attendancerecordid_eq = n_attendancerecordid_eq;
         if(!ObjectUtils.isEmpty(this.n_attendancerecordid_eq)){
-            this.getSelectCond().eq("attendancerecordid", n_attendancerecordid_eq);
+            this.getSearchCond().eq("attendancerecordid", n_attendancerecordid_eq);
         }
     }
 
@@ -63,7 +63,7 @@ public class AttendRecordDetailSearchContext extends QueryWrapperContext<AttendR
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("attendrecorddetailname", query)   
             );
 		 }

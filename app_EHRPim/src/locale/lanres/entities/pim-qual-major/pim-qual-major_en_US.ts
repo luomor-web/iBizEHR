@@ -24,23 +24,23 @@ export default {
 	views: {
 		mpickupview: {
 			caption: "执业资格专业",
-      title: '执业资格专业',
+      title: '执业资格专业数据多项选择视图',
 		},
 		editview2: {
 			caption: "执业资格专业",
-      title: '执业资格专业',
+      title: '执业资格专业编辑视图',
 		},
 		pickupview: {
 			caption: "执业资格专业",
-      title: '执业资格专业',
+      title: '执业资格专业数据选择视图',
 		},
 		pickupgridview: {
 			caption: "执业资格专业",
-      title: '执业资格专业',
+      title: '执业资格专业选择表格视图',
 		},
 		selgridview: {
 			caption: "执业资格专业",
-      title: '执业资格专业',
+      title: '执业资格专业表格视图',
 		},
 		editview: {
 			caption: "执业资格专业",
@@ -48,7 +48,7 @@ export default {
 		},
 		redirectview: {
 			caption: "执业资格专业",
-      title: '执业资格专业',
+      title: '执业资格专业数据重定向视图',
 		},
 		gridview: {
 			caption: "执业资格专业",

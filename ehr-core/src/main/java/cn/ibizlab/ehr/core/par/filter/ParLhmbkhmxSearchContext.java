@@ -31,28 +31,28 @@ public class ParLhmbkhmxSearchContext extends QueryWrapperContext<ParLhmbkhmx> {
 	public void setN_parlhmbkhmxname_like(String n_parlhmbkhmxname_like) {
         this.n_parlhmbkhmxname_like = n_parlhmbkhmxname_like;
         if(!ObjectUtils.isEmpty(this.n_parlhmbkhmxname_like)){
-            this.getSelectCond().like("parlhmbkhmxname", n_parlhmbkhmxname_like);
+            this.getSearchCond().like("parlhmbkhmxname", n_parlhmbkhmxname_like);
         }
     }
 	private String n_parndlhmbkhname_eq;//[量化目标考核]
 	public void setN_parndlhmbkhname_eq(String n_parndlhmbkhname_eq) {
         this.n_parndlhmbkhname_eq = n_parndlhmbkhname_eq;
         if(!ObjectUtils.isEmpty(this.n_parndlhmbkhname_eq)){
-            this.getSelectCond().eq("parndlhmbkhname", n_parndlhmbkhname_eq);
+            this.getSearchCond().eq("parndlhmbkhname", n_parndlhmbkhname_eq);
         }
     }
 	private String n_parndlhmbkhname_like;//[量化目标考核]
 	public void setN_parndlhmbkhname_like(String n_parndlhmbkhname_like) {
         this.n_parndlhmbkhname_like = n_parndlhmbkhname_like;
         if(!ObjectUtils.isEmpty(this.n_parndlhmbkhname_like)){
-            this.getSelectCond().like("parndlhmbkhname", n_parndlhmbkhname_like);
+            this.getSearchCond().like("parndlhmbkhname", n_parndlhmbkhname_like);
         }
     }
 	private String n_parndlhmbkhid_eq;//[量化目标考核ID]
 	public void setN_parndlhmbkhid_eq(String n_parndlhmbkhid_eq) {
         this.n_parndlhmbkhid_eq = n_parndlhmbkhid_eq;
         if(!ObjectUtils.isEmpty(this.n_parndlhmbkhid_eq)){
-            this.getSelectCond().eq("parndlhmbkhid", n_parndlhmbkhid_eq);
+            this.getSearchCond().eq("parndlhmbkhid", n_parndlhmbkhid_eq);
         }
     }
 
@@ -63,7 +63,7 @@ public class ParLhmbkhmxSearchContext extends QueryWrapperContext<ParLhmbkhmx> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("parlhmbkhmxname", query)   
             );
 		 }

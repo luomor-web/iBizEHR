@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[考勤日期]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_ATTENDANCEDATE",resultMap = "AttEndanceDateResultMap")
 public class AttEndanceDate extends EntityMP implements Serializable {
 
@@ -127,6 +128,7 @@ public class AttEndanceDate extends EntityMP implements Serializable {
         this.attendancedatename = attendancedatename ;
         this.modify("attendancedatename",attendancedatename);
     }
+
     /**
      * 设置 [月]
      */
@@ -134,6 +136,7 @@ public class AttEndanceDate extends EntityMP implements Serializable {
         this.month = month ;
         this.modify("month",month);
     }
+
     /**
      * 设置 [年]
      */
@@ -141,6 +144,7 @@ public class AttEndanceDate extends EntityMP implements Serializable {
         this.year = year ;
         this.modify("year",year);
     }
+
     /**
      * 设置 [日]
      */
@@ -148,6 +152,7 @@ public class AttEndanceDate extends EntityMP implements Serializable {
         this.day = day ;
         this.modify("day",day);
     }
+
 
 }
 

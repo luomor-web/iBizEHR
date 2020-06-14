@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.pimtitlecataloguename.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimtitlecataloguename' :itemRules="this.rules.pimtitlecataloguename" class='' :caption="$t('entities.pimtitle.main_2_form.details.pimtitlecataloguename')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimtitlecataloguename.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.pimtitlecataloguename.disabled"
   name='pimtitlecataloguename'
   deMajorField='pimtitlecataloguename'
@@ -45,12 +47,14 @@
 </i-col>
 <i-col v-show="detailsModel.zcdj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zcdj' :itemRules="this.rules.zcdj" class='' :caption="$t('entities.pimtitle.main_2_form.details.zcdj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zcdj.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.zcdj" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.zcdj.disabled"  
     tag='EhrCodeList0024' 
     codelistType='DYNAMIC'
@@ -91,12 +95,14 @@
 </i-col>
 <i-col v-show="detailsModel.sfzgzc.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfzgzc' :itemRules="this.rules.sfzgzc" class='' :caption="$t('entities.pimtitle.main_2_form.details.sfzgzc')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfzgzc.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
   v-model="data.sfzgzc" 
   :data="data" 
   :context="context"
   :viewparams="viewparams"
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.sfzgzc.disabled" 
   style="width:100px;width: 100px;" 
   tag='EhrCodeList0400' 

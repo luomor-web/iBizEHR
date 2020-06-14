@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[项目部明细]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_ORMXMBMX",resultMap = "OrmXmbmxResultMap")
 public class OrmXmbmx extends EntityMP implements Serializable {
 
@@ -169,6 +170,7 @@ public class OrmXmbmx extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [项目部明细名称]
      */
@@ -176,6 +178,7 @@ public class OrmXmbmx extends EntityMP implements Serializable {
         this.ormxmbmxname = ormxmbmxname ;
         this.modify("ormxmbmxname",ormxmbmxname);
     }
+
     /**
      * 设置 [证书名称]
      */
@@ -183,6 +186,7 @@ public class OrmXmbmx extends EntityMP implements Serializable {
         this.zsmc = zsmc ;
         this.modify("zsmc",zsmc);
     }
+
     /**
      * 设置 [证书编号]
      */
@@ -190,6 +194,7 @@ public class OrmXmbmx extends EntityMP implements Serializable {
         this.zsbh = zsbh ;
         this.modify("zsbh",zsbh);
     }
+
     /**
      * 设置 [项目人员类型]
      */
@@ -197,6 +202,7 @@ public class OrmXmbmx extends EntityMP implements Serializable {
         this.xmrylx = xmrylx ;
         this.modify("xmrylx",xmrylx);
     }
+
     /**
      * 设置 [项目部ID]
      */
@@ -204,6 +210,7 @@ public class OrmXmbmx extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [人员ID]
      */
@@ -211,6 +218,7 @@ public class OrmXmbmx extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

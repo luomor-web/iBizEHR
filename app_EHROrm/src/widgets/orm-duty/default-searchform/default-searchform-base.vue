@@ -18,13 +18,15 @@
           </i-col>
           <i-col v-show="detailsModel.n_zwlb_like.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
               <app-form-item name='n_zwlb_like' :itemRules="this.rules.n_zwlb_like" class='' :caption="$t('entities.ormduty.default_searchform.details.n_zwlb_like')" uiStyle="DEFAULT" :labelWidth="100" :isShowCaption="true" :error="detailsModel.n_zwlb_like.error" :isEmptyCaption="false" labelPos="RIGHT"> 
-              <app-checkbox-list 
+              
+          <app-checkbox-list 
             v-model="data.n_zwlb_like" 
             :data="data" 
             :context="context"
             :viewparams="viewparams" 
             :disabled="detailsModel.n_zwlb_like.disabled" 
-            :itemParam="{}" 
+            :localContext ='{ }' 
+            :localParam ='{ }' 
             tag='EhrCodeList0120' 
             codelistType='STATIC' 
             mode=""

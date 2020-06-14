@@ -31,112 +31,112 @@ public class TrmDepartSearchContext extends QueryWrapperContext<TrmDepart> {
 	public void setN_trmdepartname_like(String n_trmdepartname_like) {
         this.n_trmdepartname_like = n_trmdepartname_like;
         if(!ObjectUtils.isEmpty(this.n_trmdepartname_like)){
-            this.getSelectCond().like("trmdepartname", n_trmdepartname_like);
+            this.getSearchCond().like("trmdepartname", n_trmdepartname_like);
         }
     }
 	private String n_nd_eq;//[年度]
 	public void setN_nd_eq(String n_nd_eq) {
         this.n_nd_eq = n_nd_eq;
         if(!ObjectUtils.isEmpty(this.n_nd_eq)){
-            this.getSelectCond().eq("nd", n_nd_eq);
+            this.getSearchCond().eq("nd", n_nd_eq);
         }
     }
 	private String n_lclx_eq;//[流程类型]
 	public void setN_lclx_eq(String n_lclx_eq) {
         this.n_lclx_eq = n_lclx_eq;
         if(!ObjectUtils.isEmpty(this.n_lclx_eq)){
-            this.getSelectCond().eq("lclx", n_lclx_eq);
+            this.getSearchCond().eq("lclx", n_lclx_eq);
         }
     }
 	private String n_xqlylx_eq;//[需求来源类型]
 	public void setN_xqlylx_eq(String n_xqlylx_eq) {
         this.n_xqlylx_eq = n_xqlylx_eq;
         if(!ObjectUtils.isEmpty(this.n_xqlylx_eq)){
-            this.getSelectCond().eq("xqlylx", n_xqlylx_eq);
+            this.getSearchCond().eq("xqlylx", n_xqlylx_eq);
         }
     }
 	private String n_spfs_eq;//[审批方式]
 	public void setN_spfs_eq(String n_spfs_eq) {
         this.n_spfs_eq = n_spfs_eq;
         if(!ObjectUtils.isEmpty(this.n_spfs_eq)){
-            this.getSelectCond().eq("spfs", n_spfs_eq);
+            this.getSearchCond().eq("spfs", n_spfs_eq);
         }
     }
 	private String n_tzlx_eq;//[通知类型]
 	public void setN_tzlx_eq(String n_tzlx_eq) {
         this.n_tzlx_eq = n_tzlx_eq;
         if(!ObjectUtils.isEmpty(this.n_tzlx_eq)){
-            this.getSelectCond().eq("tzlx", n_tzlx_eq);
+            this.getSearchCond().eq("tzlx", n_tzlx_eq);
         }
     }
 	private String n_jd_eq;//[季度]
 	public void setN_jd_eq(String n_jd_eq) {
         this.n_jd_eq = n_jd_eq;
         if(!ObjectUtils.isEmpty(this.n_jd_eq)){
-            this.getSelectCond().eq("jd", n_jd_eq);
+            this.getSearchCond().eq("jd", n_jd_eq);
         }
     }
 	private String n_ormorgsectorname_eq;//[局职能部门]
 	public void setN_ormorgsectorname_eq(String n_ormorgsectorname_eq) {
         this.n_ormorgsectorname_eq = n_ormorgsectorname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgsectorname_eq)){
-            this.getSelectCond().eq("ormorgsectorname", n_ormorgsectorname_eq);
+            this.getSearchCond().eq("ormorgsectorname", n_ormorgsectorname_eq);
         }
     }
 	private String n_ormorgsectorname_like;//[局职能部门]
 	public void setN_ormorgsectorname_like(String n_ormorgsectorname_like) {
         this.n_ormorgsectorname_like = n_ormorgsectorname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgsectorname_like)){
-            this.getSelectCond().like("ormorgsectorname", n_ormorgsectorname_like);
+            this.getSearchCond().like("ormorgsectorname", n_ormorgsectorname_like);
         }
     }
 	private String n_pimpersonname_eq;//[填单人]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[填单人]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_ormorgname_eq;//[通知对象]
 	public void setN_ormorgname_eq(String n_ormorgname_eq) {
         this.n_ormorgname_eq = n_ormorgname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_eq)){
-            this.getSelectCond().eq("ormorgname", n_ormorgname_eq);
+            this.getSearchCond().eq("ormorgname", n_ormorgname_eq);
         }
     }
 	private String n_ormorgname_like;//[通知对象]
 	public void setN_ormorgname_like(String n_ormorgname_like) {
         this.n_ormorgname_like = n_ormorgname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_like)){
-            this.getSelectCond().like("ormorgname", n_ormorgname_like);
+            this.getSearchCond().like("ormorgname", n_ormorgname_like);
         }
     }
 	private String n_pimpersonid_eq;//[人员信息标识]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 	private String n_ormorgsectorid_eq;//[部门标识]
 	public void setN_ormorgsectorid_eq(String n_ormorgsectorid_eq) {
         this.n_ormorgsectorid_eq = n_ormorgsectorid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgsectorid_eq)){
-            this.getSelectCond().eq("ormorgsectorid", n_ormorgsectorid_eq);
+            this.getSearchCond().eq("ormorgsectorid", n_ormorgsectorid_eq);
         }
     }
 	private String n_ormorgid_eq;//[组织标识]
 	public void setN_ormorgid_eq(String n_ormorgid_eq) {
         this.n_ormorgid_eq = n_ormorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
-            this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
         }
     }
 
@@ -147,7 +147,7 @@ public class TrmDepartSearchContext extends QueryWrapperContext<TrmDepart> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("trmdepartname", query)   
             );
 		 }

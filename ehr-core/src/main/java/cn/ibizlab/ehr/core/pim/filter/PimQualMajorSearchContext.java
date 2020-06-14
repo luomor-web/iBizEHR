@@ -31,63 +31,63 @@ public class PimQualMajorSearchContext extends QueryWrapperContext<PimQualMajor>
 	public void setN_gwlx_eq(String n_gwlx_eq) {
         this.n_gwlx_eq = n_gwlx_eq;
         if(!ObjectUtils.isEmpty(this.n_gwlx_eq)){
-            this.getSelectCond().eq("gwlx", n_gwlx_eq);
+            this.getSearchCond().eq("gwlx", n_gwlx_eq);
         }
     }
 	private String n_pimqualmajorid_like;//[执业资格专业编码]
 	public void setN_pimqualmajorid_like(String n_pimqualmajorid_like) {
         this.n_pimqualmajorid_like = n_pimqualmajorid_like;
         if(!ObjectUtils.isEmpty(this.n_pimqualmajorid_like)){
-            this.getSelectCond().like("pimqualmajorid", n_pimqualmajorid_like);
+            this.getSearchCond().like("pimqualmajorid", n_pimqualmajorid_like);
         }
     }
 	private String n_zyzgzy_like;//[执业资格名称]
 	public void setN_zyzgzy_like(String n_zyzgzy_like) {
         this.n_zyzgzy_like = n_zyzgzy_like;
         if(!ObjectUtils.isEmpty(this.n_zyzgzy_like)){
-            this.getSelectCond().like("zyzgzy", n_zyzgzy_like);
+            this.getSearchCond().like("zyzgzy", n_zyzgzy_like);
         }
     }
 	private String n_pimqualmajorname_like;//[执业资格]
 	public void setN_pimqualmajorname_like(String n_pimqualmajorname_like) {
         this.n_pimqualmajorname_like = n_pimqualmajorname_like;
         if(!ObjectUtils.isEmpty(this.n_pimqualmajorname_like)){
-            this.getSelectCond().like("pimqualmajorname", n_pimqualmajorname_like);
+            this.getSearchCond().like("pimqualmajorname", n_pimqualmajorname_like);
         }
     }
 	private String n_professionaltype_eq;//[执业资格类别]
 	public void setN_professionaltype_eq(String n_professionaltype_eq) {
         this.n_professionaltype_eq = n_professionaltype_eq;
         if(!ObjectUtils.isEmpty(this.n_professionaltype_eq)){
-            this.getSelectCond().eq("professionaltype", n_professionaltype_eq);
+            this.getSearchCond().eq("professionaltype", n_professionaltype_eq);
         }
     }
 	private String n_pimqualtypename_eq;//[执业资格类别]
 	public void setN_pimqualtypename_eq(String n_pimqualtypename_eq) {
         this.n_pimqualtypename_eq = n_pimqualtypename_eq;
         if(!ObjectUtils.isEmpty(this.n_pimqualtypename_eq)){
-            this.getSelectCond().eq("pimqualtypename", n_pimqualtypename_eq);
+            this.getSearchCond().eq("pimqualtypename", n_pimqualtypename_eq);
         }
     }
 	private String n_pimqualtypename_like;//[执业资格类别]
 	public void setN_pimqualtypename_like(String n_pimqualtypename_like) {
         this.n_pimqualtypename_like = n_pimqualtypename_like;
         if(!ObjectUtils.isEmpty(this.n_pimqualtypename_like)){
-            this.getSelectCond().like("pimqualtypename", n_pimqualtypename_like);
+            this.getSearchCond().like("pimqualtypename", n_pimqualtypename_like);
         }
     }
 	private String n_ormorgid_eq;//[组织标识]
 	public void setN_ormorgid_eq(String n_ormorgid_eq) {
         this.n_ormorgid_eq = n_ormorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
-            this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
         }
     }
 	private String n_pimqualtypeid_eq;//[执业资格类别标识]
 	public void setN_pimqualtypeid_eq(String n_pimqualtypeid_eq) {
         this.n_pimqualtypeid_eq = n_pimqualtypeid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimqualtypeid_eq)){
-            this.getSelectCond().eq("pimqualtypeid", n_pimqualtypeid_eq);
+            this.getSearchCond().eq("pimqualtypeid", n_pimqualtypeid_eq);
         }
     }
 
@@ -98,7 +98,7 @@ public class PimQualMajorSearchContext extends QueryWrapperContext<PimQualMajor>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("gwzs", query)   
                         .or().like("zyzgzy", query)            
             );

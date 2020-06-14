@@ -17,11 +17,11 @@ export default {
 	views: {
 		editview: {
 			caption: '见习期',
-      title: '见习期',
+      title: '见习期编辑视图',
 		},
 		gridview: {
 			caption: '见习期',
-      title: '见习期',
+      title: '见习期表格视图',
 		},
 	},
 	main_form: {

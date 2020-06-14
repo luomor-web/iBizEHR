@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[优秀年轻干部梯队]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_TRMDUTYCADRES",resultMap = "TrmDutyCadresResultMap")
 public class TrmDutyCadres extends EntityMP implements Serializable {
 
@@ -453,6 +454,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.khcj = khcj ;
         this.modify("khcj",khcj);
     }
+
     /**
      * 设置 [产生方式]
      */
@@ -460,6 +462,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.cstype = cstype ;
         this.modify("cstype",cstype);
     }
+
     /**
      * 设置 [具体原因]
      */
@@ -467,12 +470,24 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.jtyy = jtyy ;
         this.modify("jtyy",jtyy);
     }
+
     /**
      * 设置 [截止日期]
      */
     public void setJsrq(Timestamp jsrq){
         this.jsrq = jsrq ;
         this.modify("jsrq",jsrq);
+    }
+
+    /**
+     * 格式化日期 [截止日期]
+     */
+    public String formatJsrq(){
+        if (this.jsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(jsrq);
     }
     /**
      * 设置 [第二轮投票数]
@@ -481,6 +496,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.sjtpnum = sjtpnum ;
         this.modify("sjtpnum",sjtpnum);
     }
+
     /**
      * 设置 [人数]
      */
@@ -488,6 +504,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.rs = rs ;
         this.modify("rs",rs);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -495,6 +512,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [职务优秀青年干部管理名称]
      */
@@ -502,6 +520,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.trmdutycadresname = trmdutycadresname ;
         this.modify("trmdutycadresname",trmdutycadresname);
     }
+
     /**
      * 设置 [退出原因]
      */
@@ -509,6 +528,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.tcyy = tcyy ;
         this.modify("tcyy",tcyy);
     }
+
     /**
      * 设置 [人员列表]
      */
@@ -516,6 +536,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.rylb = rylb ;
         this.modify("rylb",rylb);
     }
+
     /**
      * 设置 [拟任岗位]
      */
@@ -523,6 +544,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.xgw = xgw ;
         this.modify("xgw",xgw);
     }
+
     /**
      * 设置 [年度]
      */
@@ -530,12 +552,24 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.year = year ;
         this.modify("year",year);
     }
+
     /**
      * 设置 [起始日期]
      */
     public void setQsrq(Timestamp qsrq){
         this.qsrq = qsrq ;
         this.modify("qsrq",qsrq);
+    }
+
+    /**
+     * 格式化日期 [起始日期]
+     */
+    public String formatQsrq(){
+        if (this.qsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(qsrq);
     }
     /**
      * 设置 [状态]
@@ -544,6 +578,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.status = status ;
         this.modify("status",status);
     }
+
     /**
      * 设置 [最近一次绩效考核成绩（作废）]
      */
@@ -551,6 +586,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.zjycjxkhcj = zjycjxkhcj ;
         this.modify("zjycjxkhcj",zjycjxkhcj);
     }
+
     /**
      * 设置 [第一轮投票数]
      */
@@ -558,6 +594,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.tpnum = tpnum ;
         this.modify("tpnum",tpnum);
     }
+
     /**
      * 设置 [备注]
      */
@@ -565,6 +602,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [优秀年轻干部]
      */
@@ -572,6 +610,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.pimpersonname2 = pimpersonname2 ;
         this.modify("pimpersonname2",pimpersonname2);
     }
+
     /**
      * 设置 [岗位集标识]
      */
@@ -579,6 +618,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.ormpostid = ormpostid ;
         this.modify("ormpostid",ormpostid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -586,6 +626,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.pimpersonid2 = pimpersonid2 ;
         this.modify("pimpersonid2",pimpersonid2);
     }
+
     /**
      * 设置 [职级标识]
      */
@@ -593,6 +634,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.ormrankid = ormrankid ;
         this.modify("ormrankid",ormrankid);
     }
+
     /**
      * 设置 [职务管理标识]
      */
@@ -600,6 +642,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.ormdutyid = ormdutyid ;
         this.modify("ormdutyid",ormdutyid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -607,6 +650,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -614,6 +658,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -621,6 +666,7 @@ public class TrmDutyCadres extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

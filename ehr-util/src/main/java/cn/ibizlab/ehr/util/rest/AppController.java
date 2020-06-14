@@ -12,10 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 @RequestMapping(value = "")
@@ -38,8 +35,9 @@ public class AppController {
 		Set<String> appMenu = new HashSet();
 		Set<String> uniRes = new HashSet();
 
+		AuthenticationUser curUser = AuthenticationUser.getAuthenticationUser();
 		if(enablePermissionValid){
-			Collection<GrantedAuthority> authorities=AuthenticationUser.getAuthenticationUser().getAuthorities();
+			Collection<GrantedAuthority> authorities=curUser.getAuthorities();
 				Iterator it = authorities.iterator();
 				while(it.hasNext()) {
 					GrantedAuthority authority = (GrantedAuthority)it.next();
@@ -50,6 +48,10 @@ public class AppController {
 						appMenu.add(strAuthority.substring(systemId.length()+9));
 				}
 		}
+		Map<String,Object> context = new HashMap<>();
+		context.putAll(curUser.getSessionParams());
+		context.put("srfusername",curUser.getPersonname());
+		appData.put("context",context);
 		appData.put("unires",uniRes);
     	appData.put("appmenu",appMenu);
 		appData.put("enablepermissionvalid",enablePermissionValid);

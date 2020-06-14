@@ -31,49 +31,49 @@ public class VacHolidaySearchContext extends QueryWrapperContext<VacHoliday> {
 	public void setN_nd_eq(String n_nd_eq) {
         this.n_nd_eq = n_nd_eq;
         if(!ObjectUtils.isEmpty(this.n_nd_eq)){
-            this.getSelectCond().eq("nd", n_nd_eq);
+            this.getSearchCond().eq("nd", n_nd_eq);
         }
     }
 	private String n_vacholidayname_like;//[名称]
 	public void setN_vacholidayname_like(String n_vacholidayname_like) {
         this.n_vacholidayname_like = n_vacholidayname_like;
         if(!ObjectUtils.isEmpty(this.n_vacholidayname_like)){
-            this.getSelectCond().like("vacholidayname", n_vacholidayname_like);
+            this.getSearchCond().like("vacholidayname", n_vacholidayname_like);
         }
     }
 	private String n_jjrlx_eq;//[类型]
 	public void setN_jjrlx_eq(String n_jjrlx_eq) {
         this.n_jjrlx_eq = n_jjrlx_eq;
         if(!ObjectUtils.isEmpty(this.n_jjrlx_eq)){
-            this.getSelectCond().eq("jjrlx", n_jjrlx_eq);
+            this.getSearchCond().eq("jjrlx", n_jjrlx_eq);
         }
     }
 	private String n_sex_eq;//[性别]
 	public void setN_sex_eq(String n_sex_eq) {
         this.n_sex_eq = n_sex_eq;
         if(!ObjectUtils.isEmpty(this.n_sex_eq)){
-            this.getSelectCond().eq("sex", n_sex_eq);
+            this.getSearchCond().eq("sex", n_sex_eq);
         }
     }
 	private String n_vacholidayrulesname_eq;//[考勤规则名称]
 	public void setN_vacholidayrulesname_eq(String n_vacholidayrulesname_eq) {
         this.n_vacholidayrulesname_eq = n_vacholidayrulesname_eq;
         if(!ObjectUtils.isEmpty(this.n_vacholidayrulesname_eq)){
-            this.getSelectCond().eq("vacholidayrulesname", n_vacholidayrulesname_eq);
+            this.getSearchCond().eq("vacholidayrulesname", n_vacholidayrulesname_eq);
         }
     }
 	private String n_vacholidayrulesname_like;//[考勤规则名称]
 	public void setN_vacholidayrulesname_like(String n_vacholidayrulesname_like) {
         this.n_vacholidayrulesname_like = n_vacholidayrulesname_like;
         if(!ObjectUtils.isEmpty(this.n_vacholidayrulesname_like)){
-            this.getSelectCond().like("vacholidayrulesname", n_vacholidayrulesname_like);
+            this.getSearchCond().like("vacholidayrulesname", n_vacholidayrulesname_like);
         }
     }
 	private String n_vacholidayrulesid_eq;//[考勤规则标识]
 	public void setN_vacholidayrulesid_eq(String n_vacholidayrulesid_eq) {
         this.n_vacholidayrulesid_eq = n_vacholidayrulesid_eq;
         if(!ObjectUtils.isEmpty(this.n_vacholidayrulesid_eq)){
-            this.getSelectCond().eq("vacholidayrulesid", n_vacholidayrulesid_eq);
+            this.getSearchCond().eq("vacholidayrulesid", n_vacholidayrulesid_eq);
         }
     }
 
@@ -84,7 +84,7 @@ public class VacHolidaySearchContext extends QueryWrapperContext<VacHoliday> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("vacholidayname", query)   
             );
 		 }

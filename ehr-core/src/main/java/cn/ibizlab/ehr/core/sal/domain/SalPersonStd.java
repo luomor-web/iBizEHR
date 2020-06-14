@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[员工薪酬标准]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_SALPERSONSTD",resultMap = "SalPersonStdResultMap")
 public class SalPersonStd extends EntityMP implements Serializable {
 
@@ -253,6 +254,7 @@ public class SalPersonStd extends EntityMP implements Serializable {
         this.memo = memo ;
         this.modify("memo",memo);
     }
+
     /**
      * 设置 [员工薪酬标准名称]
      */
@@ -260,6 +262,7 @@ public class SalPersonStd extends EntityMP implements Serializable {
         this.salpersonstdname = salpersonstdname ;
         this.modify("salpersonstdname",salpersonstdname);
     }
+
     /**
      * 设置 [变更原因]
      */
@@ -267,12 +270,24 @@ public class SalPersonStd extends EntityMP implements Serializable {
         this.changereason = changereason ;
         this.modify("changereason",changereason);
     }
+
     /**
      * 设置 [生效日期]
      */
     public void setBegintime(Timestamp begintime){
         this.begintime = begintime ;
         this.modify("begintime",begintime);
+    }
+
+    /**
+     * 格式化日期 [生效日期]
+     */
+    public String formatBegintime(){
+        if (this.begintime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(begintime);
     }
     /**
      * 设置 [薪酬类型]
@@ -281,12 +296,24 @@ public class SalPersonStd extends EntityMP implements Serializable {
         this.saltype = saltype ;
         this.modify("saltype",saltype);
     }
+
     /**
      * 设置 [失效日期]
      */
     public void setEndtime(Timestamp endtime){
         this.endtime = endtime ;
         this.modify("endtime",endtime);
+    }
+
+    /**
+     * 格式化日期 [失效日期]
+     */
+    public String formatEndtime(){
+        if (this.endtime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(endtime);
     }
     /**
      * 设置 [人员信息标识]
@@ -295,6 +322,7 @@ public class SalPersonStd extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [职务管理标识]
      */
@@ -302,6 +330,7 @@ public class SalPersonStd extends EntityMP implements Serializable {
         this.ormdutyid = ormdutyid ;
         this.modify("ormdutyid",ormdutyid);
     }
+
     /**
      * 设置 [岗位管理标识]
      */
@@ -309,6 +338,7 @@ public class SalPersonStd extends EntityMP implements Serializable {
         this.ormpostid = ormpostid ;
         this.modify("ormpostid",ormpostid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -316,6 +346,7 @@ public class SalPersonStd extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -323,6 +354,7 @@ public class SalPersonStd extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
 
 }
 

@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pimlanguageability.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.pimpersonname.disabled"
   name='pimpersonname'
   deMajorField='pimpersonname'
@@ -33,14 +35,16 @@
 </i-col>
 <i-col v-show="detailsModel.wyyz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='wyyz' :itemRules="this.rules.wyyz" class='' :caption="$t('entities.pimlanguageability.main_form.details.wyyz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.wyyz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.wyyz"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.wyyz.disabled"  
   name="wyyz" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0122' 
   codelistType='DYNAMIC' 
   style="">
@@ -50,14 +54,16 @@
 </i-col>
 <i-col v-show="detailsModel.wydj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='wydj' :itemRules="this.rules.wydj" class='' :caption="$t('entities.pimlanguageability.main_form.details.wydj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.wydj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.wydj"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.wydj.disabled"  
   name="wydj" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0146' 
   codelistType='DYNAMIC' 
   style="">

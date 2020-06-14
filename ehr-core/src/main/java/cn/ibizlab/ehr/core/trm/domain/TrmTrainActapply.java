@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[培训活动申请]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_TRMTRAINACTAPPLY",resultMap = "TrmTrainActapplyResultMap")
 public class TrmTrainActapply extends EntityMP implements Serializable {
 
@@ -240,6 +241,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.jhpxrs = jhpxrs ;
         this.modify("jhpxrs",jhpxrs);
     }
+
     /**
      * 设置 [培训目标]
      */
@@ -247,6 +249,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.pxmb = pxmb ;
         this.modify("pxmb",pxmb);
     }
+
     /**
      * 设置 [培训内容]
      */
@@ -254,6 +257,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.pxnr = pxnr ;
         this.modify("pxnr",pxnr);
     }
+
     /**
      * 设置 [培训方式]
      */
@@ -261,6 +265,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.pxfs = pxfs ;
         this.modify("pxfs",pxfs);
     }
+
     /**
      * 设置 [培训级别]
      */
@@ -268,6 +273,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.pxjb = pxjb ;
         this.modify("pxjb",pxjb);
     }
+
     /**
      * 设置 [实际培训人数]
      */
@@ -275,6 +281,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.sjpxrs = sjpxrs ;
         this.modify("sjpxrs",sjpxrs);
     }
+
     /**
      * 设置 [培训活动编码]
      */
@@ -282,6 +289,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.pxhdbm = pxhdbm ;
         this.modify("pxhdbm",pxhdbm);
     }
+
     /**
      * 设置 [培训年度]
      */
@@ -289,6 +297,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.pxnd = pxnd ;
         this.modify("pxnd",pxnd);
     }
+
     /**
      * 设置 [是否签订协议]
      */
@@ -296,6 +305,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.sfqdxy = sfqdxy ;
         this.modify("sfqdxy",sfqdxy);
     }
+
     /**
      * 设置 [培训月份]
      */
@@ -303,6 +313,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.pxyf = pxyf ;
         this.modify("pxyf",pxyf);
     }
+
     /**
      * 设置 [培训类别]
      */
@@ -310,6 +321,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.pxlb = pxlb ;
         this.modify("pxlb",pxlb);
     }
+
     /**
      * 设置 [培训活动申请名称]
      */
@@ -317,6 +329,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.trmtrainactapplyname = trmtrainactapplyname ;
         this.modify("trmtrainactapplyname",trmtrainactapplyname);
     }
+
     /**
      * 设置 [培训对象类别]
      */
@@ -324,6 +337,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.pxdxlb = pxdxlb ;
         this.modify("pxdxlb",pxdxlb);
     }
+
     /**
      * 设置 [承办单位]
      */
@@ -331,6 +345,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.cbdw = cbdw ;
         this.modify("cbdw",cbdw);
     }
+
     /**
      * 设置 [主办单位]
      */
@@ -338,6 +353,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.zbdw = zbdw ;
         this.modify("zbdw",zbdw);
     }
+
     /**
      * 设置 [培训季度]
      */
@@ -345,6 +361,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.pxjd = pxjd ;
         this.modify("pxjd",pxjd);
     }
+
     /**
      * 设置 [协办单位]
      */
@@ -352,6 +369,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.xbdw = xbdw ;
         this.modify("xbdw",xbdw);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -359,6 +377,7 @@ public class TrmTrainActapply extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
 
 }
 

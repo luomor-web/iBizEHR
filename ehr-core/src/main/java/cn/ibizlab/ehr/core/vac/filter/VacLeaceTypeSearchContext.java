@@ -31,7 +31,7 @@ public class VacLeaceTypeSearchContext extends QueryWrapperContext<VacLeaceType>
 	public void setN_vacleacetypename_like(String n_vacleacetypename_like) {
         this.n_vacleacetypename_like = n_vacleacetypename_like;
         if(!ObjectUtils.isEmpty(this.n_vacleacetypename_like)){
-            this.getSelectCond().like("vacleacetypename", n_vacleacetypename_like);
+            this.getSearchCond().like("vacleacetypename", n_vacleacetypename_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class VacLeaceTypeSearchContext extends QueryWrapperContext<VacLeaceType>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("vacleacetypename", query)   
             );
 		 }

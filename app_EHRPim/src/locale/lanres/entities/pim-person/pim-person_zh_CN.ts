@@ -157,23 +157,23 @@ export default {
 	views: {
 		ryinfogridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息表格视图',
 		},
 		gridview: {
 			caption: '员工信息',
-      title: '员工信息',
+      title: '员工信息表格视图',
 		},
 		mpickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息数据多项选择视图',
 		},
 		neweditview2: {
 			caption: '员工首页',
-      title: '员工首页',
+      title: '员工首页编辑视图',
 		},
 		yxzfppickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '员工库',
 		},
 		personinfoeditview: {
 			caption: '员工信息',
@@ -185,11 +185,11 @@ export default {
 		},
 		grxscgeditview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '学术成果编辑视图',
 		},
 		bylygpickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: 'B/Y类员工选择视图',
 		},
 		curorgpimpersonpickupgridview: {
 			caption: '人员信息',
@@ -197,15 +197,15 @@ export default {
 		},
 		editview2: {
 			caption: '员工首页',
-      title: '员工首页',
+      title: '员工首页编辑视图',
 		},
 		xscgeditview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '学术成果编辑视图',
 		},
 		personinfotreeexpview: {
 			caption: '员工信息',
-      title: '员工信息',
+      title: '人员信息树导航视图',
 		},
 		syjxeditview: {
 			caption: '人员信息',
@@ -225,11 +225,11 @@ export default {
 		},
 		kqjrypickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '请假人员',
 		},
 		yxzfppickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '有效主分配的人员',
 		},
 		curorgpimpersonpickupview: {
 			caption: '人员信息',
@@ -241,7 +241,7 @@ export default {
 		},
 		grgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息表格视图',
 		},
 		zdeditview: {
 			caption: '员工信息',
@@ -257,23 +257,23 @@ export default {
 		},
 		zddeditview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员首页编辑视图',
 		},
 		grzhzceditview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '证书信息编辑视图',
 		},
 		greditview2: {
 			caption: '基本信息',
-      title: '基本信息',
+      title: '个人信息编辑视图',
 		},
 		txrypickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '退休人员',
 		},
 		falygmpickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '非A类员工',
 		},
 		curjhrypickupgridview: {
 			caption: '人员选择',
@@ -281,15 +281,15 @@ export default {
 		},
 		hmdgridview: {
 			caption: '黑名单',
-      title: '黑名单',
+      title: '黑名单表格视图',
 		},
 		kxzxygpickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息选择表格视图',
 		},
 		editview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员首页编辑视图',
 		},
 		xzkqrypickupgridview: {
 			caption: '人员信息',
@@ -297,19 +297,19 @@ export default {
 		},
 		quickeditview: {
 			caption: '员工信息',
-      title: '员工信息',
+      title: '人员信息编辑视图',
 		},
 		jxqpickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '见习期员工',
 		},
 		xzkqrympickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息数据多项选择视图',
 		},
 		pickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息选择表格视图',
 		},
 		curleaderpickupgridview: {
 			caption: '部门负责人选择',
@@ -321,15 +321,15 @@ export default {
 		},
 		grzzeditview: {
 			caption: '基本信息',
-      title: '基本信息',
+      title: '个人信息编辑视图',
 		},
 		proinfoeditview2: {
 			caption: '员工首页',
-      title: '员工首页',
+      title: '员工首页编辑视图',
 		},
 		zhzceditview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '证书信息编辑视图',
 		},
 		ltxyggridview: {
 			caption: '离（退）休人员',
@@ -341,35 +341,35 @@ export default {
 		},
 		kqjrypickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '选择请假人员',
 		},
 		txqreditview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '请确认/修改退休信息',
 		},
 		ryinfoeditview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息编辑视图',
 		},
 		jxspickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '见习生选择视图',
 		},
 		kxzxygpickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '试用期员工',
 		},
 		pickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息数据选择视图',
 		},
 		txrypickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '选择退休人员',
 		},
 		bylygpickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: 'B/Y类员工',
 		},
 		lzyghmcgridview: {
 			caption: '离职员工',
@@ -485,13 +485,13 @@ export default {
 			zjlx: '证件类型', 
 			csrq: '出生日期', 
 			xb: '性别', 
+			jg: '籍贯', 
 			ygbh: '员工编号', 
 			zjhm: '证件号码', 
 			nj: '年龄', 
 			mz: '民族', 
-			zp: '照片', 
-			jg: '籍贯', 
 			hyzk: '婚姻状况', 
+			zp: '照片', 
 			zzmm: '政治面貌', 
 			rank: '职级', 
 			cjgzsj: '参加工作时间', 

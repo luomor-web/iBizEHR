@@ -46,6 +46,18 @@ public class VacLeaveDetailResource {
     @Lazy
     public VacLeaveDetailMapping vacleavedetailMapping;
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveDetail-GetNianJia-all')")
+    @ApiOperation(value = "获取假期使用情况、温馨提示、计算计划请假天数", tags = {"请假明细" },  notes = "获取假期使用情况、温馨提示、计算计划请假天数")
+	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/{vacleavedetail_id}/getnianjia")
+    @Transactional
+    public ResponseEntity<VacLeaveDetailDTO> getNianJia(@PathVariable("vacleavedetail_id") String vacleavedetail_id, @RequestBody VacLeaveDetailDTO vacleavedetaildto) {
+        VacLeaveDetail vacleavedetail = vacleavedetailMapping.toDomain(vacleavedetaildto);
+        vacleavedetail.setVacleavedetailid(vacleavedetail_id);
+        vacleavedetail = vacleavedetailService.getNianJia(vacleavedetail);
+        vacleavedetaildto = vacleavedetailMapping.toDto(vacleavedetail);
+        return ResponseEntity.status(HttpStatus.OK).body(vacleavedetaildto);
+    }
+
     @PreAuthorize("hasPermission(this.vacleavedetailService.get(#vacleavedetail_id),'ehr-VacLeaveDetail-Remove')")
     @ApiOperation(value = "删除请假明细", tags = {"请假明细" },  notes = "删除请假明细")
 	@RequestMapping(method = RequestMethod.DELETE, value = "/vacleavedetails/{vacleavedetail_id}")
@@ -60,18 +72,6 @@ public class VacLeaveDetailResource {
     public ResponseEntity<Boolean> removeBatch(@RequestBody List<String> ids) {
         vacleavedetailService.removeBatch(ids);
         return  ResponseEntity.status(HttpStatus.OK).body(true);
-    }
-
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveDetail-CalcSJQJTS-all')")
-    @ApiOperation(value = "计算实际请假天数", tags = {"请假明细" },  notes = "计算实际请假天数")
-	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/{vacleavedetail_id}/calcsjqjts")
-    @Transactional
-    public ResponseEntity<VacLeaveDetailDTO> calcSJQJTS(@PathVariable("vacleavedetail_id") String vacleavedetail_id, @RequestBody VacLeaveDetailDTO vacleavedetaildto) {
-        VacLeaveDetail vacleavedetail = vacleavedetailMapping.toDomain(vacleavedetaildto);
-        vacleavedetail.setVacleavedetailid(vacleavedetail_id);
-        vacleavedetail = vacleavedetailService.calcSJQJTS(vacleavedetail);
-        vacleavedetaildto = vacleavedetailMapping.toDto(vacleavedetail);
-        return ResponseEntity.status(HttpStatus.OK).body(vacleavedetaildto);
     }
 
     @PreAuthorize("hasPermission(this.vacleavedetailMapping.toDomain(#vacleavedetaildto),'ehr-VacLeaveDetail-Create')")
@@ -113,18 +113,6 @@ public class VacLeaveDetailResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveDetail-GetNianJia-all')")
-    @ApiOperation(value = "获取假期使用情况、温馨提示、计算计划请假天数", tags = {"请假明细" },  notes = "获取假期使用情况、温馨提示、计算计划请假天数")
-	@RequestMapping(method = RequestMethod.GET, value = "/vacleavedetails/{vacleavedetail_id}/getnianjia")
-    @Transactional
-    public ResponseEntity<VacLeaveDetailDTO> getNianJia(@PathVariable("vacleavedetail_id") String vacleavedetail_id, @RequestBody VacLeaveDetailDTO vacleavedetaildto) {
-        VacLeaveDetail vacleavedetail = vacleavedetailMapping.toDomain(vacleavedetaildto);
-        vacleavedetail.setVacleavedetailid(vacleavedetail_id);
-        vacleavedetail = vacleavedetailService.getNianJia(vacleavedetail);
-        vacleavedetaildto = vacleavedetailMapping.toDto(vacleavedetail);
-        return ResponseEntity.status(HttpStatus.OK).body(vacleavedetaildto);
-    }
-
     @PreAuthorize("hasPermission(this.vacleavedetailMapping.toDomain(#vacleavedetaildto),'ehr-VacLeaveDetail-Save')")
     @ApiOperation(value = "保存请假明细", tags = {"请假明细" },  notes = "保存请假明细")
 	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/save")
@@ -140,18 +128,6 @@ public class VacLeaveDetailResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveDetail-CalcJHQJTS-all')")
-    @ApiOperation(value = "计算计划请假天数", tags = {"请假明细" },  notes = "计算计划请假天数")
-	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/{vacleavedetail_id}/calcjhqjts")
-    @Transactional
-    public ResponseEntity<VacLeaveDetailDTO> calcJHQJTS(@PathVariable("vacleavedetail_id") String vacleavedetail_id, @RequestBody VacLeaveDetailDTO vacleavedetaildto) {
-        VacLeaveDetail vacleavedetail = vacleavedetailMapping.toDomain(vacleavedetaildto);
-        vacleavedetail.setVacleavedetailid(vacleavedetail_id);
-        vacleavedetail = vacleavedetailService.calcJHQJTS(vacleavedetail);
-        vacleavedetaildto = vacleavedetailMapping.toDto(vacleavedetail);
-        return ResponseEntity.status(HttpStatus.OK).body(vacleavedetaildto);
-    }
-
     @PostAuthorize("hasPermission(this.vacleavedetailMapping.toDomain(returnObject.body),'ehr-VacLeaveDetail-Get')")
     @ApiOperation(value = "获取请假明细", tags = {"请假明细" },  notes = "获取请假明细")
 	@RequestMapping(method = RequestMethod.GET, value = "/vacleavedetails/{vacleavedetail_id}")
@@ -159,6 +135,18 @@ public class VacLeaveDetailResource {
         VacLeaveDetail domain = vacleavedetailService.get(vacleavedetail_id);
         VacLeaveDetailDTO dto = vacleavedetailMapping.toDto(domain);
         return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-VacLeaveDetail-CalcPlanDays-all')")
+    @ApiOperation(value = "计算计划请假天数", tags = {"请假明细" },  notes = "计算计划请假天数")
+	@RequestMapping(method = RequestMethod.POST, value = "/vacleavedetails/{vacleavedetail_id}/calcplandays")
+    @Transactional
+    public ResponseEntity<VacLeaveDetailDTO> calcPlanDays(@PathVariable("vacleavedetail_id") String vacleavedetail_id, @RequestBody VacLeaveDetailDTO vacleavedetaildto) {
+        VacLeaveDetail vacleavedetail = vacleavedetailMapping.toDomain(vacleavedetaildto);
+        vacleavedetail.setVacleavedetailid(vacleavedetail_id);
+        vacleavedetail = vacleavedetailService.calcPlanDays(vacleavedetail);
+        vacleavedetaildto = vacleavedetailMapping.toDto(vacleavedetail);
+        return ResponseEntity.status(HttpStatus.OK).body(vacleavedetaildto);
     }
 
     @ApiOperation(value = "检查请假明细", tags = {"请假明细" },  notes = "检查请假明细")

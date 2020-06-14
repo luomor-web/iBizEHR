@@ -25,7 +25,7 @@ export default {
 		},
 		pickupgridview: {
 			caption: "岗位明细",
-      title: '岗位明细',
+      title: '岗位明细选择表格视图',
 		},
 		editview: {
 			caption: "岗位明细",
@@ -33,19 +33,19 @@ export default {
 		},
 		editview2: {
 			caption: "岗位明细",
-      title: '岗位明细',
+      title: '岗位明细编辑视图',
 		},
 		mpickupview: {
 			caption: "岗位明细",
-      title: '岗位明细',
+      title: '岗位明细数据多项选择视图',
 		},
 		pickupview: {
 			caption: "岗位明细",
-      title: '岗位明细',
+      title: '岗位明细数据选择视图',
 		},
 		redirectview: {
 			caption: "岗位明细",
-      title: '岗位明细',
+      title: '岗位明细数据重定向视图',
 		},
 	},
 	main_form: {

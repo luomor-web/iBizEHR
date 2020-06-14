@@ -60,11 +60,11 @@ export default {
 	views: {
 		grpimfenpgridview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息表格视图',
 		},
 		grdividereditview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息编辑视图',
 		},
 	},
 	grdividereditgrid_form: {

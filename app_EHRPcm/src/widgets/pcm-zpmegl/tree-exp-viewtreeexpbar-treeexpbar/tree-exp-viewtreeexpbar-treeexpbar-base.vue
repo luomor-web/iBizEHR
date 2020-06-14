@@ -331,37 +331,31 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
             })
             Object.assign(tempContext,{srfcounter:this.counter});
         }
-        if(arg && arg.navparams){
-            let curNavParams:any = JSON.parse(arg.navparams);
-            if(Object.keys(curNavParams).length >0){
-                Object.keys(curNavParams).forEach((name:any) =>{
-                    if (!name) {
-                        return;
-                    }
-                    let value: string | null = curNavParams[name];
-                    if (value && value.startsWith('%') && value.endsWith('%')) {
-                        const key = value.substring(1, value.length - 1);
-                        if (arg && arg.hasOwnProperty(key)) {
-                            value = (arg[key] !== null && arg[key] !== undefined) ? arg[key] : null;
-                        } else {
-                            value = null;
-                        }
-                    }
-                    Object.assign(tempViewparam, { [name]: value });
-                })
-                this.counter += 1;
-                Object.assign(tempContext,{srfcounter:this.counter});
-            }
-        }
         Object.assign(tempContext,JSON.parse(JSON.stringify(this.context)));
         if(arg.srfappctx){
             Object.assign(tempContext,JSON.parse(JSON.stringify(arg.srfappctx)));
+        }
+        // 计算导航上下文
+        if(arg && arg.navigateContext && Object.keys(arg.navigateContext).length >0){
+            let tempData:any = arg.curData?JSON.parse(JSON.stringify(arg.curData)):{};
+            Object.assign(tempData,arg);
+            let _context = this.$util.computedNavData(tempData,tempContext,tempViewparam,arg.navigateContext);
+            Object.assign(tempContext,_context);
         }
         if(arg.srfparentdename){
             Object.assign(tempContext,{srfparentdename:arg.srfparentdename});
         }
         if(arg.srfparentkey){
             Object.assign(tempContext,{srfparentkey:arg.srfparentkey});
+        }
+        // 计算导航参数
+        if(arg && arg.navigateParams && Object.keys(arg.navigateParams).length >0){
+            let tempData:any = arg.curData?JSON.parse(JSON.stringify(arg.curData)):{};
+            Object.assign(tempData,arg);
+            let _params = this.$util.computedNavData(tempData,tempContext,tempViewparam,arg.navigateParams);
+            Object.assign(tempViewparam,_params);
+            this.counter += 1;
+            Object.assign(tempContext,{srfcounter:this.counter});
         }
         this.selection = {};
         Object.assign(this.selection, { view: { viewname: refview.viewname } });

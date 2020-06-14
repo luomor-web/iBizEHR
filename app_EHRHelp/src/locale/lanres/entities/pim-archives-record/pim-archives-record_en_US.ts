@@ -18,11 +18,11 @@ export default {
 	views: {
 		gridview: {
 			caption: "档案目录缺失记录",
-      title: '档案目录缺失记录',
+      title: '档案目录缺失记录表格视图',
 		},
 		editview: {
 			caption: "档案目录缺失记录",
-      title: '档案目录缺失记录',
+      title: '档案目录缺失记录编辑视图',
 		},
 	},
 	main_form: {

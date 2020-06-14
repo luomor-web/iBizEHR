@@ -13,23 +13,23 @@ export default {
 	views: {
 		pickupgridview: {
 			caption: '学科目录',
-      title: '学科目录',
+      title: '学科目录选择表格视图',
 		},
 		xkmltreeexpview: {
 			caption: '学科目录',
-      title: '学科目录',
+      title: '学科目录树导航视图',
 		},
 		editview: {
 			caption: '学科目录',
-      title: '学科目录',
+      title: '学科目录编辑视图',
 		},
 		mpickupview: {
 			caption: '学科目录',
-      title: '学科目录',
+      title: '学科目录数据多项选择视图',
 		},
 		curndgridview: {
 			caption: '学科目录',
-      title: '学科目录',
+      title: '学科目录表格视图',
 		},
 	},
 	main_form: {

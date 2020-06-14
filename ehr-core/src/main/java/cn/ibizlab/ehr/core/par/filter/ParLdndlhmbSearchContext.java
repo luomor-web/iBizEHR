@@ -27,46 +27,46 @@ import cn.ibizlab.ehr.core.par.domain.ParLdndlhmb;
 @Data
 public class ParLdndlhmbSearchContext extends QueryWrapperContext<ParLdndlhmb> {
 
-	private String n_parldndlhmbname_like;//[年度量化目标（助理总经理级领导 ）名称]
+	private String n_parldndlhmbname_like;//[年度量化目标名称]
 	public void setN_parldndlhmbname_like(String n_parldndlhmbname_like) {
         this.n_parldndlhmbname_like = n_parldndlhmbname_like;
         if(!ObjectUtils.isEmpty(this.n_parldndlhmbname_like)){
-            this.getSelectCond().like("parldndlhmbname", n_parldndlhmbname_like);
+            this.getSearchCond().like("parldndlhmbname", n_parldndlhmbname_like);
         }
     }
 	private String n_nd_eq;//[年度]
 	public void setN_nd_eq(String n_nd_eq) {
         this.n_nd_eq = n_nd_eq;
         if(!ObjectUtils.isEmpty(this.n_nd_eq)){
-            this.getSelectCond().eq("nd", n_nd_eq);
+            this.getSearchCond().eq("nd", n_nd_eq);
         }
     }
 	private String n_jxjd_eq;//[当前阶段]
 	public void setN_jxjd_eq(String n_jxjd_eq) {
         this.n_jxjd_eq = n_jxjd_eq;
         if(!ObjectUtils.isEmpty(this.n_jxjd_eq)){
-            this.getSelectCond().eq("jxjd", n_jxjd_eq);
+            this.getSearchCond().eq("jxjd", n_jxjd_eq);
         }
     }
 	private String n_pimpersonname_eq;//[领导姓名]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[领导姓名]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_pimpersonid_eq;//[领导ID]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 
@@ -77,7 +77,7 @@ public class ParLdndlhmbSearchContext extends QueryWrapperContext<ParLdndlhmb> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("parldndlhmbname", query)   
             );
 		 }

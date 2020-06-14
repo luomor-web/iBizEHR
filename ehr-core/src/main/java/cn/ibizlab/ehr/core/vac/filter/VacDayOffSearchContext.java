@@ -31,7 +31,7 @@ public class VacDayOffSearchContext extends QueryWrapperContext<VacDayOff> {
 	public void setN_vacdayoffname_like(String n_vacdayoffname_like) {
         this.n_vacdayoffname_like = n_vacdayoffname_like;
         if(!ObjectUtils.isEmpty(this.n_vacdayoffname_like)){
-            this.getSelectCond().like("vacdayoffname", n_vacdayoffname_like);
+            this.getSearchCond().like("vacdayoffname", n_vacdayoffname_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class VacDayOffSearchContext extends QueryWrapperContext<VacDayOff> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("vacdayoffname", query)   
             );
 		 }

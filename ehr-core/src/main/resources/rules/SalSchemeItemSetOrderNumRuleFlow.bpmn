@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:g="http://www.jboss.org/drools/flow/gpd" xmlns:tns="http://www.jboss.org/drools" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.mvel.org/2.0" id="Definition" name="" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+    <process id="cn.ibizlab.ehr.core.sal.service.logic.salschemeitemsetordernum" isClosed="false" isExecutable="true" name="ScoreRule" processType="Private" tns:packageName="cn.ibizlab.ehr.core.sal.service.logic.salschemeitemsetordernum">
+        <extensionElements>
+            <tns:import name="java.util.Map" />
+            <tns:import name="org.springframework.util.StringUtils"/>
+            <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
+        <tns:global identifier="salschemeitemsetordernumdefault" type="cn.ibizlab.ehr.core.sal.domain.SalSchemeItem" />
+        </extensionElements>
+     <startEvent id="EE2F933A-A3AB-4CD1-8057-7C1732D8E08B" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="salschemeitemsetordernumrawsqlcall1" id="E99F2DA3-443C-40DD-AE7A-2273B8E8E889" implementation="http://www.jboss.org/drools/rule" name="设置默认排序"/>
+     <endEvent id="E99F2DA3-443C-40DD-AE7A-2273B8E8E889_End" name="End"/>
+     <sequenceFlow id="E99F2DA3-443C-40DD-AE7A-2273B8E8E889_End_Line" sourceRef="E99F2DA3-443C-40DD-AE7A-2273B8E8E889" targetRef="E99F2DA3-443C-40DD-AE7A-2273B8E8E889_End"/>
+     <sequenceFlow id="AD6D1FDF-1C13-435D-B1E4-CE64E53BFCE4" sourceRef="EE2F933A-A3AB-4CD1-8057-7C1732D8E08B" targetRef="E99F2DA3-443C-40DD-AE7A-2273B8E8E889">
+     </sequenceFlow>
+    </process>
+</definitions>
+

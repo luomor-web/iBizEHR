@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[交通]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_TRMTRAFFIC",resultMap = "TrmTrafficResultMap")
 public class TrmTraffic extends EntityMP implements Serializable {
 
@@ -170,6 +171,7 @@ public class TrmTraffic extends EntityMP implements Serializable {
         this.jtfs = jtfs ;
         this.modify("jtfs",jtfs);
     }
+
     /**
      * 设置 [站名]
      */
@@ -177,6 +179,7 @@ public class TrmTraffic extends EntityMP implements Serializable {
         this.zm = zm ;
         this.modify("zm",zm);
     }
+
     /**
      * 设置 [交通名称]
      */
@@ -184,6 +187,7 @@ public class TrmTraffic extends EntityMP implements Serializable {
         this.trmtrafficname = trmtrafficname ;
         this.modify("trmtrafficname",trmtrafficname);
     }
+
     /**
      * 设置 [交通线路]
      */
@@ -191,6 +195,7 @@ public class TrmTraffic extends EntityMP implements Serializable {
         this.xlmc = xlmc ;
         this.modify("xlmc",xlmc);
     }
+
     /**
      * 设置 [出口]
      */
@@ -198,6 +203,7 @@ public class TrmTraffic extends EntityMP implements Serializable {
         this.ck = ck ;
         this.modify("ck",ck);
     }
+
     /**
      * 设置 [目的地]
      */
@@ -205,6 +211,7 @@ public class TrmTraffic extends EntityMP implements Serializable {
         this.mdd = mdd ;
         this.modify("mdd",mdd);
     }
+
     /**
      * 设置 [出发地]
      */
@@ -212,6 +219,7 @@ public class TrmTraffic extends EntityMP implements Serializable {
         this.cfd = cfd ;
         this.modify("cfd",cfd);
     }
+
     /**
      * 设置 [培训地点标识]
      */
@@ -219,6 +227,7 @@ public class TrmTraffic extends EntityMP implements Serializable {
         this.trmtrainaddressid = trmtrainaddressid ;
         this.modify("trmtrainaddressid",trmtrainaddressid);
     }
+
 
 }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[社保信息]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMSOCIALSECURITY",resultMap = "PimSocialSecurityResultMap")
 public class PimSocialSecurity extends EntityMP implements Serializable {
 
@@ -163,6 +164,7 @@ public class PimSocialSecurity extends EntityMP implements Serializable {
         this.pimsocialsecurityname = pimsocialsecurityname ;
         this.modify("pimsocialsecurityname",pimsocialsecurityname);
     }
+
     /**
      * 设置 [缴纳单位]
      */
@@ -170,6 +172,7 @@ public class PimSocialSecurity extends EntityMP implements Serializable {
         this.jndw = jndw ;
         this.modify("jndw",jndw);
     }
+
     /**
      * 设置 [社保比例(%)]
      */
@@ -177,6 +180,7 @@ public class PimSocialSecurity extends EntityMP implements Serializable {
         this.sbbl = sbbl ;
         this.modify("sbbl",sbbl);
     }
+
     /**
      * 设置 [类型]
      */
@@ -184,6 +188,7 @@ public class PimSocialSecurity extends EntityMP implements Serializable {
         this.lx = lx ;
         this.modify("lx",lx);
     }
+
     /**
      * 设置 [保险基数]
      */
@@ -191,6 +196,7 @@ public class PimSocialSecurity extends EntityMP implements Serializable {
         this.bxjs = bxjs ;
         this.modify("bxjs",bxjs);
     }
+
     /**
      * 设置 [参保地区]
      */
@@ -198,6 +204,7 @@ public class PimSocialSecurity extends EntityMP implements Serializable {
         this.cbdq = cbdq ;
         this.modify("cbdq",cbdq);
     }
+
     /**
      * 设置 [缴纳主体]
      */
@@ -205,6 +212,7 @@ public class PimSocialSecurity extends EntityMP implements Serializable {
         this.jnzt = jnzt ;
         this.modify("jnzt",jnzt);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -212,6 +220,7 @@ public class PimSocialSecurity extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

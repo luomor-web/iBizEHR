@@ -34,7 +34,7 @@ export default {
 	views: {
 		sqtemplgridview: {
 			caption: "见习生员工转正记录引用明细",
-      title: '见习生员工转正记录引用明细',
+      title: '见习生员工转正记录引用明细表',
 		},
 		xzeditview: {
 			caption: "见习期员工转正申请",
@@ -46,15 +46,15 @@ export default {
 		},
 		ckeditview: {
 			caption: "见习生员工转正记录引用明细",
-      title: '见习生员工转正记录引用明细',
+      title: '见习生员工转正明细',
 		},
 		approavlgridview: {
-			caption: "见习期员工转正审核",
-      title: '见习期员工转正审核',
+			caption: "见习期转正审核",
+      title: '见习期转正审核',
 		},
 		editview: {
 			caption: "见习生员工转正记录引用明细",
-      title: '见习生员工转正记录引用明细',
+      title: '见习生员工转正记录引用明细编辑视图',
 		},
 		editview9: {
 			caption: "见习期员工转正",

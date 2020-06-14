@@ -20,6 +20,7 @@
             ref='drtab' 
             :viewparams="viewparams" 
             :context="context"
+            :formData="formData"
             parentName = "PcmYdgzmx"
             @selectionchange='drtab_selectionchange($event)' 
             @closeview='closeView($event)'>
@@ -291,7 +292,6 @@ export default class PcmYdgzmxType_GZJEditView3Base extends EditView3Base {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.form;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -349,6 +349,14 @@ export default class PcmYdgzmxType_GZJEditView3Base extends EditView3Base {
      * @memberof PcmYdgzmxType_GZJEditView3Base
      */
     public selection: any = {};
+
+    /**
+     * 表单数据
+     *
+     * @type {*}
+     * @memberof PcmYdgzmxType_GZJEditView3Base
+     */
+    public formData:any = {};
     
 }
 </script>

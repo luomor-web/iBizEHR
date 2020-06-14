@@ -31,11 +31,11 @@ export default {
 	views: {
 		grpapergridview: {
 			caption: "论文信息",
-      title: '论文信息',
+      title: '论文信息表格视图',
 		},
 		greditview: {
 			caption: "论文信息",
-      title: '论文信息',
+      title: '论文信息编辑视图',
 		},
 	},
 	greditform_form: {

@@ -39,27 +39,27 @@ export default {
 	views: {
 		mpickupview: {
 			caption: '异动退休明细',
-      title: '异动退休明细',
+      title: '异动病休明细数据多项选择视图',
 		},
 		editview: {
 			caption: '异动退休明细',
-      title: '异动退休明细',
+      title: '异动病休明细编辑视图',
 		},
 		redirectview: {
 			caption: '异动退休明细',
-      title: '异动退休明细',
+      title: '异动病休明细数据重定向视图',
 		},
 		editview2: {
 			caption: '异动退休明细',
-      title: '异动退休明细',
+      title: '异动病休明细编辑视图',
 		},
 		pickupgridview: {
 			caption: '异动退休明细',
-      title: '异动退休明细',
+      title: '异动病休明细选择表格视图',
 		},
 		pickupview: {
 			caption: '异动退休明细',
-      title: '异动退休明细',
+      title: '异动病休明细数据选择视图',
 		},
 		ckeditview: {
 			caption: '异动退休明细',

@@ -28,12 +28,14 @@
 </i-col>
 <i-col v-show="detailsModel.zjlx.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='zjlx' :itemRules="this.rules.zjlx" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.zjlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zjlx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.zjlx" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.zjlx.disabled"  
     tag='EhrCodeList0231' 
     codelistType='DYNAMIC'
@@ -50,12 +52,14 @@
 </i-col>
 <i-col v-show="detailsModel.xb.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='xb' :itemRules="this.rules.xb" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.xb')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xb.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.xb" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.xb.disabled"  
     tag='EhrCodeList0072' 
     codelistType='DYNAMIC'
@@ -92,12 +96,14 @@
 </i-col>
 <i-col v-show="detailsModel.xx.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='xx' :itemRules="this.rules.xx" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.xx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.xx" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.xx.disabled"  
     tag='EhrCodeList0018' 
     codelistType='DYNAMIC'
@@ -147,12 +153,14 @@
 </i-col>
 <i-col v-show="detailsModel.hyzk.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hyzk' :itemRules="this.rules.hyzk" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.hyzk')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hyzk.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.hyzk" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.hyzk.disabled"  
     tag='EhrCodeList0075' 
     codelistType='DYNAMIC'
@@ -163,12 +171,14 @@
 </i-col>
 <i-col v-show="detailsModel.mz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='mz' :itemRules="this.rules.mz" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.mz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.mz.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.mz" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.mz.disabled"  
     tag='EhrCodeList0066' 
     codelistType='DYNAMIC'
@@ -179,12 +189,14 @@
 </i-col>
 <i-col v-show="detailsModel.hklx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hklx' :itemRules="this.rules.hklx" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.hklx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hklx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.hklx" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.hklx.disabled"  
     tag='EhrCodeList0070' 
     codelistType='DYNAMIC'
@@ -195,7 +207,8 @@
 </i-col>
 <i-col v-show="detailsModel.jg.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='jg' :itemRules="this.rules.jg" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.jg')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jg.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-autocomplete 
+    
+<app-autocomplete 
     :data="data"
     :disabled="detailsModel.jg.disabled" 
     name='jg'
@@ -203,7 +216,8 @@
     :viewparams="viewparams"
     deMajorField='pimcityname'
     deKeyField='pimcity'
-    :itemParam='{ }' 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :service="service"
     :acParams="{ serviceName: 'PimCityService', interfaceName: 'FetchDefault'}"
     valueitem='' 
@@ -216,12 +230,14 @@
 </i-col>
 <i-col v-show="detailsModel.hjszd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hjszd' :itemRules="this.rules.hjszd" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.hjszd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hjszd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.hjszd" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.hjszd.disabled"  
     tag='EhrCodeList0001' 
     codelistType='DYNAMIC'
@@ -232,7 +248,8 @@
 </i-col>
 <i-col v-show="detailsModel.hjdz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hjdz' :itemRules="this.rules.hjdz" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.hjdz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hjdz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-autocomplete 
+    
+<app-autocomplete 
     :data="data"
     :disabled="detailsModel.hjdz.disabled" 
     name='hjdz'
@@ -240,7 +257,8 @@
     :viewparams="viewparams"
     deMajorField='pimcityname'
     deKeyField='pimcity'
-    :itemParam='{ }' 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :service="service"
     :acParams="{ serviceName: 'PimCityService', interfaceName: 'FetchDefault'}"
     valueitem='' 
@@ -253,7 +271,8 @@
 </i-col>
 <i-col v-show="detailsModel.csd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='csd' :itemRules="this.rules.csd" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.csd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.csd.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-autocomplete 
+    
+<app-autocomplete 
     :data="data"
     :disabled="detailsModel.csd.disabled" 
     name='csd'
@@ -261,7 +280,8 @@
     :viewparams="viewparams"
     deMajorField='pimcityname'
     deKeyField='pimcity'
-    :itemParam='{ }' 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :service="service"
     :acParams="{ serviceName: 'PimCityService', interfaceName: 'FetchDefault'}"
     valueitem='' 
@@ -274,7 +294,8 @@
 </i-col>
 <i-col v-show="detailsModel.postaladdress.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='postaladdress' :itemRules="this.rules.postaladdress" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.postaladdress')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.postaladdress.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-autocomplete 
+    
+<app-autocomplete 
     :data="data"
     :disabled="detailsModel.postaladdress.disabled" 
     name='postaladdress'
@@ -282,7 +303,8 @@
     :viewparams="viewparams"
     deMajorField='pimcityname'
     deKeyField='pimcity'
-    :itemParam='{ }' 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :service="service"
     :acParams="{ serviceName: 'PimCityService', interfaceName: 'FetchDefault'}"
     valueitem='' 
@@ -295,12 +317,14 @@
 </i-col>
 <i-col v-show="detailsModel.sfdszn.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='sfdszn' :itemRules="this.rules.sfdszn" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.sfdszn')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfdszn.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.sfdszn" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.sfdszn.disabled"  
     tag='EhrCodeList0097' 
     codelistType='STATIC'
@@ -336,12 +360,14 @@
     <row>
         <i-col v-show="detailsModel.zzmm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='zzmm' :itemRules="this.rules.zzmm" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.zzmm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zzmm.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.zzmm" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.zzmm.disabled"  
     tag='EhrCodeList0029' 
     codelistType='DYNAMIC'
@@ -372,12 +398,14 @@
     <row>
         <i-col v-show="detailsModel.ygzt.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ygzt' :itemRules="this.rules.ygzt" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.ygzt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygzt.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.ygzt" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.ygzt.disabled"  
     tag='EhrCodeList0014' 
     codelistType='DYNAMIC'
@@ -388,12 +416,14 @@
 </i-col>
 <i-col v-show="detailsModel.workstate.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='workstate' :itemRules="this.rules.workstate" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.workstate')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.workstate.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.workstate" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.workstate.disabled"  
     tag='EhrCodeList0123' 
     codelistType='STATIC'
@@ -404,12 +434,14 @@
 </i-col>
 <i-col v-show="detailsModel.rzqd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='rzqd' :itemRules="this.rules.rzqd" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.rzqd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rzqd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.rzqd" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.rzqd.disabled"  
     tag='EhrCodeList0041' 
     codelistType='DYNAMIC'
@@ -448,12 +480,14 @@
     <row>
         <i-col v-show="detailsModel.hmd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hmd' :itemRules="this.rules.hmd" class='' :caption="$t('entities.pimperson.ryinfoform_form.details.hmd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hmd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
   v-model="data.hmd" 
   :data="data" 
   :context="context"
   :viewparams="viewparams"
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.hmd.disabled" 
   style="width:100px;width: 100px;" 
   tag='EhrCodeList0400' 

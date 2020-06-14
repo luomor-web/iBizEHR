@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[代码表]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_SRFCODELIST",resultMap = "CodeList1ResultMap")
 public class CodeList1 extends EntityMP implements Serializable {
 
@@ -240,6 +241,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.valueseperator = valueseperator ;
         this.modify("valueseperator",valueseperator);
     }
+
     /**
      * 设置 [配置路径]
      */
@@ -247,6 +249,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.clpath = clpath ;
         this.modify("clpath",clpath);
     }
+
     /**
      * 设置 [用户范围]
      */
@@ -254,6 +257,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.isuserscope = isuserscope ;
         this.modify("isuserscope",isuserscope);
     }
+
     /**
      * 设置 [系统数据]
      */
@@ -261,6 +265,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.issystem = issystem ;
         this.modify("issystem",issystem);
     }
+
     /**
      * 设置 [显示分割符号]
      */
@@ -268,6 +273,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.seperator = seperator ;
         this.modify("seperator",seperator);
     }
+
     /**
      * 设置 [框架发布]
      */
@@ -275,12 +281,24 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.srfsyspub = srfsyspub ;
         this.modify("srfsyspub",srfsyspub);
     }
+
     /**
      * 设置 [保留字段5]
      */
     public void setReserver5(Timestamp reserver5){
         this.reserver5 = reserver5 ;
         this.modify("reserver5",reserver5);
+    }
+
+    /**
+     * 格式化日期 [保留字段5]
+     */
+    public String formatReserver5(){
+        if (this.reserver5 == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(reserver5);
     }
     /**
      * 设置 [保留字段]
@@ -289,6 +307,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.reserver = reserver ;
         this.modify("reserver",reserver);
     }
+
     /**
      * 设置 [保留字段4]
      */
@@ -296,6 +315,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.reserver4 = reserver4 ;
         this.modify("reserver4",reserver4);
     }
+
     /**
      * 设置 [保留字段3]
      */
@@ -303,6 +323,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.reserver3 = reserver3 ;
         this.modify("reserver3",reserver3);
     }
+
     /**
      * 设置 [或模式]
      */
@@ -310,6 +331,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.ormode = ormode ;
         this.modify("ormode",ormode);
     }
+
     /**
      * 设置 [空白显示内容]
      */
@@ -317,6 +339,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.emptytext = emptytext ;
         this.modify("emptytext",emptytext);
     }
+
     /**
      * 设置 [数据库填充器]
      */
@@ -324,6 +347,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.filler = filler ;
         this.modify("filler",filler);
     }
+
     /**
      * 设置 [代码表版本]
      */
@@ -331,6 +355,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.clversion = clversion ;
         this.modify("clversion",clversion);
     }
+
     /**
      * 设置 [无值显示空白]
      */
@@ -338,6 +363,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.novalueempty = novalueempty ;
         this.modify("novalueempty",novalueempty);
     }
+
     /**
      * 设置 [代码表名称]
      */
@@ -345,6 +371,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.codelistname = codelistname ;
         this.modify("codelistname",codelistname);
     }
+
     /**
      * 设置 [代码表模型]
      */
@@ -352,6 +379,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.clmodel = clmodel ;
         this.modify("clmodel",clmodel);
     }
+
     /**
      * 设置 [备注]
      */
@@ -359,6 +387,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.memo = memo ;
         this.modify("memo",memo);
     }
+
     /**
      * 设置 [保留字段2]
      */
@@ -366,6 +395,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.reserver2 = reserver2 ;
         this.modify("reserver2",reserver2);
     }
+
     /**
      * 设置 [代码表参数]
      */
@@ -373,6 +403,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.clparam = clparam ;
         this.modify("clparam",clparam);
     }
+
     /**
      * 设置 [应用发布]
      */
@@ -380,6 +411,7 @@ public class CodeList1 extends EntityMP implements Serializable {
         this.srfuserpub = srfuserpub ;
         this.modify("srfuserpub",srfuserpub);
     }
+
 
 }
 

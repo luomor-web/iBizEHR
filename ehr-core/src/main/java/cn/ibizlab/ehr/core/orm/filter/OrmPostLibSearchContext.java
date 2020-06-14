@@ -31,35 +31,35 @@ public class OrmPostLibSearchContext extends QueryWrapperContext<OrmPostLib> {
 	public void setN_postnature_eq(String n_postnature_eq) {
         this.n_postnature_eq = n_postnature_eq;
         if(!ObjectUtils.isEmpty(this.n_postnature_eq)){
-            this.getSelectCond().eq("postnature", n_postnature_eq);
+            this.getSearchCond().eq("postnature", n_postnature_eq);
         }
     }
 	private String n_gwflag_eq;//[岗位标签]
 	public void setN_gwflag_eq(String n_gwflag_eq) {
         this.n_gwflag_eq = n_gwflag_eq;
         if(!ObjectUtils.isEmpty(this.n_gwflag_eq)){
-            this.getSelectCond().eq("gwflag", n_gwflag_eq);
+            this.getSearchCond().eq("gwflag", n_gwflag_eq);
         }
     }
 	private String n_gwtype_eq;//[岗位类型]
 	public void setN_gwtype_eq(String n_gwtype_eq) {
         this.n_gwtype_eq = n_gwtype_eq;
         if(!ObjectUtils.isEmpty(this.n_gwtype_eq)){
-            this.getSelectCond().eq("gwtype", n_gwtype_eq);
+            this.getSearchCond().eq("gwtype", n_gwtype_eq);
         }
     }
 	private String n_isconfidential_eq;//[是否保密岗]
 	public void setN_isconfidential_eq(String n_isconfidential_eq) {
         this.n_isconfidential_eq = n_isconfidential_eq;
         if(!ObjectUtils.isEmpty(this.n_isconfidential_eq)){
-            this.getSelectCond().eq("isconfidential", n_isconfidential_eq);
+            this.getSearchCond().eq("isconfidential", n_isconfidential_eq);
         }
     }
 	private String n_ormpostlibname_like;//[岗位名称]
 	public void setN_ormpostlibname_like(String n_ormpostlibname_like) {
         this.n_ormpostlibname_like = n_ormpostlibname_like;
         if(!ObjectUtils.isEmpty(this.n_ormpostlibname_like)){
-            this.getSelectCond().like("ormpostlibname", n_ormpostlibname_like);
+            this.getSearchCond().like("ormpostlibname", n_ormpostlibname_like);
         }
     }
 
@@ -70,7 +70,7 @@ public class OrmPostLibSearchContext extends QueryWrapperContext<OrmPostLib> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("gwtype", query)   
                         .or().like("ormpostlibname", query)            
             );

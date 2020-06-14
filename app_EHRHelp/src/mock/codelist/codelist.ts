@@ -190,7 +190,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2012年',
                 "data":"",
                 "codename":"Item_2012",
-                value: '2012',
+                value: 2012,
                 
                 disabled: false,
             },
@@ -200,7 +200,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2013年',
                 "data":"",
                 "codename":"Item_2013",
-                value: '2013',
+                value: 2013,
                 
                 disabled: false,
             },
@@ -210,7 +210,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2014年',
                 "data":"",
                 "codename":"Item_2014",
-                value: '2014',
+                value: 2014,
                 
                 disabled: false,
             },
@@ -220,7 +220,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2015年',
                 "data":"",
                 "codename":"Item_2015",
-                value: '2015',
+                value: 2015,
                 
                 disabled: false,
             },
@@ -230,7 +230,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2016年',
                 "data":"",
                 "codename":"Item_2016",
-                value: '2016',
+                value: 2016,
                 
                 disabled: false,
             },
@@ -240,7 +240,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2017年',
                 "data":"",
                 "codename":"Item_2017",
-                value: '2017',
+                value: 2017,
                 
                 disabled: false,
             },
@@ -250,7 +250,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2018年',
                 "data":"",
                 "codename":"Item_2018",
-                value: '2018',
+                value: 2018,
                 
                 disabled: false,
             },
@@ -260,7 +260,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2019年',
                 "data":"",
                 "codename":"Item_2019",
-                value: '2019',
+                value: 2019,
                 
                 disabled: false,
             },
@@ -270,7 +270,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2020年',
                 "data":"",
                 "codename":"Item_2020",
-                value: '2020',
+                value: 2020,
                 
                 disabled: false,
             },
@@ -280,7 +280,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2021年',
                 "data":"",
                 "codename":"Item_2021",
-                value: '2021',
+                value: 2021,
                 
                 disabled: false,
             },
@@ -290,7 +290,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2022年',
                 "data":"",
                 "codename":"Item_2022",
-                value: '2022',
+                value: 2022,
                 
                 disabled: false,
             },
@@ -300,7 +300,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2023年',
                 "data":"",
                 "codename":"Item_2023",
-                value: '2023',
+                value: 2023,
                 
                 disabled: false,
             },
@@ -310,7 +310,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2024年',
                 "data":"",
                 "codename":"Item_2024",
-                value: '2024',
+                value: 2024,
                 
                 disabled: false,
             },
@@ -320,7 +320,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2025年',
                 "data":"",
                 "codename":"Item_2025",
-                value: '2025',
+                value: 2025,
                 
                 disabled: false,
             },
@@ -330,7 +330,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2026年',
                 "data":"",
                 "codename":"Item_2026",
-                value: '2026',
+                value: 2026,
                 
                 disabled: false,
             },
@@ -340,7 +340,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2027年',
                 "data":"",
                 "codename":"Item_2027",
-                value: '2027',
+                value: 2027,
                 
                 disabled: false,
             },
@@ -350,7 +350,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2028年',
                 "data":"",
                 "codename":"Item_2028",
-                value: '2028',
+                value: 2028,
                 
                 disabled: false,
             },
@@ -360,7 +360,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2029年',
                 "data":"",
                 "codename":"Item_2029",
-                value: '2029',
+                value: 2029,
                 
                 disabled: false,
             },
@@ -370,7 +370,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '2030年',
                 "data":"",
                 "codename":"Item_2030",
-                value: '2030',
+                value: 2030,
                 
                 disabled: false,
             },
@@ -433,92 +433,92 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "codelisttype":"static",
         items: [
             {
-                id: '01',
+                id: '1',
                 label: '1月',
                 text: '1月',
                 "data":"",
-                "codename":"Item_01",
-                value: '01',
+                "codename":"Item_1",
+                value: 1,
                 
                 disabled: false,
             },
             {
-                id: '02',
+                id: '2',
                 label: '2月',
                 text: '2月',
                 "data":"",
-                "codename":"Item_02",
-                value: '02',
+                "codename":"Item_2",
+                value: 2,
                 
                 disabled: false,
             },
             {
-                id: '03',
+                id: '3',
                 label: '3月',
                 text: '3月',
                 "data":"",
-                "codename":"Item_03",
-                value: '03',
+                "codename":"Item_3",
+                value: 3,
                 
                 disabled: false,
             },
             {
-                id: '04',
+                id: '4',
                 label: '4月',
                 text: '4月',
                 "data":"",
-                "codename":"Item_04",
-                value: '04',
+                "codename":"Item_4",
+                value: 4,
                 
                 disabled: false,
             },
             {
-                id: '05',
+                id: '5',
                 label: '5月',
                 text: '5月',
                 "data":"",
-                "codename":"Item_05",
-                value: '05',
+                "codename":"Item_5",
+                value: 5,
                 
                 disabled: false,
             },
             {
-                id: '06',
+                id: '6',
                 label: '6月',
                 text: '6月',
                 "data":"",
-                "codename":"Item_06",
-                value: '06',
+                "codename":"Item_6",
+                value: 6,
                 
                 disabled: false,
             },
             {
-                id: '07',
+                id: '7',
                 label: '7月',
                 text: '7月',
                 "data":"",
-                "codename":"Item_07",
-                value: '07',
+                "codename":"Item_7",
+                value: 7,
                 
                 disabled: false,
             },
             {
-                id: '08',
+                id: '8',
                 label: '8月',
                 text: '8月',
                 "data":"",
-                "codename":"Item_08",
-                value: '08',
+                "codename":"Item_8",
+                value: 8,
                 
                 disabled: false,
             },
             {
-                id: '09',
+                id: '9',
                 label: '9月',
                 text: '9月',
                 "data":"",
-                "codename":"Item_09",
-                value: '09',
+                "codename":"Item_9",
+                value: 9,
                 
                 disabled: false,
             },
@@ -528,7 +528,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '10月',
                 "data":"",
                 "codename":"Item_10",
-                value: '10',
+                value: 10,
                 
                 disabled: false,
             },
@@ -538,7 +538,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '11月',
                 "data":"",
                 "codename":"Item_11",
-                value: '11',
+                value: 11,
                 
                 disabled: false,
             },
@@ -548,7 +548,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '12月',
                 "data":"",
                 "codename":"Item_12",
-                value: '12',
+                value: 12,
                 
                 disabled: false,
             },

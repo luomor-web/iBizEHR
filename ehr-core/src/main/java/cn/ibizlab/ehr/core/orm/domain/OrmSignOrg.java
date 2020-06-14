@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[法人主体]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_ORMSIGNORG",resultMap = "OrmSignOrgResultMap")
 public class OrmSignOrg extends EntityMP implements Serializable {
 
@@ -111,6 +112,7 @@ public class OrmSignOrg extends EntityMP implements Serializable {
         this.orgcode = orgcode ;
         this.modify("orgcode",orgcode);
     }
+
     /**
      * 设置 [简称]
      */
@@ -118,6 +120,7 @@ public class OrmSignOrg extends EntityMP implements Serializable {
         this.zzjc = zzjc ;
         this.modify("zzjc",zzjc);
     }
+
     /**
      * 设置 [法人主体名称]
      */
@@ -125,6 +128,7 @@ public class OrmSignOrg extends EntityMP implements Serializable {
         this.ormsignorgname = ormsignorgname ;
         this.modify("ormsignorgname",ormsignorgname);
     }
+
 
 }
 

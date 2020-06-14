@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.xl.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='xl' :itemRules="this.rules.xl" class='' :caption="$t('entities.pcmeducationexperience.main_form.details.xl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xl.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.xl" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.xl.disabled"  
     tag='EhrCodeList0117' 
     codelistType='DYNAMIC'
@@ -42,12 +44,14 @@
 </i-col>
 <i-col v-show="detailsModel.xkml.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='xkml' :itemRules="this.rules.xkml" class='' :caption="$t('entities.pcmeducationexperience.main_form.details.xkml')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xkml.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.xkml" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.xkml.disabled"  
     tag='EhrCodeList0093' 
     codelistType='DYNAMIC'
@@ -64,12 +68,14 @@
 </i-col>
 <i-col v-show="detailsModel.xxxz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='xxxz' :itemRules="this.rules.xxxz" class='' :caption="$t('entities.pcmeducationexperience.main_form.details.xxxz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xxxz.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.xxxz" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.xxxz.disabled"  
     tag='EhrCodeList0208' 
     codelistType='DYNAMIC'
@@ -80,12 +86,14 @@
 </i-col>
 <i-col v-show="detailsModel.formsoflearning.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='formsoflearning' :itemRules="this.rules.formsoflearning" class='' :caption="$t('entities.pcmeducationexperience.main_form.details.formsoflearning')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.formsoflearning.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.formsoflearning" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.formsoflearning.disabled"  
     tag='EhrCodeList0131' 
     codelistType='DYNAMIC'
@@ -96,14 +104,16 @@
 </i-col>
 <i-col v-show="detailsModel.firstxl.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='firstxl' :itemRules="this.rules.firstxl" class='' :caption="$t('entities.pcmeducationexperience.main_form.details.firstxl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.firstxl.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.firstxl"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.firstxl.disabled"  
   name="firstxl" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0054' 
   codelistType='STATIC' 
   style="">
@@ -113,14 +123,16 @@
 </i-col>
 <i-col v-show="detailsModel.higestxl.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='higestxl' :itemRules="this.rules.higestxl" class='' :caption="$t('entities.pcmeducationexperience.main_form.details.higestxl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.higestxl.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.higestxl"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.higestxl.disabled"  
   name="higestxl" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0054' 
   codelistType='STATIC' 
   style="">

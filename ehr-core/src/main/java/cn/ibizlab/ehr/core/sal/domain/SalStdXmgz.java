@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[项目工资标准]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_SALSTDXMGZ",resultMap = "SalStdXmgzResultMap")
 public class SalStdXmgz extends EntityMP implements Serializable {
 
@@ -185,6 +186,7 @@ public class SalStdXmgz extends EntityMP implements Serializable {
         this.dj = dj ;
         this.modify("dj",dj);
     }
+
     /**
      * 设置 [工资总额]
      */
@@ -192,6 +194,7 @@ public class SalStdXmgz extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [项目级别]
      */
@@ -199,6 +202,7 @@ public class SalStdXmgz extends EntityMP implements Serializable {
         this.xmjb = xmjb ;
         this.modify("xmjb",xmjb);
     }
+
     /**
      * 设置 [项目工资标准名称]
      */
@@ -206,6 +210,7 @@ public class SalStdXmgz extends EntityMP implements Serializable {
         this.salstdxmgzname = salstdxmgzname ;
         this.modify("salstdxmgzname",salstdxmgzname);
     }
+
     /**
      * 设置 [绩效工资比例(%)]
      */
@@ -213,6 +218,7 @@ public class SalStdXmgz extends EntityMP implements Serializable {
         this.jxgzbl = jxgzbl ;
         this.modify("jxgzbl",jxgzbl);
     }
+
     /**
      * 设置 [基本工资比例(%)]
      */
@@ -220,6 +226,7 @@ public class SalStdXmgz extends EntityMP implements Serializable {
         this.jbgzbl = jbgzbl ;
         this.modify("jbgzbl",jbgzbl);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -227,6 +234,7 @@ public class SalStdXmgz extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [职务管理标识]
      */
@@ -234,6 +242,7 @@ public class SalStdXmgz extends EntityMP implements Serializable {
         this.ormdutyid = ormdutyid ;
         this.modify("ormdutyid",ormdutyid);
     }
+
 
 }
 

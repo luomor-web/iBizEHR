@@ -38,11 +38,11 @@ export default {
 	views: {
 		jtlxrpickupview: {
 			caption: "家庭情况",
-      title: '家庭情况',
+      title: '家庭联系人',
 		},
 		jtlxrpickupgridview: {
 			caption: "家庭情况",
-      title: '家庭情况',
+      title: '家庭联系人',
 		},
 	},
 	lxrgrid_grid: {

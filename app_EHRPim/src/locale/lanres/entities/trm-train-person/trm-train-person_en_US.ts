@@ -41,11 +41,11 @@ export default {
 	views: {
 		editview: {
 			caption: "培训记录",
-      title: '培训记录',
+      title: '培训人员编辑视图',
 		},
 		gridview: {
 			caption: "培训记录",
-      title: '培训记录',
+      title: '培训记录表格视图',
 		},
 	},
 	main_form: {

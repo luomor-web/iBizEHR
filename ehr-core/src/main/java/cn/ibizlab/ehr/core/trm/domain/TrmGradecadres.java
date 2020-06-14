@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[优秀青年干部推荐]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_TRMGRADECADRES",resultMap = "TrmGradecadresResultMap")
 public class TrmGradecadres extends EntityMP implements Serializable {
 
@@ -289,6 +290,7 @@ public class TrmGradecadres extends EntityMP implements Serializable {
         this.trmgradecadresname = trmgradecadresname ;
         this.modify("trmgradecadresname",trmgradecadresname);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -296,6 +298,7 @@ public class TrmGradecadres extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [职级标识]
      */
@@ -303,6 +306,7 @@ public class TrmGradecadres extends EntityMP implements Serializable {
         this.ormrankid = ormrankid ;
         this.modify("ormrankid",ormrankid);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -310,6 +314,7 @@ public class TrmGradecadres extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -317,6 +322,7 @@ public class TrmGradecadres extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [职务管理标识]
      */
@@ -324,6 +330,7 @@ public class TrmGradecadres extends EntityMP implements Serializable {
         this.ormdutyid = ormdutyid ;
         this.modify("ormdutyid",ormdutyid);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -331,6 +338,7 @@ public class TrmGradecadres extends EntityMP implements Serializable {
         this.ormorgsectorid2 = ormorgsectorid2 ;
         this.modify("ormorgsectorid2",ormorgsectorid2);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -338,6 +346,7 @@ public class TrmGradecadres extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -345,6 +354,7 @@ public class TrmGradecadres extends EntityMP implements Serializable {
         this.ormorgid2 = ormorgid2 ;
         this.modify("ormorgid2",ormorgid2);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -352,6 +362,7 @@ public class TrmGradecadres extends EntityMP implements Serializable {
         this.pimpersonid2 = pimpersonid2 ;
         this.modify("pimpersonid2",pimpersonid2);
     }
+
 
 }
 

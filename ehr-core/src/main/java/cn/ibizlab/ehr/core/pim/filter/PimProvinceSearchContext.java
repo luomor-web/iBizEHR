@@ -31,7 +31,7 @@ public class PimProvinceSearchContext extends QueryWrapperContext<PimProvince> {
 	public void setN_pimprovincename_like(String n_pimprovincename_like) {
         this.n_pimprovincename_like = n_pimprovincename_like;
         if(!ObjectUtils.isEmpty(this.n_pimprovincename_like)){
-            this.getSelectCond().like("pimprovincename", n_pimprovincename_like);
+            this.getSearchCond().like("pimprovincename", n_pimprovincename_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class PimProvinceSearchContext extends QueryWrapperContext<PimProvince> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimprovincename", query)   
             );
 		 }

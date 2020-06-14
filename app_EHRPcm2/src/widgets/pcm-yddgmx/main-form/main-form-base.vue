@@ -14,12 +14,14 @@
 </i-col>
 <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pcmyddgmx.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.pimpersonname.disabled"
   name='pimpersonname'
   deMajorField='pimpersonname'
@@ -51,12 +53,14 @@
 </i-col>
 <i-col v-show="detailsModel.yrank.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='yrank' :itemRules="this.rules.yrank" class='' :caption="$t('entities.pcmyddgmx.main_form.details.yrank')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yrank.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.yrank" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.yrank.disabled"  
     tag='EhrCodeList0025' 
     codelistType='DYNAMIC'
@@ -67,12 +71,14 @@
 </i-col>
 <i-col v-show="detailsModel.yzw.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='yzw' :itemRules="this.rules.yzw" class='' :caption="$t('entities.pcmyddgmx.main_form.details.yzw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yzw.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.yzw" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.yzw.disabled"  
     tag='EhrCodeList0233' 
     codelistType='DYNAMIC'
@@ -83,12 +89,14 @@
 </i-col>
 <i-col v-show="detailsModel.ygw.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ygw' :itemRules="this.rules.ygw" class='' :caption="$t('entities.pcmyddgmx.main_form.details.ygw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygw.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.ygw" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.ygw.disabled"  
     tag='EhrCodeList0050' 
     codelistType='DYNAMIC'
@@ -119,12 +127,14 @@
 </i-col>
 <i-col v-show="detailsModel.ormorgsectorname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ormorgsectorname' :itemRules="this.rules.ormorgsectorname" class='' :caption="$t('entities.pcmyddgmx.main_form.details.ormorgsectorname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgsectorname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormorgsectorname.disabled"
   name='ormorgsectorname'
   deMajorField='orgsectorname'

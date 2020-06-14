@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,17 +23,17 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
 
-
 /**
- * 实体[年度量化目标（助理总经理级）]
+ * 实体[年度量化目标（公司领导类）]
  */
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PARLDNDLHMB",resultMap = "ParLdndlhmbResultMap")
 public class ParLdndlhmb extends EntityMP implements Serializable {
 
@@ -48,7 +49,7 @@ public class ParLdndlhmb extends EntityMP implements Serializable {
     @JsonProperty("createdate")
     private Timestamp createdate;
     /**
-     * 年度量化目标（助理总经理级领导 ）名称
+     * 年度量化目标名称
      */
     @TableField(value = "parldndlhmbname")
     @JSONField(name = "parldndlhmbname")
@@ -77,7 +78,7 @@ public class ParLdndlhmb extends EntityMP implements Serializable {
     @JsonProperty("sszz")
     private String sszz;
     /**
-     * 年度量化目标（助理总经理级领导 ）标识
+     * 年度量化目标标识
      */
     @DEField(isKeyField=true)
     @TableId(value= "parldndlhmbid",type=IdType.UUID)
@@ -155,12 +156,13 @@ public class ParLdndlhmb extends EntityMP implements Serializable {
 
 
     /**
-     * 设置 [年度量化目标（助理总经理级领导 ）名称]
+     * 设置 [年度量化目标名称]
      */
     public void setParldndlhmbname(String parldndlhmbname){
         this.parldndlhmbname = parldndlhmbname ;
         this.modify("parldndlhmbname",parldndlhmbname);
     }
+
     /**
      * 设置 [所属通知]
      */
@@ -168,6 +170,7 @@ public class ParLdndlhmb extends EntityMP implements Serializable {
         this.sstz = sstz ;
         this.modify("sstz",sstz);
     }
+
     /**
      * 设置 [所属组织]
      */
@@ -175,6 +178,7 @@ public class ParLdndlhmb extends EntityMP implements Serializable {
         this.sszz = sszz ;
         this.modify("sszz",sszz);
     }
+
     /**
      * 设置 [年度]
      */
@@ -182,6 +186,7 @@ public class ParLdndlhmb extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [所属部门]
      */
@@ -189,6 +194,7 @@ public class ParLdndlhmb extends EntityMP implements Serializable {
         this.ssbm = ssbm ;
         this.modify("ssbm",ssbm);
     }
+
     /**
      * 设置 [当前阶段]
      */
@@ -196,6 +202,7 @@ public class ParLdndlhmb extends EntityMP implements Serializable {
         this.jxjd = jxjd ;
         this.modify("jxjd",jxjd);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -203,6 +210,7 @@ public class ParLdndlhmb extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [领导ID]
      */
@@ -210,6 +218,7 @@ public class ParLdndlhmb extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

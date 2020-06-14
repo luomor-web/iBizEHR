@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[见习生员工转正申请]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMJXSYGZZSQ",resultMap = "PcmJxsygzzsqResultMap")
 public class PcmJxsygzzsq extends EntityMP implements Serializable {
 
@@ -156,6 +157,17 @@ public class PcmJxsygzzsq extends EntityMP implements Serializable {
         this.czrq = czrq ;
         this.modify("czrq",czrq);
     }
+
+    /**
+     * 格式化日期 [操作时间]
+     */
+    public String formatCzrq(){
+        if (this.czrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(czrq);
+    }
     /**
      * 设置 [操作人]
      */
@@ -163,6 +175,7 @@ public class PcmJxsygzzsq extends EntityMP implements Serializable {
         this.czr = czr ;
         this.modify("czr",czr);
     }
+
     /**
      * 设置 [是否为临时数据]
      */
@@ -170,6 +183,7 @@ public class PcmJxsygzzsq extends EntityMP implements Serializable {
         this.istemp = istemp ;
         this.modify("istemp",istemp);
     }
+
     /**
      * 设置 [备注]
      */
@@ -177,6 +191,7 @@ public class PcmJxsygzzsq extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [操作人标志]
      */
@@ -184,6 +199,7 @@ public class PcmJxsygzzsq extends EntityMP implements Serializable {
         this.czrid = czrid ;
         this.modify("czrid",czrid);
     }
+
     /**
      * 设置 [标题]
      */
@@ -191,12 +207,24 @@ public class PcmJxsygzzsq extends EntityMP implements Serializable {
         this.pcmjxsygzzsqname = pcmjxsygzzsqname ;
         this.modify("pcmjxsygzzsqname",pcmjxsygzzsqname);
     }
+
     /**
      * 设置 [生效日期]
      */
     public void setSxrq(Timestamp sxrq){
         this.sxrq = sxrq ;
         this.modify("sxrq",sxrq);
+    }
+
+    /**
+     * 格式化日期 [生效日期]
+     */
+    public String formatSxrq(){
+        if (this.sxrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(sxrq);
     }
     /**
      * 设置 [转正类型]
@@ -205,6 +233,7 @@ public class PcmJxsygzzsq extends EntityMP implements Serializable {
         this.zzlx = zzlx ;
         this.modify("zzlx",zzlx);
     }
+
 
 }
 

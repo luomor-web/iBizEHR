@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.ormpostname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormpostname' :itemRules="this.rules.ormpostname" class='' :caption="$t('entities.ormbmgwbz.main_form.details.ormpostname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormpostname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormpostname.disabled"
   name='ormpostname'
   deMajorField='ormpostname'

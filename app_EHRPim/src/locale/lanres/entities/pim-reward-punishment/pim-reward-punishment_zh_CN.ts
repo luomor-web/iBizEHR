@@ -37,47 +37,47 @@ export default {
 	views: {
 		greditview: {
 			caption: '奖惩信息',
-      title: '奖惩信息',
+      title: '奖励惩罚编辑视图',
 		},
 		mpickupview: {
 			caption: '奖惩信息',
-      title: '奖惩信息',
+      title: '奖励惩罚数据多项选择视图',
 		},
 		honorgridview: {
 			caption: '奖惩信息',
-      title: '奖惩信息',
+      title: '荣誉奖励',
 		},
 		gridview: {
 			caption: '奖惩信息',
-      title: '奖惩信息',
+      title: '奖励惩罚表格视图',
 		},
 		pimjanglgridview: {
 			caption: '奖惩信息',
-      title: '奖惩信息',
+      title: '奖励惩罚表格视图',
 		},
 		pickupgridview: {
 			caption: '奖惩信息',
-      title: '奖惩信息',
+      title: '奖励惩罚选择表格视图',
 		},
 		editview: {
 			caption: '奖惩信息',
-      title: '奖惩信息',
+      title: '奖励惩罚编辑视图',
 		},
 		redirectview: {
 			caption: '奖惩信息',
-      title: '奖惩信息',
+      title: '奖励惩罚数据重定向视图',
 		},
 		grpimjanglgridview: {
 			caption: '奖惩信息',
-      title: '奖惩信息',
+      title: '奖励惩罚表格视图',
 		},
 		pickupview: {
 			caption: '奖惩信息',
-      title: '奖惩信息',
+      title: '奖励惩罚数据选择视图',
 		},
 		editview2: {
 			caption: '奖惩信息',
-      title: '奖惩信息',
+      title: '奖励惩罚编辑视图',
 		},
 	},
 	main_form: {

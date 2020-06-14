@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[档案信息]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMARCHIVES",resultMap = "PimArchivesResultMap")
 public class PimArchives extends EntityMP implements Serializable {
 
@@ -467,6 +468,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.zt = zt ;
         this.modify("zt",zt);
     }
+
     /**
      * 设置 [档案来源地]
      */
@@ -474,6 +476,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.dalyd = dalyd ;
         this.modify("dalyd",dalyd);
     }
+
     /**
      * 设置 [档案专项审核]
      */
@@ -481,6 +484,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.fileaudit = fileaudit ;
         this.modify("fileaudit",fileaudit);
     }
+
     /**
      * 设置 [档案学历]
      */
@@ -488,6 +492,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.education = education ;
         this.modify("education",education);
     }
+
     /**
      * 设置 [调出档案]
      */
@@ -495,12 +500,24 @@ public class PimArchives extends EntityMP implements Serializable {
         this.dcda = dcda ;
         this.modify("dcda",dcda);
     }
+
     /**
      * 设置 [操作时间]
      */
     public void setOperationdate(Timestamp operationdate){
         this.operationdate = operationdate ;
         this.modify("operationdate",operationdate);
+    }
+
+    /**
+     * 格式化日期 [操作时间]
+     */
+    public String formatOperationdate(){
+        if (this.operationdate == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(operationdate);
     }
     /**
      * 设置 [调出至（外单位）]
@@ -509,6 +526,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.transtoout = transtoout ;
         this.modify("transtoout",transtoout);
     }
+
     /**
      * 设置 [档案信息名称]
      */
@@ -516,12 +534,24 @@ public class PimArchives extends EntityMP implements Serializable {
         this.pimarchivesname = pimarchivesname ;
         this.modify("pimarchivesname",pimarchivesname);
     }
+
     /**
      * 设置 [档案参加工作时间]
      */
     public void setStartworkdatae(Timestamp startworkdatae){
         this.startworkdatae = startworkdatae ;
         this.modify("startworkdatae",startworkdatae);
+    }
+
+    /**
+     * 格式化日期 [档案参加工作时间]
+     */
+    public String formatStartworkdatae(){
+        if (this.startworkdatae == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(startworkdatae);
     }
     /**
      * 设置 [是否新建档]
@@ -530,6 +560,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.sfxjd = sfxjd ;
         this.modify("sfxjd",sfxjd);
     }
+
     /**
      * 设置 [档案编号]
      */
@@ -537,6 +568,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.dabh = dabh ;
         this.modify("dabh",dabh);
     }
+
     /**
      * 设置 [备注]
      */
@@ -544,6 +576,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [存放柜号]
      */
@@ -551,12 +584,24 @@ public class PimArchives extends EntityMP implements Serializable {
         this.cfgh = cfgh ;
         this.modify("cfgh",cfgh);
     }
+
     /**
      * 设置 [档案出生日期]
      */
     public void setDateofbirth(Timestamp dateofbirth){
         this.dateofbirth = dateofbirth ;
         this.modify("dateofbirth",dateofbirth);
+    }
+
+    /**
+     * 格式化日期 [档案出生日期]
+     */
+    public String formatDateofbirth(){
+        if (this.dateofbirth == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(dateofbirth);
     }
     /**
      * 设置 [档案调动日期]
@@ -565,6 +610,17 @@ public class PimArchives extends EntityMP implements Serializable {
         this.dadrrq = dadrrq ;
         this.modify("dadrrq",dadrrq);
     }
+
+    /**
+     * 格式化日期 [档案调动日期]
+     */
+    public String formatDadrrq(){
+        if (this.dadrrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(dadrrq);
+    }
     /**
      * 设置 [档案状态]
      */
@@ -572,6 +628,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.dazt = dazt ;
         this.modify("dazt",dazt);
     }
+
     /**
      * 设置 [档案状态]
      */
@@ -579,6 +636,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.dastate = dastate ;
         this.modify("dastate",dastate);
     }
+
     /**
      * 设置 [附件]
      */
@@ -586,12 +644,24 @@ public class PimArchives extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [档案入党时间]
      */
     public void setJoinpartydate(Timestamp joinpartydate){
         this.joinpartydate = joinpartydate ;
         this.modify("joinpartydate",joinpartydate);
+    }
+
+    /**
+     * 格式化日期 [档案入党时间]
+     */
+    public String formatJoinpartydate(){
+        if (this.joinpartydate == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(joinpartydate);
     }
     /**
      * 设置 [操作内容]
@@ -600,6 +670,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.operations = operations ;
         this.modify("operations",operations);
     }
+
     /**
      * 设置 [档案保管地]
      */
@@ -607,6 +678,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.dabgd = dabgd ;
         this.modify("dabgd",dabgd);
     }
+
     /**
      * 设置 [档案目录]
      */
@@ -614,6 +686,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.damu = damu ;
         this.modify("damu",damu);
     }
+
     /**
      * 设置 [档案调出单位]
      */
@@ -621,6 +694,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.dadcdw = dadcdw ;
         this.modify("dadcdw",dadcdw);
     }
+
     /**
      * 设置 [档案未转出月数]
      */
@@ -628,6 +702,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.duration = duration ;
         this.modify("duration",duration);
     }
+
     /**
      * 设置 [调入档案]
      */
@@ -635,6 +710,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.drda = drda ;
         this.modify("drda",drda);
     }
+
     /**
      * 设置 [现档案保管单位]
      */
@@ -642,6 +718,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.xdabgdw = xdabgdw ;
         this.modify("xdabgdw",xdabgdw);
     }
+
     /**
      * 设置 [档案保管地]
      */
@@ -649,6 +726,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.dabgdd = dabgdd ;
         this.modify("dabgdd",dabgdd);
     }
+
     /**
      * 设置 [调出单位]
      */
@@ -656,6 +734,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.ormorgname2 = ormorgname2 ;
         this.modify("ormorgname2",ormorgname2);
     }
+
     /**
      * 设置 [档案室管理标识]
      */
@@ -663,6 +742,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.archivescenterid = archivescenterid ;
         this.modify("archivescenterid",archivescenterid);
     }
+
     /**
      * 设置 [员工]
      */
@@ -670,6 +750,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [现档案保管单位标识]
      */
@@ -677,6 +758,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.ormorgid2 = ormorgid2 ;
         this.modify("ormorgid2",ormorgid2);
     }
+
     /**
      * 设置 [管理单位]
      */
@@ -684,6 +766,7 @@ public class PimArchives extends EntityMP implements Serializable {
         this.ormorgid3 = ormorgid3 ;
         this.modify("ormorgid3",ormorgid3);
     }
+
 
 }
 

@@ -9,5 +9,6 @@ export default {
     parkhfaid: '考核对象标识',
     khdx: '考核对象',
     createman: '建立人',
+    availableflag: '是否有效',
   },
 };

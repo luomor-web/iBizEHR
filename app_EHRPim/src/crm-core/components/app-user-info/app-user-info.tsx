@@ -61,6 +61,9 @@ export class AppUserInfo extends Vue {
             if (response && response.status === 200) {
                 localStorage.removeItem('user');
                 localStorage.removeItem('token');
+                let leftTime = new Date();
+                leftTime.setTime(leftTime.getSeconds() - 1);
+                document.cookie = "ibzuaa-token=;expires=" + leftTime.toUTCString();
                 this.$router.push({ name: 'login' });
             }
         }).catch((error: any) =>{

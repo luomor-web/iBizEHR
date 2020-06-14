@@ -18,7 +18,7 @@ export default {
 	views: {
 		gridview: {
 			caption: "人才序列",
-      title: '人才序列',
+      title: '人才序列表格视图',
 		},
 		editview: {
 			caption: "人才序列设置",
@@ -26,11 +26,11 @@ export default {
 		},
 		pickupgridview: {
 			caption: "人才序列",
-      title: '人才序列',
+      title: '人才序列选择表格视图',
 		},
 		pickupview: {
 			caption: "人才序列",
-      title: '人才序列',
+      title: '人才序列数据选择视图',
 		},
 	},
 	main_form: {

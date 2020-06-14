@@ -31,7 +31,7 @@ public class TrmTrainResmentSearchContext extends QueryWrapperContext<TrmTrainRe
 	public void setN_trmtrainresmentname_like(String n_trmtrainresmentname_like) {
         this.n_trmtrainresmentname_like = n_trmtrainresmentname_like;
         if(!ObjectUtils.isEmpty(this.n_trmtrainresmentname_like)){
-            this.getSelectCond().like("trmtrainresmentname", n_trmtrainresmentname_like);
+            this.getSearchCond().like("trmtrainresmentname", n_trmtrainresmentname_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class TrmTrainResmentSearchContext extends QueryWrapperContext<TrmTrainRe
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("trmtrainresmentname", query)   
             );
 		 }

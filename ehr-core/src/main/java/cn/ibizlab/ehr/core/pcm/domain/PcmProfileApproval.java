@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[应聘者审批表]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMPROFILEAPPROVAL",resultMap = "PcmProfileApprovalResultMap")
 public class PcmProfileApproval extends EntityMP implements Serializable {
 
@@ -201,6 +202,7 @@ public class PcmProfileApproval extends EntityMP implements Serializable {
         this.fastate = fastate ;
         this.modify("fastate",fastate);
     }
+
     /**
      * 设置 [通过/拒绝]
      */
@@ -208,6 +210,7 @@ public class PcmProfileApproval extends EntityMP implements Serializable {
         this.passorreject = passorreject ;
         this.modify("passorreject",passorreject);
     }
+
     /**
      * 设置 [审批人]
      */
@@ -215,12 +218,24 @@ public class PcmProfileApproval extends EntityMP implements Serializable {
         this.approver = approver ;
         this.modify("approver",approver);
     }
+
     /**
      * 设置 [审批时间]
      */
     public void setApprovaldate(Timestamp approvaldate){
         this.approvaldate = approvaldate ;
         this.modify("approvaldate",approvaldate);
+    }
+
+    /**
+     * 格式化日期 [审批时间]
+     */
+    public String formatApprovaldate(){
+        if (this.approvaldate == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(approvaldate);
     }
     /**
      * 设置 [审批意见]
@@ -229,6 +244,7 @@ public class PcmProfileApproval extends EntityMP implements Serializable {
         this.approvalopinion = approvalopinion ;
         this.modify("approvalopinion",approvalopinion);
     }
+
     /**
      * 设置 [意见原因]
      */
@@ -236,6 +252,7 @@ public class PcmProfileApproval extends EntityMP implements Serializable {
         this.yjyy = yjyy ;
         this.modify("yjyy",yjyy);
     }
+
     /**
      * 设置 [审批阶段]
      */
@@ -243,6 +260,7 @@ public class PcmProfileApproval extends EntityMP implements Serializable {
         this.approvalstage = approvalstage ;
         this.modify("approvalstage",approvalstage);
     }
+
     /**
      * 设置 [应聘者审批表名称]
      */
@@ -250,6 +268,7 @@ public class PcmProfileApproval extends EntityMP implements Serializable {
         this.pcmprofileapprovalname = pcmprofileapprovalname ;
         this.modify("pcmprofileapprovalname",pcmprofileapprovalname);
     }
+
     /**
      * 设置 [应聘者ID]
      */
@@ -257,6 +276,7 @@ public class PcmProfileApproval extends EntityMP implements Serializable {
         this.pcmprofileid = pcmprofileid ;
         this.modify("pcmprofileid",pcmprofileid);
     }
+
     /**
      * 设置 [非A类员工编号变更ID]
      */
@@ -264,6 +284,7 @@ public class PcmProfileApproval extends EntityMP implements Serializable {
         this.pimbyzzjlmxid = pimbyzzjlmxid ;
         this.modify("pimbyzzjlmxid",pimbyzzjlmxid);
     }
+
 
 }
 

@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.fylb.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 6, offset: 0 }">
     <app-form-item name='fylb' :itemRules="this.rules.fylb" class='' :caption="$t('entities.pimexpaccount.main_form.details.fylb')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.fylb.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.fylb" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.fylb.disabled"  
     tag='EhrCodeList0162' 
     codelistType='STATIC'

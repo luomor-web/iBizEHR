@@ -32,12 +32,14 @@
 </i-col>
 <i-col v-show="detailsModel.zzlx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zzlx' :itemRules="this.rules.zzlx" class='' :caption="$t('entities.pcmxygzzsq.main_form.details.zzlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zzlx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.zzlx" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.zzlx.disabled"  
     tag='EhrCodeList0021' 
     codelistType='STATIC'
@@ -65,6 +67,8 @@
     ]"
     :context="context"
     :viewparams="viewparams"
+    :localContext ='{}'
+    :localParam ='{}'
     parameterName='pcmxygzzsq'
     parentName="PcmXygzzsq"  
     refviewtype='DEGRIDVIEW' 
@@ -89,6 +93,8 @@
     ]"
     :context="context"
     :viewparams="viewparams"
+    :localContext ='{}'
+    :localParam ='{}'
     parameterName='pcmxygzzsq'
     parentName="PcmXygzzsq"  
     refviewtype='DEGRIDVIEW' 

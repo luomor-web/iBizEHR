@@ -14,14 +14,16 @@
 </i-col>
 <i-col v-show="detailsModel.deforgaddress.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
     <app-form-item name='deforgaddress' :itemRules="this.rules.deforgaddress" class='' :caption="$t('entities.ormorgdz.main_form.details.deforgaddress')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.deforgaddress.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.deforgaddress"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.deforgaddress.disabled"  
   name="deforgaddress" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0097' 
   codelistType='STATIC' 
   style="">

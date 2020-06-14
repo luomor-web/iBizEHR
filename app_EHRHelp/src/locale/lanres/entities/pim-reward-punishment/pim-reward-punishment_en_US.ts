@@ -38,11 +38,11 @@ export default {
 	views: {
 		grpimjanglgridview: {
 			caption: "奖惩信息",
-      title: '奖惩信息',
+      title: '奖励惩罚表格视图',
 		},
 		greditview: {
 			caption: "奖惩信息",
-      title: '奖惩信息',
+      title: '奖励惩罚编辑视图',
 		},
 	},
 	main_2_form: {

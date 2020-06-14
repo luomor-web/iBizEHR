@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[培训需求填报]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_TRMTRAINFILLIN",resultMap = "TrmTrainFillinResultMap")
 public class TrmTrainFillin extends EntityMP implements Serializable {
 
@@ -230,6 +231,7 @@ public class TrmTrainFillin extends EntityMP implements Serializable {
         this.trmtrainfillinname = trmtrainfillinname ;
         this.modify("trmtrainfillinname",trmtrainfillinname);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -237,6 +239,7 @@ public class TrmTrainFillin extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [培训项目部门填报标识]
      */
@@ -244,6 +247,7 @@ public class TrmTrainFillin extends EntityMP implements Serializable {
         this.trmtrainfillinid2 = trmtrainfillinid2 ;
         this.modify("trmtrainfillinid2",trmtrainfillinid2);
     }
+
     /**
      * 设置 [培训需求填报标识]
      */
@@ -251,6 +255,7 @@ public class TrmTrainFillin extends EntityMP implements Serializable {
         this.trmdepartid = trmdepartid ;
         this.modify("trmdepartid",trmdepartid);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -258,6 +263,7 @@ public class TrmTrainFillin extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
 
 }
 

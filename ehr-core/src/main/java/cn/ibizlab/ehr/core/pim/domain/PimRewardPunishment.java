@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[奖惩信息]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMREWARDPUNISHMENT",resultMap = "PimRewardPunishmentResultMap")
 public class PimRewardPunishment extends EntityMP implements Serializable {
 
@@ -300,12 +301,24 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [奖惩时间]
      */
     public void setJlsj(Timestamp jlsj){
         this.jlsj = jlsj ;
         this.modify("jlsj",jlsj);
+    }
+
+    /**
+     * 格式化日期 [奖惩时间]
+     */
+    public String formatJlsj(){
+        if (this.jlsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(jlsj);
     }
     /**
      * 设置 [记录操作者]
@@ -314,6 +327,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         this.jlczz = jlczz ;
         this.modify("jlczz",jlczz);
     }
+
     /**
      * 设置 [奖惩名称]
      */
@@ -321,6 +335,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         this.pimrewardpunishmentname = pimrewardpunishmentname ;
         this.modify("pimrewardpunishmentname",pimrewardpunishmentname);
     }
+
     /**
      * 设置 [授予单位]
      */
@@ -328,6 +343,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         this.department = department ;
         this.modify("department",department);
     }
+
     /**
      * 设置 [备注]
      */
@@ -335,6 +351,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [记录审批状态]
      */
@@ -342,6 +359,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         this.jlspzt = jlspzt ;
         this.modify("jlspzt",jlspzt);
     }
+
     /**
      * 设置 [记录所属]
      */
@@ -349,6 +367,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         this.jlss = jlss ;
         this.modify("jlss",jlss);
     }
+
     /**
      * 设置 [记录管理编号]
      */
@@ -356,12 +375,24 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         this.jlglbh = jlglbh ;
         this.modify("jlglbh",jlglbh);
     }
+
     /**
      * 设置 [影响期结束日期]
      */
     public void setYxqjsrq(Timestamp yxqjsrq){
         this.yxqjsrq = yxqjsrq ;
         this.modify("yxqjsrq",yxqjsrq);
+    }
+
+    /**
+     * 格式化日期 [影响期结束日期]
+     */
+    public String formatYxqjsrq(){
+        if (this.yxqjsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(yxqjsrq);
     }
     /**
      * 设置 [奖惩级别]
@@ -370,12 +401,24 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         this.jcjb = jcjb ;
         this.modify("jcjb",jcjb);
     }
+
     /**
      * 设置 [惩罚时间]
      */
     public void setCfsj(Timestamp cfsj){
         this.cfsj = cfsj ;
         this.modify("cfsj",cfsj);
+    }
+
+    /**
+     * 格式化日期 [惩罚时间]
+     */
+    public String formatCfsj(){
+        if (this.cfsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(cfsj);
     }
     /**
      * 设置 [奖惩金额]
@@ -384,6 +427,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         this.jcje = jcje ;
         this.modify("jcje",jcje);
     }
+
     /**
      * 设置 [附件]
      */
@@ -391,6 +435,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [奖惩分类]
      */
@@ -398,6 +443,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         this.lx = lx ;
         this.modify("lx",lx);
     }
+
     /**
      * 设置 [奖惩事件]
      */
@@ -405,12 +451,24 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         this.jcsj = jcsj ;
         this.modify("jcsj",jcsj);
     }
+
     /**
      * 设置 [产生日期]
      */
     public void setCsrq(Timestamp csrq){
         this.csrq = csrq ;
         this.modify("csrq",csrq);
+    }
+
+    /**
+     * 格式化日期 [产生日期]
+     */
+    public String formatCsrq(){
+        if (this.csrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(csrq);
     }
     /**
      * 设置 [惩罚类型]
@@ -419,6 +477,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         this.cflx = cflx ;
         this.modify("cflx",cflx);
     }
+
     /**
      * 设置 [奖励级别]
      */
@@ -426,6 +485,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         this.jclx = jclx ;
         this.modify("jclx",jclx);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -433,6 +493,7 @@ public class PimRewardPunishment extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

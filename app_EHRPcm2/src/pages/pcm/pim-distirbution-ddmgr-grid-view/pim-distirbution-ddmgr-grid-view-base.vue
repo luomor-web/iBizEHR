@@ -378,8 +378,7 @@ export default class PimDistirbutionDDMgrGridViewBase extends GridViewBase {
         let xData: any = null;
         // _this 指向容器对象
         const _this: any = this;
-        let paramJO:any = {"PCMDDSQDMX":"%pimdistirbutionid%"};
-        Object.assign(paramJO,{"PCMDDSQDMX":"%pimdistirbutionid%"});
+        let paramJO:any = {};
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -409,7 +408,6 @@ export default class PimDistirbutionDDMgrGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -439,7 +437,6 @@ export default class PimDistirbutionDDMgrGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -468,7 +465,6 @@ export default class PimDistirbutionDDMgrGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -497,7 +493,6 @@ export default class PimDistirbutionDDMgrGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -521,17 +516,19 @@ export default class PimDistirbutionDDMgrGridViewBase extends GridViewBase {
      * @memberof PimDistirbutionDDMgrGridView
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
+        let localContext:any = null;
+        let localViewParam:any =null;
         const data: any = {};
         if(args[0].srfsourcekey){
             data.srfsourcekey = args[0].srfsourcekey;
         }
-        let curViewParam = JSON.parse(JSON.stringify(this.context));
-        delete curViewParam.pimdistirbution;
+        let tempContext = JSON.parse(JSON.stringify(this.context));
+        delete tempContext.pimdistirbution;
         if(args.length >0){
-            Object.assign(curViewParam,args[0]);
+            Object.assign(tempContext,args[0]);
         }
         let deResParameters: any[] = [];
-        if(curViewParam.pimperson && true){
+        if(tempContext.pimperson && true){
             deResParameters = [
             { pathName: 'pimpeople', parameterName: 'pimperson' },
             ]
@@ -541,7 +538,7 @@ export default class PimDistirbutionDDMgrGridViewBase extends GridViewBase {
         ];
         const _this: any = this;
         const openDrawer = (view: any, data: any) => {
-            let container: Subject<any> = this.$appdrawer.openDrawer(view, curViewParam, data);
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, tempContext, data);
             container.subscribe((result: any) => {
                 if (!result || !Object.is(result.ret, 'OK')) {
                     return;
@@ -574,13 +571,15 @@ export default class PimDistirbutionDDMgrGridViewBase extends GridViewBase {
      * @memberof PimDistirbutionDDMgrGridView
      */
     public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
+        let localContext:any = null;
+        let localViewParam:any =null;
         const data: any = {};
-        let curViewParam = JSON.parse(JSON.stringify(this.context));
+        let tempContext = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
-            Object.assign(curViewParam,args[0]);
+            Object.assign(tempContext,args[0]);
         }
         let deResParameters: any[] = [];
-        if(curViewParam.pimperson && true){
+        if(tempContext.pimperson && true){
             deResParameters = [
             { pathName: 'pimpeople', parameterName: 'pimperson' },
             ]
@@ -590,7 +589,7 @@ export default class PimDistirbutionDDMgrGridViewBase extends GridViewBase {
         ];
         const _this: any = this;
         const openDrawer = (view: any, data: any) => {
-            let container: Subject<any> = this.$appdrawer.openDrawer(view, curViewParam, data);
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, tempContext, data);
             container.subscribe((result: any) => {
                 if (!result || !Object.is(result.ret, 'OK')) {
                     return;

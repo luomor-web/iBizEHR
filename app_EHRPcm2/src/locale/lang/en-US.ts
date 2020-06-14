@@ -9,6 +9,7 @@ import pcmxygzzkhjgjl_en_US from '@locale/lanres/entities/pcm-xygzzkhjgjl/pcm-xy
 import pcmydgzmx_en_US from '@locale/lanres/entities/pcm-ydgzmx/pcm-ydgzmx_en_US';
 import ormorg_en_US from '@locale/lanres/entities/orm-org/orm-org_en_US';
 import pimdistirbution_en_US from '@locale/lanres/entities/pim-distirbution/pim-distirbution_en_US';
+import personstatemgr_en_US from '@locale/lanres/entities/person-state-mgr/person-state-mgr_en_US';
 import pcmxygzzsqmx_en_US from '@locale/lanres/entities/pcm-xygzzsqmx/pcm-xygzzsqmx_en_US';
 import pcmyddgmx_en_US from '@locale/lanres/entities/pcm-yddgmx/pcm-yddgmx_en_US';
 import ormduty_en_US from '@locale/lanres/entities/orm-duty/orm-duty_en_US';
@@ -42,6 +43,9 @@ export default {
             success: 'Success',
             ok: 'OK',
             cancel: 'Cancel',
+        },
+        local:{
+            new: 'New'
         },
         gridpage: {
             choicecolumns: 'Choice columns',
@@ -119,6 +123,7 @@ export default {
         pcmydgzmx: pcmydgzmx_en_US,
         ormorg: ormorg_en_US,
         pimdistirbution: pimdistirbution_en_US,
+        personstatemgr: personstatemgr_en_US,
         pcmxygzzsqmx: pcmxygzzsqmx_en_US,
         pcmyddgmx: pcmyddgmx_en_US,
         ormduty: ormduty_en_US,

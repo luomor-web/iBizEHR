@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[财务科目]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_SALSUBJECT",resultMap = "SalSubjectResultMap")
 public class SalSubject extends EntityMP implements Serializable {
 
@@ -113,6 +114,7 @@ public class SalSubject extends EntityMP implements Serializable {
         this.salsubjectname = salsubjectname ;
         this.modify("salsubjectname",salsubjectname);
     }
+
     /**
      * 设置 [财务科目编码]
      */
@@ -120,6 +122,7 @@ public class SalSubject extends EntityMP implements Serializable {
         this.subcode = subcode ;
         this.modify("subcode",subcode);
     }
+
 
 }
 

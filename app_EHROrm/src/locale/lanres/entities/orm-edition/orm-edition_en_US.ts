@@ -12,31 +12,31 @@ export default {
 	views: {
 		gridview: {
 			caption: "版本对照表",
-      title: '版本对照表',
+      title: '版本对照表表格视图',
 		},
 		mpickupview: {
 			caption: "版本对照表",
-      title: '版本对照表',
+      title: '版本对照表数据多项选择视图',
 		},
 		editview2: {
 			caption: "版本对照表",
-      title: '版本对照表',
+      title: '版本对照表编辑视图',
 		},
 		redirectview: {
 			caption: "版本对照表",
-      title: '版本对照表',
+      title: '版本对照表数据重定向视图',
 		},
 		editview: {
 			caption: "版本对照表",
-      title: '版本对照表',
+      title: '版本对照表编辑视图',
 		},
 		pickupgridview: {
 			caption: "版本对照表",
-      title: '版本对照表',
+      title: '版本对照表选择表格视图',
 		},
 		pickupview: {
 			caption: "版本对照表",
-      title: '版本对照表',
+      title: '版本对照表数据选择视图',
 		},
 	},
 	main_form: {

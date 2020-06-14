@@ -6,12 +6,14 @@
       <row>
                     <i-col v-show="detailsModel.n_zzdzs_like.visible" :style="{}"  :sm="{ span: 6, offset: 0 }" :md="{ span: 6, offset: 0 }" :lg="{ span: 6, offset: 0 }" :xl="{ span: 6, offset: 0 }">
               <app-form-item name='n_zzdzs_like' :itemRules="this.rules.n_zzdzs_like" class='' :caption="$t('entities.pcmprofile.serach_nlyry_xyzp_searchform.details.n_zzdzs_like')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_zzdzs_like.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_zzdzs_like" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_zzdzs_like.disabled"  
               tag='EhrCodeList0216' 
               codelistType='DYNAMIC'
@@ -34,12 +36,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_gender_eq.visible" :style="{}"  :sm="{ span: 6, offset: 0 }" :md="{ span: 6, offset: 0 }" :lg="{ span: 6, offset: 0 }" :xl="{ span: 6, offset: 0 }">
               <app-form-item name='n_gender_eq' :itemRules="this.rules.n_gender_eq" class='' :caption="$t('entities.pcmprofile.serach_nlyry_xyzp_searchform.details.n_gender_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_gender_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_gender_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_gender_eq.disabled"  
               tag='EhrCodeList0072' 
               codelistType='DYNAMIC'
@@ -50,12 +54,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_yglx_eq.visible" :style="{}"  :sm="{ span: 6, offset: 0 }" :md="{ span: 6, offset: 0 }" :lg="{ span: 6, offset: 0 }" :xl="{ span: 6, offset: 0 }">
               <app-form-item name='n_yglx_eq' :itemRules="this.rules.n_yglx_eq" class='' :caption="$t('entities.pcmprofile.serach_nlyry_xyzp_searchform.details.n_yglx_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_yglx_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_yglx_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_yglx_eq.disabled"  
               tag='EhrCodeList0096' 
               codelistType='DYNAMIC'
@@ -72,12 +78,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_xkml_eq.visible" :style="{}"  :sm="{ span: 6, offset: 0 }" :md="{ span: 6, offset: 0 }" :lg="{ span: 6, offset: 0 }" :xl="{ span: 6, offset: 0 }">
               <app-form-item name='n_xkml_eq' :itemRules="this.rules.n_xkml_eq" class='' :caption="$t('entities.pcmprofile.serach_nlyry_xyzp_searchform.details.n_xkml_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_xkml_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_xkml_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_xkml_eq.disabled"  
               tag='EhrCodeList0093' 
               codelistType='DYNAMIC'
@@ -88,12 +96,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_profiletype_eq.visible" :style="{}"  :sm="{ span: 6, offset: 0 }" :md="{ span: 6, offset: 0 }" :lg="{ span: 6, offset: 0 }" :xl="{ span: 6, offset: 0 }">
               <app-form-item name='n_profiletype_eq' :itemRules="this.rules.n_profiletype_eq" class='' :caption="$t('entities.pcmprofile.serach_nlyry_xyzp_searchform.details.n_profiletype_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_profiletype_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_profiletype_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_profiletype_eq.disabled"  
               tag='EhrCodeList0078' 
               codelistType='STATIC'

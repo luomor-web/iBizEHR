@@ -41,15 +41,15 @@ export default {
 		},
 		jtlxrpickupview: {
 			caption: '家庭情况',
-      title: '家庭情况',
+      title: '家庭联系人',
 		},
 		pickupview: {
 			caption: '家庭情况',
-      title: '家庭情况',
+      title: '家庭情况数据选择视图',
 		},
 		editview2: {
 			caption: '家庭情况',
-      title: '家庭情况',
+      title: '家庭情况编辑视图',
 		},
 		fazzsygridview: {
 			caption: '家庭主要成员',
@@ -57,39 +57,39 @@ export default {
 		},
 		greditview: {
 			caption: '家庭情况',
-      title: '家庭情况',
+      title: '家庭情况编辑视图',
 		},
 		pickupgridview: {
 			caption: '家庭情况',
-      title: '家庭情况',
+      title: '家庭情况选择表格视图',
 		},
 		pimfimgridview: {
 			caption: '家庭情况',
-      title: '家庭情况',
+      title: '家庭情况表格视图',
 		},
 		editview: {
 			caption: '家庭情况',
-      title: '家庭情况',
+      title: '家庭情况编辑视图',
 		},
 		gridview: {
 			caption: '家庭情况',
-      title: '家庭情况',
+      title: '家庭情况表格视图',
 		},
 		mpickupview: {
 			caption: '家庭情况',
-      title: '家庭情况',
+      title: '家庭情况数据多项选择视图',
 		},
 		jtlxrpickupgridview: {
 			caption: '家庭情况',
-      title: '家庭情况',
+      title: '家庭联系人',
 		},
 		grpimfimgridview: {
 			caption: '家庭情况',
-      title: '家庭情况',
+      title: '家庭情况表格视图',
 		},
 		redirectview: {
 			caption: '家庭情况',
-      title: '家庭情况',
+      title: '家庭情况数据重定向视图',
 		},
 	},
 	main_form: {

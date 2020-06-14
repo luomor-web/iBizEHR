@@ -31,7 +31,7 @@ public class PimMajorSetypeSearchContext extends QueryWrapperContext<PimMajorSet
 	public void setN_pimmajorsetypename_like(String n_pimmajorsetypename_like) {
         this.n_pimmajorsetypename_like = n_pimmajorsetypename_like;
         if(!ObjectUtils.isEmpty(this.n_pimmajorsetypename_like)){
-            this.getSelectCond().like("pimmajorsetypename", n_pimmajorsetypename_like);
+            this.getSearchCond().like("pimmajorsetypename", n_pimmajorsetypename_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class PimMajorSetypeSearchContext extends QueryWrapperContext<PimMajorSet
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimmajorsetypename", query)   
             );
 		 }

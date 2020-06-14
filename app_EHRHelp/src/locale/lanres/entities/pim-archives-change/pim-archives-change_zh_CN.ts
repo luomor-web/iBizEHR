@@ -27,11 +27,11 @@ export default {
 	views: {
 		gridview: {
 			caption: '调档记录',
-      title: '调档记录',
+      title: '调档记录表格视图',
 		},
 		editview: {
 			caption: '档案归档地变更记录',
-      title: '档案归档地变更记录',
+      title: '档案归档地变更记录编辑视图',
 		},
 	},
 	main_form: {

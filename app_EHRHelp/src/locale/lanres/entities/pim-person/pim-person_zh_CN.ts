@@ -157,39 +157,39 @@ export default {
 	views: {
 		grzhzceditview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '证书信息编辑视图',
 		},
 		kqjrypickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '选择请假人员',
 		},
 		grxscgeditview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '学术成果编辑视图',
 		},
 		txrypickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '选择退休人员',
 		},
 		pickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息数据选择视图',
 		},
 		kqjrypickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '请假人员',
 		},
 		txrypickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '退休人员',
 		},
 		pickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息选择表格视图',
 		},
 		grzzeditview: {
 			caption: '基本信息',
-      title: '基本信息',
+      title: '个人信息编辑视图',
 		},
 	},
 	ryinfoform_5_form: {

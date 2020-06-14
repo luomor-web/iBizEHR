@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[考核内容]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PARKHZCMX",resultMap = "ParKhzcmxResultMap")
 public class ParKhzcmx extends EntityMP implements Serializable {
 
@@ -140,6 +141,7 @@ public class ParKhzcmx extends EntityMP implements Serializable {
         this.szqz = szqz ;
         this.modify("szqz",szqz);
     }
+
     /**
      * 设置 [是否启用]
      */
@@ -147,6 +149,7 @@ public class ParKhzcmx extends EntityMP implements Serializable {
         this.sfqy = sfqy ;
         this.modify("sfqy",sfqy);
     }
+
     /**
      * 设置 [考核内容]
      */
@@ -154,6 +157,7 @@ public class ParKhzcmx extends EntityMP implements Serializable {
         this.parkhzcmxname = parkhzcmxname ;
         this.modify("parkhzcmxname",parkhzcmxname);
     }
+
     /**
      * 设置 [考核方案ID]
      */
@@ -161,6 +165,7 @@ public class ParKhzcmx extends EntityMP implements Serializable {
         this.parjxkhjcszid = parjxkhjcszid ;
         this.modify("parjxkhjcszid",parjxkhjcszid);
     }
+
 
 }
 

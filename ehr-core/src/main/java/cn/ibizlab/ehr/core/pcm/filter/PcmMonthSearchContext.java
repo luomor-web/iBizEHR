@@ -31,7 +31,7 @@ public class PcmMonthSearchContext extends QueryWrapperContext<PcmMonth> {
 	public void setN_pcmmonthname_like(String n_pcmmonthname_like) {
         this.n_pcmmonthname_like = n_pcmmonthname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmmonthname_like)){
-            this.getSelectCond().like("pcmmonthname", n_pcmmonthname_like);
+            this.getSearchCond().like("pcmmonthname", n_pcmmonthname_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class PcmMonthSearchContext extends QueryWrapperContext<PcmMonth> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmmonthname", query)   
             );
 		 }

@@ -14,14 +14,16 @@
 </i-col>
 <i-col v-show="detailsModel.sfmrkqdz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfmrkqdz' :itemRules="this.rules.sfmrkqdz" class='' :caption="$t('entities.ormbmkqdz.main_form.details.sfmrkqdz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfmrkqdz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.sfmrkqdz"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.sfmrkqdz.disabled"  
   name="sfmrkqdz" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0097' 
   codelistType='STATIC' 
   style="">

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[老干部明细]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_TRMLGBDETAIL",resultMap = "TrmLgbDetailResultMap")
 public class TrmLgbDetail extends EntityMP implements Serializable {
 
@@ -157,6 +158,7 @@ public class TrmLgbDetail extends EntityMP implements Serializable {
         this.trmlgbdetailname = trmlgbdetailname ;
         this.modify("trmlgbdetailname",trmlgbdetailname);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -164,6 +166,7 @@ public class TrmLgbDetail extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [老干部费用标识]
      */
@@ -171,6 +174,7 @@ public class TrmLgbDetail extends EntityMP implements Serializable {
         this.trmlgbcostid = trmlgbcostid ;
         this.modify("trmlgbcostid",trmlgbcostid);
     }
+
 
 }
 

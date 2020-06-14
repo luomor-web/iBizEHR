@@ -2,6 +2,7 @@ package cn.ibizlab.ehr.util.client;
 
 import cn.ibizlab.ehr.util.security.AuthenticationUser;
 import cn.ibizlab.ehr.util.security.AuthorizationLogin;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 import com.alibaba.fastjson.JSONObject;
@@ -28,4 +29,8 @@ public interface IBZUAAFeignClient
 
 	@PostMapping(value = "/uaa/loginbyusername")
 	AuthenticationUser loginByUsername(@RequestBody String username);
+
+    @Cacheable(value="ibzuaa_publickey")
+	@GetMapping(value = "/uaa/publickey")
+	String getPublicKey();
 }

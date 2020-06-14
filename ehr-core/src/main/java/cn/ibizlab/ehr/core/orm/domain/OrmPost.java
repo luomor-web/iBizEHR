@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[岗位]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_ORMPOST",resultMap = "OrmPostResultMap")
 public class OrmPost extends EntityMP implements Serializable {
 
@@ -213,6 +214,7 @@ public class OrmPost extends EntityMP implements Serializable {
         this.lgnx = lgnx ;
         this.modify("lgnx",lgnx);
     }
+
     /**
      * 设置 [必须交流年限]
      */
@@ -220,6 +222,7 @@ public class OrmPost extends EntityMP implements Serializable {
         this.bxjlnx = bxjlnx ;
         this.modify("bxjlnx",bxjlnx);
     }
+
     /**
      * 设置 [是否临时数据]
      */
@@ -227,6 +230,7 @@ public class OrmPost extends EntityMP implements Serializable {
         this.istemp = istemp ;
         this.modify("istemp",istemp);
     }
+
     /**
      * 设置 [岗位类型]
      */
@@ -234,6 +238,7 @@ public class OrmPost extends EntityMP implements Serializable {
         this.gwtype = gwtype ;
         this.modify("gwtype",gwtype);
     }
+
     /**
      * 设置 [强制轮岗年限]
      */
@@ -241,6 +246,7 @@ public class OrmPost extends EntityMP implements Serializable {
         this.qzlgnx = qzlgnx ;
         this.modify("qzlgnx",qzlgnx);
     }
+
     /**
      * 设置 [岗位性质]
      */
@@ -248,6 +254,7 @@ public class OrmPost extends EntityMP implements Serializable {
         this.postnature = postnature ;
         this.modify("postnature",postnature);
     }
+
     /**
      * 设置 [是否关键岗位]
      */
@@ -255,6 +262,7 @@ public class OrmPost extends EntityMP implements Serializable {
         this.iskeypostion = iskeypostion ;
         this.modify("iskeypostion",iskeypostion);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -262,6 +270,7 @@ public class OrmPost extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [建议交流年限]
      */
@@ -269,6 +278,7 @@ public class OrmPost extends EntityMP implements Serializable {
         this.nx = nx ;
         this.modify("nx",nx);
     }
+
     /**
      * 设置 [是否保密岗]
      */
@@ -276,6 +286,7 @@ public class OrmPost extends EntityMP implements Serializable {
         this.isconfidential = isconfidential ;
         this.modify("isconfidential",isconfidential);
     }
+
     /**
      * 设置 [岗位名称]
      */
@@ -283,6 +294,7 @@ public class OrmPost extends EntityMP implements Serializable {
         this.ormpostname = ormpostname ;
         this.modify("ormpostname",ormpostname);
     }
+
     /**
      * 设置 [岗位分类]
      */
@@ -290,6 +302,7 @@ public class OrmPost extends EntityMP implements Serializable {
         this.gwfl = gwfl ;
         this.modify("gwfl",gwfl);
     }
+
     /**
      * 设置 [启用标识]
      */
@@ -297,6 +310,7 @@ public class OrmPost extends EntityMP implements Serializable {
         this.startstopsign = startstopsign ;
         this.modify("startstopsign",startstopsign);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -304,6 +318,7 @@ public class OrmPost extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

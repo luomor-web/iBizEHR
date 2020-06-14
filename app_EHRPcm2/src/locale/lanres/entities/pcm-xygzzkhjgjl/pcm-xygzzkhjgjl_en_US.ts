@@ -17,11 +17,11 @@ export default {
 	views: {
 		pickupview: {
 			caption: "试用期员工转正考核结果记录",
-      title: '试用期员工转正考核结果记录',
+      title: '新员工转正考核结果记录数据选择视图',
 		},
 		pickupgridview: {
 			caption: "试用期员工转正考核结果记录",
-      title: '试用期员工转正考核结果记录',
+      title: '新员工转正考核结果记录选择表格视图',
 		},
 	},
 	main_grid: {

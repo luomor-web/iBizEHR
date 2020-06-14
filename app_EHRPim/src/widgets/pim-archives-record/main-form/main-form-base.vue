@@ -8,23 +8,21 @@
     <row>
         <i-col v-show="detailsModel.serialnumber.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='serialnumber' :itemRules="this.rules.serialnumber" class='' :caption="$t('entities.pimarchivesrecord.main_form.details.serialnumber')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.serialnumber.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='serialnumber'
-:value="data.serialnumber"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='serialnumber' :value="data.serialnumber" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.archivalcataloguename.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='archivalcataloguename' :itemRules="this.rules.archivalcataloguename" class='' :caption="$t('entities.pimarchivesrecord.main_form.details.archivalcataloguename')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.archivalcataloguename.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.archivalcataloguename.disabled"
   name='archivalcataloguename'
   deMajorField='archivalcataloguename'

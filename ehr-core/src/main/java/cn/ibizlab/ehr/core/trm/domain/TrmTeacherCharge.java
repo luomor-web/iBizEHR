@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[讲师收费记录]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_TRMTEACHERCHARGE",resultMap = "TrmTeacherChargeResultMap")
 public class TrmTeacherCharge extends EntityMP implements Serializable {
 
@@ -178,6 +179,7 @@ public class TrmTeacherCharge extends EntityMP implements Serializable {
         this.jsdj = jsdj ;
         this.modify("jsdj",jsdj);
     }
+
     /**
      * 设置 [单价]
      */
@@ -185,6 +187,7 @@ public class TrmTeacherCharge extends EntityMP implements Serializable {
         this.dj = dj ;
         this.modify("dj",dj);
     }
+
     /**
      * 设置 [讲师收费记录名称]
      */
@@ -192,6 +195,7 @@ public class TrmTeacherCharge extends EntityMP implements Serializable {
         this.trmteacherchargename = trmteacherchargename ;
         this.modify("trmteacherchargename",trmteacherchargename);
     }
+
     /**
      * 设置 [总费用]
      */
@@ -199,6 +203,7 @@ public class TrmTeacherCharge extends EntityMP implements Serializable {
         this.zfy = zfy ;
         this.modify("zfy",zfy);
     }
+
     /**
      * 设置 [学时]
      */
@@ -206,6 +211,7 @@ public class TrmTeacherCharge extends EntityMP implements Serializable {
         this.xs = xs ;
         this.modify("xs",xs);
     }
+
     /**
      * 设置 [培训计划项标识]
      */
@@ -213,6 +219,7 @@ public class TrmTeacherCharge extends EntityMP implements Serializable {
         this.trmtrainplantermid = trmtrainplantermid ;
         this.modify("trmtrainplantermid",trmtrainplantermid);
     }
+
     /**
      * 设置 [培训教师标识]
      */
@@ -220,6 +227,7 @@ public class TrmTeacherCharge extends EntityMP implements Serializable {
         this.trmtrainteacherid = trmtrainteacherid ;
         this.modify("trmtrainteacherid",trmtrainteacherid);
     }
+
 
 }
 

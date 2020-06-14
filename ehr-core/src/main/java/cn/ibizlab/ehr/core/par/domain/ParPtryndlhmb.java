@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[年度量化目标（部门副职及以下人员）]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PARPTRYNDLHMB",resultMap = "ParPtryndlhmbResultMap")
 public class ParPtryndlhmb extends EntityMP implements Serializable {
 
@@ -161,6 +162,7 @@ public class ParPtryndlhmb extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [当前阶段]
      */
@@ -168,6 +170,7 @@ public class ParPtryndlhmb extends EntityMP implements Serializable {
         this.jxjd = jxjd ;
         this.modify("jxjd",jxjd);
     }
+
     /**
      * 设置 [所属部门]
      */
@@ -175,6 +178,7 @@ public class ParPtryndlhmb extends EntityMP implements Serializable {
         this.ssbm = ssbm ;
         this.modify("ssbm",ssbm);
     }
+
     /**
      * 设置 [所属通知]
      */
@@ -182,6 +186,7 @@ public class ParPtryndlhmb extends EntityMP implements Serializable {
         this.sstz = sstz ;
         this.modify("sstz",sstz);
     }
+
     /**
      * 设置 [所属组织]
      */
@@ -189,6 +194,7 @@ public class ParPtryndlhmb extends EntityMP implements Serializable {
         this.sszz = sszz ;
         this.modify("sszz",sszz);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -196,6 +202,7 @@ public class ParPtryndlhmb extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [年度量化目标（部门副职及以下人员）名称]
      */
@@ -203,6 +210,7 @@ public class ParPtryndlhmb extends EntityMP implements Serializable {
         this.parptryndlhmbname = parptryndlhmbname ;
         this.modify("parptryndlhmbname",parptryndlhmbname);
     }
+
     /**
      * 设置 [员工ID]
      */
@@ -210,6 +218,7 @@ public class ParPtryndlhmb extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

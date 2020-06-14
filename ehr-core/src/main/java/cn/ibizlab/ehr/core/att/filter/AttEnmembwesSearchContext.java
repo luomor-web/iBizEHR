@@ -31,7 +31,7 @@ public class AttEnmembwesSearchContext extends QueryWrapperContext<AttEnmembwes>
 	public void setN_attenmembwesname_like(String n_attenmembwesname_like) {
         this.n_attenmembwesname_like = n_attenmembwesname_like;
         if(!ObjectUtils.isEmpty(this.n_attenmembwesname_like)){
-            this.getSelectCond().like("attenmembwesname", n_attenmembwesname_like);
+            this.getSearchCond().like("attenmembwesname", n_attenmembwesname_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class AttEnmembwesSearchContext extends QueryWrapperContext<AttEnmembwes>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("attenmembwesname", query)   
             );
 		 }

@@ -95,12 +95,14 @@
                     <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
                             <app-form-item :error="gridItemsModel[$index][column.property].error">
-                                <app-picker 
+                                
+            <app-picker 
               :formState="viewState" 
               :data="row"
               :context="context"
               :viewparams="viewparams"
-              :itemParam='{ }' 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
               name='pimpersonname3'
               deMajorField='pimpersonname'
@@ -186,7 +188,22 @@
                     <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
                             <app-form-item :error="gridItemsModel[$index][column.property].error">
-                                 <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" tag='EhrCodeList0149' codelistType='STATIC' placeholder='请选择...' style="" @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}"></dropdown-list>
+                                
+             <dropdown-list 
+              v-model="row[column.property]" 
+              :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
+              :data="row" 
+              :context="context"
+              :viewparams="viewparams" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
+              tag='EhrCodeList0149' 
+              codelistType='STATIC'
+              placeholder='请选择...' 
+              style="" 
+              @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}">
+             </dropdown-list>
+            
                             </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
@@ -1476,6 +1493,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        $event.stopPropagation();
     }
 
     /**
@@ -1609,6 +1627,7 @@ export default class MainBase extends Vue implements ControlInterface {
                 return;
             }
             const data = response.data;
+            this.createDefault(data);
             data.rowDataState = "create";
             _this.items.push(data);
             _this.gridItemsModel.push(_this.getGridRowModel());
@@ -1720,6 +1739,17 @@ export default class MainBase extends Vue implements ControlInterface {
             return Object.is(item.pimarchivesloanandreturn,args.row.pimarchivesloanandreturn);
         });
         return isSelected ? "grid-selected-row" : "";
+    }
+
+    /**
+     * 新建默认值
+     * @param {*}  row 行数据
+     * @memberof Main
+     */
+    public createDefault(row: any){                    
+        if (row.hasOwnProperty('pimarchivesid')) {
+            row['pimarchivesid'] = this.viewparams['srfparentkey'];
+        }
     }
 }
 </script>

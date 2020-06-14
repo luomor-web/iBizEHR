@@ -31,35 +31,35 @@ public class PcmZpmeglSearchContext extends QueryWrapperContext<PcmZpmegl> {
 	public void setN_nd_eq(String n_nd_eq) {
         this.n_nd_eq = n_nd_eq;
         if(!ObjectUtils.isEmpty(this.n_nd_eq)){
-            this.getSelectCond().eq("nd", n_nd_eq);
+            this.getSearchCond().eq("nd", n_nd_eq);
         }
     }
 	private String n_pcmzpmeglname_like;//[招聘名额管理名称]
 	public void setN_pcmzpmeglname_like(String n_pcmzpmeglname_like) {
         this.n_pcmzpmeglname_like = n_pcmzpmeglname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmzpmeglname_like)){
-            this.getSelectCond().like("pcmzpmeglname", n_pcmzpmeglname_like);
+            this.getSearchCond().like("pcmzpmeglname", n_pcmzpmeglname_like);
         }
     }
 	private String n_ormorgname_eq;//[组织]
 	public void setN_ormorgname_eq(String n_ormorgname_eq) {
         this.n_ormorgname_eq = n_ormorgname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_eq)){
-            this.getSelectCond().eq("ormorgname", n_ormorgname_eq);
+            this.getSearchCond().eq("ormorgname", n_ormorgname_eq);
         }
     }
 	private String n_ormorgname_like;//[组织]
 	public void setN_ormorgname_like(String n_ormorgname_like) {
         this.n_ormorgname_like = n_ormorgname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_like)){
-            this.getSelectCond().like("ormorgname", n_ormorgname_like);
+            this.getSearchCond().like("ormorgname", n_ormorgname_like);
         }
     }
 	private String n_ormorgid_eq;//[组织标识]
 	public void setN_ormorgid_eq(String n_ormorgid_eq) {
         this.n_ormorgid_eq = n_ormorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
-            this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class PcmZpmeglSearchContext extends QueryWrapperContext<PcmZpmegl> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmzpmeglname", query)   
             );
 		 }

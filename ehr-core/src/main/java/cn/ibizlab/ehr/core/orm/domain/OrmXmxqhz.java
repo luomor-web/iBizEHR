@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[项目人员需求汇总]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_ORMXMXQHZ",resultMap = "OrmXmxqhzResultMap")
 public class OrmXmxqhz extends EntityMP implements Serializable {
 
@@ -161,6 +162,7 @@ public class OrmXmxqhz extends EntityMP implements Serializable {
         this.xm = xm ;
         this.modify("xm",xm);
     }
+
     /**
      * 设置 [年度]
      */
@@ -168,6 +170,7 @@ public class OrmXmxqhz extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [标题]
      */
@@ -175,6 +178,7 @@ public class OrmXmxqhz extends EntityMP implements Serializable {
         this.ormxmxqhzname = ormxmxqhzname ;
         this.modify("ormxmxqhzname",ormxmxqhzname);
     }
+
     /**
      * 设置 [本岗位当前人数]
      */
@@ -182,6 +186,7 @@ public class OrmXmxqhz extends EntityMP implements Serializable {
         this.rs = rs ;
         this.modify("rs",rs);
     }
+
     /**
      * 设置 [序号]
      */
@@ -189,6 +194,7 @@ public class OrmXmxqhz extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [组织]
      */
@@ -196,6 +202,7 @@ public class OrmXmxqhz extends EntityMP implements Serializable {
         this.zz = zz ;
         this.modify("zz",zz);
     }
+
     /**
      * 设置 [岗位]
      */
@@ -203,6 +210,7 @@ public class OrmXmxqhz extends EntityMP implements Serializable {
         this.gw = gw ;
         this.modify("gw",gw);
     }
+
     /**
      * 设置 [项目ID]
      */
@@ -210,6 +218,7 @@ public class OrmXmxqhz extends EntityMP implements Serializable {
         this.xmid = xmid ;
         this.modify("xmid",xmid);
     }
+
     /**
      * 设置 [月份]
      */
@@ -217,6 +226,7 @@ public class OrmXmxqhz extends EntityMP implements Serializable {
         this.yf = yf ;
         this.modify("yf",yf);
     }
+
 
 }
 

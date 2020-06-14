@@ -325,6 +325,44 @@ export class Util {
     }
 
     /**
+     * 计算导航数据
+     * 先从当前数据目标计算，然后再从当前上下文计算，最后从当前视图参数计算，没有则为null
+     * 
+     * @static
+     * @param {any} data 表单数据
+     * @param {any} parentContext 外层context
+     * @param {any} parentParam 外层param
+     * @param {any} params 附加参数
+     * @returns {any}
+     * @memberof Util
+     */ 
+    public static computedNavData(data:any,parentContext:any,parentParam:any,params:any):any{
+        let _data: any = {};
+        if(params && Object.keys(params).length >0){
+            Object.keys(params).forEach((name: string) => {
+                if (!name) {
+                    return;
+                }
+                let value: string | null = params[name];
+                if (value && value.startsWith('%') && value.endsWith('%')) {
+                    const key = value.substring(1, value.length - 1).toLowerCase();
+                    if (data && data.hasOwnProperty(key)) {
+                        value = data[key];
+                    }else if(parentContext && parentContext[key]){
+                        value = parentContext[key];
+                    }else if(parentParam && parentParam[key]){
+                        value = parentParam[key];
+                    } else {
+                        value = null;
+                    }
+                }
+                Object.assign(_data, { [name.toLowerCase()]: value });
+            });
+        }
+        return _data;
+    }
+
+    /**
      * 日期格式化
      *
      * @static

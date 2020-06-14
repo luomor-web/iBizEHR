@@ -45,7 +45,7 @@ export default {
 		},
 		redirectview: {
 			caption: '职务管理',
-      title: '职务管理',
+      title: '职务管理数据重定向视图',
 		},
 		estmanmpickupview: {
 			caption: '职务库',
@@ -53,7 +53,7 @@ export default {
 		},
 		editview2: {
 			caption: '职务管理',
-      title: '职务管理',
+      title: '职务管理编辑视图',
 		},
 		ormorgsectorpickupview: {
 			caption: '职务库',

@@ -25,43 +25,43 @@ export default {
 	views: {
 		editview2: {
 			caption: "科研成果",
-      title: '科研成果',
+      title: '科研成果编辑视图',
 		},
 		greditview: {
 			caption: "科研成果",
-      title: '科研成果',
+      title: '科研成果编辑视图',
 		},
 		grresearchgridview: {
 			caption: "科研成果",
-      title: '科研成果',
+      title: '科研成果表格视图',
 		},
 		gridview: {
 			caption: "科研成果",
-      title: '科研成果',
+      title: '科研成果表格视图',
 		},
 		mpickupview: {
 			caption: "科研成果",
-      title: '科研成果',
+      title: '科研成果数据多项选择视图',
 		},
 		pickupview: {
 			caption: "科研成果",
-      title: '科研成果',
+      title: '科研成果数据选择视图',
 		},
 		pickupgridview: {
 			caption: "科研成果",
-      title: '科研成果',
+      title: '科研成果选择表格视图',
 		},
 		editview: {
 			caption: "科研成果",
-      title: '科研成果',
+      title: '科研成果编辑视图',
 		},
 		redirectview: {
 			caption: "科研成果",
-      title: '科研成果',
+      title: '科研成果数据重定向视图',
 		},
 		researchgridview: {
 			caption: "科研成果",
-      title: '科研成果',
+      title: '科研成果表格视图',
 		},
 	},
 	main_form: {

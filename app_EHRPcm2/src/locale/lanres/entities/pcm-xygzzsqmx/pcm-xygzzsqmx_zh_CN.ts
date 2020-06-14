@@ -21,11 +21,11 @@ export default {
 	views: {
 		editview: {
 			caption: '试用期员工转正申请明细（停用）',
-      title: '试用期员工转正申请明细（停用）',
+      title: '试用期员工转正申请明细编辑视图',
 		},
 		gridview: {
 			caption: '试用期员工转正申请明细（停用）',
-      title: '试用期员工转正申请明细（停用）',
+      title: '试用期员工转正申请明细表格视图',
 		},
 	},
 	main_form: {

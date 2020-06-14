@@ -1119,8 +1119,8 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "srfkey": "EhrCodeList0014",
         "emptytext": "",
         "codelisttype":"dynamic",
-        "appdataentity":"",
-        "appdedataset":"",
+        "appdataentity":"PersonStateMgr",
+        "appdedataset":"FetchDefault",
         "items": []
     },
     {

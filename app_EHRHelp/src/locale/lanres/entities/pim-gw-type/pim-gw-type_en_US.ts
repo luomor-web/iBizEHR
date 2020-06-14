@@ -14,11 +14,11 @@ export default {
 	views: {
 		gridview: {
 			caption: "岗位类型对照表",
-      title: '岗位类型对照表',
+      title: '岗位类型对照表表格视图',
 		},
 		editview2: {
 			caption: "岗位类型对照表",
-      title: '岗位类型对照表',
+      title: '岗位类型对照表编辑视图',
 		},
 		pickupgridview: {
 			caption: "岗位类型",
@@ -26,11 +26,11 @@ export default {
 		},
 		redirectview: {
 			caption: "岗位类型对照表",
-      title: '岗位类型对照表',
+      title: '岗位类型对照表数据重定向视图',
 		},
 		editview: {
 			caption: "岗位类型对照表",
-      title: '岗位类型对照表',
+      title: '岗位类型对照表编辑视图',
 		},
 		mpickupview: {
 			caption: "岗位类型",

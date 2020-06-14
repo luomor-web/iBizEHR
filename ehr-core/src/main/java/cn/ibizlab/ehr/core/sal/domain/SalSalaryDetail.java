@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[员工薪酬明细]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_SALSALARYDETAIL",resultMap = "SalSalaryDetailResultMap")
 public class SalSalaryDetail extends EntityMP implements Serializable {
 
@@ -171,6 +172,7 @@ public class SalSalaryDetail extends EntityMP implements Serializable {
         this.salsalarydetailname = salsalarydetailname ;
         this.modify("salsalarydetailname",salsalarydetailname);
     }
+
     /**
      * 设置 [实际业务值]
      */
@@ -178,6 +180,7 @@ public class SalSalaryDetail extends EntityMP implements Serializable {
         this.ywz = ywz ;
         this.modify("ywz",ywz);
     }
+
     /**
      * 设置 [实际情况描述]
      */
@@ -185,6 +188,7 @@ public class SalSalaryDetail extends EntityMP implements Serializable {
         this.ywms = ywms ;
         this.modify("ywms",ywms);
     }
+
     /**
      * 设置 [薪酬]
      */
@@ -192,6 +196,7 @@ public class SalSalaryDetail extends EntityMP implements Serializable {
         this.xc = xc ;
         this.modify("xc",xc);
     }
+
     /**
      * 设置 [方案要素项标识]
      */
@@ -199,6 +204,7 @@ public class SalSalaryDetail extends EntityMP implements Serializable {
         this.salschemeitemid = salschemeitemid ;
         this.modify("salschemeitemid",salschemeitemid);
     }
+
     /**
      * 设置 [员工薪酬标识]
      */
@@ -206,6 +212,7 @@ public class SalSalaryDetail extends EntityMP implements Serializable {
         this.salsalaryid = salsalaryid ;
         this.modify("salsalaryid",salsalaryid);
     }
+
 
 }
 

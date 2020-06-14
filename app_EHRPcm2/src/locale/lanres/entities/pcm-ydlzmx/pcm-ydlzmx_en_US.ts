@@ -42,7 +42,7 @@ export default {
 	views: {
 		gridview: {
 			caption: "异动离职明细",
-      title: '异动离职明细',
+      title: '异动离职明细表格视图',
 		},
 		xzeditview: {
 			caption: "新增离职",
@@ -54,23 +54,23 @@ export default {
 		},
 		ckeditview: {
 			caption: "异动离职明细",
-      title: '异动离职明细',
+      title: '异动离职明细查看',
 		},
 		redirectview: {
 			caption: "异动离职明细",
-      title: '异动离职明细',
+      title: '异动离职明细数据重定向视图',
 		},
 		pickupview: {
 			caption: "异动离职明细",
-      title: '异动离职明细',
+      title: '异动离职明细数据选择视图',
 		},
 		mpickupview: {
 			caption: "异动离职明细",
-      title: '异动离职明细',
+      title: '异动离职明细数据多项选择视图',
 		},
 		editview: {
 			caption: "异动离职明细",
-      title: '异动离职明细',
+      title: '异动离职明细编辑视图',
 		},
 		glgridview: {
 			caption: "离职管理",
@@ -78,7 +78,7 @@ export default {
 		},
 		pickupgridview: {
 			caption: "异动离职明细",
-      title: '异动离职明细',
+      title: '异动离职明细选择表格视图',
 		},
 		lsjlgridview: {
 			caption: "离职记录",
@@ -86,7 +86,7 @@ export default {
 		},
 		editview2: {
 			caption: "异动离职明细",
-      title: '异动离职明细',
+      title: '异动离职明细编辑视图',
 		},
 	},
 	main_form: {

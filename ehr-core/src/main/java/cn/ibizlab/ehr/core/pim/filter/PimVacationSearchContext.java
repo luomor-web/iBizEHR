@@ -31,35 +31,35 @@ public class PimVacationSearchContext extends QueryWrapperContext<PimVacation> {
 	public void setN_pimvacationname_like(String n_pimvacationname_like) {
         this.n_pimvacationname_like = n_pimvacationname_like;
         if(!ObjectUtils.isEmpty(this.n_pimvacationname_like)){
-            this.getSelectCond().like("pimvacationname", n_pimvacationname_like);
+            this.getSearchCond().like("pimvacationname", n_pimvacationname_like);
         }
     }
 	private String n_xjlx_eq;//[休假类型]
 	public void setN_xjlx_eq(String n_xjlx_eq) {
         this.n_xjlx_eq = n_xjlx_eq;
         if(!ObjectUtils.isEmpty(this.n_xjlx_eq)){
-            this.getSelectCond().eq("xjlx", n_xjlx_eq);
+            this.getSearchCond().eq("xjlx", n_xjlx_eq);
         }
     }
 	private String n_pimpersonname_eq;//[人员信息名称]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[人员信息名称]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_pimpersonid_eq;//[人员信息标识]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class PimVacationSearchContext extends QueryWrapperContext<PimVacation> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimvacationname", query)   
             );
 		 }

@@ -8,9 +8,9 @@
                 </div>
             </tab-pane>
             </tabs>
-    </div>
-    
+    </div>    
 </template>
+
 <script lang='tsx'>
 import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
@@ -135,6 +135,8 @@ export default class DefaultBase extends Vue implements ControlInterface {
         }
     }
 
+
+
     /**
      * 是否显示插槽
      *
@@ -150,6 +152,14 @@ export default class DefaultBase extends Vue implements ControlInterface {
      * @memberof DefaultBase
      */
     @Prop() public parentName!: string;
+
+    /**
+     *  表单数据
+     *
+     * @type {*}
+     * @memberof DefaultBase
+     */
+    @Prop({default:{}}) public formData?:any;
     
     /**
      * 获取多项数据
@@ -202,6 +212,15 @@ export default class DefaultBase extends Vue implements ControlInterface {
             text: '异动挂职明细', 
             disabled: false, 
         },
+    ];
+
+    /**
+     * 关系栏数据项导航参数集合
+     *
+     * @type {any[]}
+     * @memberof DefaultBase
+     */
+    public navParamsArray:Array<any> = [
     ];
 
     /**
@@ -304,6 +323,36 @@ export default class DefaultBase extends Vue implements ControlInterface {
     }
 
     /**
+     * 初始化导航参数
+     *
+     * @param {*} drItem
+     * @memberof DefaultBase
+     */
+    public initNavParam(drItem:any){
+        let returnNavParam:any = {};
+        if(drItem && drItem.id){
+            let curDRItem:any = this.navParamsArray.find((item:any) =>{
+                return Object.is(item.id,drItem.id);
+            })
+            if(curDRItem){
+                let localContext:any = curDRItem.localContext;
+                let localViewParam:any = curDRItem.localViewParam;
+                if(localContext && Object.keys(localContext).length >0){
+                    let _context:any = this.$util.computedNavData(this.formData,this.context,this.viewparams,localContext);
+                    returnNavParam.localContext = _context;
+                }
+                if(localViewParam && Object.keys(localViewParam).length >0){
+                    let _params:any = this.$util.computedNavData(this.formData,this.context,this.viewparams,localViewParam);
+                    returnNavParam.localViewParam = _params;
+                }
+                return returnNavParam;
+            }else{
+                return null;
+            }
+        }
+    }
+
+    /**
      * 选中节点
      *
      * @param {*} $event
@@ -315,12 +364,18 @@ export default class DefaultBase extends Vue implements ControlInterface {
             return;
         }
         this.$emit('selectionchange', [item]);
-
+        let localNavParam:any = this.initNavParam(item);
         const refview = this.getDRTabItem({ nodetype: item.id });
         this.selection = {};
         const _context: any = { ...JSON.parse(JSON.stringify(this.context)) };
+        if(localNavParam && localNavParam.localContext){
+            Object.assign(_context,localNavParam.localContext);
+        }
         Object.assign(_context,{srfparentdename:this.parentName,srfparentkey:_context[this.parentName.toLowerCase()]});
-        const _params: any = { ...JSON.parse(JSON.stringify(this.viewparams)) };
+        const _params: any = {};
+        if(localNavParam && localNavParam.localViewParam){
+            Object.assign(_params,localNavParam.localViewParam);
+        }
         if (refview && refview.parentdatajo) {
             Object.assign(_context, refview.parentdatajo);
             Object.assign(this.selection, { view: { viewname: refview.viewname }, data: _context, param: _params });

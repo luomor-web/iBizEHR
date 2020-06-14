@@ -62,7 +62,7 @@ export default class AppEmbedPicker extends Vue {
      * 表单数据
      *
      * @type {*}
-     * @memberof AppPicker
+     * @memberof AppEmbedPicker
      */
     @Prop() public data!: any;
 
@@ -95,7 +95,7 @@ export default class AppEmbedPicker extends Vue {
      * 值项名称
      *
      * @type {string}
-     * @memberof AppPicker
+     * @memberof AppEmbedPicker
      */
     @Prop() public valueItem?: string;
 
@@ -103,7 +103,7 @@ export default class AppEmbedPicker extends Vue {
      * 关联视图名称
      *
      * @type {string}
-     * @memberof AppPicker
+     * @memberof AppEmbedPicker
      */
     @Prop() public refviewname?: string;
 
@@ -127,17 +127,25 @@ export default class AppEmbedPicker extends Vue {
      * 属性项名称
      *
      * @type {string}
-     * @memberof AppPicker
+     * @memberof AppEmbedPicker
      */
     @Prop() public name!: string;
 
     /**
-     * 关联视图参数
-     *
-     * @type {*}
+     * 局部上下文导航参数
+     * 
+     * @type {any}
      * @memberof AppEmbedPicker
      */
-    @Prop() public itemParam: any;
+    @Prop() public localContext!:any;
+
+    /**
+     * 局部导航参数
+     * 
+     * @type {any}
+     * @memberof AppEmbedPicker
+     */
+    @Prop() public localParam!:any;
 
     /**
      * 是否忽略之变化
@@ -160,8 +168,8 @@ export default class AppEmbedPicker extends Vue {
      *
      * @memberof AppEmbedPicker
      */
-    public setViewParam(activeData: any) {
-        if (!this.itemParam || !activeData) {
+    public setViewParam() {
+        if (!this.data) {
             return;
         }
         let arg: any = {};
@@ -169,17 +177,13 @@ export default class AppEmbedPicker extends Vue {
         let param: any = JSON.parse(JSON.stringify(this.viewparams));
         let context: any = JSON.parse(JSON.stringify(this.context));
         // 附加参数处理
-        if (this.itemParam.context) {
-            let _context = this.$util.formatData(activeData,context,this.itemParam.context);
-            Object.assign(context,_context);
+         if (this.localContext && Object.keys(this.localContext).length >0) {
+            let _context = this.$util.computedNavData(this.data,arg.context,arg.param,this.localContext);
+            Object.assign(arg.context,_context);
         }
-        if (this.itemParam.param) {
-            let _param = this.$util.formatData(activeData,param,this.itemParam.param);
-            Object.assign(param,_param);
-        }
-        if (this.itemParam.parentdata) {
-            let _parentdata = this.$util.formatData(activeData,param,this.itemParam.parentdata);
-            Object.assign(param,_parentdata);
+        if (this.localParam && Object.keys(this.localParam).length >0) {
+            let _param = this.$util.computedNavData(this.data,arg.param,arg.param,this.localParam);
+            Object.assign(arg.param,_param);
         }
         this.viewdata = JSON.stringify(context);
         this.viewparam = JSON.stringify(param);
@@ -196,7 +200,7 @@ export default class AppEmbedPicker extends Vue {
     onActivedataChange(newVal: any, oldVal: any) {
         const newFormData: any = JSON.parse(newVal);
         const oldDormData: any = JSON.parse(oldVal);
-        this.setViewParam(newFormData);
+        this.setViewParam();
         if (!this.refreshitems || this.ignorefieldvaluechange) {
             return;
         }
@@ -215,7 +219,7 @@ export default class AppEmbedPicker extends Vue {
         if(this.formState) {
             this.formStateEvent = this.formState.subscribe(({ tag, action, data }) => {
                 if (Object.is('load', action)) {
-                    this.setViewParam(JSON.parse(this.data));
+                    this.setViewParam();
                 }
             });
         }

@@ -24,11 +24,11 @@ export default {
 	views: {
 		pickupview: {
 			caption: "执业资格专业",
-      title: '执业资格专业',
+      title: '执业资格专业数据选择视图',
 		},
 		pickupgridview: {
 			caption: "执业资格专业",
-      title: '执业资格专业',
+      title: '执业资格专业选择表格视图',
 		},
 	},
 	main_grid: {

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[薪酬计算源]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_SALSOURCE",resultMap = "SalSourceResultMap")
 public class SalSource extends EntityMP implements Serializable {
 
@@ -120,6 +121,7 @@ public class SalSource extends EntityMP implements Serializable {
         this.salsourcename = salsourcename ;
         this.modify("salsourcename",salsourcename);
     }
+
     /**
      * 设置 [数据源(表/视图)]
      */
@@ -127,6 +129,7 @@ public class SalSource extends EntityMP implements Serializable {
         this.source = source ;
         this.modify("source",source);
     }
+
     /**
      * 设置 [备注]
      */
@@ -134,6 +137,7 @@ public class SalSource extends EntityMP implements Serializable {
         this.memo = memo ;
         this.modify("memo",memo);
     }
+
 
 }
 

@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 9, offset: 0 }" :xl="{ span: 9, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.pimpersonname.disabled"
   name='pimpersonname'
   deMajorField='pimpersonname'
@@ -33,12 +35,14 @@
 </i-col>
 <i-col v-show="detailsModel.qjzl.visible" :style="{}"  :lg="{ span: 9, offset: 0 }" :xl="{ span: 9, offset: 0 }">
     <app-form-item name='qjzl' :itemRules="this.rules.qjzl" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.qjzl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.qjzl.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.qjzl" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.qjzl.disabled"  
     tag='EhrCodeList0013' 
     codelistType='DYNAMIC'
@@ -49,12 +53,14 @@
 </i-col>
 <i-col v-show="detailsModel.hyzk.visible" :style="{}"  :lg="{ span: 9, offset: 0 }" :xl="{ span: 9, offset: 0 }">
     <app-form-item name='hyzk' :itemRules="this.rules.hyzk" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.hyzk')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hyzk.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.hyzk" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.hyzk.disabled"  
     tag='EhrCodeList0075' 
     codelistType='DYNAMIC'
@@ -65,12 +71,14 @@
 </i-col>
 <i-col v-show="detailsModel.tqlx.visible" :style="{}"  :lg="{ span: 9, offset: 0 }" :xl="{ span: 9, offset: 0 }">
     <app-form-item name='tqlx' :itemRules="this.rules.tqlx" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.tqlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.tqlx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.tqlx" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.tqlx.disabled"  
     tag='EhrCodeList0245' 
     codelistType='STATIC'
@@ -81,23 +89,15 @@
 </i-col>
 <i-col v-show="detailsModel.njsy.visible" :style="{}"  :lg="{ span: 18, offset: 0 }">
     <app-form-item name='njsy' :itemRules="this.rules.njsy" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.njsy')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.njsy.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='njsy'
-:value="data.njsy"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='njsy' :value="data.njsy" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.tips.visible" :style="{}"  :lg="{ span: 18, offset: 0 }">
     <app-form-item name='tips' :itemRules="this.rules.tips" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.tips')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.tips.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='tips'
-:value="data.tips"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='tips' :value="data.tips" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -112,12 +112,14 @@ style=""></app-span>
 </i-col>
 <i-col v-show="detailsModel.jhkssxw.visible" :style="{}"  :lg="{ span: 3, offset: 0 }" :xl="{ span: 3, offset: 0 }">
     <app-form-item name='jhkssxw' :itemRules="this.rules.jhkssxw" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.jhkssxw')" uiStyle="DEFAULT" :labelWidth="0" :isShowCaption="false" :error="detailsModel.jhkssxw.error" :isEmptyCaption="false" labelPos="NONE">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.jhkssxw" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.jhkssxw.disabled"  
     tag='EhrCodeList0110' 
     codelistType='STATIC'
@@ -134,12 +136,14 @@ style=""></app-span>
 </i-col>
 <i-col v-show="detailsModel.jhjssxw.visible" :style="{}"  :lg="{ span: 3, offset: 0 }" :xl="{ span: 3, offset: 0 }">
     <app-form-item name='jhjssxw' :itemRules="this.rules.jhjssxw" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.jhjssxw')" uiStyle="DEFAULT" :labelWidth="0" :isShowCaption="false" :error="detailsModel.jhjssxw.error" :isEmptyCaption="false" labelPos="NONE">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.jhjssxw" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.jhjssxw.disabled"  
     tag='EhrCodeList0110' 
     codelistType='STATIC'
@@ -156,12 +160,14 @@ style=""></app-span>
 </i-col>
 <i-col v-show="detailsModel.state.visible" :style="{}"  :lg="{ span: 9, offset: 0 }" :xl="{ span: 9, offset: 0 }">
     <app-form-item name='state' :itemRules="this.rules.state" class='' :caption="$t('entities.vacleavedetail.jhqjmx_form.details.state')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.state.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.state" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.state.disabled"  
     tag='EhrCodeList0134' 
     codelistType='STATIC'
@@ -1158,6 +1164,11 @@ export default class JHQJMXBase extends Vue implements ControlInterface {
 
 
 
+
+        if(Object.is(name, 'qjzl')){
+            const details: string[] = ['tqlx', 'jhts', 'tips', 'hyzk', 'njsy'];
+            this.updateFormItems('GetNianJia', this.data, details, true);
+        }
 
         if(Object.is(name, 'jhkssj')){
             const details: string[] = ['jhts'];

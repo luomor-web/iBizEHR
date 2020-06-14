@@ -31,28 +31,28 @@ public class PcmWorkResumeSearchContext extends QueryWrapperContext<PcmWorkResum
 	public void setN_pcmworkresumename_like(String n_pcmworkresumename_like) {
         this.n_pcmworkresumename_like = n_pcmworkresumename_like;
         if(!ObjectUtils.isEmpty(this.n_pcmworkresumename_like)){
-            this.getSelectCond().like("pcmworkresumename", n_pcmworkresumename_like);
+            this.getSearchCond().like("pcmworkresumename", n_pcmworkresumename_like);
         }
     }
 	private String n_pcmprofilename_eq;//[姓名]
 	public void setN_pcmprofilename_eq(String n_pcmprofilename_eq) {
         this.n_pcmprofilename_eq = n_pcmprofilename_eq;
         if(!ObjectUtils.isEmpty(this.n_pcmprofilename_eq)){
-            this.getSelectCond().eq("pcmprofilename", n_pcmprofilename_eq);
+            this.getSearchCond().eq("pcmprofilename", n_pcmprofilename_eq);
         }
     }
 	private String n_pcmprofilename_like;//[姓名]
 	public void setN_pcmprofilename_like(String n_pcmprofilename_like) {
         this.n_pcmprofilename_like = n_pcmprofilename_like;
         if(!ObjectUtils.isEmpty(this.n_pcmprofilename_like)){
-            this.getSelectCond().like("pcmprofilename", n_pcmprofilename_like);
+            this.getSearchCond().like("pcmprofilename", n_pcmprofilename_like);
         }
     }
 	private String n_pcmprofileid_eq;//[应聘者ID]
 	public void setN_pcmprofileid_eq(String n_pcmprofileid_eq) {
         this.n_pcmprofileid_eq = n_pcmprofileid_eq;
         if(!ObjectUtils.isEmpty(this.n_pcmprofileid_eq)){
-            this.getSelectCond().eq("pcmprofileid", n_pcmprofileid_eq);
+            this.getSearchCond().eq("pcmprofileid", n_pcmprofileid_eq);
         }
     }
 
@@ -63,7 +63,7 @@ public class PcmWorkResumeSearchContext extends QueryWrapperContext<PcmWorkResum
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmworkresumename", query)   
             );
 		 }

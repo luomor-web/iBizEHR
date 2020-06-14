@@ -39,7 +39,7 @@ export default {
 		},
 		qbzzpickupview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '选择组织',
 		},
 		sjyxzzpickupgridview: {
 			caption: '组织选择',
@@ -59,7 +59,7 @@ export default {
 		},
 		editview2: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '组织管理编辑视图',
 		},
 		editview: {
 			caption: '组织信息',
@@ -71,7 +71,7 @@ export default {
 		},
 		redirectview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '组织管理数据重定向视图',
 		},
 		fpxxpickupview: {
 			caption: '组织数据选择视图',
@@ -79,11 +79,11 @@ export default {
 		},
 		allleveltwoorgpickupview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '管理单位',
 		},
 		allsignorgorgpickupview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '签约单位',
 		},
 		jqgzsypickupgridview: {
 			caption: '组织选择表格视图',
@@ -103,7 +103,7 @@ export default {
 		},
 		sjyxzzqxpickupview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '选择组织',
 		},
 		syzzpickupgridview: {
 			caption: '组织选择',
@@ -111,15 +111,15 @@ export default {
 		},
 		mpickupview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '组织管理数据多项选择视图',
 		},
 		xjpickupview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '组织管理数据选择视图',
 		},
 		sjyxzzpickupview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '选择组织',
 		},
 		editview9: {
 			caption: '组织管理',
@@ -151,11 +151,11 @@ export default {
 		},
 		pickupgridview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '组织管理选择表格视图',
 		},
 		xjpickupgridview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '组织管理选择表格视图',
 		},
 		fpxxpickupgridview: {
 			caption: '组织选择表格视图',
@@ -171,7 +171,7 @@ export default {
 		},
 		pickupview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '组织管理数据选择视图',
 		},
 	},
 	main_form: {

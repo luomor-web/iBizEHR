@@ -14,12 +14,14 @@
 </i-col>
 <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 9, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.ormqybzwh.main_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormorgname.disabled"
   name='ormorgname'
   deMajorField='orgname'
@@ -39,12 +41,14 @@
 </i-col>
 <i-col v-show="detailsModel.ormqybzwhname.visible" :style="{}"  :lg="{ span: 9, offset: 0 }">
     <app-form-item name='ormqybzwhname' :itemRules="this.rules.ormqybzwhname" class='' :caption="$t('entities.ormqybzwh.main_form.details.ormqybzwhname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormqybzwhname.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.ormqybzwhname" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.ormqybzwhname.disabled"  
     tag='EhrCodeList0219' 
     codelistType='DYNAMIC'

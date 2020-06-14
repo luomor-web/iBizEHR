@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[岗位类型对照表]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMGWTYPE",resultMap = "PimGwTypeResultMap")
 public class PimGwType extends EntityMP implements Serializable {
 
@@ -121,6 +122,7 @@ public class PimGwType extends EntityMP implements Serializable {
         this.pimgwtypename = pimgwtypename ;
         this.modify("pimgwtypename",pimgwtypename);
     }
+
     /**
      * 设置 [岗位类型]
      */
@@ -128,6 +130,7 @@ public class PimGwType extends EntityMP implements Serializable {
         this.gwlx = gwlx ;
         this.modify("gwlx",gwlx);
     }
+
 
 }
 

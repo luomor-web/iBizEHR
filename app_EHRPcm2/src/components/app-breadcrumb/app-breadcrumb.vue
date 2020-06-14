@@ -9,7 +9,7 @@
         :key="item.path"
       >
         <span
-          v-if="item.redirect === 'noredirect' || index === breadcrumbs.length-1"
+          v-if="index === breadcrumbs.length-1"
           class="no-redirect"
         >{{  $t(item.meta.caption) }}</span>
         <a
@@ -22,64 +22,57 @@
 </template>
 
 <script lang="ts">
-import { compile } from 'path-to-regexp'
 import { Component, Vue, Watch, Prop } from 'vue-property-decorator'
 import { RouteRecord, Route } from 'vue-router'
 
 @Component({
-  name: 'Breadcrumb'
 })
-export default class extends Vue {
-  private breadcrumbs: RouteRecord[] = []
+export default class Breadcrumb extends Vue {
 
+  private breadcrumbs: RouteRecord[] = [];  //面包屑列表
   
-  @Prop() public defPSAppView?: any;
+  @Prop() public defPSAppView: any; //默认视图
 
+  /**
+   * 监听路由
+   *
+   * @memberof Breadcrumb
+   */
   @Watch('$route')
   private onRouteChange(route: Route) {
-    // if you go to the redirect page, do not update the breadcrumbs
-    if (route.path.startsWith('/redirect/')) {
-      return
-    }
     this.getBreadcrumb()
   }
 
+  /**
+   * vue  生命周期
+   *
+   * @memberof Breadcrumb
+   */
   created() {
     this.getBreadcrumb()
   }
 
+  /**
+   * 获取面包屑数据
+   * 
+   * @memberof Breadcrumb
+   */
   private getBreadcrumb() {
-    let matched = this.$route.matched.filter((item) => item.meta && item.meta.caption)
-    const first = matched[0]
-    if (!this.isDashboard(first)) {
-      matched = [{ path: "/index/:index?", meta: { 
-                caption: 'app.views.index.caption',
-                viewType: 'APPINDEX',
-                parameters: [
-                    { pathName: 'index', parameterName: 'index' },
-                ],
-                requireAuth: true, } } as RouteRecord].concat(matched)
+    this.breadcrumbs = this.$route.matched.filter((item) => {
+        return item.meta && item.meta.caption
+      })
+    if(this.defPSAppView){
+      /**如果配置了默认视图,给面包屑第一级赋值默认视图为首页 */
     }
-    this.breadcrumbs = matched.filter((item) => {
-      return item.meta && item.meta.caption && item.meta.breadcrumb !== false
-    })
   }
 
-  private isDashboard(route: RouteRecord) {
-    const name = route && route.meta.parameters[0].pathName;
-    if (!name) {
-      return false
-    }
-    return name.trim().toLocaleLowerCase() === 'index'.toLocaleLowerCase()
-  }
-
-  private pathCompile(item: any) {
-    const { params, path, query } = item;
-    return { params, path, query };
-  }
-
+  /**
+   * 单机面包屑
+   * 
+   * @memberof Breadcrumb
+   */
   private handleLink(item: any) {
-    this.$router.push(this.pathCompile(item)).catch(err => {
+    this.$router.push(item).catch(err => {
       console.warn(err);
     });
   }

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[项目人员需求]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_ORMXMRYPZXQ",resultMap = "OrmXmrypzxqResultMap")
 public class OrmXmrypzxq extends EntityMP implements Serializable {
 
@@ -446,6 +447,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.approvalstatus = approvalstatus ;
         this.modify("approvalstatus",approvalstatus);
     }
+
     /**
      * 设置 [拟任岗位]
      */
@@ -453,6 +455,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.gw = gw ;
         this.modify("gw",gw);
     }
+
     /**
      * 设置 [计划状态]
      */
@@ -460,6 +463,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.planstate = planstate ;
         this.modify("planstate",planstate);
     }
+
     /**
      * 设置 [修改审批状态]
      */
@@ -467,6 +471,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.modspzt = modspzt ;
         this.modify("modspzt",modspzt);
     }
+
     /**
      * 设置 [岗位职责]
      */
@@ -474,6 +479,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.majorresp = majorresp ;
         this.modify("majorresp",majorresp);
     }
+
     /**
      * 设置 [拒绝原因（调配申请）]
      */
@@ -481,6 +487,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.tpjjyy = tpjjyy ;
         this.modify("tpjjyy",tpjjyy);
     }
+
     /**
      * 设置 [序号]
      */
@@ -488,6 +495,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [比较结果一]
      */
@@ -495,6 +503,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.contresultone = contresultone ;
         this.modify("contresultone",contresultone);
     }
+
     /**
      * 设置 [审批状态（释放）]
      */
@@ -502,6 +511,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.spzt = spzt ;
         this.modify("spzt",spzt);
     }
+
     /**
      * 设置 [拒绝原因（释放申请）]
      */
@@ -509,6 +519,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.sfjjyy = sfjjyy ;
         this.modify("sfjjyy",sfjjyy);
     }
+
     /**
      * 设置 [项目人员需求名称]
      */
@@ -516,12 +527,24 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.ormxmrypzxqname = ormxmrypzxqname ;
         this.modify("ormxmrypzxqname",ormxmrypzxqname);
     }
+
     /**
      * 设置 [离岗时间]
      */
     public void setKqjssj(Timestamp kqjssj){
         this.kqjssj = kqjssj ;
         this.modify("kqjssj",kqjssj);
+    }
+
+    /**
+     * 格式化日期 [离岗时间]
+     */
+    public String formatKqjssj(){
+        if (this.kqjssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(kqjssj);
     }
     /**
      * 设置 [到岗时间]
@@ -530,12 +553,34 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.kqkssj = kqkssj ;
         this.modify("kqkssj",kqkssj);
     }
+
+    /**
+     * 格式化日期 [到岗时间]
+     */
+    public String formatKqkssj(){
+        if (this.kqkssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(kqkssj);
+    }
     /**
      * 设置 [实际到岗时间]
      */
     public void setRealarrivaltime(Timestamp realarrivaltime){
         this.realarrivaltime = realarrivaltime ;
         this.modify("realarrivaltime",realarrivaltime);
+    }
+
+    /**
+     * 格式化日期 [实际到岗时间]
+     */
+    public String formatRealarrivaltime(){
+        if (this.realarrivaltime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(realarrivaltime);
     }
     /**
      * 设置 [是否临时数据]
@@ -544,12 +589,24 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.istemp = istemp ;
         this.modify("istemp",istemp);
     }
+
     /**
      * 设置 [实际离岗时间]
      */
     public void setRealleavetime(Timestamp realleavetime){
         this.realleavetime = realleavetime ;
         this.modify("realleavetime",realleavetime);
+    }
+
+    /**
+     * 格式化日期 [实际离岗时间]
+     */
+    public String formatRealleavetime(){
+        if (this.realleavetime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(realleavetime);
     }
     /**
      * 设置 [拒绝原因]
@@ -558,6 +615,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [审批状态（调配）]
      */
@@ -565,6 +623,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.tpspzt = tpspzt ;
         this.modify("tpspzt",tpspzt);
     }
+
     /**
      * 设置 [比较结果二]
      */
@@ -572,6 +631,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.contresulttwo = contresulttwo ;
         this.modify("contresulttwo",contresulttwo);
     }
+
     /**
      * 设置 [项目部ID]
      */
@@ -579,6 +639,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [需求计划ID]
      */
@@ -586,6 +647,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.ormxmxqjhid = ormxmxqjhid ;
         this.modify("ormxmxqjhid",ormxmxqjhid);
     }
+
     /**
      * 设置 [实际人员ID]
      */
@@ -593,6 +655,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.realpersonid = realpersonid ;
         this.modify("realperosnid",realpersonid);
     }
+
     /**
      * 设置 [人员ID]
      */
@@ -600,6 +663,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [修改人员ID]
      */
@@ -607,6 +671,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.modpimpersonid = modpimpersonid ;
         this.modify("modpimpersonid",modpimpersonid);
     }
+
     /**
      * 设置 [岗位ID]
      */
@@ -614,6 +679,7 @@ public class OrmXmrypzxq extends EntityMP implements Serializable {
         this.ormpostid = ormpostid ;
         this.modify("ormpostid",ormpostid);
     }
+
 
 }
 

@@ -11,31 +11,31 @@ export default {
 	views: {
 		gridview: {
 			caption: '专业序列类型',
-      title: '专业序列类型',
+      title: '专业序列类型表格视图',
 		},
 		editview: {
 			caption: '专业序列类型',
-      title: '专业序列类型',
+      title: '专业序列类型编辑视图',
 		},
 		editview2: {
 			caption: '专业序列类型',
-      title: '专业序列类型',
+      title: '专业序列类型编辑视图',
 		},
 		mpickupview: {
 			caption: '专业序列类型',
-      title: '专业序列类型',
+      title: '专业序列类型数据多项选择视图',
 		},
 		pickupview: {
 			caption: '专业序列类型',
-      title: '专业序列类型',
+      title: '专业序列类型数据选择视图',
 		},
 		pickupgridview: {
 			caption: '专业序列类型',
-      title: '专业序列类型',
+      title: '专业序列类型选择表格视图',
 		},
 		redirectview: {
 			caption: '专业序列类型',
-      title: '专业序列类型',
+      title: '专业序列类型数据重定向视图',
 		},
 	},
 	main_form: {

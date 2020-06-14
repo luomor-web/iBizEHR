@@ -25,11 +25,11 @@ export default {
 	views: {
 		greditview: {
 			caption: "科研成果",
-      title: '科研成果',
+      title: '科研成果编辑视图',
 		},
 		grresearchgridview: {
 			caption: "科研成果",
-      title: '科研成果',
+      title: '科研成果表格视图',
 		},
 	},
 	greditform_form: {

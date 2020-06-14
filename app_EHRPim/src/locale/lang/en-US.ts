@@ -85,6 +85,9 @@ export default {
             ok: 'OK',
             cancel: 'Cancel',
         },
+        local:{
+            new: 'New'
+        },
         gridpage: {
             choicecolumns: 'Choice columns',
             refresh: 'refresh',
@@ -120,7 +123,7 @@ export default {
         views: {
             pimportalview: {
                 caption: '门户首页',
-                title: '门户首页',
+                title: 'Pim门户首页',
             },
             index: {
                 caption: 'EHR—基础管理',

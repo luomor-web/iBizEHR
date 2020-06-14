@@ -28,11 +28,11 @@ export default {
 	views: {
 		greditview: {
 			caption: "专利信息",
-      title: '专利信息',
+      title: '专利信息编辑视图',
 		},
 		grpatentgridview: {
 			caption: "专利信息",
-      title: '专利信息',
+      title: '专利信息表格视图',
 		},
 	},
 	grpatenteditform_form: {

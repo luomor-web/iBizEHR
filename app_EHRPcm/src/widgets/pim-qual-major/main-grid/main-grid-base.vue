@@ -1310,6 +1310,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        $event.stopPropagation();
     }
 
     /**
@@ -1433,6 +1434,14 @@ export default class MainBase extends Vue implements ControlInterface {
             return Object.is(item.pimqualmajor,args.row.pimqualmajor);
         });
         return isSelected ? "grid-selected-row" : "";
+    }
+
+    /**
+     * 新建默认值
+     * @param {*}  row 行数据
+     * @memberof Main
+     */
+    public createDefault(row: any){                    
     }
 }
 </script>

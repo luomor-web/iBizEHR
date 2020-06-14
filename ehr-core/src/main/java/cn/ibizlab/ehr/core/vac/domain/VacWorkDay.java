@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[工作日管理（停用）]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_VACWORKDAY",resultMap = "VacWorkDayResultMap")
 public class VacWorkDay extends EntityMP implements Serializable {
 
@@ -151,6 +152,7 @@ public class VacWorkDay extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [工作日]
      */
@@ -158,6 +160,7 @@ public class VacWorkDay extends EntityMP implements Serializable {
         this.vacworkdayname = vacworkdayname ;
         this.modify("vacworkdayname",vacworkdayname);
     }
+
     /**
      * 设置 [备注]
      */
@@ -165,12 +168,24 @@ public class VacWorkDay extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [结束时间]
      */
     public void setJssj(Timestamp jssj){
         this.jssj = jssj ;
         this.modify("jssj",jssj);
+    }
+
+    /**
+     * 格式化日期 [结束时间]
+     */
+    public String formatJssj(){
+        if (this.jssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(jssj);
     }
     /**
      * 设置 [上班时间]
@@ -179,6 +194,17 @@ public class VacWorkDay extends EntityMP implements Serializable {
         this.sbsj = sbsj ;
         this.modify("sbsj",sbsj);
     }
+
+    /**
+     * 格式化日期 [上班时间]
+     */
+    public String formatSbsj(){
+        if (this.sbsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        return sdf.format(sbsj);
+    }
     /**
      * 设置 [下班时间]
      */
@@ -186,12 +212,34 @@ public class VacWorkDay extends EntityMP implements Serializable {
         this.xbsj = xbsj ;
         this.modify("xbsj",xbsj);
     }
+
+    /**
+     * 格式化日期 [下班时间]
+     */
+    public String formatXbsj(){
+        if (this.xbsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        return sdf.format(xbsj);
+    }
     /**
      * 设置 [开始时间]
      */
     public void setKssj(Timestamp kssj){
         this.kssj = kssj ;
         this.modify("kssj",kssj);
+    }
+
+    /**
+     * 格式化日期 [开始时间]
+     */
+    public String formatKssj(){
+        if (this.kssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(kssj);
     }
 
 }

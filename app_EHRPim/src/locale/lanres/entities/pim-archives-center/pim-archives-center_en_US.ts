@@ -21,31 +21,31 @@ export default {
 	views: {
 		mpickupview: {
 			caption: "档案室管理",
-      title: '档案室管理',
+      title: '档案室管理数据多项选择视图',
 		},
 		editview2: {
 			caption: "档案室管理",
-      title: '档案室管理',
+      title: '档案室管理编辑视图',
 		},
 		pickupview: {
 			caption: "档案室管理",
-      title: '档案室管理',
+      title: '档案室管理数据选择视图',
 		},
 		pickupgridview: {
 			caption: "档案室管理",
-      title: '档案室管理',
+      title: '档案室管理选择表格视图',
 		},
 		editview: {
 			caption: "档案室管理",
-      title: '档案室管理',
+      title: '档案室管理编辑视图',
 		},
 		redirectview: {
 			caption: "档案室管理",
-      title: '档案室管理',
+      title: '档案室管理数据重定向视图',
 		},
 		gridview: {
 			caption: "档案室管理",
-      title: '档案室管理',
+      title: '档案室管理表格视图',
 		},
 	},
 	main_form: {

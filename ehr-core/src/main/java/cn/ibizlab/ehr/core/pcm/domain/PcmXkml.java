@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[学科目录]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMXKML",resultMap = "PcmXkmlResultMap")
 public class PcmXkml extends EntityMP implements Serializable {
 
@@ -118,6 +119,7 @@ public class PcmXkml extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [学科名称]
      */
@@ -125,6 +127,7 @@ public class PcmXkml extends EntityMP implements Serializable {
         this.pcmxkmlname = pcmxkmlname ;
         this.modify("pcmxkmlname",pcmxkmlname);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -132,6 +135,7 @@ public class PcmXkml extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [学科门类]
      */
@@ -139,6 +143,7 @@ public class PcmXkml extends EntityMP implements Serializable {
         this.xkml = xkml ;
         this.modify("xkml",xkml);
     }
+
 
 }
 

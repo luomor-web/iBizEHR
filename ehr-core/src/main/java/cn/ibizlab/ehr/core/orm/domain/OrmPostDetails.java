@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[岗位明细]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_ORMPOSTDETAILS",resultMap = "OrmPostDetailsResultMap")
 public class OrmPostDetails extends EntityMP implements Serializable {
 
@@ -183,6 +184,7 @@ public class OrmPostDetails extends EntityMP implements Serializable {
         this.ormpostdetailsname = ormpostdetailsname ;
         this.modify("ormpostdetailsname",ormpostdetailsname);
     }
+
     /**
      * 设置 [岗位集ID]
      */
@@ -190,6 +192,7 @@ public class OrmPostDetails extends EntityMP implements Serializable {
         this.ormpostid = ormpostid ;
         this.modify("ormpostid",ormpostid);
     }
+
     /**
      * 设置 [岗位ID]
      */
@@ -197,6 +200,7 @@ public class OrmPostDetails extends EntityMP implements Serializable {
         this.ormpostlibid = ormpostlibid ;
         this.modify("ormpostlibid",ormpostlibid);
     }
+
 
     /**
      * 获取 [岗位明细标识]

@@ -8,89 +8,57 @@
     <row>
         <i-col v-show="detailsModel.ygbh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ygbh' :itemRules="this.rules.ygbh" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.ygbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygbh.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='ygbh'
-:value="data.ygbh"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='ygbh' :value="data.ygbh" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='pimpersonname'
-:value="data.pimpersonname"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='pimpersonname' :value="data.pimpersonname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.zz.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='zz' :itemRules="this.rules.zz" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.zz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='zz'
-:value="data.zz"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='zz' :value="data.zz" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.bm.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='bm' :itemRules="this.rules.bm" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.bm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bm.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='bm'
-:value="data.bm"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='bm' :value="data.bm" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.yrank.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='yrank' :itemRules="this.rules.yrank" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.yrank')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yrank.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='yrank'
-:value="data.yrank" tag='EhrCodeList0025' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='yrank' :value="data.yrank" tag='EhrCodeList0025' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.yzw.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='yzw' :itemRules="this.rules.yzw" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.yzw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yzw.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='yzw'
-:value="data.yzw" tag='EhrCodeList0233' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='yzw' :value="data.yzw" tag='EhrCodeList0233' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ygw.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ygw' :itemRules="this.rules.ygw" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.ygw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygw.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='ygw'
-:value="data.ygw" tag='EhrCodeList0050' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='ygw' :value="data.ygw" tag='EhrCodeList0050' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.lxdh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='lxdh' :itemRules="this.rules.lxdh" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.lxdh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.lxdh.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='lxdh'
-:value="data.lxdh"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='lxdh' :value="data.lxdh" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -104,67 +72,43 @@ style=""></app-span>
     <row>
         <i-col v-show="detailsModel.sxrq.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='sxrq' :itemRules="this.rules.sxrq" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.sxrq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sxrq.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='sxrq'
-:value="data.sxrq"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='sxrq' :value="data.sxrq" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.sfhmd.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='sfhmd' :itemRules="this.rules.sfhmd" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.sfhmd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfhmd.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='sfhmd'
-:value="data.sfhmd" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='sfhmd' :value="data.sfhmd" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.reason.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='reason' :itemRules="this.rules.reason" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.reason')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.reason.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='reason'
-:value="data.reason" tag='EhrCodeList0165' codelistType='DYNAMIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='reason' :value="data.reason" tag='EhrCodeList0165' codelistType='DYNAMIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.jpfj.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='jpfj' :itemRules="this.rules.jpfj" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.jpfj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jpfj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='jpfj'
-:value="data.jpfj"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='jpfj' :value="data.jpfj" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.bz.visible" :style="{}"  :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
     <app-form-item name='bz' :itemRules="this.rules.bz" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.bz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='bz'
-:value="data.bz"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='bz' :value="data.bz" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.remarks.visible" :style="{}"  :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
     <app-form-item name='remarks' :itemRules="this.rules.remarks" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.remarks')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.remarks.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='remarks'
-:value="data.remarks"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='remarks' :value="data.remarks" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -181,23 +125,15 @@ style=""></app-span>
     <row>
         <i-col v-show="detailsModel.sfzfbcj.visible" :style="{}"  :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='sfzfbcj' :itemRules="this.rules.sfzfbcj" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.sfzfbcj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfzfbcj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='sfzfbcj'
-:value="data.sfzfbcj" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='sfzfbcj' :value="data.sfzfbcj" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.bcjse.visible" :style="{}"  :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='bcjse' :itemRules="this.rules.bcjse" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.bcjse')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bcjse.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='bcjse'
-:value="data.bcjse"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='bcjse' :value="data.bcjse" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -211,34 +147,22 @@ style=""></app-span>
     <row>
         <i-col v-show="detailsModel.sfldzy.visible" :style="{}"  :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='sfldzy' :itemRules="this.rules.sfldzy" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.sfldzy')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfldzy.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='sfldzy'
-:value="data.sfldzy" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='sfldzy' :value="data.sfldzy" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ldzytype.visible" :style="{}"  :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ldzytype' :itemRules="this.rules.ldzytype" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.ldzytype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ldzytype.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='ldzytype'
-:value="data.ldzytype" tag='EhrCodeList0182' codelistType='STATIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='ldzytype' :value="data.ldzytype" tag='EhrCodeList0182' codelistType='STATIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.pcjse.visible" :style="{}"  :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='pcjse' :itemRules="this.rules.pcjse" class='' :caption="$t('entities.pcmydjpmx.main2_form.details.pcjse')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pcjse.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='pcjse'
-:value="data.pcjse"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='pcjse' :value="data.pcjse" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>

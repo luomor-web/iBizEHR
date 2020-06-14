@@ -12,12 +12,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_bglx_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_bglx_eq' :itemRules="this.rules.n_bglx_eq" class='' :caption="$t('entities.pimpersonchange.default_searchform.details.n_bglx_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_bglx_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_bglx_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_bglx_eq.disabled"  
               tag='EhrCodeList0232' 
               codelistType='STATIC'
@@ -28,12 +30,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_zt_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_zt_eq' :itemRules="this.rules.n_zt_eq" class='' :caption="$t('entities.pimpersonchange.default_searchform.details.n_zt_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_zt_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_zt_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_zt_eq.disabled"  
               tag='EhrCodeList0127' 
               codelistType='STATIC'

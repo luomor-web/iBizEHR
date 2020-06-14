@@ -17,11 +17,11 @@ export default {
 	views: {
 		gridview: {
 			caption: '部门职务编制',
-      title: '部门职务编制',
+      title: '部门编制管理表格视图',
 		},
 		redirectview: {
 			caption: '部门职务编制',
-      title: '部门职务编制',
+      title: '部门编制管理数据重定向视图',
 		},
 		zwgridview: {
 			caption: '职务编制明细',
@@ -29,19 +29,19 @@ export default {
 		},
 		pickupgridview: {
 			caption: '部门职务编制',
-      title: '部门职务编制',
+      title: '部门编制管理选择表格视图',
 		},
 		mpickupview: {
 			caption: '部门职务编制',
-      title: '部门职务编制',
+      title: '部门编制管理数据多项选择视图',
 		},
 		pickupview: {
 			caption: '部门职务编制',
-      title: '部门职务编制',
+      title: '部门编制管理数据选择视图',
 		},
 		editview2: {
 			caption: '部门职务编制',
-      title: '部门职务编制',
+      title: '部门编制管理编辑视图',
 		},
 		zweditview: {
 			caption: '职务编制明细',
@@ -49,7 +49,7 @@ export default {
 		},
 		editview: {
 			caption: '部门职务编制',
-      title: '部门职务编制',
+      title: '部门编制管理编辑视图',
 		},
 	},
 	main_form: {

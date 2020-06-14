@@ -31,21 +31,21 @@ public class OrmErporgSearchContext extends QueryWrapperContext<OrmErporg> {
 	public void setN_yyflag_eq(String n_yyflag_eq) {
         this.n_yyflag_eq = n_yyflag_eq;
         if(!ObjectUtils.isEmpty(this.n_yyflag_eq)){
-            this.getSelectCond().eq("yyflag", n_yyflag_eq);
+            this.getSearchCond().eq("yyflag", n_yyflag_eq);
         }
     }
 	private String n_ormerporgname_like;//[组织名称]
 	public void setN_ormerporgname_like(String n_ormerporgname_like) {
         this.n_ormerporgname_like = n_ormerporgname_like;
         if(!ObjectUtils.isEmpty(this.n_ormerporgname_like)){
-            this.getSelectCond().like("ormerporgname", n_ormerporgname_like);
+            this.getSearchCond().like("ormerporgname", n_ormerporgname_like);
         }
     }
 	private String n_orgcode_like;//[组织编码]
 	public void setN_orgcode_like(String n_orgcode_like) {
         this.n_orgcode_like = n_orgcode_like;
         if(!ObjectUtils.isEmpty(this.n_orgcode_like)){
-            this.getSelectCond().like("orgcode", n_orgcode_like);
+            this.getSearchCond().like("orgcode", n_orgcode_like);
         }
     }
 
@@ -56,7 +56,7 @@ public class OrmErporgSearchContext extends QueryWrapperContext<OrmErporg> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("ormerporgname", query)   
             );
 		 }

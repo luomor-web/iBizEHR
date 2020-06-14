@@ -31,28 +31,28 @@ public class SalRuleSearchContext extends QueryWrapperContext<SalRule> {
 	public void setN_salrulename_like(String n_salrulename_like) {
         this.n_salrulename_like = n_salrulename_like;
         if(!ObjectUtils.isEmpty(this.n_salrulename_like)){
-            this.getSelectCond().like("salrulename", n_salrulename_like);
+            this.getSearchCond().like("salrulename", n_salrulename_like);
         }
     }
 	private String n_salparamname_eq;//[薪酬计算指标名称]
 	public void setN_salparamname_eq(String n_salparamname_eq) {
         this.n_salparamname_eq = n_salparamname_eq;
         if(!ObjectUtils.isEmpty(this.n_salparamname_eq)){
-            this.getSelectCond().eq("salparamname", n_salparamname_eq);
+            this.getSearchCond().eq("salparamname", n_salparamname_eq);
         }
     }
 	private String n_salparamname_like;//[薪酬计算指标名称]
 	public void setN_salparamname_like(String n_salparamname_like) {
         this.n_salparamname_like = n_salparamname_like;
         if(!ObjectUtils.isEmpty(this.n_salparamname_like)){
-            this.getSelectCond().like("salparamname", n_salparamname_like);
+            this.getSearchCond().like("salparamname", n_salparamname_like);
         }
     }
 	private String n_salparamid_eq;//[薪酬计算指标标识]
 	public void setN_salparamid_eq(String n_salparamid_eq) {
         this.n_salparamid_eq = n_salparamid_eq;
         if(!ObjectUtils.isEmpty(this.n_salparamid_eq)){
-            this.getSelectCond().eq("salparamid", n_salparamid_eq);
+            this.getSearchCond().eq("salparamid", n_salparamid_eq);
         }
     }
 
@@ -63,7 +63,7 @@ public class SalRuleSearchContext extends QueryWrapperContext<SalRule> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("salrulename", query)   
             );
 		 }

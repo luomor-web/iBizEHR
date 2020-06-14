@@ -79,27 +79,27 @@ export default {
 	views: {
 		mpickupview: {
 			caption: "人员花名册",
-      title: '人员花名册',
+      title: '人员明细表数据多项选择视图',
 		},
 		editview: {
 			caption: "人员花名册",
-      title: '人员花名册',
+      title: '人员明细表编辑视图',
 		},
 		pickupview: {
 			caption: "人员花名册",
-      title: '人员花名册',
+      title: '人员明细表数据选择视图',
 		},
 		pickupgridview: {
 			caption: "人员花名册",
-      title: '人员花名册',
+      title: '人员明细表选择表格视图',
 		},
 		editview2: {
 			caption: "人员花名册",
-      title: '人员花名册',
+      title: '人员明细表编辑视图',
 		},
 		redirectview: {
 			caption: "人员花名册",
-      title: '人员花名册',
+      title: '人员明细表数据重定向视图',
 		},
 		gridview: {
 			caption: "人员花名册",

@@ -39,7 +39,7 @@ export default {
 		},
 		wfproxyresultview: {
 			caption: '出入境管理',
-      title: '出入境管理',
+      title: '出入境管理工作流结果视图',
 		},
 		editview_yqx: {
 			caption: '出（国）境基本信息',
@@ -55,11 +55,11 @@ export default {
 		},
 		formpickupview: {
 			caption: '出入境管理',
-      title: '出入境管理',
+      title: '出入境管理数据选择视图',
 		},
 		wfeditview9: {
 			caption: '出入境管理',
-      title: '出入境管理',
+      title: '出入境管理工作流嵌入视图',
 		},
 		editview_ytg: {
 			caption: '出（国）境基本信息',
@@ -67,11 +67,11 @@ export default {
 		},
 		ygzzgridview: {
 			caption: '出（国）境申请',
-      title: '出（国）境申请',
+      title: '出入境管理实体表格视图（员工自助）',
 		},
 		wfactionview: {
 			caption: '出入境管理',
-      title: '出入境管理',
+      title: '出入境管理工作流操作视图',
 		},
 		editview_spz: {
 			caption: '出（国）境基本信息',

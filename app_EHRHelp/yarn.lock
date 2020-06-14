@@ -5181,10 +5181,10 @@ human-signals@^1.1.1:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
   integrity sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
 
-ibiz-gantt-elastic@^1.0.15:
-  version "1.0.15"
-  resolved "https://registry.yarnpkg.com/ibiz-gantt-elastic/-/ibiz-gantt-elastic-1.0.15.tgz#e57736254aaf5baea28225bce2d29d8bd8adcc2d"
-  integrity sha512-V3uLoN3BN32BagpV1kLm4nFSs4neJ/Cnykd7OIyLv11rjqTWFAENHBpZekioPFF4k2iCyAdRr5smzZbGJdSQxg==
+ibiz-gantt-elastic@^1.0.16:
+  version "1.0.16"
+  resolved "https://registry.npm.taobao.org/ibiz-gantt-elastic/download/ibiz-gantt-elastic-1.0.16.tgz#e2de7e8d4bdb3c292cfbc97c4f970c8ecfe6c43b"
+  integrity sha1-4t5+jUvbPCks+8l8T5cMjs/mxDs=
   dependencies:
     dayjs "^1.8.16"
     resize-observer-polyfill "^1.5.1"
@@ -5192,10 +5192,10 @@ ibiz-gantt-elastic@^1.0.15:
     vue-slider-component "^3.0.40"
     vue-switches "^2.0.1"
 
-ibiz-vue-lib@^0.1.9:
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/ibiz-vue-lib/-/ibiz-vue-lib-0.1.9.tgz#d7088deb5577af3095887ca897c1710bae174682"
-  integrity sha512-CotV3xIB04+QUUeMlfsVj5BseVPQ+IHyKdwU+MXGh+2e91Nt7N/z/LElakhAiGkSpaaKoMdlKCOdhD0qqJ3wNQ==
+ibiz-vue-lib@^0.1.10:
+  version "0.1.10"
+  resolved "https://registry.npm.taobao.org/ibiz-vue-lib/download/ibiz-vue-lib-0.1.10.tgz#660f6f7fb73b5c63e3daa0921faf13c0cdc96de5"
+  integrity sha1-Zg9vf7c7XGPj2qCSH68TwM3JbeU=
   dependencies:
     axios "^0.19.2"
     core-js "^3.6.4"

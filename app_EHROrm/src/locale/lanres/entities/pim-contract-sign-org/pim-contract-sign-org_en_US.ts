@@ -17,7 +17,7 @@ export default {
 	views: {
 		redirectview: {
 			caption: "签约主体单位",
-      title: '签约主体单位',
+      title: '签约主体单位数据重定向视图',
 		},
 		gridview: {
 			caption: "法人主体设置",
@@ -25,23 +25,23 @@ export default {
 		},
 		pickupview: {
 			caption: "签约主体单位",
-      title: '签约主体单位',
+      title: '签约主体单位数据选择视图',
 		},
 		pickupgridview: {
 			caption: "签约主体单位",
-      title: '签约主体单位',
+      title: '签约主体单位选择表格视图',
 		},
 		mpickupview: {
 			caption: "签约主体单位",
-      title: '签约主体单位',
+      title: '签约主体单位数据多项选择视图',
 		},
 		editview: {
 			caption: "签约主体单位",
-      title: '签约主体单位',
+      title: '法人主体设置编辑视图',
 		},
 		editview2: {
 			caption: "签约主体单位",
-      title: '签约主体单位',
+      title: '签约主体单位编辑视图',
 		},
 	},
 	main_form: {

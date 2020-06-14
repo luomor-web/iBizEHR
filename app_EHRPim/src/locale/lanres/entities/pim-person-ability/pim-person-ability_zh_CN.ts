@@ -20,35 +20,35 @@ export default {
 	views: {
 		mgrgridview: {
 			caption: '员工能力',
-      title: '员工能力',
+      title: '员工能力管理',
 		},
 		pickupview: {
 			caption: '员工能力',
-      title: '员工能力',
+      title: '员工能力数据选择视图',
 		},
 		editview: {
 			caption: '员工能力',
-      title: '员工能力',
+      title: '员工能力编辑视图',
 		},
 		redirectview: {
 			caption: '员工能力',
-      title: '员工能力',
+      title: '员工能力数据重定向视图',
 		},
 		editview2: {
 			caption: '员工能力',
-      title: '员工能力',
+      title: '员工能力编辑视图',
 		},
 		pickupgridview: {
 			caption: '员工能力',
-      title: '员工能力',
+      title: '员工能力选择表格视图',
 		},
 		gridview: {
 			caption: '员工能力',
-      title: '员工能力',
+      title: '员工能力表格视图',
 		},
 		mpickupview: {
 			caption: '员工能力',
-      title: '员工能力',
+      title: '员工能力数据多项选择视图',
 		},
 	},
 	main_form: {

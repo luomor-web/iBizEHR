@@ -31,28 +31,28 @@ public class PimContractTypeSearchContext extends QueryWrapperContext<PimContrac
 	public void setN_lx_eq(String n_lx_eq) {
         this.n_lx_eq = n_lx_eq;
         if(!ObjectUtils.isEmpty(this.n_lx_eq)){
-            this.getSelectCond().eq("lx", n_lx_eq);
+            this.getSearchCond().eq("lx", n_lx_eq);
         }
     }
 	private String n_pimcontracttypeid_like;//[合同/协议类型管理标识]
 	public void setN_pimcontracttypeid_like(String n_pimcontracttypeid_like) {
         this.n_pimcontracttypeid_like = n_pimcontracttypeid_like;
         if(!ObjectUtils.isEmpty(this.n_pimcontracttypeid_like)){
-            this.getSelectCond().like("pimcontracttypeid", n_pimcontracttypeid_like);
+            this.getSearchCond().like("pimcontracttypeid", n_pimcontracttypeid_like);
         }
     }
 	private String n_pimcontracttypename_like;//[合同类别名称]
 	public void setN_pimcontracttypename_like(String n_pimcontracttypename_like) {
         this.n_pimcontracttypename_like = n_pimcontracttypename_like;
         if(!ObjectUtils.isEmpty(this.n_pimcontracttypename_like)){
-            this.getSelectCond().like("pimcontracttypename", n_pimcontracttypename_like);
+            this.getSearchCond().like("pimcontracttypename", n_pimcontracttypename_like);
         }
     }
 	private String n_ormorgid_eq;//[组织标识]
 	public void setN_ormorgid_eq(String n_ormorgid_eq) {
         this.n_ormorgid_eq = n_ormorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
-            this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
         }
     }
 
@@ -63,7 +63,7 @@ public class PimContractTypeSearchContext extends QueryWrapperContext<PimContrac
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimcontracttypename", query)   
             );
 		 }

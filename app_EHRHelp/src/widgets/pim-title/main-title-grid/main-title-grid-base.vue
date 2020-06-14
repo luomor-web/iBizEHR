@@ -1455,6 +1455,7 @@ export default class Main_TitleBase extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        $event.stopPropagation();
     }
 
     /**
@@ -1578,6 +1579,17 @@ export default class Main_TitleBase extends Vue implements ControlInterface {
             return Object.is(item.pimtitle,args.row.pimtitle);
         });
         return isSelected ? "grid-selected-row" : "";
+    }
+
+    /**
+     * 新建默认值
+     * @param {*}  row 行数据
+     * @memberof Main_Title
+     */
+    public createDefault(row: any){                    
+        if (row.hasOwnProperty('pimpersonid')) {
+            row['pimpersonid'] = this.viewparams['srfparentkey'];
+        }
     }
 }
 </script>

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[休假制度管理]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_VACLEAVESYSTEM",resultMap = "VacLeaveSystemResultMap")
 public class VacLeaveSystem extends EntityMP implements Serializable {
 
@@ -178,6 +179,17 @@ public class VacLeaveSystem extends EntityMP implements Serializable {
         this.yxqjs = yxqjs ;
         this.modify("yxqjs",yxqjs);
     }
+
+    /**
+     * 格式化日期 [有效期（结束）]
+     */
+    public String formatYxqjs(){
+        if (this.yxqjs == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(yxqjs);
+    }
     /**
      * 设置 [备注]
      */
@@ -185,6 +197,7 @@ public class VacLeaveSystem extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [休假制度名称]
      */
@@ -192,6 +205,7 @@ public class VacLeaveSystem extends EntityMP implements Serializable {
         this.vacleavesystemname = vacleavesystemname ;
         this.modify("vacleavesystemname",vacleavesystemname);
     }
+
     /**
      * 设置 [是否启用]
      */
@@ -199,6 +213,7 @@ public class VacLeaveSystem extends EntityMP implements Serializable {
         this.sfqy = sfqy ;
         this.modify("sfqy",sfqy);
     }
+
     /**
      * 设置 [适用年度]
      */
@@ -206,12 +221,24 @@ public class VacLeaveSystem extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [有效期（开始）]
      */
     public void setYxqks(Timestamp yxqks){
         this.yxqks = yxqks ;
         this.modify("yxqks",yxqks);
+    }
+
+    /**
+     * 格式化日期 [有效期（开始）]
+     */
+    public String formatYxqks(){
+        if (this.yxqks == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(yxqks);
     }
     /**
      * 设置 [组织标识]
@@ -220,6 +247,7 @@ public class VacLeaveSystem extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

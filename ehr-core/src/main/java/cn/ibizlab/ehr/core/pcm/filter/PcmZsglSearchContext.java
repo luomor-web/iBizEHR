@@ -31,14 +31,14 @@ public class PcmZsglSearchContext extends QueryWrapperContext<PcmZsgl> {
 	public void setN_zjname_eq(String n_zjname_eq) {
         this.n_zjname_eq = n_zjname_eq;
         if(!ObjectUtils.isEmpty(this.n_zjname_eq)){
-            this.getSelectCond().eq("zjname", n_zjname_eq);
+            this.getSearchCond().eq("zjname", n_zjname_eq);
         }
     }
 	private String n_pcmzsglname_like;//[职数管理名称]
 	public void setN_pcmzsglname_like(String n_pcmzsglname_like) {
         this.n_pcmzsglname_like = n_pcmzsglname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmzsglname_like)){
-            this.getSelectCond().like("pcmzsglname", n_pcmzsglname_like);
+            this.getSearchCond().like("pcmzsglname", n_pcmzsglname_like);
         }
     }
 
@@ -49,7 +49,7 @@ public class PcmZsglSearchContext extends QueryWrapperContext<PcmZsgl> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmzsglname", query)   
             );
 		 }

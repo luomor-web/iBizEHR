@@ -21,6 +21,7 @@
             ref='drbar' 
             :viewparams="viewparams" 
             :context="context"
+            :formData="formData"
             @selectionchange="drbar_selectionchange($event)"
             @load="drbar_load($event)"
             @closeview="closeView($event)">
@@ -330,7 +331,6 @@ export default class PcmYdntmxEditView2Base extends EditView2Base {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.form;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -359,7 +359,6 @@ export default class PcmYdntmxEditView2Base extends EditView2Base {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.form;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -388,7 +387,6 @@ export default class PcmYdntmxEditView2Base extends EditView2Base {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.form;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -417,7 +415,6 @@ export default class PcmYdntmxEditView2Base extends EditView2Base {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.form;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -446,7 +443,6 @@ export default class PcmYdntmxEditView2Base extends EditView2Base {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.form;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -475,7 +471,6 @@ export default class PcmYdntmxEditView2Base extends EditView2Base {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.form;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -504,7 +499,6 @@ export default class PcmYdntmxEditView2Base extends EditView2Base {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.form;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -725,6 +719,14 @@ export default class PcmYdntmxEditView2Base extends EditView2Base {
      * @memberof PcmYdntmxEditView2
      */
     public selection: any = {};
+
+    /**
+     * 表单数据
+     *
+     * @type {*}
+     * @memberof PcmYdntmxEditView2Base
+     */
+    public formData:any = {};
     
 }
 </script>

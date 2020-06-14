@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.attendencesetup.main_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormorgname.disabled"
   name='ormorgname'
   deMajorField='orgname'
@@ -39,12 +41,14 @@
 </i-col>
 <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.attendencesetup.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.pimpersonname.disabled"
   name='pimpersonname'
   deMajorField='pimpersonname'
@@ -64,12 +68,14 @@
 </i-col>
 <i-col v-show="detailsModel.vacholidayrulesname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='vacholidayrulesname' :itemRules="this.rules.vacholidayrulesname" class='' :caption="$t('entities.attendencesetup.main_form.details.vacholidayrulesname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.vacholidayrulesname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.vacholidayrulesname.disabled"
   name='vacholidayrulesname'
   deMajorField='vacholidayrulesname'
@@ -89,12 +95,14 @@
 </i-col>
 <i-col v-show="detailsModel.dkfs.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='dkfs' :itemRules="this.rules.dkfs" class='' :caption="$t('entities.attendencesetup.main_form.details.dkfs')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dkfs.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.dkfs" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.dkfs.disabled"  
     tag='EhrCodeList0007' 
     codelistType='STATIC'
@@ -105,14 +113,16 @@
 </i-col>
 <i-col v-show="detailsModel.allowoutwork.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='allowoutwork' :itemRules="this.rules.allowoutwork" class='' :caption="$t('entities.attendencesetup.main_form.details.allowoutwork')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.allowoutwork.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.allowoutwork"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.allowoutwork.disabled"  
   name="allowoutwork" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0054' 
   codelistType='STATIC' 
   style="">
@@ -140,6 +150,8 @@
     ]"
     :context="context"
     :viewparams="viewparams"
+    :localContext ='{}'
+    :localParam ='{}'
     parameterName='attendencesetup'
     parentName="AttEndenceSetup"  
     refviewtype='DEGRIDVIEW' 
@@ -178,6 +190,8 @@
     ]"
     :context="context"
     :viewparams="viewparams"
+    :localContext ='{}'
+    :localParam ='{}'
     parameterName='attendencesetup'
     parentName="AttEndenceSetup"  
     refviewtype='DEGRIDVIEW' 

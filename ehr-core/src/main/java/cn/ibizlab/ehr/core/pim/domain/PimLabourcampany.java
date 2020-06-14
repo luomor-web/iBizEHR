@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[劳务派遣公司管理]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMLABOURCAMPANY",resultMap = "PimLabourcampanyResultMap")
 public class PimLabourcampany extends EntityMP implements Serializable {
 
@@ -213,6 +214,7 @@ public class PimLabourcampany extends EntityMP implements Serializable {
         this.lxfs = lxfs ;
         this.modify("lxfs",lxfs);
     }
+
     /**
      * 设置 [法人]
      */
@@ -220,6 +222,7 @@ public class PimLabourcampany extends EntityMP implements Serializable {
         this.legalperosn = legalperosn ;
         this.modify("legalperosn",legalperosn);
     }
+
     /**
      * 设置 [注册资本金]
      */
@@ -227,6 +230,7 @@ public class PimLabourcampany extends EntityMP implements Serializable {
         this.regcapital = regcapital ;
         this.modify("regcapital",regcapital);
     }
+
     /**
      * 设置 [公司名称]
      */
@@ -234,6 +238,7 @@ public class PimLabourcampany extends EntityMP implements Serializable {
         this.pimlabourcampanyname = pimlabourcampanyname ;
         this.modify("pimlabourcampanyname",pimlabourcampanyname);
     }
+
     /**
      * 设置 [经营范围]
      */
@@ -241,6 +246,7 @@ public class PimLabourcampany extends EntityMP implements Serializable {
         this.jyfw = jyfw ;
         this.modify("jyfw",jyfw);
     }
+
     /**
      * 设置 [联系人]
      */
@@ -248,6 +254,7 @@ public class PimLabourcampany extends EntityMP implements Serializable {
         this.lxr = lxr ;
         this.modify("lxr",lxr);
     }
+
     /**
      * 设置 [公司简介]
      */
@@ -255,6 +262,7 @@ public class PimLabourcampany extends EntityMP implements Serializable {
         this.gsjj = gsjj ;
         this.modify("gsjj",gsjj);
     }
+
     /**
      * 设置 [联系地址]
      */
@@ -262,6 +270,7 @@ public class PimLabourcampany extends EntityMP implements Serializable {
         this.lxdz = lxdz ;
         this.modify("lxdz",lxdz);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -269,6 +278,7 @@ public class PimLabourcampany extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -276,6 +286,7 @@ public class PimLabourcampany extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

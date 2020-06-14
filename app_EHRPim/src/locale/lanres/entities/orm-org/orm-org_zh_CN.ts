@@ -35,7 +35,7 @@ export default {
 		},
 		pickupgridview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '组织管理选择表格视图',
 		},
 		allleveltwoorgpickupgridview: {
 			caption: '管理单位',
@@ -47,7 +47,7 @@ export default {
 		},
 		xjpickupgridview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '组织管理选择表格视图',
 		},
 		fpxxpickupview: {
 			caption: '组织数据选择视图',
@@ -59,7 +59,7 @@ export default {
 		},
 		allleveltwoorgpickupview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '管理单位',
 		},
 		fpxxpickupgridview: {
 			caption: '组织选择表格视图',
@@ -67,7 +67,7 @@ export default {
 		},
 		pickupview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '组织管理数据选择视图',
 		},
 		xmbqpickupview: {
 			caption: '组织数据选择视图',
@@ -75,7 +75,7 @@ export default {
 		},
 		xjpickupview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '组织管理数据选择视图',
 		},
 	},
 	main_grid: {

@@ -31,7 +31,7 @@ public class OrmRankSearchContext extends QueryWrapperContext<OrmRank> {
 	public void setN_ormrankname_like(String n_ormrankname_like) {
         this.n_ormrankname_like = n_ormrankname_like;
         if(!ObjectUtils.isEmpty(this.n_ormrankname_like)){
-            this.getSelectCond().like("ormrankname", n_ormrankname_like);
+            this.getSearchCond().like("ormrankname", n_ormrankname_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class OrmRankSearchContext extends QueryWrapperContext<OrmRank> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("ormrankname", query)   
             );
 		 }

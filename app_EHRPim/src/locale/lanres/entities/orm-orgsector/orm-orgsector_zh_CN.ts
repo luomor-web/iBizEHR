@@ -79,11 +79,11 @@ export default {
 		},
 		pickupgridview: {
 			caption: '部门管理',
-      title: '部门管理',
+      title: '部门管理选择表格视图',
 		},
 		pickupview: {
 			caption: '部门管理',
-      title: '部门管理',
+      title: '部门管理数据选择视图',
 		},
 		fpxxpickupview: {
 			caption: '部门选择',

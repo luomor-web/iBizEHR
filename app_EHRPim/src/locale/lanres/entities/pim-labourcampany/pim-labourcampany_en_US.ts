@@ -25,31 +25,31 @@ export default {
 	views: {
 		pickupview: {
 			caption: "劳务派遣公司管理",
-      title: '劳务派遣公司管理',
+      title: '劳务派遣公司管理数据选择视图',
 		},
 		mpickupview: {
 			caption: "劳务派遣公司管理",
-      title: '劳务派遣公司管理',
+      title: '劳务派遣公司管理数据多项选择视图',
 		},
 		pickupgridview: {
 			caption: "劳务派遣公司管理",
-      title: '劳务派遣公司管理',
+      title: '劳务派遣公司管理选择表格视图',
 		},
 		editview2: {
 			caption: "劳务派遣公司管理",
-      title: '劳务派遣公司管理',
+      title: '劳务派遣公司管理编辑视图',
 		},
 		editview: {
 			caption: "劳务派遣公司管理",
-      title: '劳务派遣公司管理',
+      title: '劳务派遣公司编辑视图',
 		},
 		redirectview: {
 			caption: "劳务派遣公司管理",
-      title: '劳务派遣公司管理',
+      title: '劳务派遣公司管理数据重定向视图',
 		},
 		gridview: {
 			caption: "劳务派遣公司",
-      title: '劳务派遣公司',
+      title: '劳务派遣公司表格视图',
 		},
 	},
 	main_form: {

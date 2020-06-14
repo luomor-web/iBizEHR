@@ -31,14 +31,14 @@ public class VacSituationDetailSearchContext extends QueryWrapperContext<VacSitu
 	public void setN_xjlx_eq(String n_xjlx_eq) {
         this.n_xjlx_eq = n_xjlx_eq;
         if(!ObjectUtils.isEmpty(this.n_xjlx_eq)){
-            this.getSelectCond().eq("xjlx", n_xjlx_eq);
+            this.getSearchCond().eq("xjlx", n_xjlx_eq);
         }
     }
 	private String n_vacsituationdetailname_like;//[休假明细名称]
 	public void setN_vacsituationdetailname_like(String n_vacsituationdetailname_like) {
         this.n_vacsituationdetailname_like = n_vacsituationdetailname_like;
         if(!ObjectUtils.isEmpty(this.n_vacsituationdetailname_like)){
-            this.getSelectCond().like("vacsituationdetailname", n_vacsituationdetailname_like);
+            this.getSearchCond().like("vacsituationdetailname", n_vacsituationdetailname_like);
         }
     }
 
@@ -49,7 +49,7 @@ public class VacSituationDetailSearchContext extends QueryWrapperContext<VacSitu
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("vacsituationdetailname", query)   
             );
 		 }

@@ -21,12 +21,16 @@
                 :error="error"
                 :required="required"
                 :rules="rules"
-                :class="classes"
-                :label-width="this.isShowCaption ? !Object.is(this.labelPos, 'TOP') ? this.labelWidth : null : 0">
-                    <span slot='label' v-if="this.isShowCaption && this.labelWidth > 0"  :class="labelclasses">
-                        {{this.isEmptyCaption ? '' : this.caption}}
-                    </span>
+                :class="classes">
+                  <div v-if="Object.is(this.labelPos,'BOTTOM') || Object.is(this.labelPos,'NONE') || !this.labelPos" class="slot-editor" :style="slotstyle">
                     <slot></slot>
+                  </div>
+                  <span v-if="!Object.is(this.labelPos,'NONE') && this.isShowCaption && this.labelWidth > 0" :style="labelstyle"  :class="labelclasses">
+                      {{this.isEmptyCaption ? '' : this.caption}}
+                  </span>
+                  <div v-if="Object.is(this.labelPos,'TOP') || Object.is(this.labelPos,'LEFT') || Object.is(this.labelPos,'RIGHT')" class="slot-editor" :style="slotstyle">
+                    <slot></slot>
+                  </div>
             </form-item>
         </div>
     </div>
@@ -167,9 +171,27 @@ export default class AppFormItem extends Vue {
      * @memberof AppFormItem
      */
     get classes(): string[] {
+        let posClass = '';
+        switch (this.labelPos) {
+          case 'TOP':
+            posClass = 'app-form-item-label-top';
+            break;
+          case 'LEFT':
+            posClass = 'app-form-item-label-left';
+            break;
+          case 'BOTTOM':
+            posClass = 'app-form-item-label-bottom';
+            break;
+          case 'RIGHT':
+            posClass = 'app-form-item-label-right';
+            break;
+          case 'NONE':
+            posClass = 'app-form-item-label-none';
+            break;
+        }
         return [
             'app-form-item',
-            Object.is(this.labelPos, 'TOP') ? 'app-form-item-label-top' : ''
+            posClass
         ];
     }
 
@@ -181,7 +203,33 @@ export default class AppFormItem extends Vue {
      * @memberof AppFormItem
      */
     get labelclasses():string{
-        return this.labelStyle?this.labelStyle:'';
+        return this.labelStyle?this.labelStyle+' app-form-item-label':'app-form-item-label';
+    }
+
+    /**
+     * label行内样式
+     *
+     * @readonly
+     * @type {string}
+     * @memberof AppFormItem
+     */
+    get labelstyle():any{
+        return {width:this.labelWidth+'px'};
+    }
+
+    /**
+     * slot行内样式
+     *
+     * @readonly
+     * @type {string}
+     * @memberof AppFormItem
+     */
+    get slotstyle():any{
+      if(Object.is(this.labelPos,'LEFT')){
+          return {marginLeft:this.labelWidth+'px'};
+      }else if(Object.is(this.labelPos,'RIGHT')){
+          return {marginRight:this.labelWidth+'px'};
+      }
     }
 
     /**

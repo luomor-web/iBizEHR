@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[见习生变动记录]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMJXSBDJL",resultMap = "PcmJxsbdjlResultMap")
 public class PcmJxsbdjl extends EntityMP implements Serializable {
 
@@ -250,12 +251,24 @@ public class PcmJxsbdjl extends EntityMP implements Serializable {
         this.pcmjxsbdjlname = pcmjxsbdjlname ;
         this.modify("pcmjxsbdjlname",pcmjxsbdjlname);
     }
+
     /**
      * 设置 [变动结束时间]
      */
     public void setBdsjsj(Timestamp bdsjsj){
         this.bdsjsj = bdsjsj ;
         this.modify("bdsjsj",bdsjsj);
+    }
+
+    /**
+     * 格式化日期 [变动结束时间]
+     */
+    public String formatBdsjsj(){
+        if (this.bdsjsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(bdsjsj);
     }
     /**
      * 设置 [变动起始时间]
@@ -264,6 +277,17 @@ public class PcmJxsbdjl extends EntityMP implements Serializable {
         this.bdqssj = bdqssj ;
         this.modify("bdqssj",bdqssj);
     }
+
+    /**
+     * 格式化日期 [变动起始时间]
+     */
+    public String formatBdqssj(){
+        if (this.bdqssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(bdqssj);
+    }
     /**
      * 设置 [变动情况说明]
      */
@@ -271,6 +295,7 @@ public class PcmJxsbdjl extends EntityMP implements Serializable {
         this.bdqksm = bdqksm ;
         this.modify("bdqksm",bdqksm);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -278,6 +303,7 @@ public class PcmJxsbdjl extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [岗位管理标识]
      */
@@ -285,6 +311,7 @@ public class PcmJxsbdjl extends EntityMP implements Serializable {
         this.ormpostid = ormpostid ;
         this.modify("ormpostid",ormpostid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -292,6 +319,7 @@ public class PcmJxsbdjl extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -299,6 +327,7 @@ public class PcmJxsbdjl extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
 
 }
 

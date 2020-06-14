@@ -17,19 +17,19 @@ export default {
 	views: {
 		pickupgridview: {
 			caption: '部门岗位编制',
-      title: '部门岗位编制',
+      title: '部门岗位编制选择表格视图',
 		},
 		redirectview: {
 			caption: '部门岗位编制',
-      title: '部门岗位编制',
+      title: '部门岗位编制数据重定向视图',
 		},
 		editview2: {
 			caption: '部门岗位编制',
-      title: '部门岗位编制',
+      title: '部门岗位编制编辑视图',
 		},
 		pickupview: {
 			caption: '部门岗位编制',
-      title: '部门岗位编制',
+      title: '部门岗位编制数据选择视图',
 		},
 		editview: {
 			caption: '岗位编制明细',
@@ -37,7 +37,7 @@ export default {
 		},
 		mpickupview: {
 			caption: '部门岗位编制',
-      title: '部门岗位编制',
+      title: '部门岗位编制数据多项选择视图',
 		},
 		gridview: {
 			caption: '岗位编制明细',

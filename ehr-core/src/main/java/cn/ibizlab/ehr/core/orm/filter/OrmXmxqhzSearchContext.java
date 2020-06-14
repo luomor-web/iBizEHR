@@ -31,21 +31,21 @@ public class OrmXmxqhzSearchContext extends QueryWrapperContext<OrmXmxqhz> {
 	public void setN_nd_eq(String n_nd_eq) {
         this.n_nd_eq = n_nd_eq;
         if(!ObjectUtils.isEmpty(this.n_nd_eq)){
-            this.getSelectCond().eq("nd", n_nd_eq);
+            this.getSearchCond().eq("nd", n_nd_eq);
         }
     }
 	private String n_ormxmxqhzname_like;//[标题]
 	public void setN_ormxmxqhzname_like(String n_ormxmxqhzname_like) {
         this.n_ormxmxqhzname_like = n_ormxmxqhzname_like;
         if(!ObjectUtils.isEmpty(this.n_ormxmxqhzname_like)){
-            this.getSelectCond().like("ormxmxqhzname", n_ormxmxqhzname_like);
+            this.getSearchCond().like("ormxmxqhzname", n_ormxmxqhzname_like);
         }
     }
 	private String n_yf_eq;//[月份]
 	public void setN_yf_eq(String n_yf_eq) {
         this.n_yf_eq = n_yf_eq;
         if(!ObjectUtils.isEmpty(this.n_yf_eq)){
-            this.getSelectCond().eq("yf", n_yf_eq);
+            this.getSearchCond().eq("yf", n_yf_eq);
         }
     }
 
@@ -56,7 +56,7 @@ public class OrmXmxqhzSearchContext extends QueryWrapperContext<OrmXmxqhz> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("ormxmxqhzname", query)   
             );
 		 }

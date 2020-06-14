@@ -43,7 +43,7 @@ export default {
 		},
 		gridview: {
 			caption: "请假明细",
-      title: '请假明细',
+      title: '请销假明细表格视图',
 		},
 	},
 	jhqjmx_form: {

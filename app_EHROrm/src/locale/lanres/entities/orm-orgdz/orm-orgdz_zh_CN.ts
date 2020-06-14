@@ -14,11 +14,11 @@ export default {
 	views: {
 		editview2: {
 			caption: '组织地址维护',
-      title: '组织地址维护',
+      title: '组织地址维护编辑视图',
 		},
 		redirectview: {
 			caption: '组织地址维护',
-      title: '组织地址维护',
+      title: '组织地址维护数据重定向视图',
 		},
 		gridview: {
 			caption: '地址信息',
@@ -26,19 +26,19 @@ export default {
 		},
 		mpickupview: {
 			caption: '组织地址维护',
-      title: '组织地址维护',
+      title: '组织地址维护数据多项选择视图',
 		},
 		pickupgridview: {
 			caption: '组织地址维护',
-      title: '组织地址维护',
+      title: '组织地址维护选择表格视图',
 		},
 		editview: {
 			caption: '组织地址维护',
-      title: '组织地址维护',
+      title: '组织地址维护编辑视图',
 		},
 		pickupview: {
 			caption: '组织地址维护',
-      title: '组织地址维护',
+      title: '组织地址维护数据选择视图',
 		},
 	},
 	main_form: {

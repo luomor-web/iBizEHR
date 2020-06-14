@@ -24,12 +24,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_zcdj_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_zcdj_eq' :itemRules="this.rules.n_zcdj_eq" class='' :caption="$t('entities.pimtitle.default_2_searchform.details.n_zcdj_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_zcdj_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_zcdj_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_zcdj_eq.disabled"  
               tag='EhrCodeList0024' 
               codelistType='DYNAMIC'
@@ -40,12 +42,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_sfzgzc_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_sfzgzc_eq' :itemRules="this.rules.n_sfzgzc_eq" class='' :caption="$t('entities.pimtitle.default_2_searchform.details.n_sfzgzc_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_sfzgzc_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
             v-model="data.n_sfzgzc_eq" 
             :data="data" 
             :context="context"
             :viewparams="viewparams"
-            :itemParam="{}" 
+            :localContext ='{ }' 
+            :localParam ='{ }' 
             :disabled="detailsModel.n_sfzgzc_eq.disabled" 
             style="width: 100px;" 
             tag='EhrCodeList0400' 

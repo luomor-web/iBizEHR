@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[分配信息]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMDISTIRBUTION",resultMap = "PimDistirbutionResultMap")
 public class PimDistirbution extends EntityMP implements Serializable {
 
@@ -516,6 +517,17 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.rzjssj = rzjssj ;
         this.modify("rzjssj",rzjssj);
     }
+
+    /**
+     * 格式化日期 [任职结束时间]
+     */
+    public String formatRzjssj(){
+        if (this.rzjssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(rzjssj);
+    }
     /**
      * 设置 [分配状态]
      */
@@ -523,6 +535,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.fpzt = fpzt ;
         this.modify("fpzt",fpzt);
     }
+
     /**
      * 设置 [日志内容]
      */
@@ -530,12 +543,24 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.logcontent = logcontent ;
         this.modify("logcontent",logcontent);
     }
+
     /**
      * 设置 [任职开始时间]
      */
     public void setRzkssj(Timestamp rzkssj){
         this.rzkssj = rzkssj ;
         this.modify("rzkssj",rzkssj);
+    }
+
+    /**
+     * 格式化日期 [任职开始时间]
+     */
+    public String formatRzkssj(){
+        if (this.rzkssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(rzkssj);
     }
     /**
      * 设置 [原职务]
@@ -544,6 +569,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.yzw = yzw ;
         this.modify("yzw",yzw);
     }
+
     /**
      * 设置 [履历说明]
      */
@@ -551,6 +577,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.record = record ;
         this.modify("record",record);
     }
+
     /**
      * 设置 [备注]
      */
@@ -558,6 +585,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [工作地区]
      */
@@ -565,6 +593,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.gzdq = gzdq ;
         this.modify("gzdq",gzdq);
     }
+
     /**
      * 设置 [履历id]
      */
@@ -572,6 +601,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.pimworkhistoryid = pimworkhistoryid ;
         this.modify("pimworkhistoryid",pimworkhistoryid);
     }
+
     /**
      * 设置 [外单位履历]
      */
@@ -579,6 +609,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.isoutrecord = isoutrecord ;
         this.modify("isoutrecord",isoutrecord);
     }
+
     /**
      * 设置 [分配信息名称]
      */
@@ -586,6 +617,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.pimdistirbutionname = pimdistirbutionname ;
         this.modify("pimdistirbutionname",pimdistirbutionname);
     }
+
     /**
      * 设置 [分配]
      */
@@ -593,6 +625,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.fplx = fplx ;
         this.modify("fplx",fplx);
     }
+
     /**
      * 设置 [是否主要经历]
      */
@@ -600,6 +633,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.experience = experience ;
         this.modify("experience",experience);
     }
+
     /**
      * 设置 [异动明细id]
      */
@@ -607,6 +641,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.ydmxid = ydmxid ;
         this.modify("ydmxid",ydmxid);
     }
+
     /**
      * 设置 [工作地点]
      */
@@ -614,6 +649,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.gzdd = gzdd ;
         this.modify("gzdd",gzdd);
     }
+
     /**
      * 设置 [原岗位]
      */
@@ -621,6 +657,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.ygw = ygw ;
         this.modify("ygw",ygw);
     }
+
     /**
      * 设置 [类型]
      */
@@ -628,6 +665,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.cfplx = cfplx ;
         this.modify("cfplx",cfplx);
     }
+
     /**
      * 设置 [职级]
      */
@@ -635,6 +673,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.rank = rank ;
         this.modify("rank",rank);
     }
+
     /**
      * 设置 [岗位]
      */
@@ -642,6 +681,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.ormpostname = ormpostname ;
         this.modify("ormpostname",ormpostname);
     }
+
     /**
      * 设置 [原组织]
      */
@@ -649,6 +689,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.yzz = yzz ;
         this.modify("yzz",yzz);
     }
+
     /**
      * 设置 [组织]
      */
@@ -656,6 +697,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.ormorgname = ormorgname ;
         this.modify("ormorgname",ormorgname);
     }
+
     /**
      * 设置 [员工编号]
      */
@@ -663,6 +705,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [部门]
      */
@@ -670,6 +713,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.ormorgsectorname = ormorgsectorname ;
         this.modify("ormorgsectorname",ormorgsectorname);
     }
+
     /**
      * 设置 [职务]
      */
@@ -677,6 +721,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.ormdutyname = ormdutyname ;
         this.modify("ormdutyname",ormdutyname);
     }
+
     /**
      * 设置 [原部门]
      */
@@ -684,6 +729,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.ybm = ybm ;
         this.modify("ybm",ybm);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -691,6 +737,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.ybmid = ybmid ;
         this.modify("ybmid",ybmid);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -698,6 +745,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [岗位管理标识]
      */
@@ -705,6 +753,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.ormpostid1 = ormpostid1 ;
         this.modify("ormpostid1",ormpostid1);
     }
+
     /**
      * 设置 [岗位管理标识]
      */
@@ -712,6 +761,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.ormpostid = ormpostid ;
         this.modify("ormpostid",ormpostid);
     }
+
     /**
      * 设置 [职务管理标识]
      */
@@ -719,6 +769,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.ormdutyid = ormdutyid ;
         this.modify("ormdutyid",ormdutyid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -726,6 +777,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.yzzid = yzzid ;
         this.modify("yzzid",yzzid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -733,6 +785,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -740,6 +793,7 @@ public class PimDistirbution extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

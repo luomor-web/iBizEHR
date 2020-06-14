@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[统一身份库]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_UNITEDPERSON",resultMap = "OrmUnitedPersonResultMap")
 public class OrmUnitedPerson extends EntityMP implements Serializable {
 
@@ -177,6 +178,7 @@ public class OrmUnitedPerson extends EntityMP implements Serializable {
         this.username = username ;
         this.modify("username",username);
     }
+
     /**
      * 设置 [身份名称]
      */
@@ -184,6 +186,7 @@ public class OrmUnitedPerson extends EntityMP implements Serializable {
         this.unitedpersonname = unitedpersonname ;
         this.modify("unitedpersonname",unitedpersonname);
     }
+
     /**
      * 设置 [是否局员工]
      */
@@ -191,6 +194,7 @@ public class OrmUnitedPerson extends EntityMP implements Serializable {
         this.isemployee = isemployee ;
         this.modify("isemployee",isemployee);
     }
+
     /**
      * 设置 [引用标志]
      */
@@ -198,6 +202,7 @@ public class OrmUnitedPerson extends EntityMP implements Serializable {
         this.refermark = refermark ;
         this.modify("refermark",refermark);
     }
+
     /**
      * 设置 [性别]
      */
@@ -205,6 +210,7 @@ public class OrmUnitedPerson extends EntityMP implements Serializable {
         this.sex = sex ;
         this.modify("sex",sex);
     }
+
     /**
      * 设置 [姓名]
      */
@@ -212,6 +218,7 @@ public class OrmUnitedPerson extends EntityMP implements Serializable {
         this.employeename = employeename ;
         this.modify("employeename",employeename);
     }
+
     /**
      * 设置 [全名]
      */
@@ -219,6 +226,7 @@ public class OrmUnitedPerson extends EntityMP implements Serializable {
         this.fullname = fullname ;
         this.modify("fullname",fullname);
     }
+
     /**
      * 设置 [用户ID]
      */
@@ -226,6 +234,7 @@ public class OrmUnitedPerson extends EntityMP implements Serializable {
         this.empid = empid ;
         this.modify("empid",empid);
     }
+
     /**
      * 设置 [EHR人员id]
      */
@@ -233,6 +242,7 @@ public class OrmUnitedPerson extends EntityMP implements Serializable {
         this.ehrempid = ehrempid ;
         this.modify("ehrempid",ehrempid);
     }
+
     /**
      * 设置 [证件号码]
      */
@@ -240,6 +250,7 @@ public class OrmUnitedPerson extends EntityMP implements Serializable {
         this.idnumber = idnumber ;
         this.modify("idnumber",idnumber);
     }
+
     /**
      * 设置 [用户编码]
      */
@@ -247,6 +258,7 @@ public class OrmUnitedPerson extends EntityMP implements Serializable {
         this.employeenumber = employeenumber ;
         this.modify("employeenumber",employeenumber);
     }
+
 
 }
 

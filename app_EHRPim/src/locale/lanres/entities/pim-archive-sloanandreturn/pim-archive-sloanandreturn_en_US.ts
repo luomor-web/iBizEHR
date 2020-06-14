@@ -27,31 +27,31 @@ export default {
 	views: {
 		pickupgridview: {
 			caption: "档案借阅及归还记录",
-      title: '档案借阅及归还记录',
+      title: '档案借阅及归还记录选择表格视图',
 		},
 		redirectview: {
 			caption: "档案借阅及归还记录",
-      title: '档案借阅及归还记录',
+      title: '档案借阅及归还记录数据重定向视图',
 		},
 		editview2: {
 			caption: "档案借阅及归还记录",
-      title: '档案借阅及归还记录',
+      title: '档案借阅及归还记录编辑视图',
 		},
 		editview: {
 			caption: "档案借阅及归还记录",
-      title: '档案借阅及归还记录',
+      title: '档案借阅及归还记录编辑视图',
 		},
 		pickupview: {
 			caption: "档案借阅及归还记录",
-      title: '档案借阅及归还记录',
+      title: '档案借阅及归还记录数据选择视图',
 		},
 		gridview: {
 			caption: "借阅记录",
-      title: '借阅记录',
+      title: '借阅记录表格视图',
 		},
 		mpickupview: {
 			caption: "档案借阅及归还记录",
-      title: '档案借阅及归还记录',
+      title: '档案借阅及归还记录数据多项选择视图',
 		},
 	},
 	main_form: {

@@ -45,12 +45,20 @@ export default class AppMpicker extends Vue {
     @Prop() curvalue?: any;
 
     /**
-     * 表单项参数
+     * 局部上下文导航参数
      * 
      * @type {any}
-     * @memberof AppPicker
+     * @memberof AppMpicker
      */
-    @Prop() public itemParam: any;
+    @Prop() public localContext!:any;
+
+    /**
+     * 局部导航参数
+     * 
+     * @type {any}
+     * @memberof AppMpicker
+     */
+    @Prop() public localParam!:any;
 
     /**
      * 表单项名称
@@ -61,7 +69,7 @@ export default class AppMpicker extends Vue {
      * 视图上下文
      *
      * @type {*}
-     * @memberof AppFormDRUIPart
+     * @memberof AppMpicker
      */
     @Prop() public context!: any;
 
@@ -69,7 +77,7 @@ export default class AppMpicker extends Vue {
      * 视图参数
      *
      * @type {*}
-     * @memberof AppFormDRUIPart
+     * @memberof AppMpicker
      */
     @Prop() public viewparams!: any;
 
@@ -77,7 +85,7 @@ export default class AppMpicker extends Vue {
      * AC参数
      *
      * @type {*}
-     * @memberof AppFormDRUIPart
+     * @memberof AppMpicker
      */
     @Prop({default: () => {}}) public acParams?: any;
 
@@ -85,7 +93,7 @@ export default class AppMpicker extends Vue {
      * 应用实体主信息属性名称
      *
      * @type {string}
-     * @memberof AppAutocomplete
+     * @memberof AppMpicker
      */
     @Prop({default: 'srfmajortext'}) public deMajorField!: string;
 
@@ -93,7 +101,7 @@ export default class AppMpicker extends Vue {
      * 应用实体主键属性名称
      *
      * @type {string}
-     * @memberof AppAutocomplete
+     * @memberof AppMpicker
      */
     @Prop({default: 'srfkey'}) public deKeyField!: string;
 
@@ -101,7 +109,7 @@ export default class AppMpicker extends Vue {
      * 表单服务
      *
      * @type {*}
-     * @memberof AppFormDRUIPart
+     * @memberof AppMpicker
      */
     @Prop() public service?: any;
 
@@ -242,19 +250,19 @@ export default class AppMpicker extends Vue {
      */
     public handlePublicParams(arg: any): boolean {
         if (!this.activeData) {
-            this.$Notice.error({ title: (this.$t('components.appPicker.error') as any), desc: (this.$t('components.appPicker.formdataException') as any) });
+            this.$Notice.error({ title: (this.$t('components.AppMpicker.error') as any), desc: (this.$t('components.AppMpicker.formdataException') as any) });
             return false;
         }
         // 合并表单参数
         arg.param = this.viewparams ? JSON.parse(JSON.stringify(this.viewparams)) : {};
         arg.context = this.context ? JSON.parse(JSON.stringify(this.context)) : {};
         // 附加参数处理
-        if (this.itemParam && this.itemParam.context) {
-          let _context = this.$util.formatData(this.activeData,arg.context,this.itemParam.context);
+        if (this.localContext && Object.keys(this.localContext).length >0) {
+            let _context = this.$util.computedNavData(this.activeData,arg.context,arg.param,this.localContext);
             Object.assign(arg.context,_context);
         }
-        if (this.itemParam  && this.itemParam.param) {
-          let _param = this.$util.formatData(this.activeData,arg.param,this.itemParam.param);
+        if (this.localParam && Object.keys(this.localParam).length >0) {
+            let _param = this.$util.computedNavData(this.activeData,arg.param,arg.param,this.localParam);
             Object.assign(arg.param,_param);
         }
         return true;

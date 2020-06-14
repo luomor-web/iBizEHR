@@ -35,31 +35,31 @@ export default {
 	views: {
 		personinfogridview: {
 			caption: "工作履历",
-      title: '工作履历',
+      title: '工作履历表格视图',
 		},
 		greditview: {
 			caption: "工作履历",
-      title: '工作履历',
+      title: '工作履历编辑视图',
 		},
 		redirectview: {
 			caption: "工作履历",
-      title: '工作履历',
+      title: '工作履历数据重定向视图',
 		},
 		gridview: {
 			caption: "工作履历",
-      title: '工作履历',
+      title: '工作履历表格视图',
 		},
 		mpickupview: {
 			caption: "工作履历",
-      title: '工作履历',
+      title: '工作履历数据多项选择视图',
 		},
 		pimworkgridview: {
 			caption: "工作履历",
-      title: '工作履历',
+      title: '工作履历表格视图',
 		},
 		pickupgridview: {
 			caption: "工作履历",
-      title: '工作履历',
+      title: '工作履历选择表格视图',
 		},
 		fazzsygridview: {
 			caption: "工作履历",
@@ -67,15 +67,15 @@ export default {
 		},
 		pickupview: {
 			caption: "工作履历",
-      title: '工作履历',
+      title: '工作履历数据选择视图',
 		},
 		editview2: {
 			caption: "工作履历",
-      title: '工作履历',
+      title: '工作履历编辑视图',
 		},
 		grpimworkgridview: {
 			caption: "工作履历",
-      title: '工作履历',
+      title: '工作履历表格视图',
 		},
 		gbllgridview: {
 			caption: "工作履历",
@@ -83,7 +83,7 @@ export default {
 		},
 		editview: {
 			caption: "工作履历",
-      title: '工作履历',
+      title: '工作履历编辑视图',
 		},
 	},
 	main_form: {

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[绩效量化目标]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PARJXLHMB",resultMap = "ParJxlhmbResultMap")
 public class ParJxlhmb extends EntityMP implements Serializable {
 
@@ -163,6 +164,7 @@ public class ParJxlhmb extends EntityMP implements Serializable {
         this.khlx = khlx ;
         this.modify("khlx",khlx);
     }
+
     /**
      * 设置 [年度]
      */
@@ -170,12 +172,24 @@ public class ParJxlhmb extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [结束时间]
      */
     public void setJssj(Timestamp jssj){
         this.jssj = jssj ;
         this.modify("jssj",jssj);
+    }
+
+    /**
+     * 格式化日期 [结束时间]
+     */
+    public String formatJssj(){
+        if (this.jssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(jssj);
     }
     /**
      * 设置 [开始时间]
@@ -184,6 +198,17 @@ public class ParJxlhmb extends EntityMP implements Serializable {
         this.kssj = kssj ;
         this.modify("kssj",kssj);
     }
+
+    /**
+     * 格式化日期 [开始时间]
+     */
+    public String formatKssj(){
+        if (this.kssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(kssj);
+    }
     /**
      * 设置 [绩效量化目标名称]
      */
@@ -191,6 +216,7 @@ public class ParJxlhmb extends EntityMP implements Serializable {
         this.parjxlhmbname = parjxlhmbname ;
         this.modify("parjxlhmbname",parjxlhmbname);
     }
+
     /**
      * 设置 [员工ID]
      */
@@ -198,6 +224,7 @@ public class ParJxlhmb extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

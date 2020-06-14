@@ -38,11 +38,11 @@ export default {
 	views: {
 		mpickupview: {
 			caption: "异动病休明细",
-      title: '异动病休明细',
+      title: '异动病休明细数据多项选择视图',
 		},
 		bxjsrqqreditview: {
 			caption: "异动病休明细",
-      title: '异动病休明细',
+      title: '请确认/修改病休结束日期',
 		},
 		bxglgridview: {
 			caption: "病休管理",
@@ -50,15 +50,15 @@ export default {
 		},
 		gridview: {
 			caption: "异动病休明细",
-      title: '异动病休明细',
+      title: '异动病休明细表格视图',
 		},
 		pickupgridview: {
 			caption: "异动病休明细",
-      title: '异动病休明细',
+      title: '异动病休明细选择表格视图',
 		},
 		editview: {
 			caption: "异动病休明细",
-      title: '异动病休明细',
+      title: '异动病休明细编辑视图',
 		},
 		editview9: {
 			caption: "病休明细信息",
@@ -66,7 +66,7 @@ export default {
 		},
 		redirectview: {
 			caption: "异动病休明细",
-      title: '异动病休明细',
+      title: '异动病休明细数据重定向视图',
 		},
 		jlgridview: {
 			caption: "病休记录",
@@ -74,11 +74,11 @@ export default {
 		},
 		xzeditview: {
 			caption: "异动病休明细",
-      title: '异动病休明细',
+      title: '新增病休',
 		},
 		pickupview: {
 			caption: "异动病休明细",
-      title: '异动病休明细',
+      title: '异动病休明细数据选择视图',
 		},
 		ckeditview: {
 			caption: "异动病休明细",
@@ -86,7 +86,7 @@ export default {
 		},
 		editview2: {
 			caption: "异动病休明细",
-      title: '异动病休明细',
+      title: '异动病休明细编辑视图',
 		},
 	},
 	bxjsrqqr_form: {

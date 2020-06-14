@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[部门需求汇总]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_TRMTRAINDEMAND",resultMap = "TrmTrainDemandResultMap")
 public class TrmTrainDemand extends EntityMP implements Serializable {
 
@@ -149,6 +150,7 @@ public class TrmTrainDemand extends EntityMP implements Serializable {
         this.hznd = hznd ;
         this.modify("hznd",hznd);
     }
+
     /**
      * 设置 [汇总季度]
      */
@@ -156,6 +158,7 @@ public class TrmTrainDemand extends EntityMP implements Serializable {
         this.hzjd = hzjd ;
         this.modify("hzjd",hzjd);
     }
+
     /**
      * 设置 [汇总人数]
      */
@@ -163,6 +166,7 @@ public class TrmTrainDemand extends EntityMP implements Serializable {
         this.hzrs = hzrs ;
         this.modify("hzrs",hzrs);
     }
+
     /**
      * 设置 [需求汇总]
      */
@@ -170,6 +174,7 @@ public class TrmTrainDemand extends EntityMP implements Serializable {
         this.trmtraindemandname = trmtraindemandname ;
         this.modify("trmtraindemandname",trmtraindemandname);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -177,6 +182,7 @@ public class TrmTrainDemand extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

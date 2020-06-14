@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[开票信息]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_TRMINVOICE",resultMap = "TrmInvoiceResultMap")
 public class TrmInvoice extends EntityMP implements Serializable {
 
@@ -184,6 +185,7 @@ public class TrmInvoice extends EntityMP implements Serializable {
         this.dz = dz ;
         this.modify("dz",dz);
     }
+
     /**
      * 设置 [开票人]
      */
@@ -191,6 +193,7 @@ public class TrmInvoice extends EntityMP implements Serializable {
         this.kpr = kpr ;
         this.modify("kpr",kpr);
     }
+
     /**
      * 设置 [开票类型]
      */
@@ -198,6 +201,7 @@ public class TrmInvoice extends EntityMP implements Serializable {
         this.kplx = kplx ;
         this.modify("kplx",kplx);
     }
+
     /**
      * 设置 [开户行账号]
      */
@@ -205,6 +209,7 @@ public class TrmInvoice extends EntityMP implements Serializable {
         this.khhzh = khhzh ;
         this.modify("khhzh",khhzh);
     }
+
     /**
      * 设置 [开户行]
      */
@@ -212,6 +217,7 @@ public class TrmInvoice extends EntityMP implements Serializable {
         this.khh = khh ;
         this.modify("khh",khh);
     }
+
     /**
      * 设置 [开票名称]
      */
@@ -219,6 +225,7 @@ public class TrmInvoice extends EntityMP implements Serializable {
         this.trminvoicename = trminvoicename ;
         this.modify("trminvoicename",trminvoicename);
     }
+
     /**
      * 设置 [纳税人识别号]
      */
@@ -226,6 +233,7 @@ public class TrmInvoice extends EntityMP implements Serializable {
         this.nsrsbh = nsrsbh ;
         this.modify("nsrsbh",nsrsbh);
     }
+
     /**
      * 设置 [电话]
      */
@@ -233,6 +241,7 @@ public class TrmInvoice extends EntityMP implements Serializable {
         this.dh = dh ;
         this.modify("dh",dh);
     }
+
     /**
      * 设置 [备注]
      */
@@ -240,6 +249,7 @@ public class TrmInvoice extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [培训机构标识]
      */
@@ -247,6 +257,7 @@ public class TrmInvoice extends EntityMP implements Serializable {
         this.trmtrainagencyid = trmtrainagencyid ;
         this.modify("trmtrainagencyid",trmtrainagencyid);
     }
+
 
 }
 

@@ -22,7 +22,7 @@ export default {
 		},
 		editview: {
 			caption: '考勤部门',
-      title: '考勤部门',
+      title: '考勤部门编辑视图',
 		},
 	},
 	main_form: {

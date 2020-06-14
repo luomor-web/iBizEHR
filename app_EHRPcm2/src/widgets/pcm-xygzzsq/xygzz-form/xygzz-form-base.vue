@@ -58,6 +58,8 @@
     ]"
     :context="context"
     :viewparams="viewparams"
+    :localContext ='{}'
+    :localParam ='{}'
     parameterName='pcmxygzzsq'
     parentName="PcmXygzzsq"  
     refviewtype='DEGRIDVIEW' 

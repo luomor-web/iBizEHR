@@ -161,27 +161,27 @@ export default {
 		},
 		bylygpickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: 'B/Y类员工选择视图',
 		},
 		yxzfppickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '员工库',
 		},
 		mpickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息数据多项选择视图',
 		},
 		pickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息选择表格视图',
 		},
 		txrypickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '选择退休人员',
 		},
 		kxzxygpickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '试用期员工',
 		},
 		txglgridview: {
 			caption: '退休管理',
@@ -189,15 +189,15 @@ export default {
 		},
 		kxzxygpickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息选择表格视图',
 		},
 		txrypickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '退休人员',
 		},
 		bylygpickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: 'B/Y类员工',
 		},
 		curorgpimpersonpickupgridview: {
 			caption: '人员信息',
@@ -205,19 +205,19 @@ export default {
 		},
 		yxzfppickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '有效主分配的人员',
 		},
 		txryeditview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '退休人员信息',
 		},
 		txqreditview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '请确认/修改退休信息',
 		},
 		editview9: {
 			caption: '退休人员信息',
-      title: '退休人员信息',
+      title: '人员信息编辑视图（退休）',
 		},
 		curorgpimpersonpickupview: {
 			caption: '人员信息',
@@ -225,15 +225,15 @@ export default {
 		},
 		jxqpickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '见习期员工',
 		},
 		jxspickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '见习生选择视图',
 		},
 		pickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息数据选择视图',
 		},
 		sqjxqzzgridview: {
 			caption: '见习期转正申请',

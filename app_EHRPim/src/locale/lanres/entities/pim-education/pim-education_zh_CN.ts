@@ -53,19 +53,19 @@ export default {
 		},
 		editview2: {
 			caption: '教育信息',
-      title: '教育信息',
+      title: '教育信息编辑视图',
 		},
 		pickupview: {
 			caption: '教育信息',
-      title: '教育信息',
+      title: '教育信息数据选择视图',
 		},
 		editview: {
 			caption: '教育信息',
-      title: '教育信息',
+      title: '教育信息编辑视图',
 		},
 		greditview: {
 			caption: '教育信息',
-      title: '教育信息',
+      title: '教育信息编辑视图',
 		},
 		fazzsygridview: {
 			caption: '教育背景',
@@ -73,15 +73,15 @@ export default {
 		},
 		grpimedugridview: {
 			caption: '教育信息',
-      title: '教育信息',
+      title: '教育信息表格视图',
 		},
 		pimedugridview: {
 			caption: '教育信息',
-      title: '教育信息',
+      title: '教育信息表格视图',
 		},
 		gridview: {
 			caption: '教育信息',
-      title: '教育信息',
+      title: '教育信息表格视图',
 		},
 		xlgridview: {
 			caption: '学历',
@@ -89,15 +89,15 @@ export default {
 		},
 		mpickupview: {
 			caption: '教育信息',
-      title: '教育信息',
+      title: '教育信息数据多项选择视图',
 		},
 		pickupgridview: {
 			caption: '教育信息',
-      title: '教育信息',
+      title: '教育信息选择表格视图',
 		},
 		redirectview: {
 			caption: '教育信息',
-      title: '教育信息',
+      title: '教育信息数据重定向视图',
 		},
 	},
 	main_form: {

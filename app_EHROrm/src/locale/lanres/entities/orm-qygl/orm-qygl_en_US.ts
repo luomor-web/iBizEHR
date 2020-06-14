@@ -19,11 +19,11 @@ export default {
 		},
 		mpickupview: {
 			caption: "补贴标准",
-      title: '补贴标准',
+      title: '区域管理数据多项选择视图',
 		},
 		editview2: {
 			caption: "补贴标准",
-      title: '补贴标准',
+      title: '区域管理编辑视图',
 		},
 		gridview: {
 			caption: "区域补贴",
@@ -39,7 +39,7 @@ export default {
 		},
 		redirectview: {
 			caption: "补贴标准",
-      title: '补贴标准',
+      title: '区域管理数据重定向视图',
 		},
 	},
 	main_form: {

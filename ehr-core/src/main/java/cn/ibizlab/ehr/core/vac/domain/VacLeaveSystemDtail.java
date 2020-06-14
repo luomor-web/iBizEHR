@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[休假制度明细]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_VACLEAVESYSTEMDETAIL",resultMap = "VacLeaveSystemDtailResultMap")
 public class VacLeaveSystemDtail extends EntityMP implements Serializable {
 
@@ -148,6 +149,7 @@ public class VacLeaveSystemDtail extends EntityMP implements Serializable {
         this.vacleavesystemdetailname = vacleavesystemdetailname ;
         this.modify("vacleavesystemdetailname",vacleavesystemdetailname);
     }
+
     /**
      * 设置 [休假类型]
      */
@@ -155,6 +157,7 @@ public class VacLeaveSystemDtail extends EntityMP implements Serializable {
         this.xjlx = xjlx ;
         this.modify("xjlx",xjlx);
     }
+
     /**
      * 设置 [休假规则]
      */
@@ -162,6 +165,7 @@ public class VacLeaveSystemDtail extends EntityMP implements Serializable {
         this.xjgz = xjgz ;
         this.modify("xjgz",xjgz);
     }
+
     /**
      * 设置 [休假规则公式]
      */
@@ -169,6 +173,7 @@ public class VacLeaveSystemDtail extends EntityMP implements Serializable {
         this.xjgzgs = xjgzgs ;
         this.modify("xjgzgs",xjgzgs);
     }
+
     /**
      * 设置 [休假制度管理标识]
      */
@@ -176,6 +181,7 @@ public class VacLeaveSystemDtail extends EntityMP implements Serializable {
         this.vacleavesystemid = vacleavesystemid ;
         this.modify("vacleavesystemid",vacleavesystemid);
     }
+
 
 }
 

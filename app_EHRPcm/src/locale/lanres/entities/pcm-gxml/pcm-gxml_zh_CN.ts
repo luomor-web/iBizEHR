@@ -15,23 +15,23 @@ export default {
 	views: {
 		curndgridview: {
 			caption: '高校名录',
-      title: '高校名录',
+      title: '高校名录表格视图',
 		},
 		gxmltreeexpview: {
 			caption: '高校名录',
-      title: '高校名录',
+      title: '高校名录树导航视图',
 		},
 		pickupgridview: {
 			caption: '高校名录',
-      title: '高校名录',
+      title: '高校名录选择表格视图',
 		},
 		editview: {
 			caption: '高校名录',
-      title: '高校名录',
+      title: '高校名录编辑视图',
 		},
 		mpickupview: {
 			caption: '高校名录',
-      title: '高校名录',
+      title: '高校名录数据多项选择视图',
 		},
 	},
 	main_form: {

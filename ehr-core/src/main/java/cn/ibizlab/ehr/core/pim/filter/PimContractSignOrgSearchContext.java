@@ -31,49 +31,49 @@ public class PimContractSignOrgSearchContext extends QueryWrapperContext<PimCont
 	public void setN_contractsignorgname_like(String n_contractsignorgname_like) {
         this.n_contractsignorgname_like = n_contractsignorgname_like;
         if(!ObjectUtils.isEmpty(this.n_contractsignorgname_like)){
-            this.getSelectCond().like("contractsignorgname", n_contractsignorgname_like);
+            this.getSearchCond().like("contractsignorgname", n_contractsignorgname_like);
         }
     }
 	private String n_ormsignorgname_eq;//[法人主体名称]
 	public void setN_ormsignorgname_eq(String n_ormsignorgname_eq) {
         this.n_ormsignorgname_eq = n_ormsignorgname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormsignorgname_eq)){
-            this.getSelectCond().eq("ormsignorgname", n_ormsignorgname_eq);
+            this.getSearchCond().eq("ormsignorgname", n_ormsignorgname_eq);
         }
     }
 	private String n_ormsignorgname_like;//[法人主体名称]
 	public void setN_ormsignorgname_like(String n_ormsignorgname_like) {
         this.n_ormsignorgname_like = n_ormsignorgname_like;
         if(!ObjectUtils.isEmpty(this.n_ormsignorgname_like)){
-            this.getSelectCond().like("ormsignorgname", n_ormsignorgname_like);
+            this.getSearchCond().like("ormsignorgname", n_ormsignorgname_like);
         }
     }
 	private String n_ormorgname_eq;//[管理单位名称]
 	public void setN_ormorgname_eq(String n_ormorgname_eq) {
         this.n_ormorgname_eq = n_ormorgname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_eq)){
-            this.getSelectCond().eq("ormorgname", n_ormorgname_eq);
+            this.getSearchCond().eq("ormorgname", n_ormorgname_eq);
         }
     }
 	private String n_ormorgname_like;//[管理单位名称]
 	public void setN_ormorgname_like(String n_ormorgname_like) {
         this.n_ormorgname_like = n_ormorgname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_like)){
-            this.getSelectCond().like("ormorgname", n_ormorgname_like);
+            this.getSearchCond().like("ormorgname", n_ormorgname_like);
         }
     }
 	private String n_ormsignorgid_eq;//[法人主体标识]
 	public void setN_ormsignorgid_eq(String n_ormsignorgid_eq) {
         this.n_ormsignorgid_eq = n_ormsignorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormsignorgid_eq)){
-            this.getSelectCond().eq("ormsignorgid", n_ormsignorgid_eq);
+            this.getSearchCond().eq("ormsignorgid", n_ormsignorgid_eq);
         }
     }
 	private String n_ormorgid_eq;//[管理单位标识]
 	public void setN_ormorgid_eq(String n_ormorgid_eq) {
         this.n_ormorgid_eq = n_ormorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
-            this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
         }
     }
 
@@ -84,7 +84,7 @@ public class PimContractSignOrgSearchContext extends QueryWrapperContext<PimCont
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("contractsignorgname", query)   
                         .or().like("ormorgname", query)            
             );

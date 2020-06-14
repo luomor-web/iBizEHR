@@ -18,7 +18,7 @@ export default {
 	views: {
 		jxszzsqjmeditview: {
 			caption: '见习生员工转正申请',
-      title: '见习生员工转正申请',
+      title: '见习生员工转正',
 		},
 	},
 	jxszzsqeditform_form: {

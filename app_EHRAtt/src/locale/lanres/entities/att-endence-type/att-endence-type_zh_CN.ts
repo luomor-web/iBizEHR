@@ -12,11 +12,11 @@ export default {
 	views: {
 		gridview: {
 			caption: '考勤类型',
-      title: '考勤类型',
+      title: '考勤类型表格视图',
 		},
 		editview: {
 			caption: '考勤类型',
-      title: '考勤类型',
+      title: '考勤类型编辑视图',
 		},
 	},
 	main_form: {

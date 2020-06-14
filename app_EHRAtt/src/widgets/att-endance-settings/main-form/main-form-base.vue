@@ -5,12 +5,14 @@
             
 <i-col v-show="detailsModel.attendencesetupname.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='attendencesetupname' :itemRules="this.rules.attendencesetupname" class='' :caption="$t('entities.attendancesettings.main_form.details.attendencesetupname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.attendencesetupname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.attendencesetupname.disabled"
   name='attendencesetupname'
   deMajorField='attendencesetupname'

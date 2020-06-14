@@ -24,11 +24,11 @@ export default {
 	views: {
 		pickupgridview: {
 			caption: "内部招聘信息",
-      title: '内部招聘信息',
+      title: '内部招聘信息选择表格视图',
 		},
 		pickupview: {
 			caption: "内部招聘信息",
-      title: '内部招聘信息',
+      title: '内部招聘信息数据选择视图',
 		},
 	},
 	main_grid: {

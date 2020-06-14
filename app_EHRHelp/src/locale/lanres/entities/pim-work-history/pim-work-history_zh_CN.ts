@@ -34,11 +34,11 @@ export default {
 	views: {
 		grpimworkgridview: {
 			caption: '工作履历',
-      title: '工作履历',
+      title: '工作履历表格视图',
 		},
 		greditview: {
 			caption: '工作履历',
-      title: '工作履历',
+      title: '工作履历编辑视图',
 		},
 	},
 	main_2_form: {

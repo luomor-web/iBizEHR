@@ -23,27 +23,27 @@ export default {
 	views: {
 		editview: {
 			caption: '考勤设置',
-      title: '考勤设置',
+      title: '考勤设置编辑视图',
 		},
 		pickupview: {
 			caption: '考勤设置',
-      title: '考勤设置',
+      title: '考勤设置数据选择视图',
 		},
 		pickupgridview: {
 			caption: '考勤设置',
-      title: '考勤设置',
+      title: '考勤设置选择表格视图',
 		},
 		gridview: {
 			caption: '考勤设置',
-      title: '考勤设置',
+      title: '考勤设置表格视图',
 		},
 		kqsztreeexpview: {
 			caption: '考勤设置',
-      title: '考勤设置',
+      title: '考勤设置树导航视图',
 		},
 		mpickupview: {
 			caption: '考勤设置',
-      title: '考勤设置',
+      title: '考勤设置数据多项选择视图',
 		},
 	},
 	main_form: {

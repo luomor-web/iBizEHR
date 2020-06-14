@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.attendancerecord.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.pimpersonname.disabled"
   name='pimpersonname'
   deMajorField='pimpersonname'
@@ -51,12 +53,14 @@
 </i-col>
 <i-col v-show="detailsModel.dkfs.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='dkfs' :itemRules="this.rules.dkfs" class='' :caption="$t('entities.attendancerecord.main_form.details.dkfs')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dkfs.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.dkfs" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.dkfs.disabled"  
     tag='EhrCodeList0007' 
     codelistType='STATIC'
@@ -85,12 +89,14 @@
 </i-col>
 <i-col v-show="detailsModel.ormbmkqdzname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormbmkqdzname' :itemRules="this.rules.ormbmkqdzname" class='' :caption="$t('entities.attendancerecord.main_form.details.ormbmkqdzname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormbmkqdzname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormbmkqdzname.disabled"
   name='ormbmkqdzname'
   deMajorField='ormbmkqdzname'

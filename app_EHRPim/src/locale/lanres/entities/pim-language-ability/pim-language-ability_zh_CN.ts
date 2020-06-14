@@ -29,43 +29,43 @@ export default {
 	views: {
 		redirectview: {
 			caption: '语言能力',
-      title: '语言能力',
+      title: '语言能力数据重定向视图',
 		},
 		yynlgridview: {
 			caption: '语言能力',
-      title: '语言能力',
+      title: '语言能力表格视图',
 		},
 		editview2: {
 			caption: '语言能力',
-      title: '语言能力',
+      title: '语言能力编辑视图',
 		},
 		gridview: {
 			caption: '语言能力',
-      title: '语言能力',
+      title: '语言能力表格视图',
 		},
 		pickupview: {
 			caption: '语言能力',
-      title: '语言能力',
+      title: '语言能力数据选择视图',
 		},
 		greditview: {
 			caption: '语言能力',
-      title: '语言能力',
+      title: '语言能力编辑视图',
 		},
 		gryynlgridview: {
 			caption: '语言能力',
-      title: '语言能力',
+      title: '语言能力表格视图',
 		},
 		editview: {
 			caption: '语言能力',
-      title: '语言能力',
+      title: '语言能力编辑视图',
 		},
 		pickupgridview: {
 			caption: '语言能力',
-      title: '语言能力',
+      title: '语言能力选择表格视图',
 		},
 		mpickupview: {
 			caption: '语言能力',
-      title: '语言能力',
+      title: '语言能力数据多项选择视图',
 		},
 	},
 	main_form: {

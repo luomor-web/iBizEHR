@@ -26,12 +26,14 @@
 </i-col>
 <i-col v-show="detailsModel.fpzt.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='fpzt' :itemRules="this.rules.fpzt" class='' :caption="$t('entities.pimdistirbution.maturitydueeditform_form.details.fpzt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.fpzt.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.fpzt" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.fpzt.disabled"  
     tag='EhrCodeList0137' 
     codelistType='DYNAMIC'
@@ -42,12 +44,14 @@
 </i-col>
 <i-col v-show="detailsModel.cfplx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='cfplx' :itemRules="this.rules.cfplx" class='' :caption="$t('entities.pimdistirbution.maturitydueeditform_form.details.cfplx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.cfplx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.cfplx" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.cfplx.disabled"  
     tag='EhrCodeList0237' 
     codelistType='DYNAMIC'
@@ -58,12 +62,14 @@
 </i-col>
 <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.pimdistirbution.maturitydueeditform_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormorgname.disabled"
   name='ormorgname'
   deMajorField='orgname'
@@ -83,12 +89,14 @@
 </i-col>
 <i-col v-show="detailsModel.ormorgsectorname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgsectorname' :itemRules="this.rules.ormorgsectorname" class='' :caption="$t('entities.pimdistirbution.maturitydueeditform_form.details.ormorgsectorname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgsectorname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ context:{"ORMORG":"%ormorgid%"},param:{"n_orgid_eq":"%ormorgid%"},}' 
+  :localContext ='{ ORMORG:"%ormorgid%" }' 
+  :localParam ='{ n_orgid_eq:"%ormorgid%" }' 
   :disabled="detailsModel.ormorgsectorname.disabled"
   name='ormorgsectorname'
   deMajorField='orgsectorname'
@@ -108,12 +116,14 @@
 </i-col>
 <i-col v-show="detailsModel.ormdutyname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormdutyname' :itemRules="this.rules.ormdutyname" class='' :caption="$t('entities.pimdistirbution.maturitydueeditform_form.details.ormdutyname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormdutyname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormdutyname.disabled"
   name='ormdutyname'
   deMajorField='ormdutyname'
@@ -133,12 +143,14 @@
 </i-col>
 <i-col v-show="detailsModel.ormpostname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormpostname' :itemRules="this.rules.ormpostname" class='' :caption="$t('entities.pimdistirbution.maturitydueeditform_form.details.ormpostname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormpostname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ context:{"ORMORG":"%ormorgid%"},param:{"n_ormorgid_eq":"%ormorgid%"},}' 
+  :localContext ='{ ORMORG:"%ormorgid%" }' 
+  :localParam ='{ n_ormorgid_eq:"%ormorgid%" }' 
   :disabled="detailsModel.ormpostname.disabled"
   name='ormpostname'
   deMajorField='ormpostname'

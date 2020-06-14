@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[员工状态管理]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PERSONSTATEMGR",resultMap = "PersonStateMgrResultMap")
 public class PersonStateMgr extends EntityMP implements Serializable {
 
@@ -111,6 +112,7 @@ public class PersonStateMgr extends EntityMP implements Serializable {
         this.personstatemgrname = personstatemgrname ;
         this.modify("personstatemgrname",personstatemgrname);
     }
+
     /**
      * 设置 [排序值]
      */
@@ -118,6 +120,7 @@ public class PersonStateMgr extends EntityMP implements Serializable {
         this.orderno = orderno ;
         this.modify("orderno",orderno);
     }
+
     /**
      * 设置 [状态编码]
      */
@@ -125,6 +128,7 @@ public class PersonStateMgr extends EntityMP implements Serializable {
         this.personstatecode = personstatecode ;
         this.modify("personstatecode",personstatecode);
     }
+
 
 }
 

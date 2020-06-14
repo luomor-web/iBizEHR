@@ -92,7 +92,7 @@ export default {
 		},
 		pickupgridview: {
 			caption: "部门管理",
-      title: '部门管理',
+      title: '部门管理选择表格视图',
 		},
 	},
 	bmxmjc_grid: {

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[个人社保福利明细]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_SOCWELFAREINFOMX",resultMap = "SocWelfareinfomxResultMap")
 public class SocWelfareinfomx extends EntityMP implements Serializable {
 
@@ -190,6 +191,7 @@ public class SocWelfareinfomx extends EntityMP implements Serializable {
         this.dwjs = dwjs ;
         this.modify("dwjs",dwjs);
     }
+
     /**
      * 设置 [个人社保福利明细名称]
      */
@@ -197,6 +199,7 @@ public class SocWelfareinfomx extends EntityMP implements Serializable {
         this.socwelfareinfomxname = socwelfareinfomxname ;
         this.modify("socwelfareinfomxname",socwelfareinfomxname);
     }
+
     /**
      * 设置 [个人基数]
      */
@@ -204,6 +207,7 @@ public class SocWelfareinfomx extends EntityMP implements Serializable {
         this.grjs = grjs ;
         this.modify("grjs",grjs);
     }
+
     /**
      * 设置 [备注]
      */
@@ -211,6 +215,7 @@ public class SocWelfareinfomx extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [社保明细标识]
      */
@@ -218,6 +223,7 @@ public class SocWelfareinfomx extends EntityMP implements Serializable {
         this.socselfarebasemxid = socselfarebasemxid ;
         this.modify("socselfarebasemxid",socselfarebasemxid);
     }
+
     /**
      * 设置 [个人社保福利明细标识]
      */
@@ -225,6 +231,7 @@ public class SocWelfareinfomx extends EntityMP implements Serializable {
         this.socwelfareinfoid = socwelfareinfoid ;
         this.modify("socwelfareinfoid",socwelfareinfoid);
     }
+
 
 }
 

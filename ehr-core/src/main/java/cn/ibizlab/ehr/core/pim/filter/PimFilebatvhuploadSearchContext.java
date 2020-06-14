@@ -31,7 +31,7 @@ public class PimFilebatvhuploadSearchContext extends QueryWrapperContext<PimFile
 	public void setN_pimfilebatvhuploadname_like(String n_pimfilebatvhuploadname_like) {
         this.n_pimfilebatvhuploadname_like = n_pimfilebatvhuploadname_like;
         if(!ObjectUtils.isEmpty(this.n_pimfilebatvhuploadname_like)){
-            this.getSelectCond().like("pimfilebatvhuploadname", n_pimfilebatvhuploadname_like);
+            this.getSearchCond().like("pimfilebatvhuploadname", n_pimfilebatvhuploadname_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class PimFilebatvhuploadSearchContext extends QueryWrapperContext<PimFile
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimfilebatvhuploadname", query)   
             );
 		 }

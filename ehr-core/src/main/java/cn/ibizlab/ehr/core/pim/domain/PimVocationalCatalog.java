@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[执（职）业资格管理]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMVOCATIONALCATALOG",resultMap = "PimVocationalCatalogResultMap")
 public class PimVocationalCatalog extends EntityMP implements Serializable {
 
@@ -120,6 +121,7 @@ public class PimVocationalCatalog extends EntityMP implements Serializable {
         this.dh = dh ;
         this.modify("dh",dh);
     }
+
     /**
      * 设置 [职（执）业资格名称]
      */
@@ -127,6 +129,7 @@ public class PimVocationalCatalog extends EntityMP implements Serializable {
         this.pimvocationalcatalogname = pimvocationalcatalogname ;
         this.modify("pimvocationalcatalogname",pimvocationalcatalogname);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -134,6 +137,7 @@ public class PimVocationalCatalog extends EntityMP implements Serializable {
         this.pxh = pxh ;
         this.modify("pxh",pxh);
     }
+
 
 }
 

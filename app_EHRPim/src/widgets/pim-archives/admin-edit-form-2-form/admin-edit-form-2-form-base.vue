@@ -14,12 +14,14 @@
 </i-col>
 <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pimarchives.admineditform_2_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.pimpersonname.disabled"
   name='pimpersonname'
   deMajorField='pimpersonname'
@@ -39,12 +41,8 @@
 </i-col>
 <i-col v-show="detailsModel.ygbh.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ygbh' :itemRules="this.rules.ygbh" class='' :caption="$t('entities.pimarchives.admineditform_2_form.details.ygbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygbh.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='ygbh'
-:value="data.ygbh"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='ygbh' :value="data.ygbh" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -62,12 +60,14 @@ style=""></app-span>
 </i-col>
 <i-col v-show="detailsModel.ormorgname3.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgname3' :itemRules="this.rules.ormorgname3" class='' :caption="$t('entities.pimarchives.admineditform_2_form.details.ormorgname3')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname3.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormorgname3.disabled"
   name='ormorgname3'
   deMajorField='orgname'
@@ -99,12 +99,14 @@ style=""></app-span>
 </i-col>
 <i-col v-show="detailsModel.education.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='education' :itemRules="this.rules.education" class='' :caption="$t('entities.pimarchives.admineditform_2_form.details.education')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.education.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.education" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.education.disabled"  
     tag='EhrCodeList0117' 
     codelistType='DYNAMIC'
@@ -171,6 +173,8 @@ style=""></app-span>
     ]"
     :context="context"
     :viewparams="viewparams"
+    :localContext ='{}'
+    :localParam ='{}'
     parameterName='pimarchives'
     parentName="PimArchives"  
     refviewtype='DEGRIDVIEW' 

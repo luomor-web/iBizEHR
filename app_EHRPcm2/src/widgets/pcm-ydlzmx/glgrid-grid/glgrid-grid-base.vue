@@ -337,7 +337,6 @@ export default class GLGridBase extends Vue implements ControlInterface {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this;
         if (_this.getDatas && _this.getDatas instanceof Function) {
@@ -1555,6 +1554,7 @@ export default class GLGridBase extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        $event.stopPropagation();
         if(Object.is('FinishLZ', tag)) {
             this.grid_uagridcolumn1_u3e29056_click(row, tag, $event);
         }
@@ -1681,6 +1681,14 @@ export default class GLGridBase extends Vue implements ControlInterface {
             return Object.is(item.pcmydlzmx,args.row.pcmydlzmx);
         });
         return isSelected ? "grid-selected-row" : "";
+    }
+
+    /**
+     * 新建默认值
+     * @param {*}  row 行数据
+     * @memberof GLGrid
+     */
+    public createDefault(row: any){                    
     }
 }
 </script>

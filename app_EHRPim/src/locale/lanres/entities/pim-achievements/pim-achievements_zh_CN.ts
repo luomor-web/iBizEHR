@@ -28,39 +28,39 @@ export default {
 	views: {
 		pimjixgridview: {
 			caption: '绩效信息',
-      title: '绩效信息',
+      title: '绩效信息表格视图',
 		},
 		editview2: {
 			caption: '绩效信息',
-      title: '绩效信息',
+      title: '绩效信息编辑视图',
 		},
 		editview: {
 			caption: '绩效信息',
-      title: '绩效信息',
+      title: '绩效信息编辑视图',
 		},
 		mpickupview: {
 			caption: '绩效信息',
-      title: '绩效信息',
+      title: '绩效信息数据多项选择视图',
 		},
 		grpimjixgridview: {
 			caption: '绩效信息',
-      title: '绩效信息',
+      title: '绩效信息表格视图',
 		},
 		pickupgridview: {
 			caption: '绩效信息',
-      title: '绩效信息',
+      title: '绩效信息选择表格视图',
 		},
 		redirectview: {
 			caption: '绩效信息',
-      title: '绩效信息',
+      title: '绩效信息数据重定向视图',
 		},
 		pickupview: {
 			caption: '绩效信息',
-      title: '绩效信息',
+      title: '绩效信息数据选择视图',
 		},
 		gridview: {
 			caption: '绩效信息',
-      title: '绩效信息',
+      title: '绩效信息表格视图',
 		},
 	},
 	main_form: {

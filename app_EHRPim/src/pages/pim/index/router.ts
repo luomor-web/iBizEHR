@@ -25,7 +25,8 @@ const router = new Router({
                 });
             },
             meta: {  
-                caption: 'app.views.index.caption',
+                caption: 'app.views.index.title',
+                info:'',
                 viewType: 'APPINDEX',
                 parameters: [
                     { pathName: 'index', parameterName: 'index' },
@@ -37,7 +38,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimpersonchanges/:pimpersonchange?/readeditview/:readeditview?',
                     meta: {
-                        caption: 'entities.pimpersonchange.views.readeditview.caption',
+                        caption: 'entities.pimpersonchange.views.readeditview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/xinyuangongzhuanzheng.png',
                         iconCls: '',
                         parameters: [
@@ -53,7 +55,8 @@ const router = new Router({
                 {
                     path: 'pimpersonchanges/:pimpersonchange?/readeditview/:readeditview?',
                     meta: {
-                        caption: 'entities.pimpersonchange.views.readeditview.caption',
+                        caption: 'entities.pimpersonchange.views.readeditview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/xinyuangongzhuanzheng.png',
                         iconCls: '',
                         parameters: [
@@ -68,7 +71,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimarchives/:pimarchives?/pimdangagridview/:pimdangagridview?',
                     meta: {
-                        caption: 'entities.pimarchives.views.pimdangagridview.caption',
+                        caption: 'entities.pimarchives.views.pimdangagridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -84,7 +88,8 @@ const router = new Router({
                 {
                     path: 'pimarchives/:pimarchives?/pimdangagridview/:pimdangagridview?',
                     meta: {
-                        caption: 'entities.pimarchives.views.pimdangagridview.caption',
+                        caption: 'entities.pimarchives.views.pimdangagridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -99,7 +104,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimachievements/:pimachievements?/pimjixgridview/:pimjixgridview?',
                     meta: {
-                        caption: 'entities.pimachievements.views.pimjixgridview.caption',
+                        caption: 'entities.pimachievements.views.pimjixgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jixiaoxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -115,7 +121,8 @@ const router = new Router({
                 {
                     path: 'pimachievements/:pimachievements?/pimjixgridview/:pimjixgridview?',
                     meta: {
-                        caption: 'entities.pimachievements.views.pimjixgridview.caption',
+                        caption: 'entities.pimachievements.views.pimjixgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jixiaoxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -130,7 +137,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimrewardpunishments/:pimrewardpunishment?/honorgridview/:honorgridview?',
                     meta: {
-                        caption: 'entities.pimrewardpunishment.views.honorgridview.caption',
+                        caption: 'entities.pimrewardpunishment.views.honorgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jianglichengfa.png',
                         iconCls: '',
                         parameters: [
@@ -146,7 +154,8 @@ const router = new Router({
                 {
                     path: 'pimrewardpunishments/:pimrewardpunishment?/honorgridview/:honorgridview?',
                     meta: {
-                        caption: 'entities.pimrewardpunishment.views.honorgridview.caption',
+                        caption: 'entities.pimrewardpunishment.views.honorgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jianglichengfa.png',
                         iconCls: '',
                         parameters: [
@@ -161,7 +170,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/editview2/:editview2?',
                     meta: {
-                        caption: 'entities.pimperson.views.editview2.caption',
+                        caption: 'entities.pimperson.views.editview2.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gerenxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -176,7 +186,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.pimperson.views.pickupview.caption',
+                        caption: 'entities.pimperson.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -189,7 +200,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimtitles/:pimtitle?/pimzhicgridview/:pimzhicgridview?',
                     meta: {
-                        caption: 'entities.pimtitle.views.pimzhicgridview.caption',
+                        caption: 'entities.pimtitle.views.pimzhicgridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/penxunjihua.png',
                         iconCls: '',
                         parameters: [
@@ -205,7 +217,8 @@ const router = new Router({
                 {
                     path: 'pimtitles/:pimtitle?/pimzhicgridview/:pimzhicgridview?',
                     meta: {
-                        caption: 'entities.pimtitle.views.pimzhicgridview.caption',
+                        caption: 'entities.pimtitle.views.pimzhicgridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/penxunjihua.png',
                         iconCls: '',
                         parameters: [
@@ -220,7 +233,8 @@ const router = new Router({
                 {
                     path: 'ormduties/:ormduty?/ormorgsectorpickupgridview/:ormorgsectorpickupgridview?',
                     meta: {
-                        caption: 'entities.ormduty.views.ormorgsectorpickupgridview.caption',
+                        caption: 'entities.ormduty.views.ormorgsectorpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormduties', parameterName: 'ormduty' },
@@ -233,7 +247,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimcontracts/:pimcontract?/signremindgridview/:signremindgridview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.signremindgridview.caption',
+                        caption: 'entities.pimcontract.views.signremindgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -247,7 +262,8 @@ const router = new Router({
                 {
                     path: 'pimcontracts/:pimcontract?/signremindgridview/:signremindgridview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.signremindgridview.caption',
+                        caption: 'entities.pimcontract.views.signremindgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimcontracts', parameterName: 'pimcontract' },
@@ -260,7 +276,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimtitles/:pimtitle?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimtitle.views.gridview.caption',
+                        caption: 'entities.pimtitle.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/penxunjihua.png',
                         iconCls: '',
                         parameters: [
@@ -276,7 +293,8 @@ const router = new Router({
                 {
                     path: 'pimtitles/:pimtitle?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimtitle.views.gridview.caption',
+                        caption: 'entities.pimtitle.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/penxunjihua.png',
                         iconCls: '',
                         parameters: [
@@ -291,7 +309,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimcontracts/:pimcontract?/treeexpview/:treeexpview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.treeexpview.caption',
+                        caption: 'entities.pimcontract.views.treeexpview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -307,7 +326,8 @@ const router = new Router({
                 {
                     path: 'pimcontracts/:pimcontract?/treeexpview/:treeexpview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.treeexpview.caption',
+                        caption: 'entities.pimcontract.views.treeexpview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -322,7 +342,8 @@ const router = new Router({
                 {
                     path: 'pimlabourcampanies/:pimlabourcampany?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimlabourcampany.views.gridview.caption',
+                        caption: 'entities.pimlabourcampany.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/laowupaiqiangongsiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -337,7 +358,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimarchives/:pimarchives?/pimarchivesloanandreturns/:pimarchivesloanandreturn?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimarchivesloanandreturn.views.editview.caption',
+                        caption: 'entities.pimarchivesloanandreturn.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -352,7 +374,8 @@ const router = new Router({
                 {
                     path: 'pimarchives/:pimarchives?/pimarchivesloanandreturns/:pimarchivesloanandreturn?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimarchivesloanandreturn.views.editview.caption',
+                        caption: 'entities.pimarchivesloanandreturn.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimarchives', parameterName: 'pimarchives' },
@@ -366,7 +389,8 @@ const router = new Router({
                 {
                     path: 'pimarchivesloanandreturns/:pimarchivesloanandreturn?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimarchivesloanandreturn.views.editview.caption',
+                        caption: 'entities.pimarchivesloanandreturn.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimarchivesloanandreturns', parameterName: 'pimarchivesloanandreturn' },
@@ -379,7 +403,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimarchives/:pimarchives?/treeexpview/:treeexpview?',
                     meta: {
-                        caption: 'entities.pimarchives.views.treeexpview.caption',
+                        caption: 'entities.pimarchives.views.treeexpview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -395,7 +420,8 @@ const router = new Router({
                 {
                     path: 'pimarchives/:pimarchives?/treeexpview/:treeexpview?',
                     meta: {
-                        caption: 'entities.pimarchives.views.treeexpview.caption',
+                        caption: 'entities.pimarchives.views.treeexpview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -410,7 +436,8 @@ const router = new Router({
                 {
                     path: 'pimcontracttypes/:pimcontracttype?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimcontracttype.views.editview.caption',
+                        caption: 'entities.pimcontracttype.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongleixing.png',
                         iconCls: '',
                         parameters: [
@@ -425,7 +452,8 @@ const router = new Router({
                 {
                     path: 'pimqualmajors/:pimqualmajor?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimqualmajor.views.editview.caption',
+                        caption: 'entities.pimqualmajor.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/penxunkecheng.png',
                         iconCls: '',
                         parameters: [
@@ -440,7 +468,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimrewardpunishments/:pimrewardpunishment?/pimjanglgridview/:pimjanglgridview?',
                     meta: {
-                        caption: 'entities.pimrewardpunishment.views.pimjanglgridview.caption',
+                        caption: 'entities.pimrewardpunishment.views.pimjanglgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jianglichengfa.png',
                         iconCls: '',
                         parameters: [
@@ -456,7 +485,8 @@ const router = new Router({
                 {
                     path: 'pimrewardpunishments/:pimrewardpunishment?/pimjanglgridview/:pimjanglgridview?',
                     meta: {
-                        caption: 'entities.pimrewardpunishment.views.pimjanglgridview.caption',
+                        caption: 'entities.pimrewardpunishment.views.pimjanglgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jianglichengfa.png',
                         iconCls: '',
                         parameters: [
@@ -471,7 +501,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/xmbqpickupgridview/:xmbqpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorg.views.xmbqpickupgridview.caption',
+                        caption: 'entities.ormorg.views.xmbqpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -484,7 +515,8 @@ const router = new Router({
                 {
                     path: 'pimqualtypes/:pimqualtype?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.pimqualtype.views.pickupview.caption',
+                        caption: 'entities.pimqualtype.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimqualtypes', parameterName: 'pimqualtype' },
@@ -497,7 +529,8 @@ const router = new Router({
                 {
                     path: 'pcmdetails/:pcmdetail?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pcmdetail.views.gridview.caption',
+                        caption: 'entities.pcmdetail.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
                         iconCls: '',
                         parameters: [
@@ -512,7 +545,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/xmbqpickupview/:xmbqpickupview?',
                     meta: {
-                        caption: 'entities.ormorg.views.xmbqpickupview.caption',
+                        caption: 'entities.ormorg.views.xmbqpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -525,7 +559,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/quickeditview/:quickeditview?',
                     meta: {
-                        caption: 'entities.pimperson.views.quickeditview.caption',
+                        caption: 'entities.pimperson.views.quickeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -538,7 +573,8 @@ const router = new Router({
                 {
                     path: 'ormsignorgs/:ormsignorg?/htqddwwpickupview/:htqddwwpickupview?',
                     meta: {
-                        caption: 'entities.ormsignorg.views.htqddwwpickupview.caption',
+                        caption: 'entities.ormsignorg.views.htqddwwpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
@@ -551,7 +587,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimcontracts/:pimcontract?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.editview.caption',
+                        caption: 'entities.pimcontract.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -567,7 +604,8 @@ const router = new Router({
                 {
                     path: 'pimcontracts/:pimcontract?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.editview.caption',
+                        caption: 'entities.pimcontract.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -582,7 +620,8 @@ const router = new Router({
                 {
                     path: 'pimlabourcampanies/:pimlabourcampany?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.pimlabourcampany.views.pickupgridview.caption',
+                        caption: 'entities.pimlabourcampany.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimlabourcampanies', parameterName: 'pimlabourcampany' },
@@ -595,7 +634,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimpersonchanges/:pimpersonchange?/reasoneditview/:reasoneditview?',
                     meta: {
-                        caption: 'entities.pimpersonchange.views.reasoneditview.caption',
+                        caption: 'entities.pimpersonchange.views.reasoneditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -609,7 +649,8 @@ const router = new Router({
                 {
                     path: 'pimpersonchanges/:pimpersonchange?/reasoneditview/:reasoneditview?',
                     meta: {
-                        caption: 'entities.pimpersonchange.views.reasoneditview.caption',
+                        caption: 'entities.pimpersonchange.views.reasoneditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpersonchanges', parameterName: 'pimpersonchange' },
@@ -622,7 +663,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/zddeditview/:zddeditview?',
                     meta: {
-                        caption: 'entities.pimperson.views.zddeditview.caption',
+                        caption: 'entities.pimperson.views.zddeditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gerenxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -637,7 +679,8 @@ const router = new Router({
                 {
                     path: 'pimlabourcampanies/:pimlabourcampany?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.pimlabourcampany.views.pickupview.caption',
+                        caption: 'entities.pimlabourcampany.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimlabourcampanies', parameterName: 'pimlabourcampany' },
@@ -650,7 +693,8 @@ const router = new Router({
                 {
                     path: 'pimgwtypes/:pimgwtype?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.pimgwtype.views.pickupgridview.caption',
+                        caption: 'entities.pimgwtype.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimgwtypes', parameterName: 'pimgwtype' },
@@ -663,7 +707,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.pickupview.caption',
+                        caption: 'entities.ormorgsector.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -677,7 +722,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.pickupview.caption',
+                        caption: 'entities.ormorgsector.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -690,7 +736,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimpapers/:pimpaper?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimpaper.views.editview.caption',
+                        caption: 'entities.pimpaper.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/lunwenxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -706,7 +753,8 @@ const router = new Router({
                 {
                     path: 'pimpapers/:pimpaper?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimpaper.views.editview.caption',
+                        caption: 'entities.pimpaper.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/lunwenxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -721,7 +769,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/attendancemreportmxes/:attendancemreportmx?/wscgridview/:wscgridview?',
                     meta: {
-                        caption: 'entities.attendancemreportmx.views.wscgridview.caption',
+                        caption: 'entities.attendancemreportmx.views.wscgridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/kaoqinyuebao.png',
                         iconCls: '',
                         parameters: [
@@ -737,7 +786,8 @@ const router = new Router({
                 {
                     path: 'attendancemreportmxes/:attendancemreportmx?/wscgridview/:wscgridview?',
                     meta: {
-                        caption: 'entities.attendancemreportmx.views.wscgridview.caption',
+                        caption: 'entities.attendancemreportmx.views.wscgridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/kaoqinyuebao.png',
                         iconCls: '',
                         parameters: [
@@ -752,7 +802,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/fpxxpickupgridview/:fpxxpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorg.views.fpxxpickupgridview.caption',
+                        caption: 'entities.ormorg.views.fpxxpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -765,7 +816,8 @@ const router = new Router({
                 {
                     path: 'pimgwtypes/:pimgwtype?/mpickupview/:mpickupview?',
                     meta: {
-                        caption: 'entities.pimgwtype.views.mpickupview.caption',
+                        caption: 'entities.pimgwtype.views.mpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimgwtypes', parameterName: 'pimgwtype' },
@@ -778,7 +830,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.pickupgridview.caption',
+                        caption: 'entities.pimperson.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -791,7 +844,8 @@ const router = new Router({
                 {
                     path: 'trmlgbcosts/:trmlgbcost?/editview/:editview?',
                     meta: {
-                        caption: 'entities.trmlgbcost.views.editview.caption',
+                        caption: 'entities.trmlgbcost.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/junzhuanganbu.png',
                         iconCls: '',
                         parameters: [
@@ -806,7 +860,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimarchives/:pimarchives?/admineditview/:admineditview?',
                     meta: {
-                        caption: 'entities.pimarchives.views.admineditview.caption',
+                        caption: 'entities.pimarchives.views.admineditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -822,7 +877,8 @@ const router = new Router({
                 {
                     path: 'pimarchives/:pimarchives?/admineditview/:admineditview?',
                     meta: {
-                        caption: 'entities.pimarchives.views.admineditview.caption',
+                        caption: 'entities.pimarchives.views.admineditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -837,7 +893,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimtitles/:pimtitle?/wsseditview/:wsseditview?',
                     meta: {
-                        caption: 'entities.pimtitle.views.wsseditview.caption',
+                        caption: 'entities.pimtitle.views.wsseditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhichengxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -853,7 +910,8 @@ const router = new Router({
                 {
                     path: 'pimtitles/:pimtitle?/wsseditview/:wsseditview?',
                     meta: {
-                        caption: 'entities.pimtitle.views.wsseditview.caption',
+                        caption: 'entities.pimtitle.views.wsseditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhichengxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -868,7 +926,8 @@ const router = new Router({
                 {
                     path: 'pimlabourcampanies/:pimlabourcampany?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimlabourcampany.views.editview.caption',
+                        caption: 'entities.pimlabourcampany.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/laowupaiqiangongsiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -883,7 +942,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimpersonchanges/:pimpersonchange?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimpersonchange.views.editview.caption',
+                        caption: 'entities.pimpersonchange.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/xinyuangongzhuanzheng.png',
                         iconCls: '',
                         parameters: [
@@ -899,7 +959,8 @@ const router = new Router({
                 {
                     path: 'pimpersonchanges/:pimpersonchange?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimpersonchange.views.editview.caption',
+                        caption: 'entities.pimpersonchange.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/xinyuangongzhuanzheng.png',
                         iconCls: '',
                         parameters: [
@@ -914,7 +975,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimeducations/:pimeducation?/zdxlgridview/:zdxlgridview?',
                     meta: {
-                        caption: 'entities.pimeducation.views.zdxlgridview.caption',
+                        caption: 'entities.pimeducation.views.zdxlgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -930,7 +992,8 @@ const router = new Router({
                 {
                     path: 'pimeducations/:pimeducation?/zdxlgridview/:zdxlgridview?',
                     meta: {
-                        caption: 'entities.pimeducation.views.zdxlgridview.caption',
+                        caption: 'entities.pimeducation.views.zdxlgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -945,7 +1008,8 @@ const router = new Router({
                 {
                     path: 'pimtypecontracts/:pimtypecontract?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimtypecontract.views.gridview.caption',
+                        caption: 'entities.pimtypecontract.views.gridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimtypecontracts', parameterName: 'pimtypecontract' },
@@ -958,7 +1022,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/xjpickupgridview/:xjpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorg.views.xjpickupgridview.caption',
+                        caption: 'entities.ormorg.views.xjpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -971,7 +1036,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/lzyghmcgridview/:lzyghmcgridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.lzyghmcgridview.caption',
+                        caption: 'entities.pimperson.views.lzyghmcgridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/guazhidaoqiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -986,7 +1052,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/formpickupview/:formpickupview?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.formpickupview.caption',
+                        caption: 'entities.pimexitandentry.views.formpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -1000,7 +1067,8 @@ const router = new Router({
                 {
                     path: 'pimexitandentries/:pimexitandentry?/formpickupview/:formpickupview?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.formpickupview.caption',
+                        caption: 'entities.pimexitandentry.views.formpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimexitandentries', parameterName: 'pimexitandentry' },
@@ -1013,7 +1081,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/yscgjxjeditview/:yscgjxjeditview?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.yscgjxjeditview.caption',
+                        caption: 'entities.pimexitandentry.views.yscgjxjeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -1027,7 +1096,8 @@ const router = new Router({
                 {
                     path: 'pimexitandentries/:pimexitandentry?/yscgjxjeditview/:yscgjxjeditview?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.yscgjxjeditview.caption',
+                        caption: 'entities.pimexitandentry.views.yscgjxjeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimexitandentries', parameterName: 'pimexitandentry' },
@@ -1040,7 +1110,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/fpxxpickupview/:fpxxpickupview?',
                     meta: {
-                        caption: 'entities.ormorg.views.fpxxpickupview.caption',
+                        caption: 'entities.ormorg.views.fpxxpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1053,7 +1124,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.gridview.caption',
+                        caption: 'entities.pimperson.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gerenxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1068,7 +1140,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimpatents/:pimpatent?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimpatent.views.editview.caption',
+                        caption: 'entities.pimpatent.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhuanlixinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1084,7 +1157,8 @@ const router = new Router({
                 {
                     path: 'pimpatents/:pimpatent?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimpatent.views.editview.caption',
+                        caption: 'entities.pimpatent.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhuanlixinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1099,7 +1173,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimeducations/:pimeducation?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimeducation.views.editview.caption',
+                        caption: 'entities.pimeducation.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1115,7 +1190,8 @@ const router = new Router({
                 {
                     path: 'pimeducations/:pimeducation?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimeducation.views.editview.caption',
+                        caption: 'entities.pimeducation.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1130,7 +1206,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/maturitydueeditview/:maturitydueeditview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.maturitydueeditview.caption',
+                        caption: 'entities.pimdistirbution.views.maturitydueeditview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/jiediaodaoqiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1146,7 +1223,8 @@ const router = new Router({
                 {
                     path: 'pimdistirbutions/:pimdistirbution?/maturitydueeditview/:maturitydueeditview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.maturitydueeditview.caption',
+                        caption: 'entities.pimdistirbution.views.maturitydueeditview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/jiediaodaoqiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1161,7 +1239,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/jxqyggridview/:jxqyggridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.jxqyggridview.caption',
+                        caption: 'entities.pimperson.views.jxqyggridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jianxiqiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1176,7 +1255,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/ygcgjxjeditview/:ygcgjxjeditview?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.ygcgjxjeditview.caption',
+                        caption: 'entities.pimexitandentry.views.ygcgjxjeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -1190,7 +1270,8 @@ const router = new Router({
                 {
                     path: 'pimexitandentries/:pimexitandentry?/ygcgjxjeditview/:ygcgjxjeditview?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.ygcgjxjeditview.caption',
+                        caption: 'entities.pimexitandentry.views.ygcgjxjeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimexitandentries', parameterName: 'pimexitandentry' },
@@ -1203,7 +1284,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/jdryhmcgridview/:jdryhmcgridview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.jdryhmcgridview.caption',
+                        caption: 'entities.pimdistirbution.views.jdryhmcgridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/jiediaodaoqiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1219,7 +1301,8 @@ const router = new Router({
                 {
                     path: 'pimdistirbutions/:pimdistirbution?/jdryhmcgridview/:jdryhmcgridview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.jdryhmcgridview.caption',
+                        caption: 'entities.pimdistirbution.views.jdryhmcgridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/jiediaodaoqiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1234,7 +1317,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimarchives/:pimarchives?/loyeenofilegridview/:loyeenofilegridview?',
                     meta: {
-                        caption: 'entities.pimarchives.views.loyeenofilegridview.caption',
+                        caption: 'entities.pimarchives.views.loyeenofilegridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1250,7 +1334,8 @@ const router = new Router({
                 {
                     path: 'pimarchives/:pimarchives?/loyeenofilegridview/:loyeenofilegridview?',
                     meta: {
-                        caption: 'entities.pimarchives.views.loyeenofilegridview.caption',
+                        caption: 'entities.pimarchives.views.loyeenofilegridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1265,7 +1350,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/attendancemreportmxes/:attendancemreportmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.attendancemreportmx.views.editview.caption',
+                        caption: 'entities.attendancemreportmx.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/kaoqinyuebao.png',
                         iconCls: '',
                         parameters: [
@@ -1281,7 +1367,8 @@ const router = new Router({
                 {
                     path: 'attendancemreportmxes/:attendancemreportmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.attendancemreportmx.views.editview.caption',
+                        caption: 'entities.attendancemreportmx.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/kaoqinyuebao.png',
                         iconCls: '',
                         parameters: [
@@ -1296,7 +1383,8 @@ const router = new Router({
                 {
                     path: 'pcmdetails/:pcmdetail?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmdetail.views.editview.caption',
+                        caption: 'entities.pcmdetail.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmdetails', parameterName: 'pcmdetail' },
@@ -1309,7 +1397,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimpapers/:pimpaper?/papergridview/:papergridview?',
                     meta: {
-                        caption: 'entities.pimpaper.views.papergridview.caption',
+                        caption: 'entities.pimpaper.views.papergridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/lunwenxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1325,7 +1414,8 @@ const router = new Router({
                 {
                     path: 'pimpapers/:pimpaper?/papergridview/:papergridview?',
                     meta: {
-                        caption: 'entities.pimpaper.views.papergridview.caption',
+                        caption: 'entities.pimpaper.views.papergridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/lunwenxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1340,7 +1430,8 @@ const router = new Router({
                 {
                     path: 'ormsignorgs/:ormsignorg?/htqddwpickupgridview/:htqddwpickupgridview?',
                     meta: {
-                        caption: 'entities.ormsignorg.views.htqddwpickupgridview.caption',
+                        caption: 'entities.ormsignorg.views.htqddwpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
@@ -1353,7 +1444,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimcontracts/:pimcontract?/stoptimeselecteditview/:stoptimeselecteditview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.stoptimeselecteditview.caption',
+                        caption: 'entities.pimcontract.views.stoptimeselecteditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -1367,7 +1459,8 @@ const router = new Router({
                 {
                     path: 'pimcontracts/:pimcontract?/stoptimeselecteditview/:stoptimeselecteditview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.stoptimeselecteditview.caption',
+                        caption: 'entities.pimcontract.views.stoptimeselecteditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimcontracts', parameterName: 'pimcontract' },
@@ -1380,7 +1473,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimworkhistories/:pimworkhistory?/gbllgridview/:gbllgridview?',
                     meta: {
-                        caption: 'entities.pimworkhistory.views.gbllgridview.caption',
+                        caption: 'entities.pimworkhistory.views.gbllgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gongzuolvli.png',
                         iconCls: '',
                         parameters: [
@@ -1396,7 +1490,8 @@ const router = new Router({
                 {
                     path: 'pimworkhistories/:pimworkhistory?/gbllgridview/:gbllgridview?',
                     meta: {
-                        caption: 'entities.pimworkhistory.views.gbllgridview.caption',
+                        caption: 'entities.pimworkhistory.views.gbllgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gongzuolvli.png',
                         iconCls: '',
                         parameters: [
@@ -1411,7 +1506,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/xjpickupview/:xjpickupview?',
                     meta: {
-                        caption: 'entities.ormorg.views.xjpickupview.caption',
+                        caption: 'entities.ormorg.views.xjpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1424,7 +1520,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimrewardpunishments/:pimrewardpunishment?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimrewardpunishment.views.editview.caption',
+                        caption: 'entities.pimrewardpunishment.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jianglichengfa.png',
                         iconCls: '',
                         parameters: [
@@ -1440,7 +1537,8 @@ const router = new Router({
                 {
                     path: 'pimrewardpunishments/:pimrewardpunishment?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimrewardpunishment.views.editview.caption',
+                        caption: 'entities.pimrewardpunishment.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jianglichengfa.png',
                         iconCls: '',
                         parameters: [
@@ -1455,7 +1553,8 @@ const router = new Router({
                 {
                     path: 'pimtitlecatalogues/:pimtitlecatalogue?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimtitlecatalogue.views.editview.caption',
+                        caption: 'entities.pimtitlecatalogue.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhichengmuluguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1470,7 +1569,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimworkhistories/:pimworkhistory?/pimworkgridview/:pimworkgridview?',
                     meta: {
-                        caption: 'entities.pimworkhistory.views.pimworkgridview.caption',
+                        caption: 'entities.pimworkhistory.views.pimworkgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gongzuolvli.png',
                         iconCls: '',
                         parameters: [
@@ -1486,7 +1586,8 @@ const router = new Router({
                 {
                     path: 'pimworkhistories/:pimworkhistory?/pimworkgridview/:pimworkgridview?',
                     meta: {
-                        caption: 'entities.pimworkhistory.views.pimworkgridview.caption',
+                        caption: 'entities.pimworkhistory.views.pimworkgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gongzuolvli.png',
                         iconCls: '',
                         parameters: [
@@ -1501,7 +1602,8 @@ const router = new Router({
                 {
                     path: 'pimarchivescenters/:pimarchivescenter?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimarchivescenter.views.editview.caption',
+                        caption: 'entities.pimarchivescenter.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
@@ -1514,7 +1616,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimresearchfindings/:pimresearchfindings?/researchgridview/:researchgridview?',
                     meta: {
-                        caption: 'entities.pimresearchfindings.views.researchgridview.caption',
+                        caption: 'entities.pimresearchfindings.views.researchgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/keyanchengguo.png',
                         iconCls: '',
                         parameters: [
@@ -1530,7 +1633,8 @@ const router = new Router({
                 {
                     path: 'pimresearchfindings/:pimresearchfindings?/researchgridview/:researchgridview?',
                     meta: {
-                        caption: 'entities.pimresearchfindings.views.researchgridview.caption',
+                        caption: 'entities.pimresearchfindings.views.researchgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/keyanchengguo.png',
                         iconCls: '',
                         parameters: [
@@ -1545,7 +1649,8 @@ const router = new Router({
                 {
                     path: 'pimarchivescenters/:pimarchivescenter?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.pimarchivescenter.views.pickupgridview.caption',
+                        caption: 'entities.pimarchivescenter.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
@@ -1558,7 +1663,8 @@ const router = new Router({
                 {
                     path: 'pimtitlecatalogues/:pimtitlecatalogue?/notpickupview/:notpickupview?',
                     meta: {
-                        caption: 'entities.pimtitlecatalogue.views.notpickupview.caption',
+                        caption: 'entities.pimtitlecatalogue.views.notpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimtitlecatalogues', parameterName: 'pimtitlecatalogue' },
@@ -1571,7 +1677,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/editview_ng/:editview_ng?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.editview_ng.caption',
+                        caption: 'entities.pimexitandentry.views.editview_ng.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/chujing.png',
                         iconCls: '',
                         parameters: [
@@ -1587,7 +1694,8 @@ const router = new Router({
                 {
                     path: 'pimexitandentries/:pimexitandentry?/editview_ng/:editview_ng?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.editview_ng.caption',
+                        caption: 'entities.pimexitandentry.views.editview_ng.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/chujing.png',
                         iconCls: '',
                         parameters: [
@@ -1602,7 +1710,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/ygfenpeigridview/:ygfenpeigridview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.ygfenpeigridview.caption',
+                        caption: 'entities.pimdistirbution.views.ygfenpeigridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/fenpeixinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1618,7 +1727,8 @@ const router = new Router({
                 {
                     path: 'pimdistirbutions/:pimdistirbution?/ygfenpeigridview/:ygfenpeigridview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.ygfenpeigridview.caption',
+                        caption: 'entities.pimdistirbution.views.ygfenpeigridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/fenpeixinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1633,7 +1743,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimtitles/:pimtitle?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimtitle.views.editview.caption',
+                        caption: 'entities.pimtitle.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/penxunjihua.png',
                         iconCls: '',
                         parameters: [
@@ -1649,7 +1760,8 @@ const router = new Router({
                 {
                     path: 'pimtitles/:pimtitle?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimtitle.views.editview.caption',
+                        caption: 'entities.pimtitle.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/penxunjihua.png',
                         iconCls: '',
                         parameters: [
@@ -1664,7 +1776,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/ltxyggridview/:ltxyggridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.ltxyggridview.caption',
+                        caption: 'entities.pimperson.views.ltxyggridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/tuixiuguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1679,7 +1792,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimlanguageabilities/:pimlanguageability?/yynlgridview/:yynlgridview?',
                     meta: {
-                        caption: 'entities.pimlanguageability.views.yynlgridview.caption',
+                        caption: 'entities.pimlanguageability.views.yynlgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/yuyanshuiping.png',
                         iconCls: '',
                         parameters: [
@@ -1695,7 +1809,8 @@ const router = new Router({
                 {
                     path: 'pimlanguageabilities/:pimlanguageability?/yynlgridview/:yynlgridview?',
                     meta: {
-                        caption: 'entities.pimlanguageability.views.yynlgridview.caption',
+                        caption: 'entities.pimlanguageability.views.yynlgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/yuyanshuiping.png',
                         iconCls: '',
                         parameters: [
@@ -1710,7 +1825,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimvocationals/:pimvocational?/pimziggridview/:pimziggridview?',
                     meta: {
-                        caption: 'entities.pimvocational.views.pimziggridview.caption',
+                        caption: 'entities.pimvocational.views.pimziggridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhiyezige.png',
                         iconCls: '',
                         parameters: [
@@ -1726,7 +1842,8 @@ const router = new Router({
                 {
                     path: 'pimvocationals/:pimvocational?/pimziggridview/:pimziggridview?',
                     meta: {
-                        caption: 'entities.pimvocational.views.pimziggridview.caption',
+                        caption: 'entities.pimvocational.views.pimziggridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhiyezige.png',
                         iconCls: '',
                         parameters: [
@@ -1741,7 +1858,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/syqyggridview/:syqyggridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.syqyggridview.caption',
+                        caption: 'entities.pimperson.views.syqyggridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/shiyongqiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1756,7 +1874,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/yscgjgridview/:yscgjgridview?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.yscgjgridview.caption',
+                        caption: 'entities.pimexitandentry.views.yscgjgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/chujing.png',
                         iconCls: '',
                         parameters: [
@@ -1772,7 +1891,8 @@ const router = new Router({
                 {
                     path: 'pimexitandentries/:pimexitandentry?/yscgjgridview/:yscgjgridview?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.yscgjgridview.caption',
+                        caption: 'entities.pimexitandentry.views.yscgjgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/chujing.png',
                         iconCls: '',
                         parameters: [
@@ -1787,7 +1907,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/xscgeditview/:xscgeditview?',
                     meta: {
-                        caption: 'entities.pimperson.views.xscgeditview.caption',
+                        caption: 'entities.pimperson.views.xscgeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -1800,7 +1921,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimarchives/:pimarchives?/pimarchiveschanges/:pimarchiveschange?/dadcjlgridview/:dadcjlgridview?',
                     meta: {
-                        caption: 'entities.pimarchiveschange.views.dadcjlgridview.caption',
+                        caption: 'entities.pimarchiveschange.views.dadcjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1817,7 +1939,8 @@ const router = new Router({
                 {
                     path: 'pimarchives/:pimarchives?/pimarchiveschanges/:pimarchiveschange?/dadcjlgridview/:dadcjlgridview?',
                     meta: {
-                        caption: 'entities.pimarchiveschange.views.dadcjlgridview.caption',
+                        caption: 'entities.pimarchiveschange.views.dadcjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1833,7 +1956,8 @@ const router = new Router({
                 {
                     path: 'pimarchiveschanges/:pimarchiveschange?/dadcjlgridview/:dadcjlgridview?',
                     meta: {
-                        caption: 'entities.pimarchiveschange.views.dadcjlgridview.caption',
+                        caption: 'entities.pimarchiveschange.views.dadcjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1848,7 +1972,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/ryinfoeditview/:ryinfoeditview?',
                     meta: {
-                        caption: 'entities.pimperson.views.ryinfoeditview.caption',
+                        caption: 'entities.pimperson.views.ryinfoeditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gerenxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1863,7 +1988,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimvocationals/:pimvocational?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimvocational.views.editview.caption',
+                        caption: 'entities.pimvocational.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhiyezige.png',
                         iconCls: '',
                         parameters: [
@@ -1879,7 +2005,8 @@ const router = new Router({
                 {
                     path: 'pimvocationals/:pimvocational?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimvocational.views.editview.caption',
+                        caption: 'entities.pimvocational.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhiyezige.png',
                         iconCls: '',
                         parameters: [
@@ -1894,7 +2021,8 @@ const router = new Router({
                 {
                     path: 'pimtitlecatalogues/:pimtitlecatalogue?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.pimtitlecatalogue.views.pickupview.caption',
+                        caption: 'entities.pimtitlecatalogue.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimtitlecatalogues', parameterName: 'pimtitlecatalogue' },
@@ -1907,7 +2035,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/personinfoeditview/:personinfoeditview?',
                     meta: {
-                        caption: 'entities.pimperson.views.personinfoeditview.caption',
+                        caption: 'entities.pimperson.views.personinfoeditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gerenxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1922,7 +2051,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimarchives/:pimarchives?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimarchives.views.gridview.caption',
+                        caption: 'entities.pimarchives.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1938,7 +2068,8 @@ const router = new Router({
                 {
                     path: 'pimarchives/:pimarchives?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimarchives.views.gridview.caption',
+                        caption: 'entities.pimarchives.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1953,7 +2084,8 @@ const router = new Router({
                 {
                     path: 'pimqualmajors/:pimqualmajor?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimqualmajor.views.gridview.caption',
+                        caption: 'entities.pimqualmajor.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/penxunkecheng.png',
                         iconCls: '',
                         parameters: [
@@ -1968,7 +2100,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/fpxxpickupview/:fpxxpickupview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.fpxxpickupview.caption',
+                        caption: 'entities.ormorgsector.views.fpxxpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1982,7 +2115,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/fpxxpickupview/:fpxxpickupview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.fpxxpickupview.caption',
+                        caption: 'entities.ormorgsector.views.fpxxpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -1995,7 +2129,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimpersonchanges/:pimpersonchange?/hisrecgridview/:hisrecgridview?',
                     meta: {
-                        caption: 'entities.pimpersonchange.views.hisrecgridview.caption',
+                        caption: 'entities.pimpersonchange.views.hisrecgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/xinyuangongzhuanzheng.png',
                         iconCls: '',
                         parameters: [
@@ -2011,7 +2146,8 @@ const router = new Router({
                 {
                     path: 'pimpersonchanges/:pimpersonchange?/hisrecgridview/:hisrecgridview?',
                     meta: {
-                        caption: 'entities.pimpersonchange.views.hisrecgridview.caption',
+                        caption: 'entities.pimpersonchange.views.hisrecgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/xinyuangongzhuanzheng.png',
                         iconCls: '',
                         parameters: [
@@ -2026,7 +2162,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
                     meta: {
-                        caption: 'entities.ormpost.views.ejormorgidpickupgridview.caption',
+                        caption: 'entities.ormpost.views.ejormorgidpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -2040,7 +2177,8 @@ const router = new Router({
                 {
                     path: 'ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
                     meta: {
-                        caption: 'entities.ormpost.views.ejormorgidpickupgridview.caption',
+                        caption: 'entities.ormpost.views.ejormorgidpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -2053,7 +2191,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimarchives/:pimarchives?/pimarchiveschanges/:pimarchiveschange?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimarchiveschange.views.editview.caption',
+                        caption: 'entities.pimarchiveschange.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -2068,7 +2207,8 @@ const router = new Router({
                 {
                     path: 'pimarchives/:pimarchives?/pimarchiveschanges/:pimarchiveschange?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimarchiveschange.views.editview.caption',
+                        caption: 'entities.pimarchiveschange.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimarchives', parameterName: 'pimarchives' },
@@ -2082,7 +2222,8 @@ const router = new Router({
                 {
                     path: 'pimarchiveschanges/:pimarchiveschange?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimarchiveschange.views.editview.caption',
+                        caption: 'entities.pimarchiveschange.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimarchiveschanges', parameterName: 'pimarchiveschange' },
@@ -2095,7 +2236,8 @@ const router = new Router({
                 {
                     path: 'ormsignorgs/:ormsignorg?/bdwpickupview/:bdwpickupview?',
                     meta: {
-                        caption: 'entities.ormsignorg.views.bdwpickupview.caption',
+                        caption: 'entities.ormsignorg.views.bdwpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
@@ -2108,7 +2250,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupview/:ejormorgidpickupview?',
                     meta: {
-                        caption: 'entities.ormpost.views.ejormorgidpickupview.caption',
+                        caption: 'entities.ormpost.views.ejormorgidpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -2122,7 +2265,8 @@ const router = new Router({
                 {
                     path: 'ormposts/:ormpost?/ejormorgidpickupview/:ejormorgidpickupview?',
                     meta: {
-                        caption: 'entities.ormpost.views.ejormorgidpickupview.caption',
+                        caption: 'entities.ormpost.views.ejormorgidpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -2135,7 +2279,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/ygcgjgridview/:ygcgjgridview?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.ygcgjgridview.caption',
+                        caption: 'entities.pimexitandentry.views.ygcgjgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/chujing.png',
                         iconCls: '',
                         parameters: [
@@ -2151,7 +2296,8 @@ const router = new Router({
                 {
                     path: 'pimexitandentries/:pimexitandentry?/ygcgjgridview/:ygcgjgridview?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.ygcgjgridview.caption',
+                        caption: 'entities.pimexitandentry.views.ygcgjgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/chujing.png',
                         iconCls: '',
                         parameters: [
@@ -2166,7 +2312,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimarmycadres/:pimarmycadres?/armygridview/:armygridview?',
                     meta: {
-                        caption: 'entities.pimarmycadres.views.armygridview.caption',
+                        caption: 'entities.pimarmycadres.views.armygridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/junzhuanganbu.png',
                         iconCls: '',
                         parameters: [
@@ -2182,7 +2329,8 @@ const router = new Router({
                 {
                     path: 'pimarmycadres/:pimarmycadres?/armygridview/:armygridview?',
                     meta: {
-                        caption: 'entities.pimarmycadres.views.armygridview.caption',
+                        caption: 'entities.pimarmycadres.views.armygridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/junzhuanganbu.png',
                         iconCls: '',
                         parameters: [
@@ -2197,7 +2345,8 @@ const router = new Router({
                 {
                     path: 'pimqualtypes/:pimqualtype?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimqualtype.views.editview.caption',
+                        caption: 'entities.pimqualtype.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/kaoqinleixing.png',
                         iconCls: '',
                         parameters: [
@@ -2212,7 +2361,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/zhzceditview/:zhzceditview?',
                     meta: {
-                        caption: 'entities.pimperson.views.zhzceditview.caption',
+                        caption: 'entities.pimperson.views.zhzceditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gerenxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -2227,7 +2377,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimcontracts/:pimcontract?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.gridview.caption',
+                        caption: 'entities.pimcontract.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2243,7 +2394,8 @@ const router = new Router({
                 {
                     path: 'pimcontracts/:pimcontract?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.gridview.caption',
+                        caption: 'entities.pimcontract.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2258,7 +2410,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.pickupgridview.caption',
+                        caption: 'entities.ormorgsector.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -2272,7 +2425,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.pickupgridview.caption',
+                        caption: 'entities.ormorgsector.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -2285,7 +2439,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/zdeditview/:zdeditview?',
                     meta: {
-                        caption: 'entities.pimperson.views.zdeditview.caption',
+                        caption: 'entities.pimperson.views.zdeditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gerenxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -2300,7 +2455,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/editview_ybh/:editview_ybh?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.editview_ybh.caption',
+                        caption: 'entities.pimexitandentry.views.editview_ybh.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/chujing.png',
                         iconCls: '',
                         parameters: [
@@ -2316,7 +2472,8 @@ const router = new Router({
                 {
                     path: 'pimexitandentries/:pimexitandentry?/editview_ybh/:editview_ybh?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.editview_ybh.caption',
+                        caption: 'entities.pimexitandentry.views.editview_ybh.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/chujing.png',
                         iconCls: '',
                         parameters: [
@@ -2331,7 +2488,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimresearchfindings/:pimresearchfindings?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimresearchfindings.views.editview.caption',
+                        caption: 'entities.pimresearchfindings.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/keyanchengguo.png',
                         iconCls: '',
                         parameters: [
@@ -2347,7 +2505,8 @@ const router = new Router({
                 {
                     path: 'pimresearchfindings/:pimresearchfindings?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimresearchfindings.views.editview.caption',
+                        caption: 'entities.pimresearchfindings.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/keyanchengguo.png',
                         iconCls: '',
                         parameters: [
@@ -2362,7 +2521,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/trmtrainpeople/:trmtrainperson?/editview/:editview?',
                     meta: {
-                        caption: 'entities.trmtrainperson.views.editview.caption',
+                        caption: 'entities.trmtrainperson.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -2376,7 +2536,8 @@ const router = new Router({
                 {
                     path: 'trmtrainpeople/:trmtrainperson?/editview/:editview?',
                     meta: {
-                        caption: 'entities.trmtrainperson.views.editview.caption',
+                        caption: 'entities.trmtrainperson.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'trmtrainpeople', parameterName: 'trmtrainperson' },
@@ -2389,7 +2550,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/personinfotreeexpview/:personinfotreeexpview?',
                     meta: {
-                        caption: 'entities.pimperson.views.personinfotreeexpview.caption',
+                        caption: 'entities.pimperson.views.personinfotreeexpview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gerenxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -2404,7 +2566,8 @@ const router = new Router({
                 {
                     path: 'pimexpaccounts/:pimexpaccount?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimexpaccount.views.gridview.caption',
+                        caption: 'entities.pimexpaccount.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/guazhiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2419,7 +2582,8 @@ const router = new Router({
                 {
                     path: 'ormduties/:ormduty?/ormorgsectorpickupview/:ormorgsectorpickupview?',
                     meta: {
-                        caption: 'entities.ormduty.views.ormorgsectorpickupview.caption',
+                        caption: 'entities.ormduty.views.ormorgsectorpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormduties', parameterName: 'ormduty' },
@@ -2432,7 +2596,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimvocationals/:pimvocational?/wsseditview/:wsseditview?',
                     meta: {
-                        caption: 'entities.pimvocational.views.wsseditview.caption',
+                        caption: 'entities.pimvocational.views.wsseditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhiyezige.png',
                         iconCls: '',
                         parameters: [
@@ -2448,7 +2613,8 @@ const router = new Router({
                 {
                     path: 'pimvocationals/:pimvocational?/wsseditview/:wsseditview?',
                     meta: {
-                        caption: 'entities.pimvocational.views.wsseditview.caption',
+                        caption: 'entities.pimvocational.views.wsseditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhiyezige.png',
                         iconCls: '',
                         parameters: [
@@ -2463,7 +2629,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimcontracts/:pimcontract?/reneweditview/:reneweditview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.reneweditview.caption',
+                        caption: 'entities.pimcontract.views.reneweditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -2477,7 +2644,8 @@ const router = new Router({
                 {
                     path: 'pimcontracts/:pimcontract?/reneweditview/:reneweditview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.reneweditview.caption',
+                        caption: 'entities.pimcontract.views.reneweditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimcontracts', parameterName: 'pimcontract' },
@@ -2490,7 +2658,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/editview_yqx/:editview_yqx?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.editview_yqx.caption',
+                        caption: 'entities.pimexitandentry.views.editview_yqx.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/chujing.png',
                         iconCls: '',
                         parameters: [
@@ -2506,7 +2675,8 @@ const router = new Router({
                 {
                     path: 'pimexitandentries/:pimexitandentry?/editview_yqx/:editview_yqx?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.editview_yqx.caption',
+                        caption: 'entities.pimexitandentry.views.editview_yqx.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/chujing.png',
                         iconCls: '',
                         parameters: [
@@ -2521,7 +2691,8 @@ const router = new Router({
                 {
                     path: 'pimtitlecatalogues/:pimtitlecatalogue?/notpickupgridview/:notpickupgridview?',
                     meta: {
-                        caption: 'entities.pimtitlecatalogue.views.notpickupgridview.caption',
+                        caption: 'entities.pimtitlecatalogue.views.notpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimtitlecatalogues', parameterName: 'pimtitlecatalogue' },
@@ -2534,7 +2705,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimcontracts/:pimcontract?/lwgridview/:lwgridview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.lwgridview.caption',
+                        caption: 'entities.pimcontract.views.lwgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2550,7 +2722,8 @@ const router = new Router({
                 {
                     path: 'pimcontracts/:pimcontract?/lwgridview/:lwgridview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.lwgridview.caption',
+                        caption: 'entities.pimcontract.views.lwgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2565,7 +2738,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimarchives/:pimarchives?/pimarchiveschanges/:pimarchiveschange?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimarchiveschange.views.gridview.caption',
+                        caption: 'entities.pimarchiveschange.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2582,7 +2756,8 @@ const router = new Router({
                 {
                     path: 'pimarchives/:pimarchives?/pimarchiveschanges/:pimarchiveschange?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimarchiveschange.views.gridview.caption',
+                        caption: 'entities.pimarchiveschange.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2598,7 +2773,8 @@ const router = new Router({
                 {
                     path: 'pimarchiveschanges/:pimarchiveschange?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimarchiveschange.views.gridview.caption',
+                        caption: 'entities.pimarchiveschange.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2613,7 +2789,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimvocationals/:pimvocational?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimvocational.views.gridview.caption',
+                        caption: 'entities.pimvocational.views.gridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -2627,7 +2804,8 @@ const router = new Router({
                 {
                     path: 'pimvocationals/:pimvocational?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimvocational.views.gridview.caption',
+                        caption: 'entities.pimvocational.views.gridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimvocationals', parameterName: 'pimvocational' },
@@ -2640,7 +2818,8 @@ const router = new Router({
                 {
                     path: 'trmlgbcosts/:trmlgbcost?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.trmlgbcost.views.gridview.caption',
+                        caption: 'entities.trmlgbcost.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/junzhuanganbu.png',
                         iconCls: '',
                         parameters: [
@@ -2655,7 +2834,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimpersonchanges/:pimpersonchange?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimpersonchange.views.gridview.caption',
+                        caption: 'entities.pimpersonchange.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/xinyuangongzhuanzheng.png',
                         iconCls: '',
                         parameters: [
@@ -2671,7 +2851,8 @@ const router = new Router({
                 {
                     path: 'pimpersonchanges/:pimpersonchange?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimpersonchange.views.gridview.caption',
+                        caption: 'entities.pimpersonchange.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/xinyuangongzhuanzheng.png',
                         iconCls: '',
                         parameters: [
@@ -2686,7 +2867,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimcontracts/:pimcontract?/lweditview/:lweditview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.lweditview.caption',
+                        caption: 'entities.pimcontract.views.lweditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2702,7 +2884,8 @@ const router = new Router({
                 {
                     path: 'pimcontracts/:pimcontract?/lweditview/:lweditview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.lweditview.caption',
+                        caption: 'entities.pimcontract.views.lweditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2717,7 +2900,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimarmycadres/:pimarmycadres?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimarmycadres.views.editview.caption',
+                        caption: 'entities.pimarmycadres.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/junzhuanganbu.png',
                         iconCls: '',
                         parameters: [
@@ -2733,7 +2917,8 @@ const router = new Router({
                 {
                     path: 'pimarmycadres/:pimarmycadres?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimarmycadres.views.editview.caption',
+                        caption: 'entities.pimarmycadres.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/junzhuanganbu.png',
                         iconCls: '',
                         parameters: [
@@ -2748,7 +2933,8 @@ const router = new Router({
                 {
                     path: 'pimqualtypes/:pimqualtype?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.pimqualtype.views.pickupgridview.caption',
+                        caption: 'entities.pimqualtype.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimqualtypes', parameterName: 'pimqualtype' },
@@ -2761,7 +2947,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimarchives/:pimarchives?/noloyeenofilegridview/:noloyeenofilegridview?',
                     meta: {
-                        caption: 'entities.pimarchives.views.noloyeenofilegridview.caption',
+                        caption: 'entities.pimarchives.views.noloyeenofilegridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2777,7 +2964,8 @@ const router = new Router({
                 {
                     path: 'pimarchives/:pimarchives?/noloyeenofilegridview/:noloyeenofilegridview?',
                     meta: {
-                        caption: 'entities.pimarchives.views.noloyeenofilegridview.caption',
+                        caption: 'entities.pimarchives.views.noloyeenofilegridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2792,7 +2980,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/editview_ytg/:editview_ytg?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.editview_ytg.caption',
+                        caption: 'entities.pimexitandentry.views.editview_ytg.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/chujing.png',
                         iconCls: '',
                         parameters: [
@@ -2808,7 +2997,8 @@ const router = new Router({
                 {
                     path: 'pimexitandentries/:pimexitandentry?/editview_ytg/:editview_ytg?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.editview_ytg.caption',
+                        caption: 'entities.pimexitandentry.views.editview_ytg.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/chujing.png',
                         iconCls: '',
                         parameters: [
@@ -2823,7 +3013,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimcontracts/:pimcontract?/stopremindgridview/:stopremindgridview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.stopremindgridview.caption',
+                        caption: 'entities.pimcontract.views.stopremindgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -2837,7 +3028,8 @@ const router = new Router({
                 {
                     path: 'pimcontracts/:pimcontract?/stopremindgridview/:stopremindgridview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.stopremindgridview.caption',
+                        caption: 'entities.pimcontract.views.stopremindgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimcontracts', parameterName: 'pimcontract' },
@@ -2850,7 +3042,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/htgldwqpickupgridview/:htgldwqpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorg.views.htgldwqpickupgridview.caption',
+                        caption: 'entities.ormorg.views.htgldwqpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -2863,7 +3056,8 @@ const router = new Router({
                 {
                     path: 'pimarchivescenters/:pimarchivescenter?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimarchivescenter.views.gridview.caption',
+                        caption: 'entities.pimarchivescenter.views.gridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
@@ -2876,7 +3070,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimfaminfos/:pimfaminfo?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimfaminfo.views.editview.caption',
+                        caption: 'entities.pimfaminfo.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jiatingqingkuang.png',
                         iconCls: '',
                         parameters: [
@@ -2892,7 +3087,8 @@ const router = new Router({
                 {
                     path: 'pimfaminfos/:pimfaminfo?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimfaminfo.views.editview.caption',
+                        caption: 'entities.pimfaminfo.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jiatingqingkuang.png',
                         iconCls: '',
                         parameters: [
@@ -2907,7 +3103,8 @@ const router = new Router({
                 {
                     path: 'pimtypecontracts/:pimtypecontract?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimtypecontract.views.editview.caption',
+                        caption: 'entities.pimtypecontract.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimtypecontracts', parameterName: 'pimtypecontract' },
@@ -2920,7 +3117,8 @@ const router = new Router({
                 {
                     path: 'pimqualmajors/:pimqualmajor?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.pimqualmajor.views.pickupview.caption',
+                        caption: 'entities.pimqualmajor.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimqualmajors', parameterName: 'pimqualmajor' },
@@ -2933,7 +3131,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.editview.caption',
+                        caption: 'entities.pimdistirbution.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/fenpeixinxi.png',
                         iconCls: '',
                         parameters: [
@@ -2949,7 +3148,8 @@ const router = new Router({
                 {
                     path: 'pimdistirbutions/:pimdistirbution?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.editview.caption',
+                        caption: 'entities.pimdistirbution.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/fenpeixinxi.png',
                         iconCls: '',
                         parameters: [
@@ -2964,7 +3164,8 @@ const router = new Router({
                 {
                     path: 'pimtitlecatalogues/:pimtitlecatalogue?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimtitlecatalogue.views.gridview.caption',
+                        caption: 'entities.pimtitlecatalogue.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhichengmuluguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2979,7 +3180,8 @@ const router = new Router({
                 {
                     path: 'pimqualmajors/:pimqualmajor?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.pimqualmajor.views.pickupgridview.caption',
+                        caption: 'entities.pimqualmajor.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimqualmajors', parameterName: 'pimqualmajor' },
@@ -2992,7 +3194,8 @@ const router = new Router({
                 {
                     path: 'pimqualtypes/:pimqualtype?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimqualtype.views.gridview.caption',
+                        caption: 'entities.pimqualtype.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/kaoqinleixing.png',
                         iconCls: '',
                         parameters: [
@@ -3007,7 +3210,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimcontracts/:pimcontract?/wssgridview/:wssgridview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.wssgridview.caption',
+                        caption: 'entities.pimcontract.views.wssgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -3023,7 +3227,8 @@ const router = new Router({
                 {
                     path: 'pimcontracts/:pimcontract?/wssgridview/:wssgridview?',
                     meta: {
-                        caption: 'entities.pimcontract.views.wssgridview.caption',
+                        caption: 'entities.pimcontract.views.wssgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -3038,7 +3243,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/trmtrainpeople/:trmtrainperson?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.trmtrainperson.views.gridview.caption',
+                        caption: 'entities.trmtrainperson.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/kfgl/1/peixunjiluguanli.png',
                         iconCls: '',
                         parameters: [
@@ -3054,7 +3260,8 @@ const router = new Router({
                 {
                     path: 'trmtrainpeople/:trmtrainperson?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.trmtrainperson.views.gridview.caption',
+                        caption: 'entities.trmtrainperson.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/kfgl/1/peixunjiluguanli.png',
                         iconCls: '',
                         parameters: [
@@ -3069,7 +3276,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimarchives/:pimarchives?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimarchives.views.editview.caption',
+                        caption: 'entities.pimarchives.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -3085,7 +3293,8 @@ const router = new Router({
                 {
                     path: 'pimarchives/:pimarchives?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimarchives.views.editview.caption',
+                        caption: 'entities.pimarchives.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -3100,7 +3309,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/hmdgridview/:hmdgridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.hmdgridview.caption',
+                        caption: 'entities.pimperson.views.hmdgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gongzuolvli.png',
                         iconCls: '',
                         parameters: [
@@ -3115,7 +3325,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimeducations/:pimeducation?/pimedugridview/:pimedugridview?',
                     meta: {
-                        caption: 'entities.pimeducation.views.pimedugridview.caption',
+                        caption: 'entities.pimeducation.views.pimedugridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -3131,7 +3342,8 @@ const router = new Router({
                 {
                     path: 'pimeducations/:pimeducation?/pimedugridview/:pimedugridview?',
                     meta: {
-                        caption: 'entities.pimeducation.views.pimedugridview.caption',
+                        caption: 'entities.pimeducation.views.pimedugridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -3146,7 +3358,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimperson.views.editview.caption',
+                        caption: 'entities.pimperson.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gerenxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -3161,7 +3374,8 @@ const router = new Router({
                 {
                     path: 'pimarchivescenters/:pimarchivescenter?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.pimarchivescenter.views.pickupview.caption',
+                        caption: 'entities.pimarchivescenter.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
@@ -3174,7 +3388,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/htgldwpickupview/:htgldwpickupview?',
                     meta: {
-                        caption: 'entities.ormorg.views.htgldwpickupview.caption',
+                        caption: 'entities.ormorg.views.htgldwpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -3187,7 +3402,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimworkhistories/:pimworkhistory?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimworkhistory.views.editview.caption',
+                        caption: 'entities.pimworkhistory.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gongzuolvli.png',
                         iconCls: '',
                         parameters: [
@@ -3203,7 +3419,8 @@ const router = new Router({
                 {
                     path: 'pimworkhistories/:pimworkhistory?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimworkhistory.views.editview.caption',
+                        caption: 'entities.pimworkhistory.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gongzuolvli.png',
                         iconCls: '',
                         parameters: [
@@ -3218,7 +3435,8 @@ const router = new Router({
                 {
                     path: 'pimtitlecatalogues/:pimtitlecatalogue?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.pimtitlecatalogue.views.pickupgridview.caption',
+                        caption: 'entities.pimtitlecatalogue.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimtitlecatalogues', parameterName: 'pimtitlecatalogue' },
@@ -3231,7 +3449,8 @@ const router = new Router({
                 {
                     path: 'pimcontracttypes/:pimcontracttype?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimcontracttype.views.gridview.caption',
+                        caption: 'entities.pimcontracttype.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongleixing.png',
                         iconCls: '',
                         parameters: [
@@ -3246,7 +3465,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimarchives/:pimarchives?/archivesrecordeditview/:archivesrecordeditview?',
                     meta: {
-                        caption: 'entities.pimarchives.views.archivesrecordeditview.caption',
+                        caption: 'entities.pimarchives.views.archivesrecordeditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -3262,7 +3482,8 @@ const router = new Router({
                 {
                     path: 'pimarchives/:pimarchives?/archivesrecordeditview/:archivesrecordeditview?',
                     meta: {
-                        caption: 'entities.pimarchives.views.archivesrecordeditview.caption',
+                        caption: 'entities.pimarchives.views.archivesrecordeditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -3277,7 +3498,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/gzryhmcgridview/:gzryhmcgridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.gzryhmcgridview.caption',
+                        caption: 'entities.pimperson.views.gzryhmcgridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/guazhidaoqiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -3292,7 +3514,8 @@ const router = new Router({
                 {
                     path: 'ormsignorgs/:ormsignorg?/bdwpickupgridview/:bdwpickupgridview?',
                     meta: {
-                        caption: 'entities.ormsignorg.views.bdwpickupgridview.caption',
+                        caption: 'entities.ormsignorg.views.bdwpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
@@ -3305,7 +3528,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimlanguageabilities/:pimlanguageability?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimlanguageability.views.editview.caption',
+                        caption: 'entities.pimlanguageability.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -3319,7 +3543,8 @@ const router = new Router({
                 {
                     path: 'pimlanguageabilities/:pimlanguageability?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimlanguageability.views.editview.caption',
+                        caption: 'entities.pimlanguageability.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimlanguageabilities', parameterName: 'pimlanguageability' },
@@ -3332,7 +3557,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimachievements/:pimachievements?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimachievements.views.editview.caption',
+                        caption: 'entities.pimachievements.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jixiaoxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -3348,7 +3574,8 @@ const router = new Router({
                 {
                     path: 'pimachievements/:pimachievements?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimachievements.views.editview.caption',
+                        caption: 'entities.pimachievements.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jixiaoxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -3363,7 +3590,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/fpxxpickupgridview/:fpxxpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.fpxxpickupgridview.caption',
+                        caption: 'entities.ormorgsector.views.fpxxpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -3377,7 +3605,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/fpxxpickupgridview/:fpxxpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.fpxxpickupgridview.caption',
+                        caption: 'entities.ormorgsector.views.fpxxpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -3390,7 +3619,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimpatents/:pimpatent?/patentgridview/:patentgridview?',
                     meta: {
-                        caption: 'entities.pimpatent.views.patentgridview.caption',
+                        caption: 'entities.pimpatent.views.patentgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhuanlixinxi.png',
                         iconCls: '',
                         parameters: [
@@ -3406,7 +3636,8 @@ const router = new Router({
                 {
                     path: 'pimpatents/:pimpatent?/patentgridview/:patentgridview?',
                     meta: {
-                        caption: 'entities.pimpatent.views.patentgridview.caption',
+                        caption: 'entities.pimpatent.views.patentgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhuanlixinxi.png',
                         iconCls: '',
                         parameters: [
@@ -3421,7 +3652,8 @@ const router = new Router({
                 {
                     path: 'pimexpaccounts/:pimexpaccount?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimexpaccount.views.editview.caption',
+                        caption: 'entities.pimexpaccount.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/guazhiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -3436,7 +3668,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/editview_spz/:editview_spz?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.editview_spz.caption',
+                        caption: 'entities.pimexitandentry.views.editview_spz.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/chujing.png',
                         iconCls: '',
                         parameters: [
@@ -3452,7 +3685,8 @@ const router = new Router({
                 {
                     path: 'pimexitandentries/:pimexitandentry?/editview_spz/:editview_spz?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.editview_spz.caption',
+                        caption: 'entities.pimexitandentry.views.editview_spz.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/chujing.png',
                         iconCls: '',
                         parameters: [
@@ -3467,7 +3701,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimarchives/:pimarchives?/pimarchivesloanandreturns/:pimarchivesloanandreturn?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimarchivesloanandreturn.views.gridview.caption',
+                        caption: 'entities.pimarchivesloanandreturn.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/biangenghetong.png',
                         iconCls: '',
                         parameters: [
@@ -3484,7 +3719,8 @@ const router = new Router({
                 {
                     path: 'pimarchives/:pimarchives?/pimarchivesloanandreturns/:pimarchivesloanandreturn?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimarchivesloanandreturn.views.gridview.caption',
+                        caption: 'entities.pimarchivesloanandreturn.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/biangenghetong.png',
                         iconCls: '',
                         parameters: [
@@ -3500,7 +3736,8 @@ const router = new Router({
                 {
                     path: 'pimarchivesloanandreturns/:pimarchivesloanandreturn?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimarchivesloanandreturn.views.gridview.caption',
+                        caption: 'entities.pimarchivesloanandreturn.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/biangenghetong.png',
                         iconCls: '',
                         parameters: [
@@ -3515,7 +3752,8 @@ const router = new Router({
                 {
                     path: 'pimportalview/:pimportalview?',
                     meta: {
-                        caption: 'app.views.pimportalview.caption',
+                        caption: 'app.views.pimportalview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimportalview', parameterName: 'pimportalview' },
@@ -3527,7 +3765,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.editview.caption',
+                        caption: 'entities.pimexitandentry.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/chujing.png',
                         iconCls: '',
                         parameters: [
@@ -3543,7 +3782,8 @@ const router = new Router({
                 {
                     path: 'pimexitandentries/:pimexitandentry?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimexitandentry.views.editview.caption',
+                        caption: 'entities.pimexitandentry.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/chujing.png',
                         iconCls: '',
                         parameters: [
@@ -3558,7 +3798,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimfaminfos/:pimfaminfo?/pimfimgridview/:pimfimgridview?',
                     meta: {
-                        caption: 'entities.pimfaminfo.views.pimfimgridview.caption',
+                        caption: 'entities.pimfaminfo.views.pimfimgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jiatingqingkuang.png',
                         iconCls: '',
                         parameters: [
@@ -3574,7 +3815,8 @@ const router = new Router({
                 {
                     path: 'pimfaminfos/:pimfaminfo?/pimfimgridview/:pimfimgridview?',
                     meta: {
-                        caption: 'entities.pimfaminfo.views.pimfimgridview.caption',
+                        caption: 'entities.pimfaminfo.views.pimfimgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jiatingqingkuang.png',
                         iconCls: '',
                         parameters: [
@@ -3589,7 +3831,8 @@ const router = new Router({
             {
                 path: 'pimworkhistoryredirectview/:pimworkhistoryredirectview?',
                 meta: {
-                    caption: 'entities.pimworkhistory.views.redirectview.caption',
+                    caption: 'entities.pimworkhistory.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimworkhistoryredirectview', parameterName: 'pimworkhistoryredirectview' },
                     ],
@@ -3600,7 +3843,8 @@ const router = new Router({
             {
                 path: 'pimlanguageabilityredirectview/:pimlanguageabilityredirectview?',
                 meta: {
-                    caption: 'entities.pimlanguageability.views.redirectview.caption',
+                    caption: 'entities.pimlanguageability.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimlanguageabilityredirectview', parameterName: 'pimlanguageabilityredirectview' },
                     ],
@@ -3611,7 +3855,8 @@ const router = new Router({
             {
                 path: 'pimarchivesredirectview/:pimarchivesredirectview?',
                 meta: {
-                    caption: 'entities.pimarchives.views.redirectview.caption',
+                    caption: 'entities.pimarchives.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimarchivesredirectview', parameterName: 'pimarchivesredirectview' },
                     ],
@@ -3622,7 +3867,8 @@ const router = new Router({
             {
                 path: 'pimvocationalredirectview/:pimvocationalredirectview?',
                 meta: {
-                    caption: 'entities.pimvocational.views.redirectview.caption',
+                    caption: 'entities.pimvocational.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimvocationalredirectview', parameterName: 'pimvocationalredirectview' },
                     ],
@@ -3633,7 +3879,8 @@ const router = new Router({
             {
                 path: 'pimvocationalcatalogredirectview/:pimvocationalcatalogredirectview?',
                 meta: {
-                    caption: 'entities.pimvocationalcatalog.views.redirectview.caption',
+                    caption: 'entities.pimvocationalcatalog.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimvocationalcatalogredirectview', parameterName: 'pimvocationalcatalogredirectview' },
                     ],
@@ -3644,7 +3891,8 @@ const router = new Router({
             {
                 path: 'pimarchivesloanandreturnredirectview/:pimarchivesloanandreturnredirectview?',
                 meta: {
-                    caption: 'entities.pimarchivesloanandreturn.views.redirectview.caption',
+                    caption: 'entities.pimarchivesloanandreturn.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimarchivesloanandreturnredirectview', parameterName: 'pimarchivesloanandreturnredirectview' },
                     ],
@@ -3655,7 +3903,8 @@ const router = new Router({
             {
                 path: 'pimarchiveschangeredirectview/:pimarchiveschangeredirectview?',
                 meta: {
-                    caption: 'entities.pimarchiveschange.views.redirectview.caption',
+                    caption: 'entities.pimarchiveschange.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimarchiveschangeredirectview', parameterName: 'pimarchiveschangeredirectview' },
                     ],
@@ -3666,7 +3915,8 @@ const router = new Router({
             {
                 path: 'pimpersonabilitydetailredirectview/:pimpersonabilitydetailredirectview?',
                 meta: {
-                    caption: 'entities.pimpersonabilitydetail.views.redirectview.caption',
+                    caption: 'entities.pimpersonabilitydetail.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimpersonabilitydetailredirectview', parameterName: 'pimpersonabilitydetailredirectview' },
                     ],
@@ -3677,7 +3927,8 @@ const router = new Router({
             {
                 path: 'pimsearchmodalredirectview/:pimsearchmodalredirectview?',
                 meta: {
-                    caption: 'entities.pimsearchmodal.views.redirectview.caption',
+                    caption: 'entities.pimsearchmodal.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimsearchmodalredirectview', parameterName: 'pimsearchmodalredirectview' },
                     ],
@@ -3688,7 +3939,8 @@ const router = new Router({
             {
                 path: 'pimarmycadresredirectview/:pimarmycadresredirectview?',
                 meta: {
-                    caption: 'entities.pimarmycadres.views.redirectview.caption',
+                    caption: 'entities.pimarmycadres.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimarmycadresredirectview', parameterName: 'pimarmycadresredirectview' },
                     ],
@@ -3699,7 +3951,8 @@ const router = new Router({
             {
                 path: 'pimpersonabilityredirectview/:pimpersonabilityredirectview?',
                 meta: {
-                    caption: 'entities.pimpersonability.views.redirectview.caption',
+                    caption: 'entities.pimpersonability.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimpersonabilityredirectview', parameterName: 'pimpersonabilityredirectview' },
                     ],
@@ -3710,7 +3963,8 @@ const router = new Router({
             {
                 path: 'pimarchivesrecordredirectview/:pimarchivesrecordredirectview?',
                 meta: {
-                    caption: 'entities.pimarchivesrecord.views.redirectview.caption',
+                    caption: 'entities.pimarchivesrecord.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimarchivesrecordredirectview', parameterName: 'pimarchivesrecordredirectview' },
                     ],
@@ -3721,7 +3975,8 @@ const router = new Router({
             {
                 path: 'archivalcatalogueredirectview/:archivalcatalogueredirectview?',
                 meta: {
-                    caption: 'entities.pimarchivalcatalogue.views.redirectview.caption',
+                    caption: 'entities.pimarchivalcatalogue.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'archivalcatalogueredirectview', parameterName: 'archivalcatalogueredirectview' },
                     ],
@@ -3732,7 +3987,8 @@ const router = new Router({
             {
                 path: 'pimenclosureredirectview/:pimenclosureredirectview?',
                 meta: {
-                    caption: 'entities.pimenclosure.views.redirectview.caption',
+                    caption: 'entities.pimenclosure.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimenclosureredirectview', parameterName: 'pimenclosureredirectview' },
                     ],
@@ -3743,7 +3999,8 @@ const router = new Router({
             {
                 path: 'pimcontractredirectview/:pimcontractredirectview?',
                 meta: {
-                    caption: 'entities.pimcontract.views.redirectview.caption',
+                    caption: 'entities.pimcontract.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimcontractredirectview', parameterName: 'pimcontractredirectview' },
                     ],
@@ -3754,7 +4011,8 @@ const router = new Router({
             {
                 path: 'pimtypecontractredirectview/:pimtypecontractredirectview?',
                 meta: {
-                    caption: 'entities.pimtypecontract.views.redirectview.caption',
+                    caption: 'entities.pimtypecontract.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimtypecontractredirectview', parameterName: 'pimtypecontractredirectview' },
                     ],
@@ -3765,7 +4023,8 @@ const router = new Router({
             {
                 path: 'pimlabourcampanyredirectview/:pimlabourcampanyredirectview?',
                 meta: {
-                    caption: 'entities.pimlabourcampany.views.redirectview.caption',
+                    caption: 'entities.pimlabourcampany.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimlabourcampanyredirectview', parameterName: 'pimlabourcampanyredirectview' },
                     ],
@@ -3776,7 +4035,8 @@ const router = new Router({
             {
                 path: 'pimsearchfieldsetredirectview/:pimsearchfieldsetredirectview?',
                 meta: {
-                    caption: 'entities.pimsearchfieldset.views.redirectview.caption',
+                    caption: 'entities.pimsearchfieldset.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimsearchfieldsetredirectview', parameterName: 'pimsearchfieldsetredirectview' },
                     ],
@@ -3787,7 +4047,8 @@ const router = new Router({
             {
                 path: 'pimtitlecatalogueredirectview/:pimtitlecatalogueredirectview?',
                 meta: {
-                    caption: 'entities.pimtitlecatalogue.views.redirectview.caption',
+                    caption: 'entities.pimtitlecatalogue.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimtitlecatalogueredirectview', parameterName: 'pimtitlecatalogueredirectview' },
                     ],
@@ -3798,7 +4059,8 @@ const router = new Router({
             {
                 path: 'archivescenterredirectview/:archivescenterredirectview?',
                 meta: {
-                    caption: 'entities.pimarchivescenter.views.redirectview.caption',
+                    caption: 'entities.pimarchivescenter.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'archivescenterredirectview', parameterName: 'archivescenterredirectview' },
                     ],
@@ -3809,7 +4071,8 @@ const router = new Router({
             {
                 path: 'pimrewardpunishmentredirectview/:pimrewardpunishmentredirectview?',
                 meta: {
-                    caption: 'entities.pimrewardpunishment.views.redirectview.caption',
+                    caption: 'entities.pimrewardpunishment.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimrewardpunishmentredirectview', parameterName: 'pimrewardpunishmentredirectview' },
                     ],
@@ -3820,7 +4083,8 @@ const router = new Router({
             {
                 path: 'pimcontracttyperedirectview/:pimcontracttyperedirectview?',
                 meta: {
-                    caption: 'entities.pimcontracttype.views.redirectview.caption',
+                    caption: 'entities.pimcontracttype.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimcontracttyperedirectview', parameterName: 'pimcontracttyperedirectview' },
                     ],
@@ -3831,7 +4095,8 @@ const router = new Router({
             {
                 path: 'pimachievementsredirectview/:pimachievementsredirectview?',
                 meta: {
-                    caption: 'entities.pimachievements.views.redirectview.caption',
+                    caption: 'entities.pimachievements.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimachievementsredirectview', parameterName: 'pimachievementsredirectview' },
                     ],
@@ -3842,7 +4107,8 @@ const router = new Router({
             {
                 path: 'pimpersonchangeredirectview/:pimpersonchangeredirectview?',
                 meta: {
-                    caption: 'entities.pimpersonchange.views.redirectview.caption',
+                    caption: 'entities.pimpersonchange.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimpersonchangeredirectview', parameterName: 'pimpersonchangeredirectview' },
                     ],
@@ -3853,7 +4119,8 @@ const router = new Router({
             {
                 path: 'pimdistirbutionredirectview/:pimdistirbutionredirectview?',
                 meta: {
-                    caption: 'entities.pimdistirbution.views.redirectview.caption',
+                    caption: 'entities.pimdistirbution.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimdistirbutionredirectview', parameterName: 'pimdistirbutionredirectview' },
                     ],
@@ -3864,7 +4131,8 @@ const router = new Router({
             {
                 path: 'pimexpaccountredirectview/:pimexpaccountredirectview?',
                 meta: {
-                    caption: 'entities.pimexpaccount.views.redirectview.caption',
+                    caption: 'entities.pimexpaccount.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimexpaccountredirectview', parameterName: 'pimexpaccountredirectview' },
                     ],
@@ -3875,7 +4143,8 @@ const router = new Router({
             {
                 path: 'pimresearchfindingsredirectview/:pimresearchfindingsredirectview?',
                 meta: {
-                    caption: 'entities.pimresearchfindings.views.redirectview.caption',
+                    caption: 'entities.pimresearchfindings.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimresearchfindingsredirectview', parameterName: 'pimresearchfindingsredirectview' },
                     ],
@@ -3886,7 +4155,8 @@ const router = new Router({
             {
                 path: 'contractsignorgredirectview/:contractsignorgredirectview?',
                 meta: {
-                    caption: 'entities.pimcontractsignorg.views.redirectview.caption',
+                    caption: 'entities.pimcontractsignorg.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'contractsignorgredirectview', parameterName: 'contractsignorgredirectview' },
                     ],
@@ -3897,7 +4167,8 @@ const router = new Router({
             {
                 path: 'pimtitleredirectview/:pimtitleredirectview?',
                 meta: {
-                    caption: 'entities.pimtitle.views.redirectview.caption',
+                    caption: 'entities.pimtitle.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimtitleredirectview', parameterName: 'pimtitleredirectview' },
                     ],
@@ -3908,7 +4179,8 @@ const router = new Router({
             {
                 path: 'pimqualtyperedirectview/:pimqualtyperedirectview?',
                 meta: {
-                    caption: 'entities.pimqualtype.views.redirectview.caption',
+                    caption: 'entities.pimqualtype.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimqualtyperedirectview', parameterName: 'pimqualtyperedirectview' },
                     ],
@@ -3919,7 +4191,8 @@ const router = new Router({
             {
                 path: 'pimqualmajorredirectview/:pimqualmajorredirectview?',
                 meta: {
-                    caption: 'entities.pimqualmajor.views.redirectview.caption',
+                    caption: 'entities.pimqualmajor.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimqualmajorredirectview', parameterName: 'pimqualmajorredirectview' },
                     ],
@@ -3930,7 +4203,8 @@ const router = new Router({
             {
                 path: 'pimpatentredirectview/:pimpatentredirectview?',
                 meta: {
-                    caption: 'entities.pimpatent.views.redirectview.caption',
+                    caption: 'entities.pimpatent.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimpatentredirectview', parameterName: 'pimpatentredirectview' },
                     ],
@@ -3941,7 +4215,8 @@ const router = new Router({
             {
                 path: 'pimpaperredirectview/:pimpaperredirectview?',
                 meta: {
-                    caption: 'entities.pimpaper.views.redirectview.caption',
+                    caption: 'entities.pimpaper.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimpaperredirectview', parameterName: 'pimpaperredirectview' },
                     ],
@@ -3952,7 +4227,8 @@ const router = new Router({
             {
                 path: 'pimstafftyperedirectview/:pimstafftyperedirectview?',
                 meta: {
-                    caption: 'entities.pimstafftype.views.redirectview.caption',
+                    caption: 'entities.pimstafftype.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimstafftyperedirectview', parameterName: 'pimstafftyperedirectview' },
                     ],
@@ -3963,7 +4239,8 @@ const router = new Router({
             {
                 path: 'archivesmanageredirectview/:archivesmanageredirectview?',
                 meta: {
-                    caption: 'entities.pimarchivesmanage.views.redirectview.caption',
+                    caption: 'entities.pimarchivesmanage.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'archivesmanageredirectview', parameterName: 'archivesmanageredirectview' },
                     ],
@@ -3974,7 +4251,8 @@ const router = new Router({
             {
                 path: 'pimmajorsetyperedirectview/:pimmajorsetyperedirectview?',
                 meta: {
-                    caption: 'entities.pimmajorsetype.views.redirectview.caption',
+                    caption: 'entities.pimmajorsetype.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimmajorsetyperedirectview', parameterName: 'pimmajorsetyperedirectview' },
                     ],
@@ -3985,7 +4263,8 @@ const router = new Router({
             {
                 path: 'pimfaminforedirectview/:pimfaminforedirectview?',
                 meta: {
-                    caption: 'entities.pimfaminfo.views.redirectview.caption',
+                    caption: 'entities.pimfaminfo.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimfaminforedirectview', parameterName: 'pimfaminforedirectview' },
                     ],
@@ -3996,7 +4275,8 @@ const router = new Router({
             {
                 path: 'pcmdetailredirectview/:pcmdetailredirectview?',
                 meta: {
-                    caption: 'entities.pcmdetail.views.redirectview.caption',
+                    caption: 'entities.pcmdetail.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pcmdetailredirectview', parameterName: 'pcmdetailredirectview' },
                     ],
@@ -4007,7 +4287,8 @@ const router = new Router({
             {
                 path: 'pimeducationredirectview/:pimeducationredirectview?',
                 meta: {
-                    caption: 'entities.pimeducation.views.redirectview.caption',
+                    caption: 'entities.pimeducation.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimeducationredirectview', parameterName: 'pimeducationredirectview' },
                     ],
@@ -4021,7 +4302,8 @@ const router = new Router({
     {
         path: '/pimstafftypes/:pimstafftype?/editview/:editview?',
         meta: {
-            caption: 'entities.pimstafftype.views.editview.caption',
+            caption: 'entities.pimstafftype.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/peixunxinxi.png',
             iconCls: '',
             parameters: [
@@ -4035,7 +4317,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimperson.views.gridview.caption',
+            caption: 'entities.pimperson.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gerenxinxi.png',
             iconCls: '',
             parameters: [
@@ -4049,7 +4332,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimeducations/:pimeducation?/zdxlgridview/:zdxlgridview?',
         meta: {
-            caption: 'entities.pimeducation.views.zdxlgridview.caption',
+            caption: 'entities.pimeducation.views.zdxlgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
             iconCls: '',
             parameters: [
@@ -4064,7 +4348,8 @@ const router = new Router({
     {
         path: '/pimeducations/:pimeducation?/zdxlgridview/:zdxlgridview?',
         meta: {
-            caption: 'entities.pimeducation.views.zdxlgridview.caption',
+            caption: 'entities.pimeducation.views.zdxlgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
             iconCls: '',
             parameters: [
@@ -4078,7 +4363,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimtitles/:pimtitle?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimtitle.views.gridview.caption',
+            caption: 'entities.pimtitle.views.gridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/penxunjihua.png',
             iconCls: '',
             parameters: [
@@ -4093,7 +4379,8 @@ const router = new Router({
     {
         path: '/pimtitles/:pimtitle?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimtitle.views.gridview.caption',
+            caption: 'entities.pimtitle.views.gridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/penxunjihua.png',
             iconCls: '',
             parameters: [
@@ -4107,7 +4394,8 @@ const router = new Router({
     {
         path: '/pimarchivalcatalogues/:pimarchivalcatalogue?/editview/:editview?',
         meta: {
-            caption: 'entities.pimarchivalcatalogue.views.editview.caption',
+            caption: 'entities.pimarchivalcatalogue.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimarchivalcatalogues', parameterName: 'pimarchivalcatalogue' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -4119,7 +4407,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimcontracts/:pimcontract?/stopremindgridview/:stopremindgridview?',
         meta: {
-            caption: 'entities.pimcontract.views.stopremindgridview.caption',
+            caption: 'entities.pimcontract.views.stopremindgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimcontracts', parameterName: 'pimcontract' },
@@ -4132,7 +4421,8 @@ const router = new Router({
     {
         path: '/pimcontracts/:pimcontract?/stopremindgridview/:stopremindgridview?',
         meta: {
-            caption: 'entities.pimcontract.views.stopremindgridview.caption',
+            caption: 'entities.pimcontract.views.stopremindgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimcontracts', parameterName: 'pimcontract' },
                 { pathName: 'stopremindgridview', parameterName: 'stopremindgridview' },
@@ -4144,7 +4434,8 @@ const router = new Router({
             {
                 path: '/pimworkhistoryredirectview/:pimworkhistoryredirectview?',
                 meta: {
-                    caption: 'entities.pimworkhistory.views.redirectview.caption',
+                    caption: 'entities.pimworkhistory.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimworkhistoryredirectview', parameterName: 'pimworkhistoryredirectview' },
                     ],
@@ -4155,7 +4446,8 @@ const router = new Router({
     {
         path: '/pimexpaccounts/:pimexpaccount?/editview/:editview?',
         meta: {
-            caption: 'entities.pimexpaccount.views.editview.caption',
+            caption: 'entities.pimexpaccount.views.editview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/guazhiguanli.png',
             iconCls: '',
             parameters: [
@@ -4169,7 +4461,8 @@ const router = new Router({
     {
         path: '/pimgwtypes/:pimgwtype?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.pimgwtype.views.pickupgridview.caption',
+            caption: 'entities.pimgwtype.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimgwtypes', parameterName: 'pimgwtype' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -4181,7 +4474,8 @@ const router = new Router({
     {
         path: '/pimqualtypes/:pimqualtype?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.pimqualtype.views.pickupview.caption',
+            caption: 'entities.pimqualtype.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimqualtypes', parameterName: 'pimqualtype' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -4193,7 +4487,8 @@ const router = new Router({
     {
         path: '/pimarchivalcatalogues/:pimarchivalcatalogue?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.pimarchivalcatalogue.views.pickupgridview.caption',
+            caption: 'entities.pimarchivalcatalogue.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimarchivalcatalogues', parameterName: 'pimarchivalcatalogue' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -4205,7 +4500,8 @@ const router = new Router({
     {
         path: '/pimtypecontracts/:pimtypecontract?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimtypecontract.views.gridview.caption',
+            caption: 'entities.pimtypecontract.views.gridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimtypecontracts', parameterName: 'pimtypecontract' },
                 { pathName: 'gridview', parameterName: 'gridview' },
@@ -4217,7 +4513,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimachievements/:pimachievements?/pimjixgridview/:pimjixgridview?',
         meta: {
-            caption: 'entities.pimachievements.views.pimjixgridview.caption',
+            caption: 'entities.pimachievements.views.pimjixgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jixiaoxinxi.png',
             iconCls: '',
             parameters: [
@@ -4232,7 +4529,8 @@ const router = new Router({
     {
         path: '/pimachievements/:pimachievements?/pimjixgridview/:pimjixgridview?',
         meta: {
-            caption: 'entities.pimachievements.views.pimjixgridview.caption',
+            caption: 'entities.pimachievements.views.pimjixgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jixiaoxinxi.png',
             iconCls: '',
             parameters: [
@@ -4246,7 +4544,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimtitles/:pimtitle?/wsseditview/:wsseditview?',
         meta: {
-            caption: 'entities.pimtitle.views.wsseditview.caption',
+            caption: 'entities.pimtitle.views.wsseditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhichengxinxi.png',
             iconCls: '',
             parameters: [
@@ -4261,7 +4560,8 @@ const router = new Router({
     {
         path: '/pimtitles/:pimtitle?/wsseditview/:wsseditview?',
         meta: {
-            caption: 'entities.pimtitle.views.wsseditview.caption',
+            caption: 'entities.pimtitle.views.wsseditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhichengxinxi.png',
             iconCls: '',
             parameters: [
@@ -4275,7 +4575,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/personinfoeditview/:personinfoeditview?',
         meta: {
-            caption: 'entities.pimperson.views.personinfoeditview.caption',
+            caption: 'entities.pimperson.views.personinfoeditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gerenxinxi.png',
             iconCls: '',
             parameters: [
@@ -4289,7 +4590,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/htgldwpickupview/:htgldwpickupview?',
         meta: {
-            caption: 'entities.ormorg.views.htgldwpickupview.caption',
+            caption: 'entities.ormorg.views.htgldwpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'htgldwpickupview', parameterName: 'htgldwpickupview' },
@@ -4301,7 +4603,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/attendancemreportmxes/:attendancemreportmx?/editview/:editview?',
         meta: {
-            caption: 'entities.attendancemreportmx.views.editview.caption',
+            caption: 'entities.attendancemreportmx.views.editview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/kaoqinyuebao.png',
             iconCls: '',
             parameters: [
@@ -4316,7 +4619,8 @@ const router = new Router({
     {
         path: '/attendancemreportmxes/:attendancemreportmx?/editview/:editview?',
         meta: {
-            caption: 'entities.attendancemreportmx.views.editview.caption',
+            caption: 'entities.attendancemreportmx.views.editview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/kaoqinyuebao.png',
             iconCls: '',
             parameters: [
@@ -4330,7 +4634,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimrewardpunishments/:pimrewardpunishment?/honorgridview/:honorgridview?',
         meta: {
-            caption: 'entities.pimrewardpunishment.views.honorgridview.caption',
+            caption: 'entities.pimrewardpunishment.views.honorgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jianglichengfa.png',
             iconCls: '',
             parameters: [
@@ -4345,7 +4650,8 @@ const router = new Router({
     {
         path: '/pimrewardpunishments/:pimrewardpunishment?/honorgridview/:honorgridview?',
         meta: {
-            caption: 'entities.pimrewardpunishment.views.honorgridview.caption',
+            caption: 'entities.pimrewardpunishment.views.honorgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jianglichengfa.png',
             iconCls: '',
             parameters: [
@@ -4359,7 +4665,8 @@ const router = new Router({
     {
         path: '/pimqualmajors/:pimqualmajor?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.pimqualmajor.views.pickupview.caption',
+            caption: 'entities.pimqualmajor.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimqualmajors', parameterName: 'pimqualmajor' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -4371,7 +4678,8 @@ const router = new Router({
             {
                 path: '/pimlanguageabilityredirectview/:pimlanguageabilityredirectview?',
                 meta: {
-                    caption: 'entities.pimlanguageability.views.redirectview.caption',
+                    caption: 'entities.pimlanguageability.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimlanguageabilityredirectview', parameterName: 'pimlanguageabilityredirectview' },
                     ],
@@ -4382,7 +4690,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimarchives/:pimarchives?/loyeenofilegridview/:loyeenofilegridview?',
         meta: {
-            caption: 'entities.pimarchives.views.loyeenofilegridview.caption',
+            caption: 'entities.pimarchives.views.loyeenofilegridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganguanli.png',
             iconCls: '',
             parameters: [
@@ -4397,7 +4706,8 @@ const router = new Router({
     {
         path: '/pimarchives/:pimarchives?/loyeenofilegridview/:loyeenofilegridview?',
         meta: {
-            caption: 'entities.pimarchives.views.loyeenofilegridview.caption',
+            caption: 'entities.pimarchives.views.loyeenofilegridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganguanli.png',
             iconCls: '',
             parameters: [
@@ -4411,7 +4721,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/editview_ytg/:editview_ytg?',
         meta: {
-            caption: 'entities.pimexitandentry.views.editview_ytg.caption',
+            caption: 'entities.pimexitandentry.views.editview_ytg.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/chujing.png',
             iconCls: '',
             parameters: [
@@ -4426,7 +4737,8 @@ const router = new Router({
     {
         path: '/pimexitandentries/:pimexitandentry?/editview_ytg/:editview_ytg?',
         meta: {
-            caption: 'entities.pimexitandentry.views.editview_ytg.caption',
+            caption: 'entities.pimexitandentry.views.editview_ytg.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/chujing.png',
             iconCls: '',
             parameters: [
@@ -4440,7 +4752,8 @@ const router = new Router({
     {
         path: '/pimlabourcampanies/:pimlabourcampany?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.pimlabourcampany.views.pickupview.caption',
+            caption: 'entities.pimlabourcampany.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimlabourcampanies', parameterName: 'pimlabourcampany' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -4452,7 +4765,8 @@ const router = new Router({
     {
         path: '/pimgwtypes/:pimgwtype?/mpickupview/:mpickupview?',
         meta: {
-            caption: 'entities.pimgwtype.views.mpickupview.caption',
+            caption: 'entities.pimgwtype.views.mpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimgwtypes', parameterName: 'pimgwtype' },
                 { pathName: 'mpickupview', parameterName: 'mpickupview' },
@@ -4464,7 +4778,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimpersonchanges/:pimpersonchange?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimpersonchange.views.gridview.caption',
+            caption: 'entities.pimpersonchange.views.gridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/xinyuangongzhuanzheng.png',
             iconCls: '',
             parameters: [
@@ -4479,7 +4794,8 @@ const router = new Router({
     {
         path: '/pimpersonchanges/:pimpersonchange?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimpersonchange.views.gridview.caption',
+            caption: 'entities.pimpersonchange.views.gridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/xinyuangongzhuanzheng.png',
             iconCls: '',
             parameters: [
@@ -4493,7 +4809,8 @@ const router = new Router({
             {
                 path: '/pimarchivesredirectview/:pimarchivesredirectview?',
                 meta: {
-                    caption: 'entities.pimarchives.views.redirectview.caption',
+                    caption: 'entities.pimarchives.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimarchivesredirectview', parameterName: 'pimarchivesredirectview' },
                     ],
@@ -4504,7 +4821,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/ormorgsectorpickupview/:ormorgsectorpickupview?',
         meta: {
-            caption: 'entities.ormduty.views.ormorgsectorpickupview.caption',
+            caption: 'entities.ormduty.views.ormorgsectorpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormduties', parameterName: 'ormduty' },
                 { pathName: 'ormorgsectorpickupview', parameterName: 'ormorgsectorpickupview' },
@@ -4516,7 +4834,8 @@ const router = new Router({
     {
         path: '/pimpersonabilitydetails/:pimpersonabilitydetail?/editview/:editview?',
         meta: {
-            caption: 'entities.pimpersonabilitydetail.views.editview.caption',
+            caption: 'entities.pimpersonabilitydetail.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpersonabilitydetails', parameterName: 'pimpersonabilitydetail' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -4528,7 +4847,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimlanguageabilities/:pimlanguageability?/yynlgridview/:yynlgridview?',
         meta: {
-            caption: 'entities.pimlanguageability.views.yynlgridview.caption',
+            caption: 'entities.pimlanguageability.views.yynlgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/yuyanshuiping.png',
             iconCls: '',
             parameters: [
@@ -4543,7 +4863,8 @@ const router = new Router({
     {
         path: '/pimlanguageabilities/:pimlanguageability?/yynlgridview/:yynlgridview?',
         meta: {
-            caption: 'entities.pimlanguageability.views.yynlgridview.caption',
+            caption: 'entities.pimlanguageability.views.yynlgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/yuyanshuiping.png',
             iconCls: '',
             parameters: [
@@ -4557,7 +4878,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimpersonchanges/:pimpersonchange?/editview/:editview?',
         meta: {
-            caption: 'entities.pimpersonchange.views.editview.caption',
+            caption: 'entities.pimpersonchange.views.editview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/xinyuangongzhuanzheng.png',
             iconCls: '',
             parameters: [
@@ -4572,7 +4894,8 @@ const router = new Router({
     {
         path: '/pimpersonchanges/:pimpersonchange?/editview/:editview?',
         meta: {
-            caption: 'entities.pimpersonchange.views.editview.caption',
+            caption: 'entities.pimpersonchange.views.editview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/xinyuangongzhuanzheng.png',
             iconCls: '',
             parameters: [
@@ -4586,7 +4909,8 @@ const router = new Router({
     {
         path: '/pimmajorsetypes/:pimmajorsetype?/editview/:editview?',
         meta: {
-            caption: 'entities.pimmajorsetype.views.editview.caption',
+            caption: 'entities.pimmajorsetype.views.editview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/rencaixulie.png',
             iconCls: '',
             parameters: [
@@ -4600,7 +4924,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimarchives/:pimarchives?/admineditview/:admineditview?',
         meta: {
-            caption: 'entities.pimarchives.views.admineditview.caption',
+            caption: 'entities.pimarchives.views.admineditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -4615,7 +4940,8 @@ const router = new Router({
     {
         path: '/pimarchives/:pimarchives?/admineditview/:admineditview?',
         meta: {
-            caption: 'entities.pimarchives.views.admineditview.caption',
+            caption: 'entities.pimarchives.views.admineditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -4629,7 +4955,8 @@ const router = new Router({
     {
         path: '/trmlgbcosts/:trmlgbcost?/editview/:editview?',
         meta: {
-            caption: 'entities.trmlgbcost.views.editview.caption',
+            caption: 'entities.trmlgbcost.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/junzhuanganbu.png',
             iconCls: '',
             parameters: [
@@ -4643,7 +4970,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/editview2/:editview2?',
         meta: {
-            caption: 'entities.pimperson.views.editview2.caption',
+            caption: 'entities.pimperson.views.editview2.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gerenxinxi.png',
             iconCls: '',
             parameters: [
@@ -4657,7 +4985,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimarchives/:pimarchives?/archivesrecordeditview/:archivesrecordeditview?',
         meta: {
-            caption: 'entities.pimarchives.views.archivesrecordeditview.caption',
+            caption: 'entities.pimarchives.views.archivesrecordeditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -4672,7 +5001,8 @@ const router = new Router({
     {
         path: '/pimarchives/:pimarchives?/archivesrecordeditview/:archivesrecordeditview?',
         meta: {
-            caption: 'entities.pimarchives.views.archivesrecordeditview.caption',
+            caption: 'entities.pimarchives.views.archivesrecordeditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -4686,7 +5016,8 @@ const router = new Router({
     {
         path: '/pimqualmajors/:pimqualmajor?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.pimqualmajor.views.pickupgridview.caption',
+            caption: 'entities.pimqualmajor.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimqualmajors', parameterName: 'pimqualmajor' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -4698,7 +5029,8 @@ const router = new Router({
             {
                 path: '/pimvocationalredirectview/:pimvocationalredirectview?',
                 meta: {
-                    caption: 'entities.pimvocational.views.redirectview.caption',
+                    caption: 'entities.pimvocational.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimvocationalredirectview', parameterName: 'pimvocationalredirectview' },
                     ],
@@ -4709,7 +5041,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/allleveltwoorgpickupgridview/:allleveltwoorgpickupgridview?',
         meta: {
-            caption: 'entities.ormorg.views.allleveltwoorgpickupgridview.caption',
+            caption: 'entities.ormorg.views.allleveltwoorgpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'allleveltwoorgpickupgridview', parameterName: 'allleveltwoorgpickupgridview' },
@@ -4721,7 +5054,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/xscgeditview/:xscgeditview?',
         meta: {
-            caption: 'entities.pimperson.views.xscgeditview.caption',
+            caption: 'entities.pimperson.views.xscgeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'xscgeditview', parameterName: 'xscgeditview' },
@@ -4733,7 +5067,8 @@ const router = new Router({
     {
         path: '/pimexpaccounts/:pimexpaccount?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimexpaccount.views.gridview.caption',
+            caption: 'entities.pimexpaccount.views.gridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/guazhiguanli.png',
             iconCls: '',
             parameters: [
@@ -4747,7 +5082,8 @@ const router = new Router({
     {
         path: '/pimlabourcampanies/:pimlabourcampany?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.pimlabourcampany.views.pickupgridview.caption',
+            caption: 'entities.pimlabourcampany.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimlabourcampanies', parameterName: 'pimlabourcampany' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -4759,7 +5095,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimpatents/:pimpatent?/editview/:editview?',
         meta: {
-            caption: 'entities.pimpatent.views.editview.caption',
+            caption: 'entities.pimpatent.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhuanlixinxi.png',
             iconCls: '',
             parameters: [
@@ -4774,7 +5111,8 @@ const router = new Router({
     {
         path: '/pimpatents/:pimpatent?/editview/:editview?',
         meta: {
-            caption: 'entities.pimpatent.views.editview.caption',
+            caption: 'entities.pimpatent.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhuanlixinxi.png',
             iconCls: '',
             parameters: [
@@ -4788,7 +5126,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/personinfotreeexpview/:personinfotreeexpview?',
         meta: {
-            caption: 'entities.pimperson.views.personinfotreeexpview.caption',
+            caption: 'entities.pimperson.views.personinfotreeexpview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gerenxinxi.png',
             iconCls: '',
             parameters: [
@@ -4802,7 +5141,8 @@ const router = new Router({
             {
                 path: '/pimvocationalcatalogredirectview/:pimvocationalcatalogredirectview?',
                 meta: {
-                    caption: 'entities.pimvocationalcatalog.views.redirectview.caption',
+                    caption: 'entities.pimvocationalcatalog.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimvocationalcatalogredirectview', parameterName: 'pimvocationalcatalogredirectview' },
                     ],
@@ -4813,7 +5153,8 @@ const router = new Router({
     {
         path: '/pimarchivesmanages/:pimarchivesmanage?/editview/:editview?',
         meta: {
-            caption: 'entities.pimarchivesmanage.views.editview.caption',
+            caption: 'entities.pimarchivesmanage.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimarchivesmanages', parameterName: 'pimarchivesmanage' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -4825,7 +5166,8 @@ const router = new Router({
             {
                 path: '/pimarchivesloanandreturnredirectview/:pimarchivesloanandreturnredirectview?',
                 meta: {
-                    caption: 'entities.pimarchivesloanandreturn.views.redirectview.caption',
+                    caption: 'entities.pimarchivesloanandreturn.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimarchivesloanandreturnredirectview', parameterName: 'pimarchivesloanandreturnredirectview' },
                     ],
@@ -4836,7 +5178,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimpersonabilities/:pimpersonability?/editview/:editview?',
         meta: {
-            caption: 'entities.pimpersonability.views.editview.caption',
+            caption: 'entities.pimpersonability.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimpersonabilities', parameterName: 'pimpersonability' },
@@ -4849,7 +5192,8 @@ const router = new Router({
     {
         path: '/pimpersonabilities/:pimpersonability?/editview/:editview?',
         meta: {
-            caption: 'entities.pimpersonability.views.editview.caption',
+            caption: 'entities.pimpersonability.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpersonabilities', parameterName: 'pimpersonability' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -4861,7 +5205,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimarchives/:pimarchives?/pimarchivesrecords/:pimarchivesrecord?/editview/:editview?',
         meta: {
-            caption: 'entities.pimarchivesrecord.views.editview.caption',
+            caption: 'entities.pimarchivesrecord.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimarchives', parameterName: 'pimarchives' },
@@ -4875,7 +5220,8 @@ const router = new Router({
     {
         path: '/pimarchives/:pimarchives?/pimarchivesrecords/:pimarchivesrecord?/editview/:editview?',
         meta: {
-            caption: 'entities.pimarchivesrecord.views.editview.caption',
+            caption: 'entities.pimarchivesrecord.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimarchives', parameterName: 'pimarchives' },
                 { pathName: 'pimarchivesrecords', parameterName: 'pimarchivesrecord' },
@@ -4888,7 +5234,8 @@ const router = new Router({
     {
         path: '/pimarchivesrecords/:pimarchivesrecord?/editview/:editview?',
         meta: {
-            caption: 'entities.pimarchivesrecord.views.editview.caption',
+            caption: 'entities.pimarchivesrecord.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimarchivesrecords', parameterName: 'pimarchivesrecord' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -4900,7 +5247,8 @@ const router = new Router({
     {
         path: '/pimarchivalcatalogues/:pimarchivalcatalogue?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.pimarchivalcatalogue.views.pickupview.caption',
+            caption: 'entities.pimarchivalcatalogue.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimarchivalcatalogues', parameterName: 'pimarchivalcatalogue' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -4912,7 +5260,8 @@ const router = new Router({
     {
         path: '/pimtitlecatalogues/:pimtitlecatalogue?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.pimtitlecatalogue.views.pickupview.caption',
+            caption: 'entities.pimtitlecatalogue.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimtitlecatalogues', parameterName: 'pimtitlecatalogue' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -4924,7 +5273,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimeducations/:pimeducation?/editview/:editview?',
         meta: {
-            caption: 'entities.pimeducation.views.editview.caption',
+            caption: 'entities.pimeducation.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
             iconCls: '',
             parameters: [
@@ -4939,7 +5289,8 @@ const router = new Router({
     {
         path: '/pimeducations/:pimeducation?/editview/:editview?',
         meta: {
-            caption: 'entities.pimeducation.views.editview.caption',
+            caption: 'entities.pimeducation.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
             iconCls: '',
             parameters: [
@@ -4953,7 +5304,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimcontracts/:pimcontract?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimcontract.views.gridview.caption',
+            caption: 'entities.pimcontract.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongguanli.png',
             iconCls: '',
             parameters: [
@@ -4968,7 +5320,8 @@ const router = new Router({
     {
         path: '/pimcontracts/:pimcontract?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimcontract.views.gridview.caption',
+            caption: 'entities.pimcontract.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongguanli.png',
             iconCls: '',
             parameters: [
@@ -4982,7 +5335,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupview/:ejormorgidpickupview?',
         meta: {
-            caption: 'entities.ormpost.views.ejormorgidpickupview.caption',
+            caption: 'entities.ormpost.views.ejormorgidpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -4995,7 +5349,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/ejormorgidpickupview/:ejormorgidpickupview?',
         meta: {
-            caption: 'entities.ormpost.views.ejormorgidpickupview.caption',
+            caption: 'entities.ormpost.views.ejormorgidpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'ejormorgidpickupview', parameterName: 'ejormorgidpickupview' },
@@ -5007,7 +5362,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/xmbqpickupgridview/:xmbqpickupgridview?',
         meta: {
-            caption: 'entities.ormorg.views.xmbqpickupgridview.caption',
+            caption: 'entities.ormorg.views.xmbqpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'xmbqpickupgridview', parameterName: 'xmbqpickupgridview' },
@@ -5019,7 +5375,8 @@ const router = new Router({
     {
         path: '/pcmdetails/:pcmdetail?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmdetail.views.editview.caption',
+            caption: 'entities.pcmdetail.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmdetails', parameterName: 'pcmdetail' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -5031,7 +5388,8 @@ const router = new Router({
     {
         path: '/pimsearchmodals/:pimsearchmodal?/editview/:editview?',
         meta: {
-            caption: 'entities.pimsearchmodal.views.editview.caption',
+            caption: 'entities.pimsearchmodal.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimsearchmodals', parameterName: 'pimsearchmodal' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -5043,7 +5401,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimachievements/:pimachievements?/editview/:editview?',
         meta: {
-            caption: 'entities.pimachievements.views.editview.caption',
+            caption: 'entities.pimachievements.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jixiaoxinxi.png',
             iconCls: '',
             parameters: [
@@ -5058,7 +5417,8 @@ const router = new Router({
     {
         path: '/pimachievements/:pimachievements?/editview/:editview?',
         meta: {
-            caption: 'entities.pimachievements.views.editview.caption',
+            caption: 'entities.pimachievements.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jixiaoxinxi.png',
             iconCls: '',
             parameters: [
@@ -5072,7 +5432,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/gzryhmcgridview/:gzryhmcgridview?',
         meta: {
-            caption: 'entities.pimperson.views.gzryhmcgridview.caption',
+            caption: 'entities.pimperson.views.gzryhmcgridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/guazhidaoqiguanli.png',
             iconCls: '',
             parameters: [
@@ -5086,7 +5447,8 @@ const router = new Router({
     {
         path: '/pimarchivescenters/:pimarchivescenter?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.pimarchivescenter.views.pickupview.caption',
+            caption: 'entities.pimarchivescenter.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -5098,7 +5460,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimworkhistories/:pimworkhistory?/pimworkgridview/:pimworkgridview?',
         meta: {
-            caption: 'entities.pimworkhistory.views.pimworkgridview.caption',
+            caption: 'entities.pimworkhistory.views.pimworkgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gongzuolvli.png',
             iconCls: '',
             parameters: [
@@ -5113,7 +5476,8 @@ const router = new Router({
     {
         path: '/pimworkhistories/:pimworkhistory?/pimworkgridview/:pimworkgridview?',
         meta: {
-            caption: 'entities.pimworkhistory.views.pimworkgridview.caption',
+            caption: 'entities.pimworkhistory.views.pimworkgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gongzuolvli.png',
             iconCls: '',
             parameters: [
@@ -5127,7 +5491,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/xjpickupgridview/:xjpickupgridview?',
         meta: {
-            caption: 'entities.ormorg.views.xjpickupgridview.caption',
+            caption: 'entities.ormorg.views.xjpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'xjpickupgridview', parameterName: 'xjpickupgridview' },
@@ -5139,7 +5504,8 @@ const router = new Router({
             {
                 path: '/pimarchiveschangeredirectview/:pimarchiveschangeredirectview?',
                 meta: {
-                    caption: 'entities.pimarchiveschange.views.redirectview.caption',
+                    caption: 'entities.pimarchiveschange.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimarchiveschangeredirectview', parameterName: 'pimarchiveschangeredirectview' },
                     ],
@@ -5150,7 +5516,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimcontracts/:pimcontract?/wssgridview/:wssgridview?',
         meta: {
-            caption: 'entities.pimcontract.views.wssgridview.caption',
+            caption: 'entities.pimcontract.views.wssgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongguanli.png',
             iconCls: '',
             parameters: [
@@ -5165,7 +5532,8 @@ const router = new Router({
     {
         path: '/pimcontracts/:pimcontract?/wssgridview/:wssgridview?',
         meta: {
-            caption: 'entities.pimcontract.views.wssgridview.caption',
+            caption: 'entities.pimcontract.views.wssgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongguanli.png',
             iconCls: '',
             parameters: [
@@ -5179,7 +5547,8 @@ const router = new Router({
     {
         path: '/ormsignorgs/:ormsignorg?/bdwpickupgridview/:bdwpickupgridview?',
         meta: {
-            caption: 'entities.ormsignorg.views.bdwpickupgridview.caption',
+            caption: 'entities.ormsignorg.views.bdwpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
                 { pathName: 'bdwpickupgridview', parameterName: 'bdwpickupgridview' },
@@ -5191,7 +5560,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimcontracts/:pimcontract?/lwgridview/:lwgridview?',
         meta: {
-            caption: 'entities.pimcontract.views.lwgridview.caption',
+            caption: 'entities.pimcontract.views.lwgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongguanli.png',
             iconCls: '',
             parameters: [
@@ -5206,7 +5576,8 @@ const router = new Router({
     {
         path: '/pimcontracts/:pimcontract?/lwgridview/:lwgridview?',
         meta: {
-            caption: 'entities.pimcontract.views.lwgridview.caption',
+            caption: 'entities.pimcontract.views.lwgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongguanli.png',
             iconCls: '',
             parameters: [
@@ -5220,7 +5591,8 @@ const router = new Router({
     {
         path: '/pimcontracttypes/:pimcontracttype?/editview/:editview?',
         meta: {
-            caption: 'entities.pimcontracttype.views.editview.caption',
+            caption: 'entities.pimcontracttype.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongleixing.png',
             iconCls: '',
             parameters: [
@@ -5234,7 +5606,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimarchives/:pimarchives?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimarchives.views.gridview.caption',
+            caption: 'entities.pimarchives.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganguanli.png',
             iconCls: '',
             parameters: [
@@ -5249,7 +5622,8 @@ const router = new Router({
     {
         path: '/pimarchives/:pimarchives?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimarchives.views.gridview.caption',
+            caption: 'entities.pimarchives.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganguanli.png',
             iconCls: '',
             parameters: [
@@ -5263,7 +5637,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/trmtrainpeople/:trmtrainperson?/editview/:editview?',
         meta: {
-            caption: 'entities.trmtrainperson.views.editview.caption',
+            caption: 'entities.trmtrainperson.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'trmtrainpeople', parameterName: 'trmtrainperson' },
@@ -5276,7 +5651,8 @@ const router = new Router({
     {
         path: '/trmtrainpeople/:trmtrainperson?/editview/:editview?',
         meta: {
-            caption: 'entities.trmtrainperson.views.editview.caption',
+            caption: 'entities.trmtrainperson.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'trmtrainpeople', parameterName: 'trmtrainperson' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -5288,7 +5664,8 @@ const router = new Router({
     {
         path: '/ormsignorgs/:ormsignorg?/htqddwpickupgridview/:htqddwpickupgridview?',
         meta: {
-            caption: 'entities.ormsignorg.views.htqddwpickupgridview.caption',
+            caption: 'entities.ormsignorg.views.htqddwpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
                 { pathName: 'htqddwpickupgridview', parameterName: 'htqddwpickupgridview' },
@@ -5300,7 +5677,8 @@ const router = new Router({
     {
         path: '/pimqualtypes/:pimqualtype?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.pimqualtype.views.pickupgridview.caption',
+            caption: 'entities.pimqualtype.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimqualtypes', parameterName: 'pimqualtype' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -5312,7 +5690,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimvocationals/:pimvocational?/wsseditview/:wsseditview?',
         meta: {
-            caption: 'entities.pimvocational.views.wsseditview.caption',
+            caption: 'entities.pimvocational.views.wsseditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhiyezige.png',
             iconCls: '',
             parameters: [
@@ -5327,7 +5706,8 @@ const router = new Router({
     {
         path: '/pimvocationals/:pimvocational?/wsseditview/:wsseditview?',
         meta: {
-            caption: 'entities.pimvocational.views.wsseditview.caption',
+            caption: 'entities.pimvocational.views.wsseditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhiyezige.png',
             iconCls: '',
             parameters: [
@@ -5341,7 +5721,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/zdeditview/:zdeditview?',
         meta: {
-            caption: 'entities.pimperson.views.zdeditview.caption',
+            caption: 'entities.pimperson.views.zdeditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gerenxinxi.png',
             iconCls: '',
             parameters: [
@@ -5355,7 +5736,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimarmycadres/:pimarmycadres?/editview/:editview?',
         meta: {
-            caption: 'entities.pimarmycadres.views.editview.caption',
+            caption: 'entities.pimarmycadres.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/junzhuanganbu.png',
             iconCls: '',
             parameters: [
@@ -5370,7 +5752,8 @@ const router = new Router({
     {
         path: '/pimarmycadres/:pimarmycadres?/editview/:editview?',
         meta: {
-            caption: 'entities.pimarmycadres.views.editview.caption',
+            caption: 'entities.pimarmycadres.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/junzhuanganbu.png',
             iconCls: '',
             parameters: [
@@ -5384,7 +5767,8 @@ const router = new Router({
     {
         path: '/pimarchivescenters/:pimarchivescenter?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.pimarchivescenter.views.pickupgridview.caption',
+            caption: 'entities.pimarchivescenter.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -5396,7 +5780,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimcontracts/:pimcontract?/signremindgridview/:signremindgridview?',
         meta: {
-            caption: 'entities.pimcontract.views.signremindgridview.caption',
+            caption: 'entities.pimcontract.views.signremindgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimcontracts', parameterName: 'pimcontract' },
@@ -5409,7 +5794,8 @@ const router = new Router({
     {
         path: '/pimcontracts/:pimcontract?/signremindgridview/:signremindgridview?',
         meta: {
-            caption: 'entities.pimcontract.views.signremindgridview.caption',
+            caption: 'entities.pimcontract.views.signremindgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimcontracts', parameterName: 'pimcontract' },
                 { pathName: 'signremindgridview', parameterName: 'signremindgridview' },
@@ -5421,7 +5807,8 @@ const router = new Router({
             {
                 path: '/pimpersonabilitydetailredirectview/:pimpersonabilitydetailredirectview?',
                 meta: {
-                    caption: 'entities.pimpersonabilitydetail.views.redirectview.caption',
+                    caption: 'entities.pimpersonabilitydetail.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimpersonabilitydetailredirectview', parameterName: 'pimpersonabilitydetailredirectview' },
                     ],
@@ -5432,7 +5819,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/fpxxpickupgridview/:fpxxpickupgridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.fpxxpickupgridview.caption',
+            caption: 'entities.ormorgsector.views.fpxxpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -5445,7 +5833,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/fpxxpickupgridview/:fpxxpickupgridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.fpxxpickupgridview.caption',
+            caption: 'entities.ormorgsector.views.fpxxpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'fpxxpickupgridview', parameterName: 'fpxxpickupgridview' },
@@ -5457,7 +5846,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/ygfenpeigridview/:ygfenpeigridview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.ygfenpeigridview.caption',
+            caption: 'entities.pimdistirbution.views.ygfenpeigridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/fenpeixinxi.png',
             iconCls: '',
             parameters: [
@@ -5472,7 +5862,8 @@ const router = new Router({
     {
         path: '/pimdistirbutions/:pimdistirbution?/ygfenpeigridview/:ygfenpeigridview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.ygfenpeigridview.caption',
+            caption: 'entities.pimdistirbution.views.ygfenpeigridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/fenpeixinxi.png',
             iconCls: '',
             parameters: [
@@ -5486,7 +5877,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimvocationals/:pimvocational?/editview/:editview?',
         meta: {
-            caption: 'entities.pimvocational.views.editview.caption',
+            caption: 'entities.pimvocational.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhiyezige.png',
             iconCls: '',
             parameters: [
@@ -5501,7 +5893,8 @@ const router = new Router({
     {
         path: '/pimvocationals/:pimvocational?/editview/:editview?',
         meta: {
-            caption: 'entities.pimvocational.views.editview.caption',
+            caption: 'entities.pimvocational.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhiyezige.png',
             iconCls: '',
             parameters: [
@@ -5515,7 +5908,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/fpxxpickupview/:fpxxpickupview?',
         meta: {
-            caption: 'entities.ormorg.views.fpxxpickupview.caption',
+            caption: 'entities.ormorg.views.fpxxpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'fpxxpickupview', parameterName: 'fpxxpickupview' },
@@ -5527,7 +5921,8 @@ const router = new Router({
             {
                 path: '/pimsearchmodalredirectview/:pimsearchmodalredirectview?',
                 meta: {
-                    caption: 'entities.pimsearchmodal.views.redirectview.caption',
+                    caption: 'entities.pimsearchmodal.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimsearchmodalredirectview', parameterName: 'pimsearchmodalredirectview' },
                     ],
@@ -5538,7 +5933,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/jxqyggridview/:jxqyggridview?',
         meta: {
-            caption: 'entities.pimperson.views.jxqyggridview.caption',
+            caption: 'entities.pimperson.views.jxqyggridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jianxiqiguanli.png',
             iconCls: '',
             parameters: [
@@ -5552,7 +5948,8 @@ const router = new Router({
             {
                 path: '/pimarmycadresredirectview/:pimarmycadresredirectview?',
                 meta: {
-                    caption: 'entities.pimarmycadres.views.redirectview.caption',
+                    caption: 'entities.pimarmycadres.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimarmycadresredirectview', parameterName: 'pimarmycadresredirectview' },
                     ],
@@ -5563,7 +5960,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimcontracts/:pimcontract?/lweditview/:lweditview?',
         meta: {
-            caption: 'entities.pimcontract.views.lweditview.caption',
+            caption: 'entities.pimcontract.views.lweditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongguanli.png',
             iconCls: '',
             parameters: [
@@ -5578,7 +5976,8 @@ const router = new Router({
     {
         path: '/pimcontracts/:pimcontract?/lweditview/:lweditview?',
         meta: {
-            caption: 'entities.pimcontract.views.lweditview.caption',
+            caption: 'entities.pimcontract.views.lweditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongguanli.png',
             iconCls: '',
             parameters: [
@@ -5592,7 +5991,8 @@ const router = new Router({
             {
                 path: '/pimpersonabilityredirectview/:pimpersonabilityredirectview?',
                 meta: {
-                    caption: 'entities.pimpersonability.views.redirectview.caption',
+                    caption: 'entities.pimpersonability.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimpersonabilityredirectview', parameterName: 'pimpersonabilityredirectview' },
                     ],
@@ -5603,7 +6003,8 @@ const router = new Router({
             {
                 path: '/pimarchivesrecordredirectview/:pimarchivesrecordredirectview?',
                 meta: {
-                    caption: 'entities.pimarchivesrecord.views.redirectview.caption',
+                    caption: 'entities.pimarchivesrecord.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimarchivesrecordredirectview', parameterName: 'pimarchivesrecordredirectview' },
                     ],
@@ -5614,7 +6015,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/zddeditview/:zddeditview?',
         meta: {
-            caption: 'entities.pimperson.views.zddeditview.caption',
+            caption: 'entities.pimperson.views.zddeditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gerenxinxi.png',
             iconCls: '',
             parameters: [
@@ -5628,7 +6030,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimarchives/:pimarchives?/pimarchiveschanges/:pimarchiveschange?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimarchiveschange.views.gridview.caption',
+            caption: 'entities.pimarchiveschange.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganguanli.png',
             iconCls: '',
             parameters: [
@@ -5644,7 +6047,8 @@ const router = new Router({
     {
         path: '/pimarchives/:pimarchives?/pimarchiveschanges/:pimarchiveschange?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimarchiveschange.views.gridview.caption',
+            caption: 'entities.pimarchiveschange.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganguanli.png',
             iconCls: '',
             parameters: [
@@ -5659,7 +6063,8 @@ const router = new Router({
     {
         path: '/pimarchiveschanges/:pimarchiveschange?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimarchiveschange.views.gridview.caption',
+            caption: 'entities.pimarchiveschange.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganguanli.png',
             iconCls: '',
             parameters: [
@@ -5673,7 +6078,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimfaminfos/:pimfaminfo?/pimfimgridview/:pimfimgridview?',
         meta: {
-            caption: 'entities.pimfaminfo.views.pimfimgridview.caption',
+            caption: 'entities.pimfaminfo.views.pimfimgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jiatingqingkuang.png',
             iconCls: '',
             parameters: [
@@ -5688,7 +6094,8 @@ const router = new Router({
     {
         path: '/pimfaminfos/:pimfaminfo?/pimfimgridview/:pimfimgridview?',
         meta: {
-            caption: 'entities.pimfaminfo.views.pimfimgridview.caption',
+            caption: 'entities.pimfaminfo.views.pimfimgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jiatingqingkuang.png',
             iconCls: '',
             parameters: [
@@ -5702,7 +6109,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimarchives/:pimarchives?/editview/:editview?',
         meta: {
-            caption: 'entities.pimarchives.views.editview.caption',
+            caption: 'entities.pimarchives.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -5717,7 +6125,8 @@ const router = new Router({
     {
         path: '/pimarchives/:pimarchives?/editview/:editview?',
         meta: {
-            caption: 'entities.pimarchives.views.editview.caption',
+            caption: 'entities.pimarchives.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -5731,7 +6140,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/maturitydueeditview/:maturitydueeditview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.maturitydueeditview.caption',
+            caption: 'entities.pimdistirbution.views.maturitydueeditview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/jiediaodaoqiguanli.png',
             iconCls: '',
             parameters: [
@@ -5746,7 +6156,8 @@ const router = new Router({
     {
         path: '/pimdistirbutions/:pimdistirbution?/maturitydueeditview/:maturitydueeditview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.maturitydueeditview.caption',
+            caption: 'entities.pimdistirbution.views.maturitydueeditview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/jiediaodaoqiguanli.png',
             iconCls: '',
             parameters: [
@@ -5760,7 +6171,8 @@ const router = new Router({
     {
         path: '/pimtitlecatalogues/:pimtitlecatalogue?/notpickupgridview/:notpickupgridview?',
         meta: {
-            caption: 'entities.pimtitlecatalogue.views.notpickupgridview.caption',
+            caption: 'entities.pimtitlecatalogue.views.notpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimtitlecatalogues', parameterName: 'pimtitlecatalogue' },
                 { pathName: 'notpickupgridview', parameterName: 'notpickupgridview' },
@@ -5772,7 +6184,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimrewardpunishments/:pimrewardpunishment?/pimjanglgridview/:pimjanglgridview?',
         meta: {
-            caption: 'entities.pimrewardpunishment.views.pimjanglgridview.caption',
+            caption: 'entities.pimrewardpunishment.views.pimjanglgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jianglichengfa.png',
             iconCls: '',
             parameters: [
@@ -5787,7 +6200,8 @@ const router = new Router({
     {
         path: '/pimrewardpunishments/:pimrewardpunishment?/pimjanglgridview/:pimjanglgridview?',
         meta: {
-            caption: 'entities.pimrewardpunishment.views.pimjanglgridview.caption',
+            caption: 'entities.pimrewardpunishment.views.pimjanglgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jianglichengfa.png',
             iconCls: '',
             parameters: [
@@ -5801,7 +6215,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimvocationals/:pimvocational?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimvocational.views.gridview.caption',
+            caption: 'entities.pimvocational.views.gridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimvocationals', parameterName: 'pimvocational' },
@@ -5814,7 +6229,8 @@ const router = new Router({
     {
         path: '/pimvocationals/:pimvocational?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimvocational.views.gridview.caption',
+            caption: 'entities.pimvocational.views.gridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimvocationals', parameterName: 'pimvocational' },
                 { pathName: 'gridview', parameterName: 'gridview' },
@@ -5826,7 +6242,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/editview/:editview?',
         meta: {
-            caption: 'entities.pimexitandentry.views.editview.caption',
+            caption: 'entities.pimexitandentry.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/chujing.png',
             iconCls: '',
             parameters: [
@@ -5841,7 +6258,8 @@ const router = new Router({
     {
         path: '/pimexitandentries/:pimexitandentry?/editview/:editview?',
         meta: {
-            caption: 'entities.pimexitandentry.views.editview.caption',
+            caption: 'entities.pimexitandentry.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/chujing.png',
             iconCls: '',
             parameters: [
@@ -5855,7 +6273,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimcontracts/:pimcontract?/treeexpview/:treeexpview?',
         meta: {
-            caption: 'entities.pimcontract.views.treeexpview.caption',
+            caption: 'entities.pimcontract.views.treeexpview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongxinxi.png',
             iconCls: '',
             parameters: [
@@ -5870,7 +6289,8 @@ const router = new Router({
     {
         path: '/pimcontracts/:pimcontract?/treeexpview/:treeexpview?',
         meta: {
-            caption: 'entities.pimcontract.views.treeexpview.caption',
+            caption: 'entities.pimcontract.views.treeexpview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongxinxi.png',
             iconCls: '',
             parameters: [
@@ -5884,7 +6304,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimfaminfos/:pimfaminfo?/editview/:editview?',
         meta: {
-            caption: 'entities.pimfaminfo.views.editview.caption',
+            caption: 'entities.pimfaminfo.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jiatingqingkuang.png',
             iconCls: '',
             parameters: [
@@ -5899,7 +6320,8 @@ const router = new Router({
     {
         path: '/pimfaminfos/:pimfaminfo?/editview/:editview?',
         meta: {
-            caption: 'entities.pimfaminfo.views.editview.caption',
+            caption: 'entities.pimfaminfo.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jiatingqingkuang.png',
             iconCls: '',
             parameters: [
@@ -5913,7 +6335,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
         meta: {
-            caption: 'entities.ormpost.views.ejormorgidpickupgridview.caption',
+            caption: 'entities.ormpost.views.ejormorgidpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -5926,7 +6349,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
         meta: {
-            caption: 'entities.ormpost.views.ejormorgidpickupgridview.caption',
+            caption: 'entities.ormpost.views.ejormorgidpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'ejormorgidpickupgridview', parameterName: 'ejormorgidpickupgridview' },
@@ -5938,7 +6362,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimpersonchanges/:pimpersonchange?/hisrecgridview/:hisrecgridview?',
         meta: {
-            caption: 'entities.pimpersonchange.views.hisrecgridview.caption',
+            caption: 'entities.pimpersonchange.views.hisrecgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/xinyuangongzhuanzheng.png',
             iconCls: '',
             parameters: [
@@ -5953,7 +6378,8 @@ const router = new Router({
     {
         path: '/pimpersonchanges/:pimpersonchange?/hisrecgridview/:hisrecgridview?',
         meta: {
-            caption: 'entities.pimpersonchange.views.hisrecgridview.caption',
+            caption: 'entities.pimpersonchange.views.hisrecgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/xinyuangongzhuanzheng.png',
             iconCls: '',
             parameters: [
@@ -5967,7 +6393,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimarchives/:pimarchives?/noloyeenofilegridview/:noloyeenofilegridview?',
         meta: {
-            caption: 'entities.pimarchives.views.noloyeenofilegridview.caption',
+            caption: 'entities.pimarchives.views.noloyeenofilegridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganguanli.png',
             iconCls: '',
             parameters: [
@@ -5982,7 +6409,8 @@ const router = new Router({
     {
         path: '/pimarchives/:pimarchives?/noloyeenofilegridview/:noloyeenofilegridview?',
         meta: {
-            caption: 'entities.pimarchives.views.noloyeenofilegridview.caption',
+            caption: 'entities.pimarchives.views.noloyeenofilegridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganguanli.png',
             iconCls: '',
             parameters: [
@@ -5996,7 +6424,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimcontracts/:pimcontract?/reneweditview/:reneweditview?',
         meta: {
-            caption: 'entities.pimcontract.views.reneweditview.caption',
+            caption: 'entities.pimcontract.views.reneweditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimcontracts', parameterName: 'pimcontract' },
@@ -6009,7 +6438,8 @@ const router = new Router({
     {
         path: '/pimcontracts/:pimcontract?/reneweditview/:reneweditview?',
         meta: {
-            caption: 'entities.pimcontract.views.reneweditview.caption',
+            caption: 'entities.pimcontract.views.reneweditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimcontracts', parameterName: 'pimcontract' },
                 { pathName: 'reneweditview', parameterName: 'reneweditview' },
@@ -6021,7 +6451,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/hmdgridview/:hmdgridview?',
         meta: {
-            caption: 'entities.pimperson.views.hmdgridview.caption',
+            caption: 'entities.pimperson.views.hmdgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gongzuolvli.png',
             iconCls: '',
             parameters: [
@@ -6035,7 +6466,8 @@ const router = new Router({
             {
                 path: '/archivalcatalogueredirectview/:archivalcatalogueredirectview?',
                 meta: {
-                    caption: 'entities.pimarchivalcatalogue.views.redirectview.caption',
+                    caption: 'entities.pimarchivalcatalogue.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'archivalcatalogueredirectview', parameterName: 'archivalcatalogueredirectview' },
                     ],
@@ -6046,7 +6478,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimvocationals/:pimvocational?/pimziggridview/:pimziggridview?',
         meta: {
-            caption: 'entities.pimvocational.views.pimziggridview.caption',
+            caption: 'entities.pimvocational.views.pimziggridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhiyezige.png',
             iconCls: '',
             parameters: [
@@ -6061,7 +6494,8 @@ const router = new Router({
     {
         path: '/pimvocationals/:pimvocational?/pimziggridview/:pimziggridview?',
         meta: {
-            caption: 'entities.pimvocational.views.pimziggridview.caption',
+            caption: 'entities.pimvocational.views.pimziggridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhiyezige.png',
             iconCls: '',
             parameters: [
@@ -6075,7 +6509,8 @@ const router = new Router({
     {
         path: '/pimtitlecatalogues/:pimtitlecatalogue?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.pimtitlecatalogue.views.pickupgridview.caption',
+            caption: 'entities.pimtitlecatalogue.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimtitlecatalogues', parameterName: 'pimtitlecatalogue' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -6087,7 +6522,8 @@ const router = new Router({
             {
                 path: '/pimenclosureredirectview/:pimenclosureredirectview?',
                 meta: {
-                    caption: 'entities.pimenclosure.views.redirectview.caption',
+                    caption: 'entities.pimenclosure.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimenclosureredirectview', parameterName: 'pimenclosureredirectview' },
                     ],
@@ -6098,7 +6534,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/yscgjxjeditview/:yscgjxjeditview?',
         meta: {
-            caption: 'entities.pimexitandentry.views.yscgjxjeditview.caption',
+            caption: 'entities.pimexitandentry.views.yscgjxjeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimexitandentries', parameterName: 'pimexitandentry' },
@@ -6111,7 +6548,8 @@ const router = new Router({
     {
         path: '/pimexitandentries/:pimexitandentry?/yscgjxjeditview/:yscgjxjeditview?',
         meta: {
-            caption: 'entities.pimexitandentry.views.yscgjxjeditview.caption',
+            caption: 'entities.pimexitandentry.views.yscgjxjeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimexitandentries', parameterName: 'pimexitandentry' },
                 { pathName: 'yscgjxjeditview', parameterName: 'yscgjxjeditview' },
@@ -6123,7 +6561,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimeducations/:pimeducation?/pimedugridview/:pimedugridview?',
         meta: {
-            caption: 'entities.pimeducation.views.pimedugridview.caption',
+            caption: 'entities.pimeducation.views.pimedugridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
             iconCls: '',
             parameters: [
@@ -6138,7 +6577,8 @@ const router = new Router({
     {
         path: '/pimeducations/:pimeducation?/pimedugridview/:pimedugridview?',
         meta: {
-            caption: 'entities.pimeducation.views.pimedugridview.caption',
+            caption: 'entities.pimeducation.views.pimedugridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
             iconCls: '',
             parameters: [
@@ -6152,7 +6592,8 @@ const router = new Router({
     {
         path: '/pimvocationalcatalogs/:pimvocationalcatalog?/editview/:editview?',
         meta: {
-            caption: 'entities.pimvocationalcatalog.views.editview.caption',
+            caption: 'entities.pimvocationalcatalog.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhiyezigemuluguanli.png',
             iconCls: '',
             parameters: [
@@ -6166,7 +6607,8 @@ const router = new Router({
             {
                 path: '/pimcontractredirectview/:pimcontractredirectview?',
                 meta: {
-                    caption: 'entities.pimcontract.views.redirectview.caption',
+                    caption: 'entities.pimcontract.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimcontractredirectview', parameterName: 'pimcontractredirectview' },
                     ],
@@ -6177,7 +6619,8 @@ const router = new Router({
     {
         path: '/pimportalview/:pimportalview?',
         meta: {
-            caption: 'app.views.pimportalview.caption',
+            caption: 'app.views.pimportalview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimportalview', parameterName: 'pimportalview' },
             ],
@@ -6188,7 +6631,8 @@ const router = new Router({
     {
         path: '/pimlabourcampanies/:pimlabourcampany?/editview/:editview?',
         meta: {
-            caption: 'entities.pimlabourcampany.views.editview.caption',
+            caption: 'entities.pimlabourcampany.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/laowupaiqiangongsiguanli.png',
             iconCls: '',
             parameters: [
@@ -6202,7 +6646,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/editview/:editview?',
         meta: {
-            caption: 'entities.pimperson.views.editview.caption',
+            caption: 'entities.pimperson.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gerenxinxi.png',
             iconCls: '',
             parameters: [
@@ -6216,7 +6661,8 @@ const router = new Router({
             {
                 path: '/pimtypecontractredirectview/:pimtypecontractredirectview?',
                 meta: {
-                    caption: 'entities.pimtypecontract.views.redirectview.caption',
+                    caption: 'entities.pimtypecontract.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimtypecontractredirectview', parameterName: 'pimtypecontractredirectview' },
                     ],
@@ -6227,7 +6673,8 @@ const router = new Router({
             {
                 path: '/pimlabourcampanyredirectview/:pimlabourcampanyredirectview?',
                 meta: {
-                    caption: 'entities.pimlabourcampany.views.redirectview.caption',
+                    caption: 'entities.pimlabourcampany.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimlabourcampanyredirectview', parameterName: 'pimlabourcampanyredirectview' },
                     ],
@@ -6238,7 +6685,8 @@ const router = new Router({
     {
         path: '/pimlabourcampanies/:pimlabourcampany?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimlabourcampany.views.gridview.caption',
+            caption: 'entities.pimlabourcampany.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/laowupaiqiangongsiguanli.png',
             iconCls: '',
             parameters: [
@@ -6252,7 +6700,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimpersonchanges/:pimpersonchange?/reasoneditview/:reasoneditview?',
         meta: {
-            caption: 'entities.pimpersonchange.views.reasoneditview.caption',
+            caption: 'entities.pimpersonchange.views.reasoneditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimpersonchanges', parameterName: 'pimpersonchange' },
@@ -6265,7 +6714,8 @@ const router = new Router({
     {
         path: '/pimpersonchanges/:pimpersonchange?/reasoneditview/:reasoneditview?',
         meta: {
-            caption: 'entities.pimpersonchange.views.reasoneditview.caption',
+            caption: 'entities.pimpersonchange.views.reasoneditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpersonchanges', parameterName: 'pimpersonchange' },
                 { pathName: 'reasoneditview', parameterName: 'reasoneditview' },
@@ -6277,7 +6727,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/quickeditview/:quickeditview?',
         meta: {
-            caption: 'entities.pimperson.views.quickeditview.caption',
+            caption: 'entities.pimperson.views.quickeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'quickeditview', parameterName: 'quickeditview' },
@@ -6289,7 +6740,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/editview_spz/:editview_spz?',
         meta: {
-            caption: 'entities.pimexitandentry.views.editview_spz.caption',
+            caption: 'entities.pimexitandentry.views.editview_spz.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/chujing.png',
             iconCls: '',
             parameters: [
@@ -6304,7 +6756,8 @@ const router = new Router({
     {
         path: '/pimexitandentries/:pimexitandentry?/editview_spz/:editview_spz?',
         meta: {
-            caption: 'entities.pimexitandentry.views.editview_spz.caption',
+            caption: 'entities.pimexitandentry.views.editview_spz.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/chujing.png',
             iconCls: '',
             parameters: [
@@ -6318,7 +6771,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/yscgjgridview/:yscgjgridview?',
         meta: {
-            caption: 'entities.pimexitandentry.views.yscgjgridview.caption',
+            caption: 'entities.pimexitandentry.views.yscgjgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/chujing.png',
             iconCls: '',
             parameters: [
@@ -6333,7 +6787,8 @@ const router = new Router({
     {
         path: '/pimexitandentries/:pimexitandentry?/yscgjgridview/:yscgjgridview?',
         meta: {
-            caption: 'entities.pimexitandentry.views.yscgjgridview.caption',
+            caption: 'entities.pimexitandentry.views.yscgjgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/chujing.png',
             iconCls: '',
             parameters: [
@@ -6347,7 +6802,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.pickupgridview.caption',
+            caption: 'entities.ormorgsector.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -6360,7 +6816,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.pickupgridview.caption',
+            caption: 'entities.ormorgsector.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -6372,7 +6829,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/htgldwqpickupgridview/:htgldwqpickupgridview?',
         meta: {
-            caption: 'entities.ormorg.views.htgldwqpickupgridview.caption',
+            caption: 'entities.ormorg.views.htgldwqpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'htgldwqpickupgridview', parameterName: 'htgldwqpickupgridview' },
@@ -6384,7 +6842,8 @@ const router = new Router({
             {
                 path: '/pimsearchfieldsetredirectview/:pimsearchfieldsetredirectview?',
                 meta: {
-                    caption: 'entities.pimsearchfieldset.views.redirectview.caption',
+                    caption: 'entities.pimsearchfieldset.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimsearchfieldsetredirectview', parameterName: 'pimsearchfieldsetredirectview' },
                     ],
@@ -6395,7 +6854,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.pimperson.views.pickupgridview.caption',
+            caption: 'entities.pimperson.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -6407,7 +6867,8 @@ const router = new Router({
     {
         path: '/pimenclosures/:pimenclosure?/editview/:editview?',
         meta: {
-            caption: 'entities.pimenclosure.views.editview.caption',
+            caption: 'entities.pimenclosure.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/fujianxinxi.png',
             iconCls: '',
             parameters: [
@@ -6421,7 +6882,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/editview_ybh/:editview_ybh?',
         meta: {
-            caption: 'entities.pimexitandentry.views.editview_ybh.caption',
+            caption: 'entities.pimexitandentry.views.editview_ybh.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/chujing.png',
             iconCls: '',
             parameters: [
@@ -6436,7 +6898,8 @@ const router = new Router({
     {
         path: '/pimexitandentries/:pimexitandentry?/editview_ybh/:editview_ybh?',
         meta: {
-            caption: 'entities.pimexitandentry.views.editview_ybh.caption',
+            caption: 'entities.pimexitandentry.views.editview_ybh.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/chujing.png',
             iconCls: '',
             parameters: [
@@ -6450,7 +6913,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimrewardpunishments/:pimrewardpunishment?/editview/:editview?',
         meta: {
-            caption: 'entities.pimrewardpunishment.views.editview.caption',
+            caption: 'entities.pimrewardpunishment.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jianglichengfa.png',
             iconCls: '',
             parameters: [
@@ -6465,7 +6929,8 @@ const router = new Router({
     {
         path: '/pimrewardpunishments/:pimrewardpunishment?/editview/:editview?',
         meta: {
-            caption: 'entities.pimrewardpunishment.views.editview.caption',
+            caption: 'entities.pimrewardpunishment.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jianglichengfa.png',
             iconCls: '',
             parameters: [
@@ -6479,7 +6944,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/editview/:editview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.editview.caption',
+            caption: 'entities.pimdistirbution.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/fenpeixinxi.png',
             iconCls: '',
             parameters: [
@@ -6494,7 +6960,8 @@ const router = new Router({
     {
         path: '/pimdistirbutions/:pimdistirbution?/editview/:editview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.editview.caption',
+            caption: 'entities.pimdistirbution.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/fenpeixinxi.png',
             iconCls: '',
             parameters: [
@@ -6508,7 +6975,8 @@ const router = new Router({
     {
         path: '/pimtitlecatalogues/:pimtitlecatalogue?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimtitlecatalogue.views.gridview.caption',
+            caption: 'entities.pimtitlecatalogue.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhichengmuluguanli.png',
             iconCls: '',
             parameters: [
@@ -6522,7 +6990,8 @@ const router = new Router({
     {
         path: '/pimarchivescenters/:pimarchivescenter?/editview/:editview?',
         meta: {
-            caption: 'entities.pimarchivescenter.views.editview.caption',
+            caption: 'entities.pimarchivescenter.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -6534,7 +7003,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.ormorgsector.views.pickupview.caption',
+            caption: 'entities.ormorgsector.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -6547,7 +7017,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.ormorgsector.views.pickupview.caption',
+            caption: 'entities.ormorgsector.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -6559,7 +7030,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimtitles/:pimtitle?/pimzhicgridview/:pimzhicgridview?',
         meta: {
-            caption: 'entities.pimtitle.views.pimzhicgridview.caption',
+            caption: 'entities.pimtitle.views.pimzhicgridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/penxunjihua.png',
             iconCls: '',
             parameters: [
@@ -6574,7 +7046,8 @@ const router = new Router({
     {
         path: '/pimtitles/:pimtitle?/pimzhicgridview/:pimzhicgridview?',
         meta: {
-            caption: 'entities.pimtitle.views.pimzhicgridview.caption',
+            caption: 'entities.pimtitle.views.pimzhicgridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/penxunjihua.png',
             iconCls: '',
             parameters: [
@@ -6588,7 +7061,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/fpxxpickupview/:fpxxpickupview?',
         meta: {
-            caption: 'entities.ormorgsector.views.fpxxpickupview.caption',
+            caption: 'entities.ormorgsector.views.fpxxpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -6601,7 +7075,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/fpxxpickupview/:fpxxpickupview?',
         meta: {
-            caption: 'entities.ormorgsector.views.fpxxpickupview.caption',
+            caption: 'entities.ormorgsector.views.fpxxpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'fpxxpickupview', parameterName: 'fpxxpickupview' },
@@ -6613,7 +7088,8 @@ const router = new Router({
     {
         path: '/pimtitlecatalogues/:pimtitlecatalogue?/editview/:editview?',
         meta: {
-            caption: 'entities.pimtitlecatalogue.views.editview.caption',
+            caption: 'entities.pimtitlecatalogue.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhichengmuluguanli.png',
             iconCls: '',
             parameters: [
@@ -6627,7 +7103,8 @@ const router = new Router({
             {
                 path: '/pimtitlecatalogueredirectview/:pimtitlecatalogueredirectview?',
                 meta: {
-                    caption: 'entities.pimtitlecatalogue.views.redirectview.caption',
+                    caption: 'entities.pimtitlecatalogue.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimtitlecatalogueredirectview', parameterName: 'pimtitlecatalogueredirectview' },
                     ],
@@ -6638,7 +7115,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/zhzceditview/:zhzceditview?',
         meta: {
-            caption: 'entities.pimperson.views.zhzceditview.caption',
+            caption: 'entities.pimperson.views.zhzceditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gerenxinxi.png',
             iconCls: '',
             parameters: [
@@ -6652,7 +7130,8 @@ const router = new Router({
             {
                 path: '/archivescenterredirectview/:archivescenterredirectview?',
                 meta: {
-                    caption: 'entities.pimarchivescenter.views.redirectview.caption',
+                    caption: 'entities.pimarchivescenter.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'archivescenterredirectview', parameterName: 'archivescenterredirectview' },
                     ],
@@ -6663,7 +7142,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimcontracts/:pimcontract?/editview/:editview?',
         meta: {
-            caption: 'entities.pimcontract.views.editview.caption',
+            caption: 'entities.pimcontract.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongguanli.png',
             iconCls: '',
             parameters: [
@@ -6678,7 +7158,8 @@ const router = new Router({
     {
         path: '/pimcontracts/:pimcontract?/editview/:editview?',
         meta: {
-            caption: 'entities.pimcontract.views.editview.caption',
+            caption: 'entities.pimcontract.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongguanli.png',
             iconCls: '',
             parameters: [
@@ -6692,7 +7173,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/ltxyggridview/:ltxyggridview?',
         meta: {
-            caption: 'entities.pimperson.views.ltxyggridview.caption',
+            caption: 'entities.pimperson.views.ltxyggridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/tuixiuguanli.png',
             iconCls: '',
             parameters: [
@@ -6706,7 +7188,8 @@ const router = new Router({
     {
         path: '/ormsignorgs/:ormsignorg?/bdwpickupview/:bdwpickupview?',
         meta: {
-            caption: 'entities.ormsignorg.views.bdwpickupview.caption',
+            caption: 'entities.ormsignorg.views.bdwpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
                 { pathName: 'bdwpickupview', parameterName: 'bdwpickupview' },
@@ -6718,7 +7201,8 @@ const router = new Router({
             {
                 path: '/pimrewardpunishmentredirectview/:pimrewardpunishmentredirectview?',
                 meta: {
-                    caption: 'entities.pimrewardpunishment.views.redirectview.caption',
+                    caption: 'entities.pimrewardpunishment.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimrewardpunishmentredirectview', parameterName: 'pimrewardpunishmentredirectview' },
                     ],
@@ -6729,7 +7213,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/ygcgjgridview/:ygcgjgridview?',
         meta: {
-            caption: 'entities.pimexitandentry.views.ygcgjgridview.caption',
+            caption: 'entities.pimexitandentry.views.ygcgjgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/chujing.png',
             iconCls: '',
             parameters: [
@@ -6744,7 +7229,8 @@ const router = new Router({
     {
         path: '/pimexitandentries/:pimexitandentry?/ygcgjgridview/:ygcgjgridview?',
         meta: {
-            caption: 'entities.pimexitandentry.views.ygcgjgridview.caption',
+            caption: 'entities.pimexitandentry.views.ygcgjgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/chujing.png',
             iconCls: '',
             parameters: [
@@ -6758,7 +7244,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimarchives/:pimarchives?/treeexpview/:treeexpview?',
         meta: {
-            caption: 'entities.pimarchives.views.treeexpview.caption',
+            caption: 'entities.pimarchives.views.treeexpview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -6773,7 +7260,8 @@ const router = new Router({
     {
         path: '/pimarchives/:pimarchives?/treeexpview/:treeexpview?',
         meta: {
-            caption: 'entities.pimarchives.views.treeexpview.caption',
+            caption: 'entities.pimarchives.views.treeexpview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -6787,7 +7275,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimresearchfindings/:pimresearchfindings?/editview/:editview?',
         meta: {
-            caption: 'entities.pimresearchfindings.views.editview.caption',
+            caption: 'entities.pimresearchfindings.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/keyanchengguo.png',
             iconCls: '',
             parameters: [
@@ -6802,7 +7291,8 @@ const router = new Router({
     {
         path: '/pimresearchfindings/:pimresearchfindings?/editview/:editview?',
         meta: {
-            caption: 'entities.pimresearchfindings.views.editview.caption',
+            caption: 'entities.pimresearchfindings.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/keyanchengguo.png',
             iconCls: '',
             parameters: [
@@ -6816,7 +7306,8 @@ const router = new Router({
     {
         path: '/ormsignorgs/:ormsignorg?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.ormsignorg.views.pickupview.caption',
+            caption: 'entities.ormsignorg.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -6828,7 +7319,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimpersonchanges/:pimpersonchange?/readeditview/:readeditview?',
         meta: {
-            caption: 'entities.pimpersonchange.views.readeditview.caption',
+            caption: 'entities.pimpersonchange.views.readeditview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/xinyuangongzhuanzheng.png',
             iconCls: '',
             parameters: [
@@ -6843,7 +7335,8 @@ const router = new Router({
     {
         path: '/pimpersonchanges/:pimpersonchange?/readeditview/:readeditview?',
         meta: {
-            caption: 'entities.pimpersonchange.views.readeditview.caption',
+            caption: 'entities.pimpersonchange.views.readeditview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/xinyuangongzhuanzheng.png',
             iconCls: '',
             parameters: [
@@ -6857,7 +7350,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/allleveltwoorgpickupview/:allleveltwoorgpickupview?',
         meta: {
-            caption: 'entities.ormorg.views.allleveltwoorgpickupview.caption',
+            caption: 'entities.ormorg.views.allleveltwoorgpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'allleveltwoorgpickupview', parameterName: 'allleveltwoorgpickupview' },
@@ -6869,7 +7363,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimtitles/:pimtitle?/editview/:editview?',
         meta: {
-            caption: 'entities.pimtitle.views.editview.caption',
+            caption: 'entities.pimtitle.views.editview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/penxunjihua.png',
             iconCls: '',
             parameters: [
@@ -6884,7 +7379,8 @@ const router = new Router({
     {
         path: '/pimtitles/:pimtitle?/editview/:editview?',
         meta: {
-            caption: 'entities.pimtitle.views.editview.caption',
+            caption: 'entities.pimtitle.views.editview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/penxunjihua.png',
             iconCls: '',
             parameters: [
@@ -6898,7 +7394,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/syqyggridview/:syqyggridview?',
         meta: {
-            caption: 'entities.pimperson.views.syqyggridview.caption',
+            caption: 'entities.pimperson.views.syqyggridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/shiyongqiguanli.png',
             iconCls: '',
             parameters: [
@@ -6912,7 +7409,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimarchives/:pimarchives?/pimarchiveschanges/:pimarchiveschange?/editview/:editview?',
         meta: {
-            caption: 'entities.pimarchiveschange.views.editview.caption',
+            caption: 'entities.pimarchiveschange.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimarchives', parameterName: 'pimarchives' },
@@ -6926,7 +7424,8 @@ const router = new Router({
     {
         path: '/pimarchives/:pimarchives?/pimarchiveschanges/:pimarchiveschange?/editview/:editview?',
         meta: {
-            caption: 'entities.pimarchiveschange.views.editview.caption',
+            caption: 'entities.pimarchiveschange.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimarchives', parameterName: 'pimarchives' },
                 { pathName: 'pimarchiveschanges', parameterName: 'pimarchiveschange' },
@@ -6939,7 +7438,8 @@ const router = new Router({
     {
         path: '/pimarchiveschanges/:pimarchiveschange?/editview/:editview?',
         meta: {
-            caption: 'entities.pimarchiveschange.views.editview.caption',
+            caption: 'entities.pimarchiveschange.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimarchiveschanges', parameterName: 'pimarchiveschange' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -6951,7 +7451,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimlanguageabilities/:pimlanguageability?/editview/:editview?',
         meta: {
-            caption: 'entities.pimlanguageability.views.editview.caption',
+            caption: 'entities.pimlanguageability.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimlanguageabilities', parameterName: 'pimlanguageability' },
@@ -6964,7 +7465,8 @@ const router = new Router({
     {
         path: '/pimlanguageabilities/:pimlanguageability?/editview/:editview?',
         meta: {
-            caption: 'entities.pimlanguageability.views.editview.caption',
+            caption: 'entities.pimlanguageability.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimlanguageabilities', parameterName: 'pimlanguageability' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -6976,7 +7478,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimpapers/:pimpaper?/papergridview/:papergridview?',
         meta: {
-            caption: 'entities.pimpaper.views.papergridview.caption',
+            caption: 'entities.pimpaper.views.papergridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/lunwenxinxi.png',
             iconCls: '',
             parameters: [
@@ -6991,7 +7494,8 @@ const router = new Router({
     {
         path: '/pimpapers/:pimpaper?/papergridview/:papergridview?',
         meta: {
-            caption: 'entities.pimpaper.views.papergridview.caption',
+            caption: 'entities.pimpaper.views.papergridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/lunwenxinxi.png',
             iconCls: '',
             parameters: [
@@ -7005,7 +7509,8 @@ const router = new Router({
             {
                 path: '/pimcontracttyperedirectview/:pimcontracttyperedirectview?',
                 meta: {
-                    caption: 'entities.pimcontracttype.views.redirectview.caption',
+                    caption: 'entities.pimcontracttype.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimcontracttyperedirectview', parameterName: 'pimcontracttyperedirectview' },
                     ],
@@ -7016,7 +7521,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimarchives/:pimarchives?/pimdangagridview/:pimdangagridview?',
         meta: {
-            caption: 'entities.pimarchives.views.pimdangagridview.caption',
+            caption: 'entities.pimarchives.views.pimdangagridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -7031,7 +7537,8 @@ const router = new Router({
     {
         path: '/pimarchives/:pimarchives?/pimdangagridview/:pimdangagridview?',
         meta: {
-            caption: 'entities.pimarchives.views.pimdangagridview.caption',
+            caption: 'entities.pimarchives.views.pimdangagridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -7045,7 +7552,8 @@ const router = new Router({
             {
                 path: '/pimachievementsredirectview/:pimachievementsredirectview?',
                 meta: {
-                    caption: 'entities.pimachievements.views.redirectview.caption',
+                    caption: 'entities.pimachievements.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimachievementsredirectview', parameterName: 'pimachievementsredirectview' },
                     ],
@@ -7056,7 +7564,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/ryinfoeditview/:ryinfoeditview?',
         meta: {
-            caption: 'entities.pimperson.views.ryinfoeditview.caption',
+            caption: 'entities.pimperson.views.ryinfoeditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gerenxinxi.png',
             iconCls: '',
             parameters: [
@@ -7070,7 +7579,8 @@ const router = new Router({
             {
                 path: '/pimpersonchangeredirectview/:pimpersonchangeredirectview?',
                 meta: {
-                    caption: 'entities.pimpersonchange.views.redirectview.caption',
+                    caption: 'entities.pimpersonchange.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimpersonchangeredirectview', parameterName: 'pimpersonchangeredirectview' },
                     ],
@@ -7081,7 +7591,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/ygcgjxjeditview/:ygcgjxjeditview?',
         meta: {
-            caption: 'entities.pimexitandentry.views.ygcgjxjeditview.caption',
+            caption: 'entities.pimexitandentry.views.ygcgjxjeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimexitandentries', parameterName: 'pimexitandentry' },
@@ -7094,7 +7605,8 @@ const router = new Router({
     {
         path: '/pimexitandentries/:pimexitandentry?/ygcgjxjeditview/:ygcgjxjeditview?',
         meta: {
-            caption: 'entities.pimexitandentry.views.ygcgjxjeditview.caption',
+            caption: 'entities.pimexitandentry.views.ygcgjxjeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimexitandentries', parameterName: 'pimexitandentry' },
                 { pathName: 'ygcgjxjeditview', parameterName: 'ygcgjxjeditview' },
@@ -7106,7 +7618,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/fpxxpickupgridview/:fpxxpickupgridview?',
         meta: {
-            caption: 'entities.ormorg.views.fpxxpickupgridview.caption',
+            caption: 'entities.ormorg.views.fpxxpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'fpxxpickupgridview', parameterName: 'fpxxpickupgridview' },
@@ -7118,7 +7631,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimarmycadres/:pimarmycadres?/armygridview/:armygridview?',
         meta: {
-            caption: 'entities.pimarmycadres.views.armygridview.caption',
+            caption: 'entities.pimarmycadres.views.armygridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/junzhuanganbu.png',
             iconCls: '',
             parameters: [
@@ -7133,7 +7647,8 @@ const router = new Router({
     {
         path: '/pimarmycadres/:pimarmycadres?/armygridview/:armygridview?',
         meta: {
-            caption: 'entities.pimarmycadres.views.armygridview.caption',
+            caption: 'entities.pimarmycadres.views.armygridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/junzhuanganbu.png',
             iconCls: '',
             parameters: [
@@ -7147,7 +7662,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimpatents/:pimpatent?/patentgridview/:patentgridview?',
         meta: {
-            caption: 'entities.pimpatent.views.patentgridview.caption',
+            caption: 'entities.pimpatent.views.patentgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhuanlixinxi.png',
             iconCls: '',
             parameters: [
@@ -7162,7 +7678,8 @@ const router = new Router({
     {
         path: '/pimpatents/:pimpatent?/patentgridview/:patentgridview?',
         meta: {
-            caption: 'entities.pimpatent.views.patentgridview.caption',
+            caption: 'entities.pimpatent.views.patentgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhuanlixinxi.png',
             iconCls: '',
             parameters: [
@@ -7176,7 +7693,8 @@ const router = new Router({
     {
         path: '/pimarchivescenters/:pimarchivescenter?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimarchivescenter.views.gridview.caption',
+            caption: 'entities.pimarchivescenter.views.gridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimarchivescenters', parameterName: 'pimarchivescenter' },
                 { pathName: 'gridview', parameterName: 'gridview' },
@@ -7188,7 +7706,8 @@ const router = new Router({
     {
         path: '/ormsignorgs/:ormsignorg?/pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
         meta: {
-            caption: 'entities.pimcontractsignorg.views.editview.caption',
+            caption: 'entities.pimcontractsignorg.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
                 { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
@@ -7201,7 +7720,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
         meta: {
-            caption: 'entities.pimcontractsignorg.views.editview.caption',
+            caption: 'entities.pimcontractsignorg.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
@@ -7214,7 +7734,8 @@ const router = new Router({
     {
         path: '/pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
         meta: {
-            caption: 'entities.pimcontractsignorg.views.editview.caption',
+            caption: 'entities.pimcontractsignorg.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -7226,7 +7747,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimpapers/:pimpaper?/editview/:editview?',
         meta: {
-            caption: 'entities.pimpaper.views.editview.caption',
+            caption: 'entities.pimpaper.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/lunwenxinxi.png',
             iconCls: '',
             parameters: [
@@ -7241,7 +7763,8 @@ const router = new Router({
     {
         path: '/pimpapers/:pimpaper?/editview/:editview?',
         meta: {
-            caption: 'entities.pimpaper.views.editview.caption',
+            caption: 'entities.pimpaper.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/lunwenxinxi.png',
             iconCls: '',
             parameters: [
@@ -7255,7 +7778,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimarchives/:pimarchives?/pimarchivesloanandreturns/:pimarchivesloanandreturn?/editview/:editview?',
         meta: {
-            caption: 'entities.pimarchivesloanandreturn.views.editview.caption',
+            caption: 'entities.pimarchivesloanandreturn.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimarchives', parameterName: 'pimarchives' },
@@ -7269,7 +7793,8 @@ const router = new Router({
     {
         path: '/pimarchives/:pimarchives?/pimarchivesloanandreturns/:pimarchivesloanandreturn?/editview/:editview?',
         meta: {
-            caption: 'entities.pimarchivesloanandreturn.views.editview.caption',
+            caption: 'entities.pimarchivesloanandreturn.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimarchives', parameterName: 'pimarchives' },
                 { pathName: 'pimarchivesloanandreturns', parameterName: 'pimarchivesloanandreturn' },
@@ -7282,7 +7807,8 @@ const router = new Router({
     {
         path: '/pimarchivesloanandreturns/:pimarchivesloanandreturn?/editview/:editview?',
         meta: {
-            caption: 'entities.pimarchivesloanandreturn.views.editview.caption',
+            caption: 'entities.pimarchivesloanandreturn.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimarchivesloanandreturns', parameterName: 'pimarchivesloanandreturn' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -7294,7 +7820,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/formpickupview/:formpickupview?',
         meta: {
-            caption: 'entities.pimexitandentry.views.formpickupview.caption',
+            caption: 'entities.pimexitandentry.views.formpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimexitandentries', parameterName: 'pimexitandentry' },
@@ -7307,7 +7834,8 @@ const router = new Router({
     {
         path: '/pimexitandentries/:pimexitandentry?/formpickupview/:formpickupview?',
         meta: {
-            caption: 'entities.pimexitandentry.views.formpickupview.caption',
+            caption: 'entities.pimexitandentry.views.formpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimexitandentries', parameterName: 'pimexitandentry' },
                 { pathName: 'formpickupview', parameterName: 'formpickupview' },
@@ -7319,7 +7847,8 @@ const router = new Router({
             {
                 path: '/pimdistirbutionredirectview/:pimdistirbutionredirectview?',
                 meta: {
-                    caption: 'entities.pimdistirbution.views.redirectview.caption',
+                    caption: 'entities.pimdistirbution.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimdistirbutionredirectview', parameterName: 'pimdistirbutionredirectview' },
                     ],
@@ -7330,7 +7859,8 @@ const router = new Router({
     {
         path: '/pimtitlecatalogues/:pimtitlecatalogue?/notpickupview/:notpickupview?',
         meta: {
-            caption: 'entities.pimtitlecatalogue.views.notpickupview.caption',
+            caption: 'entities.pimtitlecatalogue.views.notpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimtitlecatalogues', parameterName: 'pimtitlecatalogue' },
                 { pathName: 'notpickupview', parameterName: 'notpickupview' },
@@ -7342,7 +7872,8 @@ const router = new Router({
     {
         path: '/pimqualmajors/:pimqualmajor?/editview/:editview?',
         meta: {
-            caption: 'entities.pimqualmajor.views.editview.caption',
+            caption: 'entities.pimqualmajor.views.editview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/penxunkecheng.png',
             iconCls: '',
             parameters: [
@@ -7356,7 +7887,8 @@ const router = new Router({
             {
                 path: '/pimexpaccountredirectview/:pimexpaccountredirectview?',
                 meta: {
-                    caption: 'entities.pimexpaccount.views.redirectview.caption',
+                    caption: 'entities.pimexpaccount.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimexpaccountredirectview', parameterName: 'pimexpaccountredirectview' },
                     ],
@@ -7367,7 +7899,8 @@ const router = new Router({
             {
                 path: '/pimresearchfindingsredirectview/:pimresearchfindingsredirectview?',
                 meta: {
-                    caption: 'entities.pimresearchfindings.views.redirectview.caption',
+                    caption: 'entities.pimresearchfindings.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimresearchfindingsredirectview', parameterName: 'pimresearchfindingsredirectview' },
                     ],
@@ -7378,7 +7911,8 @@ const router = new Router({
             {
                 path: '/contractsignorgredirectview/:contractsignorgredirectview?',
                 meta: {
-                    caption: 'entities.pimcontractsignorg.views.redirectview.caption',
+                    caption: 'entities.pimcontractsignorg.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'contractsignorgredirectview', parameterName: 'contractsignorgredirectview' },
                     ],
@@ -7389,7 +7923,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimworkhistories/:pimworkhistory?/gbllgridview/:gbllgridview?',
         meta: {
-            caption: 'entities.pimworkhistory.views.gbllgridview.caption',
+            caption: 'entities.pimworkhistory.views.gbllgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gongzuolvli.png',
             iconCls: '',
             parameters: [
@@ -7404,7 +7939,8 @@ const router = new Router({
     {
         path: '/pimworkhistories/:pimworkhistory?/gbllgridview/:gbllgridview?',
         meta: {
-            caption: 'entities.pimworkhistory.views.gbllgridview.caption',
+            caption: 'entities.pimworkhistory.views.gbllgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gongzuolvli.png',
             iconCls: '',
             parameters: [
@@ -7418,7 +7954,8 @@ const router = new Router({
             {
                 path: '/pimtitleredirectview/:pimtitleredirectview?',
                 meta: {
-                    caption: 'entities.pimtitle.views.redirectview.caption',
+                    caption: 'entities.pimtitle.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimtitleredirectview', parameterName: 'pimtitleredirectview' },
                     ],
@@ -7429,7 +7966,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimresearchfindings/:pimresearchfindings?/researchgridview/:researchgridview?',
         meta: {
-            caption: 'entities.pimresearchfindings.views.researchgridview.caption',
+            caption: 'entities.pimresearchfindings.views.researchgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/keyanchengguo.png',
             iconCls: '',
             parameters: [
@@ -7444,7 +7982,8 @@ const router = new Router({
     {
         path: '/pimresearchfindings/:pimresearchfindings?/researchgridview/:researchgridview?',
         meta: {
-            caption: 'entities.pimresearchfindings.views.researchgridview.caption',
+            caption: 'entities.pimresearchfindings.views.researchgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/keyanchengguo.png',
             iconCls: '',
             parameters: [
@@ -7458,7 +7997,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimcontracts/:pimcontract?/stoptimeselecteditview/:stoptimeselecteditview?',
         meta: {
-            caption: 'entities.pimcontract.views.stoptimeselecteditview.caption',
+            caption: 'entities.pimcontract.views.stoptimeselecteditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimcontracts', parameterName: 'pimcontract' },
@@ -7471,7 +8011,8 @@ const router = new Router({
     {
         path: '/pimcontracts/:pimcontract?/stoptimeselecteditview/:stoptimeselecteditview?',
         meta: {
-            caption: 'entities.pimcontract.views.stoptimeselecteditview.caption',
+            caption: 'entities.pimcontract.views.stoptimeselecteditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimcontracts', parameterName: 'pimcontract' },
                 { pathName: 'stoptimeselecteditview', parameterName: 'stoptimeselecteditview' },
@@ -7483,7 +8024,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.pimperson.views.pickupview.caption',
+            caption: 'entities.pimperson.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -7495,7 +8037,8 @@ const router = new Router({
             {
                 path: '/pimqualtyperedirectview/:pimqualtyperedirectview?',
                 meta: {
-                    caption: 'entities.pimqualtype.views.redirectview.caption',
+                    caption: 'entities.pimqualtype.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimqualtyperedirectview', parameterName: 'pimqualtyperedirectview' },
                     ],
@@ -7506,7 +8049,8 @@ const router = new Router({
     {
         path: '/trmlgbcosts/:trmlgbcost?/gridview/:gridview?',
         meta: {
-            caption: 'entities.trmlgbcost.views.gridview.caption',
+            caption: 'entities.trmlgbcost.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/junzhuanganbu.png',
             iconCls: '',
             parameters: [
@@ -7520,7 +8064,8 @@ const router = new Router({
             {
                 path: '/pimqualmajorredirectview/:pimqualmajorredirectview?',
                 meta: {
-                    caption: 'entities.pimqualmajor.views.redirectview.caption',
+                    caption: 'entities.pimqualmajor.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimqualmajorredirectview', parameterName: 'pimqualmajorredirectview' },
                     ],
@@ -7531,7 +8076,8 @@ const router = new Router({
     {
         path: '/pimqualmajors/:pimqualmajor?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimqualmajor.views.gridview.caption',
+            caption: 'entities.pimqualmajor.views.gridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/penxunkecheng.png',
             iconCls: '',
             parameters: [
@@ -7545,7 +8091,8 @@ const router = new Router({
     {
         path: '/pimqualtypes/:pimqualtype?/editview/:editview?',
         meta: {
-            caption: 'entities.pimqualtype.views.editview.caption',
+            caption: 'entities.pimqualtype.views.editview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/kaoqinleixing.png',
             iconCls: '',
             parameters: [
@@ -7559,7 +8106,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/ormorgsectorpickupgridview/:ormorgsectorpickupgridview?',
         meta: {
-            caption: 'entities.ormduty.views.ormorgsectorpickupgridview.caption',
+            caption: 'entities.ormduty.views.ormorgsectorpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormduties', parameterName: 'ormduty' },
                 { pathName: 'ormorgsectorpickupgridview', parameterName: 'ormorgsectorpickupgridview' },
@@ -7571,7 +8119,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimarchives/:pimarchives?/pimarchivesloanandreturns/:pimarchivesloanandreturn?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimarchivesloanandreturn.views.gridview.caption',
+            caption: 'entities.pimarchivesloanandreturn.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/biangenghetong.png',
             iconCls: '',
             parameters: [
@@ -7587,7 +8136,8 @@ const router = new Router({
     {
         path: '/pimarchives/:pimarchives?/pimarchivesloanandreturns/:pimarchivesloanandreturn?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimarchivesloanandreturn.views.gridview.caption',
+            caption: 'entities.pimarchivesloanandreturn.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/biangenghetong.png',
             iconCls: '',
             parameters: [
@@ -7602,7 +8152,8 @@ const router = new Router({
     {
         path: '/pimarchivesloanandreturns/:pimarchivesloanandreturn?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimarchivesloanandreturn.views.gridview.caption',
+            caption: 'entities.pimarchivesloanandreturn.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/biangenghetong.png',
             iconCls: '',
             parameters: [
@@ -7616,7 +8167,8 @@ const router = new Router({
             {
                 path: '/pimpatentredirectview/:pimpatentredirectview?',
                 meta: {
-                    caption: 'entities.pimpatent.views.redirectview.caption',
+                    caption: 'entities.pimpatent.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimpatentredirectview', parameterName: 'pimpatentredirectview' },
                     ],
@@ -7627,7 +8179,8 @@ const router = new Router({
     {
         path: '/pimtypecontracts/:pimtypecontract?/editview/:editview?',
         meta: {
-            caption: 'entities.pimtypecontract.views.editview.caption',
+            caption: 'entities.pimtypecontract.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimtypecontracts', parameterName: 'pimtypecontract' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -7639,7 +8192,8 @@ const router = new Router({
     {
         path: '/pimcontracttypes/:pimcontracttype?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimcontracttype.views.gridview.caption',
+            caption: 'entities.pimcontracttype.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongleixing.png',
             iconCls: '',
             parameters: [
@@ -7653,7 +8207,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/editview_ng/:editview_ng?',
         meta: {
-            caption: 'entities.pimexitandentry.views.editview_ng.caption',
+            caption: 'entities.pimexitandentry.views.editview_ng.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/chujing.png',
             iconCls: '',
             parameters: [
@@ -7668,7 +8223,8 @@ const router = new Router({
     {
         path: '/pimexitandentries/:pimexitandentry?/editview_ng/:editview_ng?',
         meta: {
-            caption: 'entities.pimexitandentry.views.editview_ng.caption',
+            caption: 'entities.pimexitandentry.views.editview_ng.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/chujing.png',
             iconCls: '',
             parameters: [
@@ -7682,7 +8238,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/lzyghmcgridview/:lzyghmcgridview?',
         meta: {
-            caption: 'entities.pimperson.views.lzyghmcgridview.caption',
+            caption: 'entities.pimperson.views.lzyghmcgridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/guazhidaoqiguanli.png',
             iconCls: '',
             parameters: [
@@ -7696,7 +8253,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/jdryhmcgridview/:jdryhmcgridview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.jdryhmcgridview.caption',
+            caption: 'entities.pimdistirbution.views.jdryhmcgridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/jiediaodaoqiguanli.png',
             iconCls: '',
             parameters: [
@@ -7711,7 +8269,8 @@ const router = new Router({
     {
         path: '/pimdistirbutions/:pimdistirbution?/jdryhmcgridview/:jdryhmcgridview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.jdryhmcgridview.caption',
+            caption: 'entities.pimdistirbution.views.jdryhmcgridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/jiediaodaoqiguanli.png',
             iconCls: '',
             parameters: [
@@ -7725,7 +8284,8 @@ const router = new Router({
             {
                 path: '/pimpaperredirectview/:pimpaperredirectview?',
                 meta: {
-                    caption: 'entities.pimpaper.views.redirectview.caption',
+                    caption: 'entities.pimpaper.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimpaperredirectview', parameterName: 'pimpaperredirectview' },
                     ],
@@ -7736,7 +8296,8 @@ const router = new Router({
     {
         path: '/ormsignorgs/:ormsignorg?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.ormsignorg.views.pickupgridview.caption',
+            caption: 'entities.ormsignorg.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -7748,7 +8309,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/trmtrainpeople/:trmtrainperson?/gridview/:gridview?',
         meta: {
-            caption: 'entities.trmtrainperson.views.gridview.caption',
+            caption: 'entities.trmtrainperson.views.gridview.title',
+            info:'',
             imgPath: '../../../img/kfgl/1/peixunjiluguanli.png',
             iconCls: '',
             parameters: [
@@ -7763,7 +8325,8 @@ const router = new Router({
     {
         path: '/trmtrainpeople/:trmtrainperson?/gridview/:gridview?',
         meta: {
-            caption: 'entities.trmtrainperson.views.gridview.caption',
+            caption: 'entities.trmtrainperson.views.gridview.title',
+            info:'',
             imgPath: '../../../img/kfgl/1/peixunjiluguanli.png',
             iconCls: '',
             parameters: [
@@ -7777,7 +8340,8 @@ const router = new Router({
             {
                 path: '/pimstafftyperedirectview/:pimstafftyperedirectview?',
                 meta: {
-                    caption: 'entities.pimstafftype.views.redirectview.caption',
+                    caption: 'entities.pimstafftype.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimstafftyperedirectview', parameterName: 'pimstafftyperedirectview' },
                     ],
@@ -7788,7 +8352,8 @@ const router = new Router({
             {
                 path: '/archivesmanageredirectview/:archivesmanageredirectview?',
                 meta: {
-                    caption: 'entities.pimarchivesmanage.views.redirectview.caption',
+                    caption: 'entities.pimarchivesmanage.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'archivesmanageredirectview', parameterName: 'archivesmanageredirectview' },
                     ],
@@ -7799,7 +8364,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/xmbqpickupview/:xmbqpickupview?',
         meta: {
-            caption: 'entities.ormorg.views.xmbqpickupview.caption',
+            caption: 'entities.ormorg.views.xmbqpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'xmbqpickupview', parameterName: 'xmbqpickupview' },
@@ -7811,7 +8377,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimexitandentries/:pimexitandentry?/editview_yqx/:editview_yqx?',
         meta: {
-            caption: 'entities.pimexitandentry.views.editview_yqx.caption',
+            caption: 'entities.pimexitandentry.views.editview_yqx.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/chujing.png',
             iconCls: '',
             parameters: [
@@ -7826,7 +8393,8 @@ const router = new Router({
     {
         path: '/pimexitandentries/:pimexitandentry?/editview_yqx/:editview_yqx?',
         meta: {
-            caption: 'entities.pimexitandentry.views.editview_yqx.caption',
+            caption: 'entities.pimexitandentry.views.editview_yqx.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/chujing.png',
             iconCls: '',
             parameters: [
@@ -7840,7 +8408,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/xjpickupview/:xjpickupview?',
         meta: {
-            caption: 'entities.ormorg.views.xjpickupview.caption',
+            caption: 'entities.ormorg.views.xjpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'xjpickupview', parameterName: 'xjpickupview' },
@@ -7852,7 +8421,8 @@ const router = new Router({
     {
         path: '/pimsearchfieldsets/:pimsearchfieldset?/editview/:editview?',
         meta: {
-            caption: 'entities.pimsearchfieldset.views.editview.caption',
+            caption: 'entities.pimsearchfieldset.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimsearchfieldsets', parameterName: 'pimsearchfieldset' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -7864,7 +8434,8 @@ const router = new Router({
             {
                 path: '/pimmajorsetyperedirectview/:pimmajorsetyperedirectview?',
                 meta: {
-                    caption: 'entities.pimmajorsetype.views.redirectview.caption',
+                    caption: 'entities.pimmajorsetype.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimmajorsetyperedirectview', parameterName: 'pimmajorsetyperedirectview' },
                     ],
@@ -7875,7 +8446,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/attendancemreportmxes/:attendancemreportmx?/wscgridview/:wscgridview?',
         meta: {
-            caption: 'entities.attendancemreportmx.views.wscgridview.caption',
+            caption: 'entities.attendancemreportmx.views.wscgridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/kaoqinyuebao.png',
             iconCls: '',
             parameters: [
@@ -7890,7 +8462,8 @@ const router = new Router({
     {
         path: '/attendancemreportmxes/:attendancemreportmx?/wscgridview/:wscgridview?',
         meta: {
-            caption: 'entities.attendancemreportmx.views.wscgridview.caption',
+            caption: 'entities.attendancemreportmx.views.wscgridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/kaoqinyuebao.png',
             iconCls: '',
             parameters: [
@@ -7904,7 +8477,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimworkhistories/:pimworkhistory?/editview/:editview?',
         meta: {
-            caption: 'entities.pimworkhistory.views.editview.caption',
+            caption: 'entities.pimworkhistory.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gongzuolvli.png',
             iconCls: '',
             parameters: [
@@ -7919,7 +8493,8 @@ const router = new Router({
     {
         path: '/pimworkhistories/:pimworkhistory?/editview/:editview?',
         meta: {
-            caption: 'entities.pimworkhistory.views.editview.caption',
+            caption: 'entities.pimworkhistory.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gongzuolvli.png',
             iconCls: '',
             parameters: [
@@ -7933,7 +8508,8 @@ const router = new Router({
     {
         path: '/pimqualtypes/:pimqualtype?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimqualtype.views.gridview.caption',
+            caption: 'entities.pimqualtype.views.gridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/kaoqinleixing.png',
             iconCls: '',
             parameters: [
@@ -7947,7 +8523,8 @@ const router = new Router({
     {
         path: '/ormsignorgs/:ormsignorg?/htqddwwpickupview/:htqddwwpickupview?',
         meta: {
-            caption: 'entities.ormsignorg.views.htqddwwpickupview.caption',
+            caption: 'entities.ormsignorg.views.htqddwwpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
                 { pathName: 'htqddwwpickupview', parameterName: 'htqddwwpickupview' },
@@ -7959,7 +8536,8 @@ const router = new Router({
             {
                 path: '/pimfaminforedirectview/:pimfaminforedirectview?',
                 meta: {
-                    caption: 'entities.pimfaminfo.views.redirectview.caption',
+                    caption: 'entities.pimfaminfo.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimfaminforedirectview', parameterName: 'pimfaminforedirectview' },
                     ],
@@ -7970,7 +8548,8 @@ const router = new Router({
             {
                 path: '/pcmdetailredirectview/:pcmdetailredirectview?',
                 meta: {
-                    caption: 'entities.pcmdetail.views.redirectview.caption',
+                    caption: 'entities.pcmdetail.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pcmdetailredirectview', parameterName: 'pcmdetailredirectview' },
                     ],
@@ -7981,7 +8560,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimarchives/:pimarchives?/pimarchiveschanges/:pimarchiveschange?/dadcjlgridview/:dadcjlgridview?',
         meta: {
-            caption: 'entities.pimarchiveschange.views.dadcjlgridview.caption',
+            caption: 'entities.pimarchiveschange.views.dadcjlgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganguanli.png',
             iconCls: '',
             parameters: [
@@ -7997,7 +8577,8 @@ const router = new Router({
     {
         path: '/pimarchives/:pimarchives?/pimarchiveschanges/:pimarchiveschange?/dadcjlgridview/:dadcjlgridview?',
         meta: {
-            caption: 'entities.pimarchiveschange.views.dadcjlgridview.caption',
+            caption: 'entities.pimarchiveschange.views.dadcjlgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganguanli.png',
             iconCls: '',
             parameters: [
@@ -8012,7 +8593,8 @@ const router = new Router({
     {
         path: '/pimarchiveschanges/:pimarchiveschange?/dadcjlgridview/:dadcjlgridview?',
         meta: {
-            caption: 'entities.pimarchiveschange.views.dadcjlgridview.caption',
+            caption: 'entities.pimarchiveschange.views.dadcjlgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganguanli.png',
             iconCls: '',
             parameters: [
@@ -8026,7 +8608,8 @@ const router = new Router({
             {
                 path: '/pimeducationredirectview/:pimeducationredirectview?',
                 meta: {
-                    caption: 'entities.pimeducation.views.redirectview.caption',
+                    caption: 'entities.pimeducation.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimeducationredirectview', parameterName: 'pimeducationredirectview' },
                     ],
@@ -8037,7 +8620,8 @@ const router = new Router({
     {
         path: '/pcmdetails/:pcmdetail?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pcmdetail.views.gridview.caption',
+            caption: 'entities.pcmdetail.views.gridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
             iconCls: '',
             parameters: [

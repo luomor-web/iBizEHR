@@ -577,25 +577,7 @@ export default class GXMLtreeBase extends Vue implements ControlInterface {
      * @memberof GXMLtree
      */
     public refresh(args: any[]): void {
-        if (Object.keys(this.currentselectedNode).length === 0) {
-            return;
-        }
-        const id: string = this.currentselectedNode.id;
-        const param: any = { srfnodeid: id };
-        const tree: any = this.$refs.treeexpbar_tree;
-        const node: any = tree.getNode(id);
-        if (!node) {
-            return;
-        }
-        let curNode:any = {}; 
-        curNode = Util.deepObjectMerge(curNode,node);
-        let tempContext:any;
-        if(curNode.data && curNode.data.srfappctx){
-            Object.assign(tempContext,curNode.data.srfappctx);
-        }else{
-            Object.assign(tempContext,this.context);
-        }
-        this.refresh_node(tempContext,param, false);
+        this.refresh_all();
     }
 
     /**

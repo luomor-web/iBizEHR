@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[合同信息]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMCONTRACT",resultMap = "PimContractResultMap")
 public class PimContract extends EntityMP implements Serializable {
 
@@ -451,12 +452,24 @@ public class PimContract extends EntityMP implements Serializable {
         this.sslwpqgs = sslwpqgs ;
         this.modify("sslwpqgs",sslwpqgs);
     }
+
     /**
      * 设置 [试用到期时间]
      */
     public void setSydqsj(Timestamp sydqsj){
         this.sydqsj = sydqsj ;
         this.modify("sydqsj",sydqsj);
+    }
+
+    /**
+     * 格式化日期 [试用到期时间]
+     */
+    public String formatSydqsj(){
+        if (this.sydqsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(sydqsj);
     }
     /**
      * 设置 [合同编号]
@@ -465,6 +478,7 @@ public class PimContract extends EntityMP implements Serializable {
         this.htbh = htbh ;
         this.modify("htbh",htbh);
     }
+
     /**
      * 设置 [合同类别]
      */
@@ -472,6 +486,7 @@ public class PimContract extends EntityMP implements Serializable {
         this.htlx = htlx ;
         this.modify("htlx",htlx);
     }
+
     /**
      * 设置 [备注]
      */
@@ -479,6 +494,7 @@ public class PimContract extends EntityMP implements Serializable {
         this.demo = demo ;
         this.modify("demo",demo);
     }
+
     /**
      * 设置 [工作内容]
      */
@@ -486,6 +502,7 @@ public class PimContract extends EntityMP implements Serializable {
         this.jobcontent = jobcontent ;
         this.modify("jobcontent",jobcontent);
     }
+
     /**
      * 设置 [合同签订单位]
      */
@@ -493,6 +510,7 @@ public class PimContract extends EntityMP implements Serializable {
         this.legalorg = legalorg ;
         this.modify("legalorg",legalorg);
     }
+
     /**
      * 设置 [合同信息名称]
      */
@@ -500,12 +518,24 @@ public class PimContract extends EntityMP implements Serializable {
         this.pimcontractname = pimcontractname ;
         this.modify("pimcontractname",pimcontractname);
     }
+
     /**
      * 设置 [结束日期]
      */
     public void setJsrq(Timestamp jsrq){
         this.jsrq = jsrq ;
         this.modify("jsrq",jsrq);
+    }
+
+    /**
+     * 格式化日期 [结束日期]
+     */
+    public String formatJsrq(){
+        if (this.jsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(jsrq);
     }
     /**
      * 设置 [合同类型]
@@ -514,6 +544,7 @@ public class PimContract extends EntityMP implements Serializable {
         this.contracttype = contracttype ;
         this.modify("contracttype",contracttype);
     }
+
     /**
      * 设置 [合同状态]
      */
@@ -521,6 +552,7 @@ public class PimContract extends EntityMP implements Serializable {
         this.htzt = htzt ;
         this.modify("htzt",htzt);
     }
+
     /**
      * 设置 [操作]
      */
@@ -528,12 +560,24 @@ public class PimContract extends EntityMP implements Serializable {
         this.action = action ;
         this.modify("action",action);
     }
+
     /**
      * 设置 [起始日期]
      */
     public void setQsrq(Timestamp qsrq){
         this.qsrq = qsrq ;
         this.modify("qsrq",qsrq);
+    }
+
+    /**
+     * 格式化日期 [起始日期]
+     */
+    public String formatQsrq(){
+        if (this.qsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(qsrq);
     }
     /**
      * 设置 [是否初签]
@@ -542,6 +586,7 @@ public class PimContract extends EntityMP implements Serializable {
         this.isfirstsign = isfirstsign ;
         this.modify("isfirstsign",isfirstsign);
     }
+
     /**
      * 设置 [第几次签订]
      */
@@ -549,6 +594,7 @@ public class PimContract extends EntityMP implements Serializable {
         this.contractnum = contractnum ;
         this.modify("contractnum",contractnum);
     }
+
     /**
      * 设置 [操作]
      */
@@ -556,6 +602,7 @@ public class PimContract extends EntityMP implements Serializable {
         this.cz = cz ;
         this.modify("cz",cz);
     }
+
     /**
      * 设置 [Y类员工]
      */
@@ -563,6 +610,7 @@ public class PimContract extends EntityMP implements Serializable {
         this.isyemp = isyemp ;
         this.modify("isyemp",isyemp);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -570,6 +618,7 @@ public class PimContract extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [劳务派遣公司管理标识]
      */
@@ -577,6 +626,7 @@ public class PimContract extends EntityMP implements Serializable {
         this.pimlabourcampanyid = pimlabourcampanyid ;
         this.modify("pimlabourcampanyid",pimlabourcampanyid);
     }
+
     /**
      * 设置 [签约主体单位标识]
      */
@@ -584,6 +634,7 @@ public class PimContract extends EntityMP implements Serializable {
         this.contractsignorgid = contractsignorgid ;
         this.modify("contractsignorgid",contractsignorgid);
     }
+
     /**
      * 设置 [合同管理单位标识]
      */
@@ -591,6 +642,7 @@ public class PimContract extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [合同签订单位]
      */
@@ -598,6 +650,7 @@ public class PimContract extends EntityMP implements Serializable {
         this.ormsignorgid = ormsignorgid ;
         this.modify("ormsignorgid",ormsignorgid);
     }
+
 
 }
 

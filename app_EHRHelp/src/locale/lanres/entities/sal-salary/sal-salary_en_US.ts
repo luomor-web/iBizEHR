@@ -21,7 +21,7 @@ export default {
     ormdutyname: '职务',
     ormorgsectorname: '部门',
     pimpersonname: '员工姓名',
-    salplanname: '薪酬计算计划名称',
+    salplanname: '薪酬计算计划',
     ormorgid: '组织标识',
     pimpersonid: '人员信息标识',
     salsalarybillid: '工资单标识',

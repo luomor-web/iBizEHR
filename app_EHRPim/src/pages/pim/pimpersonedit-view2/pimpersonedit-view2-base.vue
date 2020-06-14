@@ -16,6 +16,7 @@
             ref='drbar' 
             :viewparams="viewparams" 
             :context="context"
+            :formData="formData"
             @selectionchange="drbar_selectionchange($event)"
             @load="drbar_load($event)"
             @closeview="closeView($event)">
@@ -224,6 +225,14 @@ export default class PIMPERSONEditView2Base extends EditView2Base {
      * @memberof PIMPERSONEditView2
      */
     public selection: any = {};
+
+    /**
+     * 表单数据
+     *
+     * @type {*}
+     * @memberof PIMPERSONEditView2Base
+     */
+    public formData:any = {};
     
 }
 </script>

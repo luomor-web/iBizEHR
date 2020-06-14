@@ -304,6 +304,7 @@ import { UIActionTool,Util } from '@/utils';
 import PcmProfileService from '@/service/pcm-profile/pcm-profile-service';
 import YPZXX_LRService from './ypzxx-lr-grid-service';
 
+import PcmProfileUIService from '@/uiservice/pcm-profile/pcm-profile-ui-service';
 import CodeListService from "@service/app/codelist-service";
 import { FormItemModel } from '@/model/form-detail';
 
@@ -392,6 +393,34 @@ export default class YPZXX_LRBase extends Vue implements ControlInterface {
      */
     public appEntityService: PcmProfileService = new PcmProfileService({ $store: this.$store });
     
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public grid_cz_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:PcmProfileUIService  = new PcmProfileUIService();
+        curUIService.PcmProfile_SX(datas,contextJO, paramJO,  $event, xData,this,"PcmProfile");
+    }
 
 
     /**
@@ -1669,6 +1698,10 @@ export default class YPZXX_LRBase extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        $event.stopPropagation();
+        if(Object.is('SX', tag)) {
+            this.grid_cz_click(row, tag, $event);
+        }
     }
 
     /**
@@ -1792,6 +1825,14 @@ export default class YPZXX_LRBase extends Vue implements ControlInterface {
             return Object.is(item.pcmprofile,args.row.pcmprofile);
         });
         return isSelected ? "grid-selected-row" : "";
+    }
+
+    /**
+     * 新建默认值
+     * @param {*}  row 行数据
+     * @memberof YPZXX_LR
+     */
+    public createDefault(row: any){                    
     }
 }
 </script>

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[试用期员工转正考核结果维护]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMXYGZZJGWH",resultMap = "PcmXygzzjgwhResultMap")
 public class PcmXygzzjgwh extends EntityMP implements Serializable {
 
@@ -132,6 +133,7 @@ public class PcmXygzzjgwh extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [部门]
      */
@@ -139,6 +141,7 @@ public class PcmXygzzjgwh extends EntityMP implements Serializable {
         this.bm = bm ;
         this.modify("bm",bm);
     }
+
     /**
      * 设置 [员工编号]
      */
@@ -146,6 +149,7 @@ public class PcmXygzzjgwh extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [组织]
      */
@@ -153,6 +157,7 @@ public class PcmXygzzjgwh extends EntityMP implements Serializable {
         this.zz = zz ;
         this.modify("zz",zz);
     }
+
     /**
      * 设置 [考核结果]
      */
@@ -160,6 +165,7 @@ public class PcmXygzzjgwh extends EntityMP implements Serializable {
         this.khjg = khjg ;
         this.modify("khjg",khjg);
     }
+
     /**
      * 设置 [员工]
      */
@@ -167,6 +173,7 @@ public class PcmXygzzjgwh extends EntityMP implements Serializable {
         this.pcmxygzzjgwhname = pcmxygzzjgwhname ;
         this.modify("pcmxygzzjgwhname",pcmxygzzjgwhname);
     }
+
 
 }
 

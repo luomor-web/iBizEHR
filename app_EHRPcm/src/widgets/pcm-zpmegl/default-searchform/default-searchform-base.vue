@@ -12,12 +12,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_ormorgname_eq.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
               <app-form-item name='n_ormorgname_eq' :itemRules="this.rules.n_ormorgname_eq" class='' :caption="$t('entities.pcmzpmegl.default_searchform.details.n_ormorgname_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_ormorgname_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-              <app-picker 
+              
+          <app-picker 
             :formState="formState"
             :data="data"
             :context="context"
             :viewparams="viewparams"
-            :itemParam='{ }' 
+            :localContext ='{ }' 
+            :localParam ='{ }' 
             :disabled="detailsModel.n_ormorgname_eq.disabled"
             name='n_ormorgname_eq'
             deMajorField='orgname'

@@ -29,11 +29,11 @@ export default {
 	views: {
 		grpimjixgridview: {
 			caption: "绩效信息",
-      title: '绩效信息',
+      title: '绩效信息表格视图',
 		},
 		editview: {
 			caption: "绩效信息",
-      title: '绩效信息',
+      title: '绩效信息编辑视图',
 		},
 	},
 	main_form: {

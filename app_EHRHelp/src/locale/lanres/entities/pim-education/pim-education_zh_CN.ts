@@ -49,11 +49,11 @@ export default {
 	views: {
 		grpimedugridview: {
 			caption: '教育信息',
-      title: '教育信息',
+      title: '教育信息表格视图',
 		},
 		greditview: {
 			caption: '教育信息',
-      title: '教育信息',
+      title: '教育信息编辑视图',
 		},
 	},
 	main_2_form: {

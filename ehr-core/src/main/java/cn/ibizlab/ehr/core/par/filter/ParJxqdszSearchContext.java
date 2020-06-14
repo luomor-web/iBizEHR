@@ -31,35 +31,35 @@ public class ParJxqdszSearchContext extends QueryWrapperContext<ParJxqdsz> {
 	public void setN_qdlx_eq(String n_qdlx_eq) {
         this.n_qdlx_eq = n_qdlx_eq;
         if(!ObjectUtils.isEmpty(this.n_qdlx_eq)){
-            this.getSelectCond().eq("qdlx", n_qdlx_eq);
+            this.getSearchCond().eq("qdlx", n_qdlx_eq);
         }
     }
 	private String n_parjxqdszname_like;//[标题]
 	public void setN_parjxqdszname_like(String n_parjxqdszname_like) {
         this.n_parjxqdszname_like = n_parjxqdszname_like;
         if(!ObjectUtils.isEmpty(this.n_parjxqdszname_like)){
-            this.getSelectCond().like("parjxqdszname", n_parjxqdszname_like);
+            this.getSearchCond().like("parjxqdszname", n_parjxqdszname_like);
         }
     }
 	private String n_ormorgname_eq;//[组织]
 	public void setN_ormorgname_eq(String n_ormorgname_eq) {
         this.n_ormorgname_eq = n_ormorgname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_eq)){
-            this.getSelectCond().eq("ormorgname", n_ormorgname_eq);
+            this.getSearchCond().eq("ormorgname", n_ormorgname_eq);
         }
     }
 	private String n_ormorgname_like;//[组织]
 	public void setN_ormorgname_like(String n_ormorgname_like) {
         this.n_ormorgname_like = n_ormorgname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_like)){
-            this.getSelectCond().like("ormorgname", n_ormorgname_like);
+            this.getSearchCond().like("ormorgname", n_ormorgname_like);
         }
     }
 	private String n_ormorgid_eq;//[组织ID]
 	public void setN_ormorgid_eq(String n_ormorgid_eq) {
         this.n_ormorgid_eq = n_ormorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
-            this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class ParJxqdszSearchContext extends QueryWrapperContext<ParJxqdsz> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("parjxqdszname", query)   
             );
 		 }

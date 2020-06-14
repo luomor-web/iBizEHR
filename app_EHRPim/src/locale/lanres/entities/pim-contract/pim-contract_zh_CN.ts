@@ -54,99 +54,99 @@ export default {
 	views: {
 		stopremindgridview: {
 			caption: '合同终止提醒',
-      title: '合同终止提醒',
+      title: '合同信息表格视图(终止提醒)',
 		},
 		mpickupview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息数据多项选择视图',
 		},
 		grcontracteditview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息编辑视图',
 		},
 		pickupview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息数据选择视图',
 		},
 		gridview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息表格视图',
 		},
 		wssgridview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息表格视图',
 		},
 		lwgridview: {
 			caption: '劳务合同管理',
-      title: '劳务合同管理',
+      title: '劳务合同管理表格视图',
 		},
 		grcontractgridview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息表格视图',
 		},
 		xygridview: {
 			caption: '协议管理',
-      title: '协议管理',
+      title: '协议管理表格视图',
 		},
 		editview2: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息编辑视图',
 		},
 		ldeditview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息编辑视图',
 		},
 		signremindgridview: {
 			caption: '合同初签(续签)提醒',
-      title: '合同初签(续签)提醒',
+      title: '合同信息表格视图（初签/续签提醒）',
 		},
 		lweditview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息编辑视图',
 		},
 		treeexpview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息树导航视图',
 		},
 		reneweditview: {
 			caption: '合同新签/续签',
-      title: '合同新签/续签',
+      title: '合同信息编辑视图（新签/续签）',
 		},
 		ylweditview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息编辑视图',
 		},
 		redirectview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息数据重定向视图',
 		},
 		pickupgridview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息选择表格视图',
 		},
 		editview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息编辑视图',
 		},
 		ydtxgridview9: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息表格视图',
 		},
 		expiregridview: {
 			caption: '合同到期',
-      title: '合同到期',
+      title: '合同到期表格视图',
 		},
 		stoptimeselecteditview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息编辑视图',
 		},
 		xylweditview: {
 			caption: '合同信息',
-      title: '合同信息',
+      title: '合同信息编辑视图',
 		},
 		ldgridview: {
 			caption: '劳动合同管理',
-      title: '劳动合同管理',
+      title: '劳动合同管理表格视图',
 		},
 	},
 	main_form: {

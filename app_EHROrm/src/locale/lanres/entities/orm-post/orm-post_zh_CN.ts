@@ -29,7 +29,7 @@ export default {
 		},
 		mpickupview: {
 			caption: '岗位',
-      title: '岗位',
+      title: '岗位管理数据多项选择视图',
 		},
 		gwxhwheditview: {
 			caption: '岗位集设置',
@@ -37,7 +37,7 @@ export default {
 		},
 		editview2: {
 			caption: '岗位',
-      title: '岗位',
+      title: '岗位管理编辑视图',
 		},
 		gwbzxzmpickupview: {
 			caption: '岗位库',
@@ -45,7 +45,7 @@ export default {
 		},
 		pickupview: {
 			caption: '岗位',
-      title: '岗位',
+      title: '岗位管理数据选择视图',
 		},
 		gwxhwhgridview: {
 			caption: '岗位设置',
@@ -57,7 +57,7 @@ export default {
 		},
 		pickupgridview: {
 			caption: '岗位',
-      title: '岗位',
+      title: '岗位管理选择表格视图',
 		},
 		editview: {
 			caption: '岗位设置',
@@ -69,7 +69,7 @@ export default {
 		},
 		orgidpickupview: {
 			caption: '岗位',
-      title: '岗位',
+      title: '岗位管理数据选择视图',
 		},
 		gridview: {
 			caption: '岗位设置',
@@ -89,7 +89,7 @@ export default {
 		},
 		redirectview: {
 			caption: '岗位',
-      title: '岗位',
+      title: '岗位管理数据重定向视图',
 		},
 		nrgwpickupview: {
 			caption: '岗位选择',
@@ -97,7 +97,7 @@ export default {
 		},
 		ejormorgidpickupview: {
 			caption: '岗位',
-      title: '岗位',
+      title: '岗位管理数据选择视图',
 		},
 		orgidpickupgridview: {
 			caption: '岗位选择',

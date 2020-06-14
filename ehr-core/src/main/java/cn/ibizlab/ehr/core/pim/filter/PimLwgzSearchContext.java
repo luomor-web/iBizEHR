@@ -31,7 +31,7 @@ public class PimLwgzSearchContext extends QueryWrapperContext<PimLwgz> {
 	public void setN_pimlwgzname_like(String n_pimlwgzname_like) {
         this.n_pimlwgzname_like = n_pimlwgzname_like;
         if(!ObjectUtils.isEmpty(this.n_pimlwgzname_like)){
-            this.getSelectCond().like("pimlwgzname", n_pimlwgzname_like);
+            this.getSearchCond().like("pimlwgzname", n_pimlwgzname_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class PimLwgzSearchContext extends QueryWrapperContext<PimLwgz> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimlwgzname", query)   
             );
 		 }

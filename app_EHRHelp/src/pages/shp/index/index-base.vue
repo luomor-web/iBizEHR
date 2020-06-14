@@ -56,7 +56,7 @@ export default class IndexBase extends IndexViewBase {
         </template>
         <template slot="headerRight">
           <div class="app-header-right">
-            <app-header-menus menus={this.topMenus} on-menu-click={(e: any) => this.topMenuClick(e)}/>
+            <app-top-menus />
           </div>
         </template>
         <template slot="content">
@@ -71,6 +71,7 @@ export default class IndexBase extends IndexViewBase {
             name="appmenu"
             ref="appmenu"
           />
+
             </div>
             <div class="content" style="width: calc(100% - 240px)">
               <router-view></router-view>

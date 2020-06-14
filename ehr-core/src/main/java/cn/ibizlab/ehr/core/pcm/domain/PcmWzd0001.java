@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[向导实体1]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_WZD0001",resultMap = "PcmWzd0001ResultMap")
 public class PcmWzd0001 extends EntityMP implements Serializable {
 
@@ -182,6 +183,7 @@ public class PcmWzd0001 extends EntityMP implements Serializable {
         this.peoplenum = peoplenum ;
         this.modify("peoplenum",peoplenum);
     }
+
     /**
      * 设置 [备注]
      */
@@ -189,6 +191,7 @@ public class PcmWzd0001 extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [审核原因]
      */
@@ -196,6 +199,7 @@ public class PcmWzd0001 extends EntityMP implements Serializable {
         this.shyy = shyy ;
         this.modify("shyy",shyy);
     }
+
     /**
      * 设置 [初审意见]
      */
@@ -203,6 +207,7 @@ public class PcmWzd0001 extends EntityMP implements Serializable {
         this.csyj = csyj ;
         this.modify("csyj",csyj);
     }
+
     /**
      * 设置 [初审原因]
      */
@@ -210,6 +215,7 @@ public class PcmWzd0001 extends EntityMP implements Serializable {
         this.csyy = csyy ;
         this.modify("csyy",csyy);
     }
+
     /**
      * 设置 [审批原因]
      */
@@ -217,6 +223,7 @@ public class PcmWzd0001 extends EntityMP implements Serializable {
         this.spyy = spyy ;
         this.modify("spyy",spyy);
     }
+
     /**
      * 设置 [招聘名额]
      */
@@ -224,6 +231,7 @@ public class PcmWzd0001 extends EntityMP implements Serializable {
         this.zpme = zpme ;
         this.modify("zpme",zpme);
     }
+
     /**
      * 设置 [向导实体1名称]
      */
@@ -231,12 +239,24 @@ public class PcmWzd0001 extends EntityMP implements Serializable {
         this.wzd0001name = wzd0001name ;
         this.modify("wzd0001name",wzd0001name);
     }
+
     /**
      * 设置 [报到时间]
      */
     public void setBdsj(Timestamp bdsj){
         this.bdsj = bdsj ;
         this.modify("bdsj",bdsj);
+    }
+
+    /**
+     * 格式化日期 [报到时间]
+     */
+    public String formatBdsj(){
+        if (this.bdsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(bdsj);
     }
     /**
      * 设置 [审批意见]
@@ -245,6 +265,7 @@ public class PcmWzd0001 extends EntityMP implements Serializable {
         this.spyj = spyj ;
         this.modify("spyj",spyj);
     }
+
     /**
      * 设置 [员工类型]
      */
@@ -252,6 +273,7 @@ public class PcmWzd0001 extends EntityMP implements Serializable {
         this.yglx = yglx ;
         this.modify("yglx",yglx);
     }
+
     /**
      * 设置 [人员列表]
      */
@@ -259,6 +281,7 @@ public class PcmWzd0001 extends EntityMP implements Serializable {
         this.profilelist = profilelist ;
         this.modify("profilelist",profilelist);
     }
+
     /**
      * 设置 [审核意见]
      */
@@ -266,6 +289,7 @@ public class PcmWzd0001 extends EntityMP implements Serializable {
         this.shyj = shyj ;
         this.modify("shyj",shyj);
     }
+
 
 }
 

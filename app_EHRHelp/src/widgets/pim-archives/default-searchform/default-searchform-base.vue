@@ -24,12 +24,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_ygzt_eq.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
               <app-form-item name='n_ygzt_eq' :itemRules="this.rules.n_ygzt_eq" class='' :caption="$t('entities.pimarchives.default_searchform.details.n_ygzt_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_ygzt_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_ygzt_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_ygzt_eq.disabled"  
               tag='EhrCodeList0014' 
               codelistType='DYNAMIC'
@@ -40,12 +42,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_dastate_eq.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
               <app-form-item name='n_dastate_eq' :itemRules="this.rules.n_dastate_eq" class='' :caption="$t('entities.pimarchives.default_searchform.details.n_dastate_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_dastate_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_dastate_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_dastate_eq.disabled"  
               tag='EhrCodeList0057' 
               codelistType='STATIC'
@@ -56,12 +60,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_zt_eq.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
               <app-form-item name='n_zt_eq' :itemRules="this.rules.n_zt_eq" class='' :caption="$t('entities.pimarchives.default_searchform.details.n_zt_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_zt_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_zt_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_zt_eq.disabled"  
               tag='EhrCodeList0149' 
               codelistType='STATIC'

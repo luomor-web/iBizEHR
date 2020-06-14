@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.trmtrainperson.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.pimpersonname.disabled"
   name='pimpersonname'
   deMajorField='pimpersonname'
@@ -81,12 +83,14 @@
 </i-col>
 <i-col v-show="detailsModel.sfzs.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfzs' :itemRules="this.rules.sfzs" class='' :caption="$t('entities.trmtrainperson.main_form.details.sfzs')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfzs.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
   v-model="data.sfzs" 
   :data="data" 
   :context="context"
   :viewparams="viewparams"
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.sfzs.disabled" 
   style="width:100px;width: 100px;" 
   tag='EhrCodeList0400' 

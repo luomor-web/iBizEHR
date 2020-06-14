@@ -21,7 +21,7 @@ export default {
 	views: {
 		gzll_wsswbjgridview: {
 			caption: "工作履历",
-      title: '工作履历',
+      title: '工作履历表格视图',
 		},
 		gzllgridview: {
 			caption: "工作履历（要求：带*必填）",

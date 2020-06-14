@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.pimcontractsignorg.main_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormorgname.disabled"
   name='ormorgname'
   deMajorField='orgname'
@@ -33,12 +35,14 @@
 </i-col>
 <i-col v-show="detailsModel.ormsignorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormsignorgname' :itemRules="this.rules.ormsignorgname" class='' :caption="$t('entities.pimcontractsignorg.main_form.details.ormsignorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormsignorgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormsignorgname.disabled"
   name='ormsignorgname'
   deMajorField='ormsignorgname'
@@ -58,14 +62,16 @@
 </i-col>
 <i-col v-show="detailsModel.isdefaultsignorg.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='isdefaultsignorg' :itemRules="this.rules.isdefaultsignorg" class='' :caption="$t('entities.pimcontractsignorg.main_form.details.isdefaultsignorg')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.isdefaultsignorg.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.isdefaultsignorg"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.isdefaultsignorg.disabled"  
   name="isdefaultsignorg" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0400' 
   codelistType='STATIC' 
   style="">

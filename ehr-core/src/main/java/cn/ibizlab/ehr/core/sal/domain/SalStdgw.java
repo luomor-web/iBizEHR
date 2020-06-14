@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[高温津贴标准]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_SALSTDGW",resultMap = "SalStdgwResultMap")
 public class SalStdgw extends EntityMP implements Serializable {
 
@@ -151,12 +152,24 @@ public class SalStdgw extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [结束时间]
      */
     public void setJssj(Timestamp jssj){
         this.jssj = jssj ;
         this.modify("jssj",jssj);
+    }
+
+    /**
+     * 格式化日期 [结束时间]
+     */
+    public String formatJssj(){
+        if (this.jssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(jssj);
     }
     /**
      * 设置 [高温津贴标准名称]
@@ -165,12 +178,24 @@ public class SalStdgw extends EntityMP implements Serializable {
         this.salstdgwname = salstdgwname ;
         this.modify("salstdgwname",salstdgwname);
     }
+
     /**
      * 设置 [起始时间]
      */
     public void setQssj(Timestamp qssj){
         this.qssj = qssj ;
         this.modify("qssj",qssj);
+    }
+
+    /**
+     * 格式化日期 [起始时间]
+     */
+    public String formatQssj(){
+        if (this.qssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(qssj);
     }
     /**
      * 设置 [组织标识]
@@ -179,6 +204,7 @@ public class SalStdgw extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

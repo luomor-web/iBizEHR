@@ -31,63 +31,63 @@ public class PimTitleCatalogueSearchContext extends QueryWrapperContext<PimTitle
 	public void setN_dh_eq(String n_dh_eq) {
         this.n_dh_eq = n_dh_eq;
         if(!ObjectUtils.isEmpty(this.n_dh_eq)){
-            this.getSelectCond().eq("dh", n_dh_eq);
+            this.getSearchCond().eq("dh", n_dh_eq);
         }
     }
 	private String n_titletype_eq;//[职称类型]
 	public void setN_titletype_eq(String n_titletype_eq) {
         this.n_titletype_eq = n_titletype_eq;
         if(!ObjectUtils.isEmpty(this.n_titletype_eq)){
-            this.getSelectCond().eq("titletype", n_titletype_eq);
+            this.getSearchCond().eq("titletype", n_titletype_eq);
         }
     }
 	private String n_zclc_eq;//[职称类型]
 	public void setN_zclc_eq(String n_zclc_eq) {
         this.n_zclc_eq = n_zclc_eq;
         if(!ObjectUtils.isEmpty(this.n_zclc_eq)){
-            this.getSelectCond().eq("zclc", n_zclc_eq);
+            this.getSearchCond().eq("zclc", n_zclc_eq);
         }
     }
 	private String n_pimtitlecataloguename_like;//[职称目录名称]
 	public void setN_pimtitlecataloguename_like(String n_pimtitlecataloguename_like) {
         this.n_pimtitlecataloguename_like = n_pimtitlecataloguename_like;
         if(!ObjectUtils.isEmpty(this.n_pimtitlecataloguename_like)){
-            this.getSelectCond().like("pimtitlecataloguename", n_pimtitlecataloguename_like);
+            this.getSearchCond().like("pimtitlecataloguename", n_pimtitlecataloguename_like);
         }
     }
 	private String n_zcdj_eq;//[职称等级]
 	public void setN_zcdj_eq(String n_zcdj_eq) {
         this.n_zcdj_eq = n_zcdj_eq;
         if(!ObjectUtils.isEmpty(this.n_zcdj_eq)){
-            this.getSelectCond().eq("zcdj", n_zcdj_eq);
+            this.getSearchCond().eq("zcdj", n_zcdj_eq);
         }
     }
 	private String n_pimtitlecataloguename2_eq;//[职称目录类型]
 	public void setN_pimtitlecataloguename2_eq(String n_pimtitlecataloguename2_eq) {
         this.n_pimtitlecataloguename2_eq = n_pimtitlecataloguename2_eq;
         if(!ObjectUtils.isEmpty(this.n_pimtitlecataloguename2_eq)){
-            this.getSelectCond().eq("pimtitlecataloguename2", n_pimtitlecataloguename2_eq);
+            this.getSearchCond().eq("pimtitlecataloguename2", n_pimtitlecataloguename2_eq);
         }
     }
 	private String n_pimtitlecataloguename2_like;//[职称目录类型]
 	public void setN_pimtitlecataloguename2_like(String n_pimtitlecataloguename2_like) {
         this.n_pimtitlecataloguename2_like = n_pimtitlecataloguename2_like;
         if(!ObjectUtils.isEmpty(this.n_pimtitlecataloguename2_like)){
-            this.getSelectCond().like("pimtitlecataloguename2", n_pimtitlecataloguename2_like);
+            this.getSearchCond().like("pimtitlecataloguename2", n_pimtitlecataloguename2_like);
         }
     }
 	private String n_ormorgid_eq;//[组织标识]
 	public void setN_ormorgid_eq(String n_ormorgid_eq) {
         this.n_ormorgid_eq = n_ormorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
-            this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
         }
     }
 	private String n_pimtitlecatalogueid2_eq;//[职称标识]
 	public void setN_pimtitlecatalogueid2_eq(String n_pimtitlecatalogueid2_eq) {
         this.n_pimtitlecatalogueid2_eq = n_pimtitlecatalogueid2_eq;
         if(!ObjectUtils.isEmpty(this.n_pimtitlecatalogueid2_eq)){
-            this.getSelectCond().eq("pimtitlecatalogueid2", n_pimtitlecatalogueid2_eq);
+            this.getSearchCond().eq("pimtitlecatalogueid2", n_pimtitlecatalogueid2_eq);
         }
     }
 
@@ -98,7 +98,7 @@ public class PimTitleCatalogueSearchContext extends QueryWrapperContext<PimTitle
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimtitlecataloguename", query)   
             );
 		 }

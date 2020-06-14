@@ -15,19 +15,19 @@ export default {
 	views: {
 		pickupgridview: {
 			caption: "档案目录",
-      title: '档案目录',
+      title: '档案目录选择表格视图',
 		},
 		gridview: {
 			caption: "档案目录",
-      title: '档案目录',
+      title: '档案类别表格视图',
 		},
 		pickupview: {
 			caption: "档案目录",
-      title: '档案目录',
+      title: '档案目录数据选择视图',
 		},
 		editview: {
 			caption: "档案目录",
-      title: '档案目录',
+      title: '档案类别编辑视图',
 		},
 	},
 	main_form: {

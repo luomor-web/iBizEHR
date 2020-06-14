@@ -1979,6 +1979,7 @@ export default {
 			profiletype: '应聘者状态',
 		},
 		uiactions: {
+			useybh: '使用原编号',
 		},
 	},
 	ypzxx_lr_grid: {
@@ -2003,6 +2004,7 @@ export default {
 			ztyy: '状态原因',
 		},
 		uiactions: {
+			sx: '生效',
 		},
 	},
 	rzsp_csrcyj_grid: {
@@ -2201,6 +2203,7 @@ export default {
 			email: '邮箱',
 		},
 		uiactions: {
+			sx: '生效',
 		},
 	},
 	serach_nlyry_csrcyj_searchform: {

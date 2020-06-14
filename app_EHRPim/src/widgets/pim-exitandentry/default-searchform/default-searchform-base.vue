@@ -18,12 +18,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_lx_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_lx_eq' :itemRules="this.rules.n_lx_eq" class='' :caption="$t('entities.pimexitandentry.default_searchform.details.n_lx_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_lx_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_lx_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_lx_eq.disabled"  
               tag='EhrCodeList0126' 
               codelistType='STATIC'
@@ -34,12 +36,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_workflowstate_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_workflowstate_eq' :itemRules="this.rules.n_workflowstate_eq" class='' :caption="$t('entities.pimexitandentry.default_searchform.details.n_workflowstate_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_workflowstate_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_workflowstate_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_workflowstate_eq.disabled"  
               tag='EhrCodeList0106' 
               codelistType='STATIC'

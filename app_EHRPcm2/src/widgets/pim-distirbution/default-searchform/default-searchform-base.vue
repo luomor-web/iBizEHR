@@ -18,12 +18,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_ormorgname_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_ormorgname_eq' :itemRules="this.rules.n_ormorgname_eq" class='' :caption="$t('entities.pimdistirbution.default_searchform.details.n_ormorgname_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_ormorgname_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-              <app-picker 
+              
+          <app-picker 
             :formState="formState"
             :data="data"
             :context="context"
             :viewparams="viewparams"
-            :itemParam='{ }' 
+            :localContext ='{ }' 
+            :localParam ='{ }' 
             :disabled="detailsModel.n_ormorgname_eq.disabled"
             name='n_ormorgname_eq'
             deMajorField='orgname'
@@ -43,12 +45,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_ormorgsectorname_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_ormorgsectorname_eq' :itemRules="this.rules.n_ormorgsectorname_eq" class='' :caption="$t('entities.pimdistirbution.default_searchform.details.n_ormorgsectorname_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_ormorgsectorname_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-              <app-picker 
+              
+          <app-picker 
             :formState="formState"
             :data="data"
             :context="context"
             :viewparams="viewparams"
-            :itemParam='{ }' 
+            :localContext ='{ }' 
+            :localParam ='{ }' 
             :disabled="detailsModel.n_ormorgsectorname_eq.disabled"
             name='n_ormorgsectorname_eq'
             deMajorField='orgsectorname'
@@ -68,12 +72,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_ormdutyname_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_ormdutyname_eq' :itemRules="this.rules.n_ormdutyname_eq" class='' :caption="$t('entities.pimdistirbution.default_searchform.details.n_ormdutyname_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_ormdutyname_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-              <app-picker 
+              
+          <app-picker 
             :formState="formState"
             :data="data"
             :context="context"
             :viewparams="viewparams"
-            :itemParam='{ }' 
+            :localContext ='{ }' 
+            :localParam ='{ }' 
             :disabled="detailsModel.n_ormdutyname_eq.disabled"
             name='n_ormdutyname_eq'
             deMajorField='ormdutyname'
@@ -93,12 +99,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_ormpostname_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_ormpostname_eq' :itemRules="this.rules.n_ormpostname_eq" class='' :caption="$t('entities.pimdistirbution.default_searchform.details.n_ormpostname_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_ormpostname_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-              <app-picker 
+              
+          <app-picker 
             :formState="formState"
             :data="data"
             :context="context"
             :viewparams="viewparams"
-            :itemParam='{ }' 
+            :localContext ='{ }' 
+            :localParam ='{ }' 
             :disabled="detailsModel.n_ormpostname_eq.disabled"
             name='n_ormpostname_eq'
             deMajorField='ormpostname'
@@ -118,12 +126,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_fplx_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_fplx_eq' :itemRules="this.rules.n_fplx_eq" class='' :caption="$t('entities.pimdistirbution.default_searchform.details.n_fplx_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_fplx_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_fplx_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_fplx_eq.disabled"  
               tag='EhrCodeList0205' 
               codelistType='DYNAMIC'
@@ -134,12 +144,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_cfplx_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_cfplx_eq' :itemRules="this.rules.n_cfplx_eq" class='' :caption="$t('entities.pimdistirbution.default_searchform.details.n_cfplx_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_cfplx_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_cfplx_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_cfplx_eq.disabled"  
               tag='EhrCodeList0237' 
               codelistType='DYNAMIC'
@@ -150,12 +162,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_fpzt_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_fpzt_eq' :itemRules="this.rules.n_fpzt_eq" class='' :caption="$t('entities.pimdistirbution.default_searchform.details.n_fpzt_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_fpzt_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_fpzt_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_fpzt_eq.disabled"  
               tag='EhrCodeList0137' 
               codelistType='DYNAMIC'

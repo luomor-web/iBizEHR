@@ -60,47 +60,47 @@ export default {
 	views: {
 		grworkhistoryeditview: {
 			caption: '工作履历',
-      title: '工作履历',
+      title: '工作履历编辑视图',
 		},
 		expereencegridview: {
 			caption: '工作履历',
-      title: '工作履历',
+      title: '工作履历表格视图',
 		},
 		fenpeigridview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息表格视图',
 		},
 		kddpickupview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '可调动的分配',
 		},
 		grworkhistorygridview: {
 			caption: '工作履历',
-      title: '工作履历',
+      title: '工作履历表格视图',
 		},
 		grdividereditview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息编辑视图',
 		},
 		ygfenpeigridview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息表格视图',
 		},
 		maturitydueeditview: {
 			caption: '借调到期',
-      title: '借调到期',
+      title: '借调到期编辑视图',
 		},
 		pimfenpgridview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息表格视图',
 		},
 		gridview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息表格视图',
 		},
 		gzllgridview: {
 			caption: '工作履历',
-      title: '工作履历',
+      title: '工作履历表格视图',
 		},
 		workrecordcustomview: {
 			caption: '工作履历',
@@ -108,31 +108,31 @@ export default {
 		},
 		editview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息编辑视图',
 		},
 		pickupgridview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息选择表格视图',
 		},
 		ddcoptionview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '调出',
 		},
 		pickupview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息数据选择视图',
 		},
 		mpickupview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息数据多项选择视图',
 		},
 		grpimfenpgridview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息表格视图',
 		},
 		redirectview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息数据重定向视图',
 		},
 		jddqgridview: {
 			caption: '借调人员',
@@ -140,11 +140,11 @@ export default {
 		},
 		editview2: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息编辑视图',
 		},
 		kddfppickupgridview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '可调动的分配',
 		},
 		jdryhmcgridview: {
 			caption: '借调人员花名册',
@@ -152,15 +152,15 @@ export default {
 		},
 		kddmpickupview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '可调动的分配',
 		},
 		gzlleditview: {
 			caption: '工作履历',
-      title: '工作履历',
+      title: '工作履历编辑视图',
 		},
 		lgeditview: {
 			caption: '轮岗查询',
-      title: '轮岗查询',
+      title: '轮岗查询编辑视图',
 		},
 	},
 	main_form: {

@@ -46,15 +46,15 @@ export default {
 	views: {
 		treeexpview: {
 			caption: "招聘名额管理",
-      title: '招聘名额管理',
+      title: '招聘名额管理树导航视图',
 		},
 		curndgridview: {
 			caption: "招聘名额管理",
-      title: '招聘名额管理',
+      title: '招聘名额管理表格视图',
 		},
 		editview: {
 			caption: "招聘名额管理",
-      title: '招聘名额管理',
+      title: '招聘名额管理编辑视图',
 		},
 	},
 	main_form: {

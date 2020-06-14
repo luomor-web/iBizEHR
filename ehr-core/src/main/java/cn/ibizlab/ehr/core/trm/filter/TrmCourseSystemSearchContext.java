@@ -31,35 +31,35 @@ public class TrmCourseSystemSearchContext extends QueryWrapperContext<TrmCourseS
 	public void setN_trmcoursesystemname_like(String n_trmcoursesystemname_like) {
         this.n_trmcoursesystemname_like = n_trmcoursesystemname_like;
         if(!ObjectUtils.isEmpty(this.n_trmcoursesystemname_like)){
-            this.getSelectCond().like("trmcoursesystemname", n_trmcoursesystemname_like);
+            this.getSearchCond().like("trmcoursesystemname", n_trmcoursesystemname_like);
         }
     }
 	private String n_jb_eq;//[级别]
 	public void setN_jb_eq(String n_jb_eq) {
         this.n_jb_eq = n_jb_eq;
         if(!ObjectUtils.isEmpty(this.n_jb_eq)){
-            this.getSelectCond().eq("jb", n_jb_eq);
+            this.getSearchCond().eq("jb", n_jb_eq);
         }
     }
 	private String n_trmtrainagencyname_eq;//[培训机构]
 	public void setN_trmtrainagencyname_eq(String n_trmtrainagencyname_eq) {
         this.n_trmtrainagencyname_eq = n_trmtrainagencyname_eq;
         if(!ObjectUtils.isEmpty(this.n_trmtrainagencyname_eq)){
-            this.getSelectCond().eq("trmtrainagencyname", n_trmtrainagencyname_eq);
+            this.getSearchCond().eq("trmtrainagencyname", n_trmtrainagencyname_eq);
         }
     }
 	private String n_trmtrainagencyname_like;//[培训机构]
 	public void setN_trmtrainagencyname_like(String n_trmtrainagencyname_like) {
         this.n_trmtrainagencyname_like = n_trmtrainagencyname_like;
         if(!ObjectUtils.isEmpty(this.n_trmtrainagencyname_like)){
-            this.getSelectCond().like("trmtrainagencyname", n_trmtrainagencyname_like);
+            this.getSearchCond().like("trmtrainagencyname", n_trmtrainagencyname_like);
         }
     }
 	private String n_trmtrainagencyid_eq;//[培训机构标识]
 	public void setN_trmtrainagencyid_eq(String n_trmtrainagencyid_eq) {
         this.n_trmtrainagencyid_eq = n_trmtrainagencyid_eq;
         if(!ObjectUtils.isEmpty(this.n_trmtrainagencyid_eq)){
-            this.getSelectCond().eq("trmtrainagencyid", n_trmtrainagencyid_eq);
+            this.getSearchCond().eq("trmtrainagencyid", n_trmtrainagencyid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class TrmCourseSystemSearchContext extends QueryWrapperContext<TrmCourseS
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("trmcoursesystemname", query)   
             );
 		 }

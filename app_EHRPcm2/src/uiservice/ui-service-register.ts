@@ -50,6 +50,7 @@ export class UIServiceRegister {
         this.allUIService.set('pcmydgzmx', () => import('@/uiservice/pcm-ydgzmx/pcm-ydgzmx-ui-service'));
         this.allUIService.set('ormorg', () => import('@/uiservice/orm-org/orm-org-ui-service'));
         this.allUIService.set('pimdistirbution', () => import('@/uiservice/pim-distirbution/pim-distirbution-ui-service'));
+        this.allUIService.set('personstatemgr', () => import('@/uiservice/person-state-mgr/person-state-mgr-ui-service'));
         this.allUIService.set('pcmxygzzsqmx', () => import('@/uiservice/pcm-xygzzsqmx/pcm-xygzzsqmx-ui-service'));
         this.allUIService.set('pcmyddgmx', () => import('@/uiservice/pcm-yddgmx/pcm-yddgmx-ui-service'));
         this.allUIService.set('ormduty', () => import('@/uiservice/orm-duty/orm-duty-ui-service'));

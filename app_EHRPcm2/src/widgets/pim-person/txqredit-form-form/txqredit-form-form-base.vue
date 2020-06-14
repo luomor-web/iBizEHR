@@ -20,7 +20,8 @@
 </i-col>
 <i-col v-show="detailsModel.jtlxr.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='jtlxr' :itemRules="this.rules.jtlxr" class='' :caption="$t('entities.pimperson.txqreditform_form.details.jtlxr')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jtlxr.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-autocomplete 
+    
+<app-autocomplete 
     :data="data"
     :disabled="detailsModel.jtlxr.disabled" 
     name='jtlxr'
@@ -28,7 +29,8 @@
     :viewparams="viewparams"
     deMajorField='pimfaminfoname'
     deKeyField='pimfaminfo'
-    :itemParam='{ }' 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :service="service"
     :acParams="{ serviceName: 'PimFaminfoService', interfaceName: 'FetchJTLXR'}"
     valueitem='jtlxrid' 

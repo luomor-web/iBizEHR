@@ -12,11 +12,11 @@ export default {
 	views: {
 		gridview: {
 			caption: '休假类型',
-      title: '休假类型',
+      title: '休假类型管理表格视图',
 		},
 		editview: {
 			caption: '休假类型',
-      title: '休假类型',
+      title: '休假类型管理编辑视图',
 		},
 	},
 	main_form: {

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[教育背景]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMEDUCATIONEXPERIENCE",resultMap = "PcmEducationExperienceResultMap")
 public class PcmEducationExperience extends EntityMP implements Serializable {
 
@@ -321,6 +322,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.majordescription = majordescription ;
         this.modify("majordescription",majordescription);
     }
+
     /**
      * 设置 [是否有效]
      */
@@ -328,6 +330,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.flag = flag ;
         this.modify("flag",flag);
     }
+
     /**
      * 设置 [课题研究]
      */
@@ -335,6 +338,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.subjectresearch = subjectresearch ;
         this.modify("subjectresearch",subjectresearch);
     }
+
     /**
      * 设置 [培养方式]
      */
@@ -342,6 +346,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.trainingmode = trainingmode ;
         this.modify("trainingmode",trainingmode);
     }
+
     /**
      * 设置 [专业类别]
      */
@@ -349,6 +354,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.majorcategory = majorcategory ;
         this.modify("majorcategory",majorcategory);
     }
+
     /**
      * 设置 [教育背景名称]
      */
@@ -356,6 +362,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.pcmeducationexperiencename = pcmeducationexperiencename ;
         this.modify("pcmeducationexperiencename",pcmeducationexperiencename);
     }
+
     /**
      * 设置 [学习形式]
      */
@@ -363,6 +370,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.formsoflearning = formsoflearning ;
         this.modify("formsoflearning",formsoflearning);
     }
+
     /**
      * 设置 [受教育程度]
      */
@@ -370,6 +378,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.educationlevel = educationlevel ;
         this.modify("educationlevel",educationlevel);
     }
+
     /**
      * 设置 [学位证]
      */
@@ -377,12 +386,24 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.xwz = xwz ;
         this.modify("xwz",xwz);
     }
+
     /**
      * 设置 [版本时间]
      */
     public void setBbsj(Timestamp bbsj){
         this.bbsj = bbsj ;
         this.modify("bbsj",bbsj);
+    }
+
+    /**
+     * 格式化日期 [版本时间]
+     */
+    public String formatBbsj(){
+        if (this.bbsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(bbsj);
     }
     /**
      * 设置 [专业课程]
@@ -391,6 +412,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.majorcourses = majorcourses ;
         this.modify("majorcourses",majorcourses);
     }
+
     /**
      * 设置 [学院名称]
      */
@@ -398,6 +420,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.collegename = collegename ;
         this.modify("collegename",collegename);
     }
+
     /**
      * 设置 [毕业证]
      */
@@ -405,6 +428,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.byz = byz ;
         this.modify("byz",byz);
     }
+
     /**
      * 设置 [学历验证]
      */
@@ -412,6 +436,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.xlyz = xlyz ;
         this.modify("xlyz",xlyz);
     }
+
     /**
      * 设置 [是否为海外留学]
      */
@@ -419,12 +444,24 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.isabroad = isabroad ;
         this.modify("isabroad",isabroad);
     }
+
     /**
      * 设置 [入学时间]
      */
     public void setStarttime(Timestamp starttime){
         this.starttime = starttime ;
         this.modify("starttime",starttime);
+    }
+
+    /**
+     * 格式化日期 [入学时间]
+     */
+    public String formatStarttime(){
+        if (this.starttime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(starttime);
     }
     /**
      * 设置 [是否小专业]
@@ -433,6 +470,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.sfxzy = sfxzy ;
         this.modify("sfxzy",sfxzy);
     }
+
     /**
      * 设置 [一级学科]
      */
@@ -440,6 +478,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.xkml = xkml ;
         this.modify("xkml",xkml);
     }
+
     /**
      * 设置 [是否最高学历]
      */
@@ -447,6 +486,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.higestxl = higestxl ;
         this.modify("higestxl",higestxl);
     }
+
     /**
      * 设置 [专业名称]
      */
@@ -454,6 +494,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.majorname = majorname ;
         this.modify("majorname",majorname);
     }
+
     /**
      * 设置 [毕业院校]
      */
@@ -461,6 +502,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.schoolname = schoolname ;
         this.modify("schoolname",schoolname);
     }
+
     /**
      * 设置 [城市]
      */
@@ -468,6 +510,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.city = city ;
         this.modify("city",city);
     }
+
     /**
      * 设置 [学校性质]
      */
@@ -475,6 +518,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.xxxz = xxxz ;
         this.modify("xxxz",xxxz);
     }
+
     /**
      * 设置 [学历]
      */
@@ -482,12 +526,24 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.xl = xl ;
         this.modify("xl",xl);
     }
+
     /**
      * 设置 [毕业时间]
      */
     public void setEndtime(Timestamp endtime){
         this.endtime = endtime ;
         this.modify("endtime",endtime);
+    }
+
+    /**
+     * 格式化日期 [毕业时间]
+     */
+    public String formatEndtime(){
+        if (this.endtime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(endtime);
     }
     /**
      * 设置 [学位]
@@ -496,6 +552,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.degree = degree ;
         this.modify("degree",degree);
     }
+
     /**
      * 设置 [是否第一学历]
      */
@@ -503,6 +560,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.firstxl = firstxl ;
         this.modify("firstxl",firstxl);
     }
+
     /**
      * 设置 [应聘者ID]
      */
@@ -510,6 +568,7 @@ public class PcmEducationExperience extends EntityMP implements Serializable {
         this.pcmprofileid = pcmprofileid ;
         this.modify("pcmprofileid",pcmprofileid);
     }
+
 
 }
 

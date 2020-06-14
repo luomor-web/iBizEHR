@@ -24,11 +24,11 @@ export default {
 	views: {
 		kqbpickupgridview: {
 			caption: "考勤设置",
-      title: '考勤设置',
+      title: '考勤设置选择表格视图',
 		},
 		kqbypickupview: {
 			caption: "考勤设置",
-      title: '考勤设置',
+      title: '考勤设置数据选择视图',
 		},
 	},
 	main_grid: {

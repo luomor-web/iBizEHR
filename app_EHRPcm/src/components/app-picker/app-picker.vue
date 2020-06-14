@@ -153,12 +153,20 @@ export default class AppPicker extends Vue {
     @Prop() public linkview?: any;
 
     /**
-     * 表单项参数
+     * 局部上下文导航参数
      * 
      * @type {any}
      * @memberof AppPicker
      */
-    @Prop() public itemParam: any;
+    @Prop() public localContext!:any;
+
+    /**
+     * 局部导航参数
+     * 
+     * @type {any}
+     * @memberof AppPicker
+     */
+    @Prop() public localParam!:any;
 
     /**
      * 值项名称
@@ -639,9 +647,6 @@ export default class AppPicker extends Vue {
      * @memberof AppPicker
      */
     public handlePublicParams(arg: any): boolean {
-        if (!this.itemParam) {
-            return true;
-        }
         if (!this.data) {
             this.$Notice.error({ title: (this.$t('components.appPicker.error') as any), desc: (this.$t('components.appPicker.formdataException') as any) });
             return false;
@@ -650,12 +655,12 @@ export default class AppPicker extends Vue {
         arg.param = this.viewparams ? JSON.parse(JSON.stringify(this.viewparams)) : {};
         arg.context = this.context ? JSON.parse(JSON.stringify(this.context)) : {};
         // 附加参数处理
-        if (this.itemParam && this.itemParam.context) {
-          let _context = this.$util.formatData(this.data,arg.context,this.itemParam.context);
+        if (this.localContext && Object.keys(this.localContext).length >0) {
+            let _context = this.$util.computedNavData(this.data,arg.context,arg.param,this.localContext);
             Object.assign(arg.context,_context);
         }
-        if (this.itemParam && this.itemParam.param) {
-          let _param = this.$util.formatData(this.data,arg.param,this.itemParam.param);
+        if (this.localParam && Object.keys(this.localParam).length >0) {
+            let _param = this.$util.computedNavData(this.data,arg.param,arg.param,this.localParam);
             Object.assign(arg.param,_param);
         }
         return true;

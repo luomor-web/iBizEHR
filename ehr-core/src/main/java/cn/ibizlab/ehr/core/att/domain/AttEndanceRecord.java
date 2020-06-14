@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[考勤记录]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_ATTENDANCERECORD",resultMap = "AttEndanceRecordResultMap")
 public class AttEndanceRecord extends EntityMP implements Serializable {
 
@@ -303,12 +304,34 @@ public class AttEndanceRecord extends EntityMP implements Serializable {
         this.attenddate = attenddate ;
         this.modify("attenddate",attenddate);
     }
+
+    /**
+     * 格式化日期 [考勤日期]
+     */
+    public String formatAttenddate(){
+        if (this.attenddate == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(attenddate);
+    }
     /**
      * 设置 [下班打卡时间]
      */
     public void setDksjqt(Timestamp dksjqt){
         this.dksjqt = dksjqt ;
         this.modify("dksjqt",dksjqt);
+    }
+
+    /**
+     * 格式化日期 [下班打卡时间]
+     */
+    public String formatDksjqt(){
+        if (this.dksjqt == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(dksjqt);
     }
     /**
      * 设置 [上班卡是否外勤]
@@ -317,6 +340,7 @@ public class AttEndanceRecord extends EntityMP implements Serializable {
         this.isoutoffice = isoutoffice ;
         this.modify("isoutoffice",isoutoffice);
     }
+
     /**
      * 设置 [考勤方式]
      */
@@ -324,6 +348,7 @@ public class AttEndanceRecord extends EntityMP implements Serializable {
         this.dkfs = dkfs ;
         this.modify("dkfs",dkfs);
     }
+
     /**
      * 设置 [下班卡是否外勤]
      */
@@ -331,12 +356,24 @@ public class AttEndanceRecord extends EntityMP implements Serializable {
         this.isoutleave = isoutleave ;
         this.modify("isoutleave",isoutleave);
     }
+
     /**
      * 设置 [上班打卡时间]
      */
     public void setDksjqd(Timestamp dksjqd){
         this.dksjqd = dksjqd ;
         this.modify("dksjqd",dksjqd);
+    }
+
+    /**
+     * 格式化日期 [上班打卡时间]
+     */
+    public String formatDksjqd(){
+        if (this.dksjqd == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(dksjqd);
     }
     /**
      * 设置 [考勤记录名称]
@@ -345,6 +382,7 @@ public class AttEndanceRecord extends EntityMP implements Serializable {
         this.attendancerecordname = attendancerecordname ;
         this.modify("attendancerecordname",attendancerecordname);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -352,6 +390,7 @@ public class AttEndanceRecord extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [部门地址维护标识]
      */
@@ -359,6 +398,7 @@ public class AttEndanceRecord extends EntityMP implements Serializable {
         this.ormbmkqdzid = ormbmkqdzid ;
         this.modify("ormbmkqdzid",ormbmkqdzid);
     }
+
     /**
      * 设置 [考勤月报明细标识]
      */
@@ -366,6 +406,7 @@ public class AttEndanceRecord extends EntityMP implements Serializable {
         this.attendancemreportid = attendancemreportid ;
         this.modify("attendancemreportmxid",attendancemreportid);
     }
+
     /**
      * 设置 [培训计划项标识]
      */
@@ -373,6 +414,7 @@ public class AttEndanceRecord extends EntityMP implements Serializable {
         this.trmtrainplantermid = trmtrainplantermid ;
         this.modify("trmtrainplantermid",trmtrainplantermid);
     }
+
 
 }
 

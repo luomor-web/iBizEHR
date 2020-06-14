@@ -100,12 +100,20 @@ export default class AppAutocomplete extends Vue {
     @Prop() public name!: string;
 
     /**
-     * 编辑器参数
-     *
-     * @type {string}
+     * 局部上下文导航参数
+     * 
+     * @type {any}
      * @memberof AppAutocomplete
      */
-    @Prop() public itemParam?: any;
+    @Prop() public localContext!:any;
+
+    /**
+     * 局部导航参数
+     * 
+     * @type {any}
+     * @memberof AppAutocomplete
+     */
+    @Prop() public localParam!:any;
 
     /**
      * 值项名称
@@ -119,7 +127,7 @@ export default class AppAutocomplete extends Vue {
      * 值
      *
      * @type {*}
-     * @memberof AppPicker
+     * @memberof AppAutocomplete
      */
     @Model('change') public value?: any;
 
@@ -127,7 +135,7 @@ export default class AppAutocomplete extends Vue {
      * 当前值
      *
      * @type {string}
-     * @memberof AppPicker
+     * @memberof AppAutocomplete
      */
     public curvalue: string = '';
 
@@ -160,7 +168,7 @@ export default class AppAutocomplete extends Vue {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof AppPicker
+     * @memberof AppAutocomplete
      */
     @Watch('value')
     public onValueChange(newVal: any, oldVal: any) {
@@ -277,19 +285,19 @@ export default class AppAutocomplete extends Vue {
      */
     public handlePublicParams(arg: any): boolean {
         if (!this.data) {
-            this.$Notice.error({ title: (this.$t('components.appPicker.error') as any), desc: (this.$t('components.appPicker.formdataException') as any) });
+            this.$Notice.error({ title: (this.$t('components.AppAutocomplete.error') as any), desc: (this.$t('components.AppAutocomplete.formdataException') as any) });
             return false;
         }
         // 合并表单参数
         arg.param = this.viewparams ? JSON.parse(JSON.stringify(this.viewparams)) : {};
         arg.context = this.context ? JSON.parse(JSON.stringify(this.context)) : {};
         // 附加参数处理
-        if (this.itemParam && this.itemParam.context) {
-          let _context = this.$util.formatData(this.data,arg.context,this.itemParam.context);
+        if (this.localContext && Object.keys(this.localContext).length >0) {
+            let _context = this.$util.computedNavData(this.data,arg.context,arg.param,this.localContext);
             Object.assign(arg.context,_context);
         }
-        if (this.itemParam && this.itemParam.param) {
-          let _param = this.$util.formatData(this.data,arg.param,this.itemParam.param);
+        if (this.localParam && Object.keys(this.localParam).length >0) {
+            let _param = this.$util.computedNavData(this.data,arg.param,arg.param,this.localParam);
             Object.assign(arg.param,_param);
         }
         return true;

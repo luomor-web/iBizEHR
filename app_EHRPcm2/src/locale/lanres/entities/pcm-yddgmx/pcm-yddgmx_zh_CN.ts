@@ -42,19 +42,19 @@ export default {
 	views: {
 		gridview: {
 			caption: '异动待岗明细',
-      title: '异动待岗明细',
+      title: '异动待岗明细表',
 		},
 		jsrqqreditview: {
 			caption: '异动待岗明细',
-      title: '异动待岗明细',
+      title: '请确认/修改待岗结束日期',
 		},
 		redirectview: {
 			caption: '异动待岗明细',
-      title: '异动待岗明细',
+      title: '异动待岗明细数据重定向视图',
 		},
 		pickupgridview: {
 			caption: '异动待岗明细',
-      title: '异动待岗明细',
+      title: '异动待岗明细选择表格视图',
 		},
 		editview: {
 			caption: '异动待岗明细',
@@ -70,15 +70,15 @@ export default {
 		},
 		pickupview: {
 			caption: '异动待岗明细',
-      title: '异动待岗明细',
+      title: '异动待岗明细数据选择视图',
 		},
 		ckeditview: {
 			caption: '异动待岗明细',
-      title: '异动待岗明细',
+      title: '异动病休明细',
 		},
 		mpickupview: {
 			caption: '异动待岗明细',
-      title: '异动待岗明细',
+      title: '异动待岗明细数据多项选择视图',
 		},
 		dgjlgridview: {
 			caption: '待岗记录',
@@ -86,7 +86,7 @@ export default {
 		},
 		editview2: {
 			caption: '异动待岗明细',
-      title: '异动待岗明细',
+      title: '异动待岗明细编辑视图',
 		},
 		xzeditview: {
 			caption: '新增待岗',

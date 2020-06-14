@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[内部招聘信息]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMRECRUITMENT",resultMap = "PcmRecruitmentResultMap")
 public class PcmRecruitment extends EntityMP implements Serializable {
 
@@ -220,6 +221,7 @@ public class PcmRecruitment extends EntityMP implements Serializable {
         this.requirements = requirements ;
         this.modify("requirements",requirements);
     }
+
     /**
      * 设置 [实际招聘人数]
      */
@@ -227,6 +229,7 @@ public class PcmRecruitment extends EntityMP implements Serializable {
         this.sjzprs = sjzprs ;
         this.modify("sjzprs",sjzprs);
     }
+
     /**
      * 设置 [内部招聘信息名称]
      */
@@ -234,6 +237,7 @@ public class PcmRecruitment extends EntityMP implements Serializable {
         this.pcmrecruitmentname = pcmrecruitmentname ;
         this.modify("pcmrecruitmentname",pcmrecruitmentname);
     }
+
     /**
      * 设置 [预计招聘人数]
      */
@@ -241,6 +245,7 @@ public class PcmRecruitment extends EntityMP implements Serializable {
         this.yjzprs = yjzprs ;
         this.modify("yjzprs",yjzprs);
     }
+
     /**
      * 设置 [是否招聘完成]
      */
@@ -248,6 +253,7 @@ public class PcmRecruitment extends EntityMP implements Serializable {
         this.sfzpwc = sfzpwc ;
         this.modify("sfzpwc",sfzpwc);
     }
+
     /**
      * 设置 [招聘类型]
      */
@@ -255,6 +261,7 @@ public class PcmRecruitment extends EntityMP implements Serializable {
         this.recruitmenttype = recruitmenttype ;
         this.modify("recruitmenttype",recruitmenttype);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -262,6 +269,7 @@ public class PcmRecruitment extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -269,6 +277,7 @@ public class PcmRecruitment extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [岗位管理标识]
      */
@@ -276,6 +285,7 @@ public class PcmRecruitment extends EntityMP implements Serializable {
         this.ormpostid = ormpostid ;
         this.modify("ormpostid",ormpostid);
     }
+
     /**
      * 设置 [职务标识]
      */
@@ -283,6 +293,7 @@ public class PcmRecruitment extends EntityMP implements Serializable {
         this.ormdutyid = ormdutyid ;
         this.modify("ormdutyid",ormdutyid);
     }
+
 
 }
 

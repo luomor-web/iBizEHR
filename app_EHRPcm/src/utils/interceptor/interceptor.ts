@@ -84,6 +84,13 @@ export class Interceptors {
             if (appdata && appdata.context) {
                 config.headers['srforgsectorid'] = appdata.context.srforgsectorid;
             }
+            if(!window.localStorage.getItem('token')){
+                let arr;
+                let reg = new RegExp("(^| )ibzuaa-token=([^;]*)(;|$)");
+                if (arr = document.cookie.match(reg)){
+                    window.localStorage.setItem('token',unescape(arr[2]));
+                }
+            }
             if (window.localStorage.getItem('token')) {
                 const token = window.localStorage.getItem('token');
                 config.headers['Authorization'] = `Bearer ${token}`;

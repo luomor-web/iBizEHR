@@ -18,35 +18,35 @@ export default {
 	views: {
 		gridview: {
 			caption: "试用期员工转正申请",
-      title: '试用期员工转正申请',
+      title: '试用期员工转正申请表格视图',
 		},
 		mpickupview: {
 			caption: "试用期员工转正申请",
-      title: '试用期员工转正申请',
+      title: '试用期员工转正申请数据多项选择视图',
 		},
 		pickupgridview: {
 			caption: "试用期员工转正申请",
-      title: '试用期员工转正申请',
+      title: '试用期员工转正申请选择表格视图',
 		},
 		pickupview: {
 			caption: "试用期员工转正申请",
-      title: '试用期员工转正申请',
+      title: '试用期员工转正申请数据选择视图',
 		},
 		redirectview: {
 			caption: "试用期员工转正申请",
-      title: '试用期员工转正申请',
+      title: '试用期员工转正申请数据重定向视图',
 		},
 		editview2: {
 			caption: "试用期员工转正申请",
-      title: '试用期员工转正申请',
+      title: '试用期员工转正申请编辑视图',
 		},
 		zzsqjmeditview: {
 			caption: "试用期员工转正申请",
-      title: '试用期员工转正申请',
+      title: '试用期员工转正',
 		},
 		editview: {
 			caption: "试用期员工转正申请",
-      title: '试用期员工转正申请',
+      title: '试用期员工转正申请编辑视图',
 		},
 	},
 	main_form: {

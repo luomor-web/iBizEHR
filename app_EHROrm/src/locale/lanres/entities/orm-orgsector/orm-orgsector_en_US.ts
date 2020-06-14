@@ -84,11 +84,11 @@ export default {
 		},
 		editview2: {
 			caption: "部门管理",
-      title: '部门管理',
+      title: '部门管理编辑视图',
 		},
 		mpickupview: {
 			caption: "部门管理",
-      title: '部门管理',
+      title: '部门管理数据多项选择视图',
 		},
 		curzzbmkqszgridview: {
 			caption: "考勤设置",
@@ -112,11 +112,11 @@ export default {
 		},
 		redirectview: {
 			caption: "部门管理",
-      title: '部门管理',
+      title: '部门管理数据重定向视图',
 		},
 		curzzbm_kqszpickupview: {
 			caption: "部门管理",
-      title: '部门管理',
+      title: '部门管理数据选择视图',
 		},
 		fpxxpickupgridview: {
 			caption: "部门选择",
@@ -140,7 +140,7 @@ export default {
 		},
 		curzzbm_kqszpickupgridview: {
 			caption: "部门管理",
-      title: '部门管理',
+      title: '部门管理选择表格视图',
 		},
 		xmbmgridview: {
 			caption: "项目部",
@@ -148,7 +148,7 @@ export default {
 		},
 		pickupview: {
 			caption: "部门管理",
-      title: '部门管理',
+      title: '部门管理数据选择视图',
 		},
 		ydbmpickupgridview: {
 			caption: "部门选择",
@@ -160,11 +160,11 @@ export default {
 		},
 		pickupgridview: {
 			caption: "部门管理",
-      title: '部门管理',
+      title: '部门管理选择表格视图',
 		},
 		kqsztreeexpview: {
 			caption: "考勤设置",
-      title: '考勤设置',
+      title: '考勤设置树导航视图',
 		},
 		xmbbzglgridview: {
 			caption: "项目部管理",
@@ -196,11 +196,11 @@ export default {
 		},
 		editview: {
 			caption: "部门管理",
-      title: '部门管理',
+      title: '部门',
 		},
 		kqszmpickupview: {
 			caption: "部门管理",
-      title: '部门管理',
+      title: '部门管理数据多项选择视图',
 		},
 		setproleadereditview: {
 			caption: "设置项目负责人",

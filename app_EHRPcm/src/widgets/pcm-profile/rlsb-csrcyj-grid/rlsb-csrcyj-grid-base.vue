@@ -100,7 +100,22 @@
                     <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
                             <app-form-item :error="gridItemsModel[$index][column.property].error">
-                                 <dropdown-list v-model="row[column.property]" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" tag='EhrCodeList0096' codelistType='DYNAMIC' placeholder='请选择...' style="" @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}"></dropdown-list>
+                                
+             <dropdown-list 
+              v-model="row[column.property]" 
+              :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
+              :data="row" 
+              :context="context"
+              :viewparams="viewparams" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
+              tag='EhrCodeList0096' 
+              codelistType='DYNAMIC'
+              placeholder='请选择...' 
+              style="" 
+              @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}">
+             </dropdown-list>
+            
                             </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
@@ -434,7 +449,34 @@ export default class RLSB_CSRCYJBase extends Vue implements ControlInterface {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:PcmProfileUIService  = new PcmProfileUIService();
+        curUIService.PcmProfile_ModifyYPZ2(datas,contextJO, paramJO,  $event, xData,this,"PcmProfile");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public grid_cz4_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
         let contextJO:any = {};
         xData = this;
         if (_this.getDatas && _this.getDatas instanceof Function) {
@@ -1734,8 +1776,12 @@ export default class RLSB_CSRCYJBase extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        $event.stopPropagation();
         if(Object.is('ModifyYPZ2', tag)) {
             this.grid_uagridcolumn1_u7e9fcd9_click(row, tag, $event);
+        }
+        if(Object.is('ModifyYPZ2', tag)) {
+            this.grid_cz4_click(row, tag, $event);
         }
     }
 
@@ -1870,6 +1916,7 @@ export default class RLSB_CSRCYJBase extends Vue implements ControlInterface {
                 return;
             }
             const data = response.data;
+            this.createDefault(data);
             data.rowDataState = "create";
             _this.items.push(data);
             _this.gridItemsModel.push(_this.getGridRowModel());
@@ -1977,6 +2024,14 @@ export default class RLSB_CSRCYJBase extends Vue implements ControlInterface {
             return Object.is(item.pcmprofile,args.row.pcmprofile);
         });
         return isSelected ? "grid-selected-row" : "";
+    }
+
+    /**
+     * 新建默认值
+     * @param {*}  row 行数据
+     * @memberof RLSB_CSRCYJ
+     */
+    public createDefault(row: any){                    
     }
 }
 </script>

@@ -12,12 +12,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_nd_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_nd_eq' :itemRules="this.rules.n_nd_eq" class='' :caption="$t('entities.vacsynjcx.default_searchform.details.n_nd_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_nd_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_nd_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_nd_eq.disabled"  
               tag='EhrCodeList0115' 
               codelistType='STATIC'

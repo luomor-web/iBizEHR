@@ -12,12 +12,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_xb_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_xb_eq' :itemRules="this.rules.n_xb_eq" class='' :caption="$t('entities.pimfaminfo.default_searchform.details.n_xb_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_xb_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_xb_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_xb_eq.disabled"  
               tag='EhrCodeList0072' 
               codelistType='DYNAMIC'
@@ -28,12 +30,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_zzmm_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_zzmm_eq' :itemRules="this.rules.n_zzmm_eq" class='' :caption="$t('entities.pimfaminfo.default_searchform.details.n_zzmm_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_zzmm_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_zzmm_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_zzmm_eq.disabled"  
               tag='EhrCodeList0029' 
               codelistType='DYNAMIC'
@@ -44,12 +48,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_sfjjllr_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_sfjjllr_eq' :itemRules="this.rules.n_sfjjllr_eq" class='' :caption="$t('entities.pimfaminfo.default_searchform.details.n_sfjjllr_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_sfjjllr_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_sfjjllr_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_sfjjllr_eq.disabled"  
               tag='EhrCodeList0097' 
               codelistType='STATIC'

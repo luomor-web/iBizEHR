@@ -30,19 +30,19 @@ export default {
 		},
 		pickupgridview: {
 			caption: "岗位",
-      title: '岗位',
+      title: '岗位管理选择表格视图',
 		},
 		ejormorgidpickupview: {
 			caption: "岗位",
-      title: '岗位',
+      title: '岗位管理数据选择视图',
 		},
 		orgidpickupview: {
 			caption: "岗位",
-      title: '岗位',
+      title: '岗位管理数据选择视图',
 		},
 		pickupview: {
 			caption: "岗位",
-      title: '岗位',
+      title: '岗位管理数据选择视图',
 		},
 		ejormorgidpickupgridview: {
 			caption: "岗位选择",

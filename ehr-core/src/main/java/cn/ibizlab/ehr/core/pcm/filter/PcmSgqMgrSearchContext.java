@@ -31,42 +31,42 @@ public class PcmSgqMgrSearchContext extends QueryWrapperContext<PcmSgqMgr> {
 	public void setN_sgzt_eq(String n_sgzt_eq) {
         this.n_sgzt_eq = n_sgzt_eq;
         if(!ObjectUtils.isEmpty(this.n_sgzt_eq)){
-            this.getSelectCond().eq("sgzt", n_sgzt_eq);
+            this.getSearchCond().eq("sgzt", n_sgzt_eq);
         }
     }
 	private String n_pcmsgqmgrname_like;//[试岗期管理名称]
 	public void setN_pcmsgqmgrname_like(String n_pcmsgqmgrname_like) {
         this.n_pcmsgqmgrname_like = n_pcmsgqmgrname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmsgqmgrname_like)){
-            this.getSelectCond().like("pcmsgqmgrname", n_pcmsgqmgrname_like);
+            this.getSearchCond().like("pcmsgqmgrname", n_pcmsgqmgrname_like);
         }
     }
 	private String n_pimpersonname_eq;//[员工姓名]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[员工姓名]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_pimpersonid_eq;//[人员信息标识]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 	private String n_pcmbdsqdmxid_eq;//[申请单明细标识]
 	public void setN_pcmbdsqdmxid_eq(String n_pcmbdsqdmxid_eq) {
         this.n_pcmbdsqdmxid_eq = n_pcmbdsqdmxid_eq;
         if(!ObjectUtils.isEmpty(this.n_pcmbdsqdmxid_eq)){
-            this.getSelectCond().eq("pcmbdsqdmxid", n_pcmbdsqdmxid_eq);
+            this.getSearchCond().eq("pcmbdsqdmxid", n_pcmbdsqdmxid_eq);
         }
     }
 
@@ -77,7 +77,7 @@ public class PcmSgqMgrSearchContext extends QueryWrapperContext<PcmSgqMgr> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmsgqmgrname", query)   
             );
 		 }

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[应聘者审批原因]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMPROFILESPYY",resultMap = "PcmProfileSpyyResultMap")
 public class PcmProfileSpyy extends EntityMP implements Serializable {
 
@@ -111,6 +112,7 @@ public class PcmProfileSpyy extends EntityMP implements Serializable {
         this.yybm = yybm ;
         this.modify("yybm",yybm);
     }
+
     /**
      * 设置 [应聘者审批原因名称]
      */
@@ -118,6 +120,7 @@ public class PcmProfileSpyy extends EntityMP implements Serializable {
         this.pcmprofilespyyname = pcmprofilespyyname ;
         this.modify("pcmprofilespyyname",pcmprofilespyyname);
     }
+
     /**
      * 设置 [原因名称]
      */
@@ -125,6 +128,7 @@ public class PcmProfileSpyy extends EntityMP implements Serializable {
         this.yymc = yymc ;
         this.modify("yymc",yymc);
     }
+
 
 }
 

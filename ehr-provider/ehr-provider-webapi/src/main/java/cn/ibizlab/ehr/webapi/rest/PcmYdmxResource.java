@@ -191,5 +191,172 @@ public class PcmYdmxResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pcmydmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @PreAuthorize("hasPermission(this.pcmydmxMapping.toDomain(#pcmydmxdto),'ehr-PcmYdmx-Create')")
+    @ApiOperation(value = "根据人员信息建立异动明细", tags = {"异动明细" },  notes = "根据人员信息建立异动明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pcmydmxes")
+    @Transactional
+    public ResponseEntity<PcmYdmxDTO> createByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PcmYdmxDTO pcmydmxdto) {
+        PcmYdmx domain = pcmydmxMapping.toDomain(pcmydmxdto);
+        domain.setPimpersonid(pimperson_id);
+		pcmydmxService.create(domain);
+        PcmYdmxDTO dto = pcmydmxMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydmxMapping.toDomain(#pcmydmxdtos),'ehr-PcmYdmx-Create')")
+    @ApiOperation(value = "根据人员信息批量建立异动明细", tags = {"异动明细" },  notes = "根据人员信息批量建立异动明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pcmydmxes/batch")
+    public ResponseEntity<Boolean> createBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PcmYdmxDTO> pcmydmxdtos) {
+        List<PcmYdmx> domainlist=pcmydmxMapping.toDomain(pcmydmxdtos);
+        for(PcmYdmx domain:domainlist){
+            domain.setPimpersonid(pimperson_id);
+        }
+        pcmydmxService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydmxMapping.toDomain(#pcmydmxdto),'ehr-PcmYdmx-Save')")
+    @ApiOperation(value = "根据人员信息保存异动明细", tags = {"异动明细" },  notes = "根据人员信息保存异动明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pcmydmxes/save")
+    public ResponseEntity<Boolean> saveByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PcmYdmxDTO pcmydmxdto) {
+        PcmYdmx domain = pcmydmxMapping.toDomain(pcmydmxdto);
+        domain.setPimpersonid(pimperson_id);
+        return ResponseEntity.status(HttpStatus.OK).body(pcmydmxService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydmxMapping.toDomain(#pcmydmxdtos),'ehr-PcmYdmx-Save')")
+    @ApiOperation(value = "根据人员信息批量保存异动明细", tags = {"异动明细" },  notes = "根据人员信息批量保存异动明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pcmydmxes/savebatch")
+    public ResponseEntity<Boolean> saveBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PcmYdmxDTO> pcmydmxdtos) {
+        List<PcmYdmx> domainlist=pcmydmxMapping.toDomain(pcmydmxdtos);
+        for(PcmYdmx domain:domainlist){
+             domain.setPimpersonid(pimperson_id);
+        }
+        pcmydmxService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdmx-FillPersonInfo-all')")
+    @ApiOperation(value = "根据人员信息异动明细", tags = {"异动明细" },  notes = "根据人员信息异动明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pcmydmxes/{pcmydmx_id}/fillpersoninfo")
+    @Transactional
+    public ResponseEntity<PcmYdmxDTO> fillPersonInfoByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pcmydmx_id") String pcmydmx_id, @RequestBody PcmYdmxDTO pcmydmxdto) {
+        PcmYdmx domain = pcmydmxMapping.toDomain(pcmydmxdto);
+        domain.setPimpersonid(pimperson_id);
+        domain = pcmydmxService.fillPersonInfo(domain) ;
+        pcmydmxdto = pcmydmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(pcmydmxdto);
+    }
+
+    @ApiOperation(value = "根据人员信息检查异动明细", tags = {"异动明细" },  notes = "根据人员信息检查异动明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/pcmydmxes/checkkey")
+    public ResponseEntity<Boolean> checkKeyByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PcmYdmxDTO pcmydmxdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(pcmydmxService.checkKey(pcmydmxMapping.toDomain(pcmydmxdto)));
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydmxService.get(#pcmydmx_id),'ehr-PcmYdmx-Remove')")
+    @ApiOperation(value = "根据人员信息删除异动明细", tags = {"异动明细" },  notes = "根据人员信息删除异动明细")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pcmydmxes/{pcmydmx_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pcmydmx_id") String pcmydmx_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(pcmydmxService.remove(pcmydmx_id));
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydmxService.getPcmydmxByIds(#ids),'ehr-PcmYdmx-Remove')")
+    @ApiOperation(value = "根据人员信息批量删除异动明细", tags = {"异动明细" },  notes = "根据人员信息批量删除异动明细")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/pcmydmxes/batch")
+    public ResponseEntity<Boolean> removeBatchByPimPerson(@RequestBody List<String> ids) {
+        pcmydmxService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydmxService.get(#pcmydmx_id),'ehr-PcmYdmx-Update')")
+    @ApiOperation(value = "根据人员信息更新异动明细", tags = {"异动明细" },  notes = "根据人员信息更新异动明细")
+	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pcmydmxes/{pcmydmx_id}")
+    @Transactional
+    public ResponseEntity<PcmYdmxDTO> updateByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pcmydmx_id") String pcmydmx_id, @RequestBody PcmYdmxDTO pcmydmxdto) {
+        PcmYdmx domain = pcmydmxMapping.toDomain(pcmydmxdto);
+        domain.setPimpersonid(pimperson_id);
+        domain.setPcmydmxid(pcmydmx_id);
+		pcmydmxService.update(domain);
+        PcmYdmxDTO dto = pcmydmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.pcmydmxService.getPcmydmxByEntities(this.pcmydmxMapping.toDomain(#pcmydmxdtos)),'ehr-PcmYdmx-Update')")
+    @ApiOperation(value = "根据人员信息批量更新异动明细", tags = {"异动明细" },  notes = "根据人员信息批量更新异动明细")
+	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/pcmydmxes/batch")
+    public ResponseEntity<Boolean> updateBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<PcmYdmxDTO> pcmydmxdtos) {
+        List<PcmYdmx> domainlist=pcmydmxMapping.toDomain(pcmydmxdtos);
+        for(PcmYdmx domain:domainlist){
+            domain.setPimpersonid(pimperson_id);
+        }
+        pcmydmxService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "根据人员信息获取异动明细草稿", tags = {"异动明细" },  notes = "根据人员信息获取异动明细草稿")
+    @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pcmydmxes/getdraft")
+    public ResponseEntity<PcmYdmxDTO> getDraftByPimPerson(@PathVariable("pimperson_id") String pimperson_id) {
+        PcmYdmx domain = new PcmYdmx();
+        domain.setPimpersonid(pimperson_id);
+        return ResponseEntity.status(HttpStatus.OK).body(pcmydmxMapping.toDto(pcmydmxService.getDraft(domain)));
+    }
+
+    @PostAuthorize("hasPermission(this.pcmydmxMapping.toDomain(returnObject.body),'ehr-PcmYdmx-Get')")
+    @ApiOperation(value = "根据人员信息获取异动明细", tags = {"异动明细" },  notes = "根据人员信息获取异动明细")
+	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/pcmydmxes/{pcmydmx_id}")
+    public ResponseEntity<PcmYdmxDTO> getByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("pcmydmx_id") String pcmydmx_id) {
+        PcmYdmx domain = pcmydmxService.get(pcmydmx_id);
+        PcmYdmxDTO dto = pcmydmxMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdmx-IndexDER-all')")
+	@ApiOperation(value = "根据人员信息获取IndexDER", tags = {"异动明细" } ,notes = "根据人员信息获取IndexDER")
+    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pcmydmxes/fetchindexder")
+	public ResponseEntity<List<PcmYdmxDTO>> fetchPcmYdmxIndexDERByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PcmYdmxSearchContext context) {
+        context.setN_pimpersonid_eq(pimperson_id);
+        Page<PcmYdmx> domains = pcmydmxService.searchIndexDER(context) ;
+        List<PcmYdmxDTO> list = pcmydmxMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdmx-IndexDER-all')")
+	@ApiOperation(value = "根据人员信息查询IndexDER", tags = {"异动明细" } ,notes = "根据人员信息查询IndexDER")
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pcmydmxes/searchindexder")
+	public ResponseEntity<Page<PcmYdmxDTO>> searchPcmYdmxIndexDERByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PcmYdmxSearchContext context) {
+        context.setN_pimpersonid_eq(pimperson_id);
+        Page<PcmYdmx> domains = pcmydmxService.searchIndexDER(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(pcmydmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdmx-Default-all')")
+	@ApiOperation(value = "根据人员信息获取DEFAULT", tags = {"异动明细" } ,notes = "根据人员信息获取DEFAULT")
+    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/pcmydmxes/fetchdefault")
+	public ResponseEntity<List<PcmYdmxDTO>> fetchPcmYdmxDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id,PcmYdmxSearchContext context) {
+        context.setN_pimpersonid_eq(pimperson_id);
+        Page<PcmYdmx> domains = pcmydmxService.searchDefault(context) ;
+        List<PcmYdmxDTO> list = pcmydmxMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PcmYdmx-Default-all')")
+	@ApiOperation(value = "根据人员信息查询DEFAULT", tags = {"异动明细" } ,notes = "根据人员信息查询DEFAULT")
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/pcmydmxes/searchdefault")
+	public ResponseEntity<Page<PcmYdmxDTO>> searchPcmYdmxDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody PcmYdmxSearchContext context) {
+        context.setN_pimpersonid_eq(pimperson_id);
+        Page<PcmYdmx> domains = pcmydmxService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(pcmydmxMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
 }
 

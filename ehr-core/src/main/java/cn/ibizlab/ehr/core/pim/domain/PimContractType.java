@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[合同类别]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMCONTRACTTYPE",resultMap = "PimContractTypeResultMap")
 public class PimContractType extends EntityMP implements Serializable {
 
@@ -135,6 +136,7 @@ public class PimContractType extends EntityMP implements Serializable {
         this.lx = lx ;
         this.modify("lx",lx);
     }
+
     /**
      * 设置 [合同类别代码]
      */
@@ -142,6 +144,7 @@ public class PimContractType extends EntityMP implements Serializable {
         this.sbm = sbm ;
         this.modify("sbm",sbm);
     }
+
     /**
      * 设置 [合同类别名称]
      */
@@ -149,6 +152,7 @@ public class PimContractType extends EntityMP implements Serializable {
         this.pimcontracttypename = pimcontracttypename ;
         this.modify("pimcontracttypename",pimcontracttypename);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -156,6 +160,7 @@ public class PimContractType extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

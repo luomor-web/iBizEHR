@@ -379,7 +379,6 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -409,7 +408,6 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -439,7 +437,6 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -468,7 +465,6 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -497,7 +493,6 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -521,6 +516,8 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
      * @memberof VACLEAVEMANAGEYGZZGridView
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
+        let localContext:any = null;
+        let localViewParam:any =null;
     this.$Notice.warning({ title: '错误', desc: '未指定关系视图' });
     }
 
@@ -536,6 +533,8 @@ export default class VACLEAVEMANAGEYGZZGridViewBase extends GridViewBase {
      * @memberof VACLEAVEMANAGEYGZZGridView
      */
     public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
+        let localContext:any = null;
+        let localViewParam:any =null;
     this.$Notice.warning({ title: '错误', desc: '未指定关系视图' });
     }
 

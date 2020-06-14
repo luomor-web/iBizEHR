@@ -14,31 +14,31 @@ export default {
 	views: {
 		mpickupview: {
 			caption: '区域标准维护',
-      title: '区域标准维护',
+      title: '区域标准维护数据多项选择视图',
 		},
 		pickupgridview: {
 			caption: '区域标准维护',
-      title: '区域标准维护',
+      title: '区域标准维护选择表格视图',
 		},
 		editview: {
 			caption: '区域标准维护',
-      title: '区域标准维护',
+      title: '区域标准维护编辑视图',
 		},
 		pickupview: {
 			caption: '区域标准维护',
-      title: '区域标准维护',
+      title: '区域标准维护数据选择视图',
 		},
 		editview2: {
 			caption: '区域标准维护',
-      title: '区域标准维护',
+      title: '区域标准维护编辑视图',
 		},
 		gridview: {
 			caption: '区域标准维护',
-      title: '区域标准维护',
+      title: '区域标准维护表格视图',
 		},
 		redirectview: {
 			caption: '区域标准维护',
-      title: '区域标准维护',
+      title: '区域标准维护数据重定向视图',
 		},
 	},
 	main_form: {

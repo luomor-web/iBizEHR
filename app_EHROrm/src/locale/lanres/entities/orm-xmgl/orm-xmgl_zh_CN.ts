@@ -27,7 +27,7 @@ export default {
 	views: {
 		editview: {
 			caption: 'ERP项目',
-      title: 'ERP项目',
+      title: 'ERP项目信息',
 		},
 		pickupview: {
 			caption: 'ERP项目库',
@@ -35,7 +35,7 @@ export default {
 		},
 		editview2: {
 			caption: '项目管理',
-      title: '项目管理',
+      title: '项目管理编辑视图',
 		},
 		mpickupview: {
 			caption: 'ERP项目库',
@@ -43,7 +43,7 @@ export default {
 		},
 		redirectview: {
 			caption: '项目管理',
-      title: '项目管理',
+      title: '项目管理数据重定向视图',
 		},
 		pickupgridview: {
 			caption: 'ERP项目库',
@@ -51,7 +51,7 @@ export default {
 		},
 		gridview: {
 			caption: 'ERP项目',
-      title: 'ERP项目',
+      title: 'ERP项目信息',
 		},
 	},
 	main_form: {

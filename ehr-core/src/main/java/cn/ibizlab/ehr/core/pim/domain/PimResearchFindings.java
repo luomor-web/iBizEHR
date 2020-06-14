@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[科研成果]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMRESEARCHFINDINGS",resultMap = "PimResearchFindingsResultMap")
 public class PimResearchFindings extends EntityMP implements Serializable {
 
@@ -206,6 +207,7 @@ public class PimResearchFindings extends EntityMP implements Serializable {
         this.jlglbh = jlglbh ;
         this.modify("jlglbh",jlglbh);
     }
+
     /**
      * 设置 [科研成果名称]
      */
@@ -213,6 +215,7 @@ public class PimResearchFindings extends EntityMP implements Serializable {
         this.pimresearchfindingsname = pimresearchfindingsname ;
         this.modify("pimresearchfindingsname",pimresearchfindingsname);
     }
+
     /**
      * 设置 [记录所属]
      */
@@ -220,6 +223,7 @@ public class PimResearchFindings extends EntityMP implements Serializable {
         this.jlss = jlss ;
         this.modify("jlss",jlss);
     }
+
     /**
      * 设置 [附件]
      */
@@ -227,6 +231,7 @@ public class PimResearchFindings extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [审批状态]
      */
@@ -234,12 +239,24 @@ public class PimResearchFindings extends EntityMP implements Serializable {
         this.jlspzt = jlspzt ;
         this.modify("jlspzt",jlspzt);
     }
+
     /**
      * 设置 [获取时间]
      */
     public void setHqsj(Timestamp hqsj){
         this.hqsj = hqsj ;
         this.modify("hqsj",hqsj);
+    }
+
+    /**
+     * 格式化日期 [获取时间]
+     */
+    public String formatHqsj(){
+        if (this.hqsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(hqsj);
     }
     /**
      * 设置 [拒绝原因]
@@ -248,6 +265,7 @@ public class PimResearchFindings extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [记录操作者]
      */
@@ -255,6 +273,7 @@ public class PimResearchFindings extends EntityMP implements Serializable {
         this.jlczz = jlczz ;
         this.modify("jlczz",jlczz);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -262,6 +281,7 @@ public class PimResearchFindings extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

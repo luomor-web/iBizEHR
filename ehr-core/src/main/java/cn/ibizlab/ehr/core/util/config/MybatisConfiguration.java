@@ -29,6 +29,7 @@ public class MybatisConfiguration {
         Properties p = new Properties();
         p.setProperty("Oracle", "oracle");
         p.setProperty("MySQL", "mysql");
+        p.setProperty("PostgreSQL", "postgresql");
         p.setProperty("DM", "oracle");//达梦数据库使用oracle模式
         p.setProperty("H2", "mysql");//根据当前运行的数据库设置h2对应的databaseid
         databaseIdProvider.setProperties(p);

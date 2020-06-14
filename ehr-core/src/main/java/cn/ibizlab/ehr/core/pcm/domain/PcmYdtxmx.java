@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[异动退休明细]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMYDTXMX",resultMap = "PcmYdtxmxResultMap")
 public class PcmYdtxmx extends EntityMP implements Serializable {
 
@@ -300,6 +301,7 @@ public class PcmYdtxmx extends EntityMP implements Serializable {
         this.retiplace = retiplace ;
         this.modify("retiplace",retiplace);
     }
+
     /**
      * 设置 [异动退休明细名称]
      */
@@ -307,6 +309,7 @@ public class PcmYdtxmx extends EntityMP implements Serializable {
         this.pcmydtxmxname = pcmydtxmxname ;
         this.modify("pcmydtxmxname",pcmydtxmxname);
     }
+
     /**
      * 设置 [异动病休明细名称]
      */
@@ -314,6 +317,7 @@ public class PcmYdtxmx extends EntityMP implements Serializable {
         this.pcmydbxmxname = pcmydbxmxname ;
         this.modify("pcmydbxmxname",pcmydbxmxname);
     }
+
     /**
      * 设置 [结束日期]
      */
@@ -321,6 +325,7 @@ public class PcmYdtxmx extends EntityMP implements Serializable {
         this.jsrq = jsrq ;
         this.modify("jsrq",jsrq);
     }
+
     /**
      * 设置 [异动病休明细标识]
      */
@@ -328,6 +333,7 @@ public class PcmYdtxmx extends EntityMP implements Serializable {
         this.pcmydbxmxid = pcmydbxmxid ;
         this.modify("pcmydbxmxid",pcmydbxmxid);
     }
+
     /**
      * 设置 [原因]
      */
@@ -335,6 +341,7 @@ public class PcmYdtxmx extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [备注]
      */
@@ -342,6 +349,7 @@ public class PcmYdtxmx extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
 
 }
 

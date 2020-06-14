@@ -13,19 +13,19 @@ export default {
 	views: {
 		pickupview: {
 			caption: "岗位（技能）证书",
-      title: '岗位（技能）证书',
+      title: '执业资格类别数据选择视图',
 		},
 		pickupgridview: {
 			caption: "岗位（技能）证书",
-      title: '岗位（技能）证书',
+      title: '执业资格类别选择表格视图',
 		},
 		gridview: {
 			caption: "岗位（技能）证书",
-      title: '岗位（技能）证书',
+      title: '岗位（技能）证书别表格视图',
 		},
 		editview: {
 			caption: "岗位（技能）证书",
-      title: '岗位（技能）证书',
+      title: '岗位（技能）证书编辑视图',
 		},
 	},
 	main_form: {

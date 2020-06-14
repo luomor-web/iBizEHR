@@ -8,100 +8,64 @@
     <row>
         <i-col v-show="detailsModel.ygbh.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='ygbh' :itemRules="this.rules.ygbh" class='' :caption="$t('entities.pimperson.jxsyeditform_form.details.ygbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygbh.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='ygbh'
-:value="data.ygbh"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='ygbh' :value="data.ygbh" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pimperson.jxsyeditform_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='pimpersonname'
-:value="data.pimpersonname"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='pimpersonname' :value="data.pimpersonname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.yglx.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='yglx' :itemRules="this.rules.yglx" class='' :caption="$t('entities.pimperson.jxsyeditform_form.details.yglx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yglx.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='yglx'
-:value="data.yglx" tag='EhrCodeList0167' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='yglx' :value="data.yglx" tag='EhrCodeList0167' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.zjlx.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='zjlx' :itemRules="this.rules.zjlx" class='' :caption="$t('entities.pimperson.jxsyeditform_form.details.zjlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zjlx.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='zjlx'
-:value="data.zjlx" tag='EhrCodeList0231' codelistType='DYNAMIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='zjlx' :value="data.zjlx" tag='EhrCodeList0231' codelistType='DYNAMIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.zjhm.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='zjhm' :itemRules="this.rules.zjhm" class='' :caption="$t('entities.pimperson.jxsyeditform_form.details.zjhm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zjhm.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='zjhm'
-:value="data.zjhm"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='zjhm' :value="data.zjhm" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.dbdwsj.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='dbdwsj' :itemRules="this.rules.dbdwsj" class='' :caption="$t('entities.pimperson.jxsyeditform_form.details.dbdwsj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dbdwsj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='dbdwsj'
-:value="data.dbdwsj"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='dbdwsj' :value="data.dbdwsj" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.duration.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='duration' :itemRules="this.rules.duration" class='' :caption="$t('entities.pimperson.jxsyeditform_form.details.duration')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.duration.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='duration'
-:value="data.duration"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='duration' :value="data.duration" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.jxdq.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='jxdq' :itemRules="this.rules.jxdq" class='' :caption="$t('entities.pimperson.jxsyeditform_form.details.jxdq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jxdq.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='jxdq'
-:value="data.jxdq"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='jxdq' :value="data.jxdq" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.sydq.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='sydq' :itemRules="this.rules.sydq" class='' :caption="$t('entities.pimperson.jxsyeditform_form.details.sydq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sydq.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='sydq'
-:value="data.sydq"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='sydq' :value="data.sydq" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>

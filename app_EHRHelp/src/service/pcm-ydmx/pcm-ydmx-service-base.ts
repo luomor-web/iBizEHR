@@ -49,6 +49,9 @@ export default class PcmYdmxServiceBase extends EntityService {
      * @memberof PcmYdmxServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmydmx){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmydmxes/${context.pcmydmx}/select`,isloading);
+        }
             return Http.getInstance().get(`/pcmydmxes/${context.pcmydmx}/select`,isloading);
     }
 
@@ -62,6 +65,15 @@ export default class PcmYdmxServiceBase extends EntityService {
      * @memberof PcmYdmxServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmydmxes`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -85,6 +97,9 @@ export default class PcmYdmxServiceBase extends EntityService {
      * @memberof PcmYdmxServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmydmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmydmxes/${context.pcmydmx}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/pcmydmxes/${context.pcmydmx}/save`,data,isloading);
@@ -116,6 +131,9 @@ export default class PcmYdmxServiceBase extends EntityService {
      * @memberof PcmYdmxServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmydmx){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/pcmydmxes/${context.pcmydmx}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/pcmydmxes/${context.pcmydmx}/checkkey`,data,isloading);
     }
 
@@ -129,6 +147,9 @@ export default class PcmYdmxServiceBase extends EntityService {
      * @memberof PcmYdmxServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmydmx){
+            return Http.getInstance().delete(`/pimpeople/${context.pimperson}/pcmydmxes/${context.pcmydmx}`,isloading);
+        }
             return Http.getInstance().delete(`/pcmydmxes/${context.pcmydmx}`,isloading);
 
     }
@@ -143,6 +164,9 @@ export default class PcmYdmxServiceBase extends EntityService {
      * @memberof PcmYdmxServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmydmx){
+            return Http.getInstance().put(`/pimpeople/${context.pimperson}/pcmydmxes/${context.pcmydmx}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/pcmydmxes/${context.pcmydmx}`,data,isloading);
@@ -159,6 +183,9 @@ export default class PcmYdmxServiceBase extends EntityService {
      * @memberof PcmYdmxServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmydmxes/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/pcmydmxes/getdraft`,isloading);
         res.data.pcmydmx = data.pcmydmx;
         return res;
@@ -174,6 +201,9 @@ export default class PcmYdmxServiceBase extends EntityService {
      * @memberof PcmYdmxServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.pcmydmx){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmydmxes/${context.pcmydmx}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/pcmydmxes/${context.pcmydmx}`,isloading);
             return res;
 
@@ -189,6 +219,10 @@ export default class PcmYdmxServiceBase extends EntityService {
      * @memberof PcmYdmxServiceBase
      */
     public async FetchIndexDER(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmydmxes/fetchindexder`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pcmydmxes/fetchindexder`,tempData,isloading);
     }
@@ -203,6 +237,10 @@ export default class PcmYdmxServiceBase extends EntityService {
      * @memberof PcmYdmxServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/pcmydmxes/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/pcmydmxes/fetchdefault`,tempData,isloading);
     }

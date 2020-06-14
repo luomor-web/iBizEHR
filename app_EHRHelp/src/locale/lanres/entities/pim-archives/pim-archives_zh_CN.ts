@@ -57,15 +57,15 @@ export default {
 	views: {
 		grpimdangagridview: {
 			caption: '档案信息',
-      title: '档案信息',
+      title: '档案信息表格视图',
 		},
 		greditview: {
 			caption: '档案信息',
-      title: '档案信息',
+      title: '档案信息编辑视图',
 		},
 		editview: {
 			caption: '档案信息',
-      title: '档案信息',
+      title: '档案信息编辑视图',
 		},
 	},
 	main_form: {

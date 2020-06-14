@@ -268,7 +268,6 @@ export default class PcmYdlzmxCKEditViewBase extends EditViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.form;
         if (xData.getDatas && xData.getDatas instanceof Function) {

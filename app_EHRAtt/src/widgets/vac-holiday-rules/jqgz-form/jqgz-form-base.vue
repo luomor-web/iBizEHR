@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.vacholidayrules.jqgz_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormorgname.disabled"
   name='ormorgname'
   deMajorField='orgname'
@@ -33,12 +35,14 @@
 </i-col>
 <i-col v-show="detailsModel.nd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='nd' :itemRules="this.rules.nd" class='' :caption="$t('entities.vacholidayrules.jqgz_form.details.nd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.nd" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.nd.disabled"  
     tag='EhrCodeList0115' 
     codelistType='STATIC'
@@ -75,14 +79,16 @@
 </i-col>
 <i-col v-show="detailsModel.sfqy.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfqy' :itemRules="this.rules.sfqy" class='' :caption="$t('entities.vacholidayrules.jqgz_form.details.sfqy')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfqy.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.sfqy"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.sfqy.disabled"  
   name="sfqy" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0054' 
   codelistType='STATIC' 
   style="">

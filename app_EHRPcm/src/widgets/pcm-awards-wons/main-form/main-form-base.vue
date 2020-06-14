@@ -20,12 +20,14 @@
 </i-col>
 <i-col v-show="detailsModel.awardlevel.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='awardlevel' :itemRules="this.rules.awardlevel" class='' :caption="$t('entities.pcmawardswons.main_form.details.awardlevel')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.awardlevel.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.awardlevel" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.awardlevel.disabled"  
     tag='EhrCodeList0152' 
     codelistType='STATIC'

@@ -38,11 +38,11 @@ export default {
 	views: {
 		greditview: {
 			caption: "家庭情况",
-      title: '家庭情况',
+      title: '家庭情况编辑视图',
 		},
 		grpimfimgridview: {
 			caption: "家庭情况",
-      title: '家庭情况',
+      title: '家庭情况表格视图',
 		},
 	},
 	main_2_form: {

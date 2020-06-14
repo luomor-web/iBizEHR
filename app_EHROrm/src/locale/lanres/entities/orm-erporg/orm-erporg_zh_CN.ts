@@ -32,11 +32,11 @@ export default {
 	views: {
 		editview2: {
 			caption: 'ERP组织中间表',
-      title: 'ERP组织中间表',
+      title: 'ERP组织中间表编辑视图',
 		},
 		redirectview: {
 			caption: 'ERP组织中间表',
-      title: 'ERP组织中间表',
+      title: 'ERP组织中间表数据重定向视图',
 		},
 		pickupview: {
 			caption: 'ERP组织库',
@@ -48,7 +48,7 @@ export default {
 		},
 		editview: {
 			caption: 'ERP组织中间表',
-      title: 'ERP组织中间表',
+      title: 'ERP组织中间表编辑视图',
 		},
 		legalpickupview: {
 			caption: '管理单位',
@@ -64,7 +64,7 @@ export default {
 		},
 		mpickupview: {
 			caption: 'ERP组织中间表',
-      title: 'ERP组织中间表',
+      title: 'ERP组织中间表数据多项选择视图',
 		},
 		legalpickupgridview: {
 			caption: '管理单位',

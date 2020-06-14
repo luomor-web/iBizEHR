@@ -32,14 +32,16 @@
 </i-col>
 <i-col v-show="detailsModel.gwtype.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
     <app-form-item name='gwtype' :itemRules="this.rules.gwtype" class='' :caption="$t('entities.pimqualmajor.main_form.details.gwtype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gwtype.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-mpicker
+    
+<app-mpicker
     :activeData="data"
     :disabled="detailsModel.gwtype.disabled"
     :curvalue="data.gwtype"
     name="gwtype"
     :context="context"
     :viewparams="viewparams"
-    :itemParam='{ }' 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :service="service"
     :acParams="{ }"
     :pickupView="{ viewname: 'pimgwtypempickup-view', title: $t('entities.pimgwtype.views.mpickupview.title'), deResParameters: [], parameters: [{ pathName: 'pimgwtypes', parameterName: 'pimgwtype' }, { pathName: 'mpickupview', parameterName: 'mpickupview' } ], placement:'' }"

@@ -31,35 +31,35 @@ public class OrmBmkqdzSearchContext extends QueryWrapperContext<OrmBmkqdz> {
 	public void setN_ormbmkqdzname_like(String n_ormbmkqdzname_like) {
         this.n_ormbmkqdzname_like = n_ormbmkqdzname_like;
         if(!ObjectUtils.isEmpty(this.n_ormbmkqdzname_like)){
-            this.getSelectCond().like("ormbmkqdzname", n_ormbmkqdzname_like);
+            this.getSearchCond().like("ormbmkqdzname", n_ormbmkqdzname_like);
         }
     }
 	private String n_sfmrkqdz_eq;//[默认考勤地址]
 	public void setN_sfmrkqdz_eq(String n_sfmrkqdz_eq) {
         this.n_sfmrkqdz_eq = n_sfmrkqdz_eq;
         if(!ObjectUtils.isEmpty(this.n_sfmrkqdz_eq)){
-            this.getSelectCond().eq("sfmrkqdz", n_sfmrkqdz_eq);
+            this.getSearchCond().eq("sfmrkqdz", n_sfmrkqdz_eq);
         }
     }
 	private String n_ormorgsectorname_eq;//[部门名称]
 	public void setN_ormorgsectorname_eq(String n_ormorgsectorname_eq) {
         this.n_ormorgsectorname_eq = n_ormorgsectorname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgsectorname_eq)){
-            this.getSelectCond().eq("ormorgsectorname", n_ormorgsectorname_eq);
+            this.getSearchCond().eq("ormorgsectorname", n_ormorgsectorname_eq);
         }
     }
 	private String n_ormorgsectorname_like;//[部门名称]
 	public void setN_ormorgsectorname_like(String n_ormorgsectorname_like) {
         this.n_ormorgsectorname_like = n_ormorgsectorname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgsectorname_like)){
-            this.getSelectCond().like("ormorgsectorname", n_ormorgsectorname_like);
+            this.getSearchCond().like("ormorgsectorname", n_ormorgsectorname_like);
         }
     }
 	private String n_ormorgsectorid_eq;//[部门ID]
 	public void setN_ormorgsectorid_eq(String n_ormorgsectorid_eq) {
         this.n_ormorgsectorid_eq = n_ormorgsectorid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgsectorid_eq)){
-            this.getSelectCond().eq("ormorgsectorid", n_ormorgsectorid_eq);
+            this.getSearchCond().eq("ormorgsectorid", n_ormorgsectorid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class OrmBmkqdzSearchContext extends QueryWrapperContext<OrmBmkqdz> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("ormbmkqdzname", query)   
             );
 		 }

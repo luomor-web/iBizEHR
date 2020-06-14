@@ -61,11 +61,11 @@ export default {
 	views: {
 		grpimziggridview: {
 			caption: "证书信息",
-      title: '证书信息',
+      title: '证书信息表格视图',
 		},
 		greditview: {
 			caption: "证书信息",
-      title: '证书信息',
+      title: '证书信息编辑视图',
 		},
 	},
 	main_2_form: {

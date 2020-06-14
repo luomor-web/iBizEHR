@@ -30,7 +30,7 @@ export default {
 		},
 		redirectview: {
 			caption: '组织信息',
-      title: '组织信息',
+      title: '组织信息数据重定向视图',
 		},
 		subsuborggridview: {
 			caption: '组织管理',
@@ -38,7 +38,7 @@ export default {
 		},
 		pickupview: {
 			caption: '组织信息',
-      title: '组织信息',
+      title: '组织信息数据选择视图',
 		},
 		orgtreegridview: {
 			caption: '组织管理',
@@ -46,11 +46,11 @@ export default {
 		},
 		pickupgridview: {
 			caption: '组织信息',
-      title: '组织信息',
+      title: '组织信息选择表格视图',
 		},
 		editview2: {
 			caption: '组织信息',
-      title: '组织信息',
+      title: '组织信息编辑视图',
 		},
 		editview: {
 			caption: '组织管理',
@@ -62,7 +62,7 @@ export default {
 		},
 		mpickupview: {
 			caption: '组织信息',
-      title: '组织信息',
+      title: '组织信息数据多项选择视图',
 		},
 		orgtreeexpview: {
 			caption: '组织管理',

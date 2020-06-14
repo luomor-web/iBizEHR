@@ -127,7 +127,7 @@ export default {
 	views: {
 		gzjryeditview: {
 			caption: '应聘者基本信息',
-      title: '应聘者基本信息',
+      title: '挂职进人员信息',
 		},
 	},
 	csrc_gzj_form: {

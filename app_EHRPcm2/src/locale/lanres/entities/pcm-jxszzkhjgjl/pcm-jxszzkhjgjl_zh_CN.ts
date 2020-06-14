@@ -16,11 +16,11 @@ export default {
 	views: {
 		pickupgridview: {
 			caption: '见习生员工转正考核结果记录',
-      title: '见习生员工转正考核结果记录',
+      title: '见习生员工转正考核结果记录选择表格视图',
 		},
 		pickupview: {
 			caption: '见习生员工转正考核结果记录',
-      title: '见习生员工转正考核结果记录',
+      title: '见习生员工转正考核结果记录数据选择视图',
 		},
 	},
 	main_grid: {

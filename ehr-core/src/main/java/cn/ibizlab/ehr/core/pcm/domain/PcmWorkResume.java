@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[工作履历]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMWORKRESUME",resultMap = "PcmWorkResumeResultMap")
 public class PcmWorkResume extends EntityMP implements Serializable {
 
@@ -177,12 +178,24 @@ public class PcmWorkResume extends EntityMP implements Serializable {
         this.workunit = workunit ;
         this.modify("workunit",workunit);
     }
+
     /**
      * 设置 [任职结束时间]
      */
     public void setServeendtime(Timestamp serveendtime){
         this.serveendtime = serveendtime ;
         this.modify("serveendtime",serveendtime);
+    }
+
+    /**
+     * 格式化日期 [任职结束时间]
+     */
+    public String formatServeendtime(){
+        if (this.serveendtime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(serveendtime);
     }
     /**
      * 设置 [履历说明]
@@ -191,6 +204,7 @@ public class PcmWorkResume extends EntityMP implements Serializable {
         this.resumecontent = resumecontent ;
         this.modify("resumecontent",resumecontent);
     }
+
     /**
      * 设置 [职务]
      */
@@ -198,6 +212,7 @@ public class PcmWorkResume extends EntityMP implements Serializable {
         this.zw = zw ;
         this.modify("zw",zw);
     }
+
     /**
      * 设置 [岗位]
      */
@@ -205,6 +220,7 @@ public class PcmWorkResume extends EntityMP implements Serializable {
         this.gw = gw ;
         this.modify("gw",gw);
     }
+
     /**
      * 设置 [部门]
      */
@@ -212,6 +228,7 @@ public class PcmWorkResume extends EntityMP implements Serializable {
         this.bm = bm ;
         this.modify("bm",bm);
     }
+
     /**
      * 设置 [工作履历名称]
      */
@@ -219,12 +236,24 @@ public class PcmWorkResume extends EntityMP implements Serializable {
         this.pcmworkresumename = pcmworkresumename ;
         this.modify("pcmworkresumename",pcmworkresumename);
     }
+
     /**
      * 设置 [任职开始时间]
      */
     public void setServebegintime(Timestamp servebegintime){
         this.servebegintime = servebegintime ;
         this.modify("servebegintime",servebegintime);
+    }
+
+    /**
+     * 格式化日期 [任职开始时间]
+     */
+    public String formatServebegintime(){
+        if (this.servebegintime == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(servebegintime);
     }
     /**
      * 设置 [应聘者ID]
@@ -233,6 +262,7 @@ public class PcmWorkResume extends EntityMP implements Serializable {
         this.pcmprofileid = pcmprofileid ;
         this.modify("pcmprofileid",pcmprofileid);
     }
+
 
 }
 

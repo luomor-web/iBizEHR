@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[异动内退明细]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMYDNTMX",resultMap = "PcmYdntmxResultMap")
 public class PcmYdntmx extends EntityMP implements Serializable {
 
@@ -288,6 +289,7 @@ public class PcmYdntmx extends EntityMP implements Serializable {
         this.distirbutionid = distirbutionid ;
         this.modify("distirbutionid",distirbutionid);
     }
+
     /**
      * 设置 [异动内退明细名称]
      */
@@ -295,12 +297,24 @@ public class PcmYdntmx extends EntityMP implements Serializable {
         this.pcmydntmxname = pcmydntmxname ;
         this.modify("pcmydntmxname",pcmydntmxname);
     }
+
     /**
      * 设置 [内退结束日期]
      */
     public void setJsrq(Timestamp jsrq){
         this.jsrq = jsrq ;
         this.modify("jsrq",jsrq);
+    }
+
+    /**
+     * 格式化日期 [内退结束日期]
+     */
+    public String formatJsrq(){
+        if (this.jsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(jsrq);
     }
     /**
      * 设置 [备注]
@@ -309,6 +323,7 @@ public class PcmYdntmx extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [操作]
      */
@@ -316,6 +331,7 @@ public class PcmYdntmx extends EntityMP implements Serializable {
         this.cz = cz ;
         this.modify("cz",cz);
     }
+
     /**
      * 设置 [内退原因]
      */
@@ -323,6 +339,7 @@ public class PcmYdntmx extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [是否完成]
      */
@@ -330,6 +347,7 @@ public class PcmYdntmx extends EntityMP implements Serializable {
         this.isfinished = isfinished ;
         this.modify("isfinished",isfinished);
     }
+
 
 }
 

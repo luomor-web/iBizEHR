@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[考勤记录(中间表)]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_ATTENDANCERECORDTEMP",resultMap = "AttEndanceRecordTempResultMap")
 public class AttEndanceRecordTemp extends EntityMP implements Serializable {
 
@@ -296,12 +297,24 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.kqlx = kqlx ;
         this.modify("kqlx",kqlx);
     }
+
     /**
      * 设置 [下班打卡时间]
      */
     public void setDksjqt(Timestamp dksjqt){
         this.dksjqt = dksjqt ;
         this.modify("dksjqt",dksjqt);
+    }
+
+    /**
+     * 格式化日期 [下班打卡时间]
+     */
+    public String formatDksjqt(){
+        if (this.dksjqt == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(dksjqt);
     }
     /**
      * 设置 [早退（分）]
@@ -310,6 +323,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.ztf = ztf ;
         this.modify("ztf",ztf);
     }
+
     /**
      * 设置 [迟到（分）]
      */
@@ -317,12 +331,24 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.cdf = cdf ;
         this.modify("cdf",cdf);
     }
+
     /**
      * 设置 [上班时间]
      */
     public void setSbsj(Timestamp sbsj){
         this.sbsj = sbsj ;
         this.modify("sbsj",sbsj);
+    }
+
+    /**
+     * 格式化日期 [上班时间]
+     */
+    public String formatSbsj(){
+        if (this.sbsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        return sdf.format(sbsj);
     }
     /**
      * 设置 [部门地址维护标识]
@@ -331,6 +357,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.ormbmkqdzid = ormbmkqdzid ;
         this.modify("ormbmkqdzid",ormbmkqdzid);
     }
+
     /**
      * 设置 [月份]
      */
@@ -338,12 +365,24 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.yf = yf ;
         this.modify("yf",yf);
     }
+
     /**
      * 设置 [下班时间]
      */
     public void setXbsj(Timestamp xbsj){
         this.xbsj = xbsj ;
         this.modify("xbsj",xbsj);
+    }
+
+    /**
+     * 格式化日期 [下班时间]
+     */
+    public String formatXbsj(){
+        if (this.xbsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        return sdf.format(xbsj);
     }
     /**
      * 设置 [日]
@@ -352,6 +391,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.day = day ;
         this.modify("day",day);
     }
+
     /**
      * 设置 [考勤记录(中间表)名称]
      */
@@ -359,6 +399,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.attendancerecordtempname = attendancerecordtempname ;
         this.modify("attendancerecordtempname",attendancerecordtempname);
     }
+
     /**
      * 设置 [是否周末]
      */
@@ -366,6 +407,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.isweekend = isweekend ;
         this.modify("isweekend",isweekend);
     }
+
     /**
      * 设置 [下班卡是否外勤]
      */
@@ -373,12 +415,24 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.isoutleave = isoutleave ;
         this.modify("isoutleave",isoutleave);
     }
+
     /**
      * 设置 [上班打卡时间]
      */
     public void setDksjqd(Timestamp dksjqd){
         this.dksjqd = dksjqd ;
         this.modify("dksjqd",dksjqd);
+    }
+
+    /**
+     * 格式化日期 [上班打卡时间]
+     */
+    public String formatDksjqd(){
+        if (this.dksjqd == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(dksjqd);
     }
     /**
      * 设置 [上班卡是否外勤]
@@ -387,6 +441,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.isoutoffice = isoutoffice ;
         this.modify("isoutoffice",isoutoffice);
     }
+
     /**
      * 设置 [人事核对]
      */
@@ -394,12 +449,24 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.rshd = rshd ;
         this.modify("rshd",rshd);
     }
+
     /**
      * 设置 [考勤日期]
      */
     public void setKqrq(Timestamp kqrq){
         this.kqrq = kqrq ;
         this.modify("kqrq",kqrq);
+    }
+
+    /**
+     * 格式化日期 [考勤日期]
+     */
+    public String formatKqrq(){
+        if (this.kqrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(kqrq);
     }
     /**
      * 设置 [年度]
@@ -408,6 +475,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [员工姓名]
      */
@@ -415,6 +483,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.pimpersonname = pimpersonname ;
         this.modify("pimpersonname",pimpersonname);
     }
+
     /**
      * 设置 [员工编号]
      */
@@ -422,6 +491,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -429,6 +499,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -436,6 +507,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -443,6 +515,7 @@ public class AttEndanceRecordTemp extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
 
 }
 

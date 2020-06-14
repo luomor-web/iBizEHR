@@ -76,7 +76,7 @@ export default {
 	views: {
 		pickupgridview: {
 			caption: "部门管理",
-      title: '部门管理',
+      title: '部门管理选择表格视图',
 		},
 		fpxxpickupgridview: {
 			caption: "部门选择",
@@ -84,7 +84,7 @@ export default {
 		},
 		pickupview: {
 			caption: "部门管理",
-      title: '部门管理',
+      title: '部门管理数据选择视图',
 		},
 		ydbmpickupview: {
 			caption: "部门选择",

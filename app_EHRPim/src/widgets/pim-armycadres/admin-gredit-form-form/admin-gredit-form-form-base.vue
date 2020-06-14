@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.trooptype.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='trooptype' :itemRules="this.rules.trooptype" class='' :caption="$t('entities.pimarmycadres.admin_greditform_form.details.trooptype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.trooptype.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.trooptype" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.trooptype.disabled"  
     tag='EhrCodeList0035' 
     codelistType='DYNAMIC'
@@ -24,12 +26,14 @@
 </i-col>
 <i-col v-show="detailsModel.leveltype.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='leveltype' :itemRules="this.rules.leveltype" class='' :caption="$t('entities.pimarmycadres.admin_greditform_form.details.leveltype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.leveltype.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.leveltype" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.leveltype.disabled"  
     tag='EhrCodeList0198' 
     codelistType='DYNAMIC'

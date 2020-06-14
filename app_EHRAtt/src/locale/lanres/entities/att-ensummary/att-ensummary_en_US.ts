@@ -71,7 +71,7 @@ export default {
 		},
 		kqhztreeexpview: {
 			caption: "考勤汇总",
-      title: '考勤汇总',
+      title: '考勤汇总树导航视图',
 		},
 	},
 	main_grid: {

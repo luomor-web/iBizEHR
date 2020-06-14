@@ -1,20 +1,10 @@
 /***    BRGIN:默认蓝色主题    ***/
 .app_theme_blue {
-  > header {
-      background-color: #2d5f8b;
-      color: #6ba1d1;
+    > .ivu-layout-has-sider > .ivu-layout > header{
       .app-theme-icon {
           color: #6ba1d1;
       }
-      .page-logo {
-          color: #fff;
-      }
-      .header-right {
-          > div:hover {
-              background: #3774aa;
-          }
-      }
-      .el-menu.el-menu--horizontal {
+      /* .el-menu.el-menu--horizontal {
           > .el-menu-item, > .el-submenu > .el-submenu__title {
               background: #2d5f8b;
               color: #6ba1d1;
@@ -36,40 +26,41 @@
                   color: #f1f1f1;
               }
           }
-      }
+      } */
   }
+  
   > .ivu-layout {
-      > .ivu-layout-sider {
-          background-color: #4276a4;
-          .sider-top {
-              .ivu-icon {
-                  background: #2d5f8b;
-                  color: #6ba1d1;
-              }
-          }
-          .app-menu {
-              > .el-menu-item.is-active, > .el-submenu.is-active > .el-submenu__title {
-                  border-left: 4px solid #d64635;
-              }
-          }
+    > .ivu-layout-sider {
+        background-color: #4276a4;
+        .sider-top {
+          color: hsla(0,0%,100%,.8);
+          background: #2d5f8b;
       }
+    }
   }
   > .el-menu , > .ivu-layout > .ivu-layout-sider .app-app-menu > .app-menu {
       background: #4276a4;
-      .el-menu-item:hover, .el-menu-item.is-active {
+      .el-menu-item:hover, .el-menu-item:hover {
           background: #3c6c95 !important;
           color: #f1f1f1 !important;
           i {
               color: #f1f1f1;
           }
       }
+      .el-submenu_title:hover{
+        color: #f1f1f1 !important;
+        i {
+            color: #f1f1f1;
+        }
+      }
+      
+      .el-menu-item.is-active{
+        border-left: 4px solid #d64635;
+        background: #3c6c95 !important;
+      }
       .el-submenu.is-opened, .el-submenu:hover, .el-submenu.is-active {
           > .el-submenu__title {
-              background: #3c6c95 !important;
-              color: #f1f1f1 !important;
-              i {
-                  color: #f1f1f1;
-              }
+              background: #4276a4;
           }
       }
       .el-submenu__title, .el-menu-item {
@@ -78,9 +69,16 @@
               color: #c9dff5;
           }
       }
+      .el-submenu__title:hover{
+        color: #f1f1f1 !important;
+        i {
+            color: #f1f1f1;
+        }
+      }
       .el-menu-item {
           border-top: 1px solid #4276a4;
           background: #4276a4;
+          border-left: 4px solid transparent;
       }
       .el-submenu {
           border-top: 1px solid #4276a4;
@@ -96,6 +94,12 @@
   }
   .ivu-menu-submenu-title{
       color: #f5f5f5;
+  }
+  .sider-top{
+    color:#fff;
+  }
+  div.ivu-divider{
+    background-color: #c9dff5;
   }
 }
 /***    END:默认蓝色主题   ***/

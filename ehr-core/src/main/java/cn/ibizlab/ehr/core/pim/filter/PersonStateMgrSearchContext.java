@@ -31,7 +31,7 @@ public class PersonStateMgrSearchContext extends QueryWrapperContext<PersonState
 	public void setN_personstatemgrname_like(String n_personstatemgrname_like) {
         this.n_personstatemgrname_like = n_personstatemgrname_like;
         if(!ObjectUtils.isEmpty(this.n_personstatemgrname_like)){
-            this.getSelectCond().like("personstatemgrname", n_personstatemgrname_like);
+            this.getSearchCond().like("personstatemgrname", n_personstatemgrname_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class PersonStateMgrSearchContext extends QueryWrapperContext<PersonState
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("personstatemgrname", query)   
             );
 		 }

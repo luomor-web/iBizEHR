@@ -6,12 +6,14 @@
       <row>
                     <i-col v-show="detailsModel.n_qjzl_eq.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
               <app-form-item name='n_qjzl_eq' :itemRules="this.rules.n_qjzl_eq" class='' :caption="$t('entities.vacleavedetail.default_searchform.details.n_qjzl_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_qjzl_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_qjzl_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_qjzl_eq.disabled"  
               tag='EhrCodeList0013' 
               codelistType='DYNAMIC'

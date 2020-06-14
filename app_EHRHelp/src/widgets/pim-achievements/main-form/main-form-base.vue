@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.pimachievementsname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimachievementsname' :itemRules="this.rules.pimachievementsname" class='' :caption="$t('entities.pimachievements.main_form.details.pimachievementsname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimachievementsname.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.pimachievementsname" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.pimachievementsname.disabled"  
     tag='EhrCodeList0115' 
     codelistType='STATIC'
@@ -24,12 +26,14 @@
 </i-col>
 <i-col v-show="detailsModel.khlx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='khlx' :itemRules="this.rules.khlx" class='' :caption="$t('entities.pimachievements.main_form.details.khlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.khlx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.khlx" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.khlx.disabled"  
     tag='EhrCodeList0092' 
     codelistType='STATIC'
@@ -40,12 +44,14 @@
 </i-col>
 <i-col v-show="detailsModel.jd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='jd' :itemRules="this.rules.jd" class='' :caption="$t('entities.pimachievements.main_form.details.jd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.jd" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.jd.disabled"  
     tag='EhrCodeList0177' 
     codelistType='STATIC'
@@ -56,12 +62,14 @@
 </i-col>
 <i-col v-show="detailsModel.yd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='yd' :itemRules="this.rules.yd" class='' :caption="$t('entities.pimachievements.main_form.details.yd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.yd" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.yd.disabled"  
     tag='CodeList82' 
     codelistType='STATIC'
@@ -78,12 +86,14 @@
 </i-col>
 <i-col v-show="detailsModel.khjl.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='khjl' :itemRules="this.rules.khjl" class='' :caption="$t('entities.pimachievements.main_form.details.khjl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.khjl.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.khjl" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.khjl.disabled"  
     tag='EhrCodeList0142' 
     codelistType='DYNAMIC'

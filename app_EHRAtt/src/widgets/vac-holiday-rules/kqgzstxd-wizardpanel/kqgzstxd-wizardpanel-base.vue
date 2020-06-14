@@ -246,6 +246,7 @@ export default class KQGZSTXDBase extends Vue implements ControlInterface {
         }
     }
 
+
     /**
      * 部件行为--init
      *

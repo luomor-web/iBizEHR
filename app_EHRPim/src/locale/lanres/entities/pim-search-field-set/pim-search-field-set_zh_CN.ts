@@ -25,7 +25,7 @@ export default {
 	views: {
 		editview2: {
 			caption: '组合查询条件设置',
-      title: '组合查询条件设置',
+      title: '组合查询条件设置编辑视图',
 		},
 		complexsearchcustomview: {
 			caption: '组合查询',
@@ -33,15 +33,15 @@ export default {
 		},
 		pickupview: {
 			caption: '组合查询条件设置',
-      title: '组合查询条件设置',
+      title: '组合查询条件设置数据选择视图',
 		},
 		usr2gridview: {
 			caption: '组合查询条件设置',
-      title: '组合查询条件设置',
+      title: '组合查询条件设置表格视图',
 		},
 		gridview: {
 			caption: '组合查询条件设置',
-      title: '组合查询条件设置',
+      title: '组合查询条件设置表格视图',
 		},
 		complexsearchresultcustomview: {
 			caption: '查询结果',
@@ -49,23 +49,23 @@ export default {
 		},
 		redirectview: {
 			caption: '组合查询条件设置',
-      title: '组合查询条件设置',
+      title: '组合查询条件设置数据重定向视图',
 		},
 		dictionarymgrgridview: {
 			caption: '组合查询条件设置',
-      title: '组合查询条件设置',
+      title: '属性字典管理',
 		},
 		pickupgridview: {
 			caption: '组合查询条件设置',
-      title: '组合查询条件设置',
+      title: '组合查询条件设置选择表格视图',
 		},
 		mpickupview: {
 			caption: '组合查询条件设置',
-      title: '组合查询条件设置',
+      title: '组合查询条件设置数据多项选择视图',
 		},
 		editview: {
 			caption: '组合查询条件设置',
-      title: '组合查询条件设置',
+      title: '组合查询条件设置编辑视图',
 		},
 	},
 	main_form: {

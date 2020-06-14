@@ -323,7 +323,6 @@ export default class JPGLBase extends Vue implements ControlInterface {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this;
         if (_this.getDatas && _this.getDatas instanceof Function) {
@@ -1529,6 +1528,7 @@ export default class JPGLBase extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        $event.stopPropagation();
         if(Object.is('JPWC', tag)) {
             this.grid_uagridcolumn1_u8c6b96c_click(row, tag, $event);
         }
@@ -1655,6 +1655,14 @@ export default class JPGLBase extends Vue implements ControlInterface {
             return Object.is(item.pcmydjpmx,args.row.pcmydjpmx);
         });
         return isSelected ? "grid-selected-row" : "";
+    }
+
+    /**
+     * 新建默认值
+     * @param {*}  row 行数据
+     * @memberof JPGL
+     */
+    public createDefault(row: any){                    
     }
 }
 </script>

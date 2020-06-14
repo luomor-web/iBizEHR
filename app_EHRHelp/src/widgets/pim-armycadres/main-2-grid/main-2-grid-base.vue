@@ -1350,6 +1350,7 @@ export default class Main_2Base extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        $event.stopPropagation();
     }
 
     /**
@@ -1473,6 +1474,20 @@ export default class Main_2Base extends Vue implements ControlInterface {
             return Object.is(item.pimarmycadres,args.row.pimarmycadres);
         });
         return isSelected ? "grid-selected-row" : "";
+    }
+
+    /**
+     * 新建默认值
+     * @param {*}  row 行数据
+     * @memberof Main_2
+     */
+    public createDefault(row: any){                    
+        if (row.hasOwnProperty('pimpersonid')) {
+            row['pimpersonid'] = this.viewparams['srfparentkey'];
+        }
+        if (row.hasOwnProperty('jlss')) {
+            row['jlss'] = '20';
+        }
     }
 }
 </script>

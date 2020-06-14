@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[执业资格津贴标准]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_SALSTDZYZG",resultMap = "SalStdzyzgResultMap")
 public class SalStdzyzg extends EntityMP implements Serializable {
 
@@ -149,6 +150,7 @@ public class SalStdzyzg extends EntityMP implements Serializable {
         this.salstdzyzgname = salstdzyzgname ;
         this.modify("salstdzyzgname",salstdzyzgname);
     }
+
     /**
      * 设置 [补贴标准]
      */
@@ -156,6 +158,7 @@ public class SalStdzyzg extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [专业分类]
      */
@@ -163,6 +166,7 @@ public class SalStdzyzg extends EntityMP implements Serializable {
         this.zyfl = zyfl ;
         this.modify("zyfl",zyfl);
     }
+
     /**
      * 设置 [级别分类]
      */
@@ -170,6 +174,7 @@ public class SalStdzyzg extends EntityMP implements Serializable {
         this.jbfl = jbfl ;
         this.modify("jbfl",jbfl);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -177,6 +182,7 @@ public class SalStdzyzg extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

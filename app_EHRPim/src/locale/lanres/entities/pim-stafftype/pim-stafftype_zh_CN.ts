@@ -13,39 +13,39 @@ export default {
 	views: {
 		editview: {
 			caption: '员工类型',
-      title: '员工类型',
+      title: '员工类型编辑视图',
 		},
 		editview2: {
 			caption: '员工类型管理',
-      title: '员工类型管理',
+      title: '员工类型管理编辑视图',
 		},
 		gridview: {
 			caption: '员工类型',
-      title: '员工类型',
+      title: '员工类型表格视图',
 		},
 		pickupgridview: {
 			caption: '员工类型管理',
-      title: '员工类型管理',
+      title: '员工类型管理选择表格视图',
 		},
 		pickupview: {
 			caption: '员工类型管理',
-      title: '员工类型管理',
+      title: '员工类型管理数据选择视图',
 		},
 		mpickupview: {
 			caption: '员工类型管理',
-      title: '员工类型管理',
+      title: '员工类型管理数据多项选择视图',
 		},
 		selgridview: {
 			caption: '员工类型',
-      title: '员工类型',
+      title: '员工类型表格视图',
 		},
 		seleditview: {
 			caption: '员工类型',
-      title: '员工类型',
+      title: '员工类型编辑视图',
 		},
 		redirectview: {
 			caption: '员工类型管理',
-      title: '员工类型管理',
+      title: '员工类型管理数据重定向视图',
 		},
 	},
 	main_form: {

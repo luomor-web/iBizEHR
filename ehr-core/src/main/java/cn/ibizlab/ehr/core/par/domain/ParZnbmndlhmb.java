@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[年度量化目标（职能部门级）]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PARZNBMNDLHMB",resultMap = "ParZnbmndlhmbResultMap")
 public class ParZnbmndlhmb extends EntityMP implements Serializable {
 
@@ -168,6 +169,7 @@ public class ParZnbmndlhmb extends EntityMP implements Serializable {
         this.sstz = sstz ;
         this.modify("sstz",sstz);
     }
+
     /**
      * 设置 [年度]
      */
@@ -175,6 +177,7 @@ public class ParZnbmndlhmb extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [年度量化目标（职能部门级）名称]
      */
@@ -182,6 +185,7 @@ public class ParZnbmndlhmb extends EntityMP implements Serializable {
         this.parznbmndlhmbname = parznbmndlhmbname ;
         this.modify("parznbmndlhmbname",parznbmndlhmbname);
     }
+
     /**
      * 设置 [部门负责人ID]
      */
@@ -189,6 +193,7 @@ public class ParZnbmndlhmb extends EntityMP implements Serializable {
         this.bmfzr = bmfzr ;
         this.modify("bmfzr",bmfzr);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -196,6 +201,7 @@ public class ParZnbmndlhmb extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [当前阶段]
      */
@@ -203,6 +209,7 @@ public class ParZnbmndlhmb extends EntityMP implements Serializable {
         this.jxjd = jxjd ;
         this.modify("jxjd",jxjd);
     }
+
     /**
      * 设置 [部门负责人]
      */
@@ -210,6 +217,7 @@ public class ParZnbmndlhmb extends EntityMP implements Serializable {
         this.mc = mc ;
         this.modify("mc",mc);
     }
+
     /**
      * 设置 [职能部门ID]
      */
@@ -217,6 +225,7 @@ public class ParZnbmndlhmb extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
 
 }
 

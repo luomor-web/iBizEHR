@@ -16,7 +16,7 @@ export default {
 	views: {
 		xzpddeditview: {
 			caption: '调动申请单',
-      title: '调动申请单',
+      title: '新增批调动',
 		},
 	},
 	pldd_form: {

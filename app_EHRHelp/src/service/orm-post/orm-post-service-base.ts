@@ -83,21 +83,6 @@ export default class OrmPostServiceBase extends EntityService {
             }
         }
         masterData.pcmydjdmxes = pcmydjdmxesData;
-        let ormpostdetailsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails'),'undefined')){
-            ormpostdetailsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails') as any);
-            if(ormpostdetailsData && ormpostdetailsData.length && ormpostdetailsData.length > 0){
-                ormpostdetailsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.ormpostdetailsid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.ormpostdetails = ormpostdetailsData;
         let ormbmgwbzsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormbmgwbzs'),'undefined')){
             ormbmgwbzsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormbmgwbzs') as any);
@@ -113,11 +98,26 @@ export default class OrmPostServiceBase extends EntityService {
             }
         }
         masterData.ormbmgwbzs = ormbmgwbzsData;
+        let ormpostdetailsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails'),'undefined')){
+            ormpostdetailsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails') as any);
+            if(ormpostdetailsData && ormpostdetailsData.length && ormpostdetailsData.length > 0){
+                ormpostdetailsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.ormpostdetailsid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.ormpostdetails = ormpostdetailsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/ormposts/${context.ormpost}/save`,data,isloading);
             this.tempStorage.setItem(context.srfsessionkey+'_pcmydjdmxes',JSON.stringify(res.data.pcmydjdmxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_ormpostdetails',JSON.stringify(res.data.ormpostdetails));
             this.tempStorage.setItem(context.srfsessionkey+'_ormbmgwbzs',JSON.stringify(res.data.ormbmgwbzs));
+            this.tempStorage.setItem(context.srfsessionkey+'_ormpostdetails',JSON.stringify(res.data.ormpostdetails));
             return res;
     }
 
@@ -172,21 +172,6 @@ export default class OrmPostServiceBase extends EntityService {
             }
         }
         masterData.pcmydjdmxes = pcmydjdmxesData;
-        let ormpostdetailsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails'),'undefined')){
-            ormpostdetailsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails') as any);
-            if(ormpostdetailsData && ormpostdetailsData.length && ormpostdetailsData.length > 0){
-                ormpostdetailsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.ormpostdetailsid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.ormpostdetails = ormpostdetailsData;
         let ormbmgwbzsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormbmgwbzs'),'undefined')){
             ormbmgwbzsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormbmgwbzs') as any);
@@ -202,6 +187,21 @@ export default class OrmPostServiceBase extends EntityService {
             }
         }
         masterData.ormbmgwbzs = ormbmgwbzsData;
+        let ormpostdetailsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails'),'undefined')){
+            ormpostdetailsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails') as any);
+            if(ormpostdetailsData && ormpostdetailsData.length && ormpostdetailsData.length > 0){
+                ormpostdetailsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.ormpostdetailsid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.ormpostdetails = ormpostdetailsData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -212,8 +212,8 @@ export default class OrmPostServiceBase extends EntityService {
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/ormposts`,data,isloading);
         this.tempStorage.setItem(tempContext.srfsessionkey+'_pcmydjdmxes',JSON.stringify(res.data.pcmydjdmxes));
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_ormpostdetails',JSON.stringify(res.data.ormpostdetails));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_ormbmgwbzs',JSON.stringify(res.data.ormbmgwbzs));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_ormpostdetails',JSON.stringify(res.data.ormpostdetails));
         return res;
     }
 
@@ -232,8 +232,8 @@ export default class OrmPostServiceBase extends EntityService {
         }
             let res:any = await Http.getInstance().get(`/ormposts/${context.ormpost}`,isloading);
             this.tempStorage.setItem(context.srfsessionkey+'_pcmydjdmxes',JSON.stringify(res.data.pcmydjdmxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_ormpostdetails',JSON.stringify(res.data.ormpostdetails));
             this.tempStorage.setItem(context.srfsessionkey+'_ormbmgwbzs',JSON.stringify(res.data.ormbmgwbzs));
+            this.tempStorage.setItem(context.srfsessionkey+'_ormpostdetails',JSON.stringify(res.data.ormpostdetails));
             return res;
 
     }
@@ -283,21 +283,6 @@ export default class OrmPostServiceBase extends EntityService {
             }
         }
         masterData.pcmydjdmxes = pcmydjdmxesData;
-        let ormpostdetailsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails'),'undefined')){
-            ormpostdetailsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails') as any);
-            if(ormpostdetailsData && ormpostdetailsData.length && ormpostdetailsData.length > 0){
-                ormpostdetailsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.ormpostdetailsid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.ormpostdetails = ormpostdetailsData;
         let ormbmgwbzsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormbmgwbzs'),'undefined')){
             ormbmgwbzsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormbmgwbzs') as any);
@@ -313,11 +298,26 @@ export default class OrmPostServiceBase extends EntityService {
             }
         }
         masterData.ormbmgwbzs = ormbmgwbzsData;
+        let ormpostdetailsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails'),'undefined')){
+            ormpostdetailsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormpostdetails') as any);
+            if(ormpostdetailsData && ormpostdetailsData.length && ormpostdetailsData.length > 0){
+                ormpostdetailsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.ormpostdetailsid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.ormpostdetails = ormpostdetailsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/ormposts/${context.ormpost}`,data,isloading);
             this.tempStorage.setItem(context.srfsessionkey+'_pcmydjdmxes',JSON.stringify(res.data.pcmydjdmxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_ormpostdetails',JSON.stringify(res.data.ormpostdetails));
             this.tempStorage.setItem(context.srfsessionkey+'_ormbmgwbzs',JSON.stringify(res.data.ormbmgwbzs));
+            this.tempStorage.setItem(context.srfsessionkey+'_ormpostdetails',JSON.stringify(res.data.ormpostdetails));
             return res;
     }
 
@@ -354,8 +354,8 @@ export default class OrmPostServiceBase extends EntityService {
         let res:any = await  Http.getInstance().get(`/ormposts/getdraft`,isloading);
         res.data.ormpost = data.ormpost;
             this.tempStorage.setItem(context.srfsessionkey+'_pcmydjdmxes',JSON.stringify(res.data.pcmydjdmxes));
-            this.tempStorage.setItem(context.srfsessionkey+'_ormpostdetails',JSON.stringify(res.data.ormpostdetails));
             this.tempStorage.setItem(context.srfsessionkey+'_ormbmgwbzs',JSON.stringify(res.data.ormbmgwbzs));
+            this.tempStorage.setItem(context.srfsessionkey+'_ormpostdetails',JSON.stringify(res.data.ormpostdetails));
         return res;
     }
 

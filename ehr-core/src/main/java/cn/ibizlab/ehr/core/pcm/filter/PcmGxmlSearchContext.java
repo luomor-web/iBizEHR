@@ -31,35 +31,35 @@ public class PcmGxmlSearchContext extends QueryWrapperContext<PcmGxml> {
 	public void setN_nd_eq(String n_nd_eq) {
         this.n_nd_eq = n_nd_eq;
         if(!ObjectUtils.isEmpty(this.n_nd_eq)){
-            this.getSelectCond().eq("nd", n_nd_eq);
+            this.getSearchCond().eq("nd", n_nd_eq);
         }
     }
 	private String n_xxxz_eq;//[学校性质]
 	public void setN_xxxz_eq(String n_xxxz_eq) {
         this.n_xxxz_eq = n_xxxz_eq;
         if(!ObjectUtils.isEmpty(this.n_xxxz_eq)){
-            this.getSelectCond().eq("xxxz", n_xxxz_eq);
+            this.getSearchCond().eq("xxxz", n_xxxz_eq);
         }
     }
 	private String n_gxlb_eq;//[高校类型（停用）]
 	public void setN_gxlb_eq(String n_gxlb_eq) {
         this.n_gxlb_eq = n_gxlb_eq;
         if(!ObjectUtils.isEmpty(this.n_gxlb_eq)){
-            this.getSelectCond().eq("gxlb", n_gxlb_eq);
+            this.getSearchCond().eq("gxlb", n_gxlb_eq);
         }
     }
 	private String n_nationarea_like;//[国家或地区]
 	public void setN_nationarea_like(String n_nationarea_like) {
         this.n_nationarea_like = n_nationarea_like;
         if(!ObjectUtils.isEmpty(this.n_nationarea_like)){
-            this.getSelectCond().like("nationarea", n_nationarea_like);
+            this.getSearchCond().like("nationarea", n_nationarea_like);
         }
     }
 	private String n_pcmgxmlname_like;//[高校名称]
 	public void setN_pcmgxmlname_like(String n_pcmgxmlname_like) {
         this.n_pcmgxmlname_like = n_pcmgxmlname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmgxmlname_like)){
-            this.getSelectCond().like("pcmgxmlname", n_pcmgxmlname_like);
+            this.getSearchCond().like("pcmgxmlname", n_pcmgxmlname_like);
         }
     }
 
@@ -70,7 +70,7 @@ public class PcmGxmlSearchContext extends QueryWrapperContext<PcmGxml> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmgxmlname", query)   
             );
 		 }

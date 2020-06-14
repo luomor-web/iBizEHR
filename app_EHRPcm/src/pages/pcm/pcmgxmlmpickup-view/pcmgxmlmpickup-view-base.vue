@@ -419,6 +419,7 @@ export default class PCMGXMLMPickupViewBase extends MPickupViewBase {
             });
             this.viewSelections = newSelections;
         });
+        this.selectedData = JSON.stringify(this.viewSelections);
     }
 
     /**
@@ -429,6 +430,7 @@ export default class PCMGXMLMPickupViewBase extends MPickupViewBase {
     public onCLickAllLeft():void {
         this.viewSelections = [];
         this.containerModel.view_leftbtn.disabled = true;
+        this.engine.onCtrlEvent('pickupviewpanel', 'selectionchange', []);
         this.selectedData = JSON.stringify(this.viewSelections);
     }
 
@@ -456,6 +458,7 @@ export default class PCMGXMLMPickupViewBase extends MPickupViewBase {
                 }
             });
         });
+        this.selectedData = JSON.stringify(this.viewSelections);
     }
 
     /**

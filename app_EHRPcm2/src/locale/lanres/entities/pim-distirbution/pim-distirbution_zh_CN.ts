@@ -60,11 +60,11 @@ export default {
 	views: {
 		maturitydueeditview: {
 			caption: '借调到期',
-      title: '借调到期',
+      title: '借调到期编辑视图',
 		},
 		redirectview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息数据重定向视图',
 		},
 		ddmgrgridview: {
 			caption: '调动管理',
@@ -72,11 +72,11 @@ export default {
 		},
 		ygfenpeigridview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息表格视图',
 		},
 		kddfppickupgridview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '可调动的分配',
 		},
 		ddrmgrgridview: {
 			caption: '调入管理',
@@ -88,23 +88,23 @@ export default {
 		},
 		editview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息编辑视图',
 		},
 		kddmpickupview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '可调动的分配',
 		},
 		mpickupview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息数据多项选择视图',
 		},
 		pickupview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息数据选择视图',
 		},
 		ddcoptionview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '调出',
 		},
 		jddqgridview: {
 			caption: '借调人员',
@@ -112,15 +112,15 @@ export default {
 		},
 		kddpickupview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '可调动的分配',
 		},
 		gridview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息表格视图',
 		},
 		pickupgridview: {
 			caption: '分配信息',
-      title: '分配信息',
+      title: '分配信息选择表格视图',
 		},
 	},
 	main_form: {

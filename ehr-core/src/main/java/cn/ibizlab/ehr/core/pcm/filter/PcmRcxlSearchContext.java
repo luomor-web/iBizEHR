@@ -31,42 +31,42 @@ public class PcmRcxlSearchContext extends QueryWrapperContext<PcmRcxl> {
 	public void setN_rcxlmc_like(String n_rcxlmc_like) {
         this.n_rcxlmc_like = n_rcxlmc_like;
         if(!ObjectUtils.isEmpty(this.n_rcxlmc_like)){
-            this.getSelectCond().like("rcxlmc", n_rcxlmc_like);
+            this.getSearchCond().like("rcxlmc", n_rcxlmc_like);
         }
     }
 	private String n_rcxllx_eq;//[人才序列类型]
 	public void setN_rcxllx_eq(String n_rcxllx_eq) {
         this.n_rcxllx_eq = n_rcxllx_eq;
         if(!ObjectUtils.isEmpty(this.n_rcxllx_eq)){
-            this.getSelectCond().eq("rcxllx", n_rcxllx_eq);
+            this.getSearchCond().eq("rcxllx", n_rcxllx_eq);
         }
     }
 	private String n_pcmrcxlname_like;//[人才序列名称]
 	public void setN_pcmrcxlname_like(String n_pcmrcxlname_like) {
         this.n_pcmrcxlname_like = n_pcmrcxlname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmrcxlname_like)){
-            this.getSelectCond().like("pcmrcxlname", n_pcmrcxlname_like);
+            this.getSearchCond().like("pcmrcxlname", n_pcmrcxlname_like);
         }
     }
 	private String n_pcmrcxlname2_eq;//[上级]
 	public void setN_pcmrcxlname2_eq(String n_pcmrcxlname2_eq) {
         this.n_pcmrcxlname2_eq = n_pcmrcxlname2_eq;
         if(!ObjectUtils.isEmpty(this.n_pcmrcxlname2_eq)){
-            this.getSelectCond().eq("pcmrcxlname2", n_pcmrcxlname2_eq);
+            this.getSearchCond().eq("pcmrcxlname2", n_pcmrcxlname2_eq);
         }
     }
 	private String n_pcmrcxlname2_like;//[上级]
 	public void setN_pcmrcxlname2_like(String n_pcmrcxlname2_like) {
         this.n_pcmrcxlname2_like = n_pcmrcxlname2_like;
         if(!ObjectUtils.isEmpty(this.n_pcmrcxlname2_like)){
-            this.getSelectCond().like("pcmrcxlname2", n_pcmrcxlname2_like);
+            this.getSearchCond().like("pcmrcxlname2", n_pcmrcxlname2_like);
         }
     }
 	private String n_pcmrcxlid2_eq;//[人才序列标识]
 	public void setN_pcmrcxlid2_eq(String n_pcmrcxlid2_eq) {
         this.n_pcmrcxlid2_eq = n_pcmrcxlid2_eq;
         if(!ObjectUtils.isEmpty(this.n_pcmrcxlid2_eq)){
-            this.getSelectCond().eq("pcmrcxlid2", n_pcmrcxlid2_eq);
+            this.getSearchCond().eq("pcmrcxlid2", n_pcmrcxlid2_eq);
         }
     }
 
@@ -77,7 +77,7 @@ public class PcmRcxlSearchContext extends QueryWrapperContext<PcmRcxl> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("rcxlmc", query)   
             );
 		 }

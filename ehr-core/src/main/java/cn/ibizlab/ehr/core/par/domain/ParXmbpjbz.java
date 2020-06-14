@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[项目部评级标准]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PARXMBPJBZ",resultMap = "ParXmbpjbzResultMap")
 public class ParXmbpjbz extends EntityMP implements Serializable {
 
@@ -162,6 +163,7 @@ public class ParXmbpjbz extends EntityMP implements Serializable {
         this.djbl = djbl ;
         this.modify("djbl",djbl);
     }
+
     /**
      * 设置 [岗位类型]
      */
@@ -169,6 +171,7 @@ public class ParXmbpjbz extends EntityMP implements Serializable {
         this.gwlx = gwlx ;
         this.modify("gwlx",gwlx);
     }
+
     /**
      * 设置 [项目部评级标准名称]
      */
@@ -176,6 +179,7 @@ public class ParXmbpjbz extends EntityMP implements Serializable {
         this.parxmbpjbzname = parxmbpjbzname ;
         this.modify("parxmbpjbzname",parxmbpjbzname);
     }
+
     /**
      * 设置 [档级]
      */
@@ -183,6 +187,7 @@ public class ParXmbpjbz extends EntityMP implements Serializable {
         this.dj = dj ;
         this.modify("dj",dj);
     }
+
     /**
      * 设置 [组织ID]
      */
@@ -190,6 +195,7 @@ public class ParXmbpjbz extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [评级标准ID]
      */
@@ -197,6 +203,7 @@ public class ParXmbpjbz extends EntityMP implements Serializable {
         this.xmbpjbzid = xmbpjbzid ;
         this.modify("xmbpjbzid",xmbpjbzid);
     }
+
 
 }
 

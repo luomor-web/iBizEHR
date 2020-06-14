@@ -25,7 +25,8 @@ const router = new Router({
                 });
             },
             meta: {  
-                caption: 'app.views.index.caption',
+                caption: 'app.views.index.title',
+                info:'',
                 viewType: 'APPINDEX',
                 parameters: [
                     { pathName: 'index', parameterName: 'index' },
@@ -37,7 +38,8 @@ const router = new Router({
                 {
                     path: 'ormduties/:ormduty?/ormorgsectorpickupgridview/:ormorgsectorpickupgridview?',
                     meta: {
-                        caption: 'entities.ormduty.views.ormorgsectorpickupgridview.caption',
+                        caption: 'entities.ormduty.views.ormorgsectorpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormduties', parameterName: 'ormduty' },
@@ -50,7 +52,8 @@ const router = new Router({
                 {
                     path: 'pcmxkmls/:pcmxkml?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.pcmxkml.views.pickupgridview.caption',
+                        caption: 'entities.pcmxkml.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmxkmls', parameterName: 'pcmxkml' },
@@ -63,7 +66,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmtestresults/:pcmtestresult?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmtestresult.views.editview.caption',
+                        caption: 'entities.pcmtestresult.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
                         iconCls: '',
                         parameters: [
@@ -79,7 +83,8 @@ const router = new Router({
                 {
                     path: 'pcmtestresults/:pcmtestresult?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmtestresult.views.editview.caption',
+                        caption: 'entities.pcmtestresult.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
                         iconCls: '',
                         parameters: [
@@ -94,7 +99,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmawardswons/:pcmawardswons?/hjqk_wsswbjgridview/:hjqk_wsswbjgridview?',
                     meta: {
-                        caption: 'entities.pcmawardswons.views.hjqk_wsswbjgridview.caption',
+                        caption: 'entities.pcmawardswons.views.hjqk_wsswbjgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenbianzhi.png',
                         iconCls: '',
                         parameters: [
@@ -110,7 +116,8 @@ const router = new Router({
                 {
                     path: 'pcmawardswons/:pcmawardswons?/hjqk_wsswbjgridview/:hjqk_wsswbjgridview?',
                     meta: {
-                        caption: 'entities.pcmawardswons.views.hjqk_wsswbjgridview.caption',
+                        caption: 'entities.pcmawardswons.views.hjqk_wsswbjgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenbianzhi.png',
                         iconCls: '',
                         parameters: [
@@ -125,7 +132,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupview/:ejormorgidpickupview?',
                     meta: {
-                        caption: 'entities.ormpost.views.ejormorgidpickupview.caption',
+                        caption: 'entities.ormpost.views.ejormorgidpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -139,7 +147,8 @@ const router = new Router({
                 {
                     path: 'ormposts/:ormpost?/ejormorgidpickupview/:ejormorgidpickupview?',
                     meta: {
-                        caption: 'entities.ormpost.views.ejormorgidpickupview.caption',
+                        caption: 'entities.ormpost.views.ejormorgidpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -152,7 +161,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/qtzpwizardview/:qtzpwizardview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.qtzpwizardview.caption',
+                        caption: 'entities.pcmprofile.views.qtzpwizardview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
                         iconCls: '',
                         parameters: [
@@ -167,7 +177,8 @@ const router = new Router({
                 {
                     path: 'pcmxkmls/:pcmxkml?/pcmgxxktemps/:pcmgxxktemp?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pcmgxxktemp.views.gridview.caption',
+                        caption: 'entities.pcmgxxktemp.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -183,7 +194,8 @@ const router = new Router({
                 {
                     path: 'pcmgxmls/:pcmgxml?/pcmgxxktemps/:pcmgxxktemp?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pcmgxxktemp.views.gridview.caption',
+                        caption: 'entities.pcmgxxktemp.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -199,7 +211,8 @@ const router = new Router({
                 {
                     path: 'pcmgxxktemps/:pcmgxxktemp?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pcmgxxktemp.views.gridview.caption',
+                        caption: 'entities.pcmgxxktemp.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -214,7 +227,8 @@ const router = new Router({
                 {
                     path: 'pimqualmajors/:pimqualmajor?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.pimqualmajor.views.pickupview.caption',
+                        caption: 'entities.pimqualmajor.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimqualmajors', parameterName: 'pimqualmajor' },
@@ -227,7 +241,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmworkresumes/:pcmworkresume?/gzll_wsswbjgridview/:gzll_wsswbjgridview?',
                     meta: {
-                        caption: 'entities.pcmworkresume.views.gzll_wsswbjgridview.caption',
+                        caption: 'entities.pcmworkresume.views.gzll_wsswbjgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gongzuolvli.png',
                         iconCls: '',
                         parameters: [
@@ -243,7 +258,8 @@ const router = new Router({
                 {
                     path: 'pcmworkresumes/:pcmworkresume?/gzll_wsswbjgridview/:gzll_wsswbjgridview?',
                     meta: {
-                        caption: 'entities.pcmworkresume.views.gzll_wsswbjgridview.caption',
+                        caption: 'entities.pcmworkresume.views.gzll_wsswbjgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gongzuolvli.png',
                         iconCls: '',
                         parameters: [
@@ -258,7 +274,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/rlsbgridview/:rlsbgridview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.rlsbgridview.caption',
+                        caption: 'entities.pcmprofile.views.rlsbgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/yleiyuangongzhuanzheng.png',
                         iconCls: '',
                         parameters: [
@@ -273,7 +290,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmcertofregs/:pcmcertofreg?/zczsgridview/:zczsgridview?',
                     meta: {
-                        caption: 'entities.pcmcertofreg.views.zczsgridview.caption',
+                        caption: 'entities.pcmcertofreg.views.zczsgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhiyezige.png',
                         iconCls: '',
                         parameters: [
@@ -289,7 +307,8 @@ const router = new Router({
                 {
                     path: 'pcmcertofregs/:pcmcertofreg?/zczsgridview/:zczsgridview?',
                     meta: {
-                        caption: 'entities.pcmcertofreg.views.zczsgridview.caption',
+                        caption: 'entities.pcmcertofreg.views.zczsgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhiyezige.png',
                         iconCls: '',
                         parameters: [
@@ -304,7 +323,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmtdzwxxes/:pcmtdzwxx?/tdzw_wsswbjgridview/:tdzw_wsswbjgridview?',
                     meta: {
-                        caption: 'entities.pcmtdzwxx.views.tdzw_wsswbjgridview.caption',
+                        caption: 'entities.pcmtdzwxx.views.tdzw_wsswbjgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/gangweiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -320,7 +340,8 @@ const router = new Router({
                 {
                     path: 'pcmtdzwxxes/:pcmtdzwxx?/tdzw_wsswbjgridview/:tdzw_wsswbjgridview?',
                     meta: {
-                        caption: 'entities.pcmtdzwxx.views.tdzw_wsswbjgridview.caption',
+                        caption: 'entities.pcmtdzwxx.views.tdzw_wsswbjgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/gangweiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -335,7 +356,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ydbmpickupgridview/:ydbmpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.ydbmpickupgridview.caption',
+                        caption: 'entities.ormorgsector.views.ydbmpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -349,7 +371,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/ydbmpickupgridview/:ydbmpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.ydbmpickupgridview.caption',
+                        caption: 'entities.ormorgsector.views.ydbmpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -362,7 +385,8 @@ const router = new Router({
                 {
                     path: 'pcmxkmls/:pcmxkml?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmxkml.views.editview.caption',
+                        caption: 'entities.pcmxkml.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhichengmuluguanli.png',
                         iconCls: '',
                         parameters: [
@@ -377,7 +401,8 @@ const router = new Router({
                 {
                     path: 'ormduties/:ormduty?/ormorgsectorpickupview/:ormorgsectorpickupview?',
                     meta: {
-                        caption: 'entities.ormduty.views.ormorgsectorpickupview.caption',
+                        caption: 'entities.ormduty.views.ormorgsectorpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormduties', parameterName: 'ormduty' },
@@ -390,7 +415,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/fpwizardview/:fpwizardview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.fpwizardview.caption',
+                        caption: 'entities.pcmprofile.views.fpwizardview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
                         iconCls: '',
                         parameters: [
@@ -405,7 +431,8 @@ const router = new Router({
                 {
                     path: 'pcmgxmls/:pcmgxml?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.pcmgxml.views.pickupgridview.caption',
+                        caption: 'entities.pcmgxml.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmgxmls', parameterName: 'pcmgxml' },
@@ -418,7 +445,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/szwizardview/:szwizardview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.szwizardview.caption',
+                        caption: 'entities.pcmprofile.views.szwizardview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
                         iconCls: '',
                         parameters: [
@@ -433,7 +461,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/rlsb_csrcyjxgeditview/:rlsb_csrcyjxgeditview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.rlsb_csrcyjxgeditview.caption',
+                        caption: 'entities.pcmprofile.views.rlsb_csrcyjxgeditview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/yleiyuangongzhuanzheng.png',
                         iconCls: '',
                         parameters: [
@@ -448,7 +477,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmschooloffices/:pcmschooloffice?/zxzwgridview/:zxzwgridview?',
                     meta: {
-                        caption: 'entities.pcmschooloffice.views.zxzwgridview.caption',
+                        caption: 'entities.pcmschooloffice.views.zxzwgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenguanli.png',
                         iconCls: '',
                         parameters: [
@@ -464,7 +494,8 @@ const router = new Router({
                 {
                     path: 'pcmschooloffices/:pcmschooloffice?/zxzwgridview/:zxzwgridview?',
                     meta: {
-                        caption: 'entities.pcmschooloffice.views.zxzwgridview.caption',
+                        caption: 'entities.pcmschooloffice.views.zxzwgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenguanli.png',
                         iconCls: '',
                         parameters: [
@@ -479,7 +510,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/ypzxx_lreditview/:ypzxx_lreditview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.ypzxx_lreditview.caption',
+                        caption: 'entities.pcmprofile.views.ypzxx_lreditview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
                         iconCls: '',
                         parameters: [
@@ -494,7 +526,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/bhspgridview/:bhspgridview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.bhspgridview.caption',
+                        caption: 'entities.pcmprofile.views.bhspgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -509,7 +542,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmtestresults/:pcmtestresult?/cpjg_wsswbjgridview/:cpjg_wsswbjgridview?',
                     meta: {
-                        caption: 'entities.pcmtestresult.views.cpjg_wsswbjgridview.caption',
+                        caption: 'entities.pcmtestresult.views.cpjg_wsswbjgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
                         iconCls: '',
                         parameters: [
@@ -525,7 +559,8 @@ const router = new Router({
                 {
                     path: 'pcmtestresults/:pcmtestresult?/cpjg_wsswbjgridview/:cpjg_wsswbjgridview?',
                     meta: {
-                        caption: 'entities.pcmtestresult.views.cpjg_wsswbjgridview.caption',
+                        caption: 'entities.pcmtestresult.views.cpjg_wsswbjgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
                         iconCls: '',
                         parameters: [
@@ -540,7 +575,8 @@ const router = new Router({
                 {
                     path: 'pcmzpmegls/:pcmzpmegl?/curndgridview/:curndgridview?',
                     meta: {
-                        caption: 'entities.pcmzpmegl.views.curndgridview.caption',
+                        caption: 'entities.pcmzpmegl.views.curndgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
                         iconCls: '',
                         parameters: [
@@ -555,7 +591,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmschooloffices/:pcmschooloffice?/zxzw_wsswbjgridview/:zxzw_wsswbjgridview?',
                     meta: {
-                        caption: 'entities.pcmschooloffice.views.zxzw_wsswbjgridview.caption',
+                        caption: 'entities.pcmschooloffice.views.zxzw_wsswbjgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenguanli.png',
                         iconCls: '',
                         parameters: [
@@ -571,7 +608,8 @@ const router = new Router({
                 {
                     path: 'pcmschooloffices/:pcmschooloffice?/zxzw_wsswbjgridview/:zxzw_wsswbjgridview?',
                     meta: {
-                        caption: 'entities.pcmschooloffice.views.zxzw_wsswbjgridview.caption',
+                        caption: 'entities.pcmschooloffice.views.zxzw_wsswbjgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenguanli.png',
                         iconCls: '',
                         parameters: [
@@ -586,7 +624,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/rzsp_csrcyjgridview/:rzsp_csrcyjgridview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.rzsp_csrcyjgridview.caption',
+                        caption: 'entities.pcmprofile.views.rzsp_csrcyjgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/zhijizhiwuguanxi.png',
                         iconCls: '',
                         parameters: [
@@ -601,7 +640,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmawardswons/:pcmawardswons?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmawardswons.views.editview.caption',
+                        caption: 'entities.pcmawardswons.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenbianzhi.png',
                         iconCls: '',
                         parameters: [
@@ -617,7 +657,8 @@ const router = new Router({
                 {
                     path: 'pcmawardswons/:pcmawardswons?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmawardswons.views.editview.caption',
+                        caption: 'entities.pcmawardswons.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenbianzhi.png',
                         iconCls: '',
                         parameters: [
@@ -632,7 +673,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ydbmpickupview/:ydbmpickupview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.ydbmpickupview.caption',
+                        caption: 'entities.ormorgsector.views.ydbmpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -646,7 +688,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/ydbmpickupview/:ydbmpickupview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.ydbmpickupview.caption',
+                        caption: 'entities.ormorgsector.views.ydbmpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -659,7 +702,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/bhspeditview/:bhspeditview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.bhspeditview.caption',
+                        caption: 'entities.pcmprofile.views.bhspeditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -674,7 +718,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/ypzxx_csrcyjgridview/:ypzxx_csrcyjgridview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.ypzxx_csrcyjgridview.caption',
+                        caption: 'entities.pcmprofile.views.ypzxx_csrcyjgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
                         iconCls: '',
                         parameters: [
@@ -689,7 +734,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmtestresults/:pcmtestresult?/cpjggridview/:cpjggridview?',
                     meta: {
-                        caption: 'entities.pcmtestresult.views.cpjggridview.caption',
+                        caption: 'entities.pcmtestresult.views.cpjggridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
                         iconCls: '',
                         parameters: [
@@ -705,7 +751,8 @@ const router = new Router({
                 {
                     path: 'pcmtestresults/:pcmtestresult?/cpjggridview/:cpjggridview?',
                     meta: {
-                        caption: 'entities.pcmtestresult.views.cpjggridview.caption',
+                        caption: 'entities.pcmtestresult.views.cpjggridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
                         iconCls: '',
                         parameters: [
@@ -720,7 +767,8 @@ const router = new Router({
                 {
                     path: 'pcmzpmegls/:pcmzpmegl?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmzpmegl.views.editview.caption',
+                        caption: 'entities.pcmzpmegl.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
                         iconCls: '',
                         parameters: [
@@ -735,7 +783,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/bhsp_csrcyjgridview/:bhsp_csrcyjgridview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.bhsp_csrcyjgridview.caption',
+                        caption: 'entities.pcmprofile.views.bhsp_csrcyjgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -750,7 +799,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/txrypickupview/:txrypickupview?',
                     meta: {
-                        caption: 'entities.pimperson.views.txrypickupview.caption',
+                        caption: 'entities.pimperson.views.txrypickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -763,7 +813,8 @@ const router = new Router({
                 {
                     path: 'pcmzpmegls/:pcmzpmegl?/treeexpview/:treeexpview?',
                     meta: {
-                        caption: 'entities.pcmzpmegl.views.treeexpview.caption',
+                        caption: 'entities.pcmzpmegl.views.treeexpview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -778,7 +829,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmeducationexperiences/:pcmeducationexperience?/jybjgridview/:jybjgridview?',
                     meta: {
-                        caption: 'entities.pcmeducationexperience.views.jybjgridview.caption',
+                        caption: 'entities.pcmeducationexperience.views.jybjgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -794,7 +846,8 @@ const router = new Router({
                 {
                     path: 'pcmeducationexperiences/:pcmeducationexperience?/jybjgridview/:jybjgridview?',
                     meta: {
-                        caption: 'entities.pcmeducationexperience.views.jybjgridview.caption',
+                        caption: 'entities.pcmeducationexperience.views.jybjgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -809,7 +862,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/rlsb_csrcyjeditview/:rlsb_csrcyjeditview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.rlsb_csrcyjeditview.caption',
+                        caption: 'entities.pcmprofile.views.rlsb_csrcyjeditview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/yleiyuangongzhuanzheng.png',
                         iconCls: '',
                         parameters: [
@@ -824,7 +878,8 @@ const router = new Router({
                 {
                     path: 'pcmxkmls/:pcmxkml?/curndgridview/:curndgridview?',
                     meta: {
-                        caption: 'entities.pcmxkml.views.curndgridview.caption',
+                        caption: 'entities.pcmxkml.views.curndgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhichengmuluguanli.png',
                         iconCls: '',
                         parameters: [
@@ -839,7 +894,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmpracticeexperiences/:pcmpracticeexperience?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmpracticeexperience.views.editview.caption',
+                        caption: 'entities.pcmpracticeexperience.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/zuzhiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -855,7 +911,8 @@ const router = new Router({
                 {
                     path: 'pcmpracticeexperiences/:pcmpracticeexperience?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmpracticeexperience.views.editview.caption',
+                        caption: 'entities.pcmpracticeexperience.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/zuzhiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -870,7 +927,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/zpdwshgridview/:zpdwshgridview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.zpdwshgridview.caption',
+                        caption: 'entities.pcmprofile.views.zpdwshgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
                         iconCls: '',
                         parameters: [
@@ -885,7 +943,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmeducationexperiences/:pcmeducationexperience?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmeducationexperience.views.editview.caption',
+                        caption: 'entities.pcmeducationexperience.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -901,7 +960,8 @@ const router = new Router({
                 {
                     path: 'pcmeducationexperiences/:pcmeducationexperience?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmeducationexperience.views.editview.caption',
+                        caption: 'entities.pcmeducationexperience.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -916,7 +976,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/zpdwsheditview/:zpdwsheditview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.zpdwsheditview.caption',
+                        caption: 'entities.pcmprofile.views.zpdwsheditview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
                         iconCls: '',
                         parameters: [
@@ -931,7 +992,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/rlsb_xgeditview/:rlsb_xgeditview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.rlsb_xgeditview.caption',
+                        caption: 'entities.pcmprofile.views.rlsb_xgeditview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/yleiyuangongzhuanzheng.png',
                         iconCls: '',
                         parameters: [
@@ -946,7 +1008,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ypzxxsypickupgridview/:ypzxxsypickupgridview?',
                     meta: {
-                        caption: 'entities.ormorg.views.ypzxxsypickupgridview.caption',
+                        caption: 'entities.ormorg.views.ypzxxsypickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -959,7 +1022,8 @@ const router = new Router({
                 {
                     path: 'pcmgxmls/:pcmgxml?/gxmltreeexpview/:gxmltreeexpview?',
                     meta: {
-                        caption: 'entities.pcmgxml.views.gxmltreeexpview.caption',
+                        caption: 'entities.pcmgxml.views.gxmltreeexpview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -974,7 +1038,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmschooloffices/:pcmschooloffice?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmschooloffice.views.editview.caption',
+                        caption: 'entities.pcmschooloffice.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenguanli.png',
                         iconCls: '',
                         parameters: [
@@ -990,7 +1055,8 @@ const router = new Router({
                 {
                     path: 'pcmschooloffices/:pcmschooloffice?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmschooloffice.views.editview.caption',
+                        caption: 'entities.pcmschooloffice.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1005,7 +1071,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/bhsp_csrcyjeditview/:bhsp_csrcyjeditview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.bhsp_csrcyjeditview.caption',
+                        caption: 'entities.pcmprofile.views.bhsp_csrcyjeditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/hetongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1020,7 +1087,8 @@ const router = new Router({
                 {
                     path: 'pcmxkmls/:pcmxkml?/xkmltreeexpview/:xkmltreeexpview?',
                     meta: {
-                        caption: 'entities.pcmxkml.views.xkmltreeexpview.caption',
+                        caption: 'entities.pcmxkml.views.xkmltreeexpview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmxkmls', parameterName: 'pcmxkml' },
@@ -1033,7 +1101,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/rzsp_csrcyjeditview/:rzsp_csrcyjeditview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.rzsp_csrcyjeditview.caption',
+                        caption: 'entities.pcmprofile.views.rzsp_csrcyjeditview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/zhijizhiwuguanxi.png',
                         iconCls: '',
                         parameters: [
@@ -1048,7 +1117,8 @@ const router = new Router({
                 {
                     path: 'pcmprofilespyys/:pcmprofilespyy?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmprofilespyy.views.editview.caption',
+                        caption: 'entities.pcmprofilespyy.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/kfgl/1/peixunjiluguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1063,7 +1133,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.ormorg.views.pickupview.caption',
+                        caption: 'entities.ormorg.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1076,7 +1147,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmawardswons/:pcmawardswons?/hjqkgridview/:hjqkgridview?',
                     meta: {
-                        caption: 'entities.pcmawardswons.views.hjqkgridview.caption',
+                        caption: 'entities.pcmawardswons.views.hjqkgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenbianzhi.png',
                         iconCls: '',
                         parameters: [
@@ -1092,7 +1164,8 @@ const router = new Router({
                 {
                     path: 'pcmawardswons/:pcmawardswons?/hjqkgridview/:hjqkgridview?',
                     meta: {
-                        caption: 'entities.pcmawardswons.views.hjqkgridview.caption',
+                        caption: 'entities.pcmawardswons.views.hjqkgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenbianzhi.png',
                         iconCls: '',
                         parameters: [
@@ -1107,7 +1180,8 @@ const router = new Router({
                 {
                     path: 'pcmgxmls/:pcmgxml?/mpickupview/:mpickupview?',
                     meta: {
-                        caption: 'entities.pcmgxml.views.mpickupview.caption',
+                        caption: 'entities.pcmgxml.views.mpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmgxmls', parameterName: 'pcmgxml' },
@@ -1120,7 +1194,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/ypzbdeditview/:ypzbdeditview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.ypzbdeditview.caption',
+                        caption: 'entities.pcmprofile.views.ypzbdeditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/xinqianhetong.png',
                         iconCls: '',
                         parameters: [
@@ -1135,7 +1210,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
                     meta: {
-                        caption: 'entities.ormpost.views.ejormorgidpickupgridview.caption',
+                        caption: 'entities.ormpost.views.ejormorgidpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1149,7 +1225,8 @@ const router = new Router({
                 {
                     path: 'ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
                     meta: {
-                        caption: 'entities.ormpost.views.ejormorgidpickupgridview.caption',
+                        caption: 'entities.ormpost.views.ejormorgidpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -1162,7 +1239,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmpracticeexperiences/:pcmpracticeexperience?/sxjy_wsswbjgridview/:sxjy_wsswbjgridview?',
                     meta: {
-                        caption: 'entities.pcmpracticeexperience.views.sxjy_wsswbjgridview.caption',
+                        caption: 'entities.pcmpracticeexperience.views.sxjy_wsswbjgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/zuzhiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1178,7 +1256,8 @@ const router = new Router({
                 {
                     path: 'pcmpracticeexperiences/:pcmpracticeexperience?/sxjy_wsswbjgridview/:sxjy_wsswbjgridview?',
                     meta: {
-                        caption: 'entities.pcmpracticeexperience.views.sxjy_wsswbjgridview.caption',
+                        caption: 'entities.pcmpracticeexperience.views.sxjy_wsswbjgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/zuzhiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1193,7 +1272,8 @@ const router = new Router({
                 {
                     path: 'pcmgxmls/:pcmgxml?/curndgridview/:curndgridview?',
                     meta: {
-                        caption: 'entities.pcmgxml.views.curndgridview.caption',
+                        caption: 'entities.pcmgxml.views.curndgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1208,7 +1288,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/rlsbeditview/:rlsbeditview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.rlsbeditview.caption',
+                        caption: 'entities.pcmprofile.views.rlsbeditview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/yleiyuangongzhuanzheng.png',
                         iconCls: '',
                         parameters: [
@@ -1223,7 +1304,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/yrdwcs_csrcyjeditview/:yrdwcs_csrcyjeditview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.yrdwcs_csrcyjeditview.caption',
+                        caption: 'entities.pcmprofile.views.yrdwcs_csrcyjeditview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
                         iconCls: '',
                         parameters: [
@@ -1238,7 +1320,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.ormorg.views.pickupgridview.caption',
+                        caption: 'entities.ormorg.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1251,7 +1334,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/rzspgridview/:rzspgridview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.rzspgridview.caption',
+                        caption: 'entities.pcmprofile.views.rzspgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/zhijizhiwuguanxi.png',
                         iconCls: '',
                         parameters: [
@@ -1266,7 +1350,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/rzspeditview/:rzspeditview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.rzspeditview.caption',
+                        caption: 'entities.pcmprofile.views.rzspeditview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/zhijizhiwuguanxi.png',
                         iconCls: '',
                         parameters: [
@@ -1281,7 +1366,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/xzwizardview/:xzwizardview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.xzwizardview.caption',
+                        caption: 'entities.pcmprofile.views.xzwizardview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
                         iconCls: '',
                         parameters: [
@@ -1296,7 +1382,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/ypzbd_csrcyjeditview/:ypzbd_csrcyjeditview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.ypzbd_csrcyjeditview.caption',
+                        caption: 'entities.pcmprofile.views.ypzbd_csrcyjeditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/xinqianhetong.png',
                         iconCls: '',
                         parameters: [
@@ -1311,7 +1398,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ypzsyfpxxpickupview/:ypzsyfpxxpickupview?',
                     meta: {
-                        caption: 'entities.ormorg.views.ypzsyfpxxpickupview.caption',
+                        caption: 'entities.ormorg.views.ypzsyfpxxpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1324,7 +1412,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmcertofregs/:pcmcertofreg?/zczs_wsswbjgridview/:zczs_wsswbjgridview?',
                     meta: {
-                        caption: 'entities.pcmcertofreg.views.zczs_wsswbjgridview.caption',
+                        caption: 'entities.pcmcertofreg.views.zczs_wsswbjgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhiyezige.png',
                         iconCls: '',
                         parameters: [
@@ -1340,7 +1429,8 @@ const router = new Router({
                 {
                     path: 'pcmcertofregs/:pcmcertofreg?/zczs_wsswbjgridview/:zczs_wsswbjgridview?',
                     meta: {
-                        caption: 'entities.pcmcertofreg.views.zczs_wsswbjgridview.caption',
+                        caption: 'entities.pcmcertofreg.views.zczs_wsswbjgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhiyezige.png',
                         iconCls: '',
                         parameters: [
@@ -1355,7 +1445,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/ypzbdgridview/:ypzbdgridview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.ypzbdgridview.caption',
+                        caption: 'entities.pcmprofile.views.ypzbdgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/xinqianhetong.png',
                         iconCls: '',
                         parameters: [
@@ -1370,7 +1461,8 @@ const router = new Router({
                 {
                     path: 'pcmxkmls/:pcmxkml?/mpickupview/:mpickupview?',
                     meta: {
-                        caption: 'entities.pcmxkml.views.mpickupview.caption',
+                        caption: 'entities.pcmxkml.views.mpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmxkmls', parameterName: 'pcmxkml' },
@@ -1383,7 +1475,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/ypzxx_csrcyjeditview/:ypzxx_csrcyjeditview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.ypzxx_csrcyjeditview.caption',
+                        caption: 'entities.pcmprofile.views.ypzxx_csrcyjeditview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
                         iconCls: '',
                         parameters: [
@@ -1398,7 +1491,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmprofileapprovals/:pcmprofileapproval?/jjgridview/:jjgridview?',
                     meta: {
-                        caption: 'entities.pcmprofileapproval.views.jjgridview.caption',
+                        caption: 'entities.pcmprofileapproval.views.jjgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhiyezige.png',
                         iconCls: '',
                         parameters: [
@@ -1414,7 +1508,8 @@ const router = new Router({
                 {
                     path: 'pcmprofileapprovals/:pcmprofileapproval?/jjgridview/:jjgridview?',
                     meta: {
-                        caption: 'entities.pcmprofileapproval.views.jjgridview.caption',
+                        caption: 'entities.pcmprofileapproval.views.jjgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/zhiyezige.png',
                         iconCls: '',
                         parameters: [
@@ -1429,7 +1524,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/txrypickupgridview/:txrypickupgridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.txrypickupgridview.caption',
+                        caption: 'entities.pimperson.views.txrypickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -1442,7 +1538,8 @@ const router = new Router({
                 {
                     path: 'pcmgxmls/:pcmgxml?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmgxml.views.editview.caption',
+                        caption: 'entities.pcmgxml.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/danganxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1457,7 +1554,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/rlsb_csrcyjgridview/:rlsb_csrcyjgridview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.rlsb_csrcyjgridview.caption',
+                        caption: 'entities.pcmprofile.views.rlsb_csrcyjgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/yleiyuangongzhuanzheng.png',
                         iconCls: '',
                         parameters: [
@@ -1472,7 +1570,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmpracticeexperiences/:pcmpracticeexperience?/sxjygridview/:sxjygridview?',
                     meta: {
-                        caption: 'entities.pcmpracticeexperience.views.sxjygridview.caption',
+                        caption: 'entities.pcmpracticeexperience.views.sxjygridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/zuzhiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1488,7 +1587,8 @@ const router = new Router({
                 {
                     path: 'pcmpracticeexperiences/:pcmpracticeexperience?/sxjygridview/:sxjygridview?',
                     meta: {
-                        caption: 'entities.pcmpracticeexperience.views.sxjygridview.caption',
+                        caption: 'entities.pcmpracticeexperience.views.sxjygridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/zuzhiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1503,7 +1603,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmcertofregs/:pcmcertofreg?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmcertofreg.views.editview.caption',
+                        caption: 'entities.pcmcertofreg.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
@@ -1517,7 +1618,8 @@ const router = new Router({
                 {
                     path: 'pcmcertofregs/:pcmcertofreg?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmcertofreg.views.editview.caption',
+                        caption: 'entities.pcmcertofreg.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmcertofregs', parameterName: 'pcmcertofreg' },
@@ -1530,7 +1632,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmeducationexperiences/:pcmeducationexperience?/jybj_wsswbjgridview/:jybj_wsswbjgridview?',
                     meta: {
-                        caption: 'entities.pcmeducationexperience.views.jybj_wsswbjgridview.caption',
+                        caption: 'entities.pcmeducationexperience.views.jybj_wsswbjgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1546,7 +1649,8 @@ const router = new Router({
                 {
                     path: 'pcmeducationexperiences/:pcmeducationexperience?/jybj_wsswbjgridview/:jybj_wsswbjgridview?',
                     meta: {
-                        caption: 'entities.pcmeducationexperience.views.jybj_wsswbjgridview.caption',
+                        caption: 'entities.pcmeducationexperience.views.jybj_wsswbjgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1561,7 +1665,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/ypzbd_csrcyjgridview/:ypzbd_csrcyjgridview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.ypzbd_csrcyjgridview.caption',
+                        caption: 'entities.pcmprofile.views.ypzbd_csrcyjgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/xinqianhetong.png',
                         iconCls: '',
                         parameters: [
@@ -1576,7 +1681,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/ypzxx_lrgridview/:ypzxx_lrgridview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.ypzxx_lrgridview.caption',
+                        caption: 'entities.pcmprofile.views.ypzxx_lrgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
                         iconCls: '',
                         parameters: [
@@ -1591,7 +1697,8 @@ const router = new Router({
                 {
                     path: 'pimqualmajors/:pimqualmajor?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.pimqualmajor.views.pickupgridview.caption',
+                        caption: 'entities.pimqualmajor.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimqualmajors', parameterName: 'pimqualmajor' },
@@ -1604,7 +1711,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmtdzwxxes/:pcmtdzwxx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmtdzwxx.views.editview.caption',
+                        caption: 'entities.pcmtdzwxx.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/gangweiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1620,7 +1728,8 @@ const router = new Router({
                 {
                     path: 'pcmtdzwxxes/:pcmtdzwxx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmtdzwxx.views.editview.caption',
+                        caption: 'entities.pcmtdzwxx.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/gangweiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1635,7 +1744,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmtdzwxxes/:pcmtdzwxx?/tdzwgridview/:tdzwgridview?',
                     meta: {
-                        caption: 'entities.pcmtdzwxx.views.tdzwgridview.caption',
+                        caption: 'entities.pcmtdzwxx.views.tdzwgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/gangweiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1651,7 +1761,8 @@ const router = new Router({
                 {
                     path: 'pcmtdzwxxes/:pcmtdzwxx?/tdzwgridview/:tdzwgridview?',
                     meta: {
-                        caption: 'entities.pcmtdzwxx.views.tdzwgridview.caption',
+                        caption: 'entities.pcmtdzwxx.views.tdzwgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/gangweiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1666,7 +1777,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmworkresumes/:pcmworkresume?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmworkresume.views.editview.caption',
+                        caption: 'entities.pcmworkresume.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gongzuolvli.png',
                         iconCls: '',
                         parameters: [
@@ -1682,7 +1794,8 @@ const router = new Router({
                 {
                     path: 'pcmworkresumes/:pcmworkresume?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmworkresume.views.editview.caption',
+                        caption: 'entities.pcmworkresume.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gongzuolvli.png',
                         iconCls: '',
                         parameters: [
@@ -1697,7 +1810,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/pcmworkresumes/:pcmworkresume?/gzllgridview/:gzllgridview?',
                     meta: {
-                        caption: 'entities.pcmworkresume.views.gzllgridview.caption',
+                        caption: 'entities.pcmworkresume.views.gzllgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gongzuolvli.png',
                         iconCls: '',
                         parameters: [
@@ -1713,7 +1827,8 @@ const router = new Router({
                 {
                     path: 'pcmworkresumes/:pcmworkresume?/gzllgridview/:gzllgridview?',
                     meta: {
-                        caption: 'entities.pcmworkresume.views.gzllgridview.caption',
+                        caption: 'entities.pcmworkresume.views.gzllgridview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gongzuolvli.png',
                         iconCls: '',
                         parameters: [
@@ -1728,7 +1843,8 @@ const router = new Router({
                 {
                     path: 'pcmprofiles/:pcmprofile?/yrdwcs_csrcyjgridview/:yrdwcs_csrcyjgridview?',
                     meta: {
-                        caption: 'entities.pcmprofile.views.yrdwcs_csrcyjgridview.caption',
+                        caption: 'entities.pcmprofile.views.yrdwcs_csrcyjgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
                         iconCls: '',
                         parameters: [
@@ -1743,7 +1859,8 @@ const router = new Router({
                 {
                     path: 'pcmprofilespyys/:pcmprofilespyy?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pcmprofilespyy.views.gridview.caption',
+                        caption: 'entities.pcmprofilespyy.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/kfgl/1/peixunjiluguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1761,7 +1878,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmworkresumes/:pcmworkresume?/gzll_wsswbjgridview/:gzll_wsswbjgridview?',
         meta: {
-            caption: 'entities.pcmworkresume.views.gzll_wsswbjgridview.caption',
+            caption: 'entities.pcmworkresume.views.gzll_wsswbjgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gongzuolvli.png',
             iconCls: '',
             parameters: [
@@ -1776,7 +1894,8 @@ const router = new Router({
     {
         path: '/pcmworkresumes/:pcmworkresume?/gzll_wsswbjgridview/:gzll_wsswbjgridview?',
         meta: {
-            caption: 'entities.pcmworkresume.views.gzll_wsswbjgridview.caption',
+            caption: 'entities.pcmworkresume.views.gzll_wsswbjgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gongzuolvli.png',
             iconCls: '',
             parameters: [
@@ -1790,7 +1909,8 @@ const router = new Router({
     {
         path: '/pcmprofilespyys/:pcmprofilespyy?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pcmprofilespyy.views.gridview.caption',
+            caption: 'entities.pcmprofilespyy.views.gridview.title',
+            info:'',
             imgPath: '../../../img/kfgl/1/peixunjiluguanli.png',
             iconCls: '',
             parameters: [
@@ -1804,7 +1924,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupview/:ejormorgidpickupview?',
         meta: {
-            caption: 'entities.ormpost.views.ejormorgidpickupview.caption',
+            caption: 'entities.ormpost.views.ejormorgidpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -1817,7 +1938,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/ejormorgidpickupview/:ejormorgidpickupview?',
         meta: {
-            caption: 'entities.ormpost.views.ejormorgidpickupview.caption',
+            caption: 'entities.ormpost.views.ejormorgidpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'ejormorgidpickupview', parameterName: 'ejormorgidpickupview' },
@@ -1829,7 +1951,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmworkresumes/:pcmworkresume?/gzllgridview/:gzllgridview?',
         meta: {
-            caption: 'entities.pcmworkresume.views.gzllgridview.caption',
+            caption: 'entities.pcmworkresume.views.gzllgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gongzuolvli.png',
             iconCls: '',
             parameters: [
@@ -1844,7 +1967,8 @@ const router = new Router({
     {
         path: '/pcmworkresumes/:pcmworkresume?/gzllgridview/:gzllgridview?',
         meta: {
-            caption: 'entities.pcmworkresume.views.gzllgridview.caption',
+            caption: 'entities.pcmworkresume.views.gzllgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gongzuolvli.png',
             iconCls: '',
             parameters: [
@@ -1858,7 +1982,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/txrypickupview/:txrypickupview?',
         meta: {
-            caption: 'entities.pimperson.views.txrypickupview.caption',
+            caption: 'entities.pimperson.views.txrypickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'txrypickupview', parameterName: 'txrypickupview' },
@@ -1870,7 +1995,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmschooloffices/:pcmschooloffice?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmschooloffice.views.editview.caption',
+            caption: 'entities.pcmschooloffice.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenguanli.png',
             iconCls: '',
             parameters: [
@@ -1885,7 +2011,8 @@ const router = new Router({
     {
         path: '/pcmschooloffices/:pcmschooloffice?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmschooloffice.views.editview.caption',
+            caption: 'entities.pcmschooloffice.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenguanli.png',
             iconCls: '',
             parameters: [
@@ -1899,7 +2026,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/ypzbd_csrcyjgridview/:ypzbd_csrcyjgridview?',
         meta: {
-            caption: 'entities.pcmprofile.views.ypzbd_csrcyjgridview.caption',
+            caption: 'entities.pcmprofile.views.ypzbd_csrcyjgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/xinqianhetong.png',
             iconCls: '',
             parameters: [
@@ -1913,7 +2041,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ypzxxsypickupgridview/:ypzxxsypickupgridview?',
         meta: {
-            caption: 'entities.ormorg.views.ypzxxsypickupgridview.caption',
+            caption: 'entities.ormorg.views.ypzxxsypickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ypzxxsypickupgridview', parameterName: 'ypzxxsypickupgridview' },
@@ -1925,7 +2054,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/rlsb_csrcyjgridview/:rlsb_csrcyjgridview?',
         meta: {
-            caption: 'entities.pcmprofile.views.rlsb_csrcyjgridview.caption',
+            caption: 'entities.pcmprofile.views.rlsb_csrcyjgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/yleiyuangongzhuanzheng.png',
             iconCls: '',
             parameters: [
@@ -1939,7 +2069,8 @@ const router = new Router({
     {
         path: '/pcmgxmls/:pcmgxml?/curndgridview/:curndgridview?',
         meta: {
-            caption: 'entities.pcmgxml.views.curndgridview.caption',
+            caption: 'entities.pcmgxml.views.curndgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -1953,7 +2084,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/bhsp_csrcyjeditview/:bhsp_csrcyjeditview?',
         meta: {
-            caption: 'entities.pcmprofile.views.bhsp_csrcyjeditview.caption',
+            caption: 'entities.pcmprofile.views.bhsp_csrcyjeditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongguanli.png',
             iconCls: '',
             parameters: [
@@ -1967,7 +2099,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmeducationexperiences/:pcmeducationexperience?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmeducationexperience.views.editview.caption',
+            caption: 'entities.pcmeducationexperience.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
             iconCls: '',
             parameters: [
@@ -1982,7 +2115,8 @@ const router = new Router({
     {
         path: '/pcmeducationexperiences/:pcmeducationexperience?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmeducationexperience.views.editview.caption',
+            caption: 'entities.pcmeducationexperience.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
             iconCls: '',
             parameters: [
@@ -1996,7 +2130,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmeducationexperiences/:pcmeducationexperience?/jybj_wsswbjgridview/:jybj_wsswbjgridview?',
         meta: {
-            caption: 'entities.pcmeducationexperience.views.jybj_wsswbjgridview.caption',
+            caption: 'entities.pcmeducationexperience.views.jybj_wsswbjgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
             iconCls: '',
             parameters: [
@@ -2011,7 +2146,8 @@ const router = new Router({
     {
         path: '/pcmeducationexperiences/:pcmeducationexperience?/jybj_wsswbjgridview/:jybj_wsswbjgridview?',
         meta: {
-            caption: 'entities.pcmeducationexperience.views.jybj_wsswbjgridview.caption',
+            caption: 'entities.pcmeducationexperience.views.jybj_wsswbjgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
             iconCls: '',
             parameters: [
@@ -2025,7 +2161,8 @@ const router = new Router({
     {
         path: '/pcmzpmegls/:pcmzpmegl?/treeexpview/:treeexpview?',
         meta: {
-            caption: 'entities.pcmzpmegl.views.treeexpview.caption',
+            caption: 'entities.pcmzpmegl.views.treeexpview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -2039,7 +2176,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/bhsp_csrcyjgridview/:bhsp_csrcyjgridview?',
         meta: {
-            caption: 'entities.pcmprofile.views.bhsp_csrcyjgridview.caption',
+            caption: 'entities.pcmprofile.views.bhsp_csrcyjgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongguanli.png',
             iconCls: '',
             parameters: [
@@ -2053,7 +2191,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmtdzwxxes/:pcmtdzwxx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmtdzwxx.views.editview.caption',
+            caption: 'entities.pcmtdzwxx.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/gangweiguanli.png',
             iconCls: '',
             parameters: [
@@ -2068,7 +2207,8 @@ const router = new Router({
     {
         path: '/pcmtdzwxxes/:pcmtdzwxx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmtdzwxx.views.editview.caption',
+            caption: 'entities.pcmtdzwxx.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/gangweiguanli.png',
             iconCls: '',
             parameters: [
@@ -2082,7 +2222,8 @@ const router = new Router({
     {
         path: '/pcmxkmls/:pcmxkml?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.pcmxkml.views.pickupgridview.caption',
+            caption: 'entities.pcmxkml.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmxkmls', parameterName: 'pcmxkml' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -2094,7 +2235,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmtestresults/:pcmtestresult?/cpjggridview/:cpjggridview?',
         meta: {
-            caption: 'entities.pcmtestresult.views.cpjggridview.caption',
+            caption: 'entities.pcmtestresult.views.cpjggridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
             iconCls: '',
             parameters: [
@@ -2109,7 +2251,8 @@ const router = new Router({
     {
         path: '/pcmtestresults/:pcmtestresult?/cpjggridview/:cpjggridview?',
         meta: {
-            caption: 'entities.pcmtestresult.views.cpjggridview.caption',
+            caption: 'entities.pcmtestresult.views.cpjggridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
             iconCls: '',
             parameters: [
@@ -2123,7 +2266,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/rlsb_xgeditview/:rlsb_xgeditview?',
         meta: {
-            caption: 'entities.pcmprofile.views.rlsb_xgeditview.caption',
+            caption: 'entities.pcmprofile.views.rlsb_xgeditview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/yleiyuangongzhuanzheng.png',
             iconCls: '',
             parameters: [
@@ -2137,7 +2281,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/xzwizardview/:xzwizardview?',
         meta: {
-            caption: 'entities.pcmprofile.views.xzwizardview.caption',
+            caption: 'entities.pcmprofile.views.xzwizardview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
             iconCls: '',
             parameters: [
@@ -2151,7 +2296,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/ypzxx_lrgridview/:ypzxx_lrgridview?',
         meta: {
-            caption: 'entities.pcmprofile.views.ypzxx_lrgridview.caption',
+            caption: 'entities.pcmprofile.views.ypzxx_lrgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
             iconCls: '',
             parameters: [
@@ -2165,7 +2311,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
         meta: {
-            caption: 'entities.ormpost.views.ejormorgidpickupgridview.caption',
+            caption: 'entities.ormpost.views.ejormorgidpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -2178,7 +2325,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
         meta: {
-            caption: 'entities.ormpost.views.ejormorgidpickupgridview.caption',
+            caption: 'entities.ormpost.views.ejormorgidpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'ejormorgidpickupgridview', parameterName: 'ejormorgidpickupgridview' },
@@ -2190,7 +2338,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmpracticeexperiences/:pcmpracticeexperience?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmpracticeexperience.views.editview.caption',
+            caption: 'entities.pcmpracticeexperience.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/zuzhiguanli.png',
             iconCls: '',
             parameters: [
@@ -2205,7 +2354,8 @@ const router = new Router({
     {
         path: '/pcmpracticeexperiences/:pcmpracticeexperience?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmpracticeexperience.views.editview.caption',
+            caption: 'entities.pcmpracticeexperience.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/zuzhiguanli.png',
             iconCls: '',
             parameters: [
@@ -2219,7 +2369,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/rzsp_csrcyjgridview/:rzsp_csrcyjgridview?',
         meta: {
-            caption: 'entities.pcmprofile.views.rzsp_csrcyjgridview.caption',
+            caption: 'entities.pcmprofile.views.rzsp_csrcyjgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/zhijizhiwuguanxi.png',
             iconCls: '',
             parameters: [
@@ -2233,7 +2384,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/rlsbgridview/:rlsbgridview?',
         meta: {
-            caption: 'entities.pcmprofile.views.rlsbgridview.caption',
+            caption: 'entities.pcmprofile.views.rlsbgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/yleiyuangongzhuanzheng.png',
             iconCls: '',
             parameters: [
@@ -2247,7 +2399,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmschooloffices/:pcmschooloffice?/zxzwgridview/:zxzwgridview?',
         meta: {
-            caption: 'entities.pcmschooloffice.views.zxzwgridview.caption',
+            caption: 'entities.pcmschooloffice.views.zxzwgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenguanli.png',
             iconCls: '',
             parameters: [
@@ -2262,7 +2415,8 @@ const router = new Router({
     {
         path: '/pcmschooloffices/:pcmschooloffice?/zxzwgridview/:zxzwgridview?',
         meta: {
-            caption: 'entities.pcmschooloffice.views.zxzwgridview.caption',
+            caption: 'entities.pcmschooloffice.views.zxzwgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenguanli.png',
             iconCls: '',
             parameters: [
@@ -2276,7 +2430,8 @@ const router = new Router({
     {
         path: '/pcmxkmls/:pcmxkml?/xkmltreeexpview/:xkmltreeexpview?',
         meta: {
-            caption: 'entities.pcmxkml.views.xkmltreeexpview.caption',
+            caption: 'entities.pcmxkml.views.xkmltreeexpview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmxkmls', parameterName: 'pcmxkml' },
                 { pathName: 'xkmltreeexpview', parameterName: 'xkmltreeexpview' },
@@ -2288,7 +2443,8 @@ const router = new Router({
     {
         path: '/pcmxkmls/:pcmxkml?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmxkml.views.editview.caption',
+            caption: 'entities.pcmxkml.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhichengmuluguanli.png',
             iconCls: '',
             parameters: [
@@ -2302,7 +2458,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmcertofregs/:pcmcertofreg?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmcertofreg.views.editview.caption',
+            caption: 'entities.pcmcertofreg.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmprofiles', parameterName: 'pcmprofile' },
                 { pathName: 'pcmcertofregs', parameterName: 'pcmcertofreg' },
@@ -2315,7 +2472,8 @@ const router = new Router({
     {
         path: '/pcmcertofregs/:pcmcertofreg?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmcertofreg.views.editview.caption',
+            caption: 'entities.pcmcertofreg.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmcertofregs', parameterName: 'pcmcertofreg' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -2327,7 +2485,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmtestresults/:pcmtestresult?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmtestresult.views.editview.caption',
+            caption: 'entities.pcmtestresult.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
             iconCls: '',
             parameters: [
@@ -2342,7 +2501,8 @@ const router = new Router({
     {
         path: '/pcmtestresults/:pcmtestresult?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmtestresult.views.editview.caption',
+            caption: 'entities.pcmtestresult.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
             iconCls: '',
             parameters: [
@@ -2356,7 +2516,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.ormorg.views.pickupview.caption',
+            caption: 'entities.ormorg.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -2368,7 +2529,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/ypzbdeditview/:ypzbdeditview?',
         meta: {
-            caption: 'entities.pcmprofile.views.ypzbdeditview.caption',
+            caption: 'entities.pcmprofile.views.ypzbdeditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/xinqianhetong.png',
             iconCls: '',
             parameters: [
@@ -2382,7 +2544,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/rlsb_csrcyjxgeditview/:rlsb_csrcyjxgeditview?',
         meta: {
-            caption: 'entities.pcmprofile.views.rlsb_csrcyjxgeditview.caption',
+            caption: 'entities.pcmprofile.views.rlsb_csrcyjxgeditview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/yleiyuangongzhuanzheng.png',
             iconCls: '',
             parameters: [
@@ -2396,7 +2559,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmawardswons/:pcmawardswons?/hjqk_wsswbjgridview/:hjqk_wsswbjgridview?',
         meta: {
-            caption: 'entities.pcmawardswons.views.hjqk_wsswbjgridview.caption',
+            caption: 'entities.pcmawardswons.views.hjqk_wsswbjgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenbianzhi.png',
             iconCls: '',
             parameters: [
@@ -2411,7 +2575,8 @@ const router = new Router({
     {
         path: '/pcmawardswons/:pcmawardswons?/hjqk_wsswbjgridview/:hjqk_wsswbjgridview?',
         meta: {
-            caption: 'entities.pcmawardswons.views.hjqk_wsswbjgridview.caption',
+            caption: 'entities.pcmawardswons.views.hjqk_wsswbjgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenbianzhi.png',
             iconCls: '',
             parameters: [
@@ -2425,7 +2590,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/fpwizardview/:fpwizardview?',
         meta: {
-            caption: 'entities.pcmprofile.views.fpwizardview.caption',
+            caption: 'entities.pcmprofile.views.fpwizardview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
             iconCls: '',
             parameters: [
@@ -2439,7 +2605,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/ormorgsectorpickupgridview/:ormorgsectorpickupgridview?',
         meta: {
-            caption: 'entities.ormduty.views.ormorgsectorpickupgridview.caption',
+            caption: 'entities.ormduty.views.ormorgsectorpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormduties', parameterName: 'ormduty' },
                 { pathName: 'ormorgsectorpickupgridview', parameterName: 'ormorgsectorpickupgridview' },
@@ -2451,7 +2618,8 @@ const router = new Router({
     {
         path: '/pimqualmajors/:pimqualmajor?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.pimqualmajor.views.pickupview.caption',
+            caption: 'entities.pimqualmajor.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimqualmajors', parameterName: 'pimqualmajor' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -2463,7 +2631,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmprofileapprovals/:pcmprofileapproval?/jjgridview/:jjgridview?',
         meta: {
-            caption: 'entities.pcmprofileapproval.views.jjgridview.caption',
+            caption: 'entities.pcmprofileapproval.views.jjgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhiyezige.png',
             iconCls: '',
             parameters: [
@@ -2478,7 +2647,8 @@ const router = new Router({
     {
         path: '/pcmprofileapprovals/:pcmprofileapproval?/jjgridview/:jjgridview?',
         meta: {
-            caption: 'entities.pcmprofileapproval.views.jjgridview.caption',
+            caption: 'entities.pcmprofileapproval.views.jjgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhiyezige.png',
             iconCls: '',
             parameters: [
@@ -2492,7 +2662,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/yrdwcs_csrcyjgridview/:yrdwcs_csrcyjgridview?',
         meta: {
-            caption: 'entities.pcmprofile.views.yrdwcs_csrcyjgridview.caption',
+            caption: 'entities.pcmprofile.views.yrdwcs_csrcyjgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
             iconCls: '',
             parameters: [
@@ -2506,7 +2677,8 @@ const router = new Router({
     {
         path: '/pcmxkmls/:pcmxkml?/pcmgxxktemps/:pcmgxxktemp?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pcmgxxktemp.views.gridview.caption',
+            caption: 'entities.pcmgxxktemp.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -2521,7 +2693,8 @@ const router = new Router({
     {
         path: '/pcmgxmls/:pcmgxml?/pcmgxxktemps/:pcmgxxktemp?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pcmgxxktemp.views.gridview.caption',
+            caption: 'entities.pcmgxxktemp.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -2536,7 +2709,8 @@ const router = new Router({
     {
         path: '/pcmgxxktemps/:pcmgxxktemp?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pcmgxxktemp.views.gridview.caption',
+            caption: 'entities.pcmgxxktemp.views.gridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -2550,7 +2724,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/rzsp_csrcyjeditview/:rzsp_csrcyjeditview?',
         meta: {
-            caption: 'entities.pcmprofile.views.rzsp_csrcyjeditview.caption',
+            caption: 'entities.pcmprofile.views.rzsp_csrcyjeditview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/zhijizhiwuguanxi.png',
             iconCls: '',
             parameters: [
@@ -2564,7 +2739,8 @@ const router = new Router({
     {
         path: '/pcmgxmls/:pcmgxml?/gxmltreeexpview/:gxmltreeexpview?',
         meta: {
-            caption: 'entities.pcmgxml.views.gxmltreeexpview.caption',
+            caption: 'entities.pcmgxml.views.gxmltreeexpview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -2578,7 +2754,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/rlsb_csrcyjeditview/:rlsb_csrcyjeditview?',
         meta: {
-            caption: 'entities.pcmprofile.views.rlsb_csrcyjeditview.caption',
+            caption: 'entities.pcmprofile.views.rlsb_csrcyjeditview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/yleiyuangongzhuanzheng.png',
             iconCls: '',
             parameters: [
@@ -2592,7 +2769,8 @@ const router = new Router({
     {
         path: '/pcmzpmegls/:pcmzpmegl?/curndgridview/:curndgridview?',
         meta: {
-            caption: 'entities.pcmzpmegl.views.curndgridview.caption',
+            caption: 'entities.pcmzpmegl.views.curndgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
             iconCls: '',
             parameters: [
@@ -2606,7 +2784,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmcertofregs/:pcmcertofreg?/zczs_wsswbjgridview/:zczs_wsswbjgridview?',
         meta: {
-            caption: 'entities.pcmcertofreg.views.zczs_wsswbjgridview.caption',
+            caption: 'entities.pcmcertofreg.views.zczs_wsswbjgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhiyezige.png',
             iconCls: '',
             parameters: [
@@ -2621,7 +2800,8 @@ const router = new Router({
     {
         path: '/pcmcertofregs/:pcmcertofreg?/zczs_wsswbjgridview/:zczs_wsswbjgridview?',
         meta: {
-            caption: 'entities.pcmcertofreg.views.zczs_wsswbjgridview.caption',
+            caption: 'entities.pcmcertofreg.views.zczs_wsswbjgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhiyezige.png',
             iconCls: '',
             parameters: [
@@ -2635,7 +2815,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/ypzxx_lreditview/:ypzxx_lreditview?',
         meta: {
-            caption: 'entities.pcmprofile.views.ypzxx_lreditview.caption',
+            caption: 'entities.pcmprofile.views.ypzxx_lreditview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
             iconCls: '',
             parameters: [
@@ -2649,7 +2830,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/ypzxx_csrcyjeditview/:ypzxx_csrcyjeditview?',
         meta: {
-            caption: 'entities.pcmprofile.views.ypzxx_csrcyjeditview.caption',
+            caption: 'entities.pcmprofile.views.ypzxx_csrcyjeditview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
             iconCls: '',
             parameters: [
@@ -2663,7 +2845,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/bhspgridview/:bhspgridview?',
         meta: {
-            caption: 'entities.pcmprofile.views.bhspgridview.caption',
+            caption: 'entities.pcmprofile.views.bhspgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongguanli.png',
             iconCls: '',
             parameters: [
@@ -2677,7 +2860,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmcertofregs/:pcmcertofreg?/zczsgridview/:zczsgridview?',
         meta: {
-            caption: 'entities.pcmcertofreg.views.zczsgridview.caption',
+            caption: 'entities.pcmcertofreg.views.zczsgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhiyezige.png',
             iconCls: '',
             parameters: [
@@ -2692,7 +2876,8 @@ const router = new Router({
     {
         path: '/pcmcertofregs/:pcmcertofreg?/zczsgridview/:zczsgridview?',
         meta: {
-            caption: 'entities.pcmcertofreg.views.zczsgridview.caption',
+            caption: 'entities.pcmcertofreg.views.zczsgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhiyezige.png',
             iconCls: '',
             parameters: [
@@ -2706,7 +2891,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/ypzbd_csrcyjeditview/:ypzbd_csrcyjeditview?',
         meta: {
-            caption: 'entities.pcmprofile.views.ypzbd_csrcyjeditview.caption',
+            caption: 'entities.pcmprofile.views.ypzbd_csrcyjeditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/xinqianhetong.png',
             iconCls: '',
             parameters: [
@@ -2720,7 +2906,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/ormorgsectorpickupview/:ormorgsectorpickupview?',
         meta: {
-            caption: 'entities.ormduty.views.ormorgsectorpickupview.caption',
+            caption: 'entities.ormduty.views.ormorgsectorpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormduties', parameterName: 'ormduty' },
                 { pathName: 'ormorgsectorpickupview', parameterName: 'ormorgsectorpickupview' },
@@ -2732,7 +2919,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmtestresults/:pcmtestresult?/cpjg_wsswbjgridview/:cpjg_wsswbjgridview?',
         meta: {
-            caption: 'entities.pcmtestresult.views.cpjg_wsswbjgridview.caption',
+            caption: 'entities.pcmtestresult.views.cpjg_wsswbjgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
             iconCls: '',
             parameters: [
@@ -2747,7 +2935,8 @@ const router = new Router({
     {
         path: '/pcmtestresults/:pcmtestresult?/cpjg_wsswbjgridview/:cpjg_wsswbjgridview?',
         meta: {
-            caption: 'entities.pcmtestresult.views.cpjg_wsswbjgridview.caption',
+            caption: 'entities.pcmtestresult.views.cpjg_wsswbjgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
             iconCls: '',
             parameters: [
@@ -2761,7 +2950,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/txrypickupgridview/:txrypickupgridview?',
         meta: {
-            caption: 'entities.pimperson.views.txrypickupgridview.caption',
+            caption: 'entities.pimperson.views.txrypickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'txrypickupgridview', parameterName: 'txrypickupgridview' },
@@ -2773,7 +2963,8 @@ const router = new Router({
     {
         path: '/pcmzpmegls/:pcmzpmegl?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmzpmegl.views.editview.caption',
+            caption: 'entities.pcmzpmegl.views.editview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
             iconCls: '',
             parameters: [
@@ -2787,7 +2978,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmawardswons/:pcmawardswons?/hjqkgridview/:hjqkgridview?',
         meta: {
-            caption: 'entities.pcmawardswons.views.hjqkgridview.caption',
+            caption: 'entities.pcmawardswons.views.hjqkgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenbianzhi.png',
             iconCls: '',
             parameters: [
@@ -2802,7 +2994,8 @@ const router = new Router({
     {
         path: '/pcmawardswons/:pcmawardswons?/hjqkgridview/:hjqkgridview?',
         meta: {
-            caption: 'entities.pcmawardswons.views.hjqkgridview.caption',
+            caption: 'entities.pcmawardswons.views.hjqkgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenbianzhi.png',
             iconCls: '',
             parameters: [
@@ -2816,7 +3009,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmpracticeexperiences/:pcmpracticeexperience?/sxjygridview/:sxjygridview?',
         meta: {
-            caption: 'entities.pcmpracticeexperience.views.sxjygridview.caption',
+            caption: 'entities.pcmpracticeexperience.views.sxjygridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/zuzhiguanli.png',
             iconCls: '',
             parameters: [
@@ -2831,7 +3025,8 @@ const router = new Router({
     {
         path: '/pcmpracticeexperiences/:pcmpracticeexperience?/sxjygridview/:sxjygridview?',
         meta: {
-            caption: 'entities.pcmpracticeexperience.views.sxjygridview.caption',
+            caption: 'entities.pcmpracticeexperience.views.sxjygridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/zuzhiguanli.png',
             iconCls: '',
             parameters: [
@@ -2845,7 +3040,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/qtzpwizardview/:qtzpwizardview?',
         meta: {
-            caption: 'entities.pcmprofile.views.qtzpwizardview.caption',
+            caption: 'entities.pcmprofile.views.qtzpwizardview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
             iconCls: '',
             parameters: [
@@ -2859,7 +3055,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/ypzbdgridview/:ypzbdgridview?',
         meta: {
-            caption: 'entities.pcmprofile.views.ypzbdgridview.caption',
+            caption: 'entities.pcmprofile.views.ypzbdgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/xinqianhetong.png',
             iconCls: '',
             parameters: [
@@ -2873,7 +3070,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmeducationexperiences/:pcmeducationexperience?/jybjgridview/:jybjgridview?',
         meta: {
-            caption: 'entities.pcmeducationexperience.views.jybjgridview.caption',
+            caption: 'entities.pcmeducationexperience.views.jybjgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
             iconCls: '',
             parameters: [
@@ -2888,7 +3086,8 @@ const router = new Router({
     {
         path: '/pcmeducationexperiences/:pcmeducationexperience?/jybjgridview/:jybjgridview?',
         meta: {
-            caption: 'entities.pcmeducationexperience.views.jybjgridview.caption',
+            caption: 'entities.pcmeducationexperience.views.jybjgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/jiaoyuxinxi.png',
             iconCls: '',
             parameters: [
@@ -2902,7 +3101,8 @@ const router = new Router({
     {
         path: '/pcmgxmls/:pcmgxml?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.pcmgxml.views.pickupgridview.caption',
+            caption: 'entities.pcmgxml.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmgxmls', parameterName: 'pcmgxml' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -2914,7 +3114,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/szwizardview/:szwizardview?',
         meta: {
-            caption: 'entities.pcmprofile.views.szwizardview.caption',
+            caption: 'entities.pcmprofile.views.szwizardview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
             iconCls: '',
             parameters: [
@@ -2928,7 +3129,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/bhspeditview/:bhspeditview?',
         meta: {
-            caption: 'entities.pcmprofile.views.bhspeditview.caption',
+            caption: 'entities.pcmprofile.views.bhspeditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/hetongguanli.png',
             iconCls: '',
             parameters: [
@@ -2942,7 +3144,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmpracticeexperiences/:pcmpracticeexperience?/sxjy_wsswbjgridview/:sxjy_wsswbjgridview?',
         meta: {
-            caption: 'entities.pcmpracticeexperience.views.sxjy_wsswbjgridview.caption',
+            caption: 'entities.pcmpracticeexperience.views.sxjy_wsswbjgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/zuzhiguanli.png',
             iconCls: '',
             parameters: [
@@ -2957,7 +3160,8 @@ const router = new Router({
     {
         path: '/pcmpracticeexperiences/:pcmpracticeexperience?/sxjy_wsswbjgridview/:sxjy_wsswbjgridview?',
         meta: {
-            caption: 'entities.pcmpracticeexperience.views.sxjy_wsswbjgridview.caption',
+            caption: 'entities.pcmpracticeexperience.views.sxjy_wsswbjgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/zuzhiguanli.png',
             iconCls: '',
             parameters: [
@@ -2971,7 +3175,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ypzsyfpxxpickupview/:ypzsyfpxxpickupview?',
         meta: {
-            caption: 'entities.ormorg.views.ypzsyfpxxpickupview.caption',
+            caption: 'entities.ormorg.views.ypzsyfpxxpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ypzsyfpxxpickupview', parameterName: 'ypzsyfpxxpickupview' },
@@ -2983,7 +3188,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmtdzwxxes/:pcmtdzwxx?/tdzw_wsswbjgridview/:tdzw_wsswbjgridview?',
         meta: {
-            caption: 'entities.pcmtdzwxx.views.tdzw_wsswbjgridview.caption',
+            caption: 'entities.pcmtdzwxx.views.tdzw_wsswbjgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/gangweiguanli.png',
             iconCls: '',
             parameters: [
@@ -2998,7 +3204,8 @@ const router = new Router({
     {
         path: '/pcmtdzwxxes/:pcmtdzwxx?/tdzw_wsswbjgridview/:tdzw_wsswbjgridview?',
         meta: {
-            caption: 'entities.pcmtdzwxx.views.tdzw_wsswbjgridview.caption',
+            caption: 'entities.pcmtdzwxx.views.tdzw_wsswbjgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/gangweiguanli.png',
             iconCls: '',
             parameters: [
@@ -3012,7 +3219,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmawardswons/:pcmawardswons?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmawardswons.views.editview.caption',
+            caption: 'entities.pcmawardswons.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenbianzhi.png',
             iconCls: '',
             parameters: [
@@ -3027,7 +3235,8 @@ const router = new Router({
     {
         path: '/pcmawardswons/:pcmawardswons?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmawardswons.views.editview.caption',
+            caption: 'entities.pcmawardswons.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenbianzhi.png',
             iconCls: '',
             parameters: [
@@ -3041,7 +3250,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.ormorg.views.pickupgridview.caption',
+            caption: 'entities.ormorg.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -3053,7 +3263,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/yrdwcs_csrcyjeditview/:yrdwcs_csrcyjeditview?',
         meta: {
-            caption: 'entities.pcmprofile.views.yrdwcs_csrcyjeditview.caption',
+            caption: 'entities.pcmprofile.views.yrdwcs_csrcyjeditview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
             iconCls: '',
             parameters: [
@@ -3067,7 +3278,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/rlsbeditview/:rlsbeditview?',
         meta: {
-            caption: 'entities.pcmprofile.views.rlsbeditview.caption',
+            caption: 'entities.pcmprofile.views.rlsbeditview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/yleiyuangongzhuanzheng.png',
             iconCls: '',
             parameters: [
@@ -3081,7 +3293,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/zpdwsheditview/:zpdwsheditview?',
         meta: {
-            caption: 'entities.pcmprofile.views.zpdwsheditview.caption',
+            caption: 'entities.pcmprofile.views.zpdwsheditview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
             iconCls: '',
             parameters: [
@@ -3095,7 +3308,8 @@ const router = new Router({
     {
         path: '/pcmprofilespyys/:pcmprofilespyy?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmprofilespyy.views.editview.caption',
+            caption: 'entities.pcmprofilespyy.views.editview.title',
+            info:'',
             imgPath: '../../../img/kfgl/1/peixunjiluguanli.png',
             iconCls: '',
             parameters: [
@@ -3109,7 +3323,8 @@ const router = new Router({
     {
         path: '/pcmgxmls/:pcmgxml?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmgxml.views.editview.caption',
+            caption: 'entities.pcmgxml.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/danganxinxi.png',
             iconCls: '',
             parameters: [
@@ -3123,7 +3338,8 @@ const router = new Router({
     {
         path: '/pcmxkmls/:pcmxkml?/mpickupview/:mpickupview?',
         meta: {
-            caption: 'entities.pcmxkml.views.mpickupview.caption',
+            caption: 'entities.pcmxkml.views.mpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmxkmls', parameterName: 'pcmxkml' },
                 { pathName: 'mpickupview', parameterName: 'mpickupview' },
@@ -3135,7 +3351,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ydbmpickupgridview/:ydbmpickupgridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.ydbmpickupgridview.caption',
+            caption: 'entities.ormorgsector.views.ydbmpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -3148,7 +3365,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/ydbmpickupgridview/:ydbmpickupgridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.ydbmpickupgridview.caption',
+            caption: 'entities.ormorgsector.views.ydbmpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'ydbmpickupgridview', parameterName: 'ydbmpickupgridview' },
@@ -3160,7 +3378,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmworkresumes/:pcmworkresume?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmworkresume.views.editview.caption',
+            caption: 'entities.pcmworkresume.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gongzuolvli.png',
             iconCls: '',
             parameters: [
@@ -3175,7 +3394,8 @@ const router = new Router({
     {
         path: '/pcmworkresumes/:pcmworkresume?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmworkresume.views.editview.caption',
+            caption: 'entities.pcmworkresume.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gongzuolvli.png',
             iconCls: '',
             parameters: [
@@ -3189,7 +3409,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/rzspeditview/:rzspeditview?',
         meta: {
-            caption: 'entities.pcmprofile.views.rzspeditview.caption',
+            caption: 'entities.pcmprofile.views.rzspeditview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/zhijizhiwuguanxi.png',
             iconCls: '',
             parameters: [
@@ -3203,7 +3424,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/ypzxx_csrcyjgridview/:ypzxx_csrcyjgridview?',
         meta: {
-            caption: 'entities.pcmprofile.views.ypzxx_csrcyjgridview.caption',
+            caption: 'entities.pcmprofile.views.ypzxx_csrcyjgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/chengshurencaizhaopin.png',
             iconCls: '',
             parameters: [
@@ -3217,7 +3439,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/zpdwshgridview/:zpdwshgridview?',
         meta: {
-            caption: 'entities.pcmprofile.views.zpdwshgridview.caption',
+            caption: 'entities.pcmprofile.views.zpdwshgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/xiaoyuanzhaopin.png',
             iconCls: '',
             parameters: [
@@ -3231,7 +3454,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmschooloffices/:pcmschooloffice?/zxzw_wsswbjgridview/:zxzw_wsswbjgridview?',
         meta: {
-            caption: 'entities.pcmschooloffice.views.zxzw_wsswbjgridview.caption',
+            caption: 'entities.pcmschooloffice.views.zxzw_wsswbjgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenguanli.png',
             iconCls: '',
             parameters: [
@@ -3246,7 +3470,8 @@ const router = new Router({
     {
         path: '/pcmschooloffices/:pcmschooloffice?/zxzw_wsswbjgridview/:zxzw_wsswbjgridview?',
         meta: {
-            caption: 'entities.pcmschooloffice.views.zxzw_wsswbjgridview.caption',
+            caption: 'entities.pcmschooloffice.views.zxzw_wsswbjgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenguanli.png',
             iconCls: '',
             parameters: [
@@ -3260,7 +3485,8 @@ const router = new Router({
     {
         path: '/pcmxkmls/:pcmxkml?/curndgridview/:curndgridview?',
         meta: {
-            caption: 'entities.pcmxkml.views.curndgridview.caption',
+            caption: 'entities.pcmxkml.views.curndgridview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/zhichengmuluguanli.png',
             iconCls: '',
             parameters: [
@@ -3274,7 +3500,8 @@ const router = new Router({
     {
         path: '/pcmgxmls/:pcmgxml?/mpickupview/:mpickupview?',
         meta: {
-            caption: 'entities.pcmgxml.views.mpickupview.caption',
+            caption: 'entities.pcmgxml.views.mpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmgxmls', parameterName: 'pcmgxml' },
                 { pathName: 'mpickupview', parameterName: 'mpickupview' },
@@ -3286,7 +3513,8 @@ const router = new Router({
     {
         path: '/pimqualmajors/:pimqualmajor?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.pimqualmajor.views.pickupgridview.caption',
+            caption: 'entities.pimqualmajor.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimqualmajors', parameterName: 'pimqualmajor' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -3298,7 +3526,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/rzspgridview/:rzspgridview?',
         meta: {
-            caption: 'entities.pcmprofile.views.rzspgridview.caption',
+            caption: 'entities.pcmprofile.views.rzspgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/zhijizhiwuguanxi.png',
             iconCls: '',
             parameters: [
@@ -3312,7 +3541,8 @@ const router = new Router({
     {
         path: '/pcmprofiles/:pcmprofile?/pcmtdzwxxes/:pcmtdzwxx?/tdzwgridview/:tdzwgridview?',
         meta: {
-            caption: 'entities.pcmtdzwxx.views.tdzwgridview.caption',
+            caption: 'entities.pcmtdzwxx.views.tdzwgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/gangweiguanli.png',
             iconCls: '',
             parameters: [
@@ -3327,7 +3557,8 @@ const router = new Router({
     {
         path: '/pcmtdzwxxes/:pcmtdzwxx?/tdzwgridview/:tdzwgridview?',
         meta: {
-            caption: 'entities.pcmtdzwxx.views.tdzwgridview.caption',
+            caption: 'entities.pcmtdzwxx.views.tdzwgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/gangweiguanli.png',
             iconCls: '',
             parameters: [
@@ -3341,7 +3572,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ydbmpickupview/:ydbmpickupview?',
         meta: {
-            caption: 'entities.ormorgsector.views.ydbmpickupview.caption',
+            caption: 'entities.ormorgsector.views.ydbmpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -3354,7 +3586,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/ydbmpickupview/:ydbmpickupview?',
         meta: {
-            caption: 'entities.ormorgsector.views.ydbmpickupview.caption',
+            caption: 'entities.ormorgsector.views.ydbmpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'ydbmpickupview', parameterName: 'ydbmpickupview' },

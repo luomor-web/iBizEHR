@@ -46,7 +46,7 @@ export default {
 		},
 		pickupview: {
 			caption: "调动申请单明细",
-      title: '调动申请单明细',
+      title: '调动申请单明细数据选择视图',
 		},
 		jdsqmxeditview: {
 			caption: "借调申请明细",
@@ -54,19 +54,19 @@ export default {
 		},
 		ddckeditview: {
 			caption: "调动申请单明细",
-      title: '调动申请单明细',
+      title: '异动调动明细',
 		},
 		ddsqsheditview: {
 			caption: "调动申请单明细",
-      title: '调动申请单明细',
+      title: '调动',
 		},
 		mpickupview: {
 			caption: "调动申请单明细",
-      title: '调动申请单明细',
+      title: '调动申请单明细数据多项选择视图',
 		},
 		tyddgridview: {
 			caption: "调动申请单明细",
-      title: '调动申请单明细',
+      title: '调动申请明细',
 		},
 		jzsqgrgridview: {
 			caption: "兼职申请",
@@ -74,7 +74,7 @@ export default {
 		},
 		grzzsqjdeditview: {
 			caption: "借调申请",
-      title: '借调申请',
+      title: '借调申请编辑视图',
 		},
 		lgsqmxgridview: {
 			caption: "轮岗申请明细",
@@ -82,15 +82,15 @@ export default {
 		},
 		ddeditview: {
 			caption: "调动申请单明细",
-      title: '调动申请单明细',
+      title: '调动',
 		},
 		ddsqoptionview: {
 			caption: "调动申请单明细",
-      title: '调动申请单明细',
+      title: '调动',
 		},
 		grzzsqjzeditview: {
 			caption: "兼职申请",
-      title: '兼职申请',
+      title: '兼职申请编辑视图',
 		},
 		jzsqmxeditview: {
 			caption: "兼职申请明细",
@@ -98,11 +98,11 @@ export default {
 		},
 		grzzsqddeditview: {
 			caption: "调动申请",
-      title: '调动申请',
+      title: '调动申请编辑视图',
 		},
 		pddgridview: {
 			caption: "调动申请单明细",
-      title: '调动申请单明细',
+      title: '调动明细',
 		},
 		jdsqgrgridview: {
 			caption: "借调申请",
@@ -122,15 +122,15 @@ export default {
 		},
 		sqjdsheditview: {
 			caption: "调动申请单明细",
-      title: '调动申请单明细',
+      title: '借调明细编辑视图',
 		},
 		ddsqgridview: {
 			caption: "调动申请单明细",
-      title: '调动申请单明细',
+      title: '调动申请',
 		},
 		pickupgridview: {
 			caption: "调动申请单明细",
-      title: '调动申请单明细',
+      title: '调动申请单明细选择表格视图',
 		},
 		editview: {
 			caption: "调动申请明细",

@@ -14,12 +14,14 @@
 </i-col>
 <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.ormpost.gwgl_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="160" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormorgname.disabled"
   name='ormorgname'
   deMajorField='orgname'
@@ -39,13 +41,15 @@
 </i-col>
 <i-col v-show="detailsModel.gwtype.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='gwtype' :itemRules="this.rules.gwtype" class='' :caption="$t('entities.ormpost.gwgl_form.details.gwtype')" uiStyle="DEFAULT" :labelWidth="160" :isShowCaption="true" :error="detailsModel.gwtype.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-checkbox-list 
+    
+<app-checkbox-list 
   v-model="data.gwtype" 
   :data="data" 
   :context="context"
   :viewparams="viewparams" 
   :disabled="detailsModel.gwtype.disabled" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0140' 
   codelistType='DYNAMIC' 
   mode=""
@@ -63,14 +67,16 @@
 </i-col>
 <i-col v-show="detailsModel.isconfidential.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='isconfidential' :itemRules="this.rules.isconfidential" class='' :caption="$t('entities.ormpost.gwgl_form.details.isconfidential')" uiStyle="DEFAULT" :labelWidth="160" :isShowCaption="true" :error="detailsModel.isconfidential.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.isconfidential"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.isconfidential.disabled"  
   name="isconfidential" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0097' 
   codelistType='STATIC' 
   style="">

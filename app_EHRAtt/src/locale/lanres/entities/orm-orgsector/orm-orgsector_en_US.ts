@@ -76,7 +76,7 @@ export default {
 	views: {
 		mpickupview: {
 			caption: "部门管理",
-      title: '部门管理',
+      title: '部门管理数据多项选择视图',
 		},
 		bmkqszeditview: {
 			caption: "部门管理",
@@ -84,11 +84,11 @@ export default {
 		},
 		pickupgridview: {
 			caption: "部门管理",
-      title: '部门管理',
+      title: '部门管理选择表格视图',
 		},
 		pickupview: {
 			caption: "部门管理",
-      title: '部门管理',
+      title: '部门管理数据选择视图',
 		},
 	},
 	bmkqsz_form: {

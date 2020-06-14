@@ -21,4 +21,4 @@ import view_db_sysportlet1 from '@widgets/orm-org/org-bar-portlet/org-bar-portle
 export default class PimPortalView_db extends PimPortalView_dbBase {
 
 }
-</script>
+</script> 

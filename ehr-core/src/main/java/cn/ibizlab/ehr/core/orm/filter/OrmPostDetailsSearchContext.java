@@ -31,49 +31,49 @@ public class OrmPostDetailsSearchContext extends QueryWrapperContext<OrmPostDeta
 	public void setN_ormpostdetailsname_like(String n_ormpostdetailsname_like) {
         this.n_ormpostdetailsname_like = n_ormpostdetailsname_like;
         if(!ObjectUtils.isEmpty(this.n_ormpostdetailsname_like)){
-            this.getSelectCond().like("ormpostdetailsname", n_ormpostdetailsname_like);
+            this.getSearchCond().like("ormpostdetailsname", n_ormpostdetailsname_like);
         }
     }
 	private String n_ormpostname_eq;//[岗位集名称]
 	public void setN_ormpostname_eq(String n_ormpostname_eq) {
         this.n_ormpostname_eq = n_ormpostname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormpostname_eq)){
-            this.getSelectCond().eq("ormpostname", n_ormpostname_eq);
+            this.getSearchCond().eq("ormpostname", n_ormpostname_eq);
         }
     }
 	private String n_ormpostname_like;//[岗位集名称]
 	public void setN_ormpostname_like(String n_ormpostname_like) {
         this.n_ormpostname_like = n_ormpostname_like;
         if(!ObjectUtils.isEmpty(this.n_ormpostname_like)){
-            this.getSelectCond().like("ormpostname", n_ormpostname_like);
+            this.getSearchCond().like("ormpostname", n_ormpostname_like);
         }
     }
 	private String n_ormpostlibname_eq;//[岗位名称]
 	public void setN_ormpostlibname_eq(String n_ormpostlibname_eq) {
         this.n_ormpostlibname_eq = n_ormpostlibname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormpostlibname_eq)){
-            this.getSelectCond().eq("ormpostlibname", n_ormpostlibname_eq);
+            this.getSearchCond().eq("ormpostlibname", n_ormpostlibname_eq);
         }
     }
 	private String n_ormpostlibname_like;//[岗位名称]
 	public void setN_ormpostlibname_like(String n_ormpostlibname_like) {
         this.n_ormpostlibname_like = n_ormpostlibname_like;
         if(!ObjectUtils.isEmpty(this.n_ormpostlibname_like)){
-            this.getSelectCond().like("ormpostlibname", n_ormpostlibname_like);
+            this.getSearchCond().like("ormpostlibname", n_ormpostlibname_like);
         }
     }
 	private String n_ormpostid_eq;//[岗位集ID]
 	public void setN_ormpostid_eq(String n_ormpostid_eq) {
         this.n_ormpostid_eq = n_ormpostid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormpostid_eq)){
-            this.getSelectCond().eq("ormpostid", n_ormpostid_eq);
+            this.getSearchCond().eq("ormpostid", n_ormpostid_eq);
         }
     }
 	private String n_ormpostlibid_eq;//[岗位ID]
 	public void setN_ormpostlibid_eq(String n_ormpostlibid_eq) {
         this.n_ormpostlibid_eq = n_ormpostlibid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormpostlibid_eq)){
-            this.getSelectCond().eq("ormpostlibid", n_ormpostlibid_eq);
+            this.getSearchCond().eq("ormpostlibid", n_ormpostlibid_eq);
         }
     }
 
@@ -84,7 +84,7 @@ public class OrmPostDetailsSearchContext extends QueryWrapperContext<OrmPostDeta
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("ormpostdetailsname", query)   
                         .or().like("ormpostlibname", query)            
             );

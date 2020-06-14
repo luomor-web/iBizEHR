@@ -3,7 +3,8 @@
     <component 
       :is="viewname" 
       class="viewcontainer2" 
-      :viewdata ="viewdata" 
+      :viewdata ="viewdata"
+      :viewparam="viewparam"
       :viewDefaultUsage="false"
       :formDruipart="formDruipart"
       :isformDruipart="true"
@@ -118,6 +119,22 @@ export default class AppFormDRUIPart extends Vue {
      * @memberof AppFormDRUIPart
      */
     @Prop() public viewparams!: any;
+
+    /**
+     * 局部上下文
+     *
+     * @type {*}
+     * @memberof AppFormDRUIPart
+     */
+    @Prop() public localContext!:any;
+
+    /**
+     * 局部参数
+     *
+     * @type {*}
+     * @memberof AppFormDRUIPart
+     */
+    @Prop() public localParam!:any;
 
     /**
      * 应用实体参数名称
@@ -240,21 +257,32 @@ export default class AppFormDRUIPart extends Vue {
         }
         const formData: any = data?data:JSON.parse(this.data);
         const _paramitem = formData[this.paramItem];
-        let viewdata = {};
-        Object.assign(viewdata, this.$viewTool.getIndexViewParam());
+        let tempContext:any = {};
+        let tempParam:any = {};
+        Object.assign(tempContext, this.$viewTool.getIndexViewParam());
         const _parameters: any[] = [...this.$viewTool.getIndexParameters(), ...this.parameters];
         _parameters.forEach((parameter: any) => {
             const { pathName, parameterName }: { pathName: string, parameterName: string } = parameter;
             if (formData[parameterName] && !Object.is(formData[parameterName], '')) {
-                Object.assign(viewdata, { [parameterName]: formData[parameterName] });
+                Object.assign(tempContext, { [parameterName]: formData[parameterName] });
             }
         });
-        Object.assign(viewdata, { [this.paramItem]: _paramitem });
+        Object.assign(tempContext, { [this.paramItem]: _paramitem });
         //设置顶层视图唯一标识
-        Object.assign(viewdata,this.context);
-        Object.assign(viewdata,{srfparentdename:this.parentName,srfparentkey:_paramitem});
-        this.viewdata = JSON.stringify(viewdata);
-        this.viewparam = JSON.stringify(this.viewparams);
+        Object.assign(tempContext,this.context);
+        Object.assign(tempContext,{srfparentdename:this.parentName,srfparentkey:_paramitem});
+        // 设置局部上下文
+        if(this.localContext && Object.keys(this.localContext).length >0){
+            let _context:any = this.$util.computedNavData(formData,tempContext,this.viewparams,this.localContext);
+            Object.assign(tempContext,_context);
+        }
+        this.viewdata = JSON.stringify(tempContext);
+        // 设置局部参数
+        if(this.localParam && Object.keys(this.localParam).length >0){
+            let _param:any = this.$util.computedNavData(formData,tempContext,this.viewparams,this.localParam);
+            Object.assign(tempParam,_param);
+        }
+        this.viewparam = JSON.stringify(tempParam);
         if (this.isRelationalData) {
             if (!_paramitem || _paramitem == null || Object.is(_paramitem, '')) {
                 this.blockUIStart();

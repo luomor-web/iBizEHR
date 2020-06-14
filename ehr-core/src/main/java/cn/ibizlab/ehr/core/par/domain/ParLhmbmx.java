@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[绩效量化目标明细]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PARLHMBMX",resultMap = "ParLhmbmxResultMap")
 public class ParLhmbmx extends EntityMP implements Serializable {
 
@@ -161,6 +162,7 @@ public class ParLhmbmx extends EntityMP implements Serializable {
         this.bzfz = bzfz ;
         this.modify("bzfz",bzfz);
     }
+
     /**
      * 设置 [量化目标]
      */
@@ -168,6 +170,7 @@ public class ParLhmbmx extends EntityMP implements Serializable {
         this.parlhmbmxname = parlhmbmxname ;
         this.modify("parlhmbmxname",parlhmbmxname);
     }
+
     /**
      * 设置 [附件]
      */
@@ -175,6 +178,7 @@ public class ParLhmbmx extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [举证要求]
      */
@@ -182,6 +186,7 @@ public class ParLhmbmx extends EntityMP implements Serializable {
         this.jzyq = jzyq ;
         this.modify("jzyq",jzyq);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -189,6 +194,7 @@ public class ParLhmbmx extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [完成标准]
      */
@@ -196,6 +202,7 @@ public class ParLhmbmx extends EntityMP implements Serializable {
         this.wcbz = wcbz ;
         this.modify("wcbz",wcbz);
     }
+
     /**
      * 设置 [考核办法]
      */
@@ -203,6 +210,7 @@ public class ParLhmbmx extends EntityMP implements Serializable {
         this.khbf = khbf ;
         this.modify("khbf",khbf);
     }
+
     /**
      * 设置 [量化目标ID]
      */
@@ -210,6 +218,7 @@ public class ParLhmbmx extends EntityMP implements Serializable {
         this.parjxlhmbid = parjxlhmbid ;
         this.modify("parjxlhmbid",parjxlhmbid);
     }
+
 
 }
 

@@ -13,7 +13,7 @@ export default {
 	views: {
 		zpmeglmxgridview: {
 			caption: '招聘名额管理明细',
-      title: '招聘名额管理明细',
+      title: '招聘名额管理明细表格视图',
 		},
 	},
 	main_grid: {

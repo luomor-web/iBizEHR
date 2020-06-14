@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[家庭情况]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMFAMINFO",resultMap = "PimFaminfoResultMap")
 public class PimFaminfo extends EntityMP implements Serializable {
 
@@ -297,6 +298,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.jlss = jlss ;
         this.modify("jlss",jlss);
     }
+
     /**
      * 设置 [证件号]
      */
@@ -304,6 +306,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.zjh = zjh ;
         this.modify("zjh",zjh);
     }
+
     /**
      * 设置 [年龄]
      */
@@ -311,6 +314,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.nl = nl ;
         this.modify("nl",nl);
     }
+
     /**
      * 设置 [是否紧急联络人]
      */
@@ -318,6 +322,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.sfjjllr = sfjjllr ;
         this.modify("sfjjllr",sfjjllr);
     }
+
     /**
      * 设置 [政治面貌]
      */
@@ -325,6 +330,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.zzmm = zzmm ;
         this.modify("zzmm",zzmm);
     }
+
     /**
      * 设置 [记录管理编号]
      */
@@ -332,6 +338,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.jlglbh = jlglbh ;
         this.modify("jlglbh",jlglbh);
     }
+
     /**
      * 设置 [职务]
      */
@@ -339,6 +346,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.zw = zw ;
         this.modify("zw",zw);
     }
+
     /**
      * 设置 [姓名]
      */
@@ -346,6 +354,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.pimfaminfoname = pimfaminfoname ;
         this.modify("pimfaminfoname",pimfaminfoname);
     }
+
     /**
      * 设置 [证件类型]
      */
@@ -353,12 +362,24 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.zjlx = zjlx ;
         this.modify("zjlx",zjlx);
     }
+
     /**
      * 设置 [出生日期]
      */
     public void setCsrq(Timestamp csrq){
         this.csrq = csrq ;
         this.modify("csrq",csrq);
+    }
+
+    /**
+     * 格式化日期 [出生日期]
+     */
+    public String formatCsrq(){
+        if (this.csrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(csrq);
     }
     /**
      * 设置 [是否遗属]
@@ -367,6 +388,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.sruvivors = sruvivors ;
         this.modify("sruvivors",sruvivors);
     }
+
     /**
      * 设置 [与本人关系]
      */
@@ -374,6 +396,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.ybrgx = ybrgx ;
         this.modify("ybrgx",ybrgx);
     }
+
     /**
      * 设置 [工作单位]
      */
@@ -381,6 +404,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.gzdw = gzdw ;
         this.modify("gzdw",gzdw);
     }
+
     /**
      * 设置 [性别]
      */
@@ -388,6 +412,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.xb = xb ;
         this.modify("xb",xb);
     }
+
     /**
      * 设置 [记录操作者]
      */
@@ -395,6 +420,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.jlczz = jlczz ;
         this.modify("jlczz",jlczz);
     }
+
     /**
      * 设置 [拒绝原因]
      */
@@ -402,6 +428,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [记录审批状态]
      */
@@ -409,6 +436,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.jlspzt = jlspzt ;
         this.modify("jlspzt",jlspzt);
     }
+
     /**
      * 设置 [联系电话]
      */
@@ -416,6 +444,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.telphone = telphone ;
         this.modify("telphone",telphone);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -423,6 +452,7 @@ public class PimFaminfo extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

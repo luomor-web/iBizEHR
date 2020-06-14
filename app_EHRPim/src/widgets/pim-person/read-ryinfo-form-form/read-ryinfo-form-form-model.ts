@@ -98,6 +98,11 @@ export default class ReadRYInfoFormModel {
         dataType: 'SSCODELIST',
       },
       {
+        name: 'jg',
+        prop: 'jg',
+        dataType: 'SSCODELIST',
+      },
+      {
         name: 'ygbh',
         prop: 'ygbh',
         dataType: 'TEXT',
@@ -118,19 +123,14 @@ export default class ReadRYInfoFormModel {
         dataType: 'SSCODELIST',
       },
       {
-        name: 'zp',
-        prop: 'zp',
-        dataType: 'LONGTEXT_1000',
-      },
-      {
-        name: 'jg',
-        prop: 'jg',
-        dataType: 'SSCODELIST',
-      },
-      {
         name: 'hyzk',
         prop: 'hyzk',
         dataType: 'SSCODELIST',
+      },
+      {
+        name: 'zp',
+        prop: 'zp',
+        dataType: 'LONGTEXT_1000',
       },
       {
         name: 'zzmm',

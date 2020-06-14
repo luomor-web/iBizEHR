@@ -22,4 +22,9 @@ public class IBZUAAFallback implements IBZUAAFeignClient {
     public AuthenticationUser loginByUsername(String username) {
         return null;
     }
+
+    @Override
+    public String getPublicKey() {
+        return null;
+    }
 }

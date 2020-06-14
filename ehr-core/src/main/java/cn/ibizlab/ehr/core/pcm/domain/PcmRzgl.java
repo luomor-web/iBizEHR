@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[任职管理]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMRZGL",resultMap = "PcmRzglResultMap")
 public class PcmRzgl extends EntityMP implements Serializable {
 
@@ -236,6 +237,7 @@ public class PcmRzgl extends EntityMP implements Serializable {
         this.rznxColor = rznxColor ;
         this.modify("rznx_color",rznxColor);
     }
+
     /**
      * 设置 [部门]
      */
@@ -243,6 +245,7 @@ public class PcmRzgl extends EntityMP implements Serializable {
         this.ormorgsectorname = ormorgsectorname ;
         this.modify("ormorgsectorname",ormorgsectorname);
     }
+
     /**
      * 设置 [任职年龄到期（年）]
      */
@@ -250,6 +253,7 @@ public class PcmRzgl extends EntityMP implements Serializable {
         this.nldq = nldq ;
         this.modify("nldq",nldq);
     }
+
     /**
      * 设置 [职级年限的颜色]
      */
@@ -257,6 +261,7 @@ public class PcmRzgl extends EntityMP implements Serializable {
         this.zjnxColor = zjnxColor ;
         this.modify("zjnx_color",zjnxColor);
     }
+
     /**
      * 设置 [当前职级]
      */
@@ -264,6 +269,7 @@ public class PcmRzgl extends EntityMP implements Serializable {
         this.zj = zj ;
         this.modify("zj",zj);
     }
+
     /**
      * 设置 [当前职务]
      */
@@ -271,6 +277,7 @@ public class PcmRzgl extends EntityMP implements Serializable {
         this.dqzjxzw = dqzjxzw ;
         this.modify("dqzjxzw",dqzjxzw);
     }
+
     /**
      * 设置 [组织名称]
      */
@@ -278,6 +285,7 @@ public class PcmRzgl extends EntityMP implements Serializable {
         this.ormorgname = ormorgname ;
         this.modify("ormorgname",ormorgname);
     }
+
     /**
      * 设置 [职务年限]
      */
@@ -285,6 +293,7 @@ public class PcmRzgl extends EntityMP implements Serializable {
         this.rznx = rznx ;
         this.modify("rznx",rznx);
     }
+
     /**
      * 设置 [职级年限]
      */
@@ -292,6 +301,7 @@ public class PcmRzgl extends EntityMP implements Serializable {
         this.zjnx = zjnx ;
         this.modify("zjnx",zjnx);
     }
+
     /**
      * 设置 [任职管理名称]
      */
@@ -299,12 +309,24 @@ public class PcmRzgl extends EntityMP implements Serializable {
         this.pcmrzglname = pcmrzglname ;
         this.modify("pcmrzglname",pcmrzglname);
     }
+
     /**
      * 设置 [职务日期]
      */
     public void setZwrq(Timestamp zwrq){
         this.zwrq = zwrq ;
         this.modify("zwrq",zwrq);
+    }
+
+    /**
+     * 格式化日期 [职务日期]
+     */
+    public String formatZwrq(){
+        if (this.zwrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(zwrq);
     }
     /**
      * 设置 [员工ID]
@@ -313,6 +335,7 @@ public class PcmRzgl extends EntityMP implements Serializable {
         this.ygid = ygid ;
         this.modify("ygid",ygid);
     }
+
     /**
      * 设置 [员工]
      */
@@ -320,6 +343,7 @@ public class PcmRzgl extends EntityMP implements Serializable {
         this.ygname = ygname ;
         this.modify("ygname",ygname);
     }
+
     /**
      * 设置 [性别]
      */
@@ -327,12 +351,24 @@ public class PcmRzgl extends EntityMP implements Serializable {
         this.sex = sex ;
         this.modify("sex",sex);
     }
+
     /**
      * 设置 [职级日期]
      */
     public void setZjrq(Timestamp zjrq){
         this.zjrq = zjrq ;
         this.modify("zjrq",zjrq);
+    }
+
+    /**
+     * 格式化日期 [职级日期]
+     */
+    public String formatZjrq(){
+        if (this.zjrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(zjrq);
     }
     /**
      * 设置 [员工编号]
@@ -341,6 +377,7 @@ public class PcmRzgl extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [年龄]
      */
@@ -348,6 +385,7 @@ public class PcmRzgl extends EntityMP implements Serializable {
         this.nl = nl ;
         this.modify("nl",nl);
     }
+
     /**
      * 设置 [当前岗位]
      */
@@ -355,6 +393,7 @@ public class PcmRzgl extends EntityMP implements Serializable {
         this.gw = gw ;
         this.modify("gw",gw);
     }
+
 
 }
 

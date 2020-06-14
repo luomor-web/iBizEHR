@@ -42,12 +42,14 @@
 </i-col>
 <i-col v-show="detailsModel.bmlx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='bmlx' :itemRules="this.rules.bmlx" class='' :caption="$t('entities.ormorgsector.main_form.details.bmlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bmlx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.bmlx" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.bmlx.disabled"  
     tag='EhrCodeList0019' 
     codelistType='STATIC'
@@ -58,12 +60,14 @@
 </i-col>
 <i-col v-show="detailsModel.orgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='orgname' :itemRules="this.rules.orgname" class='' :caption="$t('entities.ormorgsector.main_form.details.orgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.orgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.orgname.disabled"
   name='orgname'
   deMajorField='orgname'
@@ -83,12 +87,14 @@
 </i-col>
 <i-col v-show="detailsModel.qy.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='qy' :itemRules="this.rules.qy" class='' :caption="$t('entities.ormorgsector.main_form.details.qy')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.qy.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.qy" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.qy.disabled"  
     tag='EhrCodeList0219' 
     codelistType='DYNAMIC'
@@ -105,12 +111,14 @@
 </i-col>
 <i-col v-show="detailsModel.gkjz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='gkjz' :itemRules="this.rules.gkjz" class='' :caption="$t('entities.ormorgsector.main_form.details.gkjz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gkjz.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.gkjz" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.gkjz.disabled"  
     tag='EhrCodeList0156' 
     codelistType='STATIC'
@@ -121,12 +129,14 @@
 </i-col>
 <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.ormorgsector.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.pimpersonname.disabled"
   name='pimpersonname'
   deMajorField='pimpersonname'
@@ -146,12 +156,14 @@
 </i-col>
 <i-col v-show="detailsModel.validflag.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='validflag' :itemRules="this.rules.validflag" class='' :caption="$t('entities.ormorgsector.main_form.details.validflag')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.validflag.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
   v-model="data.validflag" 
   :data="data" 
   :context="context"
   :viewparams="viewparams"
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.validflag.disabled" 
   style="width:100px;width: 100px;" 
   tag='EhrCodeList0400' 
@@ -190,6 +202,8 @@
     ]"
     :context="context"
     :viewparams="viewparams"
+    :localContext ='{}'
+    :localParam ='{}'
     parameterName='ormorgsector'
     parentName="OrmOrgsector"  
     refviewtype='DEGRIDVIEW' 

@@ -31,14 +31,14 @@ public class PimCitySearchContext extends QueryWrapperContext<PimCity> {
 	public void setN_protype_eq(String n_protype_eq) {
         this.n_protype_eq = n_protype_eq;
         if(!ObjectUtils.isEmpty(this.n_protype_eq)){
-            this.getSelectCond().eq("protype", n_protype_eq);
+            this.getSearchCond().eq("protype", n_protype_eq);
         }
     }
 	private String n_pimcityname_like;//[市名称]
 	public void setN_pimcityname_like(String n_pimcityname_like) {
         this.n_pimcityname_like = n_pimcityname_like;
         if(!ObjectUtils.isEmpty(this.n_pimcityname_like)){
-            this.getSelectCond().like("pimcityname", n_pimcityname_like);
+            this.getSearchCond().like("pimcityname", n_pimcityname_like);
         }
     }
 
@@ -49,7 +49,7 @@ public class PimCitySearchContext extends QueryWrapperContext<PimCity> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimcityname", query)   
             );
 		 }

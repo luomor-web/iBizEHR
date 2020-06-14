@@ -57,12 +57,14 @@
                     <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
                             <app-form-item :error="gridItemsModel[$index][column.property].error">
-                                <app-picker 
+                                
+            <app-picker 
               :formState="viewState" 
               :data="row"
               :context="context"
               :viewparams="viewparams"
-              :itemParam='{ }' 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
               name='ormorgname'
               deMajorField='orgname'
@@ -1463,6 +1465,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        $event.stopPropagation();
     }
 
     /**
@@ -1596,6 +1599,7 @@ export default class MainBase extends Vue implements ControlInterface {
                 return;
             }
             const data = response.data;
+            this.createDefault(data);
             data.rowDataState = "create";
             _this.items.push(data);
             _this.gridItemsModel.push(_this.getGridRowModel());
@@ -1699,6 +1703,14 @@ export default class MainBase extends Vue implements ControlInterface {
             return Object.is(item.ormxmbq,args.row.ormxmbq);
         });
         return isSelected ? "grid-selected-row" : "";
+    }
+
+    /**
+     * 新建默认值
+     * @param {*}  row 行数据
+     * @memberof Main
+     */
+    public createDefault(row: any){                    
     }
 }
 </script>

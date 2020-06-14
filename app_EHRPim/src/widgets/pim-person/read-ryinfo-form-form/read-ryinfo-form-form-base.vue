@@ -22,45 +22,36 @@
     <row>
         <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='pimpersonname'
-:value="data.pimpersonname"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='pimpersonname' :value="data.pimpersonname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.zjlx.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='zjlx' :itemRules="this.rules.zjlx" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.zjlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zjlx.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='zjlx'
-:value="data.zjlx" tag='EhrCodeList0231' codelistType='DYNAMIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='zjlx' :value="data.zjlx" tag='EhrCodeList0231' codelistType='DYNAMIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.csrq.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='csrq' :itemRules="this.rules.csrq" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.csrq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.csrq.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='csrq'
-:value="data.csrq"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='csrq' :value="data.csrq" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.xb.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='xb' :itemRules="this.rules.xb" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.xb')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xb.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='xb'
-:value="data.xb" tag='EhrCodeList0072' codelistType='DYNAMIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='xb' :value="data.xb" tag='EhrCodeList0072' codelistType='DYNAMIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.jg.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-item name='jg' :itemRules="this.rules.jg" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.jg')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jg.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='jg' :value="data.jg" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -74,45 +65,36 @@ style=""></app-span>
     <row>
         <i-col v-show="detailsModel.ygbh.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='ygbh' :itemRules="this.rules.ygbh" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.ygbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygbh.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='ygbh'
-:value="data.ygbh"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='ygbh' :value="data.ygbh" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.zjhm.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='zjhm' :itemRules="this.rules.zjhm" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.zjhm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zjhm.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='zjhm'
-:value="data.zjhm"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='zjhm' :value="data.zjhm" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.nj.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='nj' :itemRules="this.rules.nj" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.nj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='nj'
-:value="data.nj"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='nj' :value="data.nj" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.mz.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='mz' :itemRules="this.rules.mz" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.mz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.mz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='mz'
-:value="data.mz" tag='EhrCodeList0066' codelistType='DYNAMIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='mz' :value="data.mz" tag='EhrCodeList0066' codelistType='DYNAMIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.hyzk.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-item name='hyzk' :itemRules="this.rules.hyzk" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.hyzk')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hyzk.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='hyzk' :value="data.hyzk" tag='EhrCodeList0075' codelistType='DYNAMIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -126,7 +108,7 @@ style=""></app-span>
     <row>
         <i-col v-show="detailsModel.zp.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='zp' :itemRules="this.rules.zp" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.zp')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zp.error" :isEmptyCaption="false" labelPos="LEFT">
-     <app-image-preview :formState="formState" name='zp' :value="data.zp" style=""></app-image-preview>
+     <app-image-preview :formState="formState" name='zp' :value="data.zp" style="height:130px;width:100px;"></app-image-preview>
 </app-form-item>
 
 </i-col>
@@ -143,135 +125,73 @@ style=""></app-span>
 <div v-show="detailsModel.grouppanel8.visible">
     <app-form-group layoutType="TABLE_12COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel8.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.pimperson.readryinfoform_form.details.grouppanel8')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
     <row>
-        <i-col v-show="detailsModel.jg.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='jg' :itemRules="this.rules.jg" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.jg')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jg.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='jg'
-:value="data.jg"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.hyzk.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='hyzk' :itemRules="this.rules.hyzk" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.hyzk')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hyzk.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='hyzk'
-:value="data.hyzk" tag='EhrCodeList0075' codelistType='DYNAMIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.zzmm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
+        <i-col v-show="detailsModel.zzmm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='zzmm' :itemRules="this.rules.zzmm" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.zzmm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zzmm.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='zzmm'
-:value="data.zzmm" tag='EhrCodeList0029' codelistType='DYNAMIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='zzmm' :value="data.zzmm" tag='EhrCodeList0029' codelistType='DYNAMIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.rank.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='rank' :itemRules="this.rules.rank" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.rank')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rank.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='rank'
-:value="data.rank" tag='EhrCodeList0025' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='rank' :value="data.rank" tag='EhrCodeList0025' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.cjgzsj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='cjgzsj' :itemRules="this.rules.cjgzsj" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.cjgzsj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.cjgzsj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='cjgzsj'
-:value="data.cjgzsj"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='cjgzsj' :value="data.cjgzsj" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.dbdwsj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='dbdwsj' :itemRules="this.rules.dbdwsj" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.dbdwsj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dbdwsj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='dbdwsj'
-:value="data.dbdwsj"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='dbdwsj' :value="data.dbdwsj" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.lxdh.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='lxdh' :itemRules="this.rules.lxdh" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.lxdh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.lxdh.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='lxdh'
-:value="data.lxdh"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='lxdh' :value="data.lxdh" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.dzyx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='dzyx' :itemRules="this.rules.dzyx" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.dzyx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dzyx.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='dzyx'
-:value="data.dzyx"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='dzyx' :value="data.dzyx" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.hightitle.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hightitle' :itemRules="this.rules.hightitle" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.hightitle')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hightitle.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='hightitle'
-:value="data.hightitle"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='hightitle' :value="data.hightitle" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.higheducation.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='higheducation' :itemRules="this.rules.higheducation" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.higheducation')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.higheducation.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='higheducation'
-:value="data.higheducation" tag='EhrCodeList0117' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='higheducation' :value="data.higheducation" tag='EhrCodeList0117' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.firsteducation.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='firsteducation' :itemRules="this.rules.firsteducation" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.firsteducation')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.firsteducation.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='firsteducation'
-:value="data.firsteducation" tag='EhrCodeList0117' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='firsteducation' :value="data.firsteducation" tag='EhrCodeList0117' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.certtificate.visible" :style="{}"  :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
     <app-form-item name='certtificate' :itemRules="this.rules.certtificate" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.certtificate')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.certtificate.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='certtificate'
-:value="data.certtificate"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='certtificate' :value="data.certtificate" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -297,6 +217,8 @@ style=""></app-span>
     ]"
     :context="context"
     :viewparams="viewparams"
+    :localContext ='{}'
+    :localParam ='{}'
     parameterName='pimperson'
     parentName="PimPerson"  
     refviewtype='DEGRIDVIEW' 
@@ -327,6 +249,8 @@ style=""></app-span>
     ]"
     :context="context"
     :viewparams="viewparams"
+    :localContext ='{}'
+    :localParam ='{}'
     parameterName='pimperson'
     parentName="PimPerson"  
     refviewtype='DEGRIDVIEW' 
@@ -350,144 +274,92 @@ style=""></app-span>
     <row>
         <i-col v-show="detailsModel.hklx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hklx' :itemRules="this.rules.hklx" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.hklx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hklx.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='hklx'
-:value="data.hklx" tag='EhrCodeList0070' codelistType='DYNAMIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='hklx' :value="data.hklx" tag='EhrCodeList0070' codelistType='DYNAMIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.hjszd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hjszd' :itemRules="this.rules.hjszd" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.hjszd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hjszd.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='hjszd'
-:value="data.hjszd" tag='EhrCodeList0001' codelistType='DYNAMIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='hjszd' :value="data.hjszd" tag='EhrCodeList0001' codelistType='DYNAMIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.csd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='csd' :itemRules="this.rules.csd" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.csd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.csd.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='csd'
-:value="data.csd"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='csd' :value="data.csd" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.jkzk.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='jkzk' :itemRules="this.rules.jkzk" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.jkzk')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jkzk.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='jkzk'
-:value="data.jkzk"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='jkzk' :value="data.jkzk" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ahtc.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ahtc' :itemRules="this.rules.ahtc" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.ahtc')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ahtc.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='ahtc'
-:value="data.ahtc"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='ahtc' :value="data.ahtc" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.xx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='xx' :itemRules="this.rules.xx" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.xx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xx.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='xx'
-:value="data.xx" tag='EhrCodeList0018' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='xx' :value="data.xx" tag='EhrCodeList0018' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.sfdszn.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='sfdszn' :itemRules="this.rules.sfdszn" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.sfdszn')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfdszn.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='sfdszn'
-:value="data.sfdszn" tag='EhrCodeList0097' codelistType='STATIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='sfdszn' :value="data.sfdszn" tag='EhrCodeList0097' codelistType='STATIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.postaladdress.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='postaladdress' :itemRules="this.rules.postaladdress" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.postaladdress')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.postaladdress.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='postaladdress'
-:value="data.postaladdress"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='postaladdress' :value="data.postaladdress" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.rdsj1.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='rdsj1' :itemRules="this.rules.rdsj1" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.rdsj1')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rdsj1.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='rdsj1'
-:value="data.rdsj1"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='rdsj1' :value="data.rdsj1" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.rtsj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='rtsj' :itemRules="this.rules.rtsj" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.rtsj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rtsj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='rtsj'
-:value="data.rtsj"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='rtsj' :value="data.rtsj" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.rzqd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='rzqd' :itemRules="this.rules.rzqd" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.rzqd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.rzqd.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='rzqd'
-:value="data.rzqd" tag='EhrCodeList0041' codelistType='DYNAMIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='rzqd' :value="data.rzqd" tag='EhrCodeList0041' codelistType='DYNAMIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ygzt.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ygzt' :itemRules="this.rules.ygzt" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.ygzt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygzt.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='ygzt'
-:value="data.ygzt" tag='EhrCodeList0014' codelistType='DYNAMIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='ygzt' :value="data.ygzt" tag='EhrCodeList0014' codelistType='DYNAMIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.hmd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='hmd' :itemRules="this.rules.hmd" class='' :caption="$t('entities.pimperson.readryinfoform_form.details.hmd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.hmd.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='hmd'
-:value="data.hmd" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='hmd' :value="data.hmd" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -508,6 +380,8 @@ style=""></app-span>
     ]"
     :context="context"
     :viewparams="viewparams"
+    :localContext ='{}'
+    :localParam ='{}'
     parameterName='pimperson'
     parentName="PimPerson"  
     refviewtype='DEGRIDVIEW' 
@@ -842,13 +716,13 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
         zjlx: null,
         csrq: null,
         xb: null,
+        jg: null,
         ygbh: null,
         zjhm: null,
         nj: null,
         mz: null,
-        zp: null,
-        jg: null,
         hyzk: null,
+        zp: null,
         zzmm: null,
         rank: null,
         cjgzsj: null,
@@ -1027,6 +901,12 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
             { required: false, type: 'string', message: '性别 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '性别 值不能为空', trigger: 'blur' },
         ],
+        jg: [
+            { type: 'string', message: '籍贯 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '籍贯 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '籍贯 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '籍贯 值不能为空', trigger: 'blur' },
+        ],
         ygbh: [
             { type: 'string', message: '员工编号 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '员工编号 值必须为字符串类型', trigger: 'blur' },
@@ -1051,23 +931,17 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
             { required: false, type: 'string', message: '民族 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '民族 值不能为空', trigger: 'blur' },
         ],
-        zp: [
-            { type: 'string', message: '照片 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '照片 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '照片 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '照片 值不能为空', trigger: 'blur' },
-        ],
-        jg: [
-            { type: 'string', message: '籍贯 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '籍贯 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '籍贯 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '籍贯 值不能为空', trigger: 'blur' },
-        ],
         hyzk: [
             { type: 'string', message: '婚姻状况 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '婚姻状况 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '婚姻状况 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '婚姻状况 值不能为空', trigger: 'blur' },
+        ],
+        zp: [
+            { type: 'string', message: '照片 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '照片 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '照片 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '照片 值不能为空', trigger: 'blur' },
         ],
         zzmm: [
             { type: 'string', message: '政治面貌 值必须为字符串类型', trigger: 'change' },
@@ -1312,6 +1186,8 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
 , 
         xb: new FormItemModel({ caption: '性别', detailType: 'FORMITEM', name: 'xb', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
+        jg: new FormItemModel({ caption: '籍贯', detailType: 'FORMITEM', name: 'jg', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
         ygbh: new FormItemModel({ caption: '员工编号', detailType: 'FORMITEM', name: 'ygbh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         zjhm: new FormItemModel({ caption: '证件号码', detailType: 'FORMITEM', name: 'zjhm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
@@ -1320,11 +1196,9 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
 , 
         mz: new FormItemModel({ caption: '民族', detailType: 'FORMITEM', name: 'mz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        zp: new FormItemModel({ caption: '照片', detailType: 'FORMITEM', name: 'zp', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        jg: new FormItemModel({ caption: '籍贯', detailType: 'FORMITEM', name: 'jg', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
         hyzk: new FormItemModel({ caption: '婚姻状况', detailType: 'FORMITEM', name: 'hyzk', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        zp: new FormItemModel({ caption: '照片', detailType: 'FORMITEM', name: 'zp', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
         zzmm: new FormItemModel({ caption: '政治面貌', detailType: 'FORMITEM', name: 'zzmm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
@@ -1601,6 +1475,18 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     }
 
     /**
+     * 监控表单属性 jg 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof ReadRYInfoForm
+     */
+    @Watch('data.jg')
+    onJgChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'jg', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
      * 监控表单属性 ygbh 值
      *
      * @param {*} newVal
@@ -1649,30 +1535,6 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     }
 
     /**
-     * 监控表单属性 zp 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof ReadRYInfoForm
-     */
-    @Watch('data.zp')
-    onZpChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'zp', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 jg 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof ReadRYInfoForm
-     */
-    @Watch('data.jg')
-    onJgChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'jg', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 hyzk 值
      *
      * @param {*} newVal
@@ -1682,6 +1544,18 @@ export default class ReadRYInfoFormBase extends Vue implements ControlInterface 
     @Watch('data.hyzk')
     onHyzkChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'hyzk', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 zp 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof ReadRYInfoForm
+     */
+    @Watch('data.zp')
+    onZpChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'zp', newVal: newVal, oldVal: oldVal });
     }
 
     /**

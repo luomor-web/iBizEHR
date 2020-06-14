@@ -32,11 +32,11 @@ export default {
 	views: {
 		wfeditview9: {
 			caption: "出入境管理",
-      title: '出入境管理',
+      title: '出入境管理工作流嵌入视图',
 		},
 		wfproxyresultview: {
 			caption: "出入境管理",
-      title: '出入境管理',
+      title: '出入境管理工作流结果视图',
 		},
 		editview_ytg: {
 			caption: "出（国）境基本信息",
@@ -44,19 +44,19 @@ export default {
 		},
 		editview2: {
 			caption: "出入境管理",
-      title: '出入境管理',
+      title: '出入境管理编辑视图',
 		},
 		pimexitgridview: {
 			caption: "出（国）境基本信息",
-      title: '出（国）境基本信息',
+      title: '出（国）境申请',
 		},
 		formpickupdataview: {
 			caption: "出入境管理",
-      title: '出入境管理',
+      title: '出入境管理表单选择数据视图',
 		},
 		editview: {
 			caption: "出（国）境申请",
-      title: '出（国）境申请',
+      title: '出（国）境管理编辑视图',
 		},
 		wfeditview: {
 			caption: "补充信息",
@@ -64,7 +64,7 @@ export default {
 		},
 		pickupgridview: {
 			caption: "出入境管理",
-      title: '出入境管理',
+      title: '出入境管理选择表格视图',
 		},
 		yscgjxjeditview: {
 			caption: "出（国）境基本信息",
@@ -72,7 +72,7 @@ export default {
 		},
 		wfactionview: {
 			caption: "出入境管理",
-      title: '出入境管理',
+      title: '出入境管理工作流操作视图',
 		},
 		editview_spz: {
 			caption: "出（国）境基本信息",
@@ -80,7 +80,7 @@ export default {
 		},
 		yscgjgridview: {
 			caption: "因私出（国）境",
-      title: '因私出（国）境',
+      title: '出入境管理实体表格视图（因私出国境）',
 		},
 		editview_ybh: {
 			caption: "出（国）境基本信息",
@@ -88,7 +88,7 @@ export default {
 		},
 		ygcgjgridview: {
 			caption: "因公出（国）境",
-      title: '因公出（国）境',
+      title: '出入境管理实体表格视图（因公出国境）',
 		},
 		ygcgjxjeditview: {
 			caption: "出（国）境基本信息",
@@ -96,15 +96,15 @@ export default {
 		},
 		pickupview: {
 			caption: "出入境管理",
-      title: '出入境管理',
+      title: '出入境管理数据选择视图',
 		},
 		formpickupview: {
 			caption: "出入境管理",
-      title: '出入境管理',
+      title: '出入境管理数据选择视图',
 		},
 		mpickupview: {
 			caption: "出入境管理",
-      title: '出入境管理',
+      title: '出入境管理数据多项选择视图',
 		},
 		gridview: {
 			caption: "出入境管理",
@@ -112,7 +112,7 @@ export default {
 		},
 		ygzzgridview: {
 			caption: "出（国）境申请",
-      title: '出（国）境申请',
+      title: '出入境管理实体表格视图（员工自助）',
 		},
 		editview_ng: {
 			caption: "出（国）境基本信息",

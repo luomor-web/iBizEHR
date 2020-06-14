@@ -25,11 +25,11 @@ export default {
 		},
 		pickupview: {
 			caption: "法人主体",
-      title: '法人主体',
+      title: '法人主体数据选择视图',
 		},
 		pickupgridview: {
 			caption: "法人主体",
-      title: '法人主体',
+      title: '法人主体选择表格视图',
 		},
 		htqddwwpickupview: {
 			caption: "合同签订单位选择",

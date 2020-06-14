@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pimcontract.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.pimpersonname.disabled"
   name='pimpersonname'
   deMajorField='pimpersonname'
@@ -39,12 +41,14 @@
 </i-col>
 <i-col v-show="detailsModel.htlx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='htlx' :itemRules="this.rules.htlx" class='' :caption="$t('entities.pimcontract.main_form.details.htlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.htlx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.htlx" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.htlx.disabled"  
     tag='EhrCodeList0084' 
     codelistType='DYNAMIC'
@@ -58,12 +62,14 @@
     <row>
         <i-col v-show="detailsModel.contracttype.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='contracttype' :itemRules="this.rules.contracttype" class='' :caption="$t('entities.pimcontract.main_form.details.contracttype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.contracttype.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.contracttype" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.contracttype.disabled"  
     tag='EhrCodeList0107' 
     codelistType='DYNAMIC'
@@ -91,12 +97,14 @@
 </i-col>
 <i-col v-show="detailsModel.htzt.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='htzt' :itemRules="this.rules.htzt" class='' :caption="$t('entities.pimcontract.main_form.details.htzt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.htzt.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.htzt" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.htzt.disabled"  
     tag='EhrCodeList0030' 
     codelistType='STATIC'
@@ -107,12 +115,14 @@
 </i-col>
 <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.pimcontract.main_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormorgname.disabled"
   name='ormorgname'
   deMajorField='orgname'
@@ -132,12 +142,14 @@
 </i-col>
 <i-col v-show="detailsModel.ormsignorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormsignorgname' :itemRules="this.rules.ormsignorgname" class='' :caption="$t('entities.pimcontract.main_form.details.ormsignorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormsignorgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormsignorgname.disabled"
   name='ormsignorgname'
   deMajorField='ormsignorgname'
@@ -157,12 +169,14 @@
 </i-col>
 <i-col v-show="detailsModel.pimlabourcampanyname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimlabourcampanyname' :itemRules="this.rules.pimlabourcampanyname" class='' :caption="$t('entities.pimcontract.main_form.details.pimlabourcampanyname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimlabourcampanyname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker  
+    
+<app-picker  
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.pimlabourcampanyname.disabled"
   name='pimlabourcampanyname' 
   deMajorField='pimlabourcampanyname'

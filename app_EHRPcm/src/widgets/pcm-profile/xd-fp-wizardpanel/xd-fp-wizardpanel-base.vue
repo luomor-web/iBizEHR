@@ -172,6 +172,7 @@ export default class XD_FPBase extends Vue implements ControlInterface {
         }
     }
 
+
     /**
      * 部件行为--init
      *

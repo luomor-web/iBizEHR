@@ -21,12 +21,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_ygzt_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_ygzt_eq' :itemRules="this.rules.n_ygzt_eq" class='' :caption="$t('entities.pimcontract.default_searchform.details.n_ygzt_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_ygzt_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_ygzt_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_ygzt_eq.disabled"  
               tag='EhrCodeList0014' 
               codelistType='DYNAMIC'
@@ -43,12 +45,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_htlx_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_htlx_eq' :itemRules="this.rules.n_htlx_eq" class='' :caption="$t('entities.pimcontract.default_searchform.details.n_htlx_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_htlx_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_htlx_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_htlx_eq.disabled"  
               tag='EhrCodeList0084' 
               codelistType='DYNAMIC'
@@ -59,12 +63,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_htzt_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_htzt_eq' :itemRules="this.rules.n_htzt_eq" class='' :caption="$t('entities.pimcontract.default_searchform.details.n_htzt_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_htzt_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_htzt_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_htzt_eq.disabled"  
               tag='EhrCodeList0030' 
               codelistType='STATIC'
@@ -87,12 +93,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_contracttype_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_contracttype_eq' :itemRules="this.rules.n_contracttype_eq" class='' :caption="$t('entities.pimcontract.default_searchform.details.n_contracttype_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_contracttype_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_contracttype_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_contracttype_eq.disabled"  
               tag='EhrCodeList0107' 
               codelistType='DYNAMIC'

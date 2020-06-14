@@ -57,71 +57,71 @@ export default {
 	views: {
 		loyeenofilegridview: {
 			caption: '员工不在档提醒',
-      title: '员工不在档提醒',
+      title: '员工不在档提醒表格视图',
 		},
 		redirectview: {
 			caption: '档案信息',
-      title: '档案信息',
+      title: '档案信息数据重定向视图',
 		},
 		admineditview: {
 			caption: '档案信息',
-      title: '档案信息',
+      title: '档案信息编辑视图',
 		},
 		archivesrecordeditview: {
 			caption: '档案信息',
-      title: '档案信息',
+      title: '调档记录编辑视图',
 		},
 		notouteditview: {
 			caption: '离职未转出档案',
-      title: '离职未转出档案',
+      title: '离职未转出档案编辑视图',
 		},
 		gridview: {
 			caption: '档案信息',
-      title: '档案信息',
+      title: '档案信息表格视图',
 		},
 		greditview: {
 			caption: '档案信息',
-      title: '档案信息',
+      title: '档案信息编辑视图',
 		},
 		editview: {
 			caption: '档案信息',
-      title: '档案信息',
+      title: '档案信息编辑视图',
 		},
 		noloyeenofilegridview: {
 			caption: '非员工在档提醒',
-      title: '非员工在档提醒',
+      title: '非员工在档提醒表格视图',
 		},
 		notoutgridview: {
 			caption: '离职未转出档案',
-      title: '离职未转出档案',
+      title: '离职未转出档案表格视图',
 		},
 		grpimdangagridview: {
 			caption: '档案信息',
-      title: '档案信息',
+      title: '档案信息表格视图',
 		},
 		pickupview: {
 			caption: '档案信息',
-      title: '档案信息',
+      title: '档案信息数据选择视图',
 		},
 		treeexpview: {
 			caption: '档案信息',
-      title: '档案信息',
+      title: '档案信息树导航视图',
 		},
 		pimdangagridview: {
 			caption: '档案信息',
-      title: '档案信息',
+      title: '档案信息表格视图',
 		},
 		mpickupview: {
 			caption: '档案信息',
-      title: '档案信息',
+      title: '档案信息数据多项选择视图',
 		},
 		editview2: {
 			caption: '档案信息',
-      title: '档案信息',
+      title: '档案信息编辑视图',
 		},
 		pickupgridview: {
 			caption: '档案信息',
-      title: '档案信息',
+      title: '档案信息选择表格视图',
 		},
 	},
 	admineditform_2_form: {
@@ -331,6 +331,7 @@ export default {
 			uagridcolumn1: '操作列',
 		},
 		uiactions: {
+			drdatck: '调入档案',
 			filein: '调入档案',
 		},
 	},
@@ -365,6 +366,7 @@ export default {
 			uagridcolumn1: '操作列',
 		},
 		uiactions: {
+			dcdatck: '调出档案',
 			fileout: '调出档案',
 		},
 	},

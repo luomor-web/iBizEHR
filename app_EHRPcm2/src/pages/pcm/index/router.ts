@@ -25,7 +25,8 @@ const router = new Router({
                 });
             },
             meta: {  
-                caption: 'app.views.index.caption',
+                caption: 'app.views.index.title',
+                info:'',
                 viewType: 'APPINDEX',
                 parameters: [
                     { pathName: 'index', parameterName: 'index' },
@@ -37,7 +38,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.pickupview.caption',
+                        caption: 'entities.ormorgsector.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -51,7 +53,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.pickupview.caption',
+                        caption: 'entities.ormorgsector.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -64,7 +67,8 @@ const router = new Router({
                 {
                     path: 'pcmydjzmxes/:pcmydjzmx?/lsjlgridview/:lsjlgridview?',
                     meta: {
-                        caption: 'entities.pcmydjzmx.views.lsjlgridview.caption',
+                        caption: 'entities.pcmydjzmx.views.lsjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jianzhijilu.png',
                         iconCls: '',
                         parameters: [
@@ -79,7 +83,8 @@ const router = new Router({
                 {
                     path: 'pcmjxszzkhjgjls/:pcmjxszzkhjgjl?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.pcmjxszzkhjgjl.views.pickupview.caption',
+                        caption: 'entities.pcmjxszzkhjgjl.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmjxszzkhjgjls', parameterName: 'pcmjxszzkhjgjl' },
@@ -92,7 +97,8 @@ const router = new Router({
                 {
                     path: 'pcmydjpmxes/:pcmydjpmx?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.pcmydjpmx.views.editview9.caption',
+                        caption: 'entities.pcmydjpmx.views.editview9.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydjpmxes', parameterName: 'pcmydjpmx' },
@@ -105,7 +111,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/kddmpickupview/:kddmpickupview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.kddmpickupview.caption',
+                        caption: 'entities.pimdistirbution.views.kddmpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -119,7 +126,8 @@ const router = new Router({
                 {
                     path: 'pimdistirbutions/:pimdistirbution?/kddmpickupview/:kddmpickupview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.kddmpickupview.caption',
+                        caption: 'entities.pimdistirbution.views.kddmpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -132,7 +140,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pcmxygzzjlmxes/:pcmxygzzjlmx?/approvalgridview/:approvalgridview?',
                     meta: {
-                        caption: 'entities.pcmxygzzjlmx.views.approvalgridview.caption',
+                        caption: 'entities.pcmxygzzjlmx.views.approvalgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -146,7 +155,8 @@ const router = new Router({
                 {
                     path: 'pcmxygzzjlmxes/:pcmxygzzjlmx?/approvalgridview/:approvalgridview?',
                     meta: {
-                        caption: 'entities.pcmxygzzjlmx.views.approvalgridview.caption',
+                        caption: 'entities.pcmxygzzjlmx.views.approvalgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
@@ -159,7 +169,8 @@ const router = new Router({
                 {
                     path: 'pcmydbxmxes/:pcmydbxmx?/bxglgridview/:bxglgridview?',
                     meta: {
-                        caption: 'entities.pcmydbxmx.views.bxglgridview.caption',
+                        caption: 'entities.pcmydbxmx.views.bxglgridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/xiujiaguanli.png',
                         iconCls: '',
                         parameters: [
@@ -174,7 +185,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/zzjlgridview/:zzjlgridview?',
                     meta: {
-                        caption: 'entities.pcmjxsygzzjlmx.views.zzjlgridview.caption',
+                        caption: 'entities.pcmjxsygzzjlmx.views.zzjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jianxiqiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -190,7 +202,8 @@ const router = new Router({
                 {
                     path: 'pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/zzjlgridview/:zzjlgridview?',
                     meta: {
-                        caption: 'entities.pcmjxsygzzjlmx.views.zzjlgridview.caption',
+                        caption: 'entities.pcmjxsygzzjlmx.views.zzjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jianxiqiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -205,7 +218,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/yxzfppickupgridview/:yxzfppickupgridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.yxzfppickupgridview.caption',
+                        caption: 'entities.pimperson.views.yxzfppickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -218,7 +232,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.ormpost.views.pickupgridview.caption',
+                        caption: 'entities.ormpost.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -232,7 +247,8 @@ const router = new Router({
                 {
                     path: 'ormposts/:ormpost?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.ormpost.views.pickupgridview.caption',
+                        caption: 'entities.ormpost.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -245,7 +261,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/yxzfppickupview/:yxzfppickupview?',
                     meta: {
-                        caption: 'entities.pimperson.views.yxzfppickupview.caption',
+                        caption: 'entities.pimperson.views.yxzfppickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -258,7 +275,8 @@ const router = new Router({
                 {
                     path: 'ormduties/:ormduty?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.ormduty.views.pickupgridview.caption',
+                        caption: 'entities.ormduty.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormduties', parameterName: 'ormduty' },
@@ -271,7 +289,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.pimperson.views.editview9.caption',
+                        caption: 'entities.pimperson.views.editview9.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -284,7 +303,8 @@ const router = new Router({
                 {
                     path: 'ormduties/:ormduty?/ormorgsectorpickupgridview/:ormorgsectorpickupgridview?',
                     meta: {
-                        caption: 'entities.ormduty.views.ormorgsectorpickupgridview.caption',
+                        caption: 'entities.ormduty.views.ormorgsectorpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormduties', parameterName: 'ormduty' },
@@ -297,7 +317,8 @@ const router = new Router({
                 {
                     path: 'pcmxygzzkhjgjls/:pcmxygzzkhjgjl?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.pcmxygzzkhjgjl.views.pickupgridview.caption',
+                        caption: 'entities.pcmxygzzkhjgjl.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmxygzzkhjgjls', parameterName: 'pcmxygzzkhjgjl' },
@@ -310,7 +331,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimfaminfos/:pimfaminfo?/jtlxrpickupgridview/:jtlxrpickupgridview?',
                     meta: {
-                        caption: 'entities.pimfaminfo.views.jtlxrpickupgridview.caption',
+                        caption: 'entities.pimfaminfo.views.jtlxrpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -324,7 +346,8 @@ const router = new Router({
                 {
                     path: 'pimfaminfos/:pimfaminfo?/jtlxrpickupgridview/:jtlxrpickupgridview?',
                     meta: {
-                        caption: 'entities.pimfaminfo.views.jtlxrpickupgridview.caption',
+                        caption: 'entities.pimfaminfo.views.jtlxrpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimfaminfos', parameterName: 'pimfaminfo' },
@@ -337,7 +360,8 @@ const router = new Router({
                 {
                     path: 'pcmydjpmxes/:pcmydjpmx?/ckeditview/:ckeditview?',
                     meta: {
-                        caption: 'entities.pcmydjpmx.views.ckeditview.caption',
+                        caption: 'entities.pcmydjpmx.views.ckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydjpmxes', parameterName: 'pcmydjpmx' },
@@ -350,7 +374,8 @@ const router = new Router({
                 {
                     path: 'pcmydjzmxes/:pcmydjzmx?/xzeditview/:xzeditview?',
                     meta: {
-                        caption: 'entities.pcmydjzmx.views.xzeditview.caption',
+                        caption: 'entities.pcmydjzmx.views.xzeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydjzmxes', parameterName: 'pcmydjzmx' },
@@ -363,7 +388,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/jxspickupview/:jxspickupview?',
                     meta: {
-                        caption: 'entities.pimperson.views.jxspickupview.caption',
+                        caption: 'entities.pimperson.views.jxspickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -376,7 +402,8 @@ const router = new Router({
                 {
                     path: 'pcmydtxmxes/:pcmydtxmx?/jlgridview/:jlgridview?',
                     meta: {
-                        caption: 'entities.pcmydtxmx.views.jlgridview.caption',
+                        caption: 'entities.pcmydtxmx.views.jlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/tuixiuguanli.png',
                         iconCls: '',
                         parameters: [
@@ -391,7 +418,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/kxzxygpickupgridview/:kxzxygpickupgridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.kxzxygpickupgridview.caption',
+                        caption: 'entities.pimperson.views.kxzxygpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -404,7 +432,8 @@ const router = new Router({
                 {
                     path: 'pcmyddgmxes/:pcmyddgmx?/ckeditview/:ckeditview?',
                     meta: {
-                        caption: 'entities.pcmyddgmx.views.ckeditview.caption',
+                        caption: 'entities.pcmyddgmx.views.ckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmyddgmxes', parameterName: 'pcmyddgmx' },
@@ -417,7 +446,8 @@ const router = new Router({
                 {
                     path: 'pcmydlzmxes/:pcmydlzmx?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.pcmydlzmx.views.editview9.caption',
+                        caption: 'entities.pcmydlzmx.views.editview9.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydlzmxes', parameterName: 'pcmydlzmx' },
@@ -430,7 +460,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmjxsygzzjlmx.views.editview.caption',
+                        caption: 'entities.pcmjxsygzzjlmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -444,7 +475,8 @@ const router = new Router({
                 {
                     path: 'pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmjxsygzzjlmx.views.editview.caption',
+                        caption: 'entities.pcmjxsygzzjlmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
@@ -457,7 +489,8 @@ const router = new Router({
                 {
                     path: 'pcmydbxmxes/:pcmydbxmx?/ckeditview/:ckeditview?',
                     meta: {
-                        caption: 'entities.pcmydbxmx.views.ckeditview.caption',
+                        caption: 'entities.pcmydbxmx.views.ckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydbxmxes', parameterName: 'pcmydbxmx' },
@@ -470,7 +503,8 @@ const router = new Router({
                 {
                     path: 'pcmydbxmxes/:pcmydbxmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmydbxmx.views.editview.caption',
+                        caption: 'entities.pcmydbxmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydbxmxes', parameterName: 'pcmydbxmx' },
@@ -483,7 +517,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.ormorg.views.pickupgridview.caption',
+                        caption: 'entities.ormorg.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -496,7 +531,8 @@ const router = new Router({
                 {
                     path: 'pcmydjpmxes/:pcmydjpmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmydjpmx.views.editview.caption',
+                        caption: 'entities.pcmydjpmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydjpmxes', parameterName: 'pcmydjpmx' },
@@ -509,7 +545,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmddsqdmxes/:pcmddsqdmx?/ddckeditview/:ddckeditview?',
                     meta: {
-                        caption: 'entities.pcmddsqdmx.views.ddckeditview.caption',
+                        caption: 'entities.pcmddsqdmx.views.ddckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -524,7 +561,8 @@ const router = new Router({
                 {
                     path: 'pimdistirbutions/:pimdistirbution?/pcmddsqdmxes/:pcmddsqdmx?/ddckeditview/:ddckeditview?',
                     meta: {
-                        caption: 'entities.pcmddsqdmx.views.ddckeditview.caption',
+                        caption: 'entities.pcmddsqdmx.views.ddckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -538,7 +576,8 @@ const router = new Router({
                 {
                     path: 'pcmddsqds/:pcmddsqd?/pcmddsqdmxes/:pcmddsqdmx?/ddckeditview/:ddckeditview?',
                     meta: {
-                        caption: 'entities.pcmddsqdmx.views.ddckeditview.caption',
+                        caption: 'entities.pcmddsqdmx.views.ddckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmddsqds', parameterName: 'pcmddsqd' },
@@ -552,7 +591,8 @@ const router = new Router({
                 {
                     path: 'pcmddsqdmxes/:pcmddsqdmx?/ddckeditview/:ddckeditview?',
                     meta: {
-                        caption: 'entities.pcmddsqdmx.views.ddckeditview.caption',
+                        caption: 'entities.pcmddsqdmx.views.ddckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmddsqdmxes', parameterName: 'pcmddsqdmx' },
@@ -565,7 +605,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
                     meta: {
-                        caption: 'entities.ormpost.views.ejormorgidpickupgridview.caption',
+                        caption: 'entities.ormpost.views.ejormorgidpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -579,7 +620,8 @@ const router = new Router({
                 {
                     path: 'ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
                     meta: {
-                        caption: 'entities.ormpost.views.ejormorgidpickupgridview.caption',
+                        caption: 'entities.ormpost.views.ejormorgidpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -592,7 +634,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/txglgridview/:txglgridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.txglgridview.caption',
+                        caption: 'entities.pimperson.views.txglgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/tuixiuguanli.png',
                         iconCls: '',
                         parameters: [
@@ -607,7 +650,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pcmxygzzjlmxes/:pcmxygzzjlmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmxygzzjlmx.views.editview.caption',
+                        caption: 'entities.pcmxygzzjlmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -621,7 +665,8 @@ const router = new Router({
                 {
                     path: 'pcmxygzzjlmxes/:pcmxygzzjlmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmxygzzjlmx.views.editview.caption',
+                        caption: 'entities.pcmxygzzjlmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
@@ -634,7 +679,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimfaminfos/:pimfaminfo?/jtlxrpickupview/:jtlxrpickupview?',
                     meta: {
-                        caption: 'entities.pimfaminfo.views.jtlxrpickupview.caption',
+                        caption: 'entities.pimfaminfo.views.jtlxrpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -648,7 +694,8 @@ const router = new Router({
                 {
                     path: 'pimfaminfos/:pimfaminfo?/jtlxrpickupview/:jtlxrpickupview?',
                     meta: {
-                        caption: 'entities.pimfaminfo.views.jtlxrpickupview.caption',
+                        caption: 'entities.pimfaminfo.views.jtlxrpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimfaminfos', parameterName: 'pimfaminfo' },
@@ -661,7 +708,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ydbmpickupgridview/:ydbmpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.ydbmpickupgridview.caption',
+                        caption: 'entities.ormorgsector.views.ydbmpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -675,7 +723,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/ydbmpickupgridview/:ydbmpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.ydbmpickupgridview.caption',
+                        caption: 'entities.ormorgsector.views.ydbmpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -688,7 +737,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -703,7 +753,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -718,7 +769,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -731,23 +783,10 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcm-ydjdmx-ydmxedit-view/pcm-ydjdmx-ydmxedit-view.vue'),
                 },
                 {
-                    path: 'pimpeople/:pimperson?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
-                    meta: {
-                        caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
-                            { pathName: 'ydmxeditview', parameterName: 'ydmxeditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcm-ydjdmx-ydmxedit-view/pcm-ydjdmx-ydmxedit-view.vue'),
-                },
-                {
                     path: 'pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -761,7 +800,8 @@ const router = new Router({
                 {
                     path: 'ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -775,7 +815,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -789,7 +830,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -803,7 +845,8 @@ const router = new Router({
                 {
                     path: 'ormduties/:ormduty?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormduties', parameterName: 'ormduty' },
@@ -817,7 +860,8 @@ const router = new Router({
                 {
                     path: 'pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -830,7 +874,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -847,7 +892,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -864,7 +910,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -879,25 +926,10 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcm-ydjdmx-jdlsjlgrid-view/pcm-ydjdmx-jdlsjlgrid-view.vue'),
                 },
                 {
-                    path: 'pimpeople/:pimperson?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
-                    meta: {
-                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
-                        imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
-                            { pathName: 'jdlsjlgridview', parameterName: 'jdlsjlgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcm-ydjdmx-jdlsjlgrid-view/pcm-ydjdmx-jdlsjlgrid-view.vue'),
-                },
-                {
                     path: 'pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -913,7 +945,8 @@ const router = new Router({
                 {
                     path: 'ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -929,7 +962,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -945,7 +979,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -961,7 +996,8 @@ const router = new Router({
                 {
                     path: 'ormduties/:ormduty?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -977,7 +1013,8 @@ const router = new Router({
                 {
                     path: 'pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -992,7 +1029,8 @@ const router = new Router({
                 {
                     path: 'pcmydntmxes/:pcmydntmx?/ntjsrqqreditview/:ntjsrqqreditview?',
                     meta: {
-                        caption: 'entities.pcmydntmx.views.ntjsrqqreditview.caption',
+                        caption: 'entities.pcmydntmx.views.ntjsrqqreditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydntmxes', parameterName: 'pcmydntmx' },
@@ -1005,7 +1043,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/fpxxpickupview/:fpxxpickupview?',
                     meta: {
-                        caption: 'entities.ormorg.views.fpxxpickupview.caption',
+                        caption: 'entities.ormorg.views.fpxxpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1018,7 +1057,8 @@ const router = new Router({
                 {
                     path: 'pcmydjzmxes/:pcmydjzmx?/glgridview/:glgridview?',
                     meta: {
-                        caption: 'entities.pcmydjzmx.views.glgridview.caption',
+                        caption: 'entities.pcmydjzmx.views.glgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jianzhijilu.png',
                         iconCls: '',
                         parameters: [
@@ -1033,7 +1073,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmddsqdmxes/:pcmddsqdmx?/ddeditview/:ddeditview?',
                     meta: {
-                        caption: 'entities.pcmddsqdmx.views.ddeditview.caption',
+                        caption: 'entities.pcmddsqdmx.views.ddeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -1048,7 +1089,8 @@ const router = new Router({
                 {
                     path: 'pimdistirbutions/:pimdistirbution?/pcmddsqdmxes/:pcmddsqdmx?/ddeditview/:ddeditview?',
                     meta: {
-                        caption: 'entities.pcmddsqdmx.views.ddeditview.caption',
+                        caption: 'entities.pcmddsqdmx.views.ddeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -1062,7 +1104,8 @@ const router = new Router({
                 {
                     path: 'pcmddsqds/:pcmddsqd?/pcmddsqdmxes/:pcmddsqdmx?/ddeditview/:ddeditview?',
                     meta: {
-                        caption: 'entities.pcmddsqdmx.views.ddeditview.caption',
+                        caption: 'entities.pcmddsqdmx.views.ddeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmddsqds', parameterName: 'pcmddsqd' },
@@ -1076,7 +1119,8 @@ const router = new Router({
                 {
                     path: 'pcmddsqdmxes/:pcmddsqdmx?/ddeditview/:ddeditview?',
                     meta: {
-                        caption: 'entities.pcmddsqdmx.views.ddeditview.caption',
+                        caption: 'entities.pcmddsqdmx.views.ddeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmddsqdmxes', parameterName: 'pcmddsqdmx' },
@@ -1089,7 +1133,8 @@ const router = new Router({
                 {
                     path: 'pcmydjzmxes/:pcmydjzmx?/jsrqqreditview/:jsrqqreditview?',
                     meta: {
-                        caption: 'entities.pcmydjzmx.views.jsrqqreditview.caption',
+                        caption: 'entities.pcmydjzmx.views.jsrqqreditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydjzmxes', parameterName: 'pcmydjzmx' },
@@ -1102,7 +1147,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/syjxeditview/:syjxeditview?',
                     meta: {
-                        caption: 'entities.pimperson.views.syjxeditview.caption',
+                        caption: 'entities.pimperson.views.syjxeditview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/gerenxinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1117,7 +1163,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.pickupgridview.caption',
+                        caption: 'entities.ormorgsector.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1131,7 +1178,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.pickupgridview.caption',
+                        caption: 'entities.ormorgsector.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -1144,7 +1192,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/kddpickupview/:kddpickupview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.kddpickupview.caption',
+                        caption: 'entities.pimdistirbution.views.kddpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -1158,7 +1207,8 @@ const router = new Router({
                 {
                     path: 'pimdistirbutions/:pimdistirbution?/kddpickupview/:kddpickupview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.kddpickupview.caption',
+                        caption: 'entities.pimdistirbution.views.kddpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -1171,7 +1221,8 @@ const router = new Router({
                 {
                     path: 'pcmydntmxes/:pcmydntmx?/ntglgridview/:ntglgridview?',
                     meta: {
-                        caption: 'entities.pcmydntmx.views.ntglgridview.caption',
+                        caption: 'entities.pcmydntmx.views.ntglgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/neituiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1186,7 +1237,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/sjyxzzpickupview/:sjyxzzpickupview?',
                     meta: {
-                        caption: 'entities.ormorg.views.sjyxzzpickupview.caption',
+                        caption: 'entities.ormorg.views.sjyxzzpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1199,7 +1251,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/xzeditview/:xzeditview?',
                     meta: {
-                        caption: 'entities.pcmjxsygzzjlmx.views.xzeditview.caption',
+                        caption: 'entities.pcmjxsygzzjlmx.views.xzeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -1213,7 +1266,8 @@ const router = new Router({
                 {
                     path: 'pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/xzeditview/:xzeditview?',
                     meta: {
-                        caption: 'entities.pcmjxsygzzjlmx.views.xzeditview.caption',
+                        caption: 'entities.pcmjxsygzzjlmx.views.xzeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
@@ -1226,7 +1280,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/approavlgridview/:approavlgridview?',
                     meta: {
-                        caption: 'entities.pcmjxsygzzjlmx.views.approavlgridview.caption',
+                        caption: 'entities.pcmjxsygzzjlmx.views.approavlgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -1240,7 +1295,8 @@ const router = new Router({
                 {
                     path: 'pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/approavlgridview/:approavlgridview?',
                     meta: {
-                        caption: 'entities.pcmjxsygzzjlmx.views.approavlgridview.caption',
+                        caption: 'entities.pcmjxsygzzjlmx.views.approavlgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
@@ -1253,7 +1309,8 @@ const router = new Router({
                 {
                     path: 'pcmydlzmxes/:pcmydlzmx?/lsjlgridview/:lsjlgridview?',
                     meta: {
-                        caption: 'entities.pcmydlzmx.views.lsjlgridview.caption',
+                        caption: 'entities.pcmydlzmx.views.lsjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/lizhiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1268,7 +1325,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.editview.caption',
+                        caption: 'entities.pcmydjdmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -1283,7 +1341,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.editview.caption',
+                        caption: 'entities.pcmydjdmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1298,7 +1357,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.editview.caption',
+                        caption: 'entities.pcmydjdmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1311,23 +1371,10 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcm-ydjdmx-edit-view/pcm-ydjdmx-edit-view.vue'),
                 },
                 {
-                    path: 'pimpeople/:pimperson?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.pcmydjdmx.views.editview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcm-ydjdmx-edit-view/pcm-ydjdmx-edit-view.vue'),
-                },
-                {
                     path: 'pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.editview.caption',
+                        caption: 'entities.pcmydjdmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -1341,7 +1388,8 @@ const router = new Router({
                 {
                     path: 'ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.editview.caption',
+                        caption: 'entities.pcmydjdmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -1355,7 +1403,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.editview.caption',
+                        caption: 'entities.pcmydjdmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1369,7 +1418,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.editview.caption',
+                        caption: 'entities.pcmydjdmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -1383,7 +1433,8 @@ const router = new Router({
                 {
                     path: 'ormduties/:ormduty?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.editview.caption',
+                        caption: 'entities.pcmydjdmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormduties', parameterName: 'ormduty' },
@@ -1397,7 +1448,8 @@ const router = new Router({
                 {
                     path: 'pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.editview.caption',
+                        caption: 'entities.pcmydjdmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -1410,7 +1462,8 @@ const router = new Router({
                 {
                     path: 'pcmjxszzkhjgjls/:pcmjxszzkhjgjl?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.pcmjxszzkhjgjl.views.pickupgridview.caption',
+                        caption: 'entities.pcmjxszzkhjgjl.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmjxszzkhjgjls', parameterName: 'pcmjxszzkhjgjl' },
@@ -1423,7 +1476,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/kxzxygpickupview/:kxzxygpickupview?',
                     meta: {
-                        caption: 'entities.pimperson.views.kxzxygpickupview.caption',
+                        caption: 'entities.pimperson.views.kxzxygpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -1436,7 +1490,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.editview.caption',
+                        caption: 'entities.pimdistirbution.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/fenpeixinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1452,7 +1507,8 @@ const router = new Router({
                 {
                     path: 'pimdistirbutions/:pimdistirbution?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.editview.caption',
+                        caption: 'entities.pimdistirbution.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/jcgl/1/fenpeixinxi.png',
                         iconCls: '',
                         parameters: [
@@ -1467,7 +1523,8 @@ const router = new Router({
                 {
                     path: 'pcmydjzmxes/:pcmydjzmx?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.pcmydjzmx.views.editview9.caption',
+                        caption: 'entities.pcmydjzmx.views.editview9.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydjzmxes', parameterName: 'pcmydjzmx' },
@@ -1480,7 +1537,8 @@ const router = new Router({
                 {
                     path: 'pcmydntmxes/:pcmydntmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmydntmx.views.editview.caption',
+                        caption: 'entities.pcmydntmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydntmxes', parameterName: 'pcmydntmx' },
@@ -1493,7 +1551,8 @@ const router = new Router({
                 {
                     path: 'pcmydntmxes/:pcmydntmx?/xzeditview/:xzeditview?',
                     meta: {
-                        caption: 'entities.pcmydntmx.views.xzeditview.caption',
+                        caption: 'entities.pcmydntmx.views.xzeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydntmxes', parameterName: 'pcmydntmx' },
@@ -1506,7 +1565,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupview/:ejormorgidpickupview?',
                     meta: {
-                        caption: 'entities.ormpost.views.ejormorgidpickupview.caption',
+                        caption: 'entities.ormpost.views.ejormorgidpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1520,7 +1580,8 @@ const router = new Router({
                 {
                     path: 'ormposts/:ormpost?/ejormorgidpickupview/:ejormorgidpickupview?',
                     meta: {
-                        caption: 'entities.ormpost.views.ejormorgidpickupview.caption',
+                        caption: 'entities.ormpost.views.ejormorgidpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -1533,7 +1594,8 @@ const router = new Router({
                 {
                     path: 'pcmydjpmxes/:pcmydjpmx?/jpjlgridview/:jpjlgridview?',
                     meta: {
-                        caption: 'entities.pcmydjpmx.views.jpjlgridview.caption',
+                        caption: 'entities.pcmydjpmx.views.jpjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiepinguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1548,7 +1610,8 @@ const router = new Router({
                 {
                     path: 'pcmydjpmxes/:pcmydjpmx?/glgridview/:glgridview?',
                     meta: {
-                        caption: 'entities.pcmydjpmx.views.glgridview.caption',
+                        caption: 'entities.pcmydjpmx.views.glgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiepinguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1563,7 +1626,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -1578,7 +1642,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1593,7 +1658,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1606,23 +1672,10 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcm-ydjdmx-jdjsqredit-view/pcm-ydjdmx-jdjsqredit-view.vue'),
                 },
                 {
-                    path: 'pimpeople/:pimperson?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
-                    meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
-                            { pathName: 'jdjsqreditview', parameterName: 'jdjsqreditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcm-ydjdmx-jdjsqredit-view/pcm-ydjdmx-jdjsqredit-view.vue'),
-                },
-                {
                     path: 'pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -1636,7 +1689,8 @@ const router = new Router({
                 {
                     path: 'ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -1650,7 +1704,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1664,7 +1719,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -1678,7 +1734,8 @@ const router = new Router({
                 {
                     path: 'ormduties/:ormduty?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormduties', parameterName: 'ormduty' },
@@ -1692,7 +1749,8 @@ const router = new Router({
                 {
                     path: 'pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -1705,7 +1763,8 @@ const router = new Router({
                 {
                     path: 'pcmyddgmxes/:pcmyddgmx?/dgjlgridview/:dgjlgridview?',
                     meta: {
-                        caption: 'entities.pcmyddgmx.views.dgjlgridview.caption',
+                        caption: 'entities.pcmyddgmx.views.dgjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/daigangguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1720,7 +1779,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pcmxygzzjlmxes/:pcmxygzzjlmx?/syqzzjlgridview/:syqzzjlgridview?',
                     meta: {
-                        caption: 'entities.pcmxygzzjlmx.views.syqzzjlgridview.caption',
+                        caption: 'entities.pcmxygzzjlmx.views.syqzzjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/shiyongqiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1736,7 +1796,8 @@ const router = new Router({
                 {
                     path: 'pcmxygzzjlmxes/:pcmxygzzjlmx?/syqzzjlgridview/:syqzzjlgridview?',
                     meta: {
-                        caption: 'entities.pcmxygzzjlmx.views.syqzzjlgridview.caption',
+                        caption: 'entities.pcmxygzzjlmx.views.syqzzjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/shiyongqiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1751,7 +1812,8 @@ const router = new Router({
                 {
                     path: 'pcmydjzmxes/:pcmydjzmx?/jlckeditview/:jlckeditview?',
                     meta: {
-                        caption: 'entities.pcmydjzmx.views.jlckeditview.caption',
+                        caption: 'entities.pcmydjzmx.views.jlckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydjzmxes', parameterName: 'pcmydjzmx' },
@@ -1764,7 +1826,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/txqreditview/:txqreditview?',
                     meta: {
-                        caption: 'entities.pimperson.views.txqreditview.caption',
+                        caption: 'entities.pimperson.views.txqreditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -1777,7 +1840,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1794,7 +1858,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1811,7 +1876,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1826,25 +1892,10 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcm-ydjdmx-jdglgrid-view/pcm-ydjdmx-jdglgrid-view.vue'),
                 },
                 {
-                    path: 'pimpeople/:pimperson?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
-                    meta: {
-                        caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
-                        imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
-                            { pathName: 'jdglgridview', parameterName: 'jdglgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcm-ydjdmx-jdglgrid-view/pcm-ydjdmx-jdglgrid-view.vue'),
-                },
-                {
                     path: 'pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1860,7 +1911,8 @@ const router = new Router({
                 {
                     path: 'ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1876,7 +1928,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1892,7 +1945,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1908,7 +1962,8 @@ const router = new Router({
                 {
                     path: 'ormduties/:ormduty?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1924,7 +1979,8 @@ const router = new Router({
                 {
                     path: 'pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
                         iconCls: '',
                         parameters: [
@@ -1939,7 +1995,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.pcmjxsygzzjlmx.views.editview9.caption',
+                        caption: 'entities.pcmjxsygzzjlmx.views.editview9.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -1953,7 +2010,8 @@ const router = new Router({
                 {
                     path: 'pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.pcmjxsygzzjlmx.views.editview9.caption',
+                        caption: 'entities.pcmjxsygzzjlmx.views.editview9.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
@@ -1966,7 +2024,8 @@ const router = new Router({
                 {
                     path: 'pcmydlzmxes/:pcmydlzmx?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pcmydlzmx.views.editview.caption',
+                        caption: 'entities.pcmydlzmx.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydlzmxes', parameterName: 'pcmydlzmx' },
@@ -1979,7 +2038,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.ormpost.views.pickupview.caption',
+                        caption: 'entities.ormpost.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -1993,7 +2053,8 @@ const router = new Router({
                 {
                     path: 'ormposts/:ormpost?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.ormpost.views.pickupview.caption',
+                        caption: 'entities.ormpost.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -2006,7 +2067,8 @@ const router = new Router({
                 {
                     path: 'pcmydjpmxes/:pcmydjpmx?/xzeditview/:xzeditview?',
                     meta: {
-                        caption: 'entities.pcmydjpmx.views.xzeditview.caption',
+                        caption: 'entities.pcmydjpmx.views.xzeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydjpmxes', parameterName: 'pcmydjpmx' },
@@ -2019,7 +2081,8 @@ const router = new Router({
                 {
                     path: 'pcmydbxmxes/:pcmydbxmx?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.pcmydbxmx.views.editview9.caption',
+                        caption: 'entities.pcmydbxmx.views.editview9.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydbxmxes', parameterName: 'pcmydbxmx' },
@@ -2032,7 +2095,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/fpxxpickupview/:fpxxpickupview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.fpxxpickupview.caption',
+                        caption: 'entities.ormorgsector.views.fpxxpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -2046,7 +2110,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/fpxxpickupview/:fpxxpickupview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.fpxxpickupview.caption',
+                        caption: 'entities.ormorgsector.views.fpxxpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -2059,7 +2124,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/fpxxpickupgridview/:fpxxpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.fpxxpickupgridview.caption',
+                        caption: 'entities.ormorgsector.views.fpxxpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -2073,7 +2139,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/fpxxpickupgridview/:fpxxpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.fpxxpickupgridview.caption',
+                        caption: 'entities.ormorgsector.views.fpxxpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -2086,7 +2153,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.pimperson.views.pickupview.caption',
+                        caption: 'entities.pimperson.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -2099,7 +2167,8 @@ const router = new Router({
                 {
                     path: 'pcmydlzmxes/:pcmydlzmx?/glgridview/:glgridview?',
                     meta: {
-                        caption: 'entities.pcmydlzmx.views.glgridview.caption',
+                        caption: 'entities.pcmydlzmx.views.glgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/lizhiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2114,7 +2183,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/sjyxzzpickupgridview/:sjyxzzpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorg.views.sjyxzzpickupgridview.caption',
+                        caption: 'entities.ormorg.views.sjyxzzpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -2127,7 +2197,8 @@ const router = new Router({
                 {
                     path: 'pcmydlzmxes/:pcmydlzmx?/xzeditview/:xzeditview?',
                     meta: {
-                        caption: 'entities.pcmydlzmx.views.xzeditview.caption',
+                        caption: 'entities.pcmydlzmx.views.xzeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydlzmxes', parameterName: 'pcmydlzmx' },
@@ -2140,7 +2211,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.ormorg.views.pickupview.caption',
+                        caption: 'entities.ormorg.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -2153,7 +2225,8 @@ const router = new Router({
                 {
                     path: 'ormduties/:ormduty?/ormorgsectorpickupview/:ormorgsectorpickupview?',
                     meta: {
-                        caption: 'entities.ormduty.views.ormorgsectorpickupview.caption',
+                        caption: 'entities.ormduty.views.ormorgsectorpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormduties', parameterName: 'ormduty' },
@@ -2166,7 +2239,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/sqjxqzzgridview/:sqjxqzzgridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.sqjxqzzgridview.caption',
+                        caption: 'entities.pimperson.views.sqjxqzzgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/jianxiqiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2181,7 +2255,8 @@ const router = new Router({
                 {
                     path: 'pcmyddgmxes/:pcmyddgmx?/dgglgridview/:dgglgridview?',
                     meta: {
-                        caption: 'entities.pcmyddgmx.views.dgglgridview.caption',
+                        caption: 'entities.pcmyddgmx.views.dgglgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/daigangguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2196,7 +2271,8 @@ const router = new Router({
                 {
                     path: 'pcmydbxmxes/:pcmydbxmx?/xzeditview/:xzeditview?',
                     meta: {
-                        caption: 'entities.pcmydbxmx.views.xzeditview.caption',
+                        caption: 'entities.pcmydbxmx.views.xzeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydbxmxes', parameterName: 'pcmydbxmx' },
@@ -2209,7 +2285,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/jxqpickupgridview/:jxqpickupgridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.jxqpickupgridview.caption',
+                        caption: 'entities.pimperson.views.jxqpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -2222,7 +2299,8 @@ const router = new Router({
                 {
                     path: 'ormduties/:ormduty?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.ormduty.views.pickupview.caption',
+                        caption: 'entities.ormduty.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormduties', parameterName: 'ormduty' },
@@ -2235,7 +2313,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ydbmpickupview/:ydbmpickupview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.ydbmpickupview.caption',
+                        caption: 'entities.ormorgsector.views.ydbmpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -2249,7 +2328,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/ydbmpickupview/:ydbmpickupview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.ydbmpickupview.caption',
+                        caption: 'entities.ormorgsector.views.ydbmpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -2262,7 +2342,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/txryeditview/:txryeditview?',
                     meta: {
-                        caption: 'entities.pimperson.views.txryeditview.caption',
+                        caption: 'entities.pimperson.views.txryeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -2275,7 +2356,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/ddmgrgridview/:ddmgrgridview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.ddmgrgridview.caption',
+                        caption: 'entities.pimdistirbution.views.ddmgrgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/diaodongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2291,7 +2373,8 @@ const router = new Router({
                 {
                     path: 'pimdistirbutions/:pimdistirbution?/ddmgrgridview/:ddmgrgridview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.ddmgrgridview.caption',
+                        caption: 'entities.pimdistirbution.views.ddmgrgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/diaodongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2306,7 +2389,8 @@ const router = new Router({
                 {
                     path: 'pcmydntmxes/:pcmydntmx?/ckeditview/:ckeditview?',
                     meta: {
-                        caption: 'entities.pcmydntmx.views.ckeditview.caption',
+                        caption: 'entities.pcmydntmx.views.ckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydntmxes', parameterName: 'pcmydntmx' },
@@ -2319,7 +2403,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.pickupgridview.caption',
+                        caption: 'entities.pimperson.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -2332,7 +2417,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -2347,7 +2433,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -2362,7 +2449,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -2375,23 +2463,10 @@ const router = new Router({
                     component: () => import('@pages/pcm/pcm-ydjdmx-jdjlckedit-view/pcm-ydjdmx-jdjlckedit-view.vue'),
                 },
                 {
-                    path: 'pimpeople/:pimperson?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
-                    meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
-                            { pathName: 'jdjlckeditview', parameterName: 'jdjlckeditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pcm/pcm-ydjdmx-jdjlckedit-view/pcm-ydjdmx-jdjlckedit-view.vue'),
-                },
-                {
                     path: 'pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -2405,7 +2480,8 @@ const router = new Router({
                 {
                     path: 'ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -2419,7 +2495,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -2433,7 +2510,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -2447,7 +2525,8 @@ const router = new Router({
                 {
                     path: 'ormduties/:ormduty?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormduties', parameterName: 'ormduty' },
@@ -2461,7 +2540,8 @@ const router = new Router({
                 {
                     path: 'pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
                     meta: {
-                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+                        caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -2474,7 +2554,8 @@ const router = new Router({
                 {
                     path: 'pcmydntmxes/:pcmydntmx?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.pcmydntmx.views.editview9.caption',
+                        caption: 'entities.pcmydntmx.views.editview9.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydntmxes', parameterName: 'pcmydntmx' },
@@ -2487,7 +2568,8 @@ const router = new Router({
                 {
                     path: 'pcmxygzzkhjgjls/:pcmxygzzkhjgjl?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.pcmxygzzkhjgjl.views.pickupview.caption',
+                        caption: 'entities.pcmxygzzkhjgjl.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmxygzzkhjgjls', parameterName: 'pcmxygzzkhjgjl' },
@@ -2500,7 +2582,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/kddfppickupgridview/:kddfppickupgridview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.kddfppickupgridview.caption',
+                        caption: 'entities.pimdistirbution.views.kddfppickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -2514,7 +2597,8 @@ const router = new Router({
                 {
                     path: 'pimdistirbutions/:pimdistirbution?/kddfppickupgridview/:kddfppickupgridview?',
                     meta: {
-                        caption: 'entities.pimdistirbution.views.kddfppickupgridview.caption',
+                        caption: 'entities.pimdistirbution.views.kddfppickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -2527,7 +2611,8 @@ const router = new Router({
                 {
                     path: 'pcmydntmxes/:pcmydntmx?/ntjlgridview/:ntjlgridview?',
                     meta: {
-                        caption: 'entities.pcmydntmx.views.ntjlgridview.caption',
+                        caption: 'entities.pcmydntmx.views.ntjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/neituiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2542,7 +2627,8 @@ const router = new Router({
                 {
                     path: 'pcmyddgmxes/:pcmyddgmx?/xzeditview/:xzeditview?',
                     meta: {
-                        caption: 'entities.pcmyddgmx.views.xzeditview.caption',
+                        caption: 'entities.pcmyddgmx.views.xzeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmyddgmxes', parameterName: 'pcmyddgmx' },
@@ -2555,7 +2641,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/fpxxpickupgridview/:fpxxpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorg.views.fpxxpickupgridview.caption',
+                        caption: 'entities.ormorg.views.fpxxpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -2568,7 +2655,8 @@ const router = new Router({
                 {
                     path: 'pcmydtxmxes/:pcmydtxmx?/ckeditview/:ckeditview?',
                     meta: {
-                        caption: 'entities.pcmydtxmx.views.ckeditview.caption',
+                        caption: 'entities.pcmydtxmx.views.ckeditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydtxmxes', parameterName: 'pcmydtxmx' },
@@ -2581,7 +2669,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmddsqdmxes/:pcmddsqdmx?/ddjlgridview/:ddjlgridview?',
                     meta: {
-                        caption: 'entities.pcmddsqdmx.views.ddjlgridview.caption',
+                        caption: 'entities.pcmddsqdmx.views.ddjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/diaodongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2598,7 +2687,8 @@ const router = new Router({
                 {
                     path: 'pimdistirbutions/:pimdistirbution?/pcmddsqdmxes/:pcmddsqdmx?/ddjlgridview/:ddjlgridview?',
                     meta: {
-                        caption: 'entities.pcmddsqdmx.views.ddjlgridview.caption',
+                        caption: 'entities.pcmddsqdmx.views.ddjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/diaodongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2614,7 +2704,8 @@ const router = new Router({
                 {
                     path: 'pcmddsqds/:pcmddsqd?/pcmddsqdmxes/:pcmddsqdmx?/ddjlgridview/:ddjlgridview?',
                     meta: {
-                        caption: 'entities.pcmddsqdmx.views.ddjlgridview.caption',
+                        caption: 'entities.pcmddsqdmx.views.ddjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/diaodongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2630,7 +2721,8 @@ const router = new Router({
                 {
                     path: 'pcmddsqdmxes/:pcmddsqdmx?/ddjlgridview/:ddjlgridview?',
                     meta: {
-                        caption: 'entities.pcmddsqdmx.views.ddjlgridview.caption',
+                        caption: 'entities.pcmddsqdmx.views.ddjlgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/diaodongguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2645,7 +2737,8 @@ const router = new Router({
                 {
                     path: 'pcmyddgmxes/:pcmyddgmx?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.pcmyddgmx.views.editview9.caption',
+                        caption: 'entities.pcmyddgmx.views.editview9.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmyddgmxes', parameterName: 'pcmyddgmx' },
@@ -2658,7 +2751,8 @@ const router = new Router({
                 {
                     path: 'pcmydbxmxes/:pcmydbxmx?/jlgridview/:jlgridview?',
                     meta: {
-                        caption: 'entities.pcmydbxmx.views.jlgridview.caption',
+                        caption: 'entities.pcmydbxmx.views.jlgridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/xiujiaguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2673,7 +2767,8 @@ const router = new Router({
                 {
                     path: 'pcmydbxmxes/:pcmydbxmx?/bxjsrqqreditview/:bxjsrqqreditview?',
                     meta: {
-                        caption: 'entities.pcmydbxmx.views.bxjsrqqreditview.caption',
+                        caption: 'entities.pcmydbxmx.views.bxjsrqqreditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmydbxmxes', parameterName: 'pcmydbxmx' },
@@ -2686,7 +2781,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/pcmxygzzjlmxes/:pcmxygzzjlmx?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.pcmxygzzjlmx.views.editview9.caption',
+                        caption: 'entities.pcmxygzzjlmx.views.editview9.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -2700,7 +2796,8 @@ const router = new Router({
                 {
                     path: 'pcmxygzzjlmxes/:pcmxygzzjlmx?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.pcmxygzzjlmx.views.editview9.caption',
+                        caption: 'entities.pcmxygzzjlmx.views.editview9.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
@@ -2713,7 +2810,8 @@ const router = new Router({
                 {
                     path: 'pcmyddgmxes/:pcmyddgmx?/jsrqqreditview/:jsrqqreditview?',
                     meta: {
-                        caption: 'entities.pcmyddgmx.views.jsrqqreditview.caption',
+                        caption: 'entities.pcmyddgmx.views.jsrqqreditview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pcmyddgmxes', parameterName: 'pcmyddgmx' },
@@ -2726,7 +2824,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/sqsyqzzgridview/:sqsyqzzgridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.sqsyqzzgridview.caption',
+                        caption: 'entities.pimperson.views.sqsyqzzgridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/shiyongqiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -2741,7 +2840,8 @@ const router = new Router({
             {
                 path: 'pcmydjpmxredirectview/:pcmydjpmxredirectview?',
                 meta: {
-                    caption: 'entities.pcmydjpmx.views.redirectview.caption',
+                    caption: 'entities.pcmydjpmx.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pcmydjpmxredirectview', parameterName: 'pcmydjpmxredirectview' },
                     ],
@@ -2752,7 +2852,8 @@ const router = new Router({
             {
                 path: 'pcmyddgmxredirectview/:pcmyddgmxredirectview?',
                 meta: {
-                    caption: 'entities.pcmyddgmx.views.redirectview.caption',
+                    caption: 'entities.pcmyddgmx.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pcmyddgmxredirectview', parameterName: 'pcmyddgmxredirectview' },
                     ],
@@ -2763,7 +2864,8 @@ const router = new Router({
             {
                 path: 'pcmydlzmxredirectview/:pcmydlzmxredirectview?',
                 meta: {
-                    caption: 'entities.pcmydlzmx.views.redirectview.caption',
+                    caption: 'entities.pcmydlzmx.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pcmydlzmxredirectview', parameterName: 'pcmydlzmxredirectview' },
                     ],
@@ -2774,7 +2876,8 @@ const router = new Router({
             {
                 path: 'pimdistirbutionredirectview/:pimdistirbutionredirectview?',
                 meta: {
-                    caption: 'entities.pimdistirbution.views.redirectview.caption',
+                    caption: 'entities.pimdistirbution.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pimdistirbutionredirectview', parameterName: 'pimdistirbutionredirectview' },
                     ],
@@ -2785,7 +2888,8 @@ const router = new Router({
             {
                 path: 'pcmydtxmxredirectview/:pcmydtxmxredirectview?',
                 meta: {
-                    caption: 'entities.pcmydtxmx.views.redirectview.caption',
+                    caption: 'entities.pcmydtxmx.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pcmydtxmxredirectview', parameterName: 'pcmydtxmxredirectview' },
                     ],
@@ -2796,7 +2900,8 @@ const router = new Router({
             {
                 path: 'pcmydbxmxredirectview/:pcmydbxmxredirectview?',
                 meta: {
-                    caption: 'entities.pcmydbxmx.views.redirectview.caption',
+                    caption: 'entities.pcmydbxmx.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pcmydbxmxredirectview', parameterName: 'pcmydbxmxredirectview' },
                     ],
@@ -2807,7 +2912,8 @@ const router = new Router({
             {
                 path: 'pcmxygzzsqredirectview/:pcmxygzzsqredirectview?',
                 meta: {
-                    caption: 'entities.pcmxygzzsq.views.redirectview.caption',
+                    caption: 'entities.pcmxygzzsq.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pcmxygzzsqredirectview', parameterName: 'pcmxygzzsqredirectview' },
                     ],
@@ -2818,7 +2924,8 @@ const router = new Router({
             {
                 path: 'pcmydntmxredirectview/:pcmydntmxredirectview?',
                 meta: {
-                    caption: 'entities.pcmydntmx.views.redirectview.caption',
+                    caption: 'entities.pcmydntmx.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pcmydntmxredirectview', parameterName: 'pcmydntmxredirectview' },
                     ],
@@ -2829,7 +2936,8 @@ const router = new Router({
             {
                 path: 'pcmydjdmxredirectview/:pcmydjdmxredirectview?',
                 meta: {
-                    caption: 'entities.pcmydjdmx.views.redirectview.caption',
+                    caption: 'entities.pcmydjdmx.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pcmydjdmxredirectview', parameterName: 'pcmydjdmxredirectview' },
                     ],
@@ -2840,7 +2948,8 @@ const router = new Router({
             {
                 path: 'pcmydgzmxredirectview/:pcmydgzmxredirectview?',
                 meta: {
-                    caption: 'entities.pcmydgzmx.views.redirectview.caption',
+                    caption: 'entities.pcmydgzmx.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pcmydgzmxredirectview', parameterName: 'pcmydgzmxredirectview' },
                     ],
@@ -2851,7 +2960,8 @@ const router = new Router({
             {
                 path: 'pcmydjzmxredirectview/:pcmydjzmxredirectview?',
                 meta: {
-                    caption: 'entities.pcmydjzmx.views.redirectview.caption',
+                    caption: 'entities.pcmydjzmx.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'pcmydjzmxredirectview', parameterName: 'pcmydjzmxredirectview' },
                     ],
@@ -2865,7 +2975,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/sjyxzzpickupview/:sjyxzzpickupview?',
         meta: {
-            caption: 'entities.ormorg.views.sjyxzzpickupview.caption',
+            caption: 'entities.ormorg.views.sjyxzzpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'sjyxzzpickupview', parameterName: 'sjyxzzpickupview' },
@@ -2877,7 +2988,8 @@ const router = new Router({
     {
         path: '/pcmydjpmxes/:pcmydjpmx?/jpjlgridview/:jpjlgridview?',
         meta: {
-            caption: 'entities.pcmydjpmx.views.jpjlgridview.caption',
+            caption: 'entities.pcmydjpmx.views.jpjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiepinguanli.png',
             iconCls: '',
             parameters: [
@@ -2891,7 +3003,8 @@ const router = new Router({
     {
         path: '/pcmydntmxes/:pcmydntmx?/ckeditview/:ckeditview?',
         meta: {
-            caption: 'entities.pcmydntmx.views.ckeditview.caption',
+            caption: 'entities.pcmydntmx.views.ckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydntmxes', parameterName: 'pcmydntmx' },
                 { pathName: 'ckeditview', parameterName: 'ckeditview' },
@@ -2903,7 +3016,8 @@ const router = new Router({
     {
         path: '/pcmydlzmxes/:pcmydlzmx?/xzeditview/:xzeditview?',
         meta: {
-            caption: 'entities.pcmydlzmx.views.xzeditview.caption',
+            caption: 'entities.pcmydlzmx.views.xzeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydlzmxes', parameterName: 'pcmydlzmx' },
                 { pathName: 'xzeditview', parameterName: 'xzeditview' },
@@ -2915,7 +3029,8 @@ const router = new Router({
     {
         path: '/pcmydjzmxes/:pcmydjzmx?/editview9/:editview9?',
         meta: {
-            caption: 'entities.pcmydjzmx.views.editview9.caption',
+            caption: 'entities.pcmydjzmx.views.editview9.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydjzmxes', parameterName: 'pcmydjzmx' },
                 { pathName: 'editview9', parameterName: 'editview9' },
@@ -2927,7 +3042,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/syjxeditview/:syjxeditview?',
         meta: {
-            caption: 'entities.pimperson.views.syjxeditview.caption',
+            caption: 'entities.pimperson.views.syjxeditview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/gerenxinxi.png',
             iconCls: '',
             parameters: [
@@ -2941,7 +3057,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimfaminfos/:pimfaminfo?/jtlxrpickupview/:jtlxrpickupview?',
         meta: {
-            caption: 'entities.pimfaminfo.views.jtlxrpickupview.caption',
+            caption: 'entities.pimfaminfo.views.jtlxrpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimfaminfos', parameterName: 'pimfaminfo' },
@@ -2954,7 +3071,8 @@ const router = new Router({
     {
         path: '/pimfaminfos/:pimfaminfo?/jtlxrpickupview/:jtlxrpickupview?',
         meta: {
-            caption: 'entities.pimfaminfo.views.jtlxrpickupview.caption',
+            caption: 'entities.pimfaminfo.views.jtlxrpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimfaminfos', parameterName: 'pimfaminfo' },
                 { pathName: 'jtlxrpickupview', parameterName: 'jtlxrpickupview' },
@@ -2966,7 +3084,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pcmxygzzjlmxes/:pcmxygzzjlmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmxygzzjlmx.views.editview.caption',
+            caption: 'entities.pcmxygzzjlmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
@@ -2979,7 +3098,8 @@ const router = new Router({
     {
         path: '/pcmxygzzjlmxes/:pcmxygzzjlmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmxygzzjlmx.views.editview.caption',
+            caption: 'entities.pcmxygzzjlmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -2991,7 +3111,8 @@ const router = new Router({
     {
         path: '/pcmydjpmxes/:pcmydjpmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmydjpmx.views.editview.caption',
+            caption: 'entities.pcmydjpmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydjpmxes', parameterName: 'pcmydjpmx' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -3003,7 +3124,8 @@ const router = new Router({
     {
         path: '/pcmydlzmxes/:pcmydlzmx?/editview9/:editview9?',
         meta: {
-            caption: 'entities.pcmydlzmx.views.editview9.caption',
+            caption: 'entities.pcmydlzmx.views.editview9.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydlzmxes', parameterName: 'pcmydlzmx' },
                 { pathName: 'editview9', parameterName: 'editview9' },
@@ -3015,7 +3137,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.ormpost.views.pickupgridview.caption',
+            caption: 'entities.ormpost.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -3028,7 +3151,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.ormpost.views.pickupgridview.caption',
+            caption: 'entities.ormpost.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -3040,7 +3164,8 @@ const router = new Router({
     {
         path: '/pcmyddgmxes/:pcmyddgmx?/jsrqqreditview/:jsrqqreditview?',
         meta: {
-            caption: 'entities.pcmyddgmx.views.jsrqqreditview.caption',
+            caption: 'entities.pcmyddgmx.views.jsrqqreditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmyddgmxes', parameterName: 'pcmyddgmx' },
                 { pathName: 'jsrqqreditview', parameterName: 'jsrqqreditview' },
@@ -3052,7 +3177,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -3066,7 +3192,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -3080,7 +3207,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -3092,22 +3220,10 @@ const router = new Router({
         component: () => import('@pages/pcm/pcm-ydjdmx-jdjsqredit-view/pcm-ydjdmx-jdjsqredit-view.vue'),
     },
     {
-        path: '/pimpeople/:pimperson?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
-        meta: {
-            caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
-            parameters: [
-                { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
-                { pathName: 'jdjsqreditview', parameterName: 'jdjsqreditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-ydjdmx-jdjsqredit-view/pcm-ydjdmx-jdjsqredit-view.vue'),
-    },
-    {
         path: '/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -3120,7 +3236,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -3133,7 +3250,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -3146,7 +3264,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -3159,7 +3278,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormduties', parameterName: 'ormduty' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -3172,7 +3292,8 @@ const router = new Router({
     {
         path: '/pcmydjdmxes/:pcmydjdmx?/jdjsqreditview/:jdjsqreditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjsqreditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjsqreditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
                 { pathName: 'jdjsqreditview', parameterName: 'jdjsqreditview' },
@@ -3184,7 +3305,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmddsqdmxes/:pcmddsqdmx?/ddjlgridview/:ddjlgridview?',
         meta: {
-            caption: 'entities.pcmddsqdmx.views.ddjlgridview.caption',
+            caption: 'entities.pcmddsqdmx.views.ddjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/diaodongguanli.png',
             iconCls: '',
             parameters: [
@@ -3200,7 +3322,8 @@ const router = new Router({
     {
         path: '/pimdistirbutions/:pimdistirbution?/pcmddsqdmxes/:pcmddsqdmx?/ddjlgridview/:ddjlgridview?',
         meta: {
-            caption: 'entities.pcmddsqdmx.views.ddjlgridview.caption',
+            caption: 'entities.pcmddsqdmx.views.ddjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/diaodongguanli.png',
             iconCls: '',
             parameters: [
@@ -3215,7 +3338,8 @@ const router = new Router({
     {
         path: '/pcmddsqds/:pcmddsqd?/pcmddsqdmxes/:pcmddsqdmx?/ddjlgridview/:ddjlgridview?',
         meta: {
-            caption: 'entities.pcmddsqdmx.views.ddjlgridview.caption',
+            caption: 'entities.pcmddsqdmx.views.ddjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/diaodongguanli.png',
             iconCls: '',
             parameters: [
@@ -3230,7 +3354,8 @@ const router = new Router({
     {
         path: '/pcmddsqdmxes/:pcmddsqdmx?/ddjlgridview/:ddjlgridview?',
         meta: {
-            caption: 'entities.pcmddsqdmx.views.ddjlgridview.caption',
+            caption: 'entities.pcmddsqdmx.views.ddjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/diaodongguanli.png',
             iconCls: '',
             parameters: [
@@ -3244,7 +3369,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -3260,7 +3386,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -3276,7 +3403,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -3290,24 +3418,10 @@ const router = new Router({
         component: () => import('@pages/pcm/pcm-ydjdmx-jdlsjlgrid-view/pcm-ydjdmx-jdlsjlgrid-view.vue'),
     },
     {
-        path: '/pimpeople/:pimperson?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
-        meta: {
-            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
-            imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
-                { pathName: 'jdlsjlgridview', parameterName: 'jdlsjlgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-ydjdmx-jdlsjlgrid-view/pcm-ydjdmx-jdlsjlgrid-view.vue'),
-    },
-    {
         path: '/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -3322,7 +3436,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -3337,7 +3452,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -3352,7 +3468,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -3367,7 +3484,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -3382,7 +3500,8 @@ const router = new Router({
     {
         path: '/pcmydjdmxes/:pcmydjdmx?/jdlsjlgridview/:jdlsjlgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdlsjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -3396,7 +3515,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/yxzfppickupview/:yxzfppickupview?',
         meta: {
-            caption: 'entities.pimperson.views.yxzfppickupview.caption',
+            caption: 'entities.pimperson.views.yxzfppickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'yxzfppickupview', parameterName: 'yxzfppickupview' },
@@ -3408,7 +3528,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/xzeditview/:xzeditview?',
         meta: {
-            caption: 'entities.pcmjxsygzzjlmx.views.xzeditview.caption',
+            caption: 'entities.pcmjxsygzzjlmx.views.xzeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
@@ -3421,7 +3542,8 @@ const router = new Router({
     {
         path: '/pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/xzeditview/:xzeditview?',
         meta: {
-            caption: 'entities.pcmjxsygzzjlmx.views.xzeditview.caption',
+            caption: 'entities.pcmjxsygzzjlmx.views.xzeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
                 { pathName: 'xzeditview', parameterName: 'xzeditview' },
@@ -3433,7 +3555,8 @@ const router = new Router({
     {
         path: '/pcmydbxmxes/:pcmydbxmx?/bxjsrqqreditview/:bxjsrqqreditview?',
         meta: {
-            caption: 'entities.pcmydbxmx.views.bxjsrqqreditview.caption',
+            caption: 'entities.pcmydbxmx.views.bxjsrqqreditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydbxmxes', parameterName: 'pcmydbxmx' },
                 { pathName: 'bxjsrqqreditview', parameterName: 'bxjsrqqreditview' },
@@ -3445,7 +3568,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/ormorgsectorpickupview/:ormorgsectorpickupview?',
         meta: {
-            caption: 'entities.ormduty.views.ormorgsectorpickupview.caption',
+            caption: 'entities.ormduty.views.ormorgsectorpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormduties', parameterName: 'ormduty' },
                 { pathName: 'ormorgsectorpickupview', parameterName: 'ormorgsectorpickupview' },
@@ -3457,7 +3581,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/fpxxpickupview/:fpxxpickupview?',
         meta: {
-            caption: 'entities.ormorg.views.fpxxpickupview.caption',
+            caption: 'entities.ormorg.views.fpxxpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'fpxxpickupview', parameterName: 'fpxxpickupview' },
@@ -3469,7 +3594,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupview/:ejormorgidpickupview?',
         meta: {
-            caption: 'entities.ormpost.views.ejormorgidpickupview.caption',
+            caption: 'entities.ormpost.views.ejormorgidpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -3482,7 +3608,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/ejormorgidpickupview/:ejormorgidpickupview?',
         meta: {
-            caption: 'entities.ormpost.views.ejormorgidpickupview.caption',
+            caption: 'entities.ormpost.views.ejormorgidpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'ejormorgidpickupview', parameterName: 'ejormorgidpickupview' },
@@ -3494,7 +3621,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.pimperson.views.pickupgridview.caption',
+            caption: 'entities.pimperson.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -3506,7 +3634,8 @@ const router = new Router({
     {
         path: '/pcmjxszzkhjgjls/:pcmjxszzkhjgjl?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.pcmjxszzkhjgjl.views.pickupgridview.caption',
+            caption: 'entities.pcmjxszzkhjgjl.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmjxszzkhjgjls', parameterName: 'pcmjxszzkhjgjl' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -3518,7 +3647,8 @@ const router = new Router({
     {
         path: '/pcmydbxmxes/:pcmydbxmx?/bxglgridview/:bxglgridview?',
         meta: {
-            caption: 'entities.pcmydbxmx.views.bxglgridview.caption',
+            caption: 'entities.pcmydbxmx.views.bxglgridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/xiujiaguanli.png',
             iconCls: '',
             parameters: [
@@ -3532,7 +3662,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.ormduty.views.pickupgridview.caption',
+            caption: 'entities.ormduty.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormduties', parameterName: 'ormduty' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -3544,7 +3675,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmddsqdmxes/:pcmddsqdmx?/ddckeditview/:ddckeditview?',
         meta: {
-            caption: 'entities.pcmddsqdmx.views.ddckeditview.caption',
+            caption: 'entities.pcmddsqdmx.views.ddckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -3558,7 +3690,8 @@ const router = new Router({
     {
         path: '/pimdistirbutions/:pimdistirbution?/pcmddsqdmxes/:pcmddsqdmx?/ddckeditview/:ddckeditview?',
         meta: {
-            caption: 'entities.pcmddsqdmx.views.ddckeditview.caption',
+            caption: 'entities.pcmddsqdmx.views.ddckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
                 { pathName: 'pcmddsqdmxes', parameterName: 'pcmddsqdmx' },
@@ -3571,7 +3704,8 @@ const router = new Router({
     {
         path: '/pcmddsqds/:pcmddsqd?/pcmddsqdmxes/:pcmddsqdmx?/ddckeditview/:ddckeditview?',
         meta: {
-            caption: 'entities.pcmddsqdmx.views.ddckeditview.caption',
+            caption: 'entities.pcmddsqdmx.views.ddckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmddsqds', parameterName: 'pcmddsqd' },
                 { pathName: 'pcmddsqdmxes', parameterName: 'pcmddsqdmx' },
@@ -3584,7 +3718,8 @@ const router = new Router({
     {
         path: '/pcmddsqdmxes/:pcmddsqdmx?/ddckeditview/:ddckeditview?',
         meta: {
-            caption: 'entities.pcmddsqdmx.views.ddckeditview.caption',
+            caption: 'entities.pcmddsqdmx.views.ddckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmddsqdmxes', parameterName: 'pcmddsqdmx' },
                 { pathName: 'ddckeditview', parameterName: 'ddckeditview' },
@@ -3596,7 +3731,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pcmxygzzjlmxes/:pcmxygzzjlmx?/syqzzjlgridview/:syqzzjlgridview?',
         meta: {
-            caption: 'entities.pcmxygzzjlmx.views.syqzzjlgridview.caption',
+            caption: 'entities.pcmxygzzjlmx.views.syqzzjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/shiyongqiguanli.png',
             iconCls: '',
             parameters: [
@@ -3611,7 +3747,8 @@ const router = new Router({
     {
         path: '/pcmxygzzjlmxes/:pcmxygzzjlmx?/syqzzjlgridview/:syqzzjlgridview?',
         meta: {
-            caption: 'entities.pcmxygzzjlmx.views.syqzzjlgridview.caption',
+            caption: 'entities.pcmxygzzjlmx.views.syqzzjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/shiyongqiguanli.png',
             iconCls: '',
             parameters: [
@@ -3625,7 +3762,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/kxzxygpickupview/:kxzxygpickupview?',
         meta: {
-            caption: 'entities.pimperson.views.kxzxygpickupview.caption',
+            caption: 'entities.pimperson.views.kxzxygpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'kxzxygpickupview', parameterName: 'kxzxygpickupview' },
@@ -3637,7 +3775,8 @@ const router = new Router({
     {
         path: '/pcmydjzmxes/:pcmydjzmx?/jsrqqreditview/:jsrqqreditview?',
         meta: {
-            caption: 'entities.pcmydjzmx.views.jsrqqreditview.caption',
+            caption: 'entities.pcmydjzmx.views.jsrqqreditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydjzmxes', parameterName: 'pcmydjzmx' },
                 { pathName: 'jsrqqreditview', parameterName: 'jsrqqreditview' },
@@ -3649,7 +3788,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/zzjlgridview/:zzjlgridview?',
         meta: {
-            caption: 'entities.pcmjxsygzzjlmx.views.zzjlgridview.caption',
+            caption: 'entities.pcmjxsygzzjlmx.views.zzjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jianxiqiguanli.png',
             iconCls: '',
             parameters: [
@@ -3664,7 +3804,8 @@ const router = new Router({
     {
         path: '/pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/zzjlgridview/:zzjlgridview?',
         meta: {
-            caption: 'entities.pcmjxsygzzjlmx.views.zzjlgridview.caption',
+            caption: 'entities.pcmjxsygzzjlmx.views.zzjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jianxiqiguanli.png',
             iconCls: '',
             parameters: [
@@ -3678,7 +3819,8 @@ const router = new Router({
     {
         path: '/pcmydjpmxes/:pcmydjpmx?/editview9/:editview9?',
         meta: {
-            caption: 'entities.pcmydjpmx.views.editview9.caption',
+            caption: 'entities.pcmydjpmx.views.editview9.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydjpmxes', parameterName: 'pcmydjpmx' },
                 { pathName: 'editview9', parameterName: 'editview9' },
@@ -3690,7 +3832,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmddsqdmxes/:pcmddsqdmx?/ddeditview/:ddeditview?',
         meta: {
-            caption: 'entities.pcmddsqdmx.views.ddeditview.caption',
+            caption: 'entities.pcmddsqdmx.views.ddeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -3704,7 +3847,8 @@ const router = new Router({
     {
         path: '/pimdistirbutions/:pimdistirbution?/pcmddsqdmxes/:pcmddsqdmx?/ddeditview/:ddeditview?',
         meta: {
-            caption: 'entities.pcmddsqdmx.views.ddeditview.caption',
+            caption: 'entities.pcmddsqdmx.views.ddeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
                 { pathName: 'pcmddsqdmxes', parameterName: 'pcmddsqdmx' },
@@ -3717,7 +3861,8 @@ const router = new Router({
     {
         path: '/pcmddsqds/:pcmddsqd?/pcmddsqdmxes/:pcmddsqdmx?/ddeditview/:ddeditview?',
         meta: {
-            caption: 'entities.pcmddsqdmx.views.ddeditview.caption',
+            caption: 'entities.pcmddsqdmx.views.ddeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmddsqds', parameterName: 'pcmddsqd' },
                 { pathName: 'pcmddsqdmxes', parameterName: 'pcmddsqdmx' },
@@ -3730,7 +3875,8 @@ const router = new Router({
     {
         path: '/pcmddsqdmxes/:pcmddsqdmx?/ddeditview/:ddeditview?',
         meta: {
-            caption: 'entities.pcmddsqdmx.views.ddeditview.caption',
+            caption: 'entities.pcmddsqdmx.views.ddeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmddsqdmxes', parameterName: 'pcmddsqdmx' },
                 { pathName: 'ddeditview', parameterName: 'ddeditview' },
@@ -3742,7 +3888,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/txglgridview/:txglgridview?',
         meta: {
-            caption: 'entities.pimperson.views.txglgridview.caption',
+            caption: 'entities.pimperson.views.txglgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/tuixiuguanli.png',
             iconCls: '',
             parameters: [
@@ -3756,7 +3903,8 @@ const router = new Router({
     {
         path: '/pcmxygzzkhjgjls/:pcmxygzzkhjgjl?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.pcmxygzzkhjgjl.views.pickupview.caption',
+            caption: 'entities.pcmxygzzkhjgjl.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmxygzzkhjgjls', parameterName: 'pcmxygzzkhjgjl' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -3768,7 +3916,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/ddmgrgridview/:ddmgrgridview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.ddmgrgridview.caption',
+            caption: 'entities.pimdistirbution.views.ddmgrgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/diaodongguanli.png',
             iconCls: '',
             parameters: [
@@ -3783,7 +3932,8 @@ const router = new Router({
     {
         path: '/pimdistirbutions/:pimdistirbution?/ddmgrgridview/:ddmgrgridview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.ddmgrgridview.caption',
+            caption: 'entities.pimdistirbution.views.ddmgrgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/diaodongguanli.png',
             iconCls: '',
             parameters: [
@@ -3797,7 +3947,8 @@ const router = new Router({
     {
         path: '/pcmydjzmxes/:pcmydjzmx?/glgridview/:glgridview?',
         meta: {
-            caption: 'entities.pcmydjzmx.views.glgridview.caption',
+            caption: 'entities.pcmydjzmx.views.glgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jianzhijilu.png',
             iconCls: '',
             parameters: [
@@ -3811,7 +3962,8 @@ const router = new Router({
     {
         path: '/pcmydjzmxes/:pcmydjzmx?/lsjlgridview/:lsjlgridview?',
         meta: {
-            caption: 'entities.pcmydjzmx.views.lsjlgridview.caption',
+            caption: 'entities.pcmydjzmx.views.lsjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jianzhijilu.png',
             iconCls: '',
             parameters: [
@@ -3825,7 +3977,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/kxzxygpickupgridview/:kxzxygpickupgridview?',
         meta: {
-            caption: 'entities.pimperson.views.kxzxygpickupgridview.caption',
+            caption: 'entities.pimperson.views.kxzxygpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'kxzxygpickupgridview', parameterName: 'kxzxygpickupgridview' },
@@ -3837,7 +3990,8 @@ const router = new Router({
     {
         path: '/pcmydbxmxes/:pcmydbxmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmydbxmx.views.editview.caption',
+            caption: 'entities.pcmydbxmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydbxmxes', parameterName: 'pcmydbxmx' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -3849,7 +4003,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -3863,7 +4018,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -3877,7 +4033,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -3889,22 +4046,10 @@ const router = new Router({
         component: () => import('@pages/pcm/pcm-ydjdmx-jdjlckedit-view/pcm-ydjdmx-jdjlckedit-view.vue'),
     },
     {
-        path: '/pimpeople/:pimperson?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
-        meta: {
-            caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
-            parameters: [
-                { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
-                { pathName: 'jdjlckeditview', parameterName: 'jdjlckeditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-ydjdmx-jdjlckedit-view/pcm-ydjdmx-jdjlckedit-view.vue'),
-    },
-    {
         path: '/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -3917,7 +4062,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -3930,7 +4076,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -3943,7 +4090,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -3956,7 +4104,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormduties', parameterName: 'ormduty' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -3969,7 +4118,8 @@ const router = new Router({
     {
         path: '/pcmydjdmxes/:pcmydjdmx?/jdjlckeditview/:jdjlckeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdjlckeditview.caption',
+            caption: 'entities.pcmydjdmx.views.jdjlckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
                 { pathName: 'jdjlckeditview', parameterName: 'jdjlckeditview' },
@@ -3981,7 +4131,8 @@ const router = new Router({
     {
         path: '/pcmydbxmxes/:pcmydbxmx?/editview9/:editview9?',
         meta: {
-            caption: 'entities.pcmydbxmx.views.editview9.caption',
+            caption: 'entities.pcmydbxmx.views.editview9.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydbxmxes', parameterName: 'pcmydbxmx' },
                 { pathName: 'editview9', parameterName: 'editview9' },
@@ -3993,7 +4144,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pcmxygzzjlmxes/:pcmxygzzjlmx?/approvalgridview/:approvalgridview?',
         meta: {
-            caption: 'entities.pcmxygzzjlmx.views.approvalgridview.caption',
+            caption: 'entities.pcmxygzzjlmx.views.approvalgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
@@ -4006,7 +4158,8 @@ const router = new Router({
     {
         path: '/pcmxygzzjlmxes/:pcmxygzzjlmx?/approvalgridview/:approvalgridview?',
         meta: {
-            caption: 'entities.pcmxygzzjlmx.views.approvalgridview.caption',
+            caption: 'entities.pcmxygzzjlmx.views.approvalgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
                 { pathName: 'approvalgridview', parameterName: 'approvalgridview' },
@@ -4018,7 +4171,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/kddfppickupgridview/:kddfppickupgridview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.kddfppickupgridview.caption',
+            caption: 'entities.pimdistirbution.views.kddfppickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -4031,7 +4185,8 @@ const router = new Router({
     {
         path: '/pimdistirbutions/:pimdistirbution?/kddfppickupgridview/:kddfppickupgridview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.kddfppickupgridview.caption',
+            caption: 'entities.pimdistirbution.views.kddfppickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
                 { pathName: 'kddfppickupgridview', parameterName: 'kddfppickupgridview' },
@@ -4043,7 +4198,8 @@ const router = new Router({
     {
         path: '/pcmydlzmxes/:pcmydlzmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmydlzmx.views.editview.caption',
+            caption: 'entities.pcmydlzmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydlzmxes', parameterName: 'pcmydlzmx' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -4055,7 +4211,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/approavlgridview/:approavlgridview?',
         meta: {
-            caption: 'entities.pcmjxsygzzjlmx.views.approavlgridview.caption',
+            caption: 'entities.pcmjxsygzzjlmx.views.approavlgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
@@ -4068,7 +4225,8 @@ const router = new Router({
     {
         path: '/pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/approavlgridview/:approavlgridview?',
         meta: {
-            caption: 'entities.pcmjxsygzzjlmx.views.approavlgridview.caption',
+            caption: 'entities.pcmjxsygzzjlmx.views.approavlgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
                 { pathName: 'approavlgridview', parameterName: 'approavlgridview' },
@@ -4080,7 +4238,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmjxsygzzjlmx.views.editview.caption',
+            caption: 'entities.pcmjxsygzzjlmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
@@ -4093,7 +4252,8 @@ const router = new Router({
     {
         path: '/pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmjxsygzzjlmx.views.editview.caption',
+            caption: 'entities.pcmjxsygzzjlmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -4105,7 +4265,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -4121,7 +4282,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -4137,7 +4299,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -4151,24 +4314,10 @@ const router = new Router({
         component: () => import('@pages/pcm/pcm-ydjdmx-jdglgrid-view/pcm-ydjdmx-jdglgrid-view.vue'),
     },
     {
-        path: '/pimpeople/:pimperson?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
-        meta: {
-            caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
-            imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
-            iconCls: '',
-            parameters: [
-                { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
-                { pathName: 'jdglgridview', parameterName: 'jdglgridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-ydjdmx-jdglgrid-view/pcm-ydjdmx-jdglgrid-view.vue'),
-    },
-    {
         path: '/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -4183,7 +4332,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -4198,7 +4348,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -4213,7 +4364,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -4228,7 +4380,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -4243,7 +4396,8 @@ const router = new Router({
     {
         path: '/pcmydjdmxes/:pcmydjdmx?/jdglgridview/:jdglgridview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.jdglgridview.caption',
+            caption: 'entities.pcmydjdmx.views.jdglgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiediaoguanli.png',
             iconCls: '',
             parameters: [
@@ -4257,7 +4411,8 @@ const router = new Router({
     {
         path: '/pcmjxszzkhjgjls/:pcmjxszzkhjgjl?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.pcmjxszzkhjgjl.views.pickupview.caption',
+            caption: 'entities.pcmjxszzkhjgjl.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmjxszzkhjgjls', parameterName: 'pcmjxszzkhjgjl' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -4269,7 +4424,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimfaminfos/:pimfaminfo?/jtlxrpickupgridview/:jtlxrpickupgridview?',
         meta: {
-            caption: 'entities.pimfaminfo.views.jtlxrpickupgridview.caption',
+            caption: 'entities.pimfaminfo.views.jtlxrpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimfaminfos', parameterName: 'pimfaminfo' },
@@ -4282,7 +4438,8 @@ const router = new Router({
     {
         path: '/pimfaminfos/:pimfaminfo?/jtlxrpickupgridview/:jtlxrpickupgridview?',
         meta: {
-            caption: 'entities.pimfaminfo.views.jtlxrpickupgridview.caption',
+            caption: 'entities.pimfaminfo.views.jtlxrpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimfaminfos', parameterName: 'pimfaminfo' },
                 { pathName: 'jtlxrpickupgridview', parameterName: 'jtlxrpickupgridview' },
@@ -4294,7 +4451,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/yxzfppickupgridview/:yxzfppickupgridview?',
         meta: {
-            caption: 'entities.pimperson.views.yxzfppickupgridview.caption',
+            caption: 'entities.pimperson.views.yxzfppickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'yxzfppickupgridview', parameterName: 'yxzfppickupgridview' },
@@ -4306,7 +4464,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+            caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -4320,7 +4479,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+            caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -4334,7 +4494,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+            caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -4346,22 +4507,10 @@ const router = new Router({
         component: () => import('@pages/pcm/pcm-ydjdmx-ydmxedit-view/pcm-ydjdmx-ydmxedit-view.vue'),
     },
     {
-        path: '/pimpeople/:pimperson?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
-        meta: {
-            caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
-            parameters: [
-                { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
-                { pathName: 'ydmxeditview', parameterName: 'ydmxeditview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-ydjdmx-ydmxedit-view/pcm-ydjdmx-ydmxedit-view.vue'),
-    },
-    {
         path: '/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+            caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -4374,7 +4523,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+            caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -4387,7 +4537,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+            caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -4400,7 +4551,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+            caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -4413,7 +4565,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+            caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormduties', parameterName: 'ormduty' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -4426,7 +4579,8 @@ const router = new Router({
     {
         path: '/pcmydjdmxes/:pcmydjdmx?/ydmxeditview/:ydmxeditview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.ydmxeditview.caption',
+            caption: 'entities.pcmydjdmx.views.ydmxeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
                 { pathName: 'ydmxeditview', parameterName: 'ydmxeditview' },
@@ -4438,7 +4592,8 @@ const router = new Router({
     {
         path: '/pcmydjpmxes/:pcmydjpmx?/xzeditview/:xzeditview?',
         meta: {
-            caption: 'entities.pcmydjpmx.views.xzeditview.caption',
+            caption: 'entities.pcmydjpmx.views.xzeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydjpmxes', parameterName: 'pcmydjpmx' },
                 { pathName: 'xzeditview', parameterName: 'xzeditview' },
@@ -4450,7 +4605,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/txryeditview/:txryeditview?',
         meta: {
-            caption: 'entities.pimperson.views.txryeditview.caption',
+            caption: 'entities.pimperson.views.txryeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'txryeditview', parameterName: 'txryeditview' },
@@ -4462,7 +4618,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.ormduty.views.pickupview.caption',
+            caption: 'entities.ormduty.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormduties', parameterName: 'ormduty' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -4474,7 +4631,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/txqreditview/:txqreditview?',
         meta: {
-            caption: 'entities.pimperson.views.txqreditview.caption',
+            caption: 'entities.pimperson.views.txqreditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'txqreditview', parameterName: 'txqreditview' },
@@ -4486,7 +4644,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.ormorg.views.pickupview.caption',
+            caption: 'entities.ormorg.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -4498,7 +4657,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.pickupgridview.caption',
+            caption: 'entities.ormorgsector.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -4511,7 +4671,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.pickupgridview.caption',
+            caption: 'entities.ormorgsector.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -4523,7 +4684,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/fpxxpickupgridview/:fpxxpickupgridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.fpxxpickupgridview.caption',
+            caption: 'entities.ormorgsector.views.fpxxpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -4536,7 +4698,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/fpxxpickupgridview/:fpxxpickupgridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.fpxxpickupgridview.caption',
+            caption: 'entities.ormorgsector.views.fpxxpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'fpxxpickupgridview', parameterName: 'fpxxpickupgridview' },
@@ -4548,7 +4711,8 @@ const router = new Router({
     {
         path: '/pcmyddgmxes/:pcmyddgmx?/dgglgridview/:dgglgridview?',
         meta: {
-            caption: 'entities.pcmyddgmx.views.dgglgridview.caption',
+            caption: 'entities.pcmyddgmx.views.dgglgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/daigangguanli.png',
             iconCls: '',
             parameters: [
@@ -4562,7 +4726,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/editview9/:editview9?',
         meta: {
-            caption: 'entities.pcmjxsygzzjlmx.views.editview9.caption',
+            caption: 'entities.pcmjxsygzzjlmx.views.editview9.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
@@ -4575,7 +4740,8 @@ const router = new Router({
     {
         path: '/pcmjxsygzzjlmxes/:pcmjxsygzzjlmx?/editview9/:editview9?',
         meta: {
-            caption: 'entities.pcmjxsygzzjlmx.views.editview9.caption',
+            caption: 'entities.pcmjxsygzzjlmx.views.editview9.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmjxsygzzjlmxes', parameterName: 'pcmjxsygzzjlmx' },
                 { pathName: 'editview9', parameterName: 'editview9' },
@@ -4587,7 +4753,8 @@ const router = new Router({
     {
         path: '/pcmydbxmxes/:pcmydbxmx?/jlgridview/:jlgridview?',
         meta: {
-            caption: 'entities.pcmydbxmx.views.jlgridview.caption',
+            caption: 'entities.pcmydbxmx.views.jlgridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/xiujiaguanli.png',
             iconCls: '',
             parameters: [
@@ -4601,7 +4768,8 @@ const router = new Router({
     {
         path: '/pcmydntmxes/:pcmydntmx?/xzeditview/:xzeditview?',
         meta: {
-            caption: 'entities.pcmydntmx.views.xzeditview.caption',
+            caption: 'entities.pcmydntmx.views.xzeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydntmxes', parameterName: 'pcmydntmx' },
                 { pathName: 'xzeditview', parameterName: 'xzeditview' },
@@ -4613,7 +4781,8 @@ const router = new Router({
     {
         path: '/pcmydjpmxes/:pcmydjpmx?/glgridview/:glgridview?',
         meta: {
-            caption: 'entities.pcmydjpmx.views.glgridview.caption',
+            caption: 'entities.pcmydjpmx.views.glgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jiepinguanli.png',
             iconCls: '',
             parameters: [
@@ -4627,7 +4796,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/editview/:editview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.editview.caption',
+            caption: 'entities.pimdistirbution.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/fenpeixinxi.png',
             iconCls: '',
             parameters: [
@@ -4642,7 +4812,8 @@ const router = new Router({
     {
         path: '/pimdistirbutions/:pimdistirbution?/editview/:editview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.editview.caption',
+            caption: 'entities.pimdistirbution.views.editview.title',
+            info:'',
             imgPath: '../../../img/jcgl/1/fenpeixinxi.png',
             iconCls: '',
             parameters: [
@@ -4656,7 +4827,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/editview9/:editview9?',
         meta: {
-            caption: 'entities.pimperson.views.editview9.caption',
+            caption: 'entities.pimperson.views.editview9.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'editview9', parameterName: 'editview9' },
@@ -4668,7 +4840,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/kddmpickupview/:kddmpickupview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.kddmpickupview.caption',
+            caption: 'entities.pimdistirbution.views.kddmpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -4681,7 +4854,8 @@ const router = new Router({
     {
         path: '/pimdistirbutions/:pimdistirbution?/kddmpickupview/:kddmpickupview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.kddmpickupview.caption',
+            caption: 'entities.pimdistirbution.views.kddmpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
                 { pathName: 'kddmpickupview', parameterName: 'kddmpickupview' },
@@ -4693,7 +4867,8 @@ const router = new Router({
     {
         path: '/pcmydlzmxes/:pcmydlzmx?/glgridview/:glgridview?',
         meta: {
-            caption: 'entities.pcmydlzmx.views.glgridview.caption',
+            caption: 'entities.pcmydlzmx.views.glgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/lizhiguanli.png',
             iconCls: '',
             parameters: [
@@ -4707,7 +4882,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pcmxygzzjlmxes/:pcmxygzzjlmx?/editview9/:editview9?',
         meta: {
-            caption: 'entities.pcmxygzzjlmx.views.editview9.caption',
+            caption: 'entities.pcmxygzzjlmx.views.editview9.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
@@ -4720,7 +4896,8 @@ const router = new Router({
     {
         path: '/pcmxygzzjlmxes/:pcmxygzzjlmx?/editview9/:editview9?',
         meta: {
-            caption: 'entities.pcmxygzzjlmx.views.editview9.caption',
+            caption: 'entities.pcmxygzzjlmx.views.editview9.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmxygzzjlmxes', parameterName: 'pcmxygzzjlmx' },
                 { pathName: 'editview9', parameterName: 'editview9' },
@@ -4732,7 +4909,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.editview.caption',
+            caption: 'entities.pcmydjdmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -4746,7 +4924,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.editview.caption',
+            caption: 'entities.pcmydjdmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -4760,7 +4939,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.editview.caption',
+            caption: 'entities.pcmydjdmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -4772,22 +4952,10 @@ const router = new Router({
         component: () => import('@pages/pcm/pcm-ydjdmx-edit-view/pcm-ydjdmx-edit-view.vue'),
     },
     {
-        path: '/pimpeople/:pimperson?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
-        meta: {
-            caption: 'entities.pcmydjdmx.views.editview.caption',
-            parameters: [
-                { pathName: 'pimpeople', parameterName: 'pimperson' },
-                { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
-                { pathName: 'editview', parameterName: 'editview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/pcm/pcm-ydjdmx-edit-view/pcm-ydjdmx-edit-view.vue'),
-    },
-    {
         path: '/pimdistirbutions/:pimdistirbution?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.editview.caption',
+            caption: 'entities.pcmydjdmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -4800,7 +4968,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.editview.caption',
+            caption: 'entities.pcmydjdmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -4813,7 +4982,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.editview.caption',
+            caption: 'entities.pcmydjdmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -4826,7 +4996,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.editview.caption',
+            caption: 'entities.pcmydjdmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -4839,7 +5010,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.editview.caption',
+            caption: 'entities.pcmydjdmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormduties', parameterName: 'ormduty' },
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
@@ -4852,7 +5024,8 @@ const router = new Router({
     {
         path: '/pcmydjdmxes/:pcmydjdmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmydjdmx.views.editview.caption',
+            caption: 'entities.pcmydjdmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydjdmxes', parameterName: 'pcmydjdmx' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -4864,7 +5037,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/jxqpickupgridview/:jxqpickupgridview?',
         meta: {
-            caption: 'entities.pimperson.views.jxqpickupgridview.caption',
+            caption: 'entities.pimperson.views.jxqpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'jxqpickupgridview', parameterName: 'jxqpickupgridview' },
@@ -4876,7 +5050,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/jxspickupview/:jxspickupview?',
         meta: {
-            caption: 'entities.pimperson.views.jxspickupview.caption',
+            caption: 'entities.pimperson.views.jxspickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'jxspickupview', parameterName: 'jxspickupview' },
@@ -4888,7 +5063,8 @@ const router = new Router({
     {
         path: '/pcmydtxmxes/:pcmydtxmx?/ckeditview/:ckeditview?',
         meta: {
-            caption: 'entities.pcmydtxmx.views.ckeditview.caption',
+            caption: 'entities.pcmydtxmx.views.ckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydtxmxes', parameterName: 'pcmydtxmx' },
                 { pathName: 'ckeditview', parameterName: 'ckeditview' },
@@ -4900,7 +5076,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.ormorgsector.views.pickupview.caption',
+            caption: 'entities.ormorgsector.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -4913,7 +5090,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.ormorgsector.views.pickupview.caption',
+            caption: 'entities.ormorgsector.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -4925,7 +5103,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.ormpost.views.pickupview.caption',
+            caption: 'entities.ormpost.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -4938,7 +5117,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.ormpost.views.pickupview.caption',
+            caption: 'entities.ormpost.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -4950,7 +5130,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ydbmpickupview/:ydbmpickupview?',
         meta: {
-            caption: 'entities.ormorgsector.views.ydbmpickupview.caption',
+            caption: 'entities.ormorgsector.views.ydbmpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -4963,7 +5144,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/ydbmpickupview/:ydbmpickupview?',
         meta: {
-            caption: 'entities.ormorgsector.views.ydbmpickupview.caption',
+            caption: 'entities.ormorgsector.views.ydbmpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'ydbmpickupview', parameterName: 'ydbmpickupview' },
@@ -4975,7 +5157,8 @@ const router = new Router({
     {
         path: '/pcmydjpmxes/:pcmydjpmx?/ckeditview/:ckeditview?',
         meta: {
-            caption: 'entities.pcmydjpmx.views.ckeditview.caption',
+            caption: 'entities.pcmydjpmx.views.ckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydjpmxes', parameterName: 'pcmydjpmx' },
                 { pathName: 'ckeditview', parameterName: 'ckeditview' },
@@ -4987,7 +5170,8 @@ const router = new Router({
     {
         path: '/pcmyddgmxes/:pcmyddgmx?/editview9/:editview9?',
         meta: {
-            caption: 'entities.pcmyddgmx.views.editview9.caption',
+            caption: 'entities.pcmyddgmx.views.editview9.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmyddgmxes', parameterName: 'pcmyddgmx' },
                 { pathName: 'editview9', parameterName: 'editview9' },
@@ -4999,7 +5183,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
         meta: {
-            caption: 'entities.ormpost.views.ejormorgidpickupgridview.caption',
+            caption: 'entities.ormpost.views.ejormorgidpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -5012,7 +5197,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/ejormorgidpickupgridview/:ejormorgidpickupgridview?',
         meta: {
-            caption: 'entities.ormpost.views.ejormorgidpickupgridview.caption',
+            caption: 'entities.ormpost.views.ejormorgidpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'ejormorgidpickupgridview', parameterName: 'ejormorgidpickupgridview' },
@@ -5024,7 +5210,8 @@ const router = new Router({
     {
         path: '/pcmydlzmxes/:pcmydlzmx?/lsjlgridview/:lsjlgridview?',
         meta: {
-            caption: 'entities.pcmydlzmx.views.lsjlgridview.caption',
+            caption: 'entities.pcmydlzmx.views.lsjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/lizhiguanli.png',
             iconCls: '',
             parameters: [
@@ -5038,7 +5225,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/sjyxzzpickupgridview/:sjyxzzpickupgridview?',
         meta: {
-            caption: 'entities.ormorg.views.sjyxzzpickupgridview.caption',
+            caption: 'entities.ormorg.views.sjyxzzpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'sjyxzzpickupgridview', parameterName: 'sjyxzzpickupgridview' },
@@ -5050,7 +5238,8 @@ const router = new Router({
     {
         path: '/pcmydtxmxes/:pcmydtxmx?/jlgridview/:jlgridview?',
         meta: {
-            caption: 'entities.pcmydtxmx.views.jlgridview.caption',
+            caption: 'entities.pcmydtxmx.views.jlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/tuixiuguanli.png',
             iconCls: '',
             parameters: [
@@ -5064,7 +5253,8 @@ const router = new Router({
     {
         path: '/pcmydntmxes/:pcmydntmx?/editview9/:editview9?',
         meta: {
-            caption: 'entities.pcmydntmx.views.editview9.caption',
+            caption: 'entities.pcmydntmx.views.editview9.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydntmxes', parameterName: 'pcmydntmx' },
                 { pathName: 'editview9', parameterName: 'editview9' },
@@ -5076,7 +5266,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ydbmpickupgridview/:ydbmpickupgridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.ydbmpickupgridview.caption',
+            caption: 'entities.ormorgsector.views.ydbmpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -5089,7 +5280,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/ydbmpickupgridview/:ydbmpickupgridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.ydbmpickupgridview.caption',
+            caption: 'entities.ormorgsector.views.ydbmpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'ydbmpickupgridview', parameterName: 'ydbmpickupgridview' },
@@ -5101,7 +5293,8 @@ const router = new Router({
     {
         path: '/pcmyddgmxes/:pcmyddgmx?/ckeditview/:ckeditview?',
         meta: {
-            caption: 'entities.pcmyddgmx.views.ckeditview.caption',
+            caption: 'entities.pcmyddgmx.views.ckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmyddgmxes', parameterName: 'pcmyddgmx' },
                 { pathName: 'ckeditview', parameterName: 'ckeditview' },
@@ -5113,7 +5306,8 @@ const router = new Router({
     {
         path: '/pcmydntmxes/:pcmydntmx?/ntglgridview/:ntglgridview?',
         meta: {
-            caption: 'entities.pcmydntmx.views.ntglgridview.caption',
+            caption: 'entities.pcmydntmx.views.ntglgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/neituiguanli.png',
             iconCls: '',
             parameters: [
@@ -5127,7 +5321,8 @@ const router = new Router({
     {
         path: '/pcmydbxmxes/:pcmydbxmx?/xzeditview/:xzeditview?',
         meta: {
-            caption: 'entities.pcmydbxmx.views.xzeditview.caption',
+            caption: 'entities.pcmydbxmx.views.xzeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydbxmxes', parameterName: 'pcmydbxmx' },
                 { pathName: 'xzeditview', parameterName: 'xzeditview' },
@@ -5139,7 +5334,8 @@ const router = new Router({
     {
         path: '/pcmydntmxes/:pcmydntmx?/editview/:editview?',
         meta: {
-            caption: 'entities.pcmydntmx.views.editview.caption',
+            caption: 'entities.pcmydntmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydntmxes', parameterName: 'pcmydntmx' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -5151,7 +5347,8 @@ const router = new Router({
     {
         path: '/pcmydbxmxes/:pcmydbxmx?/ckeditview/:ckeditview?',
         meta: {
-            caption: 'entities.pcmydbxmx.views.ckeditview.caption',
+            caption: 'entities.pcmydbxmx.views.ckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydbxmxes', parameterName: 'pcmydbxmx' },
                 { pathName: 'ckeditview', parameterName: 'ckeditview' },
@@ -5163,7 +5360,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.pimperson.views.pickupview.caption',
+            caption: 'entities.pimperson.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -5175,7 +5373,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.ormorg.views.pickupgridview.caption',
+            caption: 'entities.ormorg.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -5187,7 +5386,8 @@ const router = new Router({
     {
         path: '/pcmydjzmxes/:pcmydjzmx?/xzeditview/:xzeditview?',
         meta: {
-            caption: 'entities.pcmydjzmx.views.xzeditview.caption',
+            caption: 'entities.pcmydjzmx.views.xzeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydjzmxes', parameterName: 'pcmydjzmx' },
                 { pathName: 'xzeditview', parameterName: 'xzeditview' },
@@ -5199,7 +5399,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/fpxxpickupgridview/:fpxxpickupgridview?',
         meta: {
-            caption: 'entities.ormorg.views.fpxxpickupgridview.caption',
+            caption: 'entities.ormorg.views.fpxxpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'fpxxpickupgridview', parameterName: 'fpxxpickupgridview' },
@@ -5211,7 +5412,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/ormorgsectorpickupgridview/:ormorgsectorpickupgridview?',
         meta: {
-            caption: 'entities.ormduty.views.ormorgsectorpickupgridview.caption',
+            caption: 'entities.ormduty.views.ormorgsectorpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormduties', parameterName: 'ormduty' },
                 { pathName: 'ormorgsectorpickupgridview', parameterName: 'ormorgsectorpickupgridview' },
@@ -5223,7 +5425,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pimdistirbutions/:pimdistirbution?/kddpickupview/:kddpickupview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.kddpickupview.caption',
+            caption: 'entities.pimdistirbution.views.kddpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
@@ -5236,7 +5439,8 @@ const router = new Router({
     {
         path: '/pimdistirbutions/:pimdistirbution?/kddpickupview/:kddpickupview?',
         meta: {
-            caption: 'entities.pimdistirbution.views.kddpickupview.caption',
+            caption: 'entities.pimdistirbution.views.kddpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimdistirbutions', parameterName: 'pimdistirbution' },
                 { pathName: 'kddpickupview', parameterName: 'kddpickupview' },
@@ -5248,7 +5452,8 @@ const router = new Router({
     {
         path: '/pcmyddgmxes/:pcmyddgmx?/dgjlgridview/:dgjlgridview?',
         meta: {
-            caption: 'entities.pcmyddgmx.views.dgjlgridview.caption',
+            caption: 'entities.pcmyddgmx.views.dgjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/daigangguanli.png',
             iconCls: '',
             parameters: [
@@ -5262,7 +5467,8 @@ const router = new Router({
     {
         path: '/pcmydntmxes/:pcmydntmx?/ntjsrqqreditview/:ntjsrqqreditview?',
         meta: {
-            caption: 'entities.pcmydntmx.views.ntjsrqqreditview.caption',
+            caption: 'entities.pcmydntmx.views.ntjsrqqreditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydntmxes', parameterName: 'pcmydntmx' },
                 { pathName: 'ntjsrqqreditview', parameterName: 'ntjsrqqreditview' },
@@ -5274,7 +5480,8 @@ const router = new Router({
     {
         path: '/pcmydntmxes/:pcmydntmx?/ntjlgridview/:ntjlgridview?',
         meta: {
-            caption: 'entities.pcmydntmx.views.ntjlgridview.caption',
+            caption: 'entities.pcmydntmx.views.ntjlgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/neituiguanli.png',
             iconCls: '',
             parameters: [
@@ -5288,7 +5495,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/sqjxqzzgridview/:sqjxqzzgridview?',
         meta: {
-            caption: 'entities.pimperson.views.sqjxqzzgridview.caption',
+            caption: 'entities.pimperson.views.sqjxqzzgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/jianxiqiguanli.png',
             iconCls: '',
             parameters: [
@@ -5302,7 +5510,8 @@ const router = new Router({
     {
         path: '/pcmydjzmxes/:pcmydjzmx?/jlckeditview/:jlckeditview?',
         meta: {
-            caption: 'entities.pcmydjzmx.views.jlckeditview.caption',
+            caption: 'entities.pcmydjzmx.views.jlckeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmydjzmxes', parameterName: 'pcmydjzmx' },
                 { pathName: 'jlckeditview', parameterName: 'jlckeditview' },
@@ -5314,7 +5523,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/fpxxpickupview/:fpxxpickupview?',
         meta: {
-            caption: 'entities.ormorgsector.views.fpxxpickupview.caption',
+            caption: 'entities.ormorgsector.views.fpxxpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -5327,7 +5537,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/fpxxpickupview/:fpxxpickupview?',
         meta: {
-            caption: 'entities.ormorgsector.views.fpxxpickupview.caption',
+            caption: 'entities.ormorgsector.views.fpxxpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'fpxxpickupview', parameterName: 'fpxxpickupview' },
@@ -5339,7 +5550,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/sqsyqzzgridview/:sqsyqzzgridview?',
         meta: {
-            caption: 'entities.pimperson.views.sqsyqzzgridview.caption',
+            caption: 'entities.pimperson.views.sqsyqzzgridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/shiyongqiguanli.png',
             iconCls: '',
             parameters: [
@@ -5353,7 +5565,8 @@ const router = new Router({
     {
         path: '/pcmyddgmxes/:pcmyddgmx?/xzeditview/:xzeditview?',
         meta: {
-            caption: 'entities.pcmyddgmx.views.xzeditview.caption',
+            caption: 'entities.pcmyddgmx.views.xzeditview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmyddgmxes', parameterName: 'pcmyddgmx' },
                 { pathName: 'xzeditview', parameterName: 'xzeditview' },
@@ -5365,7 +5578,8 @@ const router = new Router({
     {
         path: '/pcmxygzzkhjgjls/:pcmxygzzkhjgjl?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.pcmxygzzkhjgjl.views.pickupgridview.caption',
+            caption: 'entities.pcmxygzzkhjgjl.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pcmxygzzkhjgjls', parameterName: 'pcmxygzzkhjgjl' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },

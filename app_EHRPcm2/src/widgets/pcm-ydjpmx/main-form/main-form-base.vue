@@ -14,12 +14,14 @@
 </i-col>
 <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pcmydjpmx.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.pimpersonname.disabled"
   name='pimpersonname'
   deMajorField='pimpersonname'
@@ -51,12 +53,14 @@
 </i-col>
 <i-col v-show="detailsModel.yrank.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='yrank' :itemRules="this.rules.yrank" class='' :caption="$t('entities.pcmydjpmx.main_form.details.yrank')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yrank.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.yrank" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.yrank.disabled"  
     tag='EhrCodeList0025' 
     codelistType='DYNAMIC'
@@ -67,12 +71,14 @@
 </i-col>
 <i-col v-show="detailsModel.yzw.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='yzw' :itemRules="this.rules.yzw" class='' :caption="$t('entities.pcmydjpmx.main_form.details.yzw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yzw.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.yzw" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.yzw.disabled"  
     tag='EhrCodeList0233' 
     codelistType='DYNAMIC'
@@ -83,12 +89,14 @@
 </i-col>
 <i-col v-show="detailsModel.ygw.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='ygw' :itemRules="this.rules.ygw" class='' :caption="$t('entities.pcmydjpmx.main_form.details.ygw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygw.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.ygw" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.ygw.disabled"  
     tag='EhrCodeList0050' 
     codelistType='DYNAMIC'
@@ -119,14 +127,16 @@
 </i-col>
 <i-col v-show="detailsModel.sfhmd.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='sfhmd' :itemRules="this.rules.sfhmd" class='' :caption="$t('entities.pcmydjpmx.main_form.details.sfhmd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfhmd.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.sfhmd"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.sfhmd.disabled"  
   name="sfhmd" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0400' 
   codelistType='STATIC' 
   style="">
@@ -136,12 +146,14 @@
 </i-col>
 <i-col v-show="detailsModel.reason.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='reason' :itemRules="this.rules.reason" class='' :caption="$t('entities.pcmydjpmx.main_form.details.reason')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.reason.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.reason" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.reason.disabled"  
     tag='EhrCodeList0165' 
     codelistType='DYNAMIC'
@@ -185,14 +197,16 @@
     <row>
         <i-col v-show="detailsModel.sfzfbcj.visible" :style="{}"  :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='sfzfbcj' :itemRules="this.rules.sfzfbcj" class='' :caption="$t('entities.pcmydjpmx.main_form.details.sfzfbcj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfzfbcj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.sfzfbcj"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.sfzfbcj.disabled"  
   name="sfzfbcj" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0400' 
   codelistType='STATIC' 
   style="">
@@ -216,14 +230,16 @@
     <row>
         <i-col v-show="detailsModel.sfldzy.visible" :style="{}"  :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='sfldzy' :itemRules="this.rules.sfldzy" class='' :caption="$t('entities.pcmydjpmx.main_form.details.sfldzy')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfldzy.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.sfldzy"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.sfldzy.disabled"  
   name="sfldzy" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0400' 
   codelistType='STATIC' 
   style="">
@@ -233,14 +249,16 @@
 </i-col>
 <i-col v-show="detailsModel.ldzytype.visible" :style="{}"  :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ldzytype' :itemRules="this.rules.ldzytype" class='' :caption="$t('entities.pcmydjpmx.main_form.details.ldzytype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ldzytype.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.ldzytype"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.ldzytype.disabled"  
   name="ldzytype" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0182' 
   codelistType='STATIC' 
   style="">

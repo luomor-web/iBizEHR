@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[ERP组织中间表]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_ORMERPORG",resultMap = "OrmErporgResultMap")
 public class OrmErporg extends EntityMP implements Serializable {
 
@@ -253,6 +254,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.orgtype = orgtype ;
         this.modify("orgtype",orgtype);
     }
+
     /**
      * 设置 [省市]
      */
@@ -260,6 +262,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.towncity = towncity ;
         this.modify("towncity",towncity);
     }
+
     /**
      * 设置 [是否有效]
      */
@@ -267,6 +270,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.isenable = isenable ;
         this.modify("isenable",isenable);
     }
+
     /**
      * 设置 [有效期至]
      */
@@ -274,6 +278,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.dateto = dateto ;
         this.modify("dateto",dateto);
     }
+
     /**
      * 设置 [组织地址1]
      */
@@ -281,6 +286,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.orgaddressline1 = orgaddressline1 ;
         this.modify("orgaddressline1",orgaddressline1);
     }
+
     /**
      * 设置 [组织类型释义]
      */
@@ -288,6 +294,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.orgtypename = orgtypename ;
         this.modify("orgtypename",orgtypename);
     }
+
     /**
      * 设置 [组织地址3]
      */
@@ -295,6 +302,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.orgaddressline3 = orgaddressline3 ;
         this.modify("orgaddressline3",orgaddressline3);
     }
+
     /**
      * 设置 [组织地址2]
      */
@@ -302,6 +310,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.orgaddressline2 = orgaddressline2 ;
         this.modify("orgaddressline2",orgaddressline2);
     }
+
     /**
      * 设置 [所属OU的组织编码]
      */
@@ -309,6 +318,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.oucode = oucode ;
         this.modify("oucode",oucode);
     }
+
     /**
      * 设置 [最近更新时间]
      */
@@ -316,6 +326,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.lastupdatedate = lastupdatedate ;
         this.modify("lastupdatedate",lastupdatedate);
     }
+
     /**
      * 设置 [有效期从]
      */
@@ -323,6 +334,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.datefrom = datefrom ;
         this.modify("datefrom",datefrom);
     }
+
     /**
      * 设置 [引用标志]
      */
@@ -330,6 +342,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.yyflag = yyflag ;
         this.modify("yyflag",yyflag);
     }
+
     /**
      * 设置 [组织简称]
      */
@@ -337,6 +350,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.orgshortname = orgshortname ;
         this.modify("orgshortname",orgshortname);
     }
+
     /**
      * 设置 [组织名称]
      */
@@ -344,6 +358,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.ormerporgname = ormerporgname ;
         this.modify("ormerporgname",ormerporgname);
     }
+
     /**
      * 设置 [创建日期]
      */
@@ -351,6 +366,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.orgcreatedate = orgcreatedate ;
         this.modify("orgcreatedate",orgcreatedate);
     }
+
     /**
      * 设置 [父级组织ID]
      */
@@ -358,6 +374,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.parentorgid = parentorgid ;
         this.modify("parentorgid",parentorgid);
     }
+
     /**
      * 设置 [组织排序编号]
      */
@@ -365,6 +382,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.ordernum = ordernum ;
         this.modify("ordernum",ordernum);
     }
+
     /**
      * 设置 [邮编]
      */
@@ -372,6 +390,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.orgzipcode = orgzipcode ;
         this.modify("orgzipcode",orgzipcode);
     }
+
     /**
      * 设置 [所属OU的组织ID]
      */
@@ -379,6 +398,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.ouid = ouid ;
         this.modify("ouid",ouid);
     }
+
     /**
      * 设置 [人数编制]
      */
@@ -386,6 +406,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.numcomp = numcomp ;
         this.modify("numcomp",numcomp);
     }
+
     /**
      * 设置 [组织编码]
      */
@@ -393,6 +414,7 @@ public class OrmErporg extends EntityMP implements Serializable {
         this.orgcode = orgcode ;
         this.modify("orgcode",orgcode);
     }
+
 
 }
 

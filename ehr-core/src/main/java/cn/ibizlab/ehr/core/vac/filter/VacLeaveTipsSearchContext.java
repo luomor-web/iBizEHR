@@ -31,35 +31,35 @@ public class VacLeaveTipsSearchContext extends QueryWrapperContext<VacLeaveTips>
 	public void setN_qjzl_eq(String n_qjzl_eq) {
         this.n_qjzl_eq = n_qjzl_eq;
         if(!ObjectUtils.isEmpty(this.n_qjzl_eq)){
-            this.getSelectCond().eq("qjzl", n_qjzl_eq);
+            this.getSearchCond().eq("qjzl", n_qjzl_eq);
         }
     }
 	private String n_vacleavetipsname_like;//[请假提示名称]
 	public void setN_vacleavetipsname_like(String n_vacleavetipsname_like) {
         this.n_vacleavetipsname_like = n_vacleavetipsname_like;
         if(!ObjectUtils.isEmpty(this.n_vacleavetipsname_like)){
-            this.getSelectCond().like("vacleavetipsname", n_vacleavetipsname_like);
+            this.getSearchCond().like("vacleavetipsname", n_vacleavetipsname_like);
         }
     }
 	private String n_vacholidayrulesname_eq;//[考勤规则名称]
 	public void setN_vacholidayrulesname_eq(String n_vacholidayrulesname_eq) {
         this.n_vacholidayrulesname_eq = n_vacholidayrulesname_eq;
         if(!ObjectUtils.isEmpty(this.n_vacholidayrulesname_eq)){
-            this.getSelectCond().eq("vacholidayrulesname", n_vacholidayrulesname_eq);
+            this.getSearchCond().eq("vacholidayrulesname", n_vacholidayrulesname_eq);
         }
     }
 	private String n_vacholidayrulesname_like;//[考勤规则名称]
 	public void setN_vacholidayrulesname_like(String n_vacholidayrulesname_like) {
         this.n_vacholidayrulesname_like = n_vacholidayrulesname_like;
         if(!ObjectUtils.isEmpty(this.n_vacholidayrulesname_like)){
-            this.getSelectCond().like("vacholidayrulesname", n_vacholidayrulesname_like);
+            this.getSearchCond().like("vacholidayrulesname", n_vacholidayrulesname_like);
         }
     }
 	private String n_vacholidayrulesid_eq;//[考勤规则标识]
 	public void setN_vacholidayrulesid_eq(String n_vacholidayrulesid_eq) {
         this.n_vacholidayrulesid_eq = n_vacholidayrulesid_eq;
         if(!ObjectUtils.isEmpty(this.n_vacholidayrulesid_eq)){
-            this.getSelectCond().eq("vacholidayrulesid", n_vacholidayrulesid_eq);
+            this.getSearchCond().eq("vacholidayrulesid", n_vacholidayrulesid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class VacLeaveTipsSearchContext extends QueryWrapperContext<VacLeaveTips>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("vacleavetipsname", query)   
             );
 		 }

@@ -20,7 +20,7 @@ export default {
 	views: {
 		hjqk_wsswbjgridview: {
 			caption: '获奖情况',
-      title: '获奖情况',
+      title: '获奖情况表格视图',
 		},
 		hjqkgridview: {
 			caption: '获奖情况（要求：带*必填）',

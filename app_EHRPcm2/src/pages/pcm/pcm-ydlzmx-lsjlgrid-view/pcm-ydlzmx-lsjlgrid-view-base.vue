@@ -373,7 +373,6 @@ export default class PcmYdlzmxLSJLGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -402,7 +401,6 @@ export default class PcmYdlzmxLSJLGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -431,7 +429,6 @@ export default class PcmYdlzmxLSJLGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -460,7 +457,6 @@ export default class PcmYdlzmxLSJLGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -484,14 +480,16 @@ export default class PcmYdlzmxLSJLGridViewBase extends GridViewBase {
      * @memberof PcmYdlzmxLSJLGridView
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
+        let localContext:any = null;
+        let localViewParam:any =null;
         const data: any = {};
         if(args[0].srfsourcekey){
             data.srfsourcekey = args[0].srfsourcekey;
         }
-        let curViewParam = JSON.parse(JSON.stringify(this.context));
-        delete curViewParam.pcmydlzmx;
+        let tempContext = JSON.parse(JSON.stringify(this.context));
+        delete tempContext.pcmydlzmx;
         if(args.length >0){
-            Object.assign(curViewParam,args[0]);
+            Object.assign(tempContext,args[0]);
         }
         const deResParameters: any[] = [];
         const parameters: any[] = [
@@ -502,7 +500,7 @@ export default class PcmYdlzmxLSJLGridViewBase extends GridViewBase {
         const openIndexViewTab = (data: any) => {
             const _data: any = { w: (new Date().getTime()) };
             Object.assign(_data, data);
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, curViewParam, deResParameters, parameters, args, _data);
+            const routePath = this.$viewTool.buildUpRoutePath(this.$route, tempContext, deResParameters, parameters, args, _data);
             this.$router.push(routePath);
         }
         openIndexViewTab(data);
@@ -520,10 +518,12 @@ export default class PcmYdlzmxLSJLGridViewBase extends GridViewBase {
      * @memberof PcmYdlzmxLSJLGridView
      */
     public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
+        let localContext:any = null;
+        let localViewParam:any =null;
         const data: any = {};
-        let curViewParam = JSON.parse(JSON.stringify(this.context));
+        let tempContext = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
-            Object.assign(curViewParam,args[0]);
+            Object.assign(tempContext,args[0]);
         }
         const deResParameters: any[] = [];
         const parameters: any[] = [
@@ -532,7 +532,7 @@ export default class PcmYdlzmxLSJLGridViewBase extends GridViewBase {
         ];
         const _this: any = this;
         const openIndexViewTab = (data: any) => {
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, curViewParam, deResParameters, parameters, args, data);
+            const routePath = this.$viewTool.buildUpRoutePath(this.$route, tempContext, deResParameters, parameters, args, data);
             this.$router.push(routePath);
         }
         openIndexViewTab(data);

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[档案借阅及归还记录]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMARCHIVESLOANANDRETURN",resultMap = "PimArchiveSloanandreturnResultMap")
 public class PimArchiveSloanandreturn extends EntityMP implements Serializable {
 
@@ -246,12 +247,24 @@ public class PimArchiveSloanandreturn extends EntityMP implements Serializable {
         this.jyr = jyr ;
         this.modify("jyr",jyr);
     }
+
     /**
      * 设置 [审批时间]
      */
     public void setSpdate(Timestamp spdate){
         this.spdate = spdate ;
         this.modify("spdate",spdate);
+    }
+
+    /**
+     * 格式化日期 [审批时间]
+     */
+    public String formatSpdate(){
+        if (this.spdate == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(spdate);
     }
     /**
      * 设置 [借阅原因]
@@ -260,12 +273,24 @@ public class PimArchiveSloanandreturn extends EntityMP implements Serializable {
         this.jyyy = jyyy ;
         this.modify("jyyy",jyyy);
     }
+
     /**
      * 设置 [归还时间]
      */
     public void setGhrq(Timestamp ghrq){
         this.ghrq = ghrq ;
         this.modify("ghrq",ghrq);
+    }
+
+    /**
+     * 格式化日期 [归还时间]
+     */
+    public String formatGhrq(){
+        if (this.ghrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(ghrq);
     }
     /**
      * 设置 [状态]
@@ -274,12 +299,24 @@ public class PimArchiveSloanandreturn extends EntityMP implements Serializable {
         this.zt = zt ;
         this.modify("zt",zt);
     }
+
     /**
      * 设置 [借阅时间]
      */
     public void setJyqssj(Timestamp jyqssj){
         this.jyqssj = jyqssj ;
         this.modify("jyqssj",jyqssj);
+    }
+
+    /**
+     * 格式化日期 [借阅时间]
+     */
+    public String formatJyqssj(){
+        if (this.jyqssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(jyqssj);
     }
     /**
      * 设置 [档案借阅及归还记录名称]
@@ -288,6 +325,7 @@ public class PimArchiveSloanandreturn extends EntityMP implements Serializable {
         this.pimarchivesloanandreturnname = pimarchivesloanandreturnname ;
         this.modify("pimarchivesloanandreturnname",pimarchivesloanandreturnname);
     }
+
     /**
      * 设置 [审批同意人]
      */
@@ -295,6 +333,7 @@ public class PimArchiveSloanandreturn extends EntityMP implements Serializable {
         this.spperson = spperson ;
         this.modify("spperson",spperson);
     }
+
     /**
      * 设置 [审批人]
      */
@@ -302,6 +341,7 @@ public class PimArchiveSloanandreturn extends EntityMP implements Serializable {
         this.pimpersonname3 = pimpersonname3 ;
         this.modify("pimpersonname3",pimpersonname3);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -309,6 +349,7 @@ public class PimArchiveSloanandreturn extends EntityMP implements Serializable {
         this.pimpersonid3 = pimpersonid3 ;
         this.modify("pimpersonid3",pimpersonid3);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -316,6 +357,7 @@ public class PimArchiveSloanandreturn extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [档案信息标识]
      */
@@ -323,6 +365,7 @@ public class PimArchiveSloanandreturn extends EntityMP implements Serializable {
         this.pimarchivesid = pimarchivesid ;
         this.modify("pimarchivesid",pimarchivesid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -330,6 +373,7 @@ public class PimArchiveSloanandreturn extends EntityMP implements Serializable {
         this.pimpersonid2 = pimpersonid2 ;
         this.modify("pimpersonid2",pimpersonid2);
     }
+
 
 }
 

@@ -14,12 +14,14 @@
 </i-col>
 <i-col v-show="detailsModel.titletype.visible" :style="{}"  :sm="{ span: 12, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='titletype' :itemRules="this.rules.titletype" class='' :caption="$t('entities.ormtitle.main_form.details.titletype')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.titletype.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.titletype" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.titletype.disabled"  
     tag='EhrCodeList0147' 
     codelistType='STATIC'

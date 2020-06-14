@@ -15,31 +15,31 @@ export default {
 	views: {
 		mpickupview: {
 			caption: "组合查询记录",
-      title: '组合查询记录',
+      title: '组合查询模版数据多项选择视图',
 		},
 		editview: {
 			caption: "组合查询记录",
-      title: '组合查询记录',
+      title: '组合查询模版编辑视图',
 		},
 		redirectview: {
 			caption: "组合查询记录",
-      title: '组合查询记录',
+      title: '组合查询模版数据重定向视图',
 		},
 		editview2: {
 			caption: "组合查询记录",
-      title: '组合查询记录',
+      title: '组合查询模版编辑视图',
 		},
 		gridview: {
 			caption: "组合查询记录",
-      title: '组合查询记录',
+      title: '组合查询模版表格视图',
 		},
 		pickupview: {
 			caption: "组合查询记录",
-      title: '组合查询记录',
+      title: '组合查询模版数据选择视图',
 		},
 		pickupgridview: {
 			caption: "组合查询记录",
-      title: '组合查询记录',
+      title: '组合查询模版选择表格视图',
 		},
 	},
 	main_form: {

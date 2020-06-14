@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[调休日管理（停用）]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_VACDAYOFF",resultMap = "VacDayOffResultMap")
 public class VacDayOff extends EntityMP implements Serializable {
 
@@ -113,6 +114,7 @@ public class VacDayOff extends EntityMP implements Serializable {
         this.vacdayoffname = vacdayoffname ;
         this.modify("vacdayoffname",vacdayoffname);
     }
+
     /**
      * 设置 [开始时间]
      */
@@ -120,12 +122,34 @@ public class VacDayOff extends EntityMP implements Serializable {
         this.kssj = kssj ;
         this.modify("kssj",kssj);
     }
+
+    /**
+     * 格式化日期 [开始时间]
+     */
+    public String formatKssj(){
+        if (this.kssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(kssj);
+    }
     /**
      * 设置 [结束时间]
      */
     public void setJssj(Timestamp jssj){
         this.jssj = jssj ;
         this.modify("jssj",jssj);
+    }
+
+    /**
+     * 格式化日期 [结束时间]
+     */
+    public String formatJssj(){
+        if (this.jssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(jssj);
     }
 
 }

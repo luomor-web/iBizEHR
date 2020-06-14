@@ -53,11 +53,11 @@ export default {
 		},
 		jsrqqreditview: {
 			caption: '异动兼职明细',
-      title: '异动兼职明细',
+      title: '请确认/修改兼职结束时间',
 		},
 		mpickupview: {
 			caption: '异动兼职明细',
-      title: '异动兼职明细',
+      title: '异动兼职明细数据多项选择视图',
 		},
 		glgridview: {
 			caption: '兼职管理',
@@ -65,7 +65,7 @@ export default {
 		},
 		editview2: {
 			caption: '异动兼职明细',
-      title: '异动兼职明细',
+      title: '异动兼职明细编辑视图',
 		},
 		lsjlgridview: {
 			caption: '兼职记录',
@@ -73,23 +73,23 @@ export default {
 		},
 		pickupview: {
 			caption: '异动兼职明细',
-      title: '异动兼职明细',
+      title: '异动兼职明细数据选择视图',
 		},
 		gridview: {
 			caption: '异动兼职明细',
-      title: '异动兼职明细',
+      title: '异动兼职明细表格视图',
 		},
 		pickupgridview: {
 			caption: '异动兼职明细',
-      title: '异动兼职明细',
+      title: '异动兼职明细选择表格视图',
 		},
 		redirectview: {
 			caption: '异动兼职明细',
-      title: '异动兼职明细',
+      title: '异动兼职明细数据重定向视图',
 		},
 		editview: {
 			caption: '异动兼职明细',
-      title: '异动兼职明细',
+      title: '异动兼职明细编辑视图',
 		},
 		xzeditview: {
 			caption: '新增兼职',

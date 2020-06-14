@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[请假提示]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_VACLEAVETIPS",resultMap = "VacLeaveTipsResultMap")
 public class VacLeaveTips extends EntityMP implements Serializable {
 
@@ -133,6 +134,7 @@ public class VacLeaveTips extends EntityMP implements Serializable {
         this.tips = tips ;
         this.modify("tips",tips);
     }
+
     /**
      * 设置 [请假种类]
      */
@@ -140,6 +142,7 @@ public class VacLeaveTips extends EntityMP implements Serializable {
         this.qjzl = qjzl ;
         this.modify("qjzl",qjzl);
     }
+
     /**
      * 设置 [请假提示名称]
      */
@@ -147,6 +150,7 @@ public class VacLeaveTips extends EntityMP implements Serializable {
         this.vacleavetipsname = vacleavetipsname ;
         this.modify("vacleavetipsname",vacleavetipsname);
     }
+
     /**
      * 设置 [考勤规则标识]
      */
@@ -154,6 +158,7 @@ public class VacLeaveTips extends EntityMP implements Serializable {
         this.vacholidayrulesid = vacholidayrulesid ;
         this.modify("vacholidayrulesid",vacholidayrulesid);
     }
+
 
 }
 

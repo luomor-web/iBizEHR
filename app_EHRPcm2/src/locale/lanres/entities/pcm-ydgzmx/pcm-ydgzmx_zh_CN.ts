@@ -45,11 +45,11 @@ export default {
 	views: {
 		mpickupview: {
 			caption: '异动挂职明细',
-      title: '异动挂职明细',
+      title: '异动挂职明细数据多项选择视图',
 		},
 		jsrqqreditview: {
 			caption: '异动挂职明细',
-      title: '异动挂职明细',
+      title: '请确认/修改挂职结束时间',
 		},
 		gzceditview: {
 			caption: '新增挂职出',
@@ -61,7 +61,7 @@ export default {
 		},
 		editview2: {
 			caption: '异动挂职明细',
-      title: '异动挂职明细',
+      title: '异动挂职明细编辑视图',
 		},
 		gzrlsjlgridview: {
 			caption: '挂职进记录',
@@ -69,7 +69,7 @@ export default {
 		},
 		type_gzjeditview3: {
 			caption: '异动挂职明细',
-      title: '异动挂职明细',
+      title: '异动挂职明细编辑视图(挂职进)',
 		},
 		gzclsjlgridview: {
 			caption: '挂职出记录',
@@ -77,27 +77,27 @@ export default {
 		},
 		pickupview: {
 			caption: '异动挂职明细',
-      title: '异动挂职明细',
+      title: '异动挂职明细数据选择视图',
 		},
 		gridview: {
 			caption: '异动挂职明细',
-      title: '异动挂职明细',
+      title: '异动挂职明细表格视图',
 		},
 		redirectview: {
 			caption: '异动挂职明细',
-      title: '异动挂职明细',
+      title: '异动挂职明细数据重定向视图',
 		},
 		editview: {
 			caption: '异动挂职明细',
-      title: '异动挂职明细',
+      title: '异动挂职明细编辑视图',
 		},
 		type_gzceditview3: {
 			caption: '异动挂职明细',
-      title: '异动挂职明细',
+      title: '异动挂职明细编辑视图(挂职出)',
 		},
 		pickupgridview: {
 			caption: '异动挂职明细',
-      title: '异动挂职明细',
+      title: '异动挂职明细选择表格视图',
 		},
 		gzrglgridview: {
 			caption: '挂职调入',
@@ -281,6 +281,7 @@ export default {
 			checkstatus: '审核状态',
 		},
 		uiactions: {
+			ryhg: '结束',
 		},
 	},
 	gzcjlgrid_grid: {
@@ -340,6 +341,7 @@ export default {
 			syyf: '剩余月份',
 		},
 		uiactions: {
+			ryhg: '结束',
 		},
 	},
 	default_searchform: {

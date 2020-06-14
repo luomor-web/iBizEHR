@@ -31,56 +31,56 @@ public class TrmTrainDataSearchContext extends QueryWrapperContext<TrmTrainData>
 	public void setN_trmtraindataname_like(String n_trmtraindataname_like) {
         this.n_trmtraindataname_like = n_trmtraindataname_like;
         if(!ObjectUtils.isEmpty(this.n_trmtraindataname_like)){
-            this.getSelectCond().like("trmtraindataname", n_trmtraindataname_like);
+            this.getSearchCond().like("trmtraindataname", n_trmtraindataname_like);
         }
     }
 	private String n_zllb_eq;//[资料类别]
 	public void setN_zllb_eq(String n_zllb_eq) {
         this.n_zllb_eq = n_zllb_eq;
         if(!ObjectUtils.isEmpty(this.n_zllb_eq)){
-            this.getSelectCond().eq("zllb", n_zllb_eq);
+            this.getSearchCond().eq("zllb", n_zllb_eq);
         }
     }
 	private String n_ormorgname_eq;//[组织]
 	public void setN_ormorgname_eq(String n_ormorgname_eq) {
         this.n_ormorgname_eq = n_ormorgname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_eq)){
-            this.getSelectCond().eq("ormorgname", n_ormorgname_eq);
+            this.getSearchCond().eq("ormorgname", n_ormorgname_eq);
         }
     }
 	private String n_ormorgname_like;//[组织]
 	public void setN_ormorgname_like(String n_ormorgname_like) {
         this.n_ormorgname_like = n_ormorgname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_like)){
-            this.getSelectCond().like("ormorgname", n_ormorgname_like);
+            this.getSearchCond().like("ormorgname", n_ormorgname_like);
         }
     }
 	private String n_trmtrainagencyname_eq;//[培训机构名称]
 	public void setN_trmtrainagencyname_eq(String n_trmtrainagencyname_eq) {
         this.n_trmtrainagencyname_eq = n_trmtrainagencyname_eq;
         if(!ObjectUtils.isEmpty(this.n_trmtrainagencyname_eq)){
-            this.getSelectCond().eq("trmtrainagencyname", n_trmtrainagencyname_eq);
+            this.getSearchCond().eq("trmtrainagencyname", n_trmtrainagencyname_eq);
         }
     }
 	private String n_trmtrainagencyname_like;//[培训机构名称]
 	public void setN_trmtrainagencyname_like(String n_trmtrainagencyname_like) {
         this.n_trmtrainagencyname_like = n_trmtrainagencyname_like;
         if(!ObjectUtils.isEmpty(this.n_trmtrainagencyname_like)){
-            this.getSelectCond().like("trmtrainagencyname", n_trmtrainagencyname_like);
+            this.getSearchCond().like("trmtrainagencyname", n_trmtrainagencyname_like);
         }
     }
 	private String n_ormorgid_eq;//[组织标识]
 	public void setN_ormorgid_eq(String n_ormorgid_eq) {
         this.n_ormorgid_eq = n_ormorgid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
-            this.getSelectCond().eq("ormorgid", n_ormorgid_eq);
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
         }
     }
 	private String n_trmtrainagencyid_eq;//[培训机构标识]
 	public void setN_trmtrainagencyid_eq(String n_trmtrainagencyid_eq) {
         this.n_trmtrainagencyid_eq = n_trmtrainagencyid_eq;
         if(!ObjectUtils.isEmpty(this.n_trmtrainagencyid_eq)){
-            this.getSelectCond().eq("trmtrainagencyid", n_trmtrainagencyid_eq);
+            this.getSearchCond().eq("trmtrainagencyid", n_trmtrainagencyid_eq);
         }
     }
 
@@ -91,7 +91,7 @@ public class TrmTrainDataSearchContext extends QueryWrapperContext<TrmTrainData>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("trmtraindataname", query)   
             );
 		 }

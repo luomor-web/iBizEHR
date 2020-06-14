@@ -86,12 +86,20 @@ export default class DropDownListDynamic extends Vue {
     }
 
     /**
-     * 传入额外参数
+     * 局部上下文导航参数
      *
      * @type {*}
-     * @memberof DropDownListDynamic
+     * @memberof DropDownList
      */
-    @Prop() public itemParam?: any;
+    @Prop() public localContext!:any;
+    
+    /**
+     * 局部导航参数
+     *
+     * @type {*}
+     * @memberof DropDownList
+     */
+    @Prop() public localParam!:any;
 
     /**
      * 是否禁用
@@ -172,12 +180,12 @@ export default class DropDownListDynamic extends Vue {
         arg.param = this.viewparams ? JSON.parse(JSON.stringify(this.viewparams)) : {};
         arg.context = this.context ? JSON.parse(JSON.stringify(this.context)) : {};
         // 附加参数处理
-        if (this.itemParam.context) {
-          let _context = this.$util.formatData(this.data,arg.context,this.itemParam.context);
+        if (this.localContext && Object.keys(this.localContext).length >0) {
+          let _context = this.$util.computedNavData(this.data,arg.context,arg.param,this.localContext);
             Object.assign(arg.context,_context);
         }
-        if (this.itemParam.param) {
-          let _param = this.$util.formatData(this.data,arg.param,this.itemParam.param);
+        if (this.localParam && Object.keys(this.localParam).length >0) {
+          let _param = this.$util.computedNavData(this.data,arg.context,arg.param,this.localParam);
             Object.assign(arg.param,_param);
         }
     }

@@ -29,11 +29,11 @@ export default {
 	views: {
 		gryynlgridview: {
 			caption: '语言能力',
-      title: '语言能力',
+      title: '语言能力表格视图',
 		},
 		greditview: {
 			caption: '语言能力',
-      title: '语言能力',
+      title: '语言能力编辑视图',
 		},
 	},
 	main_2_form: {

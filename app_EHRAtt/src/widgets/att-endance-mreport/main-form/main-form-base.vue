@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.attendancemreport.main_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormorgname.disabled"
   name='ormorgname'
   deMajorField='orgname'
@@ -33,12 +35,14 @@
 </i-col>
 <i-col v-show="detailsModel.nd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='nd' :itemRules="this.rules.nd" class='' :caption="$t('entities.attendancemreport.main_form.details.nd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.nd" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.nd.disabled"  
     tag='EhrCodeList0115' 
     codelistType='STATIC'
@@ -49,12 +53,14 @@
 </i-col>
 <i-col v-show="detailsModel.yf.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='yf' :itemRules="this.rules.yf" class='' :caption="$t('entities.attendancemreport.main_form.details.yf')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.yf.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.yf" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.yf.disabled"  
     tag='CodeList82' 
     codelistType='STATIC'
@@ -65,12 +71,14 @@
 </i-col>
 <i-col v-show="detailsModel.attendencesetupname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='attendencesetupname' :itemRules="this.rules.attendencesetupname" class='' :caption="$t('entities.attendancemreport.main_form.details.attendencesetupname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.attendencesetupname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.attendencesetupname.disabled"
   name='attendencesetupname'
   deMajorField='attendencesetupname'
@@ -114,6 +122,8 @@
     ]"
     :context="context"
     :viewparams="viewparams"
+    :localContext ='{}'
+    :localParam ='{}'
     parameterName='attendancemreport'
     parentName="AttEndanceMreport"  
     refviewtype='DEGRIDVIEW' 

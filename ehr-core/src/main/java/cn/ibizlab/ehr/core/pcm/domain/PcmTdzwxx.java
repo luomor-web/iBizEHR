@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[投递职位摘要信息]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_TDZWXX",resultMap = "PcmTdzwxxResultMap")
 public class PcmTdzwxx extends EntityMP implements Serializable {
 
@@ -192,6 +193,7 @@ public class PcmTdzwxx extends EntityMP implements Serializable {
         this.department = department ;
         this.modify("department",department);
     }
+
     /**
      * 设置 [所在阶段信息]
      */
@@ -199,6 +201,7 @@ public class PcmTdzwxx extends EntityMP implements Serializable {
         this.phaseinfo = phaseinfo ;
         this.modify("phaseinfo",phaseinfo);
     }
+
     /**
      * 设置 [组织机构]
      */
@@ -206,6 +209,7 @@ public class PcmTdzwxx extends EntityMP implements Serializable {
         this.organization = organization ;
         this.modify("organization",organization);
     }
+
     /**
      * 设置 [所在状态信息]
      */
@@ -213,6 +217,7 @@ public class PcmTdzwxx extends EntityMP implements Serializable {
         this.statusinfo = statusinfo ;
         this.modify("statusinfo",statusinfo);
     }
+
     /**
      * 设置 [职位编号]
      */
@@ -220,6 +225,7 @@ public class PcmTdzwxx extends EntityMP implements Serializable {
         this.jobcode = jobcode ;
         this.modify("jobcode",jobcode);
     }
+
     /**
      * 设置 [是否有效]
      */
@@ -227,6 +233,7 @@ public class PcmTdzwxx extends EntityMP implements Serializable {
         this.flag = flag ;
         this.modify("flag",flag);
     }
+
     /**
      * 设置 [职位ID]
      */
@@ -234,12 +241,24 @@ public class PcmTdzwxx extends EntityMP implements Serializable {
         this.jobid = jobid ;
         this.modify("jobid",jobid);
     }
+
     /**
      * 设置 [最初投递时间]
      */
     public void setInitapplydate(Timestamp initapplydate){
         this.initapplydate = initapplydate ;
         this.modify("initapplydate",initapplydate);
+    }
+
+    /**
+     * 格式化日期 [最初投递时间]
+     */
+    public String formatInitapplydate(){
+        if (this.initapplydate == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(initapplydate);
     }
     /**
      * 设置 [职位名称]
@@ -248,12 +267,24 @@ public class PcmTdzwxx extends EntityMP implements Serializable {
         this.tdzwxxname = tdzwxxname ;
         this.modify("tdzwxxname",tdzwxxname);
     }
+
     /**
      * 设置 [版本时间]
      */
     public void setBbsj(Timestamp bbsj){
         this.bbsj = bbsj ;
         this.modify("bbsj",bbsj);
+    }
+
+    /**
+     * 格式化日期 [版本时间]
+     */
+    public String formatBbsj(){
+        if (this.bbsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(bbsj);
     }
     /**
      * 设置 [应聘者ID]
@@ -262,6 +293,7 @@ public class PcmTdzwxx extends EntityMP implements Serializable {
         this.pcmprofileid = pcmprofileid ;
         this.modify("pcmprofileid",pcmprofileid);
     }
+
 
 }
 

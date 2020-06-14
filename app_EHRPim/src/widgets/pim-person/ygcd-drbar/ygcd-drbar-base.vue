@@ -151,6 +151,7 @@ export default class YGCDBase extends Vue implements ControlInterface {
     }
 
 
+
     /**
      * 获取多项数据
      *
@@ -178,6 +179,14 @@ export default class YGCDBase extends Vue implements ControlInterface {
      * @memberof YGCD
      */
     @Prop() public loadAction?: string;
+
+    /**
+     *  表单数据
+     *
+     * @type {*}
+     * @memberof YGCDBase
+     */
+    @Prop({default:{}}) public formData?:any;
 
     /**
      * 数据选中项
@@ -299,6 +308,90 @@ export default class YGCDBase extends Vue implements ControlInterface {
             iconcls: '',
             icon: '../../../img/jcgl/1/keyanchengguo.png',
         },
+    ];
+
+    /**
+     * 关系栏数据项导航参数集合
+     *
+     * @type {any[]}
+     * @memberof YGCDBase
+     */
+    public navParamsArray:Array<any> = [
+        {
+            id:'dritem24',
+            localContext:null,
+            localViewParam:null
+        },
+        {
+            id:'dritem7',
+            localContext:null,
+            localViewParam:null
+        },
+        {
+            id:'dritem4',
+            localContext:null,
+            localViewParam:null
+        },
+        {
+            id:'dritem14',
+            localContext:null,
+            localViewParam:null
+        },
+        {
+            id:'dritem3',
+            localContext:null,
+            localViewParam:null
+        },
+        {
+            id:'dritem1',
+            localContext:null,
+            localViewParam:null
+        },
+        {
+            id:'dritem18',
+            localContext:null,
+            localViewParam:null
+        },
+        {
+            id:'dritem6',
+            localContext:null,
+            localViewParam:null
+        },
+        {
+            id:'dritem22',
+            localContext:null,
+            localViewParam:null
+        },
+        {
+            id:'dritem9',
+            localContext:null,
+            localViewParam:null
+        },
+        {
+            id:'dritem26',
+            localContext:null,
+            localViewParam:{srfkey:"curuser"}
+        },
+        {
+            id:'dritem23',
+            localContext:null,
+            localViewParam:null
+        },
+        {
+            id:'dritem20',
+            localContext:null,
+            localViewParam:null
+        },
+        {
+            id:'dritem17',
+            localContext:null,
+            localViewParam:null
+        },
+        {
+            id:'dritem27',
+            localContext:null,
+            localViewParam:{srfkey:"curuser"}
+        }
     ];
 
     /**
@@ -514,6 +607,36 @@ export default class YGCDBase extends Vue implements ControlInterface {
     }
 
     /**
+     * 初始化导航参数
+     *
+     * @param {*} drItem
+     * @memberof YGCDBase
+     */
+    public initNavParam(drItem:any){
+        let returnNavParam:any = {};
+        if(drItem && drItem.id){
+            let curDRItem:any = this.navParamsArray.find((item:any) =>{
+                return Object.is(item.id,drItem.id);
+            })
+            if(curDRItem){
+                let localContext:any = curDRItem.localContext;
+                let localViewParam:any = curDRItem.localViewParam;
+                if(localContext && Object.keys(localContext).length >0){
+                    let _context:any = this.$util.computedNavData(this.formData,this.context,this.viewparams,localContext);
+                    returnNavParam.localContext = _context;
+                }
+                if(localViewParam && Object.keys(localViewParam).length >0){
+                    let _params:any = this.$util.computedNavData(this.formData,this.context,this.viewparams,localViewParam);
+                    returnNavParam.localViewParam = _params;
+                }
+                return returnNavParam;
+            }else{
+                return null;
+            }
+        }
+    }
+
+    /**
      * 节点选中
      *
      * @param {*} $event
@@ -524,13 +647,18 @@ export default class YGCDBase extends Vue implements ControlInterface {
         if (Object.is(item.id, this.selection.id)) {
             return;
         }
-
         this.$emit('selectionchange', [item]);
-
+        let localNavParam:any = this.initNavParam(item);
         const refview = this.getDRBarItem({ nodetype: item.id });
         this.selection = {};
         const _context: any = { ...JSON.parse(JSON.stringify(this.context)) };
-        const _params: any = { ...JSON.parse(JSON.stringify(this.viewparams)) };
+        if(localNavParam && localNavParam.localContext){
+            Object.assign(_context,localNavParam.localContext);
+        }
+        const _params: any = {};
+        if(localNavParam && localNavParam.localViewParam){
+            Object.assign(_params,localNavParam.localViewParam);
+        }
         if (refview && refview.parentdatajo) {
             Object.assign(_context, refview.parentdatajo);
             Object.assign(this.selection, { view: { viewname: refview.viewname }, data: _context, param: _params });

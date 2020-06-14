@@ -42,7 +42,7 @@ export default {
 		},
 		mpickupview: {
 			caption: "异动内退明细",
-      title: '异动内退明细',
+      title: '异动内退明细数据多项选择视图',
 		},
 		xzeditview: {
 			caption: "新增内退",
@@ -50,19 +50,19 @@ export default {
 		},
 		pickupgridview: {
 			caption: "异动内退明细",
-      title: '异动内退明细',
+      title: '异动内退明细选择表格视图',
 		},
 		editview2: {
 			caption: "异动内退明细",
-      title: '异动内退明细',
+      title: '异动内退明细编辑视图',
 		},
 		redirectview: {
 			caption: "异动内退明细",
-      title: '异动内退明细',
+      title: '异动内退明细数据重定向视图',
 		},
 		pickupview: {
 			caption: "异动内退明细",
-      title: '异动内退明细',
+      title: '异动内退明细数据选择视图',
 		},
 		editview9: {
 			caption: "内退明细信息",
@@ -78,11 +78,11 @@ export default {
 		},
 		gridview: {
 			caption: "异动内退明细",
-      title: '异动内退明细',
+      title: '异动内退明细表',
 		},
 		ntjsrqqreditview: {
 			caption: "异动内退明细",
-      title: '异动内退明细',
+      title: '请确认/修改内退结束日期',
 		},
 		ntjlgridview: {
 			caption: "内退记录",

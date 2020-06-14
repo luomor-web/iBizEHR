@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[应聘者接口信息管理]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMYPZJKXX",resultMap = "PcmYpzjkxxResultMap")
 public class PcmYpzjkxx extends EntityMP implements Serializable {
 
@@ -160,6 +161,7 @@ public class PcmYpzjkxx extends EntityMP implements Serializable {
         this.cadidateid = cadidateid ;
         this.modify("cadidateid",cadidateid);
     }
+
     /**
      * 设置 [应聘者ID]
      */
@@ -167,6 +169,7 @@ public class PcmYpzjkxx extends EntityMP implements Serializable {
         this.applicantid = applicantid ;
         this.modify("applicantid",applicantid);
     }
+
     /**
      * 设置 [测评结果摘要信息]
      */
@@ -174,6 +177,7 @@ public class PcmYpzjkxx extends EntityMP implements Serializable {
         this.testresults = testresults ;
         this.modify("testresults",testresults);
     }
+
     /**
      * 设置 [教育经历]
      */
@@ -181,6 +185,7 @@ public class PcmYpzjkxx extends EntityMP implements Serializable {
         this.educationexperience = educationexperience ;
         this.modify("educationexperience",educationexperience);
     }
+
     /**
      * 设置 [实习经验]
      */
@@ -188,6 +193,7 @@ public class PcmYpzjkxx extends EntityMP implements Serializable {
         this.practiceexperience = practiceexperience ;
         this.modify("practiceexperience",practiceexperience);
     }
+
     /**
      * 设置 [应聘者接口信息管理名称]
      */
@@ -195,6 +201,7 @@ public class PcmYpzjkxx extends EntityMP implements Serializable {
         this.pcmypzjkxxname = pcmypzjkxxname ;
         this.modify("pcmypzjkxxname",pcmypzjkxxname);
     }
+
     /**
      * 设置 [面试评价信息]
      */
@@ -202,6 +209,7 @@ public class PcmYpzjkxx extends EntityMP implements Serializable {
         this.interviewsummaries = interviewsummaries ;
         this.modify("interviewsummaries",interviewsummaries);
     }
+
     /**
      * 设置 [在校职务]
      */
@@ -209,6 +217,7 @@ public class PcmYpzjkxx extends EntityMP implements Serializable {
         this.schooloffice = schooloffice ;
         this.modify("schooloffice",schooloffice);
     }
+
     /**
      * 设置 [获奖情况]
      */
@@ -216,6 +225,7 @@ public class PcmYpzjkxx extends EntityMP implements Serializable {
         this.awardswons = awardswons ;
         this.modify("awardswons",awardswons);
     }
+
     /**
      * 设置 [应聘者基本信息]
      */
@@ -223,6 +233,7 @@ public class PcmYpzjkxx extends EntityMP implements Serializable {
         this.profile = profile ;
         this.modify("profile",profile);
     }
+
 
 }
 

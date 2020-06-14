@@ -12,7 +12,7 @@ export default {
 	views: {
 		editview2: {
 			caption: '法人主体',
-      title: '法人主体',
+      title: '法人主体编辑视图',
 		},
 		htqddwpickupgridview: {
 			caption: '合同签订单位选择',
@@ -24,11 +24,11 @@ export default {
 		},
 		pickupgridview: {
 			caption: '法人主体',
-      title: '法人主体',
+      title: '法人主体选择表格视图',
 		},
 		editview: {
 			caption: '法人主体',
-      title: '法人主体',
+      title: '法人主体编辑视图',
 		},
 		gridview: {
 			caption: '法人主体维护',
@@ -44,15 +44,15 @@ export default {
 		},
 		redirectview: {
 			caption: '法人主体',
-      title: '法人主体',
+      title: '法人主体数据重定向视图',
 		},
 		mpickupview: {
 			caption: '法人主体',
-      title: '法人主体',
+      title: '法人主体数据多项选择视图',
 		},
 		pickupview: {
 			caption: '法人主体',
-      title: '法人主体',
+      title: '法人主体数据选择视图',
 		},
 	},
 	main_form: {

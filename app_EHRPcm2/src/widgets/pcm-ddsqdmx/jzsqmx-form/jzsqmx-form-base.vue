@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.pimdistirbutionname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimdistirbutionname' :itemRules="this.rules.pimdistirbutionname" class='' :caption="$t('entities.pcmddsqdmx.jzsqmx_form.details.pimdistirbutionname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimdistirbutionname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.pimdistirbutionname.disabled"
   name='pimdistirbutionname'
   deMajorField='pimpersonname'
@@ -33,45 +35,35 @@
 </i-col>
 <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.pcmddsqdmx.jzsqmx_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='ormorgname'
-:value="data.ormorgname"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='ormorgname' :value="data.ormorgname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ormorgsectorname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgsectorname' :itemRules="this.rules.ormorgsectorname" class='' :caption="$t('entities.pcmddsqdmx.jzsqmx_form.details.ormorgsectorname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgsectorname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='ormorgsectorname'
-:value="data.ormorgsectorname"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='ormorgsectorname' :value="data.ormorgsectorname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ormygw.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormygw' :itemRules="this.rules.ormygw" class='' :caption="$t('entities.pcmddsqdmx.jzsqmx_form.details.ormygw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormygw.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='ormygw'
-:value="data.ormygw"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='ormygw' :value="data.ormygw" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.orgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='orgname' :itemRules="this.rules.orgname" class='' :caption="$t('entities.pcmddsqdmx.jzsqmx_form.details.orgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.orgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.orgname.disabled"
   name='orgname'
   deMajorField='orgname'
@@ -91,12 +83,14 @@ style=""></app-span>
 </i-col>
 <i-col v-show="detailsModel.orgsectorname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='orgsectorname' :itemRules="this.rules.orgsectorname" class='' :caption="$t('entities.pcmddsqdmx.jzsqmx_form.details.orgsectorname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.orgsectorname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ context:{"ORMORG":"%orgid%"},param:{"n_orgid_eq":"%orgid%"},}' 
+  :localContext ='{ ORMORG:"%orgid%" }' 
+  :localParam ='{ n_orgid_eq:"%orgid%" }' 
   :disabled="detailsModel.orgsectorname.disabled"
   name='orgsectorname'
   deMajorField='orgsectorname'
@@ -116,12 +110,14 @@ style=""></app-span>
 </i-col>
 <i-col v-show="detailsModel.ormpostname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormpostname' :itemRules="this.rules.ormpostname" class='' :caption="$t('entities.pcmddsqdmx.jzsqmx_form.details.ormpostname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormpostname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormpostname.disabled"
   name='ormpostname'
   deMajorField='ormpostname'

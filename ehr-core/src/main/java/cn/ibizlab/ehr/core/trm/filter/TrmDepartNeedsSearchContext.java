@@ -31,70 +31,70 @@ public class TrmDepartNeedsSearchContext extends QueryWrapperContext<TrmDepartNe
 	public void setN_pxdfs_eq(String n_pxdfs_eq) {
         this.n_pxdfs_eq = n_pxdfs_eq;
         if(!ObjectUtils.isEmpty(this.n_pxdfs_eq)){
-            this.getSelectCond().eq("pxdfs", n_pxdfs_eq);
+            this.getSearchCond().eq("pxdfs", n_pxdfs_eq);
         }
     }
 	private String n_trmdepartneedsname_like;//[部门需求填报名称]
 	public void setN_trmdepartneedsname_like(String n_trmdepartneedsname_like) {
         this.n_trmdepartneedsname_like = n_trmdepartneedsname_like;
         if(!ObjectUtils.isEmpty(this.n_trmdepartneedsname_like)){
-            this.getSelectCond().like("trmdepartneedsname", n_trmdepartneedsname_like);
+            this.getSearchCond().like("trmdepartneedsname", n_trmdepartneedsname_like);
         }
     }
 	private String n_pxlb_eq;//[培训类别]
 	public void setN_pxlb_eq(String n_pxlb_eq) {
         this.n_pxlb_eq = n_pxlb_eq;
         if(!ObjectUtils.isEmpty(this.n_pxlb_eq)){
-            this.getSelectCond().eq("pxlb", n_pxlb_eq);
+            this.getSearchCond().eq("pxlb", n_pxlb_eq);
         }
     }
 	private String n_jpcd_eq;//[紧迫程度]
 	public void setN_jpcd_eq(String n_jpcd_eq) {
         this.n_jpcd_eq = n_jpcd_eq;
         if(!ObjectUtils.isEmpty(this.n_jpcd_eq)){
-            this.getSelectCond().eq("jpcd", n_jpcd_eq);
+            this.getSearchCond().eq("jpcd", n_jpcd_eq);
         }
     }
 	private String n_trmtrainagencyname_eq;//[培训机构名称]
 	public void setN_trmtrainagencyname_eq(String n_trmtrainagencyname_eq) {
         this.n_trmtrainagencyname_eq = n_trmtrainagencyname_eq;
         if(!ObjectUtils.isEmpty(this.n_trmtrainagencyname_eq)){
-            this.getSelectCond().eq("trmtrainagencyname", n_trmtrainagencyname_eq);
+            this.getSearchCond().eq("trmtrainagencyname", n_trmtrainagencyname_eq);
         }
     }
 	private String n_trmtrainagencyname_like;//[培训机构名称]
 	public void setN_trmtrainagencyname_like(String n_trmtrainagencyname_like) {
         this.n_trmtrainagencyname_like = n_trmtrainagencyname_like;
         if(!ObjectUtils.isEmpty(this.n_trmtrainagencyname_like)){
-            this.getSelectCond().like("trmtrainagencyname", n_trmtrainagencyname_like);
+            this.getSearchCond().like("trmtrainagencyname", n_trmtrainagencyname_like);
         }
     }
 	private String n_trmtraincoursename_eq;//[培训课程名称]
 	public void setN_trmtraincoursename_eq(String n_trmtraincoursename_eq) {
         this.n_trmtraincoursename_eq = n_trmtraincoursename_eq;
         if(!ObjectUtils.isEmpty(this.n_trmtraincoursename_eq)){
-            this.getSelectCond().eq("trmtraincoursename", n_trmtraincoursename_eq);
+            this.getSearchCond().eq("trmtraincoursename", n_trmtraincoursename_eq);
         }
     }
 	private String n_trmtraincoursename_like;//[培训课程名称]
 	public void setN_trmtraincoursename_like(String n_trmtraincoursename_like) {
         this.n_trmtraincoursename_like = n_trmtraincoursename_like;
         if(!ObjectUtils.isEmpty(this.n_trmtraincoursename_like)){
-            this.getSelectCond().like("trmtraincoursename", n_trmtraincoursename_like);
+            this.getSearchCond().like("trmtraincoursename", n_trmtraincoursename_like);
         }
     }
 	private String n_trmtraincourseid_eq;//[培训课程标识]
 	public void setN_trmtraincourseid_eq(String n_trmtraincourseid_eq) {
         this.n_trmtraincourseid_eq = n_trmtraincourseid_eq;
         if(!ObjectUtils.isEmpty(this.n_trmtraincourseid_eq)){
-            this.getSelectCond().eq("trmtraincourseid", n_trmtraincourseid_eq);
+            this.getSearchCond().eq("trmtraincourseid", n_trmtraincourseid_eq);
         }
     }
 	private String n_trmtrainagencyid_eq;//[培训机构标识]
 	public void setN_trmtrainagencyid_eq(String n_trmtrainagencyid_eq) {
         this.n_trmtrainagencyid_eq = n_trmtrainagencyid_eq;
         if(!ObjectUtils.isEmpty(this.n_trmtrainagencyid_eq)){
-            this.getSelectCond().eq("trmtrainagencyid", n_trmtrainagencyid_eq);
+            this.getSearchCond().eq("trmtrainagencyid", n_trmtrainagencyid_eq);
         }
     }
 
@@ -105,7 +105,7 @@ public class TrmDepartNeedsSearchContext extends QueryWrapperContext<TrmDepartNe
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("trmdepartneedsname", query)   
             );
 		 }

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[机构培训记录]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_TRMAGENCYRECORD",resultMap = "TrmAgencyRecordResultMap")
 public class TrmAgencyRecord extends EntityMP implements Serializable {
 
@@ -142,6 +143,7 @@ public class TrmAgencyRecord extends EntityMP implements Serializable {
         this.pxcs = pxcs ;
         this.modify("pxcs",pxcs);
     }
+
     /**
      * 设置 [培训总时长]
      */
@@ -149,6 +151,7 @@ public class TrmAgencyRecord extends EntityMP implements Serializable {
         this.pxzsc = pxzsc ;
         this.modify("pxzsc",pxzsc);
     }
+
     /**
      * 设置 [培训记录]
      */
@@ -156,6 +159,7 @@ public class TrmAgencyRecord extends EntityMP implements Serializable {
         this.trmagencyrecordname = trmagencyrecordname ;
         this.modify("trmagencyrecordname",trmagencyrecordname);
     }
+
     /**
      * 设置 [培训机构标识]
      */
@@ -163,6 +167,7 @@ public class TrmAgencyRecord extends EntityMP implements Serializable {
         this.trmtrainagencyid = trmtrainagencyid ;
         this.modify("trmtrainagencyid",trmtrainagencyid);
     }
+
 
 }
 

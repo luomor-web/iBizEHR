@@ -161,7 +161,7 @@ export default {
 		},
 		pickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息选择表格视图',
 		},
 		setattrulesgridview: {
 			caption: '员工考勤设置',
@@ -169,11 +169,11 @@ export default {
 		},
 		pickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息数据选择视图',
 		},
 		mpickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '人员信息数据多项选择视图',
 		},
 		curorgpimpersonpickupgridview: {
 			caption: '人员信息',
@@ -181,11 +181,11 @@ export default {
 		},
 		kqjrypickupview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '选择请假人员',
 		},
 		kqjrypickupgridview: {
 			caption: '人员信息',
-      title: '人员信息',
+      title: '请假人员',
 		},
 	},
 	ryinfogrid_grid: {

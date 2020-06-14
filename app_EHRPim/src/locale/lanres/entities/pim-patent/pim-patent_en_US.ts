@@ -28,43 +28,43 @@ export default {
 	views: {
 		greditview: {
 			caption: "专利信息",
-      title: '专利信息',
+      title: '专利信息编辑视图',
 		},
 		mpickupview: {
 			caption: "专利信息",
-      title: '专利信息',
+      title: '专利信息数据多项选择视图',
 		},
 		editview: {
 			caption: "专利信息",
-      title: '专利信息',
+      title: '专利信息编辑视图',
 		},
 		pickupview: {
 			caption: "专利信息",
-      title: '专利信息',
+      title: '专利信息数据选择视图',
 		},
 		patentgridview: {
 			caption: "专利信息",
-      title: '专利信息',
+      title: '专利信息表格视图',
 		},
 		gridview: {
 			caption: "专利信息",
-      title: '专利信息',
+      title: '专利信息表格视图',
 		},
 		grpatentgridview: {
 			caption: "专利信息",
-      title: '专利信息',
+      title: '专利信息表格视图',
 		},
 		pickupgridview: {
 			caption: "专利信息",
-      title: '专利信息',
+      title: '专利信息选择表格视图',
 		},
 		redirectview: {
 			caption: "专利信息",
-      title: '专利信息',
+      title: '专利信息数据重定向视图',
 		},
 		editview2: {
 			caption: "专利信息",
-      title: '专利信息',
+      title: '专利信息编辑视图',
 		},
 	},
 	main_form: {

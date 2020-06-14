@@ -28,7 +28,9 @@
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
+                        <a @click="uiAction(row, 'RYHG', $event)">
                         <span>{{row.cz}}</span>
+                        </a>
                     </template>
                 </el-table-column>
             </template>
@@ -276,6 +278,7 @@ import { UIActionTool,Util } from '@/utils';
 import PcmYdgzmxService from '@/service/pcm-ydgzmx/pcm-ydgzmx-service';
 import GZCGLService from './gzcgl-grid-service';
 
+import PcmYdgzmxUIService from '@/uiservice/pcm-ydgzmx/pcm-ydgzmx-ui-service';
 import CodeListService from "@service/app/codelist-service";
 import { FormItemModel } from '@/model/form-detail';
 
@@ -364,6 +367,34 @@ export default class GZCGLBase extends Vue implements ControlInterface {
      */
     public appEntityService: PcmYdgzmxService = new PcmYdgzmxService({ $store: this.$store });
     
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public grid_cz_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:PcmYdgzmxUIService  = new PcmYdgzmxUIService();
+        curUIService.PcmYdgzmx_RYHG(datas,contextJO, paramJO,  $event, xData,this,"PcmYdgzmx");
+    }
 
 
     /**
@@ -1576,6 +1607,10 @@ export default class GZCGLBase extends Vue implements ControlInterface {
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        $event.stopPropagation();
+        if(Object.is('RYHG', tag)) {
+            this.grid_cz_click(row, tag, $event);
+        }
     }
 
     /**
@@ -1709,6 +1744,7 @@ export default class GZCGLBase extends Vue implements ControlInterface {
                 return;
             }
             const data = response.data;
+            this.createDefault(data);
             data.rowDataState = "create";
             _this.items.push(data);
             _this.gridItemsModel.push(_this.getGridRowModel());
@@ -1812,6 +1848,14 @@ export default class GZCGLBase extends Vue implements ControlInterface {
             return Object.is(item.pcmydgzmx,args.row.pcmydgzmx);
         });
         return isSelected ? "grid-selected-row" : "";
+    }
+
+    /**
+     * 新建默认值
+     * @param {*}  row 行数据
+     * @memberof GZCGL
+     */
+    public createDefault(row: any){                    
     }
 }
 </script>

@@ -31,42 +31,42 @@ public class PcmYdtxmxSearchContext extends QueryWrapperContext<PcmYdtxmx> {
 	public void setN_pcmydtxmxname_like(String n_pcmydtxmxname_like) {
         this.n_pcmydtxmxname_like = n_pcmydtxmxname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmydtxmxname_like)){
-            this.getSelectCond().like("pcmydtxmxname", n_pcmydtxmxname_like);
+            this.getSearchCond().like("pcmydtxmxname", n_pcmydtxmxname_like);
         }
     }
 	private String n_pimpersonname_like;//[员工姓名]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_ygbh_like;//[员工编号]
 	public void setN_ygbh_like(String n_ygbh_like) {
         this.n_ygbh_like = n_ygbh_like;
         if(!ObjectUtils.isEmpty(this.n_ygbh_like)){
-            this.getSelectCond().like("ygbh", n_ygbh_like);
+            this.getSearchCond().like("ygbh", n_ygbh_like);
         }
     }
 	private String n_pcmydbxmxname_like;//[异动病休明细名称]
 	public void setN_pcmydbxmxname_like(String n_pcmydbxmxname_like) {
         this.n_pcmydbxmxname_like = n_pcmydbxmxname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmydbxmxname_like)){
-            this.getSelectCond().like("pcmydbxmxname", n_pcmydbxmxname_like);
+            this.getSearchCond().like("pcmydbxmxname", n_pcmydbxmxname_like);
         }
     }
 	private String n_bm_like;//[所属部门]
 	public void setN_bm_like(String n_bm_like) {
         this.n_bm_like = n_bm_like;
         if(!ObjectUtils.isEmpty(this.n_bm_like)){
-            this.getSelectCond().like("bm", n_bm_like);
+            this.getSearchCond().like("bm", n_bm_like);
         }
     }
 	private String n_zz_like;//[所属组织]
 	public void setN_zz_like(String n_zz_like) {
         this.n_zz_like = n_zz_like;
         if(!ObjectUtils.isEmpty(this.n_zz_like)){
-            this.getSelectCond().like("zz", n_zz_like);
+            this.getSearchCond().like("zz", n_zz_like);
         }
     }
 
@@ -77,7 +77,7 @@ public class PcmYdtxmxSearchContext extends QueryWrapperContext<PcmYdtxmx> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmydtxmxname", query)   
                         .or().like("pimpersonname", query)            
                         .or().like("ygbh", query)            

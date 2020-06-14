@@ -30,12 +30,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_jjcd_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_jjcd_eq' :itemRules="this.rules.n_jjcd_eq" class='' :caption="$t('entities.pimquestions.default_searchform.details.n_jjcd_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_jjcd_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_jjcd_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_jjcd_eq.disabled"  
               tag='EhrCodeList0055' 
               codelistType='STATIC'
@@ -46,12 +48,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_wtzt_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_wtzt_eq' :itemRules="this.rules.n_wtzt_eq" class='' :caption="$t('entities.pimquestions.default_searchform.details.n_wtzt_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_wtzt_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_wtzt_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_wtzt_eq.disabled"  
               tag='EhrCodeList0238' 
               codelistType='STATIC'

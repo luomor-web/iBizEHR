@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[见习生员工转正考核结果记录]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMJXSZZKHJGJL",resultMap = "PcmJxszzkhjgjlResultMap")
 public class PcmJxszzkhjgjl extends EntityMP implements Serializable {
 
@@ -141,6 +142,7 @@ public class PcmJxszzkhjgjl extends EntityMP implements Serializable {
         this.enable = enable ;
         this.modify("enable",enable);
     }
+
     /**
      * 设置 [评价]
      */
@@ -148,6 +150,7 @@ public class PcmJxszzkhjgjl extends EntityMP implements Serializable {
         this.pj = pj ;
         this.modify("pj",pj);
     }
+
     /**
      * 设置 [员工]
      */
@@ -155,6 +158,7 @@ public class PcmJxszzkhjgjl extends EntityMP implements Serializable {
         this.pcmjxszzkhjgjlname = pcmjxszzkhjgjlname ;
         this.modify("pcmjxszzkhjgjlname",pcmjxszzkhjgjlname);
     }
+
     /**
      * 设置 [员工编号]
      */
@@ -162,12 +166,24 @@ public class PcmJxszzkhjgjl extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [结束时间]
      */
     public void setJssj(Timestamp jssj){
         this.jssj = jssj ;
         this.modify("jssj",jssj);
+    }
+
+    /**
+     * 格式化日期 [结束时间]
+     */
+    public String formatJssj(){
+        if (this.jssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(jssj);
     }
     /**
      * 设置 [分数]
@@ -176,12 +192,24 @@ public class PcmJxszzkhjgjl extends EntityMP implements Serializable {
         this.fs = fs ;
         this.modify("fs",fs);
     }
+
     /**
      * 设置 [起始时间]
      */
     public void setQssj(Timestamp qssj){
         this.qssj = qssj ;
         this.modify("qssj",qssj);
+    }
+
+    /**
+     * 格式化日期 [起始时间]
+     */
+    public String formatQssj(){
+        if (this.qssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(qssj);
     }
 
 }

@@ -52,7 +52,7 @@ export default {
 	views: {
 		jdjsqreditview: {
 			caption: "异动借调明细",
-      title: '异动借调明细',
+      title: '请确认/修改借调结束时间',
 		},
 		jdlsjlgridview: {
 			caption: "借调记录",
@@ -60,15 +60,15 @@ export default {
 		},
 		editview2: {
 			caption: "异动借调明细",
-      title: '异动借调明细',
+      title: '异动借调明细编辑视图',
 		},
 		jdqroptionview: {
 			caption: "异动借调明细",
-      title: '异动借调明细',
+      title: '请确认/修改借调结束时间',
 		},
 		mpickupview: {
 			caption: "异动借调明细",
-      title: '异动借调明细',
+      title: '异动借调明细数据多项选择视图',
 		},
 		jdjlckeditview: {
 			caption: "借调记录查看",
@@ -76,7 +76,7 @@ export default {
 		},
 		pickupgridview: {
 			caption: "异动借调明细",
-      title: '异动借调明细',
+      title: '异动借调明细选择表格视图',
 		},
 		editview9: {
 			caption: "借调信息",
@@ -88,7 +88,7 @@ export default {
 		},
 		ydmxeditview: {
 			caption: "异动借调明细",
-      title: '异动借调明细',
+      title: '新增借调',
 		},
 		editview: {
 			caption: "借调明细信息",
@@ -96,15 +96,15 @@ export default {
 		},
 		gridview: {
 			caption: "异动借调明细",
-      title: '异动借调明细',
+      title: '异动借调明细表格视图',
 		},
 		redirectview: {
 			caption: "异动借调明细",
-      title: '异动借调明细',
+      title: '异动借调明细数据重定向视图',
 		},
 		pickupview: {
 			caption: "异动借调明细",
-      title: '异动借调明细',
+      title: '异动借调明细数据选择视图',
 		},
 	},
 	jdjsqr_form: {

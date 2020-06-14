@@ -33,7 +33,7 @@ public class AttEnsummarySearchContext extends QueryWrapperContext<AttEnsummary>
 	public void setN_begindate_eq(Timestamp n_begindate_eq) {
         this.n_begindate_eq = n_begindate_eq;
         if(!ObjectUtils.isEmpty(this.n_begindate_eq)){
-            this.getSelectCond().eq("begindate", n_begindate_eq);
+            this.getSearchCond().eq("begindate", n_begindate_eq);
         }
     }
     @JsonFormat(pattern="yyyy-MM-dd", timezone="GMT+8")
@@ -42,7 +42,7 @@ public class AttEnsummarySearchContext extends QueryWrapperContext<AttEnsummary>
 	public void setN_begindate_gtandeq(Timestamp n_begindate_gtandeq) {
         this.n_begindate_gtandeq = n_begindate_gtandeq;
         if(!ObjectUtils.isEmpty(this.n_begindate_gtandeq)){
-            this.getSelectCond().ge("begindate", n_begindate_gtandeq);
+            this.getSearchCond().ge("begindate", n_begindate_gtandeq);
         }
     }
     @JsonFormat(pattern="yyyy-MM-dd", timezone="GMT+8")
@@ -51,28 +51,28 @@ public class AttEnsummarySearchContext extends QueryWrapperContext<AttEnsummary>
 	public void setN_begindate_ltandeq(Timestamp n_begindate_ltandeq) {
         this.n_begindate_ltandeq = n_begindate_ltandeq;
         if(!ObjectUtils.isEmpty(this.n_begindate_ltandeq)){
-            this.getSelectCond().le("begindate", n_begindate_ltandeq);
+            this.getSearchCond().le("begindate", n_begindate_ltandeq);
         }
     }
 	private String n_nd_eq;//[年度]
 	public void setN_nd_eq(String n_nd_eq) {
         this.n_nd_eq = n_nd_eq;
         if(!ObjectUtils.isEmpty(this.n_nd_eq)){
-            this.getSelectCond().eq("nd", n_nd_eq);
+            this.getSearchCond().eq("nd", n_nd_eq);
         }
     }
 	private String n_yf_eq;//[月份]
 	public void setN_yf_eq(String n_yf_eq) {
         this.n_yf_eq = n_yf_eq;
         if(!ObjectUtils.isEmpty(this.n_yf_eq)){
-            this.getSelectCond().eq("yf", n_yf_eq);
+            this.getSearchCond().eq("yf", n_yf_eq);
         }
     }
 	private String n_attensummaryname_like;//[考勤汇总名称]
 	public void setN_attensummaryname_like(String n_attensummaryname_like) {
         this.n_attensummaryname_like = n_attensummaryname_like;
         if(!ObjectUtils.isEmpty(this.n_attensummaryname_like)){
-            this.getSelectCond().like("attensummaryname", n_attensummaryname_like);
+            this.getSearchCond().like("attensummaryname", n_attensummaryname_like);
         }
     }
     @JsonFormat(pattern="yyyy-MM-dd", timezone="GMT+8")
@@ -81,7 +81,7 @@ public class AttEnsummarySearchContext extends QueryWrapperContext<AttEnsummary>
 	public void setN_enddate_gtandeq(Timestamp n_enddate_gtandeq) {
         this.n_enddate_gtandeq = n_enddate_gtandeq;
         if(!ObjectUtils.isEmpty(this.n_enddate_gtandeq)){
-            this.getSelectCond().ge("enddate", n_enddate_gtandeq);
+            this.getSearchCond().ge("enddate", n_enddate_gtandeq);
         }
     }
     @JsonFormat(pattern="yyyy-MM-dd", timezone="GMT+8")
@@ -90,28 +90,28 @@ public class AttEnsummarySearchContext extends QueryWrapperContext<AttEnsummary>
 	public void setN_enddate_ltandeq(Timestamp n_enddate_ltandeq) {
         this.n_enddate_ltandeq = n_enddate_ltandeq;
         if(!ObjectUtils.isEmpty(this.n_enddate_ltandeq)){
-            this.getSelectCond().le("enddate", n_enddate_ltandeq);
+            this.getSearchCond().le("enddate", n_enddate_ltandeq);
         }
     }
 	private String n_pimpersonname_eq;//[员工姓名]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[员工姓名]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_pimpersonid_eq;//[人员信息标识]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 
@@ -122,7 +122,7 @@ public class AttEnsummarySearchContext extends QueryWrapperContext<AttEnsummary>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("ormorgname", query)   
                         .or().like("pimpersonname", query)            
             );

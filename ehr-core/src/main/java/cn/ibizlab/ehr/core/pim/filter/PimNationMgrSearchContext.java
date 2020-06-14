@@ -31,7 +31,7 @@ public class PimNationMgrSearchContext extends QueryWrapperContext<PimNationMgr>
 	public void setN_nationmgrname_like(String n_nationmgrname_like) {
         this.n_nationmgrname_like = n_nationmgrname_like;
         if(!ObjectUtils.isEmpty(this.n_nationmgrname_like)){
-            this.getSelectCond().like("nationmgrname", n_nationmgrname_like);
+            this.getSearchCond().like("nationmgrname", n_nationmgrname_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class PimNationMgrSearchContext extends QueryWrapperContext<PimNationMgr>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("nationmgrname", query)   
             );
 		 }

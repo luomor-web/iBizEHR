@@ -20,31 +20,31 @@ export default {
 	views: {
 		editview: {
 			caption: "费用台账",
-      title: '费用台账',
+      title: '费用台账编辑视图',
 		},
 		pickupgridview: {
 			caption: "费用台账",
-      title: '费用台账',
+      title: '费用台账选择表格视图',
 		},
 		gridview: {
 			caption: "费用台账",
-      title: '费用台账',
+      title: '费用台账表格视图',
 		},
 		mpickupview: {
 			caption: "费用台账",
-      title: '费用台账',
+      title: '费用台账数据多项选择视图',
 		},
 		editview2: {
 			caption: "费用台账",
-      title: '费用台账',
+      title: '费用台账编辑视图',
 		},
 		pickupview: {
 			caption: "费用台账",
-      title: '费用台账',
+      title: '费用台账数据选择视图',
 		},
 		redirectview: {
 			caption: "费用台账",
-      title: '费用台账',
+      title: '费用台账数据重定向视图',
 		},
 	},
 	main_form: {

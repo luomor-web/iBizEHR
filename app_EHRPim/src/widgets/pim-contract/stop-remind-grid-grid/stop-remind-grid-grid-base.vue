@@ -339,6 +339,34 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      * @param {*} [$event]
      * @memberof 
      */
+    public grid_cz_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:PimContractUIService  = new PimContractUIService();
+        curUIService.PimContract_StopContract(datas,contextJO, paramJO,  $event, xData,this,"PimContract");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
     public grid_uagridcolumn1_u5ce1db9_click(params: any = {}, tag?: any, $event?: any) {
         // 取数
         let datas: any[] = [];
@@ -346,7 +374,6 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this;
         if (_this.getDatas && _this.getDatas instanceof Function) {
@@ -1559,6 +1586,10 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
      */
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
+        $event.stopPropagation();
+        if(Object.is('StopContract', tag)) {
+            this.grid_cz_click(row, tag, $event);
+        }
         if(Object.is('StopContract', tag)) {
             this.grid_uagridcolumn1_u5ce1db9_click(row, tag, $event);
         }
@@ -1685,6 +1716,17 @@ export default class StopRemindGridBase extends Vue implements ControlInterface 
             return Object.is(item.pimcontract,args.row.pimcontract);
         });
         return isSelected ? "grid-selected-row" : "";
+    }
+
+    /**
+     * 新建默认值
+     * @param {*}  row 行数据
+     * @memberof StopRemindGrid
+     */
+    public createDefault(row: any){                    
+        if (row.hasOwnProperty('pimpersonid')) {
+            row['pimpersonid'] = this.viewparams['srfparentkey'];
+        }
     }
 }
 </script>

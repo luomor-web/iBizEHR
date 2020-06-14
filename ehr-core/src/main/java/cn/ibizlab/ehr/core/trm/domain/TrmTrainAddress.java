@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[培训场地]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_TRMTRAINADDRESS",resultMap = "TrmTrainAddressResultMap")
 public class TrmTrainAddress extends EntityMP implements Serializable {
 
@@ -233,6 +234,7 @@ public class TrmTrainAddress extends EntityMP implements Serializable {
         this.js = js ;
         this.modify("js",js);
     }
+
     /**
      * 设置 [培训类型]
      */
@@ -240,6 +242,7 @@ public class TrmTrainAddress extends EntityMP implements Serializable {
         this.pxlx = pxlx ;
         this.modify("pxlx",pxlx);
     }
+
     /**
      * 设置 [共享范围]
      */
@@ -247,6 +250,7 @@ public class TrmTrainAddress extends EntityMP implements Serializable {
         this.gxfw = gxfw ;
         this.modify("gxfw",gxfw);
     }
+
     /**
      * 设置 [Email]
      */
@@ -254,6 +258,7 @@ public class TrmTrainAddress extends EntityMP implements Serializable {
         this.email = email ;
         this.modify("email",email);
     }
+
     /**
      * 设置 [地址]
      */
@@ -261,6 +266,7 @@ public class TrmTrainAddress extends EntityMP implements Serializable {
         this.dz = dz ;
         this.modify("dz",dz);
     }
+
     /**
      * 设置 [是否启用]
      */
@@ -268,6 +274,7 @@ public class TrmTrainAddress extends EntityMP implements Serializable {
         this.sfqy = sfqy ;
         this.modify("sfqy",sfqy);
     }
+
     /**
      * 设置 [环境状况]
      */
@@ -275,6 +282,7 @@ public class TrmTrainAddress extends EntityMP implements Serializable {
         this.hjzk = hjzk ;
         this.modify("hjzk",hjzk);
     }
+
     /**
      * 设置 [省份]
      */
@@ -282,6 +290,7 @@ public class TrmTrainAddress extends EntityMP implements Serializable {
         this.sf = sf ;
         this.modify("sf",sf);
     }
+
     /**
      * 设置 [联系人]
      */
@@ -289,6 +298,7 @@ public class TrmTrainAddress extends EntityMP implements Serializable {
         this.lxr = lxr ;
         this.modify("lxr",lxr);
     }
+
     /**
      * 设置 [是否开票]
      */
@@ -296,6 +306,7 @@ public class TrmTrainAddress extends EntityMP implements Serializable {
         this.sfkp = sfkp ;
         this.modify("sfkp",sfkp);
     }
+
     /**
      * 设置 [性质]
      */
@@ -303,6 +314,7 @@ public class TrmTrainAddress extends EntityMP implements Serializable {
         this.xz = xz ;
         this.modify("xz",xz);
     }
+
     /**
      * 设置 [星级]
      */
@@ -310,6 +322,7 @@ public class TrmTrainAddress extends EntityMP implements Serializable {
         this.xj = xj ;
         this.modify("xj",xj);
     }
+
     /**
      * 设置 [场地名称]
      */
@@ -317,6 +330,7 @@ public class TrmTrainAddress extends EntityMP implements Serializable {
         this.trmtrainaddressname = trmtrainaddressname ;
         this.modify("trmtrainaddressname",trmtrainaddressname);
     }
+
     /**
      * 设置 [联系电话]
      */
@@ -324,6 +338,7 @@ public class TrmTrainAddress extends EntityMP implements Serializable {
         this.lxdh = lxdh ;
         this.modify("lxdh",lxdh);
     }
+
     /**
      * 设置 [市]
      */
@@ -331,6 +346,7 @@ public class TrmTrainAddress extends EntityMP implements Serializable {
         this.s = s ;
         this.modify("s",s);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -338,6 +354,7 @@ public class TrmTrainAddress extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

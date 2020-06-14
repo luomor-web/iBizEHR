@@ -1,5 +1,5 @@
 <template>
-    <codelist v-if="tag" :tag="tag" :value="value" :codelistType="codelistType" :renderMode="renderMode" :valueSeparator="valueSeparator" :textSeparator="textSeparator" :data="data" :itemParam="itemParam" :context="context" :viewparams="viewparams"></codelist>
+    <codelist v-if="tag" :tag="tag" :value="value" :codelistType="codelistType" :renderMode="renderMode" :valueSeparator="valueSeparator" :textSeparator="textSeparator" :data="data" :localContext="localContext" :localParam="localParam" :context="context" :viewparams="viewparams"></codelist>
     <app-upload-file-info v-else-if="Object.is(this.editorType,'PICTURE') || Object.is(this.editorType,'PICTURE_ONE') || Object.is(this.editorType,'FILEUPLOADER')" :value="value" :name="name"></app-upload-file-info>
     <span class="app-span" v-else >{{text}}</span>
 </template>
@@ -72,12 +72,20 @@ export default class AppSpan extends Vue {
     @Prop() public data?: any;
 
     /**
-     * 传入额外参数
-     *
-     * @type {*}
+     * 局部上下文导航参数
+     * 
+     * @type {any}
      * @memberof AppSpan
      */
-    @Prop() public itemParam?: any;
+    @Prop() public localContext!:any;
+
+    /**
+     * 局部导航参数
+     * 
+     * @type {any}
+     * @memberof AppSpan
+     */
+    @Prop() public localParam!:any;
 
     /**
      * 视图上下文
@@ -137,9 +145,8 @@ export default class AppSpan extends Vue {
      * @memberof AppSpan
      */
     public load(){
-        if(!this.value || this.tag){
+        if(this.tag){
             return;  //代码表走codelist组件
-
         }else if(this.editorType === "ADDRESSPICKUP"){
             JSON.parse(this.value).forEach((item:any,index:number) => {
               this.text += index === 0 ? item.srfmajortext : ","+item.srfmajortext;

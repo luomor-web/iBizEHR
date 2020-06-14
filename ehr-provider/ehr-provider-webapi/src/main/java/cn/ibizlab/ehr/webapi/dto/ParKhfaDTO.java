@@ -98,6 +98,14 @@ public class ParKhfaDTO extends DTOBase implements Serializable {
     @JsonProperty("createman")
     private String createman;
 
+    /**
+     * 属性 [AVAILABLEFLAG]
+     *
+     */
+    @JSONField(name = "availableflag")
+    @JsonProperty("availableflag")
+    private String availableflag;
+
 
     /**
      * 设置 [SZSJ]
@@ -129,6 +137,14 @@ public class ParKhfaDTO extends DTOBase implements Serializable {
     public void setKhdx(String  khdx){
         this.khdx = khdx ;
         this.modify("khdx",khdx);
+    }
+
+    /**
+     * 设置 [AVAILABLEFLAG]
+     */
+    public void setAvailableflag(String  availableflag){
+        this.availableflag = availableflag ;
+        this.modify("availableflag",availableflag);
     }
 
 

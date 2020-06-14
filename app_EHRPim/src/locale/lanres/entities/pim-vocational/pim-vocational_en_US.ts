@@ -61,11 +61,11 @@ export default {
 	views: {
 		redirectview: {
 			caption: "证书信息",
-      title: '证书信息',
+      title: '执（职）业资格信息数据重定向视图',
 		},
 		pickupview: {
 			caption: "证书信息",
-      title: '证书信息',
+      title: '执（职）业资格信息数据选择视图',
 		},
 		zyzggridview: {
 			caption: "职业资格",
@@ -73,47 +73,47 @@ export default {
 		},
 		wsseditview: {
 			caption: "证书信息",
-      title: '证书信息',
+      title: '证书信息编辑视图',
 		},
 		pickupgridview: {
 			caption: "证书信息",
-      title: '证书信息',
+      title: '执（职）业资格信息选择表格视图',
 		},
 		editview: {
 			caption: "证书信息",
-      title: '证书信息',
+      title: '证书信息编辑视图',
 		},
 		editview2: {
 			caption: "证书信息",
-      title: '证书信息',
+      title: '执（职）业资格信息编辑视图',
 		},
 		gridview: {
 			caption: "证书信息",
-      title: '证书信息',
+      title: '证书信息表格视图',
 		},
 		onlyreadeditview: {
 			caption: "证书信息",
-      title: '证书信息',
+      title: '证书信息编辑视图',
 		},
 		pimziggridview: {
 			caption: "证书信息",
-      title: '证书信息',
+      title: '证书信息表格视图',
 		},
 		grpimziggridview: {
 			caption: "证书信息",
-      title: '证书信息',
+      title: '证书信息表格视图',
 		},
 		mpickupview: {
 			caption: "证书信息",
-      title: '证书信息',
+      title: '执（职）业资格信息数据多项选择视图',
 		},
 		greditview: {
 			caption: "证书信息",
-      title: '证书信息',
+      title: '证书信息编辑视图',
 		},
 		selgridview: {
 			caption: "证书信息",
-      title: '证书信息',
+      title: '证书信息表格视图',
 		},
 	},
 	main_3_form: {

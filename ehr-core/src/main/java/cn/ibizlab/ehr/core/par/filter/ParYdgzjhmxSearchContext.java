@@ -31,35 +31,35 @@ public class ParYdgzjhmxSearchContext extends QueryWrapperContext<ParYdgzjhmx> {
 	public void setN_zblx_eq(String n_zblx_eq) {
         this.n_zblx_eq = n_zblx_eq;
         if(!ObjectUtils.isEmpty(this.n_zblx_eq)){
-            this.getSelectCond().eq("zblx", n_zblx_eq);
+            this.getSearchCond().eq("zblx", n_zblx_eq);
         }
     }
 	private String n_parydgzjhmxname_like;//[工作计划]
 	public void setN_parydgzjhmxname_like(String n_parydgzjhmxname_like) {
         this.n_parydgzjhmxname_like = n_parydgzjhmxname_like;
         if(!ObjectUtils.isEmpty(this.n_parydgzjhmxname_like)){
-            this.getSelectCond().like("parydgzjhmxname", n_parydgzjhmxname_like);
+            this.getSearchCond().like("parydgzjhmxname", n_parydgzjhmxname_like);
         }
     }
 	private String n_parydgzjhname_eq;//[月度工作计划]
 	public void setN_parydgzjhname_eq(String n_parydgzjhname_eq) {
         this.n_parydgzjhname_eq = n_parydgzjhname_eq;
         if(!ObjectUtils.isEmpty(this.n_parydgzjhname_eq)){
-            this.getSelectCond().eq("parydgzjhname", n_parydgzjhname_eq);
+            this.getSearchCond().eq("parydgzjhname", n_parydgzjhname_eq);
         }
     }
 	private String n_parydgzjhname_like;//[月度工作计划]
 	public void setN_parydgzjhname_like(String n_parydgzjhname_like) {
         this.n_parydgzjhname_like = n_parydgzjhname_like;
         if(!ObjectUtils.isEmpty(this.n_parydgzjhname_like)){
-            this.getSelectCond().like("parydgzjhname", n_parydgzjhname_like);
+            this.getSearchCond().like("parydgzjhname", n_parydgzjhname_like);
         }
     }
 	private String n_parydgzjhid_eq;//[月度工作计划ID]
 	public void setN_parydgzjhid_eq(String n_parydgzjhid_eq) {
         this.n_parydgzjhid_eq = n_parydgzjhid_eq;
         if(!ObjectUtils.isEmpty(this.n_parydgzjhid_eq)){
-            this.getSelectCond().eq("parydgzjhid", n_parydgzjhid_eq);
+            this.getSearchCond().eq("parydgzjhid", n_parydgzjhid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class ParYdgzjhmxSearchContext extends QueryWrapperContext<ParYdgzjhmx> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("parydgzjhmxname", query)   
             );
 		 }

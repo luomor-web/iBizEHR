@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[调动申请单]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMDDSQD",resultMap = "PcmDdsqdResultMap")
 public class PcmDdsqd extends EntityMP implements Serializable {
 
@@ -149,6 +150,17 @@ public class PcmDdsqd extends EntityMP implements Serializable {
         this.sqsj = sqsj ;
         this.modify("sqsj",sqsj);
     }
+
+    /**
+     * 格式化日期 [申请时间]
+     */
+    public String formatSqsj(){
+        if (this.sqsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(sqsj);
+    }
     /**
      * 设置 [备注说明]
      */
@@ -156,6 +168,7 @@ public class PcmDdsqd extends EntityMP implements Serializable {
         this.bzsm = bzsm ;
         this.modify("bzsm",bzsm);
     }
+
     /**
      * 设置 [标题]
      */
@@ -163,6 +176,7 @@ public class PcmDdsqd extends EntityMP implements Serializable {
         this.pcmddsqdname = pcmddsqdname ;
         this.modify("pcmddsqdname",pcmddsqdname);
     }
+
     /**
      * 设置 [类型]
      */
@@ -170,6 +184,7 @@ public class PcmDdsqd extends EntityMP implements Serializable {
         this.lx = lx ;
         this.modify("lx",lx);
     }
+
     /**
      * 设置 [人员ID]
      */
@@ -177,6 +192,7 @@ public class PcmDdsqd extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

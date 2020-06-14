@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[附件信息]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMENCLOSURE",resultMap = "PimEnclosureResultMap")
 public class PimEnclosure extends EntityMP implements Serializable {
 
@@ -191,6 +192,7 @@ public class PimEnclosure extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [附件信息名称]
      */
@@ -198,6 +200,7 @@ public class PimEnclosure extends EntityMP implements Serializable {
         this.pimenclosurename = pimenclosurename ;
         this.modify("pimenclosurename",pimenclosurename);
     }
+
     /**
      * 设置 [附件分类]
      */
@@ -205,6 +208,7 @@ public class PimEnclosure extends EntityMP implements Serializable {
         this.fjfl = fjfl ;
         this.modify("fjfl",fjfl);
     }
+
     /**
      * 设置 [附件路径]
      */
@@ -212,6 +216,7 @@ public class PimEnclosure extends EntityMP implements Serializable {
         this.fjlj = fjlj ;
         this.modify("fjlj",fjlj);
     }
+
     /**
      * 设置 [USERSTATE]
      */
@@ -219,6 +224,7 @@ public class PimEnclosure extends EntityMP implements Serializable {
         this.userstate = userstate ;
         this.modify("userstate",userstate);
     }
+
     /**
      * 设置 [附件快照]
      */
@@ -226,6 +232,7 @@ public class PimEnclosure extends EntityMP implements Serializable {
         this.fjkz = fjkz ;
         this.modify("fjkz",fjkz);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -233,6 +240,7 @@ public class PimEnclosure extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

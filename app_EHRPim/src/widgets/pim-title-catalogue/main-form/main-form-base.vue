@@ -20,12 +20,14 @@
 </i-col>
 <i-col v-show="detailsModel.pimtitlecataloguename2.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimtitlecataloguename2' :itemRules="this.rules.pimtitlecataloguename2" class='' :caption="$t('entities.pimtitlecatalogue.main_form.details.pimtitlecataloguename2')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimtitlecataloguename2.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.pimtitlecataloguename2.disabled"
   name='pimtitlecataloguename2'
   deMajorField='pimtitlecataloguename'
@@ -45,12 +47,14 @@
 </i-col>
 <i-col v-show="detailsModel.zclc.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zclc' :itemRules="this.rules.zclc" class='' :caption="$t('entities.pimtitlecatalogue.main_form.details.zclc')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zclc.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.zclc" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.zclc.disabled"  
     tag='EhrCodeList0047' 
     codelistType='DYNAMIC'

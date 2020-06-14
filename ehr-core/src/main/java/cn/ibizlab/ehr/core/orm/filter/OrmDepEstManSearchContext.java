@@ -31,49 +31,49 @@ public class OrmDepEstManSearchContext extends QueryWrapperContext<OrmDepEstMan>
 	public void setN_ormdepestmanname_like(String n_ormdepestmanname_like) {
         this.n_ormdepestmanname_like = n_ormdepestmanname_like;
         if(!ObjectUtils.isEmpty(this.n_ormdepestmanname_like)){
-            this.getSelectCond().like("ormdepestmanname", n_ormdepestmanname_like);
+            this.getSearchCond().like("ormdepestmanname", n_ormdepestmanname_like);
         }
     }
 	private String n_ormdutyname_eq;//[职务]
 	public void setN_ormdutyname_eq(String n_ormdutyname_eq) {
         this.n_ormdutyname_eq = n_ormdutyname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormdutyname_eq)){
-            this.getSelectCond().eq("ormdutyname", n_ormdutyname_eq);
+            this.getSearchCond().eq("ormdutyname", n_ormdutyname_eq);
         }
     }
 	private String n_ormdutyname_like;//[职务]
 	public void setN_ormdutyname_like(String n_ormdutyname_like) {
         this.n_ormdutyname_like = n_ormdutyname_like;
         if(!ObjectUtils.isEmpty(this.n_ormdutyname_like)){
-            this.getSelectCond().like("ormdutyname", n_ormdutyname_like);
+            this.getSearchCond().like("ormdutyname", n_ormdutyname_like);
         }
     }
 	private String n_ormzwbzmc_eq;//[职务编制]
 	public void setN_ormzwbzmc_eq(String n_ormzwbzmc_eq) {
         this.n_ormzwbzmc_eq = n_ormzwbzmc_eq;
         if(!ObjectUtils.isEmpty(this.n_ormzwbzmc_eq)){
-            this.getSelectCond().eq("ormzwbzmc", n_ormzwbzmc_eq);
+            this.getSearchCond().eq("ormzwbzmc", n_ormzwbzmc_eq);
         }
     }
 	private String n_ormzwbzmc_like;//[职务编制]
 	public void setN_ormzwbzmc_like(String n_ormzwbzmc_like) {
         this.n_ormzwbzmc_like = n_ormzwbzmc_like;
         if(!ObjectUtils.isEmpty(this.n_ormzwbzmc_like)){
-            this.getSelectCond().like("ormzwbzmc", n_ormzwbzmc_like);
+            this.getSearchCond().like("ormzwbzmc", n_ormzwbzmc_like);
         }
     }
 	private String n_ormzwbzid_eq;//[职务编制ID]
 	public void setN_ormzwbzid_eq(String n_ormzwbzid_eq) {
         this.n_ormzwbzid_eq = n_ormzwbzid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormzwbzid_eq)){
-            this.getSelectCond().eq("ormzwbzid", n_ormzwbzid_eq);
+            this.getSearchCond().eq("ormzwbzid", n_ormzwbzid_eq);
         }
     }
 	private String n_ormdutyid_eq;//[职务ID]
 	public void setN_ormdutyid_eq(String n_ormdutyid_eq) {
         this.n_ormdutyid_eq = n_ormdutyid_eq;
         if(!ObjectUtils.isEmpty(this.n_ormdutyid_eq)){
-            this.getSelectCond().eq("ormdutyid", n_ormdutyid_eq);
+            this.getSearchCond().eq("ormdutyid", n_ormdutyid_eq);
         }
     }
 
@@ -84,7 +84,7 @@ public class OrmDepEstManSearchContext extends QueryWrapperContext<OrmDepEstMan>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("ormdepestmanname", query)   
                         .or().like("ormdutyname", query)            
             );

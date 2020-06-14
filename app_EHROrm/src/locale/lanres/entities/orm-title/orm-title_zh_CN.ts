@@ -15,7 +15,7 @@ export default {
 		},
 		redirectview: {
 			caption: '头衔管理',
-      title: '头衔管理',
+      title: '头衔管理数据重定向视图',
 		},
 		mpickupview: {
 			caption: '标准头衔库',
@@ -35,7 +35,7 @@ export default {
 		},
 		editview2: {
 			caption: '头衔管理',
-      title: '头衔管理',
+      title: '头衔管理编辑视图',
 		},
 	},
 	main_form: {

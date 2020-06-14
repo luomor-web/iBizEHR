@@ -27,43 +27,43 @@ export default {
 	views: {
 		grarmygridview: {
 			caption: '军转干部',
-      title: '军转干部',
+      title: '军转干部表格视图',
 		},
 		gridview: {
 			caption: '军转干部',
-      title: '军转干部',
+      title: '军转干部表格视图',
 		},
 		pickupgridview: {
 			caption: '军转干部',
-      title: '军转干部',
+      title: '军转干部选择表格视图',
 		},
 		editview: {
 			caption: '军转干部',
-      title: '军转干部',
+      title: '军转干部编辑视图',
 		},
 		pickupview: {
 			caption: '军转干部',
-      title: '军转干部',
+      title: '军转干部数据选择视图',
 		},
 		redirectview: {
 			caption: '军转干部',
-      title: '军转干部',
+      title: '军转干部数据重定向视图',
 		},
 		editview2: {
 			caption: '军转干部',
-      title: '军转干部',
+      title: '军转干部编辑视图',
 		},
 		mpickupview: {
 			caption: '军转干部',
-      title: '军转干部',
+      title: '军转干部数据多项选择视图',
 		},
 		armygridview: {
 			caption: '军转干部',
-      title: '军转干部',
+      title: '军转干部表格视图',
 		},
 		greditview: {
 			caption: '军转干部',
-      title: '军转干部',
+      title: '军转干部编辑视图',
 		},
 	},
 	admin_greditform_form: {

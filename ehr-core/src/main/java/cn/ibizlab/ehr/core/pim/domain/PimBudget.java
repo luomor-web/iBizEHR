@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[年度预算]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_BUDGET",resultMap = "PimBudgetResultMap")
 public class PimBudget extends EntityMP implements Serializable {
 
@@ -142,6 +143,7 @@ public class PimBudget extends EntityMP implements Serializable {
         this.budget = budget ;
         this.modify("budget",budget);
     }
+
     /**
      * 设置 [年度]
      */
@@ -149,6 +151,7 @@ public class PimBudget extends EntityMP implements Serializable {
         this.year = year ;
         this.modify("year",year);
     }
+
     /**
      * 设置 [年度预算名称]
      */
@@ -156,6 +159,7 @@ public class PimBudget extends EntityMP implements Serializable {
         this.budgetname = budgetname ;
         this.modify("budgetname",budgetname);
     }
+
     /**
      * 设置 [组织名称]
      */
@@ -163,6 +167,7 @@ public class PimBudget extends EntityMP implements Serializable {
         this.ormorgname = ormorgname ;
         this.modify("ormorgname",ormorgname);
     }
+
     /**
      * 设置 [组织ID]
      */
@@ -170,6 +175,7 @@ public class PimBudget extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

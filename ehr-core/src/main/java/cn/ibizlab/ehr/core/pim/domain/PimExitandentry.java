@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[出入境管理]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMEXITANDENTRY",resultMap = "PimExitandentryResultMap")
 public class PimExitandentry extends EntityMP implements Serializable {
 
@@ -256,6 +257,7 @@ public class PimExitandentry extends EntityMP implements Serializable {
         this.lx = lx ;
         this.modify("lx",lx);
     }
+
     /**
      * 设置 [备注]
      */
@@ -263,12 +265,24 @@ public class PimExitandentry extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [出（国）境时间]
      */
     public void setCjsj(Timestamp cjsj){
         this.cjsj = cjsj ;
         this.modify("cjsj",cjsj);
+    }
+
+    /**
+     * 格式化日期 [出（国）境时间]
+     */
+    public String formatCjsj(){
+        if (this.cjsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(cjsj);
     }
     /**
      * 设置 [记录所属]
@@ -277,6 +291,7 @@ public class PimExitandentry extends EntityMP implements Serializable {
         this.jlss = jlss ;
         this.modify("jlss",jlss);
     }
+
     /**
      * 设置 [流程状态]
      */
@@ -284,6 +299,7 @@ public class PimExitandentry extends EntityMP implements Serializable {
         this.workflowstate = workflowstate ;
         this.modify("workflowstate",workflowstate);
     }
+
     /**
      * 设置 [出入境管理名称]
      */
@@ -291,6 +307,7 @@ public class PimExitandentry extends EntityMP implements Serializable {
         this.pimexitandentryname = pimexitandentryname ;
         this.modify("pimexitandentryname",pimexitandentryname);
     }
+
     /**
      * 设置 [事由]
      */
@@ -298,12 +315,24 @@ public class PimExitandentry extends EntityMP implements Serializable {
         this.sy = sy ;
         this.modify("sy",sy);
     }
+
     /**
      * 设置 [入（国）境时间]
      */
     public void setRjsj(Timestamp rjsj){
         this.rjsj = rjsj ;
         this.modify("rjsj",rjsj);
+    }
+
+    /**
+     * 格式化日期 [入（国）境时间]
+     */
+    public String formatRjsj(){
+        if (this.rjsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(rjsj);
     }
     /**
      * 设置 [目的国家/地区]
@@ -312,6 +341,7 @@ public class PimExitandentry extends EntityMP implements Serializable {
         this.qwfhgj = qwfhgj ;
         this.modify("qwfhgj",qwfhgj);
     }
+
     /**
      * 设置 [回填结果]
      */
@@ -319,6 +349,7 @@ public class PimExitandentry extends EntityMP implements Serializable {
         this.wfresult = wfresult ;
         this.modify("wfresult",wfresult);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -326,6 +357,7 @@ public class PimExitandentry extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

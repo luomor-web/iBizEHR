@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[请假明细]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_VACLEAVEDETAIL",resultMap = "VacLeaveDetailResultMap")
 public class VacLeaveDetail extends EntityMP implements Serializable {
 
@@ -306,6 +307,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.hyzk = hyzk ;
         this.modify("hyzk",hyzk);
     }
+
     /**
      * 设置 [请销假明细名称]
      */
@@ -313,6 +315,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.vacleavedetailname = vacleavedetailname ;
         this.modify("vacleavedetailname",vacleavedetailname);
     }
+
     /**
      * 设置 [请假种类]
      */
@@ -320,6 +323,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.qjzl = qjzl ;
         this.modify("qjzl",qjzl);
     }
+
     /**
      * 设置 [计划结束上下午]
      */
@@ -327,6 +331,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.jhjssxw = jhjssxw ;
         this.modify("jhjssxw",jhjssxw);
     }
+
     /**
      * 设置 [计划开始上下午]
      */
@@ -334,6 +339,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.jhkssxw = jhkssxw ;
         this.modify("jhkssxw",jhkssxw);
     }
+
     /**
      * 设置 [假期使用情况]
      */
@@ -341,12 +347,24 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.njsy = njsy ;
         this.modify("njsy",njsy);
     }
+
     /**
      * 设置 [实际结束时间]
      */
     public void setSjjssj(Timestamp sjjssj){
         this.sjjssj = sjjssj ;
         this.modify("sjjssj",sjjssj);
+    }
+
+    /**
+     * 格式化日期 [实际结束时间]
+     */
+    public String formatSjjssj(){
+        if (this.sjjssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(sjjssj);
     }
     /**
      * 设置 [实际天数]
@@ -355,6 +373,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.sjts = sjts ;
         this.modify("sjts",sjts);
     }
+
     /**
      * 设置 [探亲类型]
      */
@@ -362,12 +381,24 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.tqlx = tqlx ;
         this.modify("tqlx",tqlx);
     }
+
     /**
      * 设置 [实际开始时间]
      */
     public void setSjkssj(Timestamp sjkssj){
         this.sjkssj = sjkssj ;
         this.modify("sjkssj",sjkssj);
+    }
+
+    /**
+     * 格式化日期 [实际开始时间]
+     */
+    public String formatSjkssj(){
+        if (this.sjkssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(sjkssj);
     }
     /**
      * 设置 [附件]
@@ -376,6 +407,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.fj = fj ;
         this.modify("fj",fj);
     }
+
     /**
      * 设置 [实际结束上下午]
      */
@@ -383,12 +415,24 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.sjjssxw = sjjssxw ;
         this.modify("sjjssxw",sjjssxw);
     }
+
     /**
      * 设置 [计划开始时间]
      */
     public void setJhkssj(Timestamp jhkssj){
         this.jhkssj = jhkssj ;
         this.modify("jhkssj",jhkssj);
+    }
+
+    /**
+     * 格式化日期 [计划开始时间]
+     */
+    public String formatJhkssj(){
+        if (this.jhkssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(jhkssj);
     }
     /**
      * 设置 [实际开始上下午]
@@ -397,6 +441,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.sjkssxw = sjkssxw ;
         this.modify("sjkssxw",sjkssxw);
     }
+
     /**
      * 设置 [计划天数]
      */
@@ -404,6 +449,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.jhts = jhts ;
         this.modify("jhts",jhts);
     }
+
     /**
      * 设置 [备注]
      */
@@ -411,6 +457,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [温馨提示]
      */
@@ -418,12 +465,24 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.tips = tips ;
         this.modify("tips",tips);
     }
+
     /**
      * 设置 [计划结束时间]
      */
     public void setJhjssj(Timestamp jhjssj){
         this.jhjssj = jhjssj ;
         this.modify("jhjssj",jhjssj);
+    }
+
+    /**
+     * 格式化日期 [计划结束时间]
+     */
+    public String formatJhjssj(){
+        if (this.jhjssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(jhjssj);
     }
     /**
      * 设置 [人员信息标识]
@@ -432,6 +491,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [状态]
      */
@@ -439,6 +499,7 @@ public class VacLeaveDetail extends EntityMP implements Serializable {
         this.state = state ;
         this.modify("state",state);
     }
+
 
 }
 

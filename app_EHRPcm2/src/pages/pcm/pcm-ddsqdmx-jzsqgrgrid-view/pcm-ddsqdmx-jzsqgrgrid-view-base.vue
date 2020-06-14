@@ -383,7 +383,6 @@ export default class PcmDdsqdmxJZSQGRGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -412,7 +411,6 @@ export default class PcmDdsqdmxJZSQGRGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -441,7 +439,6 @@ export default class PcmDdsqdmxJZSQGRGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -470,7 +467,6 @@ export default class PcmDdsqdmxJZSQGRGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -499,7 +495,6 @@ export default class PcmDdsqdmxJZSQGRGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -528,7 +523,6 @@ export default class PcmDdsqdmxJZSQGRGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -552,6 +546,8 @@ export default class PcmDdsqdmxJZSQGRGridViewBase extends GridViewBase {
      * @memberof PcmDdsqdmxJZSQGRGridView
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
+        let localContext:any = null;
+        let localViewParam:any =null;
         const batchAddPSAppViews=[
             {view:{viewname:'pim-distirbution-kddmpickup-view',height: 0,width: 0,title: '可调动的分配'},
             res:['PimDistirbution'],
@@ -607,13 +603,15 @@ export default class PcmDdsqdmxJZSQGRGridViewBase extends GridViewBase {
      * @memberof PcmDdsqdmxJZSQGRGridView
      */
     public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
+        let localContext:any = null;
+        let localViewParam:any =null;
         const data: any = {};
-        let curViewParam = JSON.parse(JSON.stringify(this.context));
+        let tempContext = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
-            Object.assign(curViewParam,args[0]);
+            Object.assign(tempContext,args[0]);
         }
         let deResParameters: any[] = [];
-        if(curViewParam.pcmddsqd && true){
+        if(tempContext.pcmddsqd && true){
             deResParameters = [
             { pathName: 'pcmddsqds', parameterName: 'pcmddsqd' },
             ]
@@ -624,7 +622,7 @@ export default class PcmDdsqdmxJZSQGRGridViewBase extends GridViewBase {
         ];
         const _this: any = this;
         const openIndexViewTab = (data: any) => {
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, curViewParam, deResParameters, parameters, args, data);
+            const routePath = this.$viewTool.buildUpRoutePath(this.$route, tempContext, deResParameters, parameters, args, data);
             this.$router.push(routePath);
         }
         openIndexViewTab(data);

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[项目人力成本]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_ORMXMRLCB",resultMap = "OrmXmrlcbResultMap")
 public class OrmXmrlcb extends EntityMP implements Serializable {
 
@@ -182,6 +183,7 @@ public class OrmXmrlcb extends EntityMP implements Serializable {
         this.zzmc = zzmc ;
         this.modify("zzmc",zzmc);
     }
+
     /**
      * 设置 [项目]
      */
@@ -189,6 +191,7 @@ public class OrmXmrlcb extends EntityMP implements Serializable {
         this.xm = xm ;
         this.modify("xm",xm);
     }
+
     /**
      * 设置 [项目人力成本名称]
      */
@@ -196,6 +199,7 @@ public class OrmXmrlcb extends EntityMP implements Serializable {
         this.ormxmrlcbname = ormxmrlcbname ;
         this.modify("ormxmrlcbname",ormxmrlcbname);
     }
+
     /**
      * 设置 [项目计划支出成本（万）]
      */
@@ -203,6 +207,7 @@ public class OrmXmrlcb extends EntityMP implements Serializable {
         this.xmjhzccb = xmjhzccb ;
         this.modify("xmjhzccb",xmjhzccb);
     }
+
     /**
      * 设置 [相差额度（万）]
      */
@@ -210,6 +215,7 @@ public class OrmXmrlcb extends EntityMP implements Serializable {
         this.xced = xced ;
         this.modify("xced",xced);
     }
+
     /**
      * 设置 [项目实际人月]
      */
@@ -217,6 +223,7 @@ public class OrmXmrlcb extends EntityMP implements Serializable {
         this.xmsjry = xmsjry ;
         this.modify("xmsjry",xmsjry);
     }
+
     /**
      * 设置 [项目实际支出成本（万）]
      */
@@ -224,6 +231,7 @@ public class OrmXmrlcb extends EntityMP implements Serializable {
         this.xmsjzccb = xmsjzccb ;
         this.modify("xmsjzccb",xmsjzccb);
     }
+
     /**
      * 设置 [相差人月]
      */
@@ -231,6 +239,7 @@ public class OrmXmrlcb extends EntityMP implements Serializable {
         this.xcry = xcry ;
         this.modify("xcry",xcry);
     }
+
     /**
      * 设置 [项目计划人月]
      */
@@ -238,6 +247,7 @@ public class OrmXmrlcb extends EntityMP implements Serializable {
         this.xmjhry = xmjhry ;
         this.modify("xmjhry",xmjhry);
     }
+
     /**
      * 设置 [项目部]
      */
@@ -245,6 +255,7 @@ public class OrmXmrlcb extends EntityMP implements Serializable {
         this.xmb = xmb ;
         this.modify("xmb",xmb);
     }
+
 
 }
 

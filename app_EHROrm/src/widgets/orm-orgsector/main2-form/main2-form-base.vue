@@ -8,133 +8,85 @@
     <row>
         <i-col v-show="detailsModel.ordervalue.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ordervalue' :itemRules="this.rules.ordervalue" class='' :caption="$t('entities.ormorgsector.main2_form.details.ordervalue')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ordervalue.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='ordervalue'
-:value="data.ordervalue"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='ordervalue' :value="data.ordervalue" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.orgsectorname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='orgsectorname' :itemRules="this.rules.orgsectorname" class='' :caption="$t('entities.ormorgsector.main2_form.details.orgsectorname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.orgsectorname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='orgsectorname'
-:value="data.orgsectorname"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='orgsectorname' :value="data.orgsectorname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.orgcode.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='orgcode' :itemRules="this.rules.orgcode" class='' :caption="$t('entities.ormorgsector.main2_form.details.orgcode')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.orgcode.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='orgcode'
-:value="data.orgcode"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='orgcode' :value="data.orgcode" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.shortname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='shortname' :itemRules="this.rules.shortname" class='' :caption="$t('entities.ormorgsector.main2_form.details.shortname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.shortname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='shortname'
-:value="data.shortname"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='shortname' :value="data.shortname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.bmlx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='bmlx' :itemRules="this.rules.bmlx" class='' :caption="$t('entities.ormorgsector.main2_form.details.bmlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bmlx.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='bmlx'
-:value="data.bmlx" tag='EhrCodeList0019' codelistType='STATIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='bmlx' :value="data.bmlx" tag='EhrCodeList0019' codelistType='STATIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.orgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='orgname' :itemRules="this.rules.orgname" class='' :caption="$t('entities.ormorgsector.main2_form.details.orgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.orgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='orgname'
-:value="data.orgname"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='orgname' :value="data.orgname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.belongregion.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='belongregion' :itemRules="this.rules.belongregion" class='' :caption="$t('entities.ormorgsector.main2_form.details.belongregion')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.belongregion.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='belongregion'
-:value="data.belongregion" tag='EhrCodeList0250' codelistType='DYNAMIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='belongregion' :value="data.belongregion" tag='EhrCodeList0250' codelistType='DYNAMIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.qy.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='qy' :itemRules="this.rules.qy" class='' :caption="$t('entities.ormorgsector.main2_form.details.qy')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.qy.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='qy'
-:value="data.qy" tag='EhrCodeList0219' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='qy' :value="data.qy" tag='EhrCodeList0219' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.gkjz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='gkjz' :itemRules="this.rules.gkjz" class='' :caption="$t('entities.ormorgsector.main2_form.details.gkjz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.gkjz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='gkjz'
-:value="data.gkjz" tag='EhrCodeList0156' codelistType='STATIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='gkjz' :value="data.gkjz" tag='EhrCodeList0156' codelistType='STATIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.bmbzrs.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='bmbzrs' :itemRules="this.rules.bmbzrs" class='' :caption="$t('entities.ormorgsector.main2_form.details.bmbzrs')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bmbzrs.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='bmbzrs'
-:value="data.bmbzrs"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='bmbzrs' :value="data.bmbzrs" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.startstopsign.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='startstopsign' :itemRules="this.rules.startstopsign" class='' :caption="$t('entities.ormorgsector.main2_form.details.startstopsign')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.startstopsign.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='startstopsign'
-:value="data.startstopsign" tag='EhrCodeList0086' codelistType='STATIC'   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='startstopsign' :value="data.startstopsign" tag='EhrCodeList0086' codelistType='STATIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.belongou.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='belongou' :itemRules="this.rules.belongou" class='' :caption="$t('entities.ormorgsector.main2_form.details.belongou')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.belongou.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-span   name='belongou'
-:value="data.belongou"   :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :itemParam="{}" 
-style=""></app-span>
+    
+<app-span name='belongou' :value="data.belongou" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -158,6 +110,8 @@ style=""></app-span>
     ]"
     :context="context"
     :viewparams="viewparams"
+    :localContext ='{}'
+    :localParam ='{}'
     parameterName='ormorgsector'
     parentName="OrmOrgsector"  
     refviewtype='DEGRIDVIEW' 

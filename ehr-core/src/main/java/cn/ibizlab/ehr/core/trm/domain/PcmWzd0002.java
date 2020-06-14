@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[干部退出（优秀年轻干部梯队）]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_WZD0002",resultMap = "PcmWzd0002ResultMap")
 public class PcmWzd0002 extends EntityMP implements Serializable {
 
@@ -133,6 +134,7 @@ public class PcmWzd0002 extends EntityMP implements Serializable {
         this.tcyy = tcyy ;
         this.modify("tcyy",tcyy);
     }
+
     /**
      * 设置 [具体原因]
      */
@@ -140,6 +142,7 @@ public class PcmWzd0002 extends EntityMP implements Serializable {
         this.jtyy = jtyy ;
         this.modify("jtyy",jtyy);
     }
+
     /**
      * 设置 [状态]
      */
@@ -147,6 +150,7 @@ public class PcmWzd0002 extends EntityMP implements Serializable {
         this.status = status ;
         this.modify("status",status);
     }
+
     /**
      * 设置 [人员列表]
      */
@@ -154,6 +158,7 @@ public class PcmWzd0002 extends EntityMP implements Serializable {
         this.profilelist = profilelist ;
         this.modify("profilelist",profilelist);
     }
+
     /**
      * 设置 [人数]
      */
@@ -161,6 +166,7 @@ public class PcmWzd0002 extends EntityMP implements Serializable {
         this.peoplenum = peoplenum ;
         this.modify("peoplenum",peoplenum);
     }
+
     /**
      * 设置 [干部退出（优秀年轻干部梯队）名称]
      */
@@ -168,6 +174,7 @@ public class PcmWzd0002 extends EntityMP implements Serializable {
         this.wzd0002name = wzd0002name ;
         this.modify("wzd0002name",wzd0002name);
     }
+
 
 }
 

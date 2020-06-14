@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[见习生员工转正记录引用明细]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMJXSYGZZJLMX",resultMap = "PcmJxsygzzjlmxResultMap")
 public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
 
@@ -287,6 +288,7 @@ public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
         this.finished = finished ;
         this.modify("finished",finished);
     }
+
     /**
      * 设置 [审核状态]
      */
@@ -294,6 +296,7 @@ public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
         this.checkstatus = checkstatus ;
         this.modify("checkstatus",checkstatus);
     }
+
     /**
      * 设置 [是否为临时数据]
      */
@@ -301,6 +304,7 @@ public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
         this.istemp = istemp ;
         this.modify("istemp",istemp);
     }
+
     /**
      * 设置 [见习生员工转正记录引用明细名称]
      */
@@ -308,6 +312,7 @@ public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
         this.pcmjxsygzzjlmxname = pcmjxsygzzjlmxname ;
         this.modify("pcmjxsygzzjlmxname",pcmjxsygzzjlmxname);
     }
+
     /**
      * 设置 [部门ID]
      */
@@ -315,6 +320,7 @@ public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
         this.bmid = bmid ;
         this.modify("bmid",bmid);
     }
+
     /**
      * 设置 [入职渠道]
      */
@@ -322,6 +328,7 @@ public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
         this.rzqd = rzqd ;
         this.modify("rzqd",rzqd);
     }
+
     /**
      * 设置 [见习期限（月）]
      */
@@ -329,6 +336,7 @@ public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
         this.duration = duration ;
         this.modify("duration",duration);
     }
+
     /**
      * 设置 [组织]
      */
@@ -336,6 +344,7 @@ public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
         this.zz = zz ;
         this.modify("zz",zz);
     }
+
     /**
      * 设置 [部门]
      */
@@ -343,6 +352,7 @@ public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
         this.bm = bm ;
         this.modify("bm",bm);
     }
+
     /**
      * 设置 [组织ID]
      */
@@ -350,6 +360,7 @@ public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
         this.zzid = zzid ;
         this.modify("zzid",zzid);
     }
+
     /**
      * 设置 [分数]
      */
@@ -357,6 +368,7 @@ public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
         this.fs = fs ;
         this.modify("fs",fs);
     }
+
     /**
      * 设置 [评价]
      */
@@ -364,6 +376,7 @@ public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
         this.pj = pj ;
         this.modify("pj",pj);
     }
+
     /**
      * 设置 [转正岗位]
      */
@@ -371,6 +384,7 @@ public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
         this.zzgw = zzgw ;
         this.modify("zzgw",zzgw);
     }
+
     /**
      * 设置 [见习生员工转正申请标识]
      */
@@ -378,6 +392,7 @@ public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
         this.pcmjxsygzzsqid = pcmjxsygzzsqid ;
         this.modify("pcmjxsygzzsqid",pcmjxsygzzsqid);
     }
+
     /**
      * 设置 [见习生员工转正考核结果记录标识]
      */
@@ -385,6 +400,7 @@ public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
         this.pcmjxszzkhjgjlid = pcmjxszzkhjgjlid ;
         this.modify("pcmjxszzkhjgjlid",pcmjxszzkhjgjlid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -392,6 +408,7 @@ public class PcmJxsygzzjlmx extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

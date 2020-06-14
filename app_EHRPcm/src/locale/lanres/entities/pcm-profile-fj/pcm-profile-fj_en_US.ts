@@ -13,7 +13,7 @@ export default {
 	views: {
 		editview: {
 			caption: "应聘者附件",
-      title: '应聘者附件',
+      title: '应聘者附件编辑视图',
 		},
 		profilefjgridview: {
 			caption: "应聘者附件",

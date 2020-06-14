@@ -18,11 +18,11 @@ export default {
 	views: {
 		pickupview: {
 			caption: "人才序列",
-      title: '人才序列',
+      title: '人才序列数据选择视图',
 		},
 		pickupgridview: {
 			caption: "人才序列",
-      title: '人才序列',
+      title: '人才序列选择表格视图',
 		},
 	},
 	main_grid: {

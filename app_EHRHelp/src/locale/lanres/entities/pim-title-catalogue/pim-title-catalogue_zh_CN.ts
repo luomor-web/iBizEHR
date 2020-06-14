@@ -20,27 +20,27 @@ export default {
 	views: {
 		gridview: {
 			caption: '职称目录',
-      title: '职称目录',
+      title: '职称目录管理表格视图',
 		},
 		pickupview: {
 			caption: '职称目录',
-      title: '职称目录',
+      title: '职称目录管理数据选择视图',
 		},
 		notpickupgridview: {
 			caption: '职称目录',
-      title: '职称目录',
+      title: '职称目录管理选择表格视图',
 		},
 		notpickupview: {
 			caption: '职称目录',
-      title: '职称目录',
+      title: '职称目录管理数据选择视图',
 		},
 		pickupgridview: {
 			caption: '职称目录',
-      title: '职称目录',
+      title: '职称目录管理选择表格视图',
 		},
 		editview: {
 			caption: '职称目录',
-      title: '职称目录',
+      title: '职称目录管理编辑视图',
 		},
 	},
 	main_form: {

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[薪酬规则明细]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_SALRULEDETAIL",resultMap = "SalRuleDetailResultMap")
 public class SalRuleDetail extends EntityMP implements Serializable {
 
@@ -170,6 +171,7 @@ public class SalRuleDetail extends EntityMP implements Serializable {
         this.salruledetailname = salruledetailname ;
         this.modify("salruledetailname",salruledetailname);
     }
+
     /**
      * 设置 [比较规则]
      */
@@ -177,6 +179,7 @@ public class SalRuleDetail extends EntityMP implements Serializable {
         this.checkrule = checkrule ;
         this.modify("checkrule",checkrule);
     }
+
     /**
      * 设置 [薪酬计算指标标识]
      */
@@ -184,6 +187,7 @@ public class SalRuleDetail extends EntityMP implements Serializable {
         this.salparamid = salparamid ;
         this.modify("salparamid",salparamid);
     }
+
     /**
      * 设置 [薪酬规则标识]
      */
@@ -191,6 +195,7 @@ public class SalRuleDetail extends EntityMP implements Serializable {
         this.salruleid = salruleid ;
         this.modify("salruleid",salruleid);
     }
+
     /**
      * 设置 [薪酬计算指标标识]
      */
@@ -198,6 +203,7 @@ public class SalRuleDetail extends EntityMP implements Serializable {
         this.salparamid2 = salparamid2 ;
         this.modify("salparamid2",salparamid2);
     }
+
 
 }
 

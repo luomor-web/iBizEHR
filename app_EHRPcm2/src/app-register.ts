@@ -61,7 +61,7 @@ import AppOrgSector from  './components/app-orgsector/app-orgsector.vue'
 import AppBuild from './components/app-build/app-build.vue'
 import AppStudioAction from './components/app-studioaction/app-studioaction.vue'
 import AppDebugActions from './components/app-debug-actions/app-debug-actions.vue'
-import AppHeaderMenus from './components/app-header-menus/app-header-menus.vue'
+import AppTopMenus from './components/app-top-menus/app-top-menus.vue'
 import AppColumnLink from './components/app-column-link/app-column-link.vue'
 import AppDataUploadView from './components/app-data-upload/app-data-upload.vue'
 import DropDownListDynamic from './components/dropdown-list-dynamic/dropdown-list-dynamic.vue'
@@ -77,6 +77,7 @@ import IBizGroupSelect from './components/ibiz-group-select/ibiz-group-select.vu
 import IBizGroupPicker from './components/ibiz-group-picker/ibiz-group-picker.vue'
 import AppWFApproval from './components/app-wf-approval/app-wf-approval.vue'
 import Breadcrumb from './components/app-breadcrumb/app-breadcrumb.vue';
+import AppTransfer from './components/app-transfer/app-transfer.vue'
 
 // 全局挂载UI实体服务注册中心
 window['uiServiceRegister'] = uiServiceRegister;
@@ -147,7 +148,7 @@ export const AppComponents = {
         v.component('app-build', AppBuild);
         v.component('app-studioaction', AppStudioAction);
         v.component('app-debug-actions', AppDebugActions);
-        v.component('app-header-menus', AppHeaderMenus);
+        v.component('app-top-menus', AppTopMenus);
         v.component('app-column-link', AppColumnLink);
         v.component('app-data-upload', AppDataUploadView);
         v.component('dropdown-list-dynamic', DropDownListDynamic);
@@ -163,5 +164,6 @@ export const AppComponents = {
         v.component('ibiz-group-picker',IBizGroupPicker);
         v.component('app-wf-approval',AppWFApproval);
         v.component('app-breadcrumb',Breadcrumb);
+        v.component('app-transfer',AppTransfer);
     },
 };

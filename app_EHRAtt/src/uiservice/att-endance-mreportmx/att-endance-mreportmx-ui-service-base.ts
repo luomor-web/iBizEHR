@@ -103,7 +103,7 @@ export default class AttEndanceMreportmxUIServiceBase extends UIService {
      * @param {*} [srfParentDeName] 父实体名称
      * @returns {Promise<any>}
      */
-    public async AttEndanceMreportmx_export2Excel(args: any[],context:any = {}, params?: any, $event?: any, xData?: any,actionContext?: any,srfParentDeName?:string){
+    public async AttEndanceMreportmx_export2Excel(args: any[],context:any = {}, params:any = {}, $event?: any, xData?: any,actionContext?: any,srfParentDeName?:string){
         actionContext.$Notice.error({ title: '错误', desc: '不支持多项数据' });
     }
 

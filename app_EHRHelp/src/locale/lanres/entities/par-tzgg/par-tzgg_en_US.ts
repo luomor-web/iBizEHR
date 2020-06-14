@@ -4,7 +4,7 @@ export default {
     updateman: '更新人',
     partzggid: '通知公告标识',
     createdate: '建立时间',
-    lhzbmb: '量化指标模板附件',
+    lhzbmb: '通知附件',
     zqlx: '周期类型',
     updatedate: '更新时间',
     nd: '年度',

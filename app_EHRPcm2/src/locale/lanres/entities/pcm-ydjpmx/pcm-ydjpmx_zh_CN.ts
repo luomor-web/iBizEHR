@@ -52,15 +52,15 @@ export default {
 		},
 		redirectview: {
 			caption: '异动解聘明细',
-      title: '异动解聘明细',
+      title: '异动解聘明细数据重定向视图',
 		},
 		editview2: {
 			caption: '异动解聘明细',
-      title: '异动解聘明细',
+      title: '异动解聘明细编辑视图',
 		},
 		mpickupview: {
 			caption: '异动解聘明细',
-      title: '异动解聘明细',
+      title: '异动解聘明细数据多项选择视图',
 		},
 		editview9: {
 			caption: '解聘明细信息',
@@ -76,11 +76,11 @@ export default {
 		},
 		pickupgridview: {
 			caption: '异动解聘明细',
-      title: '异动解聘明细',
+      title: '异动解聘明细选择表格视图',
 		},
 		gridview: {
 			caption: '异动解聘明细',
-      title: '异动解聘明细',
+      title: '异动解聘明细表',
 		},
 		ckeditview: {
 			caption: '异动解聘明细',
@@ -88,7 +88,7 @@ export default {
 		},
 		pickupview: {
 			caption: '异动解聘明细',
-      title: '异动解聘明细',
+      title: '异动解聘明细数据选择视图',
 		},
 	},
 	main_form: {

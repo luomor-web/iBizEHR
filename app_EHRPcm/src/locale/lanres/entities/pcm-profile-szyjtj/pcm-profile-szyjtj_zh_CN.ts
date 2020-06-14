@@ -12,11 +12,11 @@ export default {
 	views: {
 		mpickupview: {
 			caption: '应聘者社招引进条件',
-      title: '应聘者社招引进条件',
+      title: '应聘者社招引进条件选择',
 		},
 		pickupgridview: {
 			caption: '应聘者社招引进条件',
-      title: '应聘者社招引进条件',
+      title: '应聘者社招引进条件选择表格视图',
 		},
 	},
 	ypzsy_grid: {

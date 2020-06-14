@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[专利信息]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMPATENT",resultMap = "PimPatentResultMap")
 public class PimPatent extends EntityMP implements Serializable {
 
@@ -227,6 +228,7 @@ public class PimPatent extends EntityMP implements Serializable {
         this.zlh = zlh ;
         this.modify("zlh",zlh);
     }
+
     /**
      * 设置 [记录所属]
      */
@@ -234,12 +236,24 @@ public class PimPatent extends EntityMP implements Serializable {
         this.jlss = jlss ;
         this.modify("jlss",jlss);
     }
+
     /**
      * 设置 [专利获取时间(*)]
      */
     public void setZlhqsj(Timestamp zlhqsj){
         this.zlhqsj = zlhqsj ;
         this.modify("zlhqsj",zlhqsj);
+    }
+
+    /**
+     * 格式化日期 [专利获取时间(*)]
+     */
+    public String formatZlhqsj(){
+        if (this.zlhqsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(zlhqsj);
     }
     /**
      * 设置 [审批状态]
@@ -248,6 +262,7 @@ public class PimPatent extends EntityMP implements Serializable {
         this.jlspzt = jlspzt ;
         this.modify("jlspzt",jlspzt);
     }
+
     /**
      * 设置 [记录操作者]
      */
@@ -255,6 +270,7 @@ public class PimPatent extends EntityMP implements Serializable {
         this.jlczz = jlczz ;
         this.modify("jlczz",jlczz);
     }
+
     /**
      * 设置 [专利名称(*)]
      */
@@ -262,6 +278,7 @@ public class PimPatent extends EntityMP implements Serializable {
         this.pimpatentname = pimpatentname ;
         this.modify("pimpatentname",pimpatentname);
     }
+
     /**
      * 设置 [记录管理编号]
      */
@@ -269,6 +286,7 @@ public class PimPatent extends EntityMP implements Serializable {
         this.jlglbh = jlglbh ;
         this.modify("jlglbh",jlglbh);
     }
+
     /**
      * 设置 [拒绝原因]
      */
@@ -276,6 +294,7 @@ public class PimPatent extends EntityMP implements Serializable {
         this.reason = reason ;
         this.modify("reason",reason);
     }
+
     /**
      * 设置 [附件]
      */
@@ -283,6 +302,7 @@ public class PimPatent extends EntityMP implements Serializable {
         this.enclolure = enclolure ;
         this.modify("enclolure",enclolure);
     }
+
     /**
      * 设置 [专利批准国别(*)]
      */
@@ -290,6 +310,7 @@ public class PimPatent extends EntityMP implements Serializable {
         this.zlpzgb = zlpzgb ;
         this.modify("zlpzgb",zlpzgb);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -297,6 +318,7 @@ public class PimPatent extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

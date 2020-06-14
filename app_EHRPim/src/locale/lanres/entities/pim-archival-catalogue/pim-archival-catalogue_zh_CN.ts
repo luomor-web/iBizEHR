@@ -14,31 +14,31 @@ export default {
 	views: {
 		editview: {
 			caption: '档案目录',
-      title: '档案目录',
+      title: '档案类别编辑视图',
 		},
 		pickupgridview: {
 			caption: '档案目录',
-      title: '档案目录',
+      title: '档案目录选择表格视图',
 		},
 		pickupview: {
 			caption: '档案目录',
-      title: '档案目录',
+      title: '档案目录数据选择视图',
 		},
 		mpickupview: {
 			caption: '档案目录',
-      title: '档案目录',
+      title: '档案目录数据多项选择视图',
 		},
 		redirectview: {
 			caption: '档案目录',
-      title: '档案目录',
+      title: '档案目录数据重定向视图',
 		},
 		gridview: {
 			caption: '档案目录',
-      title: '档案目录',
+      title: '档案类别表格视图',
 		},
 		editview2: {
 			caption: '档案目录',
-      title: '档案目录',
+      title: '档案目录编辑视图',
 		},
 	},
 	main_form: {

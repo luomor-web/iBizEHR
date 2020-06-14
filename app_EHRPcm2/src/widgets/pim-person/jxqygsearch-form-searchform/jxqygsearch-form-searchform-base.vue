@@ -33,12 +33,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_gw_eq.visible" :style="{}"  :sm="{ span: 6, offset: 0 }" :md="{ span: 6, offset: 0 }" :lg="{ span: 6, offset: 0 }" :xl="{ span: 6, offset: 0 }">
               <app-form-item name='n_gw_eq' :itemRules="this.rules.n_gw_eq" class='' :caption="$t('entities.pimperson.jxqygsearchform_searchform.details.n_gw_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_gw_eq.error" :isEmptyCaption="false" labelPos="RIGHT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_gw_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_gw_eq.disabled"  
               tag='EhrCodeList0050' 
               codelistType='DYNAMIC'
@@ -49,12 +51,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_duration_eq.visible" :style="{}"  :sm="{ span: 6, offset: 0 }" :md="{ span: 6, offset: 0 }" :lg="{ span: 6, offset: 0 }" :xl="{ span: 6, offset: 0 }">
               <app-form-item name='n_duration_eq' :itemRules="this.rules.n_duration_eq" class='' :caption="$t('entities.pimperson.jxqygsearchform_searchform.details.n_duration_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_duration_eq.error" :isEmptyCaption="false" labelPos="RIGHT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_duration_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_duration_eq.disabled"  
               tag='EhrCodeList0187' 
               codelistType='STATIC'
@@ -71,12 +75,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_rzqd_eq.visible" :style="{}"  :sm="{ span: 6, offset: 0 }" :md="{ span: 6, offset: 0 }" :lg="{ span: 6, offset: 0 }" :xl="{ span: 6, offset: 0 }">
               <app-form-item name='n_rzqd_eq' :itemRules="this.rules.n_rzqd_eq" class='' :caption="$t('entities.pimperson.jxqygsearchform_searchform.details.n_rzqd_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_rzqd_eq.error" :isEmptyCaption="false" labelPos="RIGHT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_rzqd_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_rzqd_eq.disabled"  
               tag='EhrCodeList0041' 
               codelistType='DYNAMIC'

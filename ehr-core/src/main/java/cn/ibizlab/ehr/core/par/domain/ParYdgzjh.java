@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[月度工作计划]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PARYDGZJH",resultMap = "ParYdgzjhResultMap")
 public class ParYdgzjh extends EntityMP implements Serializable {
 
@@ -141,6 +142,7 @@ public class ParYdgzjh extends EntityMP implements Serializable {
         this.nd = nd ;
         this.modify("nd",nd);
     }
+
     /**
      * 设置 [月度]
      */
@@ -148,6 +150,7 @@ public class ParYdgzjh extends EntityMP implements Serializable {
         this.yd = yd ;
         this.modify("yd",yd);
     }
+
     /**
      * 设置 [月度工作计划名称]
      */
@@ -155,12 +158,24 @@ public class ParYdgzjh extends EntityMP implements Serializable {
         this.parydgzjhname = parydgzjhname ;
         this.modify("parydgzjhname",parydgzjhname);
     }
+
     /**
      * 设置 [日期]
      */
     public void setRq(Timestamp rq){
         this.rq = rq ;
         this.modify("rq",rq);
+    }
+
+    /**
+     * 格式化日期 [日期]
+     */
+    public String formatRq(){
+        if (this.rq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(rq);
     }
     /**
      * 设置 [填报部门ID]
@@ -169,6 +184,7 @@ public class ParYdgzjh extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
 
 }
 

@@ -31,7 +31,7 @@ export default {
 		},
 		editview: {
 			caption: '年休假查询',
-      title: '年休假查询',
+      title: '年休假查询编辑视图',
 		},
 	},
 	main_form: {

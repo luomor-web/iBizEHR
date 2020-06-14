@@ -14,19 +14,19 @@ export default {
 	views: {
 		editview: {
 			caption: '项目标签',
-      title: '项目标签',
+      title: '项目标签编辑视图',
 		},
 		redirectview: {
 			caption: '项目标签',
-      title: '项目标签',
+      title: '项目标签数据重定向视图',
 		},
 		mpickupview: {
 			caption: '项目标签',
-      title: '项目标签',
+      title: '项目标签数据多项选择视图',
 		},
 		editview2: {
 			caption: '项目标签',
-      title: '项目标签',
+      title: '项目标签编辑视图',
 		},
 		gridview: {
 			caption: '项目标签',
@@ -34,11 +34,11 @@ export default {
 		},
 		pickupview: {
 			caption: '项目标签',
-      title: '项目标签',
+      title: '项目标签数据选择视图',
 		},
 		pickupgridview: {
 			caption: '项目标签',
-      title: '项目标签',
+      title: '项目标签选择表格视图',
 		},
 	},
 	main_form: {

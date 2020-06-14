@@ -31,35 +31,35 @@ public class PcmWzd0001SearchContext extends QueryWrapperContext<PcmWzd0001> {
 	public void setN_shyy_eq(String n_shyy_eq) {
         this.n_shyy_eq = n_shyy_eq;
         if(!ObjectUtils.isEmpty(this.n_shyy_eq)){
-            this.getSelectCond().eq("shyy", n_shyy_eq);
+            this.getSearchCond().eq("shyy", n_shyy_eq);
         }
     }
 	private String n_csyy_eq;//[初审原因]
 	public void setN_csyy_eq(String n_csyy_eq) {
         this.n_csyy_eq = n_csyy_eq;
         if(!ObjectUtils.isEmpty(this.n_csyy_eq)){
-            this.getSelectCond().eq("csyy", n_csyy_eq);
+            this.getSearchCond().eq("csyy", n_csyy_eq);
         }
     }
 	private String n_spyy_eq;//[审批原因]
 	public void setN_spyy_eq(String n_spyy_eq) {
         this.n_spyy_eq = n_spyy_eq;
         if(!ObjectUtils.isEmpty(this.n_spyy_eq)){
-            this.getSelectCond().eq("spyy", n_spyy_eq);
+            this.getSearchCond().eq("spyy", n_spyy_eq);
         }
     }
 	private String n_wzd0001name_like;//[向导实体1名称]
 	public void setN_wzd0001name_like(String n_wzd0001name_like) {
         this.n_wzd0001name_like = n_wzd0001name_like;
         if(!ObjectUtils.isEmpty(this.n_wzd0001name_like)){
-            this.getSelectCond().like("wzd0001name", n_wzd0001name_like);
+            this.getSearchCond().like("wzd0001name", n_wzd0001name_like);
         }
     }
 	private String n_yglx_eq;//[员工类型]
 	public void setN_yglx_eq(String n_yglx_eq) {
         this.n_yglx_eq = n_yglx_eq;
         if(!ObjectUtils.isEmpty(this.n_yglx_eq)){
-            this.getSelectCond().eq("yglx", n_yglx_eq);
+            this.getSearchCond().eq("yglx", n_yglx_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class PcmWzd0001SearchContext extends QueryWrapperContext<PcmWzd0001> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("wzd0001name", query)   
             );
 		 }

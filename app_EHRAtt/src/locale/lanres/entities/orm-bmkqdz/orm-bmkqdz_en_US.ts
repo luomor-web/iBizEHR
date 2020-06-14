@@ -19,7 +19,7 @@ export default {
 	views: {
 		pickupview: {
 			caption: "部门地址维护",
-      title: '部门地址维护',
+      title: '部门地址维护数据选择视图',
 		},
 		bmkqdzeditview: {
 			caption: "部门考勤地址",
@@ -31,7 +31,7 @@ export default {
 		},
 		pickupgridview: {
 			caption: "部门地址维护",
-      title: '部门地址维护',
+      title: '部门地址维护选择表格视图',
 		},
 	},
 	main_2_form: {

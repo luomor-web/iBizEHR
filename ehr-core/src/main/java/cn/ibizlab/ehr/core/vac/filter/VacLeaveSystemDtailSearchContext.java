@@ -31,35 +31,35 @@ public class VacLeaveSystemDtailSearchContext extends QueryWrapperContext<VacLea
 	public void setN_vacleavesystemdetailname_like(String n_vacleavesystemdetailname_like) {
         this.n_vacleavesystemdetailname_like = n_vacleavesystemdetailname_like;
         if(!ObjectUtils.isEmpty(this.n_vacleavesystemdetailname_like)){
-            this.getSelectCond().like("vacleavesystemdetailname", n_vacleavesystemdetailname_like);
+            this.getSearchCond().like("vacleavesystemdetailname", n_vacleavesystemdetailname_like);
         }
     }
 	private String n_xjlx_eq;//[休假类型]
 	public void setN_xjlx_eq(String n_xjlx_eq) {
         this.n_xjlx_eq = n_xjlx_eq;
         if(!ObjectUtils.isEmpty(this.n_xjlx_eq)){
-            this.getSelectCond().eq("xjlx", n_xjlx_eq);
+            this.getSearchCond().eq("xjlx", n_xjlx_eq);
         }
     }
 	private String n_vacleavesystemname_eq;//[休假制度名称]
 	public void setN_vacleavesystemname_eq(String n_vacleavesystemname_eq) {
         this.n_vacleavesystemname_eq = n_vacleavesystemname_eq;
         if(!ObjectUtils.isEmpty(this.n_vacleavesystemname_eq)){
-            this.getSelectCond().eq("vacleavesystemname", n_vacleavesystemname_eq);
+            this.getSearchCond().eq("vacleavesystemname", n_vacleavesystemname_eq);
         }
     }
 	private String n_vacleavesystemname_like;//[休假制度名称]
 	public void setN_vacleavesystemname_like(String n_vacleavesystemname_like) {
         this.n_vacleavesystemname_like = n_vacleavesystemname_like;
         if(!ObjectUtils.isEmpty(this.n_vacleavesystemname_like)){
-            this.getSelectCond().like("vacleavesystemname", n_vacleavesystemname_like);
+            this.getSearchCond().like("vacleavesystemname", n_vacleavesystemname_like);
         }
     }
 	private String n_vacleavesystemid_eq;//[休假制度管理标识]
 	public void setN_vacleavesystemid_eq(String n_vacleavesystemid_eq) {
         this.n_vacleavesystemid_eq = n_vacleavesystemid_eq;
         if(!ObjectUtils.isEmpty(this.n_vacleavesystemid_eq)){
-            this.getSelectCond().eq("vacleavesystemid", n_vacleavesystemid_eq);
+            this.getSearchCond().eq("vacleavesystemid", n_vacleavesystemid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class VacLeaveSystemDtailSearchContext extends QueryWrapperContext<VacLea
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("vacleavesystemdetailname", query)   
             );
 		 }

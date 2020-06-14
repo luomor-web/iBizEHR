@@ -31,35 +31,35 @@ public class ParTzggSearchContext extends QueryWrapperContext<ParTzgg> {
 	public void setN_zqlx_eq(String n_zqlx_eq) {
         this.n_zqlx_eq = n_zqlx_eq;
         if(!ObjectUtils.isEmpty(this.n_zqlx_eq)){
-            this.getSelectCond().eq("zqlx", n_zqlx_eq);
+            this.getSearchCond().eq("zqlx", n_zqlx_eq);
         }
     }
 	private String n_nd_eq;//[年度]
 	public void setN_nd_eq(String n_nd_eq) {
         this.n_nd_eq = n_nd_eq;
         if(!ObjectUtils.isEmpty(this.n_nd_eq)){
-            this.getSelectCond().eq("nd", n_nd_eq);
+            this.getSearchCond().eq("nd", n_nd_eq);
         }
     }
 	private String n_yd_eq;//[月度]
 	public void setN_yd_eq(String n_yd_eq) {
         this.n_yd_eq = n_yd_eq;
         if(!ObjectUtils.isEmpty(this.n_yd_eq)){
-            this.getSelectCond().eq("yd", n_yd_eq);
+            this.getSearchCond().eq("yd", n_yd_eq);
         }
     }
 	private String n_tzlx_eq;//[通知类型]
 	public void setN_tzlx_eq(String n_tzlx_eq) {
         this.n_tzlx_eq = n_tzlx_eq;
         if(!ObjectUtils.isEmpty(this.n_tzlx_eq)){
-            this.getSelectCond().eq("tzlx", n_tzlx_eq);
+            this.getSearchCond().eq("tzlx", n_tzlx_eq);
         }
     }
 	private String n_partzggname_like;//[标题]
 	public void setN_partzggname_like(String n_partzggname_like) {
         this.n_partzggname_like = n_partzggname_like;
         if(!ObjectUtils.isEmpty(this.n_partzggname_like)){
-            this.getSelectCond().like("partzggname", n_partzggname_like);
+            this.getSearchCond().like("partzggname", n_partzggname_like);
         }
     }
 
@@ -70,7 +70,7 @@ public class ParTzggSearchContext extends QueryWrapperContext<ParTzgg> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("partzggname", query)   
             );
 		 }

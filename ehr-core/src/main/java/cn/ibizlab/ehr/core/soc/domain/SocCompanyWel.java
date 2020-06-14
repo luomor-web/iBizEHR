@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[单位社保账户]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_SOCCOMPANYWEL",resultMap = "SocCompanyWelResultMap")
 public class SocCompanyWel extends EntityMP implements Serializable {
 
@@ -157,6 +158,7 @@ public class SocCompanyWel extends EntityMP implements Serializable {
         this.soccompanywelname = soccompanywelname ;
         this.modify("soccompanywelname",soccompanywelname);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -164,6 +166,7 @@ public class SocCompanyWel extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [社保参保地标识]
      */
@@ -171,6 +174,7 @@ public class SocCompanyWel extends EntityMP implements Serializable {
         this.socselfarebaseid = socselfarebaseid ;
         this.modify("socselfarebaseid",socselfarebaseid);
     }
+
 
 }
 

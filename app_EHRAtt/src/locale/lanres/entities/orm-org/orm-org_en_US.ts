@@ -32,11 +32,11 @@ export default {
 	views: {
 		pickupview: {
 			caption: "组织管理",
-      title: '组织管理',
+      title: '组织管理数据选择视图',
 		},
 		pickupgridview: {
 			caption: "组织管理",
-      title: '组织管理',
+      title: '组织管理选择表格视图',
 		},
 	},
 	main_grid: {

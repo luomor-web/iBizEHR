@@ -78,8 +78,8 @@ export default class AppDashboardDesignService {
                     const groups = this.prepareGroup(datas);
                     resolve({data: datas, result: list.reverse(), groups: groups});
                 }
-            }).catch((error: any) => {
-                console.log(error);
+            }).catch((response: any) => {
+                console.log(response);
             });
         });
     }

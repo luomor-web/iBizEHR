@@ -18,7 +18,7 @@ export default {
 	views: {
 		editview: {
 			caption: '注册证书',
-      title: '注册证书',
+      title: '注册证书编辑视图',
 		},
 		zczs_wsswbjgridview: {
 			caption: '注册证书',

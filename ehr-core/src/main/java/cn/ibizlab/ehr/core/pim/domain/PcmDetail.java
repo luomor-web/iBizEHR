@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[人员花名册]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMDETAIL",resultMap = "PcmDetailResultMap")
 public class PcmDetail extends EntityMP implements Serializable {
 
@@ -602,12 +603,24 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.lxdh = lxdh ;
         this.modify("lxdh",lxdh);
     }
+
     /**
      * 设置 [参加工作时间]
      */
     public void setCjgzsj(Timestamp cjgzsj){
         this.cjgzsj = cjgzsj ;
         this.modify("cjgzsj",cjgzsj);
+    }
+
+    /**
+     * 格式化日期 [参加工作时间]
+     */
+    public String formatCjgzsj(){
+        if (this.cjgzsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(cjgzsj);
     }
     /**
      * 设置 [最高学历所学专业]
@@ -616,6 +629,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.zgxlsxzy = zgxlsxzy ;
         this.modify("zgxlsxzy",zgxlsxzy);
     }
+
     /**
      * 设置 [证件号码]
      */
@@ -623,6 +637,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.zjhm = zjhm ;
         this.modify("zjhm",zjhm);
     }
+
     /**
      * 设置 [是否注册会计师]
      */
@@ -630,6 +645,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.sfzckjs = sfzckjs ;
         this.modify("sfzckjs",sfzckjs);
     }
+
     /**
      * 设置 [婚姻状况]
      */
@@ -637,6 +653,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.hyzk = hyzk ;
         this.modify("hyzk",hyzk);
     }
+
     /**
      * 设置 [最高学历毕业院校]
      */
@@ -644,6 +661,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.zgxlbyyx = zgxlbyyx ;
         this.modify("zgxlbyyx",zgxlbyyx);
     }
+
     /**
      * 设置 [是否第一学历]
      */
@@ -651,12 +669,24 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.firsteducation = firsteducation ;
         this.modify("firsteducation",firsteducation);
     }
+
     /**
      * 设置 [签订日期]
      */
     public void setQsrq(Timestamp qsrq){
         this.qsrq = qsrq ;
         this.modify("qsrq",qsrq);
+    }
+
+    /**
+     * 格式化日期 [签订日期]
+     */
+    public String formatQsrq(){
+        if (this.qsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(qsrq);
     }
     /**
      * 设置 [最高学历学校类别]
@@ -665,6 +695,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.zgxxlb = zgxxlb ;
         this.modify("zgxxlb",zgxxlb);
     }
+
     /**
      * 设置 [合同试用期]
      */
@@ -672,6 +703,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.htsyq = htsyq ;
         this.modify("htsyq",htsyq);
     }
+
     /**
      * 设置 [第一学历毕业院校]
      */
@@ -679,12 +711,24 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.dyxlbyyx = dyxlbyyx ;
         this.modify("dyxlbyyx",dyxlbyyx);
     }
+
     /**
      * 设置 [出生日期]
      */
     public void setCsrq(Timestamp csrq){
         this.csrq = csrq ;
         this.modify("csrq",csrq);
+    }
+
+    /**
+     * 格式化日期 [出生日期]
+     */
+    public String formatCsrq(){
+        if (this.csrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(csrq);
     }
     /**
      * 设置 [社保参缴地]
@@ -693,6 +737,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.sbcjd = sbcjd ;
         this.modify("sbcjd",sbcjd);
     }
+
     /**
      * 设置 [第一学历]
      */
@@ -700,6 +745,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.dyxl = dyxl ;
         this.modify("dyxl",dyxl);
     }
+
     /**
      * 设置 [第一学历所学专业]
      */
@@ -707,12 +753,24 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.dyxlsxzy = dyxlsxzy ;
         this.modify("dyxlsxzy",dyxlsxzy);
     }
+
     /**
      * 设置 [最高学历毕业时间]
      */
     public void setZgxljssj(Timestamp zgxljssj){
         this.zgxljssj = zgxljssj ;
         this.modify("zgxljssj",zgxljssj);
+    }
+
+    /**
+     * 格式化日期 [最高学历毕业时间]
+     */
+    public String formatZgxljssj(){
+        if (this.zgxljssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(zgxljssj);
     }
     /**
      * 设置 [本单位工作时间]
@@ -721,6 +779,17 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.dbdwsj = dbdwsj ;
         this.modify("dbdwsj",dbdwsj);
     }
+
+    /**
+     * 格式化日期 [本单位工作时间]
+     */
+    public String formatDbdwsj(){
+        if (this.dbdwsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(dbdwsj);
+    }
     /**
      * 设置 [岗位]
      */
@@ -728,6 +797,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.gw = gw ;
         this.modify("gw",gw);
     }
+
     /**
      * 设置 [员工姓名]
      */
@@ -735,6 +805,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.pimpersonname = pimpersonname ;
         this.modify("pimpersonname",pimpersonname);
     }
+
     /**
      * 设置 [岗位类别]
      */
@@ -742,12 +813,24 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.gwtype = gwtype ;
         this.modify("gwtype",gwtype);
     }
+
     /**
      * 设置 [入党时间]
      */
     public void setRdsj(Timestamp rdsj){
         this.rdsj = rdsj ;
         this.modify("rdsj",rdsj);
+    }
+
+    /**
+     * 格式化日期 [入党时间]
+     */
+    public String formatRdsj(){
+        if (this.rdsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(rdsj);
     }
     /**
      * 设置 [第一学历学校类别]
@@ -756,6 +839,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.xxlb = xxlb ;
         this.modify("xxlb",xxlb);
     }
+
     /**
      * 设置 [员工编号]
      */
@@ -763,6 +847,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.ygbh = ygbh ;
         this.modify("ygbh",ygbh);
     }
+
     /**
      * 设置 [备注]
      */
@@ -770,6 +855,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [培训]
      */
@@ -777,12 +863,24 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.px = px ;
         this.modify("px",px);
     }
+
     /**
      * 设置 [结束日期]
      */
     public void setJsrq(Timestamp jsrq){
         this.jsrq = jsrq ;
         this.modify("jsrq",jsrq);
+    }
+
+    /**
+     * 格式化日期 [结束日期]
+     */
+    public String formatJsrq(){
+        if (this.jsrq == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(jsrq);
     }
     /**
      * 设置 [劳动合同性质]
@@ -791,6 +889,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.contracttype = contracttype ;
         this.modify("contracttype",contracttype);
     }
+
     /**
      * 设置 [岗位证书]
      */
@@ -798,6 +897,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.pimqualtypename = pimqualtypename ;
         this.modify("pimqualtypename",pimqualtypename);
     }
+
     /**
      * 设置 [第一学历学习形式]
      */
@@ -805,6 +905,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.xllx = xllx ;
         this.modify("xllx",xllx);
     }
+
     /**
      * 设置 [专业技术资格（职称）]
      */
@@ -812,6 +913,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.careername = careername ;
         this.modify("careername",careername);
     }
+
     /**
      * 设置 [最高学历学习形式]
      */
@@ -819,12 +921,24 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.zgxllx = zgxllx ;
         this.modify("zgxllx",zgxllx);
     }
+
     /**
      * 设置 [建筑系统工作时间]
      */
     public void setTozjdate(Timestamp tozjdate){
         this.tozjdate = tozjdate ;
         this.modify("tozjdate",tozjdate);
+    }
+
+    /**
+     * 格式化日期 [建筑系统工作时间]
+     */
+    public String formatTozjdate(){
+        if (this.tozjdate == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(tozjdate);
     }
     /**
      * 设置 [绩效考核成绩（近两年）]
@@ -833,12 +947,24 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.jxkhcj = jxkhcj ;
         this.modify("jxkhcj",jxkhcj);
     }
+
     /**
      * 设置 [第一学历毕业时间]
      */
     public void setDyxljssj(Timestamp dyxljssj){
         this.dyxljssj = dyxljssj ;
         this.modify("dyxljssj",dyxljssj);
+    }
+
+    /**
+     * 格式化日期 [第一学历毕业时间]
+     */
+    public String formatDyxljssj(){
+        if (this.dyxljssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(dyxljssj);
     }
     /**
      * 设置 [员工类型]
@@ -847,6 +973,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.yglx = yglx ;
         this.modify("yglx",yglx);
     }
+
     /**
      * 设置 [人员明细表名称]
      */
@@ -854,12 +981,24 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.pcmdetailname = pcmdetailname ;
         this.modify("pcmdetailname",pcmdetailname);
     }
+
     /**
      * 设置 [局工作时间]
      */
     public void setDzjbjsj(Timestamp dzjbjsj){
         this.dzjbjsj = dzjbjsj ;
         this.modify("dzjbjsj",dzjbjsj);
+    }
+
+    /**
+     * 格式化日期 [局工作时间]
+     */
+    public String formatDzjbjsj(){
+        if (this.dzjbjsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(dzjbjsj);
     }
     /**
      * 设置 [政治面貌]
@@ -868,6 +1007,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.zzmm = zzmm ;
         this.modify("zzmm",zzmm);
     }
+
     /**
      * 设置 [注册会计师专业阶段考试已通过科目数]
      */
@@ -875,6 +1015,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.kstgkms = kstgkms ;
         this.modify("kstgkms",kstgkms);
     }
+
     /**
      * 设置 [注册会计师证书编号]
      */
@@ -882,6 +1023,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.zgzsbh = zgzsbh ;
         this.modify("zgzsbh",zgzsbh);
     }
+
     /**
      * 设置 [入职渠道]
      */
@@ -889,6 +1031,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.rzqd = rzqd ;
         this.modify("rzqd",rzqd);
     }
+
     /**
      * 设置 [执(职)业资格证书]
      */
@@ -896,6 +1039,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.pimvocationalcatalogname = pimvocationalcatalogname ;
         this.modify("pimvocationalcatalogname",pimvocationalcatalogname);
     }
+
     /**
      * 设置 [职级]
      */
@@ -903,6 +1047,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.rank = rank ;
         this.modify("rank",rank);
     }
+
     /**
      * 设置 [职称编号]
      */
@@ -910,6 +1055,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.zcbh = zcbh ;
         this.modify("zcbh",zcbh);
     }
+
     /**
      * 设置 [所属业务系统]
      */
@@ -917,6 +1063,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.pimmajorsetypename = pimmajorsetypename ;
         this.modify("pimmajorsetypename",pimmajorsetypename);
     }
+
     /**
      * 设置 [建筑系统工作年限]
      */
@@ -924,6 +1071,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.zjxtgznx = zjxtgznx ;
         this.modify("zjxtgznx",zjxtgznx);
     }
+
     /**
      * 设置 [工作年限]
      */
@@ -931,6 +1079,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.gznx = gznx ;
         this.modify("gznx",gznx);
     }
+
     /**
      * 设置 [性别]
      */
@@ -938,6 +1087,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.xb = xb ;
         this.modify("xb",xb);
     }
+
     /**
      * 设置 [合同类别]
      */
@@ -945,6 +1095,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.htlb = htlb ;
         this.modify("htlb",htlb);
     }
+
     /**
      * 设置 [工作单位]
      */
@@ -952,6 +1103,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.ormorgname = ormorgname ;
         this.modify("ormorgname",ormorgname);
     }
+
     /**
      * 设置 [最高学历]
      */
@@ -959,6 +1111,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.zgxl = zgxl ;
         this.modify("zgxl",zgxl);
     }
+
     /**
      * 设置 [局工作年限]
      */
@@ -966,6 +1119,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.bjgznx = bjgznx ;
         this.modify("bjgznx",bjgznx);
     }
+
     /**
      * 设置 [籍贯]
      */
@@ -973,6 +1127,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.jg = jg ;
         this.modify("jg",jg);
     }
+
     /**
      * 设置 [户籍地址]
      */
@@ -980,6 +1135,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.hjdz = hjdz ;
         this.modify("hjdz",hjdz);
     }
+
     /**
      * 设置 [本单位工作年限]
      */
@@ -987,12 +1143,24 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.bdwgznx = bdwgznx ;
         this.modify("bdwgznx",bdwgznx);
     }
+
     /**
      * 设置 [合同期限]
      */
     public void setHtqx(Timestamp htqx){
         this.htqx = htqx ;
         this.modify("htqx",htqx);
+    }
+
+    /**
+     * 格式化日期 [合同期限]
+     */
+    public String formatHtqx(){
+        if (this.htqx == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(htqx);
     }
     /**
      * 设置 [年龄]
@@ -1001,6 +1169,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.nj = nj ;
         this.modify("nj",nj);
     }
+
     /**
      * 设置 [户口性质]
      */
@@ -1008,6 +1177,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.hkxz = hkxz ;
         this.modify("hkxz",hkxz);
     }
+
     /**
      * 设置 [职务]
      */
@@ -1015,6 +1185,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.zw = zw ;
         this.modify("zw",zw);
     }
+
     /**
      * 设置 [是否最高学历]
      */
@@ -1022,6 +1193,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.sfzgxl = sfzgxl ;
         this.modify("sfzgxl",sfzgxl);
     }
+
     /**
      * 设置 [民族]
      */
@@ -1029,6 +1201,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.mz = mz ;
         this.modify("mz",mz);
     }
+
     /**
      * 设置 [部门标识]
      */
@@ -1036,6 +1209,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -1043,6 +1217,7 @@ public class PcmDetail extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

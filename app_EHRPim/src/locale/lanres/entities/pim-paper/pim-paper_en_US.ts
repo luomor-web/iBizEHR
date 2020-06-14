@@ -31,43 +31,43 @@ export default {
 	views: {
 		editview2: {
 			caption: "论文信息",
-      title: '论文信息',
+      title: '论文信息编辑视图',
 		},
 		greditview: {
 			caption: "论文信息",
-      title: '论文信息',
+      title: '论文信息编辑视图',
 		},
 		pickupgridview: {
 			caption: "论文信息",
-      title: '论文信息',
+      title: '论文信息选择表格视图',
 		},
 		mpickupview: {
 			caption: "论文信息",
-      title: '论文信息',
+      title: '论文信息数据多项选择视图',
 		},
 		gridview: {
 			caption: "论文信息",
-      title: '论文信息',
+      title: '论文信息表格视图',
 		},
 		grpapergridview: {
 			caption: "论文信息",
-      title: '论文信息',
+      title: '论文信息表格视图',
 		},
 		papergridview: {
 			caption: "论文信息",
-      title: '论文信息',
+      title: '论文信息表格视图',
 		},
 		editview: {
 			caption: "论文信息",
-      title: '论文信息',
+      title: '论文信息编辑视图',
 		},
 		pickupview: {
 			caption: "论文信息",
-      title: '论文信息',
+      title: '论文信息数据选择视图',
 		},
 		redirectview: {
 			caption: "论文信息",
-      title: '论文信息',
+      title: '论文信息数据重定向视图',
 		},
 	},
 	main_form: {

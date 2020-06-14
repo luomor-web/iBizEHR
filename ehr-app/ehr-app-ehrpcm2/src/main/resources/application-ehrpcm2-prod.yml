@@ -47,6 +47,10 @@ zuul:
       path: /pimdistirbutions/**
       serviceId: ehr-webapi
       stripPrefix: false
+    personstatemgr:
+      path: /personstatemgrs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     pcmxygzzsqmx:
       path: /pcmxygzzsqmxes/**
       serviceId: ehr-webapi

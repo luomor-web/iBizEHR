@@ -17,31 +17,31 @@ export default {
 	views: {
 		gridview: {
 			caption: '档案目录缺失记录',
-      title: '档案目录缺失记录',
+      title: '档案目录缺失记录表格视图',
 		},
 		mpickupview: {
 			caption: '档案目录缺失记录',
-      title: '档案目录缺失记录',
+      title: '档案目录缺失记录数据多项选择视图',
 		},
 		editview2: {
 			caption: '档案目录缺失记录',
-      title: '档案目录缺失记录',
+      title: '档案目录缺失记录编辑视图',
 		},
 		pickupgridview: {
 			caption: '档案目录缺失记录',
-      title: '档案目录缺失记录',
+      title: '档案目录缺失记录选择表格视图',
 		},
 		editview: {
 			caption: '档案目录缺失记录',
-      title: '档案目录缺失记录',
+      title: '档案目录缺失记录编辑视图',
 		},
 		redirectview: {
 			caption: '档案目录缺失记录',
-      title: '档案目录缺失记录',
+      title: '档案目录缺失记录数据重定向视图',
 		},
 		pickupview: {
 			caption: '档案目录缺失记录',
-      title: '档案目录缺失记录',
+      title: '档案目录缺失记录数据选择视图',
 		},
 	},
 	main_form: {

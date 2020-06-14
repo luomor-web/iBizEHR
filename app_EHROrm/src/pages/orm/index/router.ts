@@ -25,7 +25,8 @@ const router = new Router({
                 });
             },
             meta: {  
-                caption: 'app.views.index.caption',
+                caption: 'app.views.index.title',
+                info:'',
                 viewType: 'APPINDEX',
                 parameters: [
                     { pathName: 'index', parameterName: 'index' },
@@ -37,7 +38,8 @@ const router = new Router({
                 {
                     path: 'ormduties/:ormduty?/editview/:editview?',
                     meta: {
-                        caption: 'entities.ormduty.views.editview.caption',
+                        caption: 'entities.ormduty.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
                         iconCls: '',
                         parameters: [
@@ -52,7 +54,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/orgtreeexpview/:orgtreeexpview?',
                     meta: {
-                        caption: 'entities.ormorg.views.orgtreeexpview.caption',
+                        caption: 'entities.ormorg.views.orgtreeexpview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
                         iconCls: '',
                         parameters: [
@@ -67,7 +70,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/curleaderpickupview/:curleaderpickupview?',
                     meta: {
-                        caption: 'entities.pimperson.views.curleaderpickupview.caption',
+                        caption: 'entities.pimperson.views.curleaderpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -80,7 +84,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgdzs/:ormorgdz?/editview/:editview?',
                     meta: {
-                        caption: 'entities.ormorgdz.views.editview.caption',
+                        caption: 'entities.ormorgdz.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -94,7 +99,8 @@ const router = new Router({
                 {
                     path: 'ormorgdzs/:ormorgdz?/editview/:editview?',
                     meta: {
-                        caption: 'entities.ormorgdz.views.editview.caption',
+                        caption: 'entities.ormorgdz.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgdzs', parameterName: 'ormorgdz' },
@@ -107,7 +113,8 @@ const router = new Router({
                 {
                     path: 'ormsignorgs/:ormsignorg?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.ormsignorg.views.pickupgridview.caption',
+                        caption: 'entities.ormsignorg.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
@@ -120,7 +127,8 @@ const router = new Router({
                 {
                     path: 'ormduties/:ormduty?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.ormduty.views.gridview.caption',
+                        caption: 'entities.ormduty.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
                         iconCls: '',
                         parameters: [
@@ -135,7 +143,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.ormorg.views.pickupview.caption',
+                        caption: 'entities.ormorg.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -148,7 +157,8 @@ const router = new Router({
                 {
                     path: 'ormerporgs/:ormerporg?/legalmpickupview/:legalmpickupview?',
                     meta: {
-                        caption: 'entities.ormerporg.views.legalmpickupview.caption',
+                        caption: 'entities.ormerporg.views.legalmpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormerporgs', parameterName: 'ormerporg' },
@@ -161,7 +171,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/sjorgpickupgridview/:sjorgpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorg.views.sjorgpickupgridview.caption',
+                        caption: 'entities.ormorg.views.sjorgpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -174,7 +185,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgdzs/:ormorgdz?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.ormorgdz.views.gridview.caption',
+                        caption: 'entities.ormorgdz.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/rencaixulie.png',
                         iconCls: '',
                         parameters: [
@@ -190,7 +202,8 @@ const router = new Router({
                 {
                     path: 'ormorgdzs/:ormorgdz?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.ormorgdz.views.gridview.caption',
+                        caption: 'entities.ormorgdz.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/rencaixulie.png',
                         iconCls: '',
                         parameters: [
@@ -205,7 +218,8 @@ const router = new Router({
                 {
                     path: 'ormsignorgs/:ormsignorg?/pimcontractsignorgs/:pimcontractsignorg?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimcontractsignorg.views.gridview.caption',
+                        caption: 'entities.pimcontractsignorg.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/kaoqinshezhi.png',
                         iconCls: '',
                         parameters: [
@@ -221,7 +235,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/pimcontractsignorgs/:pimcontractsignorg?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimcontractsignorg.views.gridview.caption',
+                        caption: 'entities.pimcontractsignorg.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/kaoqinshezhi.png',
                         iconCls: '',
                         parameters: [
@@ -237,7 +252,8 @@ const router = new Router({
                 {
                     path: 'pimcontractsignorgs/:pimcontractsignorg?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.pimcontractsignorg.views.gridview.caption',
+                        caption: 'entities.pimcontractsignorg.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/newimage/1/kaoqinshezhi.png',
                         iconCls: '',
                         parameters: [
@@ -252,7 +268,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormxmbqs/:ormxmbq?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.ormxmbq.views.gridview.caption',
+                        caption: 'entities.ormxmbq.views.gridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -266,7 +283,8 @@ const router = new Router({
                 {
                     path: 'ormxmbqs/:ormxmbq?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.ormxmbq.views.gridview.caption',
+                        caption: 'entities.ormxmbq.views.gridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
@@ -279,7 +297,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/sjorgpickupview/:sjorgpickupview?',
                     meta: {
-                        caption: 'entities.ormorg.views.sjorgpickupview.caption',
+                        caption: 'entities.ormorg.views.sjorgpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -292,7 +311,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzgridview/:bmkqdzgridview?',
                     meta: {
-                        caption: 'entities.ormbmkqdz.views.bmkqdzgridview.caption',
+                        caption: 'entities.ormbmkqdz.views.bmkqdzgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenguanli.png',
                         iconCls: '',
                         parameters: [
@@ -309,7 +329,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzgridview/:bmkqdzgridview?',
                     meta: {
-                        caption: 'entities.ormbmkqdz.views.bmkqdzgridview.caption',
+                        caption: 'entities.ormbmkqdz.views.bmkqdzgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenguanli.png',
                         iconCls: '',
                         parameters: [
@@ -325,7 +346,8 @@ const router = new Router({
                 {
                     path: 'ormbmkqdzs/:ormbmkqdz?/bmkqdzgridview/:bmkqdzgridview?',
                     meta: {
-                        caption: 'entities.ormbmkqdz.views.bmkqdzgridview.caption',
+                        caption: 'entities.ormbmkqdz.views.bmkqdzgridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenguanli.png',
                         iconCls: '',
                         parameters: [
@@ -340,7 +362,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzeditview/:bmkqdzeditview?',
                     meta: {
-                        caption: 'entities.ormbmkqdz.views.bmkqdzeditview.caption',
+                        caption: 'entities.ormbmkqdz.views.bmkqdzeditview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenguanli.png',
                         iconCls: '',
                         parameters: [
@@ -357,7 +380,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzeditview/:bmkqdzeditview?',
                     meta: {
-                        caption: 'entities.ormbmkqdz.views.bmkqdzeditview.caption',
+                        caption: 'entities.ormbmkqdz.views.bmkqdzeditview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenguanli.png',
                         iconCls: '',
                         parameters: [
@@ -373,7 +397,8 @@ const router = new Router({
                 {
                     path: 'ormbmkqdzs/:ormbmkqdz?/bmkqdzeditview/:bmkqdzeditview?',
                     meta: {
-                        caption: 'entities.ormbmkqdz.views.bmkqdzeditview.caption',
+                        caption: 'entities.ormbmkqdz.views.bmkqdzeditview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenguanli.png',
                         iconCls: '',
                         parameters: [
@@ -388,7 +413,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/allleveltwoorgpickupgridview/:allleveltwoorgpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorg.views.allleveltwoorgpickupgridview.caption',
+                        caption: 'entities.ormorg.views.allleveltwoorgpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -401,7 +427,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.ormorg.views.editview9.caption',
+                        caption: 'entities.ormorg.views.editview9.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -414,7 +441,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/xmbqpickupgridview/:xmbqpickupgridview?',
                     meta: {
-                        caption: 'entities.ormorg.views.xmbqpickupgridview.caption',
+                        caption: 'entities.ormorg.views.xmbqpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -427,7 +455,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/xmbqpickupview/:xmbqpickupview?',
                     meta: {
-                        caption: 'entities.ormorg.views.xmbqpickupview.caption',
+                        caption: 'entities.ormorg.views.xmbqpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -440,7 +469,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.gridview.caption',
+                        caption: 'entities.ormorgsector.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenguanli.png',
                         iconCls: '',
                         parameters: [
@@ -456,7 +486,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.gridview.caption',
+                        caption: 'entities.ormorgsector.views.gridview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenguanli.png',
                         iconCls: '',
                         parameters: [
@@ -471,7 +502,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/allleveltwoorgpickupview/:allleveltwoorgpickupview?',
                     meta: {
-                        caption: 'entities.ormorg.views.allleveltwoorgpickupview.caption',
+                        caption: 'entities.ormorg.views.allleveltwoorgpickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -484,7 +516,8 @@ const router = new Router({
                 {
                     path: 'ormsignorgs/:ormsignorg?/pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimcontractsignorg.views.editview.caption',
+                        caption: 'entities.pimcontractsignorg.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
@@ -498,7 +531,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimcontractsignorg.views.editview.caption',
+                        caption: 'entities.pimcontractsignorg.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -512,7 +546,8 @@ const router = new Router({
                 {
                     path: 'pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
                     meta: {
-                        caption: 'entities.pimcontractsignorg.views.editview.caption',
+                        caption: 'entities.pimcontractsignorg.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
@@ -525,7 +560,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/bzcxgridview/:bzcxgridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.bzcxgridview.caption',
+                        caption: 'entities.ormorgsector.views.bzcxgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -539,7 +575,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/bzcxgridview/:bzcxgridview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.bzcxgridview.caption',
+                        caption: 'entities.ormorgsector.views.bzcxgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -552,7 +589,8 @@ const router = new Router({
                 {
                     path: 'ormsignorgs/:ormsignorg?/gridview/:gridview?',
                     meta: {
-                        caption: 'entities.ormsignorg.views.gridview.caption',
+                        caption: 'entities.ormsignorg.views.gridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
@@ -565,7 +603,8 @@ const router = new Router({
                 {
                     path: 'ormerporgs/:ormerporg?/legalpickupgridview/:legalpickupgridview?',
                     meta: {
-                        caption: 'entities.ormerporg.views.legalpickupgridview.caption',
+                        caption: 'entities.ormerporg.views.legalpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormerporgs', parameterName: 'ormerporg' },
@@ -578,7 +617,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/editview/:editview?',
                     meta: {
-                        caption: 'entities.ormpost.views.editview.caption',
+                        caption: 'entities.ormpost.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/gangweiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -594,7 +634,8 @@ const router = new Router({
                 {
                     path: 'ormposts/:ormpost?/editview/:editview?',
                     meta: {
-                        caption: 'entities.ormpost.views.editview.caption',
+                        caption: 'entities.ormpost.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/gangweiguanli.png',
                         iconCls: '',
                         parameters: [
@@ -609,7 +650,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/editview9_editmode/:editview9_editmode?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.editview9_editmode.caption',
+                        caption: 'entities.ormorgsector.views.editview9_editmode.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -623,7 +665,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/editview9_editmode/:editview9_editmode?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.editview9_editmode.caption',
+                        caption: 'entities.ormorgsector.views.editview9_editmode.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -636,7 +679,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/pickupgridview/:pickupgridview?',
                     meta: {
-                        caption: 'entities.ormorg.views.pickupgridview.caption',
+                        caption: 'entities.ormorg.views.pickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -649,7 +693,8 @@ const router = new Router({
                 {
                     path: 'ormsignorgs/:ormsignorg?/editview/:editview?',
                     meta: {
-                        caption: 'entities.ormsignorg.views.editview.caption',
+                        caption: 'entities.ormsignorg.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
@@ -662,7 +707,8 @@ const router = new Router({
                 {
                     path: 'pimpeople/:pimperson?/curleaderpickupgridview/:curleaderpickupgridview?',
                     meta: {
-                        caption: 'entities.pimperson.views.curleaderpickupgridview.caption',
+                        caption: 'entities.pimperson.views.curleaderpickupgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'pimpeople', parameterName: 'pimperson' },
@@ -675,7 +721,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/orgtreegridview/:orgtreegridview?',
                     meta: {
-                        caption: 'entities.ormorg.views.orgtreegridview.caption',
+                        caption: 'entities.ormorg.views.orgtreegridview.title',
+                        info:'',
                         imgPath: '../../../img/pzgl/1/rencaixulie.png',
                         iconCls: '',
                         parameters: [
@@ -690,7 +737,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormposts/:ormpost?/xjgridview/:xjgridview?',
                     meta: {
-                        caption: 'entities.ormpost.views.xjgridview.caption',
+                        caption: 'entities.ormpost.views.xjgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -704,7 +752,8 @@ const router = new Router({
                 {
                     path: 'ormposts/:ormpost?/xjgridview/:xjgridview?',
                     meta: {
-                        caption: 'entities.ormpost.views.xjgridview.caption',
+                        caption: 'entities.ormpost.views.xjgridview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -717,7 +766,8 @@ const router = new Router({
                 {
                     path: 'ormsignorgs/:ormsignorg?/pickupview/:pickupview?',
                     meta: {
-                        caption: 'entities.ormsignorg.views.pickupview.caption',
+                        caption: 'entities.ormsignorg.views.pickupview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
@@ -730,7 +780,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormxmbqs/:ormxmbq?/editview/:editview?',
                     meta: {
-                        caption: 'entities.ormxmbq.views.editview.caption',
+                        caption: 'entities.ormxmbq.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -744,7 +795,8 @@ const router = new Router({
                 {
                     path: 'ormxmbqs/:ormxmbq?/editview/:editview?',
                     meta: {
-                        caption: 'entities.ormxmbq.views.editview.caption',
+                        caption: 'entities.ormxmbq.views.editview.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
@@ -757,7 +809,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.editview9.caption',
+                        caption: 'entities.ormorgsector.views.editview9.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -771,7 +824,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/editview9/:editview9?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.editview9.caption',
+                        caption: 'entities.ormorgsector.views.editview9.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -784,7 +838,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/editview/:editview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.editview.caption',
+                        caption: 'entities.ormorgsector.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenguanli.png',
                         iconCls: '',
                         parameters: [
@@ -800,7 +855,8 @@ const router = new Router({
                 {
                     path: 'ormorgsectors/:ormorgsector?/editview/:editview?',
                     meta: {
-                        caption: 'entities.ormorgsector.views.editview.caption',
+                        caption: 'entities.ormorgsector.views.editview.title',
+                        info:'',
                         imgPath: '../../../img/zzgl/1/bumenguanli.png',
                         iconCls: '',
                         parameters: [
@@ -815,7 +871,8 @@ const router = new Router({
                 {
                     path: 'ormorgs/:ormorg?/editview9_editmode/:editview9_editmode?',
                     meta: {
-                        caption: 'entities.ormorg.views.editview9_editmode.caption',
+                        caption: 'entities.ormorg.views.editview9_editmode.title',
+                        info:'',
                         parameters: [
                             { pathName: 'index', parameterName: 'index' },
                             { pathName: 'ormorgs', parameterName: 'ormorg' },
@@ -828,7 +885,8 @@ const router = new Router({
             {
                 path: 'ormxmbqredirectview/:ormxmbqredirectview?',
                 meta: {
-                    caption: 'entities.ormxmbq.views.redirectview.caption',
+                    caption: 'entities.ormxmbq.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormxmbqredirectview', parameterName: 'ormxmbqredirectview' },
                     ],
@@ -839,7 +897,8 @@ const router = new Router({
             {
                 path: 'ormpostlibredirectview/:ormpostlibredirectview?',
                 meta: {
-                    caption: 'entities.ormpostlib.views.redirectview.caption',
+                    caption: 'entities.ormpostlib.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormpostlibredirectview', parameterName: 'ormpostlibredirectview' },
                     ],
@@ -850,7 +909,8 @@ const router = new Router({
             {
                 path: 'ormdepestmanredirectview/:ormdepestmanredirectview?',
                 meta: {
-                    caption: 'entities.ormdepestman.views.redirectview.caption',
+                    caption: 'entities.ormdepestman.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormdepestmanredirectview', parameterName: 'ormdepestmanredirectview' },
                     ],
@@ -861,7 +921,8 @@ const router = new Router({
             {
                 path: 'contractsignorgredirectview/:contractsignorgredirectview?',
                 meta: {
-                    caption: 'entities.pimcontractsignorg.views.redirectview.caption',
+                    caption: 'entities.pimcontractsignorg.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'contractsignorgredirectview', parameterName: 'contractsignorgredirectview' },
                     ],
@@ -872,7 +933,8 @@ const router = new Router({
             {
                 path: 'ormorgdzredirectview/:ormorgdzredirectview?',
                 meta: {
-                    caption: 'entities.ormorgdz.views.redirectview.caption',
+                    caption: 'entities.ormorgdz.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormorgdzredirectview', parameterName: 'ormorgdzredirectview' },
                     ],
@@ -883,7 +945,8 @@ const router = new Router({
             {
                 path: 'ormbmgwbzredirectview/:ormbmgwbzredirectview?',
                 meta: {
-                    caption: 'entities.ormbmgwbz.views.redirectview.caption',
+                    caption: 'entities.ormbmgwbz.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormbmgwbzredirectview', parameterName: 'ormbmgwbzredirectview' },
                     ],
@@ -894,7 +957,8 @@ const router = new Router({
             {
                 path: 'ormerporgredirectview/:ormerporgredirectview?',
                 meta: {
-                    caption: 'entities.ormerporg.views.redirectview.caption',
+                    caption: 'entities.ormerporg.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormerporgredirectview', parameterName: 'ormerporgredirectview' },
                     ],
@@ -905,7 +969,8 @@ const router = new Router({
             {
                 path: 'ormtitleredirectview/:ormtitleredirectview?',
                 meta: {
-                    caption: 'entities.ormtitle.views.redirectview.caption',
+                    caption: 'entities.ormtitle.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormtitleredirectview', parameterName: 'ormtitleredirectview' },
                     ],
@@ -916,7 +981,8 @@ const router = new Router({
             {
                 path: 'ormorginforedirectview/:ormorginforedirectview?',
                 meta: {
-                    caption: 'entities.ormorginfo.views.redirectview.caption',
+                    caption: 'entities.ormorginfo.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormorginforedirectview', parameterName: 'ormorginforedirectview' },
                     ],
@@ -927,7 +993,8 @@ const router = new Router({
             {
                 path: 'ormorgsectorredirectview/:ormorgsectorredirectview?',
                 meta: {
-                    caption: 'entities.ormorgsector.views.redirectview.caption',
+                    caption: 'entities.ormorgsector.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormorgsectorredirectview', parameterName: 'ormorgsectorredirectview' },
                     ],
@@ -938,7 +1005,8 @@ const router = new Router({
             {
                 path: 'ormorgredirectview/:ormorgredirectview?',
                 meta: {
-                    caption: 'entities.ormorg.views.redirectview.caption',
+                    caption: 'entities.ormorg.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormorgredirectview', parameterName: 'ormorgredirectview' },
                     ],
@@ -949,7 +1017,8 @@ const router = new Router({
             {
                 path: 'ormxmbmxredirectview/:ormxmbmxredirectview?',
                 meta: {
-                    caption: 'entities.ormxmbmx.views.redirectview.caption',
+                    caption: 'entities.ormxmbmx.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormxmbmxredirectview', parameterName: 'ormxmbmxredirectview' },
                     ],
@@ -960,7 +1029,8 @@ const router = new Router({
             {
                 path: 'ormdutyredirectview/:ormdutyredirectview?',
                 meta: {
-                    caption: 'entities.ormduty.views.redirectview.caption',
+                    caption: 'entities.ormduty.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormdutyredirectview', parameterName: 'ormdutyredirectview' },
                     ],
@@ -971,7 +1041,8 @@ const router = new Router({
             {
                 path: 'ormrelationredirectview/:ormrelationredirectview?',
                 meta: {
-                    caption: 'entities.ormrelation.views.redirectview.caption',
+                    caption: 'entities.ormrelation.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormrelationredirectview', parameterName: 'ormrelationredirectview' },
                     ],
@@ -982,7 +1053,8 @@ const router = new Router({
             {
                 path: 'ormeditionredirectview/:ormeditionredirectview?',
                 meta: {
-                    caption: 'entities.ormedition.views.redirectview.caption',
+                    caption: 'entities.ormedition.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormeditionredirectview', parameterName: 'ormeditionredirectview' },
                     ],
@@ -993,7 +1065,8 @@ const router = new Router({
             {
                 path: 'ormxmglredirectview/:ormxmglredirectview?',
                 meta: {
-                    caption: 'entities.ormxmgl.views.redirectview.caption',
+                    caption: 'entities.ormxmgl.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormxmglredirectview', parameterName: 'ormxmglredirectview' },
                     ],
@@ -1004,7 +1077,8 @@ const router = new Router({
             {
                 path: 'ormpostredirectview/:ormpostredirectview?',
                 meta: {
-                    caption: 'entities.ormpost.views.redirectview.caption',
+                    caption: 'entities.ormpost.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormpostredirectview', parameterName: 'ormpostredirectview' },
                     ],
@@ -1015,7 +1089,8 @@ const router = new Router({
             {
                 path: 'ormbmkqdzredirectview/:ormbmkqdzredirectview?',
                 meta: {
-                    caption: 'entities.ormbmkqdz.views.redirectview.caption',
+                    caption: 'entities.ormbmkqdz.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormbmkqdzredirectview', parameterName: 'ormbmkqdzredirectview' },
                     ],
@@ -1026,7 +1101,8 @@ const router = new Router({
             {
                 path: 'ormsignorgredirectview/:ormsignorgredirectview?',
                 meta: {
-                    caption: 'entities.ormsignorg.views.redirectview.caption',
+                    caption: 'entities.ormsignorg.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormsignorgredirectview', parameterName: 'ormsignorgredirectview' },
                     ],
@@ -1037,7 +1113,8 @@ const router = new Router({
             {
                 path: 'ormpostdetailsredirectview/:ormpostdetailsredirectview?',
                 meta: {
-                    caption: 'entities.ormpostdetails.views.redirectview.caption',
+                    caption: 'entities.ormpostdetails.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormpostdetailsredirectview', parameterName: 'ormpostdetailsredirectview' },
                     ],
@@ -1048,7 +1125,8 @@ const router = new Router({
             {
                 path: 'ormqybzwhredirectview/:ormqybzwhredirectview?',
                 meta: {
-                    caption: 'entities.ormqybzwh.views.redirectview.caption',
+                    caption: 'entities.ormqybzwh.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormqybzwhredirectview', parameterName: 'ormqybzwhredirectview' },
                     ],
@@ -1059,7 +1137,8 @@ const router = new Router({
             {
                 path: 'ormqyglredirectview/:ormqyglredirectview?',
                 meta: {
-                    caption: 'entities.ormqygl.views.redirectview.caption',
+                    caption: 'entities.ormqygl.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormqyglredirectview', parameterName: 'ormqyglredirectview' },
                     ],
@@ -1073,7 +1152,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormxmbqs/:ormxmbq?/editview/:editview?',
         meta: {
-            caption: 'entities.ormxmbq.views.editview.caption',
+            caption: 'entities.ormxmbq.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
@@ -1086,7 +1166,8 @@ const router = new Router({
     {
         path: '/ormxmbqs/:ormxmbq?/editview/:editview?',
         meta: {
-            caption: 'entities.ormxmbq.views.editview.caption',
+            caption: 'entities.ormxmbq.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -1098,7 +1179,8 @@ const router = new Router({
             {
                 path: '/ormxmbqredirectview/:ormxmbqredirectview?',
                 meta: {
-                    caption: 'entities.ormxmbq.views.redirectview.caption',
+                    caption: 'entities.ormxmbq.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormxmbqredirectview', parameterName: 'ormxmbqredirectview' },
                     ],
@@ -1109,7 +1191,8 @@ const router = new Router({
             {
                 path: '/ormpostlibredirectview/:ormpostlibredirectview?',
                 meta: {
-                    caption: 'entities.ormpostlib.views.redirectview.caption',
+                    caption: 'entities.ormpostlib.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormpostlibredirectview', parameterName: 'ormpostlibredirectview' },
                     ],
@@ -1120,7 +1203,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/xmbqpickupgridview/:xmbqpickupgridview?',
         meta: {
-            caption: 'entities.ormorg.views.xmbqpickupgridview.caption',
+            caption: 'entities.ormorg.views.xmbqpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'xmbqpickupgridview', parameterName: 'xmbqpickupgridview' },
@@ -1132,7 +1216,8 @@ const router = new Router({
     {
         path: '/ormxmgls/:ormxmgl?/editview/:editview?',
         meta: {
-            caption: 'entities.ormxmgl.views.editview.caption',
+            caption: 'entities.ormxmgl.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormxmgls', parameterName: 'ormxmgl' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -1144,7 +1229,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/editview9_editmode/:editview9_editmode?',
         meta: {
-            caption: 'entities.ormorg.views.editview9_editmode.caption',
+            caption: 'entities.ormorg.views.editview9_editmode.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'editview9_editmode', parameterName: 'editview9_editmode' },
@@ -1156,7 +1242,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.pimperson.views.pickupgridview.caption',
+            caption: 'entities.pimperson.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -1168,7 +1255,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/editview/:editview?',
         meta: {
-            caption: 'entities.ormbmkqdz.views.editview.caption',
+            caption: 'entities.ormbmkqdz.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -1182,7 +1270,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/editview/:editview?',
         meta: {
-            caption: 'entities.ormbmkqdz.views.editview.caption',
+            caption: 'entities.ormbmkqdz.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'ormbmkqdzs', parameterName: 'ormbmkqdz' },
@@ -1195,7 +1284,8 @@ const router = new Router({
     {
         path: '/ormbmkqdzs/:ormbmkqdz?/editview/:editview?',
         meta: {
-            caption: 'entities.ormbmkqdz.views.editview.caption',
+            caption: 'entities.ormbmkqdz.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormbmkqdzs', parameterName: 'ormbmkqdz' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -1207,7 +1297,8 @@ const router = new Router({
             {
                 path: '/ormdepestmanredirectview/:ormdepestmanredirectview?',
                 meta: {
-                    caption: 'entities.ormdepestman.views.redirectview.caption',
+                    caption: 'entities.ormdepestman.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormdepestmanredirectview', parameterName: 'ormdepestmanredirectview' },
                     ],
@@ -1218,7 +1309,8 @@ const router = new Router({
             {
                 path: '/contractsignorgredirectview/:contractsignorgredirectview?',
                 meta: {
-                    caption: 'entities.pimcontractsignorg.views.redirectview.caption',
+                    caption: 'entities.pimcontractsignorg.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'contractsignorgredirectview', parameterName: 'contractsignorgredirectview' },
                     ],
@@ -1229,7 +1321,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/orgtreeexpview/:orgtreeexpview?',
         meta: {
-            caption: 'entities.ormorg.views.orgtreeexpview.caption',
+            caption: 'entities.ormorg.views.orgtreeexpview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/xiangmurenyuanpeizhi.png',
             iconCls: '',
             parameters: [
@@ -1243,7 +1336,8 @@ const router = new Router({
             {
                 path: '/ormorgdzredirectview/:ormorgdzredirectview?',
                 meta: {
-                    caption: 'entities.ormorgdz.views.redirectview.caption',
+                    caption: 'entities.ormorgdz.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormorgdzredirectview', parameterName: 'ormorgdzredirectview' },
                     ],
@@ -1254,7 +1348,8 @@ const router = new Router({
     {
         path: '/ormsignorgs/:ormsignorg?/pimcontractsignorgs/:pimcontractsignorg?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimcontractsignorg.views.gridview.caption',
+            caption: 'entities.pimcontractsignorg.views.gridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/kaoqinshezhi.png',
             iconCls: '',
             parameters: [
@@ -1269,7 +1364,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/pimcontractsignorgs/:pimcontractsignorg?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimcontractsignorg.views.gridview.caption',
+            caption: 'entities.pimcontractsignorg.views.gridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/kaoqinshezhi.png',
             iconCls: '',
             parameters: [
@@ -1284,7 +1380,8 @@ const router = new Router({
     {
         path: '/pimcontractsignorgs/:pimcontractsignorg?/gridview/:gridview?',
         meta: {
-            caption: 'entities.pimcontractsignorg.views.gridview.caption',
+            caption: 'entities.pimcontractsignorg.views.gridview.title',
+            info:'',
             imgPath: '../../../img/newimage/1/kaoqinshezhi.png',
             iconCls: '',
             parameters: [
@@ -1298,7 +1395,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormxmbmxes/:ormxmbmx?/editview/:editview?',
         meta: {
-            caption: 'entities.ormxmbmx.views.editview.caption',
+            caption: 'entities.ormxmbmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -1312,7 +1410,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/ormxmbmxes/:ormxmbmx?/editview/:editview?',
         meta: {
-            caption: 'entities.ormxmbmx.views.editview.caption',
+            caption: 'entities.ormxmbmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'ormxmbmxes', parameterName: 'ormxmbmx' },
@@ -1325,7 +1424,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/ormxmbmxes/:ormxmbmx?/editview/:editview?',
         meta: {
-            caption: 'entities.ormxmbmx.views.editview.caption',
+            caption: 'entities.ormxmbmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'ormxmbmxes', parameterName: 'ormxmbmx' },
@@ -1338,7 +1438,8 @@ const router = new Router({
     {
         path: '/ormxmbmxes/:ormxmbmx?/editview/:editview?',
         meta: {
-            caption: 'entities.ormxmbmx.views.editview.caption',
+            caption: 'entities.ormxmbmx.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormxmbmxes', parameterName: 'ormxmbmx' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -1350,7 +1451,8 @@ const router = new Router({
             {
                 path: '/ormbmgwbzredirectview/:ormbmgwbzredirectview?',
                 meta: {
-                    caption: 'entities.ormbmgwbz.views.redirectview.caption',
+                    caption: 'entities.ormbmgwbz.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormbmgwbzredirectview', parameterName: 'ormbmgwbzredirectview' },
                     ],
@@ -1361,7 +1463,8 @@ const router = new Router({
             {
                 path: '/ormerporgredirectview/:ormerporgredirectview?',
                 meta: {
-                    caption: 'entities.ormerporg.views.redirectview.caption',
+                    caption: 'entities.ormerporg.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormerporgredirectview', parameterName: 'ormerporgredirectview' },
                     ],
@@ -1372,7 +1475,8 @@ const router = new Router({
     {
         path: '/ormtitles/:ormtitle?/editview/:editview?',
         meta: {
-            caption: 'entities.ormtitle.views.editview.caption',
+            caption: 'entities.ormtitle.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormtitles', parameterName: 'ormtitle' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -1384,7 +1488,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/xmbqpickupview/:xmbqpickupview?',
         meta: {
-            caption: 'entities.ormorg.views.xmbqpickupview.caption',
+            caption: 'entities.ormorg.views.xmbqpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'xmbqpickupview', parameterName: 'xmbqpickupview' },
@@ -1396,7 +1501,8 @@ const router = new Router({
             {
                 path: '/ormtitleredirectview/:ormtitleredirectview?',
                 meta: {
-                    caption: 'entities.ormtitle.views.redirectview.caption',
+                    caption: 'entities.ormtitle.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormtitleredirectview', parameterName: 'ormtitleredirectview' },
                     ],
@@ -1407,7 +1513,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/curleaderpickupgridview/:curleaderpickupgridview?',
         meta: {
-            caption: 'entities.pimperson.views.curleaderpickupgridview.caption',
+            caption: 'entities.pimperson.views.curleaderpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'curleaderpickupgridview', parameterName: 'curleaderpickupgridview' },
@@ -1419,7 +1526,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/gridview/:gridview?',
         meta: {
-            caption: 'entities.ormduty.views.gridview.caption',
+            caption: 'entities.ormduty.views.gridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
             iconCls: '',
             parameters: [
@@ -1433,7 +1541,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/editview/:editview?',
         meta: {
-            caption: 'entities.ormorg.views.editview.caption',
+            caption: 'entities.ormorg.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/zuzhiguanli.png',
             iconCls: '',
             parameters: [
@@ -1447,7 +1556,8 @@ const router = new Router({
             {
                 path: '/ormorginforedirectview/:ormorginforedirectview?',
                 meta: {
-                    caption: 'entities.ormorginfo.views.redirectview.caption',
+                    caption: 'entities.ormorginfo.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormorginforedirectview', parameterName: 'ormorginforedirectview' },
                     ],
@@ -1458,7 +1568,8 @@ const router = new Router({
             {
                 path: '/ormorgsectorredirectview/:ormorgsectorredirectview?',
                 meta: {
-                    caption: 'entities.ormorgsector.views.redirectview.caption',
+                    caption: 'entities.ormorgsector.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormorgsectorredirectview', parameterName: 'ormorgsectorredirectview' },
                     ],
@@ -1469,7 +1580,8 @@ const router = new Router({
     {
         path: '/ormsignorgs/:ormsignorg?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.ormsignorg.views.pickupgridview.caption',
+            caption: 'entities.ormsignorg.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -1481,7 +1593,8 @@ const router = new Router({
             {
                 path: '/ormorgredirectview/:ormorgredirectview?',
                 meta: {
-                    caption: 'entities.ormorg.views.redirectview.caption',
+                    caption: 'entities.ormorg.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormorgredirectview', parameterName: 'ormorgredirectview' },
                     ],
@@ -1492,7 +1605,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/ormpostdetails/:ormpostdetails?/editview/:editview?',
         meta: {
-            caption: 'entities.ormpostdetails.views.editview.caption',
+            caption: 'entities.ormpostdetails.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -1506,7 +1620,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/ormpostdetails/:ormpostdetails?/editview/:editview?',
         meta: {
-            caption: 'entities.ormpostdetails.views.editview.caption',
+            caption: 'entities.ormpostdetails.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'ormpostdetails', parameterName: 'ormpostdetails' },
@@ -1519,7 +1634,8 @@ const router = new Router({
     {
         path: '/ormpostlibs/:ormpostlib?/ormpostdetails/:ormpostdetails?/editview/:editview?',
         meta: {
-            caption: 'entities.ormpostdetails.views.editview.caption',
+            caption: 'entities.ormpostdetails.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
                 { pathName: 'ormpostdetails', parameterName: 'ormpostdetails' },
@@ -1532,7 +1648,8 @@ const router = new Router({
     {
         path: '/ormpostdetails/:ormpostdetails?/editview/:editview?',
         meta: {
-            caption: 'entities.ormpostdetails.views.editview.caption',
+            caption: 'entities.ormpostdetails.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormpostdetails', parameterName: 'ormpostdetails' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -1544,7 +1661,8 @@ const router = new Router({
     {
         path: '/ormerporgs/:ormerporg?/editview/:editview?',
         meta: {
-            caption: 'entities.ormerporg.views.editview.caption',
+            caption: 'entities.ormerporg.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormerporgs', parameterName: 'ormerporg' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -1556,7 +1674,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/allleveltwoorgpickupview/:allleveltwoorgpickupview?',
         meta: {
-            caption: 'entities.ormorg.views.allleveltwoorgpickupview.caption',
+            caption: 'entities.ormorg.views.allleveltwoorgpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'allleveltwoorgpickupview', parameterName: 'allleveltwoorgpickupview' },
@@ -1568,7 +1687,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormxmbqs/:ormxmbq?/gridview/:gridview?',
         meta: {
-            caption: 'entities.ormxmbq.views.gridview.caption',
+            caption: 'entities.ormxmbq.views.gridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
@@ -1581,7 +1701,8 @@ const router = new Router({
     {
         path: '/ormxmbqs/:ormxmbq?/gridview/:gridview?',
         meta: {
-            caption: 'entities.ormxmbq.views.gridview.caption',
+            caption: 'entities.ormxmbq.views.gridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormxmbqs', parameterName: 'ormxmbq' },
                 { pathName: 'gridview', parameterName: 'gridview' },
@@ -1593,7 +1714,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzgridview/:bmkqdzgridview?',
         meta: {
-            caption: 'entities.ormbmkqdz.views.bmkqdzgridview.caption',
+            caption: 'entities.ormbmkqdz.views.bmkqdzgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenguanli.png',
             iconCls: '',
             parameters: [
@@ -1609,7 +1731,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzgridview/:bmkqdzgridview?',
         meta: {
-            caption: 'entities.ormbmkqdz.views.bmkqdzgridview.caption',
+            caption: 'entities.ormbmkqdz.views.bmkqdzgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenguanli.png',
             iconCls: '',
             parameters: [
@@ -1624,7 +1747,8 @@ const router = new Router({
     {
         path: '/ormbmkqdzs/:ormbmkqdz?/bmkqdzgridview/:bmkqdzgridview?',
         meta: {
-            caption: 'entities.ormbmkqdz.views.bmkqdzgridview.caption',
+            caption: 'entities.ormbmkqdz.views.bmkqdzgridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenguanli.png',
             iconCls: '',
             parameters: [
@@ -1638,7 +1762,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.ormpost.views.pickupview.caption',
+            caption: 'entities.ormpost.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -1651,7 +1776,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.ormpost.views.pickupview.caption',
+            caption: 'entities.ormpost.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -1663,7 +1789,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/sjorgpickupview/:sjorgpickupview?',
         meta: {
-            caption: 'entities.ormorg.views.sjorgpickupview.caption',
+            caption: 'entities.ormorg.views.sjorgpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'sjorgpickupview', parameterName: 'sjorgpickupview' },
@@ -1675,7 +1802,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/sjorgpickupgridview/:sjorgpickupgridview?',
         meta: {
-            caption: 'entities.ormorg.views.sjorgpickupgridview.caption',
+            caption: 'entities.ormorg.views.sjorgpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'sjorgpickupgridview', parameterName: 'sjorgpickupgridview' },
@@ -1687,7 +1815,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgdzs/:ormorgdz?/gridview/:gridview?',
         meta: {
-            caption: 'entities.ormorgdz.views.gridview.caption',
+            caption: 'entities.ormorgdz.views.gridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/rencaixulie.png',
             iconCls: '',
             parameters: [
@@ -1702,7 +1831,8 @@ const router = new Router({
     {
         path: '/ormorgdzs/:ormorgdz?/gridview/:gridview?',
         meta: {
-            caption: 'entities.ormorgdz.views.gridview.caption',
+            caption: 'entities.ormorgdz.views.gridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/rencaixulie.png',
             iconCls: '',
             parameters: [
@@ -1716,7 +1846,8 @@ const router = new Router({
             {
                 path: '/ormxmbmxredirectview/:ormxmbmxredirectview?',
                 meta: {
-                    caption: 'entities.ormxmbmx.views.redirectview.caption',
+                    caption: 'entities.ormxmbmx.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormxmbmxredirectview', parameterName: 'ormxmbmxredirectview' },
                     ],
@@ -1727,7 +1858,8 @@ const router = new Router({
     {
         path: '/ormsignorgs/:ormsignorg?/pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
         meta: {
-            caption: 'entities.pimcontractsignorg.views.editview.caption',
+            caption: 'entities.pimcontractsignorg.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
                 { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
@@ -1740,7 +1872,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
         meta: {
-            caption: 'entities.pimcontractsignorg.views.editview.caption',
+            caption: 'entities.pimcontractsignorg.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
@@ -1753,7 +1886,8 @@ const router = new Router({
     {
         path: '/pimcontractsignorgs/:pimcontractsignorg?/editview/:editview?',
         meta: {
-            caption: 'entities.pimcontractsignorg.views.editview.caption',
+            caption: 'entities.pimcontractsignorg.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimcontractsignorgs', parameterName: 'pimcontractsignorg' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -1765,7 +1899,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgdzs/:ormorgdz?/editview/:editview?',
         meta: {
-            caption: 'entities.ormorgdz.views.editview.caption',
+            caption: 'entities.ormorgdz.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgdzs', parameterName: 'ormorgdz' },
@@ -1778,7 +1913,8 @@ const router = new Router({
     {
         path: '/ormorgdzs/:ormorgdz?/editview/:editview?',
         meta: {
-            caption: 'entities.ormorgdz.views.editview.caption',
+            caption: 'entities.ormorgdz.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgdzs', parameterName: 'ormorgdz' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -1790,7 +1926,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.pimperson.views.pickupview.caption',
+            caption: 'entities.pimperson.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -1802,7 +1939,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.ormpost.views.pickupgridview.caption',
+            caption: 'entities.ormpost.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -1815,7 +1953,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.ormpost.views.pickupgridview.caption',
+            caption: 'entities.ormpost.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -1827,7 +1966,8 @@ const router = new Router({
             {
                 path: '/ormdutyredirectview/:ormdutyredirectview?',
                 meta: {
-                    caption: 'entities.ormduty.views.redirectview.caption',
+                    caption: 'entities.ormduty.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormdutyredirectview', parameterName: 'ormdutyredirectview' },
                     ],
@@ -1838,7 +1978,8 @@ const router = new Router({
             {
                 path: '/ormrelationredirectview/:ormrelationredirectview?',
                 meta: {
-                    caption: 'entities.ormrelation.views.redirectview.caption',
+                    caption: 'entities.ormrelation.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormrelationredirectview', parameterName: 'ormrelationredirectview' },
                     ],
@@ -1849,7 +1990,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/editview/:editview?',
         meta: {
-            caption: 'entities.ormpost.views.editview.caption',
+            caption: 'entities.ormpost.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/gangweiguanli.png',
             iconCls: '',
             parameters: [
@@ -1864,7 +2006,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/editview/:editview?',
         meta: {
-            caption: 'entities.ormpost.views.editview.caption',
+            caption: 'entities.ormpost.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/gangweiguanli.png',
             iconCls: '',
             parameters: [
@@ -1878,7 +2021,8 @@ const router = new Router({
     {
         path: '/ormsignorgs/:ormsignorg?/editview/:editview?',
         meta: {
-            caption: 'entities.ormsignorg.views.editview.caption',
+            caption: 'entities.ormsignorg.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -1890,7 +2034,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/editview9/:editview9?',
         meta: {
-            caption: 'entities.ormorgsector.views.editview9.caption',
+            caption: 'entities.ormorgsector.views.editview9.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -1903,7 +2048,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/editview9/:editview9?',
         meta: {
-            caption: 'entities.ormorgsector.views.editview9.caption',
+            caption: 'entities.ormorgsector.views.editview9.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'editview9', parameterName: 'editview9' },
@@ -1915,7 +2061,8 @@ const router = new Router({
             {
                 path: '/ormeditionredirectview/:ormeditionredirectview?',
                 meta: {
-                    caption: 'entities.ormedition.views.redirectview.caption',
+                    caption: 'entities.ormedition.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormeditionredirectview', parameterName: 'ormeditionredirectview' },
                     ],
@@ -1926,7 +2073,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/editview9/:editview9?',
         meta: {
-            caption: 'entities.ormorg.views.editview9.caption',
+            caption: 'entities.ormorg.views.editview9.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'editview9', parameterName: 'editview9' },
@@ -1938,7 +2086,8 @@ const router = new Router({
     {
         path: '/ormorginfos/:ormorginfo?/editview/:editview?',
         meta: {
-            caption: 'entities.ormorginfo.views.editview.caption',
+            caption: 'entities.ormorginfo.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorginfos', parameterName: 'ormorginfo' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -1950,7 +2099,8 @@ const router = new Router({
     {
         path: '/ormsignorgs/:ormsignorg?/gridview/:gridview?',
         meta: {
-            caption: 'entities.ormsignorg.views.gridview.caption',
+            caption: 'entities.ormsignorg.views.gridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
                 { pathName: 'gridview', parameterName: 'gridview' },
@@ -1962,7 +2112,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/ormbmgwbzs/:ormbmgwbz?/editview/:editview?',
         meta: {
-            caption: 'entities.ormbmgwbz.views.editview.caption',
+            caption: 'entities.ormbmgwbz.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -1976,7 +2127,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmgwbzs/:ormbmgwbz?/editview/:editview?',
         meta: {
-            caption: 'entities.ormbmgwbz.views.editview.caption',
+            caption: 'entities.ormbmgwbz.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -1990,7 +2142,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/ormbmgwbzs/:ormbmgwbz?/editview/:editview?',
         meta: {
-            caption: 'entities.ormbmgwbz.views.editview.caption',
+            caption: 'entities.ormbmgwbz.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'ormbmgwbzs', parameterName: 'ormbmgwbz' },
@@ -2003,7 +2156,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/ormbmgwbzs/:ormbmgwbz?/editview/:editview?',
         meta: {
-            caption: 'entities.ormbmgwbz.views.editview.caption',
+            caption: 'entities.ormbmgwbz.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'ormbmgwbzs', parameterName: 'ormbmgwbz' },
@@ -2016,7 +2170,8 @@ const router = new Router({
     {
         path: '/ormbmgwbzs/:ormbmgwbz?/editview/:editview?',
         meta: {
-            caption: 'entities.ormbmgwbz.views.editview.caption',
+            caption: 'entities.ormbmgwbz.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormbmgwbzs', parameterName: 'ormbmgwbz' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -2028,7 +2183,8 @@ const router = new Router({
             {
                 path: '/ormxmglredirectview/:ormxmglredirectview?',
                 meta: {
-                    caption: 'entities.ormxmgl.views.redirectview.caption',
+                    caption: 'entities.ormxmgl.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormxmglredirectview', parameterName: 'ormxmglredirectview' },
                     ],
@@ -2039,7 +2195,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/gridview/:gridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.gridview.caption',
+            caption: 'entities.ormorgsector.views.gridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenguanli.png',
             iconCls: '',
             parameters: [
@@ -2054,7 +2211,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/gridview/:gridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.gridview.caption',
+            caption: 'entities.ormorgsector.views.gridview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenguanli.png',
             iconCls: '',
             parameters: [
@@ -2068,7 +2226,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormposts/:ormpost?/xjgridview/:xjgridview?',
         meta: {
-            caption: 'entities.ormpost.views.xjgridview.caption',
+            caption: 'entities.ormpost.views.xjgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormposts', parameterName: 'ormpost' },
@@ -2081,7 +2240,8 @@ const router = new Router({
     {
         path: '/ormposts/:ormpost?/xjgridview/:xjgridview?',
         meta: {
-            caption: 'entities.ormpost.views.xjgridview.caption',
+            caption: 'entities.ormpost.views.xjgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormposts', parameterName: 'ormpost' },
                 { pathName: 'xjgridview', parameterName: 'xjgridview' },
@@ -2093,7 +2253,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/allleveltwoorgpickupgridview/:allleveltwoorgpickupgridview?',
         meta: {
-            caption: 'entities.ormorg.views.allleveltwoorgpickupgridview.caption',
+            caption: 'entities.ormorg.views.allleveltwoorgpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'allleveltwoorgpickupgridview', parameterName: 'allleveltwoorgpickupgridview' },
@@ -2105,7 +2266,8 @@ const router = new Router({
     {
         path: '/pimpeople/:pimperson?/curleaderpickupview/:curleaderpickupview?',
         meta: {
-            caption: 'entities.pimperson.views.curleaderpickupview.caption',
+            caption: 'entities.pimperson.views.curleaderpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'pimpeople', parameterName: 'pimperson' },
                 { pathName: 'curleaderpickupview', parameterName: 'curleaderpickupview' },
@@ -2117,7 +2279,8 @@ const router = new Router({
     {
         path: '/ormerporgs/:ormerporg?/legalmpickupview/:legalmpickupview?',
         meta: {
-            caption: 'entities.ormerporg.views.legalmpickupview.caption',
+            caption: 'entities.ormerporg.views.legalmpickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormerporgs', parameterName: 'ormerporg' },
                 { pathName: 'legalmpickupview', parameterName: 'legalmpickupview' },
@@ -2129,7 +2292,8 @@ const router = new Router({
     {
         path: '/ormerporgs/:ormerporg?/legalpickupgridview/:legalpickupgridview?',
         meta: {
-            caption: 'entities.ormerporg.views.legalpickupgridview.caption',
+            caption: 'entities.ormerporg.views.legalpickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormerporgs', parameterName: 'ormerporg' },
                 { pathName: 'legalpickupgridview', parameterName: 'legalpickupgridview' },
@@ -2141,7 +2305,8 @@ const router = new Router({
     {
         path: '/ormqygls/:ormqygl?/editview/:editview?',
         meta: {
-            caption: 'entities.ormqygl.views.editview.caption',
+            caption: 'entities.ormqygl.views.editview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/xuliegangweiguanxi.png',
             iconCls: '',
             parameters: [
@@ -2155,7 +2320,8 @@ const router = new Router({
     {
         path: '/ormqybzwhs/:ormqybzwh?/editview/:editview?',
         meta: {
-            caption: 'entities.ormqybzwh.views.editview.caption',
+            caption: 'entities.ormqybzwh.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormqybzwhs', parameterName: 'ormqybzwh' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -2167,7 +2333,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/editview/:editview?',
         meta: {
-            caption: 'entities.ormorgsector.views.editview.caption',
+            caption: 'entities.ormorgsector.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenguanli.png',
             iconCls: '',
             parameters: [
@@ -2182,7 +2349,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/editview/:editview?',
         meta: {
-            caption: 'entities.ormorgsector.views.editview.caption',
+            caption: 'entities.ormorgsector.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenguanli.png',
             iconCls: '',
             parameters: [
@@ -2196,7 +2364,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/bzcxgridview/:bzcxgridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.bzcxgridview.caption',
+            caption: 'entities.ormorgsector.views.bzcxgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -2209,7 +2378,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/bzcxgridview/:bzcxgridview?',
         meta: {
-            caption: 'entities.ormorgsector.views.bzcxgridview.caption',
+            caption: 'entities.ormorgsector.views.bzcxgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'bzcxgridview', parameterName: 'bzcxgridview' },
@@ -2221,7 +2391,8 @@ const router = new Router({
     {
         path: '/ormrelations/:ormrelation?/editview/:editview?',
         meta: {
-            caption: 'entities.ormrelation.views.editview.caption',
+            caption: 'entities.ormrelation.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormrelations', parameterName: 'ormrelation' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -2233,7 +2404,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzeditview/:bmkqdzeditview?',
         meta: {
-            caption: 'entities.ormbmkqdz.views.bmkqdzeditview.caption',
+            caption: 'entities.ormbmkqdz.views.bmkqdzeditview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenguanli.png',
             iconCls: '',
             parameters: [
@@ -2249,7 +2421,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/ormbmkqdzs/:ormbmkqdz?/bmkqdzeditview/:bmkqdzeditview?',
         meta: {
-            caption: 'entities.ormbmkqdz.views.bmkqdzeditview.caption',
+            caption: 'entities.ormbmkqdz.views.bmkqdzeditview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenguanli.png',
             iconCls: '',
             parameters: [
@@ -2264,7 +2437,8 @@ const router = new Router({
     {
         path: '/ormbmkqdzs/:ormbmkqdz?/bmkqdzeditview/:bmkqdzeditview?',
         meta: {
-            caption: 'entities.ormbmkqdz.views.bmkqdzeditview.caption',
+            caption: 'entities.ormbmkqdz.views.bmkqdzeditview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenguanli.png',
             iconCls: '',
             parameters: [
@@ -2278,7 +2452,8 @@ const router = new Router({
     {
         path: '/ormeditions/:ormedition?/editview/:editview?',
         meta: {
-            caption: 'entities.ormedition.views.editview.caption',
+            caption: 'entities.ormedition.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormeditions', parameterName: 'ormedition' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -2290,7 +2465,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/orgtreegridview/:orgtreegridview?',
         meta: {
-            caption: 'entities.ormorg.views.orgtreegridview.caption',
+            caption: 'entities.ormorg.views.orgtreegridview.title',
+            info:'',
             imgPath: '../../../img/pzgl/1/rencaixulie.png',
             iconCls: '',
             parameters: [
@@ -2304,7 +2480,8 @@ const router = new Router({
             {
                 path: '/ormpostredirectview/:ormpostredirectview?',
                 meta: {
-                    caption: 'entities.ormpost.views.redirectview.caption',
+                    caption: 'entities.ormpost.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormpostredirectview', parameterName: 'ormpostredirectview' },
                     ],
@@ -2315,7 +2492,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.ormorg.views.pickupgridview.caption',
+            caption: 'entities.ormorg.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
@@ -2327,7 +2505,8 @@ const router = new Router({
             {
                 path: '/ormbmkqdzredirectview/:ormbmkqdzredirectview?',
                 meta: {
-                    caption: 'entities.ormbmkqdz.views.redirectview.caption',
+                    caption: 'entities.ormbmkqdz.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormbmkqdzredirectview', parameterName: 'ormbmkqdzredirectview' },
                     ],
@@ -2338,7 +2517,8 @@ const router = new Router({
             {
                 path: '/ormsignorgredirectview/:ormsignorgredirectview?',
                 meta: {
-                    caption: 'entities.ormsignorg.views.redirectview.caption',
+                    caption: 'entities.ormsignorg.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormsignorgredirectview', parameterName: 'ormsignorgredirectview' },
                     ],
@@ -2349,7 +2529,8 @@ const router = new Router({
     {
         path: '/ormpostlibs/:ormpostlib?/editview/:editview?',
         meta: {
-            caption: 'entities.ormpostlib.views.editview.caption',
+            caption: 'entities.ormpostlib.views.editview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
                 { pathName: 'editview', parameterName: 'editview' },
@@ -2361,7 +2542,8 @@ const router = new Router({
     {
         path: '/ormsignorgs/:ormsignorg?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.ormsignorg.views.pickupview.caption',
+            caption: 'entities.ormsignorg.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormsignorgs', parameterName: 'ormsignorg' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -2373,7 +2555,8 @@ const router = new Router({
     {
         path: '/ormpostlibs/:ormpostlib?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.ormpostlib.views.pickupview.caption',
+            caption: 'entities.ormpostlib.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -2385,7 +2568,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/editview/:editview?',
         meta: {
-            caption: 'entities.ormduty.views.editview.caption',
+            caption: 'entities.ormduty.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/zhiwuguanli.png',
             iconCls: '',
             parameters: [
@@ -2399,7 +2583,8 @@ const router = new Router({
             {
                 path: '/ormpostdetailsredirectview/:ormpostdetailsredirectview?',
                 meta: {
-                    caption: 'entities.ormpostdetails.views.redirectview.caption',
+                    caption: 'entities.ormpostdetails.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormpostdetailsredirectview', parameterName: 'ormpostdetailsredirectview' },
                     ],
@@ -2410,7 +2595,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/ormdepestmen/:ormdepestman?/editview/:editview?',
         meta: {
-            caption: 'entities.ormdepestman.views.editview.caption',
+            caption: 'entities.ormdepestman.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenbianzhi.png',
             iconCls: '',
             parameters: [
@@ -2426,7 +2612,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/ormdepestmen/:ormdepestman?/editview/:editview?',
         meta: {
-            caption: 'entities.ormdepestman.views.editview.caption',
+            caption: 'entities.ormdepestman.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenbianzhi.png',
             iconCls: '',
             parameters: [
@@ -2441,7 +2628,8 @@ const router = new Router({
     {
         path: '/ormduties/:ormduty?/ormdepestmen/:ormdepestman?/editview/:editview?',
         meta: {
-            caption: 'entities.ormdepestman.views.editview.caption',
+            caption: 'entities.ormdepestman.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenbianzhi.png',
             iconCls: '',
             parameters: [
@@ -2456,7 +2644,8 @@ const router = new Router({
     {
         path: '/ormdepestmen/:ormdepestman?/editview/:editview?',
         meta: {
-            caption: 'entities.ormdepestman.views.editview.caption',
+            caption: 'entities.ormdepestman.views.editview.title',
+            info:'',
             imgPath: '../../../img/zzgl/1/bumenbianzhi.png',
             iconCls: '',
             parameters: [
@@ -2470,7 +2659,8 @@ const router = new Router({
             {
                 path: '/ormqybzwhredirectview/:ormqybzwhredirectview?',
                 meta: {
-                    caption: 'entities.ormqybzwh.views.redirectview.caption',
+                    caption: 'entities.ormqybzwh.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormqybzwhredirectview', parameterName: 'ormqybzwhredirectview' },
                     ],
@@ -2481,7 +2671,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/editview9_editmode/:editview9_editmode?',
         meta: {
-            caption: 'entities.ormorgsector.views.editview9_editmode.caption',
+            caption: 'entities.ormorgsector.views.editview9_editmode.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
@@ -2494,7 +2685,8 @@ const router = new Router({
     {
         path: '/ormorgsectors/:ormorgsector?/editview9_editmode/:editview9_editmode?',
         meta: {
-            caption: 'entities.ormorgsector.views.editview9_editmode.caption',
+            caption: 'entities.ormorgsector.views.editview9_editmode.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
                 { pathName: 'editview9_editmode', parameterName: 'editview9_editmode' },
@@ -2506,7 +2698,8 @@ const router = new Router({
             {
                 path: '/ormqyglredirectview/:ormqyglredirectview?',
                 meta: {
-                    caption: 'entities.ormqygl.views.redirectview.caption',
+                    caption: 'entities.ormqygl.views.redirectview.title',
+                    info:'',
                     parameters: [
                         { pathName: 'ormqyglredirectview', parameterName: 'ormqyglredirectview' },
                     ],
@@ -2517,7 +2710,8 @@ const router = new Router({
     {
         path: '/ormorgs/:ormorg?/pickupview/:pickupview?',
         meta: {
-            caption: 'entities.ormorg.views.pickupview.caption',
+            caption: 'entities.ormorg.views.pickupview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'pickupview', parameterName: 'pickupview' },
@@ -2529,7 +2723,8 @@ const router = new Router({
     {
         path: '/ormpostlibs/:ormpostlib?/pickupgridview/:pickupgridview?',
         meta: {
-            caption: 'entities.ormpostlib.views.pickupgridview.caption',
+            caption: 'entities.ormpostlib.views.pickupgridview.title',
+            info:'',
             parameters: [
                 { pathName: 'ormpostlibs', parameterName: 'ormpostlib' },
                 { pathName: 'pickupgridview', parameterName: 'pickupgridview' },

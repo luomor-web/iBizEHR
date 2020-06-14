@@ -12,12 +12,14 @@
           </i-col>
           <i-col v-show="detailsModel.n_lx_eq.visible" :style="{}"  :lg="{ span: 6, offset: 0 }">
               <app-form-item name='n_lx_eq' :itemRules="this.rules.n_lx_eq" class='' :caption="$t('entities.pimrewardpunishment.default_searchform.details.n_lx_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_lx_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-               <dropdown-list 
+              
+           <dropdown-list 
               v-model="data.n_lx_eq" 
               :data="data" 
               :context="context"
               :viewparams="viewparams"
-              :itemParam="{}" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
               :disabled="detailsModel.n_lx_eq.disabled"  
               tag='EhrCodeList0124' 
               codelistType='STATIC'

@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.ybrgx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ybrgx' :itemRules="this.rules.ybrgx" class='' :caption="$t('entities.pimfaminfo.main_2_form.details.ybrgx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ybrgx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.ybrgx" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.ybrgx.disabled"  
     tag='EhrCodeList0043' 
     codelistType='DYNAMIC'
@@ -30,12 +32,14 @@
 </i-col>
 <i-col v-show="detailsModel.zjlx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zjlx' :itemRules="this.rules.zjlx" class='' :caption="$t('entities.pimfaminfo.main_2_form.details.zjlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zjlx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.zjlx" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.zjlx.disabled"  
     tag='EhrCodeList0231' 
     codelistType='DYNAMIC'
@@ -52,12 +56,14 @@
 </i-col>
 <i-col v-show="detailsModel.xb.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='xb' :itemRules="this.rules.xb" class='' :caption="$t('entities.pimfaminfo.main_2_form.details.xb')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xb.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.xb" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.xb.disabled"  
     tag='EhrCodeList0072' 
     codelistType='DYNAMIC'
@@ -92,12 +98,14 @@
 </i-col>
 <i-col v-show="detailsModel.zzmm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zzmm' :itemRules="this.rules.zzmm" class='' :caption="$t('entities.pimfaminfo.main_2_form.details.zzmm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zzmm.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.zzmm" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.zzmm.disabled"  
     tag='EhrCodeList0029' 
     codelistType='DYNAMIC'
@@ -108,14 +116,16 @@
 </i-col>
 <i-col v-show="detailsModel.sfjjllr.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfjjllr' :itemRules="this.rules.sfjjllr" class='' :caption="$t('entities.pimfaminfo.main_2_form.details.sfjjllr')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfjjllr.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.sfjjllr"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.sfjjllr.disabled"  
   name="sfjjllr" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0097' 
   codelistType='STATIC' 
   style="">
@@ -131,14 +141,16 @@
 </i-col>
 <i-col v-show="detailsModel.sruvivors.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sruvivors' :itemRules="this.rules.sruvivors" class='' :caption="$t('entities.pimfaminfo.main_2_form.details.sruvivors')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sruvivors.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.sruvivors"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.sruvivors.disabled"  
   name="sruvivors" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0400' 
   codelistType='STATIC' 
   style="">

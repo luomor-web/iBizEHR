@@ -272,6 +272,9 @@ export default {
             ok: '确认',
             cancel: '取消',
         },
+        local:{
+            new: '新建'
+        },
         gridpage: {
             choicecolumns: '选择列',
             refresh: '刷新',

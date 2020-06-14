@@ -131,6 +131,20 @@ export declare interface Util {
     formatData(arg: any,parent:any, params: any): any ;
 
     /**
+     * 计算导航数据
+     * 先从当前数据目标计算，然后再从当前上下文计算，最后从当前视图参数计算，没有则为null
+     * 
+     * @static
+     * @param {any} data 表单数据
+     * @param {any} parentContext 外层context
+     * @param {any} parentParam 外层param
+     * @param {any} params 附加参数
+     * @returns {any}
+     * @memberof Util
+     */ 
+    computedNavData(data:any,parentContext:any,parentParam:any,params:any):any;
+
+    /**
      * 日期格式化
      *
      * @static

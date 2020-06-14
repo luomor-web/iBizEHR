@@ -31,14 +31,14 @@ public class TrmZzobmSearchContext extends QueryWrapperContext<TrmZzobm> {
 	public void setN_lx_eq(String n_lx_eq) {
         this.n_lx_eq = n_lx_eq;
         if(!ObjectUtils.isEmpty(this.n_lx_eq)){
-            this.getSelectCond().eq("lx", n_lx_eq);
+            this.getSearchCond().eq("lx", n_lx_eq);
         }
     }
 	private String n_trmzzobmname_like;//[单位/部门名称]
 	public void setN_trmzzobmname_like(String n_trmzzobmname_like) {
         this.n_trmzzobmname_like = n_trmzzobmname_like;
         if(!ObjectUtils.isEmpty(this.n_trmzzobmname_like)){
-            this.getSelectCond().like("trmzzobmname", n_trmzzobmname_like);
+            this.getSearchCond().like("trmzzobmname", n_trmzzobmname_like);
         }
     }
 
@@ -49,7 +49,7 @@ public class TrmZzobmSearchContext extends QueryWrapperContext<TrmZzobm> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("trmzzobmname", query)   
             );
 		 }

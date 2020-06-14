@@ -67,19 +67,6 @@ export default class VacLeaveDetailServiceBase extends EntityService {
     }
 
     /**
-     * CalcSJQJTS接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof VacLeaveDetailServiceBase
-     */
-    public async CalcSJQJTS(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-            return Http.getInstance().post(`/vacleavedetails/${context.vacleavedetail}/calcsjqjts`,data,isloading);
-    }
-
-    /**
      * Create接口方法
      *
      * @param {*} [context={}]
@@ -150,21 +137,6 @@ export default class VacLeaveDetailServiceBase extends EntityService {
     }
 
     /**
-     * CalcJHQJTS接口方法
-     *
-     * @param {*} [context={}]
-     * @param {*} [data={}]
-     * @param {boolean} [isloading]
-     * @returns {Promise<any>}
-     * @memberof VacLeaveDetailServiceBase
-     */
-    public async CalcJHQJTS(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:CalcPlanDaysLogic = new CalcPlanDaysLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
-        const result = await appLogic.onExecute(context,data,isloading?true:false);
-        return {status:200,data:result};
-    }
-
-    /**
      * Get接口方法
      *
      * @param {*} [context={}]
@@ -177,6 +149,19 @@ export default class VacLeaveDetailServiceBase extends EntityService {
             let res:any = await Http.getInstance().get(`/vacleavedetails/${context.vacleavedetail}`,isloading);
             return res;
 
+    }
+
+    /**
+     * CalcPlanDays接口方法
+     *
+     * @param {*} [context={}]
+     * @param {*} [data={}]
+     * @param {boolean} [isloading]
+     * @returns {Promise<any>}
+     * @memberof VacLeaveDetailServiceBase
+     */
+    public async CalcPlanDays(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+            return Http.getInstance().post(`/vacleavedetails/${context.vacleavedetail}/calcplandays`,data,isloading);
     }
 
     /**

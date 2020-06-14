@@ -399,7 +399,6 @@ export default class PCMPROFILERLSB_CSRCYJGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -428,7 +427,6 @@ export default class PCMPROFILERLSB_CSRCYJGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -457,7 +455,6 @@ export default class PCMPROFILERLSB_CSRCYJGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -487,7 +484,6 @@ export default class PCMPROFILERLSB_CSRCYJGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -517,7 +513,6 @@ export default class PCMPROFILERLSB_CSRCYJGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -546,7 +541,6 @@ export default class PCMPROFILERLSB_CSRCYJGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -575,7 +569,6 @@ export default class PCMPROFILERLSB_CSRCYJGridViewBase extends GridViewBase {
         // _this 指向容器对象
         const _this: any = this;
         let paramJO:any = {};
-        
         let contextJO:any = {};
         xData = this.$refs.grid;
         if (xData.getDatas && xData.getDatas instanceof Function) {
@@ -599,6 +592,8 @@ export default class PCMPROFILERLSB_CSRCYJGridViewBase extends GridViewBase {
      * @memberof PCMPROFILERLSB_CSRCYJGridView
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
+        let localContext:any = null;
+        let localViewParam:any =null;
     this.$Notice.warning({ title: '错误', desc: '未指定关系视图' });
     }
 
@@ -614,10 +609,12 @@ export default class PCMPROFILERLSB_CSRCYJGridViewBase extends GridViewBase {
      * @memberof PCMPROFILERLSB_CSRCYJGridView
      */
     public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
+        let localContext:any = null;
+        let localViewParam:any =null;
         const data: any = {};
-        let curViewParam = JSON.parse(JSON.stringify(this.context));
+        let tempContext = JSON.parse(JSON.stringify(this.context));
         if(args.length >0){
-            Object.assign(curViewParam,args[0]);
+            Object.assign(tempContext,args[0]);
         }
         const deResParameters: any[] = [];
         const parameters: any[] = [
@@ -625,7 +622,7 @@ export default class PCMPROFILERLSB_CSRCYJGridViewBase extends GridViewBase {
         ];
         const _this: any = this;
         const openDrawer = (view: any, data: any) => {
-            let container: Subject<any> = this.$appdrawer.openDrawer(view, curViewParam, data);
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, tempContext, data);
             container.subscribe((result: any) => {
                 if (!result || !Object.is(result.ret, 'OK')) {
                     return;

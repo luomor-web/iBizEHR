@@ -42,11 +42,11 @@ export default {
 	views: {
 		gridview: {
 			caption: "职称信息",
-      title: '职称信息',
+      title: '职称信息表格视图',
 		},
 		wsseditview: {
 			caption: "职称信息",
-      title: '职称信息',
+      title: '职称信息编辑视图',
 		},
 		zyjszwgridview: {
 			caption: "专业技术职务",
@@ -54,39 +54,39 @@ export default {
 		},
 		mpickupview: {
 			caption: "职称信息",
-      title: '职称信息',
+      title: '职称信息数据多项选择视图',
 		},
 		greditview: {
 			caption: "职称信息",
-      title: '职称信息',
+      title: '职称信息编辑视图',
 		},
 		grpimzhicgridview: {
 			caption: "职称信息",
-      title: '职称信息',
+      title: '职称信息表格视图',
 		},
 		pimzhicgridview: {
 			caption: "职称信息",
-      title: '职称信息',
+      title: '职称信息表格视图',
 		},
 		editview: {
 			caption: "职称信息",
-      title: '职称信息',
+      title: '职称信息编辑视图',
 		},
 		editview2: {
 			caption: "职称信息",
-      title: '职称信息',
+      title: '职称信息编辑视图',
 		},
 		pickupview: {
 			caption: "职称信息",
-      title: '职称信息',
+      title: '职称信息数据选择视图',
 		},
 		pickupgridview: {
 			caption: "职称信息",
-      title: '职称信息',
+      title: '职称信息选择表格视图',
 		},
 		redirectview: {
 			caption: "职称信息",
-      title: '职称信息',
+      title: '职称信息数据重定向视图',
 		},
 	},
 	main_3_form: {

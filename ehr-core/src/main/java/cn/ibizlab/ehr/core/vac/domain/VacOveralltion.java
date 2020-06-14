@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[统筹休假(暂时停用)]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_VACOVERALLTION",resultMap = "VacOveralltionResultMap")
 public class VacOveralltion extends EntityMP implements Serializable {
 
@@ -180,12 +181,24 @@ public class VacOveralltion extends EntityMP implements Serializable {
         this.xjlx = xjlx ;
         this.modify("xjlx",xjlx);
     }
+
     /**
      * 设置 [结束时间]
      */
     public void setJssj(Timestamp jssj){
         this.jssj = jssj ;
         this.modify("jssj",jssj);
+    }
+
+    /**
+     * 格式化日期 [结束时间]
+     */
+    public String formatJssj(){
+        if (this.jssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(jssj);
     }
     /**
      * 设置 [扣除休假天数]
@@ -194,6 +207,7 @@ public class VacOveralltion extends EntityMP implements Serializable {
         this.kcxjts = kcxjts ;
         this.modify("kcxjts",kcxjts);
     }
+
     /**
      * 设置 [统筹休假名称]
      */
@@ -201,12 +215,24 @@ public class VacOveralltion extends EntityMP implements Serializable {
         this.vacoveralltionname = vacoveralltionname ;
         this.modify("vacoveralltionname",vacoveralltionname);
     }
+
     /**
      * 设置 [开始时间]
      */
     public void setKssj(Timestamp kssj){
         this.kssj = kssj ;
         this.modify("kssj",kssj);
+    }
+
+    /**
+     * 格式化日期 [开始时间]
+     */
+    public String formatKssj(){
+        if (this.kssj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(kssj);
     }
     /**
      * 设置 [组织标识]
@@ -215,6 +241,7 @@ public class VacOveralltion extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -222,6 +249,7 @@ public class VacOveralltion extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

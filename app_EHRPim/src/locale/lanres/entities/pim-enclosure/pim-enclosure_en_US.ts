@@ -23,43 +23,43 @@ export default {
 	views: {
 		filepreviewcustomview: {
 			caption: "附件预览",
-      title: '附件预览',
+      title: '表格附件预览',
 		},
 		pickupgridview: {
 			caption: "附件信息",
-      title: '附件信息',
+      title: '附件信息选择表格视图',
 		},
 		pickupview: {
 			caption: "附件信息",
-      title: '附件信息',
+      title: '附件信息数据选择视图',
 		},
 		editview2: {
 			caption: "附件信息",
-      title: '附件信息',
+      title: '附件信息编辑视图',
 		},
 		pcmprofilefujgridview: {
 			caption: "附件信息",
-      title: '附件信息',
+      title: '应聘者附件预览',
 		},
 		redirectview: {
 			caption: "附件信息",
-      title: '附件信息',
+      title: '附件信息数据重定向视图',
 		},
 		editview: {
 			caption: "附件信息",
-      title: '附件信息',
+      title: '附件信息编辑视图',
 		},
 		pimfujgridview: {
 			caption: "附件信息",
-      title: '附件信息',
+      title: '附件信息表格视图',
 		},
 		mpickupview: {
 			caption: "附件信息",
-      title: '附件信息',
+      title: '附件信息数据多项选择视图',
 		},
 		gridview: {
 			caption: "附件信息",
-      title: '附件信息',
+      title: '附件信息表格视图',
 		},
 	},
 	main_form: {

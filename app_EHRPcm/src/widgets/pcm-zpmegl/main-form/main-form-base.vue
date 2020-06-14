@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.nd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='nd' :itemRules="this.rules.nd" class='' :caption="$t('entities.pcmzpmegl.main_form.details.nd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.nd" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.nd.disabled"  
     tag='EhrCodeList0009' 
     codelistType='STATIC'
@@ -24,12 +26,14 @@
 </i-col>
 <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.pcmzpmegl.main_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="180" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormorgname.disabled"
   name='ormorgname'
   deMajorField='orgname'
@@ -69,14 +73,16 @@
 </i-col>
 <i-col v-show="detailsModel.sfce_xza.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfce_xza' :itemRules="this.rules.sfce_xza" class='' :caption="$t('entities.pcmzpmegl.main_form.details.sfce_xza')" uiStyle="DEFAULT" :labelWidth="180" :isShowCaption="true" :error="detailsModel.sfce_xza.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.sfce_xza"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.sfce_xza.disabled"  
   name="sfce_xza" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0181' 
   codelistType='STATIC' 
   style="">
@@ -98,14 +104,16 @@
 </i-col>
 <i-col v-show="detailsModel.sfce_xzb.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfce_xzb' :itemRules="this.rules.sfce_xzb" class='' :caption="$t('entities.pcmzpmegl.main_form.details.sfce_xzb')" uiStyle="DEFAULT" :labelWidth="180" :isShowCaption="true" :error="detailsModel.sfce_xzb.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.sfce_xzb"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.sfce_xzb.disabled"  
   name="sfce_xzb" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0181' 
   codelistType='STATIC' 
   style="">
@@ -127,14 +135,16 @@
 </i-col>
 <i-col v-show="detailsModel.sfce_xzxzy.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfce_xzxzy' :itemRules="this.rules.sfce_xzxzy" class='' :caption="$t('entities.pcmzpmegl.main_form.details.sfce_xzxzy')" uiStyle="DEFAULT" :labelWidth="180" :isShowCaption="true" :error="detailsModel.sfce_xzxzy.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.sfce_xzxzy"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.sfce_xzxzy.disabled"  
   name="sfce_xzxzy" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0181' 
   codelistType='STATIC' 
   style="">
@@ -156,14 +166,16 @@
 </i-col>
 <i-col v-show="detailsModel.sfce_sza.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfce_sza' :itemRules="this.rules.sfce_sza" class='' :caption="$t('entities.pcmzpmegl.main_form.details.sfce_sza')" uiStyle="DEFAULT" :labelWidth="180" :isShowCaption="true" :error="detailsModel.sfce_sza.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.sfce_sza"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.sfce_sza.disabled"  
   name="sfce_sza" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0181' 
   codelistType='STATIC' 
   style="">
@@ -185,14 +197,16 @@
 </i-col>
 <i-col v-show="detailsModel.sfce_szb.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfce_szb' :itemRules="this.rules.sfce_szb" class='' :caption="$t('entities.pcmzpmegl.main_form.details.sfce_szb')" uiStyle="DEFAULT" :labelWidth="180" :isShowCaption="true" :error="detailsModel.sfce_szb.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.sfce_szb"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.sfce_szb.disabled"  
   name="sfce_szb" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0181' 
   codelistType='STATIC' 
   style="">
@@ -214,14 +228,16 @@
 </i-col>
 <i-col v-show="detailsModel.sfce_szy.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfce_szy' :itemRules="this.rules.sfce_szy" class='' :caption="$t('entities.pcmzpmegl.main_form.details.sfce_szy')" uiStyle="DEFAULT" :labelWidth="180" :isShowCaption="true" :error="detailsModel.sfce_szy.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.sfce_szy"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.sfce_szy.disabled"  
   name="sfce_szy" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0181' 
   codelistType='STATIC' 
   style="">
@@ -243,14 +259,16 @@
 </i-col>
 <i-col v-show="detailsModel.sfce_szjhw.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfce_szjhw' :itemRules="this.rules.sfce_szjhw" class='' :caption="$t('entities.pcmzpmegl.main_form.details.sfce_szjhw')" uiStyle="DEFAULT" :labelWidth="180" :isShowCaption="true" :error="detailsModel.sfce_szjhw.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.sfce_szjhw"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.sfce_szjhw.disabled"  
   name="sfce_szjhw" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0181' 
   codelistType='STATIC' 
   style="">

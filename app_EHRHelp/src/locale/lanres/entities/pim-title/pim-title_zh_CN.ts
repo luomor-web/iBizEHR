@@ -41,11 +41,11 @@ export default {
 	views: {
 		greditview: {
 			caption: '职称信息',
-      title: '职称信息',
+      title: '职称信息编辑视图',
 		},
 		grpimzhicgridview: {
 			caption: '职称信息',
-      title: '职称信息',
+      title: '职称信息表格视图',
 		},
 	},
 	main_2_form: {

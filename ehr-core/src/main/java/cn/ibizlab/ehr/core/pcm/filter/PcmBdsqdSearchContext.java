@@ -31,35 +31,35 @@ public class PcmBdsqdSearchContext extends QueryWrapperContext<PcmBdsqd> {
 	public void setN_lx_eq(String n_lx_eq) {
         this.n_lx_eq = n_lx_eq;
         if(!ObjectUtils.isEmpty(this.n_lx_eq)){
-            this.getSelectCond().eq("lx", n_lx_eq);
+            this.getSearchCond().eq("lx", n_lx_eq);
         }
     }
 	private String n_pcmbdsqdname_like;//[标题]
 	public void setN_pcmbdsqdname_like(String n_pcmbdsqdname_like) {
         this.n_pcmbdsqdname_like = n_pcmbdsqdname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmbdsqdname_like)){
-            this.getSelectCond().like("pcmbdsqdname", n_pcmbdsqdname_like);
+            this.getSearchCond().like("pcmbdsqdname", n_pcmbdsqdname_like);
         }
     }
 	private String n_pimpersonname_eq;//[申请人]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[申请人]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_pimpersonid_eq;//[申请人ID]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class PcmBdsqdSearchContext extends QueryWrapperContext<PcmBdsqd> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmbdsqdname", query)   
             );
 		 }

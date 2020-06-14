@@ -158,11 +158,11 @@ export default {
 	views: {
 		txrypickupview: {
 			caption: "人员信息",
-      title: '人员信息',
+      title: '选择退休人员',
 		},
 		txrypickupgridview: {
 			caption: "人员信息",
-      title: '人员信息',
+      title: '退休人员',
 		},
 	},
 	txlxyg_grid: {

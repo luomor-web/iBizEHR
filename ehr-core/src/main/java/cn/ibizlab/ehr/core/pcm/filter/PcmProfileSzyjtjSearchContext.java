@@ -31,14 +31,14 @@ public class PcmProfileSzyjtjSearchContext extends QueryWrapperContext<PcmProfil
 	public void setN_yglx_eq(String n_yglx_eq) {
         this.n_yglx_eq = n_yglx_eq;
         if(!ObjectUtils.isEmpty(this.n_yglx_eq)){
-            this.getSelectCond().eq("yglx", n_yglx_eq);
+            this.getSearchCond().eq("yglx", n_yglx_eq);
         }
     }
 	private String n_pcmprofileszyjtjname_like;//[应聘者社招引进条件]
 	public void setN_pcmprofileszyjtjname_like(String n_pcmprofileszyjtjname_like) {
         this.n_pcmprofileszyjtjname_like = n_pcmprofileszyjtjname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmprofileszyjtjname_like)){
-            this.getSelectCond().like("pcmprofileszyjtjname", n_pcmprofileszyjtjname_like);
+            this.getSearchCond().like("pcmprofileszyjtjname", n_pcmprofileszyjtjname_like);
         }
     }
 
@@ -49,7 +49,7 @@ public class PcmProfileSzyjtjSearchContext extends QueryWrapperContext<PcmProfil
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmprofileszyjtjname", query)   
             );
 		 }

@@ -31,7 +31,7 @@ public class PimTypeContractSearchContext extends QueryWrapperContext<PimTypeCon
 	public void setN_pimtypecontractname_like(String n_pimtypecontractname_like) {
         this.n_pimtypecontractname_like = n_pimtypecontractname_like;
         if(!ObjectUtils.isEmpty(this.n_pimtypecontractname_like)){
-            this.getSelectCond().like("pimtypecontractname", n_pimtypecontractname_like);
+            this.getSearchCond().like("pimtypecontractname", n_pimtypecontractname_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class PimTypeContractSearchContext extends QueryWrapperContext<PimTypeCon
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimtypecontractname", query)   
             );
 		 }

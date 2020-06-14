@@ -158,7 +158,7 @@ export default {
 	views: {
 		pickupgridview: {
 			caption: "人员信息",
-      title: '人员信息',
+      title: '人员信息选择表格视图',
 		},
 		curleaderpickupgridview: {
 			caption: "部门负责人选择",
@@ -166,7 +166,7 @@ export default {
 		},
 		pickupview: {
 			caption: "人员信息",
-      title: '人员信息',
+      title: '人员信息数据选择视图',
 		},
 		curleaderpickupview: {
 			caption: "部门负责人选择",

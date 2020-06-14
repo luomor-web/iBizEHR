@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[档案目录缺失记录]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMARCHIVESRECORD",resultMap = "PimArchivesRecordResultMap")
 public class PimArchivesRecord extends EntityMP implements Serializable {
 
@@ -164,6 +165,7 @@ public class PimArchivesRecord extends EntityMP implements Serializable {
         this.pimarchivesrecordname = pimarchivesrecordname ;
         this.modify("pimarchivesrecordname",pimarchivesrecordname);
     }
+
     /**
      * 设置 [备注]
      */
@@ -171,6 +173,7 @@ public class PimArchivesRecord extends EntityMP implements Serializable {
         this.memo = memo ;
         this.modify("memo",memo);
     }
+
     /**
      * 设置 [档案目录标识]
      */
@@ -178,6 +181,7 @@ public class PimArchivesRecord extends EntityMP implements Serializable {
         this.archivalcatalogueid = archivalcatalogueid ;
         this.modify("archivalcatalogueid",archivalcatalogueid);
     }
+
     /**
      * 设置 [档案信息标识]
      */
@@ -185,6 +189,7 @@ public class PimArchivesRecord extends EntityMP implements Serializable {
         this.pimarchivesid = pimarchivesid ;
         this.modify("pimarchivesid",pimarchivesid);
     }
+
 
 }
 

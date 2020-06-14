@@ -33,7 +33,7 @@ export default {
 		},
 		kqybtreeexpview: {
 			caption: '考勤月报',
-      title: '考勤月报',
+      title: '考勤月报树导航视图',
 		},
 	},
 	main_form: {

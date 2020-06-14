@@ -20,11 +20,11 @@ export default {
 	views: {
 		pickupview: {
 			caption: '档案室管理',
-      title: '档案室管理',
+      title: '档案室管理数据选择视图',
 		},
 		pickupgridview: {
 			caption: '档案室管理',
-      title: '档案室管理',
+      title: '档案室管理选择表格视图',
 		},
 	},
 	main_grid: {

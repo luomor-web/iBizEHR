@@ -23,15 +23,15 @@ export default {
 		},
 		pickupview: {
 			caption: "项目部明细",
-      title: '项目部明细',
+      title: '项目部明细数据选择视图',
 		},
 		mpickupview: {
 			caption: "项目部明细",
-      title: '项目部明细',
+      title: '项目部明细数据多项选择视图',
 		},
 		redirectview: {
 			caption: "项目部明细",
-      title: '项目部明细',
+      title: '项目部明细数据重定向视图',
 		},
 		gridview: {
 			caption: "项目部人员明细",
@@ -39,11 +39,11 @@ export default {
 		},
 		editview2: {
 			caption: "项目部明细",
-      title: '项目部明细',
+      title: '项目部明细编辑视图',
 		},
 		pickupgridview: {
 			caption: "项目部明细",
-      title: '项目部明细',
+      title: '项目部明细选择表格视图',
 		},
 	},
 	main_form: {

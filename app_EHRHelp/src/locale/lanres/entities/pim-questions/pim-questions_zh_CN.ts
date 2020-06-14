@@ -26,23 +26,23 @@ export default {
 	views: {
 		yh_checkeditview: {
 			caption: '问题收集',
-      title: '问题收集',
+      title: '用户查看表单',
 		},
 		editview: {
 			caption: '问题收集',
-      title: '问题收集',
+      title: '问题收集编辑视图',
 		},
 		currentquestionsgridview: {
 			caption: '问题收集',
-      title: '问题收集',
+      title: '本页问题表格',
 		},
 		gridview: {
 			caption: '问题收集',
-      title: '问题收集',
+      title: '问题收集表格视图',
 		},
 		dev_checkeditview: {
 			caption: '问题收集',
-      title: '问题收集',
+      title: '开发者查看表单',
 		},
 	},
 	yh_check_form: {

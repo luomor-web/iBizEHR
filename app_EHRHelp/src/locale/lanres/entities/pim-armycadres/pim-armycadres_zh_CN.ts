@@ -27,11 +27,11 @@ export default {
 	views: {
 		grarmygridview: {
 			caption: '军转干部',
-      title: '军转干部',
+      title: '军转干部表格视图',
 		},
 		greditview: {
 			caption: '军转干部',
-      title: '军转干部',
+      title: '军转干部编辑视图',
 		},
 	},
 	greditform_form: {

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[通知选择部门副职及以下]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PARBMFZJYX",resultMap = "ParBmfzjyxResultMap")
 public class ParBmfzjyx extends EntityMP implements Serializable {
 
@@ -169,6 +170,7 @@ public class ParBmfzjyx extends EntityMP implements Serializable {
         this.parbmfzjyxname = parbmfzjyxname ;
         this.modify("parbmfzjyxname",parbmfzjyxname);
     }
+
     /**
      * 设置 [员工排序]
      */
@@ -176,6 +178,7 @@ public class ParBmfzjyx extends EntityMP implements Serializable {
         this.ygpx = ygpx ;
         this.modify("ygpx",ygpx);
     }
+
     /**
      * 设置 [备注说明]
      */
@@ -183,6 +186,7 @@ public class ParBmfzjyx extends EntityMP implements Serializable {
         this.bzsm = bzsm ;
         this.modify("bzsm",bzsm);
     }
+
     /**
      * 设置 [通知ID]
      */
@@ -190,6 +194,7 @@ public class ParBmfzjyx extends EntityMP implements Serializable {
         this.partzggid = partzggid ;
         this.modify("partzggid",partzggid);
     }
+
     /**
      * 设置 [姓名ID]
      */
@@ -197,6 +202,7 @@ public class ParBmfzjyx extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

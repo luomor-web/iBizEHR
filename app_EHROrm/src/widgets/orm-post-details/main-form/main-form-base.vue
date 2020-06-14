@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.ormpostlibname.visible" :style="{}"  :sm="{ span: 8, offset: 0 }" :md="{ span: 8, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ormpostlibname' :itemRules="this.rules.ormpostlibname" class='' :caption="$t('entities.ormpostdetails.main_form.details.ormpostlibname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormpostlibname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.ormpostlibname.disabled"
   name='ormpostlibname'
   deMajorField='ormpostlibname'

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[考勤设置]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_ATTENDENCESETUP",resultMap = "AttEndenceSetupResultMap")
 public class AttEndenceSetup extends EntityMP implements Serializable {
 
@@ -216,6 +217,17 @@ public class AttEndenceSetup extends EntityMP implements Serializable {
         this.xbsj = xbsj ;
         this.modify("xbsj",xbsj);
     }
+
+    /**
+     * 格式化日期 [下班时间]
+     */
+    public String formatXbsj(){
+        if (this.xbsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        return sdf.format(xbsj);
+    }
     /**
      * 设置 [考勤表名称]
      */
@@ -223,6 +235,7 @@ public class AttEndenceSetup extends EntityMP implements Serializable {
         this.attendencesetupname = attendencesetupname ;
         this.modify("attendencesetupname",attendencesetupname);
     }
+
     /**
      * 设置 [允许外勤]
      */
@@ -230,6 +243,7 @@ public class AttEndenceSetup extends EntityMP implements Serializable {
         this.allowoutwork = allowoutwork ;
         this.modify("allowoutwork",allowoutwork);
     }
+
     /**
      * 设置 [打卡方式]
      */
@@ -237,12 +251,24 @@ public class AttEndenceSetup extends EntityMP implements Serializable {
         this.dkfs = dkfs ;
         this.modify("dkfs",dkfs);
     }
+
     /**
      * 设置 [上班时间]
      */
     public void setSbsj(Timestamp sbsj){
         this.sbsj = sbsj ;
         this.modify("sbsj",sbsj);
+    }
+
+    /**
+     * 格式化日期 [上班时间]
+     */
+    public String formatSbsj(){
+        if (this.sbsj == null) {
+            return null;
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        return sdf.format(sbsj);
     }
     /**
      * 设置 [组织标识]
@@ -251,6 +277,7 @@ public class AttEndenceSetup extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [人员信息标识]
      */
@@ -258,6 +285,7 @@ public class AttEndenceSetup extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
     /**
      * 设置 [考勤规则标识]
      */
@@ -265,6 +293,7 @@ public class AttEndenceSetup extends EntityMP implements Serializable {
         this.vacholidayrulesid = vacholidayrulesid ;
         this.modify("vacholidayrulesid",vacholidayrulesid);
     }
+
 
 }
 

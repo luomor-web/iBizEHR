@@ -14,31 +14,31 @@ export default {
 	views: {
 		editview2: {
 			caption: "组织管理关系表",
-      title: '组织管理关系表',
+      title: '组织管理关系表编辑视图',
 		},
 		pickupgridview: {
 			caption: "组织管理关系表",
-      title: '组织管理关系表',
+      title: '组织管理关系表选择表格视图',
 		},
 		gridview: {
 			caption: "组织管理关系表",
-      title: '组织管理关系表',
+      title: '组织管理关系表表格视图',
 		},
 		redirectview: {
 			caption: "组织管理关系表",
-      title: '组织管理关系表',
+      title: '组织管理关系表数据重定向视图',
 		},
 		editview: {
 			caption: "组织管理关系表",
-      title: '组织管理关系表',
+      title: '组织管理关系表编辑视图',
 		},
 		pickupview: {
 			caption: "组织管理关系表",
-      title: '组织管理关系表',
+      title: '组织管理关系表数据选择视图',
 		},
 		mpickupview: {
 			caption: "组织管理关系表",
-      title: '组织管理关系表',
+      title: '组织管理关系表数据多项选择视图',
 		},
 	},
 	main_form: {

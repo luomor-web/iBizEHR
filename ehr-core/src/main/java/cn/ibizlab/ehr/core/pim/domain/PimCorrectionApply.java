@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[B/Y类员工转正申请明细（停用）]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PIMCORRECTIONAPPLY",resultMap = "PimCorrectionApplyResultMap")
 public class PimCorrectionApply extends EntityMP implements Serializable {
 
@@ -185,6 +186,7 @@ public class PimCorrectionApply extends EntityMP implements Serializable {
         this.pimcorrectionapplyname = pimcorrectionapplyname ;
         this.modify("pimcorrectionapplyname",pimcorrectionapplyname);
     }
+
     /**
      * 设置 [B/Y类员工转正申请ID]
      */
@@ -192,6 +194,7 @@ public class PimCorrectionApply extends EntityMP implements Serializable {
         this.pimbyygzzsqid = pimbyygzzsqid ;
         this.modify("pimbyygzzsqid",pimbyygzzsqid);
     }
+
     /**
      * 设置 [员工标识]
      */
@@ -199,6 +202,7 @@ public class PimCorrectionApply extends EntityMP implements Serializable {
         this.pimpersonid = pimpersonid ;
         this.modify("pimpersonid",pimpersonid);
     }
+
 
 }
 

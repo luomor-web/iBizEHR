@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -117,6 +118,7 @@ public class DynaDashboard extends EntityClient implements Serializable {
         this.userid = userid ;
         this.modify("userid",userid);
     }
+
     /**
      * 设置 [实体名称]
      */
@@ -124,6 +126,7 @@ public class DynaDashboard extends EntityClient implements Serializable {
         this.dynadashboardname = dynadashboardname ;
         this.modify("dynadashboardname",dynadashboardname);
     }
+
     /**
      * 设置 [模型标识]
      */
@@ -131,6 +134,7 @@ public class DynaDashboard extends EntityClient implements Serializable {
         this.modelid = modelid ;
         this.modify("modelid",modelid);
     }
+
     /**
      * 设置 [应用标识]
      */
@@ -138,6 +142,7 @@ public class DynaDashboard extends EntityClient implements Serializable {
         this.appid = appid ;
         this.modify("appid",appid);
     }
+
     /**
      * 设置 [模型]
      */
@@ -145,6 +150,7 @@ public class DynaDashboard extends EntityClient implements Serializable {
         this.model = model ;
         this.modify("model",model);
     }
+
 
 }
 

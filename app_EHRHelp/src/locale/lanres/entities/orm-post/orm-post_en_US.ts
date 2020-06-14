@@ -26,7 +26,7 @@ export default {
 	views: {
 		ejormorgidpickupview: {
 			caption: "岗位",
-      title: '岗位',
+      title: '岗位管理数据选择视图',
 		},
 		orgidpickupgridview: {
 			caption: "岗位选择",
@@ -38,7 +38,7 @@ export default {
 		},
 		orgidpickupview: {
 			caption: "岗位",
-      title: '岗位',
+      title: '岗位管理数据选择视图',
 		},
 	},
 	gwchoice_grid: {

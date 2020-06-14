@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.operations.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='operations' :itemRules="this.rules.operations" class='' :caption="$t('entities.pimarchives.main_callout_form.details.operations')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.operations.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.operations" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.operations.disabled"  
     tag='EhrCodeList0227' 
     codelistType='STATIC'
@@ -53,12 +55,14 @@
     <row>
         <i-col v-show="detailsModel.dabgdd.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='dabgdd' :itemRules="this.rules.dabgdd" class='' :caption="$t('entities.pimarchives.main_callout_form.details.dabgdd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dabgdd.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.dabgdd" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.dabgdd.disabled"  
     tag='EhrCodeList0040' 
     codelistType='STATIC'
@@ -86,12 +90,14 @@
 </i-col>
 <i-col v-show="detailsModel.archivescentername.visible" :style="{}"  :lg="{ span: 12, offset: 0 }">
     <app-form-item name='archivescentername' :itemRules="this.rules.archivescentername" class='' :caption="$t('entities.pimarchives.main_callout_form.details.archivescentername')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.archivescentername.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.archivescentername.disabled"
   name='archivescentername'
   deMajorField='position'

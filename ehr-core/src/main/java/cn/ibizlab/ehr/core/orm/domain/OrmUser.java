@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[用户管理]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_SRFORGUSER",resultMap = "OrmUserResultMap")
 public class OrmUser extends EntityMP implements Serializable {
 
@@ -181,6 +182,7 @@ public class OrmUser extends EntityMP implements Serializable {
         this.unuserid = unuserid ;
         this.modify("unuserid",unuserid);
     }
+
     /**
      * 设置 [用户编号]
      */
@@ -188,6 +190,7 @@ public class OrmUser extends EntityMP implements Serializable {
         this.usercode = usercode ;
         this.modify("usercode",usercode);
     }
+
     /**
      * 设置 [用户ID]
      */
@@ -195,6 +198,7 @@ public class OrmUser extends EntityMP implements Serializable {
         this.empid = empid ;
         this.modify("empid",empid);
     }
+
     /**
      * 设置 [用户名称]
      */
@@ -202,6 +206,7 @@ public class OrmUser extends EntityMP implements Serializable {
         this.orgusername = orgusername ;
         this.modify("orgusername",orgusername);
     }
+
     /**
      * 设置 [启用标志]
      */
@@ -209,6 +214,7 @@ public class OrmUser extends EntityMP implements Serializable {
         this.validflag = validflag ;
         this.modify("validflag",validflag);
     }
+
     /**
      * 设置 [备注]
      */
@@ -216,6 +222,7 @@ public class OrmUser extends EntityMP implements Serializable {
         this.memo = memo ;
         this.modify("memo",memo);
     }
+
 
 }
 

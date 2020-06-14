@@ -31,28 +31,28 @@ public class PimWorkflowRefSearchContext extends QueryWrapperContext<PimWorkflow
 	public void setN_pimworkflowrefname_like(String n_pimworkflowrefname_like) {
         this.n_pimworkflowrefname_like = n_pimworkflowrefname_like;
         if(!ObjectUtils.isEmpty(this.n_pimworkflowrefname_like)){
-            this.getSelectCond().like("pimworkflowrefname", n_pimworkflowrefname_like);
+            this.getSearchCond().like("pimworkflowrefname", n_pimworkflowrefname_like);
         }
     }
 	private String n_pimworkflowname_eq;//[流程配置]
 	public void setN_pimworkflowname_eq(String n_pimworkflowname_eq) {
         this.n_pimworkflowname_eq = n_pimworkflowname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimworkflowname_eq)){
-            this.getSelectCond().eq("pimworkflowname", n_pimworkflowname_eq);
+            this.getSearchCond().eq("pimworkflowname", n_pimworkflowname_eq);
         }
     }
 	private String n_pimworkflowname_like;//[流程配置]
 	public void setN_pimworkflowname_like(String n_pimworkflowname_like) {
         this.n_pimworkflowname_like = n_pimworkflowname_like;
         if(!ObjectUtils.isEmpty(this.n_pimworkflowname_like)){
-            this.getSelectCond().like("pimworkflowname", n_pimworkflowname_like);
+            this.getSearchCond().like("pimworkflowname", n_pimworkflowname_like);
         }
     }
 	private String n_pimworkflowid_eq;//[流程配置]
 	public void setN_pimworkflowid_eq(String n_pimworkflowid_eq) {
         this.n_pimworkflowid_eq = n_pimworkflowid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimworkflowid_eq)){
-            this.getSelectCond().eq("pimworkflowid", n_pimworkflowid_eq);
+            this.getSearchCond().eq("pimworkflowid", n_pimworkflowid_eq);
         }
     }
 
@@ -63,7 +63,7 @@ public class PimWorkflowRefSearchContext extends QueryWrapperContext<PimWorkflow
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pimworkflowrefname", query)   
             );
 		 }

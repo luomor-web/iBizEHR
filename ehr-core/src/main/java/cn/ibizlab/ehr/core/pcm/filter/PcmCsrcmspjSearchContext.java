@@ -31,7 +31,7 @@ public class PcmCsrcmspjSearchContext extends QueryWrapperContext<PcmCsrcmspj> {
 	public void setN_pcmcsrcmspjname_like(String n_pcmcsrcmspjname_like) {
         this.n_pcmcsrcmspjname_like = n_pcmcsrcmspjname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmcsrcmspjname_like)){
-            this.getSelectCond().like("pcmcsrcmspjname", n_pcmcsrcmspjname_like);
+            this.getSearchCond().like("pcmcsrcmspjname", n_pcmcsrcmspjname_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class PcmCsrcmspjSearchContext extends QueryWrapperContext<PcmCsrcmspj> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmcsrcmspjname", query)   
             );
 		 }

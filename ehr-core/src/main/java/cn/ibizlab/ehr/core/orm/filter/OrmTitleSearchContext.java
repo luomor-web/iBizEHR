@@ -31,14 +31,14 @@ public class OrmTitleSearchContext extends QueryWrapperContext<OrmTitle> {
 	public void setN_titletype_eq(String n_titletype_eq) {
         this.n_titletype_eq = n_titletype_eq;
         if(!ObjectUtils.isEmpty(this.n_titletype_eq)){
-            this.getSelectCond().eq("titletype", n_titletype_eq);
+            this.getSearchCond().eq("titletype", n_titletype_eq);
         }
     }
 	private String n_ormtitlename_like;//[头衔]
 	public void setN_ormtitlename_like(String n_ormtitlename_like) {
         this.n_ormtitlename_like = n_ormtitlename_like;
         if(!ObjectUtils.isEmpty(this.n_ormtitlename_like)){
-            this.getSelectCond().like("ormtitlename", n_ormtitlename_like);
+            this.getSearchCond().like("ormtitlename", n_ormtitlename_like);
         }
     }
 
@@ -49,7 +49,7 @@ public class OrmTitleSearchContext extends QueryWrapperContext<OrmTitle> {
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("ormtitlename", query)   
             );
 		 }

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[讲师授课记录]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_TRMTEACHERTRAIN",resultMap = "TrmTeacherTrainResultMap")
 public class TrmTeacherTrain extends EntityMP implements Serializable {
 
@@ -231,6 +232,7 @@ public class TrmTeacherTrain extends EntityMP implements Serializable {
         this.pj = pj ;
         this.modify("pj",pj);
     }
+
     /**
      * 设置 [积分]
      */
@@ -238,6 +240,7 @@ public class TrmTeacherTrain extends EntityMP implements Serializable {
         this.jf = jf ;
         this.modify("jf",jf);
     }
+
     /**
      * 设置 [讲师授课记录]
      */
@@ -245,6 +248,7 @@ public class TrmTeacherTrain extends EntityMP implements Serializable {
         this.trmteachertrainname = trmteachertrainname ;
         this.modify("trmteachertrainname",trmteachertrainname);
     }
+
     /**
      * 设置 [培训计划项标识]
      */
@@ -252,6 +256,7 @@ public class TrmTeacherTrain extends EntityMP implements Serializable {
         this.trmtrainplantermid = trmtrainplantermid ;
         this.modify("trmtrainplantermid",trmtrainplantermid);
     }
+
     /**
      * 设置 [培训课程标识]
      */
@@ -259,6 +264,7 @@ public class TrmTeacherTrain extends EntityMP implements Serializable {
         this.trmtraincourseid = trmtraincourseid ;
         this.modify("trmtraincourseid",trmtraincourseid);
     }
+
     /**
      * 设置 [培训教师标识]
      */
@@ -266,6 +272,7 @@ public class TrmTeacherTrain extends EntityMP implements Serializable {
         this.trmtrainteacherid = trmtrainteacherid ;
         this.modify("trmtrainteacherid",trmtrainteacherid);
     }
+
     /**
      * 设置 [培训地点标识]
      */
@@ -273,6 +280,7 @@ public class TrmTeacherTrain extends EntityMP implements Serializable {
         this.trmtrainaddressid = trmtrainaddressid ;
         this.modify("trmtrainaddressid",trmtrainaddressid);
     }
+
 
 }
 

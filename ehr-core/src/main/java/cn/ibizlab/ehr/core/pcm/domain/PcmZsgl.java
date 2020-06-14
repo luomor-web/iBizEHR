@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[职数管理]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PCMZSGL",resultMap = "PcmZsglResultMap")
 public class PcmZsgl extends EntityMP implements Serializable {
 
@@ -139,6 +140,7 @@ public class PcmZsgl extends EntityMP implements Serializable {
         this.zjname = zjname ;
         this.modify("zjname",zjname);
     }
+
     /**
      * 设置 [人数]
      */
@@ -146,6 +148,7 @@ public class PcmZsgl extends EntityMP implements Serializable {
         this.zs = zs ;
         this.modify("zs",zs);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -153,6 +156,7 @@ public class PcmZsgl extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [组织名称]
      */
@@ -160,6 +164,7 @@ public class PcmZsgl extends EntityMP implements Serializable {
         this.zzname = zzname ;
         this.modify("zzname",zzname);
     }
+
     /**
      * 设置 [职级ID]
      */
@@ -167,6 +172,7 @@ public class PcmZsgl extends EntityMP implements Serializable {
         this.zjid = zjid ;
         this.modify("zjid",zjid);
     }
+
     /**
      * 设置 [组织ID]
      */
@@ -174,6 +180,7 @@ public class PcmZsgl extends EntityMP implements Serializable {
         this.zzid = zzid ;
         this.modify("zzid",zzid);
     }
+
     /**
      * 设置 [职数管理名称]
      */
@@ -181,6 +188,7 @@ public class PcmZsgl extends EntityMP implements Serializable {
         this.pcmzsglname = pcmzsglname ;
         this.modify("pcmzsglname",pcmzsglname);
     }
+
 
 }
 

@@ -26,11 +26,11 @@ export default {
 	views: {
 		gridview: {
 			caption: '借阅记录',
-      title: '借阅记录',
+      title: '借阅记录表格视图',
 		},
 		editview: {
 			caption: '档案借阅及归还记录',
-      title: '档案借阅及归还记录',
+      title: '档案借阅及归还记录编辑视图',
 		},
 	},
 	main_form: {

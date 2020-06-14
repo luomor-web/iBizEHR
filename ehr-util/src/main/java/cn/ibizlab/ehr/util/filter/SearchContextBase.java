@@ -12,9 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.util.StringUtils;
 import org.springframework.util.ObjectUtils;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Slf4j
 @Data
@@ -35,7 +33,11 @@ public class SearchContextBase implements ISearchContext{
 	 */
     @JsonProperty("query")
 	public String query;
-
+    /**
+     * 条件表达式
+     */
+    @JsonProperty("filter")
+    public QueryFilter filter;
     /**
      * 数据查询
      */

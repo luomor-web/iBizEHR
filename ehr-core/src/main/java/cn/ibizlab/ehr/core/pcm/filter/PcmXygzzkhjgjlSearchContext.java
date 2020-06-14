@@ -31,14 +31,14 @@ public class PcmXygzzkhjgjlSearchContext extends QueryWrapperContext<PcmXygzzkhj
 	public void setN_pj_eq(String n_pj_eq) {
         this.n_pj_eq = n_pj_eq;
         if(!ObjectUtils.isEmpty(this.n_pj_eq)){
-            this.getSelectCond().eq("pj", n_pj_eq);
+            this.getSearchCond().eq("pj", n_pj_eq);
         }
     }
 	private String n_pcmxygzzkhjgjlname_like;//[员工]
 	public void setN_pcmxygzzkhjgjlname_like(String n_pcmxygzzkhjgjlname_like) {
         this.n_pcmxygzzkhjgjlname_like = n_pcmxygzzkhjgjlname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmxygzzkhjgjlname_like)){
-            this.getSelectCond().like("pcmxygzzkhjgjlname", n_pcmxygzzkhjgjlname_like);
+            this.getSearchCond().like("pcmxygzzkhjgjlname", n_pcmxygzzkhjgjlname_like);
         }
     }
 
@@ -49,7 +49,7 @@ public class PcmXygzzkhjgjlSearchContext extends QueryWrapperContext<PcmXygzzkhj
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmxygzzkhjgjlname", query)   
             );
 		 }

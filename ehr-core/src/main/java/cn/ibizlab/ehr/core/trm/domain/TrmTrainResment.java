@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[培训资源评估]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_TRMTRAINRESMENT",resultMap = "TrmTrainResmentResultMap")
 public class TrmTrainResment extends EntityMP implements Serializable {
 
@@ -127,6 +128,7 @@ public class TrmTrainResment extends EntityMP implements Serializable {
         this.dcwjtm = dcwjtm ;
         this.modify("dcwjtm",dcwjtm);
     }
+
     /**
      * 设置 [备注]
      */
@@ -134,6 +136,7 @@ public class TrmTrainResment extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [评估结果]
      */
@@ -141,6 +144,7 @@ public class TrmTrainResment extends EntityMP implements Serializable {
         this.pgjg = pgjg ;
         this.modify("pgjg",pgjg);
     }
+
     /**
      * 设置 [培训资源评估名称]
      */
@@ -148,6 +152,7 @@ public class TrmTrainResment extends EntityMP implements Serializable {
         this.trmtrainresmentname = trmtrainresmentname ;
         this.modify("trmtrainresmentname",trmtrainresmentname);
     }
+
 
 }
 

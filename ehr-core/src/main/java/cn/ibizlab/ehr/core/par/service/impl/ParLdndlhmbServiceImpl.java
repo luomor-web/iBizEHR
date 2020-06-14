@@ -38,7 +38,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.util.StringUtils;
 
 /**
- * 实体[年度量化目标（助理总经理级）] 服务对象接口实现
+ * 实体[年度量化目标（公司领导类）] 服务对象接口实现
  */
 @Slf4j
 @Service("ParLdndlhmbServiceImpl")

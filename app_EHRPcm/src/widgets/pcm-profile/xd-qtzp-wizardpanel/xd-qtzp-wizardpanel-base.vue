@@ -283,6 +283,7 @@ export default class XD_QTZPBase extends Vue implements ControlInterface {
         }
     }
 
+
     /**
      * 部件行为--init
      *

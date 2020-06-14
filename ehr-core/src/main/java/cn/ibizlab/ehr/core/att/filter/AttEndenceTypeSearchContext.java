@@ -31,14 +31,14 @@ public class AttEndenceTypeSearchContext extends QueryWrapperContext<AttEndenceT
 	public void setN_typecode_like(String n_typecode_like) {
         this.n_typecode_like = n_typecode_like;
         if(!ObjectUtils.isEmpty(this.n_typecode_like)){
-            this.getSelectCond().like("typecode", n_typecode_like);
+            this.getSearchCond().like("typecode", n_typecode_like);
         }
     }
 	private String n_attendencetypename_like;//[考勤类型名称]
 	public void setN_attendencetypename_like(String n_attendencetypename_like) {
         this.n_attendencetypename_like = n_attendencetypename_like;
         if(!ObjectUtils.isEmpty(this.n_attendencetypename_like)){
-            this.getSelectCond().like("attendencetypename", n_attendencetypename_like);
+            this.getSearchCond().like("attendencetypename", n_attendencetypename_like);
         }
     }
 
@@ -49,7 +49,7 @@ public class AttEndenceTypeSearchContext extends QueryWrapperContext<AttEndenceT
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("attendencetypename", query)   
             );
 		 }

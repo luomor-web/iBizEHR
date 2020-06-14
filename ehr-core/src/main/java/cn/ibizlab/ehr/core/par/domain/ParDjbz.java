@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[定级规则]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_PARDJBZ",resultMap = "ParDjbzResultMap")
 public class ParDjbz extends EntityMP implements Serializable {
 
@@ -111,6 +112,7 @@ public class ParDjbz extends EntityMP implements Serializable {
         this.khpgdj = khpgdj ;
         this.modify("khpgdj",khpgdj);
     }
+
     /**
      * 设置 [定级标准名称]
      */
@@ -118,6 +120,7 @@ public class ParDjbz extends EntityMP implements Serializable {
         this.pardjbzname = pardjbzname ;
         this.modify("pardjbzname",pardjbzname);
     }
+
     /**
      * 设置 [分布比例（%）]
      */
@@ -125,6 +128,7 @@ public class ParDjbz extends EntityMP implements Serializable {
         this.fbbl = fbbl ;
         this.modify("fbbl",fbbl);
     }
+
 
 }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[部门地址维护]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_ORMBMKQDZ",resultMap = "OrmBmkqdzResultMap")
 public class OrmBmkqdz extends EntityMP implements Serializable {
 
@@ -161,6 +162,7 @@ public class OrmBmkqdz extends EntityMP implements Serializable {
         this.ormorgdzid = ormorgdzid ;
         this.modify("ormorgdzid",ormorgdzid);
     }
+
     /**
      * 设置 [部门地址]
      */
@@ -168,6 +170,7 @@ public class OrmBmkqdz extends EntityMP implements Serializable {
         this.ormbmkqdzname = ormbmkqdzname ;
         this.modify("ormbmkqdzname",ormbmkqdzname);
     }
+
     /**
      * 设置 [经度]
      */
@@ -175,6 +178,7 @@ public class OrmBmkqdz extends EntityMP implements Serializable {
         this.lng = lng ;
         this.modify("lng",lng);
     }
+
     /**
      * 设置 [默认考勤地址]
      */
@@ -182,6 +186,7 @@ public class OrmBmkqdz extends EntityMP implements Serializable {
         this.sfmrkqdz = sfmrkqdz ;
         this.modify("sfmrkqdz",sfmrkqdz);
     }
+
     /**
      * 设置 [纬度]
      */
@@ -189,6 +194,7 @@ public class OrmBmkqdz extends EntityMP implements Serializable {
         this.lat = lat ;
         this.modify("lat",lat);
     }
+
     /**
      * 设置 [排序号]
      */
@@ -196,6 +202,7 @@ public class OrmBmkqdz extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [部门ID]
      */
@@ -203,6 +210,7 @@ public class OrmBmkqdz extends EntityMP implements Serializable {
         this.ormorgsectorid = ormorgsectorid ;
         this.modify("ormorgsectorid",ormorgsectorid);
     }
+
     /**
      * 设置 [考勤范围]
      */
@@ -210,6 +218,7 @@ public class OrmBmkqdz extends EntityMP implements Serializable {
         this.attendancerange = attendancerange ;
         this.modify("attendancerange",attendancerange);
     }
+
 
 }
 

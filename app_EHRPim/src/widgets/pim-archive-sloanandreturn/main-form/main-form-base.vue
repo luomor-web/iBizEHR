@@ -44,12 +44,14 @@
 </i-col>
 <i-col v-show="detailsModel.zt.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zt' :itemRules="this.rules.zt" class='' :caption="$t('entities.pimarchivesloanandreturn.main_form.details.zt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zt.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.zt" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.zt.disabled"  
     tag='EhrCodeList0149' 
     codelistType='STATIC'

@@ -17,7 +17,7 @@ export default {
 	views: {
 		redirectview: {
 			caption: '岗位库',
-      title: '岗位库',
+      title: '岗位库数据重定向视图',
 		},
 		mpickupview: {
 			caption: '标准岗位',
@@ -33,7 +33,7 @@ export default {
 		},
 		editview2: {
 			caption: '岗位库',
-      title: '岗位库',
+      title: '岗位库编辑视图',
 		},
 		editview: {
 			caption: '标准岗位设置',

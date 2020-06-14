@@ -26,7 +26,7 @@ export default {
 	views: {
 		ejormorgidpickupview: {
 			caption: "岗位",
-      title: '岗位',
+      title: '岗位管理数据选择视图',
 		},
 		ejormorgidpickupgridview: {
 			caption: "岗位选择",

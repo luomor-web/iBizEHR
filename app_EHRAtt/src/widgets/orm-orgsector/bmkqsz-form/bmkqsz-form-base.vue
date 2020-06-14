@@ -38,6 +38,8 @@
     ]"
     :context="context"
     :viewparams="viewparams"
+    :localContext ='{}'
+    :localParam ='{}'
     parameterName='ormorgsector'
     parentName="OrmOrgsector"  
     refviewtype='DEGRIDVIEW' 

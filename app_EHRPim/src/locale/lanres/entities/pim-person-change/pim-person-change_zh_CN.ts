@@ -30,15 +30,15 @@ export default {
 	views: {
 		editview2: {
 			caption: '人员信息变更审核',
-      title: '人员信息变更审核',
+      title: '人员信息变更审核编辑视图',
 		},
 		gridview: {
 			caption: '员工信息审核',
-      title: '员工信息审核',
+      title: '员工信息审核表格视图',
 		},
 		editview: {
 			caption: '员工信息审核',
-      title: '员工信息审核',
+      title: '员工信息审核编辑视图',
 		},
 		hisrecgridview: {
 			caption: '历史审核记录',
@@ -50,23 +50,23 @@ export default {
 		},
 		pickupgridview: {
 			caption: '人员信息变更审核',
-      title: '人员信息变更审核',
+      title: '人员信息变更审核选择表格视图',
 		},
 		readeditview: {
 			caption: '员工信息审核记录',
-      title: '员工信息审核记录',
+      title: '人员信息变更审核编辑视图',
 		},
 		pickupview: {
 			caption: '人员信息变更审核',
-      title: '人员信息变更审核',
+      title: '人员信息变更审核数据选择视图',
 		},
 		redirectview: {
 			caption: '人员信息变更审核',
-      title: '人员信息变更审核',
+      title: '人员信息变更审核数据重定向视图',
 		},
 		mpickupview: {
 			caption: '人员信息变更审核',
-      title: '人员信息变更审核',
+      title: '人员信息变更审核数据多项选择视图',
 		},
 	},
 	main_form: {

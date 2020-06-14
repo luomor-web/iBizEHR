@@ -31,35 +31,35 @@ public class SocWelfareinfomxSearchContext extends QueryWrapperContext<SocWelfar
 	public void setN_socwelfareinfomxname_like(String n_socwelfareinfomxname_like) {
         this.n_socwelfareinfomxname_like = n_socwelfareinfomxname_like;
         if(!ObjectUtils.isEmpty(this.n_socwelfareinfomxname_like)){
-            this.getSelectCond().like("socwelfareinfomxname", n_socwelfareinfomxname_like);
+            this.getSearchCond().like("socwelfareinfomxname", n_socwelfareinfomxname_like);
         }
     }
 	private String n_socwelfareinfoname_eq;//[个人社保福利名称]
 	public void setN_socwelfareinfoname_eq(String n_socwelfareinfoname_eq) {
         this.n_socwelfareinfoname_eq = n_socwelfareinfoname_eq;
         if(!ObjectUtils.isEmpty(this.n_socwelfareinfoname_eq)){
-            this.getSelectCond().eq("socwelfareinfoname", n_socwelfareinfoname_eq);
+            this.getSearchCond().eq("socwelfareinfoname", n_socwelfareinfoname_eq);
         }
     }
 	private String n_socwelfareinfoname_like;//[个人社保福利名称]
 	public void setN_socwelfareinfoname_like(String n_socwelfareinfoname_like) {
         this.n_socwelfareinfoname_like = n_socwelfareinfoname_like;
         if(!ObjectUtils.isEmpty(this.n_socwelfareinfoname_like)){
-            this.getSelectCond().like("socwelfareinfoname", n_socwelfareinfoname_like);
+            this.getSearchCond().like("socwelfareinfoname", n_socwelfareinfoname_like);
         }
     }
 	private String n_socselfarebasemxid_eq;//[社保明细标识]
 	public void setN_socselfarebasemxid_eq(String n_socselfarebasemxid_eq) {
         this.n_socselfarebasemxid_eq = n_socselfarebasemxid_eq;
         if(!ObjectUtils.isEmpty(this.n_socselfarebasemxid_eq)){
-            this.getSelectCond().eq("socselfarebasemxid", n_socselfarebasemxid_eq);
+            this.getSearchCond().eq("socselfarebasemxid", n_socselfarebasemxid_eq);
         }
     }
 	private String n_socwelfareinfoid_eq;//[个人社保福利明细标识]
 	public void setN_socwelfareinfoid_eq(String n_socwelfareinfoid_eq) {
         this.n_socwelfareinfoid_eq = n_socwelfareinfoid_eq;
         if(!ObjectUtils.isEmpty(this.n_socwelfareinfoid_eq)){
-            this.getSelectCond().eq("socwelfareinfoid", n_socwelfareinfoid_eq);
+            this.getSearchCond().eq("socwelfareinfoid", n_socwelfareinfoid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class SocWelfareinfomxSearchContext extends QueryWrapperContext<SocWelfar
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("socwelfareinfomxname", query)   
             );
 		 }

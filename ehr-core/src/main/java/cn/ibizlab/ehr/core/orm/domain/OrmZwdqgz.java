@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[职级到期规则]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_ORMZWDQGZ",resultMap = "OrmZwdqgzResultMap")
 public class OrmZwdqgz extends EntityMP implements Serializable {
 
@@ -212,6 +213,7 @@ public class OrmZwdqgz extends EntityMP implements Serializable {
         this.xb = xb ;
         this.modify("xb",xb);
     }
+
     /**
      * 设置 [职务名称]
      */
@@ -219,6 +221,7 @@ public class OrmZwdqgz extends EntityMP implements Serializable {
         this.zwlx = zwlx ;
         this.modify("zwlx",zwlx);
     }
+
     /**
      * 设置 [职级到期规则名称]
      */
@@ -226,6 +229,7 @@ public class OrmZwdqgz extends EntityMP implements Serializable {
         this.ormzwdqgzname = ormzwdqgzname ;
         this.modify("ormzwdqgzname",ormzwdqgzname);
     }
+
     /**
      * 设置 [是否默认到期年龄]
      */
@@ -233,6 +237,7 @@ public class OrmZwdqgz extends EntityMP implements Serializable {
         this.sfmrdqnl = sfmrdqnl ;
         this.modify("sfmrdqnl",sfmrdqnl);
     }
+
     /**
      * 设置 [到期年龄]
      */
@@ -240,6 +245,7 @@ public class OrmZwdqgz extends EntityMP implements Serializable {
         this.nl = nl ;
         this.modify("nl",nl);
     }
+
     /**
      * 设置 [职务编码]
      */
@@ -247,6 +253,7 @@ public class OrmZwdqgz extends EntityMP implements Serializable {
         this.zwbm = zwbm ;
         this.modify("zwbm",zwbm);
     }
+
     /**
      * 设置 [职级标识]
      */
@@ -254,6 +261,7 @@ public class OrmZwdqgz extends EntityMP implements Serializable {
         this.ormrankid = ormrankid ;
         this.modify("ormrankid",ormrankid);
     }
+
     /**
      * 设置 [组织标识]
      */
@@ -261,6 +269,7 @@ public class OrmZwdqgz extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
     /**
      * 设置 [职务标识]
      */
@@ -268,6 +277,7 @@ public class OrmZwdqgz extends EntityMP implements Serializable {
         this.ormdutyid = ormdutyid ;
         this.modify("ormdutyid",ormdutyid);
     }
+
 
 }
 

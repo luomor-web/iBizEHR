@@ -31,7 +31,7 @@ export default {
 	views: {
 		sjyxzzpickupview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '选择组织',
 		},
 		sjyxzzqxpickupgridview: {
 			caption: '组织选择',
@@ -39,7 +39,7 @@ export default {
 		},
 		sjyxzzqxpickupview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '选择组织',
 		},
 		fpxxpickupview: {
 			caption: '组织数据选择视图',
@@ -51,7 +51,7 @@ export default {
 		},
 		pickupview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '组织管理数据选择视图',
 		},
 		ypzsyfpxxpickupview: {
 			caption: '组织数据选择视图',
@@ -59,7 +59,7 @@ export default {
 		},
 		mpickupview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '组织管理数据多项选择视图',
 		},
 		sjyxzzpickupgridview: {
 			caption: '组织选择',
@@ -67,7 +67,7 @@ export default {
 		},
 		pickupgridview: {
 			caption: '组织管理',
-      title: '组织管理',
+      title: '组织管理选择表格视图',
 		},
 		fpxxpickupgridview: {
 			caption: '组织选择表格视图',

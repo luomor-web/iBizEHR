@@ -27,35 +27,35 @@ export default {
 	views: {
 		editview2: {
 			caption: '档案归档地变更记录',
-      title: '档案归档地变更记录',
+      title: '档案归档地变更记录编辑视图',
 		},
 		pickupgridview: {
 			caption: '档案归档地变更记录',
-      title: '档案归档地变更记录',
+      title: '档案归档地变更记录选择表格视图',
 		},
 		redirectview: {
 			caption: '档案归档地变更记录',
-      title: '档案归档地变更记录',
+      title: '档案归档地变更记录数据重定向视图',
 		},
 		mpickupview: {
 			caption: '档案归档地变更记录',
-      title: '档案归档地变更记录',
+      title: '档案归档地变更记录数据多项选择视图',
 		},
 		gridview: {
 			caption: '调档记录',
-      title: '调档记录',
+      title: '调档记录表格视图',
 		},
 		pickupview: {
 			caption: '档案归档地变更记录',
-      title: '档案归档地变更记录',
+      title: '档案归档地变更记录数据选择视图',
 		},
 		editview: {
 			caption: '档案归档地变更记录',
-      title: '档案归档地变更记录',
+      title: '档案归档地变更记录编辑视图',
 		},
 		archiveseditview: {
 			caption: '档案归档地变更记录',
-      title: '档案归档地变更记录',
+      title: '档案调档记录编辑视图',
 		},
 		dadcjlgridview: {
 			caption: '档案调出记录',

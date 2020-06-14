@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[社保明细]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_SOCSELFAREBASEMX",resultMap = "SocSelfarebasemxResultMap")
 public class SocSelfarebasemx extends EntityMP implements Serializable {
 
@@ -176,6 +177,7 @@ public class SocSelfarebasemx extends EntityMP implements Serializable {
         this.bz = bz ;
         this.modify("bz",bz);
     }
+
     /**
      * 设置 [个人比例(%)]
      */
@@ -183,6 +185,7 @@ public class SocSelfarebasemx extends EntityMP implements Serializable {
         this.grbl = grbl ;
         this.modify("grbl",grbl);
     }
+
     /**
      * 设置 [说明]
      */
@@ -190,6 +193,7 @@ public class SocSelfarebasemx extends EntityMP implements Serializable {
         this.sm = sm ;
         this.modify("sm",sm);
     }
+
     /**
      * 设置 [单位比例(%)]
      */
@@ -197,6 +201,7 @@ public class SocSelfarebasemx extends EntityMP implements Serializable {
         this.dwbl = dwbl ;
         this.modify("dwbl",dwbl);
     }
+
     /**
      * 设置 [社保明细名称]
      */
@@ -204,6 +209,7 @@ public class SocSelfarebasemx extends EntityMP implements Serializable {
         this.socselfarebasemxname = socselfarebasemxname ;
         this.modify("socselfarebasemxname",socselfarebasemxname);
     }
+
     /**
      * 设置 [社保福利类型]
      */
@@ -211,6 +217,7 @@ public class SocSelfarebasemx extends EntityMP implements Serializable {
         this.sbfllx = sbfllx ;
         this.modify("sbfllx",sbfllx);
     }
+
     /**
      * 设置 [上限(￥)]
      */
@@ -218,6 +225,7 @@ public class SocSelfarebasemx extends EntityMP implements Serializable {
         this.de = de ;
         this.modify("de",de);
     }
+
     /**
      * 设置 [参保地标识]
      */
@@ -225,6 +233,7 @@ public class SocSelfarebasemx extends EntityMP implements Serializable {
         this.socselfarebaseid = socselfarebaseid ;
         this.modify("socselfarebaseid",socselfarebaseid);
     }
+
     /**
      * 设置 [单位社保账户标识]
      */
@@ -232,6 +241,7 @@ public class SocSelfarebasemx extends EntityMP implements Serializable {
         this.soccompanywelid = soccompanywelid ;
         this.modify("soccompanywelid",soccompanywelid);
     }
+
 
 }
 

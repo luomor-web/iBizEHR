@@ -35,11 +35,11 @@ export default {
 	views: {
 		gridview: {
 			caption: "考勤记录",
-      title: '考勤记录',
+      title: '考勤记录表格视图',
 		},
 		editview: {
 			caption: "考勤记录",
-      title: '考勤记录',
+      title: '考勤记录编辑视图',
 		},
 	},
 	main_form: {

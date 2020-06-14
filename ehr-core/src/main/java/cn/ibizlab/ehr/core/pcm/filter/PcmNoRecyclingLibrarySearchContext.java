@@ -31,7 +31,7 @@ public class PcmNoRecyclingLibrarySearchContext extends QueryWrapperContext<PcmN
 	public void setN_pcmnorecyclinglibraryname_like(String n_pcmnorecyclinglibraryname_like) {
         this.n_pcmnorecyclinglibraryname_like = n_pcmnorecyclinglibraryname_like;
         if(!ObjectUtils.isEmpty(this.n_pcmnorecyclinglibraryname_like)){
-            this.getSelectCond().like("pcmnorecyclinglibraryname", n_pcmnorecyclinglibraryname_like);
+            this.getSearchCond().like("pcmnorecyclinglibraryname", n_pcmnorecyclinglibraryname_like);
         }
     }
 
@@ -42,7 +42,7 @@ public class PcmNoRecyclingLibrarySearchContext extends QueryWrapperContext<PcmN
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("pcmnorecyclinglibraryname", query)   
             );
 		 }

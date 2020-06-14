@@ -28,6 +28,8 @@
     ]"
     :context="context"
     :viewparams="viewparams"
+    :localContext ='{}'
+    :localParam ='{}'
     parameterName='pimperson'
     parentName="PimPerson"  
     refviewtype='DEGRIDVIEW' 
@@ -58,6 +60,8 @@
     ]"
     :context="context"
     :viewparams="viewparams"
+    :localContext ='{}'
+    :localParam ='{}'
     parameterName='pimperson'
     parentName="PimPerson"  
     refviewtype='DEGRIDVIEW' 
@@ -88,6 +92,8 @@
     ]"
     :context="context"
     :viewparams="viewparams"
+    :localContext ='{}'
+    :localParam ='{}'
     parameterName='pimperson'
     parentName="PimPerson"  
     refviewtype='DEGRIDVIEW' 

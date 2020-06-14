@@ -22,7 +22,7 @@ export default {
 		},
 		editview: {
 			caption: '绩效年度考核结果',
-      title: '绩效年度考核结果',
+      title: '绩效年度考核结果编辑视图',
 		},
 	},
 	main_form: {

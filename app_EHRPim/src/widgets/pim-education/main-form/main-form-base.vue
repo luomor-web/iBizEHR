@@ -8,12 +8,14 @@
     <row>
         <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.pimeducation.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-picker 
+    
+<app-picker 
   :formState="formState"
   :data="data"
   :context="context"
   :viewparams="viewparams"
-  :itemParam='{ }' 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   :disabled="detailsModel.pimpersonname.disabled"
   name='pimpersonname'
   deMajorField='pimpersonname'
@@ -33,12 +35,14 @@
 </i-col>
 <i-col v-show="detailsModel.xl.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='xl' :itemRules="this.rules.xl" class='' :caption="$t('entities.pimeducation.main_form.details.xl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xl.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.xl" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.xl.disabled"  
     tag='EhrCodeList0117' 
     codelistType='DYNAMIC'
@@ -49,12 +53,14 @@
 </i-col>
 <i-col v-show="detailsModel.degree.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='degree' :itemRules="this.rules.degree" class='' :caption="$t('entities.pimeducation.main_form.details.degree')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.degree.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.degree" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.degree.disabled"  
     tag='EhrCodeList0155' 
     codelistType='DYNAMIC'
@@ -65,12 +71,14 @@
 </i-col>
 <i-col v-show="detailsModel.xllx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='xllx' :itemRules="this.rules.xllx" class='' :caption="$t('entities.pimeducation.main_form.details.xllx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xllx.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.xllx" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.xllx.disabled"  
     tag='EhrCodeList0131' 
     codelistType='DYNAMIC'
@@ -81,12 +89,14 @@
 </i-col>
 <i-col v-show="detailsModel.xxxz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='xxxz' :itemRules="this.rules.xxxz" class='' :caption="$t('entities.pimeducation.main_form.details.xxxz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xxxz.error" :isEmptyCaption="false" labelPos="LEFT">
-     <dropdown-list 
+    
+ <dropdown-list 
     v-model="data.xxxz" 
     :data="data" 
     :context="context"
     :viewparams="viewparams"
-    :itemParam="{}" 
+    :localContext ='{ }' 
+    :localParam ='{ }' 
     :disabled="detailsModel.xxxz.disabled"  
     tag='EhrCodeList0208' 
     codelistType='DYNAMIC'
@@ -121,14 +131,16 @@
 </i-col>
 <i-col v-show="detailsModel.sfdyxl.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfdyxl' :itemRules="this.rules.sfdyxl" class='' :caption="$t('entities.pimeducation.main_form.details.sfdyxl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfdyxl.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.sfdyxl"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.sfdyxl.disabled"  
   name="sfdyxl" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0400' 
   codelistType='STATIC' 
   style="">
@@ -138,14 +150,16 @@
 </i-col>
 <i-col v-show="detailsModel.sfzgxl.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfzgxl' :itemRules="this.rules.sfzgxl" class='' :caption="$t('entities.pimeducation.main_form.details.sfzgxl')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfzgxl.error" :isEmptyCaption="false" labelPos="LEFT">
-    <app-radio-group 
+    
+<app-radio-group 
   v-model="data.sfzgxl"
   :data="data" 
   :context="context"
   :viewparams="viewparams"   
   :disabled="detailsModel.sfzgxl.disabled"  
   name="sfzgxl" 
-  :itemParam="{}" 
+  :localContext ='{ }' 
+  :localParam ='{ }' 
   tag='EhrCodeList0400' 
   codelistType='STATIC' 
   style="">

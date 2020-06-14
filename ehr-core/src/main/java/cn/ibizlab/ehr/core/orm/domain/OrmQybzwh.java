@@ -7,6 +7,7 @@ import java.util.Map;
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -22,9 +23,9 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
-
 
 /**
  * 实体[区域标准维护]
@@ -32,7 +33,7 @@ import cn.ibizlab.ehr.util.domain.EntityMP;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(value = "handler")
 @TableName(value = "T_ORMQYBZWH",resultMap = "OrmQybzwhResultMap")
 public class OrmQybzwh extends EntityMP implements Serializable {
 
@@ -133,6 +134,7 @@ public class OrmQybzwh extends EntityMP implements Serializable {
         this.xh = xh ;
         this.modify("xh",xh);
     }
+
     /**
      * 设置 [描述]
      */
@@ -140,6 +142,7 @@ public class OrmQybzwh extends EntityMP implements Serializable {
         this.ms = ms ;
         this.modify("ms",ms);
     }
+
     /**
      * 设置 [区域选择]
      */
@@ -147,6 +150,7 @@ public class OrmQybzwh extends EntityMP implements Serializable {
         this.ormqybzwhname = ormqybzwhname ;
         this.modify("ormqybzwhname",ormqybzwhname);
     }
+
     /**
      * 设置 [组织ID]
      */
@@ -154,6 +158,7 @@ public class OrmQybzwh extends EntityMP implements Serializable {
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
     }
+
 
 }
 

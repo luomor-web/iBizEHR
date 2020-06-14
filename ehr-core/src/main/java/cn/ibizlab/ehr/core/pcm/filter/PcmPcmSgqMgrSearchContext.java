@@ -31,35 +31,35 @@ public class PcmPcmSgqMgrSearchContext extends QueryWrapperContext<PcmPcmSgqMgr>
 	public void setN_sgqmgrname_like(String n_sgqmgrname_like) {
         this.n_sgqmgrname_like = n_sgqmgrname_like;
         if(!ObjectUtils.isEmpty(this.n_sgqmgrname_like)){
-            this.getSelectCond().like("sgqmgrname", n_sgqmgrname_like);
+            this.getSearchCond().like("sgqmgrname", n_sgqmgrname_like);
         }
     }
 	private String n_pimpersonname_eq;//[员工姓名]
 	public void setN_pimpersonname_eq(String n_pimpersonname_eq) {
         this.n_pimpersonname_eq = n_pimpersonname_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_eq)){
-            this.getSelectCond().eq("pimpersonname", n_pimpersonname_eq);
+            this.getSearchCond().eq("pimpersonname", n_pimpersonname_eq);
         }
     }
 	private String n_pimpersonname_like;//[员工姓名]
 	public void setN_pimpersonname_like(String n_pimpersonname_like) {
         this.n_pimpersonname_like = n_pimpersonname_like;
         if(!ObjectUtils.isEmpty(this.n_pimpersonname_like)){
-            this.getSelectCond().like("pimpersonname", n_pimpersonname_like);
+            this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
 	private String n_pimpersonid_eq;//[人员信息标识]
 	public void setN_pimpersonid_eq(String n_pimpersonid_eq) {
         this.n_pimpersonid_eq = n_pimpersonid_eq;
         if(!ObjectUtils.isEmpty(this.n_pimpersonid_eq)){
-            this.getSelectCond().eq("pimpersonid", n_pimpersonid_eq);
+            this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
 	private String n_pcmbdsqdmxid_eq;//[申请单明细标识]
 	public void setN_pcmbdsqdmxid_eq(String n_pcmbdsqdmxid_eq) {
         this.n_pcmbdsqdmxid_eq = n_pcmbdsqdmxid_eq;
         if(!ObjectUtils.isEmpty(this.n_pcmbdsqdmxid_eq)){
-            this.getSelectCond().eq("pcmbdsqdmxid", n_pcmbdsqdmxid_eq);
+            this.getSearchCond().eq("pcmbdsqdmxid", n_pcmbdsqdmxid_eq);
         }
     }
 
@@ -70,7 +70,7 @@ public class PcmPcmSgqMgrSearchContext extends QueryWrapperContext<PcmPcmSgqMgr>
 	{
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
-            this.getSelectCond().and( wrapper ->
+            this.getSearchCond().and( wrapper ->
                      wrapper.like("sgqmgrname", query)   
             );
 		 }
