@@ -21,6 +21,8 @@ iBiz致力于提升中国软件软件建设和应用的价值，从业务到技�
 * **[iBizEHR解决方案](http://demo.ibizlab.cn/ibizehr)**
 * **[iBizEHR训练营](http://demo.ibizlab.cn/ibizehr_practice)**
 * **[如何在演示系统中建立Issue](https://gitee.com/ibizlab/iBizEHR/wikis/pages?sort_id=2251813&doc_id=692797)**
+* **[iBizEHR配置平台](http://studio.ibizlab.cn/slnstudio/#/common_slnindex/srfkeys=72FD550D-7E58-48B1-A8C7-19BAB3E849BF)**
+* **[更多开源项目](https://gitee.com/ibizlab)**
 * **欢迎加入iBizEHR交流QQ群：1056401976**
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/0520/135506_3a2bca15_7580957.png "iBizEHR_QQ.png")
