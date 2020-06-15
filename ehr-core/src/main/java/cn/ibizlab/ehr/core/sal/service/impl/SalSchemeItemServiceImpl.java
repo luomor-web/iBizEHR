@@ -60,10 +60,6 @@ public class SalSchemeItemServiceImpl extends ServiceImpl<SalSchemeItemMapper, S
     @Lazy
     private cn.ibizlab.ehr.core.sal.service.ISalSchemeService salschemeService;
 
-    @Autowired
-    @Lazy
-    private cn.ibizlab.ehr.core.sal.service.logic.ISalSchemeItemSetOrderNumLogic setordernumLogic;
-
     private int batchSize = 500;
 
     @Override
@@ -148,7 +144,6 @@ public class SalSchemeItemServiceImpl extends ServiceImpl<SalSchemeItemMapper, S
     @Transactional
     public boolean create(SalSchemeItem et) {
         fillParentData(et);
-        setordernumLogic.execute(et);
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getSalschemeitemid()),et);
@@ -224,6 +219,7 @@ public class SalSchemeItemServiceImpl extends ServiceImpl<SalSchemeItemMapper, S
                 salitem=majorEntity;
             }
             et.setSalitemname(salitem.getSalitemname());
+            et.setXh2(salitem.getXh());
         }
         //实体关系[DER1N_SALSCHEMEITEM_SALRULE_SALRULEID]
         if(!ObjectUtils.isEmpty(et.getSalruleid())){

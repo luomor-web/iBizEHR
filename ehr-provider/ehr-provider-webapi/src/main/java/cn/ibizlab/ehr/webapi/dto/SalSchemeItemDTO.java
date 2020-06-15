@@ -177,6 +177,14 @@ public class SalSchemeItemDTO extends DTOBase implements Serializable {
     @JsonProperty("salitemid")
     private String salitemid;
 
+    /**
+     * 属性 [XH2]
+     *
+     */
+    @JSONField(name = "xh2")
+    @JsonProperty("xh2")
+    private Integer xh2;
+
 
     /**
      * 设置 [BZ]

@@ -180,6 +180,13 @@ public class SalSchemeItem extends EntityMP implements Serializable {
     @JSONField(name = "salitemid")
     @JsonProperty("salitemid")
     private String salitemid;
+    /**
+     * 排序号
+     */
+    @TableField(exist = false)
+    @JSONField(name = "xh2")
+    @JsonProperty("xh2")
+    private Integer xh2;
 
     /**
      * 方案要素项
