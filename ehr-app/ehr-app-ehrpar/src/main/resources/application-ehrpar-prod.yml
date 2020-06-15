@@ -147,6 +147,10 @@ zuul:
       path: /parldndlhmbs/**
       serviceId: ehr-webapi
       stripPrefix: false
+    parassesstemplate:
+      path: /parassesstemplates/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     parxmbpjbz:
       path: /parxmbpjbzs/**
       serviceId: ehr-webapi

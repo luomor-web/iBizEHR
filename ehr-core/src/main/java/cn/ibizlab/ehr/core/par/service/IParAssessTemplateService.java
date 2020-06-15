@@ -14,33 +14,29 @@ import org.springframework.data.domain.Pageable;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.cache.annotation.CacheEvict;
 
-import cn.ibizlab.ehr.core.par.domain.ParKhzcmx;
-import cn.ibizlab.ehr.core.par.filter.ParKhzcmxSearchContext;
+import cn.ibizlab.ehr.core.par.domain.ParAssessTemplate;
+import cn.ibizlab.ehr.core.par.filter.ParAssessTemplateSearchContext;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
- * 实体[ParKhzcmx] 服务对象接口
+ * 实体[ParAssessTemplate] 服务对象接口
  */
-public interface IParKhzcmxService extends IService<ParKhzcmx>{
+public interface IParAssessTemplateService extends IService<ParAssessTemplate>{
 
-    boolean create(ParKhzcmx et) ;
-    void createBatch(List<ParKhzcmx> list) ;
-    boolean save(ParKhzcmx et) ;
-    void saveBatch(List<ParKhzcmx> list) ;
-    ParKhzcmx get(String key) ;
-    ParKhzcmx getDraft(ParKhzcmx et) ;
     boolean remove(String key) ;
     void removeBatch(Collection<String> idList) ;
-    boolean checkKey(ParKhzcmx et) ;
-    boolean update(ParKhzcmx et) ;
-    void updateBatch(List<ParKhzcmx> list) ;
-    Page<ParKhzcmx> searchDefault(ParKhzcmxSearchContext context) ;
-    List<ParKhzcmx> selectByParassesstemplateid(String parassesstemplateid) ;
-    void removeByParassesstemplateid(String parassesstemplateid) ;
-    List<ParKhzcmx> selectByParjxkhjcszid(String parjxkhjcszid) ;
-    void removeByParjxkhjcszid(String parjxkhjcszid) ;
+    ParAssessTemplate getDraft(ParAssessTemplate et) ;
+    ParAssessTemplate get(String key) ;
+    boolean checkKey(ParAssessTemplate et) ;
+    boolean update(ParAssessTemplate et) ;
+    void updateBatch(List<ParAssessTemplate> list) ;
+    boolean save(ParAssessTemplate et) ;
+    void saveBatch(List<ParAssessTemplate> list) ;
+    boolean create(ParAssessTemplate et) ;
+    void createBatch(List<ParAssessTemplate> list) ;
+    Page<ParAssessTemplate> searchDefault(ParAssessTemplateSearchContext context) ;
     /**
      *自定义查询SQL
      * @param sql  select * from table where id =#{et.param}
@@ -56,8 +52,8 @@ public interface IParKhzcmxService extends IService<ParKhzcmx>{
      */
     boolean execute(String sql, Map param);
 
-    List<ParKhzcmx> getParkhzcmxByIds(List<String> ids) ;
-    List<ParKhzcmx> getParkhzcmxByEntities(List<ParKhzcmx> entities) ;
+    List<ParAssessTemplate> getParassesstemplateByIds(List<String> ids) ;
+    List<ParAssessTemplate> getParassesstemplateByEntities(List<ParAssessTemplate> entities) ;
 
 }
 

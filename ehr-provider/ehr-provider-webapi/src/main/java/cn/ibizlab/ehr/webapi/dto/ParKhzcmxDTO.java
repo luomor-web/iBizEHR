@@ -113,6 +113,38 @@ public class ParKhzcmxDTO extends DTOBase implements Serializable {
     @JsonProperty("parjxkhjcszid")
     private String parjxkhjcszid;
 
+    /**
+     * 属性 [PARASSESSTEMPLATEID]
+     *
+     */
+    @JSONField(name = "parassesstemplateid")
+    @JsonProperty("parassesstemplateid")
+    private String parassesstemplateid;
+
+    /**
+     * 属性 [PARASSESSTEMPLATENAME]
+     *
+     */
+    @JSONField(name = "parassesstemplatename")
+    @JsonProperty("parassesstemplatename")
+    private String parassesstemplatename;
+
+    /**
+     * 属性 [KHNR]
+     *
+     */
+    @JSONField(name = "khnr")
+    @JsonProperty("khnr")
+    private String khnr;
+
+    /**
+     * 属性 [XH]
+     *
+     */
+    @JSONField(name = "xh")
+    @JsonProperty("xh")
+    private Integer xh;
+
 
     /**
      * 设置 [SZQZ]
@@ -144,6 +176,30 @@ public class ParKhzcmxDTO extends DTOBase implements Serializable {
     public void setParjxkhjcszid(String  parjxkhjcszid){
         this.parjxkhjcszid = parjxkhjcszid ;
         this.modify("parjxkhjcszid",parjxkhjcszid);
+    }
+
+    /**
+     * 设置 [PARASSESSTEMPLATEID]
+     */
+    public void setParassesstemplateid(String  parassesstemplateid){
+        this.parassesstemplateid = parassesstemplateid ;
+        this.modify("parassesstemplateid",parassesstemplateid);
+    }
+
+    /**
+     * 设置 [KHNR]
+     */
+    public void setKhnr(String  khnr){
+        this.khnr = khnr ;
+        this.modify("khnr",khnr);
+    }
+
+    /**
+     * 设置 [XH]
+     */
+    public void setXh(Integer  xh){
+        this.xh = xh ;
+        this.modify("xh",xh);
     }
 
 

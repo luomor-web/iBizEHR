@@ -38,7 +38,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.util.StringUtils;
 
 /**
- * 实体[考核内容] 服务对象接口实现
+ * 实体[考核模板明细] 服务对象接口实现
  */
 @Slf4j
 @Service("ParKhzcmxServiceImpl")
@@ -50,6 +50,9 @@ public class ParKhzcmxServiceImpl extends ServiceImpl<ParKhzcmxMapper, ParKhzcmx
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.par.service.IParLdkhqzService parldkhqzService;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.par.service.IParAssessTemplateService parassesstemplateService;
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.par.service.IParJxkhjcszService parjxkhjcszService;
@@ -158,6 +161,16 @@ public class ParKhzcmxServiceImpl extends ServiceImpl<ParKhzcmxMapper, ParKhzcmx
 
 
 	@Override
+    public List<ParKhzcmx> selectByParassesstemplateid(String parassesstemplateid) {
+        return baseMapper.selectByParassesstemplateid(parassesstemplateid);
+    }
+
+    @Override
+    public void removeByParassesstemplateid(String parassesstemplateid) {
+        this.remove(new QueryWrapper<ParKhzcmx>().eq("parassesstemplateid",parassesstemplateid));
+    }
+
+	@Override
     public List<ParKhzcmx> selectByParjxkhjcszid(String parjxkhjcszid) {
         return baseMapper.selectByParjxkhjcszid(parjxkhjcszid);
     }
@@ -184,6 +197,16 @@ public class ParKhzcmxServiceImpl extends ServiceImpl<ParKhzcmxMapper, ParKhzcmx
      * @param et
      */
     private void fillParentData(ParKhzcmx et){
+        //实体关系[DER1N_PARKHZCMX_PARASSESSTEMPLATE_PARASSESSTEMPLATEID]
+        if(!ObjectUtils.isEmpty(et.getParassesstemplateid())){
+            cn.ibizlab.ehr.core.par.domain.ParAssessTemplate parassesstemplate=et.getParassesstemplate();
+            if(ObjectUtils.isEmpty(parassesstemplate)){
+                cn.ibizlab.ehr.core.par.domain.ParAssessTemplate majorEntity=parassesstemplateService.get(et.getParassesstemplateid());
+                et.setParassesstemplate(majorEntity);
+                parassesstemplate=majorEntity;
+            }
+            et.setParassesstemplatename(parassesstemplate.getParassesstemplatename());
+        }
         //实体关系[DER1N_PARKHZCMX_PARJXKHJCSZ_PARJXKHJCSZID]
         if(!ObjectUtils.isEmpty(et.getParjxkhjcszid())){
             cn.ibizlab.ehr.core.par.domain.ParJxkhjcsz parjxkhjcsz=et.getParjxkhjcsz();

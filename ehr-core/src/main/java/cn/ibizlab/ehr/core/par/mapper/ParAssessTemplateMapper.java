@@ -9,25 +9,25 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import java.util.HashMap;
 import org.apache.ibatis.annotations.Select;
-import cn.ibizlab.ehr.core.par.domain.ParKhzcmx;
-import cn.ibizlab.ehr.core.par.filter.ParKhzcmxSearchContext;
+import cn.ibizlab.ehr.core.par.domain.ParAssessTemplate;
+import cn.ibizlab.ehr.core.par.filter.ParAssessTemplateSearchContext;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import java.io.Serializable;
 import com.baomidou.mybatisplus.core.toolkit.Constants;
 import com.alibaba.fastjson.JSONObject;
 
-public interface ParKhzcmxMapper extends BaseMapper<ParKhzcmx>{
+public interface ParAssessTemplateMapper extends BaseMapper<ParAssessTemplate>{
 
-    Page<ParKhzcmx> searchDefault(IPage page, @Param("srf") ParKhzcmxSearchContext context, @Param("ew") Wrapper<ParKhzcmx> wrapper) ;
+    Page<ParAssessTemplate> searchDefault(IPage page, @Param("srf") ParAssessTemplateSearchContext context, @Param("ew") Wrapper<ParAssessTemplate> wrapper) ;
     @Override
-    ParKhzcmx selectById(Serializable id);
+    ParAssessTemplate selectById(Serializable id);
     @Override
-    int insert(ParKhzcmx entity);
+    int insert(ParAssessTemplate entity);
     @Override
-    int updateById(@Param(Constants.ENTITY) ParKhzcmx entity);
+    int updateById(@Param(Constants.ENTITY) ParAssessTemplate entity);
     @Override
-    int update(@Param(Constants.ENTITY) ParKhzcmx entity, @Param("ew") Wrapper<ParKhzcmx> updateWrapper);
+    int update(@Param(Constants.ENTITY) ParAssessTemplate entity, @Param("ew") Wrapper<ParAssessTemplate> updateWrapper);
     @Override
     int deleteById(Serializable id);
      /**
@@ -61,9 +61,5 @@ public interface ParKhzcmxMapper extends BaseMapper<ParKhzcmx>{
     */
     @Delete("${sql}")
     boolean deleteBySQL(@Param("sql") String sql, @Param("et")Map param);
-
-    List<ParKhzcmx> selectByParassesstemplateid(@Param("parassesstemplateid") Serializable parassesstemplateid) ;
-
-    List<ParKhzcmx> selectByParjxkhjcszid(@Param("parjxkhjcszid") Serializable parjxkhjcszid) ;
 
 }

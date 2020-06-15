@@ -5,19 +5,29 @@
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
 	<select id="selectById"  resultMap="ParKhzcmxResultMap" databaseId="mysql">
-        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`KHLX` AS `KHDX`, t1.`PARJXKHJCSZID`, t11.`PARJXKHJCSZNAME`, t1.`PARKHZCMXID`, t1.`PARKHZCMXNAME`, t1.`SFQY`, t1.`SZQZ`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PARKHZCMX` t1  LEFT JOIN T_PARJXKHJCSZ t11 ON t1.PARJXKHJCSZID = t11.PARJXKHJCSZID  ) t1 where parkhzcmxid=#{id}]]>
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`KHLX` AS `KHDX`, t1.`KHNR`, t1.`PARASSESSTEMPLATEID`, t21.`PARASSESSTEMPLATENAME`, t1.`PARJXKHJCSZID`, t11.`PARJXKHJCSZNAME`, t1.`PARKHZCMXID`, t1.`PARKHZCMXNAME`, t1.`SFQY`, t1.`SZQZ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH` FROM `T_PARKHZCMX` t1  LEFT JOIN T_PARJXKHJCSZ t11 ON t1.PARJXKHJCSZID = t11.PARJXKHJCSZID  LEFT JOIN T_PARASSESSTEMPLATE t21 ON t1.PARASSESSTEMPLATEID = t21.PARASSESSTEMPLATEID  ) t1 where parkhzcmxid=#{id}]]>
     </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="ParKhzcmxResultMap" type="cn.ibizlab.ehr.core.par.domain.ParKhzcmx" autoMapping="true">
         <id property="parkhzcmxid" column="parkhzcmxid" /><!--主键字段映射-->
 		<result property="parjxkhjcszid" column="parjxkhjcszid" />
+		<result property="parassesstemplateid" column="parassesstemplateid" />
             
 		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="parassesstemplate" javaType="cn.ibizlab.ehr.core.par.domain.ParAssessTemplate" column="parassesstemplateid" select="cn.ibizlab.ehr.core.par.mapper.ParAssessTemplateMapper.selectById" fetchType="lazy"></association>
 		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
 		<association property="parjxkhjcsz" javaType="cn.ibizlab.ehr.core.par.domain.ParJxkhjcsz" column="parjxkhjcszid" select="cn.ibizlab.ehr.core.par.mapper.ParJxkhjcszMapper.selectById" fetchType="lazy"></association>
     </resultMap>
 
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PARKHZCMX_PARASSESSTEMPLATE_PARASSESSTEMPLATEID] -->
+	 <select id="selectByParassesstemplateid" resultMap="ParKhzcmxResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  parassesstemplateid=#{parassesstemplateid}
+     </select>
 	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PARKHZCMX_PARJXKHJCSZ_PARJXKHJCSZID] -->
 	 <select id="selectByParjxkhjcszid" resultMap="ParKhzcmxResultMap">
          select t1.* from (
@@ -37,12 +47,12 @@
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
-       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`KHLX` AS `KHDX`, t1.`PARJXKHJCSZID`, t11.`PARJXKHJCSZNAME`, t1.`PARKHZCMXID`, t1.`PARKHZCMXNAME`, t1.`SFQY`, t1.`SZQZ`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PARKHZCMX` t1  LEFT JOIN T_PARJXKHJCSZ t11 ON t1.PARJXKHJCSZID = t11.PARJXKHJCSZID  
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`KHLX` AS `KHDX`, t1.`KHNR`, t1.`PARASSESSTEMPLATEID`, t21.`PARASSESSTEMPLATENAME`, t1.`PARJXKHJCSZID`, t11.`PARJXKHJCSZNAME`, t1.`PARKHZCMXID`, t1.`PARKHZCMXNAME`, t1.`SFQY`, t1.`SZQZ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH` FROM `T_PARKHZCMX` t1  LEFT JOIN T_PARJXKHJCSZ t11 ON t1.PARJXKHJCSZID = t11.PARJXKHJCSZID  LEFT JOIN T_PARASSESSTEMPLATE t21 ON t1.PARASSESSTEMPLATEID = t21.PARASSESSTEMPLATEID  
 			]]>
     </sql>
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
-       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`KHLX` AS `KHDX`, t1.`PARJXKHJCSZID`, t11.`PARJXKHJCSZNAME`, t1.`PARKHZCMXID`, t1.`PARKHZCMXNAME`, t1.`SFQY`, t1.`SZQZ`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_PARKHZCMX` t1  LEFT JOIN T_PARJXKHJCSZ t11 ON t1.PARJXKHJCSZID = t11.PARJXKHJCSZID  
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t11.`KHLX` AS `KHDX`, t1.`KHNR`, t1.`PARASSESSTEMPLATEID`, t21.`PARASSESSTEMPLATENAME`, t1.`PARJXKHJCSZID`, t11.`PARJXKHJCSZNAME`, t1.`PARKHZCMXID`, t1.`PARKHZCMXNAME`, t1.`SFQY`, t1.`SZQZ`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH` FROM `T_PARKHZCMX` t1  LEFT JOIN T_PARJXKHJCSZ t11 ON t1.PARJXKHJCSZID = t11.PARJXKHJCSZID  LEFT JOIN T_PARASSESSTEMPLATE t21 ON t1.PARASSESSTEMPLATEID = t21.PARASSESSTEMPLATEID  
 			]]>
     </sql>
 </mapper>

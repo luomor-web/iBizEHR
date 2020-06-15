@@ -27,7 +27,7 @@ import cn.ibizlab.ehr.core.par.domain.ParKhzcmx;
 @Data
 public class ParKhzcmxSearchContext extends QueryWrapperContext<ParKhzcmx> {
 
-	private String n_parkhzcmxname_like;//[考核内容]
+	private String n_parkhzcmxname_like;//[考核模板明细]
 	public void setN_parkhzcmxname_like(String n_parkhzcmxname_like) {
         this.n_parkhzcmxname_like = n_parkhzcmxname_like;
         if(!ObjectUtils.isEmpty(this.n_parkhzcmxname_like)){
@@ -53,6 +53,34 @@ public class ParKhzcmxSearchContext extends QueryWrapperContext<ParKhzcmx> {
         this.n_parjxkhjcszid_eq = n_parjxkhjcszid_eq;
         if(!ObjectUtils.isEmpty(this.n_parjxkhjcszid_eq)){
             this.getSearchCond().eq("parjxkhjcszid", n_parjxkhjcszid_eq);
+        }
+    }
+	private String n_parassesstemplateid_eq;//[考核模板标识]
+	public void setN_parassesstemplateid_eq(String n_parassesstemplateid_eq) {
+        this.n_parassesstemplateid_eq = n_parassesstemplateid_eq;
+        if(!ObjectUtils.isEmpty(this.n_parassesstemplateid_eq)){
+            this.getSearchCond().eq("parassesstemplateid", n_parassesstemplateid_eq);
+        }
+    }
+	private String n_parassesstemplatename_eq;//[考核模板名称]
+	public void setN_parassesstemplatename_eq(String n_parassesstemplatename_eq) {
+        this.n_parassesstemplatename_eq = n_parassesstemplatename_eq;
+        if(!ObjectUtils.isEmpty(this.n_parassesstemplatename_eq)){
+            this.getSearchCond().eq("parassesstemplatename", n_parassesstemplatename_eq);
+        }
+    }
+	private String n_parassesstemplatename_like;//[考核模板名称]
+	public void setN_parassesstemplatename_like(String n_parassesstemplatename_like) {
+        this.n_parassesstemplatename_like = n_parassesstemplatename_like;
+        if(!ObjectUtils.isEmpty(this.n_parassesstemplatename_like)){
+            this.getSearchCond().like("parassesstemplatename", n_parassesstemplatename_like);
+        }
+    }
+	private String n_khnr_eq;//[考核内容]
+	public void setN_khnr_eq(String n_khnr_eq) {
+        this.n_khnr_eq = n_khnr_eq;
+        if(!ObjectUtils.isEmpty(this.n_khnr_eq)){
+            this.getSearchCond().eq("khnr", n_khnr_eq);
         }
     }
 
