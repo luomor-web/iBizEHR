@@ -5,7 +5,7 @@ import ParAssessTemplateEditViewBase from './par-assess-template-edit-view-base.
 import view_form from '@widgets/par-assess-template/main-form/main-form.vue';
 
 /**
- * 考核模板编辑视图
+ * 考核模板
  *
  * @export
  * @class ParAssessTemplateEditView

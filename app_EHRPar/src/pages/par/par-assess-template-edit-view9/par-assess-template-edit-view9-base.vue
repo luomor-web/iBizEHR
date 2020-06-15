@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="parassesstemplateeditview9" viewTitle="考核模板" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview9': true, 'par-assess-template-edit-view9': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="parassesstemplateeditview9" viewTitle="考核模板" :isShowCaptionBar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview9': true, 'par-assess-template-edit-view9': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 

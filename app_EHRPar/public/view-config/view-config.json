@@ -180,7 +180,7 @@
         "memo": ""
     },
     "parassesstemplateeditview": {
-        "title": "考核模板编辑视图",
+        "title": "考核模板",
         "caption": "考核模板",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "PAR",

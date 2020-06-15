@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="parkhzcmxeditview" viewTitle="考核组成明细编辑视图" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'par-khzcmx-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="parkhzcmxeditview" viewTitle="考核组成明细编辑视图" :isShowCaptionBar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'par-khzcmx-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 

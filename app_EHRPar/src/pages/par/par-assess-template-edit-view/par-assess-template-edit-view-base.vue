@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="parassesstemplateeditview" viewTitle="考核模板编辑视图" :isShowCaptionBar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'par-assess-template-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="parassesstemplateeditview" viewTitle="考核模板" :isShowCaptionBar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'par-assess-template-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -53,7 +53,7 @@ import EditViewEngine from '@engine/view/edit-view-engine';
 
 
 /**
- * 考核模板编辑视图基类
+ * 考核模板基类
  *
  * @export
  * @class ParAssessTemplateEditViewBase

@@ -168,7 +168,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "2698c6c20aa3e029be5d7b71d05d529d"
         },
         "parassesstemplateeditview": {
-            "title": "考核模板编辑视图",
+            "title": "考核模板",
             "caption": "考核模板",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PAR",

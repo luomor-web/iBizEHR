@@ -18,7 +18,7 @@ export default {
 		},
 		editview: {
 			caption: "考核模板",
-      title: '考核模板编辑视图',
+      title: '考核模板',
 		},
 		pickupview: {
 			caption: "考核模板",
