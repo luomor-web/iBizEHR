@@ -56,7 +56,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     @JsonProperty("updatedate")
     private Timestamp updatedate;
     /**
-     * 月度考核
+     * 月度计划
      */
     @TableField(value = "jswmjc")
     @JSONField(name = "jswmjc")
@@ -77,7 +77,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     @JsonProperty("khlx")
     private String khlx;
     /**
-     * 工作周报考核
+     * 工作周报
      */
     @TableField(value = "ywnlks")
     @JSONField(name = "ywnlks")
@@ -128,7 +128,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     @JsonProperty("updateman")
     private String updateman;
     /**
-     * 工作能力及态度评价（下半年）
+     * 工作能力及态度评价
      */
     @DEField(name = "gznljtd_xbn")
     @TableField(value = "gznljtd_xbn")
@@ -153,7 +153,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     @JsonProperty("parjxkhxhzid")
     private String parjxkhxhzid;
     /**
-     * 年度量化目标（工作述职）
+     * 量化目标
      */
     @TableField(value = "gzjx")
     @JSONField(name = "gzjx")
@@ -185,7 +185,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [月度考核]
+     * 设置 [月度计划]
      */
     public void setJswmjc(Double jswmjc){
         this.jswmjc = jswmjc ;
@@ -209,7 +209,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [工作周报考核]
+     * 设置 [工作周报]
      */
     public void setYwnlks(Double ywnlks){
         this.ywnlks = ywnlks ;
@@ -249,7 +249,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [工作能力及态度评价（下半年）]
+     * 设置 [工作能力及态度评价]
      */
     public void setGznljtdXbn(Double gznljtdXbn){
         this.gznljtdXbn = gznljtdXbn ;
@@ -257,7 +257,7 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [年度量化目标（工作述职）]
+     * 设置 [量化目标]
      */
     public void setGzjx(Double gzjx){
         this.gzjx = gzjx ;
