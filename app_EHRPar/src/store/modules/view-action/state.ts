@@ -91,15 +91,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '1e42ac493a08f87edf0c49360e4450e3',
-            viewmodule: 'PAR',
-            viewname: 'ParExamCycleEditView2',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-            ],
-        },
-        {
             viewtag: '25a6fb2dc9f85ee002bcbeca2f1a8205',
             viewmodule: 'PAR',
             viewname: 'ParExamCycleGridView',
@@ -363,6 +354,7 @@ export const viewstate: any = {
             refviews: [
                 '11beb7ce619d4fa3c5286eba91be6d7a',
                 '188a0a8121edcb88a352a84cf562aa58',
+                'e184f5db6e3acb31c15469de5437cf75',
                 '51460be10bc6dc74ec79e53ae545e1c7',
                 '11e69b35ff04251d7f8e7295a1d63f06',
                 '4cb79515b9133499fc74b275a26e2da5',
@@ -372,7 +364,6 @@ export const viewstate: any = {
                 '99f1bd86d47f8bfefef6803ebda3e437',
                 '86536dfe782911ef08becd8d6bf5b175',
                 '35977acfc0970b347cace0a7d8ccfac5',
-                '25a6fb2dc9f85ee002bcbeca2f1a8205',
             ],
         },
         {
@@ -422,6 +413,16 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+            ],
+        },
+        {
+            viewtag: 'e184f5db6e3acb31c15469de5437cf75',
+            viewmodule: 'PAR',
+            viewname: 'ParExamCycleNewGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '963f9744f61222f20041022b8b7eba31',
             ],
         },
         {

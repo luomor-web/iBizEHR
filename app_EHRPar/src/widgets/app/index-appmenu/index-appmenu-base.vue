@@ -116,7 +116,7 @@ export default class IndexBase extends AppMenusCtrlBase {
         const deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'parexamcycles', parameterName: 'parexamcycle' },
-            { pathName: 'gridview', parameterName: 'gridview' },
+            { pathName: 'newgridview', parameterName: 'newgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
         this.$router.push(path);

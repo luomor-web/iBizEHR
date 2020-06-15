@@ -180,6 +180,20 @@ const router = new Router({
                     component: () => import('@pages/par/par-jxjg-khdjedit-view/par-jxjg-khdjedit-view.vue'),
                 },
                 {
+                    path: 'parexamcycles/:parexamcycle?/newgridview/:newgridview?',
+                    meta: {
+                        caption: 'entities.parexamcycle.views.newgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'parexamcycles', parameterName: 'parexamcycle' },
+                            { pathName: 'newgridview', parameterName: 'newgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/par/par-exam-cycle-new-grid-view/par-exam-cycle-new-grid-view.vue'),
+                },
+                {
                     path: 'parintegralrules/:parintegralrule?/editview9/:editview9?',
                     meta: {
                         caption: 'entities.parintegralrule.views.editview9.title',
@@ -307,20 +321,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pim/pim-person-pickup-view/pim-person-pickup-view.vue'),
-                },
-                {
-                    path: 'parexamcycles/:parexamcycle?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.parexamcycle.views.gridview.title',
-                        info:'',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'parexamcycles', parameterName: 'parexamcycle' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/par/par-exam-cycle-grid-view/par-exam-cycle-grid-view.vue'),
                 },
                 {
                     path: 'parexamcontents/:parexamcontent?/editview/:editview?',
@@ -761,19 +761,6 @@ const router = new Router({
         component: () => import('@pages/par/par-integral-rule-grid-view/par-integral-rule-grid-view.vue'),
     },
     {
-        path: '/parexamcycles/:parexamcycle?/editview2/:editview2?',
-        meta: {
-            caption: 'entities.parexamcycle.views.editview2.title',
-            info:'',
-            parameters: [
-                { pathName: 'parexamcycles', parameterName: 'parexamcycle' },
-                { pathName: 'editview2', parameterName: 'editview2' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/par/par-exam-cycle-edit-view2/par-exam-cycle-edit-view2.vue'),
-    },
-    {
         path: '/parexamcycles/:parexamcycle?/gridview/:gridview?',
         meta: {
             caption: 'entities.parexamcycle.views.gridview.title',
@@ -1199,6 +1186,19 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pim/pim-person-pickup-grid-view/pim-person-pickup-grid-view.vue'),
+    },
+    {
+        path: '/parexamcycles/:parexamcycle?/newgridview/:newgridview?',
+        meta: {
+            caption: 'entities.parexamcycle.views.newgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'parexamcycles', parameterName: 'parexamcycle' },
+                { pathName: 'newgridview', parameterName: 'newgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/par/par-exam-cycle-new-grid-view/par-exam-cycle-new-grid-view.vue'),
     },
     {
         path: '/parldndlhmbs/:parldndlhmb?/kheditview/:kheditview?',

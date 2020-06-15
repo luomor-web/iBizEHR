@@ -135,14 +135,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ParJxjgEditView2",
             "viewtag": "1d25ec98327f6665fff2fce37634c3bb"
         },
-        "parexamcycleeditview2": {
-            "title": "考核周期编辑视图",
-            "caption": "考核周期",
-            "viewtype": "DEEDITVIEW2",
-            "viewmodule": "PAR",
-            "viewname": "ParExamCycleEditView2",
-            "viewtag": "1e42ac493a08f87edf0c49360e4450e3"
-        },
         "parintegralrulepickupview": {
             "title": "积分规则数据选择视图",
             "caption": "积分规则",
@@ -646,6 +638,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PAR",
             "viewname": "ParDjbzEditView2",
             "viewtag": "d6dc79636ec9c777e8c62b03e428b518"
+        },
+        "parexamcyclenewgridview": {
+            "title": "考核周期设置",
+            "caption": "考核周期设置",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PAR",
+            "viewname": "ParExamCycleNewGridView",
+            "viewtag": "e184f5db6e3acb31c15469de5437cf75"
         },
         "parldndlhmbkheditview": {
             "title": "量化目标考核（公司领导类）",

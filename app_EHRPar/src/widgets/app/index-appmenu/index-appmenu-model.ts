@@ -380,12 +380,12 @@ export default class IndexModel {
             appfunctag: 'Auto68',
             appfuncyype: 'APPVIEW',
             openmode: '',
-            codename: 'parexamcyclegridview',
+            codename: 'parexamcyclenewgridview',
             deResParameters: [],
-            routepath: '/index/:index?/parexamcycles/:parexamcycle?/gridview/:gridview?',
+            routepath: '/index/:index?/parexamcycles/:parexamcycle?/newgridview/:newgridview?',
             parameters: [
                 { pathName: 'parexamcycles', parameterName: 'parexamcycle' },
-                { pathName: 'gridview', parameterName: 'gridview' },
+                { pathName: 'newgridview', parameterName: 'newgridview' },
             ],
         },
         {
