@@ -158,5 +158,137 @@ public class ParJxkhxhzResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(parjxkhxhzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @ApiOperation(value = "根据考核模板获取考核方案草稿", tags = {"考核方案" },  notes = "根据考核模板获取考核方案草稿")
+    @RequestMapping(method = RequestMethod.GET, value = "/parassesstemplates/{parassesstemplate_id}/parjxkhxhzs/getdraft")
+    public ResponseEntity<ParJxkhxhzDTO> getDraftByParAssessTemplate(@PathVariable("parassesstemplate_id") String parassesstemplate_id) {
+        ParJxkhxhz domain = new ParJxkhxhz();
+        domain.setParassesstemplateid(parassesstemplate_id);
+        return ResponseEntity.status(HttpStatus.OK).body(parjxkhxhzMapping.toDto(parjxkhxhzService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasPermission(this.parjxkhxhzService.get(#parjxkhxhz_id),'ehr-ParJxkhxhz-Update')")
+    @ApiOperation(value = "根据考核模板更新考核方案", tags = {"考核方案" },  notes = "根据考核模板更新考核方案")
+	@RequestMapping(method = RequestMethod.PUT, value = "/parassesstemplates/{parassesstemplate_id}/parjxkhxhzs/{parjxkhxhz_id}")
+    @Transactional
+    public ResponseEntity<ParJxkhxhzDTO> updateByParAssessTemplate(@PathVariable("parassesstemplate_id") String parassesstemplate_id, @PathVariable("parjxkhxhz_id") String parjxkhxhz_id, @RequestBody ParJxkhxhzDTO parjxkhxhzdto) {
+        ParJxkhxhz domain = parjxkhxhzMapping.toDomain(parjxkhxhzdto);
+        domain.setParassesstemplateid(parassesstemplate_id);
+        domain.setParjxkhxhzid(parjxkhxhz_id);
+		parjxkhxhzService.update(domain);
+        ParJxkhxhzDTO dto = parjxkhxhzMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.parjxkhxhzService.getParjxkhxhzByEntities(this.parjxkhxhzMapping.toDomain(#parjxkhxhzdtos)),'ehr-ParJxkhxhz-Update')")
+    @ApiOperation(value = "根据考核模板批量更新考核方案", tags = {"考核方案" },  notes = "根据考核模板批量更新考核方案")
+	@RequestMapping(method = RequestMethod.PUT, value = "/parassesstemplates/{parassesstemplate_id}/parjxkhxhzs/batch")
+    public ResponseEntity<Boolean> updateBatchByParAssessTemplate(@PathVariable("parassesstemplate_id") String parassesstemplate_id, @RequestBody List<ParJxkhxhzDTO> parjxkhxhzdtos) {
+        List<ParJxkhxhz> domainlist=parjxkhxhzMapping.toDomain(parjxkhxhzdtos);
+        for(ParJxkhxhz domain:domainlist){
+            domain.setParassesstemplateid(parassesstemplate_id);
+        }
+        parjxkhxhzService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "根据考核模板检查考核方案", tags = {"考核方案" },  notes = "根据考核模板检查考核方案")
+	@RequestMapping(method = RequestMethod.POST, value = "/parassesstemplates/{parassesstemplate_id}/parjxkhxhzs/checkkey")
+    public ResponseEntity<Boolean> checkKeyByParAssessTemplate(@PathVariable("parassesstemplate_id") String parassesstemplate_id, @RequestBody ParJxkhxhzDTO parjxkhxhzdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(parjxkhxhzService.checkKey(parjxkhxhzMapping.toDomain(parjxkhxhzdto)));
+    }
+
+    @PostAuthorize("hasPermission(this.parjxkhxhzMapping.toDomain(returnObject.body),'ehr-ParJxkhxhz-Get')")
+    @ApiOperation(value = "根据考核模板获取考核方案", tags = {"考核方案" },  notes = "根据考核模板获取考核方案")
+	@RequestMapping(method = RequestMethod.GET, value = "/parassesstemplates/{parassesstemplate_id}/parjxkhxhzs/{parjxkhxhz_id}")
+    public ResponseEntity<ParJxkhxhzDTO> getByParAssessTemplate(@PathVariable("parassesstemplate_id") String parassesstemplate_id, @PathVariable("parjxkhxhz_id") String parjxkhxhz_id) {
+        ParJxkhxhz domain = parjxkhxhzService.get(parjxkhxhz_id);
+        ParJxkhxhzDTO dto = parjxkhxhzMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.parjxkhxhzService.get(#parjxkhxhz_id),'ehr-ParJxkhxhz-Remove')")
+    @ApiOperation(value = "根据考核模板删除考核方案", tags = {"考核方案" },  notes = "根据考核模板删除考核方案")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/parassesstemplates/{parassesstemplate_id}/parjxkhxhzs/{parjxkhxhz_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByParAssessTemplate(@PathVariable("parassesstemplate_id") String parassesstemplate_id, @PathVariable("parjxkhxhz_id") String parjxkhxhz_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(parjxkhxhzService.remove(parjxkhxhz_id));
+    }
+
+    @PreAuthorize("hasPermission(this.parjxkhxhzService.getParjxkhxhzByIds(#ids),'ehr-ParJxkhxhz-Remove')")
+    @ApiOperation(value = "根据考核模板批量删除考核方案", tags = {"考核方案" },  notes = "根据考核模板批量删除考核方案")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/parassesstemplates/{parassesstemplate_id}/parjxkhxhzs/batch")
+    public ResponseEntity<Boolean> removeBatchByParAssessTemplate(@RequestBody List<String> ids) {
+        parjxkhxhzService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.parjxkhxhzMapping.toDomain(#parjxkhxhzdto),'ehr-ParJxkhxhz-Create')")
+    @ApiOperation(value = "根据考核模板建立考核方案", tags = {"考核方案" },  notes = "根据考核模板建立考核方案")
+	@RequestMapping(method = RequestMethod.POST, value = "/parassesstemplates/{parassesstemplate_id}/parjxkhxhzs")
+    @Transactional
+    public ResponseEntity<ParJxkhxhzDTO> createByParAssessTemplate(@PathVariable("parassesstemplate_id") String parassesstemplate_id, @RequestBody ParJxkhxhzDTO parjxkhxhzdto) {
+        ParJxkhxhz domain = parjxkhxhzMapping.toDomain(parjxkhxhzdto);
+        domain.setParassesstemplateid(parassesstemplate_id);
+		parjxkhxhzService.create(domain);
+        ParJxkhxhzDTO dto = parjxkhxhzMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.parjxkhxhzMapping.toDomain(#parjxkhxhzdtos),'ehr-ParJxkhxhz-Create')")
+    @ApiOperation(value = "根据考核模板批量建立考核方案", tags = {"考核方案" },  notes = "根据考核模板批量建立考核方案")
+	@RequestMapping(method = RequestMethod.POST, value = "/parassesstemplates/{parassesstemplate_id}/parjxkhxhzs/batch")
+    public ResponseEntity<Boolean> createBatchByParAssessTemplate(@PathVariable("parassesstemplate_id") String parassesstemplate_id, @RequestBody List<ParJxkhxhzDTO> parjxkhxhzdtos) {
+        List<ParJxkhxhz> domainlist=parjxkhxhzMapping.toDomain(parjxkhxhzdtos);
+        for(ParJxkhxhz domain:domainlist){
+            domain.setParassesstemplateid(parassesstemplate_id);
+        }
+        parjxkhxhzService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.parjxkhxhzMapping.toDomain(#parjxkhxhzdto),'ehr-ParJxkhxhz-Save')")
+    @ApiOperation(value = "根据考核模板保存考核方案", tags = {"考核方案" },  notes = "根据考核模板保存考核方案")
+	@RequestMapping(method = RequestMethod.POST, value = "/parassesstemplates/{parassesstemplate_id}/parjxkhxhzs/save")
+    public ResponseEntity<Boolean> saveByParAssessTemplate(@PathVariable("parassesstemplate_id") String parassesstemplate_id, @RequestBody ParJxkhxhzDTO parjxkhxhzdto) {
+        ParJxkhxhz domain = parjxkhxhzMapping.toDomain(parjxkhxhzdto);
+        domain.setParassesstemplateid(parassesstemplate_id);
+        return ResponseEntity.status(HttpStatus.OK).body(parjxkhxhzService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.parjxkhxhzMapping.toDomain(#parjxkhxhzdtos),'ehr-ParJxkhxhz-Save')")
+    @ApiOperation(value = "根据考核模板批量保存考核方案", tags = {"考核方案" },  notes = "根据考核模板批量保存考核方案")
+	@RequestMapping(method = RequestMethod.POST, value = "/parassesstemplates/{parassesstemplate_id}/parjxkhxhzs/savebatch")
+    public ResponseEntity<Boolean> saveBatchByParAssessTemplate(@PathVariable("parassesstemplate_id") String parassesstemplate_id, @RequestBody List<ParJxkhxhzDTO> parjxkhxhzdtos) {
+        List<ParJxkhxhz> domainlist=parjxkhxhzMapping.toDomain(parjxkhxhzdtos);
+        for(ParJxkhxhz domain:domainlist){
+             domain.setParassesstemplateid(parassesstemplate_id);
+        }
+        parjxkhxhzService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParJxkhxhz-Default-all')")
+	@ApiOperation(value = "根据考核模板获取DEFAULT", tags = {"考核方案" } ,notes = "根据考核模板获取DEFAULT")
+    @RequestMapping(method= RequestMethod.GET , value="/parassesstemplates/{parassesstemplate_id}/parjxkhxhzs/fetchdefault")
+	public ResponseEntity<List<ParJxkhxhzDTO>> fetchParJxkhxhzDefaultByParAssessTemplate(@PathVariable("parassesstemplate_id") String parassesstemplate_id,ParJxkhxhzSearchContext context) {
+        context.setN_parassesstemplateid_eq(parassesstemplate_id);
+        Page<ParJxkhxhz> domains = parjxkhxhzService.searchDefault(context) ;
+        List<ParJxkhxhzDTO> list = parjxkhxhzMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-ParJxkhxhz-Default-all')")
+	@ApiOperation(value = "根据考核模板查询DEFAULT", tags = {"考核方案" } ,notes = "根据考核模板查询DEFAULT")
+    @RequestMapping(method= RequestMethod.POST , value="/parassesstemplates/{parassesstemplate_id}/parjxkhxhzs/searchdefault")
+	public ResponseEntity<Page<ParJxkhxhzDTO>> searchParJxkhxhzDefaultByParAssessTemplate(@PathVariable("parassesstemplate_id") String parassesstemplate_id, @RequestBody ParJxkhxhzSearchContext context) {
+        context.setN_parassesstemplateid_eq(parassesstemplate_id);
+        Page<ParJxkhxhz> domains = parjxkhxhzService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(parjxkhxhzMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
 }
 
