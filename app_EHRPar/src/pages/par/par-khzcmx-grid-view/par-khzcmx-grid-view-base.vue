@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="parkhzcmxgridview" viewTitle="考核模板明细" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'par-khzcmx-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="parkhzcmxgridview" viewTitle="考核模板明细" :isShowCaptionBar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'par-khzcmx-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -494,9 +494,9 @@ export default class ParKhzcmxGridViewBase extends GridViewBase {
             Object.assign(tempContext,args[0]);
         }
         let deResParameters: any[] = [];
-        if(tempContext.parjxkhjcsz && true){
+        if(tempContext.parassesstemplate && true){
             deResParameters = [
-            { pathName: 'parjxkhjcszs', parameterName: 'parjxkhjcsz' },
+            { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
             ]
         }
         const parameters: any[] = [
@@ -533,9 +533,9 @@ export default class ParKhzcmxGridViewBase extends GridViewBase {
             Object.assign(tempContext,args[0]);
         }
         let deResParameters: any[] = [];
-        if(tempContext.parjxkhjcsz && true){
+        if(tempContext.parassesstemplate && true){
             deResParameters = [
-            { pathName: 'parjxkhjcszs', parameterName: 'parjxkhjcsz' },
+            { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
             ]
         }
         const parameters: any[] = [

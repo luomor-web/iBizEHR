@@ -50,7 +50,19 @@
 </i-col>
 <i-col v-show="detailsModel.sfyx.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='sfyx' :itemRules="this.rules.sfyx" class='' :caption="$t('entities.parassesstemplate.main_form.details.sfyx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfyx.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.sfyx"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.sfyx.disabled" type='text'  style=""></input-box>
+    
+ <dropdown-list 
+    v-model="data.sfyx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :localContext ='{ }' 
+    :localParam ='{ }' 
+    :disabled="detailsModel.sfyx.disabled"  
+    tag='EhrCodeList0054' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -70,7 +82,7 @@
     paramItem='parassesstemplate' 
     :parentdata='{"srfparentdefname":"PARASSESSTEMPLATEID","srfparentdename":"PARASSESSTEMPLATE","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_PARKHZCMX_PARASSESSTEMPLATE_PARASSESSTEMPLATEID","SRFDER1NID":"DER1N_PARKHZCMX_PARASSESSTEMPLATE_PARASSESSTEMPLATEID"}'
     :parameters="[
-        { pathName: 'parjxkhjcszs', parameterName: 'parjxkhjcsz' },
+        { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
     ]"
     :context="context"
     :viewparams="viewparams"

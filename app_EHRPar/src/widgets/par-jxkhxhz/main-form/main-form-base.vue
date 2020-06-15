@@ -39,7 +39,7 @@
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.parjxkhxhz.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.parassesstemplatename.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
-    <app-form-item name='parassesstemplatename' :itemRules="this.rules.parassesstemplatename" class='' :caption="$t('entities.parjxkhxhz.main_form.details.parassesstemplatename')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.parassesstemplatename.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-form-item name='parassesstemplatename' :itemRules="this.rules.parassesstemplatename" class='' :caption="$t('entities.parjxkhxhz.main_form.details.parassesstemplatename')" uiStyle="DEFAULT" :labelWidth="200" :isShowCaption="true" :error="detailsModel.parassesstemplatename.error" :isEmptyCaption="false" labelPos="LEFT">
     
 <app-picker 
   :formState="formState"
@@ -66,7 +66,7 @@
 
 </i-col>
 <i-col v-show="detailsModel.nd.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
-    <app-form-item name='nd' :itemRules="this.rules.nd" class='' :caption="$t('entities.parjxkhxhz.main_form.details.nd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nd.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-form-item name='nd' :itemRules="this.rules.nd" class='' :caption="$t('entities.parjxkhxhz.main_form.details.nd')" uiStyle="DEFAULT" :labelWidth="200" :isShowCaption="true" :error="detailsModel.nd.error" :isEmptyCaption="false" labelPos="LEFT">
     
  <dropdown-list 
     v-model="data.nd" 

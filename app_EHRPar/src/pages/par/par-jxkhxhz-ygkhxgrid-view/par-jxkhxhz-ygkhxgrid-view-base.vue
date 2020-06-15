@@ -493,7 +493,12 @@ export default class ParJxkhxhzYGKHXGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(tempContext,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(tempContext.parassesstemplate && true){
+            deResParameters = [
+            { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'parjxkhxhzs', parameterName: 'parjxkhxhz' },
         ];
@@ -538,7 +543,12 @@ export default class ParJxkhxhzYGKHXGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(tempContext,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(tempContext.parassesstemplate && true){
+            deResParameters = [
+            { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'parjxkhxhzs', parameterName: 'parjxkhxhz' },
         ];

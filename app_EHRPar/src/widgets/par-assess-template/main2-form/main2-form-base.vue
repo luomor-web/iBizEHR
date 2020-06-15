@@ -50,7 +50,7 @@
     paramItem='parassesstemplate' 
     :parentdata='{"srfparentdefname":"PARASSESSTEMPLATEID","srfparentdename":"PARASSESSTEMPLATE","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_PARKHZCMX_PARASSESSTEMPLATE_PARASSESSTEMPLATEID","SRFDER1NID":"DER1N_PARKHZCMX_PARASSESSTEMPLATE_PARASSESSTEMPLATEID"}'
     :parameters="[
-        { pathName: 'parjxkhjcszs', parameterName: 'parjxkhjcsz' },
+        { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
     ]"
     :context="context"
     :viewparams="viewparams"

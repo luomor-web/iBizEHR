@@ -62,8 +62,24 @@ export default class ParLdndlhmbServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let parldndlhmbmxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parldndlhmbmxes'),'undefined')){
+            parldndlhmbmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parldndlhmbmxes') as any);
+            if(parldndlhmbmxesData && parldndlhmbmxesData.length && parldndlhmbmxesData.length > 0){
+                parldndlhmbmxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.parldndlhmbmxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.parldndlhmbmxes = parldndlhmbmxesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/parldndlhmbs/${context.parldndlhmb}/save`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_parldndlhmbmxes',JSON.stringify(res.data.parldndlhmbmxes));
             return res;
     }
 
@@ -79,6 +95,7 @@ export default class ParLdndlhmbServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/parldndlhmbs/getdraft`,isloading);
         res.data.parldndlhmb = data.parldndlhmb;
+            this.tempStorage.setItem(context.srfsessionkey+'_parldndlhmbmxes',JSON.stringify(res.data.parldndlhmbmxes));
         return res;
     }
 
@@ -106,6 +123,7 @@ export default class ParLdndlhmbServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/parldndlhmbs/${context.parldndlhmb}`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_parldndlhmbmxes',JSON.stringify(res.data.parldndlhmbmxes));
             return res;
 
     }
@@ -121,6 +139,21 @@ export default class ParLdndlhmbServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let parldndlhmbmxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parldndlhmbmxes'),'undefined')){
+            parldndlhmbmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parldndlhmbmxes') as any);
+            if(parldndlhmbmxesData && parldndlhmbmxesData.length && parldndlhmbmxesData.length > 0){
+                parldndlhmbmxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.parldndlhmbmxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.parldndlhmbmxes = parldndlhmbmxesData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -130,6 +163,7 @@ export default class ParLdndlhmbServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/parldndlhmbs`,data,isloading);
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_parldndlhmbmxes',JSON.stringify(res.data.parldndlhmbmxes));
         return res;
     }
 
@@ -144,8 +178,24 @@ export default class ParLdndlhmbServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let parldndlhmbmxesData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_parldndlhmbmxes'),'undefined')){
+            parldndlhmbmxesData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_parldndlhmbmxes') as any);
+            if(parldndlhmbmxesData && parldndlhmbmxesData.length && parldndlhmbmxesData.length > 0){
+                parldndlhmbmxesData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.parldndlhmbmxid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.parldndlhmbmxes = parldndlhmbmxesData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/parldndlhmbs/${context.parldndlhmb}`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_parldndlhmbmxes',JSON.stringify(res.data.parldndlhmbmxes));
             return res;
     }
 

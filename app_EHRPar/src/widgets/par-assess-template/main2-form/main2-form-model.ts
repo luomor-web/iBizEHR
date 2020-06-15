@@ -73,7 +73,7 @@ export default class Main2Model {
       {
         name: 'sfyx',
         prop: 'sfyx',
-        dataType: 'TEXT',
+        dataType: 'SSCODELIST',
       },
       {
         name: 'parassesstemplateid',

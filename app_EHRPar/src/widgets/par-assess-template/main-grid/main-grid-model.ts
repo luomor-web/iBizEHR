@@ -49,7 +49,7 @@ export default class MainModel {
         {
           name: 'sfyx',
           prop: 'sfyx',
-          dataType: 'TEXT',
+          dataType: 'SSCODELIST',
         },
         {
           name: 'srfmajortext',

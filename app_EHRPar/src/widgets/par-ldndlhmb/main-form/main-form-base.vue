@@ -85,6 +85,7 @@
     paramItem='parldndlhmb' 
     :parentdata='{"srfparentdefname":"PARLDNDLHMBID","srfparentdename":"PARLDNDLHMB","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_PARLDNDLHMBMX_PARLDNDLHMB_PARLDNDLHMBID","SRFDER1NID":"DER1N_PARLDNDLHMBMX_PARLDNDLHMB_PARLDNDLHMBID"}'
     :parameters="[
+        { pathName: 'parldndlhmbs', parameterName: 'parldndlhmb' },
     ]"
     :context="context"
     :viewparams="viewparams"
