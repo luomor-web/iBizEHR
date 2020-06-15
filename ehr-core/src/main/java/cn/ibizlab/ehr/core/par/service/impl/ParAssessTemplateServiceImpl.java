@@ -46,6 +46,9 @@ public class ParAssessTemplateServiceImpl extends ServiceImpl<ParAssessTemplateM
 
     @Autowired
     @Lazy
+    private cn.ibizlab.ehr.core.par.service.IParJxkhxhzService parjxkhxhzService;
+    @Autowired
+    @Lazy
     private cn.ibizlab.ehr.core.par.service.IParKhzcmxService parkhzcmxService;
 
     private int batchSize = 500;

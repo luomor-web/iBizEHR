@@ -5,17 +5,27 @@
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
 	<select id="selectById"  resultMap="ParJxkhxhzResultMap" databaseId="mysql">
-        <![CDATA[select t1.* from (SELECT t1.`BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GZJX`, t1.`GZNLJTD`, t1.`GZNLJTD_XBN`, t1.`JSWMJC`, t1.`KHLX`, t1.`PARJXKHXHZID`, t1.`PARJXKHXHZNAME`, t1.`SZMZPY`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`YG`, t1.`YGID`, t1.`YWNLKS`, t1.`ZZ` FROM `T_PARJXKHXHZ` t1  ) t1 where parjxkhxhzid=#{id}]]>
+        <![CDATA[select t1.* from (SELECT t1.`BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GZJX`, t1.`GZNLJTD`, t1.`GZNLJTD_XBN`, t1.`JSWMJC`, t1.`KHLX`, t1.`ND`, t1.`PARASSESSTEMPLATEID`, t11.`PARASSESSTEMPLATENAME`, t1.`PARJXKHXHZID`, t1.`PARJXKHXHZNAME`, t1.`SZMZPY`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`YG`, t1.`YGID`, t1.`YWNLKS`, t1.`ZZ` FROM `T_PARJXKHXHZ` t1  LEFT JOIN T_PARASSESSTEMPLATE t11 ON t1.PARASSESSTEMPLATEID = t11.PARASSESSTEMPLATEID  ) t1 where parjxkhxhzid=#{id}]]>
     </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
     <resultMap id="ParJxkhxhzResultMap" type="cn.ibizlab.ehr.core.par.domain.ParJxkhxhz" autoMapping="true">
         <id property="parjxkhxhzid" column="parjxkhxhzid" /><!--主键字段映射-->
 		<result property="gznljtdXbn" column="gznljtd_xbn" />
+		<result property="parassesstemplateid" column="parassesstemplateid" />
             
 		
+		<!--通过mybatis自动注入关系属性[主实体]，fetchType="lazy"为懒加载配置 -->
+		<association property="parassesstemplate" javaType="cn.ibizlab.ehr.core.par.domain.ParAssessTemplate" column="parassesstemplateid" select="cn.ibizlab.ehr.core.par.mapper.ParAssessTemplateMapper.selectById" fetchType="lazy"></association>
     </resultMap>
 
+	<!--关系实体暴露select方法供主实体通过外键查询关系实体数据[实体关系名称:DER1N_PARJXKHXHZ_PARASSESSTEMPLATE_PARASSESSTEMPLATEID] -->
+	 <select id="selectByParassesstemplateid" resultMap="ParJxkhxhzResultMap">
+         select t1.* from (
+                <include refid="Default" />
+         ) t1
+         where  parassesstemplateid=#{parassesstemplateid}
+     </select>
 
     <!--数据集合[Default]-->
 	 <select id="searchDefault"  parameterType="cn.ibizlab.ehr.core.par.filter.ParJxkhxhzSearchContext"  resultMap="ParJxkhxhzResultMap">
@@ -28,12 +38,12 @@
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
-       <![CDATA[	SELECT t1.`BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GZJX`, t1.`GZNLJTD`, t1.`GZNLJTD_XBN`, t1.`JSWMJC`, t1.`KHLX`, t1.`PARJXKHXHZID`, t1.`PARJXKHXHZNAME`, t1.`SZMZPY`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`YG`, t1.`YGID`, t1.`YWNLKS`, t1.`ZZ` FROM `T_PARJXKHXHZ` t1  
+       <![CDATA[	SELECT t1.`BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GZJX`, t1.`GZNLJTD`, t1.`GZNLJTD_XBN`, t1.`JSWMJC`, t1.`KHLX`, t1.`ND`, t1.`PARASSESSTEMPLATEID`, t11.`PARASSESSTEMPLATENAME`, t1.`PARJXKHXHZID`, t1.`PARJXKHXHZNAME`, t1.`SZMZPY`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`YG`, t1.`YGID`, t1.`YWNLKS`, t1.`ZZ` FROM `T_PARJXKHXHZ` t1  LEFT JOIN T_PARASSESSTEMPLATE t11 ON t1.PARASSESSTEMPLATEID = t11.PARASSESSTEMPLATEID  
 			]]>
     </sql>
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
-       <![CDATA[	SELECT t1.`BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GZJX`, t1.`GZNLJTD`, t1.`GZNLJTD_XBN`, t1.`JSWMJC`, t1.`KHLX`, t1.`PARJXKHXHZID`, t1.`PARJXKHXHZNAME`, t1.`SZMZPY`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`YG`, t1.`YGID`, t1.`YWNLKS`, t1.`ZZ` FROM `T_PARJXKHXHZ` t1  
+       <![CDATA[	SELECT t1.`BM`, t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`GZJX`, t1.`GZNLJTD`, t1.`GZNLJTD_XBN`, t1.`JSWMJC`, t1.`KHLX`, t1.`ND`, t1.`PARASSESSTEMPLATEID`, t11.`PARASSESSTEMPLATENAME`, t1.`PARJXKHXHZID`, t1.`PARJXKHXHZNAME`, t1.`SZMZPY`, t1.`UPDATEDATE`, t1.`UPDATEMAN`, t1.`XH`, t1.`YG`, t1.`YGID`, t1.`YWNLKS`, t1.`ZZ` FROM `T_PARJXKHXHZ` t1  LEFT JOIN T_PARASSESSTEMPLATE t11 ON t1.PARASSESSTEMPLATEID = t11.PARASSESSTEMPLATEID  
 			]]>
     </sql>
 </mapper>

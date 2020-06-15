@@ -28,7 +28,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
 
 /**
- * 实体[考核内容评分汇总]
+ * 实体[考核方案]
  */
 @Getter
 @Setter
@@ -173,6 +173,35 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     @JSONField(name = "bm")
     @JsonProperty("bm")
     private String bm;
+    /**
+     * 考核模板标识
+     */
+    @TableField(value = "parassesstemplateid")
+    @JSONField(name = "parassesstemplateid")
+    @JsonProperty("parassesstemplateid")
+    private String parassesstemplateid;
+    /**
+     * 考核模板名称
+     */
+    @TableField(exist = false)
+    @JSONField(name = "parassesstemplatename")
+    @JsonProperty("parassesstemplatename")
+    private String parassesstemplatename;
+    /**
+     * 年度
+     */
+    @TableField(value = "nd")
+    @JSONField(name = "nd")
+    @JsonProperty("nd")
+    private String nd;
+
+    /**
+     * 考核模板
+     */
+    @JsonIgnore
+    @JSONField(serialize = false)
+    @TableField(exist = false)
+    private cn.ibizlab.ehr.core.par.domain.ParAssessTemplate parassesstemplate;
 
 
 
@@ -278,6 +307,22 @@ public class ParJxkhxhz extends EntityMP implements Serializable {
     public void setBm(String bm){
         this.bm = bm ;
         this.modify("bm",bm);
+    }
+
+    /**
+     * 设置 [考核模板标识]
+     */
+    public void setParassesstemplateid(String parassesstemplateid){
+        this.parassesstemplateid = parassesstemplateid ;
+        this.modify("parassesstemplateid",parassesstemplateid);
+    }
+
+    /**
+     * 设置 [年度]
+     */
+    public void setNd(String nd){
+        this.nd = nd ;
+        this.modify("nd",nd);
     }
 
 
