@@ -1436,7 +1436,7 @@
 
 
     <!--输出实体[PARKHZCMX]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-parkhzcmx-72-45">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-parkhzcmx-75-45">
         <createTable tableName="T_PARKHZCMX">
                 <column name="SZQZ" remarks="" type="FLOAT">
                 </column>
@@ -4462,7 +4462,7 @@
 
 
     <!--输出实体[PARJXKHXHZ]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-parjxkhxhz-88-112">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-parjxkhxhz-91-112">
         <createTable tableName="T_PARJXKHXHZ">
                 <column name="XH" remarks="" type="INT">
                 </column>
@@ -8579,7 +8579,7 @@
 
 
     <!--输出实体[PARASSESSTEMPLATE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-parassesstemplate-81-220">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-parassesstemplate-86-220">
         <createTable tableName="T_PARASSESSTEMPLATE">
                 <column name="PARASSESSTEMPLATEID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_PARASSESSTEMPLATE_PARASSESS"/>
@@ -12230,10 +12230,10 @@
        <addForeignKeyConstraint baseColumnNames="VACHOLIDAYRULESID" baseTableName="T_VACLEAVETIPS" constraintName="DER1N_VACLEAVETIPS_VACHOLIDAYR" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="VACHOLIDAYRULESID" referencedTableName="T_VACHOLIDAYRULES" validate="true"/>
     </changeSet>
         <!--输出实体[PARKHZCMX]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-parkhzcmx-72-345">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-parkhzcmx-75-345">
        <addForeignKeyConstraint baseColumnNames="PARASSESSTEMPLATEID" baseTableName="T_PARKHZCMX" constraintName="DER1N_PARKHZCMX_PARASSESSTEMPL" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PARASSESSTEMPLATEID" referencedTableName="T_PARASSESSTEMPLATE" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-parkhzcmx-72-346">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-parkhzcmx-75-346">
        <addForeignKeyConstraint baseColumnNames="PARJXKHJCSZID" baseTableName="T_PARKHZCMX" constraintName="DER1N_PARKHZCMX_PARJXKHJCSZ_PA" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PARJXKHJCSZID" referencedTableName="T_PARJXKHJCSZ" validate="true"/>
     </changeSet>
         <!--输出实体[PCMZJDYZW]外键关系 -->
@@ -12663,7 +12663,7 @@
        <addForeignKeyConstraint baseColumnNames="TRMTRAINCOURSEID" baseTableName="T_TRMTRAINDEMANDSUM" constraintName="DER1N_TRMTRAINDEMANDSUM_TRMTRA" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="TRMTRAINCOURSEID" referencedTableName="T_TRMTRAINCOURSE" validate="true"/>
     </changeSet>
         <!--输出实体[PARJXKHXHZ]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-parjxkhxhz-88-475">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-parjxkhxhz-91-475">
        <addForeignKeyConstraint baseColumnNames="PARASSESSTEMPLATEID" baseTableName="T_PARJXKHXHZ" constraintName="DER1N_PARJXKHXHZ_PARASSESSTEMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PARASSESSTEMPLATEID" referencedTableName="T_PARASSESSTEMPLATE" validate="true"/>
     </changeSet>
         <!--输出实体[ATTENDANCESETTINGS]外键关系 -->
