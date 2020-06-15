@@ -62,36 +62,6 @@ export default class OrmOrgServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let pimcontractsignorgsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs'),'undefined')){
-            pimcontractsignorgsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs') as any);
-            if(pimcontractsignorgsData && pimcontractsignorgsData.length && pimcontractsignorgsData.length > 0){
-                pimcontractsignorgsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.contractsignorgid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pimcontractsignorgs = pimcontractsignorgsData;
-        let ormpostsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormposts'),'undefined')){
-            ormpostsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormposts') as any);
-            if(ormpostsData && ormpostsData.length && ormpostsData.length > 0){
-                ormpostsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.ormpostid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.ormposts = ormpostsData;
         let ormorgsectorsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormorgsectors'),'undefined')){
             ormorgsectorsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormorgsectors') as any);
@@ -107,6 +77,21 @@ export default class OrmOrgServiceBase extends EntityService {
             }
         }
         masterData.ormorgsectors = ormorgsectorsData;
+        let ormpostsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormposts'),'undefined')){
+            ormpostsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormposts') as any);
+            if(ormpostsData && ormpostsData.length && ormpostsData.length > 0){
+                ormpostsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.ormpostid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.ormposts = ormpostsData;
         let ormorgsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormorgs'),'undefined')){
             ormorgsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormorgs') as any);
@@ -122,12 +107,27 @@ export default class OrmOrgServiceBase extends EntityService {
             }
         }
         masterData.ormorgs = ormorgsData;
+        let pimcontractsignorgsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs'),'undefined')){
+            pimcontractsignorgsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs') as any);
+            if(pimcontractsignorgsData && pimcontractsignorgsData.length && pimcontractsignorgsData.length > 0){
+                pimcontractsignorgsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.contractsignorgid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimcontractsignorgs = pimcontractsignorgsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/ormorgs/${context.ormorg}`,data,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_pimcontractsignorgs',JSON.stringify(res.data.pimcontractsignorgs));
-            this.tempStorage.setItem(context.srfsessionkey+'_ormposts',JSON.stringify(res.data.ormposts));
             this.tempStorage.setItem(context.srfsessionkey+'_ormorgsectors',JSON.stringify(res.data.ormorgsectors));
+            this.tempStorage.setItem(context.srfsessionkey+'_ormposts',JSON.stringify(res.data.ormposts));
             this.tempStorage.setItem(context.srfsessionkey+'_ormorgs',JSON.stringify(res.data.ormorgs));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimcontractsignorgs',JSON.stringify(res.data.pimcontractsignorgs));
             return res;
     }
 
@@ -170,10 +170,10 @@ export default class OrmOrgServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/ormorgs/getdraft`,isloading);
         res.data.ormorg = data.ormorg;
-            this.tempStorage.setItem(context.srfsessionkey+'_pimcontractsignorgs',JSON.stringify(res.data.pimcontractsignorgs));
-            this.tempStorage.setItem(context.srfsessionkey+'_ormposts',JSON.stringify(res.data.ormposts));
             this.tempStorage.setItem(context.srfsessionkey+'_ormorgsectors',JSON.stringify(res.data.ormorgsectors));
+            this.tempStorage.setItem(context.srfsessionkey+'_ormposts',JSON.stringify(res.data.ormposts));
             this.tempStorage.setItem(context.srfsessionkey+'_ormorgs',JSON.stringify(res.data.ormorgs));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimcontractsignorgs',JSON.stringify(res.data.pimcontractsignorgs));
         return res;
     }
 
@@ -188,10 +188,10 @@ export default class OrmOrgServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/ormorgs/${context.ormorg}`,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_pimcontractsignorgs',JSON.stringify(res.data.pimcontractsignorgs));
-            this.tempStorage.setItem(context.srfsessionkey+'_ormposts',JSON.stringify(res.data.ormposts));
             this.tempStorage.setItem(context.srfsessionkey+'_ormorgsectors',JSON.stringify(res.data.ormorgsectors));
+            this.tempStorage.setItem(context.srfsessionkey+'_ormposts',JSON.stringify(res.data.ormposts));
             this.tempStorage.setItem(context.srfsessionkey+'_ormorgs',JSON.stringify(res.data.ormorgs));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimcontractsignorgs',JSON.stringify(res.data.pimcontractsignorgs));
             return res;
 
     }
@@ -220,36 +220,6 @@ export default class OrmOrgServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let pimcontractsignorgsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs'),'undefined')){
-            pimcontractsignorgsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs') as any);
-            if(pimcontractsignorgsData && pimcontractsignorgsData.length && pimcontractsignorgsData.length > 0){
-                pimcontractsignorgsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.contractsignorgid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pimcontractsignorgs = pimcontractsignorgsData;
-        let ormpostsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormposts'),'undefined')){
-            ormpostsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormposts') as any);
-            if(ormpostsData && ormpostsData.length && ormpostsData.length > 0){
-                ormpostsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.ormpostid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.ormposts = ormpostsData;
         let ormorgsectorsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormorgsectors'),'undefined')){
             ormorgsectorsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormorgsectors') as any);
@@ -265,6 +235,21 @@ export default class OrmOrgServiceBase extends EntityService {
             }
         }
         masterData.ormorgsectors = ormorgsectorsData;
+        let ormpostsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormposts'),'undefined')){
+            ormpostsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormposts') as any);
+            if(ormpostsData && ormpostsData.length && ormpostsData.length > 0){
+                ormpostsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.ormpostid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.ormposts = ormpostsData;
         let ormorgsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormorgs'),'undefined')){
             ormorgsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormorgs') as any);
@@ -280,6 +265,21 @@ export default class OrmOrgServiceBase extends EntityService {
             }
         }
         masterData.ormorgs = ormorgsData;
+        let pimcontractsignorgsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs'),'undefined')){
+            pimcontractsignorgsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs') as any);
+            if(pimcontractsignorgsData && pimcontractsignorgsData.length && pimcontractsignorgsData.length > 0){
+                pimcontractsignorgsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.contractsignorgid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimcontractsignorgs = pimcontractsignorgsData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -289,10 +289,10 @@ export default class OrmOrgServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/ormorgs`,data,isloading);
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_pimcontractsignorgs',JSON.stringify(res.data.pimcontractsignorgs));
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_ormposts',JSON.stringify(res.data.ormposts));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_ormorgsectors',JSON.stringify(res.data.ormorgsectors));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_ormposts',JSON.stringify(res.data.ormposts));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_ormorgs',JSON.stringify(res.data.ormorgs));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_pimcontractsignorgs',JSON.stringify(res.data.pimcontractsignorgs));
         return res;
     }
 
@@ -307,36 +307,6 @@ export default class OrmOrgServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let pimcontractsignorgsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs'),'undefined')){
-            pimcontractsignorgsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs') as any);
-            if(pimcontractsignorgsData && pimcontractsignorgsData.length && pimcontractsignorgsData.length > 0){
-                pimcontractsignorgsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.contractsignorgid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.pimcontractsignorgs = pimcontractsignorgsData;
-        let ormpostsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormposts'),'undefined')){
-            ormpostsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormposts') as any);
-            if(ormpostsData && ormpostsData.length && ormpostsData.length > 0){
-                ormpostsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.ormpostid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.ormposts = ormpostsData;
         let ormorgsectorsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormorgsectors'),'undefined')){
             ormorgsectorsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormorgsectors') as any);
@@ -352,6 +322,21 @@ export default class OrmOrgServiceBase extends EntityService {
             }
         }
         masterData.ormorgsectors = ormorgsectorsData;
+        let ormpostsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormposts'),'undefined')){
+            ormpostsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormposts') as any);
+            if(ormpostsData && ormpostsData.length && ormpostsData.length > 0){
+                ormpostsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.ormpostid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.ormposts = ormpostsData;
         let ormorgsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_ormorgs'),'undefined')){
             ormorgsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_ormorgs') as any);
@@ -367,12 +352,27 @@ export default class OrmOrgServiceBase extends EntityService {
             }
         }
         masterData.ormorgs = ormorgsData;
+        let pimcontractsignorgsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs'),'undefined')){
+            pimcontractsignorgsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_pimcontractsignorgs') as any);
+            if(pimcontractsignorgsData && pimcontractsignorgsData.length && pimcontractsignorgsData.length > 0){
+                pimcontractsignorgsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.contractsignorgid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.pimcontractsignorgs = pimcontractsignorgsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/ormorgs/${context.ormorg}/save`,data,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_pimcontractsignorgs',JSON.stringify(res.data.pimcontractsignorgs));
-            this.tempStorage.setItem(context.srfsessionkey+'_ormposts',JSON.stringify(res.data.ormposts));
             this.tempStorage.setItem(context.srfsessionkey+'_ormorgsectors',JSON.stringify(res.data.ormorgsectors));
+            this.tempStorage.setItem(context.srfsessionkey+'_ormposts',JSON.stringify(res.data.ormposts));
             this.tempStorage.setItem(context.srfsessionkey+'_ormorgs',JSON.stringify(res.data.ormorgs));
+            this.tempStorage.setItem(context.srfsessionkey+'_pimcontractsignorgs',JSON.stringify(res.data.pimcontractsignorgs));
             return res;
     }
 
