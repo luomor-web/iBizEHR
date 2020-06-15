@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>ehr-app</artifactId>
+        <groupId>cn.ibizlab.ehr</groupId>
+        <version>1.0.0.0</version>
+    </parent>
+
+    <artifactId>ehr-app-ehrtrm</artifactId>
+    <name>Ehr Gateway EHRTrm</name>
+    <description>Ehr EHRTrm</description>
+
+    <dependencies>
+		<dependency>
+			<groupId>cn.ibizlab.ehr</groupId>
+			<artifactId>ehr-util</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+    </dependencies>
+
+    <properties>
+        <docker.image.prefix>registry.cn-shanghai.aliyuncs.com/ibizsys</docker.image.prefix>
+    </properties>
+
+
+    <profiles>
+        <profile>
+            <id>ehrtrm</id>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>${basedir}/src/main/webapp</directory>
+                        <!--注意此次必须要放在此目录下才能被访问到 -->
+                        <targetPath>META-INF/resources</targetPath>
+                        <includes>
+                            <include>**/**</include>
+                        </includes>
+                    </resource>
+                    <resource>
+                        <directory>${basedir}/src/main/resources</directory>
+                        <includes>
+                            <include>**/**</include>
+                        </includes>
+                    </resource>
+                </resources>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.6.0</version>
+                        <executions>
+                            <execution>
+                                <id>exec-yarn-run-install</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>yarn</executable>
+                                    <workingDirectory>../../app_EHRTrm</workingDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>exec-yarn-run-build</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>yarn</executable>
+                                    <arguments>
+                                        <argument>build</argument>
+                                    </arguments>
+                                    <workingDirectory>../../app_EHRTrm</workingDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <finalName>ehr-app-ehrtrm</finalName>
+                            <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
+                            <mainClass>cn.ibizlab.ehr.ehrtrm.EHRTrmApplication</mainClass>
+                            <outputDirectory>../../</outputDirectory>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>repackage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    
+                    <plugin>
+                            <groupId>com.spotify</groupId>
+                            <artifactId>docker-maven-plugin</artifactId>
+                            <version>0.4.13</version>
+                            <configuration>
+                            <serverId>ibiz-dev</serverId>
+                            <imageName>${docker.image.prefix}/${project.artifactId}:latest</imageName>
+                            <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                            <resources>
+                                <resource>
+                                    <targetPath>/</targetPath>
+                                    <directory>../../</directory>
+                                    <include>${project.artifactId}.jar</include>
+                                </resource>
+                            </resources>
+                            </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>
+
