@@ -107,7 +107,6 @@ public class ParFzsmxServiceImpl extends ServiceImpl<ParFzsmxMapper, ParFzsmx> i
     public boolean checkKey(ParFzsmx et) {
         return (!ObjectUtils.isEmpty(et.getParfzsmxid()))&&(!Objects.isNull(this.getById(et.getParfzsmxid())));
     }
-
     @Override
     @Transactional
     public boolean save(ParFzsmx et) {
@@ -262,5 +261,6 @@ public class ParFzsmxServiceImpl extends ServiceImpl<ParFzsmxMapper, ParFzsmx> i
     }
 
 }
+
 
 

@@ -85,7 +85,6 @@ public class TrmStaffnodesServiceImpl extends ServiceImpl<TrmStaffnodesMapper, T
     public boolean checkKey(TrmStaffnodes et) {
         return (!ObjectUtils.isEmpty(et.getTrmstaffnodesid()))&&(!Objects.isNull(this.getById(et.getTrmstaffnodesid())));
     }
-
     @Override
     @Transactional
     public boolean update(TrmStaffnodes et) {
@@ -283,5 +282,6 @@ public class TrmStaffnodesServiceImpl extends ServiceImpl<TrmStaffnodesMapper, T
     }
 
 }
+
 
 

@@ -51,7 +51,6 @@ public class ParIntegralRuleServiceImpl extends ServiceImpl<ParIntegralRuleMappe
     public boolean checkKey(ParIntegralRule et) {
         return (!ObjectUtils.isEmpty(et.getParintegralruleid()))&&(!Objects.isNull(this.getById(et.getParintegralruleid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -201,5 +200,6 @@ public class ParIntegralRuleServiceImpl extends ServiceImpl<ParIntegralRuleMappe
     }
 
 }
+
 
 

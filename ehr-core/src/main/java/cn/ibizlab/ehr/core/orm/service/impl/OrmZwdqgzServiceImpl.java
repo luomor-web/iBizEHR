@@ -106,7 +106,6 @@ public class OrmZwdqgzServiceImpl extends ServiceImpl<OrmZwdqgzMapper, OrmZwdqgz
     public boolean checkKey(OrmZwdqgz et) {
         return (!ObjectUtils.isEmpty(et.getOrmzwdqgzid()))&&(!Objects.isNull(this.getById(et.getOrmzwdqgzid())));
     }
-
     @Override
     @Transactional
     public boolean update(OrmZwdqgz et) {
@@ -294,5 +293,6 @@ public class OrmZwdqgzServiceImpl extends ServiceImpl<OrmZwdqgzMapper, OrmZwdqgz
     }
 
 }
+
 
 

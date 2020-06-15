@@ -79,7 +79,6 @@ public class ParYdgzjhServiceImpl extends ServiceImpl<ParYdgzjhMapper, ParYdgzjh
     public boolean checkKey(ParYdgzjh et) {
         return (!ObjectUtils.isEmpty(et.getParydgzjhid()))&&(!Objects.isNull(this.getById(et.getParydgzjhid())));
     }
-
     @Override
     @Transactional
     public boolean save(ParYdgzjh et) {
@@ -240,5 +239,6 @@ public class ParYdgzjhServiceImpl extends ServiceImpl<ParYdgzjhMapper, ParYdgzjh
     }
 
 }
+
 
 

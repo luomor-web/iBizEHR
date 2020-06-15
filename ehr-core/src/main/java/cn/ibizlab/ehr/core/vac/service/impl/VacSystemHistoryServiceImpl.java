@@ -131,7 +131,6 @@ public class VacSystemHistoryServiceImpl extends ServiceImpl<VacSystemHistoryMap
     public boolean checkKey(VacSystemHistory et) {
         return (!ObjectUtils.isEmpty(et.getVacsystemhistoryid()))&&(!Objects.isNull(this.getById(et.getVacsystemhistoryid())));
     }
-
     @Override
     @Transactional
     public boolean create(VacSystemHistory et) {
@@ -260,5 +259,6 @@ public class VacSystemHistoryServiceImpl extends ServiceImpl<VacSystemHistoryMap
     }
 
 }
+
 
 

@@ -141,7 +141,6 @@ public class PcmBdsqdServiceImpl extends ServiceImpl<PcmBdsqdMapper, PcmBdsqd> i
     public boolean checkKey(PcmBdsqd et) {
         return (!ObjectUtils.isEmpty(et.getPcmbdsqdid()))&&(!Objects.isNull(this.getById(et.getPcmbdsqdid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -240,5 +239,6 @@ public class PcmBdsqdServiceImpl extends ServiceImpl<PcmBdsqdMapper, PcmBdsqd> i
     }
 
 }
+
 
 

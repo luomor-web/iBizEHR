@@ -81,7 +81,6 @@ public class PcmZsglServiceImpl extends ServiceImpl<PcmZsglMapper, PcmZsgl> impl
     public boolean checkKey(PcmZsgl et) {
         return (!ObjectUtils.isEmpty(et.getPcmzsglid()))&&(!Objects.isNull(this.getById(et.getPcmzsglid())));
     }
-
     @Override
     @Transactional
     public boolean update(PcmZsgl et) {
@@ -201,5 +200,6 @@ public class PcmZsglServiceImpl extends ServiceImpl<PcmZsglMapper, PcmZsgl> impl
     }
 
 }
+
 
 

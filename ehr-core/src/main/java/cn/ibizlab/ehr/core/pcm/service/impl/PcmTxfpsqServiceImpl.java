@@ -131,7 +131,6 @@ public class PcmTxfpsqServiceImpl extends ServiceImpl<PcmTxfpsqMapper, PcmTxfpsq
     public boolean checkKey(PcmTxfpsq et) {
         return (!ObjectUtils.isEmpty(et.getPcmtxfpsqid()))&&(!Objects.isNull(this.getById(et.getPcmtxfpsqid())));
     }
-
     @Override
     @Transactional
     public boolean save(PcmTxfpsq et) {
@@ -338,5 +337,6 @@ public class PcmTxfpsqServiceImpl extends ServiceImpl<PcmTxfpsqMapper, PcmTxfpsq
     }
 
 }
+
 
 

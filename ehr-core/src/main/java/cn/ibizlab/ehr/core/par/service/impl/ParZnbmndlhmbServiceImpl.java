@@ -57,7 +57,6 @@ public class ParZnbmndlhmbServiceImpl extends ServiceImpl<ParZnbmndlhmbMapper, P
     public boolean checkKey(ParZnbmndlhmb et) {
         return (!ObjectUtils.isEmpty(et.getParznbmndlhmbid()))&&(!Objects.isNull(this.getById(et.getParznbmndlhmbid())));
     }
-
     @Override
     @Transactional
     public boolean save(ParZnbmndlhmb et) {
@@ -241,5 +240,6 @@ public class ParZnbmndlhmbServiceImpl extends ServiceImpl<ParZnbmndlhmbMapper, P
     }
 
 }
+
 
 

@@ -154,7 +154,6 @@ public class TrmTeacherChargeServiceImpl extends ServiceImpl<TrmTeacherChargeMap
         return (!ObjectUtils.isEmpty(et.getTrmteacherchargeid()))&&(!Objects.isNull(this.getById(et.getTrmteacherchargeid())));
     }
 
-
 	@Override
     public List<TrmTeacherCharge> selectByTrmtrainplantermid(String trmtrainplantermid) {
         return baseMapper.selectByTrmtrainplantermid(trmtrainplantermid);
@@ -260,5 +259,6 @@ public class TrmTeacherChargeServiceImpl extends ServiceImpl<TrmTeacherChargeMap
     }
 
 }
+
 
 

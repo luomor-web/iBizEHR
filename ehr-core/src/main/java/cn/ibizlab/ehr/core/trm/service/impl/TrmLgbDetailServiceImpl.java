@@ -119,7 +119,6 @@ public class TrmLgbDetailServiceImpl extends ServiceImpl<TrmLgbDetailMapper, Trm
     public boolean checkKey(TrmLgbDetail et) {
         return (!ObjectUtils.isEmpty(et.getTrmlgbdetailid()))&&(!Objects.isNull(this.getById(et.getTrmlgbdetailid())));
     }
-
     @Override
     public TrmLgbDetail getDraft(TrmLgbDetail et) {
         fillParentData(et);
@@ -261,5 +260,6 @@ public class TrmLgbDetailServiceImpl extends ServiceImpl<TrmLgbDetailMapper, Trm
     }
 
 }
+
 
 

@@ -111,7 +111,6 @@ public class SalSalaryServiceImpl extends ServiceImpl<SalSalaryMapper, SalSalary
     public boolean checkKey(SalSalary et) {
         return (!ObjectUtils.isEmpty(et.getSalsalaryid()))&&(!Objects.isNull(this.getById(et.getSalsalaryid())));
     }
-
     @Override
     @Transactional
     public SalSalary get(String key) {
@@ -383,5 +382,6 @@ public class SalSalaryServiceImpl extends ServiceImpl<SalSalaryMapper, SalSalary
     }
 
 }
+
 
 

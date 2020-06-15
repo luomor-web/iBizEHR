@@ -132,7 +132,6 @@ public class PcmProfileNumBeprefixServiceImpl extends ServiceImpl<PcmProfileNumB
     public boolean checkKey(PcmProfileNumBeprefix et) {
         return (!ObjectUtils.isEmpty(et.getPcmprofilenumbeprefixid()))&&(!Objects.isNull(this.getById(et.getPcmprofilenumbeprefixid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -238,5 +237,6 @@ public class PcmProfileNumBeprefixServiceImpl extends ServiceImpl<PcmProfileNumB
     }
 
 }
+
 
 

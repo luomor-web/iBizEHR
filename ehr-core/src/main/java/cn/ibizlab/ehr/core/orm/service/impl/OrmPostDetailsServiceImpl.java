@@ -86,7 +86,6 @@ public class OrmPostDetailsServiceImpl extends ServiceImpl<OrmPostDetailsMapper,
     public boolean checkKey(OrmPostDetails et) {
         return (!ObjectUtils.isEmpty(et.getOrmpostdetailsid()))&&(!Objects.isNull(this.getById(et.getOrmpostdetailsid())));
     }
-
     @Override
     @Transactional
     public boolean update(OrmPostDetails et) {
@@ -266,5 +265,6 @@ public class OrmPostDetailsServiceImpl extends ServiceImpl<OrmPostDetailsMapper,
     }
 
 }
+
 
 

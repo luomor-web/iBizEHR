@@ -96,7 +96,6 @@ public class PcmYdbxmxServiceImpl extends ServiceImpl<PcmYdbxmxMapper, PcmYdbxmx
     public boolean checkKey(PcmYdbxmx et) {
         return (!ObjectUtils.isEmpty(et.getPcmydbxmxid()))&&(!Objects.isNull(this.getById(et.getPcmydbxmxid())));
     }
-
     @Override
     @Transactional
     public boolean save(PcmYdbxmx et) {
@@ -258,5 +257,6 @@ public class PcmYdbxmxServiceImpl extends ServiceImpl<PcmYdbxmxMapper, PcmYdbxmx
     }
 
 }
+
 
 

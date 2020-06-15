@@ -138,7 +138,6 @@ public class SalSourceServiceImpl extends ServiceImpl<SalSourceMapper, SalSource
     public boolean checkKey(SalSource et) {
         return (!ObjectUtils.isEmpty(et.getSalsourceid()))&&(!Objects.isNull(this.getById(et.getSalsourceid())));
     }
-
     @Override
     public SalSource getDraft(SalSource et) {
         return et;
@@ -204,5 +203,6 @@ public class SalSourceServiceImpl extends ServiceImpl<SalSourceMapper, SalSource
     }
 
 }
+
 
 

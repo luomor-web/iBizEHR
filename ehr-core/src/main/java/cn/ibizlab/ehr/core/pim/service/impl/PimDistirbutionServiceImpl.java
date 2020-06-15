@@ -91,7 +91,6 @@ public class PimDistirbutionServiceImpl extends ServiceImpl<PimDistirbutionMappe
     public boolean checkKey(PimDistirbution et) {
         return (!ObjectUtils.isEmpty(et.getPimdistirbutionid()))&&(!Objects.isNull(this.getById(et.getPimdistirbutionid())));
     }
-
     @Override
     @Transactional
     public boolean update(PimDistirbution et) {
@@ -567,5 +566,6 @@ public class PimDistirbutionServiceImpl extends ServiceImpl<PimDistirbutionMappe
     }
 
 }
+
 
 

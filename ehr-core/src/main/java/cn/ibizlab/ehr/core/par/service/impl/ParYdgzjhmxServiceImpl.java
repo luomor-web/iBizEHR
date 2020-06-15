@@ -128,7 +128,6 @@ public class ParYdgzjhmxServiceImpl extends ServiceImpl<ParYdgzjhmxMapper, ParYd
     public boolean checkKey(ParYdgzjhmx et) {
         return (!ObjectUtils.isEmpty(et.getParydgzjhmxid()))&&(!Objects.isNull(this.getById(et.getParydgzjhmxid())));
     }
-
     @Override
     public ParYdgzjhmx getDraft(ParYdgzjhmx et) {
         fillParentData(et);
@@ -237,5 +236,6 @@ public class ParYdgzjhmxServiceImpl extends ServiceImpl<ParYdgzjhmxMapper, ParYd
     }
 
 }
+
 
 

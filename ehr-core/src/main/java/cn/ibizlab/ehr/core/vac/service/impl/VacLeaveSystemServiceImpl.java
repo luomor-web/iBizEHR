@@ -160,7 +160,6 @@ public class VacLeaveSystemServiceImpl extends ServiceImpl<VacLeaveSystemMapper,
         return (!ObjectUtils.isEmpty(et.getVacleavesystemid()))&&(!Objects.isNull(this.getById(et.getVacleavesystemid())));
     }
 
-
 	@Override
     public List<VacLeaveSystem> selectByOrmorgid(String orgid) {
         return baseMapper.selectByOrmorgid(orgid);
@@ -247,5 +246,6 @@ public class VacLeaveSystemServiceImpl extends ServiceImpl<VacLeaveSystemMapper,
     }
 
 }
+
 
 

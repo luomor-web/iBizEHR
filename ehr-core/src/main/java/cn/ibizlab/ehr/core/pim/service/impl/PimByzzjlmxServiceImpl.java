@@ -278,7 +278,6 @@ public class PimByzzjlmxServiceImpl extends ServiceImpl<PimByzzjlmxMapper, PimBy
     public boolean checkKey(PimByzzjlmx et) {
         return (!ObjectUtils.isEmpty(et.getPimbyzzjlmxid()))&&(!Objects.isNull(this.getById(et.getPimbyzzjlmxid())));
     }
-
     @Override
     @Transactional
     public PimByzzjlmx updatePeopleNum(PimByzzjlmx et) {
@@ -555,5 +554,6 @@ public class PimByzzjlmxServiceImpl extends ServiceImpl<PimByzzjlmxMapper, PimBy
     }
 
 }
+
 
 

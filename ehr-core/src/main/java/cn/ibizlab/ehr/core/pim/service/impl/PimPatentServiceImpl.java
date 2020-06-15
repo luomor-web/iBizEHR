@@ -151,7 +151,6 @@ public class PimPatentServiceImpl extends ServiceImpl<PimPatentMapper, PimPatent
         return (!ObjectUtils.isEmpty(et.getPimpatentid()))&&(!Objects.isNull(this.getById(et.getPimpatentid())));
     }
 
-
 	@Override
     public List<PimPatent> selectByPimpersonid(String pimpersonid) {
         return baseMapper.selectByPimpersonid(pimpersonid);
@@ -258,5 +257,6 @@ public class PimPatentServiceImpl extends ServiceImpl<PimPatentMapper, PimPatent
     }
 
 }
+
 
 

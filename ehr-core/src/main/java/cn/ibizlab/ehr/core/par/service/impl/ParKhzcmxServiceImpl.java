@@ -140,7 +140,6 @@ public class ParKhzcmxServiceImpl extends ServiceImpl<ParKhzcmxMapper, ParKhzcmx
     public boolean checkKey(ParKhzcmx et) {
         return (!ObjectUtils.isEmpty(et.getParkhzcmxid()))&&(!Objects.isNull(this.getById(et.getParkhzcmxid())));
     }
-
     @Override
     @Transactional
     public boolean update(ParKhzcmx et) {
@@ -244,5 +243,6 @@ public class ParKhzcmxServiceImpl extends ServiceImpl<ParKhzcmxMapper, ParKhzcmx
     }
 
 }
+
 
 

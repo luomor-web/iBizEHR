@@ -95,7 +95,6 @@ public class PcmRzglServiceImpl extends ServiceImpl<PcmRzglMapper, PcmRzgl> impl
     public boolean checkKey(PcmRzgl et) {
         return (!ObjectUtils.isEmpty(et.getPcmrzglid()))&&(!Objects.isNull(this.getById(et.getPcmrzglid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -219,5 +218,6 @@ public class PcmRzglServiceImpl extends ServiceImpl<PcmRzglMapper, PcmRzgl> impl
     }
 
 }
+
 
 

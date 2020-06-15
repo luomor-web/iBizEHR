@@ -116,7 +116,6 @@ public class ParJxqdszServiceImpl extends ServiceImpl<ParJxqdszMapper, ParJxqdsz
     public boolean checkKey(ParJxqdsz et) {
         return (!ObjectUtils.isEmpty(et.getParjxqdszid()))&&(!Objects.isNull(this.getById(et.getParjxqdszid())));
     }
-
     @Override
     public ParJxqdsz getDraft(ParJxqdsz et) {
         fillParentData(et);
@@ -237,5 +236,6 @@ public class ParJxqdszServiceImpl extends ServiceImpl<ParJxqdszMapper, ParJxqdsz
     }
 
 }
+
 
 

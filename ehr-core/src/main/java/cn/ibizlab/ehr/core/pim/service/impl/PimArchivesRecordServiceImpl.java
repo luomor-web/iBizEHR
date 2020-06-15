@@ -122,7 +122,6 @@ public class PimArchivesRecordServiceImpl extends ServiceImpl<PimArchivesRecordM
     public boolean checkKey(PimArchivesRecord et) {
         return (!ObjectUtils.isEmpty(et.getPimarchivesrecordid()))&&(!Objects.isNull(this.getById(et.getPimarchivesrecordid())));
     }
-
     @Override
     @Transactional
     public PimArchivesRecord get(String key) {
@@ -261,5 +260,6 @@ public class PimArchivesRecordServiceImpl extends ServiceImpl<PimArchivesRecordM
     }
 
 }
+
 
 

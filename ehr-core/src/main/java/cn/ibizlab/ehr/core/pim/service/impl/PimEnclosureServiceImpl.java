@@ -60,7 +60,6 @@ public class PimEnclosureServiceImpl extends ServiceImpl<PimEnclosureMapper, Pim
     public boolean checkKey(PimEnclosure et) {
         return (!ObjectUtils.isEmpty(et.getPimenclosureid()))&&(!Objects.isNull(this.getById(et.getPimenclosureid())));
     }
-
     @Override
     @Transactional
     public boolean save(PimEnclosure et) {
@@ -248,5 +247,6 @@ public class PimEnclosureServiceImpl extends ServiceImpl<PimEnclosureMapper, Pim
     }
 
 }
+
 
 

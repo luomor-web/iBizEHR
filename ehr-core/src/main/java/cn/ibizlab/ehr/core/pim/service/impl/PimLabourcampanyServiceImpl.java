@@ -93,7 +93,6 @@ public class PimLabourcampanyServiceImpl extends ServiceImpl<PimLabourcampanyMap
     public boolean checkKey(PimLabourcampany et) {
         return (!ObjectUtils.isEmpty(et.getPimlabourcampanyid()))&&(!Objects.isNull(this.getById(et.getPimlabourcampanyid())));
     }
-
     @Override
     @Transactional
     public boolean update(PimLabourcampany et) {
@@ -273,5 +272,6 @@ public class PimLabourcampanyServiceImpl extends ServiceImpl<PimLabourcampanyMap
     }
 
 }
+
 
 

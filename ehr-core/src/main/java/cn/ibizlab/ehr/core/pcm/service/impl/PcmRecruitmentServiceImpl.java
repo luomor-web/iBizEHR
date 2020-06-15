@@ -131,7 +131,6 @@ public class PcmRecruitmentServiceImpl extends ServiceImpl<PcmRecruitmentMapper,
     public boolean checkKey(PcmRecruitment et) {
         return (!ObjectUtils.isEmpty(et.getPcmrecruitmentid()))&&(!Objects.isNull(this.getById(et.getPcmrecruitmentid())));
     }
-
     @Override
     @Transactional
     public boolean update(PcmRecruitment et) {
@@ -315,5 +314,6 @@ public class PcmRecruitmentServiceImpl extends ServiceImpl<PcmRecruitmentMapper,
     }
 
 }
+
 
 

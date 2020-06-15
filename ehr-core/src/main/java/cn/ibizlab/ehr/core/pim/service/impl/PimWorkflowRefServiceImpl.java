@@ -151,7 +151,6 @@ public class PimWorkflowRefServiceImpl extends ServiceImpl<PimWorkflowRefMapper,
         return (!ObjectUtils.isEmpty(et.getPimworkflowrefid()))&&(!Objects.isNull(this.getById(et.getPimworkflowrefid())));
     }
 
-
 	@Override
     public List<PimWorkflowRef> selectByPimworkflowid(String pimworkflowid) {
         return baseMapper.selectByPimworkflowid(pimworkflowid);
@@ -238,5 +237,6 @@ public class PimWorkflowRefServiceImpl extends ServiceImpl<PimWorkflowRefMapper,
     }
 
 }
+
 
 

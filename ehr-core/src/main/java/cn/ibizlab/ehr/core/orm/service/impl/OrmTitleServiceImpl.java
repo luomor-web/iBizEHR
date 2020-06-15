@@ -113,7 +113,6 @@ public class OrmTitleServiceImpl extends ServiceImpl<OrmTitleMapper, OrmTitle> i
     public boolean checkKey(OrmTitle et) {
         return (!ObjectUtils.isEmpty(et.getOrmtitleid()))&&(!Objects.isNull(this.getById(et.getOrmtitleid())));
     }
-
     @Override
     @Transactional
     public OrmTitle get(String key) {
@@ -201,5 +200,6 @@ public class OrmTitleServiceImpl extends ServiceImpl<OrmTitleMapper, OrmTitle> i
     }
 
 }
+
 
 

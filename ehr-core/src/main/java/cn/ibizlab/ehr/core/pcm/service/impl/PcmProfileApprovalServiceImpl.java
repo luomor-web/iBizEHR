@@ -154,7 +154,6 @@ public class PcmProfileApprovalServiceImpl extends ServiceImpl<PcmProfileApprova
         return (!ObjectUtils.isEmpty(et.getPcmprofileapprovalid()))&&(!Objects.isNull(this.getById(et.getPcmprofileapprovalid())));
     }
 
-
 	@Override
     public List<PcmProfileApproval> selectByPcmprofileid(String pcmprofileid) {
         return baseMapper.selectByPcmprofileid(pcmprofileid);
@@ -269,5 +268,6 @@ public class PcmProfileApprovalServiceImpl extends ServiceImpl<PcmProfileApprova
     }
 
 }
+
 
 

@@ -149,7 +149,6 @@ public class OrmErporgServiceImpl extends ServiceImpl<OrmErporgMapper, OrmErporg
     }
 
 
-
     /**
      * 查询集合 查询可用ERP部门
      */
@@ -244,5 +243,6 @@ public class OrmErporgServiceImpl extends ServiceImpl<OrmErporgMapper, OrmErporg
     }
 
 }
+
 
 

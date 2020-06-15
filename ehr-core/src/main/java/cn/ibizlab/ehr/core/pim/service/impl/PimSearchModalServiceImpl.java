@@ -97,7 +97,6 @@ public class PimSearchModalServiceImpl extends ServiceImpl<PimSearchModalMapper,
     public boolean checkKey(PimSearchModal et) {
         return (!ObjectUtils.isEmpty(et.getPimsearchmodalid()))&&(!Objects.isNull(this.getById(et.getPimsearchmodalid())));
     }
-
     @Override
     @Transactional
     public boolean save(PimSearchModal et) {
@@ -201,5 +200,6 @@ public class PimSearchModalServiceImpl extends ServiceImpl<PimSearchModalMapper,
     }
 
 }
+
 
 

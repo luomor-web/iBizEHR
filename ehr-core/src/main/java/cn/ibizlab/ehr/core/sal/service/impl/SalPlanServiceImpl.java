@@ -88,7 +88,6 @@ public class SalPlanServiceImpl extends ServiceImpl<SalPlanMapper, SalPlan> impl
     public boolean checkKey(SalPlan et) {
         return (!ObjectUtils.isEmpty(et.getSalplanid()))&&(!Objects.isNull(this.getById(et.getSalplanid())));
     }
-
     @Override
     @Transactional
     public boolean save(SalPlan et) {
@@ -263,5 +262,6 @@ public class SalPlanServiceImpl extends ServiceImpl<SalPlanMapper, SalPlan> impl
     }
 
 }
+
 
 

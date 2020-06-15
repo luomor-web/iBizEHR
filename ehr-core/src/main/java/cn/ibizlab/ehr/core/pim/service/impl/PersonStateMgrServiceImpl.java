@@ -82,7 +82,6 @@ public class PersonStateMgrServiceImpl extends ServiceImpl<PersonStateMgrMapper,
     public boolean checkKey(PersonStateMgr et) {
         return (!ObjectUtils.isEmpty(et.getPersonstatemgrid()))&&(!Objects.isNull(this.getById(et.getPersonstatemgrid())));
     }
-
     @Override
     public PersonStateMgr getDraft(PersonStateMgr et) {
         return et;
@@ -201,5 +200,6 @@ public class PersonStateMgrServiceImpl extends ServiceImpl<PersonStateMgrMapper,
     }
 
 }
+
 
 

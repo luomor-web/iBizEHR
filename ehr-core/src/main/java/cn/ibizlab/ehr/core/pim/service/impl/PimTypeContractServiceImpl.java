@@ -65,7 +65,6 @@ public class PimTypeContractServiceImpl extends ServiceImpl<PimTypeContractMappe
     public boolean checkKey(PimTypeContract et) {
         return (!ObjectUtils.isEmpty(et.getPimtypecontractid()))&&(!Objects.isNull(this.getById(et.getPimtypecontractid())));
     }
-
     @Override
     @Transactional
     public PimTypeContract get(String key) {
@@ -201,5 +200,6 @@ public class PimTypeContractServiceImpl extends ServiceImpl<PimTypeContractMappe
     }
 
 }
+
 
 

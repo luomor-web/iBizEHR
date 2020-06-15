@@ -60,7 +60,6 @@ public class SalStdXmgzRateServiceImpl extends ServiceImpl<SalStdXmgzRateMapper,
     public boolean checkKey(SalStdXmgzRate et) {
         return (!ObjectUtils.isEmpty(et.getSalstdxmgzrateid()))&&(!Objects.isNull(this.getById(et.getSalstdxmgzrateid())));
     }
-
     @Override
     @Transactional
     public boolean save(SalStdXmgzRate et) {
@@ -237,5 +236,6 @@ public class SalStdXmgzRateServiceImpl extends ServiceImpl<SalStdXmgzRateMapper,
     }
 
 }
+
 
 

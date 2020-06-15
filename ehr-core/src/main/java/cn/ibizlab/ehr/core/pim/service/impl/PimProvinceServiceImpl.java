@@ -51,7 +51,6 @@ public class PimProvinceServiceImpl extends ServiceImpl<PimProvinceMapper, PimPr
     public boolean checkKey(PimProvince et) {
         return (!ObjectUtils.isEmpty(et.getPimprovinceid()))&&(!Objects.isNull(this.getById(et.getPimprovinceid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -201,5 +200,6 @@ public class PimProvinceServiceImpl extends ServiceImpl<PimProvinceMapper, PimPr
     }
 
 }
+
 
 

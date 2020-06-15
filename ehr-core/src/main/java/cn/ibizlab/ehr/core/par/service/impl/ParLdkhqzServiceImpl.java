@@ -54,7 +54,6 @@ public class ParLdkhqzServiceImpl extends ServiceImpl<ParLdkhqzMapper, ParLdkhqz
     public boolean checkKey(ParLdkhqz et) {
         return (!ObjectUtils.isEmpty(et.getParldkhqzid()))&&(!Objects.isNull(this.getById(et.getParldkhqzid())));
     }
-
     @Override
     @Transactional
     public boolean create(ParLdkhqz et) {
@@ -238,5 +237,6 @@ public class ParLdkhqzServiceImpl extends ServiceImpl<ParLdkhqzMapper, ParLdkhqz
     }
 
 }
+
 
 

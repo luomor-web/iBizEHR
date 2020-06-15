@@ -98,7 +98,6 @@ public class SalStdglServiceImpl extends ServiceImpl<SalStdglMapper, SalStdgl> i
     public boolean checkKey(SalStdgl et) {
         return (!ObjectUtils.isEmpty(et.getSalstdglid()))&&(!Objects.isNull(this.getById(et.getSalstdglid())));
     }
-
     @Override
     @Transactional
     public boolean save(SalStdgl et) {
@@ -237,5 +236,6 @@ public class SalStdglServiceImpl extends ServiceImpl<SalStdglMapper, SalStdgl> i
     }
 
 }
+
 
 

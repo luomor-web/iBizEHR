@@ -112,7 +112,6 @@ public class ParBmfzjyxServiceImpl extends ServiceImpl<ParBmfzjyxMapper, ParBmfz
     public boolean checkKey(ParBmfzjyx et) {
         return (!ObjectUtils.isEmpty(et.getParbmfzjyxid()))&&(!Objects.isNull(this.getById(et.getParbmfzjyxid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -262,5 +261,6 @@ public class ParBmfzjyxServiceImpl extends ServiceImpl<ParBmfzjyxMapper, ParBmfz
     }
 
 }
+
 
 

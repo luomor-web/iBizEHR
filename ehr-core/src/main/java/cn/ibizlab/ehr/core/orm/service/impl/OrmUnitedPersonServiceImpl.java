@@ -120,7 +120,6 @@ public class OrmUnitedPersonServiceImpl extends ServiceImpl<OrmUnitedPersonMappe
     public boolean checkKey(OrmUnitedPerson et) {
         return (!ObjectUtils.isEmpty(et.getUnitedpersonid()))&&(!Objects.isNull(this.getById(et.getUnitedpersonid())));
     }
-
     @Override
     @Transactional
     public OrmUnitedPerson get(String key) {
@@ -226,5 +225,6 @@ public class OrmUnitedPersonServiceImpl extends ServiceImpl<OrmUnitedPersonMappe
     }
 
 }
+
 
 

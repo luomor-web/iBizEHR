@@ -95,7 +95,6 @@ public class PimFilebatvhuploadServiceImpl extends ServiceImpl<PimFilebatvhuploa
     public boolean checkKey(PimFilebatvhupload et) {
         return (!ObjectUtils.isEmpty(et.getPimfilebatvhuploadid()))&&(!Objects.isNull(this.getById(et.getPimfilebatvhuploadid())));
     }
-
     @Override
     @Transactional
     public boolean update(PimFilebatvhupload et) {
@@ -201,5 +200,6 @@ public class PimFilebatvhuploadServiceImpl extends ServiceImpl<PimFilebatvhuploa
     }
 
 }
+
 
 

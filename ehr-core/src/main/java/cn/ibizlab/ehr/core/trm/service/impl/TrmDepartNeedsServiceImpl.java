@@ -137,7 +137,6 @@ public class TrmDepartNeedsServiceImpl extends ServiceImpl<TrmDepartNeedsMapper,
     public boolean checkKey(TrmDepartNeeds et) {
         return (!ObjectUtils.isEmpty(et.getTrmdepartneedsid()))&&(!Objects.isNull(this.getById(et.getTrmdepartneedsid())));
     }
-
     @Override
     @Transactional
     public boolean create(TrmDepartNeeds et) {
@@ -260,5 +259,6 @@ public class TrmDepartNeedsServiceImpl extends ServiceImpl<TrmDepartNeedsMapper,
     }
 
 }
+
 
 

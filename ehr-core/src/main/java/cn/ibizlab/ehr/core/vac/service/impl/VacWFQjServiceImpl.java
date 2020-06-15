@@ -65,7 +65,6 @@ public class VacWFQjServiceImpl extends ServiceImpl<VacWFQjMapper, VacWFQj> impl
     public boolean checkKey(VacWFQj et) {
         return (!ObjectUtils.isEmpty(et.getWfqjid()))&&(!Objects.isNull(this.getById(et.getWfqjid())));
     }
-
     @Override
     @Transactional
     public boolean create(VacWFQj et) {
@@ -221,5 +220,6 @@ public class VacWFQjServiceImpl extends ServiceImpl<VacWFQjMapper, VacWFQj> impl
     }
 
 }
+
 
 

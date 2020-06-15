@@ -51,7 +51,6 @@ public class PimStafftypeServiceImpl extends ServiceImpl<PimStafftypeMapper, Pim
     public boolean checkKey(PimStafftype et) {
         return (!ObjectUtils.isEmpty(et.getPimstafftypeid()))&&(!Objects.isNull(this.getById(et.getPimstafftypeid())));
     }
-
     @Override
     @Transactional
     public PimStafftype get(String key) {
@@ -210,5 +209,6 @@ public class PimStafftypeServiceImpl extends ServiceImpl<PimStafftypeMapper, Pim
     }
 
 }
+
 
 

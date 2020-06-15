@@ -51,7 +51,6 @@ public class SalTypeServiceImpl extends ServiceImpl<SalTypeMapper, SalType> impl
     public boolean checkKey(SalType et) {
         return (!ObjectUtils.isEmpty(et.getSaltypeid()))&&(!Objects.isNull(this.getById(et.getSaltypeid())));
     }
-
     @Override
     @Transactional
     public SalType get(String key) {
@@ -201,5 +200,6 @@ public class SalTypeServiceImpl extends ServiceImpl<SalTypeMapper, SalType> impl
     }
 
 }
+
 
 

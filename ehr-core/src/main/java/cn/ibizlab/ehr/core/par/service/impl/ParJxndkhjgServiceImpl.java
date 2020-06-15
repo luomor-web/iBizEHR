@@ -151,7 +151,6 @@ public class ParJxndkhjgServiceImpl extends ServiceImpl<ParJxndkhjgMapper, ParJx
         return (!ObjectUtils.isEmpty(et.getParjxndkhjgid()))&&(!Objects.isNull(this.getById(et.getParjxndkhjgid())));
     }
 
-
 	@Override
     public List<ParJxndkhjg> selectByPimpersonid(String pimpersonid) {
         return baseMapper.selectByPimpersonid(pimpersonid);
@@ -246,5 +245,6 @@ public class ParJxndkhjgServiceImpl extends ServiceImpl<ParJxndkhjgMapper, ParJx
     }
 
 }
+
 
 

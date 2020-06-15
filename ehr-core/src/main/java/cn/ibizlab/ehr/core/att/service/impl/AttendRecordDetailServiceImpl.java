@@ -89,7 +89,6 @@ public class AttendRecordDetailServiceImpl extends ServiceImpl<AttendRecordDetai
     public boolean checkKey(AttendRecordDetail et) {
         return (!ObjectUtils.isEmpty(et.getAttendrecorddetailid()))&&(!Objects.isNull(this.getById(et.getAttendrecorddetailid())));
     }
-
     @Override
     @Transactional
     public boolean save(AttendRecordDetail et) {
@@ -237,5 +236,6 @@ public class AttendRecordDetailServiceImpl extends ServiceImpl<AttendRecordDetai
     }
 
 }
+
 
 

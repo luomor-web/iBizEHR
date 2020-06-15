@@ -144,7 +144,6 @@ public class SalSchemeItemServiceImpl extends ServiceImpl<SalSchemeItemMapper, S
     public boolean checkKey(SalSchemeItem et) {
         return (!ObjectUtils.isEmpty(et.getSalschemeitemid()))&&(!Objects.isNull(this.getById(et.getSalschemeitemid())));
     }
-
     @Override
     @Transactional
     public boolean create(SalSchemeItem et) {
@@ -294,5 +293,6 @@ public class SalSchemeItemServiceImpl extends ServiceImpl<SalSchemeItemMapper, S
     }
 
 }
+
 
 

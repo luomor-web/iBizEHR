@@ -111,7 +111,6 @@ public class TrmTrainPersonServiceImpl extends ServiceImpl<TrmTrainPersonMapper,
     public boolean checkKey(TrmTrainPerson et) {
         return (!ObjectUtils.isEmpty(et.getTrmtrianpersonid()))&&(!Objects.isNull(this.getById(et.getTrmtrianpersonid())));
     }
-
     @Override
     @Transactional
     public boolean create(TrmTrainPerson et) {
@@ -277,5 +276,6 @@ public class TrmTrainPersonServiceImpl extends ServiceImpl<TrmTrainPersonMapper,
     }
 
 }
+
 
 

@@ -138,7 +138,6 @@ public class PcmXkmlServiceImpl extends ServiceImpl<PcmXkmlMapper, PcmXkml> impl
     public boolean checkKey(PcmXkml et) {
         return (!ObjectUtils.isEmpty(et.getPcmxkmlid()))&&(!Objects.isNull(this.getById(et.getPcmxkmlid())));
     }
-
     @Override
     public PcmXkml getDraft(PcmXkml et) {
         return et;
@@ -213,5 +212,6 @@ public class PcmXkmlServiceImpl extends ServiceImpl<PcmXkmlMapper, PcmXkml> impl
     }
 
 }
+
 
 

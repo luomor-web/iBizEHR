@@ -60,7 +60,6 @@ public class SocSelfarebasemxServiceImpl extends ServiceImpl<SocSelfarebasemxMap
     public boolean checkKey(SocSelfarebasemx et) {
         return (!ObjectUtils.isEmpty(et.getSocselfarebasemxid()))&&(!Objects.isNull(this.getById(et.getSocselfarebasemxid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -253,5 +252,6 @@ public class SocSelfarebasemxServiceImpl extends ServiceImpl<SocSelfarebasemxMap
     }
 
 }
+
 
 

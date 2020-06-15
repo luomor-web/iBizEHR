@@ -51,7 +51,6 @@ public class PcmTxbzServiceImpl extends ServiceImpl<PcmTxbzMapper, PcmTxbz> impl
     public boolean checkKey(PcmTxbz et) {
         return (!ObjectUtils.isEmpty(et.getPcmtxbzid()))&&(!Objects.isNull(this.getById(et.getPcmtxbzid())));
     }
-
     @Override
     @Transactional
     public PcmTxbz get(String key) {
@@ -201,5 +200,6 @@ public class PcmTxbzServiceImpl extends ServiceImpl<PcmTxbzMapper, PcmTxbz> impl
     }
 
 }
+
 
 

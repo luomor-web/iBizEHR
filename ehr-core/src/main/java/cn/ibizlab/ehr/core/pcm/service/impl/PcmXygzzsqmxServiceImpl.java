@@ -175,7 +175,6 @@ public class PcmXygzzsqmxServiceImpl extends ServiceImpl<PcmXygzzsqmxMapper, Pcm
         return (!ObjectUtils.isEmpty(et.getPcmxygzzsqmxid()))&&(!Objects.isNull(this.getById(et.getPcmxygzzsqmxid())));
     }
 
-
 	@Override
     public List<PcmXygzzsqmx> selectByPcmxygzzsqid(String pcmxygzzsqid) {
         return baseMapper.selectByPcmxygzzsqid(pcmxygzzsqid);
@@ -295,5 +294,6 @@ public class PcmXygzzsqmxServiceImpl extends ServiceImpl<PcmXygzzsqmxMapper, Pcm
     }
 
 }
+
 
 

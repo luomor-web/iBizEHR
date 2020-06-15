@@ -154,7 +154,6 @@ public class ParJxbzglServiceImpl extends ServiceImpl<ParJxbzglMapper, ParJxbzgl
         return (!ObjectUtils.isEmpty(et.getParjxbzglid()))&&(!Objects.isNull(this.getById(et.getParjxbzglid())));
     }
 
-
 	@Override
     public List<ParJxbzgl> selectByOrmorgid(String orgid) {
         return baseMapper.selectByOrmorgid(orgid);
@@ -240,5 +239,6 @@ public class ParJxbzglServiceImpl extends ServiceImpl<ParJxbzglMapper, ParJxbzgl
     }
 
 }
+
 
 

@@ -96,7 +96,6 @@ public class AttEndenceTypeServiceImpl extends ServiceImpl<AttEndenceTypeMapper,
     public boolean checkKey(AttEndenceType et) {
         return (!ObjectUtils.isEmpty(et.getAttendencetypeid()))&&(!Objects.isNull(this.getById(et.getAttendencetypeid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -201,5 +200,6 @@ public class AttEndenceTypeServiceImpl extends ServiceImpl<AttEndenceTypeMapper,
     }
 
 }
+
 
 

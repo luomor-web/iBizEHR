@@ -125,7 +125,6 @@ public class OrmXmbmxServiceImpl extends ServiceImpl<OrmXmbmxMapper, OrmXmbmx> i
     public boolean checkKey(OrmXmbmx et) {
         return (!ObjectUtils.isEmpty(et.getOrmxmbmxid()))&&(!Objects.isNull(this.getById(et.getOrmxmbmxid())));
     }
-
     @Override
     @Transactional
     public boolean create(OrmXmbmx et) {
@@ -260,5 +259,6 @@ public class OrmXmbmxServiceImpl extends ServiceImpl<OrmXmbmxMapper, OrmXmbmx> i
     }
 
 }
+
 
 

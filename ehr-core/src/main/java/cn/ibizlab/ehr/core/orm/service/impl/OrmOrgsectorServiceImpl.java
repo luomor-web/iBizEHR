@@ -204,7 +204,6 @@ public class OrmOrgsectorServiceImpl extends ServiceImpl<OrmOrgsectorMapper, Orm
     public boolean checkKey(OrmOrgsector et) {
         return (!ObjectUtils.isEmpty(et.getOrgsectorid()))&&(!Objects.isNull(this.getById(et.getOrgsectorid())));
     }
-
     @Override
     @Transactional
     public boolean save(OrmOrgsector et) {
@@ -639,5 +638,6 @@ public class OrmOrgsectorServiceImpl extends ServiceImpl<OrmOrgsectorMapper, Orm
     }
 
 }
+
 
 

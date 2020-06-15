@@ -79,7 +79,6 @@ public class PimCorrectionApplyServiceImpl extends ServiceImpl<PimCorrectionAppl
     public boolean checkKey(PimCorrectionApply et) {
         return (!ObjectUtils.isEmpty(et.getPimcorrectionapplyid()))&&(!Objects.isNull(this.getById(et.getPimcorrectionapplyid())));
     }
-
     @Override
     @Transactional
     public boolean save(PimCorrectionApply et) {
@@ -265,5 +264,6 @@ public class PimCorrectionApplyServiceImpl extends ServiceImpl<PimCorrectionAppl
     }
 
 }
+
 
 

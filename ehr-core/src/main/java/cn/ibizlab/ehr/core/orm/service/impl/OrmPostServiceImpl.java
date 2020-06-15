@@ -132,7 +132,6 @@ public class OrmPostServiceImpl extends ServiceImpl<OrmPostMapper, OrmPost> impl
     public boolean checkKey(OrmPost et) {
         return (!ObjectUtils.isEmpty(et.getOrmpostid()))&&(!Objects.isNull(this.getById(et.getOrmpostid())));
     }
-
     @Override
     @Transactional
     public boolean create(OrmPost et) {
@@ -361,5 +360,6 @@ public class OrmPostServiceImpl extends ServiceImpl<OrmPostMapper, OrmPost> impl
     }
 
 }
+
 
 

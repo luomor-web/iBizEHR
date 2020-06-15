@@ -151,7 +151,6 @@ public class SalStdzcServiceImpl extends ServiceImpl<SalStdzcMapper, SalStdzc> i
         return (!ObjectUtils.isEmpty(et.getSalstdzcid()))&&(!Objects.isNull(this.getById(et.getSalstdzcid())));
     }
 
-
 	@Override
     public List<SalStdzc> selectByOrmorgid(String orgid) {
         return baseMapper.selectByOrmorgid(orgid);
@@ -237,5 +236,6 @@ public class SalStdzcServiceImpl extends ServiceImpl<SalStdzcMapper, SalStdzc> i
     }
 
 }
+
 
 

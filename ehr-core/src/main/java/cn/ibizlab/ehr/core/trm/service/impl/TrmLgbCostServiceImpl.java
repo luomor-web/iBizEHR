@@ -88,7 +88,6 @@ public class TrmLgbCostServiceImpl extends ServiceImpl<TrmLgbCostMapper, TrmLgbC
     public boolean checkKey(TrmLgbCost et) {
         return (!ObjectUtils.isEmpty(et.getTrmlgbcostid()))&&(!Objects.isNull(this.getById(et.getTrmlgbcostid())));
     }
-
     @Override
     @Transactional
     public boolean update(TrmLgbCost et) {
@@ -240,5 +239,6 @@ public class TrmLgbCostServiceImpl extends ServiceImpl<TrmLgbCostMapper, TrmLgbC
     }
 
 }
+
 
 

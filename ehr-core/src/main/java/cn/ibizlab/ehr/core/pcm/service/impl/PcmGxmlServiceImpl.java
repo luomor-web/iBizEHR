@@ -104,7 +104,6 @@ public class PcmGxmlServiceImpl extends ServiceImpl<PcmGxmlMapper, PcmGxml> impl
     public boolean checkKey(PcmGxml et) {
         return (!ObjectUtils.isEmpty(et.getPcmgxmlid()))&&(!Objects.isNull(this.getById(et.getPcmgxmlid())));
     }
-
     @Override
     @Transactional
     public PcmGxml get(String key) {
@@ -213,5 +212,6 @@ public class PcmGxmlServiceImpl extends ServiceImpl<PcmGxmlMapper, PcmGxml> impl
     }
 
 }
+
 
 

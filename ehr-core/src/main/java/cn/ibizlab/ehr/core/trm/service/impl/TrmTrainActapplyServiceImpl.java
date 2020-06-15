@@ -69,7 +69,6 @@ public class TrmTrainActapplyServiceImpl extends ServiceImpl<TrmTrainActapplyMap
     public boolean checkKey(TrmTrainActapply et) {
         return (!ObjectUtils.isEmpty(et.getTrmtrainactapplyid()))&&(!Objects.isNull(this.getById(et.getTrmtrainactapplyid())));
     }
-
     @Override
     @Transactional
     public boolean create(TrmTrainActapply et) {
@@ -246,5 +245,6 @@ public class TrmTrainActapplyServiceImpl extends ServiceImpl<TrmTrainActapplyMap
     }
 
 }
+
 
 

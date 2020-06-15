@@ -69,7 +69,6 @@ public class PcmZpmeglServiceImpl extends ServiceImpl<PcmZpmeglMapper, PcmZpmegl
     public boolean checkKey(PcmZpmegl et) {
         return (!ObjectUtils.isEmpty(et.getPcmzpmeglid()))&&(!Objects.isNull(this.getById(et.getPcmzpmeglid())));
     }
-
     @Override
     @Transactional
     public boolean save(PcmZpmegl et) {
@@ -250,5 +249,6 @@ public class PcmZpmeglServiceImpl extends ServiceImpl<PcmZpmeglMapper, PcmZpmegl
     }
 
 }
+
 
 

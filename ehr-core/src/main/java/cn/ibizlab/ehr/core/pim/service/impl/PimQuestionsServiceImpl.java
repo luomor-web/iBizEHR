@@ -151,7 +151,6 @@ public class PimQuestionsServiceImpl extends ServiceImpl<PimQuestionsMapper, Pim
     public boolean checkKey(PimQuestions et) {
         return (!ObjectUtils.isEmpty(et.getQuestionsid()))&&(!Objects.isNull(this.getById(et.getQuestionsid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -280,5 +279,6 @@ public class PimQuestionsServiceImpl extends ServiceImpl<PimQuestionsMapper, Pim
     }
 
 }
+
 
 

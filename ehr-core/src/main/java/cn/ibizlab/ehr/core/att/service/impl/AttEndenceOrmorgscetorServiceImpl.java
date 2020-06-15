@@ -102,7 +102,6 @@ public class AttEndenceOrmorgscetorServiceImpl extends ServiceImpl<AttEndenceOrm
     public boolean checkKey(AttEndenceOrmorgscetor et) {
         return (!ObjectUtils.isEmpty(et.getAttendenceormorgsectorid()))&&(!Objects.isNull(this.getById(et.getAttendenceormorgsectorid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -262,5 +261,6 @@ public class AttEndenceOrmorgscetorServiceImpl extends ServiceImpl<AttEndenceOrm
     }
 
 }
+
 
 

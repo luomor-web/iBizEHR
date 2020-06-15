@@ -117,7 +117,6 @@ public class TrmTrainPlanServiceImpl extends ServiceImpl<TrmTrainPlanMapper, Trm
     public boolean checkKey(TrmTrainPlan et) {
         return (!ObjectUtils.isEmpty(et.getTrmtrainplanid()))&&(!Objects.isNull(this.getById(et.getTrmtrainplanid())));
     }
-
     @Override
     @Transactional
     public TrmTrainPlan get(String key) {
@@ -315,5 +314,6 @@ public class TrmTrainPlanServiceImpl extends ServiceImpl<TrmTrainPlanMapper, Trm
     }
 
 }
+
 
 

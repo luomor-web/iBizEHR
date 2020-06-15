@@ -56,7 +56,6 @@ public class PcmProfileFjServiceImpl extends ServiceImpl<PcmProfileFjMapper, Pcm
     public boolean checkKey(PcmProfileFj et) {
         return (!ObjectUtils.isEmpty(et.getPcmprofilefjid()))&&(!Objects.isNull(this.getById(et.getPcmprofilefjid())));
     }
-
     @Override
     @Transactional
     public boolean update(PcmProfileFj et) {
@@ -210,5 +209,6 @@ public class PcmProfileFjServiceImpl extends ServiceImpl<PcmProfileFjMapper, Pcm
     }
 
 }
+
 
 

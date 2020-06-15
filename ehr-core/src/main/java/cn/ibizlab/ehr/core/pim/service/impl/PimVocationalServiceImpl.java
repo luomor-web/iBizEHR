@@ -104,7 +104,6 @@ public class PimVocationalServiceImpl extends ServiceImpl<PimVocationalMapper, P
     public boolean checkKey(PimVocational et) {
         return (!ObjectUtils.isEmpty(et.getPimvocationalid()))&&(!Objects.isNull(this.getById(et.getPimvocationalid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -416,5 +415,6 @@ public class PimVocationalServiceImpl extends ServiceImpl<PimVocationalMapper, P
     }
 
 }
+
 
 

@@ -608,7 +608,6 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
     public boolean checkKey(VacLeaveDetail et) {
         return (!ObjectUtils.isEmpty(et.getVacleavedetailid()))&&(!Objects.isNull(this.getById(et.getVacleavedetailid())));
     }
-
     @Override
     public VacLeaveDetail getDraft(VacLeaveDetail et) {
         fillParentData(et);
@@ -705,5 +704,6 @@ public class VacLeaveDetailServiceImpl extends ServiceImpl<VacLeaveDetailMapper,
     }
 
 }
+
 
 

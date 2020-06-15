@@ -118,7 +118,6 @@ public class TrmTrainDemandServiceImpl extends ServiceImpl<TrmTrainDemandMapper,
     public boolean checkKey(TrmTrainDemand et) {
         return (!ObjectUtils.isEmpty(et.getTrmtraindemandid()))&&(!Objects.isNull(this.getById(et.getTrmtraindemandid())));
     }
-
     @Override
     public TrmTrainDemand getDraft(TrmTrainDemand et) {
         fillParentData(et);
@@ -240,5 +239,6 @@ public class TrmTrainDemandServiceImpl extends ServiceImpl<TrmTrainDemandMapper,
     }
 
 }
+
 
 

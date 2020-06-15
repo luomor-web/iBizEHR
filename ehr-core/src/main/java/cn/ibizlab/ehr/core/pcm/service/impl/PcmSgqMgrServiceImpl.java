@@ -96,7 +96,6 @@ public class PcmSgqMgrServiceImpl extends ServiceImpl<PcmSgqMgrMapper, PcmSgqMgr
     public boolean checkKey(PcmSgqMgr et) {
         return (!ObjectUtils.isEmpty(et.getPcmsgqmgrid()))&&(!Objects.isNull(this.getById(et.getPcmsgqmgrid())));
     }
-
     @Override
     @Transactional
     public boolean update(PcmSgqMgr et) {
@@ -241,5 +240,6 @@ public class PcmSgqMgrServiceImpl extends ServiceImpl<PcmSgqMgrMapper, PcmSgqMgr
     }
 
 }
+
 
 

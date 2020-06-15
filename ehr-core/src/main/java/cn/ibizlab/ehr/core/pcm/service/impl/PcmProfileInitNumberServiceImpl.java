@@ -151,7 +151,6 @@ public class PcmProfileInitNumberServiceImpl extends ServiceImpl<PcmProfileInitN
         return (!ObjectUtils.isEmpty(et.getPcmprofileinitnumberid()))&&(!Objects.isNull(this.getById(et.getPcmprofileinitnumberid())));
     }
 
-
 	@Override
     public List<PcmProfileInitNumber> selectByOrmorgid(String orgid) {
         return baseMapper.selectByOrmorgid(orgid);
@@ -237,5 +236,6 @@ public class PcmProfileInitNumberServiceImpl extends ServiceImpl<PcmProfileInitN
     }
 
 }
+
 
 

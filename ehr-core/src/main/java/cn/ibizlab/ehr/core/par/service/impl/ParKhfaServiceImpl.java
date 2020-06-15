@@ -108,7 +108,6 @@ public class ParKhfaServiceImpl extends ServiceImpl<ParKhfaMapper, ParKhfa> impl
     public boolean checkKey(ParKhfa et) {
         return (!ObjectUtils.isEmpty(et.getParkhfaid()))&&(!Objects.isNull(this.getById(et.getParkhfaid())));
     }
-
     @Override
     public ParKhfa getDraft(ParKhfa et) {
         return et;
@@ -201,5 +200,6 @@ public class ParKhfaServiceImpl extends ServiceImpl<ParKhfaMapper, ParKhfa> impl
     }
 
 }
+
 
 

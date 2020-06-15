@@ -99,7 +99,6 @@ public class PimExaminationResultsServiceImpl extends ServiceImpl<PimExamination
     public boolean checkKey(PimExaminationResults et) {
         return (!ObjectUtils.isEmpty(et.getPimexaminationresultsid()))&&(!Objects.isNull(this.getById(et.getPimexaminationresultsid())));
     }
-
     @Override
     @Transactional
     public boolean create(PimExaminationResults et) {
@@ -204,5 +203,6 @@ public class PimExaminationResultsServiceImpl extends ServiceImpl<PimExamination
     }
 
 }
+
 
 

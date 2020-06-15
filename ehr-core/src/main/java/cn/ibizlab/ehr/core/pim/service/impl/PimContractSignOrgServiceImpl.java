@@ -73,7 +73,6 @@ public class PimContractSignOrgServiceImpl extends ServiceImpl<PimContractSignOr
     public boolean checkKey(PimContractSignOrg et) {
         return (!ObjectUtils.isEmpty(et.getContractsignorgid()))&&(!Objects.isNull(this.getById(et.getContractsignorgid())));
     }
-
     @Override
     @Transactional
     public boolean update(PimContractSignOrg et) {
@@ -272,5 +271,6 @@ public class PimContractSignOrgServiceImpl extends ServiceImpl<PimContractSignOr
     }
 
 }
+
 
 

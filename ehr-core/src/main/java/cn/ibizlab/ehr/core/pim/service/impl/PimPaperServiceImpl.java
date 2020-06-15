@@ -151,7 +151,6 @@ public class PimPaperServiceImpl extends ServiceImpl<PimPaperMapper, PimPaper> i
         return (!ObjectUtils.isEmpty(et.getPimpaperid()))&&(!Objects.isNull(this.getById(et.getPimpaperid())));
     }
 
-
 	@Override
     public List<PimPaper> selectByPimpersonid(String pimpersonid) {
         return baseMapper.selectByPimpersonid(pimpersonid);
@@ -258,5 +257,6 @@ public class PimPaperServiceImpl extends ServiceImpl<PimPaperMapper, PimPaper> i
     }
 
 }
+
 
 

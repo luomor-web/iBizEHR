@@ -102,7 +102,6 @@ public class SocWelfareinfomxServiceImpl extends ServiceImpl<SocWelfareinfomxMap
     public boolean checkKey(SocWelfareinfomx et) {
         return (!ObjectUtils.isEmpty(et.getSocwelfareinfomxid()))&&(!Objects.isNull(this.getById(et.getSocwelfareinfomxid())));
     }
-
     @Override
     public SocWelfareinfomx getDraft(SocWelfareinfomx et) {
         fillParentData(et);
@@ -264,5 +263,6 @@ public class SocWelfareinfomxServiceImpl extends ServiceImpl<SocWelfareinfomxMap
     }
 
 }
+
 
 

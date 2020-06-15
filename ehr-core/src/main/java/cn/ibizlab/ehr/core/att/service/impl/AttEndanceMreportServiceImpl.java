@@ -155,7 +155,6 @@ public class AttEndanceMreportServiceImpl extends ServiceImpl<AttEndanceMreportM
     public boolean checkKey(AttEndanceMreport et) {
         return (!ObjectUtils.isEmpty(et.getAttendancemreportid()))&&(!Objects.isNull(this.getById(et.getAttendancemreportid())));
     }
-
     @Override
     @Transactional
     public AttEndanceMreport qR(AttEndanceMreport et) {
@@ -336,5 +335,6 @@ public class AttEndanceMreportServiceImpl extends ServiceImpl<AttEndanceMreportM
     }
 
 }
+
 
 

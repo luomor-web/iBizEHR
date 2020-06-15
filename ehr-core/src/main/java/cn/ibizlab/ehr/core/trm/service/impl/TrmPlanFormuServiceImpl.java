@@ -160,7 +160,6 @@ public class TrmPlanFormuServiceImpl extends ServiceImpl<TrmPlanFormuMapper, Trm
         return (!ObjectUtils.isEmpty(et.getTrmplanformuid()))&&(!Objects.isNull(this.getById(et.getTrmplanformuid())));
     }
 
-
 	@Override
     public List<TrmPlanFormu> selectByOrmorgsectorid(String orgsectorid) {
         return baseMapper.selectByOrmorgsectorid(orgsectorid);
@@ -288,5 +287,6 @@ public class TrmPlanFormuServiceImpl extends ServiceImpl<TrmPlanFormuMapper, Trm
     }
 
 }
+
 
 

@@ -151,7 +151,6 @@ public class TrmStayServiceImpl extends ServiceImpl<TrmStayMapper, TrmStay> impl
         return (!ObjectUtils.isEmpty(et.getTrmstayid()))&&(!Objects.isNull(this.getById(et.getTrmstayid())));
     }
 
-
 	@Override
     public List<TrmStay> selectByTrmtrainaddressid(String trmtrainaddressid) {
         return baseMapper.selectByTrmtrainaddressid(trmtrainaddressid);
@@ -237,5 +236,6 @@ public class TrmStayServiceImpl extends ServiceImpl<TrmStayMapper, TrmStay> impl
     }
 
 }
+
 
 

@@ -113,7 +113,6 @@ public class PimLanguageAbilityServiceImpl extends ServiceImpl<PimLanguageAbilit
     public boolean checkKey(PimLanguageAbility et) {
         return (!ObjectUtils.isEmpty(et.getPimlanguageabilityid()))&&(!Objects.isNull(this.getById(et.getPimlanguageabilityid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -283,5 +282,6 @@ public class PimLanguageAbilityServiceImpl extends ServiceImpl<PimLanguageAbilit
     }
 
 }
+
 
 

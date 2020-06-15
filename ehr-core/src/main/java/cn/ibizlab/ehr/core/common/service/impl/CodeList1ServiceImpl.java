@@ -93,7 +93,6 @@ public class CodeList1ServiceImpl extends ServiceImpl<CodeList1Mapper, CodeList1
     public boolean checkKey(CodeList1 et) {
         return (!ObjectUtils.isEmpty(et.getCodelistid()))&&(!Objects.isNull(this.getById(et.getCodelistid())));
     }
-
     @Override
     @Transactional
     public boolean create(CodeList1 et) {
@@ -220,5 +219,6 @@ public class CodeList1ServiceImpl extends ServiceImpl<CodeList1Mapper, CodeList1
     }
 
 }
+
 
 

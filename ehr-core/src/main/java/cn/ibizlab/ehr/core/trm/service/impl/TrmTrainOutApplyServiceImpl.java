@@ -67,7 +67,6 @@ public class TrmTrainOutApplyServiceImpl extends ServiceImpl<TrmTrainOutApplyMap
     public boolean checkKey(TrmTrainOutApply et) {
         return (!ObjectUtils.isEmpty(et.getTrmtrainoutapplyid()))&&(!Objects.isNull(this.getById(et.getTrmtrainoutapplyid())));
     }
-
     @Override
     @Transactional
     public boolean save(TrmTrainOutApply et) {
@@ -239,5 +238,6 @@ public class TrmTrainOutApplyServiceImpl extends ServiceImpl<TrmTrainOutApplyMap
     }
 
 }
+
 
 

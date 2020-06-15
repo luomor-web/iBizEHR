@@ -57,7 +57,6 @@ public class PimTitleServiceImpl extends ServiceImpl<PimTitleMapper, PimTitle> i
     public boolean checkKey(PimTitle et) {
         return (!ObjectUtils.isEmpty(et.getPimtitleid()))&&(!Objects.isNull(this.getById(et.getPimtitleid())));
     }
-
     @Override
     @Transactional
     public boolean update(PimTitle et) {
@@ -308,5 +307,6 @@ public class PimTitleServiceImpl extends ServiceImpl<PimTitleMapper, PimTitle> i
     }
 
 }
+
 
 

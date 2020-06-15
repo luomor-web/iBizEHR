@@ -54,7 +54,6 @@ public class PimCityServiceImpl extends ServiceImpl<PimCityMapper, PimCity> impl
     public boolean checkKey(PimCity et) {
         return (!ObjectUtils.isEmpty(et.getPimcityid()))&&(!Objects.isNull(this.getById(et.getPimcityid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -204,5 +203,6 @@ public class PimCityServiceImpl extends ServiceImpl<PimCityMapper, PimCity> impl
     }
 
 }
+
 
 

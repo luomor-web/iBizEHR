@@ -128,7 +128,6 @@ public class TrmTrainAgencyServiceImpl extends ServiceImpl<TrmTrainAgencyMapper,
     public boolean checkKey(TrmTrainAgency et) {
         return (!ObjectUtils.isEmpty(et.getTrmtrainagencyid()))&&(!Objects.isNull(this.getById(et.getTrmtrainagencyid())));
     }
-
     @Override
     public TrmTrainAgency getDraft(TrmTrainAgency et) {
         fillParentData(et);
@@ -320,5 +319,6 @@ public class TrmTrainAgencyServiceImpl extends ServiceImpl<TrmTrainAgencyMapper,
     }
 
 }
+
 
 

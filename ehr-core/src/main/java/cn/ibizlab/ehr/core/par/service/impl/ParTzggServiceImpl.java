@@ -135,7 +135,6 @@ public class ParTzggServiceImpl extends ServiceImpl<ParTzggMapper, ParTzgg> impl
     public boolean checkKey(ParTzgg et) {
         return (!ObjectUtils.isEmpty(et.getPartzggid()))&&(!Objects.isNull(this.getById(et.getPartzggid())));
     }
-
     @Override
     @Transactional
     public boolean update(ParTzgg et) {
@@ -210,5 +209,6 @@ public class ParTzggServiceImpl extends ServiceImpl<ParTzggMapper, ParTzgg> impl
     }
 
 }
+
 
 

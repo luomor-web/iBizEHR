@@ -77,7 +77,6 @@ public class PimQualMajorServiceImpl extends ServiceImpl<PimQualMajorMapper, Pim
     public boolean checkKey(PimQualMajor et) {
         return (!ObjectUtils.isEmpty(et.getPimqualmajorid()))&&(!Objects.isNull(this.getById(et.getPimqualmajorid())));
     }
-
     @Override
     @Transactional
     public boolean update(PimQualMajor et) {
@@ -242,5 +241,6 @@ public class PimQualMajorServiceImpl extends ServiceImpl<PimQualMajorMapper, Pim
     }
 
 }
+
 
 

@@ -101,7 +101,6 @@ public class PcmProfileSzyjtjServiceImpl extends ServiceImpl<PcmProfileSzyjtjMap
     public boolean checkKey(PcmProfileSzyjtj et) {
         return (!ObjectUtils.isEmpty(et.getPcmprofileszyjtjid()))&&(!Objects.isNull(this.getById(et.getPcmprofileszyjtjid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -210,5 +209,6 @@ public class PcmProfileSzyjtjServiceImpl extends ServiceImpl<PcmProfileSzyjtjMap
     }
 
 }
+
 
 

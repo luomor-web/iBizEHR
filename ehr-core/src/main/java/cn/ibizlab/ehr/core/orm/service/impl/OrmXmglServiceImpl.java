@@ -70,7 +70,6 @@ public class OrmXmglServiceImpl extends ServiceImpl<OrmXmglMapper, OrmXmgl> impl
     public boolean checkKey(OrmXmgl et) {
         return (!ObjectUtils.isEmpty(et.getOrmxmglid()))&&(!Objects.isNull(this.getById(et.getOrmxmglid())));
     }
-
     @Override
     public OrmXmgl getDraft(OrmXmgl et) {
         return et;
@@ -223,5 +222,6 @@ public class OrmXmglServiceImpl extends ServiceImpl<OrmXmglMapper, OrmXmgl> impl
     }
 
 }
+
 
 

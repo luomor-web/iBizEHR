@@ -300,7 +300,6 @@ public class PcmBdsqdmxServiceImpl extends ServiceImpl<PcmBdsqdmxMapper, PcmBdsq
     public boolean checkKey(PcmBdsqdmx et) {
         return (!ObjectUtils.isEmpty(et.getPcmbdsqdmxid()))&&(!Objects.isNull(this.getById(et.getPcmbdsqdmxid())));
     }
-
     @Override
     @Transactional
     public PcmBdsqdmx tXCZ(PcmBdsqdmx et) {
@@ -670,5 +669,6 @@ public class PcmBdsqdmxServiceImpl extends ServiceImpl<PcmBdsqdmxMapper, PcmBdsq
     }
 
 }
+
 
 

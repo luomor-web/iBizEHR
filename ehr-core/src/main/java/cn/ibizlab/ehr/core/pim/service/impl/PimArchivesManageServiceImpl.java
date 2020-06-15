@@ -127,7 +127,6 @@ public class PimArchivesManageServiceImpl extends ServiceImpl<PimArchivesManageM
     public boolean checkKey(PimArchivesManage et) {
         return (!ObjectUtils.isEmpty(et.getArchivesmanageid()))&&(!Objects.isNull(this.getById(et.getArchivesmanageid())));
     }
-
     @Override
     @Transactional
     public PimArchivesManage get(String key) {
@@ -201,5 +200,6 @@ public class PimArchivesManageServiceImpl extends ServiceImpl<PimArchivesManageM
     }
 
 }
+
 
 

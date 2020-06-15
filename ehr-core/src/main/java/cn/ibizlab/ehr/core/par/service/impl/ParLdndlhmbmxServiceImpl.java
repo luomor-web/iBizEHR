@@ -134,7 +134,6 @@ public class ParLdndlhmbmxServiceImpl extends ServiceImpl<ParLdndlhmbmxMapper, P
     public boolean checkKey(ParLdndlhmbmx et) {
         return (!ObjectUtils.isEmpty(et.getParldndlhmbmxid()))&&(!Objects.isNull(this.getById(et.getParldndlhmbmxid())));
     }
-
     @Override
     @Transactional
     public boolean update(ParLdndlhmbmx et) {
@@ -237,5 +236,6 @@ public class ParLdndlhmbmxServiceImpl extends ServiceImpl<ParLdndlhmbmxMapper, P
     }
 
 }
+
 
 

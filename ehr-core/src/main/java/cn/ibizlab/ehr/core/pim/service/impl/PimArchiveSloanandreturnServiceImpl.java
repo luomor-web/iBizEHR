@@ -118,7 +118,6 @@ public class PimArchiveSloanandreturnServiceImpl extends ServiceImpl<PimArchiveS
     public boolean checkKey(PimArchiveSloanandreturn et) {
         return (!ObjectUtils.isEmpty(et.getPimarchivesloanandreturnid()))&&(!Objects.isNull(this.getById(et.getPimarchivesloanandreturnid())));
     }
-
     @Override
     @Transactional
     public PimArchiveSloanandreturn updateState(PimArchiveSloanandreturn et) {
@@ -324,5 +323,6 @@ public class PimArchiveSloanandreturnServiceImpl extends ServiceImpl<PimArchiveS
     }
 
 }
+
 
 

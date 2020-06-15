@@ -117,7 +117,6 @@ public class ParJxzgpcServiceImpl extends ServiceImpl<ParJxzgpcMapper, ParJxzgpc
     public boolean checkKey(ParJxzgpc et) {
         return (!ObjectUtils.isEmpty(et.getParjxzgpcid()))&&(!Objects.isNull(this.getById(et.getParjxzgpcid())));
     }
-
     @Override
     @Transactional
     public boolean update(ParJxzgpc et) {
@@ -204,5 +203,6 @@ public class ParJxzgpcServiceImpl extends ServiceImpl<ParJxzgpcMapper, ParJxzgpc
     }
 
 }
+
 
 

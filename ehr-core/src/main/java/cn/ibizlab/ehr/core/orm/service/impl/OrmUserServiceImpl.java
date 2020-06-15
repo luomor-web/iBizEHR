@@ -114,7 +114,6 @@ public class OrmUserServiceImpl extends ServiceImpl<OrmUserMapper, OrmUser> impl
     public boolean checkKey(OrmUser et) {
         return (!ObjectUtils.isEmpty(et.getOrguserid()))&&(!Objects.isNull(this.getById(et.getOrguserid())));
     }
-
     @Override
     @Transactional
     public boolean save(OrmUser et) {
@@ -269,5 +268,6 @@ public class OrmUserServiceImpl extends ServiceImpl<OrmUserMapper, OrmUser> impl
     }
 
 }
+
 
 

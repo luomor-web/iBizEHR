@@ -170,7 +170,6 @@ public class AttEndanceRecordServiceImpl extends ServiceImpl<AttEndanceRecordMap
         return (!ObjectUtils.isEmpty(et.getAttendancerecordid()))&&(!Objects.isNull(this.getById(et.getAttendancerecordid())));
     }
 
-
 	@Override
     public List<AttEndanceRecord> selectByAttendancemreportid(String attendancemreportmxid) {
         return baseMapper.selectByAttendancemreportid(attendancemreportmxid);
@@ -323,5 +322,6 @@ public class AttEndanceRecordServiceImpl extends ServiceImpl<AttEndanceRecordMap
     }
 
 }
+
 
 

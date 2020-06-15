@@ -173,7 +173,6 @@ public class AttEndenceSetupServiceImpl extends ServiceImpl<AttEndenceSetupMappe
         return (!ObjectUtils.isEmpty(et.getAttendencesetupid()))&&(!Objects.isNull(this.getById(et.getAttendencesetupid())));
     }
 
-
 	@Override
     public List<AttEndenceSetup> selectByOrmorgid(String orgid) {
         return baseMapper.selectByOrmorgid(orgid);
@@ -327,5 +326,6 @@ public class AttEndenceSetupServiceImpl extends ServiceImpl<AttEndenceSetupMappe
     }
 
 }
+
 
 

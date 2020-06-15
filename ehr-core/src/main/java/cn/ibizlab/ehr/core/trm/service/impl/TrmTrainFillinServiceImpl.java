@@ -94,7 +94,6 @@ public class TrmTrainFillinServiceImpl extends ServiceImpl<TrmTrainFillinMapper,
     public boolean checkKey(TrmTrainFillin et) {
         return (!ObjectUtils.isEmpty(et.getTrmtrainfillinid()))&&(!Objects.isNull(this.getById(et.getTrmtrainfillinid())));
     }
-
     @Override
     @Transactional
     public boolean create(TrmTrainFillin et) {
@@ -313,5 +312,6 @@ public class TrmTrainFillinServiceImpl extends ServiceImpl<TrmTrainFillinMapper,
     }
 
 }
+
 
 

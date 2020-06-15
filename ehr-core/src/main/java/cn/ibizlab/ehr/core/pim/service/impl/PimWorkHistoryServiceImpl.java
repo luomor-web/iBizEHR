@@ -135,7 +135,6 @@ public class PimWorkHistoryServiceImpl extends ServiceImpl<PimWorkHistoryMapper,
     public boolean checkKey(PimWorkHistory et) {
         return (!ObjectUtils.isEmpty(et.getPimworkhistoryid()))&&(!Objects.isNull(this.getById(et.getPimworkhistoryid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -315,5 +314,6 @@ public class PimWorkHistoryServiceImpl extends ServiceImpl<PimWorkHistoryMapper,
     }
 
 }
+
 
 

@@ -147,7 +147,6 @@ public class PcmNoticeServiceImpl extends ServiceImpl<PcmNoticeMapper, PcmNotice
     public boolean checkKey(PcmNotice et) {
         return (!ObjectUtils.isEmpty(et.getPcmnoticeid()))&&(!Objects.isNull(this.getById(et.getPcmnoticeid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -344,5 +343,6 @@ public class PcmNoticeServiceImpl extends ServiceImpl<PcmNoticeMapper, PcmNotice
     }
 
 }
+
 
 

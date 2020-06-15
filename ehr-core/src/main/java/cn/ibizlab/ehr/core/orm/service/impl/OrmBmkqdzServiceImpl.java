@@ -75,7 +75,6 @@ public class OrmBmkqdzServiceImpl extends ServiceImpl<OrmBmkqdzMapper, OrmBmkqdz
     public boolean checkKey(OrmBmkqdz et) {
         return (!ObjectUtils.isEmpty(et.getOrmbmkqdzid()))&&(!Objects.isNull(this.getById(et.getOrmbmkqdzid())));
     }
-
     @Override
     @Transactional
     public boolean save(OrmBmkqdz et) {
@@ -240,5 +239,6 @@ public class OrmBmkqdzServiceImpl extends ServiceImpl<OrmBmkqdzMapper, OrmBmkqdz
     }
 
 }
+
 
 

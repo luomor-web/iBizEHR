@@ -51,7 +51,6 @@ public class AttEnmembwesServiceImpl extends ServiceImpl<AttEnmembwesMapper, Att
     public boolean checkKey(AttEnmembwes et) {
         return (!ObjectUtils.isEmpty(et.getAttenmembwesid()))&&(!Objects.isNull(this.getById(et.getAttenmembwesid())));
     }
-
     @Override
     @Transactional
     public AttEnmembwes get(String key) {
@@ -201,5 +200,6 @@ public class AttEnmembwesServiceImpl extends ServiceImpl<AttEnmembwesMapper, Att
     }
 
 }
+
 
 

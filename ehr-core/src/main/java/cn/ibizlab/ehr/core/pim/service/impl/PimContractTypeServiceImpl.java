@@ -144,7 +144,6 @@ public class PimContractTypeServiceImpl extends ServiceImpl<PimContractTypeMappe
         return (!ObjectUtils.isEmpty(et.getPimcontracttypeid()))&&(!Objects.isNull(this.getById(et.getPimcontracttypeid())));
     }
 
-
 	@Override
     public List<PimContractType> selectByOrmorgid(String orgid) {
         return baseMapper.selectByOrmorgid(orgid);
@@ -214,5 +213,6 @@ public class PimContractTypeServiceImpl extends ServiceImpl<PimContractTypeMappe
     }
 
 }
+
 
 

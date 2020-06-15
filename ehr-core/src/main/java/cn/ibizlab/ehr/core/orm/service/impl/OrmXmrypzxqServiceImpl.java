@@ -83,7 +83,6 @@ public class OrmXmrypzxqServiceImpl extends ServiceImpl<OrmXmrypzxqMapper, OrmXm
     public boolean checkKey(OrmXmrypzxq et) {
         return (!ObjectUtils.isEmpty(et.getOrmxmrypzxqid()))&&(!Objects.isNull(this.getById(et.getOrmxmrypzxqid())));
     }
-
     @Override
     @Transactional
     public OrmXmrypzxq sFBH(OrmXmrypzxq et) {
@@ -552,5 +551,6 @@ public class OrmXmrypzxqServiceImpl extends ServiceImpl<OrmXmrypzxqMapper, OrmXm
     }
 
 }
+
 
 

@@ -108,7 +108,6 @@ public class TrmTrainBuapplyServiceImpl extends ServiceImpl<TrmTrainBuapplyMappe
     public boolean checkKey(TrmTrainBuapply et) {
         return (!ObjectUtils.isEmpty(et.getTrmtrainbuapplyid()))&&(!Objects.isNull(this.getById(et.getTrmtrainbuapplyid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -260,5 +259,6 @@ public class TrmTrainBuapplyServiceImpl extends ServiceImpl<TrmTrainBuapplyMappe
     }
 
 }
+
 
 

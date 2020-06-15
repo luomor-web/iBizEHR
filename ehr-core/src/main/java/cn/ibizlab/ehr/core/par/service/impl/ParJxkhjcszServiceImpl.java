@@ -79,7 +79,6 @@ public class ParJxkhjcszServiceImpl extends ServiceImpl<ParJxkhjcszMapper, ParJx
     public boolean checkKey(ParJxkhjcsz et) {
         return (!ObjectUtils.isEmpty(et.getParjxkhjcszid()))&&(!Objects.isNull(this.getById(et.getParjxkhjcszid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -240,5 +239,6 @@ public class ParJxkhjcszServiceImpl extends ServiceImpl<ParJxkhjcszMapper, ParJx
     }
 
 }
+
 
 

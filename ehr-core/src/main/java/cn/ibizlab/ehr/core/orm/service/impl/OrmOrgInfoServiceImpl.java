@@ -51,7 +51,6 @@ public class OrmOrgInfoServiceImpl extends ServiceImpl<OrmOrgInfoMapper, OrmOrgI
     public boolean checkKey(OrmOrgInfo et) {
         return (!ObjectUtils.isEmpty(et.getOrmorginfoid()))&&(!Objects.isNull(this.getById(et.getOrmorginfoid())));
     }
-
     @Override
     @Transactional
     public boolean save(OrmOrgInfo et) {
@@ -264,5 +263,6 @@ public class OrmOrgInfoServiceImpl extends ServiceImpl<OrmOrgInfoMapper, OrmOrgI
     }
 
 }
+
 
 

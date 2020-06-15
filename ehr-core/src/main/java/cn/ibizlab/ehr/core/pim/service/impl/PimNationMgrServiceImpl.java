@@ -99,7 +99,6 @@ public class PimNationMgrServiceImpl extends ServiceImpl<PimNationMgrMapper, Pim
     public boolean checkKey(PimNationMgr et) {
         return (!ObjectUtils.isEmpty(et.getNationmgrid()))&&(!Objects.isNull(this.getById(et.getNationmgrid())));
     }
-
     @Override
     @Transactional
     public boolean create(PimNationMgr et) {
@@ -201,5 +200,6 @@ public class PimNationMgrServiceImpl extends ServiceImpl<PimNationMgrMapper, Pim
     }
 
 }
+
 
 

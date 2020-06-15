@@ -72,7 +72,6 @@ public class ParPtryndlhmbmxServiceImpl extends ServiceImpl<ParPtryndlhmbmxMappe
     public boolean checkKey(ParPtryndlhmbmx et) {
         return (!ObjectUtils.isEmpty(et.getParptryndlhmbmxid()))&&(!Objects.isNull(this.getById(et.getParptryndlhmbmxid())));
     }
-
     @Override
     @Transactional
     public ParPtryndlhmbmx get(String key) {
@@ -237,5 +236,6 @@ public class ParPtryndlhmbmxServiceImpl extends ServiceImpl<ParPtryndlhmbmxMappe
     }
 
 }
+
 
 

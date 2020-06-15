@@ -60,7 +60,6 @@ public class OrmSignOrgServiceImpl extends ServiceImpl<OrmSignOrgMapper, OrmSign
     public boolean checkKey(OrmSignOrg et) {
         return (!ObjectUtils.isEmpty(et.getOrmsignorgid()))&&(!Objects.isNull(this.getById(et.getOrmsignorgid())));
     }
-
     @Override
     @Transactional
     public boolean update(OrmSignOrg et) {
@@ -228,5 +227,6 @@ public class OrmSignOrgServiceImpl extends ServiceImpl<OrmSignOrgMapper, OrmSign
     }
 
 }
+
 
 

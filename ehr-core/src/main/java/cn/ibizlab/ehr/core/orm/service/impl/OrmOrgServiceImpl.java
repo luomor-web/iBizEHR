@@ -380,7 +380,6 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     public boolean checkKey(OrmOrg et) {
         return (!ObjectUtils.isEmpty(et.getOrgid()))&&(!Objects.isNull(this.getById(et.getOrgid())));
     }
-
     @Override
     @Transactional
     public boolean create(OrmOrg et) {
@@ -687,5 +686,6 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     }
 
 }
+
 
 

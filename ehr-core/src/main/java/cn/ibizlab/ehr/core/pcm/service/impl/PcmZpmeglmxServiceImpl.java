@@ -54,7 +54,6 @@ public class PcmZpmeglmxServiceImpl extends ServiceImpl<PcmZpmeglmxMapper, PcmZp
     public boolean checkKey(PcmZpmeglmx et) {
         return (!ObjectUtils.isEmpty(et.getPcmzpmeglmxid()))&&(!Objects.isNull(this.getById(et.getPcmzpmeglmxid())));
     }
-
     @Override
     @Transactional
     public boolean create(PcmZpmeglmx et) {
@@ -237,5 +236,6 @@ public class PcmZpmeglmxServiceImpl extends ServiceImpl<PcmZpmeglmxMapper, PcmZp
     }
 
 }
+
 
 

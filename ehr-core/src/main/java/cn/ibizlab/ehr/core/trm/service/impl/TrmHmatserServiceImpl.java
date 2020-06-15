@@ -137,7 +137,6 @@ public class TrmHmatserServiceImpl extends ServiceImpl<TrmHmatserMapper, TrmHmat
     public boolean checkKey(TrmHmatser et) {
         return (!ObjectUtils.isEmpty(et.getTrmhmatserid()))&&(!Objects.isNull(this.getById(et.getTrmhmatserid())));
     }
-
     @Override
     public TrmHmatser getDraft(TrmHmatser et) {
         fillParentData(et);
@@ -287,5 +286,6 @@ public class TrmHmatserServiceImpl extends ServiceImpl<TrmHmatserMapper, TrmHmat
     }
 
 }
+
 
 

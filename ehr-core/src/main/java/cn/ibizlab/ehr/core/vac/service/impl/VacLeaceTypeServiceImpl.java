@@ -127,7 +127,6 @@ public class VacLeaceTypeServiceImpl extends ServiceImpl<VacLeaceTypeMapper, Vac
     public boolean checkKey(VacLeaceType et) {
         return (!ObjectUtils.isEmpty(et.getVacleacetypeid()))&&(!Objects.isNull(this.getById(et.getVacleacetypeid())));
     }
-
     @Override
     @Transactional
     public VacLeaceType get(String key) {
@@ -201,5 +200,6 @@ public class VacLeaceTypeServiceImpl extends ServiceImpl<VacLeaceTypeMapper, Vac
     }
 
 }
+
 
 

@@ -154,7 +154,6 @@ public class OrmDutyServiceImpl extends ServiceImpl<OrmDutyMapper, OrmDuty> impl
     public boolean checkKey(OrmDuty et) {
         return (!ObjectUtils.isEmpty(et.getOrmdutyid()))&&(!Objects.isNull(this.getById(et.getOrmdutyid())));
     }
-
     @Override
     @Transactional
     public OrmDuty get(String key) {
@@ -304,5 +303,6 @@ public class OrmDutyServiceImpl extends ServiceImpl<OrmDutyMapper, OrmDuty> impl
     }
 
 }
+
 
 

@@ -154,7 +154,6 @@ public class PcmGbhmcServiceImpl extends ServiceImpl<PcmGbhmcMapper, PcmGbhmc> i
     public boolean checkKey(PcmGbhmc et) {
         return (!ObjectUtils.isEmpty(et.getPimpersonid()))&&(!Objects.isNull(this.getById(et.getPimpersonid())));
     }
-
     @Override
     @Transactional
     public PcmGbhmc sGBTG(PcmGbhmc et) {
@@ -249,5 +248,6 @@ public class PcmGbhmcServiceImpl extends ServiceImpl<PcmGbhmcMapper, PcmGbhmc> i
     }
 
 }
+
 
 

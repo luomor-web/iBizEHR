@@ -151,7 +151,6 @@ public class OrmOrgdzServiceImpl extends ServiceImpl<OrmOrgdzMapper, OrmOrgdz> i
         return (!ObjectUtils.isEmpty(et.getOrmorgdzid()))&&(!Objects.isNull(this.getById(et.getOrmorgdzid())));
     }
 
-
 	@Override
     public List<OrmOrgdz> selectByOrmorgid(String orgid) {
         return baseMapper.selectByOrmorgid(orgid);
@@ -237,5 +236,6 @@ public class OrmOrgdzServiceImpl extends ServiceImpl<OrmOrgdzMapper, OrmOrgdz> i
     }
 
 }
+
 
 

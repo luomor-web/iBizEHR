@@ -117,7 +117,6 @@ public class ParJxmtfkServiceImpl extends ServiceImpl<ParJxmtfkMapper, ParJxmtfk
     public boolean checkKey(ParJxmtfk et) {
         return (!ObjectUtils.isEmpty(et.getParjxmtfkid()))&&(!Objects.isNull(this.getById(et.getParjxmtfkid())));
     }
-
     @Override
     @Transactional
     public boolean save(ParJxmtfk et) {
@@ -239,5 +238,6 @@ public class ParJxmtfkServiceImpl extends ServiceImpl<ParJxmtfkMapper, ParJxmtfk
     }
 
 }
+
 
 

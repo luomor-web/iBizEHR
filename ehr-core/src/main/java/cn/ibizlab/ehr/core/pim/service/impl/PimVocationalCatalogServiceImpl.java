@@ -103,7 +103,6 @@ public class PimVocationalCatalogServiceImpl extends ServiceImpl<PimVocationalCa
     public boolean checkKey(PimVocationalCatalog et) {
         return (!ObjectUtils.isEmpty(et.getPimvocationalcatalogid()))&&(!Objects.isNull(this.getById(et.getPimvocationalcatalogid())));
     }
-
     @Override
     @Transactional
     public boolean update(PimVocationalCatalog et) {
@@ -204,5 +203,6 @@ public class PimVocationalCatalogServiceImpl extends ServiceImpl<PimVocationalCa
     }
 
 }
+
 
 

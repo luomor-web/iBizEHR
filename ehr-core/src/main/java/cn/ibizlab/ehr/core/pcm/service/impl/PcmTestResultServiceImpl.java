@@ -60,7 +60,6 @@ public class PcmTestResultServiceImpl extends ServiceImpl<PcmTestResultMapper, P
     public boolean checkKey(PcmTestResult et) {
         return (!ObjectUtils.isEmpty(et.getTestresultid()))&&(!Objects.isNull(this.getById(et.getTestresultid())));
     }
-
     @Override
     @Transactional
     public boolean create(PcmTestResult et) {
@@ -238,5 +237,6 @@ public class PcmTestResultServiceImpl extends ServiceImpl<PcmTestResultMapper, P
     }
 
 }
+
 
 

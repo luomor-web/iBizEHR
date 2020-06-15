@@ -77,7 +77,6 @@ public class PcmYpzjkxxServiceImpl extends ServiceImpl<PcmYpzjkxxMapper, PcmYpzj
     public boolean checkKey(PcmYpzjkxx et) {
         return (!ObjectUtils.isEmpty(et.getPcmypzjkxxid()))&&(!Objects.isNull(this.getById(et.getPcmypzjkxxid())));
     }
-
     @Override
     @Transactional
     public PcmYpzjkxx get(String key) {
@@ -201,5 +200,6 @@ public class PcmYpzjkxxServiceImpl extends ServiceImpl<PcmYpzjkxxMapper, PcmYpzj
     }
 
 }
+
 
 

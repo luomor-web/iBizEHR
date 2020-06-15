@@ -123,7 +123,6 @@ public class PimTitleCatalogueServiceImpl extends ServiceImpl<PimTitleCatalogueM
     public boolean checkKey(PimTitleCatalogue et) {
         return (!ObjectUtils.isEmpty(et.getPimtitlecatalogueid()))&&(!Objects.isNull(this.getById(et.getPimtitlecatalogueid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -247,5 +246,6 @@ public class PimTitleCatalogueServiceImpl extends ServiceImpl<PimTitleCatalogueM
     }
 
 }
+
 
 

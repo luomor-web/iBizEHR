@@ -102,7 +102,6 @@ public class PimQualTypeServiceImpl extends ServiceImpl<PimQualTypeMapper, PimQu
     public boolean checkKey(PimQualType et) {
         return (!ObjectUtils.isEmpty(et.getPimqualtypeid()))&&(!Objects.isNull(this.getById(et.getPimqualtypeid())));
     }
-
     @Override
     @Transactional
     public boolean update(PimQualType et) {
@@ -207,5 +206,6 @@ public class PimQualTypeServiceImpl extends ServiceImpl<PimQualTypeMapper, PimQu
     }
 
 }
+
 
 

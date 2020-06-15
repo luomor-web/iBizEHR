@@ -131,7 +131,6 @@ public class TrmCouarrangeServiceImpl extends ServiceImpl<TrmCouarrangeMapper, T
     public boolean checkKey(TrmCouarrange et) {
         return (!ObjectUtils.isEmpty(et.getTrmcouarrangeid()))&&(!Objects.isNull(this.getById(et.getTrmcouarrangeid())));
     }
-
     @Override
     @Transactional
     public boolean save(TrmCouarrange et) {
@@ -447,5 +446,6 @@ public class TrmCouarrangeServiceImpl extends ServiceImpl<TrmCouarrangeMapper, T
     }
 
 }
+
 
 

@@ -171,7 +171,6 @@ public class PimExitandentryServiceImpl extends ServiceImpl<PimExitandentryMappe
     public boolean checkKey(PimExitandentry et) {
         return (!ObjectUtils.isEmpty(et.getPimexitandentryid()))&&(!Objects.isNull(this.getById(et.getPimexitandentryid())));
     }
-
     @Override
     @Transactional
     public PimExitandentry start(PimExitandentry et) {
@@ -342,5 +341,6 @@ public class PimExitandentryServiceImpl extends ServiceImpl<PimExitandentryMappe
     }
 
 }
+
 
 

@@ -51,7 +51,6 @@ public class ParExamContentServiceImpl extends ServiceImpl<ParExamContentMapper,
     public boolean checkKey(ParExamContent et) {
         return (!ObjectUtils.isEmpty(et.getParexamcontentid()))&&(!Objects.isNull(this.getById(et.getParexamcontentid())));
     }
-
     @Override
     @Transactional
     public ParExamContent get(String key) {
@@ -201,5 +200,6 @@ public class ParExamContentServiceImpl extends ServiceImpl<ParExamContentMapper,
     }
 
 }
+
 
 

@@ -138,7 +138,6 @@ public class PcmWorkResumeServiceImpl extends ServiceImpl<PcmWorkResumeMapper, P
     public boolean checkKey(PcmWorkResume et) {
         return (!ObjectUtils.isEmpty(et.getPcmworkresumeid()))&&(!Objects.isNull(this.getById(et.getPcmworkresumeid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -238,5 +237,6 @@ public class PcmWorkResumeServiceImpl extends ServiceImpl<PcmWorkResumeMapper, P
     }
 
 }
+
 
 

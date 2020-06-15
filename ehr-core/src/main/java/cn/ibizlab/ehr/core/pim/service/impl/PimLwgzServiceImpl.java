@@ -142,7 +142,6 @@ public class PimLwgzServiceImpl extends ServiceImpl<PimLwgzMapper, PimLwgz> impl
     }
 
 
-
     /**
      * 查询集合 DEFAULT
      */
@@ -201,5 +200,6 @@ public class PimLwgzServiceImpl extends ServiceImpl<PimLwgzMapper, PimLwgz> impl
     }
 
 }
+
 
 

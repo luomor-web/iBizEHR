@@ -86,7 +86,6 @@ public class VacSituationServiceImpl extends ServiceImpl<VacSituationMapper, Vac
     public boolean checkKey(VacSituation et) {
         return (!ObjectUtils.isEmpty(et.getVacsituationid()))&&(!Objects.isNull(this.getById(et.getVacsituationid())));
     }
-
     @Override
     public VacSituation getDraft(VacSituation et) {
         fillParentData(et);
@@ -237,5 +236,6 @@ public class VacSituationServiceImpl extends ServiceImpl<VacSituationMapper, Vac
     }
 
 }
+
 
 

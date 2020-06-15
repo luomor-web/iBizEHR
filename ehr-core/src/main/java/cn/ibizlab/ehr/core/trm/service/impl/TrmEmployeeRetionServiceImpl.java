@@ -146,7 +146,6 @@ public class TrmEmployeeRetionServiceImpl extends ServiceImpl<TrmEmployeeRetionM
     public boolean checkKey(TrmEmployeeRetion et) {
         return (!ObjectUtils.isEmpty(et.getTrmemployretionid()))&&(!Objects.isNull(this.getById(et.getTrmemployretionid())));
     }
-
     @Override
     @Transactional
     public TrmEmployeeRetion get(String key) {
@@ -310,5 +309,6 @@ public class TrmEmployeeRetionServiceImpl extends ServiceImpl<TrmEmployeeRetionM
     }
 
 }
+
 
 

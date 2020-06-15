@@ -82,7 +82,6 @@ public class VacSynjcxServiceImpl extends ServiceImpl<VacSynjcxMapper, VacSynjcx
     public boolean checkKey(VacSynjcx et) {
         return (!ObjectUtils.isEmpty(et.getVacsynjcxid()))&&(!Objects.isNull(this.getById(et.getVacsynjcxid())));
     }
-
     @Override
     @Transactional
     public VacSynjcx get(String key) {
@@ -249,5 +248,6 @@ public class VacSynjcxServiceImpl extends ServiceImpl<VacSynjcxMapper, VacSynjcx
     }
 
 }
+
 
 

@@ -76,7 +76,6 @@ public class TrmAgencyRecordServiceImpl extends ServiceImpl<TrmAgencyRecordMappe
     public boolean checkKey(TrmAgencyRecord et) {
         return (!ObjectUtils.isEmpty(et.getTrmagencyrecordid()))&&(!Objects.isNull(this.getById(et.getTrmagencyrecordid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -240,5 +239,6 @@ public class TrmAgencyRecordServiceImpl extends ServiceImpl<TrmAgencyRecordMappe
     }
 
 }
+
 
 

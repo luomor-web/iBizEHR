@@ -151,7 +151,6 @@ public class OrmQyglServiceImpl extends ServiceImpl<OrmQyglMapper, OrmQygl> impl
         return (!ObjectUtils.isEmpty(et.getOrmqyglid()))&&(!Objects.isNull(this.getById(et.getOrmqyglid())));
     }
 
-
 	@Override
     public List<OrmQygl> selectByOrmorgid(String orgid) {
         return baseMapper.selectByOrmorgid(orgid);
@@ -237,5 +236,6 @@ public class OrmQyglServiceImpl extends ServiceImpl<OrmQyglMapper, OrmQygl> impl
     }
 
 }
+
 
 

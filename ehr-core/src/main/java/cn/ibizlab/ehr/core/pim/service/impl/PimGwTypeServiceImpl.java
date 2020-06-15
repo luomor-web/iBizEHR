@@ -112,7 +112,6 @@ public class PimGwTypeServiceImpl extends ServiceImpl<PimGwTypeMapper, PimGwType
     public boolean checkKey(PimGwType et) {
         return (!ObjectUtils.isEmpty(et.getPimgwtypeid()))&&(!Objects.isNull(this.getById(et.getPimgwtypeid())));
     }
-
     @Override
     @Transactional
     public boolean update(PimGwType et) {
@@ -201,5 +200,6 @@ public class PimGwTypeServiceImpl extends ServiceImpl<PimGwTypeMapper, PimGwType
     }
 
 }
+
 
 

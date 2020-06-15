@@ -127,7 +127,6 @@ public class PcmXygzzsqServiceImpl extends ServiceImpl<PcmXygzzsqMapper, PcmXygz
     public boolean checkKey(PcmXygzzsq et) {
         return (!ObjectUtils.isEmpty(et.getPcmxygzzsqid()))&&(!Objects.isNull(this.getById(et.getPcmxygzzsqid())));
     }
-
     @Override
     public PcmXygzzsq getDraft(PcmXygzzsq et) {
         return et;
@@ -207,5 +206,6 @@ public class PcmXygzzsqServiceImpl extends ServiceImpl<PcmXygzzsqMapper, PcmXygz
     }
 
 }
+
 
 

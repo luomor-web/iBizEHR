@@ -124,7 +124,6 @@ public class SalItemServiceImpl extends ServiceImpl<SalItemMapper, SalItem> impl
     public boolean checkKey(SalItem et) {
         return (!ObjectUtils.isEmpty(et.getSalitemid()))&&(!Objects.isNull(this.getById(et.getSalitemid())));
     }
-
     @Override
     @Transactional
     public boolean update(SalItem et) {
@@ -243,5 +242,6 @@ public class SalItemServiceImpl extends ServiceImpl<SalItemMapper, SalItem> impl
     }
 
 }
+
 
 

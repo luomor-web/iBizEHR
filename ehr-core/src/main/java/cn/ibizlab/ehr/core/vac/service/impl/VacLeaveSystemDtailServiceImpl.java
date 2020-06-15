@@ -70,7 +70,6 @@ public class VacLeaveSystemDtailServiceImpl extends ServiceImpl<VacLeaveSystemDt
     public boolean checkKey(VacLeaveSystemDtail et) {
         return (!ObjectUtils.isEmpty(et.getVacleavesystemdetailid()))&&(!Objects.isNull(this.getById(et.getVacleavesystemdetailid())));
     }
-
     @Override
     @Transactional
     public boolean save(VacLeaveSystemDtail et) {
@@ -237,5 +236,6 @@ public class VacLeaveSystemDtailServiceImpl extends ServiceImpl<VacLeaveSystemDt
     }
 
 }
+
 
 

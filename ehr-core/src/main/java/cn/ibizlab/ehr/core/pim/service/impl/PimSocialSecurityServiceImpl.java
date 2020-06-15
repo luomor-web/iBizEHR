@@ -66,7 +66,6 @@ public class PimSocialSecurityServiceImpl extends ServiceImpl<PimSocialSecurityM
     public boolean checkKey(PimSocialSecurity et) {
         return (!ObjectUtils.isEmpty(et.getPimsocialsecurityid()))&&(!Objects.isNull(this.getById(et.getPimsocialsecurityid())));
     }
-
     @Override
     @Transactional
     public PimSocialSecurity get(String key) {
@@ -232,5 +231,6 @@ public class PimSocialSecurityServiceImpl extends ServiceImpl<PimSocialSecurityM
     }
 
 }
+
 
 

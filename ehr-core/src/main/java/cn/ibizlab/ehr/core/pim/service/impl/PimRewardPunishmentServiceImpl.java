@@ -54,7 +54,6 @@ public class PimRewardPunishmentServiceImpl extends ServiceImpl<PimRewardPunishm
     public boolean checkKey(PimRewardPunishment et) {
         return (!ObjectUtils.isEmpty(et.getPimrewardpunishmentid()))&&(!Objects.isNull(this.getById(et.getPimrewardpunishmentid())));
     }
-
     @Override
     @Transactional
     public PimRewardPunishment get(String key) {
@@ -267,5 +266,6 @@ public class PimRewardPunishmentServiceImpl extends ServiceImpl<PimRewardPunishm
     }
 
 }
+
 
 

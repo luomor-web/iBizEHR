@@ -54,7 +54,6 @@ public class VacInitnxjServiceImpl extends ServiceImpl<VacInitnxjMapper, VacInit
     public boolean checkKey(VacInitnxj et) {
         return (!ObjectUtils.isEmpty(et.getVacinitnxjid()))&&(!Objects.isNull(this.getById(et.getVacinitnxjid())));
     }
-
     @Override
     @Transactional
     public boolean create(VacInitnxj et) {
@@ -237,5 +236,6 @@ public class VacInitnxjServiceImpl extends ServiceImpl<VacInitnxjMapper, VacInit
     }
 
 }
+
 
 

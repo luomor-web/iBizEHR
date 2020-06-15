@@ -97,7 +97,6 @@ public class VacSituationDetailServiceImpl extends ServiceImpl<VacSituationDetai
     public boolean checkKey(VacSituationDetail et) {
         return (!ObjectUtils.isEmpty(et.getVacsituationdetailid()))&&(!Objects.isNull(this.getById(et.getVacsituationdetailid())));
     }
-
     @Override
     @Transactional
     public boolean save(VacSituationDetail et) {
@@ -201,5 +200,6 @@ public class VacSituationDetailServiceImpl extends ServiceImpl<VacSituationDetai
     }
 
 }
+
 
 

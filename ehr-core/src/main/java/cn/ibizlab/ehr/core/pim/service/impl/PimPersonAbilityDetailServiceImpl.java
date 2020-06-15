@@ -54,7 +54,6 @@ public class PimPersonAbilityDetailServiceImpl extends ServiceImpl<PimPersonAbil
     public boolean checkKey(PimPersonAbilityDetail et) {
         return (!ObjectUtils.isEmpty(et.getPimpersonabilitydetailid()))&&(!Objects.isNull(this.getById(et.getPimpersonabilitydetailid())));
     }
-
     @Override
     @Transactional
     public boolean create(PimPersonAbilityDetail et) {
@@ -214,5 +213,6 @@ public class PimPersonAbilityDetailServiceImpl extends ServiceImpl<PimPersonAbil
     }
 
 }
+
 
 

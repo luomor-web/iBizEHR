@@ -154,7 +154,6 @@ public class SalLogServiceImpl extends ServiceImpl<SalLogMapper, SalLog> impleme
         return (!ObjectUtils.isEmpty(et.getSallogid()))&&(!Objects.isNull(this.getById(et.getSallogid())));
     }
 
-
 	@Override
     public List<SalLog> selectBySalsalarydetailid(String salsalarydetailid) {
         return baseMapper.selectBySalsalarydetailid(salsalarydetailid);
@@ -260,5 +259,6 @@ public class SalLogServiceImpl extends ServiceImpl<SalLogMapper, SalLog> impleme
     }
 
 }
+
 
 

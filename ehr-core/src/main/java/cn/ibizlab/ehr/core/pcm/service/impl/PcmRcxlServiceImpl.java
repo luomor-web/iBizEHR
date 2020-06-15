@@ -119,7 +119,6 @@ public class PcmRcxlServiceImpl extends ServiceImpl<PcmRcxlMapper, PcmRcxl> impl
     public boolean checkKey(PcmRcxl et) {
         return (!ObjectUtils.isEmpty(et.getPcmrcxlid()))&&(!Objects.isNull(this.getById(et.getPcmrcxlid())));
     }
-
     @Override
     @Transactional
     public boolean save(PcmRcxl et) {
@@ -275,5 +274,6 @@ public class PcmRcxlServiceImpl extends ServiceImpl<PcmRcxlMapper, PcmRcxl> impl
     }
 
 }
+
 
 

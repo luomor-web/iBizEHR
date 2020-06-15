@@ -54,7 +54,6 @@ public class OrmQybzwhServiceImpl extends ServiceImpl<OrmQybzwhMapper, OrmQybzwh
     public boolean checkKey(OrmQybzwh et) {
         return (!ObjectUtils.isEmpty(et.getOrmqybzwhid()))&&(!Objects.isNull(this.getById(et.getOrmqybzwhid())));
     }
-
     @Override
     @Transactional
     public OrmQybzwh get(String key) {
@@ -237,5 +236,6 @@ public class OrmQybzwhServiceImpl extends ServiceImpl<OrmQybzwhMapper, OrmQybzwh
     }
 
 }
+
 
 

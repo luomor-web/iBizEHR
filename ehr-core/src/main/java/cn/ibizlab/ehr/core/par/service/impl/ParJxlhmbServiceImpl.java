@@ -96,7 +96,6 @@ public class ParJxlhmbServiceImpl extends ServiceImpl<ParJxlhmbMapper, ParJxlhmb
     public boolean checkKey(ParJxlhmb et) {
         return (!ObjectUtils.isEmpty(et.getParjxlhmbid()))&&(!Objects.isNull(this.getById(et.getParjxlhmbid())));
     }
-
     @Override
     @Transactional
     public ParJxlhmb get(String key) {
@@ -242,5 +241,6 @@ public class ParJxlhmbServiceImpl extends ServiceImpl<ParJxlhmbMapper, ParJxlhmb
     }
 
 }
+
 
 

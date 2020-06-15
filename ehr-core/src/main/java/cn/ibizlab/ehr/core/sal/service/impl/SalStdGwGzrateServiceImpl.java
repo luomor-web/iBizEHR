@@ -54,7 +54,6 @@ public class SalStdGwGzrateServiceImpl extends ServiceImpl<SalStdGwGzrateMapper,
     public boolean checkKey(SalStdGwGzrate et) {
         return (!ObjectUtils.isEmpty(et.getSalstdgwgzrateid()))&&(!Objects.isNull(this.getById(et.getSalstdgwgzrateid())));
     }
-
     @Override
     @Transactional
     public SalStdGwGzrate get(String key) {
@@ -237,5 +236,6 @@ public class SalStdGwGzrateServiceImpl extends ServiceImpl<SalStdGwGzrateMapper,
     }
 
 }
+
 
 

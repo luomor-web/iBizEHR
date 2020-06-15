@@ -79,7 +79,6 @@ public class PcmSchoolOfficeServiceImpl extends ServiceImpl<PcmSchoolOfficeMappe
     public boolean checkKey(PcmSchoolOffice et) {
         return (!ObjectUtils.isEmpty(et.getPcmschoolofficeid()))&&(!Objects.isNull(this.getById(et.getPcmschoolofficeid())));
     }
-
     @Override
     public PcmSchoolOffice getDraft(PcmSchoolOffice et) {
         fillParentData(et);
@@ -238,5 +237,6 @@ public class PcmSchoolOfficeServiceImpl extends ServiceImpl<PcmSchoolOfficeMappe
     }
 
 }
+
 
 

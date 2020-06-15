@@ -166,7 +166,6 @@ public class TrmTrainAddressServiceImpl extends ServiceImpl<TrmTrainAddressMappe
         return (!ObjectUtils.isEmpty(et.getTrmtrainaddressid()))&&(!Objects.isNull(this.getById(et.getTrmtrainaddressid())));
     }
 
-
 	@Override
     public List<TrmTrainAddress> selectByOrmorgid(String orgid) {
         return baseMapper.selectByOrmorgid(orgid);
@@ -253,5 +252,6 @@ public class TrmTrainAddressServiceImpl extends ServiceImpl<TrmTrainAddressMappe
     }
 
 }
+
 
 

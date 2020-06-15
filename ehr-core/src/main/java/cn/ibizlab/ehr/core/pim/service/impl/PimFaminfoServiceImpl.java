@@ -54,7 +54,6 @@ public class PimFaminfoServiceImpl extends ServiceImpl<PimFaminfoMapper, PimFami
     public boolean checkKey(PimFaminfo et) {
         return (!ObjectUtils.isEmpty(et.getPimfaminfoid()))&&(!Objects.isNull(this.getById(et.getPimfaminfoid())));
     }
-
     @Override
     @Transactional
     public PimFaminfo updateInfo(PimFaminfo et) {
@@ -308,5 +307,6 @@ public class PimFaminfoServiceImpl extends ServiceImpl<PimFaminfoMapper, PimFami
     }
 
 }
+
 
 

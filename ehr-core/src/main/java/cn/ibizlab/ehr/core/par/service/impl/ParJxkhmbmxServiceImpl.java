@@ -70,7 +70,6 @@ public class ParJxkhmbmxServiceImpl extends ServiceImpl<ParJxkhmbmxMapper, ParJx
     public boolean checkKey(ParJxkhmbmx et) {
         return (!ObjectUtils.isEmpty(et.getParjxkhmbmxid()))&&(!Objects.isNull(this.getById(et.getParjxkhmbmxid())));
     }
-
     @Override
     public ParJxkhmbmx getDraft(ParJxkhmbmx et) {
         fillParentData(et);
@@ -237,5 +236,6 @@ public class ParJxkhmbmxServiceImpl extends ServiceImpl<ParJxkhmbmxMapper, ParJx
     }
 
 }
+
 
 

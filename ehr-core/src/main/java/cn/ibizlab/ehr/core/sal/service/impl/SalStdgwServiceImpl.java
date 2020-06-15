@@ -70,7 +70,6 @@ public class SalStdgwServiceImpl extends ServiceImpl<SalStdgwMapper, SalStdgw> i
     public boolean checkKey(SalStdgw et) {
         return (!ObjectUtils.isEmpty(et.getSalstdgwid()))&&(!Objects.isNull(this.getById(et.getSalstdgwid())));
     }
-
     @Override
     @Transactional
     public boolean remove(String key) {
@@ -237,5 +236,6 @@ public class SalStdgwServiceImpl extends ServiceImpl<SalStdgwMapper, SalStdgw> i
     }
 
 }
+
 
 

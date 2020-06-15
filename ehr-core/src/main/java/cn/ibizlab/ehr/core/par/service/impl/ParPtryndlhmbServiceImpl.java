@@ -154,7 +154,6 @@ public class ParPtryndlhmbServiceImpl extends ServiceImpl<ParPtryndlhmbMapper, P
         return (!ObjectUtils.isEmpty(et.getParptryndlhmbid()))&&(!Objects.isNull(this.getById(et.getParptryndlhmbid())));
     }
 
-
 	@Override
     public List<ParPtryndlhmb> selectByPimpersonid(String pimpersonid) {
         return baseMapper.selectByPimpersonid(pimpersonid);
@@ -240,5 +239,6 @@ public class ParPtryndlhmbServiceImpl extends ServiceImpl<ParPtryndlhmbMapper, P
     }
 
 }
+
 
 

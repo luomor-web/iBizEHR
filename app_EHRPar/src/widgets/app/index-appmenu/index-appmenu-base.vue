@@ -62,41 +62,41 @@ export default class IndexBase extends AppMenusCtrlBase {
     protected click(item: any) {
         if (item) {
             switch (item.appfunctag) {
-                case '_7': 
-                    this.click_7(item);
+                case 'Auto68': 
+                    this.clickAuto68(item);
                     return;
-                case '_8': 
-                    this.click_8(item);
+                case 'Auto70': 
+                    this.clickAuto70(item);
                     return;
-                case '_12': 
-                    this.click_12(item);
+                case 'Auto78': 
+                    this.clickAuto78(item);
                     return;
-                case '_13': 
-                    this.click_13(item);
+                case 'Auto79': 
+                    this.clickAuto79(item);
                     return;
-                case '_3': 
-                    this.click_3(item);
+                case 'Auto50': 
+                    this.clickAuto50(item);
                     return;
-                case '_9': 
-                    this.click_9(item);
+                case 'Auto72': 
+                    this.clickAuto72(item);
                     return;
-                case '_5': 
-                    this.click_5(item);
+                case 'Auto64': 
+                    this.clickAuto64(item);
                     return;
-                case '_14': 
-                    this.click_14(item);
+                case 'Auto80': 
+                    this.clickAuto80(item);
                     return;
-                case '_10': 
-                    this.click_10(item);
+                case 'Auto73': 
+                    this.clickAuto73(item);
                     return;
-                case '_6': 
-                    this.click_6(item);
+                case 'Auto67': 
+                    this.clickAuto67(item);
                     return;
-                case '_4': 
-                    this.click_4(item);
+                case 'Auto63': 
+                    this.clickAuto63(item);
                     return;
-                case '_11': 
-                    this.click_11(item);
+                case 'Auto75': 
+                    this.clickAuto75(item);
                     return;
                 default:
                     console.warn('未指定应用功能');
@@ -110,7 +110,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_7(item: any = {}) {
+    public clickAuto68(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -128,7 +128,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_8(item: any = {}) {
+    public clickAuto70(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -146,7 +146,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_12(item: any = {}) {
+    public clickAuto78(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -164,7 +164,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_13(item: any = {}) {
+    public clickAuto79(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -182,7 +182,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_3(item: any = {}) {
+    public clickAuto50(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -200,7 +200,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_9(item: any = {}) {
+    public clickAuto72(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -218,7 +218,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_5(item: any = {}) {
+    public clickAuto64(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -236,7 +236,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_14(item: any = {}) {
+    public clickAuto80(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -254,7 +254,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_10(item: any = {}) {
+    public clickAuto73(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -272,7 +272,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_6(item: any = {}) {
+    public clickAuto67(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -290,7 +290,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_4(item: any = {}) {
+    public clickAuto63(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -308,7 +308,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_11(item: any = {}) {
+    public clickAuto75(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];

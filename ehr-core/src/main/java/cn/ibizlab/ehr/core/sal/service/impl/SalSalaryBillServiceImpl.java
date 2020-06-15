@@ -72,7 +72,6 @@ public class SalSalaryBillServiceImpl extends ServiceImpl<SalSalaryBillMapper, S
     public boolean checkKey(SalSalaryBill et) {
         return (!ObjectUtils.isEmpty(et.getSalsalarybillid()))&&(!Objects.isNull(this.getById(et.getSalsalarybillid())));
     }
-
     @Override
     @Transactional
     public boolean create(SalSalaryBill et) {
@@ -263,5 +262,6 @@ public class SalSalaryBillServiceImpl extends ServiceImpl<SalSalaryBillMapper, S
     }
 
 }
+
 
 
