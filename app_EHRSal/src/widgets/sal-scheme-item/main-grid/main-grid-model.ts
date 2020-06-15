@@ -27,11 +27,6 @@ export default class MainModel {
     }else{
 		  return [
         {
-          name: 'xh',
-          prop: 'xh',
-          dataType: 'INT',
-        },
-        {
           name: 'memo',
           prop: 'memo',
           dataType: 'LONGTEXT_1000',
@@ -75,6 +70,11 @@ export default class MainModel {
           name: 'sitemadd',
           prop: 'sitemadd',
           dataType: 'SSCODELIST',
+        },
+        {
+          name: 'xh2',
+          prop: 'xh2',
+          dataType: 'PICKUPDATA',
         },
         {
           name: 'salrulename',

@@ -20,15 +20,15 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('xh')">
-                <el-table-column show-overflow-tooltip :prop="'xh'" :label="$t('entities.salschemeitem.main_grid.columns.xh')" :width="150"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('xh2')">
+                <el-table-column show-overflow-tooltip :prop="'xh2'" :label="$t('entities.salschemeitem.main_grid.columns.xh2')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.salschemeitem.main_grid.columns.xh')}}
+                        {{$t('entities.salschemeitem.main_grid.columns.xh2')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.xh}}</span>
+                        <span>{{row.xh2}}</span>
                     </template>
                 </el-table-column>
             </template>
@@ -413,7 +413,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof Main
      */
-    public minorSortDir: string = '';
+    public minorSortDir: string = 'ASC';
 
     /**
      * 排序字段
@@ -421,7 +421,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof Main
      */
-    public minorSortPSDEF: string = '';
+    public minorSortPSDEF: string = 'xh2';
 
     /**
      * 分页条数
@@ -585,11 +585,11 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public allColumns: any[] = [
         {
-            name: 'xh',
+            name: 'xh2',
             label: '排序号',
-            langtag: 'entities.salschemeitem.main_grid.columns.xh',
+            langtag: 'entities.salschemeitem.main_grid.columns.xh2',
             show: true,
-            util: 'px'
+            util: 'PX'
         },
         {
             name: 'salitemname',

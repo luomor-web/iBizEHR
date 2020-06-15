@@ -20,6 +20,7 @@ export default {
     salschemeid: '工资单标识',
     salruleid: '薪酬规则标识',
     salitemid: '薪酬要素项标识',
+    xh2: '排序号',
   },
 	views: {
 		pickupview: {
@@ -70,7 +71,7 @@ export default {
 	},
 	main_grid: {
 		columns: {
-			xh: "排序号",
+			xh2: "排序号",
 			salitemname: "要素项",
 			sitemtype: "要素项类型",
 			salrulename: "薪酬规则",
