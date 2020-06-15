@@ -61,6 +61,9 @@ export default {
     EhrCodeList0015: {
         empty: '',
     },
+    EhrCodeList0242: {
+        empty: '',
+    },
     EhrCodeList0064: {
         '10': '公司领导类',
         '20': '部门领导类',
@@ -69,9 +72,9 @@ export default {
         empty: '',
     },
     EhrCodeList0209: {
-        '10': '部门负责人考评',
+        '10': '直属领导考评',
         '20': '分管领导考评',
-        '30': '集中述职评审',
+        '30': '总经理考评',
         empty: '',
     },
     EhrCodeList0005: {

@@ -2,7 +2,6 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import ParLdkhqzService from '@/service/par-ldkhqz/par-ldkhqz-service';
 import QZFPModel from './qzfp-form-model';
-import ParKhzcmxService from '@/service/par-khzcmx/par-khzcmx-service';
 
 
 /**
@@ -43,14 +42,6 @@ export default class QZFPService extends ControlService {
     }
 
     /**
-     * 考核内容服务对象
-     *
-     * @type {ParKhzcmxService}
-     * @memberof QZFPService
-     */
-    public parkhzcmxService: ParKhzcmxService = new ParKhzcmxService();
-
-    /**
      * 处理数据
      *
      * @private
@@ -89,9 +80,6 @@ export default class QZFPService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'ParKhzcmxService') && Object.is(interfaceName, 'FetchDefault')) {
-            return this.doItems(this.parkhzcmxService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'parkhzcmxid', 'parkhzcmx');
-        }
 
         return Promise.reject([])
     }

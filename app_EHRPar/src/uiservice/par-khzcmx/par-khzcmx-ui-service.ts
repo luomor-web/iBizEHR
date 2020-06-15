@@ -1,7 +1,7 @@
 import ParKhzcmxUIServiceBase from './par-khzcmx-ui-service-base';
 
 /**
- * 考核内容UI服务对象
+ * 考核模板明细UI服务对象
  *
  * @export
  * @class ParKhzcmxUIService

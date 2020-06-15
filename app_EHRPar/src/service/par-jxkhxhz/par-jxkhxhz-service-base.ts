@@ -4,7 +4,7 @@ import EntityService from '../entity-service';
 
 
 /**
- * 考核内容评分汇总服务对象基类
+ * 考核方案服务对象基类
  *
  * @export
  * @class ParJxkhxhzServiceBase

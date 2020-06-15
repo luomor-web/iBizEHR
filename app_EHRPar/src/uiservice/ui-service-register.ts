@@ -75,6 +75,7 @@ export class UIServiceRegister {
         this.allUIService.set('parjxkhjcsz', () => import('@/uiservice/par-jxkhjcsz/par-jxkhjcsz-ui-service'));
         this.allUIService.set('parptryndlhmb', () => import('@/uiservice/par-ptryndlhmb/par-ptryndlhmb-ui-service'));
         this.allUIService.set('parldndlhmb', () => import('@/uiservice/par-ldndlhmb/par-ldndlhmb-ui-service'));
+        this.allUIService.set('parassesstemplate', () => import('@/uiservice/par-assess-template/par-assess-template-ui-service'));
         this.allUIService.set('parxmbpjbz', () => import('@/uiservice/par-xmbpjbz/par-xmbpjbz-ui-service'));
         this.allUIService.set('pardjbz', () => import('@/uiservice/par-djbz/par-djbz-ui-service'));
         this.allUIService.set('parjgbmpjbz', () => import('@/uiservice/par-jgbmpjbz/par-jgbmpjbz-ui-service'));

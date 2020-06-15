@@ -75,6 +75,7 @@ export class EntityServiceRegister {
         this.allEntityService.set('parjxkhjcsz', () => import('@/service/par-jxkhjcsz/par-jxkhjcsz-service'));
         this.allEntityService.set('parptryndlhmb', () => import('@/service/par-ptryndlhmb/par-ptryndlhmb-service'));
         this.allEntityService.set('parldndlhmb', () => import('@/service/par-ldndlhmb/par-ldndlhmb-service'));
+        this.allEntityService.set('parassesstemplate', () => import('@/service/par-assess-template/par-assess-template-service'));
         this.allEntityService.set('parxmbpjbz', () => import('@/service/par-xmbpjbz/par-xmbpjbz-service'));
         this.allEntityService.set('pardjbz', () => import('@/service/par-djbz/par-djbz-service'));
         this.allEntityService.set('parjgbmpjbz', () => import('@/service/par-jgbmpjbz/par-jgbmpjbz-service'));

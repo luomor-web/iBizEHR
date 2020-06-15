@@ -11,6 +11,7 @@ export default {
     parkhzcmxname: '考核内容',
     khdx: '所属考核对象',
     parkhzcmxid: '考核内容ID',
+    khobject: '考核对象',
   },
 	views: {
 		pickupgridview: {
@@ -28,6 +29,10 @@ export default {
 		editview: {
 			caption: '评分权重分配',
       title: '评分权重分配',
+		},
+		newgridview: {
+			caption: '评分权重设置',
+      title: '评分权重分配表格视图',
 		},
 		editview2: {
 			caption: '评分权重分配',
@@ -50,9 +55,7 @@ export default {
 			srfuf: '', 
 			srfdeid: '', 
 			srfsourcekey: '', 
-			parkhzcmxid: '考核内容ID', 
-			parkhzcmxname: '考核内容', 
-			khdx: '所属考核对象', 
+			khobject: '考核对象', 
 			pfzt: '评分主体', 
 			qzzb: '权重占比（%）', 
 			parldkhqzid: '评分规则标识', 
@@ -81,8 +84,7 @@ export default {
 	},
 	main_grid: {
 		columns: {
-			parkhzcmxname: '考核内容',
-			khdx: '所属考核对象',
+			khobject: '考核对象',
 			pfzt: '评分主体',
 			qzzb: '权重占比（%）',
 		},
@@ -138,6 +140,20 @@ export default {
 		tbitem22: {
 			caption: '帮助',
 			tip: '帮助',
+		},
+	},
+	newgridviewtoolbar_toolbar: {
+		deuiaction1: {
+			caption: '新建',
+			tip: '新建',
+		},
+		deuiaction2: {
+			caption: '保存',
+			tip: '保存',
+		},
+		deuiaction3: {
+			caption: '删除',
+			tip: '删除',
 		},
 	},
 	editview2toolbar_toolbar: {

@@ -33,7 +33,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "parkhzcmxpickupgridview": {
             "title": "考核组成明细选择表格视图",
-            "caption": "考核内容",
+            "caption": "考核模板明细",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "PAR",
             "viewname": "ParKhzcmxPickupGridView",
@@ -143,6 +143,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ParIntegralRulePickupView",
             "viewtag": "23351fc51755a7fdc1a7778e00843604"
         },
+        "parassesstemplatempickupview": {
+            "title": "考核模板数据多项选择视图",
+            "caption": "考核模板",
+            "viewtype": "DEMPICKUPVIEW",
+            "viewmodule": "PAR",
+            "viewname": "ParAssessTemplateMPickupView",
+            "viewtag": "239f64fe862525f2729a4b0ba52d05c5"
+        },
         "parexamcyclegridview": {
             "title": "考核周期",
             "caption": "考核周期",
@@ -159,9 +167,17 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ParKhfaGridView",
             "viewtag": "2698c6c20aa3e029be5d7b71d05d529d"
         },
+        "parassesstemplateeditview": {
+            "title": "考核模板编辑视图",
+            "caption": "考核模板",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "PAR",
+            "viewname": "ParAssessTemplateEditView",
+            "viewtag": "29840f97ec229cf7c791378d26d3b4d0"
+        },
         "parjxkhxhzygkhxgridview": {
-            "title": "员工考核内容及评分汇总",
-            "caption": "员工考核内容及评分汇总",
+            "title": "考核方案",
+            "caption": "考核方案",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "PAR",
             "viewname": "ParJxkhxhzYGKHXGridView",
@@ -271,6 +287,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ParIntegralRuleEditView2",
             "viewtag": "5c54c01bf48769338bb7134b7d0bf089"
         },
+        "parkhzcmxgridview": {
+            "title": "考核模板明细",
+            "caption": "考核模板明细",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PAR",
+            "viewname": "ParKhzcmxGridView",
+            "viewtag": "63b45d0d28eff091f82699780bda4b6b"
+        },
         "pimpersonpickupview": {
             "title": "人员信息数据选择视图",
             "caption": "人员信息",
@@ -303,9 +327,17 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ParLdndlhmbEditView2",
             "viewtag": "6a111cee676fd5fb8c00ddee952e6357"
         },
+        "parassesstemplatepickupview": {
+            "title": "考核模板数据选择视图",
+            "caption": "考核模板",
+            "viewtype": "DEPICKUPVIEW",
+            "viewmodule": "PAR",
+            "viewname": "ParAssessTemplatePickupView",
+            "viewtag": "6ab6caf3a12b7882065cc3c605659a79"
+        },
         "parjxkhxhzgridview": {
-            "title": "绩效考核项得分汇总表格视图",
-            "caption": "考核内容评分汇总",
+            "title": "考核方案",
+            "caption": "考核方案",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "PAR",
             "viewname": "ParJxkhxhzGridView",
@@ -351,6 +383,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ParExamContentPickupGridView",
             "viewtag": "74382e16e0e984fd5af452531de035aa"
         },
+        "parldkhqznewgridview": {
+            "title": "评分权重分配表格视图",
+            "caption": "评分权重设置",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PAR",
+            "viewname": "ParLdkhqzNewGridView",
+            "viewtag": "7f59f30064383fc5ee87bcdf3bc42f9b"
+        },
         "parexamcontentgridview": {
             "title": "考核内容",
             "caption": "考核内容",
@@ -392,8 +432,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "9154733e9c78288a33d8342cd81eb5f3"
         },
         "parjxkhxhzygkhxeditview": {
-            "title": "员工考核内容及评分汇总",
-            "caption": "员工考核内容及评分汇总",
+            "title": "考核方案",
+            "caption": "考核方案",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PAR",
             "viewname": "ParJxkhxhzYGKHXEditView",
@@ -415,14 +455,6 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ParExamCycleEditView",
             "viewtag": "963f9744f61222f20041022b8b7eba31"
         },
-        "parjxkhxhzeditview2": {
-            "title": "绩效考核项得分汇总编辑视图",
-            "caption": "考核内容评分汇总",
-            "viewtype": "DEEDITVIEW2",
-            "viewmodule": "PAR",
-            "viewname": "ParJxkhxhzEditView2",
-            "viewtag": "97559f1cdaf3ad58b41f7bf4ba34d089"
-        },
         "parldndlhmbgridview": {
             "title": "量化目标填报",
             "caption": "量化目标填报",
@@ -432,8 +464,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "99f1bd86d47f8bfefef6803ebda3e437"
         },
         "parjxkhxhzpickupview": {
-            "title": "绩效考核项得分汇总数据选择视图",
-            "caption": "考核内容评分汇总",
+            "title": "考核方案数据选择视图",
+            "caption": "考核方案",
             "viewtype": "DEPICKUPVIEW",
             "viewmodule": "PAR",
             "viewname": "ParJxkhxhzPickupView",
@@ -448,8 +480,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "a0562928c523c5554de86ca7cce6cf14"
         },
         "parjxkhxhzmpickupview": {
-            "title": "绩效考核项得分汇总数据多项选择视图",
-            "caption": "考核内容评分汇总",
+            "title": "考核方案数据多项选择视图",
+            "caption": "考核方案",
             "viewtype": "DEMPICKUPVIEW",
             "viewmodule": "PAR",
             "viewname": "ParJxkhxhzMPickupView",
@@ -527,6 +559,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ParJxjgGridView",
             "viewtag": "b8adaeafac9a1acdbd8f4aef296c22ee"
         },
+        "parassesstemplatepickupgridview": {
+            "title": "考核模板选择表格视图",
+            "caption": "考核模板",
+            "viewtype": "DEPICKUPGRIDVIEW",
+            "viewmodule": "PAR",
+            "viewname": "ParAssessTemplatePickupGridView",
+            "viewtag": "be2e9f41096c9c65982109c44e67b657"
+        },
         "parldndlhmbndlhmbxzeditview": {
             "title": "量化目标修正",
             "caption": "量化目标修正",
@@ -545,7 +585,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "parkhzcmxeditview": {
             "title": "考核组成明细编辑视图",
-            "caption": "考核内容",
+            "caption": "考核模板明细",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PAR",
             "viewname": "ParKhzcmxEditView",
@@ -639,6 +679,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "ParDjbzEditView2",
             "viewtag": "d6dc79636ec9c777e8c62b03e428b518"
         },
+        "parassesstemplateeditview9": {
+            "title": "考核模板",
+            "caption": "考核模板",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "PAR",
+            "viewname": "ParAssessTemplateEditView9",
+            "viewtag": "d84eab620a82c604d82070edc298611c"
+        },
         "parexamcyclenewgridview": {
             "title": "考核周期设置",
             "caption": "考核周期设置",
@@ -646,6 +694,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "PAR",
             "viewname": "ParExamCycleNewGridView",
             "viewtag": "e184f5db6e3acb31c15469de5437cf75"
+        },
+        "parassesstemplategridview": {
+            "title": "考核模板表格视图",
+            "caption": "考核模板设置",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PAR",
+            "viewname": "ParAssessTemplateGridView",
+            "viewtag": "e28617a43cd83dbace56537236958b1d"
         },
         "parldndlhmbkheditview": {
             "title": "量化目标考核（公司领导类）",
@@ -673,7 +729,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "parkhzcmxpickupview": {
             "title": "考核组成明细数据选择视图",
-            "caption": "考核内容",
+            "caption": "考核模板明细",
             "viewtype": "DEPICKUPVIEW",
             "viewmodule": "PAR",
             "viewname": "ParKhzcmxPickupView",
@@ -688,16 +744,16 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "ebbe432aa6782a4f5888f6252adca5c3"
         },
         "parjxkhxhzpickupgridview": {
-            "title": "绩效考核项得分汇总选择表格视图",
-            "caption": "考核内容评分汇总",
+            "title": "考核方案选择表格视图",
+            "caption": "考核方案",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "PAR",
             "viewname": "ParJxkhxhzPickupGridView",
             "viewtag": "f81ee66ff74c77926f6c9d5517a5cce3"
         },
         "parjxkhxhzeditview": {
-            "title": "绩效考核项得分汇总编辑视图",
-            "caption": "考核内容评分汇总",
+            "title": "考核方案编辑视图",
+            "caption": "考核方案",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PAR",
             "viewname": "ParJxkhxhzEditView",

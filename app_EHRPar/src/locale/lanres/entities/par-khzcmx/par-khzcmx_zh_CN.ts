@@ -1,63 +1,68 @@
 export default {
   fields: {
     szqz: '考核权重（%）',
-    parkhzcmxid: '考核内容标识',
+    parkhzcmxid: '考核模板明细标识',
     createman: '建立人',
     updateman: '更新人',
     sfqy: '是否启用',
-    parkhzcmxname: '考核内容',
+    parkhzcmxname: '考核模板明细',
     createdate: '建立时间',
     updatedate: '更新时间',
     khdx: '考核对象',
     parjxkhjcszname: '考核方案',
     parjxkhjcszid: '考核方案ID',
+    parassesstemplateid: '考核模板标识',
+    parassesstemplatename: '考核模板名称',
+    khnr: '考核内容',
+    xh: '排序',
   },
 	views: {
 		pickupgridview: {
-			caption: '考核内容',
+			caption: '考核模板明细',
       title: '考核组成明细选择表格视图',
 		},
+		gridview: {
+			caption: '考核模板明细',
+      title: '考核模板明细',
+		},
 		editview: {
-			caption: '考核内容',
+			caption: '考核模板明细',
       title: '考核组成明细编辑视图',
 		},
 		pickupview: {
-			caption: '考核内容',
+			caption: '考核模板明细',
       title: '考核组成明细数据选择视图',
 		},
 	},
 	main_form: {
 		details: {
-			group1: '考核内容组成', 
-			druipart1: '', 
-			grouppanel1: '评分主体权重', 
+			group1: '考核模板明细', 
 			formpage1: '基本信息', 
 			srfupdatedate: '更新时间', 
 			srforikey: '', 
-			srfkey: '考核内容标识', 
-			srfmajortext: '考核内容', 
+			srfkey: '考核模板明细标识', 
+			srfmajortext: '考核模板明细', 
 			srftempmode: '', 
 			srfuf: '', 
 			srfdeid: '', 
 			srfsourcekey: '', 
-			parjxkhjcszid: '考核方案ID', 
-			parjxkhjcszname: '考核方案', 
-			parkhzcmxid: '考核内容标识', 
-			parkhzcmxname: '考核内容', 
+			parassesstemplateid: '考核模板标识', 
+			parassesstemplatename: '考核模板名称', 
+			xh: '排序', 
+			khnr: '考核内容', 
 			szqz: '考核权重（%）', 
-			khdx: '考核对象', 
+			parkhzcmxid: '考核模板明细标识', 
 		},
 		uiactions: {
 		},
 	},
 	main_grid: {
 		columns: {
-			parkhzcmxname: '考核内容',
+			xh: '排序',
+			khnr: '考核内容',
 			szqz: '考核权重（%）',
-			uagridcolumn1: '设置评分权重',
 		},
 		uiactions: {
-			szpfzt: '设置评分权重',
 		},
 	},
 	default_searchform: {
@@ -67,26 +72,36 @@ export default {
 		uiactions: {
 		},
 	},
+	gridviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: '新建',
+			tip: '新建',
+		},
+		tbitem5: {
+			caption: '编辑',
+			tip: '编辑',
+		},
+		tbitem8: {
+			caption: '删除',
+			tip: '删除',
+		},
+		tbitem13: {
+			caption: '导出',
+			tip: '导出',
+		},
+	},
 	editviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: '保存',
 			tip: '保存',
 		},
-		tbitem4: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
 		tbitem5: {
 			caption: '保存并关闭',
 			tip: '保存并关闭',
 		},
-		tbitem7: {
-			caption: '删除并关闭',
-			tip: '删除并关闭',
-		},
-		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
+		deuiaction1: {
+			caption: '关闭',
+			tip: '关闭',
 		},
 	},
 };

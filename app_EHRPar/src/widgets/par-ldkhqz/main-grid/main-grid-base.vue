@@ -20,28 +20,36 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('parkhzcmxname')">
-                <el-table-column show-overflow-tooltip :prop="'parkhzcmxname'" :label="$t('entities.parldkhqz.main_grid.columns.parkhzcmxname')" :width="180"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('khobject')">
+                <el-table-column show-overflow-tooltip :prop="'khobject'" :label="$t('entities.parldkhqz.main_grid.columns.khobject')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.parldkhqz.main_grid.columns.parkhzcmxname')}}
+                        {{$t('entities.parldkhqz.main_grid.columns.khobject')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.parkhzcmxname}}</span>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('khdx')">
-                <el-table-column show-overflow-tooltip :prop="'khdx'" :label="$t('entities.parldkhqz.main_grid.columns.khdx')" :width="170"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.parldkhqz.main_grid.columns.khdx')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <template >
-            <codelist :value="row.khdx" tag='EhrCodeList0015' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+                        <template v-if="actualIsOpenEdit">
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                
+             <dropdown-list 
+              v-model="row[column.property]" 
+              :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
+              :data="row" 
+              :context="context"
+              :viewparams="viewparams" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
+              tag='EhrCodeList0015' 
+              codelistType='DYNAMIC'
+              placeholder='请选择...' 
+              style="" 
+              @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}">
+             </dropdown-list>
+            
+                            </app-form-item>
+                        </template>
+                        <template v-if="!actualIsOpenEdit">
+            <codelist :value="row.khobject" tag='EhrCodeList0015' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -54,21 +62,56 @@
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <template >
+                        <template v-if="actualIsOpenEdit">
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                
+             <dropdown-list 
+              v-model="row[column.property]" 
+              :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
+              :data="row" 
+              :context="context"
+              :viewparams="viewparams" 
+              :localContext ='{ }' 
+              :localParam ='{ }' 
+              tag='EhrCodeList0209' 
+              codelistType='STATIC'
+              placeholder='请选择...' 
+              style="" 
+              @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}">
+             </dropdown-list>
+            
+                            </app-form-item>
+                        </template>
+                        <template v-if="!actualIsOpenEdit">
             <codelist :value="row.pfzt" tag='EhrCodeList0209' codelistType='STATIC' ></codelist>
                         </template>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('qzzb')">
-                <el-table-column show-overflow-tooltip :prop="'qzzb'" :label="$t('entities.parldkhqz.main_grid.columns.qzzb')" :width="170"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'qzzb'" :label="$t('entities.parldkhqz.main_grid.columns.qzzb')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.parldkhqz.main_grid.columns.qzzb')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                            <app-format-data dataType="FLOAT" precision="1" :data="row.qzzb"></app-format-data>
+                        <template v-if="actualIsOpenEdit">
+                            <app-form-item :error="gridItemsModel[$index][column.property].error">
+                                <input-box 
+              :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
+              v-model="row[column.property]" 
+              style=""
+              type="text"
+              
+              
+              @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}">
+            </input-box>
+                            </app-form-item>
+                        </template>
+                        <template v-if="!actualIsOpenEdit">
+                                <app-span name='qzzb' editorType="TEXTBOX" :value="row.qzzb"></app-span>
+                        </template>
                     </template>
                 </el-table-column>
             </template>
@@ -549,16 +592,9 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public allColumns: any[] = [
         {
-            name: 'parkhzcmxname',
-            label: '考核内容',
-            langtag: 'entities.parldkhqz.main_grid.columns.parkhzcmxname',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'khdx',
-            label: '所属考核对象',
-            langtag: 'entities.parldkhqz.main_grid.columns.khdx',
+            name: 'khobject',
+            label: '考核对象',
+            langtag: 'entities.parldkhqz.main_grid.columns.khobject',
             show: true,
             util: 'PX'
         },
@@ -594,6 +630,9 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public getGridRowModel(){
         return {
+          pfzt: new FormItemModel(),
+          qzzb: new FormItemModel(),
+          khobject: new FormItemModel(),
           srfkey: new FormItemModel(),
         }
     }
@@ -605,6 +644,18 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public rules: any = {
+        pfzt: [
+             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '评分主体 值不能为空', trigger: 'change' },
+            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '评分主体 值不能为空', trigger: 'blur' },
+        ],
+        qzzb: [
+             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '权重占比（%） 值不能为空', trigger: 'change' },
+            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '权重占比（%） 值不能为空', trigger: 'blur' },
+        ],
+        khobject: [
+             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '考核对象 值不能为空', trigger: 'change' },
+            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '考核对象 值不能为空', trigger: 'blur' },
+        ],
         srfkey: [
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '评分规则标识 值不能为空', trigger: 'change' },
             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '评分规则标识 值不能为空', trigger: 'blur' },
@@ -663,7 +714,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public load(opt: any = {}, pageReset: boolean = false): void {
         if(!this.fetchAction){
-            this.$Notice.error({ title: '错误', desc: 'ParLdkhqzGridView视图表格fetchAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'ParLdkhqzNewGridView视图表格fetchAction参数未配置' });
             return;
         }
         if(pageReset){
@@ -740,7 +791,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public async remove(datas: any[]): Promise<any> {
         if(!this.removeAction){
-            this.$Notice.error({ title: '错误', desc: 'ParLdkhqzGridView视图表格removeAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'ParLdkhqzNewGridView视图表格removeAction参数未配置' });
             return;
         }
         let _datas:any[] = [];
@@ -846,7 +897,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public addBatch(arg: any = {}): void {
         if(!this.fetchAction){
-            this.$Notice.error({ title: '错误', desc: 'ParLdkhqzGridView视图表格fetchAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'ParLdkhqzNewGridView视图表格fetchAction参数未配置' });
             return;
         }
         if(!arg){
@@ -964,7 +1015,7 @@ export default class MainBase extends Vue implements ControlInterface {
     public async formatExcelData(filterVal:any, jsonData:any) {
         let codelistColumns:Array<any> = [
           {
-            name: 'khdx',
+            name: 'khobject',
             srfkey: 'EhrCodeList0015',
             codelistType : 'DYNAMIC',
             textSeparator: '、',
@@ -1398,7 +1449,7 @@ export default class MainBase extends Vue implements ControlInterface {
             try {
                 if(Object.is(item.rowDataState, 'create')){
                     if(!this.createAction){
-                        this.$Notice.error({ title: '错误', desc: 'ParLdkhqzGridView视图表格createAction参数未配置' });
+                        this.$Notice.error({ title: '错误', desc: 'ParLdkhqzNewGridView视图表格createAction参数未配置' });
                     }else{
                       Object.assign(item,{viewparams:this.viewparams});
                       let response = await this.service.add(this.createAction, JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator);
@@ -1406,7 +1457,7 @@ export default class MainBase extends Vue implements ControlInterface {
                     }
                 }else if(Object.is(item.rowDataState, 'update')){
                     if(!this.updateAction){
-                        this.$Notice.error({ title: '错误', desc: 'ParLdkhqzGridView视图表格updateAction参数未配置' });
+                        this.$Notice.error({ title: '错误', desc: 'ParLdkhqzNewGridView视图表格updateAction参数未配置' });
                     }else{
                         Object.assign(item,{viewparams:this.viewparams});
                         if(item.parldkhqz){
@@ -1434,6 +1485,120 @@ export default class MainBase extends Vue implements ControlInterface {
         return successItems;
     }
 
+    /**
+     * 新建行
+     *
+     * @param {*} $event
+     * @returns {void}
+     * @memberof Main
+     */
+    public newRow(args: any[], params?: any, $event?: any, xData?: any): void {
+        if(!this.loaddraftAction){
+            this.$Notice.error({ title: '错误', desc: 'ParLdkhqzNewGridView视图表格loaddraftAction参数未配置' });
+            return;
+        }
+        let _this = this;
+        Object.assign(args[0],{viewparams:this.viewparams});
+        let post: Promise<any> = this.service.loadDraft(this.loaddraftAction, JSON.parse(JSON.stringify(this.context)), args[0], this.showBusyIndicator);
+        post.then((response: any) => {
+            if (!response.status || response.status !== 200) {
+                if (response.errorMessage) {
+                    this.$Notice.error({ title: '错误', desc: response.errorMessage });
+                }
+                return;
+            }
+            const data = response.data;
+            this.createDefault(data);
+            data.rowDataState = "create";
+            _this.items.push(data);
+            _this.gridItemsModel.push(_this.getGridRowModel());
+        }).catch((response: any) => {
+            if (response && response.status === 401) {
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
+
+    /**
+     * 表格编辑项值变更
+     *  
+     * @param row 行数据
+     * @param {{ name: string, value: any }} $event
+     * @returns {void}
+     * @memberof Main
+     */
+    public onGridItemValueChange(row: any,$event: { name: string, value: any },rowIndex: number): void {
+        if (!$event) {
+            return;
+        }
+        if (!$event.name || Object.is($event.name, '') || !row.hasOwnProperty($event.name)) {
+            return;
+        }
+        row[$event.name] = $event.value;
+        this.gridEditItemChange(row, $event.name, $event.value, rowIndex);
+    }
+
+    /**
+     * 表格编辑项值变化
+     *
+     * @public
+     * @param row 行数据
+     * @param property 列编辑项名
+     * @param row 列编辑项值
+     * @returns {void}
+     * @memberof Main
+     */
+    public gridEditItemChange(row: any, property: string, value: any, rowIndex: number){
+        row.rowDataState = row.rowDataState ? row.rowDataState : "update" ;
+        this.validate(property,row,rowIndex);
+    }
+
+    /**
+     * 表格编辑项更新
+     *
+     * @param {string} mode 界面行为名称
+     * @param {*} [data={}] 请求数据
+     * @param {string[]} updateDetails 更新项
+     * @param {boolean} [showloading] 是否显示加载状态
+     * @returns {void}
+     * @memberof Main
+     */
+    public updateGridEditItem(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
+        if (!mode || (mode && Object.is(mode, ''))) {
+            return;
+        }
+        const arg: any = JSON.parse(JSON.stringify(data));
+        Object.assign(arg,{viewparams:this.viewparams});
+        const post: Promise<any> = this.service.frontLogic(mode,JSON.parse(JSON.stringify(this.context)),arg, showloading);
+        post.then((response: any) => {
+            if (!response || response.status !== 200) {
+                this.$Notice.error({ title: '错误', desc: '表单项更新失败' });
+                return;
+            }
+            const _data: any = response.data;
+            if(!_data){
+                return;
+            }
+            updateDetails.forEach((name: string) => {
+                if (!_data.hasOwnProperty(name)) {
+                    return;
+                }
+                data[name] = _data[name];
+            });
+        }).catch((response: any) => {
+            if (response && response.status === 401) {
+                return;
+            }
+            if (!response || !response.status || !response.data) {
+                this.$Notice.error({ title: '错误', desc: '系统异常' });
+                return;
+            }
+        });
+    }
 
     /**
      * 获取对应行class

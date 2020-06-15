@@ -6,41 +6,25 @@
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.parldkhqz.qzfp_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.parkhzcmxname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='parkhzcmxname' :itemRules="this.rules.parkhzcmxname" class='' :caption="$t('entities.parldkhqz.qzfp_form.details.parkhzcmxname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.parkhzcmxname.error" :isEmptyCaption="false" labelPos="LEFT">
+        <i-col v-show="detailsModel.khobject.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='khobject' :itemRules="this.rules.khobject" class='' :caption="$t('entities.parldkhqz.qzfp_form.details.khobject')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.khobject.error" :isEmptyCaption="false" labelPos="LEFT">
     
-<app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :localContext ='{ }' 
-  :localParam ='{ }' 
-  :disabled="detailsModel.parkhzcmxname.disabled"
-  name='parkhzcmxname'
-  deMajorField='parkhzcmxname'
-  deKeyField='parkhzcmx'
-  :service="service"
-  :acParams="{ serviceName: 'ParKhzcmxService', interfaceName: 'FetchDefault'}"
-  valueitem='parkhzcmxid' 
-  :value="data.parkhzcmxname" 
-  editortype="" 
-  :pickupView="{ viewname: 'par-khzcmx-pickup-view', title: $t('entities.parkhzcmx.views.pickupview.title'), deResParameters: [{ pathName: 'parjxkhjcszs', parameterName: 'parjxkhjcsz' }, ], parameters: [{ pathName: 'parkhzcmxes', parameterName: 'parkhzcmx' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+ <dropdown-list 
+    v-model="data.khobject" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :localContext ='{ }' 
+    :localParam ='{ }' 
+    :disabled="detailsModel.khobject.disabled"  
+    tag='EhrCodeList0015' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.khdx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='khdx' :itemRules="this.rules.khdx" class='' :caption="$t('entities.parldkhqz.qzfp_form.details.khdx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.khdx.error" :isEmptyCaption="false" labelPos="LEFT">
-    
-<app-span name='khdx' :value="data.khdx" tag='EhrCodeList0015' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.pfzt.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.pfzt.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='pfzt' :itemRules="this.rules.pfzt" class='' :caption="$t('entities.parldkhqz.qzfp_form.details.pfzt')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pfzt.error" :isEmptyCaption="false" labelPos="LEFT">
     
  <dropdown-list 
@@ -58,7 +42,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.qzzb.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.qzzb.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='qzzb' :itemRules="this.rules.qzzb" class='' :caption="$t('entities.parldkhqz.qzfp_form.details.qzzb')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.qzzb.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.qzzb"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.qzzb.disabled" type='number'  style=""></input-box>
 </app-form-item>
@@ -375,9 +359,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
         srfuf: null,
         srfdeid: null,
         srfsourcekey: null,
-        parkhzcmxid: null,
-        parkhzcmxname: null,
-        khdx: null,
+        khobject: null,
         pfzt: null,
         qzzb: null,
         parldkhqzid: null,
@@ -471,23 +453,11 @@ export default class QZFPBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
-        parkhzcmxid: [
-            { type: 'string', message: '考核内容ID 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '考核内容ID 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '考核内容ID 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '考核内容ID 值不能为空', trigger: 'blur' },
-        ],
-        parkhzcmxname: [
-            { type: 'string', message: '考核内容 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '考核内容 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '考核内容 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '考核内容 值不能为空', trigger: 'blur' },
-        ],
-        khdx: [
-            { type: 'string', message: '所属考核对象 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '所属考核对象 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '所属考核对象 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '所属考核对象 值不能为空', trigger: 'blur' },
+        khobject: [
+            { type: 'string', message: '考核对象 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '考核对象 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '考核对象 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '考核对象 值不能为空', trigger: 'blur' },
         ],
         pfzt: [
             { type: 'string', message: '评分主体 值必须为字符串类型', trigger: 'change' },
@@ -536,11 +506,7 @@ export default class QZFPBase extends Vue implements ControlInterface {
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        parkhzcmxid: new FormItemModel({ caption: '考核内容ID', detailType: 'FORMITEM', name: 'parkhzcmxid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        parkhzcmxname: new FormItemModel({ caption: '考核内容', detailType: 'FORMITEM', name: 'parkhzcmxname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        khdx: new FormItemModel({ caption: '所属考核对象', detailType: 'FORMITEM', name: 'khdx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        khobject: new FormItemModel({ caption: '考核对象', detailType: 'FORMITEM', name: 'khobject', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         pfzt: new FormItemModel({ caption: '评分主体', detailType: 'FORMITEM', name: 'pfzt', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -647,39 +613,15 @@ export default class QZFPBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 parkhzcmxid 值
+     * 监控表单属性 khobject 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof QZFP
      */
-    @Watch('data.parkhzcmxid')
-    onParkhzcmxidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'parkhzcmxid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 parkhzcmxname 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof QZFP
-     */
-    @Watch('data.parkhzcmxname')
-    onParkhzcmxnameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'parkhzcmxname', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 khdx 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof QZFP
-     */
-    @Watch('data.khdx')
-    onKhdxChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'khdx', newVal: newVal, oldVal: oldVal });
+    @Watch('data.khobject')
+    onKhobjectChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'khobject', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -754,8 +696,6 @@ export default class QZFPBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
-
-
 
 
 

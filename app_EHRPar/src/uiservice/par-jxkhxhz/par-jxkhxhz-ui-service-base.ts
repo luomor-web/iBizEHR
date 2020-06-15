@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import ParJxkhxhzService from '@/service/par-jxkhxhz/par-jxkhxhz-service';
 
 /**
- * 考核内容评分汇总UI服务对象基类
+ * 考核方案UI服务对象基类
  *
  * @export
  * @class ParJxkhxhzUIServiceBase
@@ -82,7 +82,6 @@ export default class ParJxkhxhzUIServiceBase extends UIService {
         this.allViewMap.set(':',{viewname:'ygkhxgridview',srfappde:'parjxkhxhzs'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'parjxkhxhzs'});
         this.allViewMap.set(':',{viewname:'ygkhxeditview',srfappde:'parjxkhxhzs'});
-        this.allViewMap.set(':',{viewname:'editview2',srfappde:'parjxkhxhzs'});
         this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'parjxkhxhzs'});
         this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'parjxkhxhzs'});
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'parjxkhxhzs'});

@@ -83,6 +83,7 @@ export default class ParLdkhqzUIServiceBase extends UIService {
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'parldkhqzs'});
         this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'parldkhqzs'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'parldkhqzs'});
+        this.allViewMap.set(':',{viewname:'newgridview',srfappde:'parldkhqzs'});
         this.allViewMap.set(':',{viewname:'editview2',srfappde:'parldkhqzs'});
         this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'parldkhqzs'});
     }

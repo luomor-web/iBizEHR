@@ -34,6 +34,7 @@ import parznbmmx_zh_CN from '@locale/lanres/entities/par-znbmmx/par-znbmmx_zh_CN
 import parjxkhjcsz_zh_CN from '@locale/lanres/entities/par-jxkhjcsz/par-jxkhjcsz_zh_CN';
 import parptryndlhmb_zh_CN from '@locale/lanres/entities/par-ptryndlhmb/par-ptryndlhmb_zh_CN';
 import parldndlhmb_zh_CN from '@locale/lanres/entities/par-ldndlhmb/par-ldndlhmb_zh_CN';
+import parassesstemplate_zh_CN from '@locale/lanres/entities/par-assess-template/par-assess-template_zh_CN';
 import parxmbpjbz_zh_CN from '@locale/lanres/entities/par-xmbpjbz/par-xmbpjbz_zh_CN';
 import pardjbz_zh_CN from '@locale/lanres/entities/par-djbz/par-djbz_zh_CN';
 import parjgbmpjbz_zh_CN from '@locale/lanres/entities/par-jgbmpjbz/par-jgbmpjbz_zh_CN';
@@ -111,7 +112,8 @@ export default {
                 menuitem10: '评分权重设置',
                 menuitem16: '积分规则设置',
                 menuitem12: '绩效标准',
-                menuitem11: '考核内容汇总',
+                menuitem19: '考核模板设置',
+                menuitem11: '考核方案设置',
                 menuitem3: '绩效考核',
                 menuitem13: '年度量化目标填报',
                 menuitem14: '年度量化目标修正',
@@ -160,6 +162,7 @@ export default {
         parjxkhjcsz: parjxkhjcsz_zh_CN,
         parptryndlhmb: parptryndlhmb_zh_CN,
         parldndlhmb: parldndlhmb_zh_CN,
+        parassesstemplate: parassesstemplate_zh_CN,
         parxmbpjbz: parxmbpjbz_zh_CN,
         pardjbz: pardjbz_zh_CN,
         parjgbmpjbz: parjgbmpjbz_zh_CN,

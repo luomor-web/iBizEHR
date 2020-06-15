@@ -3,52 +3,37 @@
     <input style="display:none;" />
     <row >
             
-<i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.parkhzcmx.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+<i-col v-show="detailsModel.group1.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }">
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.parkhzcmx.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.parkhzcmxname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='parkhzcmxname' :itemRules="this.rules.parkhzcmxname" class='' :caption="$t('entities.parkhzcmx.main_form.details.parkhzcmxname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.parkhzcmxname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.parkhzcmxname"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.parkhzcmxname.disabled" type='text'  style=""></input-box>
+        <i-col v-show="detailsModel.xh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='xh' :itemRules="this.rules.xh" class='' :caption="$t('entities.parkhzcmx.main_form.details.xh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xh.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.xh"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.xh.disabled" type='number'  style=""></input-box>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.szqz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.khnr.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='khnr' :itemRules="this.rules.khnr" class='' :caption="$t('entities.parkhzcmx.main_form.details.khnr')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.khnr.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+ <dropdown-list 
+    v-model="data.khnr" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :localContext ='{ }' 
+    :localParam ='{ }' 
+    :disabled="detailsModel.khnr.disabled"  
+    tag='EhrCodeList0242' 
+    codelistType='DYNAMIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.szqz.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='szqz' :itemRules="this.rules.szqz" class='' :caption="$t('entities.parkhzcmx.main_form.details.szqz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.szqz.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.szqz"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.szqz.disabled" type='number'  style=""></input-box>
 </app-form-item>
-
-</i-col>
-    
-    </row>
-</app-form-group>
-
-</i-col>
-<i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.parkhzcmx.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
-    <row>
-        <i-col v-show="detailsModel.druipart1.visible" :style="{'height': '300px !important',}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-druipart
-    
-    :formState="formState"
-    :isForbidLoad="this.data.srfuf === '0'"
-    paramItem='parkhzcmx' 
-    :parentdata='{"srfparentdefname":"PARKHZCMXID","srfparentdename":"PARKHZCMX","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_PARLDKHQZ_PARKHZCMX_PARKHZCMXID","SRFDER1NID":"DER1N_PARLDKHQZ_PARKHZCMX_PARKHZCMXID"}'
-    :parameters="[
-    ]"
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{}'
-    :localParam ='{}'
-    parameterName='parkhzcmx'
-    parentName="ParKhzcmx"  
-    refviewtype='DEGRIDVIEW' 
-    refreshitems='' 
-    :ignorefieldvaluechange="ignorefieldvaluechange"
-    viewname='par-ldkhqz-grid-view' 
-    :data="JSON.stringify(this.data)" 
-    @drdatasaved="drdatasaved($event)"
-    style="height:300px;overflow: auto;">
-</app-form-druipart>
 
 </i-col>
     
@@ -362,12 +347,12 @@ export default class MainBase extends Vue implements ControlInterface {
         srfuf: null,
         srfdeid: null,
         srfsourcekey: null,
-        parjxkhjcszid: null,
-        parjxkhjcszname: null,
-        parkhzcmxid: null,
-        parkhzcmxname: null,
+        parassesstemplateid: null,
+        parassesstemplatename: null,
+        xh: null,
+        khnr: null,
         szqz: null,
-        khdx: null,
+        parkhzcmxid: null,
         parkhzcmx:null,
     };
 
@@ -423,16 +408,16 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
         srfkey: [
-            { type: 'string', message: '考核内容标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '考核内容标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '考核内容标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '考核内容标识 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '考核模板明细标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '考核模板明细标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '考核模板明细标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '考核模板明细标识 值不能为空', trigger: 'blur' },
         ],
         srfmajortext: [
-            { type: 'string', message: '考核内容 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '考核内容 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '考核内容 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '考核内容 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '考核模板明细 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '考核模板明细 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '考核模板明细 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '考核模板明细 值不能为空', trigger: 'blur' },
         ],
         srftempmode: [
             { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
@@ -458,25 +443,25 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
-        parjxkhjcszid: [
-            { type: 'string', message: '考核方案ID 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '考核方案ID 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '考核方案ID 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '考核方案ID 值不能为空', trigger: 'blur' },
+        parassesstemplateid: [
+            { type: 'string', message: '考核模板标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '考核模板标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '考核模板标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '考核模板标识 值不能为空', trigger: 'blur' },
         ],
-        parjxkhjcszname: [
-            { type: 'string', message: '考核方案 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '考核方案 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '考核方案 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '考核方案 值不能为空', trigger: 'blur' },
+        parassesstemplatename: [
+            { type: 'string', message: '考核模板名称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '考核模板名称 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '考核模板名称 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '考核模板名称 值不能为空', trigger: 'blur' },
         ],
-        parkhzcmxid: [
-            { type: 'string', message: '考核内容标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '考核内容标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '考核内容标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '考核内容标识 值不能为空', trigger: 'blur' },
+        xh: [
+            { type: 'number', message: '排序 值必须为数值类型', trigger: 'change' },
+            { type: 'number', message: '排序 值必须为数值类型', trigger: 'blur' },
+            { required: false, type: 'number', message: '排序 值不能为空', trigger: 'change' },
+            { required: false, type: 'number', message: '排序 值不能为空', trigger: 'blur' },
         ],
-        parkhzcmxname: [
+        khnr: [
             { type: 'string', message: '考核内容 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '考核内容 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '考核内容 值不能为空', trigger: 'change' },
@@ -488,11 +473,11 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'number', message: '考核权重（%） 值不能为空', trigger: 'change' },
             { required: false, type: 'number', message: '考核权重（%） 值不能为空', trigger: 'blur' },
         ],
-        khdx: [
-            { type: 'string', message: '考核对象 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '考核对象 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '考核对象 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '考核对象 值不能为空', trigger: 'blur' },
+        parkhzcmxid: [
+            { type: 'string', message: '考核模板明细标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '考核模板明细标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '考核模板明细标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '考核模板明细标识 值不能为空', trigger: 'blur' },
         ],
     }
 
@@ -503,11 +488,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public detailsModel: any = {
-        group1: new FormGroupPanelModel({ caption: '考核内容组成', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.parkhzcmx.main_form', extractMode: 'ITEM', details: [] } })
-, 
-        druipart1: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart1', visible: true, isShowCaption: true, form: this })
-, 
-        grouppanel1: new FormGroupPanelModel({ caption: '评分主体权重', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.parkhzcmx.main_form', extractMode: 'ITEM', details: [] } })
+        group1: new FormGroupPanelModel({ caption: '考核模板明细', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.parkhzcmx.main_form', extractMode: 'ITEM', details: [] } })
 , 
         formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
@@ -515,9 +496,9 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         srforikey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srforikey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        srfkey: new FormItemModel({ caption: '考核内容标识', detailType: 'FORMITEM', name: 'srfkey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        srfkey: new FormItemModel({ caption: '考核模板明细标识', detailType: 'FORMITEM', name: 'srfkey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        srfmajortext: new FormItemModel({ caption: '考核内容', detailType: 'FORMITEM', name: 'srfmajortext', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        srfmajortext: new FormItemModel({ caption: '考核模板明细', detailType: 'FORMITEM', name: 'srfmajortext', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         srftempmode: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srftempmode', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -527,17 +508,17 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        parjxkhjcszid: new FormItemModel({ caption: '考核方案ID', detailType: 'FORMITEM', name: 'parjxkhjcszid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        parassesstemplateid: new FormItemModel({ caption: '考核模板标识', detailType: 'FORMITEM', name: 'parassesstemplateid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        parjxkhjcszname: new FormItemModel({ caption: '考核方案', detailType: 'FORMITEM', name: 'parjxkhjcszname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        parassesstemplatename: new FormItemModel({ caption: '考核模板名称', detailType: 'FORMITEM', name: 'parassesstemplatename', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        parkhzcmxid: new FormItemModel({ caption: '考核内容标识', detailType: 'FORMITEM', name: 'parkhzcmxid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        xh: new FormItemModel({ caption: '排序', detailType: 'FORMITEM', name: 'xh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        parkhzcmxname: new FormItemModel({ caption: '考核内容', detailType: 'FORMITEM', name: 'parkhzcmxname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        khnr: new FormItemModel({ caption: '考核内容', detailType: 'FORMITEM', name: 'khnr', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         szqz: new FormItemModel({ caption: '考核权重（%）', detailType: 'FORMITEM', name: 'szqz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        khdx: new FormItemModel({ caption: '考核对象', detailType: 'FORMITEM', name: 'khdx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        parkhzcmxid: new FormItemModel({ caption: '考核模板明细标识', detailType: 'FORMITEM', name: 'parkhzcmxid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
     };
 
@@ -638,51 +619,51 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 parjxkhjcszid 值
+     * 监控表单属性 parassesstemplateid 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof Main
      */
-    @Watch('data.parjxkhjcszid')
-    onParjxkhjcszidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'parjxkhjcszid', newVal: newVal, oldVal: oldVal });
+    @Watch('data.parassesstemplateid')
+    onParassesstemplateidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'parassesstemplateid', newVal: newVal, oldVal: oldVal });
     }
 
     /**
-     * 监控表单属性 parjxkhjcszname 值
+     * 监控表单属性 parassesstemplatename 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof Main
      */
-    @Watch('data.parjxkhjcszname')
-    onParjxkhjcsznameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'parjxkhjcszname', newVal: newVal, oldVal: oldVal });
+    @Watch('data.parassesstemplatename')
+    onParassesstemplatenameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'parassesstemplatename', newVal: newVal, oldVal: oldVal });
     }
 
     /**
-     * 监控表单属性 parkhzcmxid 值
+     * 监控表单属性 xh 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof Main
      */
-    @Watch('data.parkhzcmxid')
-    onParkhzcmxidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'parkhzcmxid', newVal: newVal, oldVal: oldVal });
+    @Watch('data.xh')
+    onXhChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'xh', newVal: newVal, oldVal: oldVal });
     }
 
     /**
-     * 监控表单属性 parkhzcmxname 值
+     * 监控表单属性 khnr 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof Main
      */
-    @Watch('data.parkhzcmxname')
-    onParkhzcmxnameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'parkhzcmxname', newVal: newVal, oldVal: oldVal });
+    @Watch('data.khnr')
+    onKhnrChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'khnr', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -698,15 +679,15 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 khdx 值
+     * 监控表单属性 parkhzcmxid 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof Main
      */
-    @Watch('data.khdx')
-    onKhdxChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'khdx', newVal: newVal, oldVal: oldVal });
+    @Watch('data.parkhzcmxid')
+    onParkhzcmxidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'parkhzcmxid', newVal: newVal, oldVal: oldVal });
     }
 
 
@@ -745,8 +726,6 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
-
-
 
 
 
@@ -1286,7 +1265,7 @@ export default class MainBase extends Vue implements ControlInterface {
             Object.assign(arg, data);
             Object.assign(arg, this.context);
             if (ifStateNext) {
-                this.drcounter = 1;
+                this.drcounter = 0;
                 if(this.drcounter !== 0){
                     this.drsaveopt = opt;
                     this.formState.next({ type: 'beforesave', data: arg });//先通知关系界面保存

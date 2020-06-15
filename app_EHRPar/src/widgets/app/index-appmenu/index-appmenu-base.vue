@@ -65,6 +65,9 @@ export default class IndexBase extends AppMenusCtrlBase {
                 case 'Auto68': 
                     this.clickAuto68(item);
                     return;
+                case '_2': 
+                    this.click_2(item);
+                    return;
                 case 'Auto70': 
                     this.clickAuto70(item);
                     return;
@@ -117,6 +120,24 @@ export default class IndexBase extends AppMenusCtrlBase {
         const parameters: any[] = [
             { pathName: 'parexamcycles', parameterName: 'parexamcycle' },
             { pathName: 'newgridview', parameterName: 'newgridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
+     * 考核模板设置<绩效管理>
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_2(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'parassesstemplates', parameterName: 'parassesstemplate' },
+            { pathName: 'gridview', parameterName: 'gridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
         this.$router.push(path);
@@ -285,7 +306,7 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
-     * 考核内容汇总<绩效管理>
+     * 考核方案<绩效管理>
      *
      * @param {*} [item={}]
      * @memberof Index
@@ -303,7 +324,7 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
-     * 评分权重分配<绩效管理>
+     * 评分权重设置<绩效管理>
      *
      * @param {*} [item={}]
      * @memberof Index
@@ -314,7 +335,7 @@ export default class IndexBase extends AppMenusCtrlBase {
         const deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'parldkhqzs', parameterName: 'parldkhqz' },
-            { pathName: 'gridview', parameterName: 'gridview' },
+            { pathName: 'newgridview', parameterName: 'newgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
         this.$router.push(path);

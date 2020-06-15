@@ -405,6 +405,14 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
+        "srfkey": "EhrCodeList0242",
+        "emptytext": "",
+        "codelisttype":"dynamic",
+        "appdataentity":"ParExamContent",
+        "appdedataset":"FetchDefault",
+        "items": []
+    },
+    {
         srfkey: 'EhrCodeList0064',
         emptytext: '未定义',
         "codelisttype":"static",
@@ -462,8 +470,8 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         items: [
             {
                 id: '10',
-                label: '部门负责人考评',
-                text: '部门负责人考评',
+                label: '直属领导考评',
+                text: '直属领导考评',
                 "data":"",
                 "codename":"Item_10",
                 value: '10',
@@ -483,11 +491,10 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
             },
             {
                 id: '30',
-                label: '集中述职评审',
-                text: '集中述职评审',
+                label: '总经理考评',
+                text: '总经理考评',
                 "data":"",
                 "codename":"Item_30",
-                "color": "Red",
                 value: '30',
                 
                 disabled: false,

@@ -13,7 +13,7 @@ import DefaultModel from './default-searchform-model';
 export default class DefaultService extends ControlService {
 
     /**
-     * 考核内容评分汇总服务对象
+     * 考核方案服务对象
      *
      * @type {ParJxkhxhzService}
      * @memberof DefaultService

@@ -34,6 +34,7 @@ import parznbmmx_en_US from '@locale/lanres/entities/par-znbmmx/par-znbmmx_en_US
 import parjxkhjcsz_en_US from '@locale/lanres/entities/par-jxkhjcsz/par-jxkhjcsz_en_US';
 import parptryndlhmb_en_US from '@locale/lanres/entities/par-ptryndlhmb/par-ptryndlhmb_en_US';
 import parldndlhmb_en_US from '@locale/lanres/entities/par-ldndlhmb/par-ldndlhmb_en_US';
+import parassesstemplate_en_US from '@locale/lanres/entities/par-assess-template/par-assess-template_en_US';
 import parxmbpjbz_en_US from '@locale/lanres/entities/par-xmbpjbz/par-xmbpjbz_en_US';
 import pardjbz_en_US from '@locale/lanres/entities/par-djbz/par-djbz_en_US';
 import parjgbmpjbz_en_US from '@locale/lanres/entities/par-jgbmpjbz/par-jgbmpjbz_en_US';
@@ -111,7 +112,8 @@ export default {
                 menuitem10: '评分权重设置',
                 menuitem16: '积分规则设置',
                 menuitem12: '绩效标准',
-                menuitem11: '考核内容汇总',
+                menuitem19: '考核模板设置',
+                menuitem11: '考核方案设置',
                 menuitem3: '绩效考核',
                 menuitem13: '年度量化目标填报',
                 menuitem14: '年度量化目标修正',
@@ -160,6 +162,7 @@ export default {
         parjxkhjcsz: parjxkhjcsz_en_US,
         parptryndlhmb: parptryndlhmb_en_US,
         parldndlhmb: parldndlhmb_en_US,
+        parassesstemplate: parassesstemplate_en_US,
         parxmbpjbz: parxmbpjbz_en_US,
         pardjbz: pardjbz_en_US,
         parjgbmpjbz: parjgbmpjbz_en_US,

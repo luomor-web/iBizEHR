@@ -20,20 +20,34 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('parkhzcmxname')">
-                <el-table-column show-overflow-tooltip :prop="'parkhzcmxname'" :label="$t('entities.parkhzcmx.main_grid.columns.parkhzcmxname')" :width="300"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('xh')">
+                <el-table-column show-overflow-tooltip :prop="'xh'" :label="$t('entities.parkhzcmx.main_grid.columns.xh')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.parkhzcmx.main_grid.columns.parkhzcmxname')}}
+                        {{$t('entities.parkhzcmx.main_grid.columns.xh')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.parkhzcmxname}}</span>
+                        <span>{{row.xh}}</span>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('khnr')">
+                <el-table-column show-overflow-tooltip :prop="'khnr'" :label="$t('entities.parkhzcmx.main_grid.columns.khnr')" :width="200"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.parkhzcmx.main_grid.columns.khnr')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <template >
+            <codelist :value="row.khnr" tag='EhrCodeList0242' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+                        </template>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('szqz')">
-                <el-table-column show-overflow-tooltip :prop="'szqz'" :label="$t('entities.parkhzcmx.main_grid.columns.szqz')" :width="170"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'szqz'" :label="$t('entities.parkhzcmx.main_grid.columns.szqz')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.parkhzcmx.main_grid.columns.szqz')}}
@@ -41,24 +55,6 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                             <app-format-data dataType="FLOAT" precision="1" :data="row.szqz"></app-format-data>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('uagridcolumn1')">
-                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.parkhzcmx.main_grid.columns.uagridcolumn1')" :width="200"  :align="'center'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.parkhzcmx.main_grid.columns.uagridcolumn1')}}
-                      </span>
-                    </template>
-                    <template slot-scope="scope">
-                        <span>
-                            
-                            <a @click="uiAction(scope.row, 'SZPFZT', $event)">
-                              <i class=''></i>
-                              {{$t('entities.parkhzcmx.main_grid.uiactions.szpfzt')}}
-                            </a>
-                        </span>
                     </template>
                 </el-table-column>
             </template>
@@ -112,7 +108,6 @@ import { UIActionTool,Util } from '@/utils';
 import ParKhzcmxService from '@/service/par-khzcmx/par-khzcmx-service';
 import MainService from './main-grid-service';
 
-import ParKhzcmxUIService from '@/uiservice/par-khzcmx/par-khzcmx-ui-service';
 import CodeListService from "@service/app/codelist-service";
 import { FormItemModel } from '@/model/form-detail';
 
@@ -202,34 +197,6 @@ export default class MainBase extends Vue implements ControlInterface {
     public appEntityService: ParKhzcmxService = new ParKhzcmxService({ $store: this.$store });
     
 
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public grid_uagridcolumn1_u5532734_click(params: any = {}, tag?: any, $event?: any) {
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        let contextJO:any = {};
-        xData = this;
-        if (_this.getDatas && _this.getDatas instanceof Function) {
-            datas = [..._this.getDatas()];
-        }
-        if(params){
-          datas = [params];
-        }
-        // 界面行为
-        const curUIService:ParKhzcmxUIService  = new ParKhzcmxUIService();
-        curUIService.ParKhzcmx_SZPFZT(datas,contextJO, paramJO,  $event, xData,this,"ParKhzcmx");
-    }
-
 
     /**
      * 关闭视图
@@ -287,6 +254,20 @@ export default class MainBase extends Vue implements ControlInterface {
         return this.selections[0];
     }
 
+    /**
+     * 打开新建数据视图
+     *
+     * @type {any}
+     * @memberof Main
+     */
+    @Prop() public newdata: any;
+    /**
+     * 打开编辑数据视图
+     *
+     * @type {any}
+     * @memberof Main
+     */
+    @Prop() public opendata: any;
 
     /**
      * 显示处理提示
@@ -554,9 +535,16 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public allColumns: any[] = [
         {
-            name: 'parkhzcmxname',
+            name: 'xh',
+            label: '排序',
+            langtag: 'entities.parkhzcmx.main_grid.columns.xh',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'khnr',
             label: '考核内容',
-            langtag: 'entities.parkhzcmx.main_grid.columns.parkhzcmxname',
+            langtag: 'entities.parkhzcmx.main_grid.columns.khnr',
             show: true,
             util: 'PX'
         },
@@ -564,13 +552,6 @@ export default class MainBase extends Vue implements ControlInterface {
             name: 'szqz',
             label: '考核权重（%）',
             langtag: 'entities.parkhzcmx.main_grid.columns.szqz',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'uagridcolumn1',
-            label: '设置评分权重',
-            langtag: 'entities.parkhzcmx.main_grid.columns.uagridcolumn1',
             show: true,
             util: 'PX'
         },
@@ -604,8 +585,8 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public rules: any = {
         srfkey: [
-             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '考核内容标识 值不能为空', trigger: 'change' },
-            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '考核内容标识 值不能为空', trigger: 'blur' },
+             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '考核模板明细标识 值不能为空', trigger: 'change' },
+            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '考核模板明细标识 值不能为空', trigger: 'blur' },
         ],
     }
 
@@ -661,7 +642,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public load(opt: any = {}, pageReset: boolean = false): void {
         if(!this.fetchAction){
-            this.$Notice.error({ title: '错误', desc: 'ParKhzcmxPickupGridView视图表格fetchAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'ParKhzcmxGridView视图表格fetchAction参数未配置' });
             return;
         }
         if(pageReset){
@@ -738,7 +719,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public async remove(datas: any[]): Promise<any> {
         if(!this.removeAction){
-            this.$Notice.error({ title: '错误', desc: 'ParKhzcmxPickupGridView视图表格removeAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'ParKhzcmxGridView视图表格removeAction参数未配置' });
             return;
         }
         let _datas:any[] = [];
@@ -844,7 +825,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public addBatch(arg: any = {}): void {
         if(!this.fetchAction){
-            this.$Notice.error({ title: '错误', desc: 'ParKhzcmxPickupGridView视图表格fetchAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'ParKhzcmxGridView视图表格fetchAction参数未配置' });
             return;
         }
         if(!arg){
@@ -961,6 +942,14 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public async formatExcelData(filterVal:any, jsonData:any) {
         let codelistColumns:Array<any> = [
+          {
+            name: 'khnr',
+            srfkey: 'EhrCodeList0242',
+            codelistType : 'DYNAMIC',
+            textSeparator: '、',
+            renderMode: 'string',
+            valueSeparator: ";",
+          },
         ];
         let _this = this;
         for (const codelist of codelistColumns) {
@@ -1306,9 +1295,6 @@ export default class MainBase extends Vue implements ControlInterface {
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
         $event.stopPropagation();
-        if(Object.is('SZPFZT', tag)) {
-            this.grid_uagridcolumn1_u5532734_click(row, tag, $event);
-        }
     }
 
     /**
@@ -1383,7 +1369,7 @@ export default class MainBase extends Vue implements ControlInterface {
             try {
                 if(Object.is(item.rowDataState, 'create')){
                     if(!this.createAction){
-                        this.$Notice.error({ title: '错误', desc: 'ParKhzcmxPickupGridView视图表格createAction参数未配置' });
+                        this.$Notice.error({ title: '错误', desc: 'ParKhzcmxGridView视图表格createAction参数未配置' });
                     }else{
                       Object.assign(item,{viewparams:this.viewparams});
                       let response = await this.service.add(this.createAction, JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator);
@@ -1391,7 +1377,7 @@ export default class MainBase extends Vue implements ControlInterface {
                     }
                 }else if(Object.is(item.rowDataState, 'update')){
                     if(!this.updateAction){
-                        this.$Notice.error({ title: '错误', desc: 'ParKhzcmxPickupGridView视图表格updateAction参数未配置' });
+                        this.$Notice.error({ title: '错误', desc: 'ParKhzcmxGridView视图表格updateAction参数未配置' });
                     }else{
                         Object.assign(item,{viewparams:this.viewparams});
                         if(item.parkhzcmx){

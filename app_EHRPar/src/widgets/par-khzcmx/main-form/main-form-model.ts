@@ -56,24 +56,24 @@ export default class MainModel {
         name: 'srfsourcekey',
       },
       {
-        name: 'parjxkhjcszid',
-        prop: 'parjxkhjcszid',
+        name: 'parassesstemplateid',
+        prop: 'parassesstemplateid',
         dataType: 'PICKUP',
       },
       {
-        name: 'parjxkhjcszname',
-        prop: 'parjxkhjcszname',
+        name: 'parassesstemplatename',
+        prop: 'parassesstemplatename',
         dataType: 'PICKUPTEXT',
       },
       {
-        name: 'parkhzcmxid',
-        prop: 'parkhzcmxid',
-        dataType: 'GUID',
+        name: 'xh',
+        prop: 'xh',
+        dataType: 'INT',
       },
       {
-        name: 'parkhzcmxname',
-        prop: 'parkhzcmxname',
-        dataType: 'TEXT',
+        name: 'khnr',
+        prop: 'khnr',
+        dataType: 'SSCODELIST',
       },
       {
         name: 'szqz',
@@ -81,9 +81,9 @@ export default class MainModel {
         dataType: 'FLOAT',
       },
       {
-        name: 'khdx',
-        prop: 'khdx',
-        dataType: 'PICKUPDATA',
+        name: 'parkhzcmxid',
+        prop: 'parkhzcmxid',
+        dataType: 'GUID',
       },
       {
         name: 'parkhzcmx',
