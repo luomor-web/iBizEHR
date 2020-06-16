@@ -141,7 +141,7 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
-     * 培训计划审批<开发管理模块>
+     * 培训计划审批<培训管理>
      *
      * @param {*} [item={}]
      * @memberof Index
@@ -393,7 +393,7 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
-     * 培训计划发布<开发管理模块>
+     * 培训计划发布<培训管理>
      *
      * @param {*} [item={}]
      * @memberof Index
