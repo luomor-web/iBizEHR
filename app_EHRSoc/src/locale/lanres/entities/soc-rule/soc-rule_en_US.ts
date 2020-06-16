@@ -8,5 +8,9 @@ export default {
     updateman: '更新人',
     createdate: '建立时间',
     updatedate: '更新时间',
+    ormorgid: '组织标识',
+    ormorgname: '组织',
+    nyear: '年度',
+    memo: '备注',
   },
 };
