@@ -61,9 +61,15 @@ export default {
         },
         menus: {
             index: {
-                menuitem1: '基础信息',
+                menuitem1: '社保规则',
                 menuitem2: '参保地',
                 menuitem3: '参保账户',
+                menuitem4: '保险类型',
+                menuitem5: '社保规则',
+                menuitem7: '社保档案',
+                menuitem6: '社保档案',
+                menuitem8: '员工社保设置',
+                menuitem9: '非员工终止社保',
             },
         },
     },

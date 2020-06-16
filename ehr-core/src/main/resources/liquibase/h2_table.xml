@@ -492,7 +492,7 @@
 
 
     <!--输出实体[SOCACCOUNT]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-socaccount-23-16">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-socaccount-25-16">
         <createTable tableName="T_SOCACCOUNT">
                 <column name="SOCACCOUNTID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_SOCACCOUNT_SOCACCOUNTID"/>
@@ -3914,7 +3914,7 @@
 
 
     <!--输出实体[SOCAREA]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-socarea-35-97">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-socarea-36-97">
         <createTable tableName="T_SOCAREA">
                 <column name="SOCAREAID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_SOCAREA_SOCAREAID"/>
@@ -12013,7 +12013,7 @@
        <addForeignKeyConstraint baseColumnNames="SALSALARYID" baseTableName="T_SALLOG" constraintName="DER1N_SALLOG_SALSALARY_SALSALA" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SALSALARYID" referencedTableName="T_SALSALARY" validate="true"/>
     </changeSet>
         <!--输出实体[SOCACCOUNT]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-socaccount-23-315">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-socaccount-25-315">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_SOCACCOUNT" constraintName="DER1N_SOCACCOUNT_ORMORG_ORMORG" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[TRMSTAY]外键关系 -->
@@ -12469,7 +12469,7 @@
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_SALSTDGWGZ" constraintName="DER1N_SALSTDGWGZ_ORMORG_ORMORG" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[SOCAREA]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-socarea-35-446">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-socarea-36-446">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_SOCAREA" constraintName="DER1N_SOCAREA_ORMORG_ORMORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[PCMPROFILESZYJTJ]外键关系 -->

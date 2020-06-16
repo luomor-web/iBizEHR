@@ -2946,7 +2946,7 @@
             {
                "appid":"EHRSoc",
                "appname":"EHRSOC（社保管理）",
-               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"基础信息" , "items":[{ "id":"menuitem2" , "name":"参保地" },{ "id":"menuitem3" , "name":"参保账户" }]}] }]
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"社保规则" , "items":[{ "id":"menuitem2" , "name":"参保地" },{ "id":"menuitem3" , "name":"参保账户" },{ "id":"menuitem4" , "name":"保险类型" },{ "id":"menuitem5" , "name":"社保规则" }]},{ "id":"menuitem7" , "name":"社保档案" , "items":[{ "id":"menuitem6" , "name":"社保档案" },{ "id":"menuitem8" , "name":"员工社保设置" },{ "id":"menuitem9" , "name":"非员工终止社保" }]}] }]
             }
             ,
             {
