@@ -23,11 +23,11 @@
     :isOpenEdit="true"
     :gridRowActiveMode="gridRowActiveMode"
     @save="onSave"
-    updateAction=""
+    updateAction="Update"
     removeAction="Remove"
-    loaddraftAction=""
-    loadAction=""
-    createAction=""
+    loaddraftAction="GetDraft"
+    loadAction="Get"
+    createAction="Create"
     fetchAction="FetchDefault"
     :newdata="newdata"
     :opendata="opendata"
@@ -174,6 +174,10 @@ export default class SocTypeGridViewBase extends GridViewBase {
      * @memberof SocTypeGridView
      */
     public toolBarModels: any = {
+        deuiaction1: { name: 'deuiaction1', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', iconcls: 'fa fa-plus', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'NewRow', target: '' }, class: '' },
+
+        deuiaction2: { name: 'deuiaction2', caption: '保存','isShowCaption':true,'isShowIcon':true, tooltip: '保存', iconcls: 'fa fa-save', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'SaveRow', target: '' }, class: '' },
+
         deuiaction3: { name: 'deuiaction3', caption: '删除','isShowCaption':true,'isShowIcon':true, tooltip: '删除', iconcls: 'fa fa-remove', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYGXML', uiaction: { tag: 'Remove', target: 'MULTIKEY' }, class: '' },
 
         deuiaction4: { name: 'deuiaction4', caption: '导入','isShowCaption':true,'isShowIcon':true, tooltip: '导入', iconcls: 'fa fa-upload', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'Import', target: '' }, class: '' },

@@ -11971,7 +11971,7 @@
 
 
     <!--输出实体[SOCTYPE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-soctype-20-303">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-soctype-21-303">
         <createTable tableName="T_SOCTYPE">
                 <column name="SOCTYPEID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_SOCTYPE_SOCTYPEID"/>

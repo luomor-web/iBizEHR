@@ -59,6 +59,14 @@ export default {
 		},
 	},
 	gridviewtoolbar_toolbar: {
+		deuiaction1: {
+			caption: "新建",
+			tip: "新建",
+		},
+		deuiaction2: {
+			caption: "保存",
+			tip: "保存",
+		},
 		deuiaction3: {
 			caption: "Remove",
 			tip: "Remove {0}",
