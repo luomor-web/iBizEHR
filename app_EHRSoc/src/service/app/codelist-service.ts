@@ -1,3 +1,4 @@
+import EhrCodeList0249 from '@/codelist/ehr-code-list0249';   
 import EhrCodeList0250 from '@/codelist/ehr-code-list0250';   
 import EhrCodeList0219 from '@/codelist/ehr-code-list0219';   
 import { Store } from 'vuex';
@@ -50,6 +51,14 @@ export default class CodeListService {
      */
     public static codelistCached:Map<string,any> = new Map();
 
+
+    /**
+     * 代码表--云系统操作者
+     *
+     * @type {EhrCodeList0249}
+     * @memberof CodeListService
+     */
+    public EhrCodeList0249: EhrCodeList0249 = new EhrCodeList0249();
 
     /**
      * 代码表--所属区域

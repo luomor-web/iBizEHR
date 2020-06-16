@@ -40,8 +40,14 @@ export class EntityServiceRegister {
      */
     protected init(): void {
                 this.allEntityService.set('socarea', () => import('@/service/soc-area/soc-area-service'));
+        this.allEntityService.set('socarchives', () => import('@/service/soc-archives/soc-archives-service'));
+        this.allEntityService.set('soctype', () => import('@/service/soc-type/soc-type-service'));
+        this.allEntityService.set('socrule', () => import('@/service/soc-rule/soc-rule-service'));
         this.allEntityService.set('ormorg', () => import('@/service/orm-org/orm-org-service'));
+        this.allEntityService.set('socrecord', () => import('@/service/soc-record/soc-record-service'));
         this.allEntityService.set('socaccount', () => import('@/service/soc-account/soc-account-service'));
+        this.allEntityService.set('socarchivesdetail', () => import('@/service/soc-archives-detail/soc-archives-detail-service'));
+        this.allEntityService.set('socruledetail', () => import('@/service/soc-rule-detail/soc-rule-detail-service'));
     }
 
     /**

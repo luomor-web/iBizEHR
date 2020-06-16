@@ -86,7 +86,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/jcgl/1/hetongleixing.png',
 	textcls: '',
-	appfunctag: '',
+	appfunctag: '_4',
 	resourcetag: '',
 	authtag:'EHRSoc-Index-menuitem4',
 },
@@ -162,7 +162,7 @@ export default class IndexModel {
 	hidesidebar: false,
 	opendefault: false,
 	iconcls: '',
-	icon: '',
+	icon: '../../../img/pzgl/1/tuixiuguanli.png',
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
@@ -181,7 +181,7 @@ export default class IndexModel {
 	hidesidebar: false,
 	opendefault: false,
 	iconcls: '',
-	icon: '',
+	icon: '../../../img/newimage/1/guazhidaoqiguanli.png',
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
@@ -199,6 +199,18 @@ export default class IndexModel {
 	 * @memberof IndexModel
 	 */
 	public funcs: any[] = [
+        {
+            appfunctag: '_4',
+            appfuncyype: 'APPVIEW',
+            openmode: '',
+            codename: 'soctypegridview',
+            deResParameters: [],
+            routepath: '/index/:index?/soctypes/:soctype?/gridview/:gridview?',
+            parameters: [
+                { pathName: 'soctypes', parameterName: 'soctype' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+        },
         {
             appfunctag: '_2',
             appfuncyype: 'APPVIEW',

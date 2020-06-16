@@ -92,6 +92,20 @@ const router = new Router({
                     component: () => import('@pages/soc/soc-area-grid-view/soc-area-grid-view.vue'),
                 },
                 {
+                    path: 'soctypes/:soctype?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.soctype.views.editview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'soctypes', parameterName: 'soctype' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-type-edit-view/soc-type-edit-view.vue'),
+                },
+                {
                     path: 'ormorgs/:ormorg?/pickupgridview/:pickupgridview?',
                     meta: {
                         caption: 'entities.ormorg.views.pickupgridview.title',
@@ -118,6 +132,20 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/soc/soc-area-edit-view/soc-area-edit-view.vue'),
+                },
+                {
+                    path: 'soctypes/:soctype?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.soctype.views.gridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'soctypes', parameterName: 'soctype' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-type-grid-view/soc-type-grid-view.vue'),
                 },
             ...indexRoutes,
             ],
@@ -173,6 +201,32 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/orm-org-pickup-view/orm-org-pickup-view.vue'),
+    },
+    {
+        path: '/soctypes/:soctype?/editview/:editview?',
+        meta: {
+            caption: 'entities.soctype.views.editview.title',
+            info:'',
+            parameters: [
+                { pathName: 'soctypes', parameterName: 'soctype' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-type-edit-view/soc-type-edit-view.vue'),
+    },
+    {
+        path: '/soctypes/:soctype?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.soctype.views.gridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'soctypes', parameterName: 'soctype' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-type-grid-view/soc-type-grid-view.vue'),
     },
     {
         path: '/socaccounts/:socaccount?/gridview/:gridview?',

@@ -43,6 +43,25 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '9787d3620f997b0d8f6bc4bcf0826837',
+            viewmodule: 'SOC',
+            viewname: 'SocTypeEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
+            viewtag: 'a91ca0b2a35fc0bc1c22a613b0af0f04',
+            viewmodule: 'SOC',
+            viewname: 'SocTypeGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '9787d3620f997b0d8f6bc4bcf0826837',
+            ],
+        },
+        {
             viewtag: 'be3603e6155f93c90fc36953c6a4689f',
             viewmodule: 'SOC',
             viewname: 'SocAccountGridView',
@@ -71,6 +90,7 @@ export const viewstate: any = {
             refviews: [
                 'be3603e6155f93c90fc36953c6a4689f',
                 '1a1326e28ef5ec3d85b45c0d9ecf9684',
+                'a91ca0b2a35fc0bc1c22a613b0af0f04',
             ],
         },
     ],

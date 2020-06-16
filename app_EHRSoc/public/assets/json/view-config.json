@@ -31,6 +31,22 @@
         "viewname": "OrmOrgPickupView",
         "viewtag": "912c10028c229aaf79d7542c94931417"
     },
+    "soctypeeditview": {
+        "title": "保险类型编辑视图",
+        "caption": "保险类型",
+        "viewtype": "DEEDITVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocTypeEditView",
+        "viewtag": "9787d3620f997b0d8f6bc4bcf0826837"
+    },
+    "soctypegridview": {
+        "title": "保险类型表格视图",
+        "caption": "保险类型",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocTypeGridView",
+        "viewtag": "a91ca0b2a35fc0bc1c22a613b0af0f04"
+    },
     "socaccountgridview": {
         "title": "参保账户表格视图",
         "caption": "参保账户",

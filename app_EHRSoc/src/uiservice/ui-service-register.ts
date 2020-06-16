@@ -40,8 +40,14 @@ export class UIServiceRegister {
      */
     protected init(): void {
                 this.allUIService.set('socarea', () => import('@/uiservice/soc-area/soc-area-ui-service'));
+        this.allUIService.set('socarchives', () => import('@/uiservice/soc-archives/soc-archives-ui-service'));
+        this.allUIService.set('soctype', () => import('@/uiservice/soc-type/soc-type-ui-service'));
+        this.allUIService.set('socrule', () => import('@/uiservice/soc-rule/soc-rule-ui-service'));
         this.allUIService.set('ormorg', () => import('@/uiservice/orm-org/orm-org-ui-service'));
+        this.allUIService.set('socrecord', () => import('@/uiservice/soc-record/soc-record-ui-service'));
         this.allUIService.set('socaccount', () => import('@/uiservice/soc-account/soc-account-ui-service'));
+        this.allUIService.set('socarchivesdetail', () => import('@/uiservice/soc-archives-detail/soc-archives-detail-ui-service'));
+        this.allUIService.set('socruledetail', () => import('@/uiservice/soc-rule-detail/soc-rule-detail-ui-service'));
     }
 
     /**

@@ -1,6 +1,12 @@
 import socarea_en_US from '@locale/lanres/entities/soc-area/soc-area_en_US';
+import socarchives_en_US from '@locale/lanres/entities/soc-archives/soc-archives_en_US';
+import soctype_en_US from '@locale/lanres/entities/soc-type/soc-type_en_US';
+import socrule_en_US from '@locale/lanres/entities/soc-rule/soc-rule_en_US';
 import ormorg_en_US from '@locale/lanres/entities/orm-org/orm-org_en_US';
+import socrecord_en_US from '@locale/lanres/entities/soc-record/soc-record_en_US';
 import socaccount_en_US from '@locale/lanres/entities/soc-account/soc-account_en_US';
+import socarchivesdetail_en_US from '@locale/lanres/entities/soc-archives-detail/soc-archives-detail_en_US';
+import socruledetail_en_US from '@locale/lanres/entities/soc-rule-detail/soc-rule-detail_en_US';
 import components_en_US from '@locale/lanres/components/components_en_US';
 import codelist_en_US from '@locale/lanres/codelist/codelist_en_US';
 import userCustom_en_US from '@locale/lanres/userCustom/userCustom_en_US';
@@ -75,8 +81,14 @@ export default {
     },
     entities: {
         socarea: socarea_en_US,
+        socarchives: socarchives_en_US,
+        soctype: soctype_en_US,
+        socrule: socrule_en_US,
         ormorg: ormorg_en_US,
+        socrecord: socrecord_en_US,
         socaccount: socaccount_en_US,
+        socarchivesdetail: socarchivesdetail_en_US,
+        socruledetail: socruledetail_en_US,
     },
     components: components_en_US,
     codelist: codelist_en_US,
