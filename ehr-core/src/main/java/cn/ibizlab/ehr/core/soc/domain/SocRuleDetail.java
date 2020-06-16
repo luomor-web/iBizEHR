@@ -28,41 +28,40 @@ import com.baomidou.mybatisplus.annotation.*;
 import cn.ibizlab.ehr.util.domain.EntityMP;
 
 /**
- * 实体[保险类型]
+ * 实体[社保规则明细]
  */
 @Getter
 @Setter
 @NoArgsConstructor
 @JsonIgnoreProperties(value = "handler")
-@TableName(value = "T_SOCTYPE",resultMap = "SocTypeResultMap")
-public class SocType extends EntityMP implements Serializable {
+@TableName(value = "T_SOCRULEDETAIL",resultMap = "SocRuleDetailResultMap")
+public class SocRuleDetail extends EntityMP implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 保险类型标识
+     * 社保规则明细标识
      */
     @DEField(isKeyField=true)
-    @TableId(value= "soctypeid",type=IdType.UUID)
-    @JSONField(name = "soctypeid")
-    @JsonProperty("soctypeid")
-    private String soctypeid;
+    @TableId(value= "socruledetailid",type=IdType.UUID)
+    @JSONField(name = "socruledetailid")
+    @JsonProperty("socruledetailid")
+    private String socruledetailid;
     /**
-     * 保险类型
+     * 社保规则明细名称
      */
-    @TableField(value = "soctypename")
-    @JSONField(name = "soctypename")
-    @JsonProperty("soctypename")
-    private String soctypename;
+    @TableField(value = "socruledetailname")
+    @JSONField(name = "socruledetailname")
+    @JsonProperty("socruledetailname")
+    private String socruledetailname;
     /**
-     * 逻辑有效标志
+     * 建立人
      */
-    @DEField(preType = DEPredefinedFieldType.LOGICVALID, logicval = "1" , logicdelval="0")
-    @TableLogic(value= "1",delval="0")
-    @TableField(value = "enable")
-    @JSONField(name = "enable")
-    @JsonProperty("enable")
-    private Integer enable;
+    @DEField(preType = DEPredefinedFieldType.CREATEMAN)
+    @TableField(value = "createman" , fill = FieldFill.INSERT)
+    @JSONField(name = "createman")
+    @JsonProperty("createman")
+    private String createman;
     /**
      * 建立时间
      */
@@ -73,13 +72,13 @@ public class SocType extends EntityMP implements Serializable {
     @JsonProperty("createdate")
     private Timestamp createdate;
     /**
-     * 建立人
+     * 更新人
      */
-    @DEField(preType = DEPredefinedFieldType.CREATEMAN)
-    @TableField(value = "createman" , fill = FieldFill.INSERT)
-    @JSONField(name = "createman")
-    @JsonProperty("createman")
-    private String createman;
+    @DEField(preType = DEPredefinedFieldType.UPDATEMAN)
+    @TableField(value = "updateman")
+    @JSONField(name = "updateman")
+    @JsonProperty("updateman")
+    private String updateman;
     /**
      * 更新时间
      */
@@ -89,31 +88,15 @@ public class SocType extends EntityMP implements Serializable {
     @JSONField(name = "updatedate" , format="yyyy-MM-dd HH:mm:ss")
     @JsonProperty("updatedate")
     private Timestamp updatedate;
-    /**
-     * 更新人
-     */
-    @DEField(preType = DEPredefinedFieldType.UPDATEMAN)
-    @TableField(value = "updateman")
-    @JSONField(name = "updateman")
-    @JsonProperty("updateman")
-    private String updateman;
-    /**
-     * 排序号
-     */
-    @DEField(preType = DEPredefinedFieldType.ORDERVALUE)
-    @TableField(value = "ordervalue")
-    @JSONField(name = "ordervalue")
-    @JsonProperty("ordervalue")
-    private Integer ordervalue;
 
 
 
     /**
-     * 设置 [保险类型]
+     * 设置 [社保规则明细名称]
      */
-    public void setSoctypename(String soctypename){
-        this.soctypename = soctypename ;
-        this.modify("soctypename",soctypename);
+    public void setSocruledetailname(String socruledetailname){
+        this.socruledetailname = socruledetailname ;
+        this.modify("socruledetailname",socruledetailname);
     }
 
 

@@ -27,6 +27,10 @@ zuul:
       path: /trmlgbdetails/**
       serviceId: ehr-webapi
       stripPrefix: false
+    attendancerecord:
+      path: /attendancerecords/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     trmtraffic:
       path: /trmtraffics/**
       serviceId: ehr-webapi
@@ -65,6 +69,10 @@ zuul:
       stripPrefix: false
     trmstay:
       path: /trmstays/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormorg:
+      path: /ormorgs/**
       serviceId: ehr-webapi
       stripPrefix: false
     trmtrainoutapply:
@@ -139,12 +147,28 @@ zuul:
       path: /trmtrainactments/**
       serviceId: ehr-webapi
       stripPrefix: false
+    ormorgsector:
+      path: /ormorgsectors/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormbmkqdz:
+      path: /ormbmkqdzs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     trmteachercharge:
       path: /trmteachercharges/**
       serviceId: ehr-webapi
       stripPrefix: false
     trmdepartneeds:
       path: /trmdepartneeds/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    ormerporg:
+      path: /ormerporgs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    pimperson:
+      path: /pimpeople/**
       serviceId: ehr-webapi
       stripPrefix: false
     trmdemdeftion:
@@ -170,30 +194,6 @@ zuul:
     dynadashboard:
       path: /dynadashboards/**
       serviceId: r7rt-dyna
-      stripPrefix: false
-    attendancerecord:
-      path: /attendancerecords/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    ormorg:
-      path: /ormorgs/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    ormorgsector:
-      path: /ormorgsectors/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    ormbmkqdz:
-      path: /ormbmkqdzs/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    ormerporg:
-      path: /ormerporgs/**
-      serviceId: ehr-webapi
-      stripPrefix: false
-    pimperson:
-      path: /pimpeople/**
-      serviceId: ehr-webapi
       stripPrefix: false
   sensitive-headers:
     - Cookie,Set-Cookie,Authorization

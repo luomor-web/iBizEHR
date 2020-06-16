@@ -4,6 +4,7 @@ import trmtrainfacies_en_US from '@locale/lanres/entities/trm-train-facies/trm-t
 import trmstaffnodes_en_US from '@locale/lanres/entities/trm-staffnodes/trm-staffnodes_en_US';
 import trmdutycadres_en_US from '@locale/lanres/entities/trm-duty-cadres/trm-duty-cadres_en_US';
 import trmlgbdetail_en_US from '@locale/lanres/entities/trm-lgb-detail/trm-lgb-detail_en_US';
+import attendancerecord_en_US from '@locale/lanres/entities/att-endance-record/att-endance-record_en_US';
 import trmtraffic_en_US from '@locale/lanres/entities/trm-traffic/trm-traffic_en_US';
 import trmtrainteacher_en_US from '@locale/lanres/entities/trm-train-teacher/trm-train-teacher_en_US';
 import trmplanformu_en_US from '@locale/lanres/entities/trm-plan-formu/trm-plan-formu_en_US';
@@ -14,6 +15,7 @@ import trmtrainresment_en_US from '@locale/lanres/entities/trm-train-resment/trm
 import trmtrainfillin_en_US from '@locale/lanres/entities/trm-train-fillin/trm-train-fillin_en_US';
 import trmgradecadres_en_US from '@locale/lanres/entities/trm-gradecadres/trm-gradecadres_en_US';
 import trmstay_en_US from '@locale/lanres/entities/trm-stay/trm-stay_en_US';
+import ormorg_en_US from '@locale/lanres/entities/orm-org/orm-org_en_US';
 import trmtrainoutapply_en_US from '@locale/lanres/entities/trm-train-out-apply/trm-train-out-apply_en_US';
 import trmagencyrecord_en_US from '@locale/lanres/entities/trm-agency-record/trm-agency-record_en_US';
 import trmtrainperson_en_US from '@locale/lanres/entities/trm-train-person/trm-train-person_en_US';
@@ -32,20 +34,18 @@ import trmtraindata_en_US from '@locale/lanres/entities/trm-train-data/trm-train
 import trmzzobm_en_US from '@locale/lanres/entities/trm-zzobm/trm-zzobm_en_US';
 import trminvoice_en_US from '@locale/lanres/entities/trm-invoice/trm-invoice_en_US';
 import trmtrainactment_en_US from '@locale/lanres/entities/trm-train-actment/trm-train-actment_en_US';
+import ormorgsector_en_US from '@locale/lanres/entities/orm-orgsector/orm-orgsector_en_US';
+import ormbmkqdz_en_US from '@locale/lanres/entities/orm-bmkqdz/orm-bmkqdz_en_US';
 import trmteachercharge_en_US from '@locale/lanres/entities/trm-teacher-charge/trm-teacher-charge_en_US';
 import trmdepartneeds_en_US from '@locale/lanres/entities/trm-depart-needs/trm-depart-needs_en_US';
+import ormerporg_en_US from '@locale/lanres/entities/orm-erporg/orm-erporg_en_US';
+import pimperson_en_US from '@locale/lanres/entities/pim-person/pim-person_en_US';
 import trmdemdeftion_en_US from '@locale/lanres/entities/trm-demdeftion/trm-demdeftion_en_US';
 import trmdepart_en_US from '@locale/lanres/entities/trm-depart/trm-depart_en_US';
 import trmtrainplan_en_US from '@locale/lanres/entities/trm-train-plan/trm-train-plan_en_US';
 import trmtrainagency_en_US from '@locale/lanres/entities/trm-train-agency/trm-train-agency_en_US';
 import trmhmatser_en_US from '@locale/lanres/entities/trm-hmatser/trm-hmatser_en_US';
 import dynadashboard_en_US from '@locale/lanres/entities/dyna-dashboard/dyna-dashboard_en_US';
-import attendancerecord_en_US from '@locale/lanres/entities/att-endance-record/att-endance-record_en_US';
-import ormorg_en_US from '@locale/lanres/entities/orm-org/orm-org_en_US';
-import ormorgsector_en_US from '@locale/lanres/entities/orm-orgsector/orm-orgsector_en_US';
-import ormbmkqdz_en_US from '@locale/lanres/entities/orm-bmkqdz/orm-bmkqdz_en_US';
-import ormerporg_en_US from '@locale/lanres/entities/orm-erporg/orm-erporg_en_US';
-import pimperson_en_US from '@locale/lanres/entities/pim-person/pim-person_en_US';
 import components_en_US from '@locale/lanres/components/components_en_US';
 import codelist_en_US from '@locale/lanres/codelist/codelist_en_US';
 import userCustom_en_US from '@locale/lanres/userCustom/userCustom_en_US';
@@ -139,6 +139,7 @@ export default {
         trmstaffnodes: trmstaffnodes_en_US,
         trmdutycadres: trmdutycadres_en_US,
         trmlgbdetail: trmlgbdetail_en_US,
+        attendancerecord: attendancerecord_en_US,
         trmtraffic: trmtraffic_en_US,
         trmtrainteacher: trmtrainteacher_en_US,
         trmplanformu: trmplanformu_en_US,
@@ -149,6 +150,7 @@ export default {
         trmtrainfillin: trmtrainfillin_en_US,
         trmgradecadres: trmgradecadres_en_US,
         trmstay: trmstay_en_US,
+        ormorg: ormorg_en_US,
         trmtrainoutapply: trmtrainoutapply_en_US,
         trmagencyrecord: trmagencyrecord_en_US,
         trmtrainperson: trmtrainperson_en_US,
@@ -167,20 +169,18 @@ export default {
         trmzzobm: trmzzobm_en_US,
         trminvoice: trminvoice_en_US,
         trmtrainactment: trmtrainactment_en_US,
+        ormorgsector: ormorgsector_en_US,
+        ormbmkqdz: ormbmkqdz_en_US,
         trmteachercharge: trmteachercharge_en_US,
         trmdepartneeds: trmdepartneeds_en_US,
+        ormerporg: ormerporg_en_US,
+        pimperson: pimperson_en_US,
         trmdemdeftion: trmdemdeftion_en_US,
         trmdepart: trmdepart_en_US,
         trmtrainplan: trmtrainplan_en_US,
         trmtrainagency: trmtrainagency_en_US,
         trmhmatser: trmhmatser_en_US,
         dynadashboard: dynadashboard_en_US,
-        attendancerecord: attendancerecord_en_US,
-        ormorg: ormorg_en_US,
-        ormorgsector: ormorgsector_en_US,
-        ormbmkqdz: ormbmkqdz_en_US,
-        ormerporg: ormerporg_en_US,
-        pimperson: pimperson_en_US,
     },
     components: components_en_US,
     codelist: codelist_en_US,

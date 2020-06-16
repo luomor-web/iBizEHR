@@ -45,6 +45,7 @@ export class UIServiceRegister {
         this.allUIService.set('trmstaffnodes', () => import('@/uiservice/trm-staffnodes/trm-staffnodes-ui-service'));
         this.allUIService.set('trmdutycadres', () => import('@/uiservice/trm-duty-cadres/trm-duty-cadres-ui-service'));
         this.allUIService.set('trmlgbdetail', () => import('@/uiservice/trm-lgb-detail/trm-lgb-detail-ui-service'));
+        this.allUIService.set('attendancerecord', () => import('@/uiservice/att-endance-record/att-endance-record-ui-service'));
         this.allUIService.set('trmtraffic', () => import('@/uiservice/trm-traffic/trm-traffic-ui-service'));
         this.allUIService.set('trmtrainteacher', () => import('@/uiservice/trm-train-teacher/trm-train-teacher-ui-service'));
         this.allUIService.set('trmplanformu', () => import('@/uiservice/trm-plan-formu/trm-plan-formu-ui-service'));
@@ -55,6 +56,7 @@ export class UIServiceRegister {
         this.allUIService.set('trmtrainfillin', () => import('@/uiservice/trm-train-fillin/trm-train-fillin-ui-service'));
         this.allUIService.set('trmgradecadres', () => import('@/uiservice/trm-gradecadres/trm-gradecadres-ui-service'));
         this.allUIService.set('trmstay', () => import('@/uiservice/trm-stay/trm-stay-ui-service'));
+        this.allUIService.set('ormorg', () => import('@/uiservice/orm-org/orm-org-ui-service'));
         this.allUIService.set('trmtrainoutapply', () => import('@/uiservice/trm-train-out-apply/trm-train-out-apply-ui-service'));
         this.allUIService.set('trmagencyrecord', () => import('@/uiservice/trm-agency-record/trm-agency-record-ui-service'));
         this.allUIService.set('trmtrainperson', () => import('@/uiservice/trm-train-person/trm-train-person-ui-service'));
@@ -73,20 +75,18 @@ export class UIServiceRegister {
         this.allUIService.set('trmzzobm', () => import('@/uiservice/trm-zzobm/trm-zzobm-ui-service'));
         this.allUIService.set('trminvoice', () => import('@/uiservice/trm-invoice/trm-invoice-ui-service'));
         this.allUIService.set('trmtrainactment', () => import('@/uiservice/trm-train-actment/trm-train-actment-ui-service'));
+        this.allUIService.set('ormorgsector', () => import('@/uiservice/orm-orgsector/orm-orgsector-ui-service'));
+        this.allUIService.set('ormbmkqdz', () => import('@/uiservice/orm-bmkqdz/orm-bmkqdz-ui-service'));
         this.allUIService.set('trmteachercharge', () => import('@/uiservice/trm-teacher-charge/trm-teacher-charge-ui-service'));
         this.allUIService.set('trmdepartneeds', () => import('@/uiservice/trm-depart-needs/trm-depart-needs-ui-service'));
+        this.allUIService.set('ormerporg', () => import('@/uiservice/orm-erporg/orm-erporg-ui-service'));
+        this.allUIService.set('pimperson', () => import('@/uiservice/pim-person/pim-person-ui-service'));
         this.allUIService.set('trmdemdeftion', () => import('@/uiservice/trm-demdeftion/trm-demdeftion-ui-service'));
         this.allUIService.set('trmdepart', () => import('@/uiservice/trm-depart/trm-depart-ui-service'));
         this.allUIService.set('trmtrainplan', () => import('@/uiservice/trm-train-plan/trm-train-plan-ui-service'));
         this.allUIService.set('trmtrainagency', () => import('@/uiservice/trm-train-agency/trm-train-agency-ui-service'));
         this.allUIService.set('trmhmatser', () => import('@/uiservice/trm-hmatser/trm-hmatser-ui-service'));
         this.allUIService.set('dynadashboard', () => import('@/uiservice/dyna-dashboard/dyna-dashboard-ui-service'));
-        this.allUIService.set('attendancerecord', () => import('@/uiservice/att-endance-record/att-endance-record-ui-service'));
-        this.allUIService.set('ormorg', () => import('@/uiservice/orm-org/orm-org-ui-service'));
-        this.allUIService.set('ormorgsector', () => import('@/uiservice/orm-orgsector/orm-orgsector-ui-service'));
-        this.allUIService.set('ormbmkqdz', () => import('@/uiservice/orm-bmkqdz/orm-bmkqdz-ui-service'));
-        this.allUIService.set('ormerporg', () => import('@/uiservice/orm-erporg/orm-erporg-ui-service'));
-        this.allUIService.set('pimperson', () => import('@/uiservice/pim-person/pim-person-ui-service'));
     }
 
     /**

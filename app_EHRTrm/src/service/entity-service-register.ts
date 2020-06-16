@@ -45,6 +45,7 @@ export class EntityServiceRegister {
         this.allEntityService.set('trmstaffnodes', () => import('@/service/trm-staffnodes/trm-staffnodes-service'));
         this.allEntityService.set('trmdutycadres', () => import('@/service/trm-duty-cadres/trm-duty-cadres-service'));
         this.allEntityService.set('trmlgbdetail', () => import('@/service/trm-lgb-detail/trm-lgb-detail-service'));
+        this.allEntityService.set('attendancerecord', () => import('@/service/att-endance-record/att-endance-record-service'));
         this.allEntityService.set('trmtraffic', () => import('@/service/trm-traffic/trm-traffic-service'));
         this.allEntityService.set('trmtrainteacher', () => import('@/service/trm-train-teacher/trm-train-teacher-service'));
         this.allEntityService.set('trmplanformu', () => import('@/service/trm-plan-formu/trm-plan-formu-service'));
@@ -55,6 +56,7 @@ export class EntityServiceRegister {
         this.allEntityService.set('trmtrainfillin', () => import('@/service/trm-train-fillin/trm-train-fillin-service'));
         this.allEntityService.set('trmgradecadres', () => import('@/service/trm-gradecadres/trm-gradecadres-service'));
         this.allEntityService.set('trmstay', () => import('@/service/trm-stay/trm-stay-service'));
+        this.allEntityService.set('ormorg', () => import('@/service/orm-org/orm-org-service'));
         this.allEntityService.set('trmtrainoutapply', () => import('@/service/trm-train-out-apply/trm-train-out-apply-service'));
         this.allEntityService.set('trmagencyrecord', () => import('@/service/trm-agency-record/trm-agency-record-service'));
         this.allEntityService.set('trmtrainperson', () => import('@/service/trm-train-person/trm-train-person-service'));
@@ -73,20 +75,18 @@ export class EntityServiceRegister {
         this.allEntityService.set('trmzzobm', () => import('@/service/trm-zzobm/trm-zzobm-service'));
         this.allEntityService.set('trminvoice', () => import('@/service/trm-invoice/trm-invoice-service'));
         this.allEntityService.set('trmtrainactment', () => import('@/service/trm-train-actment/trm-train-actment-service'));
+        this.allEntityService.set('ormorgsector', () => import('@/service/orm-orgsector/orm-orgsector-service'));
+        this.allEntityService.set('ormbmkqdz', () => import('@/service/orm-bmkqdz/orm-bmkqdz-service'));
         this.allEntityService.set('trmteachercharge', () => import('@/service/trm-teacher-charge/trm-teacher-charge-service'));
         this.allEntityService.set('trmdepartneeds', () => import('@/service/trm-depart-needs/trm-depart-needs-service'));
+        this.allEntityService.set('ormerporg', () => import('@/service/orm-erporg/orm-erporg-service'));
+        this.allEntityService.set('pimperson', () => import('@/service/pim-person/pim-person-service'));
         this.allEntityService.set('trmdemdeftion', () => import('@/service/trm-demdeftion/trm-demdeftion-service'));
         this.allEntityService.set('trmdepart', () => import('@/service/trm-depart/trm-depart-service'));
         this.allEntityService.set('trmtrainplan', () => import('@/service/trm-train-plan/trm-train-plan-service'));
         this.allEntityService.set('trmtrainagency', () => import('@/service/trm-train-agency/trm-train-agency-service'));
         this.allEntityService.set('trmhmatser', () => import('@/service/trm-hmatser/trm-hmatser-service'));
         this.allEntityService.set('dynadashboard', () => import('@/service/dyna-dashboard/dyna-dashboard-service'));
-        this.allEntityService.set('attendancerecord', () => import('@/service/att-endance-record/att-endance-record-service'));
-        this.allEntityService.set('ormorg', () => import('@/service/orm-org/orm-org-service'));
-        this.allEntityService.set('ormorgsector', () => import('@/service/orm-orgsector/orm-orgsector-service'));
-        this.allEntityService.set('ormbmkqdz', () => import('@/service/orm-bmkqdz/orm-bmkqdz-service'));
-        this.allEntityService.set('ormerporg', () => import('@/service/orm-erporg/orm-erporg-service'));
-        this.allEntityService.set('pimperson', () => import('@/service/pim-person/pim-person-service'));
     }
 
     /**

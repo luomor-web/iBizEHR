@@ -19,19 +19,19 @@ import org.springframework.util.StringUtils;
 
 import cn.ibizlab.ehr.util.filter.QueryWrapperContext;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import cn.ibizlab.ehr.core.soc.domain.SocType;
+import cn.ibizlab.ehr.core.soc.domain.SocRuleDetail;
 /**
- * 关系型数据实体[SocType] 查询条件对象
+ * 关系型数据实体[SocRuleDetail] 查询条件对象
  */
 @Slf4j
 @Data
-public class SocTypeSearchContext extends QueryWrapperContext<SocType> {
+public class SocRuleDetailSearchContext extends QueryWrapperContext<SocRuleDetail> {
 
-	private String n_soctypename_like;//[保险类型]
-	public void setN_soctypename_like(String n_soctypename_like) {
-        this.n_soctypename_like = n_soctypename_like;
-        if(!ObjectUtils.isEmpty(this.n_soctypename_like)){
-            this.getSearchCond().like("soctypename", n_soctypename_like);
+	private String n_socruledetailname_like;//[社保规则明细名称]
+	public void setN_socruledetailname_like(String n_socruledetailname_like) {
+        this.n_socruledetailname_like = n_socruledetailname_like;
+        if(!ObjectUtils.isEmpty(this.n_socruledetailname_like)){
+            this.getSearchCond().like("socruledetailname", n_socruledetailname_like);
         }
     }
 
@@ -43,7 +43,7 @@ public class SocTypeSearchContext extends QueryWrapperContext<SocType> {
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
             this.getSearchCond().and( wrapper ->
-                     wrapper.like("soctypename", query)   
+                     wrapper.like("socruledetailname", query)   
             );
 		 }
 	}

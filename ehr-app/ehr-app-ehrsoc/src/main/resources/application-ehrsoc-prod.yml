@@ -7,12 +7,36 @@ zuul:
       path: /socareas/**
       serviceId: ehr-webapi
       stripPrefix: false
+    socarchives:
+      path: /socarchives/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    soctype:
+      path: /soctypes/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    socrule:
+      path: /socrules/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     ormorg:
       path: /ormorgs/**
       serviceId: ehr-webapi
       stripPrefix: false
+    socrecord:
+      path: /socrecords/**
+      serviceId: ehr-webapi
+      stripPrefix: false
     socaccount:
       path: /socaccounts/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    socarchivesdetail:
+      path: /socarchivesdetails/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    socruledetail:
+      path: /socruledetails/**
       serviceId: ehr-webapi
       stripPrefix: false
   sensitive-headers:
