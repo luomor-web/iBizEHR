@@ -90,6 +90,9 @@ export default class MainService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
+        if (Object.is(serviceName, 'OrmOrgsectorService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.ormorgsectorService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgsectorid', 'ormorgsector');
+        }
 
         return Promise.reject([])
     }
