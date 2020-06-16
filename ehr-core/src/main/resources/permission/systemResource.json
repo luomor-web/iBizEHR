@@ -2681,6 +2681,22 @@
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }
     ,    {
+    "dename":"SocArea",
+    "delogicname":"参保地",
+    "sysmoudle":{"id":"SOC","name":"社保福利管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
+    "dename":"SocAccount",
+    "delogicname":"参保账户",
+    "sysmoudle":{"id":"SOC","name":"社保福利管理"},
+    "dedataset":[{"id":"Default" , "name":"DEFAULT"}],
+    "deaction":[{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" }],
+    "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
+     }
+    ,    {
     "dename":"PcmProfileApproval",
     "delogicname":"应聘者审批表",
     "sysmoudle":{"id":"PCM","name":"配置管理"},
@@ -2928,6 +2944,12 @@
             }
             ,
             {
+               "appid":"EHRSoc",
+               "appname":"EHRSOC（社保管理）",
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem1" , "name":"基础信息" , "items":[{ "id":"menuitem2" , "name":"参保地" },{ "id":"menuitem3" , "name":"参保账户" }]}] }]
+            }
+            ,
+            {
                "appid":"EHRPcm2",
                "appname":"EHRPCM2（人员异动）",
                "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[{ "id":"menuitem4" , "name":"人员异动" , "items":[{ "id":"menuitem1" , "name":"调动管理" },{ "id":"menuitem2" , "name":"借调管理" },{ "id":"menuitem3" , "name":"兼职管理" },{ "id":"menuitem7" , "name":"待岗管理" },{ "id":"menuitem8" , "name":"内退管理" },{ "id":"menuitem9" , "name":"病休管理" },{ "id":"menuitem10" , "name":"离职管理" },{ "id":"menuitem11" , "name":"解聘管理" },{ "id":"menuitem12" , "name":"退休管理" }]},{ "id":"menuitem5" , "name":"试用期转正" , "items":[{ "id":"menuitem6" , "name":"试用期转正申请" },{ "id":"menuitem15" , "name":"试用期转正审核" }]},{ "id":"menuitem13" , "name":"见习期转正" , "items":[{ "id":"menuitem14" , "name":"见习期转正申请" },{ "id":"menuitem16" , "name":"见习期转正审核" }]}] }]
@@ -2966,7 +2988,7 @@
             {
                "appid":"EHRTrm",
                "appname":"EHRTRM（培训管理）",
-               "appmenu":[]
+               "appmenu":[{"menuid":"Index", "menuname":"Index", "menuitem":[] }]
             }
             ,
             {

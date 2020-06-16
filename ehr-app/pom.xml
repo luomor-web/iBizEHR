@@ -17,6 +17,7 @@
     <modules>
         <module>ehr-app-ehrhelp</module>
         <module>ehr-app-ehr</module>
+        <module>ehr-app-ehrsoc</module>
         <module>ehr-app-ehrpcm2</module>
         <module>ehr-app-ehrsal</module>
         <module>ehr-app-ehrmob</module>
