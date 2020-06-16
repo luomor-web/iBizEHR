@@ -173,7 +173,7 @@
     deMajorField='trmtrainteachername'
     deKeyField='trmtrainteacher'
     :acParams="{ serviceName: 'TrmTrainTeacherService', interfaceName: 'FetchDefault'}"
-    :pickupView="{ viewname: 'trm-train-teacher-mpickup-view', title: $t('entities.trmtrainteacher.views.mpickupview.title'), deResParameters: [], parameters: [{ pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' }, { pathName: 'mpickupview', parameterName: 'mpickupview' } ], placement:'' }"
+    :pickupView="{ viewname: 'trm-train-teacher-mpickup-view', title: $t('entities.trmtrainteacher.views.mpickupview.title'), deResParameters: [{ pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' }, ], parameters: [{ pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' }, { pathName: 'mpickupview', parameterName: 'mpickupview' } ], placement:'' }"
     @formitemvaluechange="onFormItemValueChange" 
     style="">
 </app-mpicker>
@@ -195,7 +195,7 @@
     :localParam ='{ }' 
     :service="service"
     :acParams="{ }"
-    :pickupView="{ viewname: 'trm-hmatser-mpickup-view', title: $t('entities.trmhmatser.views.mpickupview.title'), deResParameters: [], parameters: [{ pathName: 'trmhmatsers', parameterName: 'trmhmatser' }, { pathName: 'mpickupview', parameterName: 'mpickupview' } ], placement:'' }"
+    :pickupView="{ viewname: 'trm-hmatser-mpickup-view', title: $t('entities.trmhmatser.views.mpickupview.title'), deResParameters: [{ pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' }, ], parameters: [{ pathName: 'trmhmatsers', parameterName: 'trmhmatser' }, { pathName: 'mpickupview', parameterName: 'mpickupview' } ], placement:'' }"
     @formitemvaluechange="onFormItemValueChange" 
     style="">
 </app-mpicker>
@@ -322,6 +322,7 @@
     paramItem='trmtrainplanterm' 
     :parentdata='{"srfparentdefname":"TRMTRAINPLANTERMID","srfparentdename":"TRMTRAINPLANTERM","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_TRMCOUARRANGE_TRMTRAINPLANTERM_TRMTRAINPLANTERMID","SRFDER1NID":"DER1N_TRMCOUARRANGE_TRMTRAINPLANTERM_TRMTRAINPLANTERMID"}'
     :parameters="[
+        { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
     ]"
     :context="context"
     :viewparams="viewparams"

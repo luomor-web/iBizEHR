@@ -48,6 +48,9 @@ export default class TrmHmatserServiceBase extends EntityService {
      * @memberof TrmHmatserServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmhmatser){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmhmatsers/${context.trmhmatser}/select`,isloading);
+        }
             return Http.getInstance().get(`/trmhmatsers/${context.trmhmatser}/select`,isloading);
     }
 
@@ -61,6 +64,9 @@ export default class TrmHmatserServiceBase extends EntityService {
      * @memberof TrmHmatserServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmhmatser){
+            return Http.getInstance().delete(`/trmtrainagencies/${context.trmtrainagency}/trmhmatsers/${context.trmhmatser}`,isloading);
+        }
             return Http.getInstance().delete(`/trmhmatsers/${context.trmhmatser}`,isloading);
 
     }
@@ -75,6 +81,9 @@ export default class TrmHmatserServiceBase extends EntityService {
      * @memberof TrmHmatserServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmhmatser){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmhmatsers/${context.trmhmatser}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/trmhmatsers/${context.trmhmatser}/save`,data,isloading);
@@ -91,6 +100,9 @@ export default class TrmHmatserServiceBase extends EntityService {
      * @memberof TrmHmatserServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmhmatser){
+            return Http.getInstance().put(`/trmtrainagencies/${context.trmtrainagency}/trmhmatsers/${context.trmhmatser}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/trmhmatsers/${context.trmhmatser}`,data,isloading);
@@ -107,6 +119,15 @@ export default class TrmHmatserServiceBase extends EntityService {
      * @memberof TrmHmatserServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmhmatsers`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -130,6 +151,9 @@ export default class TrmHmatserServiceBase extends EntityService {
      * @memberof TrmHmatserServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmhmatser){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmhmatsers/${context.trmhmatser}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/trmhmatsers/${context.trmhmatser}/checkkey`,data,isloading);
     }
 
@@ -143,6 +167,9 @@ export default class TrmHmatserServiceBase extends EntityService {
      * @memberof TrmHmatserServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && true){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmhmatsers/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/trmhmatsers/getdraft`,isloading);
         res.data.trmhmatser = data.trmhmatser;
         return res;
@@ -158,6 +185,9 @@ export default class TrmHmatserServiceBase extends EntityService {
      * @memberof TrmHmatserServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmhmatser){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmhmatsers/${context.trmhmatser}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/trmhmatsers/${context.trmhmatser}`,isloading);
             return res;
 
@@ -173,6 +203,10 @@ export default class TrmHmatserServiceBase extends EntityService {
      * @memberof TrmHmatserServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmhmatsers/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/trmhmatsers/fetchdefault`,tempData,isloading);
     }

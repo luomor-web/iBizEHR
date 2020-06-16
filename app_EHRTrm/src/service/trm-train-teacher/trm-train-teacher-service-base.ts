@@ -48,6 +48,9 @@ export default class TrmTrainTeacherServiceBase extends EntityService {
      * @memberof TrmTrainTeacherServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/select`,isloading);
+        }
             return Http.getInstance().get(`/trmtrainteachers/${context.trmtrainteacher}/select`,isloading);
     }
 
@@ -61,6 +64,9 @@ export default class TrmTrainTeacherServiceBase extends EntityService {
      * @memberof TrmTrainTeacherServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher){
+            return Http.getInstance().delete(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}`,isloading);
+        }
             return Http.getInstance().delete(`/trmtrainteachers/${context.trmtrainteacher}`,isloading);
 
     }
@@ -75,6 +81,9 @@ export default class TrmTrainTeacherServiceBase extends EntityService {
      * @memberof TrmTrainTeacherServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher){
+            return Http.getInstance().put(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/trmtrainteachers/${context.trmtrainteacher}`,data,isloading);
@@ -91,6 +100,9 @@ export default class TrmTrainTeacherServiceBase extends EntityService {
      * @memberof TrmTrainTeacherServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && true){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/trmtrainteachers/getdraft`,isloading);
         res.data.trmtrainteacher = data.trmtrainteacher;
         return res;
@@ -106,6 +118,9 @@ export default class TrmTrainTeacherServiceBase extends EntityService {
      * @memberof TrmTrainTeacherServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/trmtrainteachers/${context.trmtrainteacher}`,isloading);
             return res;
 
@@ -121,6 +136,9 @@ export default class TrmTrainTeacherServiceBase extends EntityService {
      * @memberof TrmTrainTeacherServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/trmtrainteachers/${context.trmtrainteacher}/checkkey`,data,isloading);
     }
 
@@ -134,6 +152,9 @@ export default class TrmTrainTeacherServiceBase extends EntityService {
      * @memberof TrmTrainTeacherServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/trmtrainteachers/${context.trmtrainteacher}/save`,data,isloading);
@@ -150,6 +171,15 @@ export default class TrmTrainTeacherServiceBase extends EntityService {
      * @memberof TrmTrainTeacherServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -173,6 +203,10 @@ export default class TrmTrainTeacherServiceBase extends EntityService {
      * @memberof TrmTrainTeacherServiceBase
      */
     public async FetchNBJS(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/fetchnbjs`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/trmtrainteachers/fetchnbjs`,tempData,isloading);
     }
@@ -187,6 +221,10 @@ export default class TrmTrainTeacherServiceBase extends EntityService {
      * @memberof TrmTrainTeacherServiceBase
      */
     public async FetchWBJS(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/fetchwbjs`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/trmtrainteachers/fetchwbjs`,tempData,isloading);
     }
@@ -201,6 +239,10 @@ export default class TrmTrainTeacherServiceBase extends EntityService {
      * @memberof TrmTrainTeacherServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/trmtrainteachers/fetchdefault`,tempData,isloading);
     }

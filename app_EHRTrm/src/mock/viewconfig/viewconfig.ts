@@ -56,7 +56,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "0d7e1adddca040966bf13121406073d3"
         },
         "trmtrainagencyeditview": {
-            "title": "培训机构编辑视图",
+            "title": "培训机构",
             "caption": "培训机构",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
@@ -430,6 +430,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "TRM",
             "viewname": "TrmCouarrangePXJGGridView",
             "viewtag": "66b1d12b94f0b14bf0f9c2f715511171"
+        },
+        "trmtrainagencyeditview9": {
+            "title": "培训机构编辑视图",
+            "caption": "培训机构",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "TRM",
+            "viewname": "TrmTrainAgencyEditView9",
+            "viewtag": "693a64777bc436f97363770cc82631c0"
         },
         "trmstaypickupview": {
             "title": "培训住宿数据选择视图",
@@ -816,7 +824,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "d168ccad822c9f9786218b2fe0e450ac"
         },
         "trmtrainagencygridview": {
-            "title": "培训机构表格视图",
+            "title": "培训机构",
             "caption": "培训机构",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
@@ -926,6 +934,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "TRM",
             "viewname": "TrmTeacherTrainGridView",
             "viewtag": "e2b7f1016363a6dff46ca882b8a46b62"
+        },
+        "trmtrainagencytabexpview": {
+            "title": "培训机构",
+            "caption": "培训机构",
+            "viewtype": "DETABEXPVIEW",
+            "viewmodule": "TRM",
+            "viewname": "TrmTrainAgencyTabExpView",
+            "viewtag": "e3e00a371d740be659600f4165e2d737"
         },
         "trmtrainplantermpickupgridview": {
             "title": "培训计划项选择表格视图",

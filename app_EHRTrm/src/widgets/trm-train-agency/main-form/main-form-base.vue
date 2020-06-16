@@ -2,17 +2,7 @@
     <i-form :model="this.data" class='app-form' ref='form'  id='trmtrainagency_main' style="">
     <input style="display:none;" />
     <row >
-    <tabs :animated="false" name='main' :value="detailsModel.form.activiedPage" 
-        @on-click="detailsModel.form.clickPage($event)">
-            <tab-pane v-show="detailsModel.formpage1.visible" name='formpage1' :index="0" tab='main' class=''  
-                :label="(h) =>{
-                    return h('span',{
-                        class:'caption'
-                    },[
-                    $t('entities.trmtrainagency.main_form.details.formpage1')
-                    ])
-                }">
-                    
+            
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainagency.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
@@ -204,7 +194,7 @@
     :localParam ='{ }' 
     :service="service"
     :acParams="{ }"
-    :pickupView="{ viewname: 'trm-course-system-mpickup-view', title: $t('entities.trmcoursesystem.views.mpickupview.title'), deResParameters: [], parameters: [{ pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' }, { pathName: 'mpickupview', parameterName: 'mpickupview' } ], placement:'' }"
+    :pickupView="{ viewname: 'trm-course-system-mpickup-view', title: $t('entities.trmcoursesystem.views.mpickupview.title'), deResParameters: [{ pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' }, ], parameters: [{ pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' }, { pathName: 'mpickupview', parameterName: 'mpickupview' } ], placement:'' }"
     @formitemvaluechange="onFormItemValueChange" 
     style="">
 </app-mpicker>
@@ -317,119 +307,6 @@
 </i-col>
 
 
-            </tab-pane> 
-            <tab-pane v-show="detailsModel.formpage5.visible" name='formpage5' :index="1" tab='main' class=''  
-                :label="(h) =>{
-                    return h('span',{
-                        class:'caption'
-                    },[
-                    $t('entities.trmtrainagency.main_form.details.formpage5')
-                    ])
-                }">
-                    
-<i-col v-show="detailsModel.druipart1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-druipart
-    
-    :formState="formState"
-    :isForbidLoad="this.data.srfuf === '0'"
-    paramItem='trmtrainagency' 
-    :parentdata='{"srfparentdefname":"TRMTRAINAGENCYID","srfparentdename":"TRMTRAINAGENCY","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_TRMTRAINTEACHER_TRMTRAINAGENCY_TRMTRAINAGENCYID","SRFDER1NID":"DER1N_TRMTRAINTEACHER_TRMTRAINAGENCY_TRMTRAINAGENCYID"}'
-    :parameters="[
-    ]"
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{}'
-    :localParam ='{}'
-    parameterName='trmtrainagency'
-    parentName="TrmTrainAgency"  
-    refviewtype='DEGRIDVIEW' 
-    refreshitems='' 
-    :ignorefieldvaluechange="ignorefieldvaluechange"
-    viewname='trm-train-teacher-grid-view' 
-    :data="JSON.stringify(this.data)" 
-    @drdatasaved="drdatasaved($event)"
-    style=";overflow: auto;">
-</app-form-druipart>
-
-</i-col>
-
-
-            </tab-pane> 
-            <tab-pane v-show="detailsModel.formpage2.visible" name='formpage2' :index="2" tab='main' class=''  
-                :label="(h) =>{
-                    return h('span',{
-                        class:'caption'
-                    },[
-                    $t('entities.trmtrainagency.main_form.details.formpage2')
-                    ])
-                }">
-                    
-<i-col v-show="detailsModel.druipart2.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-druipart
-    
-    :formState="formState"
-    :isForbidLoad="this.data.srfuf === '0'"
-    paramItem='trmtrainagency' 
-    :parentdata='{"srfparentdefname":"TRMTRAINAGENCYID","srfparentdename":"TRMTRAINAGENCY","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_TRMCOUARRANGE_TRMTRAINAGENCY_TRMTRAINAGENCYID","SRFDER1NID":"DER1N_TRMCOUARRANGE_TRMTRAINAGENCY_TRMTRAINAGENCYID"}'
-    :parameters="[
-    ]"
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{}'
-    :localParam ='{}'
-    parameterName='trmtrainagency'
-    parentName="TrmTrainAgency"  
-    refviewtype='DEGRIDVIEW' 
-    refreshitems='' 
-    :ignorefieldvaluechange="ignorefieldvaluechange"
-    viewname='trm-couarrange-pxjggrid-view' 
-    :data="JSON.stringify(this.data)" 
-    @drdatasaved="drdatasaved($event)"
-    style=";overflow: auto;">
-</app-form-druipart>
-
-</i-col>
-
-
-            </tab-pane> 
-            <tab-pane v-show="detailsModel.formpage3.visible" name='formpage3' :index="3" tab='main' class=''  
-                :label="(h) =>{
-                    return h('span',{
-                        class:'caption'
-                    },[
-                    $t('entities.trmtrainagency.main_form.details.formpage3')
-                    ])
-                }">
-                    
-<i-col v-show="detailsModel.druipart3.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-druipart
-    
-    :formState="formState"
-    :isForbidLoad="this.data.srfuf === '0'"
-    paramItem='trmtrainagency' 
-    :parentdata='{"srfparentdefname":"TRMTRAINAGENCYID","srfparentdename":"TRMTRAINAGENCY","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_TRMHMATSER_TRMTRAINAGENCY_TRMTRAINAGENCYID","SRFDER1NID":"DER1N_TRMHMATSER_TRMTRAINAGENCY_TRMTRAINAGENCYID"}'
-    :parameters="[
-    ]"
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{}'
-    :localParam ='{}'
-    parameterName='trmtrainagency'
-    parentName="TrmTrainAgency"  
-    refviewtype='DEGRIDVIEW' 
-    refreshitems='' 
-    :ignorefieldvaluechange="ignorefieldvaluechange"
-    viewname='trm-hmatser-grid-view' 
-    :data="JSON.stringify(this.data)" 
-    @drdatasaved="drdatasaved($event)"
-    style=";overflow: auto;">
-</app-form-druipart>
-
-</i-col>
-
-
-            </tab-pane> 
-    </tabs>
     </row>
 </i-form>
 </template>
@@ -1014,21 +891,9 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         grouppanel4: new FormGroupPanelModel({ caption: '评价', detailType: 'GROUPPANEL', name: 'grouppanel4', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainagency.main_form', extractMode: 'ITEM', details: [] } })
 , 
-        group1: new FormGroupPanelModel({ caption: '培训机构信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainagency.main_form', extractMode: 'ITEM', details: [] } })
+        group1: new FormGroupPanelModel({ caption: '基本信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainagency.main_form', extractMode: 'ITEM', details: [] } })
 , 
         formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
-, 
-        druipart1: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart1', visible: true, isShowCaption: true, form: this })
-, 
-        formpage5: new FormPageModel({ caption: '培训师资', detailType: 'FORMPAGE', name: 'formpage5', visible: true, isShowCaption: true, form: this })
-, 
-        druipart2: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart2', visible: true, isShowCaption: true, form: this })
-, 
-        formpage2: new FormPageModel({ caption: '培训记录', detailType: 'FORMPAGE', name: 'formpage2', visible: true, isShowCaption: true, form: this })
-, 
-        druipart3: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart3', visible: true, isShowCaption: true, form: this })
-, 
-        formpage3: new FormPageModel({ caption: '班主任', detailType: 'FORMPAGE', name: 'formpage3', visible: true, isShowCaption: true, form: this })
 , 
         srfupdatedate: new FormItemModel({ caption: '更新时间', detailType: 'FORMITEM', name: 'srfupdatedate', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -1096,7 +961,6 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         trmtrainagencyid2: new FormItemModel({ caption: '培训机构标识', detailType: 'FORMITEM', name: 'trmtrainagencyid2', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        form: new FormTabPanelModel({ caption: 'form', detailType: 'TABPANEL', name: 'form', visible: true, isShowCaption: true, form: this, tabPages: [{ name: 'formpage1', index: 0, visible: true }, { name: 'formpage5', index: 1, visible: true }, { name: 'formpage2', index: 2, visible: true }, { name: 'formpage3', index: 3, visible: true }] }),
     };
 
     /**
@@ -1531,12 +1395,6 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
-
-
-
-
-
-
 
 
 
@@ -2098,7 +1956,7 @@ export default class MainBase extends Vue implements ControlInterface {
             Object.assign(arg, data);
             Object.assign(arg, this.context);
             if (ifStateNext) {
-                this.drcounter = 3;
+                this.drcounter = 0;
                 if(this.drcounter !== 0){
                     this.drsaveopt = opt;
                     this.formState.next({ type: 'beforesave', data: arg });//先通知关系界面保存

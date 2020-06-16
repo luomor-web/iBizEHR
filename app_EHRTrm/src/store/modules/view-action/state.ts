@@ -64,12 +64,9 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'cd1674f862673877db7b42eb8a52eb4e',
                 'e034c6c5752a1ed214cf88a568d623fa',
-                'd8a8db81cf25380e25c3f8c4c90d7498',
                 '768cea21276a67cf21ea1448b8e0a9ea',
                 'd44f8f7d7a1c369954fa0d196b28c1cc',
-                '66b1d12b94f0b14bf0f9c2f715511171',
                 '9fe562265b37611be2479c3426af87b1',
             ],
         },
@@ -277,6 +274,8 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                'e3e00a371d740be659600f4165e2d737',
+                '11da72e188942aaf631c0a7b419499fb',
             ],
         },
         {
@@ -817,6 +816,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                'e3e00a371d740be659600f4165e2d737',
                 '11da72e188942aaf631c0a7b419499fb',
             ],
         },
@@ -931,6 +931,19 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '7baa86a07ab62567f156a016800616ac',
+            ],
+        },
+        {
+            viewtag: 'e3e00a371d740be659600f4165e2d737',
+            viewmodule: 'TRM',
+            viewname: 'TrmTrainAgencyTabExpView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'cd1674f862673877db7b42eb8a52eb4e',
+                'd8a8db81cf25380e25c3f8c4c90d7498',
+                '66b1d12b94f0b14bf0f9c2f715511171',
+                '11da72e188942aaf631c0a7b419499fb',
             ],
         },
         {

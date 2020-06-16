@@ -557,7 +557,12 @@ export default class TrmCouarrangePXJGGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(tempContext,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(tempContext.trmtrainagency && true){
+            deResParameters = [
+            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'trmcouarranges', parameterName: 'trmcouarrange' },
             { pathName: 'editview', parameterName: 'editview' },
@@ -591,7 +596,12 @@ export default class TrmCouarrangePXJGGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(tempContext,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(tempContext.trmtrainagency && true){
+            deResParameters = [
+            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'trmcouarranges', parameterName: 'trmcouarrange' },
             { pathName: 'editview', parameterName: 'editview' },

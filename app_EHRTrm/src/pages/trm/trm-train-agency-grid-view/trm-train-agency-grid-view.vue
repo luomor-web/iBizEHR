@@ -6,7 +6,7 @@ import view_grid from '@widgets/trm-train-agency/main-grid/main-grid.vue';
 import view_searchform from '@widgets/trm-train-agency/default-searchform/default-searchform.vue';
 
 /**
- * 培训机构表格视图
+ * 培训机构
  *
  * @export
  * @class TrmTrainAgencyGridView

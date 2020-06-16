@@ -82,8 +82,10 @@ export default class TrmTrainAgencyUIServiceBase extends UIService {
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'trmtrainagencies'});
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'trmtrainagencies'});
         this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'trmtrainagencies'});
+        this.allViewMap.set(':',{viewname:'editview9',srfappde:'trmtrainagencies'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'trmtrainagencies'});
         this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'trmtrainagencies'});
+        this.allViewMap.set(':',{viewname:'tabexpview',srfappde:'trmtrainagencies'});
     }
 
     /**
@@ -92,6 +94,135 @@ export default class TrmTrainAgencyUIServiceBase extends UIService {
      * @memberof  TrmTrainAgencyUIServiceBase
      */  
     public initDeMainStateMap(){
+    }
+
+    /**
+     * 查看
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async TrmTrainAgency_OpenCkView(args: any[], context:any = {} ,params: any={}, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    
+        let data: any = {};
+        let parentContext:any = {};
+        let parentViewParam:any = {};
+        const _this: any = actionContext;
+        const _args: any[] = Util.deepCopy(args);
+        const actionTarget: string | null = 'SINGLEKEY';
+        Object.assign(context, { trmtrainagency: '%trmtrainagency%' });
+        Object.assign(params, { trmtrainagencyid: '%trmtrainagency%' });
+        Object.assign(params, { trmtrainagencyname: '%trmtrainagencyname%' });
+        if(_this.context){
+            parentContext = _this.context;
+        }
+        if(_this.viewparams){
+            parentViewParam = _this.viewparams;
+        }
+        context = UIActionTool.handleContextParam(actionTarget,_args,parentContext,parentViewParam,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,parentContext,parentViewParam,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+        ];
+            const openDrawer = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appdrawer.openDrawer(view, context,data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
+            }
+            const view: any = {
+                viewname: 'trm-train-agency-tab-exp-view', 
+                height: 0, 
+                width: 0,  
+                title: actionContext.$t('entities.trmtrainagency.views.tabexpview.title'),
+                placement: 'DRAWER_TOP',
+            };
+            openDrawer(view, data);
+    }
+
+    /**
+     * 编辑
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async TrmTrainAgency_OpenEditView(args: any[], context:any = {} ,params: any={}, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    
+        let data: any = {};
+        let parentContext:any = {};
+        let parentViewParam:any = {};
+        const _this: any = actionContext;
+        const _args: any[] = Util.deepCopy(args);
+        const actionTarget: string | null = 'SINGLEKEY';
+        Object.assign(context, { trmtrainagency: '%trmtrainagency%' });
+        Object.assign(params, { trmtrainagencyid: '%trmtrainagency%' });
+        Object.assign(params, { trmtrainagencyname: '%trmtrainagencyname%' });
+        if(_this.context){
+            parentContext = _this.context;
+        }
+        if(_this.viewparams){
+            parentViewParam = _this.viewparams;
+        }
+        context = UIActionTool.handleContextParam(actionTarget,_args,parentContext,parentViewParam,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,parentContext,parentViewParam,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+        ];
+            actionContext.closeView(null);
+            const openPopupModal = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if (xData && xData.refresh && xData.refresh instanceof Function) {
+                        xData.refresh(args);
+                    }
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
+            }
+            const view: any = {
+                viewname: 'trm-train-agency-edit-view', 
+                height: 750, 
+                width: 0,  
+                title: actionContext.$t('entities.trmtrainagency.views.editview.title'),
+            };
+            openPopupModal(view, data);
     }
 
 

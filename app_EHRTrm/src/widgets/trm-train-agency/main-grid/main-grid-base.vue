@@ -20,8 +20,37 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
+            <template v-if="getColumnState('uagridcolumn1')">
+                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.trmtrainagency.main_grid.columns.uagridcolumn1')" :width="180"  :align="'center'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                          <i class='man'></i>
+                        {{$t('entities.trmtrainagency.main_grid.columns.uagridcolumn1')}}
+                      </span>
+                    </template>
+                    <template slot-scope="scope">
+                        <span>
+                            
+                            <a @click="uiAction(scope.row, 'OpenCkView', $event)">
+                              <i class='create'></i>
+                              {{$t('entities.trmtrainagency.main_grid.uiactions.openckview')}}
+                            </a>
+                            <divider type='vertical'></divider>
+                            <a @click="uiAction(scope.row, 'OpenEditView', $event)">
+                              <i class='sx-tb-edit'></i>
+                              {{$t('entities.trmtrainagency.main_grid.uiactions.openeditview')}}
+                            </a>
+                            <divider type='vertical'></divider>
+                            <a @click="uiAction(scope.row, 'Remove', $event)">
+                              <i class='fa fa-remove'></i>
+                              {{$t('entities.trmtrainagency.main_grid.uiactions.remove')}}
+                            </a>
+                        </span>
+                    </template>
+                </el-table-column>
+            </template>
             <template v-if="getColumnState('trmtrainagencyname')">
-                <el-table-column show-overflow-tooltip :prop="'trmtrainagencyname'" :label="$t('entities.trmtrainagency.main_grid.columns.trmtrainagencyname')" :width="250"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'trmtrainagencyname'" :label="$t('entities.trmtrainagency.main_grid.columns.trmtrainagencyname')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainagency.main_grid.columns.trmtrainagencyname')}}
@@ -33,7 +62,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jglx')">
-                <el-table-column show-overflow-tooltip :prop="'jglx'" :label="$t('entities.trmtrainagency.main_grid.columns.jglx')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jglx'" :label="$t('entities.trmtrainagency.main_grid.columns.jglx')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainagency.main_grid.columns.jglx')}}
@@ -47,7 +76,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jglb')">
-                <el-table-column show-overflow-tooltip :prop="'jglb'" :label="$t('entities.trmtrainagency.main_grid.columns.jglb')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jglb'" :label="$t('entities.trmtrainagency.main_grid.columns.jglb')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainagency.main_grid.columns.jglb')}}
@@ -73,7 +102,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zcxx')">
-                <el-table-column show-overflow-tooltip :prop="'zcxx'" :label="$t('entities.trmtrainagency.main_grid.columns.zcxx')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zcxx'" :label="$t('entities.trmtrainagency.main_grid.columns.zcxx')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainagency.main_grid.columns.zcxx')}}
@@ -85,7 +114,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.trmtrainagency.main_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.trmtrainagency.main_grid.columns.pimpersonname')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainagency.main_grid.columns.pimpersonname')}}
@@ -97,7 +126,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('lxdh')">
-                <el-table-column show-overflow-tooltip :prop="'lxdh'" :label="$t('entities.trmtrainagency.main_grid.columns.lxdh')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'lxdh'" :label="$t('entities.trmtrainagency.main_grid.columns.lxdh')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainagency.main_grid.columns.lxdh')}}
@@ -109,7 +138,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jgdj')">
-                <el-table-column show-overflow-tooltip :prop="'jgdj'" :label="$t('entities.trmtrainagency.main_grid.columns.jgdj')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jgdj'" :label="$t('entities.trmtrainagency.main_grid.columns.jgdj')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainagency.main_grid.columns.jgdj')}}
@@ -135,7 +164,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sfgx')">
-                <el-table-column show-overflow-tooltip :prop="'sfgx'" :label="$t('entities.trmtrainagency.main_grid.columns.sfgx')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sfgx'" :label="$t('entities.trmtrainagency.main_grid.columns.sfgx')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainagency.main_grid.columns.sfgx')}}
@@ -218,6 +247,7 @@ import { UIActionTool,Util } from '@/utils';
 import TrmTrainAgencyService from '@/service/trm-train-agency/trm-train-agency-service';
 import MainService from './main-grid-service';
 
+import TrmTrainAgencyUIService from '@/uiservice/trm-train-agency/trm-train-agency-ui-service';
 import CodeListService from "@service/app/codelist-service";
 import { FormItemModel } from '@/model/form-detail';
 
@@ -306,6 +336,108 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public appEntityService: TrmTrainAgencyService = new TrmTrainAgencyService({ $store: this.$store });
     
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public grid_uagridcolumn1_ud48a4af_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:TrmTrainAgencyUIService  = new TrmTrainAgencyUIService();
+        curUIService.TrmTrainAgency_OpenCkView(datas,contextJO, paramJO,  $event, xData,this,"TrmTrainAgency");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public grid_uagridcolumn1_ud820c42_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        const curUIService:TrmTrainAgencyUIService  = new TrmTrainAgencyUIService();
+        curUIService.TrmTrainAgency_OpenEditView(datas,contextJO, paramJO,  $event, xData,this,"TrmTrainAgency");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public grid_uagridcolumn1_uea235c4_click(params: any = {}, tag?: any, $event?: any) {
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        let contextJO:any = {};
+        xData = this;
+        if (_this.getDatas && _this.getDatas instanceof Function) {
+            datas = [..._this.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        this.Remove(datas, contextJO,paramJO,  $event, xData,this,"TrmTrainAgency");
+    }
+
+    /**
+     * 删除
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} contextJO 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @memberof TrmTrainAgencyGridViewBase
+     */
+    public Remove(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        const _this: any = this;
+        if (!xData || !(xData.remove instanceof Function)) {
+            return ;
+        }
+        xData.remove(args);
+    }
 
 
     /**
@@ -644,6 +776,13 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public allColumns: any[] = [
+        {
+            name: 'uagridcolumn1',
+            label: '操作',
+            langtag: 'entities.trmtrainagency.main_grid.columns.uagridcolumn1',
+            show: true,
+            util: 'PX'
+        },
         {
             name: 'trmtrainagencyname',
             label: '机构名称',
@@ -1483,6 +1622,15 @@ export default class MainBase extends Vue implements ControlInterface {
 	public uiAction(row: any, tag: any, $event: any) {
         // this.rowClick(row, true);
         $event.stopPropagation();
+        if(Object.is('OpenCkView', tag)) {
+            this.grid_uagridcolumn1_ud48a4af_click(row, tag, $event);
+        }
+        if(Object.is('OpenEditView', tag)) {
+            this.grid_uagridcolumn1_ud820c42_click(row, tag, $event);
+        }
+        if(Object.is('Remove', tag)) {
+            this.grid_uagridcolumn1_uea235c4_click(row, tag, $event);
+        }
     }
 
     /**

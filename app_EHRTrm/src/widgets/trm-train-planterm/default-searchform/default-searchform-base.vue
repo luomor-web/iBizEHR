@@ -77,7 +77,7 @@
             valueitem='n_trmtrainteacherid_eq' 
             :value="data.n_trmtrainteachername_eq" 
             editortype="" 
-            :pickupView="{ viewname: 'trm-train-teacher-pickup-view', title: $t('entities.trmtrainteacher.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
+            :pickupView="{ viewname: 'trm-train-teacher-pickup-view', title: $t('entities.trmtrainteacher.views.pickupview.title'), deResParameters: [{ pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' }, ], parameters: [{ pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
             style=""  
             @formitemvaluechange="onFormItemValueChange">
           </app-picker>

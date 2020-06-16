@@ -50,6 +50,21 @@ const router = new Router({
                     component: () => import('@pages/pim/pim-person-pickup-grid-view/pim-person-pickup-grid-view.vue'),
                 },
                 {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmcoursesystems/:trmcoursesystem?/mpickupview/:mpickupview?',
+                    meta: {
+                        caption: 'entities.trmcoursesystem.views.mpickupview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' },
+                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-course-system-mpickup-view/trm-course-system-mpickup-view.vue'),
+                },
+                {
                     path: 'trmcoursesystems/:trmcoursesystem?/mpickupview/:mpickupview?',
                     meta: {
                         caption: 'entities.trmcoursesystem.views.mpickupview.title',
@@ -210,6 +225,23 @@ const router = new Router({
                     component: () => import('@pages/trm/trm-train-course-pickup-grid-view/trm-train-course-pickup-grid-view.vue'),
                 },
                 {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/wbeditview/:wbeditview?',
+                    meta: {
+                        caption: 'entities.trmtrainteacher.views.wbeditview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/peixunjiaoshi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                            { pathName: 'wbeditview', parameterName: 'wbeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-teacher-wbedit-view/trm-train-teacher-wbedit-view.vue'),
+                },
+                {
                     path: 'trmtrainteachers/:trmtrainteacher?/wbeditview/:wbeditview?',
                     meta: {
                         caption: 'entities.trmtrainteacher.views.wbeditview.title',
@@ -299,6 +331,21 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/trm/trm-train-buapply-grid-view/trm-train-buapply-grid-view.vue'),
+                },
+                {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmhmatsers/:trmhmatser?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.trmhmatser.views.pickupgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmhmatsers', parameterName: 'trmhmatser' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-hmatser-pickup-grid-view/trm-hmatser-pickup-grid-view.vue'),
                 },
                 {
                     path: 'trmhmatsers/:trmhmatser?/pickupgridview/:pickupgridview?',
@@ -477,6 +524,21 @@ const router = new Router({
                     component: () => import('@pages/trm/trm-traffic-grid-view/trm-traffic-grid-view.vue'),
                 },
                 {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.trmtrainteacher.views.pickupgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-teacher-pickup-grid-view/trm-train-teacher-pickup-grid-view.vue'),
+                },
+                {
                     path: 'trmtrainteachers/:trmtrainteacher?/pickupgridview/:pickupgridview?',
                     meta: {
                         caption: 'entities.trmtrainteacher.views.pickupgridview.title',
@@ -602,6 +664,21 @@ const router = new Router({
                     component: () => import('@pages/trm/trm-train-out-apply-grid-view/trm-train-out-apply-grid-view.vue'),
                 },
                 {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/mpickupview/:mpickupview?',
+                    meta: {
+                        caption: 'entities.trmtrainteacher.views.mpickupview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-teacher-mpickup-view/trm-train-teacher-mpickup-view.vue'),
+                },
+                {
                     path: 'trmtrainteachers/:trmtrainteacher?/mpickupview/:mpickupview?',
                     meta: {
                         caption: 'entities.trmtrainteacher.views.mpickupview.title',
@@ -644,6 +721,20 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/trm/trm-demdeftion-tzfedit-view/trm-demdeftion-tzfedit-view.vue'),
+                },
+                {
+                    path: 'trmtrainagencies/:trmtrainagency?/tabexpview/:tabexpview?',
+                    meta: {
+                        caption: 'entities.trmtrainagency.views.tabexpview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'tabexpview', parameterName: 'tabexpview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-agency-tab-exp-view/trm-train-agency-tab-exp-view.vue'),
                 },
                 {
                     path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/gridview/:gridview?',
@@ -720,6 +811,21 @@ const router = new Router({
                     component: () => import('@pages/trm/trm-train-address-pickup-view/trm-train-address-pickup-view.vue'),
                 },
                 {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmcoursesystems/:trmcoursesystem?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.trmcoursesystem.views.editview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-course-system-edit-view/trm-course-system-edit-view.vue'),
+                },
+                {
                     path: 'trmcoursesystems/:trmcoursesystem?/editview/:editview?',
                     meta: {
                         caption: 'entities.trmcoursesystem.views.editview.title',
@@ -732,6 +838,21 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/trm/trm-course-system-edit-view/trm-course-system-edit-view.vue'),
+                },
+                {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmcoursesystems/:trmcoursesystem?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.trmcoursesystem.views.gridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-course-system-grid-view/trm-course-system-grid-view.vue'),
                 },
                 {
                     path: 'trmcoursesystems/:trmcoursesystem?/gridview/:gridview?',
@@ -778,6 +899,23 @@ const router = new Router({
                     component: () => import('@pages/trm/trm-train-facies-edit-view/trm-train-facies-edit-view.vue'),
                 },
                 {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.trmtrainteacher.views.editview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/peixunjiaoshi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-teacher-edit-view/trm-train-teacher-edit-view.vue'),
+                },
+                {
                     path: 'trmtrainteachers/:trmtrainteacher?/editview/:editview?',
                     meta: {
                         caption: 'entities.trmtrainteacher.views.editview.title',
@@ -820,6 +958,21 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/trm/trm-demdeftion-pickup-grid-view/trm-demdeftion-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmhmatsers/:trmhmatser?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.trmhmatser.views.editview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmhmatsers', parameterName: 'trmhmatser' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-hmatser-edit-view/trm-hmatser-edit-view.vue'),
                 },
                 {
                     path: 'trmhmatsers/:trmhmatser?/editview/:editview?',
@@ -972,6 +1125,23 @@ const router = new Router({
                     component: () => import('@pages/orm/orm-org-edit-view/orm-org-edit-view.vue'),
                 },
                 {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmhmatsers/:trmhmatser?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.trmhmatser.views.gridview.title',
+                        info:'',
+                        imgPath: '../../../img/jcgl/1/peixunxinxi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmhmatsers', parameterName: 'trmhmatser' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-hmatser-grid-view/trm-hmatser-grid-view.vue'),
+                },
+                {
                     path: 'trmhmatsers/:trmhmatser?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.trmhmatser.views.gridview.title',
@@ -988,6 +1158,23 @@ const router = new Router({
                     component: () => import('@pages/trm/trm-hmatser-grid-view/trm-hmatser-grid-view.vue'),
                 },
                 {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.trmtrainteacher.views.gridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/peixunjiaoshi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-teacher-grid-view/trm-train-teacher-grid-view.vue'),
+                },
+                {
                     path: 'trmtrainteachers/:trmtrainteacher?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.trmtrainteacher.views.gridview.title',
@@ -1002,6 +1189,23 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/trm/trm-train-teacher-grid-view/trm-train-teacher-grid-view.vue'),
+                },
+                {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/wbgridview/:wbgridview?',
+                    meta: {
+                        caption: 'entities.trmtrainteacher.views.wbgridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/peixunjiaoshi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                            { pathName: 'wbgridview', parameterName: 'wbgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-teacher-wbgrid-view/trm-train-teacher-wbgrid-view.vue'),
                 },
                 {
                     path: 'trmtrainteachers/:trmtrainteacher?/wbgridview/:wbgridview?',
@@ -1079,6 +1283,21 @@ const router = new Router({
                     component: () => import('@pages/orm/orm-bmkqdz-pickup-grid-view/orm-bmkqdz-pickup-grid-view.vue'),
                 },
                 {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmcoursesystems/:trmcoursesystem?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.trmcoursesystem.views.pickupview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-course-system-pickup-view/trm-course-system-pickup-view.vue'),
+                },
+                {
                     path: 'trmcoursesystems/:trmcoursesystem?/pickupview/:pickupview?',
                     meta: {
                         caption: 'entities.trmcoursesystem.views.pickupview.title',
@@ -1135,6 +1354,21 @@ const router = new Router({
                     component: () => import('@pages/trm/trm-plan-formu-edit-view/trm-plan-formu-edit-view.vue'),
                 },
                 {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmhmatsers/:trmhmatser?/mpickupview/:mpickupview?',
+                    meta: {
+                        caption: 'entities.trmhmatser.views.mpickupview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmhmatsers', parameterName: 'trmhmatser' },
+                            { pathName: 'mpickupview', parameterName: 'mpickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-hmatser-mpickup-view/trm-hmatser-mpickup-view.vue'),
+                },
+                {
                     path: 'trmhmatsers/:trmhmatser?/mpickupview/:mpickupview?',
                     meta: {
                         caption: 'entities.trmhmatser.views.mpickupview.title',
@@ -1177,6 +1411,21 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/trm/trm-depart-pickup-grid-view/trm-depart-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmcouarranges/:trmcouarrange?/pxjggridview/:pxjggridview?',
+                    meta: {
+                        caption: 'entities.trmcouarrange.views.pxjggridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmcouarranges', parameterName: 'trmcouarrange' },
+                            { pathName: 'pxjggridview', parameterName: 'pxjggridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-couarrange-pxjggrid-view/trm-couarrange-pxjggrid-view.vue'),
                 },
                 {
                     path: 'trmcouarranges/:trmcouarrange?/pxjggridview/:pxjggridview?',
@@ -1343,6 +1592,21 @@ const router = new Router({
                     component: () => import('@pages/orm/orm-org-grid-view/orm-org-grid-view.vue'),
                 },
                 {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmcouarranges/:trmcouarrange?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.trmcouarrange.views.editview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmcouarranges', parameterName: 'trmcouarrange' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-couarrange-edit-view/trm-couarrange-edit-view.vue'),
+                },
+                {
                     path: 'trmcouarranges/:trmcouarrange?/editview/:editview?',
                     meta: {
                         caption: 'entities.trmcouarrange.views.editview.title',
@@ -1490,6 +1754,21 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/trm/trm-teacher-train-edit-view/trm-teacher-train-edit-view.vue'),
+                },
+                {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.trmtrainteacher.views.pickupview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-teacher-pickup-view/trm-train-teacher-pickup-view.vue'),
                 },
                 {
                     path: 'trmtrainteachers/:trmtrainteacher?/pickupview/:pickupview?',
@@ -1643,6 +1922,21 @@ const router = new Router({
                     component: () => import('@pages/trm/trm-train-course-edit-view/trm-train-course-edit-view.vue'),
                 },
                 {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmcouarranges/:trmcouarrange?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.trmcouarrange.views.gridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmcouarranges', parameterName: 'trmcouarrange' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-couarrange-grid-view/trm-couarrange-grid-view.vue'),
+                },
+                {
                     path: 'trmcouarranges/:trmcouarrange?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.trmcouarrange.views.gridview.title',
@@ -1655,6 +1949,21 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/trm/trm-couarrange-grid-view/trm-couarrange-grid-view.vue'),
+                },
+                {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmcoursesystems/:trmcoursesystem?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.trmcoursesystem.views.pickupgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-course-system-pickup-grid-view/trm-course-system-pickup-grid-view.vue'),
                 },
                 {
                     path: 'trmcoursesystems/:trmcoursesystem?/pickupgridview/:pickupgridview?',
@@ -1744,6 +2053,20 @@ const router = new Router({
         component: () => import('@pages/orm/orm-orgsector-pickup-view/orm-orgsector-pickup-view.vue'),
     },
     {
+        path: '/trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/pickupview/:pickupview?',
+        meta: {
+            caption: 'entities.trmtrainteacher.views.pickupview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                { pathName: 'pickupview', parameterName: 'pickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-teacher-pickup-view/trm-train-teacher-pickup-view.vue'),
+    },
+    {
         path: '/trmtrainteachers/:trmtrainteacher?/pickupview/:pickupview?',
         meta: {
             caption: 'entities.trmtrainteacher.views.pickupview.title',
@@ -1797,6 +2120,20 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/orm-bmkqdz-pickup-view/orm-bmkqdz-pickup-view.vue'),
+    },
+    {
+        path: '/trmtrainagencies/:trmtrainagency?/trmcouarranges/:trmcouarrange?/editview/:editview?',
+        meta: {
+            caption: 'entities.trmcouarrange.views.editview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmcouarranges', parameterName: 'trmcouarrange' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-couarrange-edit-view/trm-couarrange-edit-view.vue'),
     },
     {
         path: '/trmcouarranges/:trmcouarrange?/editview/:editview?',
@@ -1868,6 +2205,20 @@ const router = new Router({
         component: () => import('@pages/trm/trm-train-actapply-pickup-view/trm-train-actapply-pickup-view.vue'),
     },
     {
+        path: '/trmtrainagencies/:trmtrainagency?/trmcoursesystems/:trmcoursesystem?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.trmcoursesystem.views.gridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-course-system-grid-view/trm-course-system-grid-view.vue'),
+    },
+    {
         path: '/trmcoursesystems/:trmcoursesystem?/gridview/:gridview?',
         meta: {
             caption: 'entities.trmcoursesystem.views.gridview.title',
@@ -1936,6 +2287,22 @@ const router = new Router({
         component: () => import('@pages/trm/trm-traffic-grid-view/trm-traffic-grid-view.vue'),
     },
     {
+        path: '/trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/wbgridview/:wbgridview?',
+        meta: {
+            caption: 'entities.trmtrainteacher.views.wbgridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/peixunjiaoshi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                { pathName: 'wbgridview', parameterName: 'wbgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-teacher-wbgrid-view/trm-train-teacher-wbgrid-view.vue'),
+    },
+    {
         path: '/trmtrainteachers/:trmtrainteacher?/wbgridview/:wbgridview?',
         meta: {
             caption: 'entities.trmtrainteacher.views.wbgridview.title',
@@ -1979,6 +2346,20 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-train-buapply-edit-view/trm-train-buapply-edit-view.vue'),
+    },
+    {
+        path: '/trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/mpickupview/:mpickupview?',
+        meta: {
+            caption: 'entities.trmtrainteacher.views.mpickupview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                { pathName: 'mpickupview', parameterName: 'mpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-teacher-mpickup-view/trm-train-teacher-mpickup-view.vue'),
     },
     {
         path: '/trmtrainteachers/:trmtrainteacher?/mpickupview/:mpickupview?',
@@ -2048,6 +2429,22 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-train-fillin-grid-view/trm-train-fillin-grid-view.vue'),
+    },
+    {
+        path: '/trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/editview/:editview?',
+        meta: {
+            caption: 'entities.trmtrainteacher.views.editview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/peixunjiaoshi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-teacher-edit-view/trm-train-teacher-edit-view.vue'),
     },
     {
         path: '/trmtrainteachers/:trmtrainteacher?/editview/:editview?',
@@ -2174,6 +2571,20 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-train-agency-pickup-grid-view/trm-train-agency-pickup-grid-view.vue'),
+    },
+    {
+        path: '/trmtrainagencies/:trmtrainagency?/trmcouarranges/:trmcouarrange?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.trmcouarrange.views.gridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmcouarranges', parameterName: 'trmcouarrange' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-couarrange-grid-view/trm-couarrange-grid-view.vue'),
     },
     {
         path: '/trmcouarranges/:trmcouarrange?/gridview/:gridview?',
@@ -2342,6 +2753,20 @@ const router = new Router({
         component: () => import('@pages/trm/trm-train-course-edit-view/trm-train-course-edit-view.vue'),
     },
     {
+        path: '/trmtrainagencies/:trmtrainagency?/trmhmatsers/:trmhmatser?/editview/:editview?',
+        meta: {
+            caption: 'entities.trmhmatser.views.editview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmhmatsers', parameterName: 'trmhmatser' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-hmatser-edit-view/trm-hmatser-edit-view.vue'),
+    },
+    {
         path: '/trmhmatsers/:trmhmatser?/editview/:editview?',
         meta: {
             caption: 'entities.trmhmatser.views.editview.title',
@@ -2353,6 +2778,20 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-hmatser-edit-view/trm-hmatser-edit-view.vue'),
+    },
+    {
+        path: '/trmtrainagencies/:trmtrainagency?/trmcoursesystems/:trmcoursesystem?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.trmcoursesystem.views.pickupgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-course-system-pickup-grid-view/trm-course-system-pickup-grid-view.vue'),
     },
     {
         path: '/trmcoursesystems/:trmcoursesystem?/pickupgridview/:pickupgridview?',
@@ -2405,6 +2844,20 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-traffic-edit-view/trm-traffic-edit-view.vue'),
+    },
+    {
+        path: '/trmtrainagencies/:trmtrainagency?/trmcouarranges/:trmcouarrange?/pxjggridview/:pxjggridview?',
+        meta: {
+            caption: 'entities.trmcouarrange.views.pxjggridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmcouarranges', parameterName: 'trmcouarrange' },
+                { pathName: 'pxjggridview', parameterName: 'pxjggridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-couarrange-pxjggrid-view/trm-couarrange-pxjggrid-view.vue'),
     },
     {
         path: '/trmcouarranges/:trmcouarrange?/pxjggridview/:pxjggridview?',
@@ -2489,6 +2942,20 @@ const router = new Router({
         component: () => import('@pages/orm/orm-org-edit-view/orm-org-edit-view.vue'),
     },
     {
+        path: '/trmtrainagencies/:trmtrainagency?/trmhmatsers/:trmhmatser?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.trmhmatser.views.pickupgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmhmatsers', parameterName: 'trmhmatser' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-hmatser-pickup-grid-view/trm-hmatser-pickup-grid-view.vue'),
+    },
+    {
         path: '/trmhmatsers/:trmhmatser?/pickupgridview/:pickupgridview?',
         meta: {
             caption: 'entities.trmhmatser.views.pickupgridview.title',
@@ -2515,6 +2982,22 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-depart-edit-view/trm-depart-edit-view.vue'),
+    },
+    {
+        path: '/trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/wbeditview/:wbeditview?',
+        meta: {
+            caption: 'entities.trmtrainteacher.views.wbeditview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/peixunjiaoshi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                { pathName: 'wbeditview', parameterName: 'wbeditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-teacher-wbedit-view/trm-train-teacher-wbedit-view.vue'),
     },
     {
         path: '/trmtrainteachers/:trmtrainteacher?/wbeditview/:wbeditview?',
@@ -2681,6 +3164,20 @@ const router = new Router({
         component: () => import('@pages/pim/pim-person-pickup-grid-view/pim-person-pickup-grid-view.vue'),
     },
     {
+        path: '/trmtrainagencies/:trmtrainagency?/trmcoursesystems/:trmcoursesystem?/editview/:editview?',
+        meta: {
+            caption: 'entities.trmcoursesystem.views.editview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-course-system-edit-view/trm-course-system-edit-view.vue'),
+    },
+    {
         path: '/trmcoursesystems/:trmcoursesystem?/editview/:editview?',
         meta: {
             caption: 'entities.trmcoursesystem.views.editview.title',
@@ -2816,6 +3313,20 @@ const router = new Router({
         component: () => import('@pages/orm/orm-org-sjorg-pickup-grid-view/orm-org-sjorg-pickup-grid-view.vue'),
     },
     {
+        path: '/trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.trmtrainteacher.views.pickupgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-teacher-pickup-grid-view/trm-train-teacher-pickup-grid-view.vue'),
+    },
+    {
         path: '/trmtrainteachers/:trmtrainteacher?/pickupgridview/:pickupgridview?',
         meta: {
             caption: 'entities.trmtrainteacher.views.pickupgridview.title',
@@ -2857,6 +3368,22 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-depart-grid-view/trm-depart-grid-view.vue'),
+    },
+    {
+        path: '/trmtrainagencies/:trmtrainagency?/trmhmatsers/:trmhmatser?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.trmhmatser.views.gridview.title',
+            info:'',
+            imgPath: '../../../img/jcgl/1/peixunxinxi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmhmatsers', parameterName: 'trmhmatser' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-hmatser-grid-view/trm-hmatser-grid-view.vue'),
     },
     {
         path: '/trmhmatsers/:trmhmatser?/gridview/:gridview?',
@@ -3007,6 +3534,22 @@ const router = new Router({
         component: () => import('@pages/trm/trm-train-address-pickup-grid-view/trm-train-address-pickup-grid-view.vue'),
     },
     {
+        path: '/trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.trmtrainteacher.views.gridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/peixunjiaoshi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-teacher-grid-view/trm-train-teacher-grid-view.vue'),
+    },
+    {
         path: '/trmtrainteachers/:trmtrainteacher?/gridview/:gridview?',
         meta: {
             caption: 'entities.trmtrainteacher.views.gridview.title',
@@ -3050,6 +3593,20 @@ const router = new Router({
         component: () => import('@pages/orm/orm-org-pickup-grid-view/orm-org-pickup-grid-view.vue'),
     },
     {
+        path: '/trmtrainagencies/:trmtrainagency?/trmcoursesystems/:trmcoursesystem?/mpickupview/:mpickupview?',
+        meta: {
+            caption: 'entities.trmcoursesystem.views.mpickupview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' },
+                { pathName: 'mpickupview', parameterName: 'mpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-course-system-mpickup-view/trm-course-system-mpickup-view.vue'),
+    },
+    {
         path: '/trmcoursesystems/:trmcoursesystem?/mpickupview/:mpickupview?',
         meta: {
             caption: 'entities.trmcoursesystem.views.mpickupview.title',
@@ -3061,6 +3618,20 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-course-system-mpickup-view/trm-course-system-mpickup-view.vue'),
+    },
+    {
+        path: '/trmtrainagencies/:trmtrainagency?/trmhmatsers/:trmhmatser?/mpickupview/:mpickupview?',
+        meta: {
+            caption: 'entities.trmhmatser.views.mpickupview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmhmatsers', parameterName: 'trmhmatser' },
+                { pathName: 'mpickupview', parameterName: 'mpickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-hmatser-mpickup-view/trm-hmatser-mpickup-view.vue'),
     },
     {
         path: '/trmhmatsers/:trmhmatser?/mpickupview/:mpickupview?',
@@ -3100,6 +3671,19 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-teacher-train-grid-view/trm-teacher-train-grid-view.vue'),
+    },
+    {
+        path: '/trmtrainagencies/:trmtrainagency?/tabexpview/:tabexpview?',
+        meta: {
+            caption: 'entities.trmtrainagency.views.tabexpview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'tabexpview', parameterName: 'tabexpview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-agency-tab-exp-view/trm-train-agency-tab-exp-view.vue'),
     },
     {
         path: '/trmtrainplanterms/:trmtrainplanterm?/pickupgridview/:pickupgridview?',
@@ -3156,6 +3740,20 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-train-out-apply-grid-view/trm-train-out-apply-grid-view.vue'),
+    },
+    {
+        path: '/trmtrainagencies/:trmtrainagency?/trmcoursesystems/:trmcoursesystem?/pickupview/:pickupview?',
+        meta: {
+            caption: 'entities.trmcoursesystem.views.pickupview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' },
+                { pathName: 'pickupview', parameterName: 'pickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-course-system-pickup-view/trm-course-system-pickup-view.vue'),
     },
     {
         path: '/trmcoursesystems/:trmcoursesystem?/pickupview/:pickupview?',

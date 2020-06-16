@@ -5,7 +5,7 @@ import TrmTrainAgencyEditViewBase from './trm-train-agency-edit-view-base.vue';
 import view_form from '@widgets/trm-train-agency/main-form/main-form.vue';
 
 /**
- * 培训机构编辑视图
+ * 培训机构
  *
  * @export
  * @class TrmTrainAgencyEditView

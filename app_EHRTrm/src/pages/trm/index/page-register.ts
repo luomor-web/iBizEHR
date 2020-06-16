@@ -36,6 +36,7 @@ export const PageComponents = {
         Vue.component('trm-train-teacher-mpickup-view', () => import('@pages/trm/trm-train-teacher-mpickup-view/trm-train-teacher-mpickup-view.vue'));
         Vue.component('orm-org-sjorg-pickup-grid-view', () => import('@pages/orm/orm-org-sjorg-pickup-grid-view/orm-org-sjorg-pickup-grid-view.vue'));
         Vue.component('trm-demdeftion-tzfedit-view', () => import('@pages/trm/trm-demdeftion-tzfedit-view/trm-demdeftion-tzfedit-view.vue'));
+        Vue.component('trm-train-agency-tab-exp-view', () => import('@pages/trm/trm-train-agency-tab-exp-view/trm-train-agency-tab-exp-view.vue'));
         Vue.component('trm-train-fillin-grid-view', () => import('@pages/trm/trm-train-fillin-grid-view/trm-train-fillin-grid-view.vue'));
         Vue.component('trm-train-address-pickup-view', () => import('@pages/trm/trm-train-address-pickup-view/trm-train-address-pickup-view.vue'));
         Vue.component('trm-course-system-edit-view', () => import('@pages/trm/trm-course-system-edit-view/trm-course-system-edit-view.vue'));

@@ -342,6 +342,7 @@
     paramItem='trmtrainaddress' 
     :parentdata='{"srfparentdefname":"TRMTRAINADDRESSID","srfparentdename":"TRMTRAINADDRESS","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_TRMCOUARRANGE_TRMTRAINADDRESS_TRMTRAINADDRESSID","SRFDER1NID":"DER1N_TRMCOUARRANGE_TRMTRAINADDRESS_TRMTRAINADDRESSID"}'
     :parameters="[
+        { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
     ]"
     :context="context"
     :viewparams="viewparams"

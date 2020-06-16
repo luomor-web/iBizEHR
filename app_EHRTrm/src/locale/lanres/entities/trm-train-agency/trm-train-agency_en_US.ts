@@ -46,7 +46,7 @@ export default {
 	views: {
 		editview: {
 			caption: "培训机构",
-      title: '培训机构编辑视图',
+      title: '培训机构',
 		},
 		pickupgridview: {
 			caption: "培训机构",
@@ -56,13 +56,21 @@ export default {
 			caption: "培训机构",
       title: '培训机构数据多项选择视图',
 		},
+		editview9: {
+			caption: "培训机构",
+      title: '培训机构编辑视图',
+		},
 		gridview: {
 			caption: "培训机构",
-      title: '培训机构表格视图',
+      title: '培训机构',
 		},
 		pickupview: {
 			caption: "培训机构",
       title: '培训机构数据选择视图',
+		},
+		tabexpview: {
+			caption: "培训机构",
+      title: '培训机构',
 		},
 	},
 	main_form: {
@@ -70,14 +78,8 @@ export default {
 			grouppanel1: "开票信息", 
 			grouppanel3: "简介", 
 			grouppanel4: "评价", 
-			group1: "培训机构信息", 
+			group1: "基本信息", 
 			formpage1: "基本信息", 
-			druipart1: "", 
-			formpage5: "培训师资", 
-			druipart2: "", 
-			formpage2: "培训记录", 
-			druipart3: "", 
-			formpage3: "班主任", 
 			srfupdatedate: "更新时间", 
 			srforikey: "", 
 			srfkey: "培训机构标识", 
@@ -115,8 +117,50 @@ export default {
 		uiactions: {
 		},
 	},
+	main2_form: {
+		details: {
+			group1: "基本信息", 
+			grouppanel1: "开票信息", 
+			grouppanel3: "简介", 
+			grouppanel4: "评价", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "培训机构标识", 
+			srfmajortext: "培训机构名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			trmtrainagencyname: "机构名称", 
+			jglx: "机构类型", 
+			jgdj: "机构等级", 
+			jglb: "机构性质", 
+			trmtrainagencyname2: "上级机构", 
+			sfgx: "是否共享", 
+			pimpersonname: "联系人", 
+			lxdh: "联系电话", 
+			ormorgname: "所属单位", 
+			zcxx: "注册信息", 
+			kctxfw: "模块范围", 
+			kpmc: "开票名称", 
+			kplx: "开票类型", 
+			nsrsbh: "纳税人识别号", 
+			khh: "开户行", 
+			khhzh: "开户行账号", 
+			kpr: "开票人", 
+			kprdh: "电话", 
+			kpdz: "地址", 
+			jj: "", 
+			pj: "", 
+			trmtrainagencyid: "培训机构标识", 
+		},
+		uiactions: {
+		},
+	},
 	main_grid: {
 		columns: {
+			uagridcolumn1: "操作",
 			trmtrainagencyname: "机构名称",
 			jglx: "机构类型",
 			jglb: "机构性质",
@@ -129,6 +173,9 @@ export default {
 			sfgx: "是否共享",
 		},
 		uiactions: {
+			openckview: "查看",
+			openeditview: "编辑",
+			remove: "Remove",
 		},
 	},
 	default_searchform: {
@@ -147,39 +194,15 @@ export default {
 			caption: "Save",
 			tip: "Save",
 		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
 		tbitem5: {
 			caption: "Save And Close",
 			tip: "Save And Close Window",
 		},
-		tbitem7: {
-			caption: "Remove And Close",
-			tip: "Remove And Close Window",
-		},
-		tbitem22: {
-			caption: "Help",
-			tip: "Help",
-		},
 	},
-	gridviewtoolbar2_toolbar: {
+	editview9toolbar_toolbar: {
 		deuiaction1: {
-			caption: "New",
-			tip: "New",
-		},
-		deuiaction2: {
-			caption: "保存",
-			tip: "保存",
-		},
-		deuiaction4: {
-			caption: "Remove",
-			tip: "Remove {0}",
-		},
-		deuiaction3: {
-			caption: "关闭行编辑",
-			tip: "关闭行编辑",
+			caption: "关闭",
+			tip: "关闭",
 		},
 	},
 	gridviewtoolbar_toolbar: {
@@ -187,25 +210,17 @@ export default {
 			caption: "New",
 			tip: "New",
 		},
+		tbitem5: {
+			caption: "Edit",
+			tip: "Edit {0}",
+		},
 		tbitem8: {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-		tbitem19: {
-			caption: "Filter",
-			tip: "Filter",
-		},
 		tbitem13: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-		deuiaction1: {
-			caption: "开启行编辑",
-			tip: "开启行编辑",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 };

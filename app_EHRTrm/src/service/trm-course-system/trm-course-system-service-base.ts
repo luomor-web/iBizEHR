@@ -48,6 +48,9 @@ export default class TrmCourseSystemServiceBase extends EntityService {
      * @memberof TrmCourseSystemServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmcoursesystem){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/${context.trmcoursesystem}/select`,isloading);
+        }
             return Http.getInstance().get(`/trmcoursesystems/${context.trmcoursesystem}/select`,isloading);
     }
 
@@ -61,6 +64,9 @@ export default class TrmCourseSystemServiceBase extends EntityService {
      * @memberof TrmCourseSystemServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmcoursesystem){
+            return Http.getInstance().put(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/${context.trmcoursesystem}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/trmcoursesystems/${context.trmcoursesystem}`,data,isloading);
@@ -77,6 +83,9 @@ export default class TrmCourseSystemServiceBase extends EntityService {
      * @memberof TrmCourseSystemServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmcoursesystem){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/${context.trmcoursesystem}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/trmcoursesystems/${context.trmcoursesystem}/save`,data,isloading);
@@ -93,6 +102,9 @@ export default class TrmCourseSystemServiceBase extends EntityService {
      * @memberof TrmCourseSystemServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmcoursesystem){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/${context.trmcoursesystem}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/trmcoursesystems/${context.trmcoursesystem}/checkkey`,data,isloading);
     }
 
@@ -106,6 +118,9 @@ export default class TrmCourseSystemServiceBase extends EntityService {
      * @memberof TrmCourseSystemServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && true){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/trmcoursesystems/getdraft`,isloading);
         res.data.trmcoursesystem = data.trmcoursesystem;
         return res;
@@ -121,6 +136,9 @@ export default class TrmCourseSystemServiceBase extends EntityService {
      * @memberof TrmCourseSystemServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmcoursesystem){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/${context.trmcoursesystem}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/trmcoursesystems/${context.trmcoursesystem}`,isloading);
             return res;
 
@@ -136,6 +154,9 @@ export default class TrmCourseSystemServiceBase extends EntityService {
      * @memberof TrmCourseSystemServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmcoursesystem){
+            return Http.getInstance().delete(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/${context.trmcoursesystem}`,isloading);
+        }
             return Http.getInstance().delete(`/trmcoursesystems/${context.trmcoursesystem}`,isloading);
 
     }
@@ -150,6 +171,15 @@ export default class TrmCourseSystemServiceBase extends EntityService {
      * @memberof TrmCourseSystemServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -173,6 +203,10 @@ export default class TrmCourseSystemServiceBase extends EntityService {
      * @memberof TrmCourseSystemServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/trmcoursesystems/fetchdefault`,tempData,isloading);
     }

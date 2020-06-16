@@ -48,6 +48,9 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmcouarrange){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmcouarranges/${context.trmcouarrange}/select`,isloading);
+        }
             return Http.getInstance().get(`/trmcouarranges/${context.trmcouarrange}/select`,isloading);
     }
 
@@ -61,6 +64,15 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmcouarranges`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -84,6 +96,9 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmcouarrange){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmcouarranges/${context.trmcouarrange}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/trmcouarranges/${context.trmcouarrange}`,isloading);
             return res;
 
@@ -99,6 +114,9 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmcouarrange){
+            return Http.getInstance().delete(`/trmtrainagencies/${context.trmtrainagency}/trmcouarranges/${context.trmcouarrange}`,isloading);
+        }
             return Http.getInstance().delete(`/trmcouarranges/${context.trmcouarrange}`,isloading);
 
     }
@@ -113,6 +131,9 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && true){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmcouarranges/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/trmcouarranges/getdraft`,isloading);
         res.data.trmcouarrange = data.trmcouarrange;
         return res;
@@ -128,6 +149,9 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmcouarrange){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmcouarranges/${context.trmcouarrange}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/trmcouarranges/${context.trmcouarrange}/checkkey`,data,isloading);
     }
 
@@ -141,6 +165,9 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmcouarrange){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmcouarranges/${context.trmcouarrange}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/trmcouarranges/${context.trmcouarrange}/save`,data,isloading);
@@ -157,6 +184,9 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmcouarrange){
+            return Http.getInstance().put(`/trmtrainagencies/${context.trmtrainagency}/trmcouarranges/${context.trmcouarrange}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/trmcouarranges/${context.trmcouarrange}`,data,isloading);
@@ -173,6 +203,10 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmcouarranges/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/trmcouarranges/fetchdefault`,tempData,isloading);
     }
