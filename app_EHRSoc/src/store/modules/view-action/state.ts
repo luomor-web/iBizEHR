@@ -4,6 +4,16 @@
 export const viewstate: any = {
     appviews: [
         {
+            viewtag: '024088082a2d1099b2a61ee67c986e43',
+            viewmodule: 'SOC',
+            viewname: 'SocTypePickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '25e10faa49dbfa2c6a9054b63ac0bc7a',
+            ],
+        },
+        {
             viewtag: '1a1326e28ef5ec3d85b45c0d9ecf9684',
             viewmodule: 'SOC',
             viewname: 'SocAreaGridView',
@@ -21,6 +31,16 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '912c10028c229aaf79d7542c94931417',
+            ],
+        },
+        {
+            viewtag: '6f4fb39cb25a702c89dc415245198608',
+            viewmodule: 'SOC',
+            viewname: 'SocRuleGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '954c57b4c84541e4769606551de25a05',
             ],
         },
         {
@@ -43,6 +63,17 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '954c57b4c84541e4769606551de25a05',
+            viewmodule: 'SOC',
+            viewname: 'SocRuleEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'b90f6f466753e0b928ea594d2a38ab73',
+                '912c10028c229aaf79d7542c94931417',
+            ],
+        },
+        {
             viewtag: '9787d3620f997b0d8f6bc4bcf0826837',
             viewmodule: 'SOC',
             viewname: 'SocTypeEditView',
@@ -59,6 +90,17 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '9787d3620f997b0d8f6bc4bcf0826837',
+            ],
+        },
+        {
+            viewtag: 'b90f6f466753e0b928ea594d2a38ab73',
+            viewmodule: 'SOC',
+            viewname: 'SocRuleDetailGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '59c055b21b497f790371732712f62a30',
+                '024088082a2d1099b2a61ee67c986e43',
             ],
         },
         {
@@ -88,6 +130,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '6f4fb39cb25a702c89dc415245198608',
                 'be3603e6155f93c90fc36953c6a4689f',
                 '1a1326e28ef5ec3d85b45c0d9ecf9684',
                 'a91ca0b2a35fc0bc1c22a613b0af0f04',

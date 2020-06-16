@@ -79,6 +79,8 @@ export default class SocTypeUIServiceBase extends UIService {
      * @memberof  SocTypeUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'soctypes'});
+        this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'soctypes'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'soctypes'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'soctypes'});
     }

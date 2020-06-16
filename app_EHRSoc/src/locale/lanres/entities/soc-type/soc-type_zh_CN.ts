@@ -10,6 +10,14 @@ export default {
     ordervalue: '排序号',
   },
 	views: {
+		pickupview: {
+			caption: '保险类型',
+      title: '保险类型数据选择视图',
+		},
+		pickupgridview: {
+			caption: '保险类型',
+      title: '保险类型选择表格视图',
+		},
 		editview: {
 			caption: '保险类型',
       title: '保险类型编辑视图',
@@ -47,6 +55,13 @@ export default {
 		columns: {
 			ordervalue: '排序号',
 			soctypename: '保险类型',
+		},
+		uiactions: {
+		},
+	},
+	default_searchform: {
+		details: {
+			formpage1: '常规条件', 
 		},
 		uiactions: {
 		},

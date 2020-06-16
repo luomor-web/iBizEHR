@@ -7,13 +7,29 @@ import Mock from 'mockjs'
 mock.onGet('./assets/json/view-config.json').reply((config: any) => {
     let status = MockAdapter.mockStatus(config);
     return [status,{
-                "socareagridview": {
+                "soctypepickupview": {
+            "title": "保险类型数据选择视图",
+            "caption": "保险类型",
+            "viewtype": "DEPICKUPVIEW",
+            "viewmodule": "SOC",
+            "viewname": "SocTypePickupView",
+            "viewtag": "024088082a2d1099b2a61ee67c986e43"
+        },
+        "socareagridview": {
             "title": "参保地表格视图",
             "caption": "参保地",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "SOC",
             "viewname": "SocAreaGridView",
             "viewtag": "1a1326e28ef5ec3d85b45c0d9ecf9684"
+        },
+        "soctypepickupgridview": {
+            "title": "保险类型选择表格视图",
+            "caption": "保险类型",
+            "viewtype": "DEPICKUPGRIDVIEW",
+            "viewmodule": "SOC",
+            "viewname": "SocTypePickupGridView",
+            "viewtag": "25e10faa49dbfa2c6a9054b63ac0bc7a"
         },
         "socareaeditview": {
             "title": "参保地编辑视图",
@@ -22,6 +38,22 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "SOC",
             "viewname": "SocAreaEditView",
             "viewtag": "4d2e62d3fd19327574be8b2c65337faf"
+        },
+        "socruledetaileditview": {
+            "title": "社保规则明细编辑视图",
+            "caption": "社保规则明细",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "SOC",
+            "viewname": "SocRuleDetailEditView",
+            "viewtag": "59c055b21b497f790371732712f62a30"
+        },
+        "socrulegridview": {
+            "title": "社保规则表格视图",
+            "caption": "社保规则",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "SOC",
+            "viewname": "SocRuleGridView",
+            "viewtag": "6f4fb39cb25a702c89dc415245198608"
         },
         "ormorgpickupgridview": {
             "title": "组织管理选择表格视图",
@@ -39,6 +71,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "OrmOrgPickupView",
             "viewtag": "912c10028c229aaf79d7542c94931417"
         },
+        "socruleeditview": {
+            "title": "社保规则编辑视图",
+            "caption": "社保规则",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "SOC",
+            "viewname": "SocRuleEditView",
+            "viewtag": "954c57b4c84541e4769606551de25a05"
+        },
         "soctypeeditview": {
             "title": "保险类型编辑视图",
             "caption": "保险类型",
@@ -54,6 +94,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "SOC",
             "viewname": "SocTypeGridView",
             "viewtag": "a91ca0b2a35fc0bc1c22a613b0af0f04"
+        },
+        "socruledetailgridview": {
+            "title": "社保规则明细表格视图",
+            "caption": "社保规则明细",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "SOC",
+            "viewname": "SocRuleDetailGridView",
+            "viewtag": "b90f6f466753e0b928ea594d2a38ab73"
         },
         "socaccountgridview": {
             "title": "参保账户表格视图",

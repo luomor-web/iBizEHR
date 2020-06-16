@@ -48,7 +48,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/jcgl/1/shebaoxinxi.png',
 	textcls: '',
-	appfunctag: '_3',
+	appfunctag: '_4',
 	resourcetag: '',
 	authtag:'EHRSoc-Index-menuitem2',
 },
@@ -67,7 +67,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/sbfl/1/gongsishebaoxinxi.png',
 	textcls: '',
-	appfunctag: '_2',
+	appfunctag: '_3',
 	resourcetag: '',
 	authtag:'EHRSoc-Index-menuitem3',
 },
@@ -86,7 +86,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/jcgl/1/hetongleixing.png',
 	textcls: '',
-	appfunctag: '_4',
+	appfunctag: '_5',
 	resourcetag: '',
 	authtag:'EHRSoc-Index-menuitem4',
 },
@@ -105,7 +105,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/newimage/1/kaoqinleixing.png',
 	textcls: '',
-	appfunctag: '',
+	appfunctag: '_2',
 	resourcetag: '',
 	authtag:'EHRSoc-Index-menuitem5',
 },
@@ -200,7 +200,7 @@ export default class IndexModel {
 	 */
 	public funcs: any[] = [
         {
-            appfunctag: '_4',
+            appfunctag: '_5',
             appfuncyype: 'APPVIEW',
             openmode: '',
             codename: 'soctypegridview',
@@ -212,7 +212,7 @@ export default class IndexModel {
             ],
         },
         {
-            appfunctag: '_2',
+            appfunctag: '_3',
             appfuncyype: 'APPVIEW',
             openmode: '',
             codename: 'socaccountgridview',
@@ -224,7 +224,7 @@ export default class IndexModel {
             ],
         },
         {
-            appfunctag: '_3',
+            appfunctag: '_4',
             appfuncyype: 'APPVIEW',
             openmode: '',
             codename: 'socareagridview',
@@ -232,6 +232,18 @@ export default class IndexModel {
             routepath: '/index/:index?/socareas/:socarea?/gridview/:gridview?',
             parameters: [
                 { pathName: 'socareas', parameterName: 'socarea' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+        },
+        {
+            appfunctag: '_2',
+            appfuncyype: 'APPVIEW',
+            openmode: '',
+            codename: 'socrulegridview',
+            deResParameters: [],
+            routepath: '/index/:index?/socrules/:socrule?/gridview/:gridview?',
+            parameters: [
+                { pathName: 'socrules', parameterName: 'socrule' },
                 { pathName: 'gridview', parameterName: 'gridview' },
             ],
         },

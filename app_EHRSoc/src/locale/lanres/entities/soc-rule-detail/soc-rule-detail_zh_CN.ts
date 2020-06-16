@@ -20,4 +20,82 @@ export default {
     companyamount: '企业固定额',
     memo: '备注',
   },
+	views: {
+		editview: {
+			caption: '社保规则明细',
+      title: '社保规则明细编辑视图',
+		},
+		gridview: {
+			caption: '社保规则明细',
+      title: '社保规则明细表格视图',
+		},
+	},
+	main_form: {
+		details: {
+			group1: '社保规则明细基本信息', 
+			formpage1: '基本信息', 
+			group2: '操作信息', 
+			formpage2: '其它', 
+			srfupdatedate: '更新时间', 
+			srforikey: '', 
+			srfkey: '社保规则明细标识', 
+			srfmajortext: '社保规则明细名称', 
+			srftempmode: '', 
+			srfuf: '', 
+			srfdeid: '', 
+			srfsourcekey: '', 
+			socruledetailname: '社保规则明细名称', 
+			createman: '建立人', 
+			createdate: '建立时间', 
+			updateman: '更新人', 
+			updatedate: '更新时间', 
+			socruledetailid: '社保规则明细标识', 
+		},
+		uiactions: {
+		},
+	},
+	main_grid: {
+		columns: {
+			soctypename: '保险类型',
+			highnum: '最高基数',
+			lownum: '最低基数',
+			companynum: '企业基数',
+			personnum: '个人基数',
+			companyrate: '企业比例',
+			personrate: '个人比例',
+			companyamount: '企业固定额',
+			personamount: '个人固定额',
+			memo: '备注',
+		},
+		uiactions: {
+		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: '保存',
+			tip: '保存',
+		},
+	},
+	gridviewtoolbar_toolbar: {
+		deuiaction1: {
+			caption: '新建',
+			tip: '新建',
+		},
+		deuiaction2: {
+			caption: '保存',
+			tip: '保存',
+		},
+		deuiaction3: {
+			caption: '删除',
+			tip: '删除',
+		},
+		deuiaction4: {
+			caption: '导入',
+			tip: '导入',
+		},
+		deuiaction5: {
+			caption: '导出',
+			tip: '导出',
+		},
+	},
 };
