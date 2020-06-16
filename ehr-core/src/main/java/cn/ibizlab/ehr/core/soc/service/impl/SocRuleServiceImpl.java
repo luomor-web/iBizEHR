@@ -44,6 +44,12 @@ import org.springframework.util.StringUtils;
 @Service("SocRuleServiceImpl")
 public class SocRuleServiceImpl extends ServiceImpl<SocRuleMapper, SocRule> implements ISocRuleService {
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.soc.service.ISocRuleDetailService socruledetailService;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
 
     private int batchSize = 500;
 
@@ -62,12 +68,14 @@ public class SocRuleServiceImpl extends ServiceImpl<SocRuleMapper, SocRule> impl
 
     @Override
     public SocRule getDraft(SocRule et) {
+        fillParentData(et);
         return et;
     }
 
     @Override
     @Transactional
     public boolean create(SocRule et) {
+        fillParentData(et);
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getSocruleid()),et);
@@ -76,12 +84,14 @@ public class SocRuleServiceImpl extends ServiceImpl<SocRuleMapper, SocRule> impl
 
     @Override
     public void createBatch(List<SocRule> list) {
+        list.forEach(item->fillParentData(item));
         this.saveBatch(list,batchSize);
     }
 
     @Override
     @Transactional
     public boolean update(SocRule et) {
+        fillParentData(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("socruleid",et.getSocruleid())))
             return false;
         CachedBeanCopier.copy(get(et.getSocruleid()),et);
@@ -90,6 +100,7 @@ public class SocRuleServiceImpl extends ServiceImpl<SocRuleMapper, SocRule> impl
 
     @Override
     public void updateBatch(List<SocRule> list) {
+        list.forEach(item->fillParentData(item));
         updateBatchById(list,batchSize);
     }
 
@@ -115,12 +126,14 @@ public class SocRuleServiceImpl extends ServiceImpl<SocRuleMapper, SocRule> impl
 
     @Override
     public boolean saveBatch(Collection<SocRule> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
         return true;
     }
 
     @Override
     public void saveBatch(List<SocRule> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
     }
 
@@ -141,6 +154,16 @@ public class SocRuleServiceImpl extends ServiceImpl<SocRuleMapper, SocRule> impl
     }
 
 
+	@Override
+    public List<SocRule> selectByOrmorgid(String orgid) {
+        return baseMapper.selectByOrmorgid(orgid);
+    }
+
+    @Override
+    public void removeByOrmorgid(String orgid) {
+        this.remove(new QueryWrapper<SocRule>().eq("ormorgid",orgid));
+    }
+
 
     /**
      * 查询集合 DEFAULT
@@ -153,6 +176,22 @@ public class SocRuleServiceImpl extends ServiceImpl<SocRuleMapper, SocRule> impl
 
 
 
+    /**
+     * 为当前实体填充父数据（外键值文本、外键值附加数据）
+     * @param et
+     */
+    private void fillParentData(SocRule et){
+        //实体关系[DER1N_SOCRULE_ORMORG_ORMORGID]
+        if(!ObjectUtils.isEmpty(et.getOrmorgid())){
+            cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg=et.getOrmorg();
+            if(ObjectUtils.isEmpty(ormorg)){
+                cn.ibizlab.ehr.core.orm.domain.OrmOrg majorEntity=ormorgService.get(et.getOrmorgid());
+                et.setOrmorg(majorEntity);
+                ormorg=majorEntity;
+            }
+            et.setOrmorgname(ormorg.getOrgname());
+        }
+    }
 
 
     @Override

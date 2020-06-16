@@ -34,6 +34,34 @@ public class SocRuleSearchContext extends QueryWrapperContext<SocRule> {
             this.getSearchCond().like("socrulename", n_socrulename_like);
         }
     }
+	private String n_ormorgid_eq;//[组织标识]
+	public void setN_ormorgid_eq(String n_ormorgid_eq) {
+        this.n_ormorgid_eq = n_ormorgid_eq;
+        if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
+        }
+    }
+	private String n_ormorgname_eq;//[组织]
+	public void setN_ormorgname_eq(String n_ormorgname_eq) {
+        this.n_ormorgname_eq = n_ormorgname_eq;
+        if(!ObjectUtils.isEmpty(this.n_ormorgname_eq)){
+            this.getSearchCond().eq("ormorgname", n_ormorgname_eq);
+        }
+    }
+	private String n_ormorgname_like;//[组织]
+	public void setN_ormorgname_like(String n_ormorgname_like) {
+        this.n_ormorgname_like = n_ormorgname_like;
+        if(!ObjectUtils.isEmpty(this.n_ormorgname_like)){
+            this.getSearchCond().like("ormorgname", n_ormorgname_like);
+        }
+    }
+	private Integer n_nyear_eq;//[年度]
+	public void setN_nyear_eq(Integer n_nyear_eq) {
+        this.n_nyear_eq = n_nyear_eq;
+        if(!ObjectUtils.isEmpty(this.n_nyear_eq)){
+            this.getSearchCond().eq("nyear", n_nyear_eq);
+        }
+    }
 
     /**
 	 * 启用快速搜索

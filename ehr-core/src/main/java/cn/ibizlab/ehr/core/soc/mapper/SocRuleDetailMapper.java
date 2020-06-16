@@ -62,4 +62,8 @@ public interface SocRuleDetailMapper extends BaseMapper<SocRuleDetail>{
     @Delete("${sql}")
     boolean deleteBySQL(@Param("sql") String sql, @Param("et")Map param);
 
+    List<SocRuleDetail> selectBySocruleid(@Param("socruleid") Serializable socruleid) ;
+
+    List<SocRuleDetail> selectBySoctypeid(@Param("soctypeid") Serializable soctypeid) ;
+
 }

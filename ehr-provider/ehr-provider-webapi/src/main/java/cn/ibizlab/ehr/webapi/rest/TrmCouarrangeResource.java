@@ -158,5 +158,137 @@ public class TrmCouarrangeResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmcouarrangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @PreAuthorize("hasPermission(this.trmcouarrangeMapping.toDomain(#trmcouarrangedto),'ehr-TrmCouarrange-Create')")
+    @ApiOperation(value = "根据培训机构建立培训记录", tags = {"培训记录" },  notes = "根据培训机构建立培训记录")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmcouarranges")
+    @Transactional
+    public ResponseEntity<TrmCouarrangeDTO> createByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @RequestBody TrmCouarrangeDTO trmcouarrangedto) {
+        TrmCouarrange domain = trmcouarrangeMapping.toDomain(trmcouarrangedto);
+        domain.setTrmtrainagencyid(trmtrainagency_id);
+		trmcouarrangeService.create(domain);
+        TrmCouarrangeDTO dto = trmcouarrangeMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmcouarrangeMapping.toDomain(#trmcouarrangedtos),'ehr-TrmCouarrange-Create')")
+    @ApiOperation(value = "根据培训机构批量建立培训记录", tags = {"培训记录" },  notes = "根据培训机构批量建立培训记录")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmcouarranges/batch")
+    public ResponseEntity<Boolean> createBatchByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @RequestBody List<TrmCouarrangeDTO> trmcouarrangedtos) {
+        List<TrmCouarrange> domainlist=trmcouarrangeMapping.toDomain(trmcouarrangedtos);
+        for(TrmCouarrange domain:domainlist){
+            domain.setTrmtrainagencyid(trmtrainagency_id);
+        }
+        trmcouarrangeService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PostAuthorize("hasPermission(this.trmcouarrangeMapping.toDomain(returnObject.body),'ehr-TrmCouarrange-Get')")
+    @ApiOperation(value = "根据培训机构获取培训记录", tags = {"培训记录" },  notes = "根据培训机构获取培训记录")
+	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainagencies/{trmtrainagency_id}/trmcouarranges/{trmcouarrange_id}")
+    public ResponseEntity<TrmCouarrangeDTO> getByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmcouarrange_id") String trmcouarrange_id) {
+        TrmCouarrange domain = trmcouarrangeService.get(trmcouarrange_id);
+        TrmCouarrangeDTO dto = trmcouarrangeMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmcouarrangeService.get(#trmcouarrange_id),'ehr-TrmCouarrange-Remove')")
+    @ApiOperation(value = "根据培训机构删除培训记录", tags = {"培训记录" },  notes = "根据培训机构删除培训记录")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainagencies/{trmtrainagency_id}/trmcouarranges/{trmcouarrange_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmcouarrange_id") String trmcouarrange_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(trmcouarrangeService.remove(trmcouarrange_id));
+    }
+
+    @PreAuthorize("hasPermission(this.trmcouarrangeService.getTrmcouarrangeByIds(#ids),'ehr-TrmCouarrange-Remove')")
+    @ApiOperation(value = "根据培训机构批量删除培训记录", tags = {"培训记录" },  notes = "根据培训机构批量删除培训记录")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainagencies/{trmtrainagency_id}/trmcouarranges/batch")
+    public ResponseEntity<Boolean> removeBatchByTrmTrainAgency(@RequestBody List<String> ids) {
+        trmcouarrangeService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "根据培训机构获取培训记录草稿", tags = {"培训记录" },  notes = "根据培训机构获取培训记录草稿")
+    @RequestMapping(method = RequestMethod.GET, value = "/trmtrainagencies/{trmtrainagency_id}/trmcouarranges/getdraft")
+    public ResponseEntity<TrmCouarrangeDTO> getDraftByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id) {
+        TrmCouarrange domain = new TrmCouarrange();
+        domain.setTrmtrainagencyid(trmtrainagency_id);
+        return ResponseEntity.status(HttpStatus.OK).body(trmcouarrangeMapping.toDto(trmcouarrangeService.getDraft(domain)));
+    }
+
+    @ApiOperation(value = "根据培训机构检查培训记录", tags = {"培训记录" },  notes = "根据培训机构检查培训记录")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmcouarranges/checkkey")
+    public ResponseEntity<Boolean> checkKeyByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @RequestBody TrmCouarrangeDTO trmcouarrangedto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(trmcouarrangeService.checkKey(trmcouarrangeMapping.toDomain(trmcouarrangedto)));
+    }
+
+    @PreAuthorize("hasPermission(this.trmcouarrangeMapping.toDomain(#trmcouarrangedto),'ehr-TrmCouarrange-Save')")
+    @ApiOperation(value = "根据培训机构保存培训记录", tags = {"培训记录" },  notes = "根据培训机构保存培训记录")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmcouarranges/save")
+    public ResponseEntity<Boolean> saveByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @RequestBody TrmCouarrangeDTO trmcouarrangedto) {
+        TrmCouarrange domain = trmcouarrangeMapping.toDomain(trmcouarrangedto);
+        domain.setTrmtrainagencyid(trmtrainagency_id);
+        return ResponseEntity.status(HttpStatus.OK).body(trmcouarrangeService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.trmcouarrangeMapping.toDomain(#trmcouarrangedtos),'ehr-TrmCouarrange-Save')")
+    @ApiOperation(value = "根据培训机构批量保存培训记录", tags = {"培训记录" },  notes = "根据培训机构批量保存培训记录")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmcouarranges/savebatch")
+    public ResponseEntity<Boolean> saveBatchByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @RequestBody List<TrmCouarrangeDTO> trmcouarrangedtos) {
+        List<TrmCouarrange> domainlist=trmcouarrangeMapping.toDomain(trmcouarrangedtos);
+        for(TrmCouarrange domain:domainlist){
+             domain.setTrmtrainagencyid(trmtrainagency_id);
+        }
+        trmcouarrangeService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.trmcouarrangeService.get(#trmcouarrange_id),'ehr-TrmCouarrange-Update')")
+    @ApiOperation(value = "根据培训机构更新培训记录", tags = {"培训记录" },  notes = "根据培训机构更新培训记录")
+	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainagencies/{trmtrainagency_id}/trmcouarranges/{trmcouarrange_id}")
+    @Transactional
+    public ResponseEntity<TrmCouarrangeDTO> updateByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmcouarrange_id") String trmcouarrange_id, @RequestBody TrmCouarrangeDTO trmcouarrangedto) {
+        TrmCouarrange domain = trmcouarrangeMapping.toDomain(trmcouarrangedto);
+        domain.setTrmtrainagencyid(trmtrainagency_id);
+        domain.setTrmcouarrangeid(trmcouarrange_id);
+		trmcouarrangeService.update(domain);
+        TrmCouarrangeDTO dto = trmcouarrangeMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmcouarrangeService.getTrmcouarrangeByEntities(this.trmcouarrangeMapping.toDomain(#trmcouarrangedtos)),'ehr-TrmCouarrange-Update')")
+    @ApiOperation(value = "根据培训机构批量更新培训记录", tags = {"培训记录" },  notes = "根据培训机构批量更新培训记录")
+	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainagencies/{trmtrainagency_id}/trmcouarranges/batch")
+    public ResponseEntity<Boolean> updateBatchByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @RequestBody List<TrmCouarrangeDTO> trmcouarrangedtos) {
+        List<TrmCouarrange> domainlist=trmcouarrangeMapping.toDomain(trmcouarrangedtos);
+        for(TrmCouarrange domain:domainlist){
+            domain.setTrmtrainagencyid(trmtrainagency_id);
+        }
+        trmcouarrangeService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmCouarrange-Default-all')")
+	@ApiOperation(value = "根据培训机构获取DEFAULT", tags = {"培训记录" } ,notes = "根据培训机构获取DEFAULT")
+    @RequestMapping(method= RequestMethod.GET , value="/trmtrainagencies/{trmtrainagency_id}/trmcouarranges/fetchdefault")
+	public ResponseEntity<List<TrmCouarrangeDTO>> fetchTrmCouarrangeDefaultByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id,TrmCouarrangeSearchContext context) {
+        context.setN_trmtrainagencyid_eq(trmtrainagency_id);
+        Page<TrmCouarrange> domains = trmcouarrangeService.searchDefault(context) ;
+        List<TrmCouarrangeDTO> list = trmcouarrangeMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmCouarrange-Default-all')")
+	@ApiOperation(value = "根据培训机构查询DEFAULT", tags = {"培训记录" } ,notes = "根据培训机构查询DEFAULT")
+    @RequestMapping(method= RequestMethod.POST , value="/trmtrainagencies/{trmtrainagency_id}/trmcouarranges/searchdefault")
+	public ResponseEntity<Page<TrmCouarrangeDTO>> searchTrmCouarrangeDefaultByTrmTrainAgency(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @RequestBody TrmCouarrangeSearchContext context) {
+        context.setN_trmtrainagencyid_eq(trmtrainagency_id);
+        Page<TrmCouarrange> domains = trmcouarrangeService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(trmcouarrangeMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
 }
 

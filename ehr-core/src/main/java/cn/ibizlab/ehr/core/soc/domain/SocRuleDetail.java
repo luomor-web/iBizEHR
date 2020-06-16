@@ -88,6 +88,113 @@ public class SocRuleDetail extends EntityMP implements Serializable {
     @JSONField(name = "updatedate" , format="yyyy-MM-dd HH:mm:ss")
     @JsonProperty("updatedate")
     private Timestamp updatedate;
+    /**
+     * 保险类型标识
+     */
+    @TableField(value = "soctypeid")
+    @JSONField(name = "soctypeid")
+    @JsonProperty("soctypeid")
+    private String soctypeid;
+    /**
+     * 保险类型
+     */
+    @TableField(exist = false)
+    @JSONField(name = "soctypename")
+    @JsonProperty("soctypename")
+    private String soctypename;
+    /**
+     * 社保规则标识
+     */
+    @TableField(value = "socruleid")
+    @JSONField(name = "socruleid")
+    @JsonProperty("socruleid")
+    private String socruleid;
+    /**
+     * 社保规则名称
+     */
+    @TableField(exist = false)
+    @JSONField(name = "socrulename")
+    @JsonProperty("socrulename")
+    private String socrulename;
+    /**
+     * 最高基数
+     */
+    @TableField(value = "highnum")
+    @JSONField(name = "highnum")
+    @JsonProperty("highnum")
+    private Double highnum;
+    /**
+     * 最低基数
+     */
+    @TableField(value = "lownum")
+    @JSONField(name = "lownum")
+    @JsonProperty("lownum")
+    private Double lownum;
+    /**
+     * 企业基数
+     */
+    @TableField(value = "companynum")
+    @JSONField(name = "companynum")
+    @JsonProperty("companynum")
+    private Double companynum;
+    /**
+     * 个人基数
+     */
+    @TableField(value = "personnum")
+    @JSONField(name = "personnum")
+    @JsonProperty("personnum")
+    private Double personnum;
+    /**
+     * 企业比例
+     */
+    @TableField(value = "companyrate")
+    @JSONField(name = "companyrate")
+    @JsonProperty("companyrate")
+    private Double companyrate;
+    /**
+     * 个人比例
+     */
+    @TableField(value = "personrate")
+    @JSONField(name = "personrate")
+    @JsonProperty("personrate")
+    private Double personrate;
+    /**
+     * 个人固定额
+     */
+    @TableField(value = "personamount")
+    @JSONField(name = "personamount")
+    @JsonProperty("personamount")
+    private Double personamount;
+    /**
+     * 企业固定额
+     */
+    @TableField(value = "companyamount")
+    @JSONField(name = "companyamount")
+    @JsonProperty("companyamount")
+    private Double companyamount;
+    /**
+     * 备注
+     */
+    @TableField(value = "memo")
+    @JSONField(name = "memo")
+    @JsonProperty("memo")
+    private String memo;
+
+    /**
+     * 
+     */
+    @JsonIgnore
+    @JSONField(serialize = false)
+    @TableField(exist = false)
+    private cn.ibizlab.ehr.core.soc.domain.SocRule socrule;
+
+    /**
+     * 
+     */
+    @JsonIgnore
+    @JSONField(serialize = false)
+    @TableField(exist = false)
+    private cn.ibizlab.ehr.core.soc.domain.SocType soctype;
 
 
 
@@ -97,6 +204,94 @@ public class SocRuleDetail extends EntityMP implements Serializable {
     public void setSocruledetailname(String socruledetailname){
         this.socruledetailname = socruledetailname ;
         this.modify("socruledetailname",socruledetailname);
+    }
+
+    /**
+     * 设置 [保险类型标识]
+     */
+    public void setSoctypeid(String soctypeid){
+        this.soctypeid = soctypeid ;
+        this.modify("soctypeid",soctypeid);
+    }
+
+    /**
+     * 设置 [社保规则标识]
+     */
+    public void setSocruleid(String socruleid){
+        this.socruleid = socruleid ;
+        this.modify("socruleid",socruleid);
+    }
+
+    /**
+     * 设置 [最高基数]
+     */
+    public void setHighnum(Double highnum){
+        this.highnum = highnum ;
+        this.modify("highnum",highnum);
+    }
+
+    /**
+     * 设置 [最低基数]
+     */
+    public void setLownum(Double lownum){
+        this.lownum = lownum ;
+        this.modify("lownum",lownum);
+    }
+
+    /**
+     * 设置 [企业基数]
+     */
+    public void setCompanynum(Double companynum){
+        this.companynum = companynum ;
+        this.modify("companynum",companynum);
+    }
+
+    /**
+     * 设置 [个人基数]
+     */
+    public void setPersonnum(Double personnum){
+        this.personnum = personnum ;
+        this.modify("personnum",personnum);
+    }
+
+    /**
+     * 设置 [企业比例]
+     */
+    public void setCompanyrate(Double companyrate){
+        this.companyrate = companyrate ;
+        this.modify("companyrate",companyrate);
+    }
+
+    /**
+     * 设置 [个人比例]
+     */
+    public void setPersonrate(Double personrate){
+        this.personrate = personrate ;
+        this.modify("personrate",personrate);
+    }
+
+    /**
+     * 设置 [个人固定额]
+     */
+    public void setPersonamount(Double personamount){
+        this.personamount = personamount ;
+        this.modify("personamount",personamount);
+    }
+
+    /**
+     * 设置 [企业固定额]
+     */
+    public void setCompanyamount(Double companyamount){
+        this.companyamount = companyamount ;
+        this.modify("companyamount",companyamount);
+    }
+
+    /**
+     * 设置 [备注]
+     */
+    public void setMemo(String memo){
+        this.memo = memo ;
+        this.modify("memo",memo);
     }
 
 

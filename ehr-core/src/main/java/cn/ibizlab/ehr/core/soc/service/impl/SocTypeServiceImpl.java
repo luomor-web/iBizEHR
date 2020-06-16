@@ -44,6 +44,9 @@ import org.springframework.util.StringUtils;
 @Service("SocTypeServiceImpl")
 public class SocTypeServiceImpl extends ServiceImpl<SocTypeMapper, SocType> implements ISocTypeService {
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.soc.service.ISocRuleDetailService socruledetailService;
 
     private int batchSize = 500;
 

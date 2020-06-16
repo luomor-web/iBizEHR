@@ -81,6 +81,30 @@ public class SocRuleDTO extends DTOBase implements Serializable {
     @JsonProperty("updatedate")
     private Timestamp updatedate;
 
+    /**
+     * 属性 [ORMORGID]
+     *
+     */
+    @JSONField(name = "ormorgid")
+    @JsonProperty("ormorgid")
+    private String ormorgid;
+
+    /**
+     * 属性 [ORMORGNAME]
+     *
+     */
+    @JSONField(name = "ormorgname")
+    @JsonProperty("ormorgname")
+    private String ormorgname;
+
+    /**
+     * 属性 [NYEAR]
+     *
+     */
+    @JSONField(name = "nyear")
+    @JsonProperty("nyear")
+    private Integer nyear;
+
 
     /**
      * 设置 [SOCRULENAME]
@@ -88,6 +112,22 @@ public class SocRuleDTO extends DTOBase implements Serializable {
     public void setSocrulename(String  socrulename){
         this.socrulename = socrulename ;
         this.modify("socrulename",socrulename);
+    }
+
+    /**
+     * 设置 [ORMORGID]
+     */
+    public void setOrmorgid(String  ormorgid){
+        this.ormorgid = ormorgid ;
+        this.modify("ormorgid",ormorgid);
+    }
+
+    /**
+     * 设置 [NYEAR]
+     */
+    public void setNyear(Integer  nyear){
+        this.nyear = nyear ;
+        this.modify("nyear",nyear);
     }
 
 

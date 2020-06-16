@@ -37,6 +37,10 @@ public interface ISocRuleDetailService extends IService<SocRuleDetail>{
     void removeBatch(Collection<String> idList) ;
     boolean checkKey(SocRuleDetail et) ;
     Page<SocRuleDetail> searchDefault(SocRuleDetailSearchContext context) ;
+    List<SocRuleDetail> selectBySocruleid(String socruleid) ;
+    void removeBySocruleid(String socruleid) ;
+    List<SocRuleDetail> selectBySoctypeid(String soctypeid) ;
+    void removeBySoctypeid(String soctypeid) ;
     /**
      *自定义查询SQL
      * @param sql  select * from table where id =#{et.param}

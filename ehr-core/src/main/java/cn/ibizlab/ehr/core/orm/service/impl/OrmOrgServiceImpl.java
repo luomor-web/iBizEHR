@@ -252,6 +252,9 @@ public class OrmOrgServiceImpl extends ServiceImpl<OrmOrgMapper, OrmOrg> impleme
     private cn.ibizlab.ehr.core.soc.service.ISocAreaService socareaService;
     @Autowired
     @Lazy
+    private cn.ibizlab.ehr.core.soc.service.ISocRuleService socruleService;
+    @Autowired
+    @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITrmDemdeftionService trmdemdeftionService;
     @Autowired
     @Lazy

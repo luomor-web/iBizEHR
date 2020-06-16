@@ -97,6 +97,35 @@ public class SocRule extends EntityMP implements Serializable {
     @JSONField(name = "updatedate" , format="yyyy-MM-dd HH:mm:ss")
     @JsonProperty("updatedate")
     private Timestamp updatedate;
+    /**
+     * 组织标识
+     */
+    @TableField(value = "ormorgid")
+    @JSONField(name = "ormorgid")
+    @JsonProperty("ormorgid")
+    private String ormorgid;
+    /**
+     * 组织
+     */
+    @TableField(exist = false)
+    @JSONField(name = "ormorgname")
+    @JsonProperty("ormorgname")
+    private String ormorgname;
+    /**
+     * 年度
+     */
+    @TableField(value = "nyear")
+    @JSONField(name = "nyear")
+    @JsonProperty("nyear")
+    private Integer nyear;
+
+    /**
+     * 
+     */
+    @JsonIgnore
+    @JSONField(serialize = false)
+    @TableField(exist = false)
+    private cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg;
 
 
 
@@ -106,6 +135,22 @@ public class SocRule extends EntityMP implements Serializable {
     public void setSocrulename(String socrulename){
         this.socrulename = socrulename ;
         this.modify("socrulename",socrulename);
+    }
+
+    /**
+     * 设置 [组织标识]
+     */
+    public void setOrmorgid(String ormorgid){
+        this.ormorgid = ormorgid ;
+        this.modify("ormorgid",ormorgid);
+    }
+
+    /**
+     * 设置 [年度]
+     */
+    public void setNyear(Integer nyear){
+        this.nyear = nyear ;
+        this.modify("nyear",nyear);
     }
 
 

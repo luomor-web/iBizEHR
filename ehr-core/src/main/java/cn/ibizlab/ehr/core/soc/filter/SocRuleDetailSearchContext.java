@@ -34,6 +34,48 @@ public class SocRuleDetailSearchContext extends QueryWrapperContext<SocRuleDetai
             this.getSearchCond().like("socruledetailname", n_socruledetailname_like);
         }
     }
+	private String n_soctypeid_eq;//[保险类型标识]
+	public void setN_soctypeid_eq(String n_soctypeid_eq) {
+        this.n_soctypeid_eq = n_soctypeid_eq;
+        if(!ObjectUtils.isEmpty(this.n_soctypeid_eq)){
+            this.getSearchCond().eq("soctypeid", n_soctypeid_eq);
+        }
+    }
+	private String n_soctypename_eq;//[保险类型]
+	public void setN_soctypename_eq(String n_soctypename_eq) {
+        this.n_soctypename_eq = n_soctypename_eq;
+        if(!ObjectUtils.isEmpty(this.n_soctypename_eq)){
+            this.getSearchCond().eq("soctypename", n_soctypename_eq);
+        }
+    }
+	private String n_soctypename_like;//[保险类型]
+	public void setN_soctypename_like(String n_soctypename_like) {
+        this.n_soctypename_like = n_soctypename_like;
+        if(!ObjectUtils.isEmpty(this.n_soctypename_like)){
+            this.getSearchCond().like("soctypename", n_soctypename_like);
+        }
+    }
+	private String n_socruleid_eq;//[社保规则标识]
+	public void setN_socruleid_eq(String n_socruleid_eq) {
+        this.n_socruleid_eq = n_socruleid_eq;
+        if(!ObjectUtils.isEmpty(this.n_socruleid_eq)){
+            this.getSearchCond().eq("socruleid", n_socruleid_eq);
+        }
+    }
+	private String n_socrulename_eq;//[社保规则名称]
+	public void setN_socrulename_eq(String n_socrulename_eq) {
+        this.n_socrulename_eq = n_socrulename_eq;
+        if(!ObjectUtils.isEmpty(this.n_socrulename_eq)){
+            this.getSearchCond().eq("socrulename", n_socrulename_eq);
+        }
+    }
+	private String n_socrulename_like;//[社保规则名称]
+	public void setN_socrulename_like(String n_socrulename_like) {
+        this.n_socrulename_like = n_socrulename_like;
+        if(!ObjectUtils.isEmpty(this.n_socrulename_like)){
+            this.getSearchCond().like("socrulename", n_socrulename_like);
+        }
+    }
 
     /**
 	 * 启用快速搜索

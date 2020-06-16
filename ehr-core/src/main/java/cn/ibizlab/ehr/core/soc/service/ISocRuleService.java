@@ -37,6 +37,8 @@ public interface ISocRuleService extends IService<SocRule>{
     boolean remove(String key) ;
     void removeBatch(Collection<String> idList) ;
     Page<SocRule> searchDefault(SocRuleSearchContext context) ;
+    List<SocRule> selectByOrmorgid(String orgid) ;
+    void removeByOrmorgid(String orgid) ;
     /**
      *自定义查询SQL
      * @param sql  select * from table where id =#{et.param}

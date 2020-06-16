@@ -62,4 +62,6 @@ public interface SocRuleMapper extends BaseMapper<SocRule>{
     @Delete("${sql}")
     boolean deleteBySQL(@Param("sql") String sql, @Param("et")Map param);
 
+    List<SocRule> selectByOrmorgid(@Param("orgid") Serializable orgid) ;
+
 }

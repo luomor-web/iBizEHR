@@ -44,17 +44,25 @@ import org.springframework.util.StringUtils;
 @Service("SocRuleDetailServiceImpl")
 public class SocRuleDetailServiceImpl extends ServiceImpl<SocRuleDetailMapper, SocRuleDetail> implements ISocRuleDetailService {
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.soc.service.ISocRuleService socruleService;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.soc.service.ISocTypeService soctypeService;
 
     private int batchSize = 500;
 
     @Override
     public SocRuleDetail getDraft(SocRuleDetail et) {
+        fillParentData(et);
         return et;
     }
 
     @Override
     @Transactional
     public boolean update(SocRuleDetail et) {
+        fillParentData(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("socruledetailid",et.getSocruledetailid())))
             return false;
         CachedBeanCopier.copy(get(et.getSocruledetailid()),et);
@@ -63,6 +71,7 @@ public class SocRuleDetailServiceImpl extends ServiceImpl<SocRuleDetailMapper, S
 
     @Override
     public void updateBatch(List<SocRuleDetail> list) {
+        list.forEach(item->fillParentData(item));
         updateBatchById(list,batchSize);
     }
 
@@ -82,6 +91,7 @@ public class SocRuleDetailServiceImpl extends ServiceImpl<SocRuleDetailMapper, S
     @Override
     @Transactional
     public boolean create(SocRuleDetail et) {
+        fillParentData(et);
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getSocruledetailid()),et);
@@ -90,6 +100,7 @@ public class SocRuleDetailServiceImpl extends ServiceImpl<SocRuleDetailMapper, S
 
     @Override
     public void createBatch(List<SocRuleDetail> list) {
+        list.forEach(item->fillParentData(item));
         this.saveBatch(list,batchSize);
     }
 
@@ -115,12 +126,14 @@ public class SocRuleDetailServiceImpl extends ServiceImpl<SocRuleDetailMapper, S
 
     @Override
     public boolean saveBatch(Collection<SocRuleDetail> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
         return true;
     }
 
     @Override
     public void saveBatch(List<SocRuleDetail> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
     }
 
@@ -141,6 +154,26 @@ public class SocRuleDetailServiceImpl extends ServiceImpl<SocRuleDetailMapper, S
         return (!ObjectUtils.isEmpty(et.getSocruledetailid()))&&(!Objects.isNull(this.getById(et.getSocruledetailid())));
     }
 
+	@Override
+    public List<SocRuleDetail> selectBySocruleid(String socruleid) {
+        return baseMapper.selectBySocruleid(socruleid);
+    }
+
+    @Override
+    public void removeBySocruleid(String socruleid) {
+        this.remove(new QueryWrapper<SocRuleDetail>().eq("socruleid",socruleid));
+    }
+
+	@Override
+    public List<SocRuleDetail> selectBySoctypeid(String soctypeid) {
+        return baseMapper.selectBySoctypeid(soctypeid);
+    }
+
+    @Override
+    public void removeBySoctypeid(String soctypeid) {
+        this.remove(new QueryWrapper<SocRuleDetail>().eq("soctypeid",soctypeid));
+    }
+
 
     /**
      * 查询集合 DEFAULT
@@ -153,6 +186,32 @@ public class SocRuleDetailServiceImpl extends ServiceImpl<SocRuleDetailMapper, S
 
 
 
+    /**
+     * 为当前实体填充父数据（外键值文本、外键值附加数据）
+     * @param et
+     */
+    private void fillParentData(SocRuleDetail et){
+        //实体关系[DER1N_SOCRULEDETAIL_SOCRULE_SOCRULEID]
+        if(!ObjectUtils.isEmpty(et.getSocruleid())){
+            cn.ibizlab.ehr.core.soc.domain.SocRule socrule=et.getSocrule();
+            if(ObjectUtils.isEmpty(socrule)){
+                cn.ibizlab.ehr.core.soc.domain.SocRule majorEntity=socruleService.get(et.getSocruleid());
+                et.setSocrule(majorEntity);
+                socrule=majorEntity;
+            }
+            et.setSocrulename(socrule.getSocrulename());
+        }
+        //实体关系[DER1N_SOCRULEDETAIL_SOCTYPE_SOCTYPEID]
+        if(!ObjectUtils.isEmpty(et.getSoctypeid())){
+            cn.ibizlab.ehr.core.soc.domain.SocType soctype=et.getSoctype();
+            if(ObjectUtils.isEmpty(soctype)){
+                cn.ibizlab.ehr.core.soc.domain.SocType majorEntity=soctypeService.get(et.getSoctypeid());
+                et.setSoctype(majorEntity);
+                soctype=majorEntity;
+            }
+            et.setSoctypename(soctype.getSoctypename());
+        }
+    }
 
 
     @Override
