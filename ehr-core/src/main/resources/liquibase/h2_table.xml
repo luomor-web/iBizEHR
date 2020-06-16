@@ -6841,7 +6841,7 @@
 
 
     <!--输出实体[TRMTRAINACTAPPLY]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmtrainactapply-35-175">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmtrainactapply-37-175">
         <createTable tableName="T_TRMTRAINACTAPPLY">
                 <column name="JHPXRS" remarks="" type="INT">
                 </column>
@@ -12814,7 +12814,7 @@
        <addForeignKeyConstraint baseColumnNames="SALSUBJECTID" baseTableName="T_SALITEMSUB" constraintName="DER1N_SALITEMSUB_SALSUBJECT_SA" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SALSUBJECTID" referencedTableName="T_SALSUBJECT" validate="true"/>
     </changeSet>
         <!--输出实体[TRMTRAINACTAPPLY]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainactapply-35-541">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainactapply-37-541">
        <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_TRMTRAINACTAPPLY" constraintName="DER1N_TRMTRAINACTAPPLY_ORMORGS" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
     </changeSet>
         <!--输出实体[PIMPATENT]外键关系 -->

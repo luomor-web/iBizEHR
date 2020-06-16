@@ -27,7 +27,7 @@ export default class IndexModel {
 	hidesidebar: false,
 	opendefault: false,
 	iconcls: '',
-	icon: '',
+	icon: '../../../img/sbfl/1/gerenshebaoxinxi.png',
 	textcls: '',
 	appfunctag: '',
 	resourcetag: '',
@@ -46,7 +46,7 @@ export default class IndexModel {
 	hidesidebar: false,
 	opendefault: false,
 	iconcls: '',
-	icon: '',
+	icon: '../../../img/sbfl/1/gerenshebaoxinxi.png',
 	textcls: '',
 	appfunctag: '_3',
 	resourcetag: '',
@@ -65,7 +65,7 @@ export default class IndexModel {
 	hidesidebar: false,
 	opendefault: false,
 	iconcls: '',
-	icon: '',
+	icon: '../../../img/sbfl/1/gongsishebaoxinxi.png',
 	textcls: '',
 	appfunctag: '_2',
 	resourcetag: '',
@@ -83,6 +83,30 @@ export default class IndexModel {
 	 * @memberof IndexModel
 	 */
 	public funcs: any[] = [
+        {
+            appfunctag: '_2',
+            appfuncyype: 'APPVIEW',
+            openmode: '',
+            codename: 'socaccountgridview',
+            deResParameters: [],
+            routepath: '/index/:index?/socaccounts/:socaccount?/gridview/:gridview?',
+            parameters: [
+                { pathName: 'socaccounts', parameterName: 'socaccount' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+        },
+        {
+            appfunctag: '_3',
+            appfuncyype: 'APPVIEW',
+            openmode: '',
+            codename: 'socareagridview',
+            deResParameters: [],
+            routepath: '/index/:index?/socareas/:socarea?/gridview/:gridview?',
+            parameters: [
+                { pathName: 'socareas', parameterName: 'socarea' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+        },
 	];
 
     /**
