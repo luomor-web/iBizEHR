@@ -261,6 +261,19 @@ const router = new Router({
         component: () => import('@pages/soc/soc-area-grid-view/soc-area-grid-view.vue'),
     },
     {
+        path: '/soctypes/:soctype?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.soctype.views.pickupgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'soctypes', parameterName: 'soctype' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-type-pickup-grid-view/soc-type-pickup-grid-view.vue'),
+    },
+    {
         path: '/socareas/:socarea?/editview/:editview?',
         meta: {
             caption: 'entities.socarea.views.editview.title',
@@ -272,6 +285,19 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/soc/soc-area-edit-view/soc-area-edit-view.vue'),
+    },
+    {
+        path: '/socruledetails/:socruledetail?/editview/:editview?',
+        meta: {
+            caption: 'entities.socruledetail.views.editview.title',
+            info:'',
+            parameters: [
+                { pathName: 'socruledetails', parameterName: 'socruledetail' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-rule-detail-edit-view/soc-rule-detail-edit-view.vue'),
     },
     {
         path: '/socrules/:socrule?/gridview/:gridview?',

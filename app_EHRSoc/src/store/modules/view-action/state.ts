@@ -24,6 +24,15 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '25e10faa49dbfa2c6a9054b63ac0bc7a',
+            viewmodule: 'SOC',
+            viewname: 'SocTypePickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
             viewtag: '4d2e62d3fd19327574be8b2c65337faf',
             viewmodule: 'SOC',
             viewname: 'SocAreaEditView',
@@ -31,6 +40,15 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '912c10028c229aaf79d7542c94931417',
+            ],
+        },
+        {
+            viewtag: '59c055b21b497f790371732712f62a30',
+            viewmodule: 'SOC',
+            viewname: 'SocRuleDetailEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
             ],
         },
         {
