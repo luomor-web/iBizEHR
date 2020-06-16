@@ -105,6 +105,14 @@ public class SocRuleDTO extends DTOBase implements Serializable {
     @JsonProperty("nyear")
     private Integer nyear;
 
+    /**
+     * 属性 [MEMO]
+     *
+     */
+    @JSONField(name = "memo")
+    @JsonProperty("memo")
+    private String memo;
+
 
     /**
      * 设置 [SOCRULENAME]
@@ -128,6 +136,14 @@ public class SocRuleDTO extends DTOBase implements Serializable {
     public void setNyear(Integer  nyear){
         this.nyear = nyear ;
         this.modify("nyear",nyear);
+    }
+
+    /**
+     * 设置 [MEMO]
+     */
+    public void setMemo(String  memo){
+        this.memo = memo ;
+        this.modify("memo",memo);
     }
 
 

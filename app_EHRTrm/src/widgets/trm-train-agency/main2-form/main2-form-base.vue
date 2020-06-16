@@ -1,267 +1,148 @@
 <template>
-    <i-form :model="this.data" class='app-form' ref='form'  id='trmtrainagency_main' style="">
+    <i-form :model="this.data" class='app-form info-form-mode' ref='form'  id='trmtrainagency_main2' style="">
     <input style="display:none;" />
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainagency.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainagency.main2_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
     <row>
-        <i-col v-show="detailsModel.trmtrainagencyname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='trmtrainagencyname' :itemRules="this.rules.trmtrainagencyname" class='' :caption="$t('entities.trmtrainagency.main_form.details.trmtrainagencyname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.trmtrainagencyname.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.trmtrainagencyname"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.trmtrainagencyname.disabled" type='text'  style=""></input-box>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.jglx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='jglx' :itemRules="this.rules.jglx" class='' :caption="$t('entities.trmtrainagency.main_form.details.jglx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jglx.error" :isEmptyCaption="false" labelPos="LEFT">
+        <i-col v-show="detailsModel.trmtrainagencyname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='trmtrainagencyname' :itemRules="this.rules.trmtrainagencyname" class='' :caption="$t('entities.trmtrainagency.main2_form.details.trmtrainagencyname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.trmtrainagencyname.error" :isEmptyCaption="false" labelPos="LEFT">
     
- <dropdown-list 
-    v-model="data.jglx" 
-    :data="data" 
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{ }' 
-    :localParam ='{ }' 
-    :disabled="detailsModel.jglx.disabled"  
-    tag='EhrCodeList0111' 
-    codelistType='STATIC'
-    placeholder='请选择...' style="">
- </dropdown-list>
+<app-span name='trmtrainagencyname' :value="data.trmtrainagencyname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.jgdj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='jgdj' :itemRules="this.rules.jgdj" class='' :caption="$t('entities.trmtrainagency.main_form.details.jgdj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jgdj.error" :isEmptyCaption="false" labelPos="LEFT">
+<i-col v-show="detailsModel.jglx.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='jglx' :itemRules="this.rules.jglx" class='' :caption="$t('entities.trmtrainagency.main2_form.details.jglx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jglx.error" :isEmptyCaption="false" labelPos="LEFT">
     
- <dropdown-list 
-    v-model="data.jgdj" 
-    :data="data" 
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{ }' 
-    :localParam ='{ }' 
-    :disabled="detailsModel.jgdj.disabled"  
-    tag='EhrCodeList0145' 
-    codelistType='DYNAMIC'
-    placeholder='请选择...' style="">
- </dropdown-list>
+<app-span name='jglx' :value="data.jglx" tag='EhrCodeList0111' codelistType='STATIC' :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.jglb.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='jglb' :itemRules="this.rules.jglb" class='' :caption="$t('entities.trmtrainagency.main_form.details.jglb')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jglb.error" :isEmptyCaption="false" labelPos="LEFT">
+<i-col v-show="detailsModel.jgdj.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='jgdj' :itemRules="this.rules.jgdj" class='' :caption="$t('entities.trmtrainagency.main2_form.details.jgdj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jgdj.error" :isEmptyCaption="false" labelPos="LEFT">
     
- <dropdown-list 
-    v-model="data.jglb" 
-    :data="data" 
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{ }' 
-    :localParam ='{ }' 
-    :disabled="detailsModel.jglb.disabled"  
-    tag='EhrCodeList0130' 
-    codelistType='DYNAMIC'
-    placeholder='请选择...' style="">
- </dropdown-list>
+<app-span name='jgdj' :value="data.jgdj" tag='EhrCodeList0145' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.trmtrainagencyname2.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='trmtrainagencyname2' :itemRules="this.rules.trmtrainagencyname2" class='' :caption="$t('entities.trmtrainagency.main_form.details.trmtrainagencyname2')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.trmtrainagencyname2.error" :isEmptyCaption="false" labelPos="LEFT">
+<i-col v-show="detailsModel.jglb.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='jglb' :itemRules="this.rules.jglb" class='' :caption="$t('entities.trmtrainagency.main2_form.details.jglb')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jglb.error" :isEmptyCaption="false" labelPos="LEFT">
     
-<app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :localContext ='{ }' 
-  :localParam ='{ }' 
-  :disabled="detailsModel.trmtrainagencyname2.disabled"
-  name='trmtrainagencyname2'
-  deMajorField='trmtrainagencyname'
-  deKeyField='trmtrainagency'
-  :service="service"
-  :acParams="{ serviceName: 'TrmTrainAgencyService', interfaceName: 'FetchDefault'}"
-  valueitem='trmtrainagencyid2' 
-  :value="data.trmtrainagencyname2" 
-  editortype="" 
-  :pickupView="{ viewname: 'trm-train-agency-pickup-view', title: $t('entities.trmtrainagency.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+<app-span name='jglb' :value="data.jglb" tag='EhrCodeList0130' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.sfgx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='sfgx' :itemRules="this.rules.sfgx" class='' :caption="$t('entities.trmtrainagency.main_form.details.sfgx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfgx.error" :isEmptyCaption="false" labelPos="LEFT">
+<i-col v-show="detailsModel.trmtrainagencyname2.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='trmtrainagencyname2' :itemRules="this.rules.trmtrainagencyname2" class='' :caption="$t('entities.trmtrainagency.main2_form.details.trmtrainagencyname2')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.trmtrainagencyname2.error" :isEmptyCaption="false" labelPos="LEFT">
     
- <dropdown-list 
-  v-model="data.sfgx" 
-  :data="data" 
-  :context="context"
-  :viewparams="viewparams"
-  :localContext ='{ }' 
-  :localParam ='{ }' 
-  :disabled="detailsModel.sfgx.disabled" 
-  style="width:100px;width: 100px;" 
-  tag='EhrCodeList0400' 
-  codelistType='STATIC'
-  placeholder='请选择...'>
- </dropdown-list>
+<app-span name='trmtrainagencyname2' :value="data.trmtrainagencyname2" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.trmtrainagency.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
+<i-col v-show="detailsModel.sfgx.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='sfgx' :itemRules="this.rules.sfgx" class='' :caption="$t('entities.trmtrainagency.main2_form.details.sfgx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfgx.error" :isEmptyCaption="false" labelPos="LEFT">
     
-<app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :localContext ='{ }' 
-  :localParam ='{ }' 
-  :disabled="detailsModel.pimpersonname.disabled"
-  name='pimpersonname'
-  deMajorField='pimpersonname'
-  deKeyField='pimperson'
-  :service="service"
-  :acParams="{ serviceName: 'PimPersonService', interfaceName: 'FetchDefault'}"
-  valueitem='pimpersonid' 
-  :value="data.pimpersonname" 
-  editortype="" 
-  :pickupView="{ viewname: 'pim-person-pickup-view', title: $t('entities.pimperson.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'pimpeople', parameterName: 'pimperson' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+<app-span name='sfgx' :value="data.sfgx" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.lxdh.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='lxdh' :itemRules="this.rules.lxdh" class='' :caption="$t('entities.trmtrainagency.main_form.details.lxdh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.lxdh.error" :isEmptyCaption="false" labelPos="LEFT">
+<i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.trmtrainagency.main2_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='pimpersonname' :value="data.pimpersonname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.lxdh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='lxdh' :itemRules="this.rules.lxdh" class='' :caption="$t('entities.trmtrainagency.main2_form.details.lxdh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.lxdh.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.lxdh"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.lxdh.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.trmtrainagency.main_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
+<i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.trmtrainagency.main2_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
     
-<app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :localContext ='{ }' 
-  :localParam ='{ }' 
-  :disabled="detailsModel.ormorgname.disabled"
-  name='ormorgname'
-  deMajorField='orgname'
-  deKeyField='ormorg'
-  :service="service"
-  :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchDefault'}"
-  valueitem='ormorgid' 
-  :value="data.ormorgname" 
-  editortype="" 
-  :pickupView="{ viewname: 'orm-org-pickup-view', title: $t('entities.ormorg.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+<app-span name='ormorgname' :value="data.ormorgname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.zcxx.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-item name='zcxx' :itemRules="this.rules.zcxx" class='' :caption="$t('entities.trmtrainagency.main_form.details.zcxx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zcxx.error" :isEmptyCaption="false" labelPos="LEFT">
-    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
-    <textarea class="ivu-input" v-model="data.zcxx" :disabled="detailsModel.zcxx.disabled" style=""></textarea>
-</div>
+<i-col v-show="detailsModel.zcxx.visible" :style="{}"  :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
+    <app-form-item name='zcxx' :itemRules="this.rules.zcxx" class='' :caption="$t('entities.trmtrainagency.main2_form.details.zcxx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zcxx.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='zcxx' :value="data.zcxx" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.kctxfw.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-item name='kctxfw' :itemRules="this.rules.kctxfw" class='' :caption="$t('entities.trmtrainagency.main_form.details.kctxfw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kctxfw.error" :isEmptyCaption="false" labelPos="LEFT">
+<i-col v-show="detailsModel.kctxfw.visible" :style="{}"  :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
+    <app-form-item name='kctxfw' :itemRules="this.rules.kctxfw" class='' :caption="$t('entities.trmtrainagency.main2_form.details.kctxfw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kctxfw.error" :isEmptyCaption="false" labelPos="LEFT">
     
-<app-mpicker
-    :activeData="data"
-    :disabled="detailsModel.kctxfw.disabled"
-    :curvalue="data.kctxfw"
-    name="kctxfw"
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{ }' 
-    :localParam ='{ }' 
-    :service="service"
-    :acParams="{ }"
-    :pickupView="{ viewname: 'trm-course-system-mpickup-view', title: $t('entities.trmcoursesystem.views.mpickupview.title'), deResParameters: [{ pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' }, ], parameters: [{ pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' }, { pathName: 'mpickupview', parameterName: 'mpickupview' } ], placement:'' }"
-    @formitemvaluechange="onFormItemValueChange" 
-    style="">
-</app-mpicker>
-
+<app-span name='kctxfw' :value="data.kctxfw" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
+
+</i-col>
+    
+    </row>
+</app-form-group>
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainagency.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainagency.main2_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="true" >    
     <row>
-        <i-col v-show="detailsModel.kpmc.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='kpmc' :itemRules="this.rules.kpmc" class='' :caption="$t('entities.trmtrainagency.main_form.details.kpmc')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kpmc.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.kpmc"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.kpmc.disabled" type='text'  style=""></input-box>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.kplx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='kplx' :itemRules="this.rules.kplx" class='' :caption="$t('entities.trmtrainagency.main_form.details.kplx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kplx.error" :isEmptyCaption="false" labelPos="LEFT">
+        <i-col v-show="detailsModel.kpmc.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='kpmc' :itemRules="this.rules.kpmc" class='' :caption="$t('entities.trmtrainagency.main2_form.details.kpmc')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kpmc.error" :isEmptyCaption="false" labelPos="LEFT">
     
- <dropdown-list 
-    v-model="data.kplx" 
-    :data="data" 
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{ }' 
-    :localParam ='{ }' 
-    :disabled="detailsModel.kplx.disabled"  
-    tag='EhrCodeList0039' 
-    codelistType='STATIC'
-    placeholder='请选择...' style="">
- </dropdown-list>
+<app-span name='kpmc' :value="data.kpmc" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.nsrsbh.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='nsrsbh' :itemRules="this.rules.nsrsbh" class='' :caption="$t('entities.trmtrainagency.main_form.details.nsrsbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nsrsbh.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.nsrsbh"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.nsrsbh.disabled" type='text'  style=""></input-box>
+<i-col v-show="detailsModel.kplx.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='kplx' :itemRules="this.rules.kplx" class='' :caption="$t('entities.trmtrainagency.main2_form.details.kplx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kplx.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='kplx' :value="data.kplx" tag='EhrCodeList0039' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.khh.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='khh' :itemRules="this.rules.khh" class='' :caption="$t('entities.trmtrainagency.main_form.details.khh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.khh.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.khh"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.khh.disabled" type='text'  style=""></input-box>
+<i-col v-show="detailsModel.nsrsbh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='nsrsbh' :itemRules="this.rules.nsrsbh" class='' :caption="$t('entities.trmtrainagency.main2_form.details.nsrsbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nsrsbh.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='nsrsbh' :value="data.nsrsbh" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.khhzh.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='khhzh' :itemRules="this.rules.khhzh" class='' :caption="$t('entities.trmtrainagency.main_form.details.khhzh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.khhzh.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.khhzh"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.khhzh.disabled" type='text'  style=""></input-box>
+<i-col v-show="detailsModel.khh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='khh' :itemRules="this.rules.khh" class='' :caption="$t('entities.trmtrainagency.main2_form.details.khh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.khh.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='khh' :value="data.khh" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.kpr.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='kpr' :itemRules="this.rules.kpr" class='' :caption="$t('entities.trmtrainagency.main_form.details.kpr')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kpr.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.kpr"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.kpr.disabled" type='text'  style=""></input-box>
+<i-col v-show="detailsModel.khhzh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='khhzh' :itemRules="this.rules.khhzh" class='' :caption="$t('entities.trmtrainagency.main2_form.details.khhzh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.khhzh.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='khhzh' :value="data.khhzh" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.kprdh.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='kprdh' :itemRules="this.rules.kprdh" class='' :caption="$t('entities.trmtrainagency.main_form.details.kprdh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kprdh.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.kprdh"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.kprdh.disabled" type='text'  style=""></input-box>
+<i-col v-show="detailsModel.kpr.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='kpr' :itemRules="this.rules.kpr" class='' :caption="$t('entities.trmtrainagency.main2_form.details.kpr')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kpr.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='kpr' :value="data.kpr" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.kpdz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='kpdz' :itemRules="this.rules.kpdz" class='' :caption="$t('entities.trmtrainagency.main_form.details.kpdz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kpdz.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.kpdz"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.kpdz.disabled" type='text'  style=""></input-box>
+<i-col v-show="detailsModel.kprdh.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='kprdh' :itemRules="this.rules.kprdh" class='' :caption="$t('entities.trmtrainagency.main2_form.details.kprdh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kprdh.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='kprdh' :value="data.kprdh" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.kpdz.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='kpdz' :itemRules="this.rules.kpdz" class='' :caption="$t('entities.trmtrainagency.main2_form.details.kpdz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kpdz.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='kpdz' :value="data.kpdz" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -271,13 +152,12 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel3.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel3.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainagency.main_form.details.grouppanel3')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel3.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainagency.main2_form.details.grouppanel3')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="true" >    
     <row>
         <i-col v-show="detailsModel.jj.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-item name='jj' :itemRules="this.rules.jj" class='' :caption="$t('entities.trmtrainagency.main_form.details.jj')" uiStyle="DEFAULT" :labelWidth="50" :isShowCaption="true" :error="detailsModel.jj.error" :isEmptyCaption="true" labelPos="LEFT">
-    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
-    <textarea class="ivu-input" v-model="data.jj" :disabled="detailsModel.jj.disabled" style=""></textarea>
-</div>
+    <app-form-item name='jj' :itemRules="this.rules.jj" class='' :caption="$t('entities.trmtrainagency.main2_form.details.jj')" uiStyle="DEFAULT" :labelWidth="50" :isShowCaption="true" :error="detailsModel.jj.error" :isEmptyCaption="true" labelPos="LEFT">
+    
+<app-span name='jj' :value="data.jj" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -287,19 +167,13 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel4.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel4.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainagency.main_form.details.grouppanel4')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel4.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainagency.main2_form.details.grouppanel4')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="true" >    
     <row>
         <i-col v-show="detailsModel.pj.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-item name='pj' :itemRules="this.rules.pj" class='' :caption="$t('entities.trmtrainagency.main_form.details.pj')" uiStyle="DEFAULT" :labelWidth="50" :isShowCaption="true" :error="detailsModel.pj.error" :isEmptyCaption="true" labelPos="LEFT">
-    <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
-    <textarea class="ivu-input" :rows="10" v-model="data.pj" :disabled="detailsModel.pj.disabled" style="height:200px;"></textarea>
-</div>
-</app-form-item>
-
-</i-col>
+    <app-form-item name='pj' :itemRules="this.rules.pj" class='' :caption="$t('entities.trmtrainagency.main2_form.details.pj')" uiStyle="DEFAULT" :labelWidth="50" :isShowCaption="true" :error="detailsModel.pj.error" :isEmptyCaption="true" labelPos="LEFT">
     
-    </row>
-</app-form-group>
+<app-span name='pj' :value="data.pj" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
 
 </i-col>
     
@@ -320,7 +194,7 @@ import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
 import TrmTrainAgencyService from '@/service/trm-train-agency/trm-train-agency-service';
-import MainService from './main-form-service';
+import Main2Service from './main2-form-service';
 
 import { FormButtonModel, FormPageModel, FormItemModel, FormDRUIPartModel, FormPartModel, FormGroupPanelModel, FormIFrameModel, FormRowItemModel, FormTabPageModel, FormTabPanelModel, FormUserControlModel } from '@/model/form-detail';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -331,13 +205,13 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
       
     }
 })
-export default class MainBase extends Vue implements ControlInterface {
+export default class Main2Base extends Vue implements ControlInterface {
 
     /**
      * 名称
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public name?: string;
 
@@ -345,7 +219,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -353,7 +227,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public context: any;
 
@@ -361,7 +235,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public viewparams: any;
 
@@ -370,7 +244,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof Main
+     * @memberof Main2
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -378,7 +252,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof Main
+     * @memberof Main2
      */
     public getControlType(): string {
         return 'FORM'
@@ -390,23 +264,23 @@ export default class MainBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof Main
+     * @memberof Main2
      */    
     public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
      *
-     * @type {MainService}
-     * @memberof Main
+     * @type {Main2Service}
+     * @memberof Main2
      */
-    public service: MainService = new MainService({ $store: this.$store });
+    public service: Main2Service = new Main2Service({ $store: this.$store });
 
     /**
      * 实体服务对象
      *
      * @type {TrmTrainAgencyService}
-     * @memberof Main
+     * @memberof Main2
      */
     public appEntityService: TrmTrainAgencyService = new TrmTrainAgencyService({ $store: this.$store });
     
@@ -416,7 +290,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof Main
+     * @memberof Main2
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -426,7 +300,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof Main
+     * @memberof Main2
      */
     public counterRefresh(){
         const _this:any =this;
@@ -443,7 +317,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof Main
+     * @memberof Main2
      */
     public srfwfmemo:string = "";
     
@@ -451,7 +325,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof Main
+     * @memberof Main2
      */
     public getDatas(): any[] {
         return [this.data];
@@ -461,7 +335,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof Main
+     * @memberof Main2
      */
     public getData(): any {
         return this.data;
@@ -471,7 +345,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -479,7 +353,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -487,7 +361,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -495,7 +369,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--start
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public WFStartAction!: string;
     
@@ -503,7 +377,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--update
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public updateAction!: string;
     
@@ -511,7 +385,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public removeAction!: string;
     
@@ -519,7 +393,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public loaddraftAction!: string;
     
@@ -527,7 +401,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--load
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public loadAction!: string;
     
@@ -535,7 +409,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public createAction!: string;
 
@@ -543,7 +417,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public searchAction!: string;
 
@@ -551,7 +425,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 视图标识
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public viewtag!: string;
 
@@ -559,7 +433,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof Main
+     * @memberof Main2
      */
     public formState: Subject<any> = new Subject();
 
@@ -567,7 +441,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof Main2
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -576,7 +450,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Subject<any>}
-     * @memberof Main
+     * @memberof Main2
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -585,7 +459,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof Main
+     * @memberof Main2
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -594,7 +468,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {*}
-     * @memberof Main
+     * @memberof Main2
      */
     public oldData: any = {};
 
@@ -602,7 +476,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 表单数据对象
      *
      * @type {*}
-     * @memberof Main
+     * @memberof Main2
      */
     public data: any = {
         srfupdatedate: null,
@@ -635,9 +509,6 @@ export default class MainBase extends Vue implements ControlInterface {
         jj: null,
         pj: null,
         trmtrainagencyid: null,
-        pimpersonid: null,
-        ormorgid: null,
-        trmtrainagencyid2: null,
         trmtrainagency:null,
     };
 
@@ -645,7 +516,7 @@ export default class MainBase extends Vue implements ControlInterface {
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof Main
+      * @memberof Main2
       */
     public currentAction: string = "";
 
@@ -653,7 +524,7 @@ export default class MainBase extends Vue implements ControlInterface {
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof Main
+      * @memberof Main2
       */
     public drcounter: number = 0;
 
@@ -661,7 +532,7 @@ export default class MainBase extends Vue implements ControlInterface {
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof Main
+      * @memberof Main2
       */
     public drsaveopt: any = {};
 
@@ -669,7 +540,7 @@ export default class MainBase extends Vue implements ControlInterface {
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof Main
+      * @memberof Main2
       */
     public saveState:any ;
 
@@ -677,7 +548,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 属性值规则
      *
      * @type {*}
-     * @memberof Main
+     * @memberof Main2
      */
     public rules: any = {
         srfupdatedate: [
@@ -731,14 +602,14 @@ export default class MainBase extends Vue implements ControlInterface {
         trmtrainagencyname: [
             { type: 'string', message: '机构名称 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '机构名称 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '机构名称 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '机构名称 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '机构名称 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '机构名称 值不能为空', trigger: 'blur' },
         ],
         jglx: [
             { type: 'string', message: '机构类型 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '机构类型 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '机构类型 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '机构类型 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '机构类型 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '机构类型 值不能为空', trigger: 'blur' },
         ],
         jgdj: [
             { type: 'string', message: '机构等级 值必须为字符串类型', trigger: 'change' },
@@ -759,10 +630,10 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '上级机构 值不能为空', trigger: 'blur' },
         ],
         sfgx: [
-            { type: 'number', message: '是否共享 值必须为数值类型', trigger: 'change' },
-            { type: 'number', message: '是否共享 值必须为数值类型', trigger: 'blur' },
-            { required: false, type: 'number', message: '是否共享 值不能为空', trigger: 'change' },
-            { required: false, type: 'number', message: '是否共享 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '是否共享 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '是否共享 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '是否共享 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '是否共享 值不能为空', trigger: 'blur' },
         ],
         pimpersonname: [
             { type: 'string', message: '联系人 值必须为字符串类型', trigger: 'change' },
@@ -789,10 +660,10 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '注册信息 值不能为空', trigger: 'blur' },
         ],
         kctxfw: [
-            { type: 'string', message: '培训模块范围 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '培训模块范围 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '培训模块范围 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '培训模块范围 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '模块范围 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '模块范围 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '模块范围 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '模块范围 值不能为空', trigger: 'blur' },
         ],
         kpmc: [
             { type: 'string', message: '开票名称 值必须为字符串类型', trigger: 'change' },
@@ -860,40 +731,22 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '培训机构标识 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '培训机构标识 值不能为空', trigger: 'blur' },
         ],
-        pimpersonid: [
-            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'blur' },
-        ],
-        ormorgid: [
-            { type: 'string', message: '组织标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '组织标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '组织标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '组织标识 值不能为空', trigger: 'blur' },
-        ],
-        trmtrainagencyid2: [
-            { type: 'string', message: '培训机构标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '培训机构标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '培训机构标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '培训机构标识 值不能为空', trigger: 'blur' },
-        ],
     }
 
     /**
      * 详情模型集合
      *
      * @type {*}
-     * @memberof Main
+     * @memberof Main2
      */
     public detailsModel: any = {
-        grouppanel1: new FormGroupPanelModel({ caption: '开票信息', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainagency.main_form', extractMode: 'ITEM', details: [] } })
+        group1: new FormGroupPanelModel({ caption: '基本信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainagency.main2_form', extractMode: 'ITEM', details: [] } })
 , 
-        grouppanel3: new FormGroupPanelModel({ caption: '简介', detailType: 'GROUPPANEL', name: 'grouppanel3', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainagency.main_form', extractMode: 'ITEM', details: [] } })
+        grouppanel1: new FormGroupPanelModel({ caption: '开票信息', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainagency.main2_form', extractMode: 'ITEM', details: [] } })
 , 
-        grouppanel4: new FormGroupPanelModel({ caption: '评价', detailType: 'GROUPPANEL', name: 'grouppanel4', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainagency.main_form', extractMode: 'ITEM', details: [] } })
+        grouppanel3: new FormGroupPanelModel({ caption: '简介', detailType: 'GROUPPANEL', name: 'grouppanel3', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainagency.main2_form', extractMode: 'ITEM', details: [] } })
 , 
-        group1: new FormGroupPanelModel({ caption: '基本信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainagency.main_form', extractMode: 'ITEM', details: [] } })
+        grouppanel4: new FormGroupPanelModel({ caption: '评价', detailType: 'GROUPPANEL', name: 'grouppanel4', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainagency.main2_form', extractMode: 'ITEM', details: [] } })
 , 
         formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
@@ -933,7 +786,7 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         zcxx: new FormItemModel({ caption: '注册信息', detailType: 'FORMITEM', name: 'zcxx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        kctxfw: new FormItemModel({ caption: '培训模块范围', detailType: 'FORMITEM', name: 'kctxfw', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        kctxfw: new FormItemModel({ caption: '模块范围', detailType: 'FORMITEM', name: 'kctxfw', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         kpmc: new FormItemModel({ caption: '开票名称', detailType: 'FORMITEM', name: 'kpmc', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -957,12 +810,6 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         trmtrainagencyid: new FormItemModel({ caption: '培训机构标识', detailType: 'FORMITEM', name: 'trmtrainagencyid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        pimpersonid: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        ormorgid: new FormItemModel({ caption: '组织标识', detailType: 'FORMITEM', name: 'ormorgid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        trmtrainagencyid2: new FormItemModel({ caption: '培训机构标识', detailType: 'FORMITEM', name: 'trmtrainagencyid2', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
     };
 
     /**
@@ -970,7 +817,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -982,7 +829,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -994,7 +841,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -1006,7 +853,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -1018,7 +865,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -1030,7 +877,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -1042,7 +889,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -1054,7 +901,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -1066,7 +913,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.trmtrainagencyname')
     onTrmtrainagencynameChange(newVal: any, oldVal: any) {
@@ -1078,7 +925,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.jglx')
     onJglxChange(newVal: any, oldVal: any) {
@@ -1090,7 +937,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.jgdj')
     onJgdjChange(newVal: any, oldVal: any) {
@@ -1102,7 +949,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.jglb')
     onJglbChange(newVal: any, oldVal: any) {
@@ -1114,7 +961,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.trmtrainagencyname2')
     onTrmtrainagencyname2Change(newVal: any, oldVal: any) {
@@ -1126,7 +973,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.sfgx')
     onSfgxChange(newVal: any, oldVal: any) {
@@ -1138,7 +985,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.pimpersonname')
     onPimpersonnameChange(newVal: any, oldVal: any) {
@@ -1150,7 +997,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.lxdh')
     onLxdhChange(newVal: any, oldVal: any) {
@@ -1162,7 +1009,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.ormorgname')
     onOrmorgnameChange(newVal: any, oldVal: any) {
@@ -1174,7 +1021,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.zcxx')
     onZcxxChange(newVal: any, oldVal: any) {
@@ -1186,7 +1033,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.kctxfw')
     onKctxfwChange(newVal: any, oldVal: any) {
@@ -1198,7 +1045,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.kpmc')
     onKpmcChange(newVal: any, oldVal: any) {
@@ -1210,7 +1057,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.kplx')
     onKplxChange(newVal: any, oldVal: any) {
@@ -1222,7 +1069,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.nsrsbh')
     onNsrsbhChange(newVal: any, oldVal: any) {
@@ -1234,7 +1081,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.khh')
     onKhhChange(newVal: any, oldVal: any) {
@@ -1246,7 +1093,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.khhzh')
     onKhhzhChange(newVal: any, oldVal: any) {
@@ -1258,7 +1105,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.kpr')
     onKprChange(newVal: any, oldVal: any) {
@@ -1270,7 +1117,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.kprdh')
     onKprdhChange(newVal: any, oldVal: any) {
@@ -1282,7 +1129,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.kpdz')
     onKpdzChange(newVal: any, oldVal: any) {
@@ -1294,7 +1141,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.jj')
     onJjChange(newVal: any, oldVal: any) {
@@ -1306,7 +1153,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.pj')
     onPjChange(newVal: any, oldVal: any) {
@@ -1318,47 +1165,11 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.trmtrainagencyid')
     onTrmtrainagencyidChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'trmtrainagencyid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pimpersonid 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.pimpersonid')
-    onPimpersonidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pimpersonid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 ormorgid 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.ormorgid')
-    onOrmorgidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'ormorgid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 trmtrainagencyid2 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.trmtrainagencyid2')
-    onTrmtrainagencyid2Change(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'trmtrainagencyid2', newVal: newVal, oldVal: oldVal });
     }
 
 
@@ -1367,7 +1178,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof Main
+     * @memberof Main2
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
     }
@@ -1393,13 +1204,10 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof Main
+     * @memberof Main2
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
-
-
-
 
 
 
@@ -1443,7 +1251,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof Main
+     * @memberof Main2
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -1460,7 +1268,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof Main
+     * @memberof Main2
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -1481,7 +1289,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof Main
+     * @memberof Main2
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -1506,7 +1314,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} data
-     * @memberof Main
+     * @memberof Main2
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1522,7 +1330,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 重置草稿表单状态
      *
      * @public
-     * @memberof Main
+     * @memberof Main2
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -1534,7 +1342,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 重置校验结果
      *
-     * @memberof Main
+     * @memberof Main2
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1550,7 +1358,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof Main
+     * @memberof Main2
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -1568,7 +1376,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof Main
+     * @memberof Main2
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -1583,7 +1391,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取全部值
      *
      * @returns {*}
-     * @memberof Main
+     * @memberof Main2
      */
     public getValues(): any {
         return this.data;
@@ -1594,7 +1402,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof Main
+     * @memberof Main2
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -1612,7 +1420,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof Main
+     * @memberof Main2
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -1630,7 +1438,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof Main
+     * @memberof Main2
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -1642,7 +1450,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof Main
+     * @memberof Main2
      */
     public created(): void {
         this.afterCreated();
@@ -1651,7 +1459,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 执行created后的逻辑
      *
-     *  @memberof Main
+     *  @memberof Main2
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -1708,7 +1516,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof Main
+     * @memberof Main2
      */
     public destroyed() {
         this.afterDestroy();
@@ -1717,7 +1525,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof Main
+     * @memberof Main2
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -1732,7 +1540,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof Main
+     * @memberof @memberof Main2
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -1750,18 +1558,18 @@ export default class MainBase extends Vue implements ControlInterface {
 
     /**
      *打印
-     *@memberof @memberof Main
+     *@memberof @memberof Main2
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'trmtrainagency_main',popTitle:'主编辑表单'});
+        _this.$print({id:'trmtrainagency_main2',popTitle:'主信息表单'});
     }
 
     /**
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof Main
+     * @memberof Main2
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -1783,7 +1591,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof Main
+     * @memberof Main2
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -1804,11 +1612,11 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof Main
+     * @memberof Main2
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
-            this.$Notice.error({ title: '错误', desc: 'TrmTrainAgencyEditView视图表单loadAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'TrmTrainAgencyEditView9视图表单loadAction参数未配置' });
             return;
         }
         const arg: any = { ...opt };
@@ -1839,11 +1647,11 @@ export default class MainBase extends Vue implements ControlInterface {
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof Main
+     * @memberof Main2
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
-            this.$Notice.error({ title: '错误', desc: 'TrmTrainAgencyEditView视图表单loaddraftAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'TrmTrainAgencyEditView9视图表单loaddraftAction参数未配置' });
             return;
         }
         const arg: any = { ...opt } ;
@@ -1893,7 +1701,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof Main
+     * @memberof Main2
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -1905,7 +1713,7 @@ export default class MainBase extends Vue implements ControlInterface {
         const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
         if(!action){
             let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
-            this.$Notice.error({ title: '错误', desc: 'TrmTrainAgencyEditView视图表单'+actionName+'参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'TrmTrainAgencyEditView9视图表单'+actionName+'参数未配置' });
             return;
         }
         Object.assign(arg,{viewparams:this.viewparams});
@@ -1944,7 +1752,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof Main
+     * @memberof Main2
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1969,7 +1777,7 @@ export default class MainBase extends Vue implements ControlInterface {
             const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
             if(!action){
                 let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
-                this.$Notice.error({ title: '错误', desc: 'TrmTrainAgencyEditView视图表单'+actionName+'参数未配置' });
+                this.$Notice.error({ title: '错误', desc: 'TrmTrainAgencyEditView9视图表单'+actionName+'参数未配置' });
                 return;
             }
             Object.assign(arg,{viewparams:this.viewparams});
@@ -2019,7 +1827,7 @@ export default class MainBase extends Vue implements ControlInterface {
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
             if(!this.removeAction){
-                this.$Notice.error({ title: '错误', desc: 'TrmTrainAgencyEditView视图表单removeAction参数未配置' });
+                this.$Notice.error({ title: '错误', desc: 'TrmTrainAgencyEditView9视图表单removeAction参数未配置' });
                 return;
             }
             const arg: any = opt[0];
@@ -2048,7 +1856,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof Main
+     * @memberof Main2
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -2104,7 +1912,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof Main
+     * @memberof Main2
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -2180,7 +1988,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof Main
+     * @memberof Main2
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -2225,7 +2033,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 回车事件
      *
      * @param {*} $event
-     * @memberof Main
+     * @memberof Main2
      */
     public onEnter($event: any): void {
     }
@@ -2234,7 +2042,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof Main
+     * @memberof Main2
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -2259,7 +2067,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof Main
+     * @memberof Main2
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -2282,7 +2090,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof Main
+     * @memberof Main2
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -2306,7 +2114,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof Main
+    * @memberof Main2
     */
     public drdatasaved($event:any){
         let _this = this;
@@ -2330,14 +2138,14 @@ export default class MainBase extends Vue implements ControlInterface {
 
     /**
      * 新建默认值
-     * @memberof Main
+     * @memberof Main2
      */
     public createDefault(){                    
     }
 
     /**
      * 更新默认值
-     * @memberof Main
+     * @memberof Main2
      */
     public updateDefault(){                    
     }
@@ -2347,5 +2155,5 @@ export default class MainBase extends Vue implements ControlInterface {
 </script>
 
 <style lang='less'>
-@import './main-form.less';
+@import './main2-form.less';
 </style>

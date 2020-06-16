@@ -5,7 +5,7 @@ import TrmTrainAgencyTabExpViewBase from './trm-train-agency-tab-exp-view-base.v
 import view_tabexppanel from '@widgets/trm-train-agency/tab-exp-viewtabexppanel-tabexppanel/tab-exp-viewtabexppanel-tabexppanel.vue';
 
 /**
- * 培训机构
+ * 培训机构相关
  *
  * @export
  * @class TrmTrainAgencyTabExpView

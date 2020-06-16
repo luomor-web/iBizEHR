@@ -460,6 +460,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '693a64777bc436f97363770cc82631c0',
+            viewmodule: 'TRM',
+            viewname: 'TrmTrainAgencyEditView9',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'e034c6c5752a1ed214cf88a568d623fa',
+            ],
+        },
+        {
             viewtag: '768cea21276a67cf21ea1448b8e0a9ea',
             viewmodule: 'PIM',
             viewname: 'PimPersonPickupView',
@@ -942,8 +952,8 @@ export const viewstate: any = {
             refviews: [
                 'cd1674f862673877db7b42eb8a52eb4e',
                 'd8a8db81cf25380e25c3f8c4c90d7498',
+                '693a64777bc436f97363770cc82631c0',
                 '66b1d12b94f0b14bf0f9c2f715511171',
-                '11da72e188942aaf631c0a7b419499fb',
             ],
         },
         {

@@ -118,6 +118,13 @@ public class SocRule extends EntityMP implements Serializable {
     @JSONField(name = "nyear")
     @JsonProperty("nyear")
     private Integer nyear;
+    /**
+     * 备注
+     */
+    @TableField(value = "memo")
+    @JSONField(name = "memo")
+    @JsonProperty("memo")
+    private String memo;
 
     /**
      * 
@@ -151,6 +158,14 @@ public class SocRule extends EntityMP implements Serializable {
     public void setNyear(Integer nyear){
         this.nyear = nyear ;
         this.modify("nyear",nyear);
+    }
+
+    /**
+     * 设置 [备注]
+     */
+    public void setMemo(String memo){
+        this.memo = memo ;
+        this.modify("memo",memo);
     }
 
 

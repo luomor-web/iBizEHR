@@ -5,7 +5,7 @@
 
     <!--该方法用于重写mybatis中selectById方法，以实现查询逻辑属性-->
 	<select id="selectById"  resultMap="SocRuleResultMap" databaseId="mysql">
-        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`NYEAR`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`SOCRULEID`, t1.`SOCRULENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SOCRULE` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  ) t1 where socruleid=#{id}]]>
+        <![CDATA[select t1.* from (SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`MEMO`, t1.`NYEAR`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`SOCRULEID`, t1.`SOCRULENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SOCRULE` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  ) t1 where socruleid=#{id}]]>
     </select>
 
     <!--通过mybatis将查询结果注入到entity中,通过配置autoMapping="true"由mybatis自动处理映射关系 -->
@@ -37,13 +37,13 @@
 
     <!--数据查询[Default]-->
     <sql id="Default" databaseId="mysql">
-       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`NYEAR`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`SOCRULEID`, t1.`SOCRULENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SOCRULE` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`MEMO`, t1.`NYEAR`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`SOCRULEID`, t1.`SOCRULENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SOCRULE` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>
     <!--数据查询[View]-->
     <sql id="View" databaseId="mysql">
-       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`NYEAR`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`SOCRULEID`, t1.`SOCRULENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SOCRULE` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
+       <![CDATA[	SELECT t1.`CREATEDATE`, t1.`CREATEMAN`, t1.`ENABLE`, t1.`MEMO`, t1.`NYEAR`, t1.`ORMORGID`, t11.`ORGNAME` AS `ORMORGNAME`, t1.`SOCRULEID`, t1.`SOCRULENAME`, t1.`UPDATEDATE`, t1.`UPDATEMAN` FROM `T_SOCRULE` t1  LEFT JOIN T_SRFORG t11 ON t1.ORMORGID = t11.ORGID  
 				 WHERE 	t1.ENABLE = 1
 			]]>
     </sql>

@@ -1,6 +1,6 @@
 
 <template>
-  <app-layout viewName="trmtrainagencytabexpview" viewTitle="培训机构" :isShowCaptionBar="false" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'detabexpview': true, 'trm-train-agency-tab-exp-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="trmtrainagencytabexpview" viewTitle="培训机构相关" :isShowCaptionBar="false" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'detabexpview': true, 'trm-train-agency-tab-exp-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -35,7 +35,7 @@ import TabExpViewEngine from '@engine/view/tab-exp-view-engine';
 
 
 /**
- * 培训机构基类
+ * 培训机构相关基类
  *
  * @export
  * @class TrmTrainAgencyTabExpViewBase

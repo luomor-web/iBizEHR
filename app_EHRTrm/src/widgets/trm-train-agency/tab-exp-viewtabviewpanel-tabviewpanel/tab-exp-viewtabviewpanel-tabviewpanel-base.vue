@@ -1,12 +1,12 @@
 <template>
   <div class='tabviewpanel' style="height:100%;" v-if = 'isActivied' >
-        <trm-train-agency-edit-view 
+        <trm-train-agency-edit-view9 
       class='viewcontainer2' 
       :viewdata="viewdata" 
       :viewparam="viewparam"
       @viewload="viewDatasChange($event)" 
       :viewDefaultUsage="false" >
-    </trm-train-agency-edit-view>
+    </trm-train-agency-edit-view9>
   </div>
 </template>
 <script lang='tsx'>

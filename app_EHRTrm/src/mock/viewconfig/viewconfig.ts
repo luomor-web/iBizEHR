@@ -936,8 +936,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "e2b7f1016363a6dff46ca882b8a46b62"
         },
         "trmtrainagencytabexpview": {
-            "title": "培训机构",
-            "caption": "培训机构",
+            "title": "培训机构相关",
+            "caption": "培训机构相关",
             "viewtype": "DETABEXPVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrainAgencyTabExpView",

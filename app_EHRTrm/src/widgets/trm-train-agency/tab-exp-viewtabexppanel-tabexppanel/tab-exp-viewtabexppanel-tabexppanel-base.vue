@@ -2,33 +2,10 @@
 <template>
   <div class='tabviewpanel' style="height:100%;">
         <tabs :animated="false" class='tabexppanel' name='tabexpviewtabexppanel' @on-click="tabPanelClick">
-        <tab-pane :index="0" name='tabviewpanel4' tab='tabexpviewtabexppanel' class=''  
+        <tab-pane :index="0" name='tabviewpanel' tab='tabexpviewtabexppanel' class=''  
             :label="(h) =>{
                 return h('div', [
-                    h('span', '培训班主任'),
-                    h('Badge', {
-                        props: {
-                            count: undefined,
-                            type: 'primary'
-                        }
-                    })
-                ])
-            }" >
-            <view_tabviewpanel4 
-    :viewState="viewState"  
-    :viewparams="JSON.parse(JSON.stringify(viewparams))" 
-    :context="JSON.parse(JSON.stringify(context))" 
-    v-if="isInit.tabviewpanel4"
-    name="tabviewpanel4"  
-    ref='tabviewpanel4'
-    @viewpanelDatasChange = "tabViewPanelDatasChange"
-    @closeview="closeView($event)">
-</view_tabviewpanel4>
-        </tab-pane>
-        <tab-pane :index="1" name='tabviewpanel' tab='tabexpviewtabexppanel' class=''  
-            :label="(h) =>{
-                return h('div', [
-                    h('span', '培训机构信息'),
+                    h('span', '机构信息'),
                     h('Badge', {
                         props: {
                             count: undefined,
@@ -48,10 +25,10 @@
     @closeview="closeView($event)">
 </view_tabviewpanel>
         </tab-pane>
-        <tab-pane :index="2" name='tabviewpanel2' tab='tabexpviewtabexppanel' class=''  
+        <tab-pane :index="1" name='tabviewpanel2' tab='tabexpviewtabexppanel' class=''  
             :label="(h) =>{
                 return h('div', [
-                    h('span', '培训师资'),
+                    h('span', '师资信息'),
                     h('Badge', {
                         props: {
                             count: undefined,
@@ -71,7 +48,7 @@
     @closeview="closeView($event)">
 </view_tabviewpanel2>
         </tab-pane>
-        <tab-pane :index="3" name='tabviewpanel3' tab='tabexpviewtabexppanel' class=''  
+        <tab-pane :index="2" name='tabviewpanel3' tab='tabexpviewtabexppanel' class=''  
             :label="(h) =>{
                 return h('div', [
                     h('span', '培训记录'),
@@ -93,6 +70,29 @@
     @viewpanelDatasChange = "tabViewPanelDatasChange"
     @closeview="closeView($event)">
 </view_tabviewpanel3>
+        </tab-pane>
+        <tab-pane :index="3" name='tabviewpanel4' tab='tabexpviewtabexppanel' class=''  
+            :label="(h) =>{
+                return h('div', [
+                    h('span', '培训班主任'),
+                    h('Badge', {
+                        props: {
+                            count: undefined,
+                            type: 'primary'
+                        }
+                    })
+                ])
+            }" >
+            <view_tabviewpanel4 
+    :viewState="viewState"  
+    :viewparams="JSON.parse(JSON.stringify(viewparams))" 
+    :context="JSON.parse(JSON.stringify(context))" 
+    v-if="isInit.tabviewpanel4"
+    name="tabviewpanel4"  
+    ref='tabviewpanel4'
+    @viewpanelDatasChange = "tabViewPanelDatasChange"
+    @closeview="closeView($event)">
+</view_tabviewpanel4>
         </tab-pane>
     </tabs>
   </div>
@@ -228,10 +228,10 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      * @memberof TabExpViewtabexppanel
      */
     public isInit: any = {
-        tabviewpanel4:  true ,
-        tabviewpanel:  false ,
+        tabviewpanel:  true ,
         tabviewpanel2:  false ,
         tabviewpanel3:  false ,
+        tabviewpanel4:  false ,
     }
 
     /**
@@ -269,7 +269,7 @@ export default class TabExpViewtabexppanelBase extends Vue implements ControlInt
      * @type {string}
      * @memberof TabExpViewtabexppanel
      */
-    public activiedTabViewPanel: string = 'tabviewpanel4';
+    public activiedTabViewPanel: string = 'tabviewpanel';
 
     /**
      * 分页视图面板数据变更
