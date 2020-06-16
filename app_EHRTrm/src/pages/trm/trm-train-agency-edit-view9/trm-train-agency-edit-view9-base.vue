@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="trmtrainagencyeditview9" viewTitle="培训机构编辑视图" :isShowCaptionBar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview9': true, 'trm-train-agency-edit-view9': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="trmtrainagencyeditview9" viewTitle="培训机构编辑视图" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview9': true, 'trm-train-agency-edit-view9': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 

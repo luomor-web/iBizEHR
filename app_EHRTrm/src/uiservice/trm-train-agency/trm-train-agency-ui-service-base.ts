@@ -142,6 +142,9 @@ export default class TrmTrainAgencyUIServiceBase extends UIService {
                         return;
                     }
                     const _this: any = actionContext;
+                    if (xData && xData.refresh && xData.refresh instanceof Function) {
+                        xData.refresh(args);
+                    }
                     if(window.opener){
                         window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
                         window.close();
@@ -198,7 +201,6 @@ export default class TrmTrainAgencyUIServiceBase extends UIService {
         const parameters: any[] = [
             { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
         ];
-            actionContext.closeView(null);
             const openPopupModal = (view: any, data: any) => {
                 let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
                 container.subscribe((result: any) => {

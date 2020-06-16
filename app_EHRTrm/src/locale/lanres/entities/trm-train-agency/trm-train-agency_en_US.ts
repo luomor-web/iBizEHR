@@ -57,7 +57,7 @@ export default {
       title: '培训机构数据多项选择视图',
 		},
 		editview9: {
-			caption: "培训机构",
+			caption: "机构信息",
       title: '培训机构编辑视图',
 		},
 		gridview: {

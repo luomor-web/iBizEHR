@@ -433,7 +433,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "trmtrainagencyeditview9": {
             "title": "培训机构编辑视图",
-            "caption": "培训机构",
+            "caption": "机构信息",
             "viewtype": "DEEDITVIEW9",
             "viewmodule": "TRM",
             "viewname": "TrmTrainAgencyEditView9",
