@@ -1,0 +1,221 @@
+
+export default {
+  fields: {
+    trmdepartname: '需求通知',
+    createman: '建立人',
+    nd: '年度',
+    lclx: '流程类型',
+    xqlylx: '需求来源类型',
+    xqdbm: '需求单编码',
+    createdate: '建立时间',
+    spfs: '审批方式',
+    enable: '逻辑有效标志',
+    tzlx: '通知类型',
+    trmdepartid: '培训需求填报标识',
+    fj: '附件',
+    updatedate: '更新时间',
+    updateman: '更新人',
+    jd: '季度',
+    tdrq: '填单日期',
+    jzrq: '截止日期',
+    ormorgsectorname: '局职能部门',
+    pimpersonname: '填单人',
+    zzdzs: '组织',
+    ormorgname: '通知对象',
+    shortname: '部门',
+    pimpersonid: '人员信息标识',
+    ormorgsectorid: '部门标识',
+    ormorgid: '组织标识',
+  },
+	views: {
+		xqhzgridview: {
+			caption: "培训需求通知",
+      title: '需求通知表格视图',
+		},
+		pickupview: {
+			caption: "培训需求通知",
+      title: '部门需求填报数据选择视图',
+		},
+		xqhzeditview: {
+			caption: "培训需求通知",
+      title: '需求汇总编辑视图',
+		},
+		pickupgridview: {
+			caption: "培训需求通知",
+      title: '部门需求填报选择表格视图',
+		},
+		mpickupview: {
+			caption: "培训需求通知",
+      title: '部门需求填报数据多项选择视图',
+		},
+		editview: {
+			caption: "培训需求通知",
+      title: '培训需求通知编辑视图',
+		},
+		gridview: {
+			caption: "培训需求通知",
+      title: '需求通知表格视图',
+		},
+	},
+	main_2_form: {
+		details: {
+			group1: "培训需求通知", 
+			druipart1: "", 
+			grouppanel1: "需求汇总", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "培训需求填报标识", 
+			srfmajortext: "需求通知", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			trmdepartname: "需求通知", 
+			nd: "年度", 
+			jzrq: "截止日期", 
+			ormorgname: "通知对象", 
+			ormorgsectorname: "局职能部门", 
+			fj: "附件", 
+			ormorgsectorid: "部门标识", 
+			ormorgid: "组织标识", 
+			trmdepartid: "培训需求填报标识", 
+		},
+		uiactions: {
+		},
+	},
+	main_form: {
+		details: {
+			group1: "需求通知", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "培训需求填报标识", 
+			srfmajortext: "需求通知", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			trmdepartname: "需求通知", 
+			tzlx: "通知类型", 
+			jzrq: "截止日期", 
+			ormorgsectorname: "局职能部门", 
+			ormorgname: "通知对象", 
+			fj: "附件", 
+			trmdepartid: "培训需求填报标识", 
+		},
+		uiactions: {
+		},
+	},
+	main_grid: {
+		columns: {
+			trmdepartname: "需求通知",
+			nd: "年度",
+			jzrq: "截止日期",
+			zzdzs: "通知对象",
+			shortname: "填报部门",
+		},
+		uiactions: {
+		},
+	},
+	default_searchform: {
+		details: {
+			formpage1: "常规条件", 
+			n_trmdepartname_like: "需求通知(%)", 
+			n_ormorgname_eq: "通知对象(=)", 
+			n_ormorgsectorname_like: "局职能部门(%)", 
+			n_nd_eq: "年度(=)", 
+			n_ormorgid_eq: "", 
+		},
+		uiactions: {
+		},
+	},
+	xqhzgridviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "New",
+			tip: "New",
+		},
+		tbitem8: {
+			caption: "Remove",
+			tip: "Remove {0}",
+		},
+		tbitem19: {
+			caption: "Filter",
+			tip: "Filter",
+		},
+		tbitem13: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
+		tbitem18: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	xqhzeditviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
+		},
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+		tbitem7: {
+			caption: "Remove And Close",
+			tip: "Remove And Close Window",
+		},
+		tbitem22: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "Save",
+			tip: "Save",
+		},
+		tbitem4: {
+			caption: "Save And New",
+			tip: "Save And New",
+		},
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+		tbitem7: {
+			caption: "Remove And Close",
+			tip: "Remove And Close Window",
+		},
+		tbitem22: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+	gridviewtoolbar_toolbar: {
+		tbitem3: {
+			caption: "New",
+			tip: "New",
+		},
+		tbitem8: {
+			caption: "Remove",
+			tip: "Remove {0}",
+		},
+		tbitem19: {
+			caption: "Filter",
+			tip: "Filter",
+		},
+		tbitem13: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
+		tbitem18: {
+			caption: "Help",
+			tip: "Help",
+		},
+	},
+};
