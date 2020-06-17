@@ -17,11 +17,11 @@ export default {
 	views: {
 		gridview: {
 			caption: '培训住宿',
-      title: '培训住宿表格视图',
+      title: '培训住宿',
 		},
 		editview: {
 			caption: '培训住宿',
-      title: '培训住宿编辑视图',
+      title: '培训住宿',
 		},
 		mpickupview: {
 			caption: '培训住宿',
@@ -78,21 +78,17 @@ export default {
 			caption: '新建',
 			tip: '新建',
 		},
+		tbitem5: {
+			caption: '编辑',
+			tip: '编辑',
+		},
 		tbitem8: {
 			caption: '删除',
 			tip: '删除',
 		},
-		tbitem19: {
-			caption: '过滤',
-			tip: '过滤',
-		},
 		tbitem13: {
 			caption: '导出',
 			tip: '导出',
-		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 	editviewtoolbar_toolbar: {
@@ -100,21 +96,9 @@ export default {
 			caption: '保存',
 			tip: '保存',
 		},
-		tbitem4: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
 		tbitem5: {
 			caption: '保存并关闭',
 			tip: '保存并关闭',
-		},
-		tbitem7: {
-			caption: '删除并关闭',
-			tip: '删除并关闭',
-		},
-		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 };

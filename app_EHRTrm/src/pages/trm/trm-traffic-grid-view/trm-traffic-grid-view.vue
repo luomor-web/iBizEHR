@@ -6,7 +6,7 @@ import view_grid from '@widgets/trm-traffic/main-grid/main-grid.vue';
 import view_searchform from '@widgets/trm-traffic/default-searchform/default-searchform.vue';
 
 /**
- * 交通表格视图
+ * 交通信息
  *
  * @export
  * @class TrmTrafficGridView

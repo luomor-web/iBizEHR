@@ -32,13 +32,17 @@ export default {
 			caption: "培训课程",
       title: '培训课程选择表格视图',
 		},
+		editview9: {
+			caption: "培训课程",
+      title: '培训课程',
+		},
 		gridview: {
 			caption: "培训课程",
-      title: '培训课程表格视图',
+      title: '培训课程',
 		},
 		editview: {
 			caption: "培训课程",
-      title: '培训课程编辑视图',
+      title: '培训课程',
 		},
 		pickupview: {
 			caption: "培训课程",
@@ -51,7 +55,34 @@ export default {
 	},
 	main_form: {
 		details: {
-			group1: "培训课程信息", 
+			group1: "课程信息", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "培训课程标识", 
+			srfmajortext: "培训课程名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			trmtraincoursename: "课程名称", 
+			trmcoursesystemname: "培训模块", 
+			jb: "级别", 
+			bb: "版本", 
+			kcxs: "累积学时", 
+			pxmb: "培训目标", 
+			nr: "培训内容", 
+			sfgx: "是否共享", 
+			kcjs: "课程介绍", 
+			trmcoursesystemid: "课程体系标识", 
+			trmtraincourseid: "培训课程标识", 
+		},
+		uiactions: {
+		},
+	},
+	main2_form: {
+		details: {
+			group1: "课程信息", 
 			formpage1: "基本信息", 
 			srfupdatedate: "更新时间", 
 			srforikey: "", 
@@ -109,21 +140,17 @@ export default {
 			caption: "New",
 			tip: "New",
 		},
+		tbitem5: {
+			caption: "Edit",
+			tip: "Edit {0}",
+		},
 		tbitem8: {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-		tbitem19: {
-			caption: "Filter",
-			tip: "Filter",
-		},
 		tbitem13: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 	editviewtoolbar_toolbar: {
@@ -131,21 +158,19 @@ export default {
 			caption: "Save",
 			tip: "Save",
 		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
 		tbitem5: {
 			caption: "Save And Close",
 			tip: "Save And Close Window",
 		},
-		tbitem7: {
-			caption: "Remove And Close",
-			tip: "Remove And Close Window",
+	},
+	editview9toolbar_toolbar: {
+		tbitem1_openeditview_sep: {
+			caption: "",
+			tip: "",
 		},
-		tbitem22: {
-			caption: "Help",
-			tip: "Help",
+		tbitem1_openeditview: {
+			caption: "编辑",
+			tip: "编辑",
 		},
 	},
 };

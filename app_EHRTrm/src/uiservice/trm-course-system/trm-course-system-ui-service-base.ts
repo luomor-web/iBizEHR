@@ -83,6 +83,7 @@ export default class TrmCourseSystemUIServiceBase extends UIService {
         this.allViewMap.set(':',{viewname:'wmxgridview',srfappde:'trmcoursesystems'});
         this.allViewMap.set(':',{viewname:'wmxeditview',srfappde:'trmcoursesystems'});
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'trmcoursesystems'});
+        this.allViewMap.set(':',{viewname:'editview9',srfappde:'trmcoursesystems'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'trmcoursesystems'});
         this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'trmcoursesystems'});
         this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'trmcoursesystems'});
@@ -94,6 +95,73 @@ export default class TrmCourseSystemUIServiceBase extends UIService {
      * @memberof  TrmCourseSystemUIServiceBase
      */  
     public initDeMainStateMap(){
+    }
+
+    /**
+     * 编辑
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} context 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
+     */
+    public async TrmCourseSystem_OpenEditView(args: any[], context:any = {} ,params: any={}, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    
+        let data: any = {};
+        let parentContext:any = {};
+        let parentViewParam:any = {};
+        const _this: any = actionContext;
+        const _args: any[] = Util.deepCopy(args);
+        const actionTarget: string | null = 'SINGLEKEY';
+        Object.assign(context, { trmcoursesystem: '%trmcoursesystem%' });
+        Object.assign(params, { trmcoursesystemid: '%trmcoursesystem%' });
+        Object.assign(params, { trmcoursesystemname: '%trmcoursesystemname%' });
+        if(_this.context){
+            parentContext = _this.context;
+        }
+        if(_this.viewparams){
+            parentViewParam = _this.viewparams;
+        }
+        context = UIActionTool.handleContextParam(actionTarget,_args,parentContext,parentViewParam,context);
+        data = UIActionTool.handleActionParam(actionTarget,_args,parentContext,parentViewParam,params);
+        context = Object.assign({},actionContext.context,context);
+        let parentObj:any = {srfparentdename:srfParentDeName?srfParentDeName:null,srfparentkey:srfParentDeName?context[srfParentDeName.toLowerCase()]:null};
+        Object.assign(data,parentObj);
+        Object.assign(context,parentObj);
+        let deResParameters: any[] = [];
+        if(context.trmtrainagency && true){
+            deResParameters = [
+            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+            ]
+        }
+        const parameters: any[] = [
+            { pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' },
+        ];
+            const openPopupModal = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
+            }
+            const view: any = {
+                viewname: 'trm-course-system-edit-view', 
+                height: 750, 
+                width: 0,  
+                title: actionContext.$t('entities.trmcoursesystem.views.editview.title'),
+            };
+            openPopupModal(view, data);
     }
 
 

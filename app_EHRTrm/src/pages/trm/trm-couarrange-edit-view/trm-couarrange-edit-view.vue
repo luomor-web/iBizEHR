@@ -5,7 +5,7 @@ import TrmCouarrangeEditViewBase from './trm-couarrange-edit-view-base.vue';
 import view_form from '@widgets/trm-couarrange/main-form/main-form.vue';
 
 /**
- * 课程安排编辑视图
+ * 培训记录
  *
  * @export
  * @class TrmCouarrangeEditView

@@ -5,7 +5,7 @@ import TrmTrainFaciesEditViewBase from './trm-train-facies-edit-view-base.vue';
 import view_form from '@widgets/trm-train-facies/main-form/main-form.vue';
 
 /**
- * 培训设施编辑视图
+ * 培训设施
  *
  * @export
  * @class TrmTrainFaciesEditView

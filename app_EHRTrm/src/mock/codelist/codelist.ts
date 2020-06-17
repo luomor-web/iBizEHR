@@ -26,6 +26,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '优秀',
                 "data":"",
                 "codename":"Item_10",
+                "color": "rgba(0, 30, 255, 1)",
                 value: '10',
                 
                 disabled: false,
@@ -36,6 +37,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '良好',
                 "data":"",
                 "codename":"Item_20",
+                "color": "rgba(234, 0, 255, 1)",
                 value: '20',
                 
                 disabled: false,
@@ -46,6 +48,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '一般',
                 "data":"",
                 "codename":"Item_30",
+                "color": "rgba(4, 255, 0, 1)",
                 value: '30',
                 
                 disabled: false,
@@ -56,6 +59,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '差',
                 "data":"",
                 "codename":"Item_40",
+                "color": "rgba(203, 55, 10, 0.97)",
                 value: '40',
                 
                 disabled: false,

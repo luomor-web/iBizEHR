@@ -45,7 +45,7 @@
         "memo": "系统自动添加"
     },
     "trmcouarrangeeditview": {
-        "title": "课程安排编辑视图",
+        "title": "培训记录",
         "caption": "培训记录",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "TRM",
@@ -99,7 +99,7 @@
         "memo": "系统自动添加"
     },
     "trmcoursesystemgridview": {
-        "title": "课程体系表格视图",
+        "title": "培训模块",
         "caption": "培训模块",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "TRM",
@@ -126,8 +126,8 @@
         "memo": "系统自动添加"
     },
     "trmtrafficgridview": {
-        "title": "交通表格视图",
-        "caption": "交通",
+        "title": "交通信息",
+        "caption": "交通信息",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmTrafficGridView",
@@ -136,7 +136,7 @@
     },
     "trmtrainteacherwbgridview": {
         "title": "培训教师表格视图",
-        "caption": "培训讲师",
+        "caption": "外部讲师",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmTrainTeacherWBGridView",
@@ -181,7 +181,7 @@
     },
     "trmtrainteachereditview": {
         "title": "培训教师编辑视图",
-        "caption": "培训讲师",
+        "caption": "内部讲师",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmTrainTeacherEditView",
@@ -198,7 +198,7 @@
         "memo": "系统自动添加"
     },
     "trmstaygridview": {
-        "title": "培训住宿表格视图",
+        "title": "培训住宿",
         "caption": "培训住宿",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "TRM",
@@ -225,7 +225,7 @@
         "memo": ""
     },
     "trmstayeditview": {
-        "title": "培训住宿编辑视图",
+        "title": "培训住宿",
         "caption": "培训住宿",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "TRM",
@@ -258,6 +258,15 @@
         "viewmodule": "TRM",
         "viewname": "TrmCourseSystemWMXEditView",
         "viewtag": "37eab1c8843eb9f0d28e3eb8d5432613",
+        "memo": ""
+    },
+    "trmtraincourseeditview9": {
+        "title": "培训课程",
+        "caption": "培训课程",
+        "viewtype": "DEEDITVIEW9",
+        "viewmodule": "TRM",
+        "viewname": "TrmTrainCourseEditView9",
+        "viewtag": "39a7c86e53e95b11e14dd5c92b0083a8",
         "memo": ""
     },
     "attendancerecordeditview": {
@@ -297,7 +306,7 @@
         "memo": ""
     },
     "trmtraincoursegridview": {
-        "title": "培训课程表格视图",
+        "title": "培训课程",
         "caption": "培训课程",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "TRM",
@@ -414,7 +423,7 @@
         "memo": ""
     },
     "trmtraincourseeditview": {
-        "title": "培训课程编辑视图",
+        "title": "培训课程",
         "caption": "培训课程",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "TRM",
@@ -459,8 +468,8 @@
         "memo": ""
     },
     "trmtrafficeditview": {
-        "title": "交通编辑视图",
-        "caption": "交通",
+        "title": "交通信息",
+        "caption": "交通信息",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmTrafficEditView",
@@ -593,6 +602,15 @@
         "viewtag": "84376a56a4ad11f5bd89fe161fb8d6ff",
         "memo": "系统自动添加"
     },
+    "trmcoursesystemeditview9": {
+        "title": "培训模块",
+        "caption": "培训模块",
+        "viewtype": "DEEDITVIEW9",
+        "viewmodule": "TRM",
+        "viewname": "TrmCourseSystemEditView9",
+        "viewtag": "878c6aa215b91f624102716b96aa8a7d",
+        "memo": ""
+    },
     "trmdeparteditview": {
         "title": "培训需求通知编辑视图",
         "caption": "培训需求通知",
@@ -604,7 +622,7 @@
     },
     "trmtrainteacherwbeditview": {
         "title": "培训教师编辑视图",
-        "caption": "培训讲师",
+        "caption": "外部讲师",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmTrainTeacherWBEditView",
@@ -774,7 +792,7 @@
         "memo": ""
     },
     "trmcoursesystemeditview": {
-        "title": "课程体系编辑视图",
+        "title": "培训模块",
         "caption": "培训模块",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "TRM",
@@ -909,7 +927,7 @@
         "memo": ""
     },
     "trmtrainfacieseditview": {
-        "title": "培训设施编辑视图",
+        "title": "培训设施",
         "caption": "培训设施",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "TRM",
@@ -982,7 +1000,7 @@
     },
     "trmtrainteachergridview": {
         "title": "培训教师表格视图",
-        "caption": "培训讲师",
+        "caption": "内部讲师",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmTrainTeacherGridView",

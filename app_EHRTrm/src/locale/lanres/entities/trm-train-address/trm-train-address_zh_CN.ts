@@ -56,7 +56,7 @@ export default {
 			druipart2: '', 
 			formpage3: '培训住宿', 
 			druipart4: '', 
-			formpage5: '交通', 
+			formpage5: '交通信息', 
 			druipart3: '', 
 			formpage4: '培训记录', 
 			srfupdatedate: '更新时间', 

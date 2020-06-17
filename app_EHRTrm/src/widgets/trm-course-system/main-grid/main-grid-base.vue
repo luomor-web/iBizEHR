@@ -546,14 +546,14 @@ export default class MainBase extends Vue implements ControlInterface {
     public allColumns: any[] = [
         {
             name: 'dm',
-            label: '代码',
+            label: '模块编码',
             langtag: 'entities.trmcoursesystem.main_grid.columns.dm',
             show: true,
             util: 'px'
         },
         {
             name: 'trmcoursesystemname',
-            label: '名称',
+            label: '模块名称',
             langtag: 'entities.trmcoursesystem.main_grid.columns.trmcoursesystemname',
             show: true,
             util: 'PX'
@@ -574,7 +574,7 @@ export default class MainBase extends Vue implements ControlInterface {
         },
         {
             name: 'nr',
-            label: '内容',
+            label: '模块内容',
             langtag: 'entities.trmcoursesystem.main_grid.columns.nr',
             show: true,
             util: 'px'

@@ -29,7 +29,7 @@ export default {
 		},
 		editview: {
 			caption: "培训设施",
-      title: '培训设施编辑视图',
+      title: '培训设施',
 		},
 	},
 	main_form: {
@@ -90,21 +90,17 @@ export default {
 			caption: "New",
 			tip: "New",
 		},
+		tbitem5: {
+			caption: "Edit",
+			tip: "Edit {0}",
+		},
 		tbitem8: {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-		tbitem19: {
-			caption: "Filter",
-			tip: "Filter",
-		},
 		tbitem13: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 	editviewtoolbar_toolbar: {
@@ -112,21 +108,9 @@ export default {
 			caption: "Save",
 			tip: "Save",
 		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
 		tbitem5: {
 			caption: "Save And Close",
 			tip: "Save And Close Window",
-		},
-		tbitem7: {
-			caption: "Remove And Close",
-			tip: "Remove And Close Window",
-		},
-		tbitem22: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 };

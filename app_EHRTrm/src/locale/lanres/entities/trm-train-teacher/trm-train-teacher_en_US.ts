@@ -45,7 +45,7 @@ export default {
       title: '培训教师数据选择视图',
 		},
 		wbgridview: {
-			caption: "培训讲师",
+			caption: "外部讲师",
       title: '培训教师表格视图',
 		},
 		mpickupview: {
@@ -53,11 +53,11 @@ export default {
       title: '培训教师数据多项选择视图',
 		},
 		editview: {
-			caption: "培训讲师",
+			caption: "内部讲师",
       title: '培训教师编辑视图',
 		},
 		wbeditview: {
-			caption: "培训讲师",
+			caption: "外部讲师",
       title: '培训教师编辑视图',
 		},
 		pickupgridview: {
@@ -65,15 +65,15 @@ export default {
       title: '培训教师选择表格视图',
 		},
 		gridview: {
-			caption: "培训讲师",
+			caption: "内部讲师",
       title: '培训教师表格视图',
 		},
 	},
 	main_form: {
 		details: {
-			grouppanel4: "", 
+			grouppanel4: "培训讲师信息", 
 			grouppanel3: "", 
-			grouppanel2: "", 
+			grouppanel2: "评价信息", 
 			group1: "培训讲师信息", 
 			druipart1: "", 
 			grouppanel1: "讲师授课记录", 
@@ -113,10 +113,10 @@ export default {
 	},
 	main_2_form: {
 		details: {
-			grouppanel4: "", 
+			grouppanel4: "培训讲师信息", 
 			grouppanel3: "", 
 			group1: "培训讲师信息", 
-			grouppanel2: "", 
+			grouppanel2: "评价信息", 
 			druipart1: "", 
 			grouppanel1: "讲师授课记录", 
 			formpage1: "基本信息", 
@@ -159,7 +159,7 @@ export default {
 			zjhm: "证件号码",
 			xb: "性别",
 			nl: "年龄",
-			lxdh1: "联系电话",
+			lxdh: "联系电话",
 			zjkssj: "执教开始时间",
 			zzdzs: "所属单位",
 			sfgx: "是否共享",
@@ -174,7 +174,7 @@ export default {
 			jslx: "讲师类型",
 			xb: "性别",
 			nl: "年龄",
-			lxdh1: "联系电话",
+			lxdh: "联系电话",
 			zjkssj: "执教开始时间",
 			zzdzs: "所属单位",
 			sfgx: "是否共享",
@@ -196,21 +196,17 @@ export default {
 			caption: "New",
 			tip: "New",
 		},
+		tbitem5: {
+			caption: "Edit",
+			tip: "Edit {0}",
+		},
 		tbitem8: {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-		tbitem19: {
-			caption: "Filter",
-			tip: "Filter",
-		},
 		tbitem13: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 	editviewtoolbar_toolbar: {
@@ -218,21 +214,9 @@ export default {
 			caption: "Save",
 			tip: "Save",
 		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
 		tbitem5: {
 			caption: "Save And Close",
 			tip: "Save And Close Window",
-		},
-		tbitem7: {
-			caption: "Remove And Close",
-			tip: "Remove And Close Window",
-		},
-		tbitem22: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 	wbgridviewtoolbar_toolbar: {
@@ -240,21 +224,17 @@ export default {
 			caption: "New",
 			tip: "New",
 		},
+		tbitem5: {
+			caption: "Edit",
+			tip: "Edit {0}",
+		},
 		tbitem8: {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-		tbitem19: {
-			caption: "Filter",
-			tip: "Filter",
-		},
 		tbitem13: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 	wbeditviewtoolbar_toolbar: {
@@ -262,21 +242,9 @@ export default {
 			caption: "Save",
 			tip: "Save",
 		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
 		tbitem5: {
 			caption: "Save And Close",
 			tip: "Save And Close Window",
-		},
-		tbitem7: {
-			caption: "Remove And Close",
-			tip: "Remove And Close Window",
-		},
-		tbitem22: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 };

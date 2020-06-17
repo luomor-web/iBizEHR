@@ -6,7 +6,7 @@ import view_grid from '@widgets/trm-stay/main-grid/main-grid.vue';
 import view_searchform from '@widgets/trm-stay/default-searchform/default-searchform.vue';
 
 /**
- * 培训住宿表格视图
+ * 培训住宿
  *
  * @export
  * @class TrmStayGridView

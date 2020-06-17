@@ -231,6 +231,7 @@
     paramItem='trmtrainaddress' 
     :parentdata='{"srfparentdefname":"TRMTRAINADDRESSID","srfparentdename":"TRMTRAINADDRESS","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_TRMTRAINFACIES_TRMTRAINADDRESS_TRMTRAINADDRESSID","SRFDER1NID":"DER1N_TRMTRAINFACIES_TRMTRAINADDRESS_TRMTRAINADDRESSID"}'
     :parameters="[
+        { pathName: 'trmtrainaddresses', parameterName: 'trmtrainaddress' },
     ]"
     :context="context"
     :viewparams="viewparams"
@@ -268,6 +269,7 @@
     paramItem='trmtrainaddress' 
     :parentdata='{"srfparentdefname":"TRMTRAINADDRESSID","srfparentdename":"TRMTRAINADDRESS","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_TRMSTAY_TRMTRAINADDRESS_TRMTRAINADDRESSID","SRFDER1NID":"DER1N_TRMSTAY_TRMTRAINADDRESS_TRMTRAINADDRESSID"}'
     :parameters="[
+        { pathName: 'trmtrainaddresses', parameterName: 'trmtrainaddress' },
     ]"
     :context="context"
     :viewparams="viewparams"
@@ -305,6 +307,7 @@
     paramItem='trmtrainaddress' 
     :parentdata='{"srfparentdefname":"TRMTRAINADDRESSID","srfparentdename":"TRMTRAINADDRESS","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_TRMTRAFFIC_TRMTRAINADDRESS_TRMTRAINADDRESSID","SRFDER1NID":"DER1N_TRMTRAFFIC_TRMTRAINADDRESS_TRMTRAINADDRESSID"}'
     :parameters="[
+        { pathName: 'trmtrainaddresses', parameterName: 'trmtrainaddress' },
     ]"
     :context="context"
     :viewparams="viewparams"
@@ -342,7 +345,7 @@
     paramItem='trmtrainaddress' 
     :parentdata='{"srfparentdefname":"TRMTRAINADDRESSID","srfparentdename":"TRMTRAINADDRESS","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_TRMCOUARRANGE_TRMTRAINADDRESS_TRMTRAINADDRESSID","SRFDER1NID":"DER1N_TRMCOUARRANGE_TRMTRAINADDRESS_TRMTRAINADDRESSID"}'
     :parameters="[
-        { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+        { pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' },
     ]"
     :context="context"
     :viewparams="viewparams"
@@ -900,7 +903,7 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         druipart4: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart4', visible: true, isShowCaption: true, form: this })
 , 
-        formpage5: new FormPageModel({ caption: '交通', detailType: 'FORMPAGE', name: 'formpage5', visible: true, isShowCaption: true, form: this })
+        formpage5: new FormPageModel({ caption: '交通信息', detailType: 'FORMPAGE', name: 'formpage5', visible: true, isShowCaption: true, form: this })
 , 
         druipart3: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart3', visible: true, isShowCaption: true, form: this })
 , 

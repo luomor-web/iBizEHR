@@ -48,7 +48,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "09f8e0ec1aa622435843933e1dfbc655"
         },
         "trmcouarrangeeditview": {
-            "title": "课程安排编辑视图",
+            "title": "培训记录",
             "caption": "培训记录",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
@@ -96,7 +96,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "181ae435d96c17b08f27f7402a0d33fa"
         },
         "trmcoursesystemgridview": {
-            "title": "课程体系表格视图",
+            "title": "培训模块",
             "caption": "培训模块",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
@@ -120,8 +120,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "1fbe5d102b5d0982c2f4d0cdb3947b60"
         },
         "trmtrafficgridview": {
-            "title": "交通表格视图",
-            "caption": "交通",
+            "title": "交通信息",
+            "caption": "交通信息",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrafficGridView",
@@ -129,7 +129,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "trmtrainteacherwbgridview": {
             "title": "培训教师表格视图",
-            "caption": "培训讲师",
+            "caption": "外部讲师",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrainTeacherWBGridView",
@@ -169,7 +169,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "trmtrainteachereditview": {
             "title": "培训教师编辑视图",
-            "caption": "培训讲师",
+            "caption": "内部讲师",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrainTeacherEditView",
@@ -184,7 +184,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "2e837b0e5fa89b2dc2608125b8b3852e"
         },
         "trmstaygridview": {
-            "title": "培训住宿表格视图",
+            "title": "培训住宿",
             "caption": "培训住宿",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
@@ -208,7 +208,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "31455abfde9592048b2a5f662e61fd5f"
         },
         "trmstayeditview": {
-            "title": "培训住宿编辑视图",
+            "title": "培训住宿",
             "caption": "培训住宿",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
@@ -238,6 +238,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "TRM",
             "viewname": "TrmCourseSystemWMXEditView",
             "viewtag": "37eab1c8843eb9f0d28e3eb8d5432613"
+        },
+        "trmtraincourseeditview9": {
+            "title": "培训课程",
+            "caption": "培训课程",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "TRM",
+            "viewname": "TrmTrainCourseEditView9",
+            "viewtag": "39a7c86e53e95b11e14dd5c92b0083a8"
         },
         "attendancerecordeditview": {
             "title": "考勤记录编辑视图",
@@ -272,7 +280,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "4260d887819e58771461fd4adefa60e6"
         },
         "trmtraincoursegridview": {
-            "title": "培训课程表格视图",
+            "title": "培训课程",
             "caption": "培训课程",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
@@ -376,7 +384,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "5a7107895d9b66ab8b78d13df1f225e5"
         },
         "trmtraincourseeditview": {
-            "title": "培训课程编辑视图",
+            "title": "培训课程",
             "caption": "培训课程",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
@@ -416,8 +424,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "6498423afbd731a15e34492244be55d8"
         },
         "trmtrafficeditview": {
-            "title": "交通编辑视图",
-            "caption": "交通",
+            "title": "交通信息",
+            "caption": "交通信息",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrafficEditView",
@@ -535,6 +543,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "TrmHmatserPickupGridView",
             "viewtag": "84376a56a4ad11f5bd89fe161fb8d6ff"
         },
+        "trmcoursesystemeditview9": {
+            "title": "培训模块",
+            "caption": "培训模块",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "TRM",
+            "viewname": "TrmCourseSystemEditView9",
+            "viewtag": "878c6aa215b91f624102716b96aa8a7d"
+        },
         "trmdeparteditview": {
             "title": "培训需求通知编辑视图",
             "caption": "培训需求通知",
@@ -545,7 +561,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "trmtrainteacherwbeditview": {
             "title": "培训教师编辑视图",
-            "caption": "培训讲师",
+            "caption": "外部讲师",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrainTeacherWBEditView",
@@ -696,7 +712,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "b6a68353416869b1e555ab6e9d57bfd3"
         },
         "trmcoursesystemeditview": {
-            "title": "课程体系编辑视图",
+            "title": "培训模块",
             "caption": "培训模块",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
@@ -816,7 +832,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "d00a272b09451fd2ad8c74b7af02a61b"
         },
         "trmtrainfacieseditview": {
-            "title": "培训设施编辑视图",
+            "title": "培训设施",
             "caption": "培训设施",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
@@ -881,7 +897,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "trmtrainteachergridview": {
             "title": "培训教师表格视图",
-            "caption": "培训讲师",
+            "caption": "内部讲师",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrainTeacherGridView",

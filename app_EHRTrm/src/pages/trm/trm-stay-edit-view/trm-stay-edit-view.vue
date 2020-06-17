@@ -5,7 +5,7 @@ import TrmStayEditViewBase from './trm-stay-edit-view-base.vue';
 import view_form from '@widgets/trm-stay/main-form/main-form.vue';
 
 /**
- * 培训住宿编辑视图
+ * 培训住宿
  *
  * @export
  * @class TrmStayEditView

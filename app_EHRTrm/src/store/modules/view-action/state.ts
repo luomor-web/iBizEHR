@@ -109,6 +109,7 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'b9321a1576cd05e3812617ab7be36a49',
+                '878c6aa215b91f624102716b96aa8a7d',
             ],
         },
         {
@@ -257,6 +258,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '39a7c86e53e95b11e14dd5c92b0083a8',
+            viewmodule: 'TRM',
+            viewname: 'TrmTrainCourseEditView9',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '5da46cd39cd211b4bbd298b79a892206',
+            ],
+        },
+        {
             viewtag: '3e14b1a02b1fc2d309850243aa162a92',
             viewmodule: 'ATT',
             viewname: 'AttEndanceRecordEditView',
@@ -295,6 +306,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '39a7c86e53e95b11e14dd5c92b0083a8',
                 '5da46cd39cd211b4bbd298b79a892206',
                 'd44f8f7d7a1c369954fa0d196b28c1cc',
                 '9fe562265b37611be2479c3426af87b1',
@@ -531,6 +543,17 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+            ],
+        },
+        {
+            viewtag: '878c6aa215b91f624102716b96aa8a7d',
+            viewmodule: 'TRM',
+            viewname: 'TrmCourseSystemEditView9',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '439d470930ee9b3ab1812f825de08c5b',
+                'b9321a1576cd05e3812617ab7be36a49',
             ],
         },
         {

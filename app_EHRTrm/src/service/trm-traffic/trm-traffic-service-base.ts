@@ -48,6 +48,9 @@ export default class TrmTrafficServiceBase extends EntityService {
      * @memberof TrmTrafficServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainaddress && context.trmtraffic){
+            return Http.getInstance().get(`/trmtrainaddresses/${context.trmtrainaddress}/trmtraffics/${context.trmtraffic}/select`,isloading);
+        }
             return Http.getInstance().get(`/trmtraffics/${context.trmtraffic}/select`,isloading);
     }
 
@@ -61,6 +64,9 @@ export default class TrmTrafficServiceBase extends EntityService {
      * @memberof TrmTrafficServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainaddress && true){
+            return Http.getInstance().get(`/trmtrainaddresses/${context.trmtrainaddress}/trmtraffics/getdraft`,isloading);
+        }
         let res:any = await  Http.getInstance().get(`/trmtraffics/getdraft`,isloading);
         res.data.trmtraffic = data.trmtraffic;
         return res;
@@ -76,6 +82,9 @@ export default class TrmTrafficServiceBase extends EntityService {
      * @memberof TrmTrafficServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainaddress && context.trmtraffic){
+            return Http.getInstance().delete(`/trmtrainaddresses/${context.trmtrainaddress}/trmtraffics/${context.trmtraffic}`,isloading);
+        }
             return Http.getInstance().delete(`/trmtraffics/${context.trmtraffic}`,isloading);
 
     }
@@ -90,6 +99,9 @@ export default class TrmTrafficServiceBase extends EntityService {
      * @memberof TrmTrafficServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainaddress && context.trmtraffic){
+            return Http.getInstance().post(`/trmtrainaddresses/${context.trmtrainaddress}/trmtraffics/${context.trmtraffic}/save`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/trmtraffics/${context.trmtraffic}/save`,data,isloading);
@@ -106,6 +118,9 @@ export default class TrmTrafficServiceBase extends EntityService {
      * @memberof TrmTrafficServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainaddress && context.trmtraffic){
+            return Http.getInstance().get(`/trmtrainaddresses/${context.trmtrainaddress}/trmtraffics/${context.trmtraffic}`,isloading);
+        }
             let res:any = await Http.getInstance().get(`/trmtraffics/${context.trmtraffic}`,isloading);
             return res;
 
@@ -121,6 +136,9 @@ export default class TrmTrafficServiceBase extends EntityService {
      * @memberof TrmTrafficServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainaddress && context.trmtraffic){
+            return Http.getInstance().put(`/trmtrainaddresses/${context.trmtrainaddress}/trmtraffics/${context.trmtraffic}`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/trmtraffics/${context.trmtraffic}`,data,isloading);
@@ -137,6 +155,15 @@ export default class TrmTrafficServiceBase extends EntityService {
      * @memberof TrmTrafficServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainaddress && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/trmtrainaddresses/${context.trmtrainaddress}/trmtraffics`,data,isloading);
+        }
         let masterData:any = {};
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -160,6 +187,9 @@ export default class TrmTrafficServiceBase extends EntityService {
      * @memberof TrmTrafficServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainaddress && context.trmtraffic){
+            return Http.getInstance().post(`/trmtrainaddresses/${context.trmtrainaddress}/trmtraffics/${context.trmtraffic}/checkkey`,data,isloading);
+        }
             return Http.getInstance().post(`/trmtraffics/${context.trmtraffic}/checkkey`,data,isloading);
     }
 
@@ -173,6 +203,10 @@ export default class TrmTrafficServiceBase extends EntityService {
      * @memberof TrmTrafficServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainaddress && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/trmtrainaddresses/${context.trmtrainaddress}/trmtraffics/fetchdefault`,tempData,isloading);
+        }
         let tempData:any = JSON.parse(JSON.stringify(data));
         return Http.getInstance().get(`/trmtraffics/fetchdefault`,tempData,isloading);
     }

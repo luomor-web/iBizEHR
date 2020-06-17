@@ -76,13 +76,6 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.kctxfw.visible" :style="{}"  :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
-    <app-form-item name='kctxfw' :itemRules="this.rules.kctxfw" class='' :caption="$t('entities.trmtrainagency.main2_form.details.kctxfw')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.kctxfw.error" :isEmptyCaption="false" labelPos="LEFT">
-    
-<app-span name='kctxfw' :value="data.kctxfw" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
-</app-form-item>
-
-</i-col>
     
     </row>
 </app-form-group>

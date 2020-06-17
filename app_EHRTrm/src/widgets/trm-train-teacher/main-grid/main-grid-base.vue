@@ -21,7 +21,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.trmtrainteacher.main_grid.columns.pimpersonname')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.trmtrainteacher.main_grid.columns.pimpersonname')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainteacher.main_grid.columns.pimpersonname')}}
@@ -33,7 +33,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('dj')">
-                <el-table-column show-overflow-tooltip :prop="'dj'" :label="$t('entities.trmtrainteacher.main_grid.columns.dj')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'dj'" :label="$t('entities.trmtrainteacher.main_grid.columns.dj')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainteacher.main_grid.columns.dj')}}
@@ -47,7 +47,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jslx')">
-                <el-table-column show-overflow-tooltip :prop="'jslx'" :label="$t('entities.trmtrainteacher.main_grid.columns.jslx')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jslx'" :label="$t('entities.trmtrainteacher.main_grid.columns.jslx')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainteacher.main_grid.columns.jslx')}}
@@ -61,7 +61,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zjhm')">
-                <el-table-column show-overflow-tooltip :prop="'zjhm'" :label="$t('entities.trmtrainteacher.main_grid.columns.zjhm')" :width="200"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zjhm'" :label="$t('entities.trmtrainteacher.main_grid.columns.zjhm')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainteacher.main_grid.columns.zjhm')}}
@@ -73,7 +73,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('xb')">
-                <el-table-column show-overflow-tooltip :prop="'xb'" :label="$t('entities.trmtrainteacher.main_grid.columns.xb')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xb'" :label="$t('entities.trmtrainteacher.main_grid.columns.xb')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainteacher.main_grid.columns.xb')}}
@@ -87,7 +87,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('nl')">
-                <el-table-column show-overflow-tooltip :prop="'nl'" :label="$t('entities.trmtrainteacher.main_grid.columns.nl')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'nl'" :label="$t('entities.trmtrainteacher.main_grid.columns.nl')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainteacher.main_grid.columns.nl')}}
@@ -98,15 +98,15 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('lxdh1')">
-                <el-table-column show-overflow-tooltip :prop="'lxdh1'" :label="$t('entities.trmtrainteacher.main_grid.columns.lxdh1')" :width="150"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('lxdh')">
+                <el-table-column show-overflow-tooltip :prop="'lxdh'" :label="$t('entities.trmtrainteacher.main_grid.columns.lxdh')" :width="140"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.trmtrainteacher.main_grid.columns.lxdh1')}}
+                        {{$t('entities.trmtrainteacher.main_grid.columns.lxdh')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.lxdh1}}</span>
+                        <span>{{row.lxdh}}</span>
                     </template>
                 </el-table-column>
             </template>
@@ -135,7 +135,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('sfgx')">
-                <el-table-column show-overflow-tooltip :prop="'sfgx'" :label="$t('entities.trmtrainteacher.main_grid.columns.sfgx')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'sfgx'" :label="$t('entities.trmtrainteacher.main_grid.columns.sfgx')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainteacher.main_grid.columns.sfgx')}}
@@ -667,9 +667,9 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'px'
         },
         {
-            name: 'lxdh1',
+            name: 'lxdh',
             label: '联系电话',
-            langtag: 'entities.trmtrainteacher.main_grid.columns.lxdh1',
+            langtag: 'entities.trmtrainteacher.main_grid.columns.lxdh',
             show: true,
             util: 'px'
         },

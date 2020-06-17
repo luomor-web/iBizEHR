@@ -558,23 +558,34 @@ export default class TrmCouarrangeGridViewBase extends GridViewBase {
             Object.assign(tempContext,args[0]);
         }
         let deResParameters: any[] = [];
-        if(tempContext.trmtrainagency && true){
+        if(tempContext.trmcoursesystem && true){
             deResParameters = [
-            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+            { pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' },
             ]
         }
         const parameters: any[] = [
             { pathName: 'trmcouarranges', parameterName: 'trmcouarrange' },
-            { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;
-        const openIndexViewTab = (data: any) => {
-            const _data: any = { w: (new Date().getTime()) };
-            Object.assign(_data, data);
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, tempContext, deResParameters, parameters, args, _data);
-            this.$router.push(routePath);
+        const openPopupModal = (view: any, data: any) => {
+            let container: Subject<any> = this.$appmodal.openModal(view, tempContext, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
         }
-        openIndexViewTab(data);
+        const view: any = {
+            viewname: 'trm-couarrange-edit-view', 
+            height: 750, 
+            width: 0,  
+            title: this.$t('entities.trmcouarrange.views.editview.title'),
+        };
+        openPopupModal(view, data);
     }
 
 
@@ -597,21 +608,34 @@ export default class TrmCouarrangeGridViewBase extends GridViewBase {
             Object.assign(tempContext,args[0]);
         }
         let deResParameters: any[] = [];
-        if(tempContext.trmtrainagency && true){
+        if(tempContext.trmcoursesystem && true){
             deResParameters = [
-            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+            { pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' },
             ]
         }
         const parameters: any[] = [
             { pathName: 'trmcouarranges', parameterName: 'trmcouarrange' },
-            { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;
-        const openIndexViewTab = (data: any) => {
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, tempContext, deResParameters, parameters, args, data);
-            this.$router.push(routePath);
+        const openPopupModal = (view: any, data: any) => {
+            let container: Subject<any> = this.$appmodal.openModal(view, tempContext, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
         }
-        openIndexViewTab(data);
+        const view: any = {
+            viewname: 'trm-couarrange-edit-view', 
+            height: 750, 
+            width: 0,  
+            title: this.$t('entities.trmcouarrange.views.editview.title'),
+        };
+        openPopupModal(view, data);
     }
 
 

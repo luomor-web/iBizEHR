@@ -21,7 +21,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('trmtrafficname')">
-                <el-table-column show-overflow-tooltip :prop="'trmtrafficname'" :label="$t('entities.trmtraffic.main_grid.columns.trmtrafficname')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'trmtrafficname'" :label="$t('entities.trmtraffic.main_grid.columns.trmtrafficname')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtraffic.main_grid.columns.trmtrafficname')}}

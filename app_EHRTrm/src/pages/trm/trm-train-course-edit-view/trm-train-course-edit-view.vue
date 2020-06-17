@@ -5,7 +5,7 @@ import TrmTrainCourseEditViewBase from './trm-train-course-edit-view-base.vue';
 import view_form from '@widgets/trm-train-course/main-form/main-form.vue';
 
 /**
- * 培训课程编辑视图
+ * 培训课程
  *
  * @export
  * @class TrmTrainCourseEditView

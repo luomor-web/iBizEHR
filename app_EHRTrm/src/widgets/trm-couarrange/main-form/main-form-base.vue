@@ -4,7 +4,7 @@
     <row >
             
 <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmcouarrange.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmcouarrange.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.trmtrainplantermname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='trmtrainplantermname' :itemRules="this.rules.trmtrainplantermname" class='' :caption="$t('entities.trmcouarrange.main_form.details.trmtrainplantermname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.trmtrainplantermname.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -52,7 +52,7 @@
   valueitem='trmtraincourseid' 
   :value="data.trmtraincoursename" 
   editortype="" 
-  :pickupView="{ viewname: 'trm-train-course-pickup-view', title: $t('entities.trmtraincourse.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'trmtraincourses', parameterName: 'trmtraincourse' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
+  :pickupView="{ viewname: 'trm-train-course-pickup-view', title: $t('entities.trmtraincourse.views.pickupview.title'), deResParameters: [{ pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' }, ], parameters: [{ pathName: 'trmtraincourses', parameterName: 'trmtraincourse' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
   style=""  
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>

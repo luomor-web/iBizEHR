@@ -1,6 +1,7 @@
 export const PageComponents = {
     install(Vue: any, opt: any) {
                 Vue.component('trm-train-plan-pickup-grid-view', () => import('@pages/trm/trm-train-plan-pickup-grid-view/trm-train-plan-pickup-grid-view.vue'));
+        Vue.component('trm-train-course-edit-view9', () => import('@pages/trm/trm-train-course-edit-view9/trm-train-course-edit-view9.vue'));
         Vue.component('orm-orgsector-mpickup-view', () => import('@pages/orm/orm-orgsector-mpickup-view/orm-orgsector-mpickup-view.vue'));
         Vue.component('trm-train-actapply-pickup-grid-view', () => import('@pages/trm/trm-train-actapply-pickup-grid-view/trm-train-actapply-pickup-grid-view.vue'));
         Vue.component('trm-train-plan-pickup-view', () => import('@pages/trm/trm-train-plan-pickup-view/trm-train-plan-pickup-view.vue'));
@@ -76,6 +77,7 @@ export const PageComponents = {
         Vue.component('trm-train-planterm-grid-view', () => import('@pages/trm/trm-train-planterm-grid-view/trm-train-planterm-grid-view.vue'));
         Vue.component('trm-train-course-grid-view', () => import('@pages/trm/trm-train-course-grid-view/trm-train-course-grid-view.vue'));
         Vue.component('trm-train-agency-edit-view', () => import('@pages/trm/trm-train-agency-edit-view/trm-train-agency-edit-view.vue'));
+        Vue.component('trm-course-system-edit-view9', () => import('@pages/trm/trm-course-system-edit-view9/trm-course-system-edit-view9.vue'));
         Vue.component('trm-depart-grid-view', () => import('@pages/trm/trm-depart-grid-view/trm-depart-grid-view.vue'));
         Vue.component('trm-hmatser-grid-view', () => import('@pages/trm/trm-hmatser-grid-view/trm-hmatser-grid-view.vue'));
         Vue.component('orm-org-edit-view', () => import('@pages/orm/orm-org-edit-view/orm-org-edit-view.vue'));

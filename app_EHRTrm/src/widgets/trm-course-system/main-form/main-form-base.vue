@@ -4,7 +4,7 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmcoursesystem.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmcoursesystem.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.dm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='dm' :itemRules="this.rules.dm" class='' :caption="$t('entities.trmcoursesystem.main_form.details.dm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dm.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -56,7 +56,7 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmcoursesystem.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmcoursesystem.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.druipart1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-druipart
@@ -66,6 +66,7 @@
     paramItem='trmcoursesystem' 
     :parentdata='{"srfparentdefname":"TRMCOURSESYSTEMID","srfparentdename":"TRMCOURSESYSTEM","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_TRMTRAINCOURSE_TRMCOURSESYSTEM_TRMCOURSESYSTEMID","SRFDER1NID":"DER1N_TRMTRAINCOURSE_TRMCOURSESYSTEM_TRMCOURSESYSTEMID"}'
     :parameters="[
+        { pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' },
     ]"
     :context="context"
     :viewparams="viewparams"
@@ -492,16 +493,16 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
         dm: [
-            { type: 'string', message: '代码 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '代码 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '代码 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '代码 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '模块编码 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '模块编码 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '模块编码 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '模块编码 值不能为空', trigger: 'blur' },
         ],
         trmcoursesystemname: [
-            { type: 'string', message: '名称 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '名称 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '名称 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '名称 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '模块名称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '模块名称 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '模块名称 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '模块名称 值不能为空', trigger: 'blur' },
         ],
         dygx: [
             { type: 'string', message: '对应关系 值必须为字符串类型', trigger: 'change' },
@@ -516,10 +517,10 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '级别 值不能为空', trigger: 'blur' },
         ],
         nr: [
-            { type: 'string', message: '内容 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '内容 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '内容 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '内容 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '模块内容 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '模块内容 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '模块内容 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '模块内容 值不能为空', trigger: 'blur' },
         ],
         trmtrainagencyid: [
             { type: 'string', message: '培训机构标识 值必须为字符串类型', trigger: 'change' },
@@ -566,15 +567,15 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        dm: new FormItemModel({ caption: '代码', detailType: 'FORMITEM', name: 'dm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        dm: new FormItemModel({ caption: '模块编码', detailType: 'FORMITEM', name: 'dm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        trmcoursesystemname: new FormItemModel({ caption: '名称', detailType: 'FORMITEM', name: 'trmcoursesystemname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        trmcoursesystemname: new FormItemModel({ caption: '模块名称', detailType: 'FORMITEM', name: 'trmcoursesystemname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         dygx: new FormItemModel({ caption: '对应关系', detailType: 'FORMITEM', name: 'dygx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         jb: new FormItemModel({ caption: '级别', detailType: 'FORMITEM', name: 'jb', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        nr: new FormItemModel({ caption: '内容', detailType: 'FORMITEM', name: 'nr', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        nr: new FormItemModel({ caption: '模块内容', detailType: 'FORMITEM', name: 'nr', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         trmtrainagencyid: new FormItemModel({ caption: '培训机构标识', detailType: 'FORMITEM', name: 'trmtrainagencyid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 

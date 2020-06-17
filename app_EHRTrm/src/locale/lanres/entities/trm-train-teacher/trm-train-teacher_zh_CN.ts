@@ -44,7 +44,7 @@ export default {
       title: '培训教师数据选择视图',
 		},
 		wbgridview: {
-			caption: '培训讲师',
+			caption: '外部讲师',
       title: '培训教师表格视图',
 		},
 		mpickupview: {
@@ -52,11 +52,11 @@ export default {
       title: '培训教师数据多项选择视图',
 		},
 		editview: {
-			caption: '培训讲师',
+			caption: '内部讲师',
       title: '培训教师编辑视图',
 		},
 		wbeditview: {
-			caption: '培训讲师',
+			caption: '外部讲师',
       title: '培训教师编辑视图',
 		},
 		pickupgridview: {
@@ -64,15 +64,15 @@ export default {
       title: '培训教师选择表格视图',
 		},
 		gridview: {
-			caption: '培训讲师',
+			caption: '内部讲师',
       title: '培训教师表格视图',
 		},
 	},
 	main_form: {
 		details: {
-			grouppanel4: '', 
+			grouppanel4: '培训讲师信息', 
 			grouppanel3: '', 
-			grouppanel2: '', 
+			grouppanel2: '评价信息', 
 			group1: '培训讲师信息', 
 			druipart1: '', 
 			grouppanel1: '讲师授课记录', 
@@ -112,10 +112,10 @@ export default {
 	},
 	main_2_form: {
 		details: {
-			grouppanel4: '', 
+			grouppanel4: '培训讲师信息', 
 			grouppanel3: '', 
 			group1: '培训讲师信息', 
-			grouppanel2: '', 
+			grouppanel2: '评价信息', 
 			druipart1: '', 
 			grouppanel1: '讲师授课记录', 
 			formpage1: '基本信息', 
@@ -158,7 +158,7 @@ export default {
 			zjhm: '证件号码',
 			xb: '性别',
 			nl: '年龄',
-			lxdh1: '联系电话',
+			lxdh: '联系电话',
 			zjkssj: '执教开始时间',
 			zzdzs: '所属单位',
 			sfgx: '是否共享',
@@ -173,7 +173,7 @@ export default {
 			jslx: '讲师类型',
 			xb: '性别',
 			nl: '年龄',
-			lxdh1: '联系电话',
+			lxdh: '联系电话',
 			zjkssj: '执教开始时间',
 			zzdzs: '所属单位',
 			sfgx: '是否共享',
@@ -195,21 +195,17 @@ export default {
 			caption: '新建',
 			tip: '新建',
 		},
+		tbitem5: {
+			caption: '编辑',
+			tip: '编辑',
+		},
 		tbitem8: {
 			caption: '删除',
 			tip: '删除',
 		},
-		tbitem19: {
-			caption: '过滤',
-			tip: '过滤',
-		},
 		tbitem13: {
 			caption: '导出',
 			tip: '导出',
-		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 	editviewtoolbar_toolbar: {
@@ -217,21 +213,9 @@ export default {
 			caption: '保存',
 			tip: '保存',
 		},
-		tbitem4: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
 		tbitem5: {
 			caption: '保存并关闭',
 			tip: '保存并关闭',
-		},
-		tbitem7: {
-			caption: '删除并关闭',
-			tip: '删除并关闭',
-		},
-		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 	wbgridviewtoolbar_toolbar: {
@@ -239,21 +223,17 @@ export default {
 			caption: '新建',
 			tip: '新建',
 		},
+		tbitem5: {
+			caption: '编辑',
+			tip: '编辑',
+		},
 		tbitem8: {
 			caption: '删除',
 			tip: '删除',
 		},
-		tbitem19: {
-			caption: '过滤',
-			tip: '过滤',
-		},
 		tbitem13: {
 			caption: '导出',
 			tip: '导出',
-		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 	wbeditviewtoolbar_toolbar: {
@@ -261,21 +241,9 @@ export default {
 			caption: '保存',
 			tip: '保存',
 		},
-		tbitem4: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
 		tbitem5: {
 			caption: '保存并关闭',
 			tip: '保存并关闭',
-		},
-		tbitem7: {
-			caption: '删除并关闭',
-			tip: '删除并关闭',
-		},
-		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 };

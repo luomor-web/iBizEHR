@@ -5,7 +5,7 @@ import TrmTrafficEditViewBase from './trm-traffic-edit-view-base.vue';
 import view_form from '@widgets/trm-traffic/main-form/main-form.vue';
 
 /**
- * 交通编辑视图
+ * 交通信息
  *
  * @export
  * @class TrmTrafficEditView

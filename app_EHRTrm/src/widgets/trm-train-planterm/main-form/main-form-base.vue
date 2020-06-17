@@ -149,7 +149,7 @@
   valueitem='trmtraincourseid' 
   :value="data.trmtraincoursename" 
   editortype="" 
-  :pickupView="{ viewname: 'trm-train-course-pickup-view', title: $t('entities.trmtraincourse.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'trmtraincourses', parameterName: 'trmtraincourse' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
+  :pickupView="{ viewname: 'trm-train-course-pickup-view', title: $t('entities.trmtraincourse.views.pickupview.title'), deResParameters: [{ pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' }, ], parameters: [{ pathName: 'trmtraincourses', parameterName: 'trmtraincourse' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
   style=""  
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>
@@ -322,7 +322,7 @@
     paramItem='trmtrainplanterm' 
     :parentdata='{"srfparentdefname":"TRMTRAINPLANTERMID","srfparentdename":"TRMTRAINPLANTERM","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_TRMCOUARRANGE_TRMTRAINPLANTERM_TRMTRAINPLANTERMID","SRFDER1NID":"DER1N_TRMCOUARRANGE_TRMTRAINPLANTERM_TRMTRAINPLANTERMID"}'
     :parameters="[
-        { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+        { pathName: 'trmcoursesystems', parameterName: 'trmcoursesystem' },
     ]"
     :context="context"
     :viewparams="viewparams"

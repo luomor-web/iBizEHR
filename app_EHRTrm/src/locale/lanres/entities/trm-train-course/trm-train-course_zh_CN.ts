@@ -31,13 +31,17 @@ export default {
 			caption: '培训课程',
       title: '培训课程选择表格视图',
 		},
+		editview9: {
+			caption: '培训课程',
+      title: '培训课程',
+		},
 		gridview: {
 			caption: '培训课程',
-      title: '培训课程表格视图',
+      title: '培训课程',
 		},
 		editview: {
 			caption: '培训课程',
-      title: '培训课程编辑视图',
+      title: '培训课程',
 		},
 		pickupview: {
 			caption: '培训课程',
@@ -50,7 +54,34 @@ export default {
 	},
 	main_form: {
 		details: {
-			group1: '培训课程信息', 
+			group1: '课程信息', 
+			formpage1: '基本信息', 
+			srfupdatedate: '更新时间', 
+			srforikey: '', 
+			srfkey: '培训课程标识', 
+			srfmajortext: '培训课程名称', 
+			srftempmode: '', 
+			srfuf: '', 
+			srfdeid: '', 
+			srfsourcekey: '', 
+			trmtraincoursename: '课程名称', 
+			trmcoursesystemname: '培训模块', 
+			jb: '级别', 
+			bb: '版本', 
+			kcxs: '累积学时', 
+			pxmb: '培训目标', 
+			nr: '培训内容', 
+			sfgx: '是否共享', 
+			kcjs: '课程介绍', 
+			trmcoursesystemid: '课程体系标识', 
+			trmtraincourseid: '培训课程标识', 
+		},
+		uiactions: {
+		},
+	},
+	main2_form: {
+		details: {
+			group1: '课程信息', 
 			formpage1: '基本信息', 
 			srfupdatedate: '更新时间', 
 			srforikey: '', 
@@ -108,21 +139,17 @@ export default {
 			caption: '新建',
 			tip: '新建',
 		},
+		tbitem5: {
+			caption: '编辑',
+			tip: '编辑',
+		},
 		tbitem8: {
 			caption: '删除',
 			tip: '删除',
 		},
-		tbitem19: {
-			caption: '过滤',
-			tip: '过滤',
-		},
 		tbitem13: {
 			caption: '导出',
 			tip: '导出',
-		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 	editviewtoolbar_toolbar: {
@@ -130,21 +157,19 @@ export default {
 			caption: '保存',
 			tip: '保存',
 		},
-		tbitem4: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
 		tbitem5: {
 			caption: '保存并关闭',
 			tip: '保存并关闭',
 		},
-		tbitem7: {
-			caption: '删除并关闭',
-			tip: '删除并关闭',
+	},
+	editview9toolbar_toolbar: {
+		tbitem1_openeditview_sep: {
+			caption: '',
+			tip: '',
 		},
-		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
+		tbitem1_openeditview: {
+			caption: '编辑',
+			tip: '编辑',
 		},
 	},
 };
