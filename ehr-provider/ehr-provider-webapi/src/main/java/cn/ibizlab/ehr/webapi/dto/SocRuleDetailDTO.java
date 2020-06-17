@@ -177,6 +177,14 @@ public class SocRuleDetailDTO extends DTOBase implements Serializable {
     @JsonProperty("memo")
     private String memo;
 
+    /**
+     * 属性 [ORDERVALUE]
+     *
+     */
+    @JSONField(name = "ordervalue")
+    @JsonProperty("ordervalue")
+    private Integer ordervalue;
+
 
     /**
      * 设置 [SOCRULEDETAILNAME]

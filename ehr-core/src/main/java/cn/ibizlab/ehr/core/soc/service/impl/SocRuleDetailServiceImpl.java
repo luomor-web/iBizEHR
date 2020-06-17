@@ -210,6 +210,7 @@ public class SocRuleDetailServiceImpl extends ServiceImpl<SocRuleDetailMapper, S
                 soctype=majorEntity;
             }
             et.setSoctypename(soctype.getSoctypename());
+            et.setOrdervalue(soctype.getOrdervalue());
         }
     }
 

@@ -179,6 +179,13 @@ public class SocRuleDetail extends EntityMP implements Serializable {
     @JSONField(name = "memo")
     @JsonProperty("memo")
     private String memo;
+    /**
+     * 排序号
+     */
+    @TableField(exist = false)
+    @JSONField(name = "ordervalue")
+    @JsonProperty("ordervalue")
+    private Integer ordervalue;
 
     /**
      * 
