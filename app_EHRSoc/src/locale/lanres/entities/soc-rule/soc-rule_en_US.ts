@@ -84,8 +84,9 @@ export default {
 	main_grid: {
 		columns: {
 			socrulename: "社保规则名称",
-			nyear: "年度",
 			ormorgname: "组织",
+			nyear: "年度",
+			socareaname: "参保地",
 			memo: "备注",
 		},
 		uiactions: {

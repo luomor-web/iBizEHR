@@ -32,6 +32,18 @@
                     </template>
                 </el-table-column>
             </template>
+            <template v-if="getColumnState('ormorgname')">
+                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.socrule.main_grid.columns.ormorgname')" :width="200"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.socrule.main_grid.columns.ormorgname')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <span>{{row.ormorgname}}</span>
+                    </template>
+                </el-table-column>
+            </template>
             <template v-if="getColumnState('nyear')">
                 <el-table-column show-overflow-tooltip :prop="'nyear'" :label="$t('entities.socrule.main_grid.columns.nyear')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
@@ -46,15 +58,15 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('ormorgname')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.socrule.main_grid.columns.ormorgname')" :width="200"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('socareaname')">
+                <el-table-column show-overflow-tooltip :prop="'socareaname'" :label="$t('entities.socrule.main_grid.columns.socareaname')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.socrule.main_grid.columns.ormorgname')}}
+                        {{$t('entities.socrule.main_grid.columns.socareaname')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.ormorgname}}</span>
+                        <span>{{row.socareaname}}</span>
                     </template>
                 </el-table-column>
             </template>
@@ -554,6 +566,13 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'PX'
         },
         {
+            name: 'ormorgname',
+            label: '组织',
+            langtag: 'entities.socrule.main_grid.columns.ormorgname',
+            show: true,
+            util: 'PX'
+        },
+        {
             name: 'nyear',
             label: '年度',
             langtag: 'entities.socrule.main_grid.columns.nyear',
@@ -561,9 +580,9 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'PX'
         },
         {
-            name: 'ormorgname',
-            label: '组织',
-            langtag: 'entities.socrule.main_grid.columns.ormorgname',
+            name: 'socareaname',
+            label: '参保地',
+            langtag: 'entities.socrule.main_grid.columns.socareaname',
             show: true,
             util: 'PX'
         },

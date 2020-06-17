@@ -52,6 +52,11 @@ export default class MainModel {
           dataType: 'TEXT',
         },
         {
+          name: 'socareaname',
+          prop: 'socareaname',
+          dataType: 'PICKUPTEXT',
+        },
+        {
           name: 'srfmajortext',
           prop: 'socrulename',
           dataType: 'TEXT',
