@@ -160,7 +160,6 @@ export default {
 	},
 	main_grid: {
 		columns: {
-			uagridcolumn1: "操作",
 			trmtrainagencyname: "机构名称",
 			jglx: "机构类型",
 			jglb: "机构性质",
@@ -170,6 +169,7 @@ export default {
 			lxdh: "联系电话",
 			jgdj: "机构等级",
 			sfgx: "是否共享",
+			uagridcolumn1: "操作",
 		},
 		uiactions: {
 			openckview: "查看",

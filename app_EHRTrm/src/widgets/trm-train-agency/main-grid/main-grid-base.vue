@@ -20,35 +20,6 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('uagridcolumn1')">
-                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.trmtrainagency.main_grid.columns.uagridcolumn1')" :width="180"  :align="'center'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                          <i class='man'></i>
-                        {{$t('entities.trmtrainagency.main_grid.columns.uagridcolumn1')}}
-                      </span>
-                    </template>
-                    <template slot-scope="scope">
-                        <span>
-                            
-                            <a @click="uiAction(scope.row, 'OpenCkView', $event)">
-                              <i class='create'></i>
-                              {{$t('entities.trmtrainagency.main_grid.uiactions.openckview')}}
-                            </a>
-                            <divider type='vertical'></divider>
-                            <a @click="uiAction(scope.row, 'OpenEditView', $event)">
-                              <i class='sx-tb-edit'></i>
-                              {{$t('entities.trmtrainagency.main_grid.uiactions.openeditview')}}
-                            </a>
-                            <divider type='vertical'></divider>
-                            <a @click="uiAction(scope.row, 'Remove', $event)">
-                              <i class='fa fa-remove'></i>
-                              {{$t('entities.trmtrainagency.main_grid.uiactions.remove')}}
-                            </a>
-                        </span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('trmtrainagencyname')">
                 <el-table-column show-overflow-tooltip :prop="'trmtrainagencyname'" :label="$t('entities.trmtrainagency.main_grid.columns.trmtrainagencyname')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
@@ -196,6 +167,35 @@
                         <template v-if="!actualIsOpenEdit">
             <codelist :value="row.sfgx" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
                         </template>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('uagridcolumn1')">
+                <el-table-column :column-key="'uagridcolumn1'" :label="$t('entities.trmtrainagency.main_grid.columns.uagridcolumn1')" :width="180"  :align="'center'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                          <i class='man'></i>
+                        {{$t('entities.trmtrainagency.main_grid.columns.uagridcolumn1')}}
+                      </span>
+                    </template>
+                    <template slot-scope="scope">
+                        <span>
+                            
+                            <a @click="uiAction(scope.row, 'OpenCkView', $event)">
+                              <i class='create'></i>
+                              {{$t('entities.trmtrainagency.main_grid.uiactions.openckview')}}
+                            </a>
+                            <divider type='vertical'></divider>
+                            <a @click="uiAction(scope.row, 'OpenEditView', $event)">
+                              <i class='sx-tb-edit'></i>
+                              {{$t('entities.trmtrainagency.main_grid.uiactions.openeditview')}}
+                            </a>
+                            <divider type='vertical'></divider>
+                            <a @click="uiAction(scope.row, 'Remove', $event)">
+                              <i class='fa fa-remove'></i>
+                              {{$t('entities.trmtrainagency.main_grid.uiactions.remove')}}
+                            </a>
+                        </span>
                     </template>
                 </el-table-column>
             </template>
@@ -779,13 +779,6 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public allColumns: any[] = [
         {
-            name: 'uagridcolumn1',
-            label: '操作',
-            langtag: 'entities.trmtrainagency.main_grid.columns.uagridcolumn1',
-            show: true,
-            util: 'PX'
-        },
-        {
             name: 'trmtrainagencyname',
             label: '机构名称',
             langtag: 'entities.trmtrainagency.main_grid.columns.trmtrainagencyname',
@@ -845,6 +838,13 @@ export default class MainBase extends Vue implements ControlInterface {
             name: 'sfgx',
             label: '是否共享',
             langtag: 'entities.trmtrainagency.main_grid.columns.sfgx',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'uagridcolumn1',
+            label: '操作',
+            langtag: 'entities.trmtrainagency.main_grid.columns.uagridcolumn1',
             show: true,
             util: 'PX'
         },
