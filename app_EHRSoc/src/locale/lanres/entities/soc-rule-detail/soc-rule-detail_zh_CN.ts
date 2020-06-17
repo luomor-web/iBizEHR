@@ -22,6 +22,14 @@ export default {
     ordervalue: '排序号',
   },
 	views: {
+		pickupview: {
+			caption: '社保规则明细',
+      title: '社保规则明细数据选择视图',
+		},
+		pickupgridview: {
+			caption: '社保规则明细',
+      title: '社保规则明细选择表格视图',
+		},
 		editview: {
 			caption: '社保规则明细',
       title: '社保规则明细编辑视图',
@@ -67,6 +75,13 @@ export default {
 			companyamount: '企业固定额',
 			personamount: '个人固定额',
 			memo: '备注',
+		},
+		uiactions: {
+		},
+	},
+	default_searchform: {
+		details: {
+			formpage1: '常规条件', 
 		},
 		uiactions: {
 		},

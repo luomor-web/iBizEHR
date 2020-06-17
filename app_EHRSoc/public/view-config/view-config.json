@@ -26,6 +26,15 @@
         "viewtag": "25e10faa49dbfa2c6a9054b63ac0bc7a",
         "memo": "系统自动添加"
     },
+    "socruledetailpickupview": {
+        "title": "社保规则明细数据选择视图",
+        "caption": "社保规则明细",
+        "viewtype": "DEPICKUPVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocRuleDetailPickupView",
+        "viewtag": "3f57e5629bd977d652098834972af3a7",
+        "memo": "系统自动添加"
+    },
     "socaccountpickupgridview": {
         "title": "参保账户选择表格视图",
         "caption": "参保账户",
@@ -42,6 +51,15 @@
         "viewmodule": "SOC",
         "viewname": "SocAreaEditView",
         "viewtag": "4d2e62d3fd19327574be8b2c65337faf",
+        "memo": "系统自动添加"
+    },
+    "socruledetailpickupgridview": {
+        "title": "社保规则明细选择表格视图",
+        "caption": "社保规则明细",
+        "viewtype": "DEPICKUPGRIDVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocRuleDetailPickupGridView",
+        "viewtag": "508a97fa385e02a6c6eaa7cf720e0cec",
         "memo": "系统自动添加"
     },
     "socruledetaileditview": {
@@ -98,6 +116,15 @@
         "viewtag": "8d8165bf052eb9455044ec39843ef257",
         "memo": "系统自动添加"
     },
+    "socarchivesdetaileditview": {
+        "title": "社保档案明细编辑视图",
+        "caption": "社保档案明细",
+        "viewtype": "DEEDITVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocArchivesDetailEditView",
+        "viewtag": "8dbbef8d0ad1436fef1c3ba1ed40b05c",
+        "memo": "系统自动添加"
+    },
     "ormorgpickupview": {
         "title": "组织管理数据选择视图",
         "caption": "组织管理",
@@ -133,6 +160,15 @@
         "viewname": "SocTypeGridView",
         "viewtag": "a91ca0b2a35fc0bc1c22a613b0af0f04",
         "memo": ""
+    },
+    "socarchivesdetailgridview": {
+        "title": "社保档案明细表格视图",
+        "caption": "社保档案明细",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocArchivesDetailGridView",
+        "viewtag": "aa42ee6a3edbf6fc9c11a80fcac3d365",
+        "memo": "系统自动添加"
     },
     "socruledetailgridview": {
         "title": "社保规则明细表格视图",

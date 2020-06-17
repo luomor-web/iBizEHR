@@ -14,6 +14,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '3f57e5629bd977d652098834972af3a7',
+            viewmodule: 'SOC',
+            viewname: 'SocRuleDetailPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '508a97fa385e02a6c6eaa7cf720e0cec',
+            ],
+        },
+        {
             viewtag: '4b9ddc3407aa91875c0e66348644dc43',
             viewmodule: 'SOC',
             viewname: 'SocAccountPickupGridView',
@@ -30,6 +40,15 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '912c10028c229aaf79d7542c94931417',
+            ],
+        },
+        {
+            viewtag: '508a97fa385e02a6c6eaa7cf720e0cec',
+            viewmodule: 'SOC',
+            viewname: 'SocRuleDetailPickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
             ],
         },
         {
@@ -89,7 +108,17 @@ export const viewstate: any = {
             refviews: [
                 'c1fe999705dd1adaf588b0dd05baba85',
                 'f131b13e32b5195223f2af77eefa60a9',
+                'aa42ee6a3edbf6fc9c11a80fcac3d365',
                 'eb464b83d579a19440a0f65278573bb5',
+            ],
+        },
+        {
+            viewtag: '8dbbef8d0ad1436fef1c3ba1ed40b05c',
+            viewmodule: 'SOC',
+            viewname: 'SocArchivesDetailEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
             ],
         },
         {
@@ -130,6 +159,17 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '9787d3620f997b0d8f6bc4bcf0826837',
+            ],
+        },
+        {
+            viewtag: 'aa42ee6a3edbf6fc9c11a80fcac3d365',
+            viewmodule: 'SOC',
+            viewname: 'SocArchivesDetailGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '3f57e5629bd977d652098834972af3a7',
+                '8dbbef8d0ad1436fef1c3ba1ed40b05c',
             ],
         },
         {

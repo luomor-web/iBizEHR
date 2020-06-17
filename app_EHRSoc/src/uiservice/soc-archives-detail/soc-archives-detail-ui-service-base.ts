@@ -79,6 +79,8 @@ export default class SocArchivesDetailUIServiceBase extends UIService {
      * @memberof  SocArchivesDetailUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'socarchivesdetails'});
+        this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'socarchivesdetails'});
     }
 
     /**

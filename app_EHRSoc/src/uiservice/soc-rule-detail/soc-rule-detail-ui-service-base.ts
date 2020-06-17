@@ -79,6 +79,8 @@ export default class SocRuleDetailUIServiceBase extends UIService {
      * @memberof  SocRuleDetailUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'socruledetails'});
+        this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'socruledetails'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'socruledetails'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'socruledetails'});
     }

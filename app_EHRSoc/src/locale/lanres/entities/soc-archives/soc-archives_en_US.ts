@@ -34,6 +34,8 @@ export default {
 	main_form: {
 		details: {
 			group1: "社保档案基本信息", 
+			druipart1: "", 
+			grouppanel1: "分组面板", 
 			formpage1: "基本信息", 
 			srfupdatedate: "更新时间", 
 			srforikey: "", 
