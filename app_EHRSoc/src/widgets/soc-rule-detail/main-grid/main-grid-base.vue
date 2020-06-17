@@ -558,7 +558,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof Main
      */
-    public minorSortDir: string = '';
+    public minorSortDir: string = 'ASC';
 
     /**
      * 排序字段
@@ -566,7 +566,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @type {string}
      * @memberof Main
      */
-    public minorSortPSDEF: string = '';
+    public minorSortPSDEF: string = 'ordervalue';
 
     /**
      * 分页条数

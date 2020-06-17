@@ -6,31 +6,7 @@
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.socrule.main2_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.socrulename.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='socrulename' :itemRules="this.rules.socrulename" class='' :caption="$t('entities.socrule.main2_form.details.socrulename')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.socrulename.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.socrulename"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.socrulename.disabled" type='text'  style=""></input-box>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.nyear.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='nyear' :itemRules="this.rules.nyear" class='' :caption="$t('entities.socrule.main2_form.details.nyear')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nyear.error" :isEmptyCaption="false" labelPos="LEFT">
-    
- <dropdown-list 
-    v-model="data.nyear" 
-    :data="data" 
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{ }' 
-    :localParam ='{ }' 
-    :disabled="detailsModel.nyear.disabled"  
-    tag='EhrCodeList0115' 
-    codelistType='STATIC'
-    placeholder='请选择...' style="">
- </dropdown-list>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
+        <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.socrule.main2_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
     
 <app-picker 
@@ -54,6 +30,57 @@
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>
 
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.nyear.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
+    <app-form-item name='nyear' :itemRules="this.rules.nyear" class='' :caption="$t('entities.socrule.main2_form.details.nyear')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nyear.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+ <dropdown-list 
+    v-model="data.nyear" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :localContext ='{ }' 
+    :localParam ='{ }' 
+    :disabled="detailsModel.nyear.disabled"  
+    tag='EhrCodeList0115' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.socareaname.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
+    <app-form-item name='socareaname' :itemRules="this.rules.socareaname" class='' :caption="$t('entities.socrule.main2_form.details.socareaname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.socareaname.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-picker 
+  :formState="formState"
+  :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :localContext ='{ ORMORG:"%ormorgid%" }' 
+  :localParam ='{ n_ormorgid_eq:"%ormorgid%" }' 
+  :disabled="detailsModel.socareaname.disabled"
+  name='socareaname'
+  deMajorField='socareaname'
+  deKeyField='socarea'
+  :service="service"
+  :acParams="{ serviceName: 'SocAreaService', interfaceName: 'FetchDefault'}"
+  valueitem='socareaid' 
+  :value="data.socareaname" 
+  editortype="" 
+  :pickupView="{ viewname: 'soc-area-pickup-view', title: $t('entities.socarea.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'socareas', parameterName: 'socarea' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
+  style=""  
+  @formitemvaluechange="onFormItemValueChange">
+</app-picker>
+
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.socrulename.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
+    <app-form-item name='socrulename' :itemRules="this.rules.socrulename" class='' :caption="$t('entities.socrule.main2_form.details.socrulename')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.socrulename.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.socrulename"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.socrulename.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
 </i-col>
@@ -376,10 +403,12 @@ export default class Main2Base extends Vue implements ControlInterface {
         srfuf: null,
         srfdeid: null,
         srfsourcekey: null,
-        socrulename: null,
-        nyear: null,
         ormorgname: null,
+        nyear: null,
+        socareaname: null,
+        socrulename: null,
         memo: null,
+        socareaid: null,
         ormorgid: null,
         socruleid: null,
         socrule:null,
@@ -472,11 +501,11 @@ export default class Main2Base extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
-        socrulename: [
-            { type: 'string', message: '社保规则名称 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '社保规则名称 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '社保规则名称 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '社保规则名称 值不能为空', trigger: 'blur' },
+        ormorgname: [
+            { type: 'string', message: '组织 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '组织 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '组织 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '组织 值不能为空', trigger: 'blur' },
         ],
         nyear: [
             { type: 'number', message: '年度 值必须为数值类型', trigger: 'change' },
@@ -484,17 +513,29 @@ export default class Main2Base extends Vue implements ControlInterface {
             { required: true, type: 'number', message: '年度 值不能为空', trigger: 'change' },
             { required: true, type: 'number', message: '年度 值不能为空', trigger: 'blur' },
         ],
-        ormorgname: [
-            { type: 'string', message: '组织 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '组织 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '组织 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '组织 值不能为空', trigger: 'blur' },
+        socareaname: [
+            { type: 'string', message: '参保地 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '参保地 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '参保地 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '参保地 值不能为空', trigger: 'blur' },
+        ],
+        socrulename: [
+            { type: 'string', message: '社保规则名称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '社保规则名称 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '社保规则名称 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '社保规则名称 值不能为空', trigger: 'blur' },
         ],
         memo: [
             { type: 'string', message: '备注 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '备注 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '备注 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '备注 值不能为空', trigger: 'blur' },
+        ],
+        socareaid: [
+            { type: 'string', message: '参保地标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '参保地标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '参保地标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '参保地标识 值不能为空', trigger: 'blur' },
         ],
         ormorgid: [
             { type: 'string', message: '组织标识 值必须为字符串类型', trigger: 'change' },
@@ -537,13 +578,17 @@ export default class Main2Base extends Vue implements ControlInterface {
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        socrulename: new FormItemModel({ caption: '社保规则名称', detailType: 'FORMITEM', name: 'socrulename', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        ormorgname: new FormItemModel({ caption: '组织', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         nyear: new FormItemModel({ caption: '年度', detailType: 'FORMITEM', name: 'nyear', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        ormorgname: new FormItemModel({ caption: '组织', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        socareaname: new FormItemModel({ caption: '参保地', detailType: 'FORMITEM', name: 'socareaname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        socrulename: new FormItemModel({ caption: '社保规则名称', detailType: 'FORMITEM', name: 'socrulename', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         memo: new FormItemModel({ caption: '备注', detailType: 'FORMITEM', name: 'memo', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        socareaid: new FormItemModel({ caption: '参保地标识', detailType: 'FORMITEM', name: 'socareaid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         ormorgid: new FormItemModel({ caption: '组织标识', detailType: 'FORMITEM', name: 'ormorgid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -648,15 +693,15 @@ export default class Main2Base extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 socrulename 值
+     * 监控表单属性 ormorgname 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof Main2
      */
-    @Watch('data.socrulename')
-    onSocrulenameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'socrulename', newVal: newVal, oldVal: oldVal });
+    @Watch('data.ormorgname')
+    onOrmorgnameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'ormorgname', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -672,15 +717,27 @@ export default class Main2Base extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 ormorgname 值
+     * 监控表单属性 socareaname 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof Main2
      */
-    @Watch('data.ormorgname')
-    onOrmorgnameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'ormorgname', newVal: newVal, oldVal: oldVal });
+    @Watch('data.socareaname')
+    onSocareanameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'socareaname', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 socrulename 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2
+     */
+    @Watch('data.socrulename')
+    onSocrulenameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'socrulename', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -693,6 +750,18 @@ export default class Main2Base extends Vue implements ControlInterface {
     @Watch('data.memo')
     onMemoChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'memo', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 socareaid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2
+     */
+    @Watch('data.socareaid')
+    onSocareaidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'socareaid', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -728,6 +797,13 @@ export default class Main2Base extends Vue implements ControlInterface {
      * @memberof Main2
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
+        if (Object.is(name, 'ormorgid')) {
+            this.onFormItemValueChange({ name: 'socareaname', value: null });
+            this.onFormItemValueChange({ name: 'socareaid', value: null });
+        }
+        if (Object.is(name, 'ormorgid')) {
+            this.onFormItemValueChange({ name: 'socareaid', value: null });
+        }
     }
 
     /**
@@ -755,6 +831,8 @@ export default class Main2Base extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
+
+
 
 
 

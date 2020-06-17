@@ -472,7 +472,12 @@ export default class SocRuleDetailGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(tempContext,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(tempContext.socrule && true){
+            deResParameters = [
+            { pathName: 'socrules', parameterName: 'socrule' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'socruledetails', parameterName: 'socruledetail' },
             { pathName: 'editview', parameterName: 'editview' },
@@ -506,7 +511,12 @@ export default class SocRuleDetailGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(tempContext,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(tempContext.socrule && true){
+            deResParameters = [
+            { pathName: 'socrules', parameterName: 'socrule' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'socruledetails', parameterName: 'socruledetail' },
             { pathName: 'editview', parameterName: 'editview' },

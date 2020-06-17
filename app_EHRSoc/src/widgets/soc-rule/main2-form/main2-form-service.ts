@@ -3,6 +3,7 @@ import ControlService from '@/widgets/control-service';
 import SocRuleService from '@/service/soc-rule/soc-rule-service';
 import Main2Model from './main2-form-model';
 import OrmOrgService from '@/service/orm-org/orm-org-service';
+import SocAreaService from '@/service/soc-area/soc-area-service';
 
 
 /**
@@ -51,6 +52,14 @@ export default class Main2Service extends ControlService {
     public ormorgService: OrmOrgService = new OrmOrgService();
 
     /**
+     * 参保地服务对象
+     *
+     * @type {SocAreaService}
+     * @memberof Main2Service
+     */
+    public socareaService: SocAreaService = new SocAreaService();
+
+    /**
      * 处理数据
      *
      * @private
@@ -91,6 +100,9 @@ export default class Main2Service extends ControlService {
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
         if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchDefault')) {
             return this.doItems(this.ormorgService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
+        }
+        if (Object.is(serviceName, 'SocAreaService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.socareaService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'socareaid', 'socarea');
         }
 
         return Promise.reject([])

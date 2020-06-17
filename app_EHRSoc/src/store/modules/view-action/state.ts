@@ -33,6 +33,15 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '6d44b6e79bb6d6706990592cb59c9f32',
+            viewmodule: 'SOC',
+            viewname: 'SocAreaPickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
             viewtag: '6f4fb39cb25a702c89dc415245198608',
             viewmodule: 'SOC',
             viewname: 'SocRuleGridView',
@@ -109,6 +118,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                'f2ac208aee9be3a1cbe51f16b6af100e',
                 '912c10028c229aaf79d7542c94931417',
             ],
         },
@@ -139,7 +149,18 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                'f2ac208aee9be3a1cbe51f16b6af100e',
                 '912c10028c229aaf79d7542c94931417',
+            ],
+        },
+        {
+            viewtag: 'f2ac208aee9be3a1cbe51f16b6af100e',
+            viewmodule: 'SOC',
+            viewname: 'SocAreaPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '6d44b6e79bb6d6706990592cb59c9f32',
             ],
         },
         {

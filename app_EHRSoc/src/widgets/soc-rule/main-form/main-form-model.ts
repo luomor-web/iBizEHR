@@ -56,9 +56,9 @@ export default class MainModel {
         name: 'srfsourcekey',
       },
       {
-        name: 'socrulename',
-        prop: 'socrulename',
-        dataType: 'TEXT',
+        name: 'ormorgname',
+        prop: 'ormorgname',
+        dataType: 'PICKUPTEXT',
       },
       {
         name: 'nyear',
@@ -66,9 +66,14 @@ export default class MainModel {
         dataType: 'NSCODELIST',
       },
       {
-        name: 'ormorgname',
-        prop: 'ormorgname',
+        name: 'socareaname',
+        prop: 'socareaname',
         dataType: 'PICKUPTEXT',
+      },
+      {
+        name: 'socrulename',
+        prop: 'socrulename',
+        dataType: 'TEXT',
       },
       {
         name: 'memo',

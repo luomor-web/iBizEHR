@@ -21,6 +21,14 @@ export default {
 			caption: "参保地",
       title: '参保地编辑视图',
 		},
+		pickupgridview: {
+			caption: "参保地",
+      title: '参保地选择表格视图',
+		},
+		pickupview: {
+			caption: "参保地",
+      title: '参保地数据选择视图',
+		},
 	},
 	main_form: {
 		details: {

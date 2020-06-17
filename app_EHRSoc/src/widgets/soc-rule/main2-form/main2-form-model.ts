@@ -56,9 +56,9 @@ export default class Main2Model {
         name: 'srfsourcekey',
       },
       {
-        name: 'socrulename',
-        prop: 'socrulename',
-        dataType: 'TEXT',
+        name: 'ormorgname',
+        prop: 'ormorgname',
+        dataType: 'PICKUPTEXT',
       },
       {
         name: 'nyear',
@@ -66,14 +66,24 @@ export default class Main2Model {
         dataType: 'NSCODELIST',
       },
       {
-        name: 'ormorgname',
-        prop: 'ormorgname',
+        name: 'socareaname',
+        prop: 'socareaname',
         dataType: 'PICKUPTEXT',
+      },
+      {
+        name: 'socrulename',
+        prop: 'socrulename',
+        dataType: 'TEXT',
       },
       {
         name: 'memo',
         prop: 'memo',
         dataType: 'LONGTEXT_1000',
+      },
+      {
+        name: 'socareaid',
+        prop: 'socareaid',
+        dataType: 'PICKUP',
       },
       {
         name: 'ormorgid',

@@ -62,6 +62,7 @@ export default class SocRuleServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/socrules/${context.socrule}`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_socruledetails',JSON.stringify(res.data.socruledetails));
             return res;
 
     }
@@ -78,6 +79,7 @@ export default class SocRuleServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/socrules/getdraft`,isloading);
         res.data.socrule = data.socrule;
+            this.tempStorage.setItem(context.srfsessionkey+'_socruledetails',JSON.stringify(res.data.socruledetails));
         return res;
     }
 
@@ -92,6 +94,21 @@ export default class SocRuleServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let socruledetailsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_socruledetails'),'undefined')){
+            socruledetailsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_socruledetails') as any);
+            if(socruledetailsData && socruledetailsData.length && socruledetailsData.length > 0){
+                socruledetailsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.socruledetailid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.socruledetails = socruledetailsData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -101,6 +118,7 @@ export default class SocRuleServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/socrules`,data,isloading);
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_socruledetails',JSON.stringify(res.data.socruledetails));
         return res;
     }
 
@@ -115,8 +133,24 @@ export default class SocRuleServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let socruledetailsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_socruledetails'),'undefined')){
+            socruledetailsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_socruledetails') as any);
+            if(socruledetailsData && socruledetailsData.length && socruledetailsData.length > 0){
+                socruledetailsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.socruledetailid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.socruledetails = socruledetailsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/socrules/${context.socrule}`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_socruledetails',JSON.stringify(res.data.socruledetails));
             return res;
     }
 
@@ -131,8 +165,24 @@ export default class SocRuleServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
+        let socruledetailsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_socruledetails'),'undefined')){
+            socruledetailsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_socruledetails') as any);
+            if(socruledetailsData && socruledetailsData.length && socruledetailsData.length > 0){
+                socruledetailsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.socruledetailid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.socruledetails = socruledetailsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/socrules/${context.socrule}/save`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_socruledetails',JSON.stringify(res.data.socruledetails));
             return res;
     }
 

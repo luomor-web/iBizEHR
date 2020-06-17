@@ -44,6 +44,15 @@
         "viewtag": "59c055b21b497f790371732712f62a30",
         "memo": "系统自动添加"
     },
+    "socareapickupgridview": {
+        "title": "参保地选择表格视图",
+        "caption": "参保地",
+        "viewtype": "DEPICKUPGRIDVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocAreaPickupGridView",
+        "viewtag": "6d44b6e79bb6d6706990592cb59c9f32",
+        "memo": "系统自动添加"
+    },
     "socrulegridview": {
         "title": "社保规则表格视图",
         "caption": "社保规则",
@@ -142,6 +151,15 @@
         "viewname": "SocRuleQuickEditView",
         "viewtag": "f171820c870830bd35bd19ffce2873ac",
         "memo": ""
+    },
+    "socareapickupview": {
+        "title": "参保地数据选择视图",
+        "caption": "参保地",
+        "viewtype": "DEPICKUPVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocAreaPickupView",
+        "viewtag": "f2ac208aee9be3a1cbe51f16b6af100e",
+        "memo": "系统自动添加"
     },
     "index": {
         "title": "EHR—社保管理",

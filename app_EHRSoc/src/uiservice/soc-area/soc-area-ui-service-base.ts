@@ -81,6 +81,8 @@ export default class SocAreaUIServiceBase extends UIService {
     public initViewMap(){
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'socareas'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'socareas'});
+        this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'socareas'});
+        this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'socareas'});
     }
 
     /**

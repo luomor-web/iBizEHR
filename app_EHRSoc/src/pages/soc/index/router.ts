@@ -36,6 +36,35 @@ const router = new Router({
             component: () => import('@pages/soc/index/index.vue'),
             children: [
                 {
+                    path: 'socareas/:socarea?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.socarea.views.pickupview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'socareas', parameterName: 'socarea' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-area-pickup-view/soc-area-pickup-view.vue'),
+                },
+                {
+                    path: 'socrules/:socrule?/socruledetails/:socruledetail?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.socruledetail.views.editview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'socrules', parameterName: 'socrule' },
+                            { pathName: 'socruledetails', parameterName: 'socruledetail' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-rule-detail-edit-view/soc-rule-detail-edit-view.vue'),
+                },
+                {
                     path: 'socruledetails/:socruledetail?/editview/:editview?',
                     meta: {
                         caption: 'entities.socruledetail.views.editview.title',
@@ -132,6 +161,35 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/soc/soc-type-grid-view/soc-type-grid-view.vue'),
+                },
+                {
+                    path: 'socareas/:socarea?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.socarea.views.pickupgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'socareas', parameterName: 'socarea' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-area-pickup-grid-view/soc-area-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'socrules/:socrule?/socruledetails/:socruledetail?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.socruledetail.views.gridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'socrules', parameterName: 'socrule' },
+                            { pathName: 'socruledetails', parameterName: 'socruledetail' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-rule-detail-grid-view/soc-rule-detail-grid-view.vue'),
                 },
                 {
                     path: 'socruledetails/:socruledetail?/gridview/:gridview?',
@@ -261,6 +319,20 @@ const router = new Router({
         component: () => import('@pages/soc/soc-area-edit-view/soc-area-edit-view.vue'),
     },
     {
+        path: '/socrules/:socrule?/socruledetails/:socruledetail?/editview/:editview?',
+        meta: {
+            caption: 'entities.socruledetail.views.editview.title',
+            info:'',
+            parameters: [
+                { pathName: 'socrules', parameterName: 'socrule' },
+                { pathName: 'socruledetails', parameterName: 'socruledetail' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-rule-detail-edit-view/soc-rule-detail-edit-view.vue'),
+    },
+    {
         path: '/socruledetails/:socruledetail?/editview/:editview?',
         meta: {
             caption: 'entities.socruledetail.views.editview.title',
@@ -272,6 +344,19 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/soc/soc-rule-detail-edit-view/soc-rule-detail-edit-view.vue'),
+    },
+    {
+        path: '/socareas/:socarea?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.socarea.views.pickupgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'socareas', parameterName: 'socarea' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-area-pickup-grid-view/soc-area-pickup-grid-view.vue'),
     },
     {
         path: '/socrules/:socrule?/gridview/:gridview?',
@@ -352,6 +437,20 @@ const router = new Router({
         component: () => import('@pages/soc/soc-type-grid-view/soc-type-grid-view.vue'),
     },
     {
+        path: '/socrules/:socrule?/socruledetails/:socruledetail?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.socruledetail.views.gridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'socrules', parameterName: 'socrule' },
+                { pathName: 'socruledetails', parameterName: 'socruledetail' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-rule-detail-grid-view/soc-rule-detail-grid-view.vue'),
+    },
+    {
         path: '/socruledetails/:socruledetail?/gridview/:gridview?',
         meta: {
             caption: 'entities.socruledetail.views.gridview.title',
@@ -415,6 +514,19 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/soc/soc-rule-quick-edit-view/soc-rule-quick-edit-view.vue'),
+    },
+    {
+        path: '/socareas/:socarea?/pickupview/:pickupview?',
+        meta: {
+            caption: 'entities.socarea.views.pickupview.title',
+            info:'',
+            parameters: [
+                { pathName: 'socareas', parameterName: 'socarea' },
+                { pathName: 'pickupview', parameterName: 'pickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-area-pickup-view/soc-area-pickup-view.vue'),
     },
         ...globalRoutes,
         {

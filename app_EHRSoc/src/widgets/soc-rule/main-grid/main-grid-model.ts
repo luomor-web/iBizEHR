@@ -27,6 +27,11 @@ export default class MainModel {
     }else{
 		  return [
         {
+          name: 'socareaid',
+          prop: 'socareaid',
+          dataType: 'PICKUP',
+        },
+        {
           name: 'memo',
           prop: 'memo',
           dataType: 'LONGTEXT_1000',
