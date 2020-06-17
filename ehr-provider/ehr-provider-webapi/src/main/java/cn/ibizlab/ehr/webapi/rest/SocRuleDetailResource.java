@@ -158,5 +158,137 @@ public class SocRuleDetailResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(socruledetailMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @ApiOperation(value = "根据社保规则获取社保规则明细草稿", tags = {"社保规则明细" },  notes = "根据社保规则获取社保规则明细草稿")
+    @RequestMapping(method = RequestMethod.GET, value = "/socrules/{socrule_id}/socruledetails/getdraft")
+    public ResponseEntity<SocRuleDetailDTO> getDraftBySocRule(@PathVariable("socrule_id") String socrule_id) {
+        SocRuleDetail domain = new SocRuleDetail();
+        domain.setSocruleid(socrule_id);
+        return ResponseEntity.status(HttpStatus.OK).body(socruledetailMapping.toDto(socruledetailService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasPermission(this.socruledetailService.get(#socruledetail_id),'ehr-SocRuleDetail-Update')")
+    @ApiOperation(value = "根据社保规则更新社保规则明细", tags = {"社保规则明细" },  notes = "根据社保规则更新社保规则明细")
+	@RequestMapping(method = RequestMethod.PUT, value = "/socrules/{socrule_id}/socruledetails/{socruledetail_id}")
+    @Transactional
+    public ResponseEntity<SocRuleDetailDTO> updateBySocRule(@PathVariable("socrule_id") String socrule_id, @PathVariable("socruledetail_id") String socruledetail_id, @RequestBody SocRuleDetailDTO socruledetaildto) {
+        SocRuleDetail domain = socruledetailMapping.toDomain(socruledetaildto);
+        domain.setSocruleid(socrule_id);
+        domain.setSocruledetailid(socruledetail_id);
+		socruledetailService.update(domain);
+        SocRuleDetailDTO dto = socruledetailMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.socruledetailService.getSocruledetailByEntities(this.socruledetailMapping.toDomain(#socruledetaildtos)),'ehr-SocRuleDetail-Update')")
+    @ApiOperation(value = "根据社保规则批量更新社保规则明细", tags = {"社保规则明细" },  notes = "根据社保规则批量更新社保规则明细")
+	@RequestMapping(method = RequestMethod.PUT, value = "/socrules/{socrule_id}/socruledetails/batch")
+    public ResponseEntity<Boolean> updateBatchBySocRule(@PathVariable("socrule_id") String socrule_id, @RequestBody List<SocRuleDetailDTO> socruledetaildtos) {
+        List<SocRuleDetail> domainlist=socruledetailMapping.toDomain(socruledetaildtos);
+        for(SocRuleDetail domain:domainlist){
+            domain.setSocruleid(socrule_id);
+        }
+        socruledetailService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PostAuthorize("hasPermission(this.socruledetailMapping.toDomain(returnObject.body),'ehr-SocRuleDetail-Get')")
+    @ApiOperation(value = "根据社保规则获取社保规则明细", tags = {"社保规则明细" },  notes = "根据社保规则获取社保规则明细")
+	@RequestMapping(method = RequestMethod.GET, value = "/socrules/{socrule_id}/socruledetails/{socruledetail_id}")
+    public ResponseEntity<SocRuleDetailDTO> getBySocRule(@PathVariable("socrule_id") String socrule_id, @PathVariable("socruledetail_id") String socruledetail_id) {
+        SocRuleDetail domain = socruledetailService.get(socruledetail_id);
+        SocRuleDetailDTO dto = socruledetailMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.socruledetailMapping.toDomain(#socruledetaildto),'ehr-SocRuleDetail-Create')")
+    @ApiOperation(value = "根据社保规则建立社保规则明细", tags = {"社保规则明细" },  notes = "根据社保规则建立社保规则明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/socrules/{socrule_id}/socruledetails")
+    @Transactional
+    public ResponseEntity<SocRuleDetailDTO> createBySocRule(@PathVariable("socrule_id") String socrule_id, @RequestBody SocRuleDetailDTO socruledetaildto) {
+        SocRuleDetail domain = socruledetailMapping.toDomain(socruledetaildto);
+        domain.setSocruleid(socrule_id);
+		socruledetailService.create(domain);
+        SocRuleDetailDTO dto = socruledetailMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.socruledetailMapping.toDomain(#socruledetaildtos),'ehr-SocRuleDetail-Create')")
+    @ApiOperation(value = "根据社保规则批量建立社保规则明细", tags = {"社保规则明细" },  notes = "根据社保规则批量建立社保规则明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/socrules/{socrule_id}/socruledetails/batch")
+    public ResponseEntity<Boolean> createBatchBySocRule(@PathVariable("socrule_id") String socrule_id, @RequestBody List<SocRuleDetailDTO> socruledetaildtos) {
+        List<SocRuleDetail> domainlist=socruledetailMapping.toDomain(socruledetaildtos);
+        for(SocRuleDetail domain:domainlist){
+            domain.setSocruleid(socrule_id);
+        }
+        socruledetailService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.socruledetailMapping.toDomain(#socruledetaildto),'ehr-SocRuleDetail-Save')")
+    @ApiOperation(value = "根据社保规则保存社保规则明细", tags = {"社保规则明细" },  notes = "根据社保规则保存社保规则明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/socrules/{socrule_id}/socruledetails/save")
+    public ResponseEntity<Boolean> saveBySocRule(@PathVariable("socrule_id") String socrule_id, @RequestBody SocRuleDetailDTO socruledetaildto) {
+        SocRuleDetail domain = socruledetailMapping.toDomain(socruledetaildto);
+        domain.setSocruleid(socrule_id);
+        return ResponseEntity.status(HttpStatus.OK).body(socruledetailService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.socruledetailMapping.toDomain(#socruledetaildtos),'ehr-SocRuleDetail-Save')")
+    @ApiOperation(value = "根据社保规则批量保存社保规则明细", tags = {"社保规则明细" },  notes = "根据社保规则批量保存社保规则明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/socrules/{socrule_id}/socruledetails/savebatch")
+    public ResponseEntity<Boolean> saveBatchBySocRule(@PathVariable("socrule_id") String socrule_id, @RequestBody List<SocRuleDetailDTO> socruledetaildtos) {
+        List<SocRuleDetail> domainlist=socruledetailMapping.toDomain(socruledetaildtos);
+        for(SocRuleDetail domain:domainlist){
+             domain.setSocruleid(socrule_id);
+        }
+        socruledetailService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.socruledetailService.get(#socruledetail_id),'ehr-SocRuleDetail-Remove')")
+    @ApiOperation(value = "根据社保规则删除社保规则明细", tags = {"社保规则明细" },  notes = "根据社保规则删除社保规则明细")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/socrules/{socrule_id}/socruledetails/{socruledetail_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeBySocRule(@PathVariable("socrule_id") String socrule_id, @PathVariable("socruledetail_id") String socruledetail_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(socruledetailService.remove(socruledetail_id));
+    }
+
+    @PreAuthorize("hasPermission(this.socruledetailService.getSocruledetailByIds(#ids),'ehr-SocRuleDetail-Remove')")
+    @ApiOperation(value = "根据社保规则批量删除社保规则明细", tags = {"社保规则明细" },  notes = "根据社保规则批量删除社保规则明细")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/socrules/{socrule_id}/socruledetails/batch")
+    public ResponseEntity<Boolean> removeBatchBySocRule(@RequestBody List<String> ids) {
+        socruledetailService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "根据社保规则检查社保规则明细", tags = {"社保规则明细" },  notes = "根据社保规则检查社保规则明细")
+	@RequestMapping(method = RequestMethod.POST, value = "/socrules/{socrule_id}/socruledetails/checkkey")
+    public ResponseEntity<Boolean> checkKeyBySocRule(@PathVariable("socrule_id") String socrule_id, @RequestBody SocRuleDetailDTO socruledetaildto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(socruledetailService.checkKey(socruledetailMapping.toDomain(socruledetaildto)));
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocRuleDetail-Default-all')")
+	@ApiOperation(value = "根据社保规则获取DEFAULT", tags = {"社保规则明细" } ,notes = "根据社保规则获取DEFAULT")
+    @RequestMapping(method= RequestMethod.GET , value="/socrules/{socrule_id}/socruledetails/fetchdefault")
+	public ResponseEntity<List<SocRuleDetailDTO>> fetchSocRuleDetailDefaultBySocRule(@PathVariable("socrule_id") String socrule_id,SocRuleDetailSearchContext context) {
+        context.setN_socruleid_eq(socrule_id);
+        Page<SocRuleDetail> domains = socruledetailService.searchDefault(context) ;
+        List<SocRuleDetailDTO> list = socruledetailMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocRuleDetail-Default-all')")
+	@ApiOperation(value = "根据社保规则查询DEFAULT", tags = {"社保规则明细" } ,notes = "根据社保规则查询DEFAULT")
+    @RequestMapping(method= RequestMethod.POST , value="/socrules/{socrule_id}/socruledetails/searchdefault")
+	public ResponseEntity<Page<SocRuleDetailDTO>> searchSocRuleDetailDefaultBySocRule(@PathVariable("socrule_id") String socrule_id, @RequestBody SocRuleDetailSearchContext context) {
+        context.setN_socruleid_eq(socrule_id);
+        Page<SocRuleDetail> domains = socruledetailService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(socruledetailMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
 }
 

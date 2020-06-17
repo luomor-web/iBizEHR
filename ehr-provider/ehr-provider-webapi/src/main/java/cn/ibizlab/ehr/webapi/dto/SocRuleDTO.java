@@ -113,6 +113,22 @@ public class SocRuleDTO extends DTOBase implements Serializable {
     @JsonProperty("memo")
     private String memo;
 
+    /**
+     * 属性 [SOCAREAID]
+     *
+     */
+    @JSONField(name = "socareaid")
+    @JsonProperty("socareaid")
+    private String socareaid;
+
+    /**
+     * 属性 [SOCAREANAME]
+     *
+     */
+    @JSONField(name = "socareaname")
+    @JsonProperty("socareaname")
+    private String socareaname;
+
 
     /**
      * 设置 [SOCRULENAME]
@@ -144,6 +160,14 @@ public class SocRuleDTO extends DTOBase implements Serializable {
     public void setMemo(String  memo){
         this.memo = memo ;
         this.modify("memo",memo);
+    }
+
+    /**
+     * 设置 [SOCAREAID]
+     */
+    public void setSocareaid(String  socareaid){
+        this.socareaid = socareaid ;
+        this.modify("socareaid",socareaid);
     }
 
 

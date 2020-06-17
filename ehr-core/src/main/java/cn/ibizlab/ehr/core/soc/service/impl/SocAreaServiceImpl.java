@@ -46,6 +46,9 @@ public class SocAreaServiceImpl extends ServiceImpl<SocAreaMapper, SocArea> impl
 
     @Autowired
     @Lazy
+    private cn.ibizlab.ehr.core.soc.service.ISocRuleService socruleService;
+    @Autowired
+    @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
 
     private int batchSize = 500;

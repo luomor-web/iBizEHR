@@ -125,6 +125,20 @@ public class SocRule extends EntityMP implements Serializable {
     @JSONField(name = "memo")
     @JsonProperty("memo")
     private String memo;
+    /**
+     * 参保地标识
+     */
+    @TableField(value = "socareaid")
+    @JSONField(name = "socareaid")
+    @JsonProperty("socareaid")
+    private String socareaid;
+    /**
+     * 参保地
+     */
+    @TableField(exist = false)
+    @JSONField(name = "socareaname")
+    @JsonProperty("socareaname")
+    private String socareaname;
 
     /**
      * 
@@ -133,6 +147,14 @@ public class SocRule extends EntityMP implements Serializable {
     @JSONField(serialize = false)
     @TableField(exist = false)
     private cn.ibizlab.ehr.core.orm.domain.OrmOrg ormorg;
+
+    /**
+     * 参保地
+     */
+    @JsonIgnore
+    @JSONField(serialize = false)
+    @TableField(exist = false)
+    private cn.ibizlab.ehr.core.soc.domain.SocArea socarea;
 
 
 
@@ -166,6 +188,14 @@ public class SocRule extends EntityMP implements Serializable {
     public void setMemo(String memo){
         this.memo = memo ;
         this.modify("memo",memo);
+    }
+
+    /**
+     * 设置 [参保地标识]
+     */
+    public void setSocareaid(String socareaid){
+        this.socareaid = socareaid ;
+        this.modify("socareaid",socareaid);
     }
 
 

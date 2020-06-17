@@ -62,6 +62,27 @@ public class SocRuleSearchContext extends QueryWrapperContext<SocRule> {
             this.getSearchCond().eq("nyear", n_nyear_eq);
         }
     }
+	private String n_socareaid_eq;//[参保地标识]
+	public void setN_socareaid_eq(String n_socareaid_eq) {
+        this.n_socareaid_eq = n_socareaid_eq;
+        if(!ObjectUtils.isEmpty(this.n_socareaid_eq)){
+            this.getSearchCond().eq("socareaid", n_socareaid_eq);
+        }
+    }
+	private String n_socareaname_eq;//[参保地]
+	public void setN_socareaname_eq(String n_socareaname_eq) {
+        this.n_socareaname_eq = n_socareaname_eq;
+        if(!ObjectUtils.isEmpty(this.n_socareaname_eq)){
+            this.getSearchCond().eq("socareaname", n_socareaname_eq);
+        }
+    }
+	private String n_socareaname_like;//[参保地]
+	public void setN_socareaname_like(String n_socareaname_like) {
+        this.n_socareaname_like = n_socareaname_like;
+        if(!ObjectUtils.isEmpty(this.n_socareaname_like)){
+            this.getSearchCond().like("socareaname", n_socareaname_like);
+        }
+    }
 
     /**
 	 * 启用快速搜索

@@ -64,4 +64,6 @@ public interface SocRuleMapper extends BaseMapper<SocRule>{
 
     List<SocRule> selectByOrmorgid(@Param("orgid") Serializable orgid) ;
 
+    List<SocRule> selectBySocareaid(@Param("socareaid") Serializable socareaid) ;
+
 }

@@ -50,6 +50,9 @@ public class SocRuleServiceImpl extends ServiceImpl<SocRuleMapper, SocRule> impl
     @Autowired
     @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.soc.service.ISocAreaService socareaService;
 
     private int batchSize = 500;
 
@@ -164,6 +167,16 @@ public class SocRuleServiceImpl extends ServiceImpl<SocRuleMapper, SocRule> impl
         this.remove(new QueryWrapper<SocRule>().eq("ormorgid",orgid));
     }
 
+	@Override
+    public List<SocRule> selectBySocareaid(String socareaid) {
+        return baseMapper.selectBySocareaid(socareaid);
+    }
+
+    @Override
+    public void removeBySocareaid(String socareaid) {
+        this.remove(new QueryWrapper<SocRule>().eq("socareaid",socareaid));
+    }
+
 
     /**
      * 查询集合 DEFAULT
@@ -190,6 +203,16 @@ public class SocRuleServiceImpl extends ServiceImpl<SocRuleMapper, SocRule> impl
                 ormorg=majorEntity;
             }
             et.setOrmorgname(ormorg.getOrgname());
+        }
+        //实体关系[DER1N_SOCRULE_SOCAREA_SOCAREAID]
+        if(!ObjectUtils.isEmpty(et.getSocareaid())){
+            cn.ibizlab.ehr.core.soc.domain.SocArea socarea=et.getSocarea();
+            if(ObjectUtils.isEmpty(socarea)){
+                cn.ibizlab.ehr.core.soc.domain.SocArea majorEntity=socareaService.get(et.getSocareaid());
+                et.setSocarea(majorEntity);
+                socarea=majorEntity;
+            }
+            et.setSocareaname(socarea.getSocareaname());
         }
     }
 
