@@ -238,19 +238,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '31b65d9cc7b0429b0a064f9867073eb8',
-            viewmodule: 'TRM',
-            viewname: 'TrmTrainAgencyEditView9_EditMode',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                'e034c6c5752a1ed214cf88a568d623fa',
-                '768cea21276a67cf21ea1448b8e0a9ea',
-                'd44f8f7d7a1c369954fa0d196b28c1cc',
-                '9fe562265b37611be2479c3426af87b1',
-            ],
-        },
-        {
             viewtag: '35c5d003a2e5573fdf3a5f4de80db878',
             viewmodule: 'TRM',
             viewname: 'TrmStayEditView',
@@ -288,7 +275,7 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'e3e00a371d740be659600f4165e2d737',
-                '31b65d9cc7b0429b0a064f9867073eb8',
+                '11da72e188942aaf631c0a7b419499fb',
             ],
         },
         {
@@ -480,6 +467,7 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'e034c6c5752a1ed214cf88a568d623fa',
+                '11da72e188942aaf631c0a7b419499fb',
             ],
         },
         {
@@ -841,7 +829,6 @@ export const viewstate: any = {
             refviews: [
                 'e3e00a371d740be659600f4165e2d737',
                 '11da72e188942aaf631c0a7b419499fb',
-                '31b65d9cc7b0429b0a064f9867073eb8',
             ],
         },
         {

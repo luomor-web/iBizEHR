@@ -9,7 +9,6 @@ export const PageComponents = {
         Vue.component('trm-train-buapply-grid-view', () => import('@pages/trm/trm-train-buapply-grid-view/trm-train-buapply-grid-view.vue'));
         Vue.component('orm-org-pickup-view', () => import('@pages/orm/orm-org-pickup-view/orm-org-pickup-view.vue'));
         Vue.component('trm-hmatser-pickup-grid-view', () => import('@pages/trm/trm-hmatser-pickup-grid-view/trm-hmatser-pickup-grid-view.vue'));
-        Vue.component('trm-train-agency-edit-view9-edit-mode', () => import('@pages/trm/trm-train-agency-edit-view9-edit-mode/trm-train-agency-edit-view9-edit-mode.vue'));
         Vue.component('trm-train-planterm-pickup-grid-view', () => import('@pages/trm/trm-train-planterm-pickup-grid-view/trm-train-planterm-pickup-grid-view.vue'));
         Vue.component('pim-person-pickup-view', () => import('@pages/pim/pim-person-pickup-view/pim-person-pickup-view.vue'));
         Vue.component('trm-train-plan-edit-view', () => import('@pages/trm/trm-train-plan-edit-view/trm-train-plan-edit-view.vue'));

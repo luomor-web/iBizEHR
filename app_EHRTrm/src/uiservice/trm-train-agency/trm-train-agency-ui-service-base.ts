@@ -80,7 +80,6 @@ export default class TrmTrainAgencyUIServiceBase extends UIService {
      */  
     public initViewMap(){
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'trmtrainagencies'});
-        this.allViewMap.set(':',{viewname:'editview9_editmode',srfappde:'trmtrainagencies'});
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'trmtrainagencies'});
         this.allViewMap.set('MPICKUPVIEW:',{viewname:'mpickupview',srfappde:'trmtrainagencies'});
         this.allViewMap.set(':',{viewname:'editview9',srfappde:'trmtrainagencies'});
@@ -220,10 +219,10 @@ export default class TrmTrainAgencyUIServiceBase extends UIService {
                 });
             }
             const view: any = {
-                viewname: 'trm-train-agency-edit-view9-edit-mode', 
+                viewname: 'trm-train-agency-edit-view', 
                 height: 750, 
                 width: 0,  
-                title: actionContext.$t('entities.trmtrainagency.views.editview9_editmode.title'),
+                title: actionContext.$t('entities.trmtrainagency.views.editview.title'),
             };
             openPopupModal(view, data);
     }

@@ -213,20 +213,6 @@ const router = new Router({
                     component: () => import('@pages/trm/trm-hmatser-pickup-grid-view/trm-hmatser-pickup-grid-view.vue'),
                 },
                 {
-                    path: 'trmtrainagencies/:trmtrainagency?/editview9_editmode/:editview9_editmode?',
-                    meta: {
-                        caption: 'entities.trmtrainagency.views.editview9_editmode.title',
-                        info:'',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
-                            { pathName: 'editview9_editmode', parameterName: 'editview9_editmode' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/trm/trm-train-agency-edit-view9-edit-mode/trm-train-agency-edit-view9-edit-mode.vue'),
-                },
-                {
                     path: 'trmtrainplanterms/:trmtrainplanterm?/pickupgridview/:pickupgridview?',
                     meta: {
                         caption: 'entities.trmtrainplanterm.views.pickupgridview.title',
@@ -2529,19 +2515,6 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-depart-xqhzgrid-view/trm-depart-xqhzgrid-view.vue'),
-    },
-    {
-        path: '/trmtrainagencies/:trmtrainagency?/editview9_editmode/:editview9_editmode?',
-        meta: {
-            caption: 'entities.trmtrainagency.views.editview9_editmode.title',
-            info:'',
-            parameters: [
-                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
-                { pathName: 'editview9_editmode', parameterName: 'editview9_editmode' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/trm/trm-train-agency-edit-view9-edit-mode/trm-train-agency-edit-view9-edit-mode.vue'),
     },
     {
         path: '/trmstays/:trmstay?/editview/:editview?',

@@ -48,10 +48,6 @@ export default {
 			caption: "培训机构",
       title: '培训机构',
 		},
-		editview9_editmode: {
-			caption: "培训机构",
-      title: '培训机构',
-		},
 		pickupgridview: {
 			caption: "培训机构",
       title: '培训机构选择表格视图',
@@ -75,47 +71,6 @@ export default {
 		tabexpview: {
 			caption: "培训机构相关",
       title: '培训机构相关',
-		},
-	},
-	main2_form: {
-		details: {
-			group1: "基本信息", 
-			grouppanel1: "开票信息", 
-			grouppanel3: "简介", 
-			grouppanel4: "评价", 
-			formpage1: "基本信息", 
-			srfupdatedate: "更新时间", 
-			srforikey: "", 
-			srfkey: "培训机构标识", 
-			srfmajortext: "培训机构名称", 
-			srftempmode: "", 
-			srfuf: "", 
-			srfdeid: "", 
-			srfsourcekey: "", 
-			trmtrainagencyname: "机构名称", 
-			jglx: "机构类型", 
-			jgdj: "机构等级", 
-			jglb: "机构性质", 
-			trmtrainagencyname2: "上级机构", 
-			sfgx: "是否共享", 
-			pimpersonname: "联系人", 
-			lxdh: "联系电话", 
-			ormorgname: "所属单位", 
-			zcxx: "注册信息", 
-			kctxfw: "模块范围", 
-			kpmc: "开票名称", 
-			kplx: "开票类型", 
-			nsrsbh: "纳税人识别号", 
-			khh: "开户行", 
-			khhzh: "开户行账号", 
-			kpr: "开票人", 
-			kprdh: "电话", 
-			kpdz: "地址", 
-			jj: "", 
-			pj: "", 
-			trmtrainagencyid: "培训机构标识", 
-		},
-		uiactions: {
 		},
 	},
 	main_form: {
@@ -162,6 +117,47 @@ export default {
 		uiactions: {
 		},
 	},
+	main2_form: {
+		details: {
+			group1: "基本信息", 
+			grouppanel1: "开票信息", 
+			grouppanel3: "简介", 
+			grouppanel4: "评价", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "培训机构标识", 
+			srfmajortext: "培训机构名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			trmtrainagencyname: "机构名称", 
+			jglx: "机构类型", 
+			jgdj: "机构等级", 
+			jglb: "机构性质", 
+			trmtrainagencyname2: "上级机构", 
+			sfgx: "是否共享", 
+			pimpersonname: "联系人", 
+			lxdh: "联系电话", 
+			ormorgname: "所属单位", 
+			zcxx: "注册信息", 
+			kctxfw: "模块范围", 
+			kpmc: "开票名称", 
+			kplx: "开票类型", 
+			nsrsbh: "纳税人识别号", 
+			khh: "开户行", 
+			khhzh: "开户行账号", 
+			kpr: "开票人", 
+			kprdh: "电话", 
+			kpdz: "地址", 
+			jj: "", 
+			pj: "", 
+			trmtrainagencyid: "培训机构标识", 
+		},
+		uiactions: {
+		},
+	},
 	main_grid: {
 		columns: {
 			uagridcolumn1: "操作",
@@ -192,22 +188,6 @@ export default {
 		uiactions: {
 		},
 	},
-	editview9toolbar_toolbar: {
-		deuiaction2: {
-			caption: "编辑",
-			tip: "编辑",
-		},
-	},
-	editview9_editmodetoolbar_toolbar: {
-		tbitem3: {
-			caption: "Save",
-			tip: "Save",
-		},
-		tbitem5: {
-			caption: "Save And Close",
-			tip: "Save And Close Window",
-		},
-	},
 	editviewtoolbar_toolbar: {
 		tbitem3: {
 			caption: "Save",
@@ -216,6 +196,16 @@ export default {
 		tbitem5: {
 			caption: "Save And Close",
 			tip: "Save And Close Window",
+		},
+	},
+	editview9toolbar_toolbar: {
+		tbitem1_openeditview_sep: {
+			caption: "",
+			tip: "",
+		},
+		tbitem1_openeditview: {
+			caption: "编辑",
+			tip: "编辑",
 		},
 	},
 	gridviewtoolbar_toolbar: {
