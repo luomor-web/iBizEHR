@@ -207,6 +207,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "TrmCourseSystemWMXGridView",
             "viewtag": "31455abfde9592048b2a5f662e61fd5f"
         },
+        "trmtrainagencyeditview9_editmode": {
+            "title": "培训机构",
+            "caption": "培训机构",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "TRM",
+            "viewname": "TrmTrainAgencyEditView9_EditMode",
+            "viewtag": "31b65d9cc7b0429b0a064f9867073eb8"
+        },
         "trmstayeditview": {
             "title": "培训住宿编辑视图",
             "caption": "培训住宿",
@@ -1008,7 +1016,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "fbf4a99e0789e008c06c97d2d9c872ef"
         },
         "trmtrainaddresseditview": {
-            "title": "培训场地编辑视图",
+            "title": "培训场地",
             "caption": "培训场地",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",

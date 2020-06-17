@@ -279,6 +279,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '内部',
                 "data":"",
                 "codename":"Item_10",
+                "color": "rgba(0, 115, 255, 1)",
                 value: '10',
                 
                 disabled: false,
@@ -289,6 +290,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '外部',
                 "data":"",
                 "codename":"Item_20",
+                "color": "rgba(242, 0, 255, 1)",
                 value: '20',
                 
                 disabled: false,

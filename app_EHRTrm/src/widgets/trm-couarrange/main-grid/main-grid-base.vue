@@ -52,7 +52,14 @@
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.trmtrainagencyname}}</span>
+                        <app-column-link deKeyField='trmtrainagency' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'trm-train-agency-edit-view9', height: 750,width: 0,title: $t('entities.trmtrainagency.views.editview9.title'),placement: 'POPUPMODAL', isRedirectView: false,deResParameters: [
+            ]
+            ,parameters: [
+            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+            { pathName: 'editview9', parameterName: 'editview9' }
+            ]}" valueitem="trmtrainagencyid">
+                            <span>{{row.trmtrainagencyname}}</span>
+                        </app-column-link >
                     </template>
                 </el-table-column>
             </template>

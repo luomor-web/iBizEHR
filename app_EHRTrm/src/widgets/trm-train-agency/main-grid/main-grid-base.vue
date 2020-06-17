@@ -50,19 +50,26 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('trmtrainagencyname')">
-                <el-table-column show-overflow-tooltip :prop="'trmtrainagencyname'" :label="$t('entities.trmtrainagency.main_grid.columns.trmtrainagencyname')" :width="200"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'trmtrainagencyname'" :label="$t('entities.trmtrainagency.main_grid.columns.trmtrainagencyname')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainagency.main_grid.columns.trmtrainagencyname')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.trmtrainagencyname}}</span>
+                        <app-column-link deKeyField='trmtrainagency' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'trm-train-agency-edit-view9', height: 750,width: 0,title: $t('entities.trmtrainagency.views.editview9.title'),placement: 'POPUPMODAL', isRedirectView: false,deResParameters: [
+            ]
+            ,parameters: [
+            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+            { pathName: 'editview9', parameterName: 'editview9' }
+            ]}" valueitem="srfkey">
+                            <span>{{row.trmtrainagencyname}}</span>
+                        </app-column-link >
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jglx')">
-                <el-table-column show-overflow-tooltip :prop="'jglx'" :label="$t('entities.trmtrainagency.main_grid.columns.jglx')" :width="130"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jglx'" :label="$t('entities.trmtrainagency.main_grid.columns.jglx')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainagency.main_grid.columns.jglx')}}
@@ -76,7 +83,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jglb')">
-                <el-table-column show-overflow-tooltip :prop="'jglb'" :label="$t('entities.trmtrainagency.main_grid.columns.jglb')" :width="130"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jglb'" :label="$t('entities.trmtrainagency.main_grid.columns.jglb')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainagency.main_grid.columns.jglb')}}
@@ -90,19 +97,26 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('trmtrainagencyname2')">
-                <el-table-column show-overflow-tooltip :prop="'trmtrainagencyname2'" :label="$t('entities.trmtrainagency.main_grid.columns.trmtrainagencyname2')" :width="200"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'trmtrainagencyname2'" :label="$t('entities.trmtrainagency.main_grid.columns.trmtrainagencyname2')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainagency.main_grid.columns.trmtrainagencyname2')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.trmtrainagencyname2}}</span>
+                        <app-column-link deKeyField='trmtrainagency' :context="JSON.parse(JSON.stringify(context))" :viewparams="JSON.parse(JSON.stringify(viewparams))" :data="row" :linkview="{viewname: 'trm-train-agency-edit-view9', height: 750,width: 0,title: $t('entities.trmtrainagency.views.editview9.title'),placement: 'POPUPMODAL', isRedirectView: false,deResParameters: [
+            ]
+            ,parameters: [
+            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+            { pathName: 'editview9', parameterName: 'editview9' }
+            ]}" valueitem="trmtrainagencyid2">
+                            <span>{{row.trmtrainagencyname2}}</span>
+                        </app-column-link >
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('zcxx')">
-                <el-table-column show-overflow-tooltip :prop="'zcxx'" :label="$t('entities.trmtrainagency.main_grid.columns.zcxx')" :width="180"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'zcxx'" :label="$t('entities.trmtrainagency.main_grid.columns.zcxx')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainagency.main_grid.columns.zcxx')}}
@@ -114,7 +128,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pimpersonname')">
-                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.trmtrainagency.main_grid.columns.pimpersonname')" :width="130"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.trmtrainagency.main_grid.columns.pimpersonname')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainagency.main_grid.columns.pimpersonname')}}
@@ -148,18 +162,6 @@
                         <template >
             <codelist :value="row.jgdj" tag='EhrCodeList0145' codelistType='DYNAMIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('zzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.trmtrainagency.main_grid.columns.zzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.trmtrainagency.main_grid.columns.zzdzs')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.zzdzs}}</span>
                     </template>
                 </el-table-column>
             </template>
@@ -836,13 +838,6 @@ export default class MainBase extends Vue implements ControlInterface {
             name: 'jgdj',
             label: '机构等级',
             langtag: 'entities.trmtrainagency.main_grid.columns.jgdj',
-            show: true,
-            util: 'px'
-        },
-        {
-            name: 'zzdzs',
-            label: '所属单位',
-            langtag: 'entities.trmtrainagency.main_grid.columns.zzdzs',
             show: true,
             util: 'px'
         },

@@ -166,7 +166,7 @@ export default class TrmTrainAgencyEditView9Base extends EditView9Base {
      * @memberof TrmTrainAgencyEditView9
      */
     public toolBarModels: any = {
-        deuiaction1: { name: 'deuiaction1', caption: '关闭','isShowCaption':true,'isShowIcon':true, tooltip: '关闭', iconcls: 'fa fa-sign-out', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'Exit', target: '' }, class: '' },
+        deuiaction2: { name: 'deuiaction2', caption: '编辑','isShowCaption':true,'isShowIcon':true, tooltip: '编辑', iconcls: 'fa fa-edit', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'OpenEditMode', target: 'SINGLEKEY' }, class: '' },
 
     };
 
@@ -208,8 +208,8 @@ export default class TrmTrainAgencyEditView9Base extends EditView9Base {
      * @memberof TrmTrainAgencyEditView9Base
      */
     public toolbar_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar_deuiaction1_click(null, '', $event2);
+        if (Object.is($event.tag, 'deuiaction2')) {
+            this.toolbar_deuiaction2_click(null, '', $event2);
         }
     }
 
@@ -259,7 +259,7 @@ export default class TrmTrainAgencyEditView9Base extends EditView9Base {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -276,25 +276,66 @@ export default class TrmTrainAgencyEditView9Base extends EditView9Base {
           datas = [params];
         }
         // 界面行为
-        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"TrmTrainAgency");
+        this.OpenEditMode(datas, contextJO,paramJO,  $event, xData,this,"TrmTrainAgency");
     }
 
     /**
-     * 关闭
+     * 编辑
      *
      * @param {any[]} args 当前数据
-     * @param {any} contextJO 行为附加上下文
+     * @param {any} context 行为附加上下文
      * @param {*} [params] 附加参数
      * @param {*} [$event] 事件源
      * @param {*} [xData]  执行行为所需当前部件
      * @param {*} [actionContext]  执行行为上下文
-     * @memberof TrmTrainAgencyEditView9Base
+     * @param {*} [srfParentDeName] 父实体名称
+     * @returns {Promise<any>}
      */
-    public Exit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
-        this.closeView(args);
-        if(window.parent){
-            window.parent.postMessage([{ ...args }],'*');
+    public async OpenEditMode(args: any[], context:any = {} ,params: any={}, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+    
+                let curXData:any = xData;
+			xData = $event;
+        $event = params;
+        params = context;
+        let context2: any = {};
+        let data: any = {};
+        const _args: any[] = this.$util.deepCopy(args);
+        const _this: any = this;
+        const actionTarget: string | null = 'SINGLEKEY';
+        Object.assign(context2, { res_partner: '%id%' });
+        Object.assign(params, { id: '%id%' });
+        Object.assign(params, { name: '%name%' })
+        context = UIActionTool.handleContextParam(actionTarget,_args,context2);
+        data = UIActionTool.handleActionParam(actionTarget,_args,params);
+        Object.assign(context,this.context,context);
+        if(context && context.srfsessionid){
+          context.srfsessionkey = context.srfsessionid;
+            delete context.srfsessionid;
         }
+        const parameters: any[] = [
+            { pathName: 'res_partners', parameterName: 'res_partner' },
+        ];
+        const openDrawer = (view: any, data: any) => {
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, context,data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                const _this: any = this;
+                if (curXData && curXData.refresh && curXData.refresh instanceof Function) {
+                    curXData.refresh(args);
+                }
+                return result.datas;
+            });
+        }
+        const view: any = {
+            viewname: 'trm-train-agency-edit-view9-edit-mode', 
+            height: 0, 
+            width: 0,  
+            title: '培训机构编辑视图', 
+            placement: 'DRAWER_TOP',
+        };
+        openDrawer(view, data);
     }
 
 

@@ -47,6 +47,10 @@ export default {
 			caption: '培训机构',
       title: '培训机构',
 		},
+		editview9_editmode: {
+			caption: '培训机构',
+      title: '培训机构',
+		},
 		pickupgridview: {
 			caption: '培训机构',
       title: '培训机构选择表格视图',
@@ -168,7 +172,6 @@ export default {
 			pimpersonname: '联系人',
 			lxdh: '联系电话',
 			jgdj: '机构等级',
-			zzdzs: '所属单位',
 			sfgx: '是否共享',
 		},
 		uiactions: {
@@ -189,9 +192,19 @@ export default {
 		},
 	},
 	editview9toolbar_toolbar: {
-		deuiaction1: {
-			caption: '关闭',
-			tip: '关闭',
+		deuiaction2: {
+			caption: '编辑',
+			tip: '编辑',
+		},
+	},
+	editview9_editmodetoolbar_toolbar: {
+		tbitem3: {
+			caption: '保存',
+			tip: '保存',
+		},
+		tbitem5: {
+			caption: '保存并关闭',
+			tip: '保存并关闭',
 		},
 	},
 	editviewtoolbar_toolbar: {

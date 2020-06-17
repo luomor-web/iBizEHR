@@ -5,7 +5,7 @@ import TrmTrainAddressEditViewBase from './trm-train-address-edit-view-base.vue'
 import view_form from '@widgets/trm-train-address/main-form/main-form.vue';
 
 /**
- * 培训场地编辑视图
+ * 培训场地
  *
  * @export
  * @class TrmTrainAddressEditView

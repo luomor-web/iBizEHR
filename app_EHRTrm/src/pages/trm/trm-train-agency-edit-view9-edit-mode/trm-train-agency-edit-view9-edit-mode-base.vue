@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="trmtrainaddresseditview" viewTitle="培训场地" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'trm-train-address-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="trmtrainagencyeditview9_editmode" viewTitle="培训机构" :isShowCaptionBar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview9': true, 'trm-train-agency-edit-view9-edit-mode': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -46,37 +46,37 @@
 import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorator';
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
-import { VueLifeCycleProcessing, EditViewBase } from '@/crm-core';
-import TrmTrainAddressService from '@/service/trm-train-address/trm-train-address-service';
+import { VueLifeCycleProcessing, EditView9Base } from '@/crm-core';
+import TrmTrainAgencyService from '@/service/trm-train-agency/trm-train-agency-service';
 
-import EditViewEngine from '@engine/view/edit-view-engine';
+import EditView9Engine from '@engine/view/edit-view9-engine';
 
 
 /**
- * 培训场地基类
+ * 培训机构基类
  *
  * @export
- * @class TrmTrainAddressEditViewBase
- * @extends {EditViewBase}
+ * @class TrmTrainAgencyEditView9_EditModeBase
+ * @extends {EditView9Base}
  */
 @Component({})
 @VueLifeCycleProcessing
-export default class TrmTrainAddressEditViewBase extends EditViewBase {
+export default class TrmTrainAgencyEditView9_EditModeBase extends EditView9Base {
 
     /**
      * 实体服务对象
      *
-     * @type {TrmTrainAddressService}
-     * @memberof TrmTrainAddressEditViewBase
+     * @type {TrmTrainAgencyService}
+     * @memberof TrmTrainAgencyEditView9_EditModeBase
      */
-    public appEntityService: TrmTrainAddressService = new TrmTrainAddressService;
+    public appEntityService: TrmTrainAgencyService = new TrmTrainAgencyService;
 
 
     /**
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof TrmTrainAddressEditViewBase
+     * @memberof TrmTrainAgencyEditView9_EditModeBase
      */    
     public counterServiceArray:Array<any> = [];
     
@@ -85,7 +85,7 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
      *
      * @param {*} val
      * @returns {*}
-     * @memberof TrmTrainAddressEditViewBase
+     * @memberof TrmTrainAgencyEditView9_EditModeBase
      */
     @Emit() 
     public viewDatasChange(val: any):any {
@@ -96,16 +96,16 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
 	 * 视图标识
 	 *
 	 * @type {string}
-	 * @memberof TrmTrainAddressEditViewBase
+	 * @memberof TrmTrainAgencyEditView9_EditModeBase
 	 */
-	public viewtag: string = 'fd64380e656f7ce1b3aa3968dbc60745';
+	public viewtag: string = '31b65d9cc7b0429b0a064f9867073eb8';
 
     /**
      * 父数据对象
      *
      * @protected
      * @type {*}
-     * @memberof TrmTrainAddressEditViewBase
+     * @memberof TrmTrainAgencyEditView9_EditModeBase
      */
     protected srfparentdata: any = {};
 
@@ -113,7 +113,7 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
 	 * 自定义视图导航上下文集合
 	 *
 	 * @type {*}
-	 * @memberof TrmTrainAddressEditViewBase
+	 * @memberof TrmTrainAgencyEditView9_EditModeBase
 	 */
     public customViewNavContexts:any ={
     };
@@ -122,7 +122,7 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
 	 * 自定义视图导航参数集合
 	 *
 	 * @type {*}
-	 * @memberof TrmTrainAddressEditViewBase
+	 * @memberof TrmTrainAgencyEditView9_EditModeBase
 	 */
     public customViewParams:any ={
     };
@@ -131,12 +131,12 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
      * 视图模型数据
      *
      * @type {*}
-     * @memberof TrmTrainAddressEditViewBase
+     * @memberof TrmTrainAgencyEditView9_EditModeBase
      */
     public model: any = {
-        srfCaption: 'entities.trmtrainaddress.views.editview.caption',
-        srfTitle: 'entities.trmtrainaddress.views.editview.title',
-        srfSubTitle: 'entities.trmtrainaddress.views.editview.subtitle',
+        srfCaption: 'entities.trmtrainagency.views.editview9_editmode.caption',
+        srfTitle: 'entities.trmtrainagency.views.editview9_editmode.title',
+        srfSubTitle: 'entities.trmtrainagency.views.editview9_editmode.subtitle',
         dataInfo: ''
     }
 
@@ -144,7 +144,7 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
      * 容器模型
      *
      * @type {*}
-     * @memberof TrmTrainAddressEditViewBase
+     * @memberof TrmTrainAgencyEditView9_EditModeBase
      */
     public containerModel: any = {
         view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
@@ -156,14 +156,14 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
      *
      * @public
      * @type {Subject<{action: string, data: any}>}
-     * @memberof TrmTrainAddressEditViewBase
+     * @memberof TrmTrainAgencyEditView9_EditModeBase
      */
     public viewState: Subject<ViewState> = new Subject();
     /**
      * 工具栏模型
      *
      * @type {*}
-     * @memberof TrmTrainAddressEditView
+     * @memberof TrmTrainAgencyEditView9_EditMode
      */
     public toolBarModels: any = {
         tbitem3: { name: 'tbitem3', caption: '保存','isShowCaption':true,'isShowIcon':true, tooltip: '保存', iconcls: 'fa fa-save', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYZPMXME', uiaction: { tag: 'Save', target: '' }, class: '' },
@@ -174,30 +174,29 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
 
 
 
-
     /**
      * 视图引擎
      *
      * @public
      * @type {Engine}
-     * @memberof TrmTrainAddressEditViewBase
+     * @memberof TrmTrainAgencyEditView9_EditModeBase
      */
-    public engine: EditViewEngine = new EditViewEngine();
+    public engine: EditView9Engine = new EditView9Engine();
 	
 
     /**
      * 引擎初始化
      *
      * @public
-     * @memberof TrmTrainAddressEditViewBase
+     * @memberof TrmTrainAgencyEditView9_EditModeBase
      */
     public engineInit(): void {
         this.engine.init({
             view: this,
             form: this.$refs.form,
             p2k: '0',
-            keyPSDEField: 'trmtrainaddress',
-            majorPSDEField: 'trmtrainaddressname',
+            keyPSDEField: 'trmtrainagency',
+            majorPSDEField: 'trmtrainagencyname',
             isLoadDefault: true,
         });
     }
@@ -208,7 +207,7 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof TrmTrainAddressEditViewBase
+     * @memberof TrmTrainAgencyEditView9_EditModeBase
      */
     public toolbar_click($event: any, $event2?: any) {
         if (Object.is($event.tag, 'tbitem3')) {
@@ -225,7 +224,7 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof TrmTrainAddressEditViewBase
+     * @memberof TrmTrainAgencyEditView9_EditModeBase
      */
     public form_save($event: any, $event2?: any) {
         this.engine.onCtrlEvent('form', 'save', $event);
@@ -237,7 +236,7 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof TrmTrainAddressEditViewBase
+     * @memberof TrmTrainAgencyEditView9_EditModeBase
      */
     public form_remove($event: any, $event2?: any) {
         this.engine.onCtrlEvent('form', 'remove', $event);
@@ -249,7 +248,7 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof TrmTrainAddressEditViewBase
+     * @memberof TrmTrainAgencyEditView9_EditModeBase
      */
     public form_load($event: any, $event2?: any) {
         this.engine.onCtrlEvent('form', 'load', $event);
@@ -282,7 +281,7 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.Save(datas, contextJO,paramJO,  $event, xData,this,"TrmTrainAddress");
+        this.Save(datas, contextJO,paramJO,  $event, xData,this,"TrmTrainAgency");
     }
 
     /**
@@ -310,7 +309,7 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"TrmTrainAddress");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"TrmTrainAgency");
     }
 
     /**
@@ -322,7 +321,7 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
      * @param {*} [$event] 事件源
      * @param {*} [xData]  执行行为所需当前部件
      * @param {*} [actionContext]  执行行为上下文
-     * @memberof TrmTrainAddressEditViewBase
+     * @memberof TrmTrainAgencyEditView9_EditModeBase
      */
     public Save(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         // 界面行为容器对象 _this
@@ -348,7 +347,7 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
      * @param {*} [$event] 事件源
      * @param {*} [xData]  执行行为所需当前部件
      * @param {*} [actionContext]  执行行为上下文
-     * @memberof TrmTrainAddressEditViewBase
+     * @memberof TrmTrainAgencyEditView9_EditModeBase
      */
     public SaveAndExit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
@@ -377,7 +376,7 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
     /**
      * 销毁视图回调
      *
-     * @memberof TrmTrainAddressEditViewBase
+     * @memberof TrmTrainAgencyEditView9_EditModeBase
      */
     public destroyed(){
         if(this.viewDefaultUsage){
@@ -391,11 +390,40 @@ export default class TrmTrainAddressEditViewBase extends EditViewBase {
             }
         }
     }
+        /**
+    * meditview9状态下发变量
+    *
+    * @memberof IBZSAM02MobEditView
+    */
+    @Prop() public panelState ?:Subject<ViewState>;
 
+
+
+
+    /**
+     * 视图组件挂载完毕
+     *
+     * @protected
+     * @memberof ViewBase
+     */
+    protected viewMounted(): void {
+        if(this.panelState){
+            this.panelState.subscribe((res:any) =>{
+                if(Object.is(res.tag,'meditviewpanel')){
+                    if(Object.is(res.action,'save')){
+                        this.viewState.next({ tag:'form', action: 'save', data:res.data});
+                    }
+                    if(Object.is(res.action,'remove')){
+                        this.viewState.next({ tag:'form', action: 'remove', data:res.data});
+                    }
+                }
+            });
+        }
+    }
 
 }
 </script>
 
 <style lang='less'>
-@import './trm-train-address-edit-view.less';
+@import './trm-train-agency-edit-view9-edit-mode.less';
 </style>
