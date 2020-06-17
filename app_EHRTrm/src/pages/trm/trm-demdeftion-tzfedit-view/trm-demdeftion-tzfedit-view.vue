@@ -5,7 +5,7 @@ import TrmDemdeftionTZFEditViewBase from './trm-demdeftion-tzfedit-view-base.vue
 import view_form from '@widgets/trm-demdeftion/main-3-form/main-3-form.vue';
 
 /**
- * 需求汇总编辑视图
+ * 需求汇总
  *
  * @export
  * @class TrmDemdeftionTZFEditView

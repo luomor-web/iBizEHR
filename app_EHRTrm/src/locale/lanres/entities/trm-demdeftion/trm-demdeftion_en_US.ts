@@ -43,7 +43,7 @@ export default {
   },
 	views: {
 		tbfeditview: {
-			caption: "培训需求汇总",
+			caption: "培训需求填报明细",
       title: '培训需求填报明细',
 		},
 		pickupview: {
@@ -55,16 +55,16 @@ export default {
       title: '需求调查定义选择表格视图',
 		},
 		tbgridview: {
-			caption: "培训需求汇总",
-      title: '培训需求填报明细表格视图',
+			caption: "培训需求填报明细",
+      title: '培训需求填报明细',
 		},
 		tzgridview: {
 			caption: "培训需求汇总",
       title: '培训需求汇总表格视图',
 		},
 		tzfeditview: {
-			caption: "培训需求汇总",
-      title: '需求汇总编辑视图',
+			caption: "需求汇总",
+      title: '需求汇总',
 		},
 	},
 	main_2_form: {
@@ -195,21 +195,17 @@ export default {
 			caption: "New",
 			tip: "New",
 		},
+		tbitem5: {
+			caption: "Edit",
+			tip: "Edit {0}",
+		},
 		tbitem8: {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-		tbitem19: {
-			caption: "Filter",
-			tip: "Filter",
-		},
 		tbitem13: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 	tzgridviewtoolbar_toolbar: {
@@ -217,21 +213,17 @@ export default {
 			caption: "New",
 			tip: "New",
 		},
+		tbitem5: {
+			caption: "Edit",
+			tip: "Edit {0}",
+		},
 		tbitem8: {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-		tbitem19: {
-			caption: "Filter",
-			tip: "Filter",
-		},
 		tbitem13: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 	tzfeditviewtoolbar_toolbar: {

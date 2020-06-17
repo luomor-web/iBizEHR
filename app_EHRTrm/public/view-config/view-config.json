@@ -109,7 +109,7 @@
     },
     "trmdemdeftiontbfeditview": {
         "title": "培训需求填报明细",
-        "caption": "培训需求汇总",
+        "caption": "培训需求填报明细",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmDemdeftionTBFEditView",
@@ -405,8 +405,8 @@
         "memo": ""
     },
     "trmdemdeftiontbgridview": {
-        "title": "培训需求填报明细表格视图",
-        "caption": "培训需求汇总",
+        "title": "培训需求填报明细",
+        "caption": "培训需求填报明细",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmDemdeftionTBGridView",
@@ -1008,8 +1008,8 @@
         "memo": ""
     },
     "trmdemdeftiontzfeditview": {
-        "title": "需求汇总编辑视图",
-        "caption": "培训需求汇总",
+        "title": "需求汇总",
+        "caption": "需求汇总",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmDemdeftionTZFEditView",

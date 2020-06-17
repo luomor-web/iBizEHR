@@ -105,7 +105,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
         },
         "trmdemdeftiontbfeditview": {
             "title": "培训需求填报明细",
-            "caption": "培训需求汇总",
+            "caption": "培训需求填报明细",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmDemdeftionTBFEditView",
@@ -368,8 +368,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "5942169579c944d47bed377e6de21a30"
         },
         "trmdemdeftiontbgridview": {
-            "title": "培训需求填报明细表格视图",
-            "caption": "培训需求汇总",
+            "title": "培训需求填报明细",
+            "caption": "培训需求填报明细",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmDemdeftionTBGridView",
@@ -904,8 +904,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "d8a8db81cf25380e25c3f8c4c90d7498"
         },
         "trmdemdeftiontzfeditview": {
-            "title": "需求汇总编辑视图",
-            "caption": "培训需求汇总",
+            "title": "需求汇总",
+            "caption": "需求汇总",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmDemdeftionTZFEditView",

@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="trmdemdeftiontzfeditview" viewTitle="需求汇总编辑视图" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'trm-demdeftion-tzfedit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="trmdemdeftiontzfeditview" viewTitle="需求汇总" :isShowCaptionBar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'trm-demdeftion-tzfedit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -53,7 +53,7 @@ import EditViewEngine from '@engine/view/edit-view-engine';
 
 
 /**
- * 需求汇总编辑视图基类
+ * 需求汇总基类
  *
  * @export
  * @class TrmDemdeftionTZFEditViewBase
