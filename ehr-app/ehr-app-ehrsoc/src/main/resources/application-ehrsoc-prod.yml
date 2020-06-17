@@ -39,5 +39,9 @@ zuul:
       path: /socruledetails/**
       serviceId: ehr-webapi
       stripPrefix: false
+    pimperson:
+      path: /pimpeople/**
+      serviceId: ehr-webapi
+      stripPrefix: false
   sensitive-headers:
     - Cookie,Set-Cookie,Authorization

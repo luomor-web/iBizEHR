@@ -97,6 +97,115 @@ public class SocArchives extends EntityMP implements Serializable {
     @JSONField(name = "updatedate" , format="yyyy-MM-dd HH:mm:ss")
     @JsonProperty("updatedate")
     private Timestamp updatedate;
+    /**
+     * 人员信息标识
+     */
+    @TableField(value = "pimpersonid")
+    @JSONField(name = "pimpersonid")
+    @JsonProperty("pimpersonid")
+    private String pimpersonid;
+    /**
+     * 员工姓名
+     */
+    @TableField(exist = false)
+    @JSONField(name = "pimpersonname")
+    @JsonProperty("pimpersonname")
+    private String pimpersonname;
+    /**
+     * 参保账户标识
+     */
+    @TableField(value = "socaccountid")
+    @JSONField(name = "socaccountid")
+    @JsonProperty("socaccountid")
+    private String socaccountid;
+    /**
+     * 参保账户
+     */
+    @TableField(exist = false)
+    @JSONField(name = "socaccountname")
+    @JsonProperty("socaccountname")
+    private String socaccountname;
+    /**
+     * 社保规则标识
+     */
+    @TableField(value = "socruleid")
+    @JSONField(name = "socruleid")
+    @JsonProperty("socruleid")
+    private String socruleid;
+    /**
+     * 社保规则名称
+     */
+    @TableField(exist = false)
+    @JSONField(name = "socrulename")
+    @JsonProperty("socrulename")
+    private String socrulename;
+    /**
+     * 组织ID
+     */
+    @TableField(exist = false)
+    @JSONField(name = "ormorgid")
+    @JsonProperty("ormorgid")
+    private String ormorgid;
+    /**
+     * 组织
+     */
+    @TableField(exist = false)
+    @JSONField(name = "ormorgname")
+    @JsonProperty("ormorgname")
+    private String ormorgname;
+    /**
+     * 部门ID
+     */
+    @TableField(exist = false)
+    @JSONField(name = "ormorgsectorid")
+    @JsonProperty("ormorgsectorid")
+    private String ormorgsectorid;
+    /**
+     * 部门
+     */
+    @TableField(exist = false)
+    @JSONField(name = "ormorgsectorname")
+    @JsonProperty("ormorgsectorname")
+    private String ormorgsectorname;
+    /**
+     * 员工编号
+     */
+    @TableField(exist = false)
+    @JSONField(name = "ygbh")
+    @JsonProperty("ygbh")
+    private String ygbh;
+    /**
+     * 状态
+     */
+    @DEField(defaultValue = "10")
+    @TableField(value = "state")
+    @JSONField(name = "state")
+    @JsonProperty("state")
+    private String state;
+
+    /**
+     * 员工
+     */
+    @JsonIgnore
+    @JSONField(serialize = false)
+    @TableField(exist = false)
+    private cn.ibizlab.ehr.core.pim.domain.PimPerson pimperson;
+
+    /**
+     * 参保账户
+     */
+    @JsonIgnore
+    @JSONField(serialize = false)
+    @TableField(exist = false)
+    private cn.ibizlab.ehr.core.soc.domain.SocAccount socaccount;
+
+    /**
+     * 社保规则
+     */
+    @JsonIgnore
+    @JSONField(serialize = false)
+    @TableField(exist = false)
+    private cn.ibizlab.ehr.core.soc.domain.SocRule socrule;
 
 
 
@@ -106,6 +215,38 @@ public class SocArchives extends EntityMP implements Serializable {
     public void setSocarchivesname(String socarchivesname){
         this.socarchivesname = socarchivesname ;
         this.modify("socarchivesname",socarchivesname);
+    }
+
+    /**
+     * 设置 [人员信息标识]
+     */
+    public void setPimpersonid(String pimpersonid){
+        this.pimpersonid = pimpersonid ;
+        this.modify("pimpersonid",pimpersonid);
+    }
+
+    /**
+     * 设置 [参保账户标识]
+     */
+    public void setSocaccountid(String socaccountid){
+        this.socaccountid = socaccountid ;
+        this.modify("socaccountid",socaccountid);
+    }
+
+    /**
+     * 设置 [社保规则标识]
+     */
+    public void setSocruleid(String socruleid){
+        this.socruleid = socruleid ;
+        this.modify("socruleid",socruleid);
+    }
+
+    /**
+     * 设置 [状态]
+     */
+    public void setState(String state){
+        this.state = state ;
+        this.modify("state",state);
     }
 
 

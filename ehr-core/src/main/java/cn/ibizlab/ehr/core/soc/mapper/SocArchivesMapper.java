@@ -62,4 +62,10 @@ public interface SocArchivesMapper extends BaseMapper<SocArchives>{
     @Delete("${sql}")
     boolean deleteBySQL(@Param("sql") String sql, @Param("et")Map param);
 
+    List<SocArchives> selectByPimpersonid(@Param("pimpersonid") Serializable pimpersonid) ;
+
+    List<SocArchives> selectBySocaccountid(@Param("socaccountid") Serializable socaccountid) ;
+
+    List<SocArchives> selectBySocruleid(@Param("socruleid") Serializable socruleid) ;
+
 }

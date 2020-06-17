@@ -240,6 +240,9 @@ public class PimPersonServiceImpl extends ServiceImpl<PimPersonMapper, PimPerson
     private cn.ibizlab.ehr.core.pcm.service.IPcmPcmSgqMgrService pcmpcmsgqmgrService;
     @Autowired
     @Lazy
+    private cn.ibizlab.ehr.core.soc.service.ISocArchivesService socarchivesService;
+    @Autowired
+    @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITrmDemdeftionService trmdemdeftionService;
     @Autowired
     @Lazy

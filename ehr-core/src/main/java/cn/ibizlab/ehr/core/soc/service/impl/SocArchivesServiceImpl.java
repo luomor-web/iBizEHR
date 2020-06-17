@@ -44,6 +44,15 @@ import org.springframework.util.StringUtils;
 @Service("SocArchivesServiceImpl")
 public class SocArchivesServiceImpl extends ServiceImpl<SocArchivesMapper, SocArchives> implements ISocArchivesService {
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonService;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.soc.service.ISocAccountService socaccountService;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.soc.service.ISocRuleService socruleService;
 
     private int batchSize = 500;
 
@@ -61,12 +70,14 @@ public class SocArchivesServiceImpl extends ServiceImpl<SocArchivesMapper, SocAr
 
     @Override
     public SocArchives getDraft(SocArchives et) {
+        fillParentData(et);
         return et;
     }
 
     @Override
     @Transactional
     public boolean update(SocArchives et) {
+        fillParentData(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("socarchivesid",et.getSocarchivesid())))
             return false;
         CachedBeanCopier.copy(get(et.getSocarchivesid()),et);
@@ -75,6 +86,7 @@ public class SocArchivesServiceImpl extends ServiceImpl<SocArchivesMapper, SocAr
 
     @Override
     public void updateBatch(List<SocArchives> list) {
+        list.forEach(item->fillParentData(item));
         updateBatchById(list,batchSize);
     }
 
@@ -113,18 +125,21 @@ public class SocArchivesServiceImpl extends ServiceImpl<SocArchivesMapper, SocAr
 
     @Override
     public boolean saveBatch(Collection<SocArchives> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
         return true;
     }
 
     @Override
     public void saveBatch(List<SocArchives> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
     }
 
     @Override
     @Transactional
     public boolean create(SocArchives et) {
+        fillParentData(et);
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getSocarchivesid()),et);
@@ -133,12 +148,43 @@ public class SocArchivesServiceImpl extends ServiceImpl<SocArchivesMapper, SocAr
 
     @Override
     public void createBatch(List<SocArchives> list) {
+        list.forEach(item->fillParentData(item));
         this.saveBatch(list,batchSize);
     }
 
     @Override
     public boolean checkKey(SocArchives et) {
         return (!ObjectUtils.isEmpty(et.getSocarchivesid()))&&(!Objects.isNull(this.getById(et.getSocarchivesid())));
+    }
+
+	@Override
+    public List<SocArchives> selectByPimpersonid(String pimpersonid) {
+        return baseMapper.selectByPimpersonid(pimpersonid);
+    }
+
+    @Override
+    public void removeByPimpersonid(String pimpersonid) {
+        this.remove(new QueryWrapper<SocArchives>().eq("pimpersonid",pimpersonid));
+    }
+
+	@Override
+    public List<SocArchives> selectBySocaccountid(String socaccountid) {
+        return baseMapper.selectBySocaccountid(socaccountid);
+    }
+
+    @Override
+    public void removeBySocaccountid(String socaccountid) {
+        this.remove(new QueryWrapper<SocArchives>().eq("socaccountid",socaccountid));
+    }
+
+	@Override
+    public List<SocArchives> selectBySocruleid(String socruleid) {
+        return baseMapper.selectBySocruleid(socruleid);
+    }
+
+    @Override
+    public void removeBySocruleid(String socruleid) {
+        this.remove(new QueryWrapper<SocArchives>().eq("socruleid",socruleid));
     }
 
 
@@ -153,6 +199,47 @@ public class SocArchivesServiceImpl extends ServiceImpl<SocArchivesMapper, SocAr
 
 
 
+    /**
+     * 为当前实体填充父数据（外键值文本、外键值附加数据）
+     * @param et
+     */
+    private void fillParentData(SocArchives et){
+        //实体关系[DER1N_SOCARCHIVES_PIMPERSON_PIMPERSONID]
+        if(!ObjectUtils.isEmpty(et.getPimpersonid())){
+            cn.ibizlab.ehr.core.pim.domain.PimPerson pimperson=et.getPimperson();
+            if(ObjectUtils.isEmpty(pimperson)){
+                cn.ibizlab.ehr.core.pim.domain.PimPerson majorEntity=pimpersonService.get(et.getPimpersonid());
+                et.setPimperson(majorEntity);
+                pimperson=majorEntity;
+            }
+            et.setPimpersonname(pimperson.getPimpersonname());
+            et.setOrmorgid(pimperson.getOrmorgid());
+            et.setOrmorgname(pimperson.getOrmorgname());
+            et.setOrmorgsectorid(pimperson.getOrmorgsectorid());
+            et.setOrmorgsectorname(pimperson.getOrmorgsectorname());
+            et.setYgbh(pimperson.getYgbh());
+        }
+        //实体关系[DER1N_SOCARCHIVES_SOCACCOUNT_SOCACCOUNTID]
+        if(!ObjectUtils.isEmpty(et.getSocaccountid())){
+            cn.ibizlab.ehr.core.soc.domain.SocAccount socaccount=et.getSocaccount();
+            if(ObjectUtils.isEmpty(socaccount)){
+                cn.ibizlab.ehr.core.soc.domain.SocAccount majorEntity=socaccountService.get(et.getSocaccountid());
+                et.setSocaccount(majorEntity);
+                socaccount=majorEntity;
+            }
+            et.setSocaccountname(socaccount.getSocaccountname());
+        }
+        //实体关系[DER1N_SOCARCHIVES_SOCRULE_SOCRULEID]
+        if(!ObjectUtils.isEmpty(et.getSocruleid())){
+            cn.ibizlab.ehr.core.soc.domain.SocRule socrule=et.getSocrule();
+            if(ObjectUtils.isEmpty(socrule)){
+                cn.ibizlab.ehr.core.soc.domain.SocRule majorEntity=socruleService.get(et.getSocruleid());
+                et.setSocrule(majorEntity);
+                socrule=majorEntity;
+            }
+            et.setSocrulename(socrule.getSocrulename());
+        }
+    }
 
 
     @Override

@@ -46,6 +46,9 @@ public class SocRuleServiceImpl extends ServiceImpl<SocRuleMapper, SocRule> impl
 
     @Autowired
     @Lazy
+    private cn.ibizlab.ehr.core.soc.service.ISocArchivesService socarchivesService;
+    @Autowired
+    @Lazy
     private cn.ibizlab.ehr.core.soc.service.ISocRuleDetailService socruledetailService;
     @Autowired
     @Lazy

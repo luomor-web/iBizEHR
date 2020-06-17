@@ -37,6 +37,12 @@ public interface ISocArchivesService extends IService<SocArchives>{
     void createBatch(List<SocArchives> list) ;
     boolean checkKey(SocArchives et) ;
     Page<SocArchives> searchDefault(SocArchivesSearchContext context) ;
+    List<SocArchives> selectByPimpersonid(String pimpersonid) ;
+    void removeByPimpersonid(String pimpersonid) ;
+    List<SocArchives> selectBySocaccountid(String socaccountid) ;
+    void removeBySocaccountid(String socaccountid) ;
+    List<SocArchives> selectBySocruleid(String socruleid) ;
+    void removeBySocruleid(String socruleid) ;
     /**
      *自定义查询SQL
      * @param sql  select * from table where id =#{et.param}

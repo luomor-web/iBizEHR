@@ -46,6 +46,9 @@ public class SocAccountServiceImpl extends ServiceImpl<SocAccountMapper, SocAcco
 
     @Autowired
     @Lazy
+    private cn.ibizlab.ehr.core.soc.service.ISocArchivesService socarchivesService;
+    @Autowired
+    @Lazy
     private cn.ibizlab.ehr.core.orm.service.IOrmOrgService ormorgService;
 
     private int batchSize = 500;
