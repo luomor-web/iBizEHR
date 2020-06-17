@@ -22,11 +22,18 @@ export default {
 			caption: "社保规则",
       title: '社保规则编辑视图',
 		},
+		main2editview: {
+			caption: "社保规则",
+      title: '社保规则编辑视图',
+		},
+		quickeditview: {
+			caption: "社保规则",
+      title: '社保规则编辑视图',
+		},
 	},
-	main_form: {
+	main2_form: {
 		details: {
 			group1: "社保规则基本信息", 
-			druipart1: "", 
 			formpage1: "基本信息", 
 			srfupdatedate: "更新时间", 
 			srforikey: "", 
@@ -41,6 +48,29 @@ export default {
 			ormorgname: "组织", 
 			memo: "备注", 
 			ormorgid: "组织标识", 
+			socruleid: "社保规则标识", 
+		},
+		uiactions: {
+		},
+	},
+	main_form: {
+		details: {
+			group1: "社保规则基本信息", 
+			druipart1: "", 
+			grouppanel1: "分组面板", 
+			formpage1: "基本信息", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "社保规则标识", 
+			srfmajortext: "社保规则名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			socrulename: "社保规则名称", 
+			nyear: "年度", 
+			ormorgname: "组织", 
+			memo: "备注", 
 			socruleid: "社保规则标识", 
 		},
 		uiactions: {
@@ -63,20 +93,46 @@ export default {
 		uiactions: {
 		},
 	},
-	gridviewtoolbar_toolbar: {
+	quickeditviewtoolbar_toolbar: {
+		deuiaction5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
+		},
+		deuiaction1: {
+			caption: "退出",
+			tip: "退出",
+		},
+	},
+	main2editviewtoolbar_toolbar: {
 		tbitem3: {
-			caption: "New",
-			tip: "New",
+			caption: "Save",
+			tip: "Save",
 		},
-		tbitem8: {
-			caption: "Remove",
-			tip: "Remove {0}",
+		tbitem5: {
+			caption: "Save And Close",
+			tip: "Save And Close Window",
 		},
-		deuiaction3: {
+		deuiaction1: {
+			caption: "关闭",
+			tip: "关闭",
+		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem1_openedieview: {
+			caption: "社保规则",
+			tip: "社保规则",
+		},
+	},
+	gridviewtoolbar_toolbar: {
+		deuiaction1_quickcreatesocrule: {
+			caption: "快速新建",
+			tip: "快速新建",
+		},
+		deuiaction8: {
 			caption: "导入",
 			tip: "导入",
 		},
-		tbitem13: {
+		deuiaction6: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
 		},
@@ -84,11 +140,9 @@ export default {
 			caption: "Filter",
 			tip: "Filter",
 		},
-	},
-	editviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: "Save",
-			tip: "Save",
+		deuiaction5: {
+			caption: "Help",
+			tip: "Help",
 		},
 	},
 };

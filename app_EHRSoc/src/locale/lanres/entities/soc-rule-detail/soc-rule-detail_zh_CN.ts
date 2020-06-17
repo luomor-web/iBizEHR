@@ -19,6 +19,7 @@ export default {
     personamount: '个人固定额',
     companyamount: '企业固定额',
     memo: '备注',
+    ordervalue: '排序号',
   },
 	views: {
 		editview: {
@@ -56,6 +57,7 @@ export default {
 	},
 	main_grid: {
 		columns: {
+			ordervalue: '排序号',
 			soctypename: '保险类型',
 			highnum: '最高基数',
 			lownum: '最低基数',

@@ -1,22 +1,23 @@
 import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import SocRuleService from '@/service/soc-rule/soc-rule-service';
-import MainModel from './main-form-model';
+import Main2Model from './main2-form-model';
+import OrmOrgService from '@/service/orm-org/orm-org-service';
 
 
 /**
- * Main 部件服务对象
+ * Main2 部件服务对象
  *
  * @export
- * @class MainService
+ * @class Main2Service
  */
-export default class MainService extends ControlService {
+export default class Main2Service extends ControlService {
 
     /**
      * 社保规则服务对象
      *
      * @type {SocRuleService}
-     * @memberof MainService
+     * @memberof Main2Service
      */
     public appEntityService: SocRuleService = new SocRuleService({ $store: this.getStore() });
 
@@ -24,22 +25,30 @@ export default class MainService extends ControlService {
      * 设置从数据模式
      *
      * @type {boolean}
-     * @memberof MainService
+     * @memberof Main2Service
      */
     public setTempMode(){
         this.isTempMode = false;
     }
 
     /**
-     * Creates an instance of MainService.
+     * Creates an instance of Main2Service.
      * 
      * @param {*} [opts={}]
-     * @memberof MainService
+     * @memberof Main2Service
      */
     constructor(opts: any = {}) {
         super(opts);
-        this.model = new MainModel();
+        this.model = new Main2Model();
     }
+
+    /**
+     * 组织管理服务对象
+     *
+     * @type {OrmOrgService}
+     * @memberof Main2Service
+     */
+    public ormorgService: OrmOrgService = new OrmOrgService();
 
     /**
      * 处理数据
@@ -47,7 +56,7 @@ export default class MainService extends ControlService {
      * @private
      * @param {Promise<any>} promise
      * @returns {Promise<any>}
-     * @memberof MainService
+     * @memberof Main2Service
      */
     private doItems(promise: Promise<any>, deKeyField: string, deName: string): Promise<any> {
         return new Promise((resolve, reject) => {
@@ -76,10 +85,13 @@ export default class MainService extends ControlService {
      * @param {*} data
      * @param {boolean} [isloading]
      * @returns {Promise<any[]>}
-     * @memberof  MainService
+     * @memberof  Main2Service
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
+        if (Object.is(serviceName, 'OrmOrgService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.ormorgService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'orgid', 'ormorg');
+        }
 
         return Promise.reject([])
     }
@@ -93,7 +105,7 @@ export default class MainService extends ControlService {
      * @param {boolean} [isloading]
      * @param {*} [localdata]
      * @returns {Promise<any>}
-     * @memberof MainService
+     * @memberof Main2Service
      */
     @Errorlog
     public wfstart(action: string,context: any = {},data: any = {}, isloading?: boolean,localdata?:any): Promise<any> {
@@ -125,7 +137,7 @@ export default class MainService extends ControlService {
      * @param {boolean} [isloading]
      * @param {*} [localdata]
      * @returns {Promise<any>}
-     * @memberof MainService
+     * @memberof Main2Service
      */
     @Errorlog
     public wfsubmit(action: string,context: any = {}, data: any = {}, isloading?: boolean,localdata?:any): Promise<any> {
@@ -157,7 +169,7 @@ export default class MainService extends ControlService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof MainService
+     * @memberof Main2Service
      */
     @Errorlog
     public add(action: string, context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
@@ -187,7 +199,7 @@ export default class MainService extends ControlService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof MainService
+     * @memberof Main2Service
      */
     @Errorlog
     public delete(action: string, context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
@@ -216,7 +228,7 @@ export default class MainService extends ControlService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof MainService
+     * @memberof Main2Service
      */
     @Errorlog
     public update(action: string, context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
@@ -246,7 +258,7 @@ export default class MainService extends ControlService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof MainService
+     * @memberof Main2Service
      */
     @Errorlog
     public get(action: string,context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
@@ -276,7 +288,7 @@ export default class MainService extends ControlService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof MainService
+     * @memberof Main2Service
      */
     @Errorlog
     public loadDraft(action: string,context: any = {}, data: any = {}, isloading?: boolean): Promise<any> {
@@ -310,7 +322,7 @@ export default class MainService extends ControlService {
      * @param {*} [data={}]
      * @param {boolean} [isloading]
      * @returns {Promise<any>}
-     * @memberof MainService
+     * @memberof Main2Service
      */
     @Errorlog
     public frontLogic(action:string,context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
@@ -337,7 +349,7 @@ export default class MainService extends ControlService {
      * 
      * @param action 行为 
      * @param data 数据
-     * @memberof MainService
+     * @memberof Main2Service
      */
     public handleRequestData(action: string,context:any, data: any = {}){
         let mode: any = this.getMode();

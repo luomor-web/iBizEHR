@@ -87,6 +87,11 @@ export default class MainModel {
           dataType: 'PICKUP',
         },
         {
+          name: 'ordervalue',
+          prop: 'ordervalue',
+          dataType: 'PICKUPDATA',
+        },
+        {
           name: 'soctypename',
           prop: 'soctypename',
           dataType: 'PICKUPTEXT',

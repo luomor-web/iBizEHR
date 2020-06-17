@@ -21,11 +21,18 @@ export default {
 			caption: '社保规则',
       title: '社保规则编辑视图',
 		},
+		main2editview: {
+			caption: '社保规则',
+      title: '社保规则编辑视图',
+		},
+		quickeditview: {
+			caption: '社保规则',
+      title: '社保规则编辑视图',
+		},
 	},
-	main_form: {
+	main2_form: {
 		details: {
 			group1: '社保规则基本信息', 
-			druipart1: '', 
 			formpage1: '基本信息', 
 			srfupdatedate: '更新时间', 
 			srforikey: '', 
@@ -40,6 +47,29 @@ export default {
 			ormorgname: '组织', 
 			memo: '备注', 
 			ormorgid: '组织标识', 
+			socruleid: '社保规则标识', 
+		},
+		uiactions: {
+		},
+	},
+	main_form: {
+		details: {
+			group1: '社保规则基本信息', 
+			druipart1: '', 
+			grouppanel1: '分组面板', 
+			formpage1: '基本信息', 
+			srfupdatedate: '更新时间', 
+			srforikey: '', 
+			srfkey: '社保规则标识', 
+			srfmajortext: '社保规则名称', 
+			srftempmode: '', 
+			srfuf: '', 
+			srfdeid: '', 
+			srfsourcekey: '', 
+			socrulename: '社保规则名称', 
+			nyear: '年度', 
+			ormorgname: '组织', 
+			memo: '备注', 
 			socruleid: '社保规则标识', 
 		},
 		uiactions: {
@@ -62,20 +92,46 @@ export default {
 		uiactions: {
 		},
 	},
-	gridviewtoolbar_toolbar: {
+	quickeditviewtoolbar_toolbar: {
+		deuiaction5: {
+			caption: '确认',
+			tip: '确认',
+		},
+		deuiaction1: {
+			caption: '退出',
+			tip: '退出',
+		},
+	},
+	main2editviewtoolbar_toolbar: {
 		tbitem3: {
-			caption: '新建',
-			tip: '新建',
+			caption: '保存',
+			tip: '保存',
 		},
-		tbitem8: {
-			caption: '删除',
-			tip: '删除',
+		tbitem5: {
+			caption: '保存并关闭',
+			tip: '保存并关闭',
 		},
-		deuiaction3: {
+		deuiaction1: {
+			caption: '关闭',
+			tip: '关闭',
+		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem1_openedieview: {
+			caption: '社保规则',
+			tip: '社保规则',
+		},
+	},
+	gridviewtoolbar_toolbar: {
+		deuiaction1_quickcreatesocrule: {
+			caption: '快速新建',
+			tip: '快速新建',
+		},
+		deuiaction8: {
 			caption: '导入',
 			tip: '导入',
 		},
-		tbitem13: {
+		deuiaction6: {
 			caption: '导出',
 			tip: '导出',
 		},
@@ -83,11 +139,9 @@ export default {
 			caption: '过滤',
 			tip: '过滤',
 		},
-	},
-	editviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: '保存',
-			tip: '保存',
+		deuiaction5: {
+			caption: '帮助',
+			tip: '帮助',
 		},
 	},
 };

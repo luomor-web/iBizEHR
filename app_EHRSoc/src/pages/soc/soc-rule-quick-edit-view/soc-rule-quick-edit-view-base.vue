@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="socruleeditview" viewTitle="社保规则编辑视图" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'soc-rule-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="socrulequickeditview" viewTitle="社保规则编辑视图" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'soc-rule-quick-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -51,24 +51,23 @@ import SocRuleService from '@/service/soc-rule/soc-rule-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
-import SocRuleUIService from '@/uiservice/soc-rule/soc-rule-ui-service';
 
 /**
  * 社保规则编辑视图基类
  *
  * @export
- * @class SocRuleEditViewBase
+ * @class SocRuleQuickEditViewBase
  * @extends {EditViewBase}
  */
 @Component({})
 @VueLifeCycleProcessing
-export default class SocRuleEditViewBase extends EditViewBase {
+export default class SocRuleQuickEditViewBase extends EditViewBase {
 
     /**
      * 实体服务对象
      *
      * @type {SocRuleService}
-     * @memberof SocRuleEditViewBase
+     * @memberof SocRuleQuickEditViewBase
      */
     public appEntityService: SocRuleService = new SocRuleService;
 
@@ -77,7 +76,7 @@ export default class SocRuleEditViewBase extends EditViewBase {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof SocRuleEditViewBase
+     * @memberof SocRuleQuickEditViewBase
      */    
     public counterServiceArray:Array<any> = [];
     
@@ -86,7 +85,7 @@ export default class SocRuleEditViewBase extends EditViewBase {
      *
      * @param {*} val
      * @returns {*}
-     * @memberof SocRuleEditViewBase
+     * @memberof SocRuleQuickEditViewBase
      */
     @Emit() 
     public viewDatasChange(val: any):any {
@@ -97,16 +96,16 @@ export default class SocRuleEditViewBase extends EditViewBase {
 	 * 视图标识
 	 *
 	 * @type {string}
-	 * @memberof SocRuleEditViewBase
+	 * @memberof SocRuleQuickEditViewBase
 	 */
-	public viewtag: string = '954c57b4c84541e4769606551de25a05';
+	public viewtag: string = 'f171820c870830bd35bd19ffce2873ac';
 
     /**
      * 父数据对象
      *
      * @protected
      * @type {*}
-     * @memberof SocRuleEditViewBase
+     * @memberof SocRuleQuickEditViewBase
      */
     protected srfparentdata: any = {};
 
@@ -114,7 +113,7 @@ export default class SocRuleEditViewBase extends EditViewBase {
 	 * 自定义视图导航上下文集合
 	 *
 	 * @type {*}
-	 * @memberof SocRuleEditViewBase
+	 * @memberof SocRuleQuickEditViewBase
 	 */
     public customViewNavContexts:any ={
     };
@@ -123,7 +122,7 @@ export default class SocRuleEditViewBase extends EditViewBase {
 	 * 自定义视图导航参数集合
 	 *
 	 * @type {*}
-	 * @memberof SocRuleEditViewBase
+	 * @memberof SocRuleQuickEditViewBase
 	 */
     public customViewParams:any ={
     };
@@ -132,12 +131,12 @@ export default class SocRuleEditViewBase extends EditViewBase {
      * 视图模型数据
      *
      * @type {*}
-     * @memberof SocRuleEditViewBase
+     * @memberof SocRuleQuickEditViewBase
      */
     public model: any = {
-        srfCaption: 'entities.socrule.views.editview.caption',
-        srfTitle: 'entities.socrule.views.editview.title',
-        srfSubTitle: 'entities.socrule.views.editview.subtitle',
+        srfCaption: 'entities.socrule.views.quickeditview.caption',
+        srfTitle: 'entities.socrule.views.quickeditview.title',
+        srfSubTitle: 'entities.socrule.views.quickeditview.subtitle',
         dataInfo: ''
     }
 
@@ -145,7 +144,7 @@ export default class SocRuleEditViewBase extends EditViewBase {
      * 容器模型
      *
      * @type {*}
-     * @memberof SocRuleEditViewBase
+     * @memberof SocRuleQuickEditViewBase
      */
     public containerModel: any = {
         view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
@@ -157,17 +156,19 @@ export default class SocRuleEditViewBase extends EditViewBase {
      *
      * @public
      * @type {Subject<{action: string, data: any}>}
-     * @memberof SocRuleEditViewBase
+     * @memberof SocRuleQuickEditViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
     /**
      * 工具栏模型
      *
      * @type {*}
-     * @memberof SocRuleEditView
+     * @memberof SocRuleQuickEditView
      */
     public toolBarModels: any = {
-        tbitem1_openedieview: { name: 'tbitem1_openedieview', caption: '社保规则','isShowCaption':true,'isShowIcon':true, tooltip: '社保规则', iconcls: 'fa fa-edit', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'OpenEdieView', target: 'SINGLEKEY' }, class: '' },
+        deuiaction5: { name: 'deuiaction5', caption: '确认','isShowCaption':true,'isShowIcon':true, tooltip: '确认', iconcls: 'sx-tb-saveandclose', icon: '../sasrfex/images/default/icon_saveandclose.png', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYXKML', uiaction: { tag: 'SaveAndExit', target: '' }, class: '' },
+
+        deuiaction1: { name: 'deuiaction1', caption: '退出','isShowCaption':true,'isShowIcon':true, tooltip: '退出', iconcls: 'fa fa-sign-out', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'Exit', target: '' }, class: '' },
 
     };
 
@@ -179,7 +180,7 @@ export default class SocRuleEditViewBase extends EditViewBase {
      *
      * @public
      * @type {Engine}
-     * @memberof SocRuleEditViewBase
+     * @memberof SocRuleQuickEditViewBase
      */
     public engine: EditViewEngine = new EditViewEngine();
 	
@@ -188,7 +189,7 @@ export default class SocRuleEditViewBase extends EditViewBase {
      * 引擎初始化
      *
      * @public
-     * @memberof SocRuleEditViewBase
+     * @memberof SocRuleQuickEditViewBase
      */
     public engineInit(): void {
         this.engine.init({
@@ -207,11 +208,14 @@ export default class SocRuleEditViewBase extends EditViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocRuleEditViewBase
+     * @memberof SocRuleQuickEditViewBase
      */
     public toolbar_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'tbitem1_openedieview')) {
-            this.toolbar_tbitem1_openedieview_click(null, '', $event2);
+        if (Object.is($event.tag, 'deuiaction5')) {
+            this.toolbar_deuiaction5_click(null, '', $event2);
+        }
+        if (Object.is($event.tag, 'deuiaction1')) {
+            this.toolbar_deuiaction1_click(null, '', $event2);
         }
     }
 
@@ -221,7 +225,7 @@ export default class SocRuleEditViewBase extends EditViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocRuleEditViewBase
+     * @memberof SocRuleQuickEditViewBase
      */
     public form_save($event: any, $event2?: any) {
         this.engine.onCtrlEvent('form', 'save', $event);
@@ -233,7 +237,7 @@ export default class SocRuleEditViewBase extends EditViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocRuleEditViewBase
+     * @memberof SocRuleQuickEditViewBase
      */
     public form_remove($event: any, $event2?: any) {
         this.engine.onCtrlEvent('form', 'remove', $event);
@@ -245,7 +249,7 @@ export default class SocRuleEditViewBase extends EditViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocRuleEditViewBase
+     * @memberof SocRuleQuickEditViewBase
      */
     public form_load($event: any, $event2?: any) {
         this.engine.onCtrlEvent('form', 'load', $event);
@@ -261,7 +265,7 @@ export default class SocRuleEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_tbitem1_openedieview_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction5_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -278,8 +282,86 @@ export default class SocRuleEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:SocRuleUIService  = new SocRuleUIService();
-        curUIService.SocRule_OpenEdieView(datas,contextJO, paramJO,  $event, xData,this,"SocRule");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"SocRule");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
+        // 参数
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        let contextJO:any = {};
+        xData = this.$refs.form;
+        if (xData.getDatas && xData.getDatas instanceof Function) {
+            datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"SocRule");
+    }
+
+    /**
+     * 保存并关闭
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} contextJO 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @memberof SocRuleQuickEditViewBase
+     */
+    public SaveAndExit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        const _this: any = this;
+        if (xData && xData.saveAndExit instanceof Function) {
+            xData.saveAndExit().then((response: any) => {
+                if (!response || response.status !== 200) {
+                    return;
+                }
+                if(window.parent){
+                    window.parent.postMessage([{ ...response.data }],'*');
+                }
+            });
+        } else if (_this.saveAndExit && _this.saveAndExit instanceof Function) {
+            _this.saveAndExit().then((response: any) => {
+                if (!response || response.status !== 200) {
+                    return;
+                }
+                if(window.parent){
+                    window.parent.postMessage([{ ...response.data }],'*');
+                }
+            });
+        }
+    }
+    /**
+     * 关闭
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} contextJO 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @memberof SocRuleQuickEditViewBase
+     */
+    public Exit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        this.closeView(args);
+        if(window.parent){
+            window.parent.postMessage([{ ...args }],'*');
+        }
     }
 
 
@@ -287,7 +369,7 @@ export default class SocRuleEditViewBase extends EditViewBase {
     /**
      * 销毁视图回调
      *
-     * @memberof SocRuleEditViewBase
+     * @memberof SocRuleQuickEditViewBase
      */
     public destroyed(){
         if(this.viewDefaultUsage){
@@ -307,5 +389,5 @@ export default class SocRuleEditViewBase extends EditViewBase {
 </script>
 
 <style lang='less'>
-@import './soc-rule-edit-view.less';
+@import './soc-rule-quick-edit-view.less';
 </style>

@@ -1,16 +1,16 @@
 /**
- * Main 部件模型
+ * Main2 部件模型
  *
  * @export
- * @class MainModel
+ * @class Main2Model
  */
-export default class MainModel {
+export default class Main2Model {
 
   /**
   * 获取数据项集合
   *
   * @returns {any[]}
-  * @memberof MainModel
+  * @memberof Main2Model
   */
   public getDataItems(): any[] {
     return [
@@ -74,6 +74,11 @@ export default class MainModel {
         name: 'memo',
         prop: 'memo',
         dataType: 'LONGTEXT_1000',
+      },
+      {
+        name: 'ormorgid',
+        prop: 'ormorgid',
+        dataType: 'PICKUP',
       },
       {
         name: 'socruleid',

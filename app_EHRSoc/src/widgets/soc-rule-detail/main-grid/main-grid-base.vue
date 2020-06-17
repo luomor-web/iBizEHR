@@ -20,8 +20,20 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
+            <template v-if="getColumnState('ordervalue')">
+                <el-table-column show-overflow-tooltip :prop="'ordervalue'" :label="$t('entities.socruledetail.main_grid.columns.ordervalue')" :width="100"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.socruledetail.main_grid.columns.ordervalue')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <span>{{row.ordervalue}}</span>
+                    </template>
+                </el-table-column>
+            </template>
             <template v-if="getColumnState('soctypename')">
-                <el-table-column show-overflow-tooltip :prop="'soctypename'" :label="$t('entities.socruledetail.main_grid.columns.soctypename')" :width="100"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'soctypename'" :label="$t('entities.socruledetail.main_grid.columns.soctypename')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.socruledetail.main_grid.columns.soctypename')}}
@@ -61,7 +73,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('highnum')">
-                <el-table-column show-overflow-tooltip :prop="'highnum'" :label="$t('entities.socruledetail.main_grid.columns.highnum')" :width="100"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'highnum'" :label="$t('entities.socruledetail.main_grid.columns.highnum')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.socruledetail.main_grid.columns.highnum')}}
@@ -88,7 +100,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('lownum')">
-                <el-table-column show-overflow-tooltip :prop="'lownum'" :label="$t('entities.socruledetail.main_grid.columns.lownum')" :width="100"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'lownum'" :label="$t('entities.socruledetail.main_grid.columns.lownum')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.socruledetail.main_grid.columns.lownum')}}
@@ -115,7 +127,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('companynum')">
-                <el-table-column show-overflow-tooltip :prop="'companynum'" :label="$t('entities.socruledetail.main_grid.columns.companynum')" :width="100"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'companynum'" :label="$t('entities.socruledetail.main_grid.columns.companynum')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.socruledetail.main_grid.columns.companynum')}}
@@ -142,7 +154,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('personnum')">
-                <el-table-column show-overflow-tooltip :prop="'personnum'" :label="$t('entities.socruledetail.main_grid.columns.personnum')" :width="100"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'personnum'" :label="$t('entities.socruledetail.main_grid.columns.personnum')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.socruledetail.main_grid.columns.personnum')}}
@@ -169,7 +181,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('companyrate')">
-                <el-table-column show-overflow-tooltip :prop="'companyrate'" :label="$t('entities.socruledetail.main_grid.columns.companyrate')" :width="100"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'companyrate'" :label="$t('entities.socruledetail.main_grid.columns.companyrate')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.socruledetail.main_grid.columns.companyrate')}}
@@ -196,7 +208,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('personrate')">
-                <el-table-column show-overflow-tooltip :prop="'personrate'" :label="$t('entities.socruledetail.main_grid.columns.personrate')" :width="100"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'personrate'" :label="$t('entities.socruledetail.main_grid.columns.personrate')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.socruledetail.main_grid.columns.personrate')}}
@@ -223,7 +235,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('companyamount')">
-                <el-table-column show-overflow-tooltip :prop="'companyamount'" :label="$t('entities.socruledetail.main_grid.columns.companyamount')" :width="100"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'companyamount'" :label="$t('entities.socruledetail.main_grid.columns.companyamount')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.socruledetail.main_grid.columns.companyamount')}}
@@ -250,7 +262,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('personamount')">
-                <el-table-column show-overflow-tooltip :prop="'personamount'" :label="$t('entities.socruledetail.main_grid.columns.personamount')" :width="100"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'personamount'" :label="$t('entities.socruledetail.main_grid.columns.personamount')" :width="180"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.socruledetail.main_grid.columns.personamount')}}
@@ -277,7 +289,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('memo')">
-                <el-table-column show-overflow-tooltip :prop="'memo'" :label="$t('entities.socruledetail.main_grid.columns.memo')" :width="200"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'memo'" :label="$t('entities.socruledetail.main_grid.columns.memo')" :width="300"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.socruledetail.main_grid.columns.memo')}}
@@ -286,13 +298,19 @@
                     <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
                             <app-form-item :error="gridItemsModel[$index][column.property].error">
-                                <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
-                <textarea class="ivu-input" rows="10" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" v-model="row[column.property]" style=""  @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}"></textarea>
-            </div>
+                                <input-box 
+              :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
+              v-model="row[column.property]" 
+              style=""
+              type="text"
+              
+              
+              @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}">
+            </input-box>
                             </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
-                                <app-span name='memo' editorType="TEXTAREA" :value="row.memo"></app-span>
+                                <app-span name='memo' editorType="TEXTBOX" :value="row.memo"></app-span>
                         </template>
                     </template>
                 </el-table-column>
@@ -302,39 +320,6 @@
             </template>
     </el-table>
   
-    <row class='grid-pagination' v-show="items.length > 0">
-        <page class='pull-right' @on-change="pageOnChange($event)" 
-            @on-page-size-change="onPageSizeChange($event)"
-            :transfer="true" :total="totalrow"
-            show-sizer :current="curPage" :page-size="limit"
-            :page-size-opts="[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]" show-elevator show-total>
-            <span>
-                <span class="page-column">
-                    <poptip transfer placement="top-start">
-                        <i-button icon="md-menu">{{$t('app.gridpage.choicecolumns')}}</i-button>
-                        <div slot="content">
-                            <template v-for="col in allColumns">
-                                <div :key="col.name"><el-checkbox v-model="col.show" @change="onColChange()">{{$t(col.langtag)}}</el-checkbox></div>
-                            </template>
-                        </div>
-                    </poptip>
-                </span>
-                <span class="page-button"><i-button icon="md-refresh" :title="$t('app.gridpage.refresh')" @click="pageRefresh()"></i-button></span>&nbsp;
-                <span>
-                    {{$t('app.gridpage.show')}}&nbsp;
-                    <span>
-                        <template v-if="items.length === 1">
-                        1
-                        </template>
-                        <template v-else>
-                            <span>{{(curPage - 1) * limit + 1}}&nbsp;-&nbsp;{{totalrow > curPage * limit ? curPage * limit : totalrow}}</span>
-                        </template>
-                    </span>&nbsp;
-                    {{$t('app.gridpage.records')}}，{{$t('app.gridpage.totle')}}&nbsp;{{totalrow}}&nbsp;{{$t('app.gridpage.records')}}
-                </span>
-            </span>
-        </page>
-    </row>
   </i-form>
 </div>
 </template>
@@ -586,7 +571,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @type {boolean}
      * @memberof Main
      */
-    public isEnablePagingBar: boolean = true;
+    public isEnablePagingBar: boolean = false;
 
     /**
      * 是否禁用排序
@@ -773,6 +758,13 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public allColumns: any[] = [
+        {
+            name: 'ordervalue',
+            label: '排序号',
+            langtag: 'entities.socruledetail.main_grid.columns.ordervalue',
+            show: true,
+            util: 'PX'
+        },
         {
             name: 'soctypename',
             label: '保险类型',

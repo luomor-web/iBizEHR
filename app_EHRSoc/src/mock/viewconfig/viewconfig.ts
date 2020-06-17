@@ -103,6 +103,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "SocRuleDetailGridView",
             "viewtag": "b90f6f466753e0b928ea594d2a38ab73"
         },
+        "socrulemain2editview": {
+            "title": "社保规则编辑视图",
+            "caption": "社保规则",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "SOC",
+            "viewname": "SocRuleMain2EditView",
+            "viewtag": "bcb4830aa7bbc34a074b36fc48f8f0b6"
+        },
         "socaccountgridview": {
             "title": "参保账户表格视图",
             "caption": "参保账户",
@@ -118,6 +126,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "SOC",
             "viewname": "SocAccountEditView",
             "viewtag": "dcb1f8a13036f3f4af6199bc475c8680"
+        },
+        "socrulequickeditview": {
+            "title": "社保规则编辑视图",
+            "caption": "社保规则",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "SOC",
+            "viewname": "SocRuleQuickEditView",
+            "viewtag": "f171820c870830bd35bd19ffce2873ac"
         },
         "index": {
             "title": "EHR—社保管理",

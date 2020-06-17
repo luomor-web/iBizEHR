@@ -58,6 +58,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                'f171820c870830bd35bd19ffce2873ac',
                 '954c57b4c84541e4769606551de25a05',
             ],
         },
@@ -88,7 +89,7 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'b90f6f466753e0b928ea594d2a38ab73',
-                '912c10028c229aaf79d7542c94931417',
+                'bcb4830aa7bbc34a074b36fc48f8f0b6',
             ],
         },
         {
@@ -122,6 +123,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'bcb4830aa7bbc34a074b36fc48f8f0b6',
+            viewmodule: 'SOC',
+            viewname: 'SocRuleMain2EditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '912c10028c229aaf79d7542c94931417',
+            ],
+        },
+        {
             viewtag: 'be3603e6155f93c90fc36953c6a4689f',
             viewmodule: 'SOC',
             viewname: 'SocAccountGridView',
@@ -135,6 +146,16 @@ export const viewstate: any = {
             viewtag: 'dcb1f8a13036f3f4af6199bc475c8680',
             viewmodule: 'SOC',
             viewname: 'SocAccountEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '912c10028c229aaf79d7542c94931417',
+            ],
+        },
+        {
+            viewtag: 'f171820c870830bd35bd19ffce2873ac',
+            viewmodule: 'SOC',
+            viewname: 'SocRuleQuickEditView',
             viewaction: '',
             viewdatachange: false,
             refviews: [
