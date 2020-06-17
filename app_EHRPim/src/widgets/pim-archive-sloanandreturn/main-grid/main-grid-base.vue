@@ -108,7 +108,7 @@
               deMajorField='pimpersonname'
               deKeyField='pimperson'
               :service="service"
-              :acParams="{ }"
+              :acParams="{ serviceName: 'PimPersonService', interfaceName: 'FetchDefault'}"
               valueitem='pimpersonid3' 
               :value="row[column.property]" 
               editortype="" 

@@ -90,6 +90,9 @@ export default class MainService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
+        if (Object.is(serviceName, 'PimPersonService') && Object.is(interfaceName, 'FetchDefault')) {
+            return this.doItems(this.pimpersonService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'pimpersonid', 'pimperson');
+        }
 
         return Promise.reject([])
     }
