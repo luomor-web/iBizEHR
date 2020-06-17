@@ -160,7 +160,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "277a884d8a8623a9f90077ad885b6d0c"
         },
         "trmtrainfillingridview": {
-            "title": "培训项目部门填报表格视图",
+            "title": "培训需求填报",
             "caption": "培训需求填报",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
@@ -192,8 +192,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "30c34b1211a700dd244b47af6ab67002"
         },
         "trmdepartxqhzgridview": {
-            "title": "需求通知表格视图",
-            "caption": "培训需求通知",
+            "title": "需求填报明细",
+            "caption": "需求填报明细",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmDepartXQHZGridView",
@@ -336,8 +336,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "4ba1031569be407b55a2669c731f641e"
         },
         "trmdepartxqhzeditview": {
-            "title": "需求汇总编辑视图",
-            "caption": "培训需求通知",
+            "title": "需求汇总",
+            "caption": "需求汇总",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmDepartXQHZEditView",
@@ -552,8 +552,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "878c6aa215b91f624102716b96aa8a7d"
         },
         "trmdeparteditview": {
-            "title": "培训需求通知编辑视图",
-            "caption": "培训需求通知",
+            "title": "需求通知",
+            "caption": "需求通知",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmDepartEditView",
@@ -800,8 +800,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "c8ca73a29695c2118a0cc73b299741b3"
         },
         "trmdepartgridview": {
-            "title": "需求通知表格视图",
-            "caption": "培训需求通知",
+            "title": "需求通知",
+            "caption": "需求通知",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmDepartGridView",
@@ -1040,7 +1040,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "fd6f768022331e805d7c95abaa97f185"
         },
         "trmtrainfillineditview": {
-            "title": "培训项目部门填报编辑视图",
+            "title": "培训需求填报",
             "caption": "培训需求填报",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",

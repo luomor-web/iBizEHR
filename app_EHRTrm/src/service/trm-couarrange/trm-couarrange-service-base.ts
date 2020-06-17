@@ -48,8 +48,14 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmcouarrange){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges/${context.trmcouarrange}/select`,isloading);
+        }
         if(context.trmtrainagency && context.trmcoursesystem && context.trmcouarrange){
             return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/${context.trmcoursesystem}/trmcouarranges/${context.trmcouarrange}/select`,isloading);
+        }
+        if(context.trmtrainteacher && context.trmcouarrange){
+            return Http.getInstance().get(`/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges/${context.trmcouarrange}/select`,isloading);
         }
         if(context.trmtrainagency && context.trmcouarrange){
             return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmcouarranges/${context.trmcouarrange}/select`,isloading);
@@ -73,6 +79,15 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges`,data,isloading);
+        }
         if(context.trmtrainagency && context.trmcoursesystem && true){
             if(!data.srffrontuf || data.srffrontuf !== "1"){
                 data[this.APPDEKEY] = null;
@@ -81,6 +96,15 @@ export default class TrmCouarrangeServiceBase extends EntityService {
                 delete data.srffrontuf;
             }
             return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/${context.trmcoursesystem}/trmcouarranges`,data,isloading);
+        }
+        if(context.trmtrainteacher && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges`,data,isloading);
         }
         if(context.trmtrainagency && true){
             if(!data.srffrontuf || data.srffrontuf !== "1"){
@@ -132,8 +156,14 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmcouarrange){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges/${context.trmcouarrange}`,isloading);
+        }
         if(context.trmtrainagency && context.trmcoursesystem && context.trmcouarrange){
             return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/${context.trmcoursesystem}/trmcouarranges/${context.trmcouarrange}`,isloading);
+        }
+        if(context.trmtrainteacher && context.trmcouarrange){
+            return Http.getInstance().get(`/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges/${context.trmcouarrange}`,isloading);
         }
         if(context.trmtrainagency && context.trmcouarrange){
             return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmcouarranges/${context.trmcouarrange}`,isloading);
@@ -159,8 +189,14 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmcouarrange){
+            return Http.getInstance().delete(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges/${context.trmcouarrange}`,isloading);
+        }
         if(context.trmtrainagency && context.trmcoursesystem && context.trmcouarrange){
             return Http.getInstance().delete(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/${context.trmcoursesystem}/trmcouarranges/${context.trmcouarrange}`,isloading);
+        }
+        if(context.trmtrainteacher && context.trmcouarrange){
+            return Http.getInstance().delete(`/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges/${context.trmcouarrange}`,isloading);
         }
         if(context.trmtrainagency && context.trmcouarrange){
             return Http.getInstance().delete(`/trmtrainagencies/${context.trmtrainagency}/trmcouarranges/${context.trmcouarrange}`,isloading);
@@ -185,8 +221,14 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && true){
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges/getdraft`,isloading);
+        }
         if(context.trmtrainagency && context.trmcoursesystem && true){
             return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/${context.trmcoursesystem}/trmcouarranges/getdraft`,isloading);
+        }
+        if(context.trmtrainteacher && true){
+            return Http.getInstance().get(`/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges/getdraft`,isloading);
         }
         if(context.trmtrainagency && true){
             return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmcouarranges/getdraft`,isloading);
@@ -212,8 +254,14 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmcouarrange){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges/${context.trmcouarrange}/checkkey`,data,isloading);
+        }
         if(context.trmtrainagency && context.trmcoursesystem && context.trmcouarrange){
             return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/${context.trmcoursesystem}/trmcouarranges/${context.trmcouarrange}/checkkey`,data,isloading);
+        }
+        if(context.trmtrainteacher && context.trmcouarrange){
+            return Http.getInstance().post(`/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges/${context.trmcouarrange}/checkkey`,data,isloading);
         }
         if(context.trmtrainagency && context.trmcouarrange){
             return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmcouarranges/${context.trmcouarrange}/checkkey`,data,isloading);
@@ -237,8 +285,14 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmcouarrange){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges/${context.trmcouarrange}/save`,data,isloading);
+        }
         if(context.trmtrainagency && context.trmcoursesystem && context.trmcouarrange){
             return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/${context.trmcoursesystem}/trmcouarranges/${context.trmcouarrange}/save`,data,isloading);
+        }
+        if(context.trmtrainteacher && context.trmcouarrange){
+            return Http.getInstance().post(`/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges/${context.trmcouarrange}/save`,data,isloading);
         }
         if(context.trmtrainagency && context.trmcouarrange){
             return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmcouarranges/${context.trmcouarrange}/save`,data,isloading);
@@ -265,8 +319,14 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmcouarrange){
+            return Http.getInstance().put(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges/${context.trmcouarrange}`,data,isloading);
+        }
         if(context.trmtrainagency && context.trmcoursesystem && context.trmcouarrange){
             return Http.getInstance().put(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/${context.trmcoursesystem}/trmcouarranges/${context.trmcouarrange}`,data,isloading);
+        }
+        if(context.trmtrainteacher && context.trmcouarrange){
+            return Http.getInstance().put(`/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges/${context.trmcouarrange}`,data,isloading);
         }
         if(context.trmtrainagency && context.trmcouarrange){
             return Http.getInstance().put(`/trmtrainagencies/${context.trmtrainagency}/trmcouarranges/${context.trmcouarrange}`,data,isloading);
@@ -293,9 +353,17 @@ export default class TrmCouarrangeServiceBase extends EntityService {
      * @memberof TrmCouarrangeServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.trmtrainagency && context.trmtrainteacher && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges/fetchdefault`,tempData,isloading);
+        }
         if(context.trmtrainagency && context.trmcoursesystem && true){
             let tempData:any = JSON.parse(JSON.stringify(data));
             return Http.getInstance().get(`/trmtrainagencies/${context.trmtrainagency}/trmcoursesystems/${context.trmcoursesystem}/trmcouarranges/fetchdefault`,tempData,isloading);
+        }
+        if(context.trmtrainteacher && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/trmtrainteachers/${context.trmtrainteacher}/trmcouarranges/fetchdefault`,tempData,isloading);
         }
         if(context.trmtrainagency && true){
             let tempData:any = JSON.parse(JSON.stringify(data));

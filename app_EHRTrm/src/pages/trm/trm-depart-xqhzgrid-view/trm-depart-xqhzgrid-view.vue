@@ -6,7 +6,7 @@ import view_grid from '@widgets/trm-depart/main-grid/main-grid.vue';
 import view_searchform from '@widgets/trm-depart/default-searchform/default-searchform.vue';
 
 /**
- * 需求通知表格视图
+ * 需求填报明细
  *
  * @export
  * @class TrmDepartXQHZGridView

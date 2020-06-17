@@ -171,7 +171,7 @@
         "memo": ""
     },
     "trmtrainfillingridview": {
-        "title": "培训项目部门填报表格视图",
+        "title": "培训需求填报",
         "caption": "培训需求填报",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "TRM",
@@ -207,8 +207,8 @@
         "memo": ""
     },
     "trmdepartxqhzgridview": {
-        "title": "需求通知表格视图",
-        "caption": "培训需求通知",
+        "title": "需求填报明细",
+        "caption": "需求填报明细",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmDepartXQHZGridView",
@@ -369,8 +369,8 @@
         "memo": "系统自动添加"
     },
     "trmdepartxqhzeditview": {
-        "title": "需求汇总编辑视图",
-        "caption": "培训需求通知",
+        "title": "需求汇总",
+        "caption": "需求汇总",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmDepartXQHZEditView",
@@ -612,8 +612,8 @@
         "memo": ""
     },
     "trmdeparteditview": {
-        "title": "培训需求通知编辑视图",
-        "caption": "培训需求通知",
+        "title": "需求通知",
+        "caption": "需求通知",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmDepartEditView",
@@ -891,8 +891,8 @@
         "memo": "系统自动添加"
     },
     "trmdepartgridview": {
-        "title": "需求通知表格视图",
-        "caption": "培训需求通知",
+        "title": "需求通知",
+        "caption": "需求通知",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmDepartGridView",
@@ -1161,7 +1161,7 @@
         "memo": ""
     },
     "trmtrainfillineditview": {
-        "title": "培训项目部门填报编辑视图",
+        "title": "培训需求填报",
         "caption": "培训需求填报",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "TRM",

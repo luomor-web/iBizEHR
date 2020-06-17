@@ -29,16 +29,16 @@ export default {
   },
 	views: {
 		xqhzgridview: {
-			caption: "培训需求通知",
-      title: '需求通知表格视图',
+			caption: "需求填报明细",
+      title: '需求填报明细',
 		},
 		pickupview: {
 			caption: "培训需求通知",
       title: '部门需求填报数据选择视图',
 		},
 		xqhzeditview: {
-			caption: "培训需求通知",
-      title: '需求汇总编辑视图',
+			caption: "需求汇总",
+      title: '需求汇总',
 		},
 		pickupgridview: {
 			caption: "培训需求通知",
@@ -49,17 +49,17 @@ export default {
       title: '部门需求填报数据多项选择视图',
 		},
 		editview: {
-			caption: "培训需求通知",
-      title: '培训需求通知编辑视图',
+			caption: "需求通知",
+      title: '需求通知',
 		},
 		gridview: {
-			caption: "培训需求通知",
-      title: '需求通知表格视图',
+			caption: "需求通知",
+      title: '需求通知',
 		},
 	},
 	main_2_form: {
 		details: {
-			group1: "培训需求通知", 
+			group1: "需求通知", 
 			druipart1: "", 
 			grouppanel1: "需求汇总", 
 			formpage1: "基本信息", 
@@ -135,21 +135,17 @@ export default {
 			caption: "New",
 			tip: "New",
 		},
+		tbitem5: {
+			caption: "Edit",
+			tip: "Edit {0}",
+		},
 		tbitem8: {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-		tbitem19: {
-			caption: "Filter",
-			tip: "Filter",
-		},
 		tbitem13: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 	xqhzeditviewtoolbar_toolbar: {
@@ -157,21 +153,9 @@ export default {
 			caption: "Save",
 			tip: "Save",
 		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
 		tbitem5: {
 			caption: "Save And Close",
 			tip: "Save And Close Window",
-		},
-		tbitem7: {
-			caption: "Remove And Close",
-			tip: "Remove And Close Window",
-		},
-		tbitem22: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 	editviewtoolbar_toolbar: {
@@ -201,21 +185,17 @@ export default {
 			caption: "New",
 			tip: "New",
 		},
+		tbitem5: {
+			caption: "Edit",
+			tip: "Edit {0}",
+		},
 		tbitem8: {
 			caption: "Remove",
 			tip: "Remove {0}",
 		},
-		tbitem19: {
-			caption: "Filter",
-			tip: "Filter",
-		},
 		tbitem13: {
 			caption: "Export",
 			tip: "Export {0} Data To Excel",
-		},
-		tbitem18: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 };

@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="trmdeparteditview" viewTitle="培训需求通知编辑视图" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'trm-depart-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="trmdeparteditview" viewTitle="需求通知" :isShowCaptionBar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'trm-depart-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -53,7 +53,7 @@ import EditViewEngine from '@engine/view/edit-view-engine';
 
 
 /**
- * 培训需求通知编辑视图基类
+ * 需求通知基类
  *
  * @export
  * @class TrmDepartEditViewBase

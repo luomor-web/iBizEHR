@@ -194,5 +194,341 @@ public class TrmTrainPlantermResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(trmtrainplantermMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @PostAuthorize("hasPermission(this.trmtrainplantermMapping.toDomain(returnObject.body),'ehr-TrmTrainPlanterm-Get')")
+    @ApiOperation(value = "根据培训讲师获取培训立项", tags = {"培训立项" },  notes = "根据培训讲师获取培训立项")
+	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/{trmtrainplanterm_id}")
+    public ResponseEntity<TrmTrainPlantermDTO> getByTrmTrainTeacher(@PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @PathVariable("trmtrainplanterm_id") String trmtrainplanterm_id) {
+        TrmTrainPlanterm domain = trmtrainplantermService.get(trmtrainplanterm_id);
+        TrmTrainPlantermDTO dto = trmtrainplantermMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainplantermService.get(#trmtrainplanterm_id),'ehr-TrmTrainPlanterm-Remove')")
+    @ApiOperation(value = "根据培训讲师删除培训立项", tags = {"培训立项" },  notes = "根据培训讲师删除培训立项")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/{trmtrainplanterm_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByTrmTrainTeacher(@PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @PathVariable("trmtrainplanterm_id") String trmtrainplanterm_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermService.remove(trmtrainplanterm_id));
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainplantermService.getTrmtrainplantermByIds(#ids),'ehr-TrmTrainPlanterm-Remove')")
+    @ApiOperation(value = "根据培训讲师批量删除培训立项", tags = {"培训立项" },  notes = "根据培训讲师批量删除培训立项")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/batch")
+    public ResponseEntity<Boolean> removeBatchByTrmTrainTeacher(@RequestBody List<String> ids) {
+        trmtrainplantermService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "根据培训讲师检查培训立项", tags = {"培训立项" },  notes = "根据培训讲师检查培训立项")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/checkkey")
+    public ResponseEntity<Boolean> checkKeyByTrmTrainTeacher(@PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @RequestBody TrmTrainPlantermDTO trmtrainplantermdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermService.checkKey(trmtrainplantermMapping.toDomain(trmtrainplantermdto)));
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainplantermService.get(#trmtrainplanterm_id),'ehr-TrmTrainPlanterm-Update')")
+    @ApiOperation(value = "根据培训讲师更新培训立项", tags = {"培训立项" },  notes = "根据培训讲师更新培训立项")
+	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/{trmtrainplanterm_id}")
+    @Transactional
+    public ResponseEntity<TrmTrainPlantermDTO> updateByTrmTrainTeacher(@PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @PathVariable("trmtrainplanterm_id") String trmtrainplanterm_id, @RequestBody TrmTrainPlantermDTO trmtrainplantermdto) {
+        TrmTrainPlanterm domain = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
+        domain.setTrmtrainteacherid(trmtrainteacher_id);
+        domain.setTrmtrainplantermid(trmtrainplanterm_id);
+		trmtrainplantermService.update(domain);
+        TrmTrainPlantermDTO dto = trmtrainplantermMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainplantermService.getTrmtrainplantermByEntities(this.trmtrainplantermMapping.toDomain(#trmtrainplantermdtos)),'ehr-TrmTrainPlanterm-Update')")
+    @ApiOperation(value = "根据培训讲师批量更新培训立项", tags = {"培训立项" },  notes = "根据培训讲师批量更新培训立项")
+	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/batch")
+    public ResponseEntity<Boolean> updateBatchByTrmTrainTeacher(@PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @RequestBody List<TrmTrainPlantermDTO> trmtrainplantermdtos) {
+        List<TrmTrainPlanterm> domainlist=trmtrainplantermMapping.toDomain(trmtrainplantermdtos);
+        for(TrmTrainPlanterm domain:domainlist){
+            domain.setTrmtrainteacherid(trmtrainteacher_id);
+        }
+        trmtrainplantermService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainplantermMapping.toDomain(#trmtrainplantermdto),'ehr-TrmTrainPlanterm-Save')")
+    @ApiOperation(value = "根据培训讲师保存培训立项", tags = {"培训立项" },  notes = "根据培训讲师保存培训立项")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/save")
+    public ResponseEntity<Boolean> saveByTrmTrainTeacher(@PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @RequestBody TrmTrainPlantermDTO trmtrainplantermdto) {
+        TrmTrainPlanterm domain = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
+        domain.setTrmtrainteacherid(trmtrainteacher_id);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainplantermMapping.toDomain(#trmtrainplantermdtos),'ehr-TrmTrainPlanterm-Save')")
+    @ApiOperation(value = "根据培训讲师批量保存培训立项", tags = {"培训立项" },  notes = "根据培训讲师批量保存培训立项")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/savebatch")
+    public ResponseEntity<Boolean> saveBatchByTrmTrainTeacher(@PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @RequestBody List<TrmTrainPlantermDTO> trmtrainplantermdtos) {
+        List<TrmTrainPlanterm> domainlist=trmtrainplantermMapping.toDomain(trmtrainplantermdtos);
+        for(TrmTrainPlanterm domain:domainlist){
+             domain.setTrmtrainteacherid(trmtrainteacher_id);
+        }
+        trmtrainplantermService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "根据培训讲师获取培训立项草稿", tags = {"培训立项" },  notes = "根据培训讲师获取培训立项草稿")
+    @RequestMapping(method = RequestMethod.GET, value = "/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/getdraft")
+    public ResponseEntity<TrmTrainPlantermDTO> getDraftByTrmTrainTeacher(@PathVariable("trmtrainteacher_id") String trmtrainteacher_id) {
+        TrmTrainPlanterm domain = new TrmTrainPlanterm();
+        domain.setTrmtrainteacherid(trmtrainteacher_id);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermMapping.toDto(trmtrainplantermService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainPlanterm-KB-all')")
+    @ApiOperation(value = "根据培训讲师培训立项", tags = {"培训立项" },  notes = "根据培训讲师培训立项")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/{trmtrainplanterm_id}/kb")
+    @Transactional
+    public ResponseEntity<TrmTrainPlantermDTO> kBByTrmTrainTeacher(@PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @PathVariable("trmtrainplanterm_id") String trmtrainplanterm_id, @RequestBody TrmTrainPlantermDTO trmtrainplantermdto) {
+        TrmTrainPlanterm domain = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
+        domain.setTrmtrainteacherid(trmtrainteacher_id);
+        domain = trmtrainplantermService.kB(domain) ;
+        trmtrainplantermdto = trmtrainplantermMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermdto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainplantermMapping.toDomain(#trmtrainplantermdto),'ehr-TrmTrainPlanterm-Create')")
+    @ApiOperation(value = "根据培训讲师建立培训立项", tags = {"培训立项" },  notes = "根据培训讲师建立培训立项")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms")
+    @Transactional
+    public ResponseEntity<TrmTrainPlantermDTO> createByTrmTrainTeacher(@PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @RequestBody TrmTrainPlantermDTO trmtrainplantermdto) {
+        TrmTrainPlanterm domain = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
+        domain.setTrmtrainteacherid(trmtrainteacher_id);
+		trmtrainplantermService.create(domain);
+        TrmTrainPlantermDTO dto = trmtrainplantermMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainplantermMapping.toDomain(#trmtrainplantermdtos),'ehr-TrmTrainPlanterm-Create')")
+    @ApiOperation(value = "根据培训讲师批量建立培训立项", tags = {"培训立项" },  notes = "根据培训讲师批量建立培训立项")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/batch")
+    public ResponseEntity<Boolean> createBatchByTrmTrainTeacher(@PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @RequestBody List<TrmTrainPlantermDTO> trmtrainplantermdtos) {
+        List<TrmTrainPlanterm> domainlist=trmtrainplantermMapping.toDomain(trmtrainplantermdtos);
+        for(TrmTrainPlanterm domain:domainlist){
+            domain.setTrmtrainteacherid(trmtrainteacher_id);
+        }
+        trmtrainplantermService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainPlanterm-QX-all')")
+    @ApiOperation(value = "根据培训讲师培训立项", tags = {"培训立项" },  notes = "根据培训讲师培训立项")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/{trmtrainplanterm_id}/qx")
+    @Transactional
+    public ResponseEntity<TrmTrainPlantermDTO> qXByTrmTrainTeacher(@PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @PathVariable("trmtrainplanterm_id") String trmtrainplanterm_id, @RequestBody TrmTrainPlantermDTO trmtrainplantermdto) {
+        TrmTrainPlanterm domain = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
+        domain.setTrmtrainteacherid(trmtrainteacher_id);
+        domain = trmtrainplantermService.qX(domain) ;
+        trmtrainplantermdto = trmtrainplantermMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermdto);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainPlanterm-LX-all')")
+    @ApiOperation(value = "根据培训讲师培训立项", tags = {"培训立项" },  notes = "根据培训讲师培训立项")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/{trmtrainplanterm_id}/lx")
+    @Transactional
+    public ResponseEntity<TrmTrainPlantermDTO> lXByTrmTrainTeacher(@PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @PathVariable("trmtrainplanterm_id") String trmtrainplanterm_id, @RequestBody TrmTrainPlantermDTO trmtrainplantermdto) {
+        TrmTrainPlanterm domain = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
+        domain.setTrmtrainteacherid(trmtrainteacher_id);
+        domain = trmtrainplantermService.lX(domain) ;
+        trmtrainplantermdto = trmtrainplantermMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermdto);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainPlanterm-Default-all')")
+	@ApiOperation(value = "根据培训讲师获取DEFAULT", tags = {"培训立项" } ,notes = "根据培训讲师获取DEFAULT")
+    @RequestMapping(method= RequestMethod.GET , value="/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/fetchdefault")
+	public ResponseEntity<List<TrmTrainPlantermDTO>> fetchTrmTrainPlantermDefaultByTrmTrainTeacher(@PathVariable("trmtrainteacher_id") String trmtrainteacher_id,TrmTrainPlantermSearchContext context) {
+        context.setN_trmtrainteacherid_eq(trmtrainteacher_id);
+        Page<TrmTrainPlanterm> domains = trmtrainplantermService.searchDefault(context) ;
+        List<TrmTrainPlantermDTO> list = trmtrainplantermMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainPlanterm-Default-all')")
+	@ApiOperation(value = "根据培训讲师查询DEFAULT", tags = {"培训立项" } ,notes = "根据培训讲师查询DEFAULT")
+    @RequestMapping(method= RequestMethod.POST , value="/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/searchdefault")
+	public ResponseEntity<Page<TrmTrainPlantermDTO>> searchTrmTrainPlantermDefaultByTrmTrainTeacher(@PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @RequestBody TrmTrainPlantermSearchContext context) {
+        context.setN_trmtrainteacherid_eq(trmtrainteacher_id);
+        Page<TrmTrainPlanterm> domains = trmtrainplantermService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(trmtrainplantermMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PostAuthorize("hasPermission(this.trmtrainplantermMapping.toDomain(returnObject.body),'ehr-TrmTrainPlanterm-Get')")
+    @ApiOperation(value = "根据培训机构培训讲师获取培训立项", tags = {"培训立项" },  notes = "根据培训机构培训讲师获取培训立项")
+	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainagencies/{trmtrainagency_id}/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/{trmtrainplanterm_id}")
+    public ResponseEntity<TrmTrainPlantermDTO> getByTrmTrainAgencyTrmTrainTeacher(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @PathVariable("trmtrainplanterm_id") String trmtrainplanterm_id) {
+        TrmTrainPlanterm domain = trmtrainplantermService.get(trmtrainplanterm_id);
+        TrmTrainPlantermDTO dto = trmtrainplantermMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainplantermService.get(#trmtrainplanterm_id),'ehr-TrmTrainPlanterm-Remove')")
+    @ApiOperation(value = "根据培训机构培训讲师删除培训立项", tags = {"培训立项" },  notes = "根据培训机构培训讲师删除培训立项")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainagencies/{trmtrainagency_id}/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/{trmtrainplanterm_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByTrmTrainAgencyTrmTrainTeacher(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @PathVariable("trmtrainplanterm_id") String trmtrainplanterm_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermService.remove(trmtrainplanterm_id));
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainplantermService.getTrmtrainplantermByIds(#ids),'ehr-TrmTrainPlanterm-Remove')")
+    @ApiOperation(value = "根据培训机构培训讲师批量删除培训立项", tags = {"培训立项" },  notes = "根据培训机构培训讲师批量删除培训立项")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/trmtrainagencies/{trmtrainagency_id}/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/batch")
+    public ResponseEntity<Boolean> removeBatchByTrmTrainAgencyTrmTrainTeacher(@RequestBody List<String> ids) {
+        trmtrainplantermService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "根据培训机构培训讲师检查培训立项", tags = {"培训立项" },  notes = "根据培训机构培训讲师检查培训立项")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/checkkey")
+    public ResponseEntity<Boolean> checkKeyByTrmTrainAgencyTrmTrainTeacher(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @RequestBody TrmTrainPlantermDTO trmtrainplantermdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermService.checkKey(trmtrainplantermMapping.toDomain(trmtrainplantermdto)));
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainplantermService.get(#trmtrainplanterm_id),'ehr-TrmTrainPlanterm-Update')")
+    @ApiOperation(value = "根据培训机构培训讲师更新培训立项", tags = {"培训立项" },  notes = "根据培训机构培训讲师更新培训立项")
+	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainagencies/{trmtrainagency_id}/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/{trmtrainplanterm_id}")
+    @Transactional
+    public ResponseEntity<TrmTrainPlantermDTO> updateByTrmTrainAgencyTrmTrainTeacher(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @PathVariable("trmtrainplanterm_id") String trmtrainplanterm_id, @RequestBody TrmTrainPlantermDTO trmtrainplantermdto) {
+        TrmTrainPlanterm domain = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
+        domain.setTrmtrainteacherid(trmtrainteacher_id);
+        domain.setTrmtrainplantermid(trmtrainplanterm_id);
+		trmtrainplantermService.update(domain);
+        TrmTrainPlantermDTO dto = trmtrainplantermMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainplantermService.getTrmtrainplantermByEntities(this.trmtrainplantermMapping.toDomain(#trmtrainplantermdtos)),'ehr-TrmTrainPlanterm-Update')")
+    @ApiOperation(value = "根据培训机构培训讲师批量更新培训立项", tags = {"培训立项" },  notes = "根据培训机构培训讲师批量更新培训立项")
+	@RequestMapping(method = RequestMethod.PUT, value = "/trmtrainagencies/{trmtrainagency_id}/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/batch")
+    public ResponseEntity<Boolean> updateBatchByTrmTrainAgencyTrmTrainTeacher(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @RequestBody List<TrmTrainPlantermDTO> trmtrainplantermdtos) {
+        List<TrmTrainPlanterm> domainlist=trmtrainplantermMapping.toDomain(trmtrainplantermdtos);
+        for(TrmTrainPlanterm domain:domainlist){
+            domain.setTrmtrainteacherid(trmtrainteacher_id);
+        }
+        trmtrainplantermService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainplantermMapping.toDomain(#trmtrainplantermdto),'ehr-TrmTrainPlanterm-Save')")
+    @ApiOperation(value = "根据培训机构培训讲师保存培训立项", tags = {"培训立项" },  notes = "根据培训机构培训讲师保存培训立项")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/save")
+    public ResponseEntity<Boolean> saveByTrmTrainAgencyTrmTrainTeacher(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @RequestBody TrmTrainPlantermDTO trmtrainplantermdto) {
+        TrmTrainPlanterm domain = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
+        domain.setTrmtrainteacherid(trmtrainteacher_id);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainplantermMapping.toDomain(#trmtrainplantermdtos),'ehr-TrmTrainPlanterm-Save')")
+    @ApiOperation(value = "根据培训机构培训讲师批量保存培训立项", tags = {"培训立项" },  notes = "根据培训机构培训讲师批量保存培训立项")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/savebatch")
+    public ResponseEntity<Boolean> saveBatchByTrmTrainAgencyTrmTrainTeacher(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @RequestBody List<TrmTrainPlantermDTO> trmtrainplantermdtos) {
+        List<TrmTrainPlanterm> domainlist=trmtrainplantermMapping.toDomain(trmtrainplantermdtos);
+        for(TrmTrainPlanterm domain:domainlist){
+             domain.setTrmtrainteacherid(trmtrainteacher_id);
+        }
+        trmtrainplantermService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "根据培训机构培训讲师获取培训立项草稿", tags = {"培训立项" },  notes = "根据培训机构培训讲师获取培训立项草稿")
+    @RequestMapping(method = RequestMethod.GET, value = "/trmtrainagencies/{trmtrainagency_id}/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/getdraft")
+    public ResponseEntity<TrmTrainPlantermDTO> getDraftByTrmTrainAgencyTrmTrainTeacher(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmtrainteacher_id") String trmtrainteacher_id) {
+        TrmTrainPlanterm domain = new TrmTrainPlanterm();
+        domain.setTrmtrainteacherid(trmtrainteacher_id);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermMapping.toDto(trmtrainplantermService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainPlanterm-KB-all')")
+    @ApiOperation(value = "根据培训机构培训讲师培训立项", tags = {"培训立项" },  notes = "根据培训机构培训讲师培训立项")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/{trmtrainplanterm_id}/kb")
+    @Transactional
+    public ResponseEntity<TrmTrainPlantermDTO> kBByTrmTrainAgencyTrmTrainTeacher(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @PathVariable("trmtrainplanterm_id") String trmtrainplanterm_id, @RequestBody TrmTrainPlantermDTO trmtrainplantermdto) {
+        TrmTrainPlanterm domain = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
+        domain.setTrmtrainteacherid(trmtrainteacher_id);
+        domain = trmtrainplantermService.kB(domain) ;
+        trmtrainplantermdto = trmtrainplantermMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermdto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainplantermMapping.toDomain(#trmtrainplantermdto),'ehr-TrmTrainPlanterm-Create')")
+    @ApiOperation(value = "根据培训机构培训讲师建立培训立项", tags = {"培训立项" },  notes = "根据培训机构培训讲师建立培训立项")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms")
+    @Transactional
+    public ResponseEntity<TrmTrainPlantermDTO> createByTrmTrainAgencyTrmTrainTeacher(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @RequestBody TrmTrainPlantermDTO trmtrainplantermdto) {
+        TrmTrainPlanterm domain = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
+        domain.setTrmtrainteacherid(trmtrainteacher_id);
+		trmtrainplantermService.create(domain);
+        TrmTrainPlantermDTO dto = trmtrainplantermMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.trmtrainplantermMapping.toDomain(#trmtrainplantermdtos),'ehr-TrmTrainPlanterm-Create')")
+    @ApiOperation(value = "根据培训机构培训讲师批量建立培训立项", tags = {"培训立项" },  notes = "根据培训机构培训讲师批量建立培训立项")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/batch")
+    public ResponseEntity<Boolean> createBatchByTrmTrainAgencyTrmTrainTeacher(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @RequestBody List<TrmTrainPlantermDTO> trmtrainplantermdtos) {
+        List<TrmTrainPlanterm> domainlist=trmtrainplantermMapping.toDomain(trmtrainplantermdtos);
+        for(TrmTrainPlanterm domain:domainlist){
+            domain.setTrmtrainteacherid(trmtrainteacher_id);
+        }
+        trmtrainplantermService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainPlanterm-QX-all')")
+    @ApiOperation(value = "根据培训机构培训讲师培训立项", tags = {"培训立项" },  notes = "根据培训机构培训讲师培训立项")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/{trmtrainplanterm_id}/qx")
+    @Transactional
+    public ResponseEntity<TrmTrainPlantermDTO> qXByTrmTrainAgencyTrmTrainTeacher(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @PathVariable("trmtrainplanterm_id") String trmtrainplanterm_id, @RequestBody TrmTrainPlantermDTO trmtrainplantermdto) {
+        TrmTrainPlanterm domain = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
+        domain.setTrmtrainteacherid(trmtrainteacher_id);
+        domain = trmtrainplantermService.qX(domain) ;
+        trmtrainplantermdto = trmtrainplantermMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermdto);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainPlanterm-LX-all')")
+    @ApiOperation(value = "根据培训机构培训讲师培训立项", tags = {"培训立项" },  notes = "根据培训机构培训讲师培训立项")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainagencies/{trmtrainagency_id}/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/{trmtrainplanterm_id}/lx")
+    @Transactional
+    public ResponseEntity<TrmTrainPlantermDTO> lXByTrmTrainAgencyTrmTrainTeacher(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @PathVariable("trmtrainplanterm_id") String trmtrainplanterm_id, @RequestBody TrmTrainPlantermDTO trmtrainplantermdto) {
+        TrmTrainPlanterm domain = trmtrainplantermMapping.toDomain(trmtrainplantermdto);
+        domain.setTrmtrainteacherid(trmtrainteacher_id);
+        domain = trmtrainplantermService.lX(domain) ;
+        trmtrainplantermdto = trmtrainplantermMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrainplantermdto);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainPlanterm-Default-all')")
+	@ApiOperation(value = "根据培训机构培训讲师获取DEFAULT", tags = {"培训立项" } ,notes = "根据培训机构培训讲师获取DEFAULT")
+    @RequestMapping(method= RequestMethod.GET , value="/trmtrainagencies/{trmtrainagency_id}/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/fetchdefault")
+	public ResponseEntity<List<TrmTrainPlantermDTO>> fetchTrmTrainPlantermDefaultByTrmTrainAgencyTrmTrainTeacher(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmtrainteacher_id") String trmtrainteacher_id,TrmTrainPlantermSearchContext context) {
+        context.setN_trmtrainteacherid_eq(trmtrainteacher_id);
+        Page<TrmTrainPlanterm> domains = trmtrainplantermService.searchDefault(context) ;
+        List<TrmTrainPlantermDTO> list = trmtrainplantermMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainPlanterm-Default-all')")
+	@ApiOperation(value = "根据培训机构培训讲师查询DEFAULT", tags = {"培训立项" } ,notes = "根据培训机构培训讲师查询DEFAULT")
+    @RequestMapping(method= RequestMethod.POST , value="/trmtrainagencies/{trmtrainagency_id}/trmtrainteachers/{trmtrainteacher_id}/trmtrainplanterms/searchdefault")
+	public ResponseEntity<Page<TrmTrainPlantermDTO>> searchTrmTrainPlantermDefaultByTrmTrainAgencyTrmTrainTeacher(@PathVariable("trmtrainagency_id") String trmtrainagency_id, @PathVariable("trmtrainteacher_id") String trmtrainteacher_id, @RequestBody TrmTrainPlantermSearchContext context) {
+        context.setN_trmtrainteacherid_eq(trmtrainteacher_id);
+        Page<TrmTrainPlanterm> domains = trmtrainplantermService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(trmtrainplantermMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
 }
 

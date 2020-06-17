@@ -123,6 +123,7 @@
     paramItem='trmtrainplan' 
     :parentdata='{"srfparentdefname":"TRMTRAINPLANID","srfparentdename":"TRMTRAINPLAN","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_TRMTRAINPLANTERM_TRMTRAINPLAN_TRMTRAINPLANID","SRFDER1NID":"DER1N_TRMTRAINPLANTERM_TRMTRAINPLAN_TRMTRAINPLANID"}'
     :parameters="[
+        { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
     ]"
     :context="context"
     :viewparams="viewparams"

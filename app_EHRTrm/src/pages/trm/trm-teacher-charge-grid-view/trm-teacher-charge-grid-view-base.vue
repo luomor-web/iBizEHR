@@ -557,7 +557,12 @@ export default class TrmTeacherChargeGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(tempContext,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(tempContext.trmtrainteacher && true){
+            deResParameters = [
+            { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'trmteachercharges', parameterName: 'trmteachercharge' },
             { pathName: 'editview', parameterName: 'editview' },
@@ -591,7 +596,12 @@ export default class TrmTeacherChargeGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(tempContext,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(tempContext.trmtrainteacher && true){
+            deResParameters = [
+            { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'trmteachercharges', parameterName: 'trmteachercharge' },
             { pathName: 'editview', parameterName: 'editview' },

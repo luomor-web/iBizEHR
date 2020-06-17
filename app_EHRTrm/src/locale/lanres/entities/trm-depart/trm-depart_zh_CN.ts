@@ -28,16 +28,16 @@ export default {
   },
 	views: {
 		xqhzgridview: {
-			caption: '培训需求通知',
-      title: '需求通知表格视图',
+			caption: '需求填报明细',
+      title: '需求填报明细',
 		},
 		pickupview: {
 			caption: '培训需求通知',
       title: '部门需求填报数据选择视图',
 		},
 		xqhzeditview: {
-			caption: '培训需求通知',
-      title: '需求汇总编辑视图',
+			caption: '需求汇总',
+      title: '需求汇总',
 		},
 		pickupgridview: {
 			caption: '培训需求通知',
@@ -48,17 +48,17 @@ export default {
       title: '部门需求填报数据多项选择视图',
 		},
 		editview: {
-			caption: '培训需求通知',
-      title: '培训需求通知编辑视图',
+			caption: '需求通知',
+      title: '需求通知',
 		},
 		gridview: {
-			caption: '培训需求通知',
-      title: '需求通知表格视图',
+			caption: '需求通知',
+      title: '需求通知',
 		},
 	},
 	main_2_form: {
 		details: {
-			group1: '培训需求通知', 
+			group1: '需求通知', 
 			druipart1: '', 
 			grouppanel1: '需求汇总', 
 			formpage1: '基本信息', 
@@ -134,21 +134,17 @@ export default {
 			caption: '新建',
 			tip: '新建',
 		},
+		tbitem5: {
+			caption: '编辑',
+			tip: '编辑',
+		},
 		tbitem8: {
 			caption: '删除',
 			tip: '删除',
 		},
-		tbitem19: {
-			caption: '过滤',
-			tip: '过滤',
-		},
 		tbitem13: {
 			caption: '导出',
 			tip: '导出',
-		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 	xqhzeditviewtoolbar_toolbar: {
@@ -156,21 +152,9 @@ export default {
 			caption: '保存',
 			tip: '保存',
 		},
-		tbitem4: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
 		tbitem5: {
 			caption: '保存并关闭',
 			tip: '保存并关闭',
-		},
-		tbitem7: {
-			caption: '删除并关闭',
-			tip: '删除并关闭',
-		},
-		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 	editviewtoolbar_toolbar: {
@@ -200,21 +184,17 @@ export default {
 			caption: '新建',
 			tip: '新建',
 		},
+		tbitem5: {
+			caption: '编辑',
+			tip: '编辑',
+		},
 		tbitem8: {
 			caption: '删除',
 			tip: '删除',
 		},
-		tbitem19: {
-			caption: '过滤',
-			tip: '过滤',
-		},
 		tbitem13: {
 			caption: '导出',
 			tip: '导出',
-		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 };

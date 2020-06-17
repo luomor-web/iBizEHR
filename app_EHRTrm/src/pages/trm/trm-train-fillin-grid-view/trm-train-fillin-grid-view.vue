@@ -6,7 +6,7 @@ import view_grid from '@widgets/trm-train-fillin/main-grid/main-grid.vue';
 import view_searchform from '@widgets/trm-train-fillin/default-searchform/default-searchform.vue';
 
 /**
- * 培训项目部门填报表格视图
+ * 培训需求填报
  *
  * @export
  * @class TrmTrainFillinGridView

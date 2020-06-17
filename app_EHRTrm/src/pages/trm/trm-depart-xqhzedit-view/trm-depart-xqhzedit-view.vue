@@ -5,7 +5,7 @@ import TrmDepartXQHZEditViewBase from './trm-depart-xqhzedit-view-base.vue';
 import view_form from '@widgets/trm-depart/main-2-form/main-2-form.vue';
 
 /**
- * 需求汇总编辑视图
+ * 需求汇总
  *
  * @export
  * @class TrmDepartXQHZEditView

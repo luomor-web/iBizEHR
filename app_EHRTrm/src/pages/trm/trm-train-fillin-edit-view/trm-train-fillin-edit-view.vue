@@ -5,7 +5,7 @@ import TrmTrainFillinEditViewBase from './trm-train-fillin-edit-view-base.vue';
 import view_form from '@widgets/trm-train-fillin/main-form/main-form.vue';
 
 /**
- * 培训项目部门填报编辑视图
+ * 培训需求填报
  *
  * @export
  * @class TrmTrainFillinEditView

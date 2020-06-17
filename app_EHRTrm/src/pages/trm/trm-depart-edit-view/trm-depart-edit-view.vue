@@ -5,7 +5,7 @@ import TrmDepartEditViewBase from './trm-depart-edit-view-base.vue';
 import view_form from '@widgets/trm-depart/main-form/main-form.vue';
 
 /**
- * 培训需求通知编辑视图
+ * 需求通知
  *
  * @export
  * @class TrmDepartEditView
