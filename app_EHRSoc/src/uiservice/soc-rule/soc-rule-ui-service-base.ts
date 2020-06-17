@@ -263,6 +263,9 @@ export default class SocRuleUIServiceBase extends UIService {
                         return;
                     }
                     const _this: any = actionContext;
+                    if (xData && xData.refresh && xData.refresh instanceof Function) {
+                        xData.refresh(args);
+                    }
                     if (this.SocRule_OpenInfoView && this.SocRule_OpenInfoView instanceof Function) {
                         this.SocRule_OpenInfoView(result.datas,context, params, $event, xData,actionContext);
                     }
