@@ -13,9 +13,17 @@ export default {
     memo: '备注',
   },
 	views: {
+		pickupgridview: {
+			caption: "参保账户",
+      title: '参保账户选择表格视图',
+		},
 		gridview: {
 			caption: "参保账户",
       title: '参保账户表格视图',
+		},
+		pickupview: {
+			caption: "参保账户",
+      title: '参保账户数据选择视图',
 		},
 		editview: {
 			caption: "参保账户",

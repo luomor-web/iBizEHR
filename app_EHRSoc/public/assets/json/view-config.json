@@ -23,6 +23,14 @@
         "viewname": "SocTypePickupGridView",
         "viewtag": "25e10faa49dbfa2c6a9054b63ac0bc7a"
     },
+    "socaccountpickupgridview": {
+        "title": "参保账户选择表格视图",
+        "caption": "参保账户",
+        "viewtype": "DEPICKUPGRIDVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocAccountPickupGridView",
+        "viewtag": "4b9ddc3407aa91875c0e66348644dc43"
+    },
     "socareaeditview": {
         "title": "参保地编辑视图",
         "caption": "参保地",
@@ -38,6 +46,14 @@
         "viewmodule": "SOC",
         "viewname": "SocRuleDetailEditView",
         "viewtag": "59c055b21b497f790371732712f62a30"
+    },
+    "socarchivesgridview": {
+        "title": "社保档案表格视图",
+        "caption": "社保档案",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocArchivesGridView",
+        "viewtag": "67ed4891f00a2d935667f0ec691f7182"
     },
     "socareapickupgridview": {
         "title": "参保地选择表格视图",
@@ -62,6 +78,14 @@
         "viewmodule": "ORM",
         "viewname": "OrmOrgPickupGridView",
         "viewtag": "7ac55b5b5ac68117e990e9ced14e71b9"
+    },
+    "socarchiveseditview": {
+        "title": "社保档案编辑视图",
+        "caption": "社保档案",
+        "viewtype": "DEEDITVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocArchivesEditView",
+        "viewtag": "8d8165bf052eb9455044ec39843ef257"
     },
     "ormorgpickupview": {
         "title": "组织管理数据选择视图",
@@ -119,6 +143,22 @@
         "viewname": "SocAccountGridView",
         "viewtag": "be3603e6155f93c90fc36953c6a4689f"
     },
+    "socaccountpickupview": {
+        "title": "参保账户数据选择视图",
+        "caption": "参保账户",
+        "viewtype": "DEPICKUPVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocAccountPickupView",
+        "viewtag": "c1fe999705dd1adaf588b0dd05baba85"
+    },
+    "pimpersonpickupgridview": {
+        "title": "人员信息选择表格视图",
+        "caption": "人员信息",
+        "viewtype": "DEPICKUPGRIDVIEW",
+        "viewmodule": "PIM",
+        "viewname": "PimPersonPickupGridView",
+        "viewtag": "c96fcbc2a8248c568bd0c5c7f6c3de92"
+    },
     "socaccounteditview": {
         "title": "参保账户编辑视图",
         "caption": "参保账户",
@@ -126,6 +166,22 @@
         "viewmodule": "SOC",
         "viewname": "SocAccountEditView",
         "viewtag": "dcb1f8a13036f3f4af6199bc475c8680"
+    },
+    "socrulepickupview": {
+        "title": "社保规则数据选择视图",
+        "caption": "社保规则",
+        "viewtype": "DEPICKUPVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocRulePickupView",
+        "viewtag": "eb464b83d579a19440a0f65278573bb5"
+    },
+    "pimpersonpickupview": {
+        "title": "人员信息数据选择视图",
+        "caption": "人员信息",
+        "viewtype": "DEPICKUPVIEW",
+        "viewmodule": "PIM",
+        "viewname": "PimPersonPickupView",
+        "viewtag": "f131b13e32b5195223f2af77eefa60a9"
     },
     "socrulequickeditview": {
         "title": "社保规则编辑视图",
@@ -142,6 +198,14 @@
         "viewmodule": "SOC",
         "viewname": "SocAreaPickupView",
         "viewtag": "f2ac208aee9be3a1cbe51f16b6af100e"
+    },
+    "socrulepickupgridview": {
+        "title": "社保规则选择表格视图",
+        "caption": "社保规则",
+        "viewtype": "DEPICKUPGRIDVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocRulePickupGridView",
+        "viewtag": "f6dda7f813c86922238b8bad4e67b919"
     },
     "index": {
         "title": "EHR—社保管理",

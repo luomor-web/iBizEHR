@@ -27,9 +27,17 @@ export default {
 			caption: '社保规则',
       title: '社保规则编辑视图',
 		},
+		pickupview: {
+			caption: '社保规则',
+      title: '社保规则数据选择视图',
+		},
 		quickeditview: {
 			caption: '社保规则',
       title: '社保规则编辑视图',
+		},
+		pickupgridview: {
+			caption: '社保规则',
+      title: '社保规则选择表格视图',
 		},
 	},
 	main2_form: {

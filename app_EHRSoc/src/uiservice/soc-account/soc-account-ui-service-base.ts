@@ -79,7 +79,9 @@ export default class SocAccountUIServiceBase extends UIService {
      * @memberof  SocAccountUIServiceBase
      */  
     public initViewMap(){
+        this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'socaccounts'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'socaccounts'});
+        this.allViewMap.set('PICKUPVIEW:',{viewname:'pickupview',srfappde:'socaccounts'});
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'socaccounts'});
     }
 

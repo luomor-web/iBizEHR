@@ -16,3 +16,4 @@ import './entity/soc-records/soc-records';
 import './entity/soc-accounts/soc-accounts';
 import './entity/soc-archives-details/soc-archives-details';
 import './entity/soc-rule-details/soc-rule-details';
+import './entity/pim-persons/pim-persons';

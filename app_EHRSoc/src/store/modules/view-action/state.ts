@@ -14,6 +14,15 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '4b9ddc3407aa91875c0e66348644dc43',
+            viewmodule: 'SOC',
+            viewname: 'SocAccountPickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
             viewtag: '4d2e62d3fd19327574be8b2c65337faf',
             viewmodule: 'SOC',
             viewname: 'SocAreaEditView',
@@ -30,6 +39,16 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+            ],
+        },
+        {
+            viewtag: '67ed4891f00a2d935667f0ec691f7182',
+            viewmodule: 'SOC',
+            viewname: 'SocArchivesGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '8d8165bf052eb9455044ec39843ef257',
             ],
         },
         {
@@ -59,6 +78,18 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+            ],
+        },
+        {
+            viewtag: '8d8165bf052eb9455044ec39843ef257',
+            viewmodule: 'SOC',
+            viewname: 'SocArchivesEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'c1fe999705dd1adaf588b0dd05baba85',
+                'f131b13e32b5195223f2af77eefa60a9',
+                'eb464b83d579a19440a0f65278573bb5',
             ],
         },
         {
@@ -133,6 +164,25 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'c1fe999705dd1adaf588b0dd05baba85',
+            viewmodule: 'SOC',
+            viewname: 'SocAccountPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '4b9ddc3407aa91875c0e66348644dc43',
+            ],
+        },
+        {
+            viewtag: 'c96fcbc2a8248c568bd0c5c7f6c3de92',
+            viewmodule: 'PIM',
+            viewname: 'PimPersonPickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
             viewtag: 'dcb1f8a13036f3f4af6199bc475c8680',
             viewmodule: 'SOC',
             viewname: 'SocAccountEditView',
@@ -140,6 +190,26 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '912c10028c229aaf79d7542c94931417',
+            ],
+        },
+        {
+            viewtag: 'eb464b83d579a19440a0f65278573bb5',
+            viewmodule: 'SOC',
+            viewname: 'SocRulePickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'f6dda7f813c86922238b8bad4e67b919',
+            ],
+        },
+        {
+            viewtag: 'f131b13e32b5195223f2af77eefa60a9',
+            viewmodule: 'PIM',
+            viewname: 'PimPersonPickupView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'c96fcbc2a8248c568bd0c5c7f6c3de92',
             ],
         },
         {
@@ -164,6 +234,15 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'f6dda7f813c86922238b8bad4e67b919',
+            viewmodule: 'SOC',
+            viewname: 'SocRulePickupGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
             viewtag: 'FFA7990F-3519-4632-9728-B22B32C8D3D5',
             viewmodule: 'SOC',
             viewname: 'Index',
@@ -173,6 +252,7 @@ export const viewstate: any = {
                 '6f4fb39cb25a702c89dc415245198608',
                 'be3603e6155f93c90fc36953c6a4689f',
                 '1a1326e28ef5ec3d85b45c0d9ecf9684',
+                '67ed4891f00a2d935667f0ec691f7182',
                 'a91ca0b2a35fc0bc1c22a613b0af0f04',
             ],
         },

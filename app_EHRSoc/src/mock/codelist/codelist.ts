@@ -8,6 +8,14 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
     let status = MockAdapter.mockStatus(config);
     return [status, [
         {
+        "srfkey": "EhrCodeList0233",
+        "emptytext": "",
+        "codelisttype":"dynamic",
+        "appdataentity":"",
+        "appdedataset":"",
+        "items": []
+    },
+    {
         srfkey: 'EhrCodeList0115',
         emptytext: '',
         "codelisttype":"static",
@@ -213,6 +221,14 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
+        "srfkey": "EhrCodeList0050",
+        "emptytext": "",
+        "codelisttype":"dynamic",
+        "appdataentity":"",
+        "appdedataset":"",
+        "items": []
+    },
+    {
         srfkey: 'EhrCodeList0022',
         emptytext: '',
         "codelisttype":"static",
@@ -277,7 +293,69 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "items": []
     },
     {
+        srfkey: 'EhrCodeList0057',
+        emptytext: '未定义',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '10',
+                label: '有效',
+                text: '有效',
+                "data":"",
+                "codename":"Item_10",
+                value: '10',
+                
+                disabled: false,
+            },
+            {
+                id: '20',
+                label: '失效',
+                text: '失效',
+                "data":"",
+                "codename":"Item_20",
+                value: '20',
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
         "srfkey": "EhrCodeList0219",
+        "emptytext": "",
+        "codelisttype":"dynamic",
+        "appdataentity":"",
+        "appdedataset":"",
+        "items": []
+    },
+    {
+        srfkey: 'EhrCodeList0179',
+        emptytext: '',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '10',
+                label: '在岗',
+                text: '在岗',
+                "data":"",
+                "codename":"Item_10",
+                value: '10',
+                
+                disabled: false,
+            },
+            {
+                id: '20',
+                label: '离岗',
+                text: '离岗',
+                "data":"",
+                "codename":"Item_20",
+                value: '20',
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
+        "srfkey": "EhrCodeList0014",
         "emptytext": "",
         "codelisttype":"dynamic",
         "appdataentity":"",

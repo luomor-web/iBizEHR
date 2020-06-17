@@ -1,4 +1,7 @@
 export default {
+    EhrCodeList0233: {
+        empty: '',
+    },
     EhrCodeList0115: {
         '2012': '2012年',
         '2013': '2013年',
@@ -24,6 +27,9 @@ export default {
     EhrCodeList0249: {
         empty: '',
     },
+    EhrCodeList0050: {
+        empty: '',
+    },
     EhrCodeList0022: {
         '10': '法人单位',
         '20': '非法人单位',
@@ -37,7 +43,20 @@ export default {
     EhrCodeList0250: {
         empty: '',
     },
+    EhrCodeList0057: {
+        '10': '有效',
+        '20': '失效',
+        empty: '',
+    },
     EhrCodeList0219: {
+        empty: '',
+    },
+    EhrCodeList0179: {
+        '10': '在岗',
+        '20': '离岗',
+        empty: '',
+    },
+    EhrCodeList0014: {
         empty: '',
     },
 };

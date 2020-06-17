@@ -48,6 +48,7 @@ export class UIServiceRegister {
         this.allUIService.set('socaccount', () => import('@/uiservice/soc-account/soc-account-ui-service'));
         this.allUIService.set('socarchivesdetail', () => import('@/uiservice/soc-archives-detail/soc-archives-detail-ui-service'));
         this.allUIService.set('socruledetail', () => import('@/uiservice/soc-rule-detail/soc-rule-detail-ui-service'));
+        this.allUIService.set('pimperson', () => import('@/uiservice/pim-person/pim-person-ui-service'));
     }
 
     /**

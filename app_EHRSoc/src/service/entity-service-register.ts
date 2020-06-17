@@ -48,6 +48,7 @@ export class EntityServiceRegister {
         this.allEntityService.set('socaccount', () => import('@/service/soc-account/soc-account-service'));
         this.allEntityService.set('socarchivesdetail', () => import('@/service/soc-archives-detail/soc-archives-detail-service'));
         this.allEntityService.set('socruledetail', () => import('@/service/soc-rule-detail/soc-rule-detail-service'));
+        this.allEntityService.set('pimperson', () => import('@/service/pim-person/pim-person-service'));
     }
 
     /**
