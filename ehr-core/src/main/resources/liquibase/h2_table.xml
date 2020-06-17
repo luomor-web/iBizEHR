@@ -6649,7 +6649,7 @@
 
 
     <!--输出实体[TRMTRAINAGENCY]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmtrainagency-148-171">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmtrainagency-162-171">
         <createTable tableName="T_TRMTRAINAGENCY">
                 <column name="KHHMC" remarks="" type="VARCHAR(100)">
                 </column>
@@ -8599,7 +8599,7 @@
 
 
     <!--输出实体[TRMTRAINADDRESS]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmtrainaddress-37-222">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmtrainaddress-47-222">
         <createTable tableName="T_TRMTRAINADDRESS">
                 <column name="JS" remarks="" type="VARCHAR(2000)">
                 </column>
@@ -9751,7 +9751,7 @@
 
 
     <!--输出实体[SOCRULE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-socrule-36-252">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-socrule-58-252">
         <createTable tableName="T_SOCRULE">
                 <column name="SOCRULEID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_SOCRULE_SOCRULEID"/>
@@ -12945,13 +12945,13 @@
     </changeSet>
         <!--输出实体[PIMWORKFLOWREF]外键关系 -->
         <!--输出实体[TRMTRAINAGENCY]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainagency-148-540">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainagency-162-540">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_TRMTRAINAGENCY" constraintName="DER1N_TRMTRAINAGENCY_ORMORG_OR" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainagency-148-541">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainagency-162-541">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_TRMTRAINAGENCY" constraintName="DER1N_TRMTRAINAGENCY_PIMPERSON" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainagency-148-542">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainagency-162-542">
        <addForeignKeyConstraint baseColumnNames="TRMTRAINAGENCYID2" baseTableName="T_TRMTRAINAGENCY" constraintName="DER1N_TRMTRAINAGENCY_TRMTRAINA" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="TRMTRAINAGENCYID" referencedTableName="T_TRMTRAINAGENCY" validate="true"/>
     </changeSet>
         <!--输出实体[SOCARCHIVES]外键关系 -->
@@ -13218,7 +13218,7 @@
     </changeSet>
         <!--输出实体[PARASSESSTEMPLATE]外键关系 -->
         <!--输出实体[TRMTRAINADDRESS]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainaddress-37-618">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainaddress-47-618">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_TRMTRAINADDRESS" constraintName="DER1N_TRMTRAINADDRESS_ORMORG_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[SALSTDXMGZRATE]外键关系 -->
@@ -13338,7 +13338,7 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMTXFPSQ" constraintName="DER1N_PCMTXFPSQ_PIMPERSON_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[SOCRULE]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-socrule-36-649">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-socrule-58-649">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_SOCRULE" constraintName="DER1N_SOCRULE_ORMORG_ORMORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
         <!--输出实体[PIMPAPER]外键关系 -->
