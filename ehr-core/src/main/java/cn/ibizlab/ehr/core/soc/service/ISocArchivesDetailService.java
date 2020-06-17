@@ -37,6 +37,10 @@ public interface ISocArchivesDetailService extends IService<SocArchivesDetail>{
     boolean remove(String key) ;
     void removeBatch(Collection<String> idList) ;
     Page<SocArchivesDetail> searchDefault(SocArchivesDetailSearchContext context) ;
+    List<SocArchivesDetail> selectBySocarchivesid(String socarchivesid) ;
+    void removeBySocarchivesid(String socarchivesid) ;
+    List<SocArchivesDetail> selectBySocruledetailid(String socruledetailid) ;
+    void removeBySocruledetailid(String socruledetailid) ;
     /**
      *自定义查询SQL
      * @param sql  select * from table where id =#{et.param}

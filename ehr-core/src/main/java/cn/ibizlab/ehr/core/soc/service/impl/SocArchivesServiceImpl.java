@@ -46,6 +46,9 @@ public class SocArchivesServiceImpl extends ServiceImpl<SocArchivesMapper, SocAr
 
     @Autowired
     @Lazy
+    private cn.ibizlab.ehr.core.soc.service.ISocArchivesDetailService socarchivesdetailService;
+    @Autowired
+    @Lazy
     private cn.ibizlab.ehr.core.pim.service.IPimPersonService pimpersonService;
     @Autowired
     @Lazy

@@ -88,6 +88,127 @@ public class SocArchivesDetail extends EntityMP implements Serializable {
     @JSONField(name = "updatedate" , format="yyyy-MM-dd HH:mm:ss")
     @JsonProperty("updatedate")
     private Timestamp updatedate;
+    /**
+     * 社保档案标识
+     */
+    @TableField(value = "socarchivesid")
+    @JSONField(name = "socarchivesid")
+    @JsonProperty("socarchivesid")
+    private String socarchivesid;
+    /**
+     * 社保档案名称
+     */
+    @TableField(exist = false)
+    @JSONField(name = "socarchivesname")
+    @JsonProperty("socarchivesname")
+    private String socarchivesname;
+    /**
+     * 社保规则明细标识
+     */
+    @TableField(value = "socruledetailid")
+    @JSONField(name = "socruledetailid")
+    @JsonProperty("socruledetailid")
+    private String socruledetailid;
+    /**
+     * 个人基数
+     */
+    @TableField(value = "personnum")
+    @JSONField(name = "personnum")
+    @JsonProperty("personnum")
+    private Double personnum;
+    /**
+     * 企业基数
+     */
+    @TableField(value = "companynum")
+    @JSONField(name = "companynum")
+    @JsonProperty("companynum")
+    private Double companynum;
+    /**
+     * 最高基数
+     */
+    @TableField(exist = false)
+    @JSONField(name = "highnum")
+    @JsonProperty("highnum")
+    private Double highnum;
+    /**
+     * 最低基数
+     */
+    @TableField(exist = false)
+    @JSONField(name = "lownum")
+    @JsonProperty("lownum")
+    private Double lownum;
+    /**
+     * 排序号
+     */
+    @TableField(exist = false)
+    @JSONField(name = "ordervalue")
+    @JsonProperty("ordervalue")
+    private Integer ordervalue;
+    /**
+     * 保险类型标识
+     */
+    @TableField(exist = false)
+    @JSONField(name = "soctypeid")
+    @JsonProperty("soctypeid")
+    private String soctypeid;
+    /**
+     * 保险类型
+     */
+    @TableField(exist = false)
+    @JSONField(name = "soctypename")
+    @JsonProperty("soctypename")
+    private String soctypename;
+    /**
+     * 个人比例
+     */
+    @TableField(exist = false)
+    @JSONField(name = "personrate")
+    @JsonProperty("personrate")
+    private Double personrate;
+    /**
+     * 企业比例
+     */
+    @TableField(exist = false)
+    @JSONField(name = "companyrate")
+    @JsonProperty("companyrate")
+    private Double companyrate;
+    /**
+     * 个人固定额
+     */
+    @TableField(exist = false)
+    @JSONField(name = "personamount")
+    @JsonProperty("personamount")
+    private Double personamount;
+    /**
+     * 企业固定额
+     */
+    @TableField(exist = false)
+    @JSONField(name = "companyamount")
+    @JsonProperty("companyamount")
+    private Double companyamount;
+    /**
+     * 社保规则明细名称
+     */
+    @TableField(exist = false)
+    @JSONField(name = "socruledetailname")
+    @JsonProperty("socruledetailname")
+    private String socruledetailname;
+
+    /**
+     * 社保档案
+     */
+    @JsonIgnore
+    @JSONField(serialize = false)
+    @TableField(exist = false)
+    private cn.ibizlab.ehr.core.soc.domain.SocArchives socarchives;
+
+    /**
+     * 社保规则明细
+     */
+    @JsonIgnore
+    @JSONField(serialize = false)
+    @TableField(exist = false)
+    private cn.ibizlab.ehr.core.soc.domain.SocRuleDetail socruledetail;
 
 
 
@@ -97,6 +218,38 @@ public class SocArchivesDetail extends EntityMP implements Serializable {
     public void setSocarchivesdetailname(String socarchivesdetailname){
         this.socarchivesdetailname = socarchivesdetailname ;
         this.modify("socarchivesdetailname",socarchivesdetailname);
+    }
+
+    /**
+     * 设置 [社保档案标识]
+     */
+    public void setSocarchivesid(String socarchivesid){
+        this.socarchivesid = socarchivesid ;
+        this.modify("socarchivesid",socarchivesid);
+    }
+
+    /**
+     * 设置 [社保规则明细标识]
+     */
+    public void setSocruledetailid(String socruledetailid){
+        this.socruledetailid = socruledetailid ;
+        this.modify("socruledetailid",socruledetailid);
+    }
+
+    /**
+     * 设置 [个人基数]
+     */
+    public void setPersonnum(Double personnum){
+        this.personnum = personnum ;
+        this.modify("personnum",personnum);
+    }
+
+    /**
+     * 设置 [企业基数]
+     */
+    public void setCompanynum(Double companynum){
+        this.companynum = companynum ;
+        this.modify("companynum",companynum);
     }
 
 

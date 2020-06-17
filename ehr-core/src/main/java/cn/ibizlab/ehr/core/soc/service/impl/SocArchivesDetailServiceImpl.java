@@ -44,12 +44,19 @@ import org.springframework.util.StringUtils;
 @Service("SocArchivesDetailServiceImpl")
 public class SocArchivesDetailServiceImpl extends ServiceImpl<SocArchivesDetailMapper, SocArchivesDetail> implements ISocArchivesDetailService {
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.soc.service.ISocArchivesService socarchivesService;
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.soc.service.ISocRuleDetailService socruledetailService;
 
     private int batchSize = 500;
 
     @Override
     @Transactional
     public boolean create(SocArchivesDetail et) {
+        fillParentData(et);
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getSocarchivesdetailid()),et);
@@ -58,6 +65,7 @@ public class SocArchivesDetailServiceImpl extends ServiceImpl<SocArchivesDetailM
 
     @Override
     public void createBatch(List<SocArchivesDetail> list) {
+        list.forEach(item->fillParentData(item));
         this.saveBatch(list,batchSize);
     }
 
@@ -83,12 +91,14 @@ public class SocArchivesDetailServiceImpl extends ServiceImpl<SocArchivesDetailM
 
     @Override
     public boolean saveBatch(Collection<SocArchivesDetail> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
         return true;
     }
 
     @Override
     public void saveBatch(List<SocArchivesDetail> list) {
+        list.forEach(item->fillParentData(item));
         saveOrUpdateBatch(list,batchSize);
     }
 
@@ -98,12 +108,14 @@ public class SocArchivesDetailServiceImpl extends ServiceImpl<SocArchivesDetailM
     }
     @Override
     public SocArchivesDetail getDraft(SocArchivesDetail et) {
+        fillParentData(et);
         return et;
     }
 
     @Override
     @Transactional
     public boolean update(SocArchivesDetail et) {
+        fillParentData(et);
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("socarchivesdetailid",et.getSocarchivesdetailid())))
             return false;
         CachedBeanCopier.copy(get(et.getSocarchivesdetailid()),et);
@@ -112,6 +124,7 @@ public class SocArchivesDetailServiceImpl extends ServiceImpl<SocArchivesDetailM
 
     @Override
     public void updateBatch(List<SocArchivesDetail> list) {
+        list.forEach(item->fillParentData(item));
         updateBatchById(list,batchSize);
     }
 
@@ -141,6 +154,26 @@ public class SocArchivesDetailServiceImpl extends ServiceImpl<SocArchivesDetailM
     }
 
 
+	@Override
+    public List<SocArchivesDetail> selectBySocarchivesid(String socarchivesid) {
+        return baseMapper.selectBySocarchivesid(socarchivesid);
+    }
+
+    @Override
+    public void removeBySocarchivesid(String socarchivesid) {
+        this.remove(new QueryWrapper<SocArchivesDetail>().eq("socarchivesid",socarchivesid));
+    }
+
+	@Override
+    public List<SocArchivesDetail> selectBySocruledetailid(String socruledetailid) {
+        return baseMapper.selectBySocruledetailid(socruledetailid);
+    }
+
+    @Override
+    public void removeBySocruledetailid(String socruledetailid) {
+        this.remove(new QueryWrapper<SocArchivesDetail>().eq("socruledetailid",socruledetailid));
+    }
+
 
     /**
      * 查询集合 DEFAULT
@@ -153,6 +186,41 @@ public class SocArchivesDetailServiceImpl extends ServiceImpl<SocArchivesDetailM
 
 
 
+    /**
+     * 为当前实体填充父数据（外键值文本、外键值附加数据）
+     * @param et
+     */
+    private void fillParentData(SocArchivesDetail et){
+        //实体关系[DER1N_SOCARCHIVESDETAIL_SOCARCHIVES_SOCARCHIVESID]
+        if(!ObjectUtils.isEmpty(et.getSocarchivesid())){
+            cn.ibizlab.ehr.core.soc.domain.SocArchives socarchives=et.getSocarchives();
+            if(ObjectUtils.isEmpty(socarchives)){
+                cn.ibizlab.ehr.core.soc.domain.SocArchives majorEntity=socarchivesService.get(et.getSocarchivesid());
+                et.setSocarchives(majorEntity);
+                socarchives=majorEntity;
+            }
+            et.setSocarchivesname(socarchives.getSocarchivesname());
+        }
+        //实体关系[DER1N_SOCARCHIVESDETAIL_SOCRULEDETAIL_SOCRULEDETAILID]
+        if(!ObjectUtils.isEmpty(et.getSocruledetailid())){
+            cn.ibizlab.ehr.core.soc.domain.SocRuleDetail socruledetail=et.getSocruledetail();
+            if(ObjectUtils.isEmpty(socruledetail)){
+                cn.ibizlab.ehr.core.soc.domain.SocRuleDetail majorEntity=socruledetailService.get(et.getSocruledetailid());
+                et.setSocruledetail(majorEntity);
+                socruledetail=majorEntity;
+            }
+            et.setHighnum(socruledetail.getHighnum());
+            et.setLownum(socruledetail.getLownum());
+            et.setOrdervalue(socruledetail.getOrdervalue());
+            et.setSoctypeid(socruledetail.getSoctypeid());
+            et.setSoctypename(socruledetail.getSoctypename());
+            et.setPersonrate(socruledetail.getPersonrate());
+            et.setCompanyrate(socruledetail.getCompanyrate());
+            et.setPersonamount(socruledetail.getPersonamount());
+            et.setCompanyamount(socruledetail.getCompanyamount());
+            et.setSocruledetailname(socruledetail.getSocruledetailname());
+        }
+    }
 
 
     @Override

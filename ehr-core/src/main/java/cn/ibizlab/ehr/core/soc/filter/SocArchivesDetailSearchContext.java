@@ -34,6 +34,48 @@ public class SocArchivesDetailSearchContext extends QueryWrapperContext<SocArchi
             this.getSearchCond().like("socarchivesdetailname", n_socarchivesdetailname_like);
         }
     }
+	private String n_socarchivesid_eq;//[社保档案标识]
+	public void setN_socarchivesid_eq(String n_socarchivesid_eq) {
+        this.n_socarchivesid_eq = n_socarchivesid_eq;
+        if(!ObjectUtils.isEmpty(this.n_socarchivesid_eq)){
+            this.getSearchCond().eq("socarchivesid", n_socarchivesid_eq);
+        }
+    }
+	private String n_socarchivesname_eq;//[社保档案名称]
+	public void setN_socarchivesname_eq(String n_socarchivesname_eq) {
+        this.n_socarchivesname_eq = n_socarchivesname_eq;
+        if(!ObjectUtils.isEmpty(this.n_socarchivesname_eq)){
+            this.getSearchCond().eq("socarchivesname", n_socarchivesname_eq);
+        }
+    }
+	private String n_socarchivesname_like;//[社保档案名称]
+	public void setN_socarchivesname_like(String n_socarchivesname_like) {
+        this.n_socarchivesname_like = n_socarchivesname_like;
+        if(!ObjectUtils.isEmpty(this.n_socarchivesname_like)){
+            this.getSearchCond().like("socarchivesname", n_socarchivesname_like);
+        }
+    }
+	private String n_socruledetailid_eq;//[社保规则明细标识]
+	public void setN_socruledetailid_eq(String n_socruledetailid_eq) {
+        this.n_socruledetailid_eq = n_socruledetailid_eq;
+        if(!ObjectUtils.isEmpty(this.n_socruledetailid_eq)){
+            this.getSearchCond().eq("socruledetailid", n_socruledetailid_eq);
+        }
+    }
+	private String n_socruledetailname_eq;//[社保规则明细名称]
+	public void setN_socruledetailname_eq(String n_socruledetailname_eq) {
+        this.n_socruledetailname_eq = n_socruledetailname_eq;
+        if(!ObjectUtils.isEmpty(this.n_socruledetailname_eq)){
+            this.getSearchCond().eq("socruledetailname", n_socruledetailname_eq);
+        }
+    }
+	private String n_socruledetailname_like;//[社保规则明细名称]
+	public void setN_socruledetailname_like(String n_socruledetailname_like) {
+        this.n_socruledetailname_like = n_socruledetailname_like;
+        if(!ObjectUtils.isEmpty(this.n_socruledetailname_like)){
+            this.getSearchCond().like("socruledetailname", n_socruledetailname_like);
+        }
+    }
 
     /**
 	 * 启用快速搜索
