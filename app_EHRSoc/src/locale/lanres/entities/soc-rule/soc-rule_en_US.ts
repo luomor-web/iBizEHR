@@ -119,14 +119,14 @@ export default {
 	},
 	editviewtoolbar_toolbar: {
 		tbitem1_openedieview: {
-			caption: "社保规则",
-			tip: "社保规则",
+			caption: "编辑",
+			tip: "编辑",
 		},
 	},
 	gridviewtoolbar_toolbar: {
 		deuiaction1_quickcreatesocrule: {
-			caption: "快速新建",
-			tip: "快速新建",
+			caption: "新建",
+			tip: "新建",
 		},
 		deuiaction8: {
 			caption: "导入",

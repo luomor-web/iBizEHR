@@ -167,7 +167,7 @@ export default class SocRuleEditViewBase extends EditViewBase {
      * @memberof SocRuleEditView
      */
     public toolBarModels: any = {
-        tbitem1_openedieview: { name: 'tbitem1_openedieview', caption: '社保规则','isShowCaption':true,'isShowIcon':true, tooltip: '社保规则', iconcls: 'fa fa-edit', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'OpenEdieView', target: 'SINGLEKEY' }, class: '' },
+        tbitem1_openedieview: { name: 'tbitem1_openedieview', caption: '编辑','isShowCaption':true,'isShowIcon':true, tooltip: '编辑', iconcls: 'fa fa-edit', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'OpenEdieView', target: 'SINGLEKEY' }, class: '' },
 
     };
 

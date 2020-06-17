@@ -192,7 +192,7 @@ export default class SocRuleGridViewBase extends GridViewBase {
      * @memberof SocRuleGridView
      */
     public toolBarModels: any = {
-        deuiaction1_quickcreatesocrule: { name: 'deuiaction1_quickcreatesocrule', caption: '快速新建','isShowCaption':true,'isShowIcon':true, tooltip: '快速新建', iconcls: 'fa fa-file-text-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'QuickCreateSocRule', target: 'NONE' }, class: '' },
+        deuiaction1_quickcreatesocrule: { name: 'deuiaction1_quickcreatesocrule', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', iconcls: 'fa fa-file-text-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'QuickCreateSocRule', target: 'NONE' }, class: '' },
 
         deuiaction8: { name: 'deuiaction8', caption: '导入','isShowCaption':true,'isShowIcon':true, tooltip: '导入', iconcls: 'fa fa-upload', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'Import', target: '' }, class: '' },
 
