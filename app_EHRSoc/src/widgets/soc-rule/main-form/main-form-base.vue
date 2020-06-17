@@ -16,7 +16,18 @@
 <i-col v-show="detailsModel.nyear.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='nyear' :itemRules="this.rules.nyear" class='' :caption="$t('entities.socrule.main_form.details.nyear')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nyear.error" :isEmptyCaption="false" labelPos="LEFT">
     
-<app-span name='nyear' :value="data.nyear" tag='EhrCodeList0115' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+ <dropdown-list 
+    v-model="data.nyear" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :localContext ='{ }' 
+    :localParam ='{ }' 
+    :disabled="detailsModel.nyear.disabled"  
+    tag='EhrCodeList0115' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -480,10 +491,10 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '社保规则名称 值不能为空', trigger: 'blur' },
         ],
         nyear: [
-            { type: 'string', message: '年度 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '年度 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '年度 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '年度 值不能为空', trigger: 'blur' },
+            { type: 'number', message: '年度 值必须为数值类型', trigger: 'change' },
+            { type: 'number', message: '年度 值必须为数值类型', trigger: 'blur' },
+            { required: false, type: 'number', message: '年度 值不能为空', trigger: 'change' },
+            { required: false, type: 'number', message: '年度 值不能为空', trigger: 'blur' },
         ],
         ormorgname: [
             { type: 'string', message: '组织 值必须为字符串类型', trigger: 'change' },
@@ -538,7 +549,7 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         socrulename: new FormItemModel({ caption: '社保规则名称', detailType: 'FORMITEM', name: 'socrulename', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        nyear: new FormItemModel({ caption: '年度', detailType: 'FORMITEM', name: 'nyear', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        nyear: new FormItemModel({ caption: '年度', detailType: 'FORMITEM', name: 'nyear', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
         ormorgname: new FormItemModel({ caption: '组织', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 

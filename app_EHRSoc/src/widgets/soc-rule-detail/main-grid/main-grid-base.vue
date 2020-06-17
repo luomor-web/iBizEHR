@@ -43,7 +43,7 @@
                         <template v-if="actualIsOpenEdit">
                             <app-form-item :error="gridItemsModel[$index][column.property].error">
                                 
-            <app-picker 
+            <app-picker  
               :formState="viewState" 
               :data="row"
               :context="context"
@@ -51,19 +51,17 @@
               :localContext ='{ }' 
               :localParam ='{ }' 
               :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
-              name='soctypename'
+              name='soctypename' 
               deMajorField='soctypename'
               deKeyField='soctype'
               :service="service"
               :acParams="{ serviceName: 'SocTypeService', interfaceName: 'FetchDefault'}"
               valueitem='soctypeid' 
               :value="row[column.property]" 
-              editortype="" 
-              :pickupView="{ viewname: 'soc-type-pickup-view', title: $t('entities.soctype.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'soctypes', parameterName: 'soctype' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-              style=""  
+              editortype="dropdown" 
+              style="" 
               @formitemvaluechange="($event)=>{onGridItemValueChange(row,$event,$index)}">
             </app-picker>
-            
                             </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
@@ -149,33 +147,6 @@
                         </template>
                         <template v-if="!actualIsOpenEdit">
                                 <app-span name='companynum' editorType="TEXTBOX" :value="row.companynum"></app-span>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('personnum')">
-                <el-table-column show-overflow-tooltip :prop="'personnum'" :label="$t('entities.socruledetail.main_grid.columns.personnum')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.socruledetail.main_grid.columns.personnum')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <template v-if="actualIsOpenEdit">
-                            <app-form-item :error="gridItemsModel[$index][column.property].error">
-                                <input-box 
-              :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
-              v-model="row[column.property]" 
-              style=""
-              type="text"
-              
-              
-              @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}">
-            </input-box>
-                            </app-form-item>
-                        </template>
-                        <template v-if="!actualIsOpenEdit">
-                                <app-span name='personnum' editorType="TEXTBOX" :value="row.personnum"></app-span>
                         </template>
                     </template>
                 </el-table-column>
@@ -790,13 +761,6 @@ export default class MainBase extends Vue implements ControlInterface {
             name: 'companynum',
             label: '企业基数',
             langtag: 'entities.socruledetail.main_grid.columns.companynum',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'personnum',
-            label: '个人基数',
-            langtag: 'entities.socruledetail.main_grid.columns.personnum',
             show: true,
             util: 'PX'
         },

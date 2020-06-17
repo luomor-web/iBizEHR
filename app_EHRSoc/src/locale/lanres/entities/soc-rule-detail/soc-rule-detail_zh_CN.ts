@@ -62,7 +62,6 @@ export default {
 			highnum: '最高基数',
 			lownum: '最低基数',
 			companynum: '企业基数',
-			personnum: '个人基数',
 			companyrate: '企业比例',
 			personrate: '个人比例',
 			companyamount: '企业固定额',

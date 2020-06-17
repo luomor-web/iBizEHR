@@ -4,16 +4,6 @@
 export const viewstate: any = {
     appviews: [
         {
-            viewtag: '024088082a2d1099b2a61ee67c986e43',
-            viewmodule: 'SOC',
-            viewname: 'SocTypePickupView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '25e10faa49dbfa2c6a9054b63ac0bc7a',
-            ],
-        },
-        {
             viewtag: '1a1326e28ef5ec3d85b45c0d9ecf9684',
             viewmodule: 'SOC',
             viewname: 'SocAreaGridView',
@@ -21,15 +11,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '4d2e62d3fd19327574be8b2c65337faf',
-            ],
-        },
-        {
-            viewtag: '25e10faa49dbfa2c6a9054b63ac0bc7a',
-            viewmodule: 'SOC',
-            viewname: 'SocTypePickupGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
             ],
         },
         {
@@ -119,7 +100,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '59c055b21b497f790371732712f62a30',
-                '024088082a2d1099b2a61ee67c986e43',
             ],
         },
         {
