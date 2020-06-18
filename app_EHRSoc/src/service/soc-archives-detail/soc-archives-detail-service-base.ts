@@ -48,6 +48,9 @@ export default class SocArchivesDetailServiceBase extends EntityService {
      * @memberof SocArchivesDetailServiceBase
      */
     public async Select(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.socarchives && context.socarchivesdetail){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/socarchives/${context.socarchives}/socarchivesdetails/${context.socarchivesdetail}/select`,isloading);
+        }
         if(context.socarchives && context.socarchivesdetail){
             return Http.getInstance().get(`/socarchives/${context.socarchives}/socarchivesdetails/${context.socarchivesdetail}/select`,isloading);
         }
@@ -64,6 +67,15 @@ export default class SocArchivesDetailServiceBase extends EntityService {
      * @memberof SocArchivesDetailServiceBase
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.socarchives && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/socarchives/${context.socarchives}/socarchivesdetails`,data,isloading);
+        }
         if(context.socarchives && true){
             if(!data.srffrontuf || data.srffrontuf !== "1"){
                 data[this.APPDEKEY] = null;
@@ -96,6 +108,9 @@ export default class SocArchivesDetailServiceBase extends EntityService {
      * @memberof SocArchivesDetailServiceBase
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.socarchives && context.socarchivesdetail){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/socarchives/${context.socarchives}/socarchivesdetails/${context.socarchivesdetail}/save`,data,isloading);
+        }
         if(context.socarchives && context.socarchivesdetail){
             return Http.getInstance().post(`/socarchives/${context.socarchives}/socarchivesdetails/${context.socarchivesdetail}/save`,data,isloading);
         }
@@ -115,6 +130,9 @@ export default class SocArchivesDetailServiceBase extends EntityService {
      * @memberof SocArchivesDetailServiceBase
      */
     public async CheckKey(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.socarchives && context.socarchivesdetail){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/socarchives/${context.socarchives}/socarchivesdetails/${context.socarchivesdetail}/checkkey`,data,isloading);
+        }
         if(context.socarchives && context.socarchivesdetail){
             return Http.getInstance().post(`/socarchives/${context.socarchives}/socarchivesdetails/${context.socarchivesdetail}/checkkey`,data,isloading);
         }
@@ -131,6 +149,9 @@ export default class SocArchivesDetailServiceBase extends EntityService {
      * @memberof SocArchivesDetailServiceBase
      */
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.socarchives && true){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/socarchives/${context.socarchives}/socarchivesdetails/getdraft`,isloading);
+        }
         if(context.socarchives && true){
             return Http.getInstance().get(`/socarchives/${context.socarchives}/socarchivesdetails/getdraft`,isloading);
         }
@@ -149,6 +170,9 @@ export default class SocArchivesDetailServiceBase extends EntityService {
      * @memberof SocArchivesDetailServiceBase
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.socarchives && context.socarchivesdetail){
+            return Http.getInstance().put(`/pimpeople/${context.pimperson}/socarchives/${context.socarchives}/socarchivesdetails/${context.socarchivesdetail}`,data,isloading);
+        }
         if(context.socarchives && context.socarchivesdetail){
             return Http.getInstance().put(`/socarchives/${context.socarchives}/socarchivesdetails/${context.socarchivesdetail}`,data,isloading);
         }
@@ -168,6 +192,9 @@ export default class SocArchivesDetailServiceBase extends EntityService {
      * @memberof SocArchivesDetailServiceBase
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.socarchives && context.socarchivesdetail){
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/socarchives/${context.socarchives}/socarchivesdetails/${context.socarchivesdetail}`,isloading);
+        }
         if(context.socarchives && context.socarchivesdetail){
             return Http.getInstance().get(`/socarchives/${context.socarchives}/socarchivesdetails/${context.socarchivesdetail}`,isloading);
         }
@@ -186,6 +213,9 @@ export default class SocArchivesDetailServiceBase extends EntityService {
      * @memberof SocArchivesDetailServiceBase
      */
     public async Remove(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.socarchives && context.socarchivesdetail){
+            return Http.getInstance().delete(`/pimpeople/${context.pimperson}/socarchives/${context.socarchives}/socarchivesdetails/${context.socarchivesdetail}`,isloading);
+        }
         if(context.socarchives && context.socarchivesdetail){
             return Http.getInstance().delete(`/socarchives/${context.socarchives}/socarchivesdetails/${context.socarchivesdetail}`,isloading);
         }
@@ -203,6 +233,10 @@ export default class SocArchivesDetailServiceBase extends EntityService {
      * @memberof SocArchivesDetailServiceBase
      */
     public async FetchDefault(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
+        if(context.pimperson && context.socarchives && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/pimpeople/${context.pimperson}/socarchives/${context.socarchives}/socarchivesdetails/fetchdefault`,tempData,isloading);
+        }
         if(context.socarchives && true){
             let tempData:any = JSON.parse(JSON.stringify(data));
             return Http.getInstance().get(`/socarchives/${context.socarchives}/socarchivesdetails/fetchdefault`,tempData,isloading);

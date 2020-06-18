@@ -86,6 +86,11 @@ export default class Main2Model {
         dataType: 'PICKUPDATA',
       },
       {
+        name: 'state',
+        prop: 'state',
+        dataType: 'SSCODELIST',
+      },
+      {
         name: 'pimpersonid',
         prop: 'pimpersonid',
         dataType: 'PICKUP',

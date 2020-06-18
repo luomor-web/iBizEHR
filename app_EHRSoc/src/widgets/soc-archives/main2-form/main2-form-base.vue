@@ -108,6 +108,24 @@
 </app-form-item>
 
 </i-col>
+<i-col v-show="detailsModel.state.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
+    <app-form-item name='state' :itemRules="this.rules.state" class='' :caption="$t('entities.socarchives.main2_form.details.state')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.state.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+ <dropdown-list 
+    v-model="data.state" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :localContext ='{ }' 
+    :localParam ='{ }' 
+    :disabled="detailsModel.state.disabled"  
+    tag='EhrCodeList0057' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
+</app-form-item>
+
+</i-col>
 <i-col v-show="detailsModel.pimpersonid.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='pimpersonid' :itemRules="this.rules.pimpersonid" class='' :caption="$t('entities.socarchives.main2_form.details.pimpersonid')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonid.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.pimpersonid"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.pimpersonid.disabled" type='text'  style=""></input-box>
@@ -431,6 +449,7 @@ export default class Main2Base extends Vue implements ControlInterface {
         ygbh: null,
         ormorgname: null,
         ormorgsectorname: null,
+        state: null,
         pimpersonid: null,
         socaccountid: null,
         socruleid: null,
@@ -561,6 +580,12 @@ export default class Main2Base extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '部门 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '部门 值不能为空', trigger: 'blur' },
         ],
+        state: [
+            { type: 'string', message: '状态 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '状态 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '状态 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '状态 值不能为空', trigger: 'blur' },
+        ],
         pimpersonid: [
             { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'blur' },
@@ -625,6 +650,8 @@ export default class Main2Base extends Vue implements ControlInterface {
         ormorgname: new FormItemModel({ caption: '组织', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         ormorgsectorname: new FormItemModel({ caption: '部门', detailType: 'FORMITEM', name: 'ormorgsectorname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        state: new FormItemModel({ caption: '状态', detailType: 'FORMITEM', name: 'state', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 2 })
 , 
         pimpersonid: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -805,6 +832,18 @@ export default class Main2Base extends Vue implements ControlInterface {
     }
 
     /**
+     * 监控表单属性 state 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2
+     */
+    @Watch('data.state')
+    onStateChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'state', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
      * 监控表单属性 pimpersonid 值
      *
      * @param {*} newVal
@@ -888,6 +927,7 @@ export default class Main2Base extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
+
 
 
 

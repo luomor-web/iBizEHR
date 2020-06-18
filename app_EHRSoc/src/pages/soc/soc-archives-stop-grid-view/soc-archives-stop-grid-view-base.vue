@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="socarchivesgridview" viewTitle="社保档案表格视图" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'soc-archives-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="socarchivesstopgridview" viewTitle="社保档案表格视图" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'soc-archives-stop-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -44,7 +44,7 @@
     loaddraftAction=""
     loadAction=""
     createAction=""
-    fetchAction="FetchDefault"
+    fetchAction="FetchStopArchives"
     :newdata="newdata"
     :opendata="opendata"
     name="grid"  
@@ -81,18 +81,18 @@ import CodeListService from "@service/app/codelist-service";
  * 社保档案表格视图基类
  *
  * @export
- * @class SocArchivesGridViewBase
+ * @class SocArchivesStopGridViewBase
  * @extends {GridViewBase}
  */
 @Component({})
 @VueLifeCycleProcessing
-export default class SocArchivesGridViewBase extends GridViewBase {
+export default class SocArchivesStopGridViewBase extends GridViewBase {
 
     /**
      * 实体服务对象
      *
      * @type {SocArchivesService}
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public appEntityService: SocArchivesService = new SocArchivesService;
 
@@ -101,7 +101,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */    
     public counterServiceArray:Array<any> = [];
     
@@ -110,7 +110,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} val
      * @returns {*}
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     @Emit() 
     public viewDatasChange(val: any):any {
@@ -121,16 +121,16 @@ export default class SocArchivesGridViewBase extends GridViewBase {
 	 * 视图标识
 	 *
 	 * @type {string}
-	 * @memberof SocArchivesGridViewBase
+	 * @memberof SocArchivesStopGridViewBase
 	 */
-	public viewtag: string = '67ed4891f00a2d935667f0ec691f7182';
+	public viewtag: string = 'bf4ef187880e7431032ba8b27f4a2143';
 
     /**
      * 父数据对象
      *
      * @protected
      * @type {*}
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     protected srfparentdata: any = {};
 
@@ -138,7 +138,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
 	 * 自定义视图导航上下文集合
 	 *
 	 * @type {*}
-	 * @memberof SocArchivesGridViewBase
+	 * @memberof SocArchivesStopGridViewBase
 	 */
     public customViewNavContexts:any ={
     };
@@ -147,7 +147,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
 	 * 自定义视图导航参数集合
 	 *
 	 * @type {*}
-	 * @memberof SocArchivesGridViewBase
+	 * @memberof SocArchivesStopGridViewBase
 	 */
     public customViewParams:any ={
     };
@@ -156,12 +156,12 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * 视图模型数据
      *
      * @type {*}
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public model: any = {
-        srfCaption: 'entities.socarchives.views.gridview.caption',
-        srfTitle: 'entities.socarchives.views.gridview.title',
-        srfSubTitle: 'entities.socarchives.views.gridview.subtitle',
+        srfCaption: 'entities.socarchives.views.stopgridview.caption',
+        srfTitle: 'entities.socarchives.views.stopgridview.title',
+        srfSubTitle: 'entities.socarchives.views.stopgridview.subtitle',
         dataInfo: ''
     }
 
@@ -169,7 +169,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * 容器模型
      *
      * @type {*}
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public containerModel: any = {
         view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
@@ -182,17 +182,17 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      *
      * @public
      * @type {Subject<{action: string, data: any}>}
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
     /**
      * 工具栏模型
      *
      * @type {*}
-     * @memberof SocArchivesGridView
+     * @memberof SocArchivesStopGridView
      */
     public toolBarModels: any = {
-        deuiaction1_quickcreatesocarchives: { name: 'deuiaction1_quickcreatesocarchives', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'QuickCreateSocArchives', target: 'NONE' }, class: '' },
+        deuiaction1_stoparchives: { name: 'deuiaction1_stoparchives', caption: '终止社保','isShowCaption':true,'isShowIcon':true, tooltip: '终止社保', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'StopArchives', target: 'MULTIKEY' }, class: '' },
 
         deuiaction8: { name: 'deuiaction8', caption: '导入','isShowCaption':true,'isShowIcon':true, tooltip: '导入', iconcls: 'fa fa-upload', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'Import', target: '' }, class: '' },
 
@@ -213,7 +213,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      *
      * @public
      * @type {Engine}
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public engine: GridViewEngine = new GridViewEngine();
 	
@@ -222,7 +222,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * 引擎初始化
      *
      * @public
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public engineInit(): void {
         this.engine.init({
@@ -247,11 +247,11 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public toolbar_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'deuiaction1_quickcreatesocarchives')) {
-            this.toolbar_deuiaction1_quickcreatesocarchives_click(null, '', $event2);
+        if (Object.is($event.tag, 'deuiaction1_stoparchives')) {
+            this.toolbar_deuiaction1_stoparchives_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'deuiaction8')) {
             this.toolbar_deuiaction8_click(null, '', $event2);
@@ -273,7 +273,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public grid_selectionchange($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'selectionchange', $event);
@@ -285,7 +285,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public grid_beforeload($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'beforeload', $event);
@@ -297,7 +297,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public grid_rowdblclick($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'rowdblclick', $event);
@@ -309,7 +309,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public grid_remove($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'remove', $event);
@@ -321,7 +321,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public grid_load($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'load', $event);
@@ -333,7 +333,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public searchform_save($event: any, $event2?: any) {
         this.engine.onCtrlEvent('searchform', 'save', $event);
@@ -345,7 +345,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public searchform_search($event: any, $event2?: any) {
         this.engine.onCtrlEvent('searchform', 'search', $event);
@@ -357,7 +357,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public searchform_load($event: any, $event2?: any) {
         this.engine.onCtrlEvent('searchform', 'load', $event);
@@ -373,7 +373,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_deuiaction1_quickcreatesocarchives_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction1_stoparchives_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -391,7 +391,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
         }
         // 界面行为
         const curUIService:SocArchivesUIService  = new SocArchivesUIService();
-        curUIService.SocArchives_QuickCreateSocArchives(datas,contextJO, paramJO,  $event, xData,this,"SocArchives");
+        curUIService.SocArchives_StopArchives(datas,contextJO, paramJO,  $event, xData,this,"SocArchives");
     }
 
     /**
@@ -514,7 +514,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * @param {*} [fullargs]
      * @param {*} [$event]
      * @param {*} [xData]
-     * @memberof SocArchivesGridView
+     * @memberof SocArchivesStopGridView
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         let localContext:any = null;
@@ -569,7 +569,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * @param {*} [fullargs]
      * @param {*} [$event]
      * @param {*} [xData]
-     * @memberof SocArchivesGridView
+     * @memberof SocArchivesStopGridView
      */
     public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
         let localContext:any = null;
@@ -621,7 +621,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * @param {*} [$event] 事件源
      * @param {*} [xData]  执行行为所需当前部件
      * @param {*} [actionContext]  执行行为上下文
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public Import(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
@@ -639,7 +639,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * @param {*} [$event] 事件源
      * @param {*} [xData]  执行行为所需当前部件
      * @param {*} [actionContext]  执行行为上下文
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
@@ -657,7 +657,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * @param {*} [$event] 事件源
      * @param {*} [xData]  执行行为所需当前部件
      * @param {*} [actionContext]  执行行为上下文
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public ToggleFilter(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
@@ -674,7 +674,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * @param {*} [$event] 事件源
      * @param {*} [xData]  执行行为所需当前部件
      * @param {*} [actionContext]  执行行为上下文
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public Help(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         this.$Notice.error({ title: '错误', desc: '帮助未支持' });
@@ -684,7 +684,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
     /**
      * 销毁视图回调
      *
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public destroyed(){
         if(this.viewDefaultUsage){
@@ -704,7 +704,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * 是否单选
      *
      * @type {boolean}
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public isSingleSelect: boolean = false;
 
@@ -733,7 +733,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
     * 界面关系通讯对象
     *
     * @type {Subject<ViewState>}
-    * @memberof SocArchivesGridViewBase
+    * @memberof SocArchivesStopGridViewBase
     */
     @Prop() public formDruipart?: Subject<ViewState>;
 
@@ -741,7 +741,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * 搜索值
      *
      * @type {string}
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public query: string = '';
 
@@ -749,7 +749,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * 是否展开搜索表单
      *
      * @type {boolean}
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public isExpandSearchForm: boolean = false;
 
@@ -760,7 +760,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * 2 双击激活
      *
      * @type {(number | 0 | 1 | 2)}
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public gridRowActiveMode: number | 0 | 1 | 2 = 2;
 
@@ -768,7 +768,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * 快速搜索
      *
      * @param {*} $event
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     public onSearch($event: any): void {
         const grid: any = this.$refs.grid;
@@ -793,7 +793,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      *
      * @readonly
      * @type {(number | null)}
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     get refreshdata(): number | null {
         return this.$store.getters['viewaction/getRefreshData'](this.viewtag);
@@ -805,7 +805,7 @@ export default class SocArchivesGridViewBase extends GridViewBase {
      * @param {*} newVal
      * @param {*} oldVal
      * @returns
-     * @memberof SocArchivesGridViewBase
+     * @memberof SocArchivesStopGridViewBase
      */
     @Watch('refreshdata')
     onRefreshData(newVal: any, oldVal: any) {
@@ -825,5 +825,5 @@ export default class SocArchivesGridViewBase extends GridViewBase {
 </script>
 
 <style lang='less'>
-@import './soc-archives-grid-view.less';
+@import './soc-archives-stop-grid-view.less';
 </style>

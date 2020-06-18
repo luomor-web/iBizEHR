@@ -10,6 +10,7 @@ export const PageComponents = {
         Vue.component('soc-account-edit-view', () => import('@pages/soc/soc-account-edit-view/soc-account-edit-view.vue'));
         Vue.component('soc-archives-detail-grid-view', () => import('@pages/soc/soc-archives-detail-grid-view/soc-archives-detail-grid-view.vue'));
         Vue.component('soc-type-edit-view', () => import('@pages/soc/soc-type-edit-view/soc-type-edit-view.vue'));
+        Vue.component('soc-archives-stop-grid-view', () => import('@pages/soc/soc-archives-stop-grid-view/soc-archives-stop-grid-view.vue'));
         Vue.component('soc-type-grid-view', () => import('@pages/soc/soc-type-grid-view/soc-type-grid-view.vue'));
         Vue.component('soc-archives-edit-view', () => import('@pages/soc/soc-archives-edit-view/soc-archives-edit-view.vue'));
         Vue.component('soc-area-pickup-grid-view', () => import('@pages/soc/soc-area-pickup-grid-view/soc-area-pickup-grid-view.vue'));

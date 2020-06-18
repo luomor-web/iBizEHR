@@ -121,6 +121,22 @@ const router = new Router({
                     component: () => import('@pages/pim/pim-person-pickup-view/pim-person-pickup-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/socarchives/:socarchives?/socarchivesdetails/:socarchivesdetail?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.socarchivesdetail.views.editview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'socarchives', parameterName: 'socarchives' },
+                            { pathName: 'socarchivesdetails', parameterName: 'socarchivesdetail' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-archives-detail-edit-view/soc-archives-detail-edit-view.vue'),
+                },
+                {
                     path: 'socarchives/:socarchives?/socarchivesdetails/:socarchivesdetail?/editview/:editview?',
                     meta: {
                         caption: 'entities.socarchivesdetail.views.editview.title',
@@ -178,6 +194,22 @@ const router = new Router({
                     component: () => import('@pages/soc/soc-account-edit-view/soc-account-edit-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/socarchives/:socarchives?/socarchivesdetails/:socarchivesdetail?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.socarchivesdetail.views.gridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'socarchives', parameterName: 'socarchives' },
+                            { pathName: 'socarchivesdetails', parameterName: 'socarchivesdetail' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-archives-detail-grid-view/soc-archives-detail-grid-view.vue'),
+                },
+                {
                     path: 'socarchives/:socarchives?/socarchivesdetails/:socarchivesdetail?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.socarchivesdetail.views.gridview.title',
@@ -221,6 +253,35 @@ const router = new Router({
                     component: () => import('@pages/soc/soc-type-edit-view/soc-type-edit-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/socarchives/:socarchives?/stopgridview/:stopgridview?',
+                    meta: {
+                        caption: 'entities.socarchives.views.stopgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'socarchives', parameterName: 'socarchives' },
+                            { pathName: 'stopgridview', parameterName: 'stopgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-archives-stop-grid-view/soc-archives-stop-grid-view.vue'),
+                },
+                {
+                    path: 'socarchives/:socarchives?/stopgridview/:stopgridview?',
+                    meta: {
+                        caption: 'entities.socarchives.views.stopgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'socarchives', parameterName: 'socarchives' },
+                            { pathName: 'stopgridview', parameterName: 'stopgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-archives-stop-grid-view/soc-archives-stop-grid-view.vue'),
+                },
+                {
                     path: 'soctypes/:soctype?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.soctype.views.gridview.title',
@@ -233,6 +294,21 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/soc/soc-type-grid-view/soc-type-grid-view.vue'),
+                },
+                {
+                    path: 'pimpeople/:pimperson?/socarchives/:socarchives?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.socarchives.views.editview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'socarchives', parameterName: 'socarchives' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-archives-edit-view/soc-archives-edit-view.vue'),
                 },
                 {
                     path: 'socarchives/:socarchives?/editview/:editview?',
@@ -290,6 +366,21 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/soc/soc-rule-detail-grid-view/soc-rule-detail-grid-view.vue'),
+                },
+                {
+                    path: 'pimpeople/:pimperson?/socarchives/:socarchives?/quickeditview/:quickeditview?',
+                    meta: {
+                        caption: 'entities.socarchives.views.quickeditview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'socarchives', parameterName: 'socarchives' },
+                            { pathName: 'quickeditview', parameterName: 'quickeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-archives-quick-edit-view/soc-archives-quick-edit-view.vue'),
                 },
                 {
                     path: 'socarchives/:socarchives?/quickeditview/:quickeditview?',
@@ -362,6 +453,21 @@ const router = new Router({
                     component: () => import('@pages/soc/soc-rule-pickup-grid-view/soc-rule-pickup-grid-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/socarchives/:socarchives?/main2editview/:main2editview?',
+                    meta: {
+                        caption: 'entities.socarchives.views.main2editview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'socarchives', parameterName: 'socarchives' },
+                            { pathName: 'main2editview', parameterName: 'main2editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-archives-main2-edit-view/soc-archives-main2-edit-view.vue'),
+                },
+                {
                     path: 'socarchives/:socarchives?/main2editview/:main2editview?',
                     meta: {
                         caption: 'entities.socarchives.views.main2editview.title',
@@ -402,6 +508,21 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/orm-org-pickup-grid-view/orm-org-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'pimpeople/:pimperson?/socarchives/:socarchives?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.socarchives.views.gridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'socarchives', parameterName: 'socarchives' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-archives-grid-view/soc-archives-grid-view.vue'),
                 },
                 {
                     path: 'socarchives/:socarchives?/gridview/:gridview?',
@@ -518,6 +639,20 @@ const router = new Router({
         component: () => import('@pages/soc/soc-area-grid-view/soc-area-grid-view.vue'),
     },
     {
+        path: '/pimpeople/:pimperson?/socarchives/:socarchives?/quickeditview/:quickeditview?',
+        meta: {
+            caption: 'entities.socarchives.views.quickeditview.title',
+            info:'',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'socarchives', parameterName: 'socarchives' },
+                { pathName: 'quickeditview', parameterName: 'quickeditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-archives-quick-edit-view/soc-archives-quick-edit-view.vue'),
+    },
+    {
         path: '/socarchives/:socarchives?/quickeditview/:quickeditview?',
         meta: {
             caption: 'entities.socarchives.views.quickeditview.title',
@@ -582,6 +717,20 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/soc/soc-rule-detail-edit-view/soc-rule-detail-edit-view.vue'),
+    },
+    {
+        path: '/pimpeople/:pimperson?/socarchives/:socarchives?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.socarchives.views.gridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'socarchives', parameterName: 'socarchives' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-archives-grid-view/soc-archives-grid-view.vue'),
     },
     {
         path: '/socarchives/:socarchives?/gridview/:gridview?',
@@ -649,6 +798,20 @@ const router = new Router({
         component: () => import('@pages/pim/pim-person-set-soc-archives-grid-view/pim-person-set-soc-archives-grid-view.vue'),
     },
     {
+        path: '/pimpeople/:pimperson?/socarchives/:socarchives?/editview/:editview?',
+        meta: {
+            caption: 'entities.socarchives.views.editview.title',
+            info:'',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'socarchives', parameterName: 'socarchives' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-archives-edit-view/soc-archives-edit-view.vue'),
+    },
+    {
         path: '/socarchives/:socarchives?/editview/:editview?',
         meta: {
             caption: 'entities.socarchives.views.editview.title',
@@ -660,6 +823,21 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/soc/soc-archives-edit-view/soc-archives-edit-view.vue'),
+    },
+    {
+        path: '/pimpeople/:pimperson?/socarchives/:socarchives?/socarchivesdetails/:socarchivesdetail?/editview/:editview?',
+        meta: {
+            caption: 'entities.socarchivesdetail.views.editview.title',
+            info:'',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'socarchives', parameterName: 'socarchives' },
+                { pathName: 'socarchivesdetails', parameterName: 'socarchivesdetail' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-archives-detail-edit-view/soc-archives-detail-edit-view.vue'),
     },
     {
         path: '/socarchives/:socarchives?/socarchivesdetails/:socarchivesdetail?/editview/:editview?',
@@ -741,6 +919,21 @@ const router = new Router({
         component: () => import('@pages/soc/soc-type-grid-view/soc-type-grid-view.vue'),
     },
     {
+        path: '/pimpeople/:pimperson?/socarchives/:socarchives?/socarchivesdetails/:socarchivesdetail?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.socarchivesdetail.views.gridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'socarchives', parameterName: 'socarchives' },
+                { pathName: 'socarchivesdetails', parameterName: 'socarchivesdetail' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-archives-detail-grid-view/soc-archives-detail-grid-view.vue'),
+    },
+    {
         path: '/socarchives/:socarchives?/socarchivesdetails/:socarchivesdetail?/gridview/:gridview?',
         meta: {
             caption: 'entities.socarchivesdetail.views.gridview.title',
@@ -795,6 +988,20 @@ const router = new Router({
         component: () => import('@pages/soc/soc-rule-detail-grid-view/soc-rule-detail-grid-view.vue'),
     },
     {
+        path: '/pimpeople/:pimperson?/socarchives/:socarchives?/main2editview/:main2editview?',
+        meta: {
+            caption: 'entities.socarchives.views.main2editview.title',
+            info:'',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'socarchives', parameterName: 'socarchives' },
+                { pathName: 'main2editview', parameterName: 'main2editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-archives-main2-edit-view/soc-archives-main2-edit-view.vue'),
+    },
+    {
         path: '/socarchives/:socarchives?/main2editview/:main2editview?',
         meta: {
             caption: 'entities.socarchives.views.main2editview.title',
@@ -832,6 +1039,33 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/soc/soc-account-grid-view/soc-account-grid-view.vue'),
+    },
+    {
+        path: '/pimpeople/:pimperson?/socarchives/:socarchives?/stopgridview/:stopgridview?',
+        meta: {
+            caption: 'entities.socarchives.views.stopgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'socarchives', parameterName: 'socarchives' },
+                { pathName: 'stopgridview', parameterName: 'stopgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-archives-stop-grid-view/soc-archives-stop-grid-view.vue'),
+    },
+    {
+        path: '/socarchives/:socarchives?/stopgridview/:stopgridview?',
+        meta: {
+            caption: 'entities.socarchives.views.stopgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'socarchives', parameterName: 'socarchives' },
+                { pathName: 'stopgridview', parameterName: 'stopgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-archives-stop-grid-view/soc-archives-stop-grid-view.vue'),
     },
     {
         path: '/socaccounts/:socaccount?/pickupview/:pickupview?',

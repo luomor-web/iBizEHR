@@ -221,6 +221,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'bf4ef187880e7431032ba8b27f4a2143',
+            viewmodule: 'SOC',
+            viewname: 'SocArchivesStopGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '8d8165bf052eb9455044ec39843ef257',
+            ],
+        },
+        {
             viewtag: 'c1fe999705dd1adaf588b0dd05baba85',
             viewmodule: 'SOC',
             viewname: 'SocAccountPickupView',
@@ -310,6 +320,7 @@ export const viewstate: any = {
                 '6f4fb39cb25a702c89dc415245198608',
                 'be3603e6155f93c90fc36953c6a4689f',
                 '1a1326e28ef5ec3d85b45c0d9ecf9684',
+                'bf4ef187880e7431032ba8b27f4a2143',
                 '67ed4891f00a2d935667f0ec691f7182',
                 'a91ca0b2a35fc0bc1c22a613b0af0f04',
             ],

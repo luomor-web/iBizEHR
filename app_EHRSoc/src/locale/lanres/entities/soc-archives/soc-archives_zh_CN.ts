@@ -19,6 +19,7 @@ export default {
     ormorgsectorname: '部门',
     ygbh: '员工编号',
     state: '状态',
+    ygzt: '员工状态',
   },
 	views: {
 		quickeditview: {
@@ -36,6 +37,10 @@ export default {
 		main2editview: {
 			caption: '社保档案',
       title: '社保档案编辑视图',
+		},
+		stopgridview: {
+			caption: '社保档案',
+      title: '社保档案表格视图',
 		},
 	},
 	main2_form: {
@@ -56,6 +61,7 @@ export default {
 			ygbh: '员工编号', 
 			ormorgname: '组织', 
 			ormorgsectorname: '部门', 
+			state: '状态', 
 			pimpersonid: '人员信息标识', 
 			socaccountid: '参保账户标识', 
 			socruleid: '社保规则标识', 
@@ -96,6 +102,7 @@ export default {
 		columns: {
 			ygbh: '员工编号',
 			pimpersonname: '员工姓名',
+			ygzt: '员工状态',
 			ormorgname: '组织',
 			ormorgsectorname: '部门',
 			socaccountname: '参保账户',
@@ -146,6 +153,28 @@ export default {
 		deuiaction1_quickcreatesocarchives: {
 			caption: '新建',
 			tip: '新建',
+		},
+		deuiaction8: {
+			caption: '导入',
+			tip: '导入',
+		},
+		deuiaction6: {
+			caption: '导出',
+			tip: '导出',
+		},
+		deuiaction2: {
+			caption: '过滤',
+			tip: '过滤',
+		},
+		deuiaction5: {
+			caption: '帮助',
+			tip: '帮助',
+		},
+	},
+	stopgridviewtoolbar_toolbar: {
+		deuiaction1_stoparchives: {
+			caption: '终止社保',
+			tip: '终止社保',
 		},
 		deuiaction8: {
 			caption: '导入',

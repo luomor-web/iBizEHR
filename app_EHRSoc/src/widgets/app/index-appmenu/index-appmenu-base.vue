@@ -62,23 +62,26 @@ export default class IndexBase extends AppMenusCtrlBase {
     protected click(item: any) {
         if (item) {
             switch (item.appfunctag) {
+                case '_2': 
+                    this.click_2(item);
+                    return;
+                case '_8': 
+                    this.click_8(item);
+                    return;
+                case '_6': 
+                    this.click_6(item);
+                    return;
                 case '_7': 
                     this.click_7(item);
                     return;
                 case '_5': 
                     this.click_5(item);
                     return;
-                case '_6': 
-                    this.click_6(item);
+                case '_3': 
+                    this.click_3(item);
                     return;
                 case '_4': 
                     this.click_4(item);
-                    return;
-                case '_2': 
-                    this.click_2(item);
-                    return;
-                case '_3': 
-                    this.click_3(item);
                     return;
                 default:
                     console.warn('未指定应用功能');
@@ -87,12 +90,30 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
+     * 终止社保
+     *
+     * @param {*} [item={}]
+     * @memberof Index
+     */
+    public click_2(item: any = {}) {
+        const viewparam: any = {};
+        Object.assign(viewparam, {});
+        const deResParameters: any[] = [];
+        const parameters: any[] = [
+            { pathName: 'socarchives', parameterName: 'socarchives' },
+            { pathName: 'stopgridview', parameterName: 'stopgridview' },
+        ];
+        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
+        this.$router.push(path);
+    }
+    
+    /**
      * 保险类型
      *
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_7(item: any = {}) {
+    public click_8(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -110,7 +131,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_5(item: any = {}) {
+    public click_6(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -128,7 +149,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_6(item: any = {}) {
+    public click_7(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -146,7 +167,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_4(item: any = {}) {
+    public click_5(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -164,7 +185,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_2(item: any = {}) {
+    public click_3(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];
@@ -182,7 +203,7 @@ export default class IndexBase extends AppMenusCtrlBase {
      * @param {*} [item={}]
      * @memberof Index
      */
-    public click_3(item: any = {}) {
+    public click_4(item: any = {}) {
         const viewparam: any = {};
         Object.assign(viewparam, {});
         const deResParameters: any[] = [];

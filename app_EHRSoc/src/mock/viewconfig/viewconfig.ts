@@ -207,6 +207,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "SocAccountGridView",
             "viewtag": "be3603e6155f93c90fc36953c6a4689f"
         },
+        "socarchivesstopgridview": {
+            "title": "社保档案表格视图",
+            "caption": "社保档案",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "SOC",
+            "viewname": "SocArchivesStopGridView",
+            "viewtag": "bf4ef187880e7431032ba8b27f4a2143"
+        },
         "socaccountpickupview": {
             "title": "参保账户数据选择视图",
             "caption": "参保账户",

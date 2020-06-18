@@ -37,6 +37,11 @@ export default class MainModel {
           dataType: 'PICKUP',
         },
         {
+          name: 'socaccountid',
+          prop: 'socaccountid',
+          dataType: 'PICKUP',
+        },
+        {
           name: 'socaccountname',
           prop: 'socaccountname',
           dataType: 'PICKUPTEXT',
@@ -45,11 +50,6 @@ export default class MainModel {
           name: 'socrulename',
           prop: 'socrulename',
           dataType: 'PICKUPTEXT',
-        },
-        {
-          name: 'socaccountid',
-          prop: 'socaccountid',
-          dataType: 'PICKUP',
         },
         {
           name: 'state',
@@ -79,6 +79,11 @@ export default class MainModel {
         {
           name: 'ormorgsectorname',
           prop: 'ormorgsectorname',
+          dataType: 'PICKUPDATA',
+        },
+        {
+          name: 'ygzt',
+          prop: 'ygzt',
           dataType: 'PICKUPDATA',
         },
         {

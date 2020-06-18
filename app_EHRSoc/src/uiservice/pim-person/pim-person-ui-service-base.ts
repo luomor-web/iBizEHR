@@ -129,6 +129,11 @@ export default class PimPersonUIServiceBase extends UIService {
         Object.assign(data,parentObj);
         Object.assign(context,parentObj);
         let deResParameters: any[] = [];
+        if(context.pimperson && true){
+            deResParameters = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'socarchives', parameterName: 'socarchives' },
         ];
@@ -193,6 +198,11 @@ export default class PimPersonUIServiceBase extends UIService {
         Object.assign(data,parentObj);
         Object.assign(context,parentObj);
         let deResParameters: any[] = [];
+        if(context.pimperson && true){
+            deResParameters = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'socarchives', parameterName: 'socarchives' },
         ];
