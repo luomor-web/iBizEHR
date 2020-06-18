@@ -49,6 +49,9 @@ export class EntityServiceRegister {
         this.allEntityService.set('socarchivesdetail', () => import('@/service/soc-archives-detail/soc-archives-detail-service'));
         this.allEntityService.set('socruledetail', () => import('@/service/soc-rule-detail/soc-rule-detail-service'));
         this.allEntityService.set('pimperson', () => import('@/service/pim-person/pim-person-service'));
+        this.allEntityService.set('codeitem', () => import('@/service/code-item/code-item-service'));
+        this.allEntityService.set('personstatemgr', () => import('@/service/person-state-mgr/person-state-mgr-service'));
+        this.allEntityService.set('codelist1', () => import('@/service/code-list1/code-list1-service'));
     }
 
     /**

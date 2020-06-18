@@ -1,89 +1,29 @@
 <template>
-    <i-form :model="this.data" class='app-form' ref='form'  id='socarchives_main' style="">
+    <i-form :model="this.data" class='app-form info-form-mode' ref='form'  id='socarchives_main' style="">
     <input style="display:none;" />
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.socarchives.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.socarchives.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
     <row>
         <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.socarchives.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
     
-<app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :localContext ='{ }' 
-  :localParam ='{ }' 
-  :disabled="detailsModel.pimpersonname.disabled"
-  name='pimpersonname'
-  deMajorField='pimpersonname'
-  deKeyField='pimperson'
-  :service="service"
-  :acParams="{ serviceName: 'PimPersonService', interfaceName: 'FetchDefault'}"
-  valueitem='pimpersonid' 
-  :value="data.pimpersonname" 
-  editortype="" 
-  :pickupView="{ viewname: 'pim-person-pickup-view', title: $t('entities.pimperson.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'pimpeople', parameterName: 'pimperson' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+<app-span name='pimpersonname' :value="data.pimpersonname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.socaccountname.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='socaccountname' :itemRules="this.rules.socaccountname" class='' :caption="$t('entities.socarchives.main_form.details.socaccountname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.socaccountname.error" :isEmptyCaption="false" labelPos="LEFT">
     
-<app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :localContext ='{ }' 
-  :localParam ='{ }' 
-  :disabled="detailsModel.socaccountname.disabled"
-  name='socaccountname'
-  deMajorField='socaccountname'
-  deKeyField='socaccount'
-  :service="service"
-  :acParams="{ serviceName: 'SocAccountService', interfaceName: 'FetchDefault'}"
-  valueitem='socaccountid' 
-  :value="data.socaccountname" 
-  editortype="" 
-  :pickupView="{ viewname: 'soc-account-pickup-view', title: $t('entities.socaccount.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'socaccounts', parameterName: 'socaccount' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+<app-span name='socaccountname' :value="data.socaccountname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.socrulename.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='socrulename' :itemRules="this.rules.socrulename" class='' :caption="$t('entities.socarchives.main_form.details.socrulename')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.socrulename.error" :isEmptyCaption="false" labelPos="LEFT">
     
-<app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :localContext ='{ }' 
-  :localParam ='{ }' 
-  :disabled="detailsModel.socrulename.disabled"
-  name='socrulename'
-  deMajorField='socrulename'
-  deKeyField='socrule'
-  :service="service"
-  :acParams="{ serviceName: 'SocRuleService', interfaceName: 'FetchDefault'}"
-  valueitem='socruleid' 
-  :value="data.socrulename" 
-  editortype="" 
-  :pickupView="{ viewname: 'soc-rule-pickup-view', title: $t('entities.socrule.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'socrules', parameterName: 'socrule' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+<app-span name='socrulename' :value="data.socrulename" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -114,7 +54,7 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.socarchives.main_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.socarchives.main_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="true" >    
     <row>
         <i-col v-show="detailsModel.druipart1.visible" :style="{'height': '600px !important',}"  :lg="{ span: 24, offset: 0 }">
     <app-form-druipart
@@ -459,9 +399,6 @@ export default class MainBase extends Vue implements ControlInterface {
         ygbh: null,
         ormorgname: null,
         ormorgsectorname: null,
-        pimpersonid: null,
-        socaccountid: null,
-        socruleid: null,
         socarchivesid: null,
         socarchives:null,
     };
@@ -556,20 +493,20 @@ export default class MainBase extends Vue implements ControlInterface {
         pimpersonname: [
             { type: 'string', message: '员工姓名 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '员工姓名 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '员工姓名 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '员工姓名 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '员工姓名 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '员工姓名 值不能为空', trigger: 'blur' },
         ],
         socaccountname: [
             { type: 'string', message: '参保账户 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '参保账户 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '参保账户 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '参保账户 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '参保账户 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '参保账户 值不能为空', trigger: 'blur' },
         ],
         socrulename: [
             { type: 'string', message: '社保规则名称 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '社保规则名称 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '社保规则名称 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '社保规则名称 值不能为空', trigger: 'blur' },
+            { required: false, type: 'string', message: '社保规则名称 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '社保规则名称 值不能为空', trigger: 'blur' },
         ],
         ygbh: [
             { type: 'string', message: '员工编号 值必须为字符串类型', trigger: 'change' },
@@ -588,24 +525,6 @@ export default class MainBase extends Vue implements ControlInterface {
             { type: 'string', message: '部门 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '部门 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '部门 值不能为空', trigger: 'blur' },
-        ],
-        pimpersonid: [
-            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'blur' },
-        ],
-        socaccountid: [
-            { type: 'string', message: '参保账户标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '参保账户标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '参保账户标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '参保账户标识 值不能为空', trigger: 'blur' },
-        ],
-        socruleid: [
-            { type: 'string', message: '社保规则标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '社保规则标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '社保规则标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '社保规则标识 值不能为空', trigger: 'blur' },
         ],
         socarchivesid: [
             { type: 'string', message: '社保档案标识 值必须为字符串类型', trigger: 'change' },
@@ -657,12 +576,6 @@ export default class MainBase extends Vue implements ControlInterface {
         ormorgname: new FormItemModel({ caption: '组织', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         ormorgsectorname: new FormItemModel({ caption: '部门', detailType: 'FORMITEM', name: 'ormorgsectorname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pimpersonid: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        socaccountid: new FormItemModel({ caption: '参保账户标识', detailType: 'FORMITEM', name: 'socaccountid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        socruleid: new FormItemModel({ caption: '社保规则标识', detailType: 'FORMITEM', name: 'socruleid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         socarchivesid: new FormItemModel({ caption: '社保档案标识', detailType: 'FORMITEM', name: 'socarchivesid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -837,42 +750,6 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 pimpersonid 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.pimpersonid')
-    onPimpersonidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pimpersonid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 socaccountid 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.socaccountid')
-    onSocaccountidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'socaccountid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 socruleid 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.socruleid')
-    onSocruleidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'socruleid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 socarchivesid 值
      *
      * @param {*} newVal
@@ -920,9 +797,6 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
-
-
-
 
 
 

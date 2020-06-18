@@ -8,6 +8,9 @@ import socaccount_en_US from '@locale/lanres/entities/soc-account/soc-account_en
 import socarchivesdetail_en_US from '@locale/lanres/entities/soc-archives-detail/soc-archives-detail_en_US';
 import socruledetail_en_US from '@locale/lanres/entities/soc-rule-detail/soc-rule-detail_en_US';
 import pimperson_en_US from '@locale/lanres/entities/pim-person/pim-person_en_US';
+import codeitem_en_US from '@locale/lanres/entities/code-item/code-item_en_US';
+import personstatemgr_en_US from '@locale/lanres/entities/person-state-mgr/person-state-mgr_en_US';
+import codelist1_en_US from '@locale/lanres/entities/code-list1/code-list1_en_US';
 import components_en_US from '@locale/lanres/components/components_en_US';
 import codelist_en_US from '@locale/lanres/codelist/codelist_en_US';
 import userCustom_en_US from '@locale/lanres/userCustom/userCustom_en_US';
@@ -91,6 +94,9 @@ export default {
         socarchivesdetail: socarchivesdetail_en_US,
         socruledetail: socruledetail_en_US,
         pimperson: pimperson_en_US,
+        codeitem: codeitem_en_US,
+        personstatemgr: personstatemgr_en_US,
+        codelist1: codelist1_en_US,
     },
     components: components_en_US,
     codelist: codelist_en_US,

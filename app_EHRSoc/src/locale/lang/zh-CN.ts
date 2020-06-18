@@ -8,6 +8,9 @@ import socaccount_zh_CN from '@locale/lanres/entities/soc-account/soc-account_zh
 import socarchivesdetail_zh_CN from '@locale/lanres/entities/soc-archives-detail/soc-archives-detail_zh_CN';
 import socruledetail_zh_CN from '@locale/lanres/entities/soc-rule-detail/soc-rule-detail_zh_CN';
 import pimperson_zh_CN from '@locale/lanres/entities/pim-person/pim-person_zh_CN';
+import codeitem_zh_CN from '@locale/lanres/entities/code-item/code-item_zh_CN';
+import personstatemgr_zh_CN from '@locale/lanres/entities/person-state-mgr/person-state-mgr_zh_CN';
+import codelist1_zh_CN from '@locale/lanres/entities/code-list1/code-list1_zh_CN';
 import components_zh_CN from '@locale/lanres/components/components_zh_CN';
 import codelist_zh_CN from '@locale/lanres/codelist/codelist_zh_CN';
 import userCustom_zh_CN from '@locale/lanres/userCustom/userCustom_zh_CN';
@@ -91,6 +94,9 @@ export default {
         socarchivesdetail: socarchivesdetail_zh_CN,
         socruledetail: socruledetail_zh_CN,
         pimperson: pimperson_zh_CN,
+        codeitem: codeitem_zh_CN,
+        personstatemgr: personstatemgr_zh_CN,
+        codelist1: codelist1_zh_CN,
     },
     components: components_zh_CN,
     codelist: codelist_zh_CN,

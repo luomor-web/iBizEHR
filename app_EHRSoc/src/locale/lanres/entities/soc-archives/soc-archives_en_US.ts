@@ -91,9 +91,6 @@ export default {
 			ygbh: "员工编号", 
 			ormorgname: "组织", 
 			ormorgsectorname: "部门", 
-			pimpersonid: "人员信息标识", 
-			socaccountid: "参保账户标识", 
-			socruleid: "社保规则标识", 
 			socarchivesid: "社保档案标识", 
 		},
 		uiactions: {

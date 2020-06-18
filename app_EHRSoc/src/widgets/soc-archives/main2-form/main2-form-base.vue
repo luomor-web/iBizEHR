@@ -126,12 +126,6 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.pimpersonid.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='pimpersonid' :itemRules="this.rules.pimpersonid" class='' :caption="$t('entities.socarchives.main2_form.details.pimpersonid')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonid.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.pimpersonid"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.pimpersonid.disabled" type='text'  style=""></input-box>
-</app-form-item>
-
-</i-col>
     
     </row>
 </app-form-group>
@@ -1846,6 +1840,9 @@ export default class Main2Base extends Vue implements ControlInterface {
      * @memberof Main2
      */
     public createDefault(){                    
+        if (this.data.hasOwnProperty('state')) {
+            this.data['state'] = '10';
+        }
     }
 
     /**

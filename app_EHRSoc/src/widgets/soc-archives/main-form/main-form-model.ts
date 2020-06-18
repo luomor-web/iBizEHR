@@ -86,21 +86,6 @@ export default class MainModel {
         dataType: 'PICKUPDATA',
       },
       {
-        name: 'pimpersonid',
-        prop: 'pimpersonid',
-        dataType: 'PICKUP',
-      },
-      {
-        name: 'socaccountid',
-        prop: 'socaccountid',
-        dataType: 'PICKUP',
-      },
-      {
-        name: 'socruleid',
-        prop: 'socruleid',
-        dataType: 'PICKUP',
-      },
-      {
         name: 'socarchivesid',
         prop: 'socarchivesid',
         dataType: 'GUID',

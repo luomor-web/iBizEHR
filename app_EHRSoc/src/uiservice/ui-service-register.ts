@@ -49,6 +49,9 @@ export class UIServiceRegister {
         this.allUIService.set('socarchivesdetail', () => import('@/uiservice/soc-archives-detail/soc-archives-detail-ui-service'));
         this.allUIService.set('socruledetail', () => import('@/uiservice/soc-rule-detail/soc-rule-detail-ui-service'));
         this.allUIService.set('pimperson', () => import('@/uiservice/pim-person/pim-person-ui-service'));
+        this.allUIService.set('codeitem', () => import('@/uiservice/code-item/code-item-ui-service'));
+        this.allUIService.set('personstatemgr', () => import('@/uiservice/person-state-mgr/person-state-mgr-ui-service'));
+        this.allUIService.set('codelist1', () => import('@/uiservice/code-list1/code-list1-ui-service'));
     }
 
     /**

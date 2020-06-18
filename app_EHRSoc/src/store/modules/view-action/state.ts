@@ -112,10 +112,7 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'bc7184f7d9cd35c81ab755bd2ff2e729',
-                'c1fe999705dd1adaf588b0dd05baba85',
-                'f131b13e32b5195223f2af77eefa60a9',
                 'aa42ee6a3edbf6fc9c11a80fcac3d365',
-                'eb464b83d579a19440a0f65278573bb5',
             ],
         },
         {

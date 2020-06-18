@@ -2,9 +2,6 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import SocArchivesService from '@/service/soc-archives/soc-archives-service';
 import MainModel from './main-form-model';
-import PimPersonService from '@/service/pim-person/pim-person-service';
-import SocAccountService from '@/service/soc-account/soc-account-service';
-import SocRuleService from '@/service/soc-rule/soc-rule-service';
 
 
 /**
@@ -45,30 +42,6 @@ export default class MainService extends ControlService {
     }
 
     /**
-     * 人员信息服务对象
-     *
-     * @type {PimPersonService}
-     * @memberof MainService
-     */
-    public pimpersonService: PimPersonService = new PimPersonService();
-
-    /**
-     * 参保账户服务对象
-     *
-     * @type {SocAccountService}
-     * @memberof MainService
-     */
-    public socaccountService: SocAccountService = new SocAccountService();
-
-    /**
-     * 社保规则服务对象
-     *
-     * @type {SocRuleService}
-     * @memberof MainService
-     */
-    public socruleService: SocRuleService = new SocRuleService();
-
-    /**
      * 处理数据
      *
      * @private
@@ -107,15 +80,6 @@ export default class MainService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'PimPersonService') && Object.is(interfaceName, 'FetchDefault')) {
-            return this.doItems(this.pimpersonService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'pimpersonid', 'pimperson');
-        }
-        if (Object.is(serviceName, 'SocAccountService') && Object.is(interfaceName, 'FetchDefault')) {
-            return this.doItems(this.socaccountService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'socaccountid', 'socaccount');
-        }
-        if (Object.is(serviceName, 'SocRuleService') && Object.is(interfaceName, 'FetchDefault')) {
-            return this.doItems(this.socruleService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'socruleid', 'socrule');
-        }
 
         return Promise.reject([])
     }
