@@ -93,6 +93,20 @@ const router = new Router({
                     component: () => import('@pages/soc/soc-rule-detail-edit-view/soc-rule-detail-edit-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/setsocarchivesgridview/:setsocarchivesgridview?',
+                    meta: {
+                        caption: 'entities.pimperson.views.setsocarchivesgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'setsocarchivesgridview', parameterName: 'setsocarchivesgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pim/pim-person-set-soc-archives-grid-view/pim-person-set-soc-archives-grid-view.vue'),
+                },
+                {
                     path: 'pimpeople/:pimperson?/pickupview/:pickupview?',
                     meta: {
                         caption: 'entities.pimperson.views.pickupview.title',
@@ -590,6 +604,19 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/orm-org-pickup-grid-view/orm-org-pickup-grid-view.vue'),
+    },
+    {
+        path: '/pimpeople/:pimperson?/setsocarchivesgridview/:setsocarchivesgridview?',
+        meta: {
+            caption: 'entities.pimperson.views.setsocarchivesgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'setsocarchivesgridview', parameterName: 'setsocarchivesgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/pim/pim-person-set-soc-archives-grid-view/pim-person-set-soc-archives-grid-view.vue'),
     },
     {
         path: '/socarchives/:socarchives?/editview/:editview?',

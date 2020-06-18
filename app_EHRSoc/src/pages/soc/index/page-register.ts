@@ -3,6 +3,7 @@ export const PageComponents = {
                 Vue.component('soc-area-pickup-view', () => import('@pages/soc/soc-area-pickup-view/soc-area-pickup-view.vue'));
         Vue.component('pim-person-pickup-grid-view', () => import('@pages/pim/pim-person-pickup-grid-view/pim-person-pickup-grid-view.vue'));
         Vue.component('soc-rule-detail-edit-view', () => import('@pages/soc/soc-rule-detail-edit-view/soc-rule-detail-edit-view.vue'));
+        Vue.component('pim-person-set-soc-archives-grid-view', () => import('@pages/pim/pim-person-set-soc-archives-grid-view/pim-person-set-soc-archives-grid-view.vue'));
         Vue.component('pim-person-pickup-view', () => import('@pages/pim/pim-person-pickup-view/pim-person-pickup-view.vue'));
         Vue.component('soc-archives-detail-edit-view', () => import('@pages/soc/soc-archives-detail-edit-view/soc-archives-detail-edit-view.vue'));
         Vue.component('soc-rule-quick-edit-view', () => import('@pages/soc/soc-rule-quick-edit-view/soc-rule-quick-edit-view.vue'));

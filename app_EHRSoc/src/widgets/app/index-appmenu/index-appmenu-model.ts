@@ -48,7 +48,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/jcgl/1/shebaoxinxi.png',
 	textcls: '',
-	appfunctag: '_5',
+	appfunctag: '_6',
 	resourcetag: '',
 	authtag:'EHRSoc-Index-menuitem2',
 },
@@ -67,7 +67,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/sbfl/1/gongsishebaoxinxi.png',
 	textcls: '',
-	appfunctag: '_4',
+	appfunctag: '_5',
 	resourcetag: '',
 	authtag:'EHRSoc-Index-menuitem3',
 },
@@ -86,7 +86,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/jcgl/1/hetongleixing.png',
 	textcls: '',
-	appfunctag: '_6',
+	appfunctag: '_7',
 	resourcetag: '',
 	authtag:'EHRSoc-Index-menuitem4',
 },
@@ -105,7 +105,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/newimage/1/kaoqinleixing.png',
 	textcls: '',
-	appfunctag: '_3',
+	appfunctag: '_4',
 	resourcetag: '',
 	authtag:'EHRSoc-Index-menuitem5',
 },
@@ -164,7 +164,7 @@ export default class IndexModel {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/tuixiuguanli.png',
 	textcls: '',
-	appfunctag: '',
+	appfunctag: '_3',
 	resourcetag: '',
 	authtag:'EHRSoc-Index-menuitem8',
 },
@@ -200,7 +200,7 @@ export default class IndexModel {
 	 */
 	public funcs: any[] = [
         {
-            appfunctag: '_6',
+            appfunctag: '_7',
             appfuncyype: 'APPVIEW',
             openmode: '',
             codename: 'soctypegridview',
@@ -212,7 +212,7 @@ export default class IndexModel {
             ],
         },
         {
-            appfunctag: '_4',
+            appfunctag: '_5',
             appfuncyype: 'APPVIEW',
             openmode: '',
             codename: 'socaccountgridview',
@@ -224,7 +224,7 @@ export default class IndexModel {
             ],
         },
         {
-            appfunctag: '_5',
+            appfunctag: '_6',
             appfuncyype: 'APPVIEW',
             openmode: '',
             codename: 'socareagridview',
@@ -236,7 +236,7 @@ export default class IndexModel {
             ],
         },
         {
-            appfunctag: '_3',
+            appfunctag: '_4',
             appfuncyype: 'APPVIEW',
             openmode: '',
             codename: 'socrulegridview',
@@ -257,6 +257,18 @@ export default class IndexModel {
             parameters: [
                 { pathName: 'socarchives', parameterName: 'socarchives' },
                 { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+        },
+        {
+            appfunctag: '_3',
+            appfuncyype: 'APPVIEW',
+            openmode: '',
+            codename: 'pimpersonsetsocarchivesgridview',
+            deResParameters: [],
+            routepath: '/index/:index?/pimpeople/:pimperson?/setsocarchivesgridview/:setsocarchivesgridview?',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'setsocarchivesgridview', parameterName: 'setsocarchivesgridview' },
             ],
         },
 	];

@@ -2,6 +2,18 @@ export default {
     EhrCodeList0233: {
         empty: '',
     },
+    EhrCodeList0249: {
+        empty: '',
+    },
+    EhrCodeList0050: {
+        empty: '',
+    },
+    EhrCodeList0250: {
+        empty: '',
+    },
+    EhrCodeList0072: {
+        empty: '',
+    },
     EhrCodeList0115: {
         '2012': '2012年',
         '2013': '2013年',
@@ -24,23 +36,19 @@ export default {
         '2030': '2030年',
         empty: '',
     },
-    EhrCodeList0249: {
-        empty: '',
-    },
-    EhrCodeList0050: {
-        empty: '',
-    },
     EhrCodeList0022: {
         '10': '法人单位',
         '20': '非法人单位',
         empty: '',
     },
+    EhrCodeList0123: {
+        '10': '可调配',
+        '20': '不可调配',
+        empty: '',
+    },
     EhrCodeList0086: {
         '1': '启用',
         '0': '停用',
-        empty: '',
-    },
-    EhrCodeList0250: {
         empty: '',
     },
     EhrCodeList0057: {

@@ -111,6 +111,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "OrmOrgPickupGridView",
             "viewtag": "7ac55b5b5ac68117e990e9ced14e71b9"
         },
+        "pimpersonsetsocarchivesgridview": {
+            "title": "员工考勤设置",
+            "caption": "员工考勤设置",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "PIM",
+            "viewname": "PimPersonSetSocArchivesGridView",
+            "viewtag": "7c209be889bba2c9a6de317b1bcec291"
+        },
         "socarchiveseditview": {
             "title": "社保档案编辑视图",
             "caption": "社保档案",

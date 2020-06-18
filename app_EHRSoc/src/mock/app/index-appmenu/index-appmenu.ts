@@ -43,7 +43,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jcgl/1/shebaoxinxi.png',
 	textcls: '',
-	appfunctag: '_5',
+	appfunctag: '_6',
 	resourcetag: '',
 },
 		{
@@ -61,7 +61,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/sbfl/1/gongsishebaoxinxi.png',
 	textcls: '',
-	appfunctag: '_4',
+	appfunctag: '_5',
 	resourcetag: '',
 },
 		{
@@ -79,7 +79,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/jcgl/1/hetongleixing.png',
 	textcls: '',
-	appfunctag: '_6',
+	appfunctag: '_7',
 	resourcetag: '',
 },
 		{
@@ -97,7 +97,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/newimage/1/kaoqinleixing.png',
 	textcls: '',
-	appfunctag: '_3',
+	appfunctag: '_4',
 	resourcetag: '',
 },
 	],
@@ -153,7 +153,7 @@ mock.onGet('v7/indexappmenu').reply((config: any) => {
 	iconcls: '',
 	icon: '../../../img/pzgl/1/tuixiuguanli.png',
 	textcls: '',
-	appfunctag: '',
+	appfunctag: '_3',
 	resourcetag: '',
 },
 		{

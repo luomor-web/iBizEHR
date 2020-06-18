@@ -94,6 +94,17 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '7c209be889bba2c9a6de317b1bcec291',
+            viewmodule: 'PIM',
+            viewname: 'PimPersonSetSocArchivesGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '8d8165bf052eb9455044ec39843ef257',
+                '21bd406d12cd31c62de8b9e78649d229',
+            ],
+        },
+        {
             viewtag: '8d8165bf052eb9455044ec39843ef257',
             viewmodule: 'SOC',
             viewname: 'SocArchivesEditView',
@@ -295,6 +306,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '7c209be889bba2c9a6de317b1bcec291',
                 '6f4fb39cb25a702c89dc415245198608',
                 'be3603e6155f93c90fc36953c6a4689f',
                 '1a1326e28ef5ec3d85b45c0d9ecf9684',

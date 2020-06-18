@@ -155,6 +155,10 @@ export default {
     pimpersonid3: '人员信息标识',
   },
 	views: {
+		setsocarchivesgridview: {
+			caption: '员工考勤设置',
+      title: '员工考勤设置',
+		},
 		pickupgridview: {
 			caption: '人员信息',
       title: '人员信息选择表格视图',
@@ -181,6 +185,25 @@ export default {
 		uiactions: {
 		},
 	},
+	ryinfogrid_grid: {
+		columns: {
+			ygbh: '员工编号',
+			pimpersonname: '员工姓名',
+			zzdzs: '组织',
+			ormorgsectorname: '部门',
+			zw: '职务',
+			gw: '岗位',
+			zjhm: '证件号码',
+			csrq: '出生日期',
+			nj: '年龄',
+			xb: '性别',
+			lxdh: '手机号码',
+			ygzt: '员工状态',
+			workstate: '工作状态',
+		},
+		uiactions: {
+		},
+	},
 	ryinfosearchform_searchform: {
 		details: {
 			formpage1: '常规条件', 
@@ -193,6 +216,20 @@ export default {
 			n_zgcode_eq: '在岗状态', 
 		},
 		uiactions: {
+		},
+	},
+	setsocarchivesgridviewtoolbar_toolbar: {
+		tbitem1_quickcreatesocarchives: {
+			caption: '新建社保档案',
+			tip: '新建社保档案',
+		},
+		tbitem13: {
+			caption: '导出',
+			tip: '导出',
+		},
+		tbitem19: {
+			caption: '过滤',
+			tip: '过滤',
 		},
 	},
 };
