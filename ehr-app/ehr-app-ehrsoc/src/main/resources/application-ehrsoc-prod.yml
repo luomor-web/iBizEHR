@@ -43,5 +43,17 @@ zuul:
       path: /pimpeople/**
       serviceId: ehr-webapi
       stripPrefix: false
+    codeitem:
+      path: /codeitems/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    personstatemgr:
+      path: /personstatemgrs/**
+      serviceId: ehr-webapi
+      stripPrefix: false
+    codelist:
+      path: /codelist1s/**
+      serviceId: ehr-webapi
+      stripPrefix: false
   sensitive-headers:
     - Cookie,Set-Cookie,Authorization

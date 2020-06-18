@@ -113,7 +113,8 @@ public class SocArchivesSearchContext extends QueryWrapperContext<SocArchives> {
 		 this.query=query;
 		 if(!StringUtils.isEmpty(query)){
             this.getSearchCond().and( wrapper ->
-                     wrapper.like("socarchivesname", query)   
+                     wrapper.like("pimpersonname", query)   
+                        .or().like("ygbh", query)            
             );
 		 }
 	}
