@@ -58,16 +58,16 @@ export default {
       title: '培训计划表格视图',
 		},
 		gridview: {
-			caption: '培训计划',
-      title: '培训计划表格视图',
+			caption: '培训计划详情',
+      title: '培训计划详情',
 		},
 		pickupview: {
 			caption: '培训计划',
       title: '培训计划数据选择视图',
 		},
 		editview: {
-			caption: '培训计划',
-      title: '培训计划编辑视图',
+			caption: '培训计划详情',
+      title: '培训计划详情',
 		},
 	},
 	main_2_form: {
@@ -102,7 +102,7 @@ export default {
 	},
 	main_form: {
 		details: {
-			group1: '公司培训计划制定', 
+			group1: '培训计划详情', 
 			druipart1: '', 
 			grouppanel1: '培训计划项', 
 			formpage1: '基本信息', 
@@ -114,14 +114,9 @@ export default {
 			srfuf: '', 
 			srfdeid: '', 
 			srfsourcekey: '', 
-			xh: '排序号', 
-			trmdemdeftionname: '培训班名称', 
+			xh: '排序', 
+			trmdemdeftionname: '培训需求', 
 			pxdx: '培训对象', 
-			pxzynr: '拟培训内容', 
-			pxkssj: '培训开始时间', 
-			pxjssj: '培训结束时间', 
-			pxdd: '培训地点', 
-			pxrs: '拟培训人数', 
 			npxks: '拟培训课时', 
 			npxqs: '拟培训期数', 
 			ysze: '预计培训费用', 
@@ -134,8 +129,8 @@ export default {
 	},
 	main_grid: {
 		columns: {
-			xh: '排序号',
-			trmdemdeftionname: '培训班名称',
+			xh: '排序',
+			trmdemdeftionname: '培训需求名称',
 			pxdx: '培训对象',
 			pxzynr: '拟培训内容',
 			pxkssj: '培训开始时间',
@@ -184,21 +179,17 @@ export default {
 			caption: '新建',
 			tip: '新建',
 		},
+		tbitem5: {
+			caption: '编辑',
+			tip: '编辑',
+		},
 		tbitem8: {
 			caption: '删除',
 			tip: '删除',
 		},
-		tbitem19: {
-			caption: '过滤',
-			tip: '过滤',
-		},
 		tbitem13: {
 			caption: '导出',
 			tip: '导出',
-		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 	editviewtoolbar_toolbar: {
@@ -206,21 +197,9 @@ export default {
 			caption: '保存',
 			tip: '保存',
 		},
-		tbitem4: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
 		tbitem5: {
 			caption: '保存并关闭',
 			tip: '保存并关闭',
-		},
-		tbitem7: {
-			caption: '删除并关闭',
-			tip: '删除并关闭',
-		},
-		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 	fgridviewtoolbar_toolbar: {

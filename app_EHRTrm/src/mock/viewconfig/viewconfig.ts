@@ -504,8 +504,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "7ced529233ba55f309f9044e58e48c14"
         },
         "trmplanformugridview": {
-            "title": "培训计划制定表格视图",
-            "caption": "培训计划制定",
+            "title": "计划制定",
+            "caption": "计划制定",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmPlanFormuGridView",
@@ -664,8 +664,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "A43D4D65-9C2F-4F50-8B47-3BDE94B4C3D2"
         },
         "trmtrainplangridview": {
-            "title": "培训计划表格视图",
-            "caption": "培训计划",
+            "title": "培训计划详情",
+            "caption": "培训计划详情",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrainPlanGridView",
@@ -752,8 +752,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "bfd1741ff8c1a4b95d4bf5bb472958b3"
         },
         "trmplanformueditview": {
-            "title": "培训计划制定编辑视图",
-            "caption": "培训计划制定",
+            "title": "培训计划",
+            "caption": "培训计划",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmPlanFormuEditView",
@@ -792,8 +792,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "c7fa47fb70347c041eb3e03b898497fe"
         },
         "trmtrainplaneditview": {
-            "title": "培训计划编辑视图",
-            "caption": "培训计划",
+            "title": "培训计划详情",
+            "caption": "培训计划详情",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrainPlanEditView",

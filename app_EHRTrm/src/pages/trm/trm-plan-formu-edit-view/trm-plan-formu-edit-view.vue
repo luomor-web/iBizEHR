@@ -5,7 +5,7 @@ import TrmPlanFormuEditViewBase from './trm-plan-formu-edit-view-base.vue';
 import view_form from '@widgets/trm-plan-formu/main-form/main-form.vue';
 
 /**
- * 培训计划制定编辑视图
+ * 培训计划
  *
  * @export
  * @class TrmPlanFormuEditView

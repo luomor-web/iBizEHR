@@ -21,7 +21,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('xh')">
-                <el-table-column show-overflow-tooltip :prop="'xh'" :label="$t('entities.trmtrainplan.main_grid.columns.xh')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xh'" :label="$t('entities.trmtrainplan.main_grid.columns.xh')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainplan.main_grid.columns.xh')}}
@@ -630,14 +630,14 @@ export default class MainBase extends Vue implements ControlInterface {
     public allColumns: any[] = [
         {
             name: 'xh',
-            label: '排序号',
+            label: '排序',
             langtag: 'entities.trmtrainplan.main_grid.columns.xh',
             show: true,
             util: 'px'
         },
         {
             name: 'trmdemdeftionname',
-            label: '培训班名称',
+            label: '培训需求名称',
             langtag: 'entities.trmtrainplan.main_grid.columns.trmdemdeftionname',
             show: true,
             util: 'PX'

@@ -4,7 +4,7 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmplanformu.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmplanformu.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.trmplanformuname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='trmplanformuname' :itemRules="this.rules.trmplanformuname" class='' :caption="$t('entities.trmplanformu.main_form.details.trmplanformuname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.trmplanformuname.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -90,7 +90,7 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmplanformu.main_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmplanformu.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.druipart1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-druipart
@@ -526,10 +526,10 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
         trmplanformuname: [
-            { type: 'string', message: '培训计划制定名称 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '培训计划制定名称 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '培训计划制定名称 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '培训计划制定名称 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '标题 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '标题 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '标题 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '标题 值不能为空', trigger: 'blur' },
         ],
         nd: [
             { type: 'string', message: '年度 值必须为字符串类型', trigger: 'change' },
@@ -576,11 +576,11 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public detailsModel: any = {
-        group1: new FormGroupPanelModel({ caption: '培训计划制定基本信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmplanformu.main_form', extractMode: 'ITEM', details: [] } })
+        group1: new FormGroupPanelModel({ caption: '培训计划', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmplanformu.main_form', extractMode: 'ITEM', details: [] } })
 , 
         druipart1: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart1', visible: true, isShowCaption: true, form: this })
 , 
-        grouppanel1: new FormGroupPanelModel({ caption: '培训计划', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmplanformu.main_form', extractMode: 'ITEM', details: [] } })
+        grouppanel1: new FormGroupPanelModel({ caption: '培训计划详情', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmplanformu.main_form', extractMode: 'ITEM', details: [] } })
 , 
         formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
@@ -600,7 +600,7 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        trmplanformuname: new FormItemModel({ caption: '培训计划制定名称', detailType: 'FORMITEM', name: 'trmplanformuname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        trmplanformuname: new FormItemModel({ caption: '标题', detailType: 'FORMITEM', name: 'trmplanformuname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         nd: new FormItemModel({ caption: '年度', detailType: 'FORMITEM', name: 'nd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 

@@ -30,23 +30,23 @@ export default {
       title: '培训计划制定数据多项选择视图',
 		},
 		gridview: {
-			caption: '培训计划制定',
-      title: '培训计划制定表格视图',
+			caption: '计划制定',
+      title: '计划制定',
 		},
 		pickupview: {
 			caption: '培训计划制定',
       title: '培训计划制定数据选择视图',
 		},
 		editview: {
-			caption: '培训计划制定',
-      title: '培训计划制定编辑视图',
+			caption: '培训计划',
+      title: '培训计划',
 		},
 	},
 	main_form: {
 		details: {
-			group1: '培训计划制定基本信息', 
+			group1: '培训计划', 
 			druipart1: '', 
-			grouppanel1: '培训计划', 
+			grouppanel1: '培训计划详情', 
 			formpage1: '基本信息', 
 			srfupdatedate: '更新时间', 
 			srforikey: '', 
@@ -56,7 +56,7 @@ export default {
 			srfuf: '', 
 			srfdeid: '', 
 			srfsourcekey: '', 
-			trmplanformuname: '培训计划制定名称', 
+			trmplanformuname: '标题', 
 			nd: '年度', 
 			ormorgname: '填报单位', 
 			ormorgsectorname: '填报部门', 
@@ -93,21 +93,17 @@ export default {
 			caption: '新建',
 			tip: '新建',
 		},
+		tbitem5: {
+			caption: '编辑',
+			tip: '编辑',
+		},
 		tbitem8: {
 			caption: '删除',
 			tip: '删除',
 		},
-		tbitem19: {
-			caption: '过滤',
-			tip: '过滤',
-		},
 		tbitem13: {
 			caption: '导出',
 			tip: '导出',
-		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 	editviewtoolbar_toolbar: {
@@ -115,21 +111,9 @@ export default {
 			caption: '保存',
 			tip: '保存',
 		},
-		tbitem4: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
 		tbitem5: {
 			caption: '保存并关闭',
 			tip: '保存并关闭',
-		},
-		tbitem7: {
-			caption: '删除并关闭',
-			tip: '删除并关闭',
-		},
-		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 };

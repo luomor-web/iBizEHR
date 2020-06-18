@@ -4,7 +4,7 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainplan.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainplan.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.xh.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='xh' :itemRules="this.rules.xh" class='' :caption="$t('entities.trmtrainplan.main_form.details.xh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.xh.error" :isEmptyCaption="false" labelPos="LEFT">
@@ -46,41 +46,6 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.pxzynr.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='pxzynr' :itemRules="this.rules.pxzynr" class='' :caption="$t('entities.trmtrainplan.main_form.details.pxzynr')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pxzynr.error" :isEmptyCaption="false" labelPos="LEFT">
-    
-<app-span name='pxzynr' :value="data.pxzynr" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.pxkssj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='pxkssj' :itemRules="this.rules.pxkssj" class='' :caption="$t('entities.trmtrainplan.main_form.details.pxkssj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pxkssj.error" :isEmptyCaption="false" labelPos="LEFT">
-    
-<app-span name='pxkssj' :value="data.pxkssj" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.pxjssj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='pxjssj' :itemRules="this.rules.pxjssj" class='' :caption="$t('entities.trmtrainplan.main_form.details.pxjssj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pxjssj.error" :isEmptyCaption="false" labelPos="LEFT">
-    
-<app-span name='pxjssj' :value="data.pxjssj" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.pxdd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='pxdd' :itemRules="this.rules.pxdd" class='' :caption="$t('entities.trmtrainplan.main_form.details.pxdd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pxdd.error" :isEmptyCaption="false" labelPos="LEFT">
-    
-<app-span name='pxdd' :value="data.pxdd" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.pxrs.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='pxrs' :itemRules="this.rules.pxrs" class='' :caption="$t('entities.trmtrainplan.main_form.details.pxrs')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pxrs.error" :isEmptyCaption="false" labelPos="LEFT">
-    
-<app-span name='pxrs' :value="data.pxrs" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
-</app-form-item>
-
-</i-col>
 <i-col v-show="detailsModel.npxks.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='npxks' :itemRules="this.rules.npxks" class='' :caption="$t('entities.trmtrainplan.main_form.details.npxks')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.npxks.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.npxks"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.npxks.disabled" type='number'  style=""></input-box>
@@ -113,7 +78,7 @@
 
 </i-col>
 <i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainplan.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainplan.main_form.details.grouppanel1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.druipart1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-druipart
@@ -455,11 +420,6 @@ export default class MainBase extends Vue implements ControlInterface {
         xh: null,
         trmdemdeftionname: null,
         pxdx: null,
-        pxzynr: null,
-        pxkssj: null,
-        pxjssj: null,
-        pxdd: null,
-        pxrs: null,
         npxks: null,
         npxqs: null,
         ysze: null,
@@ -557,52 +517,22 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
         xh: [
-            { type: 'string', message: '排序号 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '排序号 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '排序号 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '排序号 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '排序 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '排序 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '排序 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '排序 值不能为空', trigger: 'blur' },
         ],
         trmdemdeftionname: [
-            { type: 'string', message: '培训班名称 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '培训班名称 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '培训班名称 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '培训班名称 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '培训需求 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '培训需求 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '培训需求 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '培训需求 值不能为空', trigger: 'blur' },
         ],
         pxdx: [
             { type: 'string', message: '培训对象 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '培训对象 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '培训对象 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '培训对象 值不能为空', trigger: 'blur' },
-        ],
-        pxzynr: [
-            { type: 'string', message: '拟培训内容 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '拟培训内容 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '拟培训内容 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '拟培训内容 值不能为空', trigger: 'blur' },
-        ],
-        pxkssj: [
-            { type: 'string', message: '培训开始时间 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '培训开始时间 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '培训开始时间 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '培训开始时间 值不能为空', trigger: 'blur' },
-        ],
-        pxjssj: [
-            { type: 'string', message: '培训结束时间 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '培训结束时间 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '培训结束时间 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '培训结束时间 值不能为空', trigger: 'blur' },
-        ],
-        pxdd: [
-            { type: 'string', message: '培训地点 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '培训地点 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '培训地点 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '培训地点 值不能为空', trigger: 'blur' },
-        ],
-        pxrs: [
-            { type: 'number', message: '拟培训人数 值必须为数值类型', trigger: 'change' },
-            { type: 'number', message: '拟培训人数 值必须为数值类型', trigger: 'blur' },
-            { required: false, type: 'number', message: '拟培训人数 值不能为空', trigger: 'change' },
-            { required: false, type: 'number', message: '拟培训人数 值不能为空', trigger: 'blur' },
         ],
         npxks: [
             { type: 'number', message: '拟培训课时 值必须为数值类型', trigger: 'change' },
@@ -649,7 +579,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public detailsModel: any = {
-        group1: new FormGroupPanelModel({ caption: '公司培训计划制定', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainplan.main_form', extractMode: 'ITEM', details: [] } })
+        group1: new FormGroupPanelModel({ caption: '培训计划详情', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainplan.main_form', extractMode: 'ITEM', details: [] } })
 , 
         druipart1: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart1', visible: true, isShowCaption: true, form: this })
 , 
@@ -673,21 +603,11 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        xh: new FormItemModel({ caption: '排序号', detailType: 'FORMITEM', name: 'xh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        xh: new FormItemModel({ caption: '排序', detailType: 'FORMITEM', name: 'xh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        trmdemdeftionname: new FormItemModel({ caption: '培训班名称', detailType: 'FORMITEM', name: 'trmdemdeftionname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        trmdemdeftionname: new FormItemModel({ caption: '培训需求', detailType: 'FORMITEM', name: 'trmdemdeftionname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         pxdx: new FormItemModel({ caption: '培训对象', detailType: 'FORMITEM', name: 'pxdx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pxzynr: new FormItemModel({ caption: '拟培训内容', detailType: 'FORMITEM', name: 'pxzynr', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pxkssj: new FormItemModel({ caption: '培训开始时间', detailType: 'FORMITEM', name: 'pxkssj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pxjssj: new FormItemModel({ caption: '培训结束时间', detailType: 'FORMITEM', name: 'pxjssj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pxdd: new FormItemModel({ caption: '培训地点', detailType: 'FORMITEM', name: 'pxdd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pxrs: new FormItemModel({ caption: '拟培训人数', detailType: 'FORMITEM', name: 'pxrs', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         npxks: new FormItemModel({ caption: '拟培训课时', detailType: 'FORMITEM', name: 'npxks', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -836,66 +756,6 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 pxzynr 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.pxzynr')
-    onPxzynrChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pxzynr', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pxkssj 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.pxkssj')
-    onPxkssjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pxkssj', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pxjssj 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.pxjssj')
-    onPxjssjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pxjssj', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pxdd 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.pxdd')
-    onPxddChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pxdd', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pxrs 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.pxrs')
-    onPxrsChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pxrs', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 npxks 值
      *
      * @param {*} newVal
@@ -1003,11 +863,6 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
-
-
-
-
-
 
 
 

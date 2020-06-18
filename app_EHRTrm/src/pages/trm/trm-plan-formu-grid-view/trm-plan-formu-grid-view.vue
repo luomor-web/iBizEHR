@@ -6,7 +6,7 @@ import view_grid from '@widgets/trm-plan-formu/main-grid/main-grid.vue';
 import view_searchform from '@widgets/trm-plan-formu/default-searchform/default-searchform.vue';
 
 /**
- * 培训计划制定表格视图
+ * 计划制定
  *
  * @export
  * @class TrmPlanFormuGridView

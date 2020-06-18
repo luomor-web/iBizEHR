@@ -71,31 +71,6 @@ export default class MainModel {
         dataType: 'PICKUPDATA',
       },
       {
-        name: 'pxzynr',
-        prop: 'pxzynr',
-        dataType: 'PICKUPDATA',
-      },
-      {
-        name: 'pxkssj',
-        prop: 'pxkssj',
-        dataType: 'PICKUPDATA',
-      },
-      {
-        name: 'pxjssj',
-        prop: 'pxjssj',
-        dataType: 'PICKUPDATA',
-      },
-      {
-        name: 'pxdd',
-        prop: 'pxdd',
-        dataType: 'PICKUPDATA',
-      },
-      {
-        name: 'pxrs',
-        prop: 'pxrs',
-        dataType: 'PICKUPDATA',
-      },
-      {
         name: 'npxks',
         prop: 'npxks',
         dataType: 'FLOAT',

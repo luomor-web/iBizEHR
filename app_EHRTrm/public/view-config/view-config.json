@@ -558,8 +558,8 @@
         "memo": ""
     },
     "trmplanformugridview": {
-        "title": "培训计划制定表格视图",
-        "caption": "培训计划制定",
+        "title": "计划制定",
+        "caption": "计划制定",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmPlanFormuGridView",
@@ -738,8 +738,8 @@
         "memo": ""
     },
     "trmtrainplangridview": {
-        "title": "培训计划表格视图",
-        "caption": "培训计划",
+        "title": "培训计划详情",
+        "caption": "培训计划详情",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmTrainPlanGridView",
@@ -837,8 +837,8 @@
         "memo": ""
     },
     "trmplanformueditview": {
-        "title": "培训计划制定编辑视图",
-        "caption": "培训计划制定",
+        "title": "培训计划",
+        "caption": "培训计划",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmPlanFormuEditView",
@@ -882,8 +882,8 @@
         "memo": ""
     },
     "trmtrainplaneditview": {
-        "title": "培训计划编辑视图",
-        "caption": "培训计划",
+        "title": "培训计划详情",
+        "caption": "培训计划详情",
         "viewtype": "DEEDITVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmTrainPlanEditView",
