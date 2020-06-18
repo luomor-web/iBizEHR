@@ -1,5 +1,6 @@
 import { Http,Util } from '@/utils';
 import EntityService from '../entity-service';
+import InitRuleDetailLogic from '@/service/soc-rule/init-rule-detail-logic';
 
 
 
