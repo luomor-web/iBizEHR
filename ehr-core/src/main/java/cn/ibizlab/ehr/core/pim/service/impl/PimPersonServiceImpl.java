@@ -584,6 +584,15 @@ public class PimPersonServiceImpl extends ServiceImpl<PimPersonMapper, PimPerson
     }
 
     /**
+     * 查询集合 待设置社保档案人员
+     */
+    @Override
+    public Page<PimPerson> searchSetSocArchives(PimPersonSearchContext context) {
+        com.baomidou.mybatisplus.extension.plugins.pagination.Page<PimPerson> pages=baseMapper.searchSetSocArchives(context.getPages(),context,context.getSelectCond());
+        return new PageImpl<PimPerson>(pages.getRecords(), context.getPageable(), pages.getTotal());
+    }
+
+    /**
      * 查询集合 员工信息（管理员）
      */
     @Override

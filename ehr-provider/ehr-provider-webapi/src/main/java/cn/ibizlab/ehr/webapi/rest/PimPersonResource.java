@@ -275,6 +275,27 @@ public class PimPersonResource {
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-SetSocArchives-all')")
+	@ApiOperation(value = "获取待设置社保档案人员", tags = {"人员信息" } ,notes = "获取待设置社保档案人员")
+    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchsetsocarchives")
+	public ResponseEntity<List<PimPersonDTO>> fetchSetSocArchives(PimPersonSearchContext context) {
+        Page<PimPerson> domains = pimpersonService.searchSetSocArchives(context) ;
+        List<PimPersonDTO> list = pimpersonMapping.toDto(domains.getContent());
+        return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-SetSocArchives-all')")
+	@ApiOperation(value = "查询待设置社保档案人员", tags = {"人员信息" } ,notes = "查询待设置社保档案人员")
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/searchsetsocarchives")
+	public ResponseEntity<Page<PimPersonDTO>> searchSetSocArchives(@RequestBody PimPersonSearchContext context) {
+        Page<PimPerson> domains = pimpersonService.searchSetSocArchives(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(pimpersonMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-PimPerson-YGXXGLY-all')")
 	@ApiOperation(value = "获取员工信息（管理员）", tags = {"人员信息" } ,notes = "获取员工信息（管理员）")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/fetchygxxgly")
