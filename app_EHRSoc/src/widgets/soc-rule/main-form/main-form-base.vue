@@ -16,18 +16,7 @@
 <i-col v-show="detailsModel.nyear.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
     <app-form-item name='nyear' :itemRules="this.rules.nyear" class='' :caption="$t('entities.socrule.main_form.details.nyear')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nyear.error" :isEmptyCaption="false" labelPos="LEFT">
     
- <dropdown-list 
-    v-model="data.nyear" 
-    :data="data" 
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{ }' 
-    :localParam ='{ }' 
-    :disabled="detailsModel.nyear.disabled"  
-    tag='EhrCodeList0115' 
-    codelistType='STATIC'
-    placeholder='请选择...' style="">
- </dropdown-list>
+<app-span name='nyear' :value="data.nyear" tag='EhrCodeList0115' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -500,10 +489,10 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '组织 值不能为空', trigger: 'blur' },
         ],
         nyear: [
-            { type: 'number', message: '年度 值必须为数值类型', trigger: 'change' },
-            { type: 'number', message: '年度 值必须为数值类型', trigger: 'blur' },
-            { required: false, type: 'number', message: '年度 值不能为空', trigger: 'change' },
-            { required: false, type: 'number', message: '年度 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '年度 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '年度 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '年度 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '年度 值不能为空', trigger: 'blur' },
         ],
         socareaname: [
             { type: 'string', message: '参保地 值必须为字符串类型', trigger: 'change' },

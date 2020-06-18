@@ -74,7 +74,7 @@ export default {
                 menuitem4: '保险类型',
                 menuitem5: '社保规则',
                 menuitem7: '社保档案',
-                menuitem6: '社保档案',
+                menuitem6: '员工社保档案',
                 menuitem8: '员工社保设置',
                 menuitem9: '非员工终止社保',
             },

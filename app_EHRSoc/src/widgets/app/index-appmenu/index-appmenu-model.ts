@@ -133,10 +133,10 @@ export default class IndexModel {
 		{
 	id: 'DFE1DFB2-9251-4B71-AD2E-52F809348191',
 	name: 'menuitem6',
-	text: '社保档案',
+	text: '员工社保档案',
 	type: 'MENUITEM',
 	counterid: '',
-	tooltip: '社保档案',
+	tooltip: '员工社保档案',
 	expanded: false,
 	separator: false,
 	hidden: false,
