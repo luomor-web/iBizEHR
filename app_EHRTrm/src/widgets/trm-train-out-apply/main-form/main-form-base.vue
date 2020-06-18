@@ -35,15 +35,13 @@
 </i-col>
 <i-col v-show="detailsModel.zz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='zz' :itemRules="this.rules.zz" class='' :caption="$t('entities.trmtrainoutapply.main_form.details.zz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zz.error" :isEmptyCaption="false" labelPos="LEFT">
-    
-<app-span name='zz' :value="data.zz" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+    <input-box v-model="data.zz"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.zz.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.bm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='bm' :itemRules="this.rules.bm" class='' :caption="$t('entities.trmtrainoutapply.main_form.details.bm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bm.error" :isEmptyCaption="false" labelPos="LEFT">
-    
-<app-span name='bm' :value="data.bm" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+    <input-box v-model="data.bm"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.bm.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
 </i-col>
@@ -697,9 +695,9 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         pimpersonname: new FormItemModel({ caption: '申请人', detailType: 'FORMITEM', name: 'pimpersonname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        zz: new FormItemModel({ caption: '所属公司', detailType: 'FORMITEM', name: 'zz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        zz: new FormItemModel({ caption: '所属公司', detailType: 'FORMITEM', name: 'zz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        bm: new FormItemModel({ caption: '所属部门', detailType: 'FORMITEM', name: 'bm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        bm: new FormItemModel({ caption: '所属部门', detailType: 'FORMITEM', name: 'bm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
         pimpersonid: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 

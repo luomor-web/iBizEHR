@@ -228,17 +228,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '30f91178ca5210e97370ff71768717d7',
-            viewmodule: 'TRM',
-            viewname: 'TrmDepartXQHZGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '4e408f2e2bc30654e0339ed8fd100baa',
-                '9fe562265b37611be2479c3426af87b1',
-            ],
-        },
-        {
             viewtag: '35c5d003a2e5573fdf3a5f4de80db878',
             viewmodule: 'TRM',
             viewname: 'TrmStayEditView',
@@ -348,18 +337,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-            ],
-        },
-        {
-            viewtag: '4e408f2e2bc30654e0339ed8fd100baa',
-            viewmodule: 'TRM',
-            viewname: 'TrmDepartXQHZEditView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                'cf8df35bf156dddc93a1d400881f1fbe',
-                '0900822d03fe33229eb42fc1cb6ff15e',
-                '9fe562265b37611be2479c3426af87b1',
             ],
         },
         {
@@ -651,7 +628,6 @@ export const viewstate: any = {
                 'fb3571753a496236f254caebf9095d0d',
                 '29b63786f279c189b905d46ff4dfa9b9',
                 '237730d637e8755dcf7f818998ef97d5',
-                '30f91178ca5210e97370ff71768717d7',
                 '13ab30b58a970dfc175b42f4e2541915',
                 '18aed033f3c4553b4b65dacabecbb6a9',
                 'ea64c9b3df245c163363aca2e295c255',
@@ -845,16 +821,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: 'cf8df35bf156dddc93a1d400881f1fbe',
-            viewmodule: 'TRM',
-            viewname: 'TrmDemdeftionTZGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                'e0151a24626d40ca84af6810b41bdd53',
-            ],
-        },
-        {
             viewtag: 'd168ccad822c9f9786218b2fe0e450ac',
             viewmodule: 'TRM',
             viewname: 'TrmTrainFaciesEditView',
@@ -921,18 +887,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '2ac332a36c13e59e2a15e4b86b0feea1',
-            ],
-        },
-        {
-            viewtag: 'e0151a24626d40ca84af6810b41bdd53',
-            viewmodule: 'TRM',
-            viewname: 'TrmDemdeftionTZFEditView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '6498423afbd731a15e34492244be55d8',
-                '48f643f336298e3dd7d0764bcbf65c04',
-                '9fe562265b37611be2479c3426af87b1',
             ],
         },
         {

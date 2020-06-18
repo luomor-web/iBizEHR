@@ -116,7 +116,6 @@ export default {
                 menuitem2: '培训需求',
                 menuitem12: '需求通知',
                 menuitem13: '需求填报',
-                menuitem14: '需求汇总',
                 menuitem3: '培训计划',
                 menuitem15: '计划制定',
                 menuitem16: '计划审批',

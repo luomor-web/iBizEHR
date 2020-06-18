@@ -101,9 +101,6 @@ export default class IndexBase extends AppMenusCtrlBase {
                 case '_9': 
                     this.click_9(item);
                     return;
-                case '_12': 
-                    this.click_12(item);
-                    return;
                 case '_19': 
                     this.click_19(item);
                     return;
@@ -351,24 +348,6 @@ export default class IndexBase extends AppMenusCtrlBase {
         const parameters: any[] = [
             { pathName: 'trmtrainoutapplies', parameterName: 'trmtrainoutapply' },
             { pathName: 'gridview', parameterName: 'gridview' },
-        ];
-        const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
-        this.$router.push(path);
-    }
-    
-    /**
-     * 培训需求汇总<培训管理>
-     *
-     * @param {*} [item={}]
-     * @memberof Index
-     */
-    public click_12(item: any = {}) {
-        const viewparam: any = {};
-        Object.assign(viewparam, {});
-        const deResParameters: any[] = [];
-        const parameters: any[] = [
-            { pathName: 'trmdeparts', parameterName: 'trmdepart' },
-            { pathName: 'xqhzgridview', parameterName: 'xqhzgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
         this.$router.push(path);
