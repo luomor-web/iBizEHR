@@ -131,14 +131,29 @@ export default class SocArchivesUIServiceBase extends UIService {
         let deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'socarchives', parameterName: 'socarchives' },
-            { pathName: 'editview', parameterName: 'editview' },
         ];
-        const openIndexViewTab = (data: any) => {
-            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
-            actionContext.$router.push(routePath);
-            return null;
-        }
-        openIndexViewTab(data);
+            const openDrawer = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appdrawer.openDrawer(view, context,data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
+            }
+            const view: any = {
+                viewname: 'soc-archives-edit-view', 
+                height: 0, 
+                width: 0,  
+                title: actionContext.$t('entities.socarchives.views.editview.title'),
+                placement: 'DRAWER_TOP',
+            };
+            openDrawer(view, data);
     }
 
     /**
@@ -176,20 +191,34 @@ export default class SocArchivesUIServiceBase extends UIService {
         let deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'socarchives', parameterName: 'socarchives' },
-            { pathName: 'quickeditview', parameterName: 'quickeditview' },
         ];
-        const openIndexViewTab = (data: any) => {
-            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
-            actionContext.$router.push(routePath);
-            if (xData && xData.refresh && xData.refresh instanceof Function) {
-                xData.refresh(args);
+            const openPopupModal = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if (xData && xData.refresh && xData.refresh instanceof Function) {
+                        xData.refresh(args);
+                    }
+                    if (this.SocArchives_OpenInfoView && this.SocArchives_OpenInfoView instanceof Function) {
+                        this.SocArchives_OpenInfoView(result.datas,context, params, $event, xData,actionContext);
+                    }
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
             }
-            if (this.SocArchives_OpenInfoView && this.SocArchives_OpenInfoView instanceof Function) {
-                this.SocArchives_OpenInfoView([data],context,params, $event, xData,actionContext);
-            }
-            return null;
-        }
-        openIndexViewTab(data);
+            const view: any = {
+                viewname: 'soc-archives-quick-edit-view', 
+                height: 600, 
+                width: 1366,  
+                title: actionContext.$t('entities.socarchives.views.quickeditview.title'),
+            };
+            openPopupModal(view, data);
     }
 
     /**
@@ -230,14 +259,29 @@ export default class SocArchivesUIServiceBase extends UIService {
         let deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'socarchives', parameterName: 'socarchives' },
-            { pathName: 'main2editview', parameterName: 'main2editview' },
         ];
-        const openIndexViewTab = (data: any) => {
-            const routePath = actionContext.$viewTool.buildUpRoutePath(actionContext.$route, context, deResParameters, parameters, _args, data);
-            actionContext.$router.push(routePath);
-            return null;
-        }
-        openIndexViewTab(data);
+            const openDrawer = (view: any, data: any) => {
+                let container: Subject<any> = actionContext.$appdrawer.openDrawer(view, context,data);
+                container.subscribe((result: any) => {
+                    if (!result || !Object.is(result.ret, 'OK')) {
+                        return;
+                    }
+                    const _this: any = actionContext;
+                    if(window.opener){
+                        window.opener.postMessage({status:'OK',identification:'WF'},Environment.uniteAddress);
+                        window.close();
+                    }
+                    return result.datas;
+                });
+            }
+            const view: any = {
+                viewname: 'soc-archives-main2-edit-view', 
+                height: 0, 
+                width: 0,  
+                title: actionContext.$t('entities.socarchives.views.main2editview.title'),
+                placement: 'DRAWER_RIGHT',
+            };
+            openDrawer(view, data);
     }
 
 
