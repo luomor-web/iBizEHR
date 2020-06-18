@@ -57,6 +57,10 @@ public class SocArchivesServiceImpl extends ServiceImpl<SocArchivesMapper, SocAr
     @Lazy
     private cn.ibizlab.ehr.core.soc.service.ISocRuleService socruleService;
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.soc.service.logic.ISocArchivesInitArchivesDetailLogic initarchivesdetailLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -84,6 +88,7 @@ public class SocArchivesServiceImpl extends ServiceImpl<SocArchivesMapper, SocAr
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("socarchivesid",et.getSocarchivesid())))
             return false;
         CachedBeanCopier.copy(get(et.getSocarchivesid()),et);
+        initarchivesdetailLogic.execute(et);
         return true;
     }
 
@@ -146,6 +151,7 @@ public class SocArchivesServiceImpl extends ServiceImpl<SocArchivesMapper, SocAr
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getSocarchivesid()),et);
+        initarchivesdetailLogic.execute(et);
         return true;
     }
 
