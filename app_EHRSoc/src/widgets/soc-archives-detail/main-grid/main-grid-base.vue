@@ -170,46 +170,6 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('socruledetailname')">
-                <el-table-column show-overflow-tooltip :prop="'socruledetailname'" :label="$t('entities.socarchivesdetail.main_grid.columns.socruledetailname')" :width="100"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.socarchivesdetail.main_grid.columns.socruledetailname')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <template v-if="actualIsOpenEdit">
-                            <app-form-item :error="gridItemsModel[$index][column.property].error">
-                                
-            <app-picker 
-              :formState="viewState" 
-              :data="row"
-              :context="context"
-              :viewparams="viewparams"
-              :localContext ='{ }' 
-              :localParam ='{ }' 
-              :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
-              name='socruledetailname'
-              deMajorField='socruledetailname'
-              deKeyField='socruledetail'
-              :service="service"
-              :acParams="{ serviceName: 'SocRuleDetailService', interfaceName: 'FetchDefault'}"
-              valueitem='socruledetailid' 
-              :value="row[column.property]" 
-              editortype="" 
-              :pickupView="{ viewname: 'soc-rule-detail-pickup-view', title: $t('entities.socruledetail.views.pickupview.title'), deResParameters: [{ pathName: 'socrules', parameterName: 'socrule' }, ], parameters: [{ pathName: 'socruledetails', parameterName: 'socruledetail' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-              style=""  
-              @formitemvaluechange="($event)=>{onGridItemValueChange(row,$event,$index)}">
-            </app-picker>
-            
-                            </app-form-item>
-                        </template>
-                        <template v-if="!actualIsOpenEdit">
-                                <app-span name='socruledetailname' editorType="PICKER" :value="row.socruledetailname"></app-span>
-                        </template>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="adaptiveState">
                 <el-table-column></el-table-column>
             </template>
@@ -723,13 +683,6 @@ export default class MainBase extends Vue implements ControlInterface {
             show: true,
             util: 'PX'
         },
-        {
-            name: 'socruledetailname',
-            label: '社保规则明细名称',
-            langtag: 'entities.socarchivesdetail.main_grid.columns.socruledetailname',
-            show: true,
-            util: 'PX'
-        },
     ]
 
     /**
@@ -748,8 +701,6 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public getGridRowModel(){
         return {
-          socruledetailid: new FormItemModel(),
-          socruledetailname: new FormItemModel(),
           personnum: new FormItemModel(),
           companynum: new FormItemModel(),
           srfkey: new FormItemModel(),
@@ -763,14 +714,6 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public rules: any = {
-        socruledetailid: [
-             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '值不能为空', trigger: 'change' },
-            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '值不能为空', trigger: 'blur' },
-        ],
-        socruledetailname: [
-             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '社保规则明细名称 值不能为空', trigger: 'change' },
-            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '社保规则明细名称 值不能为空', trigger: 'blur' },
-        ],
         personnum: [
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '个人基数 值不能为空', trigger: 'change' },
             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '个人基数 值不能为空', trigger: 'blur' },

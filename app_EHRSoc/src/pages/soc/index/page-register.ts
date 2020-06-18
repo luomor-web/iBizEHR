@@ -1,7 +1,6 @@
 export const PageComponents = {
     install(Vue: any, opt: any) {
                 Vue.component('soc-area-pickup-view', () => import('@pages/soc/soc-area-pickup-view/soc-area-pickup-view.vue'));
-        Vue.component('soc-rule-detail-pickup-view', () => import('@pages/soc/soc-rule-detail-pickup-view/soc-rule-detail-pickup-view.vue'));
         Vue.component('pim-person-pickup-grid-view', () => import('@pages/pim/pim-person-pickup-grid-view/pim-person-pickup-grid-view.vue'));
         Vue.component('soc-rule-detail-edit-view', () => import('@pages/soc/soc-rule-detail-edit-view/soc-rule-detail-edit-view.vue'));
         Vue.component('pim-person-pickup-view', () => import('@pages/pim/pim-person-pickup-view/pim-person-pickup-view.vue'));
@@ -9,7 +8,6 @@ export const PageComponents = {
         Vue.component('soc-rule-quick-edit-view', () => import('@pages/soc/soc-rule-quick-edit-view/soc-rule-quick-edit-view.vue'));
         Vue.component('soc-account-edit-view', () => import('@pages/soc/soc-account-edit-view/soc-account-edit-view.vue'));
         Vue.component('soc-archives-detail-grid-view', () => import('@pages/soc/soc-archives-detail-grid-view/soc-archives-detail-grid-view.vue'));
-        Vue.component('soc-rule-detail-pickup-grid-view', () => import('@pages/soc/soc-rule-detail-pickup-grid-view/soc-rule-detail-pickup-grid-view.vue'));
         Vue.component('soc-type-edit-view', () => import('@pages/soc/soc-type-edit-view/soc-type-edit-view.vue'));
         Vue.component('soc-type-grid-view', () => import('@pages/soc/soc-type-grid-view/soc-type-grid-view.vue'));
         Vue.component('soc-archives-edit-view', () => import('@pages/soc/soc-archives-edit-view/soc-archives-edit-view.vue'));

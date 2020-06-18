@@ -2,7 +2,6 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import SocArchivesDetailService from '@/service/soc-archives-detail/soc-archives-detail-service';
 import MainModel from './main-grid-model';
-import SocRuleDetailService from '@/service/soc-rule-detail/soc-rule-detail-service';
 
 
 /**
@@ -44,14 +43,6 @@ export default class MainService extends ControlService {
 
 
     /**
-     * 社保规则明细服务对象
-     *
-     * @type {SocRuleDetailService}
-     * @memberof MainService
-     */
-    public socruledetailService: SocRuleDetailService = new SocRuleDetailService();
-
-    /**
      * 处理数据
      *
      * @public
@@ -90,9 +81,6 @@ export default class MainService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'SocRuleDetailService') && Object.is(interfaceName, 'FetchDefault')) {
-            return this.doItems(this.socruledetailService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'socruledetailid', 'socruledetail');
-        }
 
         return Promise.reject([])
     }

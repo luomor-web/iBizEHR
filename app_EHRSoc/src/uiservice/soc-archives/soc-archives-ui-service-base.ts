@@ -277,7 +277,7 @@ export default class SocArchivesUIServiceBase extends UIService {
             const view: any = {
                 viewname: 'soc-archives-main2-edit-view', 
                 height: 0, 
-                width: 0,  
+                width: 1366,  
                 title: actionContext.$t('entities.socarchives.views.main2editview.title'),
                 placement: 'DRAWER_RIGHT',
             };

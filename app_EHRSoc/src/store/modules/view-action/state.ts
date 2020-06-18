@@ -26,16 +26,6 @@ export const viewstate: any = {
             ],
         },
         {
-            viewtag: '3f57e5629bd977d652098834972af3a7',
-            viewmodule: 'SOC',
-            viewname: 'SocRuleDetailPickupView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '508a97fa385e02a6c6eaa7cf720e0cec',
-            ],
-        },
-        {
             viewtag: '4b9ddc3407aa91875c0e66348644dc43',
             viewmodule: 'SOC',
             viewname: 'SocAccountPickupGridView',
@@ -52,15 +42,6 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '912c10028c229aaf79d7542c94931417',
-            ],
-        },
-        {
-            viewtag: '508a97fa385e02a6c6eaa7cf720e0cec',
-            viewmodule: 'SOC',
-            viewname: 'SocRuleDetailPickupGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
             ],
         },
         {
@@ -182,7 +163,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '3f57e5629bd977d652098834972af3a7',
                 '8dbbef8d0ad1436fef1c3ba1ed40b05c',
             ],
         },

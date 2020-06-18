@@ -69,7 +69,6 @@ export default {
 			personrate: "个人比例",
 			companyamount: "企业固定额",
 			personamount: "个人固定额",
-			socruledetailname: "社保规则明细名称",
 		},
 		uiactions: {
 		},

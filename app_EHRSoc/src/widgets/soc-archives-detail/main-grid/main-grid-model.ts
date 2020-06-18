@@ -52,19 +52,9 @@ export default class MainModel {
           dataType: 'FLOAT',
         },
         {
-          name: 'socruledetailname',
-          prop: 'socruledetailname',
-          dataType: 'PICKUPTEXT',
-        },
-        {
           name: 'srfmajortext',
           prop: 'socarchivesdetailname',
           dataType: 'TEXT',
-        },
-        {
-          name: 'srfdataaccaction',
-          prop: 'socarchivesdetailid',
-          dataType: 'GUID',
         },
         {
           name: 'companyamount',
@@ -73,6 +63,11 @@ export default class MainModel {
         },
         {
           name: 'srfkey',
+          prop: 'socarchivesdetailid',
+          dataType: 'GUID',
+        },
+        {
+          name: 'srfdataaccaction',
           prop: 'socarchivesdetailid',
           dataType: 'GUID',
         },
