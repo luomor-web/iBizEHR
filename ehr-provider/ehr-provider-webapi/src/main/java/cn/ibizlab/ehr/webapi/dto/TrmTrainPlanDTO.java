@@ -343,6 +343,38 @@ public class TrmTrainPlanDTO extends DTOBase implements Serializable {
     @JsonProperty("ormorgid")
     private String ormorgid;
 
+    /**
+     * 属性 [PXADRESS]
+     *
+     */
+    @JSONField(name = "pxadress")
+    @JsonProperty("pxadress")
+    private String pxadress;
+
+    /**
+     * 属性 [PXCONTENT]
+     *
+     */
+    @JSONField(name = "pxcontent")
+    @JsonProperty("pxcontent")
+    private String pxcontent;
+
+    /**
+     * 属性 [PXNUM]
+     *
+     */
+    @JSONField(name = "pxnum")
+    @JsonProperty("pxnum")
+    private Integer pxnum;
+
+    /**
+     * 属性 [APPROVALSTATUS]
+     *
+     */
+    @JSONField(name = "approvalstatus")
+    @JsonProperty("approvalstatus")
+    private String approvalstatus;
+
 
     /**
      * 设置 [LCLX]
@@ -526,6 +558,38 @@ public class TrmTrainPlanDTO extends DTOBase implements Serializable {
     public void setOrmorgid(String  ormorgid){
         this.ormorgid = ormorgid ;
         this.modify("ormorgid",ormorgid);
+    }
+
+    /**
+     * 设置 [PXADRESS]
+     */
+    public void setPxadress(String  pxadress){
+        this.pxadress = pxadress ;
+        this.modify("pxadress",pxadress);
+    }
+
+    /**
+     * 设置 [PXCONTENT]
+     */
+    public void setPxcontent(String  pxcontent){
+        this.pxcontent = pxcontent ;
+        this.modify("pxcontent",pxcontent);
+    }
+
+    /**
+     * 设置 [PXNUM]
+     */
+    public void setPxnum(Integer  pxnum){
+        this.pxnum = pxnum ;
+        this.modify("pxnum",pxnum);
+    }
+
+    /**
+     * 设置 [APPROVALSTATUS]
+     */
+    public void setApprovalstatus(String  approvalstatus){
+        this.approvalstatus = approvalstatus ;
+        this.modify("approvalstatus",approvalstatus);
     }
 
 

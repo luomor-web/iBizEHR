@@ -257,7 +257,6 @@ export default class SocRuleUIServiceBase extends UIService {
         const parameters: any[] = [
             { pathName: 'socrules', parameterName: 'socrule' },
         ];
-            actionContext.closeView(null);
             const openPopupModal = (view: any, data: any) => {
                 let container: Subject<any> = actionContext.$appmodal.openModal(view, context, data);
                 container.subscribe((result: any) => {

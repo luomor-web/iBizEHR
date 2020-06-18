@@ -29,11 +29,15 @@ public interface ITrmTrainPlanService extends IService<TrmTrainPlan>{
     void removeBatch(Collection<String> idList) ;
     boolean save(TrmTrainPlan et) ;
     void saveBatch(List<TrmTrainPlan> list) ;
+    TrmTrainPlan setYfbZt(TrmTrainPlan et) ;
     TrmTrainPlan getDraft(TrmTrainPlan et) ;
     boolean checkKey(TrmTrainPlan et) ;
+    TrmTrainPlan setDfbZt(TrmTrainPlan et) ;
+    TrmTrainPlan setApprovalStatus(TrmTrainPlan et) ;
     TrmTrainPlan get(String key) ;
     boolean create(TrmTrainPlan et) ;
     void createBatch(List<TrmTrainPlan> list) ;
+    TrmTrainPlan setRejectStatus(TrmTrainPlan et) ;
     boolean update(TrmTrainPlan et) ;
     void updateBatch(List<TrmTrainPlan> list) ;
     Page<TrmTrainPlan> searchDefault(TrmTrainPlanSearchContext context) ;

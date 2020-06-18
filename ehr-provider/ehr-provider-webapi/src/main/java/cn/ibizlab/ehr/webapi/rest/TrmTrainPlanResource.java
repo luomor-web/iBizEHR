@@ -77,6 +77,18 @@ public class TrmTrainPlanResource {
         return  ResponseEntity.status(HttpStatus.OK).body(true);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainPlan-SetYfbZt-all')")
+    @ApiOperation(value = "设置已发布状态", tags = {"培训计划" },  notes = "设置已发布状态")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainplans/{trmtrainplan_id}/setyfbzt")
+    @Transactional
+    public ResponseEntity<TrmTrainPlanDTO> setYfbZt(@PathVariable("trmtrainplan_id") String trmtrainplan_id, @RequestBody TrmTrainPlanDTO trmtrainplandto) {
+        TrmTrainPlan trmtrainplan = trmtrainplanMapping.toDomain(trmtrainplandto);
+        trmtrainplan.setTrmtrainplanid(trmtrainplan_id);
+        trmtrainplan = trmtrainplanService.setYfbZt(trmtrainplan);
+        trmtrainplandto = trmtrainplanMapping.toDto(trmtrainplan);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrainplandto);
+    }
+
     @ApiOperation(value = "获取培训计划草稿", tags = {"培训计划" },  notes = "获取培训计划草稿")
 	@RequestMapping(method = RequestMethod.GET, value = "/trmtrainplans/getdraft")
     public ResponseEntity<TrmTrainPlanDTO> getDraft() {
@@ -87,6 +99,30 @@ public class TrmTrainPlanResource {
 	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainplans/checkkey")
     public ResponseEntity<Boolean> checkKey(@RequestBody TrmTrainPlanDTO trmtrainplandto) {
         return  ResponseEntity.status(HttpStatus.OK).body(trmtrainplanService.checkKey(trmtrainplanMapping.toDomain(trmtrainplandto)));
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainPlan-SetDfbZt-all')")
+    @ApiOperation(value = "设置待发布状态", tags = {"培训计划" },  notes = "设置待发布状态")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainplans/{trmtrainplan_id}/setdfbzt")
+    @Transactional
+    public ResponseEntity<TrmTrainPlanDTO> setDfbZt(@PathVariable("trmtrainplan_id") String trmtrainplan_id, @RequestBody TrmTrainPlanDTO trmtrainplandto) {
+        TrmTrainPlan trmtrainplan = trmtrainplanMapping.toDomain(trmtrainplandto);
+        trmtrainplan.setTrmtrainplanid(trmtrainplan_id);
+        trmtrainplan = trmtrainplanService.setDfbZt(trmtrainplan);
+        trmtrainplandto = trmtrainplanMapping.toDto(trmtrainplan);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrainplandto);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainPlan-SetApprovalStatus-all')")
+    @ApiOperation(value = "设置审核通过状态", tags = {"培训计划" },  notes = "设置审核通过状态")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainplans/{trmtrainplan_id}/setapprovalstatus")
+    @Transactional
+    public ResponseEntity<TrmTrainPlanDTO> setApprovalStatus(@PathVariable("trmtrainplan_id") String trmtrainplan_id, @RequestBody TrmTrainPlanDTO trmtrainplandto) {
+        TrmTrainPlan trmtrainplan = trmtrainplanMapping.toDomain(trmtrainplandto);
+        trmtrainplan.setTrmtrainplanid(trmtrainplan_id);
+        trmtrainplan = trmtrainplanService.setApprovalStatus(trmtrainplan);
+        trmtrainplandto = trmtrainplanMapping.toDto(trmtrainplan);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrainplandto);
     }
 
     @PostAuthorize("hasPermission(this.trmtrainplanMapping.toDomain(returnObject.body),'ehr-TrmTrainPlan-Get')")
@@ -115,6 +151,18 @@ public class TrmTrainPlanResource {
     public ResponseEntity<Boolean> createBatch(@RequestBody List<TrmTrainPlanDTO> trmtrainplandtos) {
         trmtrainplanService.createBatch(trmtrainplanMapping.toDomain(trmtrainplandtos));
         return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-TrmTrainPlan-SetRejectStatus-all')")
+    @ApiOperation(value = "设置审核不通过状态", tags = {"培训计划" },  notes = "设置审核不通过状态")
+	@RequestMapping(method = RequestMethod.POST, value = "/trmtrainplans/{trmtrainplan_id}/setrejectstatus")
+    @Transactional
+    public ResponseEntity<TrmTrainPlanDTO> setRejectStatus(@PathVariable("trmtrainplan_id") String trmtrainplan_id, @RequestBody TrmTrainPlanDTO trmtrainplandto) {
+        TrmTrainPlan trmtrainplan = trmtrainplanMapping.toDomain(trmtrainplandto);
+        trmtrainplan.setTrmtrainplanid(trmtrainplan_id);
+        trmtrainplan = trmtrainplanService.setRejectStatus(trmtrainplan);
+        trmtrainplandto = trmtrainplanMapping.toDto(trmtrainplan);
+        return ResponseEntity.status(HttpStatus.OK).body(trmtrainplandto);
     }
 
     @PreAuthorize("hasPermission(this.trmtrainplanService.get(#trmtrainplan_id),'ehr-TrmTrainPlan-Update')")

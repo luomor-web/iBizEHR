@@ -1,5 +1,6 @@
 import { Http,Util } from '@/utils';
 import EntityService from '../entity-service';
+import InitArchivesDetailLogic from '@/service/soc-archives/init-archives-detail-logic';
 
 
 

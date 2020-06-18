@@ -34,7 +34,7 @@ public class TrmTrainPlanSearchContext extends QueryWrapperContext<TrmTrainPlan>
             this.getSearchCond().eq("lclx", n_lclx_eq);
         }
     }
-	private String n_shfs_eq;//[审核方式]
+	private String n_shfs_eq;//[发布状态]
 	public void setN_shfs_eq(String n_shfs_eq) {
         this.n_shfs_eq = n_shfs_eq;
         if(!ObjectUtils.isEmpty(this.n_shfs_eq)){
@@ -48,7 +48,7 @@ public class TrmTrainPlanSearchContext extends QueryWrapperContext<TrmTrainPlan>
             this.getSearchCond().eq("jhyd", n_jhyd_eq);
         }
     }
-	private String n_jhnd_eq;//[计划年度]
+	private String n_jhnd_eq;//[年度]
 	public void setN_jhnd_eq(String n_jhnd_eq) {
         this.n_jhnd_eq = n_jhnd_eq;
         if(!ObjectUtils.isEmpty(this.n_jhnd_eq)){
@@ -62,7 +62,7 @@ public class TrmTrainPlanSearchContext extends QueryWrapperContext<TrmTrainPlan>
             this.getSearchCond().eq("jhjb", n_jhjb_eq);
         }
     }
-	private String n_jhlx_eq;//[计划类型]
+	private String n_jhlx_eq;//[类型]
 	public void setN_jhlx_eq(String n_jhlx_eq) {
         this.n_jhlx_eq = n_jhlx_eq;
         if(!ObjectUtils.isEmpty(this.n_jhlx_eq)){
@@ -146,7 +146,7 @@ public class TrmTrainPlanSearchContext extends QueryWrapperContext<TrmTrainPlan>
             this.getSearchCond().eq("pimpersonid", n_pimpersonid_eq);
         }
     }
-	private String n_trmdemdeftionid_eq;//[需求调查定义标识]
+	private String n_trmdemdeftionid_eq;//[培训需求标识]
 	public void setN_trmdemdeftionid_eq(String n_trmdemdeftionid_eq) {
         this.n_trmdemdeftionid_eq = n_trmdemdeftionid_eq;
         if(!ObjectUtils.isEmpty(this.n_trmdemdeftionid_eq)){

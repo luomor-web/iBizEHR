@@ -60,6 +60,22 @@ public class TrmTrainPlanServiceImpl extends ServiceImpl<TrmTrainPlanMapper, Trm
     @Lazy
     private cn.ibizlab.ehr.core.trm.service.ITrmPlanFormuService trmplanformuService;
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.trm.service.logic.ITrmTrainPlanSetYfbZtLogic setyfbztLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.trm.service.logic.ITrmTrainPlanSetDfbZtLogic setdfbztLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.trm.service.logic.ITrmTrainPlanSetApprovalStatusLogic setapprovalstatusLogic;
+
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.trm.service.logic.ITrmTrainPlanSetRejectStatusLogic setrejectstatusLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -108,6 +124,13 @@ public class TrmTrainPlanServiceImpl extends ServiceImpl<TrmTrainPlanMapper, Trm
     }
 
     @Override
+    @Transactional
+    public TrmTrainPlan setYfbZt(TrmTrainPlan et) {
+        setyfbztLogic.execute(et);
+         return et ;
+    }
+
+    @Override
     public TrmTrainPlan getDraft(TrmTrainPlan et) {
         fillParentData(et);
         return et;
@@ -117,6 +140,20 @@ public class TrmTrainPlanServiceImpl extends ServiceImpl<TrmTrainPlanMapper, Trm
     public boolean checkKey(TrmTrainPlan et) {
         return (!ObjectUtils.isEmpty(et.getTrmtrainplanid()))&&(!Objects.isNull(this.getById(et.getTrmtrainplanid())));
     }
+    @Override
+    @Transactional
+    public TrmTrainPlan setDfbZt(TrmTrainPlan et) {
+        setdfbztLogic.execute(et);
+         return et ;
+    }
+
+    @Override
+    @Transactional
+    public TrmTrainPlan setApprovalStatus(TrmTrainPlan et) {
+        setapprovalstatusLogic.execute(et);
+         return et ;
+    }
+
     @Override
     @Transactional
     public TrmTrainPlan get(String key) {
@@ -144,6 +181,13 @@ public class TrmTrainPlanServiceImpl extends ServiceImpl<TrmTrainPlanMapper, Trm
     public void createBatch(List<TrmTrainPlan> list) {
         list.forEach(item->fillParentData(item));
         this.saveBatch(list,batchSize);
+    }
+
+    @Override
+    @Transactional
+    public TrmTrainPlan setRejectStatus(TrmTrainPlan et) {
+        setrejectstatusLogic.execute(et);
+         return et ;
     }
 
     @Override
