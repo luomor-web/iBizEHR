@@ -102,6 +102,7 @@ public class TrmTrainPlanterm extends EntityMP implements Serializable {
     /**
      * 班级状态
      */
+    @DEField(defaultValue = "10")
     @TableField(value = "bjzt")
     @JSONField(name = "bjzt")
     @JsonProperty("bjzt")
