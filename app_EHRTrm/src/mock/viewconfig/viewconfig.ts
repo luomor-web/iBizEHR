@@ -16,8 +16,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "0124e5a1bc5d05baed67f6df4699bd6a"
         },
         "trmtrainactmenteditview": {
-            "title": "培训活动评估编辑视图",
-            "caption": "培训活动评估",
+            "title": "培训后评估",
+            "caption": "培训后评估",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrainActmentEditView",
@@ -64,8 +64,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "11da72e188942aaf631c0a7b419499fb"
         },
         "trmtrainbuapplygridview": {
-            "title": "培训预算申请表格视图",
-            "caption": "教育经费",
+            "title": "培训费用登记",
+            "caption": "培训费用登记",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrainBuapplyGridView",
@@ -144,8 +144,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "23c39c9890f7caa60c4ea8eaf9cf2e35"
         },
         "trmtrainbuapplyeditview": {
-            "title": "培训预算申请编辑视图",
-            "caption": "教育经费",
+            "title": "培训费用登记",
+            "caption": "培训费用登记",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrainBuapplyEditView",
@@ -216,8 +216,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "35c5d003a2e5573fdf3a5f4de80db878"
         },
         "trmdemdeftionpickupview": {
-            "title": "需求调查定义数据选择视图",
-            "caption": "培训需求汇总",
+            "title": "培训需求",
+            "caption": "培训需求",
             "viewtype": "DEPICKUPVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmDemdeftionPickupView",
@@ -320,8 +320,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "48f643f336298e3dd7d0764bcbf65c04"
         },
         "trmdemdeftionpickupgridview": {
-            "title": "需求调查定义选择表格视图",
-            "caption": "培训需求汇总",
+            "title": "培训需求",
+            "caption": "培训需求",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmDemdeftionPickupGridView",
@@ -480,7 +480,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "768cea21276a67cf21ea1448b8e0a9ea"
         },
         "trmtrainplanfeditview": {
-            "title": "培训计划编辑视图",
+            "title": "培训计划",
             "caption": "培训计划",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
@@ -496,8 +496,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "7baa86a07ab62567f156a016800616ac"
         },
         "trmtrainoutapplyeditview": {
-            "title": "外部培训申请编辑视图",
-            "caption": "外部培训申请",
+            "title": "外出培训申请",
+            "caption": "外出培训申请",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrainOutApplyEditView",
@@ -512,8 +512,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "7e9b2f1f660097c455a7ac222609ee63"
         },
         "trmtrainplanfgridview": {
-            "title": "培训计划表格视图",
-            "caption": "培训计划",
+            "title": "计划审批",
+            "caption": "计划审批",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrainPlanFGridView",
@@ -608,8 +608,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "931c3b21c30c786bcc9d2a7155999467"
         },
         "trmteacherchargeeditview": {
-            "title": "讲师收费记录编辑视图",
-            "caption": "讲师收费记录",
+            "title": "讲师费用台账",
+            "caption": "讲师费用台账",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTeacherChargeEditView",
@@ -744,8 +744,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "be9ab607e77dc2cee8e397ecffa3f68a"
         },
         "trmteacherchargegridview": {
-            "title": "讲师收费记录表格视图",
-            "caption": "讲师收费记录",
+            "title": "讲师费用台账",
+            "caption": "讲师费用台账",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTeacherChargeGridView",
@@ -760,8 +760,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "c10bb20833ac45e4e058f1378519fae9"
         },
         "trmtrainplantermeditview": {
-            "title": "培训计划项编辑视图",
-            "caption": "培训立项",
+            "title": "立项信息",
+            "caption": "立项信息",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrainPlantermEditView",
@@ -782,6 +782,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "ORM",
             "viewname": "OrmOrgSJOrgPickupGridView",
             "viewtag": "c4e5e876db9b32a639b21e8de18a798f"
+        },
+        "trmtrainplantermeditview9": {
+            "title": "立项信息",
+            "caption": "立项信息",
+            "viewtype": "DEEDITVIEW9",
+            "viewmodule": "TRM",
+            "viewname": "TrmTrainPlantermEditView9",
+            "viewtag": "c6f04a3d9e731f216ad501351984984d"
         },
         "trmtrainteacherpickupgridview": {
             "title": "培训教师选择表格视图",
@@ -936,7 +944,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "e0da8d83313b44899a3f9dde3b909571"
         },
         "trmtrainplantermgridview": {
-            "title": "培训立项表格视图",
+            "title": "培训立项",
             "caption": "培训立项",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
@@ -960,12 +968,20 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "e3e00a371d740be659600f4165e2d737"
         },
         "trmtrainplantermpickupgridview": {
-            "title": "培训计划项选择表格视图",
+            "title": "培训立项选择表格视图",
             "caption": "培训立项",
             "viewtype": "DEPICKUPGRIDVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrainPlantermPickupGridView",
             "viewtag": "e8b3d2db14338004052e6dea275f77a7"
+        },
+        "trmtrainplanjhfbgridview": {
+            "title": "计划发布",
+            "caption": "计划发布",
+            "viewtype": "DEGRIDVIEW",
+            "viewmodule": "TRM",
+            "viewname": "TrmTrainPlanJHFBGridView",
+            "viewtag": "ea64c9b3df245c163363aca2e295c255"
         },
         "trmtrainoutapplympickupview": {
             "title": "外部培训申请数据多项选择视图",
@@ -1008,8 +1024,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "f92032a0cb2fd4616195180160939e2e"
         },
         "trmtrainoutapplygridview": {
-            "title": "外部培训申请表格视图",
-            "caption": "外部培训申请",
+            "title": "外出培训申请",
+            "caption": "外出培训申请",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrainOutApplyGridView",
@@ -1032,8 +1048,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "fd64380e656f7ce1b3aa3968dbc60745"
         },
         "trmtrainplantermbjgridview": {
-            "title": "班级表格视图",
-            "caption": "培训立项",
+            "title": "培训开班",
+            "caption": "培训开班",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "TRM",
             "viewname": "TrmTrainPlantermBJGridView",
@@ -1056,7 +1072,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "fe888d1e87bcc324182ad773c1dc063c"
         },
         "trmtrainplantermpickupview": {
-            "title": "培训计划项数据选择视图",
+            "title": "培训立项数据选择视图",
             "caption": "培训立项",
             "viewtype": "DEPICKUPVIEW",
             "viewmodule": "TRM",
@@ -1064,7 +1080,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "feec8f4be9a41b3097708bb7eb973704"
         },
         "trmtrainplantermmpickupview": {
-            "title": "培训计划项数据多项选择视图",
+            "title": "培训立项数据多项选择视图",
             "caption": "培训立项",
             "viewtype": "DEMPICKUPVIEW",
             "viewmodule": "TRM",

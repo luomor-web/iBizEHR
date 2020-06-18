@@ -29,8 +29,8 @@ export default {
       title: '外部培训申请数据选择视图',
 		},
 		editview: {
-			caption: '外部培训申请',
-      title: '外部培训申请编辑视图',
+			caption: '外出培训申请',
+      title: '外出培训申请',
 		},
 		pickupgridview: {
 			caption: '外部培训申请',
@@ -41,13 +41,13 @@ export default {
       title: '外部培训申请数据多项选择视图',
 		},
 		gridview: {
-			caption: '外部培训申请',
-      title: '外部培训申请表格视图',
+			caption: '外出培训申请',
+      title: '外出培训申请',
 		},
 	},
 	main_form: {
 		details: {
-			group1: '外部培训申请信息', 
+			group1: '外出培训申请', 
 			formpage1: '基本信息', 
 			srfupdatedate: '更新时间', 
 			srforikey: '', 
@@ -57,7 +57,11 @@ export default {
 			srfuf: '', 
 			srfdeid: '', 
 			srfsourcekey: '', 
-			djbh: '单据编号', 
+			pimpersonname: '申请人', 
+			zz: '所属公司', 
+			bm: '所属部门', 
+			pimpersonid: '人员信息标识', 
+			djbh: '申请编号', 
 			trmtrainoutapplyname: '培训名称', 
 			ywlx: '业务类型', 
 			pxfs: '培训方式', 
@@ -68,10 +72,6 @@ export default {
 			pxjsrq: '培训结束日期', 
 			pxdd: '培训地点', 
 			wbpxjg: '外部培训机构', 
-			pimpersonid: '人员信息标识', 
-			pimpersonname: '申请人', 
-			zz: '公司', 
-			bm: '所在部门', 
 			trmtrainoutapplyid: '外部培训申请标识', 
 		},
 		uiactions: {
@@ -79,8 +79,10 @@ export default {
 	},
 	main_grid: {
 		columns: {
-			djbh: '单据编号',
-			trmtrainoutapplyname: '培训名称',
+			pimpersonname: '申请人',
+			zz: '所属公司',
+			djbh: '申请编号',
+			trmtrainoutapplyname: '参加培训名称',
 			pxfs: '培训方式',
 			pxnr: '培训内容',
 			pxmb: '培训目标',
@@ -110,21 +112,9 @@ export default {
 			caption: '保存',
 			tip: '保存',
 		},
-		tbitem4: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
 		tbitem5: {
 			caption: '保存并关闭',
 			tip: '保存并关闭',
-		},
-		tbitem7: {
-			caption: '删除并关闭',
-			tip: '删除并关闭',
-		},
-		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 	gridviewtoolbar_toolbar: {
@@ -132,21 +122,17 @@ export default {
 			caption: '新建',
 			tip: '新建',
 		},
+		tbitem5: {
+			caption: '编辑',
+			tip: '编辑',
+		},
 		tbitem8: {
 			caption: '删除',
 			tip: '删除',
 		},
-		tbitem19: {
-			caption: '过滤',
-			tip: '过滤',
-		},
 		tbitem13: {
 			caption: '导出',
 			tip: '导出',
-		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 };

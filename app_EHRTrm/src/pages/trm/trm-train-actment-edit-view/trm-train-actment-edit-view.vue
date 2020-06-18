@@ -5,7 +5,7 @@ import TrmTrainActmentEditViewBase from './trm-train-actment-edit-view-base.vue'
 import view_form from '@widgets/trm-train-actment/main-form/main-form.vue';
 
 /**
- * 培训活动评估编辑视图
+ * 培训后评估
  *
  * @export
  * @class TrmTrainActmentEditView

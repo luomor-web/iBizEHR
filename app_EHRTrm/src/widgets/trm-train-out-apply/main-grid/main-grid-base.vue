@@ -20,8 +20,32 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
+            <template v-if="getColumnState('pimpersonname')">
+                <el-table-column show-overflow-tooltip :prop="'pimpersonname'" :label="$t('entities.trmtrainoutapply.main_grid.columns.pimpersonname')" :width="120"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.trmtrainoutapply.main_grid.columns.pimpersonname')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <span>{{row.pimpersonname}}</span>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('zz')">
+                <el-table-column show-overflow-tooltip :prop="'zz'" :label="$t('entities.trmtrainoutapply.main_grid.columns.zz')" :width="180"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.trmtrainoutapply.main_grid.columns.zz')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <span>{{row.zz}}</span>
+                    </template>
+                </el-table-column>
+            </template>
             <template v-if="getColumnState('djbh')">
-                <el-table-column show-overflow-tooltip :prop="'djbh'" :label="$t('entities.trmtrainoutapply.main_grid.columns.djbh')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'djbh'" :label="$t('entities.trmtrainoutapply.main_grid.columns.djbh')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainoutapply.main_grid.columns.djbh')}}
@@ -45,7 +69,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pxfs')">
-                <el-table-column show-overflow-tooltip :prop="'pxfs'" :label="$t('entities.trmtrainoutapply.main_grid.columns.pxfs')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pxfs'" :label="$t('entities.trmtrainoutapply.main_grid.columns.pxfs')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainoutapply.main_grid.columns.pxfs')}}
@@ -93,7 +117,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pxlb')">
-                <el-table-column show-overflow-tooltip :prop="'pxlb'" :label="$t('entities.trmtrainoutapply.main_grid.columns.pxlb')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pxlb'" :label="$t('entities.trmtrainoutapply.main_grid.columns.pxlb')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainoutapply.main_grid.columns.pxlb')}}
@@ -105,7 +129,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pxksrq')">
-                <el-table-column show-overflow-tooltip :prop="'pxksrq'" :label="$t('entities.trmtrainoutapply.main_grid.columns.pxksrq')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pxksrq'" :label="$t('entities.trmtrainoutapply.main_grid.columns.pxksrq')" :width="140"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainoutapply.main_grid.columns.pxksrq')}}
@@ -117,7 +141,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pxjsrq')">
-                <el-table-column show-overflow-tooltip :prop="'pxjsrq'" :label="$t('entities.trmtrainoutapply.main_grid.columns.pxjsrq')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pxjsrq'" :label="$t('entities.trmtrainoutapply.main_grid.columns.pxjsrq')" :width="140"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainoutapply.main_grid.columns.pxjsrq')}}
@@ -605,15 +629,29 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public allColumns: any[] = [
         {
+            name: 'pimpersonname',
+            label: '申请人',
+            langtag: 'entities.trmtrainoutapply.main_grid.columns.pimpersonname',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'zz',
+            label: '所属公司',
+            langtag: 'entities.trmtrainoutapply.main_grid.columns.zz',
+            show: true,
+            util: 'PX'
+        },
+        {
             name: 'djbh',
-            label: '单据编号',
+            label: '申请编号',
             langtag: 'entities.trmtrainoutapply.main_grid.columns.djbh',
             show: true,
             util: 'px'
         },
         {
             name: 'trmtrainoutapplyname',
-            label: '培训名称',
+            label: '参加培训名称',
             langtag: 'entities.trmtrainoutapply.main_grid.columns.trmtrainoutapplyname',
             show: true,
             util: 'PX'

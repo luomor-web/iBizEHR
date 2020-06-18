@@ -190,7 +190,7 @@
   name="sfgx" 
   :localContext ='{ }' 
   :localParam ='{ }' 
-  tag='EhrCodeList0400' 
+  tag='EhrCodeList0401' 
   codelistType='STATIC' 
   style="">
 </app-radio-group>

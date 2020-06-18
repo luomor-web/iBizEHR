@@ -30,17 +30,17 @@ export default {
       title: '讲师收费记录数据选择视图',
 		},
 		editview: {
-			caption: '讲师收费记录',
-      title: '讲师收费记录编辑视图',
+			caption: '讲师费用台账',
+      title: '讲师费用台账',
 		},
 		gridview: {
-			caption: '讲师收费记录',
-      title: '讲师收费记录表格视图',
+			caption: '讲师费用台账',
+      title: '讲师费用台账',
 		},
 	},
 	main_form: {
 		details: {
-			group1: '讲师收费记录', 
+			group1: '讲师费用台账', 
 			formpage1: '基本信息', 
 			srfupdatedate: '更新时间', 
 			srforikey: '', 
@@ -91,21 +91,9 @@ export default {
 			caption: '保存',
 			tip: '保存',
 		},
-		tbitem4: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
 		tbitem5: {
 			caption: '保存并关闭',
 			tip: '保存并关闭',
-		},
-		tbitem7: {
-			caption: '删除并关闭',
-			tip: '删除并关闭',
-		},
-		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 	gridviewtoolbar_toolbar: {
@@ -113,21 +101,17 @@ export default {
 			caption: '新建',
 			tip: '新建',
 		},
+		tbitem5: {
+			caption: '编辑',
+			tip: '编辑',
+		},
 		tbitem8: {
 			caption: '删除',
 			tip: '删除',
 		},
-		tbitem19: {
-			caption: '过滤',
-			tip: '过滤',
-		},
 		tbitem13: {
 			caption: '导出',
 			tip: '导出',
-		},
-		tbitem18: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 };

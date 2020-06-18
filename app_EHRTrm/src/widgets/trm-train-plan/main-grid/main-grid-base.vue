@@ -32,6 +32,34 @@
                     </template>
                 </el-table-column>
             </template>
+            <template v-if="getColumnState('jhnd')">
+                <el-table-column show-overflow-tooltip :prop="'jhnd'" :label="$t('entities.trmtrainplan.main_grid.columns.jhnd')" :width="120"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.trmtrainplan.main_grid.columns.jhnd')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <template >
+            <codelist :value="row.jhnd" tag='EhrCodeList0009' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+                        </template>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('jhlx')">
+                <el-table-column show-overflow-tooltip :prop="'jhlx'" :label="$t('entities.trmtrainplan.main_grid.columns.jhlx')" :width="100"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.trmtrainplan.main_grid.columns.jhlx')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <template >
+            <codelist :value="row.jhlx" tag='EhrCodeList0401' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
+                        </template>
+                    </template>
+                </el-table-column>
+            </template>
             <template v-if="getColumnState('trmdemdeftionname')">
                 <el-table-column show-overflow-tooltip :prop="'trmdemdeftionname'" :label="$t('entities.trmtrainplan.main_grid.columns.trmdemdeftionname')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
@@ -44,75 +72,27 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('pxdx')">
-                <el-table-column show-overflow-tooltip :prop="'pxdx'" :label="$t('entities.trmtrainplan.main_grid.columns.pxdx')" :width="150"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('jhkssj')">
+                <el-table-column show-overflow-tooltip :prop="'jhkssj'" :label="$t('entities.trmtrainplan.main_grid.columns.jhkssj')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.trmtrainplan.main_grid.columns.pxdx')}}
+                        {{$t('entities.trmtrainplan.main_grid.columns.jhkssj')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.pxdx}}</span>
+                        <app-format-data format="YYYY-MM-DD" :data="row.jhkssj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('pxzynr')">
-                <el-table-column show-overflow-tooltip :prop="'pxzynr'" :label="$t('entities.trmtrainplan.main_grid.columns.pxzynr')" :width="150"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('jhjssj')">
+                <el-table-column show-overflow-tooltip :prop="'jhjssj'" :label="$t('entities.trmtrainplan.main_grid.columns.jhjssj')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.trmtrainplan.main_grid.columns.pxzynr')}}
+                        {{$t('entities.trmtrainplan.main_grid.columns.jhjssj')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.pxzynr}}</span>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('pxkssj')">
-                <el-table-column show-overflow-tooltip :prop="'pxkssj'" :label="$t('entities.trmtrainplan.main_grid.columns.pxkssj')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.trmtrainplan.main_grid.columns.pxkssj')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.pxkssj}}</span>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('pxjssj')">
-                <el-table-column show-overflow-tooltip :prop="'pxjssj'" :label="$t('entities.trmtrainplan.main_grid.columns.pxjssj')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.trmtrainplan.main_grid.columns.pxjssj')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.pxjssj}}</span>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('pxdd')">
-                <el-table-column show-overflow-tooltip :prop="'pxdd'" :label="$t('entities.trmtrainplan.main_grid.columns.pxdd')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.trmtrainplan.main_grid.columns.pxdd')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.pxdd}}</span>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('pxrs')">
-                <el-table-column show-overflow-tooltip :prop="'pxrs'" :label="$t('entities.trmtrainplan.main_grid.columns.pxrs')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.trmtrainplan.main_grid.columns.pxrs')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.pxrs}}</span>
+                        <app-format-data format="YYYY-MM-DD" :data="row.jhjssj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
@@ -149,6 +129,58 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                             <app-format-data dataType="FLOAT" precision="0" :data="row.ysze"></app-format-data>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('pxadress')">
+                <el-table-column show-overflow-tooltip :prop="'pxadress'" :label="$t('entities.trmtrainplan.main_grid.columns.pxadress')" :width="100"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.trmtrainplan.main_grid.columns.pxadress')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <span>{{row.pxadress}}</span>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('pxnum')">
+                <el-table-column show-overflow-tooltip :prop="'pxnum'" :label="$t('entities.trmtrainplan.main_grid.columns.pxnum')" :width="100"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.trmtrainplan.main_grid.columns.pxnum')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <span>{{row.pxnum}}</span>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('approvalstatus')">
+                <el-table-column show-overflow-tooltip :prop="'approvalstatus'" :label="$t('entities.trmtrainplan.main_grid.columns.approvalstatus')" :width="120"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.trmtrainplan.main_grid.columns.approvalstatus')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <template >
+            <codelist :value="row.approvalstatus" tag='EhrCodeList0087' codelistType='STATIC' ></codelist>
+                        </template>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('shfs')">
+                <el-table-column show-overflow-tooltip :prop="'shfs'" :label="$t('entities.trmtrainplan.main_grid.columns.shfs')" :width="120"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.trmtrainplan.main_grid.columns.shfs')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <template >
+            <codelist :value="row.shfs" tag='EhrCodeList0402' codelistType='STATIC' ></codelist>
+                        </template>
                     </template>
                 </el-table-column>
             </template>
@@ -636,53 +668,39 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'px'
         },
         {
+            name: 'jhnd',
+            label: '年度',
+            langtag: 'entities.trmtrainplan.main_grid.columns.jhnd',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'jhlx',
+            label: '类型',
+            langtag: 'entities.trmtrainplan.main_grid.columns.jhlx',
+            show: true,
+            util: 'PX'
+        },
+        {
             name: 'trmdemdeftionname',
-            label: '培训需求名称',
+            label: '培训需求',
             langtag: 'entities.trmtrainplan.main_grid.columns.trmdemdeftionname',
             show: true,
             util: 'PX'
         },
         {
-            name: 'pxdx',
-            label: '培训对象',
-            langtag: 'entities.trmtrainplan.main_grid.columns.pxdx',
+            name: 'jhkssj',
+            label: '拟开始时间',
+            langtag: 'entities.trmtrainplan.main_grid.columns.jhkssj',
             show: true,
-            util: 'px'
+            util: 'PX'
         },
         {
-            name: 'pxzynr',
-            label: '拟培训内容',
-            langtag: 'entities.trmtrainplan.main_grid.columns.pxzynr',
+            name: 'jhjssj',
+            label: '拟结束时间',
+            langtag: 'entities.trmtrainplan.main_grid.columns.jhjssj',
             show: true,
-            util: 'px'
-        },
-        {
-            name: 'pxkssj',
-            label: '培训开始时间',
-            langtag: 'entities.trmtrainplan.main_grid.columns.pxkssj',
-            show: true,
-            util: 'px'
-        },
-        {
-            name: 'pxjssj',
-            label: '培训结束时间',
-            langtag: 'entities.trmtrainplan.main_grid.columns.pxjssj',
-            show: true,
-            util: 'px'
-        },
-        {
-            name: 'pxdd',
-            label: '培训地点',
-            langtag: 'entities.trmtrainplan.main_grid.columns.pxdd',
-            show: true,
-            util: 'px'
-        },
-        {
-            name: 'pxrs',
-            label: '拟培训人数',
-            langtag: 'entities.trmtrainplan.main_grid.columns.pxrs',
-            show: true,
-            util: 'px'
+            util: 'PX'
         },
         {
             name: 'npxks',
@@ -702,6 +720,34 @@ export default class MainBase extends Vue implements ControlInterface {
             name: 'ysze',
             label: '预计培训费用',
             langtag: 'entities.trmtrainplan.main_grid.columns.ysze',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'pxadress',
+            label: '拟培训地点',
+            langtag: 'entities.trmtrainplan.main_grid.columns.pxadress',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'pxnum',
+            label: '拟培训人数',
+            langtag: 'entities.trmtrainplan.main_grid.columns.pxnum',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'approvalstatus',
+            label: '审批状态',
+            langtag: 'entities.trmtrainplan.main_grid.columns.approvalstatus',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'shfs',
+            label: '发布状态',
+            langtag: 'entities.trmtrainplan.main_grid.columns.shfs',
             show: true,
             util: 'PX'
         },
@@ -792,7 +838,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public load(opt: any = {}, pageReset: boolean = false): void {
         if(!this.fetchAction){
-            this.$Notice.error({ title: '错误', desc: 'TrmTrainPlanGridView视图表格fetchAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'TrmTrainPlanJHFBGridView视图表格fetchAction参数未配置' });
             return;
         }
         if(pageReset){
@@ -869,7 +915,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public async remove(datas: any[]): Promise<any> {
         if(!this.removeAction){
-            this.$Notice.error({ title: '错误', desc: 'TrmTrainPlanGridView视图表格removeAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'TrmTrainPlanJHFBGridView视图表格removeAction参数未配置' });
             return;
         }
         let _datas:any[] = [];
@@ -975,7 +1021,7 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public addBatch(arg: any = {}): void {
         if(!this.fetchAction){
-            this.$Notice.error({ title: '错误', desc: 'TrmTrainPlanGridView视图表格fetchAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'TrmTrainPlanJHFBGridView视图表格fetchAction参数未配置' });
             return;
         }
         if(!arg){
@@ -1092,6 +1138,38 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public async formatExcelData(filterVal:any, jsonData:any) {
         let codelistColumns:Array<any> = [
+          {
+            name: 'jhnd',
+            srfkey: 'EhrCodeList0009',
+            codelistType : 'STATIC',
+            textSeparator: '、',
+            renderMode: 'string',
+            valueSeparator: ";",
+          },
+          {
+            name: 'jhlx',
+            srfkey: 'EhrCodeList0401',
+            codelistType : 'STATIC',
+            renderMode: 'number',
+            textSeparator: '、',
+            valueSeparator: ',',
+          },
+          {
+            name: 'approvalstatus',
+            srfkey: 'EhrCodeList0087',
+            codelistType : 'STATIC',
+            renderMode: 'other',
+            textSeparator: '、',
+            valueSeparator: ',',
+          },
+          {
+            name: 'shfs',
+            srfkey: 'EhrCodeList0402',
+            codelistType : 'STATIC',
+            renderMode: 'other',
+            textSeparator: '、',
+            valueSeparator: ',',
+          },
         ];
         let _this = this;
         for (const codelist of codelistColumns) {
@@ -1511,7 +1589,7 @@ export default class MainBase extends Vue implements ControlInterface {
             try {
                 if(Object.is(item.rowDataState, 'create')){
                     if(!this.createAction){
-                        this.$Notice.error({ title: '错误', desc: 'TrmTrainPlanGridView视图表格createAction参数未配置' });
+                        this.$Notice.error({ title: '错误', desc: 'TrmTrainPlanJHFBGridView视图表格createAction参数未配置' });
                     }else{
                       Object.assign(item,{viewparams:this.viewparams});
                       let response = await this.service.add(this.createAction, JSON.parse(JSON.stringify(this.context)),item, this.showBusyIndicator);
@@ -1519,7 +1597,7 @@ export default class MainBase extends Vue implements ControlInterface {
                     }
                 }else if(Object.is(item.rowDataState, 'update')){
                     if(!this.updateAction){
-                        this.$Notice.error({ title: '错误', desc: 'TrmTrainPlanGridView视图表格updateAction参数未配置' });
+                        this.$Notice.error({ title: '错误', desc: 'TrmTrainPlanJHFBGridView视图表格updateAction参数未配置' });
                     }else{
                         Object.assign(item,{viewparams:this.viewparams});
                         if(item.trmtrainplan){

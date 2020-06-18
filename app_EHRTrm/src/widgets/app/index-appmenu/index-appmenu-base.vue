@@ -152,7 +152,7 @@ export default class IndexBase extends AppMenusCtrlBase {
         const deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
-            { pathName: 'gridview', parameterName: 'gridview' },
+            { pathName: 'fgridview', parameterName: 'fgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
         this.$router.push(path);
@@ -242,7 +242,7 @@ export default class IndexBase extends AppMenusCtrlBase {
         const deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'trmtrainplanterms', parameterName: 'trmtrainplanterm' },
-            { pathName: 'gridview', parameterName: 'gridview' },
+            { pathName: 'bjgridview', parameterName: 'bjgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
         this.$router.push(path);
@@ -285,7 +285,7 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
-     * 内部讲师费用<培训管理>
+     * 讲师费用登记<培训管理>
      *
      * @param {*} [item={}]
      * @memberof Index
@@ -339,7 +339,7 @@ export default class IndexBase extends AppMenusCtrlBase {
     }
     
     /**
-     * 个人教育经费<培训管理>
+     * 外出培训申请<培训管理>
      *
      * @param {*} [item={}]
      * @memberof Index
@@ -404,7 +404,7 @@ export default class IndexBase extends AppMenusCtrlBase {
         const deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
-            { pathName: 'gridview', parameterName: 'gridview' },
+            { pathName: 'jhfbgridview', parameterName: 'jhfbgridview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
         this.$router.push(path);

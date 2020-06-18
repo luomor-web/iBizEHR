@@ -4,9 +4,50 @@
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainoutapply.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainoutapply.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.djbh.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+        <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.trmtrainoutapply.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-picker 
+  :formState="formState"
+  :data="data"
+  :context="context"
+  :viewparams="viewparams"
+  :localContext ='{ }' 
+  :localParam ='{ }' 
+  :disabled="detailsModel.pimpersonname.disabled"
+  name='pimpersonname'
+  deMajorField='pimpersonname'
+  deKeyField='pimperson'
+  :service="service"
+  :acParams="{ serviceName: 'PimPersonService', interfaceName: 'FetchDefault'}"
+  valueitem='pimpersonid' 
+  :value="data.pimpersonname" 
+  editortype="" 
+  :pickupView="{ viewname: 'pim-person-pickup-view', title: $t('entities.pimperson.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'pimpeople', parameterName: 'pimperson' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
+  style=""  
+  @formitemvaluechange="onFormItemValueChange">
+</app-picker>
+
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.zz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='zz' :itemRules="this.rules.zz" class='' :caption="$t('entities.trmtrainoutapply.main_form.details.zz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zz.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='zz' :value="data.zz" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.bm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='bm' :itemRules="this.rules.bm" class='' :caption="$t('entities.trmtrainoutapply.main_form.details.bm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bm.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-span name='bm' :value="data.bm" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.djbh.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='djbh' :itemRules="this.rules.djbh" class='' :caption="$t('entities.trmtrainoutapply.main_form.details.djbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.djbh.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.djbh"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.djbh.disabled" type='text'  style=""></input-box>
 </app-form-item>
@@ -109,47 +150,6 @@
     :disabled="detailsModel.wbpxjg.disabled"  
     placeholder='请选择...' style="">
  </dropdown-list>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.trmtrainoutapply.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
-    
-<app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :localContext ='{ }' 
-  :localParam ='{ }' 
-  :disabled="detailsModel.pimpersonname.disabled"
-  name='pimpersonname'
-  deMajorField='pimpersonname'
-  deKeyField='pimperson'
-  :service="service"
-  :acParams="{ serviceName: 'PimPersonService', interfaceName: 'FetchDefault'}"
-  valueitem='pimpersonid' 
-  :value="data.pimpersonname" 
-  editortype="" 
-  :pickupView="{ viewname: 'pim-person-pickup-view', title: $t('entities.pimperson.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'pimpeople', parameterName: 'pimperson' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.zz.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='zz' :itemRules="this.rules.zz" class='' :caption="$t('entities.trmtrainoutapply.main_form.details.zz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.zz.error" :isEmptyCaption="false" labelPos="LEFT">
-    
-<app-span name='zz' :value="data.zz" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.bm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='bm' :itemRules="this.rules.bm" class='' :caption="$t('entities.trmtrainoutapply.main_form.details.bm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bm.error" :isEmptyCaption="false" labelPos="LEFT">
-    
-<app-span name='bm' :value="data.bm" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
@@ -464,6 +464,10 @@ export default class MainBase extends Vue implements ControlInterface {
         srfuf: null,
         srfdeid: null,
         srfsourcekey: null,
+        pimpersonname: null,
+        zz: null,
+        bm: null,
+        pimpersonid: null,
         djbh: null,
         trmtrainoutapplyname: null,
         ywlx: null,
@@ -475,10 +479,6 @@ export default class MainBase extends Vue implements ControlInterface {
         pxjsrq: null,
         pxdd: null,
         wbpxjg: null,
-        pimpersonid: null,
-        pimpersonname: null,
-        zz: null,
-        bm: null,
         trmtrainoutapplyid: null,
         trmtrainoutapply:null,
     };
@@ -570,11 +570,35 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
+        pimpersonname: [
+            { type: 'string', message: '申请人 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '申请人 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '申请人 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '申请人 值不能为空', trigger: 'blur' },
+        ],
+        zz: [
+            { type: 'string', message: '所属公司 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '所属公司 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '所属公司 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '所属公司 值不能为空', trigger: 'blur' },
+        ],
+        bm: [
+            { type: 'string', message: '所属部门 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '所属部门 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '所属部门 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '所属部门 值不能为空', trigger: 'blur' },
+        ],
+        pimpersonid: [
+            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'blur' },
+        ],
         djbh: [
-            { type: 'string', message: '单据编号 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '单据编号 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '单据编号 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '单据编号 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '申请编号 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '申请编号 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '申请编号 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '申请编号 值不能为空', trigger: 'blur' },
         ],
         trmtrainoutapplyname: [
             { type: 'string', message: '培训名称 值必须为字符串类型', trigger: 'change' },
@@ -636,30 +660,6 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '外部培训机构 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '外部培训机构 值不能为空', trigger: 'blur' },
         ],
-        pimpersonid: [
-            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '人员信息标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '人员信息标识 值不能为空', trigger: 'blur' },
-        ],
-        pimpersonname: [
-            { type: 'string', message: '申请人 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '申请人 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '申请人 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '申请人 值不能为空', trigger: 'blur' },
-        ],
-        zz: [
-            { type: 'string', message: '公司 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '公司 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '公司 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '公司 值不能为空', trigger: 'blur' },
-        ],
-        bm: [
-            { type: 'string', message: '所在部门 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '所在部门 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '所在部门 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '所在部门 值不能为空', trigger: 'blur' },
-        ],
         trmtrainoutapplyid: [
             { type: 'string', message: '外部培训申请标识 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '外部培训申请标识 值必须为字符串类型', trigger: 'blur' },
@@ -675,7 +675,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public detailsModel: any = {
-        group1: new FormGroupPanelModel({ caption: '外部培训申请信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainoutapply.main_form', extractMode: 'ITEM', details: [] } })
+        group1: new FormGroupPanelModel({ caption: '外出培训申请', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainoutapply.main_form', extractMode: 'ITEM', details: [] } })
 , 
         formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
@@ -695,7 +695,15 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        djbh: new FormItemModel({ caption: '单据编号', detailType: 'FORMITEM', name: 'djbh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        pimpersonname: new FormItemModel({ caption: '申请人', detailType: 'FORMITEM', name: 'pimpersonname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        zz: new FormItemModel({ caption: '所属公司', detailType: 'FORMITEM', name: 'zz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        bm: new FormItemModel({ caption: '所属部门', detailType: 'FORMITEM', name: 'bm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        pimpersonid: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        djbh: new FormItemModel({ caption: '申请编号', detailType: 'FORMITEM', name: 'djbh', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         trmtrainoutapplyname: new FormItemModel({ caption: '培训名称', detailType: 'FORMITEM', name: 'trmtrainoutapplyname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -716,14 +724,6 @@ export default class MainBase extends Vue implements ControlInterface {
         pxdd: new FormItemModel({ caption: '培训地点', detailType: 'FORMITEM', name: 'pxdd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         wbpxjg: new FormItemModel({ caption: '外部培训机构', detailType: 'FORMITEM', name: 'wbpxjg', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pimpersonid: new FormItemModel({ caption: '人员信息标识', detailType: 'FORMITEM', name: 'pimpersonid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        pimpersonname: new FormItemModel({ caption: '申请人', detailType: 'FORMITEM', name: 'pimpersonname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        zz: new FormItemModel({ caption: '公司', detailType: 'FORMITEM', name: 'zz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
-        bm: new FormItemModel({ caption: '所在部门', detailType: 'FORMITEM', name: 'bm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         trmtrainoutapplyid: new FormItemModel({ caption: '外部培训申请标识', detailType: 'FORMITEM', name: 'trmtrainoutapplyid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -823,6 +823,54 @@ export default class MainBase extends Vue implements ControlInterface {
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'srfsourcekey', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 pimpersonname 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.pimpersonname')
+    onPimpersonnameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'pimpersonname', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 zz 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.zz')
+    onZzChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'zz', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 bm 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.bm')
+    onBmChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'bm', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 pimpersonid 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.pimpersonid')
+    onPimpersonidChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'pimpersonid', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -955,54 +1003,6 @@ export default class MainBase extends Vue implements ControlInterface {
     @Watch('data.wbpxjg')
     onWbpxjgChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'wbpxjg', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pimpersonid 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.pimpersonid')
-    onPimpersonidChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pimpersonid', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 pimpersonname 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.pimpersonname')
-    onPimpersonnameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pimpersonname', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 zz 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.zz')
-    onZzChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'zz', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 bm 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.bm')
-    onBmChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'bm', newVal: newVal, oldVal: oldVal });
     }
 
     /**

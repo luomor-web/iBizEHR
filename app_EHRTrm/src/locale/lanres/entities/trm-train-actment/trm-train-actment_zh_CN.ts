@@ -15,8 +15,8 @@ export default {
   },
 	views: {
 		editview: {
-			caption: '培训活动评估',
-      title: '培训活动评估编辑视图',
+			caption: '培训后评估',
+      title: '培训后评估',
 		},
 		pickupview: {
 			caption: '培训活动评估',
@@ -37,7 +37,7 @@ export default {
 	},
 	main_form: {
 		details: {
-			group1: '培训活动评估信息', 
+			group1: '培训评估', 
 			formpage1: '基本信息', 
 			srfupdatedate: '更新时间', 
 			srforikey: '', 
@@ -81,21 +81,9 @@ export default {
 			caption: '保存',
 			tip: '保存',
 		},
-		tbitem4: {
-			caption: '保存并新建',
-			tip: '保存并新建',
-		},
 		tbitem5: {
 			caption: '保存并关闭',
 			tip: '保存并关闭',
-		},
-		tbitem7: {
-			caption: '删除并关闭',
-			tip: '删除并关闭',
-		},
-		tbitem22: {
-			caption: '帮助',
-			tip: '帮助',
 		},
 	},
 	gridviewtoolbar_toolbar: {

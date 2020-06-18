@@ -41,7 +41,7 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                         <template >
-            <codelist :value="row.nd" tag='EhrCodeList0115' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+            <codelist :value="row.nd" tag='EhrCodeList0009' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -548,7 +548,7 @@ export default class MainBase extends Vue implements ControlInterface {
     public allColumns: any[] = [
         {
             name: 'trmplanformuname',
-            label: '培训计划制定名称',
+            label: '标题',
             langtag: 'entities.trmplanformu.main_grid.columns.trmplanformuname',
             show: true,
             util: 'PX'
@@ -963,7 +963,7 @@ export default class MainBase extends Vue implements ControlInterface {
         let codelistColumns:Array<any> = [
           {
             name: 'nd',
-            srfkey: 'EhrCodeList0115',
+            srfkey: 'EhrCodeList0009',
             codelistType : 'STATIC',
             textSeparator: '、',
             renderMode: 'string',

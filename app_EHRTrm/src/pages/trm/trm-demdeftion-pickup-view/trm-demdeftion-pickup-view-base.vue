@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="trmdemdeftionpickupview" viewTitle="需求调查定义数据选择视图" :isShowCaptionBar="false" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'depickupview': true, 'trm-demdeftion-pickup-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="trmdemdeftionpickupview" viewTitle="培训需求" :isShowCaptionBar="false" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'depickupview': true, 'trm-demdeftion-pickup-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -48,7 +48,7 @@ import PickupViewEngine from '@engine/view/pickup-view-engine';
 
 
 /**
- * 需求调查定义数据选择视图基类
+ * 培训需求基类
  *
  * @export
  * @class TrmDemdeftionPickupViewBase

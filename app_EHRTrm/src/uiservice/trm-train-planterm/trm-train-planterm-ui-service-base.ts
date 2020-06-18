@@ -80,6 +80,7 @@ export default class TrmTrainPlantermUIServiceBase extends UIService {
      */  
     public initViewMap(){
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'trmtrainplanterms'});
+        this.allViewMap.set(':',{viewname:'editview9',srfappde:'trmtrainplanterms'});
         this.allViewMap.set('MDATAVIEW:',{viewname:'gridview',srfappde:'trmtrainplanterms'});
         this.allViewMap.set(':',{viewname:'pickupgridview',srfappde:'trmtrainplanterms'});
         this.allViewMap.set(':',{viewname:'bjgridview',srfappde:'trmtrainplanterms'});
@@ -108,6 +109,17 @@ export default class TrmTrainPlantermUIServiceBase extends UIService {
      * @returns {Promise<any>}
      */
     public async TrmTrainPlanterm_QX(args: any[],context:any = {}, params:any = {}, $event?: any, xData?: any,actionContext?: any,srfParentDeName?:string){
+        let confirmResult:boolean = await new Promise((resolve: any, reject: any) => {
+          actionContext.$Modal.confirm({
+              title: '警告',
+              content: '确认取消？',
+              onOk: () => {resolve(true);},
+              onCancel: () => {resolve(false);}
+          });
+        });
+        if(!confirmResult){
+            return;
+        }
         let data: any = {};
         let parentContext:any = {};
         let parentViewParam:any = {};
@@ -141,9 +153,12 @@ export default class TrmTrainPlantermUIServiceBase extends UIService {
                     actionContext.$Notice.error({ title: '错误', desc: response.message });
                     return;
                 }
-                actionContext.$Notice.success({ title: '成功', desc: '取消成功！' });
+                actionContext.$Notice.success({ title: '成功', desc: '已成功取消！' });
 
                 const _this: any = actionContext;
+                if (xData && xData.refresh && xData.refresh instanceof Function) {
+                    xData.refresh(args);
+                }
                 return response;
             }).catch((response: any) => {
                 if (!response || !response.status || !response.data) {
@@ -172,6 +187,17 @@ export default class TrmTrainPlantermUIServiceBase extends UIService {
      * @returns {Promise<any>}
      */
     public async TrmTrainPlanterm_LX(args: any[],context:any = {}, params:any = {}, $event?: any, xData?: any,actionContext?: any,srfParentDeName?:string){
+        let confirmResult:boolean = await new Promise((resolve: any, reject: any) => {
+          actionContext.$Modal.confirm({
+              title: '警告',
+              content: '确认立项？',
+              onOk: () => {resolve(true);},
+              onCancel: () => {resolve(false);}
+          });
+        });
+        if(!confirmResult){
+            return;
+        }
         let data: any = {};
         let parentContext:any = {};
         let parentViewParam:any = {};
@@ -205,9 +231,12 @@ export default class TrmTrainPlantermUIServiceBase extends UIService {
                     actionContext.$Notice.error({ title: '错误', desc: response.message });
                     return;
                 }
-                actionContext.$Notice.success({ title: '成功', desc: '立项成功！' });
+                actionContext.$Notice.success({ title: '成功', desc: '已成功立项！' });
 
                 const _this: any = actionContext;
+                if (xData && xData.refresh && xData.refresh instanceof Function) {
+                    xData.refresh(args);
+                }
                 return response;
             }).catch((response: any) => {
                 if (!response || !response.status || !response.data) {
@@ -236,6 +265,17 @@ export default class TrmTrainPlantermUIServiceBase extends UIService {
      * @returns {Promise<any>}
      */
     public async TrmTrainPlanterm_KB(args: any[],context:any = {}, params:any = {}, $event?: any, xData?: any,actionContext?: any,srfParentDeName?:string){
+        let confirmResult:boolean = await new Promise((resolve: any, reject: any) => {
+          actionContext.$Modal.confirm({
+              title: '警告',
+              content: '确认开班？',
+              onOk: () => {resolve(true);},
+              onCancel: () => {resolve(false);}
+          });
+        });
+        if(!confirmResult){
+            return;
+        }
         let data: any = {};
         let parentContext:any = {};
         let parentViewParam:any = {};
@@ -269,9 +309,12 @@ export default class TrmTrainPlantermUIServiceBase extends UIService {
                     actionContext.$Notice.error({ title: '错误', desc: response.message });
                     return;
                 }
-                actionContext.$Notice.success({ title: '成功', desc: '开班成功！' });
+                actionContext.$Notice.success({ title: '成功', desc: '已开班成功！' });
 
                 const _this: any = actionContext;
+                if (xData && xData.refresh && xData.refresh instanceof Function) {
+                    xData.refresh(args);
+                }
                 return response;
             }).catch((response: any) => {
                 if (!response || !response.status || !response.data) {

@@ -69,7 +69,7 @@ export default {
 	},
 	main_grid: {
 		columns: {
-			trmplanformuname: '培训计划制定名称',
+			trmplanformuname: '标题',
 			nd: '年度',
 			zzdzs: '填报单位',
 			shortname: '填报部门',

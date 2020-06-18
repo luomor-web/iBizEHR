@@ -121,6 +121,7 @@
     paramItem='trmtrainfillin' 
     :parentdata='{"srfparentdefname":"TRMTRAINFILLINID","srfparentdename":"TRMTRAINFILLIN","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_TRMDEMDEFTION_TRMTRAINFILLIN_TRMTRAINFILLINID","SRFDER1NID":"DER1N_TRMDEMDEFTION_TRMTRAINFILLIN_TRMTRAINFILLINID"}'
     :parameters="[
+        { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
     ]"
     :context="context"
     :viewparams="viewparams"
@@ -644,13 +645,13 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         trmdepartname: new FormItemModel({ caption: '培训需求通知', detailType: 'FORMITEM', name: 'trmdepartname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        ormorgname: new FormItemModel({ caption: '单位', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        ormorgname: new FormItemModel({ caption: '单位', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        ormorgsectorname: new FormItemModel({ caption: '部门', detailType: 'FORMITEM', name: 'ormorgsectorname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        ormorgsectorname: new FormItemModel({ caption: '部门', detailType: 'FORMITEM', name: 'ormorgsectorname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        nd: new FormItemModel({ caption: '年度', detailType: 'FORMITEM', name: 'nd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        nd: new FormItemModel({ caption: '年度', detailType: 'FORMITEM', name: 'nd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        jd: new FormItemModel({ caption: '季度', detailType: 'FORMITEM', name: 'jd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        jd: new FormItemModel({ caption: '季度', detailType: 'FORMITEM', name: 'jd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
         jzrq: new FormItemModel({ caption: '截止时间', detailType: 'FORMITEM', name: 'jzrq', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 

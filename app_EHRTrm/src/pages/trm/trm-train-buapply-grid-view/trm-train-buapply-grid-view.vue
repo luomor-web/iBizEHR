@@ -6,7 +6,7 @@ import view_grid from '@widgets/trm-train-buapply/main-grid/main-grid.vue';
 import view_searchform from '@widgets/trm-train-buapply/default-searchform/default-searchform.vue';
 
 /**
- * 培训预算申请表格视图
+ * 培训费用登记
  *
  * @export
  * @class TrmTrainBuapplyGridView

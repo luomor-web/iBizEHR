@@ -112,6 +112,7 @@
     paramItem='trmdepart' 
     :parentdata='{"srfparentdefname":"TRMDEPARTID","srfparentdename":"TRMDEPART","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_TRMDEMDEFTION_TRMDEPART_TRMDEPARTID","SRFDER1NID":"DER1N_TRMDEMDEFTION_TRMDEPART_TRMDEPARTID"}'
     :parameters="[
+        { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
     ]"
     :context="context"
     :viewparams="viewparams"

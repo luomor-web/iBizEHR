@@ -6,7 +6,7 @@ import view_grid from '@widgets/trm-demdeftion/main-grid/main-grid.vue';
 import view_searchform from '@widgets/trm-demdeftion/default-searchform/default-searchform.vue';
 
 /**
- * 需求调查定义选择表格视图
+ * 培训需求
  *
  * @export
  * @class TrmDemdeftionPickupGridView

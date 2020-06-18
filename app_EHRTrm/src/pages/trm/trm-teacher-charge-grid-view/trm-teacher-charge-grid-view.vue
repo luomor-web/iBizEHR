@@ -6,7 +6,7 @@ import view_grid from '@widgets/trm-teacher-charge/main-grid/main-grid.vue';
 import view_searchform from '@widgets/trm-teacher-charge/default-searchform/default-searchform.vue';
 
 /**
- * 讲师收费记录表格视图
+ * 讲师费用台账
  *
  * @export
  * @class TrmTeacherChargeGridView

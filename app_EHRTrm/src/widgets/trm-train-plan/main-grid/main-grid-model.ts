@@ -27,19 +27,29 @@ export default class MainModel {
     }else{
 		  return [
         {
+          name: 'shfs',
+          prop: 'shfs',
+          dataType: 'SSCODELIST',
+        },
+        {
           name: 'xh',
           prop: 'xh',
+          dataType: 'TEXT',
+        },
+        {
+          name: 'pxadress',
+          prop: 'pxadress',
+          dataType: 'TEXT',
+        },
+        {
+          name: 'approvalstatus',
+          prop: 'approvalstatus',
           dataType: 'TEXT',
         },
         {
           name: 'trmdemdeftionid',
           prop: 'trmdemdeftionid',
           dataType: 'PICKUP',
-        },
-        {
-          name: 'pxrs',
-          prop: 'pxrs',
-          dataType: 'PICKUPDATA',
         },
         {
           name: 'npxqs',
@@ -57,14 +67,9 @@ export default class MainModel {
           dataType: 'PICKUP',
         },
         {
-          name: 'pxzynr',
-          prop: 'pxzynr',
-          dataType: 'PICKUPDATA',
-        },
-        {
-          name: 'pxdd',
-          prop: 'pxdd',
-          dataType: 'PICKUPDATA',
+          name: 'jhnd',
+          prop: 'jhnd',
+          dataType: 'SSCODELIST',
         },
         {
           name: 'trmdemdeftionname',
@@ -87,6 +92,16 @@ export default class MainModel {
           dataType: 'GUID',
         },
         {
+          name: 'jhlx',
+          prop: 'jhlx',
+          dataType: 'SSCODELIST',
+        },
+        {
+          name: 'jhkssj',
+          prop: 'jhkssj',
+          dataType: 'DATE',
+        },
+        {
           name: 'ysze',
           prop: 'ysze',
           dataType: 'FLOAT',
@@ -97,24 +112,19 @@ export default class MainModel {
           dataType: 'FLOAT',
         },
         {
-          name: 'pxkssj',
-          prop: 'pxkssj',
-          dataType: 'PICKUPDATA',
-        },
-        {
-          name: 'pxdx',
-          prop: 'pxdx',
-          dataType: 'PICKUPDATA',
-        },
-        {
-          name: 'pxjssj',
-          prop: 'pxjssj',
-          dataType: 'PICKUPDATA',
+          name: 'jhjssj',
+          prop: 'jhjssj',
+          dataType: 'DATE',
         },
         {
           name: 'trmplanformuid',
           prop: 'trmplanformuid',
           dataType: 'PICKUP',
+        },
+        {
+          name: 'pxnum',
+          prop: 'pxnum',
+          dataType: 'INT',
         },
         {
           name: 'trmtrainplan',

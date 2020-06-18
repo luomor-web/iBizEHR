@@ -5,7 +5,7 @@ import TrmTrainPlantermEditViewBase from './trm-train-planterm-edit-view-base.vu
 import view_form from '@widgets/trm-train-planterm/main-form/main-form.vue';
 
 /**
- * 培训计划项编辑视图
+ * 立项信息
  *
  * @export
  * @class TrmTrainPlantermEditView

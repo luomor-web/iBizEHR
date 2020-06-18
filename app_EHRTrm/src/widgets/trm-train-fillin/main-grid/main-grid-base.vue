@@ -65,7 +65,7 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                         <template >
-            <codelist :value="row.nd" tag='EhrCodeList0115' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+            <codelist :value="row.nd" tag='EhrCodeList0009' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -79,7 +79,7 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                         <template >
-            <codelist :value="row.jd" tag='CodeList83' codelistType='STATIC' ></codelist>
+            <codelist :value="row.jd" tag='EhrCodeList0177' codelistType='STATIC' ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -1003,7 +1003,7 @@ export default class MainBase extends Vue implements ControlInterface {
         let codelistColumns:Array<any> = [
           {
             name: 'nd',
-            srfkey: 'EhrCodeList0115',
+            srfkey: 'EhrCodeList0009',
             codelistType : 'STATIC',
             textSeparator: '、',
             renderMode: 'string',
@@ -1011,7 +1011,7 @@ export default class MainBase extends Vue implements ControlInterface {
           },
           {
             name: 'jd',
-            srfkey: 'CodeList83',
+            srfkey: 'EhrCodeList0177',
             codelistType : 'STATIC',
             renderMode: 'other',
             textSeparator: '、',

@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="trmtrainplangridview" viewTitle="培训计划详情" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'trm-train-plan-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="trmtrainplangridview" viewTitle="培训计划详情" :isShowCaptionBar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'trm-train-plan-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -493,7 +493,12 @@ export default class TrmTrainPlanGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(tempContext,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(tempContext.pimperson && true){
+            deResParameters = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
         ];
@@ -538,7 +543,12 @@ export default class TrmTrainPlanGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(tempContext,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(tempContext.pimperson && true){
+            deResParameters = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
         ];

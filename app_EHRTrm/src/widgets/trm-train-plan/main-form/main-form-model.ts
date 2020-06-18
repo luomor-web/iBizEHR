@@ -66,9 +66,29 @@ export default class MainModel {
         dataType: 'PICKUPTEXT',
       },
       {
-        name: 'pxdx',
-        prop: 'pxdx',
-        dataType: 'PICKUPDATA',
+        name: 'jhnd',
+        prop: 'jhnd',
+        dataType: 'SSCODELIST',
+      },
+      {
+        name: 'jhlx',
+        prop: 'jhlx',
+        dataType: 'SSCODELIST',
+      },
+      {
+        name: 'pxadress',
+        prop: 'pxadress',
+        dataType: 'TEXT',
+      },
+      {
+        name: 'jhkssj',
+        prop: 'jhkssj',
+        dataType: 'DATE',
+      },
+      {
+        name: 'jhjssj',
+        prop: 'jhjssj',
+        dataType: 'DATE',
       },
       {
         name: 'npxks',
@@ -76,8 +96,18 @@ export default class MainModel {
         dataType: 'FLOAT',
       },
       {
+        name: 'pxnum',
+        prop: 'pxnum',
+        dataType: 'INT',
+      },
+      {
         name: 'npxqs',
         prop: 'npxqs',
+        dataType: 'TEXT',
+      },
+      {
+        name: 'pxcontent',
+        prop: 'pxcontent',
         dataType: 'TEXT',
       },
       {
@@ -89,6 +119,11 @@ export default class MainModel {
         name: 'bz',
         prop: 'bz',
         dataType: 'LONGTEXT_1000',
+      },
+      {
+        name: 'approvalstatus',
+        prop: 'approvalstatus',
+        dataType: 'TEXT',
       },
       {
         name: 'trmdemdeftionid',

@@ -132,6 +132,18 @@ export default class PickupViewpickupviewpanelModel {
       {
         name: 'ormorgid',
       },
+      {
+        name: 'pxadress',
+      },
+      {
+        name: 'pxcontent',
+      },
+      {
+        name: 'pxnum',
+      },
+      {
+        name: 'approvalstatus',
+      },
     ]
   }
 

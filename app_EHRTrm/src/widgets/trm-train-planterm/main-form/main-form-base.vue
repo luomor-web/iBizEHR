@@ -53,7 +53,7 @@
   valueitem='trmtrainplanid' 
   :value="data.trmtrainplanname" 
   editortype="" 
-  :pickupView="{ viewname: 'trm-train-plan-pickup-view', title: $t('entities.trmtrainplan.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'trmtrainplans', parameterName: 'trmtrainplan' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
+  :pickupView="{ viewname: 'trm-train-plan-pickup-view', title: $t('entities.trmtrainplan.views.pickupview.title'), deResParameters: [{ pathName: 'pimpeople', parameterName: 'pimperson' }, ], parameters: [{ pathName: 'trmtrainplans', parameterName: 'trmtrainplan' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
   style=""  
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>

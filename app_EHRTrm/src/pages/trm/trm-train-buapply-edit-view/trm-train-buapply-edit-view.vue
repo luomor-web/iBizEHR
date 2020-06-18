@@ -5,7 +5,7 @@ import TrmTrainBuapplyEditViewBase from './trm-train-buapply-edit-view-base.vue'
 import view_form from '@widgets/trm-train-buapply/main-form/main-form.vue';
 
 /**
- * 培训预算申请编辑视图
+ * 培训费用登记
  *
  * @export
  * @class TrmTrainBuapplyEditView

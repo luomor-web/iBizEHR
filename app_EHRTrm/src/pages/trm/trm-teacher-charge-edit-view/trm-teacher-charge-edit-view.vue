@@ -5,7 +5,7 @@ import TrmTeacherChargeEditViewBase from './trm-teacher-charge-edit-view-base.vu
 import view_form from '@widgets/trm-teacher-charge/main-form/main-form.vue';
 
 /**
- * 讲师收费记录编辑视图
+ * 讲师费用台账
  *
  * @export
  * @class TrmTeacherChargeEditView

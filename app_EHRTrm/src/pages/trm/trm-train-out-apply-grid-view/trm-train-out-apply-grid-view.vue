@@ -6,7 +6,7 @@ import view_grid from '@widgets/trm-train-out-apply/main-grid/main-grid.vue';
 import view_searchform from '@widgets/trm-train-out-apply/default-searchform/default-searchform.vue';
 
 /**
- * 外部培训申请表格视图
+ * 外出培训申请
  *
  * @export
  * @class TrmTrainOutApplyGridView

@@ -5,7 +5,7 @@ import TrmTrainPlantermPickupViewBase from './trm-train-planterm-pickup-view-bas
 import view_pickupviewpanel from '@widgets/trm-train-planterm/pickup-viewpickupviewpanel-pickupviewpanel/pickup-viewpickupviewpanel-pickupviewpanel.vue';
 
 /**
- * 培训计划项数据选择视图
+ * 培训立项数据选择视图
  *
  * @export
  * @class TrmTrainPlantermPickupView

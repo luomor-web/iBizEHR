@@ -92,10 +92,26 @@ export default class OrmOrgServiceBase extends EntityService {
             }
         }
         masterData.ormorgs = ormorgsData;
+        let trmtrainfillinsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins'),'undefined')){
+            trmtrainfillinsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins') as any);
+            if(trmtrainfillinsData && trmtrainfillinsData.length && trmtrainfillinsData.length > 0){
+                trmtrainfillinsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainfillinid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainfillins = trmtrainfillinsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/ormorgs/${context.ormorg}`,data,isloading);
             this.tempStorage.setItem(context.srfsessionkey+'_ormorgsectors',JSON.stringify(res.data.ormorgsectors));
             this.tempStorage.setItem(context.srfsessionkey+'_ormorgs',JSON.stringify(res.data.ormorgs));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainfillins',JSON.stringify(res.data.trmtrainfillins));
             return res;
     }
 
@@ -140,6 +156,7 @@ export default class OrmOrgServiceBase extends EntityService {
         res.data.ormorg = data.ormorg;
             this.tempStorage.setItem(context.srfsessionkey+'_ormorgsectors',JSON.stringify(res.data.ormorgsectors));
             this.tempStorage.setItem(context.srfsessionkey+'_ormorgs',JSON.stringify(res.data.ormorgs));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainfillins',JSON.stringify(res.data.trmtrainfillins));
         return res;
     }
 
@@ -156,6 +173,7 @@ export default class OrmOrgServiceBase extends EntityService {
             let res:any = await Http.getInstance().get(`/ormorgs/${context.ormorg}`,isloading);
             this.tempStorage.setItem(context.srfsessionkey+'_ormorgsectors',JSON.stringify(res.data.ormorgsectors));
             this.tempStorage.setItem(context.srfsessionkey+'_ormorgs',JSON.stringify(res.data.ormorgs));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainfillins',JSON.stringify(res.data.trmtrainfillins));
             return res;
 
     }
@@ -214,6 +232,21 @@ export default class OrmOrgServiceBase extends EntityService {
             }
         }
         masterData.ormorgs = ormorgsData;
+        let trmtrainfillinsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins'),'undefined')){
+            trmtrainfillinsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins') as any);
+            if(trmtrainfillinsData && trmtrainfillinsData.length && trmtrainfillinsData.length > 0){
+                trmtrainfillinsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainfillinid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainfillins = trmtrainfillinsData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -225,6 +258,7 @@ export default class OrmOrgServiceBase extends EntityService {
         let res:any = await Http.getInstance().post(`/ormorgs`,data,isloading);
         this.tempStorage.setItem(tempContext.srfsessionkey+'_ormorgsectors',JSON.stringify(res.data.ormorgsectors));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_ormorgs',JSON.stringify(res.data.ormorgs));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_trmtrainfillins',JSON.stringify(res.data.trmtrainfillins));
         return res;
     }
 
@@ -269,10 +303,26 @@ export default class OrmOrgServiceBase extends EntityService {
             }
         }
         masterData.ormorgs = ormorgsData;
+        let trmtrainfillinsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins'),'undefined')){
+            trmtrainfillinsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins') as any);
+            if(trmtrainfillinsData && trmtrainfillinsData.length && trmtrainfillinsData.length > 0){
+                trmtrainfillinsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainfillinid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainfillins = trmtrainfillinsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/ormorgs/${context.ormorg}/save`,data,isloading);
             this.tempStorage.setItem(context.srfsessionkey+'_ormorgsectors',JSON.stringify(res.data.ormorgsectors));
             this.tempStorage.setItem(context.srfsessionkey+'_ormorgs',JSON.stringify(res.data.ormorgs));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainfillins',JSON.stringify(res.data.trmtrainfillins));
             return res;
     }
 

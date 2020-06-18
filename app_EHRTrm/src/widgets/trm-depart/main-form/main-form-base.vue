@@ -36,30 +36,6 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.ormorgsectorname.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-item name='ormorgsectorname' :itemRules="this.rules.ormorgsectorname" class='' :caption="$t('entities.trmdepart.main_form.details.ormorgsectorname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgsectorname.error" :isEmptyCaption="false" labelPos="LEFT">
-    
-<app-mpicker
-    :activeData="data"
-    :disabled="detailsModel.ormorgsectorname.disabled"
-    :curvalue="data.ormorgsectorname"
-    name="ormorgsectorname"
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{ }' 
-    :localParam ='{ }' 
-    :service="service"
-    deMajorField='orgsectorname'
-    deKeyField='ormorgsector'
-    :acParams="{ serviceName: 'OrmOrgsectorService', interfaceName: 'FetchDefault'}"
-    :pickupView="{ viewname: 'orm-orgsector-mpickup-view', title: $t('entities.ormorgsector.views.mpickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'mpickupview', parameterName: 'mpickupview' } ], placement:'' }"
-    @formitemvaluechange="onFormItemValueChange" 
-    style="">
-</app-mpicker>
-
-</app-form-item>
-
-</i-col>
 <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.trmdepart.main_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
     
@@ -77,6 +53,30 @@
     deKeyField='ormorg'
     :acParams="{ serviceName: 'OrmOrgService', interfaceName: 'FetchDefault'}"
     :pickupView="{ viewname: 'orm-org-pickup-view', title: $t('entities.ormorg.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
+    @formitemvaluechange="onFormItemValueChange" 
+    style="">
+</app-mpicker>
+
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.ormorgsectorname.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+    <app-form-item name='ormorgsectorname' :itemRules="this.rules.ormorgsectorname" class='' :caption="$t('entities.trmdepart.main_form.details.ormorgsectorname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgsectorname.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+<app-mpicker
+    :activeData="data"
+    :disabled="detailsModel.ormorgsectorname.disabled"
+    :curvalue="data.ormorgsectorname"
+    name="ormorgsectorname"
+    :context="context"
+    :viewparams="viewparams"
+    :localContext ='{ }' 
+    :localParam ='{ }' 
+    :service="service"
+    deMajorField='orgsectorname'
+    deKeyField='ormorgsector'
+    :acParams="{ serviceName: 'OrmOrgsectorService', interfaceName: 'FetchDefault'}"
+    :pickupView="{ viewname: 'orm-orgsector-mpickup-view', title: $t('entities.ormorgsector.views.mpickupview.title'), deResParameters: [{ pathName: 'ormorgs', parameterName: 'ormorg' }, ], parameters: [{ pathName: 'ormorgsectors', parameterName: 'ormorgsector' }, { pathName: 'mpickupview', parameterName: 'mpickupview' } ], placement:'' }"
     @formitemvaluechange="onFormItemValueChange" 
     style="">
 </app-mpicker>
@@ -404,8 +404,8 @@ export default class MainBase extends Vue implements ControlInterface {
         trmdepartname: null,
         tzlx: null,
         jzrq: null,
-        ormorgsectorname: null,
         ormorgname: null,
+        ormorgsectorname: null,
         fj: null,
         trmdepartid: null,
         trmdepart:null,
@@ -516,17 +516,17 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '截止日期 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '截止日期 值不能为空', trigger: 'blur' },
         ],
-        ormorgsectorname: [
-            { type: 'string', message: '局职能部门 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '局职能部门 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '局职能部门 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '局职能部门 值不能为空', trigger: 'blur' },
-        ],
         ormorgname: [
-            { type: 'string', message: '通知对象 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '通知对象 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '通知对象 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '通知对象 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '直属单位 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '直属单位 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '直属单位 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '直属单位 值不能为空', trigger: 'blur' },
+        ],
+        ormorgsectorname: [
+            { type: 'string', message: '职能部门 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '职能部门 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '职能部门 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '职能部门 值不能为空', trigger: 'blur' },
         ],
         fj: [
             { type: 'string', message: '附件 值必须为字符串类型', trigger: 'change' },
@@ -575,9 +575,9 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         jzrq: new FormItemModel({ caption: '截止日期', detailType: 'FORMITEM', name: 'jzrq', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        ormorgsectorname: new FormItemModel({ caption: '局职能部门', detailType: 'FORMITEM', name: 'ormorgsectorname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        ormorgname: new FormItemModel({ caption: '直属单位', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        ormorgname: new FormItemModel({ caption: '通知对象', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        ormorgsectorname: new FormItemModel({ caption: '职能部门', detailType: 'FORMITEM', name: 'ormorgsectorname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         fj: new FormItemModel({ caption: '附件', detailType: 'FORMITEM', name: 'fj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -718,18 +718,6 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 ormorgsectorname 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.ormorgsectorname')
-    onOrmorgsectornameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'ormorgsectorname', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 ormorgname 值
      *
      * @param {*} newVal
@@ -739,6 +727,18 @@ export default class MainBase extends Vue implements ControlInterface {
     @Watch('data.ormorgname')
     onOrmorgnameChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'ormorgname', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 ormorgsectorname 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.ormorgsectorname')
+    onOrmorgsectornameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'ormorgsectorname', newVal: newVal, oldVal: oldVal });
     }
 
     /**

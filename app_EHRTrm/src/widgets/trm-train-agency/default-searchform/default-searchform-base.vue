@@ -46,7 +46,7 @@
             :localParam ='{ }' 
             :disabled="detailsModel.n_sfgx_eq.disabled" 
             style="width: 100px;" 
-            tag='EhrCodeList0400' 
+            tag='EhrCodeList0401' 
             codelistType='STATIC'
             placeholder='请选择...'>
            </dropdown-list>

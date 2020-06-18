@@ -54,6 +54,9 @@ export default class TrmTrainFillinServiceBase extends EntityService {
         if(context.trmdepart && context.trmtrainfillin){
             return Http.getInstance().get(`/trmdeparts/${context.trmdepart}/trmtrainfillins/${context.trmtrainfillin}/select`,isloading);
         }
+        if(context.ormorg && context.trmtrainfillin){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/trmtrainfillins/${context.trmtrainfillin}/select`,isloading);
+        }
         if(context.ormorgsector && context.trmtrainfillin){
             return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/trmtrainfillins/${context.trmtrainfillin}/select`,isloading);
         }
@@ -76,10 +79,15 @@ export default class TrmTrainFillinServiceBase extends EntityService {
         if(context.trmdepart && context.trmtrainfillin){
             return Http.getInstance().get(`/trmdeparts/${context.trmdepart}/trmtrainfillins/${context.trmtrainfillin}`,isloading);
         }
+        if(context.ormorg && context.trmtrainfillin){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/trmtrainfillins/${context.trmtrainfillin}`,isloading);
+        }
         if(context.ormorgsector && context.trmtrainfillin){
             return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/trmtrainfillins/${context.trmtrainfillin}`,isloading);
         }
             let res:any = await Http.getInstance().get(`/trmtrainfillins/${context.trmtrainfillin}`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainfillins',JSON.stringify(res.data.trmtrainfillins));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmdemdeftions',JSON.stringify(res.data.trmdemdeftions));
             return res;
 
     }
@@ -100,12 +108,47 @@ export default class TrmTrainFillinServiceBase extends EntityService {
         if(context.trmdepart && context.trmtrainfillin){
             return Http.getInstance().put(`/trmdeparts/${context.trmdepart}/trmtrainfillins/${context.trmtrainfillin}`,data,isloading);
         }
+        if(context.ormorg && context.trmtrainfillin){
+            return Http.getInstance().put(`/ormorgs/${context.ormorg}/trmtrainfillins/${context.trmtrainfillin}`,data,isloading);
+        }
         if(context.ormorgsector && context.trmtrainfillin){
             return Http.getInstance().put(`/ormorgsectors/${context.ormorgsector}/trmtrainfillins/${context.trmtrainfillin}`,data,isloading);
         }
         let masterData:any = {};
+        let trmtrainfillinsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins'),'undefined')){
+            trmtrainfillinsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins') as any);
+            if(trmtrainfillinsData && trmtrainfillinsData.length && trmtrainfillinsData.length > 0){
+                trmtrainfillinsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainfillinid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainfillins = trmtrainfillinsData;
+        let trmdemdeftionsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmdemdeftions'),'undefined')){
+            trmdemdeftionsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmdemdeftions') as any);
+            if(trmdemdeftionsData && trmdemdeftionsData.length && trmdemdeftionsData.length > 0){
+                trmdemdeftionsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmdemdeftionid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmdemdeftions = trmdemdeftionsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/trmtrainfillins/${context.trmtrainfillin}`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainfillins',JSON.stringify(res.data.trmtrainfillins));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmdemdeftions',JSON.stringify(res.data.trmdemdeftions));
             return res;
     }
 
@@ -124,6 +167,9 @@ export default class TrmTrainFillinServiceBase extends EntityService {
         }
         if(context.trmdepart && context.trmtrainfillin){
             return Http.getInstance().post(`/trmdeparts/${context.trmdepart}/trmtrainfillins/${context.trmtrainfillin}/checkkey`,data,isloading);
+        }
+        if(context.ormorg && context.trmtrainfillin){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/trmtrainfillins/${context.trmtrainfillin}/checkkey`,data,isloading);
         }
         if(context.ormorgsector && context.trmtrainfillin){
             return Http.getInstance().post(`/ormorgsectors/${context.ormorgsector}/trmtrainfillins/${context.trmtrainfillin}/checkkey`,data,isloading);
@@ -159,6 +205,15 @@ export default class TrmTrainFillinServiceBase extends EntityService {
             }
             return Http.getInstance().post(`/trmdeparts/${context.trmdepart}/trmtrainfillins`,data,isloading);
         }
+        if(context.ormorg && true){
+            if(!data.srffrontuf || data.srffrontuf !== "1"){
+                data[this.APPDEKEY] = null;
+            }
+            if(data.srffrontuf){
+                delete data.srffrontuf;
+            }
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/trmtrainfillins`,data,isloading);
+        }
         if(context.ormorgsector && true){
             if(!data.srffrontuf || data.srffrontuf !== "1"){
                 data[this.APPDEKEY] = null;
@@ -169,6 +224,36 @@ export default class TrmTrainFillinServiceBase extends EntityService {
             return Http.getInstance().post(`/ormorgsectors/${context.ormorgsector}/trmtrainfillins`,data,isloading);
         }
         let masterData:any = {};
+        let trmtrainfillinsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins'),'undefined')){
+            trmtrainfillinsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins') as any);
+            if(trmtrainfillinsData && trmtrainfillinsData.length && trmtrainfillinsData.length > 0){
+                trmtrainfillinsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainfillinid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainfillins = trmtrainfillinsData;
+        let trmdemdeftionsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmdemdeftions'),'undefined')){
+            trmdemdeftionsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmdemdeftions') as any);
+            if(trmdemdeftionsData && trmdemdeftionsData.length && trmdemdeftionsData.length > 0){
+                trmdemdeftionsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmdemdeftionid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmdemdeftions = trmdemdeftionsData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -178,6 +263,8 @@ export default class TrmTrainFillinServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/trmtrainfillins`,data,isloading);
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_trmtrainfillins',JSON.stringify(res.data.trmtrainfillins));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_trmdemdeftions',JSON.stringify(res.data.trmdemdeftions));
         return res;
     }
 
@@ -197,12 +284,47 @@ export default class TrmTrainFillinServiceBase extends EntityService {
         if(context.trmdepart && context.trmtrainfillin){
             return Http.getInstance().post(`/trmdeparts/${context.trmdepart}/trmtrainfillins/${context.trmtrainfillin}/save`,data,isloading);
         }
+        if(context.ormorg && context.trmtrainfillin){
+            return Http.getInstance().post(`/ormorgs/${context.ormorg}/trmtrainfillins/${context.trmtrainfillin}/save`,data,isloading);
+        }
         if(context.ormorgsector && context.trmtrainfillin){
             return Http.getInstance().post(`/ormorgsectors/${context.ormorgsector}/trmtrainfillins/${context.trmtrainfillin}/save`,data,isloading);
         }
         let masterData:any = {};
+        let trmtrainfillinsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins'),'undefined')){
+            trmtrainfillinsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainfillins') as any);
+            if(trmtrainfillinsData && trmtrainfillinsData.length && trmtrainfillinsData.length > 0){
+                trmtrainfillinsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainfillinid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainfillins = trmtrainfillinsData;
+        let trmdemdeftionsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmdemdeftions'),'undefined')){
+            trmdemdeftionsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmdemdeftions') as any);
+            if(trmdemdeftionsData && trmdemdeftionsData.length && trmdemdeftionsData.length > 0){
+                trmdemdeftionsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmdemdeftionid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmdemdeftions = trmdemdeftionsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/trmtrainfillins/${context.trmtrainfillin}/save`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainfillins',JSON.stringify(res.data.trmtrainfillins));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmdemdeftions',JSON.stringify(res.data.trmdemdeftions));
             return res;
     }
 
@@ -222,11 +344,16 @@ export default class TrmTrainFillinServiceBase extends EntityService {
         if(context.trmdepart && true){
             return Http.getInstance().get(`/trmdeparts/${context.trmdepart}/trmtrainfillins/getdraft`,isloading);
         }
+        if(context.ormorg && true){
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/trmtrainfillins/getdraft`,isloading);
+        }
         if(context.ormorgsector && true){
             return Http.getInstance().get(`/ormorgsectors/${context.ormorgsector}/trmtrainfillins/getdraft`,isloading);
         }
         let res:any = await  Http.getInstance().get(`/trmtrainfillins/getdraft`,isloading);
         res.data.trmtrainfillin = data.trmtrainfillin;
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainfillins',JSON.stringify(res.data.trmtrainfillins));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmdemdeftions',JSON.stringify(res.data.trmdemdeftions));
         return res;
     }
 
@@ -245,6 +372,9 @@ export default class TrmTrainFillinServiceBase extends EntityService {
         }
         if(context.trmdepart && context.trmtrainfillin){
             return Http.getInstance().delete(`/trmdeparts/${context.trmdepart}/trmtrainfillins/${context.trmtrainfillin}`,isloading);
+        }
+        if(context.ormorg && context.trmtrainfillin){
+            return Http.getInstance().delete(`/ormorgs/${context.ormorg}/trmtrainfillins/${context.trmtrainfillin}`,isloading);
         }
         if(context.ormorgsector && context.trmtrainfillin){
             return Http.getInstance().delete(`/ormorgsectors/${context.ormorgsector}/trmtrainfillins/${context.trmtrainfillin}`,isloading);
@@ -270,6 +400,10 @@ export default class TrmTrainFillinServiceBase extends EntityService {
         if(context.trmdepart && true){
             let tempData:any = JSON.parse(JSON.stringify(data));
             return Http.getInstance().get(`/trmdeparts/${context.trmdepart}/trmtrainfillins/fetchdefault`,tempData,isloading);
+        }
+        if(context.ormorg && true){
+            let tempData:any = JSON.parse(JSON.stringify(data));
+            return Http.getInstance().get(`/ormorgs/${context.ormorg}/trmtrainfillins/fetchdefault`,tempData,isloading);
         }
         if(context.ormorgsector && true){
             let tempData:any = JSON.parse(JSON.stringify(data));

@@ -57,7 +57,7 @@
 <i-col v-show="detailsModel.sfgx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='sfgx' :itemRules="this.rules.sfgx" class='' :caption="$t('entities.trmtraincourse.main2_form.details.sfgx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.sfgx.error" :isEmptyCaption="false" labelPos="LEFT">
     
-<app-span name='sfgx' :value="data.sfgx" tag='EhrCodeList0400' codelistType='STATIC' renderMode="NUM" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+<app-span name='sfgx' :value="data.sfgx" tag='EhrCodeList0401' codelistType='STATIC' renderMode="NUM" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>

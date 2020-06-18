@@ -23,7 +23,7 @@
     :localContext ='{ }' 
     :localParam ='{ }' 
     :disabled="detailsModel.nd.disabled"  
-    tag='EhrCodeList0115' 
+    tag='EhrCodeList0009' 
     codelistType='STATIC'
     placeholder='请选择...' style="">
  </dropdown-list>
@@ -100,6 +100,7 @@
     paramItem='trmplanformu' 
     :parentdata='{"srfparentdefname":"TRMPLANFORMUID","srfparentdename":"TRMPLANFORMU","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_TRMTRAINPLAN_TRMPLANFORMU_TRMPLANFORMUID","SRFDER1NID":"DER1N_TRMTRAINPLAN_TRMPLANFORMU_TRMPLANFORMUID"}'
     :parameters="[
+        { pathName: 'pimpeople', parameterName: 'pimperson' },
     ]"
     :context="context"
     :viewparams="viewparams"

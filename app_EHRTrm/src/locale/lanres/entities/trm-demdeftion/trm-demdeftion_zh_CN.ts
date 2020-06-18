@@ -46,12 +46,12 @@ export default {
       title: '培训需求填报明细',
 		},
 		pickupview: {
-			caption: '培训需求汇总',
-      title: '需求调查定义数据选择视图',
+			caption: '培训需求',
+      title: '培训需求',
 		},
 		pickupgridview: {
-			caption: '培训需求汇总',
-      title: '需求调查定义选择表格视图',
+			caption: '培训需求',
+      title: '培训需求',
 		},
 		tbgridview: {
 			caption: '培训需求填报明细',

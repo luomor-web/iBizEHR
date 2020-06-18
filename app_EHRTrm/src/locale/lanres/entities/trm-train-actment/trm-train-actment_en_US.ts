@@ -16,8 +16,8 @@ export default {
   },
 	views: {
 		editview: {
-			caption: "培训活动评估",
-      title: '培训活动评估编辑视图',
+			caption: "培训后评估",
+      title: '培训后评估',
 		},
 		pickupview: {
 			caption: "培训活动评估",
@@ -38,7 +38,7 @@ export default {
 	},
 	main_form: {
 		details: {
-			group1: "培训活动评估信息", 
+			group1: "培训评估", 
 			formpage1: "基本信息", 
 			srfupdatedate: "更新时间", 
 			srforikey: "", 
@@ -82,21 +82,9 @@ export default {
 			caption: "Save",
 			tip: "Save",
 		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
 		tbitem5: {
 			caption: "Save And Close",
 			tip: "Save And Close Window",
-		},
-		tbitem7: {
-			caption: "Remove And Close",
-			tip: "Remove And Close Window",
-		},
-		tbitem22: {
-			caption: "Help",
-			tip: "Help",
 		},
 	},
 	gridviewtoolbar_toolbar: {

@@ -93,7 +93,7 @@
   :localParam ='{ }' 
   :disabled="detailsModel.sfzs.disabled" 
   style="width:100px;width: 100px;" 
-  tag='EhrCodeList0400' 
+  tag='EhrCodeList0401' 
   codelistType='STATIC'
   placeholder='请选择...'>
  </dropdown-list>

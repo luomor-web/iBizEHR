@@ -56,6 +56,26 @@ export default class MainModel {
         name: 'srfsourcekey',
       },
       {
+        name: 'pimpersonname',
+        prop: 'pimpersonname',
+        dataType: 'PICKUPTEXT',
+      },
+      {
+        name: 'zz',
+        prop: 'zz',
+        dataType: 'PICKUPDATA',
+      },
+      {
+        name: 'bm',
+        prop: 'bm',
+        dataType: 'PICKUPDATA',
+      },
+      {
+        name: 'pimpersonid',
+        prop: 'pimpersonid',
+        dataType: 'PICKUP',
+      },
+      {
         name: 'djbh',
         prop: 'djbh',
         dataType: 'TEXT',
@@ -109,26 +129,6 @@ export default class MainModel {
         name: 'wbpxjg',
         prop: 'wbpxjg',
         dataType: 'SSCODELIST',
-      },
-      {
-        name: 'pimpersonid',
-        prop: 'pimpersonid',
-        dataType: 'PICKUP',
-      },
-      {
-        name: 'pimpersonname',
-        prop: 'pimpersonname',
-        dataType: 'PICKUPTEXT',
-      },
-      {
-        name: 'zz',
-        prop: 'zz',
-        dataType: 'PICKUPDATA',
-      },
-      {
-        name: 'bm',
-        prop: 'bm',
-        dataType: 'PICKUPDATA',
       },
       {
         name: 'trmtrainoutapplyid',

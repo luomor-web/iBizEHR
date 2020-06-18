@@ -36,6 +36,21 @@ const router = new Router({
             component: () => import('@pages/trm/index/index.vue'),
             children: [
                 {
+                    path: 'pimpeople/:pimperson?/trmtrainplans/:trmtrainplan?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.trmtrainplan.views.pickupgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-plan-pickup-grid-view/trm-train-plan-pickup-grid-view.vue'),
+                },
+                {
                     path: 'trmtrainplans/:trmtrainplan?/pickupgridview/:pickupgridview?',
                     meta: {
                         caption: 'entities.trmtrainplan.views.pickupgridview.title',
@@ -136,6 +151,21 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/trm/trm-train-actapply-pickup-grid-view/trm-train-actapply-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'pimpeople/:pimperson?/trmtrainplans/:trmtrainplan?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.trmtrainplan.views.pickupview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-plan-pickup-view/trm-train-plan-pickup-view.vue'),
                 },
                 {
                     path: 'trmtrainplans/:trmtrainplan?/pickupview/:pickupview?',
@@ -348,6 +378,23 @@ const router = new Router({
                     component: () => import('@pages/pim/pim-person-pickup-view/pim-person-pickup-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/trmtrainplans/:trmtrainplan?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.trmtrainplan.views.editview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/gongsipenxunjihuazhiding.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-plan-edit-view/trm-train-plan-edit-view.vue'),
+                },
+                {
                     path: 'trmtrainplans/:trmtrainplan?/editview/:editview?',
                     meta: {
                         caption: 'entities.trmtrainplan.views.editview.title',
@@ -421,6 +468,51 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/trm/trm-teacher-charge-grid-view/trm-teacher-charge-grid-view.vue'),
+                },
+                {
+                    path: 'trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/trmtrainplanterms/:trmtrainplanterm?/bjgridview/:bjgridview?',
+                    meta: {
+                        caption: 'entities.trmtrainplanterm.views.bjgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                            { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                            { pathName: 'trmtrainplanterms', parameterName: 'trmtrainplanterm' },
+                            { pathName: 'bjgridview', parameterName: 'bjgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-planterm-bjgrid-view/trm-train-planterm-bjgrid-view.vue'),
+                },
+                {
+                    path: 'trmtrainteachers/:trmtrainteacher?/trmtrainplanterms/:trmtrainplanterm?/bjgridview/:bjgridview?',
+                    meta: {
+                        caption: 'entities.trmtrainplanterm.views.bjgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                            { pathName: 'trmtrainplanterms', parameterName: 'trmtrainplanterm' },
+                            { pathName: 'bjgridview', parameterName: 'bjgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-planterm-bjgrid-view/trm-train-planterm-bjgrid-view.vue'),
+                },
+                {
+                    path: 'trmtrainplanterms/:trmtrainplanterm?/bjgridview/:bjgridview?',
+                    meta: {
+                        caption: 'entities.trmtrainplanterm.views.bjgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainplanterms', parameterName: 'trmtrainplanterm' },
+                            { pathName: 'bjgridview', parameterName: 'bjgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-planterm-bjgrid-view/trm-train-planterm-bjgrid-view.vue'),
                 },
                 {
                     path: 'trmtrainagencies/:trmtrainagency?/trmcoursesystems/:trmcoursesystem?/trmtraincourses/:trmtraincourse?/pickupview/:pickupview?',
@@ -517,6 +609,96 @@ const router = new Router({
                     component: () => import('@pages/trm/trm-train-actment-edit-view/trm-train-actment-edit-view.vue'),
                 },
                 {
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbgridview/:tbgridview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tbgridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tbgridview', parameterName: 'tbgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tbgrid-view/trm-demdeftion-tbgrid-view.vue'),
+                },
+                {
+                    path: 'trmdeparts/:trmdepart?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbgridview/:tbgridview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tbgridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmdeparts', parameterName: 'trmdepart' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tbgridview', parameterName: 'tbgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tbgrid-view/trm-demdeftion-tbgrid-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbgridview/:tbgridview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tbgridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tbgridview', parameterName: 'tbgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tbgrid-view/trm-demdeftion-tbgrid-view.vue'),
+                },
+                {
+                    path: 'ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbgridview/:tbgridview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tbgridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tbgridview', parameterName: 'tbgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tbgrid-view/trm-demdeftion-tbgrid-view.vue'),
+                },
+                {
+                    path: 'trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbgridview/:tbgridview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tbgridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tbgridview', parameterName: 'tbgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tbgrid-view/trm-demdeftion-tbgrid-view.vue'),
+                },
+                {
                     path: 'trmdemdeftions/:trmdemdeftion?/tbgridview/:tbgridview?',
                     meta: {
                         caption: 'entities.trmdemdeftion.views.tbgridview.title',
@@ -593,6 +775,21 @@ const router = new Router({
                     component: () => import('@pages/trm/trm-train-fillin-grid-view/trm-train-fillin-grid-view.vue'),
                 },
                 {
+                    path: 'ormorgs/:ormorg?/trmtrainfillins/:trmtrainfillin?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.trmtrainfillin.views.gridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-fillin-grid-view/trm-train-fillin-grid-view.vue'),
+                },
+                {
                     path: 'ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.trmtrainfillin.views.gridview.title',
@@ -634,6 +831,96 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/trm/trm-train-agency-tab-exp-view/trm-train-agency-tab-exp-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzfeditview/:tzfeditview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tzfeditview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tzfeditview', parameterName: 'tzfeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tzfedit-view/trm-demdeftion-tzfedit-view.vue'),
+                },
+                {
+                    path: 'trmdeparts/:trmdepart?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzfeditview/:tzfeditview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tzfeditview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmdeparts', parameterName: 'trmdepart' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tzfeditview', parameterName: 'tzfeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tzfedit-view/trm-demdeftion-tzfedit-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzfeditview/:tzfeditview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tzfeditview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tzfeditview', parameterName: 'tzfeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tzfedit-view/trm-demdeftion-tzfedit-view.vue'),
+                },
+                {
+                    path: 'ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzfeditview/:tzfeditview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tzfeditview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tzfeditview', parameterName: 'tzfeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tzfedit-view/trm-demdeftion-tzfedit-view.vue'),
+                },
+                {
+                    path: 'trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzfeditview/:tzfeditview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tzfeditview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tzfeditview', parameterName: 'tzfeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tzfedit-view/trm-demdeftion-tzfedit-view.vue'),
                 },
                 {
                     path: 'trmdemdeftions/:trmdemdeftion?/tzfeditview/:tzfeditview?',
@@ -699,6 +986,39 @@ const router = new Router({
                     component: () => import('@pages/trm/trm-train-facies-edit-view/trm-train-facies-edit-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/trmtrainplans/:trmtrainplan?/jhfbgridview/:jhfbgridview?',
+                    meta: {
+                        caption: 'entities.trmtrainplan.views.jhfbgridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/gongsipenxunjihuazhiding.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                            { pathName: 'jhfbgridview', parameterName: 'jhfbgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-plan-jhfbgrid-view/trm-train-plan-jhfbgrid-view.vue'),
+                },
+                {
+                    path: 'trmtrainplans/:trmtrainplan?/jhfbgridview/:jhfbgridview?',
+                    meta: {
+                        caption: 'entities.trmtrainplan.views.jhfbgridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/gongsipenxunjihuazhiding.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                            { pathName: 'jhfbgridview', parameterName: 'jhfbgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-plan-jhfbgrid-view/trm-train-plan-jhfbgrid-view.vue'),
+                },
+                {
                     path: 'trmtrainaddresses/:trmtrainaddress?/trmstays/:trmstay?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.trmstay.views.gridview.title',
@@ -726,6 +1046,96 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/trm/trm-stay-grid-view/trm-stay-grid-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbfeditview/:tbfeditview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tbfeditview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tbfeditview', parameterName: 'tbfeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tbfedit-view/trm-demdeftion-tbfedit-view.vue'),
+                },
+                {
+                    path: 'trmdeparts/:trmdepart?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbfeditview/:tbfeditview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tbfeditview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmdeparts', parameterName: 'trmdepart' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tbfeditview', parameterName: 'tbfeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tbfedit-view/trm-demdeftion-tbfedit-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbfeditview/:tbfeditview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tbfeditview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tbfeditview', parameterName: 'tbfeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tbfedit-view/trm-demdeftion-tbfedit-view.vue'),
+                },
+                {
+                    path: 'ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbfeditview/:tbfeditview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tbfeditview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tbfeditview', parameterName: 'tbfeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tbfedit-view/trm-demdeftion-tbfedit-view.vue'),
+                },
+                {
+                    path: 'trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbfeditview/:tbfeditview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tbfeditview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tbfeditview', parameterName: 'tbfeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tbfedit-view/trm-demdeftion-tbfedit-view.vue'),
                 },
                 {
                     path: 'trmdemdeftions/:trmdemdeftion?/tbfeditview/:tbfeditview?',
@@ -789,6 +1199,86 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/trm/trm-train-teacher-wbgrid-view/trm-train-teacher-wbgrid-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.pickupview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-pickup-view/trm-demdeftion-pickup-view.vue'),
+                },
+                {
+                    path: 'trmdeparts/:trmdepart?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.pickupview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmdeparts', parameterName: 'trmdepart' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-pickup-view/trm-demdeftion-pickup-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.pickupview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-pickup-view/trm-demdeftion-pickup-view.vue'),
+                },
+                {
+                    path: 'ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.pickupview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-pickup-view/trm-demdeftion-pickup-view.vue'),
+                },
+                {
+                    path: 'trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupview/:pickupview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.pickupview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'pickupview', parameterName: 'pickupview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-pickup-view/trm-demdeftion-pickup-view.vue'),
                 },
                 {
                     path: 'trmdemdeftions/:trmdemdeftion?/pickupview/:pickupview?',
@@ -1239,6 +1729,96 @@ const router = new Router({
                     component: () => import('@pages/trm/trm-depart-xqhzgrid-view/trm-depart-xqhzgrid-view.vue'),
                 },
                 {
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzgridview/:tzgridview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tzgridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tzgridview', parameterName: 'tzgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tzgrid-view/trm-demdeftion-tzgrid-view.vue'),
+                },
+                {
+                    path: 'trmdeparts/:trmdepart?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzgridview/:tzgridview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tzgridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmdeparts', parameterName: 'trmdepart' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tzgridview', parameterName: 'tzgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tzgrid-view/trm-demdeftion-tzgrid-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzgridview/:tzgridview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tzgridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tzgridview', parameterName: 'tzgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tzgrid-view/trm-demdeftion-tzgrid-view.vue'),
+                },
+                {
+                    path: 'ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzgridview/:tzgridview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tzgridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tzgridview', parameterName: 'tzgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tzgrid-view/trm-demdeftion-tzgrid-view.vue'),
+                },
+                {
+                    path: 'trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzgridview/:tzgridview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.tzgridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'tzgridview', parameterName: 'tzgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-tzgrid-view/trm-demdeftion-tzgrid-view.vue'),
+                },
+                {
                     path: 'trmdemdeftions/:trmdemdeftion?/tzgridview/:tzgridview?',
                     meta: {
                         caption: 'entities.trmdemdeftion.views.tzgridview.title',
@@ -1377,6 +1957,39 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/pim/pim-person-pickup-grid-view/pim-person-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'pimpeople/:pimperson?/trmtrainplans/:trmtrainplan?/feditview/:feditview?',
+                    meta: {
+                        caption: 'entities.trmtrainplan.views.feditview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/gongsipenxunjihuazhiding.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                            { pathName: 'feditview', parameterName: 'feditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-plan-fedit-view/trm-train-plan-fedit-view.vue'),
+                },
+                {
+                    path: 'trmtrainplans/:trmtrainplan?/feditview/:feditview?',
+                    meta: {
+                        caption: 'entities.trmtrainplan.views.feditview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/gongsipenxunjihuazhiding.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                            { pathName: 'feditview', parameterName: 'feditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-plan-fedit-view/trm-train-plan-fedit-view.vue'),
                 },
                 {
                     path: 'trmtrainagencies/:trmtrainagency?/trmcoursesystems/:trmcoursesystem?/mpickupview/:mpickupview?',
@@ -1542,22 +2155,6 @@ const router = new Router({
                     component: () => import('@pages/trm/trm-train-address-edit-view/trm-train-address-edit-view.vue'),
                 },
                 {
-                    path: 'trmtrainoutapplies/:trmtrainoutapply?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.trmtrainoutapply.views.editview.title',
-                        info:'',
-                        imgPath: '../../../img/newimage/1/waibupeixunshenqing.png',
-                        iconCls: '',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'trmtrainoutapplies', parameterName: 'trmtrainoutapply' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/trm/trm-train-out-apply-edit-view/trm-train-out-apply-edit-view.vue'),
-                },
-                {
                     path: 'trmtrainbuapplies/:trmtrainbuapply?/editview/:editview?',
                     meta: {
                         caption: 'entities.trmtrainbuapply.views.editview.title',
@@ -1572,6 +2169,22 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/trm/trm-train-buapply-edit-view/trm-train-buapply-edit-view.vue'),
+                },
+                {
+                    path: 'trmtrainoutapplies/:trmtrainoutapply?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.trmtrainoutapply.views.editview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/waibupeixunshenqing.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainoutapplies', parameterName: 'trmtrainoutapply' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-out-apply-edit-view/trm-train-out-apply-edit-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/curorgpimpersonpickupview/:curorgpimpersonpickupview?',
@@ -1871,6 +2484,86 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/trm/trm-teacher-train-grid-view/trm-teacher-train-grid-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.pickupgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-pickup-grid-view/trm-demdeftion-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'trmdeparts/:trmdepart?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.pickupgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmdeparts', parameterName: 'trmdepart' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-pickup-grid-view/trm-demdeftion-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'ormorgs/:ormorg?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.pickupgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-pickup-grid-view/trm-demdeftion-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.pickupgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-pickup-grid-view/trm-demdeftion-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.trmdemdeftion.views.pickupgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-demdeftion-pickup-grid-view/trm-demdeftion-pickup-grid-view.vue'),
                 },
                 {
                     path: 'trmdemdeftions/:trmdemdeftion?/pickupgridview/:pickupgridview?',
@@ -2425,6 +3118,21 @@ const router = new Router({
                     component: () => import('@pages/trm/trm-train-fillin-edit-view/trm-train-fillin-edit-view.vue'),
                 },
                 {
+                    path: 'ormorgs/:ormorg?/trmtrainfillins/:trmtrainfillin?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.trmtrainfillin.views.editview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'ormorgs', parameterName: 'ormorg' },
+                            { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-fillin-edit-view/trm-train-fillin-edit-view.vue'),
+                },
+                {
                     path: 'ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/editview/:editview?',
                     meta: {
                         caption: 'entities.trmtrainfillin.views.editview.title',
@@ -2633,6 +3341,23 @@ const router = new Router({
                     component: () => import('@pages/trm/trm-depart-xqhzedit-view/trm-depart-xqhzedit-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/trmtrainplans/:trmtrainplan?/gridview/:gridview?',
+                    meta: {
+                        caption: 'entities.trmtrainplan.views.gridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/gongsipenxunjihuazhiding.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                            { pathName: 'gridview', parameterName: 'gridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-plan-grid-view/trm-train-plan-grid-view.vue'),
+                },
+                {
                     path: 'trmtrainplans/:trmtrainplan?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.trmtrainplan.views.gridview.title',
@@ -2829,6 +3554,39 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/trm/trm-course-system-pickup-grid-view/trm-course-system-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'pimpeople/:pimperson?/trmtrainplans/:trmtrainplan?/fgridview/:fgridview?',
+                    meta: {
+                        caption: 'entities.trmtrainplan.views.fgridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/gongsipenxunjihuazhiding.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                            { pathName: 'fgridview', parameterName: 'fgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-plan-fgrid-view/trm-train-plan-fgrid-view.vue'),
+                },
+                {
+                    path: 'trmtrainplans/:trmtrainplan?/fgridview/:fgridview?',
+                    meta: {
+                        caption: 'entities.trmtrainplan.views.fgridview.title',
+                        info:'',
+                        imgPath: '../../../img/newimage/1/gongsipenxunjihuazhiding.png',
+                        iconCls: '',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                            { pathName: 'fgridview', parameterName: 'fgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/trm/trm-train-plan-fgrid-view/trm-train-plan-fgrid-view.vue'),
                 },
             ...indexRoutes,
             ],
@@ -3156,6 +3914,91 @@ const router = new Router({
         component: () => import('@pages/trm/trm-course-system-grid-view/trm-course-system-grid-view.vue'),
     },
     {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbfeditview/:tbfeditview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tbfeditview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tbfeditview', parameterName: 'tbfeditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tbfedit-view/trm-demdeftion-tbfedit-view.vue'),
+    },
+    {
+        path: '/trmdeparts/:trmdepart?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbfeditview/:tbfeditview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tbfeditview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'trmdeparts', parameterName: 'trmdepart' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tbfeditview', parameterName: 'tbfeditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tbfedit-view/trm-demdeftion-tbfedit-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbfeditview/:tbfeditview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tbfeditview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tbfeditview', parameterName: 'tbfeditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tbfedit-view/trm-demdeftion-tbfedit-view.vue'),
+    },
+    {
+        path: '/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbfeditview/:tbfeditview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tbfeditview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tbfeditview', parameterName: 'tbfeditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tbfedit-view/trm-demdeftion-tbfedit-view.vue'),
+    },
+    {
+        path: '/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbfeditview/:tbfeditview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tbfeditview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tbfeditview', parameterName: 'tbfeditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tbfedit-view/trm-demdeftion-tbfedit-view.vue'),
+    },
+    {
         path: '/trmdemdeftions/:trmdemdeftion?/tbfeditview/:tbfeditview?',
         meta: {
             caption: 'entities.trmdemdeftion.views.tbfeditview.title',
@@ -3342,6 +4185,20 @@ const router = new Router({
         component: () => import('@pages/trm/trm-train-fillin-grid-view/trm-train-fillin-grid-view.vue'),
     },
     {
+        path: '/ormorgs/:ormorg?/trmtrainfillins/:trmtrainfillin?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.trmtrainfillin.views.gridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-fillin-grid-view/trm-train-fillin-grid-view.vue'),
+    },
+    {
         path: '/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/gridview/:gridview?',
         meta: {
             caption: 'entities.trmtrainfillin.views.gridview.title',
@@ -3480,6 +4337,81 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-stay-edit-view/trm-stay-edit-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupview/:pickupview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.pickupview.title',
+            info:'',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'pickupview', parameterName: 'pickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-pickup-view/trm-demdeftion-pickup-view.vue'),
+    },
+    {
+        path: '/trmdeparts/:trmdepart?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupview/:pickupview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.pickupview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmdeparts', parameterName: 'trmdepart' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'pickupview', parameterName: 'pickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-pickup-view/trm-demdeftion-pickup-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupview/:pickupview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.pickupview.title',
+            info:'',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'pickupview', parameterName: 'pickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-pickup-view/trm-demdeftion-pickup-view.vue'),
+    },
+    {
+        path: '/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupview/:pickupview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.pickupview.title',
+            info:'',
+            parameters: [
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'pickupview', parameterName: 'pickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-pickup-view/trm-demdeftion-pickup-view.vue'),
+    },
+    {
+        path: '/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupview/:pickupview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.pickupview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'pickupview', parameterName: 'pickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-pickup-view/trm-demdeftion-pickup-view.vue'),
     },
     {
         path: '/trmdemdeftions/:trmdemdeftion?/pickupview/:pickupview?',
@@ -3754,6 +4686,81 @@ const router = new Router({
         component: () => import('@pages/trm/trm-depart-pickup-view/trm-depart-pickup-view.vue'),
     },
     {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.pickupgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-pickup-grid-view/trm-demdeftion-pickup-grid-view.vue'),
+    },
+    {
+        path: '/trmdeparts/:trmdepart?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.pickupgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmdeparts', parameterName: 'trmdepart' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-pickup-grid-view/trm-demdeftion-pickup-grid-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.pickupgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-pickup-grid-view/trm-demdeftion-pickup-grid-view.vue'),
+    },
+    {
+        path: '/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.pickupgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-pickup-grid-view/trm-demdeftion-pickup-grid-view.vue'),
+    },
+    {
+        path: '/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.pickupgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-pickup-grid-view/trm-demdeftion-pickup-grid-view.vue'),
+    },
+    {
         path: '/trmdemdeftions/:trmdemdeftion?/pickupgridview/:pickupgridview?',
         meta: {
             caption: 'entities.trmdemdeftion.views.pickupgridview.title',
@@ -3765,6 +4772,20 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-demdeftion-pickup-grid-view/trm-demdeftion-pickup-grid-view.vue'),
+    },
+    {
+        path: '/pimpeople/:pimperson?/trmtrainplans/:trmtrainplan?/pickupgridview/:pickupgridview?',
+        meta: {
+            caption: 'entities.trmtrainplan.views.pickupgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-plan-pickup-grid-view/trm-train-plan-pickup-grid-view.vue'),
     },
     {
         path: '/trmtrainplans/:trmtrainplan?/pickupgridview/:pickupgridview?',
@@ -3834,6 +4855,91 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-train-address-pickup-view/trm-train-address-pickup-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbgridview/:tbgridview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tbgridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tbgridview', parameterName: 'tbgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tbgrid-view/trm-demdeftion-tbgrid-view.vue'),
+    },
+    {
+        path: '/trmdeparts/:trmdepart?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbgridview/:tbgridview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tbgridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'trmdeparts', parameterName: 'trmdepart' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tbgridview', parameterName: 'tbgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tbgrid-view/trm-demdeftion-tbgrid-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbgridview/:tbgridview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tbgridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tbgridview', parameterName: 'tbgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tbgrid-view/trm-demdeftion-tbgrid-view.vue'),
+    },
+    {
+        path: '/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbgridview/:tbgridview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tbgridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tbgridview', parameterName: 'tbgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tbgrid-view/trm-demdeftion-tbgrid-view.vue'),
+    },
+    {
+        path: '/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tbgridview/:tbgridview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tbgridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tbgridview', parameterName: 'tbgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tbgrid-view/trm-demdeftion-tbgrid-view.vue'),
     },
     {
         path: '/trmdemdeftions/:trmdemdeftion?/tbgridview/:tbgridview?',
@@ -4160,6 +5266,37 @@ const router = new Router({
         component: () => import('@pages/pim/pim-person-pickup-view/pim-person-pickup-view.vue'),
     },
     {
+        path: '/pimpeople/:pimperson?/trmtrainplans/:trmtrainplan?/feditview/:feditview?',
+        meta: {
+            caption: 'entities.trmtrainplan.views.feditview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/gongsipenxunjihuazhiding.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                { pathName: 'feditview', parameterName: 'feditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-plan-fedit-view/trm-train-plan-fedit-view.vue'),
+    },
+    {
+        path: '/trmtrainplans/:trmtrainplan?/feditview/:feditview?',
+        meta: {
+            caption: 'entities.trmtrainplan.views.feditview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/gongsipenxunjihuazhiding.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                { pathName: 'feditview', parameterName: 'feditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-plan-fedit-view/trm-train-plan-fedit-view.vue'),
+    },
+    {
         path: '/trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/trmteachertrains/:trmteachertrain?/editview/:editview?',
         meta: {
             caption: 'entities.trmteachertrain.views.editview.title',
@@ -4242,6 +5379,37 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-plan-formu-grid-view/trm-plan-formu-grid-view.vue'),
+    },
+    {
+        path: '/pimpeople/:pimperson?/trmtrainplans/:trmtrainplan?/fgridview/:fgridview?',
+        meta: {
+            caption: 'entities.trmtrainplan.views.fgridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/gongsipenxunjihuazhiding.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                { pathName: 'fgridview', parameterName: 'fgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-plan-fgrid-view/trm-train-plan-fgrid-view.vue'),
+    },
+    {
+        path: '/trmtrainplans/:trmtrainplan?/fgridview/:fgridview?',
+        meta: {
+            caption: 'entities.trmtrainplan.views.fgridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/gongsipenxunjihuazhiding.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                { pathName: 'fgridview', parameterName: 'fgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-plan-fgrid-view/trm-train-plan-fgrid-view.vue'),
     },
     {
         path: '/ormorgs/:ormorg?/editview/:editview?',
@@ -4454,6 +5622,22 @@ const router = new Router({
         component: () => import('@pages/orm/orm-orgsector-pickup-grid-view/orm-orgsector-pickup-grid-view.vue'),
     },
     {
+        path: '/pimpeople/:pimperson?/trmtrainplans/:trmtrainplan?/gridview/:gridview?',
+        meta: {
+            caption: 'entities.trmtrainplan.views.gridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/gongsipenxunjihuazhiding.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                { pathName: 'gridview', parameterName: 'gridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-plan-grid-view/trm-train-plan-grid-view.vue'),
+    },
+    {
         path: '/trmtrainplans/:trmtrainplan?/gridview/:gridview?',
         meta: {
             caption: 'entities.trmtrainplan.views.gridview.title',
@@ -4509,6 +5693,20 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/orm/orm-bmkqdz-pickup-grid-view/orm-bmkqdz-pickup-grid-view.vue'),
+    },
+    {
+        path: '/pimpeople/:pimperson?/trmtrainplans/:trmtrainplan?/pickupview/:pickupview?',
+        meta: {
+            caption: 'entities.trmtrainplan.views.pickupview.title',
+            info:'',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                { pathName: 'pickupview', parameterName: 'pickupview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-plan-pickup-view/trm-train-plan-pickup-view.vue'),
     },
     {
         path: '/trmtrainplans/:trmtrainplan?/pickupview/:pickupview?',
@@ -4787,6 +5985,22 @@ const router = new Router({
         component: () => import('@pages/trm/trm-train-teacher-pickup-grid-view/trm-train-teacher-pickup-grid-view.vue'),
     },
     {
+        path: '/pimpeople/:pimperson?/trmtrainplans/:trmtrainplan?/editview/:editview?',
+        meta: {
+            caption: 'entities.trmtrainplan.views.editview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/gongsipenxunjihuazhiding.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-plan-edit-view/trm-train-plan-edit-view.vue'),
+    },
+    {
         path: '/trmtrainplans/:trmtrainplan?/editview/:editview?',
         meta: {
             caption: 'entities.trmtrainplan.views.editview.title',
@@ -4846,6 +6060,91 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-hmatser-grid-view/trm-hmatser-grid-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzgridview/:tzgridview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tzgridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tzgridview', parameterName: 'tzgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tzgrid-view/trm-demdeftion-tzgrid-view.vue'),
+    },
+    {
+        path: '/trmdeparts/:trmdepart?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzgridview/:tzgridview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tzgridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'trmdeparts', parameterName: 'trmdepart' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tzgridview', parameterName: 'tzgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tzgrid-view/trm-demdeftion-tzgrid-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzgridview/:tzgridview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tzgridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tzgridview', parameterName: 'tzgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tzgrid-view/trm-demdeftion-tzgrid-view.vue'),
+    },
+    {
+        path: '/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzgridview/:tzgridview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tzgridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tzgridview', parameterName: 'tzgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tzgrid-view/trm-demdeftion-tzgrid-view.vue'),
+    },
+    {
+        path: '/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzgridview/:tzgridview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tzgridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tzgridview', parameterName: 'tzgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tzgrid-view/trm-demdeftion-tzgrid-view.vue'),
     },
     {
         path: '/trmdemdeftions/:trmdemdeftion?/tzgridview/:tzgridview?',
@@ -5026,6 +6325,91 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/trm/trm-train-teacher-grid-view/trm-train-teacher-grid-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzfeditview/:tzfeditview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tzfeditview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tzfeditview', parameterName: 'tzfeditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tzfedit-view/trm-demdeftion-tzfedit-view.vue'),
+    },
+    {
+        path: '/trmdeparts/:trmdepart?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzfeditview/:tzfeditview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tzfeditview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'trmdeparts', parameterName: 'trmdepart' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tzfeditview', parameterName: 'tzfeditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tzfedit-view/trm-demdeftion-tzfedit-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzfeditview/:tzfeditview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tzfeditview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tzfeditview', parameterName: 'tzfeditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tzfedit-view/trm-demdeftion-tzfedit-view.vue'),
+    },
+    {
+        path: '/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzfeditview/:tzfeditview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tzfeditview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'ormorgsectors', parameterName: 'ormorgsector' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tzfeditview', parameterName: 'tzfeditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tzfedit-view/trm-demdeftion-tzfedit-view.vue'),
+    },
+    {
+        path: '/trmtrainfillins/:trmtrainfillin?/trmdemdeftions/:trmdemdeftion?/tzfeditview/:tzfeditview?',
+        meta: {
+            caption: 'entities.trmdemdeftion.views.tzfeditview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/xuqiudiaochadingyi.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'trmdemdeftions', parameterName: 'trmdemdeftion' },
+                { pathName: 'tzfeditview', parameterName: 'tzfeditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-demdeftion-tzfedit-view/trm-demdeftion-tzfedit-view.vue'),
     },
     {
         path: '/trmdemdeftions/:trmdemdeftion?/tzfeditview/:tzfeditview?',
@@ -5263,6 +6647,37 @@ const router = new Router({
         component: () => import('@pages/trm/trm-train-planterm-pickup-grid-view/trm-train-planterm-pickup-grid-view.vue'),
     },
     {
+        path: '/pimpeople/:pimperson?/trmtrainplans/:trmtrainplan?/jhfbgridview/:jhfbgridview?',
+        meta: {
+            caption: 'entities.trmtrainplan.views.jhfbgridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/gongsipenxunjihuazhiding.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                { pathName: 'jhfbgridview', parameterName: 'jhfbgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-plan-jhfbgrid-view/trm-train-plan-jhfbgrid-view.vue'),
+    },
+    {
+        path: '/trmtrainplans/:trmtrainplan?/jhfbgridview/:jhfbgridview?',
+        meta: {
+            caption: 'entities.trmtrainplan.views.jhfbgridview.title',
+            info:'',
+            imgPath: '../../../img/newimage/1/gongsipenxunjihuazhiding.png',
+            iconCls: '',
+            parameters: [
+                { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
+                { pathName: 'jhfbgridview', parameterName: 'jhfbgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-plan-jhfbgrid-view/trm-train-plan-jhfbgrid-view.vue'),
+    },
+    {
         path: '/pimpeople/:pimperson?/curorgpimpersonpickupgridview/:curorgpimpersonpickupgridview?',
         meta: {
             caption: 'entities.pimperson.views.curorgpimpersonpickupgridview.title',
@@ -5346,6 +6761,48 @@ const router = new Router({
         component: () => import('@pages/trm/trm-train-address-edit-view/trm-train-address-edit-view.vue'),
     },
     {
+        path: '/trmtrainagencies/:trmtrainagency?/trmtrainteachers/:trmtrainteacher?/trmtrainplanterms/:trmtrainplanterm?/bjgridview/:bjgridview?',
+        meta: {
+            caption: 'entities.trmtrainplanterm.views.bjgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainagencies', parameterName: 'trmtrainagency' },
+                { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                { pathName: 'trmtrainplanterms', parameterName: 'trmtrainplanterm' },
+                { pathName: 'bjgridview', parameterName: 'bjgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-planterm-bjgrid-view/trm-train-planterm-bjgrid-view.vue'),
+    },
+    {
+        path: '/trmtrainteachers/:trmtrainteacher?/trmtrainplanterms/:trmtrainplanterm?/bjgridview/:bjgridview?',
+        meta: {
+            caption: 'entities.trmtrainplanterm.views.bjgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+                { pathName: 'trmtrainplanterms', parameterName: 'trmtrainplanterm' },
+                { pathName: 'bjgridview', parameterName: 'bjgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-planterm-bjgrid-view/trm-train-planterm-bjgrid-view.vue'),
+    },
+    {
+        path: '/trmtrainplanterms/:trmtrainplanterm?/bjgridview/:bjgridview?',
+        meta: {
+            caption: 'entities.trmtrainplanterm.views.bjgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'trmtrainplanterms', parameterName: 'trmtrainplanterm' },
+                { pathName: 'bjgridview', parameterName: 'bjgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-planterm-bjgrid-view/trm-train-planterm-bjgrid-view.vue'),
+    },
+    {
         path: '/ormorgs/:ormorg?/ormorgsectors/:ormorgsector?/trmtrainfillins/:trmtrainfillin?/editview/:editview?',
         meta: {
             caption: 'entities.trmtrainfillin.views.editview.title',
@@ -5367,6 +6824,20 @@ const router = new Router({
             info:'',
             parameters: [
                 { pathName: 'trmdeparts', parameterName: 'trmdepart' },
+                { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
+                { pathName: 'editview', parameterName: 'editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/trm/trm-train-fillin-edit-view/trm-train-fillin-edit-view.vue'),
+    },
+    {
+        path: '/ormorgs/:ormorg?/trmtrainfillins/:trmtrainfillin?/editview/:editview?',
+        meta: {
+            caption: 'entities.trmtrainfillin.views.editview.title',
+            info:'',
+            parameters: [
+                { pathName: 'ormorgs', parameterName: 'ormorg' },
                 { pathName: 'trmtrainfillins', parameterName: 'trmtrainfillin' },
                 { pathName: 'editview', parameterName: 'editview' },
             ],

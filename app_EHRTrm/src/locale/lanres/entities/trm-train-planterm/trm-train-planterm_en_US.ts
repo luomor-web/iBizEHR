@@ -43,28 +43,32 @@ export default {
   },
 	views: {
 		editview: {
-			caption: "培训立项",
-      title: '培训计划项编辑视图',
+			caption: "立项信息",
+      title: '立项信息',
+		},
+		editview9: {
+			caption: "立项信息",
+      title: '立项信息',
 		},
 		gridview: {
 			caption: "培训立项",
-      title: '培训立项表格视图',
+      title: '培训立项',
 		},
 		pickupgridview: {
 			caption: "培训立项",
-      title: '培训计划项选择表格视图',
+      title: '培训立项选择表格视图',
 		},
 		bjgridview: {
-			caption: "培训立项",
-      title: '班级表格视图',
+			caption: "培训开班",
+      title: '培训开班',
 		},
 		pickupview: {
 			caption: "培训立项",
-      title: '培训计划项数据选择视图',
+      title: '培训立项数据选择视图',
 		},
 		mpickupview: {
 			caption: "培训立项",
-      title: '培训计划项数据多项选择视图',
+      title: '培训立项数据多项选择视图',
 		},
 	},
 	main_form: {
@@ -104,6 +108,41 @@ export default {
 		uiactions: {
 		},
 	},
+	main2_form: {
+		details: {
+			group1: "培训立项信息", 
+			formpage1: "基本信息", 
+			druipart1: "", 
+			formpage2: "参培人员", 
+			druipart2: "", 
+			formpage3: "班级考勤记录", 
+			druipart3: "", 
+			formpage4: "培训记录", 
+			srfupdatedate: "更新时间", 
+			srforikey: "", 
+			srfkey: "培训计划项标识", 
+			srfmajortext: "培训立项名称", 
+			srftempmode: "", 
+			srfuf: "", 
+			srfdeid: "", 
+			srfsourcekey: "", 
+			nd: "年度", 
+			trmtrainplanname: "培训计划", 
+			trmtrainplantermname: "培训计划项名称", 
+			pxkssj: "培训开始时间", 
+			pxjssj: "培训结束时间", 
+			trmtrainagencyname: "培训机构", 
+			pxdd: "培训地点", 
+			trmtraincoursename: "课程", 
+			trmtrainteachername: "讲师", 
+			bzr: "班主任", 
+			bjzt: "班级状态", 
+			trmtrainplanid: "培训计划标识", 
+			trmtrainplantermid: "培训计划项标识", 
+		},
+		uiactions: {
+		},
+	},
 	main_grid: {
 		columns: {
 			nd: "年度",
@@ -135,18 +174,30 @@ export default {
 		uiactions: {
 		},
 	},
-	gridviewtoolbar_toolbar: {
-		deuiaction1: {
-			caption: "立项",
-			tip: "立项",
+	bjgridviewtoolbar_toolbar: {
+		tbitem1_kb_sep: {
+			caption: "",
+			tip: "",
 		},
-		deuiaction2: {
+		tbitem1_kb: {
 			caption: "开班",
 			tip: "开班",
 		},
-		deuiaction3: {
+		tbitem1_qx_sep: {
+			caption: "",
+			tip: "",
+		},
+		tbitem1_qx: {
 			caption: "取消",
 			tip: "取消",
+		},
+		tbitem13: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
+		tbitem19: {
+			caption: "Filter",
+			tip: "Filter",
 		},
 	},
 	editviewtoolbar_toolbar: {
@@ -154,35 +205,41 @@ export default {
 			caption: "Save",
 			tip: "Save",
 		},
-		tbitem4: {
-			caption: "Save And New",
-			tip: "Save And New",
-		},
 		tbitem5: {
 			caption: "Save And Close",
 			tip: "Save And Close Window",
 		},
-		tbitem7: {
-			caption: "Remove And Close",
-			tip: "Remove And Close Window",
-		},
-		tbitem22: {
-			caption: "Help",
-			tip: "Help",
-		},
 	},
-	bjgridviewtoolbar_toolbar: {
-		deuiaction1: {
+	gridviewtoolbar_toolbar: {
+		tbitem1_lx_sep: {
+			caption: "",
+			tip: "",
+		},
+		tbitem1_lx: {
 			caption: "立项",
 			tip: "立项",
 		},
-		deuiaction2: {
-			caption: "开班",
-			tip: "开班",
+		tbitem1_qx_sep: {
+			caption: "",
+			tip: "",
 		},
-		deuiaction3: {
+		tbitem1_qx: {
 			caption: "取消",
 			tip: "取消",
+		},
+		tbitem13: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
+		},
+		tbitem19: {
+			caption: "Filter",
+			tip: "Filter",
+		},
+	},
+	editview9toolbar_toolbar: {
+		deuiaction1: {
+			caption: "关闭",
+			tip: "关闭",
 		},
 	},
 };

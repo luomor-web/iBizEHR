@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="trmtrainplantermgridview" viewTitle="培训立项表格视图" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'trm-train-planterm-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="trmtrainplantermgridview" viewTitle="培训立项" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'trm-train-planterm-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -78,7 +78,7 @@ import CodeListService from "@service/app/codelist-service";
 
 
 /**
- * 培训立项表格视图基类
+ * 培训立项基类
  *
  * @export
  * @class TrmTrainPlantermGridViewBase
@@ -192,11 +192,15 @@ export default class TrmTrainPlantermGridViewBase extends GridViewBase {
      * @memberof TrmTrainPlantermGridView
      */
     public toolBarModels: any = {
-        deuiaction1: { name: 'deuiaction1', caption: '立项','isShowCaption':true,'isShowIcon':true, tooltip: '立项', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'LX', target: 'MULTIKEY' }, class: '' },
+        tbitem1_lx_sep: {  name: 'tbitem1_lx_sep', type: 'SEPERATOR', visabled: true, dataaccaction: '', uiaction: { }, class: '' },
+        tbitem1_lx: { name: 'tbitem1_lx', caption: '立项','isShowCaption':true,'isShowIcon':true, tooltip: '立项', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'LX', target: 'MULTIKEY' }, class: '' },
 
-        deuiaction2: { name: 'deuiaction2', caption: '开班','isShowCaption':true,'isShowIcon':true, tooltip: '开班', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'KB', target: 'MULTIKEY' }, class: '' },
+        tbitem1_qx_sep: {  name: 'tbitem1_qx_sep', type: 'SEPERATOR', visabled: true, dataaccaction: '', uiaction: { }, class: '' },
+        tbitem1_qx: { name: 'tbitem1_qx', caption: '取消','isShowCaption':true,'isShowIcon':true, tooltip: '取消', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'QX', target: 'MULTIKEY' }, class: '' },
 
-        deuiaction3: { name: 'deuiaction3', caption: '取消','isShowCaption':true,'isShowIcon':true, tooltip: '取消', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'QX', target: 'MULTIKEY' }, class: '' },
+        tbitem13: { name: 'tbitem13', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
+
+        tbitem19: { name: 'tbitem19', caption: '过滤','isShowCaption':true,'isShowIcon':true, tooltip: '过滤', iconcls: 'fa fa-filter', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYKQLX', uiaction: { tag: 'ToggleFilter', target: '' }, class: '' },
 
     };
 
@@ -246,14 +250,17 @@ export default class TrmTrainPlantermGridViewBase extends GridViewBase {
      * @memberof TrmTrainPlantermGridViewBase
      */
     public toolbar_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'deuiaction1')) {
-            this.toolbar_deuiaction1_click(null, '', $event2);
+        if (Object.is($event.tag, 'tbitem1_lx')) {
+            this.toolbar_tbitem1_lx_click(null, '', $event2);
         }
-        if (Object.is($event.tag, 'deuiaction2')) {
-            this.toolbar_deuiaction2_click(null, '', $event2);
+        if (Object.is($event.tag, 'tbitem1_qx')) {
+            this.toolbar_tbitem1_qx_click(null, '', $event2);
         }
-        if (Object.is($event.tag, 'deuiaction3')) {
-            this.toolbar_deuiaction3_click(null, '', $event2);
+        if (Object.is($event.tag, 'tbitem13')) {
+            this.toolbar_tbitem13_click(null, '', $event2);
+        }
+        if (Object.is($event.tag, 'tbitem19')) {
+            this.toolbar_tbitem19_click(null, '', $event2);
         }
     }
 
@@ -363,7 +370,7 @@ export default class TrmTrainPlantermGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem1_lx_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -392,36 +399,7 @@ export default class TrmTrainPlantermGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
-        // 参数
-        // 取数
-        let datas: any[] = [];
-        let xData: any = null;
-        // _this 指向容器对象
-        const _this: any = this;
-        let paramJO:any = {};
-        let contextJO:any = {};
-        xData = this.$refs.grid;
-        if (xData.getDatas && xData.getDatas instanceof Function) {
-            datas = [...xData.getDatas()];
-        }
-        if(params){
-          datas = [params];
-        }
-        // 界面行为
-        const curUIService:TrmTrainPlantermUIService  = new TrmTrainPlantermUIService();
-        curUIService.TrmTrainPlanterm_KB(datas,contextJO, paramJO,  $event, xData,this,"TrmTrainPlanterm");
-    }
-
-    /**
-     * 逻辑事件
-     *
-     * @param {*} [params={}]
-     * @param {*} [tag]
-     * @param {*} [$event]
-     * @memberof 
-     */
-    public toolbar_deuiaction3_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem1_qx_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -440,6 +418,62 @@ export default class TrmTrainPlantermGridViewBase extends GridViewBase {
         // 界面行为
         const curUIService:TrmTrainPlantermUIService  = new TrmTrainPlantermUIService();
         curUIService.TrmTrainPlanterm_QX(datas,contextJO, paramJO,  $event, xData,this,"TrmTrainPlanterm");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public toolbar_tbitem13_click(params: any = {}, tag?: any, $event?: any) {
+        // 参数
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        let contextJO:any = {};
+        xData = this.$refs.grid;
+        if (xData.getDatas && xData.getDatas instanceof Function) {
+            datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"TrmTrainPlanterm");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public toolbar_tbitem19_click(params: any = {}, tag?: any, $event?: any) {
+        // 参数
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        let contextJO:any = {};
+        xData = this.$refs.grid;
+        if (xData.getDatas && xData.getDatas instanceof Function) {
+            datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"TrmTrainPlanterm");
     }
 
     /**
@@ -472,16 +506,27 @@ export default class TrmTrainPlantermGridViewBase extends GridViewBase {
         }
         const parameters: any[] = [
             { pathName: 'trmtrainplanterms', parameterName: 'trmtrainplanterm' },
-            { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;
-        const openIndexViewTab = (data: any) => {
-            const _data: any = { w: (new Date().getTime()) };
-            Object.assign(_data, data);
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, tempContext, deResParameters, parameters, args, _data);
-            this.$router.push(routePath);
+        const openPopupModal = (view: any, data: any) => {
+            let container: Subject<any> = this.$appmodal.openModal(view, tempContext, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
         }
-        openIndexViewTab(data);
+        const view: any = {
+            viewname: 'trm-train-planterm-edit-view', 
+            height: 750, 
+            width: 0,  
+            title: this.$t('entities.trmtrainplanterm.views.editview.title'),
+        };
+        openPopupModal(view, data);
     }
 
 
@@ -511,17 +556,65 @@ export default class TrmTrainPlantermGridViewBase extends GridViewBase {
         }
         const parameters: any[] = [
             { pathName: 'trmtrainplanterms', parameterName: 'trmtrainplanterm' },
-            { pathName: 'editview', parameterName: 'editview' },
         ];
         const _this: any = this;
-        const openIndexViewTab = (data: any) => {
-            const routePath = this.$viewTool.buildUpRoutePath(this.$route, tempContext, deResParameters, parameters, args, data);
-            this.$router.push(routePath);
+        const openPopupModal = (view: any, data: any) => {
+            let container: Subject<any> = this.$appmodal.openModal(view, tempContext, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
         }
-        openIndexViewTab(data);
+        const view: any = {
+            viewname: 'trm-train-planterm-edit-view', 
+            height: 750, 
+            width: 0,  
+            title: this.$t('entities.trmtrainplanterm.views.editview.title'),
+        };
+        openPopupModal(view, data);
     }
 
 
+    /**
+     * 导出
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} contextJO 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @memberof TrmTrainPlantermGridViewBase
+     */
+    public ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        const _this: any = this;
+        if (!xData || !(xData.exportExcel instanceof Function) || !$event) {
+            return ;
+        }
+        xData.exportExcel($event.exportparms);
+    }
+    /**
+     * 过滤
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} contextJO 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @memberof TrmTrainPlantermGridViewBase
+     */
+    public ToggleFilter(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        const _this: any = this;
+        if (_this.hasOwnProperty('isExpandSearchForm')) {
+            _this.isExpandSearchForm = !_this.isExpandSearchForm;
+        }
+    }
 
 
     /**

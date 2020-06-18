@@ -71,13 +71,13 @@ export default class MainModel {
         dataType: 'DATE',
       },
       {
-        name: 'ormorgsectorname',
-        prop: 'ormorgsectorname',
+        name: 'ormorgname',
+        prop: 'ormorgname',
         dataType: 'PICKUPTEXT',
       },
       {
-        name: 'ormorgname',
-        prop: 'ormorgname',
+        name: 'ormorgsectorname',
+        prop: 'ormorgsectorname',
         dataType: 'PICKUPTEXT',
       },
       {

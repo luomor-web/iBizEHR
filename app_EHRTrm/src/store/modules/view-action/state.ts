@@ -493,6 +493,15 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '7a5c10aaa9007b51db506977145e81b6',
+            viewmodule: 'TRM',
+            viewname: 'TrmTrainPlanFEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+            ],
+        },
+        {
             viewtag: '7baa86a07ab62567f156a016800616ac',
             viewmodule: 'TRM',
             viewname: 'TrmTeacherTrainEditView',
@@ -523,6 +532,16 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 'c10bb20833ac45e4e058f1378519fae9',
+            ],
+        },
+        {
+            viewtag: '7f581c31adcf1941579ec1bc7eb6b73f',
+            viewmodule: 'TRM',
+            viewname: 'TrmTrainPlanFGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '7a5c10aaa9007b51db506977145e81b6',
             ],
         },
         {
@@ -626,6 +645,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                'fd6f768022331e805d7c95abaa97f185',
                 'd8a8db81cf25380e25c3f8c4c90d7498',
                 'be9ab607e77dc2cee8e397ecffa3f68a',
                 'fb3571753a496236f254caebf9095d0d',
@@ -634,7 +654,7 @@ export const viewstate: any = {
                 '30f91178ca5210e97370ff71768717d7',
                 '13ab30b58a970dfc175b42f4e2541915',
                 '18aed033f3c4553b4b65dacabecbb6a9',
-                'aa573e0d521ff8a53584ca166ed04459',
+                'ea64c9b3df245c163363aca2e295c255',
                 'e126cfd8fd9979f69c682f044ebac3de',
                 '439d470930ee9b3ab1812f825de08c5b',
                 '7e9b2f1f660097c455a7ac222609ee63',
@@ -642,6 +662,7 @@ export const viewstate: any = {
                 'bfd1741ff8c1a4b95d4bf5bb472958b3',
                 '931c3b21c30c786bcc9d2a7155999467',
                 'ca1b25c9665b2ff5a948e406387c7463',
+                '7f581c31adcf1941579ec1bc7eb6b73f',
             ],
         },
         {
@@ -799,7 +820,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                'e126cfd8fd9979f69c682f044ebac3de',
                 '36ab48e3ff0b61d2c676d8b76dfca9d5',
             ],
         },
@@ -993,6 +1013,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'ea64c9b3df245c163363aca2e295c255',
+            viewmodule: 'TRM',
+            viewname: 'TrmTrainPlanJHFBGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '7a5c10aaa9007b51db506977145e81b6',
+            ],
+        },
+        {
             viewtag: 'f479b3f3012f3e454d9420e711115749',
             viewmodule: 'PIM',
             viewname: 'PimPersonCurOrgPimpersonPickupGridView',
@@ -1043,6 +1073,19 @@ export const viewstate: any = {
                 '425b1c2c7a6ec8ae771c7cec835d767c',
                 '9fe562265b37611be2479c3426af87b1',
                 '20c3bb3b4f9df48eb2ea927228ee14e9',
+            ],
+        },
+        {
+            viewtag: 'fd6f768022331e805d7c95abaa97f185',
+            viewmodule: 'TRM',
+            viewname: 'TrmTrainPlantermBJGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '6498423afbd731a15e34492244be55d8',
+                'd44f8f7d7a1c369954fa0d196b28c1cc',
+                '09b3046784a4b36b2a32a1dddf6e007c',
+                'c3b9410d4d4fefd15cbba991e96d8171',
             ],
         },
         {

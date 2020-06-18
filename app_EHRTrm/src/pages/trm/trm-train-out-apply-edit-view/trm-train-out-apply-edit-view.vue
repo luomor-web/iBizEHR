@@ -5,7 +5,7 @@ import TrmTrainOutApplyEditViewBase from './trm-train-out-apply-edit-view-base.v
 import view_form from '@widgets/trm-train-out-apply/main-form/main-form.vue';
 
 /**
- * 外部培训申请编辑视图
+ * 外出培训申请
  *
  * @export
  * @class TrmTrainOutApplyEditView

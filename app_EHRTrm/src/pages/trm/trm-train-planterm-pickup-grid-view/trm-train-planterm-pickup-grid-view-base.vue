@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="trmtrainplantermpickupgridview" viewTitle="培训计划项选择表格视图" :isShowCaptionBar="false" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'depickupgridview': true, 'trm-train-planterm-pickup-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="trmtrainplantermpickupgridview" viewTitle="培训立项选择表格视图" :isShowCaptionBar="false" :isShowToolbar="false" :className="{ 'view-container': true, 'default-mode-view': true, 'depickupgridview': true, 'trm-train-planterm-pickup-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -63,7 +63,7 @@ import PickupGridViewEngine from '@engine/view/pickup-grid-view-engine';
 
 
 /**
- * 培训计划项选择表格视图基类
+ * 培训立项选择表格视图基类
  *
  * @export
  * @class TrmTrainPlantermPickupGridViewBase

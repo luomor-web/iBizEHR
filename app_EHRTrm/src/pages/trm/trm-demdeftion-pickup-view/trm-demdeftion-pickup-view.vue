@@ -5,7 +5,7 @@ import TrmDemdeftionPickupViewBase from './trm-demdeftion-pickup-view-base.vue';
 import view_pickupviewpanel from '@widgets/trm-demdeftion/pickup-viewpickupviewpanel-pickupviewpanel/pickup-viewpickupviewpanel-pickupviewpanel.vue';
 
 /**
- * 需求调查定义数据选择视图
+ * 培训需求
  *
  * @export
  * @class TrmDemdeftionPickupView

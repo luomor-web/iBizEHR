@@ -42,6 +42,11 @@ export default class MainModel {
           dataType: 'PICKUP',
         },
         {
+          name: 'zz',
+          prop: 'zz',
+          dataType: 'PICKUPDATA',
+        },
+        {
           name: 'pxdd',
           prop: 'pxdd',
           dataType: 'TEXT',
@@ -57,12 +62,12 @@ export default class MainModel {
           dataType: 'TEXT',
         },
         {
-          name: 'srfkey',
+          name: 'srfdataaccaction',
           prop: 'trmtrainoutapplyid',
           dataType: 'GUID',
         },
         {
-          name: 'srfdataaccaction',
+          name: 'srfkey',
           prop: 'trmtrainoutapplyid',
           dataType: 'GUID',
         },
@@ -80,6 +85,11 @@ export default class MainModel {
           name: 'pxnr',
           prop: 'pxnr',
           dataType: 'TEXT',
+        },
+        {
+          name: 'pimpersonname',
+          prop: 'pimpersonname',
+          dataType: 'PICKUPTEXT',
         },
         {
           name: 'djbh',
