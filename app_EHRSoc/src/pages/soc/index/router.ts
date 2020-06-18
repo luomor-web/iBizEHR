@@ -79,6 +79,20 @@ const router = new Router({
                     component: () => import('@pages/soc/soc-rule-detail-pickup-view/soc-rule-detail-pickup-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/pickupgridview/:pickupgridview?',
+                    meta: {
+                        caption: 'entities.pimperson.views.pickupgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/pim/pim-person-pickup-grid-view/pim-person-pickup-grid-view.vue'),
+                },
+                {
                     path: 'socrules/:socrule?/socruledetails/:socruledetail?/editview/:editview?',
                     meta: {
                         caption: 'entities.socruledetail.views.editview.title',
@@ -106,20 +120,6 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/soc/soc-rule-detail-edit-view/soc-rule-detail-edit-view.vue'),
-                },
-                {
-                    path: 'pimpeople/:pimperson?/pickupgridview/:pickupgridview?',
-                    meta: {
-                        caption: 'entities.pimperson.views.pickupgridview.title',
-                        info:'',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'pimpeople', parameterName: 'pimperson' },
-                            { pathName: 'pickupgridview', parameterName: 'pickupgridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/pim/pim-person-pickup-grid-view/pim-person-pickup-grid-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/pickupview/:pickupview?',
@@ -306,6 +306,20 @@ const router = new Router({
                     component: () => import('@pages/soc/soc-rule-detail-grid-view/soc-rule-detail-grid-view.vue'),
                 },
                 {
+                    path: 'socarchives/:socarchives?/quickeditview/:quickeditview?',
+                    meta: {
+                        caption: 'entities.socarchives.views.quickeditview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'socarchives', parameterName: 'socarchives' },
+                            { pathName: 'quickeditview', parameterName: 'quickeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-archives-quick-edit-view/soc-archives-quick-edit-view.vue'),
+                },
+                {
                     path: 'socareas/:socarea?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.socarea.views.gridview.title',
@@ -360,6 +374,20 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/soc/soc-rule-pickup-grid-view/soc-rule-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'socarchives/:socarchives?/main2editview/:main2editview?',
+                    meta: {
+                        caption: 'entities.socarchives.views.main2editview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'socarchives', parameterName: 'socarchives' },
+                            { pathName: 'main2editview', parameterName: 'main2editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-archives-main2-edit-view/soc-archives-main2-edit-view.vue'),
                 },
                 {
                     path: 'socrules/:socrule?/gridview/:gridview?',
@@ -502,6 +530,19 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/soc/soc-area-grid-view/soc-area-grid-view.vue'),
+    },
+    {
+        path: '/socarchives/:socarchives?/quickeditview/:quickeditview?',
+        meta: {
+            caption: 'entities.socarchives.views.quickeditview.title',
+            info:'',
+            parameters: [
+                { pathName: 'socarchives', parameterName: 'socarchives' },
+                { pathName: 'quickeditview', parameterName: 'quickeditview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-archives-quick-edit-view/soc-archives-quick-edit-view.vue'),
     },
     {
         path: '/socrules/:socrule?/socruledetails/:socruledetail?/pickupview/:pickupview?',
@@ -779,6 +820,19 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/soc/soc-rule-detail-grid-view/soc-rule-detail-grid-view.vue'),
+    },
+    {
+        path: '/socarchives/:socarchives?/main2editview/:main2editview?',
+        meta: {
+            caption: 'entities.socarchives.views.main2editview.title',
+            info:'',
+            parameters: [
+                { pathName: 'socarchives', parameterName: 'socarchives' },
+                { pathName: 'main2editview', parameterName: 'main2editview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-archives-main2-edit-view/soc-archives-main2-edit-view.vue'),
     },
     {
         path: '/socrules/:socrule?/main2editview/:main2editview?',

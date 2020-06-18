@@ -21,6 +21,10 @@ export default {
     state: '状态',
   },
 	views: {
+		quickeditview: {
+			caption: '社保档案',
+      title: '社保档案编辑视图',
+		},
 		gridview: {
 			caption: '社保档案',
       title: '社保档案表格视图',
@@ -28,6 +32,36 @@ export default {
 		editview: {
 			caption: '社保档案',
       title: '社保档案编辑视图',
+		},
+		main2editview: {
+			caption: '社保档案',
+      title: '社保档案编辑视图',
+		},
+	},
+	main2_form: {
+		details: {
+			group1: '社保档案基本信息', 
+			formpage1: '基本信息', 
+			srfupdatedate: '更新时间', 
+			srforikey: '', 
+			srfkey: '社保档案标识', 
+			srfmajortext: '社保档案名称', 
+			srftempmode: '', 
+			srfuf: '', 
+			srfdeid: '', 
+			srfsourcekey: '', 
+			pimpersonname: '员工姓名', 
+			socaccountname: '参保账户', 
+			socrulename: '社保规则名称', 
+			ygbh: '员工编号', 
+			ormorgname: '组织', 
+			ormorgsectorname: '部门', 
+			pimpersonid: '人员信息标识', 
+			socaccountid: '参保账户标识', 
+			socruleid: '社保规则标识', 
+			socarchivesid: '社保档案标识', 
+		},
+		uiactions: {
 		},
 	},
 	main_form: {
@@ -78,20 +112,46 @@ export default {
 		uiactions: {
 		},
 	},
-	gridviewtoolbar_toolbar: {
+	quickeditviewtoolbar_toolbar: {
+		deuiaction5: {
+			caption: '确认',
+			tip: '确认',
+		},
+		deuiaction1: {
+			caption: '退出',
+			tip: '退出',
+		},
+	},
+	main2editviewtoolbar_toolbar: {
 		tbitem3: {
+			caption: '保存',
+			tip: '保存',
+		},
+		tbitem5: {
+			caption: '保存并关闭',
+			tip: '保存并关闭',
+		},
+		deuiaction1: {
+			caption: '关闭',
+			tip: '关闭',
+		},
+	},
+	editviewtoolbar_toolbar: {
+		tbitem1_openeditview: {
+			caption: '编辑',
+			tip: '编辑',
+		},
+	},
+	gridviewtoolbar_toolbar: {
+		deuiaction1_quickcreatesocarchives: {
 			caption: '新建',
 			tip: '新建',
 		},
-		tbitem8: {
-			caption: '删除',
-			tip: '删除',
-		},
-		deuiaction3: {
+		deuiaction8: {
 			caption: '导入',
 			tip: '导入',
 		},
-		tbitem13: {
+		deuiaction6: {
 			caption: '导出',
 			tip: '导出',
 		},
@@ -99,11 +159,9 @@ export default {
 			caption: '过滤',
 			tip: '过滤',
 		},
-	},
-	editviewtoolbar_toolbar: {
-		tbitem3: {
-			caption: '保存',
-			tip: '保存',
+		deuiaction5: {
+			caption: '帮助',
+			tip: '帮助',
 		},
 	},
 };

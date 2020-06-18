@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="socarchiveseditview" viewTitle="社保档案编辑视图" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'soc-archives-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="socarchivesquickeditview" viewTitle="社保档案编辑视图" :className="{ 'view-container': true, 'default-mode-view': true, 'deeditview': true, 'soc-archives-quick-edit-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -51,24 +51,23 @@ import SocArchivesService from '@/service/soc-archives/soc-archives-service';
 
 import EditViewEngine from '@engine/view/edit-view-engine';
 
-import SocArchivesUIService from '@/uiservice/soc-archives/soc-archives-ui-service';
 
 /**
  * 社保档案编辑视图基类
  *
  * @export
- * @class SocArchivesEditViewBase
+ * @class SocArchivesQuickEditViewBase
  * @extends {EditViewBase}
  */
 @Component({})
 @VueLifeCycleProcessing
-export default class SocArchivesEditViewBase extends EditViewBase {
+export default class SocArchivesQuickEditViewBase extends EditViewBase {
 
     /**
      * 实体服务对象
      *
      * @type {SocArchivesService}
-     * @memberof SocArchivesEditViewBase
+     * @memberof SocArchivesQuickEditViewBase
      */
     public appEntityService: SocArchivesService = new SocArchivesService;
 
@@ -77,7 +76,7 @@ export default class SocArchivesEditViewBase extends EditViewBase {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof SocArchivesEditViewBase
+     * @memberof SocArchivesQuickEditViewBase
      */    
     public counterServiceArray:Array<any> = [];
     
@@ -86,7 +85,7 @@ export default class SocArchivesEditViewBase extends EditViewBase {
      *
      * @param {*} val
      * @returns {*}
-     * @memberof SocArchivesEditViewBase
+     * @memberof SocArchivesQuickEditViewBase
      */
     @Emit() 
     public viewDatasChange(val: any):any {
@@ -97,16 +96,16 @@ export default class SocArchivesEditViewBase extends EditViewBase {
 	 * 视图标识
 	 *
 	 * @type {string}
-	 * @memberof SocArchivesEditViewBase
+	 * @memberof SocArchivesQuickEditViewBase
 	 */
-	public viewtag: string = '8d8165bf052eb9455044ec39843ef257';
+	public viewtag: string = '21bd406d12cd31c62de8b9e78649d229';
 
     /**
      * 父数据对象
      *
      * @protected
      * @type {*}
-     * @memberof SocArchivesEditViewBase
+     * @memberof SocArchivesQuickEditViewBase
      */
     protected srfparentdata: any = {};
 
@@ -114,7 +113,7 @@ export default class SocArchivesEditViewBase extends EditViewBase {
 	 * 自定义视图导航上下文集合
 	 *
 	 * @type {*}
-	 * @memberof SocArchivesEditViewBase
+	 * @memberof SocArchivesQuickEditViewBase
 	 */
     public customViewNavContexts:any ={
     };
@@ -123,7 +122,7 @@ export default class SocArchivesEditViewBase extends EditViewBase {
 	 * 自定义视图导航参数集合
 	 *
 	 * @type {*}
-	 * @memberof SocArchivesEditViewBase
+	 * @memberof SocArchivesQuickEditViewBase
 	 */
     public customViewParams:any ={
     };
@@ -132,12 +131,12 @@ export default class SocArchivesEditViewBase extends EditViewBase {
      * 视图模型数据
      *
      * @type {*}
-     * @memberof SocArchivesEditViewBase
+     * @memberof SocArchivesQuickEditViewBase
      */
     public model: any = {
-        srfCaption: 'entities.socarchives.views.editview.caption',
-        srfTitle: 'entities.socarchives.views.editview.title',
-        srfSubTitle: 'entities.socarchives.views.editview.subtitle',
+        srfCaption: 'entities.socarchives.views.quickeditview.caption',
+        srfTitle: 'entities.socarchives.views.quickeditview.title',
+        srfSubTitle: 'entities.socarchives.views.quickeditview.subtitle',
         dataInfo: ''
     }
 
@@ -145,7 +144,7 @@ export default class SocArchivesEditViewBase extends EditViewBase {
      * 容器模型
      *
      * @type {*}
-     * @memberof SocArchivesEditViewBase
+     * @memberof SocArchivesQuickEditViewBase
      */
     public containerModel: any = {
         view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
@@ -157,17 +156,19 @@ export default class SocArchivesEditViewBase extends EditViewBase {
      *
      * @public
      * @type {Subject<{action: string, data: any}>}
-     * @memberof SocArchivesEditViewBase
+     * @memberof SocArchivesQuickEditViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
     /**
      * 工具栏模型
      *
      * @type {*}
-     * @memberof SocArchivesEditView
+     * @memberof SocArchivesQuickEditView
      */
     public toolBarModels: any = {
-        tbitem1_openeditview: { name: 'tbitem1_openeditview', caption: '编辑','isShowCaption':true,'isShowIcon':true, tooltip: '编辑', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'OpenEditView', target: 'SINGLEKEY' }, class: '' },
+        deuiaction5: { name: 'deuiaction5', caption: '确认','isShowCaption':true,'isShowIcon':true, tooltip: '确认', iconcls: 'sx-tb-saveandclose', icon: '../sasrfex/images/default/icon_saveandclose.png', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYXKML', uiaction: { tag: 'SaveAndExit', target: '' }, class: '' },
+
+        deuiaction1: { name: 'deuiaction1', caption: '退出','isShowCaption':true,'isShowIcon':true, tooltip: '退出', iconcls: 'fa fa-sign-out', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'Exit', target: '' }, class: '' },
 
     };
 
@@ -179,7 +180,7 @@ export default class SocArchivesEditViewBase extends EditViewBase {
      *
      * @public
      * @type {Engine}
-     * @memberof SocArchivesEditViewBase
+     * @memberof SocArchivesQuickEditViewBase
      */
     public engine: EditViewEngine = new EditViewEngine();
 	
@@ -188,7 +189,7 @@ export default class SocArchivesEditViewBase extends EditViewBase {
      * 引擎初始化
      *
      * @public
-     * @memberof SocArchivesEditViewBase
+     * @memberof SocArchivesQuickEditViewBase
      */
     public engineInit(): void {
         this.engine.init({
@@ -207,11 +208,14 @@ export default class SocArchivesEditViewBase extends EditViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocArchivesEditViewBase
+     * @memberof SocArchivesQuickEditViewBase
      */
     public toolbar_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'tbitem1_openeditview')) {
-            this.toolbar_tbitem1_openeditview_click(null, '', $event2);
+        if (Object.is($event.tag, 'deuiaction5')) {
+            this.toolbar_deuiaction5_click(null, '', $event2);
+        }
+        if (Object.is($event.tag, 'deuiaction1')) {
+            this.toolbar_deuiaction1_click(null, '', $event2);
         }
     }
 
@@ -221,7 +225,7 @@ export default class SocArchivesEditViewBase extends EditViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocArchivesEditViewBase
+     * @memberof SocArchivesQuickEditViewBase
      */
     public form_save($event: any, $event2?: any) {
         this.engine.onCtrlEvent('form', 'save', $event);
@@ -233,7 +237,7 @@ export default class SocArchivesEditViewBase extends EditViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocArchivesEditViewBase
+     * @memberof SocArchivesQuickEditViewBase
      */
     public form_remove($event: any, $event2?: any) {
         this.engine.onCtrlEvent('form', 'remove', $event);
@@ -245,7 +249,7 @@ export default class SocArchivesEditViewBase extends EditViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof SocArchivesEditViewBase
+     * @memberof SocArchivesQuickEditViewBase
      */
     public form_load($event: any, $event2?: any) {
         this.engine.onCtrlEvent('form', 'load', $event);
@@ -261,7 +265,7 @@ export default class SocArchivesEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_tbitem1_openeditview_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction5_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -278,8 +282,86 @@ export default class SocArchivesEditViewBase extends EditViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:SocArchivesUIService  = new SocArchivesUIService();
-        curUIService.SocArchives_OpenEditView(datas,contextJO, paramJO,  $event, xData,this,"SocArchives");
+        this.SaveAndExit(datas, contextJO,paramJO,  $event, xData,this,"SocArchives");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public toolbar_deuiaction1_click(params: any = {}, tag?: any, $event?: any) {
+        // 参数
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        let contextJO:any = {};
+        xData = this.$refs.form;
+        if (xData.getDatas && xData.getDatas instanceof Function) {
+            datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        this.Exit(datas, contextJO,paramJO,  $event, xData,this,"SocArchives");
+    }
+
+    /**
+     * 保存并关闭
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} contextJO 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @memberof SocArchivesQuickEditViewBase
+     */
+    public SaveAndExit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        const _this: any = this;
+        if (xData && xData.saveAndExit instanceof Function) {
+            xData.saveAndExit().then((response: any) => {
+                if (!response || response.status !== 200) {
+                    return;
+                }
+                if(window.parent){
+                    window.parent.postMessage([{ ...response.data }],'*');
+                }
+            });
+        } else if (_this.saveAndExit && _this.saveAndExit instanceof Function) {
+            _this.saveAndExit().then((response: any) => {
+                if (!response || response.status !== 200) {
+                    return;
+                }
+                if(window.parent){
+                    window.parent.postMessage([{ ...response.data }],'*');
+                }
+            });
+        }
+    }
+    /**
+     * 关闭
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} contextJO 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @memberof SocArchivesQuickEditViewBase
+     */
+    public Exit(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        this.closeView(args);
+        if(window.parent){
+            window.parent.postMessage([{ ...args }],'*');
+        }
     }
 
 
@@ -287,7 +369,7 @@ export default class SocArchivesEditViewBase extends EditViewBase {
     /**
      * 销毁视图回调
      *
-     * @memberof SocArchivesEditViewBase
+     * @memberof SocArchivesQuickEditViewBase
      */
     public destroyed(){
         if(this.viewDefaultUsage){
@@ -307,5 +389,5 @@ export default class SocArchivesEditViewBase extends EditViewBase {
 </script>
 
 <style lang='less'>
-@import './soc-archives-edit-view.less';
+@import './soc-archives-quick-edit-view.less';
 </style>

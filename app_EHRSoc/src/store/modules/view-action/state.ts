@@ -14,6 +14,18 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '21bd406d12cd31c62de8b9e78649d229',
+            viewmodule: 'SOC',
+            viewname: 'SocArchivesQuickEditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'c1fe999705dd1adaf588b0dd05baba85',
+                'f131b13e32b5195223f2af77eefa60a9',
+                'eb464b83d579a19440a0f65278573bb5',
+            ],
+        },
+        {
             viewtag: '3f57e5629bd977d652098834972af3a7',
             viewmodule: 'SOC',
             viewname: 'SocRuleDetailPickupView',
@@ -68,6 +80,7 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '8d8165bf052eb9455044ec39843ef257',
+                '21bd406d12cd31c62de8b9e78649d229',
             ],
         },
         {
@@ -106,6 +119,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                'bc7184f7d9cd35c81ab755bd2ff2e729',
                 'c1fe999705dd1adaf588b0dd05baba85',
                 'f131b13e32b5195223f2af77eefa60a9',
                 'aa42ee6a3edbf6fc9c11a80fcac3d365',
@@ -180,6 +194,18 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '59c055b21b497f790371732712f62a30',
+            ],
+        },
+        {
+            viewtag: 'bc7184f7d9cd35c81ab755bd2ff2e729',
+            viewmodule: 'SOC',
+            viewname: 'SocArchivesMain2EditView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                'c1fe999705dd1adaf588b0dd05baba85',
+                'f131b13e32b5195223f2af77eefa60a9',
+                'eb464b83d579a19440a0f65278573bb5',
             ],
         },
         {

@@ -23,6 +23,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewname": "SocAreaGridView",
             "viewtag": "1a1326e28ef5ec3d85b45c0d9ecf9684"
         },
+        "socarchivesquickeditview": {
+            "title": "社保档案编辑视图",
+            "caption": "社保档案",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "SOC",
+            "viewname": "SocArchivesQuickEditView",
+            "viewtag": "21bd406d12cd31c62de8b9e78649d229"
+        },
         "soctypepickupgridview": {
             "title": "保险类型选择表格视图",
             "caption": "保险类型",
@@ -166,6 +174,14 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewmodule": "SOC",
             "viewname": "SocRuleDetailGridView",
             "viewtag": "b90f6f466753e0b928ea594d2a38ab73"
+        },
+        "socarchivesmain2editview": {
+            "title": "社保档案编辑视图",
+            "caption": "社保档案",
+            "viewtype": "DEEDITVIEW",
+            "viewmodule": "SOC",
+            "viewname": "SocArchivesMain2EditView",
+            "viewtag": "bc7184f7d9cd35c81ab755bd2ff2e729"
         },
         "socrulemain2editview": {
             "title": "社保规则编辑视图",

@@ -1,13 +1,13 @@
 <template>
-    <i-form :model="this.data" class='app-form' ref='form'  id='socarchives_main' style="">
+    <i-form :model="this.data" class='app-form' ref='form'  id='socarchives_main2' style="">
     <input style="display:none;" />
     <row >
             
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.socarchives.main_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
+    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.socarchives.main2_form.details.group1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
         <i-col v-show="detailsModel.pimpersonname.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.socarchives.main_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-form-item name='pimpersonname' :itemRules="this.rules.pimpersonname" class='' :caption="$t('entities.socarchives.main2_form.details.pimpersonname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pimpersonname.error" :isEmptyCaption="false" labelPos="LEFT">
     
 <app-picker 
   :formState="formState"
@@ -34,7 +34,7 @@
 
 </i-col>
 <i-col v-show="detailsModel.socaccountname.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='socaccountname' :itemRules="this.rules.socaccountname" class='' :caption="$t('entities.socarchives.main_form.details.socaccountname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.socaccountname.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-form-item name='socaccountname' :itemRules="this.rules.socaccountname" class='' :caption="$t('entities.socarchives.main2_form.details.socaccountname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.socaccountname.error" :isEmptyCaption="false" labelPos="LEFT">
     
 <app-picker 
   :formState="formState"
@@ -61,7 +61,7 @@
 
 </i-col>
 <i-col v-show="detailsModel.socrulename.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='socrulename' :itemRules="this.rules.socrulename" class='' :caption="$t('entities.socarchives.main_form.details.socrulename')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.socrulename.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-form-item name='socrulename' :itemRules="this.rules.socrulename" class='' :caption="$t('entities.socarchives.main2_form.details.socrulename')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.socrulename.error" :isEmptyCaption="false" labelPos="LEFT">
     
 <app-picker 
   :formState="formState"
@@ -88,57 +88,24 @@
 
 </i-col>
 <i-col v-show="detailsModel.ygbh.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='ygbh' :itemRules="this.rules.ygbh" class='' :caption="$t('entities.socarchives.main_form.details.ygbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygbh.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-form-item name='ygbh' :itemRules="this.rules.ygbh" class='' :caption="$t('entities.socarchives.main2_form.details.ygbh')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ygbh.error" :isEmptyCaption="false" labelPos="LEFT">
     
 <app-span name='ygbh' :value="data.ygbh" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.socarchives.main_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.socarchives.main2_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
     
 <app-span name='ormorgname' :value="data.ormorgname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.ormorgsectorname.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
-    <app-form-item name='ormorgsectorname' :itemRules="this.rules.ormorgsectorname" class='' :caption="$t('entities.socarchives.main_form.details.ormorgsectorname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgsectorname.error" :isEmptyCaption="false" labelPos="LEFT">
+    <app-form-item name='ormorgsectorname' :itemRules="this.rules.ormorgsectorname" class='' :caption="$t('entities.socarchives.main2_form.details.ormorgsectorname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgsectorname.error" :isEmptyCaption="false" labelPos="LEFT">
     
 <app-span name='ormorgsectorname' :value="data.ormorgsectorname" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
-
-</i-col>
-    
-    </row>
-</app-form-group>
-
-</i-col>
-<i-col v-show="detailsModel.grouppanel1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.grouppanel1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.socarchives.main_form.details.grouppanel1')" :isShowCaption="false" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
-    <row>
-        <i-col v-show="detailsModel.druipart1.visible" :style="{'height': '600px !important',}"  :lg="{ span: 24, offset: 0 }">
-    <app-form-druipart
-    
-    :formState="formState"
-    :isForbidLoad="this.data.srfuf === '0'"
-    paramItem='socarchives' 
-    :parentdata='{"srfparentdefname":"SOCARCHIVESID","srfparentdename":"SOCARCHIVES","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_SOCARCHIVESDETAIL_SOCARCHIVES_SOCARCHIVESID","SRFDER1NID":"DER1N_SOCARCHIVESDETAIL_SOCARCHIVES_SOCARCHIVESID"}'
-    :parameters="[
-    ]"
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{}'
-    :localParam ='{}'
-    parameterName='socarchives'
-    parentName="SocArchives"  
-    refviewtype='DEGRIDVIEW' 
-    refreshitems='' 
-    :ignorefieldvaluechange="ignorefieldvaluechange"
-    viewname='soc-archives-detail-grid-view' 
-    :data="JSON.stringify(this.data)" 
-    @drdatasaved="drdatasaved($event)"
-    style="height:600px;overflow: auto;">
-</app-form-druipart>
 
 </i-col>
     
@@ -159,7 +126,7 @@ import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
 import SocArchivesService from '@/service/soc-archives/soc-archives-service';
-import MainService from './main-form-service';
+import Main2Service from './main2-form-service';
 
 import { FormButtonModel, FormPageModel, FormItemModel, FormDRUIPartModel, FormPartModel, FormGroupPanelModel, FormIFrameModel, FormRowItemModel, FormTabPageModel, FormTabPanelModel, FormUserControlModel } from '@/model/form-detail';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -170,13 +137,13 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
       
     }
 })
-export default class MainBase extends Vue implements ControlInterface {
+export default class Main2Base extends Vue implements ControlInterface {
 
     /**
      * 名称
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public name?: string;
 
@@ -184,7 +151,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -192,7 +159,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public context: any;
 
@@ -200,7 +167,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public viewparams: any;
 
@@ -209,7 +176,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof Main
+     * @memberof Main2
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -217,7 +184,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof Main
+     * @memberof Main2
      */
     public getControlType(): string {
         return 'FORM'
@@ -229,23 +196,23 @@ export default class MainBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof Main
+     * @memberof Main2
      */    
     public counterServiceArray:Array<any> = [];
 
     /**
      * 建构部件服务对象
      *
-     * @type {MainService}
-     * @memberof Main
+     * @type {Main2Service}
+     * @memberof Main2
      */
-    public service: MainService = new MainService({ $store: this.$store });
+    public service: Main2Service = new Main2Service({ $store: this.$store });
 
     /**
      * 实体服务对象
      *
      * @type {SocArchivesService}
-     * @memberof Main
+     * @memberof Main2
      */
     public appEntityService: SocArchivesService = new SocArchivesService({ $store: this.$store });
     
@@ -255,7 +222,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof Main
+     * @memberof Main2
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -265,7 +232,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof Main
+     * @memberof Main2
      */
     public counterRefresh(){
         const _this:any =this;
@@ -282,7 +249,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof Main
+     * @memberof Main2
      */
     public srfwfmemo:string = "";
     
@@ -290,7 +257,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof Main
+     * @memberof Main2
      */
     public getDatas(): any[] {
         return [this.data];
@@ -300,7 +267,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof Main
+     * @memberof Main2
      */
     public getData(): any {
         return this.data;
@@ -310,7 +277,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -318,7 +285,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -326,7 +293,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -334,7 +301,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--start
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public WFStartAction!: string;
     
@@ -342,7 +309,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--update
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public updateAction!: string;
     
@@ -350,7 +317,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public removeAction!: string;
     
@@ -358,7 +325,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public loaddraftAction!: string;
     
@@ -366,7 +333,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--load
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public loadAction!: string;
     
@@ -374,7 +341,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public createAction!: string;
 
@@ -382,7 +349,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public searchAction!: string;
 
@@ -390,7 +357,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 视图标识
      *
      * @type {string}
-     * @memberof Main
+     * @memberof Main2
      */
     @Prop() public viewtag!: string;
 
@@ -398,7 +365,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof Main
+     * @memberof Main2
      */
     public formState: Subject<any> = new Subject();
 
@@ -406,7 +373,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof Main
+     * @memberof Main2
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -415,7 +382,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Subject<any>}
-     * @memberof Main
+     * @memberof Main2
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -424,7 +391,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof Main
+     * @memberof Main2
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -433,7 +400,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {*}
-     * @memberof Main
+     * @memberof Main2
      */
     public oldData: any = {};
 
@@ -441,7 +408,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 表单数据对象
      *
      * @type {*}
-     * @memberof Main
+     * @memberof Main2
      */
     public data: any = {
         srfupdatedate: null,
@@ -469,7 +436,7 @@ export default class MainBase extends Vue implements ControlInterface {
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof Main
+      * @memberof Main2
       */
     public currentAction: string = "";
 
@@ -477,7 +444,7 @@ export default class MainBase extends Vue implements ControlInterface {
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof Main
+      * @memberof Main2
       */
     public drcounter: number = 0;
 
@@ -485,7 +452,7 @@ export default class MainBase extends Vue implements ControlInterface {
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof Main
+      * @memberof Main2
       */
     public drsaveopt: any = {};
 
@@ -493,7 +460,7 @@ export default class MainBase extends Vue implements ControlInterface {
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof Main
+      * @memberof Main2
       */
     public saveState:any ;
 
@@ -501,7 +468,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 属性值规则
      *
      * @type {*}
-     * @memberof Main
+     * @memberof Main2
      */
     public rules: any = {
         srfupdatedate: [
@@ -618,14 +585,10 @@ export default class MainBase extends Vue implements ControlInterface {
      * 详情模型集合
      *
      * @type {*}
-     * @memberof Main
+     * @memberof Main2
      */
     public detailsModel: any = {
-        group1: new FormGroupPanelModel({ caption: '社保档案基本信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.socarchives.main_form', extractMode: 'ITEM', details: [] } })
-, 
-        druipart1: new FormDRUIPartModel({ caption: '', detailType: 'DRUIPART', name: 'druipart1', visible: true, isShowCaption: true, form: this })
-, 
-        grouppanel1: new FormGroupPanelModel({ caption: '分组面板', detailType: 'GROUPPANEL', name: 'grouppanel1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.socarchives.main_form', extractMode: 'ITEM', details: [] } })
+        group1: new FormGroupPanelModel({ caption: '社保档案基本信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: false, form: this, uiActionGroup: { caption: '', langbase: 'entities.socarchives.main2_form', extractMode: 'ITEM', details: [] } })
 , 
         formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
@@ -672,7 +635,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -684,7 +647,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -696,7 +659,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -708,7 +671,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -720,7 +683,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -732,7 +695,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -744,7 +707,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -756,7 +719,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -768,7 +731,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.pimpersonname')
     onPimpersonnameChange(newVal: any, oldVal: any) {
@@ -780,7 +743,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.socaccountname')
     onSocaccountnameChange(newVal: any, oldVal: any) {
@@ -792,7 +755,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.socrulename')
     onSocrulenameChange(newVal: any, oldVal: any) {
@@ -804,7 +767,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.ygbh')
     onYgbhChange(newVal: any, oldVal: any) {
@@ -816,7 +779,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.ormorgname')
     onOrmorgnameChange(newVal: any, oldVal: any) {
@@ -828,7 +791,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.ormorgsectorname')
     onOrmorgsectornameChange(newVal: any, oldVal: any) {
@@ -840,7 +803,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.pimpersonid')
     onPimpersonidChange(newVal: any, oldVal: any) {
@@ -852,7 +815,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.socaccountid')
     onSocaccountidChange(newVal: any, oldVal: any) {
@@ -864,7 +827,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.socruleid')
     onSocruleidChange(newVal: any, oldVal: any) {
@@ -876,7 +839,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof Main
+     * @memberof Main2
      */
     @Watch('data.socarchivesid')
     onSocarchivesidChange(newVal: any, oldVal: any) {
@@ -889,7 +852,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof Main
+     * @memberof Main2
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
     }
@@ -915,12 +878,10 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof Main
+     * @memberof Main2
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
-
-
 
 
 
@@ -949,7 +910,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof Main
+     * @memberof Main2
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -966,7 +927,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof Main
+     * @memberof Main2
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -987,7 +948,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof Main
+     * @memberof Main2
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -1012,7 +973,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} data
-     * @memberof Main
+     * @memberof Main2
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1028,7 +989,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 重置草稿表单状态
      *
      * @public
-     * @memberof Main
+     * @memberof Main2
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -1040,7 +1001,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 重置校验结果
      *
-     * @memberof Main
+     * @memberof Main2
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -1056,7 +1017,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof Main
+     * @memberof Main2
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -1074,7 +1035,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof Main
+     * @memberof Main2
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -1089,7 +1050,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 获取全部值
      *
      * @returns {*}
-     * @memberof Main
+     * @memberof Main2
      */
     public getValues(): any {
         return this.data;
@@ -1100,7 +1061,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof Main
+     * @memberof Main2
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -1118,7 +1079,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof Main
+     * @memberof Main2
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -1136,7 +1097,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof Main
+     * @memberof Main2
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -1148,7 +1109,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof Main
+     * @memberof Main2
      */
     public created(): void {
         this.afterCreated();
@@ -1157,7 +1118,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 执行created后的逻辑
      *
-     *  @memberof Main
+     *  @memberof Main2
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -1214,7 +1175,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof Main
+     * @memberof Main2
      */
     public destroyed() {
         this.afterDestroy();
@@ -1223,7 +1184,7 @@ export default class MainBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof Main
+     * @memberof Main2
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -1238,7 +1199,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof Main
+     * @memberof @memberof Main2
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -1256,18 +1217,18 @@ export default class MainBase extends Vue implements ControlInterface {
 
     /**
      *打印
-     *@memberof @memberof Main
+     *@memberof @memberof Main2
      */
     public print(){
         let _this:any = this;
-        _this.$print({id:'socarchives_main',popTitle:'社保档案（主信息）'});
+        _this.$print({id:'socarchives_main2',popTitle:'社保档案（主编辑）'});
     }
 
     /**
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof Main
+     * @memberof Main2
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -1289,7 +1250,7 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof Main
+     * @memberof Main2
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -1310,11 +1271,11 @@ export default class MainBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof Main
+     * @memberof Main2
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
-            this.$Notice.error({ title: '错误', desc: 'SocArchivesEditView视图表单loadAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'SocArchivesMain2EditView视图表单loadAction参数未配置' });
             return;
         }
         const arg: any = { ...opt };
@@ -1345,11 +1306,11 @@ export default class MainBase extends Vue implements ControlInterface {
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof Main
+     * @memberof Main2
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
-            this.$Notice.error({ title: '错误', desc: 'SocArchivesEditView视图表单loaddraftAction参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'SocArchivesMain2EditView视图表单loaddraftAction参数未配置' });
             return;
         }
         const arg: any = { ...opt } ;
@@ -1399,7 +1360,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof Main
+     * @memberof Main2
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -1411,7 +1372,7 @@ export default class MainBase extends Vue implements ControlInterface {
         const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
         if(!action){
             let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
-            this.$Notice.error({ title: '错误', desc: 'SocArchivesEditView视图表单'+actionName+'参数未配置' });
+            this.$Notice.error({ title: '错误', desc: 'SocArchivesMain2EditView视图表单'+actionName+'参数未配置' });
             return;
         }
         Object.assign(arg,{viewparams:this.viewparams});
@@ -1450,7 +1411,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof Main
+     * @memberof Main2
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1464,7 +1425,7 @@ export default class MainBase extends Vue implements ControlInterface {
             Object.assign(arg, data);
             Object.assign(arg, this.context);
             if (ifStateNext) {
-                this.drcounter = 1;
+                this.drcounter = 0;
                 if(this.drcounter !== 0){
                     this.drsaveopt = opt;
                     this.formState.next({ type: 'beforesave', data: arg });//先通知关系界面保存
@@ -1475,7 +1436,7 @@ export default class MainBase extends Vue implements ControlInterface {
             const action: any = Object.is(data.srfuf, '1') ? this.updateAction : this.createAction;
             if(!action){
                 let actionName:any = Object.is(data.srfuf, '1')?"updateAction":"createAction";
-                this.$Notice.error({ title: '错误', desc: 'SocArchivesEditView视图表单'+actionName+'参数未配置' });
+                this.$Notice.error({ title: '错误', desc: 'SocArchivesMain2EditView视图表单'+actionName+'参数未配置' });
                 return;
             }
             Object.assign(arg,{viewparams:this.viewparams});
@@ -1525,7 +1486,7 @@ export default class MainBase extends Vue implements ControlInterface {
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
             if(!this.removeAction){
-                this.$Notice.error({ title: '错误', desc: 'SocArchivesEditView视图表单removeAction参数未配置' });
+                this.$Notice.error({ title: '错误', desc: 'SocArchivesMain2EditView视图表单removeAction参数未配置' });
                 return;
             }
             const arg: any = opt[0];
@@ -1554,7 +1515,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof Main
+     * @memberof Main2
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1610,7 +1571,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof Main
+     * @memberof Main2
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1686,7 +1647,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof Main
+     * @memberof Main2
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -1731,7 +1692,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 回车事件
      *
      * @param {*} $event
-     * @memberof Main
+     * @memberof Main2
      */
     public onEnter($event: any): void {
     }
@@ -1740,7 +1701,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof Main
+     * @memberof Main2
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -1765,7 +1726,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof Main
+     * @memberof Main2
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -1788,7 +1749,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof Main
+     * @memberof Main2
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -1812,7 +1773,7 @@ export default class MainBase extends Vue implements ControlInterface {
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof Main
+    * @memberof Main2
     */
     public drdatasaved($event:any){
         let _this = this;
@@ -1836,14 +1797,14 @@ export default class MainBase extends Vue implements ControlInterface {
 
     /**
      * 新建默认值
-     * @memberof Main
+     * @memberof Main2
      */
     public createDefault(){                    
     }
 
     /**
      * 更新默认值
-     * @memberof Main
+     * @memberof Main2
      */
     public updateDefault(){                    
     }
@@ -1853,5 +1814,5 @@ export default class MainBase extends Vue implements ControlInterface {
 </script>
 
 <style lang='less'>
-@import './main-form.less';
+@import './main2-form.less';
 </style>

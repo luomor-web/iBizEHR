@@ -167,7 +167,7 @@ export default class SocRuleEditViewBase extends EditViewBase {
      * @memberof SocRuleEditView
      */
     public toolBarModels: any = {
-        tbitem1_openedieview: { name: 'tbitem1_openedieview', caption: '编辑','isShowCaption':true,'isShowIcon':true, tooltip: '编辑', iconcls: 'fa fa-edit', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'OpenEdieView', target: 'SINGLEKEY' }, class: '' },
+        tbitem1_openeditview: { name: 'tbitem1_openeditview', caption: '编辑','isShowCaption':true,'isShowIcon':true, tooltip: '编辑', iconcls: 'fa fa-edit', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'OpenEditView', target: 'SINGLEKEY' }, class: '' },
 
     };
 
@@ -210,8 +210,8 @@ export default class SocRuleEditViewBase extends EditViewBase {
      * @memberof SocRuleEditViewBase
      */
     public toolbar_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'tbitem1_openedieview')) {
-            this.toolbar_tbitem1_openedieview_click(null, '', $event2);
+        if (Object.is($event.tag, 'tbitem1_openeditview')) {
+            this.toolbar_tbitem1_openeditview_click(null, '', $event2);
         }
     }
 
@@ -261,7 +261,7 @@ export default class SocRuleEditViewBase extends EditViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_tbitem1_openedieview_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem1_openeditview_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -279,7 +279,7 @@ export default class SocRuleEditViewBase extends EditViewBase {
         }
         // 界面行为
         const curUIService:SocRuleUIService  = new SocRuleUIService();
-        curUIService.SocRule_OpenEdieView(datas,contextJO, paramJO,  $event, xData,this,"SocRule");
+        curUIService.SocRule_OpenEditView(datas,contextJO, paramJO,  $event, xData,this,"SocRule");
     }
 
 

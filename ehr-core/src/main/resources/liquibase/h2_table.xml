@@ -1172,7 +1172,7 @@
 
 
     <!--输出实体[TRMTEACHERCHARGE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmteachercharge-19-38">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmteachercharge-26-38">
         <createTable tableName="T_TRMTEACHERCHARGE">
                 <column name="JSDJ" remarks="" type="VARCHAR(60)">
                 </column>
@@ -4150,7 +4150,7 @@
 
 
     <!--输出实体[TRMTRAINBUAPPLY]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmtrainbuapply-26-103">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmtrainbuapply-39-103">
         <createTable tableName="T_TRMTRAINBUAPPLY">
                 <column name="TRMTRAINBUAPPLYID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_TRMTRAINBUAPPLY_TRMTRAINBUA"/>
@@ -4820,7 +4820,7 @@
 
 
     <!--输出实体[TRMTRAINOUTAPPLY]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmtrainoutapply-24-121">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmtrainoutapply-47-121">
         <createTable tableName="T_TRMTRAINOUTAPPLY">
                 <column name="WBPXJG" remarks="" type="VARCHAR(60)">
                 </column>
@@ -6747,7 +6747,7 @@
 
 
     <!--输出实体[SOCARCHIVES]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-socarchives-45-172">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-socarchives-69-172">
         <createTable tableName="T_SOCARCHIVES">
                 <column name="SOCARCHIVESID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_SOCARCHIVES_SOCARCHIVESID"/>
@@ -8495,7 +8495,7 @@
 
 
     <!--输出实体[TRMDEPART]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmdepart-57-219">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmdepart-61-219">
         <createTable tableName="T_TRMDEPART">
                 <column name="TRMDEPARTNAME" remarks="" type="VARCHAR(200)">
                 </column>
@@ -9775,7 +9775,7 @@
 
 
     <!--输出实体[SOCRULE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-socrule-105-252">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-socrule-106-252">
         <createTable tableName="T_SOCRULE">
                 <column name="SOCRULEID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_SOCRULE_SOCRULEID"/>
@@ -10643,7 +10643,7 @@
 
 
     <!--输出实体[TRMTRAINPLANTERM]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmtrainplanterm-107-276">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmtrainplanterm-112-276">
         <createTable tableName="T_TRMTRAINPLANTERM">
                 <column name="PXRS" remarks="" type="INT">
                 </column>
@@ -12280,7 +12280,7 @@
        <addForeignKeyConstraint baseColumnNames="PIMARCHIVESID" baseTableName="T_ARCHIVALCATALOGUE" constraintName="DER1N_ARCHIVALCATALOGUE_PIMARC" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMARCHIVESID" referencedTableName="T_PIMARCHIVES" validate="true"/>
     </changeSet>
         <!--输出实体[TRMTEACHERCHARGE]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmteachercharge-19-342">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmteachercharge-26-342">
        <addForeignKeyConstraint baseColumnNames="TRMTRAINPLANTERMID" baseTableName="T_TRMTEACHERCHARGE" constraintName="DER1N_TRMTEACHERCHARGE_TRMTRAI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="TRMTRAINPLANTERMID" referencedTableName="T_TRMTRAINPLANTERM" validate="true"/>
     </changeSet>
         <!--输出实体[WZD0001]外键关系 -->
@@ -12696,10 +12696,10 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PIMDISTIRBUTION" constraintName="DER1N_PIMDISTIRBUTION_PIMPERSO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[TRMTRAINBUAPPLY]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainbuapply-26-467">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainbuapply-39-467">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_TRMTRAINBUAPPLY" constraintName="DER1N_TRMTRAINBUAPPLY_ORMORG_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainbuapply-26-468">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainbuapply-39-468">
        <addForeignKeyConstraint baseColumnNames="TRMTRAINPLANTERMID" baseTableName="T_TRMTRAINBUAPPLY" constraintName="DER1N_TRMTRAINBUAPPLY_TRMTRAIN" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="TRMTRAINPLANTERMID" referencedTableName="T_TRMTRAINPLANTERM" validate="true"/>
     </changeSet>
         <!--输出实体[PCMYDTXMX]外键关系 -->
@@ -12774,7 +12774,7 @@
        <addForeignKeyConstraint baseColumnNames="PARPTRYNDLHMBID" baseTableName="T_PARPTRYNDLHMBMX" constraintName="DER1N_PARPTRYNDLHMBMX_PARPTRYN" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PARPTRYNDLHMBID" referencedTableName="T_PARPTRYNDLHMB" validate="true"/>
     </changeSet>
         <!--输出实体[TRMTRAINOUTAPPLY]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainoutapply-24-488">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainoutapply-47-488">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_TRMTRAINOUTAPPLY" constraintName="DER1N_TRMTRAINOUTAPPLY_PIMPERS" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[PARFZSMX]外键关系 -->
@@ -12987,13 +12987,13 @@
        <addForeignKeyConstraint baseColumnNames="TRMTRAINAGENCYID2" baseTableName="T_TRMTRAINAGENCY" constraintName="DER1N_TRMTRAINAGENCY_TRMTRAINA" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="TRMTRAINAGENCYID" referencedTableName="T_TRMTRAINAGENCY" validate="true"/>
     </changeSet>
         <!--输出实体[SOCARCHIVES]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-socarchives-45-545">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-socarchives-69-545">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_SOCARCHIVES" constraintName="DER1N_SOCARCHIVES_PIMPERSON_PI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-socarchives-45-546">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-socarchives-69-546">
        <addForeignKeyConstraint baseColumnNames="SOCACCOUNTID" baseTableName="T_SOCARCHIVES" constraintName="DER1N_SOCARCHIVES_SOCACCOUNT_S" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SOCACCOUNTID" referencedTableName="T_SOCACCOUNT" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-socarchives-45-547">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-socarchives-69-547">
        <addForeignKeyConstraint baseColumnNames="SOCRULEID" baseTableName="T_SOCARCHIVES" constraintName="DER1N_SOCARCHIVES_SOCRULE_SOCR" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SOCRULEID" referencedTableName="T_SOCRULE" validate="true"/>
     </changeSet>
         <!--输出实体[PIMLANGUAGEABILITY]外键关系 -->
@@ -13238,13 +13238,13 @@
        <addForeignKeyConstraint baseColumnNames="TRMTRAINCOURSEID" baseTableName="T_TRMSTAFFNODES" constraintName="DER1N_TRMSTAFFNODES_TRMTRAINCO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="TRMTRAINCOURSEID" referencedTableName="T_TRMTRAINCOURSE" validate="true"/>
     </changeSet>
         <!--输出实体[TRMDEPART]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmdepart-57-617">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmdepart-61-617">
        <addForeignKeyConstraint baseColumnNames="ORMORGSECTORID" baseTableName="T_TRMDEPART" constraintName="DER1N_TRMDEPART_ORMORGSECTOR_O" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGSECTORID" referencedTableName="T_SRFORGSECTOR" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmdepart-57-618">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmdepart-61-618">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_TRMDEPART" constraintName="DER1N_TRMDEPART_ORMORG_ORMORGI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmdepart-57-619">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmdepart-61-619">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_TRMDEPART" constraintName="DER1N_TRMDEPART_PIMPERSON_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[PCMXYGZZJLMX]外键关系 -->
@@ -13379,10 +13379,10 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMTXFPSQ" constraintName="DER1N_PCMTXFPSQ_PIMPERSON_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[SOCRULE]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-socrule-105-654">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-socrule-106-654">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_SOCRULE" constraintName="DER1N_SOCRULE_ORMORG_ORMORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-socrule-105-655">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-socrule-106-655">
        <addForeignKeyConstraint baseColumnNames="SOCAREAID" baseTableName="T_SOCRULE" constraintName="DER1N_SOCRULE_SOCAREA_SOCAREAI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SOCAREAID" referencedTableName="T_SOCAREA" validate="true"/>
     </changeSet>
         <!--输出实体[PIMPAPER]外键关系 -->
@@ -13532,7 +13532,7 @@
     </changeSet>
         <!--输出实体[PIMWORKFLOW]外键关系 -->
         <!--输出实体[TRMTRAINPLANTERM]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainplanterm-107-701">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainplanterm-112-701">
        <addForeignKeyConstraint baseColumnNames="TRMTRAINAGENCYID" baseTableName="T_TRMTRAINPLANTERM" constraintName="DER1N_TRMTRAINPLANTERM_TRMTRAI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="TRMTRAINAGENCYID" referencedTableName="T_TRMTRAINAGENCY" validate="true"/>
     </changeSet>
         <!--输出实体[SGQMGR]外键关系 -->
