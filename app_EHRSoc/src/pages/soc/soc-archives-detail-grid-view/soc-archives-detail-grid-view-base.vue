@@ -472,7 +472,12 @@ export default class SocArchivesDetailGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(tempContext,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(tempContext.socarchives && true){
+            deResParameters = [
+            { pathName: 'socarchives', parameterName: 'socarchives' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'socarchivesdetails', parameterName: 'socarchivesdetail' },
             { pathName: 'editview', parameterName: 'editview' },
@@ -506,7 +511,12 @@ export default class SocArchivesDetailGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(tempContext,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(tempContext.socarchives && true){
+            deResParameters = [
+            { pathName: 'socarchives', parameterName: 'socarchives' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'socarchivesdetails', parameterName: 'socarchivesdetail' },
             { pathName: 'editview', parameterName: 'editview' },

@@ -124,6 +124,7 @@
     paramItem='socarchives' 
     :parentdata='{"srfparentdefname":"SOCARCHIVESID","srfparentdename":"SOCARCHIVES","SRFPARENTTYPE":"DER1N","srfparentmode":"DER1N_SOCARCHIVESDETAIL_SOCARCHIVES_SOCARCHIVESID","SRFDER1NID":"DER1N_SOCARCHIVESDETAIL_SOCARCHIVES_SOCARCHIVESID"}'
     :parameters="[
+        { pathName: 'socarchives', parameterName: 'socarchives' },
     ]"
     :context="context"
     :viewparams="viewparams"
