@@ -182,6 +182,13 @@ public class SocArchives extends EntityMP implements Serializable {
     @JSONField(name = "state")
     @JsonProperty("state")
     private String state;
+    /**
+     * 员工状态
+     */
+    @TableField(exist = false)
+    @JSONField(name = "ygzt")
+    @JsonProperty("ygzt")
+    private String ygzt;
 
     /**
      * 员工

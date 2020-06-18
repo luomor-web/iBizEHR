@@ -61,6 +61,10 @@ public class SocArchivesServiceImpl extends ServiceImpl<SocArchivesMapper, SocAr
     @Lazy
     private cn.ibizlab.ehr.core.soc.service.logic.ISocArchivesInitArchivesDetailLogic initarchivesdetailLogic;
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.soc.service.logic.ISocArchivesStopArchivesLogic stoparchivesLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -109,6 +113,13 @@ public class SocArchivesServiceImpl extends ServiceImpl<SocArchivesMapper, SocAr
         else{
         }
         return et;
+    }
+
+    @Override
+    @Transactional
+    public SocArchives stopArchives(SocArchives et) {
+        stoparchivesLogic.execute(et);
+         return et ;
     }
 
     @Override
@@ -206,6 +217,15 @@ public class SocArchivesServiceImpl extends ServiceImpl<SocArchivesMapper, SocAr
         return new PageImpl<SocArchives>(pages.getRecords(), context.getPageable(), pages.getTotal());
     }
 
+    /**
+     * 查询集合 非员工待终止档案
+     */
+    @Override
+    public Page<SocArchives> searchStopArchives(SocArchivesSearchContext context) {
+        com.baomidou.mybatisplus.extension.plugins.pagination.Page<SocArchives> pages=baseMapper.searchStopArchives(context.getPages(),context,context.getSelectCond());
+        return new PageImpl<SocArchives>(pages.getRecords(), context.getPageable(), pages.getTotal());
+    }
+
 
 
     /**
@@ -227,6 +247,7 @@ public class SocArchivesServiceImpl extends ServiceImpl<SocArchivesMapper, SocAr
             et.setOrmorgsectorid(pimperson.getOrmorgsectorid());
             et.setOrmorgsectorname(pimperson.getOrmorgsectorname());
             et.setYgbh(pimperson.getYgbh());
+            et.setYgzt(pimperson.getYgzt());
         }
         //实体关系[DER1N_SOCARCHIVES_SOCACCOUNT_SOCACCOUNTID]
         if(!ObjectUtils.isEmpty(et.getSocaccountid())){

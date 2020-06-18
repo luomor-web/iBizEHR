@@ -177,6 +177,14 @@ public class SocArchivesDTO extends DTOBase implements Serializable {
     @JsonProperty("state")
     private String state;
 
+    /**
+     * 属性 [YGZT]
+     *
+     */
+    @JSONField(name = "ygzt")
+    @JsonProperty("ygzt")
+    private String ygzt;
+
 
     /**
      * 设置 [SOCARCHIVESNAME]

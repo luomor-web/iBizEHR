@@ -97,6 +97,18 @@ public class SocArchivesResource {
         return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocArchives-StopArchives-all')")
+    @ApiOperation(value = "终止社保", tags = {"社保档案" },  notes = "终止社保")
+	@RequestMapping(method = RequestMethod.POST, value = "/socarchives/{socarchives_id}/stoparchives")
+    @Transactional
+    public ResponseEntity<SocArchivesDTO> stopArchives(@PathVariable("socarchives_id") String socarchives_id, @RequestBody SocArchivesDTO socarchivesdto) {
+        SocArchives socarchives = socarchivesMapping.toDomain(socarchivesdto);
+        socarchives.setSocarchivesid(socarchives_id);
+        socarchives = socarchivesService.stopArchives(socarchives);
+        socarchivesdto = socarchivesMapping.toDto(socarchives);
+        return ResponseEntity.status(HttpStatus.OK).body(socarchivesdto);
+    }
+
     @PreAuthorize("hasPermission(this.socarchivesMapping.toDomain(#socarchivesdto),'ehr-SocArchives-Save')")
     @ApiOperation(value = "保存社保档案", tags = {"社保档案" },  notes = "保存社保档案")
 	@RequestMapping(method = RequestMethod.POST, value = "/socarchives/save")
@@ -155,6 +167,194 @@ public class SocArchivesResource {
     @RequestMapping(method= RequestMethod.POST , value="/socarchives/searchdefault")
 	public ResponseEntity<Page<SocArchivesDTO>> searchDefault(@RequestBody SocArchivesSearchContext context) {
         Page<SocArchives> domains = socarchivesService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(socarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocArchives-StopArchives-all')")
+	@ApiOperation(value = "获取非员工待终止档案", tags = {"社保档案" } ,notes = "获取非员工待终止档案")
+    @RequestMapping(method= RequestMethod.GET , value="/socarchives/fetchstoparchives")
+	public ResponseEntity<List<SocArchivesDTO>> fetchStopArchives(SocArchivesSearchContext context) {
+        Page<SocArchives> domains = socarchivesService.searchStopArchives(context) ;
+        List<SocArchivesDTO> list = socarchivesMapping.toDto(domains.getContent());
+        return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocArchives-StopArchives-all')")
+	@ApiOperation(value = "查询非员工待终止档案", tags = {"社保档案" } ,notes = "查询非员工待终止档案")
+    @RequestMapping(method= RequestMethod.POST , value="/socarchives/searchstoparchives")
+	public ResponseEntity<Page<SocArchivesDTO>> searchStopArchives(@RequestBody SocArchivesSearchContext context) {
+        Page<SocArchives> domains = socarchivesService.searchStopArchives(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(socarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasPermission(this.socarchivesService.get(#socarchives_id),'ehr-SocArchives-Remove')")
+    @ApiOperation(value = "根据人员信息删除社保档案", tags = {"社保档案" },  notes = "根据人员信息删除社保档案")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/socarchives/{socarchives_id}")
+    @Transactional
+    public ResponseEntity<Boolean> removeByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("socarchives_id") String socarchives_id) {
+		return ResponseEntity.status(HttpStatus.OK).body(socarchivesService.remove(socarchives_id));
+    }
+
+    @PreAuthorize("hasPermission(this.socarchivesService.getSocarchivesByIds(#ids),'ehr-SocArchives-Remove')")
+    @ApiOperation(value = "根据人员信息批量删除社保档案", tags = {"社保档案" },  notes = "根据人员信息批量删除社保档案")
+	@RequestMapping(method = RequestMethod.DELETE, value = "/pimpeople/{pimperson_id}/socarchives/batch")
+    public ResponseEntity<Boolean> removeBatchByPimPerson(@RequestBody List<String> ids) {
+        socarchivesService.removeBatch(ids);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "根据人员信息获取社保档案草稿", tags = {"社保档案" },  notes = "根据人员信息获取社保档案草稿")
+    @RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/socarchives/getdraft")
+    public ResponseEntity<SocArchivesDTO> getDraftByPimPerson(@PathVariable("pimperson_id") String pimperson_id) {
+        SocArchives domain = new SocArchives();
+        domain.setPimpersonid(pimperson_id);
+        return ResponseEntity.status(HttpStatus.OK).body(socarchivesMapping.toDto(socarchivesService.getDraft(domain)));
+    }
+
+    @PreAuthorize("hasPermission(this.socarchivesService.get(#socarchives_id),'ehr-SocArchives-Update')")
+    @ApiOperation(value = "根据人员信息更新社保档案", tags = {"社保档案" },  notes = "根据人员信息更新社保档案")
+	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/socarchives/{socarchives_id}")
+    @Transactional
+    public ResponseEntity<SocArchivesDTO> updateByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("socarchives_id") String socarchives_id, @RequestBody SocArchivesDTO socarchivesdto) {
+        SocArchives domain = socarchivesMapping.toDomain(socarchivesdto);
+        domain.setPimpersonid(pimperson_id);
+        domain.setSocarchivesid(socarchives_id);
+		socarchivesService.update(domain);
+        SocArchivesDTO dto = socarchivesMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.socarchivesService.getSocarchivesByEntities(this.socarchivesMapping.toDomain(#socarchivesdtos)),'ehr-SocArchives-Update')")
+    @ApiOperation(value = "根据人员信息批量更新社保档案", tags = {"社保档案" },  notes = "根据人员信息批量更新社保档案")
+	@RequestMapping(method = RequestMethod.PUT, value = "/pimpeople/{pimperson_id}/socarchives/batch")
+    public ResponseEntity<Boolean> updateBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<SocArchivesDTO> socarchivesdtos) {
+        List<SocArchives> domainlist=socarchivesMapping.toDomain(socarchivesdtos);
+        for(SocArchives domain:domainlist){
+            domain.setPimpersonid(pimperson_id);
+        }
+        socarchivesService.updateBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PostAuthorize("hasPermission(this.socarchivesMapping.toDomain(returnObject.body),'ehr-SocArchives-Get')")
+    @ApiOperation(value = "根据人员信息获取社保档案", tags = {"社保档案" },  notes = "根据人员信息获取社保档案")
+	@RequestMapping(method = RequestMethod.GET, value = "/pimpeople/{pimperson_id}/socarchives/{socarchives_id}")
+    public ResponseEntity<SocArchivesDTO> getByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("socarchives_id") String socarchives_id) {
+        SocArchives domain = socarchivesService.get(socarchives_id);
+        SocArchivesDTO dto = socarchivesMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocArchives-StopArchives-all')")
+    @ApiOperation(value = "根据人员信息社保档案", tags = {"社保档案" },  notes = "根据人员信息社保档案")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/socarchives/{socarchives_id}/stoparchives")
+    @Transactional
+    public ResponseEntity<SocArchivesDTO> stopArchivesByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @PathVariable("socarchives_id") String socarchives_id, @RequestBody SocArchivesDTO socarchivesdto) {
+        SocArchives domain = socarchivesMapping.toDomain(socarchivesdto);
+        domain.setPimpersonid(pimperson_id);
+        domain = socarchivesService.stopArchives(domain) ;
+        socarchivesdto = socarchivesMapping.toDto(domain);
+        return ResponseEntity.status(HttpStatus.OK).body(socarchivesdto);
+    }
+
+    @PreAuthorize("hasPermission(this.socarchivesMapping.toDomain(#socarchivesdto),'ehr-SocArchives-Save')")
+    @ApiOperation(value = "根据人员信息保存社保档案", tags = {"社保档案" },  notes = "根据人员信息保存社保档案")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/socarchives/save")
+    public ResponseEntity<Boolean> saveByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody SocArchivesDTO socarchivesdto) {
+        SocArchives domain = socarchivesMapping.toDomain(socarchivesdto);
+        domain.setPimpersonid(pimperson_id);
+        return ResponseEntity.status(HttpStatus.OK).body(socarchivesService.save(domain));
+    }
+
+    @PreAuthorize("hasPermission(this.socarchivesMapping.toDomain(#socarchivesdtos),'ehr-SocArchives-Save')")
+    @ApiOperation(value = "根据人员信息批量保存社保档案", tags = {"社保档案" },  notes = "根据人员信息批量保存社保档案")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/socarchives/savebatch")
+    public ResponseEntity<Boolean> saveBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<SocArchivesDTO> socarchivesdtos) {
+        List<SocArchives> domainlist=socarchivesMapping.toDomain(socarchivesdtos);
+        for(SocArchives domain:domainlist){
+             domain.setPimpersonid(pimperson_id);
+        }
+        socarchivesService.saveBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @PreAuthorize("hasPermission(this.socarchivesMapping.toDomain(#socarchivesdto),'ehr-SocArchives-Create')")
+    @ApiOperation(value = "根据人员信息建立社保档案", tags = {"社保档案" },  notes = "根据人员信息建立社保档案")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/socarchives")
+    @Transactional
+    public ResponseEntity<SocArchivesDTO> createByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody SocArchivesDTO socarchivesdto) {
+        SocArchives domain = socarchivesMapping.toDomain(socarchivesdto);
+        domain.setPimpersonid(pimperson_id);
+		socarchivesService.create(domain);
+        SocArchivesDTO dto = socarchivesMapping.toDto(domain);
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
+    }
+
+    @PreAuthorize("hasPermission(this.socarchivesMapping.toDomain(#socarchivesdtos),'ehr-SocArchives-Create')")
+    @ApiOperation(value = "根据人员信息批量建立社保档案", tags = {"社保档案" },  notes = "根据人员信息批量建立社保档案")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/socarchives/batch")
+    public ResponseEntity<Boolean> createBatchByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody List<SocArchivesDTO> socarchivesdtos) {
+        List<SocArchives> domainlist=socarchivesMapping.toDomain(socarchivesdtos);
+        for(SocArchives domain:domainlist){
+            domain.setPimpersonid(pimperson_id);
+        }
+        socarchivesService.createBatch(domainlist);
+        return  ResponseEntity.status(HttpStatus.OK).body(true);
+    }
+
+    @ApiOperation(value = "根据人员信息检查社保档案", tags = {"社保档案" },  notes = "根据人员信息检查社保档案")
+	@RequestMapping(method = RequestMethod.POST, value = "/pimpeople/{pimperson_id}/socarchives/checkkey")
+    public ResponseEntity<Boolean> checkKeyByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody SocArchivesDTO socarchivesdto) {
+        return  ResponseEntity.status(HttpStatus.OK).body(socarchivesService.checkKey(socarchivesMapping.toDomain(socarchivesdto)));
+    }
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocArchives-Default-all')")
+	@ApiOperation(value = "根据人员信息获取DEFAULT", tags = {"社保档案" } ,notes = "根据人员信息获取DEFAULT")
+    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/socarchives/fetchdefault")
+	public ResponseEntity<List<SocArchivesDTO>> fetchSocArchivesDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id,SocArchivesSearchContext context) {
+        context.setN_pimpersonid_eq(pimperson_id);
+        Page<SocArchives> domains = socarchivesService.searchDefault(context) ;
+        List<SocArchivesDTO> list = socarchivesMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocArchives-Default-all')")
+	@ApiOperation(value = "根据人员信息查询DEFAULT", tags = {"社保档案" } ,notes = "根据人员信息查询DEFAULT")
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/socarchives/searchdefault")
+	public ResponseEntity<Page<SocArchivesDTO>> searchSocArchivesDefaultByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody SocArchivesSearchContext context) {
+        context.setN_pimpersonid_eq(pimperson_id);
+        Page<SocArchives> domains = socarchivesService.searchDefault(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(socarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocArchives-StopArchives-all')")
+	@ApiOperation(value = "根据人员信息获取非员工待终止档案", tags = {"社保档案" } ,notes = "根据人员信息获取非员工待终止档案")
+    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/socarchives/fetchstoparchives")
+	public ResponseEntity<List<SocArchivesDTO>> fetchSocArchivesStopArchivesByPimPerson(@PathVariable("pimperson_id") String pimperson_id,SocArchivesSearchContext context) {
+        context.setN_pimpersonid_eq(pimperson_id);
+        Page<SocArchives> domains = socarchivesService.searchStopArchives(context) ;
+        List<SocArchivesDTO> list = socarchivesMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocArchives-StopArchives-all')")
+	@ApiOperation(value = "根据人员信息查询非员工待终止档案", tags = {"社保档案" } ,notes = "根据人员信息查询非员工待终止档案")
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/socarchives/searchstoparchives")
+	public ResponseEntity<Page<SocArchivesDTO>> searchSocArchivesStopArchivesByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody SocArchivesSearchContext context) {
+        context.setN_pimpersonid_eq(pimperson_id);
+        Page<SocArchives> domains = socarchivesService.searchStopArchives(context) ;
 	    return ResponseEntity.status(HttpStatus.OK)
                 .body(new PageImpl(socarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
 	}
