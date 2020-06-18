@@ -57,6 +57,10 @@ public class SocRuleServiceImpl extends ServiceImpl<SocRuleMapper, SocRule> impl
     @Lazy
     private cn.ibizlab.ehr.core.soc.service.ISocAreaService socareaService;
 
+    @Autowired
+    @Lazy
+    private cn.ibizlab.ehr.core.soc.service.logic.ISocRuleInitRuleDetailLogic initruledetailLogic;
+
     private int batchSize = 500;
 
     @Override
@@ -85,6 +89,7 @@ public class SocRuleServiceImpl extends ServiceImpl<SocRuleMapper, SocRule> impl
         if(!this.retBool(this.baseMapper.insert(et)))
             return false;
         CachedBeanCopier.copy(get(et.getSocruleid()),et);
+        initruledetailLogic.execute(et);
         return true;
     }
 
@@ -101,6 +106,7 @@ public class SocRuleServiceImpl extends ServiceImpl<SocRuleMapper, SocRule> impl
         if(!update(et,(Wrapper) et.getUpdateWrapper(true).eq("socruleid",et.getSocruleid())))
             return false;
         CachedBeanCopier.copy(get(et.getSocruleid()),et);
+        initruledetailLogic.execute(et);
         return true;
     }
 

@@ -5644,7 +5644,7 @@
 
 
     <!--输出实体[TRMTRAINPLAN]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmtrainplan-65-141">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-trmtrainplan-66-141">
         <createTable tableName="T_TRMTRAINPLAN">
                 <column name="LCLX" remarks="" type="VARCHAR(60)">
                 </column>
@@ -9767,7 +9767,7 @@
 
 
     <!--输出实体[SOCRULE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-socrule-99-252">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-socrule-104-252">
         <createTable tableName="T_SOCRULE">
                 <column name="SOCRULEID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_SOCRULE_SOCRULEID"/>
@@ -12840,16 +12840,16 @@
         <!--输出实体[VACLEACETYPE]外键关系 -->
         <!--输出实体[PARTZGG]外键关系 -->
         <!--输出实体[TRMTRAINPLAN]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainplan-65-508">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainplan-66-508">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_TRMTRAINPLAN" constraintName="DER1N_TRMTRAINPLAN_ORMORG_ORMO" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainplan-65-509">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainplan-66-509">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_TRMTRAINPLAN" constraintName="DER1N_TRMTRAINPLAN_PIMPERSON_P" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainplan-65-510">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainplan-66-510">
        <addForeignKeyConstraint baseColumnNames="TRMDEMDEFTIONID" baseTableName="T_TRMTRAINPLAN" constraintName="DER1N_TRMTRAINPLAN_TRMDEMDEFTI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="TRMDEMDEFTIONID" referencedTableName="T_TRMDEMDEFTION" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainplan-65-511">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-trmtrainplan-66-511">
        <addForeignKeyConstraint baseColumnNames="TRMPLANFORMUID" baseTableName="T_TRMTRAINPLAN" constraintName="DER1N_TRMTRAINPLAN_TRMPLANFORM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="TRMPLANFORMUID" referencedTableName="T_TRMPLANFORMU" validate="true"/>
     </changeSet>
         <!--输出实体[TRMTRAFFIC]外键关系 -->
@@ -13371,10 +13371,10 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMTXFPSQ" constraintName="DER1N_PCMTXFPSQ_PIMPERSON_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[SOCRULE]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-socrule-99-654">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-socrule-104-654">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_SOCRULE" constraintName="DER1N_SOCRULE_ORMORG_ORMORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-socrule-99-655">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-socrule-104-655">
        <addForeignKeyConstraint baseColumnNames="SOCAREAID" baseTableName="T_SOCRULE" constraintName="DER1N_SOCRULE_SOCAREA_SOCAREAI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SOCAREAID" referencedTableName="T_SOCAREA" validate="true"/>
     </changeSet>
         <!--输出实体[PIMPAPER]外键关系 -->
