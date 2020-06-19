@@ -62,7 +62,7 @@ public class TrmDepart extends EntityMP implements Serializable {
     @JsonProperty("nd")
     private String nd;
     /**
-     * 流程类型
+     * 周期类型
      */
     @TableField(value = "lclx")
     @JSONField(name = "lclx")
@@ -154,7 +154,7 @@ public class TrmDepart extends EntityMP implements Serializable {
     @JsonProperty("jd")
     private String jd;
     /**
-     * 填单日期
+     * 通知发布日期
      */
     @TableField(value = "tdrq")
     @JsonFormat(pattern="yyyy-MM-dd", locale = "zh" , timezone="GMT+8")
@@ -170,7 +170,7 @@ public class TrmDepart extends EntityMP implements Serializable {
     @JsonProperty("jzrq")
     private Timestamp jzrq;
     /**
-     * 局职能部门
+     * 职能部门
      */
     @TableField(exist = false)
     @JSONField(name = "ormorgsectorname")
@@ -191,7 +191,7 @@ public class TrmDepart extends EntityMP implements Serializable {
     @JsonProperty("zzdzs")
     private String zzdzs;
     /**
-     * 通知对象
+     * 直属单位
      */
     @TableField(exist = false)
     @JSONField(name = "ormorgname")
@@ -269,7 +269,7 @@ public class TrmDepart extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [流程类型]
+     * 设置 [周期类型]
      */
     public void setLclx(String lclx){
         this.lclx = lclx ;
@@ -325,7 +325,7 @@ public class TrmDepart extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [填单日期]
+     * 设置 [通知发布日期]
      */
     public void setTdrq(Timestamp tdrq){
         this.tdrq = tdrq ;
@@ -333,7 +333,7 @@ public class TrmDepart extends EntityMP implements Serializable {
     }
 
     /**
-     * 格式化日期 [填单日期]
+     * 格式化日期 [通知发布日期]
      */
     public String formatTdrq(){
         if (this.tdrq == null) {

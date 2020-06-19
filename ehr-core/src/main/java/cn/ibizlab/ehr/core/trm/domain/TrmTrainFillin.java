@@ -176,7 +176,7 @@ public class TrmTrainFillin extends EntityMP implements Serializable {
     @JsonProperty("trmtrainfillinid2")
     private String trmtrainfillinid2;
     /**
-     * 培训需求填报标识
+     * 培训需求通知标识
      */
     @TableField(value = "trmdepartid")
     @JSONField(name = "trmdepartid")
@@ -249,7 +249,7 @@ public class TrmTrainFillin extends EntityMP implements Serializable {
     }
 
     /**
-     * 设置 [培训需求填报标识]
+     * 设置 [培训需求通知标识]
      */
     public void setTrmdepartid(String trmdepartid){
         this.trmdepartid = trmdepartid ;

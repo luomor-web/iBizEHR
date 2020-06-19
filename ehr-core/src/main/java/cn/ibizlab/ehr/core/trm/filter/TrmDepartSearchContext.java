@@ -41,7 +41,7 @@ public class TrmDepartSearchContext extends QueryWrapperContext<TrmDepart> {
             this.getSearchCond().eq("nd", n_nd_eq);
         }
     }
-	private String n_lclx_eq;//[流程类型]
+	private String n_lclx_eq;//[周期类型]
 	public void setN_lclx_eq(String n_lclx_eq) {
         this.n_lclx_eq = n_lclx_eq;
         if(!ObjectUtils.isEmpty(this.n_lclx_eq)){
@@ -76,14 +76,14 @@ public class TrmDepartSearchContext extends QueryWrapperContext<TrmDepart> {
             this.getSearchCond().eq("jd", n_jd_eq);
         }
     }
-	private String n_ormorgsectorname_eq;//[局职能部门]
+	private String n_ormorgsectorname_eq;//[职能部门]
 	public void setN_ormorgsectorname_eq(String n_ormorgsectorname_eq) {
         this.n_ormorgsectorname_eq = n_ormorgsectorname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgsectorname_eq)){
             this.getSearchCond().eq("ormorgsectorname", n_ormorgsectorname_eq);
         }
     }
-	private String n_ormorgsectorname_like;//[局职能部门]
+	private String n_ormorgsectorname_like;//[职能部门]
 	public void setN_ormorgsectorname_like(String n_ormorgsectorname_like) {
         this.n_ormorgsectorname_like = n_ormorgsectorname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgsectorname_like)){
@@ -104,14 +104,14 @@ public class TrmDepartSearchContext extends QueryWrapperContext<TrmDepart> {
             this.getSearchCond().like("pimpersonname", n_pimpersonname_like);
         }
     }
-	private String n_ormorgname_eq;//[通知对象]
+	private String n_ormorgname_eq;//[直属单位]
 	public void setN_ormorgname_eq(String n_ormorgname_eq) {
         this.n_ormorgname_eq = n_ormorgname_eq;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_eq)){
             this.getSearchCond().eq("ormorgname", n_ormorgname_eq);
         }
     }
-	private String n_ormorgname_like;//[通知对象]
+	private String n_ormorgname_like;//[直属单位]
 	public void setN_ormorgname_like(String n_ormorgname_like) {
         this.n_ormorgname_like = n_ormorgname_like;
         if(!ObjectUtils.isEmpty(this.n_ormorgname_like)){

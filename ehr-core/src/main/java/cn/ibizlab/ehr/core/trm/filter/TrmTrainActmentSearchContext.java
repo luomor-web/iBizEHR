@@ -27,32 +27,39 @@ import cn.ibizlab.ehr.core.trm.domain.TrmTrainActment;
 @Data
 public class TrmTrainActmentSearchContext extends QueryWrapperContext<TrmTrainActment> {
 
-	private String n_trmtrainactmentname_like;//[培训活动评估名称]
+	private String n_trmtrainactmentname_like;//[培训后评估名称]
 	public void setN_trmtrainactmentname_like(String n_trmtrainactmentname_like) {
         this.n_trmtrainactmentname_like = n_trmtrainactmentname_like;
         if(!ObjectUtils.isEmpty(this.n_trmtrainactmentname_like)){
             this.getSearchCond().like("trmtrainactmentname", n_trmtrainactmentname_like);
         }
     }
-	private String n_trmtrainactapplyname_eq;//[培训活动申请名称]
+	private String n_trmtrainactapplyname_eq;//[培训后评估名称]
 	public void setN_trmtrainactapplyname_eq(String n_trmtrainactapplyname_eq) {
         this.n_trmtrainactapplyname_eq = n_trmtrainactapplyname_eq;
         if(!ObjectUtils.isEmpty(this.n_trmtrainactapplyname_eq)){
             this.getSearchCond().eq("trmtrainactapplyname", n_trmtrainactapplyname_eq);
         }
     }
-	private String n_trmtrainactapplyname_like;//[培训活动申请名称]
+	private String n_trmtrainactapplyname_like;//[培训后评估名称]
 	public void setN_trmtrainactapplyname_like(String n_trmtrainactapplyname_like) {
         this.n_trmtrainactapplyname_like = n_trmtrainactapplyname_like;
         if(!ObjectUtils.isEmpty(this.n_trmtrainactapplyname_like)){
             this.getSearchCond().like("trmtrainactapplyname", n_trmtrainactapplyname_like);
         }
     }
-	private String n_trmtrainactapplyid_eq;//[培训活动申请标识]
+	private String n_trmtrainactapplyid_eq;//[培训后评估标识]
 	public void setN_trmtrainactapplyid_eq(String n_trmtrainactapplyid_eq) {
         this.n_trmtrainactapplyid_eq = n_trmtrainactapplyid_eq;
         if(!ObjectUtils.isEmpty(this.n_trmtrainactapplyid_eq)){
             this.getSearchCond().eq("trmtrainactapplyid", n_trmtrainactapplyid_eq);
+        }
+    }
+	private String n_evaltarget_eq;//[评估对象]
+	public void setN_evaltarget_eq(String n_evaltarget_eq) {
+        this.n_evaltarget_eq = n_evaltarget_eq;
+        if(!ObjectUtils.isEmpty(this.n_evaltarget_eq)){
+            this.getSearchCond().eq("evaltarget", n_evaltarget_eq);
         }
     }
 
