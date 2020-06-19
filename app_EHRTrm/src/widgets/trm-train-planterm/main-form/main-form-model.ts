@@ -56,14 +56,14 @@ export default class MainModel {
         name: 'srfsourcekey',
       },
       {
-        name: 'nd',
-        prop: 'nd',
-        dataType: 'PICKUPDATA',
-      },
-      {
         name: 'trmtrainplanname',
         prop: 'trmtrainplanname',
         dataType: 'PICKUPTEXT',
+      },
+      {
+        name: 'nd',
+        prop: 'nd',
+        dataType: 'PICKUPDATA',
       },
       {
         name: 'trmtrainplantermname',

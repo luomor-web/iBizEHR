@@ -16,25 +16,7 @@
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainplanterm.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="0" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.nd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='nd' :itemRules="this.rules.nd" class='' :caption="$t('entities.trmtrainplanterm.main_form.details.nd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nd.error" :isEmptyCaption="false" labelPos="LEFT">
-    
- <dropdown-list 
-    v-model="data.nd" 
-    :data="data" 
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{ }' 
-    :localParam ='{ }' 
-    :disabled="detailsModel.nd.disabled"  
-    tag='EhrCodeList0115' 
-    codelistType='STATIC'
-    placeholder='请选择...' style="">
- </dropdown-list>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.trmtrainplanname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+        <i-col v-show="detailsModel.trmtrainplanname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='trmtrainplanname' :itemRules="this.rules.trmtrainplanname" class='' :caption="$t('entities.trmtrainplanterm.main_form.details.trmtrainplanname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.trmtrainplanname.error" :isEmptyCaption="false" labelPos="LEFT">
     
 <app-picker 
@@ -58,6 +40,24 @@
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>
 
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.nd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='nd' :itemRules="this.rules.nd" class='' :caption="$t('entities.trmtrainplanterm.main_form.details.nd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nd.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+ <dropdown-list 
+    v-model="data.nd" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :localContext ='{ }' 
+    :localParam ='{ }' 
+    :disabled="detailsModel.nd.disabled"  
+    tag='EhrCodeList0009' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -648,8 +648,8 @@ export default class MainBase extends Vue implements ControlInterface {
         srfuf: null,
         srfdeid: null,
         srfsourcekey: null,
-        nd: null,
         trmtrainplanname: null,
+        nd: null,
         trmtrainplantermname: null,
         pxkssj: null,
         pxjssj: null,
@@ -753,23 +753,23 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
-        nd: [
-            { type: 'string', message: '年度 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '年度 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '年度 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '年度 值不能为空', trigger: 'blur' },
-        ],
         trmtrainplanname: [
             { type: 'string', message: '培训计划 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '培训计划 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '培训计划 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '培训计划 值不能为空', trigger: 'blur' },
         ],
+        nd: [
+            { type: 'string', message: '年度 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '年度 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '年度 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '年度 值不能为空', trigger: 'blur' },
+        ],
         trmtrainplantermname: [
-            { type: 'string', message: '培训计划项名称 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '培训计划项名称 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '培训计划项名称 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '培训计划项名称 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '培训立项名称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '培训立项名称 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '培训立项名称 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '培训立项名称 值不能为空', trigger: 'blur' },
         ],
         pxkssj: [
             { type: 'string', message: '培训开始时间 值必须为字符串类型', trigger: 'change' },
@@ -884,11 +884,11 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        nd: new FormItemModel({ caption: '年度', detailType: 'FORMITEM', name: 'nd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
-, 
         trmtrainplanname: new FormItemModel({ caption: '培训计划', detailType: 'FORMITEM', name: 'trmtrainplanname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        trmtrainplantermname: new FormItemModel({ caption: '培训计划项名称', detailType: 'FORMITEM', name: 'trmtrainplantermname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        nd: new FormItemModel({ caption: '年度', detailType: 'FORMITEM', name: 'nd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
+, 
+        trmtrainplantermname: new FormItemModel({ caption: '培训立项名称', detailType: 'FORMITEM', name: 'trmtrainplantermname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         pxkssj: new FormItemModel({ caption: '培训开始时间', detailType: 'FORMITEM', name: 'pxkssj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -1014,18 +1014,6 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 nd 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.nd')
-    onNdChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'nd', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 trmtrainplanname 值
      *
      * @param {*} newVal
@@ -1035,6 +1023,18 @@ export default class MainBase extends Vue implements ControlInterface {
     @Watch('data.trmtrainplanname')
     onTrmtrainplannameChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'trmtrainplanname', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 nd 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.nd')
+    onNdChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'nd', newVal: newVal, oldVal: oldVal });
     }
 
     /**
