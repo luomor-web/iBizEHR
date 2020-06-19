@@ -301,6 +301,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '已开班',
                 "data":"",
                 "codename":"Item_30",
+                "color": "rgba(213, 0, 255, 1)",
                 value: '30',
                 
                 disabled: false,

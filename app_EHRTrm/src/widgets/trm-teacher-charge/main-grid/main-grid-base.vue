@@ -21,7 +21,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('trmtrainplantermname')">
-                <el-table-column show-overflow-tooltip :prop="'trmtrainplantermname'" :label="$t('entities.trmteachercharge.main_grid.columns.trmtrainplantermname')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'trmtrainplantermname'" :label="$t('entities.trmteachercharge.main_grid.columns.trmtrainplantermname')" :width="220"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmteachercharge.main_grid.columns.trmtrainplantermname')}}

@@ -42,11 +42,6 @@ export default class MainModel {
           dataType: 'FLOAT',
         },
         {
-          name: 'yszje',
-          prop: 'yszje',
-          dataType: 'FLOAT',
-        },
-        {
           name: 'trmtrainplantermid',
           prop: 'trmtrainplantermid',
           dataType: 'PICKUP',
@@ -85,6 +80,11 @@ export default class MainModel {
           name: 'szf',
           prop: 'szf',
           dataType: 'FLOAT',
+        },
+        {
+          name: 'tzysxm',
+          prop: 'tzysxm',
+          dataType: 'TEXT',
         },
         {
           name: 'clf',

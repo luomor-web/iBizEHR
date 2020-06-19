@@ -76,9 +76,9 @@ export default {
 	},
 	main_grid: {
 		columns: {
-			trmtrainplantermname: "培训班",
+			trmtrainplantermname: "培训立项",
 			jflx: "经费类型",
-			yszje: "预算费用",
+			tzysxm: "预算费用",
 			tzje: "实际费用",
 			clf: "差旅费",
 			szf: "师资费",

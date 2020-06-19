@@ -21,7 +21,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('trmtrainplantermname')">
-                <el-table-column show-overflow-tooltip :prop="'trmtrainplantermname'" :label="$t('entities.trmtrainbuapply.main_grid.columns.trmtrainplantermname')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'trmtrainplantermname'" :label="$t('entities.trmtrainbuapply.main_grid.columns.trmtrainplantermname')" :width="220"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainbuapply.main_grid.columns.trmtrainplantermname')}}
@@ -46,15 +46,15 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('yszje')">
-                <el-table-column show-overflow-tooltip :prop="'yszje'" :label="$t('entities.trmtrainbuapply.main_grid.columns.yszje')" :width="150"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('tzysxm')">
+                <el-table-column show-overflow-tooltip :prop="'tzysxm'" :label="$t('entities.trmtrainbuapply.main_grid.columns.tzysxm')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.trmtrainbuapply.main_grid.columns.yszje')}}
+                        {{$t('entities.trmtrainbuapply.main_grid.columns.tzysxm')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                            <app-format-data dataType="FLOAT" precision="0" :data="row.yszje"></app-format-data>
+                        <span>{{row.tzysxm}}</span>
                     </template>
                 </el-table-column>
             </template>
@@ -608,7 +608,7 @@ export default class MainBase extends Vue implements ControlInterface {
     public allColumns: any[] = [
         {
             name: 'trmtrainplantermname',
-            label: '培训班',
+            label: '培训立项',
             langtag: 'entities.trmtrainbuapply.main_grid.columns.trmtrainplantermname',
             show: true,
             util: 'px'
@@ -621,9 +621,9 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'px'
         },
         {
-            name: 'yszje',
+            name: 'tzysxm',
             label: '预算费用',
-            langtag: 'entities.trmtrainbuapply.main_grid.columns.yszje',
+            langtag: 'entities.trmtrainbuapply.main_grid.columns.tzysxm',
             show: true,
             util: 'PX'
         },
