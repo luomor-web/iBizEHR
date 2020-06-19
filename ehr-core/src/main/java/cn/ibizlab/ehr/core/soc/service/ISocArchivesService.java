@@ -37,6 +37,7 @@ public interface ISocArchivesService extends IService<SocArchives>{
     boolean create(SocArchives et) ;
     void createBatch(List<SocArchives> list) ;
     boolean checkKey(SocArchives et) ;
+    Page<SocArchives> searchOrgArchives(SocArchivesSearchContext context) ;
     Page<SocArchives> searchDefault(SocArchivesSearchContext context) ;
     Page<SocArchives> searchStopArchives(SocArchivesSearchContext context) ;
     List<SocArchives> selectByPimpersonid(String pimpersonid) ;

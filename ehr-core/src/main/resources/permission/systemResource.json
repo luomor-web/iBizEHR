@@ -2692,7 +2692,7 @@
     "dename":"SocArchives",
     "delogicname":"社保档案",
     "sysmoudle":{"id":"SOC","name":"社保福利管理"},
-    "dedataset":[{"id":"Default" , "name":"DEFAULT"},{"id":"StopArchives" , "name":"非员工待终止档案"}],
+    "dedataset":[{"id":"OrgArchives" , "name":"ORGARCHIVES"},{"id":"Default" , "name":"DEFAULT"},{"id":"StopArchives" , "name":"非员工待终止档案"}],
     "deaction":[{"id":"Remove" , "name":"Remove" , "type":"BUILTIN" },{"id":"GetDraft" , "name":"GetDraft" , "type":"BUILTIN" },{"id":"Update" , "name":"Update" , "type":"BUILTIN" },{"id":"Get" , "name":"Get" , "type":"BUILTIN" },{"id":"StopArchives" , "name":"终止社保" , "type":"DELOGIC" },{"id":"Save" , "name":"Save" , "type":"BUILTIN" },{"id":"Create" , "name":"Create" , "type":"BUILTIN" },{"id":"CheckKey" , "name":"CheckKey" , "type":"BUILTIN" }],
     "datascope":[{"id":"all","name":"全部数据"}, {"id":"createman","name":"创建人"}]
      }

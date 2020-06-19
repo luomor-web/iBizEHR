@@ -149,6 +149,27 @@ public class SocArchivesResource {
         return  ResponseEntity.status(HttpStatus.OK).body(socarchivesService.checkKey(socarchivesMapping.toDomain(socarchivesdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocArchives-OrgArchives-all')")
+	@ApiOperation(value = "获取ORGARCHIVES", tags = {"社保档案" } ,notes = "获取ORGARCHIVES")
+    @RequestMapping(method= RequestMethod.GET , value="/socarchives/fetchorgarchives")
+	public ResponseEntity<List<SocArchivesDTO>> fetchOrgArchives(SocArchivesSearchContext context) {
+        Page<SocArchives> domains = socarchivesService.searchOrgArchives(context) ;
+        List<SocArchivesDTO> list = socarchivesMapping.toDto(domains.getContent());
+        return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocArchives-OrgArchives-all')")
+	@ApiOperation(value = "查询ORGARCHIVES", tags = {"社保档案" } ,notes = "查询ORGARCHIVES")
+    @RequestMapping(method= RequestMethod.POST , value="/socarchives/searchorgarchives")
+	public ResponseEntity<Page<SocArchivesDTO>> searchOrgArchives(@RequestBody SocArchivesSearchContext context) {
+        Page<SocArchives> domains = socarchivesService.searchOrgArchives(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(socarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocArchives-Default-all')")
 	@ApiOperation(value = "获取DEFAULT", tags = {"社保档案" } ,notes = "获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/socarchives/fetchdefault")
@@ -312,6 +333,29 @@ public class SocArchivesResource {
         return  ResponseEntity.status(HttpStatus.OK).body(socarchivesService.checkKey(socarchivesMapping.toDomain(socarchivesdto)));
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocArchives-OrgArchives-all')")
+	@ApiOperation(value = "根据人员信息获取ORGARCHIVES", tags = {"社保档案" } ,notes = "根据人员信息获取ORGARCHIVES")
+    @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/socarchives/fetchorgarchives")
+	public ResponseEntity<List<SocArchivesDTO>> fetchSocArchivesOrgArchivesByPimPerson(@PathVariable("pimperson_id") String pimperson_id,SocArchivesSearchContext context) {
+        context.setN_pimpersonid_eq(pimperson_id);
+        Page<SocArchives> domains = socarchivesService.searchOrgArchives(context) ;
+        List<SocArchivesDTO> list = socarchivesMapping.toDto(domains.getContent());
+	    return ResponseEntity.status(HttpStatus.OK)
+                .header("x-page", String.valueOf(context.getPageable().getPageNumber()))
+                .header("x-per-page", String.valueOf(context.getPageable().getPageSize()))
+                .header("x-total", String.valueOf(domains.getTotalElements()))
+                .body(list);
+	}
+
+    @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocArchives-OrgArchives-all')")
+	@ApiOperation(value = "根据人员信息查询ORGARCHIVES", tags = {"社保档案" } ,notes = "根据人员信息查询ORGARCHIVES")
+    @RequestMapping(method= RequestMethod.POST , value="/pimpeople/{pimperson_id}/socarchives/searchorgarchives")
+	public ResponseEntity<Page<SocArchivesDTO>> searchSocArchivesOrgArchivesByPimPerson(@PathVariable("pimperson_id") String pimperson_id, @RequestBody SocArchivesSearchContext context) {
+        context.setN_pimpersonid_eq(pimperson_id);
+        Page<SocArchives> domains = socarchivesService.searchOrgArchives(context) ;
+	    return ResponseEntity.status(HttpStatus.OK)
+                .body(new PageImpl(socarchivesMapping.toDto(domains.getContent()), context.getPageable(), domains.getTotalElements()));
+	}
     @PreAuthorize("hasAnyAuthority('ROLE_SUPERADMIN','ehr-SocArchives-Default-all')")
 	@ApiOperation(value = "根据人员信息获取DEFAULT", tags = {"社保档案" } ,notes = "根据人员信息获取DEFAULT")
     @RequestMapping(method= RequestMethod.GET , value="/pimpeople/{pimperson_id}/socarchives/fetchdefault")

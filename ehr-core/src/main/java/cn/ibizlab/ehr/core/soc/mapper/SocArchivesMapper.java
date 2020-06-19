@@ -19,6 +19,7 @@ import com.alibaba.fastjson.JSONObject;
 
 public interface SocArchivesMapper extends BaseMapper<SocArchives>{
 
+    Page<SocArchives> searchOrgArchives(IPage page, @Param("srf") SocArchivesSearchContext context, @Param("ew") Wrapper<SocArchives> wrapper) ;
     Page<SocArchives> searchDefault(IPage page, @Param("srf") SocArchivesSearchContext context, @Param("ew") Wrapper<SocArchives> wrapper) ;
     Page<SocArchives> searchStopArchives(IPage page, @Param("srf") SocArchivesSearchContext context, @Param("ew") Wrapper<SocArchives> wrapper) ;
     @Override

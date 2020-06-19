@@ -209,6 +209,15 @@ public class SocArchivesServiceImpl extends ServiceImpl<SocArchivesMapper, SocAr
 
 
     /**
+     * 查询集合 ORGARCHIVES
+     */
+    @Override
+    public Page<SocArchives> searchOrgArchives(SocArchivesSearchContext context) {
+        com.baomidou.mybatisplus.extension.plugins.pagination.Page<SocArchives> pages=baseMapper.searchOrgArchives(context.getPages(),context,context.getSelectCond());
+        return new PageImpl<SocArchives>(pages.getRecords(), context.getPageable(), pages.getTotal());
+    }
+
+    /**
      * 查询集合 DEFAULT
      */
     @Override
