@@ -97,13 +97,19 @@
                     <template v-slot="{row,column,$index}">
                         <template v-if="actualIsOpenEdit">
                             <app-form-item :error="gridItemsModel[$index][column.property].error">
-                                <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
-                <textarea class="ivu-input" rows="10" :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" v-model="row[column.property]" style=""  @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}"></textarea>
-            </div>
+                                <input-box 
+              :disabled="row.srfuf === 1 ? (3 & 2) !== 2 : (3 & 1) !== 1" 
+              v-model="row[column.property]" 
+              style=""
+              type="text"
+              
+              
+              @change="($event)=>{gridEditItemChange(row, column.property, $event, $index)}">
+            </input-box>
                             </app-form-item>
                         </template>
                         <template v-if="!actualIsOpenEdit">
-                                <app-span name='memo' editorType="TEXTAREA" :value="row.memo"></app-span>
+                                <app-span name='memo' editorType="TEXTBOX" :value="row.memo"></app-span>
                         </template>
                     </template>
                 </el-table-column>
