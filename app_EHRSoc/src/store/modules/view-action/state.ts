@@ -4,17 +4,6 @@
 export const viewstate: any = {
     appviews: [
         {
-            viewtag: '1a1326e28ef5ec3d85b45c0d9ecf9684',
-            viewmodule: 'SOC',
-            viewname: 'SocAreaGridView',
-            viewaction: '',
-            viewdatachange: false,
-            refviews: [
-                '912c10028c229aaf79d7542c94931417',
-                '4d2e62d3fd19327574be8b2c65337faf',
-            ],
-        },
-        {
             viewtag: '21bd406d12cd31c62de8b9e78649d229',
             viewmodule: 'SOC',
             viewname: 'SocArchivesQuickEditView',
@@ -113,6 +102,17 @@ export const viewstate: any = {
             viewdatachange: false,
             refviews: [
                 '21bd406d12cd31c62de8b9e78649d229',
+            ],
+        },
+        {
+            viewtag: '8560a1fd46139dfc5f1fc71b0a3f59b0',
+            viewmodule: 'SOC',
+            viewname: 'SocAreaRowEditGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '912c10028c229aaf79d7542c94931417',
+                '4d2e62d3fd19327574be8b2c65337faf',
             ],
         },
         {
@@ -338,8 +338,8 @@ export const viewstate: any = {
             refviews: [
                 '7c209be889bba2c9a6de317b1bcec291',
                 '6f4fb39cb25a702c89dc415245198608',
+                '8560a1fd46139dfc5f1fc71b0a3f59b0',
                 'be3603e6155f93c90fc36953c6a4689f',
-                '1a1326e28ef5ec3d85b45c0d9ecf9684',
                 'bf4ef187880e7431032ba8b27f4a2143',
                 'e39303bf75ac4d04f6f847df12c9005a',
                 'a91ca0b2a35fc0bc1c22a613b0af0f04',

@@ -107,6 +107,20 @@ const router = new Router({
                     component: () => import('@pages/pim/pim-person-set-soc-archives-grid-view/pim-person-set-soc-archives-grid-view.vue'),
                 },
                 {
+                    path: 'socareas/:socarea?/roweditgridview/:roweditgridview?',
+                    meta: {
+                        caption: 'entities.socarea.views.roweditgridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'socareas', parameterName: 'socarea' },
+                            { pathName: 'roweditgridview', parameterName: 'roweditgridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-area-row-edit-grid-view/soc-area-row-edit-grid-view.vue'),
+                },
+                {
                     path: 'pimpeople/:pimperson?/pickupview/:pickupview?',
                     meta: {
                         caption: 'entities.pimperson.views.pickupview.title',
@@ -397,20 +411,6 @@ const router = new Router({
                     component: () => import('@pages/soc/soc-archives-quick-edit-view/soc-archives-quick-edit-view.vue'),
                 },
                 {
-                    path: 'socareas/:socarea?/gridview/:gridview?',
-                    meta: {
-                        caption: 'entities.socarea.views.gridview.title',
-                        info:'',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'socareas', parameterName: 'socarea' },
-                            { pathName: 'gridview', parameterName: 'gridview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/soc/soc-area-grid-view/soc-area-grid-view.vue'),
-                },
-                {
                     path: 'socrules/:socrule?/editview/:editview?',
                     meta: {
                         caption: 'entities.socrule.views.editview.title',
@@ -684,19 +684,6 @@ const router = new Router({
             ],
         },
     {
-        path: '/socareas/:socarea?/gridview/:gridview?',
-        meta: {
-            caption: 'entities.socarea.views.gridview.title',
-            info:'',
-            parameters: [
-                { pathName: 'socareas', parameterName: 'socarea' },
-                { pathName: 'gridview', parameterName: 'gridview' },
-            ],
-            requireAuth: true,
-        },
-        component: () => import('@pages/soc/soc-area-grid-view/soc-area-grid-view.vue'),
-    },
-    {
         path: '/pimpeople/:pimperson?/socarchives/:socarchives?/quickeditview/:quickeditview?',
         meta: {
             caption: 'entities.socarchives.views.quickeditview.title',
@@ -881,6 +868,19 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/pim/pim-person-set-soc-archives-grid-view/pim-person-set-soc-archives-grid-view.vue'),
+    },
+    {
+        path: '/socareas/:socarea?/roweditgridview/:roweditgridview?',
+        meta: {
+            caption: 'entities.socarea.views.roweditgridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'socareas', parameterName: 'socarea' },
+                { pathName: 'roweditgridview', parameterName: 'roweditgridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-area-row-edit-grid-view/soc-area-row-edit-grid-view.vue'),
     },
     {
         path: '/pimpeople/:pimperson?/socarchives/:socarchives?/editview/:editview?',

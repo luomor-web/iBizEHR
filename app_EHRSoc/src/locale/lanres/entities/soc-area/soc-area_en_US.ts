@@ -25,6 +25,10 @@ export default {
 			caption: "参保地",
       title: '参保地选择表格视图',
 		},
+		roweditgridview: {
+			caption: "参保地",
+      title: '参保地表格视图',
+		},
 		pickupview: {
 			caption: "参保地",
       title: '参保地数据选择视图',
@@ -101,6 +105,28 @@ export default {
 		deuiaction1: {
 			caption: "关闭",
 			tip: "关闭",
+		},
+	},
+	roweditgridviewtoolbar_toolbar: {
+		deuiaction1: {
+			caption: "新建",
+			tip: "新建",
+		},
+		deuiaction2: {
+			caption: "保存",
+			tip: "保存",
+		},
+		deuiaction3: {
+			caption: "Remove",
+			tip: "Remove {0}",
+		},
+		deuiaction4: {
+			caption: "导入",
+			tip: "导入",
+		},
+		deuiaction5: {
+			caption: "Export",
+			tip: "Export {0} Data To Excel",
 		},
 	},
 };

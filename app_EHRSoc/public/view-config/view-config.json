@@ -134,6 +134,15 @@
         "viewtag": "7c209be889bba2c9a6de317b1bcec291",
         "memo": ""
     },
+    "socarearoweditgridview": {
+        "title": "参保地表格视图",
+        "caption": "参保地",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocAreaRowEditGridView",
+        "viewtag": "8560a1fd46139dfc5f1fc71b0a3f59b0",
+        "memo": ""
+    },
     "socarchiveseditview": {
         "title": "社保档案编辑视图",
         "caption": "社保档案",

@@ -239,12 +239,12 @@ export default class IndexModel {
             appfunctag: '_7',
             appfuncyype: 'APPVIEW',
             openmode: '',
-            codename: 'socareagridview',
+            codename: 'socarearoweditgridview',
             deResParameters: [],
-            routepath: '/index/:index?/socareas/:socarea?/gridview/:gridview?',
+            routepath: '/index/:index?/socareas/:socarea?/roweditgridview/:roweditgridview?',
             parameters: [
                 { pathName: 'socareas', parameterName: 'socarea' },
-                { pathName: 'gridview', parameterName: 'gridview' },
+                { pathName: 'roweditgridview', parameterName: 'roweditgridview' },
             ],
         },
         {
