@@ -83,6 +83,13 @@ public class SocRuleSearchContext extends QueryWrapperContext<SocRule> {
             this.getSearchCond().like("socareaname", n_socareaname_like);
         }
     }
+	private String n_state_eq;//[状态]
+	public void setN_state_eq(String n_state_eq) {
+        this.n_state_eq = n_state_eq;
+        if(!ObjectUtils.isEmpty(this.n_state_eq)){
+            this.getSearchCond().eq("state", n_state_eq);
+        }
+    }
 
     /**
 	 * 启用快速搜索

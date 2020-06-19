@@ -3,7 +3,6 @@ import EntityService from '../entity-service';
 import SetRejectStatusLogic from '@/service/trm-train-plan/set-reject-status-logic';
 import SetYfbZtLogic from '@/service/trm-train-plan/set-yfb-zt-logic';
 import SetDfbZtLogic from '@/service/trm-train-plan/set-dfb-zt-logic';
-import SetApprovalStatusLogic from '@/service/trm-train-plan/set-approval-status-logic';
 
 
 
@@ -168,9 +167,10 @@ export default class TrmTrainPlanServiceBase extends EntityService {
      * @memberof TrmTrainPlanServiceBase
      */
     public async SetApprovalStatus(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:SetApprovalStatusLogic = new SetApprovalStatusLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
-        const result = await appLogic.onExecute(context,data,isloading?true:false);
-        return {status:200,data:result};
+        if(context.pimperson && context.trmtrainplan){
+            return Http.getInstance().post(`/pimpeople/${context.pimperson}/trmtrainplans/${context.trmtrainplan}/setapprovalstatus`,data,isloading);
+        }
+            return Http.getInstance().post(`/trmtrainplans/${context.trmtrainplan}/setapprovalstatus`,data,isloading);
     }
 
     /**

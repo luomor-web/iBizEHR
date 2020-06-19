@@ -139,6 +139,14 @@ public class SocRule extends EntityMP implements Serializable {
     @JSONField(name = "socareaname")
     @JsonProperty("socareaname")
     private String socareaname;
+    /**
+     * 状态
+     */
+    @DEField(defaultValue = "10")
+    @TableField(value = "state")
+    @JSONField(name = "state")
+    @JsonProperty("state")
+    private String state;
 
     /**
      * 
@@ -196,6 +204,14 @@ public class SocRule extends EntityMP implements Serializable {
     public void setSocareaid(String socareaid){
         this.socareaid = socareaid ;
         this.modify("socareaid",socareaid);
+    }
+
+    /**
+     * 设置 [状态]
+     */
+    public void setState(String state){
+        this.state = state ;
+        this.modify("state",state);
     }
 
 

@@ -80,21 +80,6 @@ export default class PimPersonServiceBase extends EntityService {
             }
         }
         masterData.attendancerecords = attendancerecordsData;
-        let trmtrainplansData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplans'),'undefined')){
-            trmtrainplansData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplans') as any);
-            if(trmtrainplansData && trmtrainplansData.length && trmtrainplansData.length > 0){
-                trmtrainplansData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.trmtrainplanid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.trmtrainplans = trmtrainplansData;
         let trmtrainpeopleData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainpeople'),'undefined')){
             trmtrainpeopleData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainpeople') as any);
@@ -110,11 +95,26 @@ export default class PimPersonServiceBase extends EntityService {
             }
         }
         masterData.trmtrainpeople = trmtrainpeopleData;
+        let trmtrainplansData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplans'),'undefined')){
+            trmtrainplansData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplans') as any);
+            if(trmtrainplansData && trmtrainplansData.length && trmtrainplansData.length > 0){
+                trmtrainplansData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainplanid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainplans = trmtrainplansData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/pimpeople/${context.pimperson}`,data,isloading);
             this.tempStorage.setItem(context.srfsessionkey+'_attendancerecords',JSON.stringify(res.data.attendancerecords));
-            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainplans',JSON.stringify(res.data.trmtrainplans));
             this.tempStorage.setItem(context.srfsessionkey+'_trmtrainpeople',JSON.stringify(res.data.trmtrainpeople));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainplans',JSON.stringify(res.data.trmtrainplans));
             return res;
     }
 
@@ -156,8 +156,8 @@ export default class PimPersonServiceBase extends EntityService {
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/pimpeople/${context.pimperson}`,isloading);
             this.tempStorage.setItem(context.srfsessionkey+'_attendancerecords',JSON.stringify(res.data.attendancerecords));
-            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainplans',JSON.stringify(res.data.trmtrainplans));
             this.tempStorage.setItem(context.srfsessionkey+'_trmtrainpeople',JSON.stringify(res.data.trmtrainpeople));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainplans',JSON.stringify(res.data.trmtrainplans));
             return res;
 
     }
@@ -214,21 +214,6 @@ export default class PimPersonServiceBase extends EntityService {
             }
         }
         masterData.attendancerecords = attendancerecordsData;
-        let trmtrainplansData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplans'),'undefined')){
-            trmtrainplansData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplans') as any);
-            if(trmtrainplansData && trmtrainplansData.length && trmtrainplansData.length > 0){
-                trmtrainplansData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.trmtrainplanid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.trmtrainplans = trmtrainplansData;
         let trmtrainpeopleData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainpeople'),'undefined')){
             trmtrainpeopleData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainpeople') as any);
@@ -244,6 +229,21 @@ export default class PimPersonServiceBase extends EntityService {
             }
         }
         masterData.trmtrainpeople = trmtrainpeopleData;
+        let trmtrainplansData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplans'),'undefined')){
+            trmtrainplansData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplans') as any);
+            if(trmtrainplansData && trmtrainplansData.length && trmtrainplansData.length > 0){
+                trmtrainplansData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainplanid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainplans = trmtrainplansData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -254,8 +254,8 @@ export default class PimPersonServiceBase extends EntityService {
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/pimpeople`,data,isloading);
         this.tempStorage.setItem(tempContext.srfsessionkey+'_attendancerecords',JSON.stringify(res.data.attendancerecords));
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_trmtrainplans',JSON.stringify(res.data.trmtrainplans));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_trmtrainpeople',JSON.stringify(res.data.trmtrainpeople));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_trmtrainplans',JSON.stringify(res.data.trmtrainplans));
         return res;
     }
 
@@ -285,21 +285,6 @@ export default class PimPersonServiceBase extends EntityService {
             }
         }
         masterData.attendancerecords = attendancerecordsData;
-        let trmtrainplansData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplans'),'undefined')){
-            trmtrainplansData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplans') as any);
-            if(trmtrainplansData && trmtrainplansData.length && trmtrainplansData.length > 0){
-                trmtrainplansData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.trmtrainplanid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.trmtrainplans = trmtrainplansData;
         let trmtrainpeopleData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainpeople'),'undefined')){
             trmtrainpeopleData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainpeople') as any);
@@ -315,11 +300,26 @@ export default class PimPersonServiceBase extends EntityService {
             }
         }
         masterData.trmtrainpeople = trmtrainpeopleData;
+        let trmtrainplansData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplans'),'undefined')){
+            trmtrainplansData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplans') as any);
+            if(trmtrainplansData && trmtrainplansData.length && trmtrainplansData.length > 0){
+                trmtrainplansData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainplanid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainplans = trmtrainplansData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/pimpeople/${context.pimperson}/save`,data,isloading);
             this.tempStorage.setItem(context.srfsessionkey+'_attendancerecords',JSON.stringify(res.data.attendancerecords));
-            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainplans',JSON.stringify(res.data.trmtrainplans));
             this.tempStorage.setItem(context.srfsessionkey+'_trmtrainpeople',JSON.stringify(res.data.trmtrainpeople));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainplans',JSON.stringify(res.data.trmtrainplans));
             return res;
     }
 
@@ -404,8 +404,8 @@ export default class PimPersonServiceBase extends EntityService {
         let res:any = await  Http.getInstance().get(`/pimpeople/getdraft`,isloading);
         res.data.pimperson = data.pimperson;
             this.tempStorage.setItem(context.srfsessionkey+'_attendancerecords',JSON.stringify(res.data.attendancerecords));
-            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainplans',JSON.stringify(res.data.trmtrainplans));
             this.tempStorage.setItem(context.srfsessionkey+'_trmtrainpeople',JSON.stringify(res.data.trmtrainpeople));
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainplans',JSON.stringify(res.data.trmtrainplans));
         return res;
     }
 

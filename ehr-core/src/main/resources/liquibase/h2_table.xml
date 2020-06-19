@@ -6753,7 +6753,7 @@
 
 
     <!--输出实体[SOCARCHIVES]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-socarchives-129-172">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-socarchives-132-172">
         <createTable tableName="T_SOCARCHIVES">
                 <column name="SOCARCHIVESID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_SOCARCHIVES_SOCARCHIVESID"/>
@@ -9781,7 +9781,7 @@
 
 
     <!--输出实体[SOCRULE]数据结构 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="tab-socrule-107-252">
+    <changeSet author="a_LAB01_bd0ca3178" id="tab-socrule-111-252">
         <createTable tableName="T_SOCRULE">
                 <column name="SOCRULEID" remarks="" type="VARCHAR(100)">
                     <constraints primaryKey="true" primaryKeyName="PK_SOCRULE_SOCRULEID"/>
@@ -9805,6 +9805,8 @@
                 <column name="MEMO" remarks="" type="VARCHAR(2000)">
                 </column>
                 <column name="SOCAREAID" remarks="" type="VARCHAR(100)">
+                </column>
+                <column name="STATE" remarks="" type="VARCHAR(60)">
                 </column>
         </createTable>
     </changeSet>
@@ -12993,13 +12995,13 @@
        <addForeignKeyConstraint baseColumnNames="TRMTRAINAGENCYID2" baseTableName="T_TRMTRAINAGENCY" constraintName="DER1N_TRMTRAINAGENCY_TRMTRAINA" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="TRMTRAINAGENCYID" referencedTableName="T_TRMTRAINAGENCY" validate="true"/>
     </changeSet>
         <!--输出实体[SOCARCHIVES]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-socarchives-129-545">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-socarchives-132-545">
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_SOCARCHIVES" constraintName="DER1N_SOCARCHIVES_PIMPERSON_PI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-socarchives-129-546">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-socarchives-132-546">
        <addForeignKeyConstraint baseColumnNames="SOCACCOUNTID" baseTableName="T_SOCARCHIVES" constraintName="DER1N_SOCARCHIVES_SOCACCOUNT_S" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SOCACCOUNTID" referencedTableName="T_SOCACCOUNT" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-socarchives-129-547">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-socarchives-132-547">
        <addForeignKeyConstraint baseColumnNames="SOCRULEID" baseTableName="T_SOCARCHIVES" constraintName="DER1N_SOCARCHIVES_SOCRULE_SOCR" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SOCRULEID" referencedTableName="T_SOCRULE" validate="true"/>
     </changeSet>
         <!--输出实体[PIMLANGUAGEABILITY]外键关系 -->
@@ -13385,10 +13387,10 @@
        <addForeignKeyConstraint baseColumnNames="PIMPERSONID" baseTableName="T_PCMTXFPSQ" constraintName="DER1N_PCMTXFPSQ_PIMPERSON_PIMP" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="PIMPERSONID" referencedTableName="T_PIMPERSON" validate="true"/>
     </changeSet>
         <!--输出实体[SOCRULE]外键关系 -->
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-socrule-107-654">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-socrule-111-654">
        <addForeignKeyConstraint baseColumnNames="ORMORGID" baseTableName="T_SOCRULE" constraintName="DER1N_SOCRULE_ORMORG_ORMORGID" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ORGID" referencedTableName="T_SRFORG" validate="true"/>
     </changeSet>
-    <changeSet author="a_LAB01_bd0ca3178" id="fk-socrule-107-655">
+    <changeSet author="a_LAB01_bd0ca3178" id="fk-socrule-111-655">
        <addForeignKeyConstraint baseColumnNames="SOCAREAID" baseTableName="T_SOCRULE" constraintName="DER1N_SOCRULE_SOCAREA_SOCAREAI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="SOCAREAID" referencedTableName="T_SOCAREA" validate="true"/>
     </changeSet>
         <!--输出实体[PIMPAPER]外键关系 -->
