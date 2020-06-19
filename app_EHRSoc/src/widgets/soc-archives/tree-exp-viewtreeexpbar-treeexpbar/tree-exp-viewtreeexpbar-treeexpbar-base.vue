@@ -302,14 +302,14 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
         }
         if (Object.is(expmode, 'SUBSUBORG')) {
             return {  
-                viewname: 'soc-archives-grid-view', 
+                viewname: 'soc-archives-org-grid-view', 
                 parentdata: {"srfparentdefname":"n_ormorgid_eq","nodeid":"%NODEID%"},
                 deKeyField:'socarchives'
 			};
         }
         if (Object.is(expmode, 'SUBORG')) {
             return {  
-                viewname: 'soc-archives-grid-view', 
+                viewname: 'soc-archives-org-grid-view', 
                 parentdata: {"srfparentdefname":"n_ormorgid_eq","nodeid":"%NODEID%"},
                 deKeyField:'socarchives'
 			};

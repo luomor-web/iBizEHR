@@ -30,6 +30,10 @@ export default {
 			caption: '社保档案',
       title: '社保档案表格视图',
 		},
+		orggridview: {
+			caption: '社保档案',
+      title: '社保档案表格视图',
+		},
 		editview: {
 			caption: '社保档案',
       title: '社保档案编辑视图',
@@ -151,6 +155,28 @@ export default {
 		},
 	},
 	gridviewtoolbar_toolbar: {
+		deuiaction1_quickcreatesocarchives: {
+			caption: '新建',
+			tip: '新建',
+		},
+		deuiaction8: {
+			caption: '导入',
+			tip: '导入',
+		},
+		deuiaction6: {
+			caption: '导出',
+			tip: '导出',
+		},
+		deuiaction2: {
+			caption: '过滤',
+			tip: '过滤',
+		},
+		deuiaction5: {
+			caption: '帮助',
+			tip: '帮助',
+		},
+	},
+	orggridviewtoolbar_toolbar: {
 		deuiaction1_quickcreatesocarchives: {
 			caption: '新建',
 			tip: '新建',

@@ -624,6 +624,35 @@ const router = new Router({
                     component: () => import('@pages/soc/soc-account-grid-view/soc-account-grid-view.vue'),
                 },
                 {
+                    path: 'pimpeople/:pimperson?/socarchives/:socarchives?/orggridview/:orggridview?',
+                    meta: {
+                        caption: 'entities.socarchives.views.orggridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'socarchives', parameterName: 'socarchives' },
+                            { pathName: 'orggridview', parameterName: 'orggridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-archives-org-grid-view/soc-archives-org-grid-view.vue'),
+                },
+                {
+                    path: 'socarchives/:socarchives?/orggridview/:orggridview?',
+                    meta: {
+                        caption: 'entities.socarchives.views.orggridview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'socarchives', parameterName: 'socarchives' },
+                            { pathName: 'orggridview', parameterName: 'orggridview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-archives-org-grid-view/soc-archives-org-grid-view.vue'),
+                },
+                {
                     path: 'socrules/:socrule?/pickupview/:pickupview?',
                     meta: {
                         caption: 'entities.socrule.views.pickupview.title',
@@ -773,6 +802,33 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/soc/soc-archives-grid-view/soc-archives-grid-view.vue'),
+    },
+    {
+        path: '/pimpeople/:pimperson?/socarchives/:socarchives?/orggridview/:orggridview?',
+        meta: {
+            caption: 'entities.socarchives.views.orggridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'socarchives', parameterName: 'socarchives' },
+                { pathName: 'orggridview', parameterName: 'orggridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-archives-org-grid-view/soc-archives-org-grid-view.vue'),
+    },
+    {
+        path: '/socarchives/:socarchives?/orggridview/:orggridview?',
+        meta: {
+            caption: 'entities.socarchives.views.orggridview.title',
+            info:'',
+            parameters: [
+                { pathName: 'socarchives', parameterName: 'socarchives' },
+                { pathName: 'orggridview', parameterName: 'orggridview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-archives-org-grid-view/soc-archives-org-grid-view.vue'),
     },
     {
         path: '/socareas/:socarea?/pickupgridview/:pickupgridview?',

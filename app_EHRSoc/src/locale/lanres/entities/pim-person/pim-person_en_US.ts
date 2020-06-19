@@ -221,8 +221,8 @@ export default {
 	},
 	setsocarchivesgridviewtoolbar_toolbar: {
 		tbitem1_quickcreatesocarchives: {
-			caption: "新建社保档案",
-			tip: "新建社保档案",
+			caption: "建立社保档案",
+			tip: "建立社保档案",
 		},
 		tbitem13: {
 			caption: "Export",

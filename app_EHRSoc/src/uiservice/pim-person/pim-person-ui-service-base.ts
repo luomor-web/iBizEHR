@@ -93,7 +93,7 @@ export default class PimPersonUIServiceBase extends UIService {
     }
 
     /**
-     * 新建社保档案
+     * 建立社保档案
      *
      * @param {any[]} args 当前数据
      * @param {any} context 行为附加上下文

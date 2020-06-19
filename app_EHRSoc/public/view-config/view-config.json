@@ -89,6 +89,15 @@
         "viewtag": "67ed4891f00a2d935667f0ec691f7182",
         "memo": ""
     },
+    "socarchivesorggridview": {
+        "title": "社保档案表格视图",
+        "caption": "社保档案",
+        "viewtype": "DEGRIDVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocArchivesOrgGridView",
+        "viewtag": "6b3f2b0a86d1987ee38869613036c1b2",
+        "memo": "系统自动添加"
+    },
     "socareapickupgridview": {
         "title": "参保地选择表格视图",
         "caption": "参保地",

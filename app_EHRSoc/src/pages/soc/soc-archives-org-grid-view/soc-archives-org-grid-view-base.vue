@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="pimpersonsetsocarchivesgridview" viewTitle="员工社保设置" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'pim-person-set-soc-archives-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="socarchivesorggridview" viewTitle="社保档案表格视图" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'soc-archives-org-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -9,7 +9,7 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="员工编号，员工姓名" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="员工姓名，员工编号" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
@@ -44,7 +44,7 @@
     loaddraftAction=""
     loadAction=""
     createAction=""
-    fetchAction="FetchSetSocArchives"
+    fetchAction="FetchOrgArchives"
     :newdata="newdata"
     :opendata="opendata"
     name="grid"  
@@ -69,39 +69,39 @@ import { Vue, Component, Prop, Provide, Emit, Watch } from 'vue-property-decorat
 import { Subject } from 'rxjs';
 import { UIActionTool, Util } from '@/utils';
 import { VueLifeCycleProcessing, GridViewBase } from '@/crm-core';
-import PimPersonService from '@/service/pim-person/pim-person-service';
+import SocArchivesService from '@/service/soc-archives/soc-archives-service';
 
 import GridViewEngine from '@engine/view/grid-view-engine';
 
-import PimPersonUIService from '@/uiservice/pim-person/pim-person-ui-service';
+import SocArchivesUIService from '@/uiservice/soc-archives/soc-archives-ui-service';
 import CodeListService from "@service/app/codelist-service";
 
 
 /**
- * 员工社保设置基类
+ * 社保档案表格视图基类
  *
  * @export
- * @class PimPersonSetSocArchivesGridViewBase
+ * @class SocArchivesOrgGridViewBase
  * @extends {GridViewBase}
  */
 @Component({})
 @VueLifeCycleProcessing
-export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
+export default class SocArchivesOrgGridViewBase extends GridViewBase {
 
     /**
      * 实体服务对象
      *
-     * @type {PimPersonService}
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @type {SocArchivesService}
+     * @memberof SocArchivesOrgGridViewBase
      */
-    public appEntityService: PimPersonService = new PimPersonService;
+    public appEntityService: SocArchivesService = new SocArchivesService;
 
 
     /**
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */    
     public counterServiceArray:Array<any> = [];
     
@@ -110,7 +110,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} val
      * @returns {*}
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     @Emit() 
     public viewDatasChange(val: any):any {
@@ -121,16 +121,16 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
 	 * 视图标识
 	 *
 	 * @type {string}
-	 * @memberof PimPersonSetSocArchivesGridViewBase
+	 * @memberof SocArchivesOrgGridViewBase
 	 */
-	public viewtag: string = '7c209be889bba2c9a6de317b1bcec291';
+	public viewtag: string = '6b3f2b0a86d1987ee38869613036c1b2';
 
     /**
      * 父数据对象
      *
      * @protected
      * @type {*}
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     protected srfparentdata: any = {};
 
@@ -138,7 +138,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
 	 * 自定义视图导航上下文集合
 	 *
 	 * @type {*}
-	 * @memberof PimPersonSetSocArchivesGridViewBase
+	 * @memberof SocArchivesOrgGridViewBase
 	 */
     public customViewNavContexts:any ={
     };
@@ -147,7 +147,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
 	 * 自定义视图导航参数集合
 	 *
 	 * @type {*}
-	 * @memberof PimPersonSetSocArchivesGridViewBase
+	 * @memberof SocArchivesOrgGridViewBase
 	 */
     public customViewParams:any ={
     };
@@ -156,12 +156,12 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      * 视图模型数据
      *
      * @type {*}
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public model: any = {
-        srfCaption: 'entities.pimperson.views.setsocarchivesgridview.caption',
-        srfTitle: 'entities.pimperson.views.setsocarchivesgridview.title',
-        srfSubTitle: 'entities.pimperson.views.setsocarchivesgridview.subtitle',
+        srfCaption: 'entities.socarchives.views.orggridview.caption',
+        srfTitle: 'entities.socarchives.views.orggridview.title',
+        srfSubTitle: 'entities.socarchives.views.orggridview.subtitle',
         dataInfo: ''
     }
 
@@ -169,7 +169,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      * 容器模型
      *
      * @type {*}
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public containerModel: any = {
         view_toolbar: { name: 'toolbar', type: 'TOOLBAR' },
@@ -182,21 +182,25 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      *
      * @public
      * @type {Subject<{action: string, data: any}>}
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public viewState: Subject<ViewState> = new Subject();
     /**
      * 工具栏模型
      *
      * @type {*}
-     * @memberof PimPersonSetSocArchivesGridView
+     * @memberof SocArchivesOrgGridView
      */
     public toolBarModels: any = {
-        tbitem1_quickcreatesocarchives: { name: 'tbitem1_quickcreatesocarchives', caption: '建立社保档案','isShowCaption':true,'isShowIcon':true, tooltip: '建立社保档案', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'QuickCreateSocArchives', target: 'SINGLEKEY' }, class: '' },
+        deuiaction1_quickcreatesocarchives: { name: 'deuiaction1_quickcreatesocarchives', caption: '新建','isShowCaption':true,'isShowIcon':true, tooltip: '新建', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'QuickCreateSocArchives', target: 'NONE' }, class: '' },
 
-        tbitem13: { name: 'tbitem13', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
+        deuiaction8: { name: 'deuiaction8', caption: '导入','isShowCaption':true,'isShowIcon':true, tooltip: '导入', iconcls: 'fa fa-upload', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYYPZSZYJTJ', uiaction: { tag: 'Import', target: '' }, class: '' },
 
-        tbitem19: { name: 'tbitem19', caption: '过滤','isShowCaption':true,'isShowIcon':true, tooltip: '过滤', iconcls: 'fa fa-filter', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYKQLX', uiaction: { tag: 'ToggleFilter', target: '' }, class: '' },
+        deuiaction6: { name: 'deuiaction6', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
+
+        deuiaction2: { name: 'deuiaction2', caption: '过滤','isShowCaption':true,'isShowIcon':true, tooltip: '过滤', iconcls: 'fa fa-filter', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: 'SRFUR__JGLYKQLX', uiaction: { tag: 'ToggleFilter', target: '' }, class: '' },
+
+        deuiaction5: { name: 'deuiaction5', caption: '帮助','isShowCaption':true,'isShowIcon':true, tooltip: '帮助', iconcls: 'fa fa-question', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'Help', target: '' }, class: '' },
 
     };
 
@@ -209,7 +213,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      *
      * @public
      * @type {Engine}
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public engine: GridViewEngine = new GridViewEngine();
 	
@@ -218,7 +222,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      * 引擎初始化
      *
      * @public
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public engineInit(): void {
         this.engine.init({
@@ -231,8 +235,8 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
             },
             grid: this.$refs.grid,
             searchform: this.$refs.searchform,
-            keyPSDEField: 'pimperson',
-            majorPSDEField: 'pimpersonname',
+            keyPSDEField: 'socarchives',
+            majorPSDEField: 'socarchivesname',
             isLoadDefault: true,
         });
     }
@@ -243,17 +247,23 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public toolbar_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'tbitem1_quickcreatesocarchives')) {
-            this.toolbar_tbitem1_quickcreatesocarchives_click(null, '', $event2);
+        if (Object.is($event.tag, 'deuiaction1_quickcreatesocarchives')) {
+            this.toolbar_deuiaction1_quickcreatesocarchives_click(null, '', $event2);
         }
-        if (Object.is($event.tag, 'tbitem13')) {
-            this.toolbar_tbitem13_click(null, '', $event2);
+        if (Object.is($event.tag, 'deuiaction8')) {
+            this.toolbar_deuiaction8_click(null, '', $event2);
         }
-        if (Object.is($event.tag, 'tbitem19')) {
-            this.toolbar_tbitem19_click(null, '', $event2);
+        if (Object.is($event.tag, 'deuiaction6')) {
+            this.toolbar_deuiaction6_click(null, '', $event2);
+        }
+        if (Object.is($event.tag, 'deuiaction2')) {
+            this.toolbar_deuiaction2_click(null, '', $event2);
+        }
+        if (Object.is($event.tag, 'deuiaction5')) {
+            this.toolbar_deuiaction5_click(null, '', $event2);
         }
     }
 
@@ -263,7 +273,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public grid_selectionchange($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'selectionchange', $event);
@@ -275,7 +285,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public grid_beforeload($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'beforeload', $event);
@@ -287,7 +297,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public grid_rowdblclick($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'rowdblclick', $event);
@@ -299,7 +309,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public grid_remove($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'remove', $event);
@@ -311,7 +321,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public grid_load($event: any, $event2?: any) {
         this.engine.onCtrlEvent('grid', 'load', $event);
@@ -323,7 +333,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public searchform_save($event: any, $event2?: any) {
         this.engine.onCtrlEvent('searchform', 'save', $event);
@@ -335,7 +345,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public searchform_search($event: any, $event2?: any) {
         this.engine.onCtrlEvent('searchform', 'search', $event);
@@ -347,7 +357,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      *
      * @param {*} [args={}]
      * @param {*} $event
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public searchform_load($event: any, $event2?: any) {
         this.engine.onCtrlEvent('searchform', 'load', $event);
@@ -363,7 +373,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_tbitem1_quickcreatesocarchives_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction1_quickcreatesocarchives_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -380,8 +390,8 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        const curUIService:PimPersonUIService  = new PimPersonUIService();
-        curUIService.PimPerson_QuickCreateSocArchives(datas,contextJO, paramJO,  $event, xData,this,"PimPerson");
+        const curUIService:SocArchivesUIService  = new SocArchivesUIService();
+        curUIService.SocArchives_QuickCreateSocArchives(datas,contextJO, paramJO,  $event, xData,this,"SocArchives");
     }
 
     /**
@@ -392,7 +402,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_tbitem13_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction8_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -409,7 +419,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"PimPerson");
+        this.Import(datas, contextJO,paramJO,  $event, xData,this,"SocArchives");
     }
 
     /**
@@ -420,7 +430,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_tbitem19_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_deuiaction6_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -437,7 +447,63 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
           datas = [params];
         }
         // 界面行为
-        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"PimPerson");
+        this.ExportExcel(datas, contextJO,paramJO,  $event, xData,this,"SocArchives");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public toolbar_deuiaction2_click(params: any = {}, tag?: any, $event?: any) {
+        // 参数
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        let contextJO:any = {};
+        xData = this.$refs.grid;
+        if (xData.getDatas && xData.getDatas instanceof Function) {
+            datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        this.ToggleFilter(datas, contextJO,paramJO,  $event, xData,this,"SocArchives");
+    }
+
+    /**
+     * 逻辑事件
+     *
+     * @param {*} [params={}]
+     * @param {*} [tag]
+     * @param {*} [$event]
+     * @memberof 
+     */
+    public toolbar_deuiaction5_click(params: any = {}, tag?: any, $event?: any) {
+        // 参数
+        // 取数
+        let datas: any[] = [];
+        let xData: any = null;
+        // _this 指向容器对象
+        const _this: any = this;
+        let paramJO:any = {};
+        let contextJO:any = {};
+        xData = this.$refs.grid;
+        if (xData.getDatas && xData.getDatas instanceof Function) {
+            datas = [...xData.getDatas()];
+        }
+        if(params){
+          datas = [params];
+        }
+        // 界面行为
+        this.Help(datas, contextJO,paramJO,  $event, xData,this,"SocArchives");
     }
 
     /**
@@ -448,12 +514,50 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      * @param {*} [fullargs]
      * @param {*} [$event]
      * @param {*} [xData]
-     * @memberof PimPersonSetSocArchivesGridView
+     * @memberof SocArchivesOrgGridView
      */
     public newdata(args: any[],fullargs?:any[], params?: any, $event?: any, xData?: any) {
         let localContext:any = null;
         let localViewParam:any =null;
-    this.$Notice.warning({ title: '错误', desc: '未指定关系视图' });
+        const data: any = {};
+        if(args[0].srfsourcekey){
+            data.srfsourcekey = args[0].srfsourcekey;
+        }
+        let tempContext = JSON.parse(JSON.stringify(this.context));
+        delete tempContext.socarchives;
+        if(args.length >0){
+            Object.assign(tempContext,args[0]);
+        }
+        let deResParameters: any[] = [];
+        if(tempContext.pimperson && true){
+            deResParameters = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            ]
+        }
+        const parameters: any[] = [
+            { pathName: 'socarchives', parameterName: 'socarchives' },
+        ];
+        const _this: any = this;
+        const openDrawer = (view: any, data: any) => {
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, tempContext, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
+        }
+        const view: any = {
+            viewname: 'soc-archives-edit-view', 
+            height: 0, 
+            width: 0,  
+            title: this.$t('entities.socarchives.views.editview.title'),
+            placement: 'DRAWER_TOP',
+        };
+        openDrawer(view, data);
     }
 
 
@@ -465,15 +569,67 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      * @param {*} [fullargs]
      * @param {*} [$event]
      * @param {*} [xData]
-     * @memberof PimPersonSetSocArchivesGridView
+     * @memberof SocArchivesOrgGridView
      */
     public opendata(args: any[],fullargs?:any[],params?: any, $event?: any, xData?: any) {
         let localContext:any = null;
         let localViewParam:any =null;
-    this.$Notice.warning({ title: '错误', desc: '未指定关系视图' });
+        const data: any = {};
+        let tempContext = JSON.parse(JSON.stringify(this.context));
+        if(args.length >0){
+            Object.assign(tempContext,args[0]);
+        }
+        let deResParameters: any[] = [];
+        if(tempContext.pimperson && true){
+            deResParameters = [
+            { pathName: 'pimpeople', parameterName: 'pimperson' },
+            ]
+        }
+        const parameters: any[] = [
+            { pathName: 'socarchives', parameterName: 'socarchives' },
+        ];
+        const _this: any = this;
+        const openDrawer = (view: any, data: any) => {
+            let container: Subject<any> = this.$appdrawer.openDrawer(view, tempContext, data);
+            container.subscribe((result: any) => {
+                if (!result || !Object.is(result.ret, 'OK')) {
+                    return;
+                }
+                if (!xData || !(xData.refresh instanceof Function)) {
+                    return;
+                }
+                xData.refresh(result.datas);
+            });
+        }
+        const view: any = {
+            viewname: 'soc-archives-edit-view', 
+            height: 0, 
+            width: 0,  
+            title: this.$t('entities.socarchives.views.editview.title'),
+            placement: 'DRAWER_TOP',
+        };
+        openDrawer(view, data);
     }
 
 
+    /**
+     * 数据导入
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} contextJO 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @memberof SocArchivesOrgGridViewBase
+     */
+    public Import(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        const _this: any = this;
+        if (!xData || !(xData.importExcel instanceof Function) || !$event) {
+            return ;
+        }
+        xData.importExcel(params);
+    }
     /**
      * 导出
      *
@@ -483,7 +639,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      * @param {*} [$event] 事件源
      * @param {*} [xData]  执行行为所需当前部件
      * @param {*} [actionContext]  执行行为上下文
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public ExportExcel(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
@@ -501,7 +657,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      * @param {*} [$event] 事件源
      * @param {*} [xData]  执行行为所需当前部件
      * @param {*} [actionContext]  执行行为上下文
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public ToggleFilter(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
         const _this: any = this;
@@ -509,12 +665,26 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
             _this.isExpandSearchForm = !_this.isExpandSearchForm;
         }
     }
+    /**
+     * 帮助
+     *
+     * @param {any[]} args 当前数据
+     * @param {any} contextJO 行为附加上下文
+     * @param {*} [params] 附加参数
+     * @param {*} [$event] 事件源
+     * @param {*} [xData]  执行行为所需当前部件
+     * @param {*} [actionContext]  执行行为上下文
+     * @memberof SocArchivesOrgGridViewBase
+     */
+    public Help(args: any[],contextJO?:any, params?: any, $event?: any, xData?: any,actionContext?:any,srfParentDeName?:string) {
+        this.$Notice.error({ title: '错误', desc: '帮助未支持' });
+    }
 
 
     /**
      * 销毁视图回调
      *
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public destroyed(){
         if(this.viewDefaultUsage){
@@ -534,7 +704,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      * 是否单选
      *
      * @type {boolean}
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public isSingleSelect: boolean = false;
 
@@ -563,7 +733,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
     * 界面关系通讯对象
     *
     * @type {Subject<ViewState>}
-    * @memberof PimPersonSetSocArchivesGridViewBase
+    * @memberof SocArchivesOrgGridViewBase
     */
     @Prop() public formDruipart?: Subject<ViewState>;
 
@@ -571,7 +741,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      * 搜索值
      *
      * @type {string}
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public query: string = '';
 
@@ -579,7 +749,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      * 是否展开搜索表单
      *
      * @type {boolean}
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public isExpandSearchForm: boolean = false;
 
@@ -590,15 +760,15 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      * 2 双击激活
      *
      * @type {(number | 0 | 1 | 2)}
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
-    public gridRowActiveMode: number | 0 | 1 | 2 = 0;
+    public gridRowActiveMode: number | 0 | 1 | 2 = 2;
 
     /**
      * 快速搜索
      *
      * @param {*} $event
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     public onSearch($event: any): void {
         const grid: any = this.$refs.grid;
@@ -623,7 +793,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      *
      * @readonly
      * @type {(number | null)}
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     get refreshdata(): number | null {
         return this.$store.getters['viewaction/getRefreshData'](this.viewtag);
@@ -635,7 +805,7 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
      * @param {*} newVal
      * @param {*} oldVal
      * @returns
-     * @memberof PimPersonSetSocArchivesGridViewBase
+     * @memberof SocArchivesOrgGridViewBase
      */
     @Watch('refreshdata')
     onRefreshData(newVal: any, oldVal: any) {
@@ -655,5 +825,5 @@ export default class PimPersonSetSocArchivesGridViewBase extends GridViewBase {
 </script>
 
 <style lang='less'>
-@import './pim-person-set-soc-archives-grid-view.less';
+@import './soc-archives-org-grid-view.less';
 </style>

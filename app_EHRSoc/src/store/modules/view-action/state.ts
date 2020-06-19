@@ -65,6 +65,17 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: '6b3f2b0a86d1987ee38869613036c1b2',
+            viewmodule: 'SOC',
+            viewname: 'SocArchivesOrgGridView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '8d8165bf052eb9455044ec39843ef257',
+                '21bd406d12cd31c62de8b9e78649d229',
+            ],
+        },
+        {
             viewtag: '6d44b6e79bb6d6706990592cb59c9f32',
             viewmodule: 'SOC',
             viewname: 'SocAreaPickupGridView',
@@ -262,6 +273,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '6b3f2b0a86d1987ee38869613036c1b2',
                 '67ed4891f00a2d935667f0ec691f7182',
             ],
         },

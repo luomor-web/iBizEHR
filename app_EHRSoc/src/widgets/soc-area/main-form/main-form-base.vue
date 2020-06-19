@@ -456,14 +456,14 @@ export default class MainBase extends Vue implements ControlInterface {
         socareaname: [
             { type: 'string', message: '参保地名称 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '参保地名称 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '参保地名称 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '参保地名称 值不能为空', trigger: 'blur' },
+            { required: true, type: 'string', message: '参保地名称 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '参保地名称 值不能为空', trigger: 'blur' },
         ],
         ormorgname: [
             { type: 'string', message: '组织 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '组织 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '组织 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '组织 值不能为空', trigger: 'blur' },
+            { required: true, type: 'string', message: '组织 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '组织 值不能为空', trigger: 'blur' },
         ],
         memo: [
             { type: 'string', message: '备注 值必须为字符串类型', trigger: 'change' },

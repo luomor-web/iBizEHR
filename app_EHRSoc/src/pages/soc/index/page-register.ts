@@ -28,6 +28,7 @@ export const PageComponents = {
         Vue.component('soc-account-pickup-view', () => import('@pages/soc/soc-account-pickup-view/soc-account-pickup-view.vue'));
         Vue.component('soc-rule-main2-edit-view', () => import('@pages/soc/soc-rule-main2-edit-view/soc-rule-main2-edit-view.vue'));
         Vue.component('soc-account-grid-view', () => import('@pages/soc/soc-account-grid-view/soc-account-grid-view.vue'));
+        Vue.component('soc-archives-org-grid-view', () => import('@pages/soc/soc-archives-org-grid-view/soc-archives-org-grid-view.vue'));
         Vue.component('soc-rule-pickup-view', () => import('@pages/soc/soc-rule-pickup-view/soc-rule-pickup-view.vue'));
         Vue.component('soc-area-edit-view', () => import('@pages/soc/soc-area-edit-view/soc-area-edit-view.vue'));
         Vue.component('soc-rule-edit-view', () => import('@pages/soc/soc-rule-edit-view/soc-rule-edit-view.vue'));
