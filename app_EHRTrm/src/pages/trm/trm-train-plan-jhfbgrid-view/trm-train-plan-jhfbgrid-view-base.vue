@@ -192,11 +192,11 @@ export default class TrmTrainPlanJHFBGridViewBase extends GridViewBase {
      * @memberof TrmTrainPlanJHFBGridView
      */
     public toolBarModels: any = {
-        tbitem1_setapprovalstatus_sep: {  name: 'tbitem1_setapprovalstatus_sep', type: 'SEPERATOR', visabled: true, dataaccaction: '', uiaction: { }, class: '' },
-        tbitem1_setapprovalstatus: { name: 'tbitem1_setapprovalstatus', caption: '审批通过','isShowCaption':true,'isShowIcon':true, tooltip: '审批通过', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'SetApprovalStatus', target: 'SINGLEKEY' }, class: '' },
+        tbitem1_fb_sep: {  name: 'tbitem1_fb_sep', type: 'SEPERATOR', visabled: true, dataaccaction: '', uiaction: { }, class: '' },
+        tbitem1_fb: { name: 'tbitem1_fb', caption: '发布','isShowCaption':true,'isShowIcon':true, tooltip: '发布', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'Fb', target: 'SINGLEKEY' }, class: '' },
 
-        tbitem1_setrejectstatus_sep: {  name: 'tbitem1_setrejectstatus_sep', type: 'SEPERATOR', visabled: true, dataaccaction: '', uiaction: { }, class: '' },
-        tbitem1_setrejectstatus: { name: 'tbitem1_setrejectstatus', caption: '审批不通过','isShowCaption':true,'isShowIcon':true, tooltip: '审批不通过', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'SetRejectStatus', target: 'SINGLEKEY' }, class: '' },
+        tbitem1_ch_sep: {  name: 'tbitem1_ch_sep', type: 'SEPERATOR', visabled: true, dataaccaction: '', uiaction: { }, class: '' },
+        tbitem1_ch: { name: 'tbitem1_ch', caption: '撤回','isShowCaption':true,'isShowIcon':true, tooltip: '撤回', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'Ch', target: 'SINGLEKEY' }, class: '' },
 
         tbitem13: { name: 'tbitem13', caption: '导出','isShowCaption':true,'isShowIcon':true, tooltip: '导出', iconcls: 'fa fa-file-excel-o', icon: '', disabled: false, type: 'DEUIACTION', visabled: true, dataaccaction: '', uiaction: { tag: 'ExportExcel', target: '' }, MaxRowCount: 5000, class: '' },
 
@@ -250,11 +250,11 @@ export default class TrmTrainPlanJHFBGridViewBase extends GridViewBase {
      * @memberof TrmTrainPlanJHFBGridViewBase
      */
     public toolbar_click($event: any, $event2?: any) {
-        if (Object.is($event.tag, 'tbitem1_setapprovalstatus')) {
-            this.toolbar_tbitem1_setapprovalstatus_click(null, '', $event2);
+        if (Object.is($event.tag, 'tbitem1_fb')) {
+            this.toolbar_tbitem1_fb_click(null, '', $event2);
         }
-        if (Object.is($event.tag, 'tbitem1_setrejectstatus')) {
-            this.toolbar_tbitem1_setrejectstatus_click(null, '', $event2);
+        if (Object.is($event.tag, 'tbitem1_ch')) {
+            this.toolbar_tbitem1_ch_click(null, '', $event2);
         }
         if (Object.is($event.tag, 'tbitem13')) {
             this.toolbar_tbitem13_click(null, '', $event2);
@@ -370,7 +370,7 @@ export default class TrmTrainPlanJHFBGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_tbitem1_setapprovalstatus_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem1_fb_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -388,7 +388,7 @@ export default class TrmTrainPlanJHFBGridViewBase extends GridViewBase {
         }
         // 界面行为
         const curUIService:TrmTrainPlanUIService  = new TrmTrainPlanUIService();
-        curUIService.TrmTrainPlan_SetApprovalStatus(datas,contextJO, paramJO,  $event, xData,this,"TrmTrainPlan");
+        curUIService.TrmTrainPlan_Fb(datas,contextJO, paramJO,  $event, xData,this,"TrmTrainPlan");
     }
 
     /**
@@ -399,7 +399,7 @@ export default class TrmTrainPlanJHFBGridViewBase extends GridViewBase {
      * @param {*} [$event]
      * @memberof 
      */
-    public toolbar_tbitem1_setrejectstatus_click(params: any = {}, tag?: any, $event?: any) {
+    public toolbar_tbitem1_ch_click(params: any = {}, tag?: any, $event?: any) {
         // 参数
         // 取数
         let datas: any[] = [];
@@ -417,7 +417,7 @@ export default class TrmTrainPlanJHFBGridViewBase extends GridViewBase {
         }
         // 界面行为
         const curUIService:TrmTrainPlanUIService  = new TrmTrainPlanUIService();
-        curUIService.TrmTrainPlan_SetRejectStatus(datas,contextJO, paramJO,  $event, xData,this,"TrmTrainPlan");
+        curUIService.TrmTrainPlan_Ch(datas,contextJO, paramJO,  $event, xData,this,"TrmTrainPlan");
     }
 
     /**

@@ -1,8 +1,5 @@
 import { Http,Util } from '@/utils';
 import EntityService from '../entity-service';
-import KBLogic from '@/service/trm-train-planterm/kb-logic';
-import QXLogic from '@/service/trm-train-planterm/qx-logic';
-import LXLogic from '@/service/trm-train-planterm/lx-logic';
 
 
 
@@ -195,9 +192,13 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async KB(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:KBLogic = new KBLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
-        const result = await appLogic.onExecute(context,data,isloading?true:false);
-        return {status:200,data:result};
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/kb`,data,isloading);
+        }
+        if(context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/kb`,data,isloading);
+        }
+            return Http.getInstance().post(`/trmtrainplanterms/${context.trmtrainplanterm}/kb`,data,isloading);
     }
 
     /**
@@ -251,9 +252,13 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async QX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:QXLogic = new QXLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
-        const result = await appLogic.onExecute(context,data,isloading?true:false);
-        return {status:200,data:result};
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/qx`,data,isloading);
+        }
+        if(context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/qx`,data,isloading);
+        }
+            return Http.getInstance().post(`/trmtrainplanterms/${context.trmtrainplanterm}/qx`,data,isloading);
     }
 
     /**
@@ -266,9 +271,13 @@ export default class TrmTrainPlantermServiceBase extends EntityService {
      * @memberof TrmTrainPlantermServiceBase
      */
     public async LX(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
-        let appLogic:LXLogic = new LXLogic({context:JSON.parse(JSON.stringify(context)),data:JSON.parse(JSON.stringify(data))});
-        const result = await appLogic.onExecute(context,data,isloading?true:false);
-        return {status:200,data:result};
+        if(context.trmtrainagency && context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainagencies/${context.trmtrainagency}/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/lx`,data,isloading);
+        }
+        if(context.trmtrainteacher && context.trmtrainplanterm){
+            return Http.getInstance().post(`/trmtrainteachers/${context.trmtrainteacher}/trmtrainplanterms/${context.trmtrainplanterm}/lx`,data,isloading);
+        }
+            return Http.getInstance().post(`/trmtrainplanterms/${context.trmtrainplanterm}/lx`,data,isloading);
     }
 
     /**

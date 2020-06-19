@@ -226,21 +226,21 @@ export default {
 		},
 	},
 	jhfbgridviewtoolbar_toolbar: {
-		tbitem1_setapprovalstatus_sep: {
+		tbitem1_fb_sep: {
 			caption: '',
 			tip: '',
 		},
-		tbitem1_setapprovalstatus: {
-			caption: '审批通过',
-			tip: '审批通过',
+		tbitem1_fb: {
+			caption: '发布',
+			tip: '发布',
 		},
-		tbitem1_setrejectstatus_sep: {
+		tbitem1_ch_sep: {
 			caption: '',
 			tip: '',
 		},
-		tbitem1_setrejectstatus: {
-			caption: '审批不通过',
-			tip: '审批不通过',
+		tbitem1_ch: {
+			caption: '撤回',
+			tip: '撤回',
 		},
 		tbitem13: {
 			caption: '导出',
