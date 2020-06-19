@@ -44,6 +44,18 @@
                     </template>
                 </el-table-column>
             </template>
+            <template v-if="getColumnState('socareaname')">
+                <el-table-column show-overflow-tooltip :prop="'socareaname'" :label="$t('entities.socrule.main_grid.columns.socareaname')" :width="150"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.socrule.main_grid.columns.socareaname')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <span>{{row.socareaname}}</span>
+                    </template>
+                </el-table-column>
+            </template>
             <template v-if="getColumnState('nyear')">
                 <el-table-column show-overflow-tooltip :prop="'nyear'" :label="$t('entities.socrule.main_grid.columns.nyear')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
@@ -58,15 +70,17 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('socareaname')">
-                <el-table-column show-overflow-tooltip :prop="'socareaname'" :label="$t('entities.socrule.main_grid.columns.socareaname')" :width="150"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('state')">
+                <el-table-column show-overflow-tooltip :prop="'state'" :label="$t('entities.socrule.main_grid.columns.state')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.socrule.main_grid.columns.socareaname')}}
+                        {{$t('entities.socrule.main_grid.columns.state')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.socareaname}}</span>
+                        <template >
+            <codelist :value="row.state" tag='EhrCodeList0057' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+                        </template>
                     </template>
                 </el-table-column>
             </template>
@@ -559,6 +573,13 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'PX'
         },
         {
+            name: 'socareaname',
+            label: '参保地',
+            langtag: 'entities.socrule.main_grid.columns.socareaname',
+            show: true,
+            util: 'PX'
+        },
+        {
             name: 'nyear',
             label: '年度',
             langtag: 'entities.socrule.main_grid.columns.nyear',
@@ -566,9 +587,9 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'PX'
         },
         {
-            name: 'socareaname',
-            label: '参保地',
-            langtag: 'entities.socrule.main_grid.columns.socareaname',
+            name: 'state',
+            label: '状态',
+            langtag: 'entities.socrule.main_grid.columns.state',
             show: true,
             util: 'PX'
         },
@@ -969,6 +990,14 @@ export default class MainBase extends Vue implements ControlInterface {
           {
             name: 'nyear',
             srfkey: 'EhrCodeList0115',
+            codelistType : 'STATIC',
+            textSeparator: '、',
+            renderMode: 'string',
+            valueSeparator: ";",
+          },
+          {
+            name: 'state',
+            srfkey: 'EhrCodeList0057',
             codelistType : 'STATIC',
             textSeparator: '、',
             renderMode: 'string',

@@ -52,6 +52,11 @@ export default class MainModel {
           dataType: 'TEXT',
         },
         {
+          name: 'state',
+          prop: 'state',
+          dataType: 'SSCODELIST',
+        },
+        {
           name: 'socareaname',
           prop: 'socareaname',
           dataType: 'PICKUPTEXT',

@@ -76,6 +76,11 @@ export default class MainModel {
         dataType: 'TEXT',
       },
       {
+        name: 'state',
+        prop: 'state',
+        dataType: 'SSCODELIST',
+      },
+      {
         name: 'memo',
         prop: 'memo',
         dataType: 'LONGTEXT_1000',

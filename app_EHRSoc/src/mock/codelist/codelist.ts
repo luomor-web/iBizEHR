@@ -338,6 +338,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 text: '有效',
                 "data":"",
                 "codename":"Item_10",
+                "color": "rgba(0, 98, 255, 1)",
                 value: '10',
                 
                 disabled: false,

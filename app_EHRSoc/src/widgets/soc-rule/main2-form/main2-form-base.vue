@@ -78,9 +78,27 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.socrulename.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
+<i-col v-show="detailsModel.socrulename.visible" :style="{}"  :sm="{ span: 16, offset: 0 }" :md="{ span: 16, offset: 0 }" :lg="{ span: 16, offset: 0 }" :xl="{ span: 16, offset: 0 }">
     <app-form-item name='socrulename' :itemRules="this.rules.socrulename" class='' :caption="$t('entities.socrule.main2_form.details.socrulename')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.socrulename.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.socrulename"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.socrulename.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.state.visible" :style="{}"  :sm="{ span: 24, offset: 0 }" :md="{ span: 12, offset: 0 }" :lg="{ span: 8, offset: 0 }" :xl="{ span: 8, offset: 0 }">
+    <app-form-item name='state' :itemRules="this.rules.state" class='' :caption="$t('entities.socrule.main2_form.details.state')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.state.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+ <dropdown-list 
+    v-model="data.state" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :localContext ='{ }' 
+    :localParam ='{ }' 
+    :disabled="detailsModel.state.disabled"  
+    tag='EhrCodeList0057' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -407,6 +425,7 @@ export default class Main2Base extends Vue implements ControlInterface {
         nyear: null,
         socareaname: null,
         socrulename: null,
+        state: null,
         memo: null,
         socareaid: null,
         ormorgid: null,
@@ -525,6 +544,12 @@ export default class Main2Base extends Vue implements ControlInterface {
             { required: true, type: 'string', message: '社保规则名称 值不能为空', trigger: 'change' },
             { required: true, type: 'string', message: '社保规则名称 值不能为空', trigger: 'blur' },
         ],
+        state: [
+            { type: 'string', message: '状态 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '状态 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '状态 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '状态 值不能为空', trigger: 'blur' },
+        ],
         memo: [
             { type: 'string', message: '备注 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '备注 值必须为字符串类型', trigger: 'blur' },
@@ -585,6 +610,8 @@ export default class Main2Base extends Vue implements ControlInterface {
         socareaname: new FormItemModel({ caption: '参保地', detailType: 'FORMITEM', name: 'socareaname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         socrulename: new FormItemModel({ caption: '社保规则名称', detailType: 'FORMITEM', name: 'socrulename', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        state: new FormItemModel({ caption: '状态', detailType: 'FORMITEM', name: 'state', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 2 })
 , 
         memo: new FormItemModel({ caption: '备注', detailType: 'FORMITEM', name: 'memo', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -741,6 +768,18 @@ export default class Main2Base extends Vue implements ControlInterface {
     }
 
     /**
+     * 监控表单属性 state 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main2
+     */
+    @Watch('data.state')
+    onStateChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'state', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
      * 监控表单属性 memo 值
      *
      * @param {*} newVal
@@ -831,6 +870,7 @@ export default class Main2Base extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
+
 
 
 
@@ -1747,6 +1787,9 @@ export default class Main2Base extends Vue implements ControlInterface {
      * @memberof Main2
      */
     public createDefault(){                    
+        if (this.data.hasOwnProperty('state')) {
+            this.data['state'] = '10';
+        }
     }
 
     /**
@@ -1754,6 +1797,9 @@ export default class Main2Base extends Vue implements ControlInterface {
      * @memberof Main2
      */
     public updateDefault(){                    
+        if (this.data.hasOwnProperty('state') && !this.data.state) {
+            this.data['state'] = '10';
+        }
     }
 
     

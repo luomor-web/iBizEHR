@@ -54,6 +54,9 @@ export default class PickupViewpickupviewpanelModel {
       {
         name: 'socareaname',
       },
+      {
+        name: 'state',
+      },
     ]
   }
 

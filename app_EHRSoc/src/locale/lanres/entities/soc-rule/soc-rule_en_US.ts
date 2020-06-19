@@ -14,6 +14,7 @@ export default {
     memo: '备注',
     socareaid: '参保地标识',
     socareaname: '参保地',
+    state: '状态',
   },
 	views: {
 		gridview: {
@@ -57,6 +58,7 @@ export default {
 			nyear: "年度", 
 			socareaname: "参保地", 
 			socrulename: "社保规则名称", 
+			state: "状态", 
 			memo: "备注", 
 			socareaid: "参保地标识", 
 			ormorgid: "组织标识", 
@@ -83,6 +85,7 @@ export default {
 			nyear: "年度", 
 			socareaname: "参保地", 
 			socrulename: "社保规则名称", 
+			state: "状态", 
 			memo: "备注", 
 			socruleid: "社保规则标识", 
 		},
@@ -93,8 +96,9 @@ export default {
 		columns: {
 			socrulename: "社保规则名称",
 			ormorgname: "组织",
-			nyear: "年度",
 			socareaname: "参保地",
+			nyear: "年度",
+			state: "状态",
 			memo: "备注",
 		},
 		uiactions: {
