@@ -26,6 +26,13 @@ public class TrmTrainPlantermQXLogicImpl implements ITrmTrainPlantermQXLogic{
     @Autowired
     private KieContainer kieContainer;
 
+    @Autowired
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainPlantermService trmtrainplantermservice;
+
+    public cn.ibizlab.ehr.core.trm.service.ITrmTrainPlantermService getTrmtrainplantermService() {
+        return this.trmtrainplantermservice;
+    }
+
 
     @Autowired
     private cn.ibizlab.ehr.core.trm.service.ITrmTrainPlantermService iBzSysDefaultService;
@@ -41,6 +48,7 @@ public class TrmTrainPlantermQXLogicImpl implements ITrmTrainPlantermQXLogic{
            kieSession=kieContainer.newKieSession();
            kieSession.insert(et); 
            kieSession.setGlobal("trmtrainplantermqxdefault",et);
+           kieSession.setGlobal("trmtrainplantermservice",trmtrainplantermservice);
            kieSession.setGlobal("iBzSysTrmtrainplantermDefaultService",iBzSysDefaultService);
            kieSession.setGlobal("curuser", cn.ibizlab.ehr.util.security.AuthenticationUser.getAuthenticationUser());
            kieSession.startProcess("cn.ibizlab.ehr.core.trm.service.logic.trmtrainplantermqx");

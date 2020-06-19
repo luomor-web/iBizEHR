@@ -8,10 +8,18 @@
         <tns:global identifier="trmtrainplantermqxdefault" type="cn.ibizlab.ehr.core.trm.domain.TrmTrainPlanterm" />
         </extensionElements>
      <startEvent id="be731f6b0b583c431ec14c244818bb3d" isInterrupting="true"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmtrainplantermqxdeaction1" id="71FE370C-6917-4147-BA05-13BEEF59F99E" implementation="http://www.jboss.org/drools/rule" name="更新状态"/>
+     <endEvent id="71FE370C-6917-4147-BA05-13BEEF59F99E_End" name="End"/>
+     <sequenceFlow id="71FE370C-6917-4147-BA05-13BEEF59F99E_End_Line" sourceRef="71FE370C-6917-4147-BA05-13BEEF59F99E" targetRef="71FE370C-6917-4147-BA05-13BEEF59F99E_End"/>
      <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmtrainplantermqxprepareparam1" id="c16a9677955aea847f1978a29efb3e3c" implementation="http://www.jboss.org/drools/rule" name="参数准备"/>
-     <endEvent id="c16a9677955aea847f1978a29efb3e3c_End" name="End"/>
-     <sequenceFlow id="c16a9677955aea847f1978a29efb3e3c_End_Line" sourceRef="c16a9677955aea847f1978a29efb3e3c" targetRef="c16a9677955aea847f1978a29efb3e3c_End"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmtrainplantermqxdeaction1" id="506A84DA-CD22-4974-BCF9-0EBA9443A200" implementation="http://www.jboss.org/drools/rule" name="更新状态"/>
+     <endEvent id="506A84DA-CD22-4974-BCF9-0EBA9443A200_End" name="End"/>
+     <sequenceFlow id="506A84DA-CD22-4974-BCF9-0EBA9443A200_End_Line" sourceRef="506A84DA-CD22-4974-BCF9-0EBA9443A200" targetRef="506A84DA-CD22-4974-BCF9-0EBA9443A200_End"/>
      <sequenceFlow id="4CEC5B85-975A-4892-8244-D54AE5E45E1F" sourceRef="be731f6b0b583c431ec14c244818bb3d" targetRef="c16a9677955aea847f1978a29efb3e3c">
+     </sequenceFlow>
+     <sequenceFlow id="97C4AD44-1E6C-4EE3-BFFA-E63926D9740F" sourceRef="c16a9677955aea847f1978a29efb3e3c" targetRef="506A84DA-CD22-4974-BCF9-0EBA9443A200">
+     </sequenceFlow>
+     <sequenceFlow id="F1829BD6-ECEF-49E1-9BBE-C3892327AB86" sourceRef="c16a9677955aea847f1978a29efb3e3c" targetRef="71FE370C-6917-4147-BA05-13BEEF59F99E">
      </sequenceFlow>
     </process>
 </definitions>
