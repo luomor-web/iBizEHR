@@ -76,7 +76,7 @@ public class TrmTrainPlantermSearchContext extends QueryWrapperContext<TrmTrainP
             this.getSearchCond().eq("sfqdpxxy", n_sfqdpxxy_eq);
         }
     }
-	private String n_trmtrainplantermname_like;//[培训计划项名称]
+	private String n_trmtrainplantermname_like;//[培训立项名称]
 	public void setN_trmtrainplantermname_like(String n_trmtrainplantermname_like) {
         this.n_trmtrainplantermname_like = n_trmtrainplantermname_like;
         if(!ObjectUtils.isEmpty(this.n_trmtrainplantermname_like)){
