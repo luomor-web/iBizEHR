@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="trmtrainactmentgridview" viewTitle="培训活动评估表格视图" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'trm-train-actment-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="trmtrainactmentgridview" viewTitle="培训后评估表格视图" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'trm-train-actment-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -9,7 +9,7 @@
     </template>
     <template slot="headerRight">
       <div class="view-header-right">
-        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="培训活动评估名称" v-model="query" @search="onSearch($event)"/>
+        <app-header-menus :toolbarModel="toolBarModels" @menu-click="toolbar_click($event)" mode="view" :openMode="openMode" :isEnableQuickSearch="true" searchPlaceholder="培训后评估名称" v-model="query" @search="onSearch($event)"/>
       </div>
     </template>
     <template slot="content">
@@ -77,7 +77,7 @@ import CodeListService from "@service/app/codelist-service";
 
 
 /**
- * 培训活动评估表格视图基类
+ * 培训后评估表格视图基类
  *
  * @export
  * @class TrmTrainActmentGridViewBase

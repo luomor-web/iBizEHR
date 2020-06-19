@@ -2,7 +2,6 @@ import { Http,Util,Errorlog } from '@/utils';
 import ControlService from '@/widgets/control-service';
 import TrmTrainActmentService from '@/service/trm-train-actment/trm-train-actment-service';
 import MainModel from './main-form-model';
-import TrmTrainActapplyService from '@/service/trm-train-actapply/trm-train-actapply-service';
 
 
 /**
@@ -43,14 +42,6 @@ export default class MainService extends ControlService {
     }
 
     /**
-     * 培训活动申请服务对象
-     *
-     * @type {TrmTrainActapplyService}
-     * @memberof MainService
-     */
-    public trmtrainactapplyService: TrmTrainActapplyService = new TrmTrainActapplyService();
-
-    /**
      * 处理数据
      *
      * @private
@@ -89,9 +80,6 @@ export default class MainService extends ControlService {
      */
     @Errorlog
     public getItems(serviceName: string, interfaceName: string, context: any = {}, data: any, isloading?: boolean): Promise<any[]> {
-        if (Object.is(serviceName, 'TrmTrainActapplyService') && Object.is(interfaceName, 'FetchDefault')) {
-            return this.doItems(this.trmtrainactapplyService.FetchDefault(JSON.parse(JSON.stringify(context)),data, isloading), 'trmtrainactapplyid', 'trmtrainactapply');
-        }
 
         return Promise.reject([])
     }

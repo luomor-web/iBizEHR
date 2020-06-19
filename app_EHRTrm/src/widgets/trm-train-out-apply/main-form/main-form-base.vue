@@ -59,49 +59,19 @@
 </i-col>
 <i-col v-show="detailsModel.ywlx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ywlx' :itemRules="this.rules.ywlx" class='' :caption="$t('entities.trmtrainoutapply.main_form.details.ywlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ywlx.error" :isEmptyCaption="false" labelPos="LEFT">
-    
- <dropdown-list 
-    v-model="data.ywlx" 
-    :data="data" 
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{ }' 
-    :localParam ='{ }' 
-    :disabled="detailsModel.ywlx.disabled"  
-    placeholder='请选择...' style="">
- </dropdown-list>
+    <input-box v-model="data.ywlx"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.ywlx.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.pxfs.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pxfs' :itemRules="this.rules.pxfs" class='' :caption="$t('entities.trmtrainoutapply.main_form.details.pxfs')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pxfs.error" :isEmptyCaption="false" labelPos="LEFT">
-    
- <dropdown-list 
-    v-model="data.pxfs" 
-    :data="data" 
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{ }' 
-    :localParam ='{ }' 
-    :disabled="detailsModel.pxfs.disabled"  
-    placeholder='请选择...' style="">
- </dropdown-list>
+    <input-box v-model="data.pxfs"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.pxfs.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
 </i-col>
 <i-col v-show="detailsModel.pxlb.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='pxlb' :itemRules="this.rules.pxlb" class='' :caption="$t('entities.trmtrainoutapply.main_form.details.pxlb')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pxlb.error" :isEmptyCaption="false" labelPos="LEFT">
-    
- <dropdown-list 
-    v-model="data.pxlb" 
-    :data="data" 
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{ }' 
-    :localParam ='{ }' 
-    :disabled="detailsModel.pxlb.disabled"  
-    placeholder='请选择...' style="">
- </dropdown-list>
+    <input-box v-model="data.pxlb"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.pxlb.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
 </i-col>
@@ -137,17 +107,7 @@
 </i-col>
 <i-col v-show="detailsModel.wbpxjg.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='wbpxjg' :itemRules="this.rules.wbpxjg" class='' :caption="$t('entities.trmtrainoutapply.main_form.details.wbpxjg')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.wbpxjg.error" :isEmptyCaption="false" labelPos="LEFT">
-    
- <dropdown-list 
-    v-model="data.wbpxjg" 
-    :data="data" 
-    :context="context"
-    :viewparams="viewparams"
-    :localContext ='{ }' 
-    :localParam ='{ }' 
-    :disabled="detailsModel.wbpxjg.disabled"  
-    placeholder='请选择...' style="">
- </dropdown-list>
+    <input-box v-model="data.wbpxjg"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.wbpxjg.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
 </i-col>

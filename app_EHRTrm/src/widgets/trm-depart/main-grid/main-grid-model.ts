@@ -32,14 +32,14 @@ export default class MainModel {
           dataType: 'TEXT',
         },
         {
-          name: 'zzdzs',
-          prop: 'zzdzs',
-          dataType: 'PICKUPDATA',
-        },
-        {
           name: 'ormorgsectorid',
           prop: 'ormorgsectorid',
           dataType: 'PICKUP',
+        },
+        {
+          name: 'tzlx',
+          prop: 'tzlx',
+          dataType: 'SSCODELIST',
         },
         {
           name: 'pimpersonid',
@@ -52,6 +52,46 @@ export default class MainModel {
           dataType: 'PICKUP',
         },
         {
+          name: 'srfmajortext',
+          prop: 'trmdepartname',
+          dataType: 'TEXT',
+        },
+        {
+          name: 'srfkey',
+          prop: 'trmdepartid',
+          dataType: 'GUID',
+        },
+        {
+          name: 'srfdataaccaction',
+          prop: 'trmdepartid',
+          dataType: 'GUID',
+        },
+        {
+          name: 'ormorgname',
+          prop: 'ormorgname',
+          dataType: 'PICKUPTEXT',
+        },
+        {
+          name: 'jzrq',
+          prop: 'jzrq',
+          dataType: 'DATE',
+        },
+        {
+          name: 'jd',
+          prop: 'jd',
+          dataType: 'SSCODELIST',
+        },
+        {
+          name: 'tdrq',
+          prop: 'tdrq',
+          dataType: 'DATE',
+        },
+        {
+          name: 'zzdzs',
+          prop: 'zzdzs',
+          dataType: 'PICKUPDATA',
+        },
+        {
           name: 'nd',
           prop: 'nd',
           dataType: 'SSCODELIST',
@@ -62,24 +102,9 @@ export default class MainModel {
           dataType: 'PICKUPDATA',
         },
         {
-          name: 'srfmajortext',
-          prop: 'trmdepartname',
-          dataType: 'TEXT',
-        },
-        {
-          name: 'srfdataaccaction',
-          prop: 'trmdepartid',
-          dataType: 'GUID',
-        },
-        {
-          name: 'srfkey',
-          prop: 'trmdepartid',
-          dataType: 'GUID',
-        },
-        {
-          name: 'jzrq',
-          prop: 'jzrq',
-          dataType: 'DATE',
+          name: 'lclx',
+          prop: 'lclx',
+          dataType: 'SSCODELIST',
         },
         {
           name: 'trmdepart',

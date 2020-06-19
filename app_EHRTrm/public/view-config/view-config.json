@@ -819,8 +819,8 @@
         "memo": "系统自动添加"
     },
     "trmtrainactmentgridview": {
-        "title": "培训活动评估表格视图",
-        "caption": "培训活动评估",
+        "title": "培训后评估表格视图",
+        "caption": "培训后评估",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmTrainActmentGridView",

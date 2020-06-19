@@ -21,7 +21,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('xh')">
-                <el-table-column show-overflow-tooltip :prop="'xh'" :label="$t('entities.trmdemdeftion.main_grid.columns.xh')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xh'" :label="$t('entities.trmdemdeftion.main_grid.columns.xh')" :width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmdemdeftion.main_grid.columns.xh')}}
@@ -33,7 +33,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('trmdemdeftionname')">
-                <el-table-column show-overflow-tooltip :prop="'trmdemdeftionname'" :label="$t('entities.trmdemdeftion.main_grid.columns.trmdemdeftionname')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'trmdemdeftionname'" :label="$t('entities.trmdemdeftion.main_grid.columns.trmdemdeftionname')" :width="200"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmdemdeftion.main_grid.columns.trmdemdeftionname')}}
@@ -45,7 +45,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pxmk')">
-                <el-table-column show-overflow-tooltip :prop="'pxmk'" :label="$t('entities.trmdemdeftion.main_grid.columns.pxmk')" :width="300"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pxmk'" :label="$t('entities.trmdemdeftion.main_grid.columns.pxmk')" :width="220"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmdemdeftion.main_grid.columns.pxmk')}}
@@ -59,7 +59,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('xqfl')">
-                <el-table-column show-overflow-tooltip :prop="'xqfl'" :label="$t('entities.trmdemdeftion.main_grid.columns.xqfl')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'xqfl'" :label="$t('entities.trmdemdeftion.main_grid.columns.xqfl')" :width="140"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmdemdeftion.main_grid.columns.xqfl')}}
@@ -73,7 +73,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('trmtraincoursename')">
-                <el-table-column show-overflow-tooltip :prop="'trmtraincoursename'" :label="$t('entities.trmdemdeftion.main_grid.columns.trmtraincoursename')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'trmtraincoursename'" :label="$t('entities.trmdemdeftion.main_grid.columns.trmtraincoursename')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmdemdeftion.main_grid.columns.trmtraincoursename')}}
@@ -84,20 +84,8 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('pxdx')">
-                <el-table-column show-overflow-tooltip :prop="'pxdx'" :label="$t('entities.trmdemdeftion.main_grid.columns.pxdx')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.trmdemdeftion.main_grid.columns.pxdx')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.pxdx}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('pxzynr')">
-                <el-table-column show-overflow-tooltip :prop="'pxzynr'" :label="$t('entities.trmdemdeftion.main_grid.columns.pxzynr')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pxzynr'" :label="$t('entities.trmdemdeftion.main_grid.columns.pxzynr')" :width="160"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmdemdeftion.main_grid.columns.pxzynr')}}
@@ -658,14 +646,14 @@ export default class MainBase extends Vue implements ControlInterface {
     public allColumns: any[] = [
         {
             name: 'xh',
-            label: '排序号',
+            label: '排序',
             langtag: 'entities.trmdemdeftion.main_grid.columns.xh',
             show: true,
             util: 'px'
         },
         {
             name: 'trmdemdeftionname',
-            label: '培训汇总',
+            label: '培训需求名称',
             langtag: 'entities.trmdemdeftion.main_grid.columns.trmdemdeftionname',
             show: true,
             util: 'px'
@@ -688,13 +676,6 @@ export default class MainBase extends Vue implements ControlInterface {
             name: 'trmtraincoursename',
             label: '培训课程',
             langtag: 'entities.trmdemdeftion.main_grid.columns.trmtraincoursename',
-            show: true,
-            util: 'px'
-        },
-        {
-            name: 'pxdx',
-            label: '培训对象',
-            langtag: 'entities.trmdemdeftion.main_grid.columns.pxdx',
             show: true,
             util: 'px'
         },

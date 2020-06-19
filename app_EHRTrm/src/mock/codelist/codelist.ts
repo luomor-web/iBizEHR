@@ -8,6 +8,68 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
     let status = MockAdapter.mockStatus(config);
     return [status, [
         {
+        srfkey: 'EhrCodeList0405',
+        emptytext: '',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '10',
+                label: '培训课程',
+                text: '培训课程',
+                "data":"",
+                "codename":"Item_10",
+                "color": "rgba(255, 0, 140, 1)",
+                value: '10',
+                
+                disabled: false,
+            },
+            {
+                id: '20',
+                label: '培训讲师',
+                text: '培训讲师',
+                "data":"",
+                "codename":"Item_20",
+                "color": "rgba(42, 56, 165, 1)",
+                value: '20',
+                
+                disabled: false,
+            },
+            {
+                id: '30',
+                label: '培训机构',
+                text: '培训机构',
+                "data":"",
+                "codename":"Item_30",
+                "color": "rgba(103, 58, 183, 1)",
+                value: '30',
+                
+                disabled: false,
+            },
+            {
+                id: '40',
+                label: '培训设施',
+                text: '培训设施',
+                "data":"",
+                "codename":"Item_40",
+                "color": "rgba(209, 196, 233, 1)",
+                value: '40',
+                
+                disabled: false,
+            },
+            {
+                id: '50',
+                label: '其他',
+                text: '其他',
+                "data":"",
+                "codename":"Item_50",
+                "color": "rgba(225, 0, 255, 1)",
+                value: '50',
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
         "srfkey": "EhrCodeList0011",
         "emptytext": "未定义",
         "codelisttype":"dynamic",
@@ -27,7 +89,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 "data":"",
                 "codename":"Item_10",
                 "color": "rgba(0, 255, 238, 1)",
-                value: 10,
+                value: '10',
                 
                 disabled: false,
             },
@@ -38,7 +100,7 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 "data":"",
                 "codename":"Item_20",
                 "color": "rgba(0, 13, 255, 1)",
-                value: 20,
+                value: '20',
                 
                 disabled: false,
             },
@@ -592,6 +654,35 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 "data":"",
                 "codename":"Item_2030",
                 value: 2030,
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
+        srfkey: 'EhrCodeList0403',
+        emptytext: '',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '10',
+                label: '年度',
+                text: '年度',
+                "data":"",
+                "codename":"Item_10",
+                "color": "rgba(255, 0, 140, 1)",
+                value: '10',
+                
+                disabled: false,
+            },
+            {
+                id: '20',
+                label: '季度',
+                text: '季度',
+                "data":"",
+                "codename":"Item_20",
+                "color": "rgba(42, 56, 165, 1)",
+                value: '20',
                 
                 disabled: false,
             },
@@ -1167,6 +1258,17 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
         "codelisttype":"static",
         items: [
             {
+                id: '5',
+                label: '教授级',
+                text: '教授级',
+                "data":"",
+                "codename":"Item_5",
+                "color": "rgba(77, 255, 0, 1)",
+                value: '5',
+                
+                disabled: false,
+            },
+            {
                 id: '10',
                 label: '高级',
                 text: '高级',
@@ -1454,6 +1556,57 @@ mock.onGet('./assets/json/data-dictionary.json').reply((config: any) => {
                 "codename":"Item_0",
                 "color": "Red",
                 value: '0',
+                
+                disabled: false,
+            },
+        ]
+    },
+    {
+        srfkey: 'EhrCodeList0404',
+        emptytext: '',
+        "codelisttype":"static",
+        items: [
+            {
+                id: '10',
+                label: '优秀',
+                text: '优秀',
+                "data":"",
+                "codename":"Item_10",
+                "color": "rgba(255, 0, 140, 1)",
+                value: '10',
+                
+                disabled: false,
+            },
+            {
+                id: '20',
+                label: '良好',
+                text: '良好',
+                "data":"",
+                "codename":"Item_20",
+                "color": "rgba(42, 56, 165, 1)",
+                value: '20',
+                
+                disabled: false,
+            },
+            {
+                id: '30',
+                label: '合格',
+                text: '合格',
+                "data":"",
+                "codename":"Item_30",
+                "color": "rgba(103, 58, 183, 1)",
+                value: '30',
+                
+                disabled: false,
+            },
+            {
+                id: '40',
+                label: '不合格',
+                text: '不合格',
+                "data":"",
+                "codename":"Item_40",
+                "color": "rgba(209, 196, 233, 1)",
+                value: '40',
                 
                 disabled: false,
             },

@@ -33,22 +33,22 @@ export default class DefaultModel {
       {
         name: 'n_pxfs_eq',
         prop: 'pxfs',
-        dataType: 'SSCODELIST',
+        dataType: 'TEXT',
       },
       {
         name: 'n_pxlb_eq',
         prop: 'pxlb',
-        dataType: 'SSCODELIST',
+        dataType: 'TEXT',
       },
       {
         name: 'n_ywlx_eq',
         prop: 'ywlx',
-        dataType: 'SSCODELIST',
+        dataType: 'TEXT',
       },
       {
         name: 'n_wbpxjg_eq',
         prop: 'wbpxjg',
-        dataType: 'SSCODELIST',
+        dataType: 'TEXT',
       },
       {
         name: 'n_pimpersonname_like',

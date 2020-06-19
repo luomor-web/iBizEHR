@@ -27,9 +27,19 @@ export default class MainModel {
     }else{
 		  return [
         {
+          name: 'evalcontents',
+          prop: 'evalcontents',
+          dataType: 'TEXT',
+        },
+        {
           name: 'dcwjtm',
           prop: 'dcwjtm',
           dataType: 'TEXT',
+        },
+        {
+          name: 'evaltime',
+          prop: 'evaltime',
+          dataType: 'DATE',
         },
         {
           name: 'trmtrainactapplyid',
@@ -44,7 +54,7 @@ export default class MainModel {
         {
           name: 'pxjg',
           prop: 'pxjg',
-          dataType: 'TEXT',
+          dataType: 'SSCODELIST',
         },
         {
           name: 'srfmajortext',
@@ -62,9 +72,9 @@ export default class MainModel {
           dataType: 'GUID',
         },
         {
-          name: 'trmtrainactapplyname',
-          prop: 'trmtrainactapplyname',
-          dataType: 'PICKUPTEXT',
+          name: 'evaltarget',
+          prop: 'evaltarget',
+          dataType: 'SSCODELIST',
         },
         {
           name: 'trmtrainactment',

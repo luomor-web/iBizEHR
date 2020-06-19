@@ -33,6 +33,24 @@
 </app-form-item>
 
 </i-col>
+<i-col v-show="detailsModel.nd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='nd' :itemRules="this.rules.nd" class='' :caption="$t('entities.trmtrainfillin.main_form.details.nd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nd.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.nd"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.nd.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.jd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='jd' :itemRules="this.rules.jd" class='' :caption="$t('entities.trmtrainfillin.main_form.details.jd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jd.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.jd"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.jd.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.jzrq.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='jzrq' :itemRules="this.rules.jzrq" class='' :caption="$t('entities.trmtrainfillin.main_form.details.jzrq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jzrq.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.jzrq"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.jzrq.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
 <i-col v-show="detailsModel.ormorgname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='ormorgname' :itemRules="this.rules.ormorgname" class='' :caption="$t('entities.trmtrainfillin.main_form.details.ormorgname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.ormorgname.error" :isEmptyCaption="false" labelPos="LEFT">
     
@@ -84,24 +102,6 @@
   @formitemvaluechange="onFormItemValueChange">
 </app-picker>
 
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.nd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='nd' :itemRules="this.rules.nd" class='' :caption="$t('entities.trmtrainfillin.main_form.details.nd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nd.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.nd"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.nd.disabled" type='text'  style=""></input-box>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.jd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='jd' :itemRules="this.rules.jd" class='' :caption="$t('entities.trmtrainfillin.main_form.details.jd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jd.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.jd"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.jd.disabled" type='text'  style=""></input-box>
-</app-form-item>
-
-</i-col>
-<i-col v-show="detailsModel.jzrq.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='jzrq' :itemRules="this.rules.jzrq" class='' :caption="$t('entities.trmtrainfillin.main_form.details.jzrq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jzrq.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.jzrq"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.jzrq.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
 </i-col>
@@ -451,11 +451,11 @@ export default class MainBase extends Vue implements ControlInterface {
         srfdeid: null,
         srfsourcekey: null,
         trmdepartname: null,
-        ormorgname: null,
-        ormorgsectorname: null,
         nd: null,
         jd: null,
         jzrq: null,
+        ormorgname: null,
+        ormorgsectorname: null,
         trmdepartid: null,
         ormorgsectorid: null,
         ormorgid: null,
@@ -556,18 +556,6 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '培训需求通知 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '培训需求通知 值不能为空', trigger: 'blur' },
         ],
-        ormorgname: [
-            { type: 'string', message: '单位 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '单位 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '单位 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '单位 值不能为空', trigger: 'blur' },
-        ],
-        ormorgsectorname: [
-            { type: 'string', message: '部门 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '部门 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '部门 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '部门 值不能为空', trigger: 'blur' },
-        ],
         nd: [
             { type: 'string', message: '年度 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '年度 值必须为字符串类型', trigger: 'blur' },
@@ -586,11 +574,23 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '截止时间 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '截止时间 值不能为空', trigger: 'blur' },
         ],
+        ormorgname: [
+            { type: 'string', message: '填写单位 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '填写单位 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '填写单位 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '填写单位 值不能为空', trigger: 'blur' },
+        ],
+        ormorgsectorname: [
+            { type: 'string', message: '填写部门 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '填写部门 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '填写部门 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '填写部门 值不能为空', trigger: 'blur' },
+        ],
         trmdepartid: [
-            { type: 'string', message: '培训需求填报标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '培训需求填报标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '培训需求填报标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '培训需求填报标识 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '培训需求通知标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '培训需求通知标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '培训需求通知标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '培训需求通知标识 值不能为空', trigger: 'blur' },
         ],
         ormorgsectorid: [
             { type: 'string', message: '部门标识 值必须为字符串类型', trigger: 'change' },
@@ -645,17 +645,17 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         trmdepartname: new FormItemModel({ caption: '培训需求通知', detailType: 'FORMITEM', name: 'trmdepartname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        ormorgname: new FormItemModel({ caption: '单位', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
-        ormorgsectorname: new FormItemModel({ caption: '部门', detailType: 'FORMITEM', name: 'ormorgsectorname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
-, 
         nd: new FormItemModel({ caption: '年度', detailType: 'FORMITEM', name: 'nd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
         jd: new FormItemModel({ caption: '季度', detailType: 'FORMITEM', name: 'jd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        jzrq: new FormItemModel({ caption: '截止时间', detailType: 'FORMITEM', name: 'jzrq', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        jzrq: new FormItemModel({ caption: '截止时间', detailType: 'FORMITEM', name: 'jzrq', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 0 })
 , 
-        trmdepartid: new FormItemModel({ caption: '培训需求填报标识', detailType: 'FORMITEM', name: 'trmdepartid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        ormorgname: new FormItemModel({ caption: '填写单位', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        ormorgsectorname: new FormItemModel({ caption: '填写部门', detailType: 'FORMITEM', name: 'ormorgsectorname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        trmdepartid: new FormItemModel({ caption: '培训需求通知标识', detailType: 'FORMITEM', name: 'trmdepartid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         ormorgsectorid: new FormItemModel({ caption: '部门标识', detailType: 'FORMITEM', name: 'ormorgsectorid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -774,30 +774,6 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 ormorgname 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.ormorgname')
-    onOrmorgnameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'ormorgname', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
-     * 监控表单属性 ormorgsectorname 值
-     *
-     * @param {*} newVal
-     * @param {*} oldVal
-     * @memberof Main
-     */
-    @Watch('data.ormorgsectorname')
-    onOrmorgsectornameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'ormorgsectorname', newVal: newVal, oldVal: oldVal });
-    }
-
-    /**
      * 监控表单属性 nd 值
      *
      * @param {*} newVal
@@ -831,6 +807,30 @@ export default class MainBase extends Vue implements ControlInterface {
     @Watch('data.jzrq')
     onJzrqChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'jzrq', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 ormorgname 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.ormorgname')
+    onOrmorgnameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'ormorgname', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 ormorgsectorname 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.ormorgsectorname')
+    onOrmorgsectornameChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'ormorgsectorname', newVal: newVal, oldVal: oldVal });
     }
 
     /**

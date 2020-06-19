@@ -728,8 +728,8 @@
         "viewtag": "b9b3c179a3aefeee643255a87c1febca"
     },
     "trmtrainactmentgridview": {
-        "title": "培训活动评估表格视图",
-        "caption": "培训活动评估",
+        "title": "培训后评估表格视图",
+        "caption": "培训后评估",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "TRM",
         "viewname": "TrmTrainActmentGridView",

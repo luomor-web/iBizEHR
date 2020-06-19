@@ -20,39 +20,55 @@
             <template v-if="!isSingleSelect">
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
-            <template v-if="getColumnState('trmtrainactapplyname')">
-                <el-table-column show-overflow-tooltip :prop="'trmtrainactapplyname'" :label="$t('entities.trmtrainactment.main_grid.columns.trmtrainactapplyname')" :width="150"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('evalcontents')">
+                <el-table-column show-overflow-tooltip :prop="'evalcontents'" :label="$t('entities.trmtrainactment.main_grid.columns.evalcontents')" :width="260"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.trmtrainactment.main_grid.columns.trmtrainactapplyname')}}
+                        {{$t('entities.trmtrainactment.main_grid.columns.evalcontents')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.trmtrainactapplyname}}</span>
+                        <span>{{row.evalcontents}}</span>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('evaltarget')">
+                <el-table-column show-overflow-tooltip :prop="'evaltarget'" :label="$t('entities.trmtrainactment.main_grid.columns.evaltarget')" :width="130"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.trmtrainactment.main_grid.columns.evaltarget')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <template >
+            <codelist :value="row.evaltarget" tag='EhrCodeList0405' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+                        </template>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('pxjg')">
-                <el-table-column show-overflow-tooltip :prop="'pxjg'" :label="$t('entities.trmtrainactment.main_grid.columns.pxjg')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pxjg'" :label="$t('entities.trmtrainactment.main_grid.columns.pxjg')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainactment.main_grid.columns.pxjg')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.pxjg}}</span>
+                        <template >
+            <codelist :value="row.pxjg" tag='EhrCodeList0404' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+                        </template>
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('dcwjtm')">
-                <el-table-column show-overflow-tooltip :prop="'dcwjtm'" :label="$t('entities.trmtrainactment.main_grid.columns.dcwjtm')" :width="150"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('evaltime')">
+                <el-table-column show-overflow-tooltip :prop="'evaltime'" :label="$t('entities.trmtrainactment.main_grid.columns.evaltime')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.trmtrainactment.main_grid.columns.dcwjtm')}}
+                        {{$t('entities.trmtrainactment.main_grid.columns.evaltime')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.dcwjtm}}</span>
+                        <app-format-data format="YYYY-MM-DD" :data="row.evaltime"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
@@ -545,9 +561,16 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public allColumns: any[] = [
         {
-            name: 'trmtrainactapplyname',
-            label: '评估项目',
-            langtag: 'entities.trmtrainactment.main_grid.columns.trmtrainactapplyname',
+            name: 'evalcontents',
+            label: '评估内容',
+            langtag: 'entities.trmtrainactment.main_grid.columns.evalcontents',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'evaltarget',
+            label: '评估对象',
+            langtag: 'entities.trmtrainactment.main_grid.columns.evaltarget',
             show: true,
             util: 'PX'
         },
@@ -559,11 +582,11 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'px'
         },
         {
-            name: 'dcwjtm',
-            label: '调查问卷题目',
-            langtag: 'entities.trmtrainactment.main_grid.columns.dcwjtm',
+            name: 'evaltime',
+            label: '评估时间',
+            langtag: 'entities.trmtrainactment.main_grid.columns.evaltime',
             show: true,
-            util: 'px'
+            util: 'PX'
         },
         {
             name: 'bz',
@@ -602,8 +625,8 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public rules: any = {
         srfkey: [
-             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '培训活动评估标识 值不能为空', trigger: 'change' },
-            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '培训活动评估标识 值不能为空', trigger: 'blur' },
+             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '培训后评估标识 值不能为空', trigger: 'change' },
+            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '培训后评估标识 值不能为空', trigger: 'blur' },
         ],
     }
 
@@ -959,6 +982,22 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public async formatExcelData(filterVal:any, jsonData:any) {
         let codelistColumns:Array<any> = [
+          {
+            name: 'evaltarget',
+            srfkey: 'EhrCodeList0405',
+            codelistType : 'STATIC',
+            textSeparator: '、',
+            renderMode: 'string',
+            valueSeparator: ";",
+          },
+          {
+            name: 'pxjg',
+            srfkey: 'EhrCodeList0404',
+            codelistType : 'STATIC',
+            textSeparator: '、',
+            renderMode: 'string',
+            valueSeparator: ";",
+          },
         ];
         let _this = this;
         for (const codelist of codelistColumns) {

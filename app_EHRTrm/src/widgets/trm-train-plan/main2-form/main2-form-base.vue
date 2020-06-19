@@ -30,7 +30,7 @@
 <i-col v-show="detailsModel.jhlx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='jhlx' :itemRules="this.rules.jhlx" class='' :caption="$t('entities.trmtrainplan.main2_form.details.jhlx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jhlx.error" :isEmptyCaption="false" labelPos="LEFT">
     
-<app-span name='jhlx' :value="data.jhlx" tag='EhrCodeList0401' codelistType='STATIC' renderMode="NUM" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
+<app-span name='jhlx' :value="data.jhlx" tag='EhrCodeList0401' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" :data="data" :context="context" :viewparams="viewparams" :localContext ='{ }'  :localParam ='{ }'  style=""></app-span>
 </app-form-item>
 
 </i-col>

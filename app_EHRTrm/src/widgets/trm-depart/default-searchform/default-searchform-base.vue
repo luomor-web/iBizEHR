@@ -54,7 +54,7 @@
               :localContext ='{ }' 
               :localParam ='{ }' 
               :disabled="detailsModel.n_nd_eq.disabled"  
-              tag='EhrCodeList0115' 
+              tag='EhrCodeList0009' 
               codelistType='STATIC'
               placeholder='请选择...' style="">
            </dropdown-list>
@@ -322,16 +322,16 @@ export default class DefaultBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '需求通知(%) 值不能为空', trigger: 'blur' },
         ],
         n_ormorgname_eq: [
-            { type: 'string', message: '通知对象(=) 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '通知对象(=) 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '通知对象(=) 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '通知对象(=) 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '直属单位(=) 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '直属单位(=) 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '直属单位(=) 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '直属单位(=) 值不能为空', trigger: 'blur' },
         ],
         n_ormorgsectorname_like: [
-            { type: 'string', message: '局职能部门(%) 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '局职能部门(%) 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '局职能部门(%) 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '局职能部门(%) 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '职能部门(%) 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '职能部门(%) 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '职能部门(%) 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '职能部门(%) 值不能为空', trigger: 'blur' },
         ],
         n_nd_eq: [
             { type: 'string', message: '年度(=) 值必须为字符串类型', trigger: 'change' },
@@ -358,9 +358,9 @@ export default class DefaultBase extends Vue implements ControlInterface {
 , 
         n_trmdepartname_like: new FormItemModel({ caption: '需求通知(%)', detailType: 'FORMITEM', name: 'n_trmdepartname_like', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        n_ormorgname_eq: new FormItemModel({ caption: '通知对象(=)', detailType: 'FORMITEM', name: 'n_ormorgname_eq', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        n_ormorgname_eq: new FormItemModel({ caption: '直属单位(=)', detailType: 'FORMITEM', name: 'n_ormorgname_eq', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        n_ormorgsectorname_like: new FormItemModel({ caption: '局职能部门(%)', detailType: 'FORMITEM', name: 'n_ormorgsectorname_like', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        n_ormorgsectorname_like: new FormItemModel({ caption: '职能部门(%)', detailType: 'FORMITEM', name: 'n_ormorgsectorname_like', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         n_nd_eq: new FormItemModel({ caption: '年度(=)', detailType: 'FORMITEM', name: 'n_nd_eq', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 

@@ -61,14 +61,24 @@ export default class MainModel {
         dataType: 'PICKUP',
       },
       {
-        name: 'trmtrainactapplyname',
-        prop: 'trmtrainactapplyname',
-        dataType: 'PICKUPTEXT',
+        name: 'evalcontents',
+        prop: 'evalcontents',
+        dataType: 'TEXT',
+      },
+      {
+        name: 'evaltarget',
+        prop: 'evaltarget',
+        dataType: 'SSCODELIST',
       },
       {
         name: 'pxjg',
         prop: 'pxjg',
-        dataType: 'TEXT',
+        dataType: 'SSCODELIST',
+      },
+      {
+        name: 'evaltime',
+        prop: 'evaltime',
+        dataType: 'DATE',
       },
       {
         name: 'dcwjtm',

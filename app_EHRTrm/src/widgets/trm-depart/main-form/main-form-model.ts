@@ -66,9 +66,19 @@ export default class MainModel {
         dataType: 'SSCODELIST',
       },
       {
-        name: 'jzrq',
-        prop: 'jzrq',
-        dataType: 'DATE',
+        name: 'lclx',
+        prop: 'lclx',
+        dataType: 'SSCODELIST',
+      },
+      {
+        name: 'nd',
+        prop: 'nd',
+        dataType: 'SSCODELIST',
+      },
+      {
+        name: 'jd',
+        prop: 'jd',
+        dataType: 'SSCODELIST',
       },
       {
         name: 'ormorgname',
@@ -79,6 +89,16 @@ export default class MainModel {
         name: 'ormorgsectorname',
         prop: 'ormorgsectorname',
         dataType: 'PICKUPTEXT',
+      },
+      {
+        name: 'tdrq',
+        prop: 'tdrq',
+        dataType: 'DATE',
+      },
+      {
+        name: 'jzrq',
+        prop: 'jzrq',
+        dataType: 'DATE',
       },
       {
         name: 'fj',

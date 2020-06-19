@@ -1,4 +1,12 @@
 export default {
+    EhrCodeList0405: {
+        '10': '培训课程',
+        '20': '培训讲师',
+        '30': '培训机构',
+        '40': '培训设施',
+        '50': '其他',
+        empty: '',
+    },
     EhrCodeList0011: {
         empty: '',
     },
@@ -84,6 +92,11 @@ export default {
         '2030': '2030年',
         empty: '',
     },
+    EhrCodeList0403: {
+        '10': '年度',
+        '20': '季度',
+        empty: '',
+    },
     EhrCodeList0086: {
         '1': '启用',
         '0': '停用',
@@ -166,6 +179,7 @@ export default {
         empty: '',
     },
     EhrCodeList0032: {
+        '5': '教授级',
         '10': '高级',
         '20': '中级',
         '30': '初级',
@@ -222,6 +236,13 @@ export default {
     EhrCodeList0097: {
         '1': '是',
         '0': '否',
+        empty: '',
+    },
+    EhrCodeList0404: {
+        '10': '优秀',
+        '20': '良好',
+        '30': '合格',
+        '40': '不合格',
         empty: '',
     },
     EhrCodeList0186: {

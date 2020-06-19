@@ -151,8 +151,6 @@ export default {
 			jhjssj: "拟结束时间",
 			npxks: "拟培训课时",
 			npxqs: "拟培训期数",
-			ysze: "预计培训费用",
-			pxadress: "拟培训地点",
 			pxnum: "拟培训人数",
 			approvalstatus: "审批状态",
 			shfs: "发布状态",

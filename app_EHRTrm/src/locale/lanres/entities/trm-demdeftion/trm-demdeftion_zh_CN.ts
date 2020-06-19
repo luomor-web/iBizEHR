@@ -68,7 +68,7 @@ export default {
 	},
 	main_2_form: {
 		details: {
-			group1: '需求调查定义', 
+			group1: '需求信息', 
 			formpage1: '基本信息', 
 			srfupdatedate: '更新时间', 
 			srforikey: '', 
@@ -139,12 +139,11 @@ export default {
 	},
 	main_grid: {
 		columns: {
-			xh: '排序号',
-			trmdemdeftionname: '培训汇总',
+			xh: '排序',
+			trmdemdeftionname: '培训需求名称',
 			pxmk: '培训模块',
 			xqfl: '需求分类',
 			trmtraincoursename: '培训课程',
-			pxdx: '培训对象',
 			pxzynr: '培训主要内容',
 			pxkssj: '培训开始时间',
 			pxjssj: '培训结束时间',

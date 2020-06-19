@@ -12,65 +12,25 @@
           </i-col>
           <i-col v-show="detailsModel.n_pxfs_eq.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
               <app-form-item name='n_pxfs_eq' :itemRules="this.rules.n_pxfs_eq" class='' :caption="$t('entities.trmtrainoutapply.default_searchform.details.n_pxfs_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_pxfs_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-              
-           <dropdown-list 
-              v-model="data.n_pxfs_eq" 
-              :data="data" 
-              :context="context"
-              :viewparams="viewparams"
-              :localContext ='{ }' 
-              :localParam ='{ }' 
-              :disabled="detailsModel.n_pxfs_eq.disabled"  
-              placeholder='请选择...' style="">
-           </dropdown-list>
+              <input-box v-model="data.n_pxfs_eq"  @enter="onEnter($event)"    :disabled="detailsModel.n_pxfs_eq.disabled" type='text'  style=""></input-box>
           </app-form-item>
           
           </i-col>
           <i-col v-show="detailsModel.n_pxlb_eq.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
               <app-form-item name='n_pxlb_eq' :itemRules="this.rules.n_pxlb_eq" class='' :caption="$t('entities.trmtrainoutapply.default_searchform.details.n_pxlb_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_pxlb_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-              
-           <dropdown-list 
-              v-model="data.n_pxlb_eq" 
-              :data="data" 
-              :context="context"
-              :viewparams="viewparams"
-              :localContext ='{ }' 
-              :localParam ='{ }' 
-              :disabled="detailsModel.n_pxlb_eq.disabled"  
-              placeholder='请选择...' style="">
-           </dropdown-list>
+              <input-box v-model="data.n_pxlb_eq"  @enter="onEnter($event)"    :disabled="detailsModel.n_pxlb_eq.disabled" type='text'  style=""></input-box>
           </app-form-item>
           
           </i-col>
           <i-col v-show="detailsModel.n_ywlx_eq.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
               <app-form-item name='n_ywlx_eq' :itemRules="this.rules.n_ywlx_eq" class='' :caption="$t('entities.trmtrainoutapply.default_searchform.details.n_ywlx_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_ywlx_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-              
-           <dropdown-list 
-              v-model="data.n_ywlx_eq" 
-              :data="data" 
-              :context="context"
-              :viewparams="viewparams"
-              :localContext ='{ }' 
-              :localParam ='{ }' 
-              :disabled="detailsModel.n_ywlx_eq.disabled"  
-              placeholder='请选择...' style="">
-           </dropdown-list>
+              <input-box v-model="data.n_ywlx_eq"  @enter="onEnter($event)"    :disabled="detailsModel.n_ywlx_eq.disabled" type='text'  style=""></input-box>
           </app-form-item>
           
           </i-col>
           <i-col v-show="detailsModel.n_wbpxjg_eq.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
               <app-form-item name='n_wbpxjg_eq' :itemRules="this.rules.n_wbpxjg_eq" class='' :caption="$t('entities.trmtrainoutapply.default_searchform.details.n_wbpxjg_eq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.n_wbpxjg_eq.error" :isEmptyCaption="false" labelPos="LEFT"> 
-              
-           <dropdown-list 
-              v-model="data.n_wbpxjg_eq" 
-              :data="data" 
-              :context="context"
-              :viewparams="viewparams"
-              :localContext ='{ }' 
-              :localParam ='{ }' 
-              :disabled="detailsModel.n_wbpxjg_eq.disabled"  
-              placeholder='请选择...' style="">
-           </dropdown-list>
+              <input-box v-model="data.n_wbpxjg_eq"  @enter="onEnter($event)"    :disabled="detailsModel.n_wbpxjg_eq.disabled" type='text'  style=""></input-box>
           </app-form-item>
           
           </i-col>

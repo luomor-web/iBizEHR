@@ -52,7 +52,9 @@
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.jsdj}}</span>
+                        <template >
+            <codelist :value="row.jsdj" tag='EhrCodeList0032' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+                        </template>
                     </template>
                 </el-table-column>
             </template>
@@ -997,6 +999,14 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public async formatExcelData(filterVal:any, jsonData:any) {
         let codelistColumns:Array<any> = [
+          {
+            name: 'jsdj',
+            srfkey: 'EhrCodeList0032',
+            codelistType : 'STATIC',
+            textSeparator: '、',
+            renderMode: 'string',
+            valueSeparator: ";",
+          },
         ];
         let _this = this;
         for (const codelist of codelistColumns) {

@@ -55,7 +55,7 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                         <template >
-            <codelist :value="row.jhlx" tag='EhrCodeList0401' codelistType='STATIC' renderMode="NUM" textSeparator="、" ></codelist>
+            <codelist :value="row.jhlx" tag='EhrCodeList0401' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -73,7 +73,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jhkssj')">
-                <el-table-column show-overflow-tooltip :prop="'jhkssj'" :label="$t('entities.trmtrainplan.main_grid.columns.jhkssj')" :width="100"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jhkssj'" :label="$t('entities.trmtrainplan.main_grid.columns.jhkssj')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainplan.main_grid.columns.jhkssj')}}
@@ -85,7 +85,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('jhjssj')">
-                <el-table-column show-overflow-tooltip :prop="'jhjssj'" :label="$t('entities.trmtrainplan.main_grid.columns.jhjssj')" :width="100"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'jhjssj'" :label="$t('entities.trmtrainplan.main_grid.columns.jhjssj')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainplan.main_grid.columns.jhjssj')}}
@@ -120,32 +120,8 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('ysze')">
-                <el-table-column show-overflow-tooltip :prop="'ysze'" :label="$t('entities.trmtrainplan.main_grid.columns.ysze')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.trmtrainplan.main_grid.columns.ysze')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                            <app-format-data dataType="FLOAT" precision="0" :data="row.ysze"></app-format-data>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('pxadress')">
-                <el-table-column show-overflow-tooltip :prop="'pxadress'" :label="$t('entities.trmtrainplan.main_grid.columns.pxadress')" :width="100"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.trmtrainplan.main_grid.columns.pxadress')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.pxadress}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('pxnum')">
-                <el-table-column show-overflow-tooltip :prop="'pxnum'" :label="$t('entities.trmtrainplan.main_grid.columns.pxnum')" :width="100"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'pxnum'" :label="$t('entities.trmtrainplan.main_grid.columns.pxnum')" :width="130"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainplan.main_grid.columns.pxnum')}}
@@ -179,7 +155,7 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                         <template >
-            <codelist :value="row.shfs" tag='EhrCodeList0402' codelistType='STATIC' ></codelist>
+            <codelist :value="row.shfs" tag='EhrCodeList0402' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
                     </template>
                 </el-table-column>
@@ -717,20 +693,6 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'px'
         },
         {
-            name: 'ysze',
-            label: '预计培训费用',
-            langtag: 'entities.trmtrainplan.main_grid.columns.ysze',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'pxadress',
-            label: '拟培训地点',
-            langtag: 'entities.trmtrainplan.main_grid.columns.pxadress',
-            show: true,
-            util: 'PX'
-        },
-        {
             name: 'pxnum',
             label: '拟培训人数',
             langtag: 'entities.trmtrainplan.main_grid.columns.pxnum',
@@ -1150,9 +1112,9 @@ export default class MainBase extends Vue implements ControlInterface {
             name: 'jhlx',
             srfkey: 'EhrCodeList0401',
             codelistType : 'STATIC',
-            renderMode: 'number',
             textSeparator: '、',
-            valueSeparator: ',',
+            renderMode: 'string',
+            valueSeparator: ";",
           },
           {
             name: 'approvalstatus',
@@ -1166,9 +1128,9 @@ export default class MainBase extends Vue implements ControlInterface {
             name: 'shfs',
             srfkey: 'EhrCodeList0402',
             codelistType : 'STATIC',
-            renderMode: 'other',
             textSeparator: '、',
-            valueSeparator: ',',
+            renderMode: 'string',
+            valueSeparator: ";",
           },
         ];
         let _this = this;

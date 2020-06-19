@@ -27,9 +27,9 @@ export default class MainModel {
     }else{
 		  return [
         {
-          name: 'shfs',
-          prop: 'shfs',
-          dataType: 'SSCODELIST',
+          name: 'pxadress',
+          prop: 'pxadress',
+          dataType: 'TEXT',
         },
         {
           name: 'xh',
@@ -37,14 +37,14 @@ export default class MainModel {
           dataType: 'TEXT',
         },
         {
-          name: 'pxadress',
-          prop: 'pxadress',
-          dataType: 'TEXT',
-        },
-        {
           name: 'approvalstatus',
           prop: 'approvalstatus',
           dataType: 'TEXT',
+        },
+        {
+          name: 'shfs',
+          prop: 'shfs',
+          dataType: 'SSCODELIST',
         },
         {
           name: 'trmdemdeftionid',

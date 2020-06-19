@@ -6,46 +6,61 @@
 <i-col v-show="detailsModel.group1.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
     <app-form-group layoutType="TABLE_24COL" titleStyle="" class='' :uiActionGroup="detailsModel.group1.uiActionGroup" @groupuiactionclick="groupUIActionClick($event)" :caption="$t('entities.trmtrainactment.main_form.details.group1')" :isShowCaption="true" uiStyle="DEFAULT" :titleBarCloseMode="1" :isInfoGroupMode="false" >    
     <row>
-        <i-col v-show="detailsModel.trmtrainactapplyname.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='trmtrainactapplyname' :itemRules="this.rules.trmtrainactapplyname" class='' :caption="$t('entities.trmtrainactment.main_form.details.trmtrainactapplyname')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.trmtrainactapplyname.error" :isEmptyCaption="false" labelPos="LEFT">
+        <i-col v-show="detailsModel.evalcontents.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='evalcontents' :itemRules="this.rules.evalcontents" class='' :caption="$t('entities.trmtrainactment.main_form.details.evalcontents')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.evalcontents.error" :isEmptyCaption="false" labelPos="LEFT">
+    <input-box v-model="data.evalcontents"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.evalcontents.disabled" type='text'  style=""></input-box>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.evaltarget.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='evaltarget' :itemRules="this.rules.evaltarget" class='' :caption="$t('entities.trmtrainactment.main_form.details.evaltarget')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.evaltarget.error" :isEmptyCaption="false" labelPos="LEFT">
     
-<app-picker 
-  :formState="formState"
-  :data="data"
-  :context="context"
-  :viewparams="viewparams"
-  :localContext ='{ }' 
-  :localParam ='{ }' 
-  :disabled="detailsModel.trmtrainactapplyname.disabled"
-  name='trmtrainactapplyname'
-  deMajorField='trmtrainactapplyname'
-  deKeyField='trmtrainactapply'
-  :service="service"
-  :acParams="{ serviceName: 'TrmTrainActapplyService', interfaceName: 'FetchDefault'}"
-  valueitem='trmtrainactapplyid' 
-  :value="data.trmtrainactapplyname" 
-  editortype="" 
-  :pickupView="{ viewname: 'trm-train-actapply-pickup-view', title: $t('entities.trmtrainactapply.views.pickupview.title'), deResParameters: [], parameters: [{ pathName: 'trmtrainactapplies', parameterName: 'trmtrainactapply' }, { pathName: 'pickupview', parameterName: 'pickupview' } ], placement:'' }"
-  style=""  
-  @formitemvaluechange="onFormItemValueChange">
-</app-picker>
-
+ <dropdown-list 
+    v-model="data.evaltarget" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :localContext ='{ }' 
+    :localParam ='{ }' 
+    :disabled="detailsModel.evaltarget.disabled"  
+    tag='EhrCodeList0405' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.pxjg.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.pxjg.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
     <app-form-item name='pxjg' :itemRules="this.rules.pxjg" class='' :caption="$t('entities.trmtrainactment.main_form.details.pxjg')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pxjg.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.pxjg"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.pxjg.disabled" type='text'  style=""></input-box>
+    
+ <dropdown-list 
+    v-model="data.pxjg" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :localContext ='{ }' 
+    :localParam ='{ }' 
+    :disabled="detailsModel.pxjg.disabled"  
+    tag='EhrCodeList0404' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.dcwjtm.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.evaltime.visible" :style="{}"  :md="{ span: 12, offset: 0 }" :lg="{ span: 12, offset: 0 }" :xl="{ span: 12, offset: 0 }">
+    <app-form-item name='evaltime' :itemRules="this.rules.evaltime" class='' :caption="$t('entities.trmtrainactment.main_form.details.evaltime')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.evaltime.error" :isEmptyCaption="false" labelPos="LEFT">
+    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.evaltime" :disabled="detailsModel.evaltime.disabled" style="min-width: 150px; width:100px;" @on-change="(val1, val2) => { this.data.evaltime = val1 }"></date-picker>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.dcwjtm.visible" :style="{}"  :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
     <app-form-item name='dcwjtm' :itemRules="this.rules.dcwjtm" class='' :caption="$t('entities.trmtrainactment.main_form.details.dcwjtm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dcwjtm.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.dcwjtm"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.dcwjtm.disabled" type='text'  style=""></input-box>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.bz.visible" :style="{}"  :lg="{ span: 24, offset: 0 }">
+<i-col v-show="detailsModel.bz.visible" :style="{}"  :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
     <app-form-item name='bz' :itemRules="this.rules.bz" class='' :caption="$t('entities.trmtrainactment.main_form.details.bz')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.bz.error" :isEmptyCaption="false" labelPos="LEFT">
     <div class="ivu-input-wrapper ivu-input-wrapper-default ivu-input-type">
     <textarea class="ivu-input" :rows="10" v-model="data.bz" :disabled="detailsModel.bz.disabled" style="height:200px;"></textarea>
@@ -365,8 +380,10 @@ export default class MainBase extends Vue implements ControlInterface {
         srfdeid: null,
         srfsourcekey: null,
         trmtrainactapplyid: null,
-        trmtrainactapplyname: null,
+        evalcontents: null,
+        evaltarget: null,
         pxjg: null,
+        evaltime: null,
         dcwjtm: null,
         bz: null,
         trmtrainactmentid: null,
@@ -425,16 +442,16 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
         srfkey: [
-            { type: 'string', message: '培训活动评估标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '培训活动评估标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '培训活动评估标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '培训活动评估标识 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '培训后评估标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '培训后评估标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '培训后评估标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '培训后评估标识 值不能为空', trigger: 'blur' },
         ],
         srfmajortext: [
-            { type: 'string', message: '培训活动评估名称 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '培训活动评估名称 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '培训活动评估名称 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '培训活动评估名称 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '培训后评估名称 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '培训后评估名称 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '培训后评估名称 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '培训后评估名称 值不能为空', trigger: 'blur' },
         ],
         srftempmode: [
             { type: 'string', message: ' 值必须为字符串类型', trigger: 'change' },
@@ -461,16 +478,22 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
         trmtrainactapplyid: [
-            { type: 'string', message: '培训活动申请标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '培训活动申请标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '培训活动申请标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '培训活动申请标识 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '培训后评估标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '培训后评估标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '培训后评估标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '培训后评估标识 值不能为空', trigger: 'blur' },
         ],
-        trmtrainactapplyname: [
-            { type: 'string', message: '评估项目 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '评估项目 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '评估项目 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '评估项目 值不能为空', trigger: 'blur' },
+        evalcontents: [
+            { type: 'string', message: '评估内容 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '评估内容 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '评估内容 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '评估内容 值不能为空', trigger: 'blur' },
+        ],
+        evaltarget: [
+            { type: 'string', message: '评估对象 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '评估对象 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '评估对象 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '评估对象 值不能为空', trigger: 'blur' },
         ],
         pxjg: [
             { type: 'string', message: '评估结果 值必须为字符串类型', trigger: 'change' },
@@ -478,11 +501,17 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: true, type: 'string', message: '评估结果 值不能为空', trigger: 'change' },
             { required: true, type: 'string', message: '评估结果 值不能为空', trigger: 'blur' },
         ],
+        evaltime: [
+            { type: 'string', message: '评估时间 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '评估时间 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '评估时间 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '评估时间 值不能为空', trigger: 'blur' },
+        ],
         dcwjtm: [
-            { type: 'string', message: '调查问卷题目 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '调查问卷题目 值必须为字符串类型', trigger: 'blur' },
-            { required: true, type: 'string', message: '调查问卷题目 值不能为空', trigger: 'change' },
-            { required: true, type: 'string', message: '调查问卷题目 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '调查问卷附件 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '调查问卷附件 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '调查问卷附件 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '调查问卷附件 值不能为空', trigger: 'blur' },
         ],
         bz: [
             { type: 'string', message: '备注 值必须为字符串类型', trigger: 'change' },
@@ -491,10 +520,10 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '备注 值不能为空', trigger: 'blur' },
         ],
         trmtrainactmentid: [
-            { type: 'string', message: '培训活动评估标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '培训活动评估标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '培训活动评估标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '培训活动评估标识 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '培训后评估标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '培训后评估标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '培训后评估标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '培训后评估标识 值不能为空', trigger: 'blur' },
         ],
     }
 
@@ -505,7 +534,7 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public detailsModel: any = {
-        group1: new FormGroupPanelModel({ caption: '培训评估', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainactment.main_form', extractMode: 'ITEM', details: [] } })
+        group1: new FormGroupPanelModel({ caption: '培训后评估', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmtrainactment.main_form', extractMode: 'ITEM', details: [] } })
 , 
         formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 
@@ -513,9 +542,9 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         srforikey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srforikey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        srfkey: new FormItemModel({ caption: '培训活动评估标识', detailType: 'FORMITEM', name: 'srfkey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        srfkey: new FormItemModel({ caption: '培训后评估标识', detailType: 'FORMITEM', name: 'srfkey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        srfmajortext: new FormItemModel({ caption: '培训活动评估名称', detailType: 'FORMITEM', name: 'srfmajortext', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        srfmajortext: new FormItemModel({ caption: '培训后评估名称', detailType: 'FORMITEM', name: 'srfmajortext', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         srftempmode: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srftempmode', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -525,17 +554,21 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         srfsourcekey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srfsourcekey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        trmtrainactapplyid: new FormItemModel({ caption: '培训活动申请标识', detailType: 'FORMITEM', name: 'trmtrainactapplyid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        trmtrainactapplyid: new FormItemModel({ caption: '培训后评估标识', detailType: 'FORMITEM', name: 'trmtrainactapplyid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        trmtrainactapplyname: new FormItemModel({ caption: '评估项目', detailType: 'FORMITEM', name: 'trmtrainactapplyname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        evalcontents: new FormItemModel({ caption: '评估内容', detailType: 'FORMITEM', name: 'evalcontents', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        evaltarget: new FormItemModel({ caption: '评估对象', detailType: 'FORMITEM', name: 'evaltarget', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         pxjg: new FormItemModel({ caption: '评估结果', detailType: 'FORMITEM', name: 'pxjg', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        dcwjtm: new FormItemModel({ caption: '调查问卷题目', detailType: 'FORMITEM', name: 'dcwjtm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        evaltime: new FormItemModel({ caption: '评估时间', detailType: 'FORMITEM', name: 'evaltime', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        dcwjtm: new FormItemModel({ caption: '调查问卷附件', detailType: 'FORMITEM', name: 'dcwjtm', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         bz: new FormItemModel({ caption: '备注', detailType: 'FORMITEM', name: 'bz', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        trmtrainactmentid: new FormItemModel({ caption: '培训活动评估标识', detailType: 'FORMITEM', name: 'trmtrainactmentid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        trmtrainactmentid: new FormItemModel({ caption: '培训后评估标识', detailType: 'FORMITEM', name: 'trmtrainactmentid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
     };
 
@@ -648,15 +681,27 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 trmtrainactapplyname 值
+     * 监控表单属性 evalcontents 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof Main
      */
-    @Watch('data.trmtrainactapplyname')
-    onTrmtrainactapplynameChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'trmtrainactapplyname', newVal: newVal, oldVal: oldVal });
+    @Watch('data.evalcontents')
+    onEvalcontentsChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'evalcontents', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 evaltarget 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.evaltarget')
+    onEvaltargetChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'evaltarget', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -669,6 +714,18 @@ export default class MainBase extends Vue implements ControlInterface {
     @Watch('data.pxjg')
     onPxjgChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'pxjg', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 evaltime 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.evaltime')
+    onEvaltimeChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'evaltime', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -743,6 +800,8 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
+
+
 
 
 

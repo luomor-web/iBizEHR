@@ -81,12 +81,6 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.pxdx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='pxdx' :itemRules="this.rules.pxdx" class='' :caption="$t('entities.trmdemdeftion.main_2_form.details.pxdx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pxdx.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.pxdx"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.pxdx.disabled" type='text'  style=""></input-box>
-</app-form-item>
-
-</i-col>
 <i-col v-show="detailsModel.trmtraincoursename.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
     <app-form-item name='trmtraincoursename' :itemRules="this.rules.trmtraincoursename" class='' :caption="$t('entities.trmdemdeftion.main_2_form.details.trmtraincoursename')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.trmtraincoursename.error" :isEmptyCaption="false" labelPos="LEFT">
     
@@ -114,7 +108,7 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.pxzynr.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+<i-col v-show="detailsModel.pxzynr.visible" :style="{}"  :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
     <app-form-item name='pxzynr' :itemRules="this.rules.pxzynr" class='' :caption="$t('entities.trmdemdeftion.main_2_form.details.pxzynr')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pxzynr.error" :isEmptyCaption="false" labelPos="LEFT">
     <input-box v-model="data.pxzynr"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.pxzynr.disabled" type='text'  style=""></input-box>
 </app-form-item>
@@ -735,7 +729,7 @@ export default class Main_2Base extends Vue implements ControlInterface {
      * @memberof Main_2
      */
     public detailsModel: any = {
-        group1: new FormGroupPanelModel({ caption: '需求调查定义', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmdemdeftion.main_2_form', extractMode: 'ITEM', details: [] } })
+        group1: new FormGroupPanelModel({ caption: '需求信息', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.trmdemdeftion.main_2_form', extractMode: 'ITEM', details: [] } })
 , 
         formpage1: new FormPageModel({ caption: '基本信息', detailType: 'FORMPAGE', name: 'formpage1', visible: true, isShowCaption: true, form: this })
 , 

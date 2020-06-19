@@ -6,7 +6,7 @@ import view_grid from '@widgets/trm-train-actment/main-grid/main-grid.vue';
 import view_searchform from '@widgets/trm-train-actment/default-searchform/default-searchform.vue';
 
 /**
- * 培训活动评估表格视图
+ * 培训后评估表格视图
  *
  * @export
  * @class TrmTrainActmentGridView

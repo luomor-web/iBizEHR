@@ -21,7 +21,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('trmdepartname')">
-                <el-table-column show-overflow-tooltip :prop="'trmdepartname'" :label="$t('entities.trmdepart.main_grid.columns.trmdepartname')" :width="300"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'trmdepartname'" :label="$t('entities.trmdepart.main_grid.columns.trmdepartname')" :width="280"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmdepart.main_grid.columns.trmdepartname')}}
@@ -32,8 +32,22 @@
                     </template>
                 </el-table-column>
             </template>
+            <template v-if="getColumnState('lclx')">
+                <el-table-column show-overflow-tooltip :prop="'lclx'" :label="$t('entities.trmdepart.main_grid.columns.lclx')" :width="100"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.trmdepart.main_grid.columns.lclx')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <template >
+            <codelist :value="row.lclx" tag='EhrCodeList0403' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+                        </template>
+                    </template>
+                </el-table-column>
+            </template>
             <template v-if="getColumnState('nd')">
-                <el-table-column show-overflow-tooltip :prop="'nd'" :label="$t('entities.trmdepart.main_grid.columns.nd')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'nd'" :label="$t('entities.trmdepart.main_grid.columns.nd')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmdepart.main_grid.columns.nd')}}
@@ -41,8 +55,60 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                         <template >
-            <codelist :value="row.nd" tag='EhrCodeList0115' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
+            <codelist :value="row.nd" tag='EhrCodeList0009' codelistType='STATIC' renderMode="STR" valueSeparator=";" textSeparator="、" ></codelist>
                         </template>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('jd')">
+                <el-table-column show-overflow-tooltip :prop="'jd'" :label="$t('entities.trmdepart.main_grid.columns.jd')" :width="100"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.trmdepart.main_grid.columns.jd')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <template >
+            <codelist :value="row.jd" tag='CodeList83' codelistType='STATIC' ></codelist>
+                        </template>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('tzlx')">
+                <el-table-column show-overflow-tooltip :prop="'tzlx'" :label="$t('entities.trmdepart.main_grid.columns.tzlx')" :width="100"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.trmdepart.main_grid.columns.tzlx')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <template >
+            <codelist :value="row.tzlx" tag='EhrCodeList0230' codelistType='STATIC' ></codelist>
+                        </template>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('ormorgname')">
+                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.trmdepart.main_grid.columns.ormorgname')" :width="100"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.trmdepart.main_grid.columns.ormorgname')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <span>{{row.ormorgname}}</span>
+                    </template>
+                </el-table-column>
+            </template>
+            <template v-if="getColumnState('tdrq')">
+                <el-table-column show-overflow-tooltip :prop="'tdrq'" :label="$t('entities.trmdepart.main_grid.columns.tdrq')" :width="100"  :align="'left'" :sortable="'custom'">
+                    <template v-slot:header="{column}">
+                      <span class="column-header ">
+                        {{$t('entities.trmdepart.main_grid.columns.tdrq')}}
+                      </span>
+                    </template>
+                    <template v-slot="{row,column,$index}">
+                        <app-format-data format="YYYY-MM-DD" :data="row.tdrq"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
@@ -55,30 +121,6 @@
                     </template>
                     <template v-slot="{row,column,$index}">
                         <app-format-data format="YYYY-MM-DD" :data="row.jzrq"></app-format-data>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('zzdzs')">
-                <el-table-column show-overflow-tooltip :prop="'zzdzs'" :label="$t('entities.trmdepart.main_grid.columns.zzdzs')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.trmdepart.main_grid.columns.zzdzs')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.zzdzs}}</span>
-                    </template>
-                </el-table-column>
-            </template>
-            <template v-if="getColumnState('shortname')">
-                <el-table-column show-overflow-tooltip :prop="'shortname'" :label="$t('entities.trmdepart.main_grid.columns.shortname')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.trmdepart.main_grid.columns.shortname')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.shortname}}</span>
                     </template>
                 </el-table-column>
             </template>
@@ -566,6 +608,13 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'PX'
         },
         {
+            name: 'lclx',
+            label: '周期类型',
+            langtag: 'entities.trmdepart.main_grid.columns.lclx',
+            show: true,
+            util: 'PX'
+        },
+        {
             name: 'nd',
             label: '年度',
             langtag: 'entities.trmdepart.main_grid.columns.nd',
@@ -573,25 +622,39 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'px'
         },
         {
+            name: 'jd',
+            label: '季度',
+            langtag: 'entities.trmdepart.main_grid.columns.jd',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'tzlx',
+            label: '通知类型',
+            langtag: 'entities.trmdepart.main_grid.columns.tzlx',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'ormorgname',
+            label: '直属单位',
+            langtag: 'entities.trmdepart.main_grid.columns.ormorgname',
+            show: true,
+            util: 'PX'
+        },
+        {
+            name: 'tdrq',
+            label: '通知发布日期',
+            langtag: 'entities.trmdepart.main_grid.columns.tdrq',
+            show: true,
+            util: 'PX'
+        },
+        {
             name: 'jzrq',
             label: '截止日期',
             langtag: 'entities.trmdepart.main_grid.columns.jzrq',
             show: true,
             util: 'px'
-        },
-        {
-            name: 'zzdzs',
-            label: '通知对象',
-            langtag: 'entities.trmdepart.main_grid.columns.zzdzs',
-            show: true,
-            util: 'PX'
-        },
-        {
-            name: 'shortname',
-            label: '填报部门',
-            langtag: 'entities.trmdepart.main_grid.columns.shortname',
-            show: true,
-            util: 'PX'
         },
     ]
 
@@ -981,12 +1044,36 @@ export default class MainBase extends Vue implements ControlInterface {
     public async formatExcelData(filterVal:any, jsonData:any) {
         let codelistColumns:Array<any> = [
           {
-            name: 'nd',
-            srfkey: 'EhrCodeList0115',
+            name: 'lclx',
+            srfkey: 'EhrCodeList0403',
             codelistType : 'STATIC',
             textSeparator: '、',
             renderMode: 'string',
             valueSeparator: ";",
+          },
+          {
+            name: 'nd',
+            srfkey: 'EhrCodeList0009',
+            codelistType : 'STATIC',
+            textSeparator: '、',
+            renderMode: 'string',
+            valueSeparator: ";",
+          },
+          {
+            name: 'jd',
+            srfkey: 'CodeList83',
+            codelistType : 'STATIC',
+            renderMode: 'other',
+            textSeparator: '、',
+            valueSeparator: ',',
+          },
+          {
+            name: 'tzlx',
+            srfkey: 'EhrCodeList0230',
+            codelistType : 'STATIC',
+            renderMode: 'other',
+            textSeparator: '、',
+            valueSeparator: ',',
           },
         ];
         let _this = this;

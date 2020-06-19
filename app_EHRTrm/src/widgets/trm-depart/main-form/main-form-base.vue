@@ -30,9 +30,57 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.jzrq.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='jzrq' :itemRules="this.rules.jzrq" class='' :caption="$t('entities.trmdepart.main_form.details.jzrq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jzrq.error" :isEmptyCaption="false" labelPos="LEFT">
-    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.jzrq" :disabled="detailsModel.jzrq.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.jzrq = val1 }"></date-picker>
+<i-col v-show="detailsModel.lclx.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='lclx' :itemRules="this.rules.lclx" class='' :caption="$t('entities.trmdepart.main_form.details.lclx')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.lclx.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+ <dropdown-list 
+    v-model="data.lclx" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :localContext ='{ }' 
+    :localParam ='{ }' 
+    :disabled="detailsModel.lclx.disabled"  
+    tag='EhrCodeList0403' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.nd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='nd' :itemRules="this.rules.nd" class='' :caption="$t('entities.trmdepart.main_form.details.nd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.nd.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+ <dropdown-list 
+    v-model="data.nd" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :localContext ='{ }' 
+    :localParam ='{ }' 
+    :disabled="detailsModel.nd.disabled"  
+    tag='EhrCodeList0009' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.jd.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='jd' :itemRules="this.rules.jd" class='' :caption="$t('entities.trmdepart.main_form.details.jd')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jd.error" :isEmptyCaption="false" labelPos="LEFT">
+    
+ <dropdown-list 
+    v-model="data.jd" 
+    :data="data" 
+    :context="context"
+    :viewparams="viewparams"
+    :localContext ='{ }' 
+    :localParam ='{ }' 
+    :disabled="detailsModel.jd.disabled"  
+    tag='CodeList83' 
+    codelistType='STATIC'
+    placeholder='请选择...' style="">
+ </dropdown-list>
 </app-form-item>
 
 </i-col>
@@ -81,6 +129,18 @@
     style="">
 </app-mpicker>
 
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.tdrq.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='tdrq' :itemRules="this.rules.tdrq" class='' :caption="$t('entities.trmdepart.main_form.details.tdrq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.tdrq.error" :isEmptyCaption="false" labelPos="LEFT">
+    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.tdrq" :disabled="detailsModel.tdrq.disabled" style="min-width: 150px; width:100px;" @on-change="(val1, val2) => { this.data.tdrq = val1 }"></date-picker>
+</app-form-item>
+
+</i-col>
+<i-col v-show="detailsModel.jzrq.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='jzrq' :itemRules="this.rules.jzrq" class='' :caption="$t('entities.trmdepart.main_form.details.jzrq')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jzrq.error" :isEmptyCaption="false" labelPos="LEFT">
+    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.jzrq" :disabled="detailsModel.jzrq.disabled" style="min-width: 150px; width:100px;width:100%;" @on-change="(val1, val2) => { this.data.jzrq = val1 }"></date-picker>
 </app-form-item>
 
 </i-col>
@@ -403,9 +463,13 @@ export default class MainBase extends Vue implements ControlInterface {
         srfsourcekey: null,
         trmdepartname: null,
         tzlx: null,
-        jzrq: null,
+        lclx: null,
+        nd: null,
+        jd: null,
         ormorgname: null,
         ormorgsectorname: null,
+        tdrq: null,
+        jzrq: null,
         fj: null,
         trmdepartid: null,
         trmdepart:null,
@@ -510,11 +574,23 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '通知类型 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '通知类型 值不能为空', trigger: 'blur' },
         ],
-        jzrq: [
-            { type: 'string', message: '截止日期 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '截止日期 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '截止日期 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '截止日期 值不能为空', trigger: 'blur' },
+        lclx: [
+            { type: 'string', message: '周期类型 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '周期类型 值必须为字符串类型', trigger: 'blur' },
+            { required: true, type: 'string', message: '周期类型 值不能为空', trigger: 'change' },
+            { required: true, type: 'string', message: '周期类型 值不能为空', trigger: 'blur' },
+        ],
+        nd: [
+            { type: 'string', message: '年度 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '年度 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '年度 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '年度 值不能为空', trigger: 'blur' },
+        ],
+        jd: [
+            { type: 'string', message: '季度 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '季度 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '季度 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '季度 值不能为空', trigger: 'blur' },
         ],
         ormorgname: [
             { type: 'string', message: '直属单位 值必须为字符串类型', trigger: 'change' },
@@ -523,10 +599,22 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '直属单位 值不能为空', trigger: 'blur' },
         ],
         ormorgsectorname: [
-            { type: 'string', message: '职能部门 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '职能部门 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '职能部门 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '职能部门 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '直属部门 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '直属部门 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '直属部门 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '直属部门 值不能为空', trigger: 'blur' },
+        ],
+        tdrq: [
+            { type: 'string', message: '通知发布日期 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '通知发布日期 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '通知发布日期 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '通知发布日期 值不能为空', trigger: 'blur' },
+        ],
+        jzrq: [
+            { type: 'string', message: '截止日期 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '截止日期 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '截止日期 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '截止日期 值不能为空', trigger: 'blur' },
         ],
         fj: [
             { type: 'string', message: '附件 值必须为字符串类型', trigger: 'change' },
@@ -573,11 +661,19 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         tzlx: new FormItemModel({ caption: '通知类型', detailType: 'FORMITEM', name: 'tzlx', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        jzrq: new FormItemModel({ caption: '截止日期', detailType: 'FORMITEM', name: 'jzrq', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        lclx: new FormItemModel({ caption: '周期类型', detailType: 'FORMITEM', name: 'lclx', visible: false, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        nd: new FormItemModel({ caption: '年度', detailType: 'FORMITEM', name: 'nd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        jd: new FormItemModel({ caption: '季度', detailType: 'FORMITEM', name: 'jd', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         ormorgname: new FormItemModel({ caption: '直属单位', detailType: 'FORMITEM', name: 'ormorgname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        ormorgsectorname: new FormItemModel({ caption: '职能部门', detailType: 'FORMITEM', name: 'ormorgsectorname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        ormorgsectorname: new FormItemModel({ caption: '直属部门', detailType: 'FORMITEM', name: 'ormorgsectorname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        tdrq: new FormItemModel({ caption: '通知发布日期', detailType: 'FORMITEM', name: 'tdrq', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+, 
+        jzrq: new FormItemModel({ caption: '截止日期', detailType: 'FORMITEM', name: 'jzrq', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         fj: new FormItemModel({ caption: '附件', detailType: 'FORMITEM', name: 'fj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -706,15 +802,39 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 jzrq 值
+     * 监控表单属性 lclx 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof Main
      */
-    @Watch('data.jzrq')
-    onJzrqChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'jzrq', newVal: newVal, oldVal: oldVal });
+    @Watch('data.lclx')
+    onLclxChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'lclx', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 nd 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.nd')
+    onNdChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'nd', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 jd 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.jd')
+    onJdChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'jd', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -739,6 +859,30 @@ export default class MainBase extends Vue implements ControlInterface {
     @Watch('data.ormorgsectorname')
     onOrmorgsectornameChange(newVal: any, oldVal: any) {
         this.formDataChange({ name: 'ormorgsectorname', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 tdrq 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.tdrq')
+    onTdrqChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'tdrq', newVal: newVal, oldVal: oldVal });
+    }
+
+    /**
+     * 监控表单属性 jzrq 值
+     *
+     * @param {*} newVal
+     * @param {*} oldVal
+     * @memberof Main
+     */
+    @Watch('data.jzrq')
+    onJzrqChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'jzrq', newVal: newVal, oldVal: oldVal });
     }
 
     /**
@@ -809,6 +953,31 @@ export default class MainBase extends Vue implements ControlInterface {
 
 
 
+
+
+
+
+        if (Object.is(name, '') || Object.is(name, 'lclx')) {
+            let ret = true;
+            const _lclx = this.data.lclx;
+            if (this.$verify.testCond(_lclx, 'NOTEQ', '20')) {
+                ret = false;
+            }
+            this.rules.lclx.some((rule: any) => {
+                if (rule.hasOwnProperty('required')) {
+                    rule.required = ret;
+                }
+                return false;
+            });
+        }
+        if (Object.is(name, '') || Object.is(name, 'lclx')) {
+            let ret = false;
+            const _lclx = this.data.lclx;
+            if (this.$verify.testCond(_lclx, 'EQ', '20')) {
+                ret = true;
+            }
+            this.detailsModel.lclx.setVisible(ret);
+        }
 
 
 

@@ -61,16 +61,6 @@ export default class MainModel {
         dataType: 'PICKUPTEXT',
       },
       {
-        name: 'ormorgname',
-        prop: 'ormorgname',
-        dataType: 'PICKUPTEXT',
-      },
-      {
-        name: 'ormorgsectorname',
-        prop: 'ormorgsectorname',
-        dataType: 'PICKUPTEXT',
-      },
-      {
         name: 'nd',
         prop: 'nd',
         dataType: 'PICKUPDATA',
@@ -84,6 +74,16 @@ export default class MainModel {
         name: 'jzrq',
         prop: 'jzrq',
         dataType: 'PICKUPDATA',
+      },
+      {
+        name: 'ormorgname',
+        prop: 'ormorgname',
+        dataType: 'PICKUPTEXT',
+      },
+      {
+        name: 'ormorgsectorname',
+        prop: 'ormorgsectorname',
+        dataType: 'PICKUPTEXT',
       },
       {
         name: 'trmdepartid',

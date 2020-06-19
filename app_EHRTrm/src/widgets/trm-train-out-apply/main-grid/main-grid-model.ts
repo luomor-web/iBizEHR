@@ -29,7 +29,7 @@ export default class MainModel {
         {
           name: 'pxlb',
           prop: 'pxlb',
-          dataType: 'SSCODELIST',
+          dataType: 'TEXT',
         },
         {
           name: 'pxjsrq',
@@ -79,7 +79,7 @@ export default class MainModel {
         {
           name: 'pxfs',
           prop: 'pxfs',
-          dataType: 'SSCODELIST',
+          dataType: 'TEXT',
         },
         {
           name: 'pxnr',
@@ -113,22 +113,22 @@ export default class MainModel {
       {
         name: 'n_pxfs_eq',
         prop: 'n_pxfs_eq',
-        dataType: 'SSCODELIST',
+        dataType: 'TEXT',
       },
       {
         name: 'n_pxlb_eq',
         prop: 'n_pxlb_eq',
-        dataType: 'SSCODELIST',
+        dataType: 'TEXT',
       },
       {
         name: 'n_ywlx_eq',
         prop: 'n_ywlx_eq',
-        dataType: 'SSCODELIST',
+        dataType: 'TEXT',
       },
       {
         name: 'n_wbpxjg_eq',
         prop: 'n_wbpxjg_eq',
-        dataType: 'SSCODELIST',
+        dataType: 'TEXT',
       },
       {
         name: 'n_pimpersonname_like',

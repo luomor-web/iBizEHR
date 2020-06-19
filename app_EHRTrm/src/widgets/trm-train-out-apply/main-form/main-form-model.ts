@@ -88,17 +88,17 @@ export default class MainModel {
       {
         name: 'ywlx',
         prop: 'ywlx',
-        dataType: 'SSCODELIST',
+        dataType: 'TEXT',
       },
       {
         name: 'pxfs',
         prop: 'pxfs',
-        dataType: 'SSCODELIST',
+        dataType: 'TEXT',
       },
       {
         name: 'pxlb',
         prop: 'pxlb',
-        dataType: 'SSCODELIST',
+        dataType: 'TEXT',
       },
       {
         name: 'pxmb',
@@ -128,7 +128,7 @@ export default class MainModel {
       {
         name: 'wbpxjg',
         prop: 'wbpxjg',
-        dataType: 'SSCODELIST',
+        dataType: 'TEXT',
       },
       {
         name: 'trmtrainoutapplyid',

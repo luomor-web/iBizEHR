@@ -15,6 +15,8 @@
               :localContext ='{ }' 
               :localParam ='{ }' 
               :disabled="detailsModel.n_jsdj_eq.disabled"  
+              tag='EhrCodeList0032' 
+              codelistType='STATIC'
               placeholder='请选择...' style="">
            </dropdown-list>
           </app-form-item>
