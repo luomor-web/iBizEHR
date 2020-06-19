@@ -59,7 +59,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('ormorgname')">
-                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.socarchives.main_grid.columns.ormorgname')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'ormorgname'" :label="$t('entities.socarchives.main_grid.columns.ormorgname')" :min-width="100"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.socarchives.main_grid.columns.ormorgname')}}
@@ -95,7 +95,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('socrulename')">
-                <el-table-column show-overflow-tooltip :prop="'socrulename'" :label="$t('entities.socarchives.main_grid.columns.socrulename')" :min-width="100"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'socrulename'" :label="$t('entities.socarchives.main_grid.columns.socrulename')" :width="250"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.socarchives.main_grid.columns.socrulename')}}
@@ -622,7 +622,7 @@ export default class MainBase extends Vue implements ControlInterface {
             label: '组织',
             langtag: 'entities.socarchives.main_grid.columns.ormorgname',
             show: true,
-            util: 'PX'
+            util: 'STAR'
         },
         {
             name: 'ormorgsectorname',
@@ -643,7 +643,7 @@ export default class MainBase extends Vue implements ControlInterface {
             label: '社保规则名称',
             langtag: 'entities.socarchives.main_grid.columns.socrulename',
             show: true,
-            util: 'STAR'
+            util: 'PX'
         },
         {
             name: 'state',

@@ -224,8 +224,8 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "be3603e6155f93c90fc36953c6a4689f"
         },
         "socarchivesstopgridview": {
-            "title": "社保档案表格视图",
-            "caption": "社保档案",
+            "title": "非员工终止社保",
+            "caption": "非员工终止社保",
             "viewtype": "DEGRIDVIEW",
             "viewmodule": "SOC",
             "viewname": "SocArchivesStopGridView",

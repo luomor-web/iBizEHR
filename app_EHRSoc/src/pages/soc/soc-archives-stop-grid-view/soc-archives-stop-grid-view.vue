@@ -6,7 +6,7 @@ import view_grid from '@widgets/soc-archives/main-grid/main-grid.vue';
 import view_searchform from '@widgets/soc-archives/default-searchform/default-searchform.vue';
 
 /**
- * 社保档案表格视图
+ * 非员工终止社保
  *
  * @export
  * @class SocArchivesStopGridView

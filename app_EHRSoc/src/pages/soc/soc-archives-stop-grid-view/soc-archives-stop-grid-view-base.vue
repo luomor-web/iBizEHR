@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="socarchivesstopgridview" viewTitle="社保档案表格视图" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'soc-archives-stop-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="socarchivesstopgridview" viewTitle="非员工终止社保" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'soc-archives-stop-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -78,7 +78,7 @@ import CodeListService from "@service/app/codelist-service";
 
 
 /**
- * 社保档案表格视图基类
+ * 非员工终止社保基类
  *
  * @export
  * @class SocArchivesStopGridViewBase

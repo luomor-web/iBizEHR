@@ -44,8 +44,8 @@ export default {
       title: '社保档案编辑视图',
 		},
 		stopgridview: {
-			caption: "社保档案",
-      title: '社保档案表格视图',
+			caption: "非员工终止社保",
+      title: '非员工终止社保',
 		},
 		treeexpview: {
 			caption: "社保档案",
