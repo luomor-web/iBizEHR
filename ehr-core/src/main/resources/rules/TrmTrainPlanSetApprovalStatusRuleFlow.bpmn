@@ -8,9 +8,12 @@
         <tns:global identifier="trmtrainplansetapprovalstatusdefault" type="cn.ibizlab.ehr.core.trm.domain.TrmTrainPlan" />
         </extensionElements>
      <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmtrainplansetapprovalstatusprepareparam1" id="A85E07E1-C7C4-40FC-BEAF-4901372CAE93" implementation="http://www.jboss.org/drools/rule" name="参数准备"/>
-     <endEvent id="A85E07E1-C7C4-40FC-BEAF-4901372CAE93_End" name="End"/>
-     <sequenceFlow id="A85E07E1-C7C4-40FC-BEAF-4901372CAE93_End_Line" sourceRef="A85E07E1-C7C4-40FC-BEAF-4901372CAE93" targetRef="A85E07E1-C7C4-40FC-BEAF-4901372CAE93_End"/>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmtrainplansetapprovalstatusdeaction1" id="6892D266-00FE-4EF9-8FA3-A15678E4F4F2" implementation="http://www.jboss.org/drools/rule" name="更新状态"/>
+     <endEvent id="6892D266-00FE-4EF9-8FA3-A15678E4F4F2_End" name="End"/>
+     <sequenceFlow id="6892D266-00FE-4EF9-8FA3-A15678E4F4F2_End_Line" sourceRef="6892D266-00FE-4EF9-8FA3-A15678E4F4F2" targetRef="6892D266-00FE-4EF9-8FA3-A15678E4F4F2_End"/>
      <startEvent id="D275E4C7-CEDB-463E-9FFE-1070CB103A41" isInterrupting="true"/>
+     <sequenceFlow id="077B64BA-0C97-4AC2-9160-349170924EBC" sourceRef="A85E07E1-C7C4-40FC-BEAF-4901372CAE93" targetRef="6892D266-00FE-4EF9-8FA3-A15678E4F4F2">
+     </sequenceFlow>
      <sequenceFlow id="AEAD8006-E0C1-44B0-98AD-0D5255065473" sourceRef="D275E4C7-CEDB-463E-9FFE-1070CB103A41" targetRef="A85E07E1-C7C4-40FC-BEAF-4901372CAE93">
      </sequenceFlow>
     </process>

@@ -84,6 +84,7 @@ export default class SocArchivesUIServiceBase extends UIService {
         this.allViewMap.set('EDITVIEW:',{viewname:'editview',srfappde:'socarchives'});
         this.allViewMap.set(':',{viewname:'main2editview',srfappde:'socarchives'});
         this.allViewMap.set(':',{viewname:'stopgridview',srfappde:'socarchives'});
+        this.allViewMap.set(':',{viewname:'treeexpview',srfappde:'socarchives'});
     }
 
     /**

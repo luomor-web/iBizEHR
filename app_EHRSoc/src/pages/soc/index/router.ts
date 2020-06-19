@@ -166,34 +166,6 @@ const router = new Router({
                     component: () => import('@pages/soc/soc-archives-detail-edit-view/soc-archives-detail-edit-view.vue'),
                 },
                 {
-                    path: 'socrules/:socrule?/quickeditview/:quickeditview?',
-                    meta: {
-                        caption: 'entities.socrule.views.quickeditview.title',
-                        info:'',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'socrules', parameterName: 'socrule' },
-                            { pathName: 'quickeditview', parameterName: 'quickeditview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/soc/soc-rule-quick-edit-view/soc-rule-quick-edit-view.vue'),
-                },
-                {
-                    path: 'socaccounts/:socaccount?/editview/:editview?',
-                    meta: {
-                        caption: 'entities.socaccount.views.editview.title',
-                        info:'',
-                        parameters: [
-                            { pathName: 'index', parameterName: 'index' },
-                            { pathName: 'socaccounts', parameterName: 'socaccount' },
-                            { pathName: 'editview', parameterName: 'editview' },
-                        ],
-                        requireAuth: true,
-                    },
-                    component: () => import('@pages/soc/soc-account-edit-view/soc-account-edit-view.vue'),
-                },
-                {
                     path: 'pimpeople/:pimperson?/socarchives/:socarchives?/socarchivesdetails/:socarchivesdetail?/gridview/:gridview?',
                     meta: {
                         caption: 'entities.socarchivesdetail.views.gridview.title',
@@ -237,6 +209,34 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/soc/soc-archives-detail-grid-view/soc-archives-detail-grid-view.vue'),
+                },
+                {
+                    path: 'socrules/:socrule?/quickeditview/:quickeditview?',
+                    meta: {
+                        caption: 'entities.socrule.views.quickeditview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'socrules', parameterName: 'socrule' },
+                            { pathName: 'quickeditview', parameterName: 'quickeditview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-rule-quick-edit-view/soc-rule-quick-edit-view.vue'),
+                },
+                {
+                    path: 'socaccounts/:socaccount?/editview/:editview?',
+                    meta: {
+                        caption: 'entities.socaccount.views.editview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'socaccounts', parameterName: 'socaccount' },
+                            { pathName: 'editview', parameterName: 'editview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-account-edit-view/soc-account-edit-view.vue'),
                 },
                 {
                     path: 'soctypes/:soctype?/editview/:editview?',
@@ -508,6 +508,35 @@ const router = new Router({
                         requireAuth: true,
                     },
                     component: () => import('@pages/orm/orm-org-pickup-grid-view/orm-org-pickup-grid-view.vue'),
+                },
+                {
+                    path: 'pimpeople/:pimperson?/socarchives/:socarchives?/treeexpview/:treeexpview?',
+                    meta: {
+                        caption: 'entities.socarchives.views.treeexpview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'pimpeople', parameterName: 'pimperson' },
+                            { pathName: 'socarchives', parameterName: 'socarchives' },
+                            { pathName: 'treeexpview', parameterName: 'treeexpview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-archives-tree-exp-view/soc-archives-tree-exp-view.vue'),
+                },
+                {
+                    path: 'socarchives/:socarchives?/treeexpview/:treeexpview?',
+                    meta: {
+                        caption: 'entities.socarchives.views.treeexpview.title',
+                        info:'',
+                        parameters: [
+                            { pathName: 'index', parameterName: 'index' },
+                            { pathName: 'socarchives', parameterName: 'socarchives' },
+                            { pathName: 'treeexpview', parameterName: 'treeexpview' },
+                        ],
+                        requireAuth: true,
+                    },
+                    component: () => import('@pages/soc/soc-archives-tree-exp-view/soc-archives-tree-exp-view.vue'),
                 },
                 {
                     path: 'pimpeople/:pimperson?/socarchives/:socarchives?/gridview/:gridview?',
@@ -1105,6 +1134,33 @@ const router = new Router({
             requireAuth: true,
         },
         component: () => import('@pages/soc/soc-account-edit-view/soc-account-edit-view.vue'),
+    },
+    {
+        path: '/pimpeople/:pimperson?/socarchives/:socarchives?/treeexpview/:treeexpview?',
+        meta: {
+            caption: 'entities.socarchives.views.treeexpview.title',
+            info:'',
+            parameters: [
+                { pathName: 'pimpeople', parameterName: 'pimperson' },
+                { pathName: 'socarchives', parameterName: 'socarchives' },
+                { pathName: 'treeexpview', parameterName: 'treeexpview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-archives-tree-exp-view/soc-archives-tree-exp-view.vue'),
+    },
+    {
+        path: '/socarchives/:socarchives?/treeexpview/:treeexpview?',
+        meta: {
+            caption: 'entities.socarchives.views.treeexpview.title',
+            info:'',
+            parameters: [
+                { pathName: 'socarchives', parameterName: 'socarchives' },
+                { pathName: 'treeexpview', parameterName: 'treeexpview' },
+            ],
+            requireAuth: true,
+        },
+        component: () => import('@pages/soc/soc-archives-tree-exp-view/soc-archives-tree-exp-view.vue'),
     },
     {
         path: '/socrules/:socrule?/pickupview/:pickupview?',

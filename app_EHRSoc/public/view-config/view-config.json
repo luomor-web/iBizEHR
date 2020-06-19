@@ -117,8 +117,8 @@
         "memo": "系统自动添加"
     },
     "pimpersonsetsocarchivesgridview": {
-        "title": "员工考勤设置",
-        "caption": "员工考勤设置",
+        "title": "员工社保设置",
+        "caption": "员工社保设置",
         "viewtype": "DEGRIDVIEW",
         "viewmodule": "PIM",
         "viewname": "PimPersonSetSocArchivesGridView",
@@ -259,6 +259,15 @@
         "viewname": "SocAccountEditView",
         "viewtag": "dcb1f8a13036f3f4af6199bc475c8680",
         "memo": "系统自动添加"
+    },
+    "socarchivestreeexpview": {
+        "title": "社保档案树导航视图",
+        "caption": "社保档案",
+        "viewtype": "DETREEEXPVIEW",
+        "viewmodule": "SOC",
+        "viewname": "SocArchivesTreeExpView",
+        "viewtag": "e39303bf75ac4d04f6f847df12c9005a",
+        "memo": ""
     },
     "socrulepickupview": {
         "title": "社保规则数据选择视图",

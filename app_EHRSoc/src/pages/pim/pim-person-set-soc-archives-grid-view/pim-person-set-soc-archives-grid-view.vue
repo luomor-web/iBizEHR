@@ -6,7 +6,7 @@ import view_grid from '@widgets/pim-person/ryinfo-grid-grid/ryinfo-grid-grid.vue
 import view_searchform from '@widgets/pim-person/ryinfo-search-form-searchform/ryinfo-search-form-searchform.vue';
 
 /**
- * 员工考勤设置
+ * 员工社保设置
  *
  * @export
  * @class PimPersonSetSocArchivesGridView

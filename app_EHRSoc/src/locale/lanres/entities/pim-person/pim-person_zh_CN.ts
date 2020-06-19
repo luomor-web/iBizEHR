@@ -156,8 +156,8 @@ export default {
   },
 	views: {
 		setsocarchivesgridview: {
-			caption: '员工考勤设置',
-      title: '员工考勤设置',
+			caption: '员工社保设置',
+      title: '员工社保设置',
 		},
 		pickupgridview: {
 			caption: '人员信息',

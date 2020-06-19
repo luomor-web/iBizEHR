@@ -26,6 +26,13 @@ public class TrmTrainPlanSetApprovalStatusLogicImpl implements ITrmTrainPlanSetA
     @Autowired
     private KieContainer kieContainer;
 
+    @Autowired
+    private cn.ibizlab.ehr.core.trm.service.ITrmTrainPlanService trmtrainplanservice;
+
+    public cn.ibizlab.ehr.core.trm.service.ITrmTrainPlanService getTrmtrainplanService() {
+        return this.trmtrainplanservice;
+    }
+
 
     @Autowired
     private cn.ibizlab.ehr.core.trm.service.ITrmTrainPlanService iBzSysDefaultService;
@@ -41,6 +48,7 @@ public class TrmTrainPlanSetApprovalStatusLogicImpl implements ITrmTrainPlanSetA
            kieSession=kieContainer.newKieSession();
            kieSession.insert(et); 
            kieSession.setGlobal("trmtrainplansetapprovalstatusdefault",et);
+           kieSession.setGlobal("trmtrainplanservice",trmtrainplanservice);
            kieSession.setGlobal("iBzSysTrmtrainplanDefaultService",iBzSysDefaultService);
            kieSession.setGlobal("curuser", cn.ibizlab.ehr.util.security.AuthenticationUser.getAuthenticationUser());
            kieSession.startProcess("cn.ibizlab.ehr.core.trm.service.logic.trmtrainplansetapprovalstatus");

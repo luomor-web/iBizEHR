@@ -1,5 +1,5 @@
 <template>
-  <app-layout viewName="pimpersonsetsocarchivesgridview" viewTitle="员工考勤设置" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'pim-person-set-soc-archives-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
+  <app-layout viewName="pimpersonsetsocarchivesgridview" viewTitle="员工社保设置" :className="{ 'view-container': true, 'default-mode-view': true, 'degridview': true, 'pim-person-set-soc-archives-grid-view': true }" layoutMode="VIEW" :isShowUserInfo="isDefaultView()" :openMode="openMode" @close-view="closeView($event)">
     <template slot="headerLeft">
       <div class="view-header-left">
 
@@ -78,7 +78,7 @@ import CodeListService from "@service/app/codelist-service";
 
 
 /**
- * 员工考勤设置基类
+ * 员工社保设置基类
  *
  * @export
  * @class PimPersonSetSocArchivesGridViewBase

@@ -42,6 +42,10 @@ export default {
 			caption: '社保档案',
       title: '社保档案表格视图',
 		},
+		treeexpview: {
+			caption: '社保档案',
+      title: '社保档案树导航视图',
+		},
 	},
 	main2_form: {
 		details: {
@@ -188,6 +192,13 @@ export default {
 		deuiaction5: {
 			caption: '帮助',
 			tip: '帮助',
+		},
+	},
+	ormorgtree_treeview: {
+		nodes: {
+			root: '默认根节点',
+		},
+		uiactions: {
 		},
 	},
 };

@@ -100,7 +100,6 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
-                '8d8165bf052eb9455044ec39843ef257',
                 '21bd406d12cd31c62de8b9e78649d229',
             ],
         },
@@ -257,6 +256,16 @@ export const viewstate: any = {
             ],
         },
         {
+            viewtag: 'e39303bf75ac4d04f6f847df12c9005a',
+            viewmodule: 'SOC',
+            viewname: 'SocArchivesTreeExpView',
+            viewaction: '',
+            viewdatachange: false,
+            refviews: [
+                '67ed4891f00a2d935667f0ec691f7182',
+            ],
+        },
+        {
             viewtag: 'eb464b83d579a19440a0f65278573bb5',
             viewmodule: 'SOC',
             viewname: 'SocRulePickupView',
@@ -318,7 +327,7 @@ export const viewstate: any = {
                 'be3603e6155f93c90fc36953c6a4689f',
                 '1a1326e28ef5ec3d85b45c0d9ecf9684',
                 'bf4ef187880e7431032ba8b27f4a2143',
-                '67ed4891f00a2d935667f0ec691f7182',
+                'e39303bf75ac4d04f6f847df12c9005a',
                 'a91ca0b2a35fc0bc1c22a613b0af0f04',
             ],
         },

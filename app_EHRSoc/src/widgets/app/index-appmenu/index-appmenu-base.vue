@@ -191,7 +191,7 @@ export default class IndexBase extends AppMenusCtrlBase {
         const deResParameters: any[] = [];
         const parameters: any[] = [
             { pathName: 'socarchives', parameterName: 'socarchives' },
-            { pathName: 'gridview', parameterName: 'gridview' },
+            { pathName: 'treeexpview', parameterName: 'treeexpview' },
         ];
         const path: string = this.$viewTool.buildUpRoutePath(this.$route, {}, deResParameters, parameters, [], viewparam);
         this.$router.push(path);

@@ -7,10 +7,13 @@
             <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
         <tns:global identifier="trmtrainplansetrejectstatusdefault" type="cn.ibizlab.ehr.core.trm.domain.TrmTrainPlan" />
         </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmtrainplansetrejectstatusdeaction1" id="62EA4C78-7F00-411F-8D53-83551F3B45F6" implementation="http://www.jboss.org/drools/rule" name="更新状态"/>
+     <endEvent id="62EA4C78-7F00-411F-8D53-83551F3B45F6_End" name="End"/>
+     <sequenceFlow id="62EA4C78-7F00-411F-8D53-83551F3B45F6_End_Line" sourceRef="62EA4C78-7F00-411F-8D53-83551F3B45F6" targetRef="62EA4C78-7F00-411F-8D53-83551F3B45F6_End"/>
      <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmtrainplansetrejectstatusprepareparam1" id="52F8CA62-715D-4CE3-B9A5-0BD89B32EB16" implementation="http://www.jboss.org/drools/rule" name="参数准备"/>
-     <endEvent id="52F8CA62-715D-4CE3-B9A5-0BD89B32EB16_End" name="End"/>
-     <sequenceFlow id="52F8CA62-715D-4CE3-B9A5-0BD89B32EB16_End_Line" sourceRef="52F8CA62-715D-4CE3-B9A5-0BD89B32EB16" targetRef="52F8CA62-715D-4CE3-B9A5-0BD89B32EB16_End"/>
      <startEvent id="8BC4EC1F-5B94-4DF2-ABAE-7EB2FC557C10" isInterrupting="true"/>
+     <sequenceFlow id="54D56849-4956-43C6-A7DE-72EE02D366B1" sourceRef="52F8CA62-715D-4CE3-B9A5-0BD89B32EB16" targetRef="62EA4C78-7F00-411F-8D53-83551F3B45F6">
+     </sequenceFlow>
      <sequenceFlow id="28C164EB-B86B-476E-B058-FD554CDAB4A1" sourceRef="8BC4EC1F-5B94-4DF2-ABAE-7EB2FC557C10" targetRef="52F8CA62-715D-4CE3-B9A5-0BD89B32EB16">
      </sequenceFlow>
     </process>

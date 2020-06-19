@@ -263,12 +263,12 @@ export default class IndexModel {
             appfunctag: '_3',
             appfuncyype: 'APPVIEW',
             openmode: '',
-            codename: 'socarchivesgridview',
+            codename: 'socarchivestreeexpview',
             deResParameters: [],
-            routepath: '/index/:index?/socarchives/:socarchives?/gridview/:gridview?',
+            routepath: '/index/:index?/socarchives/:socarchives?/treeexpview/:treeexpview?',
             parameters: [
                 { pathName: 'socarchives', parameterName: 'socarchives' },
-                { pathName: 'gridview', parameterName: 'gridview' },
+                { pathName: 'treeexpview', parameterName: 'treeexpview' },
             ],
         },
         {
