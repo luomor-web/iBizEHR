@@ -7,11 +7,14 @@
             <tns:import name="cn.ibizlab.ehr.util.helper.RuleUtils"/>
         <tns:global identifier="trmtrainplantermqxdefault" type="cn.ibizlab.ehr.core.trm.domain.TrmTrainPlanterm" />
         </extensionElements>
+     <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmtrainplantermqxdeaction1" id="34b3a6f4ba40a787a3f489f18da5ffcb" implementation="http://www.jboss.org/drools/rule" name="更新状态"/>
+     <endEvent id="34b3a6f4ba40a787a3f489f18da5ffcb_End" name="End"/>
+     <sequenceFlow id="34b3a6f4ba40a787a3f489f18da5ffcb_End_Line" sourceRef="34b3a6f4ba40a787a3f489f18da5ffcb" targetRef="34b3a6f4ba40a787a3f489f18da5ffcb_End"/>
      <startEvent id="be731f6b0b583c431ec14c244818bb3d" isInterrupting="true"/>
      <businessRuleTask activiti:exclusive="true" g:ruleFlowGroup="trmtrainplantermqxprepareparam1" id="c16a9677955aea847f1978a29efb3e3c" implementation="http://www.jboss.org/drools/rule" name="参数准备"/>
-     <endEvent id="c16a9677955aea847f1978a29efb3e3c_End" name="End"/>
-     <sequenceFlow id="c16a9677955aea847f1978a29efb3e3c_End_Line" sourceRef="c16a9677955aea847f1978a29efb3e3c" targetRef="c16a9677955aea847f1978a29efb3e3c_End"/>
-     <sequenceFlow id="b4993539643f1d5251f7f1d06311216a" sourceRef="be731f6b0b583c431ec14c244818bb3d" targetRef="c16a9677955aea847f1978a29efb3e3c">
+     <sequenceFlow id="1936fb9e77bbd73a73b3e7b35d7d2a81" sourceRef="be731f6b0b583c431ec14c244818bb3d" targetRef="c16a9677955aea847f1978a29efb3e3c">
+     </sequenceFlow>
+     <sequenceFlow id="1edd048ac42bfcae999b4e74254ff9f9" sourceRef="c16a9677955aea847f1978a29efb3e3c" targetRef="34b3a6f4ba40a787a3f489f18da5ffcb">
      </sequenceFlow>
     </process>
 </definitions>
