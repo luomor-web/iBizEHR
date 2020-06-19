@@ -499,9 +499,9 @@ export default class TrmTrainPlantermGridViewBase extends GridViewBase {
             Object.assign(tempContext,args[0]);
         }
         let deResParameters: any[] = [];
-        if(tempContext.trmtrainteacher && true){
+        if(tempContext.trmtrainplan && true){
             deResParameters = [
-            { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+            { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
             ]
         }
         const parameters: any[] = [
@@ -549,9 +549,9 @@ export default class TrmTrainPlantermGridViewBase extends GridViewBase {
             Object.assign(tempContext,args[0]);
         }
         let deResParameters: any[] = [];
-        if(tempContext.trmtrainteacher && true){
+        if(tempContext.trmtrainplan && true){
             deResParameters = [
-            { pathName: 'trmtrainteachers', parameterName: 'trmtrainteacher' },
+            { pathName: 'trmtrainplans', parameterName: 'trmtrainplan' },
             ]
         }
         const parameters: any[] = [

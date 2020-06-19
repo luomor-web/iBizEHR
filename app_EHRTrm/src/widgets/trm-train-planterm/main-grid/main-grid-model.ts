@@ -32,14 +32,14 @@ export default class MainModel {
           dataType: 'PICKUP',
         },
         {
-          name: 'trmtrainplanname',
-          prop: 'trmtrainplanname',
-          dataType: 'PICKUPTEXT',
-        },
-        {
           name: 'trmtrainteachername',
           prop: 'trmtrainteachername',
           dataType: 'PICKUPTEXT',
+        },
+        {
+          name: 'trmtrainplantermname',
+          prop: 'trmtrainplantermname',
+          dataType: 'TEXT',
         },
         {
           name: 'bjzt',

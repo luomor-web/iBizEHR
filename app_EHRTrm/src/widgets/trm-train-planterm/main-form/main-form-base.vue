@@ -718,10 +718,10 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: ' 值不能为空', trigger: 'blur' },
         ],
         srfkey: [
-            { type: 'string', message: '培训计划项标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '培训计划项标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '培训计划项标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '培训计划项标识 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '培训立项标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '培训立项标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '培训立项标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '培训立项标识 值不能为空', trigger: 'blur' },
         ],
         srfmajortext: [
             { type: 'string', message: '培训立项名称 值必须为字符串类型', trigger: 'change' },
@@ -838,10 +838,10 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '培训机构标识 值不能为空', trigger: 'blur' },
         ],
         trmtrainplantermid: [
-            { type: 'string', message: '培训计划项标识 值必须为字符串类型', trigger: 'change' },
-            { type: 'string', message: '培训计划项标识 值必须为字符串类型', trigger: 'blur' },
-            { required: false, type: 'string', message: '培训计划项标识 值不能为空', trigger: 'change' },
-            { required: false, type: 'string', message: '培训计划项标识 值不能为空', trigger: 'blur' },
+            { type: 'string', message: '培训立项标识 值必须为字符串类型', trigger: 'change' },
+            { type: 'string', message: '培训立项标识 值必须为字符串类型', trigger: 'blur' },
+            { required: false, type: 'string', message: '培训立项标识 值不能为空', trigger: 'change' },
+            { required: false, type: 'string', message: '培训立项标识 值不能为空', trigger: 'blur' },
         ],
     }
 
@@ -872,7 +872,7 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         srforikey: new FormItemModel({ caption: '', detailType: 'FORMITEM', name: 'srforikey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        srfkey: new FormItemModel({ caption: '培训计划项标识', detailType: 'FORMITEM', name: 'srfkey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        srfkey: new FormItemModel({ caption: '培训立项标识', detailType: 'FORMITEM', name: 'srfkey', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         srfmajortext: new FormItemModel({ caption: '培训立项名称', detailType: 'FORMITEM', name: 'srfmajortext', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -912,7 +912,7 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         trmtrainagencyid: new FormItemModel({ caption: '培训机构标识', detailType: 'FORMITEM', name: 'trmtrainagencyid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        trmtrainplantermid: new FormItemModel({ caption: '培训计划项标识', detailType: 'FORMITEM', name: 'trmtrainplantermid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        trmtrainplantermid: new FormItemModel({ caption: '培训立项标识', detailType: 'FORMITEM', name: 'trmtrainplantermid', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         form: new FormTabPanelModel({ caption: 'form', detailType: 'TABPANEL', name: 'form', visible: true, isShowCaption: true, form: this, tabPages: [{ name: 'formpage1', index: 0, visible: true }, { name: 'formpage2', index: 1, visible: true }, { name: 'formpage3', index: 2, visible: true }, { name: 'formpage4', index: 3, visible: true }] }),
     };

@@ -493,7 +493,12 @@ export default class TrmTrainBuapplyGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(tempContext,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(tempContext.trmtrainplanterm && true){
+            deResParameters = [
+            { pathName: 'trmtrainplanterms', parameterName: 'trmtrainplanterm' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'trmtrainbuapplies', parameterName: 'trmtrainbuapply' },
         ];
@@ -538,7 +543,12 @@ export default class TrmTrainBuapplyGridViewBase extends GridViewBase {
         if(args.length >0){
             Object.assign(tempContext,args[0]);
         }
-        const deResParameters: any[] = [];
+        let deResParameters: any[] = [];
+        if(tempContext.trmtrainplanterm && true){
+            deResParameters = [
+            { pathName: 'trmtrainplanterms', parameterName: 'trmtrainplanterm' },
+            ]
+        }
         const parameters: any[] = [
             { pathName: 'trmtrainbuapplies', parameterName: 'trmtrainbuapply' },
         ];

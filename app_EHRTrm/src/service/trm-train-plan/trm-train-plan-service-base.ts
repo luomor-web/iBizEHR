@@ -88,8 +88,24 @@ export default class TrmTrainPlanServiceBase extends EntityService {
             return Http.getInstance().post(`/pimpeople/${context.pimperson}/trmtrainplans/${context.trmtrainplan}/save`,data,isloading);
         }
         let masterData:any = {};
+        let trmtrainplantermsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplanterms'),'undefined')){
+            trmtrainplantermsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplanterms') as any);
+            if(trmtrainplantermsData && trmtrainplantermsData.length && trmtrainplantermsData.length > 0){
+                trmtrainplantermsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainplantermid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainplanterms = trmtrainplantermsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/trmtrainplans/${context.trmtrainplan}/save`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainplanterms',JSON.stringify(res.data.trmtrainplanterms));
             return res;
     }
 
@@ -123,6 +139,7 @@ export default class TrmTrainPlanServiceBase extends EntityService {
         }
         let res:any = await  Http.getInstance().get(`/trmtrainplans/getdraft`,isloading);
         res.data.trmtrainplan = data.trmtrainplan;
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainplanterms',JSON.stringify(res.data.trmtrainplanterms));
         return res;
     }
 
@@ -187,6 +204,7 @@ export default class TrmTrainPlanServiceBase extends EntityService {
             return Http.getInstance().get(`/pimpeople/${context.pimperson}/trmtrainplans/${context.trmtrainplan}`,isloading);
         }
             let res:any = await Http.getInstance().get(`/trmtrainplans/${context.trmtrainplan}`,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainplanterms',JSON.stringify(res.data.trmtrainplanterms));
             return res;
 
     }
@@ -211,6 +229,21 @@ export default class TrmTrainPlanServiceBase extends EntityService {
             return Http.getInstance().post(`/pimpeople/${context.pimperson}/trmtrainplans`,data,isloading);
         }
         let masterData:any = {};
+        let trmtrainplantermsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplanterms'),'undefined')){
+            trmtrainplantermsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplanterms') as any);
+            if(trmtrainplantermsData && trmtrainplantermsData.length && trmtrainplantermsData.length > 0){
+                trmtrainplantermsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainplantermid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainplanterms = trmtrainplantermsData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -220,6 +253,7 @@ export default class TrmTrainPlanServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/trmtrainplans`,data,isloading);
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_trmtrainplanterms',JSON.stringify(res.data.trmtrainplanterms));
         return res;
     }
 
@@ -252,8 +286,24 @@ export default class TrmTrainPlanServiceBase extends EntityService {
             return Http.getInstance().put(`/pimpeople/${context.pimperson}/trmtrainplans/${context.trmtrainplan}`,data,isloading);
         }
         let masterData:any = {};
+        let trmtrainplantermsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplanterms'),'undefined')){
+            trmtrainplantermsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_trmtrainplanterms') as any);
+            if(trmtrainplantermsData && trmtrainplantermsData.length && trmtrainplantermsData.length > 0){
+                trmtrainplantermsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.trmtrainplantermid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.trmtrainplanterms = trmtrainplantermsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/trmtrainplans/${context.trmtrainplan}`,data,isloading);
+            this.tempStorage.setItem(context.srfsessionkey+'_trmtrainplanterms',JSON.stringify(res.data.trmtrainplanterms));
             return res;
     }
 

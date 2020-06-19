@@ -70,15 +70,15 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('trmtrainplanname')">
-                <el-table-column show-overflow-tooltip :prop="'trmtrainplanname'" :label="$t('entities.trmtrainplanterm.main_grid.columns.trmtrainplanname')" :width="170"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('trmtrainplantermname')">
+                <el-table-column show-overflow-tooltip :prop="'trmtrainplantermname'" :label="$t('entities.trmtrainplanterm.main_grid.columns.trmtrainplantermname')" :width="220"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.trmtrainplanterm.main_grid.columns.trmtrainplanname')}}
+                        {{$t('entities.trmtrainplanterm.main_grid.columns.trmtrainplantermname')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.trmtrainplanname}}</span>
+                        <span>{{row.trmtrainplantermname}}</span>
                     </template>
                 </el-table-column>
             </template>
@@ -656,11 +656,11 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'PX'
         },
         {
-            name: 'trmtrainplanname',
+            name: 'trmtrainplantermname',
             label: '培训立项名称',
-            langtag: 'entities.trmtrainplanterm.main_grid.columns.trmtrainplanname',
+            langtag: 'entities.trmtrainplanterm.main_grid.columns.trmtrainplantermname',
             show: true,
-            util: 'px'
+            util: 'PX'
         },
         {
             name: 'trmtrainagencyname',
@@ -727,8 +727,8 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public rules: any = {
         srfkey: [
-             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '培训计划项标识 值不能为空', trigger: 'change' },
-            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '培训计划项标识 值不能为空', trigger: 'blur' },
+             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '培训立项标识 值不能为空', trigger: 'change' },
+            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '培训立项标识 值不能为空', trigger: 'blur' },
         ],
     }
 

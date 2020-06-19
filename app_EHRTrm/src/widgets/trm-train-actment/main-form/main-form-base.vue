@@ -56,7 +56,7 @@
 </i-col>
 <i-col v-show="detailsModel.dcwjtm.visible" :style="{}"  :md="{ span: 24, offset: 0 }" :lg="{ span: 24, offset: 0 }" :xl="{ span: 24, offset: 0 }">
     <app-form-item name='dcwjtm' :itemRules="this.rules.dcwjtm" class='' :caption="$t('entities.trmtrainactment.main_form.details.dcwjtm')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.dcwjtm.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.dcwjtm"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.dcwjtm.disabled" type='text'  style=""></input-box>
+    <app-file-upload :formState="formState" :ignorefieldvaluechange="ignorefieldvaluechange" @formitemvaluechange="onFormItemValueChange" :data="JSON.stringify(this.data)" name='dcwjtm' :value="data.dcwjtm" :disabled="detailsModel.dcwjtm.disabled" uploadparams='' exportparams='' :customparams="{}" style="overflow: auto;"></app-file-upload>
 </app-form-item>
 
 </i-col>
