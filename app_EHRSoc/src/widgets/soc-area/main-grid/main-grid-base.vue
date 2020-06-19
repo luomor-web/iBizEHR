@@ -28,7 +28,9 @@
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.ormorgname}}</span>
+                        <template >
+                                <app-span name='ormorgname' editorType="PICKER" :value="row.ormorgname"></app-span>
+                        </template>
                     </template>
                 </el-table-column>
             </template>
@@ -40,19 +42,23 @@
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.socareaname}}</span>
+                        <template >
+                                <app-span name='socareaname' editorType="TEXTBOX" :value="row.socareaname"></app-span>
+                        </template>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('memo')">
-                <el-table-column show-overflow-tooltip :prop="'memo'" :label="$t('entities.socarea.main_grid.columns.memo')" :min-width="100"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'memo'" :label="$t('entities.socarea.main_grid.columns.memo')" :width="500"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.socarea.main_grid.columns.memo')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.memo}}</span>
+                        <template >
+                                <app-span name='memo' editorType="TEXTAREA" :value="row.memo"></app-span>
+                        </template>
                     </template>
                 </el-table-column>
             </template>
@@ -537,7 +543,7 @@ export default class MainBase extends Vue implements ControlInterface {
             label: '备注',
             langtag: 'entities.socarea.main_grid.columns.memo',
             show: true,
-            util: 'STAR'
+            util: 'PX'
         },
     ]
 
@@ -557,7 +563,11 @@ export default class MainBase extends Vue implements ControlInterface {
      */
     public getGridRowModel(){
         return {
+          memo: new FormItemModel(),
+          ormorgid: new FormItemModel(),
+          socareaname: new FormItemModel(),
           srfkey: new FormItemModel(),
+          ormorgname: new FormItemModel(),
         }
     }
 
@@ -568,9 +578,25 @@ export default class MainBase extends Vue implements ControlInterface {
      * @memberof Main
      */
     public rules: any = {
+        memo: [
+             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '备注 值不能为空', trigger: 'change' },
+            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '备注 值不能为空', trigger: 'blur' },
+        ],
+        ormorgid: [
+             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '值不能为空', trigger: 'change' },
+            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '值不能为空', trigger: 'blur' },
+        ],
+        socareaname: [
+             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '参保地名称 值不能为空', trigger: 'change' },
+            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '参保地名称 值不能为空', trigger: 'blur' },
+        ],
         srfkey: [
              { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '参保地标识 值不能为空', trigger: 'change' },
             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '参保地标识 值不能为空', trigger: 'blur' },
+        ],
+        ormorgname: [
+             { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '组织 值不能为空', trigger: 'change' },
+            { required: false, validator: (rule:any, value:any, callback:any) => { return (rule.required && (value === null || value === undefined || value === "")) ? false : true;}, message: '组织 值不能为空', trigger: 'blur' },
         ],
     }
 

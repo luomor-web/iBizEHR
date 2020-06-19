@@ -88,7 +88,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('memo')">
-                <el-table-column show-overflow-tooltip :prop="'memo'" :label="$t('entities.socaccount.main_grid.columns.memo')" :min-width="100"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'memo'" :label="$t('entities.socaccount.main_grid.columns.memo')" :width="500"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.socaccount.main_grid.columns.memo')}}
@@ -609,7 +609,7 @@ export default class MainBase extends Vue implements ControlInterface {
             label: '备注',
             langtag: 'entities.socaccount.main_grid.columns.memo',
             show: true,
-            util: 'STAR'
+            util: 'PX'
         },
     ]
 

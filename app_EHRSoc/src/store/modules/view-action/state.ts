@@ -10,6 +10,7 @@ export const viewstate: any = {
             viewaction: '',
             viewdatachange: false,
             refviews: [
+                '912c10028c229aaf79d7542c94931417',
                 '4d2e62d3fd19327574be8b2c65337faf',
             ],
         },
