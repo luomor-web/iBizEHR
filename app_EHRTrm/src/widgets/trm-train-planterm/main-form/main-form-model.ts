@@ -71,14 +71,14 @@ export default class MainModel {
         dataType: 'TEXT',
       },
       {
-        name: 'pxkssj',
-        prop: 'pxkssj',
-        dataType: 'PICKUPDATA',
+        name: 'jhkssj',
+        prop: 'jhkssj',
+        dataType: 'DATE',
       },
       {
-        name: 'pxjssj',
-        prop: 'pxjssj',
-        dataType: 'PICKUPDATA',
+        name: 'jhjssj',
+        prop: 'jhjssj',
+        dataType: 'DATE',
       },
       {
         name: 'trmtrainagencyname',

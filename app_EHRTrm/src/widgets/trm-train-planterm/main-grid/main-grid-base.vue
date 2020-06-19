@@ -21,7 +21,7 @@
                 <el-table-column align="center" type='selection' :width="checkboxColWidth"></el-table-column>
             </template>
             <template v-if="getColumnState('nd')">
-                <el-table-column show-overflow-tooltip :prop="'nd'" :label="$t('entities.trmtrainplanterm.main_grid.columns.nd')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'nd'" :label="$t('entities.trmtrainplanterm.main_grid.columns.nd')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainplanterm.main_grid.columns.nd')}}
@@ -34,20 +34,8 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('trmtrainplanname')">
-                <el-table-column show-overflow-tooltip :prop="'trmtrainplanname'" :label="$t('entities.trmtrainplanterm.main_grid.columns.trmtrainplanname')" :width="150"  :align="'left'" :sortable="'custom'">
-                    <template v-slot:header="{column}">
-                      <span class="column-header ">
-                        {{$t('entities.trmtrainplanterm.main_grid.columns.trmtrainplanname')}}
-                      </span>
-                    </template>
-                    <template v-slot="{row,column,$index}">
-                        <span>{{row.trmtrainplanname}}</span>
-                    </template>
-                </el-table-column>
-            </template>
             <template v-if="getColumnState('trmdemdeftionname')">
-                <el-table-column show-overflow-tooltip :prop="'trmdemdeftionname'" :label="$t('entities.trmtrainplanterm.main_grid.columns.trmdemdeftionname')" :width="250"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'trmdemdeftionname'" :label="$t('entities.trmtrainplanterm.main_grid.columns.trmdemdeftionname')" :width="220"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainplanterm.main_grid.columns.trmdemdeftionname')}}
@@ -58,44 +46,44 @@
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('pxkssj')">
-                <el-table-column show-overflow-tooltip :prop="'pxkssj'" :label="$t('entities.trmtrainplanterm.main_grid.columns.pxkssj')" :width="150"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('jhkssj')">
+                <el-table-column show-overflow-tooltip :prop="'jhkssj'" :label="$t('entities.trmtrainplanterm.main_grid.columns.jhkssj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.trmtrainplanterm.main_grid.columns.pxkssj')}}
+                        {{$t('entities.trmtrainplanterm.main_grid.columns.jhkssj')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.pxkssj}}</span>
+                        <app-format-data format="YYYY-MM-DD" :data="row.jhkssj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('pxjssj')">
-                <el-table-column show-overflow-tooltip :prop="'pxjssj'" :label="$t('entities.trmtrainplanterm.main_grid.columns.pxjssj')" :width="150"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('jhjssj')">
+                <el-table-column show-overflow-tooltip :prop="'jhjssj'" :label="$t('entities.trmtrainplanterm.main_grid.columns.jhjssj')" :width="150"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.trmtrainplanterm.main_grid.columns.pxjssj')}}
+                        {{$t('entities.trmtrainplanterm.main_grid.columns.jhjssj')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.pxjssj}}</span>
+                        <app-format-data format="YYYY-MM-DD" :data="row.jhjssj"></app-format-data>
                     </template>
                 </el-table-column>
             </template>
-            <template v-if="getColumnState('pxdd')">
-                <el-table-column show-overflow-tooltip :prop="'pxdd'" :label="$t('entities.trmtrainplanterm.main_grid.columns.pxdd')" :width="150"  :align="'left'" :sortable="'custom'">
+            <template v-if="getColumnState('trmtrainplanname')">
+                <el-table-column show-overflow-tooltip :prop="'trmtrainplanname'" :label="$t('entities.trmtrainplanterm.main_grid.columns.trmtrainplanname')" :width="170"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
-                        {{$t('entities.trmtrainplanterm.main_grid.columns.pxdd')}}
+                        {{$t('entities.trmtrainplanterm.main_grid.columns.trmtrainplanname')}}
                       </span>
                     </template>
                     <template v-slot="{row,column,$index}">
-                        <span>{{row.pxdd}}</span>
+                        <span>{{row.trmtrainplanname}}</span>
                     </template>
                 </el-table-column>
             </template>
             <template v-if="getColumnState('trmtrainagencyname')">
-                <el-table-column show-overflow-tooltip :prop="'trmtrainagencyname'" :label="$t('entities.trmtrainplanterm.main_grid.columns.trmtrainagencyname')" :width="250"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'trmtrainagencyname'" :label="$t('entities.trmtrainplanterm.main_grid.columns.trmtrainagencyname')" :width="220"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainplanterm.main_grid.columns.trmtrainagencyname')}}
@@ -150,7 +138,7 @@
                 </el-table-column>
             </template>
             <template v-if="getColumnState('bjzt')">
-                <el-table-column show-overflow-tooltip :prop="'bjzt'" :label="$t('entities.trmtrainplanterm.main_grid.columns.bjzt')" :width="150"  :align="'left'" :sortable="'custom'">
+                <el-table-column show-overflow-tooltip :prop="'bjzt'" :label="$t('entities.trmtrainplanterm.main_grid.columns.bjzt')" :width="120"  :align="'left'" :sortable="'custom'">
                     <template v-slot:header="{column}">
                       <span class="column-header ">
                         {{$t('entities.trmtrainplanterm.main_grid.columns.bjzt')}}
@@ -647,37 +635,30 @@ export default class MainBase extends Vue implements ControlInterface {
             util: 'px'
         },
         {
-            name: 'trmtrainplanname',
-            label: '培训立项名称',
-            langtag: 'entities.trmtrainplanterm.main_grid.columns.trmtrainplanname',
-            show: true,
-            util: 'px'
-        },
-        {
             name: 'trmdemdeftionname',
-            label: '班级名称',
+            label: '培新计划',
             langtag: 'entities.trmtrainplanterm.main_grid.columns.trmdemdeftionname',
             show: true,
             util: 'PX'
         },
         {
-            name: 'pxkssj',
+            name: 'jhkssj',
             label: '培训开始时间',
-            langtag: 'entities.trmtrainplanterm.main_grid.columns.pxkssj',
+            langtag: 'entities.trmtrainplanterm.main_grid.columns.jhkssj',
             show: true,
-            util: 'px'
+            util: 'PX'
         },
         {
-            name: 'pxjssj',
+            name: 'jhjssj',
             label: '培训结束时间',
-            langtag: 'entities.trmtrainplanterm.main_grid.columns.pxjssj',
+            langtag: 'entities.trmtrainplanterm.main_grid.columns.jhjssj',
             show: true,
-            util: 'px'
+            util: 'PX'
         },
         {
-            name: 'pxdd',
-            label: '培训地点',
-            langtag: 'entities.trmtrainplanterm.main_grid.columns.pxdd',
+            name: 'trmtrainplanname',
+            label: '培训立项名称',
+            langtag: 'entities.trmtrainplanterm.main_grid.columns.trmtrainplanname',
             show: true,
             util: 'px'
         },
@@ -690,7 +671,7 @@ export default class MainBase extends Vue implements ControlInterface {
         },
         {
             name: 'trmtraincoursename',
-            label: '课程',
+            label: '培训课程',
             langtag: 'entities.trmtrainplanterm.main_grid.columns.trmtraincoursename',
             show: true,
             util: 'PX'

@@ -67,15 +67,15 @@
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.pxkssj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='pxkssj' :itemRules="this.rules.pxkssj" class='' :caption="$t('entities.trmtrainplanterm.main_form.details.pxkssj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pxkssj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.pxkssj"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.pxkssj.disabled" type='text'  style=""></input-box>
+<i-col v-show="detailsModel.jhkssj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='jhkssj' :itemRules="this.rules.jhkssj" class='' :caption="$t('entities.trmtrainplanterm.main_form.details.jhkssj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jhkssj.error" :isEmptyCaption="false" labelPos="LEFT">
+    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.jhkssj" :disabled="detailsModel.jhkssj.disabled" style="min-width: 150px; width:100px;" @on-change="(val1, val2) => { this.data.jhkssj = val1 }"></date-picker>
 </app-form-item>
 
 </i-col>
-<i-col v-show="detailsModel.pxjssj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
-    <app-form-item name='pxjssj' :itemRules="this.rules.pxjssj" class='' :caption="$t('entities.trmtrainplanterm.main_form.details.pxjssj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.pxjssj.error" :isEmptyCaption="false" labelPos="LEFT">
-    <input-box v-model="data.pxjssj"  @enter="onEnter($event)"   unit=""  :disabled="detailsModel.pxjssj.disabled" type='text'  style=""></input-box>
+<i-col v-show="detailsModel.jhjssj.visible" :style="{}"  :lg="{ span: 8, offset: 0 }">
+    <app-form-item name='jhjssj' :itemRules="this.rules.jhjssj" class='' :caption="$t('entities.trmtrainplanterm.main_form.details.jhjssj')" uiStyle="DEFAULT" :labelWidth="130" :isShowCaption="true" :error="detailsModel.jhjssj.error" :isEmptyCaption="false" labelPos="LEFT">
+    <date-picker type="date" :transfer="true" format="yyyy-MM-dd" placeholder="请选择时间..." :value="data.jhjssj" :disabled="detailsModel.jhjssj.disabled" style="min-width: 150px; width:100px;" @on-change="(val1, val2) => { this.data.jhjssj = val1 }"></date-picker>
 </app-form-item>
 
 </i-col>
@@ -651,8 +651,8 @@ export default class MainBase extends Vue implements ControlInterface {
         trmtrainplanname: null,
         nd: null,
         trmtrainplantermname: null,
-        pxkssj: null,
-        pxjssj: null,
+        jhkssj: null,
+        jhjssj: null,
         trmtrainagencyname: null,
         pxdd: null,
         trmtraincoursename: null,
@@ -771,13 +771,13 @@ export default class MainBase extends Vue implements ControlInterface {
             { required: false, type: 'string', message: '培训立项名称 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '培训立项名称 值不能为空', trigger: 'blur' },
         ],
-        pxkssj: [
+        jhkssj: [
             { type: 'string', message: '培训开始时间 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '培训开始时间 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '培训开始时间 值不能为空', trigger: 'change' },
             { required: false, type: 'string', message: '培训开始时间 值不能为空', trigger: 'blur' },
         ],
-        pxjssj: [
+        jhjssj: [
             { type: 'string', message: '培训结束时间 值必须为字符串类型', trigger: 'change' },
             { type: 'string', message: '培训结束时间 值必须为字符串类型', trigger: 'blur' },
             { required: false, type: 'string', message: '培训结束时间 值不能为空', trigger: 'change' },
@@ -890,9 +890,9 @@ export default class MainBase extends Vue implements ControlInterface {
 , 
         trmtrainplantermname: new FormItemModel({ caption: '培训立项名称', detailType: 'FORMITEM', name: 'trmtrainplantermname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        pxkssj: new FormItemModel({ caption: '培训开始时间', detailType: 'FORMITEM', name: 'pxkssj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        jhkssj: new FormItemModel({ caption: '培训开始时间', detailType: 'FORMITEM', name: 'jhkssj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
-        pxjssj: new FormItemModel({ caption: '培训结束时间', detailType: 'FORMITEM', name: 'pxjssj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
+        jhjssj: new FormItemModel({ caption: '培训结束时间', detailType: 'FORMITEM', name: 'jhjssj', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
         trmtrainagencyname: new FormItemModel({ caption: '培训机构', detailType: 'FORMITEM', name: 'trmtrainagencyname', visible: true, isShowCaption: true, form: this, disabled: false, enableCond: 3 })
 , 
@@ -1050,27 +1050,27 @@ export default class MainBase extends Vue implements ControlInterface {
     }
 
     /**
-     * 监控表单属性 pxkssj 值
+     * 监控表单属性 jhkssj 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof Main
      */
-    @Watch('data.pxkssj')
-    onPxkssjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pxkssj', newVal: newVal, oldVal: oldVal });
+    @Watch('data.jhkssj')
+    onJhkssjChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'jhkssj', newVal: newVal, oldVal: oldVal });
     }
 
     /**
-     * 监控表单属性 pxjssj 值
+     * 监控表单属性 jhjssj 值
      *
      * @param {*} newVal
      * @param {*} oldVal
      * @memberof Main
      */
-    @Watch('data.pxjssj')
-    onPxjssjChange(newVal: any, oldVal: any) {
-        this.formDataChange({ name: 'pxjssj', newVal: newVal, oldVal: oldVal });
+    @Watch('data.jhjssj')
+    onJhjssjChange(newVal: any, oldVal: any) {
+        this.formDataChange({ name: 'jhjssj', newVal: newVal, oldVal: oldVal });
     }
 
     /**

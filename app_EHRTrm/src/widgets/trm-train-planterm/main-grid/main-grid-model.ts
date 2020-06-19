@@ -67,11 +67,6 @@ export default class MainModel {
           dataType: 'PICKUP',
         },
         {
-          name: 'pxdd',
-          prop: 'pxdd',
-          dataType: 'PICKUPDATA',
-        },
-        {
           name: 'trmdemdeftionname',
           prop: 'trmdemdeftionname',
           dataType: 'PICKUPDATA',
@@ -80,11 +75,6 @@ export default class MainModel {
           name: 'srfmajortext',
           prop: 'trmtrainplanname',
           dataType: 'PICKUPTEXT',
-        },
-        {
-          name: 'srfdataaccaction',
-          prop: 'trmtrainplantermid',
-          dataType: 'GUID',
         },
         {
           name: 'trmtraincoursename',
@@ -97,6 +87,16 @@ export default class MainModel {
           dataType: 'GUID',
         },
         {
+          name: 'srfdataaccaction',
+          prop: 'trmtrainplantermid',
+          dataType: 'GUID',
+        },
+        {
+          name: 'jhkssj',
+          prop: 'jhkssj',
+          dataType: 'DATE',
+        },
+        {
           name: 'trmtrainagencyid',
           prop: 'trmtrainagencyid',
           dataType: 'PICKUP',
@@ -107,14 +107,9 @@ export default class MainModel {
           dataType: 'PICKUPDATA',
         },
         {
-          name: 'pxkssj',
-          prop: 'pxkssj',
-          dataType: 'PICKUPDATA',
-        },
-        {
-          name: 'pxjssj',
-          prop: 'pxjssj',
-          dataType: 'PICKUPDATA',
+          name: 'jhjssj',
+          prop: 'jhjssj',
+          dataType: 'DATE',
         },
         {
           name: 'trmtrainplanterm',
