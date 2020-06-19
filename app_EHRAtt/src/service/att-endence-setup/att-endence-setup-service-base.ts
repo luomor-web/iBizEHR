@@ -62,21 +62,6 @@ export default class AttEndenceSetupServiceBase extends EntityService {
      */
     public async Update(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let attendenceormorgscetorsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_attendenceormorgscetors'),'undefined')){
-            attendenceormorgscetorsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_attendenceormorgscetors') as any);
-            if(attendenceormorgscetorsData && attendenceormorgscetorsData.length && attendenceormorgscetorsData.length > 0){
-                attendenceormorgscetorsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.attendenceormorgsectorid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.attendenceormorgscetors = attendenceormorgscetorsData;
         let attendancesettingsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_attendancesettings'),'undefined')){
             attendancesettingsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_attendancesettings') as any);
@@ -92,10 +77,25 @@ export default class AttEndenceSetupServiceBase extends EntityService {
             }
         }
         masterData.attendancesettings = attendancesettingsData;
+        let attendenceormorgscetorsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_attendenceormorgscetors'),'undefined')){
+            attendenceormorgscetorsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_attendenceormorgscetors') as any);
+            if(attendenceormorgscetorsData && attendenceormorgscetorsData.length && attendenceormorgscetorsData.length > 0){
+                attendenceormorgscetorsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.attendenceormorgsectorid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.attendenceormorgscetors = attendenceormorgscetorsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().put(`/attendencesetups/${context.attendencesetup}`,data,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_attendenceormorgscetors',JSON.stringify(res.data.attendenceormorgscetors));
             this.tempStorage.setItem(context.srfsessionkey+'_attendancesettings',JSON.stringify(res.data.attendancesettings));
+            this.tempStorage.setItem(context.srfsessionkey+'_attendenceormorgscetors',JSON.stringify(res.data.attendenceormorgscetors));
             return res;
     }
 
@@ -110,21 +110,6 @@ export default class AttEndenceSetupServiceBase extends EntityService {
      */
     public async Save(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let attendenceormorgscetorsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_attendenceormorgscetors'),'undefined')){
-            attendenceormorgscetorsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_attendenceormorgscetors') as any);
-            if(attendenceormorgscetorsData && attendenceormorgscetorsData.length && attendenceormorgscetorsData.length > 0){
-                attendenceormorgscetorsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.attendenceormorgsectorid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.attendenceormorgscetors = attendenceormorgscetorsData;
         let attendancesettingsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_attendancesettings'),'undefined')){
             attendancesettingsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_attendancesettings') as any);
@@ -140,10 +125,25 @@ export default class AttEndenceSetupServiceBase extends EntityService {
             }
         }
         masterData.attendancesettings = attendancesettingsData;
+        let attendenceormorgscetorsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_attendenceormorgscetors'),'undefined')){
+            attendenceormorgscetorsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_attendenceormorgscetors') as any);
+            if(attendenceormorgscetorsData && attendenceormorgscetorsData.length && attendenceormorgscetorsData.length > 0){
+                attendenceormorgscetorsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.attendenceormorgsectorid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.attendenceormorgscetors = attendenceormorgscetorsData;
         Object.assign(data,masterData);
             let res:any = await  Http.getInstance().post(`/attendencesetups/${context.attendencesetup}/save`,data,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_attendenceormorgscetors',JSON.stringify(res.data.attendenceormorgscetors));
             this.tempStorage.setItem(context.srfsessionkey+'_attendancesettings',JSON.stringify(res.data.attendancesettings));
+            this.tempStorage.setItem(context.srfsessionkey+'_attendenceormorgscetors',JSON.stringify(res.data.attendenceormorgscetors));
             return res;
     }
 
@@ -158,8 +158,8 @@ export default class AttEndenceSetupServiceBase extends EntityService {
      */
     public async Get(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
             let res:any = await Http.getInstance().get(`/attendencesetups/${context.attendencesetup}`,isloading);
-            this.tempStorage.setItem(context.srfsessionkey+'_attendenceormorgscetors',JSON.stringify(res.data.attendenceormorgscetors));
             this.tempStorage.setItem(context.srfsessionkey+'_attendancesettings',JSON.stringify(res.data.attendancesettings));
+            this.tempStorage.setItem(context.srfsessionkey+'_attendenceormorgscetors',JSON.stringify(res.data.attendenceormorgscetors));
             return res;
 
     }
@@ -176,8 +176,8 @@ export default class AttEndenceSetupServiceBase extends EntityService {
     public async GetDraft(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let res:any = await  Http.getInstance().get(`/attendencesetups/getdraft`,isloading);
         res.data.attendencesetup = data.attendencesetup;
-            this.tempStorage.setItem(context.srfsessionkey+'_attendenceormorgscetors',JSON.stringify(res.data.attendenceormorgscetors));
             this.tempStorage.setItem(context.srfsessionkey+'_attendancesettings',JSON.stringify(res.data.attendancesettings));
+            this.tempStorage.setItem(context.srfsessionkey+'_attendenceormorgscetors',JSON.stringify(res.data.attendenceormorgscetors));
         return res;
     }
 
@@ -206,21 +206,6 @@ export default class AttEndenceSetupServiceBase extends EntityService {
      */
     public async Create(context: any = {},data: any = {}, isloading?: boolean): Promise<any> {
         let masterData:any = {};
-        let attendenceormorgscetorsData:any = [];
-        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_attendenceormorgscetors'),'undefined')){
-            attendenceormorgscetorsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_attendenceormorgscetors') as any);
-            if(attendenceormorgscetorsData && attendenceormorgscetorsData.length && attendenceormorgscetorsData.length > 0){
-                attendenceormorgscetorsData.forEach((item:any) => {
-                    if(item.srffrontuf){
-                        if(Object.is(item.srffrontuf,"0")){
-                            item.attendenceormorgsectorid = null;
-                        }
-                        delete item.srffrontuf;
-                    }
-                });
-            }
-        }
-        masterData.attendenceormorgscetors = attendenceormorgscetorsData;
         let attendancesettingsData:any = [];
         if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_attendancesettings'),'undefined')){
             attendancesettingsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_attendancesettings') as any);
@@ -236,6 +221,21 @@ export default class AttEndenceSetupServiceBase extends EntityService {
             }
         }
         masterData.attendancesettings = attendancesettingsData;
+        let attendenceormorgscetorsData:any = [];
+        if(!Object.is(this.tempStorage.getItem(context.srfsessionkey+'_attendenceormorgscetors'),'undefined')){
+            attendenceormorgscetorsData = JSON.parse(this.tempStorage.getItem(context.srfsessionkey+'_attendenceormorgscetors') as any);
+            if(attendenceormorgscetorsData && attendenceormorgscetorsData.length && attendenceormorgscetorsData.length > 0){
+                attendenceormorgscetorsData.forEach((item:any) => {
+                    if(item.srffrontuf){
+                        if(Object.is(item.srffrontuf,"0")){
+                            item.attendenceormorgsectorid = null;
+                        }
+                        delete item.srffrontuf;
+                    }
+                });
+            }
+        }
+        masterData.attendenceormorgscetors = attendenceormorgscetorsData;
         Object.assign(data,masterData);
         if(!data.srffrontuf || data.srffrontuf !== "1"){
             data[this.APPDEKEY] = null;
@@ -245,8 +245,8 @@ export default class AttEndenceSetupServiceBase extends EntityService {
         }
         let tempContext:any = JSON.parse(JSON.stringify(context));
         let res:any = await Http.getInstance().post(`/attendencesetups`,data,isloading);
-        this.tempStorage.setItem(tempContext.srfsessionkey+'_attendenceormorgscetors',JSON.stringify(res.data.attendenceormorgscetors));
         this.tempStorage.setItem(tempContext.srfsessionkey+'_attendancesettings',JSON.stringify(res.data.attendancesettings));
+        this.tempStorage.setItem(tempContext.srfsessionkey+'_attendenceormorgscetors',JSON.stringify(res.data.attendenceormorgscetors));
         return res;
     }
 
