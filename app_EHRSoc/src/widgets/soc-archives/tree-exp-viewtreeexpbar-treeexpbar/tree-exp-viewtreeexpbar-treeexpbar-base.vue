@@ -2,7 +2,7 @@
     <split id="treeexpviewtreeexpbar" class='app-tree-exp-bar' v-model="split" mode="horizontal" @on-move-end="onSplitChange">
         <div slot='left'>
             <div class='tree-exp-bar-header'>
-                <div>树视图导航栏</div>
+                <div>组织</div>
             </div>
             <div class='search-content'>
                 <i-input :search="true"
@@ -297,6 +297,13 @@ export default class TreeExpViewtreeexpbarBase extends Vue implements ControlInt
             return {  
                 viewname: 'soc-archives-grid-view', 
                 parentdata: {},
+                deKeyField:'socarchives'
+			};
+        }
+        if (Object.is(expmode, 'SUBSUBORG')) {
+            return {  
+                viewname: 'soc-archives-grid-view', 
+                parentdata: {"srfparentdefname":"n_ormorgid_eq","nodeid":"%NODEID%"},
                 deKeyField:'socarchives'
 			};
         }

@@ -72,6 +72,15 @@ export default class OrmOrgTreeService extends ControlService {
     public TREENODE_SEPARATOR: string = ';';
 
     /**
+     * 子子组织节点节点分隔符号
+     *
+     * @public
+     * @type {string}
+     * @memberof OrmOrgTreeService
+     */
+	public TREENODE_SUBSUBORG: string = 'SubSubOrg';
+
+    /**
      * 默认根节点节点分隔符号
      *
      * @public
@@ -90,7 +99,7 @@ export default class OrmOrgTreeService extends ControlService {
 	public TREENODE_ALLORG: string = 'AllOrg';
 
     /**
-     * 子组组织节点节点分隔符号
+     * 子组织节点节点分隔符号
      *
      * @public
      * @type {string}
@@ -172,6 +181,10 @@ export default class OrmOrgTreeService extends ControlService {
             }
         }
 
+        if (Object.is(strNodeType, this.TREENODE_SUBSUBORG)) {
+            await this.fillSubsuborgNodeChilds(context,filter, list);
+            return Promise.resolve({ status: 200, data: list });
+        }
         if (Object.is(strNodeType, this.TREENODE_ROOT)) {
             await this.fillRootNodeChilds(context,filter, list);
             return Promise.resolve({ status: 200, data: list });
@@ -186,6 +199,145 @@ export default class OrmOrgTreeService extends ControlService {
         }
         return Promise.resolve({ status: 500, data: { title: '失败', message: `树节点${strTreeNodeId}标识无效` } });
     }
+
+    /**
+     * 填充 树视图节点[子子组织节点]
+     *
+     * @public
+     * @param {any{}} context     
+     * @param {*} filter
+     * @param {any[]} list
+     * @param {*} rsNavContext   
+     * @param {*} rsNavParams
+     * @param {*} rsParams
+     * @returns {Promise<any>}
+     * @memberof OrmOrgTreeService
+     */
+    @Errorlog
+    public fillSubsuborgNodes(context:any={},filter: any, list: any[],rsNavContext?:any,rsNavParams?:any,rsParams?:any): Promise<any> {
+        context = this.handleResNavContext(context,filter,rsNavContext);
+        filter = this.handleResNavParams(context,filter,rsNavParams,rsParams);
+        return new Promise((resolve:any,reject:any) =>{
+            let searchFilter: any = {};
+            if (Object.is(filter.strNodeType, this.TREENODE_SUBORG)) {
+                Object.assign(searchFilter, { n_porgid_eq: filter.nodeid });
+            }
+
+            Object.assign(searchFilter, { total: false });
+            let bFirst: boolean = true;
+            let records: any[] = [];
+            try {
+                this.searchSubsuborg(context, searchFilter, filter).then((records:any) =>{
+                    if(records && records.length >0){
+                        records.forEach((entity: any) => {
+                        let treeNode: any = {};
+                        // 整理context
+                        let strId: string = entity.orgid;
+                        let strText: string = entity.shortname;
+                        Object.assign(treeNode,{srfparentdename:'OrmOrg',srfparentkey:entity.orgid});
+                        let tempContext:any = JSON.parse(JSON.stringify(context));
+                        Object.assign(tempContext,{srfparentdename:'OrmOrg',srfparentkey:entity.orgid,ormorg:strId})
+                        Object.assign(treeNode,{srfappctx:tempContext});
+                        Object.assign(treeNode,{'ormorg':strId});
+                        Object.assign(treeNode, { srfkey: strId });
+                        Object.assign(treeNode, { text: strText, srfmajortext: strText });
+                        let strNodeId: string = 'SubSubOrg';
+                        strNodeId += this.TREENODE_SEPARATOR;
+                        strNodeId += strId;
+                        Object.assign(treeNode, { id: strNodeId });
+                        Object.assign(treeNode, { expanded: filter.isautoexpand });
+                        Object.assign(treeNode, { leaf: true });
+                        Object.assign(treeNode, { navfilter: "n_ormorgid_eq" });
+                        Object.assign(treeNode, { curData: entity });
+                        Object.assign(treeNode, {navigateParams: {nodeid:"%NODEID%"} });
+                        Object.assign(treeNode, { nodeid: treeNode.srfkey });
+                        Object.assign(treeNode, { nodeid2: filter.strRealNodeId });
+                        list.push(treeNode);
+                        resolve(list);
+                        bFirst = false;
+                    });
+                    }else{
+                        resolve(list);
+                    }
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        });
+
+	}
+
+    /**
+     * 获取查询集合
+     *
+     * @public
+     * @param {any{}} context     
+     * @param {*} searchFilter
+     * @param {*} filter
+     * @returns {any[]}
+     * @memberof TestEnetityDatasService
+     */
+    @Errorlog
+    public searchSubsuborg(context:any={}, searchFilter: any, filter: any): Promise<any> {
+        return new Promise((resolve:any,reject:any) =>{
+            if(filter.viewparams){
+                Object.assign(searchFilter,filter.viewparams);
+            }
+            if(!searchFilter.page){
+                Object.assign(searchFilter,{page:0});
+            }
+            if(!searchFilter.size){
+                Object.assign(searchFilter,{size:1000});
+            }
+            if(context && context.srfparentdename){
+                Object.assign(searchFilter,{srfparentdename:JSON.parse(JSON.stringify(context)).srfparentdename});
+            }
+            if(context && context.srfparentkey){
+                Object.assign(searchFilter,{srfparentkey:JSON.parse(JSON.stringify(context)).srfparentkey});
+            }
+            Object.assign(searchFilter,{sort: 'px,asc'})
+            const _appEntityService: any = this.ormorgService;
+            let list: any[] = [];
+            if (_appEntityService['FetchCurChild'] && _appEntityService['FetchCurChild'] instanceof Function) {
+                const response: Promise<any> = _appEntityService['FetchCurChild'](context, searchFilter, false);
+                response.then((response: any) => {
+                    if (!response.status || response.status !== 200) {
+                        resolve([]);
+                        console.log(JSON.stringify(context));
+                        console.error('查询FetchCurChild数据集异常!');
+                    }
+                    const data: any = response.data;
+                    if (Object.keys(data).length > 0) {
+                        list = JSON.parse(JSON.stringify(data));
+                        resolve(list);
+                    } else {
+                        resolve([]);
+                    }
+                }).catch((response: any) => {
+                        resolve([]);
+                        console.log(JSON.stringify(context));
+                        console.error('查询FetchCurChild数据集异常!');
+                });
+            }
+        })
+    }
+
+    /**
+     * 填充 树视图节点[子子组织节点]子节点
+     *
+     * @public
+     * @param {any{}} context         
+     * @param {*} filter
+     * @param {any[]} list
+     * @returns {Promise<any>}
+     * @memberof OrmOrgTreeService
+     */
+    @Errorlog
+    public async fillSubsuborgNodeChilds(context:any={}, filter: any, list: any[]): Promise<any> {
+		if (filter.srfnodefilter && !Object.is(filter.srfnodefilter,"")) {
+		} else {
+		}
+	}
 
     /**
      * 填充 树视图节点[默认根节点]
@@ -384,13 +536,13 @@ export default class OrmOrgTreeService extends ControlService {
     @Errorlog
     public async fillAllorgNodeChilds(context:any={}, filter: any, list: any[]): Promise<any> {
 		if (filter.srfnodefilter && !Object.is(filter.srfnodefilter,"")) {
-			// 填充子组组织节点
+			// 填充子组织节点
             let SuborgRsNavContext:any = {};
             let SuborgRsNavParams:any = {};
             let SuborgRsParams:any = {};
 			await this.fillSuborgNodes(context, filter, list ,SuborgRsNavContext,SuborgRsNavParams,SuborgRsParams);
 		} else {
-			// 填充子组组织节点
+			// 填充子组织节点
             let SuborgRsNavContext:any = {};
             let SuborgRsNavParams:any = {};
             let SuborgRsParams:any = {};
@@ -399,7 +551,7 @@ export default class OrmOrgTreeService extends ControlService {
 	}
 
     /**
-     * 填充 树视图节点[子组组织节点]
+     * 填充 树视图节点[子组织节点]
      *
      * @public
      * @param {any{}} context     
@@ -445,7 +597,7 @@ export default class OrmOrgTreeService extends ControlService {
                         strNodeId += strId;
                         Object.assign(treeNode, { id: strNodeId });
                         Object.assign(treeNode, { expanded: filter.isautoexpand });
-                        Object.assign(treeNode, { leaf: true });
+                        Object.assign(treeNode, { leaf: false });
                         Object.assign(treeNode, { navfilter: "n_ormorgid_eq" });
                         Object.assign(treeNode, { curData: entity });
                         Object.assign(treeNode, {navigateParams: {nodeid:"%NODEID%"} });
@@ -522,7 +674,7 @@ export default class OrmOrgTreeService extends ControlService {
     }
 
     /**
-     * 填充 树视图节点[子组组织节点]子节点
+     * 填充 树视图节点[子组织节点]子节点
      *
      * @public
      * @param {any{}} context         
@@ -534,7 +686,17 @@ export default class OrmOrgTreeService extends ControlService {
     @Errorlog
     public async fillSuborgNodeChilds(context:any={}, filter: any, list: any[]): Promise<any> {
 		if (filter.srfnodefilter && !Object.is(filter.srfnodefilter,"")) {
+			// 填充子子组织节点
+            let SubsuborgRsNavContext:any = {};
+            let SubsuborgRsNavParams:any = {};
+            let SubsuborgRsParams:any = {};
+			await this.fillSubsuborgNodes(context, filter, list ,SubsuborgRsNavContext,SubsuborgRsNavParams,SubsuborgRsParams);
 		} else {
+			// 填充子子组织节点
+            let SubsuborgRsNavContext:any = {};
+            let SubsuborgRsNavParams:any = {};
+            let SubsuborgRsParams:any = {};
+			await this.fillSubsuborgNodes(context, filter, list ,SubsuborgRsNavContext,SubsuborgRsNavParams,SubsuborgRsParams);
 		}
 	}
 

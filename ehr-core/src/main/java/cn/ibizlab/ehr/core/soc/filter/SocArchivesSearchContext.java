@@ -97,6 +97,13 @@ public class SocArchivesSearchContext extends QueryWrapperContext<SocArchives> {
             this.getSearchCond().like("socrulename", n_socrulename_like);
         }
     }
+	private String n_ormorgid_eq;//[组织ID]
+	public void setN_ormorgid_eq(String n_ormorgid_eq) {
+        this.n_ormorgid_eq = n_ormorgid_eq;
+        if(!ObjectUtils.isEmpty(this.n_ormorgid_eq)){
+            this.getSearchCond().eq("ormorgid", n_ormorgid_eq);
+        }
+    }
 	private String n_state_eq;//[状态]
 	public void setN_state_eq(String n_state_eq) {
         this.n_state_eq = n_state_eq;
