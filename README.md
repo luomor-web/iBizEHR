@@ -20,6 +20,8 @@ iBiz致力于提升中国软件软件建设和应用的价值，从业务到技�
 * **[iBizEHR在线演示-人员异动](http://ehrpcm2.ibizlab.cn)**
 * **[iBizEHR在线演示-绩效管理](http://ehrpar.ibizlab.cn)**
 * **[iBizEHR在线演示-薪酬管理](http://ehrsal.ibizlab.cn)**
+* **[iBizEHR在线演示-培训管理](http://ehrtrm.ibizlab.cn)**
+* **[iBizEHR在线演示-社保管理](http://ehrsoc.ibizlab.cn)**
 * **[iBizEHR解决方案](http://demo.ibizlab.cn/ibizehr)**
 * **[iBizEHR训练营](http://demo.ibizlab.cn/ibizehr_practice)**
 * **[如何在演示系统中建立Issue](https://gitee.com/ibizlab/iBizEHR/wikis/pages?sort_id=2251813&doc_id=692797)**
