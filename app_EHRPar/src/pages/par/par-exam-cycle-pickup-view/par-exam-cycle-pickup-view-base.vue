@@ -248,7 +248,7 @@ export default class ParExamCyclePickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof ParExamCyclePickupView
+     * @memberof ParExamCyclePickupViewBase
      */
     public selectedData: string = "";
 

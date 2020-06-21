@@ -584,7 +584,7 @@ mock.onGet('./assets/json/view-config.json').reply((config: any) => {
             "viewtag": "C1ABBB2A-7CFE-453A-9531-C33DFC4D0912"
         },
         "parkhzcmxeditview": {
-            "title": "考核组成明细编辑视图",
+            "title": "考核模板明细",
             "caption": "考核模板明细",
             "viewtype": "DEEDITVIEW",
             "viewmodule": "PAR",

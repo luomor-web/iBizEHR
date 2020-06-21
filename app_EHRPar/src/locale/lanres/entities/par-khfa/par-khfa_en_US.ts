@@ -1,45 +1,45 @@
 
 export default {
   fields: {
-    szsj: '设置时间',
-    updatedate: '更新时间',
-    updateman: '更新人',
-    xh: '排序号',
-    createdate: '建立时间',
-    parkhfaname: '考核对象',
-    parkhfaid: '考核对象标识',
-    khdx: '考核对象',
-    createman: '建立人',
-    availableflag: '是否有效',
+    szsj: "设置时间",
+    updatedate: "更新时间",
+    updateman: "更新人",
+    xh: "排序号",
+    createdate: "建立时间",
+    parkhfaname: "考核对象",
+    parkhfaid: "考核对象标识",
+    khdx: "考核对象",
+    createman: "建立人",
+    availableflag: "是否有效",
   },
 	views: {
 		gridview: {
 			caption: "考核对象",
-      title: '考核对象',
+      		title: "考核对象",
 		},
 		editview9: {
 			caption: "考核对象",
-      title: '考核对象',
+      		title: "考核对象",
 		},
 		pickupgridview: {
 			caption: "考核对象",
-      title: '考核对象选择表格视图',
+      		title: "考核对象选择表格视图",
 		},
 		editview: {
 			caption: "考核对象",
-      title: '考核对象',
+      		title: "考核对象",
 		},
 		mpickupview: {
 			caption: "考核对象",
-      title: '考核对象数据多项选择视图',
+      		title: "考核对象数据多项选择视图",
 		},
 		pickupview: {
 			caption: "考核对象",
-      title: '考核对象数据选择视图',
+      		title: "考核对象数据选择视图",
 		},
 		editview2: {
 			caption: "考核对象",
-      title: '考核对象编辑视图',
+      		title: "考核对象编辑视图",
 		},
 	},
 	main_form: {

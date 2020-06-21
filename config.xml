@@ -37,11 +37,11 @@
 	  git clone -b dev $para2 ehr/
       export NODE_OPTIONS=--max-old-space-size=4096
       cd ehr/
-      mvn clean package -Pehrorm
-      cd ehr-app/ehr-app-ehrorm
-      mvn -Pehrorm docker:build
-      mvn -Pehrorm docker:push
-      docker -H $para1 stack deploy --compose-file=src/main/docker/ehr-app-ehrorm.yaml iBizEE --with-registry-auth
+      mvn clean package -Pehrpar
+      cd ehr-app/ehr-app-ehrpar
+      mvn -Pehrpar docker:build
+      mvn -Pehrpar docker:push
+      docker -H $para1 stack deploy --compose-file=src/main/docker/ehr-app-ehrpar.yaml iBizEE --with-registry-auth
       </command>
     </hudson.tasks.Shell>
   </builders>

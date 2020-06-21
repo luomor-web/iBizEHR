@@ -1,38 +1,38 @@
 
 export default {
   fields: {
-    parexamcycleid: '考核周期标识',
-    createman: '建立人',
-    parexamcyclename: '考核周期',
-    createdate: '建立时间',
-    updateman: '更新人',
-    updatedate: '更新时间',
-    cycleid: '周期编码',
+    parexamcycleid: "考核周期标识",
+    createman: "建立人",
+    parexamcyclename: "考核周期",
+    createdate: "建立时间",
+    updateman: "更新人",
+    updatedate: "更新时间",
+    cycleid: "周期编码",
   },
 	views: {
 		pickupview: {
 			caption: "考核周期",
-      title: '考核周期数据选择视图',
+      		title: "考核周期数据选择视图",
 		},
 		gridview: {
 			caption: "考核周期",
-      title: '考核周期',
+      		title: "考核周期",
 		},
 		pickupgridview: {
 			caption: "考核周期",
-      title: '考核周期选择表格视图',
+      		title: "考核周期选择表格视图",
 		},
 		mpickupview: {
 			caption: "考核周期",
-      title: '考核周期数据多项选择视图',
+      		title: "考核周期数据多项选择视图",
 		},
 		editview: {
 			caption: "考核周期",
-      title: '考核周期',
+      		title: "考核周期",
 		},
 		newgridview: {
 			caption: "考核周期设置",
-      title: '考核周期设置',
+      		title: "考核周期设置",
 		},
 	},
 	main_form: {

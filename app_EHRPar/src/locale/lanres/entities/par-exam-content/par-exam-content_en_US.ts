@@ -1,42 +1,42 @@
 
 export default {
   fields: {
-    parexamcontentid: '考核内容标识',
-    createman: '建立人',
-    parexamcontentname: '考核内容',
-    updateman: '更新人',
-    createdate: '建立时间',
-    updatedate: '更新时间',
-    contentcode: '内容编码',
+    parexamcontentid: "考核内容标识",
+    createman: "建立人",
+    parexamcontentname: "考核内容",
+    updateman: "更新人",
+    createdate: "建立时间",
+    updatedate: "更新时间",
+    contentcode: "内容编码",
   },
 	views: {
 		pickupview: {
 			caption: "考核内容",
-      title: '考核内容数据选择视图',
+      		title: "考核内容数据选择视图",
 		},
 		pickupgridview: {
 			caption: "考核内容",
-      title: '考核内容选择表格视图',
+      		title: "考核内容选择表格视图",
 		},
 		gridview: {
 			caption: "考核内容",
-      title: '考核内容',
+      		title: "考核内容",
 		},
 		editview2: {
 			caption: "考核内容",
-      title: '考核内容编辑视图',
+      		title: "考核内容编辑视图",
 		},
 		editview: {
 			caption: "考核内容",
-      title: '考核内容',
+      		title: "考核内容",
 		},
 		mpickupview: {
 			caption: "考核内容",
-      title: '考核内容数据多项选择视图',
+      		title: "考核内容数据多项选择视图",
 		},
 		editview9: {
 			caption: "考核内容",
-      title: '考核内容',
+      		title: "考核内容",
 		},
 	},
 	main_form: {

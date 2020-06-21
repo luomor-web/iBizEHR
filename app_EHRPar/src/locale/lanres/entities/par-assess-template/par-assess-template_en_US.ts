@@ -1,40 +1,40 @@
 
 export default {
   fields: {
-    parassesstemplateid: '考核模板标识',
-    createman: '建立人',
-    parassesstemplatename: '考核模板名称',
-    updateman: '更新人',
-    createdate: '建立时间',
-    updatedate: '更新时间',
-    nd: '年度',
-    khdx: '考核对象',
-    sfyx: '是否有效',
+    parassesstemplateid: "考核模板标识",
+    createman: "建立人",
+    parassesstemplatename: "考核模板名称",
+    updateman: "更新人",
+    createdate: "建立时间",
+    updatedate: "更新时间",
+    nd: "年度",
+    khdx: "考核对象",
+    sfyx: "是否有效",
   },
 	views: {
 		mpickupview: {
 			caption: "考核模板",
-      title: '考核模板数据多项选择视图',
+      		title: "考核模板数据多项选择视图",
 		},
 		editview: {
 			caption: "考核模板",
-      title: '考核模板',
+      		title: "考核模板",
 		},
 		pickupview: {
 			caption: "考核模板",
-      title: '考核模板数据选择视图',
+      		title: "考核模板数据选择视图",
 		},
 		pickupgridview: {
 			caption: "考核模板",
-      title: '考核模板选择表格视图',
+      		title: "考核模板选择表格视图",
 		},
 		editview9: {
 			caption: "考核模板",
-      title: '考核模板',
+      		title: "考核模板",
 		},
 		gridview: {
 			caption: "考核模板设置",
-      title: '考核模板表格视图',
+      		title: "考核模板表格视图",
 		},
 	},
 	main2_form: {

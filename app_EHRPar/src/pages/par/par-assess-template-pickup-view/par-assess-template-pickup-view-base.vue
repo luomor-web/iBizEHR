@@ -248,7 +248,7 @@ export default class ParAssessTemplatePickupViewBase extends PickupViewBase {
      * 选中数据的字符串
      *
      * @type {string}
-     * @memberof ParAssessTemplatePickupView
+     * @memberof ParAssessTemplatePickupViewBase
      */
     public selectedData: string = "";
 

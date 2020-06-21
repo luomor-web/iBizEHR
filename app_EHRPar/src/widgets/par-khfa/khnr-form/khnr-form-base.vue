@@ -46,11 +46,12 @@
 </template>
 
 <script lang='tsx'>
-import { Vue, Component, Prop, Provide, Emit, Watch, Model } from 'vue-property-decorator';
+import { Vue, Component, Prop, Provide, Emit, Watch, Model,Inject } from 'vue-property-decorator';
 import { CreateElement } from 'vue';
 import { Subject, Subscription } from 'rxjs';
 import { ControlInterface } from '@/interface/control';
 import { UIActionTool,Util } from '@/utils';
+import NavDataService from '@/service/app/navdata-service';
 import ParKhfaService from '@/service/par-khfa/par-khfa-service';
 import KHNRService from './khnr-form-service';
 
@@ -69,7 +70,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 名称
      *
      * @type {string}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Prop() public name?: string;
 
@@ -77,7 +78,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 视图通讯对象
      *
      * @type {Subject<ViewState>}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Prop() public viewState!: Subject<ViewState>;
 
@@ -85,7 +86,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 应用上下文
      *
      * @type {*}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Prop() public context: any;
 
@@ -93,7 +94,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 视图参数
      *
      * @type {*}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Prop() public viewparams: any;
 
@@ -102,7 +103,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public viewStateEvent: Subscription | undefined;
 
@@ -110,7 +111,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 获取部件类型
      *
      * @returns {string}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public getControlType(): string {
         return 'FORM'
@@ -122,7 +123,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 计数器服务对象集合
      *
      * @type {Array<*>}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */    
     public counterServiceArray:Array<any> = [];
 
@@ -130,7 +131,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 建构部件服务对象
      *
      * @type {KHNRService}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public service: KHNRService = new KHNRService({ $store: this.$store });
 
@@ -138,7 +139,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 实体服务对象
      *
      * @type {ParKhfaService}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public appEntityService: ParKhfaService = new ParKhfaService({ $store: this.$store });
     
@@ -148,7 +149,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 关闭视图
      *
      * @param {any} args
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public closeView(args: any): void {
         let _this: any = this;
@@ -158,7 +159,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
     /**
      *  计数器刷新
      *
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public counterRefresh(){
         const _this:any =this;
@@ -175,7 +176,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
     /**
      * 工作流审批意见控件绑定值
      *
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public srfwfmemo:string = "";
     
@@ -183,7 +184,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 获取多项数据
      *
      * @returns {any[]}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public getDatas(): any[] {
         return [this.data];
@@ -193,7 +194,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 获取单项树
      *
      * @returns {*}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public getData(): any {
         return this.data;
@@ -203,7 +204,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 是否默认保存
      *
      * @type {boolean}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Prop({ default: false }) public autosave?: boolean;
 
@@ -211,7 +212,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 显示处理提示
      *
      * @type {boolean}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Prop({ default: true }) public showBusyIndicator?: boolean;
 
@@ -219,7 +220,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 部件行为--submit
      *
      * @type {string}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Prop() public WFSubmitAction!: string;
     
@@ -227,7 +228,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 部件行为--start
      *
      * @type {string}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Prop() public WFStartAction!: string;
     
@@ -235,7 +236,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 部件行为--update
      *
      * @type {string}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Prop() public updateAction!: string;
     
@@ -243,7 +244,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 部件行为--remove
      *
      * @type {string}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Prop() public removeAction!: string;
     
@@ -251,7 +252,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 部件行为--loaddraft
      *
      * @type {string}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Prop() public loaddraftAction!: string;
     
@@ -259,7 +260,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 部件行为--load
      *
      * @type {string}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Prop() public loadAction!: string;
     
@@ -267,7 +268,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Prop() public createAction!: string;
 
@@ -275,7 +276,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 部件行为--create
      *
      * @type {string}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Prop() public searchAction!: string;
 
@@ -283,7 +284,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 视图标识
      *
      * @type {string}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Prop() public viewtag!: string;
 
@@ -291,7 +292,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 表单状态
      *
      * @type {Subject<any>}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public formState: Subject<any> = new Subject();
 
@@ -299,7 +300,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 忽略表单项值变化
      *
      * @type {boolean}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public ignorefieldvaluechange: boolean = false;
 
@@ -308,7 +309,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {Subject<any>}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public dataChang: Subject<any> = new Subject();
 
@@ -317,7 +318,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {(Subscription | undefined)}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public dataChangEvent: Subscription | undefined;
 
@@ -326,7 +327,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @public
      * @type {*}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public oldData: any = {};
 
@@ -334,7 +335,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 表单数据对象
      *
      * @type {*}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public data: any = {
         srfupdatedate: null,
@@ -357,7 +358,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
       * 当前执行的行为逻辑
       *
       * @type {string}
-      * @memberof KHNR
+      * @memberof KHNRBase
       */
     public currentAction: string = "";
 
@@ -365,7 +366,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
       * 关系界面计数器
       *
       * @type {number}
-      * @memberof KHNR
+      * @memberof KHNRBase
       */
     public drcounter: number = 0;
 
@@ -373,7 +374,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
       * 需要等待关系界面保存时，第一次调用save参数的备份
       *
       * @type {number}
-      * @memberof KHNR
+      * @memberof KHNRBase
       */
     public drsaveopt: any = {};
 
@@ -381,7 +382,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
       * 表单保存回调存储对象
       *
       * @type {any}
-      * @memberof KHNR
+      * @memberof KHNRBase
       */
     public saveState:any ;
 
@@ -389,7 +390,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 属性值规则
      *
      * @type {*}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public rules: any = {
         srfupdatedate: [
@@ -476,7 +477,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 详情模型集合
      *
      * @type {*}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public detailsModel: any = {
         group1: new FormGroupPanelModel({ caption: '考核对象', detailType: 'GROUPPANEL', name: 'group1', visible: true, isShowCaption: true, form: this, uiActionGroup: { caption: '', langbase: 'entities.parkhfa.khnr_form', extractMode: 'ITEM', details: [] } })
@@ -516,7 +517,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Watch('data.srfupdatedate')
     onSrfupdatedateChange(newVal: any, oldVal: any) {
@@ -528,7 +529,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Watch('data.srforikey')
     onSrforikeyChange(newVal: any, oldVal: any) {
@@ -540,7 +541,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Watch('data.srfkey')
     onSrfkeyChange(newVal: any, oldVal: any) {
@@ -552,7 +553,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Watch('data.srfmajortext')
     onSrfmajortextChange(newVal: any, oldVal: any) {
@@ -564,7 +565,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Watch('data.srftempmode')
     onSrftempmodeChange(newVal: any, oldVal: any) {
@@ -576,7 +577,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Watch('data.srfuf')
     onSrfufChange(newVal: any, oldVal: any) {
@@ -588,7 +589,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Watch('data.srfdeid')
     onSrfdeidChange(newVal: any, oldVal: any) {
@@ -600,7 +601,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Watch('data.srfsourcekey')
     onSrfsourcekeyChange(newVal: any, oldVal: any) {
@@ -612,7 +613,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Watch('data.xh')
     onXhChange(newVal: any, oldVal: any) {
@@ -624,7 +625,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Watch('data.parkhfaname')
     onParkhfanameChange(newVal: any, oldVal: any) {
@@ -636,7 +637,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Watch('data.szsj')
     onSzsjChange(newVal: any, oldVal: any) {
@@ -648,7 +649,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Watch('data.availableflag')
     onAvailableflagChange(newVal: any, oldVal: any) {
@@ -660,7 +661,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @param {*} newVal
      * @param {*} oldVal
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     @Watch('data.parkhfaid')
     onParkhfaidChange(newVal: any, oldVal: any) {
@@ -673,7 +674,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public resetFormData({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
     }
@@ -682,7 +683,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
       * 置空对象
       *
       * @param {any[]} args
-      * @memberof EditForm
+     * @memberof KHNRBase
       */
     public ResetData(_datas:any){
         if(Object.keys(_datas).length >0){
@@ -699,7 +700,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public formLogic({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
                 
@@ -726,7 +727,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * @public
      * @param {{ name: string, newVal: any, oldVal: any }} { name, newVal, oldVal }
      * @returns {void}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public formDataChange({ name, newVal, oldVal }: { name: string, newVal: any, oldVal: any }): void {
         if (this.ignorefieldvaluechange) {
@@ -743,7 +744,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * @public
      * @param {*} [data={}]
      * @param {string} [action]
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public onFormLoad(data: any = {},action:string): void {
         if(Object.is(action,"save") || Object.is(action,"autoSave") || Object.is(action,"submit"))
@@ -764,7 +765,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @param {*} [_datas={}]
      * @param {string} [action]
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public fillForm(_datas: any = {},action:string): void {
         this.ignorefieldvaluechange = true;
@@ -789,7 +790,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} data
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public setFormEnableCond(data: any): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -805,7 +806,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 重置草稿表单状态
      *
      * @public
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public resetDraftFormStates(): void {
         const form: any = this.$refs.form;
@@ -817,7 +818,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
     /**
      * 重置校验结果
      *
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public resetValidates(): void {
         Object.values(this.detailsModel).forEach((detail: any) => {
@@ -833,7 +834,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 填充校验结果 （后台）
      *
      * @param {any[]} fieldErrors
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public fillValidates(fieldErrors: any[]): void {
         fieldErrors.forEach((error: any) => {
@@ -851,7 +852,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 表单校验状态
      *
      * @returns {boolean} 
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public formValidateStatus(): boolean {
         const form: any = this.$refs.form;
@@ -866,7 +867,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 获取全部值
      *
      * @returns {*}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public getValues(): any {
         return this.data;
@@ -877,7 +878,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @param {{ name: string, value: any }} $event
      * @returns {void}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public onFormItemValueChange($event: { name: string, value: any }): void {
         if (!$event) {
@@ -895,7 +896,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * @param {string} name
      * @param {*} value
      * @returns {void}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public setDataItemValue(name: string, value: any): void {
         if (!name || Object.is(name, '') || !this.data.hasOwnProperty(name)) {
@@ -913,7 +914,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 分组界面行为事件
      *
      * @param {*} $event
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public groupUIActionClick($event: any): void {
         if (!$event) {
@@ -925,7 +926,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
     /**
      * Vue声明周期(处理组件的输入属性)
      *
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public created(): void {
         this.afterCreated();
@@ -934,7 +935,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
     /**
      * 执行created后的逻辑
      *
-     *  @memberof KHNR
+     *  @memberof KHNRBase
      */    
     public afterCreated(){
         if (this.viewState) {
@@ -991,7 +992,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
     /**
      * vue 生命周期
      *
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public destroyed() {
         this.afterDestroy();
@@ -1000,7 +1001,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
     /**
      * 执行destroyed后的逻辑
      *
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public afterDestroy() {
         if (this.viewStateEvent) {
@@ -1015,7 +1016,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 拷贝内容
      *
      * @param {*} [arg={}]
-     * @memberof @memberof KHNR
+     * @memberof @memberof KHNRBase
      */
     public copy(srfkey: string): void {
         let copyData = this.$store.getters.getCopyData(srfkey);
@@ -1033,7 +1034,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
 
     /**
      *打印
-     *@memberof @memberof KHNR
+     *@memberof @memberof KHNRBase
      */
     public print(){
         let _this:any = this;
@@ -1044,7 +1045,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 部件刷新
      *
      * @param {any[]} args
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public refresh(args: any[]): void {
         let arg: any = {};
@@ -1066,7 +1067,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @param {*} [arg={}]
      * @returns {void}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public autoLoad(arg: any = {}): void {
         if (arg.srfkey && !Object.is(arg.srfkey, '')) {
@@ -1087,7 +1088,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      *
      * @public
      * @param {*} [opt={}]
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public load(opt: any = {}): void {
         if(!this.loadAction){
@@ -1122,7 +1123,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 加载草稿
      *
      * @param {*} [opt={}]
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public loadDraft(opt: any = {}): void {
         if(!this.loaddraftAction){
@@ -1176,7 +1177,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 自动保存
      *
      * @param {*} [opt={}]
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public autoSave(opt: any = {}): void {
         if (!this.formValidateStatus()) {
@@ -1227,7 +1228,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * @param {boolean} [showResultInfo] 
      * @param {boolean} [ifStateNext] formState是否下发通知
      * @returns {Promise<any>}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public async save(opt: any = {}, showResultInfo?: boolean, ifStateNext: boolean = true): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1297,7 +1298,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
     *
     * @public
     * @param {*} [opt={}]
-    * @memberof EditForm
+    * @memberof KHNRBase
     */
     public remove(opt:Array<any> = [],showResultInfo?: boolean): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1331,7 +1332,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public async wfstart(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1387,7 +1388,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * @param {*} [data={}]
      * @param {*} [localdata={}]
      * @returns {Promise<any>}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public async wfsubmit(data: any,localdata?:any): Promise<any> {
         return new Promise((resolve: any, reject: any) => {
@@ -1463,7 +1464,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * @param {string[]} updateDetails 更新项
      * @param {boolean} [showloading] 是否显示加载状态
      * @returns {void}
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public updateFormItems(mode: string, data: any = {}, updateDetails: string[], showloading?: boolean): void {
         if (!mode || (mode && Object.is(mode, ''))) {
@@ -1508,7 +1509,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 回车事件
      *
      * @param {*} $event
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public onEnter($event: any): void {
     }
@@ -1517,7 +1518,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 保存并退出
      *
      * @param {any[]} args
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public saveAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -1542,7 +1543,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 保存并新建
      *
      * @param {any[]} args
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public saveAndNew(data:any[]):Promise<any>{
         let _this = this;
@@ -1565,7 +1566,7 @@ export default class KHNRBase extends Vue implements ControlInterface {
      * 删除并退出
      *
      * @param {any[]} args
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public removeAndExit(data:any[]):Promise<any>{
         let _this = this;
@@ -1589,38 +1590,37 @@ export default class KHNRBase extends Vue implements ControlInterface {
     * 关系界面数据保存完成
     *
     * @param {any} $event
-    * @memberof KHNR
+    * @memberof KHNRBase
     */
     public drdatasaved($event:any){
         let _this = this;
         this.drcounter--;
-        if(this.drcounter > 0){
-            return;
-        }
-        this.save(this.drsaveopt, undefined, false).then((res) =>{
-            this.saveState(res);
-            this.drsaveopt = {};
-            if(Object.is(_this.currentAction, "saveAndNew")){
-                _this.ResetData(res);
-                _this.loadDraft({});
-            }else if(Object.is(_this.currentAction, "saveAndExit")){
-                if(res){
-                    _this.closeView(res.data);
+        if(this.drcounter === 0){
+            this.save(this.drsaveopt, undefined, false).then((res) =>{
+                this.saveState(res);
+                this.drsaveopt = {};
+                if(Object.is(_this.currentAction, "saveAndNew")){
+                    _this.ResetData(res);
+                    _this.loadDraft({});
+                }else if(Object.is(_this.currentAction, "saveAndExit")){
+                    if(res){
+                        _this.closeView(res.data);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
      * 新建默认值
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public createDefault(){                    
     }
 
     /**
      * 更新默认值
-     * @memberof KHNR
+     * @memberof KHNRBase
      */
     public updateDefault(){                    
     }
